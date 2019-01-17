@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Resource\Js'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Resource\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/resource/js.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
 
 Represents Javascript resources
 

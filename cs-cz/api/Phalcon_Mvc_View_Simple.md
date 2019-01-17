@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Mvc\View\Simple'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Simple'
+---
 # Class **Phalcon\Mvc\View\Simple**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view/simple.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
 This component allows to render views without hierarchical levels
 

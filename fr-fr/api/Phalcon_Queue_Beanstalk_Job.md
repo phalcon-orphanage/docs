@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Queue\Beanstalk\Job'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Queue\Beanstalk\Job'
+---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/queue/beanstalk/job.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
 
 Represents a job in a beanstalk queue
 

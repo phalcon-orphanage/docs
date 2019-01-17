@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Resultset\Complex'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Resultset\Complex'
 
 *implements* [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php), [Serializable](https://php.net/manual/en/class.serializable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/resultset/complex.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
 
 Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
 

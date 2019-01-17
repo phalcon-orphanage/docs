@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Di\ServiceInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Di\ServiceInterface'
+---
 # Interface **Phalcon\Di\ServiceInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/serviceinterface.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
 ## メソッド
 

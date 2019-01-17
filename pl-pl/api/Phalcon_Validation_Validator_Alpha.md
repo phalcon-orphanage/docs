@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'pl-pl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Alpha'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Alpha'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/alpha.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
 
 Check for alphabetic character(s)
 

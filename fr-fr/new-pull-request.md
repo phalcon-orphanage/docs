@@ -1,18 +1,20 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
-
 # New Pull Request
 
-A pull request is alterations to the code that either fixes a current issue or introduces new functionality.
+A pull request a collection of changes to the code that: - fux a bug (current issue) - introduce new functionality
 
-Your Pull request must include: * Issued to the correct branch. **We do not accept Pull Requests to the `master` branch** * Update to the CHANGELOG * Unit tests * Documentation if necessary and usage examples
+Your Pull request must include: * Issued to the correct branch. * Update to the `CHANGELOG` * Unit tests * Documentation if necessary and usage examples
 
-For fixing bugs, please ensure that you reference the issue in Github. If such issue does not exist, create one.
+> **We do not accept Pull Requests to the `master` branch** {:.alert .alert-danger}
 
-For new functionality, again we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon it will be rejected. Additionally any new functionality that introduces breaking changes will be rejected at least for the current version but could very well be implemented in the next major version. It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback.
+If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in Github to present this information. If no issue exists, please create one.
+
+For new functionality, again we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
+
+Additionally any new functionality that introduces breaking changes will be rejected at least for the current version but could very well be implemented in the next major version.
+
+It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.

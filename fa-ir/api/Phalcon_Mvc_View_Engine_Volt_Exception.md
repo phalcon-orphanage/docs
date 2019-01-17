@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt\Exception'
+---
 # Class **Phalcon\Mvc\View\Engine\Volt\Exception**
 
-*extends* class [Phalcon\Mvc\View\Exception](/4.0/en/api/Phalcon_Mvc_View_Exception)
+*extends* class [Phalcon\Mvc\View\Exception](Phalcon_Mvc_View_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view/engine/volt/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/exception.zep)
 
 ## Methods
 

@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'el-gr' version: '4.0' title: 'Phalcon\Logger\Adapter\Syslog'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Adapter\Syslog'
+---
 # Class **Phalcon\Logger\Adapter\Syslog**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/adapter/syslog.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
 Sends logs to the system logger
 

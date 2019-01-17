@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Mvc\Model\Validator'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator'
+---
 # Abstract class **Phalcon\Mvc\Model\Validator**
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator.zep)
 
 This is a base class for Phalcon\Mvc\Model validators
 

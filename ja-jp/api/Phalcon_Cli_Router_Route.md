@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Cli\Router\Route'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Router\Route'
+---
 # Class **Phalcon\Cli\Router\Route**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/router/route.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
 This class represents every route added to the router
 

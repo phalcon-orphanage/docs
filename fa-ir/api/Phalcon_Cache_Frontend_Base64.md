@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Frontend\Base64'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Base64'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/base64.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
 Allows to cache data converting/deconverting them to base64.
 

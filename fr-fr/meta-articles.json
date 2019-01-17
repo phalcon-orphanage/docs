@@ -21,7 +21,7 @@
       "url": "#access-controls"
     },
     {
-      "text": "Interroger une ACL",
+      "text": "Querying an ACL",
       "url": "#querying"
     },
     {
@@ -59,7 +59,7 @@
       "url": "#setup"
     },
     {
-      "text": "Ajout de rôles à l’ACL",
+      "text": "Adding Roles to the ACL",
       "url": "#factory"
     },
     {
@@ -3087,6 +3087,92 @@
     {
       "text": "Creating your own helpers",
       "url": "#custom-helpers"
+    }
+  ],
+  "testing-environment": [
+    {
+      "text": "Overview",
+      "url": "overview"
+    },
+    {
+      "text": "Overview",
+      "url": "overview"
+    },
+    {
+      "text": "The problem",
+      "url": "problem"
+    },
+    {
+      "text": "Solution",
+      "url": "solution"
+    },
+    {
+      "text": "Installation",
+      "url": "installation"
+    },
+    {
+      "text": "Running the environment",
+      "url": "running",
+      "menu": [
+        {
+          "text": "Fork the repository",
+          "url": "running-fork"
+        },
+        {
+          "text": "Clone the fork",
+          "url": "running-clone"
+        },
+        {
+          "text": "Copy the boxfile",
+          "url": "running-boxfile"
+        },
+        {
+          "text": "Configure nanobox",
+          "url": "running-nanobox-configure"
+        },
+        {
+          "text": "Run nanobox",
+          "url": "running-nanobox-run"
+        },
+        {
+          "text": "Composer",
+          "url": "running-composer"
+        },
+        {
+          "text": "Check Zephir",
+          "url": "running-zephir"
+        },
+        {
+          "text": "Compile Phalcon",
+          "url": "running-compile"
+        },
+        {
+          "text": "Check extensions",
+          "url": "running-extensions"
+        }
+      ]
+    },
+    {
+      "text": "Running tests",
+      "url": "tests",
+      "menu": [
+        {
+          "text": "Unit",
+          "url": "tests-unit"
+        },
+        {
+          "text": "Integration",
+          "url": "tests-integration"
+        }
+      ]
+    },
+    {
+      "text": "Development",
+      "url": "development"
+    },
+    {
+      "text": "Services",
+      "url": "services"
     }
   ],
   "translate": [
