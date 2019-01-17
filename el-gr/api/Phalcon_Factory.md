@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'el-gr'
 version: '4.0'
 title: 'Phalcon\Factory'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
 
 ## Methods
 
