@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\ResourceInterface'
 ---
 # Interface **Phalcon\Assets\ResourceInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/resourceinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
 
 ## Métodos
 
