@@ -10,7 +10,7 @@ title: 'Phalcon\Di\FactoryDefault\Cli'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
 
 This is a variant of the standard Phalcon\Di. By default it automatically
 registers all the services provided by the framework.
