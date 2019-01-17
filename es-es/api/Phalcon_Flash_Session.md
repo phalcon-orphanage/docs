@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Flash\Session'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Flash\Session'
+---
 # Class **Phalcon\Flash\Session**
 
 *extends* abstract class [Phalcon\Flash](Phalcon_Flash)
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/flash/session.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
 Se almacena temporalmente los mensajes en la sesión, luego se pueden imprimir los mensajes en la siguiente consulta
 
