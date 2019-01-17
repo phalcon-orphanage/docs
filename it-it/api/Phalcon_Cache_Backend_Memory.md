@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'it-it'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\Memory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memory'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/memory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
 
 Stores content in memory. Data is lost when the request is finished
 
