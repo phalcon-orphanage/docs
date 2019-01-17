@@ -6,7 +6,7 @@ title: 'Phalcon\EscaperInterface'
 ---
 # Interface **Phalcon\EscaperInterface**
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
 
 ## Methods
 

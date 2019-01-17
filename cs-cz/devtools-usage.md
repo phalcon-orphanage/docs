@@ -17,13 +17,13 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <a name='download'></a>
 
-## Download
+## Stažení
 
-You can download or clone a cross platform package containing the developer tools from [GitHub](https://github.com/phalcon/phalcon-devtools).
+You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## Instalace
 
 These are detailed instructions on how to install the developer tools on different platforms:
 

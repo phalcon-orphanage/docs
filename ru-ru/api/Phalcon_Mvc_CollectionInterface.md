@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\CollectionInterface**
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
 
 ## Methods
 

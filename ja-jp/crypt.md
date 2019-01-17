@@ -21,7 +21,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本的な使い方
 
 This component is designed be very simple to use:
 

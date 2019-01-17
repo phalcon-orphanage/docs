@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Pagination
+# Paginación
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
 <a name='data-adapters'></a>
 
-## Data Adapters
+## Adaptadores de datos
 
 This component makes use of adapters to encapsulate different sources of data:
 
@@ -54,7 +54,7 @@ $paginator = Factory::load($options);
 
 <a name='examples'></a>
 
-## Examples
+## Ejemplos
 
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
@@ -117,7 +117,7 @@ The `$page` object also contains navigation data:
 
 <a name='using-adapters'></a>
 
-## Using Adapters
+## Uso de adaptadores
 
 An example of the source data that must be used for each adapter:
 
@@ -169,7 +169,7 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Page Attributes
+## Atributos de Página
 
 The `$page` object has the following attributes:
 
@@ -185,7 +185,7 @@ The `$page` object has the following attributes:
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 

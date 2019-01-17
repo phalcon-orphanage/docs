@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\TransactionInterface'
 ---
 # Interface **Phalcon\Mvc\Model\TransactionInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transactioninterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transactioninterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

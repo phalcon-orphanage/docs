@@ -6,7 +6,7 @@ title: 'Phalcon\Translate\AdapterInterface'
 ---
 # Interface **Phalcon\Translate\AdapterInterface**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
 
 ## 方法
 

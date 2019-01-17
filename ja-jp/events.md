@@ -506,19 +506,19 @@ The events available in Phalcon are:
 | Model              | `onValidationFails`                  |
 | Model              | `prepareSave`                        |
 | Models Manager     | `modelsManager:afterInitialize`      |
-| Request            | `request:afterAuthorizationResolve`  |
-| Request            | `request:beforeAuthorizationResolve` |
+| リクエスト              | `request:afterAuthorizationResolve`  |
+| リクエスト              | `request:beforeAuthorizationResolve` |
 | Router             | `router:beforeCheckRoutes`           |
 | Router             | `router:beforeCheckRoute`            |
 | Router             | `router:matchedRoute`                |
 | Router             | `router:notMatchedRoute`             |
 | Router             | `router:afterCheckRoutes`            |
 | Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
+| ビュー                | `view:afterRender`                   |
+| ビュー                | `view:afterRenderView`               |
+| ビュー                | `view:beforeRender`                  |
+| ビュー                | `view:beforeRenderView`              |
+| ビュー                | `view:notFoundView`                  |
 | Volt               | `compileFilter`                      |
 | Volt               | `compileFunction`                    |
 | Volt               | `compileStatement`                   |

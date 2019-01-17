@@ -56,7 +56,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is v
 
 <a name='routing-setup'></a>
 
-### Setup
+### Konfiguracja
 
 Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/4.0/en/routing)]
 
@@ -984,7 +984,7 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# Zdarzenia
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1165,7 +1165,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Konfiguracja
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -1628,7 +1628,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Modele
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1698,7 +1698,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Widoki
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 

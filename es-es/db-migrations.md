@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Database Migrations
+# Migraciones de Bases de Datos
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -25,7 +25,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 <a name='chema-dumping'></a>
 
-## Schema Dumping
+## Volcado de esquema
 
 The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
 
@@ -47,7 +47,7 @@ By default [Phalcon Developer Tools](/4.0/en/devtools-usage) uses the `app/migra
 
 <a name='class-anatomy'></a>
 
-## Migration Class Anatomy
+## Anatomía de la clase de migración
 
 Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
 
@@ -157,7 +157,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 <a name='class-anatomy-columns'></a>
 
-### Defining Columns
+### Definición de columnas
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
@@ -196,13 +196,13 @@ Database migrations support the following database column types:
 
 <a name='class-anatomy-indexes'></a>
 
-### Defining Indexes
+### Definición de índices
 
 [Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 <a name='class-anatomy-references'></a>
 
-### Defining References
+### Definición de referencias
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
@@ -217,7 +217,7 @@ Database migrations support the following database column types:
 
 <a name='writing'></a>
 
-## Writing Migrations
+## Escribiendo migraciones
 
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/4.0/en/db).
 
@@ -249,7 +249,7 @@ class ProductsMigration_100 extends Migration
 
 <a name='running'></a>
 
-## Running Migrations
+## Ejecutando migraciones
 
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 

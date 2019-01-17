@@ -670,7 +670,7 @@ It is a good practice to not use serialization of the ACL during development, to
 
 <a name='events'></a>
 
-## Events
+## Γεγονότα
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 

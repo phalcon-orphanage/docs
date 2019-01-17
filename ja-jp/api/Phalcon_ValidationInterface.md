@@ -6,7 +6,7 @@ title: 'Phalcon\ValidationInterface'
 ---
 # Interface **Phalcon\ValidationInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
 
 ## メソッド
 

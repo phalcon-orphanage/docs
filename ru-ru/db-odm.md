@@ -25,7 +25,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Creating Models
+## Создание моделей
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -387,7 +387,7 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### Собщения об ошибках
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -576,7 +576,7 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### Проверка целостности данных
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. Специальное событие `validation` позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
 
@@ -629,7 +629,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Deleting Records
+## Удаление записей
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -690,7 +690,7 @@ foreach ($robots as $robot) {
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## События при ошибках валидации
 
 Another type of events is available when the data validation process finds any inconsistency:
 

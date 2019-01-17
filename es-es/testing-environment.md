@@ -1,13 +1,13 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 
 
 <a name='overview'></a>
 
-# Overview
+# Controladores
 
 Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir](https://zephir-lang.com), which has a very similar syntax to PHP or Javascript. In [2003](https://blog.phalconphp.com/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
 
@@ -31,7 +31,7 @@ Recently however, we have redoubled our efforts to create this environment and w
 
 <a name='installation'></a>
 
-# Installation
+# Instalación
 
 You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
 
@@ -383,7 +383,7 @@ For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-la
 
 <a name='services'></a>
 
-# Services
+# Servicios
 
 The available services are: - Beanstalkd - Memcached - Mongodb - Mysql - Postgresql - Redis
 

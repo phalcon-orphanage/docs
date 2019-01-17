@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
 
 ## Methods
 

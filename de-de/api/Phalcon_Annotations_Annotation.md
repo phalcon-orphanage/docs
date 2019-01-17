@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents a single annotation in an annotations collection
 

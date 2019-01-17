@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\MetaData\StrategyInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MetaData\StrategyInterface**
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
 
 ## Methods
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -27,6 +27,6 @@ Phalcon is loosely coupled, allowing developers to use only the objects that the
 
 <div class="alert alert-danger">
     <p>
-        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">GitHub</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
+        The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in <a href="https://github.com/phalcon/docs">Github</a> for English, and <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> for other languages
     </p>
 </div>

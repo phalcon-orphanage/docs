@@ -17,7 +17,7 @@ Views represent the user interface of your application. Views are often HTML fil
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Integrace pohledů s controllery
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 

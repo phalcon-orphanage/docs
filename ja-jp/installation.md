@@ -15,7 +15,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## ハードウェア
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -23,7 +23,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Software
+## ソフトウェア
 
 * PHP >= 5.5
 
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### Optional depending on the needs of your application
+### アプリケーションのニーズに応じた追加の依存
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -68,13 +68,13 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -84,7 +84,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### 追加のPPA
 
 #### Ondřej Surý
 
@@ -139,17 +139,17 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### RPM ベースのディストリビューション (CentOS、Fedora 等)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### リポジトリのインストール
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### 安定版
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -159,7 +159,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.s
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Nightly リリース
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Phalcon のインストール
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -193,7 +193,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### 追加のRPM
 
 ##### Remi
 
@@ -291,20 +291,20 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| アーキテクチャー | Version | Type           |
-|:--------:|:-------:| -------------- |
-|   x64    |   7.x   | スレッドセーフ        |
-|   x64    |   7.x   | 非スレッドセーフ (NTS) |
-|   x86    |   7.x   | スレッドセーフ        |
-|   x86    |   7.x   | 非スレッドセーフ (NTS) |
-|   x64    |   5.6   | スレッドセーフ        |
-|   x64    |   5.6   | 非スレッドセーフ (NTS) |
-|   x86    |   5.6   | スレッドセーフ        |
-|   x86    |   5.6   | 非スレッドセーフ (NTS) |
-|   x64    |   5.5   | スレッドセーフ        |
-|   x64    |   5.5   | 非スレッドセーフ (NTS) |
-|   x86    |   5.5   | スレッドセーフ        |
-|   x86    |   5.5   | 非スレッドセーフ (NTS) |
+| アーキテクチャー | バージョン | Type           |
+|:--------:|:-----:| -------------- |
+|   x64    |  7.x  | スレッドセーフ        |
+|   x64    |  7.x  | 非スレッドセーフ (NTS) |
+|   x86    |  7.x  | スレッドセーフ        |
+|   x86    |  7.x  | 非スレッドセーフ (NTS) |
+|   x64    |  5.6  | スレッドセーフ        |
+|   x64    |  5.6  | 非スレッドセーフ (NTS) |
+|   x86    |  5.6  | スレッドセーフ        |
+|   x86    |  5.6  | 非スレッドセーフ (NTS) |
+|   x64    |  5.5  | スレッドセーフ        |
+|   x64    |  5.5  | 非スレッドセーフ (NTS) |
+|   x86    |  5.5  | スレッドセーフ        |
+|   x86    |  5.5  | 非スレッドセーフ (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -316,7 +316,7 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 
-## Compile from Sources
+## ソースコードからコンパイル
 
 Compiling from source is similar to most environments (Linux/macOS).
 
@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Phalconのコンパイル
 
-We first need to clone Phalcon from the GitHub repository
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -383,7 +383,7 @@ extension=phalcon.so
 
 <a name='installation-sources-advanced'></a>
 
-## Advanced Compilation
+## 高度なコンパイル
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 

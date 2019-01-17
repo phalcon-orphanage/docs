@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Security\Random'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Security\Random'
+
+* * *
+
 # Class **Phalcon\Security\Random**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/security/random.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Secure random number generator class.
 

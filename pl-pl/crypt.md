@@ -267,7 +267,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Linki
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)

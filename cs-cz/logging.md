@@ -148,7 +148,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## Transakce
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -367,6 +367,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### Implementace vlastních adaptérů
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.

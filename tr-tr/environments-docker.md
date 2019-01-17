@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Genel Bakış
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 

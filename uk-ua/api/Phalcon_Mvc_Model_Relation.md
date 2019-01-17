@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Relation'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Relation'
 
 *implements* [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/relation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class represents a relationship between two models
 

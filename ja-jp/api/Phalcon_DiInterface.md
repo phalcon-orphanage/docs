@@ -8,7 +8,7 @@ title: 'Phalcon\DiInterface'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
 ## メソッド
 

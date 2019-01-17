@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\StringLength'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\StringLength'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/stringlength.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Validates that a string has the specified maximum and minimum constraints The test is passed if for a string's length L, min<=L<=max, i.e. L must be at least min, and at most max.
 

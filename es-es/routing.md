@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Routing
+# Ruteo
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
 <a name='defining'></a>
 
-## Defining Routes
+## Definición de rutas
 
 [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
 
@@ -106,7 +106,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Marcador       | Expresión regular        | Usage                                                                                                  |
+| Marcador       | Expresión regular        | Uso                                                                                                    |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de módulo válido con caracteres alfanuméricos únicamente                        |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de controlador válido con caracteres alfanuméricos únicamente                   |
@@ -121,7 +121,7 @@ Since you can add many routes as you need using the `add()` method, the order in
 
 <a name='defining-named-parameters'></a>
 
-### Parameters with Names
+### Parámetros con nombres
 
 The example below demonstrates how to define names to route parameters:
 
@@ -209,7 +209,7 @@ class DocumentationController extends Controller
 
 <a name='defining-short-syntax'></a>
 
-### Short Syntax
+### Sintaxis corta
 
 If you don't like using an array to define the route paths, an alternative syntax is also available. The following examples produce the same result:
 
@@ -236,7 +236,7 @@ $router->add(
 
 <a name='defining-mixed-parameters'></a>
 
-### Mixing Array and Short Syntax
+### Mezcla de array y sintaxis corta
 
 Array and short syntax can be mixed to define a route, in this case note that named parameters automatically are added to the route paths according to the position on which they were defined:
 
@@ -256,7 +256,7 @@ $router->add(
 
 <a name='defining-route-to-modules'></a>
 
-### Routing to Modules
+### Enrutamiento a los módulos
 
 You can define routes whose paths include modules. This is specially suitable to multi-module applications. It's possible define a default route that includes a module wildcard:
 
@@ -340,7 +340,7 @@ $router->add(
 
 <a name='defining-http-method-restrictions'></a>
 
-### HTTP Method Restrictions
+### Restricciones del método HTTP
 
 When you add a route using simply `add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method, this is especially useful when creating RESTful applications:
 
@@ -373,7 +373,7 @@ $router->add(
 
 <a name='defining-using-conversors'></a>
 
-### Using conversors
+### Utilizando conversores
 
 Conversors allow you to freely transform the route's parameters before passing them to the dispatcher. The following examples show how to use them:
 
@@ -424,7 +424,7 @@ $route->convert(
 
 <a name='defining-groups-of-routes'></a>
 
-### Groups of Routes
+### Grupos de rutas
 
 If a set of routes have common paths they can be grouped to easily maintain them:
 
@@ -539,7 +539,7 @@ $router->mount(
 
 <a name='matching'></a>
 
-## Matching Routes
+## Rutas coincidentes
 
 A valid URI must be passed to the Router so that it can process it and find a matching route. By default, the routing URI is taken from the `$_GET['_url']` variable that is created by the rewrite engine module. A couple of rewrite rules that work very well with Phalcon are:
 
@@ -581,7 +581,7 @@ $route = $router->getMatchedRoute();
 
 <a name='naming'></a>
 
-## Naming Routes
+## Nombres de rutas
 
 Each route that is added to the router is stored internally as a [Phalcon\Mvc\Router\Route](api/Phalcon_Mvc_Router_Route) object. That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application. This is especially useful if you want to create URLs from it.
 
@@ -613,7 +613,7 @@ echo $url->get(
 
 <a name='usage'></a>
 
-## Usage Examples
+## Ejemplos de Uso
 
 The following are examples of custom routes:
 
@@ -703,7 +703,7 @@ $router->add(
 
 <a name='default-behavior'></a>
 
-## Default Behavior
+## Comportamiento predeterminado
 
 [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
 
@@ -726,7 +726,7 @@ $router = new Router(false);
 
 <a name='default-route'></a>
 
-## Setting the default route
+## Establecer la ruta por defecto
 
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
 
@@ -744,7 +744,7 @@ $router->add(
 
 <a name='not-found-paths'></a>
 
-## Not Found Paths
+## Rutas no encontradas
 
 If none of the routes specified in the router are matched, you can define a group of paths to be used in this scenario:
 
@@ -766,7 +766,7 @@ This is typically for an Error 404 page.
 
 <a name='default-paths'></a>
 
-## Setting default paths
+## Configurar rutas por defecto
 
 It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:
 
@@ -790,7 +790,7 @@ $router->setDefaults(
 
 <a name='extra-slashes'></a>
 
-## Dealing with extra/trailing slashes
+## Tratar con barras extra o finales
 
 Sometimes a route could be accessed with extra/trailing slashes. Those extra slashes would lead to produce a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
 
@@ -822,7 +822,7 @@ $router->add(
 
 <a name='callbacks'></a>
 
-## Match Callbacks
+## Coincidencias por llamada de retorno
 
 Sometimes, routes should only be matched if they meet specific conditions. You can add arbitrary conditions to routes using the `beforeMatch()` callback. If this function return `false`, the route will be treated as non-matched:
 
@@ -914,7 +914,7 @@ $route->beforeMatch(
 
 <a name='hostname-constraints'></a>
 
-## Hostname Constraints
+## Restricciones de nombre de host
 
 The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted to only match if the route also meets the hostname constraint:
 
@@ -1001,7 +1001,7 @@ $router->mount($blog);
 
 <a name='uri-sources'></a>
 
-## URI Sources
+## Fuentes URI
 
 By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
 
@@ -1035,7 +1035,7 @@ $router->handle('/some/route/to/handle');
 
 <a name='testing'></a>
 
-## Testing your routes
+## Probando tus rutas
 
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
@@ -1081,7 +1081,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## Eventos
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
@@ -1096,7 +1096,7 @@ Like many other components, routers also have events. None of the events can sto
 
 <a name='annotations'></a>
 
-## Annotations Router
+## Anotaciones de Router
 
 This component provides a variant that's integrated with the [annotations](/4.0/en/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
@@ -1182,7 +1182,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Nombre      | Descripción                                                                                       | Usage                                  |
+| Nombre      | Descripción                                                                                       | Uso                                    |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1194,7 +1194,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Nombre     | Descripción                                                         | Usage                                                                |
+| Nombre     | Descripción                                                         | Uso                                                                  |
 | ---------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define uno o más métodos HTTP que la ruta debe cumplir              | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define el nombre de la ruta                                         | `@Route('/api/products', name='get-products')`                       |
@@ -1221,7 +1221,7 @@ $di['router'] = function () {
 
 <a name='registration'></a>
 
-## Registering Router instance
+## Registro de instancia de Router
 
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
@@ -1273,6 +1273,6 @@ return $router;
 
 <a name='custom'></a>
 
-## Implementing your own Router
+## Implementar tu propio Router
 
 The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.

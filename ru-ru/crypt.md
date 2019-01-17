@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Шифрование/дешифрование
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -21,7 +21,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Basic Usage
+## Базовое использование
 
 This component is designed be very simple to use:
 
@@ -145,7 +145,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## Настройки шифрования
 
 The following options are available to change the encryption behavior:
 
@@ -191,7 +191,7 @@ var_dump($algorithms);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Поддержка base64
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -214,7 +214,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## Настройка сервиса шифрования
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -267,7 +267,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Ссылки
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [Что такое блочный шифр](https://en.wikipedia.org/wiki/Block_cipher)

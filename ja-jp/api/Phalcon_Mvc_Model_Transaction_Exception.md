@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
 
 ## メソッド
 

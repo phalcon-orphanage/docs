@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Using Views
+# ビューの使用
 
 ビューはアプリケーションのユーザインタフェースを表します。 ビューは、多くの場合にデータの表示のみに関連するタスクを実行する、埋め込みの PHP コードを含む HTML ファイルです。 ビューは、ウェブブラウザやその他のツールにデータを提供するための、アプリケーションからの要求を処理します。
 
@@ -17,7 +17,7 @@ version: '4.0'
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## コントローラーとビューの統合
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 

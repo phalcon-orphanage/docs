@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
 
 このインターフェースは、Phalcon\Annotationsのアダプターで実装されなければなりません。
 

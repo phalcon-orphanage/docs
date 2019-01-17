@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Mvc\Micro\Collection'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\Collection'
 
 *implements* [Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/micro/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Groups Micro-Mvc handlers as controllers
 

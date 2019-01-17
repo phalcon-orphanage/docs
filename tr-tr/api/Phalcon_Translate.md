@@ -1,9 +1,9 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Translate'
 ---
 # Abstract class **Phalcon\Translate**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate.zep" class="btn btn-default btn-sm">Source on GitHub</a>

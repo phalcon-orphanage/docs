@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\Behavior'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection/behavior.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is an optional base class for ORM behaviors
 

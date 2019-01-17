@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Cli\Router\RouteInterface'
 ---
 # Interface **Phalcon\Cli\Router\RouteInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
 ## Métodos
 

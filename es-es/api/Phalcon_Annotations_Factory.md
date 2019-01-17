@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
 
 Clase de adaptador de anotaciones de cargas usando la opción 'adapter'
 

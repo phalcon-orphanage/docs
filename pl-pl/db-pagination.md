@@ -27,7 +27,7 @@ This component makes use of adapters to encapsulate different sources of data:
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
 Loads Paginator Adapter class using `adapter` option
 

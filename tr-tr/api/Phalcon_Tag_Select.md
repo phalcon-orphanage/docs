@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Tag\Select'
 ---
 # Abstract class **Phalcon\Tag\Select**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/tag/select.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
 

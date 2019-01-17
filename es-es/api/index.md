@@ -1,9 +1,9 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
-title: 'API Index'
+title: 'Índice del API'
 ---
-## API Index
+## Índice del API
 
 {% for apiPage in site.pages %} {% assign stub = apiPage.name | slice: 0, 8 %} {% if "Phalcon_" == stub %} {% assign linkUrl = apiPage.name | replace: '', '' %} {% assign linkName = linkUrl | replace: '_', '\' %} * [{{ linkName }}](/{{ apiPage.version }}/{{ apiPage.language }}/api/{{ linkUrl }}) {% endif %} {% endfor %}

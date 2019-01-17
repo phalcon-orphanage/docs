@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Acl\Operation'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\Operation'
 
 **implements**{:.language-php .highlighter-rouge .highligter .hljs-keyword} [Phalcon\Acl\OperationInterface](Phalcon_Acl_OperationInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operation.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operation.zep)
 
 This class defines a subject entity and its description
 
@@ -41,3 +41,5 @@ public __toString(): string
 ```
 
 Operation name
+
+* * *

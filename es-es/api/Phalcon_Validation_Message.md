@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Validation\Message'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Message'
 
 *implements* [Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
 
 Encapsula información de validación generado en el proceso de validación
 

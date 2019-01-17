@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Images
+# Obrazki
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
@@ -26,7 +26,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Fabryka
 
 Loads an Image Adapter class using `adapter` option.
 

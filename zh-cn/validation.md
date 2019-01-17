@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validation
+# 验证
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -64,7 +64,7 @@ The loosely-coupled design of this component allows you to create your own valid
 
 <a name='initializing'></a>
 
-## Initializing Validation
+## 初始化验证
 
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
@@ -127,7 +127,7 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## 验证程序
 
 Phalcon exposes a set of built-in validators for this component:
 
@@ -198,7 +198,7 @@ It is important that validators return a valid boolean value indicating if the v
 
 <a name='callback'></a>
 
-## Callback Validator
+## 回调验证程序
 
 By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
@@ -318,7 +318,7 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtering of Data
+## 数据过滤
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -356,7 +356,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 <a name='events'></a>
 
-## Validation Events
+## 验证事件
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
@@ -409,7 +409,7 @@ class LoginValidation extends Validation
 
 <a name='cancelling'></a>
 
-## Cancelling Validations
+## 取消验证
 
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
@@ -487,7 +487,7 @@ class MyValidator extends Validator
 
 <a name='empty-values'></a>
 
-## Avoid validating empty values
+## 避免验证空值
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
@@ -513,7 +513,7 @@ $validation->add(
 
 <a name='recursive'></a>
 
-## Recursive Validation
+## 递归验证
 
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 

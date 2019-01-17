@@ -1,16 +1,16 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Registry'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Registry'
+
+* * *
+
 # Final class **Phalcon\Registry**
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/registry.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
-A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
+Un registro es un contenedor para almacenar objetos y valores en el espacio de la aplicación. Al almacenar el valor en un registro, el mismo objeto siempre está disponible en todo su aplicación.
 
 ```php
 <?php

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Strategy\Introspection'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Strategy\Introspection'
 
 *implements* [Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/metadata/strategy/introspection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Queries the table meta-data in order to introspect the model's metadata
 

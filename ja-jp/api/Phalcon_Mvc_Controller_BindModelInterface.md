@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Controller\BindModelInterface'
 ---
 # Interface **Phalcon\Mvc\Controller\BindModelInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
 
 ## メソッド
 

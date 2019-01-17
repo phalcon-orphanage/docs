@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
@@ -47,7 +47,7 @@ $logger = Factory::load($options);
 
 <a name='creating'></a>
 
-## Creating a Log
+## Creación de un Log
 
 The example below shows how to create a log and add messages to it:
 
@@ -148,7 +148,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## Transacciones
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -178,7 +178,7 @@ $logger->commit();
 
 <a name='multiple-handlers'></a>
 
-## Logging to Multiple Handlers
+## Registro de múltiples gestores
 
 [Phalcon\Logger](api/Phalcon_Logger) can send messages to multiple handlers with a just single call:
 
@@ -218,7 +218,7 @@ The messages are sent to the handlers in the order they were registered.
 
 <a name='message-formatting'></a>
 
-## Message Formatting
+## Formato de mensaje
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
@@ -231,7 +231,7 @@ This component makes use of `formatters` to format messages before sending them 
 
 <a name='message-formatting-line'></a>
 
-### Line Formatter
+### Formateador de línea
 
 Formats the messages using a one-line string. The default logging format is:
 
@@ -262,13 +262,13 @@ $logger->setFormatter($formatter);
 
 <a name='message-formatting-custom'></a>
 
-### Implementing your own formatters
+### Implementar tus propios formateadores
 
 The [Phalcon\Logger\FormatterInterface](api/Phalcon_Logger_FormatterInterface) interface must be implemented in order to create your own logger formatter or extend the existing ones.
 
 <a name='usage'></a>
 
-## Adapters
+## Adaptadores
 
 The following examples show the basic use of each adapter:
 
@@ -364,6 +364,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### Implementando sus propios adaptadores
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.

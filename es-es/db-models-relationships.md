@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,29 +9,29 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Relationships
+# Relaciones de modelos
 
 <a name='relationships'></a>
 
-## Relationships between Models
+## Relaciones entre modelos
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### Relaciones unidireccionales
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### Relaciones bidireccionales
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### Defining relationships
+### Definiendo las relaciones
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
@@ -311,7 +311,7 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### Aprovechando las relaciones
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -456,7 +456,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### Relaciones con alias
 
 To explain better how aliases work, let's check the following example:
 
@@ -700,7 +700,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Claves externas virtuales
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -803,7 +803,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### Acciones en cascada o restringidas
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -841,7 +841,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## Almacenamiento de registros relacionados
 
 Magic properties can be used to store a record and its related properties:
 
@@ -912,7 +912,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## Operaciones sobre conjuntos de resultados
 
 If a resultset is composed of complete objects, model operations can be performed on those objects. Por ejemplo:
 
@@ -938,7 +938,7 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### Actualización de registros relacionados
 
 Instead of doing this:
 
@@ -1001,7 +1001,7 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### Eliminar registros relacionados
 
 Instead of doing this:
 

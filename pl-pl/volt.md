@@ -273,7 +273,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filters
+## Filtry
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -764,7 +764,7 @@ The following literals are supported:
 
 <a name='expressions-arrays'></a>
 
-### Arrays
+### Tablice
 
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -795,7 +795,7 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### Math
+### Matematyka
 
 You may make calculations in templates using the following operators:
 
@@ -827,7 +827,7 @@ The following comparison operators are available:
 
 <a name='expressions-logic'></a>
 
-### Logic
+### Logika
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -872,7 +872,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## Tests
+## Testy
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -954,7 +954,7 @@ More examples:
 
 <a name='macros'></a>
 
-## Macros
+## Makra
 
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
@@ -1152,7 +1152,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Include
+### Dołączanie
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1445,7 +1445,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filters
+### Filtry
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1624,7 +1624,7 @@ require $compiler->getCompiledTemplatePath();
 ## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [GitHub](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [GitHub](https://github.com/phalcon/vokuro)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
+* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)

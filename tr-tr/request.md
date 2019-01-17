@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -179,7 +179,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## Events
+## Olaylar
 
 When using HTTP authorization, the `Authorization` header has the following format:
 

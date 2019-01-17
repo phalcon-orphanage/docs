@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Generating URLs and Paths
+# Generando Direcciones URL y Rutas
 
 [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
 <a name='base-uri'></a>
 
-## Setting a base URI
+## Configuración de un URI base
 
 Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
@@ -71,7 +71,7 @@ $di->set(
 
 <a name='generating-uri'></a>
 
-## Generating URIs
+## Generando URIs
 
 If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern:
 
@@ -117,7 +117,7 @@ $url->get(
 
 <a name='urls-without-mod-rewrite'></a>
 
-## Producing URLs without mod_rewrite
+## Produciendo URLs sin mod_rewrite
 
 You can use this component also to create URLs without mod_rewrite:
 
@@ -178,7 +178,7 @@ echo $url->get('products/save');
 
 <a name='urls-from-volt'></a>
 
-## Producing URLs from Volt
+## Produciendo URLs desde Volt
 
 The function `url` is available in volt to generate URLs using this component:
 
@@ -220,6 +220,6 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 <a name='custom-url'></a>
 
-## Implementing your own URL Generator
+## Implementando tu Propio Generador de URLs
 
 The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Введение
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -17,7 +17,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Requirements
+## Требования
 
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -55,11 +55,11 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
 <a name='installation-vagrant-box'></a>
 
-### Installing the Vagrant Box
+### Установка Vagrant Box
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -75,7 +75,7 @@ If this command fails, make sure your Vagrant installation is up to date.
 
 <a name='installation-phalcon-box'></a>
 
-### Installing the Phalcon Box
+### Установка Phalcon Box
 
 You can install Phalcon Box by simply cloning the repository. Consider cloning the repository into a `workspace` folder within your `home` directory, as the Phalcon Box box will serve as the host to all of your Phalcon projects:
 
@@ -86,7 +86,7 @@ git clone https://github.com/phalcon/box.git workspace
 
 The `master` branch will always contain the latest stable version of Phalcon Box. If you wish to check older versions or newer ones currently under development, please switch to the relevant branch/tag.
 
-You can find the latest stable version on the [GitHub Release Page](https://github.com/phalcon/box/releases):
+You can find the latest stable version on the [Github Release Page](https://github.com/phalcon/box/releases):
 
 ```bash
 # Clone the desired release...
@@ -113,7 +113,7 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Configuring
+## Настройка
 
 <a name='installation-configuration-setting-provider'></a>
 
@@ -398,7 +398,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='daily-usage-environment-variables'></a>
 
-### Environment variables
+### Переменные окружения
 
 <a name='daily-usage-environment-global-variables'></a>
 
@@ -592,7 +592,7 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Устранение неполадок
 
 **Problem:**
 

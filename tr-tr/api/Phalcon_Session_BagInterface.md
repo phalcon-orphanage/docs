@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Session\BagInterface'
 ---
 # Interface **Phalcon\Session\BagInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/baginterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/baginterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

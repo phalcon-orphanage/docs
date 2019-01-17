@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Session\AdapterInterface'
----
+* * *
+
+layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Session\AdapterInterface'
+
+* * *
+
 # Interface **Phalcon\Session\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

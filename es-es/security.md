@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Security
+# Seguridad
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## Hashing de contraseñas
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](https://php.net/manual/en/function.md5.php)' and '[sha1](https://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -86,7 +86,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 <a name='csrf'></a>
 
-## Cross-Site Request Forgery (CSRF) protection
+## Protección de Falsificación de Petición en Sitios Cruzados (CSRF)
 
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
@@ -144,7 +144,7 @@ Adding a [captcha](https://www.google.com/recaptcha) to the form is also recomme
 
 <a name='setup'></a>
 
-## Setting up the component
+## Configurar el componente
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -169,7 +169,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## Aleatorio
 
 The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
 
@@ -202,6 +202,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## External Resources
+## Recursos externos
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)
+* [Vökuró](https://vokuro.phalconphp.com), es una aplicación de ejemplo que utiliza el componente de seguridad para evitar CSRF y contraseña hash, [Código fuente en Github](https://github.com/phalcon/vokuro)

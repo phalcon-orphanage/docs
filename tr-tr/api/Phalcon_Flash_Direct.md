@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Flash\Direct'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Flash\Direct'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/flash/direct.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 

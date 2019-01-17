@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Compile Phalcon
 
-We first need to clone Phalcon from the GitHub repository
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon

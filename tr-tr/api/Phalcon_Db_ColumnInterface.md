@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Db\ColumnInterface'
----
+* * *
+
+layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Db\ColumnInterface'
+
+* * *
+
 # Interface **Phalcon\Db\ColumnInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/columninterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

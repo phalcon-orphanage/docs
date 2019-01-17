@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Forms
+# Formularze
 
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
@@ -697,4 +697,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]

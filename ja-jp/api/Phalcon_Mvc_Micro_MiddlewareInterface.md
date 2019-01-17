@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Micro\MiddlewareInterface'
 ---
 # Interface **Phalcon\Mvc\Micro\MiddlewareInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/middlewareinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/middlewareinterface.zep)
 
 ## メソッド
 

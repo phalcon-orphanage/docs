@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Digit'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Digit'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/digit.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/digit.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Check for numeric character(s)
 

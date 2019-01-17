@@ -8,7 +8,7 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
 ## 方法
 

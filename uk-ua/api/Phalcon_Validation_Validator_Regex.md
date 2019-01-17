@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Regex'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Regex'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/regex.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows validate if the value of a field matches a regular expression
 

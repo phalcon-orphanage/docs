@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Working with Namespaces
+# Trabajando con Espacios de Nombres
 
 [Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
 <a name='setting-up'></a>
 
-## Setting up the framework
+## Configurando el framework
 
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
@@ -86,7 +86,7 @@ $di->set(
 
 <a name='controllers'></a>
 
-## Controllers in Namespaces
+## Controladores en espacios de nombres
 
 The following example shows how to implement a controller that use namespaces:
 
@@ -113,7 +113,7 @@ class UsersController extends Controller
 
 <a name='models'></a>
 
-## Models in Namespaces
+## Modelos en Espacios de Nombres
 
 Take the following into consideration when using models in namespaces:
 

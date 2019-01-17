@@ -15,7 +15,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## 硬件
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Compile Phalcon
 
-We first need to clone Phalcon from the GitHub repository
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon

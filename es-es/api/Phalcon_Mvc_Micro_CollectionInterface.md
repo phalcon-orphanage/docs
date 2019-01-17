@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Micro\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\Micro\CollectionInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/micro/collectioninterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

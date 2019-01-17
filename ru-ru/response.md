@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Returning Responses
+# Возврат ответов
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -92,7 +92,7 @@ $contentType = $headers->get('Content-Type');
 
 <a name='redirections'></a>
 
-## Making Redirections
+## Создание перенаправлений
 
 With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
@@ -131,7 +131,7 @@ Even if there is a view associated with the current action, it will not be rende
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## HTTP-кэш
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
@@ -144,7 +144,7 @@ HTTP Cache can be altered in the following header values sent by the application
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### Expires
 
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 

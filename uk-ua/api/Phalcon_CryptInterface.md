@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\CryptInterface'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\CryptInterface'
+
+* * *
+
 # Interface **Phalcon\CryptInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cryptinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

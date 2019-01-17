@@ -6,7 +6,7 @@ title: 'Phalcon\Acl'
 ---
 # Abstract class **Phalcon\Acl**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl.zep)
 
 ## 定数
 

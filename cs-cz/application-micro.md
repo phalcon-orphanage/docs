@@ -32,7 +32,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Vytvoření mikro-aplikace
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -46,7 +46,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Routování
 
 Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is very easy. Routes are defined as follows:
 

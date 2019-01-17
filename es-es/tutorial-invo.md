@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -11,13 +11,13 @@ version: '4.0'
 
 # Tutorial: INVO
 
-In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [GitHub](https://github.com/phalcon/invo).
+In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
 
 INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
 
 <a name='structure'></a>
 
-## Project Structure
+## Estructura del proyecto
 
 Una vez clonado el proyecto en la raíz de tu documento, podrá ver la siguiente estructura:
 
@@ -52,7 +52,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 <a name='routing'></a>
 
-## Routing
+## Ruteo
 
 INVO uses the standard route that is built-in with the [Router](/4.0/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
@@ -60,7 +60,7 @@ The following route `/session/register` executes the controller `SessionControll
 
 <a name='configuration'></a>
 
-## Configuration
+## Configuración
 
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 
@@ -101,7 +101,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## Cargadores automáticos
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 
@@ -150,7 +150,7 @@ define(
 
 <a name='services'></a>
 
-## Registering services
+## Registro de servicios
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -193,7 +193,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 
-## Handling the Request
+## Gestionando la solicitud
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
 
@@ -213,7 +213,7 @@ $response->send();
 
 <a name='dependency-injection'></a>
 
-## Dependency Injection
+## Inyección de Dependencias
 
 In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is [Phalcon\Di](api/Phalcon_Di). It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
@@ -261,7 +261,7 @@ It registers the majority of services with components provided by the framework 
 
 <a name='log-in'></a>
 
-## Log into the Application
+## Inicie sesión en la aplicación
 
 A `log in` facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones is only logical. All controllers are located in the same directory (`app/controllers/`).
 
@@ -493,7 +493,7 @@ return $this->dispatcher->forward(
 
 <a name='securing-backend'></a>
 
-## Securing the Backend
+## Asegurando el backend
 
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
 
@@ -531,7 +531,7 @@ We now have total control over the Dispatcher used in the application. Many comp
 
 <a name='events-manager'></a>
 
-### Events Management
+### Gestión de Eventos
 
 The [EventsManager](/4.0/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
@@ -676,7 +676,7 @@ class SecurityPlugin extends Plugin
 
 <a name='acl'></a>
 
-### Getting the ACL list
+### Obteniendo la lista ACL
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
@@ -779,7 +779,7 @@ foreach ($privateResources as $resource => $actions) {
 
 <a name='working-with-crud'></a>
 
-## Working with the CRUD
+## Trabajando con el CRUD
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
@@ -870,7 +870,7 @@ class ProductsController extends ControllerBase
 
 <a name='search-form'></a>
 
-## The Search Form
+## Formulario de búsqueda
 
 Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
@@ -1136,7 +1136,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 <a name='performing-searches'></a>
 
-## Performing a Search
+## Realizando una búsqueda
 
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/4.0/en/request) component:
 
@@ -1462,7 +1462,7 @@ This method is defined in the model.
 
 <a name='creating-updating-records'></a>
 
-## Creating and Updating Records
+## Creación y actualización de registros
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
 
@@ -1721,7 +1721,7 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## Componentes de usuario
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
@@ -1802,7 +1802,7 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Changing the Title Dynamically
+## Cambiando dinámicamente el título
 
 When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
 

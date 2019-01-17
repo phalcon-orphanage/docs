@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Cli\Console\Exception'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Console\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console/exception.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console/exception.zep)
 
 ## Methods
 

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='requirements'></a>
 
-# Requirements
+# Requerimentos
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### Optional depending on the needs of your application
+### Opcional, dependiendo de las necesidades de su aplicación
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -52,7 +52,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Installation
+# Instalación
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -68,13 +68,13 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Instalación desde el repositorio
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### Versiones estables
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -84,7 +84,7 @@ o
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Versiones nocturnas
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Instalación de Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### PPAs adicionales
 
 #### Ondřej Surý
 
@@ -139,17 +139,17 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### Distribuciones basadas en RPM (CentOS, Fedora, etc.)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### Instalación desde el repositorio
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### Versiones estables
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -159,7 +159,7 @@ o
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Versiones nocturnas
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Instalación de Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -193,7 +193,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### RPMs adicionales
 
 ##### Remi
 
@@ -241,7 +241,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Requerimentos
 
 * Recursos para el desarrollo PHP 5.5.x/5.6.x/7.0.x/7.1.x
 * XCode
@@ -291,7 +291,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Arquitectura | Version | Tipo                  |
+| Arquitectura | Versión | Tipo                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |
@@ -316,11 +316,11 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 
-## Compile from Sources
+## Compilar desde código fuente
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Requirements
+### Requerimentos
 
 * Recursos para el desarrollo PHP 5.5.x/5.6.x/7.0.x/7.1.x
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Compilar Phalcon
 
-We first need to clone Phalcon from the GitHub repository
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -383,7 +383,7 @@ extension=phalcon.so
 
 <a name='installation-sources-advanced'></a>
 
-## Advanced Compilation
+## Compilación avanzada
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 

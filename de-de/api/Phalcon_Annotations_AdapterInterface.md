@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This interface must be implemented by adapters in Phalcon\Annotations
 

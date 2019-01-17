@@ -8,7 +8,7 @@ title: 'Phalcon\Session\Adapter'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
 
 Base class for Phalcon\Session adapters
 

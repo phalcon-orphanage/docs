@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\CreditCard'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\CreditCard'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/creditcard.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Checks if a value has a valid credit card number
 

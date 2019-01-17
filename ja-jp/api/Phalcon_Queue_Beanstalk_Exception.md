@@ -10,7 +10,7 @@ title: 'Phalcon\Queue\Beanstalk\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/exception.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/exception.zep)
 
 ## メソッド
 

@@ -1,14 +1,14 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Security'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Security'
+
+* * *
+
 # Class **Phalcon\Security**
 
-*implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/security.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Este componente provee un conjunto de funciones para mejorar la seguridad en aplicaciones Phalcon
 
@@ -64,7 +64,7 @@ public **__construct** ()
 
 Phalcon\Security constructor
 
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 

@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\OperationAware'
 ---
 # Interface **Phalcon\Acl\OperationAware**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationaware.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationaware.zep)
 
 ## メソッド
 

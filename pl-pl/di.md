@@ -406,7 +406,7 @@ As seen before, there are several ways to register services. These we call simpl
 
 <a name='simple-registration-string'></a>
 
-#### String
+#### Ciąg tekstu
 
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -966,7 +966,7 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Events
+### Zdarzenia
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 

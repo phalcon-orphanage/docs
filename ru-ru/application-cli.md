@@ -15,7 +15,7 @@ CLI applications are executed from the command line. They are useful to create c
 
 <a name='structure'></a>
 
-## Structure
+## Структура
 
 A minimal structure of a CLI application will look like this:
 
@@ -25,7 +25,7 @@ A minimal structure of a CLI application will look like this:
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Создание загрузочного файла
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
@@ -109,7 +109,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Задачи
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -131,7 +131,7 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Обработка параметров
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -176,7 +176,7 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Запуск цепочки команд
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 

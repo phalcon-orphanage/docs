@@ -6,7 +6,7 @@ title: 'Phalcon\Filter\UserFilterInterface'
 ---
 # Interface **Phalcon\Filter\UserFilterInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
 
 ## メソッド
 

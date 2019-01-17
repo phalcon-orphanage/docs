@@ -28,7 +28,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Fabryka
 
 Loads Logger Adapter class using `adapter` option
 

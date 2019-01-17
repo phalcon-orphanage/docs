@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# 加密/解密
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -145,7 +145,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## 加密选项
 
 The following options are available to change the encryption behavior:
 
@@ -191,7 +191,7 @@ var_dump($algorithms);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Base64 支持
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -214,7 +214,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## 设置加密服务
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -267,7 +267,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## 链接
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)

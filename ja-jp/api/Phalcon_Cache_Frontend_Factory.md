@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
 アダプターオプションを使用してFrontend Cache Adapterクラスをロードします
 

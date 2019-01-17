@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Version'
 ---
 # Class **Phalcon\Version**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/version.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Bu sınıf, çerçevenin yüklü sürümünün elde edilmesine olanak sunar.
 

@@ -32,7 +32,7 @@ if ($request->isPost()) {
 
 <a name='getting-values'></a>
 
-## Getting Values
+## 値の取得
 
 PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
@@ -63,7 +63,7 @@ $email = $request->getPost('user_email', null, 'some@example.com');
 
 <a name='controller-access'></a>
 
-## Accessing the Request from Controllers
+## コントローラからリクエストへのアクセス
 
 The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
 
@@ -93,7 +93,7 @@ class PostsController extends Controller
 
 <a name='uploading-files'></a>
 
-## Uploading Files
+## ファイルのアップロード
 
 Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way to achieve this task:
 
@@ -129,7 +129,7 @@ Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instanc
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## HTTPヘッダの利用
 
 As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
 
@@ -190,7 +190,7 @@ Authorization: <type> <credentials>
 where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
 
 * `AWS4-HMAC-SHA256`
-* `Basic`
+* `基本`
 * `Bearer`
 * `Digest`
 * `HOBA`

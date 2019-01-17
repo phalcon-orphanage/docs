@@ -6,7 +6,7 @@ title: 'Phalcon\Http\Request\FileInterface'
 ---
 # Interface **Phalcon\Http\Request\FileInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
 
 ## メソッド
 

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Přehled
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -17,7 +17,7 @@ In this post, we'll walk through getting a brand new Phalcon app up and running 
 
 <a name='create-project'></a>
 
-## Create a New Project
+## Vytvoření nového projektu
 
 Create a project folder and `cd` into it:
 

@@ -15,7 +15,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 <a name='requirements'></a>
 
-## Requirements
+## Požadavky
 
 - MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 - Store data in a database (MariaDB/MySQL)

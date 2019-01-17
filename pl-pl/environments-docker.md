@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Przegląd
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
@@ -94,7 +94,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 <a name='usage'></a>
 
-## Usage
+## Sposób użycia
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
@@ -119,18 +119,18 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 <a name='setup'></a>
 
-## Set up
+## Konfiguracja
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | Directory | Ścieżka          |
 | --------- | ---------------- |
 | Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Logi      | `/project/log`   |
 
 <a name='logs'></a>
 
-## Logs
+## Logi
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 

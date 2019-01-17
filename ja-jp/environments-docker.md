@@ -21,7 +21,7 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 <a name='services'></a>
 
-## Services
+## サービス
 
 Services included are:
 
@@ -119,30 +119,30 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 <a name='setup'></a>
 
-## Set up
+## 設定
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | Directory | Path             |
 | --------- | ---------------- |
 | Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| ログ        | `/project/log`   |
 
 <a name='logs'></a>
 
-## Logs
+## ログ
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
-## Environment variables
+## 環境変数
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
-### Web environment
+### Web 環境
 
 | Environment variable | Description                                         | デフォルト           |
 | -------------------- | --------------------------------------------------- | --------------- |
@@ -156,7 +156,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='environment-variables-phpmyadmin'></a>
 
-### phpMyAdmin variables
+### phpMyAdmin 変数
 
 | Environment variable | Description                                                                                                  | デフォルト   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
@@ -174,7 +174,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='xdebug'></a>
 
-## Xdebug Remote debugger (PhpStorm)
+## Xdebug リモート デバッガー (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
@@ -227,7 +227,7 @@ docker-compose up -d
 
 <a name='troubleshooting-dependencies'></a>
 
-### Updating dependencies
+### 依存関係の更新
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 

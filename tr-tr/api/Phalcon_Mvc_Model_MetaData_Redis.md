@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Redis'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Redis'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/redis.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/metadata/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Redis içerisindeki meta veri modellerini depolar.
 

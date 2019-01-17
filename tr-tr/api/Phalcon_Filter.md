@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Filter'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Filter'
 
 *implements* [Phalcon\FilterInterface](Phalcon_FilterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/filter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 The Phalcon\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
 

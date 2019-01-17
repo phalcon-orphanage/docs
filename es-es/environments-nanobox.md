@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Controladores
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -17,7 +17,7 @@ In this post, we'll walk through getting a brand new Phalcon app up and running 
 
 <a name='create-project'></a>
 
-## Create a New Project
+## Crear un Nuevo Proyecto
 
 Create a project folder and `cd` into it:
 
@@ -69,7 +69,7 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 
 <a name='new-phalcon-app'></a>
 
-## Start Nanobox and Generate a New Phalcon App
+## Iniciar Nanobox y generar una nueva aplicación de Phalcon
 
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
 
@@ -95,7 +95,7 @@ exit
 
 <a name='run-app'></a>
 
-## Run the App Locally
+## Ejecutar la aplicación localmente
 
 Before actually running your new Phalcon app, we recommend using Nanobox to add a DNS alias. This will add an entry to your local `hosts` file pointing to your dev environment and provide a convenient way to access your app from a browser.
 
@@ -113,7 +113,7 @@ Once running, you can visit your app at [phalcon.dev](https://phalcon.dev).
 
 <a name='environment'></a>
 
-## Check Out the Environment
+## Revisar el entorno
 
 Your virtual environment includes everything you need to run your Phalcon app. Feel free to poke around.
 
@@ -136,7 +136,7 @@ exit
 
 <a name='conclusion'></a>
 
-## Phalcon and Nanobox
+## Phalcon y Nanobox
 
 Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
 

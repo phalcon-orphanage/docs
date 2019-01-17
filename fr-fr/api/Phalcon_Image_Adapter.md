@@ -1,14 +1,14 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Image\Adapter'
----
+* * *
+
+layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Image\Adapter'
+
+* * *
+
 # Abstract class **Phalcon\Image\Adapter**
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 All image adapters must use this class
 

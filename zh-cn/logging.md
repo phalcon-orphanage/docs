@@ -28,7 +28,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 <a name='adapters-factory'></a>
 
-### Factory
+### 工厂
 
 Loads Logger Adapter class using `adapter` option
 
@@ -367,6 +367,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### 实现自己的适配器
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Returning Responses
+# Devolviendo Respuestas
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -61,7 +61,7 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## Trabajando con Cabeceras
 
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
@@ -92,7 +92,7 @@ $contentType = $headers->get('Content-Type');
 
 <a name='redirections'></a>
 
-## Making Redirections
+## Haciendo redirecciones
 
 With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
@@ -131,7 +131,7 @@ Even if there is a view associated with the current action, it will not be rende
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## Caché HTTP
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
@@ -144,7 +144,7 @@ HTTP Cache can be altered in the following header values sent by the application
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### Estableciendo el tiempo de expiración
 
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 

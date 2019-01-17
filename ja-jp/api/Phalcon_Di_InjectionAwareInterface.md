@@ -6,7 +6,7 @@ title: 'Phalcon\Di\InjectionAwareInterface'
 ---
 # Interface **Phalcon\Di\InjectionAwareInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
 ## メソッド
 

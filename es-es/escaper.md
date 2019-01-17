@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Contextual Escaping
+# Escapado contextual
 
 Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/Phalcon_Escaper) provides contextual escaping and is written in Zephir, providing the minimal overhead when escaping different kinds of texts.
 
@@ -110,7 +110,7 @@ Every text was escaped according to its context. Use the appropriate context is 
 
 <a name='html'></a>
 
-## Escaping HTML
+## Escapando HTML
 
 The most common situation when inserting unsafe data is between HTML tags:
 
@@ -138,7 +138,7 @@ Which produces:
 
 <a name='html-attributes'></a>
 
-## Escaping HTML Attributes
+## Escapando atributos HTML
 
 Escaping HTML attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like `href` or `url`:
 
@@ -178,7 +178,7 @@ Which produces:
 
 <a name='urls'></a>
 
-## Escaping URLs
+## Escapando URLs
 
 Some HTML attributes like `href` or `url` need to be escaped differently:
 
@@ -206,7 +206,7 @@ Which produces:
 
 <a name='css'></a>
 
-## Escaping CSS
+## Escapando CSS
 
 CSS identifiers/values can be escaped too:
 
@@ -234,7 +234,7 @@ Which produces:
 
 <a name='javascript'></a>
 
-## Escaping JavaScript
+## Escapando JavaScript
 
 Strings to be inserted into JavaScript code also must be properly escaped:
 

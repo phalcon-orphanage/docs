@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Database Abstraction Layer
+# データベース抽象化レイヤー
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -17,7 +17,7 @@ This component allows for a lower level database manipulation than using traditi
 
 <a name='adapters'></a>
 
-## Database Adapters
+## データベースアダプター
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
@@ -60,7 +60,7 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 <a name='dialects'></a>
 
-## Database Dialects
+## データベースの方言
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
@@ -72,7 +72,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 <a name='dialects-custom'></a>
 
-### Implementing your own dialects
+### 独自の方言を実装します
 
 The [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
 
@@ -124,7 +124,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## Connecting to Databases
+## データベースへの接続
 
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
@@ -196,7 +196,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## PDO の追加オプションを設定
 
 You can set PDO options at connection time by passing the parameters `options`:
 
@@ -258,7 +258,7 @@ The above will return the correct database instance and also has the advantage t
 
 <a name='finding-rows'></a>
 
-## Finding Rows
+## 行の検索
 
 [Phalcon\Db](api/Phalcon_Db) provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
@@ -329,7 +329,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## パラメーターのバインド
 
 Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. パラメータのバインドは、以下のように簡単に実施できます:
 
@@ -542,7 +542,7 @@ if (11 === $robot->id) {
 
 <a name='crud'></a>
 
-## Inserting/Updating/Deleting Rows
+## 行の挿入、更新、および削除
 
 To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
 

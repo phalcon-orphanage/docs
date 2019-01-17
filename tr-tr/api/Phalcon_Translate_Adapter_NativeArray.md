@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Translate\Adapter\NativeArray'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Adapter\NativeArray'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter/nativearray.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to define translation lists using PHP arrays
 

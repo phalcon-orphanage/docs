@@ -6,7 +6,7 @@ title: 'Phalcon\Paginator\AdapterInterface'
 ---
 # Interface **Phalcon\Paginator\AdapterInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
 
 ## メソッド
 

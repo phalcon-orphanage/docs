@@ -40,7 +40,7 @@ The caching process is divided into 2 parts:
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
@@ -496,7 +496,7 @@ The backend adapters available to store cache data are:
 
 <a name='adapters-backend-factory'></a>
 
-### Factory
+### Fabryka
 
 There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
 

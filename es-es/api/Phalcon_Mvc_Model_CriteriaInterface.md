@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\CriteriaInterface'
 ---
 # Interface **Phalcon\Mvc\Model\CriteriaInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/criteriainterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

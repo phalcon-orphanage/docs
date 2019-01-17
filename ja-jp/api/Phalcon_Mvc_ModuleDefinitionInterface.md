@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\ModuleDefinitionInterface'
 ---
 # Interface **Phalcon\Mvc\ModuleDefinitionInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
 
 ## メソッド
 

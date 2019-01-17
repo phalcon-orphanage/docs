@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Loads Frontend Cache Adapter class using 'adapter' option
 

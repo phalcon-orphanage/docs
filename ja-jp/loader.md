@@ -60,7 +60,7 @@ To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loade
 
 <a name='registering-namespaces'></a>
 
-## Registering Namespaces
+## 名前空間の登録
 
 If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
@@ -91,7 +91,7 @@ $some = new \Example\Adapter\Some();
 
 <a name='registering-directories'></a>
 
-## Registering Directories
+## ディレクトリの登録
 
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
@@ -124,7 +124,7 @@ $some = new \Some();
 
 <a name='registering-classes'></a>
 
-## Registering Classes
+## クラスの登録
 
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
 
@@ -155,7 +155,7 @@ $some = new \Some();
 
 <a name='registering-files'></a>
 
-## Registering Files
+## ファイルの登録
 
 You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
 
@@ -183,7 +183,7 @@ These files are automatically loaded in the `register()` method.
 
 <a name='registering-file-extensions'></a>
 
-## Additional file extensions
+## 追加のファイル拡張子
 
 Some autoloading strategies such as `prefixes`, `namespaces` or `directories` automatically append the `php` extension at the end of the checked file. If you are using additional extensions you could set it with the method `setExtensions`. Files are checked in the order as it were defined:
 

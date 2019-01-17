@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Session\Adapter\Memcache'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Memcache'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/memcache.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter/memcache.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 This adapter store sessions in memcache
 

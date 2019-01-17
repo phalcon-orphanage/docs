@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Crypt'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Crypt'
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Provides encryption facilities to phalcon applications
 

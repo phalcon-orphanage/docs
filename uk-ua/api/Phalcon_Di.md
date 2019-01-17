@@ -1,14 +1,14 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Di'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Di'
+
+* * *
+
 # Class **Phalcon\Di**
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 

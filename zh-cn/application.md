@@ -573,6 +573,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## External Resources
+## 外部资源
 
-* [MVC examples on GitHub](https://github.com/phalcon/mvc)
+* [MVC examples on Github](https://github.com/phalcon/mvc)

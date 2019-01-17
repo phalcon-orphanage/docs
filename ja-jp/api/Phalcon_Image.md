@@ -6,7 +6,7 @@ title: 'Phalcon\Image'
 ---
 # Class **Phalcon\Image**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
 
 ## 定数
 

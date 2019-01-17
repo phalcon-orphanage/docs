@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Flashing Messages
+# Mensajes Flash
 
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
@@ -26,7 +26,7 @@ This component makes use of adapters to define the behavior of the messages afte
 
 <a name='usage'></a>
 
-## Usage
+## Uso
 
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
@@ -98,7 +98,7 @@ $this->flash->message('debug', "Este es un mensaje de depuración, no lo digas")
 
 <a name='printing'></a>
 
-## Printing Messages
+## Imprimiendo Mensajes
 
 Messages sent to the flash service are automatically formatted with HTML:
 

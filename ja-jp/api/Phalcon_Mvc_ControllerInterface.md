@@ -6,4 +6,4 @@ title: 'Phalcon\Mvc\ControllerInterface'
 ---
 # Interface **Phalcon\Mvc\ControllerInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controllerinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controllerinterface.zep)

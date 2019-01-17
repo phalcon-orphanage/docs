@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -211,7 +211,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Kendi Bağdaştırıcılarını Uygulama
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

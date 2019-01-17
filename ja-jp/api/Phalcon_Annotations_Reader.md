@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Reader'
 
 *implements* [Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
 
 見つかったアノテーションの配列が返す docblockをパースします。
 

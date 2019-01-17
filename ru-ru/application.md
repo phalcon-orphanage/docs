@@ -202,13 +202,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## Single or Multi Module Applications
+## Одномодульные и многомодульные приложения
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Single Module
+### Одномодульное приложение
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -332,7 +332,7 @@ try {
 
 <a name='module'></a>
 
-### Multi Module
+### Многомодульное приложение
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -539,7 +539,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Application Events
+## События приложения
 
 [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Поддерживаются следующие типы событий:
 
@@ -573,6 +573,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## External Resources
+## Дополнительная литература
 
-* [MVC examples on GitHub](https://github.com/phalcon/mvc)
+* [Примеры MVC приложений на GitHub](https://github.com/phalcon/mvc)

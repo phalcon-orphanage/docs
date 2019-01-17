@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Flash'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Flash'
 
 *implements* [Phalcon\FlashInterface](Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/flash.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 

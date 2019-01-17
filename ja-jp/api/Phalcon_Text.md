@@ -1,12 +1,12 @@
----
-layout: article
-language: 'ja-jp'
-version: '4.0'
-title: 'Phalcon\Text'
----
+* * *
+
+layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Text'
+
+* * *
+
 # Abstract class **Phalcon\Text**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/text.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
 
 Provides utilities to work with texts
 

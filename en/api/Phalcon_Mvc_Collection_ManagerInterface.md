@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Collection\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Collection\ManagerInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/managerinterface.zep)
 
 ## Methods
 abstract public  **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)

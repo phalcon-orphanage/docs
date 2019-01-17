@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Forms\ElementInterface'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Forms\ElementInterface'
+
+* * *
+
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/elementinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

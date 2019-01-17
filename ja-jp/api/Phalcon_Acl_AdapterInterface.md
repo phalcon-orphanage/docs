@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
 ## メソッド
 

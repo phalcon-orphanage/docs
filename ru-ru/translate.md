@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# Поддержка многоязычности
 
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
@@ -25,7 +25,7 @@ This component makes use of adapters to read translation messages from different
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Фабрика
 
 Loads Translate Adapter class using `adapter` option
 
@@ -47,7 +47,7 @@ $translate = Factory::load($options);
 
 <a name='usage'></a>
 
-## Component Usage
+## Использование компонента
 
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
@@ -208,7 +208,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

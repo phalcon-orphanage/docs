@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\ResultsetInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
 
 ## メソッド
 

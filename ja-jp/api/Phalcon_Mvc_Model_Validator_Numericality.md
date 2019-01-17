@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Numericality'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/numericality.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/numericality.zep)
 
 Allows to validate if a field has a valid numeric format
 

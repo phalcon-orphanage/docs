@@ -1,14 +1,14 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Factory'
 ---
 # Abstract class **Phalcon\Factory**
 
-*implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
+*implements* [Phalcon\FactoryInterface](/4.0/en/api/Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 
@@ -16,6 +16,6 @@ protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...
 
-abstract public static **load** (*mixed* $config) inherited from [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
+abstract public static **load** (*mixed* $config) inherited from [Phalcon\FactoryInterface](/4.0/en/api/Phalcon_FactoryInterface)
 
 ...

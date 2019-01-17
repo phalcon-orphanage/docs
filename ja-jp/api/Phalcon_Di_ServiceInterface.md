@@ -6,7 +6,7 @@ title: 'Phalcon\Di\ServiceInterface'
 ---
 # Interface **Phalcon\Di\ServiceInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
 ## メソッド
 

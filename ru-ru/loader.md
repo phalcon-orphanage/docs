@@ -294,7 +294,7 @@ Some events when returning boolean `false` could stop the active operation. По
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Устранение неполадок
 
 Some things to keep in mind when using the universal autoloader:
 

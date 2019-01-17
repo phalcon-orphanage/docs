@@ -514,11 +514,11 @@ The events available in Phalcon are:
 | Router             | `router:notMatchedRoute`             |
 | Router             | `router:afterCheckRoutes`            |
 | Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
+| Widok              | `view:afterRender`                   |
+| Widok              | `view:afterRenderView`               |
+| Widok              | `view:beforeRender`                  |
+| Widok              | `view:beforeRenderView`              |
+| Widok              | `view:notFoundView`                  |
 | Volt               | `compileFilter`                      |
 | Volt               | `compileFunction`                    |
 | Volt               | `compileStatement`                   |

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Yaml'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Adapter\Yaml'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/adapter/yaml.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Reads YAML files and converts them to Phalcon\Config objects.
 

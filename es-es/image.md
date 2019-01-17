@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -47,13 +47,13 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Implementando sus propios adaptadores
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
 <a name='saving-rendering'></a>
 
-## Saving and rendering images
+## Guardando y leyendo imágenes
 
 Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
 
@@ -107,7 +107,7 @@ $image->save('image.jpg', 80);
 
 <a name='resizing'></a>
 
-## Resizing images
+## Redimensionando imágenes
 
 There are several modes of resizing:
 
@@ -206,7 +206,7 @@ $image->save('resized-image.jpg');
 
 <a name='cropping'></a>
 
-## Cropping images
+## Recortar imágenes
 
 For example, to get a 100px by 100px square from the centre of the image:
 
@@ -227,7 +227,7 @@ $image->save('cropped-image.jpg');
 
 <a name='rotating'></a>
 
-## Rotating images
+## Rotación de imágenes
 
 ```php
 <?php
@@ -242,7 +242,7 @@ $image->save('rotated-image.jpg');
 
 <a name='flipping'></a>
 
-## Flipping images
+## Volteando imágenes
 
 You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
 
@@ -261,7 +261,7 @@ $image->save('flipped-image.jpg');
 
 <a name='sharpening'></a>
 
-## Sharpening images
+## Afilado de imágenes
 
 The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
 
@@ -277,7 +277,7 @@ $image->save('sharpened-image.jpg');
 
 <a name='watermarks'></a>
 
-## Adding watermarks to images
+## Agregar marcas de agua a imágenes
 
 ```php
 <?php
@@ -333,7 +333,7 @@ $image->save('watermarked-image.jpg');
 
 <a name='blurring'></a>
 
-## Blurring images
+## Imágenes borrosas
 
 The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
 
@@ -349,7 +349,7 @@ $image->save('blurred-image.jpg');
 
 <a name='pixelating'></a>
 
-## Pixelating images
+## Pixelando imágenes
 
 The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
 

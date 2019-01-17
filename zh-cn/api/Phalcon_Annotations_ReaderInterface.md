@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\ReaderInterface'
 ---
 # Interface **Phalcon\Annotations\ReaderInterface**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
 ## 方法
 

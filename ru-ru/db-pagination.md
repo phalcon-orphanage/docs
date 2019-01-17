@@ -27,7 +27,7 @@ This component makes use of adapters to encapsulate different sources of data:
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
 Loads Paginator Adapter class using `adapter` option
 
@@ -186,7 +186,7 @@ The `$page` object has the following attributes:
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 

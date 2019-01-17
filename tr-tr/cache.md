@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -533,7 +533,7 @@ This backend will store cached content into files in the local server. The avail
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Libmemcached Arka Plan Seçenekleri
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -606,7 +606,7 @@ This backend will store cached content on a memcached server. The available opti
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APC Arka Plan Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
@@ -616,7 +616,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](https://p
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### APCU Arka Plan Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
@@ -626,7 +626,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](https://
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongo Arka Plan Seçenekleri
 
 This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
 
@@ -639,7 +639,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](https://mo
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### XCache Arka Plan Seçenekleri
 
 This backend will store cached content on XCache ([XCache](https://xcache.lighttpd.net/)). The available options for this backend are:
 
@@ -649,7 +649,7 @@ This backend will store cached content on XCache ([XCache](https://xcache.lightt
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redis Arka Plan Seçenekleri
 
 This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:
 

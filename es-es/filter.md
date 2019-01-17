@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Filtering and Sanitizing
+# Filtrado y Limpieza
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -21,7 +21,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 <a name='types'></a>
 
-## Types of Built-in Filters
+## Tipos de filtros incorporados
 
 The following are the built-in filters provided by this component:
 
@@ -62,7 +62,7 @@ const FILTER_UPPER      = "upper";
 
 <a name='sanitizing'></a>
 
-## Sanitizing data
+## Limpieza de datos
 
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
 
@@ -88,7 +88,7 @@ $filter->sanitize('!100a019.01a', 'float');
 
 <a name='sanitizing-from-controllers'></a>
 
-## Sanitizing from Controllers
+## Limpiando desde controladores
 
 You can access a [Phalcon\Filter](api/Phalcon_Filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
 
@@ -117,7 +117,7 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## Filtering Action Parameters
+## Filtrando parámetros de acciones
 
 The next example shows you how to sanitize the action parameters within a controller action:
 
@@ -142,7 +142,7 @@ class ProductsController extends Controller
 
 <a name='filtering-data'></a>
 
-## Filtering data
+## Filtrando datos
 
 In addition to sanitizing, [Phalcon\Filter](api/Phalcon_Filter) also provides filtering by removing or modifying input data to the format we expect.
 
@@ -162,7 +162,7 @@ $filter->sanitize('  Hello   ', 'trim');
 
 <a name='combining-filters'></a>
 
-## Combining Filters
+## Combinando filtros
 
 You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
@@ -185,7 +185,7 @@ $filter->sanitize(
 
 <a name='adding-filters'></a>
 
-## Adding filters
+## Agregando filtros
 
 You can add your own filters to [Phalcon\Filter](api/Phalcon_Filter). The filter function could be an anonymous function:
 
@@ -237,12 +237,12 @@ $filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
 
 <a name='complex-sanitization-filtering'></a>
 
-## Complex Sanitizing and Filtering
+## Filtrado y limpieza complejas
 
 PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
-## Implementing your own Filter
+## Implementar tus propios filtros
 
 The [Phalcon\FilterInterface](api/Phalcon_FilterInterface) interface must be implemented to create your own filtering service replacing the one provided by Phalcon.

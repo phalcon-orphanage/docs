@@ -84,7 +84,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
+| Placeholder    | Regular Expression       | Sposób użycia                                                                                          |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## Zdarzenia
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
@@ -1157,7 +1157,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Nazwa       | Description                                                                                       | Usage                                  |
+| Nazwa       | Description                                                                                       | Sposób użycia                          |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1169,7 +1169,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Nazwa      | Description                                                            | Usage                                                                |
+| Nazwa      | Description                                                            | Sposób użycia                                                        |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |

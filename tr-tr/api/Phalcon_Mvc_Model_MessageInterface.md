@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MessageInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/messageinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

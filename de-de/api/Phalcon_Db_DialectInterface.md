@@ -1,12 +1,12 @@
----
-layout: article
-language: 'de-de'
-version: '4.0'
-title: 'Phalcon\Db\DialectInterface'
----
+* * *
+
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\DialectInterface'
+
+* * *
+
 # Interface **Phalcon\Db\DialectInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialectinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

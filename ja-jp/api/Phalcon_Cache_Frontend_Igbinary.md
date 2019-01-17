@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Igbinary'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
 
 igbinary拡張モジュールを使用して、シリアライズしたフォームにネイティブのPHPデータをキャッシュできます。
 

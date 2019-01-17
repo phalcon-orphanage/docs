@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Apc'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Apc'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/apc.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/metadata/apc.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Stores model meta-data in the APC cache. Data will erased if the web server is restarted
 

@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Controller\BindModelInterface'
 ---
 # Interface **Phalcon\Mvc\Controller\BindModelInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/controller/bindmodelinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

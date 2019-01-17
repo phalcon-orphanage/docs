@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# チュートリアル: 単純な REST API の作成
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
@@ -20,7 +20,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 <a name='definitions'></a>
 
-## Defining the API
+## API の定義
 
 The API consists of the following methods:
 
@@ -35,7 +35,7 @@ The API consists of the following methods:
 
 <a name='implementation'></a>
 
-## Creating the Application
+## アプリケーションの作成
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
@@ -139,7 +139,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Creating a Model
+## Modelの作成
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -246,7 +246,7 @@ $app = new Micro($di);
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## データの取得
 
 The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
@@ -559,7 +559,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 <a name='testing'></a>
 
-## Testing our Application
+## アプリケーションのテスト
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 

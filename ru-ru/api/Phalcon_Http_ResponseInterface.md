@@ -6,7 +6,7 @@ title: 'Phalcon\Http\ResponseInterface'
 ---
 # Interface **Phalcon\Http\ResponseInterface**
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
 
 ## Methods
 

@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Http\ResponseInterface'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Http\ResponseInterface'
+
+* * *
+
 # Interface **Phalcon\Http\ResponseInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/responseinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

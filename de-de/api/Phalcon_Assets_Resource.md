@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents an asset resource
 

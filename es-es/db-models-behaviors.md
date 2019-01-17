@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Behaviors
+# Comportamientos en modelos (Behaviors)
 
 Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
@@ -183,7 +183,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 <a name='create-your-own-behaviors'></a>
 
-## Creating your own behaviors
+## Crea tus propios comportamientos
 
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
 
@@ -271,7 +271,7 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Using Traits as behaviors
+## Utilizando traits como comportamientos
 
 You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 

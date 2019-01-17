@@ -1,12 +1,12 @@
----
-layout: article
-language: 'fr-fr'
-version: '4.0'
-title: 'Phalcon\Logger\FormatterInterface'
----
+* * *
+
+layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Logger\FormatterInterface'
+
+* * *
+
 # Interface **Phalcon\Logger\FormatterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

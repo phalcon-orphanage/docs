@@ -6,7 +6,7 @@ title: 'Phalcon\Logger\AdapterInterface'
 ---
 # Interface **Phalcon\Logger\AdapterInterface**
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
 
 ## Methods
 

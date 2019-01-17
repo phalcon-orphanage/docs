@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Micro\LazyLoader'
 ---
 # Class **Phalcon\Mvc\Micro\LazyLoader**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/micro/lazyloader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 

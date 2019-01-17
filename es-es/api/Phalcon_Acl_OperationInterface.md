@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\OperationInterface'
 ---
 # Interface **Phalcon\Acl\OperationInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationinterface.zep)
 
 ## Métodos
 

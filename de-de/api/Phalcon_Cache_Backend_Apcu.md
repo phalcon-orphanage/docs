@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Apcu'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apcu.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/apcu.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to cache output fragments, PHP data and raw data using an APCu backend
 

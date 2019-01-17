@@ -1,14 +1,14 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Cache\Frontend\Json'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Cache\Frontend\Json'
+
+* * *
+
 # Class **Phalcon\Cache\Frontend\Json**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to cache data converting/deconverting them to JSON.
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Cache\Backend'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Backend'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 

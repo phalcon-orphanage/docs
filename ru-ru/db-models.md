@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# Working with Models
+# Работа с моделями
 
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используется для управления соответствующей таблицей базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении. Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
 
@@ -19,7 +19,7 @@ version: '4.0'
 
 <a name='creating'></a>
 
-## Creating Models
+## Создание моделей
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -167,7 +167,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## Понимание записей в объектах
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
@@ -215,7 +215,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Поиск записей
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
@@ -386,7 +386,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 
-### Model Resultsets
+### Возвращение результатов моделью
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -542,7 +542,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### Фильтрация результатов
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -563,7 +563,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### Подготавливаемые запросы
 
 Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Связывание параметров может быть легко достигнуто следующим образом:
 
@@ -693,7 +693,7 @@ $robots = Robots::findByName('Ultron');
 
 <a name='preparing-records'></a>
 
-## Initializing/Preparing fetched records
+## Инициализация/изменение полученных записей
 
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
@@ -758,7 +758,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## Generating Calculations
+## Использование расчетов
 
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
@@ -925,7 +925,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## Creating/Updating Records
+## Создание/обновление записей
 
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
@@ -1007,7 +1007,7 @@ $robot->save(
 
 <a name='create-update-with-confidence'></a>
 
-### Create/Update with Confidence
+### Создание/обновление с уверенностью
 
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
@@ -1040,7 +1040,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
-## Deleting Records
+## Удаление записей
 
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
@@ -1125,7 +1125,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Режимы гидрации
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1226,7 +1226,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## Автоматически генерируемый столбец
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1260,7 +1260,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## Пропуск столбцов
 
 To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1343,7 +1343,7 @@ class Robots extends Model
 
 <a name='dynamic-updates'></a>
 
-## Dynamic Updates
+## Динамические обновления
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1367,7 +1367,7 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## Независимое сопоставление столбцов
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1451,7 +1451,7 @@ The independent column map allows you to:
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## Запись снимков
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1551,7 +1551,7 @@ array(0) {
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## Ссылка на другую схему
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1740,7 +1740,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## Отключение/включение возможностей
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
@@ -1789,7 +1789,7 @@ The available options are:
 
 <a name='stand-alone-component'></a>
 
-## Stand-Alone component
+## Самостоятельный компонент
 
 Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) in a stand-alone mode can be demonstrated below:
 

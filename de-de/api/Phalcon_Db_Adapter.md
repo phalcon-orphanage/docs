@@ -1,14 +1,14 @@
----
-layout: article
-language: 'de-de'
-version: '4.0'
-title: 'Phalcon\Db\Adapter'
----
+* * *
+
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Adapter'
+
+* * *
+
 # Abstract class **Phalcon\Db\Adapter**
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Base class for Phalcon\Db adapters
 

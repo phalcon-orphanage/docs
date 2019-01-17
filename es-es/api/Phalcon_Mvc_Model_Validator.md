@@ -1,14 +1,14 @@
----
-layout: article
-language: 'es-es'
-version: '4.0'
-title: 'Phalcon\Mvc\Model\Validator'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Mvc\Model\Validator'
+
+* * *
+
 # Abstract class **Phalcon\Mvc\Model\Validator**
 
-*implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
+*implements* [Phalcon\Mvc\Model\ValidatorInterface](/4.0/en/api/Phalcon_Mvc_Model_ValidatorInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/validator.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 This is a base class for Phalcon\Mvc\Model validators
 
@@ -40,6 +40,6 @@ public **isSetOption** (*mixed* $option)
 
 Comprobar si una opción se ha definido en las opciones de validación
 
-abstract public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
+abstract public **validate** ([Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](/4.0/en/api/Phalcon_Mvc_Model_ValidatorInterface)
 
 ...

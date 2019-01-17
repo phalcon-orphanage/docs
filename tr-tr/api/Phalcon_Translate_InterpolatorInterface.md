@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Translate\InterpolatorInterface'
 ---
 # Interface **Phalcon\Translate\InterpolatorInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/interpolatorinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

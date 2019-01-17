@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Xcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
 
 XCacheバックエンドを使用して、出力フラグメント、PHPデータ、生のデータをキャッシュできます。
 

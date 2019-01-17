@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/timestampable.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection/behavior/timestampable.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 

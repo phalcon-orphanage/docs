@@ -27,7 +27,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 <a name='file-structure'></a>
 
-## File structure
+## Struktura souborů
 
 A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 

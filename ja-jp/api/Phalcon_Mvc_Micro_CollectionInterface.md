@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Micro\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\Micro\CollectionInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
 
 ## メソッド
 

@@ -58,7 +58,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Да                         | Listeners             |
 | beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Да                         | Listeners             |
 | beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Да                         | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | Нет                        | Controllers           |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | Нет                        | Контроллеры           |
 | afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Нет                        | Listeners/Controllers |
 | beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Да                         | Listeners             |
 | beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Да                         | Listeners             |
@@ -470,7 +470,7 @@ $di->set(
 
 <a name='preparing-actions-inject-model-instances'></a>
 
-### Inject model instances
+### Внедрение моделей
 
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 

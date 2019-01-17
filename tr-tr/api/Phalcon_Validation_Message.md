@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Validation\Message'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Message'
 
 *implements* [Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Encapsulates validation info generated in the validation process
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter/pdo/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Loads PDO Adapter class using 'adapter' option
 

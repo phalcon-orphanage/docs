@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Events Manager
+# Gestor de Eventos
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 
-## Naming Convention
+## Convención de Nombres
 
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
@@ -23,7 +23,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## Usage Example
+## Ejemplo de Uso
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -155,7 +155,7 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 <a name='components-that-trigger-events'></a>
 
-## Creating components that trigger Events
+## Creando Componentes que Desencadenan Eventos
 
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
@@ -280,7 +280,7 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 
-## Using Services From The DI
+## Utilización Servicios del DI
 
 By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
 
@@ -314,7 +314,7 @@ class SomeListener extends Plugin
 
 <a name='propagation-cancellation'></a>
 
-## Event Propagation/Cancellation
+## Propagación y Cancelación de Eventos
 
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
@@ -347,7 +347,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 <a name='listener-priorities'></a>
 
-## Listener Priorities
+## Prioridades del Oyente
 
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
@@ -363,7 +363,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Menos prioridad
 
 <a name='collecting-responses'></a>
 
-## Collecting Responses
+## Recogiendo Respuestas
 
 The events manager can collect every response returned by every notified listener. This example explains how it works:
 
@@ -408,7 +408,7 @@ The above example produces:
 
 <a name='custom'></a>
 
-## Implementing your own EventsManager
+## Implementando tu propio EventsManager
 
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
@@ -506,19 +506,19 @@ The events available in Phalcon are:
 | Model              | `onValidationFails`                  |
 | Model              | `prepareSave`                        |
 | Models Manager     | `modelsManager:afterInitialize`      |
-| Request            | `request:afterAuthorizationResolve`  |
-| Request            | `request:beforeAuthorizationResolve` |
+| Consulta           | `request:afterAuthorizationResolve`  |
+| Consulta           | `request:beforeAuthorizationResolve` |
 | Router             | `router:beforeCheckRoutes`           |
 | Router             | `router:beforeCheckRoute`            |
 | Router             | `router:matchedRoute`                |
 | Router             | `router:notMatchedRoute`             |
 | Router             | `router:afterCheckRoutes`            |
 | Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
+| Vistas             | `view:afterRender`                   |
+| Vistas             | `view:afterRenderView`               |
+| Vistas             | `view:beforeRender`                  |
+| Vistas             | `view:beforeRenderView`              |
+| Vistas             | `view:notFoundView`                  |
 | Volt               | `compileFilter`                      |
 | Volt               | `compileFunction`                    |
 | Volt               | `compileStatement`                   |

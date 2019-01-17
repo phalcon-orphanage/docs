@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 
@@ -145,7 +145,7 @@ $acl->addSubject('reports', ['list', 'add']);
 
 <a name='access-controls'></a>
 
-## Defining Access Controls
+## Erişim Kontrolleri Tanımlama
 
 After both the `Operations` and `Subjects` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the operation since a small mistake here can allow access to operations for subjects that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
 
@@ -235,7 +235,7 @@ $acl->deny('guest', '*', 'view');
 
 <a name='querying'></a>
 
-## Querying an ACL
+## ACL Sorgulama
 
 Once the list has been defined, we can query it to check if a particular operation has access to a particular subject and action. To do so, we need to use the `isAllowed()` method.
 
@@ -289,7 +289,7 @@ $acl->isAllowed('guest', 'reports', 'add');
 
 <a name='function-based-access'></a>
 
-## Function based access
+## Fonksiyona Dayalı Erişim
 
 Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
 
@@ -632,7 +632,7 @@ $acl->addInherit($accounting, $guest);
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## ACL Listelerini Seri Hale Getirme
 
 [Phalcon\Acl](api/Phalcon_Acl) can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, file system, database, Redis etc. This way you can retrieve the ACL quickly without having to read the underlying data that create the ACL nor will you have to compute the ACL in every request.
 
@@ -670,7 +670,7 @@ It is a good practice to not use serialization of the ACL during development, to
 
 <a name='events'></a>
 
-## Events
+## Olaylar
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
@@ -717,6 +717,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Kendi Bağdaştırıcılarını Uygulama
 
 The [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface must be implemented in order to create your own ACL adapters or extend the existing ones.

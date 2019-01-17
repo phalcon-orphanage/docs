@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Annotations\Adapter\Apcu'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Apcu'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter/apcu.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Stores the parsed annotations in APCu. This adapter is suitable for production
 

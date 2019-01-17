@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
 アノテーションコレクションの単一のアノテーションを表示します。
 

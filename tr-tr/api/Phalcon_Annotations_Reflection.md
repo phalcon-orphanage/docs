@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Annotations\Reflection'
 ---
 # Class **Phalcon\Annotations\Reflection**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/reflection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Allows to manipulate the annotations reflection in an OO manner
 

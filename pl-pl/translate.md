@@ -25,7 +25,7 @@ This component makes use of adapters to read translation messages from different
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Fabryka
 
 Loads Translate Adapter class using `adapter` option
 

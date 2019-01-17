@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Db\Column'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Column'
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
 Allows to define columns to be used on create or alter table operations
 

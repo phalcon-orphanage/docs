@@ -98,7 +98,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## 工厂
 
 There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 The traditional way of instantiating such an adapter is as follows:
 
@@ -133,7 +133,7 @@ The Factory loader provides more flexibility when dealing with instantiating ann
 
 <a name='reading'></a>
 
-## Reading Annotations
+## 读取注释
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -169,7 +169,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## 类型的注释
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -228,13 +228,13 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## 实际使用情况
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### 带注释的缓存启用
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
@@ -413,7 +413,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## 注释适配器
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
@@ -426,12 +426,12 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 实现自己的适配器
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## External Resources
+## 外部资源
 
 * [教程︰ 创建一个自定义的初始化模型，附带注释](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

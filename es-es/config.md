@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Configuraciones de Lectura
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -101,7 +101,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## File Adapters
+## Adaptadores de Archivo
 
 The adapters available are:
 
@@ -114,7 +114,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## Reading INI Files
+## Leer Archivos INI
 
 Ini files are a common way to store settings. [Phalcon\Config](api/Phalcon_Config) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -207,7 +207,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## Nested Configuration
+## Configuraciones Anidadas
 
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -279,7 +279,7 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## Injecting Configuration Dependency
+## Inyección de Dependencias de Configuración
 
 You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='requirements'></a>
 
-# Requirements
+# Požadavky
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -52,7 +52,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Installation
+# Instalace
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -68,7 +68,7 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -143,7 +143,7 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### Instalace z repozitáře
 
 Add the repository to your distribution:
 
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Instalace Phalcon frameworku
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -241,7 +241,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Requirements
+### Požadavky
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
@@ -320,7 +320,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Requirements
+### Požadavky
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Compile Phalcon
 
-We first need to clone Phalcon from the GitHub repository
+We first need to clone Phalcon from the Github repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon

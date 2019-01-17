@@ -97,7 +97,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
 There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 

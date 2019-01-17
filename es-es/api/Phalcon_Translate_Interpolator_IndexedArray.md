@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Translate\Interpolator\IndexedArray'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
 ## Métodos
 

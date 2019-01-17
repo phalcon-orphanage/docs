@@ -6,7 +6,7 @@ title: 'Phalcon\Translate\InterpolatorInterface'
 ---
 # Interface **Phalcon\Translate\InterpolatorInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
 
 ## メソッド
 

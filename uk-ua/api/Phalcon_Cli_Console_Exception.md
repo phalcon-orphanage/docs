@@ -1,16 +1,16 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Cli\Console\Exception'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Cli\Console\Exception'
+
+* * *
+
 # Class **Phalcon\Cli\Console\Exception**
 
 *extends* class [Phalcon\Application\Exception](Phalcon_Application_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console/exception.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/console/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

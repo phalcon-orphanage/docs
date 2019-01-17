@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Queueing
+# Χρησημοποίηση Ουρών
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 

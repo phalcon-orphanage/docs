@@ -6,7 +6,7 @@ title: 'Phalcon\Db\IndexInterface'
 ---
 # Interface **Phalcon\Db\IndexInterface**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
 
 ## 方法
 

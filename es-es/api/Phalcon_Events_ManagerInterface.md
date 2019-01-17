@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Events\ManagerInterface'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Events\ManagerInterface'
+
+* * *
+
 # Interface **Phalcon\Events\ManagerInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/events/managerinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

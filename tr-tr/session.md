@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -230,7 +230,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Kendi Bağdaştırıcılarını Uygulama
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 

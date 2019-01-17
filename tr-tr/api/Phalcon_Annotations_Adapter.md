@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Annotations\Adapter'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Adapter'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is the base class for Phalcon\Annotations adapters
 

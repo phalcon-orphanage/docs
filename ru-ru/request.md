@@ -179,7 +179,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## Events
+## События
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
@@ -190,7 +190,7 @@ Authorization: <type> <credentials>
 where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
 
 * `AWS4-HMAC-SHA256`
-* `Basic`
+* `Основы`
 * `Bearer`
 * `Digest`
 * `HOBA`

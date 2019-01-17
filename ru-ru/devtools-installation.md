@@ -15,15 +15,15 @@ These steps will guide you through the process of installing Phalcon Developer T
 
 <a name='prerequisites'></a>
 
-## Prerequisites
+## Требования
 
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/4.0/en//installation) section for instructions.
 
 <a name='installation'></a>
 
-## Installation
+## Установка
 
-You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools).
+You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
@@ -104,7 +104,7 @@ Save the changes.
 
 <a name='installation-windows-system-path'></a>
 
-#### Adding PHP and Tools to your system PATH
+#### Добавление PHP и Devtools в системную переменную PATH
 
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
 

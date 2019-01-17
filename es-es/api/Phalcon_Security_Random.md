@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Security\Random'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Security\Random'
+
+* * *
+
 # Class **Phalcon\Security\Random**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/security/random.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 Asegure la clase de generador de números aleatorios.
 
@@ -96,7 +96,7 @@ var_dump(bin2hex($bytes));
 
 public **hex** ([*mixed* $len])
 
-Generates a random hex string If $len is not specified, 16 is assumed. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
+Genera una cadena hexagonal aleatoria Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
 
 ```php
 <?php
@@ -187,4 +187,4 @@ echo $random->number(16); // 8
 
 protected **base** (*mixed* $alphabet, *mixed* $base, [*mixed* $n])
 
-Generates a random string based on the number ($base) of characters ($alphabet). If $n is not specified, 16 is assumed. Puede ser más grande en el futuro.
+Genera una cadena aleatoria basada en el número ($base) de caracteres ($alphabet). Si $n no se especifica, se supone 16. Puede ser más grande en el futuro.

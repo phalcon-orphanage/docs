@@ -1,16 +1,16 @@
----
-layout: article
-language: 'de-de'
-version: '4.0'
-title: 'Phalcon\Db\Dialect\Postgresql'
----
+* * *
+
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Dialect\Postgresql'
+
+* * *
+
 # Class **Phalcon\Db\Dialect\Postgresql**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect/postgresql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Generates database specific SQL for the PostgreSQL RDBMS
 

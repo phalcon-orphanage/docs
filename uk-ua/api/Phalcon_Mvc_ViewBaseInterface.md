@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Mvc\ViewBaseInterface'
----
+* * *
+
+layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Mvc\ViewBaseInterface'
+
+* * *
+
 # Interface **Phalcon\Mvc\ViewBaseInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/viewbaseinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

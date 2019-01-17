@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 El despachado es el proceso de tomar los argumentos de las linea de comandos, extrayendo el nombre de módulo, nombre de la tarea, nombre de la acción, y los parámetros opcionales contenidos en ella, y luego instanciando una tarea y llamando una acción en ella.
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
 
 *implements* [Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/annotations.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/metadata/strategy/annotations.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
 
 ## Métodos
 

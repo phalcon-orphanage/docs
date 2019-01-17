@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Assets\Filters\None'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Filters\None'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/filters/none.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Returns the content without make any modification to the original source
 

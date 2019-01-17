@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Di\Injectable'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Di\Injectable'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/injectable.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 

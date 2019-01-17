@@ -1,14 +1,14 @@
----
-layout: article
-language: 'de-de'
-version: '4.0'
-title: 'Phalcon\Db\Dialect'
----
+* * *
+
+layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Dialect'
+
+* * *
+
 # Abstract class **Phalcon\Db\Dialect**
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 

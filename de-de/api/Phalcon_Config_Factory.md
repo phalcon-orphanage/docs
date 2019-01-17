@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Translate\Adapter\Gettext'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Adapter\Gettext'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter/gettext.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ```php
 <?php

@@ -169,7 +169,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## Komponent Random
 
 The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
 
@@ -204,4 +204,4 @@ $number     = $random->number($n);
 
 ## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)

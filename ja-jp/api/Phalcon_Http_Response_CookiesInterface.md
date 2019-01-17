@@ -6,7 +6,7 @@ title: 'Phalcon\Http\Response\CookiesInterface'
 ---
 # Interface **Phalcon\Http\Response\CookiesInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
 
 ## メソッド
 

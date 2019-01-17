@@ -1,9 +1,9 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Mvc\ControllerInterface'
 ---
 # Interface **Phalcon\Mvc\ControllerInterface**
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controllerinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/controllerinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>

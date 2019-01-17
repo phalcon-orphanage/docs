@@ -26,7 +26,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 <a name='adapters-factory'></a>
 
-### Factory
+### 工厂
 
 Loads an Image Adapter class using `adapter` option.
 
@@ -47,7 +47,7 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### 实现自己的适配器
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 

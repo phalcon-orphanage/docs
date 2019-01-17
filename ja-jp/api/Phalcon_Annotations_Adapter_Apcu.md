@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Apcu'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
 
 パースしたアノテーションをAPCuに保存します。 このアダプタはプロダクション向けです。
 

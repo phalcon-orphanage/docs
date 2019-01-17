@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Di\Service'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Di\Service'
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/service.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Represents individually a service in the services container
 

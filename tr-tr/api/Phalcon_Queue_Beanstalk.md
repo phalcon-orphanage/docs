@@ -1,12 +1,12 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Queue\Beanstalk'
----
+* * *
+
+layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Queue\Beanstalk'
+
+* * *
+
 # Class **Phalcon\Queue\Beanstalk**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/queue/beanstalk.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 

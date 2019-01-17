@@ -6,7 +6,7 @@ title: 'Phalcon\Cache\BackendInterface'
 ---
 # Interface **Phalcon\Cache\BackendInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 ## Methods
 

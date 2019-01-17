@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Dispatching Controllers
+# Despachando Controladores
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 <a name='dispatch-loop'></a>
 
-## The Dispatch Loop
+## Bucle de despacho
 
 This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
 
@@ -49,7 +49,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 <a name='dispatch-loop-events'></a>
 
-### Dispatch Loop Events
+### Eventos del bucle de despacho
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
 
@@ -58,7 +58,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | beforeDispatchLoop   | Activado antes de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router.   | Si                     | Oyentes               |
 | beforeDispatch       | Activado después de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router. | Si                     | Oyentes               |
 | beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                           | Si                     | Listeners/Controllers |
-| initialize           | Permite inicializar globalmente el controlador en la solicitud                                                                                                                                                    | No                     | Controllers           |
+| initialize           | Permite inicializar globalmente el controlador en la solicitud                                                                                                                                                    | No                     | Controladores         |
 | afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                             | No                     | Listeners/Controllers |
 | beforeNotFoundAction | Se activa cuando la acción no se encuentra en el controlador                                                                                                                                                      | Si                     | Oyentes               |
 | beforeException      | Disparado antes de que el dispatcher lance una excepción                                                                                                                                                          | Si                     | Oyentes               |
@@ -128,7 +128,7 @@ class PostsController extends Controller
 
 <a name='forwarding'></a>
 
-## Forwarding to other actions
+## Reenvío a otras acciones
 
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can access to certain options, redirect users to other screens or simply reuse code.
 
@@ -245,7 +245,7 @@ echo $dispatcher->getModuleName(); // mostrará 'backend'
 
 <a name='preparing-parameters'></a>
 
-## Preparing Parameters
+## Preparando parámetros
 
 Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
@@ -342,7 +342,7 @@ $di->set(
 
 <a name='getting-parameters'></a>
 
-## Getting Parameters
+## Obtener parámetros
 
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable).
 
@@ -375,13 +375,13 @@ class PostsController extends Controller
 
 <a name='preparing-actions'></a>
 
-## Preparing actions
+## Preparación de acciones
 
 You can also define an arbitrary schema for actions `before` in the dispatch loop.
 
 <a name='preparing-actions-camelizing-action-names'></a>
 
-### Camelize action names
+### Camelizar acciones
 
 If the original URL is: `https://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
 
@@ -420,7 +420,7 @@ $di->set(
 
 <a name='preparing-actions-removing-legacy-extensions'></a>
 
-### Remove legacy extensions
+### Quitar extensiones
 
 If the original URL always contains a `.php` extension:
 
@@ -469,7 +469,7 @@ $di->set(
 
 <a name='preparing-actions-inject-model-instances'></a>
 
-### Inject model instances
+### Inyectando instancias de modelos
 
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
@@ -635,7 +635,7 @@ class PostsController extends Controller
 
 <a name='handling-404'></a>
 
-## Handling Not-Found Exceptions
+## Gestión de excepciones "Not Found"
 
 Using the [EventsManager](/4.0/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
@@ -735,6 +735,6 @@ class ExceptionsPlugin
 
 <a name='custom'></a>
 
-## Implementing your own Dispatcher
+## Implementar tu propio despachador
 
 The [Phalcon\Mvc\DispatcherInterface](api/Phalcon_Mvc_DispatcherInterface) interface must be implemented to create your own dispatcher replacing the one provided by Phalcon.

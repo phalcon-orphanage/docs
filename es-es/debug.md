@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Debugging Applications
+# Depuración de aplicaciones
 
 ![](/assets/images/content/xdebug-1.jpg)
 
@@ -19,7 +19,7 @@ Despite being written in C, Phalcon executes methods in the PHP userland, provid
 
 <a name='catching-exceptions'></a>
 
-## Catching Exceptions
+## Capturando excepciones
 
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
@@ -112,7 +112,7 @@ As you can see from the above output the Phalcon's classes and methods are displ
 
 <a name='debug-component'></a>
 
-## Debug component
+## Componente de depuración
 
 Phalcon provides a debug component that allows the developer to easily find errors produced in an application created with the framework.
 
@@ -135,7 +135,7 @@ Any Try/Catch blocks must be removed or disabled to make this component work pro
 
 <a name='reflection-introspection'></a>
 
-## Reflection and Introspection
+## Reflexión e introspección
 
 Any instance of a Phalcon class offers exactly the same behavior than a PHP normal one. It's possible to use the [Reflection API](https://php.net/manual/en/book.reflection.php) or simply print any object to show how is its internal state:
 
@@ -203,7 +203,7 @@ Phalcon\Mvc\Router Object
 
 <a name='#xdebug'></a>
 
-## Using XDebug
+## Usando Xdebug
 
 [XDebug](https://xdebug.org) is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
 

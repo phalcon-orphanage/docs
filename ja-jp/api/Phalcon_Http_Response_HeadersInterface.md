@@ -6,7 +6,7 @@ title: 'Phalcon\Http\Response\HeadersInterface'
 ---
 # Interface **Phalcon\Http\Response\HeadersInterface**
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
 
 ## メソッド
 

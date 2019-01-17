@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Storing data in the Session
+# Almacenamiento de datos en la sesión
 
 The session component provides object-oriented wrappers to access session data.
 
@@ -21,7 +21,7 @@ Reasons to use this component instead of raw-sessions:
 
 <a name='start'></a>
 
-## Starting the Session
+## Iniciando sesión
 
 Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
@@ -70,7 +70,7 @@ $session->start();
 
 <a name='store'></a>
 
-## Storing/Retrieving data in Session
+## Almacenamiento/recuperación de datos en sesión
 
 From a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) you can access the session service and store items and retrieve them in the following way:
 
@@ -101,7 +101,7 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## Removing/Destroying Sessions
+## Destrucción/eliminación de sesiones
 
 It's also possible remove specific variables or destroy the whole session:
 
@@ -128,7 +128,7 @@ class UserController extends Controller
 
 <a name='data-isolation'></a>
 
-## Isolating Session Data between Applications
+## Aislamiento de datos de la sesión entre aplicaciones
 
 Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
 
@@ -159,7 +159,7 @@ Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 
-## Session Bags
+## Bolsas de sesión
 
 [Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
@@ -178,7 +178,7 @@ $user->age  = 22;
 
 <a name='data-persistence'></a>
 
-## Persistent Data in Components
+## Datos persistentes en componentes
 
 Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
@@ -230,7 +230,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 

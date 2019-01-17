@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Files'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/files.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/adapter/files.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Stores the parsed annotations in files. This adapter is suitable for production
 

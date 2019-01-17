@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Binder'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Binder'
 
 *implements* [Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Phalcon\Mvc\Model\Binding
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Crypt\Mismatch'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Crypt\Mismatch'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
 
 ## Métodos
 

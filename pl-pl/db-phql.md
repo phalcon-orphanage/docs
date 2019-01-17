@@ -290,7 +290,7 @@ foreach ($result as $row) {
 
 <a name='joins'></a>
 
-### Joins
+### Łączenie tabel (ang. Joins)
 
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
 

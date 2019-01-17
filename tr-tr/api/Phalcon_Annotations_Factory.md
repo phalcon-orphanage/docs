@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'tr-tr'
 version: '4.0'
 title: 'Phalcon\Annotations\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
+<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
 
 Loads Annotations Adapter class using 'adapter' option
 

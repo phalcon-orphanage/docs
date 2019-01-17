@@ -13,7 +13,7 @@ version: '4.0'
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Проверка целостности данных
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. Специальное событие `validation` позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
 
@@ -98,7 +98,7 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Собщения об ошибках
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -166,7 +166,7 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## События при ошибках валидации
 
 Another type of events are available when the data validation process finds any inconsistency:
 
