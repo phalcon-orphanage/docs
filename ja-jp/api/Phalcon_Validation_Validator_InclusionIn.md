@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\InclusionIn'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\InclusionIn'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/inclusionin.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
 
 Check if a value is included into a list of values
 
