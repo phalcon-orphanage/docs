@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\BehaviorInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BehaviorInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behaviorinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behaviorinterface.zep)
 
 ## 方法
 
