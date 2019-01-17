@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Binder'
 
 *implements* [Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
 
 Phalcon\Mvc\Model\Binding
 
