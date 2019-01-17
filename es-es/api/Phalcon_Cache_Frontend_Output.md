@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Cache\Frontend\Output'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Output'
+---
 # Class **Phalcon\Cache\Frontend\Output**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/output.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
 
 Permite almacenar fragmentos en cache capturados con funciones ob_*
 
@@ -34,7 +34,7 @@ Check whether if frontend is buffering output
 
 public **start** ()
 
-Iniciar la salida del frontend. Actualmente no hace nada
+Starts output frontend. Currently, does nothing
 
 public *string* **getContent** ()
 
