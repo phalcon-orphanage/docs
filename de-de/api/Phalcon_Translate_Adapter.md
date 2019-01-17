@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Translate\Adapter'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Translate\Adapter'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
 
 Base class for Phalcon\Translate adapters
 
