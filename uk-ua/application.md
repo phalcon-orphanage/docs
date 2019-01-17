@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'uk-ua'
+language: 'en'
 version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
@@ -575,4 +575,4 @@ $eventsManager->attach(
 
 ## External Resources
 
-* [MVC examples on Github](https://github.com/phalcon/mvc)
+* [MVC examples on GitHub](https://github.com/phalcon/mvc)
