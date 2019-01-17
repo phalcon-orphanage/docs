@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Image\Adapter\Imagick'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Image\Adapter\Imagick'
+---
 # Class **Phalcon\Image\Adapter\Imagick**
 
 *extends* abstract class [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/adapter/imagick.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 Image manipulation support. Allows images to be resized, cropped, etc.
 
