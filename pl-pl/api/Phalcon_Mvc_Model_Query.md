@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'pl-pl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Query'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query'
 
 *implements* [Phalcon\Mvc\Model\QueryInterface](Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/query.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
 This class takes a PHQL intermediate representation and executes it.
 
