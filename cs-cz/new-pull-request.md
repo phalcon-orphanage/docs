@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'cs-cz'
 version: '4.0'
 ---
 # New Pull Request
