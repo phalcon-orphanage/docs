@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Cache\Multiple'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Multiple'
+---
 # Class **Phalcon\Cache\Multiple**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
 Allows to read to chained backend adapters writing to multiple backends
 
