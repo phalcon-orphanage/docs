@@ -1621,10 +1621,10 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## 外部资源
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
+* [Our website](https://phalconphp.com) is running using Volt as template engine, [GitHub](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [GitHub](https://github.com/phalcon/vokuro)
