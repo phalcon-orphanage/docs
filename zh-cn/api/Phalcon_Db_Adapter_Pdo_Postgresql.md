@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Postgresql'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo\Mysql'
+---
 # Class **Phalcon\Db\Adapter\Pdo\Postgresql**
 
 *extends* abstract class [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter/pdo/postgresql.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/postgresql.zep)
 
 Specific functions for the Postgresql database system
 
@@ -121,7 +121,7 @@ $result = $connection->executePrepared(
 
 public [PDOStatement](https://php.net/manual/en/class.pdostatement.php) **executePrepared** ([PDOStatement](https://php.net/manual/en/class.pdostatement.php) $statement, *array* $placeholders, *array* $dataTypes) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-执行一个预执行语句。该方法使用以0起始的整数索引。
+Executes a prepared statement binding. This function uses integer indexes starting from zero
 
 ```php
 <?php
@@ -146,7 +146,7 @@ $result = $connection->executePrepared(
 
 public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-将SQL语句发送到数据库服务器并返回成功状态。仅在SQL语句有返回数据行的情况下使用此方法。
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows
 
 ```php
 <?php
@@ -167,7 +167,7 @@ $resultset = $connection->query(
 
 public **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-将SQL语句发送到返回成功状态的数据库服务器。 只有当发送到服务器的SQL语句不会返回任何行时，才使用此方法
+Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
 
 ```php
 <?php
@@ -204,7 +204,7 @@ echo $connection->affectedRows(), " were deleted";
 
 public **close** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-关闭活动连接返回成功。Phalcon自动关闭和破坏请求结束时的活动连接
+Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
 public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
