@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Phalcon的查询语言 (PHQL)
+# Phalcon Query Language (PHQL)
 
 Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
@@ -27,7 +27,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 
 <a name='usage'></a>
 
-## 用法示例
+## Usage Example
 
 To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
@@ -101,7 +101,7 @@ class Brands extends Model
 
 <a name='creating'></a>
 
-## 创建 PHQL 查询
+## Creating PHQL Queries
 
 PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query):
 
@@ -159,7 +159,7 @@ $cars = $this->modelsManager->executeQuery(
 
 <a name='selecting-records'></a>
 
-## 查询记录
+## Selecting Records
 
 As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
@@ -202,7 +202,7 @@ $query = $manager->createQuery($phql);
 
 <a name='result-types'></a>
 
-### 结果类型
+### Result Types
 
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
 
@@ -429,7 +429,7 @@ foreach ($rows as $row) {
 
 <a name='conditions'></a>
 
-### 条件
+### Conditions
 
 Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
 
@@ -489,7 +489,7 @@ $cars = $manager->executeQuery(
 
 <a name='inserting-data'></a>
 
-## 插入数据
+## Inserting Data
 
 With PHQL it's possible to insert data using the familiar INSERT statement:
 
@@ -561,7 +561,7 @@ if ($result->success() === false) {
 
 <a name='updating-data'></a>
 
-## 更新数据
+## Updating Data
 
 Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
 
@@ -643,7 +643,7 @@ $success = $process();
 
 <a name='deleting-data'></a>
 
-## 删除数据
+## Deleting Data
 
 When a record is deleted the events related to the delete operation will be executed for each row:
 
@@ -690,7 +690,7 @@ if ($result->success() === false) {
 
 <a name='query-builder'></a>
 
-## 使用查询生成器创建查询
+## Creating queries using the Query Builder
 
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
@@ -853,7 +853,7 @@ $builder->from(['r' => 'Store\Robots'])
 
 <a name='query-builder-parameters'></a>
 
-### 绑定参数
+### Bound Parameters
 
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
@@ -879,7 +879,7 @@ $robots = $this->modelsManager->createBuilder()
 
 <a name='disallow-literals'></a>
 
-## 不允许PHQL中的文字
+## Disallow literals in PHQL
 
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
 
@@ -932,7 +932,7 @@ Bound parameters can be used even if literals are allowed or not. Disallowing th
 
 <a name='escaping-reserved-words'></a>
 
-## 转义保留字
+## Escaping Reserved Words
 
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
 
@@ -950,7 +950,7 @@ The delimiters are dynamically translated to valid delimiters depending on the d
 
 <a name='lifecycle'></a>
 
-## PHQL生命周期
+## PHQL Lifecycle
 
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
@@ -960,7 +960,7 @@ Being a high-level language, PHQL gives developers the ability to personalize an
 
 <a name='raw-sql'></a>
 
-## 使用原始的SQL
+## Using Raw SQL
 
 A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
 
@@ -1033,7 +1033,7 @@ $robots = Robots::findByRawSql(
 
 <a name='troubleshooting'></a>
 
-## 疑难解答
+## Troubleshooting
 
 Some things to keep in mind when using PHQL:
 
