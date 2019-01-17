@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\Memcache'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/memcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
 
 Allows to cache output fragments, PHP data or raw data to a memcache backend
 
