@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Forms\Element\Password'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Password'
+---
 # Class **Phalcon\Forms\Element\Password**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/element/password.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
 
 Component INPUT[type=password] for forms
 
