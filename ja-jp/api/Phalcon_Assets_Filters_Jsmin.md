@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Filters\Jsmin'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/filters/jsmin.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
 JavaScript に解釈されない不要な文字を削除します。 コメントは削除されます。 タブをスペースに置き換えます。 キャリッジリターンをラインフィードに置き換えます。 ほとんどのスペースやラインフィードが削除されます。
 
