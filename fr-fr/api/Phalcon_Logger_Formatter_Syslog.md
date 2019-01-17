@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Logger\Formatter\Syslog'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter\Syslog'
+---
 # Class **Phalcon\Logger\Formatter\Syslog**
 
 *extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatter/syslog.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
 Prepares a message to be used in a Syslog backend
 
