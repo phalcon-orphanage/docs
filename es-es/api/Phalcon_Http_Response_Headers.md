@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response\Headers'
 
 *implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
 Esta clase es una bolsa o contenedor para administrar las cabeceras de la respuesta
 
