@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Image\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/factory.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
 Loads Image Adapter class using 'adapter' option
 
