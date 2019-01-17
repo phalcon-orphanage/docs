@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'ru-ru' version: '4.0' title: 'Phalcon\Dispatcher'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Dispatcher'
+---
 # Abstract class **Phalcon\Dispatcher**
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/dispatcher.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
