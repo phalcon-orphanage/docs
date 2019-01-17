@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 内容的过滤筛选
+# Contextual Escaping
 
 Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/Phalcon_Escaper) provides contextual escaping and is written in Zephir, providing the minimal overhead when escaping different kinds of texts.
 
