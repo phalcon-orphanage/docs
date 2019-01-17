@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Logger\Formatter\Line'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter\Line'
+---
 # Class **Phalcon\Logger\Formatter\Line**
 
 *extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatter/line.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 Formats messages using an one-line string
 
