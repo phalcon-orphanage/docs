@@ -108,7 +108,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Zadania
+## Tasks
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
