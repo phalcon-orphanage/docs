@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Memcache'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Memcache'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/metadata/memcache.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memcache.zep)
 
 Stores model meta-data in the Memcache.
 
