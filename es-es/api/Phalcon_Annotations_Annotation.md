@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
 Representa una sola anotación en una colección de anotaciones
 
