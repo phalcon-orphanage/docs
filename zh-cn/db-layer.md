@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 数据库抽象层
+# Database Abstraction Layer
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -17,7 +17,7 @@ This component allows for a lower level database manipulation than using traditi
 
 <a name='adapters'></a>
 
-## 数据库适配器
+## Database Adapters
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
@@ -29,7 +29,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### 工厂
+### Factory
 
 <a name='factory'></a>
 
@@ -54,13 +54,13 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### 实现自己的适配器
+### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
 <a name='dialects'></a>
 
-## 数据库语言
+## Database Dialects
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
@@ -72,7 +72,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 <a name='dialects-custom'></a>
 
-### 执行您自己的DI注入器
+### Implementing your own dialects
 
 The [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
 
@@ -124,7 +124,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## 连接到数据库
+## Connecting to Databases
 
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
@@ -196,7 +196,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## PDO 的附加选项设置
+## Setting up additional PDO options
 
 You can set PDO options at connection time by passing the parameters `options`:
 
@@ -329,7 +329,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## 绑定参数
+## Binding Parameters
 
 Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. 绑定参数可以简单地实现，如下所示：
 
