@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Mvc\ModuleDefinitionInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\ModuleDefinitionInterface'
+---
 # Interface **Phalcon\Mvc\ModuleDefinitionInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/moduledefinitioninterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
 
 ## 方法
 
