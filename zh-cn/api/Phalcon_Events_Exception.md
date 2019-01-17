@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'zh-cn'
 version: '4.0'
 title: 'Phalcon\Events\Exception'
 ---
