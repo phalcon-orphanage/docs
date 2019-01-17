@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'ru-ru' version: '4.0' title: 'Phalcon\Logger\Formatter\Line'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter\Line'
+---
 # Class **Phalcon\Logger\Formatter\Line**
 
-*extends* abstract class [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+*extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-*implements* [Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface)
+*implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatter/line.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 Formats messages using an one-line string
 
@@ -40,10 +40,10 @@ public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*
 
 Applies a format to a message before sent it to the internal log
 
-public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 Returns the string meaning of a logger constant
 
-public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 Interpolates context values into the message placeholders
