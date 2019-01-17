@@ -54,7 +54,7 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementace vlastních adaptérů
+### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
