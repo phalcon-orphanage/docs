@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 调度控制器
+# Dispatching Controllers
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
 
 <a name='dispatch-loop'></a>
 
-## 调度循环
+## The Dispatch Loop
 
 This is an important process that has much to do with the MVC flow itself, especially with the controller part. The work occurs within the controller dispatcher. The controller files are read, loaded, and instantiated. Then the required actions are executed. If an action forwards the flow to another controller/action, the controller dispatcher starts again. To better illustrate this, the following example shows approximately the process performed within [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher):
 
@@ -49,7 +49,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 <a name='dispatch-loop-events'></a>
 
-### 调度循环事件
+### Dispatch Loop Events
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
 
@@ -58,7 +58,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | 是的       | Listeners             |
 | beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | 是的       | Listeners             |
 | beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | 是的       | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | 否        | 控制器                   |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | 否        | Controllers           |
 | afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | 否        | Listeners/Controllers |
 | beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | 是的       | Listeners             |
 | beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | 是的       | Listeners             |
@@ -246,7 +246,7 @@ echo $dispatcher->getModuleName(); // will display properly 'backend'
 
 <a name='preparing-parameters'></a>
 
-## 准备参数
+## Preparing Parameters
 
 Thanks to the hook points provided by [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) you can easily adapt your application to any URL schema; i.e. you might want your URLs look like: `https://example.com/controller/key1/value1/key2/value`. Since parameters are passed with the order that they are defined in the URL to actions, you can transform them to adopt the desired schema:
 
@@ -470,7 +470,7 @@ $di->set(
 
 <a name='preparing-actions-inject-model-instances'></a>
 
-### 注入模型实例
+### Inject model instances
 
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
