@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
 
 次の例では、'adapter'オプションを使用してBackend Cache Adapterクラスをロードし、フロントエンドが配列として提供される場合は、Frontend Cache Factoryが呼ばれます。
 
