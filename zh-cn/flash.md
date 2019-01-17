@@ -26,7 +26,7 @@ This component makes use of adapters to define the behavior of the messages afte
 
 <a name='usage'></a>
 
-## 使用
+## Usage
 
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
