@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Mvc\Router\GroupInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\GroupInterface'
+---
 # Interface **Phalcon\Mvc\Router\GroupInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/groupinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
 
 ## Métodos
 
