@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 读取配置
+# Reading Configurations
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -38,7 +38,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## 工厂
+## Factory
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
@@ -101,7 +101,7 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## 文件适配器
+## File Adapters
 
 The adapters available are:
 
@@ -114,7 +114,7 @@ The adapters available are:
 
 <a name='ini-files'></a>
 
-## 读取 INI 文件
+## Reading INI Files
 
 Ini files are a common way to store settings. [Phalcon\Config](api/Phalcon_Config) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
@@ -207,7 +207,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## 嵌套的配置
+## Nested Configuration
 
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
