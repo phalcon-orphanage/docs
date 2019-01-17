@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Identical'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Identical'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/identical.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/identical.zep)
 
 Checks if a value is identical to other
 
