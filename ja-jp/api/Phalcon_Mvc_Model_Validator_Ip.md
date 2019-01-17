@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Validator\Ip'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Ip'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/validator/ip.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/ip.zep)
 
 Phalcon\Mvc\Model\Validator\IP
 
