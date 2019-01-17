@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\Exception'
+---
 # Class **Phalcon\Mvc\Model\Transaction\Exception**
 
-*extends* class [Phalcon\Mvc\Model\Exception](/4.0/en/api/Phalcon_Mvc_Model_Exception)
+*extends* class [Phalcon\Mvc\Model\Exception](Phalcon_Mvc_Model_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transaction/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
 
 ## Methods
 
