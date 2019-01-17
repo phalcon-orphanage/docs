@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/factory.zep)
 
 Loads Logger Adapter class using 'adapter' option
 
