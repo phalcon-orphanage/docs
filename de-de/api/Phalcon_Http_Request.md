@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Http\Request'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Request'
+---
 # Class **Phalcon\Http\Request**
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/request.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 Encapsulates request information for easy and secure access from application controllers.
 
