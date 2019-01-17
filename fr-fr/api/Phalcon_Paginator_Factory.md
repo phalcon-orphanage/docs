@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Paginator\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/paginator/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/factory.zep)
 
 Loads Paginator Adapter class using 'adapter' option
 
