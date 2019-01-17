@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Frontend\Data'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/data.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
 Allows to cache native PHP data in a serialized form
 
