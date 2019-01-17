@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\Apc'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Apc'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
 
 Permite almacenar en caché fragmentos de salida, datos PHP y datos sin procesar utilizando un backend APC
 
