@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo'
+---
 # Abstract class **Phalcon\Db\Adapter\Pdo**
 
 *extends* abstract class [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo.zep)
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect to a database
 
