@@ -8,7 +8,7 @@ title: 'Phalcon\Translate\Interpolator\AssociativeArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
 
 ## Methods
 
