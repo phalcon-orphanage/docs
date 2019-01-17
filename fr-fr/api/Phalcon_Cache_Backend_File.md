@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\File'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\File'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/file.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
 
 Allows to cache output fragments using a file backend
 
