@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Message'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Message'
 
 *implements* [Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/message.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/message.zep)
 
 Encapsulates validation info generated before save/delete records fails
 
