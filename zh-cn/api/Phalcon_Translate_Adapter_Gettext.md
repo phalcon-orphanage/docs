@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Translate\Adapter\Gettext'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter\Gettext'
+---
 # Class **Phalcon\Translate\Adapter\Gettext**
 
 *extends* abstract class [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter/gettext.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
 
 ```php
 <?php
