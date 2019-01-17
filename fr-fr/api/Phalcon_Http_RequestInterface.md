@@ -6,7 +6,7 @@ title: 'Phalcon\Http\RequestInterface'
 ---
 # Interface **Phalcon\Http\RequestInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
 
 ## Methods
 
