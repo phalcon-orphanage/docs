@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Adapter\Redis'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Redis'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter/redis.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
 This adapter store sessions in Redis
 
