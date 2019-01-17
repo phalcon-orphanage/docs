@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Debug\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Debug\Exception'
+---
 # Class **Phalcon\Debug\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/debug/exception.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
 
 ## メソッド
 

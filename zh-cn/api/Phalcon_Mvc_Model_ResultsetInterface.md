@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\ResultsetInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/resultsetinterface.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
 
 ## 方法
 

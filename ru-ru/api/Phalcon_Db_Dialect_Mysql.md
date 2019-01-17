@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'ru-ru' version: '4.0' title: 'Phalcon\Db\Dialect\Mysql'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Dialect\Mysql'
+---
 # Class **Phalcon\Db\Dialect\Mysql**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect/mysql.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 Generates database specific SQL for the MySQL RDBMS
 

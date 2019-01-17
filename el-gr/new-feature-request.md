@@ -1,20 +1,16 @@
 ---
 layout: article
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
-
 # New Feature Request
 
-A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand implement it.
+A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
-A NFR contains: * Suggested syntax * Suggested class names and methods * A short documentation * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
+A NFR contains: * Suggested syntax * Suggested class names and methods * A description detailing the usage * How it can benefit the framework and the community * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
 
-In the following cases a new feature request will be rejected: * The feature makes the framework slow * The feature doesn't provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR doesn't follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster doesn't provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Static methods aren't allowed
+In the following cases a new feature request will be rejected: * The feature makes the framework slow * The feature does not provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR does not follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster does not provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Uses static methods - (not allowed)
 
-To send a NFR you don't need to provide Zephir or C code or develop the feature. New Feture requests explain the goal of the intended implementation and open discussion on how best to implement it.
+To send a NFR you do not need to provide Zephir or C code or develop the feature. New Feature requests explain the goal of the intended implementation and open discussion on how best to implement it.
 
-All NFRs should be posted as a new issue on [Github](https://github.com/phalcon/cphalcon/issues).
+All NFRs should be posted as a new issue on [Github](https://github.com/phalcon/cphalcon/issues). Please make sure to use the prefix `[NFR]` in the title of your issue.

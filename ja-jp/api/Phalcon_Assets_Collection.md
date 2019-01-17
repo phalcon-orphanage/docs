@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Collection'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/collection.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
 リソースのコレクションを表します。
 

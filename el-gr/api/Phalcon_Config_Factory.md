@@ -1,16 +1,16 @@
 ---
 layout: article
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Factory'
 ---
 # Class **Phalcon\Config\Factory**
 
-*extends* abstract class [Phalcon\Factory](/4.0/en/api/Phalcon_Factory)
+*extends* abstract class [Phalcon\Factory](Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/4.0/en/api/Phalcon_FactoryInterface)
+*implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
 Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 
@@ -29,7 +29,7 @@ $config = Factory::load($options);
 
 ## Methods
 
-public static **load** ([Phalcon\Config](/4.0/en/api/Phalcon_Config) | *array* $config)
+public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
 protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 

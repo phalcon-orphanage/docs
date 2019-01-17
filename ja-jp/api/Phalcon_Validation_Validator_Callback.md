@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Callback'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Callback'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/validator/callback.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
 Calls user function for validation
 

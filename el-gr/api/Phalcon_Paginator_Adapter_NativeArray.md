@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'el-gr' version: '4.0' title: 'Phalcon\Paginator\Adapter\NativeArray'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Paginator\Adapter\NativeArray'
+---
 # Class **Phalcon\Paginator\Adapter\NativeArray**
 
 *extends* abstract class [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/paginator/adapter/nativearray.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
 Pagination using a PHP array as source of data
 

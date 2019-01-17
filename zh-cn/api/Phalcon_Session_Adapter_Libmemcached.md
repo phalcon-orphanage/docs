@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Session\Adapter\Libmemcached'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Session\Adapter\Libmemcached'
+---
 # Class **Phalcon\Session\Adapter\Libmemcached**
 
 *extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter/libmemcached.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
 This adapter store sessions in libmemcached
 

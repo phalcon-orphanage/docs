@@ -1,6 +1,6 @@
 [
     {
-        "text": "Γενικά",
+        "text": "General",
         "url": "/introduction",
         "menu": [
             {
@@ -23,11 +23,11 @@
         ]
     },
     {
-        "text": "Συνεισφορές",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "Επισκόπηση",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -47,13 +47,13 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
-                "url": ""
+                "text": "Testing environment",
+                "url": "testing-environment"
             }
         ]
     },
     {
-        "text": "Ξεκινώντας",
+        "text": "Getting Started",
         "url": "",
         "menu": [
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Περιβάλλοντα",
+        "text": "Environments",
         "url": "",
         "menu": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     {
-        "text": "Εργαλεία ανάπτυξης",
+        "text": "Development Tools",
         "url": "",
         "menu": [
             {
@@ -105,7 +105,7 @@
                 "url": "/devtools-usage"
             },
             {
-                "text": "Εντοπισμός σφαλμάτων",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "text": "Πυρήνας",
+        "text": "Core",
         "url": "",
         "menu": [
             {
@@ -205,7 +205,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Στρώμα",
+                "text": "Layer",
                 "url": "/db-layer"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Γεγονότα",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {

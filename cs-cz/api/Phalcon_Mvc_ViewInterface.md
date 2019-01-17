@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Mvc\ViewInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\ViewInterface'
+---
 # Interface **Phalcon\Mvc\ViewInterface**
 
 *implements* [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/viewinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
 
 ## Methods
 

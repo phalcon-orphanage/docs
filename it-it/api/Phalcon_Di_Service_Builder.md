@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'it-it' version: '4.0' title: 'Phalcon\Di\Service\Builder'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Di\Service\Builder'
+---
 # Class **Phalcon\Di\Service\Builder**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/service/builder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
 This class builds instances based on complex definitions
 

@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 ---
 

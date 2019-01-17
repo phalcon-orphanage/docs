@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Logger\Adapter\Firephp'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Adapter\Firephp'
+---
 # Class **Phalcon\Logger\Adapter\Firephp**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/adapter/firephp.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/firephp.zep)
 
 Sends logs to FirePHP
 

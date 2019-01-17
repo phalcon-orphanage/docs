@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Frontend\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
 Loads Frontend Cache Adapter class using 'adapter' option
 

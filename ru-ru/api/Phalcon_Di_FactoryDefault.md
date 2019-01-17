@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'ru-ru' version: '4.0' title: 'Phalcon\Di\FactoryDefault'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Di\FactoryDefault'
+---
 # Class **Phalcon\Di\FactoryDefault**
 
 *extends* class [Phalcon\Di](Phalcon_Di)
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Phalcon\DiInterface](Phalcon_DiInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/di/factorydefault.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 

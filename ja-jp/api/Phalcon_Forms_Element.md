@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Forms\Element'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Element'
+---
 # Abstract class **Phalcon\Forms\Element**
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/element.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
 
 This is a base class for form elements
 

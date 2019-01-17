@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Events\Event'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Events\Event'
+---
 # Class **Phalcon\Events\Event**
 
 *implements* [Phalcon\Events\EventInterface](Phalcon_Events_EventInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/events/event.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
 This class offers contextual information of a fired event in the EventsManager
 

@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Mvc\Router\Route'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\Route'
+---
 # Class **Phalcon\Mvc\Router\Route**
 
 *implements* [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/route.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
 
 This class represents every route added to the router
 

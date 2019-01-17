@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Forms\Form'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Forms\Form'
+---
 # Class **Phalcon\Forms\Form**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/form.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
 This component allows to build forms using an object-oriented interface
 

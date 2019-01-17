@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'ja-jp' version: '4.0' title: 'Phalcon\Cache\Frontend\Base64'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cache\Frontend\Base64'
+---
 # Class **Phalcon\Cache\Frontend\Base64**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/base64.zep" class="btn btn-default btn-sm">GitHub上のソース</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
 base64形式でエンコード/デコードしたデータをキャッシュできる。
 
@@ -71,7 +71,7 @@ public **isBuffering** ()
 
 public **start** ()
 
-フロントエンドの出力を開始します。実際には、このアダプターでは何もしません。
+Starts output frontend. Actually, does nothing in this adapter
 
 public *string* **getContent** ()
 

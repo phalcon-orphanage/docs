@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'el-gr' version: '4.0' title: 'Phalcon\Db\Adapter\Pdo\Mysql'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Adapter\Pdo\Mysql'
+---
 # Class **Phalcon\Db\Adapter\Pdo\Mysql**
 
 *extends* abstract class [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/adapter/pdo/mysql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
 
 Specific functions for the Mysql database system
 

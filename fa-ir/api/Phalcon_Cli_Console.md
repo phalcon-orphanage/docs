@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fa-ir' version: '4.0' title: 'Phalcon\Cli\Console'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Console'
+---
 # Class **Phalcon\Cli\Console**
 
 *extends* abstract class [Phalcon\Application](Phalcon_Application)
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/console.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
 This component allows to create CLI applications using Phalcon
 

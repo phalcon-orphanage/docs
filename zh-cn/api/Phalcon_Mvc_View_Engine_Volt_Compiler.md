@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
+---
 # Class **Phalcon\Mvc\View\Engine\Volt\Compiler**
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view/engine/volt/compiler.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
 
 This class reads and compiles Volt templates into PHP plain code
 
