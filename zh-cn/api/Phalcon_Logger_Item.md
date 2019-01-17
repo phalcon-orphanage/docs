@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Item'
 ---
 # Class **Phalcon\Logger\Item**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/item.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
 Represents each item in a logging transaction
 
