@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Cli\Dispatcher'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Dispatcher'
+---
 # Class **Phalcon\Cli\Dispatcher**
 
 *extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
