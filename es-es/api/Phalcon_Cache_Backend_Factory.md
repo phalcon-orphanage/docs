@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cache\Backend\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
 
 Carga la clase del Adaptador de almacenamiento en caché de backend usando la opción 'adapter', si el frontend es abastecido como matriz se llamara Frontend Cache Factory
 
