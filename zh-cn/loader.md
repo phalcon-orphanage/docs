@@ -294,7 +294,7 @@ Some events when returning boolean `false` could stop the active operation. 以�
 
 <a name='troubleshooting'></a>
 
-## 疑难解答
+## Troubleshooting
 
 Some things to keep in mind when using the universal autoloader:
 
