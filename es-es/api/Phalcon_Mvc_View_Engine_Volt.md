@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt'
+---
 # Class **Phalcon\Mvc\View\Engine\Volt**
 
-*extends* abstract class [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+*extends* abstract class [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-*implements* [Phalcon\Mvc\View\EngineInterface](/4.0/en/api/Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view/engine/volt.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
 Diseñador de plantilla amigable y rápido para PHP escrito en Zephir/C
 
@@ -34,7 +34,7 @@ Renders a view using the template engine
 
 public **length** (*mixed* $item)
 
-Filtro de longitud. Si se pasa un objeto o matriz se realiza un count(), de lo contrario realiza un strlen()/mb_strlen()
+Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 public **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
@@ -56,38 +56,38 @@ public **callMacro** (*mixed* $name, [*array* $arguments])
 
 Comprueba si una macro está definida y la llama
 
-public **__construct** ([Phalcon\Mvc\ViewBaseInterface](/4.0/en/api/Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
 Phalcon\Mvc\View\Engine constructor
 
-public **getContent** () inherited from [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+public **getContent** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
 Returns cached output on another view stage
 
-public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
 Renders a partial inside another view
 
-public **getView** () inherited from [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+public **getView** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
 Returns the view component related to the adapter
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the dependency injector
 
-public **getDI** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Sets the event manager
 
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Devuelve el administrador de eventos interno
 
-public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 Magic method __get
