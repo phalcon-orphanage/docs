@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Behavior'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Behavior'
 
 *implements* [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/behavior.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior.zep)
 
 This is an optional base class for ORM behaviors
 
