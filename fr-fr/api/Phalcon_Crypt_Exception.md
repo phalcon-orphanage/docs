@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'fr-fr'
 version: '4.0'
 title: 'Phalcon\Crypt\Exception'
 ---

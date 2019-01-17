@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'fr-fr'
 version: '4.0'
 ---
 > If you have found a bug, you can open an issue in [Github](https://github.com/phalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
