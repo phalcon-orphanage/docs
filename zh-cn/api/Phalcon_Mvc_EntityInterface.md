@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\EntityInterface'
 ---
 # Interface **Phalcon\Mvc\EntityInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
 
 ## 方法
 
