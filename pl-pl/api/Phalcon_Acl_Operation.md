@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'pl-pl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Operation'
 ---
@@ -41,5 +41,3 @@ public __toString(): string
 ```
 
 Operation name
-
-* * *
