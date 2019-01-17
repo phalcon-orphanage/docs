@@ -3092,87 +3092,87 @@
   "testing-environment": [
     {
       "text": "Overview",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Overview",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
       "text": "Installation",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
       "text": "Services",
-      "url": "services"
+      "url": "#services"
     }
   ],
   "translate": [
