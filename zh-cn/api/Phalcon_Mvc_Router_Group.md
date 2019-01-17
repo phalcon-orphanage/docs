@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Mvc\Router\Group'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\Group'
+---
 # Class **Phalcon\Mvc\Router\Group**
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/group.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
 Helper class to create a group of routes with common attributes
 
