@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Factory'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/factory.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
 Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 
