@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'cs-cz'
 version: '4.0'
 title: 'Phalcon\Cli\Console\Exception'
 ---
