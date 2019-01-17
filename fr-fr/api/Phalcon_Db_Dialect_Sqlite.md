@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Db\Dialect\Sqlite'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Dialect\Sqlite'
+---
 # Class **Phalcon\Db\Dialect\Sqlite**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect/sqlite.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/sqlite.zep)
 
 Generates database specific SQL for the Sqlite RDBMS
 
