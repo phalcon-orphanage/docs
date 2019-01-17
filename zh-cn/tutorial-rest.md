@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# 教程： 创建一个简单的 REST API
+# Tutorial: Creating a Simple REST API
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
@@ -20,7 +20,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 <a name='definitions'></a>
 
-## 定义 API
+## Defining the API
 
 The API consists of the following methods:
 
@@ -35,7 +35,7 @@ The API consists of the following methods:
 
 <a name='implementation'></a>
 
-## 创建应用程序
+## Creating the Application
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
@@ -139,7 +139,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## 创建模型
+## Creating a Model
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -246,7 +246,7 @@ $app = new Micro($di);
 
 <a name='retrieving-data'></a>
 
-## 检索数据
+## Retrieving Data
 
 The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
@@ -359,7 +359,7 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## 插入数据
+## Inserting Data
 
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
@@ -427,7 +427,7 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## 更新数据
+## Updating Data
 
 The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
@@ -489,7 +489,7 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## 删除数据
+## Deleting Data
 
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
@@ -559,7 +559,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 <a name='testing'></a>
 
-## 测试我们的应用程序
+## Testing our Application
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
@@ -667,6 +667,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## 结语
+## Conclusion
 
 As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).
