@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\MetaDataInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MetaDataInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
 
 ## メソッド
 
