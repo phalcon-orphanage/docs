@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Http\Response\Headers'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Response\Headers'
+---
 # Class **Phalcon\Http\Response\Headers**
 
-*implements* [Phalcon\Http\Response\HeadersInterface](/4.0/en/api/Phalcon_Http_Response_HeadersInterface)
+*implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/response/headers.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
 Esta clase es una bolsa o contenedor para administrar las cabeceras de la respuesta
 
