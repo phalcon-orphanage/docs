@@ -15,19 +15,19 @@ version: '4.0'
 
 > **Use Case**
 > 
-> An accounting application needs to have different groups of users have access to various areas of the application.
+> Μια εφαρμογή λογιστικής χρειάζεται διαφορετικές ομάδες χρηστών να έχουν πρόσβαση σε διάφορες περιοχές της εφαρμογής.
 > 
 > **Operation** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
 > **Subject** - Login page - Admin page - Invoices page - Reports page {:.alert .alert-info}
 
-As seen above in the use case, an [Operation](api/Phalcon_Acl_Operation) is defined as who needs to access a particular [Subject](api/Phalcon_Acl_Subject) i.e. an area of the application. A [Subject](api/Phalcon_Acl_Subject) is defined as the area of the application that needs to be accessed.
+Όπως φαίνεται ανωτέρω, στην περίπτωση χρήσης, μια [λειτουργία](api/Phalcon_Acl_Operation) ορίζεται ως ποιός χρειάζεται για να αποκτήσει πρόσβαση σε ένα συγκεκριμένο [θέμα](api/Phalcon_Acl_Subject) δηλαδή, μια περιοχή από της εφαρμογής. Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να προσβληθεί.
 
-Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific operations to be bound to specific subjects.
+Χρησιμοποιώντας το στοιχείο [Phalcon\Acl](api/Phalcon_Acl), μπορούμε να συνδέσουμε αυτά τα δύο μαζί, και να ενισχύσουμε την ασφάλεια της εφαρμογής μας, επιτρέποντας μόνο συγκεκριμένες λειτουργίες να δεσμευθούν σε συγκεκριμένα θέματα.
 
 <a name='setup'></a>
 
-## Creating an ACL
+## Δημιουργώντας Λίστες Ελέγχου Πρόσβασης
 
 [Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with operations and subjects. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
