@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'cs-cz' version: '4.0' title: 'Phalcon\Paginator\Adapter\QueryBuilder'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Paginator\Adapter\QueryBuilder'
+---
 # Class **Phalcon\Paginator\Adapter\QueryBuilder**
 
 *extends* abstract class [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/paginator/adapter/querybuilder.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
 Pagination using a PHQL query builder as source of data
 
