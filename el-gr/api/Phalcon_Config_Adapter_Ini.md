@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'el-gr' version: '4.0' title: 'Phalcon\Config\Adapter\Ini'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Ini'
+---
 # Class **Phalcon\Config\Adapter\Ini**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/adapter/ini.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
 
 Reads ini files and converts them to Phalcon\Config objects.
 
