@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Db\Profiler'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Db\Profiler'
+---
 # Class **Phalcon\Db\Profiler**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/profiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
 Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.
 
