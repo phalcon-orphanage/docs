@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Result\Pdo'
 
 *implements* [Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/result/pdo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
 Encapsulates the resultset internals
 

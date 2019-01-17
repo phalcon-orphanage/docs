@@ -10,7 +10,7 @@ title: 'Phalcon\Forms\Element\Numeric'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/element/numeric.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
 
 Component INPUT[type=number] for forms
 

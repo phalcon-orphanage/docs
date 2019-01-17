@@ -6,7 +6,7 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/elementinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
 ## Methods
 abstract public  **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)

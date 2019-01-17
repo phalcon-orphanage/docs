@@ -2,351 +2,351 @@
   "acl": [
     {
       "text": "Controladores",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Creando una ACL",
-      "url": "setup"
+      "url": "#setup"
     },
     {
       "text": "Adding Operations",
-      "url": "adding-operations"
+      "url": "#adding-operations"
     },
     {
       "text": "Adding Subjects",
-      "url": "adding-subjects"
+      "url": "#adding-subjects"
     },
     {
       "text": "Definición de controles de acceso",
-      "url": "access-controls"
+      "url": "#access-controls"
     },
     {
       "text": "Consultando una ACL",
-      "url": "querying"
+      "url": "#querying"
     },
     {
       "text": "Acceso basado en una función",
-      "url": "function-based-access"
+      "url": "#function-based-access"
     },
     {
       "text": "Objects as Operation and Subject name",
-      "url": "objects"
+      "url": "#objects"
     },
     {
       "text": "Operations Inheritance",
-      "url": "operationss-inheritance"
+      "url": "#operationss-inheritance"
     },
     {
       "text": "Serializando listas ACL",
-      "url": "serialization"
+      "url": "#serialization"
     },
     {
       "text": "Eventos",
-      "url": "events"
+      "url": "#events"
     },
     {
       "text": "Implementando sus propios adaptadores",
-      "url": "custom-adapters"
+      "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
       "text": "Controladores",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Factory",
-      "url": "setup"
+      "url": "#setup"
     },
     {
       "text": "Agregando Roles en ACL",
-      "url": "factory"
+      "url": "#factory"
     },
     {
       "text": "Leyendo anotaciones",
-      "url": "reading"
+      "url": "#reading"
     },
     {
       "text": "Tipos de anotaciones",
-      "url": "types"
+      "url": "#types"
     },
     {
       "text": "Usos prácticos",
-      "url": "usage",
+      "url": "#usage",
       "menu": [
         {
           "text": "Activar cache con anotaciones",
           "level": 2,
-          "url": "usage-cache"
+          "url": "#usage-cache"
         },
         {
           "text": "Áreas privadas y públicas con anotaciones",
           "level": 2,
-          "url": "usage-access-management"
+          "url": "#usage-access-management"
         }
       ]
     },
     {
       "text": "Adaptadores de anotaciones",
-      "url": "adapters",
+      "url": "#adapters",
       "menu": [
         {
           "text": "Implementando sus propios adaptadores",
           "level": 2,
-          "url": "adapters-custom"
+          "url": "#adapters-custom"
         }
       ]
     },
     {
       "text": "Recursos externos",
-      "url": "resources"
+      "url": "#resources"
     }
   ],
   "application-cli": [
     {
       "text": "Crear una Aplicación de Línea de Comandos (CLI)",
-      "url": "creating-cli-application"
+      "url": "#creating-cli-application"
     },
     {
       "text": "Estructura",
-      "url": "structure"
+      "url": "#structure"
     },
     {
       "text": "Creando un Archivo Principal de Ejecución",
-      "url": "creating-bootstrap"
+      "url": "#creating-bootstrap"
     },
     {
       "text": "Tasks (Tareas)",
-      "url": "tasks"
+      "url": "#tasks"
     },
     {
       "text": "Procesar parámetros del Action",
-      "url": "processing-action-parameters"
+      "url": "#processing-action-parameters"
     },
     {
       "text": "Ejecutando Tasks en cadena",
-      "url": "running-tasks-chain"
+      "url": "#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
       "text": "Creando una Micro Aplicación",
-      "url": "creating-micro-application"
+      "url": "#creating-micro-application"
     },
     {
       "text": "Ruteo",
-      "url": "routing",
+      "url": "#routing",
       "menu": [
         {
           "text": "Configuración",
           "level": 2,
-          "url": "routing-setup",
+          "url": "#routing-setup",
           "menu": [
             {
               "text": "El Objeto de la Aplicación",
               "level": 3,
-              "url": "routing-setup-application"
+              "url": "#routing-setup-application"
             },
             {
               "text": "El Objeto Ruoter",
               "level": 3,
-              "url": "routing-setup-router"
+              "url": "#routing-setup-router"
             }
           ]
         },
         {
           "text": "Reglas de reescritura",
           "level": 2,
-          "url": "rewrite-rules"
+          "url": "#rewrite-rules"
         },
         {
           "text": "Manejadores",
           "level": 2,
-          "url": "routing-handlers",
+          "url": "#routing-handlers",
           "menu": [
             {
               "text": "Definiciones",
               "level": 3,
-              "url": "routing-handlers-definitions",
+              "url": "#routing-handlers-definitions",
               "menu": [
                 {
                   "text": "Funciones anónimas",
                   "level": 4,
-                  "url": "routing-handlers-anonymous-function"
+                  "url": "#routing-handlers-anonymous-function"
                 },
                 {
                   "text": "Funciones",
                   "level": 4,
-                  "url": "routing-handlers-function"
+                  "url": "#routing-handlers-function"
                 },
                 {
                   "text": "Método estático",
                   "level": 4,
-                  "url": "routing-handlers-static-method"
+                  "url": "#routing-handlers-static-method"
                 },
                 {
                   "text": "Método en un objeto",
                   "level": 4,
-                  "url": "routing-handlers-object-method"
+                  "url": "#routing-handlers-object-method"
                 },
                 {
                   "text": "Controladores",
                   "level": 4,
-                  "url": "routing-handlers-controllers"
+                  "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
               "text": "Carga perezosa (Lazy Load)",
               "level": 3,
-              "url": "routing-handlers-controllers-lazy-loading",
+              "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
                   "text": "Casos de uso",
                   "level": 4,
-                  "url": "routing-handlers-controllers-lazy-loading-use-case"
+                  "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
               "text": "Not Found (404)",
               "level": 3,
-              "url": "routing-handlers-not-found"
+              "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
           "text": "Métodos - verbos",
           "level": 2,
-          "url": "routing-verbs",
+          "url": "#routing-verbs",
           "menu": [
             {
               "text": "delete",
               "level": 3,
-              "url": "routing-verb-delete"
+              "url": "#routing-verb-delete"
             },
             {
               "text": "get",
               "level": 3,
-              "url": "routing-verb-get"
+              "url": "#routing-verb-get"
             },
             {
               "text": "head",
               "level": 3,
-              "url": "routing-verb-head"
+              "url": "#routing-verb-head"
             },
             {
               "text": "map",
               "level": 3,
-              "url": "routing-verb-map"
+              "url": "#routing-verb-map"
             },
             {
               "text": "options",
               "level": 3,
-              "url": "routing-verb-options"
+              "url": "#routing-verb-options"
             },
             {
               "text": "patch",
               "level": 3,
-              "url": "routing-verb-patch"
+              "url": "#routing-verb-patch"
             },
             {
               "text": "post",
               "level": 3,
-              "url": "routing-verb-post"
+              "url": "#routing-verb-post"
             },
             {
               "text": "put",
               "level": 3,
-              "url": "routing-verb-put"
+              "url": "#routing-verb-put"
             }
           ]
         },
         {
           "text": "Colecciones",
           "level": 2,
-          "url": "routing-collections"
+          "url": "#routing-collections"
         },
         {
           "text": "Parámetros",
           "level": 2,
-          "url": "routing-parameters"
+          "url": "#routing-parameters"
         },
         {
           "text": "Redirecciones",
           "level": 2,
-          "url": "routing-redirections"
+          "url": "#routing-redirections"
         },
         {
           "text": "URLs para Rutas",
           "level": 2,
-          "url": "routing-urls-for-routes"
+          "url": "#routing-urls-for-routes"
         }
       ]
     },
     {
       "text": "Inyector de Dependencias",
-      "url": "dependency-injector"
+      "url": "#dependency-injector"
     },
     {
       "text": "Respuestas",
-      "url": "responses",
+      "url": "#responses",
       "menu": [
         {
           "text": "Salida Directa",
           "level": 2,
-          "url": "responses-direct-output"
+          "url": "#responses-direct-output"
         },
         {
           "text": "Incluir Otro Archivo",
           "level": 2,
-          "url": "responses-include"
+          "url": "#responses-include"
         },
         {
           "text": "Salida Directa JSON",
           "level": 2,
-          "url": "responses-direct-output-json"
+          "url": "#responses-direct-output-json"
         },
         {
           "text": "Nuevo Objeto Response",
           "level": 2,
-          "url": "responses-new-response-object"
+          "url": "#responses-new-response-object"
         },
         {
           "text": "Respuesta de la Aplicación",
           "level": 2,
-          "url": "responses-application-response"
+          "url": "#responses-application-response"
         },
         {
           "text": "Devolver Respuestas de la Aplicación",
           "level": 2,
-          "url": "responses-return-application-response"
+          "url": "#responses-return-application-response"
         },
         {
           "text": "JSON",
           "level": 2,
-          "url": "responses-json"
+          "url": "#responses-json"
         }
       ]
     },
     {
       "text": "Eventos",
-      "url": "events",
+      "url": "#events",
       "menu": [
         {
           "text": "Eventos Disponibles",
           "level": 2,
-          "url": "events-available-events",
+          "url": "#events-available-events",
           "menu": [
             {
               "text": "Ejemplo de Autenticación",
               "level": 3,
-              "url": "events-available-events-authentication"
+              "url": "#events-available-events-authentication"
             },
             {
               "text": "Ejemplo de Not Found",
               "level": 3,
-              "url": "events-available-events-not-found"
+              "url": "#events-available-events-not-found"
             }
           ]
         }
@@ -354,97 +354,97 @@
     },
     {
       "text": "Middleware",
-      "url": "",
+      "url": "#",
       "menu": [
         {
           "text": "Eventos adjuntos",
           "level": 2,
-          "url": "",
+          "url": "#",
           "menu": [
             {
               "text": "before",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "after",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "finish",
               "level": 3,
-              "url": ""
+              "url": "#"
             }
           ]
         },
         {
           "text": "Implementación",
           "level": 2,
-          "url": ""
+          "url": "#"
         },
         {
           "text": "Configuración",
           "level": 2,
-          "url": ""
+          "url": "#"
         },
         {
           "text": "Eventos en Middleware",
           "level": 2,
-          "url": "",
+          "url": "#",
           "menu": [
             {
               "text": "Ejemplo de API",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "Firewall Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "Not Found Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "Redirección en Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "CORS Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "Solicitud Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             },
             {
               "text": "Respuesta Middleware",
               "level": 3,
-              "url": ""
+              "url": "#"
             }
           ]
         },
         {
           "text": "Modelos",
-          "url": ""
+          "url": "#"
         },
         {
           "text": "Inyectando instancias de modelos",
-          "url": ""
+          "url": "#"
         },
         {
           "text": "Vistas",
-          "url": ""
+          "url": "#"
         },
         {
           "text": "Manejo de Errores",
-          "url": ""
+          "url": "#"
         }
       ]
     }
@@ -452,205 +452,205 @@
   "application": [
     {
       "text": "Controladores",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Arranque manual",
-      "url": "manual-bootstrapping"
+      "url": "#manual-bootstrapping"
     },
     {
       "text": "Aplicaciones simples o multi módulo",
-      "url": "single-vs-module",
+      "url": "#single-vs-module",
       "menu": [
         {
           "text": "Módulo simple",
           "level": 2,
-          "url": "single"
+          "url": "#single"
         },
         {
           "text": "Multi módulos",
           "level": 2,
-          "url": "module"
+          "url": "#module"
         }
       ]
     },
     {
       "text": "Eventos de la aplicación",
-      "url": "events"
+      "url": "#events"
     },
     {
       "text": "Recursos externos",
-      "url": "resources"
+      "url": "#resources"
     }
   ],
   "assets": [
     {
       "text": "Controladores",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Agregando Recursos",
-      "url": "add"
+      "url": "#add"
     },
     {
       "text": "Recursos Locales/Remotos",
-      "url": "resources-local-remote"
+      "url": "#resources-local-remote"
     },
     {
       "text": "Colecciones",
-      "url": "collections"
+      "url": "#collections"
     },
     {
       "text": "Prefijos de URL",
-      "url": "url-prefixes"
+      "url": "#url-prefixes"
     },
     {
       "text": "Reducción y Filtrado",
-      "url": "minification-filtering",
+      "url": "#minification-filtering",
       "menu": [
         {
           "text": "Filtros Incorporados",
           "level": 2,
-          "url": "builtin-filters"
+          "url": "#builtin-filters"
         },
         {
           "text": "Filtros Personalizados",
           "level": 2,
-          "url": "custom-filters"
+          "url": "#custom-filters"
         }
       ]
     },
     {
       "text": "Salida Personalizada",
-      "url": ""
+      "url": "#"
     },
     {
       "text": "Mejorar el Rendimiento",
-      "url": ""
+      "url": "#"
     }
   ],
   "cache": [
     {
       "text": "Mejorar el Rendimiento Mediante Caché",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "¿Cuándo Implementar Caché?",
-      "url": "implementation"
+      "url": "#implementation"
     },
     {
       "text": "Comportamiento de Almacenamiento en Caché",
-      "url": "caching-behavior"
+      "url": "#caching-behavior"
     },
     {
       "text": "Factory",
-      "url": "factory"
+      "url": "#factory"
     },
     {
       "text": "Almacenamiento en Caché de Fragmentos de Salida",
-      "url": "output-fragments",
+      "url": "#output-fragments",
       "menu": [
         {
           "text": "Almacenamiento en Caché de Datos Arbitrarios",
           "level": 2,
-          "url": "arbitrary-data"
+          "url": "#arbitrary-data"
         },
         {
           "text": "Ejemplo de archivo de Backend",
           "level": 2,
-          "url": "backend-file-example"
+          "url": "#backend-file-example"
         },
         {
           "text": "Ejemplo de Backend de Memcached",
           "level": 2,
-          "url": "backend-memcached-example"
+          "url": "#backend-memcached-example"
         }
       ]
     },
     {
       "text": "Consultando el Caché",
-      "url": "read"
+      "url": "#read"
     },
     {
       "text": "Eliminación de Datos del caché",
-      "url": "delete"
+      "url": "#delete"
     },
     {
       "text": "Comprobación de Existencia de Caché",
-      "url": "exists"
+      "url": "#exists"
     },
     {
       "text": "Tiempo de Vida",
-      "url": "lifetime"
+      "url": "#lifetime"
     },
     {
       "text": "Memoria Caché de Niveles Múltiples",
-      "url": "multi-level"
+      "url": "#multi-level"
     },
     {
       "text": "Adaptadores de Frontend",
-      "url": "adapters-frontend",
+      "url": "#adapters-frontend",
       "menu": [
         {
           "text": "Implementar tus Propios Adaptadores de Frontend",
           "level": 2,
-          "url": "adapters-frontend-custom"
+          "url": "#adapters-frontend-custom"
         }
       ]
     },
     {
       "text": "Adaptadores de Backend",
-      "url": "adapters-backend",
+      "url": "#adapters-backend",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "adapters-backend-factory"
+          "url": "#adapters-backend-factory"
         },
         {
           "text": "Implementar sus propios adaptadores de Backend",
           "level": 2,
-          "url": "adapters-backend-custom"
+          "url": "#adapters-backend-custom"
         },
         {
           "text": "Opciones de Archivos Backend",
           "level": 2,
-          "url": "adapters-backend-file"
+          "url": "#adapters-backend-file"
         },
         {
           "text": "Opciones de Backend para Libmemcached",
           "level": 2,
-          "url": "adapters-backend-libmemcached"
+          "url": "#adapters-backend-libmemcached"
         },
         {
           "text": "Opciones de Backend para Memcached",
           "level": 2,
-          "url": "adapters-backend-memcache"
+          "url": "#adapters-backend-memcache"
         },
         {
           "text": "Opciones de Backend para APC",
           "level": 2,
-          "url": "adapters-backend-apc"
+          "url": "#adapters-backend-apc"
         },
         {
           "text": "Opciones de Backend para APCU",
           "level": 2,
-          "url": "adapters-backend-apcu"
+          "url": "#adapters-backend-apcu"
         },
         {
           "text": "Opciones de Backend para Mongo",
           "level": 2,
-          "url": "adapters-backend-mongo"
+          "url": "#adapters-backend-mongo"
         },
         {
           "text": "Opciones de Backend para XCache",
           "level": 2,
-          "url": "adapters-backend-xcache"
+          "url": "#adapters-backend-xcache"
         },
         {
           "text": "Opciones de Backend para Redis",
           "level": 2,
-          "url": "adapters-backend-redis"
+          "url": "#adapters-backend-redis"
         }
       ]
     }
@@ -658,249 +658,249 @@
   "config": [
     {
       "text": "Configuraciones de Lectura",
-      "url": "overview",
+      "url": "#overview",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "factory"
+          "url": "#factory"
         }
       ]
     },
     {
       "text": "Arreglos Nativos",
-      "url": "native-arrays"
+      "url": "#native-arrays"
     },
     {
       "text": "Adaptadores de Archivo",
-      "url": "file-adapter"
+      "url": "#file-adapter"
     },
     {
       "text": "Leer Archivos INI",
-      "url": "ini-files"
+      "url": "#ini-files"
     },
     {
       "text": "URL Merging Configurations",
-      "url": "merging"
+      "url": "#merging"
     },
     {
       "text": "Configuraciones Anidadas",
-      "url": "nested-configuration"
+      "url": "#nested-configuration"
     },
     {
       "text": "Inyección de Dependencias de Configuración",
-      "url": ""
+      "url": "#"
     }
   ],
   "contributions": [
     {
       "text": "Contribuir con Phalcon",
-      "url": "contributing"
+      "url": "#contributing"
     },
     {
       "text": "Contribuciones",
-      "url": "contributions"
+      "url": "#contributions"
     },
     {
       "text": "Preguntas y ayuda",
-      "url": "file-adapter"
+      "url": "#file-adapter"
     },
     {
       "text": "Lista de verificación para Reportes de Errores",
-      "url": "bug-report-checklist",
+      "url": "#bug-report-checklist",
       "menu": [
         {
           "text": "Generar una traza inversa",
           "level": 2,
-          "url": "bug-report-generating-backtrace"
+          "url": "#bug-report-generating-backtrace"
         }
       ]
     },
     {
       "text": "Checklist para una solicitud de Pull",
-      "url": "pull-request-checklist"
+      "url": "#pull-request-checklist"
     },
     {
       "text": "Obtener ayuda",
-      "url": "getting-support"
+      "url": "#getting-support"
     },
     {
       "text": "Solicitar funcionalidades",
-      "url": ""
+      "url": "#"
     }
   ],
   "controllers": [
     {
       "text": "Controladores",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Uso de Controladores",
-      "url": "using"
+      "url": "#using"
     },
     {
       "text": "Bucle de Despacho",
-      "url": "dispatch-loop"
+      "url": "#dispatch-loop"
     },
     {
       "text": "Initializing Controller",
-      "url": "initializing"
+      "url": "#initializing"
     },
     {
       "text": "Inyección de servicios",
-      "url": "injecting-services"
+      "url": "#injecting-services"
     },
     {
       "text": "Request y Response",
-      "url": "request-response"
+      "url": "#request-response"
     },
     {
       "text": "Datos de Sesión",
-      "url": "session-data"
+      "url": "#session-data"
     },
     {
       "text": "Utilizando Servicios como Controladores",
-      "url": "services"
+      "url": "#services"
     },
     {
       "text": "Eventos en Controladores",
-      "url": "events"
+      "url": "#events"
     }
   ],
   "cookies": [
     {
       "text": "Gestión de cookies",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Uso básico",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Encriptado / Desencriptado de cookies",
-      "url": "encryption-decryption"
+      "url": "#encryption-decryption"
     }
   ],
   "crypt": [
     {
       "text": "Encriptado / Desencriptado",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Uso básico",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Opciones de encriptado",
-      "url": "options"
+      "url": "#options"
     },
     {
       "text": "Soporte Base64",
-      "url": "base64"
+      "url": "#base64"
     },
     {
       "text": "Configurando el servicio de encriptación",
-      "url": "service"
+      "url": "#service"
     },
     {
       "text": "Enlaces",
-      "url": "links"
+      "url": "#links"
     }
   ],
   "db-layer": [
     {
       "text": "Capa de abstracción de base de datos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores de base de datos",
-      "url": "adapters",
+      "url": "#adapters",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "adapters-factory"
+          "url": "#adapters-factory"
         },
         {
           "text": "Implementando sus propios adaptadores",
           "level": 2,
-          "url": "adapters-custom"
+          "url": "#adapters-custom"
         }
       ]
     },
     {
       "text": "Dialectos de la base de datos",
-      "url": "dialects",
+      "url": "#dialects",
       "menu": [
         {
           "text": "Implementar sus propios dialectos",
           "level": 2,
-          "url": "dialects-custom"
+          "url": "#dialects-custom"
         }
       ]
     },
     {
       "text": "Conexión a bases de datos",
-      "url": "connection"
+      "url": "#connection"
     },
     {
       "text": "Configuración de opciones adicionales de PDO",
-      "url": "options"
+      "url": "#options"
     },
     {
       "text": "Encontrar Registros",
-      "url": "finding-rows"
+      "url": "#finding-rows"
     },
     {
       "text": "Enlazando parámetros",
-      "url": "binding-parameters"
+      "url": "#binding-parameters"
     },
     {
       "text": "Inserting/Updating/Deleting Rows",
-      "url": "crud"
+      "url": "#crud"
     },
     {
       "text": "Transactions and Nested Transactions",
-      "url": "transactions"
+      "url": "#transactions"
     },
     {
       "text": "Database Events",
-      "url": "events"
+      "url": "#events"
     },
     {
       "text": "Perfilando sentencias SQL",
-      "url": "profiling"
+      "url": "#profiling"
     },
     {
       "text": "Logging SQL Statements",
-      "url": "logging-statements"
+      "url": "#logging-statements"
     },
     {
       "text": "Implementing your own Logger",
-      "url": "logger-custom"
+      "url": "#logger-custom"
     },
     {
       "text": "Describing Tables/Views",
-      "url": "describing-tables"
+      "url": "#describing-tables"
     },
     {
       "text": "Creating/Altering/Dropping Tables",
-      "url": "tables",
+      "url": "#tables",
       "menu": [
         {
           "text": "Creating Tables",
           "level": 2,
-          "url": "tables-create"
+          "url": "#tables-create"
         },
         {
           "text": "Altering Tables",
           "level": 2,
-          "url": "tables-altering"
+          "url": "#tables-altering"
         },
         {
           "text": "Dropping Tables",
           "level": 2,
-          "url": "tables-dropping"
+          "url": "#tables-dropping"
         }
       ]
     }
@@ -908,154 +908,154 @@
   "db-migrations": [
     {
       "text": "Migraciones de Bases de Datos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Volcado de esquema",
-      "url": "schema-dumping"
+      "url": "#schema-dumping"
     },
     {
       "text": "Anatomía de la clase de migración",
-      "url": "class-anatomy",
+      "url": "#class-anatomy",
       "menu": [
         {
           "text": "Definición de columnas",
           "level": 2,
-          "url": "class-anatomy-columns"
+          "url": "#class-anatomy-columns"
         },
         {
           "text": "Definición de índices",
           "level": 2,
-          "url": "class-anatomy-indexes"
+          "url": "#class-anatomy-indexes"
         },
         {
           "text": "Definición de referencias",
           "level": 2,
-          "url": "class-anatomy-references"
+          "url": "#class-anatomy-references"
         }
       ]
     },
     {
       "text": "Escribiendo migraciones",
-      "url": "writing"
+      "url": "#writing"
     },
     {
       "text": "Ejecutando migraciones",
-      "url": "running"
+      "url": "#running"
     }
   ],
   "db-models-behaviors": [
     {
       "text": "Comportamientos en modelos (Behaviors)",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Timestampable",
-      "url": "timestampable"
+      "url": "#timestampable"
     },
     {
       "text": "SoftDelete",
-      "url": "softdelete"
+      "url": "#softdelete"
     },
     {
       "text": "Crea tus propios comportamientos",
-      "url": "create-your-own-behaviors"
+      "url": "#create-your-own-behaviors"
     },
     {
       "text": "Utilizando traits como comportamientos",
-      "url": "traits-as-behaviors"
+      "url": "#traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
       "text": "Cache en ORM",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Cacheo de Resultsets",
-      "url": "caching-resultsets"
+      "url": "#caching-resultsets"
     },
     {
       "text": "Forzando el caché",
-      "url": "forcing-cache"
+      "url": "#forcing-cache"
     },
     {
       "text": "Cache de consultas PHQL",
-      "url": "caching-phql-queries"
+      "url": "#caching-phql-queries"
     },
     {
       "text": "Registros relacionados reutilizables",
-      "url": "reusable-related-records"
+      "url": "#reusable-related-records"
     },
     {
       "text": "Cache de registros relacionados",
-      "url": "caching-related-records"
+      "url": "#caching-related-records"
     },
     {
       "text": "Cache de registros relacionados recursivamente",
-      "url": "caching-related-records-recursively"
+      "url": "#caching-related-records-recursively"
     },
     {
       "text": "Cache basado en condiciones",
-      "url": "caching-based-on-conditions"
+      "url": "#caching-based-on-conditions"
     },
     {
       "text": "Plan de ejecución para cacheo de PHQL",
-      "url": "caching-phql-execution-plan"
+      "url": "#caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
       "text": "Eventos del Modelo",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Eventos y Gestor de eventos",
-      "url": "events",
+      "url": "#events",
       "menu": [
         {
           "text": "Implementando eventos en clases de Modelos",
           "level": 2,
-          "url": "events-in-models"
+          "url": "#events-in-models"
         },
         {
           "text": "Utilizando un Gestor de Eventos personalizado",
           "level": 2,
-          "url": "custom-events-manager"
+          "url": "#custom-events-manager"
         }
       ]
     },
     {
       "text": "Registro de sentencias SQL de bajo nivel",
-      "url": "logging-sql-statements"
+      "url": "#logging-sql-statements"
     },
     {
       "text": "Perfilando sentencias SQL",
-      "url": "profiling-sql-statements"
+      "url": "#profiling-sql-statements"
     }
   ],
   "db-models-metadata": [
     {
       "text": "Metadatos de modelos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Almacenamiento en caché de metadatos",
-      "url": "caching-metadata"
+      "url": "#caching-metadata"
     },
     {
       "text": "Estrategias de metadatos",
-      "url": "metadata-strategies",
+      "url": "#metadata-strategies",
       "menu": [
         {
           "text": "Estrategia de introspección de la base de datos",
           "level": 2,
-          "url": "strategies-database-introspection",
+          "url": "#strategies-database-introspection",
           "menu": [
             {
               "text": "Estrategia de anotaciones",
               "level": 2,
-              "url": "strategies-annotations"
+              "url": "#strategies-annotations"
             }
           ]
         }
@@ -1063,59 +1063,59 @@
     },
     {
       "text": "Metadata manual",
-      "url": "strategies-manual"
+      "url": "#strategies-manual"
     }
   ],
   "db-models-relationships": [
     {
       "text": "Relaciones de modelos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Relaciones entre modelos",
-      "url": "relationships",
+      "url": "#relationships",
       "menu": [
         {
           "text": "Relaciones unidireccionales",
           "level": 2,
-          "url": "unidirectional"
+          "url": "#unidirectional"
         },
         {
           "text": "Relaciones bidireccionales",
           "level": 2,
-          "url": "bidirectional"
+          "url": "#bidirectional"
         },
         {
           "text": "Definiendo las relaciones",
           "level": 2,
-          "url": "defining",
+          "url": "#defining",
           "menu": [
             {
               "text": "Multiple field relationships",
               "level": 3,
-              "url": "multiple-fields"
+              "url": "#multiple-fields"
             },
             {
               "text": "Relationships with parameters",
               "level": 3,
-              "url": "parameters"
+              "url": "#parameters"
             }
           ]
         },
         {
           "text": "Aprovechando las relaciones",
           "level": 2,
-          "url": "taking-advantage-of"
+          "url": "#taking-advantage-of"
         },
         {
           "text": "Relaciones con alias",
           "level": 2,
-          "url": "aliases",
+          "url": "#aliases",
           "menu": [
             {
               "text": "Getters mágicos vs métodos explícitos",
               "level": 3,
-              "url": "getters-vs-methods"
+              "url": "#getters-vs-methods"
             }
           ]
         }
@@ -1123,32 +1123,32 @@
     },
     {
       "text": "Claves externas virtuales",
-      "url": "virtual-foreign-keys",
+      "url": "#virtual-foreign-keys",
       "menu": [
         {
           "text": "Acciones en cascada o restringidas",
           "level": 2,
-          "url": "cascade-restrict-actions"
+          "url": "#cascade-restrict-actions"
         }
       ]
     },
     {
       "text": "Almacenamiento de registros relacionados",
-      "url": "storing-related-records"
+      "url": "#storing-related-records"
     },
     {
       "text": "Operaciones sobre conjuntos de resultados",
-      "url": "operations-over-resultsets",
+      "url": "#operations-over-resultsets",
       "menu": [
         {
           "text": "Actualización de registros relacionados",
           "level": 2,
-          "url": "updating-related-records"
+          "url": "#updating-related-records"
         },
         {
           "text": "Eliminar registros relacionados",
           "level": 2,
-          "url": "deleting-related-records"
+          "url": "#deleting-related-records"
         }
       ]
     }
@@ -1156,391 +1156,391 @@
   "db-models-transactions": [
     {
       "text": "Transacciones en modelos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Transacciones manuales",
-      "url": "manual"
+      "url": "#manual"
     },
     {
       "text": "Transacciones implícitas",
-      "url": "implicit"
+      "url": "#implicit"
     },
     {
       "text": "Transacciones aisladas",
-      "url": "isolated"
+      "url": "#isolated"
     }
   ],
   "db-models-validation": [
     {
       "text": "Transacciones en modelos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Validar la integridad de los datos",
-      "url": "data-integrity"
+      "url": "#data-integrity"
     },
     {
       "text": "Mensajes de validación",
-      "url": "messages"
+      "url": "#messages"
     },
     {
       "text": "Eventos de validación fallidos",
-      "url": "failed-events"
+      "url": "#failed-events"
     }
   ],
   "db-models": [
     {
       "text": "Trabajando con Modelos",
-      "url": "working-with"
+      "url": "#working-with"
     },
     {
       "text": "Creación de Modelos",
-      "url": "creating",
+      "url": "#creating",
       "menu": [
         {
           "text": "Propiedades públicas vs Setters / Getters",
           "level": 2,
-          "url": "properties-setters-getters"
+          "url": "#properties-setters-getters"
         }
       ]
     },
     {
       "text": "Comprensión de Registros a Objetos",
-      "url": "records-to-objects"
+      "url": "#records-to-objects"
     },
     {
       "text": "Búsqueda de registros",
-      "url": "finding-records",
+      "url": "#finding-records",
       "menu": [
         {
           "text": "Conjuntos de resultados",
           "level": 2,
-          "url": "resultsets"
+          "url": "#resultsets"
         },
         {
           "text": "Filtrar Conjuntos de Resultados",
           "level": 2,
-          "url": "filters"
+          "url": "#filters"
         },
         {
           "text": "Enlazando parámetros",
           "level": 2,
-          "url": "binding-parameters"
+          "url": "#binding-parameters"
         }
       ]
     },
     {
       "text": "Inicializando y preparando registros obtenidos",
-      "url": "preparing-records"
+      "url": "#preparing-records"
     },
     {
       "text": "Generando Cálculos",
-      "url": "calculations"
+      "url": "#calculations"
     },
     {
       "text": "Crear/Actualizar Registros",
-      "url": "create-update-records",
+      "url": "#create-update-records",
       "menu": [
         {
           "text": "Crear/actualizar con confianza",
           "level": 2,
-          "url": "create-update-with-confidence"
+          "url": "#create-update-with-confidence"
         }
       ]
     },
     {
       "text": "Eliminar Registros",
-      "url": "delete-records"
+      "url": "#delete-records"
     },
     {
       "text": "Modos de hidratación",
-      "url": "hydration-modes"
+      "url": "#hydration-modes"
     },
     {
       "text": "Columnas de identidad auto generadas",
-      "url": "identity-columns"
+      "url": "#identity-columns"
     },
     {
       "text": "Saltando columnas",
-      "url": "skipping-columns"
+      "url": "#skipping-columns"
     },
     {
       "text": "Actualización Dinámica",
-      "url": "dynamic-updates"
+      "url": "#dynamic-updates"
     },
     {
       "text": "Mapeo de columnas independiente",
-      "url": "column-mapping"
+      "url": "#column-mapping"
     },
     {
       "text": "Instantáneas de registros",
-      "url": "record-snapshots"
+      "url": "#record-snapshots"
     },
     {
       "text": "Apuntando a un esquema diferente",
-      "url": "different-schemas"
+      "url": "#different-schemas"
     },
     {
       "text": "Configuración de Múltiples Bases de Datos",
-      "url": "multiple-databases"
+      "url": "#multiple-databases"
     },
     {
       "text": "Servicios de Inyección en Modelos",
-      "url": "injecting-services-into-models"
+      "url": "#injecting-services-into-models"
     },
     {
       "text": "Deshabilitar/habilitar características",
-      "url": "disabling-enabling-features"
+      "url": "#disabling-enabling-features"
     },
     {
       "text": "Componente independiente",
-      "url": "stand-alone-component"
+      "url": "#stand-alone-component"
     }
   ],
   "db-odm": [
     {
       "text": "ODM (Mapeador Objecto-Documento)",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Creación de Modelos",
-      "url": "creating-models"
+      "url": "#creating-models"
     },
     {
       "text": "Entendiendo Documentos a Objetos",
-      "url": "documents-to-objects"
+      "url": "#documents-to-objects"
     },
     {
       "text": "Modelos en Espacios de Nombres",
-      "url": "namespaces"
+      "url": "#namespaces"
     },
     {
       "text": "Establecer una Conexión",
-      "url": "connection-setup"
+      "url": "#connection-setup"
     },
     {
       "text": "Búsqueda de Documentos",
-      "url": "finding-documents"
+      "url": "#finding-documents"
     },
     {
       "text": "Agregaciones",
-      "url": "aggregations"
+      "url": "#aggregations"
     },
     {
       "text": "Creación y Actualización de Registros",
-      "url": "creating-updating",
+      "url": "#creating-updating",
       "menu": [
         {
           "text": "Mensajes de validación",
           "level": 2,
-          "url": "validation-messages"
+          "url": "#validation-messages"
         },
         {
           "text": "Eventos de Validación y Gestor de Eventos",
           "level": 2,
-          "url": "events"
+          "url": "#events"
         },
         {
           "text": "Implementación de una Regla de Negocio",
           "level": 2,
-          "url": "business-rules"
+          "url": "#business-rules"
         },
         {
           "text": "Validar la integridad de los datos",
           "level": 2,
-          "url": "data-integrity"
+          "url": "#data-integrity"
         }
       ]
     },
     {
       "text": "Eliminar Registros",
-      "url": "deleting-records"
+      "url": "#deleting-records"
     },
     {
       "text": "Eventos de validación fallidos",
-      "url": "validation-failed-events"
+      "url": "#validation-failed-events"
     },
     {
       "text": "IDs Implícitos vs. Llaves Primarias de Usuario",
-      "url": "ids-vs-primary-keys"
+      "url": "#ids-vs-primary-keys"
     },
     {
       "text": "Configuración de Múltiples Bases de Datos",
-      "url": "multiple-databases"
+      "url": "#multiple-databases"
     },
     {
       "text": "Servicios de Inyección en Modelos",
-      "url": "services-in-models"
+      "url": "#services-in-models"
     }
   ],
   "db-pagination": [
     {
       "text": "Paginación",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores de datos",
-      "url": "data-adapters"
+      "url": "#data-adapters"
     },
     {
       "text": "Factory",
-      "url": "factory"
+      "url": "#factory"
     },
     {
       "text": "Ejemplos",
-      "url": "examples"
+      "url": "#examples"
     },
     {
       "text": "Uso de adaptadores",
-      "url": "using-adapters"
+      "url": "#using-adapters"
     },
     {
       "text": "Atributos de Página",
-      "url": "page-attributes"
+      "url": "#page-attributes"
     },
     {
       "text": "Implementando sus propios adaptadores",
-      "url": "custom"
+      "url": "#custom"
     }
   ],
   "db-phql": [
     {
       "text": "Lenguaje de consulta de Phalcon (PHQL)",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Ejemplo de Uso",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Crear consultas PHQL",
-      "url": "creating"
+      "url": "#creating"
     },
     {
       "text": "Seleccionando registros",
-      "url": "selecting-records",
+      "url": "#selecting-records",
       "menu": [
         {
           "text": "Tipo de resultado",
           "level": 2,
-          "url": "result-types"
+          "url": "#result-types"
         },
         {
           "text": "Uniones (Joins)",
           "level": 2,
-          "url": "joins"
+          "url": "#joins"
         },
         {
           "text": "Agregaciones",
           "level": 2,
-          "url": "aggregations"
+          "url": "#aggregations"
         },
         {
           "text": "Condiciones",
           "level": 2,
-          "url": "conditions"
+          "url": "#conditions"
         }
       ]
     },
     {
       "text": "Insertando datos",
-      "url": "inserting-data"
+      "url": "#inserting-data"
     },
     {
       "text": "Actualizando datos",
-      "url": "updating-data"
+      "url": "#updating-data"
     },
     {
       "text": "Borrando datos",
-      "url": "deleting-data"
+      "url": "#deleting-data"
     },
     {
       "text": "Crear consultas utilizando el generador de consultas",
-      "url": "query-builder",
+      "url": "#query-builder",
       "menu": [
         {
           "text": "Enlazando parámetros",
           "level": 2,
-          "url": "query-builder-parameters"
+          "url": "#query-builder-parameters"
         }
       ]
     },
     {
       "text": "No permitir literales en PHQL",
-      "url": "disallow-literals"
+      "url": "#disallow-literals"
     },
     {
       "text": "Escapando palabras reservadas",
-      "url": "escaping-reserved-words"
+      "url": "#escaping-reserved-words"
     },
     {
       "text": "Ciclo de vida de PHQL",
-      "url": "lifecycle"
+      "url": "#lifecycle"
     },
     {
       "text": "Usando SQL crudo",
-      "url": "raw-sql"
+      "url": "#raw-sql"
     },
     {
       "text": "Resolución de problemas",
-      "url": "troubleshooting"
+      "url": "#troubleshooting"
     }
   ],
   "debug": [
     {
       "text": "Depuración de aplicaciones",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Capturando excepciones",
-      "url": "catching-exceptions"
+      "url": "#catching-exceptions"
     },
     {
       "text": "Componente de depuración",
-      "url": "debug-component"
+      "url": "#debug-component"
     },
     {
       "text": "Reflexión e introspección",
-      "url": "reflection-introspection"
+      "url": "#reflection-introspection"
     },
     {
       "text": "Usando Xdebug",
-      "url": "xdebug"
+      "url": "#xdebug"
     }
   ],
   "devtools-installation": [
     {
       "text": "DevTools on Linux",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Prerequisitos",
-      "url": "prerequisites"
+      "url": "#prerequisites"
     },
     {
       "text": "Instalación",
-      "url": "installation",
+      "url": "#installation",
       "menu": [
         {
           "text": "Linux",
           "level": 2,
-          "url": "installation-linux"
+          "url": "#installation-linux"
         },
         {
           "text": "MacOS",
           "level": 2,
-          "url": "installation-mac"
+          "url": "#installation-mac"
         },
         {
           "text": "Windows",
           "level": 2,
-          "url": "installation-windows",
+          "url": "#installation-windows",
           "menu": [
             {
               "text": "Agregar PHP y DevTools al PATH del sistema",
               "level": 3,
-              "url": "installation-windows-system-path"
+              "url": "#installation-windows-system-path"
             }
           ]
         }
@@ -1550,822 +1550,822 @@
   "devtools-usage": [
     {
       "text": "Herramientas para desarrolladores de Phalcon",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Descargar",
-      "url": "download"
+      "url": "#download"
     },
     {
       "text": "Instalación",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Comandos disponibles",
-      "url": "available-commands"
+      "url": "#available-commands"
     },
     {
       "text": "Generar un esqueleto de proyecto",
-      "url": "project-skeleton"
+      "url": "#project-skeleton"
     },
     {
       "text": "Generando controladores",
-      "url": "generating-controllers"
+      "url": "#generating-controllers"
     },
     {
       "text": "Preparando la configuración de la base de datos",
-      "url": "database-settings"
+      "url": "#database-settings"
     },
     {
       "text": "Generando modelos",
-      "url": "generating-models"
+      "url": "#generating-models"
     },
     {
       "text": "Andamiaje CRUD",
-      "url": "crud"
+      "url": "#crud"
     },
     {
       "text": "Interfaz web para herramientas",
-      "url": "web-interface"
+      "url": "#web-interface"
     },
     {
       "text": "Integrando las herramientas en PhpStorm IDE",
-      "url": "phpstorm-ide"
+      "url": "#phpstorm-ide"
     },
     {
       "text": "Conclusión",
-      "url": "conclusion"
+      "url": "#conclusion"
     }
   ],
   "di": [
     {
       "text": "Inyector de Dependencias / Localización de Servicios",
-      "url": "di-service-location"
+      "url": "#di-service-location"
     },
     {
       "text": "DI explicado",
-      "url": "di-explained"
+      "url": "#di-explained"
     },
     {
       "text": "Registrar servicios en el contenedor",
-      "url": "registering-services",
+      "url": "#registering-services",
       "menu": [
         {
           "text": "Registro simple",
           "level": 2,
-          "url": "simple-registration",
+          "url": "#simple-registration",
           "menu": [
             {
               "text": "Cadena de caracteres (string)",
               "level": 3,
-              "url": "simple-registration-string"
+              "url": "#simple-registration-string"
             },
             {
               "text": "Instancias de clase",
               "level": 3,
-              "url": "class-instances"
+              "url": "#class-instances"
             },
             {
               "text": "Closures/Funciones anónimas",
               "level": 3,
-              "url": "closures-anonymous-functions"
+              "url": "#closures-anonymous-functions"
             }
           ]
         },
         {
           "text": "Registro Complejo",
           "level": 2,
-          "url": "complex-registration",
+          "url": "#complex-registration",
           "menu": [
             {
               "text": "Inyección de Contructores",
               "level": 3,
-              "url": "constructor-injection"
+              "url": "#constructor-injection"
             },
             {
               "text": "Inyección de Configuraciones",
               "level": 3,
-              "url": "setter-injection"
+              "url": "#setter-injection"
             },
             {
               "text": "Inyección de Propiedades",
               "level": 3,
-              "url": "properties-injection"
+              "url": "#properties-injection"
             }
           ]
         },
         {
           "text": "Sintaxis de array",
           "level": 2,
-          "url": "array-syntax"
+          "url": "#array-syntax"
         }
       ]
     },
     {
       "text": "Resolviendo servicios",
-      "url": "resolving-services",
+      "url": "#resolving-services",
       "menu": [
         {
           "text": "Eventos",
           "level": 2,
-          "url": "events"
+          "url": "#events"
         }
       ]
     },
     {
       "text": "Servicios compartidos",
-      "url": "shared-services"
+      "url": "#shared-services"
     },
     {
       "text": "Manipulación Individual de Servicios",
-      "url": "manipulating-services-individually"
+      "url": "#manipulating-services-individually"
     },
     {
       "text": "Instanciando clases a través del Contenedor de Servicios",
-      "url": "instantiating-classes-service-container"
+      "url": "#instantiating-classes-service-container"
     },
     {
       "text": "Auto inyección del DI",
-      "url": "automatic-injecting-di-itself"
+      "url": "#automatic-injecting-di-itself"
     },
     {
       "text": "Organizando Servicios en Archivos",
-      "url": "organizing-services-files"
+      "url": "#organizing-services-files"
     },
     {
       "text": "Accediendo al DI en forma estática",
-      "url": "accessing-di-static-way"
+      "url": "#accessing-di-static-way"
     },
     {
       "text": "Factory por defecto de DI",
-      "url": "factory-default-di"
+      "url": "#factory-default-di"
     },
     {
       "text": "Convenciones de nombres de servicios",
-      "url": "service-name-conventions"
+      "url": "#service-name-conventions"
     },
     {
       "text": "Implementando tu propio DI",
-      "url": "implementing-your-own-di"
+      "url": "#implementing-your-own-di"
     }
   ],
   "dispatcher": [
     {
       "text": "Despachando Controladores",
-      "url": "explained"
+      "url": "#explained"
     },
     {
       "text": "Bucle de despacho",
-      "url": "dispatch-loop"
+      "url": "#dispatch-loop"
     },
     {
       "text": "Eventos del bucle de despacho",
       "level": 2,
-      "url": "dispatch-loop-events"
+      "url": "#dispatch-loop-events"
     },
     {
       "text": "Reenvío a otras acciones",
-      "url": "forwarding"
+      "url": "#forwarding"
     },
     {
       "text": "Preparando parámetros",
-      "url": "preparing-parameters"
+      "url": "#preparing-parameters"
     },
     {
       "text": "Obtener parámetros",
-      "url": "getting-parameters"
+      "url": "#getting-parameters"
     },
     {
       "text": "Preparación de acciones",
-      "url": "preparing-actions",
+      "url": "#preparing-actions",
       "menu": [
         {
           "text": "Camelizar acciones",
           "level": 2,
-          "url": "preparing-actions-camelizing-action-names"
+          "url": "#preparing-actions-camelizing-action-names"
         },
         {
           "text": "Quitar extensiones",
           "level": 2,
-          "url": "preparing-actions-removing-legacy-extensions"
+          "url": "#preparing-actions-removing-legacy-extensions"
         },
         {
           "text": "Inyectando instancias de modelos",
           "level": 2,
-          "url": "preparing-actions-inject-model-instances"
+          "url": "#preparing-actions-inject-model-instances"
         }
       ]
     },
     {
       "text": "Gestión de excepciones \"Not Found\"",
-      "url": "handling-404"
+      "url": "#handling-404"
     },
     {
       "text": "Implementar tu propio despachador",
-      "url": "custom"
+      "url": "#custom"
     }
   ],
   "environments-docker": [
     {
       "text": "Environments - Docker",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Dependencias",
-      "url": "dependencies"
+      "url": "#dependencies"
     },
     {
       "text": "Servicios",
-      "url": "services"
+      "url": "#services"
     },
     {
       "text": "Instalación",
-      "url": "installation",
+      "url": "#installation",
       "menu": [
         {
           "text": "Con Composer (recomendado)",
           "level": 2,
-          "url": "installation-composer"
+          "url": "#installation-composer"
         },
         {
           "text": "Con Git",
           "level": 2,
-          "url": "installation-git"
+          "url": "#installation-git"
         }
       ]
     },
     {
       "text": "Configuración",
-      "url": "configuration"
+      "url": "#configuration"
     },
     {
       "text": "Uso",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Configurar",
-      "url": "setup"
+      "url": "#setup"
     },
     {
       "text": "Registro de logs",
-      "url": "logs"
+      "url": "#logs"
     },
     {
       "text": "Variables de entorno",
-      "url": "environment-variables",
+      "url": "#environment-variables",
       "menu": [
         {
           "text": "Entorno web",
           "level": 2,
-          "url": "environment-variables-web"
+          "url": "#environment-variables-web"
         },
         {
           "text": "Variables de phpMyAdmin",
           "level": 2,
-          "url": "environment-variables-phpmyadmin"
+          "url": "#environment-variables-phpmyadmin"
         }
       ]
     },
     {
       "text": "Depurador remoto Xdebug (PhpStorm)",
-      "url": "xdebug"
+      "url": "#xdebug"
     },
     {
       "text": "Resolución de problemas",
-      "url": "troubleshooting",
+      "url": "#troubleshooting",
       "menu": [
         {
           "text": "Inicio o enlace de errores",
           "level": 2,
-          "url": "troubleshooting-startup"
+          "url": "#troubleshooting-startup"
         },
         {
           "text": "Reinicio completo",
           "level": 2,
-          "url": "troubleshooting-full-reset"
+          "url": "#troubleshooting-full-reset"
         },
         {
           "text": "Actualización de dependencias",
           "level": 2,
-          "url": "troubleshooting-dependencies"
+          "url": "#troubleshooting-dependencies"
         }
       ]
     },
     {
       "text": "Versions",
-      "url": "versions"
+      "url": "#versions"
     }
   ],
   "environments-nanobox": [
     {
       "text": "Environments - Nanobox",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Crear un Nuevo Proyecto",
-      "url": "create-project"
+      "url": "#create-project"
     },
     {
       "text": "Add a `boxfile.yml`",
-      "url": "boxfile-yml"
+      "url": "#boxfile-yml"
     },
     {
       "text": "Add Phalcon Devtools to your `composer.json`",
-      "url": "add-devtools"
+      "url": "#add-devtools"
     },
     {
       "text": "Iniciar Nanobox y generar una nueva aplicación de Phalcon",
-      "url": "new-phalcon-app"
+      "url": "#new-phalcon-app"
     },
     {
       "text": "Ejecutar la aplicación localmente",
-      "url": "run-app"
+      "url": "#run-app"
     },
     {
       "text": "Revisar el entorno",
-      "url": "environment"
+      "url": "#environment"
     },
     {
       "text": "Phalcon y Nanobox",
-      "url": "conclusion"
+      "url": "#conclusion"
     }
   ],
   "environments-vagrant": [
     {
       "text": "Environments - Vagrant",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Requerimentos",
-      "url": "requirements"
+      "url": "#requirements"
     },
     {
       "text": "Paquetes incluidos",
-      "url": "packages-included"
+      "url": "#packages-included"
     },
     {
       "text": "Instalación",
-      "url": "installation",
+      "url": "#installation",
       "menu": [
         {
           "text": "Instalando una Caja Vagrant",
           "level": 2,
-          "url": "installation-vagrant-box"
+          "url": "#installation-vagrant-box"
         },
         {
           "text": "Instalando la Caja Phalcon",
           "level": 2,
-          "url": "installation-phalcon-box"
+          "url": "#installation-phalcon-box"
         }
       ]
     },
     {
       "text": "Configuraciones",
-      "url": "installation-configuration",
+      "url": "#installation-configuration",
       "menu": [
         {
           "text": "Establecer el Proveedor",
           "level": 2,
-          "url": "installation-configuration-setting-provider"
+          "url": "#installation-configuration-setting-provider"
         },
         {
           "text": "Memoria y CPU",
           "level": 2,
-          "url": "installation-configuration-memory-cpu"
+          "url": "#installation-configuration-memory-cpu"
         },
         {
           "text": "Carpetas compartidas",
           "level": 2,
-          "url": "installation-configuration-shared-folders"
+          "url": "#installation-configuration-shared-folders"
         },
         {
           "text": "Sitios Nginx",
           "level": 2,
-          "url": "installation-configuration-nginx",
+          "url": "#installation-configuration-nginx",
           "menu": [
             {
               "text": "Configuración Personalizada de Nginx",
               "level": 3,
-              "url": "installation-configuration-custom-nginx"
+              "url": "#installation-configuration-custom-nginx"
             },
             {
               "text": "Configuring the `hosts` file",
               "level": 3,
-              "url": "installation-configuration-hosts"
+              "url": "#installation-configuration-hosts"
             }
           ]
         },
         {
           "text": "Instalación de paquetes adicionales",
           "level": 2,
-          "url": "installation-aditional-packages"
+          "url": "#installation-aditional-packages"
         },
         {
           "text": "Lanzando la Caja Phalcon",
           "level": 2,
-          "url": "installation-launching-phalcon-box"
+          "url": "#installation-launching-phalcon-box"
         }
       ]
     },
     {
       "text": "Uso diario",
-      "url": "daily-usage",
+      "url": "#daily-usage",
       "menu": [
         {
           "text": "Accediendo a la Caja Phalcon de forma Global",
           "level": 2,
-          "url": "daily-usage-accessing-box-globally",
+          "url": "#daily-usage-accessing-box-globally",
           "menu": [
             {
               "text": "Mac o Linux",
               "level": 3,
-              "url": "daily-usage-accessing-box-globally-mac-linux"
+              "url": "#daily-usage-accessing-box-globally-mac-linux"
             },
             {
               "text": "Windows",
               "level": 3,
-              "url": "daily-usage-accessing-box-globally-windows"
+              "url": "#daily-usage-accessing-box-globally-windows"
             }
           ]
         },
         {
           "text": "Conectar Vía SSH",
           "level": 2,
-          "url": "daily-usage-ssh"
+          "url": "#daily-usage-ssh"
         },
         {
           "text": "Conexión a Bases de Datos",
           "level": 2,
-          "url": "daily-usage-databases"
+          "url": "#daily-usage-databases"
         },
         {
           "text": "Agregando Sitios Adicionales",
           "level": 2,
-          "url": "daily-usage-additional-sites"
+          "url": "#daily-usage-additional-sites"
         },
         {
           "text": "Variables de entorno",
           "level": 2,
-          "url": "daily-usage-environment-variables",
+          "url": "#daily-usage-environment-variables",
           "menu": [
             {
               "text": "Variables Globales",
               "level": 3,
-              "url": "daily-usage-environment-global-variables"
+              "url": "#daily-usage-environment-global-variables"
             },
             {
               "text": "Variables de Sitio",
               "level": 3,
-              "url": "daily-usage-environment-site-variables"
+              "url": "#daily-usage-environment-site-variables"
             }
           ]
         },
         {
           "text": "Puertos",
           "level": 2,
-          "url": "daily-usage-ports",
+          "url": "#daily-usage-ports",
           "menu": [
             {
               "text": "Redirigir Puertos Adicionales",
               "level": 3,
-              "url": "daily-usage-ports-forwarding"
+              "url": "#daily-usage-ports-forwarding"
             }
           ]
         },
         {
           "text": "Compartiendo tu Entorno",
           "level": 2,
-          "url": "daily-usage-sharing-environment"
+          "url": "#daily-usage-sharing-environment"
         },
         {
           "text": "Interfaces de Red",
           "level": 2,
-          "url": "daily-usage-network-interfaces"
+          "url": "#daily-usage-network-interfaces"
         },
         {
           "text": "Actualizando la Caja Phalcon",
           "level": 2,
-          "url": "daily-usage-updating-box"
+          "url": "#daily-usage-updating-box"
         },
         {
           "text": "Configuración Específica del Proveedor",
           "level": 2,
-          "url": "daily-usage-provider-settings",
+          "url": "#daily-usage-provider-settings",
           "menu": [
             {
               "text": "VirtualBox",
               "level": 3,
-              "url": "daily-usage-provider-settings-virtualbox"
+              "url": "#daily-usage-provider-settings-virtualbox"
             }
           ]
         },
         {
           "text": "Mail Catcher",
           "level": 2,
-          "url": "daily-usage-mail-catcher"
+          "url": "#daily-usage-mail-catcher"
         }
       ]
     },
     {
       "text": "Resolución de problemas",
-      "url": "troubleshooting"
+      "url": "#troubleshooting"
     }
   ],
   "escaper": [
     {
       "text": "Escapado contextual",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Escapando HTML",
-      "url": "html"
+      "url": "#html"
     },
     {
       "text": "Escapando atributos HTML",
-      "url": "html-attributes"
+      "url": "#html-attributes"
     },
     {
       "text": "Escapando URLs",
-      "url": "urls"
+      "url": "#urls"
     },
     {
       "text": "Escapando CSS",
-      "url": "css"
+      "url": "#css"
     },
     {
       "text": "Escapando JavaScript",
-      "url": "javascript"
+      "url": "#javascript"
     }
   ],
   "events": [
     {
       "text": "Gestor de Eventos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Convención de Nombres",
-      "url": "naming-convention"
+      "url": "#naming-convention"
     },
     {
       "text": "Ejemplo de Uso",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Creando Componentes que Desencadenan Eventos",
-      "url": "components-that-trigger-events"
+      "url": "#components-that-trigger-events"
     },
     {
       "text": "Utilización Servicios del DI",
-      "url": "using-services"
+      "url": "#using-services"
     },
     {
       "text": "Propagación y Cancelación de Eventos",
-      "url": "propagation-cancellation"
+      "url": "#propagation-cancellation"
     },
     {
       "text": "Prioridades del Oyente",
-      "url": "listener-priorities"
+      "url": "#listener-priorities"
     },
     {
       "text": "Recogiendo Respuestas",
-      "url": "collecting-responses"
+      "url": "#collecting-responses"
     },
     {
       "text": "Implementando tu propio EventsManager",
-      "url": "custom"
+      "url": "#custom"
     },
     {
       "text": "Lista de Eventos",
-      "url": "list"
+      "url": "#list"
     }
   ],
   "filter": [
     {
       "text": "Filtrado y Limpieza",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Tipos de filtros incorporados",
-      "url": "types"
+      "url": "#types"
     },
     {
       "text": "Limpieza de datos",
-      "url": "sanitizing"
+      "url": "#sanitizing"
     },
     {
       "text": "Limpiando desde controladores",
-      "url": "sanitizing-from-controllers"
+      "url": "#sanitizing-from-controllers"
     },
     {
       "text": "Filtrando parámetros de acciones",
-      "url": "filtering-action-parameters"
+      "url": "#filtering-action-parameters"
     },
     {
       "text": "Filtrando datos",
-      "url": "filtering-data"
+      "url": "#filtering-data"
     },
     {
       "text": "Combinando filtros",
-      "url": "combining-filters"
+      "url": "#combining-filters"
     },
     {
       "text": "Agregando filtros",
-      "url": "adding-filters"
+      "url": "#adding-filters"
     },
     {
       "text": "Filtrado y limpieza complejas",
-      "url": "complex-sanitization-filtering"
+      "url": "#complex-sanitization-filtering"
     },
     {
       "text": "Implementar tus propios filtros",
-      "url": "custom"
+      "url": "#custom"
     }
   ],
   "flash": [
     {
       "text": "Mensajes Flash",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores",
-      "url": "adapters"
+      "url": "#adapters"
     },
     {
       "text": "Uso",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Imprimiendo Mensajes",
-      "url": "printing"
+      "url": "#printing"
     },
     {
       "text": "Flush Implícito vs Sesión",
-      "url": "implicit-flush-vs-session"
+      "url": "#implicit-flush-vs-session"
     }
   ],
   "forms": [
     {
       "text": "Formularios",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Inicializando formularios",
-      "url": "initializing"
+      "url": "#initializing"
     },
     {
       "text": "Filtering",
-      "url": "filtering"
+      "url": "#filtering"
     },
     {
       "text": "Formularios y Entidades",
-      "url": "entities"
+      "url": "#entities"
     },
     {
       "text": "Elementos de formulario",
-      "url": "elements"
+      "url": "#elements"
     },
     {
       "text": "Evento Callbacks",
-      "url": "event-callback"
+      "url": "#event-callback"
     },
     {
       "text": "Presentación de formularios",
-      "url": "rendering"
+      "url": "#rendering"
     },
     {
       "text": "Creando elementos de formulario",
-      "url": "creating-elements"
+      "url": "#creating-elements"
     },
     {
       "text": "Forms Manager",
-      "url": "manager"
+      "url": "#manager"
     },
     {
       "text": "Recursos externos",
-      "url": "external"
+      "url": "#external"
     }
   ],
   "i18n": [
     {
       "text": "Internacionalización",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Encontrar la mejor configuración regional disponible (Locale)",
-      "url": "best-locale"
+      "url": "#best-locale"
     },
     {
       "text": "Formato de mensajes basados en la configuración regional",
-      "url": "formatting-messages"
+      "url": "#formatting-messages"
     },
     {
       "text": "Comparación sensitiva para la configuración regional",
-      "url": "locale-comparison"
+      "url": "#locale-comparison"
     },
     {
       "text": "Transcripción",
-      "url": "transliteration"
+      "url": "#transliteration"
     }
   ],
   "image": [
     {
       "text": "Images",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores",
-      "url": "adapters",
+      "url": "#adapters",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "adapters-factory"
+          "url": "#adapters-factory"
         },
         {
           "text": "Implementando sus propios adaptadores",
           "level": 2,
-          "url": "adapters-custom"
+          "url": "#adapters-custom"
         }
       ]
     },
     {
       "text": "Guardando y leyendo imágenes",
-      "url": "saving-rendering"
+      "url": "#saving-rendering"
     },
     {
       "text": "Redimensionando imágenes",
-      "url": "resizing",
+      "url": "#resizing",
       "menu": [
         {
           "text": "`Image::WIDTH`",
           "level": 2,
-          "url": "resizing-width"
+          "url": "#resizing-width"
         },
         {
           "text": "`Image::HEIGHT`",
           "level": 2,
-          "url": "resizing-height"
+          "url": "#resizing-height"
         },
         {
           "text": "`Image::NONE`",
           "level": 2,
-          "url": "resizing-none"
+          "url": "#resizing-none"
         },
         {
           "text": "`Image::TENSILE`",
           "level": 2,
-          "url": "resizing-tensile"
+          "url": "#resizing-tensile"
         }
       ]
     },
     {
       "text": "Recortar imágenes",
-      "url": "cropping"
+      "url": "#cropping"
     },
     {
       "text": "Rotación de imágenes",
-      "url": "rotating"
+      "url": "#rotating"
     },
     {
       "text": "Volteando imágenes",
-      "url": "flipping"
+      "url": "#flipping"
     },
     {
       "text": "Afilado de imágenes",
-      "url": "sharpening"
+      "url": "#sharpening"
     },
     {
       "text": "Agregar marcas de agua a imágenes",
-      "url": "watermarks"
+      "url": "#watermarks"
     },
     {
       "text": "Imágenes borrosas",
-      "url": "blurring"
+      "url": "#blurring"
     },
     {
       "text": "Pixelando imágenes",
-      "url": "pixelating"
+      "url": "#pixelating"
     }
   ],
   "installation": [
     {
       "text": "Requerimentos",
-      "url": "requirements",
+      "url": "#requirements",
       "menu": [
         {
           "text": "Hardware",
           "level": 2,
-          "url": "requirements-hardware"
+          "url": "#requirements-hardware"
         },
         {
           "text": "Software",
           "level": 2,
-          "url": "requirements-software",
+          "url": "#requirements-software",
           "menu": [
             {
               "text": "Opcional, dependiendo de las necesidades de su aplicación",
               "level": 3,
-              "url": "requirements-software-optional"
+              "url": "#requirements-software-optional"
             }
           ]
         }
@@ -2373,151 +2373,151 @@
     },
     {
       "text": "Instalación",
-      "url": "installation",
+      "url": "#installation",
       "menu": [
         {
           "text": "Linux",
           "level": 2,
-          "url": "installation-linux",
+          "url": "#installation-linux",
           "menu": [
             {
               "text": "DEB based distributions (CentOS, Fedora, etc.)",
               "level": 3,
-              "url": "installation-linux-deb",
+              "url": "#installation-linux-deb",
               "menu": [
                 {
                   "text": "Instalación desde el repositorio",
                   "level": 4,
-                  "url": "installation-linux-deb-repository"
+                  "url": "#installation-linux-deb-repository"
                 },
                 {
                   "text": "Stable releases",
                   "level": 4,
-                  "url": "installation-linux-debian-repository-stable"
+                  "url": "#installation-linux-debian-repository-stable"
                 },
                 {
                   "text": "Nightly releases",
                   "level": 4,
-                  "url": "installation-linux-debian-repository-nightly"
+                  "url": "#installation-linux-debian-repository-nightly"
                 },
                 {
                   "text": "Instalación de Phalcon",
                   "level": 4,
-                  "url": "installation-linux-debian-phalcon",
+                  "url": "#installation-linux-debian-phalcon",
                   "menu": [
                     {
                       "text": "PHP 5.x",
                       "level": 5,
-                      "url": "installation-linux-debian-phalcon-php5"
+                      "url": "#installation-linux-debian-phalcon-php5"
                     },
                     {
                       "text": "PHP 7",
                       "level": 5,
-                      "url": "installation-linux-debian-phalcon-php7"
+                      "url": "#installation-linux-debian-phalcon-php7"
                     }
                   ]
                 },
                 {
                   "text": "PPAs adicionales",
                   "level": 4,
-                  "url": "installation-linux-debian-other-ppa"
+                  "url": "#installation-linux-debian-other-ppa"
                 }
               ]
             },
             {
               "text": "Distribuciones basadas en RPM (CentOS, Fedora, etc.)",
               "level": 3,
-              "url": "installation-linux-rpm",
+              "url": "#installation-linux-rpm",
               "menu": [
                 {
                   "text": "Instalación desde el repositorio",
                   "level": 4,
-                  "url": "installation-linux-rpm-repository"
+                  "url": "#installation-linux-rpm-repository"
                 },
                 {
                   "text": "Versiones estables",
                   "level": 4,
-                  "url": "installation-linux-rpm-repository-stable",
+                  "url": "#installation-linux-rpm-repository-stable",
                   "menu": [
                     {
                       "text": "Versiones nocturnas",
                       "level": 5,
-                      "url": "installation-linux-rpm-repository-nightly"
+                      "url": "#installation-linux-rpm-repository-nightly"
                     }
                   ]
                 },
                 {
                   "text": "Instalación de Phalcon",
                   "level": 4,
-                  "url": "installation-linux-rpm-phalcon",
+                  "url": "#installation-linux-rpm-phalcon",
                   "menu": [
                     {
                       "text": "PHP 5.x",
                       "level": 5,
-                      "url": "installation-linux-rpm-phalcon-php5"
+                      "url": "#installation-linux-rpm-phalcon-php5"
                     },
                     {
                       "text": "PHP 7",
                       "level": 5,
-                      "url": "installation-linux-rpm-phalcon-php7"
+                      "url": "#installation-linux-rpm-phalcon-php7"
                     }
                   ]
                 },
                 {
                   "text": "RPMs adicionales",
                   "level": 4,
-                  "url": "installation-linux-rpm-other-rpm"
+                  "url": "#installation-linux-rpm-other-rpm"
                 }
               ]
             },
             {
               "text": "FreeBSD",
               "level": 2,
-              "url": "installation-freebsd"
+              "url": "#installation-freebsd"
             },
             {
               "text": "Gentoo",
               "level": 2,
-              "url": "installation-gentoo"
+              "url": "#installation-gentoo"
             }
           ]
         },
         {
           "text": "macOS",
           "level": 2,
-          "url": "installation-macos",
+          "url": "#installation-macos",
           "menu": [
             {
               "text": "Brew",
               "level": 3,
-              "url": "installation-macos-brew"
+              "url": "#installation-macos-brew"
             },
             {
               "text": "MacPorts",
               "level": 3,
-              "url": "installation-macos-macports"
+              "url": "#installation-macos-macports"
             }
           ]
         },
         {
           "text": "Windows",
           "level": 2,
-          "url": "installation-windows"
+          "url": "#installation-windows"
         },
         {
           "text": "Compilar desde código fuente",
           "level": 2,
-          "url": "installation-sources"
+          "url": "#installation-sources"
         },
         {
           "text": "Compilación avanzada",
           "level": 2,
-          "url": "installation-sources-advanced"
+          "url": "#installation-sources-advanced"
         },
         {
           "text": "Testing",
           "level": 2,
-          "url": "installation-testing"
+          "url": "#installation-testing"
         }
       ]
     }
@@ -2525,115 +2525,115 @@
   "loader": [
     {
       "text": "Requerimentos",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Capa de seguridad",
-      "url": "security"
+      "url": "#security"
     },
     {
       "text": "Registrando espacios de nombres",
-      "url": "registering-namespaces"
+      "url": "#registering-namespaces"
     },
     {
       "text": "Registrando directorios",
-      "url": "registering-directories"
+      "url": "#registering-directories"
     },
     {
       "text": "Registrando clases",
-      "url": "registering-classes"
+      "url": "#registering-classes"
     },
     {
       "text": "Registrando archivos",
-      "url": "registering-files"
+      "url": "#registering-files"
     },
     {
       "text": "Extensiones de archivo adicionales",
-      "url": "registering-file-extensions"
+      "url": "#registering-file-extensions"
     },
     {
       "text": "Modificando estrategias actuales",
-      "url": "modifying-current-strategies"
+      "url": "#modifying-current-strategies"
     },
     {
       "text": "Eventos de carga automática",
-      "url": "events"
+      "url": "#events"
     },
     {
       "text": "Resolución de problemas",
-      "url": "troubleshooting"
+      "url": "#troubleshooting"
     }
   ],
   "logging": [
     {
       "text": "Logging",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores",
-      "url": "adapters"
+      "url": "#adapters"
     },
     {
       "text": "Factory",
       "level": 2,
-      "url": "adapters-factory"
+      "url": "#adapters-factory"
     },
     {
       "text": "Creación de un Log",
-      "url": "creating"
+      "url": "#creating"
     },
     {
       "text": "Transacciones",
-      "url": "transactions"
+      "url": "#transactions"
     },
     {
       "text": "Registro de múltiples gestores",
-      "url": "multiple-handlers"
+      "url": "#multiple-handlers"
     },
     {
       "text": "Formato de mensaje",
-      "url": "message-formatting",
+      "url": "#message-formatting",
       "menu": [
         {
           "text": "Formateador de línea",
           "level": 2,
-          "url": "message-formatting-line"
+          "url": "#message-formatting-line"
         },
         {
           "text": "Implementar tus propios formateadores",
           "level": 2,
-          "url": "message-formatting-custom"
+          "url": "#message-formatting-custom"
         }
       ]
     },
     {
       "text": "Adaptadores",
-      "url": "usage",
+      "url": "#usage",
       "menu": [
         {
           "text": "Stream Logger",
           "level": 2,
-          "url": "usage-stream"
+          "url": "#usage-stream"
         },
         {
           "text": "File Logger",
           "level": 2,
-          "url": "usage-file"
+          "url": "#usage-file"
         },
         {
           "text": "Syslog Logger",
           "level": 2,
-          "url": "usage-syslog"
+          "url": "#usage-syslog"
         },
         {
           "text": "FirePHP Logger",
           "level": 2,
-          "url": "usage-firephp"
+          "url": "#usage-firephp"
         },
         {
           "text": "Implementando sus propios adaptadores",
           "level": 2,
-          "url": "usage-custom"
+          "url": "#usage-custom"
         }
       ]
     }
@@ -2641,187 +2641,187 @@
   "mvc": [
     {
       "text": "La Arquitectura MVC",
-      "url": "architecture"
+      "url": "#architecture"
     },
     {
       "text": "Modelos",
-      "url": "models"
+      "url": "#models"
     },
     {
       "text": "Vistas",
-      "url": "views"
+      "url": "#views"
     },
     {
       "text": "Controladores",
-      "url": "controllers"
+      "url": "#controllers"
     }
   ],
   "namespaces": [
     {
       "text": "Trabajando con Espacios de Nombres",
-      "url": "setting-up"
+      "url": "#setting-up"
     },
     {
       "text": "Configurando el framework",
-      "url": "models"
+      "url": "#models"
     },
     {
       "text": "Controladores en espacios de nombres",
-      "url": "controllers"
+      "url": "#controllers"
     },
     {
       "text": "Modelos en Espacios de Nombres",
-      "url": "models"
+      "url": "#models"
     }
   ],
   "performance": [
     {
       "text": "Mejorar el Rendimiento",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Perfil en el servidor",
-      "url": "profiling-server",
+      "url": "#profiling-server",
       "menu": [
         {
           "text": "Perfilando con Xhprof",
           "level": 2,
-          "url": "profiling-server-xhprof"
+          "url": "#profiling-server-xhprof"
         },
         {
           "text": "Perfilando sentencias SQL",
           "level": 2,
-          "url": "profiling-server-sql-statements"
+          "url": "#profiling-server-sql-statements"
         }
       ]
     },
     {
       "text": "Perfil en el cliente",
-      "url": "profiling-client",
+      "url": "#profiling-client",
       "menu": [
         {
           "text": "Perfilar con Chrome/Firefox",
           "level": 2,
-          "url": "profiling-client-chrome-firefox"
+          "url": "#profiling-client-chrome-firefox"
         },
         {
           "text": "Yahoo! YSlow",
           "level": 2,
-          "url": "profiling-client-yslow"
+          "url": "#profiling-client-yslow"
         },
         {
           "text": "Perfilar con Speed Tracer",
           "level": 2,
-          "url": "profiling-client-speed-tracer"
+          "url": "#profiling-client-speed-tracer"
         }
       ]
     },
     {
       "text": "Utilizar una versión reciente de PHP",
-      "url": "php-version"
+      "url": "#php-version"
     },
     {
       "text": "Utilizar un caché Bytecode de PHP",
-      "url": "bytecode-cache"
+      "url": "#bytecode-cache"
     },
     {
       "text": "Realizar labores de bloqueo en segundo plano",
-      "url": "background-tasks"
+      "url": "#background-tasks"
     },
     {
       "text": "Google Page Speed",
-      "url": "page-speed"
+      "url": "#page-speed"
     }
   ],
   "queue": [
     {
       "text": "Formación de Colas",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Poner Trabajos en la Cola",
-      "url": "put-jobs-in-queue"
+      "url": "#put-jobs-in-queue"
     },
     {
       "text": "Recuperando Mensajes",
-      "url": "retrieving-messages"
+      "url": "#retrieving-messages"
     }
   ],
   "reproducible-tests": [
     {
       "text": "Creando un pequeño script",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Base de Datos",
-      "url": "database"
+      "url": "#database"
     },
     {
       "text": "Aplicaciones simples o multi módulo",
-      "url": "single-multi"
+      "url": "#single-multi"
     },
     {
       "text": "Micro Aplicaciones",
-      "url": "micro"
+      "url": "#micro"
     },
     {
       "text": "ORM",
-      "url": "orm"
+      "url": "#orm"
     }
   ],
   "request": [
     {
       "text": "Entorno de Consulta",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Obteniendo Valores",
-      "url": "getting-values"
+      "url": "#getting-values"
     },
     {
       "text": "Accediendo a la Consulta desde los Controladores",
-      "url": "controller-access"
+      "url": "#controller-access"
     },
     {
       "text": "Subiendo Archivos",
-      "url": "uploading-files"
+      "url": "#uploading-files"
     },
     {
       "text": "Trabajando con Cabeceras",
-      "url": "working-with-headers"
+      "url": "#working-with-headers"
     }
   ],
   "response": [
     {
       "text": "Devolviendo Respuestas",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Trabajando con Cabeceras",
-      "url": "working-with-headers"
+      "url": "#working-with-headers"
     },
     {
       "text": "Haciendo redirecciones",
-      "url": "redirections"
+      "url": "#redirections"
     },
     {
       "text": "Caché HTTP",
-      "url": "http-cache",
+      "url": "#http-cache",
       "menu": [
         {
           "text": "Estableciendo el tiempo de expiración",
           "level": 2,
-          "url": "http-cache-expiration-time"
+          "url": "#http-cache-expiration-time"
         },
         {
           "text": "Cache-Control",
           "level": 2,
-          "url": "http-cache-control"
+          "url": "#http-cache-control"
         },
         {
           "text": "E-Tag",
           "level": 2,
-          "url": "http-cache-etag"
+          "url": "#http-cache-etag"
         }
       ]
     }
@@ -2829,917 +2829,917 @@
   "routing": [
     {
       "text": "Ruteo",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Definición de rutas",
-      "url": "defining",
+      "url": "#defining",
       "menu": [
         {
           "text": "Parámetros con nombres",
           "level": 2,
-          "url": "defining-named-parameters"
+          "url": "#defining-named-parameters"
         },
         {
           "text": "Sintaxis corta",
           "level": 2,
-          "url": "defining-short-syntax"
+          "url": "#defining-short-syntax"
         },
         {
           "text": "Mezcla de array y sintaxis corta",
           "level": 2,
-          "url": "defining-mixed-parameters"
+          "url": "#defining-mixed-parameters"
         },
         {
           "text": "Enrutamiento a los módulos",
           "level": 2,
-          "url": "defining-route-to-modules"
+          "url": "#defining-route-to-modules"
         },
         {
           "text": "Restricciones del método HTTP",
           "level": 2,
-          "url": "defining-http-method-restrictions"
+          "url": "#defining-http-method-restrictions"
         },
         {
           "text": "Utilizando conversores",
           "level": 2,
-          "url": "defining-using-conversors"
+          "url": "#defining-using-conversors"
         },
         {
           "text": "Grupos de rutas",
           "level": 2,
-          "url": "defining-groups-of-routes"
+          "url": "#defining-groups-of-routes"
         }
       ]
     },
     {
       "text": "Rutas coincidentes",
-      "url": "matching"
+      "url": "#matching"
     },
     {
       "text": "Nombres de rutas",
-      "url": "naming"
+      "url": "#naming"
     },
     {
       "text": "Ejemplos de Uso",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Comportamiento predeterminado",
-      "url": "default-behavior"
+      "url": "#default-behavior"
     },
     {
       "text": "Establecer la ruta por defecto",
-      "url": "default-route"
+      "url": "#default-route"
     },
     {
       "text": "Rutas no encontradas",
-      "url": "not-found-paths"
+      "url": "#not-found-paths"
     },
     {
       "text": "Configurar rutas por defecto",
-      "url": "default-paths"
+      "url": "#default-paths"
     },
     {
       "text": "Tratar con barras extra o finales",
-      "url": "extra-slashes"
+      "url": "#extra-slashes"
     },
     {
       "text": "Coincidencias por llamada de retorno",
-      "url": "callbacks"
+      "url": "#callbacks"
     },
     {
       "text": "Restricciones de nombre de host",
-      "url": "hostname-constraints"
+      "url": "#hostname-constraints"
     },
     {
       "text": "Fuentes URI",
-      "url": "uri-sources"
+      "url": "#uri-sources"
     },
     {
       "text": "Probando tus rutas",
-      "url": "testing"
+      "url": "#testing"
     },
     {
       "text": "Anotaciones de Router",
-      "url": "annotations"
+      "url": "#annotations"
     },
     {
       "text": "Registro de instancia de Router",
-      "url": "registration"
+      "url": "#registration"
     },
     {
       "text": "Implementar tu propio Router",
-      "url": "custom"
+      "url": "#custom"
     }
   ],
   "security": [
     {
       "text": "Seguridad",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Hashing de contraseñas",
-      "url": "hashing"
+      "url": "#hashing"
     },
     {
       "text": "Protección de Falsificación de Petición en Sitios Cruzados (CSRF)",
-      "url": "csrf"
+      "url": "#csrf"
     },
     {
       "text": "Configurar el componente",
-      "url": "setup"
+      "url": "#setup"
     },
     {
       "text": "Aleatorio",
-      "url": "random"
+      "url": "#random"
     },
     {
       "text": "Recursos externos",
-      "url": "resources"
+      "url": "#resources"
     }
   ],
   "session": [
     {
       "text": "Almacenamiento de datos en la sesión",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Iniciando sesión",
-      "url": "start",
+      "url": "#start",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "start-factory"
+          "url": "#start-factory"
         }
       ]
     },
     {
       "text": "XAMPP",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Almacenamiento/recuperación de datos en sesión",
-      "url": "store"
+      "url": "#store"
     },
     {
       "text": "Destrucción/eliminación de sesiones",
-      "url": "remove-destroy"
+      "url": "#remove-destroy"
     },
     {
       "text": "Aislamiento de datos de la sesión entre aplicaciones",
-      "url": "data-isolation"
+      "url": "#data-isolation"
     },
     {
       "text": "Bolsas de sesión",
-      "url": "bags"
+      "url": "#bags"
     },
     {
       "text": "Datos persistentes en componentes",
-      "url": "data-persistence"
+      "url": "#data-persistence"
     },
     {
       "text": "Implementando sus propios adaptadores",
-      "url": "custom-adapters"
+      "url": "#custom-adapters"
     }
   ],
   "tag": [
     {
       "text": "Ayudantes de vistas (etiquetas)",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Tipo de Documento de Contenido",
-      "url": "document-type"
+      "url": "#document-type"
     },
     {
       "text": "Creando Formularios",
-      "url": "creating-forms"
+      "url": "#creating-forms"
     },
     {
       "text": "Ayudantes para Generar Elementos de Formulario",
-      "url": "helpers-for-form-elements"
+      "url": "#helpers-for-form-elements"
     },
     {
       "text": "Armando Cajas de Selección",
-      "url": "select-boxes"
+      "url": "#select-boxes"
     },
     {
       "text": "Asignando Atributos HTML",
-      "url": "html-attributes"
+      "url": "#html-attributes"
     },
     {
       "text": "Estableciendo los valores del Ayudante",
-      "url": "helper-values",
+      "url": "#helper-values",
       "menu": [
         {
           "text": "Desde los controladores",
           "level": 2,
-          "url": "helper-values-form-controllers"
+          "url": "#helper-values-form-controllers"
         },
         {
           "text": "Desde la consulta",
           "level": 2,
-          "url": "helper-values-from-request"
+          "url": "#helper-values-from-request"
         },
         {
           "text": "Especificando valores directamente",
           "level": 2,
-          "url": "helper-values-directly"
+          "url": "#helper-values-directly"
         }
       ]
     },
     {
       "text": "Cambiando dinámicamente el título del documento",
-      "url": "changing-document-title-dynamically"
+      "url": "#changing-document-title-dynamically"
     },
     {
       "text": "Ayudantes de contenidos estáticos",
-      "url": "static-content-helpers",
+      "url": "#static-content-helpers",
       "menu": [
         {
           "text": "Images",
           "level": 2,
-          "url": "static-content-helpers-images"
+          "url": "#static-content-helpers-images"
         },
         {
           "text": "Hojas de estilo",
           "level": 2,
-          "url": "static-content-helpers-stylesheets"
+          "url": "#static-content-helpers-stylesheets"
         },
         {
           "text": "Javascript",
           "level": 2,
-          "url": "static-content-helpers-javascript"
+          "url": "#static-content-helpers-javascript"
         },
         {
           "text": "Elementos HTML5 - Ayudante HTML genérico",
           "level": 2,
-          "url": "static-content-helpers-html5"
+          "url": "#static-content-helpers-html5"
         }
       ]
     },
     {
       "text": "Servicio Tag (Etiquetas)",
-      "url": "tag-helpers"
+      "url": "#tag-helpers"
     },
     {
       "text": "Creando tus propios ayudantes",
-      "url": "custom-helpers"
+      "url": "#custom-helpers"
     }
   ],
   "translate": [
     {
       "text": "Soporte Multi Idioma",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Adaptadores",
-      "url": "adapters",
+      "url": "#adapters",
       "menu": [
         {
           "text": "Factory",
           "level": 2,
-          "url": "adapters-factory"
+          "url": "#adapters-factory"
         }
       ]
     },
     {
       "text": "Uso del componente",
-      "url": "usage"
+      "url": "#usage"
     },
     {
       "text": "Implementando sus propios adaptadores",
-      "url": "custom"
+      "url": "#custom"
     }
   ],
   "tutorial-base": [
     {
       "text": "Vistas",
-      "url": "basic"
+      "url": "#basic"
     },
     {
       "text": "Estructura de archivos",
-      "url": "file-structure"
+      "url": "#file-structure"
     },
     {
       "text": "Manos a la obra",
-      "url": "bootstrap",
+      "url": "#bootstrap",
       "menu": [
         {
           "text": "Cargadores automáticos",
           "level": 2,
-          "url": "autoloaders"
+          "url": "#autoloaders"
         },
         {
           "text": "Gestión de dependencias",
           "level": 2,
-          "url": "dependency-management"
+          "url": "#dependency-management"
         },
         {
           "text": "Tratar las solicitudes de la aplicación",
           "level": 2,
-          "url": "request"
+          "url": "#request"
         },
         {
           "text": "Poniendo todo junto",
           "level": 2,
-          "url": "full-example"
+          "url": "#full-example"
         }
       ]
     },
     {
       "text": "Creando un controlador",
-      "url": "controller"
+      "url": "#controller"
     },
     {
       "text": "Enviando la salida a una vista",
-      "url": "view"
+      "url": "#view"
     },
     {
       "text": "Diseñar un formulario de registro",
-      "url": "signup-form"
+      "url": "#signup-form"
     },
     {
       "text": "Creando un modelo",
-      "url": "model"
+      "url": "#model"
     },
     {
       "text": "Establecer una conexión de base de datos",
-      "url": "database-connection"
+      "url": "#database-connection"
     },
     {
       "text": "Almacenando datos utilizando modelos",
-      "url": "storing-data"
+      "url": "#storing-data"
     },
     {
       "text": "Conclusión",
-      "url": "conclusion"
+      "url": "#conclusion"
     }
   ],
   "tutorial-invo": [
     {
       "text": "Tutorial: INVO",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Estructura del proyecto",
-      "url": "structure"
+      "url": "#structure"
     },
     {
       "text": "Ruteo",
-      "url": "routing"
+      "url": "#routing"
     },
     {
       "text": "Configuración",
-      "url": "configuration"
+      "url": "#configuration"
     },
     {
       "text": "Cargadores automáticos",
-      "url": "autoloaders"
+      "url": "#autoloaders"
     },
     {
       "text": "Registro de servicios",
-      "url": "services"
+      "url": "#services"
     },
     {
       "text": "Gestionando la solicitud",
-      "url": "handling-requests"
+      "url": "#handling-requests"
     },
     {
       "text": "Inyección de Dependencias",
-      "url": "dependency-injection"
+      "url": "#dependency-injection"
     },
     {
       "text": "Inicie sesión en la aplicación",
-      "url": "log-in"
+      "url": "#log-in"
     },
     {
       "text": "Asegurando el backend",
-      "url": "securing-backend",
+      "url": "#securing-backend",
       "menu": [
         {
           "text": "Gestión de Eventos",
           "level": 2,
-          "url": "events-manager"
+          "url": "#events-manager"
         },
         {
           "text": "Obteniendo la lista ACL",
           "level": 2,
-          "url": "acl"
+          "url": "#acl"
         }
       ]
     },
     {
       "text": "Trabajando con el CRUD",
-      "url": "working-with-crud"
+      "url": "#working-with-crud"
     },
     {
       "text": "Formulario de búsqueda",
-      "url": "search-form"
+      "url": "#search-form"
     },
     {
       "text": "Realizando una búsqueda",
-      "url": "performing-searches"
+      "url": "#performing-searches"
     },
     {
       "text": "Creación y actualización de registros",
-      "url": "creating-updating-records"
+      "url": "#creating-updating-records"
     },
     {
       "text": "Componentes de usuario",
-      "url": "user-components"
+      "url": "#user-components"
     },
     {
       "text": "Cambiando dinámicamente el título",
-      "url": "dynamic-titles"
+      "url": "#dynamic-titles"
     }
   ],
   "tutorial-rest": [
     {
       "text": "Tutorial: Crear una API REST simple",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Definición de la API",
-      "url": "definitions"
+      "url": "#definitions"
     },
     {
       "text": "Creando la aplicación",
-      "url": "implementation"
+      "url": "#implementation"
     },
     {
       "text": "Creando un modelo",
-      "url": "models"
+      "url": "#models"
     },
     {
       "text": "Recuperando Datos",
-      "url": "retrieving-data"
+      "url": "#retrieving-data"
     },
     {
       "text": "Insertando datos",
-      "url": "inserting-data"
+      "url": "#inserting-data"
     },
     {
       "text": "Actualizando datos",
-      "url": "updating-data"
+      "url": "#updating-data"
     },
     {
       "text": "Borrando datos",
-      "url": "deleting-data"
+      "url": "#deleting-data"
     },
     {
       "text": "Probando nuestra aplicación",
-      "url": "testing"
+      "url": "#testing"
     },
     {
       "text": "Conclusión",
-      "url": "conclusion"
+      "url": "#conclusion"
     }
   ],
   "tutorial-vokuro": [
     {
       "text": "Tutorial: Vökuró",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Estructura del proyecto",
-      "url": "structure"
+      "url": "#structure"
     },
     {
       "text": "Carga de clases y dependencias",
-      "url": "dependencies"
+      "url": "#dependencies"
     },
     {
       "text": "Regístrarse",
-      "url": "sign-up"
+      "url": "#sign-up"
     }
   ],
   "use-case": [
     {
       "text": "Use Case",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Requerimentos",
-      "url": "requirements"
+      "url": "#requirements"
     },
     {
       "text": "Groups",
-      "url": "groups"
+      "url": "#groups"
     },
     {
       "text": "Endpoints",
-      "url": "endpoints"
+      "url": "#endpoints"
     }
   ],
   "unit-testing": [
     {
       "text": "Unit Testing",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Integrando PHPUnit con Phalcon",
-      "url": "integration"
+      "url": "#integration"
     },
     {
       "text": "El archivo de ayuda de PHPUnit",
-      "url": "unit-helper"
+      "url": "#unit-helper"
     },
     {
       "text": "The `phpunit.xml` file",
-      "url": "phpunit-config"
+      "url": "#phpunit-config"
     },
     {
       "text": "Ejemplo de Test Unitario",
-      "url": "sample"
+      "url": "#sample"
     }
   ],
   "url": [
     {
       "text": "Generando Direcciones URL y Rutas",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Configuración de un URI base",
-      "url": "base-uri"
+      "url": "#base-uri"
     },
     {
       "text": "Generando URIs",
-      "url": "generating-uri"
+      "url": "#generating-uri"
     },
     {
       "text": "Produciendo URLs sin mod_rewrite",
-      "url": "urls-without-mod-rewrite"
+      "url": "#urls-without-mod-rewrite"
     },
     {
       "text": "Produciendo URLs desde Volt",
-      "url": "urls-from-volt"
+      "url": "#urls-from-volt"
     },
     {
       "text": "URI Estáticas vs Dinámicas",
-      "url": "static-vs-dynamic-uri"
+      "url": "#static-vs-dynamic-uri"
     },
     {
       "text": "Implementando tu Propio Generador de URLs",
-      "url": "custom-url"
+      "url": "#custom-url"
     }
   ],
   "validation": [
     {
       "text": "Validación",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Iniciando la Validación",
-      "url": "initializing"
+      "url": "#initializing"
     },
     {
       "text": "Validadores",
-      "url": "validators"
+      "url": "#validators"
     },
     {
       "text": "Validador de Devolución de Llamada",
-      "url": "callback"
+      "url": "#callback"
     },
     {
       "text": "Mensajes de validación",
-      "url": "messages"
+      "url": "#messages"
     },
     {
       "text": "Filtrando de Datos",
-      "url": "filtering"
+      "url": "#filtering"
     },
     {
       "text": "Eventos de Validación",
-      "url": "events"
+      "url": "#events"
     },
     {
       "text": "Cancelando Validaciones",
-      "url": "cancelling"
+      "url": "#cancelling"
     },
     {
       "text": "Evitar Validar Valores Vacíos",
-      "url": "empty-values"
+      "url": "#empty-values"
     },
     {
       "text": "Validación Recursiva",
-      "url": "recursive"
+      "url": "#recursive"
     }
   ],
   "views": [
     {
       "text": "Usando Vistas",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Integrando Vistas con Controladores",
-      "url": "integrating-views-with-controllers"
+      "url": "#integrating-views-with-controllers"
     },
     {
       "text": "Renderizado Jerárquico",
-      "url": "hierarchical-rendering",
+      "url": "#hierarchical-rendering",
       "menu": [
         {
           "text": "Usando Plantillas",
           "level": 2,
-          "url": "using-templates"
+          "url": "#using-templates"
         },
         {
           "text": "Control de Niveles de Renderizado",
           "level": 2,
-          "url": "control-rendering-levels"
+          "url": "#control-rendering-levels"
         },
         {
           "text": "Deshabilitar niveles de renderizado",
           "level": 2,
-          "url": "disabling-render-levels"
+          "url": "#disabling-render-levels"
         },
         {
           "text": "Selección de Vistas",
           "level": 2,
-          "url": "picking-views"
+          "url": "#picking-views"
         },
         {
           "text": "Deshabilitar la vista",
           "level": 2,
-          "url": "disabling-view"
+          "url": "#disabling-view"
         }
       ]
     },
     {
       "text": "Renderizado Simple",
-      "url": "simple-rendering"
+      "url": "#simple-rendering"
     },
     {
       "text": "Usando parciales",
-      "url": "using-partials"
+      "url": "#using-partials"
     },
     {
       "text": "Transferencia de valores del controlador a la vista",
-      "url": "value-transfer"
+      "url": "#value-transfer"
     },
     {
       "text": "Almacenamiento en caché de fragmentos de la vista",
-      "url": "caching-fragments"
+      "url": "#caching-fragments"
     },
     {
       "text": "Motores de Plantillas",
-      "url": "template-engines",
+      "url": "#template-engines",
       "menu": [
         {
           "text": "Crea tu propio adaptador de motor de plantillas",
           "level": 2,
-          "url": "custom-template-engine"
+          "url": "#custom-template-engine"
         },
         {
           "text": "Cambiar el motor de plantillas",
           "level": 2,
-          "url": "changing-template-engine"
+          "url": "#changing-template-engine"
         }
       ]
     },
     {
       "text": "Inyectando servicios en la vista",
-      "url": "injecting-services"
+      "url": "#injecting-services"
     },
     {
       "text": "Componente independiente",
-      "url": "stand-alone",
+      "url": "#stand-alone",
       "menu": [
         {
           "text": "Renderizado Jerárquico",
           "level": 2,
-          "url": "stand-alone-hierarchical-rendering"
+          "url": "#stand-alone-hierarchical-rendering"
         },
         {
           "text": "Renderizado Simple",
           "level": 2,
-          "url": "stand-alone-simple-rendering"
+          "url": "#stand-alone-simple-rendering"
         }
       ]
     },
     {
       "text": "Eventos de la Vista",
-      "url": "events"
+      "url": "#events"
     }
   ],
   "volt": [
     {
       "text": "Volt: Motor de plantillas",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Introducción",
-      "url": "introduction"
+      "url": "#introduction"
     },
     {
       "text": "Activando Volt",
-      "url": "setup"
+      "url": "#setup"
     },
     {
       "text": "Uso básico",
-      "url": "basic-usage"
+      "url": "#basic-usage"
     },
     {
       "text": "Variables",
-      "url": "variables"
+      "url": "#variables"
     },
     {
       "text": "Filtros",
-      "url": "filters"
+      "url": "#filters"
     },
     {
       "text": "Comentarios",
-      "url": "comments"
+      "url": "#comments"
     },
     {
       "text": "Lista de estructuras de Control",
-      "url": "control-structures",
+      "url": "#control-structures",
       "menu": [
         {
           "text": "For",
           "level": 2,
-          "url": "control-structures-for"
+          "url": "#control-structures-for"
         },
         {
           "text": "Controles de bucle",
           "level": 2,
-          "url": "control-structures-loops",
+          "url": "#control-structures-loops",
           "menu": [
             {
               "text": "If",
               "level": 3,
-              "url": "control-structures-if"
+              "url": "#control-structures-if"
             },
             {
               "text": "Switch",
               "level": 3,
-              "url": "control-structures-switch"
+              "url": "#control-structures-switch"
             }
           ]
         },
         {
           "text": "Contexto de bucle",
           "level": 2,
-          "url": "control-structures-loop",
+          "url": "#control-structures-loop",
           "menu": [
             {
               "text": "Asignaciones",
               "level": 3,
-              "url": "assignments"
+              "url": "#assignments"
             },
             {
               "text": "Expresiones",
               "level": 3,
-              "url": "expressions"
+              "url": "#expressions"
             }
           ]
         },
         {
           "text": "Literales",
           "level": 2,
-          "url": "expressions-literals"
+          "url": "#expressions-literals"
         },
         {
           "text": "Arrays",
           "level": 2,
-          "url": "expressions-arrays"
+          "url": "#expressions-arrays"
         },
         {
           "text": "Matemáticas",
           "level": 2,
-          "url": "expressions-math"
+          "url": "#expressions-math"
         },
         {
           "text": "Comparaciones",
           "level": 2,
-          "url": "expressions-comparisons"
+          "url": "#expressions-comparisons"
         },
         {
           "text": "Lógica",
           "level": 2,
-          "url": "expressions-logic"
+          "url": "#expressions-logic"
         },
         {
           "text": "Otros operadores",
           "level": 2,
-          "url": "expressions-other-operators"
+          "url": "#expressions-other-operators"
         }
       ]
     },
     {
       "text": "Pruebas",
-      "url": "tests"
+      "url": "#tests"
     },
     {
       "text": "Macros",
-      "url": "macros"
+      "url": "#macros"
     },
     {
       "text": "Usando los ayudantes de etiqueta",
-      "url": "tag-helpers"
+      "url": "#tag-helpers"
     },
     {
       "text": "Funciones",
-      "url": "functions"
+      "url": "#functions"
     },
     {
       "text": "Integración de la vista",
-      "url": "view-integrations",
+      "url": "#view-integrations",
       "menu": [
         {
           "text": "Incluir",
           "level": 2,
-          "url": "view-integration-include"
+          "url": "#view-integration-include"
         },
         {
           "text": "Parciales vs inclusiones",
           "level": 2,
-          "url": "view-integration-partial-vs-include"
+          "url": "#view-integration-partial-vs-include"
         }
       ]
     },
     {
       "text": "Herencia de Plantillas",
-      "url": "template-inheritance",
+      "url": "#template-inheritance",
       "menu": [
         {
           "text": "Herencia múltiple",
           "level": 2,
-          "url": "template-inheritance-multiple"
+          "url": "#template-inheritance-multiple"
         }
       ]
     },
     {
       "text": "Modo de Autoescape",
-      "url": "autoescape"
+      "url": "#autoescape"
     },
     {
       "text": "Extender Volt",
-      "url": "extending",
+      "url": "#extending",
       "menu": [
         {
           "text": "Funciones",
           "level": 2,
-          "url": "extending-functions"
+          "url": "#extending-functions"
         },
         {
           "text": "Filtros",
           "level": 2,
-          "url": "extending-filters"
+          "url": "#extending-filters"
         },
         {
           "text": "Extensiones",
           "level": 2,
-          "url": "extending-extensions"
+          "url": "#extending-extensions"
         }
       ]
     },
     {
       "text": "Almacenamiento en caché de fragmentos de la vista",
-      "url": "caching-view-fragments"
+      "url": "#caching-view-fragments"
     },
     {
       "text": "Inyectar servicios en una plantilla",
-      "url": "services-in-templates"
+      "url": "#services-in-templates"
     },
     {
       "text": "Componente independiente",
-      "url": "stand-alone"
+      "url": "#stand-alone"
     }
   ],
   "webserver-wamp": [
     {
       "text": "Instalación en WAMP",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Descargar la versión correcta de Phalcon",
-      "url": "phalcon"
+      "url": "#phalcon"
     },
     {
       "text": "Related",
-      "url": "related"
+      "url": "#related"
     }
   ],
   "webserver-xampp": [
     {
       "text": "Instalación en XAMPP",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Descargar la versión correcta de Phalcon",
-      "url": "phalcon"
+      "url": "#phalcon"
     },
     {
       "text": "Video tutorial",
-      "url": "screencast"
+      "url": "#screencast"
     },
     {
       "text": "Related",
-      "url": "related"
+      "url": "#related"
     }
   ]
 }
