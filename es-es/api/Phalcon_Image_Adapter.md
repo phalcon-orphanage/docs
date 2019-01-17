@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Image\Adapter'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Image\Adapter'
+---
 # Abstract class **Phalcon\Image\Adapter**
 
-*implements* [Phalcon\Image\AdapterInterface](/4.0/en/api/Phalcon_Image_AdapterInterface)
+*implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/adapter.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
 
 Todo adaptador de imagen debe utilizar esta clase
 
@@ -44,7 +44,7 @@ Redimensiona el tamaño de la imagen al tamaño indicado
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
-Este método modifica la escala de las imágenes utilizando un método de cambio de escala líquido. Sólo es compatible con Imagick
+This method scales the images using liquid rescaling method. Only support Imagick
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
@@ -66,7 +66,7 @@ public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
 Agrega un reflejo a una imagen
 
-public **watermark** ([Phalcon\Image\Adapter](/4.0/en/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
+public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
 Agrega una marca de agua a una imagen con la opacidad especificada
 
@@ -74,7 +74,7 @@ public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed*
 
 Agrega un texto a una imagen con la opacidad especificada
 
-public **mask** ([Phalcon\Image\Adapter](/4.0/en/api/Phalcon_Image_Adapter) $watermark)
+public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark)
 
 Combina una imagen con otra
 
