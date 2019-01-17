@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Cli\Task'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Cli\Task'
+---
 # Class **Phalcon\Cli\Task**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](Phalcon_Cli_TaskInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/task.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
 Every command-line task should extend this class that encapsulates all the task functionality
 
