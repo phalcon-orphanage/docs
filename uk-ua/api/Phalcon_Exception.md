@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Exception'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Exception'
+---
 # Class **Phalcon\Exception**
 
 *extends* class [Exception](https://php.net/manual/en/class.exception.php)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/exception.zep)
 
 ## Methods
 
