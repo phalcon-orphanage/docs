@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
 
