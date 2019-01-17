@@ -6,7 +6,7 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
 ## Métodos
 
