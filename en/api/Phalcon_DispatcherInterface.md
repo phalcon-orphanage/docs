@@ -6,7 +6,7 @@ title: 'Phalcon\DispatcherInterface'
 ---
 # Interface **Phalcon\DispatcherInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/dispatcherinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
 
 ## Methods
 abstract public  **setActionSuffix** (*mixed* $actionSuffix)

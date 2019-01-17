@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\CollectionInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collectioninterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
 
 ## Methods
 abstract public  **setId** (*mixed* $id)
@@ -49,7 +49,7 @@ abstract public  **getDirtyState** ()
 ...
 
 
-abstract public static  **cloneResult** ([Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
+abstract public static  **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
 ...
 
@@ -74,7 +74,7 @@ abstract public  **getMessages** ()
 ...
 
 
-abstract public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](/4.0/en/api/Phalcon_Mvc_Model_MessageInterface) $message)
+abstract public  **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
 ...
 

@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\BinderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BinderInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/binderinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
 
 ## Methods
 abstract public  **getBoundModels** ()
@@ -19,7 +19,7 @@ abstract public  **getCache** ()
 ...
 
 
-abstract public  **setCache** ([Phalcon\Cache\BackendInterface](/4.0/en/api/Phalcon_Cache_BackendInterface) $cache)
+abstract public  **setCache** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache)
 
 ...
 

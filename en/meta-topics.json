@@ -4,6 +4,10 @@
     "url": "/introduction",
     "menu": [
       {
+        "text": "Introduction",
+        "url": "/introduction"
+      },
+      {
         "text": "Release Notes",
         "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
         "external": true
@@ -43,8 +47,8 @@
         "url": "/reproducible-tests"
       },
       {
-        "text": "Testing guide",
-        "url": ""
+        "text": "Testing environment",
+        "url": "testing-environment"
       }
     ]
   },

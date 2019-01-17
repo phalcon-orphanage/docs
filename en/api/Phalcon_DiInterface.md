@@ -8,7 +8,7 @@ title: 'Phalcon\DiInterface'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/diinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
 ## Methods
 abstract public  **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
@@ -41,7 +41,7 @@ abstract public  **getShared** (*mixed* $name, [*mixed* $parameters])
 ...
 
 
-abstract public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](/4.0/en/api/Phalcon_Di_ServiceInterface) $rawDefinition)
+abstract public  **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
 ...
 
@@ -71,7 +71,7 @@ abstract public  **getServices** ()
 ...
 
 
-abstract public static  **setDefault** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public static  **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...
 

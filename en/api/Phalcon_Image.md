@@ -6,7 +6,7 @@ title: 'Phalcon\Image'
 ---
 # Class **Phalcon\Image**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
 
 ## Constants
 *integer* **NONE**

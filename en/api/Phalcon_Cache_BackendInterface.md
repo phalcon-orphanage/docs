@@ -6,7 +6,7 @@ title: 'Phalcon\Cache\BackendInterface'
 ---
 # Interface **Phalcon\Cache\BackendInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backendinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
 
 ## Methods
 abstract public  **start** (*mixed* $keyName, [*mixed* $lifetime])

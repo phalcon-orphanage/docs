@@ -1,12 +1,12 @@
 ---
 layout: article
-language: 'en'
+language: 'id-id'
 version: '4.0'
 title: 'Phalcon\Factory\Exception'
 ---
 # Class **Phalcon\Factory\Exception**
 
-*extends* class [Phalcon\Exception](Phalcon_Exception)
+*extends* class [Phalcon\Exception](/4.0/en/api/Phalcon_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 

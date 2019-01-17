@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'ja-jp'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\BinderInterface'
 ---

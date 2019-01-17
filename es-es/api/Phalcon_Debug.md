@@ -1,9 +1,9 @@
----
-layout: article
-language: 'en'
-version: '4.0'
-title: 'Phalcon\Debug'
----
+* * *
+
+layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Debug'
+
+* * *
+
 # Class **Phalcon\Debug**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/debug.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>

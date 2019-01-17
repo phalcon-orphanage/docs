@@ -6,7 +6,7 @@ title: 'Phalcon\Db\Profiler'
 ---
 # Class **Phalcon\Db\Profiler**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/profiler.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
 Instances of Phalcon\Db can generate execution profiles
 on SQL statements sent to the relational database. Profiled
@@ -40,7 +40,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 
 ## Methods
-public [Phalcon\Db\Profiler](/4.0/en/api/Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
+public [Phalcon\Db\Profiler](Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
 Starts the profile of a SQL sentence
 

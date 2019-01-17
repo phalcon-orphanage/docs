@@ -1,6 +1,6 @@
 * * *
 
-layout: default language: 'en' version: '4.0' title: 'Phalcon\Acl\ResourceInterface'
+layout: default language: 'zh-cn' version: '4.0' title: 'Phalcon\Acl\ResourceInterface'
 
 * * *
 

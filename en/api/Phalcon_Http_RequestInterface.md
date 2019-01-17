@@ -6,7 +6,7 @@ title: 'Phalcon\Http\RequestInterface'
 ---
 # Interface **Phalcon\Http\RequestInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/requestinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
 
 ## Methods
 abstract public  **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])

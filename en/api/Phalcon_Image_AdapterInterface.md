@@ -6,7 +6,7 @@ title: 'Phalcon\Image\AdapterInterface'
 ---
 # Interface **Phalcon\Image\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
 
 ## Methods
 abstract public  **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
@@ -39,7 +39,7 @@ abstract public  **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $
 ...
 
 
-abstract public  **watermark** ([Phalcon\Image\Adapter](/4.0/en/api/Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
+abstract public  **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
 ...
 
@@ -49,7 +49,7 @@ abstract public  **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY]
 ...
 
 
-abstract public  **mask** ([Phalcon\Image\Adapter](/4.0/en/api/Phalcon_Image_Adapter) $watermark)
+abstract public  **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark)
 
 ...
 
