@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
+---
 # Interface **Phalcon\Mvc\Model\Transaction\ManagerInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transaction/managerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
 
 ## Methods
 
@@ -30,11 +30,11 @@ abstract public **rollback** ([*mixed* $collect])
 
 ...
 
-abstract public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](/4.0/en/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+abstract public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 
-abstract public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](/4.0/en/api/Phalcon_Mvc_Model_TransactionInterface) $transaction)
+abstract public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 
