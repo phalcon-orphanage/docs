@@ -1,104 +1,122 @@
 ---
 layout: article
-language: 'it-it'
+language: 'en'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
+> If you have found a bug, you can open an issue in [Github](https://github.com/phalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
 
-{:.alert .alert-danger}
-
-If you have found a bug it is important to add relevant reproducibility information to your issue to allow us to reproduce the bug and fix it quicker. If you have the application publicly on Github please submit the repository address along with the issue description. You can also use [Gist](https://gist.github.com/) to post any code you want to share with us.
-
-<a name="overview"></a>
+<a name='overview'></a>
 
 ## Creating a small script
 
-A small single-file script is usually the best way to reproduce a problem:
+A small PHP file can be used to showcase how to reproduce the issue:
 
 ```php
 <?php
 
-$di = new Phalcon\DI\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Di\Injectable;
+use Phalcon\Session\Manager;
+use Phalcon\Session\Adapter\Files;
+use Phalcon\Http\Response\Cookies;
 
-//Register your custom services
-$di['session'] = function() {
-    $session = new \Phalcon\Session\Adapter\Files();
+
+$container = new FactoryDefault();
+
+// Register your custom services
+$container['session'] = function() {
+    $session = new Manager();
+    $adapter = new Files(
+        [
+            'save_path' => '/tmp',
+         ]
+    );
+    $session->setHandler($adapter);
     $session->start();
+
     return $session;
 };
 
-$di['cookies'] = function() {
-    $cookies = new Phalcon\Http\Response\Cookies();
+$container['cookies'] = function() {
+    $cookies = new Cookies();
     $cookies->useEncryption(false);
+
     return $cookies;
 };
 
-class SomeClass extends \Phalcon\DI\Injectable
+class SomeClass extends Injectable
 {
     public function someMethod()
     {
         $cookies = $this->getDI()->getCookies();
-        $cookies->set("mycookie", "test", time() + 3600, "/");
+        $cookies->set('mycookie', 'test', time() + 3600, '/');
     }
 }
 
-$c = new MyClass;
-$c->setDI($di);
-$c->someMethod();
+$class = new MyClass();
+$class->setDI($container);
+$class->someMethod();
 
-$di['cookies']->send();
+$container['cookies']->send();
 
 var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-Depending on your application, you can use these skeletons in order to create your own script and reproduce the bug:
-
-<a name="database"></a>
+<a name='database'></a>
 
 ### Database
 
-Remember to add to the script how you registered the database service:
+> Remember to outline in the script the methodology you use to register the `db` service: {:.alert .alert-info}
 
 ```php
 <?php
 
-$di = new Phalcon\DI\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Db\Adapter\Pdo\Mysql;
 
-$di->setShared('db', function () {
-    return new \Phalcon\Db\Adapter\PDO\Mysql(array(
-        'host' => '127.0.0.1',
-        'username' => 'root',
-        'password' => '',
-        'dbname'   => 'test',
-        'charset'  => 'utf8',
-    ));
-});
+$container = new FactoryDefault();
 
-$result = $di['db']->query('SELECT * FROM customers');
+$container->setShared(
+    'db', 
+    function () {
+        return new Mysql(
+            [
+                'host'     => '127.0.0.1',
+                'username' => 'root',
+                'password' => '',
+                'dbname'   => 'test',
+                'charset'  => 'utf8',
+            ]
+        );
+    }
+);
 
+$result = $container['db']->query('SELECT * FROM customers');
 ```
 
-<a name="single-multi"></a>
+<a name='single-multi'></a>
 
 ### Single/Multi-Module applications
 
-Remember to add to the script how you are creating the Phalcon\Mvc\Application instance:
+> Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules {:.alert .alert-info}
 
 ```php
 <?php
 
-$di  = new \Phalcon\DI\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Application;
 
-//other services
+$container = new FactoryDefault();
 
-$app = new \Phalcon\Mvc\Application();
-$app->setDi($di);
+// other services
 
-//register modules if any
+$application = new Application();
+$application->setDI($container);
 
-echo $app->handle->getContent()
+// register modules if any
 
+echo $application->handle()->getContent();
 ```
 
 Include models and controllers as part of the test:
@@ -106,108 +124,122 @@ Include models and controllers as part of the test:
 ```php
 <?php
 
-$di  = new \Phalcon\DI\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Application;
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model;
 
-//other services
+$container = new FactoryDefault();
 
-$app = new \Phalcon\Mvc\Application();
-$app->setDi($di);
+// other services
 
-class IndexController extends Phalcon\Mvc\Controller
+$application = new Application();
+$application->setDI($container);
+
+class IndexController extends Controller
 {
     public function indexAction() { 
           /* your content here */
     }
 }
 
-class Users extends Phalcon\Mvc\Model
+class Users extends Model
 {
 }
 
-echo $app->handle->getContent()
-
+echo $application->handle()->getContent();
 ```
 
-<a name="micro"></a>
+<a name='micro'></a>
 
 ### Micro application
 
-Follow this structure to create the script:
+For micro applications, you can use the skeleton script below:
 
 ```php
 <?php
 
-$di = new \Phalcon\DI\FactoryDefault();
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Micro;
 
-$app = new \Phalcon\Mvc\Micro($di);
+$container = new FactoryDefault();
 
-//define your routes here
+// other services
 
-$app->handle();
+$application = new Micro($container);
+
+// define your routes here
+
+$application->handle();
 ```
 
-<a name="orm"></a>
+<a name='orm'></a>
 
 ### ORM
 
-You can provide your own database schema or even better use any of the phalcon test [databases](https://github.com/phalcon/cphalcon/tree/master/unit-tests/schemas). Follow this structure to create the script:
+> You can provide your own database schema or even better use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). {:.alert .alert-info}
 
 ```php
 <?php
 
-use Phalcon\DI;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Di;
 use Phalcon\Db\Adapter\Pdo\Mysql as Connection;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Manager as ModelsManager;
 use Phalcon\Mvc\Model\Metadata\Memory as ModelsMetaData;
 
 $eventsManager = new EventsManager();
-
-$di = new DI();
-
-$connection = new Connection(array(
-    "host" => "localhost",
-    "username" => "root",
-    "password" => "",
-    "dbname" => "test"
-));
+$container     = new Di();
+$connection    = new Connection(
+    [
+        'host'     => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'dbname'   => 'test',
+    ]
+);
 
 $connection->setEventsManager($eventsManager);
 
-$eventsManager->attach('db',
+$eventsManager->attach(
+    'db',
     function ($event, $connection) {
         switch ($event->getType()) {
             case 'beforeQuery':
-                echo $connection->getSqlStatement(), "<br>\n";
+                echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
                 break;
         }
     }
 );
 
-$di['db'] = $connection;
-$di['modelsManager'] = new ModelsManager();
-$di['modelsMetadata'] = new ModelsMetadata();
+$container['db']             = $connection;
+$container['modelsManager']  = new ModelsManager();
+$container['modelsMetadata'] = new ModelsMetadata();
 
-if (!$connection->tableExists('user', 'test')) {
-    $connection->execute('CREATE TABLE user (id integer primary key auto_increment, email varchar(120) not null)');
+if (true !== $connection->tableExists('user', 'test')) {
+    $connection->execute(
+        'CREATE TABLE user (id integer primary key auto_increment, email varchar(120) not null)'
+    );
 }
 
-class User extends \Phalcon\Mvc\Model
+class User extends Model
 {
     public $id;
 
     public $email;
 
-    public static function myCustomUserCreator()
+    public static function createNewUserReturnId()
     {
-        $newUser = new User();
+        $newUser        = new User();
         $newUser->email = 'test';
-        if ($newUser->save() == false) {
+        if (false === $newUser->save()) {
             return false;
         }
-        return $newUser->id;        
+
+        return $newUser->id;
     }
 }
 
-echo User::myCustomUserCreator();
+echo User::createNewUserReturnId();
 ```
