@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Http\Request'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Http\Request'
+---
 # Class **Phalcon\Http\Request**
 
-*implements* [Phalcon\Http\RequestInterface](/4.0/en/api/Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/request.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 Encapsulates request information for easy and secure access from application controllers.
 
@@ -41,7 +41,7 @@ public **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
 
 ...
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
