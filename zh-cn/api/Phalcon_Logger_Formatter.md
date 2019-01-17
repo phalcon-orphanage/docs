@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'zh-cn' version: '4.0' title: 'Phalcon\Logger\Formatter'
-
-* * *
-
+---
+layout: article
+language: 'en'
+version: '4.0'
+title: 'Phalcon\Logger\Formatter'
+---
 # Abstract class **Phalcon\Logger\Formatter**
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/formatter.zep" class="btn btn-default btn-sm">源码在GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
 
 This is a base class for logger formatters
 
