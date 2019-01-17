@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Url'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Url'
 
 *implements* [Phalcon\Mvc\UrlInterface](Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/url.zep" class="btn btn-default btn-sm">Исходный код на GitHub</a>
+[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 
 This components helps in the generation of: URIs, URLs and Paths
 
