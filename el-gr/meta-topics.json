@@ -47,21 +47,21 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Περιβάλλον tests",
                 "url": "testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Ξεκινώντας",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Εγκατάσταση",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Εγκατάσταση του διακομιστή Web",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Περιβάλλοντα",
         "url": "",
         "menu": [
             {
@@ -93,33 +93,33 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Εργαλεία ανάπτυξης",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Εγκατάσταση",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Χρήση",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Οδηγοί εκμάθησης",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "Απόδοση",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Βασικό",
                 "url": "/tutorial-base"
             },
             {
@@ -135,13 +135,13 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Πυρήνας",
         "url": "",
         "menu": [
             {
@@ -149,7 +149,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Εφαρμογή",
                 "url": "/application"
             },
             {
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Υπηρεσίες",
         "url": "",
         "menu": [
             {
@@ -187,7 +187,7 @@
                 "url": "/escaper"
             },
             {
-                "text": "Loader",
+                "text": "Φορτωτής",
                 "url": "/loader"
             },
             {
@@ -195,17 +195,17 @@
                 "url": "/logging"
             },
             {
-                "text": "Queue",
+                "text": "Ουρά",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "Βάση Δεδομένων",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Στρώμα",
                 "url": "/db-layer"
             },
             {
@@ -217,15 +217,15 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Μοντέλα",
                 "url": "/db-models"
             },
             {
-                "text": "Advanced",
+                "text": "Προχωρημένα",
                 "url": "/db-models-advanced"
             },
             {
-                "text": "Behaviors",
+                "text": "Συμπεριφορές",
                 "url": "/db-models-behaviors"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {
@@ -241,11 +241,11 @@
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Σχέσεις",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Συναλλαγές",
                 "url": "/db-models-transactions"
             },
             {
@@ -257,7 +257,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Pagination",
+                "text": "Σελιδοποίηση",
                 "url": "/db-pagination"
             }
         ]
@@ -287,7 +287,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -297,11 +297,11 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Επιχειρηματική λογική",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Λίστες Ελέγχου Πρόσβασης",
                 "url": "/acl"
             },
             {
@@ -309,7 +309,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Ελεγκτές",
                 "url": "/controllers"
             },
             {
@@ -317,15 +317,15 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Διαχείριση Γεγονότων",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Φίλτρα",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Δρομολόγηση",
                 "url": "/routing"
             },
             {
@@ -351,17 +351,17 @@
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Αίτηση",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Ανταπόκριση",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Ασφάλεια",
         "url": "",
         "menu": [
             {
@@ -369,7 +369,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Ασφάλεια",
                 "url": "/security"
             }
         ]
@@ -383,7 +383,7 @@
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Μετάφραση",
                 "url": "/translate"
             }
         ]
