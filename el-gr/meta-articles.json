@@ -1,7 +1,7 @@
 {
   "acl": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -17,15 +17,15 @@
       "url": "#adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Καθορισμός ελέγχων πρόσβασης",
       "url": "#access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Αναζητώντας ένα ACL",
       "url": "#querying"
     },
     {
-      "text": "Function based access",
+      "text": "Πρόσβαση βασισμένη σε λειτουργίες",
       "url": "#function-based-access"
     },
     {
@@ -37,21 +37,21 @@
       "url": "#operationss-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "Σειρογραφία Λίστες ACL",
       "url": "#serialization"
     },
     {
-      "text": "Events",
+      "text": "Γεγονότα",
       "url": "#events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -59,7 +59,7 @@
       "url": "#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Προσθήκη ρόλων",
       "url": "#factory"
     },
     {
@@ -71,7 +71,7 @@
       "url": "#types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Πρακτική χρήση",
       "url": "#usage",
       "menu": [
         {
@@ -91,7 +91,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "level": 2,
           "url": "#adapters-custom"
         }
@@ -108,7 +108,7 @@
       "url": "#creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Δομή",
       "url": "#structure"
     },
     {
@@ -116,7 +116,7 @@
       "url": "#creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Εργασίες",
       "url": "#tasks"
     },
     {
@@ -138,54 +138,54 @@
       "url": "#routing",
       "menu": [
         {
-          "text": "Setup",
+          "text": "Ρύθμιση",
           "level": 2,
           "url": "#routing-setup",
           "menu": [
             {
-              "text": "Application object",
+              "text": "Αντικείμενο εφαρμογής",
               "level": 3,
               "url": "#routing-setup-application"
             },
             {
-              "text": "Router object",
+              "text": "Αντικείμενο του δρομολογητή",
               "level": 3,
               "url": "#routing-setup-router"
             }
           ]
         },
         {
-          "text": "Rewrite Rules",
+          "text": "Κανόνες αναγραφής",
           "level": 2,
           "url": "#rewrite-rules"
         },
         {
-          "text": "Handlers",
+          "text": "Χειριστές",
           "level": 2,
           "url": "#routing-handlers",
           "menu": [
             {
-              "text": "Definitions",
+              "text": "Ορισμοί",
               "level": 3,
               "url": "#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Anonymous Function",
+                  "text": "Ανώνυμη συνάρτηση",
                   "level": 4,
                   "url": "#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Function",
+                  "text": "Συνάρτηση",
                   "level": 4,
                   "url": "#routing-handlers-function"
                 },
                 {
-                  "text": "Static Method",
+                  "text": "Στατική μέθοδος",
                   "level": 4,
                   "url": "#routing-handlers-static-method"
                 },
                 {
-                  "text": "Method in an Object",
+                  "text": "Μέθοδος σε ένα αντικείμενο",
                   "level": 4,
                   "url": "#routing-handlers-object-method"
                 },
@@ -209,14 +209,14 @@
               ]
             },
             {
-              "text": "Not Found (404)",
+              "text": "Δεν βρέθηκε (404)",
               "level": 3,
               "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "Methods - Verbs",
+          "text": "Μέθοδοι - ρήματα",
           "level": 2,
           "url": "#routing-verbs",
           "menu": [
@@ -263,22 +263,22 @@
           ]
         },
         {
-          "text": "Collections",
+          "text": "Συλλογές",
           "level": 2,
           "url": "#routing-collections"
         },
         {
-          "text": "Parameters",
+          "text": "Παράμετροι",
           "level": 2,
           "url": "#routing-parameters"
         },
         {
-          "text": "Redirections",
+          "text": "Ανακατευθύνσεις",
           "level": 2,
           "url": "#routing-redirections"
         },
         {
-          "text": "URLs for Routes",
+          "text": "Διευθύνσεις URL για τις διαδρομές",
           "level": 2,
           "url": "#routing-urls-for-routes"
         }
@@ -289,7 +289,7 @@
       "url": "#dependency-injector"
     },
     {
-      "text": "Responses",
+      "text": "Ανταπόκρισεις",
       "url": "#responses",
       "menu": [
         {
@@ -298,7 +298,7 @@
           "url": "#responses-direct-output"
         },
         {
-          "text": "Including another file",
+          "text": "Συμπεριλαμβάνοντας ένα άλλο αρχείο",
           "level": 2,
           "url": "#responses-include"
         },
@@ -308,12 +308,12 @@
           "url": "#responses-direct-output-json"
         },
         {
-          "text": "New Response object",
+          "text": "Νέο αντικείμενο Ανταπόκρισης",
           "level": 2,
           "url": "#responses-new-response-object"
         },
         {
-          "text": "Application Response",
+          "text": "Ανταπόκριση εφαρμογής",
           "level": 2,
           "url": "#responses-application-response"
         },
@@ -330,21 +330,21 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Γεγονότα",
       "url": "#events",
       "menu": [
         {
-          "text": "Available events",
+          "text": "Διαθέσιμα γεγονότα",
           "level": 2,
           "url": "#events-available-events",
           "menu": [
             {
-              "text": "Authentication example",
+              "text": "Παράδειγμα ελέγχου ταυτότητας",
               "level": 3,
               "url": "#events-available-events-authentication"
             },
             {
-              "text": "Not found example",
+              "text": "Δεν βρέθηκε παράδειγμα",
               "level": 3,
               "url": "#events-available-events-not-found"
             }
@@ -353,11 +353,11 @@
       ]
     },
     {
-      "text": "Middleware",
+      "text": "Ενδιάμεσο λογισμικό",
       "url": "#",
       "menu": [
         {
-          "text": "Attached events",
+          "text": "Συνημμένα γεγονότα",
           "level": 2,
           "url": "#",
           "menu": [
@@ -384,7 +384,7 @@
           "url": "#"
         },
         {
-          "text": "Setup",
+          "text": "Ρύθμιση",
           "level": 2,
           "url": "#"
         },
@@ -497,7 +497,7 @@
       "url": "#resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Συλλογές",
       "url": "#collections"
     },
     {
@@ -694,11 +694,11 @@
   ],
   "contributions": [
     {
-      "text": "Contributing to Phalcon",
+      "text": "Συμβάλλοντας στο Phalcon",
       "url": "#contributing"
     },
     {
-      "text": "Contributions",
+      "text": "Συνεισφορές",
       "url": "#contributions"
     },
     {
@@ -731,7 +731,7 @@
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -769,11 +769,11 @@
   ],
   "cookies": [
     {
-      "text": "Cookies Management",
+      "text": "Διαχείριση cookies",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#usage"
     },
     {
@@ -783,11 +783,11 @@
   ],
   "crypt": [
     {
-      "text": "Encryption/Decryption",
+      "text": "Κρυπτογράφηση/αποκρυπτογράφηση",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#usage"
     },
     {
@@ -822,7 +822,7 @@
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "level": 2,
           "url": "#adapters-custom"
         }
@@ -1072,7 +1072,7 @@
       "url": "#overview"
     },
     {
-      "text": "Relationships between Models",
+      "text": "Σχέσεις μεταξύ των μοντέλων",
       "url": "#relationships",
       "menu": [
         {
@@ -1400,7 +1400,7 @@
       "url": "#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
@@ -2282,7 +2282,7 @@
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "level": 2,
           "url": "#adapters-custom"
         }
@@ -2631,7 +2631,7 @@
           "url": "#usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "level": 2,
           "url": "#usage-custom"
         }
@@ -3000,7 +3000,7 @@
       "url": "#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom-adapters"
     }
   ],
@@ -3196,7 +3196,7 @@
       "url": "#usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
@@ -3625,7 +3625,7 @@
       "url": "#setup"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#basic-usage"
     },
     {
