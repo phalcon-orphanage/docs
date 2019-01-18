@@ -318,7 +318,7 @@
           "url": "#responses-application-response"
         },
         {
-          "text": "Return Application Response",
+          "text": "Επιστρέφωντας Ανταπόκριση εφαρμογής",
           "level": 2,
           "url": "#responses-return-application-response"
         },
@@ -379,7 +379,7 @@
           ]
         },
         {
-          "text": "Implementation",
+          "text": "Εφαρμογή",
           "level": 2,
           "url": "#"
         },
@@ -389,42 +389,42 @@
           "url": "#"
         },
         {
-          "text": "Events in Middleware",
+          "text": "Γεγονότα στο Ενδιάμεσο Λογισμικό",
           "level": 2,
           "url": "#",
           "menu": [
             {
-              "text": "API example",
+              "text": "Παράδειγμα API",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "Firewall Middleware",
+              "text": "Firewall Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "Not Found Middleware",
+              "text": "Δε βρέθηκε Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "Redirect Middleware",
+              "text": "Αντικατεύθυνσης Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "CORS Middleware",
+              "text": "CORS Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "Request Middleware",
+              "text": "Αίτησης Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             },
             {
-              "text": "Response Middleware",
+              "text": "Ανταπόκρισης Ενδιάμεσο Λογισμικό (Middleware)",
               "level": 3,
               "url": "#"
             }
@@ -439,11 +439,11 @@
           "url": "#"
         },
         {
-          "text": "Views",
+          "text": "Προβολές",
           "url": "#"
         },
         {
-          "text": "Error Handling",
+          "text": "Χειρισμός σφαλμάτων",
           "url": "#"
         }
       ]
@@ -451,7 +451,7 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -485,11 +485,11 @@
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Προσθήκη πόρων",
       "url": "#add"
     },
     {
@@ -1155,7 +1155,7 @@
   ],
   "db-models-transactions": [
     {
-      "text": "Model Transactions",
+      "text": "Συναλλαγές Μοντέλων",
       "url": "#overview"
     },
     {
@@ -1173,7 +1173,7 @@
   ],
   "db-models-validation": [
     {
-      "text": "Model Transactions",
+      "text": "Συναλλαγές Μοντέλων",
       "url": "#overview"
     },
     {
@@ -1195,7 +1195,7 @@
       "url": "#working-with"
     },
     {
-      "text": "Creating Models",
+      "text": "Δημιουργία μοντέλων",
       "url": "#creating",
       "menu": [
         {
@@ -1304,7 +1304,7 @@
       "url": "#overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Δημιουργία μοντέλων",
       "url": "#creating-models"
     },
     {
@@ -1410,7 +1410,7 @@
       "url": "#overview"
     },
     {
-      "text": "Usage Example",
+      "text": "Παράδειγμα χρήσης",
       "url": "#usage"
     },
     {
@@ -1515,7 +1515,7 @@
       "url": "#overview"
     },
     {
-      "text": "Prerequisites",
+      "text": "Προϋποθέσεις",
       "url": "#prerequisites"
     },
     {
@@ -1553,7 +1553,7 @@
       "url": "#overview"
     },
     {
-      "text": "Download",
+      "text": "Λήψη",
       "url": "#download"
     },
     {
@@ -1666,7 +1666,7 @@
       "url": "#resolving-services",
       "menu": [
         {
-          "text": "Events",
+          "text": "Γεγονότα",
           "level": 2,
           "url": "#events"
         }
@@ -1771,7 +1771,7 @@
       "url": "#overview"
     },
     {
-      "text": "Dependencies",
+      "text": "Εξαρτήσεις",
       "url": "#dependencies"
     },
     {
@@ -1862,7 +1862,7 @@
       "url": "#overview"
     },
     {
-      "text": "Create a New Project",
+      "text": "Δημιουργήστε ένα νέο έργο",
       "url": "#create-project"
     },
     {
@@ -1896,7 +1896,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements"
     },
     {
@@ -2107,7 +2107,7 @@
       "url": "#naming-convention"
     },
     {
-      "text": "Usage Example",
+      "text": "Παράδειγμα χρήσης",
       "url": "#usage"
     },
     {
@@ -2269,7 +2269,7 @@
   ],
   "image": [
     {
-      "text": "Images",
+      "text": "Εικόνες",
       "url": "#overview"
     },
     {
@@ -2349,16 +2349,16 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements",
       "menu": [
         {
-          "text": "Hardware",
+          "text": "Υλικό",
           "level": 2,
           "url": "#requirements-hardware"
         },
         {
-          "text": "Software",
+          "text": "Λογισμικό",
           "level": 2,
           "url": "#requirements-software",
           "menu": [
@@ -2386,22 +2386,22 @@
               "url": "#installation-linux-deb",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Αποθετήριο εγκατάστασης",
                   "level": 4,
                   "url": "#installation-linux-deb-repository"
                 },
                 {
-                  "text": "Stable releases",
+                  "text": "Σταθερές εκδόσεις",
                   "level": 4,
                   "url": "#installation-linux-debian-repository-stable"
                 },
                 {
-                  "text": "Nightly releases",
+                  "text": "Νυχτερινές εκδόσεις",
                   "level": 4,
                   "url": "#installation-linux-debian-repository-nightly"
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Εγκατάσταση του Phalcon",
                   "level": 4,
                   "url": "#installation-linux-debian-phalcon",
                   "menu": [
@@ -2418,36 +2418,36 @@
                   ]
                 },
                 {
-                  "text": "Additional PPAs",
+                  "text": "Πρόσθετα PPA",
                   "level": 4,
                   "url": "#installation-linux-debian-other-ppa"
                 }
               ]
             },
             {
-              "text": "RPM based distributions (CentOS, Fedora, etc.)",
+              "text": "Διανομές βασισμένες σε RPM (CentOS, Fedora, κλπ.)",
               "level": 3,
               "url": "#installation-linux-rpm",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Αποθετήριο εγκατάστασης",
                   "level": 4,
                   "url": "#installation-linux-rpm-repository"
                 },
                 {
-                  "text": "Stable releases",
+                  "text": "Σταθερές εκδόσεις",
                   "level": 4,
                   "url": "#installation-linux-rpm-repository-stable",
                   "menu": [
                     {
-                      "text": "Nightly releases",
+                      "text": "Νυχτερινές εκδόσεις",
                       "level": 5,
                       "url": "#installation-linux-rpm-repository-nightly"
                     }
                   ]
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Εγκατάσταση του Phalcon",
                   "level": 4,
                   "url": "#installation-linux-rpm-phalcon",
                   "menu": [
@@ -2464,7 +2464,7 @@
                   ]
                 },
                 {
-                  "text": "Additional RPMs",
+                  "text": "Πρόσθετα PPA",
                   "level": 4,
                   "url": "#installation-linux-rpm-other-rpm"
                 }
@@ -2524,7 +2524,7 @@
   ],
   "loader": [
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#overview"
     },
     {
@@ -2640,7 +2640,7 @@
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
+      "text": "Η αρχιτεκτονική MVC",
       "url": "#architecture"
     },
     {
@@ -2648,7 +2648,7 @@
       "url": "#models"
     },
     {
-      "text": "Views",
+      "text": "Προβολές",
       "url": "#views"
     },
     {
@@ -2735,7 +2735,7 @@
   ],
   "queue": [
     {
-      "text": "Queueing",
+      "text": "Χρησημοποίηση Ουρών",
       "url": "#overview"
     },
     {
@@ -2771,7 +2771,7 @@
   ],
   "request": [
     {
-      "text": "Request Environment",
+      "text": "Περιβάλλον Αίτησης",
       "url": "#overview"
     },
     {
@@ -2793,7 +2793,7 @@
   ],
   "response": [
     {
-      "text": "Returning Responses",
+      "text": "Επιστρέφοντας απαντήσεις",
       "url": "#overview"
     },
     {
@@ -3059,7 +3059,7 @@
       "url": "#static-content-helpers",
       "menu": [
         {
-          "text": "Images",
+          "text": "Εικόνες",
           "level": 2,
           "url": "#static-content-helpers-images"
         },
@@ -3091,11 +3091,11 @@
   ],
   "testing-environment": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -3266,7 +3266,7 @@
   ],
   "tutorial-invo": [
     {
-      "text": "Tutorial: INVO",
+      "text": "Σεμινάριο: INVO",
       "url": "#overview"
     },
     {
@@ -3344,7 +3344,7 @@
   ],
   "tutorial-rest": [
     {
-      "text": "Tutorial: Creating a Simple REST API",
+      "text": "Βοήθημα: Δημιουργώντας ένα απλό REST API",
       "url": "#overview"
     },
     {
@@ -3386,7 +3386,7 @@
   ],
   "tutorial-vokuro": [
     {
-      "text": "Tutorial: Vökuró",
+      "text": "Σεμινάριο: Vökuró",
       "url": "#overview"
     },
     {
@@ -3408,7 +3408,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements"
     },
     {
@@ -3516,7 +3516,7 @@
   ],
   "views": [
     {
-      "text": "Using Views",
+      "text": "Χρήση προβολών",
       "url": "#overview"
     },
     {
@@ -3812,7 +3812,7 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
+      "text": "Εγκατάσταση στο XAMPP",
       "url": "#overview"
     },
     {
