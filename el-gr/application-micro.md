@@ -999,12 +999,12 @@ The following events are supported:
 
 | Event Name         | Triggered                                                         | Can stop operation? |
 | ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Ναι         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Ναι         |
 | afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Yes         |
-| afterHandleRoute   | Route just finished executing                                     |         Yes         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
+| beforeNotFound     | Route has not been found                                          |         Ναι         |
+| afterHandleRoute   | Route just finished executing                                     |         Ναι         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Ναι         |
 
 <a name='events-available-events-authentication'></a>
 
