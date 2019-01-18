@@ -1049,8 +1049,8 @@ echo $view->render(
 
 | Event Name       | Triggered                                     | Can stop operation? |
 | ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
+| beforeRender     | Triggered before starting the render process  |         Ναι         |
+| beforeRenderView | Triggered before rendering an existing view   |         Ναι         |
 | afterRenderView  | Triggered after rendering an existing view    |         No          |
 | afterRender      | Triggered after completing the render process |         No          |
 | notFoundView     | Triggered when a view was not found           |         No          |
