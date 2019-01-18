@@ -175,7 +175,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/cache"
             },
             {
@@ -229,7 +229,7 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/db-models-cache"
             },
             {
@@ -237,7 +237,7 @@
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Μεταδεδομένα",
                 "url": "/db-models-metadata"
             },
             {
@@ -249,7 +249,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Επικυρωτές",
                 "url": "/db-models-validation"
             },
             {
@@ -271,15 +271,15 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Flash μηνύματα",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Φόρμες",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Εικόνες",
                 "url": "/image"
             },
             {
@@ -333,11 +333,11 @@
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "Διεύθυνση URL",
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Επικύρωση",
                 "url": "/validation"
             }
         ]
@@ -365,7 +365,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "Κρυπτογραφία",
                 "url": "/crypt"
             },
             {
@@ -379,7 +379,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Διεθνοποίηση",
                 "url": "/i18n"
             },
             {
