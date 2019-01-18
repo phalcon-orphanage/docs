@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# Η αρχιτεκτονική MVC
 
 Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
@@ -28,7 +28,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='views'></a>
 
-## Views
+## Προβολές
 
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [Learn more](/4.0/en/views)
 
