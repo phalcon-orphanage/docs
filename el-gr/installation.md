@@ -291,20 +291,20 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
-|     x64      |   5.5   | Thread safe           |
-|     x64      |   5.5   | Non Thread safe (NTS) |
-|     x86      |   5.5   | Thread safe           |
-|     x86      |   5.5   | Non Thread safe (NTS) |
+| Architecture | Εκδοχή | Type                  |
+|:------------:|:------:| --------------------- |
+|     x64      |  7.x   | Thread safe           |
+|     x64      |  7.x   | Non Thread safe (NTS) |
+|     x86      |  7.x   | Thread safe           |
+|     x86      |  7.x   | Non Thread safe (NTS) |
+|     x64      |  5.6   | Thread safe           |
+|     x64      |  5.6   | Non Thread safe (NTS) |
+|     x86      |  5.6   | Thread safe           |
+|     x86      |  5.6   | Non Thread safe (NTS) |
+|     x64      |  5.5   | Thread safe           |
+|     x64      |  5.5   | Non Thread safe (NTS) |
+|     x86      |  5.5   | Thread safe           |
+|     x86      |  5.5   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 
