@@ -56,7 +56,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is v
 
 <a name='routing-setup'></a>
 
-### Setup
+### Ρύθμιση
 
 Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/4.0/en/routing)]
 
@@ -78,7 +78,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### Αντικείμενο εφαρμογής
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application object as follows:
 
@@ -98,7 +98,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### Αντικείμενο του δρομολογητή
 
 You can also create a [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -125,7 +125,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Κανόνες αναγραφής
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
@@ -133,19 +133,19 @@ Those changes are outlined in the [rewrite rules](/4.0/en/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## Χειριστές
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Ορισμοί
 
 Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Ανώνυμη συνάρτηση
 
 Finally we can use an anonymous function (as seen above) to handle the request
 
@@ -173,7 +173,7 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Συνάρτηση
 
 We can define a function as our handler and attach it to a specific route.
 
@@ -191,7 +191,7 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### Στατική μέθοδος
 
 We can also use a static method as our handler as follows:
 
@@ -211,7 +211,7 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### Μέθοδος σε ένα αντικείμενο
 
 We can also use a method in an object:
 
@@ -469,7 +469,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 <a name='routing-verbs'></a>
 
-## Methods - Verbs
+## Μέθοδοι - ρήματα
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application provides a set of methods to bind the HTTP method with the route it is intended to.
 
@@ -586,7 +586,7 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-collections'></a>
 
-## Collections
+## Συλλογές
 
 Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
 
@@ -620,7 +620,7 @@ $app->mount($orders);
 
 <a name='routing-parameters'></a>
 
-## Parameters
+## Παράμετροι
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
@@ -658,7 +658,7 @@ Additional information: [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) [Info](/4.0
 
 <a name='routing-redirections'></a>
 
-## Redirections
+## Ανακατευθύνσεις
 
 You can redirect one matched route to another using the [Phalcon\Http\Response](api/Phalcon_Http_Response) object, just like in a full application.
 
@@ -704,7 +704,7 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 <a name='routing-urls-for-routes'></a>
 
-## URLs for Routes
+## Διευθύνσεις URL για τις διαδρομές
 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
@@ -837,7 +837,7 @@ $app->get(
 
 <a name='responses'></a>
 
-# Responses
+# Ανταπόκρισεις
 
 A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
@@ -858,7 +858,7 @@ $app->get(
 
 <a name='responses-include'></a>
 
-## Including another file
+## Συμπεριλαμβάνοντας ένα άλλο αρχείο
 
 ```php
 $app->get(
@@ -889,7 +889,7 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 
-## New Response object
+## Νέο αντικείμενο Ανταπόκρισης
 
 You can use the `setContent` method of the response object to return the response back:
 
@@ -914,7 +914,7 @@ $app->get(
 
 <a name='responses-application-response'></a>
 
-## Application Response
+## Ανταπόκριση εφαρμογής
 
 You can also use the [Phalcon\Http\Response](api/Phalcon_Http_Response) object to return responses to the caller. The response object has a lot of useful methods that make returning respones much easier.
 
@@ -987,13 +987,13 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# Γεγονότα
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 <a name='events-available-events'></a>
 
-## Available events
+## Διαθέσιμα γεγονότα
 
 The following events are supported:
 
@@ -1168,7 +1168,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Ρύθμιση
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
