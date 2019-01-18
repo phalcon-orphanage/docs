@@ -10,7 +10,7 @@ title: 'API Index'
         {% assign stub = apiPage.name | slice: 0, 8 %}
         {% if "Phalcon_" == stub %}
             {% assign linkUrl  = apiPage.name | replace: '.md', '' %}
-            {% assign linkName = linkUrl | replace: '_', '\' | replace: '.md', '' '%}
+            {% assign linkName = linkUrl | replace: '_', '\' | replace: '.md', '' %}
 * [{{ linkName }}](/{{ apiPage.version }}/{{ apiPage.language }}/api/{{ linkUrl }})
         {% endif %}
     {% endif %}
