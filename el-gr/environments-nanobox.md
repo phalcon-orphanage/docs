@@ -17,7 +17,7 @@ In this post, we'll walk through getting a brand new Phalcon app up and running 
 
 <a name='create-project'></a>
 
-## Create a New Project
+## Δημιουργήστε ένα νέο έργο
 
 Create a project folder and `cd` into it:
 
