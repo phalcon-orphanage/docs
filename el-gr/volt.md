@@ -19,7 +19,7 @@ Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Ar
 
 <a name='introduction'></a>
 
-## Introduction
+## Εισαγωγή
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
