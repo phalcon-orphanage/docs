@@ -1,33 +1,33 @@
 [
     {
-        "text": "General",
+        "text": "Γενικά",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Εισαγωγή",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Σημειώσεις έκδοσης",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Αναβάθμιση",
                 "url": ""
             },
             {
-                "text": "Sponsors",
+                "text": "Σπόνσορες",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Συνεισφορές",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Επισκόπηση",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Testing guide",
                 "url": "testing-environment"
             }
         ]
