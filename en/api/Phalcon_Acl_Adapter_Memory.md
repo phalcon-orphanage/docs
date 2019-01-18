@@ -80,7 +80,7 @@ foreach ($privateSubjects as $subject => $actions) {
 }
 ```
 
-### Parameters
+### Properties
 
 ```php
 protected mixed $access         
