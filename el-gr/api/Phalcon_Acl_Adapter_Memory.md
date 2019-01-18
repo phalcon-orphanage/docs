@@ -78,7 +78,7 @@ foreach ($privateSubjects as $subject => $actions) {
 }
 ```
 
-### Παράμετροι
+### Properties
 
 ```php
 protected mixed $access         
