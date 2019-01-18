@@ -6,18 +6,28 @@ title: 'Phalcon\Acl\Adapter\Memory'
 ---
 # Class **Phalcon\Acl\Adapter\Memory**
 
-*extends* abstract class [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-
-*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
-
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
+| Extends    | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) |
+| Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
+
+
+### Description
+
 Manages ACL lists in memory
+
+### Example
 
 ```php
 <?php
 
-$acl = new \Phalcon\Acl\Adapter\Memory();
+namespace Phalcon\Acl\Adapter;
+
+use Phalcon\Acl\Adapter\Memory;
+use Phalcon\Acl\Operation;
+use Phalcon\Acl\Subject;
+
+$acl = new Memory();
 
 $acl->setDefaultAction(
     \Phalcon\Acl::DENY
@@ -25,8 +35,8 @@ $acl->setDefaultAction(
 
 // Register operations
 $operations = [
-    "users"  => new \Phalcon\Acl\Operation("Users"),
-    "guests" => new \Phalcon\Acl\Operation("Guests"),
+    "users"  => new Operation("Users"),
+    "guests" => new Operation("Guests"),
 ];
 foreach ($operations as $operation) {
     $acl->addOperation($operation);
@@ -40,10 +50,7 @@ $privateSubjects = [
 ];
 
 foreach ($privateSubjects as $subjectName => $actions) {
-    $acl->addSubject(
-        new \Phalcon\Acl\Subject($subjectName),
-        $actions
-    );
+    $acl->addSubject(new Subject($subjectName), $actions);
 }
 
 // Public area subjects
@@ -55,16 +62,13 @@ $publicSubjects = [
 ];
 
 foreach ($publicSubjects as $subjectName => $actions) {
-    $acl->addSubject(
-        new \Phalcon\Acl\Subject($subjectName),
-        $actions
-    );
+    $acl->addSubject(new Subject($subjectName), $actions);
 }
 
 // Grant access to public areas to both users and guests
 foreach ($operations as $operation){
     foreach ($publicSubjects as $subject => $actions) {
-        $acl->allow($operation->getName(), $subject, "*");
+        $acl->allow($operation->getName(), $subject, "");
     }
 }
 
@@ -74,68 +78,97 @@ foreach ($privateSubjects as $subject => $actions) {
         $acl->allow("Users", $subject, $action);
     }
 }
-
 ```
 
+### Parameters
 
-## Methods
+
+| Visibility | Name                                      | Type          | Description                                                                             |
+|------------|-------------------------------------------|---------------|---------------------------------------------------------------------------------------- |
+| protected  | `$access`                                 | mixed         | Access                                                                                  |
+| protected  | `$accessList`                             | mixed         | Access List                                                                             |
+| protected  | `$activeFunction`                         | mixed         | Returns latest function used to acquire access                                          |
+| protected  | `$activeFunctionCustomArgumentsCount` = 0 | int           | Returns number of additional arguments(excluding role and resource) for active function |
+| protected  | `$activeKey`                              | string / null | Returns latest key used to acquire access                                               |
+| protected  | `$func`                                   | mixed         | Function List                                                                           |
+| protected  | `$noArgumentsDefaultAction` = `Acl::DENY` | mixed         | Default action for no arguments is allow                                                |
+| protected  | `$operations`                             | mixed         | Operations                                                                              |
+| protected  | `$operationInherits`                      | mixed         | Operation Inherits                                                                      |
+| protected  | `$operationsNames`                        | mixed         | Operations Names                                                                        |
+| protected  | `$subjects`                               | mixed         | Subjects                                                                                |
+| protected  | `$subjectsNames`                          | mixed         | Subject Names                                                                           |
+
+
+### Methods
+
+Returns latest function used to acquire access
 
 ```php
-public **__construct** ()
+public function getActiveFunction(): mixed
 ```
-
-Phalcon\Acl\Adapter\Memory constructor
 <hr/>
 
+
+Returns number of additional arguments(excluding role and resource) for active function
+
 ```php
-public addOperation( [Phalcon\Acl\OperationInterface](Phalcon_Acl_OperationInterface) | string $operation [, array | string $accessInherits] )
+public function getActiveFunctionCustomArgumentsCount(): int
 ```
+<hr/>
+
+
+Returns latest key used to acquire access
+
+```php
+public function getActiveKey():? string
+```
+<hr/>
+
+
+Inherit from an existing operation
+
+```php
+public function addInherit(string $operationName, mixed $operationToInherits): bool
+```
+
+```php
+$acl->addOperation("administrator", "consultant");
+$acl->addOperation("administrator", ["consultant", "consultant2"]);
+```
+<hr/>
+
 
 Adds a operation to the ACL list. Second parameter allows inheriting access data from other existing operation
 
 ```php
-<?php
+public function addOperation(
+    Phalcon\Acl\OperationInterface|string|array $operation, 
+    string $accessInherits = null
+): bool
+```
 
+ ```php
 $acl->addOperation(
     new Phalcon\Acl\Operation("administrator"),
     "consultant"
-);
-
-$acl->addOperation("administrator", "consultant");
-
+ );
+ 
+ $acl->addOperation("administrator", "consultant");
+ $acl->addOperation("administrator", ["consultant", "consultant2"]);
 ```
-
-```php
-public addInherit( mixed $operationName, mixed $operationToInherit )
-```
-
-Do a operation inherit from another existing operation
 <hr/>
 
 
+Adds a subject to the ACL list
+
 ```php
-public isOperation( mixed $operationName ): bool
+public function addSubject(
+    Phalcon\Acl\SubjectInterface|string $subjectValue, 
+    array|string $accessList
+): bool
 ```
 
-Check whether operation exist in the operations list
-<hr/>
-
 ```php
-public isSubject( mixed $subjectName )
-```
-
-Check whether subject exist in the subjects list
-<hr/>
-
-```php
-public addSubject( [Phalcon\Acl\Subject](Phalcon_Acl_Subject) | string $subjectValue, array | string $accessList )
-```
-
-Adds a subject to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
-
-```php
-<?php
-
 // Add a subject to the the list allowing access to an action
 $acl->addSubject(
     new Phalcon\Acl\Subject("customers"),
@@ -160,172 +193,133 @@ $acl->addSubject(
         "search",
     ]
 );
-
 ```
 <hr/>
 
-```php
-public addSubjectAccess( mixed $subjectName, array | string $accessList )
-```
 
 Adds access to subjects
+
+```php
+public function addSubjectAccess(string $subjectName, array|string $accessList): bool
+```
 <hr/>
 
+
+Allow access to a operation on a subject
+
 ```php
-public dropSubjectAccess( mixed $subjectName, array | string $accessList )
+public function allow( string $operationName, string $subjectName, mixed $access [, mixed $func = null] )
 ```
 
-Removes an access from a subject
-<hr/>
-
 ```php
-protected  _allowOrDeny( mixed $operationName, mixed $subjectName, mixed $access, mixed $action [ mixed $func] )
-```
-
-Checks if a operation has access to a subject
-<hr/>
-
-```php
-public allow( mixed $operationName, mixed $subjectName, mixed $access [, mixed $func] )
-```
-
-Allow access to a operation on a subject You can use '*' as wildcard
-
-```php
-<?php
-
-//Allow access to guests to search on customers
+// Allow access to guests to search on customers
 $acl->allow("guests", "customers", "search");
 
-//Allow access to guests to search or create on customers
+// Allow access to guests to search or create on customers
 $acl->allow("guests", "customers", ["search", "create"]);
 
-//Allow access to any operation to browse on products
-$acl->allow("*", "products", "browse");
+// Allow access to any operation to browse on products
+$acl->allow("", "products", "browse");
 
-//Allow access to any operation to browse on any subject
-$acl->allow("*", "*", "browse");
-
+// Allow access to any operation to browse on any subject
+$acl->allow("", "", "browse");
 ```
 <hr/>
 
+
+Deny access to a operation on a subject
+
 ```php
-public deny( mixed $operationName, mixed $subjectName, mixed $access [, mixed $func] )
+public function deny( string $operationName, string $subjectName, mixed $access [, mixed $func = null] )
 ```
 
-Deny access to a operation on a subject You can use '*' as wildcard
-
 ```php
-<?php
-
-//Deny access to guests to search on customers
+// Deny access to guests to search on customers
 $acl->deny("guests", "customers", "search");
 
-//Deny access to guests to search or create on customers
+// Deny access to guests to search or create on customers
 $acl->deny("guests", "customers", ["search", "create"]);
 
-//Deny access to any operation to browse on products
-$acl->deny("*", "products", "browse");
+// Deny access to any operation to browse on products
+$acl->deny("", "products", "browse");
 
-//Deny access to any operation to browse on any subject
-$acl->deny("*", "*", "browse");
-
+// Deny access to any operation to browse on any subject
+$acl->deny("", "", "browse");
 ```
 <hr/>
 
+
+Removes an access from a subject
+
 ```php
-public isAllowed( [Phalcon\Acl\OperationInterface](Phalcon_Acl_OperationInterface) | [Phalcon\Acl\OperationAware](Phalcon_Acl_OperationAware) | string $operationName, [Phalcon\Acl\SubjectInterface](Phalcon_Acl_SubjectInterface) | [Phalcon\Acl\SubjectAware](Phalcon_Acl_SubjectAware) | string $subjectName, mixed $access [, array $parameters]): bool
+public function dropSubjectAccess( string $subjectName, array|string $accessList )
 ```
+<hr/>
+
+
+Returns the default ACL access level for no arguments provided in `isAllowed()` action if there exists func for accessKey
+
+```php
+public function getNoArgumentsDefaultAction(): int {}
+```
+<hr/>
+
+
+Return an array with every operation registered in the list
+
+```php
+public function getOperations(): Phalcon\Acl\OperationInterface[]
+```
+<hr/>
+
+
+Return an array with every subject registered in the list
+
+```php
+public function getSubjects(): [Phalcon\Acl\SubjectInterface](Phalcon_Acl_SubjectInterface)[]
+```
+<hr/>
 
 Check whether a operation is allowed to access an action from a subject
 
 ```php
-<?php
+public function isAllowed(
+    Phalcon\Acl\OperationInterface|Phalcon\Acl\OperationAware|string $operationName, 
+    Phalcon\Acl\SubjectInterface|Phalcon\Acl\SubjectAware|string $subjectName, 
+    string $access, 
+    array $parameters = null
+): bool
+```
 
-//Does andres have access to the customers subject to create?
+```php
+// Does andres have access to the customers subject to create?
 $acl->isAllowed("andres", "Products", "create");
 
-//Do guests have access to any subject to edit?
-$acl->isAllowed("guests", "*", "edit");
-
+// Do guests have access to any subject to edit?
+$acl->isAllowed("guests", "", "edit");
 ```
 <hr/>
 
-```php
-public setNoArgumentsDefaultAction( mixed $defaultAccess )
-```
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in `isAllowed()` method if there exists func for accessKey
+Check whether operation exist in the operations list
+
+```php
+public function isOperation(string $operationName): bool 
+```
 <hr/>
 
-```php
-public **getNoArgumentsDefaultAction** ()
-```
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+Check whether subject exist in the subjects list
+
+```php
+public function isSubject(string $subjectName): bool
+```
 <hr/>
 
-```php
-public **getOperations** ()
-```
 
-Return an array with every operation registered in the list
+Sets the default access level (`Phalcon\Acl::ALLOW` or `Phalcon\Acl::DENY`) for no arguments provided in `isAllowed()` action if a `func` exists for `accessKey`
+
+```php
+public function setNoArgumentsDefaultAction(int $defaultAccess)
+```
 <hr/>
-
-```php
-public **getSubjects** ()
-```
-
-Return an array with every subject registered in the list
-<hr/>
-
-```php
-public **getActiveOperation** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Operation which the list is checking if it's allowed to certain subject/access
-<hr/>
-
-```php
-public **getActiveSubject** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Subject which the list is checking if some operation can access it
-<hr/>
-
-```php
-public **getActiveAccess** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Active access which the list is checking if some operation can access it
-<hr/>
-
-```php
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Sets the events manager
-<hr/>
-
-```php
-public **getEventsManager** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Returns the internal event manager
-<hr/>
-
-```php
-public **setDefaultAction** (*mixed* $defaultAccess) inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
-<hr/>
-
-```php
-public **getDefaultAction** () inherited from [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter)
-```
-
-Returns the default ACL access level
-
-
-
