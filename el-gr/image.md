@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Images
+# Εικόνες
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
