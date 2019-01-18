@@ -87,7 +87,7 @@
                 "url": "/environments-nanobox"
             },
             {
-                "text": "Phalcon Box (Vagrant)",
+                "text": "Phalcon κουτί (Vagrant)",
                 "url": "/environments-vagrant"
             }
         ]
@@ -145,7 +145,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Δείκτης API",
                 "url": "/api/"
             },
             {
@@ -305,7 +305,7 @@
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Σχολιασμοί",
                 "url": "/annotations"
             },
             {
@@ -313,7 +313,7 @@
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "Αποστολέας",
                 "url": "/dispatcher"
             },
             {
@@ -329,7 +329,7 @@
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Συνεδρίες",
                 "url": "/session"
             },
             {
