@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Επισκόπηση
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
@@ -123,10 +123,10 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
-| Directory | Path             |
-| --------- | ---------------- |
-| Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Directory   | Path             |
+| ----------- | ---------------- |
+| Μνήμη cache | `/project/cache` |
+| Logs        | `/project/log`   |
 
 <a name='logs'></a>
 
