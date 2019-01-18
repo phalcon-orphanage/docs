@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# Εγκατάσταση στο XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
