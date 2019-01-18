@@ -15,7 +15,7 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 <a name='dependencies'></a>
 
-## Dependencies
+## Εξαρτήσεις
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
