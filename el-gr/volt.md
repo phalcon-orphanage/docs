@@ -190,7 +190,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Basic Usage
+## Βασική Χρήση
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
