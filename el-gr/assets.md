@@ -17,7 +17,7 @@ version: '4.0'
 
 <a name='add'></a>
 
-## Adding Resources
+## Προσθήκη πόρων
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
