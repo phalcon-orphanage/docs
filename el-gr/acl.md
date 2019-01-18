@@ -677,7 +677,7 @@ It is a good practice to not use serialization of the ACL during development, to
 | Event Name          | Triggered                                                   | Can stop operation? |
 | ------------------- | ----------------------------------------------------------- |:-------------------:|
 | `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |         No          |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |         Yes         |
+| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |         Ναι         |
 
 The following example demonstrates how to attach listeners to the ACL:
 
