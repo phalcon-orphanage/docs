@@ -93,7 +93,7 @@ protected mixed $accessList
 Access List
 
 ```php
-protected mixed  $activeFunction
+protected mixed $activeFunction
 ```
 
 Returns latest function used to acquire access
