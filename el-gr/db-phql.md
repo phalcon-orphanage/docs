@@ -27,7 +27,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 
 <a name='usage'></a>
 
-## Usage Example
+## Παράδειγμα χρήσης
 
 To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
