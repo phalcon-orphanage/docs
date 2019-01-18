@@ -7,7 +7,7 @@ version: '4.0'
 
 {:.alert .alert-danger}
 
-# Micro Applications
+# Μικροεφαρμογές
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
 
@@ -248,7 +248,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Set the main handler. ie. a controller instance
+// Set the main handler. π.χ. a controller instance
 $orders->setHandler(new OrdersController());
 
 // Set a common prefix for all routes
@@ -446,7 +446,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 <a name='routing-handlers-not-found'></a>
 
-### Not found (404)
+### Δεν βρέθηκε (404)
 
 Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
