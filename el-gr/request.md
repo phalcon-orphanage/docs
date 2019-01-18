@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Request Environment
+# Περιβάλλον Αίτησης
 
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information so as to provide the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the information of the request, allowing you to access it in an object-oriented way.
 
