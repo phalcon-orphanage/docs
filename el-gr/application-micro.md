@@ -934,7 +934,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 
-## Return Application Response
+## Επιστρέφωντας Ανταπόκριση εφαρμογής
 
 A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
@@ -1008,7 +1008,7 @@ The following events are supported:
 
 <a name='events-available-events-authentication'></a>
 
-### Authentication example
+### Παράδειγμα ελέγχου ταυτότητας
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1045,7 +1045,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 
-### Not found example
+### Δεν βρέθηκε παράδειγμα
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1077,7 +1077,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='middleware'></a>
 
-# Middleware
+# Ενδιάμεσο λογισμικό
 
 Middleware are classes that can be attached to your application and introduce another layer where business logic can exist. They run sequentially, according to the order they are registered and not only improve mainainability, by encapsulating specific functionality, but also performance. A middleware class can stop execution when a particular business rule has not been satisfied, thus allowing the application to exit early without executing the full cycle of a request.
 
@@ -1085,7 +1085,7 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 <a name='middleware-attached-events'></a>
 
-## Attached events
+## Συνημμένα γεγονότα
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
@@ -1244,7 +1244,7 @@ We then attach the middleware class in our application on one of the three liste
 
 <a name='middleware-implementation'></a>
 
-## Implementation
+## Εφαρμογή
 
 Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the [Phalcon\Mvc\Micro\MiddlewareInterface](api/Phalcon_Mvc_Micro_MiddlewareInterface)
 
@@ -1289,13 +1289,13 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Events in Middleware
+## Γεγονότα στο Ενδιάμεσο Λογισμικό
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the [Phalcon\Mvc\Micro\MiddlewareInterface](api/Phalcon_Mvc_Micro_MiddlewareInterface). This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='middleware-events-api'></a>
 
-### API example
+### Παράδειγμα API
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1303,7 +1303,7 @@ The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * R
 
 <a name='middleware-events-api-firewall'></a>
 
-#### Firewall Middleware
+#### Firewall Ενδιάμεσο Λογισμικό (Middleware)
 
 This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
@@ -1365,7 +1365,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-not-found'></a>
 
-#### Not Found Middleware
+#### Δε βρέθηκε Ενδιάμεσο Λογισμικό (Middleware)
 
 When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
@@ -1411,7 +1411,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-redirect'></a>
 
-#### Redirect Middleware
+#### Αντικατεύθυνσης Ενδιάμεσο Λογισμικό (Middleware)
 
 We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
 
@@ -1465,7 +1465,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-cors'></a>
 
-#### CORS Middleware
+#### CORS Ενδιάμεσο Λογισμικό (Middleware)
 
 Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
@@ -1530,7 +1530,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-request'></a>
 
-#### Request Middleware
+#### Αίτησης Ενδιάμεσο Λογισμικό (Middleware)
 
 This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
@@ -1586,7 +1586,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-response'></a>
 
-#### Response Middleware
+#### Ανταπόκρισης Ενδιάμεσο Λογισμικό (Middleware)
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
@@ -1701,7 +1701,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Προβολές
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 
@@ -1768,7 +1768,7 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Error Handling
+# Χειρισμός σφαλμάτων
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 
