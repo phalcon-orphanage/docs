@@ -134,7 +134,7 @@
       "url": "#creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#routing",
       "menu": [
         {
@@ -190,7 +190,7 @@
                   "url": "#routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
+                  "text": "Ελεγκτές",
                   "level": 4,
                   "url": "#routing-handlers-controllers"
                 }
@@ -202,7 +202,7 @@
               "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
+                  "text": "Περίπτωση Χρήσης",
                   "level": 4,
                   "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
@@ -431,7 +431,7 @@
           ]
         },
         {
-          "text": "Models",
+          "text": "Μοντέλα",
           "url": "#"
         },
         {
@@ -2644,7 +2644,7 @@
       "url": "#architecture"
     },
     {
-      "text": "Models",
+      "text": "Μοντέλα",
       "url": "#models"
     },
     {
@@ -2652,7 +2652,7 @@
       "url": "#views"
     },
     {
-      "text": "Controllers",
+      "text": "Ελεγκτές",
       "url": "#controllers"
     }
   ],
@@ -2828,7 +2828,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#overview"
     },
     {
@@ -2935,7 +2935,7 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Ασφάλεια",
       "url": "#overview"
     },
     {
@@ -3202,7 +3202,7 @@
   ],
   "tutorial-base": [
     {
-      "text": "View",
+      "text": "Προβολή",
       "url": "#basic"
     },
     {
@@ -3274,7 +3274,7 @@
       "url": "#structure"
     },
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#routing"
     },
     {
@@ -3633,7 +3633,7 @@
       "url": "#variables"
     },
     {
-      "text": "Filters",
+      "text": "Φίλτρα",
       "url": "#filters"
     },
     {
@@ -3772,7 +3772,7 @@
           "url": "#extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Φίλτρα",
           "level": 2,
           "url": "#extending-filters"
         },
