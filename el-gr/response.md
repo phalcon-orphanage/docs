@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Returning Responses
+# Επιστρέφοντας απαντήσεις
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
