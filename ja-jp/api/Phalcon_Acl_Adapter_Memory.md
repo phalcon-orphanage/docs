@@ -80,20 +80,77 @@ foreach ($privateSubjects as $subject => $actions) {
 
 ### Parameters
 
-| Visibility | Name                                      | Type          | Description                                                                             |
-| ---------- | ----------------------------------------- | ------------- | --------------------------------------------------------------------------------------- |
-| protected  | `$access`                                 | mixed         | Access                                                                                  |
-| protected  | `$accessList`                             | mixed         | Access List                                                                             |
-| protected  | `$activeFunction`                         | mixed         | Returns latest function used to acquire access                                          |
-| protected  | `$activeFunctionCustomArgumentsCount` = 0 | int           | Returns number of additional arguments(excluding role and resource) for active function |
-| protected  | `$activeKey`                              | string / null | Returns latest key used to acquire access                                               |
-| protected  | `$func`                                   | mixed         | Function List                                                                           |
-| protected  | `$noArgumentsDefaultAction` = `Acl::DENY` | mixed         | Default action for no arguments is allow                                                |
-| protected  | `$operations`                             | mixed         | Operations                                                                              |
-| protected  | `$operationInherits`                      | mixed         | Operation Inherits                                                                      |
-| protected  | `$operationsNames`                        | mixed         | Operations Names                                                                        |
-| protected  | `$subjects`                               | mixed         | Subjects                                                                                |
-| protected  | `$subjectsNames`                          | mixed         | Subject Names                                                                           |
+```php
+protected mixed $access         
+```
+
+Access
+
+```php
+protected mixed $accessList
+```
+
+Access List
+
+```php
+protected mixed  $activeFunction
+```
+
+Returns latest function used to acquire access
+
+```php
+protected int $activeFunctionCustomArgumentsCount = 0
+```
+
+`Returns number of additional arguments(excluding role and resource) for active function
+
+```php
+protected string|null $activeKey  
+```
+
+Returns latest key used to acquire access
+
+```php
+protected mixed $func         
+```
+
+Function List
+
+```php
+protected mixed $noArgumentsDefaultAction = Acl::DENY         
+```
+
+Default action for no arguments is allow
+
+```php
+protected mixed $operations         
+```
+
+Operations
+
+```php
+protected mixed $operationInherits         
+```
+
+Operation Inherits
+
+```php
+protected mixed $operationsNames         
+```
+
+Operations Names
+
+```php
+protected mixed $subjects         
+```
+
+Subjects
+
+```php
+protected mixed $subjectsNames         
+```
+
+Subject Names
 
 ### メソッド
 
