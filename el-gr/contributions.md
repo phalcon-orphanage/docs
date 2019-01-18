@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Συνεισφορές στο Phalcon
 
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
@@ -97,4 +97,4 @@ If you have any changes or new features in mind, please fill an [NFR](new-featur
 
 Thanks!
 
-<3 Phalcon Team
+<3 Ομάδα Phalcon
