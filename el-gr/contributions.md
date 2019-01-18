@@ -17,7 +17,7 @@ The Phalcon source code (along with documentation, websites etc.) is stored in [
 
 <a name='contributions'></a>
 
-## Contributions
+## Συνεισφορές
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
