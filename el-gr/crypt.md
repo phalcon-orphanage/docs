@@ -145,11 +145,11 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## Επιλογές κρυπτογράφησης
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                           |
+| Name   | Περιγραφή                                                                                                                                                             |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -267,7 +267,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## Σύνδεσμοι
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
