@@ -39,7 +39,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Ερωτήσεις και Υποστήρηξη
 
 > We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server. {:.alert .alert-danger}
 
