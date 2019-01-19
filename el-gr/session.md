@@ -45,7 +45,7 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Factory
+## Εργοστάσιο
 
 Loads Session Adapter class using `adapter` option
 
