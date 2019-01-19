@@ -311,7 +311,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter     | Description                                                                                                                                                                                                                 | Example                                                              |
+| Parameter     | Περιγραφή                                                                                                                                                                                                                   | Example                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
@@ -1094,10 +1094,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Ναι         | Runs before the delete operation is made |
+| Operation | Name         | Μπορεί να σταματήσει την λειτουργία; | Explanation                              |
+| --------- | ------------ |:------------------------------------:| ---------------------------------------- |
+| Deleting  | afterDelete  |                 Όχι                  | Runs after the delete operation was made |
+| Deleting  | beforeDelete |                 Ναι                  | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1759,7 +1759,7 @@ Model::setup(
 
 The available options are:
 
-| Option                | Description                                                                               | Default |
+| Option                | Περιγραφή                                                                                 | Default |
 | --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
 | astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
 | cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
