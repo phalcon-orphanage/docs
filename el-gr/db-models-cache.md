@@ -335,7 +335,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
+| Type       | Περιγραφή                                                       | Implicit Method |
 | ---------- | --------------------------------------------------------------- | --------------- |
 | Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
 | Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
