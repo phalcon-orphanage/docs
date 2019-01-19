@@ -804,7 +804,7 @@ Supported parameter types include the following:
     </th>
     
     <th>
-      Description
+      Περιγραφή
     </th>
     
     <th>
@@ -970,10 +970,10 @@ $component = $di->get(
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
+| Όνομα γεγονότος      | Ενεργοποίηση                                                                                                    | Μπορεί να σταματήσει την λειτουργία; | Triggered on |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:------------------------------------:|:------------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |                 Όχι                  |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |                 Όχι                  |  Listeners   |
 
 <a name='shared-services'></a>
 
@@ -1240,7 +1240,7 @@ $di = new FactoryDefault();
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| Service Name       | Description                           | Default                                                                                | Shared |
+| Service Name       | Περιγραφή                             | Default                                                                                | Shared |
 | ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------- |:------:|
 | assets             | Assets Manager                        | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  Ναι   |
 | annotations        | Annotations Parser                    | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  Ναι   |
@@ -1253,7 +1253,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | flash              | Flash Messaging Service               | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  Ναι   |
 | flashSession       | Flash Session Messaging Service       | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  Ναι   |
 | filter             | Input Filtering Service               | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  Ναι   |
-| modelsCache        | Cache backend for models cache        | None                                                                                   |   No   |
+| modelsCache        | Cache backend for models cache        | None                                                                                   |  Όχι   |
 | modelsManager      | Models Management Service             | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  Ναι   |
 | modelsMetadata     | Models Meta-Data Service              | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  Ναι   |
 | request            | HTTP Request Environment Service      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  Ναι   |
@@ -1265,7 +1265,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  Ναι   |
 | transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  Ναι   |
 | url                | URL Generator Service                 | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  Ναι   |
-| viewsCache         | Cache backend for views fragments     | None                                                                                   |   No   |
+| viewsCache         | Cache backend for views fragments     | None                                                                                   |  Όχι   |
 
 <a name='implementing-your-own-di'></a>
 

@@ -120,7 +120,7 @@ if ($robot->save() === false) {
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
-| Type                   | Description                                                                                                                        |
+| Type                   | Περιγραφή                                                                                                                          |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
 | `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |

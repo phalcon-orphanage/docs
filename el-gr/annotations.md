@@ -98,9 +98,9 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Εργοστάσιο
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). Αυτός που χρησιμοποιείτε εξαρτάται τις ανάγκες από της αίτησής σας. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -417,7 +417,7 @@ class SecurityAnnotationsPlugin extends Plugin
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Class                                                                           | Description                                                                                                                                                                       |
+| Class                                                                           | Περιγραφή                                                                                                                                                                         |
 | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
 | [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |

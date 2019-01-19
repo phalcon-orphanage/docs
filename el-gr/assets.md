@@ -296,14 +296,14 @@ $jsFooterCollection->setTargetUri('production/final.js');
 
 Phalcon provides 2 built-in filters to minify both JavaScript and CSS, their C-backend provide the minimum overhead to perform this task:
 
-| Filter                                                                | Description                                                                                                  |
+| Filter                                                                | Περιγραφή                                                                                                    |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | [Phalcon\Assets\Filters\Jsmin](api/Phalcon_Assets_Filters_Jsmin)   | Minifies JavaScript by removing unnecessary characters that are ignored by Javascript interpreters/compilers |
 | [Phalcon\Assets\Filters\Cssmin](api/Phalcon_Assets_Filters_Cssmin) | Minifies CSS by removing unnecessary characters that are already ignored by browsers                         |
 
 <a name='custom-filters'></a>
 
-### Custom Filters
+### Προσαρμοσμένα Φίλτρα
 
 In addition to the built-in filters, you can create your own filters. These can take advantage of existing and more advanced tools like [YUI](https://yui.github.io/yuicompressor/), [Sass](https://sass-lang.com/), [Closure](https://developers.google.com/closure/compiler/), etc.:
 
@@ -433,7 +433,7 @@ foreach ($jsCollection as $resource) {
 
 <a name='improving-performance'></a>
 
-## Improving performance
+## Βελτίωση απόδοσης
 
 There are many ways to optimize the processing resources. We'll describe a simple method below which allows to handle resourses directly through web server to optimize the response time.
 

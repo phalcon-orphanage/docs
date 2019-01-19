@@ -55,7 +55,7 @@
       "url": "#overview"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#setup"
     },
     {
@@ -127,7 +127,7 @@
   ],
   "application-micro": [
     {
-      "text": "Creating a Micro Application",
+      "text": "Δημιουργώντας μια μικροεφαρμογή",
       "url": "#creating-micro-application"
     },
     {
@@ -457,7 +457,7 @@
           "url": "#builtin-filters"
         },
         {
-          "text": "Custom Filters",
+          "text": "Προσαρμοσμένα Φίλτρα",
           "url": "#custom-filters"
         }
       ]
@@ -467,7 +467,7 @@
       "url": "#"
     },
     {
-      "text": "Improving performance",
+      "text": "Βελτίωση απόδοσης",
       "url": "#"
     }
   ],
@@ -485,7 +485,7 @@
       "url": "#caching-behavior"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#factory"
     },
     {
@@ -541,7 +541,7 @@
       "url": "#adapters-backend",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-backend-factory"
         },
         {
@@ -589,7 +589,7 @@
       "url": "#overview",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#factory"
         }
       ]
@@ -629,7 +629,7 @@
       "url": "#contributions"
     },
     {
-      "text": "Questions and Support",
+      "text": "Ερωτήσεις και Υποστήρηξη",
       "url": "#file-adapter"
     },
     {
@@ -717,7 +717,7 @@
       "url": "#usage"
     },
     {
-      "text": "Encryption Options",
+      "text": "Επιλογές κρυπτογράφησης",
       "url": "#options"
     },
     {
@@ -729,7 +729,7 @@
       "url": "#service"
     },
     {
-      "text": "Links",
+      "text": "Σύνδεσμοι",
       "url": "#links"
     }
   ],
@@ -743,7 +743,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         },
         {
@@ -811,15 +811,15 @@
       "url": "#tables",
       "menu": [
         {
-          "text": "Creating Tables",
+          "text": "Δημιουργία πινάκων",
           "url": "#tables-create"
         },
         {
-          "text": "Altering Tables",
+          "text": "Αλλαγή πινάκων",
           "url": "#tables-altering"
         },
         {
-          "text": "Dropping Tables",
+          "text": "Διαγραφή πινάκων",
           "url": "#tables-dropping"
         }
       ]
@@ -1277,7 +1277,7 @@
       "url": "#data-adapters"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#factory"
     },
     {
@@ -2113,7 +2113,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         },
         {
@@ -2378,7 +2378,7 @@
       "url": "#adapters"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#adapters-factory"
     },
     {
@@ -2750,7 +2750,7 @@
       "url": "#start",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#start-factory"
         }
       ]
@@ -2958,7 +2958,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         }
       ]

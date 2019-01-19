@@ -10,7 +10,7 @@ title: 'Phalcon\Acl\Adapter\Memory'
 
 | Extends | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) | | Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
 
-### Description
+### Περιγραφή
 
 Manages ACL lists in memory
 

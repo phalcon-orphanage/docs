@@ -286,11 +286,11 @@ $loader->register();
 
 Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Ναι                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| Όνομα γεγονότος    | Ενεργοποίηση                                                                                                        | Μπορεί να σταματήσει την λειτουργία; |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Ναι                                  |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Όχι                                  |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Όχι                                  |
 
 <a name='troubleshooting'></a>
 

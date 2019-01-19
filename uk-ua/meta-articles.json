@@ -76,12 +76,10 @@
       "menu": [
         {
           "text": "Cache Enabler with Annotations",
-          "level": 2,
           "url": "#usage-cache"
         },
         {
           "text": "Private/Public areas with Annotations",
-          "level": 2,
           "url": "#usage-access-management"
         }
       ]
@@ -92,7 +90,6 @@
       "menu": [
         {
           "text": "Implementing your own adapters",
-          "level": 2,
           "url": "#adapters-custom"
         }
       ]
@@ -139,147 +136,120 @@
       "menu": [
         {
           "text": "Setup",
-          "level": 2,
           "url": "#routing-setup",
           "menu": [
             {
               "text": "Application object",
-              "level": 3,
               "url": "#routing-setup-application"
             },
             {
               "text": "Router object",
-              "level": 3,
               "url": "#routing-setup-router"
             }
           ]
         },
         {
           "text": "Rewrite Rules",
-          "level": 2,
           "url": "#rewrite-rules"
         },
         {
           "text": "Handlers",
-          "level": 2,
           "url": "#routing-handlers",
           "menu": [
             {
               "text": "Definitions",
-              "level": 3,
               "url": "#routing-handlers-definitions",
               "menu": [
                 {
                   "text": "Anonymous Function",
-                  "level": 4,
                   "url": "#routing-handlers-anonymous-function"
                 },
                 {
                   "text": "Function",
-                  "level": 4,
                   "url": "#routing-handlers-function"
                 },
                 {
                   "text": "Static Method",
-                  "level": 4,
                   "url": "#routing-handlers-static-method"
                 },
                 {
                   "text": "Method in an Object",
-                  "level": 4,
                   "url": "#routing-handlers-object-method"
                 },
                 {
                   "text": "Controllers",
-                  "level": 4,
                   "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
               "text": "Lazy Loading",
-              "level": 3,
               "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
                   "text": "Use case",
-                  "level": 4,
                   "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
               "text": "Not Found (404)",
-              "level": 3,
               "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
           "text": "Methods - Verbs",
-          "level": 2,
           "url": "#routing-verbs",
           "menu": [
             {
               "text": "delete",
-              "level": 3,
               "url": "#routing-verb-delete"
             },
             {
               "text": "get",
-              "level": 3,
               "url": "#routing-verb-get"
             },
             {
               "text": "head",
-              "level": 3,
               "url": "#routing-verb-head"
             },
             {
               "text": "map",
-              "level": 3,
               "url": "#routing-verb-map"
             },
             {
               "text": "options",
-              "level": 3,
               "url": "#routing-verb-options"
             },
             {
               "text": "patch",
-              "level": 3,
               "url": "#routing-verb-patch"
             },
             {
               "text": "post",
-              "level": 3,
               "url": "#routing-verb-post"
             },
             {
               "text": "put",
-              "level": 3,
               "url": "#routing-verb-put"
             }
           ]
         },
         {
           "text": "Collections",
-          "level": 2,
           "url": "#routing-collections"
         },
         {
           "text": "Parameters",
-          "level": 2,
           "url": "#routing-parameters"
         },
         {
           "text": "Redirections",
-          "level": 2,
           "url": "#routing-redirections"
         },
         {
           "text": "URLs for Routes",
-          "level": 2,
           "url": "#routing-urls-for-routes"
         }
       ]
@@ -294,37 +264,30 @@
       "menu": [
         {
           "text": "Direct output",
-          "level": 2,
           "url": "#responses-direct-output"
         },
         {
           "text": "Including another file",
-          "level": 2,
           "url": "#responses-include"
         },
         {
           "text": "Direct output JSON",
-          "level": 2,
           "url": "#responses-direct-output-json"
         },
         {
           "text": "New Response object",
-          "level": 2,
           "url": "#responses-new-response-object"
         },
         {
           "text": "Application Response",
-          "level": 2,
           "url": "#responses-application-response"
         },
         {
           "text": "Return Application Response",
-          "level": 2,
           "url": "#responses-return-application-response"
         },
         {
           "text": "JSON",
-          "level": 2,
           "url": "#responses-json"
         }
       ]
@@ -335,17 +298,14 @@
       "menu": [
         {
           "text": "Available events",
-          "level": 2,
           "url": "#events-available-events",
           "menu": [
             {
               "text": "Authentication example",
-              "level": 3,
               "url": "#events-available-events-authentication"
             },
             {
               "text": "Not found example",
-              "level": 3,
               "url": "#events-available-events-not-found"
             }
           ]
@@ -358,74 +318,60 @@
       "menu": [
         {
           "text": "Attached events",
-          "level": 2,
           "url": "#",
           "menu": [
             {
               "text": "before",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "after",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "finish",
-              "level": 3,
               "url": "#"
             }
           ]
         },
         {
           "text": "Implementation",
-          "level": 2,
           "url": "#"
         },
         {
           "text": "Setup",
-          "level": 2,
           "url": "#"
         },
         {
           "text": "Events in Middleware",
-          "level": 2,
           "url": "#",
           "menu": [
             {
               "text": "API example",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "Firewall Middleware",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "Not Found Middleware",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "Redirect Middleware",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "CORS Middleware",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "Request Middleware",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "Response Middleware",
-              "level": 3,
               "url": "#"
             }
           ]
@@ -464,12 +410,10 @@
       "menu": [
         {
           "text": "Single Module",
-          "level": 2,
           "url": "#single"
         },
         {
           "text": "Multi Module",
-          "level": 2,
           "url": "#module"
         }
       ]
@@ -510,12 +454,10 @@
       "menu": [
         {
           "text": "Built-In Filters",
-          "level": 2,
           "url": "#builtin-filters"
         },
         {
           "text": "Custom Filters",
-          "level": 2,
           "url": "#custom-filters"
         }
       ]
@@ -552,17 +494,14 @@
       "menu": [
         {
           "text": "Caching Arbitrary Data",
-          "level": 2,
           "url": "#arbitrary-data"
         },
         {
           "text": "File Backend Example",
-          "level": 2,
           "url": "#backend-file-example"
         },
         {
           "text": "Memcached Backend Example",
-          "level": 2,
           "url": "#backend-memcached-example"
         }
       ]
@@ -593,7 +532,6 @@
       "menu": [
         {
           "text": "Implementing your own Frontend adapters",
-          "level": 2,
           "url": "#adapters-frontend-custom"
         }
       ]
@@ -604,52 +542,42 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-backend-factory"
         },
         {
           "text": "Implementing your own Backend adapters",
-          "level": 2,
           "url": "#adapters-backend-custom"
         },
         {
           "text": "File Backend Options",
-          "level": 2,
           "url": "#adapters-backend-file"
         },
         {
           "text": "Libmemcached Backend Options",
-          "level": 2,
           "url": "#adapters-backend-libmemcached"
         },
         {
           "text": "Memcache Backend Options",
-          "level": 2,
           "url": "#adapters-backend-memcache"
         },
         {
           "text": "APC Backend Options",
-          "level": 2,
           "url": "#adapters-backend-apc"
         },
         {
           "text": "APCU Backend Options",
-          "level": 2,
           "url": "#adapters-backend-apcu"
         },
         {
           "text": "Mongo Backend Options",
-          "level": 2,
           "url": "#adapters-backend-mongo"
         },
         {
           "text": "XCache Backend Options",
-          "level": 2,
           "url": "#adapters-backend-xcache"
         },
         {
           "text": "Redis Backend Options",
-          "level": 2,
           "url": "#adapters-backend-redis"
         }
       ]
@@ -662,7 +590,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#factory"
         }
       ]
@@ -711,7 +638,6 @@
       "menu": [
         {
           "text": "Generating a backtrace",
-          "level": 2,
           "url": "#bug-report-generating-backtrace"
         }
       ]
@@ -818,12 +744,10 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         },
         {
           "text": "Implementing your own adapters",
-          "level": 2,
           "url": "#adapters-custom"
         }
       ]
@@ -834,7 +758,6 @@
       "menu": [
         {
           "text": "Implementing your own dialects",
-          "level": 2,
           "url": "#dialects-custom"
         }
       ]
@@ -889,17 +812,14 @@
       "menu": [
         {
           "text": "Creating Tables",
-          "level": 2,
           "url": "#tables-create"
         },
         {
           "text": "Altering Tables",
-          "level": 2,
           "url": "#tables-altering"
         },
         {
           "text": "Dropping Tables",
-          "level": 2,
           "url": "#tables-dropping"
         }
       ]
@@ -920,17 +840,14 @@
       "menu": [
         {
           "text": "Defining Columns",
-          "level": 2,
           "url": "#class-anatomy-columns"
         },
         {
           "text": "Defining Indexes",
-          "level": 2,
           "url": "#class-anatomy-indexes"
         },
         {
           "text": "Defining References",
-          "level": 2,
           "url": "#class-anatomy-references"
         }
       ]
@@ -1015,12 +932,10 @@
       "menu": [
         {
           "text": "Implementing Events in the Model's class",
-          "level": 2,
           "url": "#events-in-models"
         },
         {
           "text": "Using a custom Events Manager",
-          "level": 2,
           "url": "#custom-events-manager"
         }
       ]
@@ -1049,12 +964,10 @@
       "menu": [
         {
           "text": "Database Introspection Strategy",
-          "level": 2,
           "url": "#strategies-database-introspection",
           "menu": [
             {
               "text": "Annotations Strategy",
-              "level": 2,
               "url": "#strategies-annotations"
             }
           ]
@@ -1077,44 +990,36 @@
       "menu": [
         {
           "text": "Unidirectional relationships",
-          "level": 2,
           "url": "#unidirectional"
         },
         {
           "text": "Bidirectional relations",
-          "level": 2,
           "url": "#bidirectional"
         },
         {
           "text": "Defining relationships",
-          "level": 2,
           "url": "#defining",
           "menu": [
             {
               "text": "Multiple field relationships",
-              "level": 3,
               "url": "#multiple-fields"
             },
             {
               "text": "Relationships with parameters",
-              "level": 3,
               "url": "#parameters"
             }
           ]
         },
         {
           "text": "Taking advantage of relationships",
-          "level": 2,
           "url": "#taking-advantage-of"
         },
         {
           "text": "Aliasing Relationships",
-          "level": 2,
           "url": "#aliases",
           "menu": [
             {
               "text": "Magic Getters vs. Explicit methods",
-              "level": 3,
               "url": "#getters-vs-methods"
             }
           ]
@@ -1127,7 +1032,6 @@
       "menu": [
         {
           "text": "Cascade/Restrict actions",
-          "level": 2,
           "url": "#cascade-restrict-actions"
         }
       ]
@@ -1142,12 +1046,10 @@
       "menu": [
         {
           "text": "Updating related records",
-          "level": 2,
           "url": "#updating-related-records"
         },
         {
           "text": "Deleting related records",
-          "level": 2,
           "url": "#deleting-related-records"
         }
       ]
@@ -1200,7 +1102,6 @@
       "menu": [
         {
           "text": "Public properties vs. Setters/Getters",
-          "level": 2,
           "url": "#properties-setters-getters"
         }
       ]
@@ -1215,17 +1116,14 @@
       "menu": [
         {
           "text": "Model Resultsets",
-          "level": 2,
           "url": "#resultsets"
         },
         {
           "text": "Filtering Resultsets",
-          "level": 2,
           "url": "#filters"
         },
         {
           "text": "Binding Parameters",
-          "level": 2,
           "url": "#binding-parameters"
         }
       ]
@@ -1244,7 +1142,6 @@
       "menu": [
         {
           "text": "Create/Update with Confidence",
-          "level": 2,
           "url": "#create-update-with-confidence"
         }
       ]
@@ -1333,22 +1230,18 @@
       "menu": [
         {
           "text": "Validation Messages",
-          "level": 2,
           "url": "#validation-messages"
         },
         {
           "text": "Validation Events and Events Manager",
-          "level": 2,
           "url": "#events"
         },
         {
           "text": "Implementing a Business Rule",
-          "level": 2,
           "url": "#business-rules"
         },
         {
           "text": "Validating Data Integrity",
-          "level": 2,
           "url": "#data-integrity"
         }
       ]
@@ -1423,22 +1316,18 @@
       "menu": [
         {
           "text": "Result Types",
-          "level": 2,
           "url": "#result-types"
         },
         {
           "text": "Joins",
-          "level": 2,
           "url": "#joins"
         },
         {
           "text": "Aggregations",
-          "level": 2,
           "url": "#aggregations"
         },
         {
           "text": "Conditions",
-          "level": 2,
           "url": "#conditions"
         }
       ]
@@ -1461,7 +1350,6 @@
       "menu": [
         {
           "text": "Bound Parameters",
-          "level": 2,
           "url": "#query-builder-parameters"
         }
       ]
@@ -1524,22 +1412,18 @@
       "menu": [
         {
           "text": "Linux",
-          "level": 2,
           "url": "#installation-linux"
         },
         {
           "text": "MacOS",
-          "level": 2,
           "url": "#installation-mac"
         },
         {
           "text": "Windows",
-          "level": 2,
           "url": "#installation-windows",
           "menu": [
             {
               "text": "Adding PHP and Tools to your system PATH",
-              "level": 3,
               "url": "#installation-windows-system-path"
             }
           ]
@@ -1612,51 +1496,42 @@
       "menu": [
         {
           "text": "Simple Registration",
-          "level": 2,
           "url": "#simple-registration",
           "menu": [
             {
               "text": "String",
-              "level": 3,
               "url": "#simple-registration-string"
             },
             {
               "text": "Class instances",
-              "level": 3,
               "url": "#class-instances"
             },
             {
               "text": "Closures/Anonymous functions",
-              "level": 3,
               "url": "#closures-anonymous-functions"
             }
           ]
         },
         {
           "text": "Complex Registration",
-          "level": 2,
           "url": "#complex-registration",
           "menu": [
             {
               "text": "Constructor Injection",
-              "level": 3,
               "url": "#constructor-injection"
             },
             {
               "text": "Setter Injection",
-              "level": 3,
               "url": "#setter-injection"
             },
             {
               "text": "Properties Injection",
-              "level": 3,
               "url": "#properties-injection"
             }
           ]
         },
         {
           "text": "Array Syntax",
-          "level": 2,
           "url": "#array-syntax"
         }
       ]
@@ -1667,7 +1542,6 @@
       "menu": [
         {
           "text": "Events",
-          "level": 2,
           "url": "#events"
         }
       ]
@@ -1720,7 +1594,6 @@
     },
     {
       "text": "Dispatch Loop Events",
-      "level": 2,
       "url": "#dispatch-loop-events"
     },
     {
@@ -1741,17 +1614,14 @@
       "menu": [
         {
           "text": "Camelize action names",
-          "level": 2,
           "url": "#preparing-actions-camelizing-action-names"
         },
         {
           "text": "Remove legacy extensions",
-          "level": 2,
           "url": "#preparing-actions-removing-legacy-extensions"
         },
         {
           "text": "Inject model instances",
-          "level": 2,
           "url": "#preparing-actions-inject-model-instances"
         }
       ]
@@ -1784,12 +1654,10 @@
       "menu": [
         {
           "text": "With Composer (recommended)",
-          "level": 2,
           "url": "#installation-composer"
         },
         {
           "text": "With Git",
-          "level": 2,
           "url": "#installation-git"
         }
       ]
@@ -1816,12 +1684,10 @@
       "menu": [
         {
           "text": "Web environment",
-          "level": 2,
           "url": "#environment-variables-web"
         },
         {
           "text": "phpMyAdmin variables",
-          "level": 2,
           "url": "#environment-variables-phpmyadmin"
         }
       ]
@@ -1836,17 +1702,14 @@
       "menu": [
         {
           "text": "Startup or linking errors",
-          "level": 2,
           "url": "#troubleshooting-startup"
         },
         {
           "text": "Full reset",
-          "level": 2,
           "url": "#troubleshooting-full-reset"
         },
         {
           "text": "Updating dependencies",
-          "level": 2,
           "url": "#troubleshooting-dependencies"
         }
       ]
@@ -1909,12 +1772,10 @@
       "menu": [
         {
           "text": "Installing the Vagrant Box",
-          "level": 2,
           "url": "#installation-vagrant-box"
         },
         {
           "text": "Installing the Phalcon Box",
-          "level": 2,
           "url": "#installation-phalcon-box"
         }
       ]
@@ -1925,44 +1786,36 @@
       "menu": [
         {
           "text": "Setting your provider",
-          "level": 2,
           "url": "#installation-configuration-setting-provider"
         },
         {
           "text": "Memory and CPU",
-          "level": 2,
           "url": "#installation-configuration-memory-cpu"
         },
         {
           "text": "Shared folders",
-          "level": 2,
           "url": "#installation-configuration-shared-folders"
         },
         {
           "text": "Nginx sites",
-          "level": 2,
           "url": "#installation-configuration-nginx",
           "menu": [
             {
               "text": "Custom Nginx configuration",
-              "level": 3,
               "url": "#installation-configuration-custom-nginx"
             },
             {
               "text": "Configuring the `hosts` file",
-              "level": 3,
               "url": "#installation-configuration-hosts"
             }
           ]
         },
         {
           "text": "Install additional packages",
-          "level": 2,
           "url": "#installation-aditional-packages"
         },
         {
           "text": "Launching the Phalcon Box",
-          "level": 2,
           "url": "#installation-launching-phalcon-box"
         }
       ]
@@ -1973,95 +1826,78 @@
       "menu": [
         {
           "text": "Accessing Phalcon Box globally",
-          "level": 2,
           "url": "#daily-usage-accessing-box-globally",
           "menu": [
             {
               "text": "Mac || Linux",
-              "level": 3,
               "url": "#daily-usage-accessing-box-globally-mac-linux"
             },
             {
               "text": "Windows",
-              "level": 3,
               "url": "#daily-usage-accessing-box-globally-windows"
             }
           ]
         },
         {
           "text": "Connecting via SSH",
-          "level": 2,
           "url": "#daily-usage-ssh"
         },
         {
           "text": "Connecting to databases",
-          "level": 2,
           "url": "#daily-usage-databases"
         },
         {
           "text": "Adding additional sites",
-          "level": 2,
           "url": "#daily-usage-additional-sites"
         },
         {
           "text": "Environment variables",
-          "level": 2,
           "url": "#daily-usage-environment-variables",
           "menu": [
             {
               "text": "Global variables",
-              "level": 3,
               "url": "#daily-usage-environment-global-variables"
             },
             {
               "text": "Site variables",
-              "level": 3,
               "url": "#daily-usage-environment-site-variables"
             }
           ]
         },
         {
           "text": "Ports",
-          "level": 2,
           "url": "#daily-usage-ports",
           "menu": [
             {
               "text": "Forwarding additional ports",
-              "level": 3,
               "url": "#daily-usage-ports-forwarding"
             }
           ]
         },
         {
           "text": "Sharing your environment",
-          "level": 2,
           "url": "#daily-usage-sharing-environment"
         },
         {
           "text": "Network interfaces",
-          "level": 2,
           "url": "#daily-usage-network-interfaces"
         },
         {
           "text": "Updating Phalcon Box",
-          "level": 2,
           "url": "#daily-usage-updating-box"
         },
         {
           "text": "Provider specific settings",
-          "level": 2,
           "url": "#daily-usage-provider-settings",
           "menu": [
             {
               "text": "VirtualBox",
-              "level": 3,
               "url": "#daily-usage-provider-settings-virtualbox"
             }
           ]
         },
         {
           "text": "Mail catcher",
-          "level": 2,
           "url": "#daily-usage-mail-catcher"
         }
       ]
@@ -2278,12 +2114,10 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         },
         {
           "text": "Implementing your own adapters",
-          "level": 2,
           "url": "#adapters-custom"
         }
       ]
@@ -2298,22 +2132,18 @@
       "menu": [
         {
           "text": "`Image::WIDTH`",
-          "level": 2,
           "url": "#resizing-width"
         },
         {
           "text": "`Image::HEIGHT`",
-          "level": 2,
           "url": "#resizing-height"
         },
         {
           "text": "`Image::NONE`",
-          "level": 2,
           "url": "#resizing-none"
         },
         {
           "text": "`Image::TENSILE`",
-          "level": 2,
           "url": "#resizing-tensile"
         }
       ]
@@ -2354,17 +2184,14 @@
       "menu": [
         {
           "text": "Hardware",
-          "level": 2,
           "url": "#requirements-hardware"
         },
         {
           "text": "Software",
-          "level": 2,
           "url": "#requirements-software",
           "menu": [
             {
               "text": "Optional depending on the needs of your application",
-              "level": 3,
               "url": "#requirements-software-optional"
             }
           ]
@@ -2377,66 +2204,54 @@
       "menu": [
         {
           "text": "Linux",
-          "level": 2,
           "url": "#installation-linux",
           "menu": [
             {
               "text": "DEB based distributions (CentOS, Fedora, etc.)",
-              "level": 3,
               "url": "#installation-linux-deb",
               "menu": [
                 {
                   "text": "Repository installation",
-                  "level": 4,
                   "url": "#installation-linux-deb-repository"
                 },
                 {
                   "text": "Stable releases",
-                  "level": 4,
                   "url": "#installation-linux-debian-repository-stable"
                 },
                 {
                   "text": "Nightly releases",
-                  "level": 4,
                   "url": "#installation-linux-debian-repository-nightly"
                 },
                 {
                   "text": "Phalcon installation",
-                  "level": 4,
                   "url": "#installation-linux-debian-phalcon",
                   "menu": [
                     {
                       "text": "PHP 5.x",
-                      "level": 5,
                       "url": "#installation-linux-debian-phalcon-php5"
                     },
                     {
                       "text": "PHP 7",
-                      "level": 5,
                       "url": "#installation-linux-debian-phalcon-php7"
                     }
                   ]
                 },
                 {
                   "text": "Additional PPAs",
-                  "level": 4,
                   "url": "#installation-linux-debian-other-ppa"
                 }
               ]
             },
             {
               "text": "RPM based distributions (CentOS, Fedora, etc.)",
-              "level": 3,
               "url": "#installation-linux-rpm",
               "menu": [
                 {
                   "text": "Repository installation",
-                  "level": 4,
                   "url": "#installation-linux-rpm-repository"
                 },
                 {
                   "text": "Stable releases",
-                  "level": 4,
                   "url": "#installation-linux-rpm-repository-stable",
                   "menu": [
                     {
@@ -2448,7 +2263,6 @@
                 },
                 {
                   "text": "Phalcon installation",
-                  "level": 4,
                   "url": "#installation-linux-rpm-phalcon",
                   "menu": [
                     {
@@ -2465,58 +2279,48 @@
                 },
                 {
                   "text": "Additional RPMs",
-                  "level": 4,
                   "url": "#installation-linux-rpm-other-rpm"
                 }
               ]
             },
             {
               "text": "FreeBSD",
-              "level": 2,
               "url": "#installation-freebsd"
             },
             {
               "text": "Gentoo",
-              "level": 2,
               "url": "#installation-gentoo"
             }
           ]
         },
         {
           "text": "macOS",
-          "level": 2,
           "url": "#installation-macos",
           "menu": [
             {
               "text": "Brew",
-              "level": 3,
               "url": "#installation-macos-brew"
             },
             {
               "text": "MacPorts",
-              "level": 3,
               "url": "#installation-macos-macports"
             }
           ]
         },
         {
           "text": "Windows",
-          "level": 2,
           "url": "#installation-windows"
         },
         {
           "text": "Compile from Sources",
-          "level": 2,
           "url": "#installation-sources"
         },
         {
           "text": "Advanced Compilation",
-          "level": 2,
           "url": "#installation-sources-advanced"
         },
         {
           "text": "Testing",
-          "level": 2,
           "url": "#installation-testing"
         }
       ]
@@ -2575,7 +2379,6 @@
     },
     {
       "text": "Factory",
-      "level": 2,
       "url": "#adapters-factory"
     },
     {
@@ -2596,12 +2399,10 @@
       "menu": [
         {
           "text": "Line Formatter",
-          "level": 2,
           "url": "#message-formatting-line"
         },
         {
           "text": "Implementing your own formatters",
-          "level": 2,
           "url": "#message-formatting-custom"
         }
       ]
@@ -2612,27 +2413,22 @@
       "menu": [
         {
           "text": "Stream Logger",
-          "level": 2,
           "url": "#usage-stream"
         },
         {
           "text": "File Logger",
-          "level": 2,
           "url": "#usage-file"
         },
         {
           "text": "Syslog Logger",
-          "level": 2,
           "url": "#usage-syslog"
         },
         {
           "text": "FirePHP Logger",
-          "level": 2,
           "url": "#usage-firephp"
         },
         {
           "text": "Implementing your own adapters",
-          "level": 2,
           "url": "#usage-custom"
         }
       ]
@@ -2685,12 +2481,10 @@
       "menu": [
         {
           "text": "Profiling with Xhprof",
-          "level": 2,
           "url": "#profiling-server-xhprof"
         },
         {
           "text": "Profiling SQL Statements",
-          "level": 2,
           "url": "#profiling-server-sql-statements"
         }
       ]
@@ -2701,17 +2495,14 @@
       "menu": [
         {
           "text": "Profile with Chrome/Firefox",
-          "level": 2,
           "url": "#profiling-client-chrome-firefox"
         },
         {
           "text": "Yahoo! YSlow",
-          "level": 2,
           "url": "#profiling-client-yslow"
         },
         {
           "text": "Profile with Speed Tracer",
-          "level": 2,
           "url": "#profiling-client-speed-tracer"
         }
       ]
@@ -2810,17 +2601,14 @@
       "menu": [
         {
           "text": "Setting an Expiration Time",
-          "level": 2,
           "url": "#http-cache-expiration-time"
         },
         {
           "text": "Cache-Control",
-          "level": 2,
           "url": "#http-cache-control"
         },
         {
           "text": "E-Tag",
-          "level": 2,
           "url": "#http-cache-etag"
         }
       ]
@@ -2837,37 +2625,30 @@
       "menu": [
         {
           "text": "Parameters with Names",
-          "level": 2,
           "url": "#defining-named-parameters"
         },
         {
           "text": "Short Syntax",
-          "level": 2,
           "url": "#defining-short-syntax"
         },
         {
           "text": "Mixing Array and Short Syntax",
-          "level": 2,
           "url": "#defining-mixed-parameters"
         },
         {
           "text": "Routing to Modules",
-          "level": 2,
           "url": "#defining-route-to-modules"
         },
         {
           "text": "HTTP Method Restrictions",
-          "level": 2,
           "url": "#defining-http-method-restrictions"
         },
         {
           "text": "Using conversors",
-          "level": 2,
           "url": "#defining-using-conversors"
         },
         {
           "text": "Groups of Routes",
-          "level": 2,
           "url": "#defining-groups-of-routes"
         }
       ]
@@ -2970,7 +2751,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#start-factory"
         }
       ]
@@ -3035,17 +2815,14 @@
       "menu": [
         {
           "text": "From Controllers",
-          "level": 2,
           "url": "#helper-values-form-controllers"
         },
         {
           "text": "From the Request",
-          "level": 2,
           "url": "#helper-values-from-request"
         },
         {
           "text": "Specifying values directly",
-          "level": 2,
           "url": "#helper-values-directly"
         }
       ]
@@ -3060,22 +2837,18 @@
       "menu": [
         {
           "text": "Images",
-          "level": 2,
           "url": "#static-content-helpers-images"
         },
         {
           "text": "Stylesheets",
-          "level": 2,
           "url": "#static-content-helpers-stylesheets"
         },
         {
           "text": "Javascript",
-          "level": 2,
           "url": "#static-content-helpers-javascript"
         },
         {
           "text": "HTML5 elements - generic HTML helper",
-          "level": 2,
           "url": "#static-content-helpers-html5"
         }
       ]
@@ -3100,7 +2873,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         }
       ]
@@ -3129,22 +2901,18 @@
       "menu": [
         {
           "text": "Autoloaders",
-          "level": 2,
           "url": "#autoloaders"
         },
         {
           "text": "Dependency Management",
-          "level": 2,
           "url": "#dependency-management"
         },
         {
           "text": "Handling the application request",
-          "level": 2,
           "url": "#request"
         },
         {
           "text": "Putting everything together",
-          "level": 2,
           "url": "#full-example"
         }
       ]
@@ -3221,12 +2989,10 @@
       "menu": [
         {
           "text": "Events Management",
-          "level": 2,
           "url": "#events-manager"
         },
         {
           "text": "Getting the ACL list",
-          "level": 2,
           "url": "#acl"
         }
       ]
@@ -3443,27 +3209,22 @@
       "menu": [
         {
           "text": "Using Templates",
-          "level": 2,
           "url": "#using-templates"
         },
         {
           "text": "Control Rendering Levels",
-          "level": 2,
           "url": "#control-rendering-levels"
         },
         {
           "text": "Disabling render levels",
-          "level": 2,
           "url": "#disabling-render-levels"
         },
         {
           "text": "Picking Views",
-          "level": 2,
           "url": "#picking-views"
         },
         {
           "text": "Disabling the view",
-          "level": 2,
           "url": "#disabling-view"
         }
       ]
@@ -3490,12 +3251,10 @@
       "menu": [
         {
           "text": "Creating your own Template Engine Adapter",
-          "level": 2,
           "url": "#custom-template-engine"
         },
         {
           "text": "Changing the Template Engine",
-          "level": 2,
           "url": "#changing-template-engine"
         }
       ]
@@ -3510,12 +3269,10 @@
       "menu": [
         {
           "text": "Hierarchical Rendering",
-          "level": 2,
           "url": "#stand-alone-hierarchical-rendering"
         },
         {
           "text": "Simple Rendering",
-          "level": 2,
           "url": "#stand-alone-simple-rendering"
         }
       ]
@@ -3560,71 +3317,58 @@
       "menu": [
         {
           "text": "For",
-          "level": 2,
           "url": "#control-structures-for"
         },
         {
           "text": "Loop Controls",
-          "level": 2,
           "url": "#control-structures-loops",
           "menu": [
             {
               "text": "If",
-              "level": 3,
               "url": "#control-structures-if"
             },
             {
               "text": "Switch",
-              "level": 3,
               "url": "#control-structures-switch"
             }
           ]
         },
         {
           "text": "Loop Context",
-          "level": 2,
           "url": "#control-structures-loop",
           "menu": [
             {
               "text": "Assignments",
-              "level": 3,
               "url": "#assignments"
             },
             {
               "text": "Expressions",
-              "level": 3,
               "url": "#expressions"
             }
           ]
         },
         {
           "text": "Literals",
-          "level": 2,
           "url": "#expressions-literals"
         },
         {
           "text": "Arrays",
-          "level": 2,
           "url": "#expressions-arrays"
         },
         {
           "text": "Math",
-          "level": 2,
           "url": "#expressions-math"
         },
         {
           "text": "Comparisons",
-          "level": 2,
           "url": "#expressions-comparisons"
         },
         {
           "text": "Logic",
-          "level": 2,
           "url": "#expressions-logic"
         },
         {
           "text": "Other Operators",
-          "level": 2,
           "url": "#expressions-other-operators"
         }
       ]
@@ -3651,12 +3395,10 @@
       "menu": [
         {
           "text": "Include",
-          "level": 2,
           "url": "#view-integration-include"
         },
         {
           "text": "Partial vs Include",
-          "level": 2,
           "url": "#view-integration-partial-vs-include"
         }
       ]
@@ -3667,7 +3409,6 @@
       "menu": [
         {
           "text": "Multiple Inheritance",
-          "level": 2,
           "url": "#template-inheritance-multiple"
         }
       ]
@@ -3682,17 +3423,14 @@
       "menu": [
         {
           "text": "Functions",
-          "level": 2,
           "url": "#extending-functions"
         },
         {
           "text": "Filters",
-          "level": 2,
           "url": "#extending-filters"
         },
         {
           "text": "Extensions",
-          "level": 2,
           "url": "#extending-extensions"
         }
       ]

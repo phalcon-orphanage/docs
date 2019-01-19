@@ -19,13 +19,13 @@ The component `Phalcon\Translate` aids in creating multilingual applications. Ap
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                                                               | Description                                                                             |
+| Adapter                                                                               | Περιγραφή                                                                               |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Εργοστάσιο
 
 Loads Translate Adapter class using `adapter` option
 
