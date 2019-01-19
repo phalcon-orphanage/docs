@@ -13,7 +13,7 @@ version: '4.0'
 
 Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε την πρόσβαση. Στον κόσμο του προγραμματισμού, αυτές αναφέρονται συνήθωςι ως πράξεις και θέματα. Στον κόσμο του Phalcon, χρησιμοποιούμε την ορολογία [λειτουργία](api/Phalcon_Acl_Operation) και [θέμα](api/Phalcon_Acl_Subject).
 
-> **Use Case**
+> **Περιπτώσεις Χρήσης**
 > 
 > Μια εφαρμογή λογιστικής χρειάζεται διαφορετικές ομάδες χρηστών να έχουν πρόσβαση σε διάφορες περιοχές της εφαρμογής.
 > 
@@ -33,7 +33,7 @@ version: '4.0'
 
 Phalcon also offers an easy way for developers to build their own adapters by implementing the [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface.
 
-### In action
+### Σε δράση
 
 The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
 
@@ -42,7 +42,7 @@ The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an a
 
 use Phalcon\Acl\Adapter\Memory as AclList;
 
-$acl = new AclList();
+$acl = new AclList()?
 ```
 
 There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
@@ -674,10 +674,10 @@ It is a good practice to not use serialization of the ACL during development, to
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
-| Event Name          | Triggered                                                   | Can stop operation? |
-| ------------------- | ----------------------------------------------------------- |:-------------------:|
-| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |         No          |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |         Ναι         |
+| Όνομα γεγονότος     | Ενεργοποίηση                                                | Μπορεί να σταματήσει την λειτουργία; |
+| ------------------- | ----------------------------------------------------------- |:------------------------------------:|
+| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |                 Όχι                  |
+| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |                 Ναι                  |
 
 The following example demonstrates how to attach listeners to the ACL:
 
