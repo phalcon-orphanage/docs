@@ -21,7 +21,7 @@ This component allows for a lower level database manipulation than using traditi
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
-| Class                                                                          | Description                                                                                                                                                                                                                          |
+| Class                                                                          | Περιγραφή                                                                                                                                                                                                                            |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [Phalcon\Db\Adapter\Pdo\Mysql](api/Phalcon_Db_Adapter_Pdo_Mysql)           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
 | [Phalcon\Db\Adapter\Pdo\Postgresql](api/Phalcon_Db_Adapter_Pdo_Postgresql) | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
@@ -29,7 +29,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Εργοστάσιο
 
 <a name='factory'></a>
 
@@ -64,7 +64,7 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
-| Class                                                                 | Description                                         |
+| Class                                                                 | Περιγραφή                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------- |
 | [Phalcon\Db\Dialect\Mysql](api/Phalcon_Db_Dialect_Mysql)           | SQL specific dialect for MySQL database system      |
 | [Phalcon\Db\Dialect\Postgresql](api/Phalcon_Db_Dialect_Postgresql) | SQL specific dialect for PostgreSQL database system |
@@ -287,7 +287,7 @@ $robot = $connection->fetchOne($sql);
 
 By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
 
-| Constant                   | Description                                               |
+| Constant                   | Περιγραφή                                                 |
 | -------------------------- | --------------------------------------------------------- |
 | `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
 | `Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
@@ -735,15 +735,15 @@ try {
 
 [Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Ναι         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| Όνομα γεγονότος       | Ενεργοποίηση                                         | Μπορεί να σταματήσει την λειτουργία; |
+| --------------------- | ---------------------------------------------------- |:------------------------------------:|
+| `afterConnect`        | After a successfully connection to a database system |                 Όχι                  |
+| `beforeQuery`         | Before send a SQL statement to the database system   |                 Ναι                  |
+| `afterQuery`          | After send a SQL statement to database system        |                 Όχι                  |
+| `beforeDisconnect`    | Before close a temporal database connection          |                 Όχι                  |
+| `beginTransaction`    | Before a transaction is going to be started          |                 Όχι                  |
+| `rollbackTransaction` | Before a transaction is rollbacked                   |                 Όχι                  |
+| `commitTransaction`   | Before a transaction is committed                    |                 Όχι                  |
 
 Bind an EventsManager to a connection is simple, [Phalcon\Db](api/Phalcon_Db) will trigger the events with the type `db`:
 
@@ -1012,7 +1012,7 @@ Different database systems (MySQL, Postgresql etc.) offer the ability to create,
 
 <a name='tables-create'></a>
 
-### Creating Tables
+### Δημιουργία πινάκων
 
 The following example shows how to create a table:
 
@@ -1059,9 +1059,9 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/Phalcon_Db_Column). The table below shows the options available to define a column:
 
-| Option          | Description                                                                                                                                | Optional |
+| Option          | Περιγραφή                                                                                                                                  | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    No    |
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |   Όχι    |
 | `primary`       | True if the column is part of the table's primary key                                                                                      |   Ναι    |
 | `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Ναι    |
 | `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Ναι    |
@@ -1085,16 +1085,16 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| Index        | Description                                                                                                                            | Optional |
+| Index        | Περιγραφή                                                                                                                              | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    No    |
+| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |   Όχι    |
 | `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Ναι    |
 | `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Ναι    |
 | `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Ναι    |
 
 <a name='tables-altering'></a>
 
-### Altering Tables
+### Αλλαγή πινάκων
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. [Phalcon\Db](api/Phalcon_Db) is limited by these constraints.
 
@@ -1142,7 +1142,7 @@ $connection->dropColumn(
 
 <a name='tables-dropping'></a>
 
-### Dropping Tables
+### Διαγραφή πινάκων
 
 To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
 
