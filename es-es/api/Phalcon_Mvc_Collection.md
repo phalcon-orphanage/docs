@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Mvc\Collection'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Mvc\Collection'
+---
 # Abstract class **Phalcon\Mvc\Collection**
 
-*implements* [Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
+*implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 

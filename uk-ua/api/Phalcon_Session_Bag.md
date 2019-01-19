@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 * * *
 
 layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Session\Bag'
 
 * * *
 
+=======
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Session\Bag'
+---
+>>>>>>> l10n_4.0
 # Class **Phalcon\Session\Bag**
 
 *implements* [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Session\BagInterface](/4.0/en/api/Phalcon_Session_BagInterface), [IteratorAggregate](https://php.net/manual/en/class.iteratoraggregate.php), [Traversable](https://php.net/manual/en/class.traversable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)

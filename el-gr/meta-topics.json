@@ -1,33 +1,33 @@
 [
     {
-        "text": "General",
+        "text": "Γενικά",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Εισαγωγή",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Σημειώσεις έκδοσης",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Αναβάθμιση",
                 "url": ""
             },
             {
-                "text": "Sponsors",
+                "text": "Σπόνσορες",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Συνεισφορές",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Επισκόπηση",
                 "url": "/contributions"
             },
             {
@@ -47,21 +47,21 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Περιβάλλον tests",
                 "url": "testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Ξεκινώντας",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Εγκατάσταση",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Εγκατάσταση του διακομιστή Web",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Περιβάλλοντα",
         "url": "",
         "menu": [
             {
@@ -87,39 +87,39 @@
                 "url": "/environments-nanobox"
             },
             {
-                "text": "Phalcon Box (Vagrant)",
+                "text": "Phalcon κουτί (Vagrant)",
                 "url": "/environments-vagrant"
             }
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Εργαλεία ανάπτυξης",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Εγκατάσταση",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Χρήση",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Οδηγοί εκμάθησης",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "Απόδοση",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Βασικό",
                 "url": "/tutorial-base"
             },
             {
@@ -135,21 +135,21 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Πυρήνας",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Δείκτης API",
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Εφαρμογή",
                 "url": "/application"
             },
             {
@@ -171,11 +171,11 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Υπηρεσίες",
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/cache"
             },
             {
@@ -187,7 +187,7 @@
                 "url": "/escaper"
             },
             {
-                "text": "Loader",
+                "text": "Φορτωτής",
                 "url": "/loader"
             },
             {
@@ -195,17 +195,17 @@
                 "url": "/logging"
             },
             {
-                "text": "Queue",
+                "text": "Ουρά",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "Βάση Δεδομένων",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Στρώμα",
                 "url": "/db-layer"
             },
             {
@@ -217,39 +217,39 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Μοντέλα",
                 "url": "/db-models"
             },
             {
-                "text": "Advanced",
+                "text": "Προχωρημένα",
                 "url": "/db-models-advanced"
             },
             {
-                "text": "Behaviors",
+                "text": "Συμπεριφορές",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Μεταδεδομένα",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "Σχέσεις",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Συναλλαγές",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Επικυρωτές",
                 "url": "/db-models-validation"
             },
             {
@@ -257,7 +257,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Pagination",
+                "text": "Σελιδοποίηση",
                 "url": "/db-pagination"
             }
         ]
@@ -271,15 +271,15 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Flash μηνύματα",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Φόρμες",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Εικόνες",
                 "url": "/image"
             },
             {
@@ -287,7 +287,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -297,47 +297,47 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Επιχειρηματική λογική",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Λίστες Ελέγχου Πρόσβασης",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Σχολιασμοί",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Ελεγκτές",
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "Αποστολέας",
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Διαχείριση Γεγονότων",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Φίλτρα",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Δρομολόγηση",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Συνεδρίες",
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "Διεύθυνση URL",
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Επικύρωση",
                 "url": "/validation"
             }
         ]
@@ -351,25 +351,25 @@
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Αίτηση",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Ανταπόκριση",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Ασφάλεια",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "Κρυπτογραφία",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Ασφάλεια",
                 "url": "/security"
             }
         ]
@@ -379,11 +379,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Διεθνοποίηση",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Μετάφραση",
                 "url": "/translate"
             }
         ]

@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Forms\Element\Numeric'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Numeric'
+---
 # Class **Phalcon\Forms\Element\Numeric**
 
-*extends* abstract class [Phalcon\Forms\Element](/4.0/en/api/Phalcon_Forms_Element)
+*extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-*implements* [Phalcon\Forms\ElementInterface](/4.0/en/api/Phalcon_Forms_ElementInterface)
+*implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/element/numeric.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
 
 Component INPUT[type=number] for forms
 

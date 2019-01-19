@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\View\Engine\Volt'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\View\Engine\Volt'
+---
 # Class **Phalcon\Mvc\View\Engine\Volt**
 
-*extends* abstract class [Phalcon\Mvc\View\Engine](/4.0/en/api/Phalcon_Mvc_View_Engine)
+*extends* abstract class [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-*implements* [Phalcon\Mvc\View\EngineInterface](/4.0/en/api/Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/view/engine/volt.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 

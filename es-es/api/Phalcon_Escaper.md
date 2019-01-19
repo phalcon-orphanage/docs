@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Escaper'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Escaper'
+---
 # Class **Phalcon\Escaper**
 
 *implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/escaper.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
 Escapa diferentes tipos de textos haciéndolos seguros. Mediante el uso de este componente puede prevenir ataques XSS.
 

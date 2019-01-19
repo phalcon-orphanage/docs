@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 * * *
 
 layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Di\FactoryDefault'
 
 * * *
 
+=======
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Di\FactoryDefault'
+---
+>>>>>>> l10n_4.0
 # Class **Phalcon\Di\FactoryDefault**
 
 *extends* class [Phalcon\Di](Phalcon_Di)

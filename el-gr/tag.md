@@ -489,7 +489,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Εικόνες
 
 ```php
 <?php

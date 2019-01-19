@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Http\Cookie'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Http\Cookie'
+---
 # Class **Phalcon\Http\Cookie**
 
-*implements* [Phalcon\Http\CookieInterface](/4.0/en/api/Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/cookie.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 Provide OO wrappers to manage a HTTP cookie
 

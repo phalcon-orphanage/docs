@@ -1,11 +1,11 @@
 {
   "acl": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
-      "text": "Creating an ACL",
+      "text": "Δημιουργώντας Λίστες Ελέγχου Πρόσβασης",
       "url": "#setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "#adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Καθορισμός ελέγχων πρόσβασης",
       "url": "#access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Αναζητώντας ένα ACL",
       "url": "#querying"
     },
     {
-      "text": "Function based access",
+      "text": "Πρόσβαση βασισμένη σε λειτουργίες",
       "url": "#function-based-access"
     },
     {
@@ -37,21 +37,21 @@
       "url": "#operationss-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "Σειρογραφία Λίστες ACL",
       "url": "#serialization"
     },
     {
-      "text": "Events",
+      "text": "Γεγονότα",
       "url": "#events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -59,7 +59,7 @@
       "url": "#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Προσθήκη ρόλων",
       "url": "#factory"
     },
     {
@@ -71,17 +71,15 @@
       "url": "#types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Πρακτική χρήση",
       "url": "#usage",
       "menu": [
         {
           "text": "Cache Enabler with Annotations",
-          "level": 2,
           "url": "#usage-cache"
         },
         {
           "text": "Private/Public areas with Annotations",
-          "level": 2,
           "url": "#usage-access-management"
         }
       ]
@@ -91,8 +89,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
-          "level": 2,
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -108,7 +105,7 @@
       "url": "#creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Δομή",
       "url": "#structure"
     },
     {
@@ -116,7 +113,7 @@
       "url": "#creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Εργασίες",
       "url": "#tasks"
     },
     {
@@ -134,152 +131,125 @@
       "url": "#creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#routing",
       "menu": [
         {
-          "text": "Setup",
-          "level": 2,
+          "text": "Ρύθμιση",
           "url": "#routing-setup",
           "menu": [
             {
-              "text": "Application object",
-              "level": 3,
+              "text": "Αντικείμενο εφαρμογής",
               "url": "#routing-setup-application"
             },
             {
-              "text": "Router object",
-              "level": 3,
+              "text": "Αντικείμενο του δρομολογητή",
               "url": "#routing-setup-router"
             }
           ]
         },
         {
-          "text": "Rewrite Rules",
-          "level": 2,
+          "text": "Κανόνες αναγραφής",
           "url": "#rewrite-rules"
         },
         {
-          "text": "Handlers",
-          "level": 2,
+          "text": "Χειριστές",
           "url": "#routing-handlers",
           "menu": [
             {
-              "text": "Definitions",
-              "level": 3,
+              "text": "Ορισμοί",
               "url": "#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Anonymous Function",
-                  "level": 4,
+                  "text": "Ανώνυμη συνάρτηση",
                   "url": "#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Function",
-                  "level": 4,
+                  "text": "Συνάρτηση",
                   "url": "#routing-handlers-function"
                 },
                 {
-                  "text": "Static Method",
-                  "level": 4,
+                  "text": "Στατική μέθοδος",
                   "url": "#routing-handlers-static-method"
                 },
                 {
-                  "text": "Method in an Object",
-                  "level": 4,
+                  "text": "Μέθοδος σε ένα αντικείμενο",
                   "url": "#routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
-                  "level": 4,
+                  "text": "Ελεγκτές",
                   "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
               "text": "Lazy Loading",
-              "level": 3,
               "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
-                  "level": 4,
+                  "text": "Περίπτωση Χρήσης",
                   "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "Not Found (404)",
-              "level": 3,
+              "text": "Δεν βρέθηκε (404)",
               "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "Methods - Verbs",
-          "level": 2,
+          "text": "Μέθοδοι - ρήματα",
           "url": "#routing-verbs",
           "menu": [
             {
               "text": "delete",
-              "level": 3,
               "url": "#routing-verb-delete"
             },
             {
               "text": "get",
-              "level": 3,
               "url": "#routing-verb-get"
             },
             {
               "text": "head",
-              "level": 3,
               "url": "#routing-verb-head"
             },
             {
               "text": "map",
-              "level": 3,
               "url": "#routing-verb-map"
             },
             {
               "text": "options",
-              "level": 3,
               "url": "#routing-verb-options"
             },
             {
               "text": "patch",
-              "level": 3,
               "url": "#routing-verb-patch"
             },
             {
               "text": "post",
-              "level": 3,
               "url": "#routing-verb-post"
             },
             {
               "text": "put",
-              "level": 3,
               "url": "#routing-verb-put"
             }
           ]
         },
         {
-          "text": "Collections",
-          "level": 2,
+          "text": "Συλλογές",
           "url": "#routing-collections"
         },
         {
-          "text": "Parameters",
-          "level": 2,
+          "text": "Παράμετροι",
           "url": "#routing-parameters"
         },
         {
-          "text": "Redirections",
-          "level": 2,
+          "text": "Ανακατευθύνσεις",
           "url": "#routing-redirections"
         },
         {
-          "text": "URLs for Routes",
-          "level": 2,
+          "text": "Διευθύνσεις URL για τις διαδρομές",
           "url": "#routing-urls-for-routes"
         }
       ]
@@ -289,63 +259,53 @@
       "url": "#dependency-injector"
     },
     {
-      "text": "Responses",
+      "text": "Ανταπόκρισεις",
       "url": "#responses",
       "menu": [
         {
           "text": "Direct output",
-          "level": 2,
           "url": "#responses-direct-output"
         },
         {
-          "text": "Including another file",
-          "level": 2,
+          "text": "Συμπεριλαμβάνοντας ένα άλλο αρχείο",
           "url": "#responses-include"
         },
         {
           "text": "Direct output JSON",
-          "level": 2,
           "url": "#responses-direct-output-json"
         },
         {
-          "text": "New Response object",
-          "level": 2,
+          "text": "Νέο αντικείμενο Ανταπόκρισης",
           "url": "#responses-new-response-object"
         },
         {
-          "text": "Application Response",
-          "level": 2,
+          "text": "Ανταπόκριση εφαρμογής",
           "url": "#responses-application-response"
         },
         {
-          "text": "Return Application Response",
-          "level": 2,
+          "text": "Επιστρέφωντας Ανταπόκριση εφαρμογής",
           "url": "#responses-return-application-response"
         },
         {
           "text": "JSON",
-          "level": 2,
           "url": "#responses-json"
         }
       ]
     },
     {
-      "text": "Events",
+      "text": "Γεγονότα",
       "url": "#events",
       "menu": [
         {
-          "text": "Available events",
-          "level": 2,
+          "text": "Διαθέσιμα γεγονότα",
           "url": "#events-available-events",
           "menu": [
             {
-              "text": "Authentication example",
-              "level": 3,
+              "text": "Παράδειγμα ελέγχου ταυτότητας",
               "url": "#events-available-events-authentication"
             },
             {
-              "text": "Not found example",
-              "level": 3,
+              "text": "Δεν βρέθηκε παράδειγμα",
               "url": "#events-available-events-not-found"
             }
           ]
@@ -353,85 +313,71 @@
       ]
     },
     {
-      "text": "Middleware",
+      "text": "Ενδιάμεσο λογισμικό",
       "url": "#",
       "menu": [
         {
-          "text": "Attached events",
-          "level": 2,
+          "text": "Συνημμένα γεγονότα",
           "url": "#",
           "menu": [
             {
               "text": "before",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "after",
-              "level": 3,
               "url": "#"
             },
             {
               "text": "finish",
-              "level": 3,
               "url": "#"
             }
           ]
         },
         {
-          "text": "Implementation",
-          "level": 2,
+          "text": "Εφαρμογή",
           "url": "#"
         },
         {
-          "text": "Setup",
-          "level": 2,
+          "text": "Ρύθμιση",
           "url": "#"
         },
         {
-          "text": "Events in Middleware",
-          "level": 2,
+          "text": "Γεγονότα στο Ενδιάμεσο Λογισμικό",
           "url": "#",
           "menu": [
             {
-              "text": "API example",
-              "level": 3,
+              "text": "Παράδειγμα API",
               "url": "#"
             },
             {
-              "text": "Firewall Middleware",
-              "level": 3,
+              "text": "Firewall Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             },
             {
-              "text": "Not Found Middleware",
-              "level": 3,
+              "text": "Δε βρέθηκε Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             },
             {
-              "text": "Redirect Middleware",
-              "level": 3,
+              "text": "Αντικατεύθυνσης Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             },
             {
-              "text": "CORS Middleware",
-              "level": 3,
+              "text": "CORS Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             },
             {
-              "text": "Request Middleware",
-              "level": 3,
+              "text": "Αίτησης Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             },
             {
-              "text": "Response Middleware",
-              "level": 3,
+              "text": "Ανταπόκρισης Ενδιάμεσο Λογισμικό (Middleware)",
               "url": "#"
             }
           ]
         },
         {
-          "text": "Models",
+          "text": "Μοντέλα",
           "url": "#"
         },
         {
@@ -439,11 +385,11 @@
           "url": "#"
         },
         {
-          "text": "Views",
+          "text": "Προβολές",
           "url": "#"
         },
         {
-          "text": "Error Handling",
+          "text": "Χειρισμός σφαλμάτων",
           "url": "#"
         }
       ]
@@ -451,7 +397,7 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -464,12 +410,10 @@
       "menu": [
         {
           "text": "Single Module",
-          "level": 2,
           "url": "#single"
         },
         {
           "text": "Multi Module",
-          "level": 2,
           "url": "#module"
         }
       ]
@@ -485,11 +429,11 @@
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Προσθήκη πόρων",
       "url": "#add"
     },
     {
@@ -497,7 +441,7 @@
       "url": "#resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Συλλογές",
       "url": "#collections"
     },
     {
@@ -510,12 +454,10 @@
       "menu": [
         {
           "text": "Built-In Filters",
-          "level": 2,
           "url": "#builtin-filters"
         },
         {
           "text": "Custom Filters",
-          "level": 2,
           "url": "#custom-filters"
         }
       ]
@@ -552,17 +494,14 @@
       "menu": [
         {
           "text": "Caching Arbitrary Data",
-          "level": 2,
           "url": "#arbitrary-data"
         },
         {
           "text": "File Backend Example",
-          "level": 2,
           "url": "#backend-file-example"
         },
         {
           "text": "Memcached Backend Example",
-          "level": 2,
           "url": "#backend-memcached-example"
         }
       ]
@@ -593,7 +532,6 @@
       "menu": [
         {
           "text": "Implementing your own Frontend adapters",
-          "level": 2,
           "url": "#adapters-frontend-custom"
         }
       ]
@@ -604,52 +542,42 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-backend-factory"
         },
         {
           "text": "Implementing your own Backend adapters",
-          "level": 2,
           "url": "#adapters-backend-custom"
         },
         {
           "text": "File Backend Options",
-          "level": 2,
           "url": "#adapters-backend-file"
         },
         {
           "text": "Libmemcached Backend Options",
-          "level": 2,
           "url": "#adapters-backend-libmemcached"
         },
         {
           "text": "Memcache Backend Options",
-          "level": 2,
           "url": "#adapters-backend-memcache"
         },
         {
           "text": "APC Backend Options",
-          "level": 2,
           "url": "#adapters-backend-apc"
         },
         {
           "text": "APCU Backend Options",
-          "level": 2,
           "url": "#adapters-backend-apcu"
         },
         {
           "text": "Mongo Backend Options",
-          "level": 2,
           "url": "#adapters-backend-mongo"
         },
         {
           "text": "XCache Backend Options",
-          "level": 2,
           "url": "#adapters-backend-xcache"
         },
         {
           "text": "Redis Backend Options",
-          "level": 2,
           "url": "#adapters-backend-redis"
         }
       ]
@@ -662,7 +590,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#factory"
         }
       ]
@@ -694,11 +621,11 @@
   ],
   "contributions": [
     {
-      "text": "Contributing to Phalcon",
+      "text": "Συμβάλλοντας στο Phalcon",
       "url": "#contributing"
     },
     {
-      "text": "Contributions",
+      "text": "Συνεισφορές",
       "url": "#contributions"
     },
     {
@@ -711,7 +638,6 @@
       "menu": [
         {
           "text": "Generating a backtrace",
-          "level": 2,
           "url": "#bug-report-generating-backtrace"
         }
       ]
@@ -731,7 +657,7 @@
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Επισκόπηση",
       "url": "#overview"
     },
     {
@@ -769,11 +695,11 @@
   ],
   "cookies": [
     {
-      "text": "Cookies Management",
+      "text": "Διαχείριση cookies",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#usage"
     },
     {
@@ -783,11 +709,11 @@
   ],
   "crypt": [
     {
-      "text": "Encryption/Decryption",
+      "text": "Κρυπτογράφηση/αποκρυπτογράφηση",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#usage"
     },
     {
@@ -818,12 +744,10 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
-          "level": 2,
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -834,7 +758,6 @@
       "menu": [
         {
           "text": "Implementing your own dialects",
-          "level": 2,
           "url": "#dialects-custom"
         }
       ]
@@ -889,17 +812,14 @@
       "menu": [
         {
           "text": "Creating Tables",
-          "level": 2,
           "url": "#tables-create"
         },
         {
           "text": "Altering Tables",
-          "level": 2,
           "url": "#tables-altering"
         },
         {
           "text": "Dropping Tables",
-          "level": 2,
           "url": "#tables-dropping"
         }
       ]
@@ -920,17 +840,14 @@
       "menu": [
         {
           "text": "Defining Columns",
-          "level": 2,
           "url": "#class-anatomy-columns"
         },
         {
           "text": "Defining Indexes",
-          "level": 2,
           "url": "#class-anatomy-indexes"
         },
         {
           "text": "Defining References",
-          "level": 2,
           "url": "#class-anatomy-references"
         }
       ]
@@ -1015,12 +932,10 @@
       "menu": [
         {
           "text": "Implementing Events in the Model's class",
-          "level": 2,
           "url": "#events-in-models"
         },
         {
           "text": "Using a custom Events Manager",
-          "level": 2,
           "url": "#custom-events-manager"
         }
       ]
@@ -1049,12 +964,10 @@
       "menu": [
         {
           "text": "Database Introspection Strategy",
-          "level": 2,
           "url": "#strategies-database-introspection",
           "menu": [
             {
               "text": "Annotations Strategy",
-              "level": 2,
               "url": "#strategies-annotations"
             }
           ]
@@ -1072,49 +985,41 @@
       "url": "#overview"
     },
     {
-      "text": "Relationships between Models",
+      "text": "Σχέσεις μεταξύ των μοντέλων",
       "url": "#relationships",
       "menu": [
         {
           "text": "Unidirectional relationships",
-          "level": 2,
           "url": "#unidirectional"
         },
         {
           "text": "Bidirectional relations",
-          "level": 2,
           "url": "#bidirectional"
         },
         {
           "text": "Defining relationships",
-          "level": 2,
           "url": "#defining",
           "menu": [
             {
               "text": "Multiple field relationships",
-              "level": 3,
               "url": "#multiple-fields"
             },
             {
               "text": "Relationships with parameters",
-              "level": 3,
               "url": "#parameters"
             }
           ]
         },
         {
           "text": "Taking advantage of relationships",
-          "level": 2,
           "url": "#taking-advantage-of"
         },
         {
           "text": "Aliasing Relationships",
-          "level": 2,
           "url": "#aliases",
           "menu": [
             {
               "text": "Magic Getters vs. Explicit methods",
-              "level": 3,
               "url": "#getters-vs-methods"
             }
           ]
@@ -1127,7 +1032,6 @@
       "menu": [
         {
           "text": "Cascade/Restrict actions",
-          "level": 2,
           "url": "#cascade-restrict-actions"
         }
       ]
@@ -1142,12 +1046,10 @@
       "menu": [
         {
           "text": "Updating related records",
-          "level": 2,
           "url": "#updating-related-records"
         },
         {
           "text": "Deleting related records",
-          "level": 2,
           "url": "#deleting-related-records"
         }
       ]
@@ -1155,7 +1057,7 @@
   ],
   "db-models-transactions": [
     {
-      "text": "Model Transactions",
+      "text": "Συναλλαγές Μοντέλων",
       "url": "#overview"
     },
     {
@@ -1173,7 +1075,7 @@
   ],
   "db-models-validation": [
     {
-      "text": "Model Transactions",
+      "text": "Συναλλαγές Μοντέλων",
       "url": "#overview"
     },
     {
@@ -1195,12 +1097,11 @@
       "url": "#working-with"
     },
     {
-      "text": "Creating Models",
+      "text": "Δημιουργία μοντέλων",
       "url": "#creating",
       "menu": [
         {
           "text": "Public properties vs. Setters/Getters",
-          "level": 2,
           "url": "#properties-setters-getters"
         }
       ]
@@ -1215,17 +1116,14 @@
       "menu": [
         {
           "text": "Model Resultsets",
-          "level": 2,
           "url": "#resultsets"
         },
         {
           "text": "Filtering Resultsets",
-          "level": 2,
           "url": "#filters"
         },
         {
           "text": "Binding Parameters",
-          "level": 2,
           "url": "#binding-parameters"
         }
       ]
@@ -1244,7 +1142,6 @@
       "menu": [
         {
           "text": "Create/Update with Confidence",
-          "level": 2,
           "url": "#create-update-with-confidence"
         }
       ]
@@ -1304,7 +1201,7 @@
       "url": "#overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Δημιουργία μοντέλων",
       "url": "#creating-models"
     },
     {
@@ -1333,22 +1230,18 @@
       "menu": [
         {
           "text": "Validation Messages",
-          "level": 2,
           "url": "#validation-messages"
         },
         {
           "text": "Validation Events and Events Manager",
-          "level": 2,
           "url": "#events"
         },
         {
           "text": "Implementing a Business Rule",
-          "level": 2,
           "url": "#business-rules"
         },
         {
           "text": "Validating Data Integrity",
-          "level": 2,
           "url": "#data-integrity"
         }
       ]
@@ -1400,7 +1293,7 @@
       "url": "#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
@@ -1410,7 +1303,7 @@
       "url": "#overview"
     },
     {
-      "text": "Usage Example",
+      "text": "Παράδειγμα χρήσης",
       "url": "#usage"
     },
     {
@@ -1423,22 +1316,18 @@
       "menu": [
         {
           "text": "Result Types",
-          "level": 2,
           "url": "#result-types"
         },
         {
           "text": "Joins",
-          "level": 2,
           "url": "#joins"
         },
         {
           "text": "Aggregations",
-          "level": 2,
           "url": "#aggregations"
         },
         {
           "text": "Conditions",
-          "level": 2,
           "url": "#conditions"
         }
       ]
@@ -1461,7 +1350,6 @@
       "menu": [
         {
           "text": "Bound Parameters",
-          "level": 2,
           "url": "#query-builder-parameters"
         }
       ]
@@ -1515,7 +1403,7 @@
       "url": "#overview"
     },
     {
-      "text": "Prerequisites",
+      "text": "Προϋποθέσεις",
       "url": "#prerequisites"
     },
     {
@@ -1524,22 +1412,18 @@
       "menu": [
         {
           "text": "Linux",
-          "level": 2,
           "url": "#installation-linux"
         },
         {
           "text": "MacOS",
-          "level": 2,
           "url": "#installation-mac"
         },
         {
           "text": "Windows",
-          "level": 2,
           "url": "#installation-windows",
           "menu": [
             {
               "text": "Adding PHP and Tools to your system PATH",
-              "level": 3,
               "url": "#installation-windows-system-path"
             }
           ]
@@ -1553,7 +1437,7 @@
       "url": "#overview"
     },
     {
-      "text": "Download",
+      "text": "Λήψη",
       "url": "#download"
     },
     {
@@ -1612,51 +1496,42 @@
       "menu": [
         {
           "text": "Simple Registration",
-          "level": 2,
           "url": "#simple-registration",
           "menu": [
             {
               "text": "String",
-              "level": 3,
               "url": "#simple-registration-string"
             },
             {
               "text": "Class instances",
-              "level": 3,
               "url": "#class-instances"
             },
             {
               "text": "Closures/Anonymous functions",
-              "level": 3,
               "url": "#closures-anonymous-functions"
             }
           ]
         },
         {
           "text": "Complex Registration",
-          "level": 2,
           "url": "#complex-registration",
           "menu": [
             {
               "text": "Constructor Injection",
-              "level": 3,
               "url": "#constructor-injection"
             },
             {
               "text": "Setter Injection",
-              "level": 3,
               "url": "#setter-injection"
             },
             {
               "text": "Properties Injection",
-              "level": 3,
               "url": "#properties-injection"
             }
           ]
         },
         {
           "text": "Array Syntax",
-          "level": 2,
           "url": "#array-syntax"
         }
       ]
@@ -1666,8 +1541,7 @@
       "url": "#resolving-services",
       "menu": [
         {
-          "text": "Events",
-          "level": 2,
+          "text": "Γεγονότα",
           "url": "#events"
         }
       ]
@@ -1720,7 +1594,6 @@
     },
     {
       "text": "Dispatch Loop Events",
-      "level": 2,
       "url": "#dispatch-loop-events"
     },
     {
@@ -1741,17 +1614,14 @@
       "menu": [
         {
           "text": "Camelize action names",
-          "level": 2,
           "url": "#preparing-actions-camelizing-action-names"
         },
         {
           "text": "Remove legacy extensions",
-          "level": 2,
           "url": "#preparing-actions-removing-legacy-extensions"
         },
         {
           "text": "Inject model instances",
-          "level": 2,
           "url": "#preparing-actions-inject-model-instances"
         }
       ]
@@ -1771,7 +1641,7 @@
       "url": "#overview"
     },
     {
-      "text": "Dependencies",
+      "text": "Εξαρτήσεις",
       "url": "#dependencies"
     },
     {
@@ -1784,12 +1654,10 @@
       "menu": [
         {
           "text": "With Composer (recommended)",
-          "level": 2,
           "url": "#installation-composer"
         },
         {
           "text": "With Git",
-          "level": 2,
           "url": "#installation-git"
         }
       ]
@@ -1816,12 +1684,10 @@
       "menu": [
         {
           "text": "Web environment",
-          "level": 2,
           "url": "#environment-variables-web"
         },
         {
           "text": "phpMyAdmin variables",
-          "level": 2,
           "url": "#environment-variables-phpmyadmin"
         }
       ]
@@ -1836,17 +1702,14 @@
       "menu": [
         {
           "text": "Startup or linking errors",
-          "level": 2,
           "url": "#troubleshooting-startup"
         },
         {
           "text": "Full reset",
-          "level": 2,
           "url": "#troubleshooting-full-reset"
         },
         {
           "text": "Updating dependencies",
-          "level": 2,
           "url": "#troubleshooting-dependencies"
         }
       ]
@@ -1862,7 +1725,7 @@
       "url": "#overview"
     },
     {
-      "text": "Create a New Project",
+      "text": "Δημιουργήστε ένα νέο έργο",
       "url": "#create-project"
     },
     {
@@ -1896,7 +1759,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements"
     },
     {
@@ -1909,12 +1772,10 @@
       "menu": [
         {
           "text": "Installing the Vagrant Box",
-          "level": 2,
           "url": "#installation-vagrant-box"
         },
         {
           "text": "Installing the Phalcon Box",
-          "level": 2,
           "url": "#installation-phalcon-box"
         }
       ]
@@ -1925,44 +1786,36 @@
       "menu": [
         {
           "text": "Setting your provider",
-          "level": 2,
           "url": "#installation-configuration-setting-provider"
         },
         {
           "text": "Memory and CPU",
-          "level": 2,
           "url": "#installation-configuration-memory-cpu"
         },
         {
           "text": "Shared folders",
-          "level": 2,
           "url": "#installation-configuration-shared-folders"
         },
         {
           "text": "Nginx sites",
-          "level": 2,
           "url": "#installation-configuration-nginx",
           "menu": [
             {
               "text": "Custom Nginx configuration",
-              "level": 3,
               "url": "#installation-configuration-custom-nginx"
             },
             {
               "text": "Configuring the `hosts` file",
-              "level": 3,
               "url": "#installation-configuration-hosts"
             }
           ]
         },
         {
           "text": "Install additional packages",
-          "level": 2,
           "url": "#installation-aditional-packages"
         },
         {
           "text": "Launching the Phalcon Box",
-          "level": 2,
           "url": "#installation-launching-phalcon-box"
         }
       ]
@@ -1973,95 +1826,78 @@
       "menu": [
         {
           "text": "Accessing Phalcon Box globally",
-          "level": 2,
           "url": "#daily-usage-accessing-box-globally",
           "menu": [
             {
               "text": "Mac || Linux",
-              "level": 3,
               "url": "#daily-usage-accessing-box-globally-mac-linux"
             },
             {
               "text": "Windows",
-              "level": 3,
               "url": "#daily-usage-accessing-box-globally-windows"
             }
           ]
         },
         {
           "text": "Connecting via SSH",
-          "level": 2,
           "url": "#daily-usage-ssh"
         },
         {
           "text": "Connecting to databases",
-          "level": 2,
           "url": "#daily-usage-databases"
         },
         {
           "text": "Adding additional sites",
-          "level": 2,
           "url": "#daily-usage-additional-sites"
         },
         {
           "text": "Environment variables",
-          "level": 2,
           "url": "#daily-usage-environment-variables",
           "menu": [
             {
               "text": "Global variables",
-              "level": 3,
               "url": "#daily-usage-environment-global-variables"
             },
             {
               "text": "Site variables",
-              "level": 3,
               "url": "#daily-usage-environment-site-variables"
             }
           ]
         },
         {
           "text": "Ports",
-          "level": 2,
           "url": "#daily-usage-ports",
           "menu": [
             {
               "text": "Forwarding additional ports",
-              "level": 3,
               "url": "#daily-usage-ports-forwarding"
             }
           ]
         },
         {
           "text": "Sharing your environment",
-          "level": 2,
           "url": "#daily-usage-sharing-environment"
         },
         {
           "text": "Network interfaces",
-          "level": 2,
           "url": "#daily-usage-network-interfaces"
         },
         {
           "text": "Updating Phalcon Box",
-          "level": 2,
           "url": "#daily-usage-updating-box"
         },
         {
           "text": "Provider specific settings",
-          "level": 2,
           "url": "#daily-usage-provider-settings",
           "menu": [
             {
               "text": "VirtualBox",
-              "level": 3,
               "url": "#daily-usage-provider-settings-virtualbox"
             }
           ]
         },
         {
           "text": "Mail catcher",
-          "level": 2,
           "url": "#daily-usage-mail-catcher"
         }
       ]
@@ -2107,7 +1943,7 @@
       "url": "#naming-convention"
     },
     {
-      "text": "Usage Example",
+      "text": "Παράδειγμα χρήσης",
       "url": "#usage"
     },
     {
@@ -2269,7 +2105,7 @@
   ],
   "image": [
     {
-      "text": "Images",
+      "text": "Εικόνες",
       "url": "#overview"
     },
     {
@@ -2278,12 +2114,10 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
-          "level": 2,
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -2298,22 +2132,18 @@
       "menu": [
         {
           "text": "`Image::WIDTH`",
-          "level": 2,
           "url": "#resizing-width"
         },
         {
           "text": "`Image::HEIGHT`",
-          "level": 2,
           "url": "#resizing-height"
         },
         {
           "text": "`Image::NONE`",
-          "level": 2,
           "url": "#resizing-none"
         },
         {
           "text": "`Image::TENSILE`",
-          "level": 2,
           "url": "#resizing-tensile"
         }
       ]
@@ -2349,22 +2179,19 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements",
       "menu": [
         {
-          "text": "Hardware",
-          "level": 2,
+          "text": "Υλικό",
           "url": "#requirements-hardware"
         },
         {
-          "text": "Software",
-          "level": 2,
+          "text": "Λογισμικό",
           "url": "#requirements-software",
           "menu": [
             {
               "text": "Optional depending on the needs of your application",
-              "level": 3,
               "url": "#requirements-software-optional"
             }
           ]
@@ -2377,78 +2204,65 @@
       "menu": [
         {
           "text": "Linux",
-          "level": 2,
           "url": "#installation-linux",
           "menu": [
             {
               "text": "DEB based distributions (CentOS, Fedora, etc.)",
-              "level": 3,
               "url": "#installation-linux-deb",
               "menu": [
                 {
-                  "text": "Repository installation",
-                  "level": 4,
+                  "text": "Αποθετήριο εγκατάστασης",
                   "url": "#installation-linux-deb-repository"
                 },
                 {
-                  "text": "Stable releases",
-                  "level": 4,
+                  "text": "Σταθερές εκδόσεις",
                   "url": "#installation-linux-debian-repository-stable"
                 },
                 {
-                  "text": "Nightly releases",
-                  "level": 4,
+                  "text": "Νυχτερινές εκδόσεις",
                   "url": "#installation-linux-debian-repository-nightly"
                 },
                 {
-                  "text": "Phalcon installation",
-                  "level": 4,
+                  "text": "Εγκατάσταση του Phalcon",
                   "url": "#installation-linux-debian-phalcon",
                   "menu": [
                     {
                       "text": "PHP 5.x",
-                      "level": 5,
                       "url": "#installation-linux-debian-phalcon-php5"
                     },
                     {
                       "text": "PHP 7",
-                      "level": 5,
                       "url": "#installation-linux-debian-phalcon-php7"
                     }
                   ]
                 },
                 {
-                  "text": "Additional PPAs",
-                  "level": 4,
+                  "text": "Πρόσθετα PPA",
                   "url": "#installation-linux-debian-other-ppa"
                 }
               ]
             },
             {
-              "text": "RPM based distributions (CentOS, Fedora, etc.)",
-              "level": 3,
+              "text": "Διανομές βασισμένες σε RPM (CentOS, Fedora, κλπ.)",
               "url": "#installation-linux-rpm",
               "menu": [
                 {
-                  "text": "Repository installation",
-                  "level": 4,
+                  "text": "Αποθετήριο εγκατάστασης",
                   "url": "#installation-linux-rpm-repository"
                 },
                 {
-                  "text": "Stable releases",
-                  "level": 4,
+                  "text": "Σταθερές εκδόσεις",
                   "url": "#installation-linux-rpm-repository-stable",
                   "menu": [
                     {
-                      "text": "Nightly releases",
+                      "text": "Νυχτερινές εκδόσεις",
                       "level": 5,
                       "url": "#installation-linux-rpm-repository-nightly"
                     }
                   ]
                 },
                 {
-                  "text": "Phalcon installation",
-                  "level": 4,
+                  "text": "Εγκατάσταση του Phalcon",
                   "url": "#installation-linux-rpm-phalcon",
                   "menu": [
                     {
@@ -2464,59 +2278,49 @@
                   ]
                 },
                 {
-                  "text": "Additional RPMs",
-                  "level": 4,
+                  "text": "Πρόσθετα PPA",
                   "url": "#installation-linux-rpm-other-rpm"
                 }
               ]
             },
             {
               "text": "FreeBSD",
-              "level": 2,
               "url": "#installation-freebsd"
             },
             {
               "text": "Gentoo",
-              "level": 2,
               "url": "#installation-gentoo"
             }
           ]
         },
         {
           "text": "macOS",
-          "level": 2,
           "url": "#installation-macos",
           "menu": [
             {
               "text": "Brew",
-              "level": 3,
               "url": "#installation-macos-brew"
             },
             {
               "text": "MacPorts",
-              "level": 3,
               "url": "#installation-macos-macports"
             }
           ]
         },
         {
           "text": "Windows",
-          "level": 2,
           "url": "#installation-windows"
         },
         {
           "text": "Compile from Sources",
-          "level": 2,
           "url": "#installation-sources"
         },
         {
           "text": "Advanced Compilation",
-          "level": 2,
           "url": "#installation-sources-advanced"
         },
         {
           "text": "Testing",
-          "level": 2,
           "url": "#installation-testing"
         }
       ]
@@ -2524,7 +2328,7 @@
   ],
   "loader": [
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#overview"
     },
     {
@@ -2575,7 +2379,6 @@
     },
     {
       "text": "Factory",
-      "level": 2,
       "url": "#adapters-factory"
     },
     {
@@ -2596,12 +2399,10 @@
       "menu": [
         {
           "text": "Line Formatter",
-          "level": 2,
           "url": "#message-formatting-line"
         },
         {
           "text": "Implementing your own formatters",
-          "level": 2,
           "url": "#message-formatting-custom"
         }
       ]
@@ -2612,27 +2413,22 @@
       "menu": [
         {
           "text": "Stream Logger",
-          "level": 2,
           "url": "#usage-stream"
         },
         {
           "text": "File Logger",
-          "level": 2,
           "url": "#usage-file"
         },
         {
           "text": "Syslog Logger",
-          "level": 2,
           "url": "#usage-syslog"
         },
         {
           "text": "FirePHP Logger",
-          "level": 2,
           "url": "#usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
-          "level": 2,
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#usage-custom"
         }
       ]
@@ -2640,19 +2436,19 @@
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
+      "text": "Η αρχιτεκτονική MVC",
       "url": "#architecture"
     },
     {
-      "text": "Models",
+      "text": "Μοντέλα",
       "url": "#models"
     },
     {
-      "text": "Views",
+      "text": "Προβολές",
       "url": "#views"
     },
     {
-      "text": "Controllers",
+      "text": "Ελεγκτές",
       "url": "#controllers"
     }
   ],
@@ -2685,12 +2481,10 @@
       "menu": [
         {
           "text": "Profiling with Xhprof",
-          "level": 2,
           "url": "#profiling-server-xhprof"
         },
         {
           "text": "Profiling SQL Statements",
-          "level": 2,
           "url": "#profiling-server-sql-statements"
         }
       ]
@@ -2701,17 +2495,14 @@
       "menu": [
         {
           "text": "Profile with Chrome/Firefox",
-          "level": 2,
           "url": "#profiling-client-chrome-firefox"
         },
         {
           "text": "Yahoo! YSlow",
-          "level": 2,
           "url": "#profiling-client-yslow"
         },
         {
           "text": "Profile with Speed Tracer",
-          "level": 2,
           "url": "#profiling-client-speed-tracer"
         }
       ]
@@ -2735,7 +2526,7 @@
   ],
   "queue": [
     {
-      "text": "Queueing",
+      "text": "Χρησημοποίηση Ουρών",
       "url": "#overview"
     },
     {
@@ -2771,7 +2562,7 @@
   ],
   "request": [
     {
-      "text": "Request Environment",
+      "text": "Περιβάλλον Αίτησης",
       "url": "#overview"
     },
     {
@@ -2793,7 +2584,7 @@
   ],
   "response": [
     {
-      "text": "Returning Responses",
+      "text": "Επιστρέφοντας απαντήσεις",
       "url": "#overview"
     },
     {
@@ -2810,17 +2601,14 @@
       "menu": [
         {
           "text": "Setting an Expiration Time",
-          "level": 2,
           "url": "#http-cache-expiration-time"
         },
         {
           "text": "Cache-Control",
-          "level": 2,
           "url": "#http-cache-control"
         },
         {
           "text": "E-Tag",
-          "level": 2,
           "url": "#http-cache-etag"
         }
       ]
@@ -2828,7 +2616,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#overview"
     },
     {
@@ -2837,37 +2625,30 @@
       "menu": [
         {
           "text": "Parameters with Names",
-          "level": 2,
           "url": "#defining-named-parameters"
         },
         {
           "text": "Short Syntax",
-          "level": 2,
           "url": "#defining-short-syntax"
         },
         {
           "text": "Mixing Array and Short Syntax",
-          "level": 2,
           "url": "#defining-mixed-parameters"
         },
         {
           "text": "Routing to Modules",
-          "level": 2,
           "url": "#defining-route-to-modules"
         },
         {
           "text": "HTTP Method Restrictions",
-          "level": 2,
           "url": "#defining-http-method-restrictions"
         },
         {
           "text": "Using conversors",
-          "level": 2,
           "url": "#defining-using-conversors"
         },
         {
           "text": "Groups of Routes",
-          "level": 2,
           "url": "#defining-groups-of-routes"
         }
       ]
@@ -2935,7 +2716,7 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Ασφάλεια",
       "url": "#overview"
     },
     {
@@ -2970,7 +2751,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#start-factory"
         }
       ]
@@ -3000,7 +2780,7 @@
       "url": "#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom-adapters"
     }
   ],
@@ -3035,17 +2815,14 @@
       "menu": [
         {
           "text": "From Controllers",
-          "level": 2,
           "url": "#helper-values-form-controllers"
         },
         {
           "text": "From the Request",
-          "level": 2,
           "url": "#helper-values-from-request"
         },
         {
           "text": "Specifying values directly",
-          "level": 2,
           "url": "#helper-values-directly"
         }
       ]
@@ -3059,23 +2836,19 @@
       "url": "#static-content-helpers",
       "menu": [
         {
-          "text": "Images",
-          "level": 2,
+          "text": "Εικόνες",
           "url": "#static-content-helpers-images"
         },
         {
           "text": "Stylesheets",
-          "level": 2,
           "url": "#static-content-helpers-stylesheets"
         },
         {
           "text": "Javascript",
-          "level": 2,
           "url": "#static-content-helpers-javascript"
         },
         {
           "text": "HTML5 elements - generic HTML helper",
-          "level": 2,
           "url": "#static-content-helpers-html5"
         }
       ]
@@ -3092,87 +2865,87 @@
   "testing-environment": [
     {
       "text": "Επισκόπηση",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Επισκόπηση",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
       "text": "Installation",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
       "text": "Services",
-      "url": "services"
+      "url": "#services"
     }
   ],
   "translate": [
@@ -3186,7 +2959,6 @@
       "menu": [
         {
           "text": "Factory",
-          "level": 2,
           "url": "#adapters-factory"
         }
       ]
@@ -3196,13 +2968,13 @@
       "url": "#usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
   "tutorial-base": [
     {
-      "text": "View",
+      "text": "Προβολή",
       "url": "#basic"
     },
     {
@@ -3215,22 +2987,18 @@
       "menu": [
         {
           "text": "Autoloaders",
-          "level": 2,
           "url": "#autoloaders"
         },
         {
           "text": "Dependency Management",
-          "level": 2,
           "url": "#dependency-management"
         },
         {
           "text": "Handling the application request",
-          "level": 2,
           "url": "#request"
         },
         {
           "text": "Putting everything together",
-          "level": 2,
           "url": "#full-example"
         }
       ]
@@ -3266,7 +3034,7 @@
   ],
   "tutorial-invo": [
     {
-      "text": "Tutorial: INVO",
+      "text": "Σεμινάριο: INVO",
       "url": "#overview"
     },
     {
@@ -3274,7 +3042,7 @@
       "url": "#structure"
     },
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#routing"
     },
     {
@@ -3307,12 +3075,10 @@
       "menu": [
         {
           "text": "Events Management",
-          "level": 2,
           "url": "#events-manager"
         },
         {
           "text": "Getting the ACL list",
-          "level": 2,
           "url": "#acl"
         }
       ]
@@ -3344,7 +3110,7 @@
   ],
   "tutorial-rest": [
     {
-      "text": "Tutorial: Creating a Simple REST API",
+      "text": "Βοήθημα: Δημιουργώντας ένα απλό REST API",
       "url": "#overview"
     },
     {
@@ -3386,7 +3152,7 @@
   ],
   "tutorial-vokuro": [
     {
-      "text": "Tutorial: Vökuró",
+      "text": "Σεμινάριο: Vökuró",
       "url": "#overview"
     },
     {
@@ -3408,7 +3174,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Προϋποθέσεις",
       "url": "#requirements"
     },
     {
@@ -3516,7 +3282,7 @@
   ],
   "views": [
     {
-      "text": "Using Views",
+      "text": "Χρήση προβολών",
       "url": "#overview"
     },
     {
@@ -3529,27 +3295,22 @@
       "menu": [
         {
           "text": "Using Templates",
-          "level": 2,
           "url": "#using-templates"
         },
         {
           "text": "Control Rendering Levels",
-          "level": 2,
           "url": "#control-rendering-levels"
         },
         {
           "text": "Disabling render levels",
-          "level": 2,
           "url": "#disabling-render-levels"
         },
         {
           "text": "Picking Views",
-          "level": 2,
           "url": "#picking-views"
         },
         {
           "text": "Disabling the view",
-          "level": 2,
           "url": "#disabling-view"
         }
       ]
@@ -3576,12 +3337,10 @@
       "menu": [
         {
           "text": "Creating your own Template Engine Adapter",
-          "level": 2,
           "url": "#custom-template-engine"
         },
         {
           "text": "Changing the Template Engine",
-          "level": 2,
           "url": "#changing-template-engine"
         }
       ]
@@ -3596,12 +3355,10 @@
       "menu": [
         {
           "text": "Hierarchical Rendering",
-          "level": 2,
           "url": "#stand-alone-hierarchical-rendering"
         },
         {
           "text": "Simple Rendering",
-          "level": 2,
           "url": "#stand-alone-simple-rendering"
         }
       ]
@@ -3617,7 +3374,7 @@
       "url": "#overview"
     },
     {
-      "text": "Introduction",
+      "text": "Εισαγωγή",
       "url": "#introduction"
     },
     {
@@ -3625,7 +3382,7 @@
       "url": "#setup"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#basic-usage"
     },
     {
@@ -3633,7 +3390,7 @@
       "url": "#variables"
     },
     {
-      "text": "Filters",
+      "text": "Φίλτρα",
       "url": "#filters"
     },
     {
@@ -3646,71 +3403,58 @@
       "menu": [
         {
           "text": "For",
-          "level": 2,
           "url": "#control-structures-for"
         },
         {
           "text": "Loop Controls",
-          "level": 2,
           "url": "#control-structures-loops",
           "menu": [
             {
               "text": "If",
-              "level": 3,
               "url": "#control-structures-if"
             },
             {
               "text": "Switch",
-              "level": 3,
               "url": "#control-structures-switch"
             }
           ]
         },
         {
           "text": "Loop Context",
-          "level": 2,
           "url": "#control-structures-loop",
           "menu": [
             {
               "text": "Assignments",
-              "level": 3,
               "url": "#assignments"
             },
             {
               "text": "Expressions",
-              "level": 3,
               "url": "#expressions"
             }
           ]
         },
         {
           "text": "Literals",
-          "level": 2,
           "url": "#expressions-literals"
         },
         {
           "text": "Arrays",
-          "level": 2,
           "url": "#expressions-arrays"
         },
         {
           "text": "Math",
-          "level": 2,
           "url": "#expressions-math"
         },
         {
           "text": "Comparisons",
-          "level": 2,
           "url": "#expressions-comparisons"
         },
         {
           "text": "Logic",
-          "level": 2,
           "url": "#expressions-logic"
         },
         {
           "text": "Other Operators",
-          "level": 2,
           "url": "#expressions-other-operators"
         }
       ]
@@ -3737,12 +3481,10 @@
       "menu": [
         {
           "text": "Include",
-          "level": 2,
           "url": "#view-integration-include"
         },
         {
           "text": "Partial vs Include",
-          "level": 2,
           "url": "#view-integration-partial-vs-include"
         }
       ]
@@ -3753,7 +3495,6 @@
       "menu": [
         {
           "text": "Multiple Inheritance",
-          "level": 2,
           "url": "#template-inheritance-multiple"
         }
       ]
@@ -3768,17 +3509,14 @@
       "menu": [
         {
           "text": "Functions",
-          "level": 2,
           "url": "#extending-functions"
         },
         {
-          "text": "Filters",
-          "level": 2,
+          "text": "Φίλτρα",
           "url": "#extending-filters"
         },
         {
           "text": "Extensions",
-          "level": 2,
           "url": "#extending-extensions"
         }
       ]
@@ -3812,7 +3550,7 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
+      "text": "Εγκατάσταση στο XAMPP",
       "url": "#overview"
     },
     {

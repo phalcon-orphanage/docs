@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Validation\CombinedFieldsValidator'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Validation\CombinedFieldsValidator'
+---
 # Abstract class **Phalcon\Validation\CombinedFieldsValidator**
 
-*extends* abstract class [Phalcon\Validation\Validator](/4.0/en/api/Phalcon_Validation_Validator)
+*extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-*implements* [Phalcon\Validation\ValidatorInterface](/4.0/en/api/Phalcon_Validation_ValidatorInterface)
+*implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/validation/combinedfieldsvalidator.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
 
 ## Methods
 

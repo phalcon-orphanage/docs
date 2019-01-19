@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Mvc\Router\Annotations'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\Annotations'
+---
 # Class **Phalcon\Mvc\Router\Annotations**
 
-*extends* class [Phalcon\Mvc\Router](/4.0/en/api/Phalcon_Mvc_Router)
+*extends* class [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](/4.0/en/api/Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/router/annotations.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
 A router that reads routes annotations from classes/resources
 

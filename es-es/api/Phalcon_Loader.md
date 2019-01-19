@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Loader'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Loader'
+---
 # Class **Phalcon\Loader**
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/loader.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
 Este componente ayuda a cargar automáticamente las clases de tu proyecto basándose en algunas convenciones
 

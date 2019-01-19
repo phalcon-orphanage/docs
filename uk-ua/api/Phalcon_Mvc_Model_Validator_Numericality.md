@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 * * *
 
 layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Mvc\Model\Validator\Numericality'
 
 * * *
 
+=======
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Validator\Numericality'
+---
+>>>>>>> l10n_4.0
 # Class **Phalcon\Mvc\Model\Validator\Numericality**
 
 *extends* abstract class [Phalcon\Mvc\Model\Validator](/4.0/en/api/Phalcon_Mvc_Model_Validator)

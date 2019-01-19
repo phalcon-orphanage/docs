@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 * * *
 
 layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Cache\Multiple'
 
 * * *
 
+=======
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Cache\Multiple'
+---
+>>>>>>> l10n_4.0
 # Class **Phalcon\Cache\Multiple**
 
 <a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>

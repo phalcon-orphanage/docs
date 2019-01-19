@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Http\Response\Cookies'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Http\Response\Cookies'
+---
 # Class **Phalcon\Http\Response\Cookies**
 
-*implements* [Phalcon\Http\Response\CookiesInterface](/4.0/en/api/Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/response/cookies.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
 

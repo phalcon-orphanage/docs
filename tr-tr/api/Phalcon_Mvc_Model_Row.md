@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\Model\Row'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Row'
+---
 # Class **Phalcon\Mvc\Model\Row**
 
-*implements* [Phalcon\Mvc\EntityInterface](/4.0/en/api/Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](/4.0/en/api/Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
+*implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/row.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 

@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Forms\Element\Check'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Forms\Element\Check'
+---
 # Class **Phalcon\Forms\Element\Check**
 
-*extends* abstract class [Phalcon\Forms\Element](/4.0/en/api/Phalcon_Forms_Element)
+*extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-*implements* [Phalcon\Forms\ElementInterface](/4.0/en/api/Phalcon_Forms_ElementInterface)
+*implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/forms/element/check.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
 Component INPUT[type=check] for forms
 

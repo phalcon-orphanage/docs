@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Using Views
+# Χρήση προβολών
 
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
 
@@ -1049,8 +1049,8 @@ echo $view->render(
 
 | Event Name       | Triggered                                     | Can stop operation? |
 | ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
+| beforeRender     | Triggered before starting the render process  |         Ναι         |
+| beforeRenderView | Triggered before rendering an existing view   |         Ναι         |
 | afterRenderView  | Triggered after rendering an existing view    |         No          |
 | afterRender      | Triggered after completing the render process |         No          |
 | notFoundView     | Triggered when a view was not found           |         No          |

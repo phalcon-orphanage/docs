@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 * * *
 
 layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\Router\Annotations'
 
 * * *
 
+=======
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\Router\Annotations'
+---
+>>>>>>> l10n_4.0
 # Class **Phalcon\Mvc\Router\Annotations**
 
 *extends* class [Phalcon\Mvc\Router](/4.0/en/api/Phalcon_Mvc_Router)

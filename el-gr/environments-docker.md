@@ -15,7 +15,7 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 <a name='dependencies'></a>
 
-## Dependencies
+## Εξαρτήσεις
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
@@ -123,10 +123,10 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
-| Directory | Path             |
-| --------- | ---------------- |
-| Cache     | `/project/cache` |
-| Logs      | `/project/log`   |
+| Directory   | Path             |
+| ----------- | ---------------- |
+| Μνήμη cache | `/project/cache` |
+| Logs        | `/project/log`   |
 
 <a name='logs'></a>
 

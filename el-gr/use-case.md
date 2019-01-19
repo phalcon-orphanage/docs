@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Use case
+# Περίπτωση Χρήσης
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 

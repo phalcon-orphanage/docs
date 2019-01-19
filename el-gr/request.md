@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Request Environment
+# Περιβάλλον Αίτησης
 
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information so as to provide the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the information of the request, allowing you to access it in an object-oriented way.
 
@@ -165,10 +165,10 @@ $userAgent = $request->getUserAgent();
 // Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. ie. utf-8
+// Get the best charset accepted by the browser. π.χ. utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. ie. en-us
+// Get the best language accepted configured in the browser. π.χ. en-us
 $language = $request->getBestLanguage();
 
 // Check if a header exists
@@ -190,7 +190,7 @@ Authorization: <type> <credentials>
 where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
 
 * `AWS4-HMAC-SHA256`
-* `Basic`
+* `Βασικό`
 * `Bearer`
 * `Digest`
 * `HOBA`

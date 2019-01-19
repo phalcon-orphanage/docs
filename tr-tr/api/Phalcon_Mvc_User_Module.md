@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\User\Module'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\User\Module'
+---
 # Class **Phalcon\Mvc\User\Module**
 
-*extends* abstract class [Phalcon\Di\Injectable](/4.0/en/api/Phalcon_Di_Injectable)
+*extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-*implements* [Phalcon\Events\EventsAwareInterface](/4.0/en/api/Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/user/module.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/user/module.zep)
 
 ## Methods
 

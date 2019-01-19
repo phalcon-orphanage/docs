@@ -15,7 +15,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## Hardware
+## Υλικό
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -23,7 +23,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Software
+## Λογισμικό
 
 * PHP >= 5.5
 
@@ -68,13 +68,13 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Αποθετήριο εγκατάστασης
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### Σταθερές εκδόσεις
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -84,7 +84,7 @@ or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Νυχτερινές εκδόσεις
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Εγκατάσταση του Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### Πρόσθετα PPA
 
 #### Ondřej Surý
 
@@ -139,17 +139,17 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### Διανομές βασισμένες σε RPM (CentOS, Fedora, κλπ.)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### Αποθετήριο εγκατάστασης
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### Σταθερές εκδόσεις
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -159,7 +159,7 @@ or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Νυχτερινές εκδόσεις
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Εγκατάσταση του Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -193,7 +193,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### Πρόσθετα PPA
 
 ##### Remi
 
@@ -291,20 +291,20 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
-|     x64      |   5.5   | Thread safe           |
-|     x64      |   5.5   | Non Thread safe (NTS) |
-|     x86      |   5.5   | Thread safe           |
-|     x86      |   5.5   | Non Thread safe (NTS) |
+| Architecture | Εκδοχή | Type                  |
+|:------------:|:------:| --------------------- |
+|     x64      |  7.x   | Thread safe           |
+|     x64      |  7.x   | Non Thread safe (NTS) |
+|     x86      |  7.x   | Thread safe           |
+|     x86      |  7.x   | Non Thread safe (NTS) |
+|     x64      |  5.6   | Thread safe           |
+|     x64      |  5.6   | Non Thread safe (NTS) |
+|     x86      |  5.6   | Thread safe           |
+|     x86      |  5.6   | Non Thread safe (NTS) |
+|     x64      |  5.5   | Thread safe           |
+|     x64      |  5.5   | Non Thread safe (NTS) |
+|     x86      |  5.5   | Thread safe           |
+|     x86      |  5.5   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 

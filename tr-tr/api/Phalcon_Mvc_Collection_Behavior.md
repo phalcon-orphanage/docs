@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\Collection\Behavior'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\Collection\Behavior'
+---
 # Abstract class **Phalcon\Mvc\Collection\Behavior**
 
-*implements* [Phalcon\Mvc\Collection\BehaviorInterface](/4.0/en/api/Phalcon_Mvc_Collection_BehaviorInterface)
+*implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/collection/behavior.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
 This is an optional base class for ORM behaviors
 

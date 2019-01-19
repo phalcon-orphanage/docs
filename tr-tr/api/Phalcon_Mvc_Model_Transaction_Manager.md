@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Mvc\Model\Transaction\Manager'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Mvc\Model\Transaction\Manager'
+---
 # Class **Phalcon\Mvc\Model\Transaction\Manager**
 
-*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](/4.0/en/api/Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/transaction/manager.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
 
 A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.
 

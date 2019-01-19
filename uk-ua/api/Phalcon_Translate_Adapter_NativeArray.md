@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Translate\Adapter\NativeArray'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter\NativeArray'
+---
 # Class **Phalcon\Translate\Adapter\NativeArray**
 
-*extends* abstract class [Phalcon\Translate\Adapter](/4.0/en/api/Phalcon_Translate_Adapter)
+*extends* abstract class [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-*implements* [Phalcon\Translate\AdapterInterface](/4.0/en/api/Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter/nativearray.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
 
 Allows to define translation lists using PHP arrays
 

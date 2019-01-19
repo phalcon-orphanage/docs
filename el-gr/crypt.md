@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Κρυπτογράφηση/αποκρυπτογράφηση
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -21,7 +21,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Basic Usage
+## Βασική Χρήση
 
 This component is designed be very simple to use:
 

@@ -17,7 +17,7 @@ version: '4.0'
 
 <a name='add'></a>
 
-## Adding Resources
+## Προσθήκη πόρων
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
@@ -107,7 +107,7 @@ public function indexAction()
 
 <a name='collections'></a>
 
-## Collections
+## Συλλογές
 
 Collections group resources of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific resources to make it easier to place those resources in the views:
 

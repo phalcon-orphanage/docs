@@ -25,7 +25,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Creating Models
+## Δημιουργία μοντέλων
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 

@@ -19,7 +19,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## Δημιουργία μοντέλων
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -1097,7 +1097,7 @@ The following events are available to define custom business rules that can be e
 | Operation | Name         | Can stop operation? | Explanation                              |
 | --------- | ------------ |:-------------------:| ---------------------------------------- |
 | Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Deleting  | beforeDelete |         Ναι         | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 

@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Session\BagInterface'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Session\BagInterface'
+---
 # Interface **Phalcon\Session\BagInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/baginterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/baginterface.zep)
 
 ## Methods
 

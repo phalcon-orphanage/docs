@@ -228,7 +228,7 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## Practical Usage
+## Πρακτική χρήση
 
 Next we will explain some practical examples of annotations in PHP applications:
 
@@ -426,7 +426,7 @@ This component makes use of adapters to cache or no cache the parsed and process
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Εφαρμογή των δικών σας προσαρμογέων
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 

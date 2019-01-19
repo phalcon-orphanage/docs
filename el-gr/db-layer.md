@@ -54,7 +54,7 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Εφαρμογή των δικών σας προσαρμογέων
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
@@ -738,7 +738,7 @@ try {
 | Event Name            | Triggered                                            | Can stop operation? |
 | --------------------- | ---------------------------------------------------- |:-------------------:|
 | `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
+| `beforeQuery`         | Before send a SQL statement to the database system   |         Ναι         |
 | `afterQuery`          | After send a SQL statement to database system        |         No          |
 | `beforeDisconnect`    | Before close a temporal database connection          |         No          |
 | `beginTransaction`    | Before a transaction is going to be started          |         No          |
@@ -1062,16 +1062,16 @@ $connection->createTable(
 | Option          | Description                                                                                                                                | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
 | `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |   Ναι    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Ναι    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Ναι    |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Ναι    |
+| `notNull`       | Column can store null values?                                                                                                              |   Ναι    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Ναι    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Ναι    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Ναι    |
+| `first`         | Column must be placed at first position in the column order                                                                                |   Ναι    |
+| `after`         | Column must be placed after indicated column                                                                                               |   Ναι    |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 
@@ -1088,9 +1088,9 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 | Index        | Description                                                                                                                            | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
 | `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    No    |
-| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Yes    |
-| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Yes    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
+| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Ναι    |
+| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Ναι    |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Ναι    |
 
 <a name='tables-altering'></a>
 

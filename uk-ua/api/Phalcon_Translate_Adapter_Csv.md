@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Translate\Adapter\Csv'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter\Csv'
+---
 # Class **Phalcon\Translate\Adapter\Csv**
 
-*extends* abstract class [Phalcon\Translate\Adapter](/4.0/en/api/Phalcon_Translate_Adapter)
+*extends* abstract class [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-*implements* [Phalcon\Translate\AdapterInterface](/4.0/en/api/Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
+*implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter/csv.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/csv.zep)
 
 Allows to define translation lists using CSV file
 

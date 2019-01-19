@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Images
+# Εικόνες
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
@@ -47,7 +47,7 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Εφαρμογή των δικών σας προσαρμογέων
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 

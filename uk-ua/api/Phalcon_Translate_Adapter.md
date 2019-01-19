@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'uk-ua' version: '4.0' title: 'Phalcon\Translate\Adapter'
-
-* * *
-
+---
+layout: article
+language: 'uk-ua'
+version: '4.0'
+title: 'Phalcon\Translate\Adapter'
+---
 # Abstract class **Phalcon\Translate\Adapter**
 
-*implements* [Phalcon\Translate\AdapterInterface](/4.0/en/api/Phalcon_Translate_AdapterInterface)
+*implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/translate/adapter.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
 
 Base class for Phalcon\Translate adapters
 

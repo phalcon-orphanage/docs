@@ -23,7 +23,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## Usage Example
+## Παράδειγμα χρήσης
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -418,108 +418,108 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 The events available in Phalcon are:
 
-| Component          | Event                                |
-| ------------------ | ------------------------------------ |
-| ACL                | `acl:afterCheckAccess`               |
-| ACL                | `acl:beforeCheckAccess`              |
-| Application        | `application:afterHandleRequest`     |
-| Application        | `application:afterStartModule`       |
-| Application        | `application:beforeHandleRequest`    |
-| Application        | `application:beforeSendResponse`     |
-| Application        | `application:beforeStartModule`      |
-| Application        | `application:boot`                   |
-| Application        | `application:viewRender`             |
-| CLI                | `dispatch:beforeException`           |
-| Collection         | `afterCreate`                        |
-| Collection         | `afterSave`                          |
-| Collection         | `afterUpdate`                        |
-| Collection         | `afterValidation`                    |
-| Collection         | `afterValidationOnCreate`            |
-| Collection         | `afterValidationOnUpdate`            |
-| Collection         | `beforeCreate`                       |
-| Collection         | `beforeSave`                         |
-| Collection         | `beforeUpdate`                       |
-| Collection         | `beforeValidation`                   |
-| Collection         | `beforeValidationOnCreate`           |
-| Collection         | `beforeValidationOnUpdate`           |
-| Collection         | `notDeleted`                         |
-| Collection         | `notSave`                            |
-| Collection         | `notSaved`                           |
-| Collection         | `onValidationFails`                  |
-| Collection         | `validation`                         |
-| Collection Manager | `collectionManager:afterInitialize`  |
-| Console            | `console:afterHandleTask`            |
-| Console            | `console:afterStartModule`           |
-| Console            | `console:beforeHandleTask`           |
-| Console            | `console:beforeStartModule`          |
-| Db                 | `db:afterQuery`                      |
-| Db                 | `db:beforeQuery`                     |
-| Db                 | `db:beginTransaction`                |
-| Db                 | `db:createSavepoint`                 |
-| Db                 | `db:commitTransaction`               |
-| Db                 | `db:releaseSavepoint`                |
-| Db                 | `db:rollbackTransaction`             |
-| Db                 | `db:rollbackSavepoint`               |
-| Dispatcher         | `dispatch:afterExecuteRoute`         |
-| Dispatcher         | `dispatch:afterDispatch`             |
-| Dispatcher         | `dispatch:afterDispatchLoop`         |
-| Dispatcher         | `dispatch:afterInitialize`           |
-| Dispatcher         | `dispatch:beforeException`           |
-| Dispatcher         | `dispatch:beforeExecuteRoute`        |
-| Dispatcher         | `dispatch:beforeDispatch`            |
-| Dispatcher         | `dispatch:beforeDispatchLoop`        |
-| Dispatcher         | `dispatch:beforeForward`             |
-| Dispatcher         | `dispatch:beforeNotFoundAction`      |
-| Loader             | `loader:afterCheckClass`             |
-| Loader             | `loader:beforeCheckClass`            |
-| Loader             | `loader:beforeCheckPath`             |
-| Loader             | `loader:pathFound`                   |
-| Micro              | `micro:afterHandleRoute`             |
-| Micro              | `micro:afterExecuteRoute`            |
-| Micro              | `micro:beforeExecuteRoute`           |
-| Micro              | `micro:beforeHandleRoute`            |
-| Micro              | `micro:beforeNotFound`               |
-| Middleware         | `afterBinding`                       |
-| Middleware         | `afterExecuteRoute`                  |
-| Middleware         | `afterHandleRoute`                   |
-| Middleware         | `beforeExecuteRoute`                 |
-| Middleware         | `beforeHandleRoute`                  |
-| Middleware         | `beforeNotFound`                     |
-| Model              | `afterCreate`                        |
-| Model              | `afterDelete`                        |
-| Model              | `afterSave`                          |
-| Model              | `afterUpdate`                        |
-| Model              | `afterValidation`                    |
-| Model              | `afterValidationOnCreate`            |
-| Model              | `afterValidationOnUpdate`            |
-| Model              | `beforeDelete`                       |
-| Model              | `notDeleted`                         |
-| Model              | `beforeCreate`                       |
-| Model              | `beforeDelete`                       |
-| Model              | `beforeSave`                         |
-| Model              | `beforeUpdate`                       |
-| Model              | `beforeValidation`                   |
-| Model              | `beforeValidationOnCreate`           |
-| Model              | `beforeValidationOnUpdate`           |
-| Model              | `notSave`                            |
-| Model              | `notSaved`                           |
-| Model              | `onValidationFails`                  |
-| Model              | `prepareSave`                        |
-| Models Manager     | `modelsManager:afterInitialize`      |
-| Request            | `request:afterAuthorizationResolve`  |
-| Request            | `request:beforeAuthorizationResolve` |
-| Router             | `router:beforeCheckRoutes`           |
-| Router             | `router:beforeCheckRoute`            |
-| Router             | `router:matchedRoute`                |
-| Router             | `router:notMatchedRoute`             |
-| Router             | `router:afterCheckRoutes`            |
-| Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
-| Volt               | `compileFilter`                      |
-| Volt               | `compileFunction`                    |
-| Volt               | `compileStatement`                   |
-| Volt               | `resolveExpression`                  |
+| Component           | Event                                |
+| ------------------- | ------------------------------------ |
+| ACL                 | `acl:afterCheckAccess`               |
+| ACL                 | `acl:beforeCheckAccess`              |
+| Εφαρμογή            | `application:afterHandleRequest`     |
+| Εφαρμογή            | `application:afterStartModule`       |
+| Εφαρμογή            | `application:beforeHandleRequest`    |
+| Εφαρμογή            | `application:beforeSendResponse`     |
+| Εφαρμογή            | `application:beforeStartModule`      |
+| Εφαρμογή            | `application:boot`                   |
+| Εφαρμογή            | `application:viewRender`             |
+| CLI                 | `dispatch:beforeException`           |
+| Collection          | `afterCreate`                        |
+| Collection          | `afterSave`                          |
+| Collection          | `afterUpdate`                        |
+| Collection          | `afterValidation`                    |
+| Collection          | `afterValidationOnCreate`            |
+| Collection          | `afterValidationOnUpdate`            |
+| Collection          | `beforeCreate`                       |
+| Collection          | `beforeSave`                         |
+| Collection          | `beforeUpdate`                       |
+| Collection          | `beforeValidation`                   |
+| Collection          | `beforeValidationOnCreate`           |
+| Collection          | `beforeValidationOnUpdate`           |
+| Collection          | `notDeleted`                         |
+| Collection          | `notSave`                            |
+| Collection          | `notSaved`                           |
+| Collection          | `onValidationFails`                  |
+| Collection          | `validation`                         |
+| Collection Manager  | `collectionManager:afterInitialize`  |
+| Console             | `console:afterHandleTask`            |
+| Console             | `console:afterStartModule`           |
+| Console             | `console:beforeHandleTask`           |
+| Console             | `console:beforeStartModule`          |
+| Db                  | `db:afterQuery`                      |
+| Db                  | `db:beforeQuery`                     |
+| Db                  | `db:beginTransaction`                |
+| Db                  | `db:createSavepoint`                 |
+| Db                  | `db:commitTransaction`               |
+| Db                  | `db:releaseSavepoint`                |
+| Db                  | `db:rollbackTransaction`             |
+| Db                  | `db:rollbackSavepoint`               |
+| Αποστολέας          | `dispatch:afterExecuteRoute`         |
+| Αποστολέας          | `dispatch:afterDispatch`             |
+| Αποστολέας          | `dispatch:afterDispatchLoop`         |
+| Αποστολέας          | `dispatch:afterInitialize`           |
+| Αποστολέας          | `dispatch:beforeException`           |
+| Αποστολέας          | `dispatch:beforeExecuteRoute`        |
+| Αποστολέας          | `dispatch:beforeDispatch`            |
+| Αποστολέας          | `dispatch:beforeDispatchLoop`        |
+| Αποστολέας          | `dispatch:beforeForward`             |
+| Αποστολέας          | `dispatch:beforeNotFoundAction`      |
+| Φορτωτής            | `loader:afterCheckClass`             |
+| Φορτωτής            | `loader:beforeCheckClass`            |
+| Φορτωτής            | `loader:beforeCheckPath`             |
+| Φορτωτής            | `loader:pathFound`                   |
+| Micro               | `micro:afterHandleRoute`             |
+| Micro               | `micro:afterExecuteRoute`            |
+| Micro               | `micro:beforeExecuteRoute`           |
+| Micro               | `micro:beforeHandleRoute`            |
+| Micro               | `micro:beforeNotFound`               |
+| Ενδιάμεσο λογισμικό | `afterBinding`                       |
+| Ενδιάμεσο λογισμικό | `afterExecuteRoute`                  |
+| Ενδιάμεσο λογισμικό | `afterHandleRoute`                   |
+| Ενδιάμεσο λογισμικό | `beforeExecuteRoute`                 |
+| Ενδιάμεσο λογισμικό | `beforeHandleRoute`                  |
+| Ενδιάμεσο λογισμικό | `beforeNotFound`                     |
+| Model               | `afterCreate`                        |
+| Model               | `afterDelete`                        |
+| Model               | `afterSave`                          |
+| Model               | `afterUpdate`                        |
+| Model               | `afterValidation`                    |
+| Model               | `afterValidationOnCreate`            |
+| Model               | `afterValidationOnUpdate`            |
+| Model               | `beforeDelete`                       |
+| Model               | `notDeleted`                         |
+| Model               | `beforeCreate`                       |
+| Model               | `beforeDelete`                       |
+| Model               | `beforeSave`                         |
+| Model               | `beforeUpdate`                       |
+| Model               | `beforeValidation`                   |
+| Model               | `beforeValidationOnCreate`           |
+| Model               | `beforeValidationOnUpdate`           |
+| Model               | `notSave`                            |
+| Model               | `notSaved`                           |
+| Model               | `onValidationFails`                  |
+| Model               | `prepareSave`                        |
+| Models Manager      | `modelsManager:afterInitialize`      |
+| Αίτηση              | `request:afterAuthorizationResolve`  |
+| Αίτηση              | `request:beforeAuthorizationResolve` |
+| Router              | `router:beforeCheckRoutes`           |
+| Router              | `router:beforeCheckRoute`            |
+| Router              | `router:matchedRoute`                |
+| Router              | `router:notMatchedRoute`             |
+| Router              | `router:afterCheckRoutes`            |
+| Router              | `router:beforeMount`                 |
+| Προβολή             | `view:afterRender`                   |
+| Προβολή             | `view:afterRenderView`               |
+| Προβολή             | `view:beforeRender`                  |
+| Προβολή             | `view:beforeRenderView`              |
+| Προβολή             | `view:notFoundView`                  |
+| Volt                | `compileFilter`                      |
+| Volt                | `compileFunction`                    |
+| Volt                | `compileStatement`                   |
+| Volt                | `resolveExpression`                  |

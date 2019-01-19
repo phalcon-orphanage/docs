@@ -1,12 +1,12 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Logger\Multiple'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Logger\Multiple'
+---
 # Class **Phalcon\Logger\Multiple**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger/multiple.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
 Handles multiples logger handlers
 

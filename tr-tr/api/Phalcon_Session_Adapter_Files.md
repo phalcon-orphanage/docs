@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'tr-tr' version: '4.0' title: 'Phalcon\Session\Adapter\Files'
-
-* * *
-
+---
+layout: article
+language: 'tr-tr'
+version: '4.0'
+title: 'Phalcon\Session\Adapter\Files'
+---
 # Class **Phalcon\Session\Adapter\Files**
 
-*extends* abstract class [Phalcon\Session\Adapter](/4.0/en/api/Phalcon_Session_Adapter)
+*extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-*implements* [Phalcon\Session\AdapterInterface](/4.0/en/api/Phalcon_Session_AdapterInterface)
+*implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/session/adapter/files.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/files.zep)
 
 ## Constants
 

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Security
+# Ασφάλεια
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 

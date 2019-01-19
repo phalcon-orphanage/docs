@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'es-es' version: '4.0' title: 'Phalcon\Http\Request\File'
-
-* * *
-
+---
+layout: article
+language: 'es-es'
+version: '4.0'
+title: 'Phalcon\Http\Request\File'
+---
 # Class **Phalcon\Http\Request\File**
 
-*implements* [Phalcon\Http\Request\FileInterface](/4.0/en/api/Phalcon_Http_Request_FileInterface)
+*implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/http/request/file.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
 
 Provides OO wrappers to the $_FILES superglobal
 

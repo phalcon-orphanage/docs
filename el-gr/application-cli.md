@@ -15,7 +15,7 @@ CLI applications are executed from the command line. They are useful to create c
 
 <a name='structure'></a>
 
-## Structure
+## Δομή
 
 A minimal structure of a CLI application will look like this:
 
@@ -108,7 +108,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Εργασίες
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
