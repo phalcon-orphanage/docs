@@ -1062,7 +1062,7 @@ foreach ($testRoutes as $testRoute) {
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Event                      | Description                          |
+| Event                      | Περιγραφή                            |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |
@@ -1159,7 +1159,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Description                                                                                       | Usage                                  |
+| Name        | Περιγραφή                                                                                         | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1171,7 +1171,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Description                                                            | Usage                                                                |
+| Name       | Περιγραφή                                                              | Usage                                                                |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
