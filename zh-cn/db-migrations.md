@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Database Migrations
+# 数据库迁移
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -25,7 +25,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 <a name='chema-dumping'></a>
 
-## Schema Dumping
+## 结构导出
 
 The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
 

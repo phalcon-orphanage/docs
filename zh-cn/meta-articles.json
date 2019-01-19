@@ -827,11 +827,11 @@
   ],
   "db-migrations": [
     {
-      "text": "Database Migrations",
+      "text": "数据库迁移",
       "url": "#overview"
     },
     {
-      "text": "Schema Dumping",
+      "text": "结构导出",
       "url": "#schema-dumping"
     },
     {
