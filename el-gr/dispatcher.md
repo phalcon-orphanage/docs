@@ -53,18 +53,18 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Event Name           | Triggered                                                                                                                                                                                                      | Can stop operation? | Triggered on          |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | --------------------- |
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Ναι                 | Listeners             |
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Ναι                 | Listeners             |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Ναι                 | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                  | Ελεγκτές              |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                  | Listeners/Controllers |
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Ναι                 | Listeners             |
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Ναι                 | Listeners             |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Ναι                 | Listeners             |
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                  | Listeners             |
-| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Ναι                 | Listeners/Controllers |
+| Όνομα γεγονότος      | Ενεργοποίηση                                                                                                                                                                                                   | Μπορεί να σταματήσει την λειτουργία; | Triggered on          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | --------------------- |
+| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Ναι                                  | Listeners             |
+| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Ναι                                  | Listeners             |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Ναι                                  | Listeners/Controllers |
+| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | Όχι                                  | Ελεγκτές              |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Όχι                                  | Listeners/Controllers |
+| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | Ναι                                  | Listeners             |
+| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Ναι                                  | Listeners             |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Ναι                                  | Listeners             |
+| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | Όχι                                  | Listeners             |
+| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | Ναι                                  | Listeners/Controllers |
 
 The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
 
@@ -185,7 +185,7 @@ $this->dispatcher->forward(
 
 A `forward` action accepts the following parameters:
 
-| Parameter    | Description                                             |
+| Parameter    | Περιγραφή                                               |
 | ------------ | ------------------------------------------------------- |
 | `controller` | A valid controller name to forward to.                  |
 | `action`     | A valid action name to forward to.                      |
