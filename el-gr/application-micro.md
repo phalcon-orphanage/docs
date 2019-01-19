@@ -32,7 +32,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Δημιουργώντας μια μικροεφαρμογή
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -997,14 +997,14 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 
 The following events are supported:
 
-| Event Name         | Triggered                                                         | Can stop operation? |
-| ------------------ | ----------------------------------------------------------------- |:-------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Ναι         |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Ναι         |
-| afterExecuteRoute  | Handler just finished running                                     |         No          |
-| beforeNotFound     | Route has not been found                                          |         Ναι         |
-| afterHandleRoute   | Route just finished executing                                     |         Ναι         |
-| afterBinding       | Triggered after models are bound but before executing the handler |         Ναι         |
+| Όνομα γεγονότος    | Ενεργοποίηση                                                      | Μπορεί να σταματήσει την λειτουργία; |
+| ------------------ | ----------------------------------------------------------------- |:------------------------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |                 Ναι                  |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |                 Ναι                  |
+| afterExecuteRoute  | Handler just finished running                                     |                 Όχι                  |
+| beforeNotFound     | Route has not been found                                          |                 Ναι                  |
+| afterHandleRoute   | Route just finished executing                                     |                 Ναι                  |
+| afterBinding       | Triggered after models are bound but before executing the handler |                 Ναι                  |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1089,7 +1089,7 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | Description                                    |
+| Event  | Περιγραφή                                      |
 | ------ | ---------------------------------------------- |
 | before | Before the handler has been executed           |
 | after  | After the handler has been executed            |
