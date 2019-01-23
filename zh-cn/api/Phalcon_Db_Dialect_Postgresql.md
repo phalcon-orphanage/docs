@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Dialect\Postgresql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
@@ -78,7 +78,7 @@ Generates SQL to drop a view
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table
+判断表是否存在
 
 ```php
 <?php
@@ -91,7 +91,7 @@ echo $dialect->tableExists("posts");
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+判断视图是否存在
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
@@ -176,7 +176,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a FOR UPDATE clause
+返回使用FOR UPDATE子句修改的SQL
 
 ```php
 <?php
@@ -188,7 +188,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+返回使用LOCK IN SHARE MODE子句修改的SQL
 
 ```php
 <?php
