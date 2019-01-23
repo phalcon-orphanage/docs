@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\ValidationFailed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
 
 This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
 
@@ -22,15 +22,15 @@ Phalcon\Mvc\Model\ValidationFailed constructor
 
 public **getModel** ()
 
-Returns the model that generated the messages
+返回生成消息的模型
 
 public **getMessages** ()
 
-Returns the complete group of messages produced in the validation
+返回产生在验证消息的完整组
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clone the exception
+克隆的异常
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
