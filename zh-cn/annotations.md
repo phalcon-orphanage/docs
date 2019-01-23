@@ -349,7 +349,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### 私有/公共 的注释
 
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
