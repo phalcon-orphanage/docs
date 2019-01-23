@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptéry
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -26,7 +26,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Továrna
 
 Loads an Image Adapter class using `adapter` option.
 
