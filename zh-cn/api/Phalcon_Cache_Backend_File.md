@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Backend\File'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
 
-Allows to cache output fragments using a file backend
+允许缓存输出片段使用文件后端
 
 ```php
 <?php
@@ -20,20 +20,20 @@ Allows to cache output fragments using a file backend
 use Phalcon\Cache\Backend\File;
 use Phalcon\Cache\Frontend\Output as FrontOutput;
 
-// Cache the file for 2 days
+// 文件缓存有效期2天
 $frontendOptions = [
     "lifetime" => 172800,
 ];
 
-// Create an output cache
+// 创建一个缓存输出
 $frontCache = FrontOutput($frontOptions);
 
-// Set the cache directory
+// 设置缓存文件的存在文件夹
 $backendOptions = [
     "cacheDir" => "../app/cache/",
 ];
 
-// Create the File backend
+// 创建一个文件缓存的后端
 $cache = new File($frontCache, $backendOptions);
 
 $content = $cache->start("my-cache");
@@ -56,19 +56,19 @@ Phalcon\Cache\Backend\File constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+返回缓存的内容
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+将缓存的内容存储到文件后端和前端停止
 
 public **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+将一个值从缓存中删除由它的键
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+查询现有的缓存的键。
 
 ```php
 <?php
@@ -82,27 +82,27 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+检查是否存在缓存并没有过期
 
 public **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
-Increment of a given key, by number $value
+给定的键，通过编号 $value 的增量
 
 public **decrement** ([*string* | *int* $keyName], [*mixed* $value])
 
-Decrement of a given key, by number $value
+给定的键，编号 $value 的减量化
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+立即使无效所有现有项目。
 
 public **getKey** (*mixed* $key)
 
-Return a file-system safe identifier for a given key
+返回给定的密钥文件系统安全标识符
 
 public **useSafeKey** (*mixed* $useSafeKey)
 
-Set whether to use the safekey or not
+设置是使用还是不使用 safekey
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+停止前端, 不存储任何缓存的内容
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+检查最后一个缓存是否新鲜或缓存
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+检查缓存中是否已经开始缓冲或不
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+获取最后一个生命周期
