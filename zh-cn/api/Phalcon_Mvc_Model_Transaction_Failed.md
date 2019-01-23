@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Model\Transaction\Failed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
 
-This class will be thrown to exit a try/catch block for isolated transactions
+此类将会引发退出 try/catch 块的隔离级别的事务
 
 ## 方法
 
@@ -22,15 +22,15 @@ Phalcon\Mvc\Model\Transaction\Failed constructor
 
 public **getRecordMessages** ()
 
-Returns validation record messages which stop the transaction
+返回验证停止了事务消息
 
 public **getRecord** ()
 
-Returns validation record messages which stop the transaction
+返回验证停止了事务消息
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clone the exception
+克隆的异常
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
