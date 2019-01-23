@@ -9,19 +9,19 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Pagination
+# 分页
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
 <a name='data-adapters'></a>
 
-## Data Adapters
+## 数据适配器
 
 This component makes use of adapters to encapsulate different sources of data:
 
 | 适配器                                                                                     | 描述                                                                                                                                                                                                               |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | Use a PHP array as source data                                                                                                                                                                                   |
+| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | 使用一个 PHP 数组作为源数据                                                                                                                                                                                                 |
 | [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 | [Phalcon\Paginator\Adapter\QueryBuilder](api/Phalcon_Paginator_Adapter_QueryBuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/Phalcon_Mvc_Model_Query_Builder) object as source data                                                                                                           |
 
@@ -174,15 +174,15 @@ $paginator = new PaginatorQueryBuilder(
 
 The `$page` object has the following attributes:
 
-| Attribute     | 描述                                                     |
-| ------------- | ------------------------------------------------------ |
-| `items`       | The set of records to be displayed at the current page |
-| `current`     | The current page                                       |
-| `before`      | The previous page to the current one                   |
-| `next`        | The next page to the current one                       |
-| `last`        | The last page in the set of records                    |
-| `total_pages` | The number of pages                                    |
-| `total_items` | The number of items in the source data                 |
+| 属性            | 描述           |
+| ------------- | ------------ |
+| `items`       | 要显示在当前页的记录集的 |
+| `current`     | 当前页          |
+| `before`      | 前一页到当前       |
+| `next`        | 到当前下一页       |
+| `last`        | 最后一页中的记录集    |
+| `total_pages` | 页面数目         |
+| `total_items` | 源数据中的项目数     |
 
 <a name='custom'></a>
 
