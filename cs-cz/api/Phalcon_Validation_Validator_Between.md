@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Between'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
 
 Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.
 
