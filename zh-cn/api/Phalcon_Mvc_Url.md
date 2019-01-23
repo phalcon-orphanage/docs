@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Url'
 
 *implements* [Phalcon\Mvc\UrlInterface](Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 
-This components helps in the generation of: URIs, URLs and Paths
+在生成此组件帮助： Uri、 Url 和路径
 
 ```php
 <?php
@@ -41,7 +41,7 @@ Returns the DependencyInjector container
 
 public **setBaseUri** (*mixed* $baseUri)
 
-Sets a prefix for all the URIs to be generated
+设置要生成的所有 Uri 的前缀
 
 ```php
 <?php
@@ -54,7 +54,7 @@ $url->setBaseUri("/invo/index.php/");
 
 public **setStaticBaseUri** (*mixed* $staticBaseUri)
 
-Sets a prefix for all static URLs generated
+为生成的所有静态 Url 设置前缀
 
 ```php
 <?php
@@ -73,7 +73,7 @@ Returns the prefix for all the generated static urls. By default /
 
 public **setBasePath** (*mixed* $basePath)
 
-Sets a base path for all the generated paths
+设置为生成的所有路径的基本路径
 
 ```php
 <?php
@@ -84,11 +84,11 @@ $url->setBasePath("/var/www/htdocs/");
 
 public **getBasePath** ()
 
-Returns the base path
+返回基路径
 
 public **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
-Generates a URL
+生成的 URL
 
 ```php
 <?php
@@ -125,7 +125,7 @@ echo $url->get(
 
 public **getStatic** ([*mixed* $uri])
 
-Generates a URL for a static resource
+为静态资源生成 URL
 
 ```php
 <?php
@@ -144,4 +144,4 @@ echo $url->getStatic(
 
 public **path** ([*mixed* $path])
 
-Generates a local path
+生成的本地路径
