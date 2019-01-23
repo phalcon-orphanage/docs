@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Queueing
+# 队列
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 
@@ -21,7 +21,7 @@ While you can find more sophisticated PHP extensions to address queueing in your
 
 <a name='put-jobs-in-queue'></a>
 
-## Putting Jobs into the Queue
+## 将任务放入队列
 
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message structure according to the needs of the application:
 
@@ -48,10 +48,10 @@ $queue->put(
 
 Available connection options are:
 
-| 选项   | 描述                                       | 默认        |
-| ---- | ---------------------------------------- | --------- |
-| host | IP where the beanstalk server is located | 127.0.0.1 |
-| port | Connection port                          | 11300     |
+| 选项   | 描述                | 默认        |
+| ---- | ----------------- | --------- |
+| host | Beanstalk服务器的IP地址 | 127.0.0.1 |
+| port | Beanstalk服务器的链接端口 | 11300     |
 
 In the above example we stored a message which will allow a background job to process a video. The message is stored in the queue immediately and does not have a certain time to live.
 
@@ -75,11 +75,11 @@ $queue->put(
 
 The following options are available:
 
-| 选项       | 描述                                                                                                                                                                                          |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
-| delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
-| ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
+| 选项   | 描述                                                                                                                                                                                          |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 优先级  | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
+| 延迟   | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
+| 生命周期 | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
 
 Every job put into the queue returns a `job id` which you can use to track the status of the job:
 
@@ -95,7 +95,7 @@ $jobId = $queue->put(
 
 <a name='retrieving-messages'></a>
 
-## Retrieving Messages
+## 检索消息
 
 Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete the task:
 
