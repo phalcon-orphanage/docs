@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Increasing Performance
+# 提高性能
 
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
 
 <a name='profiling-server'></a>
 
-## Profile on the Server
+## 在服务器上的配置文件
 
 Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
 
@@ -68,7 +68,7 @@ Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
 <a name='profiling-server-sql-statements'></a>
 
-### Profiling SQL Statements
+### 分析 SQL 语句
 
 Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
 
@@ -85,7 +85,7 @@ Sometimes we may need to improve the loading of static elements such as images, 
 
 <a name='profiling-client-chrome-firefox'></a>
 
-### Profile with Chrome/Firefox
+### Chrome/Firefox的配置文件
 
 Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
 
