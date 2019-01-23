@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Session'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/session.zep)
 
 Stores model meta-data in session. Data will erased when the session finishes. Meta-data are permanent while the session is active.
 
