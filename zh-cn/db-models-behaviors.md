@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Behaviors
+# 模型的行为
 
 Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
@@ -47,14 +47,14 @@ class Users extends Model
 
 The following built-in behaviors are provided by the framework:
 
-| Name          | 描述                                                                                                         |
-| ------------- | ---------------------------------------------------------------------------------------------------------- |
-| Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
-| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| 名称      | 描述                             |
+| ------- | ------------------------------ |
+| 使用时间和日期 | 允许自动更新模型的属性在创建或更新记录时保存日期时间     |
+| 安全删除    | 而不是永久删除一条记录，它将标记为已删除更改标记列的值的记录 |
 
 <a name='timestampable'></a>
 
-## Timestampable
+## 使用时间和日期
 
 This behavior receives an array of options, the first level key must be an event name indicating when the column must be assigned:
 
@@ -112,7 +112,7 @@ If the option `format` is omitted a timestamp using the PHP's function [time](ht
 
 <a name='softdelete'></a>
 
-## SoftDelete
+## 安全删除
 
 This behavior can be used as follows:
 
@@ -183,7 +183,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 <a name='create-your-own-behaviors'></a>
 
-## Creating your own behaviors
+## 创建你自己的行为
 
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
 
@@ -271,7 +271,7 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Using Traits as behaviors
+## 使用特征作为行为
 
 You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 
@@ -295,12 +295,5 @@ trait MyTimestampable
 Then you can use it in your model as follows:
 
 ```php
-<?php
-
-use Phalcon\Mvc\Model;
-
-class Products extends Model
-{
-    use MyTimestampable;
-}
+<？ php 使用 Phalcon\Mvc\Model; 类产品扩展模型 {使用 MyTimestampable;}
 ```
