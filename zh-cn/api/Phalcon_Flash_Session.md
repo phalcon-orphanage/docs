@@ -10,39 +10,39 @@ title: 'Phalcon\Flash\Session'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-Temporarily stores the messages in session, then messages can be printed in the next request
+临时存储的消息将在会话中，然后在下一个请求可以打印消息
 
 ## 方法
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
-Returns the messages stored in session
+返回临时储存会话中储存的消息
 
 protected **_setSessionMessages** (*array* $messages)
 
-Stores the messages in session
+设置临时储存会话中存储的消息
 
 public **message** (*mixed* $type, *mixed* $message)
 
-Adds a message to the session flasher
+向心事储存会话中添加消息
 
 public **has** ([*mixed* $type])
 
-Checks whether there are messages
+检查是否有消息
 
 public **getMessages** ([*mixed* $type], [*mixed* $remove])
 
-Returns the messages in the session flasher
+返回临时储存会话的消息
 
 public **output** ([*mixed* $remove])
 
-Prints the messages in the session flasher
+输出临时储存会话中储存的消息
 
 public **clear** ()
 
-Clear messages in the session messenger
+清除临时储存会话中的消息
 
 public **__construct** ([*mixed* $cssClasses]) inherited from [Phalcon\Flash](Phalcon_Flash)
 
@@ -66,11 +66,11 @@ Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
