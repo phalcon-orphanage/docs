@@ -86,7 +86,7 @@ git clone https://github.com/phalcon/box.git workspace
 
 The `master` branch will always contain the latest stable version of Phalcon Box. If you wish to check older versions or newer ones currently under development, please switch to the relevant branch/tag.
 
-You can find the latest stable version on the [Github Release Page](https://github.com/phalcon/box/releases):
+You can find the latest stable version on the [GitHub Release Page](https://github.com/phalcon/box/releases):
 
 ```bash
 # Clone the desired release...
