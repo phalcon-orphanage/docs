@@ -9,21 +9,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on WAMP
+# 在WAMP集成环境中安装Phalcon
 
 [WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## 下载正确版本的Phalcon扩展。
 
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+当下载Phalcon扩展完成后，会得到一个如下所示的zip包。
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+解压zip包，会有一个Phalcon DLL文件。
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -31,21 +31,22 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 
 ![](/assets/images/content/webserver-wamp-1.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. 你可以使用Notepad或者其他类似文件编辑器进行修改。 We recommend Notepad++ to avoid issues with line endings. 在文件末尾追加：
 
 ```ini extension=php_phalcon.dll
 
-    <br />and save it.
+    <br />保存所修改的。
     
     ![](/assets/images/content/webserver-wamp-2.png)
     
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. 在文件末尾添加一行
     
     ```ini
-    extension=php_phalcon.dll 
+    extension=php_phalcon.dll
+    ``` 
     
 
-and save it.
+保存所修改的。
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
@@ -59,7 +60,7 @@ Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 
-## Related Guides
+## 相关指引
 
 * [General Installation](/4.0/en/installation)
-* [Installation on XAMPP](/4.0/en/webserver-xampp)
+* [在XAMPP中安装Phalcon扩展](/4.0/en/webserver-xampp)
