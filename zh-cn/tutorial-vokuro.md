@@ -9,15 +9,15 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Tutorial: Vökuró
+# 教程： Vökuró
 
-Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
+Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
 
 <a name='structure'></a>
 
-## Project Structure
+## 项目结构
 
-Once you clone the project in your document root you'll see the following structure:
+一旦你克隆项目在您的文档根目录中您将看到以下结构：
 
 ```bash
 vokuro/
@@ -43,7 +43,7 @@ The application is divided into two parts, a frontend, where visitors can sign u
 
 <a name='dependencies'></a>
 
-## Load Classes and Dependencies
+## 加载类和依赖
 
 This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
 
@@ -114,7 +114,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Sign Up
+## 注册
 
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 
