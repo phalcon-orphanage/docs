@@ -9,35 +9,35 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Events
+# 模型事件
 
 <a name='events'></a>
 
-## Events and Events Manager
+## 事件和事件管理器
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| Operation          | Name                     |       可以停止操作吗？        | Explanation                                                                                                                       |
-| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-| Inserting/Updating | prepareSave              |          NO           | Is executed before saving and allows data manipulation                                                                            |
-| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| 操作                 | 名称                       | 可以停止操作吗？ | 注解                                                                                                                                |
+| ------------------ | ------------------------ |:--------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | afterCreate              |    不     | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Inserting/Updating | afterSave                |    不     | Runs after the required operation over the database system                                                                        |
+| Updating           | afterUpdate              |    不     | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterValidation          |    是的    | 在为非空/空字符串或外键验证字段后执行                                                                                                               |
+| Inserting          | afterValidationOnCreate  |    是的    | 进行插入操作时，在字段验证非空/空字符串或外键之后执行                                                                                                       |
+| Updating           | afterValidationOnUpdate  |    是的    | 进行更新操作时，在对字段进行非空/空字符串或外键验证之后执行                                                                                                    |
+| Inserting          | beforeCreate             |    是的    | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | beforeSave               |    是的    | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |    是的    | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |    是的    | 在字段验证非空/空字符串或外键之前执行                                                                                                               |
+| Inserting          | beforeValidationOnCreate |    是的    | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate |    是的    | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | onValidationFails        | 是的 （已停止） | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |    不     | Is executed before saving and allows data manipulation                                                                            |
+| Inserting/Updating | validation               |    是的    | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
 
-### Implementing Events in the Model's class
+### 在该模型的类中实现事件
 
 The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
@@ -82,7 +82,7 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 
-### Using a custom Events Manager
+### 使用自定义的事件管理器
 
 Additionally, this component is integrated with [Phalcon\Events\Manager](api/Phalcon_Events_Manager), this means we can create listeners that run when an event is triggered.
 
@@ -181,7 +181,7 @@ If a listener returns false that will stop the operation that is executing curre
 
 <a name='logging-sql-statements'></a>
 
-## Logging Low-Level SQL Statements
+## 日志记录低级 SQL 语句
 
 When using high-level abstraction components such as [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is supported internally by [Phalcon\Db](api/Phalcon_Db). [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
@@ -251,7 +251,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 <a name='profiling-sql-statements'></a>
 
-## Profiling SQL Statements
+## 分析 SQL 语句
 
 Thanks to [Phalcon\Db](api/Phalcon_Db), the underlying component of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model), it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 
