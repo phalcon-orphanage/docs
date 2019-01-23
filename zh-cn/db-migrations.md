@@ -3,7 +3,7 @@ layout: article
 language: 'zh-cn'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
+##### 本文来自于 v3.4, 尚未修订
 
 {:.alert .alert-danger}
 
@@ -11,13 +11,13 @@ version: '4.0'
 
 # 数据库迁移
 
-Migrations are a convenient way for you to alter your database in a structured and organized manner.
+迁移是一种以结构化和有组织的方式更改数据库的便捷方式。
 
-<h5 class='alert alert-danger'>Migrations are available in <a href="/4.0/en/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+<h5 class='alert alert-danger'>迁移在 <a href="/4.0/en/devtools-usage">phalcon 开发人员工具</a> 中提供, 您至少需要 phalcon 框架版本0.5.0 才能使用开发人员工具。</h5>
 
-Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
+通常在开发过程中, 我们需要更新生产环境中的更改。 其中一些更改可能是数据库修改, 如新字段、新表、删除索引等。
 
-When a migration is generated a set of classes are created to describe how your database is structured at that particular moment. These classes can be used to synchronize the schema structure on remote databases setting your database ready to work with the new changes that your application implements. Migrations describe these transformations using plain PHP.
+迁移生成时，创建一组类来描述您的数据库如何构成的一些情况。 这些类可以被用于同步数据库结构到远程数据库，设置您的应用程序实现的新的数据库上的结构变化。 迁移使用纯 PHP 描述这些转换。
 
 <div align='center'>
     <iframe src='https://player.vimeo.com/video/41381817' width='500' height='281' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -27,27 +27,27 @@ When a migration is generated a set of classes are created to describe how your 
 
 ## 结构导出
 
-The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
+[Phalcon开发工具](/4.0/en/devtools-usage) 提供脚本来管理迁移(生成、 运行和回滚)。
 
-The available options for generating migrations are:
+可用于生成迁移的选项包括：
 
 ![](/assets/images/content/migrations-1.png)
 
-Running this script without any parameters will simply dump every object (tables and views) from your database into migration classes.
+在没有任何参数的情况下运行此脚本将简单地将数据库中的每个对象 (表和视图) 转储到迁移类中。
 
-Each migration has a version identifier associated with it. The version number allows us to identify if the migration is newer or older than the current 'version' of our database. Versions will also inform Phalcon of the running order when executing a migration.
+每次迁移，都有与它相关联的版本标识符。 版本号使我们能够确定迁移是否比我们的数据库的当前 "版本" 更新或旧。 在执行迁移时，版本号亦会告知Phalcon的运行顺序。
 
 ![](/assets/images/content/migrations-2.png)
 
-When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
+当一个迁移在生成时，说明会显示在控制台上，以描述迁移的不同步骤和这些语句的执行时间。 在结束时, 将生成迁移版本。
 
-By default [Phalcon Developer Tools](/4.0/en/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+默认情况下 [Phalcon开发工具](/4.0/en/devtools-usage) 使用 `app/migrations` 目录转储迁移文件。 您可以生成脚本上设置一个参数，来更改这个位置的设置。 Each table in the database has its respective class generated in a separated file under a directory referring its version:
 
 ![](/assets/images/content/migrations-2.png)
 
 <a name='class-anatomy'></a>
 
-## Migration Class Anatomy
+## 迁移类解剖
 
 Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
 
@@ -148,30 +148,30 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Index        | 描述                                                                                                                                          | Optional |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns                                                                                                        |    否     |
-| `indexes`    | An array with a set of table indexes.                                                                                                       |    是的    |
-| `references` | An array with a set of table references (foreign keys).                                                                                     |    是的    |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    是的    |
+| 索引           | 描述                                                                                                                                          | 可选 |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--:|
+| `columns`    | 具有一组表中的列的数组                                                                                                                                 | 否  |
+| `indexes`    | 具有一组表索引的数组。                                                                                                                                 | 是的 |
+| `references` | 具有一组表引用(外键) 的数组。                                                                                                                            | 是的 |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. | 是的 |
 
 <a name='class-anatomy-columns'></a>
 
-### Defining Columns
+### 定义列
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| 选项              | 描述                                                                                                                                         | Optional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    否     |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |    是的    |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |    是的    |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |    是的    |
-| `notNull`       | Column can store null values?                                                                                                              |    是的    |
-| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |    是的    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    是的    |
-| `first`         | Column must be placed at first position in the column order                                                                                |    是的    |
-| `after`         | Column must be placed after indicated column                                                                                               |    是的    |
+| 选项              | 描述                                                                                                                                         | 可选 |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   | 否  |
+| `size`          | 某种类型的像 VARCHAR 或 INTEGER列，可能有特定的大小                                                                                                         | 是的 |
+| `scale`         | 十进制或数字列可能有一个尺度去指定多少小数必须存储                                                                                                                  | 是的 |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            | 是的 |
+| `notNull`       | 列可以存储 null 值吗？                                                                                                                             | 是的 |
+| `default`       | 定义列的默认的值(只能是实际的值，不是如 `now()` 的函数)                                                                                                          | 是的 |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | 是的 |
+| `first`         | 列必须被放置在列顺序的第一个位置中                                                                                                                          | 是的 |
+| `after`         | 列必须置于指定列之后                                                                                                                                 | 是的 |
 
 Database migrations support the following database column types:
 
@@ -196,28 +196,28 @@ Database migrations support the following database column types:
 
 <a name='class-anatomy-indexes'></a>
 
-### Defining Indexes
+### 定义索引
 
 [Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 <a name='class-anatomy-references'></a>
 
-### Defining References
+### 定义引用
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Index               | 描述                                                                                                  | Optional | Implemented in   |
-| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    否     | All              |
-| `columns`           | An array with the name of the columns at the table that have the reference                          |    否     | All              |
-| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    否     | All              |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |    是的    | All              |
-| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |    是的    | MySQL PostgreSQL |
-| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |    是的    | MySQL PostgreSQL |
+| 索引                  | 描述                                                                                                  | 可选 | 被实现              |
+| ------------------- | --------------------------------------------------------------------------------------------------- |:--:| ---------------- |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               | 否  | 所有               |
+| `columns`           | 一个带名称的数组，在这个表已经被引用                                                                                  | 否  | 所有               |
+| `referencedColumns` | 在被引用的表上，一个带有表名称的数组                                                                                  | 否  | 所有               |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. | 是的 | 所有               |
+| `ondelete`          | 如果外键的记录被删除, 对本地的记录执行此操作.                                                                            | 是的 | MySQL PostgreSQL |
+| `onUpdate`          | 如果对外键的记录进行更新，对本地的记录执行此操作。                                                                           | 是的 | MySQL PostgreSQL |
 
 <a name='writing'></a>
 
-## Writing Migrations
+## 写入迁移
 
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/4.0/en/db).
 
@@ -249,7 +249,7 @@ class ProductsMigration_100 extends Migration
 
 <a name='running'></a>
 
-## Running Migrations
+## 运行迁移
 
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
