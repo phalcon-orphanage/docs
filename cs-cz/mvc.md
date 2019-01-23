@@ -22,7 +22,7 @@ If you decide to use MVC, every request to your application resources will be ma
 
 <a name='models'></a>
 
-## Models
+## Modely
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/4.0/en/models)
 
@@ -34,6 +34,6 @@ Views represent the user interface of your application. Views are often HTML fil
 
 <a name='controllers'></a>
 
-## Controllers
+## Controllers (Ovladače)
 
 The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/4.0/en/controllers)
