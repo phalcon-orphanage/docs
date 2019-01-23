@@ -24,14 +24,14 @@ In this tutorial, we will explain how to create a simple application that provid
 
 The API consists of the following methods:
 
-| 方法       | URL                      | Action                              |
-| -------- | ------------------------ | ----------------------------------- |
-| `GET`    | /api/robots              | 检索所有的机器人                            |
-| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索               |
-| `GET`    | /api/robots/2            | 检索基于主键机器人                           |
-| `POST`   | /api/robots              | 添加一个新的机器人                           |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key |
-| `DELETE` | /api/robots/2            | 删除基于主键机器人                           |
+| 方法       | URL                      | 操作                    |
+| -------- | ------------------------ | --------------------- |
+| `GET`    | /api/robots              | 检索所有的机器人              |
+| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索 |
+| `GET`    | /api/robots/2            | 检索基于主键机器人             |
+| `POST`   | /api/robots              | 添加一个新的机器人             |
+| `PUT`    | /api/robots/2            | 更新基于主键机器人             |
+| `DELETE` | /api/robots/2            | 删除基于主键机器人             |
 
 <a name='implementation'></a>
 
@@ -82,51 +82,51 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// 检索所有机器人
 $app->get(
     '/api/robots',
     function () {
-        // Operation to fetch all the robots
+        // 获取所有机器人
     }
 );
 
-// Searches for robots with $name in their name
+// 搜索所有名字中带有$name的机器人
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operation to fetch robot with name $name
+        // 通过$name搜索机器人
     }
 );
 
-// Retrieves robots based on primary key
+// 通过主键检索机器人
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to fetch robot with id $id
+        // 通过$id检索机器人
     }
 );
 
-// Adds a new robot
+// 添加一个新的机器人
 $app->post(
     '/api/robots',
     function () {
-        // Operation to create a fresh robot
+        // 创建一个全新的机器人
     }
 );
 
-// Updates robots based on primary key
+// 通过主键修改机器人
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to update a robot with id $id
+        // 使用$id做为主键值进行修改修改机器人
     }
 );
 
-// Deletes robots based on primary key
+//通过主键删除机器人
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to delete the robot with id $id
+        // 使用$id做为主键值进行修改修改机器人
     }
 );
 
