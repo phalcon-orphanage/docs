@@ -25,6 +25,7 @@ files:
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
+        nl: nl-nl
   - source: /en/*.md
     translation: /%locale%/%original_file_name%
     languages_mapping:
@@ -51,6 +52,7 @@ files:
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
+        nl: nl-nl
   - source: /en/api/*.md
     translation: /%locale%/api/%original_file_name%
     languages_mapping:
@@ -77,3 +79,4 @@ files:
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
+        nl: nl-nl
