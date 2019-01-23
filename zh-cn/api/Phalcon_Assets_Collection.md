@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-Represents a collection of resources
+表示资源的集合
 
 ## 方法
 
@@ -68,15 +68,15 @@ Phalcon\Assets\Collection constructor
 
 public **add** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Adds a resource to the collection
+向集合中添加资源
 
 public **addInline** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Adds an inline code to the collection
+向集合中添加内联代码
 
 public **has** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Checks this the resource is added to the collection.
+检查此资源添加到集合。
 
 ```php
 <?php
@@ -93,83 +93,83 @@ $resource->has($resource); // true
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a CSS resource to the collection
+向集合中添加 CSS 资源
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline CSS to the collection
+向集合中添加内联 CSS
 
 public [Phalcon\Assets\Collection](Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Adds a javascript resource to the collection
+向集合中添加一个 javascript 资源
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline javascript to the collection
+向集合中添加内联 javascript
 
 public **count** ()
 
-Returns the number of elements in the form
+在窗体中返回的元素的数目
 
 public **rewind** ()
 
-Rewinds the internal iterator
+倒带内部迭代器
 
 public **current** ()
 
-Returns the current resource in the iterator
+在迭代器返回当前资源
 
 public *int* **key** ()
 
-Returns the current position/key in the iterator
+在迭代器中返回每个该项当前的位置
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+将内部迭代指针移动到下一个位置
 
 public **valid** ()
 
-Check if the current element in the iterator is valid
+检查迭代器中的当前元素是否有效
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the target path of the file for the filtered/join output
+设置过滤的联接输出文件的目标路径
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets a base source path for all the resources in this collection
+此集合中设置的所有资源基地源路径
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+为生成的 HTML 设置目标 uri
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a common prefix for all the resources
+设置所有资源的公共前缀
 
 public **setLocal** (*mixed* $local)
 
-Sets if the collection uses local resources by default
+如果该集合使用本地资源，默认情况下，设置
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+设置额外的 HTML 属性
 
 public **setFilters** (*array* $filters)
 
-Sets an array of filters in the collection
+在集合中设置筛选器的数组
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Sets the target local
+设置目标本地
 
 public **join** (*mixed* $join)
 
-Sets if all filtered resources in the collection must be joined in a single result file
+设置是否在集合中的资源的所有已筛选必须加入单个结果文件中
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Returns the complete location where the joined/filtered collection must be written
+返回完整的位置必须在其中写入的加入进行筛选的集合
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface) $filter)
 
@@ -177,4 +177,4 @@ Adds a filter to the collection
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Adds a resource or inline-code to the collection
+向集合中添加资源或内联代码
