@@ -8,19 +8,19 @@ title: 'Phalcon\Logger\Formatter'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
 
-This is a base class for logger formatters
+这是一个基类记录器格式化程序
 
 ## 方法
 
 public **getTypeString** (*mixed* $type)
 
-Returns the string meaning of a logger constant
+返回一个记录器常量的字符串含义
 
 public **interpolate** (*string* $message, [*array* $context])
 
-Interpolates context values into the message placeholders
+入到消息占位符的上下文值内插方式
 
 abstract public **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
