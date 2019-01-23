@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptéry
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
@@ -28,7 +28,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Továrna
 
 Loads Logger Adapter class using `adapter` option
 
@@ -244,7 +244,7 @@ Formats the messages using a one-line string. The default logging format is:
 
 You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
-| Variable  | Description                              |
+| Proměnná  | Description                              |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
 | %date%    | Date the message was added               |
@@ -271,7 +271,7 @@ The [Phalcon\Logger\FormatterInterface](api/Phalcon_Logger_FormatterInterface) i
 
 <a name='usage'></a>
 
-## Adapters
+## Adaptéry
 
 The following examples show the basic use of each adapter:
 
