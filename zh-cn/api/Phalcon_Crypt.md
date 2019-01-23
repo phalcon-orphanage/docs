@@ -8,7 +8,7 @@ title: 'Phalcon\Crypt'
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
 Provides encryption facilities to phalcon applications
 
@@ -173,7 +173,7 @@ protected **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize,
 
 Removes a padding from a text. If the function detects that the text was not padded, it will return it unmodified
 
-| Type   | Name         | 描述                                                            |
+| 类型     | 名称           | 描述                                                            |
 | ------ | ------------ | ------------------------------------------------------------- |
 | string | $text        | Message to be unpadded                                        |
 | string | $mode        | Encryption mode; unpadding is applied only in CBC or ECB mode |
