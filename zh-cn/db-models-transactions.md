@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Transactions
+# 模型事务
 
 When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
 
@@ -17,7 +17,7 @@ Transactions in Phalcon allow you to commit all operations if they were executed
 
 <a name='manual'></a>
 
-## Manual Transactions
+## 手动事务处理
 
 If an application only uses one connection and the transactions are not very complex, a transaction can be created by just moving the current connection into transaction mode and then commit or rollback the operation whether it is successful or not:
 
@@ -64,7 +64,7 @@ class RobotsController extends Controller
 
 <a name='implicit'></a>
 
-## Implicit Transactions
+## 隐式事务
 
 Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
 
@@ -89,7 +89,7 @@ $robot->save();
 
 <a name='isolated'></a>
 
-## Isolated Transactions
+## 隔离级别的事务
 
 Isolated transactions are executed in a new connection ensuring that all the generated SQL, virtual foreign key checks and business rules are isolated from the main connection. This kind of transaction requires a transaction manager that globally manages each transaction created ensuring that they are correctly rolled back/committed before ending the request:
 
