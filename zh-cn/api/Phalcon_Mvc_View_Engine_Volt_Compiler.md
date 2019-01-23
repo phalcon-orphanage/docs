@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
 
-This class reads and compiles Volt templates into PHP plain code
+此类读取，并将 Volt 模板编译为 PHP 纯代码
 
 ```php
 <?php
@@ -29,27 +29,27 @@ public **__construct** ([[Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInt
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setOptions** (*array* $options)
 
-Sets the compiler options
+设置编译器选项
 
 public **setOption** (*string* $option, *mixed* $value)
 
-Sets a single compiler option
+设置单个编译器选项
 
 public *string* **getOption** (*string* $option)
 
-Returns a compiler's option
+返回一个编译器选项
 
 public **getOptions** ()
 
-Returns the compiler options
+返回的编译器选项
 
 final public *mixed* **fireExtensionEvent** (*string* $name, [*array* $arguments])
 
@@ -57,123 +57,123 @@ Fires an event to registered extensions
 
 public **addExtension** (*mixed* $extension)
 
-Registers a Volt's extension
+注册Volt延伸
 
 public **getExtensions** ()
 
-Returns the list of extensions registered in Volt
+返回Volt在其中注册的扩展的列表
 
 public **addFunction** (*mixed* $name, *mixed* $definition)
 
-Register a new function in the compiler
+在编译器中注册一个新的函数
 
 public **getFunctions** ()
 
-Register the user registered functions
+注册用户注册功能
 
 public **addFilter** (*mixed* $name, *mixed* $definition)
 
-Register a new filter in the compiler
+在编译器中注册一个新的筛选器
 
 public **getFilters** ()
 
-Register the user registered filters
+注册用户注册筛选器
 
 public **setUniquePrefix** (*mixed* $prefix)
 
-Set a unique prefix to be used as prefix for compiled variables
+设置要用于编译变量作为前缀的唯一前缀
 
 public **getUniquePrefix** ()
 
-Return a unique prefix to be used as prefix for compiled variables and contexts
+返回唯一的前缀，以作为前缀用于编译的变量和上下文
 
 public **attributeReader** (*array* $expr)
 
-Resolves attribute reading
+解析属性阅读
 
 public **functionCall** (*array* $expr)
 
-Resolves function intermediate code into PHP function calls
+解析函数中间代码进入 PHP 函数调用
 
 public **resolveTest** (*array* $test, *mixed* $left)
 
-Resolves filter intermediate code into a valid PHP expression
+解析为一个有效的 PHP 表达式筛选中间代码
 
 final protected **resolveFilter** (*array* $filter, *mixed* $left)
 
-Resolves filter intermediate code into PHP function calls
+解析筛选中间代码进入 PHP 函数调用
 
 final public **expression** (*array* $expr)
 
-Resolves an expression node in an AST volt tree
+解析表达式节点Volt AST 树中
 
 final protected *string* | *array* **_statementListOrExtends** (*array* $statements)
 
-Compiles a block of statements
+编译一个语句块
 
 public **compileForeach** (*array* $statement, [*mixed* $extendsMode])
 
-Compiles a "foreach" intermediate code representation into plain PHP code
+编译成纯 PHP 代码"foreach"中间代码表示
 
 public **compileForElse** ()
 
-Generates a 'forelse' PHP code
+生成一个 'forelse' PHP 代码
 
 public **compileIf** (*array* $statement, [*mixed* $extendsMode])
 
-Compiles a 'if' statement returning PHP code
+编译 if 语句，返回 PHP 代码
 
 public **compileElseIf** (*array* $statement)
 
-Compiles a "elseif" statement returning PHP code
+编译"elseif"语句，返回 PHP 代码
 
 public **compileCache** (*array* $statement, [*mixed* $extendsMode])
 
-Compiles a "cache" statement returning PHP code
+编译"cache"语句，返回 PHP 代码
 
 public **compileSet** (*array* $statement)
 
-Compiles a "set" statement returning PHP code
+编译"set"的语句，返回 PHP 代码
 
 public **compileDo** (*array* $statement)
 
-Compiles a "do" statement returning PHP code
+编译"do"的语句，返回 PHP 代码
 
 public **compileReturn** (*array* $statement)
 
-Compiles a "return" statement returning PHP code
+编译"return"的语句，返回 PHP 代码
 
 public **compileAutoEscape** (*array* $statement, *mixed* $extendsMode)
 
-Compiles a "autoescape" statement returning PHP code
+"Autoescape"的语句，返回 PHP 代码编译
 
 public *string* **compileEcho** (*array* $statement)
 
-Compiles a '{{' '}}' statement returning PHP code
+编译一 '{{' '}}' 的语句，返回 PHP 代码
 
 public **compileInclude** (*array* $statement)
 
-Compiles a 'include' statement returning PHP code
+编译'include' 的语句，返回 PHP 代码
 
 public **compileMacro** (*array* $statement, *mixed* $extendsMode)
 
-Compiles macros
+编写宏
 
 public *string* **compileCall** (*array* $statement, *boolean* $extendsMode)
 
-Compiles calls to macros
+编译对宏的调用
 
 final protected **_statementList** (*array* $statements, [*mixed* $extendsMode])
 
-Traverses a statement list compiling each of its nodes
+遍历编译每个节点的语句列表
 
 protected **_compileSource** (*mixed* $viewCode, [*mixed* $extendsMode])
 
-Compiles a Volt source code returning a PHP plain version
+将返回一个 PHP 的普通版本的Volt 源代码编译
 
 public **compileString** (*mixed* $viewCode, [*mixed* $extendsMode])
 
-Compiles a template into a string
+将模板编译成一个字符串
 
 ```php
 <?php
@@ -184,7 +184,7 @@ echo $compiler->compileString('{{ "hello world" }}');
 
 public *string* | *array* **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
 
-Compiles a template into a file forcing the destination path
+将模板编译成迫使目标路径的文件
 
 ```php
 <?php
@@ -195,7 +195,7 @@ $compiler->compile("views/layouts/main.volt", "views/layouts/main.volt.php");
 
 public **compile** (*mixed* $templatePath, [*mixed* $extendsMode])
 
-Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled
+模板编译文件以应用此方法不返回的已编译的路径，如果模板不编译的编译器选项
 
 ```php
 <?php
@@ -208,15 +208,15 @@ require $compiler->getCompiledTemplatePath();
 
 public **getTemplatePath** ()
 
-Returns the path that is currently being compiled
+返回当前正在编译的路径
 
 public **getCompiledTemplatePath** ()
 
-Returns the path to the last compiled template
+返回到上次编译后的模板的路径
 
 public *array* **parse** (*string* $viewCode)
 
-Parses a Volt template returning its intermediate representation
+分析Volt 模板返回其中间表示形式
 
 ```php
 <?php
@@ -229,4 +229,4 @@ print_r(
 
 protected **getFinalPath** (*mixed* $path)
 
-Gets the final path with VIEW
+获取与视图的最终路径
