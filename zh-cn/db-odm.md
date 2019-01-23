@@ -11,7 +11,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# ODM (Object-Document Mapper)
+# ODM （对象文档映射器）
 
 In addition to its ability to [map tables](/4.0/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
@@ -19,9 +19,9 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Name                                | 描述                                                                   |
-| ----------------------------------- | -------------------------------------------------------------------- |
-| [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
+| 名称                                  | 描述                                 |
+| ----------------------------------- | ---------------------------------- |
+| [MongoDB](https://www.mongodb.org/) | MongoDB 是一个可扩展、 高性能、 开源 NoSQL 数据库。 |
 
 <a name='creating-models'></a>
 
@@ -58,7 +58,7 @@ class Robots extends Collection
 
 <a name='documents-to-objects'></a>
 
-## Understanding Documents To Objects
+## 了解文档与对象
 
 Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example, for a collection `robots` with the documents:
 
@@ -77,7 +77,7 @@ connecting to: test
 
 <a name='namespaces'></a>
 
-## Models in Namespaces
+## 在命名空间中的模型
 
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
 
@@ -129,7 +129,7 @@ $robot->save();
 
 <a name='connection-setup'></a>
 
-## Setting a Connection
+## 设置连接
 
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
 
@@ -163,7 +163,7 @@ $di->set(
 
 <a name='finding-documents'></a>
 
-## Finding Documents
+## 查找文档
 
 As [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
 
@@ -278,19 +278,19 @@ $robots = Robots::find(
 
 可用的查询选项有：
 
-| Parameter    | 描述                                                                                                                             | 示例                                                      |
+| 参数           | 描述                                                                                                                             | 示例                                                      |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
 | `conditions` | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 By default Phalcon_model assumes the first parameter are the conditions.                        | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned | `'fields' => array('name' => true)`               |
 | `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward    | `'sort' => array('name' => -1, 'status' => 1)` |
 | `limit`      | 限制结果缩小到一定范围内查询的结果                                                                                                              | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                      | `'skip' => 50`                                       |
+| `skip`       | 跳过结果的数                                                                                                                         | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
 
 <a name='finding-documents-fields'></a>
 
-## Querying specific fields
+## 查询特定字段
 
 To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
 
@@ -317,7 +317,7 @@ The example above returns the `name` of the robot with the `type = 'maid'`.
 
 <a name='aggregations'></a>
 
-## Aggregations
+## 聚合
 
 A model can return calculations using [aggregation framework](https://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
 
@@ -347,7 +347,7 @@ $data = Article::aggregate(
 
 <a name='creating-updating'></a>
 
-## Creating Updating/Records
+## 创建更新记录
 
 The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection).
 
@@ -387,11 +387,11 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### 验证消息
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message). The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message). The set of messages generated can be retrieved with the method getMessages(). 每个消息提供扩展的信息，如生成消息或消息类型的字段名称：
 
 ```php
 <?php
@@ -409,25 +409,25 @@ if ($robot->save() === false) {
 
 <a name='events'></a>
 
-### Validation Events and Events Manager
+### 验证事件和事件管理器
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | 可以停止操作吗？              | Explanation                                                                                                        |
-| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| 操作                 | 名称                         | 可以停止操作吗？ | 注解                                                                                                         |
+| ------------------ | -------------------------- | -------- | ---------------------------------------------------------------------------------------------------------- |
+| Inserting/Updating | `beforeValidation`         | 是的       | 在验证过程和最后的插入/更新到数据库之前执行                                                                                     |
+| Inserting          | `beforeValidationOnCreate` | 是的       | 正在取得插入操作时，才执行前验证过程                                                                                         |
+| Updating           | `beforeValidationOnUpdate` | 是的       | 之前的字段进行验证不是空值或外键进行更新操作时执行                                                                                  |
+| Inserting/Updating | `onValidationFails`        | 是的 （已停止） | 正在取得插入操作时，才执行前验证过程                                                                                         |
+| Inserting          | `afterValidationOnCreate`  | 是的       | 被执行验证过程完成后，插入操作正在进行时                                                                                       |
+| Updating           | `afterValidationOnUpdate`  | 是的       | 被执行验证过程完成后，更新操作正在进行时                                                                                       |
+| Inserting/Updating | `afterValidation`          | 是的       | 验证过程完成后执行                                                                                                  |
+| Inserting/Updating | `beforeSave`               | 是的       | Runs before the required operation over the database system                                                |
+| Updating           | `beforeUpdate`             | 是的       | Runs before the required operation over the database system only when an updating operation is being made  |
+| Inserting          | `beforeCreate`             | 是的       | Runs before the required operation over the database system only when an inserting operation is being made |
+| Updating           | `afterUpdate`              | 不        | Runs after the required operation over the database system only when an updating operation is being made   |
+| Inserting          | `afterCreate`              | 不        | Runs after the required operation over the database system only when an inserting operation is being made  |
+| Inserting/Updating | `afterSave`                | 不        | Runs after the required operation over the database system                                                 |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -546,7 +546,7 @@ $di->set(
 
 <a name='business-rules'></a>
 
-### Implementing a Business Rule
+### 实施业务规则
 
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
@@ -576,11 +576,11 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### 验证数据完整性
 
-[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. 特别 `validation` 事件允许我们打电话内置验证器的记录。 Phalcon公开几个内置的验证器，可以用在这一阶段的验证。
 
-The following example shows how to use it:
+下面的示例演示如何使用它：
 
 ```php
 <?php
@@ -683,21 +683,21 @@ foreach ($robots as $robot) {
 
 以下事件可以用来定义可以执行删除操作时执行的自定义业务规则：
 
-| Operation | Name           | 可以停止操作吗？ | Explanation                              |
-| --------- | -------------- | -------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES      | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO       | Runs after the delete operation was made |
+| 操作       | 名称             | 可以停止操作吗？ | 注解         |
+| -------- | -------------- | -------- | ---------- |
+| Deleting | `beforeDelete` | 是的       | 在做删除操作之前运行 |
+| Deleting | `afterDelete`  | 不        | 运行删除操作后    |
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## 验证失败的事件
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Operation                | Name                | Explanation                                                     |
-| ------------------------ | ------------------- | --------------------------------------------------------------- |
-| Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
+| 操作               | 名称                  | 注解                  |
+| ---------------- | ------------------- | ------------------- |
+| Insert or Update | `notSave`           | 触发时，插入/更新操作因任何原因而失败 |
+| 插入、 删除或更新        | `onValidationFails` | 当任何数据操作操作失败时触发      |
 
 <a name='ids-vs-primary-keys'></a>
 
@@ -723,7 +723,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## 设置多个数据库
 
 In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
@@ -757,27 +757,17 @@ $di->set(
 );
 ```
 
-Then, in the `initialize()` method, we define the connection service for the model:
+然后，在 `initialize()` 方法中，我们定义连接服务模型：
 
 ```php
-<?php
-
-use Phalcon\Mvc\Collection;
-
-class Robots extends Collection
-{
-    public function initialize()
-    {
-        $this->setConnectionService('mongo1');
-    }
-}
+<？ php 使用 Phalcon\Mvc\Collection; 类的机器人扩展集合 {公共函数 initialize() {$this-> setConnectionService('mongo1');    } }
 ```
 
 <a name='services-in-models'></a>
 
-## Injecting services into Models
+## 服务注入模型
 
-You may be required to access the application services within a model, the following example explains how to do that:
+您可能需要访问应用程序服务在模型内的，下面的示例说明了如何做到这一点：
 
 ```php
 <?php
