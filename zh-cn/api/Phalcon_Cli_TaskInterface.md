@@ -6,4 +6,4 @@ title: 'Phalcon\Cli\TaskInterface'
 ---
 # Interface **Phalcon\Cli\TaskInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/taskinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/taskinterface.zep)
