@@ -1,11 +1,11 @@
 {
   "acl": [
     {
-      "text": "Overview",
+      "text": "Přehled",
       "url": "#overview"
     },
     {
-      "text": "Creating an ACL",
+      "text": "Vytvoření ACL",
       "url": "#setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "#adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Definování oprávnění",
       "url": "#access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Dotazování na ACL",
       "url": "#querying"
     },
     {
-      "text": "Function based access",
+      "text": "Funkcí řízený přístup",
       "url": "#function-based-access"
     },
     {
@@ -37,253 +37,253 @@
       "url": "#operationss-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "Serializace ACL",
       "url": "#serialization"
     },
     {
-      "text": "Events",
+      "text": "Události",
       "url": "#events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementace vlastních adaptérů",
       "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Přehled",
       "url": "#overview"
     },
     {
-      "text": "Factory",
+      "text": "Továrna",
       "url": "#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Přidání rolí do ACL",
       "url": "#factory"
     },
     {
-      "text": "Reading Annotations",
+      "text": "Čtení anotací",
       "url": "#reading"
     },
     {
-      "text": "Types of Annotations",
+      "text": "Typy anotací",
       "url": "#types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Praktické využití",
       "url": "#usage",
       "menu": [
         {
-          "text": "Cache Enabler with Annotations",
+          "text": "Cache povolení pro anotace",
           "url": "#usage-cache"
         },
         {
-          "text": "Private/Public areas with Annotations",
+          "text": "Soukromé/veřejné oblasti s anotacemi",
           "url": "#usage-access-management"
         }
       ]
     },
     {
-      "text": "Annotations Adapters",
+      "text": "Anotační adaptéry",
       "url": "#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementace vlastních adaptérů",
           "url": "#adapters-custom"
         }
       ]
     },
     {
-      "text": "External Resources",
+      "text": "Externí zdroje",
       "url": "#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "Creating a CLI Application",
+      "text": "Vytvoření CLI aplikace",
       "url": "#creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Struktura",
       "url": "#structure"
     },
     {
-      "text": "Creating a Bootstrap",
+      "text": "Implementace Bootstrapu",
       "url": "#creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Úkoly",
       "url": "#tasks"
     },
     {
-      "text": "Processing action parameters",
+      "text": "Zpracování parametrů v akci",
       "url": "#processing-action-parameters"
     },
     {
-      "text": "Running tasks in a chain",
+      "text": "Spuštění úkolý v řetězci",
       "url": "#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "Creating a Micro Application",
+      "text": "Vytvoření mikro-aplikace",
       "url": "#creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Routování",
       "url": "#routing",
       "menu": [
         {
-          "text": "Setup",
+          "text": "Nastavení",
           "url": "#routing-setup",
           "menu": [
             {
-              "text": "Application object",
+              "text": "Aplikační objekt",
               "url": "#routing-setup-application"
             },
             {
-              "text": "Router object",
+              "text": "Routovací objekt",
               "url": "#routing-setup-router"
             }
           ]
         },
         {
-          "text": "Rewrite Rules",
+          "text": "Pravidla pro přepis",
           "url": "#rewrite-rules"
         },
         {
-          "text": "Handlers",
+          "text": "Handlers (manipulátory)",
           "url": "#routing-handlers",
           "menu": [
             {
-              "text": "Definitions",
+              "text": "Definice",
               "url": "#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Anonymous Function",
+                  "text": "Anonymní funkce",
                   "url": "#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Function",
+                  "text": "Funkce",
                   "url": "#routing-handlers-function"
                 },
                 {
-                  "text": "Static Method",
+                  "text": "Statické metody",
                   "url": "#routing-handlers-static-method"
                 },
                 {
-                  "text": "Method in an Object",
+                  "text": "Metota v objektu",
                   "url": "#routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
+                  "text": "Controllers (Ovladače)",
                   "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
-              "text": "Lazy Loading",
+              "text": "Pomalé načítání",
               "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
+                  "text": "Případ použití",
                   "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "Not Found (404)",
+              "text": "Stránka not found (404)",
               "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "Methods - Verbs",
+          "text": "Metody - slovesa",
           "url": "#routing-verbs",
           "menu": [
             {
-              "text": "delete",
+              "text": "Odstranit",
               "url": "#routing-verb-delete"
             },
             {
-              "text": "get",
+              "text": "Získat",
               "url": "#routing-verb-get"
             },
             {
-              "text": "head",
+              "text": "Head",
               "url": "#routing-verb-head"
             },
             {
-              "text": "map",
+              "text": "Mapa",
               "url": "#routing-verb-map"
             },
             {
-              "text": "options",
+              "text": "Možnosti",
               "url": "#routing-verb-options"
             },
             {
-              "text": "patch",
+              "text": "Patch (oprava)",
               "url": "#routing-verb-patch"
             },
             {
-              "text": "post",
+              "text": "Post",
               "url": "#routing-verb-post"
             },
             {
-              "text": "put",
+              "text": "Put",
               "url": "#routing-verb-put"
             }
           ]
         },
         {
-          "text": "Collections",
+          "text": "Kolekce",
           "url": "#routing-collections"
         },
         {
-          "text": "Parameters",
+          "text": "Paramtery",
           "url": "#routing-parameters"
         },
         {
-          "text": "Redirections",
+          "text": "Přesměrování",
           "url": "#routing-redirections"
         },
         {
-          "text": "URLs for Routes",
+          "text": "Url adresy pro routování",
           "url": "#routing-urls-for-routes"
         }
       ]
     },
     {
-      "text": "Dependency Injector",
+      "text": "Závislý injector",
       "url": "#dependency-injector"
     },
     {
-      "text": "Responses",
+      "text": "Odpovědi",
       "url": "#responses",
       "menu": [
         {
-          "text": "Direct output",
+          "text": "Přímý výstup",
           "url": "#responses-direct-output"
         },
         {
-          "text": "Including another file",
+          "text": "Vložit další soubor",
           "url": "#responses-include"
         },
         {
-          "text": "Direct output JSON",
+          "text": "Přímý výstup v JSON formátu",
           "url": "#responses-direct-output-json"
         },
         {
-          "text": "New Response object",
+          "text": "Nový response objekt",
           "url": "#responses-new-response-object"
         },
         {
-          "text": "Application Response",
+          "text": "Odpověď aplikace",
           "url": "#responses-application-response"
         },
         {
-          "text": "Return Application Response",
+          "text": "Vrátit odpověď aplikace",
           "url": "#responses-return-application-response"
         },
         {
@@ -293,19 +293,19 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Události",
       "url": "#events",
       "menu": [
         {
-          "text": "Available events",
+          "text": "Dostupné události",
           "url": "#events-available-events",
           "menu": [
             {
-              "text": "Authentication example",
+              "text": "Příklad ověřování",
               "url": "#events-available-events-authentication"
             },
             {
-              "text": "Not found example",
+              "text": "Not found příklad",
               "url": "#events-available-events-not-found"
             }
           ]
@@ -317,41 +317,41 @@
       "url": "#",
       "menu": [
         {
-          "text": "Attached events",
+          "text": "Připojené události",
           "url": "#",
           "menu": [
             {
-              "text": "before",
+              "text": "před",
               "url": "#"
             },
             {
-              "text": "after",
+              "text": "po",
               "url": "#"
             },
             {
-              "text": "finish",
+              "text": "konec",
               "url": "#"
             }
           ]
         },
         {
-          "text": "Implementation",
+          "text": "Implementace",
           "url": "#"
         },
         {
-          "text": "Setup",
+          "text": "Nastavení",
           "url": "#"
         },
         {
-          "text": "Events in Middleware",
+          "text": "Události v Middleware",
           "url": "#",
           "menu": [
             {
-              "text": "API example",
+              "text": "Příklad rozhraní pro API",
               "url": "#"
             },
             {
-              "text": "Firewall Middleware",
+              "text": "Firewall Middleware\n",
               "url": "#"
             },
             {
@@ -359,7 +359,7 @@
               "url": "#"
             },
             {
-              "text": "Redirect Middleware",
+              "text": "Přesměrování Middleware",
               "url": "#"
             },
             {
@@ -367,17 +367,17 @@
               "url": "#"
             },
             {
-              "text": "Request Middleware",
+              "text": "Žádost Middleware",
               "url": "#"
             },
             {
-              "text": "Response Middleware",
+              "text": "Odpověď Middleware",
               "url": "#"
             }
           ]
         },
         {
-          "text": "Models",
+          "text": "Modely",
           "url": "#"
         },
         {
@@ -389,7 +389,7 @@
           "url": "#"
         },
         {
-          "text": "Error Handling",
+          "text": "Zpracování chyb",
           "url": "#"
         }
       ]
@@ -397,7 +397,7 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Přehled",
       "url": "#overview"
     },
     {
@@ -423,17 +423,17 @@
       "url": "#events"
     },
     {
-      "text": "External Resources",
+      "text": "Externí zdroje",
       "url": "#resources"
     }
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Přehled",
       "url": "#overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Přidávání zdrojů",
       "url": "#add"
     },
     {
@@ -441,7 +441,7 @@
       "url": "#resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Kolekce",
       "url": "#collections"
     },
     {
@@ -473,11 +473,11 @@
   ],
   "cache": [
     {
-      "text": "Improving Performance with Cache",
+      "text": "Zlepšení výkonu pomocí cache",
       "url": "#overview"
     },
     {
-      "text": "When to implement cache?",
+      "text": "Kdy implementovat cache?",
       "url": "#implementation"
     },
     {
@@ -485,7 +485,7 @@
       "url": "#caching-behavior"
     },
     {
-      "text": "Factory",
+      "text": "Továrna",
       "url": "#factory"
     },
     {
@@ -541,7 +541,7 @@
       "url": "#adapters-backend",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#adapters-backend-factory"
         },
         {
@@ -585,17 +585,17 @@
   ],
   "config": [
     {
-      "text": "Reading Configurations",
+      "text": "Čtení konfigurace",
       "url": "#overview",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#factory"
         }
       ]
     },
     {
-      "text": "Native Arrays",
+      "text": "Nativní pole (Array)",
       "url": "#native-arrays"
     },
     {
@@ -621,7 +621,7 @@
   ],
   "contributions": [
     {
-      "text": "Contributing to Phalcon",
+      "text": "Přispějte k vývoji Phalcon frameworku",
       "url": "#contributing"
     },
     {
@@ -657,11 +657,11 @@
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Přehled",
       "url": "#overview"
     },
     {
-      "text": "Using Controllers",
+      "text": "Použití controllerů / řadičů",
       "url": "#using"
     },
     {
@@ -673,47 +673,47 @@
       "url": "#initializing"
     },
     {
-      "text": "Injecting Services",
+      "text": "Aplikace služeb",
       "url": "#injecting-services"
     },
     {
-      "text": "Request and Response",
+      "text": "Požadavek a odpověď",
       "url": "#request-response"
     },
     {
-      "text": "Session Data",
+      "text": "Relační data (session)",
       "url": "#session-data"
     },
     {
-      "text": "Using Services as Controllers",
+      "text": "Používání služeb jako controllerů",
       "url": "#services"
     },
     {
-      "text": "Events in Controllers",
+      "text": "Události v controllerech",
       "url": "#events"
     }
   ],
   "cookies": [
     {
-      "text": "Cookies Management",
+      "text": "Správa souborů cookie",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Základní použití",
       "url": "#usage"
     },
     {
-      "text": "Encryption/Decryption of Cookies",
+      "text": "Šifrování/dešifrování souborů cookie",
       "url": "#encryption-decryption"
     }
   ],
   "crypt": [
     {
-      "text": "Encryption/Decryption",
+      "text": "Šifrování / Dešifrování",
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Základní použití",
       "url": "#usage"
     },
     {
@@ -743,11 +743,11 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementace vlastních adaptérů",
           "url": "#adapters-custom"
         }
       ]
@@ -863,7 +863,7 @@
   ],
   "db-models-behaviors": [
     {
-      "text": "Model Behaviors",
+      "text": "Chování modelů (behaviors)",
       "url": "#overview"
     },
     {
@@ -885,11 +885,11 @@
   ],
   "db-models-cache": [
     {
-      "text": "ORM Caching",
+      "text": "Cache ORM",
       "url": "#overview"
     },
     {
-      "text": "Caching Resultsets",
+      "text": "Cache pro databázové výsledky (Resultset)",
       "url": "#caching-resultsets"
     },
     {
@@ -923,11 +923,11 @@
   ],
   "db-models-events": [
     {
-      "text": "Model Events",
+      "text": "Události modelů",
       "url": "#overview"
     },
     {
-      "text": "Events and Events Manager",
+      "text": "Události a Správce událostí",
       "url": "#events",
       "menu": [
         {
@@ -951,11 +951,11 @@
   ],
   "db-models-metadata": [
     {
-      "text": "Models Metadata",
+      "text": "Metadata modelů",
       "url": "#overview"
     },
     {
-      "text": "Caching Metadata",
+      "text": "Cache pro Metadata",
       "url": "#caching-metadata"
     },
     {
@@ -981,11 +981,11 @@
   ],
   "db-models-relationships": [
     {
-      "text": "Model Relationships",
+      "text": "Relace mezi modely",
       "url": "#overview"
     },
     {
-      "text": "Relationships between Models",
+      "text": "Relace mezi modely",
       "url": "#relationships",
       "menu": [
         {
@@ -1057,47 +1057,47 @@
   ],
   "db-models-transactions": [
     {
-      "text": "Model Transactions",
+      "text": "Modelové transakce",
       "url": "#overview"
     },
     {
-      "text": "Manual Transactions",
+      "text": "Manualní transakce",
       "url": "#manual"
     },
     {
-      "text": "Implicit Transactions",
+      "text": "Implicitní transakce",
       "url": "#implicit"
     },
     {
-      "text": "Isolated Transactions",
+      "text": "Izolované transakce",
       "url": "#isolated"
     }
   ],
   "db-models-validation": [
     {
-      "text": "Model Transactions",
+      "text": "Modelové transakce",
       "url": "#overview"
     },
     {
-      "text": "Validating Data Integrity",
+      "text": "Validace Integrity dat",
       "url": "#data-integrity"
     },
     {
-      "text": "Validation Messages",
+      "text": "Ověření zpráv",
       "url": "#messages"
     },
     {
-      "text": "Validation Failed Events",
+      "text": "Ověření chybných Eventů",
       "url": "#failed-events"
     }
   ],
   "db-models": [
     {
-      "text": "Working with Models",
+      "text": "Práce s modely",
       "url": "#working-with"
     },
     {
-      "text": "Creating Models",
+      "text": "Vytváření modelů",
       "url": "#creating",
       "menu": [
         {
@@ -1111,7 +1111,7 @@
       "url": "#records-to-objects"
     },
     {
-      "text": "Finding Records",
+      "text": "Hledání záznamů",
       "url": "#finding-records",
       "menu": [
         {
@@ -1201,7 +1201,7 @@
       "url": "#overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Vytváření modelů",
       "url": "#creating-models"
     },
     {
@@ -1229,7 +1229,7 @@
       "url": "#creating-updating",
       "menu": [
         {
-          "text": "Validation Messages",
+          "text": "Ověření zpráv",
           "url": "#validation-messages"
         },
         {
@@ -1241,7 +1241,7 @@
           "url": "#business-rules"
         },
         {
-          "text": "Validating Data Integrity",
+          "text": "Validace Integrity dat",
           "url": "#data-integrity"
         }
       ]
@@ -1251,7 +1251,7 @@
       "url": "#deleting-records"
     },
     {
-      "text": "Validation Failed Events",
+      "text": "Ověření chybných Eventů",
       "url": "#validation-failed-events"
     },
     {
@@ -1277,7 +1277,7 @@
       "url": "#data-adapters"
     },
     {
-      "text": "Factory",
+      "text": "Továrna",
       "url": "#factory"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementace vlastních adaptérů",
       "url": "#custom"
     }
   ],
@@ -1403,11 +1403,11 @@
       "url": "#overview"
     },
     {
-      "text": "Prerequisites",
+      "text": "Požadavky",
       "url": "#prerequisites"
     },
     {
-      "text": "Installation",
+      "text": "Instalace",
       "url": "#installation",
       "menu": [
         {
@@ -1437,11 +1437,11 @@
       "url": "#overview"
     },
     {
-      "text": "Download",
+      "text": "Stažení",
       "url": "#download"
     },
     {
-      "text": "Installation",
+      "text": "Instalace",
       "url": "#installation"
     },
     {
@@ -1541,7 +1541,7 @@
       "url": "#resolving-services",
       "menu": [
         {
-          "text": "Events",
+          "text": "Události",
           "url": "#events"
         }
       ]
@@ -1641,7 +1641,7 @@
       "url": "#overview"
     },
     {
-      "text": "Dependencies",
+      "text": "Závislosti",
       "url": "#dependencies"
     },
     {
@@ -1649,7 +1649,7 @@
       "url": "#services"
     },
     {
-      "text": "Installation",
+      "text": "Instalace",
       "url": "#installation",
       "menu": [
         {
@@ -1725,7 +1725,7 @@
       "url": "#overview"
     },
     {
-      "text": "Create a New Project",
+      "text": "Vytvoření nového projektu",
       "url": "#create-project"
     },
     {
@@ -1759,7 +1759,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Požadavky",
       "url": "#requirements"
     },
     {
@@ -1767,7 +1767,7 @@
       "url": "#packages-included"
     },
     {
-      "text": "Installation",
+      "text": "Instalace",
       "url": "#installation",
       "menu": [
         {
@@ -1913,23 +1913,23 @@
       "url": "#overview"
     },
     {
-      "text": "Escaping HTML",
+      "text": "Escapování HTML",
       "url": "#html"
     },
     {
-      "text": "Escaping HTML Attributes",
+      "text": "Escapování HTML atributů",
       "url": "#html-attributes"
     },
     {
-      "text": "Escaping URLs",
+      "text": "Escapování URL",
       "url": "#urls"
     },
     {
-      "text": "Escaping CSS",
+      "text": "Escapování CSS",
       "url": "#css"
     },
     {
-      "text": "Escaping JavaScript",
+      "text": "Escapování JavaScriptu",
       "url": "#javascript"
     }
   ],
@@ -2023,7 +2023,7 @@
       "url": "#overview"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptéry",
       "url": "#adapters"
     },
     {
@@ -2031,21 +2031,21 @@
       "url": "#usage"
     },
     {
-      "text": "Printing Messages",
+      "text": "Výpis zpráv",
       "url": "#printing"
     },
     {
-      "text": "Implicit Flush vs. Session",
+      "text": "Implicitní Flush vs. Session",
       "url": "#implicit-flush-vs-session"
     }
   ],
   "forms": [
     {
-      "text": "Forms",
+      "text": "Formuláře",
       "url": "#overview"
     },
     {
-      "text": "Initializing forms",
+      "text": "Inicializace formulářů",
       "url": "#initializing"
     },
     {
@@ -2077,7 +2077,7 @@
       "url": "#manager"
     },
     {
-      "text": "External Resources",
+      "text": "Externí zdroje",
       "url": "#external"
     }
   ],
@@ -2109,15 +2109,15 @@
       "url": "#overview"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptéry",
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementace vlastních adaptérů",
           "url": "#adapters-custom"
         }
       ]
@@ -2179,7 +2179,7 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Požadavky",
       "url": "#requirements",
       "menu": [
         {
@@ -2199,7 +2199,7 @@
       ]
     },
     {
-      "text": "Installation",
+      "text": "Instalace",
       "url": "#installation",
       "menu": [
         {
@@ -2211,7 +2211,7 @@
               "url": "#installation-linux-deb",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Instalace z repozitáře",
                   "url": "#installation-linux-deb-repository"
                 },
                 {
@@ -2223,7 +2223,7 @@
                   "url": "#installation-linux-debian-repository-nightly"
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Instalace Phalcon frameworku",
                   "url": "#installation-linux-debian-phalcon",
                   "menu": [
                     {
@@ -2247,7 +2247,7 @@
               "url": "#installation-linux-rpm",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Instalace z repozitáře",
                   "url": "#installation-linux-rpm-repository"
                 },
                 {
@@ -2262,7 +2262,7 @@
                   ]
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Instalace Phalcon frameworku",
                   "url": "#installation-linux-rpm-phalcon",
                   "menu": [
                     {
@@ -2328,7 +2328,7 @@
   ],
   "loader": [
     {
-      "text": "Requirements",
+      "text": "Požadavky",
       "url": "#overview"
     },
     {
@@ -2374,11 +2374,11 @@
       "url": "#overview"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptéry",
       "url": "#adapters"
     },
     {
-      "text": "Factory",
+      "text": "Továrna",
       "url": "#adapters-factory"
     },
     {
@@ -2386,7 +2386,7 @@
       "url": "#creating"
     },
     {
-      "text": "Transactions",
+      "text": "Transakce",
       "url": "#transactions"
     },
     {
@@ -2408,7 +2408,7 @@
       ]
     },
     {
-      "text": "Adapters",
+      "text": "Adaptéry",
       "url": "#usage",
       "menu": [
         {
@@ -2428,7 +2428,7 @@
           "url": "#usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementace vlastních adaptérů",
           "url": "#usage-custom"
         }
       ]
@@ -2440,7 +2440,7 @@
       "url": "#architecture"
     },
     {
-      "text": "Models",
+      "text": "Modely",
       "url": "#models"
     },
     {
@@ -2448,7 +2448,7 @@
       "url": "#views"
     },
     {
-      "text": "Controllers",
+      "text": "Controllers (Ovladače)",
       "url": "#controllers"
     }
   ],
@@ -2540,7 +2540,7 @@
   ],
   "reproducible-tests": [
     {
-      "text": "Creating a small script",
+      "text": "Vytvoření malého skriptu",
       "url": "#overview"
     },
     {
@@ -2616,7 +2616,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Routování",
       "url": "#overview"
     },
     {
@@ -2716,27 +2716,27 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Bezpečnost",
       "url": "#overview"
     },
     {
-      "text": "Password Hashing",
+      "text": "Hashování hesla",
       "url": "#hashing"
     },
     {
-      "text": "Cross-Site Request Forgery (CSRF) protection",
+      "text": "Ochrana před Cross-Site Request Forgery (CSRF)",
       "url": "#csrf"
     },
     {
-      "text": "Setting up the component",
+      "text": "Nastavení komponenty",
       "url": "#setup"
     },
     {
-      "text": "Random",
+      "text": "Náhodné generování",
       "url": "#random"
     },
     {
-      "text": "External Resources",
+      "text": "Externí zdroje",
       "url": "#resources"
     }
   ],
@@ -2750,7 +2750,7 @@
       "url": "#start",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#start-factory"
         }
       ]
@@ -2780,7 +2780,7 @@
       "url": "#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementace vlastních adaptérů",
       "url": "#custom-adapters"
     }
   ],
@@ -2954,11 +2954,11 @@
       "url": "#overview"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptéry",
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Továrna",
           "url": "#adapters-factory"
         }
       ]
@@ -2968,7 +2968,7 @@
       "url": "#usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementace vlastních adaptérů",
       "url": "#custom"
     }
   ],
@@ -2978,7 +2978,7 @@
       "url": "#basic"
     },
     {
-      "text": "File structure",
+      "text": "Struktura souborů",
       "url": "#file-structure"
     },
     {
@@ -3042,7 +3042,7 @@
       "url": "#structure"
     },
     {
-      "text": "Routing",
+      "text": "Routování",
       "url": "#routing"
     },
     {
@@ -3174,7 +3174,7 @@
       "url": "#overview"
     },
     {
-      "text": "Requirements",
+      "text": "Požadavky",
       "url": "#requirements"
     },
     {
@@ -3256,7 +3256,7 @@
       "url": "#callback"
     },
     {
-      "text": "Validation Messages",
+      "text": "Ověření zpráv",
       "url": "#messages"
     },
     {
@@ -3282,11 +3282,11 @@
   ],
   "views": [
     {
-      "text": "Using Views",
+      "text": "Použití šablon",
       "url": "#overview"
     },
     {
-      "text": "Integrating Views with Controllers",
+      "text": "Integrace pohledů s controllery",
       "url": "#integrating-views-with-controllers"
     },
     {
@@ -3370,35 +3370,35 @@
   ],
   "volt": [
     {
-      "text": "Volt: Template Engine",
+      "text": "Volt: Šablonovací systém",
       "url": "#overview"
     },
     {
-      "text": "Introduction",
+      "text": "Úvod",
       "url": "#introduction"
     },
     {
-      "text": "Activating Volt",
+      "text": "Aktivace Voltu",
       "url": "#setup"
     },
     {
-      "text": "Basic Usage",
+      "text": "Základní použití",
       "url": "#basic-usage"
     },
     {
-      "text": "Variables",
+      "text": "Proměnné",
       "url": "#variables"
     },
     {
-      "text": "Filters",
+      "text": "Filtry",
       "url": "#filters"
     },
     {
-      "text": "Comments",
+      "text": "Komentáře",
       "url": "#comments"
     },
     {
-      "text": "List of Control Structures",
+      "text": "Seznam kontrolních struktur",
       "url": "#control-structures",
       "menu": [
         {
@@ -3406,7 +3406,7 @@
           "url": "#control-structures-for"
         },
         {
-          "text": "Loop Controls",
+          "text": "Kontrola loopu",
           "url": "#control-structures-loops",
           "menu": [
             {
@@ -3420,63 +3420,63 @@
           ]
         },
         {
-          "text": "Loop Context",
+          "text": "Obsah loopu",
           "url": "#control-structures-loop",
           "menu": [
             {
-              "text": "Assignments",
+              "text": "Přiřazování",
               "url": "#assignments"
             },
             {
-              "text": "Expressions",
+              "text": "Výrazy",
               "url": "#expressions"
             }
           ]
         },
         {
-          "text": "Literals",
+          "text": "Literály",
           "url": "#expressions-literals"
         },
         {
-          "text": "Arrays",
+          "text": "Pole",
           "url": "#expressions-arrays"
         },
         {
-          "text": "Math",
+          "text": "Matematika",
           "url": "#expressions-math"
         },
         {
-          "text": "Comparisons",
+          "text": "Porovnání",
           "url": "#expressions-comparisons"
         },
         {
-          "text": "Logic",
+          "text": "Logika",
           "url": "#expressions-logic"
         },
         {
-          "text": "Other Operators",
+          "text": "Ostatní operátory",
           "url": "#expressions-other-operators"
         }
       ]
     },
     {
-      "text": "Tests",
+      "text": "Testy",
       "url": "#tests"
     },
     {
-      "text": "Macros",
+      "text": "Makra",
       "url": "#macros"
     },
     {
-      "text": "Using Tag Helpers",
+      "text": "Použití helper tagů",
       "url": "#tag-helpers"
     },
     {
-      "text": "Functions",
+      "text": "Funkce",
       "url": "#functions"
     },
     {
-      "text": "View Integration",
+      "text": "Integrace pohledů / view",
       "url": "#view-integrations",
       "menu": [
         {
@@ -3490,33 +3490,33 @@
       ]
     },
     {
-      "text": "Template Inheritance",
+      "text": "Dědičnost šablon",
       "url": "#template-inheritance",
       "menu": [
         {
-          "text": "Multiple Inheritance",
+          "text": "Vícenásobná dědičnost",
           "url": "#template-inheritance-multiple"
         }
       ]
     },
     {
-      "text": "Autoescape mode",
+      "text": "Autoescape režim",
       "url": "#autoescape"
     },
     {
-      "text": "Extending Volt",
+      "text": "Řozšíření Voltu",
       "url": "#extending",
       "menu": [
         {
-          "text": "Functions",
+          "text": "Funkce",
           "url": "#extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Filtry",
           "url": "#extending-filters"
         },
         {
-          "text": "Extensions",
+          "text": "Rozšíření",
           "url": "#extending-extensions"
         }
       ]
@@ -3530,17 +3530,17 @@
       "url": "#services-in-templates"
     },
     {
-      "text": "Stand-alone component",
+      "text": "Samostatné komponenty",
       "url": "#stand-alone"
     }
   ],
   "webserver-wamp": [
     {
-      "text": "Installation on WAMP",
+      "text": "Instalace: WAMP",
       "url": "#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Stažení správné verze Phalcon frameworku",
       "url": "#phalcon"
     },
     {
@@ -3554,11 +3554,11 @@
       "url": "#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Stažení správné verze Phalcon frameworku",
       "url": "#phalcon"
     },
     {
-      "text": "Screencast",
+      "text": "Video",
       "url": "#screencast"
     },
     {
