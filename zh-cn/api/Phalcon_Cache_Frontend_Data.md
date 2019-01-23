@@ -8,9 +8,9 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
-Allows to cache native PHP data in a serialized form
+允许缓存本机 PHP 数据中的序列化形式
 
 ```php
 <?php
@@ -68,11 +68,11 @@ Phalcon\Cache\Frontend\Data constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+返回缓存生存期
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+检查是否如果前端缓冲输出
 
 public **start** ()
 
@@ -80,16 +80,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+返回输出缓存的内容
 
 public **stop** ()
 
-Stops output frontend
+停止输出前端
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+将数据序列化存储他们之前
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes 后检索数据
