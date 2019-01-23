@@ -10,9 +10,9 @@ title: 'Phalcon\Config\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
-Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
+使用 adapter 选项加载配置适配器类，如果没有扩展提供，它将被添加到 文件的路径
 
 ```php
 <?php
