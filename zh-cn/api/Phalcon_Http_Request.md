@@ -8,9 +8,9 @@ title: 'Phalcon\Http\Request'
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
-Encapsulates request information for easy and secure access from application controllers.
+封装的一个容易和安全类，用于从应用程序控制器中获取请求信息。
 
 The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
 
@@ -43,11 +43,11 @@ public **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
@@ -66,7 +66,7 @@ $userEmail = $request->get("user_email", "email");
 
 public **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+获取从 $_POST 超全局应用筛选器如果需要如果未给定参数，$_POST 超全局变量返回
 
 ```php
 <?php
@@ -81,7 +81,7 @@ $userEmail = $request->getPost("user_email", "email");
 
 public **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from put request
+从提出请求获取变量
 
 ```php
 <?php
@@ -96,7 +96,7 @@ $userEmail = $request->getPut("user_email", "email");
 
 public **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+获取从 $_GET 超全局应用过滤器，如果需要如果未给定参数，$_GET 超全局变量，则返回
 
 ```php
 <?php
@@ -118,43 +118,43 @@ Helper to get data from superglobals, applying filters if needed. If no paramete
 
 public **getServer** (*mixed* $name)
 
-Gets variable from $_SERVER superglobal
+从 $_SERVER 获取超全局变量
 
 public **has** (*mixed* $name)
 
-Checks whether $_REQUEST superglobal has certain index
+检查是否 $_REQUEST 超全局变量有一定的指标
 
 public **hasPost** (*mixed* $name)
 
-Checks whether $_POST superglobal has certain index
+检查是否 $_POST 超全局变量有一定的指标
 
 public **hasPut** (*mixed* $name)
 
-Checks whether the PUT data has certain index
+检查PUT 数据是否存在
 
 public **hasQuery** (*mixed* $name)
 
-Checks whether $_GET superglobal has certain index
+检查是否 $_GET 超全局变量有一定的指标
 
 final public **hasServer** (*mixed* $name)
 
-Checks whether $_SERVER superglobal has certain index
+检查是否 $_SERVER 超全局变量有一定的指标
 
 final public **getHeader** (*mixed* $header)
 
-Gets HTTP header from request data
+从请求数据获取 HTTP 标头
 
 public **getScheme** ()
 
-Gets HTTP schema (http/https)
+获取 HTTP 架构 (http/https)
 
 public **isAjax** ()
 
-Checks whether request has been made using ajax
+检查有否使用 ajax 进行请求
 
 public **isSoap** ()
 
-Checks whether request has been made using SOAP
+检查有否使用 SOAP进行请求
 
 public **isSoapRequested** ()
 
@@ -162,7 +162,7 @@ Alias of isSoap(). It will be deprecated in future versions
 
 public **isSecure** ()
 
-Checks whether request has been made using any secure layer
+检查是否请求已使用任何安全层
 
 public **isSecureRequest** ()
 
@@ -170,23 +170,23 @@ Alias of isSecure(). It will be deprecated in future versions
 
 public **getRawBody** ()
 
-Gets HTTP raw request body
+获取 HTTP 原始请求正文
 
 public **getJsonRawBody** ([*mixed* $associative])
 
-Gets decoded JSON HTTP raw request body
+获取解码 JSON HTTP 原始请求正文
 
 public **getServerAddress** ()
 
-Gets active server address IP
+获取活动服务器 IP 地址
 
 public **getServerName** ()
 
-Gets active server name
+获取活动服务器名称
 
 public **getHttpHost** ()
 
-Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
+获取请求所使用的主机名称。 `Request::getHttpHost` 试图按以下顺序查找主机名称:-`$_SERVER["HTTP_HOST"]`-`$_SERVER["SERVER_NAME"]`-`$_SERVER["SERVER_ADDR"]` 或者 `Request::getHttpHost` 验证和清洁主机名称。 `Request::$_strictHostCheck` 可以用于验证主机名。 注： 验证和清洁有负面的影响，因为他们使用正则表达式。
 
 ```php
 <?php
@@ -212,19 +212,19 @@ $request->getHttpHost(); // example.com
 
 public **setStrictHostCheck** ([*mixed* $flag])
 
-Sets if the `Request::getHttpHost` method must be use strict validation of host name or not
+设置是否 `Request::getHttpHost` 方法必须使用严格验证的主机名或不
 
 public **isStrictHostCheck** ()
 
-Checks if the `Request::getHttpHost` method will be use strict validation of host name or not
+检查是否 `Request::getHttpHost` 方法将使用严格验证的主机名或不
 
 public **getPort** ()
 
-Gets information about the port on which the request is made.
+获取有关请求的端口的信息。
 
 final public **getURI** ()
 
-Gets HTTP URI which request has been made
+获取 HTTP URI 的请求
 
 public **getClientAddress** ([*mixed* $trustForwardedHeader])
 
@@ -232,19 +232,19 @@ Gets most possible client IPv4 Address. This method searches in $_SERVER["REMOTE
 
 final public **getMethod** ()
 
-Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. The method is always an uppercased string.
+获取如果设置 X HTTP 方法重写标题，并且如果该方法是一个职位，它用来确定"real"意在 HTTP 方法取得了哪个请求的 HTTP 方法。 _Method 请求参数还可以用于确定 HTTP 方法，但只有如果被称为 setHttpMethodParameterOverride(true)。 方法始终是 uppercased 的字符串。
 
 public **getUserAgent** ()
 
-Gets HTTP user agent used to made the request
+获取用于请求的 HTTP 用户代理
 
 public **isValidHttpMethod** (*mixed* $method)
 
-Checks if a method is a valid HTTP method
+如果一种方法是有效的 HTTP 方法将检查
 
 public **isMethod** (*mixed* $methods, [*mixed* $strict])
 
-Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
+检查如果 HTTP 方法匹配任何严格条件为真，它会检查如果验证方法时传递方法是真正的 HTTP 方法
 
 public **isPost** ()
 
@@ -288,11 +288,11 @@ Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
 public **hasFiles** ([*mixed* $onlySuccessful])
 
-Checks whether request include attached files
+检查请求是否包括附加文件
 
 final protected **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
-Recursively counts file in an array of files
+递归计数数组文件中的文件
 
 public **getUploadedFiles** ([*mixed* $onlySuccessful])
 
@@ -300,11 +300,11 @@ Gets attached files as Phalcon\Http\Request\File instances
 
 final protected **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *mixed* $prefix)
 
-Smooth out $_FILES to have plain array with all files uploaded
+理顺 $_FILES 有平原数组与上传的所有文件
 
 public **getHeaders** ()
 
-Returns the available headers in the request
+在请求中返回的可用的标题
 
 ```php
 <?php
@@ -326,44 +326,44 @@ Gets web page that refers active request. ie: https://www.google.com
 
 final protected **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
-Process a request header and return the one with best quality
+处理请求标头并返回一个以最佳的质量
 
 public **getContentType** ()
 
-Gets content type which request has been made
+获取所请求的内容类型
 
 public **getAcceptableContent** ()
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+获取数组与 mime/类型和他们从 _SERVER ["HTTP_ACCEPT"] 工作做一个浏览器客户所接受的质量
 
 public **getBestAccept** ()
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+获取最佳的 mime/type 的浏览器/客户从 _SERVER ["HTTP_ACCEPT"] 所接受
 
 public **getClientCharsets** ()
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+获取一个数据数组和他们从 _SERVER ["HTTP_ACCEPT_CHARSET"] 工作做一个浏览器/客户端所接受的数据
 
 public **getBestCharset** ()
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+获取最佳字符集的浏览器/客户从 _SERVER ["HTTP_ACCEPT_CHARSET"] 所接收
 
 public **getLanguages** ()
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+获取语言数组和他们从 _SERVER ["HTTP_ACCEPT_LANGUAGE"] 工作做一个浏览器客户所接受的质量
 
 public **getBestLanguage** ()
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+获取最好的语言接受由浏览器/客户端从 _SERVER ["HTTP_ACCEPT_LANGUAGE"]
 
 public **getBasicAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
+获取从 $_SERVER["PHP_AUTH_USER"] 的浏览器/客户所接受的身份验证信息
 
 public **getDigestAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+获取从 $_SERVER["PHP_AUTH_DIGEST"] 的浏览器/客户所接受的身份验证信息
 
 final protected **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
-Process a request header and return an array of values with their qualities
+处理一个请求头，并返回一个具有其质量的值数组
