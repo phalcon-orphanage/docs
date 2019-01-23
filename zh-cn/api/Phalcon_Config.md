@@ -8,9 +8,9 @@ title: 'Phalcon\Config'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
+Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. 它提供用于在应用程序中访问此配置数据的嵌套的对象属性基于用户数据。
 
 ```php
 <?php
@@ -46,7 +46,7 @@ Phalcon\Config constructor
 
 public **offsetExists** (*mixed* $index)
 
-Allows to check whether an attribute is defined using the array-syntax
+检查是否使用的数组的属性是否已定义
 
 ```php
 <?php
@@ -59,7 +59,7 @@ var_dump(
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
 
-Returns a value from current config using a dot separated path.
+从当前配置使用点分隔路径返回一个值。
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue])
 
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+从配置中获取属性，如果该属性没有定义则返回 null ，如果默认值存在且这个属性是完全为空或未定义的将返回默认值
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index)
 
-Gets an attribute using the array-syntax
+获取配置数组对应键名的值
 
 ```php
 <?php
@@ -107,7 +107,7 @@ $config["database"] = [
 
 public **offsetUnset** (*mixed* $index)
 
-Unsets an attribute using the array-syntax
+清空配置数组的这个键
 
 ```php
 <?php
@@ -118,7 +118,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config)
 
-Merges a configuration into the current one
+将配置合并到当前
 
 ```php
 <?php
@@ -137,7 +137,7 @@ $globalConfig->merge($appConfig);
 
 public **toArray** ()
 
-Converts recursively the object to an array
+将对象以递归方式的转换为数组
 
 ```php
 <?php
@@ -150,7 +150,7 @@ print_r(
 
 public **count** ()
 
-Returns the count of properties set in the config
+返回配置中设置的属性的计数
 
 ```php
 <?php
@@ -174,12 +174,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter])
 
-Sets the default path delimiter
+设置默认路径的分隔符
 
 public static **getPathDelimiter** ()
 
-Gets the default path delimiter
+获取默认路径的分隔符
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
-Helper method for merge configs (forwarding nested config instance)
+合并配置 （转发嵌套的配置实例） 的辅助方法
