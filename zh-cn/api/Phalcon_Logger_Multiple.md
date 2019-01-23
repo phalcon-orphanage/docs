@@ -6,7 +6,7 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
 Handles multiples logger handlers
 
@@ -46,28 +46,28 @@ Sends/Writes an critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Sends/Writes an emergency message to the log
+紧急消息发送/写入日志
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Sends/Writes a debug message to the log
+调试消息发送/写入日志
 
 public **error** (*mixed* $message, [*array* $context])
 
-Sends/Writes an error message to the log
+一条错误消息发送/写入日志
 
 public **info** (*mixed* $message, [*array* $context])
 
-Sends/Writes an info message to the log
+Info 消息发送/写入日志
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Sends/Writes a notice message to the log
+通知消息发送/写入日志
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Sends/Writes a warning message to the log
+一条警告消息发送/写入日志
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Sends/Writes an alert message to the log
+警报消息发送/写入日志
