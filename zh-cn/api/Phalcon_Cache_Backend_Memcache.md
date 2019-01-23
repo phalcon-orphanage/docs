@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Backend\Memcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend
+允许缓存输出片段、 PHP 数据或向 memcache 后端的原始数据
 
-This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter
+此适配器使用特殊 memcached 密钥"_PHCM"来存储适配器内部使用的所有密钥
 
 ```php
 <?php
@@ -55,27 +55,27 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Create internal connection to memcached
+创建内部连接到 memcached
 
 public **addServers** (*mixed* $host, *mixed* $port, [*mixed* $persistent])
 
-Add servers to memcache pool
+将服务器添加到 memcache 池
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+返回缓存的内容
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+将缓存的内容存储到文件后端和前端停止
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+将一个值从缓存中删除由它的键
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+查询现有的缓存的键。
 
 ```php
 <?php
@@ -89,19 +89,19 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+检查是否存在缓存并没有过期
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of given $keyName by $value
+增量的受到 $keyName $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+$keyName 通过减量给出 $value
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+立即使无效所有现有项目。
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -133,16 +133,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+停止前端, 不存储任何缓存的内容
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+检查最后一个缓存是否新鲜或缓存
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+检查缓存中是否已经开始缓冲或不
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+获取最后一个生命周期
