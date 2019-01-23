@@ -6,9 +6,9 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-Represents a single annotation in an annotations collection
+表示注释集合中的单个注释
 
 ## 方法
 
@@ -18,36 +18,36 @@ Phalcon\Annotations\Annotation constructor
 
 public **getName** ()
 
-Returns the annotation's name
+返回所批注的名称
 
 public *mixed* **getExpression** (*array* $expr)
 
-Resolves an annotation expression
+解析表达式注释
 
 public *array* **getExprArguments** ()
 
-Returns the expression arguments without resolving
+返回表达式参数没有解决
 
 public *array* **getArguments** ()
 
-Returns the expression arguments
+返回表达式参数
 
 public **numberArguments** ()
 
-Returns the number of arguments that the annotation has
+返回批注具有的参数数目
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+返回参数中的特定位置
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+返回参数中的特定位置
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-Returns a named argument
+返回一个已命名的参数
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-Returns a named parameter
+返回一个已命名的参数
