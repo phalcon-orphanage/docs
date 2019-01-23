@@ -802,7 +802,7 @@ Supported parameter types include the following:
 <table>
   <tr>
     <th>
-      Type
+      类型
     </th>
     
     <th>
