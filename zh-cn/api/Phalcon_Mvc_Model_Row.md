@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Row'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
@@ -16,15 +16,15 @@ This component allows Phalcon\Mvc\Model to return rows without an associated ent
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-Set the current object's state
+设置当前对象的状态
 
 public *boolean* **offsetExists** (*string* | *int* $index)
 
-Checks whether offset exists in the row
+检查行中是否存在偏移量
 
 public *string* | [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **offsetGet** (*string* | *int* $index)
 
-Gets a record in a specific position of the row
+获取记录中特定位置的行
 
 public **offsetSet** (*string* | *int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value)
 
@@ -62,4 +62,4 @@ Returns the instance as an array representation
 
 public *array* **jsonSerialize** ()
 
-Serializes the object for json_encode
+序列化的对象 json_encode
