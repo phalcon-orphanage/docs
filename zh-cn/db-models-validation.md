@@ -9,15 +9,15 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validating Models
+# 模型中验证数据
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## 验证数据完整性
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. 特别 `validation` 事件允许我们打电话内置验证器的记录。 Phalcon公开几个内置的验证器，可以用在这一阶段的验证。
 
-The following example shows how to use it:
+下面的示例演示如何使用它：
 
 ```php
 <?php
@@ -98,11 +98,11 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## 验证消息
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
+Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. 每个消息提供扩展的信息，如生成消息或消息类型的字段名称：
 
 ```php
 <?php
@@ -120,13 +120,13 @@ if ($robot->save() === false) {
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
-| Type                   | 描述                                                                                                                                 |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| 类型                     | 描述                                       |
+| ---------------------- | ---------------------------------------- |
+| `PresenceOf`           | 当字段在数据库上的非 null 属性与正试图插入/更新一个 null 值时，生成 |
+| `ConstraintViolation`  | 生成一个虚拟的外键字段部分试图插入/更新引用模型中并不存在一个值时        |
+| `InvalidValue`         | 当验证失败，因为一个无效的值时，生成                       |
+| `InvalidCreateAttempt` | 如果记录试图创建，但它已经存在，生成                       |
+| `InvalidUpdateAttempt` | 生产时记录试图更新，但它并不存在                         |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -166,11 +166,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## 验证失败的事件
 
 Another type of events are available when the data validation process finds any inconsistency:
 
-| Operation                | Name                | Explanation                                                            |
-| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
-| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+| 操作               | 名称                  | 注解                                 |
+| ---------------- | ------------------- | ---------------------------------- |
+| Insert or Update | `notSaved`          | 触发时，`INSERT` 或 `UPDATE` 操作因任何原因而失败 |
+| 插入、 删除或更新        | `onValidationFails` | 当任何数据操作操作失败时触发                     |
