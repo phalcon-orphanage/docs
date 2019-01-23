@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Router\Route'
 
 *implements* [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
 
-This class represents every route added to the router
+此类表示每个路由添加到路由器
 
 ## 方法
 
@@ -20,11 +20,11 @@ Phalcon\Mvc\Router\Route constructor
 
 public **compilePattern** (*mixed* $pattern)
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+从模式返回有效 PCRE 正则表达式替换占位符
 
 public **via** (*mixed* $httpMethods)
 
-Set one or more HTTP methods that constraint the matching of the route
+设置一个或多个 HTTP 方法的约束匹配的路由
 
 ```php
 <?php
@@ -42,23 +42,23 @@ $route->via(
 
 public **extractNamedParams** (*mixed* $pattern)
 
-Extracts parameters from a string
+从字符串中提取参数
 
 public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
-Reconfigure the route adding a new pattern and a set of paths
+重新配置路由添加一个新的模式和路径集
 
 public static **getRoutePaths** ([*mixed* $paths])
 
-Returns routePaths
+返回 routePaths
 
 public **getName** ()
 
-Returns the route's name
+返回路由的名称
 
 public **setName** (*mixed* $name)
 
-Sets the route's name
+设置路由的名称
 
 ```php
 <?php
@@ -100,11 +100,11 @@ $router->add(
 
 public **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+如果任何，返回 'before match' 回调
 
 public **match** (*mixed* $callback)
 
-Allows to set a callback to handle the request directly in the route
+允许设置回调来处理该请求直接在路线
 
 ```php
 <?php
@@ -122,31 +122,31 @@ $router->add(
 
 public **getMatch** ()
 
-Returns the 'match' callback if any
+如果任何，返回 'match' 回调
 
 public **getRouteId** ()
 
-Returns the route's id
+返回的路线 id
 
 public **getPattern** ()
 
-Returns the route's pattern
+返回路由的模式
 
 public **getCompiledPattern** ()
 
-Returns the route's compiled pattern
+返回路由的编译的模式
 
 public **getPaths** ()
 
-Returns the paths
+返回的路径
 
 public **getReversedPaths** ()
 
-Returns the paths using positions as keys and names as values
+返回的路径作为值作为键和名称使用位置
 
 public **setHttpMethods** (*mixed* $httpMethods)
 
-Sets a set of HTTP methods that constraint the matching of the route (alias of via)
+设置的 HTTP 方法的约束匹配的路由 （别名的通过）
 
 ```php
 <?php
@@ -158,11 +158,11 @@ $route->setHttpMethods(["GET", "POST"]);
 
 public **getHttpMethods** ()
 
-Returns the HTTP methods that constraint matching the route
+返回的 HTTP 方法的约束路由匹配的
 
 public **setHostname** (*mixed* $hostname)
 
-Sets a hostname restriction to the route
+设置主机名限制到route
 
 ```php
 <?php
@@ -173,24 +173,24 @@ $route->setHostname("localhost");
 
 public **getHostname** ()
 
-Returns the hostname restriction if any
+如果任何，返回主机名限制
 
 public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group)
 
-Sets the group associated with the route
+设置与路由关联的组
 
 public **getGroup** ()
 
-Returns the group associated with the route
+返回与路由关联的组
 
 public **convert** (*mixed* $name, *mixed* $converter)
 
-Adds a converter to perform an additional transformation for certain parameter
+添加一个转换器来为某些参数执行额外的转换
 
 public **getConverters** ()
 
-Returns the router converter
+返回路由器转换器
 
 public static **reset** ()
 
-Resets the internal route id generator
+重置内部路由 id 生成器
