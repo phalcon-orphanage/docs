@@ -21,7 +21,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本用法
 
 This component is designed be very simple to use:
 
@@ -149,7 +149,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 The following options are available to change the encryption behavior:
 
-| Name   | 描述                                                                                                                                                                    |
+| 名称     | 描述                                                                                                                                                                    |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -269,9 +269,9 @@ class SecretsController extends Controller
 
 ## 链接
 
-* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-* [Introduction to Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
+* [高级的加密标准 (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [分组密码是什么](https://en.wikipedia.org/wiki/Block_cipher)
+* [下一步：介绍](https://www.splashdata.com/splashid/blowfish.htm)
 * [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
