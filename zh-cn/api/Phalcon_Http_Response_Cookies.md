@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response\Cookies'
 
 *implements* [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
 
@@ -16,11 +16,11 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
