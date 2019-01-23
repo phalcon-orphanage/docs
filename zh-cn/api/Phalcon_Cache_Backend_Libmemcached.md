@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Libmemcached'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
 
 Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.
 
@@ -61,23 +61,23 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Create internal connection to memcached
+创建内部连接到 memcached
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+返回缓存的内容
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+将缓存的内容存储到文件后端和前端停止
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+将一个值从缓存中删除由它的键
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+查询现有的缓存的键。
 
 ```php
 <?php
@@ -91,19 +91,19 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+检查是否存在缓存并没有过期
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of given $keyName by $value
+增量的受到 $keyName $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+$keyName 通过减量给出 $value
 
 public **flush** ()
 
-Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
+立即使无效所有现有项目。 Memcached 不支持每个默认的 flush()。 如果你需要 flush() 支持，设置 $config["statsKey"]。 修改后的所有键都存储在"statsKey"。 注： statsKey 有负面的影响。
 
 ```php
 <?php
@@ -152,16 +152,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+停止前端, 不存储任何缓存的内容
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+检查最后一个缓存是否新鲜或缓存
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+检查缓存中是否已经开始缓冲或不
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+获取最后一个生命周期
