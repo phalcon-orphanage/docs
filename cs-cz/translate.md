@@ -15,7 +15,7 @@ The component `Phalcon\Translate` aids in creating multilingual applications. Ap
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptéry
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
@@ -25,7 +25,7 @@ This component makes use of adapters to read translation messages from different
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Továrna
 
 Loads Translate Adapter class using `adapter` option
 
