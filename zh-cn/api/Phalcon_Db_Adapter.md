@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Adapter'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
 Base class for Phalcon\Db adapters
 
@@ -16,15 +16,15 @@ Base class for Phalcon\Db adapters
 
 public **getDialectType** ()
 
-Name of the dialect used
+所使用的数据库方言, 可以参考: http://blog.csdn.net/jialinqiang/article/details/8679171
 
 public **getType** ()
 
-Type of database system the adapter is used for
+获取数据库系统的类型
 
 public **getSqlVariables** ()
 
-Active SQL bound parameter variables
+获取当前SQL语句绑定的参数列表
 
 public **__construct** (*array* $descriptor)
 
@@ -32,7 +32,7 @@ Phalcon\Db\Adapter constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the event manager
+设置事件管理器
 
 public **getEventsManager** ()
 
@@ -40,15 +40,15 @@ public **getEventsManager** ()
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect)
 
-Sets the dialect used to produce the SQL
+设置用于生成 SQL 的方言
 
 public **getDialect** ()
 
-Returns internal dialect instance
+返回内部方言实例
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Returns the first row in a SQL query result
+返回 SQL 查询结果中的第一行
 
 ```php
 <?php
@@ -65,7 +65,7 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Dumps the complete result of a query into an array
+将查询的完整结果转储到数组中
 
 ```php
 <?php
@@ -96,7 +96,7 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
-Returns the n'th field of first row in a SQL query result
+返回查询结果的第一行的第N个字段
 
 ```php
 <?php
@@ -116,7 +116,7 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserts data into a table using custom RDBMS SQL syntax
+使用自定义的RDBMS SQL语句向数据表中插入数据
 
 ```php
 <?php
@@ -135,12 +135,12 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
-Inserts data into a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句向数据表中插入数据
 
 ```php
 <?php
 
-// Inserting a new robot
+//插入一个新的机器人
 $success = $connection->insertAsDict(
     "robots",
     [
@@ -149,19 +149,19 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Next SQL sentence is sent to the database system
+//下面SQL语句被发送到数据库系统
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句向数据表中更新数据
 
 ```php
 <?php
 
-// Updating existing robot
+// 更新现有的机器人
 $success = $connection->update(
     "robots",
     ["name"],
@@ -169,10 +169,10 @@ $success = $connection->update(
     "id = 101"
 );
 
-// Next SQL sentence is sent to the database system
+// 这是在数据库系统中实际执行的语句
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
-// Updating existing robot with array condition and $dataTypes
+// 使用数组条件和 $dataTypes 更新现有的robot数据  
 $success = $connection->update(
     "robots",
     ["name"],
@@ -193,12 +193,12 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
+另一种更方便的语法,使用定制的RBDM SQL语法更新表上的数据.
 
 ```php
 <?php
 
-// Updating existing robot
+// 更新现有的机器人
 $success = $connection->updateAsDict(
     "robots",
     [
@@ -207,32 +207,32 @@ $success = $connection->updateAsDict(
     "id = 101"
 );
 
-// Next SQL sentence is sent to the database system
+// 这是在数据库系统中执行的语句
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 ```
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Deletes data from a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句在数据表中删除数据
 
 ```php
 <?php
 
-// Deleting existing robot
+// 删除现有的机器人
 $success = $connection->delete(
     "robots",
     "id = 101"
 );
 
-// Next SQL sentence is generated
+// 这是执行的语句
 DELETE FROM `robots` WHERE `id` = 101
 
 ```
 
 public **escapeIdentifier** (*array* | *string* $identifier)
 
-Escapes a column/table/schema name
+转义 行/表/列 的名字
 
 ```php
 <?php
@@ -252,11 +252,11 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList)
 
-Gets a list of columns
+获取一个列名列表
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
-Appends a LIMIT clause to $sqlQuery argument
+最佳一个 LIMIT 子句到 $sqlQuery 的参数中
 
 ```php
 <?php
@@ -267,7 +267,7 @@ echo $connection->limit("SELECT * FROM robots", 5);
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table
+判断表是否存在
 
 ```php
 <?php
@@ -280,7 +280,7 @@ var_dump(
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+判断视图是否存在
 
 ```php
 <?php
@@ -293,71 +293,71 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+返回使用FOR UPDATE子句修改的SQL
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+返回使用LOCK IN SHARE MODE子句修改的SQL
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Creates a table
+创建一个表
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Drops a table from a schema/database
+删除一个表从数据库或结构？
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Creates a view
+创建1个视图
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Drops a view
+删除一个视图
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Adds a column to a table
+向表中添加一列
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Modifies a table column based on a definition
+根据定义修改表格列
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Drops a column from a table
+从表中删除一列
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Adds an index to a table
+表中增加一个索引
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
-Drop an index from a table
+从表中清楚一个索引
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Adds a primary key to a table
+将主键加到表中
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Drops a table's primary key
+从表中删除一个主键
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Adds a foreign key to a table
+向表中添加一个外键
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Drops a foreign key from a table
+从表中删除一个外键
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Returns the SQL column definition from a column
+从列返回 SQL 列定义
 
 public **listTables** ([*mixed* $schemaName])
 
-List all tables on a database
+列出数据库中的所有表
 
 ```php
 <?php
@@ -370,7 +370,7 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-List all views on a database
+列出数据库中的所有视图
 
 ```php
 <?php
@@ -383,7 +383,7 @@ print_r(
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
-Lists table indexes
+列出表索引
 
 ```php
 <?php
@@ -396,7 +396,7 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Lists table references
+列出表引用
 
 ```php
 <?php
@@ -409,7 +409,7 @@ print_r(
 
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
-Gets creation options from a table
+获取表的选项
 
 ```php
 <?php
@@ -422,36 +422,36 @@ print_r(
 
 public **createSavepoint** (*mixed* $name)
 
-Creates a new savepoint
+创建一个新的保存点
 
 public **releaseSavepoint** (*mixed* $name)
 
-Releases given savepoint
+释放给定的事务保存点
 
 public **rollbackSavepoint** (*mixed* $name)
 
-Rollbacks given savepoint
+给定的事务保存点回滚
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
-Set if nested transactions should use savepoints
+设置嵌套事务是否应使用保存点
 
 public **isNestedTransactionsWithSavepoints** ()
 
-Returns if nested transactions should use savepoints
+返回嵌套事务是否应使用保存点
 
 public **getNestedTransactionSavepointName** ()
 
-Returns the savepoint name to use for nested transactions
+返回用于嵌套事务的保存点名称
 
 public **getDefaultIdValue** ()
 
-Returns the default identity value to be inserted in an identity column
+返回要插入到标识列中的默认标识值
 
 ```php
 <?php
 
-// Inserting a new robot with a valid default value for the column 'id'
+//为列'id'插入一个有效的默认值，创建新robots
 $success = $connection->insert(
     "robots",
     [
@@ -470,12 +470,13 @@ $success = $connection->insert(
 
 public **getDefaultValue** ()
 
-Returns the default value to make the RBDM use the default value declared in the table definition
+返回默认值, 使 RBDM 使用表定义中声明的默认值
 
 ```php
 <?php
 
-// Inserting a new robot with a valid default value for the column 'year'
+//为列'year'插入一个有效的默认值的新机器人
+
 $success = $connection->insert(
     "robots",
     [
@@ -492,31 +493,31 @@ $success = $connection->insert(
 
 public **supportSequences** ()
 
-Check whether the database system requires a sequence to produce auto-numeric values
+检查数据库系统是否需要序列来生成自动数值
 
 public **useExplicitIdValue** ()
 
-Check whether the database system requires an explicit value for identity columns
+检查数据库系统是否需要标识列的显式值
 
 public **getDescriptor** ()
 
-Return descriptor used to connect to the active database
+用于连接到活动数据库的返回描述符
 
 public *string* **getConnectionId** ()
 
-Gets the active connection unique identifier
+获取活动连接唯一标识符
 
 public **getSQLStatement** ()
 
-Active SQL statement in the object
+对象中的活动 SQL 语句
 
 public **getRealSQLStatement** ()
 
-Active SQL statement in the object without replace bound parameters
+不替换绑定参数的对象中的活动SQL语句
 
 public *array* **getSQLBindTypes** ()
 
-Active SQL statement in the object
+对象中的活动 SQL 语句
 
 abstract public **connect** ([*array* $descriptor]) inherited from [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
