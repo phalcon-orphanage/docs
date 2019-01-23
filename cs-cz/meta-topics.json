@@ -1,14 +1,14 @@
 [
     {
-        "text": "General",
+        "text": "Obecné",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Úvod",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Poznámky k vydání",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
@@ -17,7 +17,7 @@
                 "url": ""
             },
             {
-                "text": "Sponsors",
+                "text": "Sponzoři",
                 "url": "/sponsors"
             }
         ]
@@ -27,7 +27,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Přehled",
                 "url": "/contributions"
             },
             {
@@ -47,21 +47,21 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Testing guide",
                 "url": "testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Začínáme",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalace",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Instalace webserveru",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Prostředí",
         "url": "",
         "menu": [
             {
@@ -93,11 +93,11 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Vývojářské nástroje",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalace",
                 "url": "/devtools-installation"
             },
             {
@@ -135,7 +135,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Případ použití",
                 "url": "/use-case"
             }
         ]
@@ -157,11 +157,11 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Cli",
+                "text": "Command Line Interface (Cli)",
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI kontejner",
                 "url": "/di"
             },
             {
@@ -179,7 +179,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Konfigurace",
                 "url": "/config"
             },
             {
@@ -217,7 +217,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Modely",
                 "url": "/db-models"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Události",
                 "url": "/db-models-events"
             },
             {
@@ -245,7 +245,7 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Transakce",
                 "url": "/db-models-transactions"
             },
             {
@@ -263,11 +263,11 @@
         ]
     },
     {
-        "text": "Front End",
+        "text": "Frontend",
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Assety",
                 "url": "/assets"
             },
             {
@@ -275,7 +275,7 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formuláře",
                 "url": "/forms"
             },
             {
@@ -297,7 +297,7 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Aplikační logika",
         "url": "",
         "menu": [
             {
@@ -305,11 +305,11 @@
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Anotace",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Controllers (Ovladače)",
                 "url": "/controllers"
             },
             {
@@ -321,11 +321,11 @@
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtry",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Routování",
                 "url": "/routing"
             },
             {
@@ -361,7 +361,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Bezpečnost",
         "url": "",
         "menu": [
             {
@@ -369,7 +369,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Bezpečnost",
                 "url": "/security"
             }
         ]
