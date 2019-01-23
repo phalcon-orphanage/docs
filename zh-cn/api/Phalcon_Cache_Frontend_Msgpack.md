@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
 
-Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
+允许缓存本机 PHP 数据序列化的形式，使用 msgpack 扩展此适配器使用 Msgpack 前端来存储缓存的内容和需要 msgpack 扩展。
 
 ```php
 <?php
@@ -70,11 +70,11 @@ Phalcon\Cache\Frontend\Msgpack constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+返回缓存生存期
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+检查是否如果前端缓冲输出
 
 public **start** ()
 
@@ -82,16 +82,16 @@ Starts output frontend. Actually, does nothing
 
 public **getContent** ()
 
-Returns output cached content
+返回输出缓存的内容
 
 public **stop** ()
 
-Stops output frontend
+停止输出前端
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+将数据序列化存储他们之前
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes 后检索数据
