@@ -9,20 +9,20 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Flashing Messages
+# 阅后即焚
 
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 <a name='adapters'></a>
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
-| 适配器     | 描述                                                                                           | API                                                  |
-| ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
-| Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
+| 适配器     | 描述                          | API                                                  |
+| ------- | --------------------------- | ---------------------------------------------------- |
+| Direct  | 直接输出消息传递给阅后即焚               | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
+| Session | 临时存储的消息将在会话中，然后在下一个请求可以打印消息 | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
 
 <a name='usage'></a>
 
@@ -98,7 +98,7 @@ $this->flash->message('debug', "this is debug message, you don't say");
 
 <a name='printing'></a>
 
-## Printing Messages
+## 打印消息
 
 Messages sent to the flash service are automatically formatted with HTML:
 
