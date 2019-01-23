@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='models-metadata'></a>
 
-# Models Metadata
+# 模型元数据
 
 To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
 
@@ -34,20 +34,20 @@ print_r($dataTypes);
 
 <a name='caching-metadata'></a>
 
-## Caching Metadata
+## 缓存元数据
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| 适配器          | 描述                                                                                                                                                                                                                                                                                                                       | API                                                                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                    | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
-| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
-| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
-| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                           | `Phalcon\Mvc\Model\MetaData\MEmcache`                                                  |
-| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
-| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
-| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
-| XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. You can specify the lifetime of the metadata with options. This is one of the recommended ways to store metadata when the application is in production.                                                                            | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
+| 适配器          | 描述                                                                                                                                                     | API                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apc.php) to store the table metadata. 你可以与选项指定的元数据的生存期。 （推荐生产）。 | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
+| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                  | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
+| Libmemcached | 此适配器使用 [Memcached 服务器](https://www.memcached.org/) 来存储表的元数据。 在选项中指定了服务器参数，以及缓存生存期。 （推荐生产）                                                              | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
+| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. 你可以与选项指定的元数据的生存期。 （推荐生产）                        | `Phalcon\Mvc\Model\MetaData\MEmcache`                                                  |
+| 内存           | 此适配器是默认值。 只有在请求期间缓存元数据。 当完成请求时，元数据是作为请求正常记忆的一部分发布。 （开发模式建议）                                                                                            | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
+| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. 在选项中指定了服务器参数，以及缓存生存期。 （推荐生产）。                                                | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
+| Session      | 此适配器将元数据存储在 `$_SESSION` 超全局变量。 此适配器被建议只有当应用程序实际上使用少数几种模式。 元数据刷新每次启动新的会话。 这也需要使用 `session_start()` 来之前使用任何模式启动该会话。                                      | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
+| XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. 你可以与选项指定的元数据的生存期。 这是推荐的方式来存储元数据，当应用程序在生产中之一。                     | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 
 As other ORM's dependencies, the metadata manager is requested from the services container:
 
@@ -71,7 +71,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='metadata-strategies'></a>
 
-## Metadata Strategies
+## 元数据策略
 
 As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
@@ -102,13 +102,13 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-database-introspection'></a>
 
-### Database Introspection Strategy
+### 数据库反思策略
 
 This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 <a name='strategies-annotations'></a>
 
-### Annotations Strategy
+### 注释：
 
 This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
@@ -147,20 +147,20 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | 描述                                                |
-| -------- | ------------------------------------------------- |
-| Primary  | Mark the field as part of the table's primary key |
-| Identity | The field is an auto_increment/serial column      |
-| Column   | This marks an attribute as a mapped column        |
+| 名称       | 描述                      |
+| -------- | ----------------------- |
+| Primary  | 标记的字段作为表的主键的一部分         |
+| Identity | 该字段是 auto_increment/串行列 |
+| Column   | 这标志着作为映射的列属性            |
 
 The annotation `@Column` supports the following parameters:
 
-| Name                 | 描述                                                                                                                                                                            |
+| 名称                   | 描述                                                                                                                                                                            |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | column               | Real column name                                                                                                                                                              |
 | type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | The column's length if any                                                                                                                                                    |
-| nullable             | Set whether the column accepts null values or not                                                                                                                             |
+| length               | 任何列的长度                                                                                                                                                                        |
+| nullable             | 设置该列是否接受空值或不                                                                                                                                                                  |
 | skip_on_insert     | Skip this column on insert                                                                                                                                                    |
 | skip_on_update     | Skip this column on updates                                                                                                                                                   |
 | allow_empty_string | Column allow empty strings                                                                                                                                                    |
@@ -194,7 +194,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 
-## Manual Metadata
+## 手动的元数据
 
 Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
