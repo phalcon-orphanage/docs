@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Transaction'
 
 *implements* [Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
 
-Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
+事务是保护块 SQL 语句只是永久性的如果他们能成功作为一个原子操作。 Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
 
 ```php
 <?php
@@ -56,44 +56,44 @@ Phalcon\Mvc\Model\Transaction constructor
 
 public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
-Sets transaction manager related to the transaction
+设置事务管理器与事务有关的
 
 public **begin** ()
 
-Starts the transaction
+启动事务
 
 public **commit** ()
 
-Commits the transaction
+提交事务
 
 public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $rollbackRecord])
 
-Rollbacks the transaction
+回滚事务
 
 public **getConnection** ()
 
-Returns the connection related to transaction
+返回与事务相关的连接
 
 public **setIsNewTransaction** (*mixed* $isNew)
 
-Sets if is a reused transaction or new once
+设置重复使用的事务或启动一个新的
 
 public **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
-Sets flag to rollback on abort the HTTP connection
+设置标识回滚中止 HTTP 连接
 
 public **isManaged** ()
 
-Checks whether transaction is managed by a transaction manager
+检查是否事务都由事务管理器管理
 
 public **getMessages** ()
 
-Returns validations messages from last save try
+返回验证消息从上次保存试
 
 public **isValid** ()
 
-Checks whether internal connection is under an active transaction
+检查内部连接是否下一个活动事务
 
 public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record)
 
-Sets object which generates rollback action
+设置对象的操作将生成回滚操作
