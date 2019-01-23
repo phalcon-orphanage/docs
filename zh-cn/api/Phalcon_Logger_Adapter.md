@@ -8,7 +8,7 @@ title: 'Phalcon\Logger\Adapter'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
 
 Base class for Phalcon\Logger adapters
 
@@ -16,63 +16,63 @@ Base class for Phalcon\Logger adapters
 
 public **setLogLevel** (*mixed* $level)
 
-Filters the logs sent to the handlers that are less or equal than a specific level
+筛选日志发送到特定级别比都小于或等于的处理
 
 public **getLogLevel** ()
 
-Returns the current log level
+返回当前的日志级别
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Sets the message formatter
+设置消息格式化程序
 
 public **begin** ()
 
-Starts a transaction
+启动一个事务
 
 public **commit** ()
 
-Commits the internal transaction
+提交的内部事务
 
 public **rollback** ()
 
-Rollbacks the internal transaction
+回滚的内部事务
 
 public **isTransaction** ()
 
-Returns the whether the logger is currently in an active transaction or not
+返回是否记录器处于当前活动的事务或不
 
 public **critical** (*mixed* $message, [*array* $context])
 
-Sends/Writes a critical message to the log
+关键消息发送/写入日志
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Sends/Writes an emergency message to the log
+紧急消息发送/写入日志
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Sends/Writes a debug message to the log
+调试消息发送/写入日志
 
 public **error** (*mixed* $message, [*array* $context])
 
-Sends/Writes an error message to the log
+一条错误消息发送/写入日志
 
 public **info** (*mixed* $message, [*array* $context])
 
-Sends/Writes an info message to the log
+Info 消息发送/写入日志
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Sends/Writes a notice message to the log
+通知消息发送/写入日志
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Sends/Writes a warning message to the log
+一条警告消息发送/写入日志
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Sends/Writes an alert message to the log
+警报消息发送/写入日志
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
