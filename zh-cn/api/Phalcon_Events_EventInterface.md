@@ -6,7 +6,7 @@ title: 'Phalcon\Events\EventInterface'
 ---
 # Interface **Phalcon\Events\EventInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
 ## 方法
 
