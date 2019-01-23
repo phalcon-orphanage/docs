@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\Model'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 
@@ -39,16 +39,16 @@ Phalcon\Paginator\Adapter\Model constructor
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+返回的结果集显示在分页中一片
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set the current page number
+设置当前页码
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set current rows limit
+设置当前行数限制
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Get current rows limit
+获取当前行限制
