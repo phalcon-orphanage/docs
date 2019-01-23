@@ -10,9 +10,9 @@ title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-This component allows to build forms using an object-oriented interface
+此组件允许生成窗体使用面向对象的接口
 
 ## 方法
 
@@ -30,131 +30,131 @@ Phalcon\Forms\Form constructor
 
 public **setAction** (*mixed* $action)
 
-Sets the form's action
+设置表单的操作
 
 public **getAction** ()
 
-Returns the form's action
+返回表单的操作
 
 public **setUserOption** (*string* $option, *mixed* $value)
 
-Sets an option for the form
+设置表单的选项
 
 public **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Returns the value of an option if present
+返回选项的值，如果存在
 
 public **setUserOptions** (*array* $options)
 
-Sets options for the element
+该元素的设置选项
 
 public **getUserOptions** ()
 
-Returns the options for the element
+返回的元素的选项
 
 public **setEntity** (*object* $entity)
 
-Sets the entity related to the model
+设置实体模型相关的
 
 public *object* **getEntity** ()
 
-Returns the entity related to the model
+返回到模型相关的实体
 
 public **getElements** ()
 
-Returns the form elements added to the form
+返回添加到窗体的窗体元素
 
 public **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
-Binds data to the entity
+将数据绑定到实体
 
 public **isValid** ([*array* $data], [*object* $entity])
 
-Validates the form
+验证窗体
 
 public **getMessages** ([*mixed* $byItemName])
 
-Returns the messages generated in the validation
+返回生成验证中的消息
 
 public **getMessagesFor** (*mixed* $name)
 
-Returns the messages generated for a specific element
+返回特定元素生成的消息
 
 public **hasMessagesFor** (*mixed* $name)
 
-Check if messages were generated for a specific element
+检查是否消息生成特定元素
 
 public **add** ([Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) $element, [*mixed* $position], [*mixed* $type])
 
-Adds an element to the form
+将一个元素添加到窗体
 
 public **render** (*string* $name, [*array* $attributes])
 
-Renders a specific item in the form
+呈现窗体中的特定项
 
 public **get** (*mixed* $name)
 
-Returns an element added to the form by its name
+返回由其名称添加到窗体元素
 
 public **label** (*mixed* $name, [*array* $attributes])
 
-Generate the label of an element added to the form including HTML
+生成添加到窗体，包括 HTML 元素的标签
 
 public **getLabel** (*mixed* $name)
 
-Returns a label for an element
+返回元素的标签
 
 public **getValue** (*mixed* $name)
 
-Gets a value from the internal related entity or from the default value
+获取一个值，从内部相关实体或从默认值
 
 public **has** (*mixed* $name)
 
-Check if the form contains an element
+检查是否该窗体包含一个元素
 
 public **remove** (*mixed* $name)
 
-Removes an element from the form
+从窗体中移除一个元素
 
 public **clear** ([*array* $fields])
 
-Clears every element in the form to its default value
+清除每个元素的形式为其默认值
 
 public **count** ()
 
-Returns the number of elements in the form
+在窗体中返回的元素的数目
 
 public **rewind** ()
 
-Rewinds the internal iterator
+倒带内部迭代器
 
 public **current** ()
 
-Returns the current element in the iterator
+在迭代器返回的当前元素
 
 public **key** ()
 
-Returns the current position/key in the iterator
+在迭代器中返回每个该项当前的位置
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+将内部迭代指针移动到下一个位置
 
 public **valid** ()
 
-Check if the current element in the iterator is valid
+检查迭代器中的当前元素是否有效
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+设置事件管理器
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
