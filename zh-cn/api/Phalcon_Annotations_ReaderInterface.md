@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\ReaderInterface'
 ---
 # Interface **Phalcon\Annotations\ReaderInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
 ## 方法
 
@@ -16,4 +16,4 @@ Reads annotations from the class dockblocks, its methods and/or properties
 
 abstract public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-Parses a raw doc block returning the annotations found
+解析返回注释的原始文档块
