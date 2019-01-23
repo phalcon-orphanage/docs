@@ -10,9 +10,9 @@ title: 'Phalcon\Assets\Resource\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
 
-Represents Javascript resources
+它表示 Javascript 资源
 
 ## 方法
 
@@ -42,52 +42,52 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Asse
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's type
+设置资源的类型
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's path
+设置资源的路径
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+如果该资源是本地或外部，设置
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+如果该资源必须过滤或不，设置
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+设置额外的 HTML 属性
 
 public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+为生成的 HTML 设置目标 uri
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's source path
+设置资源的源路径
 
 public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's target path
+设置资源的目标路径
 
 public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+返回的资源的内容，如可以设置字符串可以选择一个基路径资源所在的位置
 
 public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the real target uri for the generated HTML
+真正的目标 uri 返回为生成的 HTML
 
 public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource is located
+返回资源所在的位置的完整位置
 
 public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource must be written
+返回完整的位置必须在其中写入资源
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gets the resource's key.
+获取资源的键。
