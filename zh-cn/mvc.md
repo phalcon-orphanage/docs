@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# MVC 架构
 
 Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
@@ -24,7 +24,7 @@ If you decide to use MVC, every request to your application resources will be ma
 
 ## 模型
 
-模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。 [Learn more](/4.0/en/models)
+模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 模型主要用于管理互动与相应的数据库表的规则。 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。 [Learn more](/4.0/en/models)
 
 <a name='views'></a>
 
