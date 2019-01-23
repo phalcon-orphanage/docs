@@ -8,12 +8,12 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
-Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
+删除字符对 JavaScript 无关紧要的。 将删除注释。 选项卡会替换为空格。 回车换行符将被替换。 大多数的空格和换行符将被删除。
 
 ## 方法
 
 public **filter** (*mixed* $content)
 
-Filters the content using JSMIN
+过滤器使用 JSMIN 的内容
