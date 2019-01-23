@@ -10,9 +10,9 @@ title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
 
-Specific functions for the Sqlite database system
+Sqlite 数据库系统的特定参数
 
 ```php
 <?php
@@ -48,7 +48,7 @@ print_r(
 
 public [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
-Lists table indexes
+列出表索引
 
 ```php
 <?php
@@ -61,15 +61,15 @@ print_r(
 
 public [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) **describeReferences** (*string* $table, [*string* $schema])
 
-Lists table references
+列出表引用
 
 public **useExplicitIdValue** ()
 
-Check whether the database system requires an explicit value for identity columns
+检查数据库系统是否需要标识列的显式值
 
 public **getDefaultValue** ()
 
-Returns the default value to make the RBDM use the default value declared in the table definition
+返回默认值, 使 RBDM 使用表定义中声明的默认值
 
 ```php
 <?php
@@ -293,27 +293,27 @@ var_dump(
 
 public **getInternalHandler** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Return internal PDO handler
+返回内部 PDO 处理程序
 
 public *array* **getErrorInfo** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Return the error info, if any
+返回错误信息 (如果有)
 
 public **getDialectType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Name of the dialect used
+所使用的数据库方言, 可以参考: http://blog.csdn.net/jialinqiang/article/details/8679171
 
 public **getType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Type of database system the adapter is used for
+获取数据库系统的类型
 
 public **getSqlVariables** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL bound parameter variables
+获取当前SQL语句绑定的参数列表
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Sets the event manager
+设置事件管理器
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
@@ -321,15 +321,15 @@ public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Ad
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Sets the dialect used to produce the SQL
+设置用于生成 SQL 的方言
 
 public **getDialect** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns internal dialect instance
+返回内部方言实例
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the first row in a SQL query result
+返回 SQL 查询结果中的第一行
 
 ```php
 <?php
@@ -346,7 +346,7 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Dumps the complete result of a query into an array
+将查询的完整结果转储到数组中
 
 ```php
 <?php
@@ -377,7 +377,7 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the n'th field of first row in a SQL query result
+返回查询结果的第一行的第N个字段
 
 ```php
 <?php
@@ -397,7 +397,7 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Inserts data into a table using custom RDBMS SQL syntax
+使用自定义的RDBMS SQL语句向数据表中插入数据
 
 ```php
 <?php
@@ -416,12 +416,12 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Inserts data into a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句向数据表中插入数据
 
 ```php
 <?php
 
-// Inserting a new robot
+//插入一个新的机器人
 $success = $connection->insertAsDict(
     "robots",
     [
@@ -430,19 +430,19 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Next SQL sentence is sent to the database system
+//下面SQL语句被发送到数据库系统
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Updates data on a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句向数据表中更新数据
 
 ```php
 <?php
 
-// Updating existing robot
+// 更新现有的机器人
 $success = $connection->update(
     "robots",
     ["name"],
@@ -450,10 +450,10 @@ $success = $connection->update(
     "id = 101"
 );
 
-// Next SQL sentence is sent to the database system
+// 这是在数据库系统中实际执行的语句
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
-// Updating existing robot with array condition and $dataTypes
+// 使用数组条件和 $dataTypes 更新现有的robot数据  
 $success = $connection->update(
     "robots",
     ["name"],
@@ -474,12 +474,12 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
+另一种更方便的语法,使用定制的RBDM SQL语法更新表上的数据.
 
 ```php
 <?php
 
-// Updating existing robot
+// 更新现有的机器人
 $success = $connection->updateAsDict(
     "robots",
     [
@@ -488,32 +488,32 @@ $success = $connection->updateAsDict(
     "id = 101"
 );
 
-// Next SQL sentence is sent to the database system
+// 这是在数据库系统中执行的语句
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 ```
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Deletes data from a table using custom RBDM SQL syntax
+使用自定义的RDBMS SQL语句在数据表中删除数据
 
 ```php
 <?php
 
-// Deleting existing robot
+// 删除现有的机器人
 $success = $connection->delete(
     "robots",
     "id = 101"
 );
 
-// Next SQL sentence is generated
+// 这是执行的语句
 DELETE FROM `robots` WHERE `id` = 101
 
 ```
 
 public **escapeIdentifier** (*array* | *string* $identifier) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Escapes a column/table/schema name
+转义 行/表/列 的名字
 
 ```php
 <?php
@@ -533,11 +533,11 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets a list of columns
+获取一个列名列表
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Appends a LIMIT clause to $sqlQuery argument
+最佳一个 LIMIT 子句到 $sqlQuery 的参数中
 
 ```php
 <?php
@@ -548,7 +548,7 @@ echo $connection->limit("SELECT * FROM robots", 5);
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Generates SQL checking for the existence of a schema.table
+判断表是否存在
 
 ```php
 <?php
@@ -561,7 +561,7 @@ var_dump(
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Generates SQL checking for the existence of a schema.view
+判断视图是否存在
 
 ```php
 <?php
@@ -574,71 +574,71 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns a SQL modified with a FOR UPDATE clause
+返回使用FOR UPDATE子句修改的SQL
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+返回使用LOCK IN SHARE MODE子句修改的SQL
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a table
+创建一个表
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a table from a schema/database
+删除一个表从数据库或结构？
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a view
+创建1个视图
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a view
+删除一个视图
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a column to a table
+向表中添加一列
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Modifies a table column based on a definition
+根据定义修改表格列
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a column from a table
+从表中删除一列
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds an index to a table
+表中增加一个索引
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drop an index from a table
+从表中清楚一个索引
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a primary key to a table
+将主键加到表中
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a table's primary key
+从表中删除一个主键
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a foreign key to a table
+向表中添加一个外键
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a foreign key from a table
+从表中删除一个外键
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the SQL column definition from a column
+从列返回 SQL 列定义
 
 public **listTables** ([*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-List all tables on a database
+列出数据库中的所有表
 
 ```php
 <?php
@@ -651,7 +651,7 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-List all views on a database
+列出数据库中的所有视图
 
 ```php
 <?php
@@ -664,7 +664,7 @@ print_r(
 
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets creation options from a table
+获取表的选项
 
 ```php
 <?php
@@ -677,36 +677,36 @@ print_r(
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a new savepoint
+创建一个新的保存点
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Releases given savepoint
+释放给定的事务保存点
 
 public **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Rollbacks given savepoint
+给定的事务保存点回滚
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Set if nested transactions should use savepoints
+设置嵌套事务是否应使用保存点
 
 public **isNestedTransactionsWithSavepoints** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns if nested transactions should use savepoints
+返回嵌套事务是否应使用保存点
 
 public **getNestedTransactionSavepointName** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the savepoint name to use for nested transactions
+返回用于嵌套事务的保存点名称
 
 public **getDefaultIdValue** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the default identity value to be inserted in an identity column
+返回要插入到标识列中的默认标识值
 
 ```php
 <?php
 
-// Inserting a new robot with a valid default value for the column 'id'
+//为列'id'插入一个有效的默认值，创建新robots
 $success = $connection->insert(
     "robots",
     [
@@ -725,24 +725,24 @@ $success = $connection->insert(
 
 public **supportSequences** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Check whether the database system requires a sequence to produce auto-numeric values
+检查数据库系统是否需要序列来生成自动数值
 
 public **getDescriptor** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Return descriptor used to connect to the active database
+用于连接到活动数据库的返回描述符
 
 public *string* **getConnectionId** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets the active connection unique identifier
+获取活动连接唯一标识符
 
 public **getSQLStatement** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object
+对象中的活动 SQL 语句
 
 public **getRealSQLStatement** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object without replace bound parameters
+不替换绑定参数的对象中的活动SQL语句
 
 public *array* **getSQLBindTypes** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object
+对象中的活动 SQL 语句
