@@ -6,7 +6,7 @@ title: 'Phalcon\FilterInterface'
 ---
 # Interface **Phalcon\FilterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
 
 ## Methods
 
