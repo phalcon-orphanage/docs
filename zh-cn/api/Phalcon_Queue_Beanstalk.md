@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk'
 ---
 # Class **Phalcon\Queue\Beanstalk**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
@@ -45,15 +45,15 @@ public **__construct** ([*array* $parameters])
 
 public **connect** ()
 
-Makes a connection to the Beanstalkd server
+使连接到 Beanstalkd 服务器
 
 public **put** (*mixed* $data, [*array* $options])
 
-Puts a job on the queue using specified tube.
+在队列中使用指定的管提出一份工作。
 
 public **reserve** ([*mixed* $timeout])
 
-Reserves/locks a ready job from the specified tube.
+从指定的管道中储备/锁定一份现成的工作。
 
 public **choose** (*mixed* $tube)
 
@@ -61,63 +61,63 @@ Change the active tube. By default the tube is "default".
 
 public **watch** (*mixed* $tube)
 
-The watch command adds the named tube to the watch list for the current connection.
+监视命令添加命名的管到当前连接的观察名单。
 
 public **ignore** (*mixed* $tube)
 
-It removes the named tube from the watch list for the current connection.
+它从当前连接的表列表中移除命名的管。
 
 public **pauseTube** (*mixed* $tube, *mixed* $delay)
 
-Can delay any new job being reserved for a given time.
+可以延迟正在为某一给定时间保留任何新工作。
 
 public **kick** (*mixed* $bound)
 
-The kick command applies only to the currently used tube.
+踢命令仅适用于当前使用的管。
 
 public **stats** ()
 
-Gives statistical information about the system as a whole.
+给出了系统作为一个整体的统计信息。
 
 public **statsTube** (*mixed* $tube)
 
-Gives statistical information about the specified tube if it exists.
+如果它存在，给出了指定的管的统计信息。
 
 public **listTubes** ()
 
-Returns a list of all existing tubes.
+返回列表中的所有现有管。
 
 public **listTubeUsed** ()
 
-Returns the tube currently being used by the client.
+返回当前正在使用的客户端的管。
 
 public **listTubesWatched** ()
 
-Returns a list tubes currently being watched by the client.
+返回当前正在监视客户端列表管。
 
 public **peekReady** ()
 
-Inspect the next ready job.
+检查接下来的准备工作。
 
 public **peekBuried** ()
 
-Return the next job in the list of buried jobs.
+在埋地作业的列表返回下一份工作。
 
 public **peekDelayed** ()
 
-Return the next job in the list of buried jobs.
+在埋地作业的列表返回下一份工作。
 
 public **jobPeek** (*mixed* $id)
 
-The peek commands let the client inspect a job in the system.
+Peek命令让客户端检查系统中的作业。
 
 final public **readStatus** ()
 
-Reads the latest status from the Beanstalkd server
+从 Beanstalkd 服务器读取的最新状态
 
 final public **readYaml** ()
 
-Fetch a YAML payload from the Beanstalkd server
+从 Beanstalkd 服务器获取一个 YAML 有效载荷
 
 public **read** ([*mixed* $length])
 
@@ -129,8 +129,8 @@ Writes data to the socket. Performs a connection if none is available
 
 public **disconnect** ()
 
-Closes the connection to the beanstalk server.
+关闭到beanstalk 服务器的连接。
 
 public **quit** ()
 
-Simply closes the connection.
+简单地关闭连接。
