@@ -6,7 +6,7 @@ title: 'Phalcon\Cli\RouterInterface'
 ---
 # Interface **Phalcon\Cli\RouterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
 
 ## 方法
 
