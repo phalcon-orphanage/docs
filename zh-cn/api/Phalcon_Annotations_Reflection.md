@@ -6,9 +6,9 @@ title: 'Phalcon\Annotations\Reflection'
 ---
 # Class **Phalcon\Annotations\Reflection**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
-Allows to manipulate the annotations reflection in an OO manner
+允许操作注释反射以面向对象的方式
 
 ```php
 <?php
@@ -36,15 +36,15 @@ Phalcon\Annotations\Reflection constructor
 
 public **getClassAnnotations** ()
 
-Returns the annotations found in the class docblock
+返回在类的文档块中找到的注释
 
 public **getMethodsAnnotations** ()
 
-Returns the annotations found in the methods' docblocks
+返回在方法的文档块中找到的注释
 
 public **getPropertiesAnnotations** ()
 
-Returns the annotations found in the properties' docblocks
+返回在属性的文档块中找到的注释
 
 public *array* **getReflectionData** ()
 
