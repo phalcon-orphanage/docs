@@ -98,18 +98,12 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Továrna
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). Ten, který budeš používát závisí na požadavcích tvé aplikace. The traditional way of instantiating such an adapter is as follows:
 
 ```php
-<?php
-
-use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
-
-$reader = new MemoryAdapter();
-
-// .....
+<?php use Phalcon\Annotations\Adapter\Memory as MemoryAdapter; $reader = new MemoryAdapter(); // .....
 ```
 
 However you can also utilize the factory method to achieve the same thing:
@@ -434,4 +428,4 @@ The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterf
 
 ## Externí zdroje
 
-* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Vytvoření a initializování vlastního modelu s anotacemi](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
