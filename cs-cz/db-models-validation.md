@@ -9,15 +9,15 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validating Models
+# Validace modelů
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Validace Integrity dat
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon poskytuje několik předdefinovaných validátorů, které lze použít v této fázi ověřování.
 
-The following example shows how to use it:
+Následující příklad ukazuje, jak validator používat:
 
 ```php
 <?php
@@ -98,7 +98,7 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Ověření zpráv
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -120,13 +120,13 @@ if ($robot->save() === false) {
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
-| Type                   | Description                                                                                                                        |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
-| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
-| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
-| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
-| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
+| Type                   | Description                                                                                                                                |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `PresenceOf`           | Je generována, když pole s atributem má jinou hodnotu než null a v databázi se snažíme vložit nebo aktualizovat hodnotu null               |
+| `ConstraintViolation`  | Je generována, když je součástí pole virtuální cizí klíč a snažíme se vložit či aktualizovat hodnotu, která neexistuje v odkazované modelu |
+| `InvalidValue`         | Je generována, když neprojde některý z validátorů                                                                                          |
+| `InvalidCreateAttempt` | Je generována, když se pokusíme vložit záznam, který již existuje                                                                          |
+| `InvalidUpdateAttempt` | Je generována, když se snažíme updatovat záznam, který již neexistuje                                                                      |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -166,11 +166,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## Ověření chybných Eventů
 
 Another type of events are available when the data validation process finds any inconsistency:
 
 | Operation                | Name                | Explanation                                                            |
 | ------------------------ | ------------------- | ---------------------------------------------------------------------- |
 | Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |
+| Insert, Delete or Update | `onValidationFails` | Spustí se při selhani některé z operace pro manipulaci s daty          |
