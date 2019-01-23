@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Logging
+# 日志记录
 
 [Phalcon\Logger](api/Phalcon_Logger) is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the [Phalcon\Logger](api/Phalcon_Logger) for every logging need your application has, from debugging processes to tracing application flow.
 
 <a name='adapters'></a>
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
@@ -47,7 +47,7 @@ $logger = Factory::load($options);
 
 <a name='creating'></a>
 
-## Creating a Log
+## 创建一个日志
 
 The example below shows how to create a log and add messages to it:
 
@@ -148,7 +148,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transactions
+## 交易
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -179,7 +179,7 @@ $logger->commit();
 
 <a name='multiple-handlers'></a>
 
-## Logging to Multiple Handlers
+## 登录到多个处理程序
 
 [Phalcon\Logger](api/Phalcon_Logger) can send messages to multiple handlers with a just single call:
 
@@ -271,7 +271,7 @@ The [Phalcon\Logger\FormatterInterface](api/Phalcon_Logger_FormatterInterface) i
 
 <a name='usage'></a>
 
-## Adapters
+## 适配器
 
 The following examples show the basic use of each adapter:
 
