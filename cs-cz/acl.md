@@ -27,7 +27,7 @@ Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two togethe
 
 <a name='setup'></a>
 
-## Creating an ACL
+## Vytvoření ACL
 
 [Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with operations and subjects. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
@@ -670,7 +670,7 @@ It is a good practice to not use serialization of the ACL during development, to
 
 <a name='events'></a>
 
-## Events
+## Události
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
