@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Manager'
 
 *implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
 
 A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.
 
@@ -68,15 +68,15 @@ Returns the dependency injection container
 
 public **setDbService** (*mixed* $service)
 
-Sets the database service used to run the isolated transactions
+设置用于运行隔离级别的事务的数据库服务
 
 public *string* **getDbService** ()
 
-Returns the database service used to isolate the transaction
+返回用于隔离该事务的数据库服务
 
 public **setRollbackPendent** (*mixed* $rollbackPendent)
 
-Set if the transaction manager must register a shutdown function to clean up pendent transactions
+如果事务管理器必须注册关机功能清理下垂交易，设置
 
 public **getRollbackPendent** ()
 
@@ -84,7 +84,7 @@ Check if the transaction manager is registering a shutdown function to clean up 
 
 public **has** ()
 
-Checks whether the manager has an active transaction
+检查是否经理有一个活动事务
 
 public **get** ([*mixed* $autoBegin])
 
@@ -92,32 +92,32 @@ Returns a new \Phalcon\Mvc\Model\Transaction or an already created once This met
 
 public **getOrCreateTransaction** ([*mixed* $autoBegin])
 
-Create/Returns a new transaction or an existing one
+创建/返回到新事务或一个现有
 
 public **rollbackPendent** ()
 
-Rollbacks active transactions within the manager
+回滚活动事务管理器中
 
 public **commit** ()
 
-Commits active transactions within the manager
+提交活动事务管理器中
 
 public **rollback** ([*boolean* $collect])
 
-Rollbacks active transactions within the manager Collect will remove the transaction from the manager
+回滚活动事务管理器收集内的将从管理器删除交易记录
 
 public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a rollbacked transaction
+通知关于回滚的事务管理器
 
 public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a committed transaction
+通知关于已提交的事务管理器
 
 protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Removes transactions from the TransactionManager
+从事务管理器删除事务
 
 public **collectTransactions** ()
 
-Remove all the transactions from the manager
+从管理器中删除的所有的事务
