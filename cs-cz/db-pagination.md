@@ -27,7 +27,7 @@ This component makes use of adapters to encapsulate different sources of data:
 
 <a name='factory'></a>
 
-## Factory
+## Továrna
 
 Loads Paginator Adapter class using `adapter` option
 
@@ -178,7 +178,7 @@ The `$page` object has the following attributes:
 | ------------- | ------------------------------------------------------ |
 | `items`       | The set of records to be displayed at the current page |
 | `current`     | The current page                                       |
-| `before`      | The previous page to the current one                   |
+| `před`        | The previous page to the current one                   |
 | `next`        | The next page to the current one                       |
 | `last`        | The last page in the set of records                    |
 | `total_pages` | The number of pages                                    |
