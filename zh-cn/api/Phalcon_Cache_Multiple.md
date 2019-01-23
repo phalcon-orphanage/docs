@@ -6,9 +6,9 @@ title: 'Phalcon\Cache\Multiple'
 ---
 # Class **Phalcon\Cache\Multiple**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
-Allows to read to chained backend adapters writing to multiple backends
+允许读取写入多个后端的链接后端适配器
 
 ```php
 <?php
@@ -77,28 +77,28 @@ Phalcon\Cache\Multiple constructor
 
 public **push** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backend)
 
-Adds a backend
+添加后端
 
 public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
 
-Returns a cached content reading the internal backends
+返回缓存的内容，阅读，对内部的后端
 
 public **start** (*string* | *int* $keyName, [*int* $lifetime])
 
-Starts every backend
+开始每个后端
 
 public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into all backends and stops the frontend
+将缓存的内容存储到所有的后端和前端停止
 
 public *boolean* **delete** (*string* | *int* $keyName)
 
-Deletes a value from each backend
+从每个后端删除一个值
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists in at least one backend
+检查缓存中是否存在中至少一个后端
 
 public **flush** ()
 
-Flush all backend(s)
+刷新所有 backend(s)
