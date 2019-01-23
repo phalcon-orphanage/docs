@@ -25,7 +25,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 The following are the built-in filters provided by this component:
 
-| Name      | 描述                                                                                            |
+| 名称        | 描述                                                                                            |
 | --------- | --------------------------------------------------------------------------------------------- |
 | absint    | Casts the value as an integer and returns the absolute value of it.                           |
 | alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
