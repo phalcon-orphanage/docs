@@ -133,7 +133,7 @@ Those changes are outlined in the [rewrite rules](/4.0/en/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## 处理程序
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
@@ -284,7 +284,7 @@ class OrdersController extends Controller
 }
 ```
 
-Since our controllers extend the [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller), all the dependency injection services are available with their respective registration names. For example:
+Since our controllers extend the [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller), all the dependency injection services are available with their respective registration names. 例如：
 
 ```php
 <?php
@@ -446,7 +446,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 <a name='routing-handlers-not-found'></a>
 
-### Not found (404)
+### 未找到 (404)
 
 Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
@@ -997,14 +997,14 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 
 以下事件被支持︰
 
-| 事件名称               | 触发器                                                               | 可以停止操作吗？ |
-| ------------------ | ----------------------------------------------------------------- |:--------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |    是的    |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |    是的    |
-| afterExecuteRoute  | Handler just finished running                                     |    否     |
-| beforeNotFound     | Route has not been found                                          |    是的    |
-| afterHandleRoute   | Route just finished executing                                     |    是的    |
-| afterBinding       | Triggered after models are bound but before executing the handler |    是的    |
+| 事件名称               | 触发器                     | 可以停止操作吗？ |
+| ------------------ | ----------------------- |:--------:|
+| beforeHandleRoute  | 主要方法叫; 路由还未启动？          |    是的    |
+| beforeExecuteRoute | 路由已经匹配，有效的处理，但是处理程序尚未执行 |    是的    |
+| afterExecuteRoute  | 处理程序只完成运行               |    否     |
+| beforeNotFound     | 路由找不到，可以执行的             |    是的    |
+| afterHandleRoute   | 路由刚执行完毕                 |    是的    |
+| afterBinding       | 触发模型绑定之后、 但在执行的处理程序之前   |    是的    |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1089,11 +1089,11 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | 描述                                             |
-| ------ | ---------------------------------------------- |
-| before | Before the handler has been executed           |
-| after  | After the handler has been executed            |
-| final  | After the response has been sent to the caller |
+| 事件     | 描述         |
+| ------ | ---------- |
+| before | 在执行该处理程序之前 |
+| after  | 在执行该处理程序后  |
+| final  | 后响应已发送给调用者 |
 
 <h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 
