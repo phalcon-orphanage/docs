@@ -10,9 +10,9 @@ title: 'Phalcon\Paginator\Adapter\QueryBuilder'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
-Pagination using a PHQL query builder as source of data
+分页使用 PHQL 作为数据源的查询生成器
 
 ```php
 <?php
@@ -40,28 +40,28 @@ public **__construct** (*array* $config)
 
 public **getCurrentPage** ()
 
-Get the current page number
+获取当前页码
 
 public **setQueryBuilder** ([Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) $builder)
 
-Set query builder object
+设置的查询生成器对象
 
 public **getQueryBuilder** ()
 
-Get query builder object
+获取查询生成器对象
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+返回的结果集显示在分页中一片
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set the current page number
+设置当前页码
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set current rows limit
+设置当前行数限制
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Get current rows limit
+获取当前行限制
