@@ -53,18 +53,18 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. 以下事件被支持︰
 
-| 事件名称                 | 触发器                                                                                                                                                                                                            | 可以停止操作吗？ | 触发条件                  |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- |
-| beforeDispatchLoop   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | 是的       | Listeners             |
-| beforeDispatch       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | 是的       | Listeners             |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | 是的       | Listeners/Controllers |
-| initialize           | Allow to globally initialize the controller in the request                                                                                                                                                     | 否        | 控制器                   |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | 否        | Listeners/Controllers |
-| beforeNotFoundAction | Triggered when the action was not found in the controller                                                                                                                                                      | 是的       | Listeners             |
-| beforeException      | Triggered before the dispatcher throws any exception                                                                                                                                                           | 是的       | Listeners             |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | 是的       | Listeners             |
-| afterDispatchLoop    | Triggered after exiting the dispatch loop                                                                                                                                                                      | 否        | Listeners             |
-| afterBinding         | Triggered after models are bound but before executing route                                                                                                                                                    | 是的       | Listeners/Controllers |
+| 事件名称                 | 触发器                                                                                                                                                     | 可以停止操作吗？ | 触发条件                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- |
+| beforeDispatchLoop   | 在进入调度循环之前触发。 此时，dispatcher不知道要执行的控制器或操作是否存在。 调度程序只知道路由器传递的信息。                                                                                           | 是的       | Listeners             |
+| beforeDispatch       | 进入调度循环后触发。 此时，dispatcher不知道要执行的控制器或操作是否存在。 调度程序只知道路由器传递的信息。                                                                                             | 是的       | Listeners             |
+| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist. | 是的       | Listeners/Controllers |
+| initialize           | 允许全局初始化请求中的控制器                                                                                                                                          | 否        | 控制器                   |
+| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action   | 否        | Listeners/Controllers |
+| beforeNotFoundAction | 当控制器中没有找到操作时触发                                                                                                                                          | 是的       | Listeners             |
+| beforeException      | 在dispatcher抛出任何异常之前触发                                                                                                                                   | 是的       | Listeners             |
+| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action   | 是的       | Listeners             |
+| afterDispatchLoop    | 退出调度循环后触发                                                                                                                                               | 否        | Listeners             |
+| afterBinding         | 在模型被绑定但在执行路由之前触发                                                                                                                                        | 是的       | Listeners/Controllers |
 
 The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
 
@@ -128,7 +128,7 @@ class PostsController extends Controller
 
 <a name='forwarding'></a>
 
-## Forwarding to other actions
+## 转发到其他操作
 
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can access to certain options, redirect users to other screens or simply reuse code.
 
@@ -166,14 +166,14 @@ More forwarding examples:
 ```php
 <?php
 
-// Forward flow to another action in the current controller
+// 将流转发到当前控制器中的另一个动作
 $this->dispatcher->forward(
     [
         'action' => 'search'
     ]
 );
 
-// Forward flow to another action in the current controller
+// 将流转发到当前控制器中的另一个动作
 // passing parameters
 $this->dispatcher->forward(
     [
@@ -185,7 +185,7 @@ $this->dispatcher->forward(
 
 A `forward` action accepts the following parameters:
 
-| Parameter    | 描述              |
+| 参数           | 描述              |
 | ------------ | --------------- |
 | `controller` | 要转发的有效控制器名称。    |
 | `action`     | 要转发的有效方法名称。     |
@@ -194,7 +194,7 @@ A `forward` action accepts the following parameters:
 
 <a name='forwarding-events-manager'></a>
 
-### Using the Events Manager
+### 使用事件管理器
 
 You can use the `dispatcher::beforeForward` event to change modules and redirect easier and "cleaner":
 
@@ -343,7 +343,7 @@ $di->set(
 
 <a name='getting-parameters'></a>
 
-## Getting Parameters
+## 获取参数
 
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable).
 
@@ -376,13 +376,13 @@ class PostsController extends Controller
 
 <a name='preparing-actions'></a>
 
-## Preparing actions
+## 准备方法
 
 You can also define an arbitrary schema for actions `before` in the dispatch loop.
 
 <a name='preparing-actions-camelizing-action-names'></a>
 
-### Camelize action names
+### Camelize动作名称
 
 If the original URL is: `https://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
 
@@ -421,7 +421,7 @@ $di->set(
 
 <a name='preparing-actions-removing-legacy-extensions'></a>
 
-### Remove legacy extensions
+### 删除遗留的扩展
 
 If the original URL always contains a `.php` extension:
 
@@ -636,7 +636,7 @@ class PostsController extends Controller
 
 <a name='handling-404'></a>
 
-## Handling Not-Found Exceptions
+## 处理" Not-Found"异常
 
 Using the [EventsManager](/4.0/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
@@ -736,6 +736,6 @@ class ExceptionsPlugin
 
 <a name='custom'></a>
 
-## Implementing your own Dispatcher
+## 实现你自己的调度器
 
 The [Phalcon\Mvc\DispatcherInterface](api/Phalcon_Mvc_DispatcherInterface) interface must be implemented to create your own dispatcher replacing the one provided by Phalcon.
