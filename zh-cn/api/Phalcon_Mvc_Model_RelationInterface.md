@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\RelationInterface'
 ---
 # Interface **Phalcon\Mvc\Model\RelationInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relationinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relationinterface.zep)
 
 ## 方法
 
