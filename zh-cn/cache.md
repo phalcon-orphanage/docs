@@ -15,7 +15,7 @@ Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently 
 
 <a name='implementation'></a>
 
-## When to implement cache?
+## 当执行缓存？
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
