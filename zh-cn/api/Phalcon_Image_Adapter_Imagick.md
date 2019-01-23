@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Adapter\Imagick'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 Image manipulation support. Allows images to be resized, cropped, etc.
 
@@ -31,7 +31,7 @@ if ($image->save()) {
 
 public static **check** ()
 
-Checks if Imagick is enabled
+检查是否启用了 Imagick
 
 public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
@@ -39,7 +39,7 @@ public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
 protected **_resize** (*mixed* $width, *mixed* $height)
 
-Execute a resize.
+执行调整大小。
 
 protected **_liquidRescale** (*mixed* $width, *mixed* $height, *mixed* $deltaX, *mixed* $rigidity)
 
@@ -47,67 +47,67 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 protected **_crop** (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)
 
-Execute a crop.
+执行剪裁
 
 protected **_rotate** (*mixed* $degrees)
 
-Execute a rotation.
+执行旋转。
 
 protected **_flip** (*mixed* $direction)
 
-Execute a flip.
+执行一个翻转。
 
 protected **_sharpen** (*mixed* $amount)
 
-Execute a sharpen.
+执行锐化。
 
 protected **_reflection** (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)
 
-Execute a reflection.
+执行一种反射。
 
 protected **_watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $image, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity)
 
-Execute a watermarking.
+执行的水印。
 
 protected **_text** (*mixed* $text, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity, *mixed* $r, *mixed* $g, *mixed* $b, *mixed* $size, *mixed* $fontfile)
 
-Execute a text
+执行文本
 
 protected **_mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $image)
 
-Composite one image onto another
+将一个图像合成到另一个图像上
 
 protected **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
 
-Execute a background.
+执行一个背景。
 
 protected **_blur** (*mixed* $radius)
 
-Blur image
+模糊图像。
 
 protected **_pixelate** (*mixed* $amount)
 
-Pixelate image
+像素化图像
 
 protected **_save** (*mixed* $file, *mixed* $quality)
 
-Execute a save.
+执行保存。
 
 protected **_render** (*mixed* $extension, *mixed* $quality)
 
-Execute a render.
+执行一个渲染。
 
 public **__destruct** ()
 
-Destroys the loaded image to free up resources.
+销毁加载的图像以释放资源。
 
 public **getInternalImInstance** ()
 
-Get instance
+获取实例
 
 public **setResourceLimit** (*mixed* $type, *mixed* $limit)
 
-Sets the limit for a particular resource in megabytes
+设置特定的资源限制以兆字节为单位
 
 public **getImage** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -119,23 +119,23 @@ public **getRealpath** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_A
 
 public **getWidth** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Image width
+图片宽度
 
 public **getHeight** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Image height
+图像高度
 
 public **getType** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Image type Driver dependent
+图像类型和驱动程序有关
 
 public **getMime** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Image mime type
+图像 mime 类型
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resize the image to the given size
+将图像调整为给定大小
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -143,52 +143,52 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Crop an image to the given size
+作物对给定大小的图像
 
 public **rotate** (*mixed* $degrees) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Rotate the image by a given amount
+旋转图像，按给定的数量
 
 public **flip** (*mixed* $direction) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Flip the image along the horizontal or vertical axis
+翻转图像沿水平或垂直轴
 
 public **sharpen** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Sharpen the image by a given amount
+一个给定值锐化图像
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Add a reflection to an image
+向图像添加一个反射
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Add a watermark to an image with the specified opacity
+向指定的不透明度设置为图像添加水印
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Add a text to an image with a specified opacity
+将文本添加到具有指定的不透明度的图像
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Composite one image onto another
+将一个图像合成到另一个图像上
 
 public **background** (*mixed* $color, [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Set the background color of an image
+设置图像的背景颜色
 
 public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Blur image
+模糊图像。
 
 public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Pixelate image
+像素化图像
 
 public **save** ([*mixed* $file], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Save the image
+保存图像
 
 public **render** ([*mixed* $ext], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Render the image and return the binary string
+呈现图像，且返回二进制字符串
