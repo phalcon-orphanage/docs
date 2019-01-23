@@ -11,7 +11,7 @@ version: '4.0'
 
 # 使用模型
 
-模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
+模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 模型主要用于管理互动与相应的数据库表的规则。 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
@@ -167,7 +167,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## 对对象的理解记录
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
@@ -311,7 +311,7 @@ $robots = Robots::find(
 
 可用的查询选项有：
 
-| Parameter     | 描述                                                                                                                                           | 示例                                                                   |
+| 参数            | 描述                                                                                                                                           | 示例                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions.       | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                    | `'columns' => 'id, name'`                                         |
@@ -1094,10 +1094,10 @@ foreach ($robots as $robot) {
 
 以下事件可以用来定义可以执行删除操作时执行的自定义业务规则：
 
-| Operation | Name         | 可以停止操作吗？ | Explanation                              |
-| --------- | ------------ |:--------:| ---------------------------------------- |
-| Deleting  | afterDelete  |    否     | Runs after the delete operation was made |
-| Deleting  | beforeDelete |    是的    | Runs before the delete operation is made |
+| 操作       | 名称           | 可以停止操作吗？ | 注解         |
+| -------- | ------------ |:--------:| ---------- |
+| Deleting | afterDelete  |    否     | 运行删除操作后    |
+| Deleting | beforeDelete |    是的    | 在做删除操作之前运行 |
 
 With the above events can also define business rules in the models:
 
@@ -1203,7 +1203,7 @@ foreach ($robots as $robot) {
 
 <a name='table-prefixes'></a>
 
-## Table prefixes
+## 表前缀
 
 If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
 
@@ -1369,7 +1369,7 @@ class Robots extends Model
 
 ## 独立列映射
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. 例如：
 
 ```php
 <?php
@@ -1573,7 +1573,7 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## 设置多个数据库
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1614,7 +1614,7 @@ $di->set(
 );
 ```
 
-Then, in the `initialize()` method, we define the connection service for the model:
+然后，在 `initialize()` 方法中，我们定义连接服务模型：
 
 ```php
 <?php
@@ -1708,9 +1708,9 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## Injecting services into Models
+## 服务注入模型
 
-You may be required to access the application services within a model, the following example explains how to do that:
+您可能需要访问应用程序服务在模型内的，下面的示例说明了如何做到这一点：
 
 ```php
 <?php
