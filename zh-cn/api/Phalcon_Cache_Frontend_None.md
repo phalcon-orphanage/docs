@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\None'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
@@ -58,28 +58,28 @@ foreach ($robots as $robot) {
 
 public **getLifetime** ()
 
-Returns cache lifetime, always one second expiring content
+返回缓存生存期，总是一秒过期内容
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output, always false
+检查是否如果前端总是 false 缓冲输出，
 
 public **start** ()
 
-Starts output frontend
+开始输出前端
 
 public *string* **getContent** ()
 
-Returns output cached content
+返回输出缓存的内容
 
 public **stop** ()
 
-Stops output frontend
+停止输出前端
 
 public **beforeStore** (*mixed* $data)
 
-Prepare data to be stored
+准备要存储的数据
 
 public **afterRetrieve** (*mixed* $data)
 
-Prepares data to be retrieved to user
+准备数据检索到用户
