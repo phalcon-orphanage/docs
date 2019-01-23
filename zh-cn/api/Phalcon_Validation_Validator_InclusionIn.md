@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\Validator\InclusionIn'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
 
-Check if a value is included into a list of values
+检查是否值包含到一个列表中的值
 
 ```php
 <?php
