@@ -8,9 +8,9 @@ title: 'Phalcon\Loader'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
-This component helps to load your project classes automatically based on some conventions
+此组件帮助加载自动基于一些约定你项目类
 
 ```php
 <?php
@@ -49,15 +49,15 @@ public **getEventsManager** ()
 
 public **setExtensions** (*array* $extensions)
 
-Sets an array of file extensions that the loader must try in each attempt to locate the file
+设置数组加载程序必须尝试在每次尝试找到该文件的文件扩展名
 
 public **getExtensions** ()
 
-Returns the file extensions registered in the loader
+返回加载器中注册的文件扩展名
 
 public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
-Register namespaces and their related directories
+注册命名空间和其相关的目录
 
 public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](Phalcon_Loader)
 
@@ -85,15 +85,15 @@ protected **prepareNamespace** (*array* $namespace)
 
 public **getNamespaces** ()
 
-Returns the namespaces currently registered in the autoloader
+返回当前已注册的自动加载器的命名空间
 
 public **registerDirs** (*array* $directories, [*mixed* $merge])
 
-Register directories in which "not found" classes could be found
+注册可以在其中找到"没有发现"类的目录
 
 public **getDirs** ()
 
-Returns the directories currently registered in the autoloader
+返回当前已注册的自动加载的目录
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
@@ -101,36 +101,36 @@ Registers files that are "non-classes" hence need a "require". This is very usef
 
 public **getFiles** ()
 
-Returns the files currently registered in the autoloader
+返回当前已注册的自动加载的文件
 
 public **registerClasses** (*array* $classes, [*mixed* $merge])
 
-Register classes and their locations
+注册类和它们的位置
 
 public **getClasses** ()
 
-Returns the class-map currently registered in the autoloader
+返回当前已注册的自动加载的类映射
 
 public **register** ([*mixed* $prepend])
 
-Register the autoload method
+注册自动加载方法
 
 public **unregister** ()
 
-Unregister the autoload method
+注销自动加载方法
 
 public **loadFiles** ()
 
-Checks if a file exists and then adds the file by doing virtual require
+如果文件存在，然后将该文件添加做虚拟的检查要求
 
 public **autoLoad** (*mixed* $className)
 
-Autoloads the registered classes
+支持自动装载注册类
 
 public **getFoundPath** ()
 
-Get the path when a class was found
+当一个类被发现获取的路径
 
 public **getCheckedPath** ()
 
-Get the path the loader is checking for a path
+获取路径检查加载程序的路径
