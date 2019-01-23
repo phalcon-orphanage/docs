@@ -6,7 +6,7 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
 ## 方法
 
@@ -130,6 +130,6 @@ abstract public **clear** ()
 
 ...
 
-abstract public **render** ([*mixed* $attributes])
+abstract public **render** ([*mixed* $attributes])\
 
 ...
