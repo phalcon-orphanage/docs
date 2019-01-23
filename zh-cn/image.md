@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Images
+# 图片
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
 <a name='adapters'></a>
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
