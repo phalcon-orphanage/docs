@@ -153,7 +153,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `columns`    | An array with a set of table columns                                                                                                        |    Ne    |
 | `indexes`    | An array with a set of table indexes.                                                                                                       |   Ano    |
 | `references` | An array with a set of table references (foreign keys).                                                                                     |   Ano    |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Ano    |
+| `Možnosti`   | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Ano    |
 
 <a name='class-anatomy-columns'></a>
 
@@ -171,7 +171,7 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 | `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Ano    |
 | `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Ano    |
 | `first`         | Column must be placed at first position in the column order                                                                                |   Ano    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Ano    |
+| `po`            | Column must be placed after indicated column                                                                                               |   Ano    |
 
 Database migrations support the following database column types:
 
