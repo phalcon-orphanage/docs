@@ -8,9 +8,9 @@ title: 'Phalcon\Http\Cookie'
 
 *implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Provide OO wrappers to manage a HTTP cookie
+提供面向对象包装器来管理 HTTP cookie
 
 ## 方法
 
@@ -20,31 +20,31 @@ Phalcon\Http\Cookie constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Sets the cookie's value
+设置 cookie 的值
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Returns the cookie's value
+返回的 cookie 的值
 
 public **send** ()
 
-Sends the cookie to the HTTP client Stores the cookie definition in session
+发送到 HTTP 客户端 cookie 在会话中存储的 cookie 定义
 
 public **restore** ()
 
-Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
+从会话恢复 cookie，因为它是设置此方法设置的 cookie 相关信息将自动在内部调用的读取所以通常你不需要调用它
 
 public **delete** ()
 
-Deletes the cookie by setting an expire time in the past
+删除 cookie 将过期时间设置在过去
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Sets if the cookie must be encrypted/decrypted automatically
+如果该 cookie 必须加密/解密自动，设置
 
 public **isUsingEncryption** ()
 
-Check if the cookie is using implicit encryption
+如果该 cookie 使用隐式加密检查
 
 public **setExpiration** (*mixed* $expire)
 
-Sets the cookie's expiration time
+设置 cookie 的过期时间
 
 public **getExpiration** ()
 
-Returns the current expiration time
+返回当前的过期时间
 
 public **setPath** (*mixed* $path)
 
-Sets the cookie's expiration time
+设置 cookie 的过期时间
 
 public **getName** ()
 
-Returns the current cookie's name
+返回当前 cookie 的名称
 
 public **getPath** ()
 
-Returns the current cookie's path
+返回当前 cookie 路径
 
 public **setDomain** (*mixed* $domain)
 
-Sets the domain that the cookie is available to
+设置 cookie 是可用的域
 
 public **getDomain** ()
 
-Returns the domain that the cookie is available to
+返回的 cookie 是可用的域
 
 public **setSecure** (*mixed* $secure)
 
-Sets if the cookie must only be sent when the connection is secure (HTTPS)
+如果安全 (HTTPS) 连接时，必须只有发送 cookie，设置
 
 public **getSecure** ()
 
-Returns whether the cookie must only be sent when the connection is secure (HTTPS)
+返回是否只必须发送 cookie 安全 (HTTPS) 连接时
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Sets if the cookie is accessible only through the HTTP protocol
+如果该 cookie 是只能通过 HTTP 协议访问，设置
 
 public **getHttpOnly** ()
 
-Returns if the cookie is accessible only through the HTTP protocol
+返回如果 cookie 是只能通过 HTTP 协议访问
 
 public **__toString** ()
 
-Magic __toString method converts the cookie's value to string
+神奇的 __toString 方法将 cookie 的值转换为字符串
