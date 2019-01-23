@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# Tutorial - základní
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
