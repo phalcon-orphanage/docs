@@ -575,4 +575,4 @@ $eventsManager->attach(
 
 ## Externí zdroje
 
-* [MVC examples on Github](https://github.com/phalcon/mvc)
+* [MVC examples on GitHub](https://github.com/phalcon/mvc)
