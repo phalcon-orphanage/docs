@@ -311,7 +311,7 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### 利用关系
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -439,12 +439,12 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | 描述                                                              | Implicit Method |
-| ---------------- | --------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly         | findFirst()     |
-| Has-One          | Returns a model instance of the related record directly         | findFirst()     |
-| Has-Many         | Returns a collection of model instances of the referenced model | find            |
-| Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型                             | （复杂的查询）         |
+| 类型               | 描述                                  | 隐式方法        |
+| ---------------- | ----------------------------------- | ----------- |
+| Belongs-To       | 直接返回相关记录模型实例                        | findFirst() |
+| Has-One          | 直接返回相关记录模型实例                        | findFirst() |
+| Has-Many         | 返回引用模型的模型实例的集合                      | find        |
+| Has-Many-to-Many | 返回一个集合的引用模型的模型实例，它隐式对 '内部联接' 所涉及的模型 | （复杂的查询）     |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -807,7 +807,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### 级联/限制行动
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -918,7 +918,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 ## 在结果集的操作
 
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+If a resultset is composed of complete objects, model operations can be performed on those objects. 例如：
 
 ```php
 <?php
