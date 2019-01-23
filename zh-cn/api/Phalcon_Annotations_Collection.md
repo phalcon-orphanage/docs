@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Collection'
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -36,40 +36,40 @@ Phalcon\Annotations\Collection constructor
 
 public **count** ()
 
-Returns the number of annotations in the collection
+返回集合中的批注
 
 public **rewind** ()
 
-Rewinds the internal iterator
+倒带内部迭代器
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-Returns the current annotation in the iterator
+在迭代器返回当前注释
 
 public **key** ()
 
-Returns the current position/key in the iterator
+在迭代器中返回每个该项当前的位置
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+将内部迭代指针移动到下一个位置
 
 public **valid** ()
 
-Check if the current annotation in the iterator is valid
+检查当前注释在迭代器是否有效
 
 public **getAnnotations** ()
 
-Returns the internal annotations as an array
+以数组形式返回内部注释
 
 public **get** (*string* $name)
 
-Returns the first annotation that match a name
+返回的名称匹配的第一个注释
 
 public **getAll** (*string* $name)
 
-Returns all the annotations that match a name
+返回的名称匹配的所有注释
 
 public **has** (*string* $name)
 
-Check if an annotation exists in a collection
+检查集合中是否存在注释
