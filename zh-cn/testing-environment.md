@@ -31,7 +31,7 @@ Recently however, we have redoubled our efforts to create this environment and w
 
 <a name='installation'></a>
 
-# Installation
+# 安装
 
 You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
 
@@ -220,7 +220,7 @@ zephir build
 
 ## Check extensions
 
-Type
+类型
 
 ```bash
 php -m
