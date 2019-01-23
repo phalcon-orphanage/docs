@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Adapter'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
 
 This is the base class for Phalcon\Annotations adapters
 
@@ -16,28 +16,28 @@ This is the base class for Phalcon\Annotations adapters
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+设置批注分析器
 
 public **getReader** ()
 
-Returns the annotation reader
+返回批注读者
 
 public **get** (*string* | *object* $className)
 
-Parses or retrieves all the annotations found in a class
+解析或检索发现在类中的所有批注
 
 public **getMethods** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+返回该类的所有方法中发现的批注
 
 public **getMethod** (*mixed* $className, *mixed* $methodName)
 
-Returns the annotations found in a specific method
+返回特定方法中找到的注释
 
 public **getProperties** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+返回该类的所有方法中发现的批注
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-Returns the annotations found in a specific property
+返回在特定的属性中找到的注释
