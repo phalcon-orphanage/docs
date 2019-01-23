@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Represents an asset resource
+表示一个静态资源资源
 
 ```php
 <?php
@@ -49,52 +49,52 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-Sets the resource's type
+设置资源的类型
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+设置资源的路径
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+如果该资源是本地或外部，设置
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+如果该资源必须过滤或不，设置
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+设置额外的 HTML 属性
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+为生成的 HTML 设置目标 uri
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+设置资源的源路径
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+设置资源的目标路径
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+返回的资源的内容，如可以设置字符串可以选择一个基路径资源所在的位置
 
 public **getRealTargetUri** ()
 
-Returns the real target uri for the generated HTML
+真正的目标 uri 返回为生成的 HTML
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+返回资源所在的位置的完整位置
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+返回完整的位置必须在其中写入资源
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+获取资源的键。
