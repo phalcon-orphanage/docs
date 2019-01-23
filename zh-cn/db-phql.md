@@ -387,7 +387,7 @@ WHERE `artists`.`genre` = 'Trip-Hop'
 
 <a name='aggregations'></a>
 
-### Aggregations
+### 聚合
 
 The following examples show how to use aggregations in PHQL:
 
