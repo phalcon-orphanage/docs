@@ -10,7 +10,7 @@ title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
@@ -30,7 +30,7 @@ public **getEventsManager** ()
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Register an array of modules present in the application
+注册模块目前在应用程序中的数组
 
 ```php
 <?php
@@ -52,31 +52,31 @@ $this->registerModules(
 
 public **getModules** ()
 
-Return the modules registered in the application
+返回在应用程序中注册模块
 
 public **getModule** (*mixed* $name)
 
-Gets the module definition registered in the application via module name
+获取注册的应用程序通过模块名称的模块定义
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Sets the module name to be used if the router doesn't return a valid module
+设置要用于如果路由器不返回有效的模块的模块名称
 
 public **getDefaultModule** ()
 
-Returns the default module name
+返回默认模块名称
 
 abstract public **handle** ()
 
-Handles a request
+处理请求
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
