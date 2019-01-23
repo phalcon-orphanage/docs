@@ -65,9 +65,9 @@ $acl->setDefaultAction(Acl::ALLOW);
 
 <a name='adding-operations'></a>
 
-## Adding Operations
+## Προσθήκη Λειτουργιών
 
-As mentioned above, a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) is an object that can or cannot access a set of [Subject](api/Phalcon_Acl_Subject) in the access list.
+Όπως αναφέρθηκε παραπάνω, η [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) είναι ένα αντικείμενο που μπορεί ή όχι να έχει πρόσβαση σε ένα σύνολο [θέματων](api/Phalcon_Acl_Subject) στη λίστα πρόσβασης.
 
 There are two ways of adding operations to our list. * by using a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) object or * using a string, representing the name of the operation
 
@@ -107,9 +107,9 @@ $acl->addOperation('guest');
 
 <a name='adding-subjects'></a>
 
-## Adding Subjects
+## Προσθήκη Θεμάτων
 
-A [Subject](api/Phalcon_Acl_Subject) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Also it is important to add related actions to a subject so that the ACL can understand what it should control.
+Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να ελεχθεί. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Also it is important to add related actions to a subject so that the ACL can understand what it should control.
 
 There are two ways of adding subjects to our list. * by using a [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) object or * using a string, representing the name of the operation
 
