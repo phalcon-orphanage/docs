@@ -8,9 +8,9 @@ title: 'Phalcon\Cache\Frontend\Output'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
 
-Allows to cache output fragments captured with ob_* functions
+允许缓存输出片段与 ob_ * 函数捕获
 
 ```php <?php
 
@@ -26,11 +26,11 @@ Phalcon\Cache\Frontend\Output constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+返回缓存生存期
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+检查是否如果前端缓冲输出
 
 public **start** ()
 
@@ -38,16 +38,16 @@ Starts output frontend. Currently, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+返回输出缓存的内容
 
 public **stop** ()
 
-Stops output frontend
+停止输出前端
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+将数据序列化存储他们之前
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes 后检索数据
