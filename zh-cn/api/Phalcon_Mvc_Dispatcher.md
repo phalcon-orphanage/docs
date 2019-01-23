@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Mvc\DispatcherInterface](Phalcon_Mvc_DispatcherInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
 
 Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
@@ -53,7 +53,7 @@ Sets the default controller suffix
 
 public **setDefaultController** (*mixed* $controllerName)
 
-Sets the default controller name
+设置默认控制器名称
 
 public **setControllerName** (*mixed* $controllerName)
 
@@ -77,15 +77,15 @@ Gets previous dispatched action name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Throws an internal exception
+将引发内部异常
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles a user exception
+处理用户异常
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action.
+将转发到另一个的控制器操作的执行流程。
 
 ```php
 <?php
@@ -145,7 +145,7 @@ Possible controller class name that will be located to dispatch the request
 
 public **getLastController** ()
 
-Returns the latest dispatched controller
+返回最新的派遣的控制器
 
 public **getActiveController** ()
 
@@ -153,11 +153,11 @@ Returns the active controller in the dispatcher
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -201,7 +201,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default action name
+设置默认操作名称
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
