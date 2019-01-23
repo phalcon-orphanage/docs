@@ -40,7 +40,7 @@ Services included are:
 
 <a name='installation'></a>
 
-## Installation
+## 安装
 
 <a name='installation-composer'></a>
 
@@ -105,7 +105,7 @@ docker-compose build
 To start the application and run the containers in the background, use following command inside project root:
 
 ```bash
-# You can use here your prefered project name with "-p my-app" parameter
+# 你可以在这里通过 "-p my-app" 参数使用你的首选项目名
 $ docker-compose up -d
 ```
 
