@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Model\Behavior\SoftDelete'
 
 *implements* [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
 
-Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
+它将记录标记为, 而不是永久删除记录, 从而更改标志列的值
 
 ## 方法
 
