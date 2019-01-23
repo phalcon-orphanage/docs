@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Message\Group'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
 
 Represents a group of validation messages
 
@@ -100,7 +100,7 @@ Returns the number of messages in the list
 
 public **rewind** ()
 
-Rewinds the internal iterator
+倒带内部迭代器
 
 public **current** ()
 
@@ -108,11 +108,11 @@ Returns the current message in the iterator
 
 public **key** ()
 
-Returns the current position/key in the iterator
+在迭代器中返回每个该项当前的位置
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+将内部迭代指针移动到下一个位置
 
 public **valid** ()
 
