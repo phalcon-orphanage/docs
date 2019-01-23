@@ -19,11 +19,11 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 ## 下载
 
-You can download or clone a cross platform package containing the developer tools from [Github](https://github.com/phalcon/phalcon-devtools).
+You can download or clone a cross platform package containing the developer tools from [GitHub](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## 安装
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -370,7 +370,7 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## 将工具与 phpstorm ide 集成
 
 The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
