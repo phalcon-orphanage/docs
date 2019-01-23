@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
-Represents an inline asset
+表示内联资源
 
 ```php
 <?php
@@ -43,16 +43,16 @@ Phalcon\Assets\Inline constructor
 
 public **setType** (*mixed* $type)
 
-Sets the inline's type
+设置内联的类型
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+如果该资源必须过滤或不，设置
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+设置额外的 HTML 属性
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+获取资源的键。
