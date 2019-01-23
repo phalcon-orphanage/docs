@@ -29,7 +29,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Továrna
 
 <a name='factory'></a>
 
@@ -1071,7 +1071,7 @@ $connection->createTable(
 | `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Ano    |
 | `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Ano    |
 | `first`         | Column must be placed at first position in the column order                                                                                |   Ano    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Ano    |
+| `po`            | Column must be placed after indicated column                                                                                               |   Ano    |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 
@@ -1090,7 +1090,7 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 | `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    Ne    |
 | `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Ano    |
 | `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Ano    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Ano    |
+| `Možnosti`   | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Ano    |
 
 <a name='tables-altering'></a>
 
