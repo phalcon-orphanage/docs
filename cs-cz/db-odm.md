@@ -387,7 +387,7 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### Ověření zpráv
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -576,11 +576,11 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### Validace Integrity dat
 
-[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon poskytuje několik předdefinovaných validátorů, které lze použít v této fázi ověřování.
 
-The following example shows how to use it:
+Následující příklad ukazuje, jak validator používat:
 
 ```php
 <?php
@@ -690,14 +690,14 @@ The following events are available to define custom business rules that can be e
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## Ověření chybných Eventů
 
 Another type of events is available when the data validation process finds any inconsistency:
 
 | Operation                | Name                | Explanation                                                     |
 | ------------------------ | ------------------- | --------------------------------------------------------------- |
 | Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
+| Insert, Delete or Update | `onValidationFails` | Spustí se při selhani některé z operace pro manipulaci s daty   |
 
 <a name='ids-vs-primary-keys'></a>
 
