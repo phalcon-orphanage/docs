@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Generating URLs and Paths
+# 生成的URL和访问路径
 
 [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
 <a name='base-uri'></a>
 
-## Setting a base URI
+## 设置根URI
 
 Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
@@ -71,7 +71,7 @@ $di->set(
 
 <a name='generating-uri'></a>
 
-## Generating URIs
+## 生成URI
 
 If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern:
 
@@ -117,7 +117,7 @@ $url->get(
 
 <a name='urls-without-mod-rewrite'></a>
 
-## Producing URLs without mod_rewrite
+## 在不使用mod_rewrite（Apache 模块）下生成URL
 
 You can use this component also to create URLs without mod_rewrite:
 
@@ -128,10 +128,10 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-// Pass the URI in $_GET['_url']
+// 把访问的URL做为$_GET['_url']的值
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// This produce: /invo/index.php?_url=/products/save
+// 会生成/invo/index.php?_url=/products/save
 echo $url->get('products/save');
 ```
 
@@ -144,10 +144,10 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-// Pass the URI in $_GET['_url']
+// 把访问的URL做为$_GET['_url']的值
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// Pass the URI using $_SERVER['REQUEST_URI']
+// 把访问的URL做为$_SERVER['REQUEST_URI']的值
 $url->setBaseUri('/invo/index.php/');
 ```
 
@@ -172,13 +172,13 @@ The produced routes would look like:
 ```php
 <?php
 
-// This produce: /invo/index.php/products/save
+// 这样会生产/invo/index.php/products/save
 echo $url->get('products/save');
 ```
 
 <a name='urls-from-volt'></a>
 
-## Producing URLs from Volt
+## 在Volt中生成URL
 
 The function `url` is available in volt to generate URLs using this component:
 
@@ -220,6 +220,6 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 <a name='custom-url'></a>
 
-## Implementing your own URL Generator
+## 实现您自己的URL生成器
 
 The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.
