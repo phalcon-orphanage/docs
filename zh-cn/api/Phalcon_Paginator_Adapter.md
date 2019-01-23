@@ -8,21 +8,21 @@ title: 'Phalcon\Paginator\Adapter'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
 
 ## 方法
 
 public **setCurrentPage** (*mixed* $page)
 
-Set the current page number
+设置当前页码
 
 public **setLimit** (*mixed* $limitRows)
 
-Set current rows limit
+设置当前行数限制
 
 public **getLimit** ()
 
-Get current rows limit
+获取当前行限制
 
 abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
