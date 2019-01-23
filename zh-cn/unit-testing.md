@@ -64,11 +64,11 @@ set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Required for phalcon/incubator
+// 需要phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
-// Autoload the dependencies found in composer
+// 使用应用的自动加载器来加在加在类
+// 自动从composer加载依赖
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -82,10 +82,6 @@ $loader->register();
 $di = new FactoryDefault();
 
 Di::reset();
-
-// Add any needed services to the DI here
-
-Di::setDefault($di);
 ```
 
 Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
@@ -169,7 +165,7 @@ abstract class UnitTestCase extends PhalconTestCase
         // 加载所有已添加的服务，它们可能会在测试过程中所需要
         $di = Di::getDefault();
 
-        // 获取DI中所有的组建。 If you have a config, be sure to pass it to the parent
+        // 获取DI中所有的组建。 如果你有一个配置，请确保传递给了父类。
 
         $this->setDi($di);
 
@@ -177,7 +173,7 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Check if the test case is setup properly
+     * 检查测试案例是否设置正确
      *
      * @throws \PHPUnit_Framework_IncompleteTestError;
      */
