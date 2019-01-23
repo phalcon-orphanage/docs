@@ -215,7 +215,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Hledání záznamů
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
