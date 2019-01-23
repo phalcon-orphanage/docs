@@ -13,7 +13,7 @@ version: '4.0'
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
-The following example shows its basic usage:
+Následující příklad ukazuje základní použití:
 
 ```php
 <?php
@@ -262,7 +262,7 @@ $messages = $validation->validate(['amount' => 10]); // will return message from
 
 <a name='messages'></a>
 
-## Validation Messages
+## Ověření zpráv
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
