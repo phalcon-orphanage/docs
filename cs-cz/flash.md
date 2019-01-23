@@ -15,14 +15,14 @@ Flash messages are used to notify the user about the state of actions he/she mad
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptéry
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
-| Adapter | Description                                                                                  | API                                                  |
-| ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
-| Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
+| Adapter | Description                                                                 | API                                                  |
+| ------- | --------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Direct  | Přímo výstup zprávy předány pro flasher                                     | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
+| Session | Dočasně ukládá zprávy v relaci a zprávy mohou být vypsání i v další žádosti | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
 
 <a name='usage'></a>
 
@@ -77,6 +77,7 @@ class PostsController extends Controller
 There are four built-in message types supported:
 
 ```php
+Text for Translation
 <?php
 
 $this->flash->error('too bad! the form had errors');
@@ -98,7 +99,7 @@ $this->flash->message('debug', "this is debug message, you don't say");
 
 <a name='printing'></a>
 
-## Printing Messages
+## Výpis zpráv
 
 Messages sent to the flash service are automatically formatted with HTML:
 
@@ -147,6 +148,8 @@ Then the messages would be printed as follows:
 <div class='alert alert-info'>this a very important information</div>
 
 <div class='alert alert-warning'>best check yo self, you're not looking too good.</div>
+ 
+Context | Request Context
 ```
 
 <a name='implicit-flush-vs-session'></a>
