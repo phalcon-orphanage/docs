@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='requirements'></a>
 
-# 要求
+# Requirements
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
-## 硬件
+## Hardware
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -25,7 +25,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 ## Software
 
-* PHP 5.5
+* PHP >= 5.5
 
 <h5 class='alert alert-danger'>You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. PHP 5.5 will be deprecated in the near future, and Phalcon 4 will only support PHP 7 </h5>
 
@@ -33,8 +33,8 @@ Phalcon need the following extensions to run (minimal):
 
 * `curl`
 * `gettext`
-* `gd2`(使用 `Phalcon\Image\Adapter\Gd` 类)
-* `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac Os)
+* `gd2` (to use the `Phalcon\Image\Adapter\Gd` class)
+* `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * `json`
 * `mbstring`
 * `pdo_*`
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### 根据应用程序的需要可选
+### Optional depending on the needs of your application
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -52,7 +52,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# 安装
+# Installation
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -241,7 +241,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### 要求
+### Requirements
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
@@ -291,7 +291,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | 类型                    |
+| Architecture | Version | Type                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |
@@ -320,7 +320,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### 要求
+### Requirements
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
