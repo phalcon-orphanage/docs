@@ -8,9 +8,9 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
-Memungkinkan untuk menyimpan data asli PHP dalam bentuk serial
+Allows to cache native PHP data in a serialized form
 
 ```php
 <?php
@@ -60,36 +60,36 @@ foreach ($robots as $robot) {
 
 ```
 
-## Metode
+## Methods
 
-umum **__membangun** ([*array* $frontendOptions])
+public **__construct** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Data constructor
 
-publik ** getLifetime ** ()
+public **getLifetime** ()
 
-Mengembalikan masa pakai cache
+Returns the cache lifetime
 
-public ** isBuffering ** ()
+public **isBuffering** ()
 
-Periksa apakah frontend adalah buffering output
+Check whether if frontend is buffering output
 
-publik ** mulai ** ()
+public **start** ()
 
 Starts output frontend. Actually, does nothing
 
-public *string * **getContent** ()
+public *string* **getContent** ()
 
-Mengembalikan hasil konten dalam cache
+Returns output cached content
 
-publik ** berhenti ** ()
+public **stop** ()
 
-Menghentikan output frontend
+Stops output frontend
 
-public ** beforeStore ** ( * mixed * $data)
+public **beforeStore** (*mixed* $data)
 
-Serializes data sebelum menyimpannya
+Serializes data before storing them
 
-public ** afterRetrieve ** ( * mixed * $data)
+public **afterRetrieve** (*mixed* $data)
 
-Unserializes data setelah pengambilan
+Unserializes data after retrieval
