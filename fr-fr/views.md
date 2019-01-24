@@ -21,12 +21,12 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address        | 127.0.0.1 |
+| --------------------- | --------- |
+| Répertoire de Phalcon | blog      |
+| Contrôleur            | posts     |
+| Action                | show      |
+| Paramètre             | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -1045,17 +1045,17 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Certains événements en retournant un booléen false pourraient arrêter l’opération active. Les événements suivants sont supportés :
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| Nom de l'événement | Déclencheur                                   | Peut arrêter l'opération ? |
+| ------------------ | --------------------------------------------- |:--------------------------:|
+| beforeRender       | Triggered before starting the render process  |            Oui             |
+| beforeRenderView   | Triggered before rendering an existing view   |            Oui             |
+| afterRenderView    | Triggered after rendering an existing view    |            Non             |
+| afterRender        | Triggered after completing the render process |            Non             |
+| notFoundView       | Triggered when a view was not found           |            Non             |
 
-The following example demonstrates how to attach listeners to this component:
+L’exemple suivant montre comment attacher des listeners à ce composant :
 
 ```php
 <?php
