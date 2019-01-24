@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Response\Cookies'
 
 *implements* [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
 
-## Methods
+## Methoden
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -60,4 +60,4 @@ Sends the cookies to the client Cookies aren't sent if headers are sent in the c
 
 public **reset** ()
 
-Reset set cookies
+Cookies zurücksetzen
