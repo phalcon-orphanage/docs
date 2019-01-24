@@ -23,7 +23,7 @@ use Phalcon\Mvc\Application;
 // Register autoloaders
 // ...
 
-// Services registrieren
+// Register services
 // ...
 
 // Handle the request
@@ -541,9 +541,9 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 ## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Die folgenden Ereignisse werden unterstützt:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Ereignisname          | Ausgelöst                                                    |
+| Event Name            | Triggered                                                    |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -551,7 +551,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-Das folgende Beispiel veranschaulicht, wie Listener an diese Komponente angehangen werden:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -573,6 +573,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Externe Ressourcen
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
