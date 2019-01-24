@@ -89,7 +89,7 @@ Starts every backend
 
 public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Αποθηκεύει το όλα σταματά ο περιεχόμενο σε τα backends και αποθηκευμέν frontend
+Stores cached content into all backends and stops the frontend
 
 public *boolean* **delete** (*string* | *int* $keyName)
 
