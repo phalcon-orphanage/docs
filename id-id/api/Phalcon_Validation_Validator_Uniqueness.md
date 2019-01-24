@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\Validator\Uniqueness'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
-Periksa apakah bidang itu unik di tabel terkait
+Check that a field is unique in the related table
 
 ```php
 <?php
@@ -34,7 +34,7 @@ $validator->add(
 
 ```
 
-Atribut yang berbeda dari lapangan:
+Different attribute from the field:
 
 ```php
 <?php
@@ -51,7 +51,7 @@ $validator->add(
 
 ```
 
-Dalam model:
+In model:
 
 ```php
 <?php
@@ -63,7 +63,7 @@ $validator->add(
 
 ```
 
-Kombinasi bidang dalam model:
+Combination of fields in model:
 
 ```php
 <?php
@@ -98,11 +98,11 @@ $validator->add(
 
 ```
 
-## Metode
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
-Menjalankan validasi
+Executes the validation
 
 protected **isUniqueness** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
@@ -110,15 +110,15 @@ protected **isUniqueness** ([Phalcon\Validation](Phalcon_Validation) $validation
 
 protected **getColumnNameReal** (*mixed* $record, *mixed* $field)
 
-Peta kolom digunakan untuk mengumpulkan nama kolom sebenarnya
+The column map is used in the case to get real column name
 
 protected **isUniquenessModel** (*mixed* $record, *array* $field, *array* $values)
 
-Keunikan metode yang digunakan untuk model
+Uniqueness method used for model
 
 protected **isUniquenessCollection** (*mixed* $record, *array* $field, *array* $values)
 
-Keunikan metode yang digunakan untuk koleksi
+Uniqueness method used for collection
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
@@ -126,28 +126,28 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Memeriksa jika pilihan telah ditetapkan
+Checks if an option has been defined
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Memeriksa jika pilihan didefinisikan
+Checks if an option is defined
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Kembali pilihan dalam pilihan validator mengembalikan null jika opsi belum menetapkan
+Returns an option in the validator's options Returns null if the option hasn't set
 
 public **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menetapkan pilihan di validator
+Sets an option in the validator
 
 protected **prepareLabel** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Mempersiapkan label untuk bidang.
+Prepares a label for the field.
 
 protected **prepareMessage** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menyiapkan pesan validasi.
+Prepares a validation message.
 
 protected **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menyiapkan kode validasi.
+Prepares a validation code.
