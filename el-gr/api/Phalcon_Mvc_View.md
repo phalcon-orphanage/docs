@@ -172,7 +172,7 @@ Returns the name of the main view
 
 public **setLayout** (*mixed* $layout)
 
-Αλλάξτε τη διάταξη θα χρησιμοποιηθεί που αντί να χρησιμοποιήσετε το όνομα του τελευταίου ονόματος ελεγκτή
+Change the layout to be used instead of using the name of the latest controller name
 
 ```php
 <?php
@@ -293,7 +293,7 @@ Checks whether view exists
 
 public **render** (*string* $controllerName, *string* $actionName, [*array* $params])
 
-Εκτελεί διαδικασία επεξεργασίας την αποστολή από δεδομένων
+Executes render process from dispatching data
 
 ```php
 <?php
@@ -305,7 +305,7 @@ $view->start()->render("posts", "recent")->finish();
 
 public **pick** (*mixed* $renderView)
 
-Επιλέξτε διαφορετική προβολή για απόδοση για τελευταίο αντί ελεγκτή / τελευταία ενέργεια
+Choose a different view to render instead of last-controller/last-action
 
 ```php
 <?php
@@ -377,7 +377,7 @@ $this->partial(
 
 public *string* **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
 
-Εκτελέστε αυτόματη την απόδοση επιστρέφοντας την έξοδο ως συμβολοσειρά
+Perform the automatic rendering returning the output as a string
 
 ```php
 <?php
@@ -402,7 +402,7 @@ Create a Phalcon\Cache based on the internal cache options
 
 public **isCaching** ()
 
-Ελέγξτε εάν το στοιχείο αποθηκεύει αυτή προσωρινά το περιεχόμενο εξόδου
+Check if the component is currently caching the output content
 
 public **getCache** ()
 
@@ -502,7 +502,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
