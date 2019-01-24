@@ -10,11 +10,11 @@ title: 'Phalcon\Logger\Formatter\Line'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 Formats messages using an one-line string
 
-## Methods
+## Methoden
 
 public **getDateFormat** ()
 
@@ -38,12 +38,12 @@ Phalcon\Logger\Formatter\Line construct
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Wendet ein Format an einer Nachricht an, bevor es zum internen Protokoll weitergeleitet wird
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Returns the string meaning of a logger constant
+Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpolates context values into the message placeholders
+Interpoliert Kontext Werte in die Nachricht-Platzhalter
