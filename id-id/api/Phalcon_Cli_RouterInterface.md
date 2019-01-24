@@ -6,70 +6,70 @@ title: 'Phalcon\Cli\RouterInterface'
 ---
 # Interface **Phalcon\Cli\RouterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setDefaultModule** (*mixed* $moduleName)
-
-...
-
-abstract public **setDefaultTask** (*mixed* $taskName)
+abstrak publik **setDefaultModule** (*campuran* $moduleName)
 
 ...
 
-abstract public **setDefaultAction** (*mixed* $actionName)
+publik abstrak **mengaturDefaultTask** (*campuraduk* $taskName)
 
 ...
 
-abstract public **setDefaults** (*array* $defaults)
+abstrak publik **setDefaultAction** (*campuran* $actionName)
 
 ...
 
-abstract public **handle** ([*mixed* $arguments])
+abstrak publik **setDefaults** (*array* $defaults)
 
 ...
 
-abstract public **add** (*mixed* $pattern, [*mixed* $paths])
+abstrak publik **hasFiles** ([*mixed* $arguments])
 
 ...
 
-abstract public **getModuleName** ()
+abstrak umum **addRole** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
-abstract public **getTaskName** ()
+abstrak umum **getRoleName/0> ()</p> 
 
 ...
 
-abstract public **getActionName** ()
+publik abstrak **dapatkanNamaTugas** ()
 
 ...
 
-abstract public **getParams** ()
+abstrak publik **getSchemaName** ()
 
 ...
 
-abstract public **getMatchedRoute** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getMatches** ()
+abstrak umum **getScheme** ()
 
 ...
 
-abstract public **wasMatched** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getRoutes** ()
+abstrak publik **getMethod** ()
 
 ...
 
-abstract public **getRouteById** (*mixed* $id)
+publik abstrak **getFrontend** ()
 
 ...
 
-abstract public **getRouteByName** (*mixed* $name)
+publik abstrak **getListeners** (*campuran* $id)
+
+...
+
+abstract umum$name$name$name$name **setName** (*mixed* $nama)
 
 ...
