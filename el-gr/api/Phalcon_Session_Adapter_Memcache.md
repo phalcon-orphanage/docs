@@ -78,7 +78,7 @@ public **gc** ()
 
 public **start** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Ξεκινά τη σύνοδο (εάν έχουν αποσταλεί οι ήδη κεφαλίδες, η σύνοδος δεν θα ξεκινήσει)
+Starts the session (if headers are already sent the session will not be started)
 
 public **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
@@ -133,7 +133,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Ελέγξτε αν μεταβλητή μια περιόδου σύνδεσης έχει οριστεί σε ένα περιβάλλον εφαρμογής
+Check whether a session variable is set in an application context
 
 ```php
 <?php
@@ -179,7 +179,7 @@ $session->setId($id);
 
 public **isStarted** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Ελέγξτε αν ξεκινήσει έχει η συνεδρία
+Check whether the session has been started
 
 ```php
 <?php
@@ -221,7 +221,7 @@ Alias: Check whether a session variable is set in an application context
 
 public **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Καταργεί μια μεταβλητή λειτουργίας περιόδου από ένα περιβάλλον εφαρμογής
+Alias: Removes a session variable from an application context
 
 ```php
 <?php
