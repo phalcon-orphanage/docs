@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Sekilas
+# Overview
 
 Phalcon Box uses the default **phalcon/xenial64** box from [Vagrant Cloud](https://atlas.hashicorp.com/phalconphp/boxes/xenial64/) for compatibility. If you choose to use a 64-bit ISO you may need to update your BIOS to enable [virtualization](https://en.wikipedia.org/wiki/X86_virtualization) with `AMD-V`, `Intel VT-x` or `VIA VT`.
 
@@ -17,7 +17,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Persyaratan
+## Requirements
 
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -26,7 +26,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='packages-included'></a>
 
-## Paket Termasuk
+## Packages Included
 
 * Ansible
 * Beanstalkd
@@ -55,11 +55,11 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation'></a>
 
-## Pemasangan
+## Installation
 
 <a name='installation-vagrant-box'></a>
 
-### Memasang Kotak Gelandangan
+### Installing the Vagrant Box
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -113,11 +113,11 @@ vagrant up
 
 <a name='installation-configuration'></a>
 
-## Mengkonfigurasi
+## Configuring
 
 <a name='installation-configuration-setting-provider'></a>
 
-### Menetapkan penyedia Anda
+### Setting your provider
 
 The provider key in your `settings.yml` file indicates which Vagrant provider should be used: `virtualbox`, `vmware_fusion` or `vmware_workstation`. You may set this to the provider you prefer:
 
@@ -192,7 +192,7 @@ sites:
       to:  /home/vagrant/workspace/phalcon/public
 ```
 
-You can use the `type` parameter to specify the type of Nginx configuration for the site. Sebagai contoh:
+You can use the `type` parameter to specify the type of Nginx configuration for the site. For example:
 
 ```yaml
 sites:
@@ -324,7 +324,7 @@ function box()
 
 <a name='daily-usage-accessing-box-globally-windows'></a>
 
-#### Jendela
+#### Windows
 
 Create a `box.bat` batch file anywhere on your machine with the following contents:
 
@@ -398,7 +398,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='daily-usage-environment-variables'></a>
 
-### Variabel lingkungan
+### Environment variables
 
 <a name='daily-usage-environment-global-variables'></a>
 
@@ -480,7 +480,7 @@ By default, the following ports are forwarded to your Phalcon Box environment:
 
 <a name='daily-usage-ports-forwarding'></a>
 
-#### Meneruskan pelabuhan tambahan
+#### Forwarding additional ports
 
 If you wish, you may forward additional ports to the Phalcon Box, as well as specify their protocol:
 
@@ -497,7 +497,7 @@ ports:
 
 <a name='daily-usage-sharing-environment'></a>
 
-### Berbagi lingkungan Anda
+### Sharing your environment
 
 Sometimes you may wish to share what you're currently working on with coworkers or a client. Vagrant has a built-in way to support this via `vagrant share`; however, this will not work if you have multiple sites configured in your `settings.yml` file.
 
@@ -517,7 +517,7 @@ share blog.local -region=eu -subdomain=phalcongelist
 
 <a name='daily-usage-network-interfaces'></a>
 
-### Antarmuka jaringan
+### Network interfaces
 
 The `networks` property of the `settings.yml` configures network interfaces for your Phalcon Box environment. You may configure as many interfaces as necessary:
 
@@ -572,7 +572,7 @@ We recommend that you always take backups of those files, and remove them from t
 
 <a name='daily-usage-provider-settings'></a>
 
-### Penyedia pengaturan khusus
+### Provider specific settings
 
 <a name='daily-usage-provider-settings-virtualbox'></a>
 
@@ -592,11 +592,11 @@ By default, Phalcon Box redirects all PHP emails to [MailHog](https://github.com
 
 <a name='troubleshooting'></a>
 
-## Penyelesaian masalah
+## Troubleshooting
 
 **Problem:**
 
-> An error occurred in the underlying SSH library that Vagrant uses. Pesan kesalahan ditunjukkan di bawah ini. In many cases, errors from this library are caused by ssh-agent issues. Try disabling your SSH agent or removing some keys and try again. If the problem persists, please report a bug to the net-ssh project. timeout during server version negotiating
+> An error occurred in the underlying SSH library that Vagrant uses. The error message is shown below. In many cases, errors from this library are caused by ssh-agent issues. Try disabling your SSH agent or removing some keys and try again. If the problem persists, please report a bug to the net-ssh project. timeout during server version negotiating
 
 **Solution:**
 
