@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
 This component allows to build forms using an object-oriented interface
 
-## روش ها
+## Methods
 
 public **setValidation** (*mixed* $validation)
 
@@ -120,27 +120,27 @@ public **clear** ([*array* $fields])
 
 Clears every element in the form to its default value
 
-عمومی **تعداد** ()
+public **count** ()
 
 Returns the number of elements in the form
 
-عمومی **بازخوانی** ()
+public **rewind** ()
 
-تکرارکننده داخلی را باز می کند
+Rewinds the internal iterator
 
 public **current** ()
 
 Returns the current element in the iterator
 
-کلید عمومی**کلید** ()
+public **key** ()
 
-موقعیت/کلید فعلی را در تکرار بازگرداند
+Returns the current position/key in the iterator
 
-عمومی **بعدی** ()
+public **next** ()
 
-اشاره گر تکرار داخلی را به موقعیت بعدی حرکت می دهد
+Moves the internal iteration pointer to the next position
 
-عمومی **معتبر** ()
+public **valid** ()
 
 Check if the current element in the iterator is valid
 
@@ -158,7 +158,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
