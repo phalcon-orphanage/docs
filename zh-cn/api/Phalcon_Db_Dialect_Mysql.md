@@ -78,7 +78,7 @@ Generates SQL to drop a view
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-判断表是否存在
+Generates SQL checking for the existence of a schema.table
 
 ```php
 <?php
@@ -91,7 +91,7 @@ echo $dialect->tableExists("posts");
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-判断视图是否存在
+Generates SQL checking for the existence of a schema.view
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
@@ -172,7 +172,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-返回使用FOR UPDATE子句修改的SQL
+Returns a SQL modified with a FOR UPDATE clause
 
 ```php
 <?php
@@ -184,7 +184,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-返回使用LOCK IN SHARE MODE子句修改的SQL
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
 <?php
