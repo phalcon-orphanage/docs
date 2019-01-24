@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\TextArea'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
 
-TEXTAREA-Komponente für Formulare
+Component TEXTAREA for forms
 
-## Methoden
+## Methods
 
 public **render** ([*array* $attributes])
 
