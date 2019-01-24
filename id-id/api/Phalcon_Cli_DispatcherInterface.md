@@ -8,31 +8,31 @@ title: 'Phalcon\Cli\DispatcherInterface'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **aturTugasAkhir**(*campuran* $taskSuffix)
-
-...
-
-publik abstrak **mengaturDefaultTask** (*campuraduk* $taskName)
+abstract public **setTaskSuffix** (*mixed* $taskSuffix)
 
 ...
 
-abstrak publik **setelNamaTugas** (*campuran* $taskName)
+abstract public **setDefaultTask** (*mixed* $taskName)
 
 ...
 
-publik abstrak **dapatkanNamaTugas** ()
+abstract public **setTaskName** (*mixed* $taskName)
 
 ...
 
-abstrak publik **mendapatkanTugasAkhir** ()
+abstract public **getTaskName** ()
 
 ...
 
-abstrak publik **mendapatkanTugasAktif** ()
+abstract public **getLastTask** ()
+
+...
+
+abstract public **getActiveTask** ()
 
 ...
 
