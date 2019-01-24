@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Router'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-Phalcon\Cli\Router is the standard framework router. 路由是以命令行参数的过程和将它分解为参数，以确定哪些模块、 任务和行动这一任务应接收该请求
+Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
 ```php
 <?php
@@ -37,23 +37,23 @@ Phalcon\Cli\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** ()
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-设置默认模块的名称
+Sets the name of the default module
 
 public **setDefaultTask** (*mixed* $taskName)
 
-设置默认控制器名称
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName)
 
-设置默认操作名称
+Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
@@ -73,11 +73,11 @@ $router->setDefaults(
 
 public **handle** ([*array* $arguments])
 
-处理路由收到命令行参数的信息
+Handles routing information received from command-line arguments
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器
+Adds a route to the router
 
 ```php
 <?php
@@ -88,40 +88,40 @@ $router->add("/about", "About::main");
 
 public **getModuleName** ()
 
-返回处理模块名称
+Returns processed module name
 
 public **getTaskName** ()
 
-返回处理任务名称
+Returns processed task name
 
 public **getActionName** ()
 
-返回处理操作名称
+Returns processed action name
 
 public *array* **getParams** ()
 
-返回处理额外的参数
+Returns processed extra params
 
 public **getMatchedRoute** ()
 
-返回匹配处理的 URI 的路线
+Returns the route that matches the handled URI
 
 public *array* **getMatches** ()
 
-返回的子表达式匹配的正则表达式
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** ()
 
-检查是否路由器匹配任何已定义的路由
+Checks if the router matches any of the defined routes
 
 public **getRoutes** ()
 
-返回所有定义在路由器中的路由
+Returns all the routes defined in the router
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
-按其 id 返回路由对象
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-按其名称返回路由对象
+Returns a route object by its name
