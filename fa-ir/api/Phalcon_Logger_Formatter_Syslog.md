@@ -10,11 +10,11 @@ title: 'Phalcon\Logger\Formatter\Syslog'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
 Prepares a message to be used in a Syslog backend
 
-## روش ها
+## Methods
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
