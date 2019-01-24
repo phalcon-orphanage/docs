@@ -8,26 +8,26 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
-Ini adalah kelas dasar opsional untuk perilaku ORM
+This is an optional base class for ORM behaviors
 
-## Metode
+## Methods
 
-umum **__membangun** ([*array* $options])
+public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
-Memeriksa apakah perilaku tersebut harus mengambil tindakan pada acara tertentu
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName])
 
-Mengembalikan opsi perilaku yang terkait dengan suatu peristiwa
+Returns the behavior options related to an event
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Metode ini menerima pemberitahuan dari PengelolaAcara
+This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
 
-Bertindak mundur saat metode yang hilang dipanggil pada koleksi
+Acts as fallbacks when a missing method is called on the collection
