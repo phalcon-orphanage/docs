@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Numericality'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/numericality.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/numericality.zep)
 
 Allows to validate if a field has a valid numeric format
 
@@ -41,7 +41,7 @@ class Products extends \Phalcon\Mvc\Collection
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
