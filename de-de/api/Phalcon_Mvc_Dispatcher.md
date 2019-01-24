@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Mvc\DispatcherInterface](Phalcon_Mvc_DispatcherInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
 
 Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
@@ -31,7 +31,7 @@ $controller = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## Konstanten
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -45,7 +45,7 @@ $controller = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Methoden
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
@@ -53,7 +53,7 @@ Sets the default controller suffix
 
 public **setDefaultController** (*mixed* $controllerName)
 
-Sets the default controller name
+Legt den Standardnamen des controllers fest
 
 public **setControllerName** (*mixed* $controllerName)
 
@@ -77,15 +77,15 @@ Gets previous dispatched action name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Throws an internal exception
+Löst eine interne Ausnahme aus
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles a user exception
+Behandelt eine Ausnahme
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action.
+Leitet den Ausführungsfluss an einem anderen Controller/Action weiter.
 
 ```php
 <?php
@@ -161,11 +161,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the events manager
+Legt den Event-manager fest
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -201,7 +201,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default action name
+Legt den Standard Aktions Name fest
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -314,7 +314,7 @@ class UserController extends Controller
 {
     public function showAction(User $user)
     {
-        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels(); // gibt array mit $user zurück
     }
 }
 
