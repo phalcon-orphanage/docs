@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# مورد استفاده
+# Use case
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
@@ -39,7 +39,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User roles
 
-| Group          | توضیحات                                            |
+| Group          | Description                                        |
 | -------------- | -------------------------------------------------- |
 | Guests         | Users that are not logged in, visitors to the site |
 | Customers      | Users that have purchased products                 |
@@ -51,7 +51,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Endpoints
 
-| Endpoint                          | توضیحات                                                      |
+| Endpoint                          | Description                                                  |
 | --------------------------------- | ------------------------------------------------------------ |
 | `/login`                          | Path `/session/login`. Presents the login screen             |
 | `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |
