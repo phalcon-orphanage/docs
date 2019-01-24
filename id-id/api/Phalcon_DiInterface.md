@@ -8,31 +8,31 @@ title: 'Phalcon\DiInterface'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-## Metode
+## Methods
 
-abstraksi umum **set** (*campuran* $name, *campuran* $definition, [*campuran* $shared])
-
-...
-
-abstraksi umum **setShared** (*campuran* $name, *campuran* $definition)
+abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
 
-abstraksi umum **hapus** (*campuran* $name)
+abstract public **setShared** (*mixed* $name, *mixed* $definition)
 
 ...
 
-abstraksi umum**mencoba** (*campuran* $name, *campuran* $definition, [*mixed* $shared])
+abstract public **remove** (*mixed* $name)
 
 ...
 
-abstraksi umum **dapatkan** (*campuran* $name, [*campuran* $parameters])
+abstract public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
 ...
 
-abstraksi umum **getShared** (*mixed* $name, [*mixed* $parameters])
+abstract public **get** (*mixed* $name, [*mixed* $parameters])
+
+...
+
+abstract public **getShared** (*mixed* $name, [*mixed* $parameters])
 
 ...
 
@@ -40,23 +40,23 @@ abstract public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon
 
 ...
 
-abstraksi umum **getMentah** (*dicampur* $name)
+abstract public **getRaw** (*mixed* $name)
 
 ...
 
-abstraksi umum **getLayanan** (*dicampur* $name)
+abstract public **getService** (*mixed* $name)
 
 ...
 
-abstraksi umum **has** (*mixed* $name)
+abstract public **has** (*mixed* $name)
 
 ...
 
-abstraksi umum **wasFreshInstance** ()
+abstract public **wasFreshInstance** ()
 
 ...
 
-abstraksi umum **getServices** ()
+abstract public **getServices** ()
 
 ...
 
@@ -64,11 +64,11 @@ abstract public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface
 
 ...
 
-abstraksi umum statik**getDefault** ()
+abstract public static **getDefault** ()
 
 ...
 
-publik static **reset** ()
+abstract public static **reset** ()
 
 ...
 
