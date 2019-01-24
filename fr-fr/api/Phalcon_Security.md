@@ -8,7 +8,7 @@ title: 'Phalcon\Security'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
 
 This component provides a set of functions to improve the security in Phalcon applications
 
@@ -28,7 +28,7 @@ if ($user) {
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **CRYPT_DEFAULT**
 
@@ -50,7 +50,7 @@ if ($user) {
 
 *integer* **CRYPT_SHA512**
 
-## Methods
+## Méthodes
 
 public **setWorkFactor** (*mixed* $workFactor)
 
