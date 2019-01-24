@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\MetaData'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
 
 Because Phalcon\Mvc\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\Mvc\Model. Phalcon\Mvc\Model\MetaData can also use adapters to store temporarily or permanently the meta-data.
 
@@ -27,7 +27,7 @@ print_r($attributes);
 
 ```
 
-## Costanti
+## Constants
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -61,7 +61,7 @@ print_r($attributes);
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Metodi
+## Methods
 
 final protected **_initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema)
 
