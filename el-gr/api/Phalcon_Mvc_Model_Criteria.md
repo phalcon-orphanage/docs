@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Criteria'
 
 *implements* [Phalcon\Mvc\Model\CriteriaInterface](Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
 
 This class is used to build the array parameter required by Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an object-oriented interface.
 
@@ -239,7 +239,7 @@ Returns the conditions parameter in the criteria
 
 public *int* | *array* | *null* **getLimit** ()
 
-Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
+Επιστρέφει μετατόπισης την εάν παράμετρο ορίου στα κριτήρια τα είναι ένας ακέραιος αριθμός εάν αριθμός ορίστηκε όριο χωρίς οποία αντιστάθμιση ένας πίνακας με πλήκτρα και εάν έχει οριστεί θα μετατόπιση με το όριο ή μηδέν δεν έχει οριστεί όριο.
 
 public **getOrderBy** ()
 
