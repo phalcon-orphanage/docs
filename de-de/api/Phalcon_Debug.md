@@ -6,27 +6,27 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
-Provides debug capabilities to Phalcon applications
+Bietet Debug-Funktionen für Phalcon Anwendungen
 
-## Methods
+## Methoden
 
 public **setUri** (*mixed* $uri)
 
-Change the base URI for static resources
+Änderung der Basis-URI für statische Ressourcen
 
 public **setShowBackTrace** (*mixed* $showBackTrace)
 
-Sets if files the exception's backtrace must be showed
+Legt fest, ob das Ausnahme Backtrace angezeigt werden muss
 
 public **setShowFiles** (*mixed* $showFiles)
 
-Set if files part of the backtrace must be shown in the output
+Stellen Sie ein, ob Dateien Bestandteil der Backtrace-Ausgabe sein müssen
 
 public **setShowFileFragment** (*mixed* $showFileFragment)
 
-Sets if files must be completely opened and showed in the output or just the fragment related to the exception
+Legt fest, ob Dateien vollständig geöffnet werden und in der Ausgabe angezeigt müssen oder nur das Fragment, welches im Zusammenhang mit der Ausnahme stand
 
 public **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
@@ -74,20 +74,20 @@ Generates a link to the current version documentation
 
 public **getCssSources** ()
 
-Returns the css sources
+Gibt die Css-Quellen zurück
 
 public **getJsSources** ()
 
-Returns the javascript sources
+Gibt die Javascript-Quellen zurück
 
 final protected **showTraceItem** (*mixed* $n, *array* $trace)
 
-Shows a backtrace item
+Zeigt ein Backtrace-Element an
 
 public **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $file, *mixed* $line, *mixed* $context)
 
-Throws an exception when a notice or warning is raised
+Löst eine Ausnahme aus, wenn ein Hinweis oder eine Warnung ausgelöst wird
 
 public **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles uncaught exceptions
+Behandelt eine nicht abgefangene Ausnahme
