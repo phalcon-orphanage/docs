@@ -9,11 +9,11 @@
       "url": "#setup"
     },
     {
-      "text": "Adding Operations",
+      "text": "Προσθήκη Λειτουργιών",
       "url": "#adding-operations"
     },
     {
-      "text": "Adding Subjects",
+      "text": "Προσθήκη Θεμάτων",
       "url": "#adding-subjects"
     },
     {
@@ -89,7 +89,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -339,7 +339,7 @@
           "url": "#"
         },
         {
-          "text": "Setup",
+          "text": "Ρύθμιση",
           "url": "#"
         },
         {
@@ -441,7 +441,7 @@
       "url": "#resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Συλλογές",
       "url": "#collections"
     },
     {
@@ -485,7 +485,7 @@
       "url": "#caching-behavior"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#factory"
     },
     {
@@ -541,7 +541,7 @@
       "url": "#adapters-backend",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-backend-factory"
         },
         {
@@ -589,7 +589,7 @@
       "url": "#overview",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#factory"
         }
       ]
@@ -713,7 +713,7 @@
       "url": "#overview"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#usage"
     },
     {
@@ -743,11 +743,11 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -1075,7 +1075,7 @@
   ],
   "db-models-validation": [
     {
-      "text": "Model Transactions",
+      "text": "Συναλλαγές Μοντέλων",
       "url": "#overview"
     },
     {
@@ -1201,7 +1201,7 @@
       "url": "#overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Δημιουργία μοντέλων",
       "url": "#creating-models"
     },
     {
@@ -1277,7 +1277,7 @@
       "url": "#data-adapters"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#factory"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
@@ -1943,7 +1943,7 @@
       "url": "#naming-convention"
     },
     {
-      "text": "Usage Example",
+      "text": "Παράδειγμα χρήσης",
       "url": "#usage"
     },
     {
@@ -2113,11 +2113,11 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#adapters-custom"
         }
       ]
@@ -2247,22 +2247,22 @@
               "url": "#installation-linux-rpm",
               "menu": [
                 {
-                  "text": "Repository installation",
+                  "text": "Αποθετήριο εγκατάστασης",
                   "url": "#installation-linux-rpm-repository"
                 },
                 {
-                  "text": "Stable releases",
+                  "text": "Σταθερές εκδόσεις",
                   "url": "#installation-linux-rpm-repository-stable",
                   "menu": [
                     {
-                      "text": "Nightly releases",
+                      "text": "Νυχτερινές εκδόσεις",
                       "level": 5,
                       "url": "#installation-linux-rpm-repository-nightly"
                     }
                   ]
                 },
                 {
-                  "text": "Phalcon installation",
+                  "text": "Εγκατάσταση του Phalcon",
                   "url": "#installation-linux-rpm-phalcon",
                   "menu": [
                     {
@@ -2378,7 +2378,7 @@
       "url": "#adapters"
     },
     {
-      "text": "Factory",
+      "text": "Εργοστάσιο",
       "url": "#adapters-factory"
     },
     {
@@ -2428,7 +2428,7 @@
           "url": "#usage-firephp"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Εφαρμογή των δικών σας προσαρμογέων",
           "url": "#usage-custom"
         }
       ]
@@ -2440,15 +2440,15 @@
       "url": "#architecture"
     },
     {
-      "text": "Models",
+      "text": "Μοντέλα",
       "url": "#models"
     },
     {
-      "text": "Views",
+      "text": "Προβολές",
       "url": "#views"
     },
     {
-      "text": "Controllers",
+      "text": "Ελεγκτές",
       "url": "#controllers"
     }
   ],
@@ -2616,7 +2616,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#overview"
     },
     {
@@ -2750,7 +2750,7 @@
       "url": "#start",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#start-factory"
         }
       ]
@@ -2780,7 +2780,7 @@
       "url": "#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom-adapters"
     }
   ],
@@ -2836,7 +2836,7 @@
       "url": "#static-content-helpers",
       "menu": [
         {
-          "text": "Images",
+          "text": "Εικόνες",
           "url": "#static-content-helpers-images"
         },
         {
@@ -2865,87 +2865,87 @@
   "testing-environment": [
     {
       "text": "Επισκόπηση",
-      "url": "#overview"
+      "url": "overview"
     },
     {
       "text": "Επισκόπηση",
-      "url": "#overview"
+      "url": "overview"
     },
     {
       "text": "The problem",
-      "url": "#problem"
+      "url": "problem"
     },
     {
       "text": "Solution",
-      "url": "#solution"
+      "url": "solution"
     },
     {
       "text": "Installation",
-      "url": "#installation"
+      "url": "installation"
     },
     {
       "text": "Running the environment",
-      "url": "#running",
+      "url": "running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "#running-fork"
+          "url": "running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "#running-clone"
+          "url": "running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "#running-boxfile"
+          "url": "running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "#running-nanobox-configure"
+          "url": "running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "#running-nanobox-run"
+          "url": "running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "#running-composer"
+          "url": "running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "#running-zephir"
+          "url": "running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "#running-compile"
+          "url": "running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "#running-extensions"
+          "url": "running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "#tests",
+      "url": "tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "#tests-unit"
+          "url": "tests-unit"
         },
         {
           "text": "Integration",
-          "url": "#tests-integration"
+          "url": "tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "#development"
+      "url": "development"
     },
     {
       "text": "Services",
-      "url": "#services"
+      "url": "services"
     }
   ],
   "translate": [
@@ -2958,7 +2958,7 @@
       "url": "#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Εργοστάσιο",
           "url": "#adapters-factory"
         }
       ]
@@ -2968,7 +2968,7 @@
       "url": "#usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Εφαρμογή των δικών σας προσαρμογέων",
       "url": "#custom"
     }
   ],
@@ -3042,7 +3042,7 @@
       "url": "#structure"
     },
     {
-      "text": "Routing",
+      "text": "Δρομολόγηση",
       "url": "#routing"
     },
     {
@@ -3382,7 +3382,7 @@
       "url": "#setup"
     },
     {
-      "text": "Basic Usage",
+      "text": "Βασική Χρήση",
       "url": "#basic-usage"
     },
     {
@@ -3512,7 +3512,7 @@
           "url": "#extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Φίλτρα",
           "url": "#extending-filters"
         },
         {
