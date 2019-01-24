@@ -6,9 +6,9 @@ title: 'Phalcon\Db\Profiler'
 ---
 # Class **Phalcon\Db\Profiler**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
-Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Milidetik. Ini membantu Anda untuk mengidentifikasi kemacetan dalam aplikasi Anda.
+Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.
 
 ```php
 <?php
@@ -35,32 +35,32 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 ```
 
-## Metode
+## Methods
 
 public [Phalcon\Db\Profiler](Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
-Mulai profil kalimat SQL
+Starts the profile of a SQL sentence
 
-umum **stopProfile** ()
+public **stopProfile** ()
 
-Menghentikan profil aktif
+Stops the active profile
 
-umum **getNumberTotalStatements** ()
+public **getNumberTotalStatements** ()
 
-Mengembalikan jumlah total pernyataan SQL yang diproses
+Returns the total number of SQL statements processed
 
-publik **getTotalElapsedSeconds** ()
+public **getTotalElapsedSeconds** ()
 
-Mengembalikan total waktu dalam detik yang dihabiskan oleh profil
+Returns the total time in seconds spent by the profiles
 
-umum **getProfiles** ()
+public **getProfiles** ()
 
-Mengembalikan semua profil yang diproses
+Returns all the processed profiles
 
-umum **reset** ()
+public **reset** ()
 
-Mengatur ulang profiler, membersihkan semua profil
+Resets the profiler, cleaning up all the profiles
 
-umum **getLastProfile** ()
+public **getLastProfile** ()
 
-Mengembalikan profil terakhir yang dijalankan di profiler
+Returns the last profile executed in the profiler
