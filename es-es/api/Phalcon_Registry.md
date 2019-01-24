@@ -10,7 +10,7 @@ title: 'Phalcon\Registry'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
-Un registro es un contenedor para almacenar objetos y valores en el espacio de la aplicación. Al almacenar el valor en un registro, el mismo objeto siempre está disponible en todo su aplicación.
+A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
 
 ```php
 <?php
