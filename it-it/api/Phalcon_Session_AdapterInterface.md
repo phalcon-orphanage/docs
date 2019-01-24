@@ -6,9 +6,9 @@ title: 'Phalcon\Session\AdapterInterface'
 ---
 # Interface **Phalcon\Session\AdapterInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **start** ()
 
