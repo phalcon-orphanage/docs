@@ -10,11 +10,11 @@ title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Methoden
+## Methods
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -22,15 +22,15 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Legt den Event-manager fest
+Sets the events manager
 
 public **getEventsManager** ()
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Registrieren Sie ein Array von Modulen, welche in der Anwendung vorhanden sind
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -52,7 +52,7 @@ $this->registerModules(
 
 public **getModules** ()
 
-Liefert die Module, welche in der Anwendung registriert sind
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name)
 
@@ -80,4 +80,4 @@ Returns the internal dependency injector
 
 public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magische Methode __get
+Magic method __get
