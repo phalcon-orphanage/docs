@@ -6,11 +6,11 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-یک حاشیه نویسی تنها در یک مجموعه حاشیه نویسی نمایان می شود
+Represents a single annotation in an annotations collection
 
-## روش ها
+## Methods
 
 public **__construct** (*array* $reflectionData)
 
@@ -18,36 +18,36 @@ Phalcon\Annotations\Annotation constructor
 
 public **getName** ()
 
-نام حاشیه نویسی را برمی گرداند
+Returns the annotation's name
 
 public *mixed* **getExpression** (*array* $expr)
 
-یک علامت حاشیه نویسی را حل می کند
+Resolves an annotation expression
 
-عمومی *آرایه* **getExprArguments** ()
+public *array* **getExprArguments** ()
 
-آرگومان های بیان را بدون حل کردن بازمی گرداند
+Returns the expression arguments without resolving
 
-عمومی *آرایه* **دریافت استدلال** ()
+public *array* **getArguments** ()
 
-استدلال بیان را بازمیگرداند
+Returns the expression arguments
 
-عمومی **شماره استدلال** ()
+public **numberArguments** ()
 
-تعدادی از استدلال هایی که حاوی حاشیه نویسی است را برمی گرداند
+Returns the number of arguments that the annotation has
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-یک استدلال را در یک موقعیت خاص بازگرداند
+Returns an argument in a specific position
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-یک استدلال را در یک موقعیت خاص بازگرداند
+Returns an argument in a specific position
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-یک استدلال نامیده می شود
+Returns a named argument
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-بازگرداندن یک پارامتر به نام
+Returns a named parameter
