@@ -8,13 +8,13 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
-Memungkinkan untuk meng-cache data yang mengkonversi / deconverting mereka ke JSON. Konteks | Permintaan Konteks.
+Allows to cache data converting/deconverting them to JSON.
 
-Adaptor ini menggunakan fungsi json_encode / json_decode PHP
+This adapter uses the json_encode/json_decode PHP's functions
 
-Karena data dikodekan dalam sistem JSON lainnya yang mengakses backend yang sama dapat memprosesnya
+As the data is encoded in JSON other systems accessing the same backend could process them
 
 ```php
 <?php
@@ -46,36 +46,36 @@ $data = $cache->get("my-data");
 
 ```
 
-## Metode
+## Methods
 
-umum **__membangun** ([*array* $frontendOptions])
+public **__construct** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Base64 constructor
 
-publik ** getLifetime ** ()
+public **getLifetime** ()
 
-Mengembalikan masa pakai cache
+Returns the cache lifetime
 
-public ** isBuffering ** ()
+public **isBuffering** ()
 
-Periksa apakah frontend adalah buffering output
+Check whether if frontend is buffering output
 
-publik ** mulai ** ()
+public **start** ()
 
 Starts output frontend. Actually, does nothing
 
-public *string * **getContent** ()
+public *string* **getContent** ()
 
-Mengembalikan hasil konten dalam cache
+Returns output cached content
 
-publik ** berhenti ** ()
+public **stop** ()
 
-Menghentikan output frontend
+Stops output frontend
 
-public ** beforeStore ** ( * mixed * $data)
+public **beforeStore** (*mixed* $data)
 
-Serializes data sebelum menyimpannya
+Serializes data before storing them
 
-public ** afterRetrieve ** ( * mixed * $data)
+public **afterRetrieve** (*mixed* $data)
 
-Unserializes data setelah pengambilan
+Unserializes data after retrieval
