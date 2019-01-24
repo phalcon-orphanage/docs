@@ -25,7 +25,7 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 Services included are:
 
-| Service name  | Description                                                                                         |
+| Service name  | Beschreibung                                                                                        |
 | ------------- | --------------------------------------------------------------------------------------------------- |
 | mongo         | MongoDB server container.                                                                           |
 | postgres      | PostgreSQL server container.                                                                        |
@@ -144,7 +144,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Web environment
 
-| Environment variable | Description                                         | Default         |
+| Environment variable | Beschreibung                                        | Default         |
 | -------------------- | --------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
@@ -158,7 +158,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### phpMyAdmin variables
 
-| Environment variable | Description                                                                                                  | Default |
+| Environment variable | Beschreibung                                                                                                 | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
 | `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
@@ -178,7 +178,7 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
+| Environment variable         | Beschreibung                                             | Default |
 | ---------------------------- | -------------------------------------------------------- | ------- |
 | `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
 | `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
