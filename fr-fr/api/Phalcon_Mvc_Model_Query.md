@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query'
 
 *implements* [Phalcon\Mvc\Model\QueryInterface](Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
 This class takes a PHQL intermediate representation and executes it.
 
@@ -33,7 +33,7 @@ foreach ($result as $row) {
 
 ```
 
-## Constantes
+## Constants
 
 *integer* **TYPE_SELECT**
 
@@ -43,7 +43,7 @@ foreach ($result as $row) {
 
 *integer* **TYPE_DELETE**
 
-## Méthodes
+## Methods
 
 public **__construct** ([*string* $phql], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
 
@@ -63,23 +63,23 @@ Tells to the query if only the first row in the resultset must be returned
 
 public **getUniqueRow** ()
 
-Vérifier si la requête est programmé pour obtenir uniquement la première ligne dans le jeu de résultats
+Check if the query is programmed to get only the first row in the resultset
 
 final protected **_getQualified** (*array* $expr)
 
-Remplace le nom du modèle à son nom de la source dans une qualifiée de l'expression de nom
+Replaces the model's name to its source name in a qualified-name expression
 
 final protected **_getCallArgument** (*array* $argument)
 
-Résout une expression dans un seul argument appel
+Resolves an expression in a single call argument
 
 final protected **_getCaseExpression** (*array* $expr)
 
-Résout une expression dans un seul argument appel
+Resolves an expression in a single call argument
 
 final protected **_getFunctionCall** (*array* $expr)
 
-Résout une expression dans un seul argument appel
+Resolves an expression in a single call argument
 
 final protected *string* **_getExpression** (*array* $expr, [*boolean* $quoting])
 
@@ -87,39 +87,39 @@ Resolves an expression from its intermediate code into a string
 
 final protected **_getSelectColumn** (*array* $column)
 
-Résout une colonne à partir de sa représentation intermédiaire dans un tableau utilisé pour déterminer si le jeu de résultats produit est simple ou complexe
+Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
 
 final protected *string* **_getTable** ([Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $manager, *array* $qualifiedName)
 
-Résout un tableau dans une instruction SELECT de vérifier si le modèle existe
+Resolves a table in a SELECT statement checking if the model exists
 
 final protected **_getJoin** ([Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $manager, *mixed* $join)
 
-Résout une clause de JOINTURE de vérifier si l'associé modèles existent
+Resolves a JOIN clause checking if the associated models exist
 
 final protected *string* **_getJoinType** (*array* $join)
 
-Résout un type de JOINTURE
+Resolves a JOIN type
 
 final protected *array* **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface) $relation)
 
-Résout rejoint impliquant a-one/appartient à/a-beaucoup de relations
+Resolves joins involving has-one/belongs-to/has-many relations
 
 final protected *array* **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface) $relation)
 
-Résout rejoint impliquant plusieurs-à-plusieurs relations
+Resolves joins involving many-to-many relations
 
 final protected *array* **_getJoins** (*array* $select)
 
-Les processus les Jointures dans la requête qui renvoie une représentation interne de la base de données dialecte
+Processes the JOINs in the query returning an internal representation for the database dialect
 
 final protected *array* **_getOrderClause** (*array* | *string* $order)
 
-Retourne un ordre clause pour une instruction SELECT
+Returns a processed order clause for a SELECT statement
 
 final protected **_getGroupClause** (*array* $group)
 
-Retourne un traité clause group pour une instruction SELECT
+Returns a processed group clause for a SELECT statement
 
 final protected **_getLimitClause** (*array* $limitClause)
 
@@ -167,64 +167,64 @@ Executes the DELETE intermediate representation producing a Phalcon\Mvc\Model\Qu
 
 final protected [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface) **_getRelatedRecords** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
-Interroger les dossiers sur lesquels la mise à JOUR/SUPPRESSION est bien fait
+Query the records on which the UPDATE/DELETE operation well be done
 
 public *mixed* **execute** ([*array* $bindParams], [*array* $bindTypes])
 
-Exécute un analysée PHQL déclaration
+Executes a parsed PHQL statement
 
 public [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
-Exécute la requête qui renvoie le premier résultat
+Executes the query returning the first result
 
 public **setType** (*mixed* $type)
 
-Définit le type de PHQL instruction à exécuter
+Sets the type of PHQL statement to be executed
 
 public **getType** ()
 
-Obtient le type de PHQL exécution d'une instruction
+Gets the type of PHQL statement executed
 
 public **setBindParams** (*array* $bindParams, [*mixed* $merge])
 
-Jeu de lier des paramètres par défaut
+Set default bind parameters
 
 public *array* **getBindParams** ()
 
-Les retours de liaison par défaut params
+Returns default bind params
 
 public **setBindTypes** (*array* $bindTypes, [*mixed* $merge])
 
-Jeu de lier des paramètres par défaut
+Set default bind parameters
 
 public **setSharedLock** ([*mixed* $sharedLock])
 
-Ensemble VERROU PARTAGÉ clause
+Set SHARED LOCK clause
 
 public *array* **getBindTypes** ()
 
-Les retours de liaison par défaut des types de
+Returns default bind types
 
 public **setIntermediate** (*array* $intermediate)
 
-Permet de définir l'IR à être exécuté
+Allows to set the IR to be executed
 
 public *array* **getIntermediate** ()
 
-Retourne la représentation intermédiaire de la déclaration PHQL
+Returns the intermediate representation of the PHQL statement
 
 public **cache** (*mixed* $cacheOptions)
 
-Définit les paramètres de cache de la requête
+Sets the cache parameters of the query
 
 public **getCacheOptions** ()
 
-Retourne le courant options de mise en cache
+Returns the current cache options
 
 public **getSql** ()
 
-Renvoie le SQL générés par l'interne PHQL (ne fonctionne que dans les instructions SELECT)
+Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
 
 public static **clean** ()
 
-Détruit de l'intérieur PHQL cache
+Destroys the internal PHQL cache
