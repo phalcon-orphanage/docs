@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
 A router that reads routes annotations from classes/resources
 
@@ -34,7 +34,7 @@ $di->setShared(
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **URI_SOURCE_GET_URL**
 
@@ -44,7 +44,7 @@ $di->setShared(
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Méthodes
 
 public **addResource** (*mixed* $handler, [*mixed* $prefix])
 
@@ -92,11 +92,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Sets the events manager
+Définit le gestionnaire d'événements
 
 public **getEventsManager** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Returns the internal event manager
+Retourne le gestionnaire d'événements internes
 
 public **getRewriteUri** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -117,11 +117,11 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Set whether router must remove the extra slashes in the handled routes
+Définir si le routeur doit supprimer les barres obliques dans les traités routes
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Sets the name of the default namespace
+Définit le nom de l'espace de noms par défaut
 
 public **setDefaultModule** (*mixed* $moduleName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -153,11 +153,11 @@ $router->setDefaults(
 
 public **getDefaults** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Returns an array of default parameters
+Retourne un tableau de paramètres par défaut
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Adds a route to the router without any HTTP constraint
+Ajoute une route vers le routeur sans HTTP contrainte
 
 ```php
 <?php
@@ -172,7 +172,7 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 public **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Adds a route to the router that only match if the HTTP method is GET
+Ajoute une route vers le routeur qui corresponde uniquement si la méthode HTTP GET
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
