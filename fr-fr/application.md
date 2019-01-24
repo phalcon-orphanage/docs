@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# MVC Applications
+# Les Applications MVC
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -48,7 +48,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## Manual bootstrapping
+## Manuel d'amorçage
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -202,13 +202,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## Single or Multi Module Applications
+## Un seul ou plusieurs Applications de Module
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Single Module
+### Module Unique
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -539,19 +539,19 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Application Events
+## Événements D'Application
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Les événements suivants sont supportés :
 
-| Event Name            | Triggered                                                    |
-| --------------------- | ------------------------------------------------------------ |
-| `boot`                | Executed when the application handles its first request      |
-| `beforeStartModule`   | Before initialize a module, only when modules are registered |
-| `afterStartModule`    | After initialize a module, only when modules are registered  |
-| `beforeHandleRequest` | Before execute the dispatch loop                             |
-| `afterHandleRequest`  | After execute the dispatch loop                              |
+| Nom de l'événement    | Déclencheur                                                                             |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| `démarrage`           | Exécuté lors de l'application gère sa première demande                                  |
+| `beforeStartModule`   | Avant d'initialiser un module, mais seulement lorsque les modules sont enregistrés      |
+| `afterStartModule`    | Après l'initialisation d'un module, mais seulement lorsque les modules sont enregistrés |
+| `beforeHandleRequest` | Avant d'exécuter la boucle de dispatching                                               |
+| `afterHandleRequest`  | Après l'exécution de la boucle de dispatching                                           |
 
-The following example demonstrates how to attach listeners to this component:
+L’exemple suivant montre comment attacher des listeners à ce composant :
 
 ```php
 <?php
@@ -573,6 +573,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## External Resources
+## Ressources Externes
 
-* [MVC examples on Github](https://github.com/phalcon/mvc)
+* [MVC examples on GitHub](https://github.com/phalcon/mvc)
