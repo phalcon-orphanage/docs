@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\NativeArray'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
 Pagination using a PHP array as source of data
 
@@ -43,7 +43,7 @@ Phalcon\Paginator\Adapter\NativeArray constructor
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Επιστρέφει μια από φέτα το σύνολο αποτελεσμάτων για να εμφανιστεί στη σελίδα
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
