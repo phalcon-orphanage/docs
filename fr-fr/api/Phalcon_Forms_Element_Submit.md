@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Submit'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
 
 Component INPUT[type=submit] for forms
 
-## Méthodes
+## Methods
 
 public **render** ([*array* $attributes])
 
