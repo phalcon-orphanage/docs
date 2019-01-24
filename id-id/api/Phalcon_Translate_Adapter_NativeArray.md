@@ -10,11 +10,11 @@ title: 'Phalcon\Translate\Adapter\NativeArray'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
 
-Mengizinkan untuk mendefinisikan daftar terjemahan menggunakan array PHP
+Allows to define translation lists using PHP arrays
 
-## Metode
+## Methods
 
 public **__construct** (*array* $options)
 
@@ -22,11 +22,11 @@ Phalcon\Translate\Adapter\NativeArray constructor
 
 public **query** (*mixed* $index, [*mixed* $placeholders])
 
-Mengembalikan terjemahan yang terkait dengan kunci yang diberikan
+Returns the translation related to the given key
 
 public **exists** (*mixed* $index)
 
-Periksa apakah didefinisikan kunci terjemahan dalam array internal
+Check whether is defined a translation key in the internal array
 
 public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface) $interpolator) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
@@ -34,11 +34,11 @@ public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Tr
 
 public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Mengembalikan string terjemahan dari kunci yang diberikan
+Returns the translation string of the given key
 
 public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Mengembalikan string terjemahan dari kunci yang diberikan (alias metode 't')
+Returns the translation string of the given key (alias of method 't')
 
 public **offsetSet** (*string* $offset, *string* $value) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
@@ -46,16 +46,16 @@ Sets a translation value
 
 public **offsetExists** (*mixed* $translateKey) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Periksa apakah ada kunci terjemahan
+Check whether a translation key exists
 
 public **offsetUnset** (*string* $offset) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Unsets terjemahan dari kamus
+Unsets a translation from the dictionary
 
 public *string* **offsetGet** (*string* $translateKey) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Mengembalikan terjemahan yang terkait dengan kunci yang diberikan
+Returns the translation related to the given key
 
 protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Mengganti placeholder dengan nilai yang dilewatkan
+Replaces placeholders by the values passed
