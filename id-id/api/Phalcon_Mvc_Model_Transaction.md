@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Transaction'
 
 *implements* [Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
 
-Transaksi adalah blok pelindung dimana pernyataan SQL hanya bersifat permanen jika bisa semua berhasil sebagai satu aksi atom. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
+Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
 
 ```php
 <?php
@@ -48,7 +48,7 @@ try {
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
@@ -56,15 +56,15 @@ Phalcon\Mvc\Model\Transaction constructor
 
 public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
-Menetapkan pengelola transaksi yang terkait dengan transaksi
+Sets transaction manager related to the transaction
 
-publik **mulai** ()
+public **begin** ()
 
-Mulai transaksi
+Starts the transaction
 
-publik **komit** ()
+public **commit** ()
 
-Melakukan transaksi
+Commits the transaction
 
 public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $rollbackRecord])
 
@@ -72,28 +72,28 @@ Rollbacks the transaction
 
 public **getConnection** ()
 
-Mengembalikan koneksi yang terkait dengan transaksi
+Returns the connection related to transaction
 
 public **setIsNewTransaction** (*mixed* $isNew)
 
-Menetapkan apakah transaksi yang digunakan kembali atau baru sekali
+Sets if is a reused transaction or new once
 
 public **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
-Set flag ke rollback pada membatalkan koneksi HTTP
+Sets flag to rollback on abort the HTTP connection
 
 public **isManaged** ()
 
-Memeriksa apakah transaksi dikelola oleh manajer transaksi
+Checks whether transaction is managed by a transaction manager
 
 public **getMessages** ()
 
-Mengembalikan pesan validasi dari save simpan terakhir
+Returns validations messages from last save try
 
 public **isValid** ()
 
-Memeriksa apakah koneksi internal berada di bawah transaksi aktif
+Checks whether internal connection is under an active transaction
 
 public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record)
 
-Menetapkan objek yang menghasilkan tindakan rollback
+Sets object which generates rollback action
