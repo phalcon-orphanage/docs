@@ -6,9 +6,9 @@ title: 'Phalcon\Filter\UserFilterInterface'
 ---
 # Interface **Phalcon\Filter\UserFilterInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **filter** (*mixed* $value)
 
