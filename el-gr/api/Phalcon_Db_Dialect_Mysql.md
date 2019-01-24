@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 Generates database specific SQL for the MySQL RDBMS
 
