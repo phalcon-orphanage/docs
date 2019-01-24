@@ -6,15 +6,15 @@ title: 'Phalcon\Db\ColumnInterface'
 ---
 # Interface **Phalcon\Db\ColumnInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **getSchemaName** ()
 
 ...
 
-عمومی انتزاعی **دریافت نام** ()
+abstract public **getName** ()
 
 ...
 
