@@ -6,11 +6,11 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
 Handles multiples logger handlers
 
-## Methods
+## Methoden
 
 public **getLoggers** ()
 
