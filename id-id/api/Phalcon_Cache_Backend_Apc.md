@@ -10,92 +10,92 @@ title: 'Phalcon\Cache\Backend\Apc'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
 
-Memungkinkan untuk cache fragmen output, data PHP dan data mentah menggunakan backend APC
+Allows to cache output fragments, PHP data and raw data using an APC backend
 
 ```php
 <?php
 
-gunakan Phalcon\Cache\Backend\Apc;
-gunakan Phalcon\Cache\Frontend\Data as FrontData;
+use Phalcon\Cache\Backend\Apc;
+use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data untuk 2 hari
-$frontCache = Tampilan data terbaru(
+// Cache data for 2 days
+$frontCache = new FrontData(
     [
-        "masaberlaku" => 172800,
+        "lifetime" => 172800,
     ]
 );
 
-$cache = Aplikasi baru(
+$cache = new Apc(
     $frontCache,
     [
-        "diawal" => "data-app",
+        "prefix" => "app-data",
     ]
 );
 
 // Cache arbitrary data
-$cache->simpan("data-saya", [1, 2, 3, 4, 5]);
+$cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Dapatkan data
-$data = $cache->dapatkan("data saya");
+// Get data
+$data = $cache->get("my-data");
 
 ```
 
-## Metode
+## Methods
 
-publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
+public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Mengembalikan konten dalam cache
+Returns a cached content
 
-publik **simpan** ([*sejajar* | *int* $keyName], [*sejajar* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Menyimpan isi cache ke dalam APC backend dan menghentikan frontend
+Stores cached content into the APC backend and stops the frontend
 
-public **kenaikan** ([*sejajar* $keyName], [*campuran* $value])
+public **increment** ([*string* $keyName], [*mixed* $value])
 
-Kenaikan kunci yang diberikan, dengan nilai $ harga
+Increment of a given key, by number $value
 
-publik **penurunan** ([*jaringan* $keyName], [<1campuran</em> $value])
+public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Penurunan kunci yang diberikan, dengan nilai $value
+Decrement of a given key, by number $value
 
-publik **hapus** (*campuran* $keyName)
+public **delete** (*mixed* $keyName)
 
-Menghapus nilai dari cache dengan kuncinya
+Deletes a value from the cache by its key
 
-publik **Kunci kueri** ([*campuran* $prefix])
+public **queryKeys** ([*mixed* $prefix])
 
-Permintaan kunci cache yang ada.
+Query the existing cached keys.
 
 ```php
 <?php
 
-$cache->simpan("para pengguna-ids", [1, 2, 3]);
-$cache->simpan("Rancangan-ids", [4, 5, 6]);
+$cache->save("users-ids", [1, 2, 3]);
+$cache->save("projects-ids", [4, 5, 6]);
 
-var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
+var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-publik **ada** ([*jaringan* | *int* $keyName], [*int* $lifetime])
+public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Memeriksa apakah cache ada dan belum kedaluwarsa
+Checks if cache exists and it hasn't expired
 
-publik **flush** ()
+public **flush** ()
 
-Segera batalkan semua item yang ada.
+Immediately invalidates all existing items.
 
 ```php
 <?php
 
-gunakan Phalcon\Cache\Backend\Apc;
+use Phalcon\Cache\Backend\Apc;
 
-$cache = Apc baru($frontCache, ["diawal" => "app-data"]);
+$cache = new Apc($frontCache, ["prefix" => "app-data"]);
 
-$cache->simpan("Data saya", [1, 2, 3, 4, 5]);
+$cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// data saya' dan Seluruh kunci yang pernah digunakan terhapus.
+// 'my-data' and all other used keys are deleted
 $cache->flush();
 
 ```
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Menghentikan frontend tanpa menyimpan konten dalam cache
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache terakhir masih segar atau di-cache
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache sudah mulai buffering atau tidak
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Dapat di set seumur hidup
+Gets the last lifetime set
