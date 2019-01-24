@@ -8,12 +8,12 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/filters/jsmin.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
-Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
+Löscht die Zeichen, die für JavaScript unbedeutend sind. Kommentare werden entfernt. Tabs werden durch Leerzeichen ersetzt. Zeilenumbrüche werden mit Zeilenvorschüben ersetzt. Die meisten Leerzeichen und Zeilenumbrüche werden entfernt.
 
-## Methods
+## Methoden
 
 public **filter** (*mixed* $content)
 
-Filters the content using JSMIN
+Filtert den Inhalt mit JSMIN
