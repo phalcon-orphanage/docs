@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Backend\Apcu'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apcu.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apcu.zep)
 
-Allows to cache output fragments, PHP data and raw data using an APCu backend
+Memungkinkan untuk cache fragmen output, data PHP dan data mentah menggunakan APCu backend
 
 ```php
 <?php
@@ -42,49 +42,49 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metode
 
-public **get** (*mixed* $keyName, [*mixed* $lifetime])
+publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
 
-Returns a cached content
+Mengembalikan konten dalam cache
 
-public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+publik **simpan** ([*sejajar* | *int* $keyName], [*sejajar* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APCu backend and stops the frontend
+Menyimpan isi cache ke dalam APCu backend dan menghentikan frontend
 
-public **increment** ([*string* $keyName], [*mixed* $value])
+public **kenaikan** ([*sejajar* $keyName], [*campuran* $value])
 
-Increment of a given key, by number $value
+Kenaikan kunci yang diberikan, dengan nilai $ harga
 
-public **decrement** ([*string* $keyName], [*mixed* $value])
+publik **penurunan** ([*jaringan* $keyName], [<1campuran</em> $value])
 
-Decrement of a given key, by number $value
+Penurunan kunci yang diberikan, dengan nilai $value
 
-public **delete** (*mixed* $keyName)
+publik **hapus** (*campuran* $keyName)
 
-Deletes a value from the cache by its key
+Menghapus nilai dari cache dengan kuncinya
 
-public **queryKeys** ([*mixed* $prefix])
+publik **Kunci kueri** ([*campuran* $prefix])
 
-Query the existing cached keys.
+Permintaan kunci cache yang ada.
 
 ```php
 <?php
 
-$cache->save("users-ids", [1, 2, 3]);
-$cache->save("projects-ids", [4, 5, 6]);
+$cache->simpan("para pengguna-ids", [1, 2, 3]);
+$cache->simpan("Rancangan-ids", [4, 5, 6]);
 
-var_dump($cache->queryKeys("users")); // ["users-ids"]
+var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
 
 ```
 
-public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
+publik **ada** ([*jaringan* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it hasn't expired
+Memeriksa apakah cache ada dan belum kedaluwarsa
 
-public **flush** ()
+publik **flush** ()
 
-Immediately invalidates all existing items.
+Segera batalkan semua item yang ada.
 
 ```php
 <?php
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Menghentikan frontend tanpa menyimpan konten dalam cache
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Memeriksa apakah cache terakhir masih segar atau di-cache
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Memeriksa apakah cache sudah mulai buffering atau tidak
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Dapat di set seumur hidup
