@@ -10,9 +10,9 @@ title: 'Phalcon\Db\Adapter\Pdo\Postgresql'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/postgresql.zep)
 
-Des fonctions spécifiques pour le système de base de données Postgresql
+Specific functions for the Postgresql database system
 
 ```php
 <?php
@@ -31,7 +31,7 @@ $connection = new Postgresql($config);
 
 ```
 
-## Méthodes
+## Methods
 
 public **connect** ([*array* $descriptor])
 
@@ -96,7 +96,7 @@ Constructor for Phalcon\Db\Adapter\Pdo
 
 public **prepare** (*mixed* $sqlStatement) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Retourne un PDO instruction préparée pour être exécuté avec 'executePrepared'
+Returns a PDO prepared statement to be executed with 'executePrepared'
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $success = $connection->execute(
 
 public **affectedRows** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Retourne le nombre de lignes affectées par la dernière INSERT/UPDATE/DELETE exécutée dans le système de base de données
+Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
 
 ```php
 <?php
@@ -208,7 +208,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-S'échappe une valeur pour éviter les injections SQL en fonction de l'actif charset dans la connexion
+Escapes a value to avoid SQL injections according to the active charset in the connection
 
 ```php
 <?php
@@ -219,7 +219,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 public **convertBoundParams** (*mixed* $sql, [*array* $params]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Convertit les paramètres liés tels que :name: ou ?1 en PDO lier params ?
+Converts bound parameters such as :name: or ?1 into PDO bind params ?
 
 ```php
 <?php
@@ -237,7 +237,7 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Renvoie l'insert id de l'auto_increment/série colonne insérée dans la dernière instruction SQL exécutée
+Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
 
 ```php
 <?php
@@ -262,23 +262,23 @@ $id = $connection->lastInsertId();
 
 public **begin** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Démarre une transaction dans la connexion
+Starts a transaction in the connection
 
 public **rollback** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Des restaurations de la transaction active dans la connexion
+Rollbacks the active transaction in the connection
 
 public **commit** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Valide la transaction active dans la connexion
+Commits the active transaction in the connection
 
 public **getTransactionLevel** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Renvoie le niveau d'imbrication des transactions
+Returns the current transaction nesting level
 
 public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Vérifie si la connexion est en vertu d'une transaction
+Checks whether the connection is under a transaction
 
 ```php
 <?php
@@ -318,7 +318,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Retourne le gestionnaire d'événements internes
+Returns the internal event manager
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
