@@ -6,18 +6,18 @@ title: 'Phalcon\Translate\AdapterInterface'
 ---
 # Interface **Phalcon\Translate\AdapterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
 
-## Metode
+## Methods
 
-umum abstrak **t** (*campuran* $kunciterjemahan, [*campuran* $pemegangtempat])
-
-...
-
-umum abstrak **pertanyaan** (*campuran* $indeks, [*campuran* $pemegangtempat])
+abstract public **t** (*mixed* $translateKey, [*mixed* $placeholders])
 
 ...
 
-umum abstrak **wujud** (*campuran* $indeks)
+abstract public **query** (*mixed* $index, [*mixed* $placeholders])
+
+...
+
+abstract public **exists** (*mixed* $index)
 
 ...
