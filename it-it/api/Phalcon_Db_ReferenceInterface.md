@@ -6,9 +6,9 @@ title: 'Phalcon\Db\ReferenceInterface'
 ---
 # Interface **Phalcon\Db\ReferenceInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **getName** ()
 
