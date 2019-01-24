@@ -367,6 +367,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### 独自のアダプターを実装
+### Implementing your own adapters
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.
