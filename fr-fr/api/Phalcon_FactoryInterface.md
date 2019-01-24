@@ -6,9 +6,9 @@ title: 'Phalcon\FactoryInterface'
 ---
 # Interface **Phalcon\FactoryInterface**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factoryinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factoryinterface.zep)
 
-## Méthodes
+## Methods
 
 abstract public static **load** (*mixed* $config)
 
