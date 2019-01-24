@@ -131,7 +131,7 @@ if (count($messages)) {
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                                                                         | Explanation                                                       |
+| Klasse                                                                                        | Explanation                                                       |
 | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | Validates that a field's value is only alphanumeric character(s). |
 | [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | Validates that a field's value is only alphabetic character(s).   |
