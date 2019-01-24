@@ -8,7 +8,7 @@ title: 'Phalcon\Session\Adapter'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
 
 Base class for Phalcon\Session adapters
 
@@ -28,7 +28,7 @@ Phalcon\Session\Adapter constructor
 
 public **start** ()
 
-Starts the session (if headers are already sent the session will not be started)
+Ξεκινά τη σύνοδο (εάν έχουν αποσταλεί οι ήδη κεφαλίδες, η σύνοδος δεν θα ξεκινήσει)
 
 public **setOptions** (*array* $options)
 
@@ -83,7 +83,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index)
 
-Check whether a session variable is set in an application context
+Ελέγξτε αν μεταβλητή μια περιόδου σύνδεσης έχει οριστεί σε ένα περιβάλλον εφαρμογής
 
 ```php
 <?php
@@ -129,7 +129,7 @@ $session->setId($id);
 
 public **isStarted** ()
 
-Check whether the session has been started
+Ελέγξτε αν ξεκινήσει έχει η συνεδρία
 
 ```php
 <?php
@@ -188,7 +188,7 @@ Alias: Check whether a session variable is set in an application context
 
 public **__unset** (*mixed* $index)
 
-Alias: Removes a session variable from an application context
+Alias: Καταργεί μια μεταβλητή λειτουργίας περιόδου από ένα περιβάλλον εφαρμογής
 
 ```php
 <?php
