@@ -10,9 +10,9 @@ title: 'Phalcon\Image\Adapter\Gd'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-## Methoden
+## Methods
 
 public static **check** ()
 
