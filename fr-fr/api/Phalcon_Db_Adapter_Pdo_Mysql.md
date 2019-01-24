@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Mysql'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
 
 Specific functions for the Mysql database system
 
@@ -31,7 +31,7 @@ $connection = new Mysql($config);
 
 ```
 
-## Methods
+## Méthodes
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
@@ -103,7 +103,7 @@ $connection->connect();
 
 public **prepare** (*mixed* $sqlStatement) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Returns a PDO prepared statement to be executed with 'executePrepared'
+Retourne un PDO instruction préparée pour être exécuté avec 'executePrepared'
 
 ```php
 <?php
@@ -196,7 +196,7 @@ $success = $connection->execute(
 
 public **affectedRows** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
+Retourne le nombre de lignes affectées par la dernière INSERT/UPDATE/DELETE exécutée dans le système de base de données
 
 ```php
 <?php
@@ -215,7 +215,7 @@ Closes the active connection returning success. Phalcon automatically closes and
 
 public **escapeString** (*mixed* $str) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Escapes a value to avoid SQL injections according to the active charset in the connection
+S'échappe une valeur pour éviter les injections SQL en fonction de l'actif charset dans la connexion
 
 ```php
 <?php
@@ -226,7 +226,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 
 public **convertBoundParams** (*mixed* $sql, [*array* $params]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Converts bound parameters such as :name: or ?1 into PDO bind params ?
+Convertit les paramètres liés tels que :name: ou ?1 en PDO lier params ?
 
 ```php
 <?php
@@ -244,7 +244,7 @@ print_r(
 
 public *int* | *boolean* **lastInsertId** ([*string* $sequenceName]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
+Renvoie l'insert id de l'auto_increment/série colonne insérée dans la dernière instruction SQL exécutée
 
 ```php
 <?php
@@ -269,23 +269,23 @@ $id = $connection->lastInsertId();
 
 public **begin** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Starts a transaction in the connection
+Démarre une transaction dans la connexion
 
 public **rollback** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Rollbacks the active transaction in the connection
+Des restaurations de la transaction active dans la connexion
 
 public **commit** ([*mixed* $nesting]) inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Commits the active transaction in the connection
+Valide la transaction active dans la connexion
 
 public **getTransactionLevel** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Returns the current transaction nesting level
+Renvoie le niveau d'imbrication des transactions
 
 public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Checks whether the connection is under a transaction
+Vérifie si la connexion est en vertu d'une transaction
 
 ```php
 <?php
@@ -325,7 +325,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the internal event manager
+Retourne le gestionnaire d'événements internes
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
