@@ -29,7 +29,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### Fabryka
+### Factory
 
 <a name='factory'></a>
 
