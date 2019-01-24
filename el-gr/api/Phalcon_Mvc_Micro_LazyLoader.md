@@ -22,7 +22,7 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 
 public *mixed* **__call** (*string* $method, *array* $arguments)
 
-Αρχικοποιεί εσωτερικό τον χειριστή, καλώντας τις λειτουργίες σε αυτό
+Initializes the internal handler, calling functions on it
 
 public *mixed* **callMethod** (*string* $method, *array* $arguments, [[Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder])
 
