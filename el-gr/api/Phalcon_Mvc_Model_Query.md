@@ -211,7 +211,7 @@ Allows to set the IR to be executed
 
 public *array* **getIntermediate** ()
 
-Επιστρέφει την ενδιάμεση της αναπαράσταση δήλωσης PHQL
+Returns the intermediate representation of the PHQL statement
 
 public **cache** (*mixed* $cacheOptions)
 
