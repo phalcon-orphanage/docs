@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\OperationInterface'
 ---
 # Interface **Phalcon\Acl\OperationInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationinterface.zep)
 
-## Metodi
+## Methods
 
 ```php
 public getDescription(): string
