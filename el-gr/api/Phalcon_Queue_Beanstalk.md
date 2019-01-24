@@ -69,7 +69,7 @@ It removes the named tube from the watch list for the current connection.
 
 public **pauseTube** (*mixed* $tube, *mixed* $delay)
 
-Μπορεί να καθυστερήσει κάθε νέα δουλειά που δεσμεύεται δεδομένη για ώρα.
+Can delay any new job being reserved for a given time.
 
 public **kick** (*mixed* $bound)
 
@@ -77,7 +77,7 @@ The kick command applies only to the currently used tube.
 
 public **stats** ()
 
-Παρέχει στατιστικές το πληροφορίες για σύστημα στο σύνολό του.
+Gives statistical information about the system as a whole.
 
 public **statsTube** (*mixed* $tube)
 
@@ -89,11 +89,11 @@ Returns a list of all existing tubes.
 
 public **listTubeUsed** ()
 
-Επιστρέφει τον σωλήνα χρησιμοποιείται που από τον πελάτη.
+Returns the tube currently being used by the client.
 
 public **listTubesWatched** ()
 
-Επιστρέφει μια λίστα που λυχνιών παρακολουθεί αυτή τη στιγμή ο πελάτης.
+Returns a list tubes currently being watched by the client.
 
 public **peekReady** ()
 
