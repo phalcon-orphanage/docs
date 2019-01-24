@@ -6,7 +6,7 @@ title: 'Phalcon\Db'
 ---
 # Abstract class **Phalcon\Db**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
 
 Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS.
 
@@ -47,7 +47,7 @@ try {
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **FETCH_LAZY**
 
@@ -83,7 +83,7 @@ try {
 
 *integer* **FETCH_PROPS_LATE**
 
-## Methods
+## Méthodes
 
 public static **setup** (*array* $options)
 
