@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
 
 Loads Annotations Adapter class using 'adapter' option
 
@@ -28,7 +28,7 @@ $annotations = Factory::load($options);
 
 ```
 
-## Méthodes
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
