@@ -6,30 +6,30 @@ title: 'Phalcon\Mvc\UrlInterface'
 ---
 # Interface **Phalcon\Mvc\UrlInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
 
-## Metode
+## Methods
 
-abstrak umum **mengatur Uri Dasar** (*campuran* $baseUri)
-
-...
-
-abstrak umum **mendapatkan Uri Dasar** ()
+abstract public **setBaseUri** (*mixed* $baseUri)
 
 ...
 
-abstrak umum **mengatur Jalan Dasar** (*campuran* $basePath)
+abstract public **getBaseUri** ()
 
 ...
 
-abstrak umum **mendapatkan Jalan Dasar** ()
+abstract public **setBasePath** (*mixed* $basePath)
 
 ...
 
-abstrak umum **mendapatkan** ([*campuran* $uri], [*campuran* $args], [*campuran* $local])
+abstract public **getBasePath** ()
 
 ...
 
-abstrak umum **jalan** ([*campuran* $path])
+abstract public **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local])
+
+...
+
+abstract public **path** ([*mixed* $path])
 
 ...
