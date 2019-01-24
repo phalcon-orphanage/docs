@@ -16,7 +16,7 @@ Queries the table meta-data in order to introspect the model's metadata
 
 final public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Τα από μεταδεδομένα δεδομένων αποκτώνται διαβάζοντας τις της στήλης το σχήμα πληροφοριών βάσης περιγραφές
+The meta-data is obtained by reading the column descriptions from the database information schema
 
 final public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
