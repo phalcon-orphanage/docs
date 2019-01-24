@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Xcache'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/xcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/xcache.zep)
 
 Stores model meta-data in the XCache cache. Data will erased if the web server is restarted
 
@@ -30,7 +30,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Xcache(
 
 ```
 
-## Stałe
+## Constants
 
 *integer* **MODELS_ATTRIBUTES**
 
