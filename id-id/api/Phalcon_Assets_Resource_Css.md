@@ -10,13 +10,13 @@ title: 'Phalcon\Assets\Resource\Css'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/css.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/css.zep)
 
-Represents CSS resources
+Merupakan sumber CSS
 
-## Methods
+## Metode
 
-public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+umum **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 public **getType** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
@@ -42,39 +42,39 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Asse
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's type
+Menetapkan jenis sumber daya
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's path
+Menetapkan jalur sumber daya
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+Menetapkan apakah sumber daya itu lokal atau eksternal
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+Menetapkan apakah sumber daya harus disaring atau tidak
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+Menetapkan beberapa atribut HTML tambahan
 
 public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+Menetapkan sebuah target uri untuk menghasilkan HTML
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's source path
+Menetapkan jalur sumber sumber
 
 public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's target path
+Menetapkan jalur target sumber daya
 
 public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Mengembalikan isi sumber daya sebagai string Opsional jalur dasar dimana sumber daya berada dapat diatur
 
 public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
@@ -82,12 +82,12 @@ Returns the real target uri for the generated HTML
 
 public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource is located
+Mengembalikan lokasi lengkap tempat sumber daya berada
 
 public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource must be written
+Mengembalikan lokasi lengkap dimana sumber daya harus ditulis
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gets the resource's key.
+Mendapatkan kunci sumber.
