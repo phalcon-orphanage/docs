@@ -8,202 +8,197 @@ title: 'Phalcon\Db\Dialect'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## Methods
+## Metode
 
-public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
+publik**fungsitampilanregistrasi**(*tercampur*$name,*tercampur*$customFunction)
 
-Registers custom SQL functions
+Mendaftarkan fungsi SQL ubahsuaian
 
-public **getCustomFunctions** ()
+publik**dapatkanfungsitampilan**()
 
-Returns registered functions
+Mengembalikan fungsi yang terdaftar
 
-final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar])
+final publik**skemapelarian**(*tercampur*$str,[*tercampur*$escapeChar])
 
-Escape Schema
+Skema Escape
 
-final public **escape** (*mixed* $str, [*mixed* $escapeChar])
+final [ublik**melarikandiri**(*tercampur*$str,[*tercampur*$escapeChar])
 
-Escape identifiers
+Pengidentifikasi melarikan diri
 
-public **limit** (*mixed* $sqlQuery, *mixed* $number)
+abstrak publik **tableExists** (*mixed* $sqlQuery, [*mixed* $number)
 
-Generates the SQL for LIMIT clause
+Menghasilkan SQL untuk LIMIT clause
 
 ```php
 <?php
-
-$sql = $dialect->limit("SELECT * FROM robots", 10);
-echo $sql; // SELECT * FROM robots LIMIT 10
-
-$sql = $dialect->limit("SELECT * FROM robots", [10, 50]);
-echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
+$sql=$dialect->batas("PILIH*DARI robot",10);
+echo$sql;//PILIH*DARI robot BATAS 10
+$sql=$dialect->batas("PILIH*DARI robot",[10,50]);
+echo$sql;//PILIH*DARI robot BATAS 10 IMBANG 50
 
 ```
 
-public **forUpdate** (*mixed* $sqlQuery)
+publik ** memiliki ** (* campuran*$sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+Mengembalikan SQL yang dimodifikasi dengan klausa FOR UPDATE
 
 ```php
 <?php
-
-$sql = $dialect->forUpdate("SELECT * FROM robots");
-echo $sql; // SELECT * FROM robots FOR UPDATE
+$sql=$dialect->untukmemperbarui("PILIH*DARI robot");
+echo$sql;//PILIH*DARI robot DARI PEMBARUAN
 
 ```
 
-public **sharedLock** (*mixed* $sqlQuery)
+publik ** memiliki ** (* campuran*$sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Mengembalikan SQL yang dimodifikasi dengan klausa LOCK IN SHARE MODE
 
 ```php
 <?php
-
-$sql = $dialect->sharedLock("SELECT * FROM robots");
-echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
+$sql=$dialect->Membagikunci("PILIH*DARI robot");
+gema$sql;//PILIH*DARI robot KUNCI DALAM MODE MEMBAGI
 
 ```
 
-final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts])
+final publik**dapatdaftarkolom**(*array*$columnList,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Gets a list of columns with escaped identifiers
+Mendapat daftar kolom dengan pengenal yang lolos
 
 ```php
 <?php
-
-echo $dialect->getColumnList(
-    [
-        "column1",
-        "column",
-    ]
+gema$dialect=>dapatdaftarkolom(
+[
+"kolom1",
+"kolom",
+]
 );
 
 ```
 
-final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts])
+final publik**dapatkolomsql**(*tercampur*$column,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve Column expressions
+Selesaikan ekspresi Kolom
 
-public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+publik**dapatkanekspressisql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Mengubah representasi perantara untuk ekspresi ke dalam ekspresi sistem basis data yang valid
 
-final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar])
+final publik**dapatkantabelsql**(*tercampur*$table,[*tercampur*$escapeChar])
 
-Transform an intermediate representation of a schema/table into a database system valid expression
+Mengubah representasi antara skema/tabel menjadi ekspresi sistem basis data yang valid
 
-public **select** (*array* $definition)
+umum**pilih**(*array*$definition)
 
-Builds a SELECT statement
+Buat pernyataan SELECT
 
-public **supportsSavepoints** ()
+umum**dukungpontm=simpan**()
 
-Checks whether the platform supports savepoints
+Memeriksa apakah platform mendukung savepoints
 
-public **supportsReleaseSavepoints** ()
+umum**dukungmelepaspoinsimpan**()
 
-Checks whether the platform supports releasing savepoints.
+Memeriksa apakah platform mendukung rilis savepoints.
 
-public **createSavepoint** (*mixed* $name)
+publik **getAll ** (* dicampur * $name)
 
-Generate SQL to create a new savepoint
+Menghasilkan SQL untuk menciptakan savepoint baru
 
-public **releaseSavepoint** (*mixed* $name)
+publik **setName** (*dicampur* $name)
 
-Generate SQL to release a savepoint
+Hasilkan SQL untuk melepaskan savepoint
 
-public **rollbackSavepoint** (*mixed* $name)
+publik **createSavepoint** (*mixed* $name)
 
-Generate SQL to rollback a savepoint
+Menghasilkan SQL untuk mengembalikan sebuah savepoint
 
-final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatkanekspressiskalarsql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve Column expressions
+Selesaikan ekspresi Kolom
 
-final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatkanobjekekspressi**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve object expressions
+Selesaikan ekspresi objek
 
-final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar])
+perlindungan terakhir**dapatkualifikasiekspressisql**(*array*$expression,[*tercampur*$escapeChar])
 
-Resolve qualified expressions
+Selesaikanlah ekspresi berkualitas
 
-final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatkanekspressiBinariOperasiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve binary operations expressions
+Putuskan ekspresi operasi biner
 
-final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatkanOperasiUnariEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve unary operations expressions
+Selesaikan ungkapan operasi unary
 
-final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts])
+perlindungan terakhir**dapatfungsuPanggilanEkspressiSql**(*array*$expression,*tercampur*$escapeChar,[*tercampur*$bindCounts])
 
-Resolve function calls
+Selesaikan pemanggilan fungsi
 
-final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan teralkhir**dapatDaftarEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve Lists
+Putuskan Daftar
 
-final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar])
+perlindungan terakhir**dapatSemuaEkspressiSql**(*array*$expression,[*tercampur*$escapeChar])
 
-Resolve *
+Selesaikan*
 
-final protected **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindunga terakhir**dapatNilaiEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve CAST of values
+Selesaikan nilai CAST
 
-final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatNilaiKonversiEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve CONVERT of values encodings
+Selesaikan CONVERT dari pengkodean nilai
 
-final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatKasusEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve CASE expressions
+Selesaikan pernyataan CASE
 
-final protected **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar])
+perlindungan terakhir**dapatDariEkspressiSql**(*tercampur*$expression,[*tercampur*$escapeChar])
 
-Resolve a FROM clause
+Selesaikan klausa FROM
 
-final protected **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**dapatBergabungEkspressiSql**(*tercampur*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve a JOINs clause
+Selesaikan klausa JOINs
 
-final protected **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**apatDimanaEkspressiSql**(*tercampur*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve a WHERE clause
+Selesaikan klausa WHERE
 
-final protected **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terakhir**apatGrupOlehEkspressiSql**(*tercampur*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve a GROUP BY clause
+Selesaikan klausa GROUP BY
 
-final protected **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terkahir**dapatMempunyaiEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve a HAVING clause
+Selesaikan klausa GROUP BY
 
-final protected **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terkahir**dapatPesananOlehEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve an ORDER BY clause
+Selesaikan klausa ORDER BY
 
-final protected **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
+perlindungan terkahir**dapatBatasEkspressiSql**(*array*$expression,[*tercampur*$escapeChar],[*tercampur*$bindCounts])
 
-Resolve a LIMIT clause
+Selesaikan klausa LIMIT
 
-protected **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar])
+perlindungan**persiapanKolomAlias**(*tercampur*$qualified,[*tercampur*$alias],[*tercampur*$escapeChar])
 
-Prepares column for this RDBMS
+Siapkan kolom untuk RDBMS ini
 
-protected **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar])
+perlindungan**Tabelpersiapan**(*tercampur*$table,[*tercampur*$schema],[*tercampur*$alias],[*tercampur*$escapeChar])
 
-Prepares table for this RDBMS
+Siapkan tabel untuk RDBMS ini
 
-protected **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar])
+perlindungan**persiapanKualifikasi**(*tercampur*$column,[*tercampur*$domain],[*tercampur*$escapeChar])
 
-Prepares qualified for this RDBMS
+Siapkan kualifikasi untuk RDBMS ini
 
 abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
