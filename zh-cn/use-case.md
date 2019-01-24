@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 使用案例
+# Use case
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 

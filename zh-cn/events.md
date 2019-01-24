@@ -23,7 +23,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## 用法示例
+## Usage Example
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -479,12 +479,12 @@ The events available in Phalcon are:
 | Micro              | `micro:beforeExecuteRoute`           |
 | Micro              | `micro:beforeHandleRoute`            |
 | Micro              | `micro:beforeNotFound`               |
-| 中间件                | `afterBinding`                       |
-| 中间件                | `afterExecuteRoute`                  |
-| 中间件                | `afterHandleRoute`                   |
-| 中间件                | `beforeExecuteRoute`                 |
-| 中间件                | `beforeHandleRoute`                  |
-| 中间件                | `beforeNotFound`                     |
+| Middleware         | `afterBinding`                       |
+| Middleware         | `afterExecuteRoute`                  |
+| Middleware         | `afterHandleRoute`                   |
+| Middleware         | `beforeExecuteRoute`                 |
+| Middleware         | `beforeHandleRoute`                  |
+| Middleware         | `beforeNotFound`                     |
 | Model              | `afterCreate`                        |
 | Model              | `afterDelete`                        |
 | Model              | `afterSave`                          |

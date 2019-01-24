@@ -25,7 +25,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## 创建模型
+## Creating Models
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -629,7 +629,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## 删除记录
+## Deleting Records
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 

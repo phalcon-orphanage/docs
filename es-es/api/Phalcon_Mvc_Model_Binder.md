@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Binder'
 
 *implements* [Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/binder.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
 
 Phalcon\Mvc\Model\Binding
 

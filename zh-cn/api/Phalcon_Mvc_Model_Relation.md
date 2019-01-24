@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Relation'
 
 *implements* [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
 
 This class represents a relationship between two models
 

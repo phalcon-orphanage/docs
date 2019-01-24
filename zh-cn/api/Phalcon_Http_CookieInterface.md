@@ -6,7 +6,7 @@ title: 'Phalcon\Http\CookieInterface'
 ---
 # Interface **Phalcon\Http\CookieInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
 
 ## 方法
 

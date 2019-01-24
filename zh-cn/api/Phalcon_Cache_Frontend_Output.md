@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Output'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
 
 Allows to cache output fragments captured with ob_* functions
 

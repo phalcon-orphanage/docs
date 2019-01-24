@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query\Builder'
 
 *implements* [Phalcon\Mvc\Model\Query\BuilderInterface](Phalcon_Mvc_Model_Query_BuilderInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
 
 Helps to create PHQL queries using an OO interface
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query'
 
 *implements* [Phalcon\Mvc\Model\QueryInterface](Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
 This class takes a PHQL intermediate representation and executes it.
 

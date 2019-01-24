@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\BinderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BinderInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
 
 ## Methods
 

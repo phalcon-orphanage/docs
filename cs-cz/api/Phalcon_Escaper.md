@@ -8,7 +8,7 @@ title: 'Phalcon\Escaper'
 
 *implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 

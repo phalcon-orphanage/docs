@@ -9,29 +9,29 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 关联模型
+# Model Relationships
 
 <a name='relationships'></a>
 
-## 模型之间的关系
+## Relationships between Models
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
-### 单向的关系
+### Unidirectional relationships
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### 双向关系
+### Bidirectional relations
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### 定义关系
+### Defining relationships
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
@@ -460,7 +460,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### 混叠的关系
+### Aliasing Relationships
 
 To explain better how aliases work, let's check the following example:
 
@@ -704,7 +704,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## 虚拟的外键
+## Virtual Foreign Keys
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -845,7 +845,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## 存储相关的记录
+## Storing Related Records
 
 Magic properties can be used to store a record and its related properties:
 
@@ -916,7 +916,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## 在结果集的操作
+## Operations over Resultsets
 
 If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
 
@@ -942,7 +942,7 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### 更新相关的记录
+### Updating related records
 
 Instead of doing this:
 
@@ -1005,7 +1005,7 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### 删除相关的记录
+### Deleting related records
 
 Instead of doing this:
 

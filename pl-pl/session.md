@@ -45,7 +45,7 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Fabryka
+## Factory
 
 Loads Session Adapter class using `adapter` option
 

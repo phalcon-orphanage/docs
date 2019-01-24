@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\Reflection'
 ---
 # Class **Phalcon\Annotations\Reflection**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
 Allows to manipulate the annotations reflection in an OO manner
 

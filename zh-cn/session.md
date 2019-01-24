@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 在会话中存储数据
+# Storing data in the Session
 
 The session component provides object-oriented wrappers to access session data.
 
@@ -21,7 +21,7 @@ Reasons to use this component instead of raw-sessions:
 
 <a name='start'></a>
 
-## 启动新会话
+## Starting the Session
 
 Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
@@ -45,7 +45,7 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## 工厂
+## Factory
 
 Loads Session Adapter class using `adapter` option
 
@@ -101,7 +101,7 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## 删除/销毁会话
+## Removing/Destroying Sessions
 
 It's also possible remove specific variables or destroy the whole session:
 
@@ -230,7 +230,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## 实现自己的适配器
+## Implementing your own adapters
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Cli\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 

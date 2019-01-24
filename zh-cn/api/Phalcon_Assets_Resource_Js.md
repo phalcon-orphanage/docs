@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Resource\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
 
 Represents Javascript resources
 

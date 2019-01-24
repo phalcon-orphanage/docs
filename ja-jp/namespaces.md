@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='setting-up'></a>
 
-## フレームワークの設定
+## Setting up the framework
 
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
@@ -86,7 +86,7 @@ $di->set(
 
 <a name='controllers'></a>
 
-## コントローラでの名前空間
+## Controllers in Namespaces
 
 The following example shows how to implement a controller that use namespaces:
 

@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Čtení konfigurace
+# Reading Configurations
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 

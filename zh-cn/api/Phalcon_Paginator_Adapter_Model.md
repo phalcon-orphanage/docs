@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\Model'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 

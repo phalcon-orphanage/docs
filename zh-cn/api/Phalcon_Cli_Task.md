@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Task'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](Phalcon_Cli_TaskInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
 Every command-line task should extend this class that encapsulates all the task functionality
 

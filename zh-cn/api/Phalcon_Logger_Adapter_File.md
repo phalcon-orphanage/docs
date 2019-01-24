@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\File'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
 
 Adapter to store logs in plain text files
 

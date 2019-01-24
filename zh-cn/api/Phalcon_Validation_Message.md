@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Message'
 
 *implements* [Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
 
 Encapsulates validation info generated in the validation process
 

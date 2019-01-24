@@ -8,7 +8,7 @@ title: 'Phalcon\Filter'
 
 *implements* [Phalcon\FilterInterface](Phalcon_FilterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
 
 The Phalcon\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
 

@@ -6,7 +6,7 @@ title: 'Phalcon\Security\Random'
 ---
 # Class **Phalcon\Security\Random**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 Secure random number generator class.
 

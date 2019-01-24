@@ -8,7 +8,7 @@ title: 'Phalcon\Loader'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
 This component helps to load your project classes automatically based on some conventions
 

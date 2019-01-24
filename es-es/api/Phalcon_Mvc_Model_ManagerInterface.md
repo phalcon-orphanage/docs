@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ManagerInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/mvc/model/managerinterface.zep" class="btn btn-default btn-sm">Código fuente en GitHub</a>
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
 
 ## Métodos
 

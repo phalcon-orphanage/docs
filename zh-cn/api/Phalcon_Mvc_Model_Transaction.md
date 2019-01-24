@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Transaction'
 
 *implements* [Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
 
 Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
 

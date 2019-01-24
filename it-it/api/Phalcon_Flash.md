@@ -8,7 +8,7 @@ title: 'Phalcon\Flash'
 
 *implements* [Phalcon\FlashInterface](Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 

@@ -6,7 +6,7 @@ title: 'Phalcon\Kernel'
 ---
 # Class **Phalcon\Kernel**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
 
 ## メソッド
 

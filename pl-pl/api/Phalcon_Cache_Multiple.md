@@ -6,7 +6,7 @@ title: 'Phalcon\Cache\Multiple'
 ---
 # Class **Phalcon\Cache\Multiple**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
 Allows to read to chained backend adapters writing to multiple backends
 

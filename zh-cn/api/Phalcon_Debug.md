@@ -6,7 +6,7 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
 Provides debug capabilities to Phalcon applications
 

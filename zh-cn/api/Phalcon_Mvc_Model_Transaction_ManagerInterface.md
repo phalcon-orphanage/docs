@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Transaction\ManagerInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
 
 ## 方法
 

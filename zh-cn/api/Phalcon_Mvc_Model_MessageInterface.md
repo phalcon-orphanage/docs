@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\MessageInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
 
 ## 方法
 

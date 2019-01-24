@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 安全
+# Security
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## 密码哈希
+## Password Hashing
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](https://php.net/manual/en/function.md5.php)' and '[sha1](https://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -144,7 +144,7 @@ Adding a [captcha](https://www.google.com/recaptcha) to the form is also recomme
 
 <a name='setup'></a>
 
-## 设置该组件
+## Setting up the component
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -202,6 +202,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## 外部资源
+## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [Github](https://github.com/phalcon/vokuro)
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)

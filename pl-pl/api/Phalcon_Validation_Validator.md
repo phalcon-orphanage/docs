@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Validator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
 
 This is a base class for validators
 

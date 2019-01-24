@@ -179,7 +179,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## 事件
+## Events
 
 When using HTTP authorization, the `Authorization` header has the following format:
 

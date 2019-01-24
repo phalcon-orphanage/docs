@@ -2,7 +2,7 @@
 layout: article
 language: 'zh-cn'
 version: '4.0'
-title: 'API 索引'
+title: 'API Index'
 ---
 ## API 索引
 {% for apiPage in site.pages %}

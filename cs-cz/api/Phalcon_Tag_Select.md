@@ -6,7 +6,7 @@ title: 'Phalcon\Tag\Select'
 ---
 # Abstract class **Phalcon\Tag\Select**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
 
 Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Failed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
 
 This class will be thrown to exit a try/catch block for isolated transactions
 

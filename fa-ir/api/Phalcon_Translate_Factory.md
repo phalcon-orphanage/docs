@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
 
 Loads Translate Adapter class using 'adapter' option
 

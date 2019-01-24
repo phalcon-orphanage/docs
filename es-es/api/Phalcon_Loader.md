@@ -39,7 +39,7 @@ $adapter = new \Example\Adapter\Some();
 
 ## Métodos
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
 Establece el administrador de eventos
 
@@ -59,7 +59,7 @@ public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
 Registra los nombres de espacios y sus directorios relacionados
 
-public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](/4.0/en/api/Phalcon_Loader)
+public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](Phalcon_Loader)
 
 Sets the file check callback.
 
@@ -77,7 +77,7 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
-A [Phalcon\Loader\Exception](/4.0/en/api/Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
+A [Phalcon\Loader\Exception](Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
 
 protected **prepareNamespace** (*array* $namespace)
 
@@ -97,7 +97,7 @@ Devuelve los directorios registrados actualmente en el auto cargador
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
-Registra archivos que son "no clases" y por lo tanto necesitan un "require". Esto es muy útil para incluir archivos que sólo tienen funciones
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
 
 public **getFiles** ()
 

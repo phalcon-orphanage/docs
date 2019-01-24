@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\View\Simple'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
 This component allows to render views without hierarchical levels
 

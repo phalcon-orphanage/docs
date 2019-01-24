@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 过滤和处理
+# Filtering and Sanitizing
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -21,7 +21,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 <a name='types'></a>
 
-## 类型的内置过滤器
+## Types of Built-in Filters
 
 The following are the built-in filters provided by this component:
 
@@ -117,7 +117,7 @@ class ProductsController extends Controller
 
 <a name='filtering-action-parameters'></a>
 
-## 过滤操作参数
+## Filtering Action Parameters
 
 The next example shows you how to sanitize the action parameters within a controller action:
 

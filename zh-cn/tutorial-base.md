@@ -27,7 +27,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 <a name='file-structure'></a>
 
-## 文件结构
+## File structure
 
 A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
@@ -65,7 +65,7 @@ Finally, if you flavor is Cherokee use the setup [here](/4.0/en/webserver-setup#
 
 <a name='bootstrap'></a>
 
-## 启动
+## Bootstrap
 
 The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
@@ -73,7 +73,7 @@ This file handles 3 things: - Registration of component autoloaders - Configurin
 
 <a name='autoloaders'></a>
 
-### 自动加载
+### Autoloaders
 
 Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/4.0/en/loader#overview).
 
@@ -105,7 +105,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### 依赖关系管理
+### Dependency Management
 
 Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
 
@@ -182,7 +182,7 @@ $di->set(
 
 <a name='request'></a>
 
-### 处理应用程序请求
+### Handling the application request
 
 In the last part of this file, we find [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -202,7 +202,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### 把一切都放在一起
+### Putting everything together
 
 The `tutorial/public/index.php` file should look like:
 
@@ -272,7 +272,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 
-## 创建控制器
+## Creating a Controller
 
 By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
@@ -300,7 +300,7 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## 将输出发送到一个视图
+## Sending output to a view
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
@@ -454,7 +454,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 <a name='model'></a>
 
-## 创建模型
+## Creating a Model
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -491,7 +491,7 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## 设置数据库连接
+## Setting a Database Connection
 
 In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
@@ -522,7 +522,7 @@ With the correct database parameters, our models are ready to work and interact 
 
 <a name='storing-data'></a>
 
-## 使用模型存储数据
+## Storing data using models
 
 `app/controllers/SignupController.php`
 
@@ -681,7 +681,7 @@ The most important thing to highlight in our template is the function `getConten
 
 <a name='conclusion'></a>
 
-## 结语
+## Conclusion
 
 As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
 

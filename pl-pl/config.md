@@ -38,7 +38,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## Fabryka
+## Factory
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 

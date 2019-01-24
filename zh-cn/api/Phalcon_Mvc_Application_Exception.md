@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Application\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application/exception.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application/exception.zep)
 
 ## 方法
 

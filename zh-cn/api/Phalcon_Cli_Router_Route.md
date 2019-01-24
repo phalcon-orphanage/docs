@@ -6,7 +6,7 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
 This class represents every route added to the router
 

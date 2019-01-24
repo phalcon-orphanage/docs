@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Message'
 
 *implements* [Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/message.zep)
 
 Encapsulates validation info generated before save/delete records fails
 

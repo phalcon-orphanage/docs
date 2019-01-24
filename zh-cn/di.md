@@ -9,11 +9,11 @@ version: '4.0'
 
 <a name='di-service-location'></a>
 
-# 依赖注入 / 服务定位
+# Dependency Injection / Service Location
 
 <a name='di-explained'></a>
 
-## DI 解释
+## DI explained
 
 The following example is a bit long, but it attempts to explain why Phalcon uses service location and dependency injection. First, let's assume we are developing a component called `SomeComponent`. This performs some task. Our component has a dependency, that is a connection to a database.
 
@@ -388,7 +388,7 @@ Basically, this component implements the [Inversion of Control](https://en.wikip
 
 <a name='registering-services'></a>
 
-## 在容器中注册服务
+## Registering services in the Container
 
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
 
@@ -402,13 +402,13 @@ Services can be registered using several types of definitions:
 
 <a name='simple-registration'></a>
 
-### 简单的注册
+### Simple Registration
 
 As seen before, there are several ways to register services. These we call simple:
 
 <a name='simple-registration-string'></a>
 
-#### 字符串
+#### String
 
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -424,7 +424,7 @@ $di->set(
 
 <a name='class-instances'></a>
 
-#### 类实例
+#### Class instances
 
 This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
 
@@ -442,7 +442,7 @@ $di->set(
 
 <a name='closures-anonymous-functions'></a>
 
-#### 闭包/匿名函数
+#### Closures/Anonymous functions
 
 This method offers greater freedom to build the dependency as desired, however, it is difficult to change some of the parameters externally without having to completely change the definition of dependency:
 
@@ -541,7 +541,7 @@ $di->set(
 
 <a name='complex-registration'></a>
 
-### 复杂的注册
+### Complex Registration
 
 If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
 
@@ -599,7 +599,7 @@ In addition by using the array syntax you can use three types of dependency inje
 
 <a name='constructor-injection'></a>
 
-#### 构造函数注入
+#### Constructor Injection
 
 This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following component:
 
@@ -663,7 +663,7 @@ The service 'response' ([Phalcon\Http\Response](api/Phalcon_Http_Response)) is r
 
 <a name='setter-injection'></a>
 
-#### 设置注入
+#### Setter Injection
 
 Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
 
@@ -739,7 +739,7 @@ $di->set(
 
 <a name='properties-injection'></a>
 
-#### 采用属性的方式注入
+#### Properties Injection
 
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
 
@@ -863,7 +863,7 @@ Mixing different types of definitions is allowed, everyone can decide what is th
 
 <a name='array-syntax'></a>
 
-### 数组方式
+### Array Syntax
 
 The array syntax is also allowed to register services:
 
@@ -931,7 +931,7 @@ $di->get('config'); // will properly return config service
 
 <a name='resolving-services'></a>
 
-## 解析服务
+## Resolving Services
 
 Obtaining a service from the container is a matter of simply calling the 'get' method. A new instance of the service will be returned:
 
@@ -968,7 +968,7 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### 事件
+### Events
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
@@ -979,7 +979,7 @@ $component = $di->get(
 
 <a name='shared-services'></a>
 
-## 共享的服务
+## Shared services
 
 Services can be registered as 'shared' services this means that they always will act as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -1030,7 +1030,7 @@ $request = $di->getShared('request');
 
 <a name='manipulating-services-individually'></a>
 
-## 单独操纵服务
+## Manipulating services individually
 
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -1061,7 +1061,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
 <a name='instantiating-classes-service-container'></a>
 
-## 通过服务容器实例化类
+## Instantiating classes via the Service Container
 
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
@@ -1098,7 +1098,7 @@ You can take advantage of this, always instantiating your classes via the servic
 
 <a name='automatic-injecting-di-itself'></a>
 
-## 从DI本身自动注入
+## Automatic Injecting of the DI itself
 
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates, to do this, you need to implement the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) in your classes:
 
@@ -1142,7 +1142,7 @@ $myClass = $di->get('myClass');
 
 <a name='organizing-services-files'></a>
 
-## 在文件中组织服务
+## Organizing services in files
 
 You can better organize your application by moving the service registration to individual files instead of doing everything in the application's bootstrap:
 
@@ -1171,7 +1171,7 @@ return $router;
 
 <a name='accessing-di-static-way'></a>
 
-## 以静态的方式访问DI
+## Accessing the DI in a static way
 
 If needed you can access the latest DI created in a static function in the following way:
 
@@ -1224,7 +1224,7 @@ var_dump($di->get('config')); // will return properly our config
 
 <a name='factory-default-di'></a>
 
-## 默认的Di注入器
+## Factory Default DI
 
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack framework. To achieve this, the framework provides a variant of [Phalcon\Di](api/Phalcon_Di) called [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault). This class automatically registers the appropriate services bundled with the framework to act as full-stack.
 
@@ -1238,39 +1238,39 @@ $di = new FactoryDefault();
 
 <a name='service-name-conventions'></a>
 
-## 服务名称约定
+## Service Name Conventions
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| 服务名称               | 描述               | 默认                                                                                     | 是否共享 |
-| ------------------ | ---------------- | -------------------------------------------------------------------------------------- |:----:|
-| assets             | 资源管理器            | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  是的  |
-| annotations        | 注释语法分析器          | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  是的  |
-| cookies            | HTTP Cookie 管理服务 | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  是的  |
-| crypt              | 加密解密数据           | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  是的  |
-| db                 | 低级数据库连接服务        | [Phalcon\Db](api/Phalcon_Db)                                                          |  是的  |
-| dispatcher         | 调度服务控制器          | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  是的  |
-| eventsManager      | 事件管理服务           | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  是的  |
-| escaper            | 内容的过滤筛选          | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  是的  |
-| flash              | 闪存的消息传递服务        | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  是的  |
-| flashSession       | Flash 会话消息服务     | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  是的  |
-| filter             | 输入过滤服务           | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  是的  |
-| modelsCache        | 模型缓存的缓存后端        | 无                                                                                      |  否   |
-| modelsManager      | 模型管理服务           | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  是的  |
-| modelsMetadata     | 模型元数据服务          | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  是的  |
-| request            | HTTP 请求环境服务      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  是的  |
-| response           | HTTP 响应环境服务      | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  是的  |
-| router             | 路由服务             | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  是的  |
-| security           | 安全助手             | [Phalcon\Security](api/Phalcon_Security)                                              |  是的  |
-| session            | 会话服务             | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  是的  |
-| sessionBag         | 会话包服务            | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  是的  |
-| tag                | 生成的 HTML 助手      | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  是的  |
-| transactionManager | 模型事务管理器服务        | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  是的  |
-| url                | URL 生成器服务        | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  是的  |
-| viewsCache         | 视图片段缓存后端         | 无                                                                                      |  否   |
+| 服务名称               | 描述                  | 默认                                                                                     | 是否共享 |
+| ------------------ | ------------------- | -------------------------------------------------------------------------------------- |:----:|
+| assets             | 资源管理器               | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  是的  |
+| annotations        | 注释语法分析器             | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  是的  |
+| cookies            | HTTP Cookie 管理服务    | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  是的  |
+| crypt              | 加密解密数据              | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  是的  |
+| db                 | 低级数据库连接服务           | [Phalcon\Db](api/Phalcon_Db)                                                          |  是的  |
+| dispatcher         | 调度服务控制器             | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  是的  |
+| eventsManager      | 事件管理服务              | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  是的  |
+| escaper            | Contextual Escaping | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  是的  |
+| flash              | 闪存的消息传递服务           | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  是的  |
+| flashSession       | Flash 会话消息服务        | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  是的  |
+| filter             | 输入过滤服务              | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  是的  |
+| modelsCache        | 模型缓存的缓存后端           | 无                                                                                      |  否   |
+| modelsManager      | 模型管理服务              | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  是的  |
+| modelsMetadata     | 模型元数据服务             | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  是的  |
+| request            | HTTP 请求环境服务         | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  是的  |
+| response           | HTTP 响应环境服务         | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  是的  |
+| router             | 路由服务                | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  是的  |
+| security           | 安全助手                | [Phalcon\Security](api/Phalcon_Security)                                              |  是的  |
+| session            | 会话服务                | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  是的  |
+| sessionBag         | 会话包服务               | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  是的  |
+| tag                | 生成的 HTML 助手         | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  是的  |
+| transactionManager | 模型事务管理器服务           | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  是的  |
+| url                | URL 生成器服务           | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  是的  |
+| viewsCache         | 视图片段缓存后端            | 无                                                                                      |  否   |
 
 <a name='implementing-your-own-di'></a>
 
-## 实现你自己的DI
+## Implementing your own DI
 
 The [Phalcon\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.

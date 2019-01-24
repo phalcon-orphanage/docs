@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
 Loads Image Adapter class using 'adapter' option
 

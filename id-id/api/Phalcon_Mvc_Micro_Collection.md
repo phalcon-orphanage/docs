@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\Collection'
 
 *implements* [Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
 
 Groups Micro-Mvc handlers as controllers
 

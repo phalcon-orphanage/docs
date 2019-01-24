@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk'
 ---
 # Class **Phalcon\Queue\Beanstalk**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 

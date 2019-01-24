@@ -8,7 +8,7 @@ title: 'Phalcon\Cli\DispatcherInterface'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
+[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
 ## 方法
 

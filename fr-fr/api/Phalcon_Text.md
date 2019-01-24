@@ -6,7 +6,7 @@ title: 'Phalcon\Text'
 ---
 # Abstract class **Phalcon\Text**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
 Provides utilities to work with texts
 
