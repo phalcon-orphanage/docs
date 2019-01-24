@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Libmemcached'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
 This adapter store sessions in libmemcached
 
@@ -45,7 +45,7 @@ echo $session->get("var");
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **SESSION_ACTIVE**
 
@@ -53,7 +53,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## Méthodes
 
 public **getLibmemcached** ()
 
