@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\RelationInterface'
 ---
 # Interface **Phalcon\Mvc\Model\RelationInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relationinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relationinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setIntermediateRelation** (*mixed* $intermediateFields, *mixed* $intermediateModel, *mixed* $intermediateReferencedFields)
 
