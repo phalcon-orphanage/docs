@@ -3,7 +3,7 @@ layout: article
 language: 'el-gr'
 version: '4.0'
 ---
-# Νέα αίτηση έλξης
+# New Pull Request
 
 A pull request a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality
 
