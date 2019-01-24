@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Apcu'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apcu.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apcu.zep)
 
 Allows to cache output fragments, PHP data and raw data using an APCu backend
 
@@ -42,11 +42,11 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methoden
+## Methods
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Liefert einen zwischengespeicherten Inhalt
+Returns a cached content
 
 public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -62,7 +62,7 @@ Decrement of a given key, by number $value
 
 public **delete** (*mixed* $keyName)
 
-Löscht einen Wert aus dem Cache anhand seines Schlüssels
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ermittelt die zuletzt gespeicherte Lebensdauer
+Gets the last lifetime set
