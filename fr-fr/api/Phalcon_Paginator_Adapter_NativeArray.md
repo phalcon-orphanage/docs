@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\NativeArray'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
 Pagination using a PHP array as source of data
 
@@ -35,7 +35,7 @@ $paginator = new NativeArray(
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** (*array* $config)
 
