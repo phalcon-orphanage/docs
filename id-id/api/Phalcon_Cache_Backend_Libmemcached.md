@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Libmemcached'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
 
 Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.
 
@@ -53,57 +53,57 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\Cache\Backend\Memcache constructor
 
-public **_connect** ()
+publik **_connect** ()
 
-Create internal connection to memcached
+Buat koneksi internal ke memcached
 
-public **get** (*mixed* $keyName, [*mixed* $lifetime])
+publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
 
-Returns a cached content
+Mengembalikan konten dalam cache
 
-public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+publik **simpan** ([*int* | *rangkaian* $keyName], [* rangkaian* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+Menyimpan isi cache ke file backend dan menghentikan frontend
 
-public *boolean* **delete** (*int* | *string* $keyName)
+public *boolean* **hapus** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Menghapus nilai dari cache dengan kuncinya
 
-public **queryKeys** ([*mixed* $prefix])
+publik **Kunci kueri** ([*campuran* $prefix])
 
-Query the existing cached keys.
+Permintaan kunci cache yang ada.
 
 ```php
 <?php
 
-$cache->save("users-ids", [1, 2, 3]);
-$cache->save("projects-ids", [4, 5, 6]);
+$cache->simpan("para pengguna-ids", [1, 2, 3]);
+$cache->simpan("Rancangan-ids", [4, 5, 6]);
 
-var_dump($cache->queryKeys("users")); // ["users-ids"]
+var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
 
 ```
 
-public **exists** ([*string* $keyName], [*int* $lifetime])
+publik **ada** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+Memeriksa apakah cache ada dan tidak kedaluwarsa
 
-public **increment** ([*string* $keyName], [*mixed* $value])
+public **kenaikan** ([*sejajar* $keyName], [*campuran* $value])
 
-Increment of given $keyName by $value
+Kenaikan yang diberikan $keyName dari $value
 
-public **decrement** ([*string* $keyName], [*mixed* $value])
+publik **penurunan** ([*jaringan* $keyName], [<1campuran</em> $value])
 
-Decrement of $keyName by given $value
+Pengurangan $keyName dengan diberikan $value
 
-public **flush** ()
+publik **flush** ()
 
-Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
+Segera batalkan semua item yang ada. Memcached tidak mendukung flush() per default. Jika Anda membutuhkan flush(), mendukung, set $config["statsKey"]. Semua kunci yang diubah disimpan di "statsKey". Catatan: statsKey memiliki dampak negatif pada kinerja.
 
 ```php
 <?php
@@ -152,16 +152,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Menghentikan frontend tanpa menyimpan konten dalam cache
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Memeriksa apakah cache terakhir masih segar atau di-cache
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Memeriksa apakah cache sudah mulai buffering atau tidak
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Dapat di set seumur hidup
