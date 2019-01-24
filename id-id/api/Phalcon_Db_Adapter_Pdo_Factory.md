@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon \ Db \ Adaptor \ Pdo \ Factory'
+title: 'Phalcon\Db\Adapter\Pdo\Factory'
 ---
 # Class **Phalcon\Db\Adapter\Pdo\Factory**
 
@@ -10,28 +10,28 @@ title: 'Phalcon \ Db \ Adaptor \ Pdo \ Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
 
-Muat kelas Adaptor PDO menggunakan opsi 'adaptor'
+Loads PDO Adapter class using 'adapter' option
 
 ```php
 <?php
 
-gunakan Phalcon\Db\Adaptor\Pdo\Pabrik;
+use Phalcon\Db\Adapter\Pdo\Factory;
 
 $options = [
-    "host"     => "host area",
+    "host"     => "localhost",
     "dbname"   => "blog",
     "port"     => 3306,
     "username" => "sigma",
-    "katasandi" => "rahasia",
-    "adaptor"  => "mysql",
+    "password" => "secret",
+    "adapter"  => "mysql",
 ];
 $db = Factory::load($options);
 
 ```
 
-## Metode
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
