@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Adapter\Php'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
 
 Reads php files and converts them to Phalcon\Config objects.
 
@@ -50,11 +50,11 @@ echo $config->database->username;
 
 ```
 
-## Constants
+## Constantes
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Méthodes
 
 public **__construct** (*mixed* $filePath)
 
