@@ -2,15 +2,15 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Assets\ResourceInterface'
+title: 'Phalcon\Aset\SumberInterface'
 ---
 # Interface **Phalcon\Assets\ResourceInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setType** (*mixed* $type)
+abstract umum **Jenisaturan** (*bentuk*$type)
 
 ...
 
@@ -18,22 +18,22 @@ abstract public **getType** ()
 
 ...
 
-abstract public **setFilter** (*mixed* $filter)
+abstrak public **setFilter** (*campuran* $filter)
 
 ...
 
-abstract public **getFilter** ()
+abstrak publik **dapatFilter** ()
 
 ...
 
-abstract public **setAttributes** (*array* $attributes)
+atribut publik abstrak **setAttributes** (*array* $attributes)
 
 ...
 
-abstract public **getAttributes** ()
+publik abstrak **getAttributes** ()
 
 ...
 
-abstract public **getResourceKey** ()
+abstrak publik **dapatkan Kunci penelusuran kembali** ()
 
 ...
