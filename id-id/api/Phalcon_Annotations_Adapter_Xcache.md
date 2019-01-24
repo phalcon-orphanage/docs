@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Anotasi\Adaptor\Xcache'
+title: 'Phalcon\Annotations\Adapter\Xcache'
 ---
 # Class **Phalcon\Annotations\Adapter\Xcache**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Anotasi\Adaptor\Xcache'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/xcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/xcache.zep)
 
 Stores the parsed annotations to XCache. This adapter is suitable for production
 
@@ -21,40 +21,40 @@ $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 ```
 
-## Metode
+## Methods
 
 public [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) **read** (*string* $key)
 
-Membaca anotasi parsing dari XCache
+Reads parsed annotations from XCache
 
 public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) $data)
 
-Menulis anotasi parsing ke XCache
+Writes parsed annotations to XCache
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Menyetel anotasi
+Sets the annotations parser
 
 public **getReader** () inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengembalikan pembaca anotasi
+Returns the annotation reader
 
 public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengurai atau mengambil semua anotasi yang ditemukan di kelas
+Parses or retrieves all the annotations found in a class
 
 public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas'
+Returns the annotations found in all the class' methods
 
 public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengembalikan anotasi yang ditemukan dalam metode tertentu
+Returns the annotations found in a specific method
 
 public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas'
+Returns the annotations found in all the class' methods
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Mengembalikan anotasi yang ditemukan di properti tertentu
+Returns the annotations found in a specific property
