@@ -5,16 +5,16 @@ version: '4.0'
 ---
 # New Pull Request
 
-A pull request a collection of changes to the code that: - fux a bug (current issue) - introduce new functionality
+A pull request a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality
 
-Your Pull request must include: * Issued to the correct branch. * Update to the `CHANGELOG` * Unit tests * Documentation if necessary and usage examples
+Your pull request must include: * Target the correct branch. * Update the relevant `CHANGELOG.md` * Contain unit tests * Updates to the documentation and usage examples as necessary * Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-2](https://www.php-fig.org/psr/) while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
 
 > **We do not accept Pull Requests to the `master` branch** {:.alert .alert-danger}
 
-If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in Github to present this information. If no issue exists, please create one.
+If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.
 
-For new functionality, again we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
+For new functionality, we will need to have an issue created and referenced. If the functionality you are introducing collides with the philosophy and implementation of Phalcon, the pull request will be rejected.
 
-Additionally any new functionality that introduces breaking changes will be rejected at least for the current version but could very well be implemented in the next major version.
+Additionally any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
 It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.
