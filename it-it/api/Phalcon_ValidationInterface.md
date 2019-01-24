@@ -6,9 +6,9 @@ title: 'Phalcon\ValidationInterface'
 ---
 # Interface **Phalcon\ValidationInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **validate** ([*mixed* $data], [*mixed* $entity])
 
