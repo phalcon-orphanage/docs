@@ -6,9 +6,9 @@ title: 'Phalcon\Db\DialectInterface'
 ---
 # Interface **Phalcon\Db\DialectInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
