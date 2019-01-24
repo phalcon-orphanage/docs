@@ -12,37 +12,37 @@ title: 'Phalcon\Flash\Session'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-临时存储的消息将在会话中，然后在下一个请求可以打印消息
+Temporarily stores the messages in session, then messages can be printed in the next request
 
 ## 方法
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
-返回临时储存会话中储存的消息
+Returns the messages stored in session
 
 protected **_setSessionMessages** (*array* $messages)
 
-设置临时储存会话中存储的消息
+Stores the messages in session
 
 public **message** (*mixed* $type, *mixed* $message)
 
-向心事储存会话中添加消息
+Adds a message to the session flasher
 
 public **has** ([*mixed* $type])
 
-检查是否有消息
+Checks whether there are messages
 
 public **getMessages** ([*mixed* $type], [*mixed* $remove])
 
-返回临时储存会话的消息
+Returns the messages in the session flasher
 
 public **output** ([*mixed* $remove])
 
-输出临时储存会话中储存的消息
+Prints the messages in the session flasher
 
 public **clear** ()
 
-清除临时储存会话中的消息
+Clear messages in the session messenger
 
 public **__construct** ([*mixed* $cssClasses]) inherited from [Phalcon\Flash](Phalcon_Flash)
 
@@ -66,11 +66,11 @@ Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
