@@ -33,7 +33,7 @@ Phalcon need the following extensions to run (minimal):
 
 * `curl`
 * `gettext`
-* `gd2` (to use the `Phalcon\Image\Adapter\Gd` class)
+* `gd2` (per usare la classe `Phalcon\Image\Adapter\Gd`)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * `json`
 * `mbstring`
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### Optional depending on the needs of your application
+### Facoltativo a seconda delle esigenze dell'applicazione
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -64,27 +64,27 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### Distribuzioni (Debian, Ubuntu, ecc.) basate su DEB
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Repository installation
+#### Installazione da repository
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Stable releases
+##### Versioni stabili
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-or
+oppure
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Nightly releases
+##### Versioni "notturne"
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Phalcon installation
+#### Installazione Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### Additional PPAs
+#### Ulteriori PPAs
 
 #### Ondřej Surý
 
@@ -139,27 +139,27 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### Distribuzioni (CentOS, Fedora, ecc.) basate su RPM
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Repository installation
+#### Installazione da repository
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Stable releases
+##### Versioni stabili
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-or
+oppure
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Nightly releases
+##### Versioni "notturne"
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Phalcon installation
+#### Installazione Phalcon
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -193,7 +193,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Additional RPMs
+#### Ulteriori pacchetti RPM
 
 ##### Remi
 
@@ -219,7 +219,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-### Source
+### Codice Sorgente
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"
@@ -243,7 +243,7 @@ On a macOS system you can compile and install the extension with `brew`, `macpor
 
 ### Requirements
 
-* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+* Risorse di sviluppo PHP 5.5.x/5.6.x/7.0.x/7.1.x
 * XCode
 
 <a name='installation-macos-brew'></a>
@@ -291,20 +291,20 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Type                  |
-|:------------:|:-------:| --------------------- |
-|     x64      |   7.x   | Thread safe           |
-|     x64      |   7.x   | Non Thread safe (NTS) |
-|     x86      |   7.x   | Thread safe           |
-|     x86      |   7.x   | Non Thread safe (NTS) |
-|     x64      |   5.6   | Thread safe           |
-|     x64      |   5.6   | Non Thread safe (NTS) |
-|     x86      |   5.6   | Thread safe           |
-|     x86      |   5.6   | Non Thread safe (NTS) |
-|     x64      |   5.5   | Thread safe           |
-|     x64      |   5.5   | Non Thread safe (NTS) |
-|     x86      |   5.5   | Thread safe           |
-|     x86      |   5.5   | Non Thread safe (NTS) |
+| Architettura | Versione | Type                  |
+|:------------:|:--------:| --------------------- |
+|     x64      |   7.x    | Thread safe           |
+|     x64      |   7.x    | Non Thread safe (NTS) |
+|     x86      |   7.x    | Thread safe           |
+|     x86      |   7.x    | Non Thread safe (NTS) |
+|     x64      |   5.6    | Thread safe           |
+|     x64      |   5.6    | Non Thread safe (NTS) |
+|     x86      |   5.6    | Thread safe           |
+|     x86      |   5.6    | Non Thread safe (NTS) |
+|     x64      |   5.5    | Thread safe           |
+|     x64      |   5.5    | Non Thread safe (NTS) |
+|     x86      |   5.5    | Thread safe           |
+|     x86      |   5.5    | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 
@@ -316,14 +316,14 @@ Restart your webserver.
 
 <a name='installation-sources'></a>
 
-## Compile from Sources
+## Compila dai sorgenti
 
 Compiling from source is similar to most environments (Linux/macOS).
 
 ### Requirements
 
-* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
-* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
+* Risorse di sviluppo PHP 5.5.x/5.6.x/7.0.x/7.1.x
+* Compilatore GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
@@ -347,9 +347,9 @@ sudo zypper install php5-devel gcc make
 sudo yum install php-devel pcre-devel gcc make
 ```
 
-### Compile Phalcon
+### Compilare Phalcon
 
-We first need to clone Phalcon from the Github repository
+We first need to clone Phalcon from the GitHub repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
@@ -365,32 +365,32 @@ sudo ./install
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+# Suse: Aggiungi un file chiamato phalcon.ini in /etc/php5/conf.d/ con questo contenuto:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora: Aggiungi un file chiamato phalcon.ini in /etc/php.d/ con questo contenuto:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+# Ubuntu/Debian with apache2: Aggiungi un file chiamato phalcon.ini in /etc/php5/apache2/conf.d/ con questo contenuto:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+# Ubuntu/Debian with php5-fpm: Aggiungi un file chiamato 30-phalcon.ini in /etc/php5/fpm/conf.d/ con questo contenuto:
 extension=phalcon.so
 
-# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+# Ubuntu/Debian with php5-cli: Aggiungi un file chiamato 30-phalcon.ini in /etc/php5/cli/conf.d/ con questo contenuto:
 extension=phalcon.so
 ```
 
 <a name='installation-sources-advanced'></a>
 
-## Advanced Compilation
+## Compilazione avanzata
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
 ```bash
 cd cphalcon/build
 
-# One of the following:
+# Uno dei seguenti:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
@@ -403,9 +403,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# NOTE: per PHP 7 devi usare
 # cd cphalcon/build/php7/32bits
-# or
+# o
 # cd cphalcon/build/php7/64bits
 
 make clean
@@ -425,9 +425,9 @@ git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# NOTE: for PHP 7 you have to use
+# NOTE: per PHP 7 devi usare
 # cd cphalcon/build/php7/32bits
-# or
+# o
 # cd cphalcon/build/php7/64bits
 
 make clean
