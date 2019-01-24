@@ -22,7 +22,7 @@ public **getLogLevel** ()
 
 Returns the current log level
 
-public **setFormatter** ([Phalcon\Logger\FormatterInterface](/4.0/en/api/Phalcon_Logger_FormatterInterface) $formatter)
+public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
 Sets the message formatter
 
@@ -78,10 +78,10 @@ public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
 Logs messages to the internal logger. Appends logs to the logger
 
-abstract public **getFormatter** () inherited from [Phalcon\Logger\AdapterInterface](/4.0/en/api/Phalcon_Logger_AdapterInterface)
+abstract public **getFormatter** () inherited from [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
 ...
 
-abstract public **close** () inherited from [Phalcon\Logger\AdapterInterface](/4.0/en/api/Phalcon_Logger_AdapterInterface)
+abstract public **close** () inherited from [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
 ...
