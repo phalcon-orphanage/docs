@@ -6,15 +6,15 @@ title: 'Phalcon\Http\Request\FileInterface'
 ---
 # Interface **Phalcon\Http\Request\FileInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **getSize** ()
 
 ...
 
-عمومی انتزاعی **دریافت نام** ()
+abstract public **getName** ()
 
 ...
 
