@@ -6,11 +6,11 @@ title: 'Phalcon\Version'
 ---
 # Class **Phalcon\Version**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
 This class allows to get the installed version of the framework
 
-## Constants
+## Constantes
 
 *integer* **VERSION_MAJOR**
 
@@ -22,7 +22,7 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Methods
+## Méthodes
 
 protected static **_getVersion** ()
 
