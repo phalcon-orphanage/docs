@@ -12,13 +12,13 @@ title: 'Phalcon\Cli\Console'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
-此组件允许创建使用Phalcon的 CLI 应用程序
+This component allows to create CLI applications using Phalcon
 
 ## 方法
 
 public **addModules** (*array* $modules)
 
-合并模块与现有的
+Merge modules with the existing ones
 
 ```php
 <?php
@@ -36,11 +36,11 @@ $application->addModules(
 
 public **handle** ([*array* $arguments])
 
-处理整个命令行任务
+Handle the whole command-line tasks
 
 public **setArgument** ([*array* $arguments], [*mixed* $str], [*mixed* $shift])
 
-将特定的参数设置
+Set an specific argument
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Application](Phalcon_Application)
 
@@ -56,7 +56,7 @@ public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Appl
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-注册模块目前在应用程序中的数组
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -78,27 +78,27 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-返回在应用程序中注册模块
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-获取注册的应用程序通过模块名称的模块定义
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-设置要用于如果路由器不返回有效的模块的模块名称
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-返回默认模块名称
+Returns the default module name
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
