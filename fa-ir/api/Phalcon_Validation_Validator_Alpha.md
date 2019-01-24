@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'فالکون/اعتبار سنجی/تایید کنندگان/آلفا'
+title: 'Phalcon\Validation\Validator\Alpha'
 ---
 # Class **Phalcon\Validation\Validator\Alpha**
 
@@ -10,7 +10,7 @@ title: 'فالکون/اعتبار سنجی/تایید کنندگان/آلفا'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
 
 Check for alphabetic character(s)
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
