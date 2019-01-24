@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
 
 Loads Backend Cache Adapter class using 'adapter' option, if frontend will be provided as array it will call Frontend Cache Factory
 
@@ -29,7 +29,7 @@ $backendCache = Factory::load($options);
 
 ```
 
-## Methods
+## Methoden
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
