@@ -6,11 +6,11 @@ title: 'Phalcon\Queue\Beanstalk\Job'
 ---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
 
 Represents a job in a beanstalk queue
 
-## Methods
+## Méthodes
 
 public **getId** ()
 
