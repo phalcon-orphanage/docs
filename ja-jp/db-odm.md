@@ -413,7 +413,7 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
+| Operation          | Name                       | 処理中断が可能               | Explanation                                                                                                        |
 | ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
 | Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
@@ -683,10 +683,10 @@ foreach ($robots as $robot) {
 
 削除が処理される際に、カスタムビジネスルールの実行を定義するには、次のイベントを使用します。
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| 削除        | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| 削除        | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Operation | Name           | 処理中断が可能 | Explanation                              |
+| --------- | -------------- | ------- | ---------------------------------------- |
+| 削除        | `beforeDelete` | YES     | Runs before the delete operation is made |
+| 削除        | `afterDelete`  | NO      | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
