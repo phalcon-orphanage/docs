@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
@@ -55,7 +55,7 @@ Sets the dependency injector
 
 public **getDI** ()
 
-Returns the internal dependency injector
+Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -198,7 +198,7 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths)
 
-Set a group of paths to be returned when none of the defined routes are matched
+Ορίστε μια ομάδα διαδρομών που να επιστραφούν πρέπει όταν δεν αντιστοιχεί καμία από τις καθορισμένες διαδρομές
 
 public **clear** ()
 
