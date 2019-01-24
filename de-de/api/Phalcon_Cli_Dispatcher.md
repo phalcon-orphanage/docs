@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
@@ -32,7 +32,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Konstanten
+## Constants
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -46,15 +46,15 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methoden
+## Methods
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
-Legt den Standard-Aufgabe-suffix fest
+Sets the default task suffix
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Legt den Standard-Aufgabe-Namen fest
+Sets the default task name
 
 public **setTaskName** (*mixed* $taskName)
 
@@ -66,11 +66,11 @@ Gets last dispatched task name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Löst eine interne Ausnahme aus
+Throws an internal exception
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Behandelt eine Ausnahme
+Handles a user exception
 
 public **getLastTask** ()
 
@@ -90,15 +90,15 @@ Get dispatched options
 
 public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-Gibt eine Option anhand seines Namens oder numerischen index zurück
+Gets an option by its name or numeric index
 
 public **hasOption** (*mixed* $option)
 
-Prüft, ob eine Option vorhanden ist
+Check if an option exists
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-Ruft die Aktionsmethode auf.
+Calls the action method.
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -110,11 +110,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Legt den Event-manager fest
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -150,7 +150,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Legt den Standard Aktions Name fest
+Sets the default action name
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -242,7 +242,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Leitet den Ausführungsfluss an einem anderen Controller/Action weiter.
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
@@ -275,7 +275,7 @@ class UserController extends Controller
 {
     public function showAction(User $user)
     {
-        $boundModels = $this->dispatcher->getBoundModels(); // gibt array mit $user zurück
+        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
     }
 }
 
