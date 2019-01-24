@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Validator'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator.zep)
 
 This is a base class for Phalcon\Mvc\Model validators
 
@@ -38,7 +38,7 @@ Returns an option
 
 public **isSetOption** (*mixed* $option)
 
-Check whether an option has been defined in the validator options
+Ελέγξτε αν έχει οριστεί επιλογή μια στις επιλογές επικύρωσης
 
 abstract public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
