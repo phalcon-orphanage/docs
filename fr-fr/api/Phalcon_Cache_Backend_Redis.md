@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Backend\Redis'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
 
-Allows to cache output fragments, PHP data or raw data to a redis backend
+Permet de mettre en cache de sortie de fragments, de PHP, de données ou de données brutes à un redis backend
 
-This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
+Cet adaptateur utilise le spécial redis clé "_PHCR" pour stocker toutes les clés en interne utilisé par la carte
 
 ```php
 <?php
@@ -49,7 +49,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -57,7 +57,7 @@ Phalcon\Cache\Backend\Redis constructor
 
 public **_connect** ()
 
-Create internal connection to redis
+Créer de liaison interne à redis
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
