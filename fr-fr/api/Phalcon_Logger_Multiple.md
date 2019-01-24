@@ -6,11 +6,11 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
-Poignées de multiples enregistreur de gestionnaires
+Handles multiples logger handlers
 
-## Méthodes
+## Methods
 
 public **getLoggers** ()
 
@@ -26,11 +26,11 @@ public **getLogLevel** ()
 
 public **push** ([Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface) $logger)
 
-Pousse un enregistreur à l'enregistreur de queue
+Pushes a logger to the logger tail
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Définit un mondial formateur
+Sets a global formatter
 
 public **setLogLevel** (*mixed* $level)
 
@@ -38,11 +38,11 @@ Sets a global level
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
-Envoie un message à tous les inscrits de l'enregistreur de
+Sends a message to each registered logger
 
 public **critical** (*mixed* $message, [*array* $context])
 
-Envoie/Écrit une critique de message dans le journal
+Sends/Writes an critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
