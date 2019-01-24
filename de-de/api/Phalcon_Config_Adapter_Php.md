@@ -10,11 +10,11 @@ title: 'Phalcon\Config\Adapter\Php'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
 
 Reads php files and converts them to Phalcon\Config objects.
 
-Angenommen wir hätten die folgende Konfigurationsdatei:
+Given the next configuration file:
 
 ```php
 <?php
@@ -38,7 +38,7 @@ return [
 
 ```
 
-Kann diese wie folgt gelesen werden:
+You can read it as follows:
 
 ```php
 <?php
@@ -50,11 +50,11 @@ echo $config->database->username;
 
 ```
 
-## Konstanten
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methoden
+## Methods
 
 public **__construct** (*mixed* $filePath)
 
@@ -62,7 +62,7 @@ Phalcon\Config\Adapter\Php constructor
 
 public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Ermöglicht es zu prüfen, ob ein Attribut mit der Array-Syntax definiert ist
+Allows to check whether an attribute is defined using the array-syntax
 
 ```php
 <?php
@@ -86,7 +86,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Holt ein Attribut aus der Konfiguration, wenn das Attribut nicht definiert ist, gibt es null zurück, wenn der Wert genau null ist oder nicht definiert ist, dann wird stattdessen der Standardwert verwendet
+Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
 
 ```php
 <?php
@@ -97,7 +97,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Holt ein Attribut mittels der Array-syntax
+Gets an attribute using the array-syntax
 
 ```php
 <?php
