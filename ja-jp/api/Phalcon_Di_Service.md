@@ -29,7 +29,7 @@ final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $s
 
 public **getName** ()
 
-そのサービスの名前を返す。
+Returns the service's name
 
 public **setShared** (*mixed* $shared)
 
