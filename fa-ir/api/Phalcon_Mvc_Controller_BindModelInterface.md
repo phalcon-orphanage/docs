@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Controller\BindModelInterface'
 ---
 # Interface **Phalcon\Mvc\Controller\BindModelInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public static **getModelName** ()
 
