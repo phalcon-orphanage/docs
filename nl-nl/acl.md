@@ -7,35 +7,35 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Toegangscontrolelijst (ACL)
+# Access Control Lists (ACL)
 
-[Phalcon\Acl](api/Phalcon_Acl) biedt een eenvoudige en lichtgewicht beheer van toegangscontrole en machtigingen. [Toegangscontrolelijsten](https://en.wikipedia.org/wiki/Access_control_list) (ACL) geven een applicatie toegang tot de gebieden en de onderliggende objecten van aanvragen.
+[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
-Kortom, ACL's heeft twee objecten: Het object dat toegang nodig heeft, en het object we toegang tot willen. In de programmering wereld, worden deze meestal aangeduid als Operations en Subjects (operaties en onderwerpen). In Phalcon gebruiken we deze terminologie ook [ Operation](api/Phalcon_Acl_Operation) en [ Subject ](api/Phalcon_Acl_Subject).
+In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Operations and Subjects. In the Phalcon world, we use the terminology [Operation](api/Phalcon_Acl_Operation) and [Subject](api/Phalcon_Acl_Subject).
 
-> **Voorbeeld**
+> **Use Case**
 > 
-> Een boekhoudkundige toepassing moet verschillende groepen gebruikers toegang geven tot verschillende gebieden van de toepassing.
+> An accounting application needs to have different groups of users have access to various areas of the application.
 > 
-> ** Operation** - beheerder toegang - boekhoudafdeling toegang - manager Toegang - gasten toegang
+> **Operation** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
-> **Subject** - Login pagina - Beheerder pagina - facturatie pagina - rapporten pagina {:.alert .alert-info}
+> **Subject** - Login page - Admin page - Invoices page - Reports page {:.alert .alert-info}
 
-Zoals hierboven is te zien in het voorbeeld, een [Operation](api/Phalcon_Acl_Operation) wordt gedefinieerd als iets het nodig heeft voor toegang tot een bepaald [Subject](api/Phalcon_Acl_Subject) oftewel en gebied van de toepassing. Een [Subject](api/Phalcon_Acl_Subject) wordt gedefinieerd als het gebied van de toepassing die moet worden geopend.
+As seen above in the use case, an [Operation](api/Phalcon_Acl_Operation) is defined as who needs to access a particular [Subject](api/Phalcon_Acl_Subject) i.e. an area of the application. A [Subject](api/Phalcon_Acl_Subject) is defined as the area of the application that needs to be accessed.
 
-Met behulp van het component [Phalcon\Acl](api/Phalcon_Acl), kunnen wij die twee verbinden, en gebruiken voor het beveiligen van onze applicatie, zodat alleen bepaalde bewerkingen kunnen worden gebonden aan specifieke onderwerpen.
+Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific operations to be bound to specific subjects.
 
 <a name='setup'></a>
 
-## Een ACL maken
+## Creating an ACL
 
-[Phalcon\Acl](api/Phalcon_Acl) gebruikt een adapters om operations en subjects op te slaan en ermee te werken. De enige beschikbare adapter op dit moment is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Een memory adapter zorg voor een aanzienlijke verhoging in de snelheid wanneer de ACL wordt benaderd, maar heeft ook nadelen. Het grootste nadeel is dat het geheugen niet persistent is, dus de ontwikkelaar moet een opslagstrategie voor de ACL-gegevens implementeren, zodat de ACL niet op elk verzoek wordt gegenereerd. Dit kan gemakkelijk leiden tot vertragingen en onnodige verwerking, vooral als de ACL vrij groot en/of opgeslagen is in een database of bestand systeem.
+[Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with operations and subjects. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
-Phalcon biedt ook een gemakkelijke manier voor ontwikkelaars om hun eigen adapters te bouwen door de [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface te implementeren.
+Phalcon also offers an easy way for developers to build their own adapters by implementing the [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface.
 
-### In actie
+### In action
 
-De [Phalcon\Acl](api/Phalcon_Acl) constructor neemt als eerste parameter een adapter die wordt gebruikt om de gegevens op te halen die nodig zijn voor de toegangscontrolelijst.
+The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
 
 ```php
 <?php
@@ -45,9 +45,9 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-Er zijn twee voor zichzelf sprekende acties die de [Phalcon\Acl](api/Phalcon_Acl) heeft: - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
+There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
 
-**`Phalcon\Acl::DENY`** Is de standaardactie voor elke [operatie](api/Phalcon_Acl_Operation) of [onderwerp](api/Phalcon_Acl_Subject). Dit is met opzet om ervoor te zorgen dat alleen de ontwikkelaar of de toepassing toegang tot specifieke onderwerpen verleent en niet in het de ACL-component zelf.
+The default action is **`Phalcon\Acl::DENY`** for any [Operation](api/Phalcon_Acl_Operation) or [Subject](api/Phalcon_Acl_Subject). This is on purpose to ensure that only the developer or application allows access to specific subjects and not the ACL component itself.
 
 ```php
 <?php
@@ -57,15 +57,15 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 $acl = new AclList();
 
-// Standaard actie is geen toegang
+// Default action is deny access
 
-// Verander de standaard naar toegang/allow
+// Change it to allow
 $acl->setDefaultAction(Acl::ALLOW);
 ```
 
 <a name='adding-operations'></a>
 
-## Operations toevoegen
+## Adding Operations
 
 As mentioned above, a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) is an object that can or cannot access a set of [Subject](api/Phalcon_Acl_Subject) in the access list.
 
