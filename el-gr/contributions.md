@@ -50,7 +50,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- Ως πρόσθετες έκδοση μέρος της έκθεσής σας συμπεριλάβετε πληροφορίες όπως έκδοση Phalcon διακομιστή ιστού PHP μνήμη κλπ OS.
+- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
 
 <a name='bug-report-generating-backtrace'></a>
