@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\View\Simple'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
-此组件允许呈现无层次视图
+This component allows to render views without hierarchical levels
 
 ```php
 <?php
@@ -53,11 +53,11 @@ Sets views directory. Depending of your platform, always add a trailing slash or
 
 public **getViewsDir** ()
 
-获取视图目录
+Gets views directory
 
 public **registerEngines** (*array* $engines)
 
-注册模板化引擎
+Register templating engines
 
 ```php
 <?php
@@ -78,15 +78,15 @@ Loads registered template engines, if none is registered it will use Phalcon\Mvc
 
 final protected **_internalRender** (*string* $path, *array* $params)
 
-尝试与每个引擎注册组件中呈现的视图
+Tries to render the view with every engine registered in the component
 
 public **render** (*string* $path, [*array* $params])
 
-呈现一个视图
+Renders a view
 
 public **partial** (*mixed* $partialPath, [*mixed* $params])
 
-呈现分部视图
+Renders a partial view
 
 ```php
 <?php
@@ -111,11 +111,11 @@ $this->partial(
 
 public **setCacheOptions** (*array* $options)
 
-设置缓存选项
+Sets the cache options
 
 public *array* **getCacheOptions** ()
 
-返回的缓存选项
+Returns the cache options
 
 protected **_createCache** ()
 
@@ -123,11 +123,11 @@ Create a Phalcon\Cache based on the internal cache options
 
 public **getCache** ()
 
-返回用到缓存中的缓存实例
+Returns the cache instance used to cache
 
 public **cache** ([*mixed* $options])
 
-缓存到一定程度的实际视图渲染
+Cache the actual view render to certain level
 
 ```php
 <?php
@@ -143,7 +143,7 @@ $this->view->cache(
 
 public **setParamToView** (*mixed* $key, *mixed* $value)
 
-将参数添加到视图 （setVar 别名）
+Adds parameters to views (alias of setVar)
 
 ```php
 <?php
@@ -154,7 +154,7 @@ $this->view->setParamToView("products", $products);
 
 public **setVars** (*array* $params, [*mixed* $merge])
 
-设置所有渲染参数
+Set all the render params
 
 ```php
 <?php
@@ -169,7 +169,7 @@ $this->view->setVars(
 
 public **setVar** (*mixed* $key, *mixed* $value)
 
-将单个视图参数设置
+Set a single view parameter
 
 ```php
 <?php
@@ -180,15 +180,15 @@ $this->view->setVar("products", $products);
 
 public **getVar** (*mixed* $key)
 
-返回先前在视图中设置的参数
+Returns a parameter previously set in the view
 
 public *array* **getParamsToView** ()
 
-返回参数到视图
+Returns parameters to views
 
 public **setContent** (*mixed* $content)
 
-从外部设置查看内容
+Externally sets the view content
 
 ```php
 <?php
@@ -199,15 +199,15 @@ $this->view->setContent("<h1>hello</h1>");
 
 public **getContent** ()
 
-返回缓存视图的另一个阶段的输出
+Returns cached output from another view stage
 
 public *string* **getActiveRenderPath** ()
 
-返回当前呈现的视图的路径
+Returns the path of the view that is currently rendered
 
 public **__set** (*mixed* $key, *mixed* $value)
 
-魔术的方法来将变量传递到视图
+Magic method to pass variables to the views
 
 ```php
 <?php
@@ -218,7 +218,7 @@ $this->view->products = $products;
 
 public **__get** (*mixed* $key)
 
-魔术的方法来检索变量传递给视图
+Magic method to retrieve a variable passed to the view
 
 ```php
 <?php
@@ -229,15 +229,15 @@ echo $this->view->products;
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
