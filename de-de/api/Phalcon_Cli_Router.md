@@ -8,9 +8,9 @@ title: 'Phalcon\Cli\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-Phalcon\Cli\Router is the standard framework router. Routing ist der Prozess, welcher die Kommandozeilen-Argumente in Parameter zerlegt, um zu bestimmen, welches Modul, Aufgabe oder Aktion dieser Aufgabe die Anfrage erhalten soll
+Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
 ```php
 <?php
@@ -29,7 +29,7 @@ echo $router->getTaskName();
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -45,15 +45,15 @@ Returns the internal dependency injector
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Legt den Namen des Standardmoduls fest
+Sets the name of the default module
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Legt den Standardnamen des controllers fest
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName)
 
-Legt den Standard Aktions Name fest
+Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
@@ -73,11 +73,11 @@ $router->setDefaults(
 
 public **handle** ([*array* $arguments])
 
-Behandelt die routing-Informationen, die von Befehlszeilenargumenten übergeben wurde
+Handles routing information received from command-line arguments
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
-Fügt eine Route zum Router hinzu
+Adds a route to the router
 
 ```php
 <?php
@@ -88,40 +88,40 @@ $router->add("/about", "About::main");
 
 public **getModuleName** ()
 
-Gibt den verarbeiteten Modul Namen zurück
+Returns processed module name
 
 public **getTaskName** ()
 
-Gibt den verarbeiteten Aufgaben Namen zurück
+Returns processed task name
 
 public **getActionName** ()
 
-Gibt den verarbeiteten Aktion Namen zurück
+Returns processed action name
 
 public *array* **getParams** ()
 
-Gibt die verarbeiteten zusätzliche Parameter zurück
+Returns processed extra params
 
 public **getMatchedRoute** ()
 
-Gibt die Route zurück, welche auf die verarbeitete URI passt
+Returns the route that matches the handled URI
 
 public *array* **getMatches** ()
 
-Gibt die Sub-Ausdrücke in einem passenden regulären Ausdruck zurück
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** ()
 
-Überprüft, ob der Router mit einem definierten routen übereinstimmt
+Checks if the router matches any of the defined routes
 
 public **getRoutes** ()
 
-Gibt alle im router definierten Routen zurück
+Returns all the routes defined in the router
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
-Gibt ein Routenobjekt anhand der id zurück
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-Gibt ein Routenobjekt anhand des Namens zurück
+Returns a route object by its name
