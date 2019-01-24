@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Router\Group'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
-创建路由组具有共同属性的帮助器类
+Helper class to create a group of routes with common attributes
 
 ```php
 <?php
@@ -66,19 +66,19 @@ Phalcon\Mvc\Router\Group constructor
 
 public **setHostname** (*mixed* $hostname)
 
-设置在组中的所有路由的主机名限制
+Set a hostname restriction for all the routes in the group
 
 public **getHostname** ()
 
-返回主机名限制
+Returns the hostname restriction
 
 public **setPrefix** (*mixed* $prefix)
 
-在此组中设置公共 uri 前缀的所有路由
+Set a common uri prefix for all the routes in this group
 
 public **getPrefix** ()
 
-返回的常见前缀的所有路由
+Returns the common prefix for all the routes
 
 public **beforeMatch** (*mixed* $beforeMatch)
 
@@ -86,23 +86,23 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public **getBeforeMatch** ()
 
-如果任何，返回 'before match' 回调
+Returns the 'before match' callback if any
 
 public **setPaths** (*mixed* $paths)
 
-共同为设置路径的所有路由组中
+Set common paths for all the routes in the group
 
 public **getPaths** ()
 
-返回为此组定义的常见路径
+Returns the common paths defined for this group
 
 public **getRoutes** ()
 
-返回添加到组中的路由
+Returns the routes added to the group
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-将路由添加到路由器的任何 HTTP 方法
+Adds a route to the router on any HTTP method
 
 ```php
 <?php
@@ -117,32 +117,32 @@ Adds a route to the router that only match if the HTTP method is GET
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 POST
+Adds a route to the router that only match if the HTTP method is POST
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPut** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 PUT
+Adds a route to the router that only match if the HTTP method is PUT
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPatch** (*string* $pattern, [*string/array* $paths])
 
-添加到路由器，如果 HTTP 方法是只匹配路由修补
+Adds a route to the router that only match if the HTTP method is PATCH
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addDelete** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addOptions** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器只匹配如果 HTTP 方法是OPTIONS
+Add a route to the router that only match if the HTTP method is OPTIONS
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addHead** (*string* $pattern, [*string/array* $paths])
 
-将路由添加到路由器只匹配如果 HTTP 方法是HEAD
+Adds a route to the router that only match if the HTTP method is HEAD
 
 public **clear** ()
 
-删除所有预定义的路由
+Removes all the pre-defined routes
 
 protected **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-添加路由应用的常见属性
+Adds a route applying the common attributes
