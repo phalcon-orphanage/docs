@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Application'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
 
-Komponen ini merangkum semua operasi kompleks di balik instantiating setiap komponen diperlukan dan mengintegrasikannya dengan yang lain untuk memungkinkan pola MVC beroperasi sesuai keinginan.
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 ```php
 <?php
@@ -56,7 +56,7 @@ $application->main();
 
 ```
 
-## Metode
+## Methods
 
 public **useImplicitView** (*mixed* $implicitView)
 
@@ -64,23 +64,23 @@ By default. The view is implicitly buffering all the output You can full disable
 
 public **handle** ([*mixed* $uri])
 
-Menangani permintaan MVC
+Handles a MVC request
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Phalcon\Aplikasi
+Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Menyetel pengelola acara
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Daftarkan sebuah array modul yang ada dalam aplikasi
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -102,28 +102,28 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Kembalikan modul yang terdaftar dalam aplikasi
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-Mendapat definisi modul yang terdaftar dalam aplikasi melalui nama modul
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-Menetapkan nama modul yang akan digunakan jika router tidak mengembalikan modul yang valid
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Mengembalikan nama modul default
+Returns the default module name
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
