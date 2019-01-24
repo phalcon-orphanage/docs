@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 类的自动加载
+# Class Autoloader
 
 [Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
@@ -21,7 +21,7 @@ With this component you can load files from other projects or vendors, this auto
 
 <a name='security'></a>
 
-## 安全层
+## Security Layer
 
 [Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -91,7 +91,7 @@ $some = new \Example\Adapter\Some();
 
 <a name='registering-directories'></a>
 
-## 注册目录
+## Registering Directories
 
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
@@ -124,7 +124,7 @@ $some = new \Some();
 
 <a name='registering-classes'></a>
 
-## 注册类
+## Registering Classes
 
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
 
@@ -155,7 +155,7 @@ $some = new \Some();
 
 <a name='registering-files'></a>
 
-## 注册文件
+## Registering Files
 
 You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
 
@@ -294,7 +294,7 @@ Some events when returning boolean `false` could stop the active operation. 以�
 
 <a name='troubleshooting'></a>
 
-## 疑难解答
+## Troubleshooting
 
 Some things to keep in mind when using the universal autoloader:
 
