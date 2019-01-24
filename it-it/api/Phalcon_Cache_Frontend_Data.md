@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
 Allows to cache native PHP data in a serialized form
 
@@ -60,7 +60,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Metodi
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
