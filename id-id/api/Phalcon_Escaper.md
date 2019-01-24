@@ -8,7 +8,7 @@ title: 'Phalcon\Escaper'
 
 *implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 
@@ -25,11 +25,11 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Metode
+## Methods
 
 public **setEncoding** (*mixed* $encoding)
 
-Mengeset pengkodean untuk digunakan oleh escaper
+Sets the encoding to be used by the escaper
 
 ```php
 <?php
@@ -40,11 +40,11 @@ $escaper->setEncoding("utf-8");
 
 public **getEncoding** ()
 
-Mengembalikan pengkodean internal yang digunakan oleh escaper
+Returns the internal encoding used by the escaper
 
 public **setHtmlQuoteType** (*mixed* $quoteType)
 
-Menetapkan jenis kutipan HTML untuk htmlspecialchars
+Sets the HTML quoting type for htmlspecialchars
 
 ```php
 <?php
@@ -55,7 +55,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 public **setDoubleEncode** (*mixed* $doubleEncode)
 
-Menetapkan double_encode untuk digunakan oleh escaper
+Sets the double_encode to be used by the escaper
 
 ```php
 <?php
@@ -66,11 +66,11 @@ $escaper->setDoubleEncode(false);
 
 final public **detectEncoding** (*mixed* $str)
 
-Mendeteksi pengkodean karakter dari sebuah string untuk ditangani oleh pengkode Penanganan khusus untuk chr(172) dan chr(128) sampai dengan chr(159) yang gagal untuk dideteksi dengan mb_detect_encoding()
+Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
 final public **normalizeEncoding** (*mixed* $str)
 
-Utilitas untuk menormalisasi sebuah pengkodean string ke UTF-32.
+Utility to normalize a string's encoding to UTF-32.
 
 public **escapeHtml** (*mixed* $text)
 
@@ -78,15 +78,15 @@ Escapes a HTML string. Internally uses htmlspecialchars
 
 public **escapeHtmlAttr** (*mixed* $attribute)
 
-Meloloskan sebuah string atribut HTML
+Escapes a HTML attribute string
 
 public **escapeCss** (*mixed* $css)
 
-Meloloskan string-string CSS dengan mengganti karakter non-alphanumeric dengan representasi nilai hexadecimalnya yang diloloskan
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 public **escapeJs** (*mixed* $js)
 
-Meloloskan string-string javascript dengan mengganti karakter non-alphanumeric dengan representasi nilai hexadecimalnya yang diloloskan
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 public **escapeUrl** (*mixed* $url)
 
