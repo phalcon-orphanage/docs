@@ -10,15 +10,15 @@ title: 'Phalcon\Image\Adapter\Gd'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-## Metode
+## Methods
 
-publik statis **memeriksa** ()
+public static **check** ()
 
 ...
 
-publik **__membangun** (*campuran* $file, [*campuran* $width], [*campuran* $height])
+public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
 ...
 
@@ -26,23 +26,23 @@ protected **_resize** (*mixed* $width, *mixed* $height)
 
 ...
 
-protected **_crop**(* mixed * $width,*mixed* $height,* mixed* $offsetX,*mixed* $offsetY)
+protected **_crop** (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)
 
 ...
 
-terlindung **_memutar** (*bercampur* $degrees)
+protected **_rotate** (*mixed* $degrees)
 
 ...
 
-terlindung **_flip** (*bercampur* $direction)
+protected **_flip** (*mixed* $direction)
 
 ...
 
-terlindung **_sharpen** (*bercampur* $amount)
+protected **_sharpen** (*mixed* $amount)
 
 ...
 
-terlindung **_refleksi** (*bercampur* $height, *bercampur* $opacity, *bercampur* $fadeIn)
+protected **_reflection** (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)
 
 ...
 
@@ -58,23 +58,23 @@ protected **_mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $mask)
 
 ...
 
-terlindung **_latar belakang** (*bercampur* $r, *bercampur* $g, *bercampur* $b, *bercampur* $opacity)
+protected **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
 
 ...
 
-terlindung **_blur** (*bercampur* $radius)
+protected **_blur** (*mixed* $radius)
 
 ...
 
-terlindung **_pixelate** (*berlindung* $amount)
+protected **_pixelate** (*mixed* $amount)
 
 ...
 
-terlindung **_menyimpan** (*bercampur* $file, *bercampur* $quality)
+protected **_save** (*mixed* $file, *mixed* $quality)
 
 ...
 
-terlindung **_render** (*bercampur* $ext, *bercampur* $quality)
+protected **_render** (*mixed* $ext, *mixed* $quality)
 
 ...
 
@@ -82,7 +82,7 @@ protected **_create** (*mixed* $width, *mixed* $height)
 
 ...
 
-publik **__penghancuran** ()
+public **__destruct** ()
 
 ...
 
@@ -96,23 +96,23 @@ public **getRealpath** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_A
 
 public **getWidth** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Lebar gambar
+Image width
 
 public **getHeight** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tinggi gambar
+Image height
 
 public **getType** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tipe gambar Tergantung driver
+Image type Driver dependent
 
 public **getMime** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Jenis pantomim gambar
+Image mime type
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Ubah ukuran gambar ke ukuran yang diberikan
+Resize the image to the given size
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -120,52 +120,52 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tanaman sebuah gambar dengan diberikan ukuran
+Crop an image to the given size
 
 public **rotate** (*mixed* $degrees) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Putar gambar dengan jumlah tertentu
+Rotate the image by a given amount
 
 public **flip** (*mixed* $direction) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Balikkan gambar di sepanjang sumbu horizontal atau vertikal
+Flip the image along the horizontal or vertical axis
 
 public **sharpen** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Pertajam gambar dengan jumlah tertentu
+Sharpen the image by a given amount
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tambahkan bayangan ke gambar
+Add a reflection to an image
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tambahkan tanda air ke gambar dengan opacity yang ditentukan
+Add a watermark to an image with the specified opacity
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Tambahkan tanda air ke gambar dengan opacity yang ditentukan
+Add a text to an image with a specified opacity
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Komposit satu gambar ke gambar yang lain
+Composite one image onto another
 
 public **background** (*mixed* $color, [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Atur warna latar belakang gambar  
+Set the background color of an image
 
 public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Gambar buram
+Blur image
 
 public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Gambar piksel
+Pixelate image
 
 public **save** ([*mixed* $file], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Simpan gambar
+Save the image
 
 public **render** ([*mixed* $ext], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Render gambar dan kembalikan string biner
+Render the image and return the binary string
