@@ -8,13 +8,13 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
 This is an optional base class for ORM behaviors
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ([*آرایه* $options])
+public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
