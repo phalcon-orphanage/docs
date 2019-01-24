@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Uniqueness'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
 Check that a field is unique in the related table
 
@@ -98,7 +98,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Méthodes
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
