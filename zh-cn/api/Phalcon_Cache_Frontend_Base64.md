@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Base64'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
-允许缓存数据转换/deconverting 使用base64。
+Allows to cache data converting/deconverting them to base64.
 
-此适配器使用 base64_encode/base64_decode PHP 的功能
+This adapter uses the base64_encode/base64_decode PHP's functions
 
 ```php
 <?php
@@ -63,11 +63,11 @@ Phalcon\Cache\Frontend\Base64 constructor
 
 public **getLifetime** ()
 
-返回缓存生存期
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-检查是否如果前端缓冲输出
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -75,16 +75,16 @@ Starts output frontend. Actually, does nothing in this adapter
 
 public *string* **getContent** ()
 
-返回输出缓存的内容
+Returns output cached content
 
 public **stop** ()
 
-停止输出前端
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-将数据序列化存储他们之前
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes 后检索数据
+Unserializes data after retrieval
