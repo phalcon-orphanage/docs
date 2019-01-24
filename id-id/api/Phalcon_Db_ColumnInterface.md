@@ -6,15 +6,15 @@ title: 'Phalcon\Db\ColumnInterface'
 ---
 # Interface **Phalcon\Db\ColumnInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getSchemaName** ()
+abstrak publik **getSchemaName** ()
 
 ...
 
-abstract public **getName** ()
+abstrak publik **getName** ()
 
 ...
 
@@ -22,62 +22,62 @@ abstract public **getType** ()
 
 ...
 
-abstract public **getTypeReference** ()
+publik abstrak **getTypeReference** ()
 
 ...
 
-abstract public **getTypeValues** ()
+abstrak publik **getTypeValues ​** ()
 
 ...
 
-abstract public **getSize** ()
+abstrak publik **getSize** ()
 
 ...
 
-abstract public **getScale** ()
+publik abstrak **getScale** ()
 
 ...
 
-abstract public **isUnsigned** ()
+publik abstrak **isUnsigned** ()
 
 ...
 
-abstract public **isNotNull** ()
+publik abstrak **isNotNull** ()
 
 ...
 
-abstract public **isPrimary** ()
+abstrak public **isPrimary** ()
 
 ...
 
-abstract public **isAutoIncrement** ()
+public abstrak **isAutoIncrement** ()
 
 ...
 
-abstract public **isNumeric** ()
+abstrak publik **isNumeric** ()
 
 ...
 
-abstract public **isFirst** ()
+abstrak publik **isFirst** ()
 
 ...
 
-abstract public **getAfterPosition** ()
+abstrak publik **getAfterPosition** ()
 
 ...
 
-abstract public **getBindType** ()
+publik abstrak **getBindType** ()
 
 ...
 
-abstract public **getDefault** ()
+abstrak publik **getDefault** ()
 
 ...
 
-abstract public **hasDefault** ()
+abstrak publik **hasDefault** ()
 
 ...
 
-abstract public static **__set_state** (*array* $data)
+data statis statis **__set_state** (*array* $data)
 
 ...
