@@ -8,16 +8,16 @@ title: 'Phalcon\Mvc\Router\Group'
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
-Helper-Klasse zum Erstellen einer Gruppe von Routen mit gemeinsamen Merkmalen
+Helper class to create a group of routes with common attributes
 
 ```php
 <?php
 
 $router = new \Phalcon\Mvc\Router();
 
-//Erstellt eine Gruppe mit gemeinsamen Modul und Controller
+//Create a group with a common module and controller
 $blog = new Group(
     [
         "module"     => "blog",
@@ -25,10 +25,10 @@ $blog = new Group(
     ]
 );
 
-//Alle Routen starten mit /blog
+//All the routes start with /blog
 $blog->setPrefix("/blog");
 
-//Eine Route zur Gruppe hinzufügen
+//Add a route to the group
 $blog->add(
     "/save",
     [
@@ -36,7 +36,7 @@ $blog->add(
     ]
 );
 
-//Eine weitere Route der Gruppe hinzufügen
+//Add another route to the group
 $blog->add(
     "/edit/{id}",
     [
@@ -44,7 +44,7 @@ $blog->add(
     ]
 );
 
-//Diese Route führt zu einem anderen Controller als dem Standard
+//This route maps to a controller different than the default
 $blog->add(
     "/blog",
     [
@@ -53,12 +53,12 @@ $blog->add(
     ]
 );
 
-//Die Gruppe dem Router hinzufügen
+//Add the group to the router
 $router->mount($blog);
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*mixed* $paths])
 
@@ -66,19 +66,19 @@ Phalcon\Mvc\Router\Group constructor
 
 public **setHostname** (*mixed* $hostname)
 
-Stellen Sie eine Hostnamen Einschränkung für alle Routen im
+Set a hostname restriction for all the routes in the group
 
 public **getHostname** ()
 
-Gibt die Hostname-Beschränkung zurück
+Returns the hostname restriction
 
 public **setPrefix** (*mixed* $prefix)
 
-Legt einen gemeinsamen uri Präfix für alle Routen in der Gruppe fest
+Set a common uri prefix for all the routes in this group
 
 public **getPrefix** ()
 
-Gibt das gemeinsame Präfix für alle Routen zurück
+Returns the common prefix for all the routes
 
 public **beforeMatch** (*mixed* $beforeMatch)
 
@@ -86,23 +86,23 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public **getBeforeMatch** ()
 
-Liefert den "before match" Callback, falls vorhanden
+Returns the 'before match' callback if any
 
 public **setPaths** (*mixed* $paths)
 
-Legt einen gemeinsamen Pfad für alle Routen in der Gruppe fest
+Set common paths for all the routes in the group
 
 public **getPaths** ()
 
-Gibt die gemeinsamen Pfade für diese Gruppe zurück
+Returns the common paths defined for this group
 
 public **getRoutes** ()
 
-Gibt die für diese Gruppe festgelegten routen zurück
+Returns the routes added to the group
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Fügt eine Route dem Router hinzu, welche auf jede HTTP Methode gültig ist
+Adds a route to the router on any HTTP method
 
 ```php
 <?php
@@ -145,4 +145,4 @@ Removes all the pre-defined routes
 
 protected **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Fügt eine Route hinzu, welche die gemeinsame Attribute nutzt
+Adds a route applying the common attributes
