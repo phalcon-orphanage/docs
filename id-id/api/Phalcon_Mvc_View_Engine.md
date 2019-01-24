@@ -10,47 +10,47 @@ title: 'Phalcon\Mvc\View\Engine'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine.zep)
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\Mvc\View component.
 
-## Metode
+## Methods
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
 Phalcon\Mvc\View\Engine constructor
 
-public ** getContent </ 0> ()</p> 
+public **getContent** ()
 
-Mengembalikan hasil cache pada tahap tampilan yang lain
+Returns cached output on another view stage
 
-public *increment* ([**string** | *int* $partialPath], [*mixed* $params])
+public *string* **partial** (*string* $partialPath, [*array* $params])
 
-Membuat sebagian di dalam tampilan lain
+Renders a partial inside another view
 
-publik **getName** ()
+public **getView** ()
 
-Mengembalikan komponen tampilan yang terkait dengan adaptor
+Returns the view component related to the adapter
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Menyetel pengelola acara
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
 
 abstract public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean]) inherited from [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface)
 
