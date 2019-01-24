@@ -6,9 +6,9 @@ title: 'Phalcon\Validation\MessageInterface'
 ---
 # Interface **Phalcon\Validation\MessageInterface**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
 
-## Méthodes
+## Methods
 
 abstract public **setType** (*mixed* $type)
 
@@ -34,7 +34,7 @@ abstract public **getField** ()
 
 ...
 
-abstract public **getDefaultAction** ()
+abstract public **__toString** ()
 
 ...
 
