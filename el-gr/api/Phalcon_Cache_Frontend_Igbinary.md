@@ -83,11 +83,11 @@ Returns output cached content
 
 public **stop** ()
 
-Σταματά παράθυρο το εξόδου
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializes τα δεδομένα από πριν την αποθήκευση τους
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
