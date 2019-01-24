@@ -8,17 +8,17 @@ title: 'Phalcon\Acl\Adapter'
 
 *implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
-Adaptor untuk Phalcon\Acl adapter
+Adapter for Phalcon\Acl adapters
 
-## Metode
+## Methods
 
 ```php
 public getActiveAccess()
 ```
 
-Akses aktif dimana daftar memeriksa jika beberapa operasi dapat mengeksesnya
+Active access which the list is checking if some operation can access it
 
 * * *
 
@@ -26,7 +26,7 @@ Akses aktif dimana daftar memeriksa jika beberapa operasi dapat mengeksesnya
 public getActiveOperation()
 ```
 
-Operasi dimana daftar melakukan cek jika diizinkan untuk masuk ke beberapa subject/access
+Operation which the list is checking if it's allowed to certain subject/access
 
 * * *
 
@@ -34,7 +34,7 @@ Operasi dimana daftar melakukan cek jika diizinkan untuk masuk ke beberapa subje
 public getActiveSubject()
 ```
 
-Subjek dimana daftar memeriksa jika beberapa operasi mendapatkan akses
+Subject which the list is checking if some operation can access it
 
 * * *
 
@@ -43,7 +43,7 @@ Subjek dimana daftar memeriksa jika beberapa operasi mendapatkan akses
 public getDefaultAction()
 ```
 
-Mengembalikan tingkat akses ACL default
+Returns the default ACL access level
 
 * * *
 
@@ -55,7 +55,7 @@ public getEventsManager()
     public setDefaultAction(mixed $defaultAccess)
     
 
-Menetapkan tingkat akses default (Phalcon\Acl::ALLOW atau Phalcon\Acl:: DENY)
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 * * *
 
@@ -63,7 +63,7 @@ Menetapkan tingkat akses default (Phalcon\Acl::ALLOW atau Phalcon\Acl:: DENY)
 public setEventsManager([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 ```
 
-Menyetel pengelola acara
+Sets the events manager
 
 * * *
 
