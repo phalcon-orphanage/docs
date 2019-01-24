@@ -15,7 +15,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adaptéry
+## Adapters
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
 
@@ -28,7 +28,7 @@ This component makes use of adapters to store the logged messages. The use of ad
 
 <a name='adapters-factory'></a>
 
-### Továrna
+### Factory
 
 Loads Logger Adapter class using `adapter` option
 
@@ -148,7 +148,7 @@ In the example above, only critical and emergency messages will get saved to the
 
 <a name='transactions'></a>
 
-## Transakce
+## Transactions
 
 Logging data to an adapter i.e. File (file system) is always an expensive operation in terms of performance. To combat that, you can take advantage of logging transactions. Transactions store log data temporarily in memory and later on write the data to the relevant adapter (File in this case) in a single atomic operation.
 
@@ -244,7 +244,7 @@ Formats the messages using a one-line string. The default logging format is:
 
 You can change the default format using `setFormat()`, this allows you to change the format of the logged messages by defining your own. The log format variables allowed are:
 
-| Proměnná  | Description                              |
+| Variable  | Description                              |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
 | %date%    | Date the message was added               |
@@ -271,7 +271,7 @@ The [Phalcon\Logger\FormatterInterface](api/Phalcon_Logger_FormatterInterface) i
 
 <a name='usage'></a>
 
-## Adaptéry
+## Adapters
 
 The following examples show the basic use of each adapter:
 
@@ -367,6 +367,6 @@ $logger->error(
 
 <a name='usage-custom'></a>
 
-### Implementace vlastních adaptérů
+### Implementing your own adapters
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.
