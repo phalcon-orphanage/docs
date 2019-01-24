@@ -439,12 +439,12 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| Type             | Description                                                     | Implicit Method |
+| ---------------- | --------------------------------------------------------------- | --------------- |
+| Belongs-To       | Returns a model instance of the related record directly         | findFirst       |
+| Has-One          | Returns a model instance of the related record directly         | findFirst       |
+| Has-Many         | Returns a collection of model instances of the referenced model | find            |
+| Has-Many-to-Many | 参照モデルのモデルインスタンスのコレクションを返す。これは暗黙的に関係するモデルで 'inner joins'を行う。     | (クエリの組合せ)       |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -561,12 +561,12 @@ With the aliasing we can get the related records easily. You can also use the `g
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// Returns the related record based on the column (robots_id)
+// そのカラム (robots_id) に基づいて関連するレコードを返す
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
 $robot = $robotsSimilar->getRelated('Robot');
 
-// Returns the related record based on the column (similar_robots_id)
+// そのカラム (similar_robots_id) に基づいて関連するレコードを返す
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
@@ -586,7 +586,7 @@ namespace Store\Toys;
 use Phalcon\Mvc\Model;
 
 /**
- * Model class for the robots table.
+ * ロボットのテーブルのモデルクラス
  * @property Simple|RobotsParts[] $robotsParts
  * @method   Simple|RobotsParts[] getRobotsParts($parameters = null)
  * @method   integer              countRobotsParts()
