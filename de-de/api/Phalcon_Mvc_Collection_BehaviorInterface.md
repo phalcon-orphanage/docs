@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Collection\BehaviorInterface'
 ---
 # Interface **Phalcon\Mvc\Collection\BehaviorInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behaviorinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behaviorinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection)
 
