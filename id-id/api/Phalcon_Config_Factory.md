@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon \ Config \ Factory'
+title: 'Phalcon\Config\Factory'
 ---
 # Class **Phalcon\Config\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon \ Config \ Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
-Beban Config Adapter kelas menggunakan pilihan 'adaptor', jika ekstensi tidak disediakan itu akan ditambahkan ke filePath
+Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 
 ```php
 <?php
@@ -27,10 +27,10 @@ $config = Factory::load($options);
 
 ```
 
-## Metode
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
-protected static ** loadClass ** (* mixed * $namespace, * mixed * $config)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...
