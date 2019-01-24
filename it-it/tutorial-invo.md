@@ -11,15 +11,15 @@ version: '4.0'
 
 # Tutorial: INVO
 
-In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [Github](https://github.com/phalcon/invo).
+In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [GitHub](https://github.com/phalcon/invo).
 
 INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
 
 <a name='structure'></a>
 
-## Project Structure
+## Struttura del progetto
 
-Once you clone the project in your document root you'll see the following structure:
+Una volta che cloni il progetto nella tua directory principale, vedrai la seguente struttura:
 
 ```bash
 invo/
@@ -52,7 +52,7 @@ The application is divided into two parts: a frontend and a backend. The fronten
 
 <a name='routing'></a>
 
-## Routing
+## Inoltro (Routing)
 
 INVO uses the standard route that is built-in with the [Router](/4.0/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
@@ -101,7 +101,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## Caricatori automatici (Autoloaders)
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 
@@ -121,7 +121,7 @@ The autoloader registers a set of directories in which the application will look
 
 $loader = new Phalcon\Loader();
 
-// We're a registering a set of directories taken from the configuration file
+// Noi registriamo un insieme di directories prese dal file di configurazione
 $loader->registerDirs(
     [
         APP_PATH . $config->application->controllersDir,
@@ -150,7 +150,7 @@ define(
 
 <a name='services'></a>
 
-## Registering services
+## Registrazione dei servizi
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -173,7 +173,7 @@ use Phalcon\Mvc\Url as UrlProvider;
 // ...
 
 /**
- * The URL component is used to generate all kind of URLs in the application
+ * Il componente URL è usato per generare tutti i tipi di URLs dell'applicazione
  */
 $di->set(
     'url',
@@ -193,7 +193,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 
-## Handling the Request
+## Gestione della richiesta
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
 
@@ -228,7 +228,7 @@ use Phalcon\Session\Adapter\Files as Session;
 
 // ...
 
-// Start the session the first time a component requests the session service
+// Avvia la sessione la prima volta che un componente fa richiesta del servizio sessione 
 $di->set(
     'session',
     function () {
@@ -261,7 +261,7 @@ It registers the majority of services with components provided by the framework 
 
 <a name='log-in'></a>
 
-## Log into the Application
+## Accesso all'applicazione
 
 A `log in` facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones is only logical. All controllers are located in the same directory (`app/controllers/`).
 
@@ -276,7 +276,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
 // ...
 
-// Database connection is created based on parameters defined in the configuration file
+// La connessione al database è creata sulla base dei parametri definiti nel file di configurazione
 $di->set(
     'db',
     function () use ($config) {
@@ -351,16 +351,16 @@ class SessionController extends ControllerBase
     }
 
     /**
-     * This action authenticate and logs a user into the application
+     * Questa azione autentica e "logga" un utente nell'applicazione
      */
     public function startAction()
     {
         if ($this->request->isPost()) {
-            // Get the data from the user
+            // Recupera i dati dell'utente
             $email    = $this->request->getPost('email');
             $password = $this->request->getPost('password');
 
-            // Find the user in the database
+            // Trova l'utente nel database
             $user = Users::findFirst(
                 [
                     "(email = :email: OR username = :email:) AND password = :password: AND active = 'Y'",
@@ -375,10 +375,10 @@ class SessionController extends ControllerBase
                 $this->_registerSession($user);
 
                 $this->flash->success(
-                    'Welcome ' . $user->name
+                    'Benvenuto ' . $user->name
                 );
 
-                // Forward to the 'invoices' controller if the user is valid
+                // Inoltra al controllore 'invoices' se è un utente valido
                 return $this->dispatcher->forward(
                     [
                         'controller' => 'invoices',
@@ -388,11 +388,11 @@ class SessionController extends ControllerBase
             }
 
             $this->flash->error(
-                'Wrong email/password'
+                'Email/password errati'
             );
         }
 
-        // Forward to the login form again
+        // Inoltro nuovamente al login form
         return $this->dispatcher->forward(
             [
                 'controller' => 'session',
@@ -465,7 +465,7 @@ if ($user !== false) {
     $this->_registerSession($user);
 
     $this->flash->success(
-        'Welcome ' . $user->name
+        'Benvenuto ' . $user->name
     );
 
     return $this->dispatcher->forward(
@@ -492,7 +492,7 @@ return $this->dispatcher->forward(
 
 <a name='securing-backend'></a>
 
-## Securing the Backend
+## Protezione del back-end
 
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
 
@@ -530,7 +530,7 @@ We now have total control over the Dispatcher used in the application. Many comp
 
 <a name='events-manager'></a>
 
-### Events Management
+### Gestione degli Eventi
 
 The [EventsManager](/4.0/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
@@ -543,16 +543,16 @@ use Phalcon\Events\Manager as EventsManager;
 $di->set(
     'dispatcher',
     function () {
-        // Create an events manager
+        // Crea una gestione eventi
         $eventsManager = new EventsManager();
 
-        // Listen for events produced in the dispatcher using the Security plugin
+        // Ascolta per gli eventi prodotti dal dispatcher usando il SecurityPlugin
         $eventsManager->attach(
             'dispatch:beforeExecuteRoute',
             new SecurityPlugin()
         );
 
-        // Handle exceptions and not-found exceptions using NotFoundPlugin
+        // Gestione delle eccezioni e l'eccezione not-found usando NotFoundPlugin
         $eventsManager->attach(
             'dispatch:beforeException',
             new NotFoundPlugin()
@@ -560,7 +560,7 @@ $di->set(
 
         $dispatcher = new Dispatcher();
 
-        // Assign the events manager to the dispatcher
+        // Assegna il gestore eventi al dispatcher
         $dispatcher->setEventsManager($eventsManager);
 
         return $dispatcher;
@@ -574,7 +574,7 @@ When an event called `beforeExecuteRoute` is triggered the following plugin will
 <?php
 
 /**
- * Check if the user is allowed to access certain action using the SecurityPlugin
+ * Controlla se l'utente è autorizzato ad accerete a certe azioni usando SecurityPlugin
  */
 $eventsManager->attach(
     'dispatch:beforeExecuteRoute',
@@ -588,7 +588,7 @@ When a `beforeException` is triggered then other plugin is notified:
 <?php
 
 /**
- * Handle exceptions and not-found exceptions using NotFoundPlugin
+ * Gestione delle eccezioni e l'eccezione not-found usando NotFoundPlugin
  */
 $eventsManager->attach(
     'dispatch:beforeException',
@@ -634,7 +634,7 @@ class SecurityPlugin extends Plugin
 
     public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
-        // Check whether the 'auth' variable exists in session to define the active role
+        // Controllo se la variabile 'auth' esiste nella sessione per definire il ruolo attivo
         $auth = $this->session->get('auth');
 
         if (!$auth) {
@@ -643,20 +643,20 @@ class SecurityPlugin extends Plugin
             $role = 'Users';
         }
 
-        // Take the active controller/action from the dispatcher
+        // Prendo il controllore/azione attivo dal dispatcher
         $controller = $dispatcher->getControllerName();
         $action     = $dispatcher->getActionName();
 
-        // Obtain the ACL list
+        // Ottengo la lista ACL
         $acl = $this->getAcl();
 
-        // Check if the Role have access to the controller (resource)
+        // Controllo se il ruolo ha accesso al controllore (resource)
         $allowed = $acl->isAllowed($role, $controller, $action);
 
         if (!$allowed) {
-            // If he doesn't have access forward him to the index controller
+            // Se non ha l'accesso lo inoltro al controllore index
             $this->flash->error(
-                "You don't have access to this module"
+                "Tu non hai accetto a questo modulo"
             );
 
             $dispatcher->forward(
@@ -666,7 +666,7 @@ class SecurityPlugin extends Plugin
                 ]
             );
 
-            // Returning 'false' we tell to the dispatcher to stop the current operation
+            // Restituisco 'false' per dire al dispatcher di interrompere l'operazione corrente
             return false;
         }
     }
@@ -675,7 +675,7 @@ class SecurityPlugin extends Plugin
 
 <a name='acl'></a>
 
-### Getting the ACL list
+### Ottenere la lista ACL
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
@@ -686,16 +686,16 @@ use Phalcon\Acl;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Adapter\Memory as AclList;
 
-// Create the ACL
+// Crea l'ACL
 $acl = new AclList();
 
-// The default action is DENY access
+// L'azione predefinita è NEGARE l'accesso
 $acl->setDefaultAction(
     Acl::DENY
 );
 
-// Register two roles, Users is registered users
-// and guests are users without a defined identity
+// Registriamo 2 ruoli, Users sono gli utenti registrati
+// e guests sono gli utenti senza una identità definita
 $roles = [
     'users'  => new Role('Users'),
     'guests' => new Role('Guests'),
@@ -715,7 +715,7 @@ use Phalcon\Acl\Resource;
 
 // ...
 
-// Private area resources (backend)
+// Risorse area privata (backend)
 $privateResources = [
     'companies'    => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
     'products'     => ['index', 'search', 'new', 'edit', 'save', 'create', 'delete'],
@@ -732,7 +732,7 @@ foreach ($privateResources as $resourceName => $actions) {
 
 
 
-// Public area resources (frontend)
+// Risorse area publica (frontend)
 $publicResources = [
     'index'    => ['index'],
     'about'    => ['index'],
@@ -755,7 +755,7 @@ The ACL now knows about the existing controllers and their related actions. Role
 ```php
 <?php
 
-// Grant access to public areas to both users and guests
+// Autorizza l'accesso alle aree pubbliche per entrambi gli utenti: users e guests
 foreach ($roles as $role) {
     foreach ($publicResources as $resource => $actions) {
         $acl->allow(
@@ -766,7 +766,7 @@ foreach ($roles as $role) {
     }
 }
 
-// Grant access to private area only to role Users
+// Autorizza l'accesso all'aree privata solo al ruolo users
 foreach ($privateResources as $resource => $actions) {
     foreach ($actions as $action) {
         $acl->allow(
@@ -780,7 +780,7 @@ foreach ($privateResources as $resource => $actions) {
 
 <a name='working-with-crud'></a>
 
-## Working with the CRUD
+## Lavorando con il CRUD
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
@@ -811,7 +811,7 @@ Each controller has the following actions:
 class ProductsController extends ControllerBase
 {
     /**
-     * The start action, it shows the 'search' view
+     * Avvia l'azione, che mostra la vista 'search'
      */
     public function indexAction()
     {
@@ -819,8 +819,8 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Execute the 'search' based on the criteria sent from the 'index'
-     * Returning a paginator for the results
+     * Esegue la 'ricerca' 'search' basata sui criteri inviati da 'index'
+     * Restituisce il paginatore per i risultati
      */
     public function searchAction()
     {
@@ -828,7 +828,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to create a 'new' product
+     * Mostra la vista 'new' per creare un nuovo prodotto
      */
     public function newAction()
     {
@@ -836,7 +836,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Shows the view to 'edit' an existing product
+     * Mostra la vista 'edit' per modificare un prodotto esistente
      */
     public function editAction()
     {
@@ -844,7 +844,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Creates a product based on the data entered in the 'new' action
+     * Crea un prodotto in base ai dati inseriti nell'azione 'new' 
      */
     public function createAction()
     {
@@ -852,7 +852,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Updates a product based on the data entered in the 'edit' action
+     * Aggiorna un prodotto in base ai dati inseriti nell'azione 'edit' 
      */
     public function saveAction()
     {
@@ -860,7 +860,7 @@ class ProductsController extends ControllerBase
     }
 
     /**
-     * Deletes an existing product
+     * Cancella un prodotto esistente
      */
     public function deleteAction($id)
     {
@@ -871,7 +871,7 @@ class ProductsController extends ControllerBase
 
 <a name='search-form'></a>
 
-## The Search Form
+## Il modulo di ricerca
 
 Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
@@ -879,7 +879,7 @@ Every CRUD starts with a search form. This form shows each field that the table 
 <?php
 
 /**
- * The start action, it shows the 'search' view
+ * avvia l'azione, che mostra la vista 'search'
  */
 public function indexAction()
 {
@@ -905,7 +905,7 @@ use Phalcon\Validation\Validator\Numericality;
 class ProductsForm extends Form
 {
     /**
-     * Initialize the products form
+     * Inizializza il modulo (form) prodotti
      */
     public function initialize($entity = null, $options = [])
     {
@@ -929,7 +929,7 @@ class ProductsForm extends Form
             [
                 new PresenceOf(
                     [
-                        'message' => 'Name is required',
+                        'message' => 'Il nome è richiesto',
                     ]
                 )
             ]
@@ -963,12 +963,12 @@ class ProductsForm extends Form
             [
                 new PresenceOf(
                     [
-                        'message' => 'Price is required',
+                        'message' => 'Il prezzo è richiesto',
                     ]
                 ),
                 new Numericality(
                     [
-                        'message' => 'Price is required',
+                        'message' => 'Il prezzo è richiesto',
                     ]
                 ),
             ]
@@ -983,13 +983,13 @@ The form is declared using an object-oriented scheme based on the elements provi
 ```php
 <?php
 
-// Create the element
+// Crea l'elemento
 $name = new Text('name');
 
-// Set its label
+// Imposta l'etichetta
 $name->setLabel('Name');
 
-// Before validating the element apply these filters
+// Prima della validazione l'elemento applica questi filtri
 $name->setFilters(
     [
         'striptags',
@@ -997,18 +997,18 @@ $name->setFilters(
     ]
 );
 
-// Apply this validators
+// Applica questi validatori 
 $name->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'Name is required',
+                'message' => 'Il nome è richiesto',
             ]
         )
     ]
 );
 
-// Add the element to the form
+// Aggiunge l'elemento al modulo (form)
 $this->add($name);
 ```
 
@@ -1017,7 +1017,7 @@ Other elements are also used in this form:
 ```php
 <?php
 
-// Add a hidden input to the form
+// Aggiunge un campo nascosto al modulo (form)
 $this->add(
     new Hidden('id')
 );
@@ -1026,8 +1026,8 @@ $this->add(
 
 $productTypes = ProductTypes::find();
 
-// Add a HTML Select (list) to the form
-// and fill it with data from 'product_types'
+// Aggiunge una lista Select HTML al modulo (form)
+// e lo riempie con i dati da 'product_types'
 $type = new Select(
     'profilesId',
     $productTypes,
@@ -1083,7 +1083,7 @@ This produces the following HTML:
 <form action='/invo/products/search' method='post'>
 
     <h2>
-        Search products
+        Ricerca prodotti
     </h2>
 
     <fieldset>
@@ -1097,7 +1097,7 @@ This produces the following HTML:
         </div>
 
         <div class='control-group'>
-            <label for='name' class='control-label'>Name</label>
+            <label for='name' class='control-label'>Nome</label>
 
             <div class='controls'>
                 <input type='text' id='name' name='name' />
@@ -1117,7 +1117,7 @@ This produces the following HTML:
         </div>
 
         <div class='control-group'>
-            <label for='price' class='control-label'>Price</label>
+            <label for='price' class='control-label'>Prezzo</label>
 
             <div class='controls'>
                 <input type='text' id='price' name='price' />
@@ -1137,7 +1137,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 <a name='performing-searches'></a>
 
-## Performing a Search
+## Eseguire una ricerca
 
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/4.0/en/request) component:
 
@@ -1145,15 +1145,15 @@ The `search` action has two behaviors. When accessed via POST, it performs a sea
 <?php
 
 /**
- * Execute the 'search' based on the criteria sent from the 'index'
- * Returning a paginator for the results
+ * Esegue la ricerca 'search' in base ai criteri inviati dal 'index'
+ * Restituisce un paginatore per i risultati
  */
 public function searchAction()
 {
     if ($this->request->isPost()) {
-        // Create the query conditions
+        // Crea le condizioni della query
     } else {
-        // Paginate using the existing conditions
+        // Pagina usando le condizioni esistenti
     }
 
     // ...
@@ -1174,8 +1174,8 @@ $query = Criteria::fromInput(
 
 This method verifies which values are different from '' (empty string) and null and takes them into account to create the search criteria:
 
-* If the field data type is text or similar (char, varchar, text, etc.) It uses an SQL `like` operator to filter the results.
-* If the data type is not text or similar, it'll use the operator `=`.
+* Se il tipo di dati del campo è testo o simili (char, varchar, text, ecc.) lui utilizza un operatore `like` di SQL per filtrare i risultati.
+* Se il tipo di dati non è testo o simili, viene utilizzato l'operatore di `=`.
 
 Additionally, `Criteria` ignores all the `$_POST` variables that do not match any field in the table. Values are automatically escaped using `bound parameters`.
 
@@ -1198,7 +1198,7 @@ $products = Products::find($parameters);
 
 if (count($products) === 0) {
     $this->flash->notice(
-        'The search did not found any products'
+        'La ricerca non ha trovato alcun prodotto'
     );
 
     return $this->dispatcher->forward(
@@ -1221,9 +1221,9 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 
 $paginator = new Paginator(
     [
-        'data'  => $products,   // Data to paginate
-        'limit' => 5,           // Rows per page
-        'page'  => $numberPage, // Active page
+        'data'  => $products,   // Dati da paginare
+        'limit' => 5,           // Righe per pagina
+        'page'  => $numberPage, // Pagina attiva
     ]
 );
 
@@ -1396,7 +1396,7 @@ class Products extends Model
     // ...
 
     /**
-     * Products initializer
+     * Inizializzatore Prodotti
      */
     public function initialize()
     {
@@ -1463,7 +1463,7 @@ This method is defined in the model.
 
 <a name='creating-updating-records'></a>
 
-## Creating and Updating Records
+## Creazione e aggiornamento di record
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
 
@@ -1473,7 +1473,7 @@ In the creation case, we recover the data submitted and assign them to a new `Pr
 <?php
 
 /**
- * Creates a product based on the data entered in the 'new' action
+ * Crea un prodotto basato sui dati inseriti dall'azione 'new' 
  */
 public function createAction()
 {
@@ -1511,7 +1511,7 @@ $name = new Text('name');
 
 $name->setLabel('Name');
 
-// Filters for name
+// Filtra per Nome
 $name->setFilters(
     [
         'striptags',
@@ -1519,12 +1519,13 @@ $name->setFilters(
     ]
 );
 
-// Validators for name
+// Validatori per Nome
 $name->addValidators(
     [
         new PresenceOf(
             [
-                'message' => 'Name is required',
+                'message' => 'Il nome è richiesto',
+',
             ]
         )
     ]
@@ -1544,7 +1545,7 @@ $form = new ProductsForm();
 
 $product = new Products();
 
-// Validate the input
+// Valida l'input
 $data = $this->request->getPost();
 
 if (!$form->isValid($data, $product)) {
@@ -1588,7 +1589,7 @@ if ($product->save() === false) {
 $form->clear();
 
 $this->flash->success(
-    'Product was created successfully'
+    'Il prodotto è stato creato con successo'
 );
 
 return $this->dispatcher->forward(
@@ -1605,7 +1606,7 @@ Now, in the case of updating a product, we must first present the user with the 
 <?php
 
 /**
- * Edits a product based on its id
+ * Modifica il prodotto basato sul suo id
  */
 public function editAction($id)
 {
@@ -1641,7 +1642,7 @@ The data found is bound to the form by passing the model as first parameter. Tha
 <?php
 
 /**
- * Updates a product based on the data entered in the 'edit' action
+ * Aggiona un prodotto basato sui dati inseriti dall'azione 'edit'
  */
 public function saveAction()
 {
@@ -1708,7 +1709,7 @@ public function saveAction()
     $form->clear();
 
     $this->flash->success(
-        'Product was updated successfully'
+        'Il prodotto è stato aggiornato con successo'
     );
 
     return $this->dispatcher->forward(
@@ -1722,7 +1723,7 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## Componenti dell'utente
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
@@ -1752,7 +1753,7 @@ This class extends the [Phalcon\Mvc\User\Component](api/Phalcon_Mvc_User_Compone
 ```php
 <?php
 
-// Register a user component
+// Registra un componente dell'utente
 $di->set(
     'elements',
     function () {
@@ -1803,7 +1804,7 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Changing the Title Dynamically
+## Cambiare il titolo dinamicamente
 
 When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
 
@@ -1814,9 +1815,9 @@ class ProductsController extends ControllerBase
 {
     public function initialize()
     {
-        // Set the document title
+        // Imposta il titolo del documento
         $this->tag->setTitle(
-            'Manage your product types'
+            'Gestisci i tuoi tipi prodotti'
         );
 
         parent::initialize();
@@ -1837,7 +1838,7 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        // Prepend the application name to the title
+        // Mandare il nome dell'applicazione al titolo
         $this->tag->prependTitle('INVO | ');
     }
 
