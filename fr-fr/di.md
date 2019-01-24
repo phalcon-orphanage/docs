@@ -966,14 +966,14 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Events
+### Événements
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Certains événements en retournant un booléen false pourraient arrêter l’opération active. Les événements suivants sont supportés :
 
-| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
+| Nom de l'événement   | Déclencheur                                                                                                     | Peut arrêter l'opération ? | Triggered on |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:--------------------------:|:------------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |            Non             |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |            Non             |  Listeners   |
 
 <a name='shared-services'></a>
 
@@ -1242,30 +1242,30 @@ Although you can register services with the names you want, Phalcon has a severa
 
 | Service Name       | Description                           | Default                                                                                | Shared |
 | ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------- |:------:|
-| assets             | Assets Manager                        | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  Yes   |
-| annotations        | Annotations Parser                    | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  Yes   |
-| cookies            | HTTP Cookies Management Service       | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  Yes   |
-| crypt              | Encrypt/Decrypt data                  | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  Yes   |
-| db                 | Low-Level Database Connection Service | [Phalcon\Db](api/Phalcon_Db)                                                          |  Yes   |
-| dispatcher         | Controllers Dispatching Service       | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  Yes   |
-| eventsManager      | Events Management Service             | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  Yes   |
-| escaper            | Contextual Escaping                   | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  Yes   |
-| flash              | Flash Messaging Service               | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  Yes   |
-| flashSession       | Flash Session Messaging Service       | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  Yes   |
-| filter             | Input Filtering Service               | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  Yes   |
-| modelsCache        | Cache backend for models cache        | None                                                                                   |   No   |
-| modelsManager      | Models Management Service             | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  Yes   |
-| modelsMetadata     | Models Meta-Data Service              | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  Yes   |
-| request            | HTTP Request Environment Service      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  Yes   |
-| response           | HTTP Response Environment Service     | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  Yes   |
-| router             | Routing Service                       | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  Yes   |
-| security           | Security helpers                      | [Phalcon\Security](api/Phalcon_Security)                                              |  Yes   |
-| session            | Session Service                       | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  Yes   |
-| sessionBag         | Session Bag service                   | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  Yes   |
-| tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  Yes   |
-| transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  Yes   |
-| url                | URL Generator Service                 | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  Yes   |
-| viewsCache         | Cache backend for views fragments     | None                                                                                   |   No   |
+| assets             | Assets Manager                        | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  Oui   |
+| annotations        | Les Annotations De L'Analyseur        | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  Oui   |
+| cookies            | HTTP Cookies Management Service       | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  Oui   |
+| crypt              | Encrypt/Decrypt data                  | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  Oui   |
+| db                 | Low-Level Database Connection Service | [Phalcon\Db](api/Phalcon_Db)                                                          |  Oui   |
+| dispatcher         | Controllers Dispatching Service       | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  Oui   |
+| eventsManager      | Events Management Service             | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  Oui   |
+| escaper            | Contextual Escaping                   | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  Oui   |
+| flash              | Flash Messaging Service               | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  Oui   |
+| flashSession       | Flash Session Messaging Service       | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  Oui   |
+| filter             | Input Filtering Service               | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  Oui   |
+| modelsCache        | Cache backend for models cache        | None                                                                                   |  Non   |
+| modelsManager      | Models Management Service             | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  Oui   |
+| modelsMetadata     | Models Meta-Data Service              | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  Oui   |
+| request            | HTTP Request Environment Service      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  Oui   |
+| response           | HTTP Response Environment Service     | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  Oui   |
+| router             | Routing Service                       | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  Oui   |
+| security           | Security helpers                      | [Phalcon\Security](api/Phalcon_Security)                                              |  Oui   |
+| session            | Session Service                       | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  Oui   |
+| sessionBag         | Session Bag service                   | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  Oui   |
+| tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  Oui   |
+| transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  Oui   |
+| url                | URL Generator Service                 | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  Oui   |
+| viewsCache         | Cache backend for views fragments     | None                                                                                   |  Non   |
 
 <a name='implementing-your-own-di'></a>
 
