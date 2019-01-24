@@ -6,9 +6,9 @@ title: 'Phalcon\Di\InjectionAwareInterface'
 ---
 # Interface **Phalcon\Di\InjectionAwareInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
-## Methods
+## Méthodes
 
 abstract public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
