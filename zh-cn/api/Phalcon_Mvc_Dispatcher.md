@@ -53,7 +53,7 @@ Sets the default controller suffix
 
 public **setDefaultController** (*mixed* $controllerName)
 
-设置默认控制器名称
+Sets the default controller name
 
 public **setControllerName** (*mixed* $controllerName)
 
@@ -77,15 +77,15 @@ Gets previous dispatched action name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-将引发内部异常
+Throws an internal exception
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-处理用户异常
+Handles a user exception
 
 public **forward** (*array* $forward)
 
-将转发到另一个的控制器操作的执行流程。
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
@@ -145,7 +145,7 @@ Possible controller class name that will be located to dispatch the request
 
 public **getLastController** ()
 
-返回最新的派遣的控制器
+Returns the latest dispatched controller
 
 public **getActiveController** ()
 
@@ -153,11 +153,11 @@ Returns the active controller in the dispatcher
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -201,7 +201,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-设置默认操作名称
+Sets the default action name
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
