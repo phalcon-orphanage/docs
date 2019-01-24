@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Collection'
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -28,7 +28,7 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $reflectionData])
 
@@ -36,7 +36,7 @@ Phalcon\Annotations\Collection constructor
 
 public **count** ()
 
-Liefert die Anzahl der Anmerkungen in der Sammlung
+Returns the number of annotations in the collection
 
 public **rewind** ()
 
@@ -44,19 +44,19 @@ Rewinds the internal iterator
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-Gibt die aktuelle Anmerkung im Iterator zurück
+Returns the current annotation in the iterator
 
 public **key** ()
 
-Gibt die aktuellen Position/Schlüssel im Iterator zurück
+Returns the current position/key in the iterator
 
 public **next** ()
 
-Bewegt sich der internen Iteration-Zeiger auf die nächste position
+Moves the internal iteration pointer to the next position
 
 public **valid** ()
 
-Überprüft, ob die aktuelle Anmerkung im Iterator gültig ist
+Check if the current annotation in the iterator is valid
 
 public **getAnnotations** ()
 
@@ -72,4 +72,4 @@ Returns all the annotations that match a name
 
 public **has** (*string* $name)
 
-Überprüft, ob eine Anmerkung in einer Auflistung vorhanden ist
+Check if an annotation exists in a collection
