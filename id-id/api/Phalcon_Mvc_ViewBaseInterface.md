@@ -6,46 +6,46 @@ title: 'Phalcon\Mvc\ViewBaseInterface'
 ---
 # Interface **Phalcon\Mvc\ViewBaseInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **setPartialsDir** (*mixed* $viewsDir)
-
-...
-
-abstrak publik **getPartialsDir** ()
+abstract public **setViewsDir** (*mixed* $viewsDir)
 
 ...
 
-publik abstrak **setParam** (*mixed* $key, *mixed* $value)
+abstract public **getViewsDir** ()
 
 ...
 
-publik abstrak **setParam** (*mixed* $key, *mixed* $value)
+abstract public **setParamToView** (*mixed* $key, *mixed* $value)
 
 ...
 
-abstrak publik **getMainView** ()
+abstract public **setVar** (*mixed* $key, *mixed* $value)
 
 ...
 
-abstrak publik **getCache** ()
+abstract public **getParamsToView** ()
 
 ...
 
-abstrak publik **hasFiles** ([*mixed* $options])
+abstract public **getCache** ()
 
 ...
 
-abstrak public **setFilter** (*campuran* $content)
+abstract public **cache** ([*mixed* $options])
 
 ...
 
-abstrak publik 0 getContent 0
+abstract public **setContent** (*mixed* $content)
 
 ...
 
-abstrak publik **mulai** (*campuran * $partialPath, [*mixed* $params])
+abstract public **getContent** ()
+
+...
+
+abstract public **partial** (*mixed* $partialPath, [*mixed* $params])
 
 ...
