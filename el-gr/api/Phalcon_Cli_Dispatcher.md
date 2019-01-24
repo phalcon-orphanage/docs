@@ -74,7 +74,7 @@ Handles a user exception
 
 public **getLastTask** ()
 
-Επιστρέφει τον πιο αποστολέα πρόσφατο ελεγκτή
+Returns the latest dispatched controller
 
 public **getActiveTask** ()
 
@@ -82,7 +82,7 @@ Returns the active task in the dispatcher
 
 public **setOptions** (*array* $options)
 
-Ορίστε τις που επιλογές θα αποσταλούν
+Set the options to be dispatched
 
 public **getOptions** ()
 
@@ -106,7 +106,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
