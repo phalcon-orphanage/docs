@@ -6,9 +6,9 @@ title: 'Phalcon\Paginator\AdapterInterface'
 ---
 # Interface **Phalcon\Paginator\AdapterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **setCurrentPage** (*mixed* $page)
 
@@ -22,6 +22,6 @@ abstract public **setLimit** (*mixed* $limit)
 
 ...
 
-abstrak umum **mendapatkan Batas** ()
+abstract public **getLimit** ()
 
 ...
