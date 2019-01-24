@@ -8,20 +8,20 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Represents an asset resource
+Merupakan sumber daya aset
 
 ```php
 <?php
 
-$resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
+$resource = new \Phalcon\Assets\Resource ("js","javascripts / jquery.js");
 
 ```
 
-## Methods
+## Metode
 
-public **getType** ()
+publik **berhenti** ()
 
 public **getPath** ()
 
@@ -47,41 +47,41 @@ public **__construct** (*string* $type, *string* $path, [*boolean* $local], [*bo
 
 Phalcon\Assets\Resource constructor
 
-public **setType** (*mixed* $type)
+publik **perangkat Tipe** (*dicampur* $type)
 
-Sets the resource's type
+Menetapkan jenis sumber daya
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+Menetapkan jalur sumber daya
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+Menetapkan apakah sumber daya itu lokal atau eksternal
 
-public **setFilter** (*mixed* $filter)
+public **setFilter** (*campuran* $filter)
 
-Sets if the resource must be filtered or not
+Menetapkan apakah sumber daya harus disaring atau tidak
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Menetapkan beberapa atribut HTML tambahan
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+Menetapkan sebuah target uri untuk menghasilkan HTML
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+Menetapkan jalur sumber sumber
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+Menetapkan jalur target sumber daya
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Mengembalikan isi sumber daya sebagai string Opsional jalur dasar dimana sumber daya berada dapat diatur
 
 public **getRealTargetUri** ()
 
@@ -89,12 +89,12 @@ Returns the real target uri for the generated HTML
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+Mengembalikan lokasi lengkap tempat sumber daya berada
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+Mengembalikan lokasi lengkap dimana sumber daya harus ditulis
 
-public **getResourceKey** ()
+publik **getResourceKey** ()
 
-Gets the resource's key.
+Mendapatkan kunci sumber.
