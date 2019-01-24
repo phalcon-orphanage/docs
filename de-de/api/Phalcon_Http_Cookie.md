@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Cookie'
 
 *implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Bietet OO Wrapper um ein HTTP-Cookie zu verwalten
+Provide OO wrappers to manage a HTTP cookie
 
-## Methoden
+## Methods
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
@@ -28,23 +28,23 @@ Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Setzt den Cookie-Wert
+Sets the cookie's value
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Gibt den Cookie-Wert zurück
+Returns the cookie's value
 
 public **send** ()
 
-Sendet das Cookie an den HTTP-Client Speichert die Cookie-Definition in der Session
+Sends the cookie to the HTTP client Stores the cookie definition in session
 
 public **restore** ()
 
-Liest die Cookie-bezogenen Informationen aus dem SESSION um das Cookie wiederherzustellen, wie es war Da diese Methode automatisch intern aufgerufen wird, muss man sie also normalerweise nicht aufrufen
+Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
 
 public **delete** ()
 
-Löscht das Cookie indem ein Ablaufdatum in der Vergangenheit gesetzt wird
+Deletes the cookie by setting an expire time in the past
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Legt fest, ob das Cookie automatisch verschlüsselt/entschlüsselt sein muss
+Sets if the cookie must be encrypted/decrypted automatically
 
 public **isUsingEncryption** ()
 
-Prüft, ob das Cookie implizite Verschlüsselung verwendet
+Check if the cookie is using implicit encryption
 
 public **setExpiration** (*mixed* $expire)
 
-Setzt die Cookie Ablaufzeit
+Sets the cookie's expiration time
 
 public **getExpiration** ()
 
-Gibt die Cookie Ablaufzeit zurück
+Returns the current expiration time
 
 public **setPath** (*mixed* $path)
 
-Setzt die Cookie Ablaufzeit
+Sets the cookie's expiration time
 
 public **getName** ()
 
-Gibt den aktuellen Cookie Namen zurück
+Returns the current cookie's name
 
 public **getPath** ()
 
-Gibt den aktuellen Cookie Pfad zurück
+Returns the current cookie's path
 
 public **setDomain** (*mixed* $domain)
 
-Setzt die Domäne, der das Cookie zur Verfügung steht
+Sets the domain that the cookie is available to
 
 public **getDomain** ()
 
-Gibt die Domäne zurück, der das Cookie zur Verfügung steht
+Returns the domain that the cookie is available to
 
 public **setSecure** (*mixed* $secure)
 
-Legt fest, ob das Cookie nur gesendet werden muss, wenn die Verbindung sicher (HTTPS) ist
+Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
 public **getSecure** ()
 
-Gibt zurück, ob das Cookie nur gesendet werden muss, wenn die Verbindung sicher (HTTPS) ist
+Returns whether the cookie must only be sent when the connection is secure (HTTPS)
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Legt fest, ob auf das Cookie nur über das HTTP-Protokoll zugegriffen werden kann
+Sets if the cookie is accessible only through the HTTP protocol
 
 public **getHttpOnly** ()
 
-Gibt zurück, ob auf das Cookie nur über das HTTP-Protokoll zugegriffen werden kann
+Returns if the cookie is accessible only through the HTTP protocol
 
 public **__toString** ()
 
-Magische __toString-Methode konvertiert den Cookie-Wert in in eine Zeichenkette
+Magic __toString method converts the cookie's value to string
