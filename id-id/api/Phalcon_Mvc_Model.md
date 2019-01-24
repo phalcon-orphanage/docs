@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Model'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
 Phalcon\Mvc\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
-Sebuah model mewakili informasi (data) aplikasi dan aturan untuk memanipulasi data tersebut. Model terutama digunakan untuk mengelola aturan interaksi dengan tabel database yang sesuai. Dalam kebanyakan kasus, setiap tabel dalam database anda akan sesuai dengan satu model dalam aplikasi anda. Sebagian besar logika bisnis aplikasi anda akan terkonsentrasi pada model.
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
 Phalcon\Mvc\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
@@ -41,21 +41,21 @@ if ($robot->save() === false) {
 
 ## Constants
 
-*bilangan bulat* **OP_NONE**
+*integer* **OP_NONE**
 
-*bilangan bulat* **OP_CREATE**
+*integer* **OP_CREATE**
 
-*bilangan bulat* **OP_UPDATE**
+*integer* **OP_UPDATE**
 
-*bilangan bulat* **OP_DELETE**
+*integer* **OP_DELETE**
 
-*bilangan bulat* **DIRTY_STATE_PERSISTENT**
+*integer* **DIRTY_STATE_PERSISTENT**
 
-*bilangan bulat* **DIRTY_STATE_TRANSIENT**
+*integer* **DIRTY_STATE_TRANSIENT**
 
-*bilangan bulat* **DIRTY_STATE_DETACHED**
+*integer* **DIRTY_STATE_DETACHED**
 
-## Metode
+## Methods
 
 final public **__construct** ([*mixed* $data], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $modelsManager])
 
@@ -63,62 +63,62 @@ Phalcon\Mvc\Model constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Menetapkan ketergantungan injeksi wadah
+Sets the dependency injection container
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Kembali wadah injeksi ketergantungan
+Returns the dependency injection container
 
 protected **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Set manajer acara kustom
+Sets a custom events manager
 
-dilindungi (**getEventsManager**)
+protected **getEventsManager** ()
 
-Kembali manajer acara kustom
+Returns the custom events manager
 
-publik **getModelsMetaData** ()
+public **getModelsMetaData** ()
 
-Mengembalikan model layanan meta-data yang terkait dengan contoh kesatuan
+Returns the models meta-data service related to the entity instance
 
-publik **getModelsManager** ()
+public **getModelsManager** ()
 
-Kembali pengelola model yang berkaitan dengan contoh entitas
+Returns the models manager related to the entity instance
 
 public **setTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Mengatur sebuah transaksi yang berkaitan dengan contoh model
+Sets a transaction related to the Model instance
 
 ```php
 <?php
 
-menggunakan Phalcon\Mvc\Model\Transaction\Manager sebagai TxManager;
-menggunakan Phalcon\Mvc\Model\Transaction\Failed sebagai TxFailed;
+use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
 
-mencoba {
-    $txManager = baru TxManager();
+try {
+    $txManager = new TxManager();
 
     $transaction = $txManager->get();
 
-    $robot = Robot baru();
+    $robot = new Robots();
 
-    $robot->setTransaksi($transaction);
+    $robot->setTransaction($transaction);
 
-    $robot->nama       = "DINDING·E";
-    $robot->dibuat di = tanggal("Y-m-d");
+    $robot->name       = "WALL·E";
+    $robot->created_at = date("Y-m-d");
 
-    if ($robot->menyimpan() === salah) {
-        $transaction->rollback("Tidak bisa selamatkan robot");
+    if ($robot->save() === false) {
+        $transaction->rollback("Can't save robot");
     }
 
-    $robotPart = RobotParts baru();
+    $robotPart = new RobotParts();
 
-    $robotPart->setTransaksi($transaction);
+    $robotPart->setTransaction($transaction);
 
-    $robotPart->jenis = "head";
+    $robotPart->type = "head";
 
-    if ($robotPart->menyimpan() === salah) {
-        $transaction->rollback("Robot bagian tidak bisa diselamatkan");
+    if ($robotPart->save() === false) {
+        $transaction->rollback("Robot part cannot be saved");
     }
 
     $transaction->commit();
@@ -128,41 +128,41 @@ mencoba {
 
 ```
 
-dilindungi **setSource** (*campuran* $source)
+protected **setSource** (*mixed* $source)
 
-Menetapkan nama tabel yang modelnya harus dipetakan
+Sets the table name to which model should be mapped
 
-publik **mendapatkan Sumber** ()
+public **getSource** ()
 
-Mengembalikan nama tabel yang dipetakan kedalam model
+Returns the table name mapped in the model
 
-terlindung **atur Skema** (*dicampur* $schema)
+protected **setSchema** (*mixed* $schema)
 
-Mengatur nama skema dimana lokasi tabel dipetakan
+Sets schema name where the mapped table is located
 
-publik **mendapatkan Skema** ()
+public **getSchema** ()
 
-Mengembalikan nama skema dimana lokasi tabel dipetakan
+Returns schema name where the mapped table is located
 
-umum **setConnectionService** (*campuran* $connectionService)
+public **setConnectionService** (*mixed* $connectionService)
 
-Menetapkan nama layanan sambungan DependencyInjection
+Sets the DependencyInjection connection service name
 
-publik **setReadConnectionService** (*campuran* $connectionService)
+public **setReadConnectionService** (*mixed* $connectionService)
 
-Menetapkan nama layanan sambungan DependencyInjection yang digunakan untuk menyambung data
+Sets the DependencyInjection connection service name used to read data
 
-publik **setWriteConnectionService** (*campuran* $connectionService)
+public **setWriteConnectionService** (*mixed* $connectionService)
 
-Menetapkan nama layanan sambungan DependencyInjection yang digunakan untuk menulis data
+Sets the DependencyInjection connection service name used to write data
 
-publik **getReadConnectionService** ()
+public **getReadConnectionService** ()
 
-Mengembalikan nama layanan koneksi DependencyInjection yang digunakan untuk membaca data yang berhubungan dengan model
+Returns the DependencyInjection connection service name used to read data related the model
 
-publik **getWriteConnectionService** ()
+public **getWriteConnectionService** ()
 
-Mengembalikan nama layanan koneksi DependencyInjection yang digunakan untuk menulis data yang terkait dengan model
+Returns the DependencyInjection connection service name used to write data related to the model
 
 public **setDirtyState** (*mixed* $dirtyState)
 
@@ -172,59 +172,59 @@ public **getDirtyState** ()
 
 Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the database or not
 
-publi **dapatkan Sambungan Baca** ()
+public **getReadConnection** ()
 
-Mendapatkan koneksi yang digunakan untuk membaca data untuk model
+Gets the connection used to read data for the model
 
-publik **dapatkan Koneksi Tulis** ()
+public **getWriteConnection** ()
 
-Mendapatkan koneksi yang digunakan untuk mencatat data untuk model
+Gets the connection used to write data to the model
 
 public [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **assign** (*array* $data, [*mixed* $dataColumnMap], [*array* $whiteList])
 
-Menetapkan nilai untuk model dari sebuah susunan
+Assigns values to a model from an array
 
 ```php
 <?php
 
-$robot->menetapkan(
+$robot->assign(
     [
-        "jenis" => "mekanis",
-        "nama" => "Astro Boy",
-        "tahun" => 1952,
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
     ]
 );
 
-// Tetapkan dengan baris db, peta kolom diperlukan
-$robot->menetapkan(
+// Assign by db row, column map needed
+$robot->assign(
     $dbRow,
     [
-        "db_jenis" => "jenis",
-        "db_nama" => "nama",
-        "db_tahun" => "tahun",
+        "db_type" => "type",
+        "db_name" => "name",
+        "db_year" => "year",
     ]
 );
 
-// Izinkan hanya menetapkan nama dan tahun
-$robot->menetapkan(
+// Allow assign only name and year
+$robot->assign(
     $_POST,
-    batal,
+    null,
     [
-        "nama",
-        "tahun",
+        "name",
+        "year",
     ]
 );
 
-// Secara default metode penetapan akan menggunakan setters jika ada, Anda bisa menonaktifkannya dengan menggunakan ini_set untuk langsung menggunakan properti
+// By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
 
-ini_set("phalcon.orm.disable_assign_setters", benar);
+ini_set("phalcon.orm.disable_assign_setters", true);
 
-$robot->menetapkan(
+$robot->assign(
     $_POST,
-    batal,
+    null,
     [
-        "nama",
-        "tahun",
+        "name",
+        "year",
     ]
 );
 
@@ -232,132 +232,136 @@ $robot->menetapkan(
 
 public static **cloneResultMap** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](Phalcon_Mvc_Model_Row) $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
-Menatapkan nilai untuk sebuah model dari sebuah susunan, mengembalikan model baru.
+Assigns values to a model from an array, returning a new model.
 
 ```php
 <?php
 
 $robot = \Phalcon\Mvc\Model::cloneResultMap(
-    Robot baru(),
+    new Robots(),
     [
-        "jenis" => "mekanikal",
-        "nama" => "Astro Boy",
-        "tahun" => 1952,
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
     ]
 );
 
 ```
 
-statis umum *campuran* **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
+public static *mixed* **cloneResultMapHydrate** (*array* $data, *array* $columnMap, *int* $hydrationMode)
 
-Mengembalikan hasil yang terhidrasi berdasarkan data dan peta kolom
+Returns an hydrated result based on the data and the column map
 
 public static [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **cloneResult** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $base, *array* $data, [*int* $dirtyState])
 
-Menetapkan nilai dari sebuah model dari susunan mengembalikan model baru
+Assigns values to a model from an array returning a new model
 
 ```php
 <?php
 
 $robot = Phalcon\Mvc\Model::cloneResult(
-    Robot baru(),
+    new Robots(),
     [
-        "jenis" => "mekanikal",
-        "nama" => "Astro Boy",
-        "tahun" => 1952,
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
     ]
 );
 
 ```
 
-statis umum **menemukan** ([*campuran* $parameters])
+public static **find** ([*mixed* $parameters])
 
-Permintaan untuk satu set catatan yang mungkin sesuai dengan hal kondisi yang ditentukan
+Query for a set of records that match the specified conditions
 
 ```php
 <?php
 
 // How many robots are there?
-$robots = Robots::find(); echo "Ada", count($robots), "\n"; Robot mekanis berapa banyak Apakah ada?
-$robots = Robot::temukan(
-    "tipe = 'mekanis'"
+$robots = Robots::find();
+
+echo "There are ", count($robots), "\n";
+
+// How many mechanical robots are there?
+$robots = Robots::find(
+    "type = 'mechanical'"
 );
 
-echo "Ada ", menghitung($robots), "\n";
+echo "There are ", count($robots), "\n";
 
-// Dapatkan dan cetak robot virtual yang dipesan berdasarkan namanya
-$robots = Robot::temukan(
+// Get and print virtual robots ordered by name
+$robots = Robots::find(
     [
-        "tipe = 'virtual'",
-        "memesan" => "nama",
+        "type = 'virtual'",
+        "order" => "name",
     ]
 );
 
-untuk setiap ($robots as $robot) {
+foreach ($robots as $robot) {
  echo $robot->name, "\n";
 }
 
-// Dapatkan 100 robot virtual pertama yang dipesan berdasarkan namanya
-$robots = Robot::temukan(
+// Get first 100 virtual robots ordered by name
+$robots = Robots::find(
     [
-        "tipe = 'virtual'",
-        "memesan" => "nama",
-        "batas" => 100,
+        "type = 'virtual'",
+        "order" => "name",
+        "limit" => 100,
     ]
 );
 
-untuk setiap ($robots as $robot) {
- echo $robot->nama, "\n";
+foreach ($robots as $robot) {
+ echo $robot->name, "\n";
 }
 
 ```
 
-status publik *statis* **Pertama temukan** ([*tali* | *array* $parameters])
+public static *static* **findFirst** ([*string* | *array* $parameters])
 
-Permintaan rekaman pertama yang sesuai dengan kondisi yang ditentukan
+Query the first record that matches the specified conditions
 
 ```php
 <?php
 
-// Apa robot pertama di meja robot?
+// What's the first robot in robots table?
 $robot = Robots::findFirst();
 
-echo "Nama robot adalah ", $robot->nama;
+echo "The robot name is ", $robot->name;
 
-// Apa robot mekanis pertama di meja robot?
-$robot = Robot::Pertama temukan(
-    "tipe = 'mekanis'"
+// What's the first mechanical robot in robots table?
+$robot = Robots::findFirst(
+    "type = 'mechanical'"
 );
 
-echo "Nama robot mekanis pertama adalah ", $robot->nama;
+echo "The first mechanical robot name is ", $robot->name;
 
-// Dapatkan robot virtual pertama yang dipesan berdasarkan namanya
-$robot = Robot::Pertama temukan(
+// Get first virtual robot ordered by name
+$robot = Robots::findFirst(
     [
-        "tipe = 'virtual'",
-        "memesan" => "nama",
+        "type = 'virtual'",
+        "order" => "name",
     ]
 );
 
-echo "Nama robot virtual pertama adalah ", $robot->name;
+echo "The first virtual robot name is ", $robot->name;
 
 ```
 
 public static **query** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
-Buat sebuah kriteria untuk model tertentu
+Create a criteria for a specific model
 
 protected *boolean* **_exists** ([Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [*string* | *array* $table])
 
-Periksa apakah catatan baru-baru ini sudah ada
+Checks whether the current record already exists
 
 protected static [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface) **_groupResult** (*mixed* $functionName, *string* $alias, *array* $parameters)
 
-Menghasilkan pernyataan PHQL PILIH untuk sebuah agregat
+Generate a PHQL SELECT statement for an aggregate
 
-statis publik *dicampur* **menghitung** ([*array* $parameters])
+public static *mixed* **count** ([*array* $parameters])
 
-Menghaitung berapa banyak rekaman yang sesuai dengan kondisi yang ditentukan
+Counts how many records match the specified conditions
 
 ```php
 <?php
@@ -365,153 +369,156 @@ Menghaitung berapa banyak rekaman yang sesuai dengan kondisi yang ditentukan
 // How many robots are there?
 $number = Robots::count();
 
-echo "Ada ", $number, "\n";
+echo "There are ", $number, "\n";
 
-// Berapa banyak robot mekanis yang ada?
+// How many mechanical robots are there?
 $number = Robots::count("type = 'mechanical'");
 
-echo "Ada ", $number, " robot mekanis\n";
+echo "There are ", $number, " mechanical robots\n";
 
 ```
 
-statis publik *dicampur* **jumlah** ([*array* $parameters])
+public static *mixed* **sum** ([*array* $parameters])
 
-Menghitung jumlah pada kolom untuk kumpulan baris hasil yang sesuai dengan kondisi yang ditentukan
+Calculates the sum on a column for a result-set of rows that match the specified conditions
 
 ```php
 <?php
 
-// Berapa banyak semua robot?
-$sum = Robot::jumlah(
+// How much are all robots?
+$sum = Robots::sum(
     [
-        "kolom" => "harga",
+        "column" => "price",
     ]
 );
 
-echo "Harga total robot adalah ", $sum, "\n";
+echo "The total price of robots is ", $sum, "\n";
 
-// Berapa robot mekanisnya?
-$sum = Robot::jumlah(
+// How much are mechanical robots?
+$sum = Robots::sum(
     [
-        "tipe = 'mekanis'",
-        "kolom" => "harga",
+        "type = 'mechanical'",
+        "column" => "price",
     ]
 );
 
-echo "Harga total robot mekanis adalah", $sum, "\n";
+echo "The total price of mechanical robots is  ", $sum, "\n";
 
 ```
 
-statis publik *dicampur* **maksimum** ([*array* $parameters])
+public static *mixed* **maximum** ([*array* $parameters])
 
-Mengembalikan nilai maksimum kolom untuk kumpulan baris hasil yang sesuai dengan kondisi yang telah ditentukan
+Returns the maximum value of a column for a result-set of rows that match the specified conditions
 
 ```php
 <?php
 
-// Apa itu id robot maksimal?
-$id = Robot::maksimum(
+// What is the maximum robot id?
+$id = Robots::maximum(
     [
-        "kolom" => "id",
+        "column" => "id",
     ]
 );
 
-echo "Id robot maksimal adalah: ", $id, "\n";
+echo "The maximum robot id is: ", $id, "\n";
 
-// Apa itu maksimum id dari robot mekanis?
-$sum = Robot::maksimum(
+// What is the maximum id of mechanical robots?
+$sum = Robots::maximum(
     [
-        "tipe = 'mekanis'",
-        "kolom" => "id",
+        "type = 'mechanical'",
+        "column" => "id",
     ]
 );
 
-echo "Robot id maksimum dari robot mekanis adalah ", $id, "\n";
+echo "The maximum robot id of mechanical robots is ", $id, "\n";
 
 ```
 
-statis publik *dicampur* **minimum** ([*array* $parameters])
+public static *mixed* **minimum** ([*array* $parameters])
 
-Mengembalikan nilai maksimal kolom untuk kumpulan baris hasil yang sesuai dengan kondisi yang telah ditentukan
+Returns the minimum value of a column for a result-set of rows that match the specified conditions
 
 ```php
 <?php
 
-// Apa itu id robot minimum?
-$id = Robot::minimum(
+// What is the minimum robot id?
+$id = Robots::minimum(
     [
-        "kolom" => "id",
+        "column" => "id",
     ]
 );
 
-echo "Id robot minimum adalah: ", $id;
+echo "The minimum robot id is: ", $id;
 
-// Apa itu minimum id dari robot mekanis?
-$sum = Robot::minimum(
+// What is the minimum id of mechanical robots?
+$sum = Robots::minimum(
     [
-        "tipe = 'mekanis'",
-        "kolom" => "id",
+        "type = 'mechanical'",
+        "column" => "id",
     ]
 );
 
-echo "Id robot minimum dari robot mekanis adalah ", $id;
+echo "The minimum robot id of mechanical robots is ", $id;
 
 ```
 
-statis publik *ganda* **rata-rata** ([*array* $parameters])
+public static *double* **average** ([*array* $parameters])
 
-Mengembalikan nilai rata-rata pada kolom untuk kumpulan baris hasil yang sesuai dengan kondisi yang telah di tentukan
+Returns the average value on a column for a result-set of rows matching the specified conditions
 
 ```php
 <?php
 
-// Berapa harga rata-rata robot?
-$average = Robot::rata-rata(
+// What's the average price of robots?
+$average = Robots::average(
     [
-        "kolom" => "harga",
+        "column" => "price",
     ]
 );
 
-echo "Harga rata-rata adalah ", $average, "\n";
+echo "The average price is ", $average, "\n";
 
-// Berapa harga rata-rata robot mekanis?
-$average = Robot::rata-rata(
+// What's the average price of mechanical robots?
+$average = Robots::average(
     [
-        "tipe = 'mekanis'",
-        "kolom" => "harga",
+        "type = 'mechanical'",
+        "column" => "price",
     ]
 );
 
-echo "Harga rata-rata dari robot mekanis ini ", $average, "\n";
+echo "The average price of mechanical robots is ", $average, "\n";
 
 ```
 
 public **fireEvent** (*mixed* $eventName)
 
-Membakar sebuah acara, secara implisit dapat memanggil prilaku dan pendengar di pengelola acara yang diberitau
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 public **fireEventCancel** (*mixed* $eventName)
 
-Membakar sebuah acara, secara implisit dapat memanggil prilaku dan pendengar di pengelola acara diberitau motode ini berhenti jika salah satu callbaks/pendengar mengembalikan boolean false
+Fires an event, implicitly calls behaviors and listeners in the events manager are notified This method stops if one of the callbacks/listeners returns boolean false
 
-terlindung **_Batalkan operasi** ()
+protected **_cancelOperation** ()
 
-Batalkan operasi saat ini
+Cancel the current operation
 
 public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
-Menambahkan pesan yang disesuaikan pada proses validasi
+Appends a customized message on the validation process
 
 ```php
 <?php
 
-Kelas robot model meluas
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Message as Message;
+
+class Robots extends Model
 {
-    fungsi publik sebelum Menyimpan()
+    public function beforeSave()
     {
-        if ($this->nama === "Peter") {
-            $message = Pesan baru(
-                "Maaf, Tapi robot tidak bisa diberi nama Peter"
+        if ($this->name === "Peter") {
+            $message = new Message(
+                "Sorry, but a robot cannot be named Peter"
             );
 
             $this->appendMessage($message);
@@ -523,24 +530,24 @@ Kelas robot model meluas
 
 protected **validate** ([Phalcon\ValidationInterface](Phalcon_ValidationInterface) $validator)
 
-Jalankan validator pada setiap panggilan validasi
+Executes validators on every validation call
 
 ```php
 <?php
 
-gunakan Phalcon\Mvc\Model;
-gunakan Phalcon\Validasi;
-gunakan Phalcon\Validasi\Validator\pengecualianIn;
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\ExclusionIn;
 
-kelas Langganan Model meluas
+class Subscriptors extends Model
 {
-    validasi fungsi publik()
+    public function validation()
     {
-        $validator = Validasi baru();
+        $validator = new Validation();
 
         $validator->add(
             "status",
-            Pengecualian baruIn(
+            new ExclusionIn(
                 [
                     "domain" => [
                         "A",
@@ -550,7 +557,7 @@ kelas Langganan Model meluas
             )
         );
 
-        mengembalikan $this->validasi($validator);
+        return $this->validate($validator);
     }
 }
 
@@ -558,7 +565,7 @@ kelas Langganan Model meluas
 
 public **validationHasFailed** ()
 
-Periksa apakah proses validasi telah menghasilkan pesan apa pun
+Check whether validation process has generated any messages
 
 ```php
 <?php
@@ -591,9 +598,9 @@ class Subscribers extends Model
 
 ```
 
-publik **getMessages** ([*campuran* $filter])
+public **getMessages** ([*mixed* $filter])
 
-Mengembalikan array pesan validasi
+Returns array of validation messages
 
 ```php
 <?php
@@ -618,109 +625,109 @@ if ($robot->save() === false) {
 
 ```
 
-akhir dilindungi **_checkForeignKeysRestrict** ()
+final protected **_checkForeignKeysRestrict** ()
 
-Baca "belongs to" relasi dan periksa kunci asing virtual saat memasukkan atau memperbarui catatan untuk memverifikasi yang disisipkan/diperbarui ada pada entitas terkait
+Reads "belongs to" relations and check the virtual foreign keys when inserting or updating records to verify that inserted/updated values are present in the related entity
 
-akhir dilindungi **_checkForeignKeysReverseCascade** ()
+final protected **_checkForeignKeysReverseCascade** ()
 
-Baca keduanya "hasMany" dan "hasOne" relasi dan cek kunci asing virtual (riam) saat menghapus catatan
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (cascade) when deleting records
 
-akhir dilindungi **_Periksa kunci asing batasi pembalikan** ()
+final protected **_checkForeignKeysReverseRestrict** ()
 
-Baca kedua hubungan "memiliki Banyak" dan "Memiliki Satu" dan memeriksa kunci virtual asing (membatasi) saat menghapus catatan
+Reads both "hasMany" and "hasOne" relations and checks the virtual foreign keys (restrict) when deleting records
 
 protected **_preSave** ([Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface) $metaData, *mixed* $exists, *mixed* $identityField)
 
-Jalankan kait internal sebelum menyimpan catatan
+Executes internal hooks before save a record
 
-terlindung **_Menyimpan postingan** (*dicampur* $success, *dicampur* $exists)
+protected **_postSave** (*mixed* $success, *mixed* $exists)
 
-Jalankan peristiwa internal setelah menyimpan catatan
+Executes internal events after save a record
 
 protected *boolean* **_doLowInsert** ([Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table, *boolean* | *string* $identityField)
 
-Mengirimkan pernyataan SQL build-build awal ke sistem database relasional
+Sends a pre-build INSERT SQL statement to the relational database system
 
 protected *boolean* **_doLowUpdate** ([Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface) $metaData, [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, *string* | *array* $table)
 
-Mengirimkan pra-membangun UPDATE statement SQL untuk database relasional sistem
+Sends a pre-build UPDATE SQL statement to the relational database system
 
 protected *boolean* **_preSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $related)
 
-Menghemat terkait catatan yang harus disimpan sebelumnya untuk menyimpan catatan guru
+Saves related records that must be stored prior to save the master record
 
 protected *boolean* **_postSaveRelatedRecords** ([Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $related)
 
-Menyimpan catatan yang terkait ditugaskan dalam-satu/punya-banyak hubungan
+Save the related records assigned in the has-one/has-many relations
 
-publik *boolean* **menyimpan** ([*array* $data], [*array* $whiteList])
+public *boolean* **save** ([*array* $data], [*array* $whiteList])
 
 Inserts or updates a model instance. Returning true on success or false otherwise.
 
 ```php
 <?php
 
-// Membut robot baru
-$robot = Robot baru();
+// Creating a new robot
+$robot = new Robots();
 
-$robot->tipe = "mekanis";
-$robot->nama = "Astro Boy";
-$robot->tahun = 1952;
+$robot->type = "mechanical";
+$robot->name = "Astro Boy";
+$robot->year = 1952;
 
-$robot->menyimpan();
+$robot->save();
 
-// Memperbarui nama robot
-$robot = Robot::temukan dulu("id = 100");
+// Updating a robot name
+$robot = Robots::findFirst("id = 100");
 
-$robot->nama = "Biomass";
+$robot->name = "Biomass";
 
-$robot->menyimpan();
+$robot->save();
 
 ```
 
-publik **membuat** ([*dicampur* $data], [*dicampur* $whiteList])
+public **create** ([*mixed* $data], [*mixed* $whiteList])
 
 Inserts a model instance. If the instance already exists in the persistence it will throw an exception Returning true on success or false otherwise.
 
 ```php
 <?php
 
-// Membuat robot baru
-$robot = Robot baru();
+// Creating a new robot
+$robot = new Robots();
 
-$robot->tipe = "mekanis";
-$robot->nama = "Astro Boy";
-$robot->tahun = 1952;
+$robot->type = "mechanical";
+$robot->name = "Astro Boy";
+$robot->year = 1952;
 
-$robot->membuat();
+$robot->create();
 
-// Melewati sebuah array untuk dibuat
-$robot = Robot baru();
+// Passing an array to create
+$robot = new Robots();
 
-$robot->membuat(
+$robot->create(
     [
-        "tipe" => "mekanis",
-        "nama" => "Astro Boy",
-        "tahun" => 1952,
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
     ]
 );
 
 ```
 
-publik **memperbarui** ([*dicampur* $data], [*dicampur* $whiteList])
+public **update** ([*mixed* $data], [*mixed* $whiteList])
 
 Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception Returning true on success or false otherwise.
 
 ```php
 <?php
 
-// Memperbarui nama robot
-$robot = Robot::temukan dulu("id = 100");
+// Updating a robot name
+$robot = Robots::findFirst("id = 100");
 
-$robot->nama = "Biomass";
+$robot->name = "Biomass";
 
-$robot->memperbarui();
+$robot->update();
 
 ```
 
@@ -731,62 +738,66 @@ Deletes a model instance. Returning true on success or false otherwise.
 ```php
 <?php
 
-$robot = Robot::temukan dulu("id=100");
+$robot = Robots::findFirst("id=100");
 
-$robot->menghapus();
+$robot->delete();
 
-$robots = Robot::menemukan("tipe = 'mekanis'");
+$robots = Robots::find("type = 'mechanical'");
 
-untuk setiap ($robots as $robot) {
-    $robot->menghapus();
+foreach ($robots as $robot) {
+    $robot->delete();
 }
 
 ```
 
-publik **mendapatkan pembuatan operasi** ()
+public **getOperationMade** ()
 
-Mengembalikan jenis operasi terbaru yang dilakukan oleh ORM Mengembalikan salah satu konstanta kelas OP_ *
+Returns the type of the latest operation performed by the ORM Returns one of the OP_* class constants
 
-publik **menyegarkan** ()
+public **refresh** ()
 
-Menyegarkan atribut model untuk melakukan query ulang dari database
+Refreshes the model attributes re-querying the record from the database
 
 public **skipOperation** (*mixed* $skip)
 
-Melompati operasi saat ini yang memaksa negara sukses
+Skips the current operation forcing a success state
 
-publik **baca Atribut** (*dicampur* $attribute)
+public **readAttribute** (*mixed* $attribute)
 
-Membaca nilai atribut dengan nama
-
-```php
-<? php echo $robot -> readAttribute("name");
-
-```
-
-publik **Tulis Atribut** (*dicampur* $attribute, *dicampur* $value)
-
-Menulis nilai atribut dengan nama
-
-```php
-<? php $robot -> writeAttribute ("nama", "Rosey");
-
-```
-
-terlindung **Lewati Atribut** (*array* $attributes)
-
-Menetapkan daftar atribut yang harus dilewati dari dihasilkan pernyataan INSERT / UPDATE
+Reads an attribute value by its name
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+echo $robot->readAttribute("name");
+
+```
+
+public **writeAttribute** (*mixed* $attribute, *mixed* $value)
+
+Writes an attribute value by its name
+
+```php
+<?php
+
+$robot->writeAttribute("name", "Rosey");
+
+```
+
+protected **skipAttributes** (*array* $attributes)
+
+Sets a list of attributes that must be skipped from the generated INSERT/UPDATE statement
+
+```php
+<?php
+
+class Robots extends \Phalcon\Mvc\Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
         $this->skipAttributes(
             [
-                "harga",
+                "price",
             ]
         );
     }
@@ -794,20 +805,20 @@ Kelas robot meluas \Phalcon\Mvc\Model
 
 ```
 
-terlindung **Lewati Atribut pada pembuatan** (*array* $attributes)
+protected **skipAttributesOnCreate** (*array* $attributes)
 
-Menetapkan daftar atribut yang harus dilewati dari dihasilkan pernyataan INSERT
+Sets a list of attributes that must be skipped from the generated INSERT statement
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-   fungsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->Lewati Atribut pada pembuatan(
+        $this->skipAttributesOnCreate(
             [
-                "dibuat_di",
+                "created_at",
             ]
         );
     }
@@ -815,20 +826,20 @@ Kelas robot meluas \Phalcon\Mvc\Model
 
 ```
 
-terlindung **Lewati Atribut pada pembaruan** (*array* $attributes)
+protected **skipAttributesOnUpdate** (*array* $attributes)
 
-Menetapkan daftar atribut yang harus dilewati dari dihasilkan UPDATE pernyataan
+Sets a list of attributes that must be skipped from the generated UPDATE statement
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
         $this->skipAttributesOnUpdate(
             [
-                "dimodifikasi_dalam",
+                "modified_in",
             ]
         );
     }
@@ -836,20 +847,20 @@ Kelas robot meluas \Phalcon\Mvc\Model
 
 ```
 
-terlindung **Izinkan nilai tali kosong** (*array* $attributes)
+protected **allowEmptyStringValues** (*array* $attributes)
 
-Menetapkan daftar atribut yang harus dilewati dari dihasilkan UPDATE pernyataan
+Sets a list of attributes that must be skipped from the generated UPDATE statement
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->Izinkan nilai tali kosong(
+        $this->allowEmptyStringValues(
             [
-                "nama",
+                "name",
             ]
         );
     }
@@ -857,18 +868,18 @@ Kelas robot meluas \Phalcon\Mvc\Model
 
 ```
 
-terlindung **punya satu** (*dicampur* $fields, *dicampur* $referenceModel, *dicampur* $referencedFields, [*dicampur* $options])
+protected **hasOne** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Setup hubungan 1-1 antara dua model
+Setup a 1-1 relation between two models
 
 ```php
 <?php
 
-kelas robot meluas \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->punya satu("id", "Deskripsi robot", "robots_id");
+        $this->hasOne("id", "RobotsDescription", "robots_id");
     }
 }
 
@@ -941,35 +952,35 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-terlindung **Milik** (*dicampur* $fields, *dicampur* $referenceModel, *dicampur* $referencedFields, [*dicampur* $options])
+protected **belongsTo** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Atur hubungan terbalik 1-1 atau n-1 antara dua model
+Setup a reverse 1-1 or n-1 relation between two models
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+class RobotsParts extends \Phalcon\Mvc\Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->Milik("robot_id", "Robot", "id");
+        $this->belongsTo("robots_id", "Robots", "id");
     }
 }
 
 ```
 
-terlindung **Punya banyak** (*dicampur* $fields, *dicampur* $referenceModel, *dicampur* $referencedFields, [*dicampur* $options])
+protected **hasMany** (*mixed* $fields, *mixed* $referenceModel, *mixed* $referencedFields, [*mixed* $options])
 
-Setup hubungan 1-n antara dua model
+Setup a 1-n relation between two models
 
 ```php
 <?php
 
-Kelas robot meluas \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-    funsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->Punya banyak("id", "Bagian robot", "robot_id");
+        $this->hasMany("id", "RobotsParts", "robots_id");
     }
 }
 
@@ -977,7 +988,7 @@ Kelas robot meluas \Phalcon\Mvc\Model
 
 protected [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **hasManyToMany** (*string* | *array* $fields, *string* $intermediateModel, *string* | *array* $intermediateFields, *string* | *array* $intermediateReferencedFields, *mixed* $referenceModel, *string* | *array* $referencedFields, [*array* $options])
 
-Menyiapkan hubungan n-n antara dua model, melalui hubungan perantara
+Setup an n-n relation between two models, through an intermediate relation
 
 ```php
 <?php
@@ -1002,23 +1013,23 @@ class Robots extends \Phalcon\Mvc\Model
 
 public **addBehavior** ([Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
-Mengatur perilaku dalam model
+Setups a behavior in a model
 
 ```php
 <?php
 
-gunakan Phalcon\Mvc\Model;
-gunakan Phalcon\Mvc\Model\Perilaku\Waktu Tampable;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Behavior\Timestampable;
 
-Model kelas Robot meluas
+class Robots extends Model
 {
-    fungsi publik diinisialisasi()
+    public function initialize()
     {
-        $this->tambahkan perilaku(
-            Waktu tampable baru(
+        $this->addBehavior(
+            new Timestampable(
                [
-                   "di Buat" => [
-                        "bidang"  => "dibuat_di",
+                   "onCreate" => [
+                        "field"  => "created_at",
                         "format" => "Y-m-d",
                        ],
                 ]
@@ -1031,7 +1042,7 @@ Model kelas Robot meluas
 
 protected **keepSnapshots** (*mixed* $keepSnapshot)
 
-Menetapkan apakah model harus menyimpan cuplikan rekaman asli di memori
+Sets if the model must keep the original record snapshot in memory
 
 ```php
 <?php
@@ -1054,19 +1065,19 @@ Sets the record's snapshot data. This method is used internally to set snapshot 
 
 public **hasSnapshotData** ()
 
-Memeriksa apakah objek memiliki data snapshot internal
+Checks if the object has internal snapshot data
 
 public **getSnapshotData** ()
 
-Mengembalikan data snapshot internal
+Returns the internal snapshot data
 
 public **getOldSnapshotData** ()
 
-Mengembalikan data snapshot lama internal
+Returns the internal old snapshot data
 
 public **hasChanged** ([*string* | *array* $fieldName], [*boolean* $allFields])
 
-Periksa apakah atribut tertentu telah berubah Ini hanya bekerja jika modelnya menyimpan data snapshot
+Check if a specific attribute has changed This only works if the model is keeping data snapshots
 
 ```php
 <?php
@@ -1087,11 +1098,11 @@ $hasChanged = $robot->hasChanged(["type", "name", true]); // returns false
 
 public **hasUpdated** ([*string* | *array* $fieldName], [*mixed* $allFields])
 
-Periksa apakah atribut tertentu telah diperbarui Ini hanya bekerja jika modelnya menyimpan data snapshot
+Check if a specific attribute was updated This only works if the model is keeping data snapshots
 
 public **getChangedFields** ()
 
-Mengembalikan daftar nilai yang berubah.
+Returns a list of changed values.
 
 ```php
 <?php
@@ -1108,7 +1119,7 @@ print_r($robots->getChangedFields()); // ["deleted"]
 
 public **getUpdatedFields** ()
 
-Mengembalikan daftar nilai yang diperbarui.
+Returns a list of updated values.
 
 ```php
 <?php
@@ -1128,7 +1139,7 @@ print_r($robots->getUpdatedFields()); // ["deleted"]
 
 protected **useDynamicUpdate** (*mixed* $dynamicUpdate)
 
-Menyetel jika model harus menggunakan pembaruan dinamis dan bukan pembaruan semua bidang
+Sets if a model must use dynamic update instead of the all-field update
 
 ```php
 <?php
@@ -1147,7 +1158,7 @@ class Robots extends Model
 
 public [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface) **getRelated** (*string* $alias, [*array* $arguments])
 
-Mengembalikan catatan terkait berdasarkan hubungan yang didefinisikan
+Returns related records based on defined relations
 
 ```php
 <?php
@@ -1175,27 +1186,27 @@ $parts = $robot->getRelated(
 
 protected *mixed* **_getRelatedRecords** (*string* $modelName, *string* $method, *array* $arguments)
 
-Mengembalikan catatan terkait mendefinisikan relasi tergantung pada nama metode
+Returns related records defined relations depending on the method name
 
 final protected static [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | *boolean* **_invokeFinder** (*string* $method, *array* $arguments)
 
-Cobalah untuk memeriksa apakah query harus memanggil finder
+Try to check if the query must invoke a finder
 
-publik *campuran* **__memanggil** (*tali* $method, *array* $arguments)
+public *mixed* **__call** (*string* $method, *array* $arguments)
 
-Menangani pemanggilan metode saat metode tidak diterapkan
+Handles method calls when a method is not implemented
 
 public static *mixed* **__callStatic** (*string* $method, *array* $arguments)
 
-Menangani pemanggilan metode saat metode statis tidak diterapkan
+Handles method calls when a static method is not implemented
 
 public **__set** (*string* $property, *mixed* $value)
 
-Metode sihir untuk memberi nilai pada model
+Magic method to assign values to the the model
 
 final protected *string* **_possibleSetter** (*string* $property, *mixed* $value)
 
-Periksa, dan coba gunakan, setter mungkin.
+Check for, and attempt to use, possible setter.
 
 public [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset) | [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **__get** (*string* $property)
 
@@ -1203,19 +1214,19 @@ Magic method to get related records using the relation alias as a property
 
 public **__isset** (*mixed* $property)
 
-Metode Magic untuk mengecek apakah sebuah property adalah relasi yang valid
+Magic method to check if a property is a valid relation
 
-publik **getName** ()
+public **serialize** ()
 
-Serializes objek mengabaikan koneksi, layanan, objek terkait atau sifat statis
+Serializes the object ignoring connections, services, related objects or static properties
 
-public ** beforeStore ** ( * mixed * $data)
+public **unserialize** (*mixed* $data)
 
-Unserializes objek dari string serial
+Unserializes the object from a serialized string
 
 public **dump** ()
 
-Mengembalikan representasi sederhana objek yang bisa digunakan dengan var_dump
+Returns a simple representation of the object that can be used with var_dump
 
 ```php
 <?php
@@ -1228,7 +1239,7 @@ var_dump(
 
 public *array* **toArray** ([*array* $columns])
 
-Mengembalikan instance sebagai representasi array
+Returns the instance as an array representation
 
 ```php
 <?php
@@ -1250,10 +1261,10 @@ echo json_encode($robot);
 
 ```
 
-public static **pengaturan** (*array* $pilihan)
+public static **setup** (*array* $options)
 
-Mengaktifkan / menonaktifkan pilihan di ORM
+Enables/disables options in the ORM
 
-umum **reset** ()
+public **reset** ()
 
-Setel ulang contoh data model
+Reset a model instance data
