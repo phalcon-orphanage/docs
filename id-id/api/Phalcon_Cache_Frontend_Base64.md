@@ -2,17 +2,17 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Frontend\Base64'
+title: 'Phalcon\Cache\Frontend\Data'
 ---
 # Class **Phalcon\Cache\Frontend\Base64**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
-Allows to cache data converting/deconverting them to base64.
+Memungkinkan untuk meng-cache data yang mengkonversi / deconverting mereka ke base64.
 
-This adapter uses the base64_encode/base64_decode PHP's functions
+Adaptor ini menggunakan fungsi base64_encode / base64_decode PHP
 
 ```php
 <?php
@@ -55,36 +55,36 @@ echo $image;
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $frontendOptions])
+umum **__membangun** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Base64 constructor
 
-public **getLifetime** ()
+publik ** getLifetime ** ()
 
-Returns the cache lifetime
+Mengembalikan masa pakai cache
 
-public **isBuffering** ()
+public ** isBuffering ** ()
 
-Check whether if frontend is buffering output
+Periksa apakah frontend adalah buffering output
 
-public **start** ()
+publik ** mulai ** ()
 
 Starts output frontend. Actually, does nothing in this adapter
 
-public *string* **getContent** ()
+public *string * **getContent** ()
 
-Returns output cached content
+Mengembalikan hasil konten dalam cache
 
-public **stop** ()
+publik ** berhenti ** ()
 
-Stops output frontend
+Menghentikan output frontend
 
-public **beforeStore** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
-Serializes data before storing them
+Serializes data sebelum menyimpannya
 
-public **afterRetrieve** (*mixed* $data)
+public ** afterRetrieve ** ( * mixed * $data)
 
-Unserializes data after retrieval
+Unserializes data setelah pengambilan
