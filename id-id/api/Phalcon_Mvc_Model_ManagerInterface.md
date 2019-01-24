@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ManagerInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
@@ -58,15 +58,15 @@ abstract public **getWriteConnection** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc
 
 ...
 
-abstrak publik **isInitialized** (*mixed* $modelName)
+abstract public **isInitialized** (*mixed* $modelName)
 
 ...
 
-abstrak publik **getLastInitialized** ()
+abstract public **getLastInitialized** ()
 
 ...
 
-publik abstrak **beban** (*campur* $modelName, [*campur* $newInstance])
+abstract public **load** (*mixed* $modelName, [*mixed* $newInstance])
 
 ...
 
@@ -82,15 +82,15 @@ abstract public **addHasMany** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelIn
 
 ...
 
-publik abstrak **ada Milik Untuk** (*campur* $modelName, *campur* $modelRelation)
+abstract public **existsBelongsTo** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
-publik abstrak **ada Banyak Memiliki** (*campur* $modelName, *campur* $modelRelation)
+abstract public **existsHasMany** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
-publik abstrak **ada Memiliki Satu** (*campur* $modelName, *campur* $modelRelation)
+abstract public **existsHasOne** (*mixed* $modelName, *mixed* $modelRelation)
 
 ...
 
@@ -122,23 +122,23 @@ abstract public **getHasOneAndHasMany** ([Phalcon\Mvc\ModelInterface](Phalcon_Mv
 
 ...
 
-abstrak publik **mendapatkan Hubungan** (*campur* $modelName)
+abstract public **getRelations** (*mixed* $modelName)
 
 ...
 
-abstrak publik **mendapatkan Hubungan Antara** (*campur* $first, *campur* $second)
+abstract public **getRelationsBetween** (*mixed* $first, *mixed* $second)
 
 ...
 
-abstrak publik **buat Pernyataan** (*campur* $phql)
+abstract public **createQuery** (*mixed* $phql)
 
 ...
 
-publik abstrak **jalankan Pernyataan** (*campur* $phql, [*campur* $placeholders])
+abstract public **executeQuery** (*mixed* $phql, [*mixed* $placeholders])
 
 ...
 
-publik abstrak **buat Pembangun** ([*campur* $params])
+abstract public **createBuilder** ([*mixed* $params])
 
 ...
 
@@ -154,10 +154,10 @@ abstract public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_Mode
 
 ...
 
-publik abstrak **dapatkan Pertanyaan Terakhir** ()
+abstract public **getLastQuery** ()
 
 ...
 
-publik abstrak **mendapatkan Hubungan Dengan Alias** (*campur* $modelName, *campur* $alias)
+abstract public **getRelationByAlias** (*mixed* $modelName, *mixed* $alias)
 
 ...
