@@ -10,27 +10,27 @@ title: 'Phalcon\Mvc\View\Engine\Volt'
 
 *implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
-Designer friendly and fast template engine for PHP written in Zephir/C
+Designer freundliche und schnelle Template-Engine für PHP geschrieben in Zephir/C
 
-## Methods
+## Methoden
 
 public **setOptions** (*array* $options)
 
-Set Volt's options
+Volt Optionen festlegen
 
 public **getOptions** ()
 
-Return Volt's options
+Gibt Volt Optionen zurück
 
 public **getCompiler** ()
 
-Returns the Volt's compiler
+Gibt den Volt compiler zurück
 
 public **render** (*mixed* $templatePath, *mixed* $params, [*mixed* $mustClean])
 
-Renders a view using the template engine
+Rendert eine Ansicht mit der Template-engine
 
 public **length** (*mixed* $item)
 
@@ -38,23 +38,23 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 
 public **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
-Checks if the needle is included in the haystack
+Überprüft ob der Wert im Array enthalten ist
 
 public **convertEncoding** (*mixed* $text, *mixed* $from, *mixed* $to)
 
-Performs a string conversion
+Führt eine Zeichenfolgenkonvertierung durch
 
 public **slice** (*mixed* $value, [*mixed* $start], [*mixed* $end])
 
-Extracts a slice from a string/array/traversable object value
+Extrahiert einen Teil aus einem String/Array/passierbaren Objektwert
 
 public **sort** (*array* $value)
 
-Sorts an array
+Sortiert ein array
 
 public **callMacro** (*mixed* $name, [*array* $arguments])
 
-Checks if a macro is defined and calls it
+Prüft, ob ein Makro definiert ist und es ruft es auf
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
@@ -82,12 +82,12 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Legt den Event-manager fest
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Magische Methode __get
