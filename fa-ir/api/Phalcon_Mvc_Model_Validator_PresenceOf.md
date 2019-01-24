@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\PresenceOf'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/presenceof.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/presenceof.zep)
 
 Allows to validate if a filed have a value different of null and empty string ("")
 
@@ -42,7 +42,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
