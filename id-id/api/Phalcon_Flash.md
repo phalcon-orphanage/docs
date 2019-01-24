@@ -8,7 +8,7 @@ title: 'Phalcon\Flash'
 
 *implements* [Phalcon\FlashInterface](Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -20,51 +20,51 @@ $flash->error("Cannot open the file");
 
 ```
 
-## Metode
+## Methods
 
-publik **__construct** (*mixed* $cssClasses])
+public **__construct** ([*mixed* $cssClasses])
 
 Phalcon\Flash constructor
 
-public **getLocal** ()
+public **getAutoescape** ()
 
-Mengembalikan mode autoescape dalam html yang dihasilkan
+Returns the autoescape mode in generated html
 
-publik **Mengubahakhirankelaskontrol** (*bercampur* $autoescape)
+public **setAutoescape** (*mixed* $autoescape)
 
-Atur mode autoescape di html yang dihasilkan
+Set the autoescape mode in generated html
 
-publik ** getLifetime </ 0> ()</p> 
+public **getEscaperService** ()
 
-Mengembalikan Layanan Escaper
+Returns the Escaper Service
 
 public **setEscaperService** ([Phalcon\EscaperInterface](Phalcon_EscaperInterface) $escaperService)
 
-Mengatur Layanan Escaper
+Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
-public **useImplicitOutput** (*mixed* $implicitFlush)
+public **setImplicitFlush** (*mixed* $implicitFlush)
 
-Tetapkan apakah keluaran harus secara implisit memerah ke keluaran atau dikembalikan sebagai tali
+Set whether the output must be implicitly flushed to the output or returned as string
 
-public **escapeHtml** (*mixed* $automaticHtml)
+public **setAutomaticHtml** (*mixed* $automaticHtml)
 
-Tetapkan apakah keluaran harus diformat secara implisit dengan HTML
+Set if the output must be implicitly formatted with HTML
 
-public **setParams ** (*array *$cssClasses)
+public **setCssClasses** (*array* $cssClasses)
 
-Tetapkan sebuah array dengan kelas CSS untuk memformat pesan
+Set an array with CSS classes to format the messages
 
-publik **menyaring** (*campur * $message)
+public **error** (*mixed* $message)
 
-Menunjukkan pesan kesalahan HTML
+Shows a HTML error message
 
 ```php
 <?php
@@ -73,9 +73,9 @@ $flash->error("This is an error");
 
 ```
 
-publik **menangani** ([*bercampur* $message)
+public **notice** (*mixed* $message)
 
-Menunjukkan pesan pemberitahuan/informasi HTML
+Shows a HTML notice/information message
 
 ```php
 <?php
@@ -86,7 +86,7 @@ $flash->notice("This is an information");
 
 public **success** (*mixed* $message)
 
-Menunjukkan pesan sukses HTML
+Shows a HTML success message
 
 ```php
 <?php
@@ -95,9 +95,9 @@ $flash->success("The process was finished successfully");
 
 ```
 
-publik **menangani** ([*bercampur* $message)
+public **warning** (*mixed* $message)
 
-Menunjukkan pesan peringatan HTML
+Shows a HTML warning message
 
 ```php
 <?php
@@ -108,7 +108,7 @@ $flash->warning("Hey, this is important");
 
 public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message)
 
-Keluarkan pesan yang memformatnya dengan HTML
+Outputs a message formatting it with HTML
 
 ```php
 <?php
@@ -117,9 +117,9 @@ $flash->outputMessage("error", $message);
 
 ```
 
-publik **jelas** ()
+public **clear** ()
 
-Menghapus pesan akumulasi bila disiram secara implisit dinonaktifkan
+Clears accumulated messages when implicit flush is disabled
 
 abstract public **message** (*mixed* $type, *mixed* $message) inherited from [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
