@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Config'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Config'
+---
 # Class **Phalcon\Config**
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
+Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. Es bietet eine auf verschachtelten Objekteigenschaften basierende Benutzeroberfläche für den Zugriff auf diese Konfigurationsdaten innerhalb des Anwendungscode.
 
 ```php
 <?php
@@ -34,11 +34,11 @@ $config = new \Phalcon\Config(
 
 ```
 
-## Constants
+## Konstanten
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $arrayConfig])
 
@@ -46,7 +46,7 @@ Phalcon\Config constructor
 
 public **offsetExists** (*mixed* $index)
 
-Allows to check whether an attribute is defined using the array-syntax
+Ermöglicht es zu prüfen, ob ein Attribut mit der Array-Syntax definiert ist
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue])
 
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+Holt ein Attribut aus der Konfiguration, wenn das Attribut nicht definiert ist, gibt es null zurück, wenn der Wert genau null ist oder nicht definiert ist, dann wird stattdessen der Standardwert verwendet
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index)
 
-Gets an attribute using the array-syntax
+Holt ein Attribut mittels der Array-syntax
 
 ```php
 <?php
