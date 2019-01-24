@@ -8,9 +8,9 @@ title: 'Phalcon\Http\Request\File'
 
 *implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
 
-Menyediakan bungkus OO ke superglobal $_FILES
+Provides OO wrappers to the $_FILES superglobal
 
 ```php
 <?php
@@ -33,42 +33,42 @@ class PostsController extends Controller
 
 ```
 
-## Metode
+## Methods
 
-umum **getError** ()
+public **getError** ()
 
 public **getKey** ()
 
-umum **getExtension** ()
+public **getExtension** ()
 
-umum **__construct** (*array* $file, [*mixed* $key])
+public **__construct** (*array* $file, [*mixed* $key])
 
 Phalcon\Http\Request\File constructor
 
 public **getSize** ()
 
-Mengembalikan ukuran berkas dari berkas yang diunggah
+Returns the file size of the uploaded file
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama sebenarnya dari berkas yang diunggah
+Returns the real name of the uploaded file
 
-umum **getTempName** ()
+public **getTempName** ()
 
-Mengembalikan nama sementara dari berkas yang diunggah
+Returns the temporary name of the uploaded file
 
-publik **berhenti** ()
+public **getType** ()
 
-Mengembalikan jenis mime yang dilaporkan oleh browser Jenis mime ini tidak sepenuhnya aman, gunakan getRealType () sebagai gantinya
+Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
 
-umum **getRealType** ()
+public **getRealType** ()
 
-Mendapat jenis mime sebenarnya dari unggah berkas menggunakan finfo
+Gets the real mime type of the upload file using finfo
 
-umum **isUploadedFile** ()
+public **isUploadedFile** ()
 
-Memeriksa apakah berkas telah diunggah melalui Pos.
+Checks whether the file has been uploaded via Post.
 
-umum **moveTo** (*mixed* $destination)
+public **moveTo** (*mixed* $destination)
 
-Memindahkan berkas sementara ke tujuan dalam aplikasi
+Moves the temporary file to a destination within the application
