@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Working with Namespaces
+# 名前空間の働き
 
 [Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
