@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk\Job'
 ---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
 
 Represents a job in a beanstalk queue
 
@@ -44,4 +44,4 @@ Gives statistical information about the specified job if it exists.
 
 public **__wakeup** ()
 
-Checks if the job has been modified after unserializing the object
+Ελέγχει εάν η εργασία τροποποιηθεί έχει μετά την αποεπεξεργασία του αντικειμένου
