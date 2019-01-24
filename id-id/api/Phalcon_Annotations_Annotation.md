@@ -6,48 +6,48 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-Mewakili anotasi tunggal dalam koleksi anotasi
+Represents a single annotation in an annotations collection
 
-## Metode
+## Methods
 
 public **__construct** (*array* $reflectionData)
 
 Phalcon\Annotations\Annotation constructor
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama anotasi
+Returns the annotation's name
 
-publik *campuran* **mendapatkanEkspresi** (*susunan* $expr)
+public *mixed* **getExpression** (*array* $expr)
 
-Mengatasi ekspresi anotasi
+Resolves an annotation expression
 
-publik *susunan* **mendapatkanExprArgumen** ()
+public *array* **getExprArguments** ()
 
-Kembali ekspresi argumen tanpa menyelesaikan
+Returns the expression arguments without resolving
 
 public *array* **getArguments** ()
 
-Mengembalikan argumen ekspresi
+Returns the expression arguments
 
 public **numberArguments** ()
 
-Mengembalikan jumlah argumen yang anotasi
+Returns the number of arguments that the annotation has
 
-publik *campuran* **mendapatkanArgument** (*int* | *tali* $position)
+public *mixed* **getArgument** (*int* | *string* $position)
 
-Kembali sebuah argumen di posisi tertentu
+Returns an argument in a specific position
 
-publik *boolean* **telahArgumen** (*int* | *tali* $position)
+public *boolean* **hasArgument** (*int* | *string* $position)
 
-Kembali sebuah argumen di posisi tertentu
+Returns an argument in a specific position
 
-publik *campuran* **mendapatkanBernamaArgumen** (*campuran* $name)
+public *mixed* **getNamedArgument** (*mixed* $name)
 
-Mengembalikan argumen yang bernama
+Returns a named argument
 
-public *mixed* **getNamedParameter** (*dicampur* $name)
+public *mixed* **getNamedParameter** (*mixed* $name)
 
-Mengembalikan argumen yang bernama
+Returns a named parameter
