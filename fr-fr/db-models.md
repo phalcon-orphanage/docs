@@ -9,9 +9,9 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# Working with Models
+# Travailler avec des Modèles
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+Un modèle représente les informations (données) de l’application et les règles pour manipuler ces données. Les modèles sont principalement utilisés pour gérer les règles d’interaction avec une table de base de données. Dans la plupart des cas, chaque table dans votre base de données correspond à un modèle dans votre application. L’essentiel de la logique métier de votre application est concentré dans les modèles.
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
@@ -19,7 +19,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## Créer des Modèles
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -167,7 +167,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## Comprendre les enregistrements des objets
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
@@ -197,7 +197,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Une fois que le dossier est en mémoire, vous pouvez apporter des modifications à ses données, puis enregistrer les modifications:
 
 ```php
 <?php
@@ -215,7 +215,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Rechercher des enregistrements
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
@@ -311,7 +311,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter     | Description                                                                                                                                                                                                                 | Example                                                              |
+| Paramètre     | Description                                                                                                                                                                                                                 | Example                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
@@ -386,7 +386,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 
-### Model Resultsets
+### Ensemble de réponse d'une recherche de modèle
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -563,9 +563,9 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### Lier les paramètres
 
-Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Les paramètres de liaison peut être simplement réalisé comme suit:
 
 ```php
 <?php
@@ -693,7 +693,7 @@ $robots = Robots::findByName('Ultron');
 
 <a name='preparing-records'></a>
 
-## Initializing/Preparing fetched records
+## Initialiser/Préparer les enregistrements extraits
 
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
@@ -758,7 +758,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## Generating Calculations
+## Générer les calculs
 
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
@@ -925,7 +925,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## Creating/Updating Records
+## Créer/Mettre à jour des enregistrements
 
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
@@ -1007,7 +1007,7 @@ $robot->save(
 
 <a name='create-update-with-confidence'></a>
 
-### Create/Update with Confidence
+### Créer/Mettre à jour en toute confiance
 
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
@@ -1040,7 +1040,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
-## Deleting Records
+## Supprimer des enregistrements
 
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
@@ -1092,12 +1092,12 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+Les événements suivants sont disponibles pour définir des règles métier qui peut être exécuté lorsqu'une opération de suppression est effectuée:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Operation | Name         | Peut arrêter l'opération ? | Explanation                              |
+| --------- | ------------ |:--------------------------:| ---------------------------------------- |
+| Deleting  | afterDelete  |            Non             | Runs after the delete operation was made |
+| Deleting  | beforeDelete |            Oui             | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1125,7 +1125,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Modes d’hydratation
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
