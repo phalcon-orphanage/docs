@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\BinderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BinderInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **getBoundModels** ()
 
