@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/factory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/factory.zep)
 
 Loads Paginator Adapter class using 'adapter' option
 
@@ -40,7 +40,7 @@ $paginator = Factory::load($options);
 
 ```
 
-## Methods
+## Méthodes
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
