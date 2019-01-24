@@ -1,18 +1,18 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Image\Adapter\Gd'
-
-* * *
-
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Image\Adapter\Gd'
+---
 # Class **Phalcon\Image\Adapter\Gd**
 
 *extends* abstract class [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/adapter/gd.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-## Methods
+## Méthodes
 
 public static **check** ()
 
