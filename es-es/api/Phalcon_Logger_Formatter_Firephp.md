@@ -40,6 +40,6 @@ public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*
 
 Applies a format to a message before sending it to the log
 
-public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](/4.0/en/api/Phalcon_Logger_Formatter)
+public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
 Interpolates context values into the message placeholders
