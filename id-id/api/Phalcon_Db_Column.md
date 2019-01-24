@@ -8,9 +8,9 @@ title: 'Phalcon\Db\Column'
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
-Allows to define columns to be used on create or alter table operations
+Memungkinkan untuk menentukan kolom yang akan digunakan untuk membuat atau mengubah operasi tabel
 
 ```php
 <?php
@@ -37,9 +37,9 @@ $connection->addColumn("robots", null, $column);
 
 ## Constants
 
-*integer* **TYPE_INTEGER**
+* bilangan bulat </ 0> ** TYPE_INTEGER </ 1></p> 
 
-*integer* **TYPE_DATE**
+* bilangan bulat </ 0> ** TYPE_DATE </ 1></p> 
 
 *integer* **TYPE_VARCHAR**
 
@@ -87,39 +87,39 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methods
+## Metode
 
-public **getName** ()
+publik **getNama** ()
 
-Column's name
+Nama kolom
 
 public **getSchemaName** ()
 
-Schema which table related is
+Skema yang tabelnya terkait adalah
 
-public **getType** ()
+publik **berhenti** ()
 
-Column data type
+Tipe data kolom
 
 public **getTypeReference** ()
 
-Column data type reference
+Referensi tipe data kolom
 
 public **getTypeValues** ()
 
-Column data type values
+Nilai tipe data kolom
 
 public **getSize** ()
 
-Integer column size
+Ukuran kolom integer
 
 public **getScale** ()
 
-Integer column number scale
+Skala bilangan kolom integer
 
 public **getDefault** ()
 
-Default column value
+Nilai kolom default
 
 public **__construct** (*mixed* $name, *array* $definition)
 
@@ -127,35 +127,35 @@ Phalcon\Db\Column constructor
 
 public **isUnsigned** ()
 
-Returns true if number column is unsigned
+Mengembalikan true jika kolom number unsigned
 
 public **isNotNull** ()
 
-Not null
+Tidak null
 
 public **isPrimary** ()
 
-Column is part of the primary key?
+Kolom adalah bagian dari primary key?
 
 public **isAutoIncrement** ()
 
-Auto-Increment
+Kenaikan otomatis
 
 public **isNumeric** ()
 
-Check whether column have an numeric type
+Periksa apakah kolom memiliki tipe numerik
 
 public **isFirst** ()
 
-Check whether column have first position in table
+Periksa apakah kolom memiliki posisi pertama dalam tabel
 
 public *string* **getAfterPosition** ()
 
-Check whether field absolute to position in table
+Periksa apakah bidang absolut pada posisi dalam tabel
 
 public **getBindType** ()
 
-Returns the type of bind handling
+Mengembalikan jenis penanganan bind
 
 public static **__set_state** (*array* $data)
 
@@ -163,4 +163,4 @@ Restores the internal state of a Phalcon\Db\Column object
 
 public **hasDefault** ()
 
-Check whether column has default value
+Periksa apakah kolom memiliki nilai default
