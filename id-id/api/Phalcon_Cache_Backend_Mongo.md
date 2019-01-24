@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Belakang\Mongo'
+title: 'Phalcon\Cache\Backend\Mongo'
 ---
 # Class **Phalcon\Cache\Backend\Mongo**
 
@@ -10,93 +10,99 @@ title: 'Phalcon\Cache\Belakang\Mongo'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/mongo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/mongo.zep)
 
-Memungkinkan cache fragmen cache, data PHP atau data mentah ke reden backend
+Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
 ```php
 <?php
 
-gunakan Phalcon\Cache\Backend\Apc;
-gunakan Phalcon\Cache\Frontend\Data as FrontData;
+use Phalcon\Cache\Backend\Mongo;
+use Phalcon\Cache\Frontend\Base64;
 
-// Cache data untuk 2 hari
-$frontCache = Tampilan data terbaru(
+// Cache data for 2 days
+$frontCache = new Base64(
     [
-        "masaberlaku" => 172800,
+        "lifetime" => 172800,
     ]
 );
 
-$cache = Aplikasi baru(
+// Create a MongoDB cache
+$cache = new Mongo(
     $frontCache,
     [
-        "diawal" => "data-app",
+        "server"     => "mongodb://localhost",
+        "db"         => "caches",
+        "collection" => "images",
     ]
 );
 
 // Cache arbitrary data
-$cache->simpan("data-saya", [1, 2, 3, 4, 5]);
+$cache->save(
+    "my-data",
+    file_get_contents("some-image.jpg")
+);
 
-// Dapatkan data
-$data = $cache->dapatkan("data saya");
+// Get data
+$data = $cache->get("my-data");
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\Cache\Backend\Mongo constructor
 
-final dilindungi *MongoCollection* **_getCollection**)
+final protected *MongoCollection* **_getCollection** ()
 
-Mengembalikan koleksi MongoDb berdasarkan parameter backend
+Returns a MongoDb collection based on the backend parameters
 
-publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
+public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Mengembalikan konten dalam cache
+Returns a cached content
 
-publik **simpan** ([*int* | *rangkaian* $keyName], [* rangkaian* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Menyimpan isi cache ke file backend dan menghentikan frontend
+Stores cached content into the file backend and stops the frontend
 
-public *boolean* **hapus** (*int* | *string* $keyName)
+public *boolean* **delete** (*int* | *string* $keyName)
 
-Menghapus nilai dari cache dengan kuncinya
+Deletes a value from the cache by its key
 
-publik **Kunci kueri** ([*campuran* $prefix])
+public **queryKeys** ([*mixed* $prefix])
 
-Permintaan kunci cache yang ada.
+Query the existing cached keys.
 
 ```php
 <?php
 
-$cache->simpan("para pengguna-ids", [1, 2, 3]);
-$cache->simpan("Rancangan-ids", [4, 5, 6]);
+$cache->save("users-ids", [1, 2, 3]);
+$cache->save("projects-ids", [4, 5, 6]);
 
-var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
+var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-publik **ada** ([*string* $keyName], [*int* $lifetime])
+public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Memeriksa apakah cache ada dan tidak kedaluwarsa
+Checks if cache exists and it isn't expired
 
-umum *collection->remove(...)* **Gc** ()
+public *collection->remove(...)* **gc** ()
 
 gc
 
-public **increment** ([*string* | *int* $keyName], [*mixed* $value])
+public **increment** (*int* | *string* $keyName, [*mixed* $value])
 
-Penurunan kunci yang diberikan sebesar $value
+Increment of a given key by $value
 
-public **increment** ([*string* | *int* $keyName], [*mixed* $value])
+public **decrement** (*int* | *string* $keyName, [*mixed* $value])
 
-Penurunan kunci yang diberikan sebesar $value
+Decrement of a given key by $value
 
-publik **flush** ()
+public **flush** ()
 
-Segera batalkan semua item yang ada.
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -128,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Menghentikan frontend tanpa menyimpan konten dalam cache
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache terakhir masih segar atau di-cache
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache sudah mulai buffering atau tidak
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Dapat di set seumur hidup
+Gets the last lifetime set
