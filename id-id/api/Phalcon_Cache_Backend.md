@@ -8,17 +8,17 @@ title: 'Phalcon\Cache\Backend'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
-## Methods
+## Metode
 
-public **getFrontend** ()
+publik ** getFrontend </ 0> ()</p> 
 
 ...
 
-public **setFrontend** (*mixed* $frontend)
+public ** setFrontend </ 0> (* mixed </ 1> $ frontend)</p> 
 
 ...
 
@@ -26,15 +26,15 @@ public **getOptions** ()
 
 ...
 
-public **setOptions** (*mixed* $options)
+public ** setOptions </ 0> (* mixed </ 1> $ options)</p> 
 
 ...
 
-public **getLastKey** ()
+publik ** getLastKey </ 0> ()</p> 
 
 ...
 
-public **setLastKey** (*mixed* $lastKey)
+publik ** setLastKey </ 0> ( * campuran </ 1> $ lastKey )</p> 
 
 ...
 
@@ -42,25 +42,25 @@ public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_Frontend
 
 Phalcon\Cache\Backend constructor
 
-public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
+public * mixed </ 0> ** mulai </ 1> ( * int </ 0> | * string </ 0> $ keyName , [ * int </ 0> $ lifetime ] )</p> 
 
 Starts a cache. The keyname allows to identify the created fragment
 
-public **stop** ([*mixed* $stopBuffer])
+publik **berhenti** ([*campuran* $Buffer berhenti])
 
-Stops the frontend without store any cached content
+Menghentikan frontend tanpa menyimpan konten dalam cache
 
-public **isFresh** ()
+publik ** isFresh </ 0> ()</p> 
 
-Checks whether the last cache is fresh or cached
+Memeriksa apakah cache terakhir masih segar atau di-cache
 
-public **isStarted** ()
+publik **dimulai** ()
 
-Checks whether the cache has starting buffering or not
+Memeriksa apakah cache sudah mulai buffering atau tidak
 
-public *int* **getLifetime** ()
+public * int </ 0> ** getLifetime </ 1> ()</p> 
 
-Gets the last lifetime set
+Dapat di set seumur hidup
 
 abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
