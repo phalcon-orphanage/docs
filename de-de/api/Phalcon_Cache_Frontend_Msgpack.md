@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
 
-Ermöglicht es, native PHP Daten in serialisierter Form mittels der Msgpack Erweiterung zu cachen Dieser Adapter benutzt ein Msgpack-Frontend um zwischengespeicherte Inhalte speichern und erfordert die Msgpack Erweiterung.
+Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
 
 ```php
 <?php
@@ -20,16 +20,16 @@ Ermöglicht es, native PHP Daten in serialisierter Form mittels der Msgpack Erwe
 use Phalcon\Cache\Backend\File;
 use Phalcon\Cache\Frontend\Msgpack;
 
-// Cached die Dateien für 2 Tage mit dem Msgpack frontend
+// Cache the files for 2 days using Msgpack frontend
 $frontCache = new Msgpack(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Erzeugt eine Komponente welche "Msgpack" in ein "Datei" backend cached
-// Setzt das cache Verzeichnis - Es ist wichtig das "/" am Ende
-// des Verzeichnisnamens zu behalten
+// Create the component that will cache "Msgpack" to a "File" backend
+// Set the cache file directory - important to keep the "/" at the end of
+// of the value for the folder
 $cache = new File(
     $frontCache,
     [
@@ -39,30 +39,30 @@ $cache = new File(
 
 $cacheKey = "robots_order_id.cache";
 
-// Versuche gecachte Datensätze zu erhalten
+// Try to get cached records
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots ist null weil der cache abgelaufen ist oder weil keine Daten existieren
-    // Ruft die Datenbank auf und übergibt die variablen
+    // $robots is null due to cache expiration or data do not exist
+    // Make the database call and populate the variable
     $robots = Robots::find(
         [
             "order" => "id",
         ]
     );
 
-    // Im Cache speichern
+    // Store it in the cache
     $cache->save($cacheKey, $robots);
 }
 
-// $robots benutzen
+// Use $robots
 foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -70,11 +70,11 @@ Phalcon\Cache\Frontend\Msgpack constructor
 
 public **getLifetime** ()
 
-Liefert die Cache-Lebensdauer
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Prüft, ob das Frontend Ausgaben puffert
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -82,16 +82,16 @@ Starts output frontend. Actually, does nothing
 
 public **getContent** ()
 
-Liefert einen zwischengespeicherten Inhalt
+Returns output cached content
 
 public **stop** ()
 
-Stoppt die Frontend Ausgabe
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serialisiert Daten vor dem Speichern
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes Daten nach der Entnahme
+Unserializes data after retrieval
