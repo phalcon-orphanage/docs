@@ -6,34 +6,34 @@ title: 'Phalcon\Cache\FrontendInterface'
 ---
 # Interface **Phalcon\Cache\FrontendInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontendinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontendinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getLifetime** ()
-
-...
-
-abstract public **isBuffering** ()
+abstrak publik 0 getLifetime 0
 
 ...
 
-abstract public **start** ()
+publik abstrak 0 isBuffering 0
 
 ...
 
-abstract public **getContent** ()
+abstrak publik 0 mulai 0
 
 ...
 
-abstract public **stop** ()
+abstrak publik 0 getContent 0
 
 ...
 
-abstract public **beforeStore** (*mixed* $data)
+abstrak publik 0 berhenti 0
 
 ...
 
-abstract public **afterRetrieve** (*mixed* $data)
+abstrak publik 0 beforeStore 0 1mixed 1 $ data
+
+...
+
+abstrak publik ** afterRetrieve </ 0> 1 dicampur 1> $ data</p> 
 
 ...
