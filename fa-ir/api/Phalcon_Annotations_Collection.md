@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Collection'
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -28,48 +28,48 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ([*آرایه* $reflectionData])
+public **__construct** ([*array* $reflectionData])
 
 Phalcon\Annotations\Collection constructor
 
-عمومی **تعداد** ()
+public **count** ()
 
-تعدادی حاشیه نویسی را در مجموعه می گیر
+Returns the number of annotations in the collection
 
-عمومی **بازخوانی** ()
+public **rewind** ()
 
-تکرارکننده داخلی را باز می کند
+Rewinds the internal iterator
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-حاشیه نویسی فعلی را در آن تکرار می کند
+Returns the current annotation in the iterator
 
-کلید عمومی**کلید** ()
+public **key** ()
 
-موقعیت/کلید فعلی را در تکرار بازگرداند
+Returns the current position/key in the iterator
 
-عمومی **بعدی** ()
+public **next** ()
 
-اشاره گر تکرار داخلی را به موقعیت بعدی حرکت می دهد
+Moves the internal iteration pointer to the next position
 
-عمومی **معتبر** ()
+public **valid** ()
 
-بررسی کنید آیا حاشیه نویسی فعلی در تکرار معتبر است
+Check if the current annotation in the iterator is valid
 
-عمومی **دریافت حاشیه نویسی** ()
+public **getAnnotations** ()
 
-حاشیه نویسی داخلی را به صورت آرایه نمایش می دهد
+Returns the internal annotations as an array
 
-عمومی **دریافت** (*رشته* $name)
+public **get** (*string* $name)
 
-اولین حاشیه نویسی مطابق با یک نام را برمی گرداند
+Returns the first annotation that match a name
 
-عمومی **دریافت همه** (*رشته* $name)
+public **getAll** (*string* $name)
 
-تمام حاشیه نویسی هایی را که با یک نام مطابقت دارند، تمام می کند
+Returns all the annotations that match a name
 
-عمومی **دارای** (*رشته* $name)
+public **has** (*string* $name)
 
-بررسی کنید که آیا یک حاشیه در مجموعه وجود دارد
+Check if an annotation exists in a collection
