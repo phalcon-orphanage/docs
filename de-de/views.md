@@ -21,12 +21,12 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Serveradresse       | 127.0.0.1 |
+| ------------------- | --------- |
+| Phalcon-Verzeichnis | blog      |
+| Controller          | posts     |
+| Action              | show      |
+| Parameter           | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -60,7 +60,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| Name              | File                          | Beschreibung                                                                                                                                                                                                             |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -164,7 +164,7 @@ class PostsController extends Controller
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Blog's title</title>
+        <title>Titel des Blogs</title>
     </head>
     <body>
         <?php echo $this->getContent(); ?>
@@ -177,8 +177,8 @@ class PostsController extends Controller
 
 <ul class='menu'>
     <li><a href='/'>Home</a></li>
-    <li><a href='/articles'>Articles</a></li>
-    <li><a href='/contact'>Contact us</a></li>
+    <li><a href='/articles'>Artikel</a></li>
+    <li><a href='/contact'>Konkakt</a></li>
 </ul>
 
 <div class='content'><?php echo $this->getContent(); ?></div>
@@ -196,13 +196,13 @@ class PostsController extends Controller
 <!-- app/views/posts/last.phtml -->
 
 <article>
-    <h2>This is a title</h2>
-    <p>This is the post content</p>
+    <h2>Das ist ein Titel</h2>
+    <p>Das ist ein post Inhalt</p>
 </article>
 
 <article>
-    <h2>This is another title</h2>
-    <p>This is another post content</p>
+    <h2>Das ist noch ein Titel</h2>
+    <p>Das ist ein weiterer Inhalt</p>
 </article>
 ```
 
@@ -221,26 +221,26 @@ The final output will be the following:
 
         <ul class='menu'>
             <li><a href='/'>Home</a></li>
-            <li><a href='/articles'>Articles</a></li>
-            <li><a href='/contact'>Contact us</a></li>
+            <li><a href='/articles'>Artikel</a></li>
+            <li><a href='/contact'>Kontakt</a></li>
         </ul>
 
         <div class='content'>
 
             <!-- app/views/layouts/posts.phtml -->
 
-            <h1>Blog Title</h1>
+            <h1>Titel des Blogs</h1>
 
             <!-- app/views/posts/last.phtml -->
 
             <article>
-                <h2>This is a title</h2>
-                <p>This is the post content</p>
+                <h2>Das ist ein Titel</h2>
+                <p>Das ist ein post Inhalt</p>
             </article>
 
             <article>
-                <h2>This is another title</h2>
-                <p>This is another post content</p>
+                <h2>Das ist noch ein Titel</h2>
+                <p>Das ist ein weiterer Inhalt</p>
             </article>
 
         </div>
@@ -335,14 +335,14 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
-| ----------------------- | ------------------------------------------------------------------------ |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
+| Klassen-konstante       | Beschreibung                                                             | Reihenfolge |
+| ----------------------- | ------------------------------------------------------------------------ |:-----------:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |             |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |      1      |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |      2      |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |      3      |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |      4      |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |      5      |
 
 <a name='disabling-render-levels'></a>
 
@@ -1045,17 +1045,17 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Einige Ereignisse könnten die aktive Operation stoppen, wenn sie den boolschen Wert false zurück liefern. Die folgenden Ereignisse werden unterstützt:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| Ereignisname     | Ausgelöst                                     | Kann den Vorgang stoppen? |
+| ---------------- | --------------------------------------------- |:-------------------------:|
+| beforeRender     | Triggered before starting the render process  |            Ja             |
+| beforeRenderView | Triggered before rendering an existing view   |            Ja             |
+| afterRenderView  | Triggered after rendering an existing view    |           Nein            |
+| afterRender      | Triggered after completing the render process |           Nein            |
+| notFoundView     | Triggered when a view was not found           |           Nein            |
 
-The following example demonstrates how to attach listeners to this component:
+Das folgende Beispiel veranschaulicht, wie Listener an diese Komponente angehangen werden:
 
 ```php
 <?php
