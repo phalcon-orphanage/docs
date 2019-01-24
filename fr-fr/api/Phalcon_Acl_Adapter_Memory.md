@@ -6,13 +6,13 @@ title: 'Phalcon\Acl\Adapter\Memory'
 ---
 # Class **Phalcon\Acl\Adapter\Memory**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Extends | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) | | Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
 
 ### Description
 
-Gère les listes ACL dans la mémoire
+Manages ACL lists in memory
 
 ### Example
 
@@ -152,7 +152,7 @@ protected mixed $subjectsNames
 
 Subject Names
 
-### Methods
+### Méthodes
 
 Returns latest function used to acquire access
 
