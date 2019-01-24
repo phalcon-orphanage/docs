@@ -8,7 +8,7 @@ title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -16,7 +16,7 @@ Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the diff
 
 Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+Darüber hinaus erhöht dieses Muster Testbarkeit im Code, so dass es weniger anfällig wird für Fehler.
 
 ```php
 <?php
@@ -26,10 +26,10 @@ use Phalcon\Http\Request;
 
 $di = new Di();
 
-// Using a string definition
+// Eine Zeichenketten definition benutzen
 $di->set("request", Request::class, true);
 
-// Using an anonymous function
+// Eine anonyme Funktion nutzen
 $di->setShared(
     "request",
     function () {
@@ -41,7 +41,7 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** ()
 
@@ -49,27 +49,27 @@ Phalcon\Di constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the internal event manager
+Legt den internen Eventmanager fest
 
 public **getInternalEventsManager** ()
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Registers a service in the services container
+Registriert einen Dienst im Dienste-Container
 
 public **setShared** (*mixed* $name, *mixed* $definition)
 
-Registers an "always shared" service in the services container
+Registriert einen immer geteilten Dienst im Dienste-Container
 
 public **remove** (*mixed* $name)
 
-Removes a service in the services container It also removes any shared instance created for the service
+Entfernt einen Dienst aus dem Dienste-Container. Entfernt auch jede gemeinsame Instanz, die für den Dienst erstellt wurde
 
 public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Versuche, einen Dienst im Container Dienste zu registrieren. Ist nur erfolgreich, wenn ein Dienst mit dem gleichen Namen nicht bereits registriert wurde
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
@@ -131,7 +131,7 @@ var_dump($di["request"]);
 
 public **offsetUnset** (*mixed* $name)
 
-Removes a service from the services container using the array syntax
+Entfernt einen Dienst aus dem Dienste-Container mit der Array-syntax
 
 public **__call** (*mixed* $method, [*mixed* $arguments])
 
@@ -165,15 +165,15 @@ Set a default dependency injection container to be obtained into static methods
 
 public static **getDefault** ()
 
-Return the latest DI created
+Gibt den zuletzt erstellten DI zurück
 
 public static **reset** ()
 
-Resets the internal default DI
+Setzt die interne Standard DI zurück
 
 public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
 
-Loads services from a yaml file.
+Lädt Dienste aus einer Yaml-Datei.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $di->loadFromYaml(
 
 ```
 
-And the services can be specified in the file as:
+Und die Dienste können in der Datei angegeben werden als:
 
 ```php
 <?php
@@ -211,7 +211,7 @@ user:
 
 public **loadFromPhp** (*mixed* $filePath)
 
-Loads services from a php config file.
+Lädt Dienste aus einer Php Konfigurations-Datei.
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $di->loadFromPhp("path/services.php");
 
 ```
 
-And the services can be specified in the file as:
+Und die Dienste können in der Datei angegeben werden als:
 
 ```php
 <?php
@@ -248,4 +248,4 @@ return [
 
 protected **loadFromConfig** ([Phalcon\Config](Phalcon_Config) $config)
 
-Loads services from a Config object.
+Lädt Dienste aus einem Config-Object.
