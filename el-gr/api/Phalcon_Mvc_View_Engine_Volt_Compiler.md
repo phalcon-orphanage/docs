@@ -33,7 +33,7 @@ Sets the dependency injector
 
 public **getDI** ()
 
-Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
+Returns the internal dependency injector
 
 public **setOptions** (*array* $options)
 
