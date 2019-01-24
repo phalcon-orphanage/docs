@@ -8,7 +8,7 @@ title: 'Phalcon\Registry'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
 
@@ -79,7 +79,7 @@ Moves cursor to next row in the registry
 
 final public **key** ()
 
-Gets pointer number of active row in the registry
+Λαμβάνει αριθμό τον δείκτη ενεργής γραμμής στο μητρώο
 
 final public **rewind** ()
 
@@ -91,7 +91,7 @@ Checks if the iterator is valid
 
 public **current** ()
 
-Obtains the current value in the internal iterator
+Λαμβάνει την τρέχουσα τιμή εσωτερικό στον iterator
 
 final public **__set** (*mixed* $key, *mixed* $value)
 
