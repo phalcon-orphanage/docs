@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Inline\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/inline/js.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
 
 Represents an inline Javascript
 
-## Methods
+## Methoden
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
@@ -36,11 +36,11 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](Phalcon_Asset
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets the inline's type
+Legt den Inline-Typ fest
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+Legt fest, ob die Ressource gefiltert werden muss oder nicht
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
@@ -48,4 +48,4 @@ Sets extra HTML attributes
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Gets the resource's key.
+Gibt den Ressourcenschlüssel zurück.
