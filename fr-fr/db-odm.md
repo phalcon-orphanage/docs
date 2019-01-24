@@ -25,7 +25,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Creating Models
+## Créer des Modèles
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -109,7 +109,7 @@ $robot = Robots::findById('5087358f2d42b8c3d15ec4e2');
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Une fois que le dossier est en mémoire, vous pouvez apporter des modifications à ses données, puis enregistrer les modifications:
 
 ```php
 <?php
@@ -278,7 +278,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
+| Paramètre    | Description                                                                                                                                                                                  | Example                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -413,21 +413,21 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
-| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| Operation          | Name                       | Peut arrêter l'opération ? | Explanation                                                                                                        |
+| ------------------ | -------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Inserting/Updating | `beforeValidation`         | YES                        | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting          | `beforeValidationOnCreate` | YES                        | Is executed before the validation process only when an insertion operation is being made                           |
+| Updating           | `beforeValidationOnUpdate` | YES                        | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| Inserting/Updating | `onValidationFails`        | YES (already stopped)      | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting          | `afterValidationOnCreate`  | YES                        | Is executed after the validation process when an insertion operation is being made                                 |
+| Updating           | `afterValidationOnUpdate`  | YES                        | Is executed after the validation process when an updating operation is being made                                  |
+| Inserting/Updating | `afterValidation`          | YES                        | Is executed after the validation process                                                                           |
+| Inserting/Updating | `beforeSave`               | YES                        | Runs before the required operation over the database system                                                        |
+| Updating           | `beforeUpdate`             | YES                        | Runs before the required operation over the database system only when an updating operation is being made          |
+| Inserting          | `beforeCreate`             | YES                        | Runs before the required operation over the database system only when an inserting operation is being made         |
+| Updating           | `afterUpdate`              | NO                         | Runs after the required operation over the database system only when an updating operation is being made           |
+| Inserting          | `afterCreate`              | NO                         | Runs after the required operation over the database system only when an inserting operation is being made          |
+| Inserting/Updating | `afterSave`                | NO                         | Runs after the required operation over the database system                                                         |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -629,7 +629,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Deleting Records
+## Supprimer des enregistrements
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -681,12 +681,12 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+Les événements suivants sont disponibles pour définir des règles métier qui peut être exécuté lorsqu'une opération de suppression est effectuée:
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Operation | Name           | Peut arrêter l'opération ? | Explanation                              |
+| --------- | -------------- | -------------------------- | ---------------------------------------- |
+| Deleting  | `beforeDelete` | YES                        | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NO                         | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
