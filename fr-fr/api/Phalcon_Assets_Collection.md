@@ -8,11 +8,11 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-Représente une collection de ressources
+Represents a collection of resources
 
-## Méthodes
+## Methods
 
 public **getPrefix** ()
 
@@ -76,7 +76,7 @@ Adds an inline code to the collection
 
 public **has** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Vérifie ce que la ressource est ajoutée à la collection.
+Checks this the resource is added to the collection.
 
 ```php
 <?php
@@ -93,7 +93,7 @@ $resource->has($resource); // true
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Ajoute un CSS de ressources à la collecte
+Adds a CSS resource to the collection
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
@@ -105,7 +105,7 @@ Adds a javascript resource to the collection
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Ajoute une ligne de javascript pour la collection
+Adds an inline javascript to the collection
 
 public **count** ()
 
@@ -117,7 +117,7 @@ Rewinds the internal iterator
 
 public **current** ()
 
-Retourne la ressource dans l'itérateur
+Returns the current resource in the iterator
 
 public *int* **key** ()
 
@@ -133,23 +133,23 @@ Check if the current element in the iterator is valid
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Définit le chemin cible du fichier pour la sortie filtrée/jointe
+Sets the target path of the file for the filtered/join output
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Définit un chemin source de base pour toutes les ressources de cette collection
+Sets a base source path for all the resources in this collection
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Définit un uri cible pour le code HTML généré
+Sets a target uri for the generated HTML
 
 public **setPrefix** (*mixed* $prefix)
 
-Définit un préfixe commun pour toutes les ressources
+Sets a common prefix for all the resources
 
 public **setLocal** (*mixed* $local)
 
-Définit si la collection utilise des ressources locales par défaut
+Sets if the collection uses local resources by default
 
 public **setAttributes** (*array* $attributes)
 
