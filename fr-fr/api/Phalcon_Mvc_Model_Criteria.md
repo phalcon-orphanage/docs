@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Criteria'
 
 *implements* [Phalcon\Mvc\Model\CriteriaInterface](Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
 
 This class is used to build the array parameter required by Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an object-oriented interface.
 
@@ -25,7 +25,7 @@ $robots = Robots::query()
 
 ```
 
-## Methods
+## Méthodes
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -37,19 +37,19 @@ Returns the DependencyInjector container
 
 public **setModelName** (*mixed* $modelName)
 
-Set a model on which the query will be executed
+Définir un modèle sur lequel la requête sera exécutée
 
 public **getModelName** ()
 
-Returns an internal model name on which the criteria will be applied
+Retourne un modèle interne nom sur lequel les critères seront appliqués
 
 public **bind** (*array* $bindParams, [*mixed* $merge])
 
-Sets the bound parameters in the criteria This method replaces all previously set bound parameters
+Définit les paramètres liés dans les critères Cette méthode remplace tous les jeu de paramètres liés
 
 public **bindTypes** (*array* $bindTypes)
 
-Sets the bind types in the criteria This method replaces all previously set bound parameters
+Jeux de le lier types dans les critères Cette méthode remplace tous les jeu de paramètres liés
 
 public **distinct** (*mixed* $distinct)
 
@@ -57,7 +57,7 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 public [Phalcon\Mvc\Model\Criteria](Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
 
-Sets the columns to be queried
+Définit les colonnes d'être interrogé
 
 ```php
 <?php
@@ -73,7 +73,7 @@ $criteria->columns(
 
 public **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
-Adds an INNER join to the query
+Ajoute une jointure INTERNE à la requête
 
 ```php
 <?php
@@ -87,7 +87,7 @@ $criteria->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
 
 public **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds an INNER join to the query
+Ajoute une jointure INTERNE à la requête
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $criteria->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a LEFT join to the query
+Ajoute une jointure GAUCHE de la requête
 
 ```php
 <?php
@@ -111,7 +111,7 @@ $criteria->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **rightJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a RIGHT join to the query
+Ajoute un DROIT de joindre à la requête
 
 ```php
 <?php
@@ -122,15 +122,15 @@ $criteria->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Sets the conditions parameter in the criteria
+Définit le paramètre conditions dans les critères
 
 public **addWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an AND operator (deprecated)
+Ajoute une condition pour les conditions actuelles à l'aide d'un opérateur ET (obsolète)
 
 public **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an AND operator
+Ajoute une condition pour les conditions actuelles à l'aide de l'opérateur
 
 public **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
@@ -160,7 +160,7 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 public **inWhere** (*mixed* $expr, *array* $values)
 
-Appends an IN condition to the current conditions
+Ajoute une condition à la conjoncture actuelle
 
 ```php
 <?php
