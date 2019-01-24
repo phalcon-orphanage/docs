@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Redis'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
 This adapter store sessions in Redis
 
@@ -76,7 +76,7 @@ public **gc** ()
 
 public **start** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Starts the session (if headers are already sent the session will not be started)
+Ξεκινά τη σύνοδο (εάν έχουν αποσταλεί οι ήδη κεφαλίδες, η σύνοδος δεν θα ξεκινήσει)
 
 public **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
@@ -131,7 +131,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Check whether a session variable is set in an application context
+Ελέγξτε αν μεταβλητή μια περιόδου σύνδεσης έχει οριστεί σε ένα περιβάλλον εφαρμογής
 
 ```php
 <?php
@@ -177,7 +177,7 @@ $session->setId($id);
 
 public **isStarted** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Check whether the session has been started
+Ελέγξτε αν ξεκινήσει έχει η συνεδρία
 
 ```php
 <?php
@@ -219,7 +219,7 @@ Alias: Check whether a session variable is set in an application context
 
 public **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Removes a session variable from an application context
+Alias: Καταργεί μια μεταβλητή λειτουργίας περιόδου από ένα περιβάλλον εφαρμογής
 
 ```php
 <?php
