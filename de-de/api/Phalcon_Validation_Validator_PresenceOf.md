@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\PresenceOf'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
 
 Validates that a value is not null or empty string
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Methoden
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
