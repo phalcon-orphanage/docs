@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\QueryInterface'
 ---
 # Interface **Phalcon\Mvc\Model\QueryInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/queryinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/queryinterface.zep)
 
-## Methods
+## Méthodes
 
 abstract public **parse** ()
 
