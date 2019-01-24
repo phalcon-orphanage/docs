@@ -1094,10 +1094,10 @@ foreach ($robots as $robot) {
 
 削除が処理される際に、カスタムビジネスルールの実行を定義するには、次のイベントを使用します。
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| 削除        | afterDelete  |         No          | Runs after the delete operation was made |
-| 削除        | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Operation | Name         | 処理中断が可能 | Explanation                              |
+| --------- | ------------ |:-------:| ---------------------------------------- |
+| 削除        | afterDelete  |   いいえ   | Runs after the delete operation was made |
+| 削除        | beforeDelete |   はい    | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
