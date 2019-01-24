@@ -10,11 +10,11 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
 
 Formats messages so that they can be sent to FirePHP
 
-## Methods
+## Méthodes
 
 public **getTypeString** (*mixed* $type)
 
