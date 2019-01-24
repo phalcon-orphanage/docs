@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Request\File'
 
 *implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
 
 Provides OO wrappers to the $_FILES superglobal
 
