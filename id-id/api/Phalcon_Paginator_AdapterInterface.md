@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'id-id' version: '4.0' title: 'Phalcon\Paginator\AdapterInterface'
-
-* * *
-
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+title: 'Phalcon\Paginator\AdapterInterface'
+---
 # Interface **Phalcon\Paginator\AdapterInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/paginator/adapterinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **setCurrentPage** (*mixed* $page)
 
@@ -22,6 +22,6 @@ abstract public **setLimit** (*mixed* $limit)
 
 ...
 
-abstract public **getLimit** ()
+abstrak umum **mendapatkan Batas** ()
 
 ...
