@@ -6,9 +6,9 @@ title: 'Phalcon\Db'
 ---
 # Abstract class **Phalcon\Db**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
 
-Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS.
+Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. Ada kelas adaptor yang berbeda untuk setiap merek RDBMS.
 
 This component is intended to lower level database operations. If you want to interact with databases using higher level of abstraction use Phalcon\Mvc\Model.
 
@@ -49,23 +49,23 @@ try {
 
 ## Constants
 
-*integer* **FETCH_LAZY**
+*bilangan bulat* **FETCH_LAZY**
 
-*integer* **FETCH_ASSOC**
+*bilangan bulat* **FETCH_ASSOC**
 
-*integer* **FETCH_NAMED**
+*bilangan bulat* **FETCH_NAMED**
 
-*integer* **FETCH_NUM**
+*bilangan bulat* **FETCH_NUM**
 
-*integer* **FETCH_BOTH**
+*bilangan bulat* **FETCH_BOTH**
 
-*integer* **FETCH_OBJ**
+*bilangan bulat* **FETCH_OBJ**
 
-*integer* **FETCH_BOUND**
+*bilangan bulat* **FETCH_BOUND**
 
-*integer* **FETCH_COLUMN**
+*bilangan bulat* **FETCH_COLUMN**
 
-*integer* **FETCH_CLASS**
+*bilanganbulat* **FETCH_CLASS**
 
 *integer* **FETCH_INTO**
 
@@ -83,8 +83,8 @@ try {
 
 *integer* **FETCH_PROPS_LATE**
 
-## Methods
+## Metode
 
-public static **setup** (*array* $options)
+public static **pengaturan** (*array* $pilihan)
 
-Enables/disables options in the Database component
+Mengaktifkan/menonaktifkan pilihan pada komponen Database
