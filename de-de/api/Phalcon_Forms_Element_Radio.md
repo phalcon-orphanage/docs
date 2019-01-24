@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Radio'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
 
 Component INPUT[type=radio] for forms
 
-## Methods
+## Methoden
 
 public **render** ([*array* $attributes])
 
