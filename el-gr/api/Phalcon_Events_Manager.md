@@ -8,7 +8,7 @@ title: 'Phalcon\Events\Manager'
 
 *implements* [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
