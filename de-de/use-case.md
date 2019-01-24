@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Anwendungsfall
+# Use case
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 <a name='requirements'></a>
 
-## Systemanforderungen
+## Requirements
 
 - MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 - Store data in a database (MariaDB/MySQL)
@@ -39,7 +39,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User roles
 
-| Group          | Beschreibung                                       |
+| Group          | Description                                        |
 | -------------- | -------------------------------------------------- |
 | Guests         | Users that are not logged in, visitors to the site |
 | Customers      | Users that have purchased products                 |
@@ -51,7 +51,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Endpoints
 
-| Endpoint                          | Beschreibung                                                 |
+| Endpoint                          | Description                                                  |
 | --------------------------------- | ------------------------------------------------------------ |
 | `/login`                          | Path `/session/login`. Presents the login screen             |
 | `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |
