@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
@@ -33,7 +33,7 @@ echo $router->getControllerName();
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **URI_SOURCE_GET_URL**
 
@@ -43,7 +43,7 @@ echo $router->getControllerName();
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Méthodes
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -59,11 +59,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Définit le gestionnaire d'événements
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Retourne le gestionnaire d'événements internes
 
 public **getRewriteUri** ()
 
@@ -84,11 +84,11 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove)
 
-Set whether router must remove the extra slashes in the handled routes
+Définir si le routeur doit supprimer les barres obliques dans les traités routes
 
 public **setDefaultNamespace** (*mixed* $namespaceName)
 
-Sets the name of the default namespace
+Définit le nom de l'espace de noms par défaut
 
 public **setDefaultModule** (*mixed* $moduleName)
 
@@ -120,7 +120,7 @@ $router->setDefaults(
 
 public **getDefaults** ()
 
-Returns an array of default parameters
+Retourne un tableau de paramètres par défaut
 
 public **handle** ([*mixed* $uri])
 
@@ -139,7 +139,7 @@ $router->handle("/posts/edit/1");
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
-Adds a route to the router without any HTTP constraint
+Ajoute une route vers le routeur sans HTTP contrainte
 
 ```php
 <?php
@@ -154,7 +154,7 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 public **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is GET
+Ajoute une route vers le routeur qui corresponde uniquement si la méthode HTTP GET
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
