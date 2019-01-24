@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Backend\Memory'
+title: 'Phalcon\Cache\Belakang\Memory'
 ---
 # Class **Phalcon\Cache\Backend\Memory**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memory'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
 
 Stores content in memory. Data is lost when the request is finished
 
@@ -33,55 +33,55 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metode
 
-public **get** (*mixed* $keyName, [*mixed* $lifetime])
+publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
 
-Returns a cached content
+Mengembalikan konten dalam cache
 
-public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+public **simpan** ([int | *string* $keyName], [* string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the backend and stops the frontend
+Menyimpan isi cache ke dalam Apc backend dan menghentikan frontend
 
-public *boolean* **delete** (*string* $keyName)
+public *boolean* **hapus** (*string* | *int* $keyName)
 
-Deletes a value from the cache by its key
+Menghapus nilai dari cache dengan kuncinya
 
-public **queryKeys** ([*mixed* $prefix])
+publik **Kunci kueri** ([*campuran* $prefix])
 
-Query the existing cached keys.
+Permintaan kunci cache yang ada.
 
 ```php
 <?php
 
-$cache->save("users-ids", [1, 2, 3]);
-$cache->save("projects-ids", [4, 5, 6]);
+$cache->simpan("para pengguna-ids", [1, 2, 3]);
+$cache->simpan("Rancangan-ids", [4, 5, 6]);
 
-var_dump($cache->queryKeys("users")); // ["users-ids"]
+var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
 
 ```
 
-public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
+publik **ada** ([*jaringan* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it hasn't expired
+Memeriksa apakah cache ada dan belum kedaluwarsa
 
-public **increment** ([*string* $keyName], [*mixed* $value])
+public **kenaikan** ([*sejajar* $keyName], [*campuran* $value])
 
-Increment of given $keyName by $value
+Kenaikan yang diberikan $keyName dari $value
 
-public **decrement** ([*string* $keyName], [*mixed* $value])
+publik **penurunan** ([*jaringan* $keyName], [<1campuran</em> $value])
 
-Decrement of $keyName by given $value
+Pengurangan $keyName dengan diberikan $value
 
-public **flush** ()
+publik **flush** ()
 
-Immediately invalidates all existing items.
+Segera batalkan semua item yang ada.
 
-public **serialize** ()
+publik **getName** ()
 
 Required for interface \Serializable
 
-public **unserialize** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
 Required for interface \Serializable
 
@@ -119,16 +119,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Menghentikan frontend tanpa menyimpan konten dalam cache
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Memeriksa apakah cache terakhir masih segar atau di-cache
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Memeriksa apakah cache sudah mulai buffering atau tidak
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Dapat di set seumur hidup
