@@ -10,9 +10,9 @@ title: 'Phalcon\Session\Adapter\Files'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/files.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/files.zep)
 
-## Constants
+## Konstanten
 
 *integer* **SESSION_ACTIVE**
 
@@ -20,7 +20,7 @@ title: 'Phalcon\Session\Adapter\Files'
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
