@@ -8,11 +8,11 @@ title: 'Phalcon\Dispatcher'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
-## Constantes
+## Constants
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -26,7 +26,7 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Méthodes
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -38,11 +38,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Définit le gestionnaire d'événements
+Sets the events manager
 
 public **getEventsManager** ()
 
-Retourne le gestionnaire d'événements internes
+Returns the internal event manager
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 
@@ -62,11 +62,11 @@ Gets the module where the controller class is
 
 public **setNamespaceName** (*mixed* $namespaceName)
 
-Définit l'espace de noms où est la classe de contrôleur
+Sets the namespace where the controller class is
 
 public **getNamespaceName** ()
 
-Obtient un espace de noms à être ajouté à l'actuel gestionnaire de nom
+Gets a namespace to be prepended to the current handler name
 
 public **setDefaultNamespace** (*mixed* $namespaceName)
 
@@ -82,11 +82,11 @@ Sets the default action name
 
 public **setActionName** (*mixed* $actionName)
 
-Définit le nom de l'action à être expédiés
+Sets the action name to be dispatched
 
 public **getActionName** ()
 
-Obtient la dernière distribué nom de l'action
+Gets the latest dispatched action name
 
 public **setParams** (*array* $params)
 
