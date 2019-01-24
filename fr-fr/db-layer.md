@@ -21,15 +21,15 @@ This component allows for a lower level database manipulation than using traditi
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
-| Class                                                                          | Description                                                                                                                                                                                                                          |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Phalcon\Db\Adapter\Pdo\Mysql](api/Phalcon_Db_Adapter_Pdo_Mysql)           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                    |
-| [Phalcon\Db\Adapter\Pdo\Postgresql](api/Phalcon_Db_Adapter_Pdo_Postgresql) | PostgreSQL is a powerful, open source relational database system. It has more than 15 years of active development and a proven architecture that has earned it a strong reputation for reliability, data integrity, and correctness. |
-| [Phalcon\Db\Adapter\Pdo\Sqlite](api/Phalcon_Db_Adapter_Pdo_Sqlite)         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                     |
+| Classe                                                                         | Description                                                                                                                                                                                                                                                   |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Db\Adapter\Pdo\Mysql](api/Phalcon_Db_Adapter_Pdo_Mysql)           | Is the world's most used relational database management system (RDBMS) that runs as a server providing multi-user access to a number of databases                                                                                                             |
+| [Phalcon\Db\Adapter\Pdo\Postgresql](api/Phalcon_Db_Adapter_Pdo_Postgresql) | PostgreSQL est un puissant open source de base de données relationnelle système. Il possède plus de 15 années de développement et une architecture éprouvée, qui a acquis une forte réputation pour la fiabilité, l'intégrité des données et de l'exactitude. |
+| [Phalcon\Db\Adapter\Pdo\Sqlite](api/Phalcon_Db_Adapter_Pdo_Sqlite)         | SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine                                                                                                                              |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Usine
 
 <a name='factory'></a>
 
@@ -54,7 +54,7 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Réalisation vos propres adaptateurs
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
@@ -64,11 +64,11 @@ The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface mus
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
-| Class                                                                 | Description                                         |
-| --------------------------------------------------------------------- | --------------------------------------------------- |
-| [Phalcon\Db\Dialect\Mysql](api/Phalcon_Db_Dialect_Mysql)           | SQL specific dialect for MySQL database system      |
-| [Phalcon\Db\Dialect\Postgresql](api/Phalcon_Db_Dialect_Postgresql) | SQL specific dialect for PostgreSQL database system |
-| [Phalcon\Db\Dialect\Sqlite](api/Phalcon_Db_Dialect_Sqlite)         | SQL specific dialect for SQLite database system     |
+| Classe                                                                | Description                                                        |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| [Phalcon\Db\Dialect\Mysql](api/Phalcon_Db_Dialect_Mysql)           | SQL dialecte spécifique pour système de base de données MySQL      |
+| [Phalcon\Db\Dialect\Postgresql](api/Phalcon_Db_Dialect_Postgresql) | SQL dialecte spécifique pour système de base de données PostgreSQL |
+| [Phalcon\Db\Dialect\Sqlite](api/Phalcon_Db_Dialect_Sqlite)         | SQL dialecte spécifique pour système de base de données SQLite     |
 
 <a name='dialects-custom'></a>
 
@@ -196,7 +196,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## Setting up additional PDO options
+## Configuration supplémentaire de PDO options
 
 You can set PDO options at connection time by passing the parameters `options`:
 
@@ -287,12 +287,12 @@ $robot = $connection->fetchOne($sql);
 
 By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
 
-| Constant                   | Description                                               |
-| -------------------------- | --------------------------------------------------------- |
-| `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                      |
-| `Phalcon\Db::FETCH_ASSOC` | Return an array with associative indexes                  |
-| `Phalcon\Db::FETCH_BOTH`  | Return an array with both associative and numeric indexes |
-| `Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                      |
+| Constant                   | Description                                                          |
+| -------------------------- | -------------------------------------------------------------------- |
+| `Phalcon\Db::FETCH_NUM`   | Return an array with numeric indexes                                 |
+| `Phalcon\Db::FETCH_ASSOC` | Retourne un tableau associatif avec les index                        |
+| `Phalcon\Db::FETCH_BOTH`  | Retourner un tableau avec à la fois associatif et indices numériques |
+| `Phalcon\Db::FETCH_OBJ`   | Return an object instead of an array                                 |
 
 ```php
 <?php
@@ -329,9 +329,9 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Binding Parameters
+## Lier les paramètres
 
-Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Les paramètres de liaison peut être simplement réalisé comme suit:
 
 ```php
 <?php
@@ -733,17 +733,17 @@ try {
 
 ## Database Events
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Certains événements en retournant un booléen false pourraient arrêter l’opération active. Les événements suivants sont supportés :
 
-| Event Name            | Triggered                                            | Can stop operation? |
-| --------------------- | ---------------------------------------------------- |:-------------------:|
-| `afterConnect`        | After a successfully connection to a database system |         No          |
-| `beforeQuery`         | Before send a SQL statement to the database system   |         Yes         |
-| `afterQuery`          | After send a SQL statement to database system        |         No          |
-| `beforeDisconnect`    | Before close a temporal database connection          |         No          |
-| `beginTransaction`    | Before a transaction is going to be started          |         No          |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |         No          |
-| `commitTransaction`   | Before a transaction is committed                    |         No          |
+| Nom de l'événement    | Déclencheur                                          | Peut arrêter l'opération ? |
+| --------------------- | ---------------------------------------------------- |:--------------------------:|
+| `afterConnect`        | After a successfully connection to a database system |            Non             |
+| `beforeQuery`         | Before send a SQL statement to the database system   |            Oui             |
+| `afterQuery`          | After send a SQL statement to database system        |            Non             |
+| `beforeDisconnect`    | Before close a temporal database connection          |            Non             |
+| `beginTransaction`    | Before a transaction is going to be started          |            Non             |
+| `rollbackTransaction` | Before a transaction is rollbacked                   |            Non             |
+| `commitTransaction`   | Before a transaction is committed                    |            Non             |
 
 Bind an EventsManager to a connection is simple, [Phalcon\Db](api/Phalcon_Db) will trigger the events with the type `db`:
 
@@ -1061,17 +1061,17 @@ $connection->createTable(
 
 | Option          | Description                                                                                                                                | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |   Yes    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Yes    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Yes    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |   Non    |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |   Oui    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |   Oui    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |   Oui    |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |   Oui    |
+| `notNull`       | Column can store null values?                                                                                                              |   Oui    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |   Oui    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Oui    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |   Oui    |
+| `first`         | La colonne doit être placé en première position dans l'ordre des colonnes                                                                  |   Oui    |
+| `après`         | La colonne doit être placé après la colonne indiquée                                                                                       |   Oui    |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 
@@ -1087,10 +1087,10 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 
 | Index        | Description                                                                                                                            | Optional |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    No    |
-| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Yes    |
-| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Yes    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Yes    |
+| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |   Non    |
+| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |   Oui    |
+| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |   Oui    |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |   Oui    |
 
 <a name='tables-altering'></a>
 
