@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Backend\Xcache'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
 
-允许缓存输出片段、 PHP 数据和使用 XCache 后端的原始数据
+Allows to cache output fragments, PHP data and raw data using an XCache backend
 
 ```php
 <?php
@@ -50,19 +50,19 @@ Phalcon\Cache\Backend\Xcache constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-返回缓存的内容
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-将缓存的内容存储到文件后端和前端停止
+Stores cached content into the file backend and stops the frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-将一个值从缓存中删除由它的键
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-查询现有的缓存的键。
+Query the existing cached keys.
 
 ```php
 <?php
@@ -76,19 +76,19 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-检查是否存在缓存并没有过期
+Checks if cache exists and it isn't expired
 
 public **increment** (*string* $keyName, [*mixed* $value])
 
-给这个缓存自增
+Atomic increment of a given key, by number $value
 
 public **decrement** (*string* $keyName, [*mixed* $value])
 
-给这个缓存自减
+Atomic decrement of a given key, by number $value
 
 public **flush** ()
 
-立即使无效所有现有项目。
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -120,16 +120,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-停止前端, 不存储任何缓存的内容
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-检查最后一个缓存是否新鲜或缓存
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-检查缓存中是否已经开始缓冲或不
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-获取最后一个生命周期
+Gets the last lifetime set
