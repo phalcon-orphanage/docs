@@ -6,9 +6,9 @@ title: 'Phalcon\Events\ManagerInterface'
 ---
 # Interface **Phalcon\Events\ManagerInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **attach** (*mixed* $eventType, *mixed* $handler)
 
