@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\MetaDataInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MetaDataInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy)
 
