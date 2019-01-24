@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
 A router that reads routes annotations from classes/resources
 
@@ -52,7 +52,7 @@ Adds a resource to the annotations handler A resource is a class that contains r
 
 public **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
-Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
+Προσθέτει έναν ο στον πόρ χειριστή σχολιασμών Ένας πόρος είναι μια κλάση που περιέχει σχολιασμούς δρομολόγησης Η τάξη σε βρίσκεται μια ενότητα
 
 public **handle** ([*mixed* $uri])
 
@@ -88,7 +88,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Returns the internal dependency injector
+Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -216,7 +216,7 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Set a group of paths to be returned when none of the defined routes are matched
+Ορίστε μια ομάδα διαδρομών που να επιστραφούν πρέπει όταν δεν αντιστοιχεί καμία από τις καθορισμένες διαδρομές
 
 public **clear** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
