@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Apc'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/apc.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
 
 Allows to cache output fragments, PHP data and raw data using an APC backend
 
@@ -20,7 +20,7 @@ Allows to cache output fragments, PHP data and raw data using an APC backend
 use Phalcon\Cache\Backend\Apc;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// Daten für 2 Tage im Cache speichern
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
@@ -42,11 +42,11 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Methoden
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Liefert einen zwischengespeicherten Inhalt
 
 public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -62,7 +62,7 @@ Decrement of a given key, by number $value
 
 public **delete** (*mixed* $keyName)
 
-Deletes a value from the cache by its key
+Löscht einen Wert aus dem Cache anhand seines Schlüssels
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Ermittelt die zuletzt gespeicherte Lebensdauer
