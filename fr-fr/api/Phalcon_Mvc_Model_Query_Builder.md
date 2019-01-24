@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query\Builder'
 
 *implements* [Phalcon\Mvc\Model\Query\BuilderInterface](Phalcon_Mvc_Model_Query_BuilderInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
 
 Helps to create PHQL queries using an OO interface
 
@@ -44,13 +44,13 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 ```
 
-## Constants
+## Constantes
 
 *string* **OPERATOR_OR**
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Méthodes
 
 public **__construct** ([*mixed* $params], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -82,7 +82,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 
 public **columns** (*mixed* $columns)
 
-Sets the columns to be queried
+Définit les colonnes d'être interrogé
 
 ```php
 <?php
@@ -191,7 +191,7 @@ $builder->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds an INNER join to the query
+Ajoute une jointure INTERNE à la requête
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $builder->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a LEFT join to the query
+Ajoute une jointure GAUCHE de la requête
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $builder->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a RIGHT join to the query
+Ajoute un DROIT de joindre à la requête
 
 ```php
 <?php
