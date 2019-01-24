@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'فالکن\اعتبار سنجی\ تأییدکننده\فایل'
+title: 'Phalcon\Validation\Validator\File'
 ---
 # Class **Phalcon\Validation\Validator\File**
 
@@ -10,7 +10,7 @@ title: 'فالکن\اعتبار سنجی\ تأییدکننده\فایل'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
 
 Checks if a value has a correct file
 
@@ -81,7 +81,7 @@ $validator->add(
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
