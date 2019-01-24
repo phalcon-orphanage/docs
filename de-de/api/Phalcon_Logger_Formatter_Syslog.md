@@ -10,20 +10,20 @@ title: 'Phalcon\Logger\Formatter\Syslog'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
 Prepares a message to be used in a Syslog backend
 
-## Methoden
+## Methods
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Wendet ein Format an einer Nachricht an, bevor es zum internen Protokoll weitergeleitet wird
+Applies a format to a message before sent it to the internal log
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
+Returns the string meaning of a logger constant
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpoliert Kontext Werte in die Nachricht-Platzhalter
+Interpolates context values into the message placeholders
