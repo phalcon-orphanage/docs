@@ -68,7 +68,7 @@ The following HTML will be produced.
 </html>
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -199,7 +199,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -506,7 +506,7 @@ echo $this->tag->image(
 );
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -532,7 +532,7 @@ echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Rosario
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -558,7 +558,7 @@ echo $this->tag->javascriptInclude('https://localhost/javascript/jquery.min.js',
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -598,7 +598,7 @@ echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-Sintassi di volt:
+Volt syntax:
 
 ```php
 {% raw %}
