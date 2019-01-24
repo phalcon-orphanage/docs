@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\CreditCard'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
 
 Checks if a value has a valid credit card number
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Metodi
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
