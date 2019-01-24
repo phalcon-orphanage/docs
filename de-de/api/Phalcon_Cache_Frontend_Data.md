@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
 Allows to cache native PHP data in a serialized form
 
@@ -60,7 +60,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -68,11 +68,11 @@ Phalcon\Cache\Frontend\Data constructor
 
 public **getLifetime** ()
 
-Liefert die Cache-Lebensdauer
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Prüft, ob das Frontend Ausgaben puffert
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -80,16 +80,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Liefert einen zwischengespeicherten Inhalt
+Returns output cached content
 
 public **stop** ()
 
-Stoppt die Frontend Ausgabe
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serialisiert Daten vor dem Speichern
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes Daten nach der Entnahme
+Unserializes data after retrieval
