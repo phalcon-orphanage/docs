@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Generating URLs and Paths
+# Generierung von URLs und Pfaden
 
 [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
 <a name='base-uri'></a>
 
-## Setting a base URI
+## Einrichten einer Basis-URI
 
 Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
@@ -71,7 +71,7 @@ $di->set(
 
 <a name='generating-uri'></a>
 
-## Generating URIs
+## Generierung von URIs
 
 If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern:
 
@@ -104,7 +104,7 @@ A URL can be generated in the following way:
 ```php
 <?php
 
-// This produces: /blog/2015/01/some-blog-post
+// Das erzeugt: /blog/2015/01/some-blog-post
 $url->get(
     [
         'for'   => 'show-post',
@@ -117,7 +117,7 @@ $url->get(
 
 <a name='urls-without-mod-rewrite'></a>
 
-## Producing URLs without mod_rewrite
+## Herstellung von URLs ohne mod_rewrite
 
 You can use this component also to create URLs without mod_rewrite:
 
@@ -128,10 +128,10 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-// Pass the URI in $_GET['_url']
+// URI in $_GET['_url'] mitgeben
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// This produce: /invo/index.php?_url=/products/save
+// Das erzeugt: /invo/index.php?_url=/products/save
 echo $url->get('products/save');
 ```
 
@@ -144,10 +144,10 @@ use Phalcon\Mvc\Url;
 
 $url = new Url();
 
-// Pass the URI in $_GET['_url']
+// URI in $_GET['_url'] mitgeben
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// Pass the URI using $_SERVER['REQUEST_URI']
+// URI mittels $_SERVER['REQUEST_URI'] mitgeben
 $url->setBaseUri('/invo/index.php/');
 ```
 
@@ -172,13 +172,13 @@ The produced routes would look like:
 ```php
 <?php
 
-// This produce: /invo/index.php/products/save
+// Das erzeugt: /invo/index.php/products/save
 echo $url->get('products/save');
 ```
 
 <a name='urls-from-volt'></a>
 
-## Producing URLs from Volt
+## Herstellung von URLs aus Volt
 
 The function `url` is available in volt to generate URLs using this component:
 
@@ -220,6 +220,6 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 <a name='custom-url'></a>
 
-## Implementing your own URL Generator
+## Implementierung von eigenen URL Generatoren
 
 The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.
