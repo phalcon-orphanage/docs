@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Email'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
 
 Checks if a value has a correct e-mail format
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Méthodes
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
