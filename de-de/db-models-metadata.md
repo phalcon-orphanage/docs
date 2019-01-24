@@ -38,7 +38,7 @@ print_r($dataTypes);
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| Adapter      | Description                                                                                                                                                                                                                                                                                                              | API                                                                                        |
+| Adapter      | Beschreibung                                                                                                                                                                                                                                                                                                             | API                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://www.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                    | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
 | Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
@@ -147,7 +147,7 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | Description                                       |
+| Name     | Beschreibung                                      |
 | -------- | ------------------------------------------------- |
 | Primary  | Mark the field as part of the table's primary key |
 | Identity | The field is an auto_increment/serial column      |
@@ -155,7 +155,7 @@ The following annotations are supported:
 
 The annotation `@Column` supports the following parameters:
 
-| Name                 | Description                                                                                                                                                                   |
+| Name                 | Beschreibung                                                                                                                                                                  |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | column               | Real column name                                                                                                                                                              |
 | type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
