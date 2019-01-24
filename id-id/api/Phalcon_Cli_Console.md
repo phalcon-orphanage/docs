@@ -10,15 +10,15 @@ title: 'Phalcon\Cli\Console'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
-Komponen ini memungkinkan untuk membuat aplikasi CLI menggunakan Phalcon
+This component allows to create CLI applications using Phalcon
 
-## Metode
+## Methods
 
-public **tambahkanmodul</0 1array<M 1 $modules</p> 
+public **addModules** (*array* $modules)
 
-Gabung modul dengan yang sudah ada
+Merge modules with the existing ones
 
 ```php
 <?php
@@ -34,29 +34,29 @@ $application->addModules(
 
 ```
 
-public **menangani** ([*array* $arguments])
+public **handle** ([*array* $arguments])
 
-Tangani seluruh tugas baris perintah
+Handle the whole command-line tasks
 
-public **setArgument** ([*array* $arguments], [*campuran* $str], [*campuran* $shift])
+public **setArgument** ([*array* $arguments], [*mixed* $str], [*mixed* $shift])
 
-Menetapkan sebuah argumen tertentu
+Set an specific argument
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Phalcon\Aplikasi
+Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Menyetel pengelola acara
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Daftarkan sebuah array modul yang ada dalam aplikasi
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -78,28 +78,28 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Kembalikan modul yang terdaftar dalam aplikasi
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-Mendapat definisi modul yang terdaftar dalam aplikasi melalui nama modul
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-Menetapkan nama modul yang akan digunakan jika router tidak mengembalikan modul yang valid
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Mengembalikan nama modul default
+Returns the default module name
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
