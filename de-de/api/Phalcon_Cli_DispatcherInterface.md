@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Cli\DispatcherInterface'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Cli\DispatcherInterface'
+---
 # Interface **Phalcon\Cli\DispatcherInterface**
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/dispatcherinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **setTaskSuffix** (*mixed* $taskSuffix)
 
