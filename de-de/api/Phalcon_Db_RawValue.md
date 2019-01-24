@@ -6,11 +6,11 @@ title: 'Phalcon\Db\RawValue'
 ---
 # Class **Phalcon\Db\RawValue**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
-Mithilfe dieser Klasse können Sie Roh-Daten ohne Zitierung oder Formatierung einfügen/aktualisieren.
+This class allows to insert/update raw data without quoting or formatting.
 
-Das nächste Beispiel zeigt, wie die MySQL now() Funktion als Wert für ein Feld verwenden wird.
+The next example shows how to use the MySQL now() function as a field value.
 
 ```php
 <?php
@@ -24,15 +24,15 @@ $subscriber->save();
 
 ```
 
-## Methoden
+## Methods
 
 public **getValue** ()
 
-Rohwert ohne Zitierung oder Formatierung
+Raw value without quoting or formatting
 
 public **__toString** ()
 
-Rohwert ohne Zitierung oder Formatierung
+Raw value without quoting or formatting
 
 public **__construct** (*mixed* $value)
 
