@@ -11,11 +11,11 @@ version: '4.0'
 
 # Tutorial: Vökuró
 
-Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
+Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
 
 <a name='structure'></a>
 
-## Project Structure
+## Projektstruktur
 
 Once you clone the project in your document root you'll see the following structure:
 
