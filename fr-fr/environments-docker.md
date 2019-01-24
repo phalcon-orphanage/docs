@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Vue d'ensemble
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
@@ -49,7 +49,7 @@ Services included are:
 Using Composer, you can create a new project as follows:
 
 ```bash
-composer create-project phalcon/compose --prefer-dist <folder name>
+compositeur de création de projet phalcon/composer --prefer-dist <folder name>
 ```
 
 Your output should be similar to this:
@@ -99,7 +99,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
 ```php
-docker-compose build
+docker-composition de construire
 ```
 
 To start the application and run the containers in the background, use following command inside project root:
