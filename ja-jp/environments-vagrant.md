@@ -398,7 +398,7 @@ Once the site has been added, run the `vagrant reload --provision` command from 
 
 <a name='daily-usage-environment-variables'></a>
 
-### 環境変数
+### Environment variables
 
 <a name='daily-usage-environment-global-variables'></a>
 
