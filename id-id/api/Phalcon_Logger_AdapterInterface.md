@@ -6,23 +6,23 @@ title: 'Phalcon\Logger\AdapterInterface'
 ---
 # Interface **Phalcon\Logger\AdapterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
 ...
 
-publik abstrak **getFormatter** ()
+abstract public **getFormatter** ()
 
 ...
 
-abstrak publik **setLogLevel** (*mixed* $level)
+abstract public **setLogLevel** (*mixed* $level)
 
 ...
 
-abstrak publik **getLogLeve** ()
+abstract public **getLogLevel** ()
 
 ...
 
@@ -42,7 +42,7 @@ abstract public **rollback** ()
 
 ...
 
-abstrak umum **dekat** ()
+abstract public **close** ()
 
 ...
 
