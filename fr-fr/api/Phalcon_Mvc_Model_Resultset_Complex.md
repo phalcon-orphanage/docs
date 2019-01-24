@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model\Resultset\Complex'
 
 *implements* [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php), [Serializable](https://php.net/manual/en/class.serializable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
 
 Complex resultsets may include complete objects and scalar values. This class builds every complex row as it is required
 
-## Constants
+## Constantes
 
 *integer* **TYPE_RESULT_FULL**
 
@@ -26,7 +26,7 @@ Complex resultsets may include complete objects and scalar values. This class bu
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Méthodes
 
 public **__construct** (*array* $columnTypes, [[Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface) $result], [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
