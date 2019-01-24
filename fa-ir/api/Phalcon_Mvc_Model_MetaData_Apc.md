@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Apc'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/apc.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/apc.zep)
 
 Stores model meta-data in the APC cache. Data will erased if the web server is restarted
 
@@ -30,7 +30,7 @@ $metaData = new \Phalcon\Mvc\Model\Metadata\Apc(
 
 ```
 
-## ثابت ها
+## Constants
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -64,13 +64,13 @@ $metaData = new \Phalcon\Mvc\Model\Metadata\Apc(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ([*آرایه* $options])
+public **__construct** ([*array* $options])
 
 Phalcon\Mvc\Model\MetaData\Apc constructor
 
-عمومی **خواندن** (*مخلوط* $key)
+public **read** (*mixed* $key)
 
 Reads meta-data from APC
 
