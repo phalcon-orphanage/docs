@@ -6,11 +6,11 @@ title: 'Phalcon\Tag'
 ---
 # Class **Phalcon\Tag**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
-## Constants
+## Konstanten
 
 *integer* **HTML32**
 
@@ -34,7 +34,7 @@ Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of 
 
 *integer* **XHTML5**
 
-## Methods
+## Methoden
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
