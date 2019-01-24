@@ -2,47 +2,84 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Frontend\Json'
+title: 'Phalcon\Cache\Frontend\None'
 ---
 # Class **Phalcon\Cache\Frontend\None**
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
 ```php
-<? php / / Cache file selama 2 hari menggunakan Igbinary frontend$frontCache baru \Phalcon\Cache\Frontend\Igbinary = (["seumur hidup" = > 172800,]);  Membuat komponen yang akan cache "Igbinary" untuk backend "File" / / Set direktori file cache - penting untuk menjaga "/" pada akhir / / nilai untuk folder$cache baru \Phalcon\Cache\Backend\File = ($frontCache, ["cacheDir" = > "... /App/cache / ",]);$cacheKey = "robots_order_id.cache";  Mencoba untuk mendapatkan catatan cache$robots = $cache -> get($cacheKey);  Jika ($robots === null) {/ / $robots null karena cache kedaluwarsa atau data tidak ada / / membuat database panggilan dan mengisi $robots variabel = Robots::find (["order" = > "id",]);      Toko di cache $cache -> Simpan ($cacheKey, $robots); } / / Menggunakan foreach ($robots sebagai $robot) $robots :) {echo $robot -> nama, "\n";}
+<?php
+
+<?php
+
+//Create a None Cache
+$frontCache = new \Phalcon\Cache\Frontend\None();
+
+// Create the component that will cache "Data" to a "Memcached" backend
+// Memcached connection settings
+$cache = new \Phalcon\Cache\Backend\Memcache(
+    $frontCache,
+    [
+        "host" => "localhost",
+        "port" => "11211",
+    ]
+);
+
+$cacheKey = "robots_order_id.cache";
+
+// This Frontend always return the data as it's returned by the backend
+$robots = $cache->get($cacheKey);
+
+if ($robots === null) {
+    // This cache doesn't perform any expiration checking, so the data is always expired
+    // Make the database call and populate the variable
+    $robots = Robots::find(
+        [
+            "order" => "id",
+        ]
+    );
+
+    $cache->save($cacheKey, $robots);
+}
+
+// Use $robots :)
+foreach ($robots as $robot) {
+    echo $robot->name, "\n";
+}
 
 ```
 
-## Metode
+## Methods
 
-publik ** getLifetime ** ()
+public **getLifetime** ()
 
-Mengembalikan masa pakai cache, selalu konten kedaluwarsa kedua
+Returns cache lifetime, always one second expiring content
 
-public ** isBuffering ** ()
+public **isBuffering** ()
 
-Periksa apakah frontend adalah buffering output
+Check whether if frontend is buffering output, always false
 
-publik ** mulai ** ()
+public **start** ()
 
-Menghentikan keluaran paling depan
+Starts output frontend
 
-public *string * **getContent** ()
+public *string* **getContent** ()
 
-Mengembalikan hasil konten dalam cache
+Returns output cached content
 
-publik ** berhenti ** ()
+public **stop** ()
 
-Menghentikan output frontend
+Stops output frontend
 
-public ** beforeStore ** ( * mixed * $data)
+public **beforeStore** (*mixed* $data)
 
-Mempersiapkan data-data untuk disimpan
+Prepare data to be stored
 
-public ** afterRetrieve ** ( * mixed * $data)
+public **afterRetrieve** (*mixed* $data)
 
-Siapkan data yang akan diambil ke pengguna
+Prepares data to be retrieved to user
