@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Output'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/output.zep)
 
 Allows to cache output fragments captured with ob_* functions
 
@@ -42,11 +42,11 @@ Returns output cached content
 
 public **stop** ()
 
-Stops output frontend
+Σταματά παράθυρο το εξόδου
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serializes τα δεδομένα από πριν την αποθήκευση τους
 
 public **afterRetrieve** (*mixed* $data)
 
