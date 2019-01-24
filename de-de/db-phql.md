@@ -27,7 +27,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 
 <a name='usage'></a>
 
-## Beispiele für die Verwendung
+## Usage Example
 
 To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
@@ -55,15 +55,15 @@ class Cars extends Model
      */
     public function getSource()
     {
-        return 'beispiel_autos';
+        return 'sample_cars';
     }
 
     /**
-     * Ein Auto hat nur eine Marke, aber eine Marke kann mehrere Autos haben
+     * A car only has a Brand, but a Brand have many Cars
      */
     public function initialize()
     {
-        $this->belongsTo('brand_id', 'Marken', 'id');
+        $this->belongsTo('brand_id', 'Brands', 'id');
     }
 }
 ```
@@ -82,26 +82,26 @@ class Brands extends Model
     public $name;
 
     /**
-     * Das Marken ist auf die 'beispiel_marken' Tabelle abgebildet
+     * The model Brands is mapped to the 'sample_brands' table
      */
     public function getSource()
     {
-        return 'beispiel_marken';
+        return 'sample_brands';
     }
 
     /**
-     * Eine Marke kann viele Autos haben
+     * A Brand can have many Cars
      */
     public function initialize()
     {
-        $this->hasMany('id', 'Autos', 'brand_id');
+        $this->hasMany('id', 'Cars', 'brand_id');
     }
 }
 ```
 
 <a name='creating'></a>
 
-## PHQL Abfragen erstellen
+## Creating PHQL Queries
 
 PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query):
 
@@ -110,13 +110,13 @@ PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Q
 
 use Phalcon\Mvc\Model\Query;
 
-// Abfrage instantiieren
+// Instantiate the Query
 $query = new Query(
-    'SELECT * FROM Autos',
+    'SELECT * FROM Cars',
     $this->getDI()
 );
 
-// Abfragen ausführen und falls vorhanden ein Ergebnis erhalten
+// Execute the query returning a result if any
 $cars = $query->execute();
 ```
 
@@ -125,12 +125,12 @@ From a controller or a view, it's easy to create/execute them using an injected 
 ```php
 <?php
 
-// Einfache Abfrage ausführen
-$query = $this->modelsManager->createQuery('SELECT * FROM Autos');
+// Executing a simple query
+$query = $this->modelsManager->createQuery('SELECT * FROM Cars');
 $cars  = $query->execute();
 
-// Mit gebundenen Parametern
-$query = $this->modelsManager->createQuery('SELECT * FROM Autos WHERE name = :name:');
+// With bound parameters
+$query = $this->modelsManager->createQuery('SELECT * FROM Cars WHERE name = :name:');
 $cars  = $query->execute(
     [
         'name' => 'Audi',
@@ -143,14 +143,14 @@ Or simply execute it:
 ```php
 <?php
 
-// Einfache Abfrage ausführen
+// Executing a simple query
 $cars = $this->modelsManager->executeQuery(
-    'SELECT * FROM Autos'
+    'SELECT * FROM Cars'
 );
 
-// Mit gebundenen Parametern ausführen
+// Executing with bound parameters
 $cars = $this->modelsManager->executeQuery(
-    'SELECT * FROM Autos WHERE name = :name:',
+    'SELECT * FROM Cars WHERE name = :name:',
     [
         'name' => 'Audi',
     ]
@@ -167,11 +167,11 @@ As the familiar SQL, PHQL allows querying of records using the SELECT statement 
 <?php
 
 $query = $manager->createQuery(
-    'SELECT * FROM Autos ORDER BY Autos.name'
+    'SELECT * FROM Cars ORDER BY Cars.name'
 );
 
 $query = $manager->createQuery(
-    'SELECT Autos.name FROM Autos ORDER BY Autos.name'
+    'SELECT Cars.name FROM Cars ORDER BY Cars.name'
 );
 ```
 
@@ -180,13 +180,13 @@ Classes in namespaces are also allowed:
 ```php
 <?php
 
-$phql  = 'SELECT * FROM Formel\Autos ORDER BY Formel\Autos.name';
+$phql  = 'SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name';
 $query = $manager->createQuery($phql);
 
-$phql  = 'SELECT Formel\Autos.name FROM Formel\Autos ORDER BY Formel\Autos.name';
+$phql  = 'SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name';
 $query = $manager->createQuery($phql);
 
-$phql  = 'SELECT c.name FROM Forml\Autos c ORDER BY c.name';
+$phql  = 'SELECT c.name FROM Formula\Cars c ORDER BY c.name';
 $query = $manager->createQuery($phql);
 ```
 
@@ -195,7 +195,7 @@ Most of the SQL standard is supported by PHQL, even nonstandard directives such 
 ```php
 <?php
 
-$phql = 'SELECT c.name FROM Autos AS c WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100';
+$phql = 'SELECT c.name FROM Cars AS c WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100';
 
 $query = $manager->createQuery($phql);
 ```
@@ -209,7 +209,7 @@ Depending on the type of columns we query, the result type will vary. If you ret
 ```php
 <?php
 
-$phql = 'SELECT c.* FROM Autos AS c ORDER BY c.name';
+$phql = 'SELECT c.* FROM Cars AS c ORDER BY c.name';
 
 $cars = $manager->executeQuery($phql);
 
@@ -223,7 +223,7 @@ This is exactly the same as:
 ```php
 <?php
 
-$cars = Autos::find(
+$cars = Cars::find(
     [
         'order' => 'name'
     ]
@@ -239,7 +239,7 @@ Complete objects can be modified and re-saved in the database because they repre
 ```php
 <?php
 
-$phql = 'SELECT c.id, c.name FROM Autos AS c ORDER BY c.name';
+$phql = 'SELECT c.id, c.name FROM Cars AS c ORDER BY c.name';
 
 $cars = $manager->executeQuery($phql);
 
@@ -255,7 +255,7 @@ These values that don't represent complete objects are what we call scalars. PHQ
 ```php
 <?php
 
-$phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Autos AS c ORDER BY c.name";
+$phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
 
 $cars = $manager->executeQuery($phql);
 
@@ -269,7 +269,7 @@ As we can query complete objects or scalars, we can also query both at once:
 ```php
 <?php
 
-$phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Autos AS c ORDER BY c.name';
+$phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
 
 $result = $manager->executeQuery($phql);
 ```
@@ -281,8 +281,8 @@ The result in this case is an object [Phalcon\Mvc\Model\Resultset\Complex](api/P
 
 foreach ($result as $row) {
     echo 'Name: ', $row->cars->name, "\n";
-    echo 'Preis: ', $row->cars->price, "\n";
-    echo 'Steuern: ', $row->taxes, "\n";
+    echo 'Price: ', $row->cars->price, "\n";
+    echo 'Taxes: ', $row->taxes, "\n";
 }
 ```
 
@@ -297,7 +297,7 @@ It's easy to request records from multiple models using PHQL. Most kinds of Join
 ```php
 <?php
 
-$phql = 'SELECT Autos.name AS car_name, Brands.name AS brand_name FROM Autos JOIN Marken';
+$phql = 'SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands';
 
 $rows = $manager->executeQuery($phql);
 
@@ -312,16 +312,16 @@ By default, an INNER JOIN is assumed. You can specify the type of JOIN in the qu
 ```php
 <?php
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos INNER JOIN Marken';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands';
 $rows = $manager->executeQuery($phql);
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos LEFT JOIN Marken';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars LEFT JOIN Brands';
 $rows = $manager->executeQuery($phql);
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos LEFT OUTER JOIN Marken';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands';
 $rows = $manager->executeQuery($phql);
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos CROSS JOIN Marken';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands';
 $rows = $manager->executeQuery($phql);
 ```
 
@@ -330,7 +330,7 @@ It is also possible to manually set the conditions of the JOIN:
 ```php
 <?php
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos INNER JOIN Marken ON Marken.id = Autos.brands_id';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id';
 
 $rows = $manager->executeQuery($phql);
 ```
@@ -340,13 +340,13 @@ Also, the joins can be created using multiple tables in the FROM clause:
 ```php
 <?php
 
-$phql = 'SELECT Autos.*, Marken.* FROM Autos, Marken WHERE Marken.id = Autos.brands_id';
+$phql = 'SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id';
 
 $rows = $manager->executeQuery($phql);
 
 foreach ($rows as $row) {
-    echo 'Auto: ', $row->cars->name, "\n";
-    echo 'Marke: ', $row->brands->name, "\n";
+    echo 'Car: ', $row->cars->name, "\n";
+    echo 'Brand: ', $row->brands->name, "\n";
 }
 ```
 
@@ -355,13 +355,13 @@ If an alias is used to rename the models in the query, those will be used to nam
 ```php
 <?php
 
-$phql = 'SELECT c.*, b.* FROM Autos c, Marken b WHERE b.id = c.brands_id';
+$phql = 'SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id';
 
 $rows = $manager->executeQuery($phql);
 
 foreach ($rows as $row) {
-    echo 'Auto: ', $row->c->name, "\n";
-    echo 'Marke: ', $row->b->name, "\n";
+    echo 'Car: ', $row->c->name, "\n";
+    echo 'Brand: ', $row->b->name, "\n";
 }
 ```
 
@@ -394,33 +394,33 @@ The following examples show how to use aggregations in PHQL:
 ```php
 <?php
 
-// Wieviel kosten alle Autos zusammen?
-$phql = 'SELECT SUM(price) AS summatory FROM Autos';
+// How much are the prices of all the cars?
+$phql = 'SELECT SUM(price) AS summatory FROM Cars';
 $row  = $manager->executeQuery($phql)->getFirst();
 echo $row['summatory'];
 
-// Viele Auto pro Marke gibt es?
-$phql = 'SELECT Autos.brand_id, COUNT(*) FROM Autos GROUP BY Autos.brand_id';
+// How many cars are by each brand?
+$phql = 'SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
     echo $row->brand_id, ' ', $row['1'], "\n";
 }
 
-// Wieviele Autos pro Marke gibt es?
-$phql = 'SELECT Marken.name, COUNT(*) FROM Autos JOIN Marken GROUP BY 1';
+// How many cars are by each brand?
+$phql = 'SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
     echo $row->name, ' ', $row['1'], "\n";
 }
 
-$phql = 'SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Autos';
+$phql = 'SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
     echo $row['maximum'], ' ', $row['minimum'], "\n";
 }
 
-// Anzahl eindeutiger Marken
-$phql = 'SELECT COUNT(DISTINCT brand_id) AS brandId FROM Autos';
+// Count distinct used brands
+$phql = 'SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars';
 $rows = $manager->executeQuery($phql);
 foreach ($rows as $row) {
     echo $row->brandId, "\n";
@@ -470,7 +470,7 @@ Also, as part of PHQL, prepared parameters automatically escape the input data, 
 ```php
 <?php
 
-$phql = 'SELECT * FROM Autos WHERE Autos.name = :name:';
+$phql = 'SELECT * FROM Cars WHERE Cars.name = :name:';
 $cars = $manager->executeQuery(
     $phql,
     [
@@ -478,7 +478,7 @@ $cars = $manager->executeQuery(
     ]
 );
 
-$phql = 'SELECT * FROM Autos WHERE Cars.name = ?0';
+$phql = 'SELECT * FROM Cars WHERE Cars.name = ?0';
 $cars = $manager->executeQuery(
     $phql,
     [
@@ -496,18 +496,18 @@ With PHQL it's possible to insert data using the familiar INSERT statement:
 ```php
 <?php
 
-// Ohne Spaltenangabe einfügen
-$phql = 'INSERT INTO Autos VALUES (NULL, "Lamborghini Espada", '
+// Inserting without columns
+$phql = 'INSERT INTO Cars VALUES (NULL, "Lamborghini Espada", '
       . '7, 10000.00, 1969, "Grand Tourer")';
 $manager->executeQuery($phql);
 
-// Spaltennamen angeben
-$phql = 'INSERT INTO Autos (name, brand_id, year, style) '
+// Specifying columns to insert
+$phql = 'INSERT INTO Cars (name, brand_id, year, style) '
       . 'VALUES ("Lamborghini Espada", 7, 1969, "Grand Tourer")';
 $manager->executeQuery($phql);
 
-// Nutzung von Platzhaltern
-$phql = 'INSERT INTO Autos (name, brand_id, year, style) '
+// Inserting using placeholders
+$phql = 'INSERT INTO Cars (name, brand_id, year, style) '
       . 'VALUES (:name:, :brand_id:, :year:, :style)';
 $manager->executeQuery(
     $phql,
@@ -528,13 +528,13 @@ Phalcon doesn't only transform the PHQL statements into SQL. All events and busi
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Message;
 
-class Autos extends Model
+class Cars extends Model
 {
     public function beforeCreate()
     {
         if ($this->price < 10000) {
             $this->appendMessage(
-                new Message('Ein Auto kann nicht weniger als $ 10.000 kosten')
+                new Message('A car cannot cost less than $ 10,000')
             );
 
             return false;
@@ -548,7 +548,7 @@ If we made the following `INSERT` in the models Cars, the operation will not be 
 ```php
 <?php
 
-$phql = "INSERT INTO Autos VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
+$phql = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
 
 $result = $manager->executeQuery($phql);
 
@@ -568,20 +568,20 @@ Updating rows is very similar than inserting rows. As you may know, the instruct
 ```php
 <?php
 
-// Eine einzelne Spalten ändern
-$phql = 'UPDATE Autos SET price = 15000.00 WHERE id = 101';
+// Updating a single column
+$phql = 'UPDATE Cars SET price = 15000.00 WHERE id = 101';
 $manager->executeQuery($phql);
 
-// mehrere Spalten ändern
-$phql = 'UPDATE Autos SET price = 15000.00, type = "Sedan" WHERE id = 101';
+// Updating multiples columns
+$phql = 'UPDATE Cars SET price = 15000.00, type = "Sedan" WHERE id = 101';
 $manager->executeQuery($phql);
 
-// Mehrere Datensätze ändern
-$phql = 'UPDATE Autos SET price = 7000.00, type = "Sedan" WHERE brands_id > 5';
+// Updating multiples rows
+$phql = 'UPDATE Cars SET price = 7000.00, type = "Sedan" WHERE brands_id > 5';
 $manager->executeQuery($phql);
 
-// Verwendung von Platzhaltern
-$phql = 'UPDATE Autos SET price = ?0, type = ?1 WHERE brands_id > ?2';
+// Using placeholders
+$phql = 'UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2';
 $manager->executeQuery(
     $phql,
     [
@@ -594,7 +594,7 @@ $manager->executeQuery(
 
 An `UPDATE` statement performs the update in two phases:
 
-* Zuerst, wenn das `UPDATE` eine `WHERE`-Klausel hat ruft sie alle Objekte, die diesen Kriterien entsprechen,
+* First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
 * Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
 This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
@@ -602,7 +602,7 @@ This way of operation allows that events, virtual foreign keys and validations t
 ```php
 <?php
 
-$phql = 'UPDATE Autos SET price = 15000.00 WHERE id > 101';
+$phql = 'UPDATE Cars SET price = 15000.00 WHERE id > 101';
 
 $result = $manager->executeQuery($phql);
 
@@ -650,16 +650,16 @@ When a record is deleted the events related to the delete operation will be exec
 ```php
 <?php
 
-// Einen einzelnen Datensatz löschen
-$phql = 'DELETE FROM Autos WHERE id = 101';
+// Deleting a single row
+$phql = 'DELETE FROM Cars WHERE id = 101';
 $manager->executeQuery($phql);
 
-// Mehrere Datensätze löschen
-$phql = 'DELETE FROM Autos WHERE id > 100';
+// Deleting multiple rows
+$phql = 'DELETE FROM Cars WHERE id > 100';
 $manager->executeQuery($phql);
 
-// Verwendung von Platzhaltern
-$phql = 'DELETE FROM Autos WHERE id BETWEEN :initial: AND :final:';
+// Using placeholders
+$phql = 'DELETE FROM Cars WHERE id BETWEEN :initial: AND :final:';
 $manager->executeQuery(
     $phql,
     [
@@ -674,8 +674,8 @@ $manager->executeQuery(
 ```php
 <?php
 
-// Mehere Datensätze löschen
-$phql = 'DELETE FROM Autos WHERE id > 100';
+// Deleting multiple rows
+$phql = 'DELETE FROM Cars WHERE id > 100';
 
 $result = $manager->executeQuery($phql);
 
@@ -697,7 +697,7 @@ A builder is available to create PHQL queries without the need to write PHQL sta
 ```php
 <?php
 
-// Das komplette Set holen
+// Getting a whole set
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->join('RobotsParts')
@@ -705,7 +705,7 @@ $robots = $this->modelsManager->createBuilder()
     ->getQuery()
     ->execute();
 
-// Den ersten Datensatz holen
+// Getting the first row
 $robots = $this->modelsManager->createBuilder()
     ->from('Robots')
     ->join('RobotsParts')
@@ -974,13 +974,13 @@ class Robots extends Model
 {
     public static function findByCreateInterval()
     {
-        // Eine rohe SQL Anweisung
+        // A raw SQL statement
         $sql = 'SELECT * FROM robots WHERE id > 0';
 
-        // Basis Model
+        // Base model
         $robot = new Robots();
 
-        // Abfrage ausführen
+        // Execute the query
         return new Resultset(
             null,
             $robot,
@@ -1002,13 +1002,13 @@ class Robots extends Model
 {
     public static function findByRawSql($conditions, $params = null)
     {
-        // Eine rohe SQL Anweisung
+        // A raw SQL statement
         $sql = 'SELECT * FROM robots WHERE $conditions';
 
-        // Basis model
+        // Base model
         $robot = new Robots();
 
-        // Abfrage ausführen
+        // Execute the query
         return new Resultset(
             null,
             $robot,
@@ -1037,7 +1037,7 @@ $robots = Robots::findByRawSql(
 
 Some things to keep in mind when using PHQL:
 
-* Bei Klassennamen ist die Groß-/Kleinschreibung zu beachte. Wenn eine Klasse nicht mit demselben Namen definiert ist, wie sie erstellt wurde, könnte das zu einem unerwarteten Verhalten in Betriebssystemen mit Groß-/Kleinschreibung Dateisysteme wie Linux führen.
-* Das richtigen Charset muss bei der Datenbankverbindung angegeben werden, um Parameter erfolgreich binden zu können.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
+* Correct charset must be defined in the connection to bind parameters with success.
 * Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
 * If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
