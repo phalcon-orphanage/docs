@@ -6,9 +6,9 @@ title: 'Phalcon\Session\AdapterInterface'
 ---
 # Interface **Phalcon\Session\AdapterInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **start** ()
 
@@ -58,6 +58,6 @@ abstract public **setName** (*mixed* $name)
 
 ...
 
-عمومی انتزاعی **دریافت نام** ()
+abstract public **getName** ()
 
 ...
