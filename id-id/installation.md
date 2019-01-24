@@ -9,13 +9,13 @@ version: '4.0'
 
 <a name='requirements'></a>
 
-# Persyaratan
+# Requirements
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
 <a name='requirements-hardware'></a>
 
-## Perangkat Keras
+## Hardware
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -23,7 +23,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Perangkat Lunak
+## Software
 
 * PHP >= 5.5
 
@@ -33,8 +33,8 @@ Phalcon need the following extensions to run (minimal):
 
 * `curl`
 * `gettext`
-* `gd2` (untuk menggunakan class`Phalcon\Image\Adapter\Gd`)
-* `libpcre3-dev` (Debian / Ubuntu), `pcre-devel` (CentOS), `pcre` (macos)
+* `gd2` (to use the `Phalcon\Image\Adapter\Gd` class)
+* `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * `json`
 * `mbstring`
 * `pdo_*`
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### Opsional tergantung kebutuhan aplikasi anda
+### Optional depending on the needs of your application
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -52,7 +52,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='installation'></a>
 
-# Pemasangan
+# Installation
 
 Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
 
@@ -64,17 +64,17 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### Distribusi berbasis DEB (Debian, Ubuntu, dll.)
+### DEB based distributions (Debian, Ubuntu, etc.)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Instalasi repositori
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Rilis stabil
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -84,7 +84,7 @@ or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Rilis malam
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Instalasi Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### AKSES tambahan
+#### Additional PPAs
 
 #### Ondřej Surý
 
@@ -143,13 +143,13 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Instalasi repositori
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Rilis stabil
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -159,7 +159,7 @@ or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Rilis malam
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Instalasi Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -222,11 +222,11 @@ pkg_add -r phalcon
 ### Source
 
 ```bash
-ekspor CFLAGS="- O2 --fvisibility=hidden"
+export CFLAGS="-O2 --fvisibility=hidden"
 
-cd/usr/ports/www/phalcon
+cd /usr/ports/www/phalcon
 
-membuat instalasi bersih
+make install clean
 ```
 
 <a name='installation-gentoo'></a>
@@ -241,9 +241,9 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Persyaratan
+### Requirements
 
-* Sumber daya pengembangan PHP 5.5.x / 5.6.x / 7.0.x / 7.1.x
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
 
 <a name='installation-macos-brew'></a>
@@ -281,7 +281,7 @@ Restart your webserver.
 
 <a name='installation-windows'></a>
 
-## Jendela
+## Windows
 
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalconphp.com/en/download/windows) page.
 
@@ -291,7 +291,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Mengetik              |
+| Architecture | Version | Type                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |
@@ -320,10 +320,10 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Persyaratan
+### Requirements
 
-* Sumber daya pengembangan PHP 5.5.x / 5.6.x / 7.0.x / 7.1.x
-* Kompiler GCC (Linux / Solaris / FreeBSD) atau Xcode (macos)
+* PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
+* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
@@ -352,7 +352,7 @@ sudo yum install php-devel pcre-devel gcc make
 We first need to clone Phalcon from the GitHub repository
 
 ```bash
-klon git https://github.com/phalcon/cphalcon
+git clone https://github.com/phalcon/cphalcon
 ```
 
 and now build the extension
@@ -365,20 +365,20 @@ sudo ./install
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
-# Suse: Tambahkan file bernama phalcon.ini di /etc/php5/conf.d/ dengan konten ini:
-ekstensi=phalcon.so
+# Suse: Add a file called phalcon.ini in /etc/php5/conf.d/ with this content:
+extension=phalcon.so
 
-# CentOS / RedHat / Fedora: Tambahkan file bernama phalcon.ini di /etc/php.d/ dengan konten ini:
-ekstensi=phalcon.so
+# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+extension=phalcon.so
 
-# Ubuntu / Debian dengan apache2: Tambahkan file bernama 30-phalcon.ini di /etc/php5/apache2/conf.d/ dengan konten ini:
-ekstensi=phalcon.so
+# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php5/apache2/conf.d/ with this content:
+extension=phalcon.so
 
-# Ubuntu / Debian dengan php5-fpm: Tambahkan file yang disebut 30-phalcon.ini di /etc/php5/fpm/conf.d/ dengan konten ini:
-ekstensi=phalcon.so
+# Ubuntu/Debian with php5-fpm: Add a file called 30-phalcon.ini in /etc/php5/fpm/conf.d/ with this content:
+extension=phalcon.so
 
-# Ubuntu / Debian dengan php5-cli: Tambahkan file bernama 30-phalcon.ini di /etc/php5/cli/conf.d/ dengan konten ini:
-ekstensi=phalcon.so
+# Ubuntu/Debian with php5-cli: Add a file called 30-phalcon.ini in /etc/php5/cli/conf.d/ with this content:
+extension=phalcon.so
 ```
 
 <a name='installation-sources-advanced'></a>
@@ -388,9 +388,9 @@ ekstensi=phalcon.so
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
 ```bash
-cd cphalcon / build
+cd cphalcon/build
 
-# Satu dari berikut:
+# One of the following:
 sudo ./install --arch 32bits
 sudo ./install --arch 64bits
 sudo ./install --arch safe
@@ -399,45 +399,45 @@ sudo ./install --arch safe
 If the automatic installer fails you can build the extension manually:
 
 ```bash
-klon git https://github.com/phalcon/cphalcon
+git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# CATATAN: untuk PHP 7 yang harus anda gunakan
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
-# atau
+# or
 # cd cphalcon/build/php7/64bits
 
-bersihkan
-phpize --bersihkan
+make clean
+phpize --clean
 
-ekspor CFLAGS="- O2 --fvisibility=hidden"
+export CFLAGS="-O2 --fvisibility=hidden"
 ./configure --enable-phalcon
 
-membuat
-buat install
+make
+make install
 ```
 
 If you have specific php versions running:
 
 ```bash
-klon git https://github.com/phalcon/cphalcon
+git clone https://github.com/phalcon/cphalcon
 # cd cphalcon/build/php5/32bits
 cd cphalcon/build/php5/64bits
 
-# CATATAN: untuk PHP 7 yang harus anda gunakan
+# NOTE: for PHP 7 you have to use
 # cd cphalcon/build/php7/32bits
-# atau
+# or
 # cd cphalcon/build/php7/64bits
 
-bersihkan
+make clean
 /opt/php-5.6.15/bin/phpize --clean
 
-ekspor CFLAGS="- O2 --fvisibility=hidden"
+export CFLAGS="-O2 --fvisibility=hidden"
 ./configure --with-php-config=/opt/php-5.6.15/bin/php-config --enable-phalcon
 
-membuat
-buat install
+make
+make install
 ```
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
