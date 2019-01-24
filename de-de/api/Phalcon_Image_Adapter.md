@@ -8,11 +8,11 @@ title: 'Phalcon\Image\Adapter'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
 
 All image adapters must use this class
 
-## Methods
+## Methoden
 
 public **getImage** ()
 
