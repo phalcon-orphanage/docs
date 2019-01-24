@@ -6,14 +6,14 @@ title: 'Phalcon\Annotations\ReaderInterface'
 ---
 # Interface **Phalcon\Annotations\ReaderInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/readerinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **parse** (*mixed* $className)
 
-Reads annotations from the class dockblocks, its methods and/or properties
+Liest Anmerkungen aus der Klasse Dockblocks, seine Methoden und Eigenschaften
 
 abstract public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-Parses a raw doc block returning the annotations found
+Analysiert einen rohen Doc-Block und gibt die gefundenen Anmerkungen zurück
