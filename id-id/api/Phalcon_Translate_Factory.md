@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Terjemahan\Pabrik'
+title: 'Phalcon\Translate\Factory'
 ---
 # Class **Phalcon\Translate\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Terjemahan\Pabrik'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
 
-Menggunakan pilihan 'adapter' dengan memenuhi kelas adaptor
+Loads Translate Adapter class using 'adapter' option
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $translate = Factory::load($options);
 
 ```
 
-## Metode
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
