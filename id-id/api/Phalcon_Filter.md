@@ -8,7 +8,7 @@ title: 'Phalcon\Filter'
 
 *implements* [Phalcon\FilterInterface](Phalcon_FilterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
 
 The Phalcon\Filter component provides a set of commonly needed data filters. It provides object oriented wrappers to the php filter extension. Also allows the developer to define his/her own filters
 
@@ -26,48 +26,48 @@ $filter->sanitize("!100a019.01a", "float"); // returns "100019.01"
 
 ## Constants
 
-*string* **FILTER_EMAIL**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_ABSINT**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_INT**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_INT_CAST**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_STRING**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_FLOAT**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_FLOAT_CAST**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_ALPHANUM**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_TRIM**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_STRIPTAGS**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_LOWER**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_UPPER**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_URL**
+*tali* **DEFAULT_DELIMITER**
 
-*string* **FILTER_SPECIAL_CHARS**
+*tali* **DEFAULT_DELIMITER**
 
-## Methods
+## Metode
 
-public **add** (*mixed* $name, *mixed* $handler)
+public **addInherit** (*mixed* $name, *mixed* $handler)
 
-Adds a user-defined filter
+Menambahkan filter yang ditentukan pengguna  
 
-public **sanitize** (*mixed* $value, *mixed* $filters, [*mixed* $noRecursive])
+publik **tambahkandilineJs** (*campuran* $value, [*campuran* $filters], [*campuran* $noRecursive])
 
-Sanitizes a value with a specified single or set of filters
+Sanitasi nilai dengan satu atau set filter tertentu  
 
-protected **_sanitize** (*mixed* $value, *mixed* $filter)
+terlindung **_ukuran** (*campuran* $value, *campuran* $filter)
 
-Internal sanitize wrapper to filter_var
+Pembungkus pembersih internal untuk filter_var  
 
 public **getFilters** ()
 
-Return the user-defined filters in the instance
+Kembalikan filter yang ditentukan pengguna di contoh  
