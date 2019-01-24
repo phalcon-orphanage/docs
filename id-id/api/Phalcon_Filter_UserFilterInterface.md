@@ -6,10 +6,10 @@ title: 'Phalcon\Filter\UserFilterInterface'
 ---
 # Interface **Phalcon\Filter\UserFilterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/userfilterinterface.zep)
 
-## Metode
+## Methods
 
-abstrak umum **filter** (*campuran* $value)
+abstract public **filter** (*mixed* $value)
 
 ...
