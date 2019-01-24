@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\QueryBuilder'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
 Pagination using a PHQL query builder as source of data
 
@@ -34,7 +34,7 @@ $paginator = new QueryBuilder(
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** (*array* $config)
 
@@ -56,12 +56,12 @@ Returns a slice of the resultset to show in the pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set the current page number
+Legen Sie die aktuelle Seitenzahl fest
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set current rows limit
+Legt die maximale Anzahl Zeilen pro Seite fest
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Get current rows limit
+Gibt die maximale Anzahl Zeilen pro Seite zurück
