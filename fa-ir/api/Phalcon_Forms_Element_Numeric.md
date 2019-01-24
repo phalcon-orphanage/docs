@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Numeric'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
 
 Component INPUT[type=number] for forms
 
-## روش ها
+## Methods
 
 public **render** ([*array* $attributes])
 
