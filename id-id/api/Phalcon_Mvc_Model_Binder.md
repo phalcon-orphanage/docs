@@ -8,21 +8,21 @@ title: 'Phalcon\Mvc\Model\Binder'
 
 *implements* [Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder.zep)
 
 Phalcon\Mvc\Model\Binding
 
-Ini adalah kelas untuk model mengikat menjadi params untuk handler
+This is an class for binding models into params for handler
 
-## Metode
+## Methods
 
 public **getBoundModels** ()
 
-Array untuk menyimpan model terikat aktif
+Array for storing active bound models
 
-publik **getOriginalValues** ()
+public **getOriginalValues** ()
 
-Array untuk nilai asli
+Array for original values
 
 public **__construct** ([[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
@@ -30,24 +30,24 @@ Phalcon\Mvc\Model\Binder constructor
 
 public **setCache** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache)
 
-Mendapat contoh tembolok
+Gets cache instance
 
 public **getCache** ()
 
-Menetapkan contoh tembolok
+Sets cache instance
 
 public **bindToHandler** (*mixed* $handler, *array* $params, *mixed* $cacheKey, [*mixed* $methodName])
 
-Bind model menjadi params di handler yang tepat
+Bind models into params in proper handler
 
 protected **findBoundModel** (*mixed* $paramValue, *mixed* $className)
 
-Temukan model dengan nilai param.
+Find the model by param value.
 
 protected **getParamsFromCache** (*mixed* $cacheKey)
 
-Dapatkan params kelas dari cache dengan kunci
+Get params classes from cache by key
 
 protected **getParamsFromReflection** (*mixed* $handler, *array* $params, *mixed* $cacheKey, *mixed* $methodName)
 
-Dapatkan params modifikasi untuk handler menggunakan refleksi
+Get modified params for handler using reflection
