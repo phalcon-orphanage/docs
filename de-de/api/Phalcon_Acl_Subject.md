@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Subject'
 
 **implements**{:.c-mod} [Phalcon\Acl\SubjectInterface](Phalcon_Acl_SubjectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl/subject.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subject.zep)
 
 This class defines a subject entity and its description
 
-## Methods
+## Methoden
 
 ```php
 public __construct( string $name [, string $description = NULL] )
