@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Request'
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 Encapsulates request information for easy and secure access from application controllers.
 
@@ -31,7 +31,7 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-## Methods
+## Méthodes
 
 public **getHttpMethodParameterOverride** ()
 
