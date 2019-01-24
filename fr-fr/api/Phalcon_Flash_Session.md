@@ -10,11 +10,11 @@ title: 'Phalcon\Flash\Session'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Méthodes
+## Methods
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
