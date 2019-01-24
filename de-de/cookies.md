@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Cookies Management
+# Verwaltung der Cookies
 
 [Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
@@ -60,7 +60,7 @@ class SessionController extends Controller
 
 <a name='encryption-decryption'></a>
 
-## Encryption/Decryption of Cookies
+## Verschlüsselung/Entschlüsselung von Cookies
 
 By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
 
