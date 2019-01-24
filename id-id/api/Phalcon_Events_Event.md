@@ -8,62 +8,62 @@ title: 'Phalcon\Events\Event'
 
 *implements* [Phalcon\Events\EventInterface](Phalcon_Events_EventInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
-Kelas ini menawarkan informasi kontekstual tentang kejadian yang dipecat di EventsManager
+This class offers contextual information of a fired event in the EventsManager
 
-## Metode
+## Methods
 
-publik **berhenti** ()
+public **getType** ()
 
-Jenis Aktivitas
+Event type
 
-publik **mendapatkan Sumber** ()
+public **getSource** ()
 
-Sumber Aktivitas
+Event source
 
-publik **mendapatkan Data** ()
+public **getData** ()
 
-Data Acara
+Event data
 
-publik **__buat** (*rangkaian* $type, *benda* $source, [*dicampur* $data], [*boolean* $cancelable])
+public **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
 Phalcon\Events\Event constructor
 
-publik **mendapatkan Data** ([*dicampur* $data])
+public **setData** ([*mixed* $data])
 
-Atur Data Acara.
+Sets event data.
 
-publik **perangkat Tipe** (*dicampur* $type)
+public **setType** (*mixed* $type)
 
-Atur Tipe Acara.
+Sets event type.
 
-publik ** berhenti ** ()
+public **stop** ()
 
-Menghentikan acara mencegah penyiaran.
+Stops the event preventing propagation.
 
 ```php
 <?php
 
-if ($event->dapat Dibatalkan()) {
-    $event->berhenti();
+if ($event->isCancelable()) {
+    $event->stop();
 }
 
 ```
 
-publik **dpat Dihentikan** ()
+public **isStopped** ()
 
-Periksa apakah acara tersebut saat ini dihentikan.
+Check whether the event is currently stopped.
 
-publik **dapat Dibatalkan** ()
+public **isCancelable** ()
 
-Periksa apakah acara tersebut dapat dibatalkan.
+Check whether the event is cancelable.
 
 ```php
 <?php
 
-if ($event->dapat Dibatalkan()) {
-    $event->berhenti();
+if ($event->isCancelable()) {
+    $event->stop();
 }
 
 ```
