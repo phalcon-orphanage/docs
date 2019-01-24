@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\None'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
@@ -17,11 +17,11 @@ Discards any kind of frontend data input. This frontend does not have expiration
 
 <?php
 
-//Erzeuge einen "None Cache"
+//Create a None Cache
 $frontCache = new \Phalcon\Cache\Frontend\None();
 
-// Erzeugt eine Komponente, die "Data" in ein "Memcached" backend cached
-// Memcached Verbindungseinstellungen
+// Create the component that will cache "Data" to a "Memcached" backend
+// Memcached connection settings
 $cache = new \Phalcon\Cache\Backend\Memcache(
     $frontCache,
     [
@@ -32,12 +32,12 @@ $cache = new \Phalcon\Cache\Backend\Memcache(
 
 $cacheKey = "robots_order_id.cache";
 
-// Das Frontend wird immer die Daten zurückgeben, die schon das backend zurückgegeben hatte
+// This Frontend always return the data as it's returned by the backend
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // Dieser Cache prüft nicht auf Ablaufdaten, sodass die Daten immer abgelaufen sind
-    // Ruft die Datenbank auf und übergibt die variable
+    // This cache doesn't perform any expiration checking, so the data is always expired
+    // Make the database call and populate the variable
     $robots = Robots::find(
         [
             "order" => "id",
@@ -47,39 +47,39 @@ if ($robots === null) {
     $cache->save($cacheKey, $robots);
 }
 
-// $robots benutzen :)
+// Use $robots :)
 foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }
 
 ```
 
-## Methoden
+## Methods
 
 public **getLifetime** ()
 
-Renditen Cache Lebenszeit, immer eine Sekunde auslaufenden Inhalt
+Returns cache lifetime, always one second expiring content
 
 public **isBuffering** ()
 
-Prüft, ob das Frontend Ausgaben puffert, ansonsten false
+Check whether if frontend is buffering output, always false
 
 public **start** ()
 
-Startet Frontend Ausgabe
+Starts output frontend
 
 public *string* **getContent** ()
 
-Liefert einen zwischengespeicherten Inhalt
+Returns output cached content
 
 public **stop** ()
 
-Stoppt die Frontend Ausgabe
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Bereitet zu speichernden Daten vor
+Prepare data to be stored
 
 public **afterRetrieve** (*mixed* $data)
 
-Bereitet die Daten, welche vom Benutzer abgerufen werden, vor
+Prepares data to be retrieved to user
