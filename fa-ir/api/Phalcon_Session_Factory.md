@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/factory.zep)
 
 Loads Session Adapter class using 'adapter' option
 
@@ -32,7 +32,7 @@ $session = Factory::load($options);
 
 ```
 
-## روش ها
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
