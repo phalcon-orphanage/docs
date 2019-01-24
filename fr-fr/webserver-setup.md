@@ -231,7 +231,7 @@ If your uri contains characters other than English, you might need to resort to 
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### Configuration d’Apache
 
 If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
