@@ -1,18 +1,18 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Cli\Task'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Cli\Task'
+---
 # Class **Phalcon\Cli\Task**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](Phalcon_Cli_TaskInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/task.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
-Every command-line task should extend this class that encapsulates all the task functionality
+Jede Befehlszeile Aufgabe sollte diese Klasse erweitern, um die Aufgaben Funktionalität zu kapseln
 
 A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method
 
@@ -21,7 +21,7 @@ A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or a
 
 class HelloTask extends \Phalcon\Cli\Task
 {
-    // This action will be executed by default
+    // Dies Aktion wird standardmäßig ausgeführt
     public function mainAction()
     {
 
@@ -35,7 +35,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ```
 
-## Methods
+## Methoden
 
 final public **__construct** ()
 
@@ -51,12 +51,12 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Legt den Event-manager fest
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Magische Methode __get
