@@ -8,21 +8,21 @@ title: 'Phalcon\Paginator\Adapter'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
 
-## Methoden
+## Methods
 
 public **setCurrentPage** (*mixed* $page)
 
-Legen Sie die aktuelle Seitenzahl fest
+Set the current page number
 
 public **setLimit** (*mixed* $limitRows)
 
-Legt die maximale Anzahl Zeilen pro Seite fest
+Set current rows limit
 
 public **getLimit** ()
 
-Gibt die maximale Anzahl Zeilen pro Seite zurück
+Get current rows limit
 
 abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
