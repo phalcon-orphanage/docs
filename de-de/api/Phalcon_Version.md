@@ -6,11 +6,11 @@ title: 'Phalcon\Version'
 ---
 # Class **Phalcon\Version**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
-This class allows to get the installed version of the framework
+Diese Klasse ermöglicht es, die installierte Version des Frameworks zu erhalten
 
-## Constants
+## Konstanten
 
 *integer* **VERSION_MAJOR**
 
@@ -22,19 +22,19 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Methods
+## Methoden
 
 protected static **_getVersion** ()
 
-Area where the version number is set. The format is as follows: ABBCCDE A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stable E - Special release version i.e. RC1, Beta2 etc.
+Bereich wo die Versionsnummer festgelegt wird. Das Format ist wie folgt aufgebaut: ABBCCDE A - Major version B - Med version (zweistellig) C - Min version (zweistellig) D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stabil E - Special release version i.e. RC1, Beta2 etc.
 
 final protected static **_getSpecial** (*mixed* $special)
 
-Translates a number to a special release If Special release = 1 this function will return ALPHA
+Übersetzt eine Zahl, in eine Special release Wenn das special Release = 1 ist, gibt die Funktion ALPHA zurück
 
 public static **get** ()
 
-Returns the active version (string)
+Gibt die aktive Version zurück (Zeichenfolge)
 
 ```php
 <?php
@@ -45,7 +45,7 @@ echo Phalcon\Version::get();
 
 public static **getId** ()
 
-Returns the numeric active version
+Gibt die numerische aktive version zurück
 
 ```php
 <?php
