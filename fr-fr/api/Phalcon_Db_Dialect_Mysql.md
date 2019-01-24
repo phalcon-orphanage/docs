@@ -10,11 +10,11 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 Generates database specific SQL for the MySQL RDBMS
 
-## Methods
+## Méthodes
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
@@ -196,7 +196,7 @@ echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Gets a list of columns with escaped identifiers
+Obtient une liste de colonnes avec échappé identifiants
 
 ```php
 <?php
@@ -216,23 +216,23 @@ Resolve Column expressions
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Transforme une représentation intermédiaire pour une expression dans un système de base de données valide expression
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Transform an intermediate representation of a schema/table into a database system valid expression
+Transformer une représentation intermédiaire d'un schéma/tableau dans un système de base de données valide expression
 
 public **select** (*array* $definition) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Builds a SELECT statement
+Construit une instruction SELECT
 
 public **supportsSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Checks whether the platform supports savepoints
+Vérifie si la plate-forme prend en charge les points d'enregistrement
 
 public **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Checks whether the platform supports releasing savepoints.
+Vérifie si la plate-forme appuie la diffusion de points de sauvegarde.
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -260,7 +260,7 @@ Resolve qualified expressions
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve binary operations expressions
+Résoudre des opérations binaires expressions
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -284,7 +284,7 @@ Resolve CAST of values
 
 final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve CONVERT of values encodings
+Résoudre CONVERTIR des valeurs de codages
 
 final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
