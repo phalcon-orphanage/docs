@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
 Allows to cache data converting/deconverting them to JSON.
 
@@ -46,7 +46,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** ([*array* $frontendOptions])
 
