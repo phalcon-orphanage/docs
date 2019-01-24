@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
-JSON形式でエンコード/デコードしたデータをキャッシュできる。
+Allows to cache data converting/deconverting them to JSON.
 
-このアダプタは json_encode/json_decode のPHP関数を使用します。
+This adapter uses the json_encode/json_decode PHP's functions
 
 As the data is encoded in JSON other systems accessing the same backend could process them
 
@@ -21,14 +21,14 @@ As the data is encoded in JSON other systems accessing the same backend could pr
 
 <?php
 
-// データを二日間キャッシュ
+// Cache the data for 2 days
 $frontCache = new \Phalcon\Cache\Frontend\Json(
     [
         "lifetime" => 172800,
     ]
 );
 
-// memcachedの接続オプションを設定するキャッシュを作成する
+// Create the Cache setting memcached connection options
 $cache = new \Phalcon\Cache\Backend\Memcache(
     $frontCache,
     [
@@ -38,10 +38,10 @@ $cache = new \Phalcon\Cache\Backend\Memcache(
     ]
 );
 
-// 任意データをキャッシュ
+// Cache arbitrary data
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// データ取得
+// Get data
 $data = $cache->get("my-data");
 
 ```
