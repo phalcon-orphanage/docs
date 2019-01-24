@@ -6,9 +6,9 @@ title: 'Phalcon\Kernel'
 ---
 # Class **Phalcon\Kernel**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
 
-## روش ها
+## Methods
 
 public static **preComputeHashKey** (*mixed* $key)
 
