@@ -8,11 +8,11 @@ title: 'Phalcon\Translate\Adapter'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
 
 Base class for Phalcon\Translate adapters
 
-## Metode
+## Methods
 
 public **__construct** (*array* $options)
 
@@ -24,11 +24,11 @@ public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Tr
 
 public *string* **t** (*string* $translateKey, [*array* $placeholders])
 
-Mengembalikan string terjemahan dari kunci yang diberikan
+Returns the translation string of the given key
 
 public *string* **_** (*string* $translateKey, [*array* $placeholders])
 
-Mengembalikan string terjemahan dari kunci yang diberikan (alias metode 't')
+Returns the translation string of the given key (alias of method 't')
 
 public **offsetSet** (*string* $offset, *string* $value)
 
@@ -36,19 +36,19 @@ Sets a translation value
 
 public **offsetExists** (*mixed* $translateKey)
 
-Periksa apakah ada kunci terjemahan
+Check whether a translation key exists
 
 public **offsetUnset** (*string* $offset)
 
-Unsets terjemahan dari kamus
+Unsets a translation from the dictionary
 
 public *string* **offsetGet** (*string* $translateKey)
 
-Mengembalikan terjemahan yang terkait dengan kunci yang diberikan
+Returns the translation related to the given key
 
 protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
-Mengganti placeholder dengan nilai yang dilewatkan
+Replaces placeholders by the values passed
 
 abstract public **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
