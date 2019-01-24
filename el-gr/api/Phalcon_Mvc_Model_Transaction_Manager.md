@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Manager'
 
 *implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
 
 A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.
 
@@ -104,15 +104,15 @@ Commits active transactions within the manager
 
 public **rollback** ([*boolean* $collect])
 
-Rollbacks active transactions within the manager Collect will remove the transaction from the manager
+Επαναφέρει τις συναλλαγές ενεργές στο διαχειριστή Η συλλογή θα καταργήσει τη συναλλαγή από τον διαχειριστή
 
 public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a rollbacked transaction
+Ειδοποιεί διαχειριστή τον σχετικά με μια συναλλαγή με ανατροπή
 
 public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a committed transaction
+Ειδοποιεί τον διαχειριστή με μια συναλλαγή σχετικά που έχει δεσμευτεί
 
 protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
@@ -120,4 +120,4 @@ Removes transactions from the TransactionManager
 
 public **collectTransactions** ()
 
-Remove all the transactions from the manager
+Καταργήστε τις συναλλαγές όλες από τον διαχειριστή
