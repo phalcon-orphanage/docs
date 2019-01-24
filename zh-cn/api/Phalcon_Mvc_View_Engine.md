@@ -22,27 +22,27 @@ Phalcon\Mvc\View\Engine constructor
 
 public **getContent** ()
 
-返回缓存输出在另一个视图舞台上
+Returns cached output on another view stage
 
 public *string* **partial** (*string* $partialPath, [*array* $params])
 
-将呈现偏内另一种观点
+Renders a partial inside another view
 
 public **getView** ()
 
-返回有关适配器的视图组件
+Returns the view component related to the adapter
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
