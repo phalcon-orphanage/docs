@@ -8,23 +8,23 @@ title: 'Phalcon\Mvc\Model\Row'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
-## Metode
+## Methods
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-Tetapkan keadaan objek saat ini
+Set the current object's state
 
 public *boolean* **offsetExists** (*string* | *int* $index)
 
-Memeriksa apakah ada offset pada baris
+Checks whether offset exists in the row
 
 public *string* | [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **offsetGet** (*string* | *int* $index)
 
-Mendapat catatan di posisi baris tertentu
+Gets a record in a specific position of the row
 
 public **offsetSet** (*string* | *int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value)
 
@@ -36,25 +36,29 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Membaca nilai atribut dengan nama
+Reads an attribute value by its name
 
 ```php
-<? php echo $robot -> readAttribute("name");
+<?php
+
+echo $robot->readAttribute("name");
 
 ```
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Menulis nilai atribut dengan nama
+Writes an attribute value by its name
 
 ```php
-<? php $robot -> writeAttribute ("nama", "Rosey");
+<?php
+
+$robot->writeAttribute("name", "Rosey");
 
 ```
 
 public *array* **toArray** ()
 
-Mengembalikan instance sebagai representasi array
+Returns the instance as an array representation
 
 public *array* **jsonSerialize** ()
 
