@@ -43,7 +43,7 @@ Phalcon\Paginator\Adapter\NativeArray constructor
 
 public **getPaginate** ()
 
-Επιστρέφει μια από φέτα το σύνολο αποτελεσμάτων για να εμφανιστεί στη σελίδα
+Returns a slice of the resultset to show in the pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
