@@ -23,7 +23,7 @@ The Phalcon PHP extension is required to run Phalcon Tools. If you haven't insta
 
 ## Installation
 
-You can download a cross platform package containing the developer tools from from [Github](https://github.com/phalcon/phalcon-devtools).
+You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation-linux'></a>
 
