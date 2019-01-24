@@ -6,9 +6,9 @@ title: 'Phalcon\Validation\MessageInterface'
 ---
 # Interface **Phalcon\Validation\MessageInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **setType** (*mixed* $type)
 
@@ -34,7 +34,7 @@ abstract public **getField** ()
 
 ...
 
-عمومی انتزاعی **__ به رشته** ()
+abstract public **__toString** ()
 
 ...
 
