@@ -8,23 +8,23 @@ title: 'Phalcon\Mvc\Router\Route'
 
 *implements* [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
 
-Kelas ini mewakili setiap rute yang ditambahkan ke router
+This class represents every route added to the router
 
-## Metode
+## Methods
 
 public **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
 Phalcon\Mvc\Router\Route constructor
 
-publik **kompilasiPola** (*campuraduk* $pattern)
+public **compilePattern** (*mixed* $pattern)
 
-Mengganti placeholder dari pola yang mengembalikan ekspresi reguler PCRE yang valid
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public **via** (*mixed* $httpMethods)
 
-Tetapkan satu atau lebih metode HTTP yang membatasi pencocokan rute
+Set one or more HTTP methods that constraint the matching of the route
 
 ```php
 <?php
@@ -42,23 +42,23 @@ $route->via(
 
 public **extractNamedParams** (*mixed* $pattern)
 
-Ekstrak parameter dari sebuah string
+Extracts parameters from a string
 
 public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
-Konfigurasikan ulang rute untuk menambahkan pola baru dan satu set jalur
+Reconfigure the route adding a new pattern and a set of paths
 
 public static **getRoutePaths** ([*mixed* $paths])
 
-Kembali routePaths
+Returns routePaths
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama rute
+Returns the route's name
 
-publik **setNama** (*dicampur* $name)
+public **setName** (*mixed* $name)
 
-Menetapkan nama rute
+Sets the route's name
 
 ```php
 <?php
@@ -100,11 +100,11 @@ $router->add(
 
 public **getBeforeMatch** ()
 
-Mengembalikan callback 'sebelum pertandingan' jika ada
+Returns the 'before match' callback if any
 
 public **match** (*mixed* $callback)
 
-Memungkinkan untuk mengatur panggilan balik untuk menangani permintaan langsung di rute
+Allows to set a callback to handle the request directly in the route
 
 ```php
 <?php
@@ -122,27 +122,27 @@ $router->add(
 
 public **getMatch** ()
 
-Mengembalikan 'pertandingan' callback jika ada
+Returns the 'match' callback if any
 
-publik **mendapatkanRute** ()
+public **getRouteId** ()
 
-Mengembalikan nomor rute
+Returns the route's id
 
-publik **mendapatkanPola** ()
+public **getPattern** ()
 
-Mengembalikan pola rute
+Returns the route's pattern
 
-publik **dapatkanPolaTerkompilasi** ()
+public **getCompiledPattern** ()
 
-Mengembalikan pola yang dikompilasi rute
+Returns the route's compiled pattern
 
-publik **mendapatkanJalan** ()
+public **getPaths** ()
 
-Mengembalikan jalan
+Returns the paths
 
-public **dapatkanJalanTerbalik** ()
+public **getReversedPaths** ()
 
-Mengembalikan jalur menggunakan posisi sebagai kunci dan nama sebagai nilai
+Returns the paths using positions as keys and names as values
 
 public **setHttpMethods** (*mixed* $httpMethods)
 
@@ -158,11 +158,11 @@ $route->setHttpMethods(["GET", "POST"]);
 
 public **getHttpMethods** ()
 
-Mengembalikan metode HTTP itu kendala sesuai rute
+Returns the HTTP methods that constraint matching the route
 
 public **setHostname** (*mixed* $hostname)
 
-Set hostname pembatasan untuk rute
+Sets a hostname restriction to the route
 
 ```php
 <?php
@@ -173,11 +173,11 @@ $route->setHostname("localhost");
 
 public **getHostname** ()
 
-Kembali hostname pembatasan jika ada
+Returns the hostname restriction if any
 
 public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group)
 
-Menetapkan kelompok yang terkait dengan rute
+Sets the group associated with the route
 
 public **getGroup** ()
 
@@ -185,12 +185,12 @@ Returns the group associated with the route
 
 public **convert** (*mixed* $name, *mixed* $converter)
 
-Menambahkan konverter untuk melakukan transformasi tambahan untuk parameter tertentu
+Adds a converter to perform an additional transformation for certain parameter
 
-publik **mendapatkankonventer** ()
+public **getConverters** ()
 
-Mengembalikan konverter router
+Returns the router converter
 
-publik static **reset** ()
+public static **reset** ()
 
-Menyetel ulang generator id rute internal
+Resets the internal route id generator
