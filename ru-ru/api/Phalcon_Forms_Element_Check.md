@@ -10,7 +10,7 @@ title: 'Phalcon\Forms\Element\Check'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
 Component INPUT[type=check] for forms
 
