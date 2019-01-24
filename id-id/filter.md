@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Penyaringan dan Sanitasi
+# Filtering and Sanitizing
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
@@ -25,7 +25,7 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 The following are the built-in filters provided by this component:
 
-| Nama      | Deskripsi                                                                                     |
+| Name      | Description                                                                                   |
 | --------- | --------------------------------------------------------------------------------------------- |
 | absint    | Casts the value as an integer and returns the absolute value of it.                           |
 | alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
