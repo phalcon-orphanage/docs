@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Apc'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
 
 Stores the parsed annotations in APC. This adapter is suitable for production
 
@@ -23,7 +23,7 @@ $annotations = new Apc();
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** ([*array* $options])
 
@@ -31,36 +31,36 @@ Phalcon\Annotations\Adapter\Apc constructor
 
 public **read** (*mixed* $key)
 
-Reads parsed annotations from APC
+Lit les annotations analysées à partir de l'APC
 
 public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) $data)
 
-Writes parsed annotations to APC
+Écrit les annotations analysées à partir des fichiers APC
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Sets the annotations parser
+Définit le parser pour les annotations
 
 public **getReader** () inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Returns the annotation reader
+Renvoie le lecteur de l’annotation
 
 public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Parses or retrieves all the annotations found in a class
+Analyse ou récupère toutes les annotations trouvées dans une classe
 
 public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+Retourne les annotations trouvées dans toutes les méthodes de cette classe
 
 public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific method
+Retourne les annotations trouvées dans une méthode spécifique
 
 public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Returns the annotations found in all the class' methods
+Retourne les annotations trouvées dans toutes les méthodes de cette classe
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-Returns the annotations found in a specific property
+Retourne les annotations trouve dans une propriété spécifique
