@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Mongo'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/mongo.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/mongo.zep)
 
 Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
@@ -48,7 +48,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -56,11 +56,11 @@ Phalcon\Cache\Backend\Mongo constructor
 
 final protected *MongoCollection* **_getCollection** ()
 
-Returns a MongoDb collection based on the backend parameters
+Gibt eine MongoDb-Auflistung anhand der Back-End-Parameter
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Liefert einen zwischengespeicherten Inhalt
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -68,7 +68,7 @@ Stores cached content into the file backend and stops the frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Löscht einen Wert aus dem Cache anhand seines Schlüssels
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -86,7 +86,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+Überprüft, ob Cache vorhanden und nicht abgelaufen ist
 
 public *collection->remove(...)* **gc** ()
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Ermittelt die zuletzt gespeicherte Lebensdauer
