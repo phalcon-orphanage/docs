@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Url'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/url.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/url.zep)
 
 Checks if a value has a url format
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Methoden
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
