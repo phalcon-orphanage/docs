@@ -8,11 +8,11 @@ title: 'Phalcon\Dispatcher'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
-## Constants
+## Konstanten
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -26,7 +26,7 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Methoden
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -38,11 +38,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Legt den Event-manager fest
 
 public **getEventsManager** ()
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 
@@ -78,7 +78,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName)
 
-Sets the default action name
+Legt den Standard Aktions Name fest
 
 public **setActionName** (*mixed* $actionName)
 
@@ -170,7 +170,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action.
+Leitet den Ausführungsfluss an einem anderen Controller/Action weiter.
 
 ```php
 <?php
@@ -207,7 +207,7 @@ class UserController extends Controller
 {
     public function showAction(User $user)
     {
-        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels(); // gibt array mit $user zurück
     }
 }
 
