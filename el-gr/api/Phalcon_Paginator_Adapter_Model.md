@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\Model'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 
@@ -39,7 +39,7 @@ Phalcon\Paginator\Adapter\Model constructor
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Επιστρέφει μια από φέτα το σύνολο αποτελεσμάτων για να εμφανιστεί στη σελίδα
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
