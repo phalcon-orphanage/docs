@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Panoramica
+# Overview
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
@@ -25,7 +25,7 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 Services included are:
 
-| Service name  | Descrizione                                                                                         |
+| Service name  | Description                                                                                         |
 | ------------- | --------------------------------------------------------------------------------------------------- |
 | mongo         | MongoDB server container.                                                                           |
 | postgres      | PostgreSQL server container.                                                                        |
@@ -144,7 +144,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Web environment
 
-| Environment variable | Descrizione                                         | Default         |
+| Environment variable | Description                                         | Default         |
 | -------------------- | --------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
@@ -158,7 +158,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### phpMyAdmin variables
 
-| Environment variable | Descrizione                                                                                                  | Default |
+| Environment variable | Description                                                                                                  | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
 | `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
@@ -178,7 +178,7 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Descrizione                                              | Default |
+| Environment variable         | Description                                              | Default |
 | ---------------------------- | -------------------------------------------------------- | ------- |
 | `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
 | `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
