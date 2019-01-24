@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\BehaviorInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BehaviorInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behaviorinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behaviorinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
