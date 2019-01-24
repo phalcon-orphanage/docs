@@ -8,7 +8,7 @@ title: 'Phalcon\Db'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
 
-Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. 针对每一种数据库都有一个适配类。
+Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS.
 
 This component is intended to lower level database operations. If you want to interact with databases using higher level of abstraction use Phalcon\Mvc\Model.
 
@@ -87,4 +87,4 @@ try {
 
 public static **setup** (*array* $options)
 
-启用/禁用 数据库组件相关的选项
+Enables/disables options in the Database component
