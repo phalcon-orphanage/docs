@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='requirements'></a>
 
-# Systemanforderungen
+# Requirements
 
 Phalcon needs PHP to run. Its loosely coupled design allows developers to install Phalcon and use its functionality without additional extensions. Certain components have dependencies to other extensions. For instance using database connectivity will require the `php_pdo` extension. If your RDBMS is MySql/MariaDb or Aurora databases you will need the `php_mysqlnd` extension also. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
 
@@ -241,7 +241,7 @@ An overlay for installing Phalcon can be found here <https://github.com/smoke/ph
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### Systemanforderungen
+### Requirements
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * XCode
@@ -320,7 +320,7 @@ Restart your webserver.
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Systemanforderungen
+### Requirements
 
 * PHP 5.5.x/5.6.x/7.0.x/7.1.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
