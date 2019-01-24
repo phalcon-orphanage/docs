@@ -6,11 +6,11 @@ title: 'Phalcon\Db\ResultInterface'
 ---
 # Interface **Phalcon\Db\ResultInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
 
-## Metode
+## Methods
 
-publik abstrak **execute** ()
+abstract public **execute** ()
 
 ...
 
@@ -22,22 +22,22 @@ abstract public **fetchArray** ()
 
 ...
 
-abstrak umum **fetchAll** ()
+abstract public **fetchAll** ()
 
 ...
 
-abstrak umum **numRows** ()
+abstract public **numRows** ()
 
 ...
 
-abstrak umum **dataSeek** (*campuran* $nomor)
+abstract public **dataSeek** (*mixed* $number)
 
 ...
 
-abstrak umum **setFetchMode** (*campuran* $fetchMode)
+abstract public **setFetchMode** (*mixed* $fetchMode)
 
 ...
 
-abstrak umum **getInternalResult** ()
+abstract public **getInternalResult** ()
 
 ...
