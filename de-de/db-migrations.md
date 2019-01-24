@@ -148,12 +148,12 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Index        | Description                                                                                                                                 | Optional |
+| Index        | Beschreibung                                                                                                                                | Optional |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns                                                                                                        |    No    |
-| `indexes`    | An array with a set of table indexes.                                                                                                       |   Yes    |
-| `references` | An array with a set of table references (foreign keys).                                                                                     |   Yes    |
-| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Yes    |
+| `columns`    | An array with a set of table columns                                                                                                        |   Nein   |
+| `indexes`    | An array with a set of table indexes.                                                                                                       |    Ja    |
+| `references` | An array with a set of table references (foreign keys).                                                                                     |    Ja    |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    Ja    |
 
 <a name='class-anatomy-columns'></a>
 
@@ -161,17 +161,17 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| Option          | Description                                                                                                                                | Optional |
+| Option          | Beschreibung                                                                                                                               | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    No    |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Yes    |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Yes    |
-| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Yes    |
-| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
-| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Yes    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
-| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
-| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |   Nein   |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |    Ja    |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |    Ja    |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |    Ja    |
+| `notNull`       | Column can store null values?                                                                                                              |    Ja    |
+| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |    Ja    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Ja    |
+| `first`         | Column must be placed at first position in the column order                                                                                |    Ja    |
+| `after`         | Column must be placed after indicated column                                                                                               |    Ja    |
 
 Database migrations support the following database column types:
 
@@ -196,28 +196,28 @@ Database migrations support the following database column types:
 
 <a name='class-anatomy-indexes'></a>
 
-### Defining Indexes
+### Definition der Indizes
 
 [Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 <a name='class-anatomy-references'></a>
 
-### Defining References
+### Referenzen definieren
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Index               | Description                                                                                         | Optional | Implemented in   |
+| Index               | Beschreibung                                                                                        | Optional | Umgesetzt in     |
 | ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    No    | All              |
-| `columns`           | An array with the name of the columns at the table that have the reference                          |    No    | All              |
-| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    No    | All              |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Yes    | All              |
-| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
-| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |   Nein   | Alle             |
+| `columns`           | An array with the name of the columns at the table that have the reference                          |   Nein   | Alle             |
+| `referencedColumns` | An array with the name of the columns at the referenced table                                       |   Nein   | Alle             |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |    Ja    | Alle             |
+| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |    Ja    | MySQL PostgreSQL |
+| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |    Ja    | MySQL PostgreSQL |
 
 <a name='writing'></a>
 
-## Writing Migrations
+## Migrationen schreiben
 
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/4.0/en/db).
 
@@ -249,7 +249,7 @@ class ProductsMigration_100 extends Migration
 
 <a name='running'></a>
 
-## Running Migrations
+## Migrationen ausführen
 
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 
