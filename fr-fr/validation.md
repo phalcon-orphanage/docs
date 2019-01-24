@@ -13,7 +13,7 @@ version: '4.0'
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
-The following example shows its basic usage:
+L’exemple suivant montre son utilisation de base :
 
 ```php
 <?php
@@ -131,7 +131,7 @@ if (count($messages)) {
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                                                                         | Explanation                                                       |
+| Classe                                                                                        | Explanation                                                       |
 | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | Validates that a field's value is only alphanumeric character(s). |
 | [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | Validates that a field's value is only alphabetic character(s).   |
