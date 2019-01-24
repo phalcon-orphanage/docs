@@ -25,14 +25,14 @@ The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly us
 
 The following are the built-in filters provided by this component:
 
-| نام       | توضیحات                                                                                       |
+| Name      | Description                                                                                   |
 | --------- | --------------------------------------------------------------------------------------------- |
 | absint    | Casts the value as an integer and returns the absolute value of it.                           |
 | alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
 | email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.             |
 | float     | Remove all characters except digits, dot, plus and minus sign.                                |
 | float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
-| اینت      | Remove all characters except digits, plus and minus sign.                                     |
+| int       | Remove all characters except digits, plus and minus sign.                                     |
 | int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
 | lower     | Applies the [strtolower](https://www.php.net/manual/en/function.strtolower.php) function      |
 | string    | Strip tags and encode HTML entities, including single and double quotes.                      |
