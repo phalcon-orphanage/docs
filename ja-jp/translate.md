@@ -210,7 +210,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## 独自のアダプターを実装
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
