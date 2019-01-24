@@ -10,79 +10,77 @@ title: 'Phalcon\Db\Adapter\Pdo'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo.zep)
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect to a database
 
 ```php
-<?php
+& lt;? php
 
-use Phalcon\Db\Adapter\Pdo\Mysql;
+gunakan Phalcon \ Db \ Adapter \ Pdo \ Mysql;
 
-$config = [
-    "host"     => "localhost",
-    "dbname"   => "blog",
-    "port"     => 3306,
-    "username" => "sigma",
-    "password" => "secret",
+$ config = [
+     "host" = & gt; "localhost",
+     "dbname" = & gt; "blog",
+     "port" = & gt; 3306,
+     "nama pengguna" = & gt; "sigma",
+     "kata sandi" = & gt; "rahasia",
 ];
 
-$connection = new Mysql($config);
+$ connection = new Mysql ($ config);
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** (*array* $descriptor)
+umum **__construct** (*array* $descriptor)
 
 Constructor for Phalcon\Db\Adapter\Pdo
 
-public **connect** ([*array* $descriptor])
+umum **hubungkan** ([*array* $descriptor])
 
 This method is automatically called in \Phalcon\Db\Adapter\Pdo constructor. Call it when you need to restore a database connection.
 
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Mysql;
+gunakan Phalcon\Db\Adapter\Pdo\Mysql;
 
-// Make a connection
+// Buat sebuah koneksi
 $connection = new Mysql(
     [
         "host"     => "localhost",
         "username" => "sigma",
-        "password" => "secret",
+        "katasandi" => "rahasia",
         "dbname"   => "blog",
         "port"     => 3306,
     ]
 );
 
-// Reconnect
+// Sambungkan kembali
 $connection->connect();
 
 ```
 
-public **prepare** (*mixed* $sqlStatement)
+publik **siapkan** (*campuran* $sqlStatement)
 
-Returns a PDO prepared statement to be executed with 'executePrepared'
+Mengembalikan pernyataan PDO yang disiapkan untuk dieksekusi dengan 'executePrepared'
 
 ```php
-<?php
+gunakan Phalcon \ Db \ Column;
 
-use Phalcon\Db\Column;
-
-$statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+$ statement = $ db- & gt; prepare (
+     "SELECT * FROM robots WHERE name =: nama"
 );
 
-$result = $connection->executePrepared(
-    $statement,
-    [
-        "name" => "Voltron",
-    ],
-    [
-        "name" => Column::BIND_PARAM_INT,
-    ]
+$ result = $ connection- & gt; executePrepared (
+     $ pernyataan,
+     [
+         "nama" = & gt; "Voltron",
+     ],
+     [
+         "nama" = & gt; Kolom :: BIND_PARAM_INT,
+     ]
 );
 
 ```
@@ -92,22 +90,20 @@ public [PDOStatement](https://php.net/manual/en/class.pdostatement.php) **execut
 Executes a prepared statement binding. This function uses integer indexes starting from zero
 
 ```php
-<?php
+gunakan Phalcon \ Db \ Column;
 
-use Phalcon\Db\Column;
-
-$statement = $db->prepare(
-    "SELECT * FROM robots WHERE name = :name"
+$ statement = $ db- & gt; prepare (
+     "SELECT * FROM robots WHERE name =: nama"
 );
 
-$result = $connection->executePrepared(
-    $statement,
-    [
-        "name" => "Voltron",
-    ],
-    [
-        "name" => Column::BIND_PARAM_INT,
-    ]
+$ result = $ connection- & gt; executePrepared (
+     $ pernyataan,
+     [
+         "nama" = & gt; "Voltron",
+     ],
+     [
+         "nama" = & gt; Kolom :: BIND_PARAM_INT,
+     ]
 );
 
 ```
@@ -117,248 +113,215 @@ public **query** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTy
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows
 
 ```php
-<?php
+& lt;? php
 
-// Querying data
-$resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = 'mechanical'"
+// Query data
+$ resultset = $ connection- & gt; query (
+     "MEMILIH * DARI robot DIMANA type = 'mekanis'"
 );
 
-$resultset = $connection->query(
-    "SELECT * FROM robots WHERE type = ?",
-    [
-        "mechanical",
-    ]
+$ resultset = $ connection- & gt; query (
+     "MEMILIH * DARI robot tipe DIMANA =?",
+     [
+         "mekanis",
+     ]
 );
 
 ```
 
-public **execute** (*mixed* $sqlStatement, [*mixed* $bindParams], [*mixed* $bindTypes])
+public **menjalankan** (*campuran* $sqlPernyataan, [*campuran* $bindParams], [*campuran* $bindTypes])
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
 
 ```php
 <?php
 
-// Inserting data
-$success = $connection->execute(
-    "INSERT INTO robots VALUES (1, 'Astro Boy')"
-);
+// Memasukkan data
+$success = $connection->execute (
+     "INSERT INTO robot NILAI (1, 'Astro Boy')",
+ );
 
-$success = $connection->execute(
-    "INSERT INTO robots VALUES (?, ?)",
-    [
-        1,
-        "Astro Boy",
-    ]
+$success = $connection->execute (
+     "INSERT INTO robot NILAI (?,?)",
+     [
+         1,
+         "Astro Boy",
+     ]
 );
 
 ```
 
-public **affectedRows** ()
+publik **barisyangterpengaruh** ()
 
-Returns the number of affected rows by the latest INSERT/UPDATE/DELETE executed in the database system
+Mengembalikan jumlah baris yang terpengaruh oleh INSERT/UPDATE/DELETE terbaru yang dieksekusi dalam sistem basis data
 
 ```php
-<?php
-
-$connection->execute(
-    "DELETE FROM robots"
-);
-
-echo $connection->affectedRows(), " were deleted";
+echo $ connection- & gt; affectedRows (), "telah dihapus";
 
 ```
 
-public **close** ()
+publik **tutup** ()
 
 Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
-public **escapeString** (*mixed* $str)
+public **escapeString** (*campuran* $str)
 
-Escapes a value to avoid SQL injections according to the active charset in the connection
+Melepaskan nilai untuk menghindari suntikan SQL sesuai dengan charset aktif dalam koneksi
 
 ```php
 <?php
 
-$escapedStr = $connection->escapeString("some dangerous value");
+$escapedStr = $connection-
+>escapeString("beberapa nilai berbahaya");
 
 ```
 
-public **convertBoundParams** (*mixed* $sql, [*array* $params])
+public **convertBoundParams** (*campuran* $sql, [*array* $params])
 
-Converts bound parameters such as :name: or ?1 into PDO bind params ?
+Mengkonversi parameter terikat seperti :name: atau ? 1 ke dalam PDO bind params ?
 
 ```php
 <?php
 
 print_r(
-    $connection->convertBoundParams(
-        "SELECT * FROM robots WHERE name = :name:",
-        [
-            "Bender",
-        ]
-    )
+     $connection->convertBoundParams(
+         "MEMILIH * DARI robot DIMANA nama = :name:'',
+         [
+             "Bender",
+         ]
+     )
 );
 
 ```
 
-public *int* | *boolean* **lastInsertId** ([*string* $sequenceName])
+publik *int* | *boolean* **lastInsertId** ([* string* $sequenceName])
 
-Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
+Mengembalikan insert id untuk kolom auto_increment/serial yang dimasukkan ke dalam pernyataan SQL yang dieksekusi terakhir
 
 ```php
 <?php
 
-// Inserting a new robot
+// Memasukkan robot baru
 $success = $connection->insert(
-    "robots",
-    [
-        "Astro Boy",
-        1952,
-    ],
-    [
-        "name",
-        "year",
-    ]
+     "robot",
+     [
+         "Astro Boy",
+         1952,
+     ],
+     [
+         "nama",
+         "tahun",
+     ]
 );
 
-// Getting the generated id
+// Mendapatkan id yang dihasilkan
 $id = $connection->lastInsertId();
 
 ```
 
-public **begin** ([*mixed* $nesting])
+publik **mulai** ([*campuran* $nesting])
 
-Starts a transaction in the connection
+Memulai transaksi dalam koneksi
 
 public **rollback** ([*mixed* $nesting])
 
-Rollbacks the active transaction in the connection
+Rollbacks transaksi aktif dalam koneksi
 
-public **commit** ([*mixed* $nesting])
+publik **commit** ([*campuran* $nesting])
 
-Commits the active transaction in the connection
+Melakukan transaksi aktif dalam koneksi
 
 public **getTransactionLevel** ()
 
-Returns the current transaction nesting level
+Mengembalikan tingkat nesting transaksi saat ini
 
-public **isUnderTransaction** ()
+publik **beradadibawahTransaksi** ()
 
-Checks whether the connection is under a transaction
+Memeriksa apakah koneksi sedang dalam transaksi
 
 ```php
 <?php
 
 $connection->begin();
 
-// true
+// benar
 var_dump(
-    $connection->isUnderTransaction()
+     $connection->sedangdalamTransaksi()
 );
 
 ```
 
-public **getInternalHandler** ()
+publik **mendapatkanHandlerInternal** ()
 
-Return internal PDO handler
+Kembalikan handler PDO internal
 
-public *array* **getErrorInfo** ()
+publik *array* **mendapatkanErrorInfo** ()
 
-Return the error info, if any
+Kembalikan info kesalahannya, jika ada
 
 public **getDialectType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Name of the dialect used
+Nama dialek yang digunakan
 
 public **getType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Type of database system the adapter is used for
+Jenis sistem database adaptor yang digunakan untuk
 
 public **getSqlVariables** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL bound parameter variables
+Parameter parameter terikat Active SQL
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Sets the event manager
+Menyetel pengelola acara
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Sets the dialect used to produce the SQL
+Set dialek yang digunakan untuk menghasilkan SQL
 
 public **getDialect** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns internal dialect instance
+Pengembalian internal dialek contoh
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the first row in a SQL query result
+Kembali baris pertama pada hasil query SQL
 
 ```php
-<?php
+<? php
 
-// Getting first robot
-$robot = $connection->fetchOne("SELECT * FROM robots");
-print_r($robot);
+// mendapatkan pertama robot$robot = $connection->fetchOne("Pilih * dari robot"); print_r($robot);
 
-// Getting first robot with associative indexes only
-$robot = $connection->fetchOne("SELECT * FROM robots", \Phalcon\Db::FETCH_ASSOC);
-print_r($robot);
+// Mendapatkan pertama robot dengan asosiatif indeks hanya
+$robot = $connection->fetchOne("Pilih * dari robot", \Phalcon\Db::FETCH_ASSOC); print_r($robot);
 
 ```
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Dumps the complete result of a query into an array
+Dumps lengkap hasil query ke dalam sebuah array
 
 ```php
-<?php
-
-// Getting all robots with associative indexes only
-$robots = $connection->fetchAll(
-    "SELECT * FROM robots",
-    \Phalcon\Db::FETCH_ASSOC
-);
-
-foreach ($robots as $robot) {
-    print_r($robot);
-}
-
- // Getting all robots that contains word "robot" withing the name
-$robots = $connection->fetchAll(
-    "SELECT * FROM robots WHERE name LIKE :name",
-    \Phalcon\Db::FETCH_ASSOC,
-    [
-        "name" => "%robot%",
-    ]
-);
-foreach($robots as $robot) {
-    print_r($robot);
-}
+<? php / / mendapatkan semua robot dengan asosiatif indeks hanya$robots = $connection -> fetchAll ("Pilih * dari robot", \Phalcon\Db::FETCH_ASSOC);  foreach ($robots sebagai $robot) {print_r($robot);}   Mendapatkan semua robot yang mengandung kata "robot" withing $robots nama = $connection -> fetchAll ("Pilih * dari robot yang mana nama seperti: nama", \Phalcon\Db::FETCH_ASSOC, ["name" = > "%robot%"]); foreach ($robots sebagai $robot) {print_r($robot);}
 
 ```
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the n'th field of first row in a SQL query result
+Kembali n'th bidang baris pertama pada hasil query SQL
 
 ```php
-<?php
+<? php
 
-// Getting count of robots
-$robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
-print_r($robotsCount);
+/ / mendapatkan jumlah robot$robotsCount = $connection->fetchColumn ("PILIH count(*) DARI robot");
+print_r($robotsCount); 
 
-// Getting name of last edited robot
-$robot = $connection->fetchColumn(
-    "SELECT id, name FROM robots order by modified desc",
-    1
+// Mendapatkan nama terakhir diedit robot $robot = $connection->fetchColumn(  "PILIH id, nama DARI robot diurutkan dimodifikasi desc",
+ 1
 );
 print_r($robot);
 
@@ -366,76 +329,28 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Inserts data into a table using custom RDBMS SQL syntax
+Memasukkan data ke dalam tabel menggunakan sintaks RDBMS SQL kustom
 
 ```php
-<?php
-
-// Inserting a new robot
-$success = $connection->insert(
-    "robots",
-    ["Astro Boy", 1952],
-    ["name", "year"]
-);
-
-// Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+<? php / / memasukkan$success robot baru = $connection -> insert ("robot", ["Astro Boy", 1952], ["name", "tahun"]);  Kalimat SQL berikutnya akan dikirim ke sistem database INSERT INTO 'robot' ('nama', 'tahun') nilai ("Astro boy", 1952);
 
 ```
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Inserts data into a table using custom RBDM SQL syntax
+Memasukkan data ke dalam tabel menggunakan kustom sintaks RBDM SQL
 
 ```php
-<?php
-
-// Inserting a new robot
-$success = $connection->insertAsDict(
-    "robots",
-    [
-        "name" => "Astro Boy",
-        "year" => 1952,
-    ]
-);
-
-// Next SQL sentence is sent to the database system
-INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
+<? php / / memasukkan$success robot baru = $connection -> insertAsDict ("robot", ["name" = > "Astro Boy", "tahun" = > 1952,]);  Kalimat SQL berikutnya akan dikirim ke sistem database INSERT INTO 'robot' ('nama', 'tahun') nilai ("Astro boy", 1952);
 
 ```
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Updates data on a table using custom RBDM SQL syntax
+Memperbarui data pada tabel menggunakan sintaks RBDM SQL kustom
 
 ```php
-<?php
-
-// Updating existing robot
-$success = $connection->update(
-    "robots",
-    ["name"],
-    ["New Astro Boy"],
-    "id = 101"
-);
-
-// Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
-
-// Updating existing robot with array condition and $dataTypes
-$success = $connection->update(
-    "robots",
-    ["name"],
-    ["New Astro Boy"],
-    [
-        "conditions" => "id = ?",
-        "bind"       => [$some_unsafe_id],
-        "bindTypes"  => [PDO::PARAM_INT], // use only if you use $dataTypes param
-    ],
-    [
-        PDO::PARAM_STR
-    ]
-);
+<? php / / update yang ada robot$success = $connection -> update ("robot", ["name"], ["baru Astro Boy"], "id = 101");  Kalimat SQL berikutnya akan dikirim ke sistem database UPDATE 'robot' SET 'name' = "Astro boy" WHERE id = 101 / / update robot yang ada dengan berbagai kondisi dan $dataTypes $success = $connection -> update ("robot", ["name"], ["baru Astro Boy"], [         "kondisi" = > "id =?", "mengikat" = > [$some_unsafe_id], "bindTypes" = > [PDO::PARAM_INT], / / gunakan hanya jika Anda menggunakan $dataTypes param], [PDO::PARAM_STR]);
 
 ```
 
@@ -443,46 +358,25 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
+Pembaruan data pada tabel menggunakan sintaks RBDM SQL kustom sintaks lain, lebih nyaman
 
 ```php
-<?php
-
-// Updating existing robot
-$success = $connection->updateAsDict(
-    "robots",
-    [
-        "name" => "New Astro Boy",
-    ],
-    "id = 101"
-);
-
-// Next SQL sentence is sent to the database system
-UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
+<? php / / update yang ada robot$success = $connection -> updateAsDict ("robot", ["name" = > "Baru Astro Boy",], "id = 101");  Kalimat SQL berikutnya akan dikirim ke sistem database UPDATE 'robot' SET 'name' = "Astro boy" WHERE id = 101
 
 ```
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Deletes data from a table using custom RBDM SQL syntax
+Menghapus data dari tabel menggunakan sintaks RBDM SQL biasa
 
 ```php
-<?php
-
-// Deleting existing robot
-$success = $connection->delete(
-    "robots",
-    "id = 101"
-);
-
-// Next SQL sentence is generated
-DELETE FROM `robots` WHERE `id` = 101
+<? php / / menghapus yang sudah ada robot$success = $connection -> delete ("robot", "id = 101");  Kalimat SQL berikutnya adalah dihasilkan menghapus dari 'robot' WHERE 'id' = 101
 
 ```
 
 public **escapeIdentifier** (*array* | *string* $identifier) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Escapes a column/table/schema name
+Melewati kolom/tabel/nama skema
 
 ```php
 <?php
@@ -502,11 +396,11 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets a list of columns
+Mendapat daftar kolom
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Appends a LIMIT clause to $sqlQuery argument
+Menambahkan klausa LIMIT menjadi $sqlQuery argument
 
 ```php
 <?php
@@ -517,7 +411,7 @@ echo $connection->limit("SELECT * FROM robots", 5);
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Generates SQL checking for the existence of a schema.table
+Menghasilkan pengecekan SQL untuk keberadaan skema
 
 ```php
 <?php
@@ -530,7 +424,7 @@ var_dump(
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Generates SQL checking for the existence of a schema.view
+Menghasilkan pengecekan SQL untuk adanya skema.view
 
 ```php
 <?php
@@ -543,97 +437,96 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns a SQL modified with a FOR UPDATE clause
+Mengembalikan SQL yang dimodifikasi dengan klausa FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Mengembalikan SQL yang dimodifikasi dengan klausa LOCK IN SHARE MODE
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a table
+Membuat sebuah tabel
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a table from a schema/database
+Turunkan tabel dari skema/database
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a view
+Membuat tampilan
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a view
+Turunkan pandangan
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a column to a table
+Menambahkan kolom ke sebuah tabel
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Modifies a table column based on a definition
+Mengubah kolom tabel berdasarkan definisi
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a column from a table
+Turunkan sebuah kolom dari sebuah meja
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds an index to a table
+Menambahkan indeks ke tabel
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drop an index from a table
+Jatuhkan indeks dari sebuah tabel
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a primary key to a table
+Menambahkan kunci utama ke sebuah tabel
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a table's primary key
+Turunkan kunci utama tabel
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Adds a foreign key to a table
+Menambahkan kunci asing ke meja
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Drops a foreign key from a table
+Jatuhkan kunci asing dari sebuah meja
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the SQL column definition from a column
+Mengembalikan definisi kolom SQL dari sebuah kolom
 
 public **listTables** ([*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-List all tables on a database
+Daftar semua tabel di database
 
 ```php
 <?php
 
 print_r(
-    $connection->listTables("blog")
+  $connection->listTables("blog")
 );
 
 ```
 
 public **listViews** ([*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-List all views on a database
+Daftar semua tampilan di database
 
 ```php
 <?php
-
-print_r(
-    $connection->listViews("blog")
+ print_r(
+$connection->listTables("blog")
 );
 
 ```
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Lists table indexes
+Daftar tabel indeks
 
 ```php
 <?php
@@ -646,57 +539,57 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Lists table references
+Daftar referensi tabel
 
 ```php
 <?php
-
-print_r(
-    $connection->describeReferences("robots_parts")
+ print_r(
+   $connection-
+>describeReferences("robots_parts")
 );
 
 ```
 
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName]) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets creation options from a table
+Mendapat opsi pembuatan dari sebuah tabel
 
 ```php
 <?php
-
 print_r(
-    $connection->tableOptions("robots")
+   $connection-
+>tableOptions("robots")
 );
 
 ```
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a new savepoint
+Membuat savepoint baru
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Releases given savepoint
+Rilis diberikan savepoint
 
 public **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Rollbacks given savepoint
+Rollbacks diberi sablon
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Set if nested transactions should use savepoints
+Atur jika transaksi bersarang harus menggunakan savepoint
 
 public **isNestedTransactionsWithSavepoints** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns if nested transactions should use savepoints
+Mengembalikan jika transaksi bersarang harus menggunakan savepoint
 
 public **getNestedTransactionSavepointName** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the savepoint name to use for nested transactions
+Mengembalikan nama savepoint untuk digunakan untuk transaksi bersarang
 
 public **getDefaultIdValue** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the default identity value to be inserted in an identity column
+Mengembalikan nilai identitas default untuk dimasukkan ke dalam kolom identitas
 
 ```php
 <?php
@@ -720,7 +613,7 @@ $success = $connection->insert(
 
 public **getDefaultValue** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the default value to make the RBDM use the default value declared in the table definition
+Mengembalikan nilai default untuk membuat RBDM menggunakan nilai default yang dinyatakan dalam definisi tabel
 
 ```php
 <?php
@@ -742,31 +635,31 @@ $success = $connection->insert(
 
 public **supportSequences** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Check whether the database system requires a sequence to produce auto-numeric values
+Periksa apakah sistem database memerlukan urutan untuk menghasilkan nilai numerik otomatis
 
 public **useExplicitIdValue** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Check whether the database system requires an explicit value for identity columns
+Periksa apakah sistem database memerlukan nilai eksplisit untuk kolom identitas
 
 public **getDescriptor** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Return descriptor used to connect to the active database
+Kembali deskriptor yang digunakan untuk terhubung ke database aktif
 
 public *string* **getConnectionId** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets the active connection unique identifier
+Mendapat pengenal unik koneksi aktif
 
 public **getSQLStatement** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object
+Pernyataan SQL aktif pada objek
 
 public **getRealSQLStatement** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object without replace bound parameters
+Pernyataan SQL aktif pada objek tanpa mengganti parameter terikat
 
 public *array* **getSQLBindTypes** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Active SQL statement in the object
+Pernyataan SQL aktif pada objek
 
 abstract public **describeColumns** (*mixed* $table, [*mixed* $schema]) inherited from [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
