@@ -6,9 +6,9 @@ title: 'Phalcon\Version'
 ---
 # Class **Phalcon\Version**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
-Kelas ini memungkinkan untuk mendapatkan versi kerangka kerja yang terinstal
+This class allows to get the installed version of the framework
 
 ## Constants
 
@@ -22,19 +22,19 @@ Kelas ini memungkinkan untuk mendapatkan versi kerangka kerja yang terinstal
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Metode
+## Methods
 
 protected static **_getVersion** ()
 
-Area dimana nomor versi ditetapkan. The format is as follows: ABBCCDE A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stable E - Special release version i.e. RC1, Beta2 etc.
+Area where the version number is set. The format is as follows: ABBCCDE A - Major version B - Med version (two digits) C - Min version (two digits) D - Special release: 1 = Alpha, 2 = Beta, 3 = RC, 4 = Stable E - Special release version i.e. RC1, Beta2 etc.
 
 final protected static **_getSpecial** (*mixed* $special)
 
-Menerjemahkan nomor ke rilis khusus Jika rilis khusus = 1 fungsi ini akan mengembalikan ALFA
+Translates a number to a special release If Special release = 1 this function will return ALPHA
 
 public static **get** ()
 
-Mengembalikan versi aktif (deretan)
+Returns the active version (string)
 
 ```php
 <?php
@@ -45,7 +45,7 @@ echo Phalcon\Version::get();
 
 public static **getId** ()
 
-Mengembalikan versi aktif numerik
+Returns the numeric active version
 
 ```php
 <?php
