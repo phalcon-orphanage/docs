@@ -2,32 +2,32 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Mvc\Model\Relation'
+title: 'Phalcon\Mvc\Model\Behavior'
 ---
 # Abstract class **Phalcon\Mvc\Model\Behavior**
 
 *implements* [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior.zep)
 
-Ini adalah kelas dasar opsional untuk perilaku ORM
+This is an optional base class for ORM behaviors
 
-## Metode
+## Methods
 
-umum **__membangun** ([*array* $options])
+public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
-Memeriksa apakah perilaku tersebut harus mengambil tindakan pada acara tertentu
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName])
 
-Mengembalikan opsi perilaku yang terkait dengan suatu peristiwa
+Returns the behavior options related to an event
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Metode ini menerima pemberitahuan dari PengelolaAcara
+This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $method, [*array* $arguments])
 
-Bertindak sebagai fallback ketika metode yang hilang dipanggil pada model
+Acts as fallbacks when a missing method is called on the model
