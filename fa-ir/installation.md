@@ -15,7 +15,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## سخت افزار
+## Hardware
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -23,7 +23,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## نرم افزار
+## Software
 
 * PHP >= 5.5
 
@@ -80,7 +80,7 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-یا
+or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
@@ -155,7 +155,7 @@ Add the repository to your distribution:
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-یا
+or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
@@ -216,7 +216,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 ### `pkg_add`
 
 ```bash
-pkg_add phalcon - r
+pkg_add -r phalcon
 ```
 
 ### Source
@@ -291,7 +291,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | نوع                   |
+| Architecture | Version | Type                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |
