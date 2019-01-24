@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Redis'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
 This adapter store sessions in Redis
 
@@ -40,7 +40,7 @@ echo $session->get("var");
 
 ```
 
-## Costanti
+## Constants
 
 *integer* **SESSION_ACTIVE**
 
@@ -48,7 +48,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Metodi
+## Methods
 
 public **getRedis** ()
 
