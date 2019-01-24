@@ -10,27 +10,27 @@ title: 'Phalcon\Mvc\Model\ValidationFailed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
 
 This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
 
-## Metode
+## Methods
 
 public **__construct** (*Model* $model, *Message*\ [] $validationMessages)
 
 Phalcon\Mvc\Model\ValidationFailed constructor
 
-publik **mendapatkan Model** ()
+public **getModel** ()
 
-Mengembalikan model yang menghasilkan pesan
+Returns the model that generated the messages
 
 public **getMessages** ()
 
-Mengembalikan kelompok pesan lengkap yang dihasilkan dalam validasi
+Returns the complete group of messages produced in the validation
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Kloning pengecualian
+Clone the exception
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -38,32 +38,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Pesan pengecualian terenkripsi
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Pesan pengecualian terenkripsi
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Mendapatkan file di mana pengecualian terjadi
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Mendapatkan file di mana pengecualian terjadi
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Mendapatkan pelacakan stack
+Gets the stack trace
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Kembali pengecualian sebelumnya
+Returns previous Exception
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Mendapatkan jejak stack sebagai string
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String representasi dari pengecualian
+String representation of the exception
