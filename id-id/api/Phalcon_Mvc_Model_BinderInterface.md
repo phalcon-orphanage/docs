@@ -6,15 +6,15 @@ title: 'Phalcon\Mvc\Model\BinderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\BinderInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binderinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **getBoundModels** ()
+abstract public **getBoundModels** ()
 
 ...
 
-abstrak publik **getCache** ()
+abstract public **getCache** ()
 
 ...
 
