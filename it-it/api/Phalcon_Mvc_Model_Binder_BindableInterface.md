@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\Binder\BindableInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Binder\BindableInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder/bindableinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder/bindableinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **getModelName** ()
 
