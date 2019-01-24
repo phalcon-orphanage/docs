@@ -309,9 +309,9 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+Die verfügbaren Optionen sind:
 
-| Parameter     | Description                                                                                                                                                                                                                 | Example                                                              |
+| Parameter     | Beschreibung                                                                                                                                                                                                                | Example                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
@@ -473,7 +473,7 @@ foreach ($parts as $part) {
 
 <a name='custom-resultsets'></a>
 
-### Custom Resultsets
+### Benutzerdefinierte Resultsets
 
 There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
 
@@ -1094,10 +1094,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Operation | Name         | Kann den Vorgang stoppen? | Explanation                              |
+| --------- | ------------ |:-------------------------:| ---------------------------------------- |
+| Löschen   | afterDelete  |           Nein            | Runs after the delete operation was made |
+| Löschen   | beforeDelete |            Ja             | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1759,7 +1759,7 @@ Model::setup(
 
 The available options are:
 
-| Option                | Description                                                                               | Default |
+| Option                | Beschreibung                                                                              | Default |
 | --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
 | astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
 | cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
