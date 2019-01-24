@@ -6,7 +6,7 @@ title: 'Phalcon\Text'
 ---
 # Abstract class **Phalcon\Text**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
 Provides utilities to work with texts
 
@@ -180,7 +180,7 @@ echo Phalcon\Text::dynamic("[Hi/Hello], my name is a [Zyxep/Mark]!", "[", "]", "
 
 public static **underscore** (*mixed* $text)
 
-Makes a phrase underscored instead of spaced
+Κάνει μια φράση υπογράμμιση των αντί διαστημάτων
 
 ```php
 <?php
