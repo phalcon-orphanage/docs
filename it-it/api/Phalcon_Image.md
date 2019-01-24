@@ -6,9 +6,9 @@ title: 'Phalcon\Image'
 ---
 # Class **Phalcon\Image**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
 
-## Costanti
+## Constants
 
 *integer* **NONE**
 
