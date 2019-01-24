@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
-Sebuah router yang membaca anotasi rute dari kelas sumber-kesumber
+A router that reads routes annotations from classes/resources
 
 ```php
 <?php
@@ -44,39 +44,39 @@ $di->setShared(
 
 *integer* **POSITION_LAST**
 
-## Metode
+## Methods
 
-publik **menambahkan Sumber** (*campur aduk* $handler, [*campur aduk* $prefix])
+public **addResource** (*mixed* $handler, [*mixed* $prefix])
 
-Menambahkan sumber daya ke penangan anotasi Sumber daya adalah kelas yang berisi anotasi rute
+Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
-publik **tambahkan Modul Sumber** (*Bercampur* $module, *Bercampur* $handler, [*Bercampur* $prefix])
+public **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
-Menambahkan sumber daya ke penangan anotasi Sumber daya adalah kelas yang berisi anotasi rute Kelas berada dalam modul
+Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 public **handle** ([*mixed* $uri])
 
-Menghasilkan parameter Menghasilkan parameter rute dari informasi penulisan ulang dari informasi penulisan ulang
+Produce the routing parameters from the rewrite information
 
 public **processControllerAnnotation** (*mixed* $handler, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-Cek anotasi di blok doc pengontrol
+Checks for annotations in the controller docblock
 
 public **processActionAnnotation** (*mixed* $module, *mixed* $namespaceName, *mixed* $controller, *mixed* $action, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-Cek anotasi dalam metode umum pengontrol
+Checks for annotations in the public methods of the controller
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
-Mengubah akhiran kelas atur
+Changes the controller class suffix
 
-umum ** setActionSuffix ** (* campuran * $actionSuffix)
+public **setActionSuffix** (*mixed* $actionSuffix)
 
-Mengubah akhiran metode tindakan
+Changes the action method suffix
 
-publik **dapatkansumberdaya** ()
+public **getResources** ()
 
-Return sumber daya yang terdaftar
+Return the registered resources
 
 public **__construct** ([*mixed* $defaultRoutes]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -84,19 +84,19 @@ Phalcon\Mvc\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menyetel pengelola acara
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **getRewriteUri** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -117,19 +117,19 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Tetapkan apakah router harus menghapus garis miring tambahan pada rute yang ditangani
+Set whether router must remove the extra slashes in the handled routes
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menetapkan nama ruang nama default
+Sets the name of the default namespace
 
 public **setDefaultModule** (*mixed* $moduleName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menetapkan nama modul default
+Sets the name of the default module
 
 public **setDefaultController** (*mixed* $controllerName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menetapkan nama pengontrol default
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -153,11 +153,11 @@ $router->setDefaults(
 
 public **getDefaults** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan array parameter default
+Returns an array of default parameters
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router tanpa batasan HTTP
+Adds a route to the router without any HTTP constraint
 
 ```php
 <?php
@@ -172,7 +172,7 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 public **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP nya MENDAPATKAN
+Adds a route to the router that only match if the HTTP method is GET
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -184,23 +184,23 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 public **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PATCH
+Adds a route to the router that only match if the HTTP method is PATCH
 
 public **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 public **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Tambahkan rute ke router yang hanya cocok jika metode HTTP adalah OPTIONS
+Add a route to the router that only match if the HTTP method is OPTIONS
 
 public **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah KEPALA
+Adds a route to the router that only match if the HTTP method is HEAD
 
 public **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PURGE (dukungan Squid dan Varnish)
+Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
 public **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -216,56 +216,56 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Tetapkan sekelompok jalur yang akan dikembalikan bila tidak ada rute yang ditentukan yang cocok
+Set a group of paths to be returned when none of the defined routes are matched
 
 public **clear** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Menghapus semua rute yang telah ditentukan sebelumnya
+Removes all the pre-defined routes
 
 public **getNamespaceName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan nama namespace yang diproses
+Returns the processed namespace name
 
 public **getModuleName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan nama modul yang diproses
+Returns the processed module name
 
 public **getControllerName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan nama pengontrol yang diproses
+Returns the processed controller name
 
 public **getActionName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan nama tindakan yang diproses
+Returns the processed action name
 
 public **getParams** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan parameter yang diproses
+Returns the processed parameters
 
 public **getMatchedRoute** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan rute yang sesuai dengan URI yang ditangani
+Returns the route that matches the handled URI
 
 public **getMatches** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan sub ekspresi dalam ekspresi reguler yang sesuai
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Memeriksa apakah router cocok dengan rute yang ditentukan
+Checks if the router matches any of the defined routes
 
 public **getRoutes** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan semua rute yang didefinisikan di router
+Returns all the routes defined in the router
 
 public **getRouteById** (*mixed* $id) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan objek rute dengan idnya
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan objek rute dengan namanya
+Returns a route object by its name
 
 public **isExactControllerName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Mengembalikan apakah nama pengontrol tidak boleh hancur
+Returns whether controller name should not be mangled
