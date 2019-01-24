@@ -10,9 +10,9 @@ title: 'Phalcon\Paginator\Adapter\QueryBuilder'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
-Pagination menggunakan pembangun query PHQL sebagai sumber data
+Pagination using a PHQL query builder as source of data
 
 ```php
 <?php
@@ -34,34 +34,34 @@ $paginator = new QueryBuilder(
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** (*array* $config)
 
 public **getCurrentPage** ()
 
-Dapatkan nomor halaman saat ini
+Get the current page number
 
 public **setQueryBuilder** ([Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) $builder)
 
-Setel objek pembangun query
+Set query builder object
 
 public **getQueryBuilder** ()
 
-Dapatkan query builder object
+Get query builder object
 
 public **getPaginate** ()
 
-Mengembalikan sepotong hasil untuk ditampilkan dalam pagination
+Returns a slice of the resultset to show in the pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Setel nomor halaman saat ini
+Set the current page number
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Tetapkan batas baris saat ini
+Set current rows limit
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Dapatkan batas baris sekarang
+Get current rows limit
