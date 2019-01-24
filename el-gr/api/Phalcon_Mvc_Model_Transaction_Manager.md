@@ -104,15 +104,15 @@ Commits active transactions within the manager
 
 public **rollback** ([*boolean* $collect])
 
-Επαναφέρει τις συναλλαγές ενεργές στο διαχειριστή Η συλλογή θα καταργήσει τη συναλλαγή από τον διαχειριστή
+Rollbacks active transactions within the manager Collect will remove the transaction from the manager
 
 public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Ειδοποιεί διαχειριστή τον σχετικά με μια συναλλαγή με ανατροπή
+Notifies the manager about a rollbacked transaction
 
 public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Ειδοποιεί τον διαχειριστή με μια συναλλαγή σχετικά που έχει δεσμευτεί
+Notifies the manager about a committed transaction
 
 protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
@@ -120,4 +120,4 @@ Removes transactions from the TransactionManager
 
 public **collectTransactions** ()
 
-Καταργήστε τις συναλλαγές όλες από τον διαχειριστή
+Remove all the transactions from the manager
