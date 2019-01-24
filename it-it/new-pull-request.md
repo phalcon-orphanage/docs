@@ -3,7 +3,7 @@ layout: article
 language: 'it-it'
 version: '4.0'
 ---
-# Nuova richiesta di Pull
+# New Pull Request
 
 A pull request a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality
 
