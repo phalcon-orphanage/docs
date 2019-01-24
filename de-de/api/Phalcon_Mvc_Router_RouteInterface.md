@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Router\RouteInterface'
 ---
 # Interface **Phalcon\Mvc\Router\RouteInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **setHostname** (*mixed* $hostname)
 
