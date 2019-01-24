@@ -10,11 +10,11 @@ title: 'Phalcon\Translate\Adapter\Csv'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/csv.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/csv.zep)
 
 Allows to define translation lists using CSV file
 
-## Methods
+## Méthodes
 
 public **__construct** (*array* $options)
 
