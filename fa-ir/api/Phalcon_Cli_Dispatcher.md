@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
@@ -32,7 +32,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## ثابت ها
+## Constants
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -46,7 +46,7 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## روش ها
+## Methods
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
@@ -84,7 +84,7 @@ public **setOptions** (*array* $options)
 
 Set the options to be dispatched
 
-عمومی **دریافت نام** ()
+public **getOptions** ()
 
 Get dispatched options
 
@@ -110,11 +110,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-مجموعه مدیریت رویدادها
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
