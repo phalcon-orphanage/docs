@@ -15,7 +15,7 @@ Phalcon needs PHP to run. Its loosely coupled design allows developers to instal
 
 <a name='requirements-hardware'></a>
 
-## Matériel
+## Hardware
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 
@@ -23,7 +23,7 @@ Our website and blog (as well as other sites) are hosted on an Amazon VM with 51
 
 <a name='requirements-software'></a>
 
-## Logiciels
+## Software
 
 * PHP >= 5.5
 
@@ -43,7 +43,7 @@ Phalcon need the following extensions to run (minimal):
 
 <a name='requirements-software-optional'></a>
 
-### Dépendances en option, selon les besoins de votre application
+### Optional depending on the needs of your application
 
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
@@ -64,17 +64,17 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### Distributions basées DEB (Debian, Ubuntu, etc.)
+### DEB based distributions (Debian, Ubuntu, etc.)
 
 <a name='installation-linux-debian-repository'></a>
 
-#### Installation via les dépôts
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-debian-repository-stable'></a>
 
-##### Versions stables
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -84,7 +84,7 @@ or
 
 <a name='installation-linux-debian-repository-nightly'></a>
 
-##### Dernière version
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -94,7 +94,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 
 <a name='installation-linux-debian-phalcon'></a>
 
-#### Installation de Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -118,7 +118,7 @@ sudo apt-get install php7.0-phalcon
 
 <a name='installation-linux-debian-other-ppa'></a>
 
-#### PPAs supplémentaire
+#### Additional PPAs
 
 #### Ondřej Surý
 
@@ -139,17 +139,17 @@ sudo apt-get install php-phalcon
 
 <a name='installation-linux-rpm'></a>
 
-### Distributions RPM (CentOS, Fedora, etc.)
+### RPM based distributions (CentOS, Fedora, etc.)
 
 <a name='installation-linux-rpm-repository'></a>
 
-#### Installation via les dépôts
+#### Repository installation
 
 Add the repository to your distribution:
 
 <a name='installation-linux-rpm-repository-stable'></a>
 
-##### Versions stables
+##### Stable releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
@@ -159,7 +159,7 @@ or
 
 <a name='installation-linux-rpm-repository-nightly'></a>
 
-##### Dernière version
+##### Nightly releases
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -169,7 +169,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 
 <a name='installation-linux-rpm-phalcon'></a>
 
-#### Installation de Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -193,7 +193,7 @@ sudo yum install php70u-phalcon
 
 <a name='installation-linux-rpm-other-rpm'></a>
 
-#### Autres RPMs
+#### Additional RPMs
 
 ##### Remi
 
@@ -383,7 +383,7 @@ extension=phalcon.so
 
 <a name='installation-sources-advanced'></a>
 
-## Compilation avancée
+## Advanced Compilation
 
 Phalcon automatically detects your architecture, however, you can force the compilation for a specific architecture:
 
