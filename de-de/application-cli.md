@@ -9,23 +9,23 @@ version: '4.0'
 
 <a name='creating-cli-application'></a>
 
-# Creating a Command Line (CLI) Application
+# Erstellen einer Kommandozeile (CLI) Anwendung
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
-## Structure
+## Struktur
 
 A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- main bootstrap file
+* `app/cli.php` <-- Haupt bootstrap Datei
 
 <a name='creating-bootstrap'></a>
 
-## Creating a Bootstrap
+## Erstellen einer Bootstrap
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
@@ -38,11 +38,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Using the CLI factory default services container
+// Die default Services des CLI Factory Containers nutzen
 $di = new CliDI();
 
 /**
- * Register the autoloader and tell it to register the tasks directory
+ * Autoloader registrieren und ihm mitteilen, dass der tasks ordner registriert werden soll
  */
 $loader = new Loader();
 
@@ -54,7 +54,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
+// Konfigurationsdatei laden (falls vorhanden)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -63,13 +63,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Create a console application
+// Konsole-Anwendung erstellen
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Process the console arguments
+ * Konsolen Argumente bearbeiten
  */
 $arguments = [];
 
@@ -84,10 +84,10 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Handle incoming arguments
+    // Eingehende Argumente verarbeiten
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Phalcon bezogene Arbeiten hier durchführen
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -108,7 +108,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Tasks
+## Aufgaben
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -123,14 +123,14 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Das ist die Standard-Aufgabe und Standard Aktion' . PHP_EOL;
     }
 }
 ```
 
 <a name='processing-action-parameters'></a>
 
-## Processing action parameters
+## Verarbeitung von action Parametern
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -145,7 +145,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo 'This is the default task and the default action' . PHP_EOL;
+        echo 'Das ist die Standard-Aufgabe und Standard Aktion' . PHP_EOL;
     }
 
     /**
@@ -175,7 +175,7 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Running tasks in a chain
+## Ausführen von aneinandergereihten Aufgaben
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
@@ -185,10 +185,10 @@ It's also possible to run tasks in a chain if it's required. To accomplish this 
 $di->setShared("console", $console);
 
 try {
-    // Handle incoming arguments
+    // Eingehende Argumente verarbeiten
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
+    // Phalcon bezogene Arbeiten hier durchführen
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -212,7 +212,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "This is the default task and the default action" . PHP_EOL;
+        echo "Das ist die Standard Aufgabe und Standard Aktion" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -224,7 +224,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "I will get printed too!" . PHP_EOL;
+        echo "ich werde auch ausgegeben!" . PHP_EOL;
     }
 }
 ```
