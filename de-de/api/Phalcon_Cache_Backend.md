@@ -8,11 +8,11 @@ title: 'Phalcon\Cache\Backend'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
-## Methoden
+## Methods
 
 public **getFrontend** ()
 
@@ -48,19 +48,19 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer])
 
-Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
+Stops the frontend without store any cached content
 
 public **isFresh** ()
 
-Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
+Checks whether the last cache is fresh or cached
 
 public **isStarted** ()
 
-Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** ()
 
-Ermittelt die zuletzt gespeicherte Lebensdauer
+Gets the last lifetime set
 
 abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
