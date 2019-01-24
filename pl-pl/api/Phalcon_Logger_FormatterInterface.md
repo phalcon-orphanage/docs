@@ -6,7 +6,7 @@ title: 'Phalcon\Logger\FormatterInterface'
 ---
 # Interface **Phalcon\Logger\FormatterInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
 
 ## Metody
 
