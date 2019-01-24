@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\File'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
 
 Checks if a value has a correct file
 
@@ -81,7 +81,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Méthodes
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
