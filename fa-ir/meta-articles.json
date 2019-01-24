@@ -1,12 +1,12 @@
 {
   "acl": [
     {
-      "text": "بررسی کلی",
-      "url": "#بررسی کلی"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "ایجاد یک ای سی ال",
-      "url": "#نصب"
+      "text": "Creating an ACL",
+      "url": "#setup"
     },
     {
       "text": "Adding Operations",
@@ -17,379 +17,379 @@
       "url": "#adding-subjects"
     },
     {
-      "text": "تعریف کنترل دسترسی",
-      "url": "#کنترل-دسترسی"
+      "text": "Defining Access Controls",
+      "url": "#access-controls"
     },
     {
-      "text": "درخواست ACL",
-      "url": "#پرس و جو"
+      "text": "Querying an ACL",
+      "url": "#querying"
     },
     {
-      "text": "دسترسی مبتنی بر عملکرد",
-      "url": "#دسترسی مبتنی بر عملکرد"
+      "text": "Function based access",
+      "url": "#function-based-access"
     },
     {
       "text": "Objects as Operation and Subject name",
-      "url": "#اشیا"
+      "url": "#objects"
     },
     {
       "text": "Operations Inheritance",
       "url": "#operationss-inheritance"
     },
     {
-      "text": "لیست های ACL مرتب سازی",
-      "url": "#سریالی کردن"
+      "text": "Serializing ACL lists",
+      "url": "#serialization"
     },
     {
-      "text": "رویداد ها",
-      "url": "#رویداد ها"
+      "text": "Events",
+      "url": "#events"
     },
     {
-      "text": "پیاده سازی آداپتورهای خود را",
-      "url": "#مشتریان-آداپتور"
+      "text": "Implementing your own adapters",
+      "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "بررسی کلی",
-      "url": "#بررسی کلی"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "کارخانه",
-      "url": "#نصب"
+      "text": "Factory",
+      "url": "#setup"
     },
     {
-      "text": "افزودن نقش به ای سی ال",
+      "text": "Adding Roles to the ACL",
       "url": "#factory"
     },
     {
-      "text": "خواندن حاشیه نویسی ها",
+      "text": "Reading Annotations",
       "url": "#reading"
     },
     {
-      "text": "انواع حاشیه نویسی",
+      "text": "Types of Annotations",
       "url": "#types"
     },
     {
-      "text": "کاربرد عملی",
+      "text": "Practical Usage",
       "url": "#usage",
       "menu": [
         {
-          "text": "مخزن توانمندساز با حاشیه نویسی",
+          "text": "Cache Enabler with Annotations",
           "url": "#usage-cache"
         },
         {
-          "text": "مناطق خصوصی/عمومی در حاشیه نویسی",
+          "text": "Private/Public areas with Annotations",
           "url": "#usage-access-management"
         }
       ]
     },
     {
-      "text": "آداپتورهای حاشیه نویسی",
+      "text": "Annotations Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "پیاده سازی آداپتورهای خود را",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
     },
     {
-      "text": "منابع خارجی",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "ایجاد یک برنامه CLI",
+      "text": "Creating a CLI Application",
       "url": "#creating-cli-application"
     },
     {
-      "text": "ساختار",
+      "text": "Structure",
       "url": "#structure"
     },
     {
-      "text": "ایجاد بوت استرپ",
+      "text": "Creating a Bootstrap",
       "url": "#creating-bootstrap"
     },
     {
-      "text": "وظایف",
+      "text": "Tasks",
       "url": "#tasks"
     },
     {
-      "text": "پارامترهای عملیات پردازش",
+      "text": "Processing action parameters",
       "url": "#processing-action-parameters"
     },
     {
-      "text": "انجام وظایف در یک زنجیره",
+      "text": "Running tasks in a chain",
       "url": "#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "ایجاد یک برنامه کوچک",
+      "text": "Creating a Micro Application",
       "url": "#creating-micro-application"
     },
     {
-      "text": "مسیر یابی",
-      "url": "#مسیر یابی",
+      "text": "Routing",
+      "url": "#routing",
       "menu": [
         {
-          "text": "راه اندازی",
-          "url": "#راه انداز-مسیریاب",
+          "text": "Setup",
+          "url": "#routing-setup",
           "menu": [
             {
-              "text": "ابزار برنامه",
-              "url": "#مسیریابی-راه اندازی-برنامه"
+              "text": "Application object",
+              "url": "#routing-setup-application"
             },
             {
-              "text": "ابزار روتر",
-              "url": "#مسیریابی-راه اندازی-مسیریاب"
+              "text": "Router object",
+              "url": "#routing-setup-router"
             }
           ]
         },
         {
-          "text": "بازنویسی قوانین",
-          "url": "#بازنویسی-قوانین"
+          "text": "Rewrite Rules",
+          "url": "#rewrite-rules"
         },
         {
-          "text": "کنترل کننده ها",
-          "url": "#مسیریابی-کنترل کننده",
+          "text": "Handlers",
+          "url": "#routing-handlers",
           "menu": [
             {
-              "text": "تعاریف",
-              "url": "#مسیریابی-کنترل کننده-تعاریف",
+              "text": "Definitions",
+              "url": "#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "تابع ناشناس",
-                  "url": "#مسیریابی-کنترل کننده-ناشناس-تابع"
+                  "text": "Anonymous Function",
+                  "url": "#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "تابع",
-                  "url": "#مسیریابی-کنترل کننده-تابع"
+                  "text": "Function",
+                  "url": "#routing-handlers-function"
                 },
                 {
-                  "text": "روش های ایستا",
-                  "url": "#مسیریابی-کنترل کننده-استاتیک-متد"
+                  "text": "Static Method",
+                  "url": "#routing-handlers-static-method"
                 },
                 {
-                  "text": "ابزار در یک روش",
-                  "url": "#مسیریابی-کنترل کننده-شی-متد"
+                  "text": "Method in an Object",
+                  "url": "#routing-handlers-object-method"
                 },
                 {
-                  "text": "کنترل کننده",
-                  "url": "#مسیریابی-کنترل کننده-ناظر ها"
+                  "text": "Controllers",
+                  "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
-              "text": "بارگذاری آهسته",
-              "url": "#مسیریابی-کنترل کننده-ناظر ها-آهسته-در حال بار گذاری",
+              "text": "Lazy Loading",
+              "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "مورد استفاده",
-                  "url": "#مسیریابی-کنترل کننده-ناظر ها-آهسته-در حال بار گذاری-استفاده-گزینه"
+                  "text": "Use case",
+                  "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "یافت نشد (404)",
-              "url": "#مسیریابی-کنترل کننده-یافت-نشد"
+              "text": "Not Found (404)",
+              "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "روش ها ی فعل ها",
-          "url": "#مسیریابی-فعل",
+          "text": "Methods - Verbs",
+          "url": "#routing-verbs",
           "menu": [
             {
-              "text": "پاک کردن",
-              "url": "#مسیریابی-فعل-حذف"
+              "text": "delete",
+              "url": "#routing-verb-delete"
             },
             {
-              "text": "دریافت",
-              "url": "#مسیریابی-فعل-گرفتن"
+              "text": "get",
+              "url": "#routing-verb-get"
             },
             {
-              "text": "عنوان",
-              "url": "#مسیریابی-فعل-عنوان"
+              "text": "head",
+              "url": "#routing-verb-head"
             },
             {
-              "text": "نقشه",
-              "url": "#مسیریابی-فعل-نقشه"
+              "text": "map",
+              "url": "#routing-verb-map"
             },
             {
-              "text": "گزینه‌ها",
-              "url": "#مسیریابی-فعل-گزینه ها"
+              "text": "options",
+              "url": "#routing-verb-options"
             },
             {
-              "text": "وصله",
-              "url": "#مسیریابی-فعل-وصله"
+              "text": "patch",
+              "url": "#routing-verb-patch"
             },
             {
-              "text": "پست",
-              "url": "#مسیریابی-فعل-پست"
+              "text": "post",
+              "url": "#routing-verb-post"
             },
             {
-              "text": "قرار دادن",
-              "url": "#مسیریابی-فعل-قرار دادن"
+              "text": "put",
+              "url": "#routing-verb-put"
             }
           ]
         },
         {
-          "text": "مجموعه ها",
-          "url": "#مسیریابی-مجموعه ها"
+          "text": "Collections",
+          "url": "#routing-collections"
         },
         {
-          "text": "پارامترها",
-          "url": "#مسیریابی-پارامترها"
+          "text": "Parameters",
+          "url": "#routing-parameters"
         },
         {
-          "text": "تغییر مسیرها",
-          "url": "#مسیریابی-تغییر مسیرها"
+          "text": "Redirections",
+          "url": "#routing-redirections"
         },
         {
-          "text": "آدرسهای صفحه اینترنتی برای مسیرها",
-          "url": "# مسیریابی-آدرس ها-برای مسیرها"
+          "text": "URLs for Routes",
+          "url": "#routing-urls-for-routes"
         }
       ]
     },
     {
-      "text": "انژکتور وابسته",
-      "url": "# وابستگی-انژکتور"
+      "text": "Dependency Injector",
+      "url": "#dependency-injector"
     },
     {
-      "text": "پاسخ ها",
-      "url": "#پاسخ ها",
+      "text": "Responses",
+      "url": "#responses",
       "menu": [
         {
-          "text": "خروجی مستقیم",
-          "url": "#پاسخ ها-مستقیم-خروجی"
+          "text": "Direct output",
+          "url": "#responses-direct-output"
         },
         {
-          "text": "شامل یک فایل دیگر",
-          "url": "#پاسخ ها-شامل"
+          "text": "Including another file",
+          "url": "#responses-include"
         },
         {
-          "text": "خروجی مستقیم جی سون",
-          "url": "#پاسخ ها-مستقیم-جی سون"
+          "text": "Direct output JSON",
+          "url": "#responses-direct-output-json"
         },
         {
-          "text": "پاسخ جدید ابزار",
-          "url": "#پاسخ ها-جدید-واکنش-شی"
+          "text": "New Response object",
+          "url": "#responses-new-response-object"
         },
         {
-          "text": "پاسخ برنامه",
-          "url": "#پاسخ ها-برنامه-پاسخ"
+          "text": "Application Response",
+          "url": "#responses-application-response"
         },
         {
-          "text": "پاسخ کاربردی بازگشت",
-          "url": "#پاسخ-بازگشت-درخواست-پاسخ"
+          "text": "Return Application Response",
+          "url": "#responses-return-application-response"
         },
         {
-          "text": "جی سون",
-          "url": "#پاسخ-جی سون"
+          "text": "JSON",
+          "url": "#responses-json"
         }
       ]
     },
     {
-      "text": "رویداد ها",
-      "url": "#رویداد ها",
+      "text": "Events",
+      "url": "#events",
       "menu": [
         {
-          "text": "رویدادهای موجود",
-          "url": "#رویدادها-در دسترس-رویدادها",
+          "text": "Available events",
+          "url": "#events-available-events",
           "menu": [
             {
-              "text": "مثال احراز هویت",
-              "url": "#رویدادها-در دسترس-رویدادها-احراز هویت"
+              "text": "Authentication example",
+              "url": "#events-available-events-authentication"
             },
             {
-              "text": "مثال یافت نشد",
-              "url": "#رویدادها-در دسترس-رویدادها-یافت-نشد"
+              "text": "Not found example",
+              "url": "#events-available-events-not-found"
             }
           ]
         }
       ]
     },
     {
-      "text": "میان افزار",
+      "text": "Middleware",
       "url": "#",
       "menu": [
         {
-          "text": "رویداد های پیوست شده",
+          "text": "Attached events",
           "url": "#",
           "menu": [
             {
-              "text": "قبل",
+              "text": "before",
               "url": "#"
             },
             {
-              "text": "بعد",
+              "text": "after",
               "url": "#"
             },
             {
-              "text": "پايان",
+              "text": "finish",
               "url": "#"
             }
           ]
         },
         {
-          "text": "پیاده سازی",
+          "text": "Implementation",
           "url": "#"
         },
         {
-          "text": "راه اندازی",
+          "text": "Setup",
           "url": "#"
         },
         {
-          "text": "رویدادهای میان افزار",
+          "text": "Events in Middleware",
           "url": "#",
           "menu": [
             {
-              "text": "مثال API",
+              "text": "API example",
               "url": "#"
             },
             {
-              "text": "فایروال میان افزار",
+              "text": "Firewall Middleware",
               "url": "#"
             },
             {
-              "text": "میان افزار یافت نشد",
+              "text": "Not Found Middleware",
               "url": "#"
             },
             {
-              "text": "تغییر مسیر میان افزار",
+              "text": "Redirect Middleware",
               "url": "#"
             },
             {
-              "text": "میان افزار کروس",
+              "text": "CORS Middleware",
               "url": "#"
             },
             {
-              "text": "درخواست میان افزار",
+              "text": "Request Middleware",
               "url": "#"
             },
             {
-              "text": "پاسخ میان افزار",
+              "text": "Response Middleware",
               "url": "#"
             }
           ]
         },
         {
-          "text": "مدل ها",
+          "text": "Models",
           "url": "#"
         },
         {
-          "text": "چند نمونه از نمونه های تزریقی",
+          "text": "Injecting Model Instances",
           "url": "#"
         },
         {
-          "text": "مشاهده",
+          "text": "Views",
           "url": "#"
         },
         {
-          "text": "در حال بررسی خطا",
+          "text": "Error Handling",
           "url": "#"
         }
       ]
@@ -397,187 +397,187 @@
   ],
   "application": [
     {
-      "text": "بررسی کلی",
-      "url": "#بررسی کلی"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "بوت دستی",
-      "url": "#بوت-دستی"
+      "text": "Manual Bootstrapping",
+      "url": "#manual-bootstrapping"
     },
     {
-      "text": "نرم افزارهای ماژول یگانه یا چندگانه",
+      "text": "Single or Multi Module Applications",
       "url": "#single-vs-module",
       "menu": [
         {
-          "text": "ماژول یگانه",
+          "text": "Single Module",
           "url": "#single"
         },
         {
-          "text": "ماژول چندگانه",
+          "text": "Multi Module",
           "url": "#module"
         }
       ]
     },
     {
-      "text": "رویدادهای برنامه کاربردی",
-      "url": "#رویداد ها"
+      "text": "Application Events",
+      "url": "#events"
     },
     {
-      "text": "منابع خارجی",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "assets": [
     {
-      "text": "بررسی کلی",
-      "url": "#بررسی کلی"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "افزودن منابع",
-      "url": "#افزودن"
+      "text": "Adding Resources",
+      "url": "#add"
     },
     {
-      "text": "منابع محلی/از راه دور",
+      "text": "Local/Remote resources",
       "url": "#resources-local-remote"
     },
     {
-      "text": "مجموعه ها",
+      "text": "Collections",
       "url": "#collections"
     },
     {
-      "text": "پیشوندهای URL",
+      "text": "URL Prefixes",
       "url": "#url-prefixes"
     },
     {
-      "text": "حذف/فیلتر کردن",
+      "text": "Minification/Filtering",
       "url": "#minification-filtering",
       "menu": [
         {
-          "text": "فیلترهای ساخته شده",
+          "text": "Built-In Filters",
           "url": "#builtin-filters"
         },
         {
-          "text": "فیلترهای سفارشی",
+          "text": "Custom Filters",
           "url": "#custom-filters"
         }
       ]
     },
     {
-      "text": "خروجی سفارشی",
+      "text": "Custom Output",
       "url": "#"
     },
     {
-      "text": "بهبود عملکرد",
+      "text": "Improving performance",
       "url": "#"
     }
   ],
   "cache": [
     {
-      "text": "بهبود عملکرد با حافظه پنهان",
-      "url": "#بررسی کلی"
+      "text": "Improving Performance with Cache",
+      "url": "#overview"
     },
     {
-      "text": "چه زمانی حافظه پنهان را اجرا کنیم?",
+      "text": "When to implement cache?",
       "url": "#implementation"
     },
     {
-      "text": "رفتار حافظه پنهان",
+      "text": "Caching Behavior",
       "url": "#caching-behavior"
     },
     {
-      "text": "کارخانه",
+      "text": "Factory",
       "url": "#factory"
     },
     {
-      "text": "ذخیره قطعات خروجی",
+      "text": "Caching Output Fragments",
       "url": "#output-fragments",
       "menu": [
         {
-          "text": "ذخیره داده دلخواه",
+          "text": "Caching Arbitrary Data",
           "url": "#arbitrary-data"
         },
         {
-          "text": "مثال پشت خط فایل",
+          "text": "File Backend Example",
           "url": "#backend-file-example"
         },
         {
-          "text": "مثال حافظه پنهان حافظه ذخیره شده",
+          "text": "Memcached Backend Example",
           "url": "#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "درخواست حافظه پنهان",
+      "text": "Querying the cache",
       "url": "#read"
     },
     {
-      "text": "حذف داده از حافظه پنهان",
+      "text": "Deleting data from the cache",
       "url": "#delete"
     },
     {
-      "text": "بررسی وجود حافظه پنهان",
+      "text": "Checking cache existence",
       "url": "#exists"
     },
     {
-      "text": "طول عمر",
+      "text": "Lifetime",
       "url": "#lifetime"
     },
     {
-      "text": "حافظه پنهان چند سطحی",
+      "text": "Multi-Level Cache",
       "url": "#multi-level"
     },
     {
-      "text": "برنامه‌های فروشگاه",
+      "text": "Frontend Adapters",
       "url": "#adapters-frontend",
       "menu": [
         {
-          "text": "پیاده سازی آداپتورهای نرم افزار نهایی خود",
+          "text": "Implementing your own Frontend adapters",
           "url": "#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "آداپتورهای پشتیبانی",
+      "text": "Backend Adapters",
       "url": "#adapters-backend",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#adapters-backend-factory"
         },
         {
-          "text": "پیاده سازی آداپتورهای پشتیبانی خود",
+          "text": "Implementing your own Backend adapters",
           "url": "#adapters-backend-custom"
         },
         {
-          "text": "گزینه های قایل پشتیبانی",
+          "text": "File Backend Options",
           "url": "#adapters-backend-file"
         },
         {
-          "text": "گزینه های پایان برگشت Libmemcached",
+          "text": "Libmemcached Backend Options",
           "url": "#adapters-backend-libmemcached"
         },
         {
-          "text": "گزینه های پایان برگشت Memcache",
+          "text": "Memcache Backend Options",
           "url": "#adapters-backend-memcache"
         },
         {
-          "text": "گزینه های APC پشتیبانی",
+          "text": "APC Backend Options",
           "url": "#adapters-backend-apc"
         },
         {
-          "text": "گزینه های APCU پشتیبانی",
+          "text": "APCU Backend Options",
           "url": "#adapters-backend-apcu"
         },
         {
-          "text": "گزینه های پشتیبانی Mongo",
+          "text": "Mongo Backend Options",
           "url": "#adapters-backend-mongo"
         },
         {
-          "text": "گزینه های حافظه ایکس پشتیبانی",
+          "text": "XCache Backend Options",
           "url": "#adapters-backend-xcache"
         },
         {
-          "text": "گزینه های ردیس پشتیبانی",
+          "text": "Redis Backend Options",
           "url": "#adapters-backend-redis"
         }
       ]
@@ -585,25 +585,25 @@
   ],
   "config": [
     {
-      "text": "تنظیمات خواندن",
-      "url": "#بررسی کلی",
+      "text": "Reading Configurations",
+      "url": "#overview",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#factory"
         }
       ]
     },
     {
-      "text": "آرایه های محلی",
+      "text": "Native Arrays",
       "url": "#native-arrays"
     },
     {
-      "text": "فایل آداپتور",
+      "text": "File Adapters",
       "url": "#file-adapter"
     },
     {
-      "text": "خواندن فایل INI",
+      "text": "Reading INI Files",
       "url": "#ini-files"
     },
     {
@@ -611,61 +611,61 @@
       "url": "#merging"
     },
     {
-      "text": "پیکربندی های تو در تو",
+      "text": "Nested Configuration",
       "url": "#nested-configuration"
     },
     {
-      "text": "اعمال پیگربندی ها",
+      "text": "Injecting Configuration Dependency",
       "url": "#"
     }
   ],
   "contributions": [
     {
-      "text": "مشارکت در فالکون",
+      "text": "Contributing to Phalcon",
       "url": "#contributing"
     },
     {
-      "text": "همکاری کردن",
+      "text": "Contributions",
       "url": "#contributions"
     },
     {
-      "text": "سوالات و پشتیبانی",
+      "text": "Questions and Support",
       "url": "#file-adapter"
     },
     {
-      "text": "چک لیست گزارش اشکال",
+      "text": "Bug Report Checklist",
       "url": "#bug-report-checklist",
       "menu": [
         {
-          "text": "تولید یک عقبگرد",
+          "text": "Generating a backtrace",
           "url": "#bug-report-generating-backtrace"
         }
       ]
     },
     {
-      "text": "چک لیست درخواست را بکشید",
+      "text": "Pull Request Checklist",
       "url": "#pull-request-checklist"
     },
     {
-      "text": "دريافت پشتيباني",
+      "text": "Getting Support",
       "url": "#getting-support"
     },
     {
-      "text": "ویژگی های درخواستی",
+      "text": "Requesting Features",
       "url": "#"
     }
   ],
   "controllers": [
     {
-      "text": "بررسی کلی",
-      "url": "#بررسی کلی"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "با استفاده از کنترل کننده ها",
+      "text": "Using Controllers",
       "url": "#using"
     },
     {
-      "text": "حلقه ارسال",
+      "text": "Dispatch Loop",
       "url": "#dispatch-loop"
     },
     {
@@ -673,109 +673,109 @@
       "url": "#initializing"
     },
     {
-      "text": "خدمات تزریق",
+      "text": "Injecting Services",
       "url": "#injecting-services"
     },
     {
-      "text": "درخواست و پاسخ",
+      "text": "Request and Response",
       "url": "#request-response"
     },
     {
-      "text": "اطلاعات جلسه",
+      "text": "Session Data",
       "url": "#session-data"
     },
     {
-      "text": "استفاده از خدمات به عنوان کنترل کننده",
+      "text": "Using Services as Controllers",
       "url": "#services"
     },
     {
-      "text": "رویدادها در کنترل کننده ها",
-      "url": "#رویداد ها"
+      "text": "Events in Controllers",
+      "url": "#events"
     }
   ],
   "cookies": [
     {
-      "text": "مدیریت کوکی ها",
-      "url": "#بررسی کلی"
+      "text": "Cookies Management",
+      "url": "#overview"
     },
     {
-      "text": "استفاده پایه",
+      "text": "Basic Usage",
       "url": "#usage"
     },
     {
-      "text": "رمزگذاری/رمزگشایی کوکی ها",
+      "text": "Encryption/Decryption of Cookies",
       "url": "#encryption-decryption"
     }
   ],
   "crypt": [
     {
-      "text": "رمزگذاری/رمزگشایی",
-      "url": "#بررسی کلی"
+      "text": "Encryption/Decryption",
+      "url": "#overview"
     },
     {
-      "text": "استفاده پایه",
+      "text": "Basic Usage",
       "url": "#usage"
     },
     {
-      "text": "گزینه های رمزگذاری",
+      "text": "Encryption Options",
       "url": "#options"
     },
     {
-      "text": "پشتیبانی پایه 64",
+      "text": "Base64 Support",
       "url": "#base64"
     },
     {
-      "text": "راه اندازی یک سرویس رمزگذاری",
+      "text": "Setting up an Encryption service",
       "url": "#service"
     },
     {
-      "text": "پیوند‌ها",
+      "text": "Links",
       "url": "#links"
     }
   ],
   "db-layer": [
     {
-      "text": "لایه انتزاعی پایگاه داده",
-      "url": "#بررسی کلی"
+      "text": "Database Abstraction Layer",
+      "url": "#overview"
     },
     {
-      "text": "وقفه دهنده های پایگاه داده",
+      "text": "Database Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#adapters-factory"
         },
         {
-          "text": "پیاده سازی آداپتورهای خود را",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
     },
     {
-      "text": "گفتگوهای بانک اطلاعاتی",
+      "text": "Database Dialects",
       "url": "#dialects",
       "menu": [
         {
-          "text": "پیاده سازی گویش های خود",
+          "text": "Implementing your own dialects",
           "url": "#dialects-custom"
         }
       ]
     },
     {
-      "text": "اتصال به سرور پایگاه‌داده",
+      "text": "Connecting to Databases",
       "url": "#connection"
     },
     {
-      "text": "راه اندازی گزینه های اضافی PDO",
+      "text": "Setting up additional PDO options",
       "url": "#options"
     },
     {
-      "text": "پیدا کردن ردیف",
+      "text": "Finding Rows",
       "url": "#finding-rows"
     },
     {
-      "text": "پارامترهای مرتبط",
+      "text": "Binding Parameters",
       "url": "#binding-parameters"
     },
     {
@@ -788,10 +788,10 @@
     },
     {
       "text": "Database Events",
-      "url": "#رویداد ها"
+      "url": "#events"
     },
     {
-      "text": "تدوین بیانیه های اس کیو ال",
+      "text": "Profiling SQL Statements",
       "url": "#profiling"
     },
     {
@@ -827,19 +827,19 @@
   ],
   "db-migrations": [
     {
-      "text": "مهاجرت پایگاه داده",
-      "url": "#بررسی کلی"
+      "text": "Database Migrations",
+      "url": "#overview"
     },
     {
-      "text": "تخلیه طرح",
+      "text": "Schema Dumping",
       "url": "#schema-dumping"
     },
     {
-      "text": "آناتومی کلاس مهاجرت",
+      "text": "Migration Class Anatomy",
       "url": "#class-anatomy",
       "menu": [
         {
-          "text": "تعریف ستون",
+          "text": "Defining Columns",
           "url": "#class-anatomy-columns"
         },
         {
@@ -853,47 +853,47 @@
       ]
     },
     {
-      "text": "نوشتن مهاجرت",
+      "text": "Writing Migrations",
       "url": "#writing"
     },
     {
-      "text": "مهاجرت در حال اجرا",
+      "text": "Running Migrations",
       "url": "#running"
     }
   ],
   "db-models-behaviors": [
     {
-      "text": "مدل رفتار",
-      "url": "#بررسی کلی"
+      "text": "Model Behaviors",
+      "url": "#overview"
     },
     {
-      "text": "زمان استنشاقی",
+      "text": "Timestampable",
       "url": "#timestampable"
     },
     {
-      "text": "حذف آسان",
+      "text": "SoftDelete",
       "url": "#softdelete"
     },
     {
-      "text": "ایجاد رفتارهای خودتان",
+      "text": "Creating your own behaviors",
       "url": "#create-your-own-behaviors"
     },
     {
-      "text": "استفاده از صفات به عنوان رفتار",
+      "text": "Using Traits as behaviors",
       "url": "#traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
-      "text": "ORM ذخیره سازی",
-      "url": "#بررسی کلی"
+      "text": "ORM Caching",
+      "url": "#overview"
     },
     {
-      "text": "نتایج مجموعه ذخیره سازی",
+      "text": "Caching Resultsets",
       "url": "#caching-resultsets"
     },
     {
-      "text": "فشار مجبور",
+      "text": "Forcing Cache",
       "url": "#forcing-cache"
     },
     {
@@ -901,58 +901,58 @@
       "url": "#caching-phql-queries"
     },
     {
-      "text": "مجلات قابل استفاده مجدد",
+      "text": "Reusable Related Records",
       "url": "#reusable-related-records"
     },
     {
-      "text": "ذخیره سازی مرتبط با سوابق",
+      "text": "Caching Related Records",
       "url": "#caching-related-records"
     },
     {
-      "text": "ذخیره سازی مرتبط رکوردها به صورت مجزا",
+      "text": "Caching Related Records Recursively",
       "url": "#caching-related-records-recursively"
     },
     {
-      "text": "ذخیره بر اساس شرایط",
+      "text": "Caching based on Conditions",
       "url": "#caching-based-on-conditions"
     },
     {
-      "text": "ذخیره سازی PHQL برنامه اجرا",
+      "text": "Caching PHQL execution plan",
       "url": "#caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
-      "text": "رویدادهای مدل",
-      "url": "#بررسی کلی"
+      "text": "Model Events",
+      "url": "#overview"
     },
     {
-      "text": "رویدادها و رویدادهای مدیر",
-      "url": "#رویداد ها",
+      "text": "Events and Events Manager",
+      "url": "#events",
       "menu": [
         {
-          "text": "اجرای رویدادها در کلاس مدل",
+          "text": "Implementing Events in the Model's class",
           "url": "#events-in-models"
         },
         {
-          "text": "با استفاده از مدیر رویدادهای سفارشی",
+          "text": "Using a custom Events Manager",
           "url": "#custom-events-manager"
         }
       ]
     },
     {
-      "text": "ثبت مقادیر SQL پایین سطح",
+      "text": "Logging Low-Level SQL Statements",
       "url": "#logging-sql-statements"
     },
     {
-      "text": "تدوین بیانیه های اس کیو ال",
+      "text": "Profiling SQL Statements",
       "url": "#profiling-sql-statements"
     }
   ],
   "db-models-metadata": [
     {
       "text": "Models Metadata",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Caching Metadata",
@@ -982,7 +982,7 @@
   "db-models-relationships": [
     {
       "text": "Model Relationships",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Relationships between Models",
@@ -1058,7 +1058,7 @@
   "db-models-transactions": [
     {
       "text": "Model Transactions",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Manual Transactions",
@@ -1076,7 +1076,7 @@
   "db-models-validation": [
     {
       "text": "Model Transactions",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Validating Data Integrity",
@@ -1123,7 +1123,7 @@
           "url": "#filters"
         },
         {
-          "text": "پارامترهای مرتبط",
+          "text": "Binding Parameters",
           "url": "#binding-parameters"
         }
       ]
@@ -1198,7 +1198,7 @@
   "db-odm": [
     {
       "text": "ODM (Object-Document Mapper)",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Creating Models",
@@ -1234,7 +1234,7 @@
         },
         {
           "text": "Validation Events and Events Manager",
-          "url": "#رویداد ها"
+          "url": "#events"
         },
         {
           "text": "Implementing a Business Rule",
@@ -1270,14 +1270,14 @@
   "db-pagination": [
     {
       "text": "Pagination",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Data Adapters",
       "url": "#data-adapters"
     },
     {
-      "text": "کارخانه",
+      "text": "Factory",
       "url": "#factory"
     },
     {
@@ -1293,14 +1293,14 @@
       "url": "#page-attributes"
     },
     {
-      "text": "پیاده سازی آداپتورهای خود را",
+      "text": "Implementing your own adapters",
       "url": "#custom"
     }
   ],
   "db-phql": [
     {
       "text": "Phalcon Query Language (PHQL)",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Usage Example",
@@ -1378,7 +1378,7 @@
   "debug": [
     {
       "text": "Debugging Applications",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Catching Exceptions",
@@ -1400,7 +1400,7 @@
   "devtools-installation": [
     {
       "text": "DevTools on Linux",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Prerequisites",
@@ -1434,7 +1434,7 @@
   "devtools-usage": [
     {
       "text": "Phalcon Developer Tools",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Download",
@@ -1541,8 +1541,8 @@
       "url": "#resolving-services",
       "menu": [
         {
-          "text": "رویداد ها",
-          "url": "#رویداد ها"
+          "text": "Events",
+          "url": "#events"
         }
       ]
     },
@@ -1621,7 +1621,7 @@
           "url": "#preparing-actions-removing-legacy-extensions"
         },
         {
-          "text": "چند نمونه از نمونه های تزریقی",
+          "text": "Inject model instances",
           "url": "#preparing-actions-inject-model-instances"
         }
       ]
@@ -1638,7 +1638,7 @@
   "environments-docker": [
     {
       "text": "Environments - Docker",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Dependencies",
@@ -1672,7 +1672,7 @@
     },
     {
       "text": "Set up",
-      "url": "#نصب"
+      "url": "#setup"
     },
     {
       "text": "Logs",
@@ -1722,7 +1722,7 @@
   "environments-nanobox": [
     {
       "text": "Environments - Nanobox",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Create a New Project",
@@ -1756,7 +1756,7 @@
   "environments-vagrant": [
     {
       "text": "Environments - Vagrant",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Requirements",
@@ -1910,7 +1910,7 @@
   "escaper": [
     {
       "text": "Contextual Escaping",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Escaping HTML",
@@ -1936,7 +1936,7 @@
   "events": [
     {
       "text": "Events Manager",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Naming Convention",
@@ -1978,7 +1978,7 @@
   "filter": [
     {
       "text": "Filtering and Sanitizing",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Types of Built-in Filters",
@@ -2020,7 +2020,7 @@
   "flash": [
     {
       "text": "Flashing Messages",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Adapters",
@@ -2042,7 +2042,7 @@
   "forms": [
     {
       "text": "Forms",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Initializing forms",
@@ -2077,14 +2077,14 @@
       "url": "#manager"
     },
     {
-      "text": "منابع خارجی",
+      "text": "External Resources",
       "url": "#external"
     }
   ],
   "i18n": [
     {
       "text": "Internationalization",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Find out best available Locale",
@@ -2106,18 +2106,18 @@
   "image": [
     {
       "text": "Images",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#adapters-factory"
         },
         {
-          "text": "پیاده سازی آداپتورهای خود را",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
@@ -2183,11 +2183,11 @@
       "url": "#requirements",
       "menu": [
         {
-          "text": "سخت افزار",
+          "text": "Hardware",
           "url": "#requirements-hardware"
         },
         {
-          "text": "نرم افزار",
+          "text": "Software",
           "url": "#requirements-software",
           "menu": [
             {
@@ -2329,7 +2329,7 @@
   "loader": [
     {
       "text": "Requirements",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Security Layer",
@@ -2361,7 +2361,7 @@
     },
     {
       "text": "Autoloading Events",
-      "url": "#رویداد ها"
+      "url": "#events"
     },
     {
       "text": "Troubleshooting",
@@ -2371,14 +2371,14 @@
   "logging": [
     {
       "text": "Logging",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Adapters",
       "url": "#adapters"
     },
     {
-      "text": "کارخانه",
+      "text": "Factory",
       "url": "#adapters-factory"
     },
     {
@@ -2428,7 +2428,7 @@
           "url": "#usage-firephp"
         },
         {
-          "text": "پیاده سازی آداپتورهای خود را",
+          "text": "Implementing your own adapters",
           "url": "#usage-custom"
         }
       ]
@@ -2440,15 +2440,15 @@
       "url": "#architecture"
     },
     {
-      "text": "مدل ها",
-      "url": "#مدل ها"
+      "text": "Models",
+      "url": "#models"
     },
     {
-      "text": "مشاهده",
-      "url": "#مشاهده"
+      "text": "Views",
+      "url": "#views"
     },
     {
-      "text": "کنترل کننده",
+      "text": "Controllers",
       "url": "#controllers"
     }
   ],
@@ -2459,7 +2459,7 @@
     },
     {
       "text": "Setting up the framework",
-      "url": "#مدل ها"
+      "url": "#models"
     },
     {
       "text": "Controllers in Namespaces",
@@ -2467,13 +2467,13 @@
     },
     {
       "text": "Models in Namespaces",
-      "url": "#مدل ها"
+      "url": "#models"
     }
   ],
   "performance": [
     {
       "text": "Increasing Performance",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Profile on the Server",
@@ -2484,7 +2484,7 @@
           "url": "#profiling-server-xhprof"
         },
         {
-          "text": "تدوین بیانیه های اس کیو ال",
+          "text": "Profiling SQL Statements",
           "url": "#profiling-server-sql-statements"
         }
       ]
@@ -2527,7 +2527,7 @@
   "queue": [
     {
       "text": "Queueing",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Putting Jobs into the Queue",
@@ -2541,7 +2541,7 @@
   "reproducible-tests": [
     {
       "text": "Creating a small script",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Database",
@@ -2563,7 +2563,7 @@
   "request": [
     {
       "text": "Request Environment",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Getting Values",
@@ -2585,7 +2585,7 @@
   "response": [
     {
       "text": "Returning Responses",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Working with Headers",
@@ -2616,89 +2616,89 @@
   ],
   "routing": [
     {
-      "text": "مسیر یابی",
-      "url": "#بررسی کلی"
+      "text": "Routing",
+      "url": "#overview"
     },
     {
-      "text": "مشخص کردن مسیر ها",
+      "text": "Defining Routes",
       "url": "#defining",
       "menu": [
         {
-          "text": "نام گذاری پارامتر ها",
+          "text": "Parameters with Names",
           "url": "#defining-named-parameters"
         },
         {
-          "text": "نحو کوتاه",
+          "text": "Short Syntax",
           "url": "#defining-short-syntax"
         },
         {
-          "text": "مخلوط کردن آرایه و نحو کوتاه",
+          "text": "Mixing Array and Short Syntax",
           "url": "#defining-mixed-parameters"
         },
         {
-          "text": "مسیریابی به ماژول ها",
+          "text": "Routing to Modules",
           "url": "#defining-route-to-modules"
         },
         {
-          "text": "محدودیت های روش HTTP",
+          "text": "HTTP Method Restrictions",
           "url": "#defining-http-method-restrictions"
         },
         {
-          "text": "با استفاده از گفتگوها",
+          "text": "Using conversors",
           "url": "#defining-using-conversors"
         },
         {
-          "text": "گروه های مسیر",
+          "text": "Groups of Routes",
           "url": "#defining-groups-of-routes"
         }
       ]
     },
     {
-      "text": "مسیرهای مطابق",
+      "text": "Matching Routes",
       "url": "#matching"
     },
     {
-      "text": "نامگذاری مسیر",
+      "text": "Naming Routes",
       "url": "#naming"
     },
     {
-      "text": "مثال طریقه استفاده",
+      "text": "Usage Examples",
       "url": "#usage"
     },
     {
-      "text": "رفتار پیش فرض",
+      "text": "Default Behavior",
       "url": "#default-behavior"
     },
     {
-      "text": "تنظیم مسیر پیش فرض",
+      "text": "Setting the default route",
       "url": "#default-route"
     },
     {
-      "text": "مسیر پیدا نشد",
+      "text": "Not Found Paths",
       "url": "#not-found-paths"
     },
     {
-      "text": "تنظیم مسیر پیش فرض",
+      "text": "Setting default paths",
       "url": "#default-paths"
     },
     {
-      "text": "برخورد با دیگر اضافی/انتهایی",
+      "text": "Dealing with extra/trailing slashes",
       "url": "#extra-slashes"
     },
     {
-      "text": "تماس مجدد بازی",
+      "text": "Match Callbacks",
       "url": "#callbacks"
     },
     {
-      "text": "محدودیت های نام هاست",
+      "text": "Hostname Constraints",
       "url": "#hostname-constraints"
     },
     {
-      "text": "منابع URI",
+      "text": "URI Sources",
       "url": "#uri-sources"
     },
     {
-      "text": "تست راه خود را",
+      "text": "Testing your routes",
       "url": "#testing"
     },
     {
@@ -2717,7 +2717,7 @@
   "security": [
     {
       "text": "Security",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Password Hashing",
@@ -2729,35 +2729,35 @@
     },
     {
       "text": "Setting up the component",
-      "url": "#نصب"
+      "url": "#setup"
     },
     {
       "text": "Random",
       "url": "#random"
     },
     {
-      "text": "منابع خارجی",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "session": [
     {
       "text": "Storing data in the Session",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Starting the Session",
       "url": "#start",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#start-factory"
         }
       ]
     },
     {
       "text": "XAMPP",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Storing/Retrieving data in Session",
@@ -2780,14 +2780,14 @@
       "url": "#data-persistence"
     },
     {
-      "text": "پیاده سازی آداپتورهای خود را",
-      "url": "#مشتریان-آداپتور"
+      "text": "Implementing your own adapters",
+      "url": "#custom-adapters"
     }
   ],
   "tag": [
     {
       "text": "View Helpers (Tags)",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Document Type of Content",
@@ -2864,111 +2864,111 @@
   ],
   "testing-environment": [
     {
-      "text": "بررسی کلی",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "بررسی کلی",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
       "text": "Installation",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
       "text": "Services",
-      "url": "services"
+      "url": "#services"
     }
   ],
   "translate": [
     {
-      "text": "پشتیبانی چند زبانه",
-      "url": "#بررسی کلی"
+      "text": "Multi-lingual Support",
+      "url": "#overview"
     },
     {
       "text": "Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "کارخانه",
+          "text": "Factory",
           "url": "#adapters-factory"
         }
       ]
     },
     {
-      "text": "استفاده کامپوننت",
+      "text": "Component Usage",
       "url": "#usage"
     },
     {
-      "text": "پیاده سازی آداپتورهای خود را",
+      "text": "Implementing your own adapters",
       "url": "#custom"
     }
   ],
@@ -2978,37 +2978,37 @@
       "url": "#basic"
     },
     {
-      "text": "ساختار پرونده",
+      "text": "File structure",
       "url": "#file-structure"
     },
     {
-      "text": "بوت استرپ",
+      "text": "Bootstrap",
       "url": "#bootstrap",
       "menu": [
         {
-          "text": "خودکار زدن",
+          "text": "Autoloaders",
           "url": "#autoloaders"
         },
         {
-          "text": "مدیریت وابستگی",
+          "text": "Dependency Management",
           "url": "#dependency-management"
         },
         {
-          "text": "رسیدگی به درخواست برنامه",
+          "text": "Handling the application request",
           "url": "#request"
         },
         {
-          "text": "قرار دادن همه چیز با هم",
+          "text": "Putting everything together",
           "url": "#full-example"
         }
       ]
     },
     {
-      "text": "ایجاد یک کنترل کننده",
+      "text": "Creating a Controller",
       "url": "#controller"
     },
     {
-      "text": "ارسال خروجی به نمایش",
+      "text": "Sending output to a view",
       "url": "#view"
     },
     {
@@ -3016,15 +3016,15 @@
       "url": "#signup-form"
     },
     {
-      "text": "ایجاد یک مدل",
+      "text": "Creating a Model",
       "url": "#model"
     },
     {
-      "text": "تنظیم یک اتصال به پایگاه داده",
+      "text": "Setting a Database Connection",
       "url": "#database-connection"
     },
     {
-      "text": "ذخیره داده ها با استفاده از مدل ها",
+      "text": "Storing data using models",
       "url": "#storing-data"
     },
     {
@@ -3035,22 +3035,22 @@
   "tutorial-invo": [
     {
       "text": "Tutorial: INVO",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Project Structure",
       "url": "#structure"
     },
     {
-      "text": "مسیر یابی",
-      "url": "#مسیر یابی"
+      "text": "Routing",
+      "url": "#routing"
     },
     {
       "text": "Configuration",
       "url": "#configuration"
     },
     {
-      "text": "خودکار زدن",
+      "text": "Autoloaders",
       "url": "#autoloaders"
     },
     {
@@ -3111,7 +3111,7 @@
   "tutorial-rest": [
     {
       "text": "Tutorial: Creating a Simple REST API",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Defining the API",
@@ -3122,8 +3122,8 @@
       "url": "#implementation"
     },
     {
-      "text": "ایجاد یک مدل",
-      "url": "#مدل ها"
+      "text": "Creating a Model",
+      "url": "#models"
     },
     {
       "text": "Retrieving Data",
@@ -3152,26 +3152,26 @@
   ],
   "tutorial-vokuro": [
     {
-      "text": "آموزش: وکور",
-      "url": "#بررسی کلی"
+      "text": "Tutorial: Vökuró",
+      "url": "#overview"
     },
     {
       "text": "Project Structure",
       "url": "#structure"
     },
     {
-      "text": "کلاس های بار و وابستگی ها",
+      "text": "Load Classes and Dependencies",
       "url": "#dependencies"
     },
     {
-      "text": "ثبت نام",
+      "text": "Sign Up",
       "url": "#sign-up"
     }
   ],
   "use-case": [
     {
       "text": "Use Case",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Requirements",
@@ -3189,7 +3189,7 @@
   "unit-testing": [
     {
       "text": "Unit Testing",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Integrating PHPUnit with Phalcon",
@@ -3211,7 +3211,7 @@
   "url": [
     {
       "text": "Generating URLs and Paths",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Setting a base URI",
@@ -3240,19 +3240,19 @@
   ],
   "validation": [
     {
-      "text": "اعتبار سنجی",
-      "url": "#بررسی کلی"
+      "text": "Validation",
+      "url": "#overview"
     },
     {
-      "text": "تایید اعتبار اولیه",
+      "text": "Initializing Validation",
       "url": "#initializing"
     },
     {
-      "text": "تایید کنندگان",
+      "text": "Validators",
       "url": "#validators"
     },
     {
-      "text": "تایید اعتبار تماس",
+      "text": "Callback Validator",
       "url": "#callback"
     },
     {
@@ -3260,30 +3260,30 @@
       "url": "#messages"
     },
     {
-      "text": "فیلتر کردن داده ها",
+      "text": "Filtering of Data",
       "url": "#filtering"
     },
     {
-      "text": "رویداد های اعتبار سنجی",
-      "url": "#رویداد ها"
+      "text": "Validation Events",
+      "url": "#events"
     },
     {
-      "text": "لغو اعتبارسنجی",
+      "text": "Cancelling Validations",
       "url": "#cancelling"
     },
     {
-      "text": "اجتناب از اعتباربخشی به مقادیر خالی",
+      "text": "Avoid validating empty values",
       "url": "#empty-values"
     },
     {
-      "text": "اعتبار مجرد",
+      "text": "Recursive Validation",
       "url": "#recursive"
     }
   ],
   "views": [
     {
       "text": "Using Views",
-      "url": "#بررسی کلی"
+      "url": "#overview"
     },
     {
       "text": "Integrating Views with Controllers",
@@ -3365,28 +3365,28 @@
     },
     {
       "text": "View Events",
-      "url": "#رویداد ها"
+      "url": "#events"
     }
   ],
   "volt": [
     {
-      "text": "ولت: الگوی موتور",
-      "url": "#بررسی کلی"
+      "text": "Volt: Template Engine",
+      "url": "#overview"
     },
     {
-      "text": "معرفی",
+      "text": "Introduction",
       "url": "#introduction"
     },
     {
-      "text": "فعال کردن ولت",
-      "url": "#نصب"
+      "text": "Activating Volt",
+      "url": "#setup"
     },
     {
-      "text": "استفاده پایه",
+      "text": "Basic Usage",
       "url": "#basic-usage"
     },
     {
-      "text": "متغیرها",
+      "text": "Variables",
       "url": "#variables"
     },
     {
@@ -3394,23 +3394,23 @@
       "url": "#filters"
     },
     {
-      "text": "نظرات",
+      "text": "Comments",
       "url": "#comments"
     },
     {
-      "text": "فهرست ساختارهای کنترل",
+      "text": "List of Control Structures",
       "url": "#control-structures",
       "menu": [
         {
-          "text": "برای",
+          "text": "For",
           "url": "#control-structures-for"
         },
         {
-          "text": "کنترل حلقه",
+          "text": "Loop Controls",
           "url": "#control-structures-loops",
           "menu": [
             {
-              "text": "اگر",
+              "text": "If",
               "url": "#control-structures-if"
             },
             {
@@ -3424,11 +3424,11 @@
           "url": "#control-structures-loop",
           "menu": [
             {
-              "text": "واگذاری",
+              "text": "Assignments",
               "url": "#assignments"
             },
             {
-              "text": "عبارت",
+              "text": "Expressions",
               "url": "#expressions"
             }
           ]
@@ -3460,7 +3460,7 @@
       ]
     },
     {
-      "text": "تست ها",
+      "text": "Tests",
       "url": "#tests"
     },
     {
@@ -3536,11 +3536,11 @@
   ],
   "webserver-wamp": [
     {
-      "text": "نصب بر روی WAMP",
-      "url": "#بررسی کلی"
+      "text": "Installation on WAMP",
+      "url": "#overview"
     },
     {
-      "text": "نسخه مناسب Phalcon را دانلود کنید",
+      "text": "Download the right version of Phalcon",
       "url": "#phalcon"
     },
     {
@@ -3550,15 +3550,15 @@
   ],
   "webserver-xampp": [
     {
-      "text": "نصب بر روی XAMPP",
-      "url": "#بررسی کلی"
+      "text": "Installation on XAMPP",
+      "url": "#overview"
     },
     {
-      "text": "نسخه مناسب Phalcon را دانلود کنید",
+      "text": "Download the right version of Phalcon",
       "url": "#phalcon"
     },
     {
-      "text": "اشتراک گذاری صفحه نمایش",
+      "text": "Screencast",
       "url": "#screencast"
     },
     {
