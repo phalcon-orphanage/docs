@@ -6,9 +6,9 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
-## Methods
+## Méthodes
 
 abstract public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
