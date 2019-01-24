@@ -12,25 +12,25 @@ title: 'Phalcon\Mvc\View\Engine\Volt'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
-Zephir/C 编写的 PHP 设计器的友好和快速模板引擎
+Designer friendly and fast template engine for PHP written in Zephir/C
 
 ## 方法
 
 public **setOptions** (*array* $options)
 
-设置 Volt 的选项
+Set Volt's options
 
 public **getOptions** ()
 
-返回 Volt 的选项
+Return Volt's options
 
 public **getCompiler** ()
 
-返回 Volt 的编译器
+Returns the Volt's compiler
 
 public **render** (*mixed* $templatePath, *mixed* $params, [*mixed* $mustClean])
 
-呈现一个视图，使用模板引擎
+Renders a view using the template engine
 
 public **length** (*mixed* $item)
 
@@ -38,23 +38,23 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 
 public **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
-检查是否针包括在haystack
+Checks if the needle is included in the haystack
 
 public **convertEncoding** (*mixed* $text, *mixed* $from, *mixed* $to)
 
-执行字符串转换
+Performs a string conversion
 
 public **slice** (*mixed* $value, [*mixed* $start], [*mixed* $end])
 
-从一个字符串/数组/可遍历对象值提取一部分
+Extracts a slice from a string/array/traversable object value
 
 public **sort** (*array* $value)
 
-对数组进行排序
+Sorts an array
 
 public **callMacro** (*mixed* $name, [*array* $arguments])
 
-检查是否宏定义和调用它
+Checks if a macro is defined and calls it
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
@@ -62,27 +62,27 @@ Phalcon\Mvc\View\Engine constructor
 
 public **getContent** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-返回缓存输出在另一个视图舞台上
+Returns cached output on another view stage
 
 public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-将呈现偏内另一种观点
+Renders a partial inside another view
 
 public **getView** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-返回有关适配器的视图组件
+Returns the view component related to the adapter
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
