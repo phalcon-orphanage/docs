@@ -8,11 +8,11 @@ title: 'Phalcon\Session\Adapter'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
 
 Base class for Phalcon\Session adapters
 
-## Konstanten
+## Constants
 
 *integer* **SESSION_ACTIVE**
 
@@ -20,7 +20,7 @@ Base class for Phalcon\Session adapters
 
 *integer* **SESSION_DISABLED**
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $options])
 
