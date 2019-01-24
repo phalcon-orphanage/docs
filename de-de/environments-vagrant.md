@@ -17,7 +17,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='requirements'></a>
 
-## Requirements
+## Systemanforderungen
 
 * Operating System: Windows, Linux, or macOS
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) >= 5.1 (if you want to build the VirtualBox box)
@@ -26,7 +26,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='packages-included'></a>
 
-## Packages Included
+## Enthaltene Pakete
 
 * Ansible
 * Beanstalkd
@@ -59,7 +59,7 @@ The first time that you provision a new environment with `vagrant up`, the proce
 
 <a name='installation-vagrant-box'></a>
 
-### Installing the Vagrant Box
+### Vagrant Box installieren
 
 Before launching your Phalcon Box environment, you must install VirtualBox, or VMWare as well as Vagrant. All of these software packages provide easy-to-use visual installers for all popular operating systems.
 
@@ -86,7 +86,7 @@ git clone https://github.com/phalcon/box.git workspace
 
 The `master` branch will always contain the latest stable version of Phalcon Box. If you wish to check older versions or newer ones currently under development, please switch to the relevant branch/tag.
 
-You can find the latest stable version on the [Github Release Page](https://github.com/phalcon/box/releases):
+You can find the latest stable version on the [GitHub Release Page](https://github.com/phalcon/box/releases):
 
 ```bash
 # Clone the desired release...
