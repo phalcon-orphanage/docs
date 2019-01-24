@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'فالکون/اعتبار سنجی/تایید کنندگان/تماس برگشت'
+title: 'Phalcon\Validation\Validator\Callback'
 ---
 # Class **Phalcon\Validation\Validator\Callback**
 
@@ -10,7 +10,7 @@ title: 'فالکون/اعتبار سنجی/تایید کنندگان/تماس ب
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
 Calls user function for validation
 
@@ -58,7 +58,7 @@ $validator->add(
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
