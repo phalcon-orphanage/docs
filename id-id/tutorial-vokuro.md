@@ -11,13 +11,13 @@ version: '4.0'
 
 # Tutorial: Vökuró
 
-Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [Github](https://github.com/phalcon/vokuro).
+Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
 
 <a name='structure'></a>
 
-## Project Structure
+## Struktur Proyek
 
-Once you clone the project in your document root you'll see the following structure:
+Setelah Anda mengkloning proyek di akar dokumen Anda, Anda akan melihat struktur berikut:
 
 ```bash
 vokuro/
@@ -49,7 +49,7 @@ This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, mode
 
 ```bash
 cd vokuro
-composer install
+komposer install
 ```
 
 Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
