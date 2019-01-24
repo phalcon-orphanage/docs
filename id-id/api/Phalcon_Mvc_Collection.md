@@ -8,27 +8,27 @@ title: 'Phalcon\Mvc\Collection'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
-Komponen ini mengimplementasikan sebuah abstraksi tingkat tinggi untuk NoSQL database yang bekerja dengan dokumen
+This component implements a high level abstraction for NoSQL databases which works with documents
 
 ## Constants
 
-*bilangan bulat* **OP_NONE**
+*integer* **OP_NONE**
 
-*bilangan bulat* **OP_CREATE**
+*integer* **OP_CREATE**
 
-*bilangan bulat* **OP_UPDATE**
+*integer* **OP_UPDATE**
 
-*bilangan bulat* **OP_DELETE**
+*integer* **OP_DELETE**
 
-*bilangan bulat* **DIRTY_STATE_PERSISTENT**
+*integer* **DIRTY_STATE_PERSISTENT**
 
-*bilangan bulat* **DIRTY_STATE_TRANSIENT**
+*integer* **DIRTY_STATE_TRANSIENT**
 
-*bilangan bulat* **DIRTY_STATE_DETACHED**
+*integer* **DIRTY_STATE_DETACHED**
 
-## Metode
+## Methods
 
 final public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 
@@ -36,101 +36,105 @@ Phalcon\Mvc\Collection constructor
 
 public **setId** (*mixed* $id)
 
-Set nilai untuk properti _id, menciptakan sebuah objek MongoId jika diperlukan
+Sets a value for the _id property, creates a MongoId object if needed
 
-umum *MongoId* **getId**)
+public *MongoId* **getId** ()
 
-Mengembalikan nilai _id properti
+Returns the value of the _id property
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Menetapkan ketergantungan injeksi wadah
+Sets the dependency injection container
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Kembali wadah injeksi ketergantungan
+Returns the dependency injection container
 
 protected **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
-Set manajer acara kustom
+Sets a custom events manager
 
-dilindungi (**getEventsManager**)
+protected **getEventsManager** ()
 
-Kembali manajer acara kustom
+Returns the custom events manager
 
-umum **getCollectionManager**)
+public **getCollectionManager** ()
 
-Kembali pengelola model yang berkaitan dengan contoh entitas
+Returns the models manager related to the entity instance
 
-umum **getReservedAttributes**)
+public **getReservedAttributes** ()
 
-Mengembalikan array dengan sifat yang dilindungi undang-undang yang tidak dapat menjadi bagian dari insert/update
+Returns an array with reserved properties that cannot be part of the insert/update
 
-dilindungi **useImplicitObjectIds** (*campuran* $useImplicitObjectIds)
+protected **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
-Set jika model harus menggunakan Id objek implisit
+Sets if a model must use implicit objects ids
 
-dilindungi **setSource** (*campuran* $source)
+protected **setSource** (*mixed* $source)
 
-Menetapkan nama koleksi model mana harus dipetakan
+Sets collection name which model should be mapped
 
-publik **mendapatkan Sumber** ()
+public **getSource** ()
 
-Mengembalikan nama koleksi yang dipetakan dalam model
+Returns collection name mapped in the model
 
-umum **setConnectionService** (*campuran* $connectionService)
+public **setConnectionService** (*mixed* $connectionService)
 
-Menetapkan nama layanan sambungan DependencyInjection
+Sets the DependencyInjection connection service name
 
-umum **getConnectionService**)
+public **getConnectionService** ()
 
-Kembali DependencyInjection sambungan layanan
+Returns DependencyInjection connection service
 
-umum *MongoDb* **getConnection**)
+public *MongoDb* **getConnection** ()
 
-Mengambil koneksi database
+Retrieves a database connection
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Membaca nilai atribut dengan nama
+Reads an attribute value by its name
 
 ```php
-<? php echo $robot -> readAttribute("name");
+<?php
+
+echo $robot->readAttribute("name");
 
 ```
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Menulis nilai atribut dengan nama
+Writes an attribute value by its name
 
 ```php
-<? php $robot -> writeAttribute ("nama", "Rosey");
+<?php
+
+$robot->writeAttribute("name", "Rosey");
 
 ```
 
 public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
-Kembali koleksi clone
+Returns a cloned collection
 
 protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
-Mengembalikan hasil ditetapkan koleksi
+Returns a collection resultset
 
 protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
-Lakukan hitungan di atas hasil ditetapkan
+Perform a count over a resultset
 
 final protected *boolean* **_preSave** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
-Jalankan kait internal sebelum menyimpan dokumen
+Executes internal hooks before save a document
 
 final protected **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
-Jalankan peristiwa internal setelah menyimpan dokumen
+Executes internal events after save a document
 
 protected **validate** (*mixed* $validator)
 
-Jalankan validator pada setiap panggilan validasi
+Executes validators on every validation call
 
 ```php
 <?php
@@ -186,7 +190,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **validationHasFailed** ()
 
-Periksa apakah proses validasi telah menghasilkan pesan apa pun
+Check whether validation process has generated any messages
 
 ```php
 <?php
@@ -216,23 +220,23 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **fireEvent** (*mixed* $eventName)
 
-Membakar acara internal
+Fires an internal event
 
 public **fireEventCancel** (*mixed* $eventName)
 
-Membakar peristiwa internal yang membatalkan operasi
+Fires an internal event that cancels the operation
 
 protected **_cancelOperation** (*mixed* $disableEvents)
 
-Batalkan operasi saat ini
+Cancel the current operation
 
 protected *boolean* **_exists** (*MongoCollection* $collection)
 
-Memeriksa apakah dokumen ada dalam koleksi
+Checks if the document exists in the collection
 
 public **getMessages** ()
 
-Mengembalikan semua pesan validasi
+Returns all the validation messages
 
 ```php
 <?php
@@ -259,7 +263,7 @@ if ($robot->save() === false) {
 
 public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
-Menambahkan pesan yang disesuaikan pada proses validasi
+Appends a customized message on the validation process
 
 ```php
 <?php
@@ -284,19 +288,19 @@ class Robots extends \Phalcon\Mvc\Model
 
 protected **prepareCU** ()
 
-Kode Bersama untuk Operasi CU Mempersiapkan Koleksi
+Shared Code for CU Operations Prepares Collection
 
 public **save** ()
 
-Membuat / memperbarui kumpulan berdasarkan nilai atribut
+Creates/Updates a collection based on the values in the attributes
 
 public **create** ()
 
-Membuat koleksi berdasarkan nilai atribut
+Creates a collection based on the values in the attributes
 
 public **createIfNotExist** (*array* $criteria)
 
-Membuat dokumen berdasarkan nilai atribut, jika tidak ditemukan kriteria. Cara yang dipilih untuk menghindari duplikasi adalah membuat indeks atribut.
+Creates a document based on the values in the attributes, if not found by criteria Preferred way to avoid duplication is to create index on attribute
 
 ```php
 <?php
@@ -318,11 +322,11 @@ $robot->createIfNotExist(
 
 public **update** ()
 
-Membuat / memperbarui kumpulan berdasarkan nilai atribut
+Creates/Updates a collection based on the values in the attributes
 
 public static **findById** (*mixed* $id)
 
-Temukan dokumen dengan idnya (_id)
+Find a document by its id (_id)
 
 ```php
 <?php
@@ -344,33 +348,115 @@ if ($user = Users::findById($_POST["id"])) {
 
 public static **findFirst** ([*array* $parameters])
 
-Memungkinkan untuk query catatan pertama yang sesuai dengan kondisi yang ditentukan
+Allows to query the first record that match the specified conditions
 
 ```php
 <?php
 
-// Apa robot pertama di meja robot?
-$robot = Robots::findFirst(); echo "adalah nama robot", $robot -> nama, "\n"; Apakah robot mekanis pertama dalam tabel robot?
-$robot = Robots::findFirst ([["jenis" = > "mekanikal"]]);  echo "adalah nama mekanis robot pertama", $robot -> nama, "\n";  Dapatkan robot virtual pertama yang diperintahkan oleh $robot nama = Robots::findFirst ([["jenis" = > "mekanikal"], "perintah" = > ["nama" = > 1,],]);  echo "adalah nama virtual robot pertama", $robot -> nama, "\n";  Dapatkan robot pertama dengan id (_id) $robot = Robots::findFirst ([["_id" = > baru \MongoId("45cbc4a0e4123f6920000002"),]]);  echo "robot id adalah", $robot -> _id, "\n";
+// What's the first robot in the robots table?
+$robot = Robots::findFirst();
+
+echo "The robot name is ", $robot->name, "\n";
+
+// What's the first mechanical robot in robots table?
+$robot = Robots::findFirst(
+    [
+        [
+            "type" => "mechanical",
+        ]
+    ]
+);
+
+echo "The first mechanical robot name is ", $robot->name, "\n";
+
+// Get first virtual robot ordered by name
+$robot = Robots::findFirst(
+    [
+        [
+            "type" => "mechanical",
+        ],
+        "order" => [
+            "name" => 1,
+        ],
+    ]
+);
+
+echo "The first virtual robot name is ", $robot->name, "\n";
+
+// Get first robot by id (_id)
+$robot = Robots::findFirst(
+    [
+        [
+            "_id" => new \MongoId("45cbc4a0e4123f6920000002"),
+        ]
+    ]
+);
+
+echo "The robot id is ", $robot->_id, "\n";
 
 ```
 
-umum statis **menemukan** ([*array* $parameters])
+public static **find** ([*array* $parameters])
 
-Memungkinkan untuk query serangkaian catatan yang cocok dengan persyaratan yang ditetapkan
+Allows to query a set of records that match the specified conditions
 
 ```php
 <?php
 
 // How many robots are there?
-$robots = Robots::find(); echo "Ada", count($robots), "\n"; Robot mekanis berapa banyak Apakah ada?
-$robots = Robots::find ([["jenis" = > "mekanikal"]]); echo "Ada", count(robots), "\n"; Mendapatkan dan mencetak virtual robot diperintahkan nama $robots = Robots::findFirst ([["jenis" = > "virtual"], "perintah" = > ["name" = > 1,]]); foreach ($robots sebagai $robot) {echo $robot -> nama, "\n";} / / Dapatkan robot virtual pertama 100 yang diperintahkan nama $robots = Robots::find ([["jenis" = > "virtual",], "perintah" = > ["name" = > 1,], "batas "= > 100,]); foreach ($robots sebagai $robot) {echo $robot -> nama, "\n";}
+$robots = Robots::find();
+
+echo "There are ", count($robots), "\n";
+
+// How many mechanical robots are there?
+$robots = Robots::find(
+    [
+        [
+            "type" => "mechanical",
+        ]
+    ]
+);
+
+echo "There are ", count(robots), "\n";
+
+// Get and print virtual robots ordered by name
+$robots = Robots::findFirst(
+    [
+        [
+            "type" => "virtual"
+        ],
+        "order" => [
+            "name" => 1,
+        ]
+    ]
+);
+
+foreach ($robots as $robot) {
+   echo $robot->name, "\n";
+}
+
+// Get first 100 virtual robots ordered by name
+$robots = Robots::find(
+    [
+        [
+            "type" => "virtual",
+        ],
+        "order" => [
+            "name" => 1,
+        ],
+        "limit" => 100,
+    ]
+);
+
+foreach ($robots as $robot) {
+   echo $robot->name, "\n";
+}
 
 ```
 
-umum statis **count** ([*array* $parameters])
+public static **count** ([*array* $parameters])
 
-Melakukan hitungan atas koleksi
+Perform a count over a collection
 
 ```php
 <?php
@@ -381,11 +467,11 @@ echo "There are ", Robots::count(), " robots";
 
 public static **aggregate** ([*array* $parameters])
 
-Lakukan agregasi dengan menggunakan kerangka agregasi Mongo
+Perform an aggregation using the Mongo aggregation framework
 
 public static **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
-Memungkinkan untuk melakukan kelompok penjumlahan untuk kolom dalam koleksi
+Allows to perform a summatory group for a column in the collection
 
 public **delete** ()
 
@@ -408,23 +494,23 @@ foreach ($robots as $robot) {
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-Set kotor keadaan objek menggunakan salah satu DIRTY_STATE_* konstanta
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
 public **getDirtyState** ()
 
-Mengembalikan salah satu konstanta DIRTY_STATE_ * yang memberitahukan jika dokumen itu ada dalam koleksi atau tidak
+Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
 protected **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-Menetapkan perilaku dalam koleksi
+Sets up a behavior in a collection
 
 public **skipOperation** (*mixed* $skip)
 
-Melompati operasi saat ini yang memaksa negara sukses
+Skips the current operation forcing a success state
 
-publik **kunci** ()
+public **toArray** ()
 
-Mengembalikan instance sebagai representasi array
+Returns the instance as an array representation
 
 ```php
 <?php
@@ -435,10 +521,10 @@ print_r(
 
 ```
 
-publik **getName** ()
+public **serialize** ()
 
-Serializes objek mengabaikan koneksi atau properti yang dilindungi
+Serializes the object ignoring connections or protected properties
 
-public ** beforeStore ** ( * mixed * $data)
+public **unserialize** (*mixed* $data)
 
-Unserializes objek dari string serial
+Unserializes the object from a serialized string
