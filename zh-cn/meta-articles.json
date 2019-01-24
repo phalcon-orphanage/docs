@@ -1,11 +1,11 @@
 {
   "acl": [
     {
-      "text": "概述",
+      "text": "Overview",
       "url": "#overview"
     },
     {
-      "text": "创建 ACL",
+      "text": "Creating an ACL",
       "url": "#setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "#adding-subjects"
     },
     {
-      "text": "定义访问控制",
+      "text": "Defining Access Controls",
       "url": "#access-controls"
     },
     {
-      "text": "查询ACL",
+      "text": "Querying an ACL",
       "url": "#querying"
     },
     {
-      "text": "基于访问控制的自定义函数",
+      "text": "Function based access",
       "url": "#function-based-access"
     },
     {
@@ -37,169 +37,169 @@
       "url": "#operationss-inheritance"
     },
     {
-      "text": "序列化 ACL 列表",
+      "text": "Serializing ACL lists",
       "url": "#serialization"
     },
     {
-      "text": "事件",
+      "text": "Events",
       "url": "#events"
     },
     {
-      "text": "实现自己的适配器",
+      "text": "Implementing your own adapters",
       "url": "#custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "概述",
+      "text": "Overview",
       "url": "#overview"
     },
     {
-      "text": "工厂",
+      "text": "Factory",
       "url": "#setup"
     },
     {
-      "text": "将角色添加到 ACL",
+      "text": "Adding Roles to the ACL",
       "url": "#factory"
     },
     {
-      "text": "读取注释",
+      "text": "Reading Annotations",
       "url": "#reading"
     },
     {
-      "text": "类型的注释",
+      "text": "Types of Annotations",
       "url": "#types"
     },
     {
-      "text": "实际使用情况",
+      "text": "Practical Usage",
       "url": "#usage",
       "menu": [
         {
-          "text": "带注释的缓存启用",
+          "text": "Cache Enabler with Annotations",
           "url": "#usage-cache"
         },
         {
-          "text": "私有/公共 的注释",
+          "text": "Private/Public areas with Annotations",
           "url": "#usage-access-management"
         }
       ]
     },
     {
-      "text": "注释适配器",
+      "text": "Annotations Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "实现自己的适配器",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
     },
     {
-      "text": "外部资源",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "创建一个 CLI 应用程序",
-      "url": "#创建一个 Cli 应用程序"
+      "text": "Creating a CLI Application",
+      "url": "#creating-cli-application"
     },
     {
-      "text": "结构",
-      "url": "#结构"
+      "text": "Structure",
+      "url": "#structure"
     },
     {
-      "text": "创建一个引导",
-      "url": "#创建引导"
+      "text": "Creating a Bootstrap",
+      "url": "#creating-bootstrap"
     },
     {
-      "text": "任务",
-      "url": "#任务"
+      "text": "Tasks",
+      "url": "#tasks"
     },
     {
-      "text": "处理操作参数",
-      "url": "#处理操作参数"
+      "text": "Processing action parameters",
+      "url": "#processing-action-parameters"
     },
     {
-      "text": "在任务链中执行多个任务",
-      "url": "#在任务链中执行多个任务"
+      "text": "Running tasks in a chain",
+      "url": "#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "创建一个微型的应用程序",
+      "text": "Creating a Micro Application",
       "url": "#creating-micro-application"
     },
     {
-      "text": "路由",
+      "text": "Routing",
       "url": "#routing",
       "menu": [
         {
-          "text": "安装程序",
+          "text": "Setup",
           "url": "#routing-setup",
           "menu": [
             {
-              "text": "应用程序对象",
+              "text": "Application object",
               "url": "#routing-setup-application"
             },
             {
-              "text": "路由对象",
+              "text": "Router object",
               "url": "#routing-setup-router"
             }
           ]
         },
         {
-          "text": "重定向规则",
+          "text": "Rewrite Rules",
           "url": "#rewrite-rules"
         },
         {
-          "text": "处理程序",
+          "text": "Handlers",
           "url": "#routing-handlers",
           "menu": [
             {
-              "text": "定义",
+              "text": "Definitions",
               "url": "#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "匿名函数",
+                  "text": "Anonymous Function",
                   "url": "#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "函数",
+                  "text": "Function",
                   "url": "#routing-handlers-function"
                 },
                 {
-                  "text": "静态方法",
+                  "text": "Static Method",
                   "url": "#routing-handlers-static-method"
                 },
                 {
-                  "text": "对象中的方法",
+                  "text": "Method in an Object",
                   "url": "#routing-handlers-object-method"
                 },
                 {
-                  "text": "控制器",
+                  "text": "Controllers",
                   "url": "#routing-handlers-controllers"
                 }
               ]
             },
             {
-              "text": "延迟加载",
+              "text": "Lazy Loading",
               "url": "#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "使用案例",
+                  "text": "Use case",
                   "url": "#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "未找到 (404)",
+              "text": "Not Found (404)",
               "url": "#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "方法-动词",
+          "text": "Methods - Verbs",
           "url": "#routing-verbs",
           "menu": [
             {
@@ -237,53 +237,53 @@
           ]
         },
         {
-          "text": "集合",
+          "text": "Collections",
           "url": "#routing-collections"
         },
         {
-          "text": "参数",
+          "text": "Parameters",
           "url": "#routing-parameters"
         },
         {
-          "text": "重定向",
+          "text": "Redirections",
           "url": "#routing-redirections"
         },
         {
-          "text": "用于路由的 Url",
+          "text": "URLs for Routes",
           "url": "#routing-urls-for-routes"
         }
       ]
     },
     {
-      "text": "依赖注入",
+      "text": "Dependency Injector",
       "url": "#dependency-injector"
     },
     {
-      "text": "响应",
+      "text": "Responses",
       "url": "#responses",
       "menu": [
         {
-          "text": "直接输出",
+          "text": "Direct output",
           "url": "#responses-direct-output"
         },
         {
-          "text": "包括其他文件",
+          "text": "Including another file",
           "url": "#responses-include"
         },
         {
-          "text": "直接输出 JSON",
+          "text": "Direct output JSON",
           "url": "#responses-direct-output-json"
         },
         {
-          "text": "新响应对象",
+          "text": "New Response object",
           "url": "#responses-new-response-object"
         },
         {
-          "text": "应用程序响应",
+          "text": "Application Response",
           "url": "#responses-application-response"
         },
         {
-          "text": "返回应用程序响应",
+          "text": "Return Application Response",
           "url": "#responses-return-application-response"
         },
         {
@@ -293,19 +293,19 @@
       ]
     },
     {
-      "text": "事件",
+      "text": "Events",
       "url": "#events",
       "menu": [
         {
-          "text": "可用的事件",
+          "text": "Available events",
           "url": "#events-available-events",
           "menu": [
             {
-              "text": "身份验证示例",
+              "text": "Authentication example",
               "url": "#events-available-events-authentication"
             },
             {
-              "text": "未找到 示例",
+              "text": "Not found example",
               "url": "#events-available-events-not-found"
             }
           ]
@@ -313,11 +313,11 @@
       ]
     },
     {
-      "text": "中间件",
+      "text": "Middleware",
       "url": "#",
       "menu": [
         {
-          "text": "附加的事件",
+          "text": "Attached events",
           "url": "#",
           "menu": [
             {
@@ -335,61 +335,61 @@
           ]
         },
         {
-          "text": "实现",
+          "text": "Implementation",
           "url": "#"
         },
         {
-          "text": "安装程序",
+          "text": "Setup",
           "url": "#"
         },
         {
-          "text": "在中间件中的事件",
+          "text": "Events in Middleware",
           "url": "#",
           "menu": [
             {
-              "text": "API 的示例",
+              "text": "API example",
               "url": "#"
             },
             {
-              "text": "防火墙中间件",
+              "text": "Firewall Middleware",
               "url": "#"
             },
             {
-              "text": "找不到中间件",
+              "text": "Not Found Middleware",
               "url": "#"
             },
             {
-              "text": "重定向中间件",
+              "text": "Redirect Middleware",
               "url": "#"
             },
             {
-              "text": "CORS 中间件",
+              "text": "CORS Middleware",
               "url": "#"
             },
             {
-              "text": "请求中间件",
+              "text": "Request Middleware",
               "url": "#"
             },
             {
-              "text": "响应中间件",
+              "text": "Response Middleware",
               "url": "#"
             }
           ]
         },
         {
-          "text": "模型",
+          "text": "Models",
           "url": "#"
         },
         {
-          "text": "注入模型实例",
+          "text": "Injecting Model Instances",
           "url": "#"
         },
         {
-          "text": "视图",
+          "text": "Views",
           "url": "#"
         },
         {
-          "text": "错误处理",
+          "text": "Error Handling",
           "url": "#"
         }
       ]
@@ -397,187 +397,187 @@
   ],
   "application": [
     {
-      "text": "概述",
+      "text": "Overview",
       "url": "#overview"
     },
     {
-      "text": "手动引导",
+      "text": "Manual Bootstrapping",
       "url": "#manual-bootstrapping"
     },
     {
-      "text": "单个或多模块应用程序",
+      "text": "Single or Multi Module Applications",
       "url": "#single-vs-module",
       "menu": [
         {
-          "text": "单模块",
+          "text": "Single Module",
           "url": "#single"
         },
         {
-          "text": "多模块",
+          "text": "Multi Module",
           "url": "#module"
         }
       ]
     },
     {
-      "text": "应用程序事件",
+      "text": "Application Events",
       "url": "#events"
     },
     {
-      "text": "外部资源",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "assets": [
     {
-      "text": "概述",
+      "text": "Overview",
       "url": "#overview"
     },
     {
-      "text": "添加资源",
+      "text": "Adding Resources",
       "url": "#add"
     },
     {
-      "text": "本地/远程资源",
+      "text": "Local/Remote resources",
       "url": "#resources-local-remote"
     },
     {
-      "text": "集合",
+      "text": "Collections",
       "url": "#collections"
     },
     {
-      "text": "URL 前缀",
+      "text": "URL Prefixes",
       "url": "#url-prefixes"
     },
     {
-      "text": "缩小/过滤",
+      "text": "Minification/Filtering",
       "url": "#minification-filtering",
       "menu": [
         {
-          "text": "内置过滤器",
+          "text": "Built-In Filters",
           "url": "#builtin-filters"
         },
         {
-          "text": "自定义过滤规则",
+          "text": "Custom Filters",
           "url": "#custom-filters"
         }
       ]
     },
     {
-      "text": "自定义输出",
+      "text": "Custom Output",
       "url": "#"
     },
     {
-      "text": "提高性能",
+      "text": "Improving performance",
       "url": "#"
     }
   ],
   "cache": [
     {
-      "text": "使用高速缓存提高性能",
+      "text": "Improving Performance with Cache",
       "url": "#overview"
     },
     {
-      "text": "当执行缓存？",
+      "text": "When to implement cache?",
       "url": "#implementation"
     },
     {
-      "text": "缓存行为",
+      "text": "Caching Behavior",
       "url": "#caching-behavior"
     },
     {
-      "text": "工厂",
+      "text": "Factory",
       "url": "#factory"
     },
     {
-      "text": "缓存的视图片段",
+      "text": "Caching Output Fragments",
       "url": "#output-fragments",
       "menu": [
         {
-          "text": "任意的数据缓存",
+          "text": "Caching Arbitrary Data",
           "url": "#arbitrary-data"
         },
         {
-          "text": "文件后端示例",
+          "text": "File Backend Example",
           "url": "#backend-file-example"
         },
         {
-          "text": "Memcached 后端示例",
+          "text": "Memcached Backend Example",
           "url": "#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "查询缓存",
+      "text": "Querying the cache",
       "url": "#read"
     },
     {
-      "text": "从缓存中删除数据",
+      "text": "Deleting data from the cache",
       "url": "#delete"
     },
     {
-      "text": "检查缓存中存在",
+      "text": "Checking cache existence",
       "url": "#exists"
     },
     {
-      "text": "生命周期",
+      "text": "Lifetime",
       "url": "#lifetime"
     },
     {
-      "text": "多级缓存",
+      "text": "Multi-Level Cache",
       "url": "#multi-level"
     },
     {
-      "text": "前端适配器",
+      "text": "Frontend Adapters",
       "url": "#adapters-frontend",
       "menu": [
         {
-          "text": "执行您自己的前端适配器",
+          "text": "Implementing your own Frontend adapters",
           "url": "#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "后端适配器",
+      "text": "Backend Adapters",
       "url": "#adapters-backend",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#adapters-backend-factory"
         },
         {
-          "text": "执行您自己的后端适配器",
+          "text": "Implementing your own Backend adapters",
           "url": "#adapters-backend-custom"
         },
         {
-          "text": "文件后端选项",
+          "text": "File Backend Options",
           "url": "#adapters-backend-file"
         },
         {
-          "text": "Libmemcached 后端选项",
+          "text": "Libmemcached Backend Options",
           "url": "#adapters-backend-libmemcached"
         },
         {
-          "text": "Memcache 后端选项",
+          "text": "Memcache Backend Options",
           "url": "#adapters-backend-memcache"
         },
         {
-          "text": "APC 后端选项",
+          "text": "APC Backend Options",
           "url": "#adapters-backend-apc"
         },
         {
-          "text": "APCU 后端选项",
+          "text": "APCU Backend Options",
           "url": "#adapters-backend-apcu"
         },
         {
-          "text": "Mongo后端选项",
+          "text": "Mongo Backend Options",
           "url": "#adapters-backend-mongo"
         },
         {
-          "text": "XCache 后端选项",
+          "text": "XCache Backend Options",
           "url": "#adapters-backend-xcache"
         },
         {
-          "text": "Redis后端选项",
+          "text": "Redis Backend Options",
           "url": "#adapters-backend-redis"
         }
       ]
@@ -585,87 +585,87 @@
   ],
   "config": [
     {
-      "text": "读取配置",
+      "text": "Reading Configurations",
       "url": "#overview",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#factory"
         }
       ]
     },
     {
-      "text": "本机数组",
-      "url": "#本机数组"
+      "text": "Native Arrays",
+      "url": "#native-arrays"
     },
     {
-      "text": "文件适配器",
-      "url": "#文件适配器"
+      "text": "File Adapters",
+      "url": "#file-adapter"
     },
     {
-      "text": "读取 INI 文件",
-      "url": "#ini文件"
+      "text": "Reading INI Files",
+      "url": "#ini-files"
     },
     {
       "text": "URL Merging Configurations",
-      "url": "#合并"
+      "url": "#merging"
     },
     {
-      "text": "嵌套的配置",
-      "url": "#嵌套的配置"
+      "text": "Nested Configuration",
+      "url": "#nested-configuration"
     },
     {
-      "text": "注射配置依赖项",
+      "text": "Injecting Configuration Dependency",
       "url": "#"
     }
   ],
   "contributions": [
     {
-      "text": "为 Phalcon 作出贡献",
+      "text": "Contributing to Phalcon",
       "url": "#contributing"
     },
     {
-      "text": "贡献者",
+      "text": "Contributions",
       "url": "#contributions"
     },
     {
-      "text": "问题和支持",
-      "url": "#文件适配器"
+      "text": "Questions and Support",
+      "url": "#file-adapter"
     },
     {
-      "text": "Bug 报告清单",
+      "text": "Bug Report Checklist",
       "url": "#bug-report-checklist",
       "menu": [
         {
-          "text": "生成回溯跟踪",
+          "text": "Generating a backtrace",
           "url": "#bug-report-generating-backtrace"
         }
       ]
     },
     {
-      "text": "拉请求清单",
+      "text": "Pull Request Checklist",
       "url": "#pull-request-checklist"
     },
     {
-      "text": "获得支持",
+      "text": "Getting Support",
       "url": "#getting-support"
     },
     {
-      "text": "请求的功能",
+      "text": "Requesting Features",
       "url": "#"
     }
   ],
   "controllers": [
     {
-      "text": "概述",
+      "text": "Overview",
       "url": "#overview"
     },
     {
-      "text": "使用控制器",
+      "text": "Using Controllers",
       "url": "#using"
     },
     {
-      "text": "调度循环",
+      "text": "Dispatch Loop",
       "url": "#dispatch-loop"
     },
     {
@@ -673,101 +673,101 @@
       "url": "#initializing"
     },
     {
-      "text": "注射服务",
+      "text": "Injecting Services",
       "url": "#injecting-services"
     },
     {
-      "text": "请求和响应",
+      "text": "Request and Response",
       "url": "#request-response"
     },
     {
-      "text": "会话数据",
+      "text": "Session Data",
       "url": "#session-data"
     },
     {
-      "text": "使用服务作为控制器",
+      "text": "Using Services as Controllers",
       "url": "#services"
     },
     {
-      "text": "在控制器中的事件",
+      "text": "Events in Controllers",
       "url": "#events"
     }
   ],
   "cookies": [
     {
-      "text": "Cookie 管理",
+      "text": "Cookies Management",
       "url": "#overview"
     },
     {
-      "text": "基本用法",
+      "text": "Basic Usage",
       "url": "#usage"
     },
     {
-      "text": "Cookies 的加密/解密",
+      "text": "Encryption/Decryption of Cookies",
       "url": "#encryption-decryption"
     }
   ],
   "crypt": [
     {
-      "text": "加密/解密",
+      "text": "Encryption/Decryption",
       "url": "#overview"
     },
     {
-      "text": "基本用法",
+      "text": "Basic Usage",
       "url": "#usage"
     },
     {
-      "text": "加密选项",
+      "text": "Encryption Options",
       "url": "#options"
     },
     {
-      "text": "Base64 支持",
+      "text": "Base64 Support",
       "url": "#base64"
     },
     {
-      "text": "设置加密服务",
+      "text": "Setting up an Encryption service",
       "url": "#service"
     },
     {
-      "text": "链接",
+      "text": "Links",
       "url": "#links"
     }
   ],
   "db-layer": [
     {
-      "text": "数据库抽象层",
+      "text": "Database Abstraction Layer",
       "url": "#overview"
     },
     {
-      "text": "数据库适配器",
+      "text": "Database Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#adapters-factory"
         },
         {
-          "text": "实现自己的适配器",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
     },
     {
-      "text": "数据库语言",
+      "text": "Database Dialects",
       "url": "#dialects",
       "menu": [
         {
-          "text": "执行您自己的DI注入器",
+          "text": "Implementing your own dialects",
           "url": "#dialects-custom"
         }
       ]
     },
     {
-      "text": "连接到数据库",
+      "text": "Connecting to Databases",
       "url": "#connection"
     },
     {
-      "text": "PDO 的附加选项设置",
+      "text": "Setting up additional PDO options",
       "url": "#options"
     },
     {
@@ -775,7 +775,7 @@
       "url": "#finding-rows"
     },
     {
-      "text": "绑定参数",
+      "text": "Binding Parameters",
       "url": "#binding-parameters"
     },
     {
@@ -791,7 +791,7 @@
       "url": "#events"
     },
     {
-      "text": "分析 SQL 语句",
+      "text": "Profiling SQL Statements",
       "url": "#profiling"
     },
     {
@@ -835,139 +835,139 @@
       "url": "#schema-dumping"
     },
     {
-      "text": "迁移类解剖",
+      "text": "Migration Class Anatomy",
       "url": "#class-anatomy",
       "menu": [
         {
-          "text": "定义列",
+          "text": "Defining Columns",
           "url": "#class-anatomy-columns"
         },
         {
-          "text": "定义索引",
+          "text": "Defining Indexes",
           "url": "#class-anatomy-indexes"
         },
         {
-          "text": "定义引用",
+          "text": "Defining References",
           "url": "#class-anatomy-references"
         }
       ]
     },
     {
-      "text": "写入迁移",
+      "text": "Writing Migrations",
       "url": "#writing"
     },
     {
-      "text": "运行迁移",
+      "text": "Running Migrations",
       "url": "#running"
     }
   ],
   "db-models-behaviors": [
     {
-      "text": "模型的行为",
+      "text": "Model Behaviors",
       "url": "#overview"
     },
     {
-      "text": "使用时间和日期",
+      "text": "Timestampable",
       "url": "#timestampable"
     },
     {
-      "text": "安全删除",
+      "text": "SoftDelete",
       "url": "#softdelete"
     },
     {
-      "text": "创建你自己的行为",
+      "text": "Creating your own behaviors",
       "url": "#create-your-own-behaviors"
     },
     {
-      "text": "使用特征作为行为",
+      "text": "Using Traits as behaviors",
       "url": "#traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
-      "text": "ORM 缓存",
+      "text": "ORM Caching",
       "url": "#overview"
     },
     {
-      "text": "缓存的结果集",
+      "text": "Caching Resultsets",
       "url": "#caching-resultsets"
     },
     {
-      "text": "迫使缓存",
+      "text": "Forcing Cache",
       "url": "#forcing-cache"
     },
     {
-      "text": "缓存的 PHQL 查询",
+      "text": "Caching PHQL Queries",
       "url": "#caching-phql-queries"
     },
     {
-      "text": "可重用的相关的记录",
+      "text": "Reusable Related Records",
       "url": "#reusable-related-records"
     },
     {
-      "text": "缓存的相关的记录",
+      "text": "Caching Related Records",
       "url": "#caching-related-records"
     },
     {
-      "text": "以递归方式相关的记录缓存",
+      "text": "Caching Related Records Recursively",
       "url": "#caching-related-records-recursively"
     },
     {
-      "text": "基于条件的缓存",
+      "text": "Caching based on Conditions",
       "url": "#caching-based-on-conditions"
     },
     {
-      "text": "PHQL 缓存执行计划",
+      "text": "Caching PHQL execution plan",
       "url": "#caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
-      "text": "模型事件",
+      "text": "Model Events",
       "url": "#overview"
     },
     {
-      "text": "事件和事件管理器",
+      "text": "Events and Events Manager",
       "url": "#events",
       "menu": [
         {
-          "text": "在该模型的类中实现事件",
+          "text": "Implementing Events in the Model's class",
           "url": "#events-in-models"
         },
         {
-          "text": "使用自定义的事件管理器",
+          "text": "Using a custom Events Manager",
           "url": "#custom-events-manager"
         }
       ]
     },
     {
-      "text": "日志记录低级 SQL 语句",
+      "text": "Logging Low-Level SQL Statements",
       "url": "#logging-sql-statements"
     },
     {
-      "text": "分析 SQL 语句",
+      "text": "Profiling SQL Statements",
       "url": "#profiling-sql-statements"
     }
   ],
   "db-models-metadata": [
     {
-      "text": "模型元数据",
+      "text": "Models Metadata",
       "url": "#overview"
     },
     {
-      "text": "缓存元数据",
+      "text": "Caching Metadata",
       "url": "#caching-metadata"
     },
     {
-      "text": "元数据策略",
+      "text": "Metadata Strategies",
       "url": "#metadata-strategies",
       "menu": [
         {
-          "text": "数据库反思策略",
+          "text": "Database Introspection Strategy",
           "url": "#strategies-database-introspection",
           "menu": [
             {
-              "text": "注释：",
+              "text": "Annotations Strategy",
               "url": "#strategies-annotations"
             }
           ]
@@ -975,29 +975,29 @@
       ]
     },
     {
-      "text": "手动的元数据",
+      "text": "Manual Metadata",
       "url": "#strategies-manual"
     }
   ],
   "db-models-relationships": [
     {
-      "text": "关联模型",
+      "text": "Model Relationships",
       "url": "#overview"
     },
     {
-      "text": "模型之间的关系",
+      "text": "Relationships between Models",
       "url": "#relationships",
       "menu": [
         {
-          "text": "单向的关系",
+          "text": "Unidirectional relationships",
           "url": "#unidirectional"
         },
         {
-          "text": "双向关系",
+          "text": "Bidirectional relations",
           "url": "#bidirectional"
         },
         {
-          "text": "定义关系",
+          "text": "Defining relationships",
           "url": "#defining",
           "menu": [
             {
@@ -1011,15 +1011,15 @@
           ]
         },
         {
-          "text": "利用关系",
+          "text": "Taking advantage of relationships",
           "url": "#taking-advantage-of"
         },
         {
-          "text": "混叠的关系",
+          "text": "Aliasing Relationships",
           "url": "#aliases",
           "menu": [
             {
-              "text": "与显式魔术 Getter 方法",
+              "text": "Magic Getters vs. Explicit methods",
               "url": "#getters-vs-methods"
             }
           ]
@@ -1027,29 +1027,29 @@
       ]
     },
     {
-      "text": "虚拟的外键",
+      "text": "Virtual Foreign Keys",
       "url": "#virtual-foreign-keys",
       "menu": [
         {
-          "text": "级联/限制行动",
+          "text": "Cascade/Restrict actions",
           "url": "#cascade-restrict-actions"
         }
       ]
     },
     {
-      "text": "存储相关的记录",
+      "text": "Storing Related Records",
       "url": "#storing-related-records"
     },
     {
-      "text": "在结果集的操作",
+      "text": "Operations over Resultsets",
       "url": "#operations-over-resultsets",
       "menu": [
         {
-          "text": "更新相关的记录",
+          "text": "Updating related records",
           "url": "#updating-related-records"
         },
         {
-          "text": "删除相关的记录",
+          "text": "Deleting related records",
           "url": "#deleting-related-records"
         }
       ]
@@ -1057,87 +1057,87 @@
   ],
   "db-models-transactions": [
     {
-      "text": "模型事务",
+      "text": "Model Transactions",
       "url": "#overview"
     },
     {
-      "text": "手动事务处理",
+      "text": "Manual Transactions",
       "url": "#manual"
     },
     {
-      "text": "隐式事务",
+      "text": "Implicit Transactions",
       "url": "#implicit"
     },
     {
-      "text": "隔离级别的事务",
+      "text": "Isolated Transactions",
       "url": "#isolated"
     }
   ],
   "db-models-validation": [
     {
-      "text": "模型事务",
+      "text": "Model Transactions",
       "url": "#overview"
     },
     {
-      "text": "验证数据完整性",
+      "text": "Validating Data Integrity",
       "url": "#data-integrity"
     },
     {
-      "text": "验证消息",
+      "text": "Validation Messages",
       "url": "#messages"
     },
     {
-      "text": "验证失败的事件",
+      "text": "Validation Failed Events",
       "url": "#failed-events"
     }
   ],
   "db-models": [
     {
-      "text": "使用模型",
+      "text": "Working with Models",
       "url": "#working-with"
     },
     {
-      "text": "创建模型",
+      "text": "Creating Models",
       "url": "#creating",
       "menu": [
         {
-          "text": "公共属性 与 Setter/getter 方法",
+          "text": "Public properties vs. Setters/Getters",
           "url": "#properties-setters-getters"
         }
       ]
     },
     {
-      "text": "对对象的理解记录",
+      "text": "Understanding Records To Objects",
       "url": "#records-to-objects"
     },
     {
-      "text": "查找记录",
+      "text": "Finding Records",
       "url": "#finding-records",
       "menu": [
         {
-          "text": "模型结果集",
+          "text": "Model Resultsets",
           "url": "#resultsets"
         },
         {
-          "text": "筛选结果集",
+          "text": "Filtering Resultsets",
           "url": "#filters"
         },
         {
-          "text": "绑定参数",
+          "text": "Binding Parameters",
           "url": "#binding-parameters"
         }
       ]
     },
     {
-      "text": "初始化/准备读取的记录",
+      "text": "Initializing/Preparing fetched records",
       "url": "#preparing-records"
     },
     {
-      "text": "生成的计算",
+      "text": "Generating Calculations",
       "url": "#calculations"
     },
     {
-      "text": "创建/更新记录",
+      "text": "Creating/Updating Records",
       "url": "#create-update-records",
       "menu": [
         {
@@ -1147,7 +1147,7 @@
       ]
     },
     {
-      "text": "删除记录",
+      "text": "Deleting Records",
       "url": "#delete-records"
     },
     {
@@ -1155,129 +1155,129 @@
       "url": "#hydration-modes"
     },
     {
-      "text": "自动生成的标识列",
+      "text": "Auto-generated identity columns",
       "url": "#identity-columns"
     },
     {
-      "text": "跳过列",
+      "text": "Skipping Columns",
       "url": "#skipping-columns"
     },
     {
-      "text": "动态更新",
+      "text": "Dynamic Updates",
       "url": "#dynamic-updates"
     },
     {
-      "text": "独立列映射",
+      "text": "Independent Column Mapping",
       "url": "#column-mapping"
     },
     {
-      "text": "记录快照",
+      "text": "Record Snapshots",
       "url": "#record-snapshots"
     },
     {
-      "text": "指向一个不同的架构",
+      "text": "Pointing to a different schema",
       "url": "#different-schemas"
     },
     {
-      "text": "设置多个数据库",
+      "text": "Setting multiple databases",
       "url": "#multiple-databases"
     },
     {
-      "text": "服务注入模型",
+      "text": "Injecting services into Models",
       "url": "#injecting-services-into-models"
     },
     {
-      "text": "禁用/启用的功能",
+      "text": "Disabling/Enabling Features",
       "url": "#disabling-enabling-features"
     },
     {
-      "text": "独立组件",
+      "text": "Stand-Alone component",
       "url": "#stand-alone-component"
     }
   ],
   "db-odm": [
     {
-      "text": "ODM （对象文档映射器）",
+      "text": "ODM (Object-Document Mapper)",
       "url": "#overview"
     },
     {
-      "text": "创建模型",
+      "text": "Creating Models",
       "url": "#creating-models"
     },
     {
-      "text": "了解文档与对象",
+      "text": "Understanding Documents To Objects",
       "url": "#documents-to-objects"
     },
     {
-      "text": "在命名空间中的模型",
+      "text": "Models in Namespaces",
       "url": "#namespaces"
     },
     {
-      "text": "设置连接",
+      "text": "Setting a Connection",
       "url": "#connection-setup"
     },
     {
-      "text": "查找文档",
+      "text": "Finding Documents",
       "url": "#finding-documents"
     },
     {
-      "text": "聚合",
+      "text": "Aggregations",
       "url": "#aggregations"
     },
     {
-      "text": "创建更新记录",
+      "text": "Creating Updating/Records",
       "url": "#creating-updating",
       "menu": [
         {
-          "text": "验证消息",
+          "text": "Validation Messages",
           "url": "#validation-messages"
         },
         {
-          "text": "验证事件和事件管理器",
+          "text": "Validation Events and Events Manager",
           "url": "#events"
         },
         {
-          "text": "实施业务规则",
+          "text": "Implementing a Business Rule",
           "url": "#business-rules"
         },
         {
-          "text": "验证数据完整性",
+          "text": "Validating Data Integrity",
           "url": "#data-integrity"
         }
       ]
     },
     {
-      "text": "删除记录",
+      "text": "Deleting Records",
       "url": "#deleting-records"
     },
     {
-      "text": "验证失败的事件",
+      "text": "Validation Failed Events",
       "url": "#validation-failed-events"
     },
     {
-      "text": "隐式与用户 Id 主键",
+      "text": "Implicit Ids vs. User Primary Keys",
       "url": "#ids-vs-primary-keys"
     },
     {
-      "text": "设置多个数据库",
+      "text": "Setting multiple databases",
       "url": "#multiple-databases"
     },
     {
-      "text": "服务注入模型",
+      "text": "Injecting services into Models",
       "url": "#services-in-models"
     }
   ],
   "db-pagination": [
     {
-      "text": "分页",
+      "text": "Pagination",
       "url": "#overview"
     },
     {
-      "text": "数据适配器",
+      "text": "Data Adapters",
       "url": "#data-adapters"
     },
     {
-      "text": "工厂",
+      "text": "Factory",
       "url": "#factory"
     },
     {
@@ -1293,29 +1293,29 @@
       "url": "#page-attributes"
     },
     {
-      "text": "实现自己的适配器",
-      "url": "#自定义"
+      "text": "Implementing your own adapters",
+      "url": "#custom"
     }
   ],
   "db-phql": [
     {
-      "text": "Phalcon的查询语言 (PHQL)",
+      "text": "Phalcon Query Language (PHQL)",
       "url": "#overview"
     },
     {
-      "text": "用法示例",
+      "text": "Usage Example",
       "url": "#usage"
     },
     {
-      "text": "创建 PHQL 查询",
+      "text": "Creating PHQL Queries",
       "url": "#creating"
     },
     {
-      "text": "查询记录",
+      "text": "Selecting Records",
       "url": "#selecting-records",
       "menu": [
         {
-          "text": "结果类型",
+          "text": "Result Types",
           "url": "#result-types"
         },
         {
@@ -1323,77 +1323,77 @@
           "url": "#joins"
         },
         {
-          "text": "聚合",
+          "text": "Aggregations",
           "url": "#aggregations"
         },
         {
-          "text": "条件",
+          "text": "Conditions",
           "url": "#conditions"
         }
       ]
     },
     {
-      "text": "插入数据",
+      "text": "Inserting Data",
       "url": "#inserting-data"
     },
     {
-      "text": "更新数据",
+      "text": "Updating Data",
       "url": "#updating-data"
     },
     {
-      "text": "删除数据",
+      "text": "Deleting Data",
       "url": "#deleting-data"
     },
     {
-      "text": "使用查询生成器创建查询",
+      "text": "Creating queries using the Query Builder",
       "url": "#query-builder",
       "menu": [
         {
-          "text": "绑定参数",
+          "text": "Bound Parameters",
           "url": "#query-builder-parameters"
         }
       ]
     },
     {
-      "text": "不允许PHQL中的文字",
+      "text": "Disallow literals in PHQL",
       "url": "#disallow-literals"
     },
     {
-      "text": "转义保留字",
+      "text": "Escaping Reserved Words",
       "url": "#escaping-reserved-words"
     },
     {
-      "text": "PHQL生命周期",
+      "text": "PHQL Lifecycle",
       "url": "#lifecycle"
     },
     {
-      "text": "使用原始的SQL",
+      "text": "Using Raw SQL",
       "url": "#raw-sql"
     },
     {
-      "text": "疑难解答",
+      "text": "Troubleshooting",
       "url": "#troubleshooting"
     }
   ],
   "debug": [
     {
-      "text": "调试应用程序",
+      "text": "Debugging Applications",
       "url": "#overview"
     },
     {
-      "text": "捕捉异常",
+      "text": "Catching Exceptions",
       "url": "#catching-exceptions"
     },
     {
-      "text": "调试组件",
+      "text": "Debug component",
       "url": "#debug-component"
     },
     {
-      "text": "思考与反思",
+      "text": "Reflection and Introspection",
       "url": "#reflection-introspection"
     },
     {
-      "text": "使用 XDebug",
+      "text": "Using XDebug",
       "url": "#xdebug"
     }
   ],
@@ -1403,11 +1403,11 @@
       "url": "#overview"
     },
     {
-      "text": "系统必备组件",
+      "text": "Prerequisites",
       "url": "#prerequisites"
     },
     {
-      "text": "安装",
+      "text": "Installation",
       "url": "#installation",
       "menu": [
         {
@@ -1433,206 +1433,206 @@
   ],
   "devtools-usage": [
     {
-      "text": "Phalcon开发人员工具",
+      "text": "Phalcon Developer Tools",
       "url": "#overview"
     },
     {
-      "text": "下载",
+      "text": "Download",
       "url": "#下载"
     },
     {
-      "text": "安装",
+      "text": "Installation",
       "url": "#installation"
     },
     {
-      "text": "可用的命令",
+      "text": "Available Commands",
       "url": "#可用的命令"
     },
     {
-      "text": "生成一个项目骨架",
+      "text": "Generating a Project Skeleton",
       "url": "#project 骨架"
     },
     {
-      "text": "生成控制器",
+      "text": "Generating Controllers",
       "url": "#生成控制器"
     },
     {
-      "text": "准备数据库设置",
+      "text": "Preparing Database Settings",
       "url": "数据库设置"
     },
     {
-      "text": "生成模型",
+      "text": "Generating Models",
       "url": "#生成模型"
     },
     {
-      "text": "CURD 脚手架",
+      "text": "Scaffold a CRUD",
       "url": "#crud"
     },
     {
-      "text": "工具的 web 接口",
+      "text": "Web Interface to Tools",
       "url": "#Web 界面"
     },
     {
-      "text": "将工具与 phpstorm ide 集成",
-      "url": "#phpstorm"
+      "text": "Integrating Tools with PhpStorm IDE",
+      "url": "#phpstorm-ide"
     },
     {
-      "text": "结语",
-      "url": "#结论"
+      "text": "Conclusion",
+      "url": "#conclusion"
     }
   ],
   "di": [
     {
-      "text": "依赖注入 / 服务定位",
+      "text": "Dependency Injection / Service Location",
       "url": "#di-service-location"
     },
     {
-      "text": "DI 解释",
+      "text": "DI explained",
       "url": "#di-explained"
     },
     {
-      "text": "在容器中注册服务",
+      "text": "Registering services in the Container",
       "url": "#registering-services",
       "menu": [
         {
-          "text": "简单的注册",
+          "text": "Simple Registration",
           "url": "#simple-registration",
           "menu": [
             {
-              "text": "字符串",
+              "text": "String",
               "url": "#simple-registration-string"
             },
             {
-              "text": "类实例",
+              "text": "Class instances",
               "url": "#class-instances"
             },
             {
-              "text": "闭包/匿名函数",
+              "text": "Closures/Anonymous functions",
               "url": "#closures-anonymous-functions"
             }
           ]
         },
         {
-          "text": "复杂的注册",
+          "text": "Complex Registration",
           "url": "#complex-registration",
           "menu": [
             {
-              "text": "构造函数注入",
+              "text": "Constructor Injection",
               "url": "#constructor-injection"
             },
             {
-              "text": "设置注入",
+              "text": "Setter Injection",
               "url": "#setter-injection"
             },
             {
-              "text": "采用属性的方式注入",
+              "text": "Properties Injection",
               "url": "#properties-injection"
             }
           ]
         },
         {
-          "text": "数组方式",
+          "text": "Array Syntax",
           "url": "#array-syntax"
         }
       ]
     },
     {
-      "text": "解析服务",
+      "text": "Resolving Services",
       "url": "#resolving-services",
       "menu": [
         {
-          "text": "事件",
+          "text": "Events",
           "url": "#events"
         }
       ]
     },
     {
-      "text": "共享的服务",
+      "text": "Shared services",
       "url": "#shared-services"
     },
     {
-      "text": "单独操纵服务",
+      "text": "Manipulating services individually",
       "url": "#manipulating-services-individually"
     },
     {
-      "text": "通过服务容器实例化类",
+      "text": "Instantiating classes via the Service Container",
       "url": "#instantiating-classes-service-container"
     },
     {
-      "text": "从DI本身自动注入",
+      "text": "Automatic Injecting of the DI itself",
       "url": "#automatic-injecting-di-itself"
     },
     {
-      "text": "在文件中组织服务",
+      "text": "Organizing services in files",
       "url": "#organizing-services-files"
     },
     {
-      "text": "以静态的方式访问DI",
+      "text": "Accessing the DI in a static way",
       "url": "#accessing-di-static-way"
     },
     {
-      "text": "默认的Di注入器",
+      "text": "Factory Default DI",
       "url": "#factory-default-di"
     },
     {
-      "text": "服务名称约定",
+      "text": "Service Name Conventions",
       "url": "#service-name-conventions"
     },
     {
-      "text": "实现你自己的DI",
+      "text": "Implementing your own DI",
       "url": "#implementing-your-own-di"
     }
   ],
   "dispatcher": [
     {
-      "text": "调度控制器",
+      "text": "Dispatching Controllers",
       "url": "#explained"
     },
     {
-      "text": "调度循环",
+      "text": "The Dispatch Loop",
       "url": "#dispatch-loop"
     },
     {
-      "text": "调度循环事件",
-      "url": "#调度循环事件"
+      "text": "Dispatch Loop Events",
+      "url": "#dispatch-loop-events"
     },
     {
-      "text": "转发到其他操作",
-      "url": "#转发"
+      "text": "Forwarding to other actions",
+      "url": "#forwarding"
     },
     {
-      "text": "准备参数",
-      "url": "#准备参数"
+      "text": "Preparing Parameters",
+      "url": "#preparing-parameters"
     },
     {
-      "text": "获取参数",
-      "url": "#获取参数"
+      "text": "Getting Parameters",
+      "url": "#getting-parameters"
     },
     {
-      "text": "准备方法",
-      "url": "#准备方法",
+      "text": "Preparing actions",
+      "url": "#preparing-actions",
       "menu": [
         {
-          "text": "Camelize动作名称",
-          "url": "#准备方法-驼峰法命名方法名"
+          "text": "Camelize action names",
+          "url": "#preparing-actions-camelizing-action-names"
         },
         {
-          "text": "删除遗留的扩展",
+          "text": "Remove legacy extensions",
           "url": "#preparing-actions-removing-legacy-extensions"
         },
         {
-          "text": "注入模型实例",
+          "text": "Inject model instances",
           "url": "#preparing-actions-inject-model-instances"
         }
       ]
     },
     {
-      "text": "处理\" Not-Found\"异常",
+      "text": "Handling Not-Found Exceptions",
       "url": "#handling-404"
     },
     {
-      "text": "实现你自己的调度器",
-      "url": "#自定义"
+      "text": "Implementing your own Dispatcher",
+      "url": "#custom"
     }
   ],
   "environments-docker": [
@@ -1641,75 +1641,75 @@
       "url": "#overview"
     },
     {
-      "text": "依赖项",
-      "url": "#依赖项"
+      "text": "Dependencies",
+      "url": "#dependencies"
     },
     {
-      "text": "服务",
+      "text": "Services",
       "url": "#services"
     },
     {
-      "text": "安装",
+      "text": "Installation",
       "url": "#installation",
       "menu": [
         {
-          "text": "使用 Composer (推荐)",
-          "url": "#composer安装"
+          "text": "With Composer (recommended)",
+          "url": "#installation-composer"
         },
         {
-          "text": "使用 Git",
-          "url": "#安装-git"
+          "text": "With Git",
+          "url": "#installation-git"
         }
       ]
     },
     {
-      "text": "配置",
-      "url": "#配置"
+      "text": "Configuration",
+      "url": "#configuration"
     },
     {
-      "text": "使用",
+      "text": "Usage",
       "url": "#usage"
     },
     {
-      "text": "设置",
+      "text": "Set up",
       "url": "#setup"
     },
     {
-      "text": "日志",
-      "url": "#日志"
+      "text": "Logs",
+      "url": "#logs"
     },
     {
-      "text": "环境变量",
-      "url": "#环境变量",
+      "text": "Environment variables",
+      "url": "#environment-variables",
       "menu": [
         {
-          "text": "Web 环境",
-          "url": "#环境变量-web"
+          "text": "Web environment",
+          "url": "#environment-variables-web"
         },
         {
-          "text": "phpMyAdmin 变量",
+          "text": "phpMyAdmin variables",
           "url": "#environment-variables-phpmyadmin"
         }
       ]
     },
     {
-      "text": "Xdebug 远程调试器 (PhpStorm)",
+      "text": "Xdebug Remote debugger (PhpStorm)",
       "url": "#xdebug"
     },
     {
-      "text": "疑难解答",
+      "text": "Troubleshooting",
       "url": "#troubleshooting",
       "menu": [
         {
-          "text": "启动或链接错误",
+          "text": "Startup or linking errors",
           "url": "#troubleshooting-startup"
         },
         {
-          "text": "完全重置",
+          "text": "Full reset",
           "url": "#troubleshooting-full-reset"
         },
         {
-          "text": "更新依赖项",
+          "text": "Updating dependencies",
           "url": "#troubleshooting-dependencies"
         }
       ]
@@ -1725,7 +1725,7 @@
       "url": "#overview"
     },
     {
-      "text": "创建新项目",
+      "text": "Create a New Project",
       "url": "#create-project"
     },
     {
@@ -1737,20 +1737,20 @@
       "url": "#add-devtools"
     },
     {
-      "text": "启动 Nanobox 并生成一个新的Phalcon应用，",
+      "text": "Start Nanobox and Generate a New Phalcon App",
       "url": "#new-phalcon-app"
     },
     {
-      "text": "本地运行应用程序",
+      "text": "Run the App Locally",
       "url": "#run-app"
     },
     {
-      "text": "查阅环境",
+      "text": "Check Out the Environment",
       "url": "#environment"
     },
     {
-      "text": "Phalcon和 Nanobox",
-      "url": "#结论"
+      "text": "Phalcon and Nanobox",
+      "url": "#conclusion"
     }
   ],
   "environments-vagrant": [
@@ -1759,49 +1759,49 @@
       "url": "#overview"
     },
     {
-      "text": "要求",
+      "text": "Requirements",
       "url": "#requirements"
     },
     {
-      "text": "包括的包",
+      "text": "Packages Included",
       "url": "#packages-included"
     },
     {
-      "text": "安装",
+      "text": "Installation",
       "url": "#installation",
       "menu": [
         {
-          "text": "安装Vagrant Box",
+          "text": "Installing the Vagrant Box",
           "url": "#installation-vagrant-box"
         },
         {
-          "text": "安装Phalcon Box",
+          "text": "Installing the Phalcon Box",
           "url": "#installation-phalcon-box"
         }
       ]
     },
     {
-      "text": "配置",
+      "text": "Configuring",
       "url": "#installation-configuration",
       "menu": [
         {
-          "text": "设置您的Provider",
+          "text": "Setting your provider",
           "url": "#installation-configuration-setting-provider"
         },
         {
-          "text": "内存和CPU",
+          "text": "Memory and CPU",
           "url": "#installation-configuration-memory-cpu"
         },
         {
-          "text": "共享的文件夹",
+          "text": "Shared folders",
           "url": "#installation-configuration-shared-folders"
         },
         {
-          "text": "Nginx站点",
+          "text": "Nginx sites",
           "url": "#installation-configuration-nginx",
           "menu": [
             {
-              "text": "自定义 Nginx 配置",
+              "text": "Custom Nginx configuration",
               "url": "#installation-configuration-custom-nginx"
             },
             {
@@ -1811,25 +1811,25 @@
           ]
         },
         {
-          "text": "安装附加的软件包",
+          "text": "Install additional packages",
           "url": "#installation-aditional-packages"
         },
         {
-          "text": "启动Phalcon Box",
+          "text": "Launching the Phalcon Box",
           "url": "#installation-launching-phalcon-box"
         }
       ]
     },
     {
-      "text": "日常使用",
+      "text": "Daily usage",
       "url": "#daily-usage",
       "menu": [
         {
-          "text": "全局访问Phalcon Box",
+          "text": "Accessing Phalcon Box globally",
           "url": "#daily-usage-accessing-box-globally",
           "menu": [
             {
-              "text": "Mac | |Linux",
+              "text": "Mac || Linux",
               "url": "#daily-usage-accessing-box-globally-mac-linux"
             },
             {
@@ -1839,55 +1839,55 @@
           ]
         },
         {
-          "text": "通过 SSH 连接",
+          "text": "Connecting via SSH",
           "url": "#daily-usage-ssh"
         },
         {
-          "text": "连接到数据库",
+          "text": "Connecting to databases",
           "url": "#daily-usage-databases"
         },
         {
-          "text": "添加其他网站",
+          "text": "Adding additional sites",
           "url": "#daily-usage-additional-sites"
         },
         {
-          "text": "环境变量",
+          "text": "Environment variables",
           "url": "#daily-usage-environment-variables",
           "menu": [
             {
-              "text": "全局变量",
+              "text": "Global variables",
               "url": "#daily-usage-environment-global-variables"
             },
             {
-              "text": "网站变量",
+              "text": "Site variables",
               "url": "#daily-usage-environment-site-variables"
             }
           ]
         },
         {
-          "text": "端口",
+          "text": "Ports",
           "url": "#daily-usage-ports",
           "menu": [
             {
-              "text": "额外的端口转发",
+              "text": "Forwarding additional ports",
               "url": "#daily-usage-ports-forwarding"
             }
           ]
         },
         {
-          "text": "共享您的环境",
+          "text": "Sharing your environment",
           "url": "#daily-usage-sharing-environment"
         },
         {
-          "text": "网络接口",
+          "text": "Network interfaces",
           "url": "#daily-usage-network-interfaces"
         },
         {
-          "text": "更新 Phalcon Box",
+          "text": "Updating Phalcon Box",
           "url": "#daily-usage-updating-box"
         },
         {
-          "text": "提供程序特定的设置",
+          "text": "Provider specific settings",
           "url": "#daily-usage-provider-settings",
           "menu": [
             {
@@ -1897,91 +1897,91 @@
           ]
         },
         {
-          "text": "Mail捕手",
+          "text": "Mail catcher",
           "url": "#daily-usage-mail-catcher"
         }
       ]
     },
     {
-      "text": "疑难解答",
+      "text": "Troubleshooting",
       "url": "#troubleshooting"
     }
   ],
   "escaper": [
     {
-      "text": "内容的过滤筛选",
+      "text": "Contextual Escaping",
       "url": "#overview"
     },
     {
-      "text": "转义HTML",
+      "text": "Escaping HTML",
       "url": "#html"
     },
     {
-      "text": "转义HTML属性",
+      "text": "Escaping HTML Attributes",
       "url": "#html-attributes"
     },
     {
-      "text": "转义Url",
+      "text": "Escaping URLs",
       "url": "#urls"
     },
     {
-      "text": "转义CSS",
+      "text": "Escaping CSS",
       "url": "#css"
     },
     {
-      "text": "转义JavaScript",
+      "text": "Escaping JavaScript",
       "url": "#javascript"
     }
   ],
   "events": [
     {
-      "text": "事件管理器",
+      "text": "Events Manager",
       "url": "#overview"
     },
     {
-      "text": "命名约定",
+      "text": "Naming Convention",
       "url": "#naming-convention"
     },
     {
-      "text": "用法示例",
+      "text": "Usage Example",
       "url": "#usage"
     },
     {
-      "text": "创建触发事件的组件",
+      "text": "Creating components that trigger Events",
       "url": "#components-that-trigger-events"
     },
     {
-      "text": "从DI注入容器中使用服务",
+      "text": "Using Services From The DI",
       "url": "#using-services"
     },
     {
-      "text": "事件的加入/取消",
+      "text": "Event Propagation/Cancellation",
       "url": "#propagation-cancellation"
     },
     {
-      "text": "监听器的优先等级",
+      "text": "Listener Priorities",
       "url": "#listener-priorities"
     },
     {
-      "text": "收集的反应",
+      "text": "Collecting Responses",
       "url": "#collecting-responses"
     },
     {
-      "text": "执行您自己的 时间管理器",
-      "url": "#自定义"
+      "text": "Implementing your own EventsManager",
+      "url": "#custom"
     },
     {
-      "text": "事件列表",
+      "text": "List of events",
       "url": "#list"
     }
   ],
   "filter": [
     {
-      "text": "过滤和处理",
+      "text": "Filtering and Sanitizing",
       "url": "#overview"
     },
     {
-      "text": "类型的内置过滤器",
+      "text": "Types of Built-in Filters",
       "url": "#types"
     },
     {
@@ -1993,7 +1993,7 @@
       "url": "#sanitizing-from-controllers"
     },
     {
-      "text": "过滤操作参数",
+      "text": "Filtering Action Parameters",
       "url": "#filtering-action-parameters"
     },
     {
@@ -2014,28 +2014,28 @@
     },
     {
       "text": "Implementing your own Filter",
-      "url": "#自定义"
+      "url": "#custom"
     }
   ],
   "flash": [
     {
-      "text": "阅后即焚",
+      "text": "Flashing Messages",
       "url": "#overview"
     },
     {
-      "text": "适配器",
+      "text": "Adapters",
       "url": "#adapters"
     },
     {
-      "text": "使用",
+      "text": "Usage",
       "url": "#usage"
     },
     {
-      "text": "打印消息",
+      "text": "Printing Messages",
       "url": "#printing"
     },
     {
-      "text": "隐式冲洗与会议",
+      "text": "Implicit Flush vs. Session",
       "url": "#implicit-flush-vs-session"
     }
   ],
@@ -2077,17 +2077,17 @@
       "url": "#manager"
     },
     {
-      "text": "外部资源",
+      "text": "External Resources",
       "url": "#external"
     }
   ],
   "i18n": [
     {
-      "text": "国际化",
+      "text": "Internationalization",
       "url": "#overview"
     },
     {
-      "text": "找出最佳可用区域设置",
+      "text": "Find out best available Locale",
       "url": "#best-locale"
     },
     {
@@ -2095,29 +2095,29 @@
       "url": "#formatting-messages"
     },
     {
-      "text": "区分区域设置的比较",
+      "text": "Locale-Sensitive comparison",
       "url": "#locale-comparison"
     },
     {
-      "text": "音译",
+      "text": "Transliteration",
       "url": "#transliteration"
     }
   ],
   "image": [
     {
-      "text": "图片",
+      "text": "Images",
       "url": "#overview"
     },
     {
-      "text": "适配器",
+      "text": "Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#adapters-factory"
         },
         {
-          "text": "实现自己的适配器",
+          "text": "Implementing your own adapters",
           "url": "#adapters-custom"
         }
       ]
@@ -2179,11 +2179,11 @@
   ],
   "installation": [
     {
-      "text": "要求",
+      "text": "Requirements",
       "url": "#requirements",
       "menu": [
         {
-          "text": "硬件",
+          "text": "Hardware",
           "url": "#requirements-hardware"
         },
         {
@@ -2191,7 +2191,7 @@
           "url": "#requirements-software",
           "menu": [
             {
-              "text": "根据应用程序的需要可选",
+              "text": "Optional depending on the needs of your application",
               "url": "#requirements-software-optional"
             }
           ]
@@ -2199,7 +2199,7 @@
       ]
     },
     {
-      "text": "安装",
+      "text": "Installation",
       "url": "#installation",
       "menu": [
         {
@@ -2328,11 +2328,11 @@
   ],
   "loader": [
     {
-      "text": "要求",
+      "text": "Requirements",
       "url": "#overview"
     },
     {
-      "text": "安全层",
+      "text": "Security Layer",
       "url": "#security"
     },
     {
@@ -2340,15 +2340,15 @@
       "url": "#registering-namespaces"
     },
     {
-      "text": "注册目录",
+      "text": "Registering Directories",
       "url": "#registering-directories"
     },
     {
-      "text": "注册类",
+      "text": "Registering Classes",
       "url": "#registering-classes"
     },
     {
-      "text": "注册文件",
+      "text": "Registering Files",
       "url": "#registering-files"
     },
     {
@@ -2364,33 +2364,33 @@
       "url": "#events"
     },
     {
-      "text": "疑难解答",
+      "text": "Troubleshooting",
       "url": "#troubleshooting"
     }
   ],
   "logging": [
     {
-      "text": "日志记录",
+      "text": "Logging",
       "url": "#overview"
     },
     {
-      "text": "适配器",
+      "text": "Adapters",
       "url": "#adapters"
     },
     {
-      "text": "工厂",
+      "text": "Factory",
       "url": "#adapters-factory"
     },
     {
-      "text": "创建一个日志",
+      "text": "Creating a Log",
       "url": "#creating"
     },
     {
-      "text": "交易",
+      "text": "Transactions",
       "url": "#transactions"
     },
     {
-      "text": "登录到多个处理程序",
+      "text": "Logging to Multiple Handlers",
       "url": "#multiple-handlers"
     },
     {
@@ -2408,7 +2408,7 @@
       ]
     },
     {
-      "text": "适配器",
+      "text": "Adapters",
       "url": "#usage",
       "menu": [
         {
@@ -2428,7 +2428,7 @@
           "url": "#usage-firephp"
         },
         {
-          "text": "实现自己的适配器",
+          "text": "Implementing your own adapters",
           "url": "#usage-custom"
         }
       ]
@@ -2436,29 +2436,29 @@
   ],
   "mvc": [
     {
-      "text": "MVC 架构",
+      "text": "The MVC Architecture",
       "url": "#architecture"
     },
     {
-      "text": "模型",
+      "text": "Models",
       "url": "#models"
     },
     {
-      "text": "视图",
+      "text": "Views",
       "url": "#views"
     },
     {
-      "text": "控制器",
+      "text": "Controllers",
       "url": "#controllers"
     }
   ],
   "namespaces": [
     {
-      "text": "使用命名空间",
+      "text": "Working with Namespaces",
       "url": "#setting-up"
     },
     {
-      "text": "设置框架",
+      "text": "Setting up the framework",
       "url": "#models"
     },
     {
@@ -2466,17 +2466,17 @@
       "url": "#controllers"
     },
     {
-      "text": "在命名空间中的模型",
+      "text": "Models in Namespaces",
       "url": "#models"
     }
   ],
   "performance": [
     {
-      "text": "提高性能",
+      "text": "Increasing Performance",
       "url": "#overview"
     },
     {
-      "text": "在服务器上的配置文件",
+      "text": "Profile on the Server",
       "url": "#profiling-server",
       "menu": [
         {
@@ -2484,7 +2484,7 @@
           "url": "#profiling-server-xhprof"
         },
         {
-          "text": "分析 SQL 语句",
+          "text": "Profiling SQL Statements",
           "url": "#profiling-server-sql-statements"
         }
       ]
@@ -2494,7 +2494,7 @@
       "url": "#profiling-client",
       "menu": [
         {
-          "text": "Chrome/Firefox的配置文件",
+          "text": "Profile with Chrome/Firefox",
           "url": "#profiling-client-chrome-firefox"
         },
         {
@@ -2526,25 +2526,25 @@
   ],
   "queue": [
     {
-      "text": "队列",
+      "text": "Queueing",
       "url": "#overview"
     },
     {
-      "text": "将任务放入队列",
+      "text": "Putting Jobs into the Queue",
       "url": "#put-jobs-in-queue"
     },
     {
-      "text": "检索消息",
+      "text": "Retrieving Messages",
       "url": "#retrieving-messages"
     }
   ],
   "reproducible-tests": [
     {
-      "text": "创建一个小的脚本",
+      "text": "Creating a small script",
       "url": "#overview"
     },
     {
-      "text": "数据库",
+      "text": "Database",
       "url": "#database"
     },
     {
@@ -2562,11 +2562,11 @@
   ],
   "request": [
     {
-      "text": "要求的环境",
+      "text": "Request Environment",
       "url": "#overview"
     },
     {
-      "text": "获取值",
+      "text": "Getting Values",
       "url": "#getting-values"
     },
     {
@@ -2574,21 +2574,21 @@
       "url": "#controller-access"
     },
     {
-      "text": "上传文件",
+      "text": "Uploading Files",
       "url": "#uploading-files"
     },
     {
-      "text": "使用Headers",
+      "text": "Working with Headers",
       "url": "#working-with-headers"
     }
   ],
   "response": [
     {
-      "text": "返回的响应",
+      "text": "Returning Responses",
       "url": "#overview"
     },
     {
-      "text": "使用Headers",
+      "text": "Working with Headers",
       "url": "#working-with-headers"
     },
     {
@@ -2596,7 +2596,7 @@
       "url": "#redirections"
     },
     {
-      "text": "HTTP 缓存",
+      "text": "HTTP Cache",
       "url": "#http-cache",
       "menu": [
         {
@@ -2616,7 +2616,7 @@
   ],
   "routing": [
     {
-      "text": "路由",
+      "text": "Routing",
       "url": "#overview"
     },
     {
@@ -2711,16 +2711,16 @@
     },
     {
       "text": "Implementing your own Router",
-      "url": "#自定义"
+      "url": "#custom"
     }
   ],
   "security": [
     {
-      "text": "安全",
+      "text": "Security",
       "url": "#overview"
     },
     {
-      "text": "密码哈希",
+      "text": "Password Hashing",
       "url": "#hashing"
     },
     {
@@ -2728,7 +2728,7 @@
       "url": "#csrf"
     },
     {
-      "text": "设置该组件",
+      "text": "Setting up the component",
       "url": "#setup"
     },
     {
@@ -2736,21 +2736,21 @@
       "url": "#random"
     },
     {
-      "text": "外部资源",
+      "text": "External Resources",
       "url": "#resources"
     }
   ],
   "session": [
     {
-      "text": "在会话中存储数据",
+      "text": "Storing data in the Session",
       "url": "#overview"
     },
     {
-      "text": "启动新会话",
+      "text": "Starting the Session",
       "url": "#start",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#start-factory"
         }
       ]
@@ -2764,7 +2764,7 @@
       "url": "#store"
     },
     {
-      "text": "删除/销毁会话",
+      "text": "Removing/Destroying Sessions",
       "url": "#remove-destroy"
     },
     {
@@ -2780,67 +2780,67 @@
       "url": "#data-persistence"
     },
     {
-      "text": "实现自己的适配器",
+      "text": "Implementing your own adapters",
       "url": "#custom-adapters"
     }
   ],
   "tag": [
     {
-      "text": "视图助手 （Tags）",
+      "text": "View Helpers (Tags)",
       "url": "#overview"
     },
     {
-      "text": "文档类型的内容",
+      "text": "Document Type of Content",
       "url": "#document-type"
     },
     {
-      "text": "创建表单",
+      "text": "Creating Forms",
       "url": "#creating-forms"
     },
     {
-      "text": "使用助手来生成表单元素",
+      "text": "Helpers to Generate Form Elements",
       "url": "#helpers-for-form-elements"
     },
     {
-      "text": "制作选择框",
+      "text": "Making Select Boxes",
       "url": "#select-boxes"
     },
     {
-      "text": "将 HTML 属性分配",
+      "text": "Assigning HTML attributes",
       "url": "#html-attributes"
     },
     {
-      "text": "设置助手工具的值",
+      "text": "Setting Helper Values",
       "url": "#helper-values",
       "menu": [
         {
-          "text": "在控制器中使用",
+          "text": "From Controllers",
           "url": "#helper-values-form-controllers"
         },
         {
-          "text": "在请求中使用",
+          "text": "From the Request",
           "url": "#helper-values-from-request"
         },
         {
-          "text": "直接指定value",
+          "text": "Specifying values directly",
           "url": "#helper-values-directly"
         }
       ]
     },
     {
-      "text": "动态更改文档标题",
+      "text": "Changing dynamically the Document Title",
       "url": "#changing-document-title-dynamically"
     },
     {
-      "text": "静态内容助手",
+      "text": "Static Content Helpers",
       "url": "#static-content-helpers",
       "menu": [
         {
-          "text": "图片",
+          "text": "Images",
           "url": "#static-content-helpers-images"
         },
         {
-          "text": "样式表",
+          "text": "Stylesheets",
           "url": "#static-content-helpers-stylesheets"
         },
         {
@@ -2848,128 +2848,128 @@
           "url": "#static-content-helpers-javascript"
         },
         {
-          "text": "HTML5 元素-泛型的 HTML 助手",
+          "text": "HTML5 elements - generic HTML helper",
           "url": "#static-content-helpers-html5"
         }
       ]
     },
     {
-      "text": "Tag服务",
+      "text": "Tag Service",
       "url": "#tag-helpers"
     },
     {
-      "text": "创建您自己的助手工具",
+      "text": "Creating your own helpers",
       "url": "#custom-helpers"
     }
   ],
   "testing-environment": [
     {
-      "text": "概述",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "概述",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
-      "text": "安装",
-      "url": "installation"
+      "text": "Installation",
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
-      "text": "服务",
-      "url": "services"
+      "text": "Services",
+      "url": "#services"
     }
   ],
   "translate": [
     {
-      "text": "多语言支持",
+      "text": "Multi-lingual Support",
       "url": "#overview"
     },
     {
-      "text": "适配器",
+      "text": "Adapters",
       "url": "#adapters",
       "menu": [
         {
-          "text": "工厂",
+          "text": "Factory",
           "url": "#adapters-factory"
         }
       ]
     },
     {
-      "text": "组件用法",
+      "text": "Component Usage",
       "url": "#usage"
     },
     {
-      "text": "实现自己的适配器",
-      "url": "#自定义"
+      "text": "Implementing your own adapters",
+      "url": "#custom"
     }
   ],
   "tutorial-base": [
@@ -2978,193 +2978,193 @@
       "url": "#basic"
     },
     {
-      "text": "文件结构",
+      "text": "File structure",
       "url": "#file-structure"
     },
     {
-      "text": "启动",
+      "text": "Bootstrap",
       "url": "#bootstrap",
       "menu": [
         {
-          "text": "自动加载",
+          "text": "Autoloaders",
           "url": "#autoloaders"
         },
         {
-          "text": "依赖关系管理",
+          "text": "Dependency Management",
           "url": "#dependency-management"
         },
         {
-          "text": "处理应用程序请求",
+          "text": "Handling the application request",
           "url": "#request"
         },
         {
-          "text": "把一切都放在一起",
+          "text": "Putting everything together",
           "url": "#full-example"
         }
       ]
     },
     {
-      "text": "创建控制器",
+      "text": "Creating a Controller",
       "url": "#controller"
     },
     {
-      "text": "将输出发送到一个视图",
+      "text": "Sending output to a view",
       "url": "#view"
     },
     {
-      "text": "设计注册表单",
+      "text": "Designing a sign up form",
       "url": "#signup-form"
     },
     {
-      "text": "创建模型",
+      "text": "Creating a Model",
       "url": "#model"
     },
     {
-      "text": "设置数据库连接",
+      "text": "Setting a Database Connection",
       "url": "#database-connection"
     },
     {
-      "text": "使用模型存储数据",
+      "text": "Storing data using models",
       "url": "#storing-data"
     },
     {
-      "text": "结语",
-      "url": "#结论"
+      "text": "Conclusion",
+      "url": "#conclusion"
     }
   ],
   "tutorial-invo": [
     {
-      "text": "教程： INVO",
+      "text": "Tutorial: INVO",
       "url": "#overview"
     },
     {
-      "text": "项目结构",
-      "url": "#结构"
+      "text": "Project Structure",
+      "url": "#structure"
     },
     {
-      "text": "路由",
+      "text": "Routing",
       "url": "#routing"
     },
     {
-      "text": "配置",
-      "url": "#配置"
+      "text": "Configuration",
+      "url": "#configuration"
     },
     {
-      "text": "自动加载",
+      "text": "Autoloaders",
       "url": "#autoloaders"
     },
     {
-      "text": "注册服务",
+      "text": "Registering services",
       "url": "#services"
     },
     {
-      "text": "处理请求",
+      "text": "Handling the Request",
       "url": "#handling-requests"
     },
     {
-      "text": "依赖注入",
+      "text": "Dependency Injection",
       "url": "#dependency-injection"
     },
     {
-      "text": "登录到应用程序",
+      "text": "Log into the Application",
       "url": "#log-in"
     },
     {
-      "text": "确保后端",
+      "text": "Securing the Backend",
       "url": "#securing-backend",
       "menu": [
         {
-          "text": "事件管理",
+          "text": "Events Management",
           "url": "#events-manager"
         },
         {
-          "text": "正在获取 ACL 列表",
+          "text": "Getting the ACL list",
           "url": "#acl"
         }
       ]
     },
     {
-      "text": "用过的 CRUD",
+      "text": "Working with the CRUD",
       "url": "#working-with-crud"
     },
     {
-      "text": "搜索表单",
+      "text": "The Search Form",
       "url": "#search-form"
     },
     {
-      "text": "执行搜索",
+      "text": "Performing a Search",
       "url": "#performing-searches"
     },
     {
-      "text": "创建和更新记录",
+      "text": "Creating and Updating Records",
       "url": "#creating-updating-records"
     },
     {
-      "text": "用户组件",
+      "text": "User Components",
       "url": "#user-components"
     },
     {
-      "text": "动态更改标题",
+      "text": "Changing the Title Dynamically",
       "url": "#dynamic-titles"
     }
   ],
   "tutorial-rest": [
     {
-      "text": "教程： 创建一个简单的 REST API",
+      "text": "Tutorial: Creating a Simple REST API",
       "url": "#overview"
     },
     {
-      "text": "定义 API",
+      "text": "Defining the API",
       "url": "#definitions"
     },
     {
-      "text": "创建应用程序",
+      "text": "Creating the Application",
       "url": "#implementation"
     },
     {
-      "text": "创建模型",
+      "text": "Creating a Model",
       "url": "#models"
     },
     {
-      "text": "检索数据",
+      "text": "Retrieving Data",
       "url": "#retrieving-data"
     },
     {
-      "text": "插入数据",
+      "text": "Inserting Data",
       "url": "#inserting-data"
     },
     {
-      "text": "更新数据",
+      "text": "Updating Data",
       "url": "#updating-data"
     },
     {
-      "text": "删除数据",
+      "text": "Deleting Data",
       "url": "#deleting-data"
     },
     {
-      "text": "测试我们的应用程序",
+      "text": "Testing our Application",
       "url": "#testing"
     },
     {
-      "text": "结语",
-      "url": "#结论"
+      "text": "Conclusion",
+      "url": "#conclusion"
     }
   ],
   "tutorial-vokuro": [
     {
-      "text": "教程： Vökuró",
+      "text": "Tutorial: Vökuró",
       "url": "#overview"
     },
     {
-      "text": "项目结构",
-      "url": "#结构"
+      "text": "Project Structure",
+      "url": "#structure"
     },
     {
-      "text": "加载类和依赖",
-      "url": "#依赖项"
+      "text": "Load Classes and Dependencies",
+      "url": "#dependencies"
     },
     {
-      "text": "注册",
+      "text": "Sign Up",
       "url": "#sign-up"
     }
   ],
@@ -3174,7 +3174,7 @@
       "url": "#overview"
     },
     {
-      "text": "要求",
+      "text": "Requirements",
       "url": "#requirements"
     },
     {
@@ -3192,11 +3192,11 @@
       "url": "#overview"
     },
     {
-      "text": "Phalcon于PHPUnit结合",
+      "text": "Integrating PHPUnit with Phalcon",
       "url": "#integration"
     },
     {
-      "text": "PHPUnit\"桥\"文件",
+      "text": "The PHPUnit helper file",
       "url": "#unit-helper"
     },
     {
@@ -3204,209 +3204,209 @@
       "url": "#phpunit-config"
     },
     {
-      "text": "单元测试示例",
+      "text": "Sample Unit Test",
       "url": "#sample"
     }
   ],
   "url": [
     {
-      "text": "生成的URL和访问路径",
+      "text": "Generating URLs and Paths",
       "url": "#overview"
     },
     {
-      "text": "设置根URI",
+      "text": "Setting a base URI",
       "url": "#base-uri"
     },
     {
-      "text": "生成URI",
+      "text": "Generating URIs",
       "url": "#generating-uri"
     },
     {
-      "text": "在不使用mod_rewrite（Apache 模块）下生成URL",
+      "text": "Producing URLs without mod_rewrite",
       "url": "#urls-without-mod-rewrite"
     },
     {
-      "text": "在Volt中生成URL",
+      "text": "Producing URLs from Volt",
       "url": "#urls-from-volt"
     },
     {
-      "text": "静态与动态URI的区别",
+      "text": "Static vs. Dynamic URIs",
       "url": "#static-vs-dynamic-uri"
     },
     {
-      "text": "实现您自己的URL生成器",
+      "text": "Implementing your own URL Generator",
       "url": "#custom-url"
     }
   ],
   "validation": [
     {
-      "text": "验证",
+      "text": "Validation",
       "url": "#overview"
     },
     {
-      "text": "初始化验证",
+      "text": "Initializing Validation",
       "url": "#initializing"
     },
     {
-      "text": "验证程序",
+      "text": "Validators",
       "url": "#validators"
     },
     {
-      "text": "回调验证程序",
+      "text": "Callback Validator",
       "url": "#callback"
     },
     {
-      "text": "验证消息",
+      "text": "Validation Messages",
       "url": "#messages"
     },
     {
-      "text": "数据过滤",
+      "text": "Filtering of Data",
       "url": "#filtering"
     },
     {
-      "text": "验证事件",
+      "text": "Validation Events",
       "url": "#events"
     },
     {
-      "text": "取消验证",
+      "text": "Cancelling Validations",
       "url": "#cancelling"
     },
     {
-      "text": "避免验证空值",
+      "text": "Avoid validating empty values",
       "url": "#empty-values"
     },
     {
-      "text": "递归验证",
+      "text": "Recursive Validation",
       "url": "#recursive"
     }
   ],
   "views": [
     {
-      "text": "使用视图",
+      "text": "Using Views",
       "url": "#overview"
     },
     {
-      "text": "与控制器集成视图",
+      "text": "Integrating Views with Controllers",
       "url": "#integrating-views-with-controllers"
     },
     {
-      "text": "分层渲染",
+      "text": "Hierarchical Rendering",
       "url": "#hierarchical-rendering",
       "menu": [
         {
-          "text": "使用模板",
+          "text": "Using Templates",
           "url": "#using-templates"
         },
         {
-          "text": "控制渲染等级",
+          "text": "Control Rendering Levels",
           "url": "#control-rendering-levels"
         },
         {
-          "text": "禁用渲染等级",
+          "text": "Disabling render levels",
           "url": "#disabling-render-levels"
         },
         {
-          "text": "选择视图",
+          "text": "Picking Views",
           "url": "#picking-views"
         },
         {
-          "text": "禁用视图",
+          "text": "Disabling the view",
           "url": "#disabling-view"
         }
       ]
     },
     {
-      "text": "简单渲染",
+      "text": "Simple Rendering",
       "url": "#simple-rendering"
     },
     {
-      "text": "使用层级",
+      "text": "Using Partials",
       "url": "#using-partials"
     },
     {
-      "text": "在控制器中把值传给视图",
+      "text": "Transfer values from the controller to views",
       "url": "#value-transfer"
     },
     {
-      "text": "缓存视图片段",
+      "text": "Caching View Fragments",
       "url": "#caching-fragments"
     },
     {
-      "text": "模板引擎",
+      "text": "Template Engines",
       "url": "#template-engines",
       "menu": [
         {
-          "text": "创建您自己的模板引擎适配器",
+          "text": "Creating your own Template Engine Adapter",
           "url": "#custom-template-engine"
         },
         {
-          "text": "更改模板引擎",
+          "text": "Changing the Template Engine",
           "url": "#changing-template-engine"
         }
       ]
     },
     {
-      "text": "在视图中注射服务",
+      "text": "Injecting services in View",
       "url": "#injecting-services"
     },
     {
-      "text": "独立组件",
+      "text": "Stand-Alone Component",
       "url": "#stand-alone",
       "menu": [
         {
-          "text": "分层渲染",
+          "text": "Hierarchical Rendering",
           "url": "#stand-alone-hierarchical-rendering"
         },
         {
-          "text": "简单渲染",
+          "text": "Simple Rendering",
           "url": "#stand-alone-simple-rendering"
         }
       ]
     },
     {
-      "text": "视图事件",
+      "text": "View Events",
       "url": "#events"
     }
   ],
   "volt": [
     {
-      "text": "Volt: 模板引擎",
+      "text": "Volt: Template Engine",
       "url": "#overview"
     },
     {
-      "text": "简介",
+      "text": "Introduction",
       "url": "#introduction"
     },
     {
-      "text": "启用 Volt",
+      "text": "Activating Volt",
       "url": "#setup"
     },
     {
-      "text": "基本用法",
+      "text": "Basic Usage",
       "url": "#basic-usage"
     },
     {
-      "text": "变量的使用",
+      "text": "Variables",
       "url": "#variables"
     },
     {
-      "text": "过滤器",
+      "text": "Filters",
       "url": "#filters"
     },
     {
-      "text": "注释",
+      "text": "Comments",
       "url": "#comments"
     },
     {
-      "text": "列表输出和结构输出",
+      "text": "List of Control Structures",
       "url": "#control-structures",
       "menu": [
         {
-          "text": "For循环列表",
+          "text": "For",
           "url": "#control-structures-for"
         },
         {
-          "text": "Loop循环",
+          "text": "Loop Controls",
           "url": "#control-structures-loops",
           "menu": [
             {
@@ -3420,63 +3420,63 @@
           ]
         },
         {
-          "text": "Loop的高级使用",
+          "text": "Loop Context",
           "url": "#control-structures-loop",
           "menu": [
             {
-              "text": "分配变量",
+              "text": "Assignments",
               "url": "#assignments"
             },
             {
-              "text": "表达式：",
+              "text": "Expressions",
               "url": "#expressions"
             }
           ]
         },
         {
-          "text": "字面值(原始的值, 就是直接输出!)",
+          "text": "Literals",
           "url": "#expressions-literals"
         },
         {
-          "text": "数组",
+          "text": "Arrays",
           "url": "#expressions-arrays"
         },
         {
-          "text": "计算",
+          "text": "Math",
           "url": "#expressions-math"
         },
         {
-          "text": "比较运算符",
+          "text": "Comparisons",
           "url": "#expressions-comparisons"
         },
         {
-          "text": "逻辑运算符",
+          "text": "Logic",
           "url": "#expressions-logic"
         },
         {
-          "text": "其他运算符",
+          "text": "Other Operators",
           "url": "#expressions-other-operators"
         }
       ]
     },
     {
-      "text": "检测器",
+      "text": "Tests",
       "url": "#tests"
     },
     {
-      "text": "宏定义",
+      "text": "Macros",
       "url": "#macros"
     },
     {
-      "text": "使用标签助手",
+      "text": "Using Tag Helpers",
       "url": "#tag-helpers"
     },
     {
-      "text": "函数",
+      "text": "Functions",
       "url": "#functions"
     },
     {
-      "text": "视图集成",
+      "text": "View Integration",
       "url": "#view-integrations",
       "menu": [
         {
@@ -3484,63 +3484,63 @@
           "url": "#view-integration-include"
         },
         {
-          "text": "部分 vs 包括",
+          "text": "Partial vs Include",
           "url": "#view-integration-partial-vs-include"
         }
       ]
     },
     {
-      "text": "模板继承",
+      "text": "Template Inheritance",
       "url": "#template-inheritance",
       "menu": [
         {
-          "text": "多重继承",
+          "text": "Multiple Inheritance",
           "url": "#template-inheritance-multiple"
         }
       ]
     },
     {
-      "text": "Autoescape 模式",
+      "text": "Autoescape mode",
       "url": "#autoescape"
     },
     {
-      "text": "扩展 Volt",
+      "text": "Extending Volt",
       "url": "#extending",
       "menu": [
         {
-          "text": "函数",
+          "text": "Functions",
           "url": "#extending-functions"
         },
         {
-          "text": "过滤器",
+          "text": "Filters",
           "url": "#extending-filters"
         },
         {
-          "text": "扩展",
+          "text": "Extensions",
           "url": "#extending-extensions"
         }
       ]
     },
     {
-      "text": "缓存的视图片段",
+      "text": "Caching view fragments",
       "url": "#caching-view-fragments"
     },
     {
-      "text": "将服务注入到一个模板",
+      "text": "Inject Services into a Template",
       "url": "#services-in-templates"
     },
     {
-      "text": "独立组件",
+      "text": "Stand-alone component",
       "url": "#stand-alone"
     }
   ],
   "webserver-wamp": [
     {
-      "text": "在WAMP集成环境中安装Phalcon",
+      "text": "Installation on WAMP",
       "url": "#overview"
     },
     {
-      "text": "下载正确版本的Phalcon扩展。",
+      "text": "Download the right version of Phalcon",
       "url": "#phalcon"
     },
     {
@@ -3550,15 +3550,15 @@
   ],
   "webserver-xampp": [
     {
-      "text": "在XAMPP中安装Phalcon扩展",
+      "text": "Installation on XAMPP",
       "url": "#overview"
     },
     {
-      "text": "下载正确版本的Phalcon扩展。",
+      "text": "Download the right version of Phalcon",
       "url": "#phalcon"
     },
     {
-      "text": "安装过程截图",
+      "text": "Screencast",
       "url": "#screencast"
     },
     {
