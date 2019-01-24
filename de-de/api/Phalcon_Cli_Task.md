@@ -10,9 +10,9 @@ title: 'Phalcon\Cli\Task'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Cli\TaskInterface](Phalcon_Cli_TaskInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
-Jede Befehlszeile Aufgabe sollte diese Klasse erweitern, um die Aufgaben Funktionalität zu kapseln
+Every command-line task should extend this class that encapsulates all the task functionality
 
 A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method
 
@@ -21,7 +21,7 @@ A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or a
 
 class HelloTask extends \Phalcon\Cli\Task
 {
-    // Dies Aktion wird standardmäßig ausgeführt
+    // This action will be executed by default
     public function mainAction()
     {
 
@@ -35,7 +35,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ```
 
-## Methoden
+## Methods
 
 final public **__construct** ()
 
@@ -51,12 +51,12 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Legt den Event-manager fest
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magische Methode __get
+Magic method __get
