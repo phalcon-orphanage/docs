@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Url'
 
 *implements* [Phalcon\Mvc\UrlInterface](Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 
 This components helps in the generation of: URIs, URLs and Paths
 
@@ -29,7 +29,7 @@ echo $url->get(
 
 ```
 
-## Methods
+## Methoden
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
