@@ -61,23 +61,23 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-创建内部连接到 memcached
+Create internal connection to memcached
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-返回缓存的内容
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-将缓存的内容存储到文件后端和前端停止
+Stores cached content into the file backend and stops the frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-将一个值从缓存中删除由它的键
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-查询现有的缓存的键。
+Query the existing cached keys.
 
 ```php
 <?php
@@ -91,19 +91,19 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-检查是否存在缓存并没有过期
+Checks if cache exists and it isn't expired
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-增量的受到 $keyName $value
+Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-$keyName 通过减量给出 $value
+Decrement of $keyName by given $value
 
 public **flush** ()
 
-立即使无效所有现有项目。 Memcached 不支持每个默认的 flush()。 如果你需要 flush() 支持，设置 $config["statsKey"]。 修改后的所有键都存储在"statsKey"。 注： statsKey 有负面的影响。
+Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
 
 ```php
 <?php
@@ -152,16 +152,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-停止前端, 不存储任何缓存的内容
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-检查最后一个缓存是否新鲜或缓存
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-检查缓存中是否已经开始缓冲或不
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-获取最后一个生命周期
+Gets the last lifetime set
