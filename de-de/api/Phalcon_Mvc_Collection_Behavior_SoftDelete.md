@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/softdelete.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/softdelete.zep)
 
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
-## Methods
+## Methoden
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
