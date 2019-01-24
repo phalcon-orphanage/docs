@@ -1,6 +1,6 @@
 [
     {
-        "text": "General",
+        "text": "Général",
         "url": "/introduction",
         "menu": [
             {
@@ -8,12 +8,12 @@
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Notes de version",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Mettre à jour",
                 "url": ""
             },
             {
@@ -27,7 +27,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Vue d'ensemble",
                 "url": "/contributions"
             },
             {
@@ -43,17 +43,17 @@
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Tests reproductibles",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Testing guide",
                 "url": "testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Pour commencer",
         "url": "",
         "menu": [
             {
@@ -61,7 +61,7 @@
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Configuration du serveur Web",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Environnements",
         "url": "",
         "menu": [
             {
@@ -93,7 +93,7 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Outils de développement",
         "url": "",
         "menu": [
             {
@@ -141,11 +141,11 @@
         ]
     },
     {
-        "text": "Core",
+        "text": "Configuration minimale",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Index de l'API",
                 "url": "/api/"
             },
             {
@@ -161,7 +161,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "Conteneur DI",
                 "url": "/di"
             },
             {
@@ -179,7 +179,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Configuration",
                 "url": "/config"
             },
             {
@@ -195,7 +195,7 @@
                 "url": "/logging"
             },
             {
-                "text": "Queue",
+                "text": "File d'attente",
                 "url": "/queue"
             }
         ]
@@ -217,7 +217,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Modèles",
                 "url": "/db-models"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Événements",
                 "url": "/db-models-events"
             },
             {
@@ -263,19 +263,19 @@
         ]
     },
     {
-        "text": "Front End",
+        "text": "Front-End",
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Ressources",
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Messagerie Flash",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formulaires",
                 "url": "/forms"
             },
             {
@@ -297,7 +297,7 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Logique métier",
         "url": "",
         "menu": [
             {
@@ -317,7 +317,7 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Gestionnaire d'événements",
                 "url": "/events"
             },
             {
@@ -333,7 +333,7 @@
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "URL",
                 "url": "/url"
             },
             {
@@ -351,11 +351,11 @@
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Requête ",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Réponse",
                 "url": "/response"
             }
         ]
