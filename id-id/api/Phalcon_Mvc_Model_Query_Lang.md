@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Model\Query\Lang'
 ---
 # Abstract class **Phalcon\Mvc\Model\Query\Lang**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/lang.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/lang.zep)
 
-PHQL diimplementasikan sebagai parser (ditulis dalam C) yang menerjemahkan sintaks dari target RDBMS. Hal ini memungkinkan Phalcon untuk menawarkan bahasa SQL terpadu pengembang, sementara secara internal melakukan semua pekerjaan menerjemahkan PHQL instruksi ke petunjuk SQL yang paling optimal tergantung pada Tipe RDBMS berhubungan dengan model.
+PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS. It allows Phalcon to offer a unified SQL language to the developer, while internally doing all the work of translating PHQL instructions to the most optimal SQL instructions depending on the RDBMS type associated with a model.
 
-Untuk mencapai performa setinggi mungkin, kami menulis sebuah parser yang menggunakan teknologi yang sama seperti SQLite. Teknologi ini menyediakan memori kecil parser dengan tapak memori yang sangat rendah itu juga thread-safe.
+To achieve the highest performance possible, we wrote a parser that uses the same technology as SQLite. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
 ```php
 <?php
@@ -19,8 +19,8 @@ $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL("SELECT r.* FROM Robots 
 
 ```
 
-## Metode
+## Methods
 
 public static *string* **parsePHQL** (*string* $phql)
 
-Mengurai pernyataan PHQL yang mengembalikan representasi menengah (IR)
+Parses a PHQL statement returning an intermediate representation (IR)
