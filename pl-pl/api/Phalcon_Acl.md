@@ -6,9 +6,9 @@ title: 'Phalcon\Acl'
 ---
 # Abstract class **Phalcon\Acl**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl.zep)
 
-## Stałe
+## Constants
 
 ```php
 integer ALLOW
