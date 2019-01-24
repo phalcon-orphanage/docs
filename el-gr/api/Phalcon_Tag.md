@@ -58,7 +58,7 @@ Returns a URL service from the default DI
 
 public static **getEscaperService** ()
 
-Επιστρέφει μια υπηρεσία Escaper την από προεπιλεγμένη διεύθυνση DI
+Returns an Escaper service from the default DI
 
 public static **setAutoescape** (*mixed* $autoescape)
 
