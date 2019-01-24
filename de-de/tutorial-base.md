@@ -169,7 +169,7 @@ use Phalcon\Mvc\Url as UrlProvider;
 
 // ...
 
-// Eine Base URI erstellen
+// Setup a base URI
 $di->set(
     'url',
     function () {
@@ -246,7 +246,7 @@ $di->set(
     }
 );
 
-//Eine Base URI erstellen
+// Setup a base URI
 $di->set(
     'url',
     function () {
@@ -259,7 +259,7 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // Request abwickeln
+    // Handle the request
     $response = $application->handle();
 
     $response->send();
