@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
 Loads Image Adapter class using 'adapter' option
 
@@ -29,7 +29,7 @@ $image = Factory::load($options);
 
 ```
 
-## Methods
+## Méthodes
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
