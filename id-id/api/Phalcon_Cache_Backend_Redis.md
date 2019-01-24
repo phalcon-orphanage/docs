@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Belakang\Redis'
+title: 'Phalcon\Cache\Backend\Redis'
 ---
 # Class **Phalcon\Cache\Backend\Redis**
 
@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Belakang\Redis'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
 
-Memungkinkan cache fragmen cache, data PHP atau data mentah ke reden backend
+Allows to cache output fragments, PHP data or raw data to a redis backend
 
-Adaptor ini menggunakan tombol khusus memcached "_PHCM" untuk menyimpan semua kunci yang digunakan secara internal oleh adaptor
+This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
 
 ```php
 <?php
@@ -49,67 +49,67 @@ $data = $cache->get("my-data");
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
 Phalcon\Cache\Backend\Redis constructor
 
-publik **_connect** ()
+public **_connect** ()
 
-Buat koneksi internal ke memcached
+Create internal connection to redis
 
-publik **dapat** (*campuran* $keyName, [*campuran* $lifetime])
+public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Mengembalikan konten dalam cache
+Returns a cached content
 
-publik **simpan** ([*int* | *rangkaian* $keyName], [* rangkaian* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Menyimpan isi cache ke file backend dan menghentikan frontend
-
-```php
-<?php
-
-$cache->simpan("my-key", $data);
-
-// Simpan data tanpa henti
-$cache->Simpan ("my-key", $data, -1);
-
-```
-
-publik **hapus** (*int* | *string* $keyName)
-
-Menghapus nilai dari cache dengan kuncinya
-
-publik **Kunci kueri** ([*campuran* $prefix])
-
-Permintaan kunci cache yang ada.
+Stores cached content into the file backend and stops the frontend
 
 ```php
 <?php
 
-$cache->simpan("para pengguna-ids", [1, 2, 3]);
-$cache->simpan("Rancangan-ids", [4, 5, 6]);
+$cache->save("my-key", $data);
 
-var_dump($cache->Kunci kueri ("Para Pengguna")); // ["Para pengguna-ids"]
+// Save data termlessly
+$cache->save("my-key", $data, -1);
 
 ```
 
-publik **ada** ([*string* $keyName], [*int* $lifetime])
+public **delete** (*int* | *string* $keyName)
 
-Memeriksa apakah cache ada dan tidak kedaluwarsa
+Deletes a value from the cache by its key
 
-public **kenaikan** ([*sejajar* $keyName], [*campuran* $value])
+public **queryKeys** ([*mixed* $prefix])
 
-Kenaikan yang diberikan $keyName dari $value
+Query the existing cached keys.
 
-publik **penurunan** ([*jaringan* $keyName], [<1campuran</em> $value])
+```php
+<?php
 
-Pengurangan $keyName dengan diberikan $value
+$cache->save("users-ids", [1, 2, 3]);
+$cache->save("projects-ids", [4, 5, 6]);
 
-publik **flush** ()
+var_dump($cache->queryKeys("users")); // ["users-ids"]
 
-Segera batalkan semua item yang ada.
+```
+
+public **exists** ([*string* $keyName], [*int* $lifetime])
+
+Checks if cache exists and it isn't expired
+
+public **increment** ([*string* $keyName], [*mixed* $value])
+
+Increment of given $keyName by $value
+
+public **decrement** ([*string* $keyName], [*mixed* $value])
+
+Decrement of $keyName by given $value
+
+public **flush** ()
+
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -141,16 +141,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Menghentikan frontend tanpa menyimpan konten dalam cache
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache terakhir masih segar atau di-cache
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Memeriksa apakah cache sudah mulai buffering atau tidak
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Dapat di set seumur hidup
+Gets the last lifetime set
