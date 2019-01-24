@@ -9,21 +9,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# XAMPP Installation
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Laden Sie die richtige Version von Phalcon herunter
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Nach dem Download der Phalcon-Bibliothek haben Sie eine Zip-Datei wie unten gezeigt:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Extrahieren Sie die Bibliothek aus dem Archiv um die Phalcon DLL zu erhalten:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -31,13 +31,13 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Es kann mit Notepad oder einem ähnlichen Programm bearbeitet werden. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Fügen Sie am Ende der Datei hinzu:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-and save it.
+und speichern Sie es.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -71,7 +71,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 <a name='related'></a>
 
-## Related Guides
+## Ähnliche Anleitungen
 
 * [General Installation](/4.0/en/installation)
-* [Installation on WAMP](/4.0/en/webserver-wamp)
+* [WAMP Installation](/4.0/en/webserver-wamp)
