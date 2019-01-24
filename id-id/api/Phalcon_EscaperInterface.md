@@ -6,38 +6,38 @@ title: 'Phalcon\EscaperInterface'
 ---
 # Interface **Phalcon\EscaperInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **mengatur Kode** (*dicampur* $encoding)
-
-...
-
-publik abstrak **mendapatkan Kode** ()
+abstract public **setEncoding** (*mixed* $encoding)
 
 ...
 
-abstrak publik **setel Html Tipe Kutipan** (*campuran* $quoteType)
+abstract public **getEncoding** ()
 
 ...
 
-abstrak publik **melepaskan Html** (*dicampur* $text)
+abstract public **setHtmlQuoteType** (*mixed* $quoteType)
 
 ...
 
-abstrak publik **melepaskan HtmlAttr** (*dicampur* $text)
+abstract public **escapeHtml** (*mixed* $text)
 
 ...
 
-abstrak publik **melepaskan Css** (*dicampur* $css)
+abstract public **escapeHtmlAttr** (*mixed* $text)
 
 ...
 
-abstrak publik **melepaskanJs** (*dicampur* $js)
+abstract public **escapeCss** (*mixed* $css)
 
 ...
 
-abstrak publik **melepaskanUrl** (*dicampur* $url)
+abstract public **escapeJs** (*mixed* $js)
+
+...
+
+abstract public **escapeUrl** (*mixed* $url)
 
 ...
