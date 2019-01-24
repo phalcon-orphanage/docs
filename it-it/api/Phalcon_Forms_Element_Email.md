@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Email'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
 
 Component INPUT[type=email] for forms
 
-## Metodi
+## Methods
 
 public **render** ([*array* $attributes])
 
