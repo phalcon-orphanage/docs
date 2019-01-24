@@ -10,11 +10,11 @@ title: 'Phalcon\Cli\Console'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
 This component allows to create CLI applications using Phalcon
 
-## Methods
+## Méthodes
 
 public **addModules** (*array* $modules)
 
@@ -48,11 +48,11 @@ Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Sets the events manager
+Définit le gestionnaire d'événements
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Returns the internal event manager
+Retourne le gestionnaire d'événements internes
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
