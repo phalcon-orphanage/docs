@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Igbinary'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/igbinary.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
 
 Allows to cache native PHP data in a serialized form using igbinary extension
 
@@ -59,7 +59,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -67,11 +67,11 @@ Phalcon\Cache\Frontend\Data constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Liefert die Cache-Lebensdauer
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Prüft, ob das Frontend Ausgaben puffert
 
 public **start** ()
 
@@ -79,16 +79,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+Liefert einen zwischengespeicherten Inhalt
 
 public **stop** ()
 
-Stops output frontend
+Stoppt die Frontend Ausgabe
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serialisiert Daten vor dem Speichern
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes Daten nach der Entnahme
