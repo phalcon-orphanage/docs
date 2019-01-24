@@ -8,11 +8,11 @@ title: 'Phalcon\Translate\Adapter'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter.zep)
 
 Base class for Phalcon\Translate adapters
 
-## Methods
+## Methoden
 
 public **__construct** (*array* $options)
 
@@ -24,15 +24,15 @@ public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Tr
 
 public *string* **t** (*string* $translateKey, [*array* $placeholders])
 
-Returns the translation string of the given key
+Gibt die Zeichenfolge Übersetzung des angegebenen Schlüssels zurück
 
 public *string* **_** (*string* $translateKey, [*array* $placeholders])
 
-Returns the translation string of the given key (alias of method 't')
+Gibt die Zeichenfolge Übersetzung des angegebenen Schlüssels zurück (Alias der Methode ' t ')
 
 public **offsetSet** (*string* $offset, *string* $value)
 
-Sets a translation value
+Legt einen Wert der Übersetzung fest
 
 public **offsetExists** (*mixed* $translateKey)
 
@@ -40,15 +40,15 @@ Check whether a translation key exists
 
 public **offsetUnset** (*string* $offset)
 
-Unsets a translation from the dictionary
+Entfernt eine Übersetzung aus dem Wörterbuch wieder
 
 public *string* **offsetGet** (*string* $translateKey)
 
-Returns the translation related to the given key
+Gibt die Zeichenfolge Übersetzung des angegebenen Schlüssels zurück
 
 protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
-Replaces placeholders by the values passed
+Ersetzt Platzhalter durch die übergebenen Werte
 
 abstract public **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
