@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Micro'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
 
-With Phalcon you can create "Micro-Framework like" applications. En faisant cela, vous avez seulement besoin de écrire un minimum de code pour créer une application en PHP. Les Micro-applications sont adaptés pour de petites applications, Api et les prototypes d'une manière pratique.
+With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $app->handle();
 
 ```
 
-## Méthodes
+## Methods
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -42,7 +42,7 @@ Sets the DependencyInjector container
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **map** (*string* $routePattern, *callable* $handler)
 
-Cartes un itinéraire à un gestionnaire, sans aucune méthode HTTP contrainte
+Maps a route to a handler without any HTTP method constraint
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **get** (*string* $routePattern, *callable* $handler)
 
@@ -78,15 +78,15 @@ Mounts a collection of handlers
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **notFound** (*callable* $handler)
 
-Définit un gestionnaire qui sera appelée lorsque le routeur ne correspond à aucune des itinéraires définis
+Sets a handler that will be called when the router doesn't match any of the defined routes
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **error** (*callable* $handler)
 
-Définit un gestionnaire qui sera appelée quand une exception est levée de la manipulation de la route
+Sets a handler that will be called when an exception is thrown handling the route
 
 public **getRouter** ()
 
-Retourne le routeur interne utilisé par l'application
+Returns the internal router used by the application
 
 public [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
@@ -110,7 +110,7 @@ Handle the whole request
 
 public **stop** ()
 
-Arrête l'intergiciel d'exécution en évitant que les autres middlewares être exécuté
+Stops the middleware execution avoiding than other middlewares be executed
 
 public **setActiveHandler** (*callable* $activeHandler)
 
@@ -130,7 +130,7 @@ Check if a service is registered in the internal services container using the ar
 
 public **offsetSet** (*string* $alias, *mixed* $definition)
 
-Permet d'enregistrer un service partagé dans les services internes du conteneur à l'aide de la syntaxe de tableau
+Allows to register a shared service in the internal services container using the array syntax
 
 ```php
 <?php
@@ -158,11 +158,11 @@ Removes a service from the internal services container using the array syntax
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **before** (*callable* $handler)
 
-Ajoute un avant middleware pour être appelée avant d'exécuter l'itinéraire
+Appends a before middleware to be called before execute the route
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **afterBinding** (*callable* $handler)
 
-Ajoute un afterBinding middleware être appelée après la liaison du modèle
+Appends a afterBinding middleware to be called after model binding
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **after** (*callable* $handler)
 
@@ -206,7 +206,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Retourne le gestionnaire d'événements internes
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
