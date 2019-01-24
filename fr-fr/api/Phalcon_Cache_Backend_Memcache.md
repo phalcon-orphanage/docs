@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Backend\Memcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend
+Permet de mettre en cache de sortie de fragments, de PHP, de données ou de données brutes à un memcache backend
 
-This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter
+Cet adaptateur utilise le spécial memcached clé "_PHCM" pour stocker toutes les clés en interne utilisé par la carte
 
 ```php
 <?php
@@ -47,7 +47,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Méthodes
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -59,7 +59,7 @@ Create internal connection to memcached
 
 public **addServers** (*mixed* $host, *mixed* $port, [*mixed* $persistent])
 
-Add servers to memcache pool
+Ajouter des serveurs memcache piscine
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
