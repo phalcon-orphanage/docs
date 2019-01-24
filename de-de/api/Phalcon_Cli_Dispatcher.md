@@ -1,16 +1,16 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Cli\Dispatcher'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Cli\Dispatcher'
+---
 # Class **Phalcon\Cli\Dispatcher**
 
 *extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/dispatcher.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
@@ -32,7 +32,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## Konstanten
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -46,15 +46,15 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Methoden
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
-Sets the default task suffix
+Legt den Standard-Aufgabe-suffix fest
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Sets the default task name
+Legt den Standard-Aufgabe-Namen fest
 
 public **setTaskName** (*mixed* $taskName)
 
@@ -66,11 +66,11 @@ Gets last dispatched task name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Throws an internal exception
+Löst eine interne Ausnahme aus
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles a user exception
+Behandelt eine Ausnahme
 
 public **getLastTask** ()
 
@@ -90,15 +90,15 @@ Get dispatched options
 
 public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-Gets an option by its name or numeric index
+Gibt eine Option anhand seines Namens oder numerischen index zurück
 
 public **hasOption** (*mixed* $option)
 
-Check if an option exists
+Prüft, ob eine Option vorhanden ist
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-Calls the action method.
+Ruft die Aktionsmethode auf.
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -110,11 +110,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the events manager
+Legt den Event-manager fest
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -150,7 +150,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default action name
+Legt den Standard Aktions Name fest
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -242,7 +242,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Forwards the execution flow to another controller/action.
+Leitet den Ausführungsfluss an einem anderen Controller/Action weiter.
 
 ```php
 <?php
@@ -275,7 +275,7 @@ class UserController extends Controller
 {
     public function showAction(User $user)
     {
-        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels(); // gibt array mit $user zurück
     }
 }
 
