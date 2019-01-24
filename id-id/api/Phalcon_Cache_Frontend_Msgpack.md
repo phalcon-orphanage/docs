@@ -10,88 +10,88 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
 
-Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
+Memungkinkan untuk menyimpan data asli PHP dalam bentuk serial menggunakan ekstensi pesan Pack Adaptor ini menggunakan frontend Msgpack untuk menyimpan konten dalam cache dan memerlukan ekstensi pesan.
 
 ```php
-<?php
+& lt;? php
 
-use Phalcon\Cache\Backend\File;
-use Phalcon\Cache\Frontend\Msgpack;
+gunakan Phalcon \ Cache \ Backend \ File;
+gunakan Phalcon \ Cache \ Frontend \ Msgpack;
 
-// Cache the files for 2 days using Msgpack frontend
-$frontCache = new Msgpack(
-    [
-        "lifetime" => 172800,
-    ]
+// Cache file selama 2 hari dengan menggunakan frontend Msgpack
+$ frontCache = new Msgpack
+     [
+         "seumur hidup" = & gt; 172800,
+     ]
 );
 
-// Create the component that will cache "Msgpack" to a "File" backend
-// Set the cache file directory - important to keep the "/" at the end of
-// of the value for the folder
-$cache = new File(
-    $frontCache,
-    [
-        "cacheDir" => "../app/cache/",
-    ]
+// Buat komponen yang akan men-cache "Msgpack" ke sebuah "File" backend
+// Setel direktori file cache - penting untuk menyimpan "/" di penghujung
+// dari nilai untuk folder
+$ cache = new File (
+     $ frontCache,
+     [
+         "cacheDir" = & gt; "../app/cache/",
+     ]
 );
 
-$cacheKey = "robots_order_id.cache";
+$ cacheKey = "robots_order_id.cache";
 
-// Try to get cached records
-$robots = $cache->get($cacheKey);
+// Cobalah untuk mendapatkan catatan dalam cache
+$ robots = $ cache- & gt; get ($ cacheKey);
 
-if ($robots === null) {
-    // $robots is null due to cache expiration or data do not exist
-    // Make the database call and populate the variable
-    $robots = Robots::find(
-        [
-            "order" => "id",
-        ]
-    );
+jika ($ robots === null) {
+     // $ robot dibatalkan karena kadaluwarsa cache atau data tidak ada
+     / / Membuat panggilan database dan mengisi variabel
+     $ robots = Robot :: temukan (
+         [
+             "pesanan" = & gt; "id",
+         ]
+     );
 
-    // Store it in the cache
-    $cache->save($cacheKey, $robots);
+     // simpan di cache
+     $ cache- & gt; save ($ cacheKey, $ robots);
 }
 
-// Use $robots
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
+// Gunakan $ robots
+foreach ($ robot sebagai $ robot) {
+     echo $ robot- & gt; nama, "\ n";
 }
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $frontendOptions])
+umum **__membangun** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Msgpack constructor
 
-public **getLifetime** ()
+publik ** getLifetime ** ()
 
-Returns the cache lifetime
+Mengembalikan masa pakai cache
 
-public **isBuffering** ()
+public ** isBuffering ** ()
 
-Check whether if frontend is buffering output
+Periksa apakah frontend adalah buffering output
 
-public **start** ()
+publik ** mulai ** ()
 
 Starts output frontend. Actually, does nothing
 
-public **getContent** ()
+public ** getContent </ 0> ()</p> 
 
-Returns output cached content
+Mengembalikan hasil konten dalam cache
 
-public **stop** ()
+publik ** berhenti ** ()
 
-Stops output frontend
+Menghentikan output frontend
 
-public **beforeStore** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
-Serializes data before storing them
+Serializes data sebelum menyimpannya
 
-public **afterRetrieve** (*mixed* $data)
+public ** afterRetrieve ** ( * mixed * $data)
 
-Unserializes data after retrieval
+Unserializes data setelah pengambilan
