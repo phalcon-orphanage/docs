@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model\Resultset\Simple'
 
 *implements* [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php), [Serializable](https://php.net/manual/en/class.serializable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
 Simple resultsets only contains a complete objects This class builds every complete object as it is required
 
-## Constants
+## Constantes
 
 *integer* **TYPE_RESULT_FULL**
 
@@ -26,7 +26,7 @@ Simple resultsets only contains a complete objects This class builds every compl
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Méthodes
 
 public **__construct** (*array* $columnMap, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](Phalcon_Mvc_Model_Row) $model, [Phalcon\Db\Result\Pdo](Phalcon_Db_Result_Pdo) | *null* $result, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache], [*boolean* $keepSnapshots])
 
