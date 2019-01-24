@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Transaction'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
 
-事务是保护块 SQL 语句只是永久性的如果他们能成功作为一个原子操作。 Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
+Transactions are protective blocks where SQL statements are only permanent if they can all succeed as one atomic action. Phalcon\Transaction is intended to be used with Phalcon_Model_Base. Phalcon Transactions should be created using Phalcon\Transaction\Manager.
 
 ```php
 <?php
@@ -56,44 +56,44 @@ Phalcon\Mvc\Model\Transaction constructor
 
 public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
-设置事务管理器与事务有关的
+Sets transaction manager related to the transaction
 
 public **begin** ()
 
-启动事务
+Starts the transaction
 
 public **commit** ()
 
-提交事务
+Commits the transaction
 
 public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $rollbackRecord])
 
-回滚事务
+Rollbacks the transaction
 
 public **getConnection** ()
 
-返回与事务相关的连接
+Returns the connection related to transaction
 
 public **setIsNewTransaction** (*mixed* $isNew)
 
-设置重复使用的事务或启动一个新的
+Sets if is a reused transaction or new once
 
 public **setRollbackOnAbort** (*mixed* $rollbackOnAbort)
 
-设置标识回滚中止 HTTP 连接
+Sets flag to rollback on abort the HTTP connection
 
 public **isManaged** ()
 
-检查是否事务都由事务管理器管理
+Checks whether transaction is managed by a transaction manager
 
 public **getMessages** ()
 
-返回验证消息从上次保存试
+Returns validations messages from last save try
 
 public **isValid** ()
 
-检查内部连接是否下一个活动事务
+Checks whether internal connection is under an active transaction
 
 public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record)
 
-设置对象的操作将生成回滚操作
+Sets object which generates rollback action
