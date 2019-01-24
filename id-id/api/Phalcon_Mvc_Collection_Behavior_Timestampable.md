@@ -10,15 +10,15 @@ title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/timestampable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/timestampable.zep)
 
-Memungkinkan untuk memperbarui secara otomatis atribut model yang menyimpannya datetime saat record dibuat atau diperbaharui
+Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
-## Metode
+## Methods
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Mendengarkan pemberitahuan dari manajer model
+Listens for notifications from the models manager
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
@@ -26,12 +26,12 @@ Phalcon\Mvc\Collection\Behavior
 
 protected **mustTakeAction** (*mixed* $eventName) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Memeriksa apakah perilaku tersebut harus mengambil tindakan pada acara tertentu
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Mengembalikan opsi perilaku yang terkait dengan suatu peristiwa
+Returns the behavior options related to an event
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Bertindak mundur saat metode yang hilang dipanggil pada koleksi
+Acts as fallbacks when a missing method is called on the collection
