@@ -8,11 +8,11 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/collection.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
 Represents a collection of resources
 
-## Methods
+## Methoden
 
 public **getPrefix** ()
 
@@ -72,7 +72,7 @@ Adds a resource to the collection
 
 public **addInline** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Adds an inline code to the collection
+Fügt der Sammlung inline code hinzu
 
 public **has** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
@@ -93,11 +93,11 @@ $resource->has($resource); // true
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a CSS resource to the collection
+Fügt eine CSS-Ressource zur Sammlung hinzu
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline CSS to the collection
+Fügt der Sammlung inline CSS hinzu
 
 public [Phalcon\Assets\Collection](Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
@@ -121,11 +121,11 @@ Returns the current resource in the iterator
 
 public *int* **key** ()
 
-Returns the current position/key in the iterator
+Gibt die aktuellen Position/Schlüssel im Iterator zurück
 
 public **next** ()
 
-Moves the internal iteration pointer to the next position
+Bewegt sich der internen Iteration-Zeiger auf die nächste position
 
 public **valid** ()
 
