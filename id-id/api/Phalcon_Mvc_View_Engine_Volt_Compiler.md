@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
 
-Kelas ini membaca dan mengkompilasi template Volt menjadi kode polos PHP
+This class reads and compiles Volt templates into PHP plain code
 
 ```php
 <?php
@@ -23,168 +23,168 @@ require $compiler->getCompiledTemplatePath();
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([[Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view])
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setOptions** (*array* $options)
 
-Menetapkan pilihan manajer
+Sets the compiler options
 
-public **decrement** (*string* $option, [*mixed* $value)
+public **setOption** (*string* $option, *mixed* $value)
 
-Menetapkan opsi kompilator tunggal
+Sets a single compiler option
 
-public *array* **baca** (*string* $option)
+public *string* **getOption** (*string* $option)
 
-Mengembalikan opsi kompilator
+Returns a compiler's option
 
 public **getOptions** ()
 
-Menetapkan pilihan manajer
+Returns the compiler options
 
-public *increment* ([**string** | *int* $name], [*mixed* $arguments])
+final public *mixed* **fireExtensionEvent** (*string* $name, [*array* $arguments])
 
-Memecat acara untuk ekstensi terdaftar
+Fires an event to registered extensions
 
-public **escapeJs** (*mixed* $extension)
+public **addExtension** (*mixed* $extension)
 
-Mendaftarkan ekstensi Volt
+Registers a Volt's extension
 
 public **getExtensions** ()
 
-Mengembalikan daftar ekstensi yang terdaftar di Volt
+Returns the list of extensions registered in Volt
 
-publik **setHeader** (*mixed* $name, *mixed* $definition)
+public **addFunction** (*mixed* $name, *mixed* $definition)
 
-Daftarkan fungsi baru di kompilator
+Register a new function in the compiler
 
-publik **dapatkanfungs** ()
+public **getFunctions** ()
 
-Daftarkan fungsi terdaftar pengguna
+Register the user registered functions
 
-publik **setHeader** (*mixed* $name, *mixed* $definition)
+public **addFilter** (*mixed* $name, *mixed* $definition)
 
-Daftarkan filter baru di kompilator
+Register a new filter in the compiler
 
 public **getFilters** ()
 
-Daftarkan fungsi terdaftar pengguna
+Register the user registered filters
 
-publik **setModelPrefix** (*mixed* $prefix)
+public **setUniquePrefix** (*mixed* $prefix)
 
-Tetapkan awalan unik untuk digunakan sebagai awalan untuk variabel yang dikompilasi
+Set a unique prefix to be used as prefix for compiled variables
 
-publik **dapatkanfilter** ()
+public **getUniquePrefix** ()
 
-Kembalikan awalan unik untuk digunakan sebagai awalan untuk variabel dan konteks yang dikompilasi
+Return a unique prefix to be used as prefix for compiled variables and contexts
 
-public **setAttributes** (*array* $expr)
+public **attributeReader** (*array* $expr)
 
-Selesaikan pembacaan atribut
+Resolves attribute reading
 
-umum **hubungkan** ([*array* $expr)
+public **functionCall** (*array* $expr)
 
-Menyelesaikan fungsi antara kode ke fungsi PHP panggilan
+Resolves function intermediate code into PHP function calls
 
-umum **__construct** (*array* $test, [*mixed* $left)
+public **resolveTest** (*array* $test, *mixed* $left)
 
-Menyelesaikan kode perantara filter menjadi ekspresi PHP yang valid
+Resolves filter intermediate code into a valid PHP expression
 
-umum **__construct** (*array* $filter, [*mixed* $left)
+final protected **resolveFilter** (*array* $filter, *mixed* $left)
 
-Menyelesaikan kode perantara filter ke pemanggilan fungsi PHP
+Resolves filter intermediate code into PHP function calls
 
-final publik **telah Server** (*campur aduk* $expr)
+final public **expression** (*array* $expr)
 
-Memecahkan ekspresi simpul di pohon volt AST
+Resolves an expression node in an AST volt tree
 
-final dilindungi *string* | *array* **_statementListOrExtends** (* array * $statements)
+final protected *string* | *array* **_statementListOrExtends** (*array* $statements)
 
-Kompilasi sebuah blok pernyataan
+Compiles a block of statements
 
-public **setParam** (*mixed* $statement, *mixed* $extendsMode])
+public **compileForeach** (*array* $statement, [*mixed* $extendsMode])
 
-Mengkompilasi representasi kode "untuk setiap" menengah ke kode PHP biasa
+Compiles a "foreach" intermediate code representation into plain PHP code
 
-publik **mendapatkancompiler** ()
+public **compileForElse** ()
 
-Menghasilkan kode PHP 'forelse'
+Generates a 'forelse' PHP code
 
-umum **__construct** (*array* $statement, [*mixed* $extendsMode])
+public **compileIf** (*array* $statement, [*mixed* $extendsMode])
 
-Mengkompilasi sebuah pernyataan 'jika' yang mengembalikan kode PHP
+Compiles a 'if' statement returning PHP code
 
-publik **hubungkan** ([*array* $statement)
+public **compileElseIf** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan "elseif" yang mengembalikan kode PHP
+Compiles a "elseif" statement returning PHP code
 
-umum **__construct** (*array* $statement, [*mixed* $extendsMode])
+public **compileCache** (*array* $statement, [*mixed* $extendsMode])
 
-Mengkompilasi sebuah "cache" pernyataan kembali kode PHP
+Compiles a "cache" statement returning PHP code
 
-umum **hubungkan** ([*array* $statement)
+public **compileSet** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan "elseif" yang mengembalikan kode PHP
+Compiles a "set" statement returning PHP code
 
-umum **hubungkan** ([*array* $statement)
+public **compileDo** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan "elseif" yang mengembalikan kode PHP
+Compiles a "do" statement returning PHP code
 
-umum **hubungkan** ([*array* $statement)
+public **compileReturn** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan "elseif" yang mengembalikan kode PHP
+Compiles a "return" statement returning PHP code
 
-umum **__construct** (*array* $statement, [*mixed* $extendsMode)
+public **compileAutoEscape** (*array* $statement, *mixed* $extendsMode)
 
-Mengkompilasi sebuah "cache" pernyataan kembali kode PHP
+Compiles a "autoescape" statement returning PHP code
 
-umum **hubungkan** ([*array* $statement)
+public *string* **compileEcho** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan 'jika' yang mengembalikan kode PHP
+Compiles a '{{' '}}' statement returning PHP code
 
-umum **hubungkan** ([*array* $statement)
+public **compileInclude** (*array* $statement)
 
-Mengkompilasi sebuah pernyataan 'jika' yang mengembalikan kode PHP
+Compiles a 'include' statement returning PHP code
 
-umum **__construct** (*array* $statement, [*mixed* $extendsMode)
+public **compileMacro** (*array* $statement, *mixed* $extendsMode)
 
-Mengkompilasi Macro
+Compiles macros
 
-umum *string* **compileCall** (*array* $statement, *boolean* $extendsMode)
+public *string* **compileCall** (*array* $statement, *boolean* $extendsMode)
 
-Kompilasi panggilan ke makro
+Compiles calls to macros
 
-umum **__construct** (array $statements, [mixed $extendsMode])
+final protected **_statementList** (*array* $statements, [*mixed* $extendsMode])
 
-Melacak daftar pernyataan yang menyusun masing-masing simpulnya
+Traverses a statement list compiling each of its nodes
 
-terlindung **_ukuran** (*campuran* $viewCode, *campuran* $extendsMode])
+protected **_compileSource** (*mixed* $viewCode, [*mixed* $extendsMode])
 
-Mengkompilasi kode sumber Volt kembali versi polos PHP
+Compiles a Volt source code returning a PHP plain version
 
-umum **tableExists** (*mixed* $viewCode, [*mixed* $extendsMode])
+public **compileString** (*mixed* $viewCode, [*mixed* $extendsMode])
 
-Mengkompilasi template ke dalam sebuah string
+Compiles a template into a string
 
 ```php
-<? php
+<?php
 
-echo $compiler -> compileString ('{{"hello world"}}');
+echo $compiler->compileString('{{ "hello world" }}');
 
 ```
 
-umum *string* | *array* **compileFile** (*tali* $path, *tali* $compiledPath, [*boolean* $extendsMode])
+public *string* | *array* **compileFile** (*string* $path, *string* $compiledPath, [*boolean* $extendsMode])
 
-Kompilasi template ke file yang memaksa jalur tujuan
+Compiles a template into a file forcing the destination path
 
 ```php
 <?php
@@ -193,9 +193,9 @@ $compiler->compile("views/layouts/main.volt", "views/layouts/main.volt.php");
 
 ```
 
-umum **tableExists** (*mixed* $templatePath, [*mixed* $extendsMode])
+public **compile** (*mixed* $templatePath, [*mixed* $extendsMode])
 
-Kompilasi template ke dalam file yang menerapkan opsi kompilator Metode ini tidak mengembalikan jalur yang dikompilasi jika template tidak dikompilasi
+Compiles a template into a file applying the compiler options This method does not return the compiled path if the template was not compiled
 
 ```php
 <?php
@@ -206,17 +206,17 @@ require $compiler->getCompiledTemplatePath();
 
 ```
 
-public **dapatkantargetpath** ()
+public **getTemplatePath** ()
 
-Mengembalikan jalur yang saat ini sedang dikompilasi
+Returns the path that is currently being compiled
 
-publik **mendapatkancompiler** ()
+public **getCompiledTemplatePath** ()
 
-Kembali jalan ke template terkompilasi terakhir
+Returns the path to the last compiled template
 
-public *array* **baca** (*string* $viewCode)
+public *array* **parse** (*string* $viewCode)
 
-Mengurai pernyataan Phql yang mengembalikan representasi menengah (Ir
+Parses a Volt template returning its intermediate representation
 
 ```php
 <?php
@@ -227,6 +227,6 @@ print_r(
 
 ```
 
-dilindungi **setSource** (*campuran* $path)
+protected **getFinalPath** (*mixed* $path)
 
-Mendapatkan jalan terakhir dengan MELIHAT
+Gets the final path with VIEW
