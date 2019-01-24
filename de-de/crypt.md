@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# Verschlüsselung/Entschlüsselung
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://www.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -145,11 +145,11 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## Verschlüsselungsoptionen
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                           |
+| Name   | Beschreibung                                                                                                                                                          |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -191,7 +191,7 @@ var_dump($algorithms);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Base64-Unterstützung
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://www.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -214,7 +214,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## Einrichten eines Verschlüsselungs-Service
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -270,8 +270,8 @@ class SecretsController extends Controller
 ## Links
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-* [Introduction to Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
+* [Was ist Blockchiffre](https://en.wikipedia.org/wiki/Block_cipher)
+* [Einführung zu Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
 * [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
