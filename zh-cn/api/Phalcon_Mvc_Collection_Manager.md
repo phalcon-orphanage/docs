@@ -50,7 +50,7 @@ Returns the DependencyInjector container
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** ()
 
