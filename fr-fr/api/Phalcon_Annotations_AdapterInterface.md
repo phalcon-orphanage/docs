@@ -6,36 +6,36 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
 
-This interface must be implemented by adapters in Phalcon\Annotations
+Cette interface doit être implémentée par les cartes Phalcon\Annotations
 
-## Methods
+## Méthodes
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+Définit le parser pour les annotations
 
 abstract public **getReader** ()
 
-Returns the annotation reader
+Renvoie le lecteur de l’annotation
 
 abstract public **get** (*string|object* $className)
 
-Parses or retrieves all the annotations found in a class
+Analyse ou récupère toutes les annotations trouvées dans une classe
 
 abstract public **getMethods** (*string* $className)
 
-Returns the annotations found in all the class methods
+Retourne les annotations retrouve dans toutes les méthodes de la classe
 
 abstract public **getMethod** (*string* $className, *string* $methodName)
 
-Returns the annotations found in a specific method
+Retourne les annotations trouvées dans une méthode spécifique
 
 abstract public **getProperties** (*string* $className)
 
-Returns the annotations found in all the class methods
+Retourne les annotations retrouve dans toutes les méthodes de la classe
 
 abstract public **getProperty** (*string* $className, *string* $propertyName)
 
-Returns the annotations found in a specific property
+Retourne les annotations trouve dans une propriété spécifique
