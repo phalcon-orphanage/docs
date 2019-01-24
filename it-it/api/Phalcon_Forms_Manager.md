@@ -6,9 +6,9 @@ title: 'Phalcon\Forms\Manager'
 ---
 # Class **Phalcon\Forms\Manager**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
-## Metodi
+## Methods
 
 public **create** (*string* $name, [*object* $entity])
 
