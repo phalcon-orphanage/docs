@@ -10,13 +10,13 @@ title: 'Phalcon\Validation'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\ValidationInterface](Phalcon_ValidationInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation.zep)
 
-Memungkinkan untuk memvalidasi data menggunakan kustom atau built-in validator
+Allows to validate data using custom or built-in validators
 
-## Metode
+## Methods
 
-publik **mendapatkan Data** ()
+public **getData** ()
 
 ...
 
@@ -30,7 +30,7 @@ Phalcon\Validation constructor
 
 public [Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) **validate** ([*array* | *object* $data], [*object* $entity])
 
-Satu set data sesuai dengan seperangkat aturan validasi
+Validate a set of data according to a set of rules
 
 public **add** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
@@ -42,39 +42,39 @@ Alias of `add` method
 
 public **rules** (*mixed* $field, *array* $validators)
 
-Menambah validator bidang
+Adds the validators to a field
 
 public [Phalcon\Validation](Phalcon_Validation) **setFilters** (*string* $field, *array* | *string* $filters)
 
-Menambahkan filter ke bidang
+Adds filters to the field
 
 public *mixed* **getFilters** ([*string* $field])
 
-Mengembalikan semua filter atau satu tertentu
+Returns all the filters or a specific one
 
 public **getValidators** ()
 
-Kembali validator yang ditambahkan ke validasi
+Returns the validators added to the validation
 
 public **setEntity** (*object* $entity)
 
-Set entitas terikat
+Sets the bound entity
 
 public *object* **getEntity** ()
 
-Set entitas terikat
+Returns the bound entity
 
 public **setDefaultMessages** ([*array* $messages])
 
-Menambahkan pesan default validator
+Adds default messages to validators
 
 public **getDefaultMessage** (*mixed* $type)
 
-Mendapatkan pesan default untuk jenis validator
+Get default message for validator type
 
 public **getMessages** ()
 
-Kembali validator terdaftar
+Returns the registered validators
 
 public **setLabels** (*array* $labels)
 
@@ -82,40 +82,40 @@ Adds labels for fields
 
 public *string* **getLabel** (*string* $field)
 
-Mendapatkan label untuk bidang
+Get label for field
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message)
 
-Menambahkan pesan ke daftar pesan
+Appends a message to the messages list
 
 public [Phalcon\Validation](Phalcon_Validation) **bind** (*object* $entity, *array* | *object* $data)
 
-Menetapkan data ke suatu entitas entitas yang digunakan untuk memperoleh nilai validasi
+Assigns the data to an entity The entity is used to obtain the validation values
 
 public *mixed* **getValue** (*string* $field)
 
-Mendapat nilai untuk memvalidasi dalam array objek sumber data
+Gets the a value to validate in the array/object data source
 
 protected **preChecking** (*mixed* $field, [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
-Internal validasi, jika itu kembali benar, maka mengabaikan validator saat ini
+Internal validations, if it returns true, then skip the current validator
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Menyetel pengelola acara
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
