@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\Validator\Regex'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
-Allows validate if the value of a field matches a regular expression
+Επιτρέπει την επικύρωση η τιμή εάν ενός πεδίου αντιστοιχεί σε μια κανονική έκφραση
 
 ```php
 <?php
