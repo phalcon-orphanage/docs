@@ -6,15 +6,15 @@ title: 'Phalcon\Db\IndexInterface'
 ---
 # Interface **Phalcon\Db\IndexInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getName** ()
+abstrak publik **getName** ()
 
 ...
 
-abstract public **getColumns** ()
+abstrak publik **getColumns** ()
 
 ...
 
@@ -22,6 +22,6 @@ abstract public **getType** ()
 
 ...
 
-abstract public static **__set_state** (*array* $data)
+data statis statis **__set_state** (*array* $data)
 
 ...
