@@ -15,24 +15,24 @@ Phalcon Compose is a community driven boilerplate development environment for Ph
 
 <a name='dependencies'></a>
 
-## 依存関係
+## Dependencies
 
 To run this stack on your machine, you need at least: * Operating System: Windows, Linux, or OS X * [Docker Engine](https://docs.docker.com/installation/) >= 1.10.0 * [Docker Compose](https://docs.docker.com/compose/install/) >= 1.6.2
 
 <a name='services'></a>
 
-## サービス
+## Services
 
 Services included are:
 
-| サービス名         | Description                                                                                         |
+| Service name  | Description                                                                                         |
 | ------------- | --------------------------------------------------------------------------------------------------- |
-| mongo         | MongoDB サーバー コンテナ                                                                                   |
-| postgres      | PostgreSQL サーバー コンテナ                                                                                |
-| mysql         | MySQL データベースコンテナ                                                                                    |
-| phpmyadmin    | MySQL と MariaDB の web インターフェイス。                                                                     |
-| memcached     | Memcached サーバー コンテナ                                                                                 |
-| キュー           | Beanstalk キュー コンテナ                                                                                  |
+| mongo         | MongoDB server container.                                                                           |
+| postgres      | PostgreSQL server container.                                                                        |
+| mysql         | MySQL database container.                                                                           |
+| phpmyadmin    | A web interface for MySQL and MariaDB.                                                              |
+| memcached     | Memcached server container.                                                                         |
+| queue         | Beanstalk queue container.                                                                          |
 | aerospike     | Aerospike – the reliable, high performance, distributed database optimized for flash and RAM.       |
 | redis         | Redis database container.                                                                           |
 | app           | PHP 7, Apache 2 and Composer container.                                                             |
@@ -44,7 +44,7 @@ Services included are:
 
 <a name='installation-composer'></a>
 
-### Composerを使う (推奨)
+### With Composer (recommended)
 
 Using Composer, you can create a new project as follows:
 
@@ -70,7 +70,7 @@ Generating autoload files
 
 <a name='installation-git'></a>
 
-### Gitを使う
+### With Git
 
 Another way to initialize your project is with Git.
 
@@ -84,7 +84,7 @@ Add your Phalcon Application into `application` folder.
 
 <a name='configuration'></a>
 
-## 設定
+## Configuration
 
 Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as follows:
 
@@ -94,7 +94,7 @@ Add `phalcon.local` (or your preferred host name) in your `/etc/hosts` file as f
 
 <a name='usage'></a>
 
-## 使い方
+## Usage
 
 You can now build, create, start, and attach to containers to the environment for your application. To build the containers use following command inside the project root:
 
@@ -105,7 +105,7 @@ docker-compose build
 To start the application and run the containers in the background, use following command inside project root:
 
 ```bash
-# "-p my-app" パラメータを使用して、あなたの適切なプロジェクト名を使えます。
+# You can use here your prefered project name with "-p my-app" parameter
 $ docker-compose up -d
 ```
 
@@ -119,30 +119,30 @@ Now you can now launch your application in your browser visiting `https://phalco
 
 <a name='setup'></a>
 
-## 設定
+## Set up
 
 If your application uses a file cache or writes logs to files, you can set up your cache and log folders as follows:
 
 | Directory | Path             |
 | --------- | ---------------- |
 | Cache     | `/project/cache` |
-| ログ        | `/project/log`   |
+| Logs      | `/project/log`   |
 
 <a name='logs'></a>
 
-## ログ
+## Logs
 
 For most containers you can access the logs using the `docker logs <container_name>` command in your host machine.
 
 <a name='environment-variables'></a>
 
-## 環境変数
+## Environment variables
 
 You can pass multiple environment variables from an external file to a service's containers by editing the `variables.env` file.
 
 <a name='environment-variables-web'></a>
 
-### Web 環境
+### Web environment
 
 | Environment variable | Description                                         | デフォルト           |
 | -------------------- | --------------------------------------------------- | --------------- |
@@ -156,7 +156,7 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='environment-variables-phpmyadmin'></a>
 
-### phpMyAdmin 変数
+### phpMyAdmin variables
 
 | Environment variable | Description                                                                                                  | デフォルト   |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
@@ -174,16 +174,16 @@ You can pass multiple environment variables from an external file to a service's
 
 <a name='xdebug'></a>
 
-## Xdebug リモート デバッガー (PhpStorm)
+## Xdebug Remote debugger (PhpStorm)
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                            | デフォルト |
-| ---------------------------- | ------------------------------------------------------ | ----- |
-| `XDEBUG_REMOTE_HOST`         | `php.ini` の値、これは `xdebug.remote_host` (あなたのホストのIP)の設定。 |       |
-| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.              | 9000  |
-| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.         | Off   |
-| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.      | Off   |
+| Environment variable         | Description                                              | デフォルト |
+| ---------------------------- | -------------------------------------------------------- | ----- |
+| `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |       |
+| `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000  |
+| `XDEBUG_REMOTE_AUTOSTART`    | `php.ini` value for `xdebug.remote_autostart`.           | Off   |
+| `XDEBUG_REMOTE_CONNECT_BACK` | `php.ini` value for `xdebug.remote_connect_back`.        | Off   |
 
 *NOTE* You can find your local IP address as follows:
 
@@ -227,7 +227,7 @@ docker-compose up -d
 
 <a name='troubleshooting-dependencies'></a>
 
-### 依存関係の更新
+### Updating dependencies
 
 Sometimes the base images (for example `phalconphp/php-apache:ubuntu-16.04`) are updated. Phalcon Compose depends on these images. You will therefore need to update them and it is always a good thing to do so to ensure that you have the latest functionality available. The dependent containers to these images will need to be updated and rebuilt:
 
