@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\Stream'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
 
 Sends logs to a valid PHP stream
 
@@ -28,7 +28,7 @@ $logger->error("This is another error");
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** (*string* $name, [*array* $options])
 
