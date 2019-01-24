@@ -10,9 +10,9 @@ title: 'Phalcon\Image\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
-Mengisi kelas Adapter Gambar menggunakan opsi 'adaptor'
+Loads Image Adapter class using 'adapter' option
 
 ```php
 <?php
@@ -29,10 +29,10 @@ $image = Factory::load($options);
 
 ```
 
-## Metode
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
-protected static ** loadClass ** (* mixed * $namespace, * mixed * $config)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...
