@@ -8,52 +8,46 @@ title: 'Phalcon\Db\Index'
 
 *implements* [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
 
-Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index
+Memungkinkan untuk menentukan indeks yang akan digunakan pada tabel. Indeks adalah cara yang umum untuk meningkatkan kinerja database. Sebuah indeks memungkinkan server database untuk menemukan dan mengambil baris tertentu jauh lebih cepat daripada yang bisa dilakukan tanpa sebuah indeks
 
 ```php
-<?php
+& lt; ? php 
 
-// Define new unique index
-$index_unique = new \Phalcon\Db\Index(
-    'column_UNIQUE',
-    [
-        'column',
-        'column'
-    ],
-    'UNIQUE'
-);
-
-// Define new primary index
-$index_primary = new \Phalcon\Db\Index(
-    'PRIMARY',
-    [
-        'column'
-    ]
-);
-
-// Add index to existing table
-$connection->addIndex("robots", null, $index_unique);
-$connection->addIndex("robots", null, $index_primary);
+// Tentukan indeks unik baru
+ $ index_unique = new \ Phalcon \ Db \ Index (
+     'column_UNIQUE',
+     [
+         'column',
+         'column'
+     ],
+     'UNIQUE'); // Tentukan indeks utama baru
+ $ index_primary = new \ Phalcon \ Db \ Index (
+     'PRIMARY',
+     [
+         'column'
+     ]); // Tambahkan indeks ke tabel yang ada
+ $ connection - & gt; addIndex ("robot", null, $ index_unique );
+$ koneksi - & gt; addIndex ("robot", null, $ index_primary );
 
 ```
 
-## Methods
+## Metode
 
-public **getName** ()
+publik **getNama** ()
 
-Index name
+Nama indeks
 
-public **getColumns** ()
+publik **getColumns** ()
 
-Index columns
+Kolom indeks
 
-public **getType** ()
+publik **berhenti** ()
 
-Index type
+Jenis indeks
 
-public **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
+publik **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
 
 Phalcon\Db\Index constructor
 
