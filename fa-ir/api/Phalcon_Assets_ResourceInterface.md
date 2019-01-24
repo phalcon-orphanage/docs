@@ -6,9 +6,9 @@ title: 'Phalcon\Assets\ResourceInterface'
 ---
 # Interface **Phalcon\Assets\ResourceInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **setType** (*mixed* $type)
 
