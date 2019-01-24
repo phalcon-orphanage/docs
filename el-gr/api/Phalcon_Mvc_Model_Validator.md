@@ -38,7 +38,7 @@ Returns an option
 
 public **isSetOption** (*mixed* $option)
 
-Ελέγξτε αν έχει οριστεί επιλογή μια στις επιλογές επικύρωσης
+Check whether an option has been defined in the validator options
 
 abstract public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record) inherited from [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
