@@ -6,26 +6,26 @@ title: 'Phalcon\FlashInterface'
 ---
 # Interface **Phalcon\FlashInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
 
-## Metode
+## Methods
 
-abstrak umum **kerusakan** (*campuran* $message)
-
-...
-
-abstrak umum **pemberitahuan** (*campuran* $message)
+abstract public **error** (*mixed* $message)
 
 ...
 
-abstrak umum **berhasil** (*campuran* $message)
+abstract public **notice** (*mixed* $message)
 
 ...
 
-abstrak umum **peringatan** (*campuran* $message)
+abstract public **success** (*mixed* $message)
 
 ...
 
-abstrak umum **pesan** (*campuran* $type, *campuran* $message)
+abstract public **warning** (*mixed* $message)
+
+...
+
+abstract public **message** (*mixed* $type, *mixed* $message)
 
 ...
