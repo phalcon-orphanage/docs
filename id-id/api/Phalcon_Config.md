@@ -8,28 +8,28 @@ title: 'Phalcon\Config'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. Ini menyediakan properti bertingkat berbasis user interface untuk mengakses data konfigurasi ini di dalamnya kode aplikasi.
+Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
 ```php
-<? php
+<?php
 
-$config = (\Phalcon\Config) baru
-[
-"database" = > [
-"adaptor" = > "Mysql",
-"host" = > "localhost",
-"username" = > "scott",
-"password" = > "cheetah",
-"dbname" = > "test_db",
-],
-"phalcon" = > [
-"controllersDir" = > "... /App/controller / ",
-"modelsDir" = > "... /App/model / ",
-"viewsDir" = > "... /App/views / ",
-],
-]
+$config = new \Phalcon\Config(
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
 );
 
 ```
@@ -38,28 +38,28 @@ $config = (\Phalcon\Config) baru
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Metode
+## Methods
 
-umum **__construct** ([*array* $arrayConfig])
+public **__construct** ([*array* $arrayConfig])
 
 Phalcon\Config constructor
 
 public **offsetExists** (*mixed* $index)
 
-Memungkinkan untuk memeriksa apakah atribut didefinisikan menggunakan array-syntax
+Allows to check whether an attribute is defined using the array-syntax
 
 ```php
-<? php
+<?php
 
-var_dump)
-isset($config["database"])
+var_dump(
+    isset($config["database"])
 );
 
 ```
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
 
-Mengembalikan nilai dari konfigurasi saat ini menggunakan jalur yang dipisahkan titik.
+Returns a value from current config using a dot separated path.
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue])
 
-Mendapatkan atribut dari konfigurasi, jika atribut tidak didefinisikan mengembalikan null Jika nilainya benar-benar null atau tidak didefinisikan, nilai default akan digunakan sebagai gantinya
+Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index)
 
-Mendapat atribut menggunakan sintaks-array
+Gets an attribute using the array-syntax
 
 ```php
 <?php
@@ -94,7 +94,7 @@ print_r(
 
 public **offsetSet** (*mixed* $index, *mixed* $value)
 
-Menetapkan atribut menggunakan sintaks-array
+Sets an attribute using the array-syntax
 
 ```php
 <?php
@@ -118,7 +118,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config)
 
-Menggabungkan konfigurasi menjadi yang sekarang
+Merges a configuration into the current one
 
 ```php
 <?php
@@ -135,9 +135,9 @@ $globalConfig->merge($appConfig);
 
 ```
 
-publik **kunci** ()
+public **toArray** ()
 
-Mengonversi objek secara rekursif ke sebuah array
+Converts recursively the object to an array
 
 ```php
 <?php
@@ -148,9 +148,9 @@ print_r(
 
 ```
 
-publik **menghitung**()
+public **count** ()
 
-Mengembalikan jumlah properti yang ditetapkan dalam konfigurasi
+Returns the count of properties set in the config
 
 ```php
 <?php
@@ -174,12 +174,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter])
 
-Mengatur pembatas jalur default
+Sets the default path delimiter
 
 public static **getPathDelimiter** ()
 
-Mendapatkan pembatas jalur default
+Gets the default path delimiter
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
-Metode Helper untuk menggabungkan konfigurasi (contoh nested forwarding nested)
+Helper method for merge configs (forwarding nested config instance)
