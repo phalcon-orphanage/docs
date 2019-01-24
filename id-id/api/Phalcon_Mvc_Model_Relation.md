@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Relation'
 
 *implements* [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
 
-Kelas ini mewakili hubungan antara dua model
+This class represents a relationship between two models
 
 ## Constants
 
@@ -30,7 +30,7 @@ Kelas ini mewakili hubungan antara dua model
 
 *integer* **ACTION_CASCADE**
 
-## Metode
+## Methods
 
 public **__construct** (*int* $type, *string* $referencedModel, *string* | *array* $fields, *string* | *array* $referencedFields, [*array* $options])
 
@@ -38,60 +38,60 @@ Phalcon\Mvc\Model\Relation constructor
 
 public **setIntermediateRelation** (*string* | *array* $intermediateFields, *string* $intermediateModel, *string* $intermediateReferencedFields)
 
-Menetapkan data model perantara untuk memiliki hubungan-*-melalui
+Sets the intermediate model data for has-*-through relations
 
-publik **berhenti** ()
+public **getType** ()
 
-Mengembalikan tipe relasi
+Returns the relation type
 
 public **getReferencedModel** ()
 
-Mengembalikan model yang direferensikan
+Returns the referenced model
 
 public *string* | *array* **getFields** ()
 
-Mengembalikan field
+Returns the fields
 
 public *string* | *array* **getReferencedFields** ()
 
-Mengembalikan field yang direferensikan
+Returns the referenced fields
 
 public *string* | *array* **getOptions** ()
 
-Mengembalikan pilihannya
+Returns the options
 
 public **getOption** (*mixed* $name)
 
-Mengembalikan opsi dengan nama yang ditentukan Jika pilihan tidak ada null dikembalikan
+Returns an option by the specified name If the option doesn't exist null is returned
 
 public **isForeignKey** ()
 
-Periksa apakah hubungan tersebut bertindak sebagai foreign key
+Check whether the relation act as a foreign key
 
 public *string* | *array* **getForeignKey** ()
 
-Mengembalikan konfigurasi kunci asing
+Returns the foreign key configuration
 
-publik *array* **MendapatkanParams** ()
+public *array* **getParams** ()
 
-Mengembalikan parameter yang harus selalu digunakan saat record terkait diperoleh
+Returns parameters that must be always used when the related records are obtained
 
 public **isThrough** ()
 
-Periksa apakah hubungan itu adalah hubungan 'banyak-ke-banyak' atau tidak
+Check whether the relation is a 'many-to-many' relation or not
 
 public **isReusable** ()
 
-Periksa apakah catatan yang dikembalikan dengan mendapatkan milik-ke/has-banyak secara implisit di-cache selama permintaan saat ini
+Check if records returned by getting belongs-to/has-many are implicitly cached during the current request
 
 public *string* | *array* **getIntermediateFields** ()
 
-Mendapat bidang perantara untuk memiliki hubungan-*-melalui
+Gets the intermediate fields for has-*-through relations
 
 public **getIntermediateModel** ()
 
-Mendapat model perantara untuk memiliki hubungan-*-through
+Gets the intermediate model for has-*-through relations
 
 public *string* | *array* **getIntermediateReferencedFields** ()
 
-Miliki bidang yang dirujuk menengah untuk memiliki hubungan-*-melalui
+Gets the intermediate referenced fields for has-*-through relations
