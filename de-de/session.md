@@ -83,15 +83,15 @@ class UserController extends Controller
 {
     public function indexAction()
     {
-        // Set a session variable
+        // Setzt eine session variable
         $this->session->set('user-name', 'Michael');
     }
 
     public function welcomeAction()
     {
-        // Check if the variable is defined
+        // Prüfen, ob die variable definiert ist
         if ($this->session->has('user-name')) {
-            // Retrieve its value
+            // Den Wert holen
             $name = $this->session->get('user-name');
         }
     }
@@ -114,13 +114,13 @@ class UserController extends Controller
 {
     public function removeAction()
     {
-        // Remove a session variable
+        // Eine session variable entfernen
         $this->session->remove('user-name');
     }
 
     public function logoutAction()
     {
-        // Destroy the whole session
+        // Die komplette session löschen
         $this->session->destroy();
     }
 }
@@ -137,11 +137,11 @@ Sometimes a user can use the same application twice, on the same server, in the 
 
 use Phalcon\Session\Adapter\Files as Session;
 
-// Isolating the session data
+// Session Daten isolieren
 $di->set(
     'session',
     function () {
-        // All variables created will prefixed with 'my-app-1'
+        // Alle erzeugten Variablen bekommen den Präfix 'my-app-1'
         $session = new Session(
             [
                 'uniqueId' => 'my-app-1',
@@ -230,7 +230,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Implementierung von eigenen Adaptern
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
