@@ -6,27 +6,27 @@ title: 'Phalcon\Di\ServiceInterface'
 ---
 # Interface **Phalcon\Di\ServiceInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **getName** ()
-
-...
-
-abstrak umum**setLabel** (*campuran* $shared)
+abstract public **getName** ()
 
 ...
 
-abstrak umum**IsSteded </ 0> ()</p> 
+abstract public **setShared** (*mixed* $shared)
 
 ...
 
-abstrak umum **setDefinition** (*campuran* $definition)
+abstract public **isShared** ()
 
 ...
 
-abstrak umum**getDescription** ()
+abstract public **setDefinition** (*mixed* $definition)
+
+...
+
+abstract public **getDefinition** ()
 
 ...
 
@@ -34,10 +34,10 @@ abstract public **resolve** ([*mixed* $parameters], [[Phalcon\DiInterface](Phalc
 
 ...
 
-abstraksi umum**setParameter** (*mixed* $position, *array* $parameter)
+abstract public **setParameter** (*mixed* $position, *array* $parameter)
 
 ...
 
-abstraksi umum static **__set_state** (*array* $attributes)
+abstract public static **__set_state** (*array* $attributes)
 
 ...
