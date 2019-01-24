@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Identical'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/identical.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/identical.zep)
 
 Checks if a value is identical to other
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Methoden
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
