@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Model\Validator\Email'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/email.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/email.zep)
 
-Allows to validate if email fields has correct values
+Επιτρέπει την επικύρωση εάν τα ηλεκτρονικού πεδία ταχυδρομείου έχουν τις σωστές τιμές
 
 This validator is only for use with Phalcon\Mvc\Collection. If you are using Phalcon\Mvc\Model, please use the validators provided by Phalcon\Validation.
 
@@ -69,4 +69,4 @@ Returns an option
 
 public **isSetOption** (*mixed* $option) inherited from [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)
 
-Check whether an option has been defined in the validator options
+Ελέγξτε αν έχει οριστεί επιλογή μια στις επιλογές επικύρωσης
