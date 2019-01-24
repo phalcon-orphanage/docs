@@ -6,67 +6,67 @@ title: 'Phalcon\Db\AdapterInterface'
 ---
 # Interface **Phalcon\Db\AdapterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
-
-...
-
-abstract public **fetchAll** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
+abstrak public **fetchOne** (*campuran* $sqlQuery, [*mixed* $fetchMode], [*campuran* $placeholders])
 
 ...
 
-abstract public **insert** (*mixed* $table, *array* $values, [*mixed* $fields], [*mixed* $dataTypes])
+abstrak publik **fetchAll** (*campuran* $sqlQuery, [*mixed* $fetchMode], [*campuran* $placeholders])
 
 ...
 
-abstract public **update** (*mixed* $table, *mixed* $fields, *mixed* $values, [*mixed* $whereCondition], [*mixed* $dataTypes])
+abstrak publik **sisipkan** (*campuran* $table, *array* $values, [*mixed* $fields], [*mixed* $dataTypes])
 
 ...
 
-abstract public **delete** (*mixed* $table, [*mixed* $whereCondition], [*mixed* $placeholders], [*mixed* $dataTypes])
+abstrak publik **perbarui** (*campuran* $table, *campuran* $fields, *mixed* $values, [*mixed* $whereCondition], [*mixed* $dataTypes])
 
 ...
 
-abstract public **getColumnList** (*mixed* $columnList)
+abstrak publik **hapus** (*mixed* $table, [*mixed* $whereCondition], [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
-abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
+publik abstrak **getColumnList** (*campuran* $columnList)
 
 ...
 
-abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
+abstrak public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
 ...
 
-abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
+abstrak publik **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
-abstract public **forUpdate** (*mixed* $sqlQuery)
+abstrak publik **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 ...
 
-abstract public **sharedLock** (*mixed* $sqlQuery)
+abstrak publik **forUpdate** (*campuran* $sqlQuery)
 
 ...
 
-abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
+abstrak publik **sharedLock** (*campuran* $sqlQuery)
 
 ...
 
-abstract public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
+abstrak publik **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 ...
 
-abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
+abstrak publik **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
-abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
+abstrak publik **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
+
+...
+
+abstrak publik **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
@@ -86,7 +86,7 @@ abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\
 
 ...
 
-abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
+abstrak umum **dropIndex** (*campuran* $tableName, *campuran* $schemaName, *campuran* $indexName)
 
 ...
 
@@ -102,7 +102,7 @@ abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
+abstrak umum **dropForeignKey** (*campuran* $tableName, *campuran* $schemaName, *campuran* $referenceName)
 
 ...
 
@@ -110,11 +110,11 @@ abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db
 
 ...
 
-abstract public **listTables** ([*mixed* $schemaName])
+abstrak umum **listTables** ([*campuran* $schemaName])
 
 ...
 
-abstract public **listViews** ([*mixed* $schemaName])
+abstrak umum **listViews** ([*campuran* $schemaName])
 
 ...
 
@@ -170,11 +170,11 @@ abstract public **affectedRows** ()
 
 ...
 
-abstract public **close** ()
+abstrak umum **dekat** ()
 
 ...
 
-abstract public **escapeIdentifier** (*mixed* $identifier)
+abstrak umum **escapeIdentifier** (*campuran* $identifier)
 
 ...
 
@@ -182,7 +182,7 @@ abstract public **escapeString** (*mixed* $str)
 
 ...
 
-abstract public **lastInsertId** ([*mixed* $sequenceName])
+abstrak umum **lastInsertId** ([*campuran* $sequenceName])
 
 ...
 
