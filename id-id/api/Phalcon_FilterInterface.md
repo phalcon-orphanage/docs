@@ -6,18 +6,18 @@ title: 'Phalcon\FilterInterface'
 ---
 # Interface **Phalcon\FilterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **add** (*mixed* $name, *mixed* $handler)
-
-...
-
-abstract public **sanitize** (*mixed* $value, *mixed* $filters)
+abstrak umum **addRole** (*campuran* $name, [*campuran* $handler)
 
 ...
 
-abstract public **getFilters** ()
+abstrak public **limit** (*mixed* $value, *mixed* $filters)
+
+...
+
+abstrak publik **dapatFilter** ()
 
 ...
