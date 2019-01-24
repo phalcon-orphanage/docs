@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\QueryBuilder'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
 Pagination using a PHQL query builder as source of data
 
@@ -52,7 +52,7 @@ Get query builder object
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Επιστρέφει μια από φέτα το σύνολο αποτελεσμάτων για να εμφανιστεί στη σελίδα
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
