@@ -8,9 +8,9 @@ title: 'Phalcon\Di\Service'
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
-Mewakili individual layanan dalam wadah Layanan
+Represents individually a service in the services container
 
 ```php
 <?php
@@ -23,21 +23,21 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-## Metode
+## Methods
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama layanan
+Returns the service's name
 
 public **setShared** (*mixed* $shared)
 
-Menyetel jika layanan dibagikan atau tidak
+Sets if the service is shared or not
 
 public **isShared** ()
 
-Periksa apakah layanan dibagikan atau tidak
+Check whether the service is shared or not
 
 public **setSharedInstance** (*mixed* $sharedInstance)
 
@@ -49,24 +49,24 @@ Set the service definition
 
 public *mixed* **getDefinition** ()
 
-Mengembalikan definisi layanan
+Returns the service definition
 
 public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
-Menyelesaikan layanan
+Resolves the service
 
 public **setParameter** (*mixed* $position, *array* $parameter)
 
-Mengubah parameter dalam definisi tanpa menyelesaikan layanan
+Changes a parameter in the definition without resolve the service
 
 public *array* **getParameter** (*int* $position)
 
-Mengembalikan parameter pada posisi tertentu
+Returns a parameter in a specific position
 
 public **isResolved** ()
 
-Kembali benar jika layanan teratasi
+Returns true if the service was resolved
 
 public static **__set_state** (*array* $attributes)
 
-Kembalikan keadaan internal layanan
+Restore the internal state of a service
