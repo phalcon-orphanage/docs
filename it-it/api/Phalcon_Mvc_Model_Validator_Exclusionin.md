@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Exclusionin'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/exclusionin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/exclusionin.zep)
 
 Phalcon\Mvc\Model\Validator\ExclusionIn
 
@@ -44,7 +44,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-## Metodi
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
