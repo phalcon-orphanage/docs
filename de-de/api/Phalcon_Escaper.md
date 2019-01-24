@@ -8,7 +8,7 @@ title: 'Phalcon\Escaper'
 
 *implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 
@@ -25,11 +25,11 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Methoden
+## Methods
 
 public **setEncoding** (*mixed* $encoding)
 
-Setzt die Codierung, welche vom Escaper verwendet werden soll
+Sets the encoding to be used by the escaper
 
 ```php
 <?php
@@ -40,11 +40,11 @@ $escaper->setEncoding("utf-8");
 
 public **getEncoding** ()
 
-Gibt die interne Codierung zurück, welche vom Escaper verwendet wird
+Returns the internal encoding used by the escaper
 
 public **setHtmlQuoteType** (*mixed* $quoteType)
 
-Setzt den HTML-Zitierungstyp Typ für Htmlspecialchars
+Sets the HTML quoting type for htmlspecialchars
 
 ```php
 <?php
@@ -55,7 +55,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 public **setDoubleEncode** (*mixed* $doubleEncode)
 
-Legt fest, ob der Escaper doppelt encodieren soll
+Sets the double_encode to be used by the escaper
 
 ```php
 <?php
@@ -66,11 +66,11 @@ $escaper->setDoubleEncode(false);
 
 final public **detectEncoding** (*mixed* $str)
 
-Erkennt die Zeichencodierung einer Zeichenfolge, welche vom encoder behandelt werden soll Sonderbehandlung für chr(172) und chr(128), chr(159), die nicht durch mb_detect_encoding() nachgewiesen werden
+Detect the character encoding of a string to be handled by an encoder Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
 final public **normalizeEncoding** (*mixed* $str)
 
-Dienstprogramm zum normalisieren einer Zeichenfolge Kodierung nach UTF-32.
+Utility to normalize a string's encoding to UTF-32.
 
 public **escapeHtml** (*mixed* $text)
 
@@ -78,15 +78,15 @@ Escapes a HTML string. Internally uses htmlspecialchars
 
 public **escapeHtmlAttr** (*mixed* $attribute)
 
-Maskiert einen HTML Eigenschafts-Zeichenfolge
+Escapes a HTML attribute string
 
 public **escapeCss** (*mixed* $css)
 
-Maskiert CSS-Zeichenfolgen indem nicht-alphanumerischen Zeichen ersetzen durch ihre hexadezimale Escapezeichen Darstellung ersetzt werden
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 public **escapeJs** (*mixed* $js)
 
-Maskiert Javascript-Zeichenfolgen indem nicht-alphanumerischen Zeichen ersetzen durch ihre hexadezimale Escapezeichen Darstellung ersetzt werden
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 public **escapeUrl** (*mixed* $url)
 
