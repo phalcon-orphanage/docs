@@ -6,9 +6,9 @@ title: 'Phalcon\Translate\InterpolatorInterface'
 ---
 # Interface **Phalcon\Translate\InterpolatorInterface**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
 
-## Méthodes
+## Methods
 
 abstract public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
