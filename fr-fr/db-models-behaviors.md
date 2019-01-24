@@ -47,10 +47,10 @@ class Users extends Model
 
 The following built-in behaviors are provided by the framework:
 
-| Name          | Description                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------- |
-| Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
-| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| Name          | Description                                                                                                                            |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Timestampable | Permet de mettre à jour automatiquement un modèle attribut de l'économie de l'datetime lorsqu'un enregistrement est créé ou mis à jour |
+| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column                              |
 
 <a name='timestampable'></a>
 
