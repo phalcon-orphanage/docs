@@ -6,7 +6,7 @@ title: 'Phalcon\Security\Random'
 ---
 # Class **Phalcon\Security\Random**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 Secure random number generator class.
 
@@ -81,7 +81,7 @@ This class partially borrows SecureRandom library from Ruby
 
 public **bytes** ([*mixed* $len])
 
-Generates a random binary string The `Random::bytes` method returns a string and accepts as input an int representing the length in bytes to be returned. If $len is not specified, 16 is assumed. It may be larger in future. The result may contain any byte: "x00" - "xFF".
+Generates a random binary string The `Random::bytes` method returns a string and accepts as input an int representing the length in bytes to be returned. If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. The result may contain any byte: "x00" - "xFF".
 
 ```php
 <?php
@@ -96,7 +96,7 @@ var_dump(bin2hex($bytes));
 
 public **hex** ([*mixed* $len])
 
-Generates a random hex string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len.
+Generates a random hex string If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. The length of the result string is usually greater of $len.
 
 ```php
 <?php
@@ -109,7 +109,7 @@ echo $random->hex(10); // a29f470508d5ccb8e289
 
 public **base58** ([*mixed* $len])
 
-Generates a random base58 string If $len is not specified, 16 is assumed. It may be larger in future. The result may contain alphanumeric characters except 0, O, I and l. It is similar to `Phalcon\Security\Random:base64` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
+Generates a random base58 string If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. Το αποτέλεσμα μπορεί να αλφαριθμητικούς περιέχει χαρακτήρες εκτός από τα 0, O, I και l. It is similar to `Phalcon\Security\Random:base64` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
 
 ```php
 <?php
@@ -122,7 +122,7 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 public **base62** ([*mixed* $len])
 
-Generates a random base62 string If $len is not specified, 16 is assumed. It may be larger in future. It is similar to `Phalcon\Security\Random:base58` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
+Generates a random base62 string If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. It is similar to `Phalcon\Security\Random:base58` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
 
 ```php
 <?php
@@ -135,7 +135,7 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 public **base64** ([*mixed* $len])
 
-Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
+Generates a random base64 string If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. The length of the result string is usually greater of $len. Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
 
 ```php
 <?php
@@ -148,7 +148,7 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 public **base64Safe** ([*mixed* $len], [*mixed* $padding])
 
-Generates a random URL-safe base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. By default, padding is not generated because "=" may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, "-" and "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.
+Generates a random URL-safe base64 string If $len is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον. The length of the result string is usually greater of $len. By default, padding is not generated because "=" may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, "-" and "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.
 
 ```php
 <?php
@@ -187,4 +187,4 @@ echo $random->number(16); // 8
 
 protected **base** (*mixed* $alphabet, *mixed* $base, [*mixed* $n])
 
-Generates a random string based on the number ($base) of characters ($alphabet). If $n is not specified, 16 is assumed. It may be larger in future.
+Generates a random string based on the number ($base) of characters ($alphabet). If $n is not specified, 16 is assumed. Μπορεί να μεγαλύτερο είναι στο μέλλον.
