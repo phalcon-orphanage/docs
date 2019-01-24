@@ -6,10 +6,10 @@ title: 'Phalcon\Mvc\Model\ResultInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **setDirtyState**(*dicampur* $dirtyState)
+abstract public **setDirtyState** (*mixed* $dirtyState)
 
 ...
