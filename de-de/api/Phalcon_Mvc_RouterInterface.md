@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\RouterInterface'
 ---
 # Interface **Phalcon\Mvc\RouterInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **setDefaultModule** (*mixed* $moduleName)
 
