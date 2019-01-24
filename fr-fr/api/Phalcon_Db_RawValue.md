@@ -6,7 +6,7 @@ title: 'Phalcon\Db\RawValue'
 ---
 # Class **Phalcon\Db\RawValue**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
 This class allows to insert/update raw data without quoting or formatting.
 
@@ -24,7 +24,7 @@ $subscriber->save();
 
 ```
 
-## Methods
+## Méthodes
 
 public **getValue** ()
 
