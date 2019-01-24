@@ -6,23 +6,23 @@ title: 'Phalcon\Mvc\RouterInterface'
 ---
 # Interface **Phalcon\Mvc\RouterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **setDefaultModule** (*campuran* $moduleName)
-
-...
-
-abstrak umum **setDefaultController** (*campuran* $controllerName)
+abstract public **setDefaultModule** (*mixed* $moduleName)
 
 ...
 
-abstrak publik **setDefaultAction** (*campuran* $actionName)
+abstract public **setDefaultController** (*mixed* $controllerName)
 
 ...
 
-abstrak publik **setDefaults** (*array* $defaults)
+abstract public **setDefaultAction** (*mixed* $actionName)
+
+...
+
+abstract public **setDefaults** (*array* $defaults)
 
 ...
 
@@ -38,7 +38,7 @@ abstract public **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstrak publik **tambahkanTulisan** (*campuran* $pattern, [*campuran* $paths])
+abstract public **addPost** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
@@ -46,15 +46,15 @@ abstract public **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstrak publik **menambahkanTambalan** (*campuran* $pattern, [*campuran* $paths])
+abstract public **addPatch** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstrak publik **menambahkanMenghapus** (*campuran* $pattern, [*campuran* $paths])
+abstract public **addDelete** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstrak publik **menambahkanPilihan** (*campuran* $pattern, [*campuran* $paths])
+abstract public **addOptions** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
@@ -78,11 +78,11 @@ abstract public **mount** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Route
 
 ...
 
-abstrak public **clear** ()
+abstract public **clear** ()
 
 ...
 
-abstrak umum **getRoleName/0> ()</p> 
+abstract public **getModuleName** ()
 
 ...
 
@@ -90,38 +90,38 @@ abstract public **getNamespaceName** ()
 
 ...
 
-abstrak (umum **getControllerName**)
+abstract public **getControllerName** ()
 
 ...
 
-abstrak publik **getSchemaName** ()
+abstract public **getActionName** ()
 
 ...
 
-abstrak publik **terakhirmendapatkankunci**()
+abstract public **getParams** ()
 
 ...
 
-abstrak umum **getScheme** ()
+abstract public **getMatchedRoute** ()
 
 ...
 
-abstrak publik **terakhirmendapatkankunci**()
+abstract public **getMatches** ()
 
 ...
 
-abstrak publik **getMethod** ()
+abstract public **wasMatched** ()
 
 ...
 
-publik abstrak **getFrontend** ()
+abstract public **getRoutes** ()
 
 ...
 
-publik abstrak **getListeners** (*campuran* $id)
+abstract public **getRouteById** (*mixed* $id)
 
 ...
 
-abstract umum$name$name$name$name **setName** (*mixed* $nama)
+abstract public **getRouteByName** (*mixed* $name)
 
 ...
