@@ -10,11 +10,11 @@ title: 'Phalcon\Config\Adapter\Ini'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
 
 Reads ini files and converts them to Phalcon\Config objects.
 
-Given the next configuration file:
+Dengan file konfigurasi berikutnya:
 
 ```ini
 <?php
@@ -33,7 +33,7 @@ viewsDir = "../app/views/"
 
 ```
 
-You can read it as follows:
+Anda bisa membacakan sebagai berikut:
 
 ```php
 <?php
@@ -45,7 +45,7 @@ echo $config->database->username;
 
 ```
 
-PHP constants may also be parsed in the ini file, so if you define a constant as an ini value before calling the constructor, the constant's value will be integrated into the results. To use it this way you must specify the optional second parameter as INI_SCANNER_NORMAL when calling the constructor:
+Konstanta PHP juga dapat diuraikan dalam file ini, jadi jika Anda mendefinisikan sebuah konstanta Sebagai nilai ini sebelum memanggil konstruktor, nilai konstannya adalah diintegrasikan ke dalam hasil. Untuk menggunakannya dengan cara ini Anda harus menentukan pilihannya Parameter kedua seperti INI_SCANNER_NORMAL saat memanggil konstruktor:
 
 ```php
 <?php
@@ -61,15 +61,15 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Metode
 
 public **__construct** (*mixed* $filePath, [*mixed* $mode])
 
 Phalcon\Config\Adapter\Ini constructor
 
-protected **_parseIniString** (*mixed* $path, *mixed* $value)
+dilindungi **_parseIniString** (*campuran* $path, *campuran* $value)
 
-Build multidimensional array from string
+Membangun array multidimensi dari string
 
 ```php
 <?php
@@ -89,24 +89,24 @@ $this->_parseIniString("path.hello.world", "value for last key");
 
 protected **_cast** (*mixed* $ini)
 
-We have to cast values manually because parse_ini_file() has a poor implementation.
+Kita harus membuang nilai secara manual karena parse_ini_file() memiliki implementasi yang buruk.
 
 public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Allows to check whether an attribute is defined using the array-syntax
+Memungkinkan untuk memeriksa apakah atribut didefinisikan menggunakan array-syntax
 
 ```php
-<?php
+<? php
 
-var_dump(
-    isset($config["database"])
+var_dump)
+isset($config["database"])
 );
 
 ```
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Returns a value from current config using a dot separated path.
+Mengembalikan nilai dari konfigurasi saat ini menggunakan jalur yang dipisahkan titik.
 
 ```php
 <?php
@@ -117,7 +117,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+Mendapatkan atribut dari konfigurasi, jika atribut tidak didefinisikan mengembalikan null Jika nilainya benar-benar null atau tidak didefinisikan, nilai default akan digunakan sebagai gantinya
 
 ```php
 <?php
@@ -128,7 +128,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Gets an attribute using the array-syntax
+Mendapat atribut menggunakan sintaks-array
 
 ```php
 <?php
@@ -141,7 +141,7 @@ print_r(
 
 public **offsetSet** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Config](Phalcon_Config)
 
-Sets an attribute using the array-syntax
+Menetapkan atribut menggunakan sintaks-array
 
 ```php
 <?php
@@ -165,7 +165,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config) inherited from [Phalcon\Config](Phalcon_Config)
 
-Merges a configuration into the current one
+Menggabungkan konfigurasi menjadi yang sekarang
 
 ```php
 <?php
@@ -184,7 +184,7 @@ $globalConfig->merge($appConfig);
 
 public **toArray** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Converts recursively the object to an array
+Mengonversi objek secara rekursif ke sebuah array
 
 ```php
 <?php
@@ -197,7 +197,7 @@ print_r(
 
 public **count** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Returns the count of properties set in the config
+Mengembalikan jumlah properti yang ditetapkan dalam konfigurasi
 
 ```php
 <?php
@@ -221,12 +221,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Sets the default path delimiter
+Mengatur pembatas jalur default
 
 public static **getPathDelimiter** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Gets the default path delimiter
+Mendapatkan pembatas jalur default
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Helper method for merge configs (forwarding nested config instance)
+Metode Helper untuk menggabungkan konfigurasi (contoh nested forwarding nested)
