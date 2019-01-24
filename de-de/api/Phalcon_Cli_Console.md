@@ -1,20 +1,20 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Cli\Console'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Cli\Console'
+---
 # Class **Phalcon\Cli\Console**
 
 *extends* abstract class [Phalcon\Application](Phalcon_Application)
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cli/console.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
-This component allows to create CLI applications using Phalcon
+Diese Komponente ermöglicht es, CLI-Anwendungen mithilfe von Phalcon zu erstellen
 
-## Methods
+## Methoden
 
 public **addModules** (*array* $modules)
 
@@ -48,15 +48,15 @@ Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Sets the events manager
+Legt den Event-manager fest
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Returns the internal event manager
+Gibt den internen Eventmanager zurück
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Register an array of modules present in the application
+Registrieren Sie ein Array von Modulen, welche in der Anwendung vorhanden sind
 
 ```php
 <?php
@@ -78,7 +78,7 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Return the modules registered in the application
+Liefert die Module, welche in der Anwendung registriert sind
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
@@ -102,4 +102,4 @@ Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Magische Methode __get
