@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\TransactionInterface'
 ---
 # Interface **Phalcon\Mvc\Model\TransactionInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transactioninterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transactioninterface.zep)
 
-## Metode
+## Methods
 
 abstract public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
@@ -22,11 +22,11 @@ abstract public **commit** ()
 
 ...
 
-publik abstrak **putarkembali** ([*campuraduk* $putarkembalipesan], [*campuraduk* $putarkembalirekaman])
+abstract public **rollback** ([*mixed* $rollbackMessage], [*mixed* $rollbackRecord])
 
 ...
 
-publik abstrak **getConnection** ()
+abstract public **getConnection** ()
 
 ...
 
@@ -42,7 +42,7 @@ abstract public **isManaged** ()
 
 ...
 
-abstrak publik **getMessages** ()
+abstract public **getMessages** ()
 
 ...
 
