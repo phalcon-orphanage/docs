@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Model'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
 Phalcon\Mvc\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+Un modèle représente les informations (données) de l’application et les règles pour manipuler ces données. Les modèles sont principalement utilisés pour gérer les règles d’interaction avec une table de base de données. Dans la plupart des cas, chaque table dans votre base de données correspond à un modèle dans votre application. L’essentiel de la logique métier de votre application est concentré dans les modèles.
 
 Phalcon\Mvc\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
@@ -39,7 +39,7 @@ if ($robot->save() === false) {
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **OP_NONE**
 
@@ -55,7 +55,7 @@ if ($robot->save() === false) {
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Methods
+## Méthodes
 
 final public **__construct** ([*mixed* $data], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $modelsManager])
 
@@ -79,7 +79,7 @@ Returns the custom events manager
 
 public **getModelsMetaData** ()
 
-Returns the models meta-data service related to the entity instance
+Retourne le service de meta-données des modèles liés à l’instance d’entité
 
 public **getModelsManager** ()
 
@@ -87,7 +87,7 @@ Returns the models manager related to the entity instance
 
 public **setTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Sets a transaction related to the Model instance
+Définit une transaction liée à l’instance de modèle
 
 ```php
 <?php
@@ -130,19 +130,19 @@ try {
 
 protected **setSource** (*mixed* $source)
 
-Sets the table name to which model should be mapped
+Définit le nom de la table à laquelle le modèle doit être mappé
 
 public **getSource** ()
 
-Returns the table name mapped in the model
+Retourne le nom de la table mappé dans le modèle
 
 protected **setSchema** (*mixed* $schema)
 
-Sets schema name where the mapped table is located
+Définit le nom de schéma où se trouve la table mappée
 
 public **getSchema** ()
 
-Returns schema name where the mapped table is located
+Retourne le nom de schéma où se trouve la table mappée
 
 public **setConnectionService** (*mixed* $connectionService)
 
