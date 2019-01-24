@@ -6,38 +6,38 @@ title: 'Phalcon\Cache\Multiple'
 ---
 # Class **Phalcon\Cache\Multiple**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
-Allows to read to chained backend adapters writing to multiple backends
+Memungkinkan untuk membaca untuk adaptor backend yang dirantai untuk menulis ke beberapa backends
 
 ```php
 <?php
 
-use Phalcon\Cache\Frontend\Data as DataFrontend;
-use Phalcon\Cache\Multiple;
-use Phalcon\Cache\Backend\Apc as ApcCache;
-use Phalcon\Cache\Backend\Memcache as MemcacheCache;
-use Phalcon\Cache\Backend\File as FileCache;
+Gunakan Phalcon\Cache\Frontend\Data sebagai DataFrontend;
+Gunakan Phalcon\Cache\Multiple;
+Gunakan Phalcon\Cache\Backend\Apc sebagai ApcCache;
+Gunakan Phalcon\Cache\Backend\Memcache sebagai MemcacheCache;
+Gunakan Phalcon\Cache\Backend\File sebagai FileCache;
 
-$ultraFastFrontend = new DataFrontend(
+$ultraFastFrontend = Data baruFrontend(
     [
         "lifetime" => 3600,
     ]
 );
 
-$fastFrontend = new DataFrontend(
+$fastFrontend = Data baruFrontend(
     [
         "lifetime" => 86400,
     ]
 );
 
-$slowFrontend = new DataFrontend(
+$slowFrontend = Data baruFrontend(
     [
         "lifetime" => 604800,
     ]
 );
 
-//Backends are registered from the fastest to the slower
+//Backends terdaftar dari yang tercepat ke yang lebih lambat
 $cache = new Multiple(
     [
         new ApcCache(
@@ -64,12 +64,12 @@ $cache = new Multiple(
     ]
 );
 
-//Save, saves in every backend
+//Simpan, simpan di setiap backend
 $cache->save("my-key", $data);
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backends])
 
@@ -77,28 +77,28 @@ Phalcon\Cache\Multiple constructor
 
 public **push** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backend)
 
-Adds a backend
+Menambahkan backend
 
-public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
+public * mixed </ 0> ** dapatkan </ 1> (* string </ 0> | * int 0 $ keyName, [<0 int </ 0> $ lifetime</p> 
 
-Returns a cached content reading the internal backends
+Mengembalikan konten dalam cache yang membaca backends internal
 
-public **start** (*string* | *int* $keyName, [*int* $lifetime])
+public ** mulai </ 0> (* string </ 1> * int </ 1> $ keyname, [* int </ 1> $ lifetime</p> 
 
-Starts every backend
+Mulai setiap backend
 
-public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
+public **simpan** ([int | *string* $keyName], [* string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into all backends and stops the frontend
+Menyimpan konten dalam cache ke semua backend dan menghentikan frontend
 
-public *boolean* **delete** (*string* | *int* $keyName)
+public *boolean* **hapus** (*string* | *int* $keyName)
 
-Deletes a value from each backend
+Menghapus nilai dari masing-masing backend
 
-public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
+publik **ada** ([*jaringan* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists in at least one backend
+Memeriksa apakah cache ada setidaknya satu backend
 
-public **flush** ()
+publik **flush** ()
 
-Flush all backend(s)
+Flush semua backend (s)
