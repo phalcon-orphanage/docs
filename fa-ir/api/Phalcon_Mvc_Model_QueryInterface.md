@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\QueryInterface'
 ---
 # Interface **Phalcon\Mvc\Model\QueryInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/queryinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/queryinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **parse** ()
 
