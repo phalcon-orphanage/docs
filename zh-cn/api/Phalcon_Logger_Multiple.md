@@ -46,28 +46,28 @@ Sends/Writes an critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-紧急消息发送/写入日志
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context])
 
-调试消息发送/写入日志
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context])
 
-一条错误消息发送/写入日志
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context])
 
-Info 消息发送/写入日志
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context])
 
-通知消息发送/写入日志
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context])
 
-一条警告消息发送/写入日志
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context])
 
-警报消息发送/写入日志
+Sends/Writes an alert message to the log
