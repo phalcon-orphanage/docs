@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Cookie'
 
 *implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Provide OO wrappers to manage a HTTP cookie
+Bietet OO Wrapper um ein HTTP-Cookie zu verwalten
 
-## Methods
+## Methoden
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
@@ -28,23 +28,23 @@ Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Sets the cookie's value
+Setzt den Cookie-Wert
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Returns the cookie's value
+Gibt den Cookie-Wert zurück
 
 public **send** ()
 
-Sends the cookie to the HTTP client Stores the cookie definition in session
+Sendet das Cookie an den HTTP-Client Speichert die Cookie-Definition in der Session
 
 public **restore** ()
 
-Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
+Liest die Cookie-bezogenen Informationen aus dem SESSION um das Cookie wiederherzustellen, wie es war Da diese Methode automatisch intern aufgerufen wird, muss man sie also normalerweise nicht aufrufen
 
 public **delete** ()
 
-Deletes the cookie by setting an expire time in the past
+Löscht das Cookie indem ein Ablaufdatum in der Vergangenheit gesetzt wird
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Sets if the cookie must be encrypted/decrypted automatically
+Legt fest, ob das Cookie automatisch verschlüsselt/entschlüsselt sein muss
 
 public **isUsingEncryption** ()
 
-Check if the cookie is using implicit encryption
+Prüft, ob das Cookie implizite Verschlüsselung verwendet
 
 public **setExpiration** (*mixed* $expire)
 
-Sets the cookie's expiration time
+Setzt die Cookie Ablaufzeit
 
 public **getExpiration** ()
 
-Returns the current expiration time
+Gibt die Cookie Ablaufzeit zurück
 
 public **setPath** (*mixed* $path)
 
-Sets the cookie's expiration time
+Setzt die Cookie Ablaufzeit
 
 public **getName** ()
 
-Returns the current cookie's name
+Gibt den aktuellen Cookie Namen zurück
 
 public **getPath** ()
 
-Returns the current cookie's path
+Gibt den aktuellen Cookie Pfad zurück
 
 public **setDomain** (*mixed* $domain)
 
-Sets the domain that the cookie is available to
+Setzt die Domäne, der das Cookie zur Verfügung steht
 
 public **getDomain** ()
 
-Returns the domain that the cookie is available to
+Gibt die Domäne zurück, der das Cookie zur Verfügung steht
 
 public **setSecure** (*mixed* $secure)
 
-Sets if the cookie must only be sent when the connection is secure (HTTPS)
+Legt fest, ob das Cookie nur gesendet werden muss, wenn die Verbindung sicher (HTTPS) ist
 
 public **getSecure** ()
 
-Returns whether the cookie must only be sent when the connection is secure (HTTPS)
+Gibt zurück, ob das Cookie nur gesendet werden muss, wenn die Verbindung sicher (HTTPS) ist
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Sets if the cookie is accessible only through the HTTP protocol
+Legt fest, ob auf das Cookie nur über das HTTP-Protokoll zugegriffen werden kann
 
 public **getHttpOnly** ()
 
-Returns if the cookie is accessible only through the HTTP protocol
+Gibt zurück, ob auf das Cookie nur über das HTTP-Protokoll zugegriffen werden kann
 
 public **__toString** ()
 
-Magic __toString method converts the cookie's value to string
+Magische __toString-Methode konvertiert den Cookie-Wert in in eine Zeichenkette
