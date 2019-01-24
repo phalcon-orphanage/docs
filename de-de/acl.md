@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Access Control Lists (ACL)
+# Zugriffskontrolle (ACL)
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
@@ -27,7 +27,7 @@ Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two togethe
 
 <a name='setup'></a>
 
-## Creating an ACL
+## Erstellen einer ACL
 
 [Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with operations and subjects. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
@@ -145,7 +145,7 @@ $acl->addSubject('reports', ['list', 'add']);
 
 <a name='access-controls'></a>
 
-## Defining Access Controls
+## Definition von Zugangskontrollen
 
 After both the `Operations` and `Subjects` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the operation since a small mistake here can allow access to operations for subjects that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
 
@@ -235,7 +235,7 @@ $acl->deny('guest', '*', 'view');
 
 <a name='querying'></a>
 
-## Querying an ACL
+## Abfragen einer ACL
 
 Once the list has been defined, we can query it to check if a particular operation has access to a particular subject and action. To do so, we need to use the `isAllowed()` method.
 
@@ -289,7 +289,7 @@ $acl->isAllowed('guest', 'reports', 'add');
 
 <a name='function-based-access'></a>
 
-## Function based access
+## Funktionsbasierter Zugriff
 
 Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
 
@@ -632,7 +632,7 @@ $acl->addInherit($accounting, $guest);
 
 <a name='serialization'></a>
 
-## Serializing ACL lists
+## Serialisierung von ACL Listen
 
 [Phalcon\Acl](api/Phalcon_Acl) can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, file system, database, Redis etc. This way you can retrieve the ACL quickly without having to read the underlying data that create the ACL nor will you have to compute the ACL in every request.
 
@@ -670,14 +670,14 @@ It is a good practice to not use serialization of the ACL during development, to
 
 <a name='events'></a>
 
-## Events
+## Ereignisse
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
-| Event Name          | Triggered                                                   | Can stop operation? |
-| ------------------- | ----------------------------------------------------------- |:-------------------:|
-| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |         No          |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |         Yes         |
+| Ereignisname        | Ausgelöst                                                   | Kann den Vorgang stoppen? |
+| ------------------- | ----------------------------------------------------------- |:-------------------------:|
+| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |           Nein            |
+| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |            Ja             |
 
 The following example demonstrates how to attach listeners to the ACL:
 
@@ -717,6 +717,6 @@ $acl->setEventsManager($eventsManager);
 
 <a name='custom-adapters'></a>
 
-## Implementing your own adapters
+## Implementierung von eigenen Adaptern
 
 The [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface must be implemented in order to create your own ACL adapters or extend the existing ones.
