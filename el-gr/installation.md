@@ -64,7 +64,7 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 <a name='installation-linux-debian'></a>
 
-### DEB based distributions (Debian, Ubuntu, etc.)
+### Διανομές βασισμένες σε DEB (Debian, Ubuntu, κλπ.)
 
 <a name='installation-linux-debian-repository'></a>
 
@@ -349,7 +349,7 @@ sudo yum install php-devel pcre-devel gcc make
 
 ### Compile Phalcon
 
-We first need to clone Phalcon from the Github repository
+We first need to clone Phalcon from the GitHub repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
