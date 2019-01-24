@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Model\ValidatorInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ValidatorInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validatorinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validatorinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **getMessages** ()
+abstract public **getMessages** ()
 
 ...
 
