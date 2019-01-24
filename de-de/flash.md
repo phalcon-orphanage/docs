@@ -19,7 +19,7 @@ Flash messages are used to notify the user about the state of actions he/she mad
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
-| Adapter | Description                                                                                  | API                                                  |
+| Adapter | Beschreibung                                                                                 | API                                                  |
 | ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
