@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Backend\Redis'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/backend/redis.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
 
-Allows to cache output fragments, PHP data or raw data to a redis backend
+Ermöglicht es Ausgabe-Fragmente, PHP Daten oder Rohdaten in einem Redis-Backend zu cachen
 
-This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
+Dieser Adapter verwendet den speziellen Redis-Schlüssel "_PHCR" zum Speichern von alle Schlüsseln, die intern vom Adapter verwendet werden
 
 ```php
 <?php
@@ -22,14 +22,14 @@ This adapter uses the special redis key "_PHCR" to store all the keys internally
 use Phalcon\Cache\Backend\Redis;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// Daten für 2 days cachen
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Create the Cache setting redis connection options
+// Cache mit den Einstellungen für Redis-Verbindung erzeugen
 $cache = new Redis(
     $frontCache,
     [
@@ -41,15 +41,15 @@ $cache = new Redis(
     ]
 );
 
-// Cache arbitrary data
+// Willkürliche Daten speichern
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// Daten erhalten
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -57,11 +57,11 @@ Phalcon\Cache\Backend\Redis constructor
 
 public **_connect** ()
 
-Create internal connection to redis
+Interne Verbindung mit Redis erstellen
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Liefert einen zwischengespeicherten Inhalt
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -72,14 +72,14 @@ Stores cached content into the file backend and stops the frontend
 
 $cache->save("my-key", $data);
 
-// Save data termlessly
+// Sichert Daten begriffslos
 $cache->save("my-key", $data, -1);
 
 ```
 
 public **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Löscht einen Wert aus dem Cache anhand seines Schlüssels
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -97,7 +97,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it isn't expired
+Überprüft, ob Cache vorhanden und nicht abgelaufen ist
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -141,16 +141,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Ermittelt die zuletzt gespeicherte Lebensdauer
