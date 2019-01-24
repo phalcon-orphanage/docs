@@ -6,9 +6,9 @@ title: 'Phalcon\Http\CookieInterface'
 ---
 # Interface **Phalcon\Http\CookieInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **setValue** (*mixed* $value)
 
