@@ -44,4 +44,4 @@ Gives statistical information about the specified job if it exists.
 
 public **__wakeup** ()
 
-Ελέγχει εάν η εργασία τροποποιηθεί έχει μετά την αποεπεξεργασία του αντικειμένου
+Checks if the job has been modified after unserializing the object
