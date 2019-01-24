@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Date'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
 
 Component INPUT[type=date] for forms
 
-## روش ها
+## Methods
 
 public **render** ([*array* $attributes])
 
