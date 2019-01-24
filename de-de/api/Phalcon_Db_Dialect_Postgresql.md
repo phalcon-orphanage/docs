@@ -1,20 +1,20 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Dialect\Postgresql'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Db\Dialect\Postgresql'
+---
 # Class **Phalcon\Db\Dialect\Postgresql**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect/postgresql.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
-## Methods
+## Methoden
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
@@ -176,7 +176,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a FOR UPDATE clause
+Liefert ein SQL, welches mit der FOR UPDATE-Klausel angepasst wurde
 
 ```php
 <?php
