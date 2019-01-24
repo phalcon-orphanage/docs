@@ -6,7 +6,7 @@ title: 'Phalcon\Debug\Dump'
 ---
 # Class **Phalcon\Debug\Dump**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
 Dumps information about a variable(s)
 
