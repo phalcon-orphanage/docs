@@ -8,51 +8,51 @@ title: 'Phalcon\Events\Manager'
 
 *implements* [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
 
-Phalcon Events Manager, menawarkan cara mudah untuk mencegat dan memanipulasi, jika diperlukan, aliran normal operasi. Dengan EventsManager pengembang bisa membuat kait atau plugin yang akan menawarkan pemantauan data, manipulasi, eksekusi bersyarat dan banyak lagi.
+Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
-## Metode
+## Methods
 
-umum **getOption** (*mixed* $eventType, [*string* | *array* $handler], [*mixed* $priority])
+public **attach** (*string* $eventType, *object* | *callable* $handler, [*int* $priority])
 
-Lampirkan pendengar ke pengelola acara
+Attach a listener to the events manager
 
 public **detach** (*string* $eventType, *object* $handler)
 
-Lepaskan pendengar dari manajer acara
+Detach the listener from the events manager
 
-publik **memungkinkanPrioritas** (*campuran* $enablePriorities)
+public **enablePriorities** (*mixed* $enablePriorities)
 
-Atur jika prioritas diaktifkan di EventsManager
+Set if priorities are enabled in the EventsManager
 
 public **arePrioritiesEnabled** ()
 
-Mengembalikan jika prioritas diaktifkan
+Returns if priorities are enabled
 
-publik **mengumpulkanTanggapan** (*campuran* $collect)
+public **collectResponses** (*mixed* $collect)
 
-Memberitahu manajer acara jika perlu mengumpulkan semua tanggapan yang dikembalikan oleh setiap orang pendengar terdaftar dalam satu api
+Tells the event manager if it needs to collect all the responses returned by every registered listener in a single fire
 
 public **isCollecting** ()
 
-Periksa apakah manajer acara mengumpulkan semua tanggapan yang dikembalikan oleh setiap orang pendengar terdaftar dalam satu api
+Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
 
 public *array* **getResponses** ()
 
-Mengembalikan semua tanggapan yang dikembalikan oleh setiap penangan yang dieksekusi oleh 'api' terakhir yang dieksekusi
+Returns all the responses returned by every handler executed by the last 'fire' executed
 
 public **detachAll** ([*mixed* $type])
 
-Menghapus semua acara dari AcaraPengelola
+Removes all events from the EventsManager
 
 final public *mixed* **fireQueue** ([SplPriorityQueue](https://php.net/manual/en/class.splpriorityqueue.php) | *array* $queue, [Phalcon\Events\Event](Phalcon_Events_Event) $event)
 
-Penangan internal menelpon antrian acara
+Internal handler to call a queue of events
 
-public *simpan* ([**int** | *string* $eventType], [* string* $source], [*int* $data], [*boolean* $cancelable])
+public *mixed* **fire** (*string* $eventType, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
-Membakar acara di pengelola acara sehingga pendengar aktif diberi tahu tentang hal itu
+Fires an event in the events manager causing the active listeners to be notified about it
 
 ```php
 <?php
@@ -63,8 +63,8 @@ $eventsManager->fire("db", $connection);
 
 public **hasListeners** (*mixed* $type)
 
-Periksa apakah jenis acara tertentu memiliki pendengar
+Check whether certain type of event has listeners
 
 public *array* **getListeners** (*string* $type)
 
-Mengembalikan semua pendengar yang dilampirkan dari jenis tertentu
+Returns all the attached listeners of a certain type
