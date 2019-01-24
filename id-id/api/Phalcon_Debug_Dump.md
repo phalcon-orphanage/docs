@@ -6,9 +6,9 @@ title: 'Phalcon\Debug\Dump'
 ---
 # Class **Phalcon\Debug\Dump**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
-Informasi tentang variabel(s)
+Dumps information about a variable(s)
 
 ```php
 <?php
@@ -30,43 +30,43 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## Metode
+## Methods
 
-umum **getDetailed** ()
-
-...
-
-umum **setDetailed** (*campuran* $detil)
+public **getDetailed** ()
 
 ...
 
-umum **__construct** ([*array* $gaya], [*campuran* $rinci])
+public **setDetailed** (*mixed* $detailed)
+
+...
+
+public **__construct** ([*array* $styles], [*mixed* $detailed])
 
 Phalcon\Debug\Dump constructor
 
-umum **semua** ()
+public **all** ()
 
-Alias dari variabel-variabel() metode
+Alias of variables() method
 
 protected **getStyle** (*mixed* $type)
 
-Mendapat gaya untuk jenis
+Get style for type
 
 public **setStyles** ([*array* $styles])
 
-Atur gaya untuk jenis vars
+Set styles for vars type
 
 public **one** (*mixed* $variable, [*mixed* $name])
 
-Nama lain dari metode variable()
+Alias of variable() method
 
 protected **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
-Siapkan sebuah HTML string dari informasi tentang sebuah variable tunggal.
+Prepare an HTML string of information about a single variable.
 
 public **variable** (*mixed* $variable, [*mixed* $name])
 
-Mengembalikan sebuah HTML string dari informasi tentang sebuah variable tunggal.
+Returns an HTML string of information about a single variable.
 
 ```php
 <?php
@@ -77,7 +77,7 @@ echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 public **variables** ()
 
-Mengembalikan sebuah HTML string dari informasi debuging tentang jumlah apapun dari variable, masing-masing dibungkus dalam sebuah "pre" tag.
+Returns an HTML string of debugging information about any number of variables, each wrapped in a "pre" tag.
 
 ```php
 <?php
@@ -92,7 +92,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 public **toJson** (*mixed* $variable)
 
-Mengembalikan sebuah JSON string dari informasi tentang sebuah variable tunggal.
+Returns an JSON string of information about a single variable.
 
 ```php
 <?php
