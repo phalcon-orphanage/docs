@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Select'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
 Component SELECT (choice) for forms
 
-## Methods
+## Methoden
 
 public **__construct** (*string* $name, [*object* | *array* $options], [*array* $attributes])
 
