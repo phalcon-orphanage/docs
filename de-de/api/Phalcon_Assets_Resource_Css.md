@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Resource\Css'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/css.zep)
 
 Represents CSS resources
 
-## Methoden
+## Methods
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
@@ -42,19 +42,19 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Asse
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Setzt den Ressourcentyp
+Sets the resource's type
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Setzt den Ressourcenpfad
+Sets the resource's path
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Legt fest, ob die Ressource lokal oder extern ist
+Sets if the resource is local or external
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Legt fest, ob die Ressource gefiltert werden muss oder nicht
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
@@ -66,28 +66,28 @@ Sets a target uri for the generated HTML
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Legt den Quellpfad der Ressource fest
+Sets the resource's source path
 
 public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Legt den Zielpfad der Ressource fest
+Sets the resource's target path
 
 public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gibt den Inhalt der Ressource als Zeichenkette zurück, optional kann ein Basispfad festgelegt werden wo sich die Ressource befindet
+Returns the content of the resource as an string Optionally a base path where the resource is located can be set
 
 public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gibt die eigentlichen Ziel-Uri für den generierten HTML-Code zurück
+Returns the real target uri for the generated HTML
 
 public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gibt den kompletten Pfad zurück, wo sich die Ressource befindet
+Returns the complete location where the resource is located
 
 public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gibt den kompletten Pfad zurück, wo die Ressource geschrieben werden muss
+Returns the complete location where the resource must be written
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gibt den Ressourcenschlüssel zurück.
+Gets the resource's key.
