@@ -6,7 +6,7 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
 Provides debug capabilities to Phalcon applications
 
@@ -22,7 +22,7 @@ Sets if files the exception's backtrace must be showed
 
 public **setShowFiles** (*mixed* $showFiles)
 
-Set if files part of the backtrace must be shown in the output
+Ορίστε εάν αρχεία τα πρέπει να εμφανίζονται στην έξοδο
 
 public **setShowFileFragment** (*mixed* $showFileFragment)
 
