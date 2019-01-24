@@ -6,15 +6,15 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-This class represents every route added to the router
+Cette classe représente chaque route a ajouté le routeur
 
-## Constants
+## Constantes
 
 *string* **DEFAULT_DELIMITER**
 
-## Methods
+## Méthodes
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
@@ -26,15 +26,15 @@ Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
-Extracts parameters from a string
+Extraits de paramètres à partir d'une chaîne
 
 public **reConfigure** (*string* $pattern, [*array* $paths])
 
-Reconfigure the route adding a new pattern and a set of paths
+Reconfigurer la route de l'ajout d'un nouveau modèle et un ensemble de chemins
 
 public **getName** ()
 
-Returns the route's name
+Retourne le nom de l'itinéraire
 
 public **setName** (*mixed* $name)
 
@@ -58,7 +58,7 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public *mixed* **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+Renvoie l '"avant match" rappel si tout
 
 public **getRouteId** ()
 
@@ -78,11 +78,11 @@ Returns the paths
 
 public **getReversedPaths** ()
 
-Returns the paths using positions as keys and names as values
+Retourne les chemins à l'aide de postes clés et les noms comme des valeurs
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **convert** (*string* $name, *callable* $converter)
 
-Adds a converter to perform an additional transformation for certain parameter
+Ajoute un convertisseur pour effectuer une transformation supplémentaire pour certains paramètres
 
 public **getConverters** ()
 
@@ -90,11 +90,11 @@ Returns the router converter
 
 public static **reset** ()
 
-Resets the internal route id generator
+Réinitialise la voie interne id du générateur
 
 public static **delimiter** ([*mixed* $delimiter])
 
-Set the routing delimiter
+Définir le routage délimiteur
 
 public static **getDelimiter** ()
 
