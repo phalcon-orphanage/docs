@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='setup'></a>
 
-# راه اندازی وب سرور
+# Web Server Setup
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
@@ -38,7 +38,7 @@ To speed up getting your Phalcon application running in development the easiest 
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### تنظیمات Phalcon
+### Phalcon configuration
 
 To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
 <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
@@ -67,7 +67,7 @@ Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximu
 
 <a name='nginx-phalcon-configuration'></a>
 
-### تنظیمات Phalcon
+### Phalcon configuration
 
 You can use following potential configuration to setup Nginx with Phalcon:
 
@@ -166,7 +166,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 <a name='apache-phalcon-configuration'></a>
 
-### تنظیمات Phalcon
+### Phalcon configuration
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
@@ -185,7 +185,7 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### ریشه اسناد
+#### Document root
 
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
@@ -231,7 +231,7 @@ If your uri contains characters other than English, you might need to resort to 
 
 <a name='apache-apache-configuration'></a>
 
-#### پیکربندی آپاچی
+#### Apache configuration
 
 If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
@@ -256,7 +256,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 <a name='apache-virtual-hosts'></a>
 
-#### میزبان مجازی
+#### Virtual Hosts
 
 And this second configuration allows you to install a Phalcon application in a virtual host:
 
@@ -280,13 +280,13 @@ And this second configuration allows you to install a Phalcon application in a v
 
 <a name='cherokee'></a>
 
-## چروکی
+## Cherokee
 
 [Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### تنظیمات Phalcon
+### Phalcon configuration
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
