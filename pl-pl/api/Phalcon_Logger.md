@@ -6,7 +6,7 @@ title: 'Phalcon\Logger'
 ---
 # Abstract class **Phalcon\Logger**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
 ## Constants
 
