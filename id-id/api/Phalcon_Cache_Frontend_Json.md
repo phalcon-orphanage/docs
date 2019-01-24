@@ -8,13 +8,13 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
-Allows to cache data converting/deconverting them to JSON.
+Memungkinkan untuk meng-cache data yang mengkonversi / deconverting mereka ke JSON. Konteks | Permintaan Konteks.
 
-This adapter uses the json_encode/json_decode PHP's functions
+Adaptor ini menggunakan fungsi json_encode / json_decode PHP
 
-As the data is encoded in JSON other systems accessing the same backend could process them
+Karena data dikodekan dalam sistem JSON lainnya yang mengakses backend yang sama dapat memprosesnya
 
 ```php
 <?php
@@ -46,36 +46,36 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $frontendOptions])
+umum **__membangun** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Base64 constructor
 
-public **getLifetime** ()
+publik ** getLifetime ** ()
 
-Returns the cache lifetime
+Mengembalikan masa pakai cache
 
-public **isBuffering** ()
+public ** isBuffering ** ()
 
-Check whether if frontend is buffering output
+Periksa apakah frontend adalah buffering output
 
-public **start** ()
+publik ** mulai ** ()
 
 Starts output frontend. Actually, does nothing
 
-public *string* **getContent** ()
+public *string * **getContent** ()
 
-Returns output cached content
+Mengembalikan hasil konten dalam cache
 
-public **stop** ()
+publik ** berhenti ** ()
 
-Stops output frontend
+Menghentikan output frontend
 
-public **beforeStore** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
-Serializes data before storing them
+Serializes data sebelum menyimpannya
 
-public **afterRetrieve** (*mixed* $data)
+public ** afterRetrieve ** ( * mixed * $data)
 
-Unserializes data after retrieval
+Unserializes data setelah pengambilan
