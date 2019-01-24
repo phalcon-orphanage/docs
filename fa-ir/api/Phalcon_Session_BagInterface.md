@@ -6,9 +6,9 @@ title: 'Phalcon\Session\BagInterface'
 ---
 # Interface **Phalcon\Session\BagInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/baginterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/baginterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **initialize** ()
 
