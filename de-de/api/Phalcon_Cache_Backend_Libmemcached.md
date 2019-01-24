@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Libmemcached'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
 
 Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.
 
@@ -20,14 +20,14 @@ Allows to cache output fragments, PHP data or raw data to a libmemcached backend
 use Phalcon\Cache\Backend\Libmemcached;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Daten für 2 Tage im Cache speichern
+// Cache data for 2 days
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Erstellt die Cache Einstellungen für memcached Verbindungsoptionen
+// Create the Cache setting memcached connection options
 $cache = new Libmemcached(
     $frontCache,
     [
@@ -53,7 +53,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -61,11 +61,11 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Interne Verbindung mit Memcached erstellen
+Create internal connection to memcached
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Liefert einen zwischengespeicherten Inhalt
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -73,7 +73,7 @@ Stores cached content into the file backend and stops the frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Löscht einen Wert aus dem Cache anhand seines Schlüssels
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -91,7 +91,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Überprüft, ob Cache vorhanden und nicht abgelaufen ist
+Checks if cache exists and it isn't expired
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -152,16 +152,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ermittelt die zuletzt gespeicherte Lebensdauer
+Gets the last lifetime set
