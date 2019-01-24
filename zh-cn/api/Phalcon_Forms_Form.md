@@ -12,7 +12,7 @@ title: 'Phalcon\Forms\Form'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-此组件允许生成窗体使用面向对象的接口
+This component allows to build forms using an object-oriented interface
 
 ## 方法
 
@@ -30,131 +30,131 @@ Phalcon\Forms\Form constructor
 
 public **setAction** (*mixed* $action)
 
-设置表单的操作
+Sets the form's action
 
 public **getAction** ()
 
-返回表单的操作
+Returns the form's action
 
 public **setUserOption** (*string* $option, *mixed* $value)
 
-设置表单的选项
+Sets an option for the form
 
 public **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-返回选项的值，如果存在
+Returns the value of an option if present
 
 public **setUserOptions** (*array* $options)
 
-该元素的设置选项
+Sets options for the element
 
 public **getUserOptions** ()
 
-返回的元素的选项
+Returns the options for the element
 
 public **setEntity** (*object* $entity)
 
-设置实体模型相关的
+Sets the entity related to the model
 
 public *object* **getEntity** ()
 
-返回到模型相关的实体
+Returns the entity related to the model
 
 public **getElements** ()
 
-返回添加到窗体的窗体元素
+Returns the form elements added to the form
 
 public **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
-将数据绑定到实体
+Binds data to the entity
 
 public **isValid** ([*array* $data], [*object* $entity])
 
-验证窗体
+Validates the form
 
 public **getMessages** ([*mixed* $byItemName])
 
-返回生成验证中的消息
+Returns the messages generated in the validation
 
 public **getMessagesFor** (*mixed* $name)
 
-返回特定元素生成的消息
+Returns the messages generated for a specific element
 
 public **hasMessagesFor** (*mixed* $name)
 
-检查是否消息生成特定元素
+Check if messages were generated for a specific element
 
 public **add** ([Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) $element, [*mixed* $position], [*mixed* $type])
 
-将一个元素添加到窗体
+Adds an element to the form
 
 public **render** (*string* $name, [*array* $attributes])
 
-呈现窗体中的特定项
+Renders a specific item in the form
 
 public **get** (*mixed* $name)
 
-返回由其名称添加到窗体元素
+Returns an element added to the form by its name
 
 public **label** (*mixed* $name, [*array* $attributes])
 
-生成添加到窗体，包括 HTML 元素的标签
+Generate the label of an element added to the form including HTML
 
 public **getLabel** (*mixed* $name)
 
-返回元素的标签
+Returns a label for an element
 
 public **getValue** (*mixed* $name)
 
-获取一个值，从内部相关实体或从默认值
+Gets a value from the internal related entity or from the default value
 
 public **has** (*mixed* $name)
 
-检查是否该窗体包含一个元素
+Check if the form contains an element
 
 public **remove** (*mixed* $name)
 
-从窗体中移除一个元素
+Removes an element from the form
 
 public **clear** ([*array* $fields])
 
-清除每个元素的形式为其默认值
+Clears every element in the form to its default value
 
 public **count** ()
 
-在窗体中返回的元素的数目
+Returns the number of elements in the form
 
 public **rewind** ()
 
-倒带内部迭代器
+Rewinds the internal iterator
 
 public **current** ()
 
-在迭代器返回的当前元素
+Returns the current element in the iterator
 
 public **key** ()
 
-在迭代器中返回每个该项当前的位置
+Returns the current position/key in the iterator
 
 public **next** ()
 
-将内部迭代指针移动到下一个位置
+Moves the internal iteration pointer to the next position
 
 public **valid** ()
 
-检查迭代器中的当前元素是否有效
+Check if the current element in the iterator is valid
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
