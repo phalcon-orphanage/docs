@@ -263,7 +263,7 @@ $form = new UsersForm(
 
 <a name='validation'></a>
 
-## バリデーション
+## Validation
 
 Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
