@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\DialectInterface'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Db\DialectInterface'
+---
 # Interface **Phalcon\Db\DialectInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialectinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
