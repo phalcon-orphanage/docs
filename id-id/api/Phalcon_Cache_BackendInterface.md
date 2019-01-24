@@ -6,51 +6,51 @@ title: 'Phalcon\Cache\BackendInterface'
 ---
 # Interface **Phalcon\Cache\BackendInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **start** (*mixed* $keyName, [*mixed* $lifetime])
-
-...
-
-abstract public **stop** ([*mixed* $stopBuffer])
+abstrak publik **mulai** (*campuran * $keyName, [*mixed* $lifetime])
 
 ...
 
-abstract public **getFrontend** ()
+publik abstrak **berhenti** ([*campuran* $stopBuffer])
 
 ...
 
-abstract public **getOptions** ()
+publik abstrak **getFrontend** ()
 
 ...
 
-abstract public **isFresh** ()
+abstrak publik **getOptions** ()
 
 ...
 
-abstract public **isStarted** ()
+public abstrak ** isFresh </ 0> ()</p> 
 
 ...
 
-abstract public **setLastKey** (*mixed* $lastKey)
+abstrak public **IsSteded </ 0> ()</p> 
 
 ...
 
-abstract public **getLastKey** ()
+publik abstrak. **SetLastkei**(*campur aduk* $lastKey)
 
 ...
 
-abstract public **get** (*mixed* $keyName, [*mixed* $lifetime])
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **save** ([*mixed* $keyName], [*mixed* $content], [*mixed* $lifetime], [*mixed* $stopBuffer])
+abstrak publik **dapatkan** (*campuran* $keyName, [*mixed* $lifetime])
 
 ...
 
-abstract public **delete** (*mixed* $keyName)
+abstrak publik **simpan** ([*campuran* $keyName], [*campuran* $content], [*mixed* $lifetime] [*campuran* $stopBuffer])
+
+...
+
+abstrak publik **hapus** (*campuran* $keyName)
 
 ...
 
@@ -58,6 +58,6 @@ abstract public **queryKeys** ([*mixed* $prefix])
 
 ...
 
-abstract public **exists** ([*mixed* $keyName], [*mixed* $lifetime])
+abstrak publik **ada** ([*campuran* $keyName], [*dicampur* $lifetime])
 
 ...
