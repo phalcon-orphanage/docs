@@ -1,23 +1,23 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Column'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Db\Column'
+---
 # Class **Phalcon\Db\Column**
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/column.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
-Allows to define columns to be used on create or alter table operations
+Erlaubt die Definition von Spalten, welche zum Erstellen oder ändern von Tabellene-Operationen verwendet werden
 
 ```php
 <?php
 
 use Phalcon\Db\Column as Column;
 
-// Column definition
+// Spaltendefinition
 $column = new Column(
     "id",
     [
@@ -30,12 +30,12 @@ $column = new Column(
     ]
 );
 
-// Add column to existing table
+// Diese Spalte einer bereits vorhandenen Tabellen hinzufügen
 $connection->addColumn("robots", null, $column);
 
 ```
 
-## Constants
+## Konstanten
 
 *integer* **TYPE_INTEGER**
 
@@ -87,39 +87,39 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methods
+## Methoden
 
 public **getName** ()
 
-Column's name
+Spaltenname
 
 public **getSchemaName** ()
 
-Schema which table related is
+Schema, das mit der Tabelle verknüpft ist
 
 public **getType** ()
 
-Column data type
+Spaltendatentyp
 
 public **getTypeReference** ()
 
-Column data type reference
+Spalte Datentyp Referenz
 
 public **getTypeValues** ()
 
-Column data type values
+Spalte Datentyp Werte
 
 public **getSize** ()
 
-Integer column size
+Ganzzahl Spaltengröße
 
 public **getScale** ()
 
-Integer column number scale
+Ganzzahl Spalte Anzahl Skalierung
 
 public **getDefault** ()
 
-Default column value
+Standard-Spalte
 
 public **__construct** (*mixed* $name, *array* $definition)
 
@@ -127,27 +127,27 @@ Phalcon\Db\Column constructor
 
 public **isUnsigned** ()
 
-Returns true if number column is unsigned
+Gibt true zurück, wenn Spalte nicht signiert ist
 
 public **isNotNull** ()
 
-Not null
+Nicht Null
 
 public **isPrimary** ()
 
-Column is part of the primary key?
+Spalte ist Teil des Primärschlüssels?
 
 public **isAutoIncrement** ()
 
-Auto-Increment
+Automatische Erhöhung
 
 public **isNumeric** ()
 
-Check whether column have an numeric type
+Überprüft, ob Spalte einen numerischen Typ hat
 
 public **isFirst** ()
 
-Check whether column have first position in table
+Überprüft, ob die Spalte die erste Position in der Tabelle ist
 
 public *string* **getAfterPosition** ()
 
@@ -163,4 +163,4 @@ Restores the internal state of a Phalcon\Db\Column object
 
 public **hasDefault** ()
 
-Check whether column has default value
+Überprüft, ob die Spalte einen Standardwert besitzt
