@@ -10,85 +10,45 @@ title: 'Phalcon\Cache\Frontend\Igbinary'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
 
-Allows to cache native PHP data in a serialized form using igbinary extension
+Memungkinkan untuk cache data PHP asli dalam bentuk serial menggunakan ekstensi igbinary
 
 ```php
-<?php
-
-// Cache the files for 2 days using Igbinary frontend
-$frontCache = new \Phalcon\Cache\Frontend\Igbinary(
-    [
-        "lifetime" => 172800,
-    ]
-);
-
-// Create the component that will cache "Igbinary" to a "File" backend
-// Set the cache file directory - important to keep the "/" at the end of
-// of the value for the folder
-$cache = new \Phalcon\Cache\Backend\File(
-    $frontCache,
-    [
-        "cacheDir" => "../app/cache/",
-    ]
-);
-
-$cacheKey = "robots_order_id.cache";
-
-// Try to get cached records
-$robots = $cache->get($cacheKey);
-
-if ($robots === null) {
-    // $robots is null due to cache expiration or data do not exist
-    // Make the database call and populate the variable
-    $robots = Robots::find(
-        [
-            "order" => "id",
-        ]
-    );
-
-    // Store it in the cache
-    $cache->save($cacheKey, $robots);
-}
-
-// Use $robots :)
-foreach ($robots as $robot) {
-    echo $robot->name, "\n";
-}
+<? php / / Cache file selama 2 hari menggunakan Igbinary frontend$frontCache baru \Phalcon\Cache\Frontend\Igbinary = (["seumur hidup" = > 172800,]);  Membuat komponen yang akan cache "Igbinary" untuk backend "File" / / Set direktori file cache - penting untuk menjaga "/" pada akhir / / nilai untuk folder$cache baru \Phalcon\Cache\Backend\File = ($frontCache, ["cacheDir" = > "... /App/cache / ",]);$cacheKey = "robots_order_id.cache";  Mencoba untuk mendapatkan catatan cache$robots = $cache -> get($cacheKey);  Jika ($robots === null) {/ / $robots null karena cache kedaluwarsa atau data tidak ada / / membuat database panggilan dan mengisi $robots variabel = Robots::find (["order" = > "id",]);      Toko di cache $cache -> Simpan ($cacheKey, $robots); } / / Menggunakan foreach ($robots sebagai $robot) $robots :) {echo $robot -> nama, "\n";}
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $frontendOptions])
+umum **__membangun** ([*array* $frontendOptions])
 
 Phalcon\Cache\Frontend\Data constructor
 
-public **getLifetime** ()
+publik ** getLifetime ** ()
 
-Returns the cache lifetime
+Mengembalikan masa pakai cache
 
-public **isBuffering** ()
+public ** isBuffering ** ()
 
-Check whether if frontend is buffering output
+Periksa apakah frontend adalah buffering output
 
-public **start** ()
+publik ** mulai ** ()
 
 Starts output frontend. Actually, does nothing
 
-public *string* **getContent** ()
+public *string * **getContent** ()
 
-Returns output cached content
+Mengembalikan hasil konten dalam cache
 
-public **stop** ()
+publik ** berhenti ** ()
 
-Stops output frontend
+Menghentikan output frontend
 
-public **beforeStore** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
-Serializes data before storing them
+Serializes data sebelum menyimpannya
 
-public **afterRetrieve** (*mixed* $data)
+public ** afterRetrieve ** ( * mixed * $data)
 
-Unserializes data after retrieval
+Unserializes data setelah pengambilan
