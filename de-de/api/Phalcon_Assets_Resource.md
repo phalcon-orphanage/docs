@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/assets/resource.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Represents an asset resource
+Stellt Asset Ressourcen dar
 
 ```php
 <?php
@@ -19,7 +19,7 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## Methods
+## Methoden
 
 public **getType** ()
 
@@ -49,19 +49,19 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-Sets the resource's type
+Setzt den Ressourcentyp
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+Setzt den Ressourcenpfad
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+Legt fest, ob die Ressource lokal oder extern ist
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+Legt fest, ob die Ressource gefiltert werden muss oder nicht
 
 public **setAttributes** (*array* $attributes)
 
@@ -73,28 +73,28 @@ Sets a target uri for the generated HTML
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+Legt den Quellpfad der Ressource fest
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+Legt den Zielpfad der Ressource fest
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Gibt den Inhalt der Ressource als Zeichenkette zurück, optional kann ein Basispfad festgelegt werden wo sich die Ressource befindet
 
 public **getRealTargetUri** ()
 
-Returns the real target uri for the generated HTML
+Gibt die eigentlichen Ziel-Uri für den generierten HTML-Code zurück
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+Gibt den kompletten Pfad zurück, wo sich die Ressource befindet
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+Gibt den kompletten Pfad zurück, wo die Ressource geschrieben werden muss
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+Gibt den Ressourcenschlüssel zurück.
