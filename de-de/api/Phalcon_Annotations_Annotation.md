@@ -6,11 +6,11 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/annotations/annotation.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
 Represents a single annotation in an annotations collection
 
-## Methods
+## Methoden
 
 public **__construct** (*array* $reflectionData)
 
@@ -18,7 +18,7 @@ Phalcon\Annotations\Annotation constructor
 
 public **getName** ()
 
-Returns the annotation's name
+Gibt den Anmerkungs-Namen zurück
 
 public *mixed* **getExpression** (*array* $expr)
 
@@ -38,16 +38,16 @@ Returns the number of arguments that the annotation has
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Gibt ein Argument in einer bestimmten Position zurück
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Gibt ein Argument in einer bestimmten Position zurück
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-Returns a named argument
+Gibt ein benanntes Argument zurück
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-Returns a named parameter
+Gibt einen benannten Parameter zurück
