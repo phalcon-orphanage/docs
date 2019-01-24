@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\View\Engine\Php'
 
 *implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/php.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/php.zep)
 
 Adapter to use PHP itself as templating engine
 
@@ -42,7 +42,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
