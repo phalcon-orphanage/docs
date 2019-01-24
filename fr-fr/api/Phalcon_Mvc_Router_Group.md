@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router\Group'
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
 Helper class to create a group of routes with common attributes
 
@@ -58,7 +58,7 @@ $router->mount($blog);
 
 ```
 
-## Méthodes
+## Methods
 
 public **__construct** ([*mixed* $paths])
 
@@ -86,7 +86,7 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public **getBeforeMatch** ()
 
-Renvoie l '"avant match" rappel si tout
+Returns the 'before match' callback if any
 
 public **setPaths** (*mixed* $paths)
 
@@ -113,7 +113,7 @@ $router->add("/about", "About::index");
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addGet** (*string* $pattern, [*string/array* $paths])
 
-Ajoute une route vers le routeur qui corresponde uniquement si la méthode HTTP GET
+Adds a route to the router that only match if the HTTP method is GET
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
 
