@@ -8,7 +8,7 @@ title: 'Phalcon\Di\Service'
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
 Represents individually a service in the services container
 
@@ -57,7 +57,7 @@ Resolves the service
 
 public **setParameter** (*mixed* $position, *array* $parameter)
 
-Changes a parameter in the definition without resolve the service
+Αλλάζει μια παράμετρο στον να ορισμό χωρίς επιλύσει την υπηρεσία
 
 public *array* **getParameter** (*int* $position)
 
