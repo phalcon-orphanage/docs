@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
-Stellt ein Inline Asset dar
+Represents an inline asset
 
 ```php
 <?php
@@ -19,7 +19,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
-## Methoden
+## Methods
 
 public **getType** ()
 
@@ -43,11 +43,11 @@ Phalcon\Assets\Inline constructor
 
 public **setType** (*mixed* $type)
 
-Legt den Inline-Typ fest
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter)
 
-Legt fest, ob die Ressource gefiltert werden muss oder nicht
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
@@ -55,4 +55,4 @@ Sets extra HTML attributes
 
 public **getResourceKey** ()
 
-Gibt den Ressourcenschlüssel zurück.
+Gets the resource's key.
