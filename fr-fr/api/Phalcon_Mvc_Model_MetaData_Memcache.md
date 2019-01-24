@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Memcache'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memcache.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memcache.zep)
 
 Stores model meta-data in the Memcache.
 
@@ -31,7 +31,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Memcache(
 
 ```
 
-## Constants
+## Constantes
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -65,7 +65,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Memcache(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## Méthodes
 
 public **__construct** ([*array* $options])
 
