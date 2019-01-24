@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ManagerInterface**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
 
-## Méthodes
+## Methods
 
 abstract public **initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
