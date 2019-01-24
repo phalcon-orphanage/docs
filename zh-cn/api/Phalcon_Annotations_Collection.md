@@ -36,40 +36,40 @@ Phalcon\Annotations\Collection constructor
 
 public **count** ()
 
-返回集合中的批注
+Returns the number of annotations in the collection
 
 public **rewind** ()
 
-倒带内部迭代器
+Rewinds the internal iterator
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-在迭代器返回当前注释
+Returns the current annotation in the iterator
 
 public **key** ()
 
-在迭代器中返回每个该项当前的位置
+Returns the current position/key in the iterator
 
 public **next** ()
 
-将内部迭代指针移动到下一个位置
+Moves the internal iteration pointer to the next position
 
 public **valid** ()
 
-检查当前注释在迭代器是否有效
+Check if the current annotation in the iterator is valid
 
 public **getAnnotations** ()
 
-以数组形式返回内部注释
+Returns the internal annotations as an array
 
 public **get** (*string* $name)
 
-返回的名称匹配的第一个注释
+Returns the first annotation that match a name
 
 public **getAll** (*string* $name)
 
-返回的名称匹配的所有注释
+Returns all the annotations that match a name
 
 public **has** (*string* $name)
 
-检查集合中是否存在注释
+Check if an annotation exists in a collection
