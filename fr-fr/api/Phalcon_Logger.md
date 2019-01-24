@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'fr-fr' version: '4.0' title: 'Phalcon\Logger'
-
-* * *
-
+---
+layout: article
+language: 'fr-fr'
+version: '4.0'
+title: 'Phalcon\Logger'
+---
 # Abstract class **Phalcon\Logger**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/logger.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
-## Constants
+## Constantes
 
 *integer* **SPECIAL**
 
