@@ -8,23 +8,23 @@ title: 'Phalcon\Events\Event'
 
 *implements* [Phalcon\Events\EventInterface](Phalcon_Events_EventInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
 This class offers contextual information of a fired event in the EventsManager
 
-## Methoden
+## Methods
 
 public **getType** ()
 
-Ereignis Typ
+Event type
 
 public **getSource** ()
 
-Ereignisquelle
+Event source
 
 public **getData** ()
 
-Ereignisdaten
+Event data
 
 public **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
@@ -32,15 +32,15 @@ Phalcon\Events\Event constructor
 
 public **setData** ([*mixed* $data])
 
-Legt Ereignisdaten fest.
+Sets event data.
 
 public **setType** (*mixed* $type)
 
-Legt den Ereignis Typ fest.
+Sets event type.
 
 public **stop** ()
 
-Stoppt die Ereignis Auslösung.
+Stops the event preventing propagation.
 
 ```php
 <?php
@@ -53,11 +53,11 @@ if ($event->isCancelable()) {
 
 public **isStopped** ()
 
-Prüft, ob das Ereignis beendet ist.
+Check whether the event is currently stopped.
 
 public **isCancelable** ()
 
-Prüft, ob das Ereignis abgebrochen werden kann.
+Check whether the event is cancelable.
 
 ```php
 <?php
