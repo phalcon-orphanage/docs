@@ -1,14 +1,14 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Crypt'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Crypt'
+---
 # Class **Phalcon\Crypt**
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/crypt.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
 Provides encryption facilities to phalcon applications
 
@@ -17,8 +17,8 @@ Provides encryption facilities to phalcon applications
 
 $crypt = new \Phalcon\Crypt();
 
-$key  = "le password";
-$text = "This is a secret text";
+$key  = "das password";
+$text = "Das ist ein geheimer Text";
 
 $encrypted = $crypt->encrypt($text, $key);
 
@@ -26,7 +26,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 ```
 
-## Constants
+## Konstanten
 
 *integer* **PADDING_ANSI_X_923**
 
@@ -64,7 +64,7 @@ The name of hashing algorithm.
 
 *boolean* **$useSigning** = false; Whether calculating message digest enabled or not **NOTE**: This feature will be enabled by default in Phalcon 4.0.0
 
-## Methods
+## Methoden
 
 ### Public
 
@@ -173,7 +173,7 @@ protected **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize,
 
 Removes a padding from a text. If the function detects that the text was not padded, it will return it unmodified
 
-| Type   | Name         | Description                                                   |
+| Type   | Name         | Beschreibung                                                  |
 | ------ | ------------ | ------------------------------------------------------------- |
 | string | $text        | Message to be unpadded                                        |
 | string | $mode        | Encryption mode; unpadding is applied only in CBC or ECB mode |
