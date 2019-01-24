@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Router\Route'
 
 *implements* [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
 
-This class represents every route added to the router
+Cette classe représente chaque route a ajouté le routeur
 
-## Methods
+## Méthodes
 
 public **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
@@ -42,11 +42,11 @@ $route->via(
 
 public **extractNamedParams** (*mixed* $pattern)
 
-Extracts parameters from a string
+Extraits de paramètres à partir d'une chaîne
 
 public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
-Reconfigure the route adding a new pattern and a set of paths
+Reconfigurer la route de l'ajout d'un nouveau modèle et un ensemble de chemins
 
 public static **getRoutePaths** ([*mixed* $paths])
 
@@ -54,7 +54,7 @@ Returns routePaths
 
 public **getName** ()
 
-Returns the route's name
+Retourne le nom de l'itinéraire
 
 public **setName** (*mixed* $name)
 
@@ -100,7 +100,7 @@ $router->add(
 
 public **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+Renvoie l '"avant match" rappel si tout
 
 public **match** (*mixed* $callback)
 
@@ -142,7 +142,7 @@ Returns the paths
 
 public **getReversedPaths** ()
 
-Returns the paths using positions as keys and names as values
+Retourne les chemins à l'aide de postes clés et les noms comme des valeurs
 
 public **setHttpMethods** (*mixed* $httpMethods)
 
@@ -185,7 +185,7 @@ Returns the group associated with the route
 
 public **convert** (*mixed* $name, *mixed* $converter)
 
-Adds a converter to perform an additional transformation for certain parameter
+Ajoute un convertisseur pour effectuer une transformation supplémentaire pour certains paramètres
 
 public **getConverters** ()
 
@@ -193,4 +193,4 @@ Returns the router converter
 
 public static **reset** ()
 
-Resets the internal route id generator
+Réinitialise la voie interne id du générateur
