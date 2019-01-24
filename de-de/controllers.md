@@ -19,13 +19,13 @@ Actions are methods on a controller that handle requests. By default all public 
 
 For instance, when you access a URL like this: `https://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Description           | Slug           |
-| --------------------- | -------------- |
-| **Phalcon Directory** | blog           |
-| **Controller**        | posts          |
-| **Action**            | show           |
-| **Parameter**         | 2015           |
-| **Parameter**         | the-post-title |
+| Beschreibung            | Slug           |
+| ----------------------- | -------------- |
+| **Phalcon-Verzeichnis** | blog           |
+| **Controller**          | posts          |
+| **Action**              | show           |
+| **Parameter**           | 2015           |
+| **Parameter**           | the-post-title |
 
 In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using [Phalcon\Loader](api/Phalcon_Loader), so you're free to organize your controllers as you need.
 
@@ -155,7 +155,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## Initializing Controllers
+## Controller initialisieren
 
 [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
@@ -315,7 +315,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/4.0
 
 <a name='session-data'></a>
 
-## Session Data
+## Session Daten
 
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) from any controller to encapsulate data that needs to be persistent:
 
