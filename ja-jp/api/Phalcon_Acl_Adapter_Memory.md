@@ -12,7 +12,7 @@ title: 'Phalcon\Acl\Adapter\Memory'
 
 ### Description
 
-メモリ上のアクセス制御リストを管理します
+Manages ACL lists in memory
 
 ### 例
 
