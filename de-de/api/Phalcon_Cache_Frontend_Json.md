@@ -8,27 +8,27 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/cache/frontend/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
-Allows to cache data converting/deconverting them to JSON.
+Ermöglicht es Daten über (de-)konvertierung nach JSON zu cachen.
 
-This adapter uses the json_encode/json_decode PHP's functions
+Dieser Adapter nutzt die json_encode/Json_decode PHP Funktionen
 
-As the data is encoded in JSON other systems accessing the same backend could process them
+Da die Daten in JSON codiert sind, können andere Systemen mit Zugriff auf dasselbe Backend diese verarbeiten
 
 ```php
 <?php
 
 <?php
 
-// Cache the data for 2 days
+// Daten für 2 days cachen
 $frontCache = new \Phalcon\Cache\Frontend\Json(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Create the Cache setting memcached connection options
+// Cache mittels memcached Einstellungesoptionen erstellen
 $cache = new \Phalcon\Cache\Backend\Memcache(
     $frontCache,
     [
@@ -38,15 +38,15 @@ $cache = new \Phalcon\Cache\Backend\Memcache(
     ]
 );
 
-// Cache arbitrary data
+// Willkürliche Date ccachen
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// Daten holen
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -54,11 +54,11 @@ Phalcon\Cache\Frontend\Base64 constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Liefert die Cache-Lebensdauer
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Prüft, ob das Frontend Ausgaben puffert
 
 public **start** ()
 
@@ -66,16 +66,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+Liefert einen zwischengespeicherten Inhalt
 
 public **stop** ()
 
-Stops output frontend
+Stoppt die Frontend Ausgabe
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serialisiert Daten vor dem Speichern
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes Daten nach der Entnahme
