@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Xcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
 
 Allows to cache output fragments, PHP data and raw data using an XCache backend
 
@@ -42,7 +42,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Méthodes
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
