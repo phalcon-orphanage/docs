@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Ip'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/ip.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/ip.zep)
 
 Phalcon\Mvc\Model\Validator\IP
 
@@ -71,13 +71,13 @@ class Data extends \Phalcon\Mvc\Collection
 
 ```
 
-## Constantes
+## Constants
 
 *integer* **VERSION_4**
 
 *integer* **VERSION_6**
 
-## Méthodes
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
