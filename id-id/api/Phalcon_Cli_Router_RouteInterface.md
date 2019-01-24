@@ -6,46 +6,46 @@ title: 'Phalcon\Cli\Router\RouteInterface'
 ---
 # Interface **Phalcon\Cli\Router\RouteInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **compilePattern** (*mixed* $pattern)
-
-...
-
-abstract public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
+publik **kompilasiPola** (*campuraduk* $pattern)
 
 ...
 
-abstract public **getName** ()
+abstrak umum **addRole** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
-abstract public **setName** (*mixed* $name)
+abstrak publik **getName** ()
 
 ...
 
-abstract public **getRouteId** ()
+abstract umum$name$name$name$name **setName** (*mixed* $nama)
 
 ...
 
-abstract public **getPattern** ()
+publik abstrak **getFrontend** ()
 
 ...
 
-abstract public **getCompiledPattern** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getPaths** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getReversedPaths** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public static **reset** ()
+abstrak publik **getReferencedTable** ()
+
+...
+
+publik static **reset** ()
 
 ...
