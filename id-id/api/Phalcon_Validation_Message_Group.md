@@ -8,11 +8,11 @@ title: 'Phalcon\Validation\Message\Group'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
 
-Mewakili kelompok pesan validasi
+Represents a group of validation messages
 
-## Metode
+## Methods
 
 public **__construct** ([*array* $messages])
 
@@ -20,7 +20,7 @@ Phalcon\Validation\Message\Group constructor
 
 public [Phalcon\Validation\Message](Phalcon_Validation_Message) **offsetGet** (*int* $index)
 
-Mendapatkan atribut pesan menggunakan sintaks array
+Gets an attribute a message using the array syntax
 
 ```php
 <?php
@@ -33,7 +33,7 @@ print_r(
 
 public **offsetSet** (*int* $index, [Phalcon\Validation\Message](Phalcon_Validation_Message) $message)
 
-Menetapkan atribut menggunakan sintaks-array
+Sets an attribute using the array-syntax
 
 ```php
 <?php
@@ -44,7 +44,7 @@ $messages[0] = new \Phalcon\Validation\Message("This is a message");
 
 public *boolean* **offsetExists** (*int* $index)
 
-Pemeriksaan jika ada indeks
+Checks if an index exists
 
 ```php
 <?php
@@ -57,7 +57,7 @@ var_dump(
 
 public **offsetUnset** (*mixed* $index)
 
-Menghapus pesan dari daftar
+Removes a message from the list
 
 ```php
 <?php
@@ -68,7 +68,7 @@ unset($message["database"]);
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message)
 
-Menambahkan pesan ke grup
+Appends a message to the group
 
 ```php
 <?php
@@ -81,7 +81,7 @@ $messages->appendMessage(
 
 public **appendMessages** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $messages)
 
-Menambahkan sebuah array dari pesan ke grup
+Appends an array of messages to the group
 
 ```php
 <?php
@@ -92,32 +92,32 @@ $messages->appendMessages($messagesArray);
 
 public *array* **filter** (*string* $fieldName)
 
-Filter grup pesan dengan nama field
+Filters the message group by field name
 
-publik **menghitung**()
+public **count** ()
 
-Mengembalikan jumlah pesan dalam daftar
+Returns the number of messages in the list
 
-publik**mundur**()
+public **rewind** ()
 
-Melakukan pemutaran balik internal iterator
+Rewinds the internal iterator
 
 public **current** ()
 
-Mengembalikan pesan yang sekarang di iterator
+Returns the current message in the iterator
 
-publik **kunci** ()
+public **key** ()
 
-Mengembalikan posisi/kunci saat ini di iterator
+Returns the current position/key in the iterator
 
-publik **berikutnya** ()
+public **next** ()
 
-Bergerak pointer internal iterasi kepada posisi yang berikut
+Moves the internal iteration pointer to the next position
 
-publik **sah** ()
+public **valid** ()
 
-Periksa apakah pesan yang sekarang di iterator berlaku
+Check if the current message in the iterator is valid
 
 public static [Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) **__set_state** (*array* $group)
 
-Sihir __set_state membantu untuk membangun kembali pesan variabel saat mengekspor
+Magic __set_state helps to re-build messages variable when exporting
