@@ -1,18 +1,18 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Db\Dialect'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Db\Dialect'
+---
 # Abstract class **Phalcon\Db\Dialect**
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/db/dialect.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## Methods
+## Methoden
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
 
@@ -47,7 +47,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+Liefert ein SQL, welches mit der FOR UPDATE-Klausel angepasst wurde
 
 ```php
 <?php
