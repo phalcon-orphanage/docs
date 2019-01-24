@@ -6,9 +6,9 @@ title: 'Phalcon\FilterInterface'
 ---
 # Interface **Phalcon\FilterInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filterinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **add** (*mixed* $name, *mixed* $handler)
 
