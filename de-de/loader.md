@@ -284,13 +284,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. Die folgenden Ereignisse werden unterstützt:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| Ereignisname       | Ausgelöst                                                                                                           | Kann den Vorgang stoppen? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Ja                        |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Nein                      |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nein                      |
 
 <a name='troubleshooting'></a>
 
