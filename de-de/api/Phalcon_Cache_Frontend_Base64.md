@@ -8,25 +8,25 @@ title: 'Phalcon\Cache\Frontend\Base64'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
-Ermöglicht es Daten über (de-) konvertierung nach base64 zu cachen.
+Allows to cache data converting/deconverting them to base64.
 
-Dieser Adapter nutzt die base64_encode/base64_decode PHP Funktionen
+This adapter uses the base64_encode/base64_decode PHP's functions
 
 ```php
 <?php
 
 <?php
 
-// Dateien für 2 Tage mittels Base64 frontend cachen
+// Cache the files for 2 days using a Base64 frontend
 $frontCache = new \Phalcon\Cache\Frontend\Base64(
     [
         "lifetime" => 172800,
     ]
 );
 
-//MongoDB Cache erstellen
+//Create a MongoDB cache
 $cache = new \Phalcon\Cache\Backend\Mongo(
     $frontCache,
     [
@@ -55,7 +55,7 @@ echo $image;
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -63,11 +63,11 @@ Phalcon\Cache\Frontend\Base64 constructor
 
 public **getLifetime** ()
 
-Liefert die Cache-Lebensdauer
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Prüft, ob das Frontend Ausgaben puffert
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -75,16 +75,16 @@ Starts output frontend. Actually, does nothing in this adapter
 
 public *string* **getContent** ()
 
-Liefert einen zwischengespeicherten Inhalt
+Returns output cached content
 
 public **stop** ()
 
-Stoppt die Frontend Ausgabe
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serialisiert Daten vor dem Speichern
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes Daten nach der Entnahme
+Unserializes data after retrieval
