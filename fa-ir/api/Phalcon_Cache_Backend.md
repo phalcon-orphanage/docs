@@ -8,11 +8,11 @@ title: 'Phalcon\Cache\Backend'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
-## روش ها
+## Methods
 
 public **getFrontend** ()
 
@@ -22,7 +22,7 @@ public **setFrontend** (*mixed* $frontend)
 
 ...
 
-عمومی **دریافت نام** ()
+public **getOptions** ()
 
 ...
 
