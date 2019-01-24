@@ -6,27 +6,27 @@ title: 'Phalcon\Db\DialectInterface'
 ---
 # Interface **Phalcon\Db\DialectInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-## Metode
+## Methods
 
-abstrak public **limit** (*mixed* $sqlQuery, *mixed* $number)
-
-...
-
-abstrak publik **forUpdate** (*campuran* $sqlQuery)
+abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
 ...
 
-abstrak publik **sharedLock** (*campuran* $sqlQuery)
+abstract public **forUpdate** (*mixed* $sqlQuery)
 
 ...
 
-publik abstrak **pilih** (*array* $definition)
+abstract public **sharedLock** (*mixed* $sqlQuery)
 
 ...
 
-abstrak publik **getColumnList** (*array* $columnList)
+abstract public **select** (*array* $definition)
+
+...
+
+abstract public **getColumnList** (*array* $columnList)
 
 ...
 
@@ -50,7 +50,7 @@ abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\
 
 ...
 
-abstrak umum **dropIndex** (*campuran* $tableName, *campuran* $schemaName, *campuran* $indexName)
+abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
 ...
 
@@ -66,31 +66,31 @@ abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-abstrak umum **dropForeignKey** (*campuran* $tableName, *campuran* $schemaName, *campuran* $referenceName)
+abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
 ...
 
-abstrak publik **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
+abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 ...
 
-abstrak publik **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
+abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 ...
 
-abstrak publik **dropTable** (*campuran* $tableName *dicampur* $schemaName)
+abstract public **dropTable** (*mixed* $tableName, *mixed* $schemaName)
 
 ...
 
-abstrak publik **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
+abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
-abstrak publik **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
+abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
-abstrak publik **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
+abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 ...
 
@@ -98,7 +98,7 @@ abstract public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
 ...
 
-abstrak umum **listTables** ([*campuran* $schemaName])
+abstract public **listTables** ([*mixed* $schemaName])
 
 ...
 
@@ -110,15 +110,15 @@ abstract public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
 ...
 
-abstrak publik **tableOptions** (*mixed* $table, [*mixed* $schema])
+abstract public **tableOptions** (*mixed* $table, [*mixed* $schema])
 
 ...
 
-publik abstrak **mendukungSavepoints** ()
+abstract public **supportsSavepoints** ()
 
 ...
 
-publik abstrak **mendukungReleaseSavepoints** ()
+abstract public **supportsReleaseSavepoints** ()
 
 ...
 
