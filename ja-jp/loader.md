@@ -21,7 +21,7 @@ With this component you can load files from other projects or vendors, this auto
 
 <a name='security'></a>
 
-## Security Layer
+## セキュリティ層
 
 [Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -229,7 +229,7 @@ $loader->setFileCheckingCallback(null);
 
 <a name='modifying-current-strategies'></a>
 
-## Modifying current strategies
+## 現在の戦略の修正
 
 Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
 
@@ -248,7 +248,7 @@ $loader->registerDirs(
 
 <a name='events'></a>
 
-## Autoloading Events
+## オートローディングイベント
 
 In the following example, the `EventsManager` is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
@@ -286,11 +286,11 @@ $loader->register();
 
 Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| イベント名              | トリガー                                                                                                                | 処理中断が可能 |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | はい      |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | いいえ     |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | いいえ     |
 
 <a name='troubleshooting'></a>
 
