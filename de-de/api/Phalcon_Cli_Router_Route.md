@@ -6,15 +6,15 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-Diese Klasse repräsentiert jede Route, welche dem Router hinzugefügt wurde
+This class represents every route added to the router
 
-## Konstanten
+## Constants
 
 *string* **DEFAULT_DELIMITER**
 
-## Methoden
+## Methods
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
@@ -22,23 +22,23 @@ Phalcon\Cli\Router\Route constructor
 
 public **compilePattern** (*mixed* $pattern)
 
-Ersetzt Platzhalter aus Muster wieder und gibt einen gültigen PCRE regulären Ausdruck zurück
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
-Extrahiert Parameter aus einer Zeichenfolge
+Extracts parameters from a string
 
 public **reConfigure** (*string* $pattern, [*array* $paths])
 
-Konfiguriert die Route, unter Angabe eines neuen Musters und einigen Pfaden, neu
+Reconfigure the route adding a new pattern and a set of paths
 
 public **getName** ()
 
-Gibt den Routen-Namen zurück
+Returns the route's name
 
 public **setName** (*mixed* $name)
 
-Legt den Routen-Namen fest
+Sets the route's name
 
 ```php
 <?php
@@ -58,44 +58,44 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public *mixed* **getBeforeMatch** ()
 
-Liefert den "before match" Callback, falls vorhanden
+Returns the 'before match' callback if any
 
 public **getRouteId** ()
 
-Gibt die Routen-Id zurück
+Returns the route's id
 
 public **getPattern** ()
 
-Gibt das Routen-Muster zurück
+Returns the route's pattern
 
 public **getCompiledPattern** ()
 
-Gibt das compilierte Routen-Muster zurück
+Returns the route's compiled pattern
 
 public **getPaths** ()
 
-Gibt die Pfade zurück
+Returns the paths
 
 public **getReversedPaths** ()
 
-Gibt die Pfade mit Positionen als Schlüssel und Namen als Werte zurück
+Returns the paths using positions as keys and names as values
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **convert** (*string* $name, *callable* $converter)
 
-Fügt einen Konverter hinzu, um eine weitere Transformation für bestimmte Parameter auszuführen
+Adds a converter to perform an additional transformation for certain parameter
 
 public **getConverters** ()
 
-Gibt den Router-Konverter zurück
+Returns the router converter
 
 public static **reset** ()
 
-Setzt den internen Routen Id-Generator zurück
+Resets the internal route id generator
 
 public static **delimiter** ([*mixed* $delimiter])
 
-Legt das Routing Trennzeichen fest
+Set the routing delimiter
 
 public static **getDelimiter** ()
 
-Gibt das Routing Trennzeichen zurück
+Get routing delimiter
