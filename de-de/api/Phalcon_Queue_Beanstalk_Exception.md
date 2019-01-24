@@ -10,17 +10,17 @@ title: 'Phalcon\Queue\Beanstalk\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/exception.zep)
 
-## Methoden
+## Methods
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ausnahme klonen
+Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ausnahme-Konstruktor
+Exception constructor
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -28,32 +28,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Liefert den Ausnahme Meldung
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Liefert den Ausnahmecode
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Liefert die Datei, in der die Ausnahme aufgetreten ist
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Liefert die Zeile, in der die Ausnahme aufgetreten ist
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gibt den Stack-trace zurück
+Gets the stack trace
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gibt die vorherige Ausnahme zurück
+Returns previous Exception
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gibt den Stack-trace als Zeichenfolge zurück
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String-Darstellung der Ausnahme
+String representation of the exception
