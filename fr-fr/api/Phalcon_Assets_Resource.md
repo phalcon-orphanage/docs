@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
 Represents an asset resource
 
@@ -19,7 +19,7 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## Méthodes
+## Methods
 
 public **getType** ()
 
@@ -69,7 +69,7 @@ Sets extra HTML attributes
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Définit un uri cible pour le code HTML généré
+Sets a target uri for the generated HTML
 
 public **setSourcePath** (*mixed* $sourcePath)
 
