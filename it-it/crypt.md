@@ -149,7 +149,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                           |
+| Name   | Descrizione                                                                                                                                                           |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://www.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
