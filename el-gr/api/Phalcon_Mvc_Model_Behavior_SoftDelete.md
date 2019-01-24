@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Behavior\SoftDelete'
 
 *implements* [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
 
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
@@ -34,4 +34,4 @@ Returns the behavior options related to an event
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $method, [*array* $arguments]) inherited from [Phalcon\Mvc\Model\Behavior](Phalcon_Mvc_Model_Behavior)
 
-Acts as fallbacks when a missing method is called on the model
+Λειτουργεί που λείπει αναστροφή όταν καλείται μια μέθοδος ως στο μοντέλο
