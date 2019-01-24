@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Url'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/url.zep)
 
 Allows to validate if a field has a url format
 
@@ -69,4 +69,4 @@ Returns an option
 
 public **isSetOption** (*mixed* $option) inherited from [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)
 
-Check whether an option has been defined in the validator options
+Ελέγξτε αν έχει οριστεί επιλογή μια στις επιλογές επικύρωσης
