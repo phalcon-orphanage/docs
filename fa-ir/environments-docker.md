@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# بررسی کلی
 
 Phalcon Compose is a community driven boilerplate development environment for Phalcon projects that runs on Docker. Its purpose is to make it easier to bootstrap Phalcon applications and run them on development or production environments.
 
@@ -25,7 +25,7 @@ To run this stack on your machine, you need at least: * Operating System: Window
 
 Services included are:
 
-| Service name  | Description                                                                                         |
+| Service name  | توضیحات                                                                                             |
 | ------------- | --------------------------------------------------------------------------------------------------- |
 | mongo         | MongoDB server container.                                                                           |
 | postgres      | PostgreSQL server container.                                                                        |
@@ -49,23 +49,23 @@ Services included are:
 Using Composer, you can create a new project as follows:
 
 ```bash
-composer create-project phalcon/compose --prefer-dist <folder name>
+آهنگساز پروژه را ایجاد کنید phalcon/compose --prefer-dist <folder name>
 ```
 
 Your output should be similar to this:
 
 ```php
-Example
- Installing phalcon/compose (version)
-  - Installing phalcon/compose (version)
-    Loading from cache
+مثال
+  نصب phalcon/compose (نسخه)
+   - نصب phalcon/compose (نسخه)
+     بارگیری از حافظه پنهان
 
-Created project in folderName
+پروژه ایجاد شده در پوشه نام
 > php -r "copy('variables.env.example', 'variables.env');"
-Loading composer repositories with package information
-Updating dependencies (including require-dev)
-Nothing to install or update
-Generating autoload files
+در حال بارگیری مخزن آهنگساز با اطلاعات بسته
+به روز رسانی وابستگی (از جمله require-dev)
+هیچ چیز برای نصب یا به روز رسانی وجود ندارد
+تولید فایل های بار خودکار
 ```
 
 <a name='installation-git'></a>
@@ -105,7 +105,7 @@ docker-compose build
 To start the application and run the containers in the background, use following command inside project root:
 
 ```bash
-# You can use here your prefered project name with "-p my-app" parameter
+# شما می توانید از نام پروژه ترجیحی خود با پارامتر "-p my-app" استفاده کنید
 $ docker-compose up -d
 ```
 
@@ -144,7 +144,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### Web environment
 
-| Environment variable | Description                                         | Default         |
+| Environment variable | توضیحات                                             | Default         |
 | -------------------- | --------------------------------------------------- | --------------- |
 | `WEB_DOCUMENT_ROOT`  | Document root for webserver (inside the container). | /project/public |
 | `WEB_DOCUMENT_INDEX` | Index document.                                     | index.php       |
@@ -158,7 +158,7 @@ You can pass multiple environment variables from an external file to a service's
 
 ### phpMyAdmin variables
 
-| Environment variable | Description                                                                                                  | Default |
+| Environment variable | توضیحات                                                                                                      | Default |
 | -------------------- | ------------------------------------------------------------------------------------------------------------ | ------- |
 | `PMA_ARBITRARY`      | When set to 1 connection to the server will be allowed.                                                      | 1       |
 | `PMA_HOST`           | Define address/host name of the MySQL server.                                                                | mysql   |
@@ -178,7 +178,7 @@ You can pass multiple environment variables from an external file to a service's
 
 For debugging purposes you can setup Xdebug by passing required parameters (see variables.env).
 
-| Environment variable         | Description                                              | Default |
+| Environment variable         | توضیحات                                                  | Default |
 | ---------------------------- | -------------------------------------------------------- | ------- |
 | `XDEBUG_REMOTE_HOST`         | `php.ini` value for `xdebug.remote_host` (your host IP). |         |
 | `XDEBUG_REMOTE_PORT`         | `php.ini` value for `xdebug.remote_port`.                | 9000    |
@@ -247,7 +247,7 @@ docker pull phalconphp/php-apache:ubuntu-16.04
 Linux/MacOS users can use `make` to perform the task:
 
 ```bash
-make pull
+کشیدن
 ```
 
 Then you have to reset all containers, delete all data, rebuild services and restart application.
@@ -255,5 +255,5 @@ Then you have to reset all containers, delete all data, rebuild services and res
 Linux/MacOS users can use `make` to perform the task:
 
 ```bash
-make reset
+تنظیم مجدد
 ```
