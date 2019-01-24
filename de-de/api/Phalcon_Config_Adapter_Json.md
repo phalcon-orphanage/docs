@@ -1,20 +1,20 @@
-* * *
-
-layout: article language: 'de-de' version: '4.0' title: 'Phalcon\Config\Adapter\Json'
-
-* * *
-
+---
+layout: article
+language: 'de-de'
+version: '4.0'
+title: 'Phalcon\Config\Adapter\Json'
+---
 # Class **Phalcon\Config\Adapter\Json**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/config/adapter/json.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
 
 Reads JSON files and converts them to Phalcon\Config objects.
 
-Given the following configuration file:
+Angenommen wir hätten die folgende Konfigurationsdatei:
 
 ```php
 <?php
@@ -23,7 +23,7 @@ Given the following configuration file:
 
 ```
 
-You can read it as follows:
+Kann diese wie folgt gelesen werden:
 
 ```php
 <?php
@@ -35,11 +35,11 @@ echo $config->models->metadata;
 
 ```
 
-## Constants
+## Konstanten
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Methoden
 
 public **__construct** (*mixed* $filePath)
 
@@ -47,7 +47,7 @@ Phalcon\Config\Adapter\Json constructor
 
 public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Allows to check whether an attribute is defined using the array-syntax
+Ermöglicht es zu prüfen, ob ein Attribut mit der Array-Syntax definiert ist
 
 ```php
 <?php
@@ -71,7 +71,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
+Holt ein Attribut aus der Konfiguration, wenn das Attribut nicht definiert ist, gibt es null zurück, wenn der Wert genau null ist oder nicht definiert ist, dann wird stattdessen der Standardwert verwendet
 
 ```php
 <?php
@@ -82,7 +82,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Gets an attribute using the array-syntax
+Holt ein Attribut mittels der Array-syntax
 
 ```php
 <?php
