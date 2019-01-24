@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-نمایه یک دارایی است
+Represents an asset resource
 
 ```php
 <?php
@@ -19,13 +19,13 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## روش ها
+## Methods
 
 public **getType** ()
 
 public **getPath** ()
 
-عمومی **دریافت محلی** ()
+public **getLocal** ()
 
 public **getFilter** ()
 
@@ -49,27 +49,27 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-نوع منبع را تعیین می کند
+Sets the resource's type
 
 public **setPath** (*mixed* $path)
 
-مسیر منبع را تعیین می کند
+Sets the resource's path
 
 public **setLocal** (*mixed* $local)
 
-تعیین می کند که آیا منبع محلی است یا خارجی
+Sets if the resource is local or external
 
 public **setFilter** (*mixed* $filter)
 
-تعیین می کند که آیا منابع باید فیلتر شوند یا خیر
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
-ویژگی های HTML اضافی را تعیین می کند
+Sets extra HTML attributes
 
 public **setTargetUri** (*mixed* $targetUri)
 
-مجموعه هدف uri را برای HTML ایجاد می کند
+Sets a target uri for the generated HTML
 
 public **setSourcePath** (*mixed* $sourcePath)
 
@@ -97,4 +97,4 @@ Returns the complete location where the resource must be written
 
 public **getResourceKey** ()
 
-کلید منبع را دریافت می کند.
+Gets the resource's key.
