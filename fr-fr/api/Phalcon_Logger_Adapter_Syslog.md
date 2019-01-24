@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\Syslog'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
 Sends logs to the system logger
 
@@ -35,7 +35,7 @@ $logger->error("This is another error");
 
 ```
 
-## Méthodes
+## Methods
 
 public **__construct** (*string* $name, [*array* $options])
 
