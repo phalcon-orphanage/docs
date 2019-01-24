@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk'
 ---
 # Class **Phalcon\Queue\Beanstalk**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
@@ -25,7 +25,7 @@ $queue = new Beanstalk(
 
 ```
 
-## Constants
+## Konstanten
 
 *integer* **DEFAULT_DELAY**
 
@@ -39,13 +39,13 @@ $queue = new Beanstalk(
 
 *integer* **DEFAULT_PORT**
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $parameters])
 
 public **connect** ()
 
-Makes a connection to the Beanstalkd server
+Stellt eine Verbindung mit dem Beanstalkd-Server her
 
 public **put** (*mixed* $data, [*array* $options])
 
@@ -133,4 +133,4 @@ Closes the connection to the beanstalk server.
 
 public **quit** ()
 
-Simply closes the connection.
+Beendet die Verbindung.
