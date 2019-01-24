@@ -25,7 +25,7 @@ Phalcon offers the `Phalcon\Tag::setDoctype()` helper to set document type of th
 
 Available document type constants in [Phalcon\Tag](api/Phalcon_Tag) namespace are:
 
-| ثابت                 | Document type          |
+| Constant             | Document type          |
 | -------------------- | ---------------------- |
 | HTML32               | HTML 4.0               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
@@ -68,7 +68,7 @@ The following HTML will be produced.
 </html>
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -199,7 +199,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -506,7 +506,7 @@ echo $this->tag->image(
 );
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -532,7 +532,7 @@ echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Rosario
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -558,7 +558,7 @@ echo $this->tag->javascriptInclude('https://localhost/javascript/jquery.min.js',
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```twig
 {% raw %}
@@ -598,7 +598,7 @@ echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-ترکیب ولت:
+Volt syntax:
 
 ```php
 {% raw %}
