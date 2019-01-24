@@ -10,11 +10,11 @@ title: 'Phalcon\Flash\Direct'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
-## Methoden
+## Methods
 
 public **message** (*mixed* $type, *mixed* $message)
 
