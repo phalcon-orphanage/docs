@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Manager'
 
 *implements* [Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
 
 This components controls the initialization of models, keeping record of relations between the different models of the application.
 
@@ -33,7 +33,7 @@ $robot = new Robots($di);
 
 ```
 
-## Méthodes
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -49,7 +49,7 @@ Sets a global events manager
 
 public **getEventsManager** ()
 
-Retourne le gestionnaire d'événements internes
+Returns the internal event manager
 
 public **setCustomEventsManager** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
