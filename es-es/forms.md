@@ -3,13 +3,11 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
-# Formularios
+# Forms
 
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
@@ -117,7 +115,7 @@ $form->add(
 
 <a name='initializing'></a>
 
-## Inicializando formularios
+## Initializing forms
 
 As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
 
@@ -263,7 +261,7 @@ $form = new UsersForm(
 
 <a name='validation'></a>
 
-## Validación
+## Validation
 
 Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -381,7 +379,7 @@ $form->add($email);
 
 <a name='entities'></a>
 
-## Formularios y Entidades
+## Forms + Entities
 
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values in the form's elements or assign the values from the form to the entity easily:
 
@@ -495,7 +493,7 @@ class Preferences
 
 <a name='elements'></a>
 
-## Elementos de formulario
+## Form Elements
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the [Phalcon\Forms\Element](api/Phalcon_Forms_Element) namespace:
 
@@ -516,7 +514,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 <a name='event-callback'></a>
 
-## Evento Callbacks
+## Event Callbacks
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` can be implemented in the form's class to perform pre-validations and post-validations:
 
@@ -536,7 +534,7 @@ class ContactForm extends Form
 
 <a name='rendering'></a>
 
-## Presentación de formularios
+## Rendering Forms
 
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
@@ -634,7 +632,7 @@ echo $element->renderDecorated('telephone');
 
 <a name='creating-elements'></a>
 
-## Creando elementos de formulario
+## Creating Form Elements
 
 In addition to the form elements provided by Phalcon you can create your own custom elements:
 
@@ -693,6 +691,6 @@ echo $loginForm->render();
 
 <a name='external'></a>
 
-## Recursos externos
+## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
