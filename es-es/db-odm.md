@@ -9,7 +9,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# ODM (Mapeador Objecto-Documento)
+# ODM (Object-Document Mapper)
 
 In addition to its ability to [map tables](/4.0/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
@@ -23,7 +23,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Creación de Modelos
+## Creating Models
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -56,7 +56,7 @@ class Robots extends Collection
 
 <a name='documents-to-objects'></a>
 
-## Entendiendo Documentos a Objetos
+## Understanding Documents To Objects
 
 Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example, for a collection `robots` with the documents:
 
@@ -75,7 +75,7 @@ connecting to: test
 
 <a name='namespaces'></a>
 
-## Modelos en Espacios de Nombres
+## Models in Namespaces
 
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
 
@@ -127,7 +127,7 @@ $robot->save();
 
 <a name='connection-setup'></a>
 
-## Establecer una Conexión
+## Setting a Connection
 
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
 
@@ -161,7 +161,7 @@ $di->set(
 
 <a name='finding-documents'></a>
 
-## Búsqueda de Documentos
+## Finding Documents
 
 As [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
 
@@ -315,7 +315,7 @@ The example above returns the `name` of the robot with the `type = 'maid'`.
 
 <a name='aggregations'></a>
 
-## Agregaciones
+## Aggregations
 
 A model can return calculations using [aggregation framework](https://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
 
@@ -345,7 +345,7 @@ $data = Article::aggregate(
 
 <a name='creating-updating'></a>
 
-## Creación y Actualización de Registros
+## Creating Updating/Records
 
 The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection).
 
@@ -385,7 +385,7 @@ echo 'La id generada es: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Mensajes de validación
+### Validation Messages
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -407,7 +407,7 @@ if ($robot->save() === false) {
 
 <a name='events'></a>
 
-### Eventos de Validación y Gestor de Eventos
+### Validation Events and Events Manager
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
@@ -544,7 +544,7 @@ $di->set(
 
 <a name='business-rules'></a>
 
-### Implementación de una Regla de Negocio
+### Implementing a Business Rule
 
 When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
 
@@ -574,7 +574,7 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validar la integridad de los datos
+### Validating Data Integrity
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
@@ -627,7 +627,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Eliminar Registros
+## Deleting Records
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -688,7 +688,7 @@ Los siguientes eventos están disponibles para definir reglas de negocios person
 
 <a name='validation-failed-events'></a>
 
-## Eventos de validación fallidos
+## Validation Failed Events
 
 Another type of events is available when the data validation process finds any inconsistency:
 
@@ -721,7 +721,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 
-## Configuración de Múltiples Bases de Datos
+## Setting multiple databases
 
 In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
@@ -773,7 +773,7 @@ class Robots extends Collection
 
 <a name='services-in-models'></a>
 
-## Servicios de Inyección en Modelos
+## Injecting services into Models
 
 Si requiere acceder a los servicios de la aplicación dentro de un modelo, en el siguiente ejemplo se explica cómo hacerlo:
 

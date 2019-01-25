@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Result\Pdo'
 
 *implements* [Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface)
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
 Encapsulates the resultset internals
 

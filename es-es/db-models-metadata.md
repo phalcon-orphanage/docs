@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='models-metadata'></a>
 
-# Metadatos de modelos
+# Models Metadata
 
 To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
 
@@ -32,7 +32,7 @@ print_r($dataTypes);
 
 <a name='caching-metadata'></a>
 
-## Almacenamiento en caché de metadatos
+## Caching Metadata
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
@@ -69,7 +69,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='metadata-strategies'></a>
 
-## Estrategias de metadatos
+## Metadata Strategies
 
 As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
@@ -100,13 +100,13 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-database-introspection'></a>
 
-### Estrategia de introspección de la base de datos
+### Database Introspection Strategy
 
 This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 <a name='strategies-annotations'></a>
 
-### Estrategia de anotaciones
+### Annotations Strategy
 
 This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
@@ -192,7 +192,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 
-## Metadata manual
+## Manual Metadata
 
 Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 

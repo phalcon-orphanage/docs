@@ -18,7 +18,7 @@ public **__construct** (*array* $options)
 
 ...
 
-public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](/4.0/en/api/Phalcon_Translate_InterpolatorInterface) $interpolator)
+public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface) $interpolator)
 
 ...
 
@@ -50,10 +50,10 @@ protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]
 
 Replaces placeholders by the values passed
 
-abstract public **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](/4.0/en/api/Phalcon_Translate_AdapterInterface)
+abstract public **query** (*mixed* $index, [*mixed* $placeholders]) inherited from [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
 ...
 
-abstract public **exists** (*mixed* $index) inherited from [Phalcon\Translate\AdapterInterface](/4.0/en/api/Phalcon_Translate_AdapterInterface)
+abstract public **exists** (*mixed* $index) inherited from [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface)
 
 ...

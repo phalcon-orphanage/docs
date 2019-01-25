@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Volt: Motor de plantillas
+# Volt: Template Engine
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -17,7 +17,7 @@ Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Ar
 
 <a name='introduction'></a>
 
-## Introducción
+## Introduction
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -40,7 +40,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Activando Volt
+## Activating Volt
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -188,7 +188,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Uso básico
+## Basic Usage
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
@@ -271,7 +271,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Filtros
+## Filters
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -377,7 +377,7 @@ Examples:
 
 <a name='comments'></a>
 
-## Comentarios
+## Comments
 
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
@@ -391,7 +391,7 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 <a name='control-structures'></a>
 
-## Lista de estructuras de Control
+## List of Control Structures
 
 Volt provides a set of basic but powerful control structures for use in templates:
 
@@ -483,7 +483,7 @@ Alternative syntax:
 
 <a name='control-structures-loops'></a>
 
-### Controles de bucle
+### Loop Controls
 
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
@@ -644,7 +644,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 <a name='control-structures-loop'></a>
 
-### Contexto de bucle
+### Loop Context
 
 A special variable is available inside `for` loops providing you information about
 
@@ -685,7 +685,7 @@ Example:
 
 <a name='assignments'></a>
 
-## Asignaciones
+## Assignments
 
 Variables may be changed in a template using the instruction `set`:
 
@@ -727,7 +727,7 @@ The following operators are available:
 
 <a name='expressions'></a>
 
-## Expresiones
+## Expressions
 
 Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
@@ -747,7 +747,7 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 <a name='expressions-literals'></a>
 
-### Literales
+### Literals
 
 The following literals are supported:
 
@@ -793,7 +793,7 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### Matemáticas
+### Math
 
 You may make calculations in templates using the following operators:
 
@@ -807,7 +807,7 @@ You may make calculations in templates using the following operators:
 
 <a name='expressions-comparisons'></a>
 
-### Comparaciones
+### Comparisons
 
 The following comparison operators are available:
 
@@ -825,7 +825,7 @@ The following comparison operators are available:
 
 <a name='expressions-logic'></a>
 
-### Lógica
+### Logic
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
@@ -838,7 +838,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 <a name='expressions-other-operators'></a>
 
-### Otros operadores
+### Other Operators
 
 Additional operators seen the following operators are available:
 
@@ -870,7 +870,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## Pruebas
+## Tests
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -1027,7 +1027,7 @@ And receive optional parameters:
 
 <a name='tag-helpers'></a>
 
-## Usando los ayudantes de etiqueta
+## Using Tag Helpers
 
 Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to use the helpers provided by that component in a Volt template:
 
@@ -1097,7 +1097,7 @@ To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncame
 
 <a name='functions'></a>
 
-## Funciones
+## Functions
 
 The following built-in functions are available in Volt:
 
@@ -1116,7 +1116,7 @@ The following built-in functions are available in Volt:
 
 <a name='view-integrations'></a>
 
-## Integración de la vista
+## View Integration
 
 Also, Volt is integrated with [Phalcon\Mvc\View](api/Phalcon_Mvc_View), you can play with the view hierarchy and include partials as well:
 
@@ -1150,7 +1150,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-include'></a>
 
-### Incluir
+### Include
 
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
@@ -1165,7 +1165,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-partial-vs-include'></a>
 
-### Parciales vs inclusiones
+### Partial vs Include
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
@@ -1180,7 +1180,7 @@ Keep the following points in mind when choosing to use the `partial` function or
 
 <a name='template-inheritance'></a>
 
-## Herencia de Plantillas
+## Template Inheritance
 
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1251,7 +1251,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 <a name='template-inheritance-multiple'></a>
 
-### Herencia múltiple
+### Multiple Inheritance
 
 Extended templates can extend other templates. The following example illustrates this:
 
@@ -1334,7 +1334,7 @@ Note the call to the function `super()`. With that function it's possible to ren
 
 <a name='autoescape'></a>
 
-## Modo de Autoescape
+## Autoescape mode
 
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
@@ -1353,7 +1353,7 @@ Manually escaped: {{ robot.name|e }}
 
 <a name='extending'></a>
 
-## Extender Volt
+## Extending Volt
 
 Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
 
@@ -1361,7 +1361,7 @@ The Volt compiler allow you to extend it adding more functions, tests or filters
 
 <a name='extending-functions'></a>
 
-### Funciones
+### Functions
 
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
 
@@ -1443,7 +1443,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Filtros
+### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1476,7 +1476,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='extending-extensions'></a>
 
-### Extensiones
+### Extensions
 
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1523,7 +1523,7 @@ $compiler->addExtension(
 
 <a name='caching-view-fragments'></a>
 
-## Almacenamiento en caché de fragmentos de la vista
+## Caching view fragments
 
 With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
 
@@ -1564,7 +1564,7 @@ The caching is done by the `Phalcon\Cache` component via the view component. Lea
 
 <a name='services-in-templates'></a>
 
-## Inyectar servicios en una plantilla
+## Inject Services into a Template
 
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
 
@@ -1580,7 +1580,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 <a name='stand-alone'></a>
 
-## Componente independiente
+## Stand-alone component
 
 Using Volt in a stand-alone mode can be demonstrated below:
 
@@ -1619,10 +1619,10 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Recursos externos
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
+* [Our website](https://phalconphp.com) is running using Volt as template engine, [GitHub](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [GitHub](https://github.com/phalcon/vokuro)

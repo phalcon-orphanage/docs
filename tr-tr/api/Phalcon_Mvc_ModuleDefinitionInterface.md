@@ -10,10 +10,10 @@ title: 'Phalcon\Mvc\ModuleDefinitionInterface'
 
 ## Methods
 
-abstract public **registerAutoloaders** ([[Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector])
+abstract public **registerAutoloaders** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
 ...
 
-abstract public **registerServices** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+abstract public **registerServices** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 ...

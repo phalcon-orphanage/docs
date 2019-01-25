@@ -6,11 +6,11 @@ title: 'Phalcon\Image\Factory'
 ---
 # Class **Phalcon\Image\Factory**
 
-*extends* abstract class [Phalcon\Factory](/4.0/en/api/Phalcon_Factory)
+*extends* abstract class [Phalcon\Factory](Phalcon_Factory)
 
-*implements* [Phalcon\FactoryInterface](/4.0/en/api/Phalcon_FactoryInterface)
+*implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/image/factory.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
 Loads Image Adapter class using 'adapter' option
 
@@ -31,7 +31,7 @@ $image = Factory::load($options);
 
 ## Methods
 
-public static **load** ([Phalcon\Config](/4.0/en/api/Phalcon_Config) | *array* $config)
+public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
 protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
