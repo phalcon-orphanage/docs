@@ -175,7 +175,7 @@ public **getHostname** ()
 
 Returns the hostname restriction if any
 
-public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](/4.0/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public **setGroup** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group)
 
 Sets the group associated with the route
 
