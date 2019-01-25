@@ -3,9 +3,7 @@ layout: article
 language: 'ru-ru'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='di-service-location'></a>
 
@@ -966,7 +964,7 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### События
+### Events
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
