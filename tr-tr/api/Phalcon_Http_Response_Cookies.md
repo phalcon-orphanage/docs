@@ -14,7 +14,7 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 
 ## Methods
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -22,13 +22,13 @@ public **getDI** ()
 
 Returns the internal dependency injector
 
-public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](/4.0/en/api/Phalcon_Http_CookieInterface)
+public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
 Sets the cookie's sign key. The `$signKey` MUST be at least 32 characters long and generated using a cryptographically secure pseudo random generator.
 
 You can use `null` to disable cookie signing.
 
-See: [Phalcon\Security\Random](/4.0/en/api/Phalcon_Security_Random) Throws: [Phalcon\Http\Cookie\Exception](/4.0/en/api/Phalcon_Http_Cookie_Exception)
+See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Cookie\Exception](Phalcon_Http_Cookie_Exception)
 
 public **useEncryption** (*mixed* $useEncryption)
 
