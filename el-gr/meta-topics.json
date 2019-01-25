@@ -221,15 +221,11 @@
                 "url": "/db-models"
             },
             {
-                "text": "Προχωρημένα",
-                "url": "/db-models-advanced"
-            },
-            {
-                "text": "Συμπεριφορές",
+                "text": "Behaviors",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/db-models-cache"
             },
             {
@@ -237,19 +233,19 @@
                 "url": "/db-models-events"
             },
             {
-                "text": "Μεταδεδομένα",
+                "text": "Metadata",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Σχέσεις",
+                "text": "Relationships",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Συναλλαγές",
+                "text": "Transactions",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Επικυρωτές",
+                "text": "Validators",
                 "url": "/db-models-validation"
             },
             {
@@ -257,7 +253,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Σελιδοποίηση",
+                "text": "Pagination",
                 "url": "/db-pagination"
             }
         ]
