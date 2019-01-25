@@ -3,9 +3,7 @@ layout: article
 language: 'tr-tr'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -17,7 +15,7 @@ version: '4.0'
 
 <a name='add'></a>
 
-## Kaynakları Ekleme
+## Adding Resources
 
 Assets supports two built-in resources: CSS and JavaScripts. You can create other resources if you need. The assets manager internally stores two default collections of resources - one for JavaScript and another for CSS.
 
