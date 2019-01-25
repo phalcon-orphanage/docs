@@ -3,9 +3,7 @@ layout: article
 language: 'tr-tr'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -1058,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Olaylar
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
