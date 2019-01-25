@@ -24,10 +24,10 @@ protected *array* **getOptions** ([*string* $eventName])
 
 Returns the behavior options related to an event
 
-public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $model)
+public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
 This method receives the notifications from the EventsManager
 
-public **missingMethod** ([Phalcon\Mvc\CollectionInterface](/4.0/en/api/Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
+public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
 
 Acts as fallbacks when a missing method is called on the collection
