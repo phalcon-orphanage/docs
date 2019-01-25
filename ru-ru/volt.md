@@ -3,9 +3,7 @@ layout: article
 language: 'ru-ru'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -19,7 +17,7 @@ Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Ar
 
 <a name='introduction'></a>
 
-## Введение
+## Introduction
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -42,7 +40,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## Подключение Volt
+## Activating Volt
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -190,7 +188,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Базовое использование
+## Basic Usage
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
@@ -260,7 +258,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## Переменные
+## Variables
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -273,7 +271,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Фильтры
+## Filters
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -379,7 +377,7 @@ Examples:
 
 <a name='comments'></a>
 
-## Комментарии
+## Comments
 
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
@@ -393,7 +391,7 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 <a name='control-structures'></a>
 
-## Список управляющих конструкций
+## List of Control Structures
 
 Volt provides a set of basic but powerful control structures for use in templates:
 
@@ -1445,7 +1443,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Фильтры
+### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1621,10 +1619,10 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Дополнительная литература
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
-* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [Github](https://github.com/phalcon/album-o-rama)
-* [Our website](https://phalconphp.com) is running using Volt as template engine, [Github](https://github.com/phalcon/website)
-* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [Github](https://github.com/phalcon/forum)
-* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [Github](https://github.com/phalcon/vokuro)
+* [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
+* [Our website](https://phalconphp.com) is running using Volt as template engine, [GitHub](https://github.com/phalcon/website)
+* [Phosphorum](https://forum.phalconphp.com), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
+* [Vökuró](https://vokuro.phalconphp.com), is another sample application that use Volt, [GitHub](https://github.com/phalcon/vokuro)
