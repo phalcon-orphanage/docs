@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Controladores
+# Overview
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Integrando PHPUnit con Phalcon
+## Integrating PHPUnit with Phalcon
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
@@ -42,7 +42,7 @@ Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
-## El archivo de ayuda de PHPUnit
+## The PHPUnit helper file
 
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
@@ -139,7 +139,7 @@ Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run
 
 <a name='sample'></a>
 
-## Ejemplo de Test Unitario
+## Sample Unit Test
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
