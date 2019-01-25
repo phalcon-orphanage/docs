@@ -3,11 +3,11 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-> If you have found a bug, you can open an issue in [Github](https://github.com/phalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
+> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
 
 <a name='overview'></a>
 
-## Creando un pequeño script
+## Creating a small script
 
 A small PHP file can be used to showcase how to reproduce the issue:
 
@@ -65,9 +65,9 @@ var_dump($_COOKIE);
 
 <a name='database'></a>
 
-### Base de Datos
+### Database
 
-> Remember to outline in the script the methodology you use to register the `db` service: {:.alert .alert-info}
+> Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. {:.alert .alert-info}
 
 ```php
 <?php
@@ -97,7 +97,7 @@ $result = $container['db']->query('SELECT * FROM customers');
 
 <a name='single-multi'></a>
 
-### Aplicaciones simples o multi módulo
+### Single/Multi-Module applications
 
 > Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules {:.alert .alert-info}
 
@@ -152,7 +152,7 @@ echo $application->handle()->getContent();
 
 <a name='micro'></a>
 
-### Micro Aplicaciones
+### Micro application
 
 For micro applications, you can use the skeleton script below:
 
@@ -177,7 +177,7 @@ $application->handle();
 
 ### ORM
 
-> You can provide your own database schema or even better use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). {:.alert .alert-info}
+> You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). {:.alert .alert-info}
 
 ```php
 <?php
