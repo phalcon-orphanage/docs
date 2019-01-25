@@ -3,13 +3,11 @@ layout: article
 language: 'tr-tr'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
-# Genel Bakış
+# Overview
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
