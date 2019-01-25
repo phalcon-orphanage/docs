@@ -3,9 +3,7 @@ layout: article
 language: 'tr-tr'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='di-service-location'></a>
 
@@ -661,7 +659,7 @@ The service 'response' ([Phalcon\Http\Response](api/Phalcon_Http_Response)) is r
 
 <a name='setter-injection'></a>
 
-#### Kurucu Enjeksiyonu
+#### Setter Injection
 
 Classes may have setters to inject optional dependencies, our previous class can be changed to accept the dependencies with setters:
 
@@ -737,7 +735,7 @@ $di->set(
 
 <a name='properties-injection'></a>
 
-#### Enjeksiyon Özellikleri
+#### Properties Injection
 
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
 
@@ -966,7 +964,7 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Olaylar
+### Events
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
