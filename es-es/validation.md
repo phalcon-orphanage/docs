@@ -3,13 +3,11 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
-# Validación
+# Validation
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -64,7 +62,7 @@ The loosely-coupled design of this component allows you to create your own valid
 
 <a name='initializing'></a>
 
-## Iniciando la Validación
+## Initializing Validation
 
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
@@ -127,7 +125,7 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validadores
+## Validators
 
 Phalcon exposes a set of built-in validators for this component:
 
@@ -198,7 +196,7 @@ It is important that validators return a valid boolean value indicating if the v
 
 <a name='callback'></a>
 
-## Validador de Devolución de Llamada
+## Callback Validator
 
 By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
@@ -262,7 +260,7 @@ $messages = $validation->validate(['amount' => 10]); // retornará el mensaje de
 
 <a name='messages'></a>
 
-## Mensajes de validación
+## Validation Messages
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
@@ -318,7 +316,7 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtrando de Datos
+## Filtering of Data
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -356,7 +354,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 <a name='events'></a>
 
-## Eventos de Validación
+## Validation Events
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
@@ -409,7 +407,7 @@ class LoginValidation extends Validation
 
 <a name='cancelling'></a>
 
-## Cancelando Validaciones
+## Cancelling Validations
 
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
@@ -487,7 +485,7 @@ class MyValidator extends Validator
 
 <a name='empty-values'></a>
 
-## Evitar Validar Valores Vacíos
+## Avoid validating empty values
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
@@ -513,7 +511,7 @@ $validation->add(
 
 <a name='recursive'></a>
 
-## Validación Recursiva
+## Recursive Validation
 
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 
