@@ -6,11 +6,11 @@ title: 'Phalcon\Factory\Exception'
 ---
 # Class **Phalcon\Factory\Exception**
 
-*extends* class [Phalcon\Exception](/4.0/en/api/Phalcon_Exception)
+*extends* class [Phalcon\Exception](Phalcon_Exception)
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/factory/exception.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/exception.zep)
 
 ## Methods
 
