@@ -64,7 +64,7 @@ public **__construct** ()
 
 Phalcon\Security constructor
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
