@@ -3,9 +3,7 @@ layout: article
 language: 'uk-ua'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -697,4 +695,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[Github](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
