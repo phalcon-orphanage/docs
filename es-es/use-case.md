@@ -3,19 +3,17 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
-# Casos de uso
+# Use case
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 <a name='requirements'></a>
 
-## Requerimentos
+## Requirements
 
 - MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 - Store data in a database (MariaDB/MySQL)
