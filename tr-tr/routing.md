@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Olaylar
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
