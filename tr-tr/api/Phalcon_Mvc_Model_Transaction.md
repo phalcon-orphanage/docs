@@ -50,11 +50,11 @@ try {
 
 ## Methods
 
-public **__construct** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
+public **__construct** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
 Phalcon\Mvc\Model\Transaction constructor
 
-public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](/4.0/en/api/Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
+public **setTransactionManager** ([Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface) $manager)
 
 Sets transaction manager related to the transaction
 
@@ -66,7 +66,7 @@ public **commit** ()
 
 Commits the transaction
 
-public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $rollbackRecord])
+public *boolean* **rollback** ([*string* $rollbackMessage], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $rollbackRecord])
 
 Rollbacks the transaction
 
@@ -94,6 +94,6 @@ public **isValid** ()
 
 Checks whether internal connection is under an active transaction
 
-public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](/4.0/en/api/Phalcon_Mvc_ModelInterface) $record)
+public **setRollbackedRecord** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record)
 
 Sets object which generates rollback action
