@@ -3,13 +3,11 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
-# Formación de Colas
+# Queueing
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 
@@ -21,7 +19,7 @@ While you can find more sophisticated PHP extensions to address queueing in your
 
 <a name='put-jobs-in-queue'></a>
 
-## Poner Trabajos en la Cola
+## Putting Jobs into the Queue
 
 After connecting to Beanstalk you can insert as many jobs as required. You can define the message structure according to the needs of the application:
 
@@ -95,7 +93,7 @@ $jobId = $queue->put(
 
 <a name='retrieving-messages'></a>
 
-## Recuperando Mensajes
+## Retrieving Messages
 
 Once a job is placed into the queue, those messages can be consumed by a background worker which will have enough time to complete the task:
 
