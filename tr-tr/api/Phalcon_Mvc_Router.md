@@ -49,7 +49,7 @@ public **__construct** ([*mixed* $defaultRoutes])
 
 Phalcon\Mvc\Router constructor
 
-public **setDI** ([Phalcon\DiInterface](/4.0/en/api/Phalcon_DiInterface) $dependencyInjector)
+public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
 Sets the dependency injector
 
@@ -57,7 +57,7 @@ public **getDI** ()
 
 Returns the internal dependency injector
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](/4.0/en/api/Phalcon_Events_ManagerInterface) $eventsManager)
+public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
 Sets the events manager
 
@@ -192,7 +192,7 @@ public **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
 Adds a route to the router that only match if the HTTP method is CONNECT
 
-public **mount** ([Phalcon\Mvc\Router\GroupInterface](/4.0/en/api/Phalcon_Mvc_Router_GroupInterface) $group)
+public **mount** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group)
 
 Mounts a group of routes in the router
 
