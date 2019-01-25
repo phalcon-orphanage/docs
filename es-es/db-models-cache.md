@@ -3,13 +3,11 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='orm-caching'></a>
 
-# Cache en ORM
+# ORM Caching
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -17,7 +15,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 <a name='caching-resultsets'></a>
 
-## Cacheo de Resultsets
+## Caching Resultsets
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -128,7 +126,7 @@ Which resultset to cache and for how long is up to the developer, after having e
 
 <a name='forcing-cache'></a>
 
-## Forzando el caché
+## Forcing Cache
 
 Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
@@ -241,7 +239,7 @@ class Robots extends CacheableModel
 
 <a name='caching-phql-queries'></a>
 
-## Cache de consultas PHQL
+## Caching PHQL Queries
 
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -268,7 +266,7 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## Registros relacionados reutilizables
+## Reusable Related Records
 
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -331,7 +329,7 @@ Note that this type of cache works in memory only, this means that cached data a
 
 <a name='caching-related-records'></a>
 
-## Cache de registros relacionados
+## Caching Related Records
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
@@ -374,7 +372,7 @@ class Invoices extends Model
 
 <a name='caching-related-records-recursively'></a>
 
-## Cache de registros relacionados recursivamente
+## Caching Related Records Recursively
 
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -480,7 +478,7 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## Cache basado en condiciones
+## Caching based on Conditions
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
@@ -735,7 +733,7 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## Plan de ejecución para cacheo de PHQL
+## Caching PHQL execution plan
 
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
