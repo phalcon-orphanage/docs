@@ -6,7 +6,7 @@ title: 'Phalcon\CryptInterface'
 ---
 # Interface **Phalcon\CryptInterface**
 
-[Source on Github](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
 
 ## Métodos
 
