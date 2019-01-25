@@ -3,9 +3,7 @@ layout: article
 language: 'tr-tr'
 version: '4.0'
 ---
-##### This article reflects v3.4 and has not yet been revised
-
-{:.alert .alert-danger}
+**This article reflects v3.4 and has not yet been revised** {:.alert .alert-danger}
 
 <a name='overview'></a>
 
@@ -186,7 +184,7 @@ The `$page` object has the following attributes:
 
 <a name='custom'></a>
 
-## Kendi Bağdaştırıcılarını Uygulama
+## Implementing your own adapters
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
