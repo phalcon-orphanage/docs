@@ -24,6 +24,6 @@ public **getLimit** ()
 
 Get current rows limit
 
-abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](/4.0/en/api/Phalcon_Paginator_AdapterInterface)
+abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
 ...
