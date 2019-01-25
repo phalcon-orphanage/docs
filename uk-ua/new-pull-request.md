@@ -5,8 +5,6 @@ version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
 
-{:.alert .alert-danger}
-
 # New Pull Request
 
 A pull request is alterations to the code that either fixes a current issue or introduces new functionality.

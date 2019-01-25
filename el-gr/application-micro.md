@@ -5,8 +5,6 @@ version: '4.0'
 ---
 ##### This article reflects v3.4 and has not yet been revised
 
-{:.alert .alert-danger}
-
 # Μικροεφαρμογές
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
