@@ -109,7 +109,7 @@ $acl->addOperation('guest');
 
 ## Προσθήκη Θεμάτων
 
-Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να ελεχθεί. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Also it is important to add related actions to a subject so that the ACL can understand what it should control.
+Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να ελεχθεί. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Επίσης είναι σημαντικό να προσθέσετε σχετικές ενέργειες σε έναν θέμα, έτσι ώστε η ACL να καταλάβει τι πρέπει να ελένξει.
 
 There are two ways of adding subjects to our list. * by using a [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) object or * using a string, representing the name of the operation
 
