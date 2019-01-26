@@ -15,7 +15,7 @@ Any pull requests to this repository must target the `en/` folder. All the langu
 
 <p align="center">
     <a href="https://www.netlify.com">
-        <img src="https://support.crowdin.com/assets/logos/crowdin-CollaborativeTranslationTool-logo.png"/>
+        <img src="https://support.crowdin.com/assets/logos/crowdin-CollaborativeTranslationTool-logo.png" style="style: width: 280px; " />
     </a>
 </p>
 
