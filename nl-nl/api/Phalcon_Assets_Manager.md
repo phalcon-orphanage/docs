@@ -6,11 +6,11 @@ title: 'Phalcon\Assets\Manager'
 ---
 # Class **Phalcon\Assets\Manager**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
 Manages collections of CSS/Javascript assets
 
-## Methods
+## Methoden
 
 public **__construct** ([*array* $options])
 
