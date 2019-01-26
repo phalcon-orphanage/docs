@@ -5,10 +5,11 @@
 </a></p>
 
 <p align="center">
+    Hosting By:
+    <br />
     <a href="https://www.netlify.com">
         <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
     </a>
-    Hosting By:
 </p>
 
 Any pull requests to this repository must target the `en/` folder. All the languages are handled by 
