@@ -3,8 +3,6 @@ layout: article
 language: 'uk-ua'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
 # Becoming a sponsor
 
 For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.

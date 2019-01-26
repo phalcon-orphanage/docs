@@ -10,11 +10,11 @@ title: 'Phalcon\Annotations\Adapter\Memory'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
-## Methods
+## Methoden
 
 public **read** (*mixed* $key)
 

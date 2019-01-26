@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
 
 Specific functions for the Sqlite database system
 
@@ -27,7 +27,7 @@ $connection = new Sqlite(
 
 ```
 
-## Methods
+## Methoden
 
 public **connect** ([*array* $descriptor])
 
