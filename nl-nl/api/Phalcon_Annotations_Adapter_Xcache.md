@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Xcache'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/xcache.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/xcache.zep)
 
 Stores the parsed annotations to XCache. This adapter is suitable for production
 
@@ -21,7 +21,7 @@ $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 ```
 
-## Methods
+## Methoden
 
 public [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) **read** (*string* $key)
 
