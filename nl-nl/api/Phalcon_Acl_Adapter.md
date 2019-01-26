@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Adapter'
 
 *implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
-Adapter for Phalcon\Acl adapters
+Adapter voor Phalcon\Acl adapters
 
-## Methods
+## Methoden
 
 ```php
 public getActiveAccess()
