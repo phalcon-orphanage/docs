@@ -13,13 +13,16 @@ title: 'Phalcon\Service\LocatorInterface'
 public function get( string $name ): object
 ```
 Get a helper. If it is not in the mapper array, create a new object, set it and then return it.
+<hr/>
 
 ```php
 public function has( string $name ): bool;
 ```
 Checks if a helper exists in the map array
+<hr/>
 
 ```php
 public function set( string $name, callable $helper ): void;
 ```
 Set a new helper to the mapper array
+<hr/>
