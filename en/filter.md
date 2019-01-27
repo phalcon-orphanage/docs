@@ -279,8 +279,8 @@ class ProductsController extends Controller
 }
 ```
 
-<a name='filtering-action-parameters'></a>
-## Filtering Action Parameters
+<a name='sanitizing-action-parameters'></a>
+## Sanitizing Action Parameters
 If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 We can sanitize values passed into controller actions as follows:
@@ -305,7 +305,7 @@ class ProductsController extends Controller
 }
 ```
 
-<a name='filtering-data'></a>
+<a name='sanitizing-data'></a>
 ## Filtering data
 The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (mentioned above) can help you understand and use the sanitizers according to your needs.
 
@@ -324,8 +324,8 @@ $locator->sanitize('<h1>Hello</h1>', 'striptags');
 $locator->sanitize('  Hello   ', 'trim');
 ```
 
-<a name='combining-filters'></a>
-## Combining Filters
+<a name='combining-sanitizers'></a>
+## Combining Sanitizers
 There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
 
 ```php
