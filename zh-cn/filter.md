@@ -32,13 +32,30 @@ $locator = $factory->newInstance();
 
 You can now use the locator wherever you need and sanitize content as per the needs of your application.
 
+## FilterLocator
+
+The filter locator can also be used as a stand alone component, without initializing the built-in filters.
+
+```php
+<?php
+
+use MyApp\Sanitizers\HelloSanitizer;
+use Phalcon\Filter\FilterLocator;
+
+$services = [
+    'hello' => HelloSanitizer::class,
+];
+$locator = new FilterLocator($services);
+$text    = $locator->hello('World');
+```
+
 > The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name. {: .alert .alert-info }
 
 <a name='sanitizers'></a>
 
 ## Built-in Sanitizers
 
-> Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value. {: .alert .alert-warning }
+> Where appropriate, the sanitizers will cast the value to the type expected. For example the [absint](https://secure.php.net/manual/en/function.absint.php) sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value. {: .alert .alert-warning }
 
 The following are the built-in filters provided by this component:
 
@@ -48,7 +65,7 @@ The following are the built-in filters provided by this component:
 AbsInt( mixed $input ): int
 ```
 
-Removes any non numeric characters, casts the value to integer and returns its absolute value. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) for the integer part, `intval` for casting and `absint`
+Removes any non numeric characters, casts the value to integer and returns its absolute value. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) for the integer part, [intval](https://secure.php.net/manual/en/function.intval.php) for casting and [absint](https://secure.php.net/manual/en/function.absint.php).
 
 #### alnum
 
@@ -56,7 +73,7 @@ Removes any non numeric characters, casts the value to integer and returns its a
 Alnum( mixed $input ): string | array
 ```
 
-Removes all characters that are not numbers or characters of the alphabet. It uses `preg_replace` which can also accept arrays of strings as the parameters.
+Removes all characters that are not numbers or characters of the alphabet. It uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
 
 #### alpha
 
@@ -64,7 +81,7 @@ Removes all characters that are not numbers or characters of the alphabet. It us
 Alpha( mixed $input ): string | array
 ```
 
-Removes all characters that are not characters of the alphabet. It uses `preg_replace` which can also accept arrays of strings as the parameters.
+Removes all characters that are not characters of the alphabet. It uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
 
 #### bool
 
@@ -96,7 +113,7 @@ It also returns `false` if the value is:
 Email( mixed $input ): string
 ```
 
-Removes all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php)
+Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
 
 #### float
 
@@ -114,74 +131,142 @@ IntVa( mixed $input ): int
 
 Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
 
-#### `lower`
+#### lower
 
-Converts all characters to lowercase. If the `mbstring` extension is loaded, it will use `mb_convert_case` to perform the transformation. As a fallback it uses the `strtolower` PHP function, with `utf8_decode`.
+```php
+Lower( mixed $input ): string
+```
 
-#### `lowerFirst`
+Converts all characters to lowercase. If the [mbstring](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [mb_convert_case](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [strtolower](https://secure.php.net/manual/en/function.strtolower.php) PHP function, with [utf8_decode](https://secure.php.net/manual/en/function.utf8-decode.php).
 
-Converts the first character of the input to lower case. Internally it uses `lcfirst`.
+#### lowerFirst
 
-#### `regex`
+```php
+LowerFirst( mixed $input ): string
+```
 
-#### `remove`
+Converts the first character of the input to lower case. Internally it uses [lcfirst](https://secure.php.net/manual/en/function.lcfirst.php).
 
-#### `replace`
+#### regex
 
-#### `special`
+```php
+Regex( mixed $input, mixed $pattern, mixed $replace ): string
+```
 
-#### `specialFull`
+Preforms a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php).
 
-#### `string`
+#### remove
 
-Strip tags and encode HTML entities, including single and double quotes.
+```php
+Remove( mixed $input, mixed $remove ): string
+```
 
-#### `striptags`
+Preforms a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
 
-Applies the [strip_tags](https://www.php.net/manual/en/function.strip-tags.php) function
+#### replace
 
-#### `trim`
+```php
+Replace( mixed $input, mixed $from, mixed $to ): string
+```
 
-Applies the [trim](https://www.php.net/manual/en/function.trim.php) function
+Preforms a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
 
-#### `upper`
+#### special
 
-Converts all characters to uppercase. If the `mbstring` extension is loaded, it will use `mb_convert_case` to perform the transformation. As a fallback it uses the `strtoupper` PHP function, with `utf8_decode`.
+```php
+Special( mixed $input ): string
+```
 
-#### `upperFirst`
+Escapes all HTML characters of the input, as well as `'"<>&` and characters with ASCII value less than 32. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
 
-Converts the first character of the input to upper case. Internally it uses `ucfirst`.
+#### specialFull
 
-#### `upperWords`
+```php
+SpecialFull( mixed $input ): string
+```
 
-#### `url`
+Converts all the special characters of the input to HTML entities (both double and single quotes). Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
 
-Constants are available and can be used to define the type of filtering required:
+#### string
+
+```php
+StringVal( mixed $input ): string
+```
+
+Strip tags and encode HTML entities, including single and double quotes. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
+
+#### striptags
+
+```php
+StripTags( mixed $input ): int
+```
+
+Removes all HTML and PHP tags from the input. Internally it uses [strip_tags](https://www.php.net/manual/en/function.strip-tags.php).
+
+#### trim
+
+```php
+Trim( mixed $input ): string
+```
+
+Removes all leading and trailing whitespace from the input. Internally it uses [trim](https://www.php.net/manual/en/function.trim.php).
+
+#### upper
+
+```php
+Upper( mixed $input ): string
+```
+
+Converts all characters to uppercase. If the [mbstring](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [mb_convert_case](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [strtoupper](https://secure.php.net/manual/en/function.strtoupper.php) PHP function, with [utf8_decode](https://secure.php.net/manual/en/function.utf8-decode.php).
+
+#### upperFirst
+
+```php
+UpperFirst( mixed $input ): string
+```
+
+Converts the first character of the input to lower case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
+
+#### upperWords
+
+```php
+UpperWords( mixed $input ): string
+```
+
+Converts into uppercase the first character of each word from the input. Internally it uses [ucwords](https://secure.php.net/manual/en/function.ucwords.php).
+
+#### url
+
+```php
+Url( mixed $input ): string
+```
+
+Constants are available and can be used to define the type of sanitizing required:
 
 ```php
 <?php
 
-const FILTER_ABSINT      = "absint";
-const FILTER_ALNUM       = "alnum";
-const FILTER_ALPHA       = "alpha";
-const FILTER_BOOL        = "bool";
-const FILTER_EMAIL       = "email";
-const FILTER_FLOAT       = "float";
-const FILTER_INT         = "int";
-const FILTER_LOWER       = "lower";
-const FILTER_LOWERFIRST  = "lowerFirst";
-const FILTER_REGEX       = "regex";
-const FILTER_REMOVE      = "remove";
-const FILTER_REPLACE     = "replace";
-const FILTER_SPECIAL     = "special";
-const FILTER_SPECIALFULL = "specialFull";
-const FILTER_STRING      = "string";
-const FILTER_STRIPTAGS   = "striptags";
-const FILTER_TRIM        = "trim";
-const FILTER_UPPER       = "upper";
-const FILTER_UPPERFIRST  = "upperFirst";
-const FILTER_UPPERWORDS  = "upperWords";
-const FILTER_URL         = "url";
+const FILTER_ABSINT      = 'absint';
+const FILTER_ALNUM       = 'alnum';
+const FILTER_ALPHA       = 'alpha';
+const FILTER_BOOL        = 'bool';
+const FILTER_EMAIL       = 'email';
+const FILTER_FLOAT       = 'float';
+const FILTER_INT         = 'int';
+const FILTER_LOWER       = 'lower';
+const FILTER_LOWERFIRST  = 'lowerFirst';
+const FILTER_REGEX       = 'regex';
+const FILTER_REMOVE      = 'remove';
+const FILTER_REPLACE     = 'replace';
+const FILTER_SPECIAL     = 'special';
+const FILTER_SPECIALFULL = 'specialFull';
+const FILTER_STRING      = 'string';
+const FILTER_STRIPTAGS   = 'striptags';
+const FILTER_TRIM        = 'trim';
+const FILTER_UPPER       = 'upper';
+const FILTER_UPPERFIRST  = 'upperFirst';
+const FILTER_UPPERWORDS  = 'upperWords';
+const FILTER_URL         = 'url';
 ```
 
 <a name='sanitizing'></a>
@@ -193,112 +278,122 @@ Sanitizing is the process which removes specific characters from a value, that a
 ```php
 <?php
 
-use Phalcon\Filter;
+use Phalcon\Filter\FilterLocatorFactory;
 
-$filter = new Filter();
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
 
-// Returns 'someone@example.com'
-$filter->sanitize('some(one)@exa\mple.com', 'email');
+// 'someone@example.com'
+$locator->sanitize('some(one)@exa\mple.com', 'email');
 
-// Returns 'hello'
-$filter->sanitize('hello<<', 'string');
+// 'hello'
+$locator->sanitize('hello<<', 'string');
 
-// Returns '100019'
-$filter->sanitize('!100a019', 'int');
+// '100019'
+$locator->sanitize('!100a019', 'int');
 
-// Returns '100019.01'
-$filter->sanitize('!100a019.01a', 'float');
+// '100019.01'
+$locator->sanitize('!100a019.01a', 'float');
 ```
 
 <a name='sanitizing-from-controllers'></a>
 
 ## Sanitizing from Controllers
 
-You can access a [Phalcon\Filter](api/Phalcon_Filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the filter to be applied on it.
+You can access the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply.
 
 ```php
 <?php
 
+use Phalcon\Filter\FilterLocator;
+use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
+/**
+ * Class ProductsController
+ * 
+ * @property Request $request
+ */
 class ProductsController extends Controller
 {
-    public function indexAction()
-    {
-
-    }
-
     public function saveAction()
     {
-        // Sanitizing price from input
-        $price = $this->request->getPost('price', 'double');
+        if (true === $this->request->isPost()) {
+            // Sanitizing price from input
+            $price = $this->request->getPost('price', 'double');
 
-        // Sanitizing email from input
-        $email = $this->request->getPost('customerEmail', 'email');
+            // Sanitizing email from input
+            $email = $this->request->getPost('customerEmail', FilterLocator::FILTER_EMAIL);
+        }
     }
 }
 ```
 
-<a name='filtering-action-parameters'></a>
+<a name='sanitizing-action-parameters'></a>
 
-## Filtering Action Parameters
+## Sanitizing Action Parameters
 
-The next example shows you how to sanitize the action parameters within a controller action:
+If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
+
+We can sanitize values passed into controller actions as follows:
 
 ```php
 <?php
 
+use Phalcon\Filter\FilterLocator;
 use Phalcon\Mvc\Controller;
 
+/**
+ * Class ProductsController
+ * 
+ * @property FilterLocator $filter
+ */
 class ProductsController extends Controller
 {
-    public function indexAction()
-    {
-
-    }
-
     public function showAction($productId)
     {
-        $productId = $this->filter->sanitize($productId, 'int');
+        $productId = $this->filter->sanitize($productId, 'absint');
     }
 }
 ```
 
-<a name='filtering-data'></a>
+<a name='sanitizing-data'></a>
 
 ## Filtering data
 
-In addition to sanitizing, [Phalcon\Filter](api/Phalcon_Filter) also provides filtering by removing or modifying input data to the format we expect.
+The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (mentioned above) can help you understand and use the sanitizers according to your needs.
 
 ```php
 <?php
 
-use Phalcon\Filter;
+use Phalcon\Filter\FilterLocatorFactory;
 
-$filter = new Filter();
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
 
-// Returns 'Hello'
-$filter->sanitize('<h1>Hello</h1>', 'striptags');
+// 'Hello'
+$locator->sanitize('<h1>Hello</h1>', 'striptags');
 
-// Returns 'Hello'
-$filter->sanitize('  Hello   ', 'trim');
+// 'Hello'
+$locator->sanitize('  Hello   ', 'trim');
 ```
 
-<a name='combining-filters'></a>
+<a name='combining-sanitizers'></a>
 
-## Combining Filters
+## Combining Sanitizers
 
-You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
+There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
 
 ```php
 <?php
 
-use Phalcon\Filter;
+use Phalcon\Filter\FilterLocatorFactory;
 
-$filter = new Filter();
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
 
 // Returns 'Hello'
-$filter->sanitize(
+$locator->sanitize(
     '   <h1> Hello </h1>   ',
     [
         'striptags',
@@ -307,66 +402,120 @@ $filter->sanitize(
 );
 ```
 
-<a name='adding-filters'></a>
-
-## Adding filters
-
-You can add your own filters to [Phalcon\Filter](api/Phalcon_Filter). The filter function could be an anonymous function:
+Note that this feature also works on the [Phalcon\Http\Request](api/Phalcon_Http_Request) object, when calling methods to retrieve data from `GET` and `POST`, namely `getQuery()` and `getPost()`.
 
 ```php
 <?php
 
-use Phalcon\Filter;
+use Phalcon\Filter\FilterLocator;
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Controller;
 
-$filter = new Filter();
+/**
+ * Class ProductsController
+ * 
+ * @property Request $request
+ */
+class ProductsController extends Controller
+{
+    public function saveAction()
+    {
+        if (true === $this->request->isPost()) {
+            $message =  $this->request->getPost(
+                '   <h1> Hello </h1>   ',
+                [
+                    'striptags',
+                    'trim',
+                ]
+            );
 
-// Using an anonymous function
-$filter->add(
+        }
+    }
+}
+```
+
+<a name='adding-sanitizers'></a>
+
+## Adding sanitizers
+
+You can add your own sanitizers to [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator). The sanitizer can be an anonymous function when initializing the locator:
+
+```php
+<?php
+
+use Phalcon\Filter\FilterLocator;
+
+$services = [
+    'md5' => function ($input) {
+        return md5($input);
+    },
+];
+
+$locator   = new FilterLocator($services);
+$sanitized = $locator->sanitize($value, 'md5');
+```
+
+If you already have an instantiated filter locator object (for instance if you have used the [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) and `newInstance()`), then you can simply add the custom filter:
+
+```php
+<?php
+
+use Phalcon\Filter\FilterLocatorFactory;
+
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
+
+$locator->set(
     'md5',
-    function ($value) {
-        return preg_replace('/[^0-9a-f]/', '', $value);
+    function ($input) {
+        return md5($input);
     }
 );
 
-// Sanitize with the 'md5' filter
-$filtered = $filter->sanitize($possibleMd5, 'md5');
+$sanitized = $locator->sanitize($value, 'md5');
 ```
+
+If you prefer to implement your sanitizer in a class:
 
 Or, if you prefer, you can implement the filter in a class:
 
 ```php
 <?php
 
-use Phalcon\Filter;
+use Phalcon\Filter\FilterLocatorFactory;
 
-class IPv4Filter
+class IPv4
 {
-    public function filter($value)
+    public function __invoke($value)
     {
         return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 }
 
-$filter = new Filter();
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
 
-// Using an object
-$filter->add(
+$locator->set(
     'ipv4',
-    new IPv4Filter()
+    function () {
+        return new Ipv4();
+    }
 );
 
 // Sanitize with the 'ipv4' filter
-$filteredIp = $filter->sanitize('127.0.0.1', 'ipv4');
+$filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
 
 <a name='complex-sanitization-filtering'></a>
 
 ## Complex Sanitizing and Filtering
 
-PHP itself provides an excellent filter extension you can use. Check out its documentation: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
+PHP itself provides an excellent filter extension you can use: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
 
 <a name='custom'></a>
 
-## Implementing your own Filter
+## Implementing your own Sanitizer
 
-The [Phalcon\FilterInterface](api/Phalcon_FilterInterface) interface must be implemented to create your own filtering service replacing the one provided by Phalcon.
+A custom sanitizer can be implemented as shown above as an anonymous function. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke) method with the relevant parameters.
+
+## Upgrading from v3
