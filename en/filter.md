@@ -3,7 +3,6 @@ layout: article
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
 
 <a name='overview'></a>
 # Filtering and Sanitizing
@@ -13,45 +12,152 @@ Sanitizing user input is a critical part of software development. Trusting or ne
 
 [Full image on XKCD](https://xkcd.com/327)
 
-The [Phalcon\Filter](api/Phalcon_Filter) component provides a set of commonly used filters and data sanitizing helpers. It provides object-oriented wrappers around the PHP filter extension.
+Sanitizing content can be achieved using the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) and [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) classes.
 
-<a name='types'></a>
-## Types of Built-in Filters
+## FilterLocatorFactory
+This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) with the preset sanitizers you need to call `newInstance()`
+
+```php
+<?php
+
+use Phalcon\Filter\FilterLocatorFactory;
+
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
+```
+
+You can now use the locator wherever you need and sanitize content as per the needs of your application. 
+
+> The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+{: .alert .alert-info }
+
+<a name='sanitizers'></a>
+## Built-in Sanitizers
+
+> Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
+{: .alert .alert-warning }
+
 The following are the built-in filters provided by this component:
 
-| Name      | Description                                                                                   |
-|-----------|-----------------------------------------------------------------------------------------------|
-| absint    | Casts the value as an integer and returns the absolute value of it.                           |
-| alphanum  | Remove all characters except [a-zA-Z0-9]                                                      |
-| email     | Remove all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`.                   |
-| float     | Remove all characters except digits, dot, plus and minus sign.                                |
-| float!    | Remove all characters except digits, dot, plus and minus sign and cast the result as a float. |
-| int       | Remove all characters except digits, plus and minus sign.                                     |
-| int!      | Remove all characters except digits, plus and minus sign and cast the result as an integer.   |
-| lower     | Applies the [strtolower](https://www.php.net/manual/en/function.strtolower.php) function       |
-| string    | Strip tags and encode HTML entities, including single and double quotes.                      |
-| striptags | Applies the [strip_tags](https://www.php.net/manual/en/function.strip-tags.php) function       |
-| trim      | Applies the [trim](https://www.php.net/manual/en/function.trim.php) function                   |
-| upper     | Applies the [strtoupper](https://www.php.net/manual/en/function.strtoupper.php) function       |
+#### absint
+```php
+AbsInt( mixed $input ): int
+```
+Removes any non numeric characters, casts the value to integer and returns its absolute value. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) for the integer part, `intval` for casting and `absint`
 
-Please note that the component uses the [filter_var](https://secure.php.net/manual/en/function.filter-var.php) PHP function internally.
+#### alnum      
+```php
+Alnum( mixed $input ): string | array
+```
+Removes all characters that are not numbers or characters of the alphabet. It uses `preg_replace` which can also accept arrays of strings as the parameters. 
+
+#### alpha
+```php
+Alpha( mixed $input ): string | array
+```
+Removes all characters that are not characters of the alphabet. It uses `preg_replace` which can also accept arrays of strings as the parameters. 
+
+#### bool       
+```php
+BoolVal( mixed $input ): bool
+```
+Casts the value to a boolean. 
+
+It also returns `true` if the value is:
+
+* `true`
+* `on`
+* `yes`
+* `y`
+* `1`
+
+It also returns `false` if the value is:
+
+* `false`
+* `off`
+* `no`
+* `n`
+* `0`
+
+#### email
+```php
+Email( mixed $input ): string
+```
+Removes all characters except letters, digits and `!#$%&*+-/=?^_`{\|}~@.[]`. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php)
+
+#### float
+```php
+FloatVal( mixed $input ): float
+```
+Removes all characters except digits, dot, plus and minus sign and casts the value as a `double`. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(double)`.
+
+#### int        
+```php
+IntVa( mixed $input ): int
+```
+Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
+
+#### `lower`
+Converts all characters to lowercase. If the `mbstring` extension is loaded, it will use `mb_convert_case` to perform the transformation. As a fallback it uses the `strtolower` PHP function, with `utf8_decode`.
+
+#### `lowerFirst` 
+Converts the first character of the input to lower case. Internally it uses `lcfirst`.
+
+#### `regex`
+
+#### `remove`
+
+#### `replace`
+
+#### `special`
+
+#### `specialFull`
+
+#### `string`     
+Strip tags and encode HTML entities, including single and double quotes.
+
+#### `striptags`  
+Applies the [strip_tags](https://www.php.net/manual/en/function.strip-tags.php) function
+
+#### `trim`       
+Applies the [trim](https://www.php.net/manual/en/function.trim.php) function
+
+#### `upper`
+Converts all characters to uppercase. If the `mbstring` extension is loaded, it will use `mb_convert_case` to perform the transformation. As a fallback it uses the `strtoupper` PHP function, with `utf8_decode`.
+
+#### `upperFirst` 
+Converts the first character of the input to upper case. Internally it uses `ucfirst`.
+
+#### `upperWords` 
+
+#### `url`        
 
 Constants are available and can be used to define the type of filtering required:
 
 ```php
 <?php
-const FILTER_ABSINT     = "absint";
-const FILTER_ALPHANUM   = "alphanum";
-const FILTER_EMAIL      = "email";
-const FILTER_FLOAT      = "float";
-const FILTER_FLOAT_CAST = "float!";
-const FILTER_INT        = "int";
-const FILTER_INT_CAST   = "int!";
-const FILTER_LOWER      = "lower";
-const FILTER_STRING     = "string";
-const FILTER_STRIPTAGS  = "striptags";
-const FILTER_TRIM       = "trim";
-const FILTER_UPPER      = "upper";
+
+const FILTER_ABSINT      = "absint";
+const FILTER_ALNUM       = "alnum";
+const FILTER_ALPHA       = "alpha";
+const FILTER_BOOL        = "bool";
+const FILTER_EMAIL       = "email";
+const FILTER_FLOAT       = "float";
+const FILTER_INT         = "int";
+const FILTER_LOWER       = "lower";
+const FILTER_LOWERFIRST  = "lowerFirst";
+const FILTER_REGEX       = "regex";
+const FILTER_REMOVE      = "remove";
+const FILTER_REPLACE     = "replace";
+const FILTER_SPECIAL     = "special";
+const FILTER_SPECIALFULL = "specialFull";
+const FILTER_STRING      = "string";
+const FILTER_STRIPTAGS   = "striptags";
+const FILTER_TRIM        = "trim";
+const FILTER_UPPER       = "upper";
+const FILTER_UPPERFIRST  = "upperFirst";
+const FILTER_UPPERWORDS  = "upperWords";
+const FILTER_URL         = "url";
 ```
 
 <a name='sanitizing'></a>
