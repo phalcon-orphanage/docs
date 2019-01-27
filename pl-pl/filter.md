@@ -239,9 +239,9 @@ class ProductsController extends Controller
 }
 ```
 
-<a name='filtering-action-parameters'></a>
+<a name='sanitizing-action-parameters'></a>
 
-## Filtering Action Parameters
+## Sanitizing Action Parameters
 
 The next example shows you how to sanitize the action parameters within a controller action:
 
@@ -264,7 +264,7 @@ class ProductsController extends Controller
 }
 ```
 
-<a name='filtering-data'></a>
+<a name='sanitizing-data'></a>
 
 ## Filtering data
 
@@ -284,9 +284,9 @@ $filter->sanitize('<h1>Hello</h1>', 'striptags');
 $filter->sanitize('  Hello   ', 'trim');
 ```
 
-<a name='combining-filters'></a>
+<a name='combining-sanitizers'></a>
 
-## Combining Filters
+## Combining Sanitizers
 
 You can also run multiple filters on a string at the same time by passing an array of filter identifiers as the second parameter:
 
@@ -307,7 +307,7 @@ $filter->sanitize(
 );
 ```
 
-<a name='adding-filters'></a>
+<a name='adding-sanitizers'></a>
 
 ## Adding filters
 
