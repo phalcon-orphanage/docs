@@ -1993,20 +1993,20 @@
       "url": "#sanitizing-from-controllers"
     },
     {
-      "text": "Filtering Action Parameters",
-      "url": "#filtering-action-parameters"
+      "text": "Sanitizing Action Parameters",
+      "url": "#sanitizing-action-parameters"
     },
     {
       "text": "Filtering data",
-      "url": "#filtering-data"
+      "url": "#sanitizing-data"
     },
     {
-      "text": "Combining Filters",
-      "url": "#combining-filters"
+      "text": "Combining Sanitizers",
+      "url": "#combining-sanitizers"
     },
     {
       "text": "Adding filters",
-      "url": "#adding-filters"
+      "url": "#adding-sanitizers"
     },
     {
       "text": "Complex Sanitizing and Filtering",
