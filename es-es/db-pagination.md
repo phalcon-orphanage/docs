@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Pagination
+# Paginación
 
 The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
