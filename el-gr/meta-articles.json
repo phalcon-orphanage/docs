@@ -3238,6 +3238,20 @@
       ]
     },
     {
+      "text": "ALC",
+      "url": "#acl",
+      "menu": [
+        {
+          "text": "Επισκόπηση",
+          "url": "#acl-overview"
+        },
+        {
+          "text": "Changed",
+          "url": "#acl-changed"
+        }
+      ]
+    },
+    {
       "text": "Filter",
       "url": "#filter",
       "menu": [
