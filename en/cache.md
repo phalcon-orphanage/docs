@@ -458,7 +458,7 @@ The backend adapters available to store cache data are:
 | [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)       | Stores data in memory                                |                                           |                                                    |
 | [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)        | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
 | [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)        | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
-| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)       | Stores data in XCache.                               | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
+| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)       | Stores data in XCache.                               | [XCache](https://xcache.lighttpd.net/)     | XCache                                              |
 
 ##### <strong>NOTE</strong> In PHP 7 to use phalcon <code>apc</code> based adapter classes you needed to install <code>apcu</code> and <code>apcu_bc</code> package from pecl. Now in Phalcon 4.0.0 you can switch your <code>*\Apc</code> classes to <code>*\Apcu</code> and remove <code>apcu_bc</code>. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. ##### {.alert .alert-warning}
 
