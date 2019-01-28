@@ -459,7 +459,7 @@ A custom sanitizer can be implemented as shown above as an anonymous function. I
 
 
 [absint]: https://secure.php.net/manual/en/function.absint.php
-[filter]: https://www.php.net/manual/en/book.filter.php
+[filter]: https://secure.php.net/manual/en/book.filter.php
 [filter_var]: https://secure.php.net/manual/en/function.filter-var.php
 [intval]: https://secure.php.net/manual/en/function.intval.php 
 [invoke]: https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke
@@ -467,11 +467,11 @@ A custom sanitizer can be implemented as shown above as an anonymous function. I
 [mb_convert_case]: https://secure.php.net/manual/en/function.mb-convert-case.php
 [mbstring]: https://secure.php.net/manual/en/book.mbstring.php
 [preg_replace]: https://secure.php.net/manual/en/function.preg-replace.php
-[strip_tags]: https://www.php.net/manual/en/function.strip-tags.php
+[strip_tags]: https://secure.php.net/manual/en/function.strip-tags.php
 [str_replace]: https://secure.php.net/manual/en/function.str-replace.php 
 [strtolower]: https://secure.php.net/manual/en/function.strtolower.php 
 [strtoupper]: https://secure.php.net/manual/en/function.strtoupper.php 
-[trim]: https://www.php.net/manual/en/function.trim.php
+[trim]: https://secure.php.net/manual/en/function.trim.php
 [ucfirst]: https://secure.php.net/manual/en/function.ucfirst.php
 [ucwords]: https://secure.php.net/manual/en/function.ucwords.php
 [utf8_decode]: https://secure.php.net/manual/en/function.utf8-decode.php
