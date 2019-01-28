@@ -2,6 +2,7 @@
 layout: article
 language: 'fr-fr'
 version: '4.0'
+upgrade: '#filter'
 ---
 
 
