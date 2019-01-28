@@ -3209,6 +3209,20 @@
     }
   ],
   "upgrade": [
+{
+      "text": "ALC",
+      "url": "#acl",
+      "menu": [
+        {
+          "text": "Overview",
+          "url": "#acl-overview"
+        },
+        {
+          "text": "Changed",
+          "url": "#acl-changed"
+        }
+      ]
+    },
     {
       "text": "Filter",
       "url": "#filter",
