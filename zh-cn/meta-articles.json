@@ -2005,7 +2005,7 @@
       "url": "#combining-sanitizers"
     },
     {
-      "text": "Adding filters",
+      "text": "Adding Sanitizers",
       "url": "#adding-sanitizers"
     },
     {
@@ -3206,6 +3206,30 @@
     {
       "text": "Sample Unit Test",
       "url": "#sample"
+    }
+  ],
+  "upgrade": [
+    {
+      "text": "Filter",
+      "url": "#filter",
+      "menu": [
+        {
+          "text": "Overview",
+          "url": "#filter-overview"
+        },
+        {
+          "text": "Using the FactoryDefault",
+          "url": "#filter-di-factorydefault"
+        },
+        {
+          "text": "Using a custom Di",
+          "url": "#filter-di-custom"
+        },
+        {
+          "text": "常量",
+          "url": "#filter-constants"
+        }
+      ]
     }
   ],
   "url": [
