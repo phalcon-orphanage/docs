@@ -458,9 +458,6 @@ PHP itself provides an excellent filter extension you can use: [Data Filtering a
 A custom sanitizer can be implemented as shown above as an anonymous function. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke][invoke] method with the relevant parameters.
 
 
-## Upgrading from v3
-
-
 [absint]: https://secure.php.net/manual/en/function.absint.php
 [filter]: https://www.php.net/manual/en/book.filter.php
 [filter_var]: https://secure.php.net/manual/en/function.filter-var.php
