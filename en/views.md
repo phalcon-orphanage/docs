@@ -789,8 +789,6 @@ class DownloadController extends Controller
 }
 ```
 
-The [PHP alternative site](https://github.com/phalcon/php-site) is an example of implementing the caching of fragments.
-
 <a name='template-engines'></a>
 ## Template Engines
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) allows you to use other template engines instead of plain PHP or Volt.
