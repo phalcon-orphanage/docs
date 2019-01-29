@@ -284,7 +284,7 @@ Las opciones disponibles de consulta son:
 | `limit`      | Limitar los resultados de la consulta a cierto rango                                                                                                                                                                 | `'limit' => 10`                                      |
 | `skip`       | Omite un número específico de resultados                                                                                                                                                                             | `'skip' => 50`                                       |
 
-If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://www.php.net/manual/en/mongo.sqltomongo.php).
+If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://secure.php.net/manual/en/mongo.sqltomongo.php).
 
 <a name='finding-documents-fields'></a>
 
@@ -373,7 +373,7 @@ if ($robot->save() === false) {
 }
 ```
 
-The `_id` property is automatically updated with the [MongoId](https://www.php.net/manual/en/class.mongoid.php) object created by the driver:
+The `_id` property is automatically updated with the [MongoId](https://secure.php.net/manual/en/class.mongoid.php) object created by the driver:
 
 ```php
 <?php
@@ -701,7 +701,7 @@ Another type of events is available when the data validation process finds any i
 
 ## Implicit Ids vs. User Primary Keys
 
-By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](https://www.php.net/manual/en/class.mongoid.php).
+By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](https://secure.php.net/manual/en/class.mongoid.php).
 
 If a model uses custom primary keys this behavior can be overridden:
 
