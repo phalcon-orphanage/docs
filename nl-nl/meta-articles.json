@@ -2378,68 +2378,54 @@
   ],
   "logger": [
     {
+      "text": "Logger",
+      "url": "/logger"
+    },
+    {
       "text": "Logging",
-      "url": "#overview"
+      "url": "/logger-overview"
     },
     {
       "text": "Adapters",
-      "url": "#adapters"
+      "url": "/logger-adapters"
     },
     {
-      "text": "Factory",
-      "url": "#adapters-factory"
+      "text": "Creating a Logger component",
+      "url": "/logger-creating"
     },
     {
-      "text": "Creating a Log",
-      "url": "#creating"
-    },
-    {
-      "text": "Transactions",
-      "url": "#transactions"
-    },
-    {
-      "text": "Logging to Multiple Handlers",
-      "url": "#multiple-handlers"
+      "text": "Logging to Multiple adapters",
+      "url": "/logger-multiple"
     },
     {
       "text": "Message Formatting",
-      "url": "#message-formatting",
+      "url": "/logger-message-formatting",
       "menu": [
         {
-          "text": "Line Formatter",
-          "url": "#message-formatting-line"
+          "text": "Line",
+          "url": "/logger-message-formatting-line"
         },
         {
-          "text": "Implementing your own formatters",
-          "url": "#message-formatting-custom"
+          "text": "JSON",
+          "url": "/logger-message-formatting-json"
+        },
+        {
+          "text": "Syslog",
+          "url": "/logger-message-formatting-syslog"
+        },
+        {
+          "text": "Custom",
+          "url": "/logger-message-formatting-custom"
         }
       ]
     },
     {
-      "text": "Adapters",
-      "url": "#usage",
-      "menu": [
-        {
-          "text": "Stream Logger",
-          "url": "#usage-stream"
-        },
-        {
-          "text": "File Logger",
-          "url": "#usage-file"
-        },
-        {
-          "text": "Syslog Logger",
-          "url": "#usage-syslog"
-        },
-        {
-          "text": "FirePHP Logger",
-          "url": "#usage-firephp"
-        },
-        {
-          "text": "Implementing your own adapters",
-          "url": "#usage-custom"
-        }
-      ]
+      "text": "Interpolation",
+      "url": "/logger-interpolation"
+    },
+    {
+      "text": "Examples",
+      "url": "/logger-examples"
     }
   ],
   "mvc": [
