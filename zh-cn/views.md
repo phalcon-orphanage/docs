@@ -812,8 +812,6 @@ class DownloadController extends Controller
 }
 ```
 
-The [PHP alternative site](https://github.com/phalcon/php-site) is an example of implementing the caching of fragments.
-
 <a name='template-engines'></a>
 
 ## Template Engines
