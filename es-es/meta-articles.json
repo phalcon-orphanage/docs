@@ -41,7 +41,7 @@
       "url": "#serialization"
     },
     {
-      "text": "Events",
+      "text": "Eventos",
       "url": "#events"
     },
     {
@@ -1269,7 +1269,7 @@
   ],
   "db-pagination": [
     {
-      "text": "Pagination",
+      "text": "Paginación",
       "url": "#overview"
     },
     {
@@ -2386,7 +2386,7 @@
       "url": "#creating"
     },
     {
-      "text": "Transactions",
+      "text": "Transacciones",
       "url": "#transactions"
     },
     {
@@ -3286,7 +3286,7 @@
       "url": "#initializing"
     },
     {
-      "text": "Validators",
+      "text": "Validadores",
       "url": "#validators"
     },
     {
