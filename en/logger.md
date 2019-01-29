@@ -2,16 +2,32 @@
 layout: article
 language: 'en'
 version: '4.0'
+upgrade: '#logger'
+category: 'logger'
 ---
-**This article reflects v3.4 and has not yet been revised**
 
 <a name='overview'></a>
 # Logging
-[Phalcon\Logger](api/Phalcon_Logger) is a component whose purpose is to provide logging services for applications. It offers logging to different backends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the [Phalcon\Logger](api/Phalcon_Logger) for every logging need your application has, from debugging processes to tracing application flow.
+[Phalcon\Logger](api/Phalcon_Logger) is a component whose purpose is to provide logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options, different formats and filters. You can use the [Phalcon\Logger](api/Phalcon_Logger) for any logging need your application has, from debugging processes to tracing application flow.
+
+![](/assets/images/implements-psr--3-orange.svg)
+
+The [Phalcon\Logger](api/Phalcon_Logger) has been rewritten to comply with [PSR-3][psr-3]. This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that expects a [PSR-3][psr-3] logger, not just Phalcon based ones.
+
+In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality. 
+
+For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with PSR-3 and separates the responsibilities of the component. It also offers the developer an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+ 
+
+** WIP below **
 
 <a name='adapters'></a>
 ## Adapters
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch backends if necessary. The adapters supported are:
+
+noop.zep
+stream.zep
+syslog.zep
 
 | Adapter                          | Description               |
 |----------------------------------|---------------------------|
@@ -42,12 +58,29 @@ $logger = Factory::load($options);
 The example below shows how to create a log and add messages to it:
 
 ```php
-<?php
-
 use Phalcon\Logger;
-use Phalcon\Logger\Adapter\File as FileAdapter;
+use Phalcon\Logger\Adapter\Stream;
 
-$logger = new FileAdapter('app/logs/test.log');
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+$adapter3 = new Stream('/manager/third-log.log');
+
+$logger = new Logger(
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
+);
+
+// Log to all adapters
+$logger->error('Something went wrong');
+
+// Log to specific adapters
+$logger
+    ->excludeAdapters(['manager'])
+    ->info('This does not go to the "manager" logger);
 
 // These are the different log levels available:
 
@@ -338,3 +371,5 @@ $logger->error(
 <a name='usage-custom'></a>
 ### Implementing your own adapters
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.
+
+[psr-3]: https://www.php-fig.org/psr/psr-3/

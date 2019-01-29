@@ -2376,7 +2376,7 @@
       "url": "#troubleshooting"
     }
   ],
-  "logging": [
+  "logger": [
     {
       "text": "Logging",
       "url": "#overview"
