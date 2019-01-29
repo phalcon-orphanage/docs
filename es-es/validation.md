@@ -125,7 +125,7 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## Validadores
 
 Phalcon exposes a set of built-in validators for this component:
 

@@ -7,32 +7,35 @@ title: 'Phalcon\Filter\FilterLocator'
 # Class **Phalcon\Filter\FilterLocator**
 
 **implements** [Phalcon\Service\LocatorInterface](Phalcon_Service_LocatorInterface)
+
 **extends** [Phalcon\Service\Locator](Phalcon_Service_Locator)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocator.zep)
 
 ## Constants
-* FILTER_ABSINT      = "absint";
-* FILTER_ALNUM       = "alnum";
-* FILTER_ALPHA       = "alpha";
-* FILTER_BOOL        = "bool";
-* FILTER_EMAIL       = "email";
-* FILTER_FLOAT       = "float";
-* FILTER_INT         = "int";
-* FILTER_LOWER       = "lower";
-* FILTER_LOWERFIRST  = "lowerFirst";
-* FILTER_REGEX       = "regex";
-* FILTER_REMOVE      = "remove";
-* FILTER_REPLACE     = "replace";
-* FILTER_SPECIAL     = "special";
-* FILTER_SPECIALFULL = "specialFull";
-* FILTER_STRING      = "string";
-* FILTER_STRIPTAGS   = "striptags";
-* FILTER_TRIM        = "trim";
-* FILTER_UPPER       = "upper";
-* FILTER_UPPERFIRST  = "upperFirst";
-* FILTER_UPPERWORDS  = "upperWords";
-* FILTER_URL         = "url";
+```php
+const FILTER_ABSINT      = "absint";
+const FILTER_ALNUM       = "alnum";
+const FILTER_ALPHA       = "alpha";
+const FILTER_BOOL        = "bool";
+const FILTER_EMAIL       = "email";
+const FILTER_FLOAT       = "float";
+const FILTER_INT         = "int";
+const FILTER_LOWER       = "lower";
+const FILTER_LOWERFIRST  = "lowerFirst";
+const FILTER_REGEX       = "regex";
+const FILTER_REMOVE      = "remove";
+const FILTER_REPLACE     = "replace";
+const FILTER_SPECIAL     = "special";
+const FILTER_SPECIALFULL = "specialFull";
+const FILTER_STRING      = "string";
+const FILTER_STRIPTAGS   = "striptags";
+const FILTER_TRIM        = "trim";
+const FILTER_UPPER       = "upper";
+const FILTER_UPPERFIRST  = "upperFirst";
+const FILTER_UPPERWORDS  = "upperWords";
+const FILTER_URL         = "url";
+```
 
 ## Properties
 ### Protected
@@ -47,33 +50,43 @@ array $mapper = [];
 public function __construct( array $mapper = [] ): void
 ```
 Key value pairs with name as the key and a callable as the value for the service object
+
 Inherited from [Phalcon\Service\Locator](Phalcon_Service_Locator)
+<hr/>
 
 ```php
 public function __call( string $name, array $parameters ): mixed
 ```
 Services being called via magic methods
+
 Inherited from [Phalcon\Service\Locator](Phalcon_Service_Locator)
+<hr/>
 
 ```php
 public function get( string $name ): object
 ```
 Get a service. If it is not in the mapper array, create a new object, set it and then return it.
+
 Inherited from [Phalcon\Service\Locator](Phalcon_Service_Locator)
+<hr/>
 
 ```php
 public function has( string $name ): bool
 ```
 Checks if a service exists in the map array
+
 Inherited from [Phalcon\Service\Locator](Phalcon_Service_Locator)
+<hr/>
 
 ```php
 public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = false): mixed
 ```
 Sanitizes a value with a specified single or set of sanitizers
+<hr/>
 
 ```php
 public function set( string $name, callable $service ): void
 ```
 Set a new service to the mapper array
+
 Inherited from [Phalcon\Service\Locator](Phalcon_Service_Locator)
