@@ -475,17 +475,17 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 
 The backend adapters available to store cache data are:
 
-| アダプター                                                                           | Description                             | 情報                                         | 必須エクステンション                                          |
-| ------------------------------------------------------------------------------- | --------------------------------------- | ------------------------------------------ | --------------------------------------------------- |
-| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Alternative PHP Cache (APC) にデータを格納します。 | [APC](https://php.net/apc)                 | [APC](https://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`                                                 | データをAPCuに格納します（オペコードキャッシングなしのAPC）       | [APCu](https://php.net/apcu)               | [APCu](https://pecl.php.net/package/APCu)           |
-| [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | ローカルのプレーンファイルにデータを格納します。                |                                            |                                                     |
-| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | memcachedサーバーにデータを格納します。                | [Memcached](https://www.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
-| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | memcachedサーバーにデータを格納します。                | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
-| [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                   |                                            |                                                     |
-| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | データをMongoデータベースに保存します。                  | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
-| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Redisにデータを格納します。                        | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
-| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | XCacheにデータを格納します。                       | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
+| アダプター                                                                           | Description                             | 情報                                            | 必須エクステンション                                          |
+| ------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Alternative PHP Cache (APC) にデータを格納します。 | [APC](https://php.net/apc)                    | [APC](https://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`                                                 | データをAPCuに格納します（オペコードキャッシングなしのAPC）       | [APCu](https://php.net/apcu)                  | [APCu](https://pecl.php.net/package/APCu)           |
+| [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | ローカルのプレーンファイルにデータを格納します。                |                                               |                                                     |
+| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | memcachedサーバーにデータを格納します。                | [Memcached](https://secure.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
+| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | memcachedサーバーにデータを格納します。                | [Memcache](https://secure.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
+| [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                   |                                               |                                                     |
+| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | データをMongoデータベースに保存します。                  | [MongoDB](https://mongodb.org/)               | [Mongo](https://mongodb.org/)                       |
+| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Redisにデータを格納します。                        | [Redis](https://redis.io/)                    | [Redis](https://pecl.php.net/package/redis)         |
+| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | XCacheにデータを格納します。                       | [XCache](https://xcache.lighttpd.net/)        | [XCache](https://pecl.php.net/package/xcache)       |
 
 ##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 
