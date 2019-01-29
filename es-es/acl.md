@@ -19,5 +19,5 @@ category: 'acl'
 - [Objects as operation name and subject name](objects)
 - [Operations Inheritance](operations-inheritance)
 - [Serializing ACL lists](serialization)
-- [Eventos](events)
+- [Events](events)
 - [Implementing your own adapters](custom-adapters)
