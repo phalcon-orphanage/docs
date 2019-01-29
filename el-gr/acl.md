@@ -20,4 +20,4 @@ category: 'acl'
 - [Operations Inheritance](operations-inheritance)
 - [Σειρογραφία Λίστες ACL](serialization)
 - [Γεγονότα](events)
-- [Εφαρμογή των δικών σας προσαρμογέων](custom-adapters)
+- [Implementing your own adapters](custom-adapters)
