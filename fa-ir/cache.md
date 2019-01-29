@@ -478,17 +478,17 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 
 The backend adapters available to store cache data are:
 
-| Adapter                                                                         | Description                                          | Info                                       | Required Extensions                                 |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------ | --------------------------------------------------- |
-| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                 | [APC](https://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`                                                 | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)               | [APCu](https://pecl.php.net/package/APCu)           |
-| [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | Stores data to local plain files.                    |                                            |                                                     |
-| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Stores data to a memcached server.                   | [Memcached](https://www.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
-| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Stores data to a memcached server.                   | [Memcache](https://www.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
-| [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                                |                                            |                                                     |
-| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)            | [Mongo](https://mongodb.org/)                       |
-| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Stores data in Redis.                                | [Redis](https://redis.io/)                 | [Redis](https://pecl.php.net/package/redis)         |
-| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | Stores data in XCache.                               | [XCache](https://xcache.lighttpd.net/)     | [XCache](https://pecl.php.net/package/xcache)       |
+| Adapter                                                                         | Description                                          | Info                                          | Required Extensions                                 |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------- | --------------------------------------------------- |
+| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                    | [APC](https://pecl.php.net/package/APC)             |
+| `Phalcon\Cache\Backend\Apcu`                                                 | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)                  | [APCu](https://pecl.php.net/package/APCu)           |
+| [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | Stores data to local plain files.                    |                                               |                                                     |
+| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Stores data to a memcached server.                   | [Memcached](https://secure.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
+| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Stores data to a memcached server.                   | [Memcache](https://secure.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
+| [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                                |                                               |                                                     |
+| [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)               | [Mongo](https://mongodb.org/)                       |
+| [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Stores data in Redis.                                | [Redis](https://redis.io/)                    | [Redis](https://pecl.php.net/package/redis)         |
+| [Phalcon\Cache\Backend\Xcache](api/Phalcon_Cache_Backend_Xcache)             | Stores data in XCache.                               | [XCache](https://xcache.lighttpd.net/)        | [XCache](https://pecl.php.net/package/xcache)       |
 
 ##### **NOTE** In PHP 7 to use phalcon `apc` based adapter classes you needed to install `apcu` and `apcu_bc` package from pecl. Now in Phalcon 4.0.0 you can switch your `<em>\Apc` classes to `</em>\Apcu` and remove `apcu_bc`. Keep in mind that in Phalcon 4 we will most likely remove all `*\Apc` classes. {.alert.alert-warning}
 

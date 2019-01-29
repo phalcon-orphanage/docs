@@ -1087,7 +1087,7 @@ $di->set(
 );
 ```
 
-The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](https://www.php.net/manual/en/book.tidy.php):
+The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](https://secure.php.net/manual/en/book.tidy.php):
 
 ```php
 <?php
