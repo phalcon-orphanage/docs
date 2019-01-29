@@ -7,7 +7,56 @@ version: '4.0'
 
 So you have decided to upgrade to v4! **Congratulations**!!
 
-Phalcon v4 contains a lot of changes to components, including changing of interfaces, strict types, removal of components and additions of new ones. This document is an effort to help make the upgrade process as smooth as possible.
+Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smooth as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+
+<a name='requirements'></a>
+
+## Προϋποθέσεις
+
+### PHP 7.2
+
+Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+
+### PSR
+
+Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+
+```ini
+extension=psr.so
+```
+
+before
+
+```ini
+extension=phalcon.so
+```
+
+Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+
+### Installation
+
+Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+
+Clone the repository
+
+```bash
+git clone https://github.com/phalcon/cphalcon
+```
+
+Compile Phalcon
+
+```bash
+cd cphalcon/
+git checkout tags/v4.0.0-alpha1 ./
+zephir fullclean
+zephir build
+```
+
+Check the module
+
+```bash
+php -m | grep phalcon
+```
 
 * * *
 
