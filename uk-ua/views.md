@@ -812,8 +812,6 @@ class DownloadController extends Controller
 }
 ```
 
-The [PHP alternative site](https://github.com/phalcon/php-site) is an example of implementing the caching of fragments.
-
 <a name='template-engines'></a>
 
 ## Template Engines
@@ -1089,7 +1087,7 @@ $di->set(
 );
 ```
 
-The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](https://www.php.net/manual/en/book.tidy.php):
+The following example shows how to create a plugin that cleans/repair the HTML produced by the render process using [Tidy](https://secure.php.net/manual/en/book.tidy.php):
 
 ```php
 <?php
