@@ -7,6 +7,8 @@ category: 'filter'
 ---
 # Filter Component
 
+* * *
+
 - [Filtering and Sanitizing](filter-overview)
 - [Built-in Sanitizers](filter-sanitizers)
 - [Sanitizing data](filter-sanitizing)
