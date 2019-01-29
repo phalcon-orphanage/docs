@@ -116,7 +116,7 @@ Process a video, send e-mails, compress a file or an image, etc., are slow tasks
 * [Beanstalkd](https://kr.github.io/beanstalkd/)
 * [Redis](https://redis.io/)
 * [RabbitMQ](https://www.rabbitmq.com/)
-* [Resque](https://github.com/chrisboulton/php-resque>)
+* [Resque](https://github.com/chrisboulton/php-resque)
 * [Gearman](https://gearman.org/)
 * [ZeroMQ](https://www.zeromq.org/)
 
