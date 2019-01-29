@@ -3,14 +3,9 @@ layout: article
 language: 'cs-cz'
 version: '4.0'
 upgrade: '#filter'
-<<<<<<< HEAD
-=======
 category: 'filter'
->>>>>>> 7b3ab67a64e6d06222083dd3b5238b59da76899c
 ---
 # Filter Component
-
-* * *
 
 - [Filtering and Sanitizing](filter-overview)
 - [Built-in Sanitizers](filter-sanitizers)
