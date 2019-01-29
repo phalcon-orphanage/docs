@@ -1,52 +1,56 @@
 {
   "acl": [
     {
+      "text": "ACL",
+      "url": "/acl"
+    },
+    {
       "text": "Overview",
-      "url": "#overview"
+      "url": "/acl-overview"
     },
     {
       "text": "Creating an ACL",
-      "url": "#setup"
+      "url": "/acl-setup"
     },
     {
       "text": "Adding Operations",
-      "url": "#adding-operations"
+      "url": "/acl-adding-operations"
     },
     {
       "text": "Adding Subjects",
-      "url": "#adding-subjects"
+      "url": "/acl-adding-subjects"
     },
     {
       "text": "Defining Access Controls",
-      "url": "#access-controls"
+      "url": "/acl-access-controls"
     },
     {
       "text": "Querying an ACL",
-      "url": "#querying"
+      "url": "/acl-querying"
     },
     {
       "text": "Function based access",
-      "url": "#function-based-access"
+      "url": "/acl-function-based-access"
     },
     {
       "text": "Objects as Operation and Subject name",
-      "url": "#objects"
+      "url": "/acl-objects"
     },
     {
       "text": "Operations Inheritance",
-      "url": "#operationss-inheritance"
+      "url": "/acl-operations-inheritance"
     },
     {
       "text": "Serializing ACL lists",
-      "url": "#serialization"
+      "url": "/acl-serialization"
     },
     {
       "text": "Events",
-      "url": "#events"
+      "url": "/acl-events"
     },
     {
       "text": "Implementing your own adapters",
-      "url": "#custom-adapters"
+      "url": "/acl-custom-adapters"
     }
   ],
   "annotations": [
@@ -1977,44 +1981,48 @@
   ],
   "filter": [
     {
-      "text": "Filtering and Sanitizing",
-      "url": "#overview"
+      "text": "Filter",
+      "url": "/filter"
     },
     {
-      "text": "Types of Built-in Filters",
-      "url": "#types"
+      "text": "Filtering and Sanitizing",
+      "url": "/filter-overview"
+    },
+    {
+      "text": "Built-in Sanitizers",
+      "url": "/filter-sanitizers"
     },
     {
       "text": "Sanitizing data",
-      "url": "#sanitizing"
+      "url": "/filter-sanitizing"
     },
     {
       "text": "Sanitizing from Controllers",
-      "url": "#sanitizing-from-controllers"
+      "url": "/filter-sanitizing-from-controllers"
     },
     {
       "text": "Sanitizing Action Parameters",
-      "url": "#sanitizing-action-parameters"
+      "url": "/filter-sanitizing-action-parameters"
     },
     {
       "text": "Filtering data",
-      "url": "#sanitizing-data"
+      "url": "/filter-sanitizing-data"
     },
     {
       "text": "Combining Sanitizers",
-      "url": "#combining-sanitizers"
+      "url": "/filter-combining-sanitizers"
     },
     {
       "text": "Adding Sanitizers",
-      "url": "#adding-sanitizers"
+      "url": "/filter-adding-sanitizers"
     },
     {
       "text": "Complex Sanitizing and Filtering",
-      "url": "#complex-sanitization-filtering"
+      "url": "/filter-complex-sanitization-filtering"
     },
     {
       "text": "Implementing your own Filter",
-      "url": "#custom"
+      "url": "/filter-custom"
     }
   ],
   "flash": [
