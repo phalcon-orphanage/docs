@@ -204,7 +204,7 @@
         },
         {
           "text": "Μέθοδοι - ρήματα",
-          "url": "#routing-verbs",
+          "url": ""/application-micro#routing-verbs",
           "menu": [
             {
               "text": "delete",
