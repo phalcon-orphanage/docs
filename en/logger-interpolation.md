@@ -9,7 +9,9 @@ category: 'logger'
 <hr/>
 
 ## Interpolation
-The logger also supports interpolation. This means that you can inject data to a message based on the needs of your application.
+The logger also supports interpolation. There are times that you might need to inject additional text in your logging messages; text that is dynamically created by your application. This can be easily achieved by sending an array as the second parameter of the logging method (i.e. `error`, `info`, `alert` etc.). The array holds keys and values, where the key is the placeholder in the message and the value is what will be injected in the message.
+
+The following example demonstrates interpolation by injecting in the message the parameter "framework" and "secs".
 
 ```php
 <?php
