@@ -109,7 +109,7 @@ Converts the first character of the input to lower case. Internally it uses [lcf
 Regex( mixed $input, mixed $pattern, mixed $replace ): string
 ```
 
-Preforms a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php).
+Performs a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php).
 
 #### remove
 
@@ -117,7 +117,7 @@ Preforms a regex replacement on the input using a `pattern` and the `replace` pa
 Remove( mixed $input, mixed $remove ): string
 ```
 
-Preforms a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
+Performs a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
 
 #### replace
 
@@ -125,7 +125,7 @@ Preforms a replacement on the input, replacing the `replace` parameter with an e
 Replace( mixed $input, mixed $from, mixed $to ): string
 ```
 
-Preforms a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
+Performs a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
 
 #### special
 
@@ -181,7 +181,7 @@ Converts all characters to uppercase. If the [mbstring](https://secure.php.net/m
 UpperFirst( mixed $input ): string
 ```
 
-Converts the first character of the input to lower case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
+Converts the first character of the input to upper case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
 
 #### upperWords
 
