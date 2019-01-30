@@ -9,9 +9,9 @@ category: 'logger'
 
 * * *
 
-## Instantiating a logger
+## Creating a logger
 
-Instantiating a logger is a multi step process. First you create the logger object and then you attach an adapter to it. After that you can start logging messages according to the needs of your application.
+Creating a logger is a multi step process. First you create the logger object and then you attach an adapter to it. After that you can start logging messages according to the needs of your application.
 
 ```php
 <?php
