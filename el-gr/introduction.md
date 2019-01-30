@@ -3,8 +3,6 @@ layout: article
 language: 'el-gr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
 # Καλώς ορίσατε
 
 Welcome to the documentation for the Phalcon framework.
