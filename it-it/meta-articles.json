@@ -204,7 +204,7 @@
         },
         {
           "text": "Methods - Verbs",
-          "url": ""/application-micro#routing-verbs",
+          "url": "/application-micro#routing-verbs",
           "menu": [
             {
               "text": "delete",
