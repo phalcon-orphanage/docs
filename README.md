@@ -21,5 +21,5 @@ Any pull requests to this repository must target the `en/` folder. All the langu
     </a>
 </p>
 
-You can find our documentation project in Crowdin [here](https://crowdin.com/projects/phalcon-documentation)
+You can find our documentation project in Crowdin [here](https://crowdin.com/project/phalcon-documentation)
 
