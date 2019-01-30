@@ -89,19 +89,19 @@ Converts the first character of the input to lower case. Internally it uses [lcf
 ```php
 Regex( mixed $input, mixed $pattern, mixed $replace ): string
 ```
-Preforms a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace][preg_replace].
+Performs a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace][preg_replace].
 
 #### remove
 ```php
 Remove( mixed $input, mixed $remove ): string
 ```
-Preforms a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace][str_replace].
+Performs a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace][str_replace].
 
 #### replace
 ```php
 Replace( mixed $input, mixed $from, mixed $to ): string
 ```
-Preforms a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace][str_replace].
+Performs a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace][str_replace].
 
 #### special
 ```php
@@ -143,7 +143,7 @@ Converts all characters to uppercase. If the [mbstring][mbstring] extension is l
 ```php
 UpperFirst( mixed $input ): string
 ```
-Converts the first character of the input to lower case. Internally it uses [ucfirst][ucfirst].
+Converts the first character of the input to upper case. Internally it uses [ucfirst][ucfirst].
 
 #### upperWords
 ```php
