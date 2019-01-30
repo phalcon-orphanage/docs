@@ -5,10 +5,6 @@
       "url": "/acl"
     },
     {
-      "text": "Overview",
-      "url": "/acl-overview"
-    },
-    {
       "text": "Creating an ACL",
       "url": "/acl-setup"
     },
@@ -1981,12 +1977,8 @@
   ],
   "filter": [
     {
-      "text": "Filter",
-      "url": "/filter"
-    },
-    {
       "text": "Filtering and Sanitizing",
-      "url": "/filter-overview"
+      "url": "/filter"
     },
     {
       "text": "Built-in Sanitizers",
@@ -2377,10 +2369,6 @@
     {
       "text": "Logger",
       "url": "/logger"
-    },
-    {
-      "text": "Logging",
-      "url": "/logger-overview"
     },
     {
       "text": "Adapters",
