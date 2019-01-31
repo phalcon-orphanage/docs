@@ -17,6 +17,8 @@ Phalcon v4 contains a lot of changes to components, including changes to interfa
 
 Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
+<a name='psr'></a>
+
 ### PSR
 
 Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
@@ -32,6 +34,8 @@ extension=phalcon.so
 ```
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+
+<a name='installation'></a>
 
 ### Installation
 
@@ -215,5 +219,98 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - `FILTER_SPECIALFULL` - sanitize special chars (`filter_var`)
 - `FILTER_UPPERFIRST` - sanitize using `ucfirst`
 - `FILTER_UPPERWORDS` - sanitize using `ucwords`
+
+* * *
+
+<a name='logger'></a>
+
+## Logger
+
+> Status: **changes required**
+> 
+> Usage: [Logger Documentation](logger) {: .alert .alert-info }
+
+The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+
+In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality.
+
+For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
+
+<a name='logger-creating'></a>
+
+### Creating a logger component
+
+```php
+<?php
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter = new Stream('/logs/application.log');
+$logger  = new Logger(
+    'messages',
+    [
+        'main' => $adapter,
+    ]
+);
+
+$logger->error('Something went wrong');
+```
+
+Registering it in the DI
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$container = new Di();
+
+$container->set(
+    'filter',
+    function () {
+        $adapter = new Stream('/logs/application.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
+
+        return $logger;
+    }
+);
+```
+
+<a name='logger-multiple'></a>
+
+### Multiple loggers
+
+The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
+
+```php
+<?php
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+$adapter3 = new Stream('/manager/third-log.log');
+
+$logger = new Logger(
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
+);
+
+// Log to all adapters
+$logger->error('Something went wrong');
+```
 
 * * *

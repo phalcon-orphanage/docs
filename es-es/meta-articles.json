@@ -1635,90 +1635,6 @@
       "url": "/dispatcher#custom"
     }
   ],
-  "environments-docker": [
-    {
-      "text": "Environments - Docker",
-      "url": "/environments-docker#overview"
-    },
-    {
-      "text": "Dependencies",
-      "url": "/environments-docker#dependencies"
-    },
-    {
-      "text": "Services",
-      "url": "/environments-docker#services"
-    },
-    {
-      "text": "Installation",
-      "url": "/environments-docker#installation",
-      "menu": [
-        {
-          "text": "With Composer (recommended)",
-          "url": "/environments-docker#installation-composer"
-        },
-        {
-          "text": "With Git",
-          "url": "/environments-docker#installation-git"
-        }
-      ]
-    },
-    {
-      "text": "Configuration",
-      "url": "/environments-docker#configuration"
-    },
-    {
-      "text": "Usage",
-      "url": "/environments-docker#usage"
-    },
-    {
-      "text": "Set up",
-      "url": "/environments-docker#setup"
-    },
-    {
-      "text": "Logs",
-      "url": "/environments-docker#logs"
-    },
-    {
-      "text": "Environment variables",
-      "url": "/environments-docker#environment-variables",
-      "menu": [
-        {
-          "text": "Web environment",
-          "url": "/environments-docker#environment-variables-web"
-        },
-        {
-          "text": "phpMyAdmin variables",
-          "url": "/environments-docker#environment-variables-phpmyadmin"
-        }
-      ]
-    },
-    {
-      "text": "Xdebug Remote debugger (PhpStorm)",
-      "url": "/environments-docker#xdebug"
-    },
-    {
-      "text": "Troubleshooting",
-      "url": "/environments-docker#troubleshooting",
-      "menu": [
-        {
-          "text": "Startup or linking errors",
-          "url": "/environments-docker#troubleshooting-startup"
-        },
-        {
-          "text": "Full reset",
-          "url": "/environments-docker#troubleshooting-full-reset"
-        },
-        {
-          "text": "Updating dependencies",
-          "url": "/environments-docker#troubleshooting-dependencies"
-        }
-      ]
-    },
-    {
-      "text": "Versions",
-      "url": "/environments-docker#versions"
-    }
-  ],
   "environments-nanobox": [
     {
       "text": "Environments - Nanobox",
@@ -1751,160 +1667,6 @@
     {
       "text": "Phalcon and Nanobox",
       "url": "/environments-nanobox#conclusion"
-    }
-  ],
-  "environments-vagrant": [
-    {
-      "text": "Environments - Vagrant",
-      "url": "/environments-vagrant#overview"
-    },
-    {
-      "text": "Requirements",
-      "url": "/environments-vagrant#requirements"
-    },
-    {
-      "text": "Packages Included",
-      "url": "/environments-vagrant#packages-included"
-    },
-    {
-      "text": "Installation",
-      "url": "/environments-vagrant#installation",
-      "menu": [
-        {
-          "text": "Installing the Vagrant Box",
-          "url": "/environments-vagrant#installation-vagrant-box"
-        },
-        {
-          "text": "Installing the Phalcon Box",
-          "url": "/environments-vagrant#installation-phalcon-box"
-        }
-      ]
-    },
-    {
-      "text": "Configuring",
-      "url": "/environments-vagrant#installation-configuration",
-      "menu": [
-        {
-          "text": "Setting your provider",
-          "url": "/environments-vagrant#installation-configuration-setting-provider"
-        },
-        {
-          "text": "Memory and CPU",
-          "url": "/environments-vagrant#installation-configuration-memory-cpu"
-        },
-        {
-          "text": "Shared folders",
-          "url": "/environments-vagrant#installation-configuration-shared-folders"
-        },
-        {
-          "text": "Nginx sites",
-          "url": "/environments-vagrant#installation-configuration-nginx",
-          "menu": [
-            {
-              "text": "Custom Nginx configuration",
-              "url": "/environments-vagrant#installation-configuration-custom-nginx"
-            },
-            {
-              "text": "Configuring the `hosts` file",
-              "url": "/environments-vagrant#installation-configuration-hosts"
-            }
-          ]
-        },
-        {
-          "text": "Install additional packages",
-          "url": "/environments-vagrant#installation-aditional-packages"
-        },
-        {
-          "text": "Launching the Phalcon Box",
-          "url": "/environments-vagrant#installation-launching-phalcon-box"
-        }
-      ]
-    },
-    {
-      "text": "Daily usage",
-      "url": "/environments-vagrant#daily-usage",
-      "menu": [
-        {
-          "text": "Accessing Phalcon Box globally",
-          "url": "/environments-vagrant#daily-usage-accessing-box-globally",
-          "menu": [
-            {
-              "text": "Mac || Linux",
-              "url": "/environments-vagrant#daily-usage-accessing-box-globally-mac-linux"
-            },
-            {
-              "text": "Windows",
-              "url": "/environments-vagrant#daily-usage-accessing-box-globally-windows"
-            }
-          ]
-        },
-        {
-          "text": "Connecting via SSH",
-          "url": "/environments-vagrant#daily-usage-ssh"
-        },
-        {
-          "text": "Connecting to databases",
-          "url": "/environments-vagrant#daily-usage-databases"
-        },
-        {
-          "text": "Adding additional sites",
-          "url": "/environments-vagrant#daily-usage-additional-sites"
-        },
-        {
-          "text": "Environment variables",
-          "url": "/environments-vagrant#daily-usage-environment-variables",
-          "menu": [
-            {
-              "text": "Global variables",
-              "url": "/environments-vagrant#daily-usage-environment-global-variables"
-            },
-            {
-              "text": "Site variables",
-              "url": "/environments-vagrant#daily-usage-environment-site-variables"
-            }
-          ]
-        },
-        {
-          "text": "Ports",
-          "url": "/environments-vagrant#daily-usage-ports",
-          "menu": [
-            {
-              "text": "Forwarding additional ports",
-              "url": "/environments-vagrant#daily-usage-ports-forwarding"
-            }
-          ]
-        },
-        {
-          "text": "Sharing your environment",
-          "url": "/environments-vagrant#daily-usage-sharing-environment"
-        },
-        {
-          "text": "Network interfaces",
-          "url": "/environments-vagrant#daily-usage-network-interfaces"
-        },
-        {
-          "text": "Updating Phalcon Box",
-          "url": "/environments-vagrant#daily-usage-updating-box"
-        },
-        {
-          "text": "Provider specific settings",
-          "url": "/environments-vagrant#daily-usage-provider-settings",
-          "menu": [
-            {
-              "text": "VirtualBox",
-              "url": "/environments-vagrant#daily-usage-provider-settings-virtualbox"
-            }
-          ]
-        },
-        {
-          "text": "Mail catcher",
-          "url": "/environments-vagrant#daily-usage-mail-catcher"
-        }
-      ]
-    },
-    {
-      "text": "Troubleshooting",
-      "url": "/environments-vagrant#troubleshooting"
     }
   ],
   "escaper": [
@@ -3185,6 +2947,20 @@
   ],
   "upgrade": [
     {
+      "text": "Requirements",
+      "url": "#requirements",
+      "menu": [
+        {
+          "text": "PSR",
+          "url": "#psr"
+        },
+        {
+          "text": "Installation",
+          "url": "#installation"
+        }
+      ]
+    },
+    {
       "text": "ALC",
       "url": "#acl",
       "menu": [
@@ -3217,6 +2993,42 @@
         {
           "text": "Constantes",
           "url": "#filter-constants"
+        }
+      ]
+    },
+    {
+      "text": "Logger",
+      "url": "#logger",
+      "menu": [
+        {
+          "text": "Overview",
+          "url": "#filter-overview"
+        },
+        {
+          "text": "Using the FactoryDefault",
+          "url": "#filter-di-factorydefault"
+        },
+        {
+          "text": "Using a custom Di",
+          "url": "#filter-di-custom"
+        },
+        {
+          "text": "Constantes",
+          "url": "#filter-constants"
+        }
+      ]
+    },
+    {
+      "text": "Logger",
+      "url": "#logger",
+      "menu": [
+        {
+          "text": "Creating a logger component",
+          "url": "#logger-creating"
+        },
+        {
+          "text": "Multiple loggers",
+          "url": "#logger-multiple"
         }
       ]
     }
