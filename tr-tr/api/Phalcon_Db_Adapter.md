@@ -8,47 +8,47 @@ title: 'Phalcon\Db\Adapter'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
 Base class for Phalcon\Db adapters
 
-## Methods
+## Metodlar
 
-public **getDialectType** ()
+genel **getDialectType** ()
 
-Name of the dialect used
+Kullanılan lehçenin adı
 
-public **getType** ()
+genel **getType** ()
 
-Type of database system the adapter is used for
+Adaptörün kendisi için kullanıldığı veritabanı sistemi türü
 
-public **getSqlVariables** ()
+genel **getSqlVariables** ()
 
-Active SQL bound parameter variables
+Etkin SQL iilişkili parametre değişkenleri
 
-public **__construct** (*array* $descriptor)
+genel **__construct** (*dizi* $açıklayıcısı)
 
 Phalcon\Db\Adapter constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the event manager
+Olay yöneticisi ayarlar
 
-public **getEventsManager** ()
+herkes **Olay yöneticisini al** ()
 
-Returns the internal event manager
+Dahili olay yöneticisini döndürür
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect)
 
-Sets the dialect used to produce the SQL
+SQL'i üretmek için kullanılan lehçeyi ayarlar
 
-public **getDialect** ()
+genel **getDialect** ()
 
-Returns internal dialect instance
+Dahili lehçe örneğini döndürür
 
-public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
+genel **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Returns the first row in a SQL query result
+Bir SQL sorgusu sonucundaki ilk satırı döndürür
 
 ```php
 <?php
@@ -63,9 +63,9 @@ print_r($robot);
 
 ```
 
-public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
+genel *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Dumps the complete result of a query into an array
+Bir sorgunun tam sonucunu bir diziye yığar
 
 ```php
 <?php
@@ -91,12 +91,15 @@ $robots = $connection->fetchAll(
 foreach($robots as $robot) {
     print_r($robot);
 }
+ 
+Text
+XPath: /pre[2]/code
 
 ```
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
-Returns the n'th field of first row in a SQL query result
+Bir SQL sorgusu sonucundaki ilk satırın n'nci alanını döndürür
 
 ```php
 <?php
@@ -105,18 +108,21 @@ Returns the n'th field of first row in a SQL query result
 $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
 print_r($robotsCount);
 
-// Getting name of last edited robot
+// Son düzenlenen robotun adını öğrenme
 $robot = $connection->fetchColumn(
     "SELECT id, name FROM robots order by modified desc",
     1
 );
 print_r($robot);
+ 
+yazdırma
+XPath: /pre[3]/code;
 
 ```
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserts data into a table using custom RDBMS SQL syntax
+Veriyi özel RDBMS SQL sözdizimi kullanarak bir tabloya yerleştirir
 
 ```php
 <?php
@@ -135,7 +141,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
-Inserts data into a table using custom RBDM SQL syntax
+Veriyi özel RDBM SQL sözdizimi kullanarak bir tabloya yerleştirir
 
 ```php
 <?php
@@ -156,7 +162,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax
+Bir tablodaki veriyi özel RBDM sözdizimi kullanarak günceller
 
 ```php
 <?php
@@ -193,7 +199,7 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
-Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
+Bİr tablodaki veriyi özel RBDM SQL sözdizimini kullanarak günceller Diğer, daha uygun sözdizimi
 
 ```php
 <?php
@@ -214,7 +220,7 @@ UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Deletes data from a table using custom RBDM SQL syntax
+Bir tablodan özel RBDM SQL sözdizimini kullarak veriyi siler
 
 ```php
 <?php
@@ -252,7 +258,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList)
 
-Gets a list of columns
+Sütunların bir listesini alır
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
@@ -267,7 +273,7 @@ echo $connection->limit("SELECT * FROM robots", 5);
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table
+Bir schema.table varlığı için SQL denetimi üretir
 
 ```php
 <?php
@@ -280,7 +286,7 @@ var_dump(
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+Bir schema.view varlığı için SQL denetimi üretir
 
 ```php
 <?php
@@ -293,71 +299,71 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+Bir FOR UPDATE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Bir LOCK IN SHARE MODE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Creates a table
+Bir tablo oluştur
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Drops a table from a schema/database
+Bir şema/veritabanından bir tablo düşürür
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Creates a view
+Bir görünüm oluşturur
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Drops a view
+Bir görünüm düşürür
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Adds a column to a table
+Bir tabloya bir sütun ekler
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Modifies a table column based on a definition
+Bir tablo sütununu bir tanıma dayanarak değiştirir
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Drops a column from a table
+Bir tablodan bir sütun düşürür
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Adds an index to a table
+Bir tabloya bir indeks ekler
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
-Drop an index from a table
+Bir tablodan bir sütun düşür
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Adds a primary key to a table
+Bir tabloya bir birincil anahtar ekler
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Drops a table's primary key
+Bir tablonun birincil anahtarını düşürür
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Adds a foreign key to a table
+Bir tabloya bir dış anahtar ekler
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Drops a foreign key from a table
+Bir tablodan bir dış anahtar düşürür
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Returns the SQL column definition from a column
+Bir sütundan SQL sütun tanımını döndürür
 
 public **listTables** ([*mixed* $schemaName])
 
-List all tables on a database
+Bir veritabanındaki tüm tabloları listele
 
 ```php
 <?php
@@ -370,7 +376,7 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-List all views on a database
+Bir veritabanındaki tüm görünümleri listele
 
 ```php
 <?php
@@ -383,7 +389,7 @@ print_r(
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
-Lists table indexes
+Tablo indekslerini listeler
 
 ```php
 <?php
@@ -396,7 +402,7 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Lists table references
+Tablo referanslarını listeler
 
 ```php
 <?php
@@ -409,7 +415,7 @@ print_r(
 
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
-Gets creation options from a table
+Bir tablodan oluştrma seçeneklerini alır
 
 ```php
 <?php
@@ -422,31 +428,31 @@ print_r(
 
 public **createSavepoint** (*mixed* $name)
 
-Creates a new savepoint
+Yeni bir kayıt noktası oluşturur
 
 public **releaseSavepoint** (*mixed* $name)
 
-Releases given savepoint
+Verilen kayıt noktasını bırakır
 
 public **rollbackSavepoint** (*mixed* $name)
 
-Rollbacks given savepoint
+Verilen kayıt noktasına geri döner
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
-Set if nested transactions should use savepoints
+İç içe geçmiş işlemler kayıt noktaları kullanmalı mı, ayarlar
 
 public **isNestedTransactionsWithSavepoints** ()
 
-Returns if nested transactions should use savepoints
+İç içe geçmiş işlemler kayıt noktaları kullanmalı mı, döndürür
 
 public **getNestedTransactionSavepointName** ()
 
-Returns the savepoint name to use for nested transactions
+İç içe geçmiş işlemlerde kullanmak için kayıt noktası adını döndürür
 
 public **getDefaultIdValue** ()
 
-Returns the default identity value to be inserted in an identity column
+Bir kimlik sütununda eklenecek varsayılan kimlik değerlerini döndürür
 
 ```php
 <?php
@@ -470,7 +476,7 @@ $success = $connection->insert(
 
 public **getDefaultValue** ()
 
-Returns the default value to make the RBDM use the default value declared in the table definition
+RBDM'in Tablo tanımlamasında beyan edilen varsayılan değeri kullanmasını sağlamak için varsayılan değeri getirir
 
 ```php
 <?php
@@ -490,33 +496,33 @@ $success = $connection->insert(
 
 ```
 
-public **supportSequences** ()
+genel **supportSequences** ()
 
-Check whether the database system requires a sequence to produce auto-numeric values
+Bir veritabanı sistemi otomatik-sayısal değerler üretmek için bir sıralamaya ihtiyaç duyar mı duymaz mı kontrol et
 
-public **useExplicitIdValue** ()
+genel **useExplicitIdValue** ()
 
-Check whether the database system requires an explicit value for identity columns
+Veritabanı sisteminin kimlik sütunları için belirgin bir değere ihtiyacı olup olmadığını kontrol eder
 
-public **getDescriptor** ()
+genel **getDescriptor** ()
 
-Return descriptor used to connect to the active database
+Etkin veritabanına bağlanmak için kullanılan tanımlayıcıyı döndür
 
 public *string* **getConnectionId** ()
 
-Gets the active connection unique identifier
+Etkin bağlantının benzersiz tanımlayıcısını alır
 
 public **getSQLStatement** ()
 
-Active SQL statement in the object
+Nesnede etkin SQL ifade
 
 public **getRealSQLStatement** ()
 
-Active SQL statement in the object without replace bound parameters
+İlişkili parametreleri değiştirmeksizin nesnede etkin SQL ifade
 
 public *array* **getSQLBindTypes** ()
 
-Active SQL statement in the object
+Nesnede etkin SQL ifade
 
 abstract public **connect** ([*array* $descriptor]) inherited from [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
