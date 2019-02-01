@@ -6,7 +6,7 @@ title: 'Phalcon\Debug\Dump'
 ---
 # Class **Phalcon\Debug\Dump**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
 Dumps information about a variable(s)
 
@@ -30,7 +30,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## Methods
+## Metodlar
 
 public **getDetailed** ()
 
@@ -46,27 +46,27 @@ Phalcon\Debug\Dump constructor
 
 public **all** ()
 
-Alias of variables() method
+Değişkenlerin diğer adları () yöntemi
 
 protected **getStyle** (*mixed* $type)
 
-Get style for type
+Yazı tipi elde elde et
 
-public **setStyles** ([*array* $styles])
+genel **setStyles** ([*array* $styles])
 
-Set styles for vars type
+Vars türü için stilleri ayarlar
 
-public **one** (*mixed* $variable, [*mixed* $name])
+genel **one** (*mixed* $variable, [*mixed* $name])
 
-Alias of variable() method
+Değişken metodunun diğer adları
 
 protected **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
-Prepare an HTML string of information about a single variable.
+Bir değişkenle ilgili olan HTML satırını haırlar.
 
 public **variable** (*mixed* $variable, [*mixed* $name])
 
-Returns an HTML string of information about a single variable.
+Bir değişkenle ilgili olan HTML satırını geri getirir.
 
 ```php
 <?php
@@ -77,7 +77,7 @@ echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 public **variables** ()
 
-Returns an HTML string of debugging information about any number of variables, each wrapped in a "pre" tag.
+Her biri bir "ön" etiket içine sarılmış, herhangi bir sayıda değişken hakkında hata ayıklama bilgisi içeren bir HTML dizesini geri getirir.
 
 ```php
 <?php
@@ -92,7 +92,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 public **toJson** (*mixed* $variable)
 
-Returns an JSON string of information about a single variable.
+Tek bir değişkene ilişkin bilgilerini JSON satırını döndürür.
 
 ```php
 <?php
