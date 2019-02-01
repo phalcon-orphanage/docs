@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Reflection'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
-Позволяет манипулировать отражения аннотации в ОО порядке
+Allows to manipulate the annotations reflection in an OO manner
 
 ```php
 <?php
@@ -28,27 +28,27 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $reflectionData])
 
 Phalcon\Annotations\Reflection constructor
 
-общественная **getClassAnnotations** ()
+public **getClassAnnotations** ()
 
-Возвращает аннотации в классе doc-блок
+Returns the annotations found in the class docblock
 
 public **getMethodsAnnotations** ()
 
 Returns the annotations found in the methods' docblocks
 
-общественная **getPropertiesAnnotations** ()
+public **getPropertiesAnnotations** ()
 
-Возвращает аннотаций, найденных в установки свойств
+Returns the annotations found in the properties' docblocks
 
 public *array* **getReflectionData** ()
 
-Возвращает промежуточные определения необработанного разбора, используемые для построения отражения
+Returns the raw parsing intermediate definitions used to construct the reflection
 
 public static *array data* **__set_state** (*mixed* $data)
 
