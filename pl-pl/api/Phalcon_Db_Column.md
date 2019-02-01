@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Column'
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
 Allows to define columns to be used on create or alter table operations
 
@@ -35,7 +35,7 @@ $connection->addColumn("robots", null, $column);
 
 ```
 
-## Constants
+## Stałe
 
 *integer* **TYPE_INTEGER**
 
@@ -91,7 +91,7 @@ $connection->addColumn("robots", null, $column);
 
 public **getName** ()
 
-Column's name
+Nazwa kolumny
 
 public **getSchemaName** ()
 
@@ -131,7 +131,7 @@ Returns true if number column is unsigned
 
 public **isNotNull** ()
 
-Not null
+Nie puste
 
 public **isPrimary** ()
 
