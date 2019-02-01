@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Libmemcached'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/libmemcached.zep)
 
 Allows to cache output fragments, PHP data or raw data to a libmemcached backend. Per default persistent memcached connection pools are used.
 
@@ -53,7 +53,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metodlar
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -61,23 +61,23 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Create internal connection to memcached
+Memcached'a iç bağlantı oluştur
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Ön bellekte saklanan içeriği döndürür
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the file backend and stops the frontend
+Önbellek içeriğini dosya arka ucuna depolar ve önden yüklenmesini durdurur
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Ön bellekteki bir değeri anahtarı ile birlikte siler
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+Varolan bekletilmiş anahtarları sorgulayın.
 
 ```php
 <?php
@@ -89,9 +89,9 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-public **exists** ([*string* $keyName], [*int* $lifetime])
+herkese açık **var** ([dizi</em> $anahtar adı], [*int* $ömür])
 
-Checks if cache exists and it isn't expired
+Ön bellekte olup olmadığını ve süresinin dolup dolmadığını denetler
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -99,11 +99,11 @@ Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+Verilen $value ile $keyName azalması
 
 public **flush** ()
 
-Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
+Mevcut öğelerin tümünü geçersiz kılar. Memcached varsayılan olarak ayarlanan flush() 'ı desteklemez. Eğer flush() desteğine ihtiyacınız varsa, $config["statsKey"]'i ayarlayın. Değiştirilmiş anahtarların tümü "statsKey"de depolanır. Not: statsKey'nin olumsuz performans etkisi vardır.
 
 ```php
 <?php
@@ -152,16 +152,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Herhangi bir önbelleklenmiş içerik depolamadan ön yüzü durdurur
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Son önbelleğin yeni ya da önbelleklenmiş olup olmadığını kontrol eder
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Ön belleğin ara belleğe aktarımına başlamış olup olmadığını denetler
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Son çalışma zamanı ayarını getir
