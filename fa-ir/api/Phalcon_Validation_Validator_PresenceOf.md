@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\PresenceOf'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\حضور'
 ---
 # Class **Phalcon\Validation\Validator\PresenceOf**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\PresenceOf'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
 
 Validates that a value is not null or empty string
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
