@@ -8,21 +8,21 @@ title: 'Phalcon\Crypt'
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
 Provides encryption facilities to phalcon applications
 
 ```php
-& lt;? php
+<?php
 
-$ crypt = new \ Phalcon \ Crypt ();
+$crypt = new \Phalcon\Crypt();
 
-$ key = "le password";
-$ text = "Ini adalah teks rahasia";
+$key  = "le password";
+$text = "This is a secret text";
 
-$ encrypted = $ crypt- & gt; encrypt ($ text, $ key);
+$encrypted = $crypt->encrypt($text, $key);
 
-echo $ crypt- & gt; decrypt ($ encrypted, $ key);
+echo $crypt->decrypt($encrypted, $key);
 
 ```
 
@@ -64,7 +64,7 @@ The name of hashing algorithm.
 
 *boolean* **$useSigning** = false; Whether calculating message digest enabled or not **NOTE**: This feature will be enabled by default in Phalcon 4.0.0
 
-## Metode
+## Methods
 
 ### Public
 
@@ -173,12 +173,12 @@ protected **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize,
 
 Removes a padding from a text. If the function detects that the text was not padded, it will return it unmodified
 
-| Mengetik | Nama         | Deskripsi                                                     |
-| -------- | ------------ | ------------------------------------------------------------- |
-| string   | $text        | Message to be unpadded                                        |
-| string   | $mode        | Encryption mode; unpadding is applied only in CBC or ECB mode |
-| int      | $blockSize   | Cipher block size                                             |
-| int      | $paddingType | Padding scheme                                                |
+| Type   | Name         | Description                                                   |
+| ------ | ------------ | ------------------------------------------------------------- |
+| string | $text        | Message to be unpadded                                        |
+| string | $mode        | Encryption mode; unpadding is applied only in CBC or ECB mode |
+| int    | $blockSize   | Cipher block size                                             |
+| int    | $paddingType | Padding scheme                                                |
 
 protected **assertCipherIsAvailable** (*string* $cipher)
 
