@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/factory.zep)
 
 Loads Translate Adapter class using 'adapter' option
 
@@ -30,7 +30,7 @@ $translate = Factory::load($options);
 
 ```
 
-## Methods
+## روش ها
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
