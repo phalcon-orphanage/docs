@@ -2,14 +2,14 @@
 layout: article
 language: 'ja-jp'
 version: '4.0'
-upgrade: '#ACL'
+upgrade: '#acl'
 category: 'acl'
 ---
 # Access Control Lists Component
 
 * * *
 
-## アクセス制御リストリストのシリアライズ
+## Serializing ACL lists
 
 [Phalcon\Acl](api/Phalcon_Acl) can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, file system, database, Redis etc. This way you can retrieve the ACL quickly without having to read the underlying data that create the ACL nor will you have to compute the ACL in every request.
 
