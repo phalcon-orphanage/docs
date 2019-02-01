@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Reference'
 
 *implements* [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
 
 Allows to define reference constraints on tables
 
@@ -61,11 +61,11 @@ Referenced Columns
 
 public **getOnDelete** ()
 
-ON DELETE
+USUŃ
 
 public **getOnUpdate** ()
 
-ON UPDATE
+NA AKTUALIZACJI
 
 public **__construct** (*mixed* $name, *array* $definition)
 
