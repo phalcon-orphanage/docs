@@ -9,7 +9,7 @@ category: 'filter'
 
 * * *
 
-## Sanitizing data
+## データのサニタイズ
 
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
 
