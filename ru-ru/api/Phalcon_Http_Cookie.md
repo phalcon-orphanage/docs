@@ -10,9 +10,9 @@ title: 'Phalcon\Http\Cookie'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Объектно-ориентированая оболчка для управления HTTP cookie
+Provide OO wrappers to manage a HTTP cookie
 
-## Методы
+## Methods
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
@@ -28,15 +28,15 @@ Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Устанавливает значение cookie
+Sets the cookie's value
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Возвращает значение cookie
+Returns the cookie's value
 
 public **send** ()
 
-Отправляет cookie HTTP клиенту Сохраняет определение cookie в сессии
+Sends the cookie to the HTTP client Stores the cookie definition in session
 
 public **restore** ()
 
@@ -74,7 +74,7 @@ public **setPath** (*mixed* $path)
 
 Sets the cookie's expiration time
 
-общественная **метод getname** ()
+public **getName** ()
 
 Returns the current cookie's name
 
