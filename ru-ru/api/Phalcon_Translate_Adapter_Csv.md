@@ -14,7 +14,7 @@ title: 'Phalcon\Translate\Adapter\Csv'
 
 Allows to define translation lists using CSV file
 
-## Методы
+## Methods
 
 public **__construct** (*array* $options)
 
