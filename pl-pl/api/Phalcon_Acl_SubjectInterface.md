@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\SubjectInterface'
 ---
 # Interface **Phalcon\Acl\SubjectInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectinterface.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectinterface.zep)
 
 ## Metody
 
