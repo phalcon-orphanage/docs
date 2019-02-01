@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Message'
 
 Encapsulates validation info generated in the validation process
 
-## Methods
+## Методы
 
 public **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 
