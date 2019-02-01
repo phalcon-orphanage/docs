@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\DispatcherInterface'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcherinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcherinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setControllerSuffix** (*mixed* $controllerSuffix)
 
