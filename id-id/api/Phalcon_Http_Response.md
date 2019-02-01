@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response'
 
 *implements* [Phalcon\Http\ResponseInterface](Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
 
 Part of the HTTP cycle is return responses to the clients. Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.
 
@@ -24,23 +24,23 @@ $response->send();
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
+publik **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
 Phalcon\Http\Response constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
-public **setStatusCode** (*mixed* $code, [*mixed* $message])
+publik **setStatusCode** (*mixed* $code, [*mixed* $message])
 
-Sets the HTTP response code
+Menyetel kode respon HTTP
 
 ```php
 <?php
@@ -49,9 +49,9 @@ $response->setStatusCode(404, "Not Found");
 
 ```
 
-public **getStatusCode** ()
+publik **getStatusCode** ()
 
-Returns the status code
+Mengembalikan status kode
 
 ```php
 <?php
@@ -64,11 +64,11 @@ print_r(
 
 public **setHeaders** ([Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface) $headers)
 
-Sets a headers bag for the response externally
+Menetapkan tas header untuk respon eksternal
 
 public **getHeaders** ()
 
-Returns headers set by the user
+Mengembalikan headers yang ditetapkan oleh pengguna
 
 public **getReasonPhrase** (): *string* | *null*
 
@@ -82,15 +82,15 @@ echo $response->getReasonPhrase();
 
 public **setCookies** ([Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface) $cookies)
 
-Sets a cookies bag for the response externally
+Menetapkan tas header untuk respon eksternal
 
 public [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
-Returns cookies set by the user
+Mengembalikan cookie yang ditetapkan oleh pengguna
 
-public **setHeader** (*mixed* $name, *mixed* $value)
+publik **setHeader** (*mixed* $name, *mixed* $value)
 
-Overwrites a header in the response
+Menimpa header dalam respon
 
 ```php
 <?php
@@ -99,9 +99,9 @@ $response->setHeader("Content-Type", "text/plain");
 
 ```
 
-public **setRawHeader** (*mixed* $header)
+publik **setRawHeader** (*mixed* $header)
 
-Send a raw header to the response
+Kirim header baku ke respon
 
 ```php
 <?php
@@ -110,13 +110,13 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 
 ```
 
-public **resetHeaders** ()
+publik **resetHeaders** ()
 
-Resets all the established headers
+Menyetel ulang semua tajuk yang ditetapkan
 
 public **setExpires** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
-Sets an Expires header in the response that allows to use the HTTP cache
+Menetapkan header Expires dalam respon yang memungkinkan untuk menggunakan cache HTTP
 
 ```php
 <?php
@@ -140,9 +140,9 @@ $this->response->setLastModified(
 
 ```
 
-public **setCache** (*mixed* $minutes)
+publik **setCache** (*mixed* $minutes)
 
-Sets Cache headers to use HTTP cache
+Menetapkan header Cache untuk menggunakan cache HTTP
 
 ```php
 <?php
@@ -151,13 +151,13 @@ $this->response->setCache(60);
 
 ```
 
-public **setNotModified** ()
+publik **setNotModified** ()
 
-Sends a Not-Modified response
+Mengirimkan respons Tidak Modifikasi
 
-public **setContentType** (*mixed* $contentType, [*mixed* $charset])
+publik **setContentType** (*mixed* $contentType, [*mixed* $charset])
 
-Sets the response content-type mime, optionally the charset
+Mengatur jenis konten respons mime, opsional charset
 
 ```php
 <?php
@@ -167,9 +167,9 @@ $response->setContentType("text/plain", "UTF-8");
 
 ```
 
-public **setContentLength** (*mixed* $contentLength)
+publik **setContentLength** (*mixed* $contentLength)
 
-Sets the response content-length
+Menetapkan respons konten-panjang
 
 ```php
 <?php
@@ -178,9 +178,9 @@ $response->setContentLength(2048);
 
 ```
 
-public **setEtag** (*mixed* $etag)
+publik **setEtag** (*mixed* $etag)
 
-Set a custom ETag
+Tetapkan ETag kustom
 
 ```php
 <?php
@@ -189,9 +189,9 @@ $response->setEtag(md5(time()));
 
 ```
 
-public **redirect** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
+publik **redirect** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
 
-Redirect by HTTP to another action or URL
+Redirect oleh HTTP ke tindakan atau URL lain
 
 ```php
 <?php
@@ -212,9 +212,9 @@ $response->redirect(
 
 ```
 
-public **setContent** (*mixed* $content)
+publik **setContent** (*mixed* $content)
 
-Sets HTTP response body
+Mengatur HTTP response body
 
 ```php
 <?php
@@ -240,28 +240,28 @@ $response->setJsonContent(
 
 public **appendContent** (*mixed* $content)
 
-Appends a string to the HTTP response body
+Tambahkan string ke badan respons HTTP
 
-public **getContent** ()
+public ** getContent </ 0> ()</p> 
 
-Gets the HTTP response body
+Mendapatkan respon HTTP tubuh
 
 public **isSent** ()
 
-Check if the response is already sent
+Periksa apakah respon sudah terkirim
 
 public **sendHeaders** ()
 
-Sends headers to the client
+Mengirimkan header ke klien
 
 public **sendCookies** ()
 
-Sends cookies to the client
+Mengirimkan cookies ke klien
 
-public **send** ()
+publik **kirim** ()
 
-Prints out HTTP response to the client
+Mencetak respons HTTP ke klien
 
 public **setFileToSend** (*mixed* $filePath, [*mixed* $attachmentName], [*mixed* $attachment])
 
-Sets an attached file to be sent at the end of the request
+Menetapkan file terlampir untuk dikirim pada akhir permintaan
