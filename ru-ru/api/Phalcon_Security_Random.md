@@ -77,7 +77,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-## Methods
+## Методы
 
 public **bytes** ([*mixed* $len])
 
