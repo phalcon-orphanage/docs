@@ -16,15 +16,15 @@ This component allows Phalcon\Mvc\Model to return rows without an associated ent
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-设置当前对象的状态
+Set the current object's state
 
 public *boolean* **offsetExists** (*string* | *int* $index)
 
-检查行中是否存在偏移量
+Checks whether offset exists in the row
 
 public *string* | [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **offsetGet** (*string* | *int* $index)
 
-获取记录中特定位置的行
+Gets a record in a specific position of the row
 
 public **offsetSet** (*string* | *int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value)
 
@@ -62,4 +62,4 @@ Returns the instance as an array representation
 
 public *array* **jsonSerialize** ()
 
-序列化的对象 json_encode
+Serializes the object for json_encode
