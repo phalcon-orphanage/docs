@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/factory.zep)
 
 Loads Logger Adapter class using 'adapter' option
 
@@ -27,7 +27,7 @@ $logger = Factory::load($options);
 
 ```
 
-## روش ها
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
