@@ -541,15 +541,15 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Όνομα γεγονότος       | Ενεργοποίηση                                                           |
-| --------------------- | ---------------------------------------------------------------------- |
-| `boot`                | Εκτελείται το η χειρίζεται όταν πρώτο εφαρμογή αίτημά της              |
-| `beforeStartModule`   | Πριν από μονάδας όταν προετοιμασία μιας μόνο καταχωρούνται την μονάδες |
-| `afterStartModule`    | Αφού μια ενότητα καταχωρούνται μόνο όταν αρχικοποιήσετε οι ενότητες    |
-| `beforeHandleRequest` | Before execute the dispatch loop                                       |
-| `afterHandleRequest`  | After execute the dispatch loop                                        |
+| Όνομα γεγονότος       | Ενεργοποίηση                                                 |
+| --------------------- | ------------------------------------------------------------ |
+| `boot`                | Executed when the application handles its first request      |
+| `beforeStartModule`   | Before initialize a module, only when modules are registered |
+| `afterStartModule`    | After initialize a module, only when modules are registered  |
+| `beforeHandleRequest` | Before execute the dispatch loop                             |
+| `afterHandleRequest`  | After execute the dispatch loop                              |
 
-Το παρακάτω παράδειγμα δείχνει πώς προσαρτήσετε να τους ακροατές σε αυτό το στοιχείο:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
