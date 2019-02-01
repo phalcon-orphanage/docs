@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\ResultInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **setDirtyState** (*mixed* $dirtyState)
 
