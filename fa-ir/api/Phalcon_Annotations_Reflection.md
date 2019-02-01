@@ -6,7 +6,7 @@ title: 'Phalcon\Annotations\Reflection'
 ---
 # Class **Phalcon\Annotations\Reflection**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
 Allows to manipulate the annotations reflection in an OO manner
 
@@ -28,9 +28,9 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ([*آرایه* $reflectionData])
+public **__construct** ([*array* $reflectionData])
 
 Phalcon\Annotations\Reflection constructor
 
@@ -48,8 +48,8 @@ Returns the annotations found in the properties' docblocks
 
 public *array* **getReflectionData** ()
 
-تجزیه شدن تعاریف خام متوسط استفاده شده برای ساختن انعکاس را باز می گرداند
+Returns the raw parsing intermediate definitions used to construct the reflection
 
-استاتیک عمومی *داده آرایه* **__set_state** (*مخلوط* $data)
+public static *array data* **__set_state** (*mixed* $data)
 
 Restores the state of a Phalcon\Annotations\Reflection variable export
