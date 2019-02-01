@@ -8,7 +8,7 @@ title: 'Phalcon\Db\ReferenceInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **getName** ()
 
