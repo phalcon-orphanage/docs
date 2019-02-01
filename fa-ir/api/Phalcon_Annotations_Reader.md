@@ -8,11 +8,11 @@ title: 'Phalcon\Annotations\Reader'
 
 *implements* [Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
 
 Parses docblocks returning an array with the found annotations
 
-## Methods
+## روش ها
 
 public **parse** (*mixed* $className)
 
