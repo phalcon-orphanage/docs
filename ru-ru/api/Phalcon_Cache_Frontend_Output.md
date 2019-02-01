@@ -18,7 +18,7 @@ Allows to cache output fragments captured with ob_* functions
 
 *```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
