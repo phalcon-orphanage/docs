@@ -9,7 +9,7 @@ version: '4.0'
 
 # Working with Models
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+Model odzwierciedla informacje (dane) z aplikacji oraz zasady ich przetwarzania. Modele są przede wszystkim wykorzystywane do interakcji z odpowiednia bazą danych. W większości przypadków, każda tabela w Twojej bazie danych odpowiada jednemu modelowi w Twojej aplikacji. Większość logiki biznesowej Twojej aplikacji będzie zawarta w modelach.
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
@@ -194,7 +194,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Gdy rekord jest już w pamięci, możesz edytować jego dane i następnie zapisać zmiany:
 
 ```php
 <?php
@@ -255,7 +255,7 @@ foreach ($robots as $robot) {
 
 <h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+Możesz również użyć metody `findFirst()`, aby otrzymać tylko pierwszy rekord pasujący do danych kryteriów wyszukiwania:
 
 ```php
 <?php
@@ -308,7 +308,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parametr      | Description                                                                                                                                                                                                                 | Przykład                                                             |
+| Parametr      | Ious                                                                                                                                                                                                                        | Przykład                                                             |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
@@ -321,7 +321,7 @@ The available query options are:
 | `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
 | `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
 | `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                 | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| `nawodnienie` | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                 | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
@@ -539,7 +539,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### Filtrowanie wyników
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -1091,10 +1091,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Nazwa        | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         Nie         | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Tak         | Runs before the delete operation is made |
+| Operacja | Nazwa        | Czy można zatrzymać operację? | Wyjaśnienie                              |
+| -------- | ------------ |:-----------------------------:| ---------------------------------------- |
+| Usuwanie | afterDelete  |              Nie              | Runs after the delete operation was made |
+| Usuwanie | beforeDelete |              Tak              | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1366,7 +1366,7 @@ class Robots extends Model
 
 ## Independent Column Mapping
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. Na przykład:
 
 ```php
 <?php
@@ -1756,7 +1756,7 @@ Model::setup(
 
 The available options are:
 
-| Opcja                 | Description                                                                               | Domyślne |
+| Opcja                 | Ious                                                                                      | Domyślne |
 | --------------------- | ----------------------------------------------------------------------------------------- |:--------:|
 | astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             |  `null`  |
 | cacheLevel            | Sets the cache level for the ORM                                                          |   `3`    |
