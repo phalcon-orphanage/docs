@@ -6,9 +6,9 @@ title: 'Phalcon\Http\Response\HeadersInterface'
 ---
 # Interface **Phalcon\Http\Response\HeadersInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **set** (*mixed* $name, *mixed* $value)
 
