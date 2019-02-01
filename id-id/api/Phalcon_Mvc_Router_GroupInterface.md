@@ -6,19 +6,19 @@ title: 'Phalcon\Mvc\Router\GroupInterface'
 ---
 # Interface **Phalcon\Mvc\Router\GroupInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setHostname** (*mixed* $hostname)
-
-...
-
-abstract public **getHostname** ()
+abstrak publik **setHostname** (*dicampur* $hostname)
 
 ...
 
-abstract public **setPrefix** (*mixed* $prefix)
+abstrak publik **getHostname** ()
+
+...
+
+abstrak publik **setPrefix** (*mixed* $prefix)
 
 ...
 
@@ -26,23 +26,23 @@ abstract public **getPrefix** ()
 
 ...
 
-abstract public **beforeMatch** (*mixed* $beforeMatch)
+abstrak publik **beforeMatch** (*campuran* $beforeMatch)
 
 ...
 
-abstract public **getBeforeMatch** ()
+abstrak publik **getBeforeMatch** ()
 
 ...
 
-abstract public **setPaths** (*mixed* $paths)
+abstrak publik **setPaths** (*campuran* $paths)
 
 ...
 
-abstract public **getPaths** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getRoutes** ()
+publik abstrak **getFrontend** ()
 
 ...
 
@@ -54,7 +54,7 @@ abstract public **addGet** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **addPost** (*mixed* $pattern, [*mixed* $paths])
+abstrak publik **tambahkanTulisan** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
@@ -62,15 +62,15 @@ abstract public **addPut** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **addPatch** (*mixed* $pattern, [*mixed* $paths])
+abstrak publik **menambahkanTambalan** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
-abstract public **addDelete** (*mixed* $pattern, [*mixed* $paths])
+abstrak publik **menambahkanMenghapus** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
-abstract public **addOptions** (*mixed* $pattern, [*mixed* $paths])
+abstrak publik **menambahkanPilihan** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
@@ -78,6 +78,6 @@ abstract public **addHead** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **clear** ()
+abstrak public **clear** ()
 
 ...
