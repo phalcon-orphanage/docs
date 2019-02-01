@@ -14,7 +14,7 @@ abstract public **setDefaultModule** (*mixed* $moduleName)
 
 ...
 
-abstract public **setDefaultTask** (*mixed* $taskName)
+publico abstracto**establecer la tarea predeterminada**(*mezclado*$taskName)
 
 ...
 
@@ -38,7 +38,7 @@ abstract public **getModuleName** ()
 
 ...
 
-abstract public **getTaskName** ()
+publico abstracto**obtener el nombre de la tarea**()
 
 ...
 
