@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Mysql'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
 
 Specific functions for the Mysql database system
 
@@ -48,7 +48,7 @@ print_r(
 
 public [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
-Lists table indexes
+Listowanie indeksów tabeli
 
 ```php
 <?php
@@ -285,7 +285,7 @@ Returns the current transaction nesting level
 
 public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Checks whether the connection is under a transaction
+Sprawdza czy cache zaczęło bufferowanie czy nie
 
 ```php
 <?php
@@ -541,7 +541,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Gets a list of columns
+Pobiera listę kolumn
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
@@ -685,7 +685,7 @@ print_r(
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Creates a new savepoint
+Tworzy nowy punkt zapisu
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
