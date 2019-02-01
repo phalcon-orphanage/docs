@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Special'
 
 Sanitizes a value removing special characters
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( mixed $input ): mixed
