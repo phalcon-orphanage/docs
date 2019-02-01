@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Form'
 
 This component allows to build forms using an object-oriented interface
 
-## Methods
+## Методы
 
 public **setValidation** (*mixed* $validation)
 
