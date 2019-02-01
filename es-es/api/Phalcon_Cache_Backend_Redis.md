@@ -12,9 +12,9 @@ title: 'Phalcon\Cache\Backend\Redis'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
 
-Permite almacenar en cache fragmentos de producción, datos PHP o datos sin procesar hacia un redis backend
+Allows to cache output fragments, PHP data or raw data to a redis backend
 
-Este adaptador utiliza la clave de redis especial "_PHCR" para almacenar todas las claves utilizadas internamente por el adaptador
+This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
 
 ```php
 <?php
@@ -57,11 +57,11 @@ Phalcon\Cache\Backend\Redis constructor
 
 public **_connect** ()
 
-Crear una conexión interna a redis
+Create internal connection to redis
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Devuelve el contenido almacenado en caché
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -79,11 +79,11 @@ $cache->save("my-key", $data, -1);
 
 public **delete** (*int* | *string* $keyName)
 
-Elimina el valor almacenado en caché por la clave
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Indagar las claves almacenadas en caché existentes.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -101,15 +101,15 @@ Verifica si existe el caché y que no está expirado
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Incremento del $keyName dado por $value
+Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Reducción del $keyName por el $value predeterminado
+Decrement of $keyName by given $value
 
 public **flush** ()
 
-Anula inmediatamente todos los elementos existentes.
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -137,20 +137,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comienza una caché. El KeyName permite identificar el fragmento creado
+Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Detiene el frontend sin almacenar ningún contenido almacenado en caché
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el último almacenamiento en caché esta actualizado o no
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el caché ha empezado a almacenarse o no
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Obtiene la última duración establecida
+Gets the last lifetime set
