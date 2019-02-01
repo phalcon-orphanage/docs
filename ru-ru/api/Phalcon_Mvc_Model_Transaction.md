@@ -48,7 +48,7 @@ try {
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, [*boolean* $autoBegin], [*string* $service])
 
