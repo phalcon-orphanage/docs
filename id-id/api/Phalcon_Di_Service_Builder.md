@@ -6,20 +6,20 @@ title: 'Phalcon\Di\Service\Builder'
 ---
 # Class **Phalcon\Di\Service\Builder**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
-This class builds instances based on complex definitions
+Kelas ini membangun contoh berdasarkan definisi yang komplek
 
-## Methods
+## Metode
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 
-Resolves a constructor/call parameter
+Menyelesaikan sebuah parameter konstruktor/panggilan
 
 private **_buildParameters** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $arguments)
 
-Resolves an array of parameters
+Selesaikan berbagai dari parameter
 
 public *mixed* **build** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $definition, [*array* $parameters])
 
-Builds a service using a complex service definition
+Membangun sebuah layanan dengan menggunakan pengertian layanan yang komplek
