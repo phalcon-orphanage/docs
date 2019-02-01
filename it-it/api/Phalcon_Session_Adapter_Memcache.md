@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Memcache'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/memcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/memcache.zep)
 
 This adapter store sessions in memcache
 
@@ -38,7 +38,7 @@ echo $session->get("var");
 
 ```
 
-## Costanti
+## Constants
 
 *integer* **SESSION_ACTIVE**
 
@@ -46,7 +46,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Metodi
+## Methods
 
 public **getMemcache** ()
 
