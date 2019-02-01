@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\View\Engine\Volt\Compiler'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -23,7 +23,7 @@ require $compiler->getCompiledTemplatePath();
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([[Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view])
 
