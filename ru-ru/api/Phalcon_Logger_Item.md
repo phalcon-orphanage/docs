@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Item'
 
 Represents each item in a logging transaction
 
-## Methods
+## Методы
 
 public **getType** ()
 
