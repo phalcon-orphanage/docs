@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Resultset'
 
 *implements* [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset.zep)
 
 This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.
 
@@ -47,7 +47,7 @@ while ($robots->valid()) {
 
 ```
 
-## Constants
+## ثابت ها
 
 *integer* **TYPE_RESULT_FULL**
 
@@ -59,21 +59,21 @@ while ($robots->valid()) {
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## روش ها
 
 public **__construct** ([Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\Mvc\Model\Resultset constructor
 
-public **next** ()
+عمومی **بعدی** ()
 
 Moves cursor to next row in the resultset
 
-public **valid** ()
+عمومی **معتبر** ()
 
 Check whether internal resource has rows to fetch
 
-public **key** ()
+کلید عمومی**کلید** ()
 
 Gets pointer number of active row in the resultset
 
