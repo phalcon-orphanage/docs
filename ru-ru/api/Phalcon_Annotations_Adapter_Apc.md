@@ -23,7 +23,7 @@ $annotations = new Apc();
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options])
 
