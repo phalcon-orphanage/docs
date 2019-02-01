@@ -12,7 +12,7 @@ title: 'Phalcon\Cli\Dispatcher'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
-调度器是以命令行参数、 提取模块名称、 任务名称、 操作名称和可选的参数，它包含的，然后实例化的任务和要求它的行动过程。
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
 ```php
 <?php
@@ -50,63 +50,63 @@ $handle = $dispatcher->dispatch();
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
-设置默认任务后缀
+Sets the default task suffix
 
 public **setDefaultTask** (*mixed* $taskName)
 
-设置默认任务名称
+Sets the default task name
 
 public **setTaskName** (*mixed* $taskName)
 
-设置要分派的任务名称
+Sets the task name to be dispatched
 
 public **getTaskName** ()
 
-获取最后派遣任务名称
+Gets last dispatched task name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-将引发内部异常
+Throws an internal exception
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-处理用户异常
+Handles a user exception
 
 public **getLastTask** ()
 
-返回最新的派遣的控制器
+Returns the latest dispatched controller
 
 public **getActiveTask** ()
 
-在调度程序返回活动任务
+Returns the active task in the dispatcher
 
 public **setOptions** (*array* $options)
 
-设置选项以将派遣
+Set the options to be dispatched
 
 public **getOptions** ()
 
-派出的选项
+Get dispatched options
 
 public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-获取由其名称或数字索引选项
+Gets an option by its name or numeric index
 
 public **hasOption** (*mixed* $option)
 
-检查是否存在一个选项
+Check if an option exists
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-调用的操作方法。
+Calls the action method.
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -150,7 +150,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-设置默认操作名称
+Sets the default action name
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -242,7 +242,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-将转发到另一个的控制器操作的执行流程。
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
