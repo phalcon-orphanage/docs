@@ -6,11 +6,11 @@ title: 'Phalcon\ValidationInterface'
 ---
 # Interface **Phalcon\ValidationInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **validasi** ([*campuran* $data], [*campuran* $entity])
+abstract public **validate** ([*mixed* $data], [*mixed* $entity])
 
 ...
 
@@ -22,43 +22,43 @@ abstract public **rule** (*mixed* $field, [Phalcon\Validation\ValidatorInterface
 
 ...
 
-abstrak publik **aturan** (*campuran* $field, *array* $validators)
+abstract public **rules** (*mixed* $field, *array* $validators)
 
 ...
 
-abstrak publik **setFilters** (*campuran* $field, *campuran* $filters)
+abstract public **setFilters** (*mixed* $field, *mixed* $filters)
 
 ...
 
-abstrak publik **getFilters** ([*campuran* $field])
+abstract public **getFilters** ([*mixed* $field])
 
 ...
 
-publik abstrak **getValidators** ()
+abstract public **getValidators** ()
 
 ...
 
-abstrak publik **getEntity** ()
+abstract public **getEntity** ()
 
 ...
 
-abstrak publik **setDefaultMessages** ([*array* $messages])
+abstract public **setDefaultMessages** ([*array* $messages])
 
 ...
 
-abstrak publik **getDefaultMessage** (*campuran* $type)
+abstract public **getDefaultMessage** (*mixed* $type)
 
 ...
 
-abstrak publik **getMessages** ()
+abstract public **getMessages** ()
 
 ...
 
-abstrak publik **setLabels** (*array* $labels)
+abstract public **setLabels** (*array* $labels)
 
 ...
 
-abstrak publik **getLabel** (*campuran* $field)
+abstract public **getLabel** (*mixed* $field)
 
 ...
 
