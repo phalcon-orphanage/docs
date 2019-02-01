@@ -282,13 +282,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. Sono supportati i seguenti eventi:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| Nome evento        | Attivato (Triggered)                                                                                                | Possono interrompere l'operazione? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Si                                 |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | No                                 |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                                 |
 
 <a name='troubleshooting'></a>
 
