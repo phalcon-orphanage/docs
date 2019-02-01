@@ -14,7 +14,7 @@ title: 'Phalcon\Assets\Resource\Js'
 
 Represents Javascript resources
 
-## Methods
+## Методы
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
