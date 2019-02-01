@@ -4,7 +4,7 @@ language: 'zh-cn'
 version: '4.0'
 category: 'installation'
 ---
-# 安装
+# Installation
 
 * * *
 
@@ -12,7 +12,7 @@ category: 'installation'
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-### 要求
+### Requirements
 
 * PHP 7.2.x development resources
 * XCode
