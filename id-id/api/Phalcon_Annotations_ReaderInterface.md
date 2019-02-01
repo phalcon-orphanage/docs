@@ -6,14 +6,14 @@ title: 'Phalcon\Annotations\ReaderInterface'
 ---
 # Interface **Phalcon\Annotations\ReaderInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **parse** (*mixed* $className)
+abstrak publik **parse** (*dicampur* $className)
 
-Reads annotations from the class dockblocks, its methods and/or properties
+Membaca anotasi dari dockblocks kelas, yang metode dan/atau properti
 
-abstract public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
+abstrak publik statis **parseDocBlock** (*campuran* $docBlock, [*campuran* $file], [*campuran* $line])
 
-Parses a raw doc block returning the annotations found
+Mem-parsing blok mentah doc kembali anotasi yang ditemukan
