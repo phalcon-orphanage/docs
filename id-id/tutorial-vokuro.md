@@ -13,9 +13,9 @@ Vökuró is another sample application you can use to learn more about Phalcon. 
 
 <a name='structure'></a>
 
-## Struktur Proyek
+## Project Structure
 
-Setelah Anda mengkloning proyek di akar dokumen Anda, Anda akan melihat struktur berikut:
+Once you clone the project in your document root you'll see the following structure:
 
 ```bash
 vokuro/
@@ -47,7 +47,7 @@ This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, mode
 
 ```bash
 cd vokuro
-komposer install
+composer install
 ```
 
 Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
