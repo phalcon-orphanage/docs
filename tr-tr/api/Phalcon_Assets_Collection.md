@@ -8,11 +8,11 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-Kaynak koleksiyonlarını temsil eder
+Represents a collection of resources
 
-## Metodlar
+## Methods
 
 public **getPrefix** ()
 
@@ -22,7 +22,7 @@ public **getLocal** ()
 
 ...
 
-yerel **getResources** ()
+public **getResources** ()
 
 ...
 
@@ -62,21 +62,21 @@ public **getSourcePath** ()
 
 ...
 
-genel**__construct** ()
+public **__construct** ()
 
 Phalcon\Assets\Collection constructor
 
 public **add** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Koleksiyone bir kaynak ekler
+Adds a resource to the collection
 
 public **addInline** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Koleksiyone bir satır içi kod ekler
+Adds an inline code to the collection
 
 public **has** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Kaynağın koleksiyona eklendiğini denetler.
+Checks this the resource is added to the collection.
 
 ```php
 <?php
@@ -87,94 +87,94 @@ use Phalcon\Assets\Collection;
 $collection = new Collection();
 
 $resource = new Resource("js", "js/jquery.js");
-$resource->has($resource); // doğru
+$resource->has($resource); // true
 
 ```
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Koleksiyona bir CSS kaynağı ekler
+Adds a CSS resource to the collection
 
-herkese açık **SatıriçiCssekle** (*karışık* $content, [*karışık* $filter], [*karışık* $attributes])
+public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Koleksiyone bir satır içi CSS ekler
+Adds an inline CSS to the collection
 
 public [Phalcon\Assets\Collection](Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Koleksiyona Javascript kaynağı ekler
+Adds a javascript resource to the collection
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Koleksiyona bir satır içi javascript ekler
+Adds an inline javascript to the collection
 
-herkese açık **say** ()
+public **count** ()
 
-Formdaki öğelerin sayısını döndürür
+Returns the number of elements in the form
 
-herkese açık **geri sarma** ()
+public **rewind** ()
 
-Dahili yineleyiciyi başa sarar
+Rewinds the internal iterator
 
 public **current** ()
 
-Yineleyicide geçerli kaynağa döndürür
+Returns the current resource in the iterator
 
 public *int* **key** ()
 
-Yineleyicideki şuanki konumu/anahtarı döner
+Returns the current position/key in the iterator
 
-herkese açık **sonraki** ()
+public **next** ()
 
-İç yineleyici işaretçisini sıradaki konuma taşır
+Moves the internal iteration pointer to the next position
 
-herkese açık **geçerli** ()
+public **valid** ()
 
-Yineleyicideki geçerli öğenin geçerli olup olmadığını kontrol etme
+Check if the current element in the iterator is valid
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Filtrelenen/birleşen çıktısının dosyanın hedef yolunu ayarlar
+Sets the target path of the file for the filtered/join output
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Bu koleksiyondaki tüm kaynaklar için bir ana kaynak yolu ayarlar
+Sets a base source path for all the resources in this collection
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Oluşturulan HTML için hedef URI ayarlar
+Sets a target uri for the generated HTML
 
 public **setPrefix** (*mixed* $prefix)
 
-Tüm kaynaklar için ortak bir ön ek ayarlar
+Sets a common prefix for all the resources
 
 public **setLocal** (*mixed* $local)
 
-Koleksiyonun varsayılan olarak yerel kaynakları kullanıp kullanmasını ayarlar
+Sets if the collection uses local resources by default
 
 public **setAttributes** (*array* $attributes)
 
-Ek HTML özellikleri ayarlar
+Sets extra HTML attributes
 
 public **setFilters** (*array* $filters)
 
-Koleksiyon içindeki filtre listesini ayarlar
+Sets an array of filters in the collection
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Yerel hedefi ayarlar
+Sets the target local
 
 public **join** (*mixed* $join)
 
-Koleksiyondaki tüm filtrelenmiş kaynaklar tek bir sonuç dosyasında mı birleştirilsin diye ayarlar
+Sets if all filtered resources in the collection must be joined in a single result file
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Birleştirilmiş/filtrelenmiş koleksiyonun yazıldığı tam konumu döner
+Returns the complete location where the joined/filtered collection must be written
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface) $filter)
 
-Koleksiyona filtre ekler
+Adds a filter to the collection
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Koleksiyona kaynak veya satır içi kod ekler
+Adds a resource or inline-code to the collection
