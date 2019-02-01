@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Alnum'
 
 Sanitizes a value to an alphanumeric value
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
