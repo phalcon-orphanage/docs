@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Adding Subjects
+## Προσθήκη Θεμάτων
 
 Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να ελεχθεί. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Επίσης είναι σημαντικό να προσθέσετε σχετικές ενέργειες σε έναν θέμα, έτσι ώστε η ACL να καταλάβει τι πρέπει να ελένξει.
 
