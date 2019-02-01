@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\View\EngineInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engineinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **getContent** ()
 
