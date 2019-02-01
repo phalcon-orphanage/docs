@@ -7,21 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installazione su XAMPP
+# Installation on XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Scaricare la versione giusta di Phalcon
+## Download the right version of Phalcon
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-Dopo aver scaricato la libreria Phalcon avrai un file zip come quello riportato di seguito:
+After downloading the Phalcon library you will have a zip file like the one shown below:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Estrai la libreria dall'archivio per ottenere la DLL Phalcon:
+Extract the library from the archive to get the Phalcon DLL:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -29,13 +29,13 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. Può essere modificato con il blocco note o un programma simile. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Aggiungi alla fine del file:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-e salvalo.
+and save it.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -69,7 +69,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 <a name='related'></a>
 
-## Guide Correlate
+## Related Guides
 
 * [General Installation](/4.0/en/installation)
-* [Installazione su WAMP](/4.0/en/webserver-wamp)
+* [Installation on WAMP](/4.0/en/webserver-wamp)
