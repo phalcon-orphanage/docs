@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Email'
 
 Component INPUT[type=email] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 
