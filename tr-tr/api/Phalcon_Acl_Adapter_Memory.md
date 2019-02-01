@@ -6,15 +6,15 @@ title: 'Phalcon\Acl\Adapter\Memory'
 ---
 # Class **Phalcon\Acl\Adapter\Memory**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Extends | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) | | Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
 
-### Açıklama 
+### Description
 
 Manages ACL lists in memory
 
-### Örnek
+### Example
 
 ```php
 <?php
@@ -152,7 +152,7 @@ protected mixed $subjectsNames
 
 Subject Names
 
-### Metodlar
+### Methods
 
 Returns latest function used to acquire access
 
