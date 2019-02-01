@@ -13,7 +13,7 @@ The router component allows you to define routes that are mapped to controllers 
 
 <a name='defining'></a>
 
-## Defining Routes
+## Mendefinisikan Rute
 
 [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) provides advanced routing capabilities. In MVC mode, you can define routes and map them to controllers/actions that you require. A route is defined as follows:
 
@@ -47,34 +47,34 @@ $router->handle();
 ````
 
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
+Dalam hal ini, jika URI `/admin/users/my-profile`, maka para `pengguna` kontroler dengan aksi `profil` akan dieksekusi. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
-An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
+Aplikasi dapat memiliki banyak jalur dan menentukan rute satu per satu bisa menjadi tugas yang tidak praktis. Dalam kasus ini kita dapat membuat rute yang lebih fleksibel:
 
 ```php
 <?php
 
-use Phalcon\Mvc\Router;
+gunakan Phalcon\Mvc\Router;
 
-// Create the router
-$router = new Router();
+// Membuat router
+$router = Router baru();
 
-// Define a route
-$router->add(
-    '/admin/:controller/a/:action/:params',
+// Menentukan rute
+$router->tambahkan(
+    '/admin/:controller/a/:/: params',
     [
-        'controller' => 1,
-        'action'     => 2,
-        'params'     => 3,
+        'pengontrol' => 1,
+        'tindakan' => 2,
+        'params' => 3,
     ]
 );
 ```
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Controller | Action | Parameter | Parameter |
-|:----------:|:------:|:---------:|:---------:|
-|   users    | delete |   dave    |    301    |
+| Pengontrol | Aksi  | Parameter | Parameter |
+|:----------:|:-----:|:---------:|:---------:|
+|  pengguna  | hapus |   dave    |    301    |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
@@ -82,9 +82,9 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
+| Placeholder    | Regular Expression       | Pemakaian                                                                                              |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
+| `/:modul`      | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
 | `/:action`     | `/([a-zA-Z0-9_-]+)`      | Matches a valid action name with alpha-numeric characters only                                         |
 | `/:params`     | `(/.*)*`                 | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
@@ -102,17 +102,17 @@ Since you can add many routes as you need using the `add()` method, the order in
 The example below demonstrates how to define names to route parameters:
 
 ```php
-<?php
+<;?php
 
-$router->add(
-    '/news/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
+$router->tambahkan(
+    '/berita/([0-9]{4})/([0-9]{2})/([0-9]{2})/:params',
     [
         'controller' => 'posts',
-        'action'     => 'show',
-        'year'       => 1, // ([0-9]{4})
-        'month'      => 2, // ([0-9]{2})
-        'day'        => 3, // ([0-9]{2})
-        'params'     => 4, // :params
+        'aksi' => 'show',
+        'tahun' => 1, // ([0-9]{4})
+        'bulan' => 2, // ([0-9]{2})
+        'hari' => 3, // ([0-9]{2})
+        'params' => 4, // :params
     ]
 );
 ```
@@ -143,8 +143,7 @@ class PostsController extends Controller
         $day = $this->dispatcher->getParam('day');
 
         // ...
-    }
-}
+    }}
 ```
 
 Note that the values of the parameters are obtained from the dispatcher. This happens because it is the component that finally interacts with the drivers of your application. Moreover, there is also another way to create named parameters as part of the pattern:
@@ -179,8 +178,7 @@ class DocumentationController extends Controller
         $type = $this->dispatcher->getParam('type');
 
         // ...
-    }
-}
+    }}
 ```
 
 <a name='defining-short-syntax'></a>
@@ -219,13 +217,13 @@ Array and short syntax can be mixed to define a route, in this case note that na
 ```php
 <?php
 
-// First position must be skipped because it is used for
-// the named parameter 'country'
+// Posisi pertama harus dilewati karena sudah digunakan
+// parameter yang disebut 'country'
 $router->add(
-    '/news/{country:[a-z]{2}}/([a-z+])/([a-z\-+])',
+    '/berita/{negara:[a-z]{2}}/([a-z+])/([a-z\-+])',
     [
-        'section' => 2, // Positions start with 2
-        'article' => 3,
+        'bagian'> 2, // Posisi dimulai dengan 2
+        'artikel' => 3,
     ]
 );
 ```
@@ -256,9 +254,9 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Controller | Action | Parameter |
-|:------:|:----------:|:------:|:---------:|
-| admin  |   users    |  edit  |   sonny   |
+| Module | Pengontrol | Aksi | Parameter |
+|:------:|:----------:|:----:|:---------:|
+| admin  |  pengguna  | edit |   sonny   |
 
 Or you can bind specific routes to specific modules:
 
@@ -520,9 +518,9 @@ A valid URI must be passed to the Router so that it can process it and find a ma
 
 ```apacheconfig
 RewriteEngine On
-RewriteCond   %{REQUEST_FILENAME} !-d
-RewriteCond   %{REQUEST_FILENAME} !-f
-RewriteRule   ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^((?s).*)$ indeks.php?_url=/$1 [QSA,L]
 ```
 
 In this configuration, any requests to files or folders that don't exist will be sent to `index.php`. The following example shows how to use this component in stand-alone mode:
@@ -684,9 +682,9 @@ $router->add(
 
 For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Controller   | Action | Parameter  |
-|:-------------:|:------:|:----------:|
-| documentation |  show  | about.html |
+|  Pengontrol   |    Aksi    | Parameter  |
+|:-------------:|:----------:|:----------:|
+| documentation | tampilakan | about.html |
 
 If you don't want the router to have this behavior, you must create the router passing `false` as the first parameter:
 
@@ -748,17 +746,17 @@ It's possible to define default values for the module, controller or action. Whe
 ```php
 <?php
 
-// Setting a specific default
+// Pengaturan default tertentu
 $router->setDefaultModule('backend');
 $router->setDefaultNamespace('Backend\Controllers');
 $router->setDefaultController('index');
 $router->setDefaultAction('index');
 
-// Using an array
+// Menggunakan array
 $router->setDefaults(
     [
-        'controller' => 'index',
-        'action'     => 'index',
+        'pengontrol' => 'index',
+        'aksi'     => 'index',
     ]
 );
 ```
@@ -863,26 +861,26 @@ As of Phalcon 3, there is another way to check this:
 ```php
 <?php
 
-$route = $router->add(
-    '/login',
+$route = $router->tambahkan(
+    '/masuk',
     [
-        'module'     => 'admin',
-        'controller' => 'session',
+        'modul'     => 'admin',
+        'kontrol' => 'sesi',
     ]
 );
 
 $route->beforeMatch(
-    function ($uri, $route) {
+    fungsi ($uri, $route) {
         /**
          * @var string $uri
          * @var \Phalcon\Mvc\Router\Route $route
          * @var \Phalcon\DiInterface $this
          * @var \Phalcon\Http\Request $request
          */
-        $request = $this->getShared('request');
+        $request = $this->getShared('perminataan');
 
-        // Check if the request was made with Ajax
-        return $request->isAjax();
+        // Memeriksa apakah permintaan itu dibuat dengan Ajax
+        kembali $request->isAjax();
     }
 );
 ```
@@ -896,12 +894,12 @@ The router allows you to set hostname constraints, this means that specific rout
 ```php
 <?php
 
-$route = $router->add(
-    '/login',
+$route = $router->tambahkan(
+    '/masuk',
     [
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login',
+        'modul'     => 'admin',
+        'kontrol' => 'sesi',
+        'aksi' => 'masuk',
     ]
 );
 
@@ -913,12 +911,12 @@ The hostname can also be passed as a regular expressions:
 ```php
 <?php
 
-$route = $router->add(
-    '/login',
+$route = $router->tambahkan(
+    '/masuk', 
     [
-        'module'     => 'admin',
-        'controller' => 'session',
-        'action'     => 'login',
+        'modul'     => 'admin',
+        'pengontrol' => 'sesi',
+        'aksi' => 'masuk',
     ]
 );
 
@@ -930,48 +928,48 @@ In groups of routes you can set up a hostname constraint that apply for every ro
 ```php
 <?php
 
-use Phalcon\Mvc\Router\Group as RouterGroup;
+gunakan Phalcon\Mvc\Router\Group sebagai RouterGroup;
 
-// Create a group with a common module and controller
-$blog = new RouterGroup(
+// Membuat grup dengan common module dan controller
+$blog = baru RouterGroup(
     [
-        'module'     => 'blog',
-        'controller' => 'posts',
+        'modul' => 'blog',
+        'pengontrol' => 'posting',
     ]
 );
 
-// Hostname restriction
+// Hostname pembatasan
 $blog->setHostName('blog.mycompany.com');
 
-// All the routes start with /blog
+// Semua rute mulai dengan /blog
 $blog->setPrefix('/blog');
 
-// Default route
-$blog->add(
+// Default rute
+$blog->tambahkan(
     '/',
     [
-        'action' => 'index',
+        'aaksi' => 'indeks',
     ]
 );
 
-// Add a route to the group
-$blog->add(
+// Menambahkan rute ke grup
+$blog->tambahkan(
     '/save',
     [
-        'action' => 'save',
+        'aksi' => 'simpan',
     ]
 );
 
-// Add another route to the group
-$blog->add(
+// Tambahkan rute lain ke grup
+$blog->tambahkan(
     '/edit/{id}',
     [
-        'action' => 'edit',
+        'aksi' => 'edit',
     ]
 );
 
-// Add the group to the router
-$router->mount($blog);
+// Tambahkan grup ke router
+$router->meningkat($blog);
 ```
 
 <a name='uri-sources'></a>
@@ -983,7 +981,7 @@ By default the URI information is obtained from the `$_GET['_url']` variable, th
 ```php
 <?php
 
-use Phalcon\Mvc\Router;
+gunakan Phalcon\Mvc\Router;
 
 // ...
 
@@ -1003,7 +1001,7 @@ Or you can manually pass a URI to the `handle()` method:
 ```php
 <?php
 
-$router->handle('/some/route/to/handle');
+$router=>menangani('/some/route/to/handle');
 ```
 
 <h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
@@ -1056,11 +1054,11 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## Kegiatan
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Event                      | Description                          |
+| Acara                      | Deskripsi                            |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |
@@ -1081,13 +1079,13 @@ This component provides a variant that's integrated with the [annotations](/4.0/
 use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
 $di['router'] = function () {
-    // Use the annotations router. We're passing false as we don't want the router to add its default patterns
-    $router = new RouterAnnotations(false);
+    // Use the annotations router. Kami melewati false karena kami tidak ingin router menambahkan pola defaultnya
+    $router = baru RouterAnnotations(palsu);
 
-    // Read the annotations from ProductsController if the URI starts with /api/products
-    $router->addResource('Products', '/api/products');
+    // Baca penjelasan dari ProductsController jika URI dimulai dengan /api/produk
+    $router->addResource('Produk', '/api/produk');
 
-    return $router;
+    kembali $router;
 };
 ```
 
@@ -1157,7 +1155,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Description                                                                                       | Usage                                  |
+| Nama        | Deskripsi                                                                                         | Pemakaian                              |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1169,7 +1167,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Description                                                            | Usage                                                                |
+| Nama       | Deskripsi                                                              | Pemakaian                                                            |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
