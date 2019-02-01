@@ -2,7 +2,7 @@
 layout: article
 language: 'ja-jp'
 version: '4.0'
-upgrade: '#ACL'
+upgrade: '#acl'
 category: 'acl'
 ---
 # Access Control Lists Component
