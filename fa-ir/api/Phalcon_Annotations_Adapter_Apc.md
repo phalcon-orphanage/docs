@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'فالکون/حاشیه نویسی/آداپتور/ای پی سی'
+title: 'Phalcon\Annotations\Adapter\Apc'
 ---
 # Class **Phalcon\Annotations\Adapter\Apc**
 
@@ -10,7 +10,7 @@ title: 'فالکون/حاشیه نویسی/آداپتور/ای پی سی'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
 
 Stores the parsed annotations in APC. This adapter is suitable for production
 
@@ -23,44 +23,44 @@ $annotations = new Apc();
 
 ```
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ([*آرایه* $options])
+public **__construct** ([*array* $options])
 
 Phalcon\Annotations\Adapter\Apc constructor
 
-عمومی **خواندن** (*مخلوط* $key)
+public **read** (*mixed* $key)
 
-یادداشت های تجزیه شده را از APC می خواند
+Reads parsed annotations from APC
 
 public **write** (*mixed* $key, [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) $data)
 
-یادداشت های تجزیه شده را از APC می خواند
+Writes parsed annotations to APC
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-تجزیه کننده حاشیه نویسی را تنظیم می کند
+Sets the annotations parser
 
 public **getReader** () inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-خواننده حاشیه نویسی را برمی گرداند
+Returns the annotation reader
 
 public **get** (*string* | *object* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-تمام حاشیه نویسی های موجود در یک کلاس را تجزیه و یا بازیابی می کند
+Parses or retrieves all the annotations found in a class
 
 public **getMethods** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-حاشیه نویسی های موجود در تمام روش های کلاس را می دهد
+Returns the annotations found in all the class' methods
 
 public **getMethod** (*mixed* $className, *mixed* $methodName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-حاشیه نویسی های موجود در یک روش خاص را برمی گرداند
+Returns the annotations found in a specific method
 
 public **getProperties** (*mixed* $className) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-حاشیه نویسی های موجود در تمام روش های کلاس را می دهد
+Returns the annotations found in all the class' methods
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName) inherited from [Phalcon\Annotations\Adapter](Phalcon_Annotations_Adapter)
 
-حاشیه نویسی های موجود در یک روش خاص را برمی گرداند
+Returns the annotations found in a specific property
