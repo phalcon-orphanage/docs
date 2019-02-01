@@ -6,7 +6,7 @@ title: 'Phalcon\Db\ResultInterface'
 ---
 # Interface **Phalcon\Db\ResultInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
 
 ## Metody
 
