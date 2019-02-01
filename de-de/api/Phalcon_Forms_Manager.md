@@ -6,22 +6,22 @@ title: 'Phalcon\Forms\Manager'
 ---
 # Class **Phalcon\Forms\Manager**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
-## Methoden
+## Methods
 
 public **create** (*string* $name, [*object* $entity])
 
-Erstellt ein Formular und registriert es im Formular Manager
+Creates a form registering it in the forms manager
 
 public **get** (*mixed* $name)
 
-Gibt ein Formular anhand seines Namen zurück
+Returns a form by its name
 
 public **has** (*mixed* $name)
 
-Prüft, ob ein Formular im Formular-Manager registriert ist
+Checks if a form is registered in the forms manager
 
 public **set** (*mixed* $name, [Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-Registriert eine Form im Formular-Manager
+Registers a form in the Forms Manager
