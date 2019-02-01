@@ -8,36 +8,36 @@ title: 'Phalcon\Annotations\Adapter'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
 
 This is the base class for Phalcon\Annotations adapters
 
-## Methods
+## Metodlar
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+Ek açıklama ayrıştırıcısını ayarlar
 
-public **getReader** ()
+yerel **getRoles** ()
 
-Returns the annotation reader
+Açıklama okuyucusunu döndürür
 
-public **get** (*string* | *object* $className)
+public **delete** (*int* | *string* $className)
 
-Parses or retrieves all the annotations found in a class
+Bir sınıfta bulunan tüm notaları ayrıştırır veya alır
 
-public **getMethods** (*mixed* $className)
+yerel **isRole** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+Bütün sınıf yöntemlerinde olan notları çevirir
 
-public **getMethod** (*mixed* $className, *mixed* $methodName)
+yerel **addInherit** (*mixed* $className, *mixed* $methodName)
 
-Returns the annotations found in a specific method
+Özel methodlarda ek açıklamaları bulur ve çevirir
 
-public **getProperties** (*mixed* $className)
+yerel **isRole** (*mixed* $className)
 
-Returns the annotations found in all the class' methods
+Bütün sınıf yöntemlerinde olan notları çevirir
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-Returns the annotations found in a specific property
+Belli bir özellikte bulunan açıklamaları getirir
