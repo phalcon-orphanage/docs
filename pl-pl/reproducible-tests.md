@@ -65,7 +65,7 @@ var_dump($_COOKIE);
 
 <a name='database'></a>
 
-### Baza danych
+### Database
 
 > Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. {:.alert .alert-info}
 
