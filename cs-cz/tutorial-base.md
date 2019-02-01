@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial - základní
+# Tutorial - basic
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
@@ -25,7 +25,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 <a name='file-structure'></a>
 
-## Struktura souborů
+## File structure
 
 A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
