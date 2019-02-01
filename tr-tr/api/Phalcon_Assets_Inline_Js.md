@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Inline\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
 
-Satır içi bir Javascript belirtir
+Represents an inline Javascript
 
-## Metodlar
+## Methods
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
@@ -36,16 +36,16 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](Phalcon_Asset
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Satır içi türünü ayarlar
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Kaynağın filtrelenmesi gerekip gerekmediğini ayarlar
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Ek HTML özellikleri ayarlar
+Sets extra HTML attributes
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Kaynağın anahtarının getirir.
+Gets the resource's key.
