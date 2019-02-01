@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='orm-caching'></a>
 
-# ORM 缓存
+# ORM Caching
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -15,7 +15,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 <a name='caching-resultsets'></a>
 
-## 缓存的结果集
+## Caching Resultsets
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -59,10 +59,10 @@ Phalcon offers complete control in creating and customizing the cache component 
 ```php
 <?php
 
-// 产品没有缓存
+// Get products without caching
 $products = Products::find();
 
-// 缓存结果集。 缓存将在1小时内过期(3600秒)
+// Just cache the resultset. The cache will expire in 1 hour (3600 seconds)
 $products = Products::find(
     [
         'cache' => [
@@ -71,7 +71,7 @@ $products = Products::find(
     ]
 );
 
-// 只缓存结果集，只需要5分钟
+// Cache the resultset for only for 5 minutes
 $products = Products::find(
     [
         'cache' => [
@@ -97,10 +97,10 @@ Caching could also be applied to resultsets generated using relationships:
 ```php
 <?php
 
-//查询一些文章
+// Query some post
 $post = Post::findFirst();
 
-// 获取与文章相关的评论，并缓存它
+// Get comments related to a post, also cache it
 $comments = $post->getComments(
     [
         'cache' => [
@@ -109,7 +109,7 @@ $comments = $post->getComments(
     ]
 );
 
-// 获取与帖子相关的评论，设置生命周期
+// Get comments related to a post, setting lifetime
 $comments = $post->getComments(
     [
         'cache' => [
@@ -126,14 +126,14 @@ Which resultset to cache and for how long is up to the developer, after having e
 
 <a name='forcing-cache'></a>
 
-## 迫使缓存
+## Forcing Cache
 
 Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
 ```php
 <?php
 
-// 只缓存结果集，只需要5分钟
+// Cache the resultset for only for 5 minutes
 $products = Products::find(
     [
         'cache' => [
@@ -154,8 +154,8 @@ use Phalcon\Mvc\Model;
 class Robots extends Model
 {
     /**
-     * 实现一个返回基于字符串键的方法
-     * 在查询参数的时候
+     * Implement a method that returns a string key based
+     * on the query parameters
      */
     protected static function _createKey($parameters)
     {
@@ -174,13 +174,13 @@ class Robots extends Model
 
     public static function find($parameters = null)
     {
-        // 将参数转换为数组
+        // Convert the parameters to an array
         if (!is_array($parameters)) {
             $parameters = [$parameters];
         }
 
-        // 检查是否没有通过缓存键
-        // 并创建缓存参数
+        // Check if a cache key wasn't passed
+        // and create the cache parameters
         if (!isset($parameters['cache'])) {
             $parameters['cache'] = [
                 'key'      => self::_createKey($parameters),
@@ -239,7 +239,7 @@ class Robots extends CacheableModel
 
 <a name='caching-phql-queries'></a>
 
-## 缓存的 PHQL 查询
+## Caching PHQL Queries
 
 Regardless of the syntax we used to create them, all queries in the ORM are handled internally using PHQL. This language gives you much more freedom to create all kinds of queries. Of course these queries can be cached:
 
@@ -266,7 +266,7 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## 可重用的相关的记录
+## Reusable Related Records
 
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -329,15 +329,15 @@ Note that this type of cache works in memory only, this means that cached data a
 
 <a name='caching-related-records'></a>
 
-## 缓存的相关的记录
+## Caching Related Records
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| 类型         | 描述             | 隐式方法          |
-| ---------- | -------------- | ------------- |
-| Belongs-To | 直接返回相关记录模型实例   | `findFirst()` |
-| Has-One    | 直接返回相关记录模型实例   | `findFirst()` |
-| Has-Many   | 返回引用模型的模型实例的集合 | `find()`      |
+| Type       | 描述                                                              | Implicit Method |
+| ---------- | --------------------------------------------------------------- | --------------- |
+| Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
+| Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
+| Has-Many   | Returns a collection of model instances of the referenced model | `find()`        |
 
 This means that when you get a related record you could intercept how the data is obtained by implementing the corresponding method:
 
@@ -372,7 +372,7 @@ class Invoices extends Model
 
 <a name='caching-related-records-recursively'></a>
 
-## 以递归方式相关的记录缓存
+## Caching Related Records Recursively
 
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -478,15 +478,15 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## 基于条件的缓存
+## Caching based on Conditions
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
-| 类型          | 缓存后端   |
-| ----------- | ------ |
-| 1 - 10000   | mongo1 |
-| 10000-20000 | mongo2 |
-| > 20000     | mongo3 |
+| Type          | Cache Backend |
+| ------------- | ------------- |
+| 1 - 10000     | mongo1        |
+| 10000 - 20000 | mongo2        |
+| > 20000       | mongo3        |
 
 The easiest way to achieve this is by adding a static method to the model that chooses the right cache to be used:
 
@@ -612,7 +612,8 @@ class CustomQuery extends ModelQuery
             // Select the cache according to the range
             // ...
 
-            检查缓存中是否有数据 / /...
+            // Check if the cache has data
+            // ...
         }
 
         // Execute the query
@@ -732,7 +733,7 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## PHQL 缓存执行计划
+## Caching PHQL execution plan
 
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 
