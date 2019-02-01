@@ -6,9 +6,9 @@ title: 'Phalcon\Debug\Dump'
 ---
 # Class **Phalcon\Debug\Dump**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
-Gibt Informationen über (eine) variable(n) aus
+Dumps information about a variable(s)
 
 ```php
 <?php
@@ -30,7 +30,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## Methoden
+## Methods
 
 public **getDetailed** ()
 
@@ -46,7 +46,7 @@ Phalcon\Debug\Dump constructor
 
 public **all** ()
 
-Alias der variables()-Methode
+Alias of variables() method
 
 protected **getStyle** (*mixed* $type)
 
