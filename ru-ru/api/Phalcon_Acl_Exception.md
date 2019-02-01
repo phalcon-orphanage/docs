@@ -12,7 +12,7 @@ title: 'Phalcon\Acl\Exception'
 
 Exceptions thrown in `Phalcon\Acl\*` will use this class
 
-## Методы
+## Methods
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-Возвращает файл, в котором произошло исключение
+Gets the file in which the exception occurred
 
 ```php
 public function getLine(): int
@@ -48,13 +48,13 @@ Get the previous `\Throwable` object
 public function getTrace(): array
 ```
 
-Возвращает трассировку стека
+Gets the stack trace
 
 ```php
 public function getTraceAsString(): string
 ```
 
-Возвращает трассировку стека в виде строки
+Gets the stack trace as a string
 
 ```php
 public function __toString(): string
