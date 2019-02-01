@@ -22,15 +22,15 @@ Phalcon\Mvc\Model\ValidationFailed constructor
 
 public **getModel** ()
 
-返回生成消息的模型
+Returns the model that generated the messages
 
 public **getMessages** ()
 
-返回产生在验证消息的完整组
+Returns the complete group of messages produced in the validation
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-克隆的异常
+Clone the exception
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
