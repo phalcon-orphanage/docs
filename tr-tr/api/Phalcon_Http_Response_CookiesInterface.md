@@ -6,9 +6,9 @@ title: 'Phalcon\Http\Response\CookiesInterface'
 ---
 # Interface **Phalcon\Http\Response\CookiesInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **useEncryption** (*mixed* $useEncryption)
 
