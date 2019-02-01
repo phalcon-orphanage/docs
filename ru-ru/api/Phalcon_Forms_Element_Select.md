@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Select'
 
 Component SELECT (choice) for forms
 
-## Методы
+## Methods
 
 public **__construct** (*string* $name, [*object* | *array* $options], [*array* $attributes])
 
