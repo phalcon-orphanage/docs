@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Resource'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Representa un recurso activo
+Represents an asset resource
 
 ```php
 <?php
@@ -49,52 +49,52 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-Establece el tipo de recursos
+Sets the resource's type
 
 public **setPath** (*mixed* $path)
 
-Establece la ruta del recurso
+Sets the resource's path
 
 public **setLocal** (*mixed* $local)
 
-Establece si el recurso es local o externo
+Sets if the resource is local or external
 
 public **setFilter** (*mixed* $filter)
 
-Establece si el recurso debe ser filtrado o no
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
-Establece los atributos HTML extras
+Sets extra HTML attributes
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Establece un identificador uri de destino para el HTML generado
+Sets a target uri for the generated HTML
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Establece la ruta de origen del recurso
+Sets the resource's source path
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Establece la ruta del objetivo del recurso
+Sets the resource's target path
 
 public **getContent** ([*mixed* $basePath])
 
-Devuelve el contenido del recurso como una cadena Opcionalmente, se puede establecer una ruta base donde se encuentra localizado el recurso
+Returns the content of the resource as an string Optionally a base path where the resource is located can be set
 
 public **getRealTargetUri** ()
 
-Devuelve el objetivo real uri para el HTML generado
+Returns the real target uri for the generated HTML
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Devuelve la ubicación completa donde se encuentra localizado el recurso
+Returns the complete location where the resource is located
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Devuelve la ubicación completa donde el recurso debe ser escrito
+Returns the complete location where the resource must be written
 
 public **getResourceKey** ()
 
-Obtiene la llave del recurso.
+Gets the resource's key.
