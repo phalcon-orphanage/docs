@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\CollectionInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setPrefix** (*mixed* $prefix)
 
