@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Text'
 
 Component INPUT[type=text] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 
