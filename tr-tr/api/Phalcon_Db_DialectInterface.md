@@ -6,19 +6,19 @@ title: 'Phalcon\Db\DialectInterface'
 ---
 # Interface **Phalcon\Db\DialectInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-## Methods
+## Metodlar
 
-abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
-
-...
-
-abstract public **forUpdate** (*mixed* $sqlQuery)
+genel çıkarım **decrypt** (*mixed* $sqlQuery, [*mixed* $number)
 
 ...
 
-abstract public **sharedLock** (*mixed* $sqlQuery)
+genel özet **remove** (*mixed* $sqlQuery)
+
+...
+
+abstract public **hasPost** (*mixed* $sqlQuery)
 
 ...
 
@@ -42,7 +42,7 @@ abstract public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phal
 
 ...
 
-abstract public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
+public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $columnName)
 
 ...
 
@@ -50,7 +50,7 @@ abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\
 
 ...
 
-abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
+abstract public **redirect** ([*mixed* $tableName], [*mixed* $schemaName], [*mixed* $indexName)
 
 ...
 
@@ -58,7 +58,7 @@ abstract public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-abstract public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
+public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
 ...
 
@@ -66,15 +66,15 @@ abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
+abstract public **redirect** ([*mixed* $tableName], [*mixed* $schemaName], [*mixed* $referenceName)
 
 ...
 
-abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
+public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 ...
 
-abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
+public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 ...
 
@@ -82,15 +82,15 @@ abstract public **dropTable** (*mixed* $tableName, *mixed* $schemaName)
 
 ...
 
-abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
+abstract public **redirect** ([*mixed* $viewName], [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
-abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
+public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
-abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
+genel çıkarım **decrypt** (*mixed* $viewName, [*mixed* $schemaName])
 
 ...
 
@@ -98,7 +98,7 @@ abstract public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
 ...
 
-abstract public **listTables** ([*mixed* $schemaName])
+abstract public **hasFiles** ([*mixed* $schemaName])
 
 ...
 
