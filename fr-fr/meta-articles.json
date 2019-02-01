@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "Creating an ACL",
+      "text": "Création d’une ACL",
       "url": "/acl-setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Définition de contrôles d’accès",
       "url": "/acl-access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "Interroger une ACL",
       "url": "/acl-querying"
     },
     {
-      "text": "Function based access",
+      "text": "Accès par fonction",
       "url": "/acl-function-based-access"
     },
     {
@@ -37,71 +37,71 @@
       "url": "/acl-operations-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "La sérialisation des listes ACL",
       "url": "/acl-serialization"
     },
     {
-      "text": "Events",
+      "text": "Événements",
       "url": "/acl-events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Réalisation vos propres adaptateurs",
       "url": "/acl-custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Vue d'ensemble",
       "url": "/annotations#overview"
     },
     {
-      "text": "Factory",
+      "text": "Usine",
       "url": "/annotations#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "Ajout de rôles à l’ACL",
       "url": "/annotations#factory"
     },
     {
-      "text": "Reading Annotations",
+      "text": "La Lecture Des Annotations",
       "url": "/annotations#reading"
     },
     {
-      "text": "Types of Annotations",
+      "text": "Types d'Annotations",
       "url": "/annotations#types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Utilisation Pratique",
       "url": "/annotations#usage",
       "menu": [
         {
-          "text": "Cache Enabler with Annotations",
+          "text": "Cache Catalyseur avec des Annotations",
           "url": "/annotations#usage-cache"
         },
         {
-          "text": "Private/Public areas with Annotations",
+          "text": "Privés/espaces Publics avec des Annotations",
           "url": "/annotations#usage-access-management"
         }
       ]
     },
     {
-      "text": "Annotations Adapters",
+      "text": "Annotations Adaptateurs",
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Réalisation vos propres adaptateurs",
           "url": "/annotations#adapters-custom"
         }
       ]
     },
     {
-      "text": "External Resources",
+      "text": "Ressources Externes",
       "url": "/annotations#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "Creating a CLI Application",
+      "text": "La création d'une application CLI",
       "url": "/application-cli#creating-cli-application"
     },
     {
@@ -109,19 +109,19 @@
       "url": "/application-cli#structure"
     },
     {
-      "text": "Creating a Bootstrap",
+      "text": "La création d'un Bootstrap",
       "url": "/application-cli#creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Tâches",
       "url": "/application-cli#tasks"
     },
     {
-      "text": "Processing action parameters",
+      "text": "Le traitement des paramètres de l'action",
       "url": "/application-cli#processing-action-parameters"
     },
     {
-      "text": "Running tasks in a chain",
+      "text": "Tâches en cours d'exécution dans une chaîne",
       "url": "/application-cli#running-tasks-chain"
     }
   ],
@@ -255,7 +255,7 @@
       ]
     },
     {
-      "text": "Dependency Injector",
+      "text": "La Dépendance De L'Injecteur",
       "url": "/application-micro#dependency-injector"
     },
     {
@@ -283,7 +283,7 @@
           "url": "/application-micro#responses-application-response"
         },
         {
-          "text": "Return Application Response",
+          "text": "De Retour De Réponse De L'Application",
           "url": "/application-micro#responses-return-application-response"
         },
         {
@@ -293,19 +293,19 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Événements",
       "url": "/application-micro#events",
       "menu": [
         {
-          "text": "Available events",
+          "text": "Les événements disponibles",
           "url": "/application-micro#events-available-events",
           "menu": [
             {
-              "text": "Authentication example",
+              "text": "Exemple d'authentification",
               "url": "/application-micro#events-available-events-authentication"
             },
             {
-              "text": "Not found example",
+              "text": "Pas trouvé d'exemple",
               "url": "/application-micro#events-available-events-not-found"
             }
           ]
@@ -317,19 +317,19 @@
       "url": "/application-micro#middleware",
       "menu": [
         {
-          "text": "Attached events",
+          "text": "Des événements attachés",
           "url": "/application-micro#middleware-attached-events",
           "menu": [
             {
-              "text": "before",
+              "text": "avant",
               "url": "/application-micro#middleware-attached-events-before"
             },
             {
-              "text": "after",
+              "text": "après",
               "url": "/application-micro#middleware-attached-events-after"
             },
             {
-              "text": "finish",
+              "text": "finition",
               "url": "/application-micro#middleware-attached-events-finish"
             }
           ]
@@ -339,35 +339,35 @@
           "url": "/application-micro#middleware-setup"
         },
         {
-          "text": "Implementation",
+          "text": "La mise en œuvre",
           "url": "/application-micro#middleware-implementation"
         },
         {
-          "text": "Events in Middleware",
+          "text": "Les événements dans le Middleware",
           "url": "/application-micro#middleware-events",
           "menu": [
             {
-              "text": "API example",
+              "text": "Exemple d'API",
               "url": "/application-micro#middleware-events-api"
             },
             {
-              "text": "Firewall Middleware",
+              "text": "Pare-Feu Middleware",
               "url": "/application-micro#middleware-events-api-firewall"
             },
             {
-              "text": "Not Found Middleware",
+              "text": "Pas Trouvé Middleware",
               "url": "/application-micro#middleware-events-api-not-found"
             },
             {
-              "text": "Redirect Middleware",
+              "text": "Rediriger Middleware",
               "url": "/application-micro#middleware-events-api-redirect"
             },
             {
-              "text": "CORS Middleware",
+              "text": "La SCRO Middleware",
               "url": "/application-micro#middleware-events-api-cors"
             },
             {
-              "text": "Request Middleware",
+              "text": "Demande Middleware",
               "url": "/application-micro#middleware-events-api-request"
             },
             {
@@ -377,19 +377,19 @@
           ]
         },
         {
-          "text": "Models",
+          "text": "Modèles",
           "url": "/application-micro#models"
         },
         {
-          "text": "Injecting Model Instances",
+          "text": "L'Injection D'Instances De Modèle",
           "url": "/application-micro#model-instances"
         },
         {
-          "text": "Views",
+          "text": "Vues",
           "url": "/application-micro#views"
         },
         {
-          "text": "Error Handling",
+          "text": "Erreur De Manipulation",
           "url": "/application-micro#error-handling"
         }
       ]
@@ -397,19 +397,19 @@
   ],
   "application": [
     {
-      "text": "Overview",
+      "text": "Vue d'ensemble",
       "url": "/application#overview"
     },
     {
-      "text": "Manual Bootstrapping",
+      "text": "Manuel D'Amorçage",
       "url": "/application#manual-bootstrapping"
     },
     {
-      "text": "Single or Multi Module Applications",
+      "text": "Un seul ou plusieurs Applications de Module",
       "url": "/application#single-vs-module",
       "menu": [
         {
-          "text": "Single Module",
+          "text": "Module Unique",
           "url": "/application#single"
         },
         {
@@ -419,25 +419,25 @@
       ]
     },
     {
-      "text": "Application Events",
+      "text": "Événements D'Application",
       "url": "/application#events"
     },
     {
-      "text": "External Resources",
+      "text": "Ressources Externes",
       "url": "/application#resources"
     }
   ],
   "assets": [
     {
-      "text": "Overview",
+      "text": "Vue d'ensemble",
       "url": "/assets#overview"
     },
     {
-      "text": "Adding Resources",
+      "text": "Ajout de ressources",
       "url": "/assets#add"
     },
     {
-      "text": "Local/Remote resources",
+      "text": "Local/Distant des ressources",
       "url": "/assets#resources-local-remote"
     },
     {
@@ -445,35 +445,35 @@
       "url": "/assets#collections"
     },
     {
-      "text": "URL Prefixes",
+      "text": "Les Préfixes d'URL",
       "url": "/assets#url-prefixes"
     },
     {
-      "text": "Minification/Filtering",
+      "text": "Minification/Filtrage",
       "url": "/assets#minification-filtering",
       "menu": [
         {
-          "text": "Built-In Filters",
+          "text": "Filtres Intégrés",
           "url": "/assets#builtin-filters"
         },
         {
-          "text": "Custom Filters",
+          "text": "Les Filtres Personnalisés",
           "url": "/assets#custom-filters"
         }
       ]
     },
     {
-      "text": "Custom Output",
+      "text": "De Sortie Personnalisé",
       "url": "/assets#custom-output"
     },
     {
-      "text": "Improving performance",
+      "text": "L'amélioration de la performance",
       "url": "/assets#improving-performance"
     }
   ],
   "cache": [
     {
-      "text": "Improving Performance with Cache",
+      "text": "L'amélioration des Performances avec Cache",
       "url": "/cache#overview"
     },
     {
@@ -485,7 +485,7 @@
       "url": "/cache#caching-behavior"
     },
     {
-      "text": "Factory",
+      "text": "Usine",
       "url": "/cache#factory"
     },
     {
@@ -531,7 +531,7 @@
       "url": "/cache#adapters-frontend",
       "menu": [
         {
-          "text": "Implementing your own Frontend adapters",
+          "text": "La mise en œuvre de vos propres cartes Frontal",
           "url": "/cache#adapters-frontend-custom"
         }
       ]
@@ -541,7 +541,7 @@
       "url": "adapters-backend",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/cache#adapters-backend-factory"
         },
         {
@@ -589,7 +589,7 @@
       "url": "/config#overview",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/config#factory"
         }
       ]
@@ -657,11 +657,11 @@
   ],
   "controllers": [
     {
-      "text": "Overview",
+      "text": "Vue d'ensemble",
       "url": "/controllers#overview"
     },
     {
-      "text": "Using Controllers",
+      "text": "Utiliser les Contrôleurs",
       "url": "/controllers#using"
     },
     {
@@ -673,23 +673,23 @@
       "url": "/controllers#initializing"
     },
     {
-      "text": "Injecting Services",
+      "text": "Injection de Services",
       "url": "/controllers#injecting-services"
     },
     {
-      "text": "Request and Response",
+      "text": "Requête et réponse",
       "url": "/controllers#request-response"
     },
     {
-      "text": "Session Data",
+      "text": "Données de session",
       "url": "/controllers#session-data"
     },
     {
-      "text": "Using Services as Controllers",
+      "text": "Utiliser les Services comme des Contrôleurs",
       "url": "/controllers#services"
     },
     {
-      "text": "Events in Controllers",
+      "text": "Les événements dans les Contrôleurs",
       "url": "/controllers#events"
     }
   ],
@@ -743,11 +743,11 @@
       "url": "/db-layer#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/db-layer#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Réalisation vos propres adaptateurs",
           "url": "/db-layer#adapters-custom"
         }
       ]
@@ -767,7 +767,7 @@
       "url": "/db-layer#connection"
     },
     {
-      "text": "Setting up additional PDO options",
+      "text": "Configuration supplémentaire de PDO options",
       "url": "/db-layer#options"
     },
     {
@@ -775,7 +775,7 @@
       "url": "/db-layer#finding-rows"
     },
     {
-      "text": "Binding Parameters",
+      "text": "Lier les paramètres",
       "url": "/db-layer#binding-parameters"
     },
     {
@@ -1093,29 +1093,29 @@
   ],
   "db-models": [
     {
-      "text": "Working with Models",
+      "text": "Travailler avec des Modèles",
       "url": "/db-models#working-with"
     },
     {
-      "text": "Creating Models",
+      "text": "Créer des Modèles",
       "url": "/db-models#creating",
       "menu": [
         {
-          "text": "Public properties vs. Setters/Getters",
+          "text": "Propriétés publiques vs. Setters/Getters",
           "url": "/db-models#properties-setters-getters"
         }
       ]
     },
     {
-      "text": "Understanding Records To Objects",
+      "text": "Comprendre les enregistrements des objets",
       "url": "/db-models#records-to-objects"
     },
     {
-      "text": "Finding Records",
+      "text": "Rechercher des enregistrements",
       "url": "/db-models#finding-records",
       "menu": [
         {
-          "text": "Model Resultsets",
+          "text": "Ensemble de réponse d'une recherche de modèle",
           "url": "/db-models#resultsets"
         },
         {
@@ -1123,35 +1123,35 @@
           "url": "/db-models#filters"
         },
         {
-          "text": "Binding Parameters",
+          "text": "Lier les paramètres",
           "url": "/db-models#binding-parameters"
         }
       ]
     },
     {
-      "text": "Initializing/Preparing fetched records",
+      "text": "Initialiser/Préparer les enregistrements extraits",
       "url": "/db-models#preparing-records"
     },
     {
-      "text": "Generating Calculations",
+      "text": "Générer les calculs",
       "url": "/db-models#calculations"
     },
     {
-      "text": "Creating/Updating Records",
+      "text": "Créer/Mettre à jour des enregistrements",
       "url": "/db-models#create-update-records",
       "menu": [
         {
-          "text": "Create/Update with Confidence",
+          "text": "Créer/Mettre à jour en toute confiance",
           "url": "/db-models#create-update-with-confidence"
         }
       ]
     },
     {
-      "text": "Deleting Records",
+      "text": "Supprimer des enregistrements",
       "url": "/db-models#delete-records"
     },
     {
-      "text": "Hydration Modes",
+      "text": "Modes d’hydratation",
       "url": "/db-models#hydration-modes"
     },
     {
@@ -1201,7 +1201,7 @@
       "url": "/db-odm#overview"
     },
     {
-      "text": "Creating Models",
+      "text": "Créer des Modèles",
       "url": "/db-odm#creating-models"
     },
     {
@@ -1247,7 +1247,7 @@
       ]
     },
     {
-      "text": "Deleting Records",
+      "text": "Supprimer des enregistrements",
       "url": "/db-odm#deleting-records"
     },
     {
@@ -1277,7 +1277,7 @@
       "url": "/db-pagination#data-adapters"
     },
     {
-      "text": "Factory",
+      "text": "Usine",
       "url": "/db-pagination#factory"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "/db-pagination#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Réalisation vos propres adaptateurs",
       "url": "/db-pagination#custom"
     }
   ],
@@ -1541,7 +1541,7 @@
       "url": "/di#resolving-services",
       "menu": [
         {
-          "text": "Events",
+          "text": "Événements",
           "url": "/di#events"
         }
       ]
@@ -1621,7 +1621,7 @@
           "url": "/dispatcher#preparing-actions-removing-legacy-extensions"
         },
         {
-          "text": "Inject model instances",
+          "text": "Injecter des instances de modèle",
           "url": "/dispatcher#preparing-actions-inject-model-instances"
         }
       ]
@@ -1803,11 +1803,11 @@
   ],
   "forms": [
     {
-      "text": "Forms",
+      "text": "Formulaires",
       "url": "/forms#overview"
     },
     {
-      "text": "Initializing forms",
+      "text": "Initialiser les formulaires",
       "url": "/forms#initializing"
     },
     {
@@ -1839,7 +1839,7 @@
       "url": "/forms#manager"
     },
     {
-      "text": "External Resources",
+      "text": "Ressources Externes",
       "url": "/forms#external"
     }
   ],
@@ -1875,11 +1875,11 @@
       "url": "/image#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/image#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
+          "text": "Réalisation vos propres adaptateurs",
           "url": "/image#adapters-custom"
         }
       ]
@@ -1942,147 +1942,47 @@
   "installation": [
     {
       "text": "Requirements",
-      "url": "/installation#requirements",
-      "menu": [
-        {
-          "text": "Hardware",
-          "url": "/installation#requirements-hardware"
-        },
-        {
-          "text": "Software",
-          "url": "/installation#requirements-software",
-          "menu": [
-            {
-              "text": "Optional depending on the needs of your application",
-              "url": "/installation#requirements-software-optional"
-            }
-          ]
-        }
-      ]
+      "url": "/installation"
     },
     {
       "text": "Installation",
-      "url": "/installation#installation",
-      "menu": [
-        {
-          "text": "Linux",
-          "url": "/installation#installation-linux",
-          "menu": [
-            {
-              "text": "DEB based distributions (CentOS, Fedora, etc.)",
-              "url": "/installation#installation-linux-deb",
-              "menu": [
-                {
-                  "text": "Repository installation",
-                  "url": "/installation#installation-linux-deb-repository"
-                },
-                {
-                  "text": "Stable releases",
-                  "url": "/installation#installation-linux-debian-repository-stable"
-                },
-                {
-                  "text": "Nightly releases",
-                  "url": "/installation#installation-linux-debian-repository-nightly"
-                },
-                {
-                  "text": "Phalcon installation",
-                  "url": "/installation#installation-linux-debian-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "url": "/installation#installation-linux-debian-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "url": "/installation#installation-linux-debian-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Additional PPAs",
-                  "url": "/installation#installation-linux-debian-other-ppa"
-                }
-              ]
-            },
-            {
-              "text": "RPM based distributions (CentOS, Fedora, etc.)",
-              "url": "/installation#installation-linux-rpm",
-              "menu": [
-                {
-                  "text": "Repository installation",
-                  "url": "/installation#installation-linux-rpm-repository"
-                },
-                {
-                  "text": "Stable releases",
-                  "url": "/installation#installation-linux-rpm-repository-stable",
-                  "menu": [
-                    {
-                      "text": "Nightly releases",
-                      "url": "/installation#installation-linux-rpm-repository-nightly"
-                    }
-                  ]
-                },
-                {
-                  "text": "Phalcon installation",
-                  "url": "/installation#installation-linux-rpm-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "url": "/installation#installation-linux-rpm-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "url": "/installation#installation-linux-rpm-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Additional RPMs",
-                  "url": "/installation#installation-linux-rpm-other-rpm"
-                }
-              ]
-            },
-            {
-              "text": "FreeBSD",
-              "url": "/installation#installation-freebsd"
-            },
-            {
-              "text": "Gentoo",
-              "url": "/installation#installation-gentoo"
-            }
-          ]
-        },
-        {
-          "text": "macOS",
-          "url": "/installation#installation-macos",
-          "menu": [
-            {
-              "text": "Brew",
-              "url": "/installation#installation-macos-brew"
-            },
-            {
-              "text": "MacPorts",
-              "url": "/installation#installation-macos-macports"
-            }
-          ]
-        },
-        {
-          "text": "Windows",
-          "url": "/installation#installation-windows"
-        },
-        {
-          "text": "Compile from Sources",
-          "url": "/installation#installation-sources"
-        },
-        {
-          "text": "Advanced Compilation",
-          "url": "/installation#installation-sources-advanced"
-        },
-        {
-          "text": "Testing",
-          "url": "/installation#installation-testing"
-        }
-      ]
+      "url": "/installation-requirements-psr"
+    },
+    {
+      "text": "PDO",
+      "url": "/installation-requirements-pdo"
+    },
+    {
+      "text": "Matériel",
+      "url": "/installation-requirements-hardware"
+    },
+    {
+      "text": "Logiciels",
+      "url": "/installation-requirements-software"
+    },
+    {
+      "text": "Platforms",
+      "url": "/installation-platforms"
+    },
+    {
+      "text": "Linux",
+      "url": "/installation-linux"
+    },
+    {
+      "text": "MacOS",
+      "url": "/installation-macos"
+    },
+    {
+      "text": "Windows",
+      "url": "/installation-windows"
+    },
+    {
+      "text": "Sources",
+      "url": "/installation-sources"
+    },
+    {
+      "text": "Shared",
+      "url": "/installation-shared"
     }
   ],
   "loader": [
@@ -2181,11 +2081,11 @@
       "url": "/mvc#architecture"
     },
     {
-      "text": "Models",
+      "text": "Modèles",
       "url": "/mvc#models"
     },
     {
-      "text": "Views",
+      "text": "Vues",
       "url": "/mvc#views"
     },
     {
@@ -2213,7 +2113,7 @@
   ],
   "performance": [
     {
-      "text": "Increasing Performance",
+      "text": "L'Augmentation De La Performance",
       "url": "/performance#overview"
     },
     {
@@ -2257,7 +2157,7 @@
       "url": "/performance#bytecode-cache"
     },
     {
-      "text": "Do blocking work in the background",
+      "text": "Ne le blocage de travail en arrière-plan",
       "url": "/performance#background-tasks"
     },
     {
@@ -2477,7 +2377,7 @@
       "url": "/security#random"
     },
     {
-      "text": "External Resources",
+      "text": "Ressources Externes",
       "url": "/security#resources"
     }
   ],
@@ -2491,7 +2391,7 @@
       "url": "/session#start",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/session#start-factory"
         }
       ]
@@ -2517,7 +2417,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Réalisation vos propres adaptateurs",
       "url": "/session#custom-adapters"
     }
   ],
@@ -2601,88 +2501,88 @@
   ],
   "testing-environment": [
     {
-      "text": "Overview",
-      "url": "#overview"
+      "text": "Vue d'ensemble",
+      "url": "overview"
     },
     {
-      "text": "Overview",
-      "url": "#overview"
+      "text": "Vue d'ensemble",
+      "url": "overview"
     },
     {
       "text": "The problem",
-      "url": "#problem"
+      "url": "problem"
     },
     {
       "text": "Solution",
-      "url": "#solution"
+      "url": "solution"
     },
     {
       "text": "Installation",
-      "url": "#installation"
+      "url": "installation"
     },
     {
       "text": "Running the environment",
-      "url": "#running",
+      "url": "running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "#running-fork"
+          "url": "running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "#running-clone"
+          "url": "running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "#running-boxfile"
+          "url": "running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "#running-nanobox-configure"
+          "url": "running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "#running-nanobox-run"
+          "url": "running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "#running-composer"
+          "url": "running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "#running-zephir"
+          "url": "running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "#running-compile"
+          "url": "running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "#running-extensions"
+          "url": "running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "#tests",
+      "url": "tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "#tests-unit"
+          "url": "tests-unit"
         },
         {
           "text": "Integration",
-          "url": "#tests-integration"
+          "url": "tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "#development"
+      "url": "development"
     },
     {
       "text": "Services",
-      "url": "#services"
+      "url": "services"
     }
   ],
   "translate": [
@@ -2695,7 +2595,7 @@
       "url": "/translate#adapters",
       "menu": [
         {
-          "text": "Factory",
+          "text": "Usine",
           "url": "/translate#adapters-factory"
         }
       ]
@@ -2705,7 +2605,7 @@
       "url": "/translate#usage"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Réalisation vos propres adaptateurs",
       "url": "/translate#custom"
     }
   ],
@@ -2715,53 +2615,53 @@
       "url": "/tutorial-base#basic"
     },
     {
-      "text": "File structure",
+      "text": "Structure des répertoires",
       "url": "/tutorial-base#file-structure"
     },
     {
-      "text": "Bootstrap",
+      "text": "Amorce",
       "url": "/tutorial-base#bootstrap",
       "menu": [
         {
-          "text": "Autoloaders",
+          "text": "Chargeur automatique",
           "url": "/tutorial-base#autoloaders"
         },
         {
-          "text": "Dependency Management",
+          "text": "Gestion de dépendance",
           "url": "/tutorial-base#dependency-management"
         },
         {
-          "text": "Handling the application request",
+          "text": "Traitement des requêtes",
           "url": "/tutorial-base#request"
         },
         {
-          "text": "Putting everything together",
+          "text": "Tout mettre ensemble",
           "url": "/tutorial-base#full-example"
         }
       ]
     },
     {
-      "text": "Creating a Controller",
+      "text": "Création d’un contrôleur",
       "url": "/tutorial-base#controller"
     },
     {
-      "text": "Sending output to a view",
+      "text": "Sortie vers une vue",
       "url": "/tutorial-base#view"
     },
     {
-      "text": "Designing a sign up form",
+      "text": "Conception d'un formulaire d’inscription",
       "url": "/tutorial-base#signup-form"
     },
     {
-      "text": "Creating a Model",
+      "text": "Création d’un modèle",
       "url": "/tutorial-base#model"
     },
     {
-      "text": "Setting a Database Connection",
+      "text": "Définition de la connexion à la base de données",
       "url": "/tutorial-base#database-connection"
     },
     {
-      "text": "Storing data using models",
+      "text": "Stockage de données à l’aide de modèles",
       "url": "/tutorial-base#storing-data"
     },
     {
@@ -2787,7 +2687,7 @@
       "url": "/tutorial-invo#configuration"
     },
     {
-      "text": "Autoloaders",
+      "text": "Chargeur automatique",
       "url": "/tutorial-invo#autoloaders"
     },
     {
@@ -2847,23 +2747,23 @@
   ],
   "tutorial-rest": [
     {
-      "text": "Tutorial: Creating a Simple REST API",
+      "text": "Tutoriel : Création d’une API REST Simple",
       "url": "/tutorial-rest#overview"
     },
     {
-      "text": "Defining the API",
+      "text": "Définition de l’API",
       "url": "/tutorial-rest#definitions"
     },
     {
-      "text": "Creating the Application",
+      "text": "Création de l’Application",
       "url": "/tutorial-rest#implementation"
     },
     {
-      "text": "Creating a Model",
+      "text": "Création d’un modèle",
       "url": "/tutorial-rest#models"
     },
     {
-      "text": "Retrieving Data",
+      "text": "Récupération de données",
       "url": "/tutorial-rest#retrieving-data"
     },
     {
@@ -2879,7 +2779,7 @@
       "url": "/tutorial-rest#deleting-data"
     },
     {
-      "text": "Testing our Application",
+      "text": "Tester notre application",
       "url": "/tutorial-rest#testing"
     },
     {
@@ -2929,11 +2829,11 @@
       "url": "/unit-testing#overview"
     },
     {
-      "text": "Integrating PHPUnit with Phalcon",
+      "text": "Intégrer PHPunit à phalcon",
       "url": "/unit-testing#integration"
     },
     {
-      "text": "The PHPUnit helper file",
+      "text": "Le fichier d'assistance de PHPunit",
       "url": "/unit-testing#unit-helper"
     },
     {
@@ -2941,7 +2841,7 @@
       "url": "/unit-testing#phpunit-config"
     },
     {
-      "text": "Sample Unit Test",
+      "text": "Exemple de test unitaire",
       "url": "/unit-testing#sample"
     }
   ],
@@ -2956,7 +2856,7 @@
         },
         {
           "text": "Installation",
-          "url": "#installation"
+          "url": "installation"
         }
       ]
     },
@@ -2965,7 +2865,7 @@
       "url": "#acl",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Vue d'ensemble",
           "url": "#acl-overview"
         },
         {
@@ -2979,7 +2879,7 @@
       "url": "#filter",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Vue d'ensemble",
           "url": "#filter-overview"
         },
         {
@@ -2991,7 +2891,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "Constants",
+          "text": "Constantes",
           "url": "#filter-constants"
         }
       ]
@@ -3001,7 +2901,7 @@
       "url": "#logger",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Vue d'ensemble",
           "url": "#filter-overview"
         },
         {
@@ -3013,7 +2913,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "Constants",
+          "text": "Constantes",
           "url": "#filter-constants"
         }
       ]
