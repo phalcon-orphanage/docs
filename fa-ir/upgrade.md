@@ -27,7 +27,7 @@ Phalcon requires the PSR extension. The extension can be downloaded and compiled
 extension=psr.so
 ```
 
-قبل
+before
 
 ```ini
 extension=phalcon.so
@@ -76,7 +76,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 <a name='acl-overview'></a>
 
-### بررسی کلی
+### Overview
 
 The components needed for the ACL to work have been renamed. In particular `Role` has been renamed to `Operation` and `Resource` to `Subject` in all relevant interfaces, classes and methods that this component uses.
 
@@ -115,7 +115,7 @@ The components needed for the ACL to work have been renamed. In particular `Role
 
 <a name='filter'></a>
 
-## فیلتر
+## Filter
 
 > Status: **changes required**
 > 
@@ -125,7 +125,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 <a name='filter-overview'></a>
 
-### بررسی کلی
+### Overview
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 
@@ -189,7 +189,7 @@ $container->set(
 
 <a name='filter-constants'></a>
 
-### ثابت ها
+### Constants
 
 The constants that the v3 `Phalcon\Filter` have somewhat changed. They are now located in the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) class.
 
