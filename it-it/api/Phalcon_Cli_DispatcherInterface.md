@@ -8,9 +8,9 @@ title: 'Phalcon\Cli\DispatcherInterface'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setTaskSuffix** (*mixed* $taskSuffix)
 
