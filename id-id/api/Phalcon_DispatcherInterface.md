@@ -6,74 +6,74 @@ title: 'Phalcon\DispatcherInterface'
 ---
 # Interface **Phalcon\DispatcherInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
 
-## Metode
+## Methods
 
-publik abstrak **setActionSuffix** (*mixed* $actionSuffix)
-
-...
-
-publik Abstrak **getActionSuffix** ()
+abstract public **setActionSuffix** (*mixed* $actionSuffix)
 
 ...
 
-publik abstrak **setDefaultNamespace** (*mixed* $defaultNamespace)
+abstract public **getActionSuffix** ()
 
 ...
 
-abstrak publik **setDefaultAction** (*campuran* $actionName)
+abstract public **setDefaultNamespace** (*mixed* $defaultNamespace)
 
 ...
 
-publik abstrak **setNamespaceName** (*mixed* $namespaceName)
+abstract public **setDefaultAction** (*mixed* $actionName)
 
 ...
 
-publik abstrak **setModuleName** (*mixed* $moduleName)
+abstract public **setNamespaceName** (*mixed* $namespaceName)
 
 ...
 
-publik abstrak **setActionName** (*mixed* $actionName)
+abstract public **setModuleName** (*mixed* $moduleName)
 
 ...
 
-abstrak publik **getSchemaName** ()
+abstract public **setActionName** (*mixed* $actionName)
 
 ...
 
-publik abstrak **setParams** (*mixed* $params)
+abstract public **getActionName** ()
 
 ...
 
-abstrak publik **terakhirmendapatkankunci**()
+abstract public **setParams** (*mixed* $params)
 
 ...
 
-publik abstrak **setParam** (*mixed* $param, *mixed* $value)
+abstract public **getParams** ()
 
 ...
 
-publik abstrak **getParam** (*mixed* $param, [*mixed* $filters])
+abstract public **setParam** (*mixed* $param, *mixed* $value)
 
 ...
 
-abstrak publik **hasParam** (*mixed* $param)
+abstract public **getParam** (*mixed* $param, [*mixed* $filters])
 
 ...
 
-abstrak publik **isFinished** ()
+abstract public **hasParam** (*mixed* $param)
 
 ...
 
-abstrak publik **getReturnedValue** ()
+abstract public **isFinished** ()
 
 ...
 
-abstrak publik **dispatch** ()
+abstract public **getReturnedValue** ()
 
 ...
 
-abstrak publik **forward** (*mixed* $forward)
+abstract public **dispatch** ()
+
+...
+
+abstract public **forward** (*mixed* $forward)
 
 ...
