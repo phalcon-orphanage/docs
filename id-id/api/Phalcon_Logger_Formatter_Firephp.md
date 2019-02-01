@@ -10,36 +10,36 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
 
-Formats messages so that they can be sent to FirePHP
+Format pesan sehingga bisa dikirim ke FirePHP
 
-## Methods
+## Metode
 
-public **getTypeString** (*mixed* $type)
+publik **getTypeString** (*campuran* $type)
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **setShowBacktrace** ([*mixed* $isShow])
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **getShowBacktrace** ()
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **enableLabels** ([*mixed* $isEnable])
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **labelsEnabled** ()
 
-Returns the labels enabled
+Mengembalikan label yang diaktifkan
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sending it to the log
+Menerapkan format ke sebuah pesan sebelum mengirimnya ke log
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpolates context values into the message placeholders
+Interpolasi nilai konteks ke dalam placeholder pesan
