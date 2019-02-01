@@ -58,7 +58,7 @@ $router->mount($blog);
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*mixed* $paths])
 
