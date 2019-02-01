@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
 This component allows to build forms using an object-oriented interface
 
-## Methoden
+## Methods
 
 public **setValidation** (*mixed* $validation)
 
@@ -134,11 +134,11 @@ Returns the current element in the iterator
 
 public **key** ()
 
-Gibt die aktuellen Position/Schlüssel im Iterator zurück
+Returns the current position/key in the iterator
 
 public **next** ()
 
-Bewegt sich der internen Iteration-Zeiger auf die nächste position
+Moves the internal iteration pointer to the next position
 
 public **valid** ()
 
@@ -154,12 +154,12 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Legt den Event-manager fest
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magische Methode __get
+Magic method __get
