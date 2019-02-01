@@ -24,7 +24,7 @@ $response->send();
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
