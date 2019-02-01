@@ -60,4 +60,4 @@ Congratulations! You are now phlying with Phalcon.
 ## Related Guides
 
 * [General Installation](/4.0/en/installation)
-* [Installation on XAMPP](/4.0/en/webserver-xampp)
+* [Instalacja na XAMPP](/4.0/en/webserver-xampp)
