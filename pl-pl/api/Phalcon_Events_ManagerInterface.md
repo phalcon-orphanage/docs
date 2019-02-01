@@ -6,7 +6,7 @@ title: 'Phalcon\Events\ManagerInterface'
 ---
 # Interface **Phalcon\Events\ManagerInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
 
 ## Metody
 
