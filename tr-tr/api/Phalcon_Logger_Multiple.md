@@ -6,11 +6,11 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
 Handles multiples logger handlers
 
-## Methods
+## Metodlar
 
 public **getLoggers** ()
 
@@ -46,28 +46,28 @@ Sends/Writes an critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Sends/Writes an emergency message to the log
+Sistem günlüğüne acil durum mesajı Gönderir / Yazar
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Sends/Writes a debug message to the log
+Sistem günlüğüne hata giderme mesajı Gönderir / Yazar
 
 public **error** (*mixed* $message, [*array* $context])
 
-Sends/Writes an error message to the log
+Sistem günlüğüne hata mesajı Gönderir / Yazar
 
 public **info** (*mixed* $message, [*array* $context])
 
-Sends/Writes an info message to the log
+Sistem günlüğüne bilgi mesajı Gönderir / Yazar
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Sends/Writes a notice message to the log
+Sistem günlüğüne bildirim mesajı Gönderir / Yazar
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Sends/Writes a warning message to the log
+Sistem günlüğüne ikaz mesajı Gönderir / Yazar
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Sends/Writes an alert message to the log
+Sistem günlüğüne uyarı mesajı Gönderir / Yazar
