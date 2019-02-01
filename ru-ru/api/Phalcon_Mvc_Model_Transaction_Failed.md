@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Failed'
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
-## Методы
+## Methods
 
 public **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record])
 
@@ -38,32 +38,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает сообщение об исключении
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает код исключения
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает файл, в котором произошло исключение
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает строку, в которой произошло исключение
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает трассировку стека
+Gets the stack trace
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает Предыдущее исключение
+Returns previous Exception
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Возвращает трассировку стека в виде строки
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Строковое представление исключения
+String representation of the exception
