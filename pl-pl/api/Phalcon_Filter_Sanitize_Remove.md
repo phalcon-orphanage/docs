@@ -6,7 +6,7 @@ title: 'Phalcon\Filter\Sanitizer\Remove'
 ---
 # Class [Phalcon\Filter\Sanitizer\Remove](Phalcon_Filter_Sanitizer_Remove)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/remove.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/remove.zep)
 
 Sanitizes a value removing parts of the value
 
