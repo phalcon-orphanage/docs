@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
-Este es una clase base opcional para comportamientos ORM
+This is an optional base class for ORM behaviors
 
 ## Métodos
 
@@ -18,16 +18,16 @@ public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
-Comprueba si el comportamiento debe actuar en ciertos eventos
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName])
 
-Devuelve las opciones de comportamiento relacionadas a un evento
+Returns the behavior options related to an event
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Este método recibe las notificaciones del EventsManager
+This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
 
-Actúa como reservas cuando se llama un método faltante en la colección
+Acts as fallbacks when a missing method is called on the collection
