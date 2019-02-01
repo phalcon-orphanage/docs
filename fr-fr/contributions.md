@@ -50,7 +50,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- Dans le cadre de votre rapport, veuillez inclure des informations supplémentaires telles que le système d'exploitation, la version de PHP, Phalcon version, serveur web, la mémoire etc.
+- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
 
 <a name='bug-report-generating-backtrace'></a>
@@ -61,10 +61,10 @@ Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation
 
 Please check the following links for instructions on how to generate the backtrace:
 
-- [La génération d'un gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
-- [La génération d'une trace, avec un compilateur, sur Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Les Symboles De Débogage](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Bâtiment PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
@@ -74,14 +74,14 @@ Please check the following links for instructions on how to generate the backtra
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
 - Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
-- Supprimer tout changement à `ext/noyau`, `*.zep.c` et `*.zep.h` fichiers avant de soumettre la demande d'extraction
+- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 - More information [here](new-pull-request)
 
 Before submitting **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
-- Une mise à jour de l' `CHANGELOG.md`
-- Les Tests Unitaires
-- De la Documentation ou des Exemples d'Utilisation
+- An update to the `CHANGELOG.md`
+- Unit Tests
+- Documentation or Usage Examples
 
 <a name='getting-support'></a>
 
