@@ -7,31 +7,31 @@ version: '4.0'
 
 <a name='architecture'></a>
 
-# The MVC Architecture
+# Arsitektur MVC
 
 Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
 
 MVC benefits include:
 
-* Isolation of business logic from the user interface and the database layer
-* Making it clear where different types of code belong for easier maintenance
+* Isolasi dari logika bisnis dari antarmuka pengguna dan lapisan database
+* Penyusun ini jelas dimana jenisnya berbeda dari kode milik untuk pemeliharaan lebih mudah
 
 If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in C language, offering a high performance approach of this pattern in a PHP based application.
 
 <a name='models'></a>
 
-## Models
+## Model
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models. [Learn more](/4.0/en/models)
+Sebuah model mewakili informasi (data) aplikasi dan aturan untuk memanipulasi data tersebut. Model terutama digunakan untuk mengelola aturan interaksi dengan tabel database yang sesuai. Dalam kebanyakan kasus, setiap tabel dalam database anda akan sesuai dengan satu model dalam aplikasi anda. Sebagian besar logika bisnis aplikasi anda akan terkonsentrasi pada model. [Learn more](/4.0/en/models)
 
 <a name='views'></a>
 
-## Views
+## Lihat
 
-Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application. [Learn more](/4.0/en/views)
+Tampilan menyajikan antarmuka pengguna dari aplikasi anda. Tampilannya sering kali berupa file HTML dengan kode PHP melekat yang melakukan tugas berkaitan hanya dengan penyajian data. Tampilan melakukan pekerjaan memberikan data ke browser web atau alat lain yang digunakan untuk mengajukan permintaan dari aplikasi anda. [Learn more](/4.0/en/views)
 
 <a name='controllers'></a>
 
-## Controllers
+## Pengawas
 
 The controllers provide the 'flow' between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [Learn more](/4.0/en/controllers)
