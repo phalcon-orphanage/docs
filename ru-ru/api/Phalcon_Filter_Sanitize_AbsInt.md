@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\AbsInt'
 
 Sanitizes a value to absolute integer
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
