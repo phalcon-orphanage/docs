@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
 
 Specific functions for the Sqlite database system
 
@@ -48,7 +48,7 @@ print_r(
 
 public [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) **describeIndexes** (*string* $table, [*string* $schema])
 
-Listowanie indeksów tabeli
+Lists table indexes
 
 ```php
 <?php
@@ -277,7 +277,7 @@ Returns the current transaction nesting level
 
 public **isUnderTransaction** () inherited from [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)
 
-Sprawdza czy cache zaczęło bufferowanie czy nie
+Checks whether the connection is under a transaction
 
 ```php
 <?php
@@ -533,7 +533,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Pobiera listę kolumn
+Gets a list of columns
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
@@ -677,7 +677,7 @@ print_r(
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Tworzy nowy punkt zapisu
+Creates a new savepoint
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
