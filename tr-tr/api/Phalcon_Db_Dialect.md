@@ -8,19 +8,19 @@ title: 'Phalcon\Db\Dialect'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## Methods
+## Metodlar
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
 
-Registers custom SQL functions
+Özel SQL işlevlerini kaydeder
 
 public **getCustomFunctions** ()
 
-Returns registered functions
+Kayıtlı işlevleri döndürür
 
 final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar])
 
@@ -28,7 +28,7 @@ Escape Schema
 
 final public **escape** (*mixed* $str, [*mixed* $escapeChar])
 
-Escape identifiers
+Escapar de identificadores
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
@@ -47,7 +47,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+Bir FOR UPDATE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 ```php
 <?php
@@ -59,7 +59,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Bir LOCK IN SHARE MODE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 ```php
 <?php
@@ -87,11 +87,11 @@ echo $dialect->getColumnList(
 
 final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Column expressions
+Sütun ifadelerini çözümle
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Bir ifade için bir ara temsilini bir veritabanı sistemi geçerli ifadesine dönüştürür
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar])
 
@@ -107,7 +107,7 @@ Checks whether the platform supports savepoints
 
 public **supportsReleaseSavepoints** ()
 
-Checks whether the platform supports releasing savepoints.
+Platformun kayıt noktalarını serbest bırakmayı destekleyip desteklemediğini kontrol eder.
 
 public **createSavepoint** (*mixed* $name)
 
@@ -123,31 +123,31 @@ Generate SQL to rollback a savepoint
 
 final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Column expressions
+Sütun ifadelerini çözümle
 
 final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve object expressions
+Nesne ifadelerini çözümle
 
 final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar])
 
-Resolve qualified expressions
+Nitelikli ifadeleri çözümle
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve binary operations expressions
+İkili işlem ifadelerini çöz
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve unary operations expressions
+Tekli işlem ifadelerini çöz
 
 final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts])
 
-Resolve function calls
+İşlev çağrılarını çözümle
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Lists
+Listeleri Çözümle
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar])
 
