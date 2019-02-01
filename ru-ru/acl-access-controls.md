@@ -9,9 +9,9 @@ category: 'acl'
 
 * * *
 
-## Defining Access Controls
+## Определение контроля доступа
 
-After both the `Operations` and `Subjects` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the operation since a small mistake here can allow access to operations for subjects that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
+После того, как будут определены `Operations`, и `Subjects`, нам нужно будет связать их вместе, чтобы можно было создать список доступа. This is the most important step in the operation since a small mistake here can allow access to operations for subjects that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
 
 To tie `Operations` and `Subjects` together we use the `allow()` and `deny()` methods exposed by the [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory) class.
 
@@ -51,7 +51,7 @@ $acl->allow('*', '*', 'view');
 $acl->deny('guest', '*', 'view');
 ```
 
-What the above lines tell us:
+О чем говорят нам эти строки:
 
 ```php
 $acl->allow('manager', 'admin', 'users');
