@@ -1,33 +1,33 @@
 [
     {
-        "text": "Główne",
+        "text": "General",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Wprowadzenie",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
-                "text": "Lista zmian",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Aktualizacja",
+                "text": "Upgrade",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsorzy",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Wkład",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "Przegląd",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Testing environment",
                 "url": "/testing-environment"
             }
         ]
@@ -57,7 +57,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Instalacja",
+                "text": "Installation",
                 "url": "/installation"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Środowisko",
+        "text": "Environments",
         "url": "",
         "menu": [
             {
@@ -89,21 +89,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Instalacja",
+                "text": "Installation",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Sposób użycia",
+                "text": "Usage",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debugowanie",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Samouczki",
+        "text": "Tutorials",
         "url": "",
         "menu": [
             {
@@ -111,7 +111,7 @@
                 "url": "/performance"
             },
             {
-                "text": "Podstawowe",
+                "text": "Basic",
                 "url": "/tutorial-base"
             },
             {
@@ -127,13 +127,13 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Przypadek użycia",
+                "text": "Use case",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Rdzeń",
+        "text": "Core",
         "url": "",
         "menu": [
             {
@@ -141,7 +141,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Aplikacja",
+                "text": "Application",
                 "url": "/application"
             },
             {
@@ -149,11 +149,11 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Konsolowa (ang. Cli)",
+                "text": "Cli",
                 "url": "/application-cli"
             },
             {
-                "text": "Kontener DI",
+                "text": "DI Container",
                 "url": "/di"
             },
             {
@@ -163,7 +163,7 @@
         ]
     },
     {
-        "text": "Usługi",
+        "text": "Services",
         "url": "",
         "menu": [
             {
@@ -171,7 +171,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Konfiguracja",
+                "text": "Config",
                 "url": "/config"
             },
             {
@@ -183,21 +183,21 @@
                 "url": "/loader"
             },
             {
-                "text": "Logowanie",
+                "text": "Logging",
                 "url": "/logger"
             },
             {
-                "text": "Kolejka",
+                "text": "Queue",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Baza danych",
+        "text": "Database",
         "url": "",
         "menu": [
             {
-                "text": "Warstwa",
+                "text": "Layer",
                 "url": "/db-layer"
             },
             {
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Modele",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -221,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Zdarzenia",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -233,11 +233,11 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transakcja",
+                "text": "Transactions",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Potwierdzenie",
+                "text": "Validators",
                 "url": "/db-models-validation"
             },
             {
@@ -263,11 +263,11 @@
                 "url": "/flash"
             },
             {
-                "text": "Formularze",
+                "text": "Forms",
                 "url": "/forms"
             },
             {
-                "text": "Zdjęcia",
+                "text": "Image",
                 "url": "/image"
             },
             {
@@ -275,7 +275,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Widok",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -297,19 +297,19 @@
                 "url": "/annotations"
             },
             {
-                "text": "Kontrolery",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
-                "text": "Dyspozytor",
+                "text": "Dispatcher",
                 "url": "/dispatcher"
             },
             {
-                "text": "Menadżer wydarzeniaa",
+                "text": "Event Manager",
                 "url": "/events"
             },
             {
-                "text": "Filtry",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
@@ -317,7 +317,7 @@
                 "url": "/routing"
             },
             {
-                "text": "Sesje",
+                "text": "Sessions",
                 "url": "/session"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "Potwierdzenie",
+                "text": "Validation",
                 "url": "/validation"
             }
         ]
@@ -335,21 +335,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Ciasteczka",
+                "text": "Cookies",
                 "url": "/cookies"
             },
             {
-                "text": "Żądanie",
+                "text": "Request",
                 "url": "/request"
             },
             {
-                "text": "Odpowiedź",
+                "text": "Response",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Bezpieczeństwo",
+        "text": "Security",
         "url": "",
         "menu": [
             {
@@ -357,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Bezpieczeństwo",
+                "text": "Security",
                 "url": "/security"
             }
         ]
