@@ -14,7 +14,7 @@ title: 'Phalcon\Application'
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Methods
+## Методы
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
