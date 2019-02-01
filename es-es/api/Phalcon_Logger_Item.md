@@ -8,21 +8,21 @@ title: 'Phalcon\Logger\Item'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
-Representa cada objeto en una transacción de registro
+Represents each item in a logging transaction
 
 ## Métodos
 
 public **getType** ()
 
-Tipo de registro
+Log type
 
 public **getMessage** ()
 
-Mensaje de registro
+Log message
 
 public **getTime** ()
 
-Marca de tiempo del registro
+Log timestamp
 
 public **getContext** ()
 
