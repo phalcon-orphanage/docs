@@ -10,39 +10,39 @@ title: 'Phalcon\Flash\Session'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\FlashInterface](Phalcon_FlashInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-İletileri oturumda geçici olarak tutar, daha sonra iletiler bir sonraki talepte yazdırılabilir
+Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Metodlar
+## Methods
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 
-Oturuma kaydedilen mesajları döner
+Returns the messages stored in session
 
 protected **_setSessionMessages** (*array* $messages)
 
-Mesajları oturumda saklar
+Stores the messages in session
 
 public **message** (*mixed* $type, *mixed* $message)
 
-Oturuma yeni mesaj ekler
+Adds a message to the session flasher
 
 public **has** ([*mixed* $type])
 
-Mesaj olup olmadığını kontrol eder
+Checks whether there are messages
 
 public **getMessages** ([*mixed* $type], [*mixed* $remove])
 
-Oturumda kaydedilmiş mesajları döner
+Returns the messages in the session flasher
 
 public **output** ([*mixed* $remove])
 
-Oturumda kaydedilmiş mesajları basar
+Prints the messages in the session flasher
 
 public **clear** ()
 
-Oturumdaki mesajları siler
+Clear messages in the session messenger
 
 public **__construct** ([*mixed* $cssClasses]) inherited from [Phalcon\Flash](Phalcon_Flash)
 
@@ -50,23 +50,23 @@ Phalcon\Flash constructor
 
 public **getAutoescape** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Oluşturulan html'de autoescape modunu döndürür
+Returns the autoescape mode in generated html
 
 public **setAutoescape** (*mixed* $autoescape) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Autoescape modunu oluşturulan html'de ayarlayın
+Set the autoescape mode in generated html
 
 public **getEscaperService** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-The Escaper Service'i döndürür
+Returns the Escaper Service
 
 public **setEscaperService** ([Phalcon\EscaperInterface](Phalcon_EscaperInterface) $escaperService) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-The Escaper Service'i kurar
+Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
@@ -74,19 +74,19 @@ Returns the internal dependency injector
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Çıktının çıktıya kapalı olarak silineceğini veya dizgi olarak döndürüleceğini ayarlayın
+Set whether the output must be implicitly flushed to the output or returned as string
 
 public **setAutomaticHtml** (*mixed* $automaticHtml) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Çıktının HTML ile örtük olarak biçimlendirilmesi gerekiyorsa ayarlayın
+Set if the output must be implicitly formatted with HTML
 
 public **setCssClasses** (*array* $cssClasses) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-İletileri biçimlendirmek için CSS sınıflarıyla bir dizi ayarlayın
+Set an array with CSS classes to format the messages
 
 public **error** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Bir HTML hata mesajı gösterir
+Shows a HTML error message
 
 ```php
 <?php
@@ -97,7 +97,7 @@ $flash->error("This is an error");
 
 public **notice** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-HTML bildirimini / bilgi mesajını gösterir
+Shows a HTML notice/information message
 
 ```php
 <?php
@@ -108,7 +108,7 @@ $flash->notice("This is an information");
 
 public **success** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Bir HTML başarı mesajı gösterir
+Shows a HTML success message
 
 ```php
 <?php
@@ -119,7 +119,7 @@ $flash->success("The process was finished successfully");
 
 public **warning** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Bir HTML uyarı mesajı gösterir
+Shows a HTML warning message
 
 ```php
 <?php
@@ -130,7 +130,7 @@ $flash->warning("Hey, this is important");
 
 public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-HTML ile biçimlendirilmiş bir mesaj çıktısı verir
+Outputs a message formatting it with HTML
 
 ```php
 <?php
