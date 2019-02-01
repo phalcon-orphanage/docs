@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Router\Route'
 
 *implements* [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/route.zep)
 
-Diese Klasse repräsentiert jede Route, welche dem Router hinzugefügt wurde
+This class represents every route added to the router
 
-## Methoden
+## Methods
 
 public **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
@@ -20,11 +20,11 @@ Phalcon\Mvc\Router\Route constructor
 
 public **compilePattern** (*mixed* $pattern)
 
-Ersetzt Platzhalter aus Muster wieder und gibt einen gültigen PCRE regulären Ausdruck zurück
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public **via** (*mixed* $httpMethods)
 
-Legen Sie eine oder mehrere HTTP-Methoden fest, auf dass die passende Route beschränkt ist
+Set one or more HTTP methods that constraint the matching of the route
 
 ```php
 <?php
@@ -42,23 +42,23 @@ $route->via(
 
 public **extractNamedParams** (*mixed* $pattern)
 
-Extrahiert Parameter aus einer Zeichenfolge
+Extracts parameters from a string
 
 public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
-Konfiguriert die Route, unter Angabe eines neuen Musters und einigen Pfaden, neu
+Reconfigure the route adding a new pattern and a set of paths
 
 public static **getRoutePaths** ([*mixed* $paths])
 
-Gibt routePaths zurück
+Returns routePaths
 
 public **getName** ()
 
-Gibt den Routen-Namen zurück
+Returns the route's name
 
 public **setName** (*mixed* $name)
 
-Legt den Routen-Namen fest
+Sets the route's name
 
 ```php
 <?php
@@ -87,7 +87,7 @@ $router->add(
     ]
 )->beforeMatch(
     function ($uri, $route) {
-        // Prüfen, ob der request per AJAX erfolgte
+        // Check if the request was made with Ajax
         if ($_SERVER["HTTP_X_REQUESTED_WITH"] === "xmlhttprequest") {
             return false;
         }
@@ -100,7 +100,7 @@ $router->add(
 
 public **getBeforeMatch** ()
 
-Liefert den "before match" Callback, falls vorhanden
+Returns the 'before match' callback if any
 
 public **match** (*mixed* $callback)
 
@@ -126,23 +126,23 @@ Returns the 'match' callback if any
 
 public **getRouteId** ()
 
-Gibt die Routen-Id zurück
+Returns the route's id
 
 public **getPattern** ()
 
-Gibt das Routen-Muster zurück
+Returns the route's pattern
 
 public **getCompiledPattern** ()
 
-Gibt das compilierte Routen-Muster zurück
+Returns the route's compiled pattern
 
 public **getPaths** ()
 
-Gibt die Pfade zurück
+Returns the paths
 
 public **getReversedPaths** ()
 
-Gibt die Pfade mit Positionen als Schlüssel und Namen als Werte zurück
+Returns the paths using positions as keys and names as values
 
 public **setHttpMethods** (*mixed* $httpMethods)
 
@@ -185,12 +185,12 @@ Returns the group associated with the route
 
 public **convert** (*mixed* $name, *mixed* $converter)
 
-Fügt einen Konverter hinzu, um eine weitere Transformation für bestimmte Parameter auszuführen
+Adds a converter to perform an additional transformation for certain parameter
 
 public **getConverters** ()
 
-Gibt den Router-Konverter zurück
+Returns the router converter
 
 public static **reset** ()
 
-Setzt den internen Routen Id-Generator zurück
+Resets the internal route id generator
