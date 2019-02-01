@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'فالکن\اعتبار سنجی\ تأییدکننده\ورود به سیستم'
+title: 'Phalcon\Validation\Validator\InclusionIn'
 ---
 # Class **Phalcon\Validation\Validator\InclusionIn**
 
@@ -10,7 +10,7 @@ title: 'فالکن\اعتبار سنجی\ تأییدکننده\ورود به س�
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
 
 Check if a value is included into a list of values
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
