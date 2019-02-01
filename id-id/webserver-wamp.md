@@ -7,21 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on WAMP
+# Instalasi di WAMP
 
 [WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Download versi Phalcon yang tepat
 
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Setelah mendownload perpustakaan Phalcon Anda akan memiliki file zip seperti yang ditunjukkan di bawah ini:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Ekstrak perpustakaan dari arsip untuk mendapatkan Phalcon DLL:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -29,21 +29,21 @@ Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is install
 
 ![](/assets/images/content/webserver-wamp-1.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. Bisa diedit dengan Notepad atau program serupa. We recommend Notepad++ to avoid issues with line endings. Tambahkan pada akhir file:
 
 ```ini extension=php_phalcon.dll
 
-    <br />and save it.
+    <br />dan simpan.
     
     ![](/assets/images/content/webserver-wamp-2.png)
     
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Tambahkan pada bagian akhir file:
     
     ```ini
     extension=php_phalcon.dll 
     
 
-and save it.
+dan simpan.
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
@@ -57,7 +57,7 @@ Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 
-## Related Guides
+## Panduan Terkait
 
 * [General Installation](/4.0/en/installation)
-* [Installation on XAMPP](/4.0/en/webserver-xampp)
+* [Instalasi di XAMPP](/4.0/en/webserver-xampp)
