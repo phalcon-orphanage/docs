@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Inclusionin'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/inclusionin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/inclusionin.zep)
 
 Phalcon\Mvc\Model\Validator\InclusionIn
 
@@ -44,7 +44,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-## روش ها
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
