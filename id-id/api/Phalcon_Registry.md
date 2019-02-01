@@ -8,7 +8,7 @@ title: 'Phalcon\Registry'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
 
@@ -45,61 +45,61 @@ Phalcon\Registry is very fast (it is typically faster than any userspace impleme
 
 Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc, it is not recommended to invoke them manually (these methods exist mainly to match the interfaces the registry implements): $registry->__get("property") is several times slower than $registry->property.
 
-Secara internal semua metode sihir (dan antarmuka kecuali JsonSerializable) di implementasikan menggunakan objek seorang pedagang atau tekhnik serupa: ini memungkinkan untuk memotong metode pemanggilan yang relatif lambat.
+Internally all the magic methods (and interfaces except JsonSerializable) are implemented using object handlers or similar techniques: this allows to bypass relatively slow method calls.
 
-## Metode
+## Methods
 
-publik **__membangun** ()
+final public **__construct** ()
 
-Konstruktor pendaftaran
+Registry constructor
 
 final public **offsetExists** (*mixed* $offset)
 
-Periksa jika elemen hadir dalam pendaftaran
+Checks if the element is present in the registry
 
 final public **offsetGet** (*mixed* $offset)
 
-Mengembalikan sebuah indeks dalam pendaftaran
+Returns an index in the registry
 
 final public **offsetSet** (*mixed* $offset, *mixed* $value)
 
-Mengatur sebuah elemen dalam pendaftaran
+Sets an element in the registry
 
 final public **offsetUnset** (*mixed* $offset)
 
-Tidak mengatur sebuah elemen dalam pendaftaran
+Unsets an element in the registry
 
 final public **count** ()
 
-Memeriksa berapa banyak elemen sedang dalam pendaftaran
+Checks how many elements are in the register
 
 final public **next** ()
 
-Memindahkan jarum untuk baris selanjutnya dalam pendaftaran
+Moves cursor to next row in the registry
 
 final public **key** ()
 
-Mendapatkan nomor petunjuk dari baris aktif dalam pendaftaran
+Gets pointer number of active row in the registry
 
 final public **rewind** ()
 
-Memutar balik pendaftaran jarum ke awal
+Rewinds the registry cursor to its beginning
 
-publik **sah** ()
+public **valid** ()
 
-Memeriksa apakah iterator itu benar
+Checks if the iterator is valid
 
 public **current** ()
 
-Memperoleh nilai saat ini dalam iterator internal
+Obtains the current value in the internal iterator
 
 final public **__set** (*mixed* $key, *mixed* $value)
 
-Mengatur sebuah elemen dalam pendaftaran
+Sets an element in the registry
 
 final public **__get** (*mixed* $key)
 
-Mengembalikan sebuah indeks dalam pendaftaran
+Returns an index in the registry
 
 final public **__isset** (*mixed* $key)
 
