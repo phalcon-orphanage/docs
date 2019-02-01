@@ -17,7 +17,7 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Name                                | Description                                                          |
+| نام                                 | توضیحات                                                              |
 | ----------------------------------- | -------------------------------------------------------------------- |
 | [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
@@ -276,7 +276,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
+| پارامتر      | توضیحات                                                                                                                                                                                      | Example                                                 |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -411,21 +411,21 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
-| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| عملیات                 | نام                                | میتواند متوقف کند؟              | توضیح                                                                                                              |
+| ---------------------- | ---------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| قرار دادن/به روز رسانی | `beforeValidation`                 | YES                             | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting              | `قبل از تأیید در ایجاد`            | YES                             | Is executed before the validation process only when an insertion operation is being made                           |
+| Updating               | `قبل از تایید بر روی به روز رسانی` | YES                             | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| قرار دادن/به روز رسانی | `در تأیید اعتبار`                  | بله (در حال حاضر متوقف شده است) | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting              | `پس از تایید در ایجاد`             | YES                             | Is executed after the validation process when an insertion operation is being made                                 |
+| Updating               | `پس از تایید بر روی به روز رسانی`  | YES                             | Is executed after the validation process when an updating operation is being made                                  |
+| قرار دادن/به روز رسانی | `پس از اعتبار سنجی`                | YES                             | Is executed after the validation process                                                                           |
+| قرار دادن/به روز رسانی | `beforeSave`                       | YES                             | Runs before the required operation over the database system                                                        |
+| Updating               | `beforeUpdate`                     | YES                             | Runs before the required operation over the database system only when an updating operation is being made          |
+| Inserting              | `beforeCreate`                     | YES                             | Runs before the required operation over the database system only when an inserting operation is being made         |
+| Updating               | `afterUpdate`                      | NO                              | Runs after the required operation over the database system only when an updating operation is being made           |
+| Inserting              | `afterCreate`                      | NO                              | Runs after the required operation over the database system only when an inserting operation is being made          |
+| قرار دادن/به روز رسانی | `afterSave`                        | NO                              | Runs after the required operation over the database system                                                         |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -681,10 +681,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| عملیات   | نام            | میتواند متوقف کند؟ | توضیح                                    |
+| -------- | -------------- | ------------------ | ---------------------------------------- |
+| Deleting | `beforeDelete` | YES                | Runs before the delete operation is made |
+| Deleting | `afterDelete`  | NO                 | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
@@ -692,10 +692,10 @@ The following events are available to define custom business rules that can be e
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Operation                | Name                | Explanation                                                     |
-| ------------------------ | ------------------- | --------------------------------------------------------------- |
-| Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
+| عملیات                   | نام               | توضیح                                                           |
+| ------------------------ | ----------------- | --------------------------------------------------------------- |
+| Insert or Update         | `notSave`         | Triggered when the insert/update operation fails for any reason |
+| Insert, Delete or Update | `در تأیید اعتبار` | Triggered when any data manipulation operation fails            |
 
 <a name='ids-vs-primary-keys'></a>
 
