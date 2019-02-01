@@ -9,8 +9,8 @@ category: 'logger'
 
 * * *
 
-- [Logowanie](logger-overview)
-- [Adaptery](logger-adapters)
+- [Logging](logger-overview)
+- [Adapters](logger-adapters)
 - [Creating a Logger component](logger-creating)
 - [Logging to Multiple adapters](logger-multiple)
 - [Message Formatting](logger-message-formatting) 
@@ -23,7 +23,7 @@ category: 'logger'
 
 * * *
 
-# Logowanie
+# Logging
 
 [Phalcon\Logger](api/Phalcon_Logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger) for any logging need your application has, from debugging processes to tracing application flow.
 
