@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Transaction\ManagerInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **has** ()
 
