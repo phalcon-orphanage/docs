@@ -6,15 +6,15 @@ title: 'Phalcon\Http\Response\HeadersInterface'
 ---
 # Interface **Phalcon\Http\Response\HeadersInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
 
-## Metode
+## Methods
 
-abstrak umum **addRole** (*campuran* $name, [*campuran* $value)
+abstract public **set** (*mixed* $name, *mixed* $value)
 
 ...
 
-abstrak publik **dapatkan** (*dicampur* $name)
+abstract public **get** (*mixed* $name)
 
 ...
 
@@ -22,14 +22,14 @@ abstract public **setRaw** (*mixed* $header)
 
 ...
 
-abstrak publik **kirim** ()
+abstract public **send** ()
 
 ...
 
-abstrak publik **reset** ()
+abstract public **reset** ()
 
 ...
 
-data statis statis **__set_state** (*array* $data)
+abstract public static **__set_state** (*array* $data)
 
 ...
