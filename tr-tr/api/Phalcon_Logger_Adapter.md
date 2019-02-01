@@ -8,71 +8,71 @@ title: 'Phalcon\Logger\Adapter'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
 
 Base class for Phalcon\Logger adapters
 
-## Methods
+## Metodlar
 
 public **setLogLevel** (*mixed* $level)
 
-Filters the logs sent to the handlers that are less or equal than a specific level
+Belirli bir seviyeden daha az ya da belirli bir seviyeye eşit olan işleyicilere gönderilen günlükleri filtreler
 
 public **getLogLevel** ()
 
-Returns the current log level
+Geçerli günlük düzeyini döndürür
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Sets the message formatter
+Mesaj biçimlendiricisini ayarlar
 
 public **begin** ()
 
-Starts a transaction
+Bir işlem başlatır
 
 public **commit** ()
 
-Commits the internal transaction
+Dahili işlemi tamamlar
 
 public **rollback** ()
 
-Rollbacks the internal transaction
+Dahili işlemi geri döndürür
 
 public **isTransaction** ()
 
-Returns the whether the logger is currently in an active transaction or not
+Günlüğün halen aktif bir işlemde olup olmadığını döndürür
 
 public **critical** (*mixed* $message, [*array* $context])
 
-Sends/Writes a critical message to the log
+Sistem günlüğüne kritik bir mesaj Gönderir / Yazar
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Sends/Writes an emergency message to the log
+Sistem günlüğüne acil durum mesajı Gönderir / Yazar
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Sends/Writes a debug message to the log
+Sistem günlüğüne hata giderme mesajı Gönderir / Yazar
 
 public **error** (*mixed* $message, [*array* $context])
 
-Sends/Writes an error message to the log
+Sistem günlüğüne hata mesajı Gönderir / Yazar
 
 public **info** (*mixed* $message, [*array* $context])
 
-Sends/Writes an info message to the log
+Sistem günlüğüne bilgi mesajı Gönderir / Yazar
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Sends/Writes a notice message to the log
+Sistem günlüğüne bildirim mesajı Gönderir / Yazar
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Sends/Writes a warning message to the log
+Sistem günlüğüne ikaz mesajı Gönderir / Yazar
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Sends/Writes an alert message to the log
+Sistem günlüğüne uyarı mesajı Gönderir / Yazar
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
