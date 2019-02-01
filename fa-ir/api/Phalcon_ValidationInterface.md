@@ -6,9 +6,9 @@ title: 'Phalcon\ValidationInterface'
 ---
 # Interface **Phalcon\ValidationInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **validate** ([*mixed* $data], [*mixed* $entity])
 
