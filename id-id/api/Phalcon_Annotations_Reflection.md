@@ -6,9 +6,9 @@ title: 'Phalcon\Annotations\Reflection'
 ---
 # Class **Phalcon\Annotations\Reflection**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
-Izinkan untuk manipulasi refleksi annotasi dengan cara OO
+Allows to manipulate the annotations reflection in an OO manner
 
 ```php
 <?php
@@ -28,27 +28,27 @@ $classAnnotations = $reflection->getClassAnnotations();
 
 ```
 
-## Metode
+## Methods
 
-public **__membangun**([*array*$reflectionData)
+public **__construct** ([*array* $reflectionData])
 
 Phalcon\Annotations\Reflection constructor
 
 public **getClassAnnotations** ()
 
-Mengembalikan anotasi yang ditemukan di docblock kelas
+Returns the annotations found in the class docblock
 
 public **getMethodsAnnotations** ()
 
-Mengembalikan anotasi yang ditemukan di metode' dokblocks
+Returns the annotations found in the methods' docblocks
 
 public **getPropertiesAnnotations** ()
 
-Mengembalikan anotasi yang ditemukan di properti' dokblocks
+Returns the annotations found in the properties' docblocks
 
 public *array* **getReflectionData** ()
 
-Mengembalikan parsing mentah antara definisi yang digunakan untuk membangun refleksi
+Returns the raw parsing intermediate definitions used to construct the reflection
 
 public static *array data* **__set_state** (*mixed* $data)
 
