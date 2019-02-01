@@ -12,7 +12,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Factory'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
 
-使用 adapter 选项，加载PDO适配器类
+Loads PDO Adapter class using 'adapter' option
 
 ```php
 <?php
