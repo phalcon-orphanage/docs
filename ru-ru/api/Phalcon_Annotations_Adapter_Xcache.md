@@ -21,7 +21,7 @@ $annotations = new \Phalcon\Annotations\Adapter\Xcache();
 
 ```
 
-## Методы
+## Methods
 
 public [Phalcon\Annotations\Reflection](Phalcon_Annotations_Reflection) **read** (*string* $key)
 
