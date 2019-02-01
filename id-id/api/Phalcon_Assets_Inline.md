@@ -8,24 +8,24 @@ title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
-Represents an inline asset
+Merupakan aset inline
 
 ```php
 <?php
 
-$inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
+$inline = new \Phalcon\Assets\Inline("js", "waspada('halo dunia');");
 
 ```
 
-## Methods
+## Metode
 
-public **getType** ()
+publik **berhenti** ()
 
 ...
 
-public **getContent** ()
+public ** getContent </ 0> ()</p> 
 
 ...
 
@@ -41,18 +41,18 @@ public **__construct** (*string* $type, *string* $content, [*boolean* $filter], 
 
 Phalcon\Assets\Inline constructor
 
-public **setType** (*mixed* $type)
+publik **perangkat Tipe** (*dicampur* $type)
 
-Sets the inline's type
+Menetapkan tipe inline
 
-public **setFilter** (*mixed* $filter)
+public **setFilter** (*campuran* $filter)
 
-Sets if the resource must be filtered or not
+Menetapkan apakah sumber daya harus disaring atau tidak
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Menetapkan beberapa atribut HTML tambahan
 
-public **getResourceKey** ()
+publik **getResourceKey** ()
 
-Gets the resource's key.
+Mendapatkan kunci sumber.
