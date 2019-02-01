@@ -8,9 +8,9 @@ title: 'Phalcon\Db\Index'
 
 *implements* [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
 
-Tablolarda kullanılacak dizinleri tanımlamaya izin verir. Indexes are a common way to enhance database performance. Bir dizin, veritabanı sunucusunun belirli satırları bir dizin olmadan yapabileceğinden çok daha hızlı bulmasını ve almasını sağlar
+Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index
 
 ```php
 <?php
@@ -39,19 +39,19 @@ $connection->addIndex("robots", null, $index_primary);
 
 ```
 
-## Metodlar
+## Methods
 
-herkese açık ** isim al** ()
+public **getName** ()
 
-Dizin ismi
+Index name
 
 public **getColumns** ()
 
-Dizin sütunları
+Index columns
 
-genel **getType** ()
+public **getType** ()
 
-Dizin türü
+Index type
 
 public **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
 
