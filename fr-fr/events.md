@@ -504,8 +504,8 @@ The events available in Phalcon are:
 | Model              | `onValidationFails`                  |
 | Model              | `prepareSave`                        |
 | Models Manager     | `modelsManager:afterInitialize`      |
-| Requête            | `request:afterAuthorizationResolve`  |
-| Requête            | `request:beforeAuthorizationResolve` |
+| Request            | `request:afterAuthorizationResolve`  |
+| Request            | `request:beforeAuthorizationResolve` |
 | Router             | `router:beforeCheckRoutes`           |
 | Router             | `router:beforeCheckRoute`            |
 | Router             | `router:matchedRoute`                |
