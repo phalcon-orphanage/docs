@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Adaptéry
+## Adapters
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
 
@@ -31,6 +31,6 @@ This is a black hole adapter. It sends messages to *infinity and beyond*! This a
 
 <a name='adapters-factory'></a>
 
-### Továrna
+### Factory
 
 *This component is not working as expected for the time being. We will need to refactor it to align with the new implementation* [#13672](https://github.com/phalcon/cphalcon/issues/13672)
