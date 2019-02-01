@@ -12,9 +12,9 @@ title: 'Phalcon\Cache\Backend\Memcache'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
 
-Allows to cache output fragments, PHP data or raw data to a memcache backend
+Permite almacenar en cache fragmentos de producción, datos PHP o datos sin procesar hacia un backend de memcache
 
-This adapter uses the special memcached key "_PHCM" to store all the keys internally used by the adapter
+Este adaptador utiliza la clave especial de memcached "_PHCM" para almacenar todas las claves utilizadas internamente por el adaptador
 
 ```php
 <?php
@@ -55,15 +55,15 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Create internal connection to memcached
+Crea una conexión interna a memcached
 
 public **addServers** (*mixed* $host, *mixed* $port, [*mixed* $persistent])
 
-Add servers to memcache pool
+Añadir servidores a piscina de memcache
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Devuelve el contenido almacenado en caché
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -71,11 +71,11 @@ Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Elimina el valor almacenado en caché por la clave
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+Indagar las claves almacenadas en caché existentes.
 
 ```php
 <?php
@@ -93,15 +93,15 @@ Verifica si existe el caché y que no está expirado
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of given $keyName by $value
+Incremento del $keyName dado por $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Decrement of $keyName by given $value
+Reducción del $keyName por el $value predeterminado
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+Anula inmediatamente todos los elementos existentes.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -129,20 +129,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+Comienza una caché. El KeyName permite identificar el fragmento creado
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Detiene el frontend sin almacenar ningún contenido almacenado en caché
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Comprueba si el último almacenamiento en caché esta actualizado o no
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Comprueba si el caché ha empezado a almacenarse o no
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Obtiene la última duración establecida
