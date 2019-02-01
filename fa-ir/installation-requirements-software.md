@@ -10,7 +10,7 @@ category: 'installation'
 
 ## Requirements
 
-### نرم افزار
+### Software
 
 > You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. {: .alert .alert-danger }
 
