@@ -10,10 +10,10 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
-Elimina los caracteres que son insignificantes a JavaScript. Los comentarios serán eliminados. Los tabuladores se reemplazarán con espacios. Retornos de carro se reemplazará con saltos de línea. Se eliminará la mayoría de los espacios y saltos de línea.
+Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
 
 ## Métodos
 
 public **filter** (*mixed* $content)
 
-Filtra el contenido utilizando JSMIN
+Filters the content using JSMIN
