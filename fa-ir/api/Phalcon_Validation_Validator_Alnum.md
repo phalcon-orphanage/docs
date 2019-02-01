@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Alnum'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\آلن'
 ---
 # Class **Phalcon\Validation\Validator\Alnum**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Alnum'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alnum.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alnum.zep)
 
 Check for alphanumeric character(s)
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
