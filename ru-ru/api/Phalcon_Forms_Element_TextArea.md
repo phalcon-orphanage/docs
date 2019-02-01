@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\TextArea'
 
 Component TEXTAREA for forms
 
-## Methods
+## Методы
 
 public **render** ([*array* $attributes])
 
