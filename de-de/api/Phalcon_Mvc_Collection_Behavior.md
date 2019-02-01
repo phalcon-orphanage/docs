@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
 This is an optional base class for ORM behaviors
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $options])
 
