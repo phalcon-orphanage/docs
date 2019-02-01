@@ -58,7 +58,7 @@ The following route `/session/register` executes the controller `SessionControll
 
 <a name='configuration'></a>
 
-## Configuration
+## Konfiguracja
 
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 
@@ -99,7 +99,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## Autoloadery
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 
