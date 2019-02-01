@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\Query\StatusInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Query\StatusInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/statusinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/statusinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **getModel** ()
 
