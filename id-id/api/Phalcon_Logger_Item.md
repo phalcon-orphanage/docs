@@ -6,23 +6,23 @@ title: 'Phalcon\Logger\Item'
 ---
 # Class **Phalcon\Logger\Item**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
-Merupakan setiap item dalam transaksi penebangan kayu
+Represents each item in a logging transaction
 
-## Metode
+## Methods
 
-publik **berhenti** ()
+public **getType** ()
 
-Tipe log
+Log type
 
 public **getMessage** ()
 
-Pesan log
+Log message
 
 public **getTime** ()
 
-Cap waktu log
+Log timestamp
 
 public **getContext** ()
 
