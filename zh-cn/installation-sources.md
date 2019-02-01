@@ -4,7 +4,7 @@ language: 'zh-cn'
 version: '4.0'
 category: 'installation'
 ---
-# 安装
+# Installation
 
 * * *
 
@@ -12,7 +12,7 @@ category: 'installation'
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### 要求
+### Requirements
 
 * PHP 7.2.x/7.3.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
