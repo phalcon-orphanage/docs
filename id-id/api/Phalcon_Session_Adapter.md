@@ -8,31 +8,31 @@ title: 'Phalcon\Session\Adapter'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
 
 Base class for Phalcon\Session adapters
 
 ## Constants
 
-*integer* **SESSION_ACTIVE**
+*bilangan bulat* **SESSION_ACTIVE **
 
-*integer* **SESSION_NONE**
+*bilangan bulat* **SESSION_NONE **   Teks paragraf
 
-*integer* **SESSION_DISABLED**
+*bilangan bulat* **SESSION_DISABLED **
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $options])
+umum **__membangun** ([*array* $options])
 
 Phalcon\Session\Adapter constructor
 
-public **start** ()
+publik ** mulai ** ()
 
-Starts the session (if headers are already sent the session will not be started)
+Mulai sesi (jika header sudah dikirim sesi tidak akan dimulai)
 
 public **setOptions** (*array* $options)
 
-Sets session's options
+Menetapkan pilihan sesi
 
 ```php
 <?php
@@ -47,21 +47,21 @@ $session->setOptions(
 
 public **getOptions** ()
 
-Get internal options
+Dapatkan pilihan internal
 
-public **setName** (*mixed* $name)
+publik **setNama** (*dicampur* $name)
 
-Set session name
+Tetapkan nama sesi
 
-public **getName** ()
+publik **getNama** ()
 
-Get session name
+Dapatkan nama sesi
 
 public **regenerateId** ([*mixed* $deleteOldSession])
 
 public **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove])
 
-Gets a session variable from an application context
+Mendapat variabel sesi dari konteks aplikasi
 
 ```php
 <?php
@@ -72,7 +72,7 @@ $session->get("auth", "yes");
 
 public **set** (*mixed* $index, *mixed* $value)
 
-Sets a session variable in an application context
+Menetapkan variabel sesi dalam konteks aplikasi
 
 ```php
 <?php
@@ -83,7 +83,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index)
 
-Check whether a session variable is set in an application context
+Periksa apakah variabel sesi diatur dalam konteks aplikasi
 
 ```php
 <?php
@@ -96,7 +96,7 @@ var_dump(
 
 public **remove** (*mixed* $index)
 
-Removes a session variable from an application context
+Menghapus variabel sesi dari konteks aplikasi
 
 ```php
 <?php
@@ -107,7 +107,7 @@ $session->remove("auth");
 
 public **getId** ()
 
-Returns active session id
+Mengembalikan id sesi aktif
 
 ```php
 <?php
@@ -118,7 +118,7 @@ echo $session->getId();
 
 public **setId** (*mixed* $id)
 
-Set the current session id
+Tetapkan Id sesi saat ini
 
 ```php
 <?php
@@ -127,9 +127,9 @@ $session->setId($id);
 
 ```
 
-public **isStarted** ()
+publik **dimulai** ()
 
-Check whether the session has been started
+Periksa apakah sesi sudah dimulai
 
 ```php
 <?php
@@ -142,7 +142,7 @@ var_dump(
 
 public **destroy** ([*mixed* $removeData])
 
-Destroys the active session
+Hancurkan sesi aktif
 
 ```php
 <?php
@@ -159,7 +159,7 @@ var_dump(
 
 public **status** ()
 
-Returns the status of the current session.
+Mengembalikan status sesi saat ini.
 
 ```php
 <?php
@@ -176,19 +176,19 @@ if ($session->status() !== $session::SESSION_ACTIVE) {
 
 public **__get** (*mixed* $index)
 
-Alias: Gets a session variable from an application context
+Alias: Mendapat variabel sesi dari konteks aplikasi
 
 public **__set** (*mixed* $index, *mixed* $value)
 
-Alias: Sets a session variable in an application context
+Alias: Menetapkan variabel sesi dalam konteks aplikasi
 
 public **__isset** (*mixed* $index)
 
-Alias: Check whether a session variable is set in an application context
+Alias: Periksa apakah variabel sesi diatur dalam konteks aplikasi
 
 public **__unset** (*mixed* $index)
 
-Alias: Removes a session variable from an application context
+Alias: Menghapus variabel sesi dari konteks aplikasi
 
 ```php
 <?php
@@ -197,7 +197,7 @@ unset($session->auth);
 
 ```
 
-public **__destruct** ()
+publik **__penghancuran** ()
 
 ...
 
