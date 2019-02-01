@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Collection'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
-Este componente implementa un alto nivel de abstracción para las bases de datos NoSQL que funcionan con documentos
+This component implements a high level abstraction for NoSQL databases which works with documents
 
 ## Constantes
 
@@ -36,39 +36,39 @@ Phalcon\Mvc\Collection constructor
 
 public **setId** (*mixed* $id)
 
-Configura un valor para la propiedad _id. Crea un objeto Mongold si es necesario
+Sets a value for the _id property, creates a MongoId object if needed
 
 public *MongoId* **getId** ()
 
-Devuelve el valor de la propiedad _id
+Returns the value of the _id property
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el contenedor de inyección de dependencia
+Sets the dependency injection container
 
 public **getDI** ()
 
-Devuelve el contenedor de inyección de dependencia
+Returns the dependency injection container
 
 protected **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
-Configura un administrador de eventos personalizado
+Sets a custom events manager
 
 protected **getEventsManager** ()
 
-Devuelve el administrador de eventos personalizado
+Returns the custom events manager
 
 public **getCollectionManager** ()
 
-Devuelve el administrador de modelos relacionados con la instancia de entidad
+Returns the models manager related to the entity instance
 
 public **getReservedAttributes** ()
 
-Devuelve un arreglo con las propiedades reservadas que no pueden ser parte de insert/update
+Returns an array with reserved properties that cannot be part of the insert/update
 
 protected **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
-Establece si un modelo debe utilizar ids de objetos implícitos
+Sets if a model must use implicit objects ids
 
 protected **setSource** (*mixed* $source)
 
@@ -80,19 +80,19 @@ Returns collection name mapped in the model
 
 public **setConnectionService** (*mixed* $connectionService)
 
-Configura el nombre del servidor de conexión DependencyInjection
+Sets the DependencyInjection connection service name
 
 public **getConnectionService** ()
 
-Devuelve el servicio de conexión DependencyInjection
+Returns DependencyInjection connection service
 
 public *MongoDb* **getConnection** ()
 
-Recupera una conexión de base de datos
+Retrieves a database connection
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Lee un valor de atributo por su nombre
+Reads an attribute value by its name
 
 ```php
 <?php
@@ -103,7 +103,7 @@ echo $robot->readAttribute("name");
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Escribe un valor atributo por su nombre
+Writes an attribute value by its name
 
 ```php
 <?php
@@ -114,27 +114,27 @@ $robot->writeAttribute("name", "Rosey");
 
 public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
-Devuelve una colección clonada
+Returns a cloned collection
 
 protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
-Devuelve una colección resulset
+Returns a collection resultset
 
 protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
-Realiza una cuenta sobre un resultset
+Perform a count over a resultset
 
 final protected *boolean* **_preSave** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
-Ejecuta enlaces internos antes de guardar un documento
+Executes internal hooks before save a document
 
 final protected **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
-Ejecuta eventos internos después de guardar un documento
+Executes internal events after save a document
 
 protected **validate** (*mixed* $validator)
 
-Ejecuta validadores en cada llamada de validación
+Executes validators on every validation call
 
 ```php
 <?php
@@ -190,7 +190,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **validationHasFailed** ()
 
-Comprueba si el proceso de validación ha generado algún mensaje
+Check whether validation process has generated any messages
 
 ```php
 <?php
@@ -220,23 +220,23 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **fireEvent** (*mixed* $eventName)
 
-Activa un evento interno
+Fires an internal event
 
 public **fireEventCancel** (*mixed* $eventName)
 
-Activa un evento interno que cancela la operación
+Fires an internal event that cancels the operation
 
 protected **_cancelOperation** (*mixed* $disableEvents)
 
-Cancela la operación actual
+Cancel the current operation
 
 protected *boolean* **_exists** (*MongoCollection* $collection)
 
-Comprueba si el documento existe en la colección
+Checks if the document exists in the collection
 
 public **getMessages** ()
 
-Devuelve todos los mensajes de validación
+Returns all the validation messages
 
 ```php
 <?php
@@ -263,7 +263,7 @@ if ($robot->save() === false) {
 
 public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
-Añade un mensaje personalizado al proceso de validación
+Appends a customized message on the validation process
 
 ```php
 <?php
@@ -292,15 +292,15 @@ Shared Code for CU Operations Prepares Collection
 
 public **save** ()
 
-Crea o actualiza una colección basada en los valores de los atributos
+Creates/Updates a collection based on the values in the attributes
 
 public **create** ()
 
-Crea una colección basada en los valores de los atributos
+Creates a collection based on the values in the attributes
 
 public **createIfNotExist** (*array* $criteria)
 
-Crea un documento basado en los valores de los atributos si no lo encuentra por criterios. La manera preferida de evitar duplicación es crear un índice en los atributos
+Creates a document based on the values in the attributes, if not found by criteria Preferred way to avoid duplication is to create index on attribute
 
 ```php
 <?php
@@ -322,11 +322,11 @@ $robot->createIfNotExist(
 
 public **update** ()
 
-Crea o actualiza una colección basada en los valores de los atributos
+Creates/Updates a collection based on the values in the attributes
 
 public static **findById** (*mixed* $id)
 
-Encuentra un documento por su id (_id)
+Find a document by its id (_id)
 
 ```php
 <?php
@@ -348,7 +348,7 @@ if ($user = Users::findById($_POST["id"])) {
 
 public static **findFirst** ([*array* $parameters])
 
-Permite consultar el primer registro que coincide con las condiciones especificadas
+Allows to query the first record that match the specified conditions
 
 ```php
 <?php
@@ -398,7 +398,7 @@ echo "The robot id is ", $robot->_id, "\n";
 
 public static **find** ([*array* $parameters])
 
-Permite consultar un conjunto de registros que coinciden con las condiciones especificadas
+Allows to query a set of records that match the specified conditions
 
 ```php
 <?php
@@ -456,7 +456,7 @@ foreach ($robots as $robot) {
 
 public static **count** ([*array* $parameters])
 
-Realiza una cuenta sobre un colección
+Perform a count over a collection
 
 ```php
 <?php
@@ -467,11 +467,11 @@ echo "There are ", Robots::count(), " robots";
 
 public static **aggregate** ([*array* $parameters])
 
-Realiza una agregación utilizando el marco de trabajo de agregación Mongo
+Perform an aggregation using the Mongo aggregation framework
 
 public static **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
-Permite realizar un grupo summatory para una columna en la collección
+Allows to perform a summatory group for a column in the collection
 
 public **delete** ()
 
@@ -494,23 +494,23 @@ foreach ($robots as $robot) {
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-Configura el estado modificado del objeto utilizando una de las constantes DIRTY_STATE_*
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
 public **getDirtyState** ()
 
-Devuelve una de las constantes DIRTY_STATE_* que indica si el documento existe en la colección o no
+Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
 protected **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-Configura un comportamiento en una colección
+Sets up a behavior in a collection
 
 public **skipOperation** (*mixed* $skip)
 
-Omite la operación actual forzando un estado de éxito
+Skips the current operation forcing a success state
 
 public **toArray** ()
 
-Devuelve la instancia como una representación de arreglo
+Returns the instance as an array representation
 
 ```php
 <?php
@@ -523,8 +523,8 @@ print_r(
 
 public **serialize** ()
 
-Serializa el objeto ignorando conexiones o propiedades protegidas
+Serializes the object ignoring connections or protected properties
 
 public **unserialize** (*mixed* $data)
 
-Revierte la serialización del objeto desde una cadena serializada
+Unserializes the object from a serialized string
