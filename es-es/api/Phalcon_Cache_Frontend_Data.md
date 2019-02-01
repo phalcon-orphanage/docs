@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
-Permite almacenar datos nativos PHP en una forma serializada
+Allows to cache native PHP data in a serialized form
 
 ```php
 <?php
@@ -68,11 +68,11 @@ Phalcon\Cache\Frontend\Data constructor
 
 public **getLifetime** ()
 
-Devuelve el tiempo de vida del cache
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Verifique si el frontend está almacenando la salida
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -80,16 +80,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Regresa contenido almacenado saliente
+Returns output cached content
 
 public **stop** ()
 
-Detiene la salida del frontend
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializa los datos antes de almacenarlos
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Deserializa los datos después de la recuperación
+Unserializes data after retrieval
