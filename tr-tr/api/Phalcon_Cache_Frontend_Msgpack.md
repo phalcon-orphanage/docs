@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
 
-Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
+Msgpack uzantısını kullanarak yerel PHP verilerini seri haline getirilmiş biçimde önbelleğe almaya izin verir.
 
 ```php
 <?php
@@ -62,7 +62,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Methods
+## Metodlar
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -80,18 +80,18 @@ public **start** ()
 
 Starts output frontend. Actually, does nothing
 
-public **getContent** ()
+herkese açık **İçeriğe Eriş** ()
 
-Returns output cached content
+Çıktı önbelleğine alınan içeriği getirir
 
 public **stop** ()
 
-Stops output frontend
+Çıktının frontend'ini durdurur
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Verileri depolamadan önce seri hale getirir
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Unserializes verisini sonradan geri alır
