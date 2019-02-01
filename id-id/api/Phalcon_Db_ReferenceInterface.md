@@ -6,42 +6,42 @@ title: 'Phalcon\Db\ReferenceInterface'
 ---
 # Interface **Phalcon\Db\ReferenceInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getName** ()
-
-...
-
-abstract public **getSchemaName** ()
+abstrak publik **getName** ()
 
 ...
 
-abstract public **getReferencedSchema** ()
+abstrak publik **getSchemaName** ()
 
 ...
 
-abstract public **getColumns** ()
+abstrak publik **getReferencedSchema** ()
 
 ...
 
-abstract public **getReferencedTable** ()
+abstrak publik **getColumns** ()
 
 ...
 
-abstract public **getReferencedColumns** ()
+abstrak publik **getReferencedTable** ()
 
 ...
 
-abstract public **getOnDelete** ()
+abstrak publik **getReferencedColumns** ()
 
 ...
 
-abstract public **getOnUpdate** ()
+abstrak publik **getOnDelete** ()
 
 ...
 
-abstract public static **__set_state** (*array* $data)
+abstrak publik **getOnUpdate** ()
+
+...
+
+data statis statis **__set_state** (*array* $data)
 
 ...
