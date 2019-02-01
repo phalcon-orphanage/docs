@@ -7,23 +7,23 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Sekilas
+# Overview
 
 <a name='using'></a>
 
-## Kontrol penggunaan
+## Using Controllers
 
 Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
 For instance, when you access a URL like this: `https://localhost/blog/posts/show/2015/the-post-title` Phalcon by default will decompose each part like this:
 
-| Deskripsi             | Slug          |
-| --------------------- | ------------- |
-| **Direktori Phalcon** | blog          |
-| **Pengontrol**        | posting       |
-| **Aksi**              | tampilakan    |
-| **Parameter**         | 2015          |
-| **Parameter**         | judul-posting |
+| Description           | Slug           |
+| --------------------- | -------------- |
+| **Phalcon Directory** | blog           |
+| **Controller**        | posts          |
+| **Action**            | show           |
+| **Parameter**         | 2015           |
+| **Parameter**         | the-post-title |
 
 In this case, the `PostsController` will handle this request. There is no a special location to put controllers in an application, they could be loaded using [Phalcon\Loader](api/Phalcon_Loader), so you're free to organize your controllers as you need.
 
@@ -74,19 +74,23 @@ class PostsController extends Controller
 Parameters are assigned in the same order as they were passed in the route. You can get an arbitrary parameter from its name in the following way:
 
 ```php
-& lt; ? php 
+<?php
 
-menggunakan Phalcon \ Mvc \ Controller; class PostsController meluas Controller {
-     public function indexAction ()
-     {
+use Phalcon\Mvc\Controller;
 
-     }
+class PostsController extends Controller
+{
+    public function indexAction()
+    {
 
-     showAction fungsi publik ()
-     {
- $ year       = $ this - & gt; dispatcher- & gt; getParam ('tahun');
-$ postTitle = $ this - & gt; dispatcher- & gt; getParam ('postTitle');
-}}                    
+    }
+
+    public function showAction()
+    {
+        $year      = $this->dispatcher->getParam('year');
+        $postTitle = $this->dispatcher->getParam('postTitle');
+    }
+}
 ```
 
 <a name='dispatch-loop'></a>
@@ -149,7 +153,7 @@ There is no limit on the `forwards` you can have in your application, so long as
 
 <a name='initializing'></a>
 
-## menginisialisasi Controller
+## Initializing Controllers
 
 [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
@@ -173,7 +177,9 @@ class PostsController extends Controller
     {
         if ($this->settings['mySetting'] === 'value') {
             // ...
-        } } }
+        }
+    }
+}
 ```
 
 <h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
@@ -190,14 +196,15 @@ class PostsController extends Controller
     public function onConstruct()
     {
         // ...
-    }}
+    }
+}
 ```
 
 <h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
 
 <a name='injecting-services'></a>
 
-## menyuntikkan Layanan
+## Injecting Services
 
 If a controller extends [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) then it has easy access to the service container in application. For example, if we have registered a service like this:
 
@@ -252,7 +259,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Pertanyaan dan tanggapan
+## Request and Response
 
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
 
@@ -306,7 +313,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/4.0
 
 <a name='session-data'></a>
 
-## Sesi Data
+## Session Data
 
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) from any controller to encapsulate data that needs to be persistent:
 
@@ -331,7 +338,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Menggunakan Layanan untuk kontrol
+## Using Services as Controllers
 
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
@@ -361,7 +368,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Kontrol pada acara
+## Events in Controllers
 
 Controllers automatically act as listeners for [dispatcher](/4.0/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
