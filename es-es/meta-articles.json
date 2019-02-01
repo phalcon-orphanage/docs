@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "Creating an ACL",
+      "text": "Creando una ACL",
       "url": "/acl-setup"
     },
     {
@@ -951,23 +951,23 @@
   ],
   "db-models-metadata": [
     {
-      "text": "Models Metadata",
+      "text": "Metadatos de modelos",
       "url": "/db-models-metadata#overview"
     },
     {
-      "text": "Caching Metadata",
+      "text": "Almacenamiento en caché de metadatos",
       "url": "/db-models-metadata#caching-metadata"
     },
     {
-      "text": "Metadata Strategies",
+      "text": "Estrategias de metadatos",
       "url": "/db-models-metadata#metadata-strategies",
       "menu": [
         {
-          "text": "Database Introspection Strategy",
+          "text": "Estrategia de introspección de la base de datos",
           "url": "/db-models-metadata#strategies-database-introspection",
           "menu": [
             {
-              "text": "Annotations Strategy",
+              "text": "Estrategia de anotaciones",
               "url": "/db-models-metadata#strategies-annotations"
             }
           ]
@@ -975,7 +975,7 @@
       ]
     },
     {
-      "text": "Manual Metadata",
+      "text": "Metadata manual",
       "url": "/db-models-metadata#strategies-manual"
     }
   ],
