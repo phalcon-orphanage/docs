@@ -1619,7 +1619,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## External Resources
+## Ressources Externes
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
