@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
 Exceptions thrown in `Phalcon\Acl\*` will use this class
 
-## روش ها
+## Methods
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-می دهد فایل که در آن استثنا اتفاق افتاده است
+Gets the file in which the exception occurred
 
 ```php
 public function getLine(): int
