@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Annotations\Factory'
+title: 'Phalcon\Anotasi\Pabrik'
 ---
 # Class **Phalcon\Annotations\Factory**
 
@@ -10,25 +10,25 @@ title: 'Phalcon\Annotations\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
 
-Loads Annotations Adapter class using 'adapter' option
+Beban anotasi Adapter kelas menggunakan opsi 'adapter'
 
 ```php
 <?php
 
-use Phalcon\Annotations\Factory;
+gunakan Phalcon\Anotasi\Factory;
 
 $options = [
-    "prefix"   => "annotations",
-    "lifetime" => "3600",
-    "adapter"  => "apc",
+     "awalan" => "anotasi",
+     "seumur hidup" => "3600",
+     "adaptor" => "apc",
 ];
 $annotations = Factory::load($options);
 
 ```
 
-## Methods
+## Metode
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
