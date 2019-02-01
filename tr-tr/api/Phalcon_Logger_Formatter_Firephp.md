@@ -10,27 +10,27 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
 
 Formats messages so that they can be sent to FirePHP
 
-## Metodlar
+## Methods
 
 public **getTypeString** (*mixed* $type)
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **setShowBacktrace** ([*mixed* $isShow])
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **getShowBacktrace** ()
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **enableLabels** ([*mixed* $isEnable])
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **labelsEnabled** ()
 
@@ -38,7 +38,7 @@ Returns the labels enabled
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Bir mesajı günlüğüne göndermeden önce bir format uygular
+Applies a format to a message before sending it to the log
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
