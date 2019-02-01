@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Хранение данных в сессии
+# Storing data in the Session
 
 The session component provides object-oriented wrappers to access session data.
 
@@ -19,7 +19,7 @@ Reasons to use this component instead of raw-sessions:
 
 <a name='start'></a>
 
-## Запуск сессии
+## Starting the Session
 
 Some applications are session-intensive, almost any action that performs requires access to session data. There are others who access session data casually. Thanks to the service container, we can ensure that the session is accessed only when it's clearly needed:
 
@@ -43,7 +43,7 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Фабрика
+## Factory
 
 Loads Session Adapter class using `adapter` option
 
@@ -68,7 +68,7 @@ $session->start();
 
 <a name='store'></a>
 
-## Получение и хранение данных в сессии
+## Storing/Retrieving data in Session
 
 From a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) you can access the session service and store items and retrieve them in the following way:
 
@@ -99,7 +99,7 @@ class UserController extends Controller
 
 <a name='remove-destroy'></a>
 
-## Удаление/очистка сессий
+## Removing/Destroying Sessions
 
 It's also possible remove specific variables or destroy the whole session:
 
@@ -126,7 +126,7 @@ class UserController extends Controller
 
 <a name='data-isolation'></a>
 
-## Изоляция данных сеанса между приложениями
+## Isolating Session Data between Applications
 
 Sometimes a user can use the same application twice, on the same server, in the same session. Surely, if we use variables in session, we want that every application have separate session data (even though the same code and same variable names). To solve this, you can add a prefix for every session variable created in a certain application:
 
@@ -157,7 +157,7 @@ Adding a unique ID is not necessary.
 
 <a name='bags'></a>
 
-## Наборы сессий
+## Session Bags
 
 [Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
 
@@ -176,7 +176,7 @@ $user->age  = 22;
 
 <a name='data-persistence'></a>
 
-## Сохранение данных в компонентах
+## Persistent Data in Components
 
 Controller, components and classes that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) may inject a [Phalcon\Session\Bag](api/Phalcon_Session_Bag). This class isolates variables for every class. Thanks to this you can persist data between requests in every class in an independent way.
 
@@ -228,7 +228,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Реализация собственных адаптеров
+## Implementing your own adapters
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
