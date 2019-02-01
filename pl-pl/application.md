@@ -206,7 +206,7 @@ With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Pojedynczy moduł
+### Single Module
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -330,7 +330,7 @@ try {
 
 <a name='module'></a>
 
-### Multi-moduł
+### Multi Module
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -537,11 +537,11 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Wydarzenia aplikacji
+## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Poniższe wydarzenia są obsługiwane:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Nazwa wydarzenia      | Zaistniałe                                                   |
+| Event Name            | Triggered                                                    |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -549,7 +549,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-Poniższy przykład demonstruje jak podłączyć słuchaczy do tego składnika:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -571,6 +571,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Zasoby zewnętrzne
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
