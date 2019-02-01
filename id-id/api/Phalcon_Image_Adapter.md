@@ -8,92 +8,92 @@ title: 'Phalcon\Image\Adapter'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
 
-Semua adapter gambar harus menggunakan kelas ini  
+All image adapters must use this class
 
-## Metode
+## Methods
 
-public **getReader** ()
-
-...
-
-public ** getPath** ()
+public **getImage** ()
 
 ...
 
-public ** getPath** ()
+public **getRealpath** ()
 
-Lebar gambar
+...
 
-publik **dapatkankembali** ()
+public **getWidth** ()
 
-Tinggi gambar
+Image width
 
-publik **berhenti** ()
+public **getHeight** ()
 
-Tipe gambar Tergantung driver
+Image height
 
-publik **getName** ()
+public **getType** ()
 
-Jenis pantomim gambar
+Image type Driver dependent
 
-publik **redirect** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
+public **getMime** ()
 
-Ubah ukuran gambar ke ukuran yang diberikan
+Image mime type
 
-public **addJs** (*mixed* $width, [*mixed* $height], [*mixed* $deltaX], [*dicampur* $rigidity])
+public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
+
+Resize the image to the given size
+
+public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
-umum **izinkan** (*campuran* $width, *mixed* $height, *mixed* $offsetX, [*mixed* $offsetY])
+public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
-Tanaman sebuah gambar dengan diberikan ukuran
+Crop an image to the given size
 
-publik **telah**(*campuraduk*$degrees)
+public **rotate** (*mixed* $degrees)
 
-Putar gambar dengan jumlah tertentu
+Rotate the image by a given amount
 
-public **baca** (*mixed* $direction)
+public **flip** (*mixed* $direction)
 
-Balikkan gambar di sepanjang sumbu horizontal atau vertikal
+Flip the image along the horizontal or vertical axis
 
-publik **telah**(*campuraduk*$amount)
+public **sharpen** (*mixed* $amount)
 
-Pertajam gambar dengan jumlah tertentu
+Sharpen the image by a given amount
 
-publik **redirect** ([*mixed* $height], [*mixed* $opacity], [*mixed* $fadeIn])
+public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
-Tambahkan bayangan ke gambar
+Add a reflection to an image
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
-Tambahkan tanda air ke gambar dengan opacity yang ditentukan
+Add a watermark to an image with the specified opacity
 
-publik **set** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
+public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
 
-Tambahkan tanda air ke gambar dengan opacity yang ditentukan
+Add a text to an image with a specified opacity
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark)
 
-Komposit satu gambar ke gambar yang lain
+Composite one image onto another
 
-abstrak publik **tableExists** (*mixed* $color, [*mixed* $opacity])
+public **background** (*mixed* $color, [*mixed* $opacity])
 
-Atur warna latar belakang gambar  
+Set the background color of an image
 
-public **baca** (*mixed* $radius)
+public **blur** (*mixed* $radius)
 
-Gambar buram
+Blur image
 
-publik **menyaring** (*campur * $amount)
+public **pixelate** (*mixed* $amount)
 
-Gambar piksel
+Pixelate image
 
-abstrak publik **tableExists** (*mixed* $file, [*mixed* $quality])
+public **save** ([*mixed* $file], [*mixed* $quality])
 
-Simpan gambar
+Save the image
 
-abstrak publik **tableExists** (*mixed* $ext, [*mixed* $quality])
+public **render** ([*mixed* $ext], [*mixed* $quality])
 
-Render gambar dan kembalikan string biner
+Render the image and return the binary string
