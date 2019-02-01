@@ -58,11 +58,11 @@ Phalcon\Mvc\Model\Query\Builder constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el contenedor DependencyInjector
+Sets the DependencyInjector container
 
 public **getDI** ()
 
-Devuelve el contenedor DependencyInjector
+Returns the DependencyInjector container
 
 public **distinct** (*mixed* $distinct)
 
@@ -82,7 +82,7 @@ Returns SELECT DISTINCT / SELECT ALL flag
 
 public **columns** (*mixed* $columns)
 
-Establece las columnas que se consultarán
+Sets the columns to be queried
 
 ```php
 <?php
