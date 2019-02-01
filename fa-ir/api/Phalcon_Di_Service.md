@@ -8,7 +8,7 @@ title: 'Phalcon\Di\Service'
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
 Represents individually a service in the services container
 
@@ -23,17 +23,17 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-## روش ها
+## Methods
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
 public **getName** ()
 
-نام سرویس را برمی گرداند
+Returns the service's name
 
-عمومی **دریافت روش** (*مخلوط* $shared)
+public **setShared** (*mixed* $shared)
 
-به اشتراک گذاشته شدن سرویس را تنظیم می کند
+Sets if the service is shared or not
 
 public **isShared** ()
 
