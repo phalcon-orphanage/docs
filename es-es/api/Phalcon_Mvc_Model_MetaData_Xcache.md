@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Xcache'
 
 Stores model meta-data in the XCache cache. Data will erased if the web server is restarted
 
-Los metadatos son almacenados predeterminadamente por 48 horas(172800 segundos)
+By default meta-data is stored for 48 hours (172800 seconds)
 
 You can query the meta-data by printing xcache_get('$PMM$') or xcache_get('$PMM$my-app-id')
 
@@ -84,11 +84,11 @@ Initialize the metadata for certain table
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
-Configura el contenedor DependencyInjector
+Sets the DependencyInjector container
 
 public **getDI** () inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
-Devuelve el contenedor DependencyInjector
+Returns the DependencyInjector container
 
 public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy) inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
