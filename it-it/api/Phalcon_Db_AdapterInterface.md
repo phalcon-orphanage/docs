@@ -6,9 +6,9 @@ title: 'Phalcon\Db\AdapterInterface'
 ---
 # Interface **Phalcon\Db\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
 
