@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Formato de mensaje
+## Message Formatting
 
 ### Custom Formatter
 
