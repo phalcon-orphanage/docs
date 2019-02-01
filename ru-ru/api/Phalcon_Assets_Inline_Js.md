@@ -14,7 +14,7 @@ title: 'Phalcon\Assets\Inline\Js'
 
 Represents an inline Javascript
 
-## Методы
+## Methods
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
