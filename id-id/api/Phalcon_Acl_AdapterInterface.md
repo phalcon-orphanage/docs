@@ -6,25 +6,25 @@ title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setDefaultAction** (*mixed* $defaultAccess)
+publik abstrak **setDefaultAction** (*campuran* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+Menetapkan tingkat akses default (Phalcon\Acl::ALLOW atau Phalcon\Acl:: DENY)
 
-abstract public **getDefaultAction** ()
+abstrak publik **getDefaultAction** ()
 
-Returns the default ACL access level
+Mengembalikan tingkat akses ACL default
 
-abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
+abstrak umum **setNoArgumentsDefaultAction** (*campuran* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+Menetapkan tingkat akses default (Phalcon\Acl::ALLOW atau Phalcon\Acl::DENY) tanpa argumen yang diberikan dalam isAllowed action jika ada func untuk accessKey
 
-abstract public **getNoArgumentsDefaultAction** ()
+abstrak (umum **getNoArgumentsDefaultAction**)
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+Mengembalikan tingkat akses ACL default tanpa argumen yang diberikan dalam isAllowed action jika ada func untuk accessKey
 
 abstract public **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
 
@@ -74,7 +74,7 @@ abstract public **getActiveSubject** ()
 
 Returns the subject which the list is checking if some operation can access it
 
-abstract public **getActiveAccess** ()
+abstrak umum **getActiveAccess** ()
 
 Returns the access which the list is checking if some operation can access it
 
