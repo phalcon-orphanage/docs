@@ -10,25 +10,25 @@ category: 'acl'
 * * *
 
 - [Списки управления доступом (ACL)](acl-overview)
-- [Создание списков контроля доступа](acl-setup)
+- [Creating an ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [Определение контроля доступа](acl-access-controls)
-- [Запросы к ACL](acl-querying)
-- [Доступ на основе пользовательских функций](acl-function-based-access)
+- [Defining Access Controls](acl-access-controls)
+- [Querying an ACL](acl-querying)
+- [Function based access](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
-- [Наследование операций](acl-operations-inheritance)
-- [Сериализация ACL списков](acl-serialization)
-- [События](acl-events)
-- [Реализация собственных адаптеров](acl-custom-adapters)
+- [Operations Inheritance](acl-operations-inheritance)
+- [Serializing ACL lists](acl-serialization)
+- [Events](acl-events)
+- [Implementing your own adapters](acl-custom-adapters)
 
 * * *
 
 ## Списки управления доступом (ACL)
 
-[Phalcon\Acl](api/Phalcon_Acl) предоставляет простое и легкое управление списками контроля доступа, а также разрешениями, назначаемыми этим спискам. [Списки управления доступом](https://en.wikipedia.org/wiki/Access_control_list) (ACL) позволяют приложению управлять доступом к различным своим частям и запрошенным объектам.
+[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
-Короче говоря, списки ACL имеют два объекта: объект, к которому требуется доступ, и объект, к которому нам нужен доступ. В программирование их обычно называют операциями и субъектами. In the Phalcon world, we use the terminology [Operation](api/Phalcon_Acl_Operation) and [Subject](api/Phalcon_Acl_Subject).
+In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Operations and Subjects. In the Phalcon world, we use the terminology [Operation](api/Phalcon_Acl_Operation) and [Subject](api/Phalcon_Acl_Subject).
 
 > **Use Case**
 > 
