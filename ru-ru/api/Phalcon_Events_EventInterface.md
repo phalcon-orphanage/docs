@@ -8,7 +8,7 @@ title: 'Phalcon\Events\EventInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **getData** ()
 
