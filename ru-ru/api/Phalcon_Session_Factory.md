@@ -32,7 +32,7 @@ $session = Factory::load($options);
 
 ```
 
-## Методы
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
