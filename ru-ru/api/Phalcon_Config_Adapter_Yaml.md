@@ -56,7 +56,7 @@ echo $config->models->metadata;
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Методы
+## Methods
 
 public **__construct** (*mixed* $filePath, [*array* $callbacks])
 
