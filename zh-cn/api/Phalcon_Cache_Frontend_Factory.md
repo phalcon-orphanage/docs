@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
-Loads Frontend Cache Adapter class using 'adapter' option
+使用 适配器 选项，加载缓存适配器类
 
 ```php
 <?php
