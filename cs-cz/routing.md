@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Routing
+# Routování
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -72,9 +72,9 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Controller |  Akce  | Parametr | Parametr |
-|:----------:|:------:|:--------:|:--------:|
-|   users    | delete |   dave   |   301    |
+| Controller |   Akce    | Parametr | Parametr |
+|:----------:|:---------:|:--------:|:--------:|
+|   users    | Odstranit |   dave   |   301    |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## Události
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
