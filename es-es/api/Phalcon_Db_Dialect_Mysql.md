@@ -18,23 +18,23 @@ Generates database specific SQL for the MySQL RDBMS
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Gets the column name in MySQL
+Obtiene el nombre de la columna en MySQL
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Generates SQL to add a column to a table
+Genera SQL para agregar una columna a una tabla
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Generates SQL to modify a column in a table
+Genera SQL para modificar una columna a una tabla
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Generates SQL to delete a column from a table
+Genera SQL para borrar una columna de una tabla
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Generates SQL to add an index to a table
+Genera SQL para agregar un índice a una tabla
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
@@ -42,43 +42,43 @@ Generates SQL to delete an index from a table
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Generates SQL to add the primary key to a table
+Genera SQL para agregar la clave principal a una tabla
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Generates SQL to delete primary key from a table
+Genera SQL para agregar la clave principal a una tabla
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Generates SQL to add an index to a table
+Genera SQL para agregar un índice a una tabla
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Generates SQL to delete a foreign key from a table
+Genera SQL para eliminar una clave externa de una tabla
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Generates SQL to create a table
+Genera SQL para crear una tabla
 
 public **truncateTable** (*mixed* $tableName, *mixed* $schemaName)
 
-Generates SQL to truncate a table
+Genera SQL para truncar una tabla
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Generates SQL to drop a table
+Genera SQL para colocar una tabla
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Generates SQL to create a view
+Genera SQL para crear una vista
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Generates SQL to drop a view
+Genera SQL para colocar una vista
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table
+Genera SQL comprobando la existencia de un cuadro.esquema
 
 ```php
 <?php
@@ -91,11 +91,11 @@ echo $dialect->tableExists("posts");
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+Genera SQL comprobando la existencia de una vista.esquema
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL describing a table
+Genera SQL para describir una tabla
 
 ```php
 <?php
@@ -108,7 +108,7 @@ print_r(
 
 public **listTables** ([*mixed* $schemaName])
 
-List all tables in database
+Hace una lista de todas las tablas en la base de datos
 
 ```php
 <?php
@@ -121,43 +121,43 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-Generates the SQL to list all views of a schema or user
+Genera SQL para hacer una lista de todas las vistas de un esquema o usuario
 
 public **describeIndexes** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL to query indexes on a table
+Genera SQL para consultar índices en una tabla
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL to query foreign keys on a table
+Genera SQL para consultar claves externas en una tabla
 
 public **tableOptions** (*mixed* $table, [*mixed* $schema])
 
-Generates the SQL to describe the table creation options
+Genera el SQL para describir las opciones de creación de la tabla
 
 protected **_getTableOptions** (*array* $definition)
 
-Generates SQL to add the table creation options
+Genera el SQL para añadir las opciones de creación de la tabla
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Registers custom SQL functions
+Registra funciones personalizadas SQL
 
 public **getCustomFunctions** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns registered functions
+Devuelve funciones registradas
 
 final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Escape Schema
+Esquema de escape
 
 final public **escape** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Escape identifiers
+Identificadores de escape
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Generates the SQL for LIMIT clause
+Genera el SQL para la cláusula LIMIT
 
 ```php
 <?php
@@ -172,7 +172,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a FOR UPDATE clause
+Devuelve un SQL con una cláusula DE ACTUALIZACIÓN
 
 ```php
 <?php
@@ -184,7 +184,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Devuelve un SQL modificado con una cláusula de BLOQUEAR EN MODO COMPARTIR
 
 ```php
 <?php
@@ -196,7 +196,7 @@ echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Gets a list of columns with escaped identifiers
+Obtiene una lista de columnas con identificadores escapados
 
 ```php
 <?php
@@ -212,120 +212,120 @@ echo $dialect->getColumnList(
 
 final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Column expressions
+Resolver expresiones de columna
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Transforma una representación intermedia para una expresión en una expresión válida del sistema de base de datos
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Transform an intermediate representation of a schema/table into a database system valid expression
+Transforma una representación intermedia para una tabla/esquema en una expresión válida del sistema de base de datos
 
 public **select** (*array* $definition) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Builds a SELECT statement
+Crea un estatus SELECT
 
 public **supportsSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Checks whether the platform supports savepoints
+Comprueba si la plataforma admite puntos de recuperación
 
 public **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Checks whether the platform supports releasing savepoints.
+Comprueba si la plataforma admite la liberación de puntos de recuperación.
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Generate SQL to create a new savepoint
+Genera un SQL para crear un nuevo punto de recuperación
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Generate SQL to release a savepoint
+Generar SQL para liberar un punto de recuperación
 
 public **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Generate SQL to rollback a savepoint
+Generar SQL para revertir un punto de recuperación
 
 final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Column expressions
+Resolver expresiones de columna
 
 final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve object expressions
+Resolver expresiones de objetos
 
 final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve qualified expressions
+Resolver expresiones calificadas
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve binary operations expressions
+Resolver expresiones de operaciones binarias
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve unary operations expressions
+Resolver expresiones de operaciones unarias
 
 final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve function calls
+Resolver llamadas a funciones
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Lists
+Resolver listas
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve *
+Resuelve *
 
 final protected **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve CAST of values
+Resuelve CAST de valores
 
 final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve CONVERT of values encodings
+Resuelve CONVERT de codificaciones de valores
 
 final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve CASE expressions
+Resuelve expresiones CASE
 
 final protected **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a FROM clause
+Resuelve una cláusula FROM
 
 final protected **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a JOINs clause
+Resuelve una cláusula JOINs
 
 final protected **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a WHERE clause
+Resuelve una cláusula WHERE
 
 final protected **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a GROUP BY clause
+Resuelve una cláusula GROUP BY
 
 final protected **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a HAVING clause
+Resuelve una cláusula HAVING
 
 final protected **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve an ORDER BY clause
+Resuelve una cláusula ORDER BY
 
 final protected **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve a LIMIT clause
+Resuelve una cláusula LIMIT
 
 protected **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Prepares column for this RDBMS
+Prepara una columna para este RDBMS
 
 protected **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Prepares table for this RDBMS
+Prepara una tabla para este RDBMS
 
 protected **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Prepares qualified for this RDBMS
+Prepara calificado para este RDBMS
