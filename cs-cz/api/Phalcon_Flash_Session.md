@@ -12,7 +12,7 @@ title: 'Phalcon\Flash\Session'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-Dočasně ukládá zprávy v relaci a zprávy mohou být vypsání i v další žádosti
+Temporarily stores the messages in session, then messages can be printed in the next request
 
 ## Methods
 
