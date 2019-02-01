@@ -6,11 +6,11 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
-Handles multiples logger handlers
+Menangani kelipatan penangan logger
 
-## Methods
+## Metode
 
 public **getLoggers** ()
 
@@ -20,54 +20,54 @@ public **getFormatter** ()
 
 ...
 
-public **getLogLevel** ()
+publik **mendapatkan tahapan catatan** ()
 
 ...
 
 public **push** ([Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface) $logger)
 
-Pushes a logger to the logger tail
+Mendorong logger ke ekor logger
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Sets a global formatter
+Mendorong logger ke ekor logger
 
-public **setLogLevel** (*mixed* $level)
+publik **menetapkan tahap catatan** (*campur* $level)
 
-Sets a global level
+Menetapkan tingkat global
 
-public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
+publik **log** (*campur* $type, [*campur* $message], [*susunan* $context])
 
-Sends a message to each registered logger
+Mengirim pesan ke setiap logger terdaftar
 
-public **critical** (*mixed* $message, [*array* $context])
+publik **kritis** (*campur* $message, [*susun* $context])
 
-Sends/Writes an critical message to the log
+Mengirim/Menulis pesan penting ke log
 
-public **emergency** (*mixed* $message, [*array* $context])
+publick **darurat** (*campur* $message, [*susunan* $context])
 
-Sends/Writes an emergency message to the log
+Mengirim / Menulis pesan penting ke log
 
-public **debug** (*mixed* $message, [*array* $context])
+publik **debug** (*dicampur* $message, [*susuan* $context])
 
-Sends/Writes a debug message to the log
+Mengirim / Menulis pesan debug ke log
 
-public **error** (*mixed* $message, [*array* $context])
+publik **kesalahan** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an error message to the log
+Mengirim / Menulis pesan kesalahan ke log
 
-public **info** (*mixed* $message, [*array* $context])
+publik **info** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an info message to the log
+Mengirim / Menulis pesan info ke log
 
-public **notice** (*mixed* $message, [*array* $context])
+publik **melihat** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes a notice message to the log
+Mengirim / Menulis pesan pemberitahuan ke log
 
-public **warning** (*mixed* $message, [*array* $context])
+publik **peringatan** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes a warning message to the log
+Mengirim / Menulis pesan peringatan ke log
 
-public **alert** (*mixed* $message, [*array* $context])
+publik **waspada** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an alert message to the log
+Mengirim / Menulis pesan peringatan ke log
