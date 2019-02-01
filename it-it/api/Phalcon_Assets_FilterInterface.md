@@ -6,9 +6,9 @@ title: 'Phalcon\Assets\FilterInterface'
 ---
 # Interface **Phalcon\Assets\FilterInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **filter** (*mixed* $content)
 
