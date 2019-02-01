@@ -831,7 +831,7 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 |  Operator  | Description                                                       |
 |:----------:| ----------------------------------------------------------------- |
-|   `або`    | Return true if the left or right operand is evaluated as true     |
+|    `or`    | Return true if the left or right operand is evaluated as true     |
 |   `and`    | Return true if both left and right operands are evaluated as true |
 |   `not`    | Negates an expression                                             |
 | `( expr )` | Parenthesis groups expressions                                    |
