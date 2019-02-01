@@ -8,9 +8,9 @@ title: 'Phalcon\Loader'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
-This component helps to load your project classes automatically based on some conventions
+Bu bileşen, bazı sözleşmelere dayalı olarak proje sınıflarınızı otomatik olarak yüklemeye yardımcı olur
 
 ```php
 <?php
@@ -37,19 +37,19 @@ $adapter = new \Example\Adapter\Some();
 
 ```
 
-## Methods
+## Metodlar
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Olay yöneticisini ayarlar
 
-public **getEventsManager** ()
+herkes **Olay yöneticisini al** ()
 
-Returns the internal event manager
+Dahili olay yöneticisini döndürür
 
 public **setExtensions** (*array* $extensions)
 
-Sets an array of file extensions that the loader must try in each attempt to locate the file
+Yükleyicinin dosyayı bulmak için her girişimi denemesi gereken bir dosya uzantıları dizisi ayarlar
 
 public **getExtensions** ()
 
@@ -85,15 +85,15 @@ protected **prepareNamespace** (*array* $namespace)
 
 public **getNamespaces** ()
 
-Returns the namespaces currently registered in the autoloader
+Otomatik yükleyici'de kayıtlı olan ad alanlarını geri getirir
 
 public **registerDirs** (*array* $directories, [*mixed* $merge])
 
-Register directories in which "not found" classes could be found
+"Bulunamadı" sınıflarının bulunamadığı kayıt dizinleri
 
 public **getDirs** ()
 
-Returns the directories currently registered in the autoloader
+Otomatik yükleyici'de kayıtlı olan dizinleri geri getirir
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
@@ -101,31 +101,31 @@ Registers files that are "non-classes" hence need a "require". This is very usef
 
 public **getFiles** ()
 
-Returns the files currently registered in the autoloader
+Otomatik yükleyici'de kayıtlı olan dosyaları geri getirir
 
 public **registerClasses** (*array* $classes, [*mixed* $merge])
 
-Register classes and their locations
+Kayıtlı sınıflar ve onların konumları
 
 public **getClasses** ()
 
-Returns the class-map currently registered in the autoloader
+Halen otomatik yükleyici'de kayıtlı olan dizinleri geri getiriri
 
 public **register** ([*mixed* $prepend])
 
-Register the autoload method
+Otomatik yükleyici metodunu kaydettirin
 
 public **unregister** ()
 
-Unregister the autoload method
+Otomatik yükleyici metodunun kaydını silin
 
 public **loadFiles** ()
 
-Checks if a file exists and then adds the file by doing virtual require
+Bir dosyanın var olup olmadığını kontrol eder var ise dosyayı sanal gereklerine göre yükler
 
 public **autoLoad** (*mixed* $className)
 
-Autoloads the registered classes
+Kayıtlı sınıfları otomatik olarak yükler
 
 public **getFoundPath** ()
 
