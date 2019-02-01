@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\UrlInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setBaseUri** (*mixed* $baseUri)
 
