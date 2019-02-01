@@ -7,19 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 要求的环境
+# Request Environment
 
 Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information so as to provide the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the information of the request, allowing you to access it in an object-oriented way.
 
 ```php
+<?php
+
 use Phalcon\Http\Request;
 
-// 获取一个request实例
+// Getting a request instance
 $request = new Request();
 
-// 检查是不是post请求
+// Check whether the request was made with method POST
 if ($request->isPost()) {
-    // 检查是不是ajax请求
+    // Check whether the request was made with Ajax
     if ($request->isAjax()) {
         echo 'Request was made using POST and AJAX';
     }
@@ -28,7 +30,7 @@ if ($request->isPost()) {
 
 <a name='getting-values'></a>
 
-## 获取值
+## Getting Values
 
 PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
@@ -89,7 +91,7 @@ class PostsController extends Controller
 
 <a name='uploading-files'></a>
 
-## 上传文件
+## Uploading Files
 
 Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way to achieve this task:
 
@@ -125,7 +127,7 @@ Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instanc
 
 <a name='working-with-headers'></a>
 
-## 使用Headers
+## Working with Headers
 
 As mentioned above, request headers contain useful information that allow us to send the proper response back to the user. The following examples show usages of that information:
 
@@ -175,7 +177,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## 事件
+## Events
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
