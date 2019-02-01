@@ -8,11 +8,11 @@ title: 'Phalcon\Validation\Message\Group'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
 
 Represents a group of validation messages
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $messages])
 
@@ -108,11 +108,11 @@ Returns the current message in the iterator
 
 public **key** ()
 
-Gibt die aktuellen Position/Schlüssel im Iterator zurück
+Returns the current position/key in the iterator
 
 public **next** ()
 
-Bewegt sich der internen Iteration-Zeiger auf die nächste position
+Moves the internal iteration pointer to the next position
 
 public **valid** ()
 
