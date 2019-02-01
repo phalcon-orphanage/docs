@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
-Ein Router, welcher die Routen Anmerkungen aus Klassen/Ressourcen ermittelt
+A router that reads routes annotations from classes/resources
 
 ```php
 <?php
@@ -22,10 +22,10 @@ use Phalcon\Mvc\Router\Annotations;
 $di->setShared(
     "router",
     function() {
-        // Anmerkungen router benutzen
+        // Use the annotations router
         $router = new Annotations(false);
 
-        // Das macht dasselbe wie oben, aber nur , wenn die uri mit /robots beginnt
+        // This will do the same as above but only if the handled uri starts with /robots
         $router->addResource("Robots", "/robots");
 
         return $router;
@@ -34,7 +34,7 @@ $di->setShared(
 
 ```
 
-## Konstanten
+## Constants
 
 *integer* **URI_SOURCE_GET_URL**
 
@@ -44,15 +44,15 @@ $di->setShared(
 
 *integer* **POSITION_LAST**
 
-## Methoden
+## Methods
 
 public **addResource** (*mixed* $handler, [*mixed* $prefix])
 
-Fügt eine Ressource dem Anmerkungen Handler hinzu. Eine Ressource ist eine Klasse, welche routing Anmerkungen enthält
+Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 public **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
-Fügt eine Ressource dem Anmerkungen Handler hinzu. Eine Ressource ist eine Klasse, welche routing Anmerkungen enthält. Die Klasse ist in einem Modul hinterlegt
+Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 public **handle** ([*mixed* $uri])
 
@@ -60,23 +60,23 @@ Produce the routing parameters from the rewrite information
 
 public **processControllerAnnotation** (*mixed* $handler, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-Sucht nach Anmerkungen im Controller-docblock
+Checks for annotations in the controller docblock
 
 public **processActionAnnotation** (*mixed* $module, *mixed* $namespaceName, *mixed* $controller, *mixed* $action, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-Sucht nach Anmerkungen in den öffentlichen Methoden des Controllers
+Checks for annotations in the public methods of the controller
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
-Ändert die Controller-Klasse-Endung
+Changes the controller class suffix
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 
-Ändert die Aktion-Methode-Endung
+Changes the action method suffix
 
 public **getResources** ()
 
-Die registrierten Ressourcen zurückgeben
+Return the registered resources
 
 public **__construct** ([*mixed* $defaultRoutes]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -92,11 +92,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Legt den Event-manager fest
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **getRewriteUri** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -125,15 +125,15 @@ Sets the name of the default namespace
 
 public **setDefaultModule** (*mixed* $moduleName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Legt den Namen des Standardmoduls fest
+Sets the name of the default module
 
 public **setDefaultController** (*mixed* $controllerName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Legt den Standardnamen des controllers fest
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Legt den Standard Aktions Name fest
+Sets the default action name
 
 public **setDefaults** (*array* $defaults) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -244,27 +244,27 @@ Returns the processed parameters
 
 public **getMatchedRoute** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt die Route zurück, welche auf die verarbeitete URI passt
+Returns the route that matches the handled URI
 
 public **getMatches** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt die Sub-Ausdrücke in einem passenden regulären Ausdruck zurück
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Überprüft, ob der Router mit einem definierten routen übereinstimmt
+Checks if the router matches any of the defined routes
 
 public **getRoutes** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt alle im router definierten Routen zurück
+Returns all the routes defined in the router
 
 public **getRouteById** (*mixed* $id) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt ein Routenobjekt anhand der id zurück
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Gibt ein Routenobjekt anhand des Namens zurück
+Returns a route object by its name
 
 public **isExactControllerName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
