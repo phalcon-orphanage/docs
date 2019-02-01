@@ -6,11 +6,11 @@ title: 'Phalcon\Tag'
 ---
 # Class **Phalcon\Tag**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
-## Constants
+## Costanti
 
 *integer* **HTML32**
 
@@ -34,7 +34,7 @@ Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of 
 
 *integer* **XHTML5**
 
-## Methods
+## Metodi
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
@@ -334,7 +334,7 @@ echo Phalcon\Tag::checkField(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -359,7 +359,7 @@ echo Phalcon\Tag::radioField(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -383,7 +383,7 @@ echo Phalcon\Tag::imageInput(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -403,7 +403,7 @@ echo Phalcon\Tag::submitButton("Save")
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -446,7 +446,7 @@ echo Phalcon\Tag::select(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -472,7 +472,7 @@ echo Phalcon\Tag::textArea(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -499,7 +499,7 @@ echo Phalcon\Tag::form(
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
@@ -613,7 +613,7 @@ echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 ```
 
-Volt syntax:
+Sintassi di volt:
 
 ```php
 <?php
