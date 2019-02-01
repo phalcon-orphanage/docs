@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
-路由器，，读取的类和资源的路线注释
+A router that reads routes annotations from classes/resources
 
 ```php
 <?php
@@ -48,35 +48,35 @@ $di->setShared(
 
 public **addResource** (*mixed* $handler, [*mixed* $prefix])
 
-添加资源到注释处理程序 A 资源是一个类，包含路由的批注
+Adds a resource to the annotations handler A resource is a class that contains routing annotations
 
 public **addModuleResource** (*mixed* $module, *mixed* $handler, [*mixed* $prefix])
 
-将资源添加到处理程序 A 资源是一个类，包含类位于模块中的路由批注的批注
+Adds a resource to the annotations handler A resource is a class that contains routing annotations The class is located in a module
 
 public **handle** ([*mixed* $uri])
 
-生产中的重写信息的路由参数
+Produce the routing parameters from the rewrite information
 
 public **processControllerAnnotation** (*mixed* $handler, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-检查控制器块中的注释
+Checks for annotations in the controller docblock
 
 public **processActionAnnotation** (*mixed* $module, *mixed* $namespaceName, *mixed* $controller, *mixed* $action, [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) $annotation)
 
-检查中的公共方法的控制器的注释
+Checks for annotations in the public methods of the controller
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
-更改控制器类后缀
+Changes the controller class suffix
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 
-更改操作方法后缀
+Changes the action method suffix
 
 public **getResources** ()
 
-返回注册的资源
+Return the registered resources
 
 public **__construct** ([*mixed* $defaultRoutes]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -84,11 +84,11 @@ Phalcon\Mvc\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -117,23 +117,23 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置是否在已处理的路由，路由器必须移除多余的斜线
+Set whether router must remove the extra slashes in the handled routes
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置默认命名空间的名称
+Sets the name of the default namespace
 
 public **setDefaultModule** (*mixed* $moduleName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置默认模块的名称
+Sets the name of the default module
 
 public **setDefaultController** (*mixed* $controllerName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置默认控制器名称
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置默认操作名称
+Sets the default action name
 
 public **setDefaults** (*array* $defaults) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
@@ -153,11 +153,11 @@ $router->setDefaults(
 
 public **getDefaults** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回一个数组的默认参数
+Returns an array of default parameters
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器没有任何 HTTP 约束
+Adds a route to the router without any HTTP constraint
 
 ```php
 <?php
@@ -176,96 +176,96 @@ Adds a route to the router that only match if the HTTP method is GET
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是 POST
+Adds a route to the router that only match if the HTTP method is POST
 
 public **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是 PUT
+Adds a route to the router that only match if the HTTP method is PUT
 
 public **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-添加到路由器，如果 HTTP 方法是只匹配路由修补
+Adds a route to the router that only match if the HTTP method is PATCH
 
 public **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是 DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 public **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是OPTIONS
+Add a route to the router that only match if the HTTP method is OPTIONS
 
 public **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是HEAD
+Adds a route to the router that only match if the HTTP method is HEAD
 
 public **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是PURGE （Squid 和Varnish 支持）
+Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
 public **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是TRACE
+Adds a route to the router that only match if the HTTP method is TRACE
 
 public **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position]) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-将路由添加到路由器只匹配如果 HTTP 方法是 CONNECT
+Adds a route to the router that only match if the HTTP method is CONNECT
 
 public **mount** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-安装路由器中的路由组
+Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-设置路径时没有已定义的路由匹配返回一组
+Set a group of paths to be returned when none of the defined routes are matched
 
 public **clear** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-删除所有预定义的路由
+Removes all the pre-defined routes
 
 public **getNamespaceName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回已处理命名空间名称
+Returns the processed namespace name
 
 public **getModuleName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回已处理的模块名称
+Returns the processed module name
 
 public **getControllerName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回已处理的控制器名称
+Returns the processed controller name
 
 public **getActionName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回相应的加工的操作名称
+Returns the processed action name
 
 public **getParams** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回的加工的参数
+Returns the processed parameters
 
 public **getMatchedRoute** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回匹配处理的 URI 的路线
+Returns the route that matches the handled URI
 
 public **getMatches** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回的子表达式匹配的正则表达式
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-检查是否路由器匹配任何已定义的路由
+Checks if the router matches any of the defined routes
 
 public **getRoutes** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回所有定义在路由器中的路由
+Returns all the routes defined in the router
 
 public **getRouteById** (*mixed* $id) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-按其 id 返回路由对象
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-按其名称返回路由对象
+Returns a route object by its name
 
 public **isExactControllerName** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-返回是否不应该出错的控制器的名称
+Returns whether controller name should not be mangled
