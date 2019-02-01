@@ -47,28 +47,28 @@ Phalcon\Http\Request\File constructor
 
 public **getSize** ()
 
-Returns the file size of the uploaded file
+Devuelve el tamaño del archivo cargado
 
 public **getName** ()
 
-Returns the real name of the uploaded file
+Devuelve el nombre verdadero del archivo cargado
 
 public **getTempName** ()
 
-Returns the temporary name of the uploaded file
+Devuelve el nombre temporal del archivo cargado
 
 public **getType** ()
 
-Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
+Devuelve el tipo mime notificado por el navegador. Este tipo mime no es completamente seguro. Utilice en su lugar getRealType()
 
 public **getRealType** ()
 
-Gets the real mime type of the upload file using finfo
+Obtiene el tipo mime verdadero del archivo cargado utilizando finfo
 
 public **isUploadedFile** ()
 
-Checks whether the file has been uploaded via Post.
+Comprueba si el archivo ha sido cargado a través de Post.
 
 public **moveTo** (*mixed* $destination)
 
-Moves the temporary file to a destination within the application
+Mueve el archivo temporal a una ubicación dentro de la aplicación
