@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memory'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
 
 Stores content in memory. Data is lost when the request is finished
 
@@ -33,23 +33,23 @@ $data = $cache->get("my-data");
 
 ```
 
-## Metodlar
+## Methods
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Ön bellekte saklanan içeriği döndürür
+Returns a cached content
 
-yerel **kaydet** ([*dizi* $keyName], [*dizi* $content], [*int* $lifetime], [*booledeğeri* $stopBuffer])
+public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Önbellek içeriğini arka uca depolar ve önyüzü durdurur
+Stores cached content into the backend and stops the frontend
 
-yerel *booledeğeri* **sil** (*dizi* $keyName)
+public *boolean* **delete** (*string* $keyName)
 
-Ön bellekteki bir değeri anahtarı ile birlikte siler
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Varolan bekletilmiş anahtarları sorgulayın.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -63,7 +63,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Ön belleğin var olup olmadığını ve süresinin dolup dolmadığını denetler
+Checks if cache exists and it hasn't expired
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -71,11 +71,11 @@ Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Verilen $value ile $keyName azalması
+Decrement of $keyName by given $value
 
 public **flush** ()
 
-Mevcut öğelerin tümünü geçersiz kılar.
+Immediately invalidates all existing items.
 
 public **serialize** ()
 
@@ -119,16 +119,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Herhangi bir önbelleklenmiş içerik depolamadan ön yüzü durdurur
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son önbelleğin yeni ya da önbelleklenmiş olup olmadığını kontrol eder
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ön belleğin ara belleğe aktarımına başlamış olup olmadığını denetler
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son çalışma zamanı ayarını getir
+Gets the last lifetime set
