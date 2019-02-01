@@ -10,17 +10,17 @@ category: 'acl'
 * * *
 
 - [访问控制列表 (ACL)](acl-overview)
-- [Creating an ACL](acl-setup)
+- [创建 ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [Defining Access Controls](acl-access-controls)
-- [Querying an ACL](acl-querying)
-- [Function based access](acl-function-based-access)
+- [定义访问控制](acl-access-controls)
+- [查询ACL](acl-querying)
+- [基于访问控制的自定义函数](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
-- [Serializing ACL lists](acl-serialization)
-- [Events](acl-events)
-- [Implementing your own adapters](acl-custom-adapters)
+- [序列化 ACL 列表](acl-serialization)
+- [事件](acl-events)
+- [实现自己的适配器](acl-custom-adapters)
 
 * * *
 
