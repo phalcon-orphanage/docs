@@ -17,7 +17,7 @@ version: '4.0'
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| Klasse                                                                | Beschreibung                                                                         |
+| Class                                                                 | Description                                                                          |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
 | [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
@@ -45,7 +45,7 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementierung von eigenen Adaptern
+### Implementing your own adapters
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
