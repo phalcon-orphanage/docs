@@ -8,7 +8,7 @@ title: 'Phalcon\Db\ResultInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **execute** ()
 
