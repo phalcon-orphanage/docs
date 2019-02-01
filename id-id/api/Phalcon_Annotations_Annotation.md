@@ -6,48 +6,48 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-Represents a single annotation in an annotations collection
+Mewakili anotasi tunggal dalam koleksi anotasi
 
-## Methods
+## Metode
 
 public **__construct** (*array* $reflectionData)
 
 Phalcon\Annotations\Annotation constructor
 
-public **getName** ()
+publik **getNama** ()
 
-Returns the annotation's name
+Mengembalikan nama anotasi
 
-public *mixed* **getExpression** (*array* $expr)
+publik *campuran* **mendapatkanEkspresi** (*susunan* $expr)
 
-Resolves an annotation expression
+Mengatasi ekspresi anotasi
 
-public *array* **getExprArguments** ()
+publik *susunan* **mendapatkanExprArgumen** ()
 
-Returns the expression arguments without resolving
+Kembali ekspresi argumen tanpa menyelesaikan
 
 public *array* **getArguments** ()
 
-Returns the expression arguments
+Mengembalikan argumen ekspresi
 
 public **numberArguments** ()
 
-Returns the number of arguments that the annotation has
+Mengembalikan jumlah argumen yang anotasi
 
-public *mixed* **getArgument** (*int* | *string* $position)
+publik *campuran* **mendapatkanArgument** (*int* | *tali* $position)
 
-Returns an argument in a specific position
+Kembali sebuah argumen di posisi tertentu
 
-public *boolean* **hasArgument** (*int* | *string* $position)
+publik *boolean* **telahArgumen** (*int* | *tali* $position)
 
-Returns an argument in a specific position
+Kembali sebuah argumen di posisi tertentu
 
-public *mixed* **getNamedArgument** (*mixed* $name)
+publik *campuran* **mendapatkanBernamaArgumen** (*campuran* $name)
 
-Returns a named argument
+Mengembalikan argumen yang bernama
 
-public *mixed* **getNamedParameter** (*mixed* $name)
+public *mixed* **getNamedParameter** (*dicampur* $name)
 
-Returns a named parameter
+Mengembalikan argumen yang bernama
