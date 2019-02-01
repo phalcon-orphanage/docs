@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router\GroupInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setHostname** (*mixed* $hostname)
 
