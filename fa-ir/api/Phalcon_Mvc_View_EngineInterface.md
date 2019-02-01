@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\View\EngineInterface'
 ---
 # Interface **Phalcon\Mvc\View\EngineInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engineinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engineinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **getContent** ()
 
