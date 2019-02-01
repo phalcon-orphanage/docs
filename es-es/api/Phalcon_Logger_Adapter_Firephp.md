@@ -12,7 +12,7 @@ title: 'Phalcon\Logger\Adapter\Firephp'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/firephp.zep)
 
-Envía registros a FirePHP
+Sends logs to FirePHP
 
 ```php
 <?php
@@ -31,75 +31,75 @@ $logger->error("This is another error");
 
 public **getFormatter** ()
 
-Devuelve el formateador interno
+Returns the internal formatter
 
 public **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
-Escribe el registro a la misma transmisión
+Writes the log to the stream itself
 
 public **close** ()
 
-Cierra el registrador
+Closes the logger
 
 public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Filtra los registros enviados a los controladores que son menos o igual a un nivel específico
+Filters the logs sent to the handlers that are less or equal than a specific level
 
 public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Devuelve el nivel de registro actual
+Returns the current log level
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Configura el formateador del mensaje
+Sets the message formatter
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Inicia una transacción
+Starts a transaction
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Finaliza la transacción interna
+Commits the internal transaction
 
 public **rollback** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Revierte la transacción interna
+Rollbacks the internal transaction
 
 public **isTransaction** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Devuelve si el registrador está actualmente en una transacción activa o no
+Returns the whether the logger is currently in an active transaction or not
 
 public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje crítico al registro
+Sends/Writes a critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de emergencia al registro
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de depuración al registro
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de error al registro
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de información al registro
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de notificación al registro
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de advertencia al registro
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Envía o escribe un mensaje de alerta al registro
+Sends/Writes an alert message to the log
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
