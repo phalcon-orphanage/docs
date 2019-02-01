@@ -14,7 +14,7 @@ title: 'Phalcon\Assets\Resource\Css'
 
 Represents CSS resources
 
-## Methods
+## Методы
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 

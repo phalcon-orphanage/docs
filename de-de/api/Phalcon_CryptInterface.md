@@ -6,9 +6,9 @@ title: 'Phalcon\CryptInterface'
 ---
 # Interface **Phalcon\CryptInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **setCipher** (*mixed* $cipher)
 

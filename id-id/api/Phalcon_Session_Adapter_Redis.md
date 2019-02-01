@@ -10,9 +10,9 @@ title: 'Phalcon\Session\Adapter\Redis'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
-This adapter store sessions in Redis
+Ini sesi toko adaptor di Redis
 
 ```php
 <?php
@@ -42,29 +42,29 @@ echo $session->get("var");
 
 ## Constants
 
-*integer* **SESSION_ACTIVE**
+*bilangan bulat* **SESSION_ACTIVE **
 
-*integer* **SESSION_NONE**
+*bilangan bulat* **SESSION_NONE **   Teks paragraf
 
-*integer* **SESSION_DISABLED**
+*bilangan bulat* **SESSION_DISABLED **
 
-## Methods
+## Metode
 
 public **getRedis** ()
 
 ...
 
-public **getLifetime** ()
+publik ** getLifetime ** ()
 
 ...
 
-public **__construct** ([*array* $options])
+umum **__membangun** ([*array* $options])
 
 Phalcon\Session\Adapter\Redis constructor
 
 public **open** ()
 
-public **close** ()
+publik **tutup** ()
 
 public **read** (*mixed* $sessionId)
 
@@ -76,11 +76,11 @@ public **gc** ()
 
 public **start** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Starts the session (if headers are already sent the session will not be started)
+Mulai sesi (jika header sudah dikirim sesi tidak akan dimulai)
 
 public **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Sets session's options
+Menetapkan pilihan sesi
 
 ```php
 <?php
@@ -95,21 +95,21 @@ $session->setOptions(
 
 public **getOptions** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Get internal options
+Dapatkan pilihan internal
 
 public **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Set session name
+Tetapkan nama sesi
 
 public **getName** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Get session name
+Dapatkan nama sesi
 
 public **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 public **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Gets a session variable from an application context
+Mendapat variabel sesi dari konteks aplikasi
 
 ```php
 <?php
@@ -120,7 +120,7 @@ $session->get("auth", "yes");
 
 public **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Sets a session variable in an application context
+Menetapkan variabel sesi dalam konteks aplikasi
 
 ```php
 <?php
@@ -131,7 +131,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Check whether a session variable is set in an application context
+Periksa apakah variabel sesi diatur dalam konteks aplikasi
 
 ```php
 <?php
@@ -144,7 +144,7 @@ var_dump(
 
 public **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Removes a session variable from an application context
+Menghapus variabel sesi dari konteks aplikasi
 
 ```php
 <?php
@@ -155,7 +155,7 @@ $session->remove("auth");
 
 public **getId** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Returns active session id
+Mengembalikan id sesi aktif
 
 ```php
 <?php
@@ -166,7 +166,7 @@ echo $session->getId();
 
 public **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Set the current session id
+Tetapkan Id sesi saat ini
 
 ```php
 <?php
@@ -177,7 +177,7 @@ $session->setId($id);
 
 public **isStarted** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Check whether the session has been started
+Periksa apakah sesi sudah dimulai
 
 ```php
 <?php
@@ -190,7 +190,7 @@ var_dump(
 
 public **status** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Returns the status of the current session.
+Mengembalikan status sesi saat ini.
 
 ```php
 <?php
@@ -207,19 +207,19 @@ if ($session->status() !== $session::SESSION_ACTIVE) {
 
 public **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Gets a session variable from an application context
+Alias: Mendapat variabel sesi dari konteks aplikasi
 
 public **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Sets a session variable in an application context
+Alias: Menetapkan variabel sesi dalam konteks aplikasi
 
 public **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Check whether a session variable is set in an application context
+Alias: Periksa apakah variabel sesi diatur dalam konteks aplikasi
 
 public **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Removes a session variable from an application context
+Alias: Menghapus variabel sesi dari konteks aplikasi
 
 ```php
 <?php

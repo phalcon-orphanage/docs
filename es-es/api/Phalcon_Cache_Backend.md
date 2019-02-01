@@ -44,23 +44,23 @@ Phalcon\Cache\Backend constructor
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime])
 
-Starts a cache. The keyname allows to identify the created fragment
+Comienza una caché. El KeyName permite identificar el fragmento creado
 
 public **stop** ([*mixed* $stopBuffer])
 
-Stops the frontend without store any cached content
+Detiene el frontend sin almacenar ningún contenido almacenado en caché
 
 public **isFresh** ()
 
-Checks whether the last cache is fresh or cached
+Comprueba si el último almacenamiento en caché esta actualizado o no
 
 public **isStarted** ()
 
-Checks whether the cache has starting buffering or not
+Comprueba si el caché ha empezado a almacenarse o no
 
 public *int* **getLifetime** ()
 
-Gets the last lifetime set
+Obtiene la última duración establecida
 
 abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 

@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Date'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\تاریخ'
 ---
 # Class **Phalcon\Validation\Validator\Date**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Date'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/date.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/date.zep)
 
 Checks if a value is a valid date
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\ViewBaseInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setViewsDir** (*mixed* $viewsDir)
 

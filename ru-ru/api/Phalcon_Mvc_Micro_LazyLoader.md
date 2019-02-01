@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Micro\LazyLoader'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
 
-Lazy-Load of handlers for Mvc\Micro using auto-loading
+Загрузка обработчиков по требованию для Mvc\Micro используя автозагрузку
 
-## Methods
+## Методы
 
 public **getDefinition** ()
 
@@ -22,7 +22,7 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 
 public *mixed* **__call** (*string* $method, *array* $arguments)
 
-Initializes the internal handler, calling functions on it
+Инициализирует внутренний обработчик, вызывая функции в нем
 
 public *mixed* **callMethod** (*string* $method, *array* $arguments, [[Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder])
 

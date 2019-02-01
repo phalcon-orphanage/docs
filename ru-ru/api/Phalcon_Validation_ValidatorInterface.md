@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\ValidatorInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **hasOption** (*mixed* $key)
 

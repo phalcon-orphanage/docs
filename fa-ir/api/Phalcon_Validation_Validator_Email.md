@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Email'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\ایمیل'
 ---
 # Class **Phalcon\Validation\Validator\Email**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Email'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
 
 Checks if a value has a correct e-mail format
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

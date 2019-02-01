@@ -12,13 +12,13 @@ title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/softdelete.zep)
 
-Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
+En lugar de eliminar permanente mente un registro, marca el registro como eliminado cambiando el valor de una columna de marca
 
 ## Métodos
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Listens for notifications from the models manager
+Escucha las notificaciones del administrador de modelos
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
@@ -26,12 +26,12 @@ Phalcon\Mvc\Collection\Behavior
 
 protected **mustTakeAction** (*mixed* $eventName) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Checks whether the behavior must take action on certain event
+Comprueba si el comportamiento debe actuar en ciertos eventos
 
 protected *array* **getOptions** ([*string* $eventName]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Returns the behavior options related to an event
+Devuelve las opciones de comportamiento relacionadas a un evento
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Acts as fallbacks when a missing method is called on the collection
+Actúa como reservas cuando se llama un método faltante en la colección

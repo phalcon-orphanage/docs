@@ -7,9 +7,9 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# Working with Models
+# Bekerja dengan Model
 
-A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
+Sebuah model mewakili informasi (data) aplikasi dan aturan untuk memanipulasi data tersebut. Model terutama digunakan untuk mengelola aturan interaksi dengan tabel database yang sesuai. Dalam kebanyakan kasus, setiap tabel dalam database anda akan sesuai dengan satu model dalam aplikasi anda. Sebagian besar logika bisnis aplikasi anda akan terkonsentrasi pada model.
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
@@ -17,7 +17,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## Membuat Model
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -70,8 +70,7 @@ class RobotParts extends Model
     public function onConstruct()
     {
         // ...
-    }
-}
+    }}
 ```
 
 <a name='properties-setters-getters'></a>
@@ -165,7 +164,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## Memahami Rekaman Untuk Objek
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
@@ -195,7 +194,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Begitu catatan di memori, anda dapat melakukan modifikasi terhadap datanya dan kemudian menyimpan perubahan:
 
 ```php
 <?php
@@ -213,7 +212,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Menemukan catatan
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
@@ -256,7 +255,7 @@ foreach ($robots as $robot) {
 
 <h5 class='alert alert-warning'>If you want find record by external data (such as user input) or variable data you must use <a href="#binding-parameters">Binding Parameters</a>`.</h5>
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+Anda juga bisa menggunakan `findFirst()` metode untuk mendapatkan rekaman pertama yang sesuai dengan kriteria yang diberikan:
 
 ```php
 <?php
@@ -307,22 +306,22 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+Pilihan permintaan yang tersedia adalah:
 
-| Parameter     | Description                                                                                                                                                                                                                 | Example                                                              |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
-| `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                  | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                  | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                  | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Limit the results of the query to results to certain range                                                                                                                                                                  | `'limit' => 10`                                                   |
-| `offset`      | Offset the results of the query by a certain amount                                                                                                                                                                         | `'offset' => 5`                                                   |
-| `group`       | Allows to collect data across multiple records and group the results by one or more columns                                                                                                                                 | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                                | `'for_update' => true`                                            |
-| `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                                   | `'shared_lock' => true`                                           |
-| `cache`       | Cache the resultset, reducing the continuous access to the relational system                                                                                                                                                | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Sets the hydration strategy to represent each returned record in the result                                                                                                                                                 | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| Parameter          | Deskripsi                                                                                                                                                                                                                | Contoh                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `kondisi`          | Cari kondisi untuk operasi pencarian. Digunakan hanya untuk mengekstrak catatan yang memenuhi kriteria tertentu. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
+| `kolom`            | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                | `'kolom' => 'id, nama'`                                           |
+| `mengikat`         | Bind digunakan bersamaan dengan pilihan, dengan mengganti placeholder dan nilai escape sehingga meningkatkan keamanan                                                                                                    | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`        | Bila parameter yang mengikat, Anda dapat menggunakan parameter ini untuk menentukan pengecoran tambahan pada parameter terikat sehingga meningkatkan keamanan lebih banyak lagi                                          | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `memesan`          | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                               | `'order' => 'name DESC, status'`                                  |
+| `batas`            | Batasi hasil query untuk menghasilkan rentang tertentu                                                                                                                                                                   | `'batas' => 10`                                                   |
+| `mengimbangi`      | Offset hasil query dengan jumlah tertentu                                                                                                                                                                                | `'mengimbangi' => 5`                                              |
+| `kelompok`         | Memungkinkan untuk mengumpulkan data di beberapa catatan dan mengelompokkan hasilnya dengan satu atau beberapa kolom                                                                                                     | `'kelompok' => 'nama, status'`                                    |
+| `untuk_perbaharui` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                             | `'untuk_perbaharui' => benar`                                     |
+| `shared_lock`      | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                                | `'shared_lock' => true`                                           |
+| `cache`            | Cache the resultset, mengurangi akses terus menerus ke sistem relasional                                                                                                                                                 | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hidrasi`          | Menetapkan strategi hidrasi untuk mewakili setiap record yang dikembalikan pada hasilnya                                                                                                                                 | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
 If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
 
@@ -374,9 +373,9 @@ $name = 'Terminator';
 $robot = Robots::findFirstByName($name);
 
 if ($robot) {
-    echo 'The first robot with the name ' . $name . ' cost ' . $robot->price . '.';
+    echo 'The first robot with the name ' . $nama . 'biaya'. $robot->harga . '.';
 } else {
-    echo 'There were no robots found in our table with the name ' . $name . '.';
+    echo 'There were no robots found in our table with the name ' . $nama . '.';
 }
 ```
 
@@ -384,7 +383,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 
-### Model Resultsets
+### Hasil Model
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -471,7 +470,7 @@ foreach ($parts as $part) {
 
 <a name='custom-resultsets'></a>
 
-### Custom Resultsets
+### Hasil Khusus
 
 There are times that the application logic requires additional manipulation of the data as it is retrieved from the database. Previously, we would just extend the model and encapsulate the functionality in a class in the model or a trait, returning back to the caller usually an array of transformed data.
 
@@ -540,7 +539,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### Menyaring Hasil
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -561,9 +560,9 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### Parameter pengikatan
 
-Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
+Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Parameter pengikatan hanya dapat dicapai sebagai berikut:
 
 ```php
 <?php
@@ -691,7 +690,7 @@ $robots = Robots::findByName('Ultron');
 
 <a name='preparing-records'></a>
 
-## Initializing/Preparing fetched records
+## Menginisialisasi / Menyiapkan catatan yang diambil
 
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
@@ -756,7 +755,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## Generating Calculations
+## Menghasilkan Perhitungan
 
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
@@ -765,7 +764,7 @@ Count examples:
 ```php
 <?php
 
-// How many employees are?
+// berapa banyak karyawan?
 $rowcount = Employees::count();
 
 // How many different areas are assigned to employees?
@@ -813,8 +812,6 @@ Sum examples:
 
 ```php
 <?php
-
-// How much are the salaries of all employees?
 $total = Employees::sum(
     [
         'column' => 'salary',
@@ -923,7 +920,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## Creating/Updating Records
+## Membuat / Memperbarui Rekaman
 
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
@@ -1005,7 +1002,7 @@ $robot->save(
 
 <a name='create-update-with-confidence'></a>
 
-### Create/Update with Confidence
+### Buat / Update dengan Keyakinan
 
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
@@ -1038,7 +1035,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
-## Deleting Records
+## Menghapus catatan
 
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
@@ -1090,12 +1087,12 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+Peristiwa berikut tersedia untuk menentukan aturan bisnis khusus yang dapat dijalankan saat operasi hapus dilakukan:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| Operasi      | Nama         | Bisa berhenti operasinya? | Penjelasan                               |
+| ------------ | ------------ |:-------------------------:| ---------------------------------------- |
+| Menghapuskan | afterDelete  |           Tidak           | Berjalan setelah operasi hapus dilakukan |
+| Menghapuskan | beforeDelete |            Ya             | Berjalan sebelum operasi hapus dilakukan |
 
 With the above events can also define business rules in the models:
 
@@ -1123,7 +1120,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Mode hidrasi
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1201,7 +1198,7 @@ foreach ($robots as $robot) {
 
 <a name='table-prefixes'></a>
 
-## Table prefixes
+## Awalan tabel
 
 If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
 
@@ -1224,7 +1221,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## Kolom identitas yang dibuat otomatis
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1258,7 +1255,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## Lompati Kolom
 
 To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1341,7 +1338,7 @@ class Robots extends Model
 
 <a name='dynamic-updates'></a>
 
-## Dynamic Updates
+## Pembaruan Dinamis
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1365,9 +1362,9 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## Pemetaan Kolom Independen
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. Sebagai contoh:
 
 ```php
 <?php
@@ -1438,18 +1435,18 @@ $robot->save();
 
 Consider the following when renaming your columns:
 
-* References to attributes in relationships/validators must use the new names
-* Refer the real column names will result in an exception by the ORM
+* Referensi atribut dalam hubungan/validator harus menggunakan nama baru
+* Rujuk nama kolom sebenarnya akan menghasilkan pengecualian oleh ORM
 
 The independent column map allows you to:
 
-* Write applications using your own conventions
-* Eliminate vendor prefixes/suffixes in your code
-* Change column names without change your application code
+* Tuliskan aplikasi dengan menggunakan konvensi Anda sendiri
+* Hilangkan awalan vendor/sufiks dalam kode Anda
+* Ubah nama kolom tanpa mengubah kode aplikasi Anda
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## Rekam Snapshots
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1549,7 +1546,7 @@ array(0) {
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## Menunjuk ke skema yang berbeda
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1571,7 +1568,7 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## Menetapkan beberapa database
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1706,9 +1703,9 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## Injecting services into Models
+## Menyuntikkan layanan ke dalam Model
 
-You may be required to access the application services within a model, the following example explains how to do that:
+Anda mungkin diminta untuk mengakses layanan aplikasi dalam model, contoh berikut menjelaskan cara melakukannya:
 
 ```php
 <?php
@@ -1738,7 +1735,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## Menonaktifkan/Mengaktifkan Fitur
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
@@ -1757,37 +1754,37 @@ Model::setup(
 
 The available options are:
 
-| Option                | Description                                                                               | Default |
+| Pilihan               | Deskripsi                                                                                 | Bawaan  |
 | --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
-| astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
-| cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
-| castOnHydrate         |                                                                                           | `false` |
-| columnRenaming        | Enables/Disables the column renaming                                                      | `true`  |
-| disableAssignSetters  | Allow disabling setters in your model                                                     | `false` |
-| enableImplicitJoins   |                                                                                           | `true`  |
-| enableLiterals        |                                                                                           | `true`  |
-| escapeIdentifiers     |                                                                                           | `true`  |
-| events                | Enables/Disables callbacks, hooks and event notifications from all the models             | `true`  |
-| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `false` |
-| forceCasting          |                                                                                           | `false` |
-| ignoreUnknownColumns  | Enables/Disables ignoring unknown columns on the model                                    | `false` |
-| lateStateBinding      | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `false` |
-| notNullValidations    | The ORM automatically validate the not null columns present in the mapped table           | `true`  |
+| astCache              | Mengaktifkan/Menonaktifkan callback, kait dan pemberitahuan acara dari semua model        | `null`  |
+| cacheLevel            | Menetapkan tingkat cache untuk ORM                                                        |   `3`   |
+| castOnHydrate         |                                                                                           | `salah` |
+| kolomRenaming         | Mengaktifkan/Menonaktifkan kolom nama                                                     | `benar` |
+| disableAssignSetters  | Memungkinkan menonaktifkan setter dalam model anda                                        | `salah` |
+| enableImplicitJoins   |                                                                                           | `benar` |
+| enableLiterals        |                                                                                           | `benar` |
+| escapeIdentifiers     |                                                                                           | `benar` |
+| acara                 | Mengaktifkan/Menonaktifkan callback, kait dan pemberitahuan acara dari semua model        | `benar` |
+| exceptionOnFailedSave | Enables/Disables throwing an exception when there is a failed `save()`                    | `salah` |
+| forceCasting          |                                                                                           | `salah` |
+| ignoreUnknownColumns  | Mengaktifkan/Menonaktifkan mengabaikan kolom yang tidak diketahui pada model              | `salah` |
+| akhirStateBinding     | Enables/Disables late state binding of the `Phalcon\Mvc\Model::cloneResultMap()` method | `salah` |
+| notNullValidations    | ORM secara otomatis memvalidasi not null kolom hadir dalam dipetakan meja                 | `benar` |
 | parserCache           |                                                                                           | `null`  |
-| phqlLiterals          | Enables/Disables literals in the PHQL parser                                              | `true`  |
+| phqlLiterals          | Mengaktifkan/Menonaktifkan literal di PHQL parser                                         | `benar` |
 | uniqueCacheId         |                                                                                           |   `3`   |
-| updateSnapshotOnSave  | Enables/Disables updating snapshots on `save()`                                           | `true`  |
-| virtualForeignKeys    | Enables/Disables the virtual foreign keys                                                 | `true`  |
+| updateSnapshotOnSave  | Mengaktifkan/Menonaktifkan memperbarui foto pada `save()`                                 | `benar` |
+| virtualForeignKeys    | Mengaktifkan/Menonaktifkan virtual kunci asing                                            | `benar` |
 
 <div class="alert alert-warning">
     <p>
-        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (yang digunakan ketika membuat/memperbarui/penghematan model) selalu menggunakan setter jika mereka ada ketika memiliki data argumen yang dilewatkan, bahkan jika diperlukan atau diperlukan. Ini akan menambahkan beberapa overhead tambahan ke aplikasi Anda. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
     </p>
 </div>
 
 <a name='stand-alone-component'></a>
 
-## Stand-Alone component
+## Berdiri Sendiri komponen
 
 Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) in a stand-alone mode can be demonstrated below:
 

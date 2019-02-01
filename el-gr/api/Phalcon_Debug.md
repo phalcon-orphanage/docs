@@ -22,7 +22,7 @@ Sets if files the exception's backtrace must be showed
 
 public **setShowFiles** (*mixed* $showFiles)
 
-Set if files part of the backtrace must be shown in the output
+Ορίστε εάν αρχεία τα πρέπει να εμφανίζονται στην έξοδο
 
 public **setShowFileFragment** (*mixed* $showFileFragment)
 

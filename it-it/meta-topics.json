@@ -23,15 +23,15 @@
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Contributi",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Panoramica",
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "Richieste Pull",
                 "url": "/new-pull-request"
             },
             {
@@ -39,21 +39,21 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Generazione di backtrace",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Test riproducibile",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
-                "url": "testing-environment"
+                "text": "Testing guide",
+                "url": "/testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Per iniziare",
         "url": "",
         "menu": [
             {
@@ -61,7 +61,7 @@
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Installazione del server Web",
                 "url": "/webserver-setup"
             },
             {
@@ -79,16 +79,8 @@
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
-                "url": "/environments-docker"
-            },
-            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
-            },
-            {
-                "text": "Phalcon Box (Vagrant)",
-                "url": "/environments-vagrant"
             }
         ]
     },
@@ -145,7 +137,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Indice API",
                 "url": "/api/"
             },
             {
@@ -192,7 +184,7 @@
             },
             {
                 "text": "Logging",
-                "url": "/logging"
+                "url": "/logger"
             },
             {
                 "text": "Queue",
@@ -217,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Modelli",
                 "url": "/db-models"
             },
             {
@@ -229,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Eventi",
                 "url": "/db-models-events"
             },
             {
@@ -321,7 +313,7 @@
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Inoltro (Routing)",
                 "url": "/routing"
             },
             {

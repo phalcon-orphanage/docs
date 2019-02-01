@@ -10,17 +10,17 @@ title: 'Phalcon\Session\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
 
 ## Metody
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clone the exception
+Klonuj wyjątek
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Exception constructor
+Konstruktor wyjątku
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 

@@ -487,7 +487,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Изображения
 
 ```php
 <?php
@@ -657,7 +657,7 @@ $di['tag'] = function () {
 
 <a name='custom-helpers'></a>
 
-## Creating your own helpers
+## Создание собственных хелперов
 
 You can easily create your own helpers. First, start by creating a new folder within the same directory as your controllers and models. Give it a title that is relative to what you are creating. For our example here, we can call it 'customhelpers'. Next we will create a new file titled `MyTags.php` within this new directory. At this point, we have a structure that looks similar to : `/app/customhelpers/MyTags.php`. In `MyTags.php`, we will extend the [Phalcon\Tag](api/Phalcon_Tag) and implement your own helper. Below is a simple example of a custom helper:
 

@@ -1060,7 +1060,7 @@ foreach ($testRoutes as $testRoute) {
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Event                      | Περιγραφή                            |
+| Γεγονός                    | Περιγραφή                            |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |

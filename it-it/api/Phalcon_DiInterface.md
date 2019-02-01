@@ -8,9 +8,9 @@ title: 'Phalcon\DiInterface'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 

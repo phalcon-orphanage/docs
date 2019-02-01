@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\FrontendInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontendinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **getLifetime** ()
 

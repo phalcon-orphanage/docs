@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Collection'
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
@@ -28,48 +28,48 @@ $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $reflectionData])
+public **__membangun**([*array*$reflectionData)
 
 Phalcon\Annotations\Collection constructor
 
-public **count** ()
+publik **menghitung**()
 
-Returns the number of annotations in the collection
+Mengembalikan jumlah anotasi dalam koleksi
 
-public **rewind** ()
+publik**mundur**()
 
-Rewinds the internal iterator
+Melakukan pemutaran balik internal iterator
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-Returns the current annotation in the iterator
+Mengembalikan posisi/kunci saat ini di iterator
 
-public **key** ()
+publik **kunci** ()
 
-Returns the current position/key in the iterator
+Mengembalikan posisi/kunci saat ini di iterator
 
-public **next** ()
+publik **berikutnya** ()
 
-Moves the internal iteration pointer to the next position
+Bergerak pointer internal iterasi kepada posisi yang berikut
 
-public **valid** ()
+publik **sah** ()
 
-Check if the current annotation in the iterator is valid
+Periksa apakah pesan yang sekarang di iterator berlaku
 
 public **getAnnotations** ()
 
-Returns the internal annotations as an array
+Kembali anotasi internal sebagai array
 
-public **get** (*string* $name)
+public **dapatkan** (*string* $name)
 
-Returns the first annotation that match a name
+Kembali anotasi pertama yang cocok dengan nama
 
 public **getAll** (*string* $name)
 
-Returns all the annotations that match a name
+Kembali anotasi pertama yang cocok dengan nama
 
-public **has** (*string* $name)
+publik **memiliki** (*string* $name)
 
-Check if an annotation exists in a collection
+Memeriksa jika anotasi yang ada dalam koleksi

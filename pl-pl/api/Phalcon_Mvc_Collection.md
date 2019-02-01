@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Collection'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
 This component implements a high level abstraction for NoSQL databases which works with documents
 
-## Constants
+## Stałe
 
 *integer* **OP_NONE**
 
@@ -228,7 +228,7 @@ Fires an internal event that cancels the operation
 
 protected **_cancelOperation** (*mixed* $disableEvents)
 
-Cancel the current operation
+Anuluj obecną operację
 
 protected *boolean* **_exists** (*MongoCollection* $collection)
 

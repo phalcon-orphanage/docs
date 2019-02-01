@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='orm-caching'></a>
 
-# ORM Caching
+# ORM ذخیره سازی
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -15,7 +15,7 @@ This chapter explains the potential areas where it is possible to implement cach
 
 <a name='caching-resultsets'></a>
 
-## Caching Resultsets
+## نتایج مجموعه ذخیره سازی
 
 A well established technique to avoid continuously accessing the database, is to cache resultsets that don't change frequently, using a system with faster access (usually memory).
 
@@ -126,7 +126,7 @@ Which resultset to cache and for how long is up to the developer, after having e
 
 <a name='forcing-cache'></a>
 
-## Forcing Cache
+## فشار مجبور
 
 Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
@@ -231,7 +231,7 @@ Then use this class as base class for each `Cacheable` model:
 ```php
 <?php
 
-class Robots extends CacheableModel
+کلاس روبات های CacheableModel را گسترش می دهد
 {
 
 }
@@ -266,7 +266,7 @@ $cars = $query->execute(
 
 <a name='reusable-related-records'></a>
 
-## Reusable Related Records
+## مجلات قابل استفاده مجدد
 
 Some models may have relationships with other models. This allows us to easily check the records that relate to instances in memory:
 
@@ -329,15 +329,15 @@ Note that this type of cache works in memory only, this means that cached data a
 
 <a name='caching-related-records'></a>
 
-## Caching Related Records
+## ذخیره سازی مرتبط با سوابق
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Type       | Description                                                     | Implicit Method |
-| ---------- | --------------------------------------------------------------- | --------------- |
-| Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
-| Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
-| Has-Many   | Returns a collection of model instances of the referenced model | `find()`        |
+| نوع        | توضیحات                                                    | روش ضمنی      |
+| ---------- | ---------------------------------------------------------- | ------------- |
+| Belongs-To | یک مثال نمونه از رکورد مرتبط به طور مستقیم را بازمی گرداند | `findFirst()` |
+| Has-One    | یک مثال نمونه از رکورد مرتبط به طور مستقیم را بازمی گرداند | `findFirst()` |
+| Has-Many   | مجموعه ای از نمونه های مدل از مدل ارجاع را بازمی گرداند    | `find()`      |
 
 This means that when you get a related record you could intercept how the data is obtained by implementing the corresponding method:
 
@@ -372,7 +372,7 @@ class Invoices extends Model
 
 <a name='caching-related-records-recursively'></a>
 
-## Caching Related Records Recursively
+## ذخیره سازی مرتبط رکوردها به صورت مجزا
 
 In this scenario, we assume that every time we query a result we also retrieve their associated records. If we store the records found together with their related entities perhaps we could reduce a bit the overhead required to obtain all entities:
 
@@ -478,11 +478,11 @@ class Invoices extends Model
 
 <a name='caching-based-on-conditions'></a>
 
-## Caching based on Conditions
+## ذخیره بر اساس شرایط
 
 In this scenario, the cache is implemented differently depending on the conditions received. We might decide that the cache backend should be determined by the primary key:
 
-| Type          | Cache Backend |
+| نوع           | Cache Backend |
 | ------------- | ------------- |
 | 1 - 10000     | mongo1        |
 | 10000 - 20000 | mongo2        |
@@ -733,7 +733,7 @@ class Robots extends Model
 
 <a name='caching-phql-execution-plan'></a>
 
-## Caching PHQL execution plan
+## ذخیره سازی PHQL برنامه اجرا
 
 As well as most moderns database systems PHQL internally caches the execution plan, if the same statement is executed several times PHQL reuses the previously generated plan improving performance, for a developer to take better advantage of this is highly recommended build all your SQL statements passing variable parameters as bound parameters:
 

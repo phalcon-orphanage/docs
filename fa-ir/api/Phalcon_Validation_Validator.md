@@ -8,13 +8,13 @@ title: 'Phalcon\Validation\Validator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
 
 This is a base class for validators
 
-## Methods
+## روش ها
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 Phalcon\Validation\Validator constructor
 

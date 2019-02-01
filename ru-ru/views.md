@@ -7,17 +7,17 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Using Views
+# Использование представлений
 
 Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are responsible for the managing the view layer of your MVC application.
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) и [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) отвечают за слой представления вашего MVC-приложения.
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## Интеграция представлений с контроллерами
 
-Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
+Phalcon автоматически передает управление представлению сразу после завершения цикла работы соответствующего контроллера. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
 | Server Address           | 127.0.0.1 |
 | ------------------------ | --------- |
@@ -52,7 +52,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 <a name='hierarchical-rendering'></a>
 
-## Hierarchical Rendering
+## Иерархическая отрисовка
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a hierarchy of files and is the default component for view rendering in Phalcon. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
@@ -130,7 +130,7 @@ The generated HTML by the request will be:
 
 <a name='using-templates'></a>
 
-### Using Templates
+### Использование шаблонов
 
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
@@ -292,7 +292,7 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 
 <a name='control-rendering-levels'></a>
 
-### Control Rendering Levels
+### Управление уровнями отрисовки
 
 As seen above, [Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
@@ -344,7 +344,7 @@ The available render levels are:
 
 <a name='disabling-render-levels'></a>
 
-### Disabling render levels
+### Отключение уровней отрисовки
 
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
@@ -398,7 +398,7 @@ class PostsController extends Controller
 
 <a name='picking-views'></a>
 
-### Picking Views
+### Переопределение представлений
 
 As mentioned above, when [Phalcon\Mvc\View](api/Phalcon_Mvc_View) is managed by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) the view rendered is the one related with the last controller and action executed. You could override this by using the `Phalcon\Mvc\View::pick()` method:
 
@@ -433,7 +433,7 @@ class ProductsController extends Controller
 
 <a name='disabling-view'></a>
 
-### Disabling the view
+### Отключение представления
 
 If your controller does not produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
@@ -496,7 +496,7 @@ class UsersController extends Controller
 
 <a name='simple-rendering'></a>
 
-## Simple Rendering
+## Простая отрисовка
 
 [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) is an alternative component to [Phalcon\Mvc\View](api/Phalcon_Mvc_View). It keeps most of the philosophy of [Phalcon\Mvc\View](api/Phalcon_Mvc_View) but lacks of a hierarchy of files which is, in fact, the main feature of its counterpart.
 
@@ -599,7 +599,7 @@ echo $simpleView->render('posts/show', $params);
 
 <a name='using-partials'></a>
 
-## Using Partials
+## Части шаблонов
 
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
 
@@ -626,7 +626,7 @@ The `partial()` method does accept a second parameter as an array of variables/p
 
 <a name='value-transfer'></a>
 
-## Transfer values from the controller to views
+## Передача переменных контроллера
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
 
@@ -686,7 +686,7 @@ A variable with the name of the first parameter of `setVar()` will be created in
 
 <a name='caching-fragments'></a>
 
-## Caching View Fragments
+## Кэширование фрагментов представления
 
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) offers caching a part or the whole rendered output to increase performance.
 
@@ -814,7 +814,7 @@ class DownloadController extends Controller
 
 <a name='template-engines'></a>
 
-## Template Engines
+## Шаблонизаторы
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) allows you to use other template engines instead of plain PHP or Volt.
 
@@ -826,7 +826,7 @@ This component uses adapters, these help Phalcon to speak with those external te
 
 <a name='custom-template-engine'></a>
 
-### Creating your own Template Engine Adapter
+### Создание собственного адаптера для шаблонизатора
 
 There are many template engines, which you might want to integrate or create one of your own. The first step to start using an external template engine is create an adapter for it.
 
@@ -876,7 +876,7 @@ class MyTemplateAdapter extends Engine
 
 <a name='changing-template-engine'></a>
 
-### Changing the Template Engine
+### Изменение шаблонизатора
 
 You can replace the template engine completely or use more than one template engine at the same time. The method `Phalcon\Mvc\View::registerEngines()` accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
 
@@ -923,7 +923,7 @@ There are adapters available for several template engines on the [Phalcon Incuba
 
 <a name='injecting-services'></a>
 
-## Injecting services in View
+## Внедрение сервисов в представление
 
 Every view executed is included inside a [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) instance, providing easy access to the application's service container.
 
@@ -944,13 +944,13 @@ $.ajax({
 
 <a name='stand-alone'></a>
 
-## Stand-Alone Component
+## Отдельное использование компонента
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
 <a name='stand-alone-hierarchical-rendering'></a>
 
-### Hierarchical Rendering
+### Иерархическая отрисовка
 
 Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) in a stand-alone mode can be demonstrated below:
 
@@ -1010,7 +1010,7 @@ echo $view->getRender(
 
 <a name='stand-alone-simple-rendering'></a>
 
-### Simple Rendering
+### Простая отрисовка
 
 Using [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) in a stand-alone mode can be demonstrated below:
 
@@ -1039,17 +1039,17 @@ echo $view->render(
 
 <a name='events'></a>
 
-## View Events
+## События компонента представлений
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
-| Название события | Срабатывает                                   | Можно остановить операцию? |
-| ---------------- | --------------------------------------------- |:--------------------------:|
-| beforeRender     | Triggered before starting the render process  |             Да             |
-| beforeRenderView | Triggered before rendering an existing view   |             Да             |
-| afterRenderView  | Triggered after rendering an existing view    |            Нет             |
-| afterRender      | Triggered after completing the render process |            Нет             |
-| notFoundView     | Triggered when a view was not found           |            Нет             |
+| Название события | Срабатывает                                             | Можно остановить операцию? |
+| ---------------- | ------------------------------------------------------- |:--------------------------:|
+| beforeRender     | Вызывается перед началом отрисовки                      |             Да             |
+| beforeRenderView | Вызывается перед отрисовкой существующего представления |             Да             |
+| afterRenderView  | Вызывается после отрисовки представления                |            Нет             |
+| afterRender      | Triggered after completing the render process           |            Нет             |
+| notFoundView     | Triggered when a view was not found                     |            Нет             |
 
 В следующем примере показано, как назначить слушателей к компоненту:
 

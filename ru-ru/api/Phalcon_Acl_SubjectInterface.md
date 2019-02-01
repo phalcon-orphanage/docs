@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\SubjectInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectinterface.zep)
 
-## Methods
+## Методы
 
 ```php
 public getDescription(): string

@@ -6,31 +6,31 @@ title: 'Phalcon\Image\AdapterInterface'
 ---
 # Interface **Phalcon\Image\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
-
-...
-
-abstract public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
+abstrak publik ** ubah ukuran ** ([ * campuran * $ width ], [ * campuran * $ height ], [ * mixed * $ master ])
 
 ...
 
-abstract public **rotate** (*mixed* $degrees)
+public abstract ** tanaman </ 0> ( * dicampur </ 1> $ lebar , * dicampur </ 1> $ tinggi , [ * dicampur </ 1> $ offsetx ], [ * dicampur </ 1> $ offsetY ])</p> 
 
 ...
 
-abstract public **flip** (*mixed* $direction)
+publik abstrak ** putar </ 0> ( * dicampur </ 1> $ derajat )</p> 
 
 ...
 
-abstract public **sharpen** (*mixed* $amount)
+publik abstrak ** flip </ 0> ( * dicampur </ 1> $ direction )</p> 
 
 ...
 
-abstract public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
+publik abstrak ** mempertajam </ 0> ( * campuran </ 1> $ amount )</p> 
+
+...
+
+abstrak publik ** pantulan </ 0> ( * campuran </ 1> $ height , [ * campuran </ 1> $ kegelapan ], [ * campuran </ 1> $ fadeIn ])</p> 
 
 ...
 
@@ -38,7 +38,7 @@ abstract public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $w
 
 ...
 
-abstract public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
+teks abstrak ** teks </ 0> ( * campuran </ 1> $ teks , [ * campuran </ 1> $ offsetX ], [ * campuran </ 1> $ offsetY ], [ < 1> 1> campuran </ 1> $ kegelapan ], [ * campuran </ 1> $ warna ], [ * campuran </ 1> $ ukuran ], [ * campuran </ 1> $ fontfile ])</p> 
 
 ...
 
@@ -46,22 +46,22 @@ abstract public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $waterm
 
 ...
 
-abstract public **background** (*mixed* $color, [*mixed* $opacity])
+abstrak publik ** latar belakang </ 0> ( * campuran </ 1> $ warna , [ * campuran </ 1> $ kegelapan ])</p> 
 
 ...
 
-abstract public **blur** (*mixed* $radius)
+publik abstrak ** blur </ 0> ( * campuran </ 1> $ radius )</p> 
 
 ...
 
-abstract public **pixelate** (*mixed* $amount)
+publik abstrak ** pixelate </ 0> ( * campuran </ 1> $ amount )</p> 
 
 ...
 
-abstract public **save** ([*mixed* $file], [*mixed* $quality])
+abstrak publik ** simpan </ 0> ([ * campuran </ 1> $ file ], [ * campuran </ 1> $ quality ])</p> 
 
 ...
 
-abstract public **render** ([*mixed* $ext], [*mixed* $quality])
+abstrak publik ** buat </ 0> ([ * campuran </ 1> $ ext ], [ * campuran </ 1> $ quality ])</p> 
 
 ...

@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Adding Operations
+## Προσθήκη Λειτουργιών
 
 Όπως αναφέρθηκε παραπάνω, η [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) είναι ένα αντικείμενο που μπορεί ή όχι να έχει πρόσβαση σε ένα σύνολο [θέματων](api/Phalcon_Acl_Subject) στη λίστα πρόσβασης.
 

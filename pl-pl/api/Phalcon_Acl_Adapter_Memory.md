@@ -6,11 +6,11 @@ title: 'Phalcon\Acl\Adapter\Memory'
 ---
 # Class **Phalcon\Acl\Adapter\Memory**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Extends | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) | | Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
 
-### Description
+### Ious
 
 Manages ACL lists in memory
 

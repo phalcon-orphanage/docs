@@ -1,0 +1,17 @@
+---
+layout: article
+language: 'pl-pl'
+version: '4.0'
+title: 'Phalcon\Filter\Sanitizer\FloatVal'
+---
+# Class [Phalcon\Filter\Sanitizer\FloatVal](Phalcon_Filter_Sanitizer_FloatVal)
+
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/float.zep)
+
+Sanitizes a value to an float
+
+### Metody
+
+```php
+public function __invoke( mixed $input ): mixed
+```

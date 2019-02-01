@@ -7,76 +7,33 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Annotations Parser
+# Parser adnotacji
 
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
-<?php
-
-/**
- * This is the class description
- *
- * @AmazingClass(true)
- */
-class Example
-{
-    /**
-     * This a property with a special feature
-     *
-     * @SpecialFeature
-     */
-    protected $someProperty;
-
-    /**
-     * This is a method
-     *
-     * @SpecialFeature
-     */
-    public function someMethod()
-    {
-        // ...
+<? php / ** * jest to opis klasy ** @AmazingClass(true) * / Klasa przykład {/ ** * ta właściwość ze specjalną funkcją ** @SpecialFeature * / chroniony $someProperty;      / ** * Jest to metoda ** @SpecialFeature * publicznych funkcji someMethod() {/ /...
     } }
 ```
 
 An annotation has the following syntax:
 
 ```php
-/**
- * @Annotation-Name
- * @Annotation-Name(param1, param2, ...)
- */
+/ ** * @Annotation-Name * @Annotation-Name(param1, param2,...) */
 ```
 
 Also, an annotation can be placed at any part of a docblock:
 
 ```php
-<?php
-
-/**
- * This a property with a special feature
- *
- * @SpecialFeature
- *
- * More comments
- *
- * @AnotherSpecialFeature(true)
- */
+<? php / ** * ta właściwość ze specjalną funkcją ** @SpecialFeature ** więcej uwag ** @AnotherSpecialFeature(true) * /
 ```
 
 The parser is highly flexible, the following docblock is valid:
 
 ```php
-<?php
-
-/**
- * This a property with a special feature @SpecialFeature({
-someParameter='the value', false
-
- })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
- **/
+<? php / ** * tę właściwość przy użyciu specjalnych funkcji @SpecialFeature ({someParameter = 'wartość', false}) więcej komentarze @AnotherSpecialFeature(true) @MoreAnnotations ** /
 ```
 
 However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
@@ -85,8 +42,8 @@ However, to make the code more maintainable and understandable it is recommended
 <?php
 
 /**
- * This a property with a special feature
- * More comments
+ * To jest właściwość ze specjalną funkcją
+ * Więcej komentarzy
  *
  * @SpecialFeature({someParameter='the value', false})
  * @AnotherSpecialFeature(true)
@@ -95,9 +52,9 @@ However, to make the code more maintainable and understandable it is recommended
 
 <a name='factory'></a>
 
-## Factory
+## Fabryka
 
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). Ten, którego użyjesz będzie polegał na potrzebach twojej aplikacji. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -115,12 +72,12 @@ However you can also utilize the factory method to achieve the same thing:
 <?php
 
 
-use Phalcon\Annotations\Factory;
+użyj Phalcon\Annotations\Factory;
 
 $options = [
-    'prefix'   => 'annotations',
+    'prefix'   => 'adnotacje',
     'lifetime' => '3600',
-    'adapter'  => 'memory',      // Load the Memory adapter
+    'adapter'  => 'pamięć',      // Załaduj adapter Memory
 ];
 
 $annotations = Factory::load($options);
@@ -130,32 +87,32 @@ The Factory loader provides more flexibility when dealing with instantiating ann
 
 <a name='reading'></a>
 
-## Reading Annotations
+## Czytanie adnotacji
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 ```php
 <?php
 
-use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+użyj Phalcon\Annotations\Adapter\Memory jako MemoryAdapter;
 
-$reader = new MemoryAdapter();
+$reader = nowy MemoryAdapter();
 
-// Reflect the annotations in the class Example
+// Reflektuj adnotacje w Klasie Example
 $reflector = $reader->get('Example');
 
-// Read the annotations in the class' docblock
+// Przeczytaj adnotacje w klasie' docblock
 $annotations = $reflector->getClassAnnotations();
 
-// Traverse the annotations
+// Trawersuj adnotacje
 foreach ($annotations as $annotation) {
     // Print the annotation name
     echo $annotation->getName(), PHP_EOL;
 
-    // Print the number of arguments
+    // Drukuj liczbę argumentów
     echo $annotation->numberArguments(), PHP_EOL;
 
-    // Print the arguments
+    // Drukuj argumenty
     print_r($annotation->getArguments());
 }
 ```
@@ -166,7 +123,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Types of Annotations
+## Typy adnotacji
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -174,64 +131,65 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 <?php
 
 /**
- * Simple Annotation
+ * Prosta Adnotacja
  *
- * @SomeAnnotation
+ * @JakaśAdnotacja
  */
 
 /**
- * Annotation with parameters
+ * Adnotacja z parametrami
  *
- * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
+ * @JakaśAdnotacja('witaj', 'świecie', 1, 2, 3, fałsz, prawda)
  */
 
 /**
- * Annotation with named parameters
+ * Adnotacja z nazwanymi parametrami
  *
- * @SomeAnnotation(first='hello', second='world', third=1)
- * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
+ *
+ * @JakaśAdnotacja(pierwsza='witaj', druga='świecie', trzecia=1)
+ * @JakaśAdnotacja(pierwsza: 'witaj', druga: 'świecie', trzecia: 1)
  */
 
 /**
- * Passing an array
+ * Podanie szyku
  *
- * @SomeAnnotation([1, 2, 3, 4])
- * @SomeAnnotation({1, 2, 3, 4})
+ * @JakaśAdnotacja([1, 2, 3, 4])
+ * @JakaśAdnotacja({1, 2, 3, 4})
  */
 
 /**
- * Passing a hash as parameter
+ *Podanie hashu jako parametru
  *
- * @SomeAnnotation({first=1, second=2, third=3})
- * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
- * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
- * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
+ * @JakaśAdnotacja({pierwsza=1, druga=2, trzecia=3})
+ * @JakaśAdnotacja({'pierwsza'=1, 'druga'=2, 'trzecia'=3})
+ * @JakaśAdnotacja({'pierwsza': 1, 'druga': 2, 'trzecia': 3})
+ * @JakaśAdnotacja(['pierwsza': 1, 'druga': 2, 'trzecia': 3])
  */
 
 /**
- * Nested arrays/hashes
+ * Zagnieżdżone szyki/hashe
  *
- * @SomeAnnotation({'name'='SomeName', 'other'={
- *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
+ * @JakaśAdnotacja({'nazwa'='JakaśNazwa', 'inne'={
+ * 'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
  * }})
  */
 
 /**
- * Nested Annotations
+ * Zagnieżdżone Adnotacje
  *
- * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
+ * @JakaśAdnotacja(pierwsza=@InnaAdnotacja(1, 2, 3))
  */
 ```
 
 <a name='usage'></a>
 
-## Practical Usage
+## Praktyczne wykorzystanie
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler with Annotations
+### Włącznik pamięci podręcznej z adnotacjami
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
@@ -346,7 +304,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### Private/Public areas with Annotations
+### Prywatny/Publiczny obszar z adnotacjami
 
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
@@ -410,25 +368,25 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## Annotations Adapters
+## Adnotacje Adapterów
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Klasa                                                                           | Description                                                                                                                                                                       |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| [Phalcon\Annotations\Adapter\Apc](api/Phalcon_Annotations_Adapter_Apc)       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
-| [Phalcon\Annotations\Adapter\Xcache](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
+| Klasa                                                                          | Ious                                                                                                                                                                              |
+| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Adnotacje\Adaptery\Pamięć](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
+| [Phalcon\Adnotacje\Adaptery\Pliki](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| [Phalcon\Adnotacje\Adaptery\Apc](api/Phalcon_Annotations_Adapter_Apc)       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
+| [Phalcon\Adnotacje\Adaptery\Xcache](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
 <a name='adapters-custom'></a>
 
-### Implementing your own adapters
+### Realizacja własnych kart
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## External Resources
+## Zasoby zewnętrzne
 
-* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Samouczek: Tworzenie własnego modelu inicjatora z adnotacjami](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

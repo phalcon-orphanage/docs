@@ -25,7 +25,7 @@ echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
 
 ```
 
-## Methods
+## Методы
 
 public **setEncoding** (*mixed* $encoding)
 

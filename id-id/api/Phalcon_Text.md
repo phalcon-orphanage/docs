@@ -6,9 +6,9 @@ title: 'Phalcon\Text'
 ---
 # Abstract class **Phalcon\Text**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
-Provides utilities to work with texts
+Menyediakan utilitas untuk bekerja dengan teks
 
 ## Constants
 
@@ -24,11 +24,11 @@ Provides utilities to work with texts
 
 *integer* **RANDOM_DISTINCT**
 
-## Methods
+## Metode
 
 public static **camelize** (*mixed* $str, [*mixed* $delimiter])
 
-Converts strings to camelize style
+Mengkoversikan gaya ke string
 
 ```php
 <?php
@@ -41,7 +41,7 @@ echo Phalcon\Text::camelize("co_co-bon_go", "_-"); // CoCoBonGo
 
 public static **uncamelize** (*mixed* $str, [*mixed* $delimiter])
 
-Uncamelize strings which are camelized
+Uncamelize deretan yang dikemudikan
 
 ```php
 <?php
@@ -53,7 +53,7 @@ echo Phalcon\Text::uncamelize("CocoBongo", "-"); // coco-bongo
 
 public static **increment** (*mixed* $str, [*mixed* $separator])
 
-Adds a number to a string or increment that number if it already is defined
+Menambahkan sebuah nomor ke sebuah string atau menaikan nomor itu jika sudah didefinisikan
 
 ```php
 <?php
@@ -79,7 +79,7 @@ echo Text::random(Text::RANDOM_ALNUM);
 
 public static **startsWith** (*mixed* $str, *mixed* $start, [*mixed* $ignoreCase])
 
-Check if a string starts with a given string
+Periksa apakah deretan dimulai dengan deretan yang diberikan
 
 ```php
 <?php
@@ -92,7 +92,7 @@ echo Phalcon\Text::startsWith("Hello", "he"); // true
 
 public static **endsWith** (*mixed* $str, *mixed* $end, [*mixed* $ignoreCase])
 
-Check if a string ends with a given string
+Periksa apakah deretan diakhiri dengan deretan yang diberikan
 
 ```php
 <?php
@@ -105,7 +105,7 @@ echo Phalcon\Text::endsWith("Hello", "LLO"); // true
 
 public static **lower** (*mixed* $str, [*mixed* $encoding])
 
-Lowercases a string, this function makes use of the mbstring extension if available
+Turunkan deretan, fungsi ini memanfaatkan ekstensi mbderetan jika tersedia
 
 ```php
 <?php
@@ -116,7 +116,7 @@ echo Phalcon\Text::lower("HELLO"); // hello
 
 public static **upper** (*mixed* $str, [*mixed* $encoding])
 
-Uppercases a string, this function makes use of the mbstring extension if available
+Mengisi sebuah deretan, fungsi ini memanfaatkan ekstensi deretan jika tersedia
 
 ```php
 <?php
@@ -127,7 +127,7 @@ echo Phalcon\Text::upper("hello"); // HELLO
 
 public static **reduceSlashes** (*mixed* $str)
 
-Reduces multiple slashes in a string to single slashes
+Mengurangi beberapa garis miring dalam deretan menjadi satu garis miring
 
 ```php
 <?php
@@ -139,7 +139,7 @@ echo Phalcon\Text::reduceSlashes("https://foo.bar///baz/buz"); // https://foo.ba
 
 public static **concat** ()
 
-Concatenates strings using the separator only once without duplication in places concatenation
+Persatukan deretan menggunakan pemisah hanya satu kali tanpa duplikasi di tempat penggabungan
 
 ```php
 <?php
@@ -159,7 +159,7 @@ echo $str;
 
 public static **dynamic** (*mixed* $text, [*mixed* $leftDelimiter], [*mixed* $rightDelimiter], [*mixed* $separator])
 
-Generates random text in accordance with the template
+Menghasilkan teks acak sesuai dengan contoh
 
 ```php
 <?php
@@ -180,7 +180,7 @@ echo Phalcon\Text::dynamic("[Hi/Hello], my name is a [Zyxep/Mark]!", "[", "]", "
 
 public static **underscore** (*mixed* $text)
 
-Makes a phrase underscored instead of spaced
+Membuat sebuah frase menggarisbawahi bukan spasi
 
 ```php
 <?php
@@ -192,7 +192,7 @@ echo Phalcon\Text::underscore("Awesome Phalcon"); // "Awesome_Phalcon"
 
 public static **humanize** (*mixed* $text)
 
-Makes an underscored or dashed phrase human-readable
+Membuat sebuah frase yang digarisbawahi atau putus-putus yang bisa dibaca manusia
 
 ```php
 <?php

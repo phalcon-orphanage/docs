@@ -12,7 +12,7 @@ title: 'Phalcon\Config\Factory'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
-Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
+Carga la clase Adaptador Config usando la opción 'adapter', si no se provee una extensión se agregara a filePath
 
 ```php
 <?php

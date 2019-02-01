@@ -6,9 +6,9 @@ title: 'Phalcon\Forms\Manager'
 ---
 # Class **Phalcon\Forms\Manager**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
-## Methods
+## Metodlar
 
 public **create** (*string* $name, [*object* $entity])
 
@@ -16,12 +16,12 @@ Creates a form registering it in the forms manager
 
 public **get** (*mixed* $name)
 
-Returns a form by its name
+Bir formu adıyla döndürür
 
 public **has** (*mixed* $name)
 
-Checks if a form is registered in the forms manager
+Bir formun form yöneticisinde kayıtlı olup olmadığını kontrol eder
 
 public **set** (*mixed* $name, [Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-Registers a form in the Forms Manager
+Form Yöneticisi'ne bir form kaydeder

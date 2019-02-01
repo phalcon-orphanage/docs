@@ -8,11 +8,11 @@ title: 'Phalcon\Forms\Element'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
 
 This is a base class for form elements
 
-## Methods
+## روش ها
 
 public **__construct** (*string* $name, [*array* $attributes])
 

@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Between'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\مابین'
 ---
 # Class **Phalcon\Validation\Validator\Between**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Between'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
 
 Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.
 
@@ -58,7 +58,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

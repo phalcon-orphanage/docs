@@ -6,19 +6,19 @@ title: 'Phalcon\Mvc\Router\RouteInterface'
 ---
 # Interface **Phalcon\Mvc\Router\RouteInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setHostname** (*mixed* $hostname)
-
-...
-
-abstract public **getHostname** ()
+abstrak publik **setHostname** (*dicampur* $hostname)
 
 ...
 
-abstract public **compilePattern** (*mixed* $pattern)
+abstrak publik **getHostname** ()
+
+...
+
+publik **kompilasiPola** (*campuraduk* $pattern)
 
 ...
 
@@ -26,15 +26,15 @@ abstract public **via** (*mixed* $httpMethods)
 
 ...
 
-abstract public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
+abstrak umum **addRole** (*campuran* $pattern, [*campuran* $paths])
 
 ...
 
-abstract public **getName** ()
+abstrak publik **getName** ()
 
 ...
 
-abstract public **setName** (*mixed* $name)
+abstract umum$name$name$name$name **setName** (*mixed* $nama)
 
 ...
 
@@ -42,23 +42,23 @@ abstract public **setHttpMethods** (*mixed* $httpMethods)
 
 ...
 
-abstract public **getRouteId** ()
+publik abstrak **getFrontend** ()
 
 ...
 
-abstract public **getPattern** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getCompiledPattern** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getPaths** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **getReversedPaths** ()
+abstrak publik **getReferencedTable** ()
 
 ...
 
@@ -66,6 +66,6 @@ abstract public **getHttpMethods** ()
 
 ...
 
-abstract public static **reset** ()
+publik static **reset** ()
 
 ...

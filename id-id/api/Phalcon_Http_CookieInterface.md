@@ -6,27 +6,27 @@ title: 'Phalcon\Http\CookieInterface'
 ---
 # Interface **Phalcon\Http\CookieInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setValue** (*mixed* $value)
-
-...
-
-abstract public **getValue** ([*mixed* $filters], [*mixed* $defaultValue])
+publik abstrak **setValue** (*mixed* $value)
 
 ...
 
-abstract public **send** ()
+abstrak publik **mendapatkanNilai** ([*campuran* $filters], [*campuran* $defaultValue])
 
 ...
 
-abstract public **delete** ()
+abstrak publik **kirim** ()
 
 ...
 
-abstract public **useEncryption** (*mixed* $useEncryption)
+abstrak publik **hapus** ()
+
+...
+
+abstrak publik **menggunakanEnkripsi** (*campuran* $useEncryption)
 
 ...
 
@@ -46,7 +46,7 @@ abstract public **setPath** (*mixed* $path)
 
 ...
 
-abstract public **getName** ()
+abstrak publik **getName** ()
 
 ...
 

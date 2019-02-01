@@ -1,0 +1,23 @@
+---
+layout: article
+language: 'id-id'
+version: '4.0'
+upgrade: '#logger'
+category: 'logger'
+---
+# Logger Component
+
+* * *
+
+## Pemformatan pesan
+
+### Syslog Formatter
+
+Formats the messages returning an array with the type and message as elements:
+
+```bash
+[
+    "type",
+    "message",
+]
+```

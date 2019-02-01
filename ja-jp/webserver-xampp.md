@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# XAMPP にインストール
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
@@ -29,7 +29,7 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. ファイルの末尾に追加します:
 
 ```ini
 extension=php_phalcon.dll
@@ -72,4 +72,4 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 ## Related Guides
 
 * [General Installation](/4.0/en/installation)
-* [Installation on WAMP](/4.0/en/webserver-wamp)
+* [WAMP にインストール](/4.0/en/webserver-wamp)

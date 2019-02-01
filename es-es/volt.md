@@ -13,7 +13,7 @@ Volt is an ultra-fast and designer friendly templating language written in C for
 
 ![](/assets/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](https://jinja.pocoo.org/), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
 <a name='introduction'></a>
 

@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Adapter'
 
 *implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
 Adapter for Phalcon\Acl adapters
 
-## Methods
+## روش ها
 
 ```php
 public getActiveAccess()
@@ -43,7 +43,7 @@ Subject which the list is checking if some operation can access it
 public getDefaultAction()
 ```
 
-Returns the default ACL access level
+سطح دسترسی ACL پیش فرض را برمی گرداند
 
 * * *
 
@@ -55,7 +55,7 @@ public getEventsManager()
     public setDefaultAction(mixed $defaultAccess)
     
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+سطح دسترسی پیش فرض را تنظیم می کند (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
 * * *
 
@@ -63,7 +63,7 @@ Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 public setEventsManager([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 ```
 
-Sets the events manager
+مجموعه مدیریت رویدادها
 
 * * *
 

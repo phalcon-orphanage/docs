@@ -6,9 +6,9 @@ title: 'Phalcon\Http\ResponseInterface'
 ---
 # Interface **Phalcon\Http\ResponseInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **setStatusCode** (*mixed* $code, [*mixed* $message])
 

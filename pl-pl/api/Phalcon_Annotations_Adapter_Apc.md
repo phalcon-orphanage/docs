@@ -2,7 +2,7 @@
 layout: article
 language: 'pl-pl'
 version: '4.0'
-title: 'Phalcon\Annotations\Adapter\Apc'
+title: 'Phalcon\Adnotacje\Adaptery\Apc'
 ---
 # Class **Phalcon\Annotations\Adapter\Apc**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Apc'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
 
 Stores the parsed annotations in APC. This adapter is suitable for production
 

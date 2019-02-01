@@ -4,56 +4,60 @@ language: 'fa-ir'
 version: '4.0'
 title: 'Phalcon\Acl\Exception'
 ---
-# Class **Phalcon\Acl\Exception**
+# Class [Phalcon\Acl\Exception](Phalcon_Acl_Exception)
 
-*extends* class [Phalcon\Exception](Phalcon_Exception)
+**extends** [Phalcon\Exception](Phalcon_Exception)
 
-*implements* [Throwable](https://php.net/manual/en/class.throwable.php)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+Exceptions thrown in `Phalcon\Acl\*` will use this class
 
-## Methods
+## روش ها
 
-final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getCode(): int
+```
 
-Clone the exception
+Gets the exception code
 
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getFile(): string
+```
 
-Exception constructor
+می دهد فایل که در آن استثنا اتفاق افتاده است
 
-public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getLine(): int
+```
 
-...
+Gets the line on which the object was instantiated
 
-final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getMessage(): string
+```
 
-Gets the Exception message
+Gets the message
 
-final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getPrevious(): \Throwable
+```
 
-Gets the Exception code
+Get the previous `\Throwable` object
 
-final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
-
-Gets the file in which the exception occurred
-
-final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
-
-Gets the line in which the exception occurred
-
-final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getTrace(): array
+```
 
 Gets the stack trace
 
-final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
-
-Returns previous Exception
-
-final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function getTraceAsString(): string
+```
 
 Gets the stack trace as a string
 
-public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function __toString(): string
+```
 
-String representation of the exception
+Gets a string representation of the thrown object

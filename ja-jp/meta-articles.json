@@ -1,312 +1,312 @@
 {
   "acl": [
     {
-      "text": "Overview",
-      "url": "#overview"
+      "text": "ACL",
+      "url": "/acl"
     },
     {
-      "text": "Creating an ACL",
-      "url": "#setup"
+      "text": "アクセス制御リストの作成",
+      "url": "/acl-setup"
     },
     {
       "text": "Adding Operations",
-      "url": "#adding-operations"
+      "url": "/acl-adding-operations"
     },
     {
       "text": "Adding Subjects",
-      "url": "#adding-subjects"
+      "url": "/acl-adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
-      "url": "#access-controls"
+      "text": "アクセス制御の定義",
+      "url": "/acl-access-controls"
     },
     {
-      "text": "Querying an ACL",
-      "url": "#querying"
+      "text": "アクセス制御リストへのクエリー",
+      "url": "/acl-querying"
     },
     {
-      "text": "Function based access",
-      "url": "#function-based-access"
+      "text": "関数ベースアクセス",
+      "url": "/acl-function-based-access"
     },
     {
       "text": "Objects as Operation and Subject name",
-      "url": "#objects"
+      "url": "/acl-objects"
     },
     {
       "text": "Operations Inheritance",
-      "url": "#operationss-inheritance"
+      "url": "/acl-operations-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
-      "url": "#serialization"
+      "text": "アクセス制御リストリストのシリアライズ",
+      "url": "/acl-serialization"
     },
     {
-      "text": "Events",
-      "url": "#events"
+      "text": "イベント",
+      "url": "/acl-events"
     },
     {
-      "text": "Implementing your own adapters",
-      "url": "#custom-adapters"
+      "text": "独自のアダプターを実装",
+      "url": "/acl-custom-adapters"
     }
   ],
   "annotations": [
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "/annotations#overview"
     },
     {
       "text": "Factory",
-      "url": "#setup"
+      "url": "/annotations#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
-      "url": "#factory"
+      "text": "アクセス制御リストへロールの追加",
+      "url": "/annotations#factory"
     },
     {
       "text": "Reading Annotations",
-      "url": "#reading"
+      "url": "/annotations#reading"
     },
     {
       "text": "Types of Annotations",
-      "url": "#types"
+      "url": "/annotations#types"
     },
     {
       "text": "Practical Usage",
-      "url": "#usage",
+      "url": "/annotations#usage",
       "menu": [
         {
           "text": "Cache Enabler with Annotations",
-          "url": "#usage-cache"
+          "url": "/annotations#usage-cache"
         },
         {
           "text": "Private/Public areas with Annotations",
-          "url": "#usage-access-management"
+          "url": "/annotations#usage-access-management"
         }
       ]
     },
     {
       "text": "Annotations Adapters",
-      "url": "#adapters",
+      "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
-          "url": "#adapters-custom"
+          "text": "独自のアダプターを実装",
+          "url": "/annotations#adapters-custom"
         }
       ]
     },
     {
       "text": "External Resources",
-      "url": "#resources"
+      "url": "/annotations#resources"
     }
   ],
   "application-cli": [
     {
       "text": "Creating a CLI Application",
-      "url": "#creating-cli-application"
+      "url": "/application-cli#creating-cli-application"
     },
     {
       "text": "Structure",
-      "url": "#structure"
+      "url": "/application-cli#structure"
     },
     {
       "text": "Creating a Bootstrap",
-      "url": "#creating-bootstrap"
+      "url": "/application-cli#creating-bootstrap"
     },
     {
       "text": "Tasks",
-      "url": "#tasks"
+      "url": "/application-cli#tasks"
     },
     {
       "text": "Processing action parameters",
-      "url": "#processing-action-parameters"
+      "url": "/application-cli#processing-action-parameters"
     },
     {
       "text": "Running tasks in a chain",
-      "url": "#running-tasks-chain"
+      "url": "/application-cli#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
       "text": "Creating a Micro Application",
-      "url": "#creating-micro-application"
+      "url": "/application-micro#creating-micro-application"
     },
     {
       "text": "Routing",
-      "url": "#routing",
+      "url": "/application-micro#routing",
       "menu": [
         {
           "text": "Setup",
-          "url": "#routing-setup",
+          "url": "/application-micro#routing-setup",
           "menu": [
             {
               "text": "Application object",
-              "url": "#routing-setup-application"
+              "url": "/application-micro#routing-setup-application"
             },
             {
               "text": "Router object",
-              "url": "#routing-setup-router"
+              "url": "/application-micro#routing-setup-router"
             }
           ]
         },
         {
           "text": "Rewrite Rules",
-          "url": "#rewrite-rules"
+          "url": "/application-micro#rewrite-rules"
         },
         {
           "text": "Handlers",
-          "url": "#routing-handlers",
+          "url": "/application-micro#routing-handlers",
           "menu": [
             {
               "text": "Definitions",
-              "url": "#routing-handlers-definitions",
+              "url": "/application-micro#routing-handlers-definitions",
               "menu": [
                 {
                   "text": "Anonymous Function",
-                  "url": "#routing-handlers-anonymous-function"
+                  "url": "/application-micro#routing-handlers-anonymous-function"
                 },
                 {
                   "text": "Function",
-                  "url": "#routing-handlers-function"
+                  "url": "/application-micro#routing-handlers-function"
                 },
                 {
                   "text": "Static Method",
-                  "url": "#routing-handlers-static-method"
+                  "url": "/application-micro#routing-handlers-static-method"
                 },
                 {
                   "text": "Method in an Object",
-                  "url": "#routing-handlers-object-method"
+                  "url": "/application-micro#routing-handlers-object-method"
                 },
                 {
                   "text": "Controllers",
-                  "url": "#routing-handlers-controllers"
+                  "url": "/application-micro#routing-handlers-controllers"
                 }
               ]
             },
             {
               "text": "Lazy Loading",
-              "url": "#routing-handlers-controllers-lazy-loading",
+              "url": "/application-micro#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
                   "text": "Use case",
-                  "url": "#routing-handlers-controllers-lazy-loading-use-case"
+                  "url": "/application-micro#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
               "text": "Not Found (404)",
-              "url": "#routing-handlers-not-found"
+              "url": "/application-micro#routing-handlers-not-found"
             }
           ]
         },
         {
           "text": "Methods - Verbs",
-          "url": "#routing-verbs",
+          "url": "/application-micro#routing-verbs",
           "menu": [
             {
               "text": "delete",
-              "url": "#routing-verb-delete"
+              "url": "/application-micro#routing-verb-delete"
             },
             {
               "text": "get",
-              "url": "#routing-verb-get"
+              "url": "/application-micro#routing-verb-get"
             },
             {
               "text": "head",
-              "url": "#routing-verb-head"
+              "url": "/application-micro#routing-verb-head"
             },
             {
               "text": "map",
-              "url": "#routing-verb-map"
+              "url": "/application-micro#routing-verb-map"
             },
             {
               "text": "options",
-              "url": "#routing-verb-options"
+              "url": "/application-micro#routing-verb-options"
             },
             {
               "text": "patch",
-              "url": "#routing-verb-patch"
+              "url": "/application-micro#routing-verb-patch"
             },
             {
               "text": "post",
-              "url": "#routing-verb-post"
+              "url": "/application-micro#routing-verb-post"
             },
             {
               "text": "put",
-              "url": "#routing-verb-put"
+              "url": "/application-micro#routing-verb-put"
             }
           ]
         },
         {
           "text": "Collections",
-          "url": "#routing-collections"
+          "url": "/application-micro#routing-collections"
         },
         {
           "text": "Parameters",
-          "url": "#routing-parameters"
+          "url": "/application-micro#routing-parameters"
         },
         {
           "text": "Redirections",
-          "url": "#routing-redirections"
+          "url": "/application-micro#routing-redirections"
         },
         {
           "text": "URLs for Routes",
-          "url": "#routing-urls-for-routes"
+          "url": "/application-micro#routing-urls-for-routes"
         }
       ]
     },
     {
       "text": "Dependency Injector",
-      "url": "#dependency-injector"
+      "url": "/application-micro#dependency-injector"
     },
     {
       "text": "Responses",
-      "url": "#responses",
+      "url": "/application-micro#responses",
       "menu": [
         {
           "text": "Direct output",
-          "url": "#responses-direct-output"
+          "url": "/application-micro#responses-direct-output"
         },
         {
           "text": "Including another file",
-          "url": "#responses-include"
+          "url": "/application-micro#responses-include"
         },
         {
           "text": "Direct output JSON",
-          "url": "#responses-direct-output-json"
+          "url": "/application-micro#responses-direct-output-json"
         },
         {
           "text": "New Response object",
-          "url": "#responses-new-response-object"
+          "url": "/application-micro#responses-new-response-object"
         },
         {
           "text": "Application Response",
-          "url": "#responses-application-response"
+          "url": "/application-micro#responses-application-response"
         },
         {
           "text": "Return Application Response",
-          "url": "#responses-return-application-response"
+          "url": "/application-micro#responses-return-application-response"
         },
         {
           "text": "JSON",
-          "url": "#responses-json"
+          "url": "/application-micro#responses-json"
         }
       ]
     },
     {
-      "text": "Events",
-      "url": "#events",
+      "text": "イベント",
+      "url": "/application-micro#events",
       "menu": [
         {
           "text": "Available events",
-          "url": "#events-available-events",
+          "url": "/application-micro#events-available-events",
           "menu": [
             {
               "text": "Authentication example",
-              "url": "#events-available-events-authentication"
+              "url": "/application-micro#events-available-events-authentication"
             },
             {
               "text": "Not found example",
-              "url": "#events-available-events-not-found"
+              "url": "/application-micro#events-available-events-not-found"
             }
           ]
         }
@@ -314,83 +314,83 @@
     },
     {
       "text": "Middleware",
-      "url": "#",
+      "url": "/application-micro#middleware",
       "menu": [
         {
           "text": "Attached events",
-          "url": "#",
+          "url": "/application-micro#middleware-attached-events",
           "menu": [
             {
               "text": "before",
-              "url": "#"
+              "url": "/application-micro#middleware-attached-events-before"
             },
             {
               "text": "after",
-              "url": "#"
+              "url": "/application-micro#middleware-attached-events-after"
             },
             {
               "text": "finish",
-              "url": "#"
+              "url": "/application-micro#middleware-attached-events-finish"
             }
           ]
         },
         {
-          "text": "Implementation",
-          "url": "#"
+          "text": "Setup",
+          "url": "/application-micro#middleware-setup"
         },
         {
-          "text": "Setup",
-          "url": "#"
+          "text": "Implementation",
+          "url": "/application-micro#middleware-implementation"
         },
         {
           "text": "Events in Middleware",
-          "url": "#",
+          "url": "/application-micro#middleware-events",
           "menu": [
             {
               "text": "API example",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api"
             },
             {
               "text": "Firewall Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-firewall"
             },
             {
               "text": "Not Found Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-not-found"
             },
             {
               "text": "Redirect Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-redirect"
             },
             {
               "text": "CORS Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-cors"
             },
             {
               "text": "Request Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-request"
             },
             {
               "text": "Response Middleware",
-              "url": "#"
+              "url": "/application-micro#middleware-events-api-response"
             }
           ]
         },
         {
           "text": "Models",
-          "url": "#"
+          "url": "/application-micro#models"
         },
         {
           "text": "Injecting Model Instances",
-          "url": "#"
+          "url": "/application-micro#model-instances"
         },
         {
           "text": "Views",
-          "url": "#"
+          "url": "/application-micro#views"
         },
         {
           "text": "Error Handling",
-          "url": "#"
+          "url": "/application-micro#error-handling"
         }
       ]
     }
@@ -398,429 +398,429 @@
   "application": [
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "/application#overview"
     },
     {
       "text": "Manual Bootstrapping",
-      "url": "#manual-bootstrapping"
+      "url": "/application#manual-bootstrapping"
     },
     {
       "text": "Single or Multi Module Applications",
-      "url": "#single-vs-module",
+      "url": "/application#single-vs-module",
       "menu": [
         {
           "text": "Single Module",
-          "url": "#single"
+          "url": "/application#single"
         },
         {
           "text": "Multi Module",
-          "url": "#module"
+          "url": "/application#module"
         }
       ]
     },
     {
       "text": "Application Events",
-      "url": "#events"
+      "url": "/application#events"
     },
     {
       "text": "External Resources",
-      "url": "#resources"
+      "url": "/application#resources"
     }
   ],
   "assets": [
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "/assets#overview"
     },
     {
-      "text": "Adding Resources",
-      "url": "#add"
+      "text": "リソースの追加",
+      "url": "/assets#add"
     },
     {
       "text": "Local/Remote resources",
-      "url": "#resources-local-remote"
+      "url": "/assets#resources-local-remote"
     },
     {
       "text": "Collections",
-      "url": "#collections"
+      "url": "/assets#collections"
     },
     {
       "text": "URL Prefixes",
-      "url": "#url-prefixes"
+      "url": "/assets#url-prefixes"
     },
     {
       "text": "Minification/Filtering",
-      "url": "#minification-filtering",
+      "url": "/assets#minification-filtering",
       "menu": [
         {
           "text": "Built-In Filters",
-          "url": "#builtin-filters"
+          "url": "/assets#builtin-filters"
         },
         {
           "text": "Custom Filters",
-          "url": "#custom-filters"
+          "url": "/assets#custom-filters"
         }
       ]
     },
     {
       "text": "Custom Output",
-      "url": "#"
+      "url": "/assets#custom-output"
     },
     {
       "text": "Improving performance",
-      "url": "#"
+      "url": "/assets#improving-performance"
     }
   ],
   "cache": [
     {
-      "text": "Improving Performance with Cache",
-      "url": "#overview"
+      "text": "キャッシュによるパフォーマンスの向上",
+      "url": "/cache#overview"
     },
     {
-      "text": "When to implement cache?",
-      "url": "#implementation"
+      "text": "いつキャッシュを実装する？",
+      "url": "/cache#implementation"
     },
     {
-      "text": "Caching Behavior",
-      "url": "#caching-behavior"
+      "text": "キャッシュの振る舞い",
+      "url": "/cache#caching-behavior"
     },
     {
       "text": "Factory",
-      "url": "#factory"
+      "url": "/cache#factory"
     },
     {
-      "text": "Caching Output Fragments",
-      "url": "#output-fragments",
+      "text": "出力フラグメントのキャッシュ",
+      "url": "/cache#output-fragments",
       "menu": [
         {
-          "text": "Caching Arbitrary Data",
-          "url": "#arbitrary-data"
+          "text": "任意データのキャッシュ",
+          "url": "/cache#arbitrary-data"
         },
         {
-          "text": "File Backend Example",
-          "url": "#backend-file-example"
+          "text": "ファイルバックエンドの例",
+          "url": "/cache#backend-file-example"
         },
         {
-          "text": "Memcached Backend Example",
-          "url": "#backend-memcached-example"
+          "text": "Memcached バックエンドの例",
+          "url": "/cache#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "Querying the cache",
-      "url": "#read"
+      "text": "キャッシュの確認",
+      "url": "/cache#read"
     },
     {
-      "text": "Deleting data from the cache",
-      "url": "#delete"
+      "text": "キャッシュからのデータ削除",
+      "url": "/cache#delete"
     },
     {
-      "text": "Checking cache existence",
-      "url": "#exists"
+      "text": "キャッシュ有無の確認",
+      "url": "/cache#exists"
     },
     {
-      "text": "Lifetime",
-      "url": "#lifetime"
+      "text": "有効期間",
+      "url": "/cache#lifetime"
     },
     {
-      "text": "Multi-Level Cache",
-      "url": "#multi-level"
+      "text": "マルチレベルキャッシュ",
+      "url": "/cache#multi-level"
     },
     {
-      "text": "Frontend Adapters",
-      "url": "#adapters-frontend",
+      "text": "フロントエンド アダプター",
+      "url": "/cache#adapters-frontend",
       "menu": [
         {
-          "text": "Implementing your own Frontend adapters",
-          "url": "#adapters-frontend-custom"
+          "text": "独自フロントエンドアダプターの実装",
+          "url": "/cache#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "Backend Adapters",
-      "url": "#adapters-backend",
+      "text": "バックエンドアダプター",
+      "url": "adapters-backend",
       "menu": [
         {
           "text": "Factory",
-          "url": "#adapters-backend-factory"
+          "url": "/cache#adapters-backend-factory"
         },
         {
-          "text": "Implementing your own Backend adapters",
-          "url": "#adapters-backend-custom"
+          "text": "独自のバックエンドアダプターを実装",
+          "url": "/cache#adapters-backend-custom"
         },
         {
-          "text": "File Backend Options",
-          "url": "#adapters-backend-file"
+          "text": "ファイルバックエンドのオプション",
+          "url": "/cache#adapters-backend-file"
         },
         {
-          "text": "Libmemcached Backend Options",
-          "url": "#adapters-backend-libmemcached"
+          "text": "Libmemcachedバックエンドのオプション",
+          "url": "/cache#adapters-backend-libmemcached"
         },
         {
-          "text": "Memcache Backend Options",
-          "url": "#adapters-backend-memcache"
+          "text": "Memcacheバックエンドのオプション",
+          "url": "/cache#adapters-backend-memcache"
         },
         {
-          "text": "APC Backend Options",
-          "url": "#adapters-backend-apc"
+          "text": "APCバックエンドのオプション",
+          "url": "/cache#adapters-backend-apc"
         },
         {
-          "text": "APCU Backend Options",
-          "url": "#adapters-backend-apcu"
+          "text": "APCUバックエンドのオプション",
+          "url": "/cache#adapters-backend-apcu"
         },
         {
-          "text": "Mongo Backend Options",
-          "url": "#adapters-backend-mongo"
+          "text": "Mongoバックエンドのオプション",
+          "url": "/cache#adapters-backend-mongo"
         },
         {
-          "text": "XCache Backend Options",
-          "url": "#adapters-backend-xcache"
+          "text": "XCacheバックエンドのオプション",
+          "url": "/cache#adapters-backend-xcache"
         },
         {
-          "text": "Redis Backend Options",
-          "url": "#adapters-backend-redis"
+          "text": "Redisバックエンドのオプション",
+          "url": "/cache#adapters-backend-redis"
         }
       ]
     }
   ],
   "config": [
     {
-      "text": "Reading Configurations",
-      "url": "#overview",
+      "text": "設定の読み込み",
+      "url": "/config#overview",
       "menu": [
         {
           "text": "Factory",
-          "url": "#factory"
+          "url": "/config#factory"
         }
       ]
     },
     {
-      "text": "Native Arrays",
-      "url": "#native-arrays"
+      "text": "PHPの配列",
+      "url": "/config#native-arrays"
     },
     {
-      "text": "File Adapters",
-      "url": "#file-adapter"
+      "text": "ファイルアダプター",
+      "url": "/config#file-adapter"
     },
     {
-      "text": "Reading INI Files",
-      "url": "#ini-files"
+      "text": "INIファイルの読み込み",
+      "url": "/config#ini-files"
     },
     {
       "text": "URL Merging Configurations",
-      "url": "#merging"
+      "url": "/config#merging"
     },
     {
-      "text": "Nested Configuration",
-      "url": "#nested-configuration"
+      "text": "ネストした設定",
+      "url": "/config#nested-configuration"
     },
     {
-      "text": "Injecting Configuration Dependency",
-      "url": "#"
+      "text": "依存する設定のインジェクション",
+      "url": "/config#injecting-into-di"
     }
   ],
   "contributions": [
     {
       "text": "Contributing to Phalcon",
-      "url": "#contributing"
+      "url": "/contributions#contributing"
     },
     {
       "text": "Contributions",
-      "url": "#contributions"
+      "url": "/contributions#contributions"
     },
     {
       "text": "Questions and Support",
-      "url": "#file-adapter"
+      "url": "/contributions#file-adapter"
     },
     {
       "text": "Bug Report Checklist",
-      "url": "#bug-report-checklist",
+      "url": "/contributions#bug-report-checklist",
       "menu": [
         {
           "text": "Generating a backtrace",
-          "url": "#bug-report-generating-backtrace"
+          "url": "/contributions#bug-report-generating-backtrace"
         }
       ]
     },
     {
       "text": "Pull Request Checklist",
-      "url": "#pull-request-checklist"
+      "url": "/contributions#pull-request-checklist"
     },
     {
       "text": "Getting Support",
-      "url": "#getting-support"
+      "url": "/contributions#getting-support"
     },
     {
       "text": "Requesting Features",
-      "url": "#"
+      "url": "/contributions#requesting-features"
     }
   ],
   "controllers": [
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "/controllers#overview"
     },
     {
       "text": "Using Controllers",
-      "url": "#using"
+      "url": "/controllers#using"
     },
     {
       "text": "Dispatch Loop",
-      "url": "#dispatch-loop"
+      "url": "/controllers#dispatch-loop"
     },
     {
       "text": "Initializing Controller",
-      "url": "#initializing"
+      "url": "/controllers#initializing"
     },
     {
       "text": "Injecting Services",
-      "url": "#injecting-services"
+      "url": "/controllers#injecting-services"
     },
     {
       "text": "Request and Response",
-      "url": "#request-response"
+      "url": "/controllers#request-response"
     },
     {
       "text": "Session Data",
-      "url": "#session-data"
+      "url": "/controllers#session-data"
     },
     {
       "text": "Using Services as Controllers",
-      "url": "#services"
+      "url": "/controllers#services"
     },
     {
       "text": "Events in Controllers",
-      "url": "#events"
+      "url": "/controllers#events"
     }
   ],
   "cookies": [
     {
-      "text": "Cookies Management",
-      "url": "#overview"
+      "text": "cookieの管理",
+      "url": "/cookies#overview"
     },
     {
-      "text": "Basic Usage",
-      "url": "#usage"
+      "text": "基本的な使い方",
+      "url": "/cookies#usage"
     },
     {
-      "text": "Encryption/Decryption of Cookies",
-      "url": "#encryption-decryption"
+      "text": "cookieの暗号化/復号化",
+      "url": "/cookies#encryption-decryption"
     }
   ],
   "crypt": [
     {
       "text": "Encryption/Decryption",
-      "url": "#overview"
+      "url": "/crypt$overview"
     },
     {
-      "text": "Basic Usage",
-      "url": "#usage"
+      "text": "基本的な使い方",
+      "url": "/crypt$usage"
     },
     {
       "text": "Encryption Options",
-      "url": "#options"
+      "url": "/crypt$options"
     },
     {
       "text": "Base64 Support",
-      "url": "#base64"
+      "url": "/crypt$base64"
     },
     {
       "text": "Setting up an Encryption service",
-      "url": "#service"
+      "url": "/crypt$service"
     },
     {
       "text": "Links",
-      "url": "#links"
+      "url": "/crypt$links"
     }
   ],
   "db-layer": [
     {
-      "text": "Database Abstraction Layer",
-      "url": "#overview"
+      "text": "データベース抽象化レイヤー",
+      "url": "/db-layer#overview"
     },
     {
-      "text": "Database Adapters",
-      "url": "#adapters",
+      "text": "データベースアダプター",
+      "url": "/db-layer#adapters",
       "menu": [
         {
           "text": "Factory",
-          "url": "#adapters-factory"
+          "url": "/db-layer#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
-          "url": "#adapters-custom"
+          "text": "独自のアダプターを実装",
+          "url": "/db-layer#adapters-custom"
         }
       ]
     },
     {
-      "text": "Database Dialects",
-      "url": "#dialects",
+      "text": "データベースの方言",
+      "url": "/db-layer#dialects",
       "menu": [
         {
-          "text": "Implementing your own dialects",
-          "url": "#dialects-custom"
+          "text": "独自の方言を実装します",
+          "url": "/db-layer#dialects-custom"
         }
       ]
     },
     {
-      "text": "Connecting to Databases",
-      "url": "#connection"
+      "text": "データベースへの接続",
+      "url": "/db-layer#connection"
     },
     {
-      "text": "Setting up additional PDO options",
-      "url": "#options"
+      "text": "PDO の追加オプションを設定",
+      "url": "/db-layer#options"
     },
     {
-      "text": "Finding Rows",
-      "url": "#finding-rows"
+      "text": "行の検索",
+      "url": "/db-layer#finding-rows"
     },
     {
-      "text": "Binding Parameters",
-      "url": "#binding-parameters"
+      "text": "パラメーターのバインド",
+      "url": "/db-layer#binding-parameters"
     },
     {
-      "text": "Inserting/Updating/Deleting Rows",
-      "url": "#crud"
+      "text": "行の挿入、更新、および削除",
+      "url": "/db-layer#crud"
     },
     {
       "text": "Transactions and Nested Transactions",
-      "url": "#transactions"
+      "url": "/db-layer#transactions"
     },
     {
       "text": "Database Events",
-      "url": "#events"
+      "url": "/db-layer#events"
     },
     {
       "text": "Profiling SQL Statements",
-      "url": "#profiling"
+      "url": "/db-layer#profiling"
     },
     {
       "text": "Logging SQL Statements",
-      "url": "#logging-statements"
+      "url": "/db-layer#logging-statements"
     },
     {
       "text": "Implementing your own Logger",
-      "url": "#logger-custom"
+      "url": "/db-layer#logger-custom"
     },
     {
       "text": "Describing Tables/Views",
-      "url": "#describing-tables"
+      "url": "/db-layer#describing-tables"
     },
     {
       "text": "Creating/Altering/Dropping Tables",
-      "url": "#tables",
+      "url": "/db-layer#tables",
       "menu": [
         {
           "text": "Creating Tables",
-          "url": "#tables-create"
+          "url": "/db-layer#tables-create"
         },
         {
           "text": "Altering Tables",
-          "url": "#tables-altering"
+          "url": "/db-layer#tables-altering"
         },
         {
           "text": "Dropping Tables",
-          "url": "#tables-dropping"
+          "url": "/db-layer#tables-dropping"
         }
       ]
     }
@@ -828,147 +828,147 @@
   "db-migrations": [
     {
       "text": "Database Migrations",
-      "url": "#overview"
+      "url": "/db-migrations#overview"
     },
     {
       "text": "Schema Dumping",
-      "url": "#schema-dumping"
+      "url": "/db-migrations#schema-dumping"
     },
     {
       "text": "Migration Class Anatomy",
-      "url": "#class-anatomy",
+      "url": "/db-migrations#class-anatomy",
       "menu": [
         {
           "text": "Defining Columns",
-          "url": "#class-anatomy-columns"
+          "url": "/db-migrations#class-anatomy-columns"
         },
         {
           "text": "Defining Indexes",
-          "url": "#class-anatomy-indexes"
+          "url": "/db-migrations#class-anatomy-indexes"
         },
         {
           "text": "Defining References",
-          "url": "#class-anatomy-references"
+          "url": "/db-migrations#class-anatomy-references"
         }
       ]
     },
     {
       "text": "Writing Migrations",
-      "url": "#writing"
+      "url": "/db-migrations#writing"
     },
     {
       "text": "Running Migrations",
-      "url": "#running"
+      "url": "/db-migrations#running"
     }
   ],
   "db-models-behaviors": [
     {
       "text": "Model Behaviors",
-      "url": "#overview"
+      "url": "/db-models-behaviors#overview"
     },
     {
       "text": "Timestampable",
-      "url": "#timestampable"
+      "url": "/db-models-behaviors#timestampable"
     },
     {
       "text": "SoftDelete",
-      "url": "#softdelete"
+      "url": "softdelete"
     },
     {
       "text": "Creating your own behaviors",
-      "url": "#create-your-own-behaviors"
+      "url": "/db-models-behaviors#create-your-own-behaviors"
     },
     {
       "text": "Using Traits as behaviors",
-      "url": "#traits-as-behaviors"
+      "url": "/db-models-behaviors#traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
       "text": "ORM Caching",
-      "url": "#overview"
+      "url": "/db-models-cache#overview"
     },
     {
       "text": "Caching Resultsets",
-      "url": "#caching-resultsets"
+      "url": "/db-models-cache#caching-resultsets"
     },
     {
       "text": "Forcing Cache",
-      "url": "#forcing-cache"
+      "url": "/db-models-cache#forcing-cache"
     },
     {
       "text": "Caching PHQL Queries",
-      "url": "#caching-phql-queries"
+      "url": "/db-models-cache#caching-phql-queries"
     },
     {
       "text": "Reusable Related Records",
-      "url": "#reusable-related-records"
+      "url": "/db-models-cache#reusable-related-records"
     },
     {
       "text": "Caching Related Records",
-      "url": "#caching-related-records"
+      "url": "/db-models-cache#caching-related-records"
     },
     {
       "text": "Caching Related Records Recursively",
-      "url": "#caching-related-records-recursively"
+      "url": "/db-models-cache#caching-related-records-recursively"
     },
     {
       "text": "Caching based on Conditions",
-      "url": "#caching-based-on-conditions"
+      "url": "/db-models-cache#caching-based-on-conditions"
     },
     {
       "text": "Caching PHQL execution plan",
-      "url": "#caching-phql-execution-plan"
+      "url": "/db-models-cache#caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
       "text": "Model Events",
-      "url": "#overview"
+      "url": "/db-models-events#overview"
     },
     {
       "text": "Events and Events Manager",
-      "url": "#events",
+      "url": "/db-models-events#events",
       "menu": [
         {
           "text": "Implementing Events in the Model's class",
-          "url": "#events-in-models"
+          "url": "/db-models-events#events-in-models"
         },
         {
           "text": "Using a custom Events Manager",
-          "url": "#custom-events-manager"
+          "url": "/db-models-events#custom-events-manager"
         }
       ]
     },
     {
       "text": "Logging Low-Level SQL Statements",
-      "url": "#logging-sql-statements"
+      "url": "/db-models-events#logging-sql-statements"
     },
     {
       "text": "Profiling SQL Statements",
-      "url": "#profiling-sql-statements"
+      "url": "/db-models-events#profiling-sql-statements"
     }
   ],
   "db-models-metadata": [
     {
       "text": "Models Metadata",
-      "url": "#overview"
+      "url": "/db-models-metadata#overview"
     },
     {
       "text": "Caching Metadata",
-      "url": "#caching-metadata"
+      "url": "/db-models-metadata#caching-metadata"
     },
     {
       "text": "Metadata Strategies",
-      "url": "#metadata-strategies",
+      "url": "/db-models-metadata#metadata-strategies",
       "menu": [
         {
           "text": "Database Introspection Strategy",
-          "url": "#strategies-database-introspection",
+          "url": "/db-models-metadata#strategies-database-introspection",
           "menu": [
             {
               "text": "Annotations Strategy",
-              "url": "#strategies-annotations"
+              "url": "/db-models-metadata#strategies-annotations"
             }
           ]
         }
@@ -976,81 +976,81 @@
     },
     {
       "text": "Manual Metadata",
-      "url": "#strategies-manual"
+      "url": "/db-models-metadata#strategies-manual"
     }
   ],
   "db-models-relationships": [
     {
-      "text": "Model Relationships",
-      "url": "#overview"
+      "text": "モデルのリレーション",
+      "url": "/db-models-relationships#overview"
     },
     {
-      "text": "Relationships between Models",
-      "url": "#relationships",
+      "text": "モデル同士のリレーション",
+      "url": "/db-models-relationships#relationships",
       "menu": [
         {
-          "text": "Unidirectional relationships",
-          "url": "#unidirectional"
+          "text": "一方向のリレーション",
+          "url": "/db-models-relationships#unidirectional"
         },
         {
-          "text": "Bidirectional relations",
-          "url": "#bidirectional"
+          "text": "双方向のリレーション",
+          "url": "/db-models-relationships#bidirectional"
         },
         {
-          "text": "Defining relationships",
-          "url": "#defining",
+          "text": "リレーションの定義",
+          "url": "/db-models-relationships#defining",
           "menu": [
             {
-              "text": "Multiple field relationships",
-              "url": "#multiple-fields"
+              "text": "複数フィールドのリレーション",
+              "url": "/db-models-relationships#multiple-fields"
             },
             {
               "text": "Relationships with parameters",
-              "url": "#parameters"
+              "url": "/db-models-relationships#parameters"
             }
           ]
         },
         {
-          "text": "Taking advantage of relationships",
-          "url": "#taking-advantage-of"
+          "text": "リレーションの活用",
+          "url": "/db-models-relationships#taking-advantage-of"
         },
         {
-          "text": "Aliasing Relationships",
-          "url": "#aliases",
+          "text": "リレーションのエイリアス",
+          "url": "/db-models-relationships#aliases",
           "menu": [
             {
-              "text": "Magic Getters vs. Explicit methods",
-              "url": "#getters-vs-methods"
+              "text": "Getterのマジックメソッド vs 明示的なメソッド",
+              "url": "/db-models-relationships#getters-vs-methods"
             }
           ]
         }
       ]
     },
     {
-      "text": "Virtual Foreign Keys",
-      "url": "#virtual-foreign-keys",
+      "text": "仮想外部キー",
+      "url": "/db-models-relationships#virtual-foreign-keys",
       "menu": [
         {
-          "text": "Cascade/Restrict actions",
-          "url": "#cascade-restrict-actions"
+          "text": "カスケード/制限アクション",
+          "url": "/db-models-relationships#cascade-restrict-actions"
         }
       ]
     },
     {
-      "text": "Storing Related Records",
-      "url": "#storing-related-records"
+      "text": "関連レコードの保存",
+      "url": "/db-models-relationships#storing-related-records"
     },
     {
-      "text": "Operations over Resultsets",
-      "url": "#operations-over-resultsets",
+      "text": "結果セットの操作",
+      "url": "/db-models-relationships#operations-over-resultsets",
       "menu": [
         {
-          "text": "Updating related records",
-          "url": "#updating-related-records"
+          "text": "関連レコードの更新",
+          "url": "/db-models-relationships#updating-related-records"
         },
         {
-          "text": "Deleting related records",
-          "url": "#deleting-related-records"
+          "text": "関連レコードの削除",
+          "url": "/db-models-relationships#deleting-related-records"
         }
       ]
     }
@@ -1058,373 +1058,373 @@
   "db-models-transactions": [
     {
       "text": "Model Transactions",
-      "url": "#overview"
+      "url": "/db-models-transactions#overview"
     },
     {
       "text": "Manual Transactions",
-      "url": "#manual"
+      "url": "/db-models-transactions#manual"
     },
     {
       "text": "Implicit Transactions",
-      "url": "#implicit"
+      "url": "/db-models-transactions#implicit"
     },
     {
       "text": "Isolated Transactions",
-      "url": "#isolated"
+      "url": "/db-models-transactions#isolated"
     }
   ],
   "db-models-validation": [
     {
       "text": "Model Transactions",
-      "url": "#overview"
+      "url": "/db-models-validation#overview"
     },
     {
       "text": "Validating Data Integrity",
-      "url": "#data-integrity"
+      "url": "/db-models-validation#data-integrity"
     },
     {
       "text": "Validation Messages",
-      "url": "#messages"
+      "url": "/db-models-validation#messages"
     },
     {
       "text": "Validation Failed Events",
-      "url": "#failed-events"
+      "url": "/db-models-validation#failed-events"
     }
   ],
   "db-models": [
     {
-      "text": "Working with Models",
-      "url": "#working-with"
+      "text": "モデルの動作",
+      "url": "/db-models#working-with"
     },
     {
-      "text": "Creating Models",
-      "url": "#creating",
+      "text": "モデルの作成",
+      "url": "/db-models#creating",
       "menu": [
         {
-          "text": "Public properties vs. Setters/Getters",
-          "url": "#properties-setters-getters"
+          "text": "パブリックプロバティー VS セッター/ゲッター",
+          "url": "/db-models#properties-setters-getters"
         }
       ]
     },
     {
-      "text": "Understanding Records To Objects",
-      "url": "#records-to-objects"
+      "text": "オブジェクトへのレコード格納について理解する",
+      "url": "/db-models#records-to-objects"
     },
     {
-      "text": "Finding Records",
-      "url": "#finding-records",
+      "text": "レコードの検索",
+      "url": "/db-models#finding-records",
       "menu": [
         {
-          "text": "Model Resultsets",
-          "url": "#resultsets"
+          "text": "モデルの結果セット",
+          "url": "/db-models#resultsets"
         },
         {
-          "text": "Filtering Resultsets",
-          "url": "#filters"
+          "text": "結果セットのフィルタリング",
+          "url": "/db-models#filters"
         },
         {
-          "text": "Binding Parameters",
-          "url": "#binding-parameters"
+          "text": "パラメーターのバインド",
+          "url": "/db-models#binding-parameters"
         }
       ]
     },
     {
-      "text": "Initializing/Preparing fetched records",
-      "url": "#preparing-records"
+      "text": "取得したレコードの初期化/準備",
+      "url": "/db-models#preparing-records"
     },
     {
-      "text": "Generating Calculations",
-      "url": "#calculations"
+      "text": "集計の生成",
+      "url": "/db-models#calculations"
     },
     {
-      "text": "Creating/Updating Records",
-      "url": "#create-update-records",
+      "text": "レコードの登録と更新",
+      "url": "/db-models#create-update-records",
       "menu": [
         {
-          "text": "Create/Update with Confidence",
-          "url": "#create-update-with-confidence"
+          "text": "確実に作成/更新する",
+          "url": "/db-models#create-update-with-confidence"
         }
       ]
     },
     {
-      "text": "Deleting Records",
-      "url": "#delete-records"
+      "text": "レコードの削除",
+      "url": "/db-models#delete-records"
     },
     {
-      "text": "Hydration Modes",
-      "url": "#hydration-modes"
+      "text": "ハイドレーションモード",
+      "url": "/db-models#hydration-modes"
     },
     {
-      "text": "Auto-generated identity columns",
-      "url": "#identity-columns"
+      "text": "自動生成された id カラム",
+      "url": "/db-models#identity-columns"
     },
     {
-      "text": "Skipping Columns",
-      "url": "#skipping-columns"
+      "text": "カラムをスキップ",
+      "url": "/db-models#skipping-columns"
     },
     {
-      "text": "Dynamic Updates",
-      "url": "#dynamic-updates"
+      "text": "ダイナミックアップデート",
+      "url": "/db-models#dynamic-updates"
     },
     {
-      "text": "Independent Column Mapping",
-      "url": "#column-mapping"
+      "text": "独立したカラムマッピング",
+      "url": "/db-models#column-mapping"
     },
     {
-      "text": "Record Snapshots",
-      "url": "#record-snapshots"
+      "text": "レコードのスナップショット",
+      "url": "/db-models#record-snapshots"
     },
     {
-      "text": "Pointing to a different schema",
-      "url": "#different-schemas"
+      "text": "別のスキーマを指す",
+      "url": "/db-models#different-schemas"
     },
     {
       "text": "Setting multiple databases",
-      "url": "#multiple-databases"
+      "url": "/db-models#multiple-databases"
     },
     {
       "text": "Injecting services into Models",
-      "url": "#injecting-services-into-models"
+      "url": "/db-models#injecting-services-into-models"
     },
     {
-      "text": "Disabling/Enabling Features",
-      "url": "#disabling-enabling-features"
+      "text": "機能の有効/無効",
+      "url": "/db-models#disabling-enabling-features"
     },
     {
-      "text": "Stand-Alone component",
-      "url": "#stand-alone-component"
+      "text": "独立コンポーネント",
+      "url": "/db-models#stand-alone-component"
     }
   ],
   "db-odm": [
     {
       "text": "ODM (Object-Document Mapper)",
-      "url": "#overview"
+      "url": "/db-odm#overview"
     },
     {
-      "text": "Creating Models",
-      "url": "#creating-models"
+      "text": "モデルの作成",
+      "url": "/db-odm#creating-models"
     },
     {
       "text": "Understanding Documents To Objects",
-      "url": "#documents-to-objects"
+      "url": "/db-odm#documents-to-objects"
     },
     {
       "text": "Models in Namespaces",
-      "url": "#namespaces"
+      "url": "/db-odm#namespaces"
     },
     {
       "text": "Setting a Connection",
-      "url": "#connection-setup"
+      "url": "/db-odm#connection-setup"
     },
     {
       "text": "Finding Documents",
-      "url": "#finding-documents"
+      "url": "/db-odm#finding-documents"
     },
     {
       "text": "Aggregations",
-      "url": "#aggregations"
+      "url": "/db-odm#aggregations"
     },
     {
       "text": "Creating Updating/Records",
-      "url": "#creating-updating",
+      "url": "/db-odm#creating-updating",
       "menu": [
         {
           "text": "Validation Messages",
-          "url": "#validation-messages"
+          "url": "/db-odm#validation-messages"
         },
         {
           "text": "Validation Events and Events Manager",
-          "url": "#events"
+          "url": "/db-odm#events"
         },
         {
           "text": "Implementing a Business Rule",
-          "url": "#business-rules"
+          "url": "/db-odm#business-rules"
         },
         {
           "text": "Validating Data Integrity",
-          "url": "#data-integrity"
+          "url": "/db-odm#data-integrity"
         }
       ]
     },
     {
-      "text": "Deleting Records",
-      "url": "#deleting-records"
+      "text": "レコードの削除",
+      "url": "/db-odm#deleting-records"
     },
     {
       "text": "Validation Failed Events",
-      "url": "#validation-failed-events"
+      "url": "/db-odm#validation-failed-events"
     },
     {
       "text": "Implicit Ids vs. User Primary Keys",
-      "url": "#ids-vs-primary-keys"
+      "url": "/db-odm#ids-vs-primary-keys"
     },
     {
       "text": "Setting multiple databases",
-      "url": "#multiple-databases"
+      "url": "/db-odm#multiple-databases"
     },
     {
       "text": "Injecting services into Models",
-      "url": "#services-in-models"
+      "url": "/db-odm#services-in-models"
     }
   ],
   "db-pagination": [
     {
       "text": "Pagination",
-      "url": "#overview"
+      "url": "/db-pagination#overview"
     },
     {
       "text": "Data Adapters",
-      "url": "#data-adapters"
+      "url": "/db-pagination#data-adapters"
     },
     {
       "text": "Factory",
-      "url": "#factory"
+      "url": "/db-pagination#factory"
     },
     {
       "text": "Examples",
-      "url": "#examples"
+      "url": "/db-pagination#examples"
     },
     {
       "text": "Using Adapters",
-      "url": "#using-adapters"
+      "url": "/db-pagination#using-adapters"
     },
     {
       "text": "Page Attributes",
-      "url": "#page-attributes"
+      "url": "/db-pagination#page-attributes"
     },
     {
-      "text": "Implementing your own adapters",
-      "url": "#custom"
+      "text": "独自のアダプターを実装",
+      "url": "/db-pagination#custom"
     }
   ],
   "db-phql": [
     {
       "text": "Phalcon Query Language (PHQL)",
-      "url": "#overview"
+      "url": "/db-phql#overview"
     },
     {
       "text": "Usage Example",
-      "url": "#usage"
+      "url": "/db-phql#usage"
     },
     {
       "text": "Creating PHQL Queries",
-      "url": "#creating"
+      "url": "/db-phql#creating"
     },
     {
       "text": "Selecting Records",
-      "url": "#selecting-records",
+      "url": "/db-phql#selecting-records",
       "menu": [
         {
           "text": "Result Types",
-          "url": "#result-types"
+          "url": "/db-phql#result-types"
         },
         {
           "text": "Joins",
-          "url": "#joins"
+          "url": "/db-phql#joins"
         },
         {
           "text": "Aggregations",
-          "url": "#aggregations"
+          "url": "/db-phql#aggregations"
         },
         {
           "text": "Conditions",
-          "url": "#conditions"
+          "url": "/db-phql#conditions"
         }
       ]
     },
     {
       "text": "Inserting Data",
-      "url": "#inserting-data"
+      "url": "/db-phql#inserting-data"
     },
     {
       "text": "Updating Data",
-      "url": "#updating-data"
+      "url": "/db-phql#updating-data"
     },
     {
       "text": "Deleting Data",
-      "url": "#deleting-data"
+      "url": "/db-phql#deleting-data"
     },
     {
       "text": "Creating queries using the Query Builder",
-      "url": "#query-builder",
+      "url": "/db-phql#query-builder",
       "menu": [
         {
           "text": "Bound Parameters",
-          "url": "#query-builder-parameters"
+          "url": "/db-phql#query-builder-parameters"
         }
       ]
     },
     {
       "text": "Disallow literals in PHQL",
-      "url": "#disallow-literals"
+      "url": "/db-phql#disallow-literals"
     },
     {
       "text": "Escaping Reserved Words",
-      "url": "#escaping-reserved-words"
+      "url": "/db-phql#escaping-reserved-words"
     },
     {
       "text": "PHQL Lifecycle",
-      "url": "#lifecycle"
+      "url": "/db-phql#lifecycle"
     },
     {
       "text": "Using Raw SQL",
-      "url": "#raw-sql"
+      "url": "/db-phql#raw-sql"
     },
     {
       "text": "Troubleshooting",
-      "url": "#troubleshooting"
+      "url": "/db-phql#troubleshooting"
     }
   ],
   "debug": [
     {
       "text": "Debugging Applications",
-      "url": "#overview"
+      "url": "/debug#overview"
     },
     {
       "text": "Catching Exceptions",
-      "url": "#catching-exceptions"
+      "url": "/debug#catching-exceptions"
     },
     {
       "text": "Debug component",
-      "url": "#debug-component"
+      "url": "/debug#debug-component"
     },
     {
       "text": "Reflection and Introspection",
-      "url": "#reflection-introspection"
+      "url": "/debug#reflection-introspection"
     },
     {
       "text": "Using XDebug",
-      "url": "#xdebug"
+      "url": "/debug#xdebug"
     }
   ],
   "devtools-installation": [
     {
       "text": "DevTools on Linux",
-      "url": "#overview"
+      "url": "/devtools-installation#overview"
     },
     {
       "text": "Prerequisites",
-      "url": "#prerequisites"
+      "url": "/devtools-installation#prerequisites"
     },
     {
       "text": "Installation",
-      "url": "#installation",
+      "url": "/devtools-installation#installation",
       "menu": [
         {
           "text": "Linux",
-          "url": "#installation-linux"
+          "url": "/devtools-installation#installation-linux"
         },
         {
           "text": "MacOS",
-          "url": "#installation-mac"
+          "url": "/devtools-installation#installation-mac"
         },
         {
           "text": "Windows",
-          "url": "#installation-windows",
+          "url": "/devtools-installation#installation-windows",
           "menu": [
             {
               "text": "Adding PHP and Tools to your system PATH",
-              "url": "#installation-windows-system-path"
+              "url": "/devtools-installation#installation-windows-system-path"
             }
           ]
         }
@@ -1434,1182 +1434,823 @@
   "devtools-usage": [
     {
       "text": "Phalcon Developer Tools",
-      "url": "#overview"
+      "url": "/devtools-usage#overview"
     },
     {
       "text": "Download",
-      "url": "#download"
+      "url": "/devtools-usage#download"
     },
     {
       "text": "Installation",
-      "url": "#installation"
+      "url": "/devtools-usage#installation"
     },
     {
       "text": "Available Commands",
-      "url": "#available-commands"
+      "url": "/devtools-usage#available-commands"
     },
     {
       "text": "Generating a Project Skeleton",
-      "url": "#project-skeleton"
+      "url": "/devtools-usage#project-skeleton"
     },
     {
       "text": "Generating Controllers",
-      "url": "#generating-controllers"
+      "url": "/devtools-usage#generating-controllers"
     },
     {
       "text": "Preparing Database Settings",
-      "url": "#database-settings"
+      "url": "/devtools-usage#database-settings"
     },
     {
       "text": "Generating Models",
-      "url": "#generating-models"
+      "url": "/devtools-usage#generating-models"
     },
     {
       "text": "Scaffold a CRUD",
-      "url": "#crud"
+      "url": "/devtools-usage#crud"
     },
     {
       "text": "Web Interface to Tools",
-      "url": "#web-interface"
+      "url": "/devtools-usage#web-interface"
     },
     {
       "text": "Integrating Tools with PhpStorm IDE",
-      "url": "#phpstorm-ide"
+      "url": "/devtools-usage#phpstorm-ide"
     },
     {
       "text": "Conclusion",
-      "url": "#conclusion"
+      "url": "/devtools-usage#conclusion"
     }
   ],
   "di": [
     {
       "text": "Dependency Injection / Service Location",
-      "url": "#di-service-location"
+      "url": "/di#di-service-location"
     },
     {
       "text": "DI explained",
-      "url": "#di-explained"
+      "url": "/di#di-explained"
     },
     {
       "text": "Registering services in the Container",
-      "url": "#registering-services",
+      "url": "/di#registering-services",
       "menu": [
         {
           "text": "Simple Registration",
-          "url": "#simple-registration",
+          "url": "/di#simple-registration",
           "menu": [
             {
               "text": "String",
-              "url": "#simple-registration-string"
+              "url": "/di#simple-registration-string"
             },
             {
               "text": "Class instances",
-              "url": "#class-instances"
+              "url": "/di#class-instances"
             },
             {
               "text": "Closures/Anonymous functions",
-              "url": "#closures-anonymous-functions"
+              "url": "/di#closures-anonymous-functions"
             }
           ]
         },
         {
           "text": "Complex Registration",
-          "url": "#complex-registration",
+          "url": "/di#complex-registration",
           "menu": [
             {
               "text": "Constructor Injection",
-              "url": "#constructor-injection"
+              "url": "/di#constructor-injection"
             },
             {
               "text": "Setter Injection",
-              "url": "#setter-injection"
+              "url": "/di#setter-injection"
             },
             {
               "text": "Properties Injection",
-              "url": "#properties-injection"
+              "url": "/di#properties-injection"
             }
           ]
         },
         {
           "text": "Array Syntax",
-          "url": "#array-syntax"
+          "url": "/di#array-syntax"
         }
       ]
     },
     {
       "text": "Resolving Services",
-      "url": "#resolving-services",
+      "url": "/di#resolving-services",
       "menu": [
         {
-          "text": "Events",
-          "url": "#events"
+          "text": "イベント",
+          "url": "/di#events"
         }
       ]
     },
     {
       "text": "Shared services",
-      "url": "#shared-services"
+      "url": "/di#shared-services"
     },
     {
       "text": "Manipulating services individually",
-      "url": "#manipulating-services-individually"
+      "url": "/di#manipulating-services-individually"
     },
     {
       "text": "Instantiating classes via the Service Container",
-      "url": "#instantiating-classes-service-container"
+      "url": "/di#instantiating-classes-service-container"
     },
     {
       "text": "Automatic Injecting of the DI itself",
-      "url": "#automatic-injecting-di-itself"
+      "url": "/di#automatic-injecting-di-itself"
     },
     {
       "text": "Organizing services in files",
-      "url": "#organizing-services-files"
+      "url": "/di#organizing-services-files"
     },
     {
       "text": "Accessing the DI in a static way",
-      "url": "#accessing-di-static-way"
+      "url": "/di#accessing-di-static-way"
     },
     {
       "text": "Factory Default DI",
-      "url": "#factory-default-di"
+      "url": "/di#factory-default-di"
     },
     {
       "text": "Service Name Conventions",
-      "url": "#service-name-conventions"
+      "url": "/di#service-name-conventions"
     },
     {
       "text": "Implementing your own DI",
-      "url": "#implementing-your-own-di"
+      "url": "/di#implementing-your-own-di"
     }
   ],
   "dispatcher": [
     {
       "text": "Dispatching Controllers",
-      "url": "#explained"
+      "url": "/dispatcher#explained"
     },
     {
       "text": "The Dispatch Loop",
-      "url": "#dispatch-loop"
+      "url": "/dispatcher#dispatch-loop"
     },
     {
       "text": "Dispatch Loop Events",
-      "url": "#dispatch-loop-events"
+      "url": "/dispatcher#dispatch-loop-events"
     },
     {
       "text": "Forwarding to other actions",
-      "url": "#forwarding"
+      "url": "/dispatcher#forwarding"
     },
     {
       "text": "Preparing Parameters",
-      "url": "#preparing-parameters"
+      "url": "/dispatcher#preparing-parameters"
     },
     {
       "text": "Getting Parameters",
-      "url": "#getting-parameters"
+      "url": "/dispatcher#getting-parameters"
     },
     {
       "text": "Preparing actions",
-      "url": "#preparing-actions",
+      "url": "/dispatcher#preparing-actions",
       "menu": [
         {
           "text": "Camelize action names",
-          "url": "#preparing-actions-camelizing-action-names"
+          "url": "/dispatcher#preparing-actions-camelizing-action-names"
         },
         {
           "text": "Remove legacy extensions",
-          "url": "#preparing-actions-removing-legacy-extensions"
+          "url": "/dispatcher#preparing-actions-removing-legacy-extensions"
         },
         {
           "text": "Inject model instances",
-          "url": "#preparing-actions-inject-model-instances"
+          "url": "/dispatcher#preparing-actions-inject-model-instances"
         }
       ]
     },
     {
       "text": "Handling Not-Found Exceptions",
-      "url": "#handling-404"
+      "url": "/dispatcher#handling-404"
     },
     {
       "text": "Implementing your own Dispatcher",
-      "url": "#custom"
-    }
-  ],
-  "environments-docker": [
-    {
-      "text": "Environments - Docker",
-      "url": "#overview"
-    },
-    {
-      "text": "Dependencies",
-      "url": "#dependencies"
-    },
-    {
-      "text": "Services",
-      "url": "#services"
-    },
-    {
-      "text": "Installation",
-      "url": "#installation",
-      "menu": [
-        {
-          "text": "With Composer (recommended)",
-          "url": "#installation-composer"
-        },
-        {
-          "text": "With Git",
-          "url": "#installation-git"
-        }
-      ]
-    },
-    {
-      "text": "Configuration",
-      "url": "#configuration"
-    },
-    {
-      "text": "Usage",
-      "url": "#usage"
-    },
-    {
-      "text": "Set up",
-      "url": "#setup"
-    },
-    {
-      "text": "Logs",
-      "url": "#logs"
-    },
-    {
-      "text": "Environment variables",
-      "url": "#environment-variables",
-      "menu": [
-        {
-          "text": "Web environment",
-          "url": "#environment-variables-web"
-        },
-        {
-          "text": "phpMyAdmin variables",
-          "url": "#environment-variables-phpmyadmin"
-        }
-      ]
-    },
-    {
-      "text": "Xdebug Remote debugger (PhpStorm)",
-      "url": "#xdebug"
-    },
-    {
-      "text": "Troubleshooting",
-      "url": "#troubleshooting",
-      "menu": [
-        {
-          "text": "Startup or linking errors",
-          "url": "#troubleshooting-startup"
-        },
-        {
-          "text": "Full reset",
-          "url": "#troubleshooting-full-reset"
-        },
-        {
-          "text": "Updating dependencies",
-          "url": "#troubleshooting-dependencies"
-        }
-      ]
-    },
-    {
-      "text": "Versions",
-      "url": "#versions"
+      "url": "/dispatcher#custom"
     }
   ],
   "environments-nanobox": [
     {
       "text": "Environments - Nanobox",
-      "url": "#overview"
+      "url": "/environments-nanobox#overview"
     },
     {
       "text": "Create a New Project",
-      "url": "#create-project"
+      "url": "/environments-nanobox#create-project"
     },
     {
       "text": "Add a `boxfile.yml`",
-      "url": "#boxfile-yml"
+      "url": "/environments-nanobox#boxfile-yml"
     },
     {
       "text": "Add Phalcon Devtools to your `composer.json`",
-      "url": "#add-devtools"
+      "url": "/environments-nanobox#add-devtools"
     },
     {
       "text": "Start Nanobox and Generate a New Phalcon App",
-      "url": "#new-phalcon-app"
+      "url": "/environments-nanobox#new-phalcon-app"
     },
     {
       "text": "Run the App Locally",
-      "url": "#run-app"
+      "url": "/environments-nanobox#run-app"
     },
     {
       "text": "Check Out the Environment",
-      "url": "#environment"
+      "url": "/environments-nanobox#environment"
     },
     {
       "text": "Phalcon and Nanobox",
-      "url": "#conclusion"
-    }
-  ],
-  "environments-vagrant": [
-    {
-      "text": "Environments - Vagrant",
-      "url": "#overview"
-    },
-    {
-      "text": "Requirements",
-      "url": "#requirements"
-    },
-    {
-      "text": "Packages Included",
-      "url": "#packages-included"
-    },
-    {
-      "text": "Installation",
-      "url": "#installation",
-      "menu": [
-        {
-          "text": "Installing the Vagrant Box",
-          "url": "#installation-vagrant-box"
-        },
-        {
-          "text": "Installing the Phalcon Box",
-          "url": "#installation-phalcon-box"
-        }
-      ]
-    },
-    {
-      "text": "Configuring",
-      "url": "#installation-configuration",
-      "menu": [
-        {
-          "text": "Setting your provider",
-          "url": "#installation-configuration-setting-provider"
-        },
-        {
-          "text": "Memory and CPU",
-          "url": "#installation-configuration-memory-cpu"
-        },
-        {
-          "text": "Shared folders",
-          "url": "#installation-configuration-shared-folders"
-        },
-        {
-          "text": "Nginx sites",
-          "url": "#installation-configuration-nginx",
-          "menu": [
-            {
-              "text": "Custom Nginx configuration",
-              "url": "#installation-configuration-custom-nginx"
-            },
-            {
-              "text": "Configuring the `hosts` file",
-              "url": "#installation-configuration-hosts"
-            }
-          ]
-        },
-        {
-          "text": "Install additional packages",
-          "url": "#installation-aditional-packages"
-        },
-        {
-          "text": "Launching the Phalcon Box",
-          "url": "#installation-launching-phalcon-box"
-        }
-      ]
-    },
-    {
-      "text": "Daily usage",
-      "url": "#daily-usage",
-      "menu": [
-        {
-          "text": "Accessing Phalcon Box globally",
-          "url": "#daily-usage-accessing-box-globally",
-          "menu": [
-            {
-              "text": "Mac || Linux",
-              "url": "#daily-usage-accessing-box-globally-mac-linux"
-            },
-            {
-              "text": "Windows",
-              "url": "#daily-usage-accessing-box-globally-windows"
-            }
-          ]
-        },
-        {
-          "text": "Connecting via SSH",
-          "url": "#daily-usage-ssh"
-        },
-        {
-          "text": "Connecting to databases",
-          "url": "#daily-usage-databases"
-        },
-        {
-          "text": "Adding additional sites",
-          "url": "#daily-usage-additional-sites"
-        },
-        {
-          "text": "Environment variables",
-          "url": "#daily-usage-environment-variables",
-          "menu": [
-            {
-              "text": "Global variables",
-              "url": "#daily-usage-environment-global-variables"
-            },
-            {
-              "text": "Site variables",
-              "url": "#daily-usage-environment-site-variables"
-            }
-          ]
-        },
-        {
-          "text": "Ports",
-          "url": "#daily-usage-ports",
-          "menu": [
-            {
-              "text": "Forwarding additional ports",
-              "url": "#daily-usage-ports-forwarding"
-            }
-          ]
-        },
-        {
-          "text": "Sharing your environment",
-          "url": "#daily-usage-sharing-environment"
-        },
-        {
-          "text": "Network interfaces",
-          "url": "#daily-usage-network-interfaces"
-        },
-        {
-          "text": "Updating Phalcon Box",
-          "url": "#daily-usage-updating-box"
-        },
-        {
-          "text": "Provider specific settings",
-          "url": "#daily-usage-provider-settings",
-          "menu": [
-            {
-              "text": "VirtualBox",
-              "url": "#daily-usage-provider-settings-virtualbox"
-            }
-          ]
-        },
-        {
-          "text": "Mail catcher",
-          "url": "#daily-usage-mail-catcher"
-        }
-      ]
-    },
-    {
-      "text": "Troubleshooting",
-      "url": "#troubleshooting"
+      "url": "/environments-nanobox#conclusion"
     }
   ],
   "escaper": [
     {
       "text": "Contextual Escaping",
-      "url": "#overview"
+      "url": "/escaper#overview"
     },
     {
       "text": "Escaping HTML",
-      "url": "#html"
+      "url": "/escaper#html"
     },
     {
       "text": "Escaping HTML Attributes",
-      "url": "#html-attributes"
+      "url": "/escaper#html-attributes"
     },
     {
       "text": "Escaping URLs",
-      "url": "#urls"
+      "url": "/escaper#urls"
     },
     {
       "text": "Escaping CSS",
-      "url": "#css"
+      "url": "/escaper#css"
     },
     {
       "text": "Escaping JavaScript",
-      "url": "#javascript"
+      "url": "/escaper#javascript"
     }
   ],
   "events": [
     {
       "text": "Events Manager",
-      "url": "#overview"
+      "url": "/events#overview"
     },
     {
       "text": "Naming Convention",
-      "url": "#naming-convention"
+      "url": "/events#naming-convention"
     },
     {
       "text": "Usage Example",
-      "url": "#usage"
+      "url": "/events#usage"
     },
     {
       "text": "Creating components that trigger Events",
-      "url": "#components-that-trigger-events"
+      "url": "/events#components-that-trigger-events"
     },
     {
       "text": "Using Services From The DI",
-      "url": "#using-services"
+      "url": "/events#using-services"
     },
     {
       "text": "Event Propagation/Cancellation",
-      "url": "#propagation-cancellation"
+      "url": "/events#propagation-cancellation"
     },
     {
       "text": "Listener Priorities",
-      "url": "#listener-priorities"
+      "url": "/events#listener-priorities"
     },
     {
       "text": "Collecting Responses",
-      "url": "#collecting-responses"
+      "url": "/events#collecting-responses"
     },
     {
       "text": "Implementing your own EventsManager",
-      "url": "#custom"
+      "url": "/events#custom"
     },
     {
       "text": "List of events",
-      "url": "#list"
+      "url": "/events#list"
     }
   ],
   "filter": [
     {
-      "text": "Filtering and Sanitizing",
-      "url": "#overview"
+      "text": "フィルターとサニタイズ",
+      "url": "/filter"
     },
     {
-      "text": "Types of Built-in Filters",
-      "url": "#types"
+      "text": "Built-in Sanitizers",
+      "url": "/filter-sanitizers"
     },
     {
-      "text": "Sanitizing data",
-      "url": "#sanitizing"
+      "text": "データのサニタイズ",
+      "url": "/filter-sanitizing"
     },
     {
-      "text": "Sanitizing from Controllers",
-      "url": "#sanitizing-from-controllers"
+      "text": "コントローラーからのサニタイズ",
+      "url": "/filter-sanitizing-from-controllers"
     },
     {
       "text": "Sanitizing Action Parameters",
-      "url": "#sanitizing-action-parameters"
+      "url": "/filter-sanitizing-action-parameters"
     },
     {
-      "text": "Filtering data",
-      "url": "#sanitizing-data"
+      "text": "データのフィルタリング",
+      "url": "/filter-sanitizing-data"
     },
     {
       "text": "Combining Sanitizers",
-      "url": "#combining-sanitizers"
+      "url": "/filter-combining-sanitizers"
     },
     {
       "text": "Adding Sanitizers",
-      "url": "#adding-sanitizers"
+      "url": "/filter-adding-sanitizers"
     },
     {
-      "text": "Complex Sanitizing and Filtering",
-      "url": "#complex-sanitization-filtering"
+      "text": "複雑なサニタイズとフィルタリング",
+      "url": "/filter-complex-sanitization-filtering"
     },
     {
       "text": "Implementing your own Filter",
-      "url": "#custom"
+      "url": "/filter-custom"
     }
   ],
   "flash": [
     {
       "text": "Flashing Messages",
-      "url": "#overview"
+      "url": "/flash#overview"
     },
     {
       "text": "Adapters",
-      "url": "#adapters"
+      "url": "/flash#adapters"
     },
     {
-      "text": "Usage",
-      "url": "#usage"
+      "text": "使い方",
+      "url": "/flash#usage"
     },
     {
       "text": "Printing Messages",
-      "url": "#printing"
+      "url": "/flash#printing"
     },
     {
       "text": "Implicit Flush vs. Session",
-      "url": "#implicit-flush-vs-session"
+      "url": "/flash#implicit-flush-vs-session"
     }
   ],
   "forms": [
     {
       "text": "Forms",
-      "url": "#overview"
+      "url": "/forms#overview"
     },
     {
       "text": "Initializing forms",
-      "url": "#initializing"
+      "url": "/forms#initializing"
     },
     {
       "text": "Filtering",
-      "url": "#filtering"
+      "url": "/forms#filtering"
     },
     {
       "text": "Forms + Entities",
-      "url": "#entities"
+      "url": "/forms#entities"
     },
     {
       "text": "Form Elements",
-      "url": "#elements"
+      "url": "/forms#elements"
     },
     {
       "text": "Event Callbacks",
-      "url": "#event-callback"
+      "url": "/forms#event-callback"
     },
     {
       "text": "Rendering Forms",
-      "url": "#rendering"
+      "url": "/forms#rendering"
     },
     {
       "text": "Creating Form Elements",
-      "url": "#creating-elements"
+      "url": "/forms#creating-elements"
     },
     {
       "text": "Forms Manager",
-      "url": "#manager"
+      "url": "/forms#manager"
     },
     {
       "text": "External Resources",
-      "url": "#external"
+      "url": "/forms#external"
     }
   ],
   "i18n": [
     {
       "text": "Internationalization",
-      "url": "#overview"
+      "url": "/i18n#overview"
     },
     {
       "text": "Find out best available Locale",
-      "url": "#best-locale"
+      "url": "/i18n#best-locale"
     },
     {
       "text": "Formatting messages based on Locale",
-      "url": "#formatting-messages"
+      "url": "/i18n#formatting-messages"
     },
     {
       "text": "Locale-Sensitive comparison",
-      "url": "#locale-comparison"
+      "url": "/i18n#locale-comparison"
     },
     {
       "text": "Transliteration",
-      "url": "#transliteration"
+      "url": "/i18n#transliteration"
     }
   ],
   "image": [
     {
       "text": "Images",
-      "url": "#overview"
+      "url": "/image#overview"
     },
     {
       "text": "Adapters",
-      "url": "#adapters",
+      "url": "/image#adapters",
       "menu": [
         {
           "text": "Factory",
-          "url": "#adapters-factory"
+          "url": "/image#adapters-factory"
         },
         {
-          "text": "Implementing your own adapters",
-          "url": "#adapters-custom"
+          "text": "独自のアダプターを実装",
+          "url": "/image#adapters-custom"
         }
       ]
     },
     {
       "text": "Saving and rendering images",
-      "url": "#saving-rendering"
+      "url": "/image#saving-rendering"
     },
     {
       "text": "Resizing images",
-      "url": "#resizing",
+      "url": "/image#resizing",
       "menu": [
         {
           "text": "`Image::WIDTH`",
-          "url": "#resizing-width"
+          "url": "/image#resizing-width"
         },
         {
           "text": "`Image::HEIGHT`",
-          "url": "#resizing-height"
+          "url": "/image#resizing-height"
         },
         {
           "text": "`Image::NONE`",
-          "url": "#resizing-none"
+          "url": "/image#resizing-none"
         },
         {
           "text": "`Image::TENSILE`",
-          "url": "#resizing-tensile"
+          "url": "/image#resizing-tensile"
         }
       ]
     },
     {
       "text": "Cropping images",
-      "url": "#cropping"
+      "url": "/image#cropping"
     },
     {
       "text": "Rotating images",
-      "url": "#rotating"
+      "url": "/image#rotating"
     },
     {
       "text": "Flipping images",
-      "url": "#flipping"
+      "url": "/image#flipping"
     },
     {
       "text": "Sharpening images",
-      "url": "#sharpening"
+      "url": "/image#sharpening"
     },
     {
       "text": "Adding watermarks to images",
-      "url": "#watermarks"
+      "url": "/image#watermarks"
     },
     {
       "text": "Blurring images",
-      "url": "#blurring"
+      "url": "/image#blurring"
     },
     {
       "text": "Pixelating images",
-      "url": "#pixelating"
+      "url": "/image#pixelating"
     }
   ],
   "installation": [
     {
       "text": "Requirements",
-      "url": "#requirements",
-      "menu": [
-        {
-          "text": "Hardware",
-          "url": "#requirements-hardware"
-        },
-        {
-          "text": "Software",
-          "url": "#requirements-software",
-          "menu": [
-            {
-              "text": "Optional depending on the needs of your application",
-              "url": "#requirements-software-optional"
-            }
-          ]
-        }
-      ]
+      "url": "/installation"
     },
     {
       "text": "Installation",
-      "url": "#installation",
-      "menu": [
-        {
-          "text": "Linux",
-          "url": "#installation-linux",
-          "menu": [
-            {
-              "text": "DEB based distributions (CentOS, Fedora, etc.)",
-              "url": "#installation-linux-deb",
-              "menu": [
-                {
-                  "text": "Repository installation",
-                  "url": "#installation-linux-deb-repository"
-                },
-                {
-                  "text": "Stable releases",
-                  "url": "#installation-linux-debian-repository-stable"
-                },
-                {
-                  "text": "Nightly releases",
-                  "url": "#installation-linux-debian-repository-nightly"
-                },
-                {
-                  "text": "Phalcon installation",
-                  "url": "#installation-linux-debian-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "url": "#installation-linux-debian-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "url": "#installation-linux-debian-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Additional PPAs",
-                  "url": "#installation-linux-debian-other-ppa"
-                }
-              ]
-            },
-            {
-              "text": "RPM based distributions (CentOS, Fedora, etc.)",
-              "url": "#installation-linux-rpm",
-              "menu": [
-                {
-                  "text": "Repository installation",
-                  "url": "#installation-linux-rpm-repository"
-                },
-                {
-                  "text": "Stable releases",
-                  "url": "#installation-linux-rpm-repository-stable",
-                  "menu": [
-                    {
-                      "text": "Nightly releases",
-                      "level": 5,
-                      "url": "#installation-linux-rpm-repository-nightly"
-                    }
-                  ]
-                },
-                {
-                  "text": "Phalcon installation",
-                  "url": "#installation-linux-rpm-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "level": 5,
-                      "url": "#installation-linux-rpm-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "level": 5,
-                      "url": "#installation-linux-rpm-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Additional RPMs",
-                  "url": "#installation-linux-rpm-other-rpm"
-                }
-              ]
-            },
-            {
-              "text": "FreeBSD",
-              "url": "#installation-freebsd"
-            },
-            {
-              "text": "Gentoo",
-              "url": "#installation-gentoo"
-            }
-          ]
-        },
-        {
-          "text": "macOS",
-          "url": "#installation-macos",
-          "menu": [
-            {
-              "text": "Brew",
-              "url": "#installation-macos-brew"
-            },
-            {
-              "text": "MacPorts",
-              "url": "#installation-macos-macports"
-            }
-          ]
-        },
-        {
-          "text": "Windows",
-          "url": "#installation-windows"
-        },
-        {
-          "text": "Compile from Sources",
-          "url": "#installation-sources"
-        },
-        {
-          "text": "Advanced Compilation",
-          "url": "#installation-sources-advanced"
-        },
-        {
-          "text": "Testing",
-          "url": "#installation-testing"
-        }
-      ]
+      "url": "/installation-requirements-psr"
+    },
+    {
+      "text": "PDO",
+      "url": "/installation-requirements-pdo"
+    },
+    {
+      "text": "ハードウェア",
+      "url": "/installation-requirements-hardware"
+    },
+    {
+      "text": "ソフトウェア",
+      "url": "/installation-requirements-software"
+    },
+    {
+      "text": "Platforms",
+      "url": "/installation-platforms"
+    },
+    {
+      "text": "Linux",
+      "url": "/installation-linux"
+    },
+    {
+      "text": "MacOS",
+      "url": "/installation-macos"
+    },
+    {
+      "text": "Windows",
+      "url": "/installation-windows"
+    },
+    {
+      "text": "Sources",
+      "url": "/installation-sources"
+    },
+    {
+      "text": "Shared",
+      "url": "/installation-shared"
     }
   ],
   "loader": [
     {
       "text": "Requirements",
-      "url": "#overview"
+      "url": "/loader#overview"
     },
     {
-      "text": "Security Layer",
-      "url": "#security"
+      "text": "セキュリティ層",
+      "url": "/loader#security"
     },
     {
-      "text": "Registering Namespaces",
-      "url": "#registering-namespaces"
+      "text": "名前空間の登録",
+      "url": "/loader#registering-namespaces"
     },
     {
-      "text": "Registering Directories",
-      "url": "#registering-directories"
+      "text": "ディレクトリの登録",
+      "url": "/loader#registering-directories"
     },
     {
-      "text": "Registering Classes",
-      "url": "#registering-classes"
+      "text": "クラスの登録",
+      "url": "/loader#registering-classes"
     },
     {
-      "text": "Registering Files",
-      "url": "#registering-files"
+      "text": "ファイルの登録",
+      "url": "/loader#registering-files"
     },
     {
-      "text": "Additional file extensions",
-      "url": "#registering-file-extensions"
+      "text": "追加のファイル拡張子",
+      "url": "/loader#registering-file-extensions"
     },
     {
-      "text": "Modifying current strategies",
-      "url": "#modifying-current-strategies"
+      "text": "現在の戦略の修正",
+      "url": "/loader#modifying-current-strategies"
     },
     {
-      "text": "Autoloading Events",
-      "url": "#events"
+      "text": "オートローディングイベント",
+      "url": "/loader#events"
     },
     {
       "text": "Troubleshooting",
-      "url": "#troubleshooting"
+      "url": "/loader#troubleshooting"
     }
   ],
-  "logging": [
+  "logger": [
     {
-      "text": "Logging",
-      "url": "#overview"
+      "text": "Logger",
+      "url": "/logger"
     },
     {
       "text": "Adapters",
-      "url": "#adapters"
+      "url": "/logger-adapters"
     },
     {
-      "text": "Factory",
-      "url": "#adapters-factory"
+      "text": "Creating a Logger component",
+      "url": "/logger-creating"
     },
     {
-      "text": "Creating a Log",
-      "url": "#creating"
-    },
-    {
-      "text": "Transactions",
-      "url": "#transactions"
-    },
-    {
-      "text": "Logging to Multiple Handlers",
-      "url": "#multiple-handlers"
+      "text": "Logging to Multiple adapters",
+      "url": "/logger-multiple"
     },
     {
       "text": "Message Formatting",
-      "url": "#message-formatting",
+      "url": "/logger-message-formatting",
       "menu": [
         {
-          "text": "Line Formatter",
-          "url": "#message-formatting-line"
+          "text": "Line",
+          "url": "/logger-message-formatting-line"
         },
         {
-          "text": "Implementing your own formatters",
-          "url": "#message-formatting-custom"
+          "text": "JSON",
+          "url": "/logger-message-formatting-json"
+        },
+        {
+          "text": "Syslog",
+          "url": "/logger-message-formatting-syslog"
+        },
+        {
+          "text": "Custom",
+          "url": "/logger-message-formatting-custom"
         }
       ]
     },
     {
-      "text": "Adapters",
-      "url": "#usage",
-      "menu": [
-        {
-          "text": "Stream Logger",
-          "url": "#usage-stream"
-        },
-        {
-          "text": "File Logger",
-          "url": "#usage-file"
-        },
-        {
-          "text": "Syslog Logger",
-          "url": "#usage-syslog"
-        },
-        {
-          "text": "FirePHP Logger",
-          "url": "#usage-firephp"
-        },
-        {
-          "text": "Implementing your own adapters",
-          "url": "#usage-custom"
-        }
-      ]
+      "text": "Interpolation",
+      "url": "/logger-interpolation"
+    },
+    {
+      "text": "Examples",
+      "url": "/logger-examples"
     }
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
-      "url": "#architecture"
+      "text": "MVC アーキテクチャ",
+      "url": "/mvc#architecture"
     },
     {
       "text": "Models",
-      "url": "#models"
+      "url": "/mvc#models"
     },
     {
       "text": "Views",
-      "url": "#views"
+      "url": "/mvc#views"
     },
     {
       "text": "Controllers",
-      "url": "#controllers"
+      "url": "/mvc#controllers"
     }
   ],
   "namespaces": [
     {
-      "text": "Working with Namespaces",
-      "url": "#setting-up"
+      "text": "名前空間の働き",
+      "url": "/namespaces#setting-up"
     },
     {
-      "text": "Setting up the framework",
-      "url": "#models"
+      "text": "フレームワークの設定",
+      "url": "/namespaces#models"
     },
     {
-      "text": "Controllers in Namespaces",
-      "url": "#controllers"
+      "text": "コントローラでの名前空間",
+      "url": "/namespaces#controllers"
     },
     {
       "text": "Models in Namespaces",
-      "url": "#models"
+      "url": "/namespaces#models"
     }
   ],
   "performance": [
     {
       "text": "Increasing Performance",
-      "url": "#overview"
+      "url": "/performance#overview"
     },
     {
       "text": "Profile on the Server",
-      "url": "#profiling-server",
+      "url": "/performance#profiling-server",
       "menu": [
         {
           "text": "Profiling with Xhprof",
-          "url": "#profiling-server-xhprof"
+          "url": "/performance#profiling-server-xhprof"
         },
         {
           "text": "Profiling SQL Statements",
-          "url": "#profiling-server-sql-statements"
+          "url": "/performance#profiling-server-sql-statements"
         }
       ]
     },
     {
       "text": "Profile on the Client",
-      "url": "#profiling-client",
+      "url": "/performance#profiling-client",
       "menu": [
         {
           "text": "Profile with Chrome/Firefox",
-          "url": "#profiling-client-chrome-firefox"
+          "url": "/performance#profiling-client-chrome-firefox"
         },
         {
           "text": "Yahoo! YSlow",
-          "url": "#profiling-client-yslow"
+          "url": "/performance#profiling-client-yslow"
         },
         {
           "text": "Profile with Speed Tracer",
-          "url": "#profiling-client-speed-tracer"
+          "url": "/performance#profiling-client-speed-tracer"
         }
       ]
     },
     {
       "text": "Use a recent PHP version",
-      "url": "#php-version"
+      "url": "/performance#php-version"
     },
     {
       "text": "Use a PHP Bytecode Cache",
-      "url": "#bytecode-cache"
+      "url": "/performance#bytecode-cache"
     },
     {
       "text": "Do blocking work in the background",
-      "url": "#background-tasks"
+      "url": "/performance#background-tasks"
     },
     {
       "text": "Google Page Speed",
-      "url": "#page-speed"
+      "url": "/performance#page-speed"
     }
   ],
   "queue": [
     {
       "text": "Queueing",
-      "url": "#overview"
+      "url": "/queue#overview"
     },
     {
       "text": "Putting Jobs into the Queue",
-      "url": "#put-jobs-in-queue"
+      "url": "/queue#put-jobs-in-queue"
     },
     {
       "text": "Retrieving Messages",
-      "url": "#retrieving-messages"
+      "url": "/queue#retrieving-messages"
     }
   ],
   "reproducible-tests": [
     {
       "text": "Creating a small script",
-      "url": "#overview"
+      "url": "/reproducible-tests#overview"
     },
     {
       "text": "Database",
-      "url": "#database"
+      "url": "/reproducible-tests#database"
     },
     {
       "text": "Single/Multi-Module applications",
-      "url": "#single-multi"
+      "url": "/reproducible-tests#single-multi"
     },
     {
       "text": "Micro application",
-      "url": "#micro"
+      "url": "/reproducible-tests#micro"
     },
     {
       "text": "ORM",
-      "url": "#orm"
+      "url": "/reproducible-tests#orm"
     }
   ],
   "request": [
     {
       "text": "Request Environment",
-      "url": "#overview"
+      "url": "/request#overview"
     },
     {
-      "text": "Getting Values",
-      "url": "#getting-values"
+      "text": "値の取得",
+      "url": "/request#getting-values"
     },
     {
-      "text": "Accessing the Request from Controllers",
-      "url": "#controller-access"
+      "text": "コントローラからリクエストへのアクセス",
+      "url": "/request#controller-access"
     },
     {
-      "text": "Uploading Files",
-      "url": "#uploading-files"
+      "text": "ファイルのアップロード",
+      "url": "/request#uploading-files"
     },
     {
-      "text": "Working with Headers",
-      "url": "#working-with-headers"
+      "text": "HTTPヘッダの利用",
+      "url": "/request#working-with-headers"
     }
   ],
   "response": [
     {
-      "text": "Returning Responses",
-      "url": "#overview"
+      "text": "レスポンスを返す",
+      "url": "/response#overview"
     },
     {
-      "text": "Working with Headers",
-      "url": "#working-with-headers"
+      "text": "HTTPヘッダの利用",
+      "url": "/response#working-with-headers"
     },
     {
-      "text": "Making Redirections",
-      "url": "#redirections"
+      "text": "リダイレクト",
+      "url": "/response#redirections"
     },
     {
-      "text": "HTTP Cache",
-      "url": "#http-cache",
+      "text": "HTTPキャッシュ",
+      "url": "/response#http-cache",
       "menu": [
         {
-          "text": "Setting an Expiration Time",
-          "url": "#http-cache-expiration-time"
+          "text": "期限の設定",
+          "url": "/response#http-cache-expiration-time"
         },
         {
-          "text": "Cache-Control",
-          "url": "#http-cache-control"
+          "text": "キャッシュコントロール",
+          "url": "/response#http-cache-control"
         },
         {
           "text": "E-Tag",
-          "url": "#http-cache-etag"
+          "url": "/response#http-cache-etag"
         }
       ]
     }
@@ -2617,555 +2258,551 @@
   "routing": [
     {
       "text": "Routing",
-      "url": "#overview"
+      "url": "/routing#overview"
     },
     {
       "text": "Defining Routes",
-      "url": "#defining",
+      "url": "/routing#defining",
       "menu": [
         {
           "text": "Parameters with Names",
-          "url": "#defining-named-parameters"
+          "url": "/routing#defining-named-parameters"
         },
         {
           "text": "Short Syntax",
-          "url": "#defining-short-syntax"
+          "url": "/routing#defining-short-syntax"
         },
         {
           "text": "Mixing Array and Short Syntax",
-          "url": "#defining-mixed-parameters"
+          "url": "/routing#defining-mixed-parameters"
         },
         {
           "text": "Routing to Modules",
-          "url": "#defining-route-to-modules"
+          "url": "/routing#defining-route-to-modules"
         },
         {
           "text": "HTTP Method Restrictions",
-          "url": "#defining-http-method-restrictions"
+          "url": "/routing#defining-http-method-restrictions"
         },
         {
           "text": "Using conversors",
-          "url": "#defining-using-conversors"
+          "url": "/routing#defining-using-conversors"
         },
         {
           "text": "Groups of Routes",
-          "url": "#defining-groups-of-routes"
+          "url": "/routing#defining-groups-of-routes"
         }
       ]
     },
     {
       "text": "Matching Routes",
-      "url": "#matching"
+      "url": "/routing#matching"
     },
     {
       "text": "Naming Routes",
-      "url": "#naming"
+      "url": "/routing#naming"
     },
     {
       "text": "Usage Examples",
-      "url": "#usage"
+      "url": "/routing#usage"
     },
     {
       "text": "Default Behavior",
-      "url": "#default-behavior"
+      "url": "/routing#default-behavior"
     },
     {
       "text": "Setting the default route",
-      "url": "#default-route"
+      "url": "/routing#default-route"
     },
     {
       "text": "Not Found Paths",
-      "url": "#not-found-paths"
+      "url": "/routing#not-found-paths"
     },
     {
       "text": "Setting default paths",
-      "url": "#default-paths"
+      "url": "/routing#default-paths"
     },
     {
       "text": "Dealing with extra/trailing slashes",
-      "url": "#extra-slashes"
+      "url": "/routing#extra-slashes"
     },
     {
       "text": "Match Callbacks",
-      "url": "#callbacks"
+      "url": "/routing#callbacks"
     },
     {
       "text": "Hostname Constraints",
-      "url": "#hostname-constraints"
+      "url": "/routing#hostname-constraints"
     },
     {
       "text": "URI Sources",
-      "url": "#uri-sources"
+      "url": "/routing#uri-sources"
     },
     {
       "text": "Testing your routes",
-      "url": "#testing"
+      "url": "/routing#testing"
     },
     {
       "text": "Annotations Router",
-      "url": "#annotations"
+      "url": "/routing#annotations"
     },
     {
       "text": "Registering Router instance",
-      "url": "#registration"
+      "url": "/routing#registration"
     },
     {
       "text": "Implementing your own Router",
-      "url": "#custom"
+      "url": "/routing#custom"
     }
   ],
   "security": [
     {
-      "text": "Security",
-      "url": "#overview"
+      "text": "セキュリティ",
+      "url": "/security#overview"
     },
     {
-      "text": "Password Hashing",
-      "url": "#hashing"
+      "text": "パスワードのハッシュ",
+      "url": "/security#hashing"
     },
     {
-      "text": "Cross-Site Request Forgery (CSRF) protection",
-      "url": "#csrf"
+      "text": "Cross-Site Request Forgery (CSRF) の保護",
+      "url": "/security#csrf"
     },
     {
-      "text": "Setting up the component",
-      "url": "#setup"
+      "text": "コンポーネントの設定",
+      "url": "/security#setup"
     },
     {
-      "text": "Random",
-      "url": "#random"
+      "text": "乱数",
+      "url": "/security#random"
     },
     {
       "text": "External Resources",
-      "url": "#resources"
+      "url": "/security#resources"
     }
   ],
   "session": [
     {
-      "text": "Storing data in the Session",
-      "url": "#overview"
+      "text": "セッションにデータを保存する",
+      "url": "/session#overview"
     },
     {
-      "text": "Starting the Session",
-      "url": "#start",
+      "text": "セッションの開始",
+      "url": "/session#start",
       "menu": [
         {
           "text": "Factory",
-          "url": "#start-factory"
+          "url": "/session#start-factory"
         }
       ]
     },
     {
-      "text": "XAMPP",
-      "url": "#overview"
+      "text": "セッションへのデータ保存と取得",
+      "url": "/session#store"
     },
     {
-      "text": "Storing/Retrieving data in Session",
-      "url": "#store"
+      "text": "セッションの削除と破棄",
+      "url": "/session#remove-destroy"
     },
     {
-      "text": "Removing/Destroying Sessions",
-      "url": "#remove-destroy"
+      "text": "アプリケーション間のセッションデータの分離",
+      "url": "/session#data-isolation"
     },
     {
-      "text": "Isolating Session Data between Applications",
-      "url": "#data-isolation"
+      "text": "セッションバッグ",
+      "url": "/session#bags"
     },
     {
-      "text": "Session Bags",
-      "url": "#bags"
+      "text": "コンポーネントの不揮発性データ",
+      "url": "/session#data-persistence"
     },
     {
-      "text": "Persistent Data in Components",
-      "url": "#data-persistence"
-    },
-    {
-      "text": "Implementing your own adapters",
-      "url": "#custom-adapters"
+      "text": "独自のアダプターを実装",
+      "url": "/session#custom-adapters"
     }
   ],
   "tag": [
     {
-      "text": "View Helpers (Tags)",
-      "url": "#overview"
+      "text": "ビューヘルパー (タグ)",
+      "url": "/tag#overview"
     },
     {
       "text": "Document Type of Content",
-      "url": "#document-type"
+      "url": "/tag#document-type"
     },
     {
       "text": "Creating Forms",
-      "url": "#creating-forms"
+      "url": "/tag#creating-forms"
     },
     {
       "text": "Helpers to Generate Form Elements",
-      "url": "#helpers-for-form-elements"
+      "url": "/tag#helpers-for-form-elements"
     },
     {
       "text": "Making Select Boxes",
-      "url": "#select-boxes"
+      "url": "/tag#select-boxes"
     },
     {
       "text": "Assigning HTML attributes",
-      "url": "#html-attributes"
+      "url": "/tag#html-attributes"
     },
     {
       "text": "Setting Helper Values",
-      "url": "#helper-values",
+      "url": "/tag#helper-values",
       "menu": [
         {
           "text": "From Controllers",
-          "url": "#helper-values-form-controllers"
+          "url": "/tag#helper-values-form-controllers"
         },
         {
           "text": "From the Request",
-          "url": "#helper-values-from-request"
+          "url": "/tag#helper-values-from-request"
         },
         {
           "text": "Specifying values directly",
-          "url": "#helper-values-directly"
+          "url": "/tag#helper-values-directly"
         }
       ]
     },
     {
       "text": "Changing dynamically the Document Title",
-      "url": "#changing-document-title-dynamically"
+      "url": "/tag#changing-document-title-dynamically"
     },
     {
       "text": "Static Content Helpers",
-      "url": "#static-content-helpers",
+      "url": "/tag#static-content-helpers",
       "menu": [
         {
           "text": "Images",
-          "url": "#static-content-helpers-images"
+          "url": "/tag#static-content-helpers-images"
         },
         {
           "text": "Stylesheets",
-          "url": "#static-content-helpers-stylesheets"
+          "url": "/tag#static-content-helpers-stylesheets"
         },
         {
           "text": "Javascript",
-          "url": "#static-content-helpers-javascript"
+          "url": "/tag#static-content-helpers-javascript"
         },
         {
           "text": "HTML5 elements - generic HTML helper",
-          "url": "#static-content-helpers-html5"
+          "url": "/tag#static-content-helpers-html5"
         }
       ]
     },
     {
       "text": "Tag Service",
-      "url": "#tag-helpers"
+      "url": "/tag#tag-helpers"
     },
     {
       "text": "Creating your own helpers",
-      "url": "#custom-helpers"
+      "url": "/tag#custom-helpers"
     }
   ],
   "testing-environment": [
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "overview"
     },
     {
       "text": "Overview",
-      "url": "#overview"
+      "url": "overview"
     },
     {
       "text": "The problem",
-      "url": "#problem"
+      "url": "problem"
     },
     {
       "text": "Solution",
-      "url": "#solution"
+      "url": "solution"
     },
     {
       "text": "Installation",
-      "url": "#installation"
+      "url": "installation"
     },
     {
       "text": "Running the environment",
-      "url": "#running",
+      "url": "running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "#running-fork"
+          "url": "running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "#running-clone"
+          "url": "running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "#running-boxfile"
+          "url": "running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "#running-nanobox-configure"
+          "url": "running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "#running-nanobox-run"
+          "url": "running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "#running-composer"
+          "url": "running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "#running-zephir"
+          "url": "running-zephir"
         },
         {
-          "text": "Compile Phalcon",
-          "url": "#running-compile"
+          "text": "Phalconのコンパイル",
+          "url": "running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "#running-extensions"
+          "url": "running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "#tests",
+      "url": "tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "#tests-unit"
+          "url": "tests-unit"
         },
         {
           "text": "Integration",
-          "url": "#tests-integration"
+          "url": "tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "#development"
+      "url": "development"
     },
     {
-      "text": "Services",
-      "url": "#services"
+      "text": "サービス",
+      "url": "services"
     }
   ],
   "translate": [
     {
-      "text": "Multi-lingual Support",
-      "url": "#overview"
+      "text": "多言語サポート",
+      "url": "/translate#overview"
     },
     {
       "text": "Adapters",
-      "url": "#adapters",
+      "url": "/translate#adapters",
       "menu": [
         {
           "text": "Factory",
-          "url": "#adapters-factory"
+          "url": "/translate#adapters-factory"
         }
       ]
     },
     {
-      "text": "Component Usage",
-      "url": "#usage"
+      "text": "コンポーネントの使い方",
+      "url": "/translate#usage"
     },
     {
-      "text": "Implementing your own adapters",
-      "url": "#custom"
+      "text": "独自のアダプターを実装",
+      "url": "/translate#custom"
     }
   ],
   "tutorial-base": [
     {
-      "text": "View",
-      "url": "#basic"
+      "text": "ビュー",
+      "url": "/tutorial-base#basic"
     },
     {
-      "text": "File structure",
-      "url": "#file-structure"
+      "text": "ファイル構造",
+      "url": "/tutorial-base#file-structure"
     },
     {
       "text": "Bootstrap",
-      "url": "#bootstrap",
+      "url": "/tutorial-base#bootstrap",
       "menu": [
         {
-          "text": "Autoloaders",
-          "url": "#autoloaders"
+          "text": "オートローダ",
+          "url": "/tutorial-base#autoloaders"
         },
         {
-          "text": "Dependency Management",
-          "url": "#dependency-management"
+          "text": "依存関係の管理",
+          "url": "/tutorial-base#dependency-management"
         },
         {
-          "text": "Handling the application request",
-          "url": "#request"
+          "text": "アプリケーションのリクエストを処理する",
+          "url": "/tutorial-base#request"
         },
         {
-          "text": "Putting everything together",
-          "url": "#full-example"
+          "text": "全てを配置",
+          "url": "/tutorial-base#full-example"
         }
       ]
     },
     {
-      "text": "Creating a Controller",
-      "url": "#controller"
+      "text": "Controllerの作成",
+      "url": "/tutorial-base#controller"
     },
     {
-      "text": "Sending output to a view",
-      "url": "#view"
+      "text": "Viewに出力を送る",
+      "url": "/tutorial-base#view"
     },
     {
-      "text": "Designing a sign up form",
-      "url": "#signup-form"
+      "text": "サインアップフォームのデザイン",
+      "url": "/tutorial-base#signup-form"
     },
     {
-      "text": "Creating a Model",
-      "url": "#model"
+      "text": "Modelの作成",
+      "url": "/tutorial-base#model"
     },
     {
-      "text": "Setting a Database Connection",
-      "url": "#database-connection"
+      "text": "データベース接続の設定",
+      "url": "/tutorial-base#database-connection"
     },
     {
-      "text": "Storing data using models",
-      "url": "#storing-data"
+      "text": "Modelを使ったデータの保存",
+      "url": "/tutorial-base#storing-data"
     },
     {
       "text": "Conclusion",
-      "url": "#conclusion"
+      "url": "/tutorial-base#conclusion"
     }
   ],
   "tutorial-invo": [
     {
-      "text": "Tutorial: INVO",
-      "url": "#overview"
+      "text": "チュートリアル: INVO",
+      "url": "/tutorial-invo#overview"
     },
     {
-      "text": "Project Structure",
-      "url": "#structure"
+      "text": "プロジェクトの構成",
+      "url": "/tutorial-invo#structure"
     },
     {
       "text": "Routing",
-      "url": "#routing"
+      "url": "/tutorial-invo#routing"
     },
     {
-      "text": "Configuration",
-      "url": "#configuration"
+      "text": "設定",
+      "url": "/tutorial-invo#configuration"
     },
     {
-      "text": "Autoloaders",
-      "url": "#autoloaders"
+      "text": "オートローダ",
+      "url": "/tutorial-invo#autoloaders"
     },
     {
-      "text": "Registering services",
-      "url": "#services"
+      "text": "サービスの登録",
+      "url": "/tutorial-invo#services"
     },
     {
-      "text": "Handling the Request",
-      "url": "#handling-requests"
+      "text": "リクエストの処理",
+      "url": "/tutorial-invo#handling-requests"
     },
     {
-      "text": "Dependency Injection",
-      "url": "#dependency-injection"
+      "text": "依存性の注入",
+      "url": "/tutorial-invo#dependency-injection"
     },
     {
-      "text": "Log into the Application",
-      "url": "#log-in"
+      "text": "アプリケーションへのログイン",
+      "url": "/tutorial-invo#log-in"
     },
     {
-      "text": "Securing the Backend",
-      "url": "#securing-backend",
+      "text": "バックエンドのセキュリティ保護",
+      "url": "/tutorial-invo#securing-backend",
       "menu": [
         {
-          "text": "Events Management",
-          "url": "#events-manager"
+          "text": "イベント管理",
+          "url": "/tutorial-invo#events-manager"
         },
         {
-          "text": "Getting the ACL list",
-          "url": "#acl"
+          "text": "ACLリストの提供",
+          "url": "/tutorial-invo#acl"
         }
       ]
     },
     {
-      "text": "Working with the CRUD",
-      "url": "#working-with-crud"
+      "text": "CRUDを使用した作業",
+      "url": "/tutorial-invo#working-with-crud"
     },
     {
-      "text": "The Search Form",
-      "url": "#search-form"
+      "text": "検索フォーム",
+      "url": "/tutorial-invo#search-form"
     },
     {
-      "text": "Performing a Search",
-      "url": "#performing-searches"
+      "text": "検索の実行",
+      "url": "/tutorial-invo#performing-searches"
     },
     {
-      "text": "Creating and Updating Records",
-      "url": "#creating-updating-records"
+      "text": "レコードの登録と更新",
+      "url": "/tutorial-invo#creating-updating-records"
     },
     {
-      "text": "User Components",
-      "url": "#user-components"
+      "text": "ユーザーコンポーネント",
+      "url": "/tutorial-invo#user-components"
     },
     {
-      "text": "Changing the Title Dynamically",
-      "url": "#dynamic-titles"
+      "text": "タイトルの動的な変更",
+      "url": "/tutorial-invo#dynamic-titles"
     }
   ],
   "tutorial-rest": [
     {
-      "text": "Tutorial: Creating a Simple REST API",
-      "url": "#overview"
+      "text": "チュートリアル: 単純な REST API の作成",
+      "url": "/tutorial-rest#overview"
     },
     {
-      "text": "Defining the API",
-      "url": "#definitions"
+      "text": "API の定義",
+      "url": "/tutorial-rest#definitions"
     },
     {
-      "text": "Creating the Application",
-      "url": "#implementation"
+      "text": "アプリケーションの作成",
+      "url": "/tutorial-rest#implementation"
     },
     {
-      "text": "Creating a Model",
-      "url": "#models"
+      "text": "Modelの作成",
+      "url": "/tutorial-rest#models"
     },
     {
-      "text": "Retrieving Data",
-      "url": "#retrieving-data"
+      "text": "データの取得",
+      "url": "/tutorial-rest#retrieving-data"
     },
     {
       "text": "Inserting Data",
-      "url": "#inserting-data"
+      "url": "/tutorial-rest#inserting-data"
     },
     {
       "text": "Updating Data",
-      "url": "#updating-data"
+      "url": "/tutorial-rest#updating-data"
     },
     {
       "text": "Deleting Data",
-      "url": "#deleting-data"
+      "url": "/tutorial-rest#deleting-data"
     },
     {
-      "text": "Testing our Application",
-      "url": "#testing"
+      "text": "アプリケーションのテスト",
+      "url": "/tutorial-rest#testing"
     },
     {
       "text": "Conclusion",
-      "url": "#conclusion"
+      "url": "/tutorial-rest#conclusion"
     }
   ],
   "tutorial-vokuro": [
     {
       "text": "Tutorial: Vökuró",
-      "url": "#overview"
+      "url": "/tutorial-vokuro#overview"
     },
     {
-      "text": "Project Structure",
-      "url": "#structure"
+      "text": "プロジェクトの構成",
+      "url": "/tutorial-vokuro#structure"
     },
     {
       "text": "Load Classes and Dependencies",
-      "url": "#dependencies"
+      "url": "/tutorial-vokuro#dependencies"
     },
     {
       "text": "Sign Up",
-      "url": "#sign-up"
+      "url": "/tutorial-vokuro#sign-up"
     }
   ],
   "use-case": [
@@ -3189,29 +2826,43 @@
   "unit-testing": [
     {
       "text": "Unit Testing",
-      "url": "#overview"
+      "url": "/unit-testing#overview"
     },
     {
-      "text": "Integrating PHPUnit with Phalcon",
-      "url": "#integration"
+      "text": "PhalconとPHPUnitの統合",
+      "url": "/unit-testing#integration"
     },
     {
-      "text": "The PHPUnit helper file",
-      "url": "#unit-helper"
+      "text": "PHPUnitのヘルパーファイル",
+      "url": "/unit-testing#unit-helper"
     },
     {
       "text": "The `phpunit.xml` file",
-      "url": "#phpunit-config"
+      "url": "/unit-testing#phpunit-config"
     },
     {
-      "text": "Sample Unit Test",
-      "url": "#sample"
+      "text": "ユニットテストのサンプル",
+      "url": "/unit-testing#sample"
     }
   ],
   "upgrade": [
     {
+      "text": "Requirements",
+      "url": "#requirements",
+      "menu": [
+        {
+          "text": "PSR",
+          "url": "#psr"
+        },
+        {
+          "text": "Installation",
+          "url": "installation"
+        }
+      ]
+    },
+    {
       "text": "ALC",
-      "url": "#acl",
+      "url": "#ACL",
       "menu": [
         {
           "text": "Overview",
@@ -3244,364 +2895,400 @@
           "url": "#filter-constants"
         }
       ]
+    },
+    {
+      "text": "Logger",
+      "url": "#logger",
+      "menu": [
+        {
+          "text": "Overview",
+          "url": "#filter-overview"
+        },
+        {
+          "text": "Using the FactoryDefault",
+          "url": "#filter-di-factorydefault"
+        },
+        {
+          "text": "Using a custom Di",
+          "url": "#filter-di-custom"
+        },
+        {
+          "text": "定数",
+          "url": "#filter-constants"
+        }
+      ]
+    },
+    {
+      "text": "Logger",
+      "url": "#logger",
+      "menu": [
+        {
+          "text": "Creating a logger component",
+          "url": "#logger-creating"
+        },
+        {
+          "text": "Multiple loggers",
+          "url": "#logger-multiple"
+        }
+      ]
     }
   ],
   "url": [
     {
       "text": "Generating URLs and Paths",
-      "url": "#overview"
+      "url": "/url#overview"
     },
     {
       "text": "Setting a base URI",
-      "url": "#base-uri"
+      "url": "/url#base-uri"
     },
     {
       "text": "Generating URIs",
-      "url": "#generating-uri"
+      "url": "/url#generating-uri"
     },
     {
       "text": "Producing URLs without mod_rewrite",
-      "url": "#urls-without-mod-rewrite"
+      "url": "/url#urls-without-mod-rewrite"
     },
     {
       "text": "Producing URLs from Volt",
-      "url": "#urls-from-volt"
+      "url": "/url#urls-from-volt"
     },
     {
       "text": "Static vs. Dynamic URIs",
-      "url": "#static-vs-dynamic-uri"
+      "url": "/url#static-vs-dynamic-uri"
     },
     {
       "text": "Implementing your own URL Generator",
-      "url": "#custom-url"
+      "url": "/url#custom-url"
     }
   ],
   "validation": [
     {
-      "text": "Validation",
-      "url": "#overview"
+      "text": "バリデーション",
+      "url": "/validation#overview"
     },
     {
-      "text": "Initializing Validation",
-      "url": "#initializing"
+      "text": "バリデーションの初期化",
+      "url": "/validation#initializing"
     },
     {
-      "text": "Validators",
-      "url": "#validators"
+      "text": "バリデーター",
+      "url": "/validation#validators"
     },
     {
-      "text": "Callback Validator",
-      "url": "#callback"
+      "text": "Callbackバリデーター",
+      "url": "/validation#callback"
     },
     {
       "text": "Validation Messages",
-      "url": "#messages"
+      "url": "/validation#messages"
     },
     {
-      "text": "Filtering of Data",
-      "url": "#filtering"
+      "text": "データのフィルタリング",
+      "url": "/validation#filtering"
     },
     {
-      "text": "Validation Events",
-      "url": "#events"
+      "text": "バリデーションイベント",
+      "url": "/validation#events"
     },
     {
-      "text": "Cancelling Validations",
-      "url": "#cancelling"
+      "text": "バリデーションのキャンセル",
+      "url": "/validation#cancelling"
     },
     {
-      "text": "Avoid validating empty values",
-      "url": "#empty-values"
+      "text": "空の値のバリデーションを避ける",
+      "url": "/validation#empty-values"
     },
     {
-      "text": "Recursive Validation",
-      "url": "#recursive"
+      "text": "再起的バリデーション",
+      "url": "/validation#recursive"
     }
   ],
   "views": [
     {
-      "text": "Using Views",
-      "url": "#overview"
+      "text": "ビューの使用",
+      "url": "/views#overview"
     },
     {
-      "text": "Integrating Views with Controllers",
-      "url": "#integrating-views-with-controllers"
+      "text": "コントローラーとビューの統合",
+      "url": "/views#integrating-views-with-controllers"
     },
     {
-      "text": "Hierarchical Rendering",
-      "url": "#hierarchical-rendering",
+      "text": "階層的なレンダリング",
+      "url": "/views#hierarchical-rendering",
       "menu": [
         {
-          "text": "Using Templates",
-          "url": "#using-templates"
+          "text": "テンプレートを使用する",
+          "url": "/views#using-templates"
         },
         {
-          "text": "Control Rendering Levels",
-          "url": "#control-rendering-levels"
+          "text": "レンダリングレベルのコントロール",
+          "url": "/views#control-rendering-levels"
         },
         {
-          "text": "Disabling render levels",
-          "url": "#disabling-render-levels"
+          "text": "レンダリングレベルの無効化",
+          "url": "/views#disabling-render-levels"
         },
         {
           "text": "Picking Views",
-          "url": "#picking-views"
+          "url": "/views#picking-views"
         },
         {
-          "text": "Disabling the view",
-          "url": "#disabling-view"
+          "text": "Viewの無効化",
+          "url": "/views#disabling-view"
         }
       ]
     },
     {
       "text": "Simple Rendering",
-      "url": "#simple-rendering"
+      "url": "/views#simple-rendering"
     },
     {
       "text": "Using Partials",
-      "url": "#using-partials"
+      "url": "/views#using-partials"
     },
     {
       "text": "Transfer values from the controller to views",
-      "url": "#value-transfer"
+      "url": "/views#value-transfer"
     },
     {
-      "text": "Caching View Fragments",
-      "url": "#caching-fragments"
+      "text": "Viewの断片のキャッシュ",
+      "url": "/views#caching-fragments"
     },
     {
-      "text": "Template Engines",
-      "url": "#template-engines",
+      "text": "テンプレートエンジン",
+      "url": "/views#template-engines",
       "menu": [
         {
           "text": "Creating your own Template Engine Adapter",
-          "url": "#custom-template-engine"
+          "url": "/views#custom-template-engine"
         },
         {
           "text": "Changing the Template Engine",
-          "url": "#changing-template-engine"
+          "url": "/views#changing-template-engine"
         }
       ]
     },
     {
       "text": "Injecting services in View",
-      "url": "#injecting-services"
+      "url": "/views#injecting-services"
     },
     {
-      "text": "Stand-Alone Component",
-      "url": "#stand-alone",
+      "text": "独立コンポーネント",
+      "url": "/views#stand-alone",
       "menu": [
         {
-          "text": "Hierarchical Rendering",
-          "url": "#stand-alone-hierarchical-rendering"
+          "text": "階層的なレンダリング",
+          "url": "/views#stand-alone-hierarchical-rendering"
         },
         {
           "text": "Simple Rendering",
-          "url": "#stand-alone-simple-rendering"
+          "url": "/views#stand-alone-simple-rendering"
         }
       ]
     },
     {
-      "text": "View Events",
-      "url": "#events"
+      "text": "Viewイベント",
+      "url": "/views#events"
     }
   ],
   "volt": [
     {
-      "text": "Volt: Template Engine",
-      "url": "#overview"
+      "text": "Volt: テンプレートエンジン",
+      "url": "/volt#overview"
     },
     {
-      "text": "Introduction",
-      "url": "#introduction"
+      "text": "はじめに",
+      "url": "/volt#introduction"
     },
     {
-      "text": "Activating Volt",
-      "url": "#setup"
+      "text": "Voltを使うために",
+      "url": "/volt#setup"
     },
     {
-      "text": "Basic Usage",
-      "url": "#basic-usage"
+      "text": "基本的な使い方",
+      "url": "/volt#basic-usage"
     },
     {
-      "text": "Variables",
-      "url": "#variables"
+      "text": "変数",
+      "url": "/volt#variables"
     },
     {
-      "text": "Filters",
-      "url": "#filters"
+      "text": "フィルター",
+      "url": "/volt#filters"
     },
     {
-      "text": "Comments",
-      "url": "#comments"
+      "text": "コメント",
+      "url": "/volt#comments"
     },
     {
-      "text": "List of Control Structures",
-      "url": "#control-structures",
+      "text": "制御構文の一覧",
+      "url": "/volt#control-structures",
       "menu": [
         {
-          "text": "For",
-          "url": "#control-structures-for"
+          "text": "for文",
+          "url": "/volt#control-structures-for"
         },
         {
-          "text": "Loop Controls",
-          "url": "#control-structures-loops",
+          "text": "ループ制御",
+          "url": "/volt#control-structures-loops",
           "menu": [
             {
-              "text": "If",
-              "url": "#control-structures-if"
+              "text": "If文",
+              "url": "/volt#control-structures-if"
             },
             {
-              "text": "Switch",
-              "url": "#control-structures-switch"
+              "text": "switch文",
+              "url": "/volt#control-structures-switch"
             }
           ]
         },
         {
-          "text": "Loop Context",
-          "url": "#control-structures-loop",
+          "text": "ループ変数",
+          "url": "/volt#control-structures-loop",
           "menu": [
             {
-              "text": "Assignments",
-              "url": "#assignments"
+              "text": "変数割り当て",
+              "url": "/volt#assignments"
             },
             {
-              "text": "Expressions",
-              "url": "#expressions"
+              "text": "条件式",
+              "url": "/volt#expressions"
             }
           ]
         },
         {
-          "text": "Literals",
-          "url": "#expressions-literals"
+          "text": "定数",
+          "url": "/volt#expressions-literals"
         },
         {
-          "text": "Arrays",
-          "url": "#expressions-arrays"
+          "text": "配列",
+          "url": "/volt#expressions-arrays"
         },
         {
-          "text": "Math",
-          "url": "#expressions-math"
+          "text": "計算",
+          "url": "/volt#expressions-math"
         },
         {
-          "text": "Comparisons",
-          "url": "#expressions-comparisons"
+          "text": "比較",
+          "url": "/volt#expressions-comparisons"
         },
         {
-          "text": "Logic",
-          "url": "#expressions-logic"
+          "text": "演算子",
+          "url": "/volt#expressions-logic"
         },
         {
-          "text": "Other Operators",
-          "url": "#expressions-other-operators"
+          "text": "その他演算子",
+          "url": "/volt#expressions-other-operators"
         }
       ]
     },
     {
-      "text": "Tests",
-      "url": "#tests"
+      "text": "テスト",
+      "url": "/volt#tests"
     },
     {
-      "text": "Macros",
-      "url": "#macros"
+      "text": "マクロ",
+      "url": "/volt#macros"
     },
     {
-      "text": "Using Tag Helpers",
-      "url": "#tag-helpers"
+      "text": "タグヘルパーを使用する",
+      "url": "/volt#tag-helpers"
     },
     {
-      "text": "Functions",
-      "url": "#functions"
+      "text": "関数",
+      "url": "/volt#functions"
     },
     {
-      "text": "View Integration",
-      "url": "#view-integrations",
+      "text": "Viewとの連携",
+      "url": "/volt#view-integrations",
       "menu": [
         {
-          "text": "Include",
-          "url": "#view-integration-include"
+          "text": "include文",
+          "url": "/volt#view-integration-include"
         },
         {
-          "text": "Partial vs Include",
-          "url": "#view-integration-partial-vs-include"
+          "text": "partial文 vs include文",
+          "url": "/volt#view-integration-partial-vs-include"
         }
       ]
     },
     {
-      "text": "Template Inheritance",
-      "url": "#template-inheritance",
+      "text": "テンプレートの継承",
+      "url": "/volt#template-inheritance",
       "menu": [
         {
-          "text": "Multiple Inheritance",
-          "url": "#template-inheritance-multiple"
+          "text": "多重継承",
+          "url": "/volt#template-inheritance-multiple"
         }
       ]
     },
     {
-      "text": "Autoescape mode",
-      "url": "#autoescape"
+      "text": "自動エスケープ モード",
+      "url": "/volt#autoescape"
     },
     {
-      "text": "Extending Volt",
-      "url": "#extending",
+      "text": "Volt の拡張",
+      "url": "/volt#extending",
       "menu": [
         {
-          "text": "Functions",
-          "url": "#extending-functions"
+          "text": "関数",
+          "url": "/volt#extending-functions"
         },
         {
-          "text": "Filters",
-          "url": "#extending-filters"
+          "text": "フィルター",
+          "url": "/volt#extending-filters"
         },
         {
-          "text": "Extensions",
-          "url": "#extending-extensions"
+          "text": "エクステンション",
+          "url": "/volt#extending-extensions"
         }
       ]
     },
     {
-      "text": "Caching view fragments",
-      "url": "#caching-view-fragments"
+      "text": "Viewの断片のキャッシュ",
+      "url": "/volt#caching-view-fragments"
     },
     {
-      "text": "Inject Services into a Template",
-      "url": "#services-in-templates"
+      "text": "テンプレートへのサービス注入",
+      "url": "/volt#services-in-templates"
     },
     {
-      "text": "Stand-alone component",
-      "url": "#stand-alone"
+      "text": "独立コンポーネント",
+      "url": "/volt#stand-alone"
     }
   ],
   "webserver-wamp": [
     {
-      "text": "Installation on WAMP",
-      "url": "#overview"
+      "text": "WAMP にインストール",
+      "url": "/webserver-wamp#overview"
     },
     {
       "text": "Download the right version of Phalcon",
-      "url": "#phalcon"
+      "url": "/webserver-wamp#phalcon"
     },
     {
       "text": "Related",
-      "url": "#related"
+      "url": "/webserver-wamp#related"
     }
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
-      "url": "#overview"
+      "text": "XAMPP にインストール",
+      "url": "/webserver-xampp#overview"
     },
     {
       "text": "Download the right version of Phalcon",
-      "url": "#phalcon"
+      "url": "/webserver-xampp#phalcon"
     },
     {
       "text": "Screencast",
-      "url": "#screencast"
+      "url": "/webserver-xampp#screencast"
     },
     {
       "text": "Related",
-      "url": "#related"
+      "url": "/webserver-xampp#related"
     }
   ]
 }

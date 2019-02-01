@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Model\Resultset\Simple'
 
 *implements* [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php), [Serializable](https://php.net/manual/en/class.serializable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
-Simple resultsets only contains a complete objects This class builds every complete object as it is required
+Resultset sederhana hanya berisi objek yang lengkap Kelas ini membangun setiap objek lengkap sesuai kebutuhan
 
 ## Constants
 
@@ -26,39 +26,39 @@ Simple resultsets only contains a complete objects This class builds every compl
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metode
 
 public **__construct** (*array* $columnMap, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](Phalcon_Mvc_Model_Row) $model, [Phalcon\Db\Result\Pdo](Phalcon_Db_Result_Pdo) | *null* $result, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache], [*boolean* $keepSnapshots])
 
 Phalcon\Mvc\Model\Resultset\Simple constructor
 
-final public **current** ()
+publik akhir **saat ini** ()
 
-Returns current row in the resultset
+Mengembalikan baris saat ini di resultset
 
 public **toArray** ([*mixed* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
+Mengembalikan hasil lengkap yang ditetapkan sebagai array, jika resultset memiliki sejumlah besar baris, itu bisa menghabiskan lebih banyak memori daripada saat ini. Ekspor resultset ke array tidak bisa lebih cepat dengan sejumlah besar catatan
 
-public **serialize** ()
+publik **getName** ()
 
-Serializing a resultset will dump all related rows into a big array
+Serializing sebuah resultset akan membuang semua baris yang terkait ke dalam array yang besar
 
-public **unserialize** (*mixed* $data)
+public ** beforeStore ** ( * mixed * $data)
 
-Unserializing a resultset will allow to only works on the rows present in the saved state
+Unserializing sebuah resultset akan memungkinkan untuk hanya bekerja pada baris yang ada dalam keadaan tersimpan
 
 public **next** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Moves cursor to next row in the resultset
+Memindahkan kursor ke baris berikutnya di resultset
 
 public **valid** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Check whether internal resource has rows to fetch
+Periksa apakah sumber internal memiliki baris untuk diambil
 
 public **key** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Gets pointer number of active row in the resultset
+Mendapat nomor pointer dari baris aktif di resultset
 
 final public **rewind** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
@@ -70,15 +70,15 @@ Changes the internal pointer to a specific position in the resultset. Set the ne
 
 final public **count** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Counts how many rows are in the resultset
+Menghitung berapa banyak baris yang ada di resultset
 
 public **offsetExists** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Checks whether offset exists in the resultset
+Cek apakah offset ada di resultset
 
 public **offsetGet** (*mixed* $index) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Gets row in a specific position of the resultset
+Mendapat baris pada posisi tertentu dari resultset
 
 public **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
@@ -90,23 +90,23 @@ Resultsets cannot be changed. It has only been implemented to meet the definitio
 
 public **getType** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Returns the internal type of data retrieval that the resultset is using
+Mengembalikan tipe internal pengambilan data yang digunakan oleh resultset
 
 public **getFirst** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Get first row in the resultset
+Dapatkan baris pertama di resultset
 
 public **getLast** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Get last row in the resultset
+Dapatkan baris terakhir di resultset
 
 public **setIsFresh** (*mixed* $isFresh) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Set if the resultset is fresh or an old one cached
+Atur apakah resultset sudah segar atau yang lama di-cache
 
 public **isFresh** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Tell if the resultset if fresh or an old one cached
+Katakan jika resultset jika segar atau yang lama cache
 
 public **setHydrateMode** (*mixed* $hydrateMode) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
@@ -118,19 +118,19 @@ Returns the current hydration mode
 
 public **getCache** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Returns the associated cache for the resultset
+Kembali dikaitkan cache untuk resultset
 
 public **getMessages** () inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Returns the error messages produced by a batch operation
+Mengembalikan pesan galat yang dihasilkan oleh operasi batch
 
 public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Updates every record in the resultset
+Update setiap catatan dalam resultset
 
 public **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback]) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 
-Deletes every record in the resultset
+Menghapus setiap catatan dalam resultset
 
 public [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **filter** (*callback* $filter) inherited from [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)
 

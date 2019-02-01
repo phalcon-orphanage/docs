@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\OperationAware'
 ---
 # Interface **Phalcon\Acl\OperationAware**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationaware.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationaware.zep)
 
-## Methods
+## Metodlar
 
 ```php
 abstract public getOperationName()

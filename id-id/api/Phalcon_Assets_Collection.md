@@ -8,11 +8,11 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-Represents a collection of resources
+Merupakan sekumpulan sumber
 
-## Methods
+## Metode
 
 public **getPrefix** ()
 
@@ -22,7 +22,7 @@ public **getLocal** ()
 
 ...
 
-public **getResources** ()
+publik **dapatkansumberdaya** ()
 
 ...
 
@@ -62,27 +62,27 @@ public **getSourcePath** ()
 
 ...
 
-public **__construct** ()
+publik **__membangun** ()
 
 Phalcon\Assets\Collection constructor
 
 public **add** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Adds a resource to the collection
+Menambah penyumberan kepada koleksi
 
 public **addInline** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Adds an inline code to the collection
+Menambahkan kode inline pada collection
 
 public **has** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Checks this the resource is added to the collection.
+Periksa penyumberan ini sudah ditambahkan ke koleksi.
 
 ```php
 <?php
 
-use Phalcon\Assets\Resource;
-use Phalcon\Assets\Collection;
+Gunakan Phalcon\Aset\Penyumberan;
+Gunakan Phalcon\Aset\Koleksi;
 
 $collection = new Collection();
 
@@ -91,90 +91,90 @@ $resource->has($resource); // true
 
 ```
 
-public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
+public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*dicampur* $attributes])
 
-Adds a CSS resource to the collection
+Menambahkan peyumberan CSS ke koleksi
 
-public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
+public **addInlineCss** (*campuran* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline CSS to the collection
+Menambahkan sekumpulan inline CSS ke koleksi
 
 public [Phalcon\Assets\Collection](Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Adds a javascript resource to the collection
+Menambahkan sebuah penyumberan javascript ke koleksi
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline javascript to the collection
+Menambahkan sekumpulan inline javascript ke collection
 
-public **count** ()
+publik **menghitung**()
 
-Returns the number of elements in the form
+Mengembalikan jumlah elemen dalam formulir
 
-public **rewind** ()
+publik**mundur**()
 
-Rewinds the internal iterator
+Melakukan pemutaran balik internal iterator
 
 public **current** ()
 
-Returns the current resource in the iterator
+Mengembalikan penyumberan aliran pada iterator
 
 public *int* **key** ()
 
-Returns the current position/key in the iterator
+Mengembalikan posisi/kunci saat ini di iterator
 
-public **next** ()
+publik **berikutnya** ()
 
-Moves the internal iteration pointer to the next position
+Bergerak pointer internal iterasi kepada posisi yang berikut
 
-public **valid** ()
+publik **sah** ()
 
-Check if the current element in the iterator is valid
+Periksa apakah pesan yang sekarang di iterator berlaku
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the target path of the file for the filtered/join output
+Menetapkan target dari bagian file untuk penyaringan/bergabung
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets a base source path for all the resources in this collection
+Penetapan sekumpulan sumber bagian untuk semua penyumberan pada collection ini
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+Menetapkan sebuah target uri untuk menghasilkan HTML
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a common prefix for all the resources
+Mengedepankan semua penyumberan bersama
 
 public **setLocal** (*mixed* $local)
 
-Sets if the collection uses local resources by default
+Menetapkan jika collection menggunakan penyumberan lokal secara default
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Menetapkan beberapa atribut HTML tambahan
 
 public **setFilters** (*array* $filters)
 
-Sets an array of filters in the collection
+Menetapkan sebuah penyaringan array di collection
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Sets the target local
+Menetapkan target lokal
 
 public **join** (*mixed* $join)
 
-Sets if all filtered resources in the collection must be joined in a single result file
+Menetapkan jika semua penyumberan yang disaring dalam collection harus sudah bergabung dalam hasil file tunggal
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Returns the complete location where the joined/filtered collection must be written
+Mengembalikan lokasi lengkap tempat dimana collection yang telah digabungkan/disaring harus ditulis
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface) $filter)
 
-Adds a filter to the collection
+Menambahkan sebuah penyaringan ke collection
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Adds a resource or inline-code to the collection
+Menambahkan penyumberan atau inline-kode ke collection

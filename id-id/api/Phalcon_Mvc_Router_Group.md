@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Router\Group'
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
-Helper class to create a group of routes with common attributes
+Kelas pembantu membuat kelompok rute dengan atribut umum
 
 ```php
 <?php
@@ -58,7 +58,7 @@ $router->mount($blog);
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([*mixed* $paths])
 
@@ -66,19 +66,19 @@ Phalcon\Mvc\Router\Group constructor
 
 public **setHostname** (*mixed* $hostname)
 
-Set a hostname restriction for all the routes in the group
+Tetapkan batasan nama host untuk semua rute dalam grup
 
 public **getHostname** ()
 
-Returns the hostname restriction
+Mengembalikan batasan hostname
 
 public **setPrefix** (*mixed* $prefix)
 
-Set a common uri prefix for all the routes in this group
+Tetapkan awalan umum uri untuk semua rute dalam grup ini
 
 public **getPrefix** ()
 
-Returns the common prefix for all the routes
+Mengembalikan awalan umum untuk semua rute
 
 public **beforeMatch** (*mixed* $beforeMatch)
 
@@ -86,23 +86,23 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+Mengembalikan callback 'sebelum pertandingan' jika ada
 
 public **setPaths** (*mixed* $paths)
 
-Set common paths for all the routes in the group
+Tetapkan jalur umum untuk semua rute dalam grup
 
-public **getPaths** ()
+publik **mendapatkanJalan** ()
 
-Returns the common paths defined for this group
+Mengembalikan jalur umum yang ditetapkan untuk grup ini
 
-public **getRoutes** ()
+publik **mendapatkanRute** ()
 
-Returns the routes added to the group
+Mengembalikan rute yang ditambahkan ke grup
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Adds a route to the router on any HTTP method
+Menambahkan rute ke router pada setiap metode HTTP
 
 ```php
 <?php
@@ -113,7 +113,7 @@ $router->add("/about", "About::index");
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addGet** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router that only match if the HTTP method is GET
+Menambahkan rute ke router yang hanya cocok jika metode HTTP nya MENDAPATKAN
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
 
@@ -125,24 +125,24 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPatch** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PATCH
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addDelete** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah DELETE
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addOptions** (*string* $pattern, [*string/array* $paths])
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Tambahkan rute ke router yang hanya cocok jika metode HTTP adalah OPTIONS
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addHead** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah KEPALA
 
-public **clear** ()
+publik **jelas** ()
 
-Removes all the pre-defined routes
+Menghapus semua rute yang telah ditentukan sebelumnya
 
 protected **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Adds a route applying the common attributes
+Menambahkan rute yang menerapkan atribut umum

@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Response\Headers'
 
 *implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
 This class is a bag to manage the response headers
 
-## Methods
+## روش ها
 
 public **set** (*mixed* $name, *mixed* $value)
 

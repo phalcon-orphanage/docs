@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Multiple'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
-Allows to read to chained backend adapters writing to multiple backends
+Permite leer adaptadores encadenados back-end escribiendo a múltiples backends
 
 ```php
 <?php
@@ -77,28 +77,28 @@ Phalcon\Cache\Multiple constructor
 
 public **push** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backend)
 
-Adds a backend
+Adiciona un backend
 
 public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
 
-Returns a cached content reading the internal backends
+Devuelve un contenido almacenado leyendo en backend interno
 
 public **start** (*string* | *int* $keyName, [*int* $lifetime])
 
-Starts every backend
+Inicia cada backend
 
 public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into all backends and stops the frontend
+Almacena contenidos cache en todos los backends y detiene la interfaz
 
 public *boolean* **delete** (*string* | *int* $keyName)
 
-Deletes a value from each backend
+Elimina un valor de cada backend
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists in at least one backend
+Verifica si el cache existe en al menos un backend
 
 public **flush** ()
 
-Flush all backend(s)
+Vaciar todos los backends

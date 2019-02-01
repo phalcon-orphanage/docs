@@ -30,7 +30,7 @@ if ($request->isPost()) {
 
 <a name='getting-values'></a>
 
-## Getting Values
+## Pobieranie wartości
 
 PHP automatically fills the superglobal arrays `$_GET` and `$_POST` depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
@@ -177,7 +177,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## Events
+## Zdarzenia
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
@@ -188,7 +188,7 @@ Authorization: <type> <credentials>
 where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In 99.99% use cases the authentication type is:
 
 * `AWS4-HMAC-SHA256`
-* `Basic`
+* `Podstawowe`
 * `Bearer`
 * `Digest`
 * `HOBA`

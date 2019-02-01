@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\Collection'
 
 *implements* [Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
 
 Groups Micro-Mvc handlers as controllers
 
@@ -29,68 +29,68 @@ $app->mount($collection);
 
 ```
 
-## Methods
+## Metode
 
 protected **_addMap** (*string* | *array* $method, *string* $routePattern, *mixed* $handler, *string* $name)
 
-Internal function to add a handler to the group
+Fungsi internal untuk menambahkan handler ke grup
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a prefix for all routes added to the collection
+Menetapkan awalan untuk semua rute yang ditambahkan ke koleksi
 
 public **getPrefix** ()
 
-Returns the collection prefix if any
+Mengembalikan awalan koleksi jika ada
 
 public *array* **getHandlers** ()
 
-Returns the registered handlers
+Mengembalikan penangan yang terdaftar
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
-Sets the main handler
+Menetapkan penangan utama
 
 public **setLazy** (*mixed* $lazy)
 
-Sets if the main handler must be lazy loaded
+Menetapkan apakah penangan utama harus malas dimuat
 
 public **isLazy** ()
 
-Returns if the main handler must be lazy loaded
+Kembali jika pawang utama harus malas dimuat
 
 public *mixed* **getHandler** ()
 
-Returns the main handler
+Mengembalikan pawang utama
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **map** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler
+Memandu rute ke pawang
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **get** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is GET
+Peta rute ke handler yang hanya cocok jika metode HTTP nya adalah GET
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **post** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is POST
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah POST
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **put** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is PUT
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah PUT
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is PATCH
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah PATCH
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **head** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is HEAD
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah HEAD
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Maps a route to a handler that only matches if the HTTP method is DELETE
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah DELETE
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **options** (*string* $routePattern, *callable* $handler, [*mixed* $name])
 
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah OPTIONS

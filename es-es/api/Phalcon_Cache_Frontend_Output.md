@@ -26,11 +26,11 @@ Phalcon\Cache\Frontend\Output constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Devuelve el tiempo de vida del cache
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Verifique si el frontend está almacenando la salida
 
 public **start** ()
 
@@ -38,16 +38,16 @@ Starts output frontend. Currently, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+Regresa contenido almacenado saliente
 
 public **stop** ()
 
-Stops output frontend
+Detiene la salida del frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serializa los datos antes de almacenarlos
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Deserializa los datos después de la recuperación

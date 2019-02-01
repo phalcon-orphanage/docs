@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Uniqueness'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\منحصر به فرد'
 ---
 # Class **Phalcon\Validation\Validator\Uniqueness**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Uniqueness'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
 Check that a field is unique in the related table
 
@@ -98,7 +98,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

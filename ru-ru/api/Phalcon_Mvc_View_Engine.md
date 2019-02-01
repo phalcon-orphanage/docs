@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\View\Engine'
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\Mvc\View component.
 
-## Methods
+## Методы
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 

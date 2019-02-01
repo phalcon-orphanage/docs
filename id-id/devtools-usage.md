@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Phalcon Developer Tools
+# Phalcon Alat Pengembang
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
@@ -15,13 +15,13 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <a name='download'></a>
 
-## Download
+## Unduh
 
 You can download or clone a cross platform package containing the developer tools from [GitHub](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## Pemasangan
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -29,7 +29,7 @@ These are detailed instructions on how to install the developer tools on differe
 
 <a name='available-commands'></a>
 
-## Available Commands
+## Perintah yanag tersedia
 
 You can get a list of available commands in Phalcon tools by typing: :code:`phalcon commands`
 
@@ -52,7 +52,7 @@ Available commands:
 
 <a name='project-skeleton'></a>
 
-## Generating a Project Skeleton
+## Menghasilkan kerangka proyek
 
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
@@ -104,7 +104,7 @@ Accessing the project from the web server will show you:
 
 <a name='generating-controllers'></a>
 
-## Generating Controllers
+## Menghasilkan controller
 
 The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
@@ -130,7 +130,7 @@ class TestController extends Controller
 
 <a name='database-settings'></a>
 
-## Preparing Database Settings
+## Mempersiapkan pengaturan Database
 
 When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
@@ -170,7 +170,7 @@ return new \Phalcon\Config([
 
 <a name='generating-models'></a>
 
-## Generating Models
+## Membuat Model
 
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
 
@@ -358,7 +358,7 @@ After performing a search, a pager component is available to show paged results.
 
 <a name='web-interface'></a>
 
-## Web Interface to Tools
+## Antarmuka web Tools
 
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
@@ -368,7 +368,7 @@ Also, if you prefer, it's possible to use Phalcon Developer Tools from a web int
 
 <a name='phpstorm-ide'></a>
 
-## Integrating Tools with PhpStorm IDE
+## Mengintegrasikan alat dengan PhpStorm IDE
 
 The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
@@ -378,6 +378,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Kesimpulan
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.

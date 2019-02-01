@@ -8,9 +8,9 @@ title: 'Phalcon\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
 
-## Methods
+## روش ها
 
 protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 

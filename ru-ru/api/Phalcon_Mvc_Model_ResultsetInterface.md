@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\ResultsetInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **getType** ()
 

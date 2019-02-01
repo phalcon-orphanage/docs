@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
 
-## Methods
+## Методы
 
 public **setCurrentPage** (*mixed* $page)
 

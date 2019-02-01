@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo.zep)
 
 Phalcon\Db\Adapter\Pdo is the Phalcon\Db that internally uses PDO to connect to a database
 
@@ -31,7 +31,7 @@ $connection = new Mysql($config);
 
 ```
 
-## Methods
+## Metodi
 
 public **__construct** (*array* $descriptor)
 
@@ -286,7 +286,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the internal event manager
+Ritorna il gestore di eventi
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 

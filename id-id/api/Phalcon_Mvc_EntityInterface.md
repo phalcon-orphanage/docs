@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\EntityInterface'
 ---
 # Interface **Phalcon\Mvc\EntityInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **readAttribute** (*mixed* $attribute)
+publik abstrak **bacaAtribut** (*campuraduk* $atribut)
 
 ...
 

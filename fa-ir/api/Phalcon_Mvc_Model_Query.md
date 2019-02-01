@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query'
 
 *implements* [Phalcon\Mvc\Model\QueryInterface](Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
 This class takes a PHQL intermediate representation and executes it.
 
@@ -33,7 +33,7 @@ foreach ($result as $row) {
 
 ```
 
-## Constants
+## ثابت ها
 
 *integer* **TYPE_SELECT**
 
@@ -43,7 +43,7 @@ foreach ($result as $row) {
 
 *integer* **TYPE_DELETE**
 
-## Methods
+## روش ها
 
 public **__construct** ([*string* $phql], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
 

@@ -99,7 +99,7 @@ Phalcon doesn't have any pre-defined settings convention. Sections help us to or
 
 <a name='autoloaders'></a>
 
-## Autoloaders
+## Chargeur automatique
 
 The second part that appears in the bootstrap file (`public/index.php`) is the autoloader:
 

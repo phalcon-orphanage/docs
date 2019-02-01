@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Password'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
 
 Component INPUT[type=password] for forms
 
-## Methods
+## Metodi
 
 public **render** ([*array* $attributes])
 

@@ -48,7 +48,7 @@
             },
             {
                 "text": "Testing environment",
-                "url": "testing-environment"
+                "url": "/testing-environment"
             }
         ]
     },
@@ -79,16 +79,8 @@
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
-                "url": "/environments-docker"
-            },
-            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
-            },
-            {
-                "text": "Phalcon Box (Vagrant)",
-                "url": "/environments-vagrant"
             }
         ]
     },
@@ -192,7 +184,7 @@
             },
             {
                 "text": "Logging",
-                "url": "/logging"
+                "url": "/logger"
             },
             {
                 "text": "Queue",

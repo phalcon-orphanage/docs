@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Micro\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\Micro\CollectionInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setPrefix** (*mixed* $prefix)
 

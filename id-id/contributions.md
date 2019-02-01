@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Berkontribusi untuk Phalcon
 
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
@@ -17,7 +17,7 @@ The Phalcon source code (along with documentation, websites etc.) is stored in [
 
 <a name='contributions'></a>
 
-## Contributions
+## Kontribusi
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
@@ -39,59 +39,59 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Dukungan dan Pertanyaan
 
 > We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server. {:.alert .alert-danger}
 
 <a name='bug-report-checklist'></a>
 
-## Bug Report Checklist
+## Daftar periksa laporan Bug
 
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
+- Sebagai bagian dari laporan Anda, sertakan informasi tambahan seperti OS, versi PHP, versi Phalcon, server web, memori, dll.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Membangkitkan backtrace
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
 Please check the following links for instructions on how to generate the backtrace:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
+- [Membangkitkan backtrace gdb](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Membangkitkan backtrace, dengan kompilator, pada Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [Simbol Debugging](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [Pembangunan PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
-## Pull Request Checklist
+## Daftar Permintaan
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
 - Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
 - Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
-- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
+- Hapus perubahan ke `ext/kernel`, `*.zep.c` dan `*.zep.h` file sebelum mengirimkan permintaan tarik
 - More information [here](new-pull-request)
 
 Before submitting **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- Update ke `CHANGELOG.md`
+- Unit di Uji
+- Dokumentasi atau Contoh Penggunaan
 
 <a name='getting-support'></a>
 
-## Getting Support
+## Mendapatkan Dukungan
 
 If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
 
 <a name='requesting-features'></a>
 
-## Requesting Features
+## Meminta Fitur
 
 If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
 

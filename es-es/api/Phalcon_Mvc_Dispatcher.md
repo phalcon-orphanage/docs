@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Dispatcher'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
 
-Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
+La distribución es el proceso de tomar el objeto de solicitud, extraer el nombre del módulo, el nombre del controlador, el nombre de la acción, y los parámetros opcionales contenidos en él, y luego crear instancias de un controlador y llamar una acción de ese controlador.
 
 ```php
 <?php
@@ -49,43 +49,43 @@ $controller = $dispatcher->dispatch();
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
-Sets the default controller suffix
+Establece el sufijo del controlador por defecto
 
 public **setDefaultController** (*mixed* $controllerName)
 
-Sets the default controller name
+Establece el nombre predeterminado del controlador
 
 public **setControllerName** (*mixed* $controllerName)
 
-Sets the controller name to be dispatched
+Establece el nombre del controlador para ser distribuido
 
 public **getControllerName** ()
 
-Gets last dispatched controller name
+Obtiene el nombre del controlador distribuido más reciente
 
 public **getPreviousNamespaceName** ()
 
-Gets previous dispatched namespace name
+Obtiene el nombre previo del espacio de nombres distribuido
 
 public **getPreviousControllerName** ()
 
-Gets previous dispatched controller name
+Obtiene el nombre del controlador distribuido previamente
 
 public **getPreviousActionName** ()
 
-Gets previous dispatched action name
+Obtiene el nombre de acción distribuido previamente
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Throws an internal exception
+Arroja una excepción interna
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles a user exception
+Maneja una excepción de usuario
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action.
+Deriva el flujo de ejecución a otro controlador/acción.
 
 ```php
 <?php
@@ -141,23 +141,23 @@ $this->dispatcher->forward(
 
 public **getControllerClass** ()
 
-Possible controller class name that will be located to dispatch the request
+Nombre de clase del controlador que será ubicado para distribuir la solicitud
 
 public **getLastController** ()
 
-Returns the latest dispatched controller
+Devuelve el ultimo controlador distribuido
 
 public **getActiveController** ()
 
-Returns the active controller in the dispatcher
+Devuelve el controlador activo en el distribuidor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -169,87 +169,87 @@ Devuelve el administrador de eventos interno
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default action suffix
+Configura el sufijo de acción por defecto
 
 public **getActionSuffix** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets the default action suffix
+Obtiene el sufijo de acción por defecto
 
 public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the module where the controller is (only informative)
+Establece el módulo donde está el controlador (solo informativo)
 
 public **getModuleName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets the module where the controller class is
+Obtiene el módulo donde está la clase controlador
 
 public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the namespace where the controller class is
+Establece el espacio del nombre donde está la clase controlador
 
 public **getNamespaceName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets a namespace to be prepended to the current handler name
+Obtiene el espacio del nombre para ser antepuesto al nombre del manejador actual
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default namespace
+Establece el espacio de nombres por defecto
 
 public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the default namespace
+Devuelve el espacio de nombres por defecto
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the default action name
+Establece el nombre de acción predeterminado
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the action name to be dispatched
+Establece el nombre de acción para ser enviado
 
 public **getActionName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets the latest dispatched action name
+Obtiene el nombre de acción distribuido más reciente
 
 public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets action params to be dispatched
+Establece los parámetros de acción para ser enviados
 
 public **getParams** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets action params
+Obtiene los parámetros de acción
 
 public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Set a param by its name or numeric index
+Establece un parámetro por su nombre o índice numérico
 
 public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets a param by its name or numeric index
+Obtiene un parámetro por su nombre o índice numérico
 
 public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Check if a param exists
+Comprueba si un parámetro existe
 
 public **getActiveMethod** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the current method to be/executed in the dispatcher
+Devuelve el método actual para ser ejecutado en el distribuidor
 
 public **isFinished** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Comprueba si el bucle del distribuidor ha finalizado o si tiene mas controladores o tareas pendientes para ser enviados
 
 public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the latest returned value by an action manually
+Configura manualmente el valor más reciente devuelto por una acción
 
 public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns value returned by the latest dispatched action
+Devuelve el valor devuelto por la acción de distribución mas reciente
 
 public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Enable/Disable model binding during dispatch
+Habilita o deshabilita el enlace modelo duriante la distribución
 
 ```php
 <?php
@@ -265,7 +265,7 @@ $di->set('dispatcher', function() {
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Enable model binding during dispatch
+Habilita el enlace modelo durante la distribución
 
 ```php
 <?php
@@ -281,23 +281,23 @@ $di->set('dispatcher', function() {
 
 public **getModelBinder** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gets model binder
+Obtiene el enlazador modelo
 
 public *object* **dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Dispatches a handle action taking into account the routing parameters
+Distribuye una acción de manejo tomando en cuenta los parámetros de enrutamiento
 
 protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Dispatches a handle action taking into account the routing parameters
+Distribuye una acción de manejo tomando en cuenta los parámetros de enrutamiento
 
 public **wasForwarded** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Check if the current executed action was forwarded by another one
+Comprueba si la acción ejecutada actual fue reenviada por otra
 
 public **getHandlerClass** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Possible class name that will be located to dispatch the request
+El nombre posible de la clase que será ubicado para enviar la solicitud
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -305,7 +305,7 @@ public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $
 
 public **getBoundModels** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns bound models from binder instance
+Devuelve los modelos enlazados de la instancia del enlazador
 
 ```php
 <?php
@@ -322,4 +322,4 @@ class UserController extends Controller
 
 protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Set empty properties to their defaults (where defaults are available)
+Establece propiedades vacías a sus valores por defecto (en el caso en que los valores por defecto estén disponibles)

@@ -8,11 +8,11 @@ title: 'Phalcon\Logger\Adapter'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
 
 Base class for Phalcon\Logger adapters
 
-## Methods
+## Méthodes
 
 public **setLogLevel** (*mixed* $level)
 

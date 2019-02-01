@@ -8,15 +8,15 @@ title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. Geliştirici, bağımlılıkları enjekte etmek ve uygulamada kullanılan farklı sınıfların genel örneklerini yönetmek için bu bileşeni de kullanabilir.
 
-Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
+Temel olarak, bu bileşen `Inversion of Control` modelini uygular. Bunu uygulamak nesneler bağımlılıklarını setterleri veya kurucuları kullanarak almazlar, ancak hizmet bağımlılığı enjektörünü isterler. Bu, bir bileşende gerekli bağımlılıkları elde etmek için yalnızca bir yol olduğundan genel karmaşıklığı azaltır.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+Buna ek olarak, bu model koddaki test edilebilirliği artırır, böylece hatalara daha az meyilli olur.
 
 ```php
 <?php
@@ -41,23 +41,23 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## Metodlar
 
-public **__construct** ()
+genel**__construct** ()
 
 Phalcon\Di constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the internal event manager
+Dahili olay yöneticisini ayarlar
 
-public **getInternalEventsManager** ()
+genel **getInternalEventsManager** ()
 
-Returns the internal event manager
+Dahili olay yöneticisini döndürür
 
-public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
+genel **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Registers a service in the services container
+Servis konteynırının içine bir servis kaydeder
 
 public **setShared** (*mixed* $name, *mixed* $definition)
 
@@ -65,11 +65,11 @@ Registers an "always shared" service in the services container
 
 public **remove** (*mixed* $name)
 
-Removes a service in the services container It also removes any shared instance created for the service
+Hizmetler kapsayıcısındaki bir hizmeti kaldırır Ayrıca hizmet için oluşturulan paylaşılan örneği de kaldırır
 
 public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Hizmet konteynerine kayıt olma denemesi yalnızca o servis daha önce aynı isimle kaydedilmediyse başarılı olur
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
@@ -89,7 +89,7 @@ Resolves the service based on its configuration
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters])
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Bir hizmeti düzeltir, çözümlenen servis DI'da saklanır, bu hizmet için müteakip talepler aynı örnegi iade edecektir
 
 public **has** (*mixed* $name)
 
@@ -97,7 +97,7 @@ Check whether the DI contains a service by a name
 
 public **wasFreshInstance** ()
 
-Check whether the last service obtained via getShared produced a fresh instance or an existing one
+GetShared ile elde edilen son hizmetin yeni bir durum oluşturup oluşturmadığını veya mevcut bir örneği üretip üretmediğini kontrol eder
 
 public **getServices** ()
 
@@ -109,7 +109,7 @@ Check if a service is registered using the array syntax
 
 public **offsetSet** (*mixed* $name, *mixed* $definition)
 
-Allows to register a shared service using the array syntax
+Dizilim sözdizimini kullanarak paylaşılan bir hizmeti kaydetmeye izin verir
 
 ```php
 <?php
@@ -120,7 +120,7 @@ $di["request"] = new \Phalcon\Http\Request();
 
 public **offsetGet** (*mixed* $name)
 
-Allows to obtain a shared service using the array syntax
+Dizilim sözdizimini kullanarak paylaşılan bir hizmeti elde etmeyi sağlar
 
 ```php
 <?php
@@ -139,7 +139,7 @@ Magic method to get or set services using setters/getters
 
 public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider)
 
-Registers a service provider.
+Bir servis sağlayıcı kaydeder.
 
 ```php
 <?php
@@ -173,7 +173,7 @@ Resets the internal default DI
 
 public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
 
-Loads services from a yaml file.
+Servisleri bir yaml dosyasından yükler.
 
 ```php
 <?php

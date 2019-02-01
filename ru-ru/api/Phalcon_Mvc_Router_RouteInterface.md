@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router\RouteInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setHostname** (*mixed* $hostname)
 

@@ -10,39 +10,39 @@ title: 'Phalcon\Di\FactoryDefault'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Phalcon\DiInterface](Phalcon_DiInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
-This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
+This is a variant of the standard Phalcon\Di. Secara default, otomatis mencatat semua layanan yang disediakan oleh kerangka kerja. Berkat ini, pengembang tidak perlu mendaftarkan masing-masing layanan secara individual untuk menyediakan kerangka stack penuh
 
-## Methods
+## Metode
 
-public **__construct** ()
+publik **__membangun** ()
 
 Phalcon\Di\FactoryDefault constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di](Phalcon_Di)
 
-Sets the internal event manager
+Mengatur pengelola acara internal
 
 public **getInternalEventsManager** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Registers a service in the services container
+Mendaftarkan layanan ke dalam wadah layanan
 
 public **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
-Registers an "always shared" service in the services container
+Mendaftarkan sebuah layanan "selalu berbagi" dalam wadah layanan
 
 public **remove** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Removes a service in the services container It also removes any shared instance created for the service
+Menghapus layanan dalam wadah servis Ini juga menghapus contoh bersama yang dibuat untuk layanan ini
 
 public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Upaya untuk mendaftarkan layanan di wadah layanan Hanya berhasil jika layanan belum terdaftar sebelumnya dengan nama yang sama
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition) inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -50,7 +50,7 @@ Sets a service using a raw Phalcon\Di\Service definition
 
 public **getRaw** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Returns a service definition without resolving
+Mengembalikan definisi layanan tanpa menyelesaikannya
 
 public **getService** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -58,42 +58,40 @@ Returns a Phalcon\Di\Service instance
 
 public **get** (*mixed* $name, [*mixed* $parameters]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Resolves the service based on its configuration
+Mengatasi layanan berdasarkan konfigurasinya
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Mengatasi layanan, layanan terselesaikan disimpan di DI, selanjutnya Permintaan layanan ini akan mengembalikan instance yang sama
 
 public **has** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Check whether the DI contains a service by a name
+Periksan apakah DI berisi sebuah layanan dengan sebuah nama
 
 public **wasFreshInstance** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Check whether the last service obtained via getShared produced a fresh instance or an existing one
+Periksa apakah layanan terakhir yang diperoleh melalui getShared menghasilkan contoh baru atau yang sudah ada
 
 public **getServices** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Return the services registered in the DI
+Mengembalikan layanan yang terdaftar pada DI
 
 public **offsetExists** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Check if a service is registered using the array syntax
+Periksa apakah sebuah layanan terdaftar menggunakan sintaks array
 
 public **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
-Allows to register a shared service using the array syntax
+Memungkinkan untuk mendaftarkan layanan bersama menggunakan sintaks array
 
 ```php
-<?php
-
-$di["request"] = new \Phalcon\Http\Request();
+$di["permintaan"] = new \Phalcon\Http\Permintaan();
 
 ```
 
 public **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Allows to obtain a shared service using the array syntax
+Memungkinkan untuk mendapatkan layanan bersama menggunakan sintaks array
 
 ```php
 <?php
@@ -104,15 +102,15 @@ var_dump($di["request"]);
 
 public **offsetUnset** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Removes a service from the services container using the array syntax
+Menghapus sebuah layanan dari wadah pelayanan menggunakan sintaks array
 
 public **__call** (*mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Magic method to get or set services using setters/getters
+Metode magic untuk dapat atau mengatur layanan menggunakan setters/getters
 
 public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider) inherited from [Phalcon\Di](Phalcon_Di)
 
-Registers a service provider.
+Daftarkan sebuah penyedia layanan.
 
 ```php
 <?php
@@ -134,19 +132,19 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di](Phalcon_Di)
 
-Set a default dependency injection container to be obtained into static methods
+Tetapkan wadah injeksi dependensi default untuk mendapatkan metode statis
 
 public static **getDefault** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Return the latest DI created
+Kembalikan DI yang terbaru dibuat
 
 public static **reset** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Resets the internal default DI
+Mengatur ulang internal default DI
 
 public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Loads services from a yaml file.
+Memuat layanan dari sebuah file yaml.
 
 ```php
 <?php
@@ -162,7 +160,7 @@ $di->loadFromYaml(
 
 ```
 
-And the services can be specified in the file as:
+Dan layanan dapat ditentukan dalam file sebagai:
 
 ```php
 <?php
@@ -184,7 +182,7 @@ user:
 
 public **loadFromPhp** (*mixed* $filePath) inherited from [Phalcon\Di](Phalcon_Di)
 
-Loads services from a php config file.
+Memuatkan layanan dari file konfigurasi php.
 
 ```php
 <?php
@@ -193,7 +191,7 @@ $di->loadFromPhp("path/services.php");
 
 ```
 
-And the services can be specified in the file as:
+Dan layanan dapat ditentukan dalam file sebagai:
 
 ```php
 <?php
@@ -221,4 +219,4 @@ return [
 
 protected **loadFromConfig** ([Phalcon\Config](Phalcon_Config) $config) inherited from [Phalcon\Di](Phalcon_Di)
 
-Loads services from a Config object.
+Memuatkan layanan dari objek Config.

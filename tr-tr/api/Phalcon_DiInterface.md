@@ -8,9 +8,9 @@ title: 'Phalcon\DiInterface'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
@@ -20,7 +20,7 @@ abstract public **setShared** (*mixed* $name, *mixed* $definition)
 
 ...
 
-abstract public **remove** (*mixed* $name)
+genel özet **remove** (*mixed* $name)
 
 ...
 
@@ -64,7 +64,7 @@ abstract public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface
 
 ...
 
-abstract public static **getDefault** ()
+herkese açık statik özet **erişim al** ()
 
 ...
 

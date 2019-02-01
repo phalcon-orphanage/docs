@@ -10,27 +10,27 @@ title: 'Phalcon\Logger\Formatter\Line'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
-Formats messages using an one-line string
+Format pesan menggunakan string satu baris
 
-## Methods
+## Metode
 
 public **getDateFormat** ()
 
-Default date format
+Format tanggal default
 
 public **setDateFormat** (*mixed* $dateFormat)
 
-Default date format
+Format tanggal default
 
 public **getFormat** ()
 
-Format applied to each message
+Format diterapkan pada setiap pesan
 
 public **setFormat** (*mixed* $format)
 
-Format applied to each message
+Format diterapkan pada setiap pesan
 
 public **__construct** ([*string* $format], [*string* $dateFormat])
 
@@ -38,12 +38,12 @@ Phalcon\Logger\Formatter\Line construct
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Menerapkan format ke pesan sebelum mengirimnya ke log internal
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpolates context values into the message placeholders
+Interpolasi nilai konteks ke dalam placeholder pesan

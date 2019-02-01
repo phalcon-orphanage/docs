@@ -6,178 +6,178 @@ title: 'Phalcon\Http\RequestInterface'
 ---
 # Interface **Phalcon\Http\RequestInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
-
-...
-
-abstract public **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
+abstrak umum **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
-abstract public **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
+abstrak umum **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
-abstract public **getServer** (*mixed* $name)
+abstrak umum **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 
 ...
 
-abstract public **has** (*mixed* $name)
+abstrak umu m **getServer** (*mixed* $name)
 
 ...
 
-abstract public **hasPost** (*mixed* $name)
+abstraksi umum **has** (*mixed* $name)
 
 ...
 
-abstract public **hasPut** (*mixed* $name)
+abstrak umum **hasPost** (*mixed* $name)
 
 ...
 
-abstract public **hasQuery** (*mixed* $name)
+abstrak umum **hasPut** (*mixed* $name)
 
 ...
 
-abstract public **hasServer** (*mixed* $name)
+abstrak umum **hasQuery** (*mixed* $name)
 
 ...
 
-abstract public **getHeader** (*mixed* $header)
+abstrak umum **hasServer** (*mixed* $name)
 
 ...
 
-abstract public **getScheme** ()
+abstrak umum **getHeader** (*mixed* $header)
 
 ...
 
-abstract public **isAjax** ()
+abstrak umum **getScheme** ()
 
 ...
 
-abstract public **isSoapRequested** ()
+abstrak umum **isAjax** ()
 
 ...
 
-abstract public **isSecureRequest** ()
+abstrak umum **isSoapRequested** ()
 
 ...
 
-abstract public **getRawBody** ()
+abstrak umum **isSecureRequest** ()
 
 ...
 
-abstract public **getServerAddress** ()
+abstrak umum **getRawBody** ()
 
 ...
 
-abstract public **getServerName** ()
+abstrak publik **getServerAddress** ()
 
 ...
 
-abstract public **getHttpHost** ()
+abstrak publik **getServerName** ()
 
 ...
 
-abstract public **getPort** ()
+abstrak publik **getHttpHost** ()
 
 ...
 
-abstract public **getClientAddress** ([*mixed* $trustForwardedHeader])
+abstrak publik **getPort** ()
 
 ...
 
-abstract public **getMethod** ()
+abstrak publik **getClientAddress** ([*mixed* $trustForwardedHeader])
 
 ...
 
-abstract public **getUserAgent** ()
+abstrak publik **getMethod** ()
 
 ...
 
-abstract public **isMethod** (*mixed* $methods, [*mixed* $strict])
+abstrak publik **getUserAgent** ()
 
 ...
 
-abstract public **isPost** ()
+abstrak publik **isMethod** (*mixed* $methods, [*mixed* $strict])
 
 ...
 
-abstract public **isGet** ()
+abstrak publik **isPost** ()
 
 ...
 
-abstract public **isPut** ()
+abstrak publik **isGet** ()
 
 ...
 
-abstract public **isHead** ()
+abstrak publik **isPut** ()
 
 ...
 
-abstract public **isDelete** ()
+abstrak publik **isHead** ()
 
 ...
 
-abstract public **isOptions** ()
+abstrak publik **isDelete** ()
 
 ...
 
-abstract public **isPurge** ()
+abstrak publik **isOptions** ()
 
 ...
 
-abstract public **isTrace** ()
+abstrak publik **isPurge** ()
 
 ...
 
-abstract public **isConnect** ()
+abstrak publik **isTrace** ()
 
 ...
 
-abstract public **hasFiles** ([*mixed* $onlySuccessful])
+abstrak publik **isConnect** ()
 
 ...
 
-abstract public **getUploadedFiles** ([*mixed* $onlySuccessful])
+abstrak publik **hasFiles** ([*mixed* $onlySuccessful])
 
 ...
 
-abstract public **getHTTPReferer** ()
+abstrak publik **getUploadedFiles** ([*mixed* $onlySuccessful])
 
 ...
 
-abstract public **getAcceptableContent** ()
+abstrak publik **getHTTPReferer** ()
 
 ...
 
-abstract public **getBestAccept** ()
+abstrak publik **getAcceptableContent** ()
 
 ...
 
-abstract public **getClientCharsets** ()
+abstrak publik **getBestAccept** ()
 
 ...
 
-abstract public **getBestCharset** ()
+abstrak publik **getClientCharsets** ()
 
 ...
 
-abstract public **getLanguages** ()
+abstrak publik **getBestCharset** ()
 
 ...
 
-abstract public **getBestLanguage** ()
+abstrak publik **getLanguages** ()
 
 ...
 
-abstract public **getBasicAuth** ()
+abstrak publik **getBestLanguage** ()
 
 ...
 
-abstract public **getDigestAuth** ()
+abstrak publik **getBasicAuth** ()
+
+...
+
+abstrak publik **getDigestAuth** ()
 
 ...

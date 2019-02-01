@@ -239,7 +239,7 @@ Returns the conditions parameter in the criteria
 
 public *int* | *array* | *null* **getLimit** ()
 
-Returns the limit parameter in the criteria, which will be an integer if limit was set without an offset, an array with 'number' and 'offset' keys if an offset was set with the limit, or null if limit has not been set.
+Επιστρέφει μετατόπισης την εάν παράμετρο ορίου στα κριτήρια τα είναι ένας ακέραιος αριθμός εάν αριθμός ορίστηκε όριο χωρίς οποία αντιστάθμιση ένας πίνακας με πλήκτρα και εάν έχει οριστεί θα μετατόπιση με το όριο ή μηδέν δεν έχει οριστεί όριο.
 
 public **getOrderBy** ()
 

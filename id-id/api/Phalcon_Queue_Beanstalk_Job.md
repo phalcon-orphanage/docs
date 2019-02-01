@@ -6,11 +6,11 @@ title: 'Phalcon\Queue\Beanstalk\Job'
 ---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
 
-Represents a job in a beanstalk queue
+Merupakan pekerjaan dalam antrian beanstalk
 
-## Methods
+## Metode
 
 public **getId** ()
 
@@ -20,7 +20,7 @@ public **__construct** ([Phalcon\Queue\Beanstalk](Phalcon_Queue_Beanstalk) $queu
 
 public **delete** ()
 
-Removes a job from the server entirely
+Menghapus pekerjaan dari server sepenuhnya
 
 public **release** ([*mixed* $priority], [*mixed* $delay])
 
@@ -32,16 +32,16 @@ The bury command puts a job into the "buried" state. Buried jobs are put into a 
 
 public **touch** ()
 
-The `touch` command allows a worker to request more time to work on a job. This is useful for jobs that potentially take a long time, but you still want the benefits of a TTR pulling a job away from an unresponsive worker. A worker may periodically tell the server that it's still alive and processing a job (e.g. it may do this on `DEADLINE_SOON`). The command postpones the auto release of a reserved job until TTR seconds from when the command is issued.
+The `touch` command allows a worker to request more time to work on a job. Ini berguna untuk pekerjaan yang berpotensi butuh waktu lama, tapi tetap saja menginginkan manfaat TTR menarik pekerjaan dari pekerja yang tidak responsif. A worker may periodically tell the server that it's still alive and processing a job (e.g. it may do this on `DEADLINE_SOON`). Perintah itu menunda auto pelepasan pekerjaan yang dipesan sampai TTR detik dari saat perintah dikeluarkan.
 
 public **kick** ()
 
-Move the job to the ready queue if it is delayed or buried.
+Pindahkan pekerjaan ke antrian siap jika ditunda atau dikuburkan.
 
 public **stats** ()
 
-Gives statistical information about the specified job if it exists.
+Memberikan informasi statistik tentang pekerjaan tertentu jika ada.
 
 public **__wakeup** ()
 
-Checks if the job has been modified after unserializing the object
+Memeriksa apakah pekerjaan telah dimodifikasi setelah unserializing objek

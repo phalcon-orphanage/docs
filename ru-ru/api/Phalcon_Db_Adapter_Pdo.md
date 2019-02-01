@@ -31,7 +31,7 @@ $connection = new Mysql($config);
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** (*array* $descriptor)
 
@@ -270,11 +270,11 @@ Return the error info, if any
 
 public **getDialectType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Name of the dialect used
+Имя использованного диалекта
 
 public **getType** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Type of database system the adapter is used for
+Тип используемого адаптера базы данных
 
 public **getSqlVariables** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 

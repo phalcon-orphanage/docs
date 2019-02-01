@@ -10,10 +10,10 @@ title: 'Phalcon\Assets\Filters\Cssmin'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/cssmin.zep)
 
-Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
+Minimiza el código css - elimina comentarios, saltos de línea y tabuladores o espaciado en lineas, elimina el último punto y coma de la última propiedad
 
 ## Métodos
 
 public **filter** (*mixed* $content)
 
-Filters the content using CSSMIN
+Filtra el contenido utilizando CSSMIN

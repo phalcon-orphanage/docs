@@ -6,23 +6,23 @@ title: 'Phalcon\Mvc\ModelInterface'
 ---
 # Interface **Phalcon\Mvc\ModelInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/modelinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/modelinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **setTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
 ...
 
-abstract public **getSource** ()
+publik abstrak **getSource** ()
 
 ...
 
-abstract public **getSchema** ()
+abstrak publik ** getSchema </ 0> ()</p> 
 
 ...
 
-abstract public **setConnectionService** (*mixed* $connectionService)
+publik abstrak **setConnectionService**(*campuran* $connectionService)
 
 ...
 
@@ -50,11 +50,11 @@ abstract public **getWriteConnection** ()
 
 ...
 
-abstract public **setDirtyState** (*mixed* $dirtyState)
+abstrak publik **setDirtyState**(*dicampur* $dirtyState)
 
 ...
 
-abstract public **getDirtyState** ()
+abstrak Umum **getdirtystate** ()
 
 ...
 
@@ -106,11 +106,11 @@ abstract public static **average** ([*mixed* $parameters])
 
 ...
 
-abstract public **fireEvent** (*mixed* $eventName)
+abstrak Umum **acarakebakaran**(*dicampur* $eventName)
 
 ...
 
-abstract public **fireEventCancel** (*mixed* $eventName)
+abstrak Umum **acarakebakaranbatal**(*dicampur* $eventName)
 
 ...
 
@@ -118,11 +118,11 @@ abstract public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_
 
 ...
 
-abstract public **validationHasFailed** ()
+abstrak Umum **validasiTelahGagal**()
 
 ...
 
-abstract public **getMessages** ()
+abstrak publik **getMessages** ()
 
 ...
 
@@ -138,7 +138,7 @@ abstract public **update** ([*mixed* $data], [*mixed* $whiteList])
 
 ...
 
-abstract public **delete** ()
+abstrak publik **hapus** ()
 
 ...
 
@@ -162,6 +162,6 @@ abstract public **setSnapshotData** (*array* $data, [*mixed* $columnMap])
 
 ...
 
-abstract public **reset** ()
+abstrak publik **reset** ()
 
 ...

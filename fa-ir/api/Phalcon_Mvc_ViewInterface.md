@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\ViewInterface'
 
 *implements* [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setLayoutsDir** (*mixed* $layoutsDir)
 

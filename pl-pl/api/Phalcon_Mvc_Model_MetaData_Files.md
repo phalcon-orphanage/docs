@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Files'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/files.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/files.zep)
 
 Stores model meta-data in PHP files.
 
@@ -25,7 +25,7 @@ $metaData = new \Phalcon\Mvc\Model\Metadata\Files(
 
 ```
 
-## Constants
+## Stałe
 
 *integer* **MODELS_ATTRIBUTES**
 

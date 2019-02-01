@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Mvc\DispatcherInterface](Phalcon_Mvc_DispatcherInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcher.zep)
 
 Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
@@ -31,7 +31,7 @@ $controller = $dispatcher->dispatch();
 
 ```
 
-## Constants
+## Costanti
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -45,7 +45,7 @@ $controller = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Metodi
 
 public **setControllerSuffix** (*mixed* $controllerSuffix)
 
@@ -161,11 +161,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Sets the events manager
+Imposta il gestore di eventi
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Returns the internal event manager
+Ritorna il gestore di eventi
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 

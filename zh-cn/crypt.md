@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Encryption/Decryption
+# 加密/解密
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -19,7 +19,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Basic Usage
+## 基本用法
 
 This component is designed be very simple to use:
 
@@ -143,11 +143,11 @@ echo $crypt->decrypt($encrypted, $key);
 
 <a name='options'></a>
 
-## Encryption Options
+## 加密选项
 
 The following options are available to change the encryption behavior:
 
-| Name   | 描述                                                                                                                                                                       |
+| 名称     | 描述                                                                                                                                                                       |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -189,7 +189,7 @@ var_dump($algorithms);
 
 <a name='base64'></a>
 
-## Base64 Support
+## Base64 支持
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://secure.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
 
@@ -212,7 +212,7 @@ echo $crypt->decryptBase64($encrypt, $key);
 
 <a name='service'></a>
 
-## Setting up an Encryption service
+## 设置加密服务
 
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -265,11 +265,11 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Links
+## 链接
 
-* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
-* [Introduction to Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
+* [高级的加密标准 (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [分组密码是什么](https://en.wikipedia.org/wiki/Block_cipher)
+* [下一步：介绍](https://www.splashdata.com/splashid/blowfish.htm)
 * [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)

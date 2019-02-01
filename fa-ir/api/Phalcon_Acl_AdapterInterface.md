@@ -6,25 +6,25 @@ title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
-## Methods
+## روش ها
 
-abstract public **setDefaultAction** (*mixed* $defaultAccess)
+عمومی **تنظیم پیش فرض عمل** (*مخلوط*$defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+سطح دسترسی پیش فرض را تنظیم می کند (Phalcon\\Acl::ALLOW or Phalcon\\Acl::DENY)
 
-abstract public **getDefaultAction** ()
+عمومی**فعال شدن نقش**()
 
-Returns the default ACL access level
+سطح دسترسی ACL پیش فرض را برمی گرداند
 
-abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
+عمومی انتزاعی **مجموعه شماره استدلال پیش فرض عمل**(*مخلوط* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+سطح دسترسی پیش فرض را تنظیم می کند (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) برای هیچ استدلال ارائه شده در عمل مجاز است اگر تابع برای کلید دسترسی وجود دارد
 
-abstract public **getNoArgumentsDefaultAction** ()
+عمومی انتزاعی **دریافت بدون اشکال اقدام پیش فرض** ()
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+سطح دسترسی دسترسی ACL پیش فرض را برای هیچ استدلالی که در عمل مجاز است ارائه می دهد اگر وجود دارد تابع برای کلید دسترسی
 
 abstract public **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
 
@@ -74,7 +74,7 @@ abstract public **getActiveSubject** ()
 
 Returns the subject which the list is checking if some operation can access it
 
-abstract public **getActiveAccess** ()
+عمومی انتزاعی **دریافت دسترسی فعال** ()
 
 Returns the access which the list is checking if some operation can access it
 

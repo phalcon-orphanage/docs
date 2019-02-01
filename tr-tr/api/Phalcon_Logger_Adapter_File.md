@@ -2,7 +2,7 @@
 layout: article
 language: 'tr-tr'
 version: '4.0'
-title: 'Phalcon\Logger\Adapter\File'
+title: 'Phalcon\Günlükçü\Bağdaştırıcı\Dosya'
 ---
 # Class **Phalcon\Logger\Adapter\File**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Logger\Adapter\File'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
 
-Adapter to store logs in plain text files
+Depolanmış günlükleri düz metin dosyalarında saklamak için adaptör
 
 ```php
 <?php
@@ -27,11 +27,11 @@ $logger->close();
 
 ```
 
-## Methods
+## Metodlar
 
 public **getPath** ()
 
-File Path
+Dosya Yolu
 
 public **__construct** (*string* $name, [*array* $options])
 
@@ -39,15 +39,15 @@ Phalcon\Logger\Adapter\File constructor
 
 public **getFormatter** ()
 
-Returns the internal formatter
+Dahili formatlayıcıyı döndürür
 
 public **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
-Writes the log to the file itself
+Günlüğü dosyanın kendisine yazar
 
 public **close** ()
 
-Closes the logger
+Günlüğü kapatır
 
 public **__wakeup** ()
 
@@ -55,63 +55,63 @@ Opens the internal file handler after unserialization
 
 public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Filters the logs sent to the handlers that are less or equal than a specific level
+Belirli bir seviyeden daha az ya da belirli bir seviyeye eşit olan işleyicilere gönderilen günlükleri filtreler
 
 public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Returns the current log level
+Geçerli günlük düzeyini döndürür
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sets the message formatter
+Mesaj biçimlendiricisini ayarlar
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Starts a transaction
+Bir işlem başlatır
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Commits the internal transaction
+Dahili işlemi tamamlar
 
 public **rollback** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Rollbacks the internal transaction
+Dahili işlemi geri döndürür
 
 public **isTransaction** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Returns the whether the logger is currently in an active transaction or not
+Günlüğün halen aktif bir işlemde olup olmadığını döndürür
 
 public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes a critical message to the log
+Sistem günlüğüne kritik bir mesaj Gönderir / Yazar
 
 public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes an emergency message to the log
+Sistem günlüğüne acil durum mesajı Gönderir / Yazar
 
 public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes a debug message to the log
+Sistem günlüğüne hata giderme mesajı Gönderir / Yazar
 
 public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes an error message to the log
+Sistem günlüğüne hata mesajı Gönderir / Yazar
 
 public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes an info message to the log
+Sistem günlüğüne bilgi mesajı Gönderir / Yazar
 
 public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes a notice message to the log
+Sistem günlüğüne bildirim mesajı Gönderir / Yazar
 
 public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes a warning message to the log
+Sistem günlüğüne ikaz mesajı Gönderir / Yazar
 
 public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sends/Writes an alert message to the log
+Sistem günlüğüne uyarı mesajı Gönderir / Yazar
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 

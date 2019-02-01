@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Controller\BindModelInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
 
-## Methods
+## Методы
 
 abstract public static **getModelName** ()
 

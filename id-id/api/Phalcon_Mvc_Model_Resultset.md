@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Resultset'
 
 *implements* [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset.zep)
 
-This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized it will dump all the rows into a big array. Then unserialize will retrieve the rows as they were before serializing.
+This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption Resultsets can be traversed using a standard foreach or a while statement. Jika sebuah resultset diserialisasikan itu akan membuang semua baris ke array besar.   Konteks | Permintaan Konteks. Kemudian unserialize akan mengambil baris seperti mereka sebelum serialisasi.
 
 ```php
 <?php
@@ -59,23 +59,23 @@ while ($robots->valid()) {
 
 *integer* **HYDRATE_ARRAYS**
 
-## Methods
+## Metode
 
 public **__construct** ([Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface) | *false* $result, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
 Phalcon\Mvc\Model\Resultset constructor
 
-public **next** ()
+publik **berikutnya** ()
 
-Moves cursor to next row in the resultset
+Memindahkan kursor ke baris berikutnya di resultset
 
-public **valid** ()
+publik **sah** ()
 
-Check whether internal resource has rows to fetch
+Periksa apakah sumber internal memiliki baris untuk diambil
 
-public **key** ()
+publik **kunci** ()
 
-Gets pointer number of active row in the resultset
+Mendapat nomor pointer dari baris aktif di resultset
 
 final public **rewind** ()
 
@@ -83,19 +83,19 @@ Rewinds resultset to its beginning
 
 final public **seek** (*mixed* $position)
 
-Changes internal pointer to a specific position in the resultset Set new position if required and set this->_row
+Perubahan internal pointer ke posisi tertentu dalam resultset Mengatur posisi baru jika diperlukan dan mengatur ini->_row
 
 final public **count** ()
 
-Counts how many rows are in the resultset
+Menghitung berapa banyak baris yang ada di resultset
 
 public **offsetExists** (*mixed* $index)
 
-Checks whether offset exists in the resultset
+Cek apakah offset ada di resultset
 
 public **offsetGet** (*mixed* $index)
 
-Gets row in a specific position of the resultset
+Mendapat baris pada posisi tertentu dari resultset
 
 public **offsetSet** (*int* $index, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $value)
 
@@ -105,25 +105,25 @@ public **offsetUnset** (*mixed* $offset)
 
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
-public **getType** ()
+publik **berhenti** ()
 
-Returns the internal type of data retrieval that the resultset is using
+Mengembalikan tipe internal pengambilan data yang digunakan oleh resultset
 
 public **getFirst** ()
 
-Get first row in the resultset
+Dapatkan baris pertama di resultset
 
 public **getLast** ()
 
-Get last row in the resultset
+Dapatkan baris terakhir di resultset
 
 public **setIsFresh** (*mixed* $isFresh)
 
-Set if the resultset is fresh or an old one cached
+Atur apakah resultset sudah segar atau yang lama di-cache
 
-public **isFresh** ()
+publik ** isFresh </ 0> ()</p> 
 
-Tell if the resultset if fresh or an old one cached
+Katakan jika resultset jika segar atau yang lama cache
 
 public **setHydrateMode** (*mixed* $hydrateMode)
 
@@ -135,19 +135,19 @@ Returns the current hydration mode
 
 public **getCache** ()
 
-Returns the associated cache for the resultset
+Kembali dikaitkan cache untuk resultset
 
 public **getMessages** ()
 
-Returns the error messages produced by a batch operation
+Mengembalikan pesan galat yang dihasilkan oleh operasi batch
 
 public *boolean* **update** (*array* $data, [[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
-Updates every record in the resultset
+Update setiap catatan dalam resultset
 
 public **delete** ([[Closure](https://php.net/manual/en/class.closure.php) $conditionCallback])
 
-Deletes every record in the resultset
+Menghapus setiap catatan dalam resultset
 
 public [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **filter** (*callback* $filter)
 

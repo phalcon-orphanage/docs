@@ -1,14 +1,14 @@
 [
     {
-        "text": "General",
+        "text": "Umum",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Pendahuluan",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Catatan Rilis",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
@@ -17,17 +17,17 @@
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Sponsor",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Kontribusi",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Sekilas",
                 "url": "/contributions"
             },
             {
@@ -47,21 +47,21 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
-                "url": "testing-environment"
+                "text": "Testing guide",
+                "url": "/testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Cara Memulai",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Pemasangan",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Penyiapan Server Web",
                 "url": "/webserver-setup"
             },
             {
@@ -75,33 +75,25 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Environment",
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
-                "url": "/environments-docker"
-            },
-            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
-            },
-            {
-                "text": "Phalcon Box (Vagrant)",
-                "url": "/environments-vagrant"
             }
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Alat Pengembangan",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Pemasangan",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Pemakaian",
                 "url": "/devtools-usage"
             },
             {
@@ -111,15 +103,15 @@
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Tutorial",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "Performa",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Dasar",
                 "url": "/tutorial-base"
             },
             {
@@ -135,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Gunakan perkara",
                 "url": "/use-case"
             }
         ]
@@ -145,7 +137,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "Indeks APl",
                 "url": "/api/"
             },
             {
@@ -171,7 +163,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Jasa",
         "url": "",
         "menu": [
             {
@@ -191,8 +183,8 @@
                 "url": "/loader"
             },
             {
-                "text": "Logging",
-                "url": "/logging"
+                "text": "Pembalakan",
+                "url": "/logger"
             },
             {
                 "text": "Queue",
@@ -217,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Model",
                 "url": "/db-models"
             },
             {
@@ -229,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Kegiatan",
                 "url": "/db-models-events"
             },
             {
@@ -241,7 +233,7 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Transaksi",
                 "url": "/db-models-transactions"
             },
             {
@@ -271,7 +263,7 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formulir",
                 "url": "/forms"
             },
             {
@@ -305,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Pengawas",
                 "url": "/controllers"
             },
             {
@@ -357,7 +349,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Keamanan",
         "url": "",
         "menu": [
             {
@@ -365,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Keamanan",
                 "url": "/security"
             }
         ]
@@ -375,11 +367,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Internasionalisasi",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Terjemahan",
                 "url": "/translate"
             }
         ]

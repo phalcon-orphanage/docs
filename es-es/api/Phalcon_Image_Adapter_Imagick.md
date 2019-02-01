@@ -31,7 +31,7 @@ if ($image->save()) {
 
 public static **check** ()
 
-Checks if Imagick is enabled
+Comprueba si Imagick está habilitado
 
 public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
@@ -39,7 +39,7 @@ public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
 protected **_resize** (*mixed* $width, *mixed* $height)
 
-Execute a resize.
+Ejecuta un cambio de tamaño.
 
 protected **_liquidRescale** (*mixed* $width, *mixed* $height, *mixed* $deltaX, *mixed* $rigidity)
 
@@ -47,31 +47,31 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 protected **_crop** (*mixed* $width, *mixed* $height, *mixed* $offsetX, *mixed* $offsetY)
 
-Execute a crop.
+Ejecuta un recorte.
 
 protected **_rotate** (*mixed* $degrees)
 
-Execute a rotation.
+Ejecuta una rotación.
 
 protected **_flip** (*mixed* $direction)
 
-Execute a flip.
+Ejecuta un giro.
 
 protected **_sharpen** (*mixed* $amount)
 
-Execute a sharpen.
+Ejecuta un ajuste de nitidez.
 
 protected **_reflection** (*mixed* $height, *mixed* $opacity, *mixed* $fadeIn)
 
-Execute a reflection.
+Ejecuta un reflejo.
 
 protected **_watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $image, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity)
 
-Execute a watermarking.
+Ejecuta una marca de agua.
 
 protected **_text** (*mixed* $text, *mixed* $offsetX, *mixed* $offsetY, *mixed* $opacity, *mixed* $r, *mixed* $g, *mixed* $b, *mixed* $size, *mixed* $fontfile)
 
-Execute a text
+Ejecuta un texto
 
 protected **_mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $image)
 
@@ -79,7 +79,7 @@ Combina una imagen con otra
 
 protected **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
 
-Execute a background.
+Ejecuta un fondo.
 
 protected **_blur** (*mixed* $radius)
 
@@ -91,23 +91,23 @@ Pixelar una imagen
 
 protected **_save** (*mixed* $file, *mixed* $quality)
 
-Execute a save.
+Ejecuta un guardado.
 
 protected **_render** (*mixed* $extension, *mixed* $quality)
 
-Execute a render.
+Ejecuta un renderizador.
 
 public **__destruct** ()
 
-Destroys the loaded image to free up resources.
+Destruye la imagen cargada para liberar recursos.
 
 public **getInternalImInstance** ()
 
-Get instance
+Obtiene una instancia
 
 public **setResourceLimit** (*mixed* $type, *mixed* $limit)
 
-Sets the limit for a particular resource in megabytes
+Establece los limites para un recurso particular en megabytes
 
 public **getImage** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 

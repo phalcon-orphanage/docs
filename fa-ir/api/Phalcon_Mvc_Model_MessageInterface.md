@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\MessageInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setType** (*mixed* $type)
 
@@ -34,7 +34,7 @@ abstract public **getField** ()
 
 ...
 
-abstract public **__toString** ()
+عمومی انتزاعی **__ به رشته** ()
 
 ...
 

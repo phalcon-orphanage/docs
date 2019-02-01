@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\SubjectInterface'
 ---
 # Interface **Phalcon\Acl\SubjectInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectinterface.zep)
 
-## Methods
+## روش ها
 
 ```php
 public getDescription(): string

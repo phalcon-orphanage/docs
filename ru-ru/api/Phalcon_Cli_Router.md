@@ -29,7 +29,7 @@ echo $router->getTaskName();
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** ([*mixed* $defaultRoutes])
 

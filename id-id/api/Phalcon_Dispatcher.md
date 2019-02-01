@@ -8,125 +8,125 @@ title: 'Phalcon\Dispatcher'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
 ## Constants
 
-*integer* **EXCEPTION_NO_DI**
+*bilangan bulat* **EXCEPTION_NO_DI**
 
-*integer* **EXCEPTION_CYCLIC_ROUTING**
+*bilangan bulat* **EXCEPTION_CYCLIC_ROUTING**
 
-*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+*bilangan bulat* **EXCEPTION_HANDLER_NOT_FOUND**
 
-*integer* **EXCEPTION_INVALID_HANDLER**
+*bilangan bulat* **EXCEPTION_INVALID_HANDLER**
 
-*integer* **EXCEPTION_INVALID_PARAMS**
+*bilangan bulat* **EXCEPTION_INVALID_PARAMS**
 
-*integer* **EXCEPTION_ACTION_NOT_FOUND**
+*bilangan bulat* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## Metode
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Menyetel pengelola acara
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
-public **setActionSuffix** (*mixed* $actionSuffix)
+umum ** setActionSuffix ** (* campuran * $actionSuffix)
 
-Sets the default action suffix
+Mengatur akhiran aksi seperti semula
 
-public **getActionSuffix** ()
+umum ** getActionSuffix ** ()
 
-Gets the default action suffix
+Mendapatkan aksi mendapatkan seperti semula
 
-public **setModuleName** (*mixed* $moduleName)
+umum ** setModuleName ** (*mixed * $moduleName)
 
-Sets the module where the controller is (only informative)
+Mengatur modul dimana controller (hanya memberikan informasi)
 
-public **getModuleName** ()
+publik **mendapatkanNamaModul** ()
 
-Gets the module where the controller class is
+Mendapat modul di mana pengontrolan kelasnya
 
-public **setNamespaceName** (*mixed* $namespaceName)
+umum **setNamespaceName** (* mixed * $namespaceName)
 
-Sets the namespace where the controller class is
+Mengatur ruang nama dimana kelas kontrol berada
 
-public **getNamespaceName** ()
+umum **getNamespaceName **()
 
-Gets a namespace to be prepended to the current handler name
+Mendapatkan ruang nama untuk ditambahkan ke nama peralatan saat ini
 
-public **setDefaultNamespace** (*mixed* $namespaceName)
+umum ** setDefaultNamespace ** (* mixed * $namespaceName)
 
-Sets the default namespace
+Mengatur ruang nama seperti awal
 
-public **getDefaultNamespace** ()
+umum **getDefaultNamespace **()
 
-Returns the default namespace
+Mengembalikan ruang nama seperti awal
 
-public **setDefaultAction** (*mixed* $actionName)
+publik **setDefaultTindakan** (*campuraduk* $actionName)
 
 Sets the default action name
 
-public **setActionName** (*mixed* $actionName)
+umum **set nama aksi ** (*campuran * $actionName)
 
-Sets the action name to be dispatched
+Menetapkan nama tindakan yang akan dikirim
 
-public **getActionName** ()
+publik **dapatkanNamaAksi** ()
 
-Gets the latest dispatched action name
+Dapatkan nama tindakan pengiriman terbaru
 
-public **setParams** (*array* $params)
+umum **setParams ** (*array *$params)
 
-Sets action params to be dispatched
+Menetapkan parameter tindakan yang akan dikirim
 
-public **getParams** ()
+umum **getParams** ()
 
-Gets action params
+Mendapatkan tindakan params
 
-public **setParam** (*mixed* $param, *mixed* $value)
+umum **setParam** (*mixed* $param, *mixed* $value)
 
-Set a param by its name or numeric index
+Menetapkan params tindakan yang akan dikirim
 
-public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue])
+umum *campur* **getParam** (*campur* $param, [*string* |*array *$filters], [*campur*$defaultValue])
 
-Gets a param by its name or numeric index
+Mendapatkan param dengan nama atau indeks numeriknya
 
-public *boolean* **hasParam** (*mixed* $param)
+umum *boolean* **hasParam** (*mixed* $param)
 
-Check if a param exists
+Periksa apakah param bekerja
 
-public **getActiveMethod** ()
+umum **getActiveMethod** ()
 
-Returns the current method to be/executed in the dispatcher
+Mengembalikan cara saat ini ke/dieksekusi di petugas operator
 
-public **isFinished** ()
+umum **isFinished** ()
 
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+Memeriksa apakah putaran pengiriman selesai atau memiliki kontroler/tugas yang lebih mudah dikendalikan untuk dikirim
 
 public **setReturnedValue** (*mixed* $value)
 
-Sets the latest returned value by an action manually
+Menetapkan nilai pengembalian terbaru dengan tindakan secara manua
 
 public *mixed* **getReturnedValue** ()
 
-Returns value returned by the latest dispatched action
+Mengembalikan nilai yang dikembalikan oleh tindakan pengiriman terbaru
 
 public **setModelBinding** (*mixed* $value, [*mixed* $cache])
 
-Enable/Disable model binding during dispatch
+Aktifkan / Nonaktifkan model yang mengikat selama pengiriman
 
 ```php
 <?php
@@ -142,7 +142,7 @@ $di->set('dispatcher', function() {
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
-Enable model binding during dispatch
+Aktifkan pengikatan model selama pengiriman
 
 ```php
 <?php
@@ -158,19 +158,19 @@ $di->set('dispatcher', function() {
 
 public **getModelBinder** ()
 
-Gets model binder
+Mendapat model map
 
 public *object* **dispatch** ()
 
-Dispatches a handle action taking into account the routing parameters
+Mengirimkan tindakan penanganan dengan mempertimbangkan parameter perutean
 
 protected *object* **_dispatch** ()
 
-Dispatches a handle action taking into account the routing parameters
+Mengirimkan tindakan penanganan dengan mempertimbangkan parameter perutean
 
 public **forward** (*array* $forward)
 
-Forwards the execution flow to another controller/action.
+Ke depan aliran eksekusi ke kontroler / tindakan lainnya.
 
 ```php
 <?php
@@ -186,11 +186,11 @@ $this->dispatcher->forward(
 
 public **wasForwarded** ()
 
-Check if the current executed action was forwarded by another one
+Periksa apakah tindakan yang dijalankan saat ini diteruskan oleh yang lain
 
 public **getHandlerClass** ()
 
-Possible class name that will be located to dispatch the request
+Kemungkinan nama kelas yang akan ditempatkan untuk mengirimkan permintaan
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
@@ -198,7 +198,7 @@ public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $
 
 public **getBoundModels** ()
 
-Returns bound models from binder instance
+Mengembalikan model terikat dari contoh pengikat
 
 ```php
 <?php
@@ -215,4 +215,4 @@ class UserController extends Controller
 
 protected **_resolveEmptyProperties** ()
 
-Set empty properties to their defaults (where defaults are available)
+Setel properti kosong ke kegagalan mereka (tempat kegagalan tersedia)

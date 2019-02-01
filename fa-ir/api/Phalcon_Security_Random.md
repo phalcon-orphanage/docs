@@ -6,7 +6,7 @@ title: 'Phalcon\Security\Random'
 ---
 # Class **Phalcon\Security\Random**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 Secure random number generator class.
 
@@ -77,7 +77,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-## Methods
+## روش ها
 
 public **bytes** ([*mixed* $len])
 
@@ -135,7 +135,7 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 public **base64** ([*mixed* $len])
 
-Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. Size formula: 4 * ($len / 3) and this need to be rounded up to a multiple of 4.
+Generates a random base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. فرمول حجم (: 4 * ($len / 3 و این نیاز به چند تا از 4 گرد می شود.
 
 ```php
 <?php
@@ -148,7 +148,7 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 public **base64Safe** ([*mixed* $len], [*mixed* $padding])
 
-Generates a random URL-safe base64 string If $len is not specified, 16 is assumed. It may be larger in future. The length of the result string is usually greater of $len. By default, padding is not generated because "=" may be used as a URL delimiter. The result may contain A-Z, a-z, 0-9, "-" and "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.
+یک پایگاه 64 بیتی امن را ایجاد می کند اگر $len مشخص نشده است، فرض 16 است. It may be larger in future. The length of the result string is usually greater of $len. به طور پیش فرض، کلمات یا رکوردهای ساختگی ایجاد نمی شوند، زیرا "="ممکن است به عنوان یک حائل URL استفاده. نتایج ممکن است شامل A-Z، a-z، ۹-۰، و "-"باشند. اگر $padding صحیح باشد، "="نیز استفاده می شود. RFC 3548 برای تعریف پایگاه 64 آدرس ایمن را ببینید.
 
 ```php
 <?php
@@ -159,9 +159,9 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 
 ```
 
-public **uuid** ()
+عمومی**uuid** ()
 
-Generates a v4 random UUID (Universally Unique IDentifier) The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID. This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
+UUIDتصادفی v4را تولید می کند.( شناسه یگانه جهانی) نسخه ی 4 UUIDکاملا تصادفی است.( به جز نسخه). شامل این معنی نیست اطلاعات معنی دار مانند آدرس MAC ، زمان و غیره نمی شود. برای جزئیات UUIDبه RFC 4122مراجعه کنید. این الگوریتم شماره نسخه را (۴بیت) همانند ۲بیت رزرو شده تعیین می کند. تمام بیت های دیگر(۱۲۲بیت باقی مانده) با استفاده از یک منبع تصادفی یا شبه تصادفی تنظیم می شوند. نسخه UUID ۴ ها فرم xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx را دارند که X رقم مبنای ۱۶و Y یکی از ۸، ۹،A یا B است. (برای مثال: f47ac10b-58cc-4372-a567-0e02b2c3d479).
 
 ```php
 <?php
@@ -172,9 +172,9 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ```
 
-public **number** (*mixed* $len)
+عمومی **شماره** (*مخلوط* $len)
 
-Generates a random number between 0 and $len Returns an integer: 0 <= result <= $len.
+یک عدد تصادفی بین 0و $len تولید می کند و یک عدد صحیح باز می گرداند: 0 <= جواب <= $len.
 
 ```php
 <?php

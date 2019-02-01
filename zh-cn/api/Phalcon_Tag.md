@@ -334,7 +334,7 @@ echo Phalcon\Tag::checkField(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -359,7 +359,7 @@ echo Phalcon\Tag::radioField(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -383,7 +383,7 @@ echo Phalcon\Tag::imageInput(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -403,7 +403,7 @@ echo Phalcon\Tag::submitButton("Save")
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -446,7 +446,7 @@ echo Phalcon\Tag::select(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -472,7 +472,7 @@ echo Phalcon\Tag::textArea(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -499,7 +499,7 @@ echo Phalcon\Tag::form(
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php
@@ -613,7 +613,7 @@ echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 <?php

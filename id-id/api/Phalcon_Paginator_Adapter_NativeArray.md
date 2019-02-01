@@ -10,9 +10,9 @@ title: 'Phalcon\Paginator\Adapter\NativeArray'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
-Pagination using a PHP array as source of data
+Pagination menggunakan array PHP sebagai sumber data
 
 ```php
 <?php
@@ -35,7 +35,7 @@ $paginator = new NativeArray(
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** (*array* $config)
 
@@ -43,16 +43,16 @@ Phalcon\Paginator\Adapter\NativeArray constructor
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Mengembalikan sepotong hasil untuk ditampilkan dalam pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set the current page number
+Setel nomor halaman saat ini
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set current rows limit
+Tetapkan batas baris saat ini
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Get current rows limit
+Dapatkan batas baris sekarang

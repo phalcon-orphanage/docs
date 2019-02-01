@@ -1,33 +1,33 @@
 [
     {
-        "text": "General",
+        "text": "Główne",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Wprowadzenie",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Lista zmian",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Aktualizacja",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Sponsorzy",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Wkład",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Przegląd",
                 "url": "/contributions"
             },
             {
@@ -47,8 +47,8 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
-                "url": "testing-environment"
+                "text": "Testing guide",
+                "url": "/testing-environment"
             }
         ]
     },
@@ -57,7 +57,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalacja",
                 "url": "/installation"
             },
             {
@@ -75,20 +75,12 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Środowisko",
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
-                "url": "/environments-docker"
-            },
-            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
-            },
-            {
-                "text": "Phalcon Box (Vagrant)",
-                "url": "/environments-vagrant"
             }
         ]
     },
@@ -97,21 +89,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Instalacja",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Sposób użycia",
                 "url": "/devtools-usage"
             },
             {
-                "text": "Debug",
+                "text": "Debugowanie",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Samouczki",
         "url": "",
         "menu": [
             {
@@ -119,7 +111,7 @@
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Podstawowe",
                 "url": "/tutorial-base"
             },
             {
@@ -135,13 +127,13 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Przypadek użycia",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Rdzeń",
         "url": "",
         "menu": [
             {
@@ -149,7 +141,7 @@
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Aplikacja",
                 "url": "/application"
             },
             {
@@ -157,11 +149,11 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Cli",
+                "text": "Konsolowa (ang. Cli)",
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "Kontener DI",
                 "url": "/di"
             },
             {
@@ -171,7 +163,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Usługi",
         "url": "",
         "menu": [
             {
@@ -179,7 +171,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Konfiguracja",
                 "url": "/config"
             },
             {
@@ -191,21 +183,21 @@
                 "url": "/loader"
             },
             {
-                "text": "Logging",
-                "url": "/logging"
+                "text": "Logowanie",
+                "url": "/logger"
             },
             {
-                "text": "Queue",
+                "text": "Kolejka",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "Baza danych",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Warstwa",
                 "url": "/db-layer"
             },
             {
@@ -217,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Modele",
                 "url": "/db-models"
             },
             {
@@ -229,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Zdarzenia",
                 "url": "/db-models-events"
             },
             {
@@ -241,11 +233,11 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Transakcja",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Potwierdzenie",
                 "url": "/db-models-validation"
             },
             {
@@ -271,11 +263,11 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formularze",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Zdjęcia",
                 "url": "/image"
             },
             {
@@ -283,7 +275,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Widok",
                 "url": "/views"
             },
             {
@@ -305,19 +297,19 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Kontrolery",
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "Dyspozytor",
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Menadżer wydarzeniaa",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtry",
                 "url": "/filter"
             },
             {
@@ -325,7 +317,7 @@
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Sesje",
                 "url": "/session"
             },
             {
@@ -333,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Potwierdzenie",
                 "url": "/validation"
             }
         ]
@@ -343,21 +335,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "Ciasteczka",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Żądanie",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Odpowiedź",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Bezpieczeństwo",
         "url": "",
         "menu": [
             {
@@ -365,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Bezpieczeństwo",
                 "url": "/security"
             }
         ]

@@ -10,13 +10,13 @@ title: 'Phalcon\Assets\Resource\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
 
-Represents Javascript resources
+Javascript kaynaklarını temsil eder
 
-## Methods
+## Metodlar
 
-public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
+yerel **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
 public **getType** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
@@ -42,52 +42,52 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Asse
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's type
+Kaynağın türünü ayarlar
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's path
+Kaynağın yolunu ayarlar
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+Kaynağın yerel mi yoksa harici mi olduğunu ayarlar
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+Kaynağın filtrelenmesi gerekip gerekmediğini ayarlar
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+Ek HTML özellikleri ayarlar
 
 public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+Oluşturulan HTML için hedef URI ayarlar
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's source path
+Kaynağın anahtarı ile kaynağın kaynak yolunu ayarlar
 
 public **setTargetPath** (*mixed* $targetPath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's target path
+Kaynağın hedef yolunu ayarlar
 
 public **getContent** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Kaynağın içeriğini bir dizge olarak döndürür İsteğe bağlı olarak kaynağın bulunduğu bir taban yolu ayarlanabilir
 
 public **getRealTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the real target uri for the generated HTML
+Oluşturulan HTML için gerçek hedef URL'yi döndürür
 
 public **getRealSourcePath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource is located
+Kaynağın bulunduğu tam konumu döndürür
 
 public **getRealTargetPath** ([*mixed* $basePath]) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Returns the complete location where the resource must be written
+Kaynağın yazıldığı tam konumu döndürür
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gets the resource's key.
+Kaynağın anahtarının getirir.

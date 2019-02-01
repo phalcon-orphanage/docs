@@ -8,7 +8,7 @@ title: 'Phalcon\Service\LocatorFactoryInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorfactoryinterface.zep)
 
-## Methods
+## Методы
 
 ```php
 public function newInstance(): [LocatorInterface](Phalcon_Service_LocatorInterface);

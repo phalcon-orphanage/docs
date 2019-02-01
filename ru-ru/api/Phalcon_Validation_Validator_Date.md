@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Validator\Date'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/date.zep)
 
-Checks if a value is a valid date
+Проверяет является ли значение валидной датой
 
 ```php
 <?php
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Методы
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

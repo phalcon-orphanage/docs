@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\AdapterInterface'
 
 This interface must be implemented by adapters in Phalcon\Annotations
 
-## Methods
+## Методы
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 

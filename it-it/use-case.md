@@ -37,7 +37,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User roles
 
-| Group          | Description                                        |
+| Group          | Descrizione                                        |
 | -------------- | -------------------------------------------------- |
 | Guests         | Users that are not logged in, visitors to the site |
 | Customers      | Users that have purchased products                 |
@@ -49,7 +49,7 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Endpoints
 
-| Endpoint                          | Description                                                  |
+| Endpoint                          | Descrizione                                                  |
 | --------------------------------- | ------------------------------------------------------------ |
 | `/login`                          | Path `/session/login`. Presents the login screen             |
 | `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |

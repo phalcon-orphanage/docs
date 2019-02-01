@@ -13,13 +13,13 @@ version: '4.0'
 
 The behavior of this component is based on the PHP's capability of [autoloading classes](https://secure.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
 
-With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) compliant.
+With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://www.php-fig.org/psr/psr-0/) and [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant.
 
 [Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
 
 <a name='security'></a>
 
-## Security Layer
+## Warstwa zabezpieczeń
 
 [Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -282,13 +282,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. Poniższe wydarzenia są obsługiwane:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                 |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                 |
+| Nazwa wydarzenia   | Zaistniałe                                                                                                          | Czy można zatrzymać operację? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                           |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                           |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                           |
 
 <a name='troubleshooting'></a>
 

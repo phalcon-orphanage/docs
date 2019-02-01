@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Adapter\Imagick'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 Image manipulation support. Allows images to be resized, cropped, etc.
 
@@ -83,7 +83,7 @@ Execute a background.
 
 protected **_blur** (*mixed* $radius)
 
-Blur image
+Rozmycie obrazu
 
 protected **_pixelate** (*mixed* $amount)
 
@@ -123,7 +123,7 @@ Image width
 
 public **getHeight** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Image height
+Wysokość obrazka
 
 public **getType** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -179,7 +179,7 @@ Set the background color of an image
 
 public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Blur image
+Rozmycie obrazu
 
 public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 

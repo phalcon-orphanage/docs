@@ -18,7 +18,7 @@ Component INPUT[type=hidden] for forms
 
 public **render** ([*array* $attributes])
 
-Renders the element widget returning html
+Renderiza el widget del elemento y devuelve html
 
 public **__construct** (*string* $name, [*array* $attributes]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
@@ -26,43 +26,43 @@ Phalcon\Forms\Element constructor
 
 public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the parent form to the element
+Configura el formulario principal al elemento
 
 public **getForm** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the parent form to the element
+Devuelve el formulario principal al elemento
 
 public **setName** (*mixed* $name) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element name
+Configura el nombre del elemento
 
 public **getName** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element name
+Devuelve el nombre del elemento
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element filters
+Configura los filtros del elemento
 
 public **addFilter** (*mixed* $filter) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a filter to current list of filters
+Añade un filtro a la lista actual de filtros
 
 public *mixed* **getFilters** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element filters
+Devuelve los filtros del elemento
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a group of validators
+Agrega un grupo de validadores
 
 public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a validator to the element
+Agrega un validador al elemento
 
 public **getValidators** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the validators registered for the element
+Devuelve los validadores registrados para el elemento
 
 public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
@@ -70,80 +70,80 @@ Returns an array of prepared attributes for Phalcon\Tag helpers according to the
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets a default attribute for the element
+Configura un atributo por defecto para el elemento
 
 public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the value of an attribute if present
+Devuelve el elemento de un atributo si está presente
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets default attributes for the element
+Establece los atributos por defecto para el elemento
 
 public **getAttributes** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the default attributes for the element
+Devuelve los atributos por defecto para el elemento
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets an option for the element
+Configura una opción para el elemento
 
 public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the value of an option if present
+Devuelve el valor de una opción si está presente
 
 public **setUserOptions** (*array* $options) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets options for the element
+Configura las opciones para el elemento
 
 public **getUserOptions** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the options for the element
+Devuelve las opciones para el elemento
 
 public **setLabel** (*mixed* $label) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element label
+Configura la etiqueta del elemento
 
 public **getLabel** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element label
+Devuelve la etiqueta del elemento
 
 public **label** ([*array* $attributes]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Generate the HTML to label the element
+Genera el HTML a la etiqueta del elemento
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
+Establece un valor por defecto en caso de que el formulario no utilice una entidad o que no haya un valor disponible para el elemento en _POST
 
 public **getDefault** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the default value assigned to the element
+Devuelve el valor por defecto asignado al elemento
 
 public **getValue** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element value
+Devuelve el valor del elemento
 
 public **getMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the messages that belongs to the element The element needs to be attached to a form
+Devuelve los mensajes que pertenecen al elemento. El elemento necesita estar adjunto a un formulario
 
 public **hasMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Checks whether there are messages attached to the element
+Comprueba si hay mensajes adjuntos al elemento
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the validation messages related to the element
+Configura los mensajes de validación relacionados al elemento
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Appends a message to the internal message list
+Agrega un mensaje a la lista del mensaje interno
 
 public **clear** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Clears every element in the form to its default value
+Restaura cada elemento en el formulario a su valor por defecto
 
 public **__toString** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Magic method __toString renders the widget without attributes
+Magic method __toString renderiza el widget sin atributos

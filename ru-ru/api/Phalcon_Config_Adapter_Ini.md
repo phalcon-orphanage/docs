@@ -61,7 +61,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Методы
 
 public **__construct** (*mixed* $filePath, [*mixed* $mode])
 

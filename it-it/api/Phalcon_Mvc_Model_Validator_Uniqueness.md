@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Uniqueness'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/uniqueness.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/uniqueness.zep)
 
 Validates that a field or a combination of a set of fields are not present more than once in the existing records of the related table
 
@@ -43,7 +43,7 @@ class Subscriptors extends Collection
 
 ```
 
-## Methods
+## Metodi
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 

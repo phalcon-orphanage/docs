@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
@@ -43,7 +43,7 @@ echo $router->getControllerName();
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Metode
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -51,19 +51,19 @@ Phalcon\Mvc\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Menyetel pengelola acara
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **getRewriteUri** ()
 
@@ -84,21 +84,21 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove)
 
-Set whether router must remove the extra slashes in the handled routes
+Tetapkan apakah router harus menghapus garis miring tambahan pada rute yang ditangani
 
-public **setDefaultNamespace** (*mixed* $namespaceName)
+umum ** setDefaultNamespace ** (* mixed * $namespaceName)
 
-Sets the name of the default namespace
+Menetapkan nama ruang nama default
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Sets the name of the default module
+Menetapkan nama modul default
 
 public **setDefaultController** (*mixed* $controllerName)
 
-Sets the default controller name
+Menetapkan nama pengontrol default
 
-public **setDefaultAction** (*mixed* $actionName)
+publik **setDefaultTindakan** (*campuraduk* $actionName)
 
 Sets the default action name
 
@@ -120,7 +120,7 @@ $router->setDefaults(
 
 public **getDefaults** ()
 
-Returns an array of default parameters
+Mengembalikan array parameter default
 
 public **handle** ([*mixed* $uri])
 
@@ -139,7 +139,7 @@ $router->handle("/posts/edit/1");
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
-Adds a route to the router without any HTTP constraint
+Menambahkan rute ke router tanpa batasan HTTP
 
 ```php
 <?php
@@ -154,7 +154,7 @@ $router->add("/about", "About::index", ["GET", "POST"], Router::POSITION_FIRST);
 
 public **addGet** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is GET
+Menambahkan rute ke router yang hanya cocok jika metode HTTP nya MENDAPATKAN
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
@@ -166,23 +166,23 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 public **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is PATCH
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PATCH
 
 public **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is DELETE
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah DELETE
 
 public **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Add a route to the router that only match if the HTTP method is OPTIONS
+Tambahkan rute ke router yang hanya cocok jika metode HTTP adalah OPTIONS
 
 public **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is HEAD
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah KEPALA
 
 public **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
+Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PURGE (dukungan Squid dan Varnish)
 
 public **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
@@ -198,56 +198,56 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths)
 
-Set a group of paths to be returned when none of the defined routes are matched
+Tetapkan sekelompok jalur yang akan dikembalikan bila tidak ada rute yang ditentukan yang cocok
 
-public **clear** ()
+publik **jelas** ()
 
-Removes all the pre-defined routes
+Menghapus semua rute yang telah ditentukan sebelumnya
 
-public **getNamespaceName** ()
+umum **getNamespaceName **()
 
-Returns the processed namespace name
+Mengembalikan nama namespace yang diproses
 
-public **getModuleName** ()
+publik **mendapatkanNamaModul** ()
 
-Returns the processed module name
+Mengembalikan nama modul yang diproses
 
 public **getControllerName** ()
 
-Returns the processed controller name
+Mengembalikan nama pengontrol yang diproses
 
-public **getActionName** ()
+publik **dapatkanNamaAksi** ()
 
-Returns the processed action name
+Mengembalikan nama tindakan yang diproses
 
-public **getParams** ()
+umum **getParams** ()
 
-Returns the processed parameters
+Mengembalikan parameter yang diproses
 
-public **getMatchedRoute** ()
+publik **DapatkanRuteyangsesuai** ()
 
-Returns the route that matches the handled URI
+Mengembalikan rute yang sesuai dengan URI yang ditangani
 
 public **getMatches** ()
 
-Returns the sub expressions in the regular expression matched
+Mengembalikan sub ekspresi dalam ekspresi reguler yang sesuai
 
-public **wasMatched** ()
+publik **telahDicantumkan** ()
 
-Checks if the router matches any of the defined routes
+Memeriksa apakah router cocok dengan rute yang ditentukan
 
-public **getRoutes** ()
+publik **mendapatkanRute** ()
 
-Returns all the routes defined in the router
+Mengembalikan semua rute yang didefinisikan di router
 
 public **getRouteById** (*mixed* $id)
 
-Returns a route object by its id
+Mengembalikan objek rute dengan idnya
 
 public **getRouteByName** (*mixed* $name)
 
-Returns a route object by its name
+Mengembalikan objek rute dengan namanya
 
 public **isExactControllerName** ()
 
-Returns whether controller name should not be mangled
+Mengembalikan apakah nama pengontrol tidak boleh hancur

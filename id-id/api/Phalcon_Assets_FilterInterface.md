@@ -6,10 +6,10 @@ title: 'Phalcon\Assets\FilterInterface'
 ---
 # Interface **Phalcon\Assets\FilterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **filter** (*mixed* $content)
+abstrak umum **filter** (*campuran* $content)
 
 ...

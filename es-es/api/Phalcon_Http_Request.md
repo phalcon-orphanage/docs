@@ -10,7 +10,7 @@ title: 'Phalcon\Http\Request'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
-Encapsulates request information for easy and secure access from application controllers.
+Encapsula la información de solicitud para un acceso fácil y seguro desde los controladores de la aplicación.
 
 The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
 
@@ -43,11 +43,11 @@ public **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** ()
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
@@ -66,7 +66,7 @@ $userEmail = $request->get("user_email", "email");
 
 public **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+Obtiene una variable del $_POST superglobal aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el $_POST superglobal
 
 ```php
 <?php
@@ -81,7 +81,7 @@ $userEmail = $request->getPost("user_email", "email");
 
 public **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from put request
+Obtiene una variable del PUT request
 
 ```php
 <?php
@@ -96,7 +96,7 @@ $userEmail = $request->getPut("user_email", "email");
 
 public **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+Obtiene una variable del $_GET superglobal aplicando filtros si es necesario. Si no se proporcionan parámetros se devuelve el $_GET superglobal
 
 ```php
 <?php
@@ -118,43 +118,43 @@ Helper to get data from superglobals, applying filters if needed. If no paramete
 
 public **getServer** (*mixed* $name)
 
-Gets variable from $_SERVER superglobal
+Obtiene una variable del $_SERVER superglobal
 
 public **has** (*mixed* $name)
 
-Checks whether $_REQUEST superglobal has certain index
+Comprueba si $_REQUEST superglobal tiene un determinado índice
 
 public **hasPost** (*mixed* $name)
 
-Checks whether $_POST superglobal has certain index
+Comprueba si $_POST superglobal tiene un determinado índice
 
 public **hasPut** (*mixed* $name)
 
-Checks whether the PUT data has certain index
+Comprueba si los datos PUT tienen un determinado índice
 
 public **hasQuery** (*mixed* $name)
 
-Checks whether $_GET superglobal has certain index
+Comprueba si $_GET superglobal tiene un determinado índice
 
 final public **hasServer** (*mixed* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Comprueba si $_SERVER superglobal tiene un determinado índice
 
 final public **getHeader** (*mixed* $header)
 
-Gets HTTP header from request data
+Obtiene la cabecera HTTP de los datos de solicitud
 
 public **getScheme** ()
 
-Gets HTTP schema (http/https)
+Obtiene el esquema HTTP (http/https)
 
 public **isAjax** ()
 
-Checks whether request has been made using ajax
+Comprueba si se ha hecho una solicitud utilizando ajax
 
 public **isSoap** ()
 
-Checks whether request has been made using SOAP
+Comprueba si se ha hecho una solicitud utilizando SOAP
 
 public **isSoapRequested** ()
 
@@ -162,7 +162,7 @@ Alias of isSoap(). It will be deprecated in future versions
 
 public **isSecure** ()
 
-Checks whether request has been made using any secure layer
+Comprueba si la solicitud se ha hecho utilizando cualquier nivel de seguridad
 
 public **isSecureRequest** ()
 
@@ -170,23 +170,23 @@ Alias of isSecure(). It will be deprecated in future versions
 
 public **getRawBody** ()
 
-Gets HTTP raw request body
+Obtiene el cuerpo de solicitud sin procesar HTTP
 
 public **getJsonRawBody** ([*mixed* $associative])
 
-Gets decoded JSON HTTP raw request body
+Obtiene el cuerpo de solicitud sin procesar decodificado JSON HTTP
 
 public **getServerAddress** ()
 
-Gets active server address IP
+Obtiene el IP de la dirección del servidor activo
 
 public **getServerName** ()
 
-Gets active server name
+Obtiene el nombre del servidor activo
 
 public **getHttpHost** ()
 
-Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
+Obtiene el nombre del host utilizado por la solicitud. `Request::getHttpHost` Intenta encontrar el nombre del host en el siguiente orden: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Opcionalmente `Request::getHttpHost` valida y borra el nombre del host. El `Request::$_strictHostCheck` puede ser utilizado para validar el nombre del host. Nota: la validación y la limpieza tienen un impacto negativo en el rendimiento porque utilizan expresiones regulares.
 
 ```php
 <?php
@@ -212,19 +212,19 @@ $request->getHttpHost(); // example.com
 
 public **setStrictHostCheck** ([*mixed* $flag])
 
-Sets if the `Request::getHttpHost` method must be use strict validation of host name or not
+Establece si el método `Request::getHttpHost` debe utilizar o no una validación estricta del nombre del host
 
 public **isStrictHostCheck** ()
 
-Checks if the `Request::getHttpHost` method will be use strict validation of host name or not
+Comprueba si el método `Request::getHttpHost` utilizará o no una validación estricta del nombre del host
 
 public **getPort** ()
 
-Gets information about the port on which the request is made.
+Obtiene información sobre el puerto en el cual se realizó la solicitud.
 
 final public **getURI** ()
 
-Gets HTTP URI which request has been made
+Obtiene el HTTP URL en el cual se hizo la solicitud
 
 public **getClientAddress** ([*mixed* $trustForwardedHeader])
 
@@ -232,19 +232,19 @@ Gets most possible client IPv4 Address. This method searches in $_SERVER["REMOTE
 
 final public **getMethod** ()
 
-Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. The method is always an uppercased string.
+Obtiene el método HTTP en el cual se hizo la solicitud. Si la cabecera X-HTTP-Method-Override esta configurada, y si el método es un POST, entonces se utiliza para determinar el método HTTP deseado y "verdadero". El parámetro de solicitud _method también puede ser utilizado para determinar el método HTTP, pero solo si setHttpMethodParameterOverride(true) ha sido llamado. El método siempre es una cadena en mayúscula.
 
 public **getUserAgent** ()
 
-Gets HTTP user agent used to made the request
+Obtiene el agente de usuario HTTP utilizado para hacer la solicitud
 
 public **isValidHttpMethod** (*mixed* $method)
 
-Checks if a method is a valid HTTP method
+Comprueba si un método es un método HTTP válido
 
 public **isMethod** (*mixed* $methods, [*mixed* $strict])
 
-Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
+Comprueba si el método HTTP coincide con cualquier método pasado. Cuando strict es true, comprueba si los métodos validados son métodos HTTP verdaderos
 
 public **isPost** ()
 
@@ -288,11 +288,11 @@ Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
 public **hasFiles** ([*mixed* $onlySuccessful])
 
-Checks whether request include attached files
+Comprueba si la solicitud incluye archivos adjuntos
 
 final protected **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
-Recursively counts file in an array of files
+Cuenta recursivamente un archivo en un arreglo de archivos
 
 public **getUploadedFiles** ([*mixed* $onlySuccessful])
 
@@ -300,11 +300,11 @@ Gets attached files as Phalcon\Http\Request\File instances
 
 final protected **smoothFiles** (*array* $names, *array* $types, *array* $tmp_names, *array* $sizes, *array* $errors, *mixed* $prefix)
 
-Smooth out $_FILES to have plain array with all files uploaded
+Simplifica $_FILES para tener un arreglo simple con todos los archivos cargados
 
 public **getHeaders** ()
 
-Returns the available headers in the request
+Devuelve las cabeceras disponibles en la solicitud
 
 ```php
 <?php
@@ -326,44 +326,44 @@ Gets web page that refers active request. ie: https://www.google.com
 
 final protected **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
-Process a request header and return the one with best quality
+Procesa una cabecera de solicitud y devuelve la que tiene mejor calidad
 
 public **getContentType** ()
 
-Gets content type which request has been made
+Obtiene el tipo de contenido del cual se ha hecho la solicitud
 
 public **getAcceptableContent** ()
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene un arreglo con mime o tipos y su calidad aceptadas por el navegador o cliente desde _SERVER["HTTP_ACCEPT"]
 
 public **getBestAccept** ()
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Obtiene el mejor mime o tipo aceptado por el navegador o cliente desde _SERVER["HTTP_ACCEPT"]
 
 public **getClientCharsets** ()
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene un arreglo de conjunto de caracteres y su calidad aceptada por el navegador o cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 public **getBestCharset** ()
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Obtiene el mejor conjunto de caracteres aceptado por el navegador o cliente desde _SERVER["HTTP_ACCEPT_CHARSET"]
 
 public **getLanguages** ()
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene un arreglo de los idiomas y su calidad aceptada por el navegador o cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 public **getBestLanguage** ()
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Obtiene el mejor idioma aceptado por el navegador o cliente desde _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 public **getBasicAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
+Obtiene la información de autentificación aceptada por el navegador o cliente desde $_SERVER["PHP_AUTH_USER"]
 
 public **getDigestAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+Obtiene la información de autentificación aceptada por el navegador o cliente desde $_SERVER["PHP_AUTH_DIGEST"]
 
 final protected **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
-Process a request header and return an array of values with their qualities
+Procesa una cabecera de solicitud y devuelve un arreglo de valores con sus atributos

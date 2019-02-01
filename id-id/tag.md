@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# View Helpers (Tags)
+# Lihat Pembantu (Tag)
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
@@ -17,13 +17,13 @@ This component can be used in a plain HTML+PHP view or in a [Volt](/4.0/en/volt)
 
 <a name='document-type'></a>
 
-## Document Type of Content
+## Dokumen Jenis Konten
 
 Phalcon offers the `Phalcon\Tag::setDoctype()` helper to set document type of the content. The document type setting may affect HTML output produced by other tag helpers. For example, if you set XHTML document type family, helpers that return or output HTML tags will produce self-closing tags to follow valid XHTML standard.
 
 Available document type constants in [Phalcon\Tag](api/Phalcon_Tag) namespace are:
 
-| Constant             | Document type          |
+| Konstan              | Jenis dokumen          |
 | -------------------- | ---------------------- |
 | HTML32               | HTML 4.0               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
@@ -418,19 +418,19 @@ This will generate the following select tag with the value 'Blue' selected:
 
 <a name='helper-values-from-request'></a>
 
-### From the Request
+### Dari Permintaan
 
 A special feature that the [Phalcon\Tag](api/Phalcon_Tag) helpers have is that they keep the values of form helpers between requests. This way you can easily show validation messages without losing entered data.
 
 <a name='helper-values-directly'></a>
 
-### Specifying values directly
+### Menentukan nilai secara langsung
 
 Every form helper supports the parameter 'value'. With it you can specify a value for the helper directly. When this parameter is present, any preset value using setDefault() or via request will be ignored.
 
 <a name='changing-document-title-dynamically'></a>
 
-## Changing dynamically the Document Title
+## Mengubah secara dinamis Judul Dokumen
 
 [Phalcon\Tag](api/Phalcon_Tag) offers helpers to change dynamically the document title from the controller. The following example demonstrates just that:
 
@@ -487,7 +487,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Gambar
 
 ```php
 <?php
@@ -641,8 +641,7 @@ class MyTags extends Tag
     public static function textField($parameters)
     {
         // ...
-    }
-}
+    }}
 ```
 
 Then change the definition of the service [tag](/4.0/en/tag):

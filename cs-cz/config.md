@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Reading Configurations
+# Čtení konfigurace
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -36,7 +36,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## Factory
+## Továrna
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 

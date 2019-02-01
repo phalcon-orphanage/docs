@@ -8,9 +8,9 @@ title: 'Phalcon\Db\Reference'
 
 *implements* [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
 
-Allows to define reference constraints on tables
+Tablolara referans kısıtlamaları tanımlamaya izin verir
 
 ```php
 <?php
@@ -33,11 +33,11 @@ $reference = new \Phalcon\Db\Reference(
 
 ```
 
-## Methods
+## Metodlar
 
-public **getName** ()
+herkese açık ** isim al** ()
 
-Constraint name
+Kısıtlama adı
 
 public **getSchemaName** ()
 
@@ -49,11 +49,11 @@ public **getReferencedSchema** ()
 
 public **getReferencedTable** ()
 
-Referenced Table
+Referans Tablosu
 
 public **getColumns** ()
 
-Local reference columns
+Yerel referans sütunları
 
 public **getReferencedColumns** ()
 

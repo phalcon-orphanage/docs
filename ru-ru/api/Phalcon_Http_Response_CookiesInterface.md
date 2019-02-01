@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response\CookiesInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **useEncryption** (*mixed* $useEncryption)
 

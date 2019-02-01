@@ -3,11 +3,11 @@ layout: article
 language: 'zh-cn'
 version: '4.0'
 ---
-> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
+> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
 
 <a name='overview'></a>
 
-## Creating a small script
+## 创建一个小的脚本
 
 A small PHP file can be used to showcase how to reproduce the issue:
 
@@ -65,7 +65,7 @@ var_dump($_COOKIE);
 
 <a name='database'></a>
 
-### Database
+### 数据库
 
 > Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. {:.alert .alert-info}
 

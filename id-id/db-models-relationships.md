@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Relationships
+# Model Hubungan
 
 <a name='relationships'></a>
 
@@ -17,28 +17,28 @@ There are four types of relationships: one-on-one, one-to-many, many-to-one and 
 
 <a name='unidirectional'></a>
 
-### Unidirectional relationships
+### Hubungan yang searah
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### Bidirectional relations
+### Hubungan dua arah
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### Defining relationships
+### Mendefinisikan hubungan
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-| Method        | Description                |
-| ------------- | -------------------------- |
-| hasMany       | Defines a 1-n relationship |
-| hasOne        | Defines a 1-1 relationship |
-| belongsTo     | Defines a n-1 relationship |
-| hasManyToMany | Defines a n-n relationship |
+| metode                    | Deskripsi                      |
+| ------------------------- | ------------------------------ |
+| memiliki banyak           | Mendefinisikan hubungan 1-n    |
+| Punya satu                | Mendefinisikan hubungan 1-1    |
+| Milik                     | Mendefinisikan hubungan n-1    |
+| memiliki banyak ke banyak | Mendefinisikan sebuah hubungan |
 
 The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
 
@@ -68,8 +68,8 @@ CREATE TABLE parts (
 );
 ```
 
-* The model `Robots` has many `RobotsParts`.
-* The model `Parts` has many `RobotsParts`.
+* Model ` Robot </ 0> memiliki banyak <code> RobotsParts </ 0> .</li>
+<li>Model <code>Bagian` memiliki banyak `Bagian robot`.
 * The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
 * The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
 
@@ -250,7 +250,7 @@ class Robots extends Model
 }
 ```
 
-and
+dan
 
 ```php
 <?php
@@ -309,7 +309,7 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### Taking advantage of relationships
+### Mengambil keuntungan dari hubungan
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -437,12 +437,12 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| Mengetik                  | Deskripsi                                                                                                                        | Metode implisit       |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
+| Milik                     | Mengembalikan instance model catatan terkait secara langsung                                                                     | temukan dulu          |
+| Punya satu                | Mengembalikan instance model catatan terkait secara langsung                                                                     | temukan dulu          |
+| Memiliki banyak           | Mengembalikan koleksi model contoh model yang direferensikan                                                                     | cari                  |
+| Memiliki-Banyak-Ke-Banyak | Mengembalikan kumpulan model contoh model yang direferensikan, secara implisit melakukan 'inner join' dengan model yang terlibat | (pertanyaan kompleks) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -458,7 +458,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### Aliasing Relationships
+### Aliasing Hubungan
 
 To explain better how aliases work, let's check the following example:
 
@@ -608,7 +608,7 @@ class Robots extends Model
 
 <a name='conditionals'></a>
 
-## Conditionals
+## Kondisional
 
 You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
 
@@ -702,7 +702,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## Virtual Foreign Keys
+## Kunci asing virtual
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -805,7 +805,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### Cascade/Restrict actions
+### Cascade/Membatasi tindakan
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -843,7 +843,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## Storing Related Records
+## Menyimpan Catatan Yang Terkait
 
 Magic properties can be used to store a record and its related properties:
 
@@ -914,9 +914,9 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## Operations over Resultsets
+## Atur hasil operasinya di atas
 
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+If a resultset is composed of complete objects, model operations can be performed on those objects. Sebagai contoh:
 
 ```php
 <?php
@@ -940,7 +940,7 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### Updating related records
+### Memperbarui catatan yang terkait
 
 Instead of doing this:
 
@@ -1003,7 +1003,7 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### Deleting related records
+### Menghapus catatan yang terkait
 
 Instead of doing this:
 

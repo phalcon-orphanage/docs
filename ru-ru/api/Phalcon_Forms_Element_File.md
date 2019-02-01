@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\File'
 
 Component INPUT[type=file] for forms
 
-## Methods
+## Методы
 
 public **render** ([*array* $attributes])
 

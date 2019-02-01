@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\CollectionInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setId** (*mixed* $id)
 

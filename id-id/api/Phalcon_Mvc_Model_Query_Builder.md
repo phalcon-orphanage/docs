@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Query\Builder'
 
 *implements* [Phalcon\Mvc\Model\Query\BuilderInterface](Phalcon_Mvc_Model_Query_BuilderInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
 
-Helps to create PHQL queries using an OO interface
+Bantuan untuk membuat PHQL pertanyaan memakai OO antarmuka
 
 ```php
 <?php
@@ -50,7 +50,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Metode
 
 public **__construct** ([*mixed* $params], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -58,15 +58,15 @@ Phalcon\Mvc\Model\Query\Builder constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **distinct** (*mixed* $distinct)
 
-Sets SELECT DISTINCT / SELECT ALL flag
+Set PILIH DISTINCT / PILIH SEMUA bendera
 
 ```php
 <?php
@@ -78,11 +78,11 @@ $builder->distinct(null);
 
 public **getDistinct** ()
 
-Returns SELECT DISTINCT / SELECT ALL flag
+Kembali PILIH TERPISAH / PILIH SEMUA bendera
 
 public **columns** (*mixed* $columns)
 
-Sets the columns to be queried
+Menetapkan kolom yang akan ditanyakan
 
 ```php
 <?php
@@ -107,11 +107,11 @@ $builder->columns(
 
 public *string* | *array* **getColumns** ()
 
-Return the columns to be queried
+Mengembalikan kolom yang akan ditanyakan
 
 public **from** (*mixed* $models)
 
-Sets the models who makes part of the query
+Pilih model yang membuat bagian dari pertanyaan
 
 ```php
 <?php
@@ -136,7 +136,7 @@ $builder->from(
 
 public **addFrom** (*mixed* $model, [*mixed* $alias], [*mixed* $with])
 
-Add a model to take part of the query
+Tambahkan model untuk mengambil bagian dari pertanyaan
 
 ```php
 <?php
@@ -166,7 +166,7 @@ $builder->addFrom(
 
 public *string* | *array* **getFrom** ()
 
-Return the models who makes part of the query
+Kembali model-model yang membuat bagian dari query
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **join** (*string* $model, [*string* $conditions], [*string* $alias], [*string* $type])
 
@@ -191,7 +191,7 @@ $builder->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **innerJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds an INNER join to the query
+Menambahkan INNER bergabung ke kueri
 
 ```php
 <?php
@@ -209,7 +209,7 @@ $builder->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **leftJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a LEFT join to the query
+Menambahkan KIRI bergabung ke kueri
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $builder->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **rightJoin** (*string* $model, [*string* $conditions], [*string* $alias])
 
-Adds a RIGHT join to the query
+Menambahkan RIGHT bergabung ke kueri
 
 ```php
 <?php
@@ -231,11 +231,11 @@ $builder->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public *array* **getJoins** ()
 
-Return join parts of the query
+Kembali bergabung bagian dari query
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **where** (*mixed* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Sets the query WHERE conditions
+Menetapkan permintaan kondisi WHERE
 
 ```php
 <?php
@@ -256,7 +256,7 @@ $builder->where(
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **andWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current WHERE conditions using a AND operator
+Menambahkan kondisi saat ini di MANA kondisi dengan menggunakan operator AND
 
 ```php
 <?php
@@ -275,7 +275,7 @@ $builder->andWhere(
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **orWhere** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current conditions using an OR operator
+Menambahkan kondisi ke kondisi saat ini dengan menggunakan operator OR
 
 ```php
 <?php
@@ -294,7 +294,7 @@ $builder->orWhere(
 
 public **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
-Appends a BETWEEN condition to the current WHERE conditions
+Menambahkan ANTARA kondisi saat ini di MANA kondisi
 
 ```php
 <?php
@@ -305,7 +305,7 @@ $builder->betweenWhere("price", 100.25, 200.50);
 
 public **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
-Appends a NOT BETWEEN condition to the current WHERE conditions
+Menambahkan TIDAK ANTARA kondisi saat ini di MANA kondisi
 
 ```php
 <?php
@@ -316,7 +316,7 @@ $builder->notBetweenWhere("price", 100.25, 200.50);
 
 public **inWhere** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
-Appends an IN condition to the current WHERE conditions
+Menambahkan DALAM kondisi saat ini di MANA kondisi
 
 ```php
 <?php
@@ -327,7 +327,7 @@ $builder->inWhere("id", [1, 2, 3]);
 
 public **notInWhere** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
-Appends a NOT IN condition to the current WHERE conditions
+Menambahkan TIDAK DALAM kondisi saat ini di MANA kondisi
 
 ```php
 <?php
@@ -338,7 +338,7 @@ $builder->notInWhere("id", [1, 2, 3]);
 
 public *string* | *array* **getWhere** ()
 
-Return the conditions for the query
+Pengembalian kondisi untuk query
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **orderBy** (*string* | *array* $orderBy)
 
@@ -376,7 +376,7 @@ $builder->having(
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **andHaving** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current HAVING conditions clause using a AND operator
+Menambahkan kondisi ke klausa kondisi HAVING saat ini dengan menggunakan operator AND
 
 ```php
 <?php
@@ -394,7 +394,7 @@ $builder->andHaving(
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **orHaving** (*string* $conditions, [*array* $bindParams], [*array* $bindTypes])
 
-Appends a condition to the current HAVING conditions clause using an OR operator
+Menambahkan kondisi saat ini MENGALAMI kondisi klausul menggunakan ATAU operator
 
 ```php
 <?php
@@ -412,7 +412,7 @@ $builder->orHaving(
 
 public **betweenHaving** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
-Appends a BETWEEN condition to the current HAVING conditions clause
+Tambahkan kondisi BETWEEN ke klausa kondisi HAVING saat ini
 
 ```php
 <?php
@@ -423,7 +423,7 @@ $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
 
 public **notBetweenHaving** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum, [*mixed* $operator])
 
-Appends a NOT BETWEEN condition to the current HAVING conditions clause
+Menambahkan kondisi NOT BETWEEN ke klausa kondisi HAVING saat ini
 
 ```php
 <?php
@@ -434,7 +434,7 @@ $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
 
 public **inHaving** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
-Appends an IN condition to the current HAVING conditions clause
+Menambahkan DALAM kondisi saat ini MENGALAMI kondisi klausa
 
 ```php
 <?php
@@ -445,7 +445,7 @@ $builder->inHaving("SUM(Robots.price)", [100, 200]);
 
 public **notInHaving** (*mixed* $expr, *array* $values, [*mixed* $operator])
 
-Appends a NOT IN condition to the current HAVING conditions clause
+Menambahkan TIDAK DALAM kondisi untuk saat ini MEMILIKI kondisi klausa
 
 ```php
 <?php
@@ -456,11 +456,11 @@ $builder->notInHaving("SUM(Robots.price)", [100, 200]);
 
 public *string* **getHaving** ()
 
-Return the current having clause
+Kembalikan arus yang memiliki klausa
 
 public **forUpdate** (*mixed* $forUpdate)
 
-Sets a FOR UPDATE clause
+Mengatur UNTUK MEMPERBARUI klausa
 
 ```php
 <?php
@@ -471,7 +471,7 @@ $builder->forUpdate(true);
 
 public **limit** (*mixed* $limit, [*mixed* $offset])
 
-Sets a LIMIT clause, optionally an offset clause
+Menetapkan BATAS ketentuan, opsional mengimbangi sebuah ketentuan
 
 ```php
 <?php
@@ -484,11 +484,11 @@ $builder->limit("100", "20");
 
 public *string* | *array* **getLimit** ()
 
-Returns the current LIMIT clause
+Mengembalikan klausa TERBATAS saat ini
 
 public **offset** (*mixed* $offset)
 
-Sets an OFFSET clause
+Menetapkan klausa OFFSET
 
 ```php
 <?php
@@ -499,11 +499,11 @@ $builder->offset(30);
 
 public *string* | *array* **getOffset** ()
 
-Returns the current OFFSET clause
+Mengembalikan klausa OFFSET saat ini
 
 public [Phalcon\Mvc\Model\Query\Builder](Phalcon_Mvc_Model_Query_Builder) **groupBy** (*string* | *array* $group)
 
-Sets a GROUP BY clause
+Menetapkan klausa OLEH KELOMPOK
 
 ```php
 <?php
@@ -518,32 +518,32 @@ $builder->groupBy(
 
 public *string* **getGroupBy** ()
 
-Returns the GROUP BY clause
+Mengembalikan klausa OLEH KELOMPOK
 
 final public *string* **getPhql** ()
 
-Returns a PHQL statement built based on the builder parameters
+Mengembalikan sebuah PHQL pernyataan dibangun berdasarkan bangunan parameter
 
 public **getQuery** ()
 
-Returns the query built
+Mengembalikan kueri yang dibuat
 
 final public **autoescape** (*mixed* $identifier)
 
-Automatically escapes identifiers but only if they need to be escaped.
+Secara otomatis melepaskan pengidentifikasi tapi hanya jika mereka harus diloloskan.
 
 private **_conditionBetween** (*mixed* $clause, *mixed* $operator, *mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a BETWEEN condition
+Menambahkan kondisi BETWEEN
 
 private **_conditionNotBetween** (*mixed* $clause, *mixed* $operator, *mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a NOT BETWEEN condition
+Menambahkan kondisi NOT BETWEEN
 
 private **_conditionIn** (*mixed* $clause, *mixed* $operator, *mixed* $expr, *array* $values)
 
-Appends an IN condition
+Tambahkan dalam kondisi
 
 private **_conditionNotIn** (*mixed* $clause, *mixed* $operator, *mixed* $expr, *array* $values)
 
-Appends a NOT IN condition
+Menambahkan kondisi NOT IN

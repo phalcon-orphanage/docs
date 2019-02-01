@@ -6,7 +6,7 @@ title: 'Phalcon\Service\LocatorFactoryInterface'
 ---
 # Class **Phalcon\Service\LocatorFactoryInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorfactoryinterface.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorfactoryinterface.zep)
 
 ## Metody
 

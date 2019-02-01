@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\OperationInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationinterface.zep)
 
-## Methods
+## Методы
 
 ```php
 public getDescription(): string

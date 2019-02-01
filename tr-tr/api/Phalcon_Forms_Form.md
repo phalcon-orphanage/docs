@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-This component allows to build forms using an object-oriented interface
+Bu bileşen, nesneye yönelik bir arabirimi kullanarak formlar oluşturmanıza olanak tanır
 
-## Methods
+## Metodlar
 
 public **setValidation** (*mixed* $validation)
 
@@ -30,123 +30,123 @@ Phalcon\Forms\Form constructor
 
 public **setAction** (*mixed* $action)
 
-Sets the form's action
+Formun eylemini ayarlar
 
 public **getAction** ()
 
-Returns the form's action
+Formun eylemini döndürür
 
 public **setUserOption** (*string* $option, *mixed* $value)
 
-Sets an option for the form
+Form için bir seçenek ayarlar
 
 public **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Returns the value of an option if present
+Varsa, verilen seçeneğin değerini döner
 
-public **setUserOptions** (*array* $options)
+public **setOptions** (*array* $options)
 
-Sets options for the element
+Öğe için seçenekleri belirler
 
-public **getUserOptions** ()
+public **getOptions** ()
 
-Returns the options for the element
+Öğenin seçeneklerini döner
 
 public **setEntity** (*object* $entity)
 
-Sets the entity related to the model
+Modelle ilgili varlığı ayarlar
 
 public *object* **getEntity** ()
 
-Returns the entity related to the model
+Modelle ilgili varlığı döndürür
 
 public **getElements** ()
 
-Returns the form elements added to the form
+Forma eklenen form unsurlarını döndürür
 
 public **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
-Binds data to the entity
+Verileri varlığa bağlar
 
 public **isValid** ([*array* $data], [*object* $entity])
 
-Validates the form
+Formu doğrular
 
 public **getMessages** ([*mixed* $byItemName])
 
-Returns the messages generated in the validation
+Doğrulama sırasında üretilen iletileri döndürür
 
 public **getMessagesFor** (*mixed* $name)
 
-Returns the messages generated for a specific element
+Belirli bir öğe için üretilen iletileri döndürür
 
 public **hasMessagesFor** (*mixed* $name)
 
-Check if messages were generated for a specific element
+İletilerin belirli bir öğe için üretilip üretilmediğini kontrol etme
 
 public **add** ([Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) $element, [*mixed* $position], [*mixed* $type])
 
-Adds an element to the form
+Forma bir öğe ekler
 
 public **render** (*string* $name, [*array* $attributes])
 
-Renders a specific item in the form
+Formdaki belirli bir maddeyi temsil eder
 
 public **get** (*mixed* $name)
 
-Returns an element added to the form by its name
+Forma adıyla eklenen bir öğeyi döndürür
 
 public **label** (*mixed* $name, [*array* $attributes])
 
-Generate the label of an element added to the form including HTML
+Forma eklenen HTML de dahil olmak üzere bir öğenin etiketini oluşturun
 
 public **getLabel** (*mixed* $name)
 
-Returns a label for an element
+Bir öğe için bir etiketi döndürür
 
 public **getValue** (*mixed* $name)
 
-Gets a value from the internal related entity or from the default value
+Dahili ilgili varlığın veya varsayılan değerin değerini alır
 
 public **has** (*mixed* $name)
 
-Check if the form contains an element
+Formun bir eleman içerdiğini kontrol edin
 
 public **remove** (*mixed* $name)
 
-Removes an element from the form
+Formdaki bir öğeyi kaldırır
 
 public **clear** ([*array* $fields])
 
-Clears every element in the form to its default value
+Formdaki tüm öğeleri ön tanımlı değerlerine geri çevirir
 
-public **count** ()
+herkese açık **say** ()
 
-Returns the number of elements in the form
+Formdaki öğelerin sayısını döndürür
 
-public **rewind** ()
+herkese açık **geri sarma** ()
 
-Rewinds the internal iterator
+Dahili yineleyiciyi başa sarar
 
 public **current** ()
 
-Returns the current element in the iterator
+Yineleyicide geçerli öğeyi döndürür
 
-public **key** ()
+herkese açık **anahtar** ()
 
-Returns the current position/key in the iterator
+Yineleyicideki şuanki konumu/anahtarı döner
 
-public **next** ()
+herkese açık **sonraki** ()
 
-Moves the internal iteration pointer to the next position
+İç yineleyici işaretçisini sıradaki konuma taşır
 
-public **valid** ()
+herkese açık **geçerli** ()
 
-Check if the current element in the iterator is valid
+Yineleyicideki geçerli öğenin geçerli olup olmadığını kontrol etme
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
@@ -154,11 +154,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Olay yöneticisi ayarlar
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Dahili olay yöneticisini döndürür
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

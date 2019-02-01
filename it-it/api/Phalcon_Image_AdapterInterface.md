@@ -6,9 +6,9 @@ title: 'Phalcon\Image\AdapterInterface'
 ---
 # Interface **Phalcon\Image\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
 

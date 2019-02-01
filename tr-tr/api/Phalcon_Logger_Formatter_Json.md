@@ -10,19 +10,19 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
 Formats messages using JSON encoding
 
-## Methods
+## Metodlar
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Dahili sistem günlüğüne göndermeden önce mesaja format uygular
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Returns the string meaning of a logger constant
+Günlükçü sabitinin dize anlamını döndürür
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 

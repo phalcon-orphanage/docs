@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\View\Simple'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
 This component allows to render views without hierarchical levels
 
@@ -39,11 +39,11 @@ echo $view->render(
 
 ```
 
-## Methods
+## روش ها
 
 public **getRegisteredEngines** ()
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 Phalcon\Mvc\View\Simple constructor
 
@@ -241,4 +241,4 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند

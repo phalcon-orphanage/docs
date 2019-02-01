@@ -14,7 +14,7 @@ title: 'Phalcon\Validation'
 
 Allows to validate data using custom or built-in validators
 
-## Methods
+## Методы
 
 public **getData** ()
 

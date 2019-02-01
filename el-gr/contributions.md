@@ -50,7 +50,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
+- Ως πρόσθετες έκδοση μέρος της έκθεσής σας συμπεριλάβετε πληροφορίες όπως έκδοση Phalcon διακομιστή ιστού PHP μνήμη κλπ OS.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
 
 <a name='bug-report-generating-backtrace'></a>
@@ -64,7 +64,7 @@ Please check the following links for instructions on how to generate the backtra
 - [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
+- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 

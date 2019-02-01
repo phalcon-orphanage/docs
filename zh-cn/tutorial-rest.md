@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# 教程： 创建一个简单的 REST API
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
@@ -18,22 +18,22 @@ In this tutorial, we will explain how to create a simple application that provid
 
 <a name='definitions'></a>
 
-## Defining the API
+## 定义 API
 
 The API consists of the following methods:
 
-| 方法       | URL                      | Action                              |
-| -------- | ------------------------ | ----------------------------------- |
-| `GET`    | /api/robots              | 检索所有的机器人                            |
-| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索               |
-| `GET`    | /api/robots/2            | 检索基于主键机器人                           |
-| `POST`   | /api/robots              | 添加一个新的机器人                           |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key |
-| `DELETE` | /api/robots/2            | 删除基于主键机器人                           |
+| 方法       | URL                      | 操作                    |
+| -------- | ------------------------ | --------------------- |
+| `GET`    | /api/robots              | 检索所有的机器人              |
+| `GET`    | /api/robots/search/Astro | 在他们的名字与 'Astro' 机器人搜索 |
+| `GET`    | /api/robots/2            | 检索基于主键机器人             |
+| `POST`   | /api/robots              | 添加一个新的机器人             |
+| `PUT`    | /api/robots/2            | 更新基于主键机器人             |
+| `DELETE` | /api/robots/2            | 删除基于主键机器人             |
 
 <a name='implementation'></a>
 
-## Creating the Application
+## 创建应用程序
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
@@ -80,51 +80,51 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// 检索所有机器人
 $app->get(
     '/api/robots',
     function () {
-        // Operation to fetch all the robots
+        // 获取所有机器人
     }
 );
 
-// Searches for robots with $name in their name
+// 搜索所有名字中带有$name的机器人
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operation to fetch robot with name $name
+        // 通过$name搜索机器人
     }
 );
 
-// Retrieves robots based on primary key
+// 通过主键检索机器人
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to fetch robot with id $id
+        // 通过$id检索机器人
     }
 );
 
-// Adds a new robot
+// 添加一个新的机器人
 $app->post(
     '/api/robots',
     function () {
-        // Operation to create a fresh robot
+        // 创建一个全新的机器人
     }
 );
 
-// Updates robots based on primary key
+// 通过主键修改机器人
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to update a robot with id $id
+        // 使用$id做为主键值进行修改修改机器人
     }
 );
 
-// Deletes robots based on primary key
+//通过主键删除机器人
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to delete the robot with id $id
+        // 使用$id做为主键值进行修改修改机器人
     }
 );
 
@@ -137,7 +137,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Creating a Model
+## 创建模型
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -244,7 +244,7 @@ $app = new Micro($di);
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## 检索数据
 
 The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
@@ -357,7 +357,7 @@ $app->get(
 
 <a name='inserting-data'></a>
 
-## Inserting Data
+## 插入数据
 
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
 
@@ -425,7 +425,7 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Updating Data
+## 更新数据
 
 The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
@@ -487,7 +487,7 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## Deleting Data
+## 删除数据
 
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
@@ -557,7 +557,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 <a name='testing'></a>
 
-## Testing our Application
+## 测试我们的应用程序
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
@@ -665,6 +665,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## 结语
 
 As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).

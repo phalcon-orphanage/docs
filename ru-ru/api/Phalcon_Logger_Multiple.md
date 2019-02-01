@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Multiple'
 
 Handles multiples logger handlers
 
-## Methods
+## Методы
 
 public **getLoggers** ()
 

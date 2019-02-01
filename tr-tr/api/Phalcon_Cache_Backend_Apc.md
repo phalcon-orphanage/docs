@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Backend\Apc'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/apc.zep)
 
-Allows to cache output fragments, PHP data and raw data using an APC backend
+Bir APC arka uç kullanarak çıktı parçalarını, PHP verilerini ve ham verileri önbelleğe almaya izin verir
 
 ```php
 <?php
@@ -20,7 +20,7 @@ Allows to cache output fragments, PHP data and raw data using an APC backend
 use Phalcon\Cache\Backend\Apc;
 use Phalcon\Cache\Frontend\Data as FrontData;
 
-// Cache data for 2 days
+// 2 günlük önbellek verisi
 $frontCache = new FrontData(
     [
         "lifetime" => 172800,
@@ -34,27 +34,27 @@ $cache = new Apc(
     ]
 );
 
-// Cache arbitrary data
+// Rastgele önbellek verisi
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// Get data
+// Verileri getir
 $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Metodlar
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Ön bellekte saklanan içeriği döndürür
 
 public **save** ([*string* | *int* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Stores cached content into the APC backend and stops the frontend
+APC arka planındaki engeller arka planı engeller
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Increment of a given key, by number $value
+Verilen bir anahtarın sayıya göre artması $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
@@ -62,11 +62,11 @@ Decrement of a given key, by number $value
 
 public **delete** (*mixed* $keyName)
 
-Deletes a value from the cache by its key
+Ön bellekteki bir değeri anahtarı ile birlikte siler
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+Varolan bekletilmiş anahtarları sorgulayın.
 
 ```php
 <?php
@@ -80,11 +80,11 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Checks if cache exists and it hasn't expired
+Ön belleğin var olup olmadığını ve süresinin dolup dolmadığını denetler
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+Mevcut öğelerin tümünü geçersiz kılar.
 
 ```php
 <?php
@@ -95,7 +95,7 @@ $cache = new Apc($frontCache, ["prefix" => "app-data"]);
 
 $cache->save("my-data", [1, 2, 3, 4, 5]);
 
-// 'my-data' and all other used keys are deleted
+// 'my-data' ve diğer tüm kullanılan tuşlar silinir
 $cache->flush();
 
 ```
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Herhangi bir önbelleklenmiş içerik depolamadan ön yüzü durdurur
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Son önbelleğin yeni ya da önbelleklenmiş olup olmadığını kontrol eder
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Ön belleğin ara belleğe aktarımına başlamış olup olmadığını denetler
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Son çalışma zamanı ayarını getir

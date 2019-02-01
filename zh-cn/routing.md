@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Routing
+# 路由
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -72,9 +72,9 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Controller | Action | Parameter | Parameter |
-|:----------:|:------:|:---------:|:---------:|
-|   users    | delete |   dave    |    301    |
+|  控制器  |   操作   |  参数  | 参数  |
+|:-----:|:------:|:----:|:---:|
+| users | delete | dave | 301 |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
@@ -82,7 +82,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
+| Placeholder    | Regular Expression       | 使用                                                                                                     |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
@@ -256,9 +256,9 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Controller | Action | Parameter |
-|:------:|:----------:|:------:|:---------:|
-| admin  |   users    |  edit  |   sonny   |
+| Module |  控制器  |  操作  |  参数   |
+|:------:|:-----:|:----:|:-----:|
+| admin  | users | edit | sonny |
 
 Or you can bind specific routes to specific modules:
 
@@ -684,9 +684,9 @@ $router->add(
 
 For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Controller   | Action | Parameter  |
-|:-------------:|:------:|:----------:|
-| documentation |  show  | about.html |
+|      控制器      |  操作  |     参数     |
+|:-------------:|:----:|:----------:|
+| documentation | show | about.html |
 
 If you don't want the router to have this behavior, you must create the router passing `false` as the first parameter:
 
@@ -1056,11 +1056,11 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## 事件
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Event                      | 描述                                   |
+| 事件                         | 描述                                   |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |
@@ -1157,7 +1157,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | 描述                                                                                                | Usage                                  |
+| 名称          | 描述                                                                                                | 使用                                     |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1169,7 +1169,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | 描述                                                                     | Usage                                                                |
+| 名称         | 描述                                                                     | 使用                                                                   |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |

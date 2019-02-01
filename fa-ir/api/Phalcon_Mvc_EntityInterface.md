@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\EntityInterface'
 ---
 # Interface **Phalcon\Mvc\EntityInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **readAttribute** (*mixed* $attribute)
 

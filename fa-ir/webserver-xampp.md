@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# نصب بر روی XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## نسخه مناسب Phalcon را دانلود کنید
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
@@ -35,7 +35,7 @@ Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edit
 extension=php_phalcon.dll
 ```
 
-and save it.
+و آنرا ذخیره کنید.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -55,7 +55,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 <a name='screencast'></a>
 
-## Screencast
+## اشتراک گذاری صفحه نمایش
 
 The following screencast is a step by step guide to install Phalcon on Windows:
 
@@ -69,7 +69,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 <a name='related'></a>
 
-## Related Guides
+## راهنمایی های مرتبط
 
 * [General Installation](/4.0/en/installation)
-* [Installation on WAMP](/4.0/en/webserver-wamp)
+* [نصب بر روی WAMP](/4.0/en/webserver-wamp)

@@ -8,7 +8,7 @@ title: 'Phalcon\EscaperInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setEncoding** (*mixed* $encoding)
 

@@ -13,19 +13,19 @@ The process of pagination takes place when we need to present big groups of arbi
 
 <a name='data-adapters'></a>
 
-## Data Adapters
+## Data Adaptor
 
 This component makes use of adapters to encapsulate different sources of data:
 
-| Adapter                                                                                 | Description                                                                                                                                                                                                      |
+| Adaptor                                                                                 | Deskripsi                                                                                                                                                                                                        |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | Use a PHP array as source data                                                                                                                                                                                   |
+| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | Gunakan array PHP sebagai data sumber                                                                                                                                                                            |
 | [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
 | [Phalcon\Paginator\Adapter\QueryBuilder](api/Phalcon_Paginator_Adapter_QueryBuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/Phalcon_Mvc_Model_Query_Builder) object as source data                                                                                                           |
 
 <a name='factory'></a>
 
-## Factory
+## Pabrik
 
 Loads Paginator Adapter class using `adapter` option
 
@@ -172,19 +172,19 @@ $paginator = new PaginatorQueryBuilder(
 
 The `$page` object has the following attributes:
 
-| Attribute     | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| `items`       | The set of records to be displayed at the current page |
-| `current`     | The current page                                       |
-| `before`      | The previous page to the current one                   |
-| `next`        | The next page to the current one                       |
-| `last`        | The last page in the set of records                    |
-| `total_pages` | The number of pages                                    |
-| `total_items` | The number of items in the source data                 |
+| Atribut         | Deskripsi                                             |
+| --------------- | ----------------------------------------------------- |
+| `item`          | Kumpulan catatan yang akan ditampilkan di halaman ini |
+| `arus`          | Halaman saat ini                                      |
+| `sebelum`       | Halaman sebelumnya ke yang sekarang                   |
+| `selanjutnya`   | Halaman selanjutnya ke yang sekarang                  |
+| `terakhir`      | Halaman terakhir dalam kumpulan catatan               |
+| `total_halaman` | Jumlah halaman                                        |
+| `jumlah barang` | Jumlah item dalam data sumber                         |
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Menerapkan adapter Anda sendiri
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 

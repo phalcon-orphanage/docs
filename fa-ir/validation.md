@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validation
+# اعتبار سنجی
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -62,7 +62,7 @@ The loosely-coupled design of this component allows you to create your own valid
 
 <a name='initializing'></a>
 
-## Initializing Validation
+## تایید اعتبار اولیه
 
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/Phalcon_Validation) object. You can put your validations in a separate file for better re-use code and organization:
 
@@ -125,31 +125,31 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Validators
+## تایید کنندگان
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Class                                                                                         | Explanation                                                       |
-| --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | Validates that a field's value is only alphanumeric character(s). |
-| [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | Validates that a field's value is only alphabetic character(s).   |
-| [Phalcon\Validation\Validator\Date](api/Phalcon_Validation_Validator_Date)                 | Validates that a field's value is a valid date.                   |
-| [Phalcon\Validation\Validator\Digit](api/Phalcon_Validation_Validator_Digit)               | Validates that a field's value is only numeric character(s).      |
-| [Phalcon\Validation\Validator\File](api/Phalcon_Validation_Validator_File)                 | Validates that a field's value is a correct file.                 |
-| [Phalcon\Validation\Validator\Uniqueness](api/Phalcon_Validation_Validator_Uniqueness)     | Validates that a field's value is unique in the related model.    |
-| [Phalcon\Validation\Validator\Numericality](api/Phalcon_Validation_Validator_Numericality) | Validates that a field's value is a valid numeric value.          |
-| [Phalcon\Validation\Validator\PresenceOf](api/Phalcon_Validation_Validator_PresenceOf)     | Validates that a field's value is not null or empty string.       |
-| [Phalcon\Validation\Validator\Identical](api/Phalcon_Validation_Validator_Identical)       | Validates that a field's value is the same as a specified value   |
-| [Phalcon\Validation\Validator\Email](api/Phalcon_Validation_Validator_Email)               | Validates that field contains a valid email format                |
-| [Phalcon\Validation\Validator\ExclusionIn](api/Phalcon_Validation_Validator_ExclusionIn)   | Validates that a value is not within a list of possible values    |
-| [Phalcon\Validation\Validator\InclusionIn](api/Phalcon_Validation_Validator_InclusionIn)   | Validates that a value is within a list of possible values        |
-| [Phalcon\Validation\Validator\Regex](api/Phalcon_Validation_Validator_Regex)               | Validates that the value of a field matches a regular expression  |
-| [Phalcon\Validation\Validator\StringLength](api/Phalcon_Validation_Validator_StringLength) | Validates the length of a string                                  |
-| [Phalcon\Validation\Validator\Between](api/Phalcon_Validation_Validator_Between)           | Validates that a value is between two values                      |
-| [Phalcon\Validation\Validator\Confirmation](api/Phalcon_Validation_Validator_Confirmation) | Validates that a value is the same as another present in the data |
-| [Phalcon\Validation\Validator\Url](api/Phalcon_Validation_Validator_Url)                   | Validates that field contains a valid URL                         |
-| [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | Validates a credit card number                                    |
-| [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | Validates using callback function                                 |
+| کلاس                                                                                           | توضیح                                                             |
+| ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [فالکن\اعتبار سنجی\ تأییدکننده\آلن](api/Phalcon_Validation_Validator_Alnum)                 | معتبر است که مقدار فیلد فقط حرف (ها) عددی است.                    |
+| [فالکون/اعتبار سنجی/تایید کنندگان/آلفا](api/Phalcon_Validation_Validator_Alpha)                | معتبر است که مقدار فیلد فقط حرف (ها) حروف الفبا است.              |
+| [فالکن\اعتبار سنجی\ تأییدکننده\تاریخ](api/Phalcon_Validation_Validator_Date)                | معتبر است که مقدار فیلد یک تاریخ معتبر است.                       |
+| [فالکن\اعتبار سنجی\ تأییدکننده\رقمی](api/Phalcon_Validation_Validator_Digit)                | معتبر است که مقدار فیلد فقط کاراکتر (ها) عددی است.                |
+| [فالکن\اعتبار سنجی\ تأییدکننده\فایل](api/Phalcon_Validation_Validator_File)                 | مقدار فیلد یک فایل معتبر و صحیح است.                              |
+| [فالکن\اعتبار سنجی\ تأییدکننده\منحصر به فرد](api/Phalcon_Validation_Validator_Uniqueness)   | مقدار فیلد در مدل مرتبط منحصر به فرد و معتبر است.                 |
+| [فالکن\اعتبار سنجی\ تأییدکننده\عدد صفر](api/Phalcon_Validation_Validator_Numericality)      | مقدار فیلد معتبر است که یک مقدار عددی معتبر باشد.                 |
+| [فالکن\اعتبار سنجی\ تأییدکننده\حضور](api/Phalcon_Validation_Validator_PresenceOf)           | مقدار فیلد معتبر است که رشته ای خالی یا تهی نیست.                 |
+| [فالکن\اعتبار سنجی\ تأییدکننده\یکسان است](api/Phalcon_Validation_Validator_Identical)       | Validates that a field's value is the same as a specified value   |
+| [فالکن\اعتبار سنجی\ تأییدکننده\ایمیل](api/Phalcon_Validation_Validator_Email)               | Validates that field contains a valid email format                |
+| [فالکن\اعتبار سنجی\ تأییدکننده\خروج در](api/Phalcon_Validation_Validator_ExclusionIn)       | Validates that a value is not within a list of possible values    |
+| [فالکن\اعتبار سنجی\ تأییدکننده\ورود به سیستم](api/Phalcon_Validation_Validator_InclusionIn) | Validates that a value is within a list of possible values        |
+| [فالکن\اعتبار سنجی\ تأییدکننده\رگیکس](api/Phalcon_Validation_Validator_Regex)               | Validates that the value of a field matches a regular expression  |
+| [فالکن\اعتبار سنجی\ تأییدکننده\طول رشته](api/Phalcon_Validation_Validator_StringLength)     | Validates the length of a string                                  |
+| [فالکن\اعتبار سنجی\ تأییدکننده\مابین](api/Phalcon_Validation_Validator_Between)             | Validates that a value is between two values                      |
+| [فالکن\اعتبار سنجی\ تأییدکننده\تائیدیه](api/Phalcon_Validation_Validator_Confirmation)      | Validates that a value is the same as another present in the data |
+| [فالکن\اعتبار سنجی\ تأییدکننده\آدرس صفحه اینترنتی](api/Phalcon_Validation_Validator_Url)    | Validates that field contains a valid URL                         |
+| [فالکن\اعتبار سنجی\ تأییدکننده\کارت اعتباری](api/Phalcon_Validation_Validator_CreditCard)   | Validates a credit card number                                    |
+| [فالکون/اعتبار سنجی/تایید کنندگان/تماس برگشت](api/Phalcon_Validation_Validator_Callback)       | Validates using callback function                                 |
 
 The following example explains how to create additional validators for this component:
 
@@ -196,7 +196,7 @@ It is important that validators return a valid boolean value indicating if the v
 
 <a name='callback'></a>
 
-## Callback Validator
+## تایید اعتبار تماس
 
 By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
 
@@ -316,7 +316,7 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtering of Data
+## فیلتر کردن داده ها
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
@@ -354,7 +354,7 @@ Filtering and sanitizing is performed using the [filter](/4.0/en/filter) compone
 
 <a name='events'></a>
 
-## Validation Events
+## رویداد های اعتبار سنجی
 
 When validations are organized in classes, you can implement the `beforeValidation()` and `afterValidation()` methods to perform additional checks, filters, clean-up, etc. If the `beforeValidation()` method returns false the validation is automatically cancelled:
 
@@ -400,14 +400,14 @@ class LoginValidation extends Validation
      */
     public function afterValidation($data, $entity, $messages)
     {
-        // ... Add additional messages or perform more validations
+        // ... اضافه کردن پیام های اضافی و یا انجام اعتبارات بیشتر
     }
 }
 ```
 
 <a name='cancelling'></a>
 
-## Cancelling Validations
+## لغو اعتبارسنجی
 
 By default all validators assigned to a field are tested regardless if one of them have failed or not. You can change this behavior by telling the validation component which validator may stop the validation:
 
@@ -485,7 +485,7 @@ class MyValidator extends Validator
 
 <a name='empty-values'></a>
 
-## Avoid validating empty values
+## اجتناب از اعتباربخشی به مقادیر خالی
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
@@ -511,7 +511,7 @@ $validation->add(
 
 <a name='recursive'></a>
 
-## Recursive Validation
+## اعتبار مجرد
 
 You can also run Validation instances within another via the `afterValidation()` method. In this example, validating the `CompanyValidation` instance will also check the `PhoneValidation` instance:
 

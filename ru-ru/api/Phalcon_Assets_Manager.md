@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Manager'
 
 Manages collections of CSS/Javascript assets
 
-## Methods
+## Методы
 
 public **__construct** ([*array* $options])
 

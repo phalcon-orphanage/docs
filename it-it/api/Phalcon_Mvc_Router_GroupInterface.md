@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Router\GroupInterface'
 ---
 # Interface **Phalcon\Mvc\Router\GroupInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/groupinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **setHostname** (*mixed* $hostname)
 

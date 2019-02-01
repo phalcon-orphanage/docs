@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Password'
 
 Component INPUT[type=password] for forms
 
-## Methods
+## Методы
 
 public **render** ([*array* $attributes])
 

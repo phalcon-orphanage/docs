@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\UrlInterface'
 ---
 # Interface **Phalcon\Mvc\UrlInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
 
 ## Metody
 

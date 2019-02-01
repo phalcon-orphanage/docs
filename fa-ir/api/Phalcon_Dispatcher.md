@@ -8,11 +8,11 @@ title: 'Phalcon\Dispatcher'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
-## Constants
+## ثابت ها
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -26,7 +26,7 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Methods
+## روش ها
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -38,11 +38,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+مجموعه مدیریت رویدادها
 
-public **getEventsManager** ()
+عمومی **مدیریت رویداد** ()
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **setActionSuffix** (*mixed* $actionSuffix)
 

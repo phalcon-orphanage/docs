@@ -66,7 +66,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
 
-The following example demonstrates how to attach listeners to this component:
+Το παρακάτω παράδειγμα δείχνει πώς προσαρτήσετε να τους ακροατές σε αυτό το στοιχείο:
 
 ```php
 <?php

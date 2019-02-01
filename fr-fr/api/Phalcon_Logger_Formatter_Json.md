@@ -10,11 +10,11 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
 Formats messages using JSON encoding
 
-## Methods
+## Méthodes
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 

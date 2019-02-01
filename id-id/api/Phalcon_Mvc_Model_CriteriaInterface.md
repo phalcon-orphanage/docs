@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Model\CriteriaInterface'
 ---
 # Interface **Phalcon\Mvc\Model\CriteriaInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setModelName** (*mixed* $modelName)
+abstrak umum **mengatur Nama Model**(*campuran* $modelName)
 
 ...
 
@@ -18,47 +18,47 @@ abstract public **getModelName** ()
 
 ...
 
-abstract public **bind** (*array* $bindParams)
+abstrak umum **mengikat** (*susunan* $bindParams)
 
 ...
 
-abstract public **bindTypes** (*array* $bindTypes)
+abstrak umum **Jenis mengikat** (*menyusun* $bindTypes)
 
 ...
 
-abstract public **where** (*mixed* $conditions)
+abstrak umum **dimana** (*campuran* $conditions)
 
 ...
 
-abstract public **conditions** (*mixed* $conditions)
+abstrak umum **keadaan** (*campuran* $conditions)
 
 ...
 
-abstract public **orderBy** (*mixed* $orderColumns)
+abstrak umum **Dari pesanan** (*campuran* $orderColumns)
 
 ...
 
-abstract public **limit** (*mixed* $limit, [*mixed* $offset])
+abstrak umum **batas** (*campuran* $limit, [*campuran* $offset])
 
 ...
 
-abstract public **forUpdate** ([*mixed* $forUpdate])
+abstrak umum **Perbaharui untuk** ([*campuran* $forUpdate])
 
 ...
 
-abstract public **sharedLock** ([*mixed* $sharedLock])
+abstrak umum **Kunci bersama** ([*campuran* $sharedLock])
 
 ...
 
-abstract public **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
+abstrak umum **dan Dimana** (*campuran* $conditions, [*campuran* $bindParams], [*campuran* $bindTypes])
 
 ...
 
-abstract public **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
+abstrak umum **atau Dimana** (*campuran* $conditions, [*campuran* $bindParams], [*campuran* $bindTypes])
 
 ...
 
-abstract public **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
+abstrak umum **Dimana antara** (*campuran* $expr, *campuran* $minimum, *campuran* $maximum)
 
 ...
 
@@ -66,7 +66,7 @@ abstract public **notBetweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $m
 
 ...
 
-abstract public **inWhere** (*mixed* $expr, *array* $values)
+abstrak umum **Dimana dalam** (*campuran* $expr, *menyusun* $values)
 
 ...
 
@@ -74,26 +74,26 @@ abstract public **notInWhere** (*mixed* $expr, *array* $values)
 
 ...
 
-abstract public **getWhere** ()
+abstrak umum **Dimana mendapatkan** ()
 
 ...
 
-abstract public **getConditions** ()
+abstrak umum **mendapatkan Keadaan** ()
 
 ...
 
-abstract public **getLimit** ()
+abstrak umum **mendapatkan Batas** ()
 
 ...
 
-abstract public **getOrderBy** ()
+abstrak umum **mendapatkan Pesanan Dari** ()
 
 ...
 
-abstract public **getParams** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **execute** ()
+publik abstrak **execute** ()
 
 ...

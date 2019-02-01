@@ -8,7 +8,7 @@ title: 'Phalcon\Cli\RouterInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setDefaultModule** (*mixed* $moduleName)
 

@@ -15,7 +15,7 @@ Vökuró is another sample application you can use to learn more about Phalcon. 
 
 ## Project Structure
 
-Once you clone the project in your document root you'll see the following structure:
+Μόλις κλωνοποιήσετε το έργο ρίζα στη του εγγράφου, θα δείτε την ακόλουθη δομή:
 
 ```bash
 vokuro/

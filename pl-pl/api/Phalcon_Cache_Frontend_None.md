@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\None'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
@@ -78,7 +78,7 @@ Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Prepare data to be stored
+Przugotuj dane do przechowania
 
 public **afterRetrieve** (*mixed* $data)
 

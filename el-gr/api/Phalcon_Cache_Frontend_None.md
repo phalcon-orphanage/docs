@@ -58,11 +58,11 @@ foreach ($robots as $robot) {
 
 public **getLifetime** ()
 
-Returns cache lifetime, always one second expiring content
+Επιστρέφει τη διάρκεια της προσωρινής μνήμης, ένα πάντα δευτερόλεπτο που λήγει το περιεχόμενο
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output, always false
+Ελέγξτε αν το έχει παράθυρο προσωρινή αποθήκευση, πάντα ψευδές
 
 public **start** ()
 
@@ -74,7 +74,7 @@ Returns output cached content
 
 public **stop** ()
 
-Stops output frontend
+Σταματά παράθυρο το εξόδου
 
 public **beforeStore** (*mixed* $data)
 
@@ -82,4 +82,4 @@ Prepare data to be stored
 
 public **afterRetrieve** (*mixed* $data)
 
-Prepares data to be retrieved to user
+Προετοιμάζει τα δεδομένα πρέπει που να ανακτώνται στο χρήστη

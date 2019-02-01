@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Collection\Manager'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.
+Este componente controla la inicialización de modelos, manteniendo el registro de relaciones entre los diferentes modelos de la aplicación.
 
 A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\Di.
 
@@ -42,15 +42,15 @@ public **setServiceName** (*mixed* $serviceName)
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 public **getDI** ()
 
-Returns the DependencyInjector container
+Devuelve el contenedor DependencyInjector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** ()
 
@@ -58,52 +58,52 @@ Devuelve el administrador de eventos interno
 
 public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets a custom events manager for a specific model
+Configura un administrador de eventos personalizado para un modelo específico
 
 public **getCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Returns a custom events manager related to a model
+Devuelve el administrador de eventos personalizado relacionado a un modelo
 
 public **initialize** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Initializes a model in the models manager
+Inicializa un modelo en el administrador de modelos
 
 public **isInitialized** (*mixed* $modelName)
 
-Check whether a model is already initialized
+Comprueba si un modelo está ya inicializado
 
 public **getLastInitialized** ()
 
-Get the latest initialized model
+Obtiene el modelo inicializado más reciente
 
 public **setConnectionService** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $connectionService)
 
-Sets a connection service for a specific model
+Obtiene un servicio de conexión para un modelo específico
 
 public **getConnectionService** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Gets a connection service for a specific model
+Obtiene un servicio de conexión para un modelo específico
 
 public **useImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $useImplicitObjectIds)
 
-Sets whether a model must use implicit objects ids
+Establece si un modelo debe utilizar ids de objetos implícitos
 
 public **isUsingImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Checks if a model is using implicit object ids
+Comprueba si un modelo está utilizando ids de objeto implícitos
 
 public *Mongo* **getConnection** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Returns the connection related to a model
+Devuelve la conexión relacionada a un modelo
 
 public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
+Recibe los eventos generados en los modelos y los envía al administrador de eventos si está disponible. Notifica los comportamientos que están escuchando en el modelo
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that at least one was implemented
+Envía un evento a los escuchas y a los comportamientos. Este método espera que el punto de conexión de escuchas o comportamientos devuelva true, lo que significa que se implementó al menos uno
 
 public **addBehavior** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-Binds a behavior to a model
+Enlaza un comportamiento a un modelo

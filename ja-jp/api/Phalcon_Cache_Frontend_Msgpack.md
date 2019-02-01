@@ -20,16 +20,16 @@ Allows to cache native PHP data in a serialized form using msgpack extension Thi
 use Phalcon\Cache\Backend\File;
 use Phalcon\Cache\Frontend\Msgpack;
 
-// Cache the files for 2 days using Msgpack frontend
+// Msgpack フロントエンドを使用してファイルを2日間キャッシュ。
 $frontCache = new Msgpack(
     [
         "lifetime" => 172800,
     ]
 );
 
-// Create the component that will cache "Msgpack" to a "File" backend
-// Set the cache file directory - important to keep the "/" at the end of
-// of the value for the folder
+// "Msgpack" を "File" バックエンドをキャッシュするコンポーネントを作成
+// キャッシュファイルディレクトリを設定する - フォルダのためにこの値の
+// 末尾を"/"にしなければなりません。
 $cache = new File(
     $frontCache,
     [
@@ -39,23 +39,23 @@ $cache = new File(
 
 $cacheKey = "robots_order_id.cache";
 
-// Try to get cached records
+// キャッシュされたレコードを取得してみる
 $robots = $cache->get($cacheKey);
 
 if ($robots === null) {
-    // $robots is null due to cache expiration or data do not exist
-    // Make the database call and populate the variable
+    // キャッシュの期限切れやデータがない場合、$robots は null です。
+    // データベースを呼び出して変数に代入
     $robots = Robots::find(
         [
             "order" => "id",
         ]
     );
 
-    // Store it in the cache
+    // キャッシュに保存
     $cache->save($cacheKey, $robots);
 }
 
-// Use $robots
+// $robots の使用
 foreach ($robots as $robot) {
     echo $robot->name, "\n";
 }

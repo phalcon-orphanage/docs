@@ -7,19 +7,19 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Class Autoloader
+# Kelas Autoloader
 
 [Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
 The behavior of this component is based on the PHP's capability of [autoloading classes](https://secure.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
 
-With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md) and [PSR-4](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4.md) compliant.
+With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://www.php-fig.org/psr/psr-0/) and [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant.
 
 [Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
 
 <a name='security'></a>
 
-## Security Layer
+## Lapisan Keamanan
 
 [Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -58,7 +58,7 @@ To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loade
 
 <a name='registering-namespaces'></a>
 
-## Registering Namespaces
+## Mendaftar ruang nama
 
 If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
 
@@ -89,7 +89,7 @@ $some = new \Example\Adapter\Some();
 
 <a name='registering-directories'></a>
 
-## Registering Directories
+## Mendaftar Direktori
 
 The third option is to register directories, in which classes could be found. This option is not recommended in terms of performance, since Phalcon will need to perform a significant number of file stats on each folder, looking for the file with the same name as the class. It's important to register the directories in relevance order.
 
@@ -122,7 +122,7 @@ $some = new \Some();
 
 <a name='registering-classes'></a>
 
-## Registering Classes
+## Mendaftar Kelas
 
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
 
@@ -153,7 +153,7 @@ $some = new \Some();
 
 <a name='registering-files'></a>
 
-## Registering Files
+## Mendaftar Berkas
 
 You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
 
@@ -181,7 +181,7 @@ These files are automatically loaded in the `register()` method.
 
 <a name='registering-file-extensions'></a>
 
-## Additional file extensions
+## Ekstensi berkas tambahan
 
 Some autoloading strategies such as `prefixes`, `namespaces` or `directories` automatically append the `php` extension at the end of the checked file. If you are using additional extensions you could set it with the method `setExtensions`. Files are checked in the order as it were defined:
 
@@ -227,7 +227,7 @@ $loader->setFileCheckingCallback(null);
 
 <a name='modifying-current-strategies'></a>
 
-## Modifying current strategies
+## Memodifikasi strategi saat ini
 
 Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
 
@@ -246,7 +246,7 @@ $loader->registerDirs(
 
 <a name='events'></a>
 
-## Autoloading Events
+## Autoloading Acara
 
 In the following example, the `EventsManager` is working with the class loader, allowing us to obtain debugging information regarding the flow of operation:
 
@@ -282,20 +282,20 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. The following events are supported:
+Some events when returning boolean `false` could stop the active operation. Acara berikut didukung:
 
-| Event Name         | Triggered                                                                                                           | Can stop operation? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Yes                 |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
+| Acara nama         | Pemicu                                                                                                              | Bisa berhenti operasinya? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| `beforeCheckClass` | Dipicu sebelum memulai proses autoloading                                                                           | Ya                        |
+| `pathFound`        | Dipicu saat loader menemukan kelas                                                                                  | Tidak                     |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Tidak                     |
 
 <a name='troubleshooting'></a>
 
-## Troubleshooting
+## Penyelesaian masalah
 
 Some things to keep in mind when using the universal autoloader:
 
-* Auto-loading process is case-sensitive, the class will be loaded as it is written in the code
+* Proses pemuatan otomatis bersifat hal-hal sensitif, kelas akan dimuat seperti yang tertulis dalam kode
 * Strategies based on namespaces/prefixes are faster than the directories strategy
 * If a cache bytecode like [APC](https://php.net/manual/en/book.apc.php) is installed this will used to retrieve the requested file (an implicit caching of the file is performed)

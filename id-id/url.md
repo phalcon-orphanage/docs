@@ -115,7 +115,7 @@ $url->get(
 
 <a name='urls-without-mod-rewrite'></a>
 
-## Producing URLs without mod_rewrite
+## Memproduksi URLs tanpa mod_menulis ulang
 
 You can use this component also to create URLs without mod_rewrite:
 
@@ -176,7 +176,7 @@ echo $url->get('products/save');
 
 <a name='urls-from-volt'></a>
 
-## Producing URLs from Volt
+## Memproduksi URLs dari Volt
 
 The function `url` is available in volt to generate URLs using this component:
 
@@ -218,6 +218,6 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 <a name='custom-url'></a>
 
-## Implementing your own URL Generator
+## Menjalankan Generator URL anda sendiri
 
 The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

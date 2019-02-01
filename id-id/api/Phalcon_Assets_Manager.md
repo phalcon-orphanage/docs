@@ -6,29 +6,29 @@ title: 'Phalcon\Assets\Manager'
 ---
 # Class **Phalcon\Assets\Manager**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-Manages collections of CSS/Javascript assets
+Mengelola koleksi aset CSS/Javascript
 
-## Methods
+## Metode
 
-public **__construct** ([*array* $options])
+umum **__membangun** ([*array* $options])
 
 public **setOptions** (*array* $options)
 
-Sets the manager options
+Menetapkan pilihan manajer
 
 public **getOptions** ()
 
-Returns the manager options
+Mengembalikan opsi manajer
 
 public **useImplicitOutput** (*mixed* $implicitOutput)
 
-Sets if the HTML generated must be directly printed or returned
+Mengatur jika HTML yang dihasilkan harus langsung dicetak atau dikembalikan
 
-public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
+public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*dicampur* $attributes])
 
-Adds a Css resource to the 'css' collection
+Menambahkan sumber daya Css ke koleksi 'css'
 
 ```php
 <?php
@@ -38,13 +38,13 @@ $assets->addCss("https://bootstrap.my-cdn.com/style.css", false);
 
 ```
 
-public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
+public **addInlineCss** (*campuran* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline Css to the 'css' collection
+Menambahkan inline Css ke koleksi 'css'
 
-public **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
+public **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*dicampur* $attributes])
 
-Adds a javascript resource to the 'js' collection
+Menambahkan sumber javascript ke koleksi 'js'
 
 ```php
 <?php
@@ -56,11 +56,11 @@ $assets->addJs("https://jquery.my-cdn.com/jquery.js", false);
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline javascript to the 'js' collection
+Menambahkan javascript inline ke koleksi 'js'
 
 public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Adds a resource by its type
+Menambahkan sumber daya menurut jenisnya
 
 ```php
 <?php
@@ -73,11 +73,11 @@ $assets->addResourceByType("css",
 
 public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Adds an inline code by its type
+Menambahkan kode inline menurut jenisnya
 
 public **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Adds a raw resource to the manager
+Menambahkan sumber daya mentah ke pengelola
 
 ```php
 <?php
@@ -90,11 +90,11 @@ $assets->addResource(
 
 public **addInlineCode** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Adds a raw inline code to the manager
+Menambahkan kode inline mentah ke pengelola
 
 public **set** (*mixed* $id, [Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection)
 
-Sets a collection in the Assets Manager
+Menetapkan koleksi di Asset Manager
 
 ```php
 <?php
@@ -103,9 +103,9 @@ $assets->set("js", $collection);
 
 ```
 
-public **get** (*mixed* $id)
+publik **dapatkan** (*campuran* $id)
 
-Returns a collection by its id.
+Mengembalikan koleksi dengan idnya.
 
 ```php
 <?php
@@ -116,54 +116,54 @@ $scripts = $assets->get("js");
 
 public **getCss** ()
 
-Returns the CSS collection of assets
+Mengembalikan koleksi aset CSS
 
 public **getJs** ()
 
-Returns the CSS collection of assets
+Mengembalikan koleksi aset CSS
 
 public **collection** (*mixed* $name)
 
-Creates/Returns a collection of resources
+Membuat/Mengembalikan koleksi sumber daya
 
 public **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
-Traverses a collection calling the callback to generate its HTML
+Melacak koleksi yang memanggil yang kembali untuk menghasilkan HTML-nya
 
 public **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
-Traverses a collection and generate its HTML
+Melacak koleksi dan menghasilkan HTML-nya
 
 public **outputCss** ([*string* $collectionName])
 
-Prints the HTML for CSS resources
+Mencetak sumber HTML untuk CSS
 
 public **outputInlineCss** ([*string* $collectionName])
 
-Prints the HTML for inline CSS
+Mencetak HTML untuk CSS sebaris
 
 public **outputJs** ([*string* $collectionName])
 
-Prints the HTML for JS resources
+Mencetak sumber HTML untuk JS
 
 public **outputInlineJs** ([*string* $collectionName])
 
-Prints the HTML for inline JS
+Mencetak HTML untuk inline JS
 
 public **getCollections** ()
 
-Returns existing collections in the manager
+Mengembalikan koleksi yang ada di manajer
 
 public **exists** (*mixed* $id)
 
-Returns true or false if collection exists.
+Mengembalikan true atau false jika ada koleksi.
 
 ```php
 <?php
 
-if ($assets->exists("jsHeader")) {
-    // \Phalcon\Assets\Collection
-    $collection = $assets->get("jsHeader");
+jika ($assets->exist ("jsHeader")) {
+     // \ Phalcon\Assets\Collection
+     $collection = $assets->get("jsHeader");
 }
 
 ```

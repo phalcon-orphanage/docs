@@ -6,9 +6,9 @@ title: 'Phalcon\EscaperInterface'
 ---
 # Interface **Phalcon\EscaperInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setEncoding** (*mixed* $encoding)
 

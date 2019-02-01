@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Numericality'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
 
 Check for a valid numeric value
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Metodi
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

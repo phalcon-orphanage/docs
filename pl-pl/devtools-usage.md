@@ -15,13 +15,13 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 
 <a name='download'></a>
 
-## Download
+## Pobierz
 
 You can download or clone a cross platform package containing the developer tools from [GitHub](https://github.com/phalcon/phalcon-devtools).
 
 <a name='installation'></a>
 
-## Installation
+## Instalacja
 
 These are detailed instructions on how to install the developer tools on different platforms:
 
@@ -378,6 +378,6 @@ The screencast below shows how to integrate developer tools with the [PhpStorm I
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Wnioski
 
 Phalcon Developer Tools provides an easy way to generate code for your application, reducing development time and potential coding errors.

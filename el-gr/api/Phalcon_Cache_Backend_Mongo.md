@@ -56,7 +56,7 @@ Phalcon\Cache\Backend\Mongo constructor
 
 final protected *MongoCollection* **_getCollection** ()
 
-Returns a MongoDb collection based on the backend parameters
+Επιστρέφει μια MongoDb βασισμένη συλλογή στις παραμέτρους του backend
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 

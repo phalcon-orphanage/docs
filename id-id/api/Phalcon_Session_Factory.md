@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Session\Factory'
+title: 'Phalcon\Sesi\Pabrik'
 ---
 # Class **Phalcon\Session\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Session\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/factory.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/factory.zep)
 
-Loads Session Adapter class using 'adapter' option
+Mengisi kelas Adaptor Sesi menggunakan opsi 'adaptor'
 
 ```php
 <?php
@@ -32,7 +32,7 @@ $session = Factory::load($options);
 
 ```
 
-## Methods
+## Metode
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 

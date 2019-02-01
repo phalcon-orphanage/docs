@@ -43,7 +43,7 @@ echo $router->getControllerName();
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Методы
 
 public **__construct** ([*mixed* $defaultRoutes])
 

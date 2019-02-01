@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\Syslog'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
 Sends logs to the system logger
 
@@ -67,7 +67,7 @@ Sets the message formatter
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Starts a transaction
+Zaczyna transakcję
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 

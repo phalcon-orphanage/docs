@@ -39,9 +39,9 @@ $connection->addIndex("robots", null, $index_primary);
 
 ```
 
-## Methods
+## Методы
 
-public **getName** ()
+общественная **метод getname** ()
 
 Index name
 

@@ -12,7 +12,7 @@ title: 'Phalcon\Session\Exception'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
 
-## Methods
+## Методы
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -20,7 +20,7 @@ Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Exception constructor
+Конструктор исключений
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -28,32 +28,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+Возвращает сообщение об исключении
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+Возвращает код исключения
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+Возвращает файл, в котором произошло исключение
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+Возвращает строку, в которой произошло исключение
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+Возвращает трассировку стека
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+Возвращает Предыдущее исключение
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+Возвращает трассировку стека в виде строки
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+Строковое представление исключения

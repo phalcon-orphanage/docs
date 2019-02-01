@@ -56,7 +56,7 @@ $application->main();
 
 ```
 
-## Methods
+## Методы
 
 public **useImplicitView** (*mixed* $implicitView)
 

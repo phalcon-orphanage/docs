@@ -16,63 +16,63 @@ Base class for Phalcon\Logger adapters
 
 public **setLogLevel** (*mixed* $level)
 
-Filters the logs sent to the handlers that are less or equal than a specific level
+Filtra los registros enviados a los controladores que son menos o igual a un nivel específico
 
 public **getLogLevel** ()
 
-Returns the current log level
+Devuelve el nivel de registro actual
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Sets the message formatter
+Configura el formateador del mensaje
 
 public **begin** ()
 
-Starts a transaction
+Inicia una transacción
 
 public **commit** ()
 
-Commits the internal transaction
+Finaliza la transacción interna
 
 public **rollback** ()
 
-Rollbacks the internal transaction
+Revierte la transacción interna
 
 public **isTransaction** ()
 
-Returns the whether the logger is currently in an active transaction or not
+Devuelve si el registrador está actualmente en una transacción activa o no
 
 public **critical** (*mixed* $message, [*array* $context])
 
-Sends/Writes a critical message to the log
+Envía o escribe un mensaje crítico al registro
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Sends/Writes an emergency message to the log
+Envía o escribe un mensaje de emergencia al registro
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Sends/Writes a debug message to the log
+Envía o escribe un mensaje de depuración al registro
 
 public **error** (*mixed* $message, [*array* $context])
 
-Sends/Writes an error message to the log
+Envía o escribe un mensaje de error al registro
 
 public **info** (*mixed* $message, [*array* $context])
 
-Sends/Writes an info message to the log
+Envía o escribe un mensaje de información al registro
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Sends/Writes a notice message to the log
+Envía o escribe un mensaje de notificación al registro
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Sends/Writes a warning message to the log
+Envía o escribe un mensaje de advertencia al registro
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Sends/Writes an alert message to the log
+Envía o escribe un mensaje de alerta al registro
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 

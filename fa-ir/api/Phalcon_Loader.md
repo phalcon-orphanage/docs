@@ -8,7 +8,7 @@ title: 'Phalcon\Loader'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
 This component helps to load your project classes automatically based on some conventions
 
@@ -37,15 +37,15 @@ $adapter = new \Example\Adapter\Some();
 
 ```
 
-## Methods
+## روش ها
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+مجموعه مدیریت رویدادها
 
-public **getEventsManager** ()
+عمومی **مدیریت رویداد** ()
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **setExtensions** (*array* $extensions)
 

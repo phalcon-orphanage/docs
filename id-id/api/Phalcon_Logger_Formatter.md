@@ -8,19 +8,19 @@ title: 'Phalcon\Logger\Formatter'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
 
-This is a base class for logger formatters
+Ini adalah kelas dasar untuk formaldger logger
 
-## Methods
+## Metode
 
-public **getTypeString** (*mixed* $type)
+publik **getTypeString** (*campuran* $type)
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
-public **interpolate** (*string* $message, [*array* $context])
+publik **menambah** (*tali* $message, [*array* $context])
 
-Interpolates context values into the message placeholders
+Interpolasi nilai konteks ke dalam placeholder pesan
 
 abstract public **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context]) inherited from [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 

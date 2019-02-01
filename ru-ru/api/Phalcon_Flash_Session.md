@@ -14,7 +14,7 @@ title: 'Phalcon\Flash\Session'
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Methods
+## Методы
 
 protected **_getSessionMessages** (*mixed* $remove, [*mixed* $type])
 

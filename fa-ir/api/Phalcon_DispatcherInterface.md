@@ -6,9 +6,9 @@ title: 'Phalcon\DispatcherInterface'
 ---
 # Interface **Phalcon\DispatcherInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setActionSuffix** (*mixed* $actionSuffix)
 

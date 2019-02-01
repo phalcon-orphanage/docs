@@ -6,9 +6,9 @@ title: 'Phalcon\Db\ResultInterface'
 ---
 # Interface **Phalcon\Db\ResultInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **execute** ()
 

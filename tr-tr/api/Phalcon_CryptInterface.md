@@ -6,9 +6,9 @@ title: 'Phalcon\CryptInterface'
 ---
 # Interface **Phalcon\CryptInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **setCipher** (*mixed* $cipher)
 

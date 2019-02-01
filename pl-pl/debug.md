@@ -70,7 +70,7 @@ Retrieving information from [Phalcon\Exception](api/Phalcon_Exception) is the sa
 
 try {
 
-    // ... App code ...
+    // ... Kod aplikacji ...
 
 } catch (\Exception $e) {
     echo get_class($e), ': ', $e->getMessage(), '\n';
@@ -202,7 +202,7 @@ Phalcon\Mvc\Router Object
 
 <a name='#xdebug'></a>
 
-## Using XDebug
+## Za pomocą XDebug
 
 [XDebug](https://xdebug.org) is an amazing tool that complements the debugging of PHP applications. It is also a C extension for PHP, and you can use it together with Phalcon without additional configuration or side effects.
 

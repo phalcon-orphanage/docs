@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Collection\BehaviorInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behaviorinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection)
 

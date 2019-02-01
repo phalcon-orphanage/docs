@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Přispějte k vývoji Phalcon frameworku
 
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
@@ -64,7 +64,7 @@ Please check the following links for instructions on how to generate the backtra
 - [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
+- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 

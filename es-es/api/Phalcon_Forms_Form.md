@@ -12,7 +12,7 @@ title: 'Phalcon\Forms\Form'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-This component allows to build forms using an object-oriented interface
+Este componente permite construir formularios utilizando una interfaz object-oriented
 
 ## Métodos
 
@@ -30,99 +30,99 @@ Phalcon\Forms\Form constructor
 
 public **setAction** (*mixed* $action)
 
-Sets the form's action
+Establece la acción del formulario
 
 public **getAction** ()
 
-Returns the form's action
+Devuelve la acción del formulario
 
 public **setUserOption** (*string* $option, *mixed* $value)
 
-Sets an option for the form
+Establece una opción para el formulario
 
 public **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Returns the value of an option if present
+Devuelve el valor de una opción si está presente
 
 public **setUserOptions** (*array* $options)
 
-Sets options for the element
+Configura las opciones para el elemento
 
 public **getUserOptions** ()
 
-Returns the options for the element
+Devuelve las opciones para el elemento
 
 public **setEntity** (*object* $entity)
 
-Sets the entity related to the model
+Establece la entidad relacionada con el modelo
 
 public *object* **getEntity** ()
 
-Returns the entity related to the model
+Devuelve la entidad relacionada con el modelo
 
 public **getElements** ()
 
-Returns the form elements added to the form
+Devuelve los elementos del formulario agregados al mismo
 
 public **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
-Binds data to the entity
+Vincula datos a la entidad
 
 public **isValid** ([*array* $data], [*object* $entity])
 
-Validates the form
+Valida el formato
 
 public **getMessages** ([*mixed* $byItemName])
 
-Returns the messages generated in the validation
+Devuelve los mensajes generados en la validación
 
 public **getMessagesFor** (*mixed* $name)
 
-Returns the messages generated for a specific element
+Devuelve los mensajes generados para un elemento específico
 
 public **hasMessagesFor** (*mixed* $name)
 
-Check if messages were generated for a specific element
+Verificar si se generaron mensajes para un elemento específico
 
 public **add** ([Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) $element, [*mixed* $position], [*mixed* $type])
 
-Adds an element to the form
+Agrega un elemento al formulario
 
 public **render** (*string* $name, [*array* $attributes])
 
-Renders a specific item in the form
+Presenta un elemento específico en el formulario
 
 public **get** (*mixed* $name)
 
-Returns an element added to the form by its name
+Devuelve un elemento agregado al formulario por su nombre
 
 public **label** (*mixed* $name, [*array* $attributes])
 
-Generate the label of an element added to the form including HTML
+Genera la etiqueta de un elemento agregado al formulario, incluido HTML
 
 public **getLabel** (*mixed* $name)
 
-Returns a label for an element
+Devuelve una etiqueta para un elemento
 
 public **getValue** (*mixed* $name)
 
-Gets a value from the internal related entity or from the default value
+Obtiene un valor de la entidad relacionada interna o del valor predeterminado
 
 public **has** (*mixed* $name)
 
-Check if the form contains an element
+Compruebe si el formulario contiene un elemento
 
 public **remove** (*mixed* $name)
 
-Removes an element from the form
+Elimina un elemento de la forma
 
 public **clear** ([*array* $fields])
 
-Clears every element in the form to its default value
+Restaura cada elemento en el formulario a su valor por defecto
 
 public **count** ()
 
-Returns the number of elements in the form
+Devuelve la cantidad de elementos en el formulario
 
 public **rewind** ()
 
@@ -130,7 +130,7 @@ Rebobina el iterador interno
 
 public **current** ()
 
-Returns the current element in the iterator
+Devuelve el elemento actual en el iterador
 
 public **key** ()
 
@@ -142,19 +142,19 @@ Mueve el puntero interno de iteración a la siguiente posición
 
 public **valid** ()
 
-Check if the current element in the iterator is valid
+Verificar si el elemento actual en el iterador es válido
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

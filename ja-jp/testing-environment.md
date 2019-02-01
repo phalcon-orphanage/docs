@@ -383,7 +383,7 @@ For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-la
 
 <a name='services'></a>
 
-# Services
+# サービス
 
 The available services are: - Beanstalkd - Memcached - Mongodb - Mysql - Postgresql - Redis
 

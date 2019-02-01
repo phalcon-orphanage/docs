@@ -6,15 +6,15 @@ title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Query\BuilderInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builderinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builderinterface.zep)
 
-## Constants
+## ثابت ها
 
 *string* **OPERATOR_OR**
 
 *string* **OPERATOR_AND**
 
-## Methods
+## روش ها
 
 abstract public **columns** (*mixed* $columns)
 

@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Redis'
 
 Stores model meta-data in the Redis.
 
-By default meta-data is stored for 48 hours (172800 seconds)
+Los metadatos son almacenados predeterminadamente por 48 horas(172800 segundos)
 
 ```php
 <?php
@@ -92,11 +92,11 @@ Initialize the metadata for certain table
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 public **getDI** () inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
-Returns the DependencyInjector container
+Devuelve el contenedor DependencyInjector
 
 public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy) inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 

@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='contributing'></a>
 
-# Contributing to Phalcon
+# Zu Phalcon beitragen
 
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
@@ -39,7 +39,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='questions-and-support'></a>
 
-## Questions and Support
+## Fragen und Support
 
 > We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server. {:.alert .alert-danger}
 
@@ -50,25 +50,25 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
+- Bitte geben Sie als Teil Ihres Berichts, Zusatzinformationen wie OS, PHP Version, Phalcon-Version, Web-Server, Speicher usw.. an.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Einen backtrace erzeugen
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
 Please check the following links for instructions on how to generate the backtrace:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Einen gdb backtrace erzeugen](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
+- [Debugsymbole](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [PHP bauen](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
-## Pull Request Checklist
+## Pull Request Checkliste
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
@@ -85,13 +85,13 @@ Before submitting **new functionality**, please open a [NFR](/4.0/en/new-feature
 
 <a name='getting-support'></a>
 
-## Getting Support
+## Support erhalten
 
 If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
 
 <a name='requesting-features'></a>
 
-## Requesting Features
+## Feature-Anfragen
 
 If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
 

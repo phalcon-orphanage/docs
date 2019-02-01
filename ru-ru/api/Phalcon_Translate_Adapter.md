@@ -12,7 +12,7 @@ title: 'Phalcon\Translate\Adapter'
 
 Base class for Phalcon\Translate adapters
 
-## Methods
+## Методы
 
 public **__construct** (*array* $options)
 

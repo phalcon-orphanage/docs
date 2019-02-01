@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
 
 Specific functions for the Sqlite database system
 
@@ -27,7 +27,7 @@ $connection = new Sqlite(
 
 ```
 
-## Methods
+## روش ها
 
 public **connect** ([*array* $descriptor])
 
@@ -317,7 +317,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect) inherited from [Phalcon\Db\Adapter](Phalcon_Db_Adapter)
 

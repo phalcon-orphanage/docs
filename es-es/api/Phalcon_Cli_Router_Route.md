@@ -8,7 +8,7 @@ title: 'Phalcon\Cli\Router\Route'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-This class represents every route added to the router
+Esta clase representa cada ruta agregada al enrutador
 
 ## Constantes
 
@@ -22,23 +22,23 @@ Phalcon\Cli\Router\Route constructor
 
 public **compilePattern** (*mixed* $pattern)
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+Reemplaza los marcadores de posición del patrón que devuelve una expresión PCRE regular válida
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
-Extracts parameters from a string
+Extrae parámetros de una cadena
 
 public **reConfigure** (*string* $pattern, [*array* $paths])
 
-Reconfigure the route adding a new pattern and a set of paths
+Reconfigura la ruta agregando un nuevo patrón y un conjunto de rutas
 
 public **getName** ()
 
-Returns the route's name
+Devuelve el nombre de la ruta
 
 public **setName** (*mixed* $name)
 
-Sets the route's name
+Establece el nombre de la ruta
 
 ```php
 <?php
@@ -58,44 +58,44 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public *mixed* **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+Devuelve la coincidencia del anterior callback si la hay
 
 public **getRouteId** ()
 
-Returns the route's id
+Devuelve la identidad de la ruta
 
 public **getPattern** ()
 
-Returns the route's pattern
+Devuelve el patrón de la ruta
 
 public **getCompiledPattern** ()
 
-Returns the route's compiled pattern
+Devuelve el patrón compilado de la ruta
 
 public **getPaths** ()
 
-Returns the paths
+Devuelve la ruta
 
 public **getReversedPaths** ()
 
-Returns the paths using positions as keys and names as values
+Devuelve las rutas usando posiciones como claves y nombres como valores
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **convert** (*string* $name, *callable* $converter)
 
-Adds a converter to perform an additional transformation for certain parameter
+Agrega un convertidor para realizar una transformación adicional para cierto parámetro
 
 public **getConverters** ()
 
-Returns the router converter
+Devuelve el convertidor del router
 
 public static **reset** ()
 
-Resets the internal route id generator
+Restablece el generador de identificador de ruta interno
 
 public static **delimiter** ([*mixed* $delimiter])
 
-Set the routing delimiter
+Establece el delimitador de enrutamiento
 
 public static **getDelimiter** ()
 
-Get routing delimiter
+Obtiene el delimitador de enrutamiento

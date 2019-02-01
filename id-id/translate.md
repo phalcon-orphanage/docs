@@ -7,23 +7,23 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Multi-lingual Support
+# Dukungan multi-bahasa
 
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptor
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                                                               | Description                                                                             |
+| Adaptor                                                                               | Deskripsi                                                                               |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
 <a name='adapters-factory'></a>
 
-### Factory
+### Pabrik
 
 Loads Translate Adapter class using `adapter` option
 
@@ -45,7 +45,7 @@ $translate = Factory::load($options);
 
 <a name='usage'></a>
 
-## Component Usage
+## Penggunaan Komponen
 
 Translation strings are stored in files. The structure of these files could vary depending of the adapter used. Phalcon gives you the freedom to organize your translation strings. A simple structure could be:
 
@@ -100,7 +100,7 @@ class UserController extends Controller
         $language = $this->request->getBestLanguage();
         $messages = [];
 
-        $translationFile = 'app/messages/' . $language . '.php';
+        $translationFile = 'app/messages/' . $bahasa . '.php';
 
         // Check if we have a translation file for that lang
         if (file_exists($translationFile)) {
@@ -138,9 +138,9 @@ The `_getTranslation()` method is available for all actions that require transla
 The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
-<!-- welcome -->
-<!-- String: hi-name => 'Hello %name%' -->
-<p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
+<!-- selamat datang -->
+<!-- tali: hi-nama => 'Hello %name%' -->
+<p><?php echo $t->_('hi-nama', ['name' => $name]); ?></p>
 ```
 
 Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/4.0/en/routing).
@@ -164,10 +164,10 @@ class Locale extends Component
 
         /**
          * We are using JSON based files for storing translations. 
-         * You will need to check if the file exists! 
+         * Anda perlu memeriksa apakah file itu ada! 
          */
         $translations = json_decode(
-            file_get_contents('app/messages/' . $language . '.json'),
+            file_get_contents('app/messages/' . $bahasa . '.json'),
             true
         );
 
@@ -209,7 +209,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Menerapkan adapter Anda sendiri
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

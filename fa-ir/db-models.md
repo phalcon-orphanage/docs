@@ -309,10 +309,10 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parameter     | Description                                                                                                                                                                                                                 | Example                                                              |
+| پارامتر       | توضیحات                                                                                                                                                                                                                     | Example                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
+| `ستون ها`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                                   | `'columns' => 'id, name'`                                         |
 | `bind`        | Bind is used together with options, by replacing placeholders and escaping values thus increasing security                                                                                                                  | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
 | `bindTypes`   | When binding parameters, you can use this parameter to define additional casting to the bound parameters increasing even more the security                                                                                  | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
 | `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                  | `'order' => 'name DESC, status'`                                  |
@@ -561,7 +561,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### پارامترهای مرتبط
 
 Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Binding parameters can simply be achieved as follows:
 
@@ -1092,10 +1092,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operation | Name         | Can stop operation? | Explanation                              |
-| --------- | ------------ |:-------------------:| ---------------------------------------- |
-| Deleting  | afterDelete  |         No          | Runs after the delete operation was made |
-| Deleting  | beforeDelete |         Yes         | Runs before the delete operation is made |
+| عملیات   | نام          | میتواند متوقف کند؟ | توضیح                                    |
+| -------- | ------------ |:------------------:| ---------------------------------------- |
+| Deleting | afterDelete  |         نه         | Runs after the delete operation was made |
+| Deleting | beforeDelete |        بله         | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1757,7 +1757,7 @@ Model::setup(
 
 The available options are:
 
-| Option                | Description                                                                               | Default |
+| گزینه                 | توضیحات                                                                                   | Default |
 | --------------------- | ----------------------------------------------------------------------------------------- |:-------:|
 | astCache              | Enables/Disables callbacks, hooks and event notifications from all the models             | `null`  |
 | cacheLevel            | Sets the cache level for the ORM                                                          |   `3`   |
@@ -1781,7 +1781,7 @@ The available options are:
 
 <div class="alert alert-warning">
     <p>
-        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. This will add some additional overhead to your application. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
+        <strong>NOTE</strong> <code>Phalcon\Mvc\Model::assign()</code> (which is used also when creating/updating/saving model) is always using setters if they exist when have data arguments passed, even when it's required or necessary. این به برنامه اضافه شده شما اضافه می شود. You can change this behavior by adding <code>phalcon.orm.disable_assign_setters = 1</code> to your ini file, it will just simply use <code>$this->property = value</code>.
     </p>
 </div>
 

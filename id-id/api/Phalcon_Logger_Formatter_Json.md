@@ -10,20 +10,20 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
-Formats messages using JSON encoding
+Format pesan menggunakan pengkodean JSON
 
-## Methods
+## Metode
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Menerapkan format ke pesan sebelum mengirimnya ke log internal
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Returns the string meaning of a logger constant
+Mengembalikan arti string dari konstanta logger
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpolates context values into the message placeholders
+Interpolasi nilai konteks ke dalam placeholder pesan

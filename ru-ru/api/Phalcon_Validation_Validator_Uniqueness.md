@@ -98,7 +98,7 @@ $validator->add(
 
 ```
 
-## Methods
+## Методы
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

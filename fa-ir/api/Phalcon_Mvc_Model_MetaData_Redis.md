@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Redis'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/redis.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/redis.zep)
 
 Stores model meta-data in the Redis.
 
@@ -34,7 +34,7 @@ $metaData = new Redis(
 
 ```
 
-## Constants
+## ثابت ها
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -68,13 +68,13 @@ $metaData = new Redis(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## روش ها
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 Phalcon\Mvc\Model\MetaData\Redis constructor
 
-public **read** (*mixed* $key)
+عمومی **خواندن** (*مخلوط* $key)
 
 Reads metadata from Redis
 

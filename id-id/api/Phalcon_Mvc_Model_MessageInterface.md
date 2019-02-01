@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Model\MessageInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setType** (*mixed* $type)
+abstract umum **Jenisaturan** (*bentuk*$type)
 
 ...
 
@@ -18,26 +18,26 @@ abstract public **getType** ()
 
 ...
 
-abstract public **setMessage** (*mixed* $message)
+abstrak publik **mendapatkan Pesan** (*campur* $message)
 
 ...
 
-abstract public **getMessage** ()
+abstrak publik **getMessage** ()
 
 ...
 
-abstract public **setField** (*mixed* $field)
+abstrak publik **mendapatkan Bidang** (*campur* $field)
 
 ...
 
-abstract public **getField** ()
+public abstrak **getField** ()
 
 ...
 
-abstract public **__toString** ()
+publik abstrak **__toString** ()
 
 ...
 
-abstract public static **__set_state** (*array* $message)
+abstrak public static ** __ set_state** (*array* $message)
 
 ...

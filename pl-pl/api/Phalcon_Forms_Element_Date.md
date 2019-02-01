@@ -10,7 +10,7 @@ title: 'Phalcon\Forms\Element\Date'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
 
 Component INPUT[type=date] for forms
 
@@ -130,7 +130,7 @@ Returns the messages that belongs to the element The element needs to be attache
 
 public **hasMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Checks whether there are messages attached to the element
+Sprawdza, czy są wiadomości przyczepione do tego elementu
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 

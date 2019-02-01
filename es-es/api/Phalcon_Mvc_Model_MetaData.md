@@ -69,11 +69,11 @@ Initialize the metadata for certain table
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 public **getDI** ()
 
-Returns the DependencyInjector container
+Devuelve el contenedor DependencyInjector
 
 public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy)
 

@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Events Manager
+# Управление событиями
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 
-## Naming Convention
+## Соглашения об именах
 
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
@@ -50,10 +50,10 @@ $connection = new DbAdapter(
     ]
 );
 
-// Assign the eventsManager to the db adapter instance
+// Слушать все события из БД
 $connection->setEventsManager($eventsManager);
 
-// Send a SQL command to the database server
+// Отправить команду SQL на сервер БД
 $connection->query(
     'SELECT * FROM products p WHERE p.status = 1'
 );
@@ -153,7 +153,7 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 <a name='components-that-trigger-events'></a>
 
-## Creating components that trigger Events
+## Создание компонентов, которые инициируют события
 
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
@@ -278,7 +278,7 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 
-## Using Services From The DI
+## Использование сервиса из DI
 
 By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
 
@@ -312,7 +312,7 @@ class SomeListener extends Plugin
 
 <a name='propagation-cancellation'></a>
 
-## Event Propagation/Cancellation
+## Распространение/Отмена события
 
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
@@ -345,7 +345,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 <a name='listener-priorities'></a>
 
-## Listener Priorities
+## Приоритеты подписчика
 
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
@@ -361,7 +361,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 
 <a name='collecting-responses'></a>
 
-## Collecting Responses
+## Подписка на ответы
 
 The events manager can collect every response returned by every notified listener. This example explains how it works:
 
@@ -406,7 +406,7 @@ The above example produces:
 
 <a name='custom'></a>
 
-## Implementing your own EventsManager
+## Реализация собственных EventsManager
 
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
@@ -512,11 +512,11 @@ The events available in Phalcon are:
 | Router             | `router:notMatchedRoute`             |
 | Router             | `router:afterCheckRoutes`            |
 | Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
+| Представления      | `view:afterRender`                   |
+| Представления      | `view:afterRenderView`               |
+| Представления      | `view:beforeRender`                  |
+| Представления      | `view:beforeRenderView`              |
+| Представления      | `view:notFoundView`                  |
 | Volt               | `compileFilter`                      |
 | Volt               | `compileFunction`                    |
 | Volt               | `compileStatement`                   |

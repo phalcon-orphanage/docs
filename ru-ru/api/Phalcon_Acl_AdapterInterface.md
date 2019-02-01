@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\AdapterInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setDefaultAction** (*mixed* $defaultAccess)
 

@@ -6,9 +6,9 @@ title: 'Phalcon\Validation\ValidatorInterface'
 ---
 # Interface **Phalcon\Validation\ValidatorInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **hasOption** (*mixed* $key)
 

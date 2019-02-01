@@ -8,9 +8,9 @@ title: 'Phalcon\Cli\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
+Phalcon\Cli\Router is the standard framework router. Yönlendirme, komut satırı bağımsız değişkenlerini alma ve bu görevi hangi modül, görev ve eylemin gerçekleştireceğini belirlemek için parametrelere bölme işlemidir
 
 ```php
 <?php
@@ -29,7 +29,7 @@ echo $router->getTaskName();
 
 ```
 
-## Methods
+## Metodlar
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -37,7 +37,7 @@ Phalcon\Cli\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** ()
 
@@ -45,15 +45,15 @@ Returns the internal dependency injector
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Sets the name of the default module
+Varsayılan modülün ismini ayarlar
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Sets the default controller name
+Varsayılan denetleyici ismini ayarlar
 
 public **setDefaultAction** (*mixed* $actionName)
 
-Sets the default action name
+Varsayılan eylem ismini ayarlar
 
 public **setDefaults** (*array* $defaults)
 
@@ -73,11 +73,11 @@ $router->setDefaults(
 
 public **handle** ([*array* $arguments])
 
-Handles routing information received from command-line arguments
+Komut satırı argümanlarından alınan yönlendirme bilgilerini yönetir
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
-Adds a route to the router
+Yönelticiye bir rota ekler
 
 ```php
 <?php
@@ -88,40 +88,40 @@ $router->add("/about", "About::main");
 
 public **getModuleName** ()
 
-Returns processed module name
+Işlenen modül adını getirir
 
 public **getTaskName** ()
 
-Returns processed task name
+İşlenmiş görevin ismini döndürür
 
 public **getActionName** ()
 
-Returns processed action name
+İşlenen eylem adını getirir
 
 public *array* **getParams** ()
 
-Returns processed extra params
+İşlenen ek parametreleri getirir
 
 public **getMatchedRoute** ()
 
-Returns the route that matches the handled URI
+İşlenen URI ile eşleşen yolu getirir
 
 public *array* **getMatches** ()
 
-Returns the sub expressions in the regular expression matched
+Eşleşen düzenli ifadedeki alt ifadeleri geri getirir
 
 public **wasMatched** ()
 
-Checks if the router matches any of the defined routes
+Yönlendiricinin tanımlanmış rotalardan herhangi biriyle eşleşip eşleşmediğini kontrol eder
 
 public **getRoutes** ()
 
-Returns all the routes defined in the router
+Yönlendiricide tanımlanan tüm rotaları getir
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
-Returns a route object by its id
+Bir güzergah nesnesini onun kimliğiyle geri döndürür
 
 public **getRouteByName** (*mixed* $name)
 
-Returns a route object by its name
+Bir güzergah nesnesini onun ismiyle geri döndürür

@@ -29,27 +29,27 @@ $robots = Robots::query()
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 public **getDI** ()
 
-Returns the DependencyInjector container
+Devuelve el contenedor DependencyInjector
 
 public **setModelName** (*mixed* $modelName)
 
-Set a model on which the query will be executed
+Establece un modelo en el que se ejecutará la consulta
 
 public **getModelName** ()
 
-Returns an internal model name on which the criteria will be applied
+Devuelve un nombre de modelo interno en el que los criterios serán aplicados
 
 public **bind** (*array* $bindParams, [*mixed* $merge])
 
-Sets the bound parameters in the criteria This method replaces all previously set bound parameters
+Establece los parámetros enlazados en los criterios Este método reemplaza todos los parámetros vinculados establecidos previamente
 
 public **bindTypes** (*array* $bindTypes)
 
-Sets the bind types in the criteria This method replaces all previously set bound parameters
+Establece los tipos de enlace en los criterios Este método reemplaza todos los parámetros vinculados establecidos previamente
 
 public **distinct** (*mixed* $distinct)
 
@@ -57,7 +57,7 @@ Sets SELECT DISTINCT / SELECT ALL flag
 
 public [Phalcon\Mvc\Model\Criteria](Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
 
-Sets the columns to be queried
+Establece las columnas que se consultarán
 
 ```php
 <?php
@@ -122,15 +122,15 @@ $criteria->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Sets the conditions parameter in the criteria
+Establece el parámetro de condiciones en los criterios
 
 public **addWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an AND operator (deprecated)
+Agrega una condición a las condiciones actuales usando un operador AND (obsoleto)
 
 public **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an AND operator
+Agrega una condición a las condiciones actuales usando un operador AND
 
 public **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 

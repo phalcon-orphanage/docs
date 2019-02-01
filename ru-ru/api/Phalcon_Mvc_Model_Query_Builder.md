@@ -50,7 +50,7 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Методы
 
 public **__construct** ([*mixed* $params], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 

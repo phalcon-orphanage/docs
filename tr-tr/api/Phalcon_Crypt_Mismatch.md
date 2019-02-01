@@ -10,17 +10,17 @@ title: 'Phalcon\Crypt\Mismatch'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
 
-## Methods
+## Metodlar
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clone the exception
+Olağandışılığı çoğalt
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Exception constructor
+Olağandışılık oluşturucu
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -28,32 +28,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+Özel durum mesajını getirir
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+İstisna kodunu alır
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+İstisnanın oluştuğu dosyayı alır
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+İstisnanın oluştuğu satırı alır
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+Yığın izni alır
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+Önceki istisna döndürür
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+Bir dize olarak yığın izni alır
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+İstisnai dize gösterimi

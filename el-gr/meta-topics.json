@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Εισαγωγή",
                 "url": "/introduction"
             },
             {
@@ -48,7 +48,7 @@
             },
             {
                 "text": "Περιβάλλον tests",
-                "url": "testing-environment"
+                "url": "/testing-environment"
             }
         ]
     },
@@ -79,16 +79,8 @@
         "url": "",
         "menu": [
             {
-                "text": "Phalcon Compose (Docker)",
-                "url": "/environments-docker"
-            },
-            {
                 "text": "Nanobox",
                 "url": "/environments-nanobox"
-            },
-            {
-                "text": "Phalcon κουτί (Vagrant)",
-                "url": "/environments-vagrant"
             }
         ]
     },
@@ -135,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             }
         ]
@@ -192,7 +184,7 @@
             },
             {
                 "text": "Logging",
-                "url": "/logging"
+                "url": "/logger"
             },
             {
                 "text": "Ουρά",
@@ -217,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Μοντέλα",
                 "url": "/db-models"
             },
             {
@@ -283,7 +275,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -305,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Ελεγκτές",
                 "url": "/controllers"
             },
             {
@@ -317,11 +309,11 @@
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Φίλτρα",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Δρομολόγηση",
                 "url": "/routing"
             },
             {
@@ -357,7 +349,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Ασφάλεια",
         "url": "",
         "menu": [
             {
@@ -365,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Ασφάλεια",
                 "url": "/security"
             }
         ]

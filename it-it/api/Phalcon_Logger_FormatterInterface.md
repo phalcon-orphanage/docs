@@ -6,9 +6,9 @@ title: 'Phalcon\Logger\FormatterInterface'
 ---
 # Interface **Phalcon\Logger\FormatterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context])
 

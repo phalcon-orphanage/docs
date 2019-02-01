@@ -10,10 +10,10 @@ title: 'Phalcon\Assets\Filters\None'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
 
-Returns the content without make any modification to the original source
+Devuelve el contenido sin hacer ninguna modificación a la fuente original
 
 ## Métodos
 
 public **filter** (*mixed* $content)
 
-Returns the content without be touched
+Devuelve el contenido sin ser tocado

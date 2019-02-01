@@ -16,11 +16,11 @@ This class is a bag to manage the cookies A cookies bag is automatically registe
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 

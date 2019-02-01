@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Application'
+title: 'Phalcon\Aplikasi'
 ---
 # Abstract class **Phalcon\Application**
 
@@ -10,11 +10,11 @@ title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Methods
+## Metode
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -22,15 +22,15 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Menyetel pengelola acara
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Register an array of modules present in the application
+Daftarkan sebuah array modul yang ada dalam aplikasi
 
 ```php
 <?php
@@ -52,32 +52,32 @@ $this->registerModules(
 
 public **getModules** ()
 
-Return the modules registered in the application
+Kembalikan modul yang terdaftar dalam aplikasi
 
 public **getModule** (*mixed* $name)
 
-Gets the module definition registered in the application via module name
+Mendapat definisi modul yang terdaftar dalam aplikasi melalui nama modul
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Sets the module name to be used if the router doesn't return a valid module
+Menetapkan nama modul yang akan digunakan jika router tidak mengembalikan modul yang valid
 
 public **getDefaultModule** ()
 
-Returns the default module name
+Mengembalikan nama modul default
 
-abstract public **handle** ()
+publik abstrak **menangani** ()
 
-Handles a request
+Menangani permintaan
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Metode __get

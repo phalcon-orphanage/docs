@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# MVC Applications
+# Aplikasi MVC
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -21,7 +21,7 @@ use Phalcon\Mvc\Application;
 // Register autoloaders
 // ...
 
-// Register services
+// layanan pendaftaran
 // ...
 
 // Handle the request
@@ -46,7 +46,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## Manual bootstrapping
+## Perangkap manual boot
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -101,6 +101,8 @@ $response->setContent(
 
 // Send the response
 $response->send();
+ 
+Context | Request Context;
 ```
 
 The following replacement of [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) lacks of a view component making it suitable for Rest APIs:
@@ -200,13 +202,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## Single or Multi Module Applications
+## Aplikasi tunggal atau multi modul
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Single Module
+### Modul tunggal
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -330,27 +332,29 @@ try {
 
 <a name='module'></a>
 
-### Multi Module
+### Modul Multi
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
 ```php
-multiple/
-  apps/
-    frontend/
-       controllers/
-       models/
-       views/
-       Module.php
-    backend/
-       controllers/
-       models/
-       views/
-       Module.php
-  public/
-    css/
-    img/
-    js/
+beberapa /
+  aplikasi /
+    paling depan/
+       pengendali /
+       model /
+       pandangan /
+       Module.php
+    backend /
+       pengendali /
+       model /
+       pandangan /
+       Module.php
+  publik/
+    css /
+    img /
+    js /
+ 
+Konteks | Permintaan Konteks
 ```
 
 Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
@@ -505,6 +509,8 @@ $view = new View();
 
 // Set options to view component
 // ...
+ 
+Context | Request Context...
 
 // Register the installed modules
 $application->registerModules(
@@ -537,27 +543,27 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Application Events
+## Acara Aplikasi
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Acara berikut didukung:
 
-| Event Name            | Triggered                                                    |
-| --------------------- | ------------------------------------------------------------ |
-| `boot`                | Executed when the application handles its first request      |
-| `beforeStartModule`   | Before initialize a module, only when modules are registered |
-| `afterStartModule`    | After initialize a module, only when modules are registered  |
-| `beforeHandleRequest` | Before execute the dispatch loop                             |
-| `afterHandleRequest`  | After execute the dispatch loop                              |
+| Acara nama                      | Pemicu                                                     |
+| ------------------------------- | ---------------------------------------------------------- |
+| `boot`                          | Dilaksanakan saat aplikasi menangani permintaan pertamanya |
+| `sebelum memulai modul`         | Sebelum menginisialisasi modul, hanya saat modul terdaftar |
+| `setelah memulai modul`         | Setelah menginisialisasi modul, hanya saat modul terdaftar |
+| `permintaan sebelum penanganan` | Sebelum menjalankan loop pengiriman                        |
+| `permintaan setelah penanganan` | Setelah menjalankan loop pengiriman                        |
 
-The following example demonstrates how to attach listeners to this component:
+Contoh berikut menunjukkan bagaimana cara melampirkan pendengar ke komponen ini:
 
 ```php
 <?php
 
-use Phalcon\Events\Event;
-use Phalcon\Events\Manager as EventsManager;
+gunakan Phalcon\Events\Event;
+gunakan Phalcon\Events\Manager sebagai EventsManager;
 
-$eventsManager = new EventsManager();
+$eventsManager = EventsManager baru();
 
 $application->setEventsManager($eventsManager);
 
@@ -571,6 +577,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## External Resources
+## Sumber Eksternal
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)

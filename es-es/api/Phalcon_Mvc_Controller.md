@@ -12,9 +12,9 @@ title: 'Phalcon\Mvc\Controller'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
 
-Every application controller should extend this class that encapsulates all the controller functionality
+Cada controlador de aplicación debe extender esta clase que encapsula toda la funcionalidad del controlador
 
-The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.
+El controlador proporciona el "flujo" entre modelos y vistas. Los controladores son responsables de procesar las solicitudes entrantes del navegador web, solicitar información a los modelos y pasar esa información a las vistas para su presentación.
 
 ```php
 <?php
@@ -56,15 +56,15 @@ Phalcon\Mvc\Controller constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

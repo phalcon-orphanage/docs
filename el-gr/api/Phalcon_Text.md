@@ -180,7 +180,7 @@ echo Phalcon\Text::dynamic("[Hi/Hello], my name is a [Zyxep/Mark]!", "[", "]", "
 
 public static **underscore** (*mixed* $text)
 
-Makes a phrase underscored instead of spaced
+Κάνει μια φράση υπογράμμιση των αντί διαστημάτων
 
 ```php
 <?php

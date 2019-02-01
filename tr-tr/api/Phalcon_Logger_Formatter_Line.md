@@ -10,27 +10,27 @@ title: 'Phalcon\Logger\Formatter\Line'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
-Formats messages using an one-line string
+Mesajları bir satırlık dize kullanarak şekillendirir
 
-## Methods
+## Metodlar
 
 public **getDateFormat** ()
 
-Default date format
+Varsayılan tarih şekli
 
 public **setDateFormat** (*mixed* $dateFormat)
 
-Default date format
+Varsayılan tarih şekli
 
 public **getFormat** ()
 
-Format applied to each message
+Bütün mesajlara uygulanan biçim
 
 public **setFormat** (*mixed* $format)
 
-Format applied to each message
+Bütün mesajlara uygulanan biçim
 
 public **__construct** ([*string* $format], [*string* $dateFormat])
 
@@ -38,11 +38,11 @@ Phalcon\Logger\Formatter\Line construct
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Dahili sistem günlüğüne göndermeden önce mesaja format uygular
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Returns the string meaning of a logger constant
+Günlükçü sabitinin dize anlamını döndürür
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 

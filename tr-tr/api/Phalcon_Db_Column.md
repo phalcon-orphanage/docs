@@ -8,9 +8,9 @@ title: 'Phalcon\Db\Column'
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
-Allows to define columns to be used on create or alter table operations
+Tablo işlemlerini yaratırken ya da değiştirirken kullanılacak sütunları tanımlamaya imkan verir
 
 ```php
 <?php
@@ -35,7 +35,7 @@ $connection->addColumn("robots", null, $column);
 
 ```
 
-## Constants
+## Sabitler
 
 *integer* **TYPE_INTEGER**
 
@@ -87,39 +87,39 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methods
+## Metodlar
 
-public **getName** ()
+herkese açık ** isim al** ()
 
-Column's name
+Sütunun ismi
 
 public **getSchemaName** ()
 
-Schema which table related is
+Tablo ile ilgili şema nedir
 
-public **getType** ()
+genel **getType** ()
 
-Column data type
+Sütun veri türü
 
 public **getTypeReference** ()
 
-Column data type reference
+Sütun veri türü başvurusu
 
 public **getTypeValues** ()
 
-Column data type values
+Sütun veri türü değerleri
 
 public **getSize** ()
 
-Integer column size
+Tamsayı sütun boyutu
 
 public **getScale** ()
 
-Integer column number scale
+Tamsayı sütun sayısı ölçeği
 
 public **getDefault** ()
 
-Default column value
+Varsayılan sütun değeri
 
 public **__construct** (*mixed* $name, *array* $definition)
 
@@ -127,35 +127,35 @@ Phalcon\Db\Column constructor
 
 public **isUnsigned** ()
 
-Returns true if number column is unsigned
+Eğer sayı sütununda imzalanmamışsa aslına döndürür
 
 public **isNotNull** ()
 
-Not null
+Boş değil
 
 public **isPrimary** ()
 
-Column is part of the primary key?
+Sütun birincil anahtarın bir bölümü müdür?
 
 public **isAutoIncrement** ()
 
-Auto-Increment
+Otomatik-Artış
 
 public **isNumeric** ()
 
-Check whether column have an numeric type
+Sütunun sayısal bir türe sahip olup olmadığını kontrol edin
 
 public **isFirst** ()
 
-Check whether column have first position in table
+Sütunun tabloda ilk konumda olup olmadığını kontrol edin
 
 public *string* **getAfterPosition** ()
 
-Check whether field absolute to position in table
+Tablo konumun mutlak alanda olup olmadığını kontrol edin
 
 public **getBindType** ()
 
-Returns the type of bind handling
+Bağlama işlemenin türünü döndürür
 
 public static **__set_state** (*array* $data)
 
@@ -163,4 +163,4 @@ Restores the internal state of a Phalcon\Db\Column object
 
 public **hasDefault** ()
 
-Check whether column has default value
+Sütununun varsayılan değer olup olmadığını kontrol edin

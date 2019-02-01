@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Resource'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Represents an asset resource
+Representa un recurso activo
 
 ```php
 <?php
@@ -49,52 +49,52 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-Sets the resource's type
+Establece el tipo de recursos
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+Establece la ruta del recurso
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+Establece si el recurso es local o externo
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+Establece si el recurso debe ser filtrado o no
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Establece los atributos HTML extras
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+Establece un identificador uri de destino para el HTML generado
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+Establece la ruta de origen del recurso
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+Establece la ruta del objetivo del recurso
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Devuelve el contenido del recurso como una cadena Opcionalmente, se puede establecer una ruta base donde se encuentra localizado el recurso
 
 public **getRealTargetUri** ()
 
-Returns the real target uri for the generated HTML
+Devuelve el objetivo real uri para el HTML generado
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+Devuelve la ubicación completa donde se encuentra localizado el recurso
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+Devuelve la ubicación completa donde el recurso debe ser escrito
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+Obtiene la llave del recurso.

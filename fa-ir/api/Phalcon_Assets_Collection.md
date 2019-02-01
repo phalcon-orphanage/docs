@@ -8,29 +8,29 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-Represents a collection of resources
+مجموعه ای از منابع را نشان می دهد
 
-## Methods
+## روش ها
 
-public **getPrefix** ()
-
-...
-
-public **getLocal** ()
+عمومی **دریافت پیشوند** ()
 
 ...
 
-public **getResources** ()
+عمومی **دریافت محلی** ()
 
 ...
 
-public **getCodes** ()
+عمومی **دریافت منابع** ()
 
 ...
 
-public **getPosition** ()
+عمومی **دریافت نام** ()
+
+...
+
+عمومی **دریافت موقعیت** ()
 
 ...
 
@@ -62,7 +62,7 @@ public **getSourcePath** ()
 
 ...
 
-public **__construct** ()
+عمومی **__ ساخت** ()
 
 Phalcon\Assets\Collection constructor
 
@@ -107,13 +107,13 @@ public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attribute
 
 Adds an inline javascript to the collection
 
-public **count** ()
+عمومی **تعداد** ()
 
 Returns the number of elements in the form
 
-public **rewind** ()
+عمومی **بازخوانی** ()
 
-Rewinds the internal iterator
+تکرارکننده داخلی را باز می کند
 
 public **current** ()
 
@@ -121,13 +121,13 @@ Returns the current resource in the iterator
 
 public *int* **key** ()
 
-Returns the current position/key in the iterator
+موقعیت/کلید فعلی را در تکرار بازگرداند
 
-public **next** ()
+عمومی **بعدی** ()
 
-Moves the internal iteration pointer to the next position
+اشاره گر تکرار داخلی را به موقعیت بعدی حرکت می دهد
 
-public **valid** ()
+عمومی **معتبر** ()
 
 Check if the current element in the iterator is valid
 
@@ -137,44 +137,44 @@ Sets the target path of the file for the filtered/join output
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets a base source path for all the resources in this collection
+مسیر اصلی منبع را برای تمام منابع موجود در این مجموعه تعیین می کند
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+مجموعه هدف uri را برای HTML ایجاد می کند
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a common prefix for all the resources
+پیشوند مشترک برای تمام منابع را تنظیم می کند
 
 public **setLocal** (*mixed* $local)
 
-Sets if the collection uses local resources by default
+مجموعه ای از کلکسیون به طور پیش فرض از منابع محلی استفاده می کند
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+ویژگی های HTML اضافی را تعیین می کند
 
 public **setFilters** (*array* $filters)
 
-Sets an array of filters in the collection
+مجموعهای از فیلترهای مجموعه را تنظیم می کند
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Sets the target local
+هدف محلی مجموعه
 
 public **join** (*mixed* $join)
 
-Sets if all filtered resources in the collection must be joined in a single result file
+تعیین می کند که آیا تمام منابع فیلتر شده در مجموعه باید در یک فایل نتیجه یکپارچه شوند
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Returns the complete location where the joined/filtered collection must be written
+مکان کامل جایی که مجموعه مجموعه پیوسته/فیلتر شده باید نوشته شود را نشان می دهد
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface) $filter)
 
-Adds a filter to the collection
+یک فیلتر را به مجموعه اضافه می کند
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Adds a resource or inline-code to the collection
+یک منبع یا کد درون خطی را به مجموعه اضافه می کند

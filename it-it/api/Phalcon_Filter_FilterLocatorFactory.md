@@ -4,14 +4,16 @@ language: 'it-it'
 version: '4.0'
 title: 'Phalcon\Filter\FilterLocatorFactory'
 ---
-# Class **Phalcon\Filter\FilterLocatorFactory**
+# Class [Phalcon\Filter\FilterLocatorFactory](Phalcon_Filter_FilterLocatorFactory)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocatorfactory.zep)
+**implements** [Phalcon\Service\LocatorFactoryInterface](Phalcon_Service_LocatorFactoryInterface)
 
-## Methods
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocatorfactory.zep)
+
+### Metodi
 
 ```php
-public function newInstance(): [LocatorInterface](Phalcon_Service_LocatorInterface);
+public function newInstance(): \Phalcon\Service\LocatorInterface
 ```
 
-New instance of the locator
+Returns a Locator object with all the helpers defined in anonymous functions

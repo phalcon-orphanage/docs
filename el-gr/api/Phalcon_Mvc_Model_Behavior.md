@@ -30,4 +30,4 @@ This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $method, [*array* $arguments])
 
-Acts as fallbacks when a missing method is called on the model
+Λειτουργεί που λείπει αναστροφή όταν καλείται μια μέθοδος ως στο μοντέλο

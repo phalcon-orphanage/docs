@@ -44,7 +44,7 @@ $di->setShared(
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Методы
 
 public **addResource** (*mixed* $handler, [*mixed* $prefix])
 

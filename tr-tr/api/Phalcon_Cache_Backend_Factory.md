@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Backend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
 
-Loads Backend Cache Adapter class using 'adapter' option, if frontend will be provided as array it will call Frontend Cache Factory
+Backend Cache Adapter sınıf'ı 'adapter' seçeneğiyle yüklenir, eğer ön yüz ok olarak sağlanırsa bu 'Fronted Cache Factory' olarak adlandırılır
 
 ```php
 <?php
@@ -29,7 +29,7 @@ $backendCache = Factory::load($options);
 
 ```
 
-## Methods
+## Metodlar
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 

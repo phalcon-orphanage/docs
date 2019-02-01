@@ -416,7 +416,7 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 The events available in Phalcon are:
 
-| Component           | Event                                |
+| Component           | Γεγονός                              |
 | ------------------- | ------------------------------------ |
 | ACL                 | `acl:afterCheckAccess`               |
 | ACL                 | `acl:beforeCheckAccess`              |

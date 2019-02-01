@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Regex'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\رگیکس'
 ---
 # Class **Phalcon\Validation\Validator\Regex**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Regex'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
 Allows validate if the value of a field matches a regular expression
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

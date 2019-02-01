@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\Model'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 
@@ -31,7 +31,7 @@ $paginate = $paginator->getPaginate();
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** (*array* $config)
 
@@ -39,16 +39,16 @@ Phalcon\Paginator\Adapter\Model constructor
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Mengembalikan sepotong hasil untuk ditampilkan dalam pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set the current page number
+Setel nomor halaman saat ini
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Set current rows limit
+Tetapkan batas baris saat ini
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Get current rows limit
+Dapatkan batas baris sekarang

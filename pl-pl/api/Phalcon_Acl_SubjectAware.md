@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\SubjectAware'
 ---
 # Interface **Phalcon\Acl\SubjectAware**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectaware.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectaware.zep)
 
 ## Metody
 

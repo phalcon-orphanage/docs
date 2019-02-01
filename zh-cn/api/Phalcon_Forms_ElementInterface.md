@@ -130,6 +130,6 @@ abstract public **clear** ()
 
 ...
 
-abstract public **render** ([*mixed* $attributes])
+abstract public **render** ([*mixed* $attributes])\
 
 ...

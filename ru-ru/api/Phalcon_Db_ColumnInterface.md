@@ -8,7 +8,7 @@ title: 'Phalcon\Db\ColumnInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
-## Methods
+## Методы
 
 abstract public **getSchemaName** ()
 

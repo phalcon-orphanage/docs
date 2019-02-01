@@ -36,16 +36,16 @@ print_r($dataTypes);
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| Adapter      | Description                                                                                                                                                                                                                                                                                                              | API                                                                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                 | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
-| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
-| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
-| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production)                                                                                                                           | `Phalcon\Mvc\Model\MetaData\MEmcache`                                                  |
-| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
-| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. The server parameters as well as the cache lifetime are specified in the options. (Recommended for Production).                                                                                                                                | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
-| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
-| XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. You can specify the lifetime of the metadata with options. This is one of the recommended ways to store metadata when the application is in production.                                                                            | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
+| Adaptor      | Deskripsi                                                                                                                                                                                                                                                                                                     | API                                                                                        |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. Anda dapat menentukan seumur hidup metadata dengan opsi. (Disarankan untuk Produksi).                                                                                         | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
+| File         | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                         | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
+| Libmemcached | Adaptor ini menggunakan [Memcached Server](https://www.memcached.org/) untuk menyimpan metadata tabel. Parameter server dan juga masa pakai cache ditentukan dalam pilihan. (Disarankan untuk Produksi)                                                                                                       | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
+| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. Anda dapat menentukan seumur hidup metadata dengan opsi. (Disarankan untuk Produksi)                                                                                                                   | `Phalcon\Mvc\Model\MetaData\MEmcache`                                                  |
+| Memory       | Adaptor ini adalah defaultnya. Metadata hanya di-cache selama permintaan. Saat permintaan selesai, metadata dilepaskan sebagai bagian dari memori normal permintaan. (Disarankan untuk pengembangan)                                                                                                          | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
+| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. Parameter server dan juga masa pakai cache ditentukan dalam pilihan. (Disarankan untuk Produksi).                                                                                                                                   | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
+| Session      | Adaptor ini menyimpan metadata di superglobal `$_SESSION`. Adaptor ini hanya disarankan bila aplikasi benar-benar menggunakan sejumlah kecil model. Metadata disegarkan setiap kali sesi baru dimulai. Ini juga memerlukan penggunaan `session_start ()` untuk memulai sesi sebelum menggunakan model apapun. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
+| XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. Anda dapat menentukan seumur hidup metadata dengan opsi. Ini adalah salah satu cara yang disarankan untuk menyimpan metadata saat aplikasi dalam produksi.                                                              | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 
 As other ORM's dependencies, the metadata manager is requested from the services container:
 
@@ -69,7 +69,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='metadata-strategies'></a>
 
-## Metadata Strategies
+## Strategi Metadata
 
 As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
 
@@ -100,13 +100,13 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-database-introspection'></a>
 
-### Database Introspection Strategy
+### Strategi Introspeksi Database
 
 This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
 
 <a name='strategies-annotations'></a>
 
-### Annotations Strategy
+### Strategi Anotasi
 
 This strategy makes use of `annotations <annotations>` to describe the columns in a model:
 
@@ -145,20 +145,20 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Name     | Description                                       |
-| -------- | ------------------------------------------------- |
-| Primary  | Mark the field as part of the table's primary key |
-| Identity | The field is an auto_increment/serial column      |
-| Column   | This marks an attribute as a mapped column        |
+| Nama      | Deskripsi                                           |
+| --------- | --------------------------------------------------- |
+| Utama     | Tandai bidang sebagai bagian dari kunci utama tabel |
+| Identitas | Bidang adalah kolom auto_increment / serial         |
+| Kolom     | Ini menandai atribut sebagai kolom yang dipetakan   |
 
 The annotation `@Column` supports the following parameters:
 
-| Name                 | Description                                                                                                                                                                   |
+| Nama                 | Deskripsi                                                                                                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | column               | Real column name                                                                                                                                                              |
-| type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
-| length               | The column's length if any                                                                                                                                                    |
-| nullable             | Set whether the column accepts null values or not                                                                                                                             |
+| jenis                | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
+| panjang              | Panjang kolom jika ada                                                                                                                                                        |
+| nullable             | Tetapkan apakah kolom menerima nilai null atau tidak                                                                                                                          |
 | skip_on_insert     | Skip this column on insert                                                                                                                                                    |
 | skip_on_update     | Skip this column on updates                                                                                                                                                   |
 | allow_empty_string | Column allow empty strings                                                                                                                                                    |
@@ -192,7 +192,7 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 
-## Manual Metadata
+## Metadata manual
 
 Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
 
@@ -201,90 +201,81 @@ The developer also has the option of define the metadata manually. This strategy
 The following example shows how to define the metadata manually:
 
 ```php
-<?php
+& lt; ? php 
 
-use Phalcon\Mvc\Model;
-use Phalcon\Db\Column;
-use Phalcon\Mvc\Model\MetaData;
+menggunakan Phalcon \ Mvc \ Model; gunakan Phalcon \ Db \ Column; gunakan Phalcon \ Mvc \ Model \ MetaData; class Robots memanjang Model {
+     public function metaData ()
+     {
+         return array (
+             // Setiap kolom di tabel yang dipetakan
+             MetaData :: MODELS_ATTRIBUTES = & gt; [
+                 'id',
+                 'name',
+                 'type',
+                 'year',
+             ],
 
-class Robots extends Model
-{
-    public function metaData()
-    {
-        return array(
-            // Every column in the mapped table
-            MetaData::MODELS_ATTRIBUTES => [
-                'id',
-                'name',
-                'type',
-                'year',
-            ],
+             // Setiap kolom bagian dari primary key
+             MetaData :: MODELS_PRIMARY_KEY = & gt; [
+                 'id',
+             ],
 
-            // Every column part of the primary key
-            MetaData::MODELS_PRIMARY_KEY => [
-                'id',
-            ],
+             // Setiap kolom yang bukan merupakan bagian dari primary key
+             MetaData :: MODELS_NON_PRIMARY_KEY = & gt; [
+                 'name',
+                 'type',
+                            ],
 
-            // Every column that isn't part of the primary key
-            MetaData::MODELS_NON_PRIMARY_KEY => [
-                'name',
-                'type',
-                'year',
-            ],
+             // Setiap kolom yang tidak memungkinkan nilai null
+             MetaData :: MODELS_NOT_NULL = & gt; [
+                 'id',
+                 'name',
+                 'type',
+             ],
 
-            // Every column that doesn't allows null values
-            MetaData::MODELS_NOT_NULL => [
-                'id',
-                'name',
-                'type',
-            ],
+             // Setiap kolom dan tipe data mereka
+             MetaData :: MODELS_DATA_TYPES = & gt; [
+                 'id' = & gt; Kolom :: TYPE_INTEGER,
+                 'nama' = & gt; Kolom :: TYPE_VARCHAR,
+                 'type' = & gt; Kolom :: TYPE_VARCHAR,
+                 'year' = & gt; Kolom :: TYPE_INTEGER,
+             ],
 
-            // Every column and their data types
-            MetaData::MODELS_DATA_TYPES => [
-                'id'   => Column::TYPE_INTEGER,
-                'name' => Column::TYPE_VARCHAR,
-                'type' => Column::TYPE_VARCHAR,
-                'year' => Column::TYPE_INTEGER,
-            ],
+             // Kolom yang memiliki tipe data numerik
+             MetaData :: MODELS_DATA_TYPES_NUMERIC = & gt;                benar,
+                 'tahun' = & gt; true,
+             ],
 
-            // The columns that have numeric data types
-            MetaData::MODELS_DATA_TYPES_NUMERIC => [
-                'id'   => true,
-                'year' => true,
-            ],
+             // Kolom identitas, gunakan false boolean jika model tidak memiliki
+             // kolom identitas
+             MetaData :: MODELS_IDENTITY_COLUMN = & gt; 'id',
 
-            // The identity column, use boolean false if the model doesn't have
-            // an identity column
-            MetaData::MODELS_IDENTITY_COLUMN => 'id',
+             // Bagaimana setiap kolom harus diikat / dicor
+             MetaData :: MODELS_DATA_TYPES_BIND = & gt; [
+                 'id' = & gt; Kolom :: BIND_PARAM_INT,
+                 'nama' = & gt; Kolom :: BIND_PARAM_STR,
+                 'type' = & gt; Kolom :: BIND_PARAM_STR,
+                 'year' = & gt; Kolom :: BIND_PARAM_INT,
+             ],
 
-            // How every column must be bound/casted
-            MetaData::MODELS_DATA_TYPES_BIND => [
-                'id'   => Column::BIND_PARAM_INT,
-                'name' => Column::BIND_PARAM_STR,
-                'type' => Column::BIND_PARAM_STR,
-                'year' => Column::BIND_PARAM_INT,
-            ],
+                        MetaData :: MODELS_AUTOMATIC_DEFAULT_INSERT = & gt; [
+                 'year' = & gt; true,
+             ],
 
-            // Fields that must be ignored from INSERT SQL statements
-            MetaData::MODELS_AUTOMATIC_DEFAULT_INSERT => [
-                'year' => true,
-            ],
+             // Fields yang harus diabaikan dari statemen SQL UPDATE
+             MetaData :: MODELS_AUTOMATIC_DEFAULT_UPDATE = & gt; [
+                 'year' = & gt; true,
+             ],
 
-            // Fields that must be ignored from UPDATE SQL statements
-            MetaData::MODELS_AUTOMATIC_DEFAULT_UPDATE => [
-                'year' => true,
-            ],
+             // Nilai default untuk kolom
+             MetaData :: MODELS_DEFAULT_VALUES = & gt; [
+                 'year' = & gt; '2015',
+             ],
 
-            // Default values for columns
-            MetaData::MODELS_DEFAULT_VALUES => [
-                'year' => '2015',
-            ],
-
-            // Fields that allow empty strings
-            MetaData::MODELS_EMPTY_STRING_VALUES => [
-                'name' => true,
-            ],
-        );
-    }
-}
+             // Bidang yang memungkinkan string kosong
+             MetaData :: MODELS_EMPTY_STRING_VALUES = & gt; [
+                 'nama' = & gt; benar,
+             ],
+         );
+    
 ```

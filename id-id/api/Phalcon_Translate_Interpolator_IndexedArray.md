@@ -8,10 +8,10 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
-## Methods
+## Metode
 
-public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
+publik **replacePlaceholders** (*campuran* $translation, [*campuran* $placeholders])
 
-Replaces placeholders by the values passed
+Mengganti placeholder dengan nilai yang dilewatkan

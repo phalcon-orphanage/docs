@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Paginator\Factory'
+title: 'Phalcon\Peminat\Pabrik'
 ---
 # Class **Phalcon\Paginator\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Paginator\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/factory.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/factory.zep)
 
-Loads Paginator Adapter class using 'adapter' option
+Loads Paginator Adaptor kelas menggunakan opsi 'adaptor'
 
 ```php
 <?php
@@ -40,7 +40,7 @@ $paginator = Factory::load($options);
 
 ```
 
-## Methods
+## Metode
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 

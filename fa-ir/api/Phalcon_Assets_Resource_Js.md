@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Resource\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource/js.zep)
 
 Represents Javascript resources
 
-## Methods
+## روش ها
 
 public **__construct** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
@@ -42,27 +42,27 @@ public **getTargetUri** () inherited from [Phalcon\Assets\Resource](Phalcon_Asse
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's type
+نوع منبع را تعیین می کند
 
 public **setPath** (*mixed* $path) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets the resource's path
+مسیر منبع را تعیین می کند
 
 public **setLocal** (*mixed* $local) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource is local or external
+تعیین می کند که آیا منبع محلی است یا خارجی
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets if the resource must be filtered or not
+تعیین می کند که آیا منابع باید فیلتر شوند یا خیر
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets extra HTML attributes
+ویژگی های HTML اضافی را تعیین می کند
 
 public **setTargetUri** (*mixed* $targetUri) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Sets a target uri for the generated HTML
+مجموعه هدف uri را برای HTML ایجاد می کند
 
 public **setSourcePath** (*mixed* $sourcePath) inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
@@ -90,4 +90,4 @@ Returns the complete location where the resource must be written
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Resource](Phalcon_Assets_Resource)
 
-Gets the resource's key.
+کلید منبع را دریافت می کند.

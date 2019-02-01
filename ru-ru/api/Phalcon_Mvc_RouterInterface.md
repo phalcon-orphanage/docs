@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\RouterInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/routerinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setDefaultModule** (*mixed* $moduleName)
 

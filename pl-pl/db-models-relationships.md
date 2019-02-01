@@ -33,7 +33,7 @@ The bidirectional relations build relationships in both models and each model de
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
-| Metoda        | Description                |
+| Metoda        | Ious                       |
 | ------------- | -------------------------- |
 | hasMany       | Defines a 1-n relationship |
 | hasOne        | Defines a 1-1 relationship |
@@ -437,11 +437,11 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Typ              | Description                                                                                                                | Implicit Method |
+| Typ              | Ious                                                                                                                       | Implicit Method |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
+| Należy do        | Returns a model instance of the related record directly                                                                    | findFirst       |
 | Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
+| Ma wiele         | Returns a collection of model instances of the referenced model                                                            | find            |
 | Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
@@ -916,7 +916,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 ## Operations over Resultsets
 
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
+If a resultset is composed of complete objects, model operations can be performed on those objects. Na przykład:
 
 ```php
 <?php

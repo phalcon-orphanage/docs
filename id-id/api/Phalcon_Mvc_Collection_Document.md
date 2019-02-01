@@ -8,23 +8,23 @@ title: 'Phalcon\Mvc\Collection\Document'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/document.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/document.zep)
 
 This component allows Phalcon\Mvc\Collection to return rows without an associated entity. This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
 
-## Methods
+## Metode
 
 public *boolean* **offsetExists** (*int* $index)
 
-Checks whether an offset exists in the document
+Memeriksa apakah ada offset dalam dokumen
 
 public **offsetGet** (*mixed* $index)
 
-Returns the value of a field using the ArrayAccess interfase
+Mengembalikan nilai field menggunakan ArrayAccess interfase
 
 public **offsetSet** (*mixed* $index, *mixed* $value)
 
-Change a value using the ArrayAccess interface
+Ubah nilai menggunakan antarmuka ArrayAccess
 
 public **offsetUnset** (*string* $offset)
 
@@ -32,7 +32,7 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name
+Membaca nilai atribut dengan nama
 
 ```php
 <?php
@@ -43,7 +43,7 @@ Reads an attribute value by its name
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name
+Menulis nilai atribut dengan nama
 
 ```php
 <?php
@@ -54,4 +54,4 @@ Writes an attribute value by its name
 
 public *array* **toArray** ()
 
-Returns the instance as an array representation
+Mengembalikan instance sebagai representasi array

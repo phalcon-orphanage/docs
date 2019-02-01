@@ -6,15 +6,15 @@ title: 'Phalcon\Assets\ResourceInterface'
 ---
 # Interface **Phalcon\Assets\ResourceInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **setType** (*mixed* $type)
 
 ...
 
-abstract public **getType** ()
+genel özet **getType** ()
 
 ...
 

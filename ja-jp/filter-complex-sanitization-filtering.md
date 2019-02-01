@@ -9,6 +9,6 @@ category: 'filter'
 
 * * *
 
-## Complex Sanitizing and Filtering
+## 複雑なサニタイズとフィルタリング
 
 PHP itself provides an excellent filter extension you can use: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)

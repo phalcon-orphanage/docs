@@ -8,16 +8,16 @@ title: 'Phalcon\Mvc\Model\MetaData\Strategy\Introspection'
 
 *implements* [Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
 
-Queries the table meta-data in order to introspect the model's metadata
+Queries pada daftar meta-data dalam pengenalan model pesanan metadata
 
-## Methods
+## Metode
 
 final public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-The meta-data is obtained by reading the column descriptions from the database information schema
+Meta-data diperoleh dengan membaca deskripsi kolom dari skema informasi database
 
 final public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Read the model's column map, this can't be inferred
+Baca peta kolom model, ini tidak dapat disimpulkan

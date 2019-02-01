@@ -14,7 +14,7 @@ title: 'Phalcon\Cli\Console'
 
 This component allows to create CLI applications using Phalcon
 
-## Methods
+## Методы
 
 public **addModules** (*array* $modules)
 

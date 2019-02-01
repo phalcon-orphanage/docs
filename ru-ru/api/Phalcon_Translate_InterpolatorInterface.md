@@ -8,7 +8,7 @@ title: 'Phalcon\Translate\InterpolatorInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolatorinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 

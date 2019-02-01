@@ -6,15 +6,15 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-This class represents every route added to the router
+Yönlendiriciye eklenen her yolu bu sınıf temsil eder
 
-## Constants
+## Sabitler
 
 *string* **DEFAULT_DELIMITER**
 
-## Methods
+## Metodlar
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
@@ -22,23 +22,23 @@ Phalcon\Cli\Router\Route constructor
 
 public **compilePattern** (*mixed* $pattern)
 
-Replaces placeholders from pattern returning a valid PCRE regular expression
+Geçeri bir PCRE düzenli ifadesi dönen kalıptaki yer tutucuları değiştirir
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
-Extracts parameters from a string
+Parametreleri bir dizeden ayıklama yapar
 
 public **reConfigure** (*string* $pattern, [*array* $paths])
 
-Reconfigure the route adding a new pattern and a set of paths
+Yeni bir kalıp ve bir dizi yol ekleyerek rotayı yeniden yapılandırır
 
-public **getName** ()
+herkese açık ** isim al** ()
 
-Returns the route's name
+Rotanın ismini döndürür
 
 public **setName** (*mixed* $name)
 
-Sets the route's name
+Rota adını ayarlar
 
 ```php
 <?php
@@ -58,7 +58,7 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public *mixed* **getBeforeMatch** ()
 
-Returns the 'before match' callback if any
+Eğer var ise 'maç öncesi' geri çağırmayı döndürür
 
 public **getRouteId** ()
 
@@ -66,36 +66,36 @@ Returns the route's id
 
 public **getPattern** ()
 
-Returns the route's pattern
+Rotanın desenini geri döndürür
 
 public **getCompiledPattern** ()
 
-Returns the route's compiled pattern
+Rotanın düzenlenmiş desenin geri döndürür
 
 public **getPaths** ()
 
-Returns the paths
+Yolları döndürür
 
 public **getReversedPaths** ()
 
-Returns the paths using positions as keys and names as values
+Pozisyonları anahtar ve isimleri değerler olarak kullanarak yolları geri döndürür
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **convert** (*string* $name, *callable* $converter)
 
-Adds a converter to perform an additional transformation for certain parameter
+Belirli bir parametre veya dönüşüm yapmak için dönüştürücü ekler
 
 public **getConverters** ()
 
-Returns the router converter
+Yönlendirici dönüştürücüsünü döndürür
 
 public static **reset** ()
 
-Resets the internal route id generator
+Dahili yol kimliği jenaratörünü sıfırlar
 
 public static **delimiter** ([*mixed* $delimiter])
 
-Set the routing delimiter
+Yönlendirme sınırlayıcısı ayarlama
 
 public static **getDelimiter** ()
 
-Get routing delimiter
+Yönlendirme Sınırlayıcısını Getir

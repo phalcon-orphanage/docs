@@ -48,7 +48,7 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## Методы
 
 public **__construct** ([*array* $options])
 

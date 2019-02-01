@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router\Group'
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
 Helper class to create a group of routes with common attributes
 
@@ -58,7 +58,7 @@ $router->mount($blog);
 
 ```
 
-## Methods
+## روش ها
 
 public **__construct** ([*mixed* $paths])
 
@@ -76,7 +76,7 @@ public **setPrefix** (*mixed* $prefix)
 
 Set a common uri prefix for all the routes in this group
 
-public **getPrefix** ()
+عمومی **دریافت پیشوند** ()
 
 Returns the common prefix for all the routes
 

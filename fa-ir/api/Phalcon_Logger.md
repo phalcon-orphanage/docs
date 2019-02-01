@@ -6,9 +6,9 @@ title: 'Phalcon\Logger'
 ---
 # Abstract class **Phalcon\Logger**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
-## Constants
+## ثابت ها
 
 *integer* **SPECIAL**
 

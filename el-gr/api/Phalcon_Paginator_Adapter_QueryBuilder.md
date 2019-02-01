@@ -52,7 +52,7 @@ Get query builder object
 
 public **getPaginate** ()
 
-Returns a slice of the resultset to show in the pagination
+Επιστρέφει μια από φέτα το σύνολο αποτελεσμάτων για να εμφανιστεί στη σελίδα
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 

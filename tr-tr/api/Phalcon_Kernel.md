@@ -6,9 +6,9 @@ title: 'Phalcon\Kernel'
 ---
 # Class **Phalcon\Kernel**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
 
-## Methods
+## Metodlar
 
 public static **preComputeHashKey** (*mixed* $key)
 

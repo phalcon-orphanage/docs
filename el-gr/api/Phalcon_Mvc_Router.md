@@ -55,7 +55,7 @@ Sets the dependency injector
 
 public **getDI** ()
 
-Returns the internal dependency injector
+Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -198,7 +198,7 @@ Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths)
 
-Set a group of paths to be returned when none of the defined routes are matched
+Ορίστε μια ομάδα διαδρομών που να επιστραφούν πρέπει όταν δεν αντιστοιχεί καμία από τις καθορισμένες διαδρομές
 
 public **clear** ()
 

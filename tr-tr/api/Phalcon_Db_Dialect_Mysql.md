@@ -10,31 +10,31 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
-Generates database specific SQL for the MySQL RDBMS
+MySQL RDBMS için veritabanına özgü SQL üretir
 
-## Methods
+## Metodlar
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Gets the column name in MySQL
+MySQL'de sütun adını döndürür
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Generates SQL to add a column to a table
+Bir tabloya bir sütun eklemek için SQL oluşturur
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Generates SQL to modify a column in a table
+Bir tablodaki bir sütunda değişlik yapmak için SQL oluşturur
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Generates SQL to delete a column from a table
+Bir tablodaki bir sütunu silmek için SQL oluşturur
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Generates SQL to add an index to a table
+Bir tabloya bir işaret eklemek için SQL oluşturur
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
@@ -42,43 +42,43 @@ Generates SQL to delete an index from a table
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Generates SQL to add the primary key to a table
+Bir tabloya temel anahtarı eklemek için SQL oluşturur
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Generates SQL to delete primary key from a table
+Bir tablodan temel anahtarı silmek için SQL oluşturur
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Generates SQL to add an index to a table
+Bir tabloya bir işaret eklemek için SQL oluşturur
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Generates SQL to delete a foreign key from a table
+Bir tablodan yabancı bir anahtar silmek için SQL oluşturur
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Generates SQL to create a table
+Bir tablo oluşturmak için SQL oluşturur
 
 public **truncateTable** (*mixed* $tableName, *mixed* $schemaName)
 
-Generates SQL to truncate a table
+Bir tabloyu kesmek için SQL oluşturur
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Generates SQL to drop a table
+Bir tablo düşürmek için SQL oluşturur
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Generates SQL to create a view
+Bir görünüm yaratmak için SQL oluşturur
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Generates SQL to drop a view
+Bir görünüm bırakmak için SQL üretir
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.table
+Bir schema.table varlığı için SQL denetimi üretir
 
 ```php
 <?php
@@ -91,11 +91,11 @@ echo $dialect->tableExists("posts");
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Generates SQL checking for the existence of a schema.view
+Bir schema.view varlığı için SQL denetimi üretir
 
 public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL describing a table
+Bir tabloyu tanımlayan SQL üretir
 
 ```php
 <?php
@@ -108,7 +108,7 @@ print_r(
 
 public **listTables** ([*mixed* $schemaName])
 
-List all tables in database
+Veritabanındaki tüm tabloları listele
 
 ```php
 <?php
@@ -121,31 +121,31 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-Generates the SQL to list all views of a schema or user
+Bir şemanın veya kullanıcının tüm görünümlerini listelemek için SQL oluşturur
 
 public **describeIndexes** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL to query indexes on a table
+Bir tabloda dizinleri sorgulamak için SQL oluşturur
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Generates SQL to query foreign keys on a table
+Bir tabloda yabancı anahtarları sorgulamak için SQL oluşturur
 
 public **tableOptions** (*mixed* $table, [*mixed* $schema])
 
-Generates the SQL to describe the table creation options
+Tablo oluşturma seçeneklerini açıklamak için SQL oluşturur
 
 protected **_getTableOptions** (*array* $definition)
 
-Generates SQL to add the table creation options
+Tablo yaratma seçeneklerini eklemek için SQL oluşturur
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Registers custom SQL functions
+Özel SQL işlevlerini kaydeder
 
 public **getCustomFunctions** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns registered functions
+Kayıtlı işlevleri döndürür
 
 final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -153,7 +153,7 @@ Escape Schema
 
 final public **escape** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Escape identifiers
+Escapar de identificadores
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -172,7 +172,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a FOR UPDATE clause
+Bir FOR UPDATE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 ```php
 <?php
@@ -184,7 +184,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Bir LOCK IN SHARE MODE yan tümcesiyle değiştirilmiş bir SQL döndürür
 
 ```php
 <?php
@@ -212,11 +212,11 @@ echo $dialect->getColumnList(
 
 final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Column expressions
+Sütun ifadelerini çözümle
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Bir ifade için bir ara temsilini bir veritabanı sistemi geçerli ifadesine dönüştürür
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -232,7 +232,7 @@ Checks whether the platform supports savepoints
 
 public **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Checks whether the platform supports releasing savepoints.
+Platformun kayıt noktalarını serbest bırakmayı destekleyip desteklemediğini kontrol eder.
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
@@ -248,31 +248,31 @@ Generate SQL to rollback a savepoint
 
 final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Column expressions
+Sütun ifadelerini çözümle
 
 final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve object expressions
+Nesne ifadelerini çözümle
 
 final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve qualified expressions
+Nitelikli ifadeleri çözümle
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve binary operations expressions
+İkili işlem ifadelerini çöz
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve unary operations expressions
+Tekli işlem ifadelerini çöz
 
 final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve function calls
+İşlev çağrılarını çözümle
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Resolve Lists
+Listeleri Çözümle
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 

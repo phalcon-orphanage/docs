@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='setup'></a>
 
-# Web Server Setup
+# Penyiapan Server Web
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
@@ -30,13 +30,13 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 <a name='php-built-in'></a>
 
-## PHP Built-In Webserver (For Developers)
+## PHP Built-In Webserver (Untuk Pengembang)
 
 To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurasi phalcon
 
 To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
 <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
@@ -44,7 +44,7 @@ To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you
 If you created your application with [Phalcon-Devtools](/4.0/en/devtools-installation) this file should already exist in the root directory of your project and you can start the server with the following command:
 
 ```bash
-$(which php) -S localhost:8000 -t public .htrouter.php
+$(yang php) -S localhost:8000 -t publik .htrouter.php
 ```
 
 The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
@@ -59,13 +59,13 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install Nginx
+### Pasang nginx
 
 <a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurasi phalcon
 
 You can use following potential configuration to setup Nginx with Phalcon:
 
@@ -152,7 +152,7 @@ server {
 }
 ```
 
-### Start Nginx
+### Mulai Nginx
 
 Usually `start nginx` from the command line but this depends on your installation method.
 
@@ -164,21 +164,21 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 <a name='apache-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurasi phalcon
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
 ```bash
-test/
-  app/
-    controllers/
-    models/
-    views/
-  public/
-    css/
-    img/
-    js/
-    index.php
+uji/
+   aplikasi/
+     pengendali/
+     model/
+     pandangan/
+   publik/
+     css/
+     img/
+     js/
+     index.php
 ```
 
 <a name='apache-document-root'></a>
@@ -229,7 +229,7 @@ If your uri contains characters other than English, you might need to resort to 
 
 <a name='apache-apache-configuration'></a>
 
-#### Apache configuration
+#### Konfigurasi Apache
 
 If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
@@ -261,19 +261,19 @@ And this second configuration allows you to install a Phalcon application in a v
 ```apacheconfig
 <VirtualHost *:80>
 
-    ServerAdmin    admin@example.host
-    DocumentRoot   "/var/vhosts/test/public"
-    DirectoryIndex index.php
-    ServerName     example.host
-    ServerAlias    www.example.host
+     ServerAdmin admin@example.host
+     DocumentRoot "/ var / vhosts / test / public"
+     DirectoryIndex index.php
+     ServerName example.host
+     ServerAlias www.example.host
 
-    <Directory "/var/vhosts/test/public">
-        Options       All
-        AllowOverride All
-        Require       all granted
-    </Directory>
+     <Directory "/var/vhosts/test/public">
+         Pilihan semua
+         AllowOverride Semua
+         Mengharuskan semua yang dikabulkan
+     </ 1>
 
-</VirtualHost>
+</ 0>
 ```
 
 <a name='cherokee'></a>
@@ -284,7 +284,7 @@ And this second configuration allows you to install a Phalcon application in a v
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Phalcon configuration
+### Konfigurasi phalcon
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 

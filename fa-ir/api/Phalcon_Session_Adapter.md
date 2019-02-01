@@ -8,11 +8,11 @@ title: 'Phalcon\Session\Adapter'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter.zep)
 
 Base class for Phalcon\Session adapters
 
-## Constants
+## ثابت ها
 
 *integer* **SESSION_ACTIVE**
 
@@ -20,9 +20,9 @@ Base class for Phalcon\Session adapters
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## روش ها
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 Phalcon\Session\Adapter constructor
 
@@ -45,7 +45,7 @@ $session->setOptions(
 
 ```
 
-public **getOptions** ()
+عمومی **دریافت نام** ()
 
 Get internal options
 

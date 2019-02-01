@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Backend'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend.zep)
 
 This class implements common functionality for backend adapters. A backend cache adapter may extend this class
 
@@ -56,7 +56,7 @@ Checks whether the last cache is fresh or cached
 
 public **isStarted** ()
 
-Checks whether the cache has starting buffering or not
+Sprawdza czy cache zaczęło bufferowanie czy nie
 
 public *int* **getLifetime** ()
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Http\ResponseInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setStatusCode** (*mixed* $code, [*mixed* $message])
 

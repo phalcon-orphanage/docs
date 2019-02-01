@@ -6,48 +6,48 @@ title: 'Phalcon\Annotations\Annotation'
 ---
 # Class **Phalcon\Annotations\Annotation**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-Represents a single annotation in an annotations collection
+Bir çok açıklama içinde tek bir açıklama olduğunu gösterir
 
-## Methods
+## Metodlar
 
-public **__construct** (*array* $reflectionData)
+herkese açık **__oluştur** (*dizi* $reflectionData)
 
 Phalcon\Annotations\Annotation constructor
 
-public **getName** ()
+herkese açık ** isim al** ()
 
-Returns the annotation's name
+Ek açıklamanın adını döndürür
 
-public *mixed* **getExpression** (*array* $expr)
+herkese açık *karışık* **İfadeal** (*dizi* $expr)
 
-Resolves an annotation expression
+Bir açıklama ifadesini çözer
 
-public *array* **getExprArguments** ()
+herkese açık *dizi* **İfadeArgümanlarınıal** ()
 
-Returns the expression arguments without resolving
+İfade argümanlarını çözümlemeden döner
 
-public *array* **getArguments** ()
+herkese açık *dizi* **Argümanlarıal** ()
 
-Returns the expression arguments
+İfade argümanlarını getirir
 
 public **numberArguments** ()
 
-Returns the number of arguments that the annotation has
+Bir ek açıklamada olan argüman sayısını döner
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Belirli bir konumdaki bağımsız değişkeni döndürür
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-Returns an argument in a specific position
+Belirli bir konumdaki bağımsız değişkeni döndürür
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-Returns a named argument
+Adlandırılmış bir argümanı döndürür
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-Returns a named parameter
+Adlandırılmış bir parametre döner

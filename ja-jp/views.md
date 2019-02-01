@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Using Views
+# ビューの使用
 
 ビューはアプリケーションのユーザインタフェースを表します。 ビューは、多くの場合にデータの表示のみに関連するタスクを実行する、埋め込みの PHP コードを含む HTML ファイルです。 ビューは、ウェブブラウザやその他のツールにデータを提供するための、アプリケーションからの要求を処理します。
 
@@ -15,11 +15,11 @@ version: '4.0'
 
 <a name='integrating-views-with-controllers'></a>
 
-## Integrating Views with Controllers
+## コントローラーとビューの統合
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
+| サーバーアドレス          | 127.0.0.1 |
 | ----------------- | --------- |
 | Phalcon Directory | blog      |
 | Controller        | posts     |
@@ -42,7 +42,7 @@ class PostsController extends Controller
 
     public function showAction($postId)
     {
-        // Pass the $postId parameter to the view
+        // $postId パラメータをビューに渡す
         $this->view->postId = $postId;
     }
 }
@@ -52,50 +52,50 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 <a name='hierarchical-rendering'></a>
 
-## Hierarchical Rendering
+## 階層的なレンダリング
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a hierarchy of files and is the default component for view rendering in Phalcon. This hierarchy allows for common layout points (commonly used views), as well as controller named folders defining respective view templates.
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
+| Name         | File                          | Description                                                                                                          |
+| ------------ | ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| アクションビュー     | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                    |
+| コントローラーレイアウト | app/views/layouts/posts.phtml | これはコントローラに関連するビューです。 "posts" コントローラーで実行される、すべてのアクションについてのみ表示されます。 レイアウトに実装されたすべてのコードは、このコントローラのすべてのアクションに対して再利用されます。 |
+| メインレイアウト     | app/views/index.phtml         | これは、アプリケーション内で実行されるすべてのコントローラ、またはアクションに対して表示されるメインの表示です。                                                             |
 
 You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
 ```php
 <!-- app/views/posts/show.phtml -->
 
-<h3>This is show view!</h3>
+&lt;h3&gt;This is show view!&lt;/h3&gt;
 
-<p>I have received the parameter <?php echo $postId; ?></p>
+&lt;p&gt;I have received the parameter <?php echo $postId; ?>&lt;/p&gt;
 ```
 
 ```php
 <!-- app/views/layouts/posts.phtml -->
 
-<h2>This is the "posts" controller layout!</h2>
+&lt;h2&gt;This is the "posts" controller layout!&lt;/h2&gt;
 
 <?php echo $this->getContent(); ?>
 ```
 
 ```php
 <!-- app/views/index.phtml -->
-<html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
 
-        <h1>This is main layout!</h1>
+        &lt;h1&gt;This is main layout!&lt;/h1&gt;
 
         <?php echo $this->getContent(); ?>
 
-    </body>
-</html>
+    &lt;/body&gt;
+&lt;/html&gt;
 ```
 
 Note the lines where the method `$this->getContent()` was called. This method instructs [Phalcon\Mvc\View](api/Phalcon_Mvc_View) on where to inject the contents of the previous view executed in the hierarchy. For the example above, the output will be:
@@ -106,31 +106,31 @@ The generated HTML by the request will be:
 
 ```php
 <!-- app/views/index.phtml -->
-<html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
 
-        <h1>This is main layout!</h1>
+        &lt;h1&gt;This is main layout!&lt;/h1&gt;
 
         <!-- app/views/layouts/posts.phtml -->
 
-        <h2>This is the "posts" controller layout!</h2>
+        &lt;h2&gt;This is the "posts" controller layout!&lt;/h2&gt;
 
         <!-- app/views/posts/show.phtml -->
 
-        <h3>This is show view!</h3>
+        &lt;h3&gt;This is show view!&lt;/h3&gt;
 
-        <p>I have received the parameter 101</p>
+        &lt;p&gt;I have received the parameter 101&lt;/p&gt;
 
-    </body>
-</html>
+    &lt;/body&gt;
+&lt;/html&gt;
 ```
 
 <a name='using-templates'></a>
 
-### Using Templates
+### テンプレートを使用する
 
 Templates are views that can be used to share common view code. They act as controller layouts, so you need to place them in the layouts directory.
 
@@ -292,7 +292,7 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 
 <a name='control-rendering-levels'></a>
 
-### Control Rendering Levels
+### レンダリングレベルのコントロール
 
 As seen above, [Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
 
@@ -344,7 +344,7 @@ The available render levels are:
 
 <a name='disabling-render-levels'></a>
 
-### Disabling render levels
+### レンダリングレベルの無効化
 
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
@@ -433,7 +433,7 @@ class ProductsController extends Controller
 
 <a name='disabling-view'></a>
 
-### Disabling the view
+### Viewの無効化
 
 If your controller does not produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
@@ -686,7 +686,7 @@ A variable with the name of the first parameter of `setVar()` will be created in
 
 <a name='caching-fragments'></a>
 
-## Caching View Fragments
+## Viewの断片のキャッシュ
 
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) offers caching a part or the whole rendered output to increase performance.
 
@@ -814,7 +814,7 @@ class DownloadController extends Controller
 
 <a name='template-engines'></a>
 
-## Template Engines
+## テンプレートエンジン
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) allows you to use other template engines instead of plain PHP or Volt.
 
@@ -944,13 +944,13 @@ $.ajax({
 
 <a name='stand-alone'></a>
 
-## Stand-Alone Component
+## 独立コンポーネント
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
 
 <a name='stand-alone-hierarchical-rendering'></a>
 
-### Hierarchical Rendering
+### 階層的なレンダリング
 
 Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) in a stand-alone mode can be demonstrated below:
 
@@ -1039,17 +1039,17 @@ echo $view->render(
 
 <a name='events'></a>
 
-## View Events
+## Viewイベント
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| イベント名            | トリガー                                          | 処理中断が可能 |
+| ---------------- | --------------------------------------------- |:-------:|
+| beforeRender     | Triggered before starting the render process  |   はい    |
+| beforeRenderView | Triggered before rendering an existing view   |   はい    |
+| afterRenderView  | Triggered after rendering an existing view    |   いいえ   |
+| afterRender      | Triggered after completing the render process |   いいえ   |
+| notFoundView     | Triggered when a view was not found           |   いいえ   |
 
 The following example demonstrates how to attach listeners to this component:
 

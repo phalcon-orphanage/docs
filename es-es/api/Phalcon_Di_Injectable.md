@@ -10,21 +10,21 @@ title: 'Phalcon\Di\Injectable'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
-This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
+Esta clase permite acceder servicios en el contenedor de servicios simplemente accediendo una propiedad pública con el mismo nombre de un servicio registrado
 
 ## Métodos
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** ()
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** ()
 
@@ -32,4 +32,4 @@ Devuelve el administrador de eventos interno
 
 public **__get** (*string* $propertyName)
 
-Magic method __get to easily get access to services through the name of them
+Magic method __get para acceder a los servicios a través de sus nombres

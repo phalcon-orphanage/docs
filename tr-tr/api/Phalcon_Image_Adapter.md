@@ -8,11 +8,11 @@ title: 'Phalcon\Image\Adapter'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
 
-All image adapters must use this class
+Tüm resim bağdaştırıcıları bu sınıfı kullanmalıdır
 
-## Methods
+## Metodlar
 
 public **getImage** ()
 
@@ -24,23 +24,23 @@ public **getRealpath** ()
 
 public **getWidth** ()
 
-Image width
+Resim genişliği
 
 public **getHeight** ()
 
-Image height
+Resim yüksekliği
 
-public **getType** ()
+genel **getType** ()
 
-Image type Driver dependent
+Resim türü Sürücü bağlı
 
 public **getMime** ()
 
-Image mime type
+Resim mime türü
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
 
-Resize the image to the given size
+Görüntüyü verilen boyuta göre yeniden boyutlandır
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity])
 
@@ -48,11 +48,11 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY])
 
-Crop an image to the given size
+Görüntüyü belirtilen boyuta kırp
 
 public **rotate** (*mixed* $degrees)
 
-Rotate the image by a given amount
+Görüntüyü verilen miktarda döndür
 
 public **flip** (*mixed* $direction)
 
@@ -60,11 +60,11 @@ Flip the image along the horizontal or vertical axis
 
 public **sharpen** (*mixed* $amount)
 
-Sharpen the image by a given amount
+Görüntüyü verilen miktarda keskinleştirir
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn])
 
-Add a reflection to an image
+Bir resme yansıtma ekleyin
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
@@ -72,28 +72,28 @@ Add a watermark to an image with the specified opacity
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile])
 
-Add a text to an image with a specified opacity
+Belirtilen bir opaklıkla görüntüye bir metin ekleyin
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark)
 
-Composite one image onto another
+Bir görüntüyü başka bir görüntüye birleştir
 
 public **background** (*mixed* $color, [*mixed* $opacity])
 
-Set the background color of an image
+Bir resmin arka plan rengini ayarlama
 
 public **blur** (*mixed* $radius)
 
-Blur image
+Resim bulanıklığı
 
 public **pixelate** (*mixed* $amount)
 
-Pixelate image
+Görüntü pikselleştirme
 
 public **save** ([*mixed* $file], [*mixed* $quality])
 
-Save the image
+Resmi kaydet
 
 public **render** ([*mixed* $ext], [*mixed* $quality])
 
-Render the image and return the binary string
+Görüntüyü oluşturun ve ikili dizgiyi döndürün

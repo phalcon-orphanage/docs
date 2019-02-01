@@ -6,11 +6,11 @@ title: 'Phalcon\Db\Profiler\Item'
 ---
 # Class **Phalcon\Db\Profiler\Item**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
-## Methods
+## Metodi
 
 public **setSqlStatement** (*mixed* $sqlStatement)
 

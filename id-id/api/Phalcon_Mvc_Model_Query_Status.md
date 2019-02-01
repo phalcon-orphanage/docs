@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Query\Status'
 
 *implements* [Phalcon\Mvc\Model\Query\StatusInterface](Phalcon_Mvc_Model_Query_StatusInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/status.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/status.zep)
 
-This class represents the status returned by a PHQL statement like INSERT, UPDATE or DELETE. It offers context information and the related messages produced by the model which finally executes the operations when it fails
+Kelas ini mewakili status yang dikembalikan oleh PHQL pernyataan seperti INSERT, UPDATE atau DELETE. Ini menawarkan konteks informasi dan pesan terkait yang dihasilkan oleh model yang akhirnya menjalankan operasi saat gagal
 
 ```php
 <?php
@@ -34,18 +34,18 @@ if ($status->success() === true) {
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** (*mixed* $success, [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model])
 
-public **getModel** ()
+publik **mendapatkan Model** ()
 
-Returns the model that executed the action
+Mengembalikan model yang menjalankan aksinya
 
 public **getMessages** ()
 
-Returns the messages produced because of a failed operation
+Mengembalikan pesan yang dihasilkan karena operasi yang gagal
 
 public **success** ()
 
-Allows to check if the executed operation was successful
+Memungkinkan untuk memeriksa apakah operasi yang dijalankan berhasil

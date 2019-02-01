@@ -2,7 +2,7 @@
 layout: article
 language: 'tr-tr'
 version: '4.0'
-title: 'Phalcon\Forms\Element\Check'
+title: 'Phalcon\Formlar\Öğe\Kontrol'
 ---
 # Class **Phalcon\Forms\Element\Check**
 
@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Check'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
-Component INPUT[type=check] for forms
+Formlar için INPUT[type=check] bileşeni
 
-## Methods
+## Metodlar
 
 public **render** ([*array* $attributes])
 
@@ -26,43 +26,43 @@ Phalcon\Forms\Element constructor
 
 public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the parent form to the element
+Öğenin üst formunu belirler
 
 public **getForm** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the parent form to the element
+Öğenin üst formunu döner
 
 public **setName** (*mixed* $name) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element name
+Öğeyi isimlendirir
 
 public **getName** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element name
+Öğenin isimini döner
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element filters
+Öğe filtrelerini ayarlar
 
 public **addFilter** (*mixed* $filter) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a filter to current list of filters
+Güncel filtre listesine yeni filtre ekler
 
 public *mixed* **getFilters** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element filters
+Öğe filtrelerini döner
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a group of validators
+Doğrulayıcı grubu ekler
 
 public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Adds a validator to the element
+Öğeye doğrulayıcı ekler
 
 public **getValidators** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the validators registered for the element
+Öğe için kaydedilmiş doğrulayıcıları döner
 
 public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
@@ -70,80 +70,80 @@ Returns an array of prepared attributes for Phalcon\Tag helpers according to the
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets a default attribute for the element
+Öğe için ön tanımlı özellik belirler
 
 public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the value of an attribute if present
+Varsa, verilen özelliğin değerini döner
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets default attributes for the element
+Öğe için ön tanımlı özellikleri belirler
 
 public **getAttributes** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the default attributes for the element
+Öğe için tanımlanmış ön tanımlı özellikleri döner
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets an option for the element
+Öğe için bir seçenek belirler
 
 public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the value of an option if present
+Varsa, verilen seçeneğin değerini döner
 
 public **setUserOptions** (*array* $options) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets options for the element
+Öğe için seçenekleri belirler
 
 public **getUserOptions** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the options for the element
+Öğenin seçeneklerini döner
 
 public **setLabel** (*mixed* $label) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the element label
+Öğe etiketini belirler
 
 public **getLabel** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element label
+Öğe etiketini döner
 
 public **label** ([*array* $attributes]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Generate the HTML to label the element
+Öğeyi etiketlemek için HTML yaratır
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
+_POST'da öğe için uygun bir değer yoksa ya da form entiti kullanmıyorsa ön tanımlı bir değer belirler
 
 public **getDefault** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the default value assigned to the element
+Öğeye atanmış ön tanımlı değeri döner
 
 public **getValue** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the element value
+Öğe değerini döner
 
 public **getMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Returns the messages that belongs to the element The element needs to be attached to a form
+Öğeye ait olan mesajları döner. Öğenin bir forma eklenmiş olması gerekir
 
 public **hasMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Checks whether there are messages attached to the element
+Öğeye eklenmiş mesajların olup olmadığını kontrol eder
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sets the validation messages related to the element
+Öğe ile ilgili doğrulama mesajlarını döner
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Appends a message to the internal message list
+Dahili mesaj listesine yeni mesaj ekler
 
 public **clear** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Clears every element in the form to its default value
+Formdaki tüm öğeleri ön tanımlı değerlerine geri çevirir
 
 public **__toString** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Magic method __toString renders the widget without attributes
+__toString sihirli yöntemi Widget'ı özellikleri olmadan gösterir

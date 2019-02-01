@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model Behaviors
+# Perilaku Model
 
 Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
@@ -45,10 +45,10 @@ class Users extends Model
 
 The following built-in behaviors are provided by the framework:
 
-| Name          | Description                                                                                                |
-| ------------- | ---------------------------------------------------------------------------------------------------------- |
-| Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
-| SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
+| Nama          | Deskripsi                                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Timestampable | Memungkinkan untuk memperbarui atribut model secara otomatis menyimpan datetime saat rekaman dibuat atau diperbarui |
+| SoftDelete    | Alih-alih menghapus catatan secara permanen, ia menandai rekaman sebagai menghapus mengubah nilai kolom bendera     |
 
 <a name='timestampable'></a>
 
@@ -181,7 +181,7 @@ Note that you need to specify the deleted condition in your queries to effective
 
 <a name='create-your-own-behaviors'></a>
 
-## Creating your own behaviors
+## Menciptakan tingkah lakunya sendiri
 
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
 
@@ -208,7 +208,7 @@ class Blameable extends Behavior implements BehaviorInterface
                 // Store in a log the username, event type and primary key
                 file_put_contents(
                     'logs/blamable-log.txt',
-                    $userName . ' ' . $eventType . ' ' . $model->id
+                    $userName . ' ' . $jenis acara. ' ' . $model->id
                 );
 
                 break;
@@ -269,7 +269,7 @@ $title = $post->getSlug();
 
 <a name='traits-as-behaviors'></a>
 
-## Using Traits as behaviors
+## Menggunakan sifat sebagai perilaku
 
 You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
 

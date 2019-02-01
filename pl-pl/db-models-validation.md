@@ -118,7 +118,7 @@ if ($robot->save() === false) {
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
-| Typ                    | Description                                                                                                                        |
+| Typ                    | Ious                                                                                                                               |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
 | `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
@@ -168,7 +168,7 @@ class Robots extends Model
 
 Another type of events are available when the data validation process finds any inconsistency:
 
-| Operation                | Nazwa               | Explanation                                                            |
+| Operacja                 | Nazwa               | Wyjaśnienie                                                            |
 | ------------------------ | ------------------- | ---------------------------------------------------------------------- |
 | Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |

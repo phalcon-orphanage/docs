@@ -14,7 +14,7 @@ title: 'Phalcon\Logger\Formatter\Line'
 
 Formats messages using an one-line string
 
-## Methods
+## Методы
 
 public **getDateFormat** ()
 

@@ -8,11 +8,11 @@ title: 'Phalcon\Validation\Message\Group'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
 
 Represents a group of validation messages
 
-## Methods
+## روش ها
 
 public **__construct** ([*array* $messages])
 
@@ -94,27 +94,27 @@ public *array* **filter** (*string* $fieldName)
 
 Filters the message group by field name
 
-public **count** ()
+عمومی **تعداد** ()
 
 Returns the number of messages in the list
 
-public **rewind** ()
+عمومی **بازخوانی** ()
 
-Rewinds the internal iterator
+تکرارکننده داخلی را باز می کند
 
 public **current** ()
 
 Returns the current message in the iterator
 
-public **key** ()
+کلید عمومی**کلید** ()
 
-Returns the current position/key in the iterator
+موقعیت/کلید فعلی را در تکرار بازگرداند
 
-public **next** ()
+عمومی **بعدی** ()
 
-Moves the internal iteration pointer to the next position
+اشاره گر تکرار داخلی را به موقعیت بعدی حرکت می دهد
 
-public **valid** ()
+عمومی **معتبر** ()
 
 Check if the current message in the iterator is valid
 

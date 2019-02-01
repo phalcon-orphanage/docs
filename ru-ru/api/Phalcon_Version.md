@@ -22,7 +22,7 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## Methods
+## Методы
 
 protected static **_getVersion** ()
 

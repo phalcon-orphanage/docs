@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Increasing Performance
+# Meningkatkan Kinerja
 
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
 
 <a name='profiling-server'></a>
 
-## Profile on the Server
+## Profil di Server
 
 Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
 
@@ -31,7 +31,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see w
 
 <a name='profiling-server-xhprof'></a>
 
-### Profiling with Xhprof
+### Profil dengan Xhprof
 
 [Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
 
@@ -66,7 +66,7 @@ Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
 <a name='profiling-server-sql-statements'></a>
 
-### Profiling SQL Statements
+### Profil Pernyataan SQL
 
 Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
 
@@ -77,13 +77,13 @@ long_query_time = 1.5
 
 <a name='profiling-client'></a>
 
-## Profile on the Client
+## Profil pada Klien
 
 Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance. The following tools are useful to detect common bottlenecks in the client side:
 
 <a name='profiling-client-chrome-firefox'></a>
 
-### Profile with Chrome/Firefox
+### Profil dengan Chrome/Firefox
 
 Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
 
@@ -103,7 +103,7 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 
 <a name='profiling-client-speed-tracer'></a>
 
-### Profile with Speed Tracer
+### Profil dengan Kecepatan Tracer
 
 [Speed Tracer](https://developers.google.com/web-toolkit/speedtracer/) is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
@@ -113,13 +113,13 @@ This tool is very useful because it help you to get the real time used to render
 
 <a name='php-version'></a>
 
-## Use a recent PHP version
+## Gunakan versi PHP terbaru
 
 PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
 
 <a name='bytecode-cache'></a>
 
-## Use a PHP Bytecode Cache
+## Gunakan versi PHP terbaru
 
 [APC](https://php.net/manual/en/book.apc.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
 
@@ -129,7 +129,7 @@ apc.enabled = On
 
 <a name='background-tasks'></a>
 
-## Do blocking work in the background
+## Apakah menghalangi pekerjaan di latar belakang
 
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
@@ -142,6 +142,6 @@ Process a video, send e-mails, compress a file or an image, etc., are slow tasks
 
 <a name='page-speed'></a>
 
-## Google Page Speed
+## Kecepatan Google Page
 
 [mod_pagespeed](https://developers.google.com/speed/pagespeed/mod) speeds up your site and reduces page load time. This open-source Apache HTTP server module (also available for nginx as [ngx_pagespeed](https://developers.google.com/speed/pagespeed/ngx)) automatically applies web performance best practices to pages, and associated assets (CSS, JavaScript, images) without requiring that you modify your existing content or workflow.

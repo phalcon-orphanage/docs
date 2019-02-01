@@ -51,11 +51,11 @@ Phalcon\Mvc\Model\Query constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injection container
+Configura el contenedor de inyección de dependencia
 
 public **getDI** ()
 
-Returns the dependency injection container
+Devuelve el contenedor de inyección de dependencia
 
 public **setUniqueRow** (*mixed* $uniqueRow)
 

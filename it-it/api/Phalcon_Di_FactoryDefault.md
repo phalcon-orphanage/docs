@@ -10,11 +10,11 @@ title: 'Phalcon\Di\FactoryDefault'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Phalcon\DiInterface](Phalcon_DiInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
-## Methods
+## Metodi
 
 public **__construct** ()
 
@@ -26,7 +26,7 @@ Sets the internal event manager
 
 public **getInternalEventsManager** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Returns the internal event manager
+Ritorna il gestore di eventi
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\MetaData'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
 
 Because Phalcon\Mvc\Model requires meta-data like field names, data types, primary keys, etc. this component collect them and store for further querying by Phalcon\Mvc\Model. Phalcon\Mvc\Model\MetaData can also use adapters to store temporarily or permanently the meta-data.
 
@@ -17,82 +17,81 @@ A standard Phalcon\Mvc\Model\MetaData can be used to query model attributes:
 ```php
 <?php
 
-$metaData = new \Phalcon\Mvc\Model\MetaData\Memory();
+$metaData = new \Phalcon\Mvc\Model\MetaData\Ingatan();
 
-$attributes = $metaData->getAttributes(
-    new Robots()
+$attributes = $metaData->dapatkan Atribut(
+    robot Baru()
 );
-
-print_r($attributes);
+mencetak($attributes);
 
 ```
 
 ## Constants
 
-*integer* **MODELS_ATTRIBUTES**
+*bilangan bulat* **MODEL_ATRIBUT**
 
-*integer* **MODELS_PRIMARY_KEY**
+*bilangan bulat* **MODEL_UTAMA_KUNCI**
 
-*integer* **MODELS_NON_PRIMARY_KEY**
+*bilangan bulat* **MODEL_TANPA_UTAMA_KUNCI**
 
-*integer* **MODELS_NOT_NULL**
+*bilangan bulat* **MODEL_TIDAK_BATAL**
 
-*integer* **MODELS_DATA_TYPES**
+*bilangan bulat* **MODEL_JENIS_DATA**
 
-*integer* **MODELS_DATA_TYPES_NUMERIC**
+*bilangan bulat* **MODEL_JENIS_DATA_NUMERIC**
 
-*integer* **MODELS_DATE_AT**
+*bilangan bulat* **MODEL_DI_TANGGAL**
 
-*integer* **MODELS_DATE_IN**
+*bilangan bulat* **MODEL_Di_TANGGAL**
 
-*integer* **MODELS_IDENTITY_COLUMN**
+*bilangan bulat* **MODEL_KOLOM_IDENTITAS**
 
-*integer* **MODELS_DATA_TYPES_BIND**
+*bilangan bulat* **MODEL_DATA_JENIS_MENGIKAT**
 
-*integer* **MODELS_AUTOMATIC_DEFAULT_INSERT**
+*bilangan bulat* **MODEL_AUTOMATIS_GAGAL_MEMASUKKAN**
 
-*integer* **MODELS_AUTOMATIC_DEFAULT_UPDATE**
+*bilangan bulat* **MODEL_AUTOMATIS_GAGAL_MEMPERBARUI**
 
-*integer* **MODELS_DEFAULT_VALUES**
+*bilangan bulat* **MODEL_KEGAGALAN_NILAI**
 
-*integer* **MODELS_EMPTY_STRING_VALUES**
+*bilangan bulat* **MODEL_RANGKAIAN_NILAI_KOSONG**
 
-*integer* **MODELS_COLUMN_MAP**
+*bilangan bulat* **MODELS_PETUNJUK_KOLOM**
 
-*integer* **MODELS_REVERSE_COLUMN_MAP**
+*bilangan bulat* **MODELS_MEMBALIKKAN_PETUNJUK_KOLOM**
 
-## Methods
+## Metode
 
 final protected **_initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema)
 
-Initialize the metadata for certain table
+Inisialisasi metadata untuk tabel tertentu
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy)
 
-Set the meta-data extraction strategy
+Tetapkan strategi ekstraksi meta-data
 
-public **getStrategy** ()
+publik **mendapatkan Strategi** ()
 
-Return the strategy to obtain the meta-data
+Kembalikan strategi untuk mendapatkan meta-data
 
 final public **readMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Reads the complete meta-data for certain model
+Membaca meta-data lengkap untuk model tertentu
 
 ```php
 <?php
 
-print_r(
-    $metaData->readMetaData(
-        new Robots()
+Mencetak_r(
+    $metaData->melihat MetaData(
+        robot Baru()
     )
 );
 
@@ -100,14 +99,14 @@ print_r(
 
 final public **readMetaDataIndex** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $index)
 
-Reads meta-data for certain model
+Membaca meta-data untuk model tertentu
 
 ```php
 <?php
 
 print_r(
-    $metaData->readMetaDataIndex(
-        new Robots(),
+    $metaData->membaca Petunjuk MetaData(
+        robot Baru(),
         0
     )
 );
@@ -116,7 +115,7 @@ print_r(
 
 final public **writeMetaDataIndex** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $index, *mixed* $data)
 
-Writes meta-data for certain model using a MODEL_* constant
+Menulis meta-data untuk model tertentu menggunakan MODEL_ * konstan
 
 ```php
 <?php
@@ -135,14 +134,14 @@ print_r(
 
 final public **readColumnMap** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Reads the ordered/reversed column map for certain model
+Membaca peta kolom yang dipesan / dibalik untuk model tertentu
 
 ```php
 <?php
 
 print_r(
-    $metaData->readColumnMap(
-        new Robots()
+    $metaData->membaca Kolom Peta(
+        robot Baru()
     )
 );
 
@@ -150,15 +149,15 @@ print_r(
 
 final public **readColumnMapIndex** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $index)
 
-Reads column-map information for certain model using a MODEL_* constant
+Membaca informasi peta kolom untuk model tertentu menggunakan MODEL_ * konstan
 
 ```php
 <?php
 
 print_r(
-    $metaData->readColumnMapIndex(
-        new Robots(),
-        MetaData::MODELS_REVERSE_COLUMN_MAP
+    $metaData->baca Indeks Peta Kolom(
+        robot Baru(),
+        MetaData::MODEL_PETUNJUK_MEMBALIKKAN_KOLOM
     )
 );
 
@@ -166,14 +165,14 @@ print_r(
 
 public **getAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns table attributes names (fields)
+Mengembalikan tabel atribut nama (bidang)
 
 ```php
 <?php
 
 print_r(
-    $metaData->getAttributes(
-        new Robots()
+    $metaData->mendapatkan Atribut(
+        robot Baru()
     )
 );
 
@@ -181,14 +180,14 @@ print_r(
 
 public **getPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns an array of fields which are part of the primary key
+Mengembalikan array bidang yang merupakan bagian dari primary key
 
 ```php
 <?php
 
-print_r(
-    $metaData->getPrimaryKeyAttributes(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Kunci Atribut Utama(
+        robot Baru()
     )
 );
 
@@ -196,14 +195,13 @@ print_r(
 
 public **getNonPrimaryKeyAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns an array of fields which are not part of the primary key
+Mengembalikan susunan bidang yang bukan bagian dari kunci utama
 
 ```php
 <?php
-
-print_r(
-    $metaData->getNonPrimaryKeyAttributes(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Kunci Atribut Utama(
+        robot Baru()
     )
 );
 
@@ -211,14 +209,14 @@ print_r(
 
 public **getNotNullAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns an array of not null attributes
+Mengembalikan array bukan atribut null
 
 ```php
 <?php
 
-print_r(
-    $metaData->getNotNullAttributes(
-        new Robots()
+mencetak_r(
+    $metaData->batal Mendapatkan Atribut(
+        robot Baru()
     )
 );
 
@@ -226,14 +224,14 @@ print_r(
 
 public **getDataTypes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes and their data types
+Mengembalikan atribut dan tipe datanya
 
 ```php
 <?php
 
-print_r(
-    $metaData->getDataTypes(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Tipe Data(
+        robot Baru()
     )
 );
 
@@ -241,14 +239,14 @@ print_r(
 
 public **getDataTypesNumeric** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes which types are numerical
+Mengembalikan atribut yang jenisnya numerik
 
 ```php
 <?php
 
-print_r(
-    $metaData->getDataTypesNumeric(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Tipe Data Numerik(
+        robot Baru()
     )
 );
 
@@ -256,14 +254,14 @@ print_r(
 
 public *string* **getIdentityField** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the name of identity field (if one is present)
+Mengembalikan nama bidang identitas (jika ada)
 
 ```php
 <?php
 
 print_r(
-    $metaData->getIdentityField(
-        new Robots()
+    $metaData->mendapatkan Bidang Identitas(
+        robor Baru()
     )
 );
 
@@ -271,14 +269,14 @@ print_r(
 
 public **getBindTypes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes and their bind data types
+Mengembalikan atribut dan tipe data bind mereka
 
 ```php
 <?php
 
-print_r(
-    $metaData->getBindTypes(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Tipe Pengikat(
+        robot Baru()
     )
 );
 
@@ -286,14 +284,14 @@ print_r(
 
 public **getAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes that must be ignored from the INSERT SQL generation
+Mengembalikan atribut yang harus diabaikan dari INSERT SQL generation
 
 ```php
 <?php
 
 print_r(
-    $metaData->getAutomaticCreateAttributes(
-        new Robots()
+    $metaData->dapatkan Atribut Buat Otomatis(
+        robot Baru()
     )
 );
 
@@ -301,14 +299,14 @@ print_r(
 
 public **getAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes that must be ignored from the UPDATE SQL generation
+Mengembalikan atribut yang harus diabaikan dari generasi UPDATE SQL
 
 ```php
 <?php
 
-print_r(
-    $metaData->getAutomaticUpdateAttributes(
-        new Robots()
+mencetak_r(
+    $metaData->mengatur Atribut Memperbarui Otomatis(
+        robot Baru()
     )
 );
 
@@ -316,15 +314,15 @@ print_r(
 
 public **setAutomaticCreateAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *array* $attributes)
 
-Set the attributes that must be ignored from the INSERT SQL generation
+Tetapkan atribut yang harus diabaikan dari INSERT SQL generation
 
 ```php
 <?php
 
-$metaData->setAutomaticCreateAttributes(
-    new Robots(),
+$metaData->pengaturan Automatis Membuat Atribut(
+    robot Baru(),
     [
-        "created_at" => true,
+        "di_diciptakan" => benar,
     ]
 );
 
@@ -332,15 +330,15 @@ $metaData->setAutomaticCreateAttributes(
 
 public **setAutomaticUpdateAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *array* $attributes)
 
-Set the attributes that must be ignored from the UPDATE SQL generation
+Tetapkan atribut yang harus diabaikan dari generasi UPDATE SQL
 
 ```php
 <?php
 
-$metaData->setAutomaticUpdateAttributes(
-    new Robots(),
+$metaData->pengaturan Atribut Memperbarui Automatis(
+    robot Baru(),
     [
-        "modified_at" => true,
+        "Di_ubah" => benar,
     ]
 );
 
@@ -348,15 +346,15 @@ $metaData->setAutomaticUpdateAttributes(
 
 public **setEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *array* $attributes)
 
-Set the attributes that allow empty string values
+Tetapkan atribut yang memungkinkan nilai string kosong
 
 ```php
 <?php
 
-$metaData->setEmptyStringAttributes(
-    new Robots(),
+$metaData->pengaturan Atribut Rangkaian Kosong(
+    robot Baru(),
     [
-        "name" => true,
+        "nama" => benar,
     ]
 );
 
@@ -364,14 +362,14 @@ $metaData->setEmptyStringAttributes(
 
 public **getEmptyStringAttributes** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes allow empty strings
+Mengembalikan atribut memungkinkan string kosong
 
 ```php
 <?php
 
-print_r(
-    $metaData->getEmptyStringAttributes(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Atribut Deretan Kosong(
+        robot Baru()
     )
 );
 
@@ -379,14 +377,14 @@ print_r(
 
 public **getDefaultValues** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns attributes (which have default values) and their default values
+Mengembalikan atribut (yang memiliki nilai default) dan nilai default nya
 
 ```php
 <?php
 
-print_r(
-    $metaData->getDefaultValues(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Nilai Gagal(
+        robot Baru()
     )
 );
 
@@ -394,14 +392,14 @@ print_r(
 
 public **getColumnMap** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the column map if any
+Kembalikan peta kolom jika ada
 
 ```php
 <?php
 
-print_r(
-    $metaData->getColumnMap(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Kolom Peta(
+        robot Baru()
     )
 );
 
@@ -409,14 +407,14 @@ print_r(
 
 public **getReverseColumnMap** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the reverse column map if any
+Kembalikan peta kolom terbalik jika ada
 
 ```php
 <?php
 
-print_r(
-    $metaData->getReverseColumnMap(
-        new Robots()
+mencetak_r(
+    $metaData->mendapatkan Peta Kolom Balik(
+        robot Baru()
     )
 );
 
@@ -424,7 +422,7 @@ print_r(
 
 public **hasAttribute** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $attribute)
 
-Check if a model has certain attribute
+Periksa apakah model memiliki atribut tertentu
 
 ```php
 <?php
@@ -440,7 +438,7 @@ var_dump(
 
 public **isEmpty** ()
 
-Checks if the internal meta-data container is empty
+Memeriksa apakah wadah meta-data internal kosong
 
 ```php
 <?php
@@ -451,9 +449,9 @@ var_dump(
 
 ```
 
-public **reset** ()
+umum **reset** ()
 
-Resets internal meta-data in order to regenerate it
+Mengatur ulang meta-data internal untuk menumbuhkannya kembali
 
 ```php
 <?php

@@ -8,21 +8,21 @@ title: 'Phalcon\Paginator\Adapter'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter.zep)
 
-## Methods
+## Metode
 
-public **setCurrentPage** (*mixed* $page)
+abstrak publik **setRenderLevel** (*mixed* $page)
 
-Set the current page number
+Setel nomor halaman saat ini
 
-public **setLimit** (*mixed* $limitRows)
+public **setEncoding** (*mixed* $limitRows)
 
-Set current rows limit
+Tetapkan batas baris saat ini
 
-public **getLimit** ()
+publik **getName** ()
 
-Get current rows limit
+Dapatkan batas baris sekarang
 
 abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 

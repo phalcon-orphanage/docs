@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model\Transaction\Failed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/failed.zep)
 
-This class will be thrown to exit a try/catch block for isolated transactions
+Kelas ini akan dilempar untuk keluar dari blok try/catch untuk transaksi yang terisolasi
 
-## Methods
+## Metode
 
 public **__construct** (*mixed* $message, [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record])
 
@@ -22,15 +22,15 @@ Phalcon\Mvc\Model\Transaction\Failed constructor
 
 public **getRecordMessages** ()
 
-Returns validation record messages which stop the transaction
+Mengembalikan pesan catatan validasi yang menghentikan transaksi
 
 public **getRecord** ()
 
-Returns validation record messages which stop the transaction
+Mengembalikan pesan catatan validasi yang menghentikan transaksi
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clone the exception
+Kloning pengecualian
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -38,32 +38,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception message
+Pesan pengecualian terenkripsi
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the Exception code
+Pesan pengecualian terenkripsi
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the file in which the exception occurred
+Mendapatkan file di mana pengecualian terjadi
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the line in which the exception occurred
+Mendapatkan file di mana pengecualian terjadi
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace
+Mendapatkan pelacakan stack
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Returns previous Exception
+Kembali pengecualian sebelumnya
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Gets the stack trace as a string
+Mendapatkan jejak stack sebagai string
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-String representation of the exception
+String representasi dari pengecualian

@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Validator\ExclusionIn'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
 
-Check if a value is not included into a list of values
+检查是否值不包含到一个列表中的值
 
 ```php
 <?php

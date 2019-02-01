@@ -8,12 +8,12 @@ title: 'Phalcon\Assets\Filters\Cssmin'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/cssmin.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/cssmin.zep)
 
-Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
+Minify css - rimuove commenti, rimuove ritorni a capo mantenendo gli avanzamenti di riga, rimuove l'ultimo punto e virgola dall'ultima proprietà
 
-## Methods
+## Metodi
 
 public **filter** (*mixed* $content)
 
-Filters the content using CSSMIN
+Filtra il contenuto utilizzando CSSMIN

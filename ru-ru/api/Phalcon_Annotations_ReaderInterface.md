@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\ReaderInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **parse** (*mixed* $className)
 

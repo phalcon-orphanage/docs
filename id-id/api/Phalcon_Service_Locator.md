@@ -8,7 +8,7 @@ title: 'Phalcon\Service\Locator'
 
 **implements** [Phalcon\Service\LocatorInterface](Phalcon_Service_LocatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locator.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locator.zep)
 
 ## Properties
 
@@ -20,7 +20,7 @@ array $services = [];
 array $mapper = [];
 ```
 
-## Methods
+## Metode
 
 ```php
 public function __construct( array $mapper = [] ): void
