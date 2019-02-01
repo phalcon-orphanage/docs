@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model\MetaData\Memory'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/memory.zep)
 
 Stores model meta-data in memory. Data will be erased when the request finishes
 
-## Stałe
+## Constants
 
 *integer* **MODELS_ATTRIBUTES**
 
