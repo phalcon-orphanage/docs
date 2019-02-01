@@ -6,9 +6,9 @@ title: 'Phalcon\Di\ServiceInterface'
 ---
 # Interface **Phalcon\Di\ServiceInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **getName** ()
 
