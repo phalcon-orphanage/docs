@@ -6,7 +6,7 @@ title: 'Phalcon\Db\AdapterInterface'
 ---
 # Interface **Phalcon\Db\AdapterInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
 
 ## Metody
 
