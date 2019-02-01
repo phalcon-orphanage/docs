@@ -12,7 +12,7 @@ title: 'Phalcon\Acl\Adapter'
 
 Adapter for Phalcon\Acl adapters
 
-## Методы
+## Methods
 
 ```php
 public getActiveAccess()
