@@ -8,7 +8,7 @@ title: 'Phalcon\Config'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
 Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
@@ -34,11 +34,11 @@ $config = new \Phalcon\Config(
 
 ```
 
-## Constants
+## ثابت ها
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## روش ها
 
 public **__construct** ([*array* $arrayConfig])
 
@@ -148,7 +148,7 @@ print_r(
 
 ```
 
-public **count** ()
+عمومی **تعداد** ()
 
 Returns the count of properties set in the config
 
@@ -159,7 +159,7 @@ print count($config);
 
 ```
 
-or
+یا
 
 ```php
 <?php
