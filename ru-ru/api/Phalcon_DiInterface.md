@@ -10,7 +10,7 @@ title: 'Phalcon\DiInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
