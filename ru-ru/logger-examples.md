@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Examples
+## Примеры
 
 ### Stream
 
@@ -100,6 +100,6 @@ $logger->error('Something went wrong');
 
 <a name='usage-custom'></a>
 
-### Implementing your own adapters
+### Реализация собственных адаптеров
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger_AdapterInterface) interface must be implemented in order to create your own logger adapters or extend the existing ones.
