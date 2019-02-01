@@ -8,7 +8,7 @@ title: 'Phalcon\Session\BagInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/baginterface.zep)
 
-## Методы
+## Methods
 
 abstract public **initialize** ()
 
