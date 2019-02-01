@@ -6,34 +6,34 @@ title: 'Phalcon\Db\RawValue'
 ---
 # Class **Phalcon\Db\RawValue**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
-This class allows to insert/update raw data without quoting or formatting.
+Kelas ini memungkinkan untuk memasukkan / memperbarui data mentah tanpa mengutip atau memformat.
 
-The next example shows how to use the MySQL now() function as a field value.
+Contoh berikut menunjukkan bagaimana menggunakan MySQL now () berfungsi sebagai field value.
 
 ```php
 <?php
 
-$subscriber = new Subscribers();
+$subscriber = pelanggan baru();
 
 $subscriber->email     = "andres@phalconphp.com";
-$subscriber->createdAt = new \Phalcon\Db\RawValue("now()");
+$subscriber->createdAt = baru \Phalcon\Db\RawValue("now()");
 
-$subscriber->save();
+$subscriber->menyimpan();
 
 ```
 
-## Methods
+## Metode
 
-public **getValue** ()
+publik **getValue** ()
 
-Raw value without quoting or formatting
+Nilai mentah tanpa mengutip atau format
 
-public **__toString** ()
+publik **__keString** ()
 
-Raw value without quoting or formatting
+Nilai mentah tanpa mengutip atau format
 
-public **__construct** (*mixed* $value)
+publik **__construct** (*mixed* $value)
 
 Phalcon\Db\RawValue constructor
