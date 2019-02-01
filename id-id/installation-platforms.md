@@ -4,7 +4,7 @@ language: 'id-id'
 version: '4.0'
 category: 'installation'
 ---
-# Pemasangan
+# Installation
 
 * * *
 
@@ -14,6 +14,6 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 
 * [Linux](installation-linux)
 * [MacOS](installation-macos)
-* [Jendela](installation-windows)
+* [Windows](installation-windows)
 * [Sources](installation-sources)
 * [Shared Hosting](installation-shared)
