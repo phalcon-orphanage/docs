@@ -10,7 +10,7 @@ title: 'Phalcon\Debug'
 
 Provides debug capabilities to Phalcon applications
 
-## Методы
+## Methods
 
 public **setUri** (*mixed* $uri)
 
