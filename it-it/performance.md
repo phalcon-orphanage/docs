@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Aumento delle prestazioni
+# Increasing Performance
 
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
 
 <a name='profiling-server'></a>
 
-## Profilo sul Server
+## Profile on the Server
 
 Each application is different, the permanent profiling is important to understand where performance can be increased. Profiling gives us a real picture on what is really slow and what does not. Profiles can vary between a request and another, so it is important to make enough measurements to make conclusions.
 
@@ -31,7 +31,7 @@ Using a tool like [Webgrind](https://github.com/jokkedk/webgrind/) you can see w
 
 <a name='profiling-server-xhprof'></a>
 
-### Profilatura con Xhprof
+### Profiling with Xhprof
 
 [Xhprof](https://github.com/facebook/xhprof) is another interesting extension to profile PHP applications. Add the following line to the start of the bootstrap file:
 
@@ -77,13 +77,13 @@ long_query_time = 1.5
 
 <a name='profiling-client'></a>
 
-## Profilo sul Client
+## Profile on the Client
 
 Sometimes we may need to improve the loading of static elements such as images, javascript and css to improve performance. The following tools are useful to detect common bottlenecks in the client side:
 
 <a name='profiling-client-chrome-firefox'></a>
 
-### Profilo con Chrome/Firefox
+### Profile with Chrome/Firefox
 
 Most modern browsers have tools to profile the page loading time. In Chrome you can use the web inspector to know how much time is taking the loading of the different resources required by a single page:
 
@@ -103,7 +103,7 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 
 <a name='profiling-client-speed-tracer'></a>
 
-### Profilo con Speed Tracer
+### Profile with Speed Tracer
 
 [Speed Tracer](https://developers.google.com/web-toolkit/speedtracer/) is a tool to help you identify and fix performance problems in your web applications. It visualizes metrics that are taken from low level instrumentation points inside of the browser and analyzes them as your application runs. Speed Tracer is available as a Chrome extension and works on all platforms where extensions are currently supported (Windows and Linux).
 
@@ -113,13 +113,13 @@ This tool is very useful because it help you to get the real time used to render
 
 <a name='php-version'></a>
 
-## Utilizza una versione recente di PHP
+## Use a recent PHP version
 
 PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.
 
 <a name='bytecode-cache'></a>
 
-## Utilizza una Cache Bytecode PHP
+## Use a PHP Bytecode Cache
 
 [APC](https://php.net/manual/en/book.apc.php) as many other bytecode caches help an application to reduce the overhead of read, tokenize and parse PHP files in each request. Once the extension is installed use the following setting to enable APC:
 
@@ -129,7 +129,7 @@ apc.enabled = On
 
 <a name='background-tasks'></a>
 
-## Blocca il lavoro in background
+## Do blocking work in the background
 
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 
