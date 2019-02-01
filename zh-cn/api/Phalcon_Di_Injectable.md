@@ -16,15 +16,15 @@ This class allows to access services in the services container by just only acce
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** ()
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** ()
 
