@@ -8,7 +8,7 @@ title: 'Phalcon\Session\Bag'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Session\BagInterface](Phalcon_Session_BagInterface), [IteratorAggregate](https://php.net/manual/en/class.iteratoraggregate.php), [Traversable](https://php.net/manual/en/class.traversable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application
 
@@ -22,7 +22,7 @@ $user->age  = 22;
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** (*mixed* $name)
 
@@ -30,11 +30,11 @@ Phalcon\Session\Bag constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **initialize** ()
 
@@ -42,7 +42,7 @@ Initializes the session bag. This method must not be called directly, the class 
 
 public **destroy** ()
 
-Destroys the session bag
+Hancurkan tas sesi
 
 ```php
 <?php
@@ -53,7 +53,7 @@ $user->destroy();
 
 public **set** (*mixed* $property, *mixed* $value)
 
-Sets a value in the session bag
+Menetapkan nilai dalam tas sesi
 
 ```php
 <?php
@@ -64,7 +64,7 @@ $user->set("name", "Kimbra");
 
 public **__set** (*mixed* $property, *mixed* $value)
 
-Magic setter to assign values to the session bag
+Magic setter untuk menetapkan nilai pada tas sesi
 
 ```php
 <?php
@@ -75,7 +75,7 @@ $user->name = "Kimbra";
 
 public **get** (*mixed* $property, [*mixed* $defaultValue])
 
-Obtains a value from the session bag optionally setting a default value
+Mendapatkan nilai dari tas sesi secara opsional menetapkan nilai default
 
 ```php
 <?php
@@ -86,7 +86,7 @@ echo $user->get("name", "Kimbra");
 
 public **__get** (*mixed* $property)
 
-Magic getter to obtain values from the session bag
+Magic getter mendapatkan nilai dari tas sesi
 
 ```php
 <?php
@@ -97,7 +97,7 @@ echo $user->name;
 
 public **has** (*mixed* $property)
 
-Check whether a property is defined in the internal bag
+Periksa apakah sebuah properti didefinisikan di dalam tas internal
 
 ```php
 <?php
@@ -110,7 +110,7 @@ var_dump(
 
 public **__isset** (*mixed* $property)
 
-Magic isset to check whether a property is defined in the bag
+Magic isset untuk memeriksa apakah sebuah properti didefinisikan di dalam tas
 
 ```php
 <?php
@@ -123,7 +123,7 @@ var_dump(
 
 public **remove** (*mixed* $property)
 
-Removes a property from the internal bag
+Menghapus sebuah properti dari tas internal
 
 ```php
 <?php
@@ -134,7 +134,7 @@ $user->remove("name");
 
 public **__unset** (*mixed* $property)
 
-Magic unset to remove items using the array syntax
+Magic unset untuk menghapus item menggunakan sintaks array
 
 ```php
 <?php
@@ -145,7 +145,7 @@ unset($user["name"]);
 
 final public **count** ()
 
-Return length of bag
+Kembalikan Panjang Tas
 
 ```php
 <?php
@@ -156,7 +156,7 @@ echo $user->count();
 
 final public **getIterator** ()
 
- Returns the bag iterator
+ Kembalikan iterator tas
 
 final public **offsetSet** (*mixed* $property, *mixed* $value)
 
