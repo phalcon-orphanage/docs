@@ -46,11 +46,11 @@ Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
