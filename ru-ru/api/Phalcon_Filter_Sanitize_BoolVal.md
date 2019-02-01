@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\BoolVal'
 
 Sanitizes a value to boolean
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
