@@ -9,19 +9,19 @@ category: 'filter'
 
 * * *
 
-- [フィルターとサニタイズ](filter-overview)
+- [Filtering and Sanitizing](filter-overview)
 - [Built-in Sanitizers](filter-sanitizers)
-- [データのサニタイズ](filter-sanitizing)
-- [コントローラーからのサニタイズ](filter-sanitizing-from-controllers)
+- [Sanitizing data](filter-sanitizing)
+- [Sanitizing from Controllers](filter-sanitizing-from-controllers)
 - [Sanitizing Action Parameters](filter-sanitizing-action-parameters)
-- [データのフィルタリング](filter-sanitizing-data)
+- [Filtering data](filter-sanitizing-data)
 - [Combining Sanitizers](filter-combining-sanitizers)
-- [複雑なサニタイズとフィルタリング](filter-complex-sanitization-filtering)
+- [Complex Sanitizing and Filtering](filter-complex-sanitization-filtering)
 - [Implementing your own Sanitizer](filter-custom)
 
 * * *
 
-## フィルターとサニタイズ
+## Filtering and Sanitizing
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
