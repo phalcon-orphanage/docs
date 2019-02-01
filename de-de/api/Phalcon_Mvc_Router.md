@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the process of taking a URI endpoint (that part of the URI which comes after the base URL) and decomposing it into parameters to determine which module, controller, and action of that controller should receive the request
 
@@ -33,7 +33,7 @@ echo $router->getControllerName();
 
 ```
 
-## Konstanten
+## Constants
 
 *integer* **URI_SOURCE_GET_URL**
 
@@ -43,7 +43,7 @@ echo $router->getControllerName();
 
 *integer* **POSITION_LAST**
 
-## Methoden
+## Methods
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -59,11 +59,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Legt den Event-manager fest
+Sets the events manager
 
 public **getEventsManager** ()
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **getRewriteUri** ()
 
@@ -92,15 +92,15 @@ Sets the name of the default namespace
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Legt den Namen des Standardmoduls fest
+Sets the name of the default module
 
 public **setDefaultController** (*mixed* $controllerName)
 
-Legt den Standardnamen des controllers fest
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName)
 
-Legt den Standard Aktions Name fest
+Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
@@ -226,27 +226,27 @@ Returns the processed parameters
 
 public **getMatchedRoute** ()
 
-Gibt die Route zurück, welche auf die verarbeitete URI passt
+Returns the route that matches the handled URI
 
 public **getMatches** ()
 
-Gibt die Sub-Ausdrücke in einem passenden regulären Ausdruck zurück
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** ()
 
-Überprüft, ob der Router mit einem definierten routen übereinstimmt
+Checks if the router matches any of the defined routes
 
 public **getRoutes** ()
 
-Gibt alle im router definierten Routen zurück
+Returns all the routes defined in the router
 
 public **getRouteById** (*mixed* $id)
 
-Gibt ein Routenobjekt anhand der id zurück
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-Gibt ein Routenobjekt anhand des Namens zurück
+Returns a route object by its name
 
 public **isExactControllerName** ()
 
