@@ -30,7 +30,7 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Методы
+## Methods
 
 public **getDirectory** ()
 
