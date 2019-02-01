@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\UpperFirst'
 
 Sanitizes a value using `ucfirst`
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( mixed $input ): mixed
