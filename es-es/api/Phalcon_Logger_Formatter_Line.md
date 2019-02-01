@@ -12,25 +12,25 @@ title: 'Phalcon\Logger\Formatter\Line'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
-Formats messages using an one-line string
+Formatea mensajes utilizando una cadena de una línea
 
 ## Métodos
 
 public **getDateFormat** ()
 
-Default date format
+Formato de fecha por defecto
 
 public **setDateFormat** (*mixed* $dateFormat)
 
-Default date format
+Formato de fecha por defecto
 
 public **getFormat** ()
 
-Format applied to each message
+Formato aplicado a cada mensaje
 
 public **setFormat** (*mixed* $format)
 
-Format applied to each message
+Formato aplicado a cada mensaje
 
 public **__construct** ([*string* $format], [*string* $dateFormat])
 
@@ -38,7 +38,7 @@ Phalcon\Logger\Formatter\Line construct
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Aplica un formato a un mensaje antes de enviarlo al registro interno
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
