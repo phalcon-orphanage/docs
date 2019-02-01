@@ -8,9 +8,9 @@ title: 'Phalcon\Loader'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
-This component helps to load your project classes automatically based on some conventions
+Komponen ini membantu memuat kelas proyek Anda secara otomatis berdasarkan beberapa konvensi
 
 ```php
 <?php
@@ -37,27 +37,27 @@ $adapter = new \Example\Adapter\Some();
 
 ```
 
-## Methods
+## Metode
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the events manager
+Menyetel pengelola acara
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **setExtensions** (*array* $extensions)
 
-Sets an array of file extensions that the loader must try in each attempt to locate the file
+Menetapkan array ekstensi file yang harus dilakukan oleh loader dalam setiap usaha untuk menemukan file tersebut
 
 public **getExtensions** ()
 
-Returns the file extensions registered in the loader
+Mengembalikan ekstensi file yang terdaftar di loader
 
 public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
 
-Register namespaces and their related directories
+Mendaftar ruang nama dan direktori terkait mereka
 
 public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](Phalcon_Loader)
 
@@ -85,15 +85,15 @@ protected **prepareNamespace** (*array* $namespace)
 
 public **getNamespaces** ()
 
-Returns the namespaces currently registered in the autoloader
+Mengembalikan ruang nama yang saat ini terdaftar di autoloader
 
 public **registerDirs** (*array* $directories, [*mixed* $merge])
 
-Register directories in which "not found" classes could be found
+Daftar direktori di mana "tidak ditemukan" kelas dapat ditemukan
 
 public **getDirs** ()
 
-Returns the directories currently registered in the autoloader
+Mengembalikan direktori yang saat ini terdaftar di autoloader
 
 public **registerFiles** (*array* $files, [*mixed* $merge])
 
@@ -101,36 +101,36 @@ Registers files that are "non-classes" hence need a "require". This is very usef
 
 public **getFiles** ()
 
-Returns the files currently registered in the autoloader
+Mengembalikan file yang saat ini terdaftar di autoloader
 
 public **registerClasses** (*array* $classes, [*mixed* $merge])
 
-Register classes and their locations
+Mendaftar kelas dan lokasinya
 
 public **getClasses** ()
 
-Returns the class-map currently registered in the autoloader
+Mengembalikan peta kelas yang saat ini terdaftar di autoloader
 
 public **register** ([*mixed* $prepend])
 
-Register the autoload method
+Daftarkan metode autoload
 
 public **unregister** ()
 
-Unregister the autoload method
+Unregister metode autoload
 
 public **loadFiles** ()
 
-Checks if a file exists and then adds the file by doing virtual require
+Memeriksa apakah ada file dan kemudian menambahkan file dengan melakukan virtual require
 
 public **autoLoad** (*mixed* $className)
 
-Autoloads the registered classes
+Autoload kelas yang terdaftar
 
 public **getFoundPath** ()
 
-Get the path when a class was found
+Dapatkan jalan saat kelas ditemukan
 
 public **getCheckedPath** ()
 
-Get the path the loader is checking for a path
+Dapatkan jalan yang dilacak loader untuk jalan setapak
