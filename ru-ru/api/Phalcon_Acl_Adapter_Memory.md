@@ -152,7 +152,7 @@ protected mixed $subjectsNames
 
 Subject Names
 
-### Methods
+### Методы
 
 Returns latest function used to acquire access
 
