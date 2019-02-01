@@ -8,61 +8,61 @@ title: 'Phalcon\Debug'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
-Provides debug capabilities to Phalcon applications
+Proporciona capacidades de depuración para aplicaciones Phalcon
 
 ## Métodos
 
 public **setUri** (*mixed* $uri)
 
-Change the base URI for static resources
+Cambiar el URI base para recursos estáticos
 
 public **setShowBackTrace** (*mixed* $showBackTrace)
 
-Sets if files the exception's backtrace must be showed
+Establece si los archivos deben mostrar la traza inversa de la excepción
 
 public **setShowFiles** (*mixed* $showFiles)
 
-Set if files part of the backtrace must be shown in the output
+Establezca si los archivos que forman parte de la traza inversa se deben mostrar en la salida
 
 public **setShowFileFragment** (*mixed* $showFileFragment)
 
-Sets if files must be completely opened and showed in the output or just the fragment related to the exception
+Establece si los archivos deben estar completamente abiertos y se muestran en la salida o solo el fragmento relacionado con la excepción
 
 public **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
-Listen for uncaught exceptions and unsilent notices or warnings
+Escuche las excepciones no detectadas y avisos o advertencias insensibles
 
 public **listenExceptions** ()
 
-Listen for uncaught exceptions
+Escuche las excepciones no detectadas
 
 public **listenLowSeverity** ()
 
-Listen for unsilent notices or warnings
+Escucha notificaciones sonoras o advertencias
 
 public **halt** ()
 
-Halts the request showing a backtrace
+Detiene la solicitud mostrando una traza inversa
 
 public **debugVar** (*mixed* $varz, [*mixed* $key])
 
-Adds a variable to the debug output
+Agrega una variable a la salida de depuración
 
 public **clearVars** ()
 
-Clears are variables added previously
+Anula las variables añadidas previamente
 
 protected **_escapeString** (*mixed* $value)
 
-Escapes a string with htmlentities
+Escapa una cadena con htmlentities
 
 protected **_getArrayDump** (*array* $argument, [*mixed* $n])
 
-Produces a recursive representation of an array
+Produce una representación recursiva de una matriz
 
 protected **_getVarDump** (*mixed* $variable)
 
-Produces an string representation of a variable
+Produce una representación de cadena de una variable
 
 public **getMajorVersion** ()
 
@@ -70,24 +70,24 @@ Returns the major framework's version
 
 public **getVersion** ()
 
-Generates a link to the current version documentation
+Genera un enlace a la documentación de la versión actual
 
 public **getCssSources** ()
 
-Returns the css sources
+Devuelve las fuentes css
 
 public **getJsSources** ()
 
-Returns the javascript sources
+Devuelve las fuentes javascript
 
 final protected **showTraceItem** (*mixed* $n, *array* $trace)
 
-Shows a backtrace item
+Muestra un elemento de seguimiento
 
 public **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $file, *mixed* $line, *mixed* $context)
 
-Throws an exception when a notice or warning is raised
+Produce una excepción cuando aparece una notificación o advertencia
 
 public **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Handles uncaught exceptions
+Maneja las excepciones no detectadas
