@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\MetaData\StrategyInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MetaData\StrategyInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
