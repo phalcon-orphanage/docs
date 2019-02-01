@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Adapter\Apc'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apc.zep)
 
-Stores the parsed annotations in APC. Este adaptador es adecuado para ambientes en producción
+Stores the parsed annotations in APC. This adapter is suitable for production
 
 ```php
 <?php
