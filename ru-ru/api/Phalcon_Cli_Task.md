@@ -35,7 +35,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ```
 
-## Methods
+## Методы
 
 final public **__construct** ()
 
