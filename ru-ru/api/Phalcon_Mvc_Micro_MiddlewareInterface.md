@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\MiddlewareInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/middlewareinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **call** ([Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) $application)
 
