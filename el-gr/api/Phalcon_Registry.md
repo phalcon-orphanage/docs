@@ -79,7 +79,7 @@ Moves cursor to next row in the registry
 
 final public **key** ()
 
-Λαμβάνει αριθμό τον δείκτη ενεργής γραμμής στο μητρώο
+Gets pointer number of active row in the registry
 
 final public **rewind** ()
 
@@ -91,7 +91,7 @@ Checks if the iterator is valid
 
 public **current** ()
 
-Λαμβάνει την τρέχουσα τιμή εσωτερικό στον iterator
+Obtains the current value in the internal iterator
 
 final public **__set** (*mixed* $key, *mixed* $value)
 
