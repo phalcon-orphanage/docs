@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Application'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
 
 This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
@@ -56,7 +56,7 @@ $application->main();
 
 ```
 
-## Methoden
+## Methods
 
 public **useImplicitView** (*mixed* $implicitView)
 
@@ -72,15 +72,15 @@ Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Legt den Event-manager fest
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Registrieren Sie ein Array von Modulen, welche in der Anwendung vorhanden sind
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -102,7 +102,7 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Liefert die Module, welche in der Anwendung registriert sind
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
@@ -126,4 +126,4 @@ Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magische Methode __get
+Magic method __get
