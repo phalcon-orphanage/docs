@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Request\File'
 
 *implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
 
 Provides OO wrappers to the $_FILES superglobal
 
@@ -33,7 +33,7 @@ class PostsController extends Controller
 
 ```
 
-## Metodlar
+## Methods
 
 public **getError** ()
 
@@ -47,28 +47,28 @@ Phalcon\Http\Request\File constructor
 
 public **getSize** ()
 
-Yüklenen dosyanın dosya boyutunu döndürür
+Returns the file size of the uploaded file
 
-herkese açık ** isim al** ()
+public **getName** ()
 
-Yüklenen dosyanın gerçek adını döndürür
+Returns the real name of the uploaded file
 
 public **getTempName** ()
 
-Yüklenen dosyanın geçici adını döndürür
+Returns the temporary name of the uploaded file
 
-genel **getType** ()
+public **getType** ()
 
-Tarayıcı tarafından bildirilen mime türünü geri getirir. Bu mime türü tamamen güvenli değildir, bunun yerine getRealType() kullanın
+Returns the mime type reported by the browser This mime type is not completely secure, use getRealType() instead
 
 public **getRealType** ()
 
-Finfo kullanarak yükleme dosyasının gerçek mime türünü alır
+Gets the real mime type of the upload file using finfo
 
 public **isUploadedFile** ()
 
-Dosyanın Post ile yüklenip yüklenmediğini kontrol eder.
+Checks whether the file has been uploaded via Post.
 
 public **moveTo** (*mixed* $destination)
 
-Geçici dosyayı uygulama içindeki bir hedef bölgesine taşır taşır
+Moves the temporary file to a destination within the application
