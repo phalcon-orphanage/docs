@@ -12,13 +12,13 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
-Formats messages using JSON encoding
+Formatea mensajes utilizando el cifrado JSON
 
 ## Métodos
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Applies a format to a message before sent it to the internal log
+Aplica un formato a un mensaje antes de enviarlo al registro interno
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
