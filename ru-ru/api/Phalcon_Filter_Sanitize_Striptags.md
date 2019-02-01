@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Striptags'
 
 Sanitizes a value using `striptags`
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( mixed $input ): mixed
