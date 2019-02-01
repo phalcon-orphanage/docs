@@ -8,7 +8,7 @@ title: 'Phalcon\Db\DialectInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
