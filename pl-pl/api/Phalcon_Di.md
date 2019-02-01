@@ -8,15 +8,15 @@ title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. Developer może również użyć komponentu do wstrzykiwania zależności i zarządzania instancjami różnych klas używanych w aplikacji.
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
-Ogólnie rzecz biorąc, komponent implementuje wzorzec `odwrotności kontroli (IoC)`. Zastosowanie tego rozwiązania powoduje, że obiekty nie otrzymuję zależności poprzez settery lub konstruktory, lecz poprzez zapytanie usługi wstrzykującej zależności. Dzięki temu zmniejszamy kompleksowość z racji tego że istnieje tylko jedna droga aby otrzymać wymagane zależności wewnątrz komponentu.
+Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
-Dodatkowo, wzorzec ten zwiększa możliwości testowania naszego kodu, czyniąc z niego bardziej odpornego na błędy.
+Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
 ```php
 <?php
