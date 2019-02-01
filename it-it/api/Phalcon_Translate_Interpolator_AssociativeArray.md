@@ -8,9 +8,9 @@ title: 'Phalcon\Translate\Interpolator\AssociativeArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
 
-## Metodi
+## Methods
 
 public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
