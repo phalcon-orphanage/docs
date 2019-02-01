@@ -10,7 +10,7 @@ title: 'Phalcon\Tag\Select'
 
 Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
 
-## Методы
+## Methods
 
 public static **selectField** (*array* $parameters, [*array* $data])
 
