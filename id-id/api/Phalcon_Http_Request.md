@@ -8,9 +8,9 @@ title: 'Phalcon\Http\Request'
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
-Encapsulates request information for easy and secure access from application controllers.
+Encapsulates informasi permintaan untuk akses mudah dan aman dari pengontrol aplikasi.
 
 The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
 
@@ -31,130 +31,130 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-## Methods
+## Metode
 
-public **getHttpMethodParameterOverride** ()
+publik **mendapatkan Http Metode Mengesampingkan Parameter** ()
 
 ...
 
-public **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
+publik **set Http Metode Mengesampingkan Parameter** (*mixed* $httpMethodParameterOverride)
 
 ...
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
-public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
+publik **mendapatkan** ([*campur aduk* $name], [*campur aduk* $filters], [*campur aduk* $defaultValue], [*campur aduk* $notAllowEmpty], [*campur aduk* $noRecursive])
 
 Gets a variable from the $_REQUEST superglobal applying filters if needed. If no parameters are given the $_REQUEST superglobal is returned
 
 ```php
 <?php
 
-// Returns value from $_REQUEST["user_email"] without sanitizing
+// Mengembalikan nilai dari $_REQUEST["user_email"] tanpa sanitasi
 $userEmail = $request->get("user_email");
 
-// Returns value from $_REQUEST["user_email"] with sanitizing
+// Mengembalikan nilai dari $_REQUEST["user_email"] tanpa sanitasi
 $userEmail = $request->get("user_email", "email");
 
 ```
 
-public **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
+publik **mendapatkan postingan** ([*campur aduk* $name], [*campur aduk* $filters], [*campur aduk* $defaultValue], [*campur aduk* $notAllowEmpty], [*campur aduk* $noRecursive])
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+Dapatkan variabel dari penerapan $_POST superglobal jika diperlukan Jika tidak ada parameter yang diberi superglobal $_POST dikembalikan
 
 ```php
 <?php
 
-// Returns value from $_POST["user_email"] without sanitizing
+// Mengembalikan nilai dari $_POST["user_email"] tanpa sanitasi
 $userEmail = $request->getPost("user_email");
 
-// Returns value from $_POST["user_email"] with sanitizing
+// Mengembalikan nilai dari $_POST["user_email"] tanpa sanitasi
 $userEmail = $request->getPost("user_email", "email");
 
 ```
 
-public **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
+publik **mendapatkan Put** ([*campur aduk* $name], [*campur aduk* $filters], [*campur aduk* $defaultValue], [*campur aduk* $notAllowEmpty], [*campur aduk* $noRecursive])
 
-Gets a variable from put request
+Mendapatkan variabel dari permintaan
 
 ```php
 <?php
 
-// Returns value from $_PUT["user_email"] without sanitizing
+// Mengembalikan nilai dari $_PUT["user_email"] tanpa sanitasi
 $userEmail = $request->getPut("user_email");
 
-// Returns value from $_PUT["user_email"] with sanitizing
+// Mengembalikan nilai dari $_PUT["user_email"] tanpa sanitasi
 $userEmail = $request->getPut("user_email", "email");
 
 ```
 
-public **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
+publik **mendapatkan Kueri** ([*campur aduk* $name], [*campur aduk* $filters], [*campur aduk* $defaultValue], [*campur aduk* $notAllowEmpty], [*campur aduk* $noRecursive])
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+Mendapat variabel dari $_GET superglobal menerapkan filter jika diperlukan Jika tidak ada parameter yang diberi superglobal $_GET dikembalikan
 
 ```php
 <?php
 
-// Returns value from $_GET["id"] without sanitizing
+// Mengembalikan nilai dari $_GET["id"] tanpa sanitasi
 $id = $request->getQuery("id");
 
-// Returns value from $_GET["id"] with sanitizing
+// Mengembalikan nilai dari $_GET["id"] tanpa sanitasi
 $id = $request->getQuery("id", "int");
 
-// Returns value from $_GET["id"] with a default value
+// Mengembalikan nilai dari $_GET["id"] dengan nilai default
 $id = $request->getQuery("id", null, 150);
 
 ```
 
-final protected **getHelper** (*array* $source, [*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
+akhir dilindungi **mendapatkan Pembantu** (*array* $source, [*campur aduk* $name], [*campur aduk* $filters], [*campur aduk* $defaultValue], [*campur aduk* $notAllowEmpty], [*campur aduk* $noRecursive])
 
 Helper to get data from superglobals, applying filters if needed. If no parameters are given the superglobal is returned.
 
-public **getServer** (*mixed* $name)
+publik **mendapatkan Server** (*campur aduk* $name)
 
-Gets variable from $_SERVER superglobal
+Mendapatkan nilai-nilai dari $_SERVER superglobal
 
-public **has** (*mixed* $name)
+publik **telah** (*campuran* $name)
 
-Checks whether $_REQUEST superglobal has certain index
+Memeriksa apakah superglobal $_REQUEST memiliki indeks tertentu
 
-public **hasPost** (*mixed* $name)
+publik **telah memposting** (*campur aduk* $name)
 
-Checks whether $_POST superglobal has certain index
+Memeriksa apakah $_POST superglobal memiliki indeks tertentu
 
-public **hasPut** (*mixed* $name)
+publik **telah memposing** (*campur aduk* $name)
 
-Checks whether the PUT data has certain index
+Memeriksa apakah data PUT memiliki indeks tertentu
 
-public **hasQuery** (*mixed* $name)
+publik **telah Kuery** (*campur aduk* $name)
 
-Checks whether $_GET superglobal has certain index
+Memeriksa apakah superglobal $_GET memiliki indeks tertentu
 
-final public **hasServer** (*mixed* $name)
+publik akhir **memiliki Server** (*campur aduk* $name)
 
-Checks whether $_SERVER superglobal has certain index
+Periksa apakah $_SERVER superglobal memiliki indeks tertentu
 
 final public **getHeader** (*mixed* $header)
 
-Gets HTTP header from request data
+Mendapat header HTTP dari data permintaan
 
 public **getScheme** ()
 
-Gets HTTP schema (http/https)
+Mendapat skema HTTP (http / https)
 
 public **isAjax** ()
 
-Checks whether request has been made using ajax
+Memeriksa apakah permintaan telah dilakukan dengan menggunakan ajax
 
 public **isSoap** ()
 
-Checks whether request has been made using SOAP
+Memeriksa apakah permintaan telah dilakukan dengan menggunakan SOAP
 
 public **isSoapRequested** ()
 
@@ -162,7 +162,7 @@ Alias of isSoap(). It will be deprecated in future versions
 
 public **isSecure** ()
 
-Checks whether request has been made using any secure layer
+Memeriksa apakah permintaan telah dilakukan dengan menggunakan lapisan yang aman
 
 public **isSecureRequest** ()
 
@@ -170,23 +170,23 @@ Alias of isSecure(). It will be deprecated in future versions
 
 public **getRawBody** ()
 
-Gets HTTP raw request body
+Mendapat HTTP raw request body
 
 public **getJsonRawBody** ([*mixed* $associative])
 
-Gets decoded JSON HTTP raw request body
+Mendapat kode permintaan mentah JSON HTTP
 
 public **getServerAddress** ()
 
-Gets active server address IP
+Gets aktif alamat server IP
 
 public **getServerName** ()
 
-Gets active server name
+Mendapatkan nama server aktif
 
 public **getHttpHost** ()
 
-Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
+Mendapat nama host yang digunakan oleh permintaan. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Catatan: validasi dan pembersihan memiliki dampak kinerja negatif karena mereka menggunakan ekspresi reguler.
 
 ```php
 <?php
@@ -220,11 +220,11 @@ Checks if the `Request::getHttpHost` method will be use strict validation of hos
 
 public **getPort** ()
 
-Gets information about the port on which the request is made.
+Mendapatkan informasi tentang port tempat permintaan dibuat.
 
 final public **getURI** ()
 
-Gets HTTP URI which request has been made
+Mendapat URI HTTP yang permintaannya telah dibuat
 
 public **getClientAddress** ([*mixed* $trustForwardedHeader])
 
@@ -232,19 +232,19 @@ Gets most possible client IPv4 Address. This method searches in $_SERVER["REMOTE
 
 final public **getMethod** ()
 
-Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. The method is always an uppercased string.
+Mendapat metode HTTP yang permintaannya telah dibuat Jika header X-HTTP-Method-Override diset, dan jika metodenya adalah POST, maka itu digunakan untuk menentukan metode HTTP "sebenarnya" yang dimaksud. Parameter permintaan _method juga dapat digunakan untuk menentukan metode HTTP, tapi hanya jika setHttpMethodParameterOverride (true) telah dipanggil. Metode ini selalu merupakan string bertingkat.
 
 public **getUserAgent** ()
 
-Gets HTTP user agent used to made the request
+Mendapat agen pengguna HTTP yang digunakan untuk mengajukan permintaan
 
 public **isValidHttpMethod** (*mixed* $method)
 
-Checks if a method is a valid HTTP method
+Memeriksa apakah metode adalah metode HTTP yang valid
 
 public **isMethod** (*mixed* $methods, [*mixed* $strict])
 
-Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
+Periksa apakah metode HTTP sesuai dengan metode yang dilewatkan Bila benar itu benar apakah metode yang divalidasi adalah metode HTTP yang sesungguhnya
 
 public **isPost** ()
 
@@ -288,11 +288,11 @@ Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
 public **hasFiles** ([*mixed* $onlySuccessful])
 
-Checks whether request include attached files
+Memeriksa apakah permintaan menyertakan file terlampir
 
 final protected **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
-Recursively counts file in an array of files
+Secara rekursif menghitung file dalam array file
 
 public **getUploadedFiles** ([*mixed* $onlySuccessful])
 
@@ -304,7 +304,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 public **getHeaders** ()
 
-Returns the available headers in the request
+Mengembalikan header yang tersedia sesuai permintaan
 
 ```php
 <?php
@@ -326,35 +326,35 @@ Gets web page that refers active request. ie: https://www.google.com
 
 final protected **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
-Process a request header and return the one with best quality
+Proseskan header request dan kembalikan yang satu dengan kualitas terbaik
 
 public **getContentType** ()
 
-Gets content type which request has been made
+Mendapat jenis konten yang permintaannya telah dibuat
 
 public **getAcceptableContent** ()
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Mendapatkan array dengan mime/jenis dan kualitasnya diterima oleh browser/klien dari _SERVER["HTTP_ACCEPT"]
 
 public **getBestAccept** ()
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Memanfaatkan mime/type terbaik yang diterima oleh browser/client dari _SERVER["HTTP_ACCEPT"]
 
 public **getClientCharsets** ()
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Mendapatkan array charsets dan kualitasnya diterima oleh browser/client dari _SERVER ["HTTP_ACCEPT_CHARSET"]
 
 public **getBestCharset** ()
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Mendapatkan charset terbaik yang diterima oleh browser/klien dari _SERVER ["HTTP_ACCEPT_CHARSET"]
 
 public **getLanguages** ()
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Mendapat bahasa array dan kualitas mereka diterima oleh browser/client dari _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 public **getBestLanguage** ()
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Mendapatkan bahasa terbaik yang diterima oleh browser/klien dari _SERVER["HTTP_ACCEPT_LANGUAGE"]
 
 public **getBasicAuth** ()
 
@@ -362,8 +362,8 @@ Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
 
 public **getDigestAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+Mendapatkan info auth yang diterima oleh browser/klien dari $_SERVER["PHP_AUTH_DIGEST"]
 
 final protected **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
-Process a request header and return an array of values with their qualities
+Proseskan header permintaan dan kembalikan sejumlah nilai dengan kualitasnya
