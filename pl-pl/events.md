@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Events Manager
+# Menadżer wydarzeń
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
@@ -21,7 +21,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## Usage Example
+## Przykład użycia
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -412,112 +412,112 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 <a name='list'></a>
 
-## List of Events
+## Lista wydarzeń
 
 The events available in Phalcon are:
 
-| Component          | Zdarzenie                            |
-| ------------------ | ------------------------------------ |
-| ACL                | `acl:afterCheckAccess`               |
-| ACL                | `acl:beforeCheckAccess`              |
-| Application        | `application:afterHandleRequest`     |
-| Application        | `application:afterStartModule`       |
-| Application        | `application:beforeHandleRequest`    |
-| Application        | `application:beforeSendResponse`     |
-| Application        | `application:beforeStartModule`      |
-| Application        | `application:boot`                   |
-| Application        | `application:viewRender`             |
-| CLI                | `dispatch:beforeException`           |
-| Collection         | `afterCreate`                        |
-| Collection         | `afterSave`                          |
-| Collection         | `afterUpdate`                        |
-| Collection         | `afterValidation`                    |
-| Collection         | `afterValidationOnCreate`            |
-| Collection         | `afterValidationOnUpdate`            |
-| Collection         | `beforeCreate`                       |
-| Collection         | `beforeSave`                         |
-| Collection         | `beforeUpdate`                       |
-| Collection         | `beforeValidation`                   |
-| Collection         | `beforeValidationOnCreate`           |
-| Collection         | `beforeValidationOnUpdate`           |
-| Collection         | `notDeleted`                         |
-| Collection         | `notSave`                            |
-| Collection         | `notSaved`                           |
-| Collection         | `onValidationFails`                  |
-| Collection         | `validation`                         |
-| Collection Manager | `collectionManager:afterInitialize`  |
-| Console            | `console:afterHandleTask`            |
-| Console            | `console:afterStartModule`           |
-| Console            | `console:beforeHandleTask`           |
-| Console            | `console:beforeStartModule`          |
-| Db                 | `db:afterQuery`                      |
-| Db                 | `db:beforeQuery`                     |
-| Db                 | `db:beginTransaction`                |
-| Db                 | `db:createSavepoint`                 |
-| Db                 | `db:commitTransaction`               |
-| Db                 | `db:releaseSavepoint`                |
-| Db                 | `db:rollbackTransaction`             |
-| Db                 | `db:rollbackSavepoint`               |
-| Dispatcher         | `dispatch:afterExecuteRoute`         |
-| Dispatcher         | `dispatch:afterDispatch`             |
-| Dispatcher         | `dispatch:afterDispatchLoop`         |
-| Dispatcher         | `dispatch:afterInitialize`           |
-| Dispatcher         | `dispatch:beforeException`           |
-| Dispatcher         | `dispatch:beforeExecuteRoute`        |
-| Dispatcher         | `dispatch:beforeDispatch`            |
-| Dispatcher         | `dispatch:beforeDispatchLoop`        |
-| Dispatcher         | `dispatch:beforeForward`             |
-| Dispatcher         | `dispatch:beforeNotFoundAction`      |
-| Loader             | `loader:afterCheckClass`             |
-| Loader             | `loader:beforeCheckClass`            |
-| Loader             | `loader:beforeCheckPath`             |
-| Loader             | `loader:pathFound`                   |
-| Micro              | `micro:afterHandleRoute`             |
-| Micro              | `micro:afterExecuteRoute`            |
-| Micro              | `micro:beforeExecuteRoute`           |
-| Micro              | `micro:beforeHandleRoute`            |
-| Micro              | `micro:beforeNotFound`               |
-| Middleware         | `afterBinding`                       |
-| Middleware         | `afterExecuteRoute`                  |
-| Middleware         | `afterHandleRoute`                   |
-| Middleware         | `beforeExecuteRoute`                 |
-| Middleware         | `beforeHandleRoute`                  |
-| Middleware         | `beforeNotFound`                     |
-| Model              | `afterCreate`                        |
-| Model              | `afterDelete`                        |
-| Model              | `afterSave`                          |
-| Model              | `afterUpdate`                        |
-| Model              | `afterValidation`                    |
-| Model              | `afterValidationOnCreate`            |
-| Model              | `afterValidationOnUpdate`            |
-| Model              | `beforeDelete`                       |
-| Model              | `notDeleted`                         |
-| Model              | `beforeCreate`                       |
-| Model              | `beforeDelete`                       |
-| Model              | `beforeSave`                         |
-| Model              | `beforeUpdate`                       |
-| Model              | `beforeValidation`                   |
-| Model              | `beforeValidationOnCreate`           |
-| Model              | `beforeValidationOnUpdate`           |
-| Model              | `notSave`                            |
-| Model              | `notSaved`                           |
-| Model              | `onValidationFails`                  |
-| Model              | `prepareSave`                        |
-| Models Manager     | `modelsManager:afterInitialize`      |
-| Request            | `request:afterAuthorizationResolve`  |
-| Request            | `request:beforeAuthorizationResolve` |
-| Router             | `router:beforeCheckRoutes`           |
-| Router             | `router:beforeCheckRoute`            |
-| Router             | `router:matchedRoute`                |
-| Router             | `router:notMatchedRoute`             |
-| Router             | `router:afterCheckRoutes`            |
-| Router             | `router:beforeMount`                 |
-| View               | `view:afterRender`                   |
-| View               | `view:afterRenderView`               |
-| View               | `view:beforeRender`                  |
-| View               | `view:beforeRenderView`              |
-| View               | `view:notFoundView`                  |
-| Volt               | `compileFilter`                      |
-| Volt               | `compileFunction`                    |
-| Volt               | `compileStatement`                   |
-| Volt               | `resolveExpression`                  |
+| Komponent               | Zdarzenie                            |
+| ----------------------- | ------------------------------------ |
+| ACL                     | `acl:afterCheckAccess`               |
+| ACL                     | `acl:beforeCheckAccess`              |
+| Aplikacja               | `application:afterHandleRequest`     |
+| Aplikacja               | `application:afterStartModule`       |
+| Aplikacja               | `application:beforeHandleRequest`    |
+| Aplikacja               | `application:beforeSendResponse`     |
+| Aplikacja               | `application:beforeStartModule`      |
+| Aplikacja               | `application:boot`                   |
+| Aplikacja               | `application:viewRender`             |
+| CLI                     | `dispatch:beforeException`           |
+| Kolekcja                | `afterCreate`                        |
+| Kolekcja                | `afterSave`                          |
+| Kolekcja                | `afterUpdate`                        |
+| Kolekcja                | `afterValidation`                    |
+| Kolekcja                | `afterValidationOnCreate`            |
+| Kolekcja                | `afterValidationOnUpdate`            |
+| Kolekcja                | `beforeCreate`                       |
+| Kolekcja                | `beforeSave`                         |
+| Kolekcja                | `beforeUpdate`                       |
+| Kolekcja                | `beforeValidation`                   |
+| Kolekcja                | `beforeValidationOnCreate`           |
+| Kolekcja                | `beforeValidationOnUpdate`           |
+| Kolekcja                | `notDeleted`                         |
+| Kolekcja                | `notSave`                            |
+| Kolekcja                | `notSaved`                           |
+| Kolekcja                | `onValidationFails`                  |
+| Kolekcja                | `potwierdzenie`                      |
+| Menadżer kolekcji       | `collectionManager:afterInitialize`  |
+| Console                 | `console:afterHandleTask`            |
+| Console                 | `console:afterStartModule`           |
+| Console                 | `console:beforeHandleTask`           |
+| Console                 | `console:beforeStartModule`          |
+| Db                      | `db:afterQuery`                      |
+| Db                      | `db:beforeQuery`                     |
+| Db                      | `db:beginTransaction`                |
+| Db                      | `db:createSavepoint`                 |
+| Db                      | `db:commitTransaction`               |
+| Db                      | `db:releaseSavepoint`                |
+| Db                      | `db:rollbackTransaction`             |
+| Db                      | `db:rollbackSavepoint`               |
+| Dyspozytor              | `dispatch:afterExecuteRoute`         |
+| Dyspozytor              | `dispatch:afterDispatch`             |
+| Dyspozytor              | `dispatch:afterDispatchLoop`         |
+| Dyspozytor              | `dispatch:afterInitialize`           |
+| Dyspozytor              | `dispatch:beforeException`           |
+| Dyspozytor              | `dispatch:beforeExecuteRoute`        |
+| Dyspozytor              | `dispatch:beforeDispatch`            |
+| Dyspozytor              | `dispatch:beforeDispatchLoop`        |
+| Dyspozytor              | `dispatch:beforeForward`             |
+| Dyspozytor              | `dispatch:beforeNotFoundAction`      |
+| Loader                  | `loader:afterCheckClass`             |
+| Loader                  | `loader:beforeCheckClass`            |
+| Loader                  | `loader:beforeCheckPath`             |
+| Loader                  | `loader:pathFound`                   |
+| Micro                   | `micro:afterHandleRoute`             |
+| Micro                   | `micro:afterExecuteRoute`            |
+| Micro                   | `micro:beforeExecuteRoute`           |
+| Micro                   | `micro:beforeHandleRoute`            |
+| Micro                   | `micro:beforeNotFound`               |
+| Oprogramowane pośrednie | `afterBinding`                       |
+| Oprogramowane pośrednie | `afterExecuteRoute`                  |
+| Oprogramowane pośrednie | `afterHandleRoute`                   |
+| Oprogramowane pośrednie | `beforeExecuteRoute`                 |
+| Oprogramowane pośrednie | `beforeHandleRoute`                  |
+| Oprogramowane pośrednie | `beforeNotFound`                     |
+| Model                   | `afterCreate`                        |
+| Model                   | `afterDelete`                        |
+| Model                   | `afterSave`                          |
+| Model                   | `afterUpdate`                        |
+| Model                   | `afterValidation`                    |
+| Model                   | `afterValidationOnCreate`            |
+| Model                   | `afterValidationOnUpdate`            |
+| Model                   | `beforeDelete`                       |
+| Model                   | `notDeleted`                         |
+| Model                   | `beforeCreate`                       |
+| Model                   | `beforeDelete`                       |
+| Model                   | `beforeSave`                         |
+| Model                   | `beforeUpdate`                       |
+| Model                   | `beforeValidation`                   |
+| Model                   | `beforeValidationOnCreate`           |
+| Model                   | `beforeValidationOnUpdate`           |
+| Model                   | `notSave`                            |
+| Model                   | `notSaved`                           |
+| Model                   | `onValidationFails`                  |
+| Model                   | `prepareSave`                        |
+| Models Manager          | `modelsManager:afterInitialize`      |
+| Żądanie                 | `request:afterAuthorizationResolve`  |
+| Żądanie                 | `request:beforeAuthorizationResolve` |
+| Router                  | `router:beforeCheckRoutes`           |
+| Router                  | `router:beforeCheckRoute`            |
+| Router                  | `router:matchedRoute`                |
+| Router                  | `router:notMatchedRoute`             |
+| Router                  | `router:afterCheckRoutes`            |
+| Router                  | `router:beforeMount`                 |
+| Widok                   | `view:afterRender`                   |
+| Widok                   | `view:afterRenderView`               |
+| Widok                   | `view:beforeRender`                  |
+| Widok                   | `view:beforeRenderView`              |
+| Widok                   | `view:notFoundView`                  |
+| Volt                    | `compileFilter`                      |
+| Volt                    | `compileFunction`                    |
+| Volt                    | `compileStatement`                   |
+| Volt                    | `resolveExpression`                  |
