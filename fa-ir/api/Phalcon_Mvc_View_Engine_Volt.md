@@ -10,17 +10,17 @@ title: 'Phalcon\Mvc\View\Engine\Volt'
 
 *implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
-## Methods
+## روش ها
 
 public **setOptions** (*array* $options)
 
 Set Volt's options
 
-public **getOptions** ()
+عمومی **دریافت نام** ()
 
 Return Volt's options
 
@@ -86,7 +86,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
