@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Factory'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
 
-使用 "适配器" 选项加载注释适配器类
+Loads Annotations Adapter class using 'adapter' option
 
 ```php
 <?php
