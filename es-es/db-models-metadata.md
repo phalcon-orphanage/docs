@@ -3,15 +3,15 @@ layout: article
 language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+**Este artículo refleja la v3.4 y todavía no ha sido revisado**
 
 <a name='models-metadata'></a>
 
-# Models Metadata
+# Metadatos de modelos
 
-To speed up development [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) helps you to query fields and constraints from tables related to models. To achieve this, [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) is available to manage and cache table metadata.
+Para acelerar el desarrollo, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) ayuda a consultar campos y restricciones de las tablas relacionadas con los modelos. Para lograr esto, está disponible [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc_Model_MetaData) para administrar y almacenar en caché los metadatos de las tablas.
 
-Sometimes it is necessary to get those attributes when working with models. You can get a metadata instance as follows:
+Muchas veces es necesario obtener estos atributos cuando trabajamos con modelos. Puede obtener una instancia de metadatos, de la siguiente forma:
 
 ```php
 <?php
@@ -32,22 +32,22 @@ print_r($dataTypes);
 
 <a name='caching-metadata'></a>
 
-## Caching Metadata
+## Almacenamiento en caché de metadatos
 
-Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
+Una vez que la aplicación está en una etapa de producción, no es necesario consultar los metadatos de la tabla del sistema de base de datos cada vez que use la tabla. Esto podría hacerse almacenando en caché los metadatos, utilizando cualquiera de los siguientes adaptadores:
 
 | Adaptador    | Descripción                                                                                                                                                                                                                                                                                                                                                                 | API                                                                                        |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción).                                                                                                                                                 | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
-| Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                                                                       | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
+| Apc          | Este adaptador utiliza [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) para almacenar los metadatos de tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción).                                                                                                                                      | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
+| Files        | Este adaptador utiliza archivos planos para almacenar los metadatos. Este adaptador reduce las consultas a la base de datos, pero puede incrementar el acceso al sistema de archivos.                                                                                                                                                                                       | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
 | Libmemcached | Este adaptador utiliza el [Servidor Memcached](https://www.memcached.org/) para almacenar los metadatos de la tabla. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción)                                                                                                                               | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
-| Memcache     | This adapter uses [Memcache](https://php.net/manual/en/book.memcache.php) to store the table metadata. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción)                                                                                                                                                                           | `Phalcon\Mvc\Model\MetaData\Memcache`                                                  |
+| Memcache     | Este adaptador utiliza [Memcache](https://php.net/manual/en/book.memcache.php) para almacenar los metadatos de la tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción)                                                                                                                                                         | `Phalcon\Mvc\Model\MetaData\Memcache`                                                  |
 | Memory       | Este adaptador es el predeterminado. Se almacena en caché los metadatos sólo durante la solicitud. Cuando se haya completado la solicitud, los metadatos son liberados como parte de la memoria normal de la solicitud. (Recomendado para el desarrollo)                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
-| Redis        | This adapter uses [Redis](https://redis.io/) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                                                                                                                                                         | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
+| Redis        | Este adaptador utiliza [Redis](https://redis.io/) para almacenar los metadatos de la tabla. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                                                                                                                                       | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
 | Session      | Este adaptador almacena metadatos en la variable global `$_SESSION`. Este adaptador sólo se recomienda cuando la aplicación está utilizando realmente un pequeño número de modelos. Los metadatos se actualizan cada vez que inicie una nueva sesión. Esto también requiere el uso de `session_start()` para iniciar la sesión antes de utilizar cualquiera de los modelos. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
-| XCache       | This adapter uses [XCache](https://xcache.lighttpd.net/) to store the table metadata. Puede especificar la duración de los metadatos con opciones. Esta es una de las maneras recomendadas para almacenar metadatos cuando la aplicación está en producción.                                                                                                                | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
+| XCache       | Este adaptador utiliza [XCache](https://xcache.lighttpd.net/) para almacenar los metadatos de la tabla. Puede especificar la duración de los metadatos con opciones. Esta es una de las maneras recomendadas para almacenar metadatos cuando la aplicación está en producción.                                                                                              | [Phalcon\Mvc\Model\MetaData\Xcache](api/Phalcon_Mvc_Model_MetaData_Xcache)             |
 
-As other ORM's dependencies, the metadata manager is requested from the services container:
+Como otras dependencias del ORM, se solicita el administrador de metadatos al contenedor de servicios:
 
 ```php
 <?php
@@ -69,11 +69,11 @@ $di['modelsMetadata'] = function () {
 
 <a name='metadata-strategies'></a>
 
-## Metadata Strategies
+## Estrategias de metadatos
 
-As mentioned above the default strategy to obtain the model's metadata is database introspection. In this strategy, the information schema is used to know the fields in a table, its primary key, nullable fields, data types, etc.
+Como se mencionó anteriormente la estrategia por defecto para obtener metadatos del modelo es introspección de la base de datos. En esta estrategia, el esquema de información se utiliza para conocer los campos de una tabla, su clave primaria, campos que aceptan valores `NULL`, los tipos de datos, etcétera.
 
-You can change the default metadata introspection in the following way:
+Se puede cambiar la introspección de metadatos por defecto de la siguiente manera:
 
 ```php
 <?php
@@ -100,15 +100,15 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-database-introspection'></a>
 
-### Database Introspection Strategy
+### Estrategia de introspección de la base de datos
 
-This strategy doesn't require any customization and is implicitly used by all the metadata adapters.
+Esta estrategia no requiere ninguna personalización y es utilizada implícitamente por todos los adaptadores de metadatos.
 
 <a name='strategies-annotations'></a>
 
-### Annotations Strategy
+### Estrategia de anotaciones
 
-This strategy makes use of `annotations <annotations>` to describe the columns in a model:
+Esta estrategia hace uso de anotaciones `<anotations>` para describir las columnas en un modelo:
 
 ```php
 <?php
@@ -141,9 +141,9 @@ class Robots extends Model
 }
 ```
 
-Annotations must be placed in properties that are mapped to columns in the mapped source. Properties without the `@Column` annotation are handled as simple class attributes.
+Las anotaciones deben colocarse en las propiedades que se asignan a columnas en la fuente asignada. Las propiedades sin la anotación `@Column` se tratan como atributos simples de la clase.
 
-The following annotations are supported:
+Son soportadas las siguientes anotaciones:
 
 | Nombre   | Descripción                                                 |
 | -------- | ----------------------------------------------------------- |
@@ -151,7 +151,7 @@ The following annotations are supported:
 | Identity | El campo es una columna auto_increment/serial               |
 | Column   | Esto marca un atributo como una columna mapeada             |
 
-The annotation `@Column` supports the following parameters:
+La anotación `@Column` admite los siguientes parámetros:
 
 | Nombre               | Descripción                                                                                                                                                                      |
 | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -164,7 +164,7 @@ The annotation `@Column` supports the following parameters:
 | allow_empty_string | Esta columna permite cadenas vacías                                                                                                                                              |
 | default              | Valor por defecto                                                                                                                                                                |
 
-The annotations strategy could be set up this way:
+La estrategia de anotaciones podría ser configurada de esta manera:
 
 ```php
 <?php
@@ -192,13 +192,13 @@ $di['modelsMetadata'] = function () {
 
 <a name='strategies-manual'></a>
 
-## Manual Metadata
+## Metadata manual
 
-Using the introspection strategies presented above, Phalcon can obtain the metadata for each model automatically without the developer needing to set them manually.
+Usando las estrategias de introspección presentadas anteriormente, Phalcon puede obtener los metadatos para cada modelo automáticamente sin que el desarrollador tenga que configurarlos manualmente.
 
-The developer also has the option of define the metadata manually. This strategy overrides any strategy set in the metadata manager. New columns added/modified/removed to/from the mapped table must be added/modified/removed also for everything to work properly.
+Sin embargo, el desarrollador también tiene la opción de definir los metadatos manualmente. Esta estrategia sobrescribe cualquier estrategia establecida en el gestor de metadatos. Las nuevas columnas añadidas/modificadas/eliminadas de/hacia la tabla asignada deben agregarse/modificarse/eliminarse también para que todo funcione correctamente.
 
-The following example shows how to define the metadata manually:
+En el ejemplo siguiente se muestra cómo definir los metadatos manualmente:
 
 ```php
 <?php
