@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Validator\Regex'
 
 *implements* [Phalcon\Mvc\Model\ValidatorInterface](Phalcon_Mvc_Model_ValidatorInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/regex.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/regex.zep)
 
 Allows validate if the value of a field matches a regular expression
 
@@ -42,7 +42,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-## Méthodes
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
