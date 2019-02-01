@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\SubjectAware'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectaware.zep)
 
-## Methods
+## Методы
 
 ```php
 abstract public getSubjectName()
