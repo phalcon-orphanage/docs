@@ -10,17 +10,17 @@ title: 'Phalcon\Mvc\Model\Transaction\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/exception.zep)
 
 ## Metody
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Klonuj wyjątek
+Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Konstruktor wyjątku
+Exception constructor
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
