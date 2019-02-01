@@ -6,7 +6,7 @@ title: 'Phalcon\Db\RawValue'
 ---
 # Class **Phalcon\Db\RawValue**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
 This class allows to insert/update raw data without quoting or formatting.
 
