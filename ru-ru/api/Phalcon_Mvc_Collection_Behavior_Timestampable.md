@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 
 Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
-## Методы
+## Methods
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
