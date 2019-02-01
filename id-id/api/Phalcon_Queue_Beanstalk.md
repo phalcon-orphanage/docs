@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk'
 ---
 # Class **Phalcon\Queue\Beanstalk**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
@@ -39,21 +39,21 @@ $queue = new Beanstalk(
 
 *integer* **DEFAULT_PORT**
 
-## Methods
+## Metode
 
 public **__construct** ([*array* $parameters])
 
 public **connect** ()
 
-Makes a connection to the Beanstalkd server
+Membuat koneksi ke server Beanstalkd
 
 public **put** (*mixed* $data, [*array* $options])
 
-Puts a job on the queue using specified tube.
+Menempatkan pekerjaan yang ada pada antrian yang ditentukan oleh yang menggunakan tabung.
 
 public **reserve** ([*mixed* $timeout])
 
-Reserves/locks a ready job from the specified tube.
+Cadangan/kunci yang siap kerja dari yang ditentukan oleh tabung.
 
 public **choose** (*mixed* $tube)
 
@@ -61,59 +61,59 @@ Change the active tube. By default the tube is "default".
 
 public **watch** (*mixed* $tube)
 
-The watch command adds the named tube to the watch list for the current connection.
+Perintah menonton untuk menambahkan yang bernama tabung ke daftar menonton untuk sambungan yang berada saat ini.
 
 public **ignore** (*mixed* $tube)
 
-It removes the named tube from the watch list for the current connection.
+Menghilangkan yang bernama tabung dari daftar tontonan untuk sambungan yang berada saat ini.
 
 public **pauseTube** (*mixed* $tube, *mixed* $delay)
 
-Can delay any new job being reserved for a given time.
+Dapat menunda setiap pekerjaan yang baru dicadangkan untuk suatu waktu yang mungkin diberikan.
 
 public **kick** (*mixed* $bound)
 
-The kick command applies only to the currently used tube.
+Tendangan perintah yang hanya akan berlaku untuk saat ini digunakan oleh tabung.
 
 public **stats** ()
 
-Gives statistical information about the system as a whole.
+Memberikan informasi yang ada statistik tentang sistem sebagai keseluruhannya.
 
 public **statsTube** (*mixed* $tube)
 
-Gives statistical information about the specified tube if it exists.
+Memberikan informasi statistik tentang masalah yang ditentukan tabung jika ada.
 
 public **listTubes** ()
 
-Returns a list of all existing tubes.
+Menampilkan daftar dari semua yang ada didalam tabung.
 
 public **listTubeUsed** ()
 
-Returns the tube currently being used by the client.
+Kembalikan tabung saat ini yang sedang digunakan oleh klien.
 
 public **listTubesWatched** ()
 
-Returns a list tubes currently being watched by the client.
+Mengembalikan daftar ketabung yang saat ini diawasi oleh klien.
 
 public **peekReady** ()
 
-Inspect the next ready job.
+Periksa berikutnya siap kerja.
 
 public **peekBuried** ()
 
-Return the next job in the list of buried jobs.
+Kembali kepekerjaan berikutnya yang ada dalam daftar dimakamkan pekerjaan.
 
-public **peekDelayed** ()
+umum **peekDelayed** ()
 
-Return the next job in the list of buried jobs.
+Kembali kepekerjaan berikutnya yang ada dalam daftar dimakamkan pekerjaan.
 
 public **jobPeek** (*mixed* $id)
 
-The peek commands let the client inspect a job in the system.
+Mengintip perintah yang dibiarkan oleh klien untuk memeriksa pekerjaan dalam suatu sistem.
 
 final public **readStatus** ()
 
-Reads the latest status from the Beanstalkd server
+Membaca status yang terbaru dari Beanstalkd server
 
 final public **readYaml** ()
 
@@ -129,8 +129,8 @@ Writes data to the socket. Performs a connection if none is available
 
 public **disconnect** ()
 
-Closes the connection to the beanstalk server.
+Menutup koneksi ke server beanstalk.
 
 public **quit** ()
 
-Simply closes the connection.
+Cukup tutup koneksi.
