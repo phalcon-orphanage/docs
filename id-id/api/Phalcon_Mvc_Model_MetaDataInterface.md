@@ -6,15 +6,15 @@ title: 'Phalcon\Mvc\Model\MetaDataInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MetaDataInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
 
-## Methods
+## Metode
 
 abstract public **setStrategy** ([Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface) $strategy)
 
 ...
 
-abstract public **getStrategy** ()
+abstrak umum **mendapatkanStrategi** ()
 
 ...
 
@@ -110,18 +110,18 @@ abstract public **hasAttribute** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_Model
 
 ...
 
-abstract public **isEmpty** ()
+abstrak publik **isEmpty** ()
 
 ...
 
-abstract public **reset** ()
+abstrak publik **reset** ()
 
 ...
 
-abstract public **read** (*mixed* $key)
+abstrak umum **baca** (*campur aduk* $key)
 
 ...
 
-abstract public **write** (*mixed* $key, *mixed* $data)
+abstrak umum **menulis** (*campur aduk* $key, * campur aduk*$data)
 
 ...
