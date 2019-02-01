@@ -14,7 +14,7 @@ title: 'Phalcon\Translate\Adapter\NativeArray'
 
 Allows to define translation lists using PHP arrays
 
-## Methods
+## Методы
 
 public **__construct** (*array* $options)
 
