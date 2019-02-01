@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Micro\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\Micro\CollectionInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collectioninterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setPrefix** (*mixed* $prefix)
+abstrak publik **setPrefix** (*mixed* $prefix)
 
 ...
 
@@ -18,54 +18,54 @@ abstract public **getPrefix** ()
 
 ...
 
-abstract public **getHandlers** ()
+abstrak public **getHandlers** ()
 
 ...
 
-abstract public **setHandler** (*mixed* $handler, [*mixed* $lazy])
+abstrak publik **setHandler ** (*campuran* $handler, [*campuran* $lazy])
 
 ...
 
-abstract public **setLazy** (*mixed* $lazy)
+abstrak publik **setLazy** (*campuran* $lazy)
 
 ...
 
-abstract public **isLazy** ()
+abstrak publik **malas** ()
 
 ...
 
-abstract public **getHandler** ()
+abstrak publik **getHandler** ()
 
 ...
 
-abstract public **map** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+publik abstrak **peta** (*campuran* $routePattern, * mixed * $handler, [*campuran* $name])
 
 ...
 
-abstract public **get** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **dapatkan** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **post** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **pos** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **put** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **letakkan** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **patch** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **patch** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **head** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **kepala** (*campuran * $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **delete** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+abstrak publik **hapus** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
 
-abstract public **options** (*mixed* $routePattern, *mixed* $handler, [*mixed* $name])
+publik abstrak **pilihan** (*campuran* $routePattern, *campuran* $handler, [*campuran* $name])
 
 ...
