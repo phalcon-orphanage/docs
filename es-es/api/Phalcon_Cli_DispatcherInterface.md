@@ -12,27 +12,27 @@ title: 'Phalcon\Cli\DispatcherInterface'
 
 ## Métodos
 
-abstract public **setTaskSuffix** (*mixed* $taskSuffix)
+publico abstracto**establecer el sufijo de la tarea**(*mezclado*$taskSuffix)
 
 ...
 
-abstract public **setDefaultTask** (*mixed* $taskName)
+publico abstracto**establecer la tarea predeterminada**(*mezclado*$taskName)
 
 ...
 
-abstract public **setTaskName** (*mixed* $taskName)
+publico abstracto**establecer el nombre de la tarea**(*mezclado*$taskName)
 
 ...
 
-abstract public **getTaskName** ()
+publico abstracto**obtener el nombre de la tarea**()
 
 ...
 
-abstract public **getLastTask** ()
+publico abstracto**obtener la ultima tarea**()
 
 ...
 
-abstract public **getActiveTask** ()
+publico abstracto**obtener una tarea activa**()
 
 ...
 
