@@ -10,13 +10,13 @@ title: 'Phalcon\Assets\Inline\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
 
-Represents an inline Javascript
+Merupakan Javascript inline
 
-## Methods
+## Metode
 
-public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
+public **__ construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
 public **getType** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
@@ -36,16 +36,16 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](Phalcon_Asset
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets the inline's type
+Menetapkan tipe inline
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+Menetapkan apakah sumber daya harus disaring atau tidak
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets extra HTML attributes
+Menetapkan beberapa atribut HTML tambahan
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Gets the resource's key.
+Mendapatkan kunci sumber.
