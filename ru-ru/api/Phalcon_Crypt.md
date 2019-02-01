@@ -10,7 +10,7 @@ title: 'Phalcon\Crypt'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
-Предоставляет средства шифрования для приложений Phalcon
+Provides encryption facilities to phalcon applications
 
 ```php
 <?php
@@ -64,7 +64,7 @@ The name of hashing algorithm.
 
 *boolean* **$useSigning** = false; Whether calculating message digest enabled or not **NOTE**: This feature will be enabled by default in Phalcon 4.0.0
 
-## Методы
+## Methods
 
 ### Public
 
