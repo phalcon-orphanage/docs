@@ -8,7 +8,7 @@ category: 'installation'
 
 * * *
 
-## Systemanforderungen
+## Requirements
 
 ### PSR
 
