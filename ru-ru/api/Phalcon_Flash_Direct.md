@@ -14,7 +14,7 @@ title: 'Phalcon\Flash\Direct'
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
-## Методы
+## Methods
 
 public **message** (*mixed* $type, *mixed* $message)
 
