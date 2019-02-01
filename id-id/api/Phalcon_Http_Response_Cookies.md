@@ -8,19 +8,19 @@ title: 'Phalcon\Http\Response\Cookies'
 
 *implements* [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
-This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
+Kelas ini adalah tas untuk mengelola kue. Kue cookies secara otomatis terdaftar sebagai bagian dari layanan 'tanggapan' di DI
 
-## Methods
+## Metode
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -32,32 +32,32 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Set if cookies in the bag must be automatically encrypted/decrypted
+Atur jika cookies di dalam tas harus secara otomatis dienkripsi / didekripsi
 
 public **isUsingEncryption** ()
 
-Returns if the bag is automatically encrypting/decrypting cookies
+Mengembalikan jika tas secara otomatis mengenkripsi / mendekripsi kuki
 
-public **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*mixed* $path], [*mixed* $secure], [*mixed* $domain], [*mixed* $httpOnly])
+publik **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*mixed* $path], [*mixed* $secure], [*mixed* $domain], [*mixed* $httpOnly])
 
-Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
+Menetapkan kuki yang akan dikirim pada akhir permintaan Metode ini menggantikan perintah cookie sebelumnya dengan nama yang sama
 
 public **get** (*mixed* $name)
 
-Gets a cookie from the bag
+Mendapatkan kue dari tas
 
-public **has** (*mixed* $name)
+publik **telah** (*campuran* $name)
 
-Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
+Periksa apakah kuki didefinisikan di tas atau ada di superglobal _COOKIE
 
-public **delete** (*mixed* $name)
+publik **delete** (*mixed* $name)
 
-Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
+Menghapus cookie dengan namanya Metode ini tidak menghilangkan cookies dari superglobal _COOKIE
 
-public **send** ()
+publik **kirim** ()
 
-Sends the cookies to the client Cookies aren't sent if headers are sent in the current request
+Mengirimkan cookies ke klien Cookie tidak dikirim jika header dikirim dalam permintaan saat ini
 
-public **reset** ()
+umum **reset** ()
 
-Reset set cookies
+Setel ulang set cookies
