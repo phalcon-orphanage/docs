@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Application'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
 
-Este componente encapsula todas las operaciones complejas tras crear instancias de cada componente necesario y de integrarlo con el resto para permitir que el patrón MVC funcione de la manera deseada.
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 ```php
 <?php
@@ -64,7 +64,7 @@ By default. The view is implicitly buffering all the output You can full disable
 
 public **handle** ([*mixed* $uri])
 
-Controla una solicitud MVC
+Handles a MVC request
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Application](Phalcon_Application)
 
@@ -80,7 +80,7 @@ Devuelve el administrador de eventos interno
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Registra un arreglo de módulos presentes en la aplicación
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -102,27 +102,27 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Devuelve los módulos registrados en la aplicación
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-Obtiene la definición de módulo registrada en la aplicación vía nombre del módulo
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-Configura el nombre del módulo para ser usado si el router no devuelve un módulo válido
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Devuelve el nombre de módulo por defecto
+Returns the default module name
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
