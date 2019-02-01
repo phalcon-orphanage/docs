@@ -12,34 +12,34 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
 
-设置邮件的格式，以便他们可以发送到 FirePHP
+Formats messages so that they can be sent to FirePHP
 
 ## 方法
 
 public **getTypeString** (*mixed* $type)
 
-返回一个记录器常量的字符串含义
+Returns the string meaning of a logger constant
 
 public **setShowBacktrace** ([*mixed* $isShow])
 
-返回一个记录器常量的字符串含义
+Returns the string meaning of a logger constant
 
 public **getShowBacktrace** ()
 
-返回一个记录器常量的字符串含义
+Returns the string meaning of a logger constant
 
 public **enableLabels** ([*mixed* $isEnable])
 
-返回一个记录器常量的字符串含义
+Returns the string meaning of a logger constant
 
 public **labelsEnabled** ()
 
-返回标签启用
+Returns the labels enabled
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-发送到日志之前应用于该消息的格式
+Applies a format to a message before sending it to the log
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-入到消息占位符的上下文值内插方式
+Interpolates context values into the message placeholders
