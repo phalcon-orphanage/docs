@@ -6,52 +6,52 @@ title: 'Phalcon\Db\Profiler\Item'
 ---
 # Class **Phalcon\Db\Profiler\Item**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
-## Metode
+## Methods
 
-publik **setSqlStatement** (*mixed* $sqlStatement)
+public **setSqlStatement** (*mixed* $sqlStatement)
 
-Pernyataan SQL terkait dengan profil
+SQL statement related to the profile
 
-publik **getSqlStatement** ()
+public **getSqlStatement** ()
 
-Pernyataan SQL terkait dengan profil
+SQL statement related to the profile
 
-publik **setSqlVariables** (*array* $sqlVariables)
+public **setSqlVariables** (*array* $sqlVariables)
 
-Variabel SQL terkait dengan profil
+SQL variables related to the profile
 
-umum **getSqlVariables** ()
+public **getSqlVariables** ()
 
-Variabel SQL terkait dengan profil
+SQL variables related to the profile
 
-publik **setSqlBindTypes** (*array* $sqlBindTypes)
+public **setSqlBindTypes** (*array* $sqlBindTypes)
 
-SQL mengikat jenis yang terkait dengan profil
+SQL bind types related to the profile
 
-publik **getSqlBindTypes** ()
+public **getSqlBindTypes** ()
 
-SQL mengikat jenis yang terkait dengan profil
+SQL bind types related to the profile
 
-publik **setInitialTime** (*mixed* $initialTime)
+public **setInitialTime** (*mixed* $initialTime)
 
-Timestamp saat profil dimulai
+Timestamp when the profile started
 
-publik **getInitialTime** ()
+public **getInitialTime** ()
 
-Timestamp saat profil dimulai
+Timestamp when the profile started
 
-publik **setFinalTime** (*mixed* $finalTime)
+public **setFinalTime** (*mixed* $finalTime)
 
-Jangka waktu saat profil berakhir
+Timestamp when the profile ended
 
-publik **getFinalTime** ()
+public **getFinalTime** ()
 
-Jangka waktu saat profil berakhir
+Timestamp when the profile ended
 
-publik **getTotalElapsedSeconds** ()
+public **getTotalElapsedSeconds** ()
 
-Mengembalikan total waktu dalam detik yang dihabiskan oleh profil
+Returns the total time in seconds spent by the profile
