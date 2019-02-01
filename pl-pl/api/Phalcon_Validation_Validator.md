@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\Validator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
 
 This is a base class for validators
 
@@ -20,11 +20,11 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key)
 
-Checks if an option has been defined
+Sprawdź czy opcja została zdefiniowana
 
 public **hasOption** (*mixed* $key)
 
-Checks if an option is defined
+Sprawdza, czy opcja jest zdefiniowana
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
