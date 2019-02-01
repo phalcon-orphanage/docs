@@ -7,21 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 在XAMPP中安装Phalcon扩展
+# Installation on XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## 下载正确版本的Phalcon扩展。
+## Download the right version of Phalcon
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-当下载Phalcon扩展完成后，会得到一个如下所示的zip包。
+After downloading the Phalcon library you will have a zip file like the one shown below:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-解压zip包，会有一个Phalcon DLL文件。
+Extract the library from the archive to get the Phalcon DLL:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -29,13 +29,13 @@ Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have ins
 
 ![](/assets/images/content/webserver-xampp-3.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. 你可以使用Notepad或者其他类似文件编辑器进行修改。 We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. 在文件末尾追加：
+Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-保存所修改的。
+and save it.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -55,7 +55,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 <a name='screencast'></a>
 
-## 安装过程截图
+## Screencast
 
 The following screencast is a step by step guide to install Phalcon on Windows:
 
@@ -69,7 +69,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 <a name='related'></a>
 
-## 相关指引
+## Related Guides
 
 * [General Installation](/4.0/en/installation)
-* [在WAMP集成环境中安装Phalcon](/4.0/en/webserver-wamp)
+* [Installation on WAMP](/4.0/en/webserver-wamp)
