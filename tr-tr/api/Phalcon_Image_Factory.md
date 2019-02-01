@@ -10,7 +10,7 @@ title: 'Phalcon\Image\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
 Loads Image Adapter class using 'adapter' option
 
@@ -29,7 +29,7 @@ $image = Factory::load($options);
 
 ```
 
-## Metodlar
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
