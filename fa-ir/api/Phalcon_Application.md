@@ -10,11 +10,11 @@ title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## روش ها
+## Methods
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -22,13 +22,13 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-مجموعه مدیریت رویدادها
+Sets the events manager
 
-عمومی **مدیریت رویداد** ()
+public **getEventsManager** ()
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
-عمومی **ثبت نام ماژول** (*آرایه* $modules, [*مخلوط* $merge])
+public **registerModules** (*array* $modules, [*mixed* $merge])
 
 Register an array of modules present in the application
 
@@ -50,25 +50,25 @@ $this->registerModules(
 
 ```
 
-عمومی **دریافت خواننده** ()
+public **getModules** ()
 
 Return the modules registered in the application
 
-عمومی**گرفتن همه** (*مخلوط* $name)
+public **getModule** (*mixed* $name)
 
 Gets the module definition registered in the application via module name
 
-عمومی **تنظیم ماژول پیش فرض**(*مخلوط* $defaultModule)
+public **setDefaultModule** (*mixed* $defaultModule)
 
 Sets the module name to be used if the router doesn't return a valid module
 
-عمومی**فعال شدن نقش** ()
+public **getDefaultModule** ()
 
 Returns the default module name
 
-عمومی انتزاعی **دریافت نام** ()
+abstract public **handle** ()
 
-درخواست دسته
+Handles a request
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
