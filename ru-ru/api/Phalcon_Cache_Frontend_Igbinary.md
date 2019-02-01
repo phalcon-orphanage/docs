@@ -59,7 +59,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
