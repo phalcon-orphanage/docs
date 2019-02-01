@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Email'
 
 Sanitizes an email string
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( mixed $input ): mixed
