@@ -12,18 +12,18 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
-使用 JSON 编码的格式邮件
+Formats messages using JSON encoding
 
 ## 方法
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-将格式应用到一条消息发送到内部日志
+Applies a format to a message before sent it to the internal log
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-返回一个记录器常量的字符串含义
+Returns the string meaning of a logger constant
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-入到消息占位符的上下文值内插方式
+Interpolates context values into the message placeholders
