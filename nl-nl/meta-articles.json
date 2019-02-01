@@ -1739,7 +1739,7 @@
   ],
   "filter": [
     {
-      "text": "Filteren & Zuiveren",
+      "text": "Filtering and Sanitizing",
       "url": "/filter"
     },
     {
@@ -1941,11 +1941,11 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Installation",
       "url": "/installation"
     },
     {
-      "text": "Installation",
+      "text": "PSR",
       "url": "/installation-requirements-psr"
     },
     {
@@ -2891,7 +2891,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "Constanten",
+          "text": "Constants",
           "url": "#filter-constants"
         }
       ]
@@ -2913,7 +2913,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "Constanten",
+          "text": "Constants",
           "url": "#filter-constants"
         }
       ]
