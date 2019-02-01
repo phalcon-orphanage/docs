@@ -6,39 +6,39 @@ title: 'Phalcon\Mvc\CollectionInterface'
 ---
 # Interface **Phalcon\Mvc\CollectionInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **setId** (*campuran * $id)
-
-...
-
-abstrak publik **getId** ()
+abstract public **setId** (*mixed* $id)
 
 ...
 
-abstrak publik **getReservedAttributes** ()
+abstract public **getId** ()
 
 ...
 
-publik abstrak **getSource** ()
+abstract public **getReservedAttributes** ()
 
 ...
 
-publik abstrak **setConnectionService**(*campuran* $connectionService)
+abstract public **getSource** ()
 
 ...
 
-publik abstrak **getConnection** ()
+abstract public **setConnectionService** (*mixed* $connectionService)
 
 ...
 
-abstrak publik **setDirtyState**(*dicampur* $dirtyState)
+abstract public **getConnection** ()
 
 ...
 
-abstrak Umum **getdirtystate** ()
+abstract public **setDirtyState** (*mixed* $dirtyState)
+
+...
+
+abstract public **getDirtyState** ()
 
 ...
 
@@ -46,19 +46,19 @@ abstract public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalco
 
 ...
 
-abstrak Umum **acarakebakaran**(*dicampur* $eventName)
+abstract public **fireEvent** (*mixed* $eventName)
 
 ...
 
-abstrak Umum **acarakebakaranbatal**(*dicampur* $eventName)
+abstract public **fireEventCancel** (*mixed* $eventName)
 
 ...
 
-abstrak Umum **validasiTelahGagal**()
+abstract public **validationHasFailed** ()
 
 ...
 
-abstrak publik **getMessages** ()
+abstract public **getMessages** ()
 
 ...
 
@@ -66,26 +66,26 @@ abstract public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_
 
 ...
 
-abstrak Umum **simpan** ()
+abstract public **save** ()
 
 ...
 
-abstrak public static **findbyid**(* dicampur* $id)
+abstract public static **findById** (*mixed* $id)
 
 ...
 
-abstrak public static **findfirst**([*Array* $parameters])
+abstract public static **findFirst** ([*array* $parameters])
 
 ...
 
-abstrak public static **cari**([*Array* $parameters])
+abstract public static **find** ([*array* $parameters])
 
 ...
 
-abstrak public static **hitung**([*Array* $parameters])
+abstract public static **count** ([*array* $parameters])
 
 ...
 
-abstrak publik **hapus** ()
+abstract public **delete** ()
 
 ...
