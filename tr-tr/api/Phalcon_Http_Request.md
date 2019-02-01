@@ -8,9 +8,9 @@ title: 'Phalcon\Http\Request'
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
-Encapsulates request information for easy and secure access from application controllers.
+Uygulama denetleyicilerinden kolay ve güvenli erişim için istek bilgilerini saklar.
 
 The request object is a simple value object that is passed between the dispatcher and controller classes. It packages the HTTP request environment.
 
@@ -31,7 +31,7 @@ $request->getLanguages();         // An array of languages the client accepts
 
 ```
 
-## Methods
+## Metodlar
 
 public **getHttpMethodParameterOverride** ()
 
@@ -43,7 +43,7 @@ public **setHttpMethodParameterOverride** (*mixed* $httpMethodParameterOverride)
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** ()
 
@@ -66,7 +66,7 @@ $userEmail = $request->get("user_email", "email");
 
 public **getPost** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from the $_POST superglobal applying filters if needed If no parameters are given the $_POST superglobal is returned
+Gerekirse $_POST süperküreseli uygulama filtrelerinden bir değişken alır Parametre verilmemişse $_POST süperküreseli döndürülür
 
 ```php
 <?php
@@ -81,7 +81,7 @@ $userEmail = $request->getPost("user_email", "email");
 
 public **getPut** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets a variable from put request
+Put isteğinden bir değişken alır
 
 ```php
 <?php
@@ -96,7 +96,7 @@ $userEmail = $request->getPut("user_email", "email");
 
 public **getQuery** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
-Gets variable from $_GET superglobal applying filters if needed If no parameters are given the $_GET superglobal is returned
+Gerekirse $_GET süperküreseli uygulama filtrelerinden bir değişken alır Parametre verilmemişse $_GET süperküreseli döndürülür
 
 ```php
 <?php
@@ -118,43 +118,43 @@ Helper to get data from superglobals, applying filters if needed. If no paramete
 
 public **getServer** (*mixed* $name)
 
-Gets variable from $_SERVER superglobal
+$_SERVER süperküreselinden değişken alır
 
 public **has** (*mixed* $name)
 
-Checks whether $_REQUEST superglobal has certain index
+$_REQUEST süperküreselinin kesin indekse sahip olup olmadığını kontrol eder
 
 public **hasPost** (*mixed* $name)
 
-Checks whether $_POST superglobal has certain index
+$_POST süperküreselinin kesin indekse sahip olup olmadığını kontrol eder
 
 public **hasPut** (*mixed* $name)
 
-Checks whether the PUT data has certain index
+PUT verisinin kesin indekse sahip olup olmadığını kontrol eder
 
 public **hasQuery** (*mixed* $name)
 
-Checks whether $_GET superglobal has certain index
+$_GET süperküreselinin kesin indekse sahip olup olmadığını kontrol eder
 
 final public **hasServer** (*mixed* $name)
 
-Checks whether $_SERVER superglobal has certain index
+$_SERVER süperküreselinin kesin indekse sahip olup olmadığını kontrol eder
 
 final public **getHeader** (*mixed* $header)
 
-Gets HTTP header from request data
+İstek verisinden HTTP başlığını alır
 
 public **getScheme** ()
 
-Gets HTTP schema (http/https)
+HTTP taslağını (http/https) alır
 
 public **isAjax** ()
 
-Checks whether request has been made using ajax
+İsteğin ajax kullanılarak yapılıp yapılmadığını kontrol eder
 
 public **isSoap** ()
 
-Checks whether request has been made using SOAP
+İsteğin SOAP kullanılarak yapılıp yapılmadığını kontrol eder
 
 public **isSoapRequested** ()
 
@@ -162,7 +162,7 @@ Alias of isSoap(). It will be deprecated in future versions
 
 public **isSecure** ()
 
-Checks whether request has been made using any secure layer
+İsteğin herhangi bir güvenli katman kullanılarak yapılıp yapılmadığını kontrol eder
 
 public **isSecureRequest** ()
 
@@ -170,23 +170,23 @@ Alias of isSecure(). It will be deprecated in future versions
 
 public **getRawBody** ()
 
-Gets HTTP raw request body
+HTTP ham istek gövdesini alır
 
 public **getJsonRawBody** ([*mixed* $associative])
 
-Gets decoded JSON HTTP raw request body
+Deşifre edilmiş JSON HTTP ham istek gövdesini alır
 
 public **getServerAddress** ()
 
-Gets active server address IP
+Etkin sunucu IP adresini alır
 
 public **getServerName** ()
 
-Gets active server name
+Aktif sunucu adını alır
 
 public **getHttpHost** ()
 
-Gets host name used by the request. `Request::getHttpHost` trying to find host name in following order: - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` Optionally `Request::getHttpHost` validates and clean host name. The `Request::$_strictHostCheck` can be used to validate host name. Note: validation and cleaning have a negative performance impact because they use regular expressions.
+İstek tarafından kullanılan ana bilgisayar adını alır. `Request::getHttpHost` aşağıdaki sırada ana bilgisayar adını bulmayı dener; - `$_SERVER["HTTP_HOST"]` - `$_SERVER["SERVER_NAME"]` - `$_SERVER["SERVER_ADDR"]` İsteğe bağlı olarak `Request::getHttpHost` ana bilgisayar adını doğrular ve temizler. Ana bilgisayar adını doğrulama için `Request::$_strictHostCheck` kullanılabilir. Not: doğrulama ve temizleme negatif performans etkisine sahiptir çünkü onlar düzenli ifadeler kullanırlar.
 
 ```php
 <?php
@@ -212,19 +212,19 @@ $request->getHttpHost(); // example.com
 
 public **setStrictHostCheck** ([*mixed* $flag])
 
-Sets if the `Request::getHttpHost` method must be use strict validation of host name or not
+`Request::getHttpHost` metodu ana bilgisayar adına tam doğrulama kullanılmalı mı kullanılmamalı mı ayarlar
 
 public **isStrictHostCheck** ()
 
-Checks if the `Request::getHttpHost` method will be use strict validation of host name or not
+`Request::getHttpHost` metodu ana bilgisayar adına tam doğrulama kullanılacak mı kullanılmayacak mı denetler
 
 public **getPort** ()
 
-Gets information about the port on which the request is made.
+Yapılan isteğin hangi bağlantı noktası üzerinde bulunduğu bilgisini alır.
 
 final public **getURI** ()
 
-Gets HTTP URI which request has been made
+Hangi istekte bulunulduğu HTTP URI'sini alır
 
 public **getClientAddress** ([*mixed* $trustForwardedHeader])
 
@@ -232,19 +232,19 @@ Gets most possible client IPv4 Address. This method searches in $_SERVER["REMOTE
 
 final public **getMethod** ()
 
-Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. The method is always an uppercased string.
+Gets HTTP method which request has been made If the X-HTTP-Method-Override header is set, and if the method is a POST, then it is used to determine the "real" intended HTTP method. The _method request parameter can also be used to determine the HTTP method, but only if setHttpMethodParameterOverride(true) has been called. Yöntem her zaman bir büyük harfli dizedir.
 
 public **getUserAgent** ()
 
-Gets HTTP user agent used to made the request
+İstek yapmak için kullanılan HTTP kullanıcı aracısını alır
 
 public **isValidHttpMethod** (*mixed* $method)
 
-Checks if a method is a valid HTTP method
+Bir metodun geçerli bir HTTP metodu olup olmadığını denetler
 
 public **isMethod** (*mixed* $methods, [*mixed* $strict])
 
-Check if HTTP method match any of the passed methods When strict is true it checks if validated methods are real HTTP methods
+HTTP metodunun geçilen herhangi bir metotla eşleşip eşleşmediğini denetler Doğru olduğunda onaylanmış metotların gerçek HTTP metotları olup olmadığını denetler
 
 public **isPost** ()
 
@@ -288,11 +288,11 @@ Checks whether HTTP method is CONNECT. if _SERVER["REQUEST_METHOD"]==="CONNECT"
 
 public **hasFiles** ([*mixed* $onlySuccessful])
 
-Checks whether request include attached files
+İsteğin ekli dosya içerip içermediğini kontrol eder
 
 final protected **hasFileHelper** (*mixed* $data, *mixed* $onlySuccessful)
 
-Recursively counts file in an array of files
+Bir dizi dosyadaki dosyayı tekrar tekrar sayar
 
 public **getUploadedFiles** ([*mixed* $onlySuccessful])
 
@@ -304,7 +304,7 @@ Smooth out $_FILES to have plain array with all files uploaded
 
 public **getHeaders** ()
 
-Returns the available headers in the request
+İstekteki kullanılabilir başlıkları döndürür
 
 ```php
 <?php
@@ -326,44 +326,44 @@ Gets web page that refers active request. ie: https://www.google.com
 
 final protected **_getBestQuality** (*array* $qualityParts, *mixed* $name)
 
-Process a request header and return the one with best quality
+Bir istek başlığını işle ve en iyi kaliteyle döndür
 
 public **getContentType** ()
 
-Gets content type which request has been made
+Yapılan istekteki içerik türünü alır
 
 public **getAcceptableContent** ()
 
-Gets an array with mime/types and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Tarayıcı/istemci vasıtasıyla kalitesi _SERVER["HTTP_ACCEPT"] tarafından kabul gören mime/tipli bir diziyi alır
 
 public **getBestAccept** ()
 
-Gets best mime/type accepted by the browser/client from _SERVER["HTTP_ACCEPT"]
+Tarayıcı/istemci vasıtasıyla _SERVER["HTTP_ACCEPT"] tarafından kabul gören en iyi mime/tipi alır
 
 public **getClientCharsets** ()
 
-Gets a charsets array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Tarayıcı/istemci vasıtasıyla kalitesi _SERVER["HTTP_ACCEPT_CHARSET"] tarafından kabul gören bir karakter seti dizisini alır
 
 public **getBestCharset** ()
 
-Gets best charset accepted by the browser/client from _SERVER["HTTP_ACCEPT_CHARSET"]
+Tarayıcı/istemci vasıtasıyla _SERVER["HTTP_ACCEPT_CHARSET"] tarafından kabul gören en iyi karakter setini alır
 
 public **getLanguages** ()
 
-Gets languages array and their quality accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Tarayıcı/istemci vasıtasıyla kalitesi _SERVER["HTTP_ACCEPT_LANGUAGE"] tarafından kabul gören diller dizisini alır
 
 public **getBestLanguage** ()
 
-Gets best language accepted by the browser/client from _SERVER["HTTP_ACCEPT_LANGUAGE"]
+Tarayıcı/istemci vasıtasıyla _SERVER["HTTP_ACCEPT_LANGUAGE"] tarafından kabul gören en iyi dili alır
 
 public **getBasicAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_USER"]
+Tarayıcı/istemci vasıtasıyla $_SERVER["PHP_AUTH_USER"] tarafından kabul gören yetki bilgisini alır
 
 public **getDigestAuth** ()
 
-Gets auth info accepted by the browser/client from $_SERVER["PHP_AUTH_DIGEST"]
+Tarayıcı/istemci vasıtasıyla $_SERVER["PHP_AUTH_DIGEST"] tarafından kabul gören yetki bilgisini alır
 
 final protected **_getQualityHeader** (*mixed* $serverIndex, *mixed* $name)
 
-Process a request header and return an array of values with their qualities
+Bir istek başlığını işle ve kaliteleriyle birlikte değerlerin bir dizisini döndür
