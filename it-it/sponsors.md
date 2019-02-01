@@ -3,7 +3,7 @@ layout: article
 language: 'it-it'
 version: '4.0'
 ---
-# Becoming a sponsor
+# Diventa un sostenitore
 
 For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
 
@@ -13,7 +13,7 @@ For those that wish to sponsor our work and further the development of Phalcon, 
 </button>
 </a>
 
-# Sponsors and Supporters
+# Sponsor e sostenitori
 
 <a href="https://pdffiller.com/" target="_blank">
     <img src="https://assets.phalconphp.com/phalcon/images/backers/pdffiller-240x60.png" alt="PDFFiller" />
