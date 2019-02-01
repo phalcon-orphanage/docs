@@ -2,7 +2,7 @@
 layout: article
 language: 'pl-pl'
 version: '4.0'
-title: 'Phalcon\Annotations\Adapter\Memory'
+title: 'Phalcon\Adnotacje\Adaptery\Pamięć'
 ---
 # Class **Phalcon\Annotations\Adapter\Memory**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Adapter\Memory'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
