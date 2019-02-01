@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\IntVal'
 
 Sanitizes a value to an integer
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
