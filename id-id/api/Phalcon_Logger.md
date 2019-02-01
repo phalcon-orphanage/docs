@@ -6,28 +6,28 @@ title: 'Phalcon\Logger'
 ---
 # Abstract class **Phalcon\Logger**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
 ## Constants
 
-*integer* **SPECIAL**
+*bilangan bulat* **KHUSUS**
 
-*integer* **CUSTOM**
+*bilangan bulat* **KEBIASAAN**
 
-*integer* **DEBUG**
+*bilangan bulat* **DEBUG**
 
-*integer* **INFO**
+*bilangan bulat* **INFO**
 
-*integer* **NOTICE**
+*bilangan bulat* **PEMBERITAHUAN**
 
-*integer* **WARNING**
+*bilangan bulat* **PERINGATAN**
 
-*integer* **ERROR**
+*bilangan bulat* **KESALAHAN**
 
-*integer* **ALERT**
+*bilangan bulat* **WASPADA**
 
-*integer* **CRITICAL**
+*bilangan bulat* **KRITIS**
 
-*integer* **EMERGENCE**
+*bilangan bulat* **MUNCULNYA**
 
-*integer* **EMERGENCY**
+*bilangan bulat* **DARURAT**
