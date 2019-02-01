@@ -61,11 +61,11 @@ Phalcon\Cache\Backend\Memcache constructor
 
 public **_connect** ()
 
-Crea una conexión interna a memcached
+Create internal connection to memcached
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Devuelve el contenido almacenado en caché
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -73,11 +73,11 @@ Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Elimina el valor almacenado en caché por la clave
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Indagar las claves almacenadas en caché existentes.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -95,15 +95,15 @@ Verifica si existe el caché y que no está expirado
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
-Incremento del $keyName dado por $value
+Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Reducción del $keyName por el $value predeterminado
+Decrement of $keyName by given $value
 
 public **flush** ()
 
-Anula inmediatamente todos los elementos existentes. Memcached no soporta flush() por defecto. Si necesita asistencia flush(), ajustar $config["statsKey"]. Todas las claves modificadas son almacenadas en "statskey". Nota: statsKey tiene un impacto negativo de performance.
+Immediately invalidates all existing items. Memcached does not support flush() per default. If you require flush() support, set $config["statsKey"]. All modified keys are stored in "statsKey". Note: statsKey has a negative performance impact.
 
 ```php
 <?php
@@ -148,20 +148,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comienza una caché. El KeyName permite identificar el fragmento creado
+Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Detiene el frontend sin almacenar ningún contenido almacenado en caché
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el último almacenamiento en caché esta actualizado o no
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el caché ha empezado a almacenarse o no
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Obtiene la última duración establecida
+Gets the last lifetime set
