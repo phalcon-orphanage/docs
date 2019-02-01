@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Url'
 
 Sanitizes a url string
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( mixed $input ): mixed
