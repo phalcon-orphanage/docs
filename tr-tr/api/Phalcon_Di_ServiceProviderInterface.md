@@ -6,9 +6,9 @@ title: 'Phalcon\Di\ServiceProviderInterface'
 ---
 # Interface **Phalcon\Di\ServiceProviderInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **register** ([Phalcon\DiInterface](Phalcon_DiInterface) $di)
 
