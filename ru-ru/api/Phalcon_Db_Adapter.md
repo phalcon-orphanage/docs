@@ -10,19 +10,19 @@ title: 'Phalcon\Db\Adapter'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
-Базовый класс для адаптеров Phalcon\Db
+Base class for Phalcon\Db adapters
 
-## Методы
+## Methods
 
 public **getDialectType** ()
 
-Имя использованного диалекта
+Name of the dialect used
 
 public **getType** ()
 
-Тип используемого адаптера базы данных
+Type of database system the adapter is used for
 
-public **getType** ()
+public **getSqlVariables** ()
 
 Active SQL bound parameter variables
 
