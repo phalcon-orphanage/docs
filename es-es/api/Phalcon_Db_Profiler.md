@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Profiler'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
-Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Perfilado la información incluye tiempo de ejecución en milisegundos. Esto lo ayuda a identificar cuellos de botella en sus aplicaciones.
+Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.
 
 ```php
 <?php
@@ -39,28 +39,28 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 public [Phalcon\Db\Profiler](Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
-Inicia el perfil de una sentencia SQL
+Starts the profile of a SQL sentence
 
 public **stopProfile** ()
 
-Detiene el perfil activo
+Stops the active profile
 
 public **getNumberTotalStatements** ()
 
-Devuelve la cantidad total de sentencias SQL procesadas
+Returns the total number of SQL statements processed
 
 public **getTotalElapsedSeconds** ()
 
-Devuelve el tiempo total en segundos gastados por los perfiles
+Returns the total time in seconds spent by the profiles
 
 public **getProfiles** ()
 
-Devuelve todos los perfiles procesados
+Returns all the processed profiles
 
 public **reset** ()
 
-Restablece el perfilador, limpiando todos los perfiles
+Resets the profiler, cleaning up all the profiles
 
 public **getLastProfile** ()
 
-Devuelve el último perfil ejecutado en el generador de perfiles
+Returns the last profile executed in the profiler
