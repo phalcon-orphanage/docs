@@ -42,7 +42,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 ```
 
-## Methods
+## Методы
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
