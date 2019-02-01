@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Inline\Css'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
 
-Represents an inlined CSS
+Satır içi bir CSS belirtir
 
-## Methods
+## Metodlar
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
@@ -38,16 +38,16 @@ Gets extra HTML attributes.
 
 public [*self*](Phalcon_Assets_Inline_Css) **setType** (*string* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets the inline's type
+Satır içi türünü ayarlar
 
 public [*self*](Phalcon_Assets_Inline_Css) **setFilter** (*boolean* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets if the resource must be filtered or not
+Kaynağın filtrelenmesi gerekip gerekmediğini ayarlar
 
 public [*self*](Phalcon_Assets_Inline_Css) **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Sets extra HTML attributes
+Ek HTML özellikleri ayarlar
 
 public *string* **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Gets the resource's key.
+Kaynağın anahtarının getirir.
