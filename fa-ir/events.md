@@ -416,7 +416,7 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 The events available in Phalcon are:
 
-| Component          | رویداد                               |
+| Component          | Event                                |
 | ------------------ | ------------------------------------ |
 | ACL                | `acl:afterCheckAccess`               |
 | ACL                | `acl:beforeCheckAccess`              |
@@ -431,19 +431,19 @@ The events available in Phalcon are:
 | Collection         | `afterCreate`                        |
 | Collection         | `afterSave`                          |
 | Collection         | `afterUpdate`                        |
-| Collection         | `پس از اعتبار سنجی`                  |
-| Collection         | `پس از تایید در ایجاد`               |
-| Collection         | `پس از تایید بر روی به روز رسانی`    |
+| Collection         | `afterValidation`                    |
+| Collection         | `afterValidationOnCreate`            |
+| Collection         | `afterValidationOnUpdate`            |
 | Collection         | `beforeCreate`                       |
 | Collection         | `beforeSave`                         |
 | Collection         | `beforeUpdate`                       |
 | Collection         | `beforeValidation`                   |
-| Collection         | `قبل از تأیید در ایجاد`              |
-| Collection         | `قبل از تایید بر روی به روز رسانی`   |
+| Collection         | `beforeValidationOnCreate`           |
+| Collection         | `beforeValidationOnUpdate`           |
 | Collection         | `notDeleted`                         |
 | Collection         | `notSave`                            |
 | Collection         | `notSaved`                           |
-| Collection         | `در تأیید اعتبار`                    |
+| Collection         | `onValidationFails`                  |
 | Collection         | `validation`                         |
 | Collection Manager | `collectionManager:afterInitialize`  |
 | Console            | `console:afterHandleTask`            |
@@ -477,19 +477,19 @@ The events available in Phalcon are:
 | Micro              | `micro:beforeExecuteRoute`           |
 | Micro              | `micro:beforeHandleRoute`            |
 | Micro              | `micro:beforeNotFound`               |
-| میان افزار         | `پس از اتصال`                        |
-| میان افزار         | `پس از مسیر اجرا`                    |
-| میان افزار         | `پس از مسیر دستیابی`                 |
-| میان افزار         | `قبل از اجرای مسیر`                  |
-| میان افزار         | `قبل از مسیر دستیابی`                |
-| میان افزار         | `قبل از اینکه پیدا نشد`              |
+| Middleware         | `afterBinding`                       |
+| Middleware         | `afterExecuteRoute`                  |
+| Middleware         | `afterHandleRoute`                   |
+| Middleware         | `beforeExecuteRoute`                 |
+| Middleware         | `beforeHandleRoute`                  |
+| Middleware         | `beforeNotFound`                     |
 | Model              | `afterCreate`                        |
 | Model              | `afterDelete`                        |
 | Model              | `afterSave`                          |
 | Model              | `afterUpdate`                        |
-| Model              | `پس از اعتبار سنجی`                  |
-| Model              | `پس از تایید در ایجاد`               |
-| Model              | `پس از تایید بر روی به روز رسانی`    |
+| Model              | `afterValidation`                    |
+| Model              | `afterValidationOnCreate`            |
+| Model              | `afterValidationOnUpdate`            |
 | Model              | `beforeDelete`                       |
 | Model              | `notDeleted`                         |
 | Model              | `beforeCreate`                       |
@@ -497,13 +497,13 @@ The events available in Phalcon are:
 | Model              | `beforeSave`                         |
 | Model              | `beforeUpdate`                       |
 | Model              | `beforeValidation`                   |
-| Model              | `قبل از تأیید در ایجاد`              |
-| Model              | `قبل از تایید بر روی به روز رسانی`   |
+| Model              | `beforeValidationOnCreate`           |
+| Model              | `beforeValidationOnUpdate`           |
 | Model              | `notSave`                            |
 | Model              | `notSaved`                           |
-| Model              | `در تأیید اعتبار`                    |
+| Model              | `onValidationFails`                  |
 | Model              | `prepareSave`                        |
-| مدل های مدیریت     | `modelsManager:afterInitialize`      |
+| Models Manager     | `modelsManager:afterInitialize`      |
 | Request            | `request:afterAuthorizationResolve`  |
 | Request            | `request:beforeAuthorizationResolve` |
 | Router             | `router:beforeCheckRoutes`           |
