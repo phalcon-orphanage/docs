@@ -6,10 +6,10 @@ title: 'Phalcon\Logger\FormatterInterface'
 ---
 # Interface **Phalcon\Logger\FormatterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatterinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **format** (*mixed* $message, *mixed* $type, *mixed* $timestamp, [*mixed* $context])
+abstrak umum **susunan** (*campuran* $message, *campuran* $type, *campuran* $timestamp, [*campuran* $context])
 
 ...
