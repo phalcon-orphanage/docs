@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Frontend\Msgpack'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/msgpack.zep)
 
-Allows to cache native PHP data in a serialized form using msgpack extension This adapter uses a Msgpack frontend to store the cached content and requires msgpack extension.
+Permite almacenar en caché los datos nativos de PHP en forma serializada usando la extensión msgpack Este adaptador usa una interfaz Msgpack para almacenar el contenido en caché y requiere la extensión msgpack.
 
 ```php
 <?php
@@ -70,11 +70,11 @@ Phalcon\Cache\Frontend\Msgpack constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Devuelve el tiempo de vida del cache
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Verifique si el frontend está almacenando la salida
 
 public **start** ()
 
@@ -82,16 +82,16 @@ Starts output frontend. Actually, does nothing
 
 public **getContent** ()
 
-Returns output cached content
+Regresa contenido almacenado saliente
 
 public **stop** ()
 
-Stops output frontend
+Detiene la salida del frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serializa los datos antes de almacenarlos
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Deserializa los datos después de la recuperación
