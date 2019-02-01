@@ -6,21 +6,21 @@ title: 'Phalcon\Assets\Manager'
 ---
 # Class **Phalcon\Assets\Manager**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-Manages collections of CSS/Javascript assets
+مجموعه ای از دارایی های CSS/جاوا اسکریپت را مدیریت می کند
 
-## Methods
+## روش ها
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 public **setOptions** (*array* $options)
 
-Sets the manager options
+گزینه های مدیر را تنظیم می کند
 
-public **getOptions** ()
+عمومی **دریافت نام** ()
 
-Returns the manager options
+گزینه های مدیر را برمی گرداند
 
 public **useImplicitOutput** (*mixed* $implicitOutput)
 
@@ -105,7 +105,7 @@ $assets->set("js", $collection);
 
 public **get** (*mixed* $id)
 
-Returns a collection by its id.
+یک مجموعه را با شناسه آن باز می گرداند.
 
 ```php
 <?php
@@ -116,47 +116,47 @@ $scripts = $assets->get("js");
 
 public **getCss** ()
 
-Returns the CSS collection of assets
+مجموعۀ دارایی های CSS را بازمی گرداند
 
 public **getJs** ()
 
-Returns the CSS collection of assets
+مجموعۀ دارایی های CSS را بازمی گرداند
 
 public **collection** (*mixed* $name)
 
-Creates/Returns a collection of resources
+مجموعه ای از منابع را ایجاد/بازگشت می کند
 
 public **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
-Traverses a collection calling the callback to generate its HTML
+یک مجموعه را فراخوانی می کند که فراخوانی مجدد را برای ایجاد HTML انجام می دهد
 
 public **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
-Traverses a collection and generate its HTML
+یک مجموعه را مرور می کند و HTML آن را تولید می کند
 
 public **outputCss** ([*string* $collectionName])
 
-Prints the HTML for CSS resources
+HTML برای منابع CSS را چاپ می کند
 
 public **outputInlineCss** ([*string* $collectionName])
 
-Prints the HTML for inline CSS
+HTML را برای CSS درون خطی چاپ می کند
 
 public **outputJs** ([*string* $collectionName])
 
-Prints the HTML for JS resources
+HTML برای منابع JS را چاپ می کند
 
 public **outputInlineJs** ([*string* $collectionName])
 
-Prints the HTML for inline JS
+HTML را برای JS درون خطی چاپ می کند
 
-public **getCollections** ()
+عمومی **دریافت حاشیه نویسی** ()
 
-Returns existing collections in the manager
+مجموعه های موجود را در مدیر باز می گرداند
 
 public **exists** (*mixed* $id)
 
-Returns true or false if collection exists.
+اگر مجموعه موجود باشد، درست یا غلط را دریافت می کند.
 
 ```php
 <?php
