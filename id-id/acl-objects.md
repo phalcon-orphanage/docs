@@ -16,7 +16,7 @@ Phalcon allows developers to define their own operation and subject objects. The
 * [Phalcon\Acl\OperationAware](api/Phalcon_Acl_OperationAware) for Operation
 * [Phalcon\Acl\SubjectAware](api/Phalcon_Acl_SubjectAware) for Subject
 
-### Operasi
+### Operation
 
 We can implement the [Phalcon\Acl\OperationAware](api/Phalcon_Acl_OperationAware) in our custom class with its own logic. The example below shows a new operation object called `ManagerOperation`:
 
@@ -98,7 +98,7 @@ class ReportsSubject implements SubjectAware
 
 These objects can now be used in our ACL.
 
-php <?php
+```php <?php
 
 use ManagerOperation; use Phalcon\Acl; use Phalcon\Acl\Adapter\Memory as AclList; use Phalcon\Acl\Operation; use Phalcon\Acl\Subject; use ReportsSubject;
 
