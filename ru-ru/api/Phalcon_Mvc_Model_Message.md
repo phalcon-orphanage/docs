@@ -35,7 +35,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
 
