@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Router\Annotations'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Mvc\RouterInterface](Phalcon_Mvc_RouterInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
 A router that reads routes annotations from classes/resources
 
@@ -34,7 +34,7 @@ $di->setShared(
 
 ```
 
-## Constants
+## Costanti
 
 *integer* **URI_SOURCE_GET_URL**
 
@@ -44,7 +44,7 @@ $di->setShared(
 
 *integer* **POSITION_LAST**
 
-## Methods
+## Metodi
 
 public **addResource** (*mixed* $handler, [*mixed* $prefix])
 
@@ -92,11 +92,11 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Sets the events manager
+Imposta il gestore di eventi
 
 public **getEventsManager** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
-Returns the internal event manager
+Ritorna il gestore di eventi
 
 public **getRewriteUri** () inherited from [Phalcon\Mvc\Router](Phalcon_Mvc_Router)
 
