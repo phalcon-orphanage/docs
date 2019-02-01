@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\ViewBaseInterface'
 ---
 # Interface **Phalcon\Mvc\ViewBaseInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **setViewsDir** (*mixed* $viewsDir)
 
