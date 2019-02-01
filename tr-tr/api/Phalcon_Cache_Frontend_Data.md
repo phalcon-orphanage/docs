@@ -8,9 +8,9 @@ title: 'Phalcon\Cache\Frontend\Data'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/data.zep)
 
-Yerel PHP verisini seri hale getirilmiş bir biçimde önbelleklemeyi sağlar
+Allows to cache native PHP data in a serialized form
 
 ```php
 <?php
@@ -60,7 +60,7 @@ foreach ($robots as $robot) {
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -80,16 +80,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Çıktı önbelleğine alınan içeriği getirir
+Returns output cached content
 
 public **stop** ()
 
-Çıktının frontend'ini durdurur
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Verileri depolamadan önce seri hale getirir
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes verisini sonradan geri alır
+Unserializes data after retrieval
