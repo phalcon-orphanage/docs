@@ -6,9 +6,9 @@ title: 'Phalcon\Service\LocatorInterface'
 ---
 # Class **Phalcon\Service\LocatorInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorinterface.zep)
 
-## Methods
+## Méthodes
 
 ```php
 public function get( string $name ): object
