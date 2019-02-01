@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Adapter'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
 Base class for Phalcon\Db adapters
 
@@ -252,7 +252,7 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList)
 
-Pobiera listę kolumn
+Gets a list of columns
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
@@ -383,7 +383,7 @@ print_r(
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
-Listowanie indeksów tabeli
+Lists table indexes
 
 ```php
 <?php
@@ -422,7 +422,7 @@ print_r(
 
 public **createSavepoint** (*mixed* $name)
 
-Tworzy nowy punkt zapisu
+Creates a new savepoint
 
 public **releaseSavepoint** (*mixed* $name)
 
