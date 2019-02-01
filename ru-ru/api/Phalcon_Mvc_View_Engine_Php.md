@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\View\Engine\Php'
 
 Adapter to use PHP itself as templating engine
 
-## Methods
+## Методы
 
 public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
