@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\FloatVal'
 
 Sanitizes a value to an float
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
