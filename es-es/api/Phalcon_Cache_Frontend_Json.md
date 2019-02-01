@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
-Allows to cache data converting/deconverting them to JSON.
+Permite almacenar en caché los datos convirtiéndolos/des-convirtiéndolos en JSON.
 
-This adapter uses the json_encode/json_decode PHP's functions
+Este adaptador usa las funciones de json_encode/json_decode de PHP
 
-As the data is encoded in JSON other systems accessing the same backend could process them
+Como los datos están codificados en JSON, otros sistemas que acceden al mismo back-end podrían procesarlos
 
 ```php
 <?php
@@ -54,11 +54,11 @@ Phalcon\Cache\Frontend\Base64 constructor
 
 public **getLifetime** ()
 
-Returns the cache lifetime
+Devuelve el tiempo de vida del cache
 
 public **isBuffering** ()
 
-Check whether if frontend is buffering output
+Verifique si el frontend está almacenando la salida
 
 public **start** ()
 
@@ -66,16 +66,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Returns output cached content
+Regresa contenido almacenado saliente
 
 public **stop** ()
 
-Stops output frontend
+Detiene la salida del frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializes data before storing them
+Serializa los datos antes de almacenarlos
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes data after retrieval
+Deserializa los datos después de la recuperación
