@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
 Represents an inline asset
 
@@ -19,7 +19,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
-## روش ها
+## Methods
 
 public **getType** ()
 
@@ -43,16 +43,16 @@ Phalcon\Assets\Inline constructor
 
 public **setType** (*mixed* $type)
 
-نوع خطی را تنظیم می کند
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter)
 
-تعیین می کند که آیا منابع باید فیلتر شوند یا خیر
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
-ویژگی های HTML اضافی را تعیین می کند
+Sets extra HTML attributes
 
 public **getResourceKey** ()
 
-کلید منبع را دریافت می کند.
+Gets the resource's key.
