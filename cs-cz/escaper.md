@@ -108,7 +108,7 @@ Every text was escaped according to its context. Use the appropriate context is 
 
 <a name='html'></a>
 
-## Escapování HTML
+## Escaping HTML
 
 The most common situation when inserting unsafe data is between HTML tags:
 
@@ -136,7 +136,7 @@ Which produces:
 
 <a name='html-attributes'></a>
 
-## Escapování HTML atributů
+## Escaping HTML Attributes
 
 Escaping HTML attributes is different from escaping HTML content. The escaper works by changing every non-alphanumeric character to the form. This kind of escaping is intended to most simpler attributes excluding complex ones like `href` or `url`:
 
@@ -176,7 +176,7 @@ Which produces:
 
 <a name='urls'></a>
 
-## Escapování URL
+## Escaping URLs
 
 Some HTML attributes like `href` or `url` need to be escaped differently:
 
@@ -204,7 +204,7 @@ Which produces:
 
 <a name='css'></a>
 
-## Escapování CSS
+## Escaping CSS
 
 CSS identifiers/values can be escaped too:
 
@@ -232,7 +232,7 @@ Which produces:
 
 <a name='javascript'></a>
 
-## Escapování JavaScriptu
+## Escaping JavaScript
 
 Strings to be inserted into JavaScript code also must be properly escaped:
 
