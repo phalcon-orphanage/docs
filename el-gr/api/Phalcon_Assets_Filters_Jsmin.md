@@ -10,7 +10,7 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
-Διαγράφει χαρακτήρες που τους είναι ασήμαντοι για το JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
+Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
 
 ## Methods
 
