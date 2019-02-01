@@ -12,13 +12,13 @@ title: 'Phalcon\Logger\Formatter\Syslog'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
-Prepara un mensaje para ser utilizado en un backend Syslog
+Prepares a message to be used in a Syslog backend
 
 ## Métodos
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Aplica un formato a un mensaje antes de enviarlo al registro interno
+Applies a format to a message before sent it to the internal log
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
