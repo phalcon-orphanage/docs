@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Reference'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
 
-Permite definir restricciones de referencia en las tablas
+Allows to define reference constraints on tables
 
 ```php
 <?php
@@ -37,7 +37,7 @@ $reference = new \Phalcon\Db\Reference(
 
 public **getName** ()
 
-Nombre de la restricción
+Constraint name
 
 public **getSchemaName** ()
 
@@ -49,15 +49,15 @@ public **getReferencedSchema** ()
 
 public **getReferencedTable** ()
 
-Tabla referenciada
+Referenced Table
 
 public **getColumns** ()
 
-Columnas de referencia local
+Local reference columns
 
 public **getReferencedColumns** ()
 
-Columnas referenciadas
+Referenced Columns
 
 public **getOnDelete** ()
 
