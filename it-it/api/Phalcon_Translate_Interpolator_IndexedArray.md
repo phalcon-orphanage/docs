@@ -8,9 +8,9 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
-## Metodi
+## Methods
 
 public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
