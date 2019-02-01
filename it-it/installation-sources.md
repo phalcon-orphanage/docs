@@ -8,14 +8,14 @@ category: 'installation'
 
 * * *
 
-## Compila dai sorgenti
+## Compile from Sources
 
 Compiling from source is similar to most environments (Linux/macOS).
 
 ### Requirements
 
 * PHP 7.2.x/7.3.x development resources
-* Compilatore GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
+* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
@@ -29,7 +29,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compilare Phalcon
+Compile Phalcon
 
 ```bash
 cd cphalcon/
