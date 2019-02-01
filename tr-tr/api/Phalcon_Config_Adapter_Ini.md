@@ -10,11 +10,11 @@ title: 'Phalcon\Config\Adapter\Ini'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
 
 Reads ini files and converts them to Phalcon\Config objects.
 
-Bir sonraki yapılandırma dosyası verildiğinde:
+Given the next configuration file:
 
 ```ini
 <?php
@@ -33,7 +33,7 @@ viewsDir = "../app/views/"
 
 ```
 
-Bunu aşağıdaki şekilde okuyabilirsiniz:
+You can read it as follows:
 
 ```php
 <?php
@@ -45,7 +45,7 @@ echo $config->database->username;
 
 ```
 
-PHP sabitleri de ini dosyası içinde ayrıştırılabilir, bu nedenle eğer yapıcıyı çağırmadan bir ini değerini sabit olarak tanımlarsanız, sabitin değeri sonuçlara dahil edilecektir. Bunu bu şekilde kullanmak için yapıcıyı çağırırken isteğe bağlı olan ikinci parametreyi INI_SCANNER_NORMAL olarak belirtmelisiniz:
+PHP constants may also be parsed in the ini file, so if you define a constant as an ini value before calling the constructor, the constant's value will be integrated into the results. To use it this way you must specify the optional second parameter as INI_SCANNER_NORMAL when calling the constructor:
 
 ```php
 <?php
@@ -57,11 +57,11 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 ```
 
-## Sabitler
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Metodlar
+## Methods
 
 public **__construct** (*mixed* $filePath, [*mixed* $mode])
 
@@ -69,7 +69,7 @@ Phalcon\Config\Adapter\Ini constructor
 
 protected **_parseIniString** (*mixed* $path, *mixed* $value)
 
-Dilimden çok boyutlu diziyi oluşturun
+Build multidimensional array from string
 
 ```php
 <?php
@@ -89,11 +89,11 @@ $this->_parseIniString("path.hello.world", "value for last key");
 
 protected **_cast** (*mixed* $ini)
 
-Parse_ini_file() işlevinin zayıf bir şekilde uygulanması nedeniyle değerleri el ile atamamız gerekir.
+We have to cast values manually because parse_ini_file() has a poor implementation.
 
 public **offsetExists** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Bir özelliğin dizi sözdizimini kullanarak tanımlı olup olmadığını kontrol etmeye izin verir
+Allows to check whether an attribute is defined using the array-syntax
 
 ```php
 <?php
@@ -106,7 +106,7 @@ var_dump(
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Mevcut yapılandırmada nokta kullanılarak ayrılmış yolun değerini döndürür.
+Returns a value from current config using a dot separated path.
 
 ```php
 <?php
@@ -117,7 +117,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Yapılandırmadan bir özellik döndürür, eğer özellik tanımlanmamışsa boş döndürür Değer kesinlikle boş ise veya tanımlanmamışsa, bunun yerine varsayılan değer kullanılacaktır
+Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
 
 ```php
 <?php
@@ -128,7 +128,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Dizi sözdizimini kullanarak bir özellik döndürür
+Gets an attribute using the array-syntax
 
 ```php
 <?php
@@ -154,7 +154,7 @@ $config["database"] = [
 
 public **offsetUnset** (*mixed* $index) inherited from [Phalcon\Config](Phalcon_Config)
 
-Dizi sözdizimini kullanarak bir özelliği kaldırır
+Unsets an attribute using the array-syntax
 
 ```php
 <?php
@@ -165,7 +165,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config) inherited from [Phalcon\Config](Phalcon_Config)
 
-Bir yapılandırma ile mevcut olanını birleştirir
+Merges a configuration into the current one
 
 ```php
 <?php
@@ -184,7 +184,7 @@ $globalConfig->merge($appConfig);
 
 public **toArray** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Nesneyi bir diziye özyinelemeli olarak dönüştürür
+Converts recursively the object to an array
 
 ```php
 <?php
@@ -197,7 +197,7 @@ print_r(
 
 public **count** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Yapılandırmada ayarlanan özelliklerin sayısını döndürür
+Returns the count of properties set in the config
 
 ```php
 <?php
@@ -206,7 +206,7 @@ print count($config);
 
 ```
 
-veya
+or
 
 ```php
 <?php
@@ -221,12 +221,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Varsayılan yol ayırıcı ayarlar
+Sets the default path delimiter
 
 public static **getPathDelimiter** () inherited from [Phalcon\Config](Phalcon_Config)
 
-Varsayılan yol ayırıcıyı getirir
+Gets the default path delimiter
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance]) inherited from [Phalcon\Config](Phalcon_Config)
 
-Yapılandırmaları birleştirme için yardımcı metot (iç içe yapılandırma örneklerini yönlendirir)
+Helper method for merge configs (forwarding nested config instance)
