@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Url'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 
-This components helps in the generation of: URIs, URLs and Paths
+Эти компоненты помогают в генерации: URIs, URLS и Путей
 
 ```php
 <?php
@@ -29,7 +29,7 @@ echo $url->get(
 
 ```
 
-## Methods
+## Методы
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -41,7 +41,7 @@ Returns the DependencyInjector container
 
 public **setBaseUri** (*mixed* $baseUri)
 
-Sets a prefix for all the URIs to be generated
+Задает префикс для всех создаваемых URI
 
 ```php
 <?php
