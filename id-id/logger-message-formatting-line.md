@@ -9,25 +9,25 @@ category: 'logger'
 
 * * *
 
-## Message Formatting
+## Pemformatan pesan
 
-### Line Formatter
+### Format garis
 
 Formats the messages using a one-line string. The default logging format is:
 
 ```bash
-[%date%][%type%] %message%
+[% date%] [% type%]% message%
 ```
 
 #### Message Format
 
 If the default format of the message does not fit the needs of your application you can change it using the `setFormat()` method. The log format variables allowed are:
 
-| Variable  | Description                              |
+| Variable  | Deskripsi                                |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
-| %date%    | Date the message was added               |
-| %type%    | Uppercase string with message type       |
+| %date%    | Tanggal pesan sudah ditambahkan          |
+| %type%    | Huruf besar string dengan tipe pesan     |
 
 The following example demonstrates how to change the message format:
 
