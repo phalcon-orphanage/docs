@@ -10,7 +10,7 @@ title: 'Phalcon\Queue\Beanstalk\Job'
 
 Represents a job in a beanstalk queue
 
-## Methods
+## Методы
 
 public **getId** ()
 
