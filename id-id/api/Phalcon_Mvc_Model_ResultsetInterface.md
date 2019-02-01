@@ -6,34 +6,34 @@ title: 'Phalcon\Mvc\Model\ResultsetInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **getType** ()
 
 ...
 
-publik abstrak **dapatkanyangpertama** ()
+abstract public **getFirst** ()
 
 ...
 
-publik abstrak **dapatkanyangterakhir** ()
+abstract public **getLast** ()
 
 ...
 
-publik abstrak **setIsFresh** (*campuraduk* $isFresh)
+abstract public **setIsFresh** (*mixed* $isFresh)
 
 ...
 
-public abstrak ** isFresh </ 0> ()</p> 
+abstract public **isFresh** ()
 
 ...
 
-abstrak publik **getCache** ()
+abstract public **getCache** ()
 
 ...
 
-publik abstrak **keArray** ()
+abstract public **toArray** ()
 
 ...
