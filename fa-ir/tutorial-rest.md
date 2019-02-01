@@ -22,7 +22,7 @@ In this tutorial, we will explain how to create a simple application that provid
 
 The API consists of the following methods:
 
-| Method   | URL                      | Action                                         |
+| Method   | URL                      | عملیات                                         |
 | -------- | ------------------------ | ---------------------------------------------- |
 | `GET`    | /api/robots              | Retrieves all robots                           |
 | `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
@@ -137,7 +137,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Creating a Model
+## ایجاد یک مدل
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
