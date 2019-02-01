@@ -16,23 +16,23 @@ This is the base class to each database dialect. This implements common methods 
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
 
-Registers custom SQL functions
+Registra funciones personalizadas SQL
 
 public **getCustomFunctions** ()
 
-Returns registered functions
+Devuelve funciones registradas
 
 final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar])
 
-Escape Schema
+Esquema de escape
 
 final public **escape** (*mixed* $str, [*mixed* $escapeChar])
 
-Escape identifiers
+Identificadores de escape
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
-Generates the SQL for LIMIT clause
+Genera el SQL para la cláusula LIMIT
 
 ```php
 <?php
@@ -47,7 +47,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+Devuelve un SQL con una cláusula DE ACTUALIZACIÓN
 
 ```php
 <?php
@@ -59,7 +59,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+Devuelve un SQL modificado con una cláusula de BLOQUEAR EN MODO COMPARTIR
 
 ```php
 <?php
@@ -71,7 +71,7 @@ echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Gets a list of columns with escaped identifiers
+Obtiene una lista de columnas con identificadores escapados
 
 ```php
 <?php
@@ -87,123 +87,123 @@ echo $dialect->getColumnList(
 
 final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Column expressions
+Resolver expresiones de columna
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Transforms an intermediate representation for an expression into a database system valid expression
+Transforma una representación intermedia para una expresión en una expresión válida del sistema de base de datos
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar])
 
-Transform an intermediate representation of a schema/table into a database system valid expression
+Transforma una representación intermedia para una tabla/esquema en una expresión válida del sistema de base de datos
 
 public **select** (*array* $definition)
 
-Builds a SELECT statement
+Crea un estatus SELECT
 
 public **supportsSavepoints** ()
 
-Checks whether the platform supports savepoints
+Comprueba si la plataforma admite puntos de recuperación
 
 public **supportsReleaseSavepoints** ()
 
-Checks whether the platform supports releasing savepoints.
+Comprueba si la plataforma admite la liberación de puntos de recuperación.
 
 public **createSavepoint** (*mixed* $name)
 
-Generate SQL to create a new savepoint
+Genera un SQL para crear un nuevo punto de recuperación
 
 public **releaseSavepoint** (*mixed* $name)
 
-Generate SQL to release a savepoint
+Generar SQL para liberar un punto de recuperación
 
 public **rollbackSavepoint** (*mixed* $name)
 
-Generate SQL to rollback a savepoint
+Generar SQL para revertir un punto de recuperación
 
 final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Column expressions
+Resolver expresiones de columna
 
 final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve object expressions
+Resolver expresiones de objetos
 
 final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar])
 
-Resolve qualified expressions
+Resolver expresiones calificadas
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve binary operations expressions
+Resolver expresiones de operaciones binarias
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve unary operations expressions
+Resolver expresiones de operaciones unarias
 
 final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts])
 
-Resolve function calls
+Resolver llamadas a funciones
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve Lists
+Resolver listas
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar])
 
-Resolve *
+Resuelve *
 
 final protected **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve CAST of values
+Resuelve CAST de valores
 
 final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve CONVERT of values encodings
+Resuelve CONVERT de codificaciones de valores
 
 final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve CASE expressions
+Resuelve expresiones CASE
 
 final protected **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar])
 
-Resolve a FROM clause
+Resuelve una cláusula FROM
 
 final protected **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve a JOINs clause
+Resuelve una cláusula JOINs
 
 final protected **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve a WHERE clause
+Resuelve una cláusula WHERE
 
 final protected **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve a GROUP BY clause
+Resuelve una cláusula GROUP BY
 
 final protected **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve a HAVING clause
+Resuelve una cláusula HAVING
 
 final protected **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve an ORDER BY clause
+Resuelve una cláusula ORDER BY
 
 final protected **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Resolve a LIMIT clause
+Resuelve una cláusula LIMIT
 
 protected **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar])
 
-Prepares column for this RDBMS
+Prepara una columna para este RDBMS
 
 protected **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar])
 
-Prepares table for this RDBMS
+Prepara una tabla para este RDBMS
 
 protected **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar])
 
-Prepares qualified for this RDBMS
+Prepara calificado para este RDBMS
 
 abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column) inherited from [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
