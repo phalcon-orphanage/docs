@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Function based access
+## 基于访问控制的自定义函数
 
 Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
 
