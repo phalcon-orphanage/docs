@@ -8,11 +8,11 @@ title: 'Phalcon\Filter\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
-Exceptions thrown in `Phalcon\Filter` will use this class
+Exceptions thrown in `Phalcon\Filter\*` will use this class
 
-## Methods
+## روش ها
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-Gets the file in which the exception occurred
+می دهد فایل که در آن استثنا اتفاق افتاده است
 
 ```php
 public function getLine(): int
