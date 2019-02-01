@@ -17,7 +17,7 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Nazwa                               | Ious                                                                 |
+| Nazwa                               | Description                                                          |
 | ----------------------------------- | -------------------------------------------------------------------- |
 | [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
@@ -107,7 +107,7 @@ $robot = Robots::findById('5087358f2d42b8c3d15ec4e2');
 echo $robot->name;
 ```
 
-Gdy rekord jest już w pamięci, możesz edytować jego dane i następnie zapisać zmiany:
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 ```php
 <?php
@@ -216,7 +216,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Możesz również użyć metody `findFirst()`, aby otrzymać tylko pierwszy rekord pasujący do danych kryteriów wyszukiwania:
+You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
@@ -276,7 +276,7 @@ $robots = Robots::find(
 
 The available query options are:
 
-| Parametr     | Ious                                                                                                                                                                                         | Przykład                                                |
+| Parametr     | Description                                                                                                                                                                                  | Przykład                                                |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
 | `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
@@ -315,7 +315,7 @@ The example above returns the `name` of the robot with the `type = 'maid'`.
 
 <a name='aggregations'></a>
 
-## Agregacje
+## Aggregations
 
 A model can return calculations using [aggregation framework](https://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
 
@@ -411,21 +411,21 @@ if ($robot->save() === false) {
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operacja           | Nazwa                      | Czy można zatrzymać operację? | Wyjaśnienie                                                                                                        |
-| ------------------ | -------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | TAK                           | Is executed before the validation process and the final insert/update to the database                              |
-| Wstawianie         | `beforeValidationOnCreate` | TAK                           | Is executed before the validation process only when an insertion operation is being made                           |
-| Aktualizowanie     | `beforeValidationOnUpdate` | TAK                           | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped)         | Is executed before the validation process only when an insertion operation is being made                           |
-| Wstawianie         | `afterValidationOnCreate`  | TAK                           | Is executed after the validation process when an insertion operation is being made                                 |
-| Aktualizowanie     | `afterValidationOnUpdate`  | TAK                           | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | TAK                           | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | TAK                           | Runs before the required operation over the database system                                                        |
-| Aktualizowanie     | `beforeUpdate`             | TAK                           | Runs before the required operation over the database system only when an updating operation is being made          |
-| Wstawianie         | `beforeCreate`             | TAK                           | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Aktualizowanie     | `afterUpdate`              | NIE                           | Runs after the required operation over the database system only when an updating operation is being made           |
-| Wstawianie         | `afterCreate`              | NIE                           | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NIE                           | Runs after the required operation over the database system                                                         |
+| Operation          | Nazwa                      | Can stop operation?   | Explanation                                                                                                        |
+| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Inserting/Updating | `beforeValidation`         | TAK                   | Is executed before the validation process and the final insert/update to the database                              |
+| Inserting          | `beforeValidationOnCreate` | TAK                   | Is executed before the validation process only when an insertion operation is being made                           |
+| Updating           | `beforeValidationOnUpdate` | TAK                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
+| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
+| Inserting          | `afterValidationOnCreate`  | TAK                   | Is executed after the validation process when an insertion operation is being made                                 |
+| Updating           | `afterValidationOnUpdate`  | TAK                   | Is executed after the validation process when an updating operation is being made                                  |
+| Inserting/Updating | `afterValidation`          | TAK                   | Is executed after the validation process                                                                           |
+| Inserting/Updating | `beforeSave`               | TAK                   | Runs before the required operation over the database system                                                        |
+| Updating           | `beforeUpdate`             | TAK                   | Runs before the required operation over the database system only when an updating operation is being made          |
+| Inserting          | `beforeCreate`             | TAK                   | Runs before the required operation over the database system only when an inserting operation is being made         |
+| Updating           | `afterUpdate`              | NIE                   | Runs after the required operation over the database system only when an updating operation is being made           |
+| Inserting          | `afterCreate`              | NIE                   | Runs after the required operation over the database system only when an inserting operation is being made          |
+| Inserting/Updating | `afterSave`                | NIE                   | Runs after the required operation over the database system                                                         |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -681,10 +681,10 @@ foreach ($robots as $robot) {
 
 The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
-| Operacja | Nazwa          | Czy można zatrzymać operację? | Wyjaśnienie                              |
-| -------- | -------------- | ----------------------------- | ---------------------------------------- |
-| Usuwanie | `beforeDelete` | TAK                           | Runs before the delete operation is made |
-| Usuwanie | `afterDelete`  | NIE                           | Runs after the delete operation was made |
+| Operation | Nazwa          | Can stop operation? | Explanation                              |
+| --------- | -------------- | ------------------- | ---------------------------------------- |
+| Deleting  | `beforeDelete` | TAK                 | Runs before the delete operation is made |
+| Deleting  | `afterDelete`  | NIE                 | Runs after the delete operation was made |
 
 <a name='validation-failed-events'></a>
 
@@ -692,7 +692,7 @@ The following events are available to define custom business rules that can be e
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Operacja                 | Nazwa               | Wyjaśnienie                                                     |
+| Operation                | Nazwa               | Explanation                                                     |
 | ------------------------ | ------------------- | --------------------------------------------------------------- |
 | Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
