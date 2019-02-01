@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Trim'
 
 Sanitizes a value removing leading and trailing spaces
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
