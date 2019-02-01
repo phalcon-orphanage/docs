@@ -8,7 +8,7 @@ title: 'Phalcon\Filter\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
 Exceptions thrown in `Phalcon\Filter\*` will use this class
 
