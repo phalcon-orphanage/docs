@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
-Phalcon\Mvc\Model объединяет бизнес объекты и таблицы базы данных для созданию постоянной модели предметной области, в логика и данные представлены в одной упаковке. Это реализация объектно-реляционного отображения (ORM).
+Phalcon\Mvc\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используется для управления соответствующей таблицей базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении. Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
 
-Phalcon\Mvc\Model это первая ORM, написаная на Zephir/C языке для PHP, дающая разработчикам высокую производительность взаимодействия с базами данных, а также простоту в использовании.
+Phalcon\Mvc\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
 ```php
 <?php
@@ -55,7 +55,7 @@ if ($robot->save() === false) {
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Методы
+## Methods
 
 final public **__construct** ([*mixed* $data], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $modelsManager])
 
@@ -67,7 +67,7 @@ Sets the dependency injection container
 
 public **getDI** ()
 
-Возвращает контейнер внедрения зависимости
+Returns the dependency injection container
 
 protected **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -182,7 +182,7 @@ Gets the connection used to write data to the model
 
 public [Phalcon\Mvc\Model](Phalcon_Mvc_Model) **assign** (*array* $data, [*mixed* $dataColumnMap], [*array* $whiteList])
 
-Присваивает значения модели из массива
+Assigns values to a model from an array
 
 ```php
 <?php
@@ -215,7 +215,7 @@ $robot->assign(
     ]
 );
 
-// По умолчанию метод assign будет использовать сеттеры, если они существуют, вы можете отключить его, используя ini_set, чтобы напрямую использовать свойства
+// By default assign method will use setters if exist, you can disable it by using ini_set to directly use properties
 
 ini_set("phalcon.orm.disable_assign_setters", true);
 
@@ -232,7 +232,7 @@ $robot->assign(
 
 public static **cloneResultMap** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) | [Phalcon\Mvc\Model\Row](Phalcon_Mvc_Model_Row) $base, *array* $data, *array* $columnMap, [*int* $dirtyState], [*boolean* $keepSnapshots])
 
-Присваивает значения модели из массива, возвращая новую модель.
+Assigns values to a model from an array, returning a new model.
 
 ```php
 <?php
