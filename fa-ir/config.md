@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# تنظیمات خواندن
+# Reading Configurations
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -36,7 +36,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## کارخانه
+## Factory
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
@@ -99,36 +99,47 @@ $config = new Config($settings);
 
 <a name='file-adapter'></a>
 
-## فایل آداپتور
+## File Adapters
 
 The adapters available are:
 
-| کلاس                                                              | توضیحات                                                                                          |
+| Class                                                             | Description                                                                                      |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | با استفاده از فایل های JSON برای ذخیره تنظیمات.                                                  |
+| [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | Uses JSON files to store settings.                                                               |
 | [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | با استفاده از فایل های YAML برای ذخیره تنظیمات.                                                  |
+| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | Uses YAML files to store settings.                                                               |
 
 <a name='ini-files'></a>
 
-## خواندن فایل INI
+## Reading INI Files
 
 Ini files are a common way to store settings. [Phalcon\Config](api/Phalcon_Config) uses the optimized PHP function `parse_ini_file` to read these files. Files sections are parsed into sub-settings for easy access.
 
 ```ini
+[database]
+adapter  = Mysql
+host     = localhost
+username = scott
+password = cheetah
+dbname   = test_db
+
 [phalcon]
 controllersDir = '../app/controllers/'
-modelsDir = '../app/models/'
-viewsDir = '../app/views/'
+modelsDir      = '../app/models/'
+viewsDir       = '../app/views/'
 
 [models]
-metadata.adapter = 'Memory'
+metadata.adapter  = 'Memory'
 ```
 
 You can read the file as follows:
 
 ```php
+<?php
+
+use Phalcon\Config\Adapter\Ini as ConfigIni;
+
 $config = new ConfigIni('path/config.ini');
 
 echo $config->phalcon->controllersDir, "\n";
@@ -138,7 +149,7 @@ echo $config->models->metadata->adapter, "\n";
 
 <a name='merging'></a>
 
-## ادغام تنظیمات
+## Merging Configurations
 
 [Phalcon\Config](api/Phalcon_Config) can recursively merge the properties of one configuration object into another. New properties are added and existing properties are updated.
 
@@ -150,7 +161,7 @@ use Phalcon\Config;
 $config = new Config(
     [
         'database' => [
-            'host' => 'localhost',
+            'host'   => 'localhost',
             'dbname' => 'test_db',
         ],
         'debug' => 1,
@@ -160,14 +171,16 @@ $config = new Config(
 $config2 = new Config(
     [
         'database' => [
-            'dbname' => 'production_db',
+            'dbname'   => 'production_db',
             'username' => 'scott',
             'password' => 'secret',
         ],
         'logging' => 1,
-    ] 
+    ]
 );
+
 $config->merge($config2);
+
 print_r($config);
 ```
 
@@ -192,7 +205,7 @@ There are more adapters available for this components in the [Phalcon Incubator]
 
 <a name='nested-configuration'></a>
 
-## پیکربندی های تو در تو
+## Nested Configuration
 
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
 
@@ -231,8 +244,8 @@ $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter. مقدار پیش فرض نیز می تواند مشخص شود و
-// اگر گزینه پیکربندی وجود نداشته باشد بازگردانده خواهد شد.
+// Using slash as delimiter. A default value may also be specified and
+// will be returned if the configuration option does not exist.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
@@ -264,7 +277,7 @@ function config() {
 
 <a name='injecting-into-di'></a>
 
-## اعمال پیگربندی ها
+## Injecting Configuration Dependency
 
 You can inject your configuration to the controller allowing us to use [Phalcon\Config](api/Phalcon_Config) inside [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller). To be able to do that, you have to add it as a service in the Dependency Injector container. Add following code inside your bootstrap file:
 
