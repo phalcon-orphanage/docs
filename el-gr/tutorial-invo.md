@@ -17,7 +17,7 @@ INVO was made with the client-side framework [Bootstrap](https://getbootstrap.co
 
 ## Project Structure
 
-Once you clone the project in your document root you'll see the following structure:
+Μόλις κλωνοποιήσετε το έργο ρίζα στη του εγγράφου, θα δείτε την ακόλουθη δομή:
 
 ```bash
 invo/
