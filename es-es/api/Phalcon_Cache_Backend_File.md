@@ -56,7 +56,7 @@ Phalcon\Cache\Backend\File constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Returns a cached content
+Devuelve el contenido almacenado en caché
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -64,11 +64,11 @@ Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public **delete** (*int* | *string* $keyName)
 
-Deletes a value from the cache by its key
+Elimina el valor almacenado en caché por la clave
 
 public **queryKeys** ([*mixed* $prefix])
 
-Query the existing cached keys.
+Indagar las claves almacenadas en caché existentes.
 
 ```php
 <?php
@@ -86,15 +86,15 @@ Verifica si existe el caché y que no está expirado
 
 public **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
-Increment of a given key, by number $value
+Incremento de la clave predeterminada, por el número $value
 
 public **decrement** ([*string* | *int* $keyName], [*mixed* $value])
 
-Decrement of a given key, by number $value
+Decremento de la clave predeterminada, por el número $value
 
 public **flush** ()
 
-Immediately invalidates all existing items.
+Anula inmediatamente todos los elementos existentes.
 
 public **getKey** (*mixed* $key)
 
@@ -130,20 +130,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Starts a cache. The keyname allows to identify the created fragment
+Comienza una caché. El KeyName permite identificar el fragmento creado
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stops the frontend without store any cached content
+Detiene el frontend sin almacenar ningún contenido almacenado en caché
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the last cache is fresh or cached
+Comprueba si el último almacenamiento en caché esta actualizado o no
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Checks whether the cache has starting buffering or not
+Comprueba si el caché ha empezado a almacenarse o no
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Gets the last lifetime set
+Obtiene la última duración establecida
