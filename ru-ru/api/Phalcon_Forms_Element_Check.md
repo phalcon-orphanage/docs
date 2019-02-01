@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Check'
 
 Component INPUT[type=check] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 
