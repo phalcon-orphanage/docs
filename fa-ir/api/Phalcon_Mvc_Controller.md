@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Controller'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ControllerInterface](Phalcon_Mvc_ControllerInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
 
 Every application controller should extend this class that encapsulates all the controller functionality
 
@@ -48,7 +48,7 @@ class PeopleController extends \Phalcon\Mvc\Controller
 
 ```
 
-## Methods
+## روش ها
 
 final public **__construct** ()
 
@@ -68,7 +68,7 @@ Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
