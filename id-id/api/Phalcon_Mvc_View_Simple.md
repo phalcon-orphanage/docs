@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\View\Simple'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
-This component allows to render views without hierarchical levels
+Komponen ini memungkinkan untuk menampilkan tampilan tampa tingkat hirarkis
 
 ```php
 <?php
@@ -39,25 +39,25 @@ echo $view->render(
 
 ```
 
-## Methods
+## Metode
 
-public **getRegisteredEngines** ()
+publik **dapatkanfilter** ()
 
-public **__construct** ([*array* $options])
+umum **__membangun** ([*array* $options])
 
 Phalcon\Mvc\View\Simple constructor
 
-public **setViewsDir** (*mixed* $viewsDir)
+publik **mendapatkan Server** (*campur aduk* $viewsDir)
 
 Sets views directory. Depending of your platform, always add a trailing slash or backslash
 
-public **getViewsDir** ()
+public **getFilter** ()
 
-Gets views directory
+Gets dilihat direktori
 
-public **registerEngines** (*array* $engines)
+publik **mengaturatribut** (*array* $engines)
 
-Register templating engines
+Mendaftar mesin template
 
 ```php
 <?php
@@ -72,62 +72,62 @@ $this->view->registerEngines(
 
 ```
 
-protected *array* **_loadTemplateEngines** ()
+dilindungi (**_loadTemplateEngines**)
 
 Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
 
-final protected **_internalRender** (*string* $path, *array* $params)
+akhir dilindungi **_mergeFindParameters** (*campur aduk* $path, *campur aduk* $params)
 
-Tries to render the view with every engine registered in the component
+Mencoba untuk membuat tampilan dengan setiap mesin yang terdaftar dalam komponen
 
-public **render** (*string* $path, [*array* $params])
+abstrak publik **tableExists** (*mixed* $path, [*mixed* $params])
 
-Renders a view
+Memberikan sebuah tampilan
 
-public **partial** (*mixed* $partialPath, [*mixed* $params])
+publik **dapatkan** (*campuran* $partialPath, [*mixed* $params])
 
-Renders a partial view
+Memberikan sebagian tampilan
 
 ```php
-<?php
+<? php
 
-// Show a partial inside another view
-$this->partial("shared/footer");
+Tampilkan parsial dalam pandangan lain
+$this -> partial("shared/footer");
 
 ```
 
 ```php
-<?php
+<? php
 
-// Show a partial inside another view with parameters
-$this->partial(
-    "shared/footer",
-    [
-        "content" => $html,
-    ]
+Tampilkan parsial dalam pandangan lain dengan parameter
+$this -> (parsial
+"bersama/footer",
+[
+"konten" = > $html,
+]
 );
 
 ```
 
-public **setCacheOptions** (*array* $options)
+public **setParams ** (*array *$options)
 
-Sets the cache options
+Mengatur pilihan cache
 
-public *array* **getCacheOptions** ()
+publiK *array* **dapatkanPertandingan** ()
 
-Returns the cache options
+Mengembalikan pilihan cache
 
-protected **_createCache** ()
+dilindungi (**getEventsManager**)
 
 Create a Phalcon\Cache based on the internal cache options
 
 public **getCache** ()
 
-Returns the cache instance used to cache
+Mengembalikan contoh cache yang digunakan untuk cache
 
-public **cache** ([*mixed* $options])
+publik **menyaring** (*campur * $options])
 
-Cache the actual view render to certain level
+Cache tampilan aktual ke tingkat tertentu
 
 ```php
 <?php
@@ -143,7 +143,7 @@ $this->view->cache(
 
 public **setParamToView** (*mixed* $key, *mixed* $value)
 
-Adds parameters to views (alias of setVar)
+Menambahkan parameter ke tampilan (alias setVar)
 
 ```php
 <?php
@@ -152,9 +152,9 @@ $this->view->setParamToView("products", $products);
 
 ```
 
-public **setVars** (*array* $params, [*mixed* $merge])
+public **setParam** (*mixed* $params, *mixed* $merge])
 
-Set all the render params
+Tetapkan semua params render
 
 ```php
 <?php
@@ -169,7 +169,7 @@ $this->view->setVars(
 
 public **setVar** (*mixed* $key, *mixed* $value)
 
-Set a single view parameter
+Tetapkan parameter tampilan tunggal
 
 ```php
 <?php
@@ -180,34 +180,32 @@ $this->view->setVar("products", $products);
 
 public **getVar** (*mixed* $key)
 
-Returns a parameter previously set in the view
+Mengembalikan parameter yang telah ditetapkan sebelumnya pada tampilan
 
-public *array* **getParamsToView** ()
+publik *array* **MendapatkanParams** ()
 
-Returns parameters to views
+Mengembalikan parameter untuk dilihat
 
-public **setContent** (*mixed* $content)
+publik **setContent** (*mixed* $content)
 
-Externally sets the view content
+Eksternal menetapkan konten tampilan
 
 ```php
-<?php
-
-$this->view->setContent("<h1>hello</h1>");
+<? php$this -> Tampilan -> setContent ("<h1>Halo</h1>");
 
 ```
 
-public **getContent** ()
+public ** getContent </ 0> ()</p> 
 
-Returns cached output from another view stage
+Mengembalikan hasil cache dari tahap tampilan yang lain
 
 public *string* **getActiveRenderPath** ()
 
-Returns the path of the view that is currently rendered
+Kembali jalan (atau jalur) pandangan yang saat ini diberikan
 
-public **__set** (*mixed* $key, *mixed* $value)
+publik **setHeader** (*mixed* $key, *mixed* $value)
 
-Magic method to pass variables to the views
+Metode sihir untuk melewatkan variabel ke tampilan
 
 ```php
 <?php
@@ -216,9 +214,9 @@ $this->view->products = $products;
 
 ```
 
-public **__get** (*mixed* $key)
+publik **baca** (*mixed* $key)
 
-Magic method to retrieve a variable passed to the view
+Metode sihir untuk mengambil variabel dilewatkan ke tampilan
 
 ```php
 <?php
@@ -229,16 +227,16 @@ echo $this->view->products;
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Menyetel pengelola acara
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
