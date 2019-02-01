@@ -10,7 +10,7 @@ title: 'Phalcon\Di\Service'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
-Representa individualmente un servicio en el contenedor de servicios
+Represents individually a service in the services container
 
 ```php
 <?php
@@ -29,44 +29,44 @@ final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $s
 
 public **getName** ()
 
-Devuelve el nombre del servicio
+Returns the service's name
 
 public **setShared** (*mixed* $shared)
 
-Establece si el servicio es compartido o no
+Sets if the service is shared or not
 
 public **isShared** ()
 
-Comprueba si el servicio es compartido o no
+Check whether the service is shared or not
 
 public **setSharedInstance** (*mixed* $sharedInstance)
 
-Establece o restablece la instancia compartida relacionada al servicio
+Sets/Resets the shared instance related to the service
 
 public **setDefinition** (*mixed* $definition)
 
-Establece la definición del servicio
+Set the service definition
 
 public *mixed* **getDefinition** ()
 
-Devuelve la definición del servicio
+Returns the service definition
 
 public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
-Resuelve el servicio
+Resolves the service
 
 public **setParameter** (*mixed* $position, *array* $parameter)
 
-Cambia un parámetro en la definición sin resolver el servicio
+Changes a parameter in the definition without resolve the service
 
 public *array* **getParameter** (*int* $position)
 
-Devuelve un parámetro en una posición específica
+Returns a parameter in a specific position
 
 public **isResolved** ()
 
-Devuelve truve si se resolvió el servicio
+Returns true if the service was resolved
 
 public static **__set_state** (*array* $attributes)
 
-Restaura el estado interno de un servicio
+Restore the internal state of a service
