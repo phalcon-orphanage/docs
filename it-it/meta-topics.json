@@ -23,15 +23,15 @@
         ]
     },
     {
-        "text": "Contributi",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "Panoramica",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
-                "text": "Richieste Pull",
+                "text": "Pull Requests",
                 "url": "/new-pull-request"
             },
             {
@@ -39,21 +39,21 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Generazione di backtrace",
+                "text": "Backtrace Generation",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Test riproducibile",
+                "text": "Reproducible Tests",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Testing environment",
                 "url": "/testing-environment"
             }
         ]
     },
     {
-        "text": "Per iniziare",
+        "text": "Getting Started",
         "url": "",
         "menu": [
             {
@@ -61,7 +61,7 @@
                 "url": "/installation"
             },
             {
-                "text": "Installazione del server Web",
+                "text": "Webserver Setup",
                 "url": "/webserver-setup"
             },
             {
@@ -137,7 +137,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Indice API",
+                "text": "API Index",
                 "url": "/api/"
             },
             {
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Modelli",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -221,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Eventi",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -313,7 +313,7 @@
                 "url": "/filter"
             },
             {
-                "text": "Inoltro (Routing)",
+                "text": "Routing",
                 "url": "/routing"
             },
             {
