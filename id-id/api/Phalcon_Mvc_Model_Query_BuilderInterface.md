@@ -6,7 +6,7 @@ title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
 ---
 # Interface **Phalcon\Mvc\Model\Query\BuilderInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builderinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builderinterface.zep)
 
 ## Constants
 
@@ -14,37 +14,37 @@ title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
 
 *string* **OPERATOR_AND**
 
-## Methods
+## Metode
 
-abstract public **columns** (*mixed* $columns)
-
-...
-
-abstract public **getColumns** ()
+kolom publik abstrak** ** (*campuran* $columns)
 
 ...
 
-abstract public **from** (*mixed* $models)
+abstrak publik **getColumns** ()
 
 ...
 
-abstract public **addFrom** (*mixed* $model, [*mixed* $alias])
+abstrak publik **dari** (*mixed* $models)
 
 ...
 
-abstract public **getFrom** ()
+abstrak publik **addFrom** (*mixed* $model, [*mixed* $alias])
 
 ...
 
-abstract public **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
+abstrak publik **getFrom** ()
 
 ...
 
-abstract public **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
+abstrak publik **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*dicampur* $type])
 
 ...
 
-abstract public **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
+abstrak publik **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
+
+...
+
+abstrak publik **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
 ...
 
@@ -60,11 +60,11 @@ abstract public **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* 
 
 ...
 
-abstract public **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
+abstrak umum **dan Dimana** (*campuran* $conditions, [*campuran* $bindParams], [*campuran* $bindTypes])
 
 ...
 
-abstract public **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
+abstrak umum **atau Dimana** (*campuran* $conditions, [*campuran* $bindParams], [*campuran* $bindTypes])
 
 ...
 
@@ -84,7 +84,7 @@ abstract public **notInWhere** (*mixed* $expr, *array* $values, [*mixed* $operat
 
 ...
 
-abstract public **getWhere** ()
+abstrak umum **Dimana mendapatkan** ()
 
 ...
 
@@ -92,7 +92,7 @@ abstract public **orderBy** (*mixed* $orderBy)
 
 ...
 
-abstract public **getOrderBy** ()
+abstrak umum **mendapatkan Pesanan Dari** ()
 
 ...
 
@@ -104,11 +104,11 @@ abstract public **getHaving** ()
 
 ...
 
-abstract public **limit** (*mixed* $limit, [*mixed* $offset])
+abstrak umum **batas** (*campuran* $limit, [*campuran* $offset])
 
 ...
 
-abstract public **getLimit** ()
+abstrak umum **mendapatkan Batas** ()
 
 ...
 
