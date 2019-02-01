@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Migracje Bazy Danych
+# Database Migrations
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -146,30 +146,30 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Indeks       | Ious                                                                                                                                        | Opcjonalne |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:----------:|
-| `columns`    | An array with a set of table columns                                                                                                        |    Nie     |
-| `indexes`    | An array with a set of table indexes.                                                                                                       |    Tak     |
-| `referencje` | An array with a set of table references (foreign keys).                                                                                     |    Tak     |
-| `opcje`      | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    Tak     |
+| Indeks       | Description                                                                                                                                 | Optional |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | An array with a set of table columns                                                                                                        |   Nie    |
+| `indexes`    | An array with a set of table indexes.                                                                                                       |   Tak    |
+| `references` | An array with a set of table references (foreign keys).                                                                                     |   Tak    |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Tak    |
 
 <a name='class-anatomy-columns'></a>
 
-### Definiowanie kolumn
+### Defining Columns
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| Opcja           | Ious                                                                                                                                       | Opcjonalne |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:----------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    Nie     |
-| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |    Tak     |
-| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |    Tak     |
-| `bez znaku`     | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |    Tak     |
-| `notNull`       | Column can store null values?                                                                                                              |    Tak     |
-| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |    Tak     |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Tak     |
-| `first`         | Column must be placed at first position in the column order                                                                                |    Tak     |
-| `po`            | Column must be placed after indicated column                                                                                               |    Tak     |
+| Opcja           | Description                                                                                                                                | Optional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |   Nie    |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Tak    |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Tak    |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Tak    |
+| `notNull`       | Column can store null values?                                                                                                              |   Tak    |
+| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Tak    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Tak    |
+| `first`         | Column must be placed at first position in the column order                                                                                |   Tak    |
+| `after`         | Column must be placed after indicated column                                                                                               |   Tak    |
 
 Database migrations support the following database column types:
 
@@ -204,14 +204,14 @@ Database migrations support the following database column types:
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Indeks              | Ious                                                                                                | Opcjonalne | Implemented in   |
-| ------------------- | --------------------------------------------------------------------------------------------------- |:----------:| ---------------- |
-| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    Nie     | Wszystkie        |
-| `columns`           | An array with the name of the columns at the table that have the reference                          |    Nie     | Wszystkie        |
-| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    Nie     | Wszystkie        |
-| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |    Tak     | Wszystkie        |
-| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |    Tak     | MySQL PostgreSQL |
-| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |    Tak     | MySQL PostgreSQL |
+| Indeks              | Description                                                                                         | Optional | Implemented in   |
+| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |   Nie    | Wszystkie        |
+| `columns`           | An array with the name of the columns at the table that have the reference                          |   Nie    | Wszystkie        |
+| `referencedColumns` | An array with the name of the columns at the referenced table                                       |   Nie    | Wszystkie        |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Tak    | Wszystkie        |
+| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Tak    | MySQL PostgreSQL |
+| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Tak    | MySQL PostgreSQL |
 
 <a name='writing'></a>
 
