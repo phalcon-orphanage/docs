@@ -7,9 +7,9 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# 使用模型
+# Working with Models
 
-模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 模型主要用于管理互动与相应的数据库表的规则。 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
+模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
 
@@ -17,7 +17,7 @@ version: '4.0'
 
 <a name='creating'></a>
 
-## 创建模型
+## Creating Models
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -165,7 +165,7 @@ If you use underscores in your property names, you must still use camel case in 
 
 <a name='records-to-objects'></a>
 
-## 对对象的理解记录
+## Understanding Records To Objects
 
 Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
 
@@ -213,7 +213,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## 查找记录
+## Finding Records
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
@@ -309,7 +309,7 @@ $robots = Robots::find(
 
 可用的查询选项有：
 
-| 参数            | 描述                                                                                                                                           | 示例                                                                   |
+| Parameter     | 描述                                                                                                                                           | 示例                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `conditions`  | 查找操作的搜索条件。 用于提取只有那些满足指定的条件的记录。 By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions.       | `'conditions' => "name LIKE 'steve%'"`                            |
 | `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                    | `'columns' => 'id, name'`                                         |
@@ -384,7 +384,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 
-### 模型结果集
+### Model Resultsets
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -540,7 +540,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### 筛选结果集
+### Filtering Resultsets
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -561,7 +561,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### 绑定参数
+### Binding Parameters
 
 Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. 绑定参数可以简单地实现，如下所示：
 
@@ -691,7 +691,7 @@ $robots = Robots::findByName('Ultron');
 
 <a name='preparing-records'></a>
 
-## 初始化/准备读取的记录
+## Initializing/Preparing fetched records
 
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
@@ -756,7 +756,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## 生成的计算
+## Generating Calculations
 
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
@@ -923,7 +923,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## 创建/更新记录
+## Creating/Updating Records
 
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
@@ -1038,7 +1038,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
-## 删除记录
+## Deleting Records
 
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
@@ -1092,10 +1092,10 @@ foreach ($robots as $robot) {
 
 以下事件可以用来定义可以执行删除操作时执行的自定义业务规则：
 
-| 操作       | 名称           | 可以停止操作吗？ | 注解         |
-| -------- | ------------ |:--------:| ---------- |
-| Deleting | afterDelete  |    否     | 运行删除操作后    |
-| Deleting | beforeDelete |    是的    | 在做删除操作之前运行 |
+| Operation | Name         | 可以停止操作吗？ | Explanation                              |
+| --------- | ------------ |:--------:| ---------------------------------------- |
+| Deleting  | afterDelete  |    否     | Runs after the delete operation was made |
+| Deleting  | beforeDelete |    是的    | Runs before the delete operation is made |
 
 With the above events can also define business rules in the models:
 
@@ -1201,7 +1201,7 @@ foreach ($robots as $robot) {
 
 <a name='table-prefixes'></a>
 
-## 表前缀
+## Table prefixes
 
 If you want all your tables to have certain prefix and without setting source in all models you can use the `Phalcon\Mvc\Model\Manager` and the method `setModelPrefix()`:
 
@@ -1224,7 +1224,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 
-## 自动生成的标识列
+## Auto-generated identity columns
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1258,7 +1258,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## 跳过列
+## Skipping Columns
 
 To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1341,7 +1341,7 @@ class Robots extends Model
 
 <a name='dynamic-updates'></a>
 
-## 动态更新
+## Dynamic Updates
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1365,9 +1365,9 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## 独立列映射
+## Independent Column Mapping
 
-The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. 例如：
+The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
 ```php
 <?php
@@ -1449,7 +1449,7 @@ The independent column map allows you to:
 
 <a name='record-snapshots'></a>
 
-## 记录快照
+## Record Snapshots
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1549,7 +1549,7 @@ array(0) {
 
 <a name='different-schemas'></a>
 
-## 指向一个不同的架构
+## Pointing to a different schema
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1571,7 +1571,7 @@ class Robots extends Model
 
 <a name='multiple-databases'></a>
 
-## 设置多个数据库
+## Setting multiple databases
 
 In Phalcon, all models can belong to the same database connection or have an individual one. Actually, when [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) needs to connect to the database it requests the `db` service in the application's services container. You can overwrite this service setting it in the `initialize()` method:
 
@@ -1612,7 +1612,7 @@ $di->set(
 );
 ```
 
-然后，在 `initialize()` 方法中，我们定义连接服务模型：
+Then, in the `initialize()` method, we define the connection service for the model:
 
 ```php
 <?php
@@ -1706,9 +1706,9 @@ $robot = Robots::findFirst('id = 101');
 
 <a name='injecting-services-into-models'></a>
 
-## 服务注入模型
+## Injecting services into Models
 
-您可能需要访问应用程序服务在模型内的，下面的示例说明了如何做到这一点：
+You may be required to access the application services within a model, the following example explains how to do that:
 
 ```php
 <?php
@@ -1738,7 +1738,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## 禁用/启用的功能
+## Disabling/Enabling Features
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
@@ -1787,7 +1787,7 @@ The available options are:
 
 <a name='stand-alone-component'></a>
 
-## 独立组件
+## Stand-Alone component
 
 Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) in a stand-alone mode can be demonstrated below:
 
