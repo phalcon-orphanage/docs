@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\File'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
 
 Component INPUT[type=file] for forms
 
-## Metodi
+## Methods
 
 public **render** ([*array* $attributes])
 
