@@ -8,7 +8,7 @@ title: 'Phalcon\Forms\Manager'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
-## Методы
+## Methods
 
 public **create** (*string* $name, [*object* $entity])
 
