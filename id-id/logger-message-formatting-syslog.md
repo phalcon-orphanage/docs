@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Message Formatting
+## Pemformatan pesan
 
 ### Syslog Formatter
 
