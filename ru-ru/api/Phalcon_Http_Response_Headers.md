@@ -12,7 +12,7 @@ title: 'Phalcon\Http\Response\Headers'
 
 This class is a bag to manage the response headers
 
-## Методы
+## Methods
 
 public **set** (*mixed* $name, *mixed* $value)
 
