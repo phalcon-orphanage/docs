@@ -12,7 +12,7 @@ title: 'Phalcon\Assets\Filters\None'
 
 Returns the content without make any modification to the original source
 
-## Methods
+## Методы
 
 public **filter** (*mixed* $content)
 
