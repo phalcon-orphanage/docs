@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Reader'
 
 Parses docblocks returning an array with the found annotations
 
-## Методы
+## Methods
 
 public **parse** (*mixed* $className)
 
