@@ -10,7 +10,7 @@ title: 'Phalcon\Http\Cookie'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Proporciona contenedores OO para administrar una cookie HTTP
+Provide OO wrappers to manage a HTTP cookie
 
 ## Métodos
 
@@ -20,31 +20,31 @@ Phalcon\Http\Cookie constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** ()
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Establece el valor de la cookie
+Sets the cookie's value
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Devuelve el valor del cookie
+Returns the cookie's value
 
 public **send** ()
 
-Envía el cookie al cliente HTTP. Almacena la definición de la cookie en la sesión
+Sends the cookie to the HTTP client Stores the cookie definition in session
 
 public **restore** ()
 
-Lee la información relacionada a la cookie desde la SESIÓN para restaurar la cookie como fue establecida. Este método se llama automáticamente e internamente y por lo general no se necesita llamarlo
+Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
 
 public **delete** ()
 
-Elimina la cookie al configurar una fecha de expiración en el pasado
+Deletes the cookie by setting an expire time in the past
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Establece si la cookie debe ser cifrada o descifrada automáticamente
+Sets if the cookie must be encrypted/decrypted automatically
 
 public **isUsingEncryption** ()
 
-Comprueba si la cookie utiliza un cifrado implícito
+Check if the cookie is using implicit encryption
 
 public **setExpiration** (*mixed* $expire)
 
-Establece la fecha de expiración de la cookie
+Sets the cookie's expiration time
 
 public **getExpiration** ()
 
-Devuelve la fecha de expiración actual
+Returns the current expiration time
 
 public **setPath** (*mixed* $path)
 
-Establece la fecha de expiración de la cookie
+Sets the cookie's expiration time
 
 public **getName** ()
 
-Devuelve el nombre de la cookie actual
+Returns the current cookie's name
 
 public **getPath** ()
 
-Devuelve la ruta de la cookie actual
+Returns the current cookie's path
 
 public **setDomain** (*mixed* $domain)
 
-Establece el dominio al cual la cookie está disponible
+Sets the domain that the cookie is available to
 
 public **getDomain** ()
 
-Devuelve el dominio para el cual la cookie está disponible
+Returns the domain that the cookie is available to
 
 public **setSecure** (*mixed* $secure)
 
-Establece si la cookie debe ser enviada solamente cuando la conexión es segura (HTTPS)
+Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
 public **getSecure** ()
 
-Devuelve si la cookie debe ser enviada solamente cuando la conexión es segura (HTTPS)
+Returns whether the cookie must only be sent when the connection is secure (HTTPS)
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Establece si la cookie puede ser accedida solamente mediante el protocolo HTTP
+Sets if the cookie is accessible only through the HTTP protocol
 
 public **getHttpOnly** ()
 
-Devuelve si la cookie puede ser accedida solamente mediante el protocolo HTTP
+Returns if the cookie is accessible only through the HTTP protocol
 
 public **__toString** ()
 
-El método Magic __toString convierte el valor de la cookie a una cadena
+Magic __toString method converts the cookie's value to string
