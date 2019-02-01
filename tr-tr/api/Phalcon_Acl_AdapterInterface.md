@@ -6,25 +6,25 @@ title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
-## Methods
+## Metodlar
 
-abstract public **setDefaultAction** (*mixed* $defaultAccess)
+herkese açık özet **Erişim düzeyini ayarlar** (*karışık* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+Varsayılan erişim düzeyini ayarlar (Phalcon\Acl::ALLOW veya Phalcon\Acl::DENY)
 
-abstract public **getDefaultAction** ()
+herkese açık özet **Erişim düzeyini al** ()
 
-Returns the default ACL access level
+Varsayılan ACL erişim düzeyini döndürür
 
-abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
+herkese açık özet **Tartışmasız erişim düzeyini ayarlar** (*karışık* $defaultAccess)
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) for no arguments provided in isAllowed action if there exists func for accessKey
+Eğer accessKey için func bulunuyorsa isAllowed eyleminde sağlanan hiçbir argüman için varsayılan erişim seviyesine (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY) ayarlar
 
-abstract public **getNoArgumentsDefaultAction** ()
+herkese açık özet **Tartışmasız erişim düzeyini alır** ()
 
-Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
+AccessKey için func bulunuyorsa isAllowed aksiyonunda sağlanan hiçbir argüman için varsayılan ACL erişim seviyesine döner
 
 abstract public **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
 
@@ -74,7 +74,7 @@ abstract public **getActiveSubject** ()
 
 Returns the subject which the list is checking if some operation can access it
 
-abstract public **getActiveAccess** ()
+herkese açık özet **Aktif erişim al** ()
 
 Returns the access which the list is checking if some operation can access it
 
