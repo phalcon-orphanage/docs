@@ -10,21 +10,21 @@ title: 'Phalcon\Events\Event'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
-Esta clase ofrece información contextual de un evento activado en el EventsManager
+This class offers contextual information of a fired event in the EventsManager
 
 ## Métodos
 
 public **getType** ()
 
-Tipo de evento
+Event type
 
 public **getSource** ()
 
-Fuente del evento
+Event source
 
 public **getData** ()
 
-Información del evento
+Event data
 
 public **__construct** (*string* $type, *object* $source, [*mixed* $data], [*boolean* $cancelable])
 
@@ -32,15 +32,15 @@ Phalcon\Events\Event constructor
 
 public **setData** ([*mixed* $data])
 
-Configura la información del evento.
+Sets event data.
 
 public **setType** (*mixed* $type)
 
-Configura el tipo de evento.
+Sets event type.
 
 public **stop** ()
 
-Detiene el evento que evita la propagación.
+Stops the event preventing propagation.
 
 ```php
 <?php
@@ -53,11 +53,11 @@ if ($event->isCancelable()) {
 
 public **isStopped** ()
 
-Comprueba si el evento está actualmente detenido.
+Check whether the event is currently stopped.
 
 public **isCancelable** ()
 
-Comprueba si el evento se puede cancelar.
+Check whether the event is cancelable.
 
 ```php
 <?php
