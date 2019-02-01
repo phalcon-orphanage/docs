@@ -8,7 +8,7 @@ title: 'Phalcon\Di\ServiceProviderInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **register** ([Phalcon\DiInterface](Phalcon_DiInterface) $di)
 
