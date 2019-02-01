@@ -6,88 +6,88 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
-Menyediakan kemampuan debug untuk aplikasi Phalcon
+Provides debug capabilities to Phalcon applications
 
-## Metode
+## Methods
 
-umum **setUri** (*campuran* $uri)
+public **setUri** (*mixed* $uri)
 
-Perubahan mendasar URI ke sumber daya statis
+Change the base URI for static resources
 
-umum **setShowBackTrace** (*campuran* $showBackTrace)
+public **setShowBackTrace** (*mixed* $showBackTrace)
 
-Mengatur jika file pengecualian backtrace harus muncul
+Sets if files the exception's backtrace must be showed
 
-umum **setShowFiles** (*campuran* $showFiles)
+public **setShowFiles** (*mixed* $showFiles)
 
-Mengatur jika bagian file dari backtrace harus di tunjukkan dalam output
+Set if files part of the backtrace must be shown in the output
 
-umum **setShowFileFragment** (*campuran* $showFileFragment)
+public **setShowFileFragment** (*mixed* $showFileFragment)
 
-Mengatur jika file harus benar terbuka dan menunjukkan dalam output atau hanya fragmen yang terkait untuk pengecualian
+Sets if files must be completely opened and showed in the output or just the fragment related to the exception
 
 public **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
-Dengarkan untuk pengecualian tidak tertangkap dan pemberitahuan tidak diam atau peringatan
+Listen for uncaught exceptions and unsilent notices or warnings
 
 public **listenExceptions** ()
 
-Dengarkan untuk pengecualian tidak tertangkap
+Listen for uncaught exceptions
 
 public **listenLowSeverity** ()
 
-Dengarkan untuk pemberitahuan tidak diam atau peringatan
+Listen for unsilent notices or warnings
 
 public **halt** ()
 
-Menghentikan permintaan yang menunjukkan backtrace
+Halts the request showing a backtrace
 
 public **debugVar** (*mixed* $varz, [*mixed* $key])
 
-Menambahkan sebuah variabel dalam output debug
+Adds a variable to the debug output
 
 public **clearVars** ()
 
-Membersikan variabel yang ditambahkan sebelumnya
+Clears are variables added previously
 
 protected **_escapeString** (*mixed* $value)
 
-Melepaskan sebuah string dengan htmlentities
+Escapes a string with htmlentities
 
 protected **_getArrayDump** (*array* $argument, [*mixed* $n])
 
-Menciptakan sebuah pernyataan rekursif dari sebuah susunan
+Produces a recursive representation of an array
 
 protected **_getVarDump** (*mixed* $variable)
 
-Menciptakan sebuah pernyataan string dari sebuah variabel
+Produces an string representation of a variable
 
 public **getMajorVersion** ()
 
-Mengembalikan versi kerangka kerja utama
+Returns the major framework's version
 
 public **getVersion** ()
 
-Menghasilkan sebuah link untuk dokumentasi versi saat ini
+Generates a link to the current version documentation
 
 public **getCssSources** ()
 
-Mengembalikan sumbernya css
+Returns the css sources
 
 public **getJsSources** ()
 
-Mengembalikan sumbernya javascript
+Returns the javascript sources
 
 final protected **showTraceItem** (*mixed* $n, *array* $trace)
 
-Menampilkan sebuah item backtrace
+Shows a backtrace item
 
 public **onUncaughtLowSeverity** (*mixed* $severity, *mixed* $message, *mixed* $file, *mixed* $line, *mixed* $context)
 
-Melemparkan sebuah pengecualian ketika sebuah pemberitahuan atau peringatan di ajukan
+Throws an exception when a notice or warning is raised
 
 public **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Menangani pengecualian tidak tertangkap
+Handles uncaught exceptions
