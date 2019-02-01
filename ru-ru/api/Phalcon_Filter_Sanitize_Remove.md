@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Remove'
 
 Sanitizes a value removing parts of the value
 
-### Methods
+### Методы
 
 ```php
 public function __invoke( array | string $input, array | string $replace ): mixed
