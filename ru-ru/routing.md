@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Маршрутизация
+# Routing
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -49,7 +49,7 @@ $router->handle();
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
 In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
-Приложение может иметь много путей и определение маршрутов по одному может быть сложной задачей. In these cases we can create more flexible routes:
+An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
 ```php
 <?php
@@ -82,7 +82,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Регулярное выражение     | Использование                                                                                          |
+| Placeholder    | Regular Expression       | Usage                                                                                                  |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## События
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
@@ -1157,7 +1157,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Название    | Описание                                                                                          | Использование                          |
+| Название    | Описание                                                                                          | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1169,7 +1169,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Название   | Описание                                                               | Использование                                                        |
+| Название   | Описание                                                               | Usage                                                                |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
