@@ -10,7 +10,7 @@ title: 'Phalcon\Config'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
+Phalcon\Config предназначен для упрощения доступа и использования данных конфигурации в приложениях. Он предоставляет пользовательский интерфейс на основе свойств вложенных объектов для доступа к этим данным конфигурации в коде приложения.
 
 ```php
 <?php
@@ -38,7 +38,7 @@ $config = new \Phalcon\Config(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Методы
 
 public **__construct** ([*array* $arrayConfig])
 
