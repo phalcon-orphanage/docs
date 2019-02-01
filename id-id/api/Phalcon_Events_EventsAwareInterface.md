@@ -6,14 +6,14 @@ title: 'Phalcon\Events\EventsAwareInterface'
 ---
 # Interface **Phalcon\Events\EventsAwareInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
 ...
 
-abstract public **getEventsManager** ()
+abstrak umum **getReader** ()
 
 ...
