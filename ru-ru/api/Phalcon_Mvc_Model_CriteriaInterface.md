@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\CriteriaInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setModelName** (*mixed* $modelName)
 
