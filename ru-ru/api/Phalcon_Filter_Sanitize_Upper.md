@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Upper'
 
 Sanitizes a value to uppercase
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
