@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\CombinedFieldsValidator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
 
-## Methods
+## Metode
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
@@ -20,32 +20,32 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Checks if an option has been defined
+Memeriksa jika pilihan telah ditetapkan
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Checks if an option is defined
+Memeriksa jika pilihan didefinisikan
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Returns an option in the validator's options Returns null if the option hasn't set
+Kembali pilihan dalam pilihan validator mengembalikan null jika opsi belum menetapkan
 
 public **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Sets an option in the validator
+Menetapkan pilihan di validator
 
 abstract public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $attribute) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Executes the validation
+Menjalankan validasi
 
 protected **prepareLabel** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Prepares a label for the field.
+Mempersiapkan label untuk bidang.
 
 protected **prepareMessage** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Prepares a validation message.
+Menyiapkan pesan validasi.
 
 protected **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Prepares a validation code.
+Menyiapkan kode validasi.
