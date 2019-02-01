@@ -7,18 +7,18 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Sekilas
+# Overview
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Mengintegrasikan PHPUnit dengan Phalcon
+## Integrating PHPUnit with Phalcon
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
 ```bash
-komposer membutuhkan phpunit/phpunit:^5.0
+composer require phpunit/phpunit:^5.0
 ```
 
 or by manually adding it to `composer.json`:
@@ -33,16 +33,16 @@ or by manually adding it to `composer.json`:
 
 Once PHPUnit is installed create a directory called `tests` in project root directory:
 
-    aplikasi/ 
-    publik/ 
-    tes/
+    app/
+    public/
+    tests/
     
 
 Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
-## File pembantu PHPUnit
+## The PHPUnit helper file
 
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
@@ -93,7 +93,7 @@ To help you build the Unit Tests, we made a few abstract classes you can use to 
 You can use the Incubator library by adding it as a dependency:
 
 ```bash
-komposer membutuhkan phalcon/inkubator
+composer require phalcon/incubator
 ```
 
 or by manually adding it to `composer.json`:
@@ -139,7 +139,7 @@ Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run
 
 <a name='sample'></a>
 
-## Uji Unit Sampel
+## Sample Unit Test
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
@@ -223,7 +223,7 @@ Now when you execute `phpunit` in your command-line from the `tests` directory y
 
 ```bash
 $ phpunit
-PHPUnit 3.7.23 oleh Sebastian Bergmann.
+PHPUnit 3.7.23 by Sebastian Bergmann.
 
 Configuration read from /var/www/tests/phpunit.xml
 
@@ -243,7 +243,7 @@ Failed asserting that two strings are equal.
 /var/www/tests/Test/UnitTest.php:25
 
 FAILURES!
-Pengujian: 1, Pernyataan: 2, Gagal: 1.
+Tests: 1, Assertions: 2, Failures: 1.
 ```
 
 Now you can start building your Unit Tests. You can view a [good guide here](https://blog.stevensanderson.com/2009/08/24/writing-great-unit-tests-best-and-worst-practises/). We also recommend reading the PHPUnit documentation if you're not familiar with PHPUnit.
