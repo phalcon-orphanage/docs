@@ -37,7 +37,7 @@ $adapter = new \Example\Adapter\Some();
 
 ```
 
-## Methods
+## Методы
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
