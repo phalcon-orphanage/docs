@@ -25,7 +25,7 @@ This component makes use of adapters to encapsulate different sources of data:
 
 <a name='factory'></a>
 
-## Factory
+## Фабрика
 
 Loads Paginator Adapter class using `adapter` option
 
@@ -52,7 +52,7 @@ $paginator = Factory::load($options);
 
 <a name='examples'></a>
 
-## Examples
+## Примеры
 
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
@@ -115,7 +115,7 @@ The `$page` object also contains navigation data:
 
 <a name='using-adapters'></a>
 
-## Using Adapters
+## Использование адаптеров
 
 An example of the source data that must be used for each adapter:
 
@@ -168,7 +168,7 @@ $paginator = new PaginatorQueryBuilder(
 
 <a name='page-attributes'></a>
 
-## Page Attributes
+## Атрибуты страниц
 
 The `$page` object has the following attributes:
 
@@ -184,7 +184,7 @@ The `$page` object has the following attributes:
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Реализация собственных адаптеров
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
