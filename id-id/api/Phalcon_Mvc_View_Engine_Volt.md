@@ -10,51 +10,51 @@ title: 'Phalcon\Mvc\View\Engine\Volt'
 
 *implements* [Phalcon\Mvc\View\EngineInterface](Phalcon_Mvc_View_EngineInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
-Desain template yang ramah dan cepat untuk PHP ditulis dalam zephir/C
+Designer friendly and fast template engine for PHP written in Zephir/C
 
-## Metode
+## Methods
 
 public **setOptions** (*array* $options)
 
-Setel opsi volt
+Set Volt's options
 
 public **getOptions** ()
 
-Kembali pilihan Volt
+Return Volt's options
 
-publik **mendapatkancompiler** ()
+public **getCompiler** ()
 
-Kembali kompiler Volt
+Returns the Volt's compiler
 
-publik **dropIndex** (*mixed* $templatePath, *mixed* $params, *mixed* $mustClean])
+public **render** (*mixed* $templatePath, *mixed* $params, [*mixed* $mustClean])
 
-Membuat tampilan menggunakan mesin template
+Renders a view using the template engine
 
-umum **membaca** (*campuran* $item)
+public **length** (*mixed* $item)
 
 Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
-abstrak publik **tableExists** (*mixed* $needle, [*mixed* $haystack)
+public **isIncluded** (*mixed* $needle, *mixed* $haystack)
 
-Memeriksa apakah jarum termasuk dalam tumpukan jerami
+Checks if the needle is included in the haystack
 
-publik **dropColumn** (*mixed* $text, *mixed* $from, *mixed* $to)
+public **convertEncoding** (*mixed* $text, *mixed* $from, *mixed* $to)
 
-Melakukan tali konversi
+Performs a string conversion
 
-publik **redirect** ([*mixed* $value], [*mixed* $start], [*mixed* $end])
+public **slice** (*mixed* $value, [*mixed* $start], [*mixed* $end])
 
-Ekstrak sepotong dari nilai objek string/array/traversable
+Extracts a slice from a string/array/traversable object value
 
-umum **hubungkan** ([*array* $value)
+public **sort** (*array* $value)
 
-Mengurutkan sebuah tali
+Sorts an array
 
-publik **__construct** (*mixed* $name, *array* $arguments])
+public **callMacro** (*mixed* $name, [*array* $arguments])
 
-Memeriksa apakah makro didefinisikan dan menelponnya
+Checks if a macro is defined and calls it
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
@@ -62,32 +62,32 @@ Phalcon\Mvc\View\Engine constructor
 
 public **getContent** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-Mengembalikan hasil cache pada tahap tampilan yang lain
+Returns cached output on another view stage
 
 public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-Membuat sebagian di dalam tampilan lain
+Renders a partial inside another view
 
 public **getView** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-Mengembalikan komponen tampilan yang terkait dengan adaptor
+Returns the view component related to the adapter
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Menyetel pengelola acara
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
