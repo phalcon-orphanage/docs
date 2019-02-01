@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
 
 final public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-The meta-data is obtained by reading the column descriptions from the database information schema
+Τα από μεταδεδομένα δεδομένων αποκτώνται διαβάζοντας τις της στήλης το σχήμα πληροφοριών βάσης περιγραφές
 
 final public **getColumnMaps** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
