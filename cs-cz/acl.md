@@ -10,17 +10,17 @@ category: 'acl'
 * * *
 
 - [Access Control Lists (ACL)](acl-overview)
-- [Vytvoření ACL](acl-setup)
+- [Creating an ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [Definování oprávnění](acl-access-controls)
-- [Dotazování na ACL](acl-querying)
-- [Funkcí řízený přístup](acl-function-based-access)
+- [Defining Access Controls](acl-access-controls)
+- [Querying an ACL](acl-querying)
+- [Function based access](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
-- [Serializace ACL](acl-serialization)
-- [Události](acl-events)
-- [Implementace vlastních adaptérů](acl-custom-adapters)
+- [Serializing ACL lists](acl-serialization)
+- [Events](acl-events)
+- [Implementing your own adapters](acl-custom-adapters)
 
 * * *
 
