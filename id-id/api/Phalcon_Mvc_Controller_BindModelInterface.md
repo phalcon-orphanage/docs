@@ -6,10 +6,10 @@ title: 'Phalcon\Mvc\Controller\BindModelInterface'
 ---
 # Interface **Phalcon\Mvc\Controller\BindModelInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller/bindmodelinterface.zep)
 
-## Methods
+## Metode
 
-abstract public static **getModelName** ()
+abstract statis publik **dapatkanNamaModel** ()
 
 ...
