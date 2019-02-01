@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Transaction\ManagerInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/managerinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **has** ()
 
