@@ -6,7 +6,7 @@ title: 'Phalcon\Db\ReferenceInterface'
 ---
 # Interface **Phalcon\Db\ReferenceInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
 
 ## Metody
 
