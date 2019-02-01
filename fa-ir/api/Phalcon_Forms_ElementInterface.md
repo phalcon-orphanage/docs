@@ -6,9 +6,9 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
@@ -22,7 +22,7 @@ abstract public **setName** (*mixed* $name)
 
 ...
 
-abstract public **getName** ()
+عمومی انتزاعی **دریافت نام** ()
 
 ...
 
