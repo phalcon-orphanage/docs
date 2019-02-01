@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\EntityInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/entityinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **readAttribute** (*mixed* $attribute)
 
