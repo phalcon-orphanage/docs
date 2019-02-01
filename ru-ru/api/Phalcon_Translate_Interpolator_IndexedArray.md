@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Interpolator\IndexedArray'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
-## Methods
+## Методы
 
 public **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders])
 
