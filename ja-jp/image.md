@@ -45,7 +45,7 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### 独自のアダプターを実装
+### Implementing your own adapters
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
