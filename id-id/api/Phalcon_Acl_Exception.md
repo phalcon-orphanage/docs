@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
 Exceptions thrown in `Phalcon\Acl\*` will use this class
 
-## Metode
+## Methods
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-Mendapatkan file di mana pengecualian terjadi
+Gets the file in which the exception occurred
 
 ```php
 public function getLine(): int
@@ -48,13 +48,13 @@ Get the previous `\Throwable` object
 public function getTrace(): array
 ```
 
-Mendapatkan pelacakan stack
+Gets the stack trace
 
 ```php
 public function getTraceAsString(): string
 ```
 
-Mendapatkan jejak stack sebagai string
+Gets the stack trace as a string
 
 ```php
 public function __toString(): string
