@@ -8,7 +8,7 @@ title: 'Phalcon\Logger\Multiple'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
-Controla controladores múltiples de registrador
+Handles multiples logger handlers
 
 ## Métodos
 
@@ -30,44 +30,44 @@ Pushes a logger to the logger tail
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Configura el formateador global
+Sets a global formatter
 
 public **setLogLevel** (*mixed* $level)
 
-Configura el nivel global
+Sets a global level
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
-Envía un mensaje a cada registrador registrado
+Sends a message to each registered logger
 
 public **critical** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje crítico al registro
+Sends/Writes an critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de emergencia al registro
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de depuración al registro
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de error al registro
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de información al registro
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de notificación al registro
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de advertencia al registro
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context])
 
-Envía o escribe un mensaje de alerta al registro
+Sends/Writes an alert message to the log
