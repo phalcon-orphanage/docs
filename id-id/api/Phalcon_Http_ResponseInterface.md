@@ -6,27 +6,27 @@ title: 'Phalcon\Http\ResponseInterface'
 ---
 # Interface **Phalcon\Http\ResponseInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/responseinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setStatusCode** (*mixed* $code, [*mixed* $message])
-
-...
-
-abstract public **getHeaders** ()
+publik **setStatusCode** (*mixed* $code, [*mixed* $message])
 
 ...
 
-abstract public **setHeader** (*mixed* $name, *mixed* $value)
+abstrak umum **getReader** ()
 
 ...
 
-abstract public **setRawHeader** (*mixed* $header)
+abstrak umum **addRole** (*campuran* $name, [*campuran* $value)
 
 ...
 
-abstract public **resetHeaders** ()
+abstrak umum **getHeader** (*mixed* $header)
+
+...
+
+abstrak umum **getReader** ()
 
 ...
 
@@ -34,50 +34,50 @@ abstract public **setExpires** ([DateTime](https://php.net/manual/en/class.datet
 
 ...
 
-abstract public **setNotModified** ()
+abstrak publik **getMethod** ()
 
 ...
 
-abstract public **setContentType** (*mixed* $contentType, [*mixed* $charset])
+publik **setContentType** (*mixed* $contentType, [*mixed* $charset])
 
 ...
 
-abstract public **setContentLength** (*mixed* $contentLength)
+publik **setContentLength** (*mixed* $contentLength)
 
 ...
 
-abstract public **redirect** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
+abstrak umum **getQuery** ([*mixed* $location], [*mixed* $externalRedirect], [*mixed* $statusCode])
 
 ...
 
-abstract public **setContent** (*mixed* $content)
+abstrak public **setFilter** (*campuran* $content)
 
 ...
 
-abstract public **setJsonContent** (*mixed* $content)
+publik abstrak **getColumnList** (*campuran* $content)
 
 ...
 
-abstract public **appendContent** (*mixed* $content)
+abstract public **afterRetrieve** (*mixed* $content)
 
 ...
 
-abstract public **getContent** ()
+abstrak publik 0 getContent 0
 
 ...
 
-abstract public **sendHeaders** ()
+abstrak umum **getReader** ()
 
 ...
 
-abstract public **sendCookies** ()
+abstrak umum **getRoles** ()
 
 ...
 
-abstract public **send** ()
+abstrak publik **kirim** ()
 
 ...
 
-abstract public **setFileToSend** (*mixed* $filePath, [*mixed* $attachmentName])
+abstrak umum **addRole** (*campuran* $filePath, [*campuran* $attachmentName])
 
 ...
