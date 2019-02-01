@@ -15,7 +15,7 @@ INVO was made with the client-side framework [Bootstrap](https://getbootstrap.co
 
 <a name='structure'></a>
 
-## Project Structure
+## Projektstruktur
 
 Once you clone the project in your document root you'll see the following structure:
 
@@ -148,7 +148,7 @@ define(
 
 <a name='services'></a>
 
-## Registering services
+## Registrieren von Services
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -191,7 +191,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 
-## Handling the Request
+## Verarbeiten der Anforderung
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
 
@@ -1720,7 +1720,7 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## User Components
+## Benutzer-Komponenten
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
