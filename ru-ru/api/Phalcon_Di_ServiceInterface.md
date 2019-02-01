@@ -8,7 +8,7 @@ title: 'Phalcon\Di\ServiceInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **getName** ()
 
