@@ -14,7 +14,7 @@ category: 'filter'
 - [Sanitizing data](filter-sanitizing)
 - [Sanitizing from Controllers](filter-sanitizing-from-controllers)
 - [Sanitizing Action Parameters](filter-sanitizing-action-parameters)
-- [Filtrowanie danch](filter-sanitizing-data)
+- [Filtering data](filter-sanitizing-data)
 - [Combining Sanitizers](filter-combining-sanitizers)
 - [Complex Sanitizing and Filtering](filter-complex-sanitization-filtering)
 - [Implementing your own Sanitizer](filter-custom)
