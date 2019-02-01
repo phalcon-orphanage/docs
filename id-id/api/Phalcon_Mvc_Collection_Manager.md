@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Collection\Manager'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.
+Komponen ini mengendalikan inisialisasi model, menjaga catatan hubungan antara berbagai model aplikasi.
 
 A CollectionManager is injected to a model via a Dependency Injector Container such as Phalcon\Di.
 
@@ -30,7 +30,7 @@ $robot = new Robots($di);
 
 ```
 
-## Methods
+## Metode
 
 public **getServiceName** ()
 
@@ -42,68 +42,68 @@ public **setServiceName** (*mixed* $serviceName)
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the event manager
+Menyetel pengelola acara
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets a custom events manager for a specific model
+Menyetel pengelola acara khusus untuk model tertentu
 
 public **getCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Returns a custom events manager related to a model
+Mengembalikan manajer acara khusus yang terkait dengan model
 
 public **initialize** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Initializes a model in the models manager
+Menginisialisasi model dalam model manager
 
 public **isInitialized** (*mixed* $modelName)
 
-Check whether a model is already initialized
+Periksa apakah model sudah diinisialisasi
 
 public **getLastInitialized** ()
 
-Get the latest initialized model
+Dapatkan model inisialisasi terbaru
 
 public **setConnectionService** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $connectionService)
 
-Sets a connection service for a specific model
+Menetapkan layanan koneksi untuk model tertentu
 
 public **getConnectionService** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Gets a connection service for a specific model
+Mendapatkan layanan koneksi untuk model tertentu
 
 public **useImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $useImplicitObjectIds)
 
-Sets whether a model must use implicit objects ids
+Menetapkan apakah model harus menggunakan id objek implisit
 
 public **isUsingImplicitObjectIds** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Checks if a model is using implicit object ids
+Memeriksa apakah model menggunakan id objek implisit
 
 public *Mongo* **getConnection** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Returns the connection related to a model
+Mengembalikan koneksi yang terkait dengan model
 
 public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
+Menerima acara yang dihasilkan dalam model dan mengirimkannya ke pengelola acara jika tersedia Beritahu perilaku yang sedang didengarkan dalam model
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that at least one was implemented
+Mengirimkan acara ke pendengar dan perilaku Metode ini mengharapkan pendengar/perilaku endpoint mengembalikan nilai true artinya setidaknya satu diimplementasikan
 
 public **addBehavior** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-Binds a behavior to a model
+Mengikat perilaku ke model
