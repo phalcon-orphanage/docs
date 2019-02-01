@@ -6,9 +6,9 @@ title: 'Phalcon\Annotations\ReaderInterface'
 ---
 # Interface **Phalcon\Annotations\ReaderInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **parse** (*mixed* $className)
 
