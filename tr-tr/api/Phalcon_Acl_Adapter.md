@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Adapter'
 
 *implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
 Adapter for Phalcon\Acl adapters
 
-## Metodlar
+## Methods
 
 ```php
 public getActiveAccess()
@@ -43,7 +43,7 @@ Subject which the list is checking if some operation can access it
 public getDefaultAction()
 ```
 
-Varsayılan ACL erişim düzeyini döndürür
+Returns the default ACL access level
 
 * * *
 
@@ -55,7 +55,7 @@ public getEventsManager()
     public setDefaultAction(mixed $defaultAccess)
     
 
-Varsayılan erişim düzeyini ayarlar (Phalcon\Acl::ALLOW veya Phalcon\Acl::DENY)
+Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 * * *
 
@@ -63,7 +63,7 @@ Varsayılan erişim düzeyini ayarlar (Phalcon\Acl::ALLOW veya Phalcon\Acl::DENY
 public setEventsManager([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 ```
 
-Olay yöneticisini ayarlar
+Sets the events manager
 
 * * *
 
