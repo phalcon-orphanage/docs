@@ -8,55 +8,55 @@ title: 'Phalcon\Db\Result\Pdo'
 
 *implements* [Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
-Encapsulates the resultset internals
+Encapsulates the resultset internal
 
 ```php
 <?php
 
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("PILIH * DARI robot ORDER OLEH nama");
 
 $result->setFetchMode(
     \Phalcon\Db::FETCH_NUM
 );
 
-while ($robot = $result->fetchArray()) {
+sementara ($robot = $result->fetchArray()) {
     print_r($robot);
 }
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [PDOStatement](https://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
 Phalcon\Db\Result\Pdo constructor
 
-public **execute** ()
+publik **menjalankan** ()
 
 Allows to execute the statement again. Some database systems don't support scrollable cursors, So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
-public **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
+publik **mengambil** ([*campur* $fetchStyle], [*campur* $cursorOrientation], [*campur* $cursorOffset])
 
-Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
+Mengambil sebuah array/objek dari string yang sesuai dengan baris yang diambil, atau FALSE jika tidak ada lagi baris. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
 
-$result = $connection->query("SELECT * FROM robots ORDER BY name");
+$result = $connection->query("PILIH * DARI robot ORDER OLEH nama");
 
 $result->setFetchMode(
     \Phalcon\Db::FETCH_OBJ
 );
 
-while ($robot = $result->fetch()) {
-    echo $robot->name;
+sementara ($robot = $result->fetch()) {
+    echo $robot->nama;
 }
 
 ```
 
-public **fetchArray** ()
+umum **fetch Array** ()
 
 Returns an array of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
@@ -75,7 +75,7 @@ while ($robot = result->fetchArray()) {
 
 ```
 
-public **fetchAll** ([*mixed* $fetchStyle], [*mixed* $fetchArgument], [*mixed* $ctorArgs])
+umum **fetchAll** ([*campuran* $fetchStyle], [*campuran* $fetchArgument], [*campuran* $ctorArgs])
 
 Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
@@ -92,7 +92,7 @@ $robots = $result->fetchAll();
 
 public **numRows** ()
 
-Gets number of rows returned by a resultset
+Mendapat jumlah baris yang dikembalikan oleh resultset
 
 ```php
 <?php
@@ -105,9 +105,9 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 
 ```
 
-public **dataSeek** (*mixed* $number)
+umum **dataSeek** (*campuran* $nomor)
 
-Moves internal resultset cursor to another position letting us to fetch a certain row
+Memindahkan kursor resultset internal ke posisi lain yang memungkinkan kita untuk mengambil baris tertentu
 
 ```php
 <?php
@@ -124,7 +124,7 @@ $row = $result->fetch();
 
 ```
 
-public **setFetchMode** (*mixed* $fetchMode, [*mixed* $colNoOrClassNameOrObject], [*mixed* $ctorargs])
+umum **setFetchMode** (*campuran* $fetchMode, [*campuran* $colNoOrClassNameOrObject], [*campuran* $ctorargs])
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()
 
@@ -153,6 +153,6 @@ $result->setFetchMode(
 
 ```
 
-public **getInternalResult** ()
+umum **getInternalResult** ()
 
-Gets the internal PDO result object
+Mendapat objek hasil PDO internal
