@@ -55,7 +55,7 @@ echo $image;
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
