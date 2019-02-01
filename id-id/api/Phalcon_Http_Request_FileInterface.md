@@ -6,19 +6,19 @@ title: 'Phalcon\Http\Request\FileInterface'
 ---
 # Interface **Phalcon\Http\Request\FileInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik **getSize** ()
-
-...
-
-abstrak publik **getName** ()
+abstract public **getSize** ()
 
 ...
 
-abstrak umum **getTempName** ()
+abstract public **getName** ()
+
+...
+
+abstract public **getTempName** ()
 
 ...
 
@@ -26,10 +26,10 @@ abstract public **getType** ()
 
 ...
 
-abstrak umum **getRealType** ()
+abstract public **getRealType** ()
 
 ...
 
-abstrak umum **moveTo** (*mixed* $destination)
+abstract public **moveTo** (*mixed* $destination)
 
 ...
