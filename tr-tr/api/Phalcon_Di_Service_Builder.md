@@ -6,20 +6,20 @@ title: 'Phalcon\Di\Service\Builder'
 ---
 # Class **Phalcon\Di\Service\Builder**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
-Bu sınıf, karmaşık tanımlara dayalı örnekler oluşturur
+This class builds instances based on complex definitions
 
-## Metodlar
+## Methods
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 
-Yapıcı / çağrı parametresini çözümler
+Resolves a constructor/call parameter
 
 private **_buildParameters** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $arguments)
 
-Bir dizi parametreyi çözer
+Resolves an array of parameters
 
 public *mixed* **build** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $definition, [*array* $parameters])
 
-Karmaşık bir hizmet tanımı kullanarak bir hizmet oluşturur
+Builds a service using a complex service definition
