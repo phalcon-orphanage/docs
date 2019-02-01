@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Date'
 
 Component INPUT[type=date] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 
