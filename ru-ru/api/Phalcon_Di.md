@@ -41,7 +41,7 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## Методы
 
 public **__construct** ()
 
