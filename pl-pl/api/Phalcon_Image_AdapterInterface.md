@@ -6,7 +6,7 @@ title: 'Phalcon\Image\AdapterInterface'
 ---
 # Interface **Phalcon\Image\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
 
 ## Metody
 
