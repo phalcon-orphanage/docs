@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Cookie'
 
 *implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-Berikan bungkus OO untuk mengelola cookie HTTP
+Provide OO wrappers to manage a HTTP cookie
 
-## Metode
+## Methods
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
@@ -20,31 +20,31 @@ Phalcon\Http\Cookie constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Menetapkan nilai cookie
+Sets the cookie's value
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Kembali cookie nilai
+Returns the cookie's value
 
-publik **kirim** ()
+public **send** ()
 
-Mengirimkan cookie ke klien HTTP Menyimpan definisi cookie dalam sesi
+Sends the cookie to the HTTP client Stores the cookie definition in session
 
-publik **mengembalikan** ()
+public **restore** ()
 
-Membaca info terkait cookie dari SESI untuk mengembalikan kuki seperti yang ditetapkan Metode ini secara otomatis dipanggil secara internal sehingga biasanya Anda tidak perlu menyebutnya
+Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
 
 public **delete** ()
 
-Menghapus kuki dengan menetapkan waktu berakhir di masa lalu
+Deletes the cookie by setting an expire time in the past
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Menetapkan apakah cookie harus dienkripsi / didekripsi secara otomatis
+Sets if the cookie must be encrypted/decrypted automatically
 
 public **isUsingEncryption** ()
 
-Periksa apakah cookie menggunakan enkripsi implisit
+Check if the cookie is using implicit encryption
 
 public **setExpiration** (*mixed* $expire)
 
-Mengatur waktu kadaluarsa cookie
+Sets the cookie's expiration time
 
 public **getExpiration** ()
 
-Mengatur waktu kadaluarsa cookie
+Returns the current expiration time
 
 public **setPath** (*mixed* $path)
 
-Mengatur waktu kadaluarsa cookie
+Sets the cookie's expiration time
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama cookie saat ini
+Returns the current cookie's name
 
 public **getPath** ()
 
-Mengembalikan nama cookie saat ini
+Returns the current cookie's path
 
 public **setDomain** (*mixed* $domain)
 
-Tentukan domain tempat kuki yang tersedia untuk
+Sets the domain that the cookie is available to
 
 public **getDomain** ()
 
-Tentukan domain tempat kuki yang tersedia untuk
+Returns the domain that the cookie is available to
 
 public **setSecure** (*mixed* $secure)
 
-Set jika cookie harus hanya dikirim Bila sambungan aman (HTTPS)
+Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
 public **getSecure** ()
 
-Set jika cookie harus hanya dikirim Bila sambungan aman (HTTPS)
+Returns whether the cookie must only be sent when the connection is secure (HTTPS)
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Set jika cookie ini hanya dapat diakses melalui protokol HTTP
+Sets if the cookie is accessible only through the HTTP protocol
 
 public **getHttpOnly** ()
 
-Mengembalikan jika cookie hanya dapat diakses melalui protokol HTTP
+Returns if the cookie is accessible only through the HTTP protocol
 
-publik **__keString** ()
+public **__toString** ()
 
-Sihir __toString metode mengkonversi nilai cookie ke string
+Magic __toString method converts the cookie's value to string
