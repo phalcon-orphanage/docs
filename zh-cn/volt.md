@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Volt: 模板引擎
+# Volt: Template Engine
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -17,7 +17,7 @@ Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally create
 
 <a name='introduction'></a>
 
-## 简介
+## Introduction
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -40,46 +40,74 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## 启用 Volt
+## Activating Volt
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
 ```php
 <?php
-use Phalcon\Mvc\View; 
-use Phalcon\Mvc\View\Engine\Volt; 
-// Register Volt as a service 
-$di->set(    
- 'voltService',     function ($view, $di) { 
+
+use Phalcon\Mvc\View;
+use Phalcon\Mvc\View\Engine\Volt;
+
+// Register Volt as a service
+$di->set(
+    'voltService',
+    function ($view, $di) {
         $volt = new Volt($view, $di);
-         $volt->setOptions(
-             [
-                 'compiledPath' => '../app/compiled-templates/',
-                 'compiledExtension' => '.compiled',
-             ]
-         );
+
+        $volt->setOptions(
+            [
+                'compiledPath'      => '../app/compiled-templates/',
+                'compiledExtension' => '.compiled',
+            ]
+        );
+
+        return $volt;
+    }
+);
+
+// Register Volt as template engine
+$di->set(
+    'view',
+    function () {
+        $view = new View();
+
+        $view->setViewsDir('../app/views/');
+
+        $view->registerEngines(
+            [
+                '.volt' => 'voltService',
+            ]
+        );
+
+        return $view;
+    }
+);
 ```
 
 Use the standard `.phtml` extension:
 
 ```php
 <?php
- $view->registerEngines(
-     [
-         '.phtml' => 'voltService',
-     ]
- );
+
+$view->registerEngines(
+    [
+        '.phtml' => 'voltService',
+    ]
+);
 ```
 
 You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
 
 ```php
 <?php
- $view->registerEngines(
-     [
-         '.volt' => Phalcon\Mvc\View\Engine\Volt::class,
-     ]
- );
+
+$view->registerEngines(
+    [
+        '.volt' => Phalcon\Mvc\View\Engine\Volt::class,
+    ]
+);
 ```
 
 ` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
@@ -90,7 +118,7 @@ You don't have to specify the Volt Service in the DI; you can also use the Volt 
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// 使用匿名函数的方法注册Volt为视图引擎
+// Register Volt as template engine with an anonymous function
 $di->set(
     'view',
     function () {
@@ -103,7 +131,7 @@ $di->set(
                 '.volt' => function ($view, $di) {
                     $volt = new Volt($view, $di);
 
-                    // 设置Volt选项
+                    // Set some options here
 
                     return $volt;
                 }
@@ -124,7 +152,7 @@ The following options are available in Volt:
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
 | `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
 | `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `前缀`                | 设置在指定的compiledPath中编译后的文件前缀                                                                                                  | `null`  |
+| `前缀`                | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
@@ -132,8 +160,8 @@ The compilation path is generated according to the above options, if the develop
 ```php
 <?php
 
-// 使用.php作为文件拓展名
-// 不用设置编译后的文件路径，让所有的编译后的文件在同一目录
+// Just append the .php extension to the template path
+// leaving the compiled templates in the same directory
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -142,7 +170,7 @@ $volt->setOptions(
     ]
 );
 
-// 以递归的方式创建一个相同结构的目录在另一个目录中
+// Recursively create the same structure in another directory
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -160,7 +188,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## 基本用法
+## Basic Usage
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
@@ -218,7 +246,7 @@ class PostsController extends Controller
         $this->view->title           = $post->title;
         $this->view->post            = $post;
 
-        // 或者
+        // Or...
 
         $this->view->setVar('show_navigation', true);
         $this->view->setVar('menu',            $menu);
@@ -230,7 +258,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## 变量的使用
+## Variables
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -243,7 +271,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## 过滤器
+## Filters
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -257,25 +285,25 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| 筛选器                | 描述                                                                                                                                  |
+| Filter             | 描述                                                                                                                                  |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
 | `abs`              | Applies the [abs](https://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
 | `capitalize`       | Capitalizes a string by applying the [ucwords](https://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `convert_encoding` | 将一个字符串从一个字符集转换到另一个                                                                                                                  |
-| `default`          | 在表达式的计算结果为空的情况下设置一个默认值 （不存在或计算结果为 false 的值）                                                                                         |
-| `e`                | 使用`Phalcon\Escaper->escapeHtml()`处理这个变量                                                                                         |
-| `escape`           | 使用`Phalcon\Escaper->escapeHtml()`处理这个变量                                                                                         |
-| `escape_attr`      | 使用`Phalcon\Escaper-> escapeHtmlAttr()`处理这个变量                                                                                    |
-| `escape_css`       | 使用`Phalcon\Escaper-> escapeCss()`处理这个变量                                                                                         |
-| `escape_js`        | 使用`Phalcon\Escaper-> escapeJs()`处理这个变量                                                                                          |
+| `convert_encoding` | Converts a string from one charset to another                                                                                       |
+| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                      |
+| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                            |
+| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                            |
+| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                        |
+| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                             |
+| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                              |
 | `format`           | Formats a string using [sprintf](https://php.net/manual/en/function.sprintf.php).                                                   |
 | `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                 |
 | `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
 | `join`             | Joins the array parts using a separator [join](https://php.net/manual/en/function.join.php)                                         |
 | `keys`             | Returns the array keys using [array_keys](https://php.net/manual/en/function.array-keys.php)                                        |
 | `left_trim`        | Applies the [ltrim](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `length`           | 计算字符串长度或数组或对象中有多少项                                                                                                                  |
-| `lower`            | 将字符串的大小更改为小写                                                                                                                        |
+| `length`           | Counts the string length or how many items are in an array or object                                                                |
+| `lower`            | Change the case of a string to lowercase                                                                                            |
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](https://php.net/manual/en/function.nl2br.php) |
 | `right_trim`       | Applies the [rtrim](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
 | `sort`             | Sorts an array using the PHP function [asort](https://php.net/manual/en/function.asort.php)                                         |
@@ -349,7 +377,7 @@ Examples:
 
 <a name='comments'></a>
 
-## 注释
+## Comments
 
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
@@ -363,13 +391,13 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 <a name='control-structures'></a>
 
-## 列表输出和结构输出
+## List of Control Structures
 
 Volt provides a set of basic but powerful control structures for use in templates:
 
 <a name='control-structures-for'></a>
 
-### For循环列表
+### For
 
 Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
@@ -455,7 +483,7 @@ Alternative syntax:
 
 <a name='control-structures-loops'></a>
 
-### Loop循环
+### Loop Controls
 
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
@@ -616,19 +644,19 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 <a name='control-structures-loop'></a>
 
-### Loop的高级使用
+### Loop Context
 
 A special variable is available inside `for` loops providing you information about
 
-| Variable         | 描述                                             |
-| ---------------- | ---------------------------------------------- |
-| `loop.index`     | The current iteration of the loop. (1 indexed) |
-| `loop.index0`    | The current iteration of the loop. (0 indexed) |
-| `loop.revindex`  | 循环结束的迭代次数（1个为起始）                               |
-| `loop.revindex0` | 循环结束的迭代次数（0个起始）                                |
-| `loop.first`     | 如果在第一次迭代值为 true。                               |
-| `loop.last`      | 如果在最后一次迭代值为 true。                              |
-| `loop.length`    | 要循环的次数                                         |
+| Variable         | 描述                                                            |
+| ---------------- | ------------------------------------------------------------- |
+| `loop.index`     | The current iteration of the loop. (1 indexed)                |
+| `loop.index0`    | The current iteration of the loop. (0 indexed)                |
+| `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
+| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
+| `loop.first`     | True if in the first iteration.                               |
+| `loop.last`      | True if in the last iteration.                                |
+| `loop.length`    | The number of items to iterate                                |
 
 Example:
 
@@ -657,7 +685,7 @@ Example:
 
 <a name='assignments'></a>
 
-## 分配变量
+## Assignments
 
 Variables may be changed in a template using the instruction `set`:
 
@@ -689,17 +717,17 @@ Additionally, you can use compound assignment operators:
 
 The following operators are available:
 
-| 运算符     | 描述    |
-| ------- | ----- |
-| `=`     | 标准的赋值 |
-| `+=`    | 加法赋值  |
-| `-=`    | 减法赋值  |
-| `\*=` | 乘法赋值  |
-| `/=`    | 除法赋值  |
+| Operator | 描述                        |
+| -------- | ------------------------- |
+| `=`      | Standard Assignment       |
+| `+=`     | Addition assignment       |
+| `-=`     | Subtraction assignment    |
+| `\*=`  | Multiplication assignment |
+| `/=`     | Division assignment       |
 
 <a name='expressions'></a>
 
-## 表达式：
+## Expressions
 
 Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
@@ -719,22 +747,22 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 <a name='expressions-literals'></a>
 
-### 字面值(原始的值, 就是直接输出!)
+### Literals
 
 The following literals are supported:
 
-| 筛选器           | 描述                      |
-| ------------- | ----------------------- |
-| `' 这是一个字符串 '` | 双引号或单引号之间的文本是作为字符串处理    |
-| `100.25`      | 小数部分的数字处理作为 "双精度/单精度"数字 |
-| `100`         | 没有小数部分的数字是整数作为处理        |
-| `false`       | 常量 'false' 是布尔值 false   |
-| `true`        | 常量 'true' 是布尔值 true     |
-| `null`        | 常数 null 是 Null 值        |
+| Filter               | 描述                                                                 |
+| -------------------- | ------------------------------------------------------------------ |
+| `'this is a string'` | Text between double quotes or single quotes are handled as strings |
+| `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
+| `100`                | Numbers without a decimal part are handled as integers             |
+| `false`              | Constant 'false' is the boolean false value                        |
+| `true`               | Constant 'true' is the boolean true value                          |
+| `null`               | Constant 'null' is the Null value                                  |
 
 <a name='expressions-arrays'></a>
 
-### 数组
+### Arrays
 
 Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
 
@@ -765,66 +793,66 @@ Curly braces also can be used to define arrays or hashes:
 
 <a name='expressions-math'></a>
 
-### 计算
+### Math
 
 You may make calculations in templates using the following operators:
 
-| 运算符 | 描述                                                                                           |
-|:---:| -------------------------------------------------------------------------------------------- |
-| `+` | Perform an adding operation. `{% raw %}{{ 2 + 3 }}{% endraw %}` returns 5                    |
-| `-` | Perform a substraction operation `{% raw %}{{ 2 - 3 }}{% endraw %}` returns -1               |
-| `*` | Perform a multiplication operation `{% raw %}{{ 2 * 3 }}{% endraw %}` returns 6              |
-| `/` | Perform a division operation `{% raw %}{{ 10 / 2 }}{% endraw %}` returns 5                   |
-| `%` | Calculate the remainder of an integer division `{% raw %}{{ 10 % 3 }}{% endraw %}` returns 1 |
+| Operator | 描述                                                                                           |
+|:--------:| -------------------------------------------------------------------------------------------- |
+|   `+`    | Perform an adding operation. `{% raw %}{{ 2 + 3 }}{% endraw %}` returns 5                    |
+|   `-`    | Perform a substraction operation `{% raw %}{{ 2 - 3 }}{% endraw %}` returns -1               |
+|   `*`    | Perform a multiplication operation `{% raw %}{{ 2 * 3 }}{% endraw %}` returns 6              |
+|   `/`    | Perform a division operation `{% raw %}{{ 10 / 2 }}{% endraw %}` returns 5                   |
+|   `%`    | Calculate the remainder of an integer division `{% raw %}{{ 10 % 3 }}{% endraw %}` returns 1 |
 
 <a name='expressions-comparisons'></a>
 
-### 比较运算符
+### Comparisons
 
 The following comparison operators are available:
 
-|    运算符     | 描述                    |
-|:----------:| --------------------- |
-|    `==`    | 检查两个操作数是否相等           |
-|    `!=`    | 检查是否两个操作数不平等          |
-| `<>` | 检查是否两个操作数不平等          |
-|   `>`   | 检查左的操作数是否大于右操作数       |
-|   `<`   | 检查左的操作数是否小于右操作数       |
-|  `<=`   | 检查左的操作数是否小于或等于右边的操作数比 |
-|  `>=`   | 检查左的操作数是否大于或等于右边的操作数比 |
-|   `===`    | 检查两个操作数是否绝对相同         |
-|   `!==`    | 检查是否两个操作数绝对不一致        |
+|  Operator  | 描述                                                                |
+|:----------:| ----------------------------------------------------------------- |
+|    `==`    | Check whether both operands are equal                             |
+|    `!=`    | Check whether both operands aren't equal                          |
+| `<>` | Check whether both operands aren't equal                          |
+|   `>`   | Check whether left operand is greater than right operand          |
+|   `<`   | Check whether left operand is less than right operand             |
+|  `<=`   | Check whether left operand is less or equal than right operand    |
+|  `>=`   | Check whether left operand is greater or equal than right operand |
+|   `===`    | Check whether both operands are identical                         |
+|   `!==`    | Check whether both operands aren't identical                      |
 
 <a name='expressions-logic'></a>
 
-### 逻辑运算符
+### Logic
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
-|    运算符     | 描述                          |
-|:----------:| --------------------------- |
-|    `or`    | 如果向左或向右操作数计算为 true，则返回 true |
-|   `and`    | 如果左、 右操作数计算都为 true，则返回 true |
-|   `not`    | 对表达式求反                      |
-| `( expr )` | 圆括号对表达式进行分组                 |
+|  Operator  | 描述                                                                |
+|:----------:| ----------------------------------------------------------------- |
+|    `or`    | Return true if the left or right operand is evaluated as true     |
+|   `and`    | Return true if both left and right operands are evaluated as true |
+|   `not`    | Negates an expression                                             |
+| `( expr )` | Parenthesis groups expressions                                    |
 
 <a name='expressions-other-operators'></a>
 
-### 其他运算符
+### Other Operators
 
 Additional operators seen the following operators are available:
 
-| 运算符               | 描述                                                                                               |
+| Operator          | 描述                                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------ |
 | `~`               | Concatenates both operands `{% raw %}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
 | `|`               | Applies a filter in the right operand to the left `{% raw %}{{ 'hello'|uppercase }}{% endraw %}` |
 | `..`              | Creates a range `{% raw %}{{ 'a'..'z' }}{% endraw %}` `{% raw %}{{ 1..10 }}{% endraw %}`         |
-| `is`              | 同样作为 = = （等于），也执行测试                                                                              |
-| `in`              | 要检查是否表达式包含入其他表达式 `如果 'a' 在 'abc'`                                                                |
-| `is not`          | 同样作为 ！ = （不等于）                                                                                   |
+| `is`              | Same as == (equals), also performs tests                                                         |
+| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                  |
+| `is not`          | Same as != (not equals)                                                                          |
 | `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                           |
-| `++`              | 递增的值                                                                                             |
-| `--`              | 一个值递减                                                                                            |
+| `++`              | Increments a value                                                                               |
+| `--`              | Decrements a value                                                                               |
 
 The following example shows how to use operators:
 
@@ -842,7 +870,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## 检测器
+## Tests
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -860,18 +888,18 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-| 检测器           | 描述                                                                   |
+| Test          | 描述                                                                   |
 | ------------- | -------------------------------------------------------------------- |
-| `defined`     | 检查变量是否定义 (`isset()`)                                                 |
-| `divisibleby` | 检查一个值是否可以被其他值整除                                                      |
-| `empty`       | 检查变量是否为空                                                             |
-| `even`        | 检查一个数值是否为偶数                                                          |
+| `defined`     | Checks if a variable is defined (`isset()`)                          |
+| `divisibleby` | Checks if a value is divisible by other value                        |
+| `empty`       | Checks if a variable is empty                                        |
+| `even`        | Checks if a numeric value is even                                    |
 | `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
-| `numeric`     | 检查值是否真为数字的                                                           |
-| `odd`         | 检查是否一个数值是奇数                                                          |
-| `sameas`      | 检查一个值是否与其他的值相同                                                       |
-| `scalar`      | 检查值是否标量 （不是数组或对象）                                                    |
-| `type`        | 检查一个值是否指定类型的                                                         |
+| `numeric`     | Checks if value is numeric                                           |
+| `odd`         | Checks if a numeric value is odd                                     |
+| `sameas`      | Checks if a value is identical to other value                        |
+| `scalar`      | Checks if value is scalar (not an array or object)                   |
+| `type`        | Checks if a value is of the specified type                           |
 
 More examples:
 
@@ -924,7 +952,7 @@ More examples:
 
 <a name='macros'></a>
 
-## 宏定义
+## Macros
 
 Macros can be used to reuse logic in a template, they act as PHP functions, can receive parameters and return values:
 
@@ -999,7 +1027,7 @@ And receive optional parameters:
 
 <a name='tag-helpers'></a>
 
-## 使用标签助手
+## Using Tag Helpers
 
 Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to use the helpers provided by that component in a Volt template:
 
@@ -1043,7 +1071,7 @@ The following PHP is generated:
 
 To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncamelized version of the method:
 
-| 方法                                | Volt 方法              |
+| 方法                                | Volt function        |
 | --------------------------------- | -------------------- |
 | `Phalcon\Tag::checkField`        | `check_field`        |
 | `Phalcon\Tag::dateField`         | `date_field`         |
@@ -1069,26 +1097,26 @@ To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncame
 
 <a name='functions'></a>
 
-## 函数
+## Functions
 
 The following built-in functions are available in Volt:
 
-| 名称            | 描述                     |
-| ------------- | ---------------------- |
-| `content`     | 引入当前下层级所产生的内容          |
-| `get_content` | `content` 相同           |
-| `partial`     | 动态加载其他模版到到当前视图         |
-| `super`       | 呈现父块的内容                |
-| `time`        | 调用具有相同名称的 PHP 函数       |
-| `date`        | 调用具有相同名称的 PHP 函数       |
-| `dump`        | 调用 PHP 函数 `var_dump()` |
-| `version`     | 返回当框架的前版本              |
-| `constant`    | 读取一个 PHP 常量            |
-| `url`         | 生成使用 url 服务的 URL       |
+| Name          | 描述                                                          |
+| ------------- | ----------------------------------------------------------- |
+| `content`     | Includes the content produced in a previous rendering stage |
+| `get_content` | Same as `content`                                           |
+| `partial`     | Dynamically loads a partial view in the current template    |
+| `super`       | Render the contents of the parent block                     |
+| `time`        | Calls the PHP function with the same name                   |
+| `date`        | Calls the PHP function with the same name                   |
+| `dump`        | Calls the PHP function `var_dump()`                         |
+| `version`     | Returns the current version of the framework                |
+| `constant`    | Reads a PHP constant                                        |
+| `url`         | Generate a URL using the 'url' service                      |
 
 <a name='view-integrations'></a>
 
-## 视图集成
+## View Integration
 
 Also, Volt is integrated with [Phalcon\Mvc\View](api/Phalcon_Mvc_View), you can play with the view hierarchy and include partials as well:
 
@@ -1137,22 +1165,22 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 <a name='view-integration-partial-vs-include'></a>
 
-### 部分 vs 包括
+### Partial vs Include
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| 类型        | 描述                             |
-| --------- | ------------------------------ |
-| `partial` | 允许你引入Volt或者其他引擎的模版             |
-|           | 允许你像传递变量一样传递一个表达式来动态引入其他试图中的内容 |
-|           | 如果模版内容经常改变效果更好                 |
-| `引入`      | 将已编译后的模版内容复制到尝试引入的试图中已改变性能     |
-|           | 只允许引入Volt模版                    |
-|           | 在编译时模版文件需要存在                   |
+| Type       | 描述                                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------------------- |
+| `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
+|            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
+|            | is better if the content that you have to include changes frequently                                       |
+| `includes` | copies the compiled content into the view which improves the performance                                   |
+|            | only allows to include templates made with Volt                                                            |
+|            | requires an existing template at compile time                                                              |
 
 <a name='template-inheritance'></a>
 
-## 模板继承
+## Template Inheritance
 
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
@@ -1223,7 +1251,7 @@ Not all blocks must be replaced at a child template, only those that are needed.
 
 <a name='template-inheritance-multiple'></a>
 
-### 多重继承
+### Multiple Inheritance
 
 Extended templates can extend other templates. The following example illustrates this:
 
@@ -1306,7 +1334,7 @@ Note the call to the function `super()`. With that function it's possible to ren
 
 <a name='autoescape'></a>
 
-## Autoescape 模式
+## Autoescape mode
 
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
@@ -1325,7 +1353,7 @@ Manually escaped: {{ robot.name|e }}
 
 <a name='extending'></a>
 
-## 扩展 Volt
+## Extending Volt
 
 Unlike other template engines, Volt itself is not required to run the compiled templates. Once the templates are compiled there is no dependence on Volt. With performance independence in mind, Volt only acts as a compiler for PHP templates.
 
@@ -1333,7 +1361,7 @@ The Volt compiler allow you to extend it adding more functions, tests or filters
 
 <a name='extending-functions'></a>
 
-### 函数
+### Functions
 
 Functions act as normal PHP functions, a valid string name is required as function name. Functions can be added using two strategies, returning a simple string or using an anonymous function. Always is required that the chosen strategy returns a valid PHP string expression:
 
@@ -1415,7 +1443,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### 过滤器
+### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1448,7 +1476,7 @@ $compiler->addFilter('capitalize', 'lcfirst');
 
 <a name='extending-extensions'></a>
 
-### 扩展
+### Extensions
 
 With extensions the developer has more flexibility to extend the template engine, and override the compilation of a specific instruction, change the behavior of an expression or operator, add functions/filters, and more.
 
@@ -1495,7 +1523,7 @@ $compiler->addExtension(
 
 <a name='caching-view-fragments'></a>
 
-## 缓存的视图片段
+## Caching view fragments
 
 With Volt it's easy cache view fragments. This caching improves performance preventing that the contents of a block from being executed by PHP each time the view is displayed:
 
@@ -1536,7 +1564,7 @@ The caching is done by the `Phalcon\Cache` component via the view component. Lea
 
 <a name='services-in-templates'></a>
 
-## 将服务注入到一个模板
+## Inject Services into a Template
 
 If a service container (DI) is available for Volt, you can use the services by only accessing the name of the service in the template:
 
@@ -1552,7 +1580,7 @@ If a service container (DI) is available for Volt, you can use the services by o
 
 <a name='stand-alone'></a>
 
-## 独立组件
+## Stand-alone component
 
 Using Volt in a stand-alone mode can be demonstrated below:
 
@@ -1591,7 +1619,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## 外部资源
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)
