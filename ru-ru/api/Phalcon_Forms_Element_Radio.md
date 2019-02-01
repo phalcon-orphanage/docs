@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Radio'
 
 Component INPUT[type=radio] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 
