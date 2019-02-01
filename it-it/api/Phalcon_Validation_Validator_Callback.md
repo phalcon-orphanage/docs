@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Callback'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
 Calls user function for validation
 
@@ -58,7 +58,7 @@ $validator->add(
 
 ```
 
-## Metodi
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
