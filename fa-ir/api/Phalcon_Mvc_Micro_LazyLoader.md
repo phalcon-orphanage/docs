@@ -6,11 +6,11 @@ title: 'Phalcon\Mvc\Micro\LazyLoader'
 ---
 # Class **Phalcon\Mvc\Micro\LazyLoader**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
-## Methods
+## روش ها
 
 public **getDefinition** ()
 
