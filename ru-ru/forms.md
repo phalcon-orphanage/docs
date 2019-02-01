@@ -7,11 +7,11 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Формы
+# Forms
 
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
-Следующий пример показывает, как это можно использовать:
+The following example shows its basic usage:
 
 ```php
 <?php
@@ -261,7 +261,7 @@ $form = new UsersForm(
 
 <a name='validation'></a>
 
-## Валидация
+## Validation
 
 Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -693,6 +693,6 @@ echo $loginForm->render();
 
 <a name='external'></a>
 
-## Дополнительная литература
+## External Resources
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
