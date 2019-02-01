@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\Validator\Numericality'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
 
-Periksa nilai numerik yang valid
+Check for a valid numeric value
 
 ```php
 <?php
@@ -48,11 +48,11 @@ $validator->add(
 
 ```
 
-## Metode
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
-Menjalankan validasi
+Executes the validation
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
@@ -60,28 +60,28 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Memeriksa jika pilihan telah ditetapkan
+Checks if an option has been defined
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Memeriksa jika pilihan didefinisikan
+Checks if an option is defined
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Kembali pilihan dalam pilihan validator mengembalikan null jika opsi belum menetapkan
+Returns an option in the validator's options Returns null if the option hasn't set
 
 public **setOption** (*mixed* $key, *mixed* $value) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menetapkan pilihan di validator
+Sets an option in the validator
 
 protected **prepareLabel** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Mempersiapkan label untuk bidang.
+Prepares a label for the field.
 
 protected **prepareMessage** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menyiapkan pesan validasi.
+Prepares a validation message.
 
 protected **prepareCode** (*mixed* $field) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Menyiapkan kode validasi.
+Prepares a validation code.
