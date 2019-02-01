@@ -24,7 +24,7 @@ $subscriber->save();
 
 ```
 
-## Methods
+## Методы
 
 public **getValue** ()
 
