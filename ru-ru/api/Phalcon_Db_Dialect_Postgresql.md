@@ -14,7 +14,7 @@ title: 'Phalcon\Db\Dialect\Postgresql'
 
 Generates database specific SQL for the PostgreSQL RDBMS
 
-## Methods
+## Методы
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
