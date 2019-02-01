@@ -8,7 +8,7 @@ title: 'Phalcon\Session\AdapterInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **start** ()
 
