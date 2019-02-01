@@ -8,23 +8,23 @@ title: 'Phalcon\Http\Response\Headers'
 
 *implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
 This class is a bag to manage the response headers
 
-## Methods
+## Metodlar
 
 public **set** (*mixed* $name, *mixed* $value)
 
-Sets a header to be sent at the end of the request
+İsteğin sonunda gönderilecek bir başlık belirler
 
 public **get** (*mixed* $name)
 
-Gets a header value from the internal bag
+Dahili çantadan bir başlık değeri alır
 
 public **setRaw** (*mixed* $header)
 
-Sets a raw header to be sent at the end of the request
+İsteğin sonunda gönderilecek ham bir başlık ayarlar
 
 public **remove** (*mixed* $header)
 
@@ -32,15 +32,15 @@ Removes a header to be sent at the end of the request
 
 public **send** ()
 
-Sends the headers to the client
+Başlıkları istemciye gönderir
 
 public **reset** ()
 
-Reset set headers
+Ayarlanmış üst bilgileri sıfırla
 
 public **toArray** ()
 
-Returns the current headers as an array
+Geçerli başlıkları bir dizi olarak döndürür
 
 public static **__set_state** (*array* $data)
 
