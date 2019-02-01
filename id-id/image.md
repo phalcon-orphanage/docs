@@ -7,24 +7,24 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Gambar
+# Images
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
 <a name='adapters'></a>
 
-## Adaptor
+## Adapters
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| Kelas                                                                 | Deskripsi                                                                            |
+| Class                                                                 | Description                                                                          |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
-| [Phalcon\Image\Adaptor\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
+| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
 <a name='adapters-factory'></a>
 
-### Pabrik
+### Factory
 
 Loads an Image Adapter class using `adapter` option.
 
@@ -45,13 +45,13 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Menerapkan adapter Anda sendiri
+### Implementing your own adapters
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
 <a name='saving-rendering'></a>
 
-## Menyimpan dan merender gambar
+## Saving and rendering images
 
 Before we begin with the various features of the image component, it's worth understanding how to save and render these images.
 
@@ -105,13 +105,13 @@ $image->save('image.jpg', 80);
 
 <a name='resizing'></a>
 
-## Ubah ukuran gambar
+## Resizing images
 
 There are several modes of resizing:
 
 * `\Phalcon\Image::WIDTH`
 * `\Phalcon\Image::HEIGHT`
-* `\Phalcon\Image::none`
+* `\Phalcon\Image::NONE`
 * `\Phalcon\Image::TENSILE`
 * `\Phalcon\Image::AUTO`
 * `\Phalcon\Image::INVERSE`
@@ -159,12 +159,12 @@ $image->save('resized-image.jpg');
 
 <a name='resizing-none'></a>
 
-### `\Phalcon\Image::none`
+### `\Phalcon\Image::NONE`
 
-* `NONE` konstan mengabaikan rasio gambar asli.
-* Baik lebar dan tinggi tidak diperlukan.
-* Jika dimensi tidak ditentukan, dimensi asli akan digunakan.
-* Jika proporsi baru berbeda dari proporsi aslinya, gambar mungkin terdistorsi dan membentang.
+* The `NONE` constant ignores the original image's ratio.
+* Neither width and height are required.
+* If a dimension is not specified, the original dimension will be used.
+* If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
 <?php
@@ -184,9 +184,9 @@ $image->save('resized-image.jpg');
 
 ### `\Phalcon\Image::TENSILE`
 
-* Serupa dengan konstanta`NONE`konstanta,`TENSILE`mengabaikan rasio gambar asli.
-* Baik lebar dan tinggi diperlukan.
-* Jika proporsi baru berbeda dari proporsi aslinya, gambar mungkin terdistorsi dan membentang.
+* Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
+* Both width and height are required.
+* If the new proportions differ from the original proportions, the image may be distorted and stretched.
 
 ```php
 <?php
@@ -204,7 +204,7 @@ $image->save('resized-image.jpg');
 
 <a name='cropping'></a>
 
-## Memotong gambar
+## Cropping images
 
 For example, to get a 100px by 100px square from the centre of the image:
 
@@ -225,7 +225,7 @@ $image->save('cropped-image.jpg');
 
 <a name='rotating'></a>
 
-## Memutar gambar
+## Rotating images
 
 ```php
 <?php
@@ -240,7 +240,7 @@ $image->save('rotated-image.jpg');
 
 <a name='flipping'></a>
 
-## Membalikkan gambar
+## Flipping images
 
 You can flip an image horizontally (using the `\Phalcon\Image::HORIZONTAL` constant) and vertically (using the `\Phalcon\Image::VERTICAL` constant):
 
@@ -259,7 +259,7 @@ $image->save('flipped-image.jpg');
 
 <a name='sharpening'></a>
 
-## Mempertajam gambar
+## Sharpening images
 
 The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
 
@@ -275,7 +275,7 @@ $image->save('sharpened-image.jpg');
 
 <a name='watermarks'></a>
 
-## Menambahkan tanda air ke gambar
+## Adding watermarks to images
 
 ```php
 <?php
@@ -331,7 +331,7 @@ $image->save('watermarked-image.jpg');
 
 <a name='blurring'></a>
 
-## Gambar kabur
+## Blurring images
 
 The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
 
@@ -347,10 +347,16 @@ $image->save('blurred-image.jpg');
 
 <a name='pixelating'></a>
 
-## Gambar piksel
+## Pixelating images
 
 The `pixelate()` method takes a single parameter - the higher the integer, the more pixelated the image becomes:
 
 ```php
-<?php $image = new\Phalcon\Image\Adapter\Gd('image.jpg'); $image->pixelate(10); $image->simpan ('pixelated-image.jpg');
+<?php
+
+$image = new \Phalcon\Image\Adapter\Gd('image.jpg');
+
+$image->pixelate(10);
+
+$image->save('pixelated-image.jpg');
 ```
