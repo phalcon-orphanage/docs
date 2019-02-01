@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Collection'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
-Bu bileşen, belgelerle çalışan NoSQL veritabanları için üst düzey bir soyutlama işlemi uygular
+This component implements a high level abstraction for NoSQL databases which works with documents
 
-## Sabitler
+## Constants
 
 *integer* **OP_NONE**
 
@@ -28,7 +28,7 @@ Bu bileşen, belgelerle çalışan NoSQL veritabanları için üst düzey bir so
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Metodlar
+## Methods
 
 final public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 
@@ -36,63 +36,63 @@ Phalcon\Mvc\Collection constructor
 
 public **setId** (*mixed* $id)
 
-_id özelliği için bir değer ayarlar, eğer gerekirse bir MongoId nesnesi oluşturur
+Sets a value for the _id property, creates a MongoId object if needed
 
 public *MongoId* **getId** ()
 
-Kimlik özelliğinin_ değerini döndürür
+Returns the value of the _id property
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Bağımlılık enjeksiyonu kapsayıcısını ayarlar
+Sets the dependency injection container
 
 public **getDI** ()
 
-Bağımlılık enjeksiyonu kapsayıcısını döndürür
+Returns the dependency injection container
 
 protected **setEventsManager** ([Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $eventsManager)
 
-Özel olay yöneticisini ayarlar
+Sets a custom events manager
 
 protected **getEventsManager** ()
 
-Özel olay yöneticisini döndürür
+Returns the custom events manager
 
 public **getCollectionManager** ()
 
-Varlık örneğine ilişkin model yöneticisini geri getirir
+Returns the models manager related to the entity instance
 
 public **getReservedAttributes** ()
 
-Ayrılmış özelliklere sahip, yerleştir/güncelle nin bir parçası olamayan bir satırı geri getirir
+Returns an array with reserved properties that cannot be part of the insert/update
 
 protected **useImplicitObjectIds** (*mixed* $useImplicitObjectIds)
 
-Bir modelin örtük nesne kimlikleri kullanmasının, gerekip gerekmediğini ayarlar
+Sets if a model must use implicit objects ids
 
 protected **setSource** (*mixed* $source)
 
-Modelin eşlenmesi gereken koleksiyon adını ayarlar
+Sets collection name which model should be mapped
 
 public **getSource** ()
 
-Modelin eşlenmesi gereken koleksiyon adını döndürür
+Returns collection name mapped in the model
 
 public **setConnectionService** (*mixed* $connectionService)
 
-Bağımlılık enjeksiyon bağlantısının servis adını ayarlar
+Sets the DependencyInjection connection service name
 
 public **getConnectionService** ()
 
-Bağımlılık enjeksiyon bağlantısının servis adını döndürür
+Returns DependencyInjection connection service
 
 public *MongoDb* **getConnection** ()
 
-Bir veri tabanı bağlantısını geri çağırır
+Retrieves a database connection
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Bir nitelik değerini onun adıyla okur
+Reads an attribute value by its name
 
 ```php
 <?php
@@ -103,7 +103,7 @@ echo $robot->readAttribute("name");
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Bir nitelik değerini onun adıyla yazar
+Writes an attribute value by its name
 
 ```php
 <?php
@@ -114,27 +114,27 @@ $robot->writeAttribute("name", "Rosey");
 
 public static **cloneResult** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $collection, *array* $document)
 
-Çoğaltılmış bir koleksiyonu döndürür
+Returns a cloned collection
 
 protected static *array* **_getResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection, *boolean* $unique)
 
-Bir koleksiyon sonuç setini döndürür
+Returns a collection resultset
 
 protected static *int* **_getGroupResultset** (*array* $params, [Phalcon\Mvc\Collection](Phalcon_Mvc_Collection) $collection, *MongoDb* $connection)
 
-Bir sonuç seti üzerinden hesap yapar
+Perform a count over a resultset
 
 final protected *boolean* **_preSave** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *boolean* $disableEvents, *boolean* $exists)
 
-Belgeyi kaydetmeden önce dahili kancaları çalıştırır
+Executes internal hooks before save a document
 
 final protected **_postSave** (*mixed* $disableEvents, *mixed* $success, *mixed* $exists)
 
-Bir belge kaydettikten sonra dahili durumları yürütür
+Executes internal events after save a document
 
 protected **validate** (*mixed* $validator)
 
-Her doğrulama çağrısında doğrulayıcıları yürütür
+Executes validators on every validation call
 
 ```php
 <?php
@@ -190,7 +190,7 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **validationHasFailed** ()
 
-Doğrulama süreci herhangi bir mesaj üretilip üretilmediğini denetler
+Check whether validation process has generated any messages
 
 ```php
 <?php
@@ -220,23 +220,23 @@ class Subscriptors extends \Phalcon\Mvc\Collection
 
 public **fireEvent** (*mixed* $eventName)
 
-Dahili olayı tetikler
+Fires an internal event
 
 public **fireEventCancel** (*mixed* $eventName)
 
-İşlemi iptal eden dahili bir olayı tetikler
+Fires an internal event that cancels the operation
 
 protected **_cancelOperation** (*mixed* $disableEvents)
 
-Geçerli işlemi iptal et
+Cancel the current operation
 
 protected *boolean* **_exists** (*MongoCollection* $collection)
 
-Belgenin koleksiyonda olup olmadığını denetler
+Checks if the document exists in the collection
 
 public **getMessages** ()
 
-Tüm doğrulama iletilerini döndürür
+Returns all the validation messages
 
 ```php
 <?php
@@ -263,7 +263,7 @@ if ($robot->save() === false) {
 
 public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 
-Doğrulama sürecinde özelleştirilmiş bir ileti ekler
+Appends a customized message on the validation process
 
 ```php
 <?php
@@ -292,15 +292,15 @@ Shared Code for CU Operations Prepares Collection
 
 public **save** ()
 
-Nitelik değerlerine dayanan bir koleksiyon oluşturur/günceller
+Creates/Updates a collection based on the values in the attributes
 
 public **create** ()
 
-Nitelik değerlerine dayalı bir koleksiyon oluşturur
+Creates a collection based on the values in the attributes
 
 public **createIfNotExist** (*array* $criteria)
 
-Kriterlere göre bulunmazsa, niteliklerdeki değerlere dayalı bir belge oluşturur Tekrarlamayı önlemek için tercih edilen yol, nitelik için dizin oluşturmaktır
+Creates a document based on the values in the attributes, if not found by criteria Preferred way to avoid duplication is to create index on attribute
 
 ```php
 <?php
@@ -322,11 +322,11 @@ $robot->createIfNotExist(
 
 public **update** ()
 
-Nitelik değerlerine dayanan bir koleksiyon oluşturur/günceller
+Creates/Updates a collection based on the values in the attributes
 
 public static **findById** (*mixed* $id)
 
-Kimliği ile bir belge bulur(_kimlik)
+Find a document by its id (_id)
 
 ```php
 <?php
@@ -348,7 +348,7 @@ if ($user = Users::findById($_POST["id"])) {
 
 public static **findFirst** ([*array* $parameters])
 
-Belirtilen koşullarla eşleşen ilk kaydın sorgulanmasına izin verir
+Allows to query the first record that match the specified conditions
 
 ```php
 <?php
@@ -398,12 +398,12 @@ echo "The robot id is ", $robot->_id, "\n";
 
 public static **find** ([*array* $parameters])
 
-Belirtilen koşullarla eşleşen bir kayıt kümesinin sorgulanmasına izin verir
+Allows to query a set of records that match the specified conditions
 
 ```php
 <?php
 
-// Orada kaç tane robot var?
+// How many robots are there?
 $robots = Robots::find();
 
 echo "There are ", count($robots), "\n";
@@ -471,7 +471,7 @@ Perform an aggregation using the Mongo aggregation framework
 
 public static **summatory** (*mixed* $field, [*mixed* $conditions], [*mixed* $finalize])
 
-Koleksiyondaki bir sütun için bir toplam grup gerçekleştirme işlemine izin verir
+Allows to perform a summatory group for a column in the collection
 
 public **delete** ()
 
@@ -494,23 +494,23 @@ foreach ($robots as $robot) {
 
 public **setDirtyState** (*mixed* $dirtyState)
 
-ONAYLANMAYAN_DURUM_* sabitlerinden birini kullanarak nesnenin onaylanmayan durumunu ayarlar
+Sets the dirty state of the object using one of the DIRTY_STATE_* constants
 
 public **getDirtyState** ()
 
-Belgenin koleksiyonda olup olmadığını söyleyen ONAYLANMAYAN_DURUM * sabitlerinden birini döndürür
+Returns one of the DIRTY_STATE_* constants telling if the document exists in the collection or not
 
 protected **addBehavior** ([Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface) $behavior)
 
-Bir koleksiyonda bir davranış belirler
+Sets up a behavior in a collection
 
 public **skipOperation** (*mixed* $skip)
 
-Bir başarı durumunu zorlayarak geçerli işlemi atlar
+Skips the current operation forcing a success state
 
 public **toArray** ()
 
-Örneği bir dizi gösterimi biçiminde döndürür
+Returns the instance as an array representation
 
 ```php
 <?php
@@ -523,8 +523,8 @@ print_r(
 
 public **serialize** ()
 
-Bağlantıları veya korumalı özellikleri göz ardı ederek nesneyi seri hale getirir
+Serializes the object ignoring connections or protected properties
 
 public **unserialize** (*mixed* $data)
 
-Nesneyi serileştirilmiş bir dizeden serileştirilmemiş hale getirir
+Unserializes the object from a serialized string
