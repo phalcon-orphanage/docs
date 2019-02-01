@@ -6,11 +6,11 @@ title: 'Phalcon\Queue\Beanstalk\Job'
 ---
 # Class **Phalcon\Queue\Beanstalk\Job**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk/job.zep)
 
 Represents a job in a beanstalk queue
 
-## روش ها
+## Methods
 
 public **getId** ()
 
