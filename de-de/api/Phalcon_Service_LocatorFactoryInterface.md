@@ -6,9 +6,9 @@ title: 'Phalcon\Service\LocatorFactoryInterface'
 ---
 # Class **Phalcon\Service\LocatorFactoryInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorfactoryinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorfactoryinterface.zep)
 
-## Methoden
+## Methods
 
 ```php
 public function newInstance(): [LocatorInterface](Phalcon_Service_LocatorInterface);
