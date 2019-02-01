@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial - basic
+# Tutorial - base
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
@@ -25,7 +25,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 <a name='file-structure'></a>
 
-## File structure
+## Struttura dei file
 
 A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.   
 
@@ -71,7 +71,7 @@ This file handles 3 things: - Registration of component autoloaders - Configurin
 
 <a name='autoloaders'></a>
 
-### Autoloaders
+### Caricatori automatici (Autoloaders)
 
 Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](/4.0/en/loader#overview).
 
@@ -84,7 +84,7 @@ To start, lets register our app's `controllers` and `models` directories. Don't 
 
 use Phalcon\Loader;
 
-// Define some absolute path constants to aid in locating resources
+// Definiamo alcuni percorsi assoluto costanti per aiutare nella individuazione delle risorse 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 // ...
@@ -103,7 +103,7 @@ $loader->register();
 
 <a name='dependency-management'></a>
 
-### Dependency Management
+### Gestione delle dipendenze
 
 Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts: - Service Container: a "bag" where we globally store the services that our application needs to function. - Service or Component: Data processing object which will be injected into components
 
@@ -115,7 +115,7 @@ Each time the framework requires a component or service, it will ask the contain
     </p>
 </div>
 
-### Factory Default
+### Impostazioni di fabbrica predefinite
 
 The [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
 
@@ -145,7 +145,7 @@ use Phalcon\Mvc\View;
 
 // ...
 
-// Setup the view component
+// Imposta il componente vista
 $di->set(
     'view',
     function () {
@@ -180,7 +180,7 @@ $di->set(
 
 <a name='request'></a>
 
-### Handling the application request
+### Gestione della richiesta dell'applicazione
 
 In the last part of this file, we find [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
 
@@ -200,7 +200,7 @@ $response->send();
 
 <a name='full-example'></a>
 
-### Putting everything together
+### Mettiamo tutto insieme
 
 The `tutorial/public/index.php` file should look like:
 
@@ -215,11 +215,11 @@ use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Url as UrlProvider;
 
-// Define some absolute path constants to aid in locating resources
+// Definiamo alcuni percorsi assoluto costanti per aiutare nella individuazione delle risorse 
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Register an autoloader
+// Registra  un caricatore automatico
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -231,10 +231,10 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Create a DI
+// Crea una DI
 $di = new FactoryDefault();
 
-// Setup the view component
+// Impsota il componente vista
 $di->set(
     'view',
     function () {
@@ -270,7 +270,7 @@ As you can see, the bootstrap file is very short and we do not need to include a
 
 <a name='controller'></a>
 
-## Creating a Controller
+## Creazione di un controllore (Controller)
 
 By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
 
@@ -285,7 +285,7 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        echo '<h1>Hello!</h1>';
+        echo '<h1>Ciao!</h1>';
     }
 }
 ```
@@ -298,14 +298,14 @@ Congratulations, you're phlying with Phalcon!
 
 <a name='view'></a>
 
-## Sending output to a view
+## Inviare l'output a una vista (View)
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
 
 `app/views/index/index.phtml`
 
 ```php
-<?php echo "<h1>Hello!</h1>";
+<?php echo "<h1>Ciao!</h1>";
 ```
 
 Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
@@ -330,7 +330,7 @@ The browser output should remain the same. The `Phalcon\Mvc\View` static compone
 
 <a name='signup-form'></a>
 
-## Designing a sign-up form
+## Progettiamo un modulo di iscrizione (Form)
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
 
@@ -356,9 +356,9 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 `app/views/index/index.phtml` (rendered)
 
 ```html
-<h1>Hello!</h1>
+<h1>Ciao!</h1>
 
-<a href="/signup">Sign Up Here!</a>
+<a href="/signup">Iscriviti qui!</a>
 ```
 
 To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
@@ -390,12 +390,12 @@ The empty index action gives the clean pass to a view with the form definition (
 `app/views/signup/index.phtml`
 
 ```html
-<h2>Sign up using this form</h2>
+<h2>Iscriviti usando questo modulo</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">Name</label>
+        <label for="name">Nome</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
@@ -405,7 +405,7 @@ The empty index action gives the clean pass to a view with the form definition (
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("Register"); ?>
+        <?php echo $this->tag->submitButton("Registra"); ?>
     </p>
 
 </form>
@@ -422,7 +422,7 @@ The `Phalcon\Tag::form()` method receives only one parameter for instance, a rel
 By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
 
 ```bash
-Exception: Action "register" was not found on handler "signup"
+Eccezione: L'azione "register" non è stata trovato dal gestore "signup"
 ```
 
 Implementing that method will remove the exception:
@@ -452,7 +452,7 @@ If you click the "Send" button again, you will see a blank page. The name and em
 
 <a name='model'></a>
 
-## Creating a Model
+## Creiamo un modello (Model)
 
 Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
 
@@ -489,7 +489,7 @@ class Users extends Model
 
 <a name='database-connection'></a>
 
-## Setting a Database Connection
+## Impostiamo una connessione al database
 
 In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
 
@@ -500,7 +500,7 @@ In order to use a database connection and subsequently access data through our m
 
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Setup the database service
+// Impostiamo il servizio database
 $di->set(
     'db',
     function () {
@@ -520,7 +520,7 @@ With the correct database parameters, our models are ready to work and interact 
 
 <a name='storing-data'></a>
 
-## Storing data using models
+## Memorizziamo i dati utilizzando i modelli
 
 `app/controllers/SignupController.php`
 
