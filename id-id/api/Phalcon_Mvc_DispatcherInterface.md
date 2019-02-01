@@ -8,31 +8,31 @@ title: 'Phalcon\Mvc\DispatcherInterface'
 
 *implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/dispatcherinterface.zep)
 
-## Metode
+## Methods
 
-abstrak umum **setControllerSuffix** (*campuran* $controllerSuffix)
-
-...
-
-abstrak umum **setDefaultController** (*campuran* $controllerName)
+abstract public **setControllerSuffix** (*mixed* $controllerSuffix)
 
 ...
 
-abstrak umum **setControllerName** (*campuran* $controllerName)
+abstract public **setDefaultController** (*mixed* $controllerName)
 
 ...
 
-abstrak (umum **getControllerName**)
+abstract public **setControllerName** (*mixed* $controllerName)
 
 ...
 
-abstrak (umum **getLastController**)
+abstract public **getControllerName** ()
 
 ...
 
-abstrak (umum **getActiveController**)
+abstract public **getLastController** ()
+
+...
+
+abstract public **getActiveController** ()
 
 ...
 
