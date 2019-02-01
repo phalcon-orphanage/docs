@@ -3,7 +3,7 @@ layout: article
 language: 'zh-cn'
 version: '4.0'
 ---
-# 创建合并请求
+# New Pull Request
 
 A pull request a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality
 
