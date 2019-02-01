@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# Sekilas
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -46,8 +46,8 @@ This tells Nanobox to:
 - Use the PHP [engine](https://docs.nanobox.io/engines/), a set of scripts that build your app's runtime.
 - Use PHP 7.1.
 - Set the Apache document root to `public`.
-- Include the Phalcon extension. *Nanobox takes a bare-bones approach to extensions, so you'll likely need to include other extensions. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
-- Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
+- Include the Phalcon extension. *Nanobox mengambil pendekatan tulang telanjang untuk ekstensi, jadi Anda mungkin perlu menyertakan ekstensi lainnya. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
+- Tambahkan bash alias untuk Phalcon Devtools sehingga Anda bisa menggunakan perintah `phalcon`.
 
 <a name='add-devtools'></a>
 
@@ -72,20 +72,20 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
 
 ```bash
-# start nanobox and drop into a nanobox console
-nanobox run
+# mulai nanobox dan drop ke konsol nanobox
+nanobox berjalan
 
-# cd into the /tmp directory
-cd /tmp
+# cd ke direktori / tmp
+cd / tmp
 
-# generate a new phalcon app
-phalcon project myapp
+# buat aplikasi phalcon baru
+proyek phalcon myapp
 
-# change back to the /app dir
+# ganti kembali ke / app dir
 cd -
 
-# copy the generated app into your project
-cp -a /tmp/myapp/* .
+# salin aplikasi yang dihasilkan ke proyek Anda
+cp -a / tmp / myapp / *.
 
 # exit the console
 exit
