@@ -10,66 +10,39 @@ title: 'Phalcon\Mvc\Controller'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ControllerInterface](Phalcon_Mvc_ControllerInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controller.zep)
 
-Every application controller should extend this class that encapsulates all the controller functionality
+Setiap pengontrol aplikasi harus memperluas kelas ini yang merangkum semua fungsi pengontrol
 
-The controllers provide the “flow” between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation.
+Kontroler menyediakan "arus" di antara model dan tampilan. Controller bertanggung jawab untuk memproses permintaan masuk dari browser web, menginterogasi model untuk data, dan menyampaikan data tersebut ke tampilan presentasi.
 
 ```php
-<?php
-
-<?php
-
-class PeopleController extends \Phalcon\Mvc\Controller
-{
-    // This action will be executed by default
-    public function indexAction()
-    {
-
-    }
-
-    public function findAction()
-    {
-
-    }
-
-    public function saveAction()
-    {
-        // Forwards flow to the index action
-        return $this->dispatcher->forward(
-            [
-                "controller" => "people",
-                "action"     => "index",
-            ]
-        );
-    }
-}
+& lt;? PHP & lt;? PHP kelas peoplecontroller meluas\phalcon\MVC\controller {// tindakan ini akan dieksekusi secara default fungsi publik indexaction(){}fungsi publik findaction(){}fungsi publik saveaction(){// depan aliran ke indeks action kembali $this- > dispatcher- > maju (["controller" = > "orang-orang", "aksi" = & gt; "indeks",]);}}
 
 ```
 
-## Methods
+## Metode
 
-final public **__construct** ()
+publik **__membangun** ()
 
 Phalcon\Mvc\Controller constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Menyetel pengelola acara
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Metode __get
