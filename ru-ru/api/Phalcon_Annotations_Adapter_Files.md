@@ -27,7 +27,7 @@ $annotations = new Files(
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options])
 
