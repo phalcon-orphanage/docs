@@ -12,16 +12,16 @@ title: 'Phalcon\Forms\Manager'
 
 public **create** (*string* $name, [*object* $entity])
 
-创建一个表单，注册于表单管理器中
+Creates a form registering it in the forms manager
 
 public **get** (*mixed* $name)
 
-按其名称返回表单
+Returns a form by its name
 
 public **has** (*mixed* $name)
 
-检查表单是否在表单管理程序注册
+Checks if a form is registered in the forms manager
 
 public **set** (*mixed* $name, [Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-在表单管理程序中注册表单
+Registers a form in the Forms Manager
