@@ -17,7 +17,7 @@ The Phalcon source code (along with documentation, websites etc.) is stored in [
 
 <a name='contributions'></a>
 
-## Wkład
+## Contributions
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
@@ -64,7 +64,7 @@ Please check the following links for instructions on how to generate the backtra
 - [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Budowanie PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
