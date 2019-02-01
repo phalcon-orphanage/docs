@@ -7,28 +7,28 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Use case
+# Gunakan perkara
 
-Throughout this documentation we are going to assume that we are building an accounting application.
+Berdasarkan dokumentasi ini kita berencana untuk membangun aplikasi akuntansi.
 
 <a name='requirements'></a>
 
-## Requirements
+## Persyaratan
 
-- MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
-- Store data in a database (MariaDB/MySQL)
-- Offer a UI for users to work 
+- MVC application menggunakan [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
+- Menyimpan data pada database (MariaDB/MySQL)
+- Menawarkan UI (User Interface) untuk pengguna dalam bekerja 
     - Login page
-    - Administration area 
-        - Cache management
+    - Area Administration 
+        - Manajemen Cache
         - Permissions
-        - Products CRUD
-        - Users CRUD
-    - Accounting department area 
+        - CRUD Produk
+        - CRUD User
+    - Area departemen akuntansi 
         - Invoices
         - Customers
         - Payments
-    - Customer portal area 
+    - Area portal customer 
         - Invoices (view)
         - Payment
         - Reports
@@ -37,26 +37,26 @@ Throughout this documentation we are going to assume that we are building an acc
 
 ## Groups - User roles
 
-| Group          | Description                                        |
-| -------------- | -------------------------------------------------- |
-| Guests         | Users that are not logged in, visitors to the site |
-| Customers      | Users that have purchased products                 |
-| Accounting     | Users of the accounting department                 |
-| Managers       | Accounting department managers                     |
-| Administrators | Full access to the whole application               |
+| Group          | Deskripsi                                                  |
+| -------------- | ---------------------------------------------------------- |
+| Guests         | Pengguna yang tidak melakukan login, pengunjung dari situs |
+| Customers      | Pengguna yang dapat membeli produk                         |
+| Accounting     | Pengguna dari departemen akuntansi                         |
+| Managers       | Manajer departemen akuntansi                               |
+| Administrators | Akses penuh keseluruhan aplikasi                           |
 
 <a name='endpoints'></a>
 
 ## Endpoints
 
-| Endpoint                          | Description                                                  |
+| Endpoint                          | Deskripsi                                                    |
 | --------------------------------- | ------------------------------------------------------------ |
-| `/login`                          | Path `/session/login`. Presents the login screen             |
-| `/logout`                         | Path `/session/logout`. Logs user out, redirects to `/login` |
-| `/portal/invoices/list`           | List invoices for the currently logged in customer           |
-| `/portal/invoices/view/{0-9}`     | View invoice for the currently logged in customer            |
-| `/portal/invoices/pay/{0-9}`      | Pay invoice (payment gateway)                                |
-| `/portal/reports/list`            | List available reports for the logged in customer            |
+| `/login`                          | Path `/session/login`. Menampilkan tampilan login            |
+| `/logout`                         | Path `/session/logout`. Catatan keluar, redirect ke `/login` |
+| `/portal/invoices/list`           | Daftar invoice untuk customer yang login                     |
+| `/portal/invoices/view/{0-9}`     | Menampilkan invoice untuk customer yang login                |
+| `/portal/invoices/pay/{0-9}`      | Pembayaran invoice (payment gateway)                         |
+| `/portal/reports/list`            | Daftar laporan yang tersedia untuk customer login            |
 | `/portal/reports/view/{0-9}`      | View report for this customer                                |
 | `/accounting/invoices/add`        | Add new invoice                                              |
 | `/accounting/invoices/edit/{0-9}` | Edit an invoice                                              |
