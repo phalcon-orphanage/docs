@@ -6,39 +6,39 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-Kelas ini mewakili setiap rute yang ditambahkan ke router
+This class represents every route added to the router
 
 ## Constants
 
-*tali* **DEFAULT_DELIMITER**
+*string* **DEFAULT_DELIMITER**
 
-## Metode
+## Methods
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
 Phalcon\Cli\Router\Route constructor
 
-publik **kompilasiPola** (*campuraduk* $pattern)
+public **compilePattern** (*mixed* $pattern)
 
-Mengganti placeholder dari pola yang mengembalikan ekspresi reguler PCRE yang valid
+Replaces placeholders from pattern returning a valid PCRE regular expression
 
 public *array* | *boolean* **extractNamedParams** (*string* $pattern)
 
-Ekstrak parameter dari sebuah string
+Extracts parameters from a string
 
 public **reConfigure** (*string* $pattern, [*array* $paths])
 
-Konfigurasikan ulang rute untuk menambahkan pola baru dan satu set jalur
+Reconfigure the route adding a new pattern and a set of paths
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama rute
+Returns the route's name
 
-publik **setNama** (*dicampur* $name)
+public **setName** (*mixed* $name)
 
-Menetapkan nama rute
+Sets the route's name
 
 ```php
 <?php
@@ -58,44 +58,44 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public *mixed* **getBeforeMatch** ()
 
-Mengembalikan callback 'sebelum pertandingan' jika ada
+Returns the 'before match' callback if any
 
-publik **mendapatkanRute** ()
+public **getRouteId** ()
 
-Mengembalikan nomor rute
+Returns the route's id
 
-publik **mendapatkanPola** ()
+public **getPattern** ()
 
-Mengembalikan pola rute
+Returns the route's pattern
 
-publik **dapatkanPolaTerkompilasi** ()
+public **getCompiledPattern** ()
 
-Mengembalikan pola yang dikompilasi rute
+Returns the route's compiled pattern
 
-publik **mendapatkanJalan** ()
+public **getPaths** ()
 
-Mengembalikan jalan
+Returns the paths
 
-public **dapatkanJalanTerbalik** ()
+public **getReversedPaths** ()
 
-Mengembalikan jalur menggunakan posisi sebagai kunci dan nama sebagai nilai
+Returns the paths using positions as keys and names as values
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **convert** (*string* $name, *callable* $converter)
 
-Menambahkan konverter untuk melakukan transformasi tambahan untuk parameter tertentu
+Adds a converter to perform an additional transformation for certain parameter
 
-publik **mendapatkankonventer** ()
+public **getConverters** ()
 
-Mengembalikan konverter router
+Returns the router converter
 
-publik static **reset** ()
+public static **reset** ()
 
-Menyetel ulang generator id rute internal
+Resets the internal route id generator
 
 public static **delimiter** ([*mixed* $delimiter])
 
-Tetapkan pembatas rute
+Set the routing delimiter
 
-publik statis **mendapatkanDelimiter** ()
+public static **getDelimiter** ()
 
-Dapatkan perutean routing
+Get routing delimiter
