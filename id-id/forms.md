@@ -7,11 +7,11 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Forms
+# Formulir
 
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
-The following example shows its basic usage:
+Contoh berikut menunjukkan penggunaan dasarnya:
 
 ```php
 <?php
@@ -497,7 +497,7 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the [Phalcon\Forms\Element](api/Phalcon_Forms_Element) namespace:
 
-| Name                                                                    | Description                                                   |
+| Nama                                                                    | Deskripsi                                                     |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Generate `INPUT[type=text]` elements                          |
 | [Phalcon\Forms\Element\Password](api/Phalcon_Forms_Element_Password) | Generate `INPUT[type=password]` elements                      |
@@ -693,6 +693,6 @@ echo $loginForm->render();
 
 <a name='external'></a>
 
-## External Resources
+## Sumber Eksternal
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
