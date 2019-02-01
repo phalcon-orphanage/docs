@@ -32,11 +32,11 @@ Phalcon\Http\Response constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+设置依赖注入器
 
 public **getDI** ()
 
-Returns the internal dependency injector
+返回内部依赖注入器
 
 public **setStatusCode** (*mixed* $code, [*mixed* $message])
 
