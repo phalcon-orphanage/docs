@@ -6,22 +6,22 @@ title: 'Phalcon\Forms\Manager'
 ---
 # Class **Phalcon\Forms\Manager**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
-## Metode
+## Methods
 
 public **create** (*string* $name, [*object* $entity])
 
-Membuat form pendaftaran di form manager
+Creates a form registering it in the forms manager
 
 public **get** (*mixed* $name)
 
-Mengembalikan bentuk dengan nama
+Returns a form by its name
 
-publik **telah** (*campuran* $name)
+public **has** (*mixed* $name)
 
-Memeriksa apakah formulir terdaftar dalam bentuk manajer
+Checks if a form is registered in the forms manager
 
 public **set** (*mixed* $name, [Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-Register bentuk dalam bentuk manajer
+Registers a form in the Forms Manager
