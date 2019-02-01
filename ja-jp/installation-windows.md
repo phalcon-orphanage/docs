@@ -18,12 +18,12 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| アーキテクチャー | バージョン | Type           |
-|:--------:|:-----:| -------------- |
-|   x64    |  7.x  | スレッドセーフ        |
-|   x64    |  7.x  | 非スレッドセーフ (NTS) |
-|   x86    |  7.x  | スレッドセーフ        |
-|   x86    |  7.x  | 非スレッドセーフ (NTS) |
+| アーキテクチャー | Version | Type           |
+|:--------:|:-------:| -------------- |
+|   x64    |   7.x   | スレッドセーフ        |
+|   x64    |   7.x   | 非スレッドセーフ (NTS) |
+|   x86    |   7.x   | スレッドセーフ        |
+|   x86    |   7.x   | 非スレッドセーフ (NTS) |
 
 Edit your php.ini file and then append at the end:
 
