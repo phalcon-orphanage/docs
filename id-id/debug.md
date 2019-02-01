@@ -17,7 +17,7 @@ Despite being written in C, Phalcon executes methods in the PHP userland, provid
 
 <a name='catching-exceptions'></a>
 
-## Penangkapan pengecualian
+## Catching Exceptions
 
 Throughout the tutorials and examples of the Phalcon documentation, there is a common element that is catching exceptions. This is a try/catch block:
 
