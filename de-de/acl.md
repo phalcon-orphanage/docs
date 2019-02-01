@@ -9,22 +9,22 @@ category: 'acl'
 
 * * *
 
-- [Access Control Lists (ACL)](acl-overview)
-- [Creating an ACL](acl-setup)
+- [Zugriffskontrolle (ACL)](acl-overview)
+- [Erstellen einer ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [Defining Access Controls](acl-access-controls)
-- [Querying an ACL](acl-querying)
-- [Function based access](acl-function-based-access)
+- [Definition von Zugangskontrollen](acl-access-controls)
+- [Abfragen einer ACL](acl-querying)
+- [Funktionsbasierter Zugriff](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
-- [Serializing ACL lists](acl-serialization)
-- [Events](acl-events)
-- [Implementing your own adapters](acl-custom-adapters)
+- [Serialisierung von ACL Listen](acl-serialization)
+- [Ereignisse](acl-events)
+- [Implementierung von eigenen Adaptern](acl-custom-adapters)
 
 * * *
 
-## Access Control Lists (ACL)
+## Zugriffskontrolle (ACL)
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
