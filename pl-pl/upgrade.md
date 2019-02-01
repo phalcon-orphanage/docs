@@ -11,7 +11,7 @@ Phalcon v4 contains a lot of changes to components, including changes to interfa
 
 <a name='requirements'></a>
 
-## Wymagania
+## Requirements
 
 ### PHP 7.2
 
@@ -27,7 +27,7 @@ Phalcon requires the PSR extension. The extension can be downloaded and compiled
 extension=psr.so
 ```
 
-przed
+before
 
 ```ini
 extension=phalcon.so
@@ -37,7 +37,7 @@ Alternatively some distributions add a number prefix on `ini` files. If that is 
 
 <a name='installation'></a>
 
-### Instalacja
+### Installation
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -76,7 +76,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 <a name='acl-overview'></a>
 
-### Przegląd
+### Overview
 
 The components needed for the ACL to work have been renamed. In particular `Role` has been renamed to `Operation` and `Resource` to `Subject` in all relevant interfaces, classes and methods that this component uses.
 
@@ -125,7 +125,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 <a name='filter-overview'></a>
 
-### Przegląd
+### Overview
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 
@@ -189,7 +189,7 @@ $container->set(
 
 <a name='filter-constants'></a>
 
-### Stałe
+### Constants
 
 The constants that the v3 `Phalcon\Filter` have somewhat changed. They are now located in the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) class.
 
