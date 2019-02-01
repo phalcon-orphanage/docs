@@ -58,28 +58,28 @@ foreach ($robots as $robot) {
 
 public **getLifetime** ()
 
-Devuelve el tiempo de vida del almacenamiento en caché, solo los contenidos que hayan expirado luego de un segundo
+Returns cache lifetime, always one second expiring content
 
 public **isBuffering** ()
 
-Verifica si el frontend esta almacenando la salida, siempre falso
+Check whether if frontend is buffering output, always false
 
 public **start** ()
 
-Inicia el frontend de salida
+Starts output frontend
 
 public *string* **getContent** ()
 
-Regresa contenido almacenado saliente
+Returns output cached content
 
 public **stop** ()
 
-Detiene la salida del frontend
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Prepara los datos para ser almacenados
+Prepare data to be stored
 
 public **afterRetrieve** (*mixed* $data)
 
-Prepara los datos para ser regresados al usuario
+Prepares data to be retrieved to user
