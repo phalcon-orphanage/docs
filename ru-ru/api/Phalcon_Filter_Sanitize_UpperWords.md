@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\UpperWords'
 
 Sanitizes a value to uppercase the first character of each word
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
