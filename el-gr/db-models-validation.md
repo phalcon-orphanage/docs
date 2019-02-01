@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validating Models
+# Επικύρωση μοντέλων
 
 <a name='data-integrity'></a>
 
