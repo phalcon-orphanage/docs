@@ -9,7 +9,7 @@ category: 'filter'
 
 * * *
 
-- [Penyaringan dan Sanitasi](filter-overview)
+- [Filtering and Sanitizing](filter-overview)
 - [Built-in Sanitizers](filter-sanitizers)
 - [Sanitizing data](filter-sanitizing)
 - [Sanitizing from Controllers](filter-sanitizing-from-controllers)
@@ -21,7 +21,7 @@ category: 'filter'
 
 * * *
 
-## Penyaringan dan Sanitasi
+## Filtering and Sanitizing
 
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
