@@ -31,7 +31,7 @@ $db = Factory::load($options);
 
 ```
 
-## Methods
+## Методы
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
