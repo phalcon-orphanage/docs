@@ -12,7 +12,7 @@ title: 'Phalcon\Logger\Adapter'
 
 Base class for Phalcon\Logger adapters
 
-## Методы
+## Methods
 
 public **setLogLevel** (*mixed* $level)
 
