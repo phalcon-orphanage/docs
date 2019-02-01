@@ -122,7 +122,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 #### pkg_add
 
 ```bash
-pkg_add phalcon - r
+pkg_add -r phalcon
 ```
 
 #### Source
