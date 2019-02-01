@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\BackendInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **start** (*mixed* $keyName, [*mixed* $lifetime])
 
