@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Vue d'ensemble
+# Overview
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Intégrer PHPunit à phalcon
+## Integrating PHPUnit with Phalcon
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
@@ -42,7 +42,7 @@ Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
-## Le fichier d'assistance de PHPunit
+## The PHPUnit helper file
 
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
@@ -62,11 +62,11 @@ set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Nécessaire pour phalcon/incubator
+// Required for phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
 
-// Utilise le chargeur automatique de l'application pour charger les classes
-// Charge automatiquement les dépendances de composer
+// Use the application autoloader to autoload the classes
+// Autoload the dependencies found in composer
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -81,7 +81,7 @@ $di = new FactoryDefault();
 
 Di::reset();
 
-// Ajoute ici les services nécessaire dans le DI
+// Add any needed services to the DI here
 
 Di::setDefault($di);
 ```
@@ -93,7 +93,7 @@ To help you build the Unit Tests, we made a few abstract classes you can use to 
 You can use the Incubator library by adding it as a dependency:
 
 ```bash
-composer à besoin de phalcon/incubator
+composer require phalcon/incubator
 ```
 
 or by manually adding it to `composer.json`:
@@ -139,7 +139,7 @@ Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run
 
 <a name='sample'></a>
 
-## Exemple de test unitaire
+## Sample Unit Test
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
@@ -164,10 +164,10 @@ abstract class UnitTestCase extends PhalconTestCase
     {
         parent::setUp();
 
-        // Chargez d'autres services qui pourraient être nécessaires aux tests
+        // Load any additional services that might be required during testing
         $di = Di::getDefault();
 
-        // Récupèration des composant du DI ici. Si vous avez une configuration soyez sûr de le transmettre au parent.
+        // Get any DI components here. If you have a config, be sure to pass it to the parent
 
         $this->setDi($di);
 
@@ -175,7 +175,7 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Vérification que le cas de test soit correctement configuré
+     * Check if the test case is setup properly
      *
      * @throws \PHPUnit_Framework_IncompleteTestError;
      */
