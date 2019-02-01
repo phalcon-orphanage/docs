@@ -8,7 +8,7 @@ title: 'Phalcon\Validation\MessageInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setType** (*mixed* $type)
 
