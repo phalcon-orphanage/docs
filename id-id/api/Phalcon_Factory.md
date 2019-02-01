@@ -2,17 +2,17 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon \ Factory'
+title: 'Phalcon\Factory'
 ---
 # Abstract class **Phalcon\Factory**
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
 
-## Metode
+## Methods
 
-protected static ** loadClass ** (* mixed * $namespace, * mixed * $config)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...
 
