@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Backend\Factory'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/factory.zep)
 
-Loads Backend Cache Adapter class using 'adapter' option, if frontend will be provided as array it will call Frontend Cache Factory
+下面的示例加载后端缓存适配器类使用 适配器 选项，如果前端将提供数组作为它将调用前端缓存工厂
 
 ```php
 <?php
