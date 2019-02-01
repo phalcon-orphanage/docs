@@ -38,16 +38,16 @@ Gets extra HTML attributes.
 
 public [*self*](Phalcon_Assets_Inline_Css) **setType** (*string* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece el tipo de activo en línea
+Sets the inline's type
 
 public [*self*](Phalcon_Assets_Inline_Css) **setFilter** (*boolean* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece si el recurso debe ser filtrado o no
+Sets if the resource must be filtered or not
 
 public [*self*](Phalcon_Assets_Inline_Css) **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece los atributos HTML extras
+Sets extra HTML attributes
 
 public *string* **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Obtiene la llave del recurso.
+Gets the resource's key.
