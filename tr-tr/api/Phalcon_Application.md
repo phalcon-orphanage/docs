@@ -10,11 +10,11 @@ title: 'Phalcon\Application'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
-## Metodlar
+## Methods
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -22,15 +22,15 @@ Phalcon\Application Constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Olay yöneticisini ayarlar
+Sets the events manager
 
-herkes **Olay yöneticisini al** ()
+public **getEventsManager** ()
 
-Dahili olay yöneticisini döndürür
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Uygulamada mevcut bir modüller dizisi kaydedin
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -52,27 +52,27 @@ $this->registerModules(
 
 public **getModules** ()
 
-Uygulamada kayıtlı modülleri dönün
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name)
 
-Modül adını kullanarak uygulamada kayıtlı modül tanımını getirir
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Eğer yönlendirici geçerli bir modül döndürmezse kullanılacak modül adını ayarlar
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** ()
 
-Varsayılan modül adını döner
+Returns the default module name
 
 abstract public **handle** ()
 
-Talebi yönetir
+Handles a request
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
