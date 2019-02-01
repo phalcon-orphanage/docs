@@ -10,78 +10,78 @@ title: 'Phalcon\Mvc\View'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Mvc\ViewInterface](Phalcon_Mvc_ViewInterface), [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view.zep)
 
-Phalcon\Mvc\View is a class for working with the "view" portion of the model-view-controller pattern. That is, it exists to help keep the view script separate from the model and controller scripts. It provides a system of helpers, output filters, and variable escaping.
+Phalcon\Mvc\View is a class for working with the "view" portion of the model-view-controller pattern. Artinya, ada untuk membantu menjaga agar skrip tampilan tidak terpisah dari skrip model dan pengontrol. Ini menyediakan sistem pembantu, filter output, dan variabel yang lolos.
 
 ```php
-<?php
+<? php
 
-use Phalcon\Mvc\View;
+menggunakan Phalcon\Mvc\View;
 
 $view = new View();
 
-// Setting views directory
-$view->setViewsDir("app/views/");
+Pengaturan pemandangan direktori
+$view -> setViewsDir("app/views/");
 
-$view->start();
+$view -> start();
 
-// Shows recent posts view (app/views/posts/recent.phtml)
-$view->render("posts", "recent");
-$view->finish();
+Menunjukkan Lihat posting kemarin (app/views/posts/recent.phtml)
+$view -> render ("posts", "baru");
+$view -> finish();
 
-// Printing views output
-echo $view->getContent();
+Mencetak output dilihat
+echo $view -> getContent ();
 
 ```
 
 ## Constants
 
-*integer* **LEVEL_MAIN_LAYOUT**
+*bilangan bulat* **MODELS_DATE_AT**
 
-*integer* **LEVEL_AFTER_TEMPLATE**
+*bilangan bulat* **MODELS_DATE_AT**
 
-*integer* **LEVEL_LAYOUT**
+*bilangan bulat* **FETCH_LAZY**
 
-*integer* **LEVEL_BEFORE_TEMPLATE**
+*bilangan bulat* **MODELS_DATE_AT**
 
-*integer* **LEVEL_ACTION_VIEW**
+* bilangan bulat </ 0> ** TYPE_INTEGER </ 1></p> 
 
-*integer* **LEVEL_NO_RENDER**
+* bilangan bulat </ 0> ** TYPE_INTEGER </ 1></p> 
 
-*integer* **CACHE_MODE_NONE**
+*bilangan bulat* **OP_NONE**
 
-*integer* **CACHE_MODE_INVERSE**
+* bilangan bulat * ** DENY **
 
-## Methods
+## Metode
 
-public **getRenderLevel** ()
-
-...
-
-public **getCurrentRenderLevel** ()
+public **getReader** ()
 
 ...
 
-public **getRegisteredEngines** ()
+public **getReader** ()
 
-public **__construct** ([*array* $options])
+...
+
+publik **dapatkanfilter** ()
+
+umum **__membangun** ([*array* $options])
 
 Phalcon\Mvc\View constructor
 
-final protected **_isAbsolutePath** (*mixed* $path)
+terlindung **_memutar** (*campuran* $path)
 
-Checks if a path is absolute or not
+Memeriksa apakah jalan itu mutlak atau tidak
 
-public **setViewsDir** (*mixed* $viewsDir)
+publik **mendapatkan Server** (*campur aduk* $viewsDir)
 
 Sets the views directory. Depending of your platform, always add a trailing slash or backslash
 
-public **getViewsDir** ()
+public **getFilter** ()
 
-Gets views directory
+Gets dilihat direktori
 
-public **setLayoutsDir** (*mixed* $layoutsDir)
+abstrak publik **setLayoutsDir** (*mixed* $layoutsDir)
 
 Sets the layouts sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
 
@@ -92,11 +92,11 @@ $view->setLayoutsDir("../common/layouts/");
 
 ```
 
-public **getLayoutsDir** ()
+umum **getActiveRole** ()
 
-Gets the current layouts sub-directory
+Mendapatkan sub-direktori layout saat ini
 
-public **setPartialsDir** (*mixed* $partialsDir)
+abstrak publik **setPartialsDir** (*mixed* $partialsDir)
 
 Sets a partials sub-directory. Must be a directory under the views directory. Depending of your platform, always add a trailing slash or backslash
 
@@ -107,9 +107,9 @@ $view->setPartialsDir("../common/partials/");
 
 ```
 
-public **getPartialsDir** ()
+umum **getActiveRole** ()
 
-Gets the current partials sub-directory
+Mendapatkan sub-direktori partial saat ini
 
 public **setBasePath** (*mixed* $basePath)
 
@@ -124,37 +124,37 @@ Sets base path. Depending of your platform, always add a trailing slash or backs
 
 public **getBasePath** ()
 
-Gets base path
+Mendapatkan jalur dasar
 
-public **setRenderLevel** (*mixed* $level)
+abstrak publik **setRenderLevel** (*mixed* $level)
 
-Sets the render level for the view
+Menetapkan tingkat render untuk tampilan
 
 ```php
-<?php
+<? php
 
-// Render the view related to the controller only
-$this->view->setRenderLevel(
-    View::LEVEL_LAYOUT
+Membuat tampilan yang berkaitan dengan controller hanya
+$this -> Tampilan -> setRenderLevel ()
+View::LEVEL_LAYOUT
 );
 
 ```
 
 public **disableLevel** (*mixed* $level)
 
-Disables a specific level of rendering
+Menonaktifkan tingkat rendering tertentu
 
 ```php
-<?php
+<? php
 
-// Render all levels except ACTION level
-$this->view->disableLevel(
-    View::LEVEL_ACTION_VIEW
+Membuat semua tingkat kecuali tingkat tindakan
+$this -> Tampilan -> disableLevel ()
+View::LEVEL_ACTION_VIEW
 );
 
 ```
 
-public **setMainView** (*mixed* $viewPath)
+abstrak publik **setMainView** (*mixed* $viewPath)
 
 Sets default view name. Must be a file without extension in the views directory
 
@@ -166,13 +166,13 @@ $this->view->setMainView("base");
 
 ```
 
-public **getMainView** ()
+publik **mendapatkancompiler** ()
 
-Returns the name of the main view
+Mengembalikan nama tampilan utama
 
 public **setLayout** (*mixed* $layout)
 
-Change the layout to be used instead of using the name of the latest controller name
+Ubah tata letak yang akan digunakan alih-alih menggunakan nama nama pengontrol terbaru
 
 ```php
 <?php
@@ -183,27 +183,27 @@ $this->view->setLayout("main");
 
 public **getLayout** ()
 
-Returns the name of the main view
+Mengembalikan nama tampilan utama
 
-public **setTemplateBefore** (*mixed* $templateBefore)
+abstrak publik **setTemplateBefore** (*mixed* $templateBefore)
 
-Sets a template before the controller layout
+Menetapkan template sebelum layout controller
 
-public **cleanTemplateBefore** ()
+abstrak publik **cleanTemplateBefore** ()
 
-Resets any "template before" layouts
+Menyetel ulang template sebelum tata letak
 
-public **setTemplateAfter** (*mixed* $templateAfter)
+abstrak publik **setTemplateBefore** (*mixed* $templateAfter)
 
-Sets a "template after" controller layout
+Menetapkan template sebelum layout controller
 
 public **cleanTemplateAfter** ()
 
-Resets any template before layouts
+Menyetel ulang template sebelum tata letak
 
 public **setParamToView** (*mixed* $key, *mixed* $value)
 
-Adds parameters to views (alias of setVar)
+Menambahkan parameter ke tampilan (alias setVar)
 
 ```php
 <?php
@@ -212,9 +212,9 @@ $this->view->setParamToView("products", $products);
 
 ```
 
-public **setVars** (*array* $params, [*mixed* $merge])
+public **setParam** (*mixed* $params, *mixed* $merge])
 
-Set all the render params
+Tetapkan semua params render
 
 ```php
 <?php
@@ -229,7 +229,7 @@ $this->view->setVars(
 
 public **setVar** (*mixed* $key, *mixed* $value)
 
-Set a single view parameter
+Tetapkan parameter tampilan tunggal
 
 ```php
 <?php
@@ -240,39 +240,39 @@ $this->view->setVar("products", $products);
 
 public **getVar** (*mixed* $key)
 
-Returns a parameter previously set in the view
+Mengembalikan parameter yang telah ditetapkan sebelumnya pada tampilan
 
 public **getParamsToView** ()
 
-Returns parameters to views
+Mengembalikan parameter untuk dilihat
 
 public **getControllerName** ()
 
-Gets the name of the controller rendered
+Mendapat nama pengontrol yang diberikan
 
-public **getActionName** ()
+publik **dapatkanNamaAksi** ()
 
-Gets the name of the action rendered
+Mendapat nama pengontrol yang diberikan
 
-public **getParams** ()
+umum **getParams** ()
 
-Gets extra parameters of the action rendered
+Mendapatkan parameter tambahan dari tindakan yang diberikan
 
-public **start** ()
+publik ** mulai ** ()
 
-Starts rendering process enabling the output buffering
+Mulai proses rendering yang memungkinkan buffering output
 
-protected **_loadTemplateEngines** ()
+dilindungi (**_loadTemplateEngines**)
 
 Loads registered template engines, if none is registered it will use Phalcon\Mvc\View\Engine\Php
 
 protected **_engineRender** (*array* $engines, *string* $viewPath, *boolean* $silence, *boolean* $mustClean, [[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $cache])
 
-Checks whether view exists on registered extensions and render it
+Memeriksa apakah tampilan ada pada ekstensi terdaftar dan memberikannya
 
-public **registerEngines** (*array* $engines)
+publik **mengaturatribut** (*array* $engines)
 
-Register templating engines
+Mendaftar mesin template
 
 ```php
 <?php
@@ -287,23 +287,23 @@ $this->view->registerEngines(
 
 ```
 
-public **exists** (*mixed* $view)
+umum **membaca** (*campuran* $view)
 
-Checks whether view exists
+Cek apakah ada Lihat
 
-public **render** (*string* $controllerName, *string* $actionName, [*array* $params])
+public **__construct** (*string* $controllerName, [*boolean* $actionName], [*array* $params])
 
-Executes render process from dispatching data
+Jalankan proses render dari pengiriman data online
 
 ```php
-<?php
+<? php
 
-// Shows recent posts view (app/views/posts/recent.phtml)
-$view->start()->render("posts", "recent")->finish();
+Menunjukkan Lihat posting kemarin (app/views/posts/recent.phtml)
+$view -> start() - > render ("posts", "baru") -> finish();
 
 ```
 
-public **pick** (*mixed* $renderView)
+publik **telah**(*campuraduk*$renderView)
 
 Choose a different view to render instead of last-controller/last-action
 
@@ -325,15 +325,15 @@ class ProductsController extends Controller
 
 ```
 
-public **getPartial** (*mixed* $partialPath, [*mixed* $params])
+umum **tableExists** (*mixed* $partialPath, [*mixed* $params])
 
-Renders a partial view
+Memberikan sebagian tampilan
 
 ```php
-<?php
+<? php
 
-// Retrieve the contents of a partial
-echo $this->getPartial("shared/footer");
+Mengambil isi dari parsial
+echo $this -> getPartial("shared/footer");
 
 ```
 
@@ -350,34 +350,34 @@ echo $this->getPartial(
 
 ```
 
-public **partial** (*mixed* $partialPath, [*mixed* $params])
+publik **dapatkan** (*campuran* $partialPath, [*mixed* $params])
 
-Renders a partial view
+Memberikan sebagian tampilan
 
 ```php
-<?php
+<? php
 
-// Show a partial inside another view
-$this->partial("shared/footer");
+Tampilkan parsial dalam pandangan lain
+$this -> partial("shared/footer");
 
 ```
 
 ```php
-<?php
+<? php
 
-// Show a partial inside another view with parameters
-$this->partial(
-    "shared/footer",
-    [
-        "content" => $html,
-    ]
+Tampilkan parsial dalam pandangan lain dengan parameter
+$this -> (parsial
+"bersama/footer",
+[
+"konten" = > $html,
+]
 );
 
 ```
 
-public *string* **getRender** (*string* $controllerName, *string* $actionName, [*array* $params], [*mixed* $configCallback])
+umum *array* **fetchAll** (*string* $controllerName, [*int* $actionName], [*array* $params], [*array* $configCallback])
 
-Perform the automatic rendering returning the output as a string
+Melakukan terjemahan otomatis kembali output sebagai string
 
 ```php
 <?php
@@ -392,25 +392,25 @@ $template = $this->view->getRender(
 
 ```
 
-public **finish** ()
+publik**mundur**()
 
-Finishes the render process by stopping the output buffering
+Selesaikan proses render dengan menghentikan buffering output
 
-protected **_createCache** ()
+dilindungi (**getEventsManager**)
 
 Create a Phalcon\Cache based on the internal cache options
 
-public **isCaching** ()
+publik **mulai** ()
 
-Check if the component is currently caching the output content
+Periksa apakah komponen saat ini caching konten output
 
 public **getCache** ()
 
-Returns the cache instance used to cache
+Mengembalikan contoh cache yang digunakan untuk cache
 
-public **cache** ([*mixed* $options])
+publik **menyaring** (*campur * $options])
 
-Cache the actual view render to certain level
+Cache tampilan aktual ke tingkat tertentu
 
 ```php
 <?php
@@ -424,40 +424,38 @@ $this->view->cache(
 
 ```
 
-public **setContent** (*mixed* $content)
+publik **setContent** (*mixed* $content)
 
-Externally sets the view content
+Eksternal menetapkan konten tampilan
 
 ```php
-<?php
-
-$this->view->setContent("<h1>hello</h1>");
+<? php$this -> Tampilan -> setContent ("<h1>Halo</h1>");
 
 ```
 
-public **getContent** ()
+public ** getContent </ 0> ()</p> 
 
-Returns cached output from another view stage
+Mengembalikan hasil cache dari tahap tampilan yang lain
 
-public **getActiveRenderPath** ()
+publik ** getLifetime </ 0> ()</p> 
 
-Returns the path (or paths) of the views that are currently rendered
+Kembali jalan (atau jalur) pandangan yang saat ini diberikan
 
-public **disable** ()
+publik **mulai** ()
 
-Disables the auto-rendering process
+Menonaktifkan proses auto-rendering
 
-public **enable** ()
+publik **mulai** ()
 
-Enables the auto-rendering process
+Menonaktifkan proses auto-rendering
 
-public **reset** ()
+umum **reset** ()
 
-Resets the view component to its factory default values
+Mengatur ulang komponen tampilan ke nilai standar pabriknya
 
-public **__set** (*mixed* $key, *mixed* $value)
+publik **setHeader** (*mixed* $key, *mixed* $value)
 
-Magic method to pass variables to the views
+Metode sihir untuk melewatkan variabel ke tampilan
 
 ```php
 <?php
@@ -466,9 +464,9 @@ $this->view->products = $products;
 
 ```
 
-public **__get** (*mixed* $key)
+publik **baca** (*mixed* $key)
 
-Magic method to retrieve a variable passed to the view
+Metode sihir untuk mengambil variabel dilewatkan ke tampilan
 
 ```php
 <?php
@@ -477,13 +475,13 @@ echo $this->view->products;
 
 ```
 
-public **isDisabled** ()
+publik **mulai** ()
 
-Whether automatic rendering is enabled
+Apakah rendering otomatis diaktifkan
 
-public **__isset** (*mixed* $key)
+publik **menyaring** (*campur * $key)
 
-Magic method to retrieve if a variable is set in the view
+Metode magister untuk mengambil jika variabel diatur dalam tampilan
 
 ```php
 <?php
@@ -492,22 +490,22 @@ echo isset($this->view->products);
 
 ```
 
-protected **getViewsDirs** ()
+dilindungi (**getEventsManager**)
 
-Gets views directories
+Gets dilihat direktori
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Mengatur injector ketergantungan
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Menyetel pengelola acara
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
