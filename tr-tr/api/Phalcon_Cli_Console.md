@@ -10,15 +10,15 @@ title: 'Phalcon\Cli\Console'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
-This component allows to create CLI applications using Phalcon
+Bu bileşen Phalcon'u kullanarak CLI uygulamaları oluşturmayı sağlar
 
-## Methods
+## Metodlar
 
 public **addModules** (*array* $modules)
 
-Merge modules with the existing ones
+Modülleri mevcut olan modüller ile birleştir
 
 ```php
 <?php
@@ -36,11 +36,11 @@ $application->addModules(
 
 public **handle** ([*array* $arguments])
 
-Handle the whole command-line tasks
+Tüm komut satırı görevlerini yönetin
 
 public **setArgument** ([*array* $arguments], [*mixed* $str], [*mixed* $shift])
 
-Set an specific argument
+Belirli bir argüman ayarla
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Application](Phalcon_Application)
 
@@ -48,15 +48,15 @@ Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Sets the events manager
+Olay yöneticisini ayarlar
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Returns the internal event manager
+Dahili olay yöneticisini döndürür
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Register an array of modules present in the application
+Uygulamada mevcut bir modüller dizisi kaydedin
 
 ```php
 <?php
@@ -78,23 +78,23 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Return the modules registered in the application
+Uygulamada kayıtlı modülleri dönün
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-Gets the module definition registered in the application via module name
+Modül adını kullanarak uygulamada kayıtlı modül tanımını getirir
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-Sets the module name to be used if the router doesn't return a valid module
+Eğer yönlendirici geçerli bir modül döndürmezse kullanılacak modül adını ayarlar
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Returns the default module name
+Varsayılan modül adını döner
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
