@@ -8,11 +8,11 @@ title: 'Phalcon\Db\Adapter'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
 Base class for Phalcon\Db adapters
 
-## Methods
+## روش ها
 
 public **getDialectType** ()
 
@@ -34,9 +34,9 @@ public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_Ma
 
 Sets the event manager
 
-public **getEventsManager** ()
+عمومی **مدیریت رویداد** ()
 
-Returns the internal event manager
+مدیر رویداد داخلی را برمی گرداند
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect)
 
