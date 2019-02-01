@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\ExclusionIn'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\خروج در'
 ---
 # Class **Phalcon\Validation\Validator\ExclusionIn**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\ExclusionIn'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
 
 Check if a value is not included into a list of values
 
@@ -59,7 +59,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
