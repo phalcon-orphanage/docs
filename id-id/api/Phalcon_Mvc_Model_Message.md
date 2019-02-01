@@ -8,83 +8,83 @@ title: 'Phalcon\Mvc\Model\Message'
 
 *implements* [Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/message.zep)
 
-Encapsulates info pengesahan yang dihasilkan sebelum simpan/menghapus catan gagal
+Encapsulates validation info generated before save/delete records fails
 
 ```php
 <?php
 
-gunakan Phalcon\Mvc\Model\Pesan sebagai Pesan;
+use Phalcon\Mvc\Model\Message as Message;
 
-memperluas Kelas robot \Phalcon\Mvc\Model
+class Robots extends \Phalcon\Mvc\Model
 {
-    fungsi umum sebelum Menyimpan()
+    public function beforeSave()
     {
-        if ($this->nama === "Peter") {
-            $text  = "Robot tidak boleh dinamakan Peter";
-            $field = "nama";
-            $type  = "Nilai tidak Sah";
+        if ($this->name === "Peter") {
+            $text  = "A robot cannot be named Peter";
+            $field = "name";
+            $type  = "InvalidValue";
 
-            $message = pesan Baru($text, $field, $type);
+            $message = new Message($text, $field, $type);
 
-            $this->tambahkan Pesan($message);
+            $this->appendMessage($message);
         }
     }
 }
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** (*string* $message, [*string* | *array* $field], [*string* $type], [[Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model], [*int* | *null* $code])
 
 Phalcon\Mvc\Model\Message constructor
 
-publik **perangkat Tipe** (*dicampur* $type)
+public **setType** (*mixed* $type)
 
-Menetapkan jenis pesan
+Sets message type
 
-publik **berhenti** ()
+public **getType** ()
 
-Mengembalikan jenis pesan
+Returns message type
 
-publik **perangkat Pesan** (*campur* $message)
+public **setMessage** (*mixed* $message)
 
-Mengatur pesan verbose   Teks paragraf
+Sets verbose message
 
 public **getMessage** ()
 
-Mengembalikan pesan verbose
+Returns verbose message
 
-publik **setelan Bidang** (*campur* $field)
+public **setField** (*mixed* $field)
 
-Menetapkan nama bidang yang terkait dengan pesan
+Sets field name related to message
 
-publik **mendapatkan Bidang** ()
+public **getField** ()
 
-Mengembalikan nama bidang yang terkait dengan pesan
+Returns field name related to message
 
 public **setModel** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Tetapkan model yang menghasilkan pesan
+Set the model who generates the message
 
-publik **mengatur Kode** (*campur* $code)
+public **setCode** (*mixed* $code)
 
-Menetapkan kode untuk pesan
+Sets code for the message
 
-publik **mendapatkan Model** ()
+public **getModel** ()
 
-Mengembalikan model yang menghasilkan pesan
+Returns the model that produced the message
 
-publik **mendapatkan Kode** ()
+public **getCode** ()
 
-Mengembalikan kode pesan
+Returns the message code
 
-publik **__keString** ()
+public **__toString** ()
 
-Metode Magic __toString mengembalikan pesan verbose
+Magic __toString method returns verbose message
 
-statik publik **__menyetel_negara** (*aturan* $message)
+public static **__set_state** (*array* $message)
 
-Magic __set_state membantu membangun kembali variabel pesan yang diekspor
+Magic __set_state helps to re-build messages variable exporting
