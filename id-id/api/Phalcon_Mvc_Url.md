@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Url'
 
 *implements* [Phalcon\Mvc\UrlInterface](Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 
 This components helps in the generation of: URIs, URLs and Paths
 
@@ -29,19 +29,19 @@ echo $url->get(
 
 ```
 
-## Methods
+## Metode
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **setBaseUri** (*mixed* $baseUri)
 
-Sets a prefix for all the URIs to be generated
+Menetapkan awalan untuk semua URI yang akan dihasilkan
 
 ```php
 <?php
@@ -54,7 +54,7 @@ $url->setBaseUri("/invo/index.php/");
 
 public **setStaticBaseUri** (*mixed* $staticBaseUri)
 
-Sets a prefix for all static URLs generated
+Menetapkan awalan untuk semua URL statis yang dihasilkan
 
 ```php
 <?php
@@ -73,7 +73,7 @@ Returns the prefix for all the generated static urls. By default /
 
 public **setBasePath** (*mixed* $basePath)
 
-Sets a base path for all the generated paths
+Menetapkan jalur dasar untuk semua jalur yang dihasilkan
 
 ```php
 <?php
@@ -84,7 +84,7 @@ $url->setBasePath("/var/www/htdocs/");
 
 public **getBasePath** ()
 
-Returns the base path
+Mengembalikan jalur dasar
 
 public **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
@@ -125,7 +125,7 @@ echo $url->get(
 
 public **getStatic** ([*mixed* $uri])
 
-Generates a URL for a static resource
+Menghasilkan URL untuk sumber daya statis
 
 ```php
 <?php
