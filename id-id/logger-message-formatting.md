@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Pemformatan pesan
+## Message Formatting
 
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
