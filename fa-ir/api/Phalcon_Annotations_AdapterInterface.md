@@ -6,36 +6,36 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
 
-This interface must be implemented by adapters in Phalcon\Annotations
+این رابط باید توسط آداپتورها در فالکون\حاشیه نویسی اجرا شود
 
-## Methods
+## روش ها
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Sets the annotations parser
+تجزیه کننده حاشیه نویسی را تنظیم می کند
 
-abstract public **getReader** ()
+چکیده عمومی **دریافت خواننده** ()
 
-Returns the annotation reader
+خواننده حاشیه نویسی را برمی گرداند
 
-abstract public **get** (*string|object* $className)
+عمومی **دریافت** (*رشته|شی*$className)
 
-Parses or retrieves all the annotations found in a class
+تمام حاشیه نویسی های موجود در یک کلاس را تجزیه و یا بازیابی می کند
 
-abstract public **getMethods** (*string* $className)
+عمومی انتزاعی **دریافت روش** (*رشته*$className)
 
-Returns the annotations found in all the class methods
+حاشیه نویسی های موجود در تمام روش های کلاس را می دهد
 
-abstract public **getMethod** (*string* $className, *string* $methodName)
+عمومی انتزاعی **دریافت روش** (*رشته* $className, *رشته* $methodName)
 
-Returns the annotations found in a specific method
+حاشیه نویسی های موجود در یک روش خاص را برمی گرداند
 
-abstract public **getProperties** (*string* $className)
+عمومی انتزاعی **دریافت خواص** (*رشته*$className)
 
-Returns the annotations found in all the class methods
+حاشیه نویسی های موجود در تمام روش های کلاس را می دهد
 
-abstract public **getProperty** (*string* $className, *string* $propertyName)
+عمومی انتزاعی **دریافت املاک** (*رشته*$className, *رشته* $propertyName)
 
-Returns the annotations found in a specific property
+حاشیه نویسی های موجود در یک روش خاص را برمی گرداند
