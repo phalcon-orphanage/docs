@@ -8,39 +8,39 @@ title: 'Phalcon\Http\Response\Headers'
 
 *implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
-This class is a bag to manage the response headers
+Kelas ini adalah tas untuk mengelola header respon
 
-## Methods
+## Metode
 
-public **set** (*mixed* $name, *mixed* $value)
+public **addInherit** (*mixed* $name, *mixed* $value)
 
-Sets a header to be sent at the end of the request
+Menetapkan header yang akan dikirim pada akhir permintaan
 
 public **get** (*mixed* $name)
 
-Gets a header value from the internal bag
+Mendapatkan nilai header dari tas internal
 
-public **setRaw** (*mixed* $header)
+publik **telah**(*campuraduk*$header)
 
-Sets a raw header to be sent at the end of the request
+Menetapkan header yang akan dikirim pada akhir permintaan
 
-public **remove** (*mixed* $header)
+public **baca** (*mixed* $header)
 
-Removes a header to be sent at the end of the request
+Menetapkan header yang akan dikirim pada akhir permintaan
 
-public **send** ()
+publik **kirim** ()
 
-Sends the headers to the client
+Mengirimkan header ke klien
 
-public **reset** ()
+umum **reset** ()
 
-Reset set headers
+Setel ulang setel header
 
-public **toArray** ()
+publik **kunci** ()
 
-Returns the current headers as an array
+Mengembalikan header saat ini sebagai array
 
 public static **__set_state** (*array* $data)
 
