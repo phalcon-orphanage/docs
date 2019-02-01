@@ -20,7 +20,7 @@ array $services = [];
 array $mapper = [];
 ```
 
-## Методы
+## Methods
 
 ```php
 public function __construct( array $mapper = [] ): void
