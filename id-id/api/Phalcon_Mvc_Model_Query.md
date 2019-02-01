@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Model\Query'
 
 *implements* [Phalcon\Mvc\Model\QueryInterface](Phalcon_Mvc_Model_QueryInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
-This class takes a PHQL intermediate representation and executes it.
+Kelas ini mengambil representasi antara PHQL dan mengeksekusinya.
 
 ```php
 <?php
@@ -43,7 +43,7 @@ foreach ($result as $row) {
 
 *integer* **TYPE_DELETE**
 
-## Methods
+## Metode
 
 public **__construct** ([*string* $phql], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [*mixed* $options])
 
@@ -51,79 +51,79 @@ Phalcon\Mvc\Model\Query constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injection container
+Menetapkan ketergantungan injeksi wadah
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the dependency injection container
+Kembali wadah injeksi ketergantungan
 
 public **setUniqueRow** (*mixed* $uniqueRow)
 
-Tells to the query if only the first row in the resultset must be returned
+Memberi tahu permintaan jika hanya baris pertama di resultset yang harus dikembalikan
 
 public **getUniqueRow** ()
 
-Check if the query is programmed to get only the first row in the resultset
+Periksa apakah kueri diprogram untuk mendapatkan hanya baris pertama di resultset
 
 final protected **_getQualified** (*array* $expr)
 
-Replaces the model's name to its source name in a qualified-name expression
+Ganti nama model menjadi nama sumbernya dengan ekspresi nama yang memenuhi syarat
 
 final protected **_getCallArgument** (*array* $argument)
 
-Resolves an expression in a single call argument
+Mengeksploitasi sebuah ekspresi dalam satu argumen panggilan
 
 final protected **_getCaseExpression** (*array* $expr)
 
-Resolves an expression in a single call argument
+Mengeksploitasi sebuah ekspresi dalam satu argumen panggilan
 
 final protected **_getFunctionCall** (*array* $expr)
 
-Resolves an expression in a single call argument
+Mengeksploitasi sebuah ekspresi dalam satu argumen panggilan
 
 final protected *string* **_getExpression** (*array* $expr, [*boolean* $quoting])
 
-Resolves an expression from its intermediate code into a string
+Selesaikan ungkapan dari kode perantara menjadi string
 
 final protected **_getSelectColumn** (*array* $column)
 
-Resolves a column from its intermediate representation into an array used to determine if the resultset produced is simple or complex
+Selesaikan sebuah kolom dari representasi menengahnya menjadi sebuah array yang digunakan untuk menentukan apakah resultet yang dihasilkan sederhana atau kompleks
 
 final protected *string* **_getTable** ([Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $manager, *array* $qualifiedName)
 
-Resolves a table in a SELECT statement checking if the model exists
+Menyelesaikan sebuah tabel dalam sebuah pernyataan SELECT memeriksa apakah model yang ada
 
 final protected **_getJoin** ([Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface) $manager, *mixed* $join)
 
-Resolves a JOIN clause checking if the associated models exist
+Menyelesaikan BERGABUNG klausul memeriksa jika dikaitkan model ada
 
 final protected *string* **_getJoinType** (*array* $join)
 
-Resolves a JOIN type
+Menyelesaikan BERGABUNG tipe
 
 final protected *array* **_getSingleJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface) $relation)
 
-Resolves joins involving has-one/belongs-to/has-many relations
+Mengatasi bergabung dengan melibatkan memiliki-satu/milik-memiliki-banyak hubungan
 
 final protected *array* **_getMultiJoin** (*string* $joinType, *string* $joinSource, *string* $modelAlias, *string* $joinAlias, [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface) $relation)
 
-Resolves joins involving many-to-many relations
+Menyelesaikan bergabung melibatkan banyak-ke-banyak hubungan
 
 final protected *array* **_getJoins** (*array* $select)
 
-Processes the JOINs in the query returning an internal representation for the database dialect
+Proses Bergabung dalam permintaan kembali sebuah representasi internal untuk database dialek
 
 final protected *array* **_getOrderClause** (*array* | *string* $order)
 
-Returns a processed order clause for a SELECT statement
+Kembali diproses agar klausul untuk MEMILIH pernyataan
 
 final protected **_getGroupClause** (*array* $group)
 
-Returns a processed group clause for a SELECT statement
+Kembali diproses kelompok klausul untuk MEMILIH pernyataan
 
 final protected **_getLimitClause** (*array* $limitClause)
 
-Returns a processed limit clause for a SELECT statement
+Kembali diproses membatasi klausul untuk MEMILIH pernyataan
 
 final protected **_prepareSelect** ([*mixed* $ast], [*mixed* $merge])
 
@@ -131,15 +131,15 @@ Analyzes a SELECT intermediate code and produces an array to be executed later
 
 final protected **_prepareInsert** ()
 
-Analyzes an INSERT intermediate code and produces an array to be executed later
+Analisis MENYISIPKAN kode menengah dan menghasilkan sebuah array yang akan dieksekusi nanti
 
 final protected **_prepareUpdate** ()
 
-Analyzes an UPDATE intermediate code and produces an array to be executed later
+Analisis UPDATE kode menengah dan menghasilkan sebuah array yang akan dieksekusi nanti
 
 final protected **_prepareDelete** ()
 
-Analyzes a DELETE intermediate code and produces an array to be executed later
+Analisis HAPUS kode menengah dan menghasilkan sebuah array yang akan dieksekusi nanti
 
 public **parse** ()
 
@@ -147,7 +147,7 @@ Parses the intermediate code produced by Phalcon\Mvc\Model\Query\Lang generating
 
 public **getCache** ()
 
-Returns the current cache backend instance
+Kembali saat ini cache backend contoh
 
 final protected **_executeSelect** (*mixed* $intermediate, *mixed* $bindParams, *mixed* $bindTypes, [*mixed* $simulate])
 
@@ -167,39 +167,39 @@ Executes the DELETE intermediate representation producing a Phalcon\Mvc\Model\Qu
 
 final protected [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface) **_getRelatedRecords** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *array* $intermediate, *array* $bindParams, *array* $bindTypes)
 
-Query the records on which the UPDATE/DELETE operation well be done
+Query catatan yang UPDATE/MENGHAPUS operasi juga dapat dilakukan
 
 public *mixed* **execute** ([*array* $bindParams], [*array* $bindTypes])
 
-Executes a parsed PHQL statement
+Mengeksekusi diurai PHQL pernyataan
 
 public [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) **getSingleResult** ([*array* $bindParams], [*array* $bindTypes])
 
-Executes the query returning the first result
+Mengeksekusi query kembali hasil pertama
 
-public **setType** (*mixed* $type)
+publik **perangkat Tipe** (*dicampur* $type)
 
-Sets the type of PHQL statement to be executed
+Menetapkan jenis PHQL pernyataan yang akan dieksekusi
 
-public **getType** ()
+publik **berhenti** ()
 
-Gets the type of PHQL statement executed
+Mendapat jenis pernyataan PHQL yang dieksekusi
 
 public **setBindParams** (*array* $bindParams, [*mixed* $merge])
 
-Set default bind parameters
+Tetapkan parameter bind default
 
 public *array* **getBindParams** ()
 
-Returns default bind params
+Mengembalikan default mengikat params
 
 public **setBindTypes** (*array* $bindTypes, [*mixed* $merge])
 
-Set default bind parameters
+Tetapkan parameter bind default
 
 public **setSharedLock** ([*mixed* $sharedLock])
 
-Set SHARED LOCK clause
+Setel klausa SHARED LOCK
 
 public *array* **getBindTypes** ()
 
@@ -215,16 +215,16 @@ Returns the intermediate representation of the PHQL statement
 
 public **cache** (*mixed* $cacheOptions)
 
-Sets the cache parameters of the query
+Menetapkan parameter cache query
 
 public **getCacheOptions** ()
 
-Returns the current cache options
+Mengembalikan opsi cache saat ini
 
 public **getSql** ()
 
-Returns the SQL to be generated by the internal PHQL (only works in SELECT statements)
+Mengembalikan SQL yang akan dihasilkan oleh PHQL internal (hanya bekerja pada pernyataan SELECT)
 
 public static **clean** ()
 
-Destroys the internal PHQL cache
+Hancurkan cache PHQL internal
