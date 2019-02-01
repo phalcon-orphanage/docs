@@ -8,11 +8,11 @@ title: 'Phalcon\Filter\FilterLocator'
 
 **extends** [Phalcon\Service\Locator](Phalcon_Service_Locator)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocator.zep)
 
 Creates a [Phalcon\Filter\FilterLocator](Phalcon_Filter_FilterLocator) class. You can add any sanitizers you want in it.
 
-### Stałe
+### Constants
 
 ```php
 <br />const FILTER_ABSINT      = 'absint';
