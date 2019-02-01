@@ -8,15 +8,15 @@ title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. Karena Phalcon sangat terpisah, Phalcon \ \ Di sangat penting untuk mengintegrasikan perbedaan komponen pengertian kerja.
 
-Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
+Pada dasarnya, komponen ini menerapkan `Pembalikan dari Kontrol` pola. Menerapkan ini, objek tidak menerima dependensinya menggunakan setter atau konstruktor, tapi meminta sebuah injector ketergantungan layanan. Hal ini mengurangi kompleksitas keseluruhan, karena hanya ada satu cara untuk mendapatkan dependensi yang dibutuhkan dalam suatu komponen.
 
-Additionally, this pattern increases testability in the code, thus making it less prone to errors.
+Selain itu, pola ini meningkatkan testability pada kode, sehingga membuatnya kurang rentan terhadap kesalahan.
 
 ```php
 <?php
@@ -41,86 +41,84 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## Metode
 
-public **__construct** ()
+publik **__membangun** ()
 
 Phalcon\Di constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets the internal event manager
+Mengatur pengelola acara internal
 
-public **getInternalEventsManager** ()
+umum **getInternalEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
-public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
+umum **set** (*campuran* $nama *campuran* $definisi, [*campuran* $shared])
 
-Registers a service in the services container
+Mendaftarkan layanan ke dalam wadah layanan
 
-public **setShared** (*mixed* $name, *mixed* $definition)
+umum **setShared** (*campuran* $nama *campuran* $definition)
 
-Registers an "always shared" service in the services container
+Mendaftarkan sebuah layanan "selalu berbagi" dalam wadah layanan
 
-public **remove** (*mixed* $name)
+umum **hapus** (*campuran* $nama)
 
-Removes a service in the services container It also removes any shared instance created for the service
+Menghapus layanan dalam wadah servis Ini juga menghapus contoh bersama yang dibuat untuk layanan ini
 
-public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
+publik **mencoba** (*campuran* $name, *campuran* $definition, [*campuran*$shared])
 
-Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
+Upaya untuk mendaftarkan layanan di wadah layanan Hanya berhasil jika layanan belum terdaftar sebelumnya dengan nama yang sama
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
 Sets a service using a raw Phalcon\Di\Service definition
 
-public **getRaw** (*mixed* $name)
+umum **getRaw** (*campuran* $nama)
 
-Returns a service definition without resolving
+Mengembalikan definisi layanan tanpa menyelesaikannya
 
 public **getService** (*mixed* $name)
 
 Returns a Phalcon\Di\Service instance
 
-public **get** (*mixed* $name, [*mixed* $parameters])
+publik **mendapatkan** (*campuran* $name, [*campuran* $parameters])
 
-Resolves the service based on its configuration
+Mengatasi layanan berdasarkan konfigurasinya
 
-public *mixed* **getShared** (*string* $name, [*array* $parameters])
+umum *campuran* **getShared** (*string* $nama, [*array* $parameter])
 
-Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
+Mengatasi layanan, layanan terselesaikan disimpan di DI, selanjutnya Permintaan layanan ini akan mengembalikan instance yang sama
 
-public **has** (*mixed* $name)
+publik **telah** (*campuran* $name)
 
-Check whether the DI contains a service by a name
+Periksan apakah DI berisi sebuah layanan dengan sebuah nama
 
-public **wasFreshInstance** ()
+publik **ituSegarContoh** ()
 
-Check whether the last service obtained via getShared produced a fresh instance or an existing one
+Periksa apakah layanan terakhir yang diperoleh melalui getShared menghasilkan contoh baru atau yang sudah ada
 
-public **getServices** ()
+publik **mendapatkanJasa** ()
 
-Return the services registered in the DI
+Mengembalikan layanan yang terdaftar pada DI
 
-public **offsetExists** (*mixed* $name)
+umum **offsetExists** (*campuran* $nama)
 
-Check if a service is registered using the array syntax
+Periksa apakah sebuah layanan terdaftar menggunakan sintaks array
 
-public **offsetSet** (*mixed* $name, *mixed* $definition)
+umum **offsetSet** (*campuran* $nama *campuran* $definition)
 
-Allows to register a shared service using the array syntax
+Memungkinkan untuk mendaftarkan layanan bersama menggunakan sintaks array
 
 ```php
-<?php
-
-$di["request"] = new \Phalcon\Http\Request();
+$di["permintaan"] = new \Phalcon\Http\Permintaan();
 
 ```
 
-public **offsetGet** (*mixed* $name)
+umum **offsetGet** (*campuran* $nama)
 
-Allows to obtain a shared service using the array syntax
+Memungkinkan untuk mendapatkan layanan bersama menggunakan sintaks array
 
 ```php
 <?php
@@ -129,17 +127,17 @@ var_dump($di["request"]);
 
 ```
 
-public **offsetUnset** (*mixed* $name)
+umum **offsetUnset** (*campuran* $nama)
 
-Removes a service from the services container using the array syntax
+Menghapus sebuah layanan dari wadah pelayanan menggunakan sintaks array
 
-public **__call** (*mixed* $method, [*mixed* $arguments])
+umum **__call** (*campuran* $metode, [*campuran* $argumen])
 
-Magic method to get or set services using setters/getters
+Metode magic untuk dapat atau mengatur layanan menggunakan setters/getters
 
 public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider)
 
-Registers a service provider.
+Daftarkan sebuah penyedia layanan.
 
 ```php
 <?php
@@ -161,19 +159,19 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Set a default dependency injection container to be obtained into static methods
+Tetapkan wadah injeksi dependensi default untuk mendapatkan metode statis
 
 public static **getDefault** ()
 
-Return the latest DI created
+Kembalikan DI yang terbaru dibuat
 
-public static **reset** ()
+publik static **reset** ()
 
-Resets the internal default DI
+Mengatur ulang internal default DI
 
-public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
+umum **loadFromYaml** (*campuran* $filePath, [*array* $callback])
 
-Loads services from a yaml file.
+Memuat layanan dari sebuah file yaml.
 
 ```php
 <?php
@@ -189,7 +187,7 @@ $di->loadFromYaml(
 
 ```
 
-And the services can be specified in the file as:
+Dan layanan dapat ditentukan dalam file sebagai:
 
 ```php
 <?php
@@ -209,9 +207,9 @@ user:
 
 ```
 
-public **loadFromPhp** (*mixed* $filePath)
+publik **bebanDariPhp** (*campuran* $filePath)
 
-Loads services from a php config file.
+Memuatkan layanan dari file konfigurasi php.
 
 ```php
 <?php
@@ -220,7 +218,7 @@ $di->loadFromPhp("path/services.php");
 
 ```
 
-And the services can be specified in the file as:
+Dan layanan dapat ditentukan dalam file sebagai:
 
 ```php
 <?php
@@ -248,4 +246,4 @@ return [
 
 protected **loadFromConfig** ([Phalcon\Config](Phalcon_Config) $config)
 
-Loads services from a Config object.
+Memuatkan layanan dari objek Config.
