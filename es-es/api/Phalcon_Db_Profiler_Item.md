@@ -14,44 +14,44 @@ This class identifies each profile in a Phalcon\Db\Profiler
 
 public **setSqlStatement** (*mixed* $sqlStatement)
 
-Instrucción SQL relacionada con el perfil
+SQL statement related to the profile
 
 public **getSqlStatement** ()
 
-Instrucción SQL relacionada con el perfil
+SQL statement related to the profile
 
 public **setSqlVariables** (*array* $sqlVariables)
 
-Variables SQL relacionadas con el perfil
+SQL variables related to the profile
 
 public **getSqlVariables** ()
 
-Variables SQL relacionadas con el perfil
+SQL variables related to the profile
 
 public **setSqlBindTypes** (*array* $sqlBindTypes)
 
-Tipos de enlace SQL relacionados con el perfil
+SQL bind types related to the profile
 
 public **getSqlBindTypes** ()
 
-Tipos de enlace SQL relacionados con el perfil
+SQL bind types related to the profile
 
 public **setInitialTime** (*mixed* $initialTime)
 
-Marca de tiempo de cuando se inició el perfil
+Timestamp when the profile started
 
 public **getInitialTime** ()
 
-Marca de tiempo de cuando se inició el perfil
+Timestamp when the profile started
 
 public **setFinalTime** (*mixed* $finalTime)
 
-Marca de tiempo de cuando finalizó el perfil
+Timestamp when the profile ended
 
 public **getFinalTime** ()
 
-Marca de tiempo de cuando finalizó el perfil
+Timestamp when the profile ended
 
 public **getTotalElapsedSeconds** ()
 
-Devuelve el tiempo total en segundos usado por el usuario
+Returns the total time in seconds spent by the profile
