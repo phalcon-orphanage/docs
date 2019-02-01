@@ -261,7 +261,7 @@ $form = new UsersForm(
 
 <a name='validation'></a>
 
-## 验证
+## Validation
 
 Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -497,7 +497,7 @@ class Preferences
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the [Phalcon\Forms\Element](api/Phalcon_Forms_Element) namespace:
 
-| 名称                                                                      | 描述                                                            |
+| Name                                                                    | 描述                                                            |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Generate `INPUT[type=text]` elements                          |
 | [Phalcon\Forms\Element\Password](api/Phalcon_Forms_Element_Password) | Generate `INPUT[type=password]` elements                      |
@@ -693,6 +693,6 @@ echo $loginForm->render();
 
 <a name='external'></a>
 
-## 外部资源
+## External Resources
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
