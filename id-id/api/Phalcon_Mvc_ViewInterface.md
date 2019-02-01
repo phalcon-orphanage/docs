@@ -8,119 +8,119 @@ title: 'Phalcon\Mvc\ViewInterface'
 
 *implements* [Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **setLayoutsDir** (*mixed* $layoutsDir)
-
-...
-
-abstract public **getLayoutsDir** ()
+abstrak publik **setLayoutsDir** (*mixed* $layoutsDir)
 
 ...
 
-abstract public **setPartialsDir** (*mixed* $partialsDir)
+abstrak publik **getLayoutsDir** ()
 
 ...
 
-abstract public **getPartialsDir** ()
+abstrak publik **setPartialsDir** (*mixed* $partialsDir)
 
 ...
 
-abstract public **setBasePath** (*mixed* $basePath)
+abstrak publik **getPartialsDir** ()
 
 ...
 
-abstract public **getBasePath** ()
+abstrak umum **mengatur Jalan Dasar** (*campuran* $basePath)
 
 ...
 
-abstract public **setRenderLevel** (*mixed* $level)
+abstrak umum **mendapatkan Jalan Dasar** ()
 
 ...
 
-abstract public **setMainView** (*mixed* $viewPath)
+abstrak publik **setRenderLevel** (*mixed* $level)
 
 ...
 
-abstract public **getMainView** ()
+abstrak publik **setMainView** (*mixed* $viewPath)
 
 ...
 
-abstract public **setLayout** (*mixed* $layout)
+abstrak publik **getMainView** ()
 
 ...
 
-abstract public **getLayout** ()
+abstraj publik **setLayout** (*mixed* $layout)
 
 ...
 
-abstract public **setTemplateBefore** (*mixed* $templateBefore)
+abstrak publik **getLayout** ()
 
 ...
 
-abstract public **cleanTemplateBefore** ()
+abstrak publik **setTemplateBefore** (*mixed* $templateBefore)
 
 ...
 
-abstract public **setTemplateAfter** (*mixed* $templateAfter)
+abstrak publik **cleanTemplateBefore** ()
 
 ...
 
-abstract public **cleanTemplateAfter** ()
+abstrak publik **setTemplateAfter** (*mixed* $templateAfter)
 
 ...
 
-abstract public **getControllerName** ()
+abstrak publik **cleanTemplateAfter** ()
 
 ...
 
-abstract public **getActionName** ()
+abstrak (umum **getControllerName**)
 
 ...
 
-abstract public **getParams** ()
+abstrak publik **getSchemaName** ()
 
 ...
 
-abstract public **start** ()
+abstrak publik **terakhirmendapatkankunci**()
 
 ...
 
-abstract public **registerEngines** (*array* $engines)
+abstrak publik 0 mulai 0
 
 ...
 
-abstract public **render** (*mixed* $controllerName, *mixed* $actionName, [*mixed* $params])
+publik **mengaturatribut** (*array* $engines)
 
 ...
 
-abstract public **pick** (*mixed* $renderView)
+abstrak publik **api** (*campuran* $controllerName, *mixed* $actionName, [*mixed* $params])
 
 ...
 
-abstract public **finish** ()
+abstrak publik **parse** (*dicampur* $renderView)
 
 ...
 
-abstract public **getActiveRenderPath** ()
+abstrak publik **isFinished** ()
 
 ...
 
-abstract public **disable** ()
+abstrak umum **getActiveResource** ()
 
 ...
 
-abstract public **enable** ()
+abstrak publik **isDelete** ()
 
 ...
 
-abstract public **reset** ()
+abstrak publik **isDelete** ()
 
 ...
 
-abstract public **isDisabled** ()
+abstrak publik **reset** ()
+
+...
+
+abstrak publik **isDelete** ()
 
 ...
 
