@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Zlepšení výkonu pomocí cache
+# Improving Performance with Cache
 
 Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently used or already processed data. `Phalcon\Cache` is written in C, achieving higher performance and reducing the overhead when getting items from the backends. This class uses an internal structure of frontend and backend components. Front-end components act as input sources or interfaces, while backend components offer storage options to the class.
 
 <a name='implementation'></a>
 
-## Kdy implementovat cache?
+## When to implement cache?
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
@@ -38,7 +38,7 @@ The caching process is divided into 2 parts:
 
 <a name='factory'></a>
 
-## Továrna
+## Factory
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
@@ -494,9 +494,9 @@ The backend adapters available to store cache data are:
 
 <a name='adapters-backend-factory'></a>
 
-### Továrna
+### Factory
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). Ten, který budeš používát závisí na požadavcích tvé aplikace. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
 
 ```php
 <?php
