@@ -6,7 +6,7 @@ title: 'Phalcon\Logger\Multiple'
 ---
 # Class **Phalcon\Logger\Multiple**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/multiple.zep)
 
 Handles multiples logger handlers
 
@@ -34,7 +34,7 @@ Sets a global formatter
 
 public **setLogLevel** (*mixed* $level)
 
-Ustawia poziom globalny
+Sets a global level
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 
