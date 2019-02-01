@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\DispatcherInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setTaskSuffix** (*mixed* $taskSuffix)
 
