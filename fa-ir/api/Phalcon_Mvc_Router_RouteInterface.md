@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Router\RouteInterface'
 ---
 # Interface **Phalcon\Mvc\Router\RouteInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/routeinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **setHostname** (*mixed* $hostname)
 
@@ -30,7 +30,7 @@ abstract public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-abstract public **getName** ()
+عمومی انتزاعی **دریافت نام** ()
 
 ...
 
