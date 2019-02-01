@@ -4,7 +4,7 @@ language: 'id-id'
 version: '4.0'
 category: 'installation'
 ---
-# Pemasangan
+# Installation
 
 * * *
 
@@ -12,10 +12,10 @@ category: 'installation'
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Persyaratan
+### Requirements
 
 * PHP 7.2.x/7.3.x development resources
-* Kompiler GCC (Linux / Solaris / FreeBSD) atau Xcode (macos)
+* GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
@@ -26,7 +26,7 @@ Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/
 Clone the repository
 
 ```bash
-klon git https://github.com/phalcon/cphalcon
+git clone https://github.com/phalcon/cphalcon
 ```
 
 Compile Phalcon
