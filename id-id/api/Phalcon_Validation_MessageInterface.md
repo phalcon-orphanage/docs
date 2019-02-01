@@ -6,11 +6,11 @@ title: 'Phalcon\Validation\MessageInterface'
 ---
 # Interface **Phalcon\Validation\MessageInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/messageinterface.zep)
 
-## Metode
+## Methods
 
-abstract umum **Jenisaturan** (*bentuk*$type)
+abstract public **setType** (*mixed* $type)
 
 ...
 
@@ -18,26 +18,26 @@ abstract public **getType** ()
 
 ...
 
-abstrak publik **mendapatkan Pesan** (*campur* $message)
+abstract public **setMessage** (*mixed* $message)
 
 ...
 
-abstrak publik **getMessage** ()
+abstract public **getMessage** ()
 
 ...
 
-abstrak publik **mendapatkan Bidang** (*campur* $field)
+abstract public **setField** (*mixed* $field)
 
 ...
 
-public abstrak **getField** ()
+abstract public **getField** ()
 
 ...
 
-publik abstrak **__toString** ()
+abstract public **__toString** ()
 
 ...
 
-abstrak public static ** __ set_state** (*array* $message)
+abstract public static **__set_state** (*array* $message)
 
 ...
