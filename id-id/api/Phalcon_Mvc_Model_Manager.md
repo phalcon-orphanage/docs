@@ -8,280 +8,280 @@ title: 'Phalcon\Mvc\Model\Manager'
 
 *implements* [Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
 
-This components controls the initialization of models, keeping record of relations between the different models of the application.
+Komponen ini mengendalikan inisialisasi model, menjaga catatan hubungan antara berbagai model aplikasi.
 
 A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\Di.
 
 ```php
 <?php
 
-use Phalcon\Di;
-use Phalcon\Mvc\Model\Manager as ModelsManager;
+gunakan Phalcon\Di;
+gunakan Phalcon\Mvc\Model\Manager sebagai ModelsManager;
 
-$di = new Di();
+$di = baru Di();
 
 $di->set(
     "modelsManager",
-    function() {
-        return new ModelsManager();
+    fungsi() {
+        kembali ModelsManager baru();
     }
 );
 
-$robot = new Robots($di);
+$robot = Robot baru($di);
 
 ```
 
-## Methods
+## Metode
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets a global events manager
+Menetapkan manajer acara global
 
-public **getEventsManager** ()
+publik **getEventsManager** ()
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **setCustomEventsManager** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Sets a custom events manager for a specific model
+Menyetel pengelola acara khusus untuk model tertentu
 
 public **getCustomEventsManager** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns a custom events manager related to a model
+Mengembalikan manajer acara khusus yang terkait dengan model
 
 public **initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Initializes a model in the model manager
+Menginisialisasi model dalam model manager
 
 public **isInitialized** (*mixed* $modelName)
 
-Check whether a model is already initialized
+Periksa apakah model sudah diinisialisasi
 
 public **getLastInitialized** ()
 
-Get last initialized model
+Dapatkan model yang diinisialisasi terakhir
 
-public **load** (*mixed* $modelName, [*mixed* $newInstance])
+publik **load** (*mixed* $modelName, [*mixed* $newInstance])
 
-Loads a model throwing an exception if it doesn't exist
+Muatkan sebuah model yang melemparkan pengecualian jika tidak ada
 
-public **setModelPrefix** (*mixed* $prefix)
+publik **setModelPrefix** (*mixed* $prefix)
 
-Sets the prefix for all model sources.
+Menetapkan awalan untuk semua sumber model.
 
 ```php
 <?php
 
-use Phalcon\Mvc\Model\Manager;
+menggunakan Phalcon\Mvc\Model\Manager;
 
-$di->set("modelsManager", function () {
+$di->set("modelsManager", fungsi () {
     $modelsManager = new Manager();
     $modelsManager->setModelPrefix("wp_");
 
-    return $modelsManager;
+    kembali $modelsManager
 });
 
 $robots = new Robots();
-echo $robots->getSource(); // wp_robots
+gema $robots->getSource(); // wp_robots
 
 ```
 
-public **getModelPrefix** ()
+publik **getModelPrefix** ()
 
-Returns the prefix for all model sources.
+Mengembalikan awalan untuk semua sumber model.
 
 ```php
 <?php
 
-use Phalcon\Mvc\Model\Manager;
+menggunakan Phalcon\Mvc\Model\Manager;
 
-$di->set("modelsManager", function () {
+$di->set("modelsManager", fungsi () {
     $modelsManager = new Manager();
     $modelsManager->setModelPrefix("wp_");
 
-    return $modelsManager;
+    kembali $modelsManager
 });
 
 $robots = new Robots();
-echo $robots->getSource(); // wp_robots
+gema $robots->getSource(); // wp_robots
 
 ```
 
 public **setModelSource** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $source)
 
-Sets the mapped source for a model
+Menetapkan sumber yang dipetakan untuk model
 
 final public **isVisibleModelProperty** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $property)
 
-Check whether a model property is declared as public.
+Periksa apakah properti model dinyatakan sebagai publik.
 
 ```php
 <?php
 
 $isPublic = $manager->isVisibleModelProperty(
-    new Robots(),
-    "name"
+    Robot baru(),
+    "nama"
 );
 
 ```
 
 public **getModelSource** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the mapped source for a model
+Mengembalikan sumber yang dipetakan untuk model
 
 public **setModelSchema** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $schema)
 
-Sets the mapped schema for a model
+Menetapkan skema yang dipetakan untuk model
 
 public **getModelSchema** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the mapped schema for a model
+Mengembalikan skema yang dipetakan untuk model
 
 public **setConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
-Sets both write and read connection service for a model
+Mengatur keduanya menulis dan membaca layanan koneksi untuk model
 
 public **setWriteConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
-Sets write connection service for a model
+Set menulis layanan koneksi untuk model
 
 public **setReadConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionService)
 
-Sets read connection service for a model
+Set membaca layanan koneksi untuk model
 
 public **getReadConnection** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the connection to read data related to a model
+Mengembalikan koneksi untuk membaca data yang terkait dengan model
 
 public **getWriteConnection** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the connection to write data related to a model
+Mengembalikan koneksi untuk menulis data yang terkait dengan model
 
 protected **_getConnection** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
 
-Returns the connection to read or write data related to a model depending on the connection services.
+Mengembalikan koneksi untuk membaca atau menulis data yang terkait dengan model tergantung pada layanan koneksi.
 
 public **getReadConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the connection service name used to read data related to a model
+Mengembalikan nama layanan koneksi yang digunakan untuk membaca data yang terkait dengan model
 
 public **getWriteConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Returns the connection service name used to write data related to a model
+Mengembalikan nama layanan koneksi yang digunakan untuk menulis data yang terkait dengan model
 
 public **_getConnectionService** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $connectionServices)
 
-Returns the connection service name used to read or write data related to a model depending on the connection services
+Mengembalikan nama layanan koneksi yang digunakan untuk membaca atau menulis data yang terkait sebuah model tergantung pada layanan koneksi
 
 public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
+Menerima acara yang dihasilkan dalam model dan mengirimkannya ke pengelola acara jika tersedia Beritahu perilaku yang sedang didengarkan dalam model
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
 
-Dispatch an event to the listeners and behaviors This method expects that the endpoint listeners/behaviors returns true meaning that a least one was implemented
+Mengirimkan acara ke pendengar dan perilaku Metode ini mengharapkan pendengar/perilaku endpoint mengembalikan nilai true artinya yang paling sedikit diimplementasikan
 
 public **addBehavior** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
-Binds a behavior to a model
+Mengikat perilaku ke model
 
 public **keepSnapshots** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $keepSnapshots)
 
-Sets if a model must keep snapshots
+Menetapkan apakah model harus menyimpan foto
 
 public **isKeepingSnapshots** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Checks if a model is keeping snapshots for the queried records
+Memeriksa apakah sebuah model menyimpan foto untuk catatan tanya
 
 public **useDynamicUpdate** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $dynamicUpdate)
 
-Sets if a model must use dynamic update instead of the all-field update
+Menyetel jika model harus menggunakan pembaruan dinamis dan bukan pembaruan semua bidang
 
 public **isUsingDynamicUpdate** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Checks if a model is using dynamic update instead of all-field update
+Memeriksa apakah model menggunakan pembaruan dinamis dan bukan pembaruan semua bidang
 
 public [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **addHasOne** ([Phalcon\Mvc\Model](Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Setup a 1-1 relation between two models
+Setup hubungan 1-1 antara dua model
 
 public [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **addBelongsTo** ([Phalcon\Mvc\Model](Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Setup a relation reverse many to one between two models
+Setup relasi membalikkan banyak ke satu di antara dua model
 
 public **addHasMany** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Setup a relation 1-n between two models
+Setup hubungan 1-n antara dua model
 
 public [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **addHasManyToMany** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $fields, *string* $intermediateModel, *string* $intermediateFields, *string* $intermediateReferencedFields, *string* $referencedModel, *string* $referencedFields, [*array* $options])
 
-Setups a relation n-m between two models
+Mengatur hubungan n-m di antara dua model
 
-public **existsBelongsTo** (*mixed* $modelName, *mixed* $modelRelation)
+publik **existsBelongsTo** (*mixed* $modelName, *mixed* $modelRelation)
 
-Checks whether a model has a belongsTo relation with another model
+Memeriksa apakah sebuah model memiliki hubungan milikTo dengan model lain
 
-public **existsHasMany** (*mixed* $modelName, *mixed* $modelRelation)
+publik **existsHasMany** (*mixed* $modelName, *mixed* $modelRelation)
 
-Checks whether a model has a hasMany relation with another model
+Memeriksa apakah suatu model memiliki hubungan hasmany dengan model lain
 
-public **existsHasOne** (*mixed* $modelName, *mixed* $modelRelation)
+publik **existsHasOne** (*mixed* $modelName, *mixed* $modelRelation)
 
-Checks whether a model has a hasOne relation with another model
+Memeriksa apakah model memiliki hubungan hasOne dengan model lain
 
-public **existsHasManyToMany** (*mixed* $modelName, *mixed* $modelRelation)
+publik **existsHasManyToMany** (*mixed* $modelName, *mixed* $modelRelation)
 
-Checks whether a model has a hasManyToMany relation with another model
+Memeriksa apakah model memiliki hubungan hasManyToMany dengan model lain
 
-public **getRelationByAlias** (*mixed* $modelName, *mixed* $alias)
+publik **getRelationByAlias** (*mixed* $modelName, *mixed* $alias)
 
-Returns a relation by its alias
+Mengembalikan sebuah relasi dengan alias nya
 
-final protected **_mergeFindParameters** (*mixed* $findParamsOne, *mixed* $findParamsTwo)
+akhir dilindungi **_mergeFindParameters** (*campur aduk* $findParamsOne, *campur aduk* $findParamsTwo)
 
-Merge two arrays of find parameters
+Gabungkan dua array parameter pencarian
 
 public [Phalcon\Mvc\Model\Resultset\Simple](Phalcon_Mvc_Model_Resultset_Simple) | [Phalcon\Mvc\Model\Resultset\Simple](Phalcon_Mvc_Model_Resultset_Simple) | *int* | *false* **getRelationRecords** ([Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface) $relation, *mixed* $method, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
-Helper method to query records based on a relation definition
+Metode Helper untuk query record berdasarkan definisi relasi
 
-public **getReusableRecords** (*mixed* $modelName, *mixed* $key)
+publik **getReusableRecords** (*mixed* $modelName, *mixed* $key)
 
-Returns a reusable object from the internal list
+Mengembalikan objek yang dapat digunakan kembali dari daftar internal
 
-public **setReusableRecords** (*mixed* $modelName, *mixed* $key, *mixed* $records)
+publik **setReusableRecords** (*mixed* $modelName, *mixed* $key, *mixed* $records)
 
-Stores a reusable record in the internal list
+Menyimpan catatan yang dapat digunakan kembali dalam daftar internal
 
-public **clearReusableObjects** ()
+publik **clearReusableObjects** ()
 
-Clears the internal reusable list
+Menghapus daftar internal yang dapat digunakan kembali
 
 public **getBelongsToRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
-Gets belongsTo related records from a model
+Gets wereTo catatan terkait dari model
 
 public **getHasManyRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
-Gets hasMany related records from a model
+Mendapat beberapa catatan terkait dari sebuah model
 
 public **getHasOneRecords** (*mixed* $method, *mixed* $modelName, *mixed* $modelRelation, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $record, [*mixed* $parameters])
 
-Gets belongsTo related records from a model
+Gets wereTo catatan terkait dari model
 
 public **getBelongsTo** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Gets all the belongsTo relations defined in a model
+Mendapat semua hubungan yang dimilikiTo didefinisikan dalam sebuah model
 
 ```php
 <?php
@@ -294,7 +294,7 @@ $relations = $modelsManager->getBelongsTo(
 
 public **getHasMany** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Gets hasMany relations defined on a model
+Dapatkan Banyak hubungan yang didefinisikan pada model
 
 public **getHasOne** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
@@ -310,11 +310,11 @@ Gets hasOne relations defined on a model
 
 public **getRelations** (*mixed* $modelName)
 
-Query all the relationships defined on a model
+Permintaan semua hubungan didefinisikan pada sebuah model
 
 public **getRelationsBetween** (*mixed* $first, *mixed* $second)
 
-Query the first relationship defined between two models
+Permintaan hubungan pertama didefinisikan antara dua model
 
 public **createQuery** (*mixed* $phql)
 
@@ -330,20 +330,20 @@ Creates a Phalcon\Mvc\Model\Query\Builder
 
 public **getLastQuery** ()
 
-Returns the last query created or executed in the models manager
+Mengembalikan permintaan terakhir yang dibuat atau dijalankan di manajer model
 
 public **registerNamespaceAlias** (*mixed* $alias, *mixed* $namespaceName)
 
-Registers shorter aliases for namespaces in PHQL statements
+Mendaftarkan alias yang lebih pendek untuk ruang nama di laporan PHQL
 
 public **getNamespaceAlias** (*mixed* $alias)
 
-Returns a real namespace from its alias
+Mengembalikan namespace sebenarnya dari alias
 
 public **getNamespaceAliases** ()
 
-Returns all the registered namespace aliases
+Mengembalikan semua alias namespace terdaftar
 
-public **__destruct** ()
+publik **__penghancuran** ()
 
-Destroys the current PHQL cache
+Hancurkan cache PHQL saat ini
