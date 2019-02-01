@@ -2,7 +2,7 @@
 layout: article
 language: 'fa-ir'
 version: '4.0'
-title: 'Phalcon\Validation\Validator\Confirmation'
+title: 'فالکن\اعتبار سنجی\ تأییدکننده\تائیدیه'
 ---
 # Class **Phalcon\Validation\Validator\Confirmation**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Confirmation'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
 
 Checks that two values have the same value
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Methods
+## روش ها
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
