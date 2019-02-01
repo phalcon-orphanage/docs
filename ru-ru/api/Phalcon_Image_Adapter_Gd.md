@@ -12,7 +12,7 @@ title: 'Phalcon\Image\Adapter\Gd'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-## Методы
+## Methods
 
 public static **check** ()
 
