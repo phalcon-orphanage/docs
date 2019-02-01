@@ -8,7 +8,7 @@ title: 'Phalcon\FlashInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **error** (*mixed* $message)
 
