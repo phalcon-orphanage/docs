@@ -4,20 +4,20 @@ language: 'pl-pl'
 version: '4.0'
 category: 'installation'
 ---
-# Instalacja
+# Installation
 
 * * *
 
-## Wymagania
+## Requirements
 
-### Oprogramowanie
+### Software
 
 > You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. {: .alert .alert-danger }
 
 Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
-* [informacje o pliku](https://secure.php.net/manual/en/book.fileinfo.php)
+* [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
 * [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
 * [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
