@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Adapter\Apcu'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
 
-Stores the parsed annotations in APCu. This adapter is suitable for production
+Guarda las anotaciones en APCu. Este adaptador es adecuado para ambientes en producción
 
 ```php
 <?php
