@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Overview
+# 概述
 
 Writing proper tests can assist in writing better software. If you set up proper test cases you can eliminate most functional bugs and better maintain your software.
 
 <a name='integration'></a>
 
-## Integrating PHPUnit with Phalcon
+## Phalcon于PHPUnit结合
 
 If you don't already have phpunit installed, you can do it by using the following composer command:
 
@@ -42,7 +42,7 @@ Next, we need a 'helper' file to bootstrap the application for unit testing.
 
 <a name='unit-helper'></a>
 
-## The PHPUnit helper file
+## PHPUnit"桥"文件
 
 A helper file is required to bootstrap the application for running the tests. We have prepared a sample file. Put the file in your `tests/` directory as `TestHelper.php`.
 
@@ -62,11 +62,11 @@ set_include_path(
     ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// Required for phalcon/incubator
+// 需要phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
 
-// Use the application autoloader to autoload the classes
-// Autoload the dependencies found in composer
+// 使用应用的自动加载器来加在加在类
+// 自动从composer加载依赖
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -80,10 +80,6 @@ $loader->register();
 $di = new FactoryDefault();
 
 Di::reset();
-
-// Add any needed services to the DI here
-
-Di::setDefault($di);
 ```
 
 Should you need to test any components from your own library, add them to the autoloader or use the autoloader from your main application.
@@ -139,7 +135,7 @@ Modify the `phpunit.xml` to fit your needs and save it in `tests`. This will run
 
 <a name='sample'></a>
 
-## Sample Unit Test
+## 单元测试示例
 
 To run any Unit Tests you need to define them. The autoloader will make sure the proper files are loaded so all you need to do is create the files and phpunit will run the tests for you.
 
@@ -167,7 +163,7 @@ abstract class UnitTestCase extends PhalconTestCase
         // 加载所有已添加的服务，它们可能会在测试过程中所需要
         $di = Di::getDefault();
 
-        // 获取DI中所有的组建。 If you have a config, be sure to pass it to the parent
+        // 获取DI中所有的组建。 如果你有一个配置，请确保传递给了父类。
 
         $this->setDi($di);
 
@@ -175,7 +171,7 @@ abstract class UnitTestCase extends PhalconTestCase
     }
 
     /**
-     * Check if the test case is setup properly
+     * 检查测试案例是否设置正确
      *
      * @throws \PHPUnit_Framework_IncompleteTestError;
      */
