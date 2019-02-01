@@ -6,7 +6,7 @@ title: 'Phalcon\Tag'
 ---
 # Class **Phalcon\Tag**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
@@ -34,7 +34,7 @@ Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of 
 
 *integer* **XHTML5**
 
-## Metode
+## Methods
 
 public static *EscaperInterface* **getEscaper** (*array* $params)
 
@@ -42,31 +42,31 @@ Obtains the 'escaper' service if required
 
 public static **renderAttributes** (*mixed* $code, *array* $attributes)
 
-Membuat parameter untuk menjaga ketertiban yang ada didalam atribut HTML mereka
+Renders parameters keeping order in their HTML attributes
 
 public static **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur kontainer injector ketergantungan.
+Sets the dependency injector container.
 
 public static **getDI** ()
 
-Secara internal meminta petugas operator
+Internally gets the request dispatcher
 
 public static **getUrlService** ()
 
-Mengembalikan layanan URL dari DI default
+Returns a URL service from the default DI
 
 public static **getEscaperService** ()
 
-Mengembalikan layanan Escaper dari DI default
+Returns an Escaper service from the default DI
 
 public static **setAutoescape** (*mixed* $autoescape)
 
-Atur mode autoescape di html yang dihasilkan
+Set autoescape mode in generated html
 
 public static **setDefault** (*string* $id, *string* $value)
 
-Menetapkan nilai-nilai default untuk dihasilkan tag dengan pembantu
+Assigns default values to generated tags by helpers
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo Phalcon\Tag::textField("name"); // Will have the value "peter" by default
 
 public static **setDefaults** (*array* $values, [*mixed* $merge])
 
-Menetapkan nilai-nilai default untuk dihasilkan tag dengan pembantu
+Assigns default values to generated tags by helpers
 
 ```php
 <?php
@@ -112,11 +112,11 @@ Every helper calls this function to check whether a component has a predefined v
 
 public static **resetInput** ()
 
-Mengatur ulang permintaan dan nilai internal untuk terhindar dari bidang tersebut akan memiliki nilai default.
+Resets the request and internal values to avoid those fields will have any default value.
 
 public static **linkTo** (*array* | *string* $parameters, [*string* $text], [*boolean* $local])
 
-Buat tag HTML A yang menggunakan konvensi kerangka kerja
+Builds a HTML A tag using framework conventions
 
 ```php
 <?php
@@ -169,11 +169,11 @@ echo Phalcon\Tag::linkTo(
 
 final protected static *string* **_inputField** (*string* $type, *array* $parameters, [*boolean* $asValue])
 
-Bangunlah tag INPUT generik
+Builds generic INPUT tags
 
 final protected static *string* **_inputFieldChecked** (*string* $type, *array* $parameters)
 
-Membangun MASUKAN kategori yang mengimplementasikan diperiksa atribut
+Builds INPUT tags that implements the checked attribute
 
 public static *string* **colorField** (*array* $parameters)
 
@@ -526,7 +526,7 @@ Phalcon\Tag::setTitle("Welcome to my Page");
 
 public static **setTitleSeparator** (*mixed* $titleSeparator)
 
-Mengatur judul pemisah melihat konten
+Set the title separator of view content
 
 ```php
 <?php
@@ -537,11 +537,11 @@ Phalcon\Tag::setTitleSeparator("-");
 
 public static **appendTitle** (*mixed* $title)
 
-Menambahkan teks untuk saat ini dokumen judul
+Appends a text to current document title
 
 public static **prependTitle** (*mixed* $title)
 
-Menambahkan teks untuk saat ini dokumen judul
+Prepends a text to current document title
 
 public static **getTitle** ([*mixed* $tags])
 
@@ -563,7 +563,7 @@ echo Phalcon\Tag::getTitle();
 
 public static **getTitleSeparator** ()
 
-Sampai saat ini dokumen judul pemisah
+Gets the current document title separator
 
 ```php
 <?php
