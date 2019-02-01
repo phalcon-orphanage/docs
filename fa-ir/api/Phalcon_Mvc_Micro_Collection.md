@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Micro\Collection'
 
 *implements* [Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
 
 Groups Micro-Mvc handlers as controllers
 
@@ -29,7 +29,7 @@ $app->mount($collection);
 
 ```
 
-## روش ها
+## Methods
 
 protected **_addMap** (*string* | *array* $method, *string* $routePattern, *mixed* $handler, *string* $name)
 
@@ -39,7 +39,7 @@ public **setPrefix** (*mixed* $prefix)
 
 Sets a prefix for all routes added to the collection
 
-عمومی **دریافت پیشوند** ()
+public **getPrefix** ()
 
 Returns the collection prefix if any
 
