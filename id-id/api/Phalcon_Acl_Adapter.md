@@ -8,17 +8,17 @@ title: 'Phalcon\Acl\Adapter'
 
 *implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
-Adapter for Phalcon\Acl adapters
+Adaptor untuk Phalcon\Acl adapter
 
-## Methods
+## Metode
 
 ```php
 public getActiveAccess()
 ```
 
-Active access which the list is checking if some operation can access it
+Akses aktif dimana daftar memeriksa jika beberapa operasi dapat mengeksesnya
 
 * * *
 
@@ -26,7 +26,7 @@ Active access which the list is checking if some operation can access it
 public getActiveOperation()
 ```
 
-Operation which the list is checking if it's allowed to certain subject/access
+Operasi dimana daftar melakukan cek jika diizinkan untuk masuk ke beberapa subject/access
 
 * * *
 
@@ -34,7 +34,7 @@ Operation which the list is checking if it's allowed to certain subject/access
 public getActiveSubject()
 ```
 
-Subject which the list is checking if some operation can access it
+Subjek dimana daftar memeriksa jika beberapa operasi mendapatkan akses
 
 * * *
 
@@ -43,7 +43,7 @@ Subject which the list is checking if some operation can access it
 public getDefaultAction()
 ```
 
-Returns the default ACL access level
+Mengembalikan tingkat akses ACL default
 
 * * *
 
@@ -55,7 +55,7 @@ public getEventsManager()
     public setDefaultAction(mixed $defaultAccess)
     
 
-Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
+Menetapkan tingkat akses default (Phalcon\Acl::ALLOW atau Phalcon\Acl:: DENY)
 
 * * *
 
@@ -63,7 +63,7 @@ Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 public setEventsManager([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 ```
 
-Sets the events manager
+Menyetel pengelola acara
 
 * * *
 
