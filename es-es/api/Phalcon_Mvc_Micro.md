@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Micro'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
 
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+Con Phalcon se pueden crear aplicaciones "Micro-Framework like". Al hacer esto, solo se necesita escribir una cantidad mínima de código para crear una aplicación PHP. Las aplicaciones Micro son adecuadas de una manera práctica para aplicaciones pequeñas, APIs y prototipos.
 
 ```php
 <?php
@@ -38,99 +38,99 @@ Phalcon\Mvc\Micro constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Configura el contenedor DependencyInjector
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **map** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler without any HTTP method constraint
+Asigna una ruta a un controlador sin ninguna restricción de método HTTP
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **get** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is GET
+Asigna una ruta a un controlador que solo coincide si el método HTTP es GET
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **post** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is POST
+Asigna una ruta a un controlador que solo coincide si el método HTTP es POST
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **put** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is PUT
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PUT
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **patch** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is PATCH
+Asigna una ruta a un controlador que solo coincide si el método HTTP es PATCH
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **head** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is HEAD
+Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **delete** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is DELETE
+Asigna una ruta a un controlador que solo coincide si el método HTTP es DELETE
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **options** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
+Asigna una ruta a un controlador que solo coincide si el método HTTP es OPTIONS
 
 public **mount** ([Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface) $collection)
 
-Mounts a collection of handlers
+Monta una colección de controladores
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **notFound** (*callable* $handler)
 
-Sets a handler that will be called when the router doesn't match any of the defined routes
+Configura un controlador que será llamado cuando el enrutador no coincida con ninguna de las rutas definidas
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **error** (*callable* $handler)
 
-Sets a handler that will be called when an exception is thrown handling the route
+Configura un controlador que será llamado cuando se arroje una excepción al controlar la ruta
 
 public **getRouter** ()
 
-Returns the internal router used by the application
+Devuelve el enrutador interno utilizado por la aplicación
 
 public [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
-Sets a service from the DI
+Configura un servicio desde el DI
 
 public **hasService** (*mixed* $serviceName)
 
-Checks if a service is registered in the DI
+Comprueba si un servicio está registrado en el DI
 
 public *object* **getService** (*string* $serviceName)
 
-Obtains a service from the DI
+Obtiene un servicio del DI
 
 public *mixed* **getSharedService** (*string* $serviceName)
 
-Obtains a shared service from the DI
+Obtiene un servicio compartido del DI
 
 public *mixed* **handle** ([*string* $uri])
 
-Handle the whole request
+Maneja toda la solicitud
 
 public **stop** ()
 
-Stops the middleware execution avoiding than other middlewares be executed
+Detiene la ejecución del software intermedio evitando que se ejecuten otras softwares intermedios
 
 public **setActiveHandler** (*callable* $activeHandler)
 
-Sets externally the handler that must be called by the matched route
+Configura externamente el controlador que debe ser llamado por la ruta correspondiente
 
 public *callable* **getActiveHandler** ()
 
-Return the handler that will be called for the matched route
+Devuelve el controlador que será llamado por la ruta correspondiente
 
 public *mixed* **getReturnedValue** ()
 
-Returns the value returned by the executed handler
+Devuelve el valor devuelto por el controlador ejecutado
 
 public *boolean* **offsetExists** (*string* $alias)
 
-Check if a service is registered in the internal services container using the array syntax
+Comprueba si un servicio está registrado en el contenedor de servicios interno utilizando la sintaxis del arreglo
 
 public **offsetSet** (*string* $alias, *mixed* $definition)
 
-Allows to register a shared service in the internal services container using the array syntax
+Permite registrar un servicio compartido en el contenedor de servicios interno utilizando la sintaxis del arreglo
 
 ```php
 <?php
@@ -141,7 +141,7 @@ $app["request"] = new \Phalcon\Http\Request();
 
 public *mixed* **offsetGet** (*string* $alias)
 
-Allows to obtain a shared service in the internal services container using the array syntax
+Permite obtener un servicio compartido en el contenedor de servicios interno utilizando la sintaxis del arreglo
 
 ```php
 <?php
@@ -154,35 +154,35 @@ var_dump(
 
 public **offsetUnset** (*string* $alias)
 
-Removes a service from the internal services container using the array syntax
+Elimina un servicio del contenedor de servicios interno utilizando la sintaxis del arreglo
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **before** (*callable* $handler)
 
-Appends a before middleware to be called before execute the route
+Anexa un software intermedio before para ser llamado antes de ejecutar la ruta
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **afterBinding** (*callable* $handler)
 
-Appends a afterBinding middleware to be called after model binding
+Anexa un software intermedio afterBinding para ser llamado después del enlace del modelo
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **after** (*callable* $handler)
 
-Appends an 'after' middleware to be called after execute the route
+Anexa un software intermedio "after" para ser llamado después de ejecutar la ruta
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **finish** (*callable* $handler)
 
-Appends a 'finish' middleware to be called when the request is finished
+Anexa un software intermedio "finish" para ser llamado cuando finalice la solicitud
 
 public **getHandlers** ()
 
-Returns the internal handlers attached to the application
+Devuelve los controladores internos adjuntos a la aplicación
 
 public **getModelBinder** ()
 
-Gets model binder
+Obtiene el enlazador modelo
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
-Sets model binder
+Configura el enlazador modelo
 
 ```php
 <?php
@@ -194,15 +194,15 @@ $micro->setModelBinder(new Binder(), 'cache');
 
 public **getBoundModels** ()
 
-Returns bound models from binder instance
+Devuelve los modelos enlazados de la instancia del enlazador
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
