@@ -6,11 +6,11 @@ title: 'Phalcon\Cli\Router\Route'
 ---
 # Class **Phalcon\Cli\Router\Route**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
 This class represents every route added to the router
 
-## Constants
+## Stałe
 
 *string* **DEFAULT_DELIMITER**
 
