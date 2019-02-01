@@ -8,11 +8,11 @@ title: 'Phalcon\Filter\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
-Exceptions thrown in `Phalcon\Filter` will use this class
+Exceptions thrown in `Phalcon\Filter\*` will use this class
 
-## Methods
+## Metode
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-Gets the file in which the exception occurred
+Mendapatkan file di mana pengecualian terjadi
 
 ```php
 public function getLine(): int
@@ -48,13 +48,13 @@ Get the previous `\Throwable` object
 public function getTrace(): array
 ```
 
-Gets the stack trace
+Mendapatkan pelacakan stack
 
 ```php
 public function getTraceAsString(): string
 ```
 
-Gets the stack trace as a string
+Mendapatkan jejak stack sebagai string
 
 ```php
 public function __toString(): string
