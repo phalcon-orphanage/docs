@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memcache'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memcache.zep)
 
 Allows to cache output fragments, PHP data or raw data to a memcache backend
 
@@ -47,7 +47,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## روش ها
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
