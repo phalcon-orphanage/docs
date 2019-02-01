@@ -36,7 +36,7 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Reads an attribute value by its name
+Lee un valor de atributo por su nombre
 
 ```php
 <?php
@@ -47,7 +47,7 @@ echo $robot->readAttribute("name");
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Writes an attribute value by its name
+Escribe un valor atributo por su nombre
 
 ```php
 <?php
@@ -58,7 +58,7 @@ $robot->writeAttribute("name", "Rosey");
 
 public *array* **toArray** ()
 
-Returns the instance as an array representation
+Devuelve la instancia como una representación de arreglo
 
 public *array* **jsonSerialize** ()
 
