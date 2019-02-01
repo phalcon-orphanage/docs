@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\StringVal'
 ---
 # Class [Phalcon\Filter\Sanitizer\StringVal](Phalcon_Filter_Sanitizer_StringVal)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/stringval.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/stringval.zep)
 
 Sanitizes a value to a string
 
-### Methoden
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
