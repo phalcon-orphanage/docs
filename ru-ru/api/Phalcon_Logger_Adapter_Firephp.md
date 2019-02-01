@@ -27,7 +27,7 @@ $logger->error("This is another error");
 
 ```
 
-## Методы
+## Methods
 
 public **getFormatter** ()
 
