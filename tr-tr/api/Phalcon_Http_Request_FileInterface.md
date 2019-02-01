@@ -6,9 +6,9 @@ title: 'Phalcon\Http\Request\FileInterface'
 ---
 # Interface **Phalcon\Http\Request\FileInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **getSize** ()
 
@@ -22,7 +22,7 @@ abstract public **getTempName** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getType** ()
 
 ...
 
