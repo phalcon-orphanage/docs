@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Validator\Regex'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
-Επιτρέπει την επικύρωση η τιμή εάν ενός πεδίου αντιστοιχεί σε μια κανονική έκφραση
+Allows validate if the value of a field matches a regular expression
 
 ```php
 <?php
