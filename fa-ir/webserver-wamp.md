@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# نصب بر روی WAMP
+# Installation on WAMP
 
 [WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
-## نسخه مناسب Phalcon را دانلود کنید
+## Download the right version of Phalcon
 
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
@@ -33,17 +33,17 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 
 ```ini extension=php_phalcon.dll
 
-    <br />و آنرا ذخیره کنید.
+    <br />and save it.
     
     ![](/assets/images/content/webserver-wamp-2.png)
     
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. در انتهای فایل پیوست کنید: 
+    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
     
     ```ini
     extension=php_phalcon.dll 
     
 
-و آنرا ذخیره کنید.
+and save it.
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
@@ -57,7 +57,7 @@ Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 
-## راهنمایی های مرتبط
+## Related Guides
 
 * [General Installation](/4.0/en/installation)
-* [نصب بر روی XAMPP](/4.0/en/webserver-xampp)
+* [Installation on XAMPP](/4.0/en/webserver-xampp)
