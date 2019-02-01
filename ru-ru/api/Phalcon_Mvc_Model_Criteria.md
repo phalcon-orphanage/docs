@@ -25,7 +25,7 @@ $robots = Robots::query()
 
 ```
 
-## Methods
+## Методы
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
