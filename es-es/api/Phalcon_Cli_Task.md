@@ -12,7 +12,7 @@ title: 'Phalcon\Cli\Task'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
-Every command-line task should extend this class that encapsulates all the task functionality
+Cada tarea de linea-comando debe extender esta clase que encapsula toda la funcionalidad de la tarea
 
 A task can be used to run "tasks" such as migrations, cronjobs, unit-tests, or anything that you want. The Task class should at least have a "mainAction" method
 
@@ -43,15 +43,15 @@ Phalcon\Cli\Task constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the dependency injector
+Configura el inyector de dependencia
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Devuelve el inyector de dependencias interno
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Establece el gestor de eventos
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
