@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# Working with Models
+# Práce s modely
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -17,7 +17,7 @@ A model represents the information (data) of the application and the rules to ma
 
 <a name='creating'></a>
 
-## Creating Models
+## Vytváření modelů
 
 A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
@@ -213,7 +213,7 @@ As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Hledání záznamů
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
 
