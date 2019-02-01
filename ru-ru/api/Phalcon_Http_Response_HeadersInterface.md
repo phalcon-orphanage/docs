@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response\HeadersInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headersinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **set** (*mixed* $name, *mixed* $value)
 
