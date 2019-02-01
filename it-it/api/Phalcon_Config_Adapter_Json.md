@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Adapter\Json'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
 
 Reads JSON files and converts them to Phalcon\Config objects.
 
@@ -35,11 +35,11 @@ echo $config->models->metadata;
 
 ```
 
-## Costanti
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Metodi
+## Methods
 
 public **__construct** (*mixed* $filePath)
 
@@ -160,7 +160,7 @@ print count($config);
 
 ```
 
-oppure
+or
 
 ```php
 <?php
