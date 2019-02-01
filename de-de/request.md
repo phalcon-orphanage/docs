@@ -43,19 +43,19 @@ use Phalcon\Filter;
 
 $filter = new Filter();
 
-// Manuellen Filter angeben
+// Manually applying the filter
 $email = $filter->sanitize($_POST['user_email'], 'email');
 
-// Manuellen Filter für den Wert angeben
+// Manually applying the filter to the value
 $email = $filter->sanitize($request->getPost('user_email'), 'email');
 
-// Automatischen Filter angeben
+// Automatically applying the filter
 $email = $request->getPost('user_email', 'email');
 
-// Standard Wert falls der Paramter null ist
+// Setting a default value if the param is null
 $email = $request->getPost('user_email', 'email', 'some@example.com');
 
-// Standard Wert falls der Paramter null ist ohne Filter
+// Setting a default value if the param is null without filtering
 $email = $request->getPost('user_email', null, 'some@example.com');
 ```
 
@@ -104,16 +104,16 @@ class PostsController extends Controller
 {
     public function uploadAction()
     {
-        // Prüfen, on der Benutzer Dateien hochgeladen hat
+        // Check if the user has uploaded files
         if ($this->request->hasFiles()) {
             $files = $this->request->getUploadedFiles();
 
-            // Realnamen und Größe ausgeben
+            // Print the real file names and sizes
             foreach ($files as $file) {
-                // Details ausgeben
+                // Print file details
                 echo $file->getName(), ' ', $file->getSize(), '\n';
 
-                // Datei in die Anwendung verschieben
+                // Move the file into the application
                 $file->moveTo(
                     'files/' . $file->getName()
                 );
@@ -134,39 +134,39 @@ As mentioned above, request headers contain useful information that allow us to 
 ```php
 <?php
 
-// Holt den Http-X-Requested-With header
+// Get the Http-X-Requested-With header
 $requestedWith = $request->getHeader('HTTP_X_REQUESTED_WITH');
 
 if ($requestedWith === 'XMLHttpRequest') {
-    echo 'Die Anfrage erfolgte mittels Ajax';
+    echo 'The request was made with Ajax';
 }
 
-// Dasselbe wie oben
+// Same as above
 if ($request->isAjax()) {
-    echo 'Die Anfrage erfolgte mittels Ajax';
+    echo 'The request was made with Ajax';
 }
 
-//Die Anfrage-Ebene prüfen
+// Check the request layer
 if ($request->isSecure()) {
-    echo 'Die Anfrage erfolte durch eine sichere Ebene';
+    echo 'The request was made using a secure layer';
 }
 
-// Holt die Server IP Adresse. z.B. 192.168.0.100
+// Get the servers's IP address. ie. 192.168.0.100
 $ipAddress = $request->getServerAddress();
 
-// Holt die Client IP Adresse z.B. 201.245.53.51
+// Get the client's IP address ie. 201.245.53.51
 $ipAddress = $request->getClientAddress();
 
-// Holt den User Agent (HTTP_USER_AGENT)
+// Get the User Agent (HTTP_USER_AGENT)
 $userAgent = $request->getUserAgent();
 
-// Ermittelt den bestmöglichen Inhaltstyp über den browser. z.B. text/xml
+// Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Gibt den bestmöglichen Zeichensatz, welches vom Browser akzeptiert wurde. z. B. utf-8
+// Get the best charset accepted by the browser. ie. utf-8
 $charset = $request->getBestCharset();
 
-// Holt die bestmögliche Sprache, welche im Browser konfiguriert wurde. z. B. en-us
+// Get the best language accepted configured in the browser. ie. en-us
 $language = $request->getBestLanguage();
 
 // Check if a header exists
@@ -177,7 +177,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## Ereignisse
+## Events
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
