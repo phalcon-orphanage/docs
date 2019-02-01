@@ -46,10 +46,10 @@ $queue->put(
 
 Available connection options are:
 
-| گزینه  | توضیحات                                  | Default   |
+| Option | Description                              | Default   |
 | ------ | ---------------------------------------- | --------- |
-| میزبان | IP where the beanstalk server is located | 127.0.0.1 |
-| پورت   | Connection port                          | 11300     |
+| host   | IP where the beanstalk server is located | 127.0.0.1 |
+| port   | Connection port                          | 11300     |
 
 In the above example we stored a message which will allow a background job to process a video. The message is stored in the queue immediately and does not have a certain time to live.
 
@@ -73,7 +73,7 @@ $queue->put(
 
 The following options are available:
 
-| گزینه    | توضیحات                                                                                                                                                                                     |
+| Option   | Description                                                                                                                                                                                 |
 | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
 | delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
