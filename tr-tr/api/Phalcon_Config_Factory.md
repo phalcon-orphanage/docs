@@ -10,9 +10,9 @@ title: 'Phalcon\Config\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/factory.zep)
 
-Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
+'adapter' parametresini kullanarak Config Adapter sınıfını yükler. Eğer uzantı belirtilmemişse 'adapter' parametresi filePath değişkenine eklenir
 
 ```php
 <?php
@@ -27,7 +27,7 @@ $config = Factory::load($options);
 
 ```
 
-## Methods
+## Metodlar
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
