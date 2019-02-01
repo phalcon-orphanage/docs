@@ -8,12 +8,12 @@ title: 'Phalcon\Assets\Filters\Jsmin'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
-Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
+JavaScript'e göre önemsiz olan karakterleri siler. Yorumlar kaldırılacaktır. Tablar, boşluklar ile değiştirilecek. Satır başları, satır atlamaları ile değiştirilecektir. Çoğu boşluk ve satır atlamaları silinecektir.
 
-## Methods
+## Metodlar
 
 public **filter** (*mixed* $content)
 
-Filters the content using JSMIN
+İçeriği JSMIN kullanarak filtreler
