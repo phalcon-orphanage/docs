@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Adapter\Gettext'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Methods
+## Metode
 
 public **getDirectory** ()
 
@@ -46,7 +46,7 @@ Phalcon\Translate\Adapter\Gettext constructor
 
 public **query** (*mixed* $index, [*mixed* $placeholders])
 
-Returns the translation related to the given key.
+Mengembalikan terjemahan yang terkait dengan kunci yang diberikan.
 
 ```php
 <?php
@@ -57,7 +57,7 @@ $translator->query("你好 %name%！", ["name" => "Phalcon"]);
 
 public **exists** (*mixed* $index)
 
-Check whether is defined a translation key in the internal array
+Periksa apakah didefinisikan kunci terjemahan dalam array internal
 
 public **nquery** (*mixed* $msgid1, *mixed* $msgid2, *mixed* $count, [*mixed* $placeholders], [*mixed* $domain])
 
@@ -69,15 +69,15 @@ Changes the current domain (i.e. the translation file)
 
 public **resetDomain** ()
 
-Sets the default domain
+Menetapkan wilayah kegagalan
 
 public **setDefaultDomain** (*mixed* $domain)
 
-Sets the domain default to search within when calls are made to gettext()
+Menyetel wilayah kegagalan untuk dicari saat panggilan dilakukan ke mendapatkan teks()
 
 public **setDirectory** (*mixed* $directory)
 
-Sets the path for a domain
+Menetapkan jalur untuk wilayah
 
 ```php
 <?php
@@ -97,7 +97,7 @@ $gettext->setDirectory(
 
 public **setLocale** (*mixed* $category, *mixed* $locale)
 
-Sets locale information
+Menyetel informasi lokal
 
 ```php
 <?php
@@ -116,7 +116,7 @@ Validator for constructor
 
 protected **getOptionsDefault** ()
 
-Gets default options
+Mendapatkan pilihan kegagalan
 
 public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface) $interpolator) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
@@ -124,11 +124,11 @@ public **setInterpolator** ([Phalcon\Translate\InterpolatorInterface](Phalcon_Tr
 
 public *string* **t** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Returns the translation string of the given key
+Mengembalikan string terjemahan dari kunci yang diberikan
 
 public *string* **_** (*string* $translateKey, [*array* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Returns the translation string of the given key (alias of method 't')
+Mengembalikan string terjemahan dari kunci yang diberikan (alias metode 't')
 
 public **offsetSet** (*string* $offset, *string* $value) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
@@ -136,16 +136,16 @@ Sets a translation value
 
 public **offsetExists** (*mixed* $translateKey) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Check whether a translation key exists
+Periksa apakah ada kunci terjemahan
 
 public **offsetUnset** (*string* $offset) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Unsets a translation from the dictionary
+Unsets terjemahan dari kamus
 
 public *string* **offsetGet** (*string* $translateKey) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Returns the translation related to the given key
+Mengembalikan terjemahan yang terkait dengan kunci yang diberikan
 
 protected **replacePlaceholders** (*mixed* $translation, [*mixed* $placeholders]) inherited from [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)
 
-Replaces placeholders by the values passed
+Mengganti placeholder dengan nilai yang dilewatkan
