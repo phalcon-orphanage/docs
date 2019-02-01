@@ -6,26 +6,26 @@ title: 'Phalcon\Events\ManagerInterface'
 ---
 # Interface **Phalcon\Events\ManagerInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
 
-## Methods
+## Metode
 
 abstract public **attach** (*mixed* $eventType, *mixed* $handler)
 
 ...
 
-abstract public **detach** (*mixed* $eventType, *mixed* $handler)
+abstrak publik **lepaskan**(*campuran* $eventType, *mixed* $handler)
 
 ...
 
-abstract public **detachAll** ([*mixed* $type])
+abstrak publik **detachAll** ([*campuran* $type])
 
 ...
 
-abstract public **fire** (*mixed* $eventType, *mixed* $source, [*mixed* $data])
+abstrak publik **api** (*campuran* $eventType, *mixed* $source, [*mixed* $data])
 
 ...
 
-abstract public **getListeners** (*mixed* $type)
+publik abstrak **getListeners** (*campuran* $type)
 
 ...
