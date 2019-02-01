@@ -6,24 +6,24 @@ title: 'Phalcon\Image'
 ---
 # Class **Phalcon\Image**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
 
 ## Constants
 
-*bilangan bulat* **OP_NONE**
+*integer* **NONE**
 
-* bilangan bulat * ** DENY **
+*integer* **WIDTH**
 
-* bilangan bulat * ** DENY **
+*integer* **HEIGHT**
 
-*bilangan bulat* **MEMUNGKINKAN**
+*integer* **AUTO**
 
-* bilangan bulat * ** DENY **
+*integer* **INVERSE**
 
-*bilangan bulat* **OP_DELETE**
+*integer* **PRECISE**
 
-* bilangan bulat * ** DENY **
+*integer* **TENSILE**
 
-* bilangan bulat * ** DENY **
+*integer* **HORIZONTAL**
 
-* bilangan bulat * ** DENY **
+*integer* **VERTICAL**
