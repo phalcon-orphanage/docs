@@ -17,13 +17,13 @@ Due to the absence of SQL queries and planners, NoSQL databases can see real imp
 
 The following NoSQL databases are supported:
 
-| Name                                | Description                                                          |
-| ----------------------------------- | -------------------------------------------------------------------- |
-| [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
+| Nama                                | Deskripsi                                                                               |
+| ----------------------------------- | --------------------------------------------------------------------------------------- |
+| [MongoDB](https://www.mongodb.org/) | MongoDB adalah database open source NoSQL yang berkinerja tinggi dan berkinerja tinggi. |
 
 <a name='creating-models'></a>
 
-## Creating Models
+## Membuat Model
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -56,7 +56,7 @@ class Robots extends Collection
 
 <a name='documents-to-objects'></a>
 
-## Understanding Documents To Objects
+## Memahami Dokumen Untuk Objek
 
 Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example, for a collection `robots` with the documents:
 
@@ -75,7 +75,7 @@ connecting to: test
 
 <a name='namespaces'></a>
 
-## Models in Namespaces
+## Model di Namespaces
 
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
 
@@ -107,7 +107,7 @@ $robot = Robots::findById('5087358f2d42b8c3d15ec4e2');
 echo $robot->name;
 ```
 
-Once the record is in memory, you can make modifications to its data and then save changes:
+Begitu catatan di memori, anda dapat melakukan modifikasi terhadap datanya dan kemudian menyimpan perubahan:
 
 ```php
 <?php
@@ -127,7 +127,7 @@ $robot->save();
 
 <a name='connection-setup'></a>
 
-## Setting a Connection
+## Mengatur Koneksi
 
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
 
@@ -161,7 +161,7 @@ $di->set(
 
 <a name='finding-documents'></a>
 
-## Finding Documents
+## Mencari Dokumen
 
 As [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
 
@@ -216,7 +216,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-You could also use the `findFirst()` method to get only the first record matching the given criteria:
+Anda juga bisa menggunakan `findFirst()` metode untuk mendapatkan rekaman pertama yang sesuai dengan kriteria yang diberikan:
 
 ```php
 <?php
@@ -274,21 +274,21 @@ $robots = Robots::find(
 );
 ```
 
-The available query options are:
+Pilihan permintaan yang tersedia adalah:
 
-| Parameter    | Description                                                                                                                                                                                  | Example                                                 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `conditions` | Search conditions for the find operation. Is used to extract only those records that fulfill a specified criterion. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                               | `'fields' => array('name' => true)`               |
-| `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                                  | `'sort' => array('name' => -1, 'status' => 1)` |
-| `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                      |
-| `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                       |
+| Parameter    | Deskripsi                                                                                                                                                                                 | Contoh                                                  |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| `kondisi`    | Cari kondisi untuk operasi pencarian. Digunakan hanya untuk mengekstrak catatan yang memenuhi kriteria tertentu. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
+| `ladang`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                            | `'fields' => array('name' => true)`               |
+| `menyortir`  | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                               | `'sort' => array('name' => -1, 'status' => 1)` |
+| `batas`      | Batasi hasil query untuk menghasilkan rentang tertentu                                                                                                                                    | `'batas' => 10`                                      |
+| `melewatkan` | Melewati sejumlah hasil                                                                                                                                                                   | `'skip' => 50`                                       |
 
 If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://secure.php.net/manual/en/mongo.sqltomongo.php).
 
 <a name='finding-documents-fields'></a>
 
-## Querying specific fields
+## Query bidang spesifik
 
 To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
 
@@ -385,11 +385,11 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### Pesan validasi
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message consists of an instance of the class [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message). The set of messages generated can be retrieved with the method getMessages(). Each message provides extended information like the field name that generated the message or the message type:
+Each message consists of an instance of the class [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message). The set of messages generated can be retrieved with the method getMessages(). Setiap pesan memberikan informasi tambahan seperti nama field yang menghasilkan pesan atau jenis pesan:
 
 ```php
 <?php
@@ -407,25 +407,25 @@ if ($robot->save() === false) {
 
 <a name='events'></a>
 
-### Validation Events and Events Manager
+### Validasi Acara dan Event Manager
 
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
-| Operation          | Name                       | Can stop operation?   | Explanation                                                                                                        |
-| ------------------ | -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Inserting/Updating | `beforeValidation`         | YES                   | Is executed before the validation process and the final insert/update to the database                              |
-| Inserting          | `beforeValidationOnCreate` | YES                   | Is executed before the validation process only when an insertion operation is being made                           |
-| Updating           | `beforeValidationOnUpdate` | YES                   | Is executed before the fields are validated for not nulls or foreign keys when an updating operation is being made |
-| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed before the validation process only when an insertion operation is being made                           |
-| Inserting          | `afterValidationOnCreate`  | YES                   | Is executed after the validation process when an insertion operation is being made                                 |
-| Updating           | `afterValidationOnUpdate`  | YES                   | Is executed after the validation process when an updating operation is being made                                  |
-| Inserting/Updating | `afterValidation`          | YES                   | Is executed after the validation process                                                                           |
-| Inserting/Updating | `beforeSave`               | YES                   | Runs before the required operation over the database system                                                        |
-| Updating           | `beforeUpdate`             | YES                   | Runs before the required operation over the database system only when an updating operation is being made          |
-| Inserting          | `beforeCreate`             | YES                   | Runs before the required operation over the database system only when an inserting operation is being made         |
-| Updating           | `afterUpdate`              | NO                    | Runs after the required operation over the database system only when an updating operation is being made           |
-| Inserting          | `afterCreate`              | NO                    | Runs after the required operation over the database system only when an inserting operation is being made          |
-| Inserting/Updating | `afterSave`                | NO                    | Runs after the required operation over the database system                                                         |
+| Operasi             | Nama                            | Bisa berhenti operasinya? | Penjelasan                                                                                                        |
+| ------------------- | ------------------------------- | ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Masukkan/perbaharui | `sebelumValidasi`               | YA                        | Dilakukan sebelum proses validasi dan insert/update terakhir ke database                                          |
+| Memasukkan          | `sebelumPengesahanPadaBuat`     | YA                        | Dilakukan sebelum proses validasi hanya saat operasi penyisipan sedang dilakukan                                  |
+| Memperbarui         | `sebelumPengesahanDiPerbaharui` | YA                        | Dieksekusi sebelum bidang divalidasi untuk tidak nulls atau foreign key saat operasi update sedang dilakukan      |
+| Masukkan/perbaharui | `padaPengesahanGagal`           | YA (sudah berhenti)       | Dilakukan sebelum proses validasi hanya saat operasi penyisipan sedang dilakukan                                  |
+| Memasukkan          | `setelahPengesahanPadaBuat`     | YA                        | Dilakukan setelah proses validasi saat operasi penyisipan sedang dilakukan                                        |
+| Memperbarui         | `setelahPengesahanDiUpdate`     | YA                        | Dilakukan setelah proses validasi saat operasi update sedang dilakukan                                            |
+| Masukkan/perbaharui | `setelahPengesahan`             | YA                        | Dilakukan setelah proses validasi                                                                                 |
+| Masukkan/perbaharui | `sebelumdisimpan`               | YA                        | Berjalan sebelum operasi yang diperlukan dari database sistem                                                     |
+| Memperbarui         | `sebelummemperbarui`            | YA                        | Berjalan sebelum operasi yang diperlukan melalui sistem basis data hanya bila operasi update sedang dilakukan     |
+| Memasukkan          | `sebelummembuat`                | YA                        | Berjalan sebelum operasi yang diperlukan melalui sistem basis data hanya saat operasi penyisipan dilakukan        |
+| Memperbarui         | `afterUpdate`                   | NO                        | Berjalan setelah operasi yang diperlukan melalui sistem basis data hanya saat operasi update sedang dilakukan     |
+| Memasukkan          | `afterCreate`                   | NO                        | Berjalan setelah operasi yang diperlukan melalui sistem basis data hanya saat operasi penyisipan sedang dilakukan |
+| Masukkan/perbaharui | `afterSave`                     | NO                        | Berjalan setelah operasi yang diperlukan melalui sistem database                                                  |
 
 To make a model to react to an event, we must to implement a method with the same name of the event:
 
@@ -574,11 +574,11 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### Memvalidasi Integritas Data
 
-[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
+[Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. Khusus `validasi` acara ini memungkinkan kita untuk memanggil built-in validator selama merekam. Phalcon memaparkan beberapa validator bawaan yang dapat digunakan pada tahap validasi ini.
 
-The following example shows how to use it:
+Contoh berikut menunjukkan bagaimana cara menggunakannya:
 
 ```php
 <?php
@@ -627,7 +627,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Deleting Records
+## Menghapus catatan
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -679,23 +679,23 @@ foreach ($robots as $robot) {
 }
 ```
 
-The following events are available to define custom business rules that can be executed when a delete operation is performed:
+Peristiwa berikut tersedia untuk menentukan aturan bisnis khusus yang dapat dijalankan saat operasi hapus dilakukan:
 
-| Operation | Name           | Can stop operation? | Explanation                              |
-| --------- | -------------- | ------------------- | ---------------------------------------- |
-| Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
-| Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
+| Operasi      | Nama           | Bisa berhenti operasinya? | Penjelasan                               |
+| ------------ | -------------- | ------------------------- | ---------------------------------------- |
+| Menghapuskan | `beforeDelete` | YA                        | Berjalan sebelum operasi hapus dilakukan |
+| Menghapuskan | `afterDelete`  | NO                        | Berjalan setelah operasi hapus dilakukan |
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## Validasi Gagal
 
 Another type of events is available when the data validation process finds any inconsistency:
 
-| Operation                | Name                | Explanation                                                     |
-| ------------------------ | ------------------- | --------------------------------------------------------------- |
-| Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason |
-| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails            |
+| Operasi                       | Nama                  | Penjelasan                                                       |
+| ----------------------------- | --------------------- | ---------------------------------------------------------------- |
+| Sisipkan atau Perbarui        | `notSave`             | Dipicu saat penyisipan/update operasi gagal dengan alasan apapun |
+| Sisipkan, Hapus atau Perbarui | `padaPengesahanGagal` | Dipicu saat operasi manipulasi data gagal                        |
 
 <a name='ids-vs-primary-keys'></a>
 
@@ -721,7 +721,7 @@ class Robots extends Collection
 
 <a name='multiple-databases'></a>
 
-## Setting multiple databases
+## Menetapkan beberapa database
 
 In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
@@ -773,9 +773,9 @@ class Robots extends Collection
 
 <a name='services-in-models'></a>
 
-## Injecting services into Models
+## Menyuntikkan layanan ke dalam Model
 
-You may be required to access the application services within a model, the following example explains how to do that:
+Anda mungkin diminta untuk mengakses layanan aplikasi dalam model, contoh berikut menjelaskan cara melakukannya:
 
 ```php
 <?php
