@@ -12,13 +12,13 @@ title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior/timestampable.zep)
 
-Permite actualizar automáticamente el atributo del modelo guardando la fecha y hora cuando se creó o actualizó el registro
+Allows to automatically update a model’s attribute saving the datetime when a record is created or updated
 
 ## Métodos
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
-Escucha las notificaciones del administrador de modelos
+Listens for notifications from the models manager
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
@@ -26,12 +26,12 @@ Phalcon\Mvc\Collection\Behavior
 
 protected **mustTakeAction** (*mixed* $eventName) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Comprueba si el comportamiento debe actuar en ciertos eventos
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Devuelve las opciones de comportamiento relacionadas a un evento
+Returns the behavior options related to an event
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments]) inherited from [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
 
-Actúa como reservas cuando se llama un método faltante en la colección
+Acts as fallbacks when a missing method is called on the collection
