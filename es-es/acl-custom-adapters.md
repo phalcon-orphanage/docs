@@ -9,6 +9,6 @@ category: 'acl'
 
 * * *
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
 The [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface must be implemented in order to create your own ACL adapters or extend the existing ones.
