@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-## Creating a small script
+## 创建一个小的脚本
 
 A small PHP file can be used to showcase how to reproduce the issue:
 
@@ -65,7 +65,7 @@ var_dump($_COOKIE);
 
 <a name='database'></a>
 
-### Database
+### 数据库
 
 > Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. {:.alert .alert-info}
 
