@@ -7,81 +7,158 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Parser Anotasi
+# Annotations Parser
 
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
 ```php
-& lt;? php / ** * Ini adalah deskripsi kelas * * @AmazingClass (true) * / class Example {/ ** * Ini properti dengan fitur khusus * * @SpecialFeature * / protected $ someProperty; / ** * Ini adalah metode * * @SpecialFeature * / fungsi umum someMethod () {// ...
-    }}
+<?php
+
+/**
+ * This is the class description
+ *
+ * @AmazingClass(true)
+ */
+class Example
+{
+    /**
+     * This a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
+
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
+    {
+        // ...
+    }
+}
 ```
 
 An annotation has the following syntax:
 
 ```php
-/ ** * @ Anotasi-Nama * @ Anotasi-Nama (param1, param2, ...) * /
+/**
+ * @Annotation-Name
+ * @Annotation-Name(param1, param2, ...)
+ */
 ```
 
 Also, an annotation can be placed at any part of a docblock:
 
 ```php
-<php
-/ **
-  * Ini properti dengan fitur spesial
-  * Komentar lebih lanjut
-  *
-  * @SpecialFeature ({someParameter = 'nilai', salah})
-  * @AnotherSpecialFeature (benar)
-  * /
+<?php
+
+/**
+ * This a property with a special feature
+ *
+ * @SpecialFeature
+ *
+ * More comments
+ *
+ * @AnotherSpecialFeature(true)
+ */
 ```
 
 The parser is highly flexible, the following docblock is valid:
 
 ```php
-<? php / ** * ini sebuah properti dengan fitur khusus @SpecialFeature ({someParameter = 'nilai', palsu}) Komentar lebih @AnotherSpecialFeature(true) @MoreAnnotations ** /
+<?php
+
+/**
+ * This a property with a special feature @SpecialFeature({
+someParameter='the value', false
+
+ })  More comments @AnotherSpecialFeature(true) @MoreAnnotations
+ **/
 ```
 
 However, to make the code more maintainable and understandable it is recommended to place annotations at the end of the docblock:
 
 ```php
-<php
-/ **
-  * Ini properti dengan fitur spesial
-  * Komentar lebih lanjut
-  *
-  * @SpecialFeature ({someParameter = 'nilai', salah})
-  * @AnotherSpecialFeature (benar)
-  * /
+<?php
+
+/**
+ * This a property with a special feature
+ * More comments
+ *
+ * @SpecialFeature({someParameter='the value', false})
+ * @AnotherSpecialFeature(true)
+ */
 ```
 
 <a name='factory'></a>
 
-## Pabrik
+## Factory
 
-There are many annotations adapters available (see [Adapters](#adapters)). Yang Anda gunakan akan tergantung pada kebutuhan aplikasi Anda. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
-<? php menggunakan Phalcon\Annotations\Adapter\Memory sebagai MemoryAdapter; $reader = new MemoryAdapter(); // .....
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// .....
 ```
 
 However you can also utilize the factory method to achieve the same thing:
 
 ```php
-<? php menggunakan Phalcon\Annotations\Factory;$options = ['prefix' = > 'penjelasan', 'hidup' = > '3600', 'adaptor' = > 'memori', / / Load adaptor memori]; $annotations = Factory::load($options);
+<?php
+
+
+use Phalcon\Annotations\Factory;
+
+$options = [
+    'prefix'   => 'annotations',
+    'lifetime' => '3600',
+    'adapter'  => 'memory',      // Load the Memory adapter
+];
+
+$annotations = Factory::load($options);
 ```
 
 The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
 
 <a name='reading'></a>
 
-## Membaca anotasi
+## Reading Annotations
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
 ```php
-<? php menggunakan Phalcon\Annotations\Adapter\Memory sebagai MemoryAdapter;$reader = new MemoryAdapter();  Mencerminkan anotasi di kelas contoh$reflector = $reader -> get('Example');  Membaca penjelasan dalam kelas docblock$annotations = $reflector -> getClassAnnotations();  Melintasi anotasi foreach ($annotations sebagai $annotation) {/ / cetak anotasi nama echo $annotation -> getName(), PHP_EOL;      Cetak jumlah argumen echo $annotation -> numberArguments(), PHP_EOL;      Mencetak argumen print_r ($annotation -> getArguments()); }
+<?php
+
+use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+
+$reader = new MemoryAdapter();
+
+// Reflect the annotations in the class Example
+$reflector = $reader->get('Example');
+
+// Read the annotations in the class' docblock
+$annotations = $reflector->getClassAnnotations();
+
+// Traverse the annotations
+foreach ($annotations as $annotation) {
+    // Print the annotation name
+    echo $annotation->getName(), PHP_EOL;
+
+    // Print the number of arguments
+    echo $annotation->numberArguments(), PHP_EOL;
+
+    // Print the arguments
+    print_r($annotation->getArguments());
+}
 ```
 
 The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
@@ -90,124 +167,181 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## Jenis anotasi
+## Types of Annotations
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
 ```php
-<? php / ** * penjelasan sederhana ** @SomeAnnotation * / / ** * anotasi dengan parameter ** @SomeAnnotation ('Halo', 'dunia', 1, 2, 3, palsu, benar) * / / ** * anotasi dengan nama parameter ** @SomeAnnotation (pertama = 'Halo', kedua = 'dunia', ketiga = 1) * @SomeAn notasi (pertama: 'Halo', kedua: 'dunia', ketiga: 1) * / / ** * lewat sebuah array ** @SomeAnnotation ([1, 2, 3, 4]) * @SomeAnnotation ({1, 2, 3, 4}) * / / ** * melewati hash sebagai parameter ** @SomeAnnotation ({pertama = 1, kedua = 2, ketiga = 3}) * @SomeAnnotation ({'pertama' = 1, yang econd'= 2, 'ketiga' = 3}) * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3}) * @SomeAnnotation (['pertama': 1, 'kedua': 2, 'ketiga': 3]) * / / ** * bersarang array hash ** @SomeAnnotation ({'name' = 'SomeName', 'lainnya' = {* 'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3}, *}}) * / / ** * Bersarang anotasi ** @SomeAnnotation (first=@AnotherAnnotation (1, 2, 3)) * /
+<?php
+
+/**
+ * Simple Annotation
+ *
+ * @SomeAnnotation
+ */
+
+/**
+ * Annotation with parameters
+ *
+ * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
+ */
+
+/**
+ * Annotation with named parameters
+ *
+ * @SomeAnnotation(first='hello', second='world', third=1)
+ * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
+ */
+
+/**
+ * Passing an array
+ *
+ * @SomeAnnotation([1, 2, 3, 4])
+ * @SomeAnnotation({1, 2, 3, 4})
+ */
+
+/**
+ * Passing a hash as parameter
+ *
+ * @SomeAnnotation({first=1, second=2, third=3})
+ * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
+ * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
+ * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
+ */
+
+/**
+ * Nested arrays/hashes
+ *
+ * @SomeAnnotation({'name'='SomeName', 'other'={
+ *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
+ * }})
+ */
+
+/**
+ * Nested Annotations
+ *
+ * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
+ */
 ```
 
 <a name='usage'></a>
 
-## Penggunaan praktis
+## Practical Usage
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### Cache Enabler dengan Anotasi
+### Cache Enabler with Annotations
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
 ```php
-// Lampirkan plugin ke acara 'pengiriman'
-    $ eventsManager- & gt; attach (
-        'pengiriman',
-        CacheEnablerPlugin baru ()
-    );
+<?php
 
-    $ dispatcher = new MvcDispatcher ();
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Events\Manager as EventsManager;
 
-    $ dispatcher- & gt; setEventsManager ($ eventsManager);
+$di['dispatcher'] = function () {
+    $eventsManager = new EventsManager();
 
-    kembali $ dispatcher;
+    // Attach the plugin to 'dispatch' events
+    $eventsManager->attach(
+        'dispatch',
+        new CacheEnablerPlugin()
+    );
+
+    $dispatcher = new MvcDispatcher();
+
+    $dispatcher->setEventsManager($eventsManager);
+
+    return $dispatcher;
 };
 ```
 
 `CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
 
 ```php
-& lt;? php
+<?php
 
-gunakan Phalcon \ Events \ Event;
-gunakan Phalcon \ Mvc \ Dispatcher;
-gunakan Phalcon \ Mvc \ User \ Plugin;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\User\Plugin;
 
-/ **
- * Mengaktifkan cache untuk tampilan jika yang terbaru
- * Tindakan yang dieksekusi memiliki anotasi @Cache
- * /
-kelas CacheEnablerPlugin memperluas Plugin
+/**
+ * Enables the cache for a view if the latest
+ * executed action has the annotation @Cache
+ */
+class CacheEnablerPlugin extends Plugin
 {
-    / **
-     * Acara ini dijalankan sebelum setiap rute dijalankan di petugas operator
-     * /
-    fungsi publik sebelumExecuteRoute (event $ event, Dispatcher $ dispatcher)
-    {
-        // Parsel anotasi pada metode yang saat ini dijalankan
-        $ anotasi = $ this- & gt; anotasi- & gt; getMethod (
-            $ dispatcher- & gt; getControllerClass (),
-            $ dispatcher- & gt; getActiveMethod ()
-        );
+    /**
+     * This event is executed before every route is executed in the dispatcher
+     */
+    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
+    {
+        // Parse the annotations in the method currently executed
+        $annotations = $this->annotations->getMethod(
+            $dispatcher->getControllerClass(),
+            $dispatcher->getActiveMethod()
+        );
 
-        // Periksa apakah metode memiliki anotasi 'Cache'
-        jika ($ anotasi- & gt; memiliki ('Cache')) {
-            // Metode ini memiliki anotasi 'Cache'
-            $ anotasi = $ anotasi- & gt; dapatkan ('Cache');
+        // Check if the method has an annotation 'Cache'
+        if ($annotations->has('Cache')) {
+            // The method has the annotation 'Cache'
+            $annotation = $annotations->get('Cache');
 
-            // dapatkan seumur hidup
-            $ lifetime = $ anotasi- & gt; getNamedParameter ('lifetime');
+            // Get the lifetime
+            $lifetime = $annotation->getNamedParameter('lifetime');
 
-            $ options = [
-                'lifetime' = & gt; $ seumur hidup,
-            ];
+            $options = [
+                'lifetime' => $lifetime,
+            ];
 
-            // Periksa apakah ada kunci cache yang ditentukan pengguna
-            jika ($ anotasi- & gt; hasNamedParameter ('kunci')) {
-                $ options ['key'] = $ anotasi- & gt; getNamedParameter ('key');
-            }
+            // Check if there is a user defined cache key
+            if ($annotation->hasNamedParameter('key')) {
+                $options['key'] = $annotation->getNamedParameter('key');
+            }
 
-            // Aktifkan cache untuk metode saat ini
-            $ this- & gt; view- & gt; cache ($ options);
-        }
-    }
+            // Enable the cache for the current method
+            $this->view->cache($options);
+        }
+    }
 }
 ```
 
 Now, we can use the annotation in a controller:
 
 ```php
-& lt;? php
+<?php
 
-gunakan Phalcon \ Mvc \ Controller;
+use Phalcon\Mvc\Controller;
 
-kelas NewsController memperluas Controller
+class NewsController extends Controller
 {
-    fungsi publik indexAction ()
-    {
+    public function indexAction()
+    {
 
-    }
+    }
 
-    / **
-     * Ini adalah sebuah komentar
-     *
-     * @Cache (seumur hidup = 86400)
-     * /
-    showAllAction fungsi publik ()
-    {
-        $ this- & gt; view- & gt; article = Articles :: find ();
-    }
+    /**
+     * This is a comment
+     *
+     * @Cache(lifetime=86400)
+     */
+    public function showAllAction()
+    {
+        $this->view->article = Articles::find();
+    }
 
-    / **
-     * Ini adalah sebuah komentar
-     *
-     * @Cache (key = 'my-key', lifetime = 86400)
-     * /
-    showAction fungsi publik ($ siput)
-    {
-        $ this- & gt; view- & gt; article = Articles :: findFirstByTitle ($ siput);
-    }
+    /**
+     * This is a comment
+     *
+     * @Cache(key='my-key', lifetime=86400)
+     */
+    public function showAction($slug)
+    {
+        $this->view->article = Articles::findFirstByTitle($slug);
+    }
 }
 ```
 
@@ -218,90 +352,84 @@ kelas NewsController memperluas Controller
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
 ```php
-& lt;? php
+<?php
 
-gunakan Phalcon \ Acl;
-gunakan Phalcon \ Acl \ Role;
-gunakan Phalcon \ Acl \ Resource;
-gunakan Phalcon \ Events \ Event;
-gunakan Phalcon \ Mvc \ User \ Plugin;
-gunakan Phalcon \ Mvc \ Dispatcher;
-gunakan Phalcon \ Acl \ Adapter \ Memory as AclList;
+use Phalcon\Acl;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Resource;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\User\Plugin;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Acl\Adapter\Memory as AclList;
 
-/ **
- * Ini adalah plugin keamanan yang mengontrol bahwa pengguna hanya memiliki akses ke modul yang ditugaskan untuk mereka
- * /
-kelas SecurityAnnotationsPlugin memperluas Plugin
+/**
+ * This is the security plugin which controls that users only have access to the modules they're assigned to
+ */
+class SecurityAnnotationsPlugin extends Plugin
 {
-    / **
-     * Tindakan ini dijalankan sebelum melakukan tindakan apapun dalam aplikasi
-     *
-     * @param Event $ event
-     * @param Dispatcher $ dispatcher
-     *
-     * @return bool
-     * /
-    fungsi publik beforeDispatch (event $ event, Dispatcher $ dispatcher)
-    {
-        // Kemungkinan nama kelas pengendali
-        $ controllerName = $ dispatcher- & gt; getControllerClass ();
+    /**
+     * This action is executed before execute any action in the application
+     *
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+    {
+        // Possible controller class name
+        $controllerName = $dispatcher->getControllerClass();
 
-        // nama metode yang mungkin
-        $ actionName = $ dispatcher- & gt; getActiveMethod ();
+        // Possible method name
+        $actionName = $dispatcher->getActiveMethod();
 
-        // Dapatkan anotasi di kelas pengontrol
-        $ anotasi = $ this- & gt; anotasi- & gt; get ($ controllerName);
+        // Get annotations in the controller class
+        $annotations = $this->annotations->get($controllerName);
 
-        // Pengendali itu bersifat pribadi?
- 
-Konteks | Permintaan Konteks?
-        jika ($ anotasi- & gt; getClassAnnotations () - & gt; have ('Pribadi')) {
-            // Periksa apakah variabel sesi aktif?
- 
-Konteks | Permintaan Konteks?
-            jika (! $ this- & gt; session- & gt; get ('auth')) {
+        // The controller is private?
+        if ($annotations->getClassAnnotations()->has('Private')) {
+            // Check if the session variable is active?
+            if (!$this->session->get('auth')) {
 
-                // Pengguna tidak login redirect untuk login
-                $ dispatcher- & gt; forward (
-                    [
-                        'controller' = & gt; 'sidang',
-                        'action' = & gt; 'masuk',
-                    ]
-                );
+                // The user is no logged redirect to login
+                $dispatcher->forward(
+                    [
+                        'controller' => 'session',
+                        'action'     => 'login',
+                    ]
+                );
 
-                kembali salah;
-            }
-        }
+                return false;
+            }
+        }
 
-        // Lanjutkan normal
-        kembali benar;
-    }
+        // Continue normally
+        return true;
+    }
 }
- 
-Konteks | Permintaan Konteks
 ```
 
 <a name='adapters'></a>
 
-## Anotasi Adaptor
+## Annotations Adapters
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Kelas                                                                       | Deskripsi                                                                                                                                                                         |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Anotasi\Adaptor\Memori](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| [Phalcon\Anotasi\Adaptor\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| [Phalcon\Anotasi\Adaptor\Apc](api/Phalcon_Annotations_Adapter_Apc)       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
-| [Phalcon\Anotasi\Adaptor\Xcache](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
+| Class                                                                           | Description                                                                                                                                                                       |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
+| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| [Phalcon\Annotations\Adapter\Apc](api/Phalcon_Annotations_Adapter_Apc)       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
+| [Phalcon\Annotations\Adapter\Xcache](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
 <a name='adapters-custom'></a>
 
-### Menerapkan adapter Anda sendiri
+### Implementing your own adapters
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## Sumber Eksternal
+## External Resources
 
-* [Tutorial: Membuat initializer model khusus dengan Anotasi](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
