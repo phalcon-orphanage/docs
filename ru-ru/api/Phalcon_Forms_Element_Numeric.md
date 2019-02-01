@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Numeric'
 
 Component INPUT[type=number] for forms
 
-## Methods
+## Методы
 
 public **render** ([*array* $attributes])
 
