@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# MVC 应用程序
+# MVC Applications
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -21,10 +21,10 @@ use Phalcon\Mvc\Application;
 // Register autoloaders
 // ...
 
-// 注册服务
+// Register services
 // ...
 
-// 处理这个请求
+// Handle the request
 $application = new Application($di);
 
 try {
@@ -46,7 +46,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## 手动引导
+## Manual bootstrapping
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -200,13 +200,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## 单个或多模块应用程序
+## Single or Multi Module Applications
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### 单模块
+### Single Module
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -330,7 +330,7 @@ try {
 
 <a name='module'></a>
 
-### 多模块
+### Multi Module
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -537,17 +537,17 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## 应用程序事件
+## Application Events
 
 [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. 以下事件被支持︰
 
-| 事件名称                  | 触发器              |
-| --------------------- | ---------------- |
-| `boot`                | 当应用程序处理它第一次请求时执行 |
-| `beforeStartModule`   | 之前初始化模块，只有当模块注册  |
-| `afterStartModule`    | 初始化模块，只有当模块注册后   |
-| `beforeHandleRequest` | 之前执行调度循环         |
-| `afterHandleRequest`  | 执行调度循环后          |
+| 事件名称                  | 触发器                                                          |
+| --------------------- | ------------------------------------------------------------ |
+| `boot`                | Executed when the application handles its first request      |
+| `beforeStartModule`   | Before initialize a module, only when modules are registered |
+| `afterStartModule`    | After initialize a module, only when modules are registered  |
+| `beforeHandleRequest` | Before execute the dispatch loop                             |
+| `afterHandleRequest`  | After execute the dispatch loop                              |
 
 下面的示例演示如何将侦听器附加到此组件︰
 
@@ -571,6 +571,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## 外部资源
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
