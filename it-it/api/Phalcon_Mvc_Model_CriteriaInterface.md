@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\CriteriaInterface'
 ---
 # Interface **Phalcon\Mvc\Model\CriteriaInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setModelName** (*mixed* $modelName)
 
