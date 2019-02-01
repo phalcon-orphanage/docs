@@ -7,33 +7,33 @@ version: '4.0'
 
 <a name='basic'></a>
 
-# Tutorial: Creating a Simple REST API
+# Tutorial: Creazione di una semplice REST API
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
-* `GET` to retrieve and search data
-* `POST` to add data
-* `PUT` to update data
-* `DELETE` to delete data
+* `GET` per recuperare e ricerca i dati
+* `POST` per aggiungere i dati
+* `PUT` per aggiornare i dati
+* `DELETE` per eliminare i dati
 
 <a name='definitions'></a>
 
-## Defining the API
+## Definiamo l'API
 
 The API consists of the following methods:
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| Method   | URL                      | Azione                                               |
+| -------- | ------------------------ | ---------------------------------------------------- |
+| `GET`    | /api/robots              | Recupera tutti i robot                               |
+| `GET`    | /api/robots/search/Astro | Ricerche per robot con 'Astro' nel loro nome         |
+| `GET`    | /api/robots/2            | Recupera robot basati sulla chiave primaria          |
+| `POST`   | /api/robots              | Aggiunge un nuovo robot                              |
+| `PUT`    | /api/robots/2            | Aggiornamenti dei robot basato sulla chiave primaria |
+| `DELETE` | /api/robots/2            | Elimina i robot basandosi sulla chiave primaria      |
 
 <a name='implementation'></a>
 
-## Creating the Application
+## Creiamo l'applicazione
 
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
 
@@ -66,7 +66,7 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Define the routes here
+// Definiamo qui gli inoltri (routes)
 
 $app->handle();
 ```
@@ -80,51 +80,51 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
+// Recuperiamo tutti i robots
 $app->get(
     '/api/robots',
     function () {
-        // Operation to fetch all the robots
+        // Operazioni per recuperare tutti i robots
     }
 );
 
-// Searches for robots with $name in their name
+// Ricerca robots con $name nel loro nome
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operation to fetch robot with name $name
+        // Operazioni per recuperare i robots con nome $name
     }
 );
 
-// Retrieves robots based on primary key
+// Recuperiamo i  robots in base alla chiave primaria
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to fetch robot with id $id
+        // Operazioni per recuperare i robots con id $id
     }
 );
 
-// Adds a new robot
+// Aggiungiamo un nuovo robot
 $app->post(
     '/api/robots',
     function () {
-        // Operation to create a fresh robot
+        // Operazioni per creare un nuovo robot
     }
 );
 
-// Updates robots based on primary key
+// Aggiorniamo un robots in base alla chiave primaria
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to update a robot with id $id
+        // Operazione Operationper aggiornare il robot con id $id
     }
 );
 
-// Deletes robots based on primary key
+// Cancelliamo un robots basandoci sulla chiave primaria
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to delete the robot with id $id
+        // Operazioni per cancellare il robot con id $id
     }
 );
 
@@ -137,7 +137,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Creating a Model
+## Creiamo un modello (Model)
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -210,7 +210,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-// Use Loader() to autoload our model
+// Usiamo Loader() per caricare automaticamente il nostro modello
 $loader = new Loader();
 
 $loader->registerNamespaces(
@@ -223,7 +223,7 @@ $loader->register();
 
 $di = new FactoryDefault();
 
-// Set up the database service
+// Impostiamo il servizio del database
 $di->set(
     'db',
     function () {
@@ -238,20 +238,20 @@ $di->set(
     }
 );
 
-// Create and bind the DI to the application
+// Creiamo e colleghiamo la DI all'applicazione
 $app = new Micro($di);
 ```
 
 <a name='retrieving-data'></a>
 
-## Retrieving Data
+## Recuperiamo i dati
 
 The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
 
 ```php
 <?php
 
-// Retrieves all robots
+// Restituiamo tutti i robots
 $app->get(
     '/api/robots',
     function () use ($app) {
@@ -280,7 +280,7 @@ The searching by name handler would look like [File: `index.php`]:
 ```php
 <?php
 
-// Searches for robots with $name in their name
+// Ricerca robots con $name nel nome
 $app->get(
     '/api/robots/search/{name}',
     function ($name) use ($app) {
@@ -314,7 +314,7 @@ Searching by the field `id` it's quite similar, in this case, we're also notifyi
 
 use Phalcon\Http\Response;
 
-// Retrieves robots based on primary key
+// Restituiamo i robots in base alla chiave primaria
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -329,19 +329,19 @@ $app->get(
 
 
 
-        // Create a response
+        // Creiamo la risposta
         $response = new Response();
 
         if ($robot === false) {
             $response->setJsonContent(
                 [
-                    'status' => 'NOT-FOUND'
+                    'status' => 'NON-TROVATO'
                 ]
             );
         } else {
             $response->setJsonContent(
                 [
-                    'status' => 'FOUND',
+                    'status' => 'TROVATO',
                     'data'   => [
                         'id'   => $robot->id,
                         'name' => $robot->name
@@ -366,7 +366,7 @@ Taking the data as a JSON string inserted in the body of the request, we also us
 
 use Phalcon\Http\Response;
 
-// Adds a new robot
+// Aggiungiamo un nuovo robot
 $app->post(
     '/api/robots',
     function () use ($app) {
@@ -383,12 +383,12 @@ $app->post(
             ]
         );
 
-        // Create a response
+        // Creiamo la risposta
         $response = new Response();
 
-        // Check if the insertion was successful
+        // Controlliamo se l'inserimento ha successo
         if ($status->success() === true) {
-            // Change the HTTP status
+            // Cambiamo lo status HTTP
             $response->setStatusCode(201, 'Created');
 
             $robot->id = $status->getModel()->id;
@@ -400,10 +400,10 @@ $app->post(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // Cambiamo lo status HTTP
             $response->setStatusCode(409, 'Conflict');
 
-            // Send errors to the client
+            // Mandiamo gli errori al client
             $errors = [];
 
             foreach ($status->getMessages() as $message) {
@@ -434,7 +434,7 @@ The data update is similar to insertion. The `id` passed as parameter indicates 
 
 use Phalcon\Http\Response;
 
-// Updates robots based on primary key
+// Aggiornaiamo i robots in base alla chiave primaria
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -452,10 +452,10 @@ $app->put(
             ]
         );
 
-        // Create a response
+        // Creiamo la risposta
         $response = new Response();
 
-        // Check if the insertion was successful
+        // Controlliamo se l'inserimento ha successo
         if ($status->success() === true) {
             $response->setJsonContent(
                 [
@@ -463,7 +463,7 @@ $app->put(
                 ]
             );
         } else {
-            // Change the HTTP status
+            //  Cambiamo lo status HTTP
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -496,7 +496,7 @@ The data delete is similar to update. The `id` passed as parameter indicates wha
 
 use Phalcon\Http\Response;
 
-// Deletes robots based on primary key
+// Cancelliamo i robots in base alla chiave primaria
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
@@ -509,7 +509,7 @@ $app->delete(
             ]
         );
 
-        // Create a response
+        // Creiamo la risposta
         $response = new Response();
 
         if ($status->success() === true) {
@@ -519,7 +519,7 @@ $app->delete(
                 ]
             );
         } else {
-            // Change the HTTP status
+            // Cambiamo lo status HTTP
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
@@ -557,7 +557,7 @@ Now we will create database for our application. Run SQL queries as follows:
 
 <a name='testing'></a>
 
-## Testing our Application
+## Proviamo la nostra applicazione
 
 Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
 
