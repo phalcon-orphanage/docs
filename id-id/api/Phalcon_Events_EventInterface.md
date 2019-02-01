@@ -6,15 +6,15 @@ title: 'Phalcon\Events\EventInterface'
 ---
 # Interface **Phalcon\Events\EventInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getData** ()
+abstrak publik **getName** ()
 
 ...
 
-abstract public **setData** ([*mixed* $data])
+abstract umum$data$name$name$name **setName** (*mixed* $nama])
 
 ...
 
@@ -22,18 +22,18 @@ abstract public **getType** ()
 
 ...
 
-abstract public **setType** (*mixed* $type)
+abstract umum **Jenisaturan** (*bentuk*$type)
 
 ...
 
-abstract public **stop** ()
+abstrak publik 0 berhenti 0
 
 ...
 
-abstract public **isStopped** ()
+abstrak public **IsSteded </ 0> ()</p> 
 
 ...
 
-abstract public **isCancelable** ()
+abstrak publik **hasDefault** ()
 
 ...
