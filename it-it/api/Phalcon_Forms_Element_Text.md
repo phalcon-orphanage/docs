@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Text'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
 
 Component INPUT[type=text] for forms
 
-## Methods
+## Metodi
 
 public **render** ([*array* $attributes])
 
