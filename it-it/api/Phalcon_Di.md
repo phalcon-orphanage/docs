@@ -8,7 +8,7 @@ title: 'Phalcon\Di'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -41,7 +41,7 @@ $request = $di->getRequest();
 
 ```
 
-## Methods
+## Metodi
 
 public **__construct** ()
 
@@ -53,7 +53,7 @@ Sets the internal event manager
 
 public **getInternalEventsManager** ()
 
-Returns the internal event manager
+Ritorna il gestore di eventi
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
