@@ -6,7 +6,7 @@ title: 'Phalcon\Security\Random'
 ---
 # Class **Phalcon\Security\Random**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 Secure random number generator class.
 
@@ -17,7 +17,7 @@ It supports following secure random number generators:
 - random_bytes (PHP 7)
 - libsodium
 - openssl, libressl
-- /dev/urandom
+- / dev/urandom
 
 `Phalcon\Security\Random` could be mainly useful for:
 
