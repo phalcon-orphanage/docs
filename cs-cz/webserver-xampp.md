@@ -13,7 +13,7 @@ version: '4.0'
 
 <a name='phalcon'></a>
 
-## Stažení správné verze Phalcon frameworku
+## Download the right version of Phalcon
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
@@ -55,7 +55,7 @@ If you can see the phalcon version in the `phpinfo()` output, congratulations!, 
 
 <a name='screencast'></a>
 
-## Video
+## Screencast
 
 The following screencast is a step by step guide to install Phalcon on Windows:
 
@@ -72,4 +72,4 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 ## Související průvodci
 
 * [General Installation](/4.0/en/installation)
-* [Instalace: WAMP](/4.0/en/webserver-wamp)
+* [Installation on WAMP](/4.0/en/webserver-wamp)
