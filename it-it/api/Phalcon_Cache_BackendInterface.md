@@ -6,9 +6,9 @@ title: 'Phalcon\Cache\BackendInterface'
 ---
 # Interface **Phalcon\Cache\BackendInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
+[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backendinterface.zep)
 
-## Methods
+## Metodi
 
 abstract public **start** (*mixed* $keyName, [*mixed* $lifetime])
 
