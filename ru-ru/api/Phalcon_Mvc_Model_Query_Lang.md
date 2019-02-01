@@ -19,7 +19,7 @@ $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL("SELECT r.* FROM Robots 
 
 ```
 
-## Methods
+## Методы
 
 public static *string* **parsePHQL** (*string* $phql)
 
