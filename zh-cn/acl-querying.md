@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Querying an ACL
+## 查询ACL
 
 Once the list has been defined, we can query it to check if a particular operation has access to a particular subject and action. To do so, we need to use the `isAllowed()` method.
 
