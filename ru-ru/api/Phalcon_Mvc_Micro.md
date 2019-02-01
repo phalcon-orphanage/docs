@@ -30,7 +30,7 @@ $app->handle();
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
