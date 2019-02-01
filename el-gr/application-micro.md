@@ -21,7 +21,7 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 
@@ -69,7 +69,7 @@ Usually, the starting route in an application is the route `/`, and in most case
 $app->get(
     '/',
     function () {
-        echo '<h1>Καλώς ορίσατε!</h1>';
+        echo '<h1>Welcome!</h1>';
     }
 );
 ```
@@ -85,11 +85,11 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Χειρίζεται μιά αίτηση GET
+// Matches a GET request
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 ```
@@ -151,7 +151,7 @@ Finally we can use an anonymous function (as seen above) to handle the request
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 ```
@@ -162,7 +162,7 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        $context = "<h1>This is order: {$name}!</h1>";
         $app->response->setContext($context);
         $app->response->send();
     }
@@ -176,9 +176,9 @@ $app->get(
 We can define a function as our handler and attach it to a specific route.
 
 ```php
-// Με συνάρτηση
+// With a function
 function order_display($name) {
-    echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+    echo "<h1>This is order: {$name}!</h1>";
 }
 
 $app->get(
@@ -197,7 +197,7 @@ We can also use a static method as our handler as follows:
 class OrdersClass
 {
     public static function display($name) {
-        echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 }
 
@@ -217,7 +217,7 @@ We can also use a method in an object:
 class OrdersClass
 {
     public function display($name) {
-        echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 }
 
@@ -246,16 +246,16 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 $orders = new MicroCollection();
 
-// Ορισμός του κυρίου χειριστή π.χ. ένα αντικέιμενο ελεγκτή
+// Set the main handler. π.χ. a controller instance
 $orders->setHandler(new OrdersController());
 
-// Ορισμός κοινού προθέματος για όλες τις διαδρομές
+// Set a common prefix for all routes
 $orders->setPrefix('/orders');
 
-// Χρησιμοποίησε τη μέθοδο 'index' στον OrdersController
+// Use the method 'index' in OrdersController
 $orders->get('/', 'index');
 
-// Χρησιμοποίησς τη μέθοδο 'show' στον OrdersController
+// Use the method 'show' in OrdersController
 $orders->get('/display/{slug}', 'show');
 
 $app->mount($orders);
@@ -298,7 +298,7 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        $context = "<h1>This is order: {$name}!</h1>";
         $this->response->setContext($context);
 
         return $this->response;
@@ -453,10 +453,10 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_M
 
 $app->notFound(
     function () use ($app) {
-        $app->response->setStatusCode(404, 'Δε βρέηθκε');
+        $app->response->setStatusCode(404, 'Not Found');
         $app->response->sendHeaders();
 
-        $message = 'Δεν υπάρχει τίποτα εδώ για να δείτε. Πάντε παρακάτω....';
+        $message = 'Nothing to see here. Move along....';
         $app->response->setContent($message);
         $app->response->send();
     }
@@ -626,7 +626,7 @@ We have briefly seen above how parameters are defined in the routes. Parameters 
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 ```
@@ -634,20 +634,20 @@ $app->get(
 We can also enforce certain rules for each parameter by using regular expressions. The regular expression is set after the name of the parameter, separating it with `:`.
 
 ```php
-// Ταιριάζει το id της παραγγελείας
+// Match the order id
 $app->get(
     '/orders/display/{id:[0-9]+}',
     function ($id) {
-        echo "<h1>Αυτή είναι η παραγγελεία: #{$id}!</h1>";
+        echo "<h1>This is order: #{$id}!</h1>";
     }
 );
 
-// Ταιριάζει ένα αριθμητικό (4) χρόνο και ένα τίτλο (γράμματα)
+// Match a numeric (4) year and a title (alpha)
 $app->get(
     '/posts/{year:[0-9][4]}/{title:[a-zA-Z\-]+}',
     function ($year, $title) {
-        echo '<h1>Τίτλος: $title</h1>';
-        echo '<h2>Χρόνος: $year</h2>';
+        echo '<h1>Title: $title</h1>';
+        echo '<h2>Year: $year</h2>';
     }
 );
 ```
@@ -670,7 +670,7 @@ $app->post('/old/url',
 
 $app->post('/new/welcome',
     function () use ($app) {
-        echo 'Αυτό είναι το καινούργιο Καλώς Ορίσατε';
+        echo 'This is the new Welcome';
     }
 );
 ```
@@ -707,12 +707,12 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
 ```php
-// Δημιουργια διαδρομής με το όνομα 'show-order'
+// Set a route with the name 'show-order'
 $app
     ->get(
         '/orders/display/{id}',
         function ($id) use ($app) {
-            // ... Βρείτε την παραγγελία και προβάλλετε την
+            // ... Find the order and show it
         }
     )
     ->setName('show-order');
@@ -721,12 +721,12 @@ $app
 * We need to use the [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) component to generate URLs for the named routes.
 
 ```php
-// Χρησιμοποιήστε την ονομασμένη διαδρομή και παράγετε τη διεύθυμση URL από αυτή
+// Use the named route and produce a URL from it
 $app->get(
     '/',
     function () use ($app) {
         $url = sprintf(
-            '<a href="%s">Εμφάνιση παραγγελείας</a>',
+            '<a href="%s">Show the order</a>',
             $app->url->get(
                 [
                     'for' => 'show-order',
@@ -755,7 +755,7 @@ $app = new Micro();
 $app->get(
     '/',
     function () use ($app) {
-        $app->response->setContent('Γειαααα!!');
+        $app->response->setContent('Hello!!');
         $app->response->send();
     }
 );
@@ -786,7 +786,7 @@ $app->setDI($di);
 $app->get(
     '/',
     function () use ($app) {
-        // Διάβασε δεδομένα από το config
+        // Read a setting from the config
         echo $app->config->app_name;
     }
 );
@@ -794,7 +794,7 @@ $app->get(
 $app->post(
     '/contact',
     function () use ($app) {
-        $app->flash->success('Τι κάνεις Dave?');
+        $app->flash->success('What are you doing Dave?');
     }
 );
 ```
@@ -809,7 +809,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Δημιουρία υπηρεσίας για τη βάση δεδομένων
+// Setup the database service
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -849,7 +849,7 @@ Handlers may return raw responses using plain text, [Phalcon\Http\Response](api/
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Αυτή είναι η παραγγελεία: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 ```
@@ -895,16 +895,16 @@ You can use the `setContent` method of the response object to return the respons
 $app->get(
     '/show/data',
     function () {
-        // Δημιουργήστε μια νέα Ανταπόκριση
+        // Create a response
         $response = new Phalcon\Http\Response();
 
-        // Θέση επικεφαλίδα περιεχομένων με Content-Type
+        // Set the Content-Type header
         $response->setContentType('text/plain');
 
-        // Περάσετε το περιεχόμενο σε ένα αρχείο
+        // Pass the content of a file
         $response->setContent(file_get_contents('data.txt'));
 
-        // Επιστρέψετε την ανταπόκριση
+        // Return the response
         return $response;
     }
 );
@@ -924,7 +924,7 @@ $app->get(
         $app->response->setContentType('text/plain');
         $app->response->sendHeaders();
 
-        // Εκτυπώσετε το αρχείο
+        // Print a file
         readfile('data.txt');
     }
 );
@@ -944,14 +944,14 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Επιστρέψετε μια Ανταπόκριση
+// Return a response
 $app->get(
     '/welcome/index',
     function () {
         $response = new Response();
 
-        $response->setStatusCode(401, 'Μη εξουσιοδοτημένη πρόσβαση');
-        $response->setContent('Η πρόσβαση δεν επιτρέπεται');
+        $response->setStatusCode(401, 'Unauthorized');
+        $response->setContent('Access is not authorized');
 
         return $response;
     }
@@ -972,7 +972,7 @@ $app->get(
         $data = [
             'code'    => 401,
             'status'  => 'error',
-            'message' => 'Μη εξουσιοδοτημένη πρόσβαση',
+            'message' => 'Unauthorized access',
             'payload' => [],
         ];
 
@@ -995,14 +995,14 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 
 The following events are supported:
 
-| Όνομα γεγονότος    | Ενεργοποίηση                                                                         | Μπορεί να σταματήσει την λειτουργία; |
-| ------------------ | ------------------------------------------------------------------------------------ |:------------------------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet                                 |                 Ναι                  |
-| beforeExecuteRoute | δεν ο διαδρομή Χειριστής αντιστοιχιστεί Χειριστής έγκυρος ο εκτελέστηκε ακόμα        |                 Ναι                  |
-| afterExecuteRoute  | Handler just finished running                                                        |                 Όχι                  |
-| beforeNotFound     | Η διαδρομή δεν έχει βρεθεί                                                           |                 Ναι                  |
-| afterHandleRoute   | Route just finished executing                                                        |                 Ναι                  |
-| afterBinding       | Ενεργοποιήθηκε μετά από τη των σύνδεση μοντέλων, αλλά πριν την εκτέλεση του χειριστή |                 Ναι                  |
+| Όνομα γεγονότος    | Ενεργοποίηση                                                      | Μπορεί να σταματήσει την λειτουργία; |
+| ------------------ | ----------------------------------------------------------------- |:------------------------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |                 Ναι                  |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |                 Ναι                  |
+| afterExecuteRoute  | Handler just finished running                                     |                 Όχι                  |
+| beforeNotFound     | Route has not been found                                          |                 Ναι                  |
+| afterHandleRoute   | Route just finished executing                                     |                 Ναι                  |
+| afterBinding       | Triggered after models are bound but before executing the handler |                 Ναι                  |
 
 <a name='events-available-events-authentication'></a>
 
@@ -1087,11 +1087,11 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Γεγονός | Περιγραφή                                     |
-| ------- | --------------------------------------------- |
-| before  | Before the handler has been executed          |
-| after   | After the handler has been executed           |
-| final   | Μετά την αποστολή στον της απάντησης καλούντα |
+| Event  | Περιγραφή                                      |
+| ------ | ---------------------------------------------- |
+| before | Before the handler has been executed           |
+| after  | After the handler has been executed            |
+| final  | After the response has been sent to the caller |
 
 <h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 
@@ -1778,7 +1778,7 @@ $app = new Phalcon\Mvc\Micro();
 $app->get(
     '/',
     function () {
-        throw new \Exception('Σφάλμα....', 401);
+        throw new \Exception('Some error happened', 401);
     }
 );
 
