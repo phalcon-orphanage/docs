@@ -30,11 +30,11 @@ This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. Th
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** ()
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -78,7 +78,7 @@ Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName)
 
-设置默认操作名称
+Sets the default action name
 
 public **setActionName** (*mixed* $actionName)
 
@@ -170,7 +170,7 @@ Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward)
 
-将转发到另一个的控制器操作的执行流程。
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
