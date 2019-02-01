@@ -87,29 +87,29 @@ use Phalcon\Assets\Collection;
 $collection = new Collection();
 
 $resource = new Resource("js", "js/jquery.js");
-$resource->has($resource); // true
+$resource->has($resource); // verdadero
 
 ```
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Adds a CSS resource to the collection
+Agrega un recurso CSS a la colección
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline CSS to the collection
+Agrega un CSS en línea a la colección
 
 public [Phalcon\Assets\Collection](Phalcon_Assets_Collection) **addJs** (*string* $path, [*boolean* $local], [*boolean* $filter], [*array* $attributes])
 
-Adds a javascript resource to the collection
+Agrega un recurso javascript a la colección
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Adds an inline javascript to the collection
+Agrega un javascript en línea a la colección
 
 public **count** ()
 
-Returns the number of elements in the form
+Devuelve la cantidad de elementos en el formulario
 
 public **rewind** ()
 
@@ -117,7 +117,7 @@ Rebobina el iterador interno
 
 public **current** ()
 
-Returns the current resource in the iterator
+Devuelve el actual recurso en el iterador
 
 public *int* **key** ()
 
@@ -129,52 +129,52 @@ Mueve el puntero interno de iteración a la siguiente posición
 
 public **valid** ()
 
-Check if the current element in the iterator is valid
+Verificar si el elemento actual en el iterador es válido
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the target path of the file for the filtered/join output
+Establece la ruta de destino del archivo de la salida filtrada o adjuntada
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets a base source path for all the resources in this collection
+Establece una ruta base de origen para todos los recursos de esta colección
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+Establece un identificador uri de destino para el HTML generado
 
 public **setPrefix** (*mixed* $prefix)
 
-Sets a common prefix for all the resources
+Establece un prefijo común para todos los recursos
 
 public **setLocal** (*mixed* $local)
 
-Sets if the collection uses local resources by default
+Establece si la colección utiliza los recursos locales por defecto
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Establece los atributos HTML extras
 
 public **setFilters** (*array* $filters)
 
-Sets an array of filters in the collection
+Establece una arreglo de filtros en la colección
 
 public **setTargetLocal** (*mixed* $targetLocal)
 
-Sets the target local
+Establece el destino local
 
 public **join** (*mixed* $join)
 
-Sets if all filtered resources in the collection must be joined in a single result file
+Define si todos recursos filtrados de la colección deben estar Unidos en un archivo final único
 
 public **getRealTargetPath** (*mixed* $basePath)
 
-Returns the complete location where the joined/filtered collection must be written
+Devuelve la ubicación completa donde la colección unida/filtrada debe estar grabada
 
 public **addFilter** ([Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface) $filter)
 
-Adds a filter to the collection
+Añade un filtro a la colección
 
 final protected **addResource** ([Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface) $resource)
 
-Adds a resource or inline-code to the collection
+Agrega un recurso o código en línea a la colección
