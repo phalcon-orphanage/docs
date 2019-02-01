@@ -27,7 +27,7 @@ if ($image->save()) {
 
 ```
 
-## Методы
+## Methods
 
 public static **check** ()
 
