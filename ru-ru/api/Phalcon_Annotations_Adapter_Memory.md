@@ -14,7 +14,7 @@ title: 'Phalcon\Annotations\Adapter\Memory'
 
 Stores the parsed annotations in memory. This adapter is the suitable development/testing
 
-## Methods
+## Методы
 
 public **read** (*mixed* $key)
 
