@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\ValidationFailed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
 
 This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
 
@@ -30,7 +30,7 @@ Returns the complete group of messages produced in the validation
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Klonuj wyjątek
+Clone the exception
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
