@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\SubjectAware'
 ---
 # Interface **Phalcon\Acl\SubjectAware**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectaware.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/subjectaware.zep)
 
-## Methods
+## روش ها
 
 ```php
 abstract public getSubjectName()
