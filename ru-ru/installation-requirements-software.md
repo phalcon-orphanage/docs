@@ -4,13 +4,13 @@ language: 'ru-ru'
 version: '4.0'
 category: 'installation'
 ---
-# Установка
+# Installation
 
 * * *
 
-## Требования
+## Requirements
 
-### Программное обеспечение
+### Software
 
 > You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. {: .alert .alert-danger }
 
