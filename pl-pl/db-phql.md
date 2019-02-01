@@ -25,7 +25,7 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 
 <a name='usage'></a>
 
-## Przykład użycia
+## Usage Example
 
 To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
@@ -200,7 +200,7 @@ $query = $manager->createQuery($phql);
 
 <a name='result-types'></a>
 
-### Typy Wyników
+### Result Types
 
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
 
@@ -288,7 +288,7 @@ foreach ($result as $row) {
 
 <a name='joins'></a>
 
-### Łączenie tabel (ang. Joins)
+### Joins
 
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
 
@@ -385,7 +385,7 @@ WHERE `artists`.`genre` = 'Trip-Hop'
 
 <a name='aggregations'></a>
 
-### Agregacje
+### Aggregations
 
 The following examples show how to use aggregations in PHQL:
 
@@ -559,7 +559,7 @@ if ($result->success() === false) {
 
 <a name='updating-data'></a>
 
-## Aktualizuj dane
+## Updating Data
 
 Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
 
@@ -641,7 +641,7 @@ $success = $process();
 
 <a name='deleting-data'></a>
 
-## Usuń dane
+## Deleting Data
 
 When a record is deleted the events related to the delete operation will be executed for each row:
 
