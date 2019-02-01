@@ -10,7 +10,7 @@ title: 'Phalcon\Di\Service\Builder'
 
 This class builds instances based on complex definitions
 
-## Методы
+## Methods
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 
