@@ -8,64 +8,64 @@ title: 'Phalcon\Db\Reference'
 
 *implements* [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
 
-Allows to define reference constraints on tables
+Memungkinkan untuk mendefinisikan batasan referensi pada tabel
 
 ```php
 <?php
 
-$reference = new \Phalcon\Db\Reference(
+$reference = baru \Phalcon\Db\Referensi(
     "field_fk",
     [
-        "referencedSchema"  => "invoicing",
-        "referencedTable"   => "products",
+        "referencedSchema"  => "faktur",
+        "referencedTable"   => "produk",
         "columns"           => [
-            "product_type",
-            "product_code",
+            "tipe produk",
+            "kode produk",
         ],
         "referencedColumns" => [
-            "type",
-            "code",
+            "tipe",
+            "kode",
         ],
     ]
 );
 
 ```
 
-## Methods
+## Metode
 
-public **getName** ()
+publik **getNama** ()
 
-Constraint name
+Nama kendala
 
 public **getSchemaName** ()
 
 ...
 
-public **getReferencedSchema** ()
+publik **getReferencedSchema** ()
 
 ...
 
-public **getReferencedTable** ()
+publik **getReferencedTable** ()
 
-Referenced Table
+Tabel yang direferensikan
 
-public **getColumns** ()
+publik **getColumns** ()
 
-Local reference columns
+Kolom referensi lokal
 
-public **getReferencedColumns** ()
+publik **getReferencedColumns** ()
 
-Referenced Columns
+Kolom yang direferensikan
 
-public **getOnDelete** ()
+publik **getOnDelete** ()
 
-ON DELETE
+DI HAPUS
 
-public **getOnUpdate** ()
+publik **getOnUpdate** ()
 
-ON UPDATE
+DI PERBARUI
 
 public **__construct** (*mixed* $name, *array* $definition)
 
