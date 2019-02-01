@@ -12,7 +12,7 @@ title: 'Phalcon\Forms\Element'
 
 This is a base class for form elements
 
-## Methods
+## Методы
 
 public **__construct** (*string* $name, [*array* $attributes])
 
@@ -30,7 +30,7 @@ public **setName** (*mixed* $name)
 
 Sets the element name
 
-public **getName** ()
+общественная **метод getname** ()
 
 Returns the element name
 
