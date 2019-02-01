@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Libmemcached'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/libmemcached.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/libmemcached.zep)
 
 Stores model meta-data in the Memcache.
 
@@ -39,7 +39,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Libmemcached(
 
 ```
 
-## Constants
+## ثابت ها
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -73,13 +73,13 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Libmemcached(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methods
+## روش ها
 
-public **__construct** ([*array* $options])
+عمومی **__ ساخت** ([*آرایه* $options])
 
 Phalcon\Mvc\Model\MetaData\Libmemcached constructor
 
-public **read** (*mixed* $key)
+عمومی **خواندن** (*مخلوط* $key)
 
 Reads metadata from Memcache
 
