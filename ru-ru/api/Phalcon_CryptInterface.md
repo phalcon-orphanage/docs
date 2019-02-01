@@ -8,7 +8,7 @@ title: 'Phalcon\CryptInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **setCipher** (*mixed* $cipher)
 
