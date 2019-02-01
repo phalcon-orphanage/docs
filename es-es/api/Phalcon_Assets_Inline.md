@@ -10,12 +10,12 @@ title: 'Phalcon\Assets\Inline'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
-Representa un activo en línea
+Represents an inline asset
 
 ```php
 <?php
 
-$inline = new \Phalcon\Assets\Inline("js", "alert('hola mundo');");
+$inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
@@ -43,16 +43,16 @@ Phalcon\Assets\Inline constructor
 
 public **setType** (*mixed* $type)
 
-Establece el tipo de activo en línea
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter)
 
-Establece si el recurso debe ser filtrado o no
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
-Establece los atributos HTML extras
+Sets extra HTML attributes
 
 public **getResourceKey** ()
 
-Obtiene la llave del recurso.
+Gets the resource's key.
