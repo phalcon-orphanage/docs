@@ -6,13 +6,13 @@ title: 'Phalcon\Logger\Item'
 ---
 # Class **Phalcon\Logger\Item**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
-Represents each item in a logging transaction
+Bir günlük işlemindeki her bir öğeyi temsil eder
 
-## Methods
+## Metodlar
 
-public **getType** ()
+genel **getType** ()
 
 Log type
 
