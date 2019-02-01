@@ -10,27 +10,27 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/firephp.zep)
 
 Formats messages so that they can be sent to FirePHP
 
-## Methoden
+## Methods
 
 public **getTypeString** (*mixed* $type)
 
-Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
+Returns the string meaning of a logger constant
 
 public **setShowBacktrace** ([*mixed* $isShow])
 
-Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
+Returns the string meaning of a logger constant
 
 public **getShowBacktrace** ()
 
-Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
+Returns the string meaning of a logger constant
 
 public **enableLabels** ([*mixed* $isEnable])
 
-Gibt die Zeichenfolge Bedeutung einer Protokollierungs-Konstanten zurück
+Returns the string meaning of a logger constant
 
 public **labelsEnabled** ()
 
@@ -42,4 +42,4 @@ Applies a format to a message before sending it to the log
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Interpoliert Kontext Werte in die Nachricht-Platzhalter
+Interpolates context values into the message placeholders
