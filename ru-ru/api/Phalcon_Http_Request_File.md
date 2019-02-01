@@ -33,7 +33,7 @@ class PostsController extends Controller
 
 ```
 
-## Methods
+## Методы
 
 public **getError** ()
 
@@ -49,7 +49,7 @@ public **getSize** ()
 
 Returns the file size of the uploaded file
 
-public **getName** ()
+общественная **метод getname** ()
 
 Returns the real name of the uploaded file
 
