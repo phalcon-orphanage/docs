@@ -35,7 +35,7 @@ $paginator = new NativeArray(
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** (*array* $config)
 
