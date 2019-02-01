@@ -6,9 +6,9 @@ title: 'Phalcon\Cache\FrontendInterface'
 ---
 # Interface **Phalcon\Cache\FrontendInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontendinterface.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontendinterface.zep)
 
-## Methods
+## Metodlar
 
 abstract public **getLifetime** ()
 
