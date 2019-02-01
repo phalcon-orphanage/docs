@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\File'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/file.zep)
 
 Adapter to store logs in plain text files
 
@@ -31,7 +31,7 @@ $logger->close();
 
 public **getPath** ()
 
-Ścieżka do pliku
+File Path
 
 public **__construct** (*string* $name, [*array* $options])
 
@@ -67,7 +67,7 @@ Sets the message formatter
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Zaczyna transakcję
+Starts a transaction
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
