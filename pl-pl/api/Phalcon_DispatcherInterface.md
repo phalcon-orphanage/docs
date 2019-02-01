@@ -6,7 +6,7 @@ title: 'Phalcon\DispatcherInterface'
 ---
 # Interface **Phalcon\DispatcherInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
 
 ## Metody
 
