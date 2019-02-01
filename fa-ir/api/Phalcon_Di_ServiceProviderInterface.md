@@ -6,9 +6,9 @@ title: 'Phalcon\Di\ServiceProviderInterface'
 ---
 # Interface **Phalcon\Di\ServiceProviderInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **register** ([Phalcon\DiInterface](Phalcon_DiInterface) $di)
 
