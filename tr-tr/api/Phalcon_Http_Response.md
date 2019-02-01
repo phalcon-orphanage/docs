@@ -8,7 +8,7 @@ title: 'Phalcon\Http\Response'
 
 *implements* [Phalcon\Http\ResponseInterface](Phalcon_Http_ResponseInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
 
 Part of the HTTP cycle is return responses to the clients. Phalcon\HTTP\Response is the Phalcon component responsible to achieve this task. HTTP responses are usually composed by headers and body.
 
@@ -24,7 +24,7 @@ $response->send();
 
 ```
 
-## Methods
+## Metodlar
 
 public **__construct** ([*mixed* $content], [*mixed* $code], [*mixed* $status])
 
@@ -32,7 +32,7 @@ Phalcon\Http\Response constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** ()
 
@@ -40,7 +40,7 @@ Returns the internal dependency injector
 
 public **setStatusCode** (*mixed* $code, [*mixed* $message])
 
-Sets the HTTP response code
+HTTP yanıt kodunu ayarlar
 
 ```php
 <?php
@@ -51,7 +51,7 @@ $response->setStatusCode(404, "Not Found");
 
 public **getStatusCode** ()
 
-Returns the status code
+Durum kodunu döndürür
 
 ```php
 <?php
@@ -68,7 +68,7 @@ Sets a headers bag for the response externally
 
 public **getHeaders** ()
 
-Returns headers set by the user
+Kullanıcı tarafından ayarlanan üst bilgileri geri döndürür
 
 public **getReasonPhrase** (): *string* | *null*
 
@@ -86,11 +86,11 @@ Sets a cookies bag for the response externally
 
 public [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
-Returns cookies set by the user
+Kullanıcı tarafından ayarlanan çerezleri döndürür
 
 public **setHeader** (*mixed* $name, *mixed* $value)
 
-Overwrites a header in the response
+Yanıtta bir başlığın üzerine yazar
 
 ```php
 <?php
@@ -101,7 +101,7 @@ $response->setHeader("Content-Type", "text/plain");
 
 public **setRawHeader** (*mixed* $header)
 
-Send a raw header to the response
+Yanıt için ham bir başlık gönder
 
 ```php
 <?php
@@ -112,11 +112,11 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 
 public **resetHeaders** ()
 
-Resets all the established headers
+Kurulu tüm başlıkları sıfırlar
 
 public **setExpires** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
-Sets an Expires header in the response that allows to use the HTTP cache
+HTTP ön belleğini kullanmasına izin veren yanıtta bir Expires başlığını ayarlar
 
 ```php
 <?php
@@ -242,26 +242,26 @@ public **appendContent** (*mixed* $content)
 
 Appends a string to the HTTP response body
 
-public **getContent** ()
+herkese açık **İçeriğe Eriş** ()
 
 Gets the HTTP response body
 
 public **isSent** ()
 
-Check if the response is already sent
+Yanıtın zaten gönderilip gönderilmediğini kontrol edin
 
 public **sendHeaders** ()
 
-Sends headers to the client
+Başlıkları istemciye gönderir
 
 public **sendCookies** ()
 
-Sends cookies to the client
+İstemciye çerez gönderir
 
 public **send** ()
 
-Prints out HTTP response to the client
+İstemciye HTTP yanıtını yazdırır
 
 public **setFileToSend** (*mixed* $filePath, [*mixed* $attachmentName], [*mixed* $attachment])
 
-Sets an attached file to be sent at the end of the request
+İsteğin sonunda gönderilecek bir ek dosyayı ayarlar
