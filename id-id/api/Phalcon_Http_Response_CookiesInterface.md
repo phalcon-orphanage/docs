@@ -6,11 +6,11 @@ title: 'Phalcon\Http\Response\CookiesInterface'
 ---
 # Interface **Phalcon\Http\Response\CookiesInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **useEncryption** (*mixed* $useEncryption)
+abstrak publik **menggunakanEnkripsi** (*campuran* $useEncryption)
 
 ...
 
@@ -22,22 +22,22 @@ abstract public **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*m
 
 ...
 
-abstract public **get** (*mixed* $name)
+abstrak publik **dapatkan** (*dicampur* $name)
 
 ...
 
-abstract public **has** (*mixed* $name)
+abstraksi umum **has** (*mixed* $name)
 
 ...
 
-abstract public **delete** (*mixed* $name)
+abstrak publik **hapus** (*campuran* $name)
 
 ...
 
-abstract public **send** ()
+abstrak publik **kirim** ()
 
 ...
 
-abstract public **reset** ()
+abstrak publik **reset** ()
 
 ...
