@@ -10,14 +10,14 @@ title: 'Phalcon\Mvc\Micro'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
 
-With Phalcon you can create "Micro-Framework like" applications. By doing this, you only need to write a minimal amount of code to create a PHP application. Micro applications are suitable to small applications, APIs and prototypes in a practical way.
+Dengan Phalcon Anda bisa membuat aplikasi "Micro-Framework like". Dengan melakukan ini, anda hanya perlu tuliskan jumlah minimal kode untuk membuat aplikasi PHP. Aplikasi mikro yang cocok untuk aplikasi kecil, API dan prototip dengan cara yang praktis.
 
 ```php
 <?php
 
-$app = new \Phalcon\Mvc\Micro();
+$app = = baru \Phalcon\ Mvc\Micro();
 
 $app->get(
     "/say/welcome/{name}",
@@ -26,11 +26,11 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->menangani();
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -38,99 +38,99 @@ Phalcon\Mvc\Micro constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **map** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler without any HTTP method constraint
+Peta rute ke pengendali tanpa batasan metode HTTP
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **get** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is GET
+Peta rute ke handler yang hanya cocok jika metode HTTP nya adalah GET
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **post** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is POST
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah POST
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **put** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is PUT
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah PUT
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **patch** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is PATCH
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah PATCH
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **head** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is HEAD
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah HEAD
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **delete** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is DELETE
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah DELETE
 
 public [Phalcon\Mvc\Router\RouteInterface](Phalcon_Mvc_Router_RouteInterface) **options** (*string* $routePattern, *callable* $handler)
 
-Maps a route to a handler that only matches if the HTTP method is OPTIONS
+Peta rute ke handler yang hanya cocok jika metode HTTP adalah OPTIONS
 
 public **mount** ([Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface) $collection)
 
-Mounts a collection of handlers
+Menaikkan koleksi dari penangan
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **notFound** (*callable* $handler)
 
-Sets a handler that will be called when the router doesn't match any of the defined routes
+Menetapkan handler yang akan dipanggil saat router tidak sesuai dengan rute yang ditentukan
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **error** (*callable* $handler)
 
-Sets a handler that will be called when an exception is thrown handling the route
+Menetapkan handler yang akan dipanggil saat dikecualikan dilemparkan penanganan rute
 
-public **getRouter** ()
+publik **mendapatkan** ()
 
-Returns the internal router used by the application
+Mengembalikan router internal yang digunakan oleh aplikasi
 
 public [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) **setService** (*string* $serviceName, *mixed* $definition, [*boolean* $shared])
 
-Sets a service from the DI
+Menetapkan layanan dari DI
 
-public **hasService** (*mixed* $serviceName)
+publik **memilikiLayanan** (*campuran* $serviceName)
 
-Checks if a service is registered in the DI
+Memeriksa apakah layanan terdaftar di DI
 
-public *object* **getService** (*string* $serviceName)
+publik *object* **getService** (*tali* $serviceName)
 
-Obtains a service from the DI
+Mendapatkan layanan dari DI
 
-public *mixed* **getSharedService** (*string* $serviceName)
+publik *campuran* **mendapatkanLayananBersama** (*tali* $serviceName)
 
-Obtains a shared service from the DI
+Mendapatkan layanan bersama dari DI
 
-public *mixed* **handle** ([*string* $uri])
+publik *campuran* **menangani** ([*tali* $uri])
 
-Handle the whole request
+Tangani seluruh permintaan
 
-public **stop** ()
+publik ** berhenti ** ()
 
-Stops the middleware execution avoiding than other middlewares be executed
+Menghentikan middleware menghindari menghindari middlewares lainnya dieksekusi
 
-public **setActiveHandler** (*callable* $activeHandler)
+publik **aturActiveHandler** (*callable* $activeHandler)
 
-Sets externally the handler that must be called by the matched route
+Mengatur secara eksternal pawang yang harus dipanggil oleh rute yang cocok
 
-public *callable* **getActiveHandler** ()
+publik *callable* **getActiveHandler** ()
 
-Return the handler that will be called for the matched route
+Kembalikan pawang yang akan dipanggil untuk rute yang cocok
 
 public *mixed* **getReturnedValue** ()
 
-Returns the value returned by the executed handler
+Mengembalikan nilai yang dikembalikan oleh pengendali yang dieksekusi
 
 public *boolean* **offsetExists** (*string* $alias)
 
-Check if a service is registered in the internal services container using the array syntax
+Periksa apakah layanan terdaftar di wadah layanan internal menggunakan array syntax
 
 public **offsetSet** (*string* $alias, *mixed* $definition)
 
-Allows to register a shared service in the internal services container using the array syntax
+Memungkinkan untuk mendaftarkan layanan bersama di wadah layanan internal menggunakan array syntax
 
 ```php
 <?php
@@ -141,7 +141,7 @@ $app["request"] = new \Phalcon\Http\Request();
 
 public *mixed* **offsetGet** (*string* $alias)
 
-Allows to obtain a shared service in the internal services container using the array syntax
+Memungkinkan untuk mendapatkan layanan bersama di kontainer layanan internal menggunakan array syntax
 
 ```php
 <?php
@@ -154,60 +154,60 @@ var_dump(
 
 public **offsetUnset** (*string* $alias)
 
-Removes a service from the internal services container using the array syntax
+Menghapus layanan dari Internal layanan kontener menggunakan array syntax
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **before** (*callable* $handler)
 
-Appends a before middleware to be called before execute the route
+Menambahkan middleware sebelum dipanggil sebelum menjalankan rute
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **afterBinding** (*callable* $handler)
 
-Appends a afterBinding middleware to be called after model binding
+Menambahkan middleware setelah Binding dipanggil model setelah mengikat
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **after** (*callable* $handler)
 
-Appends an 'after' middleware to be called after execute the route
+Menambahkan middleware 'setelah' dipanggil setelah menjalankan rute
 
 public [Phalcon\Mvc\Micro](Phalcon_Mvc_Micro) **finish** (*callable* $handler)
 
-Appends a 'finish' middleware to be called when the request is finished
+Menambahkan middleware 'selesai' untuk dipanggil ketika permintaan selesai
 
-public **getHandlers** ()
+publik **getHandlers** ()
 
-Returns the internal handlers attached to the application
+Mengembalikan internal handlers yang di pakai aplikasi
 
 public **getModelBinder** ()
 
-Gets model binder
+Mendapat model map
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
 
-Sets model binder
+Ubah model map
 
 ```php
-<?php
+<php
 
-$micro = new Micro($di);
-$micro->setModelBinder(new Binder(), 'cache');
+$micro = Mikro baru($di);
+$micro->setModelBinder(Map baru(), 'sampah');
 
 ```
 
 public **getBoundModels** ()
 
-Returns bound models from binder instance
+Mengembalikan model terikat dari contoh pengikat
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal dependency injector
+Mengembalikan injector ketergantungan internal
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Sets the event manager
+Menyetel pengelola acara
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Returns the internal event manager
+Mengembalikan manajer acara internal
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Magic method __get
+Metode __get
