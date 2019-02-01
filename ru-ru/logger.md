@@ -19,7 +19,7 @@ category: 'logger'
     - [Syslog](logger-message-formatting-syslog)
     - [Custom](logger-message-formatting-custom)
 - [Interpolation](logger-interpolation)
-- [Примеры](logger-examples)
+- [Examples](logger-examples)
 
 * * *
 
