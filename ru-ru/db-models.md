@@ -7,19 +7,19 @@ version: '4.0'
 
 <a name='working-with'></a>
 
-# Working with Models
+# Работа с моделями
 
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используется для управления соответствующей таблицей базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении. Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is the base for all models in a Phalcon application. It provides database independence, basic CRUD functionality, advanced finding capabilities, and the ability to relate models to one another, among other services. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) avoids the need of having to use SQL statements because it translates methods dynamically to the respective database engine operations.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) является базовым классом для всех моделей в приложении Phalcon. Он обеспечивает независимость данных от вашей базы, основные CRUD операции, расширенные поисковые возможности, а также возможность построения зависимостей между моделями. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) исключает необходимость использования SQL запросов, потому как данный класс динамически переводит методы на соответствующие им операции СУБД.
 
 <h5 class='alert alert-warning'>Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the <a href="api/Phalcon_Db">Phalcon\Db</a> component documentation.</h5>
 
 <a name='creating'></a>
 
-## Creating Models
+## Создание моделей
 
-A model is a class that extends from [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
+Модель - это расширение класса [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). Its class name should be in camel case notation:
 
 ```php
 <?php
@@ -36,7 +36,7 @@ class RobotParts extends Model
 
 <h5 class='alert alert-warning'>If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation. </h5>
 
-By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
+По умолчанию модель `Store\Toys\RobotParts` будет ссылаться на таблицу `robot_parts`. Если вы хотите вручную указать другое имя для таблицы, вы можете использовать метод `setSource()`:
 
 ```php
 <?php
@@ -54,9 +54,9 @@ class RobotParts extends Model
 }
 ```
 
-The model `RobotParts` now maps to `toys_robot_parts` table. The `initialize()` method helps with setting up this model with a custom behavior i.e. a different table.
+Теперь модель `RobotParts` сопоставляется с таблицей `toys_robot_parts`. Метод `initialize()` помогает сопоставить эту модель с пользовательским поведением, т.е. с другой таблицей.
 
-The `initialize()` method is only called once during the request. This method is intended to perform initializations that apply for all instances of the model created within the application. If you want to perform initialization tasks for every instance created you can use the `onConstruct()` method:
+Метод `initialize()` вызывается только один раз во время запроса. Этот метод предназначен для инициализации экземпляров модели в приложении. Если вам необходимо произвести некоторые настройки экземпляра объекта после того, как он создан, вы можете использовать метод `onConstruct()`:
 
 ```php
 <?php
@@ -78,7 +78,7 @@ class RobotParts extends Model
 
 ### Public properties vs. Setters/Getters
 
-Models can be implemented public properties, meaning that each property can be read/updated from any part of the code that has instantiated that model class:
+Модели могут быть реализованы с помощью публичных свойств, при этом свойства модели доступны для чтения/изменения из любой части кода без ограничений:
 
 ```php
 <?php
@@ -97,7 +97,7 @@ class Robots extends Model
 }
 ```
 
-Another implementation is to use getters and setter functions, which control which properties are publicly available for that model. The benefit of using getters and setters is that the developer can perform transformations and validation checks on the values set for the model, which is impossible when using public properties. Additionally getters and setters allow for future changes without changing the interface of the model class. So if a field name changes, the only change needed will be in the private property of the model referenced in the relevant getter/setter and nowhere else in the code.
+Другая реализация заключается в использовании сеттеров и геттеров, которые управляют тем, какие свойства доступны публично для этой модели. Преимуществом использования геттеров и сеттеров является то, что разработчик может выполнять преобразования и проверки правильности значений, установленных для модели, что невозможно когда используются публичные свойства. Кроме того геттеры и сеттеры позволяют в будущем вносить изменения не меняя интерфейс класса модели. Таким образом, если поменять имя поля, необходимо единственное изменение в закрытом свойстве модели, на которую ссылается соответствующий геттер/сеттер, и больше нигде в коде.
 
 ```php
 <?php
@@ -157,17 +157,17 @@ class Robots extends Model
 }
 ```
 
-Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. Developers can decide which strategy is more appropriate for the application they are creating, depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
+Публичные свойства обеспечивают меньше сложности в разработке. Тогда как геттеры/сеттеры могут значительно повысить тестируемость, расширяемость и удобство сопровождения приложений. Разработчик может решать какая стратегия является более подходящей для приложения, которое они создают, в зависимости от потребностей самого приложения. ORM совместим с обеими схемами определения свойств.
 
 <h5 class='alert alert-warning'>Underscores in property names can be problematic when using getters and setters. </h5>
 
-If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). As much of the system expects camel case, and underscores are commonly removed, it is recommended to name your properties in the manner shown throughout the documentation. You can use a column map (as described above) to ensure proper mapping of your properties to their database counterparts.
+Если вы используете подчеркивание в ваших именах свойств, вы должны использовать ВерблюжийРегистр для объявления ваших геттеров/сеттеров чтобы использовать их с магическими методами. (например `$model->getPropertyName` вместо `$model->getProperty_name`, `$model->findByPropertyName` вместо `$model->findByProperty_name`, и т.д.). Поскольку большая часть системы использует ВерблюжийРегистр и подчеркивания обычно удаляются, рекомендуется называть ваши свойства так, как показано в документации. Вы можете использовать карту столбцов(как показано выше) чтобы обеспечить правильное сопоставление ваших свойств с их столбцами в базе данных.
 
 <a name='records-to-objects'></a>
 
-## Understanding Records To Objects
+## Понимание записей в объектах
 
-Every instance of a model represents a row in the table. You can easily access record data by reading object properties. For example, for a table 'robots' with the records:
+Каждый экземпляр модели представляет собой строку в таблице. Вы можете легко получить доступ к данным записи, прочитав свойства объекта. Пример для таблицы 'robots' с записями:
 
 ```sql
 mysql> select * from robots;
@@ -181,7 +181,7 @@ mysql> select * from robots;
 3 rows in set (0.00 sec)
 ```
 
-You could find a certain record by its primary key and then print its name:
+Вы можете найти конкретную запись по ее первичному ключу и напечатать её имя:
 
 ```php
 <?php
@@ -209,13 +209,13 @@ $robot->name = 'RoboCop';
 $robot->save();
 ```
 
-As you can see, there is no need to use raw SQL statements. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides high database abstraction for web applications.
+Как вы видите, нет необходимости использовать операторы чистого SQL. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) обеспечивает высокий уровень абстракции базы данных для приложений.
 
 <a name='finding-records'></a>
 
-## Finding Records
+## Поиск записей
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) also offers several methods for querying records. The following examples will show you how to query one or more records from a model:
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) также предлагает несколько методов для поиска записей. Следующие примеры показывают вам как найти одну или несколько записей из модели:
 
 ```php
 <?php
@@ -309,22 +309,22 @@ $robots = Robots::find(
 
 Доступные параметры запроса:
 
-| Параметр      | Описание                                                                                                                                                                                                                | Пример                                                               |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `conditions`  | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. By default [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) assumes the first parameter are the conditions. | `'conditions' => "name LIKE 'steve%'"`                            |
-| `columns`     | Return specific columns instead of the full columns in the model. When using this option an incomplete object is returned                                                                                               | `'columns' => 'id, name'`                                         |
-| `bind`        | Используется вместе с условием поиска для подстановки значений вместо соответствующих псевдопеременных и экранирования значений для увеличения безопасности.                                                            | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
-| `bindTypes`   | При использовании подстановки значений вместо псевдопеременных, вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность.                                                   | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
-| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                              | `'order' => 'name DESC, status'`                                  |
-| `limit`       | Ограничивает результаты запроса.                                                                                                                                                                                        | `'limit' => 10`                                                   |
-| `offset`      | Смещает результаты запроса на определенное значение.                                                                                                                                                                    | `'offset' => 5`                                                   |
-| `group`       | Позволяет выбирать данные используя несколько записей и группировать результат по одному или нескольким столбцам.                                                                                                       | `'group' => 'name, status'`                                       |
-| `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                            | `'for_update' => true`                                            |
-| `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                               | `'shared_lock' => true`                                           |
-| `cache`       | Кэширует результаты, уменьшая нагрузку на реляционную систему.                                                                                                                                                          | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
-| `hydration`   | Устанавливает режим гидратации для представления каждой записи в результате.                                                                                                                                            | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
+| Параметр      | Описание                                                                                                                                                                                                                             | Пример                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `conditions`  | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. По умолчанию [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) предполагает что первый параметр является условием поиска. | `'conditions' => "name LIKE 'steve%'"`                            |
+| `columns`     | Возвращает конкретные столбцы вместо полного набора столбцов модели. При использовании этой опции возвращается не полный объект                                                                                                      | `'columns' => 'id, name'`                                         |
+| `bind`        | Используется вместе с условием поиска для подстановки значений вместо соответствующих псевдопеременных и экранирования значений для увеличения безопасности.                                                                         | `'bind' => ['status' => 'A', 'type' => 'some-time']`        |
+| `bindTypes`   | При использовании подстановки значений вместо псевдопеременных, вы можете использовать этот параметр, для указания типа данных, что еще больше увеличит безопасность.                                                                | `'bindTypes' => [Column::BIND_PARAM_STR, Column::BIND_PARAM_INT]` |
+| `order`       | Is used to sort the resultset. Use one or more fields separated by commas.                                                                                                                                                           | `'order' => 'name DESC, status'`                                  |
+| `limit`       | Ограничивает результаты запроса.                                                                                                                                                                                                     | `'limit' => 10`                                                   |
+| `offset`      | Смещает результаты запроса на определенное значение.                                                                                                                                                                                 | `'offset' => 5`                                                   |
+| `group`       | Позволяет выбирать данные используя несколько записей и группировать результат по одному или нескольким столбцам.                                                                                                                    | `'group' => 'name, status'`                                       |
+| `for_update`  | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting exclusive locks on each row it reads                                                                                         | `'for_update' => true`                                            |
+| `shared_lock` | With this option, [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) reads the latest available data, setting shared locks on each row it reads                                                                                            | `'shared_lock' => true`                                           |
+| `cache`       | Кэширует результаты, уменьшая нагрузку на реляционную систему.                                                                                                                                                                       | `'cache' => ['lifetime' => 3600, 'key' => 'my-find-key']`   |
+| `hydration`   | Устанавливает режим гидратации для представления каждой записи в результате.                                                                                                                                                         | `'hydration' => Resultset::HYDRATE_OBJECTS`                       |
 
-If you prefer, there is also available a way to create queries in an object-oriented way, instead of using an array of parameters:
+Существует еще один вариант записи запросов поиска, в объектно-ориентированном стиле, вместо использования массива параметров:
 
 ```php
 <?php
@@ -339,11 +339,11 @@ $robots = Robots::query()
     ->execute();
 ```
 
-The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria) object that is friendly with IDE autocompleters.
+Статический метод `query()` возвращает объект [Phalcon\Mvc\Model\Criteria](api/Phalcon_Mvc_Model_Criteria), который дружественен к автокомплиту для IDE.
 
-All the queries are internally handled as [PHQL](/4.0/en/db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language provide you more features to perform queries like joining other models, define groupings, add aggregations etc.
+Все запросы внутри обрабатываются как [PHQL](/4.0/en/db-phql) запросы. PHQL это высокоуровневый, объектно-ориентированный, SQL подобный язык. Этот язык предоставляет вам больше возможностей для выполнения запросов, таких как объединение с другими моделями, определение группировок, добавление агрегации и т.д.
 
-Lastly, there is the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned earlier. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
+Наконец, имеется метод `findFirstBy<property-name>()`. Данный метод расширяет упомянутый ранее `findFirst()`. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column. An example is in order, so taking our Robots model mentioned earlier:
 
 ```php
 <?php
@@ -384,7 +384,7 @@ Notice that we used 'Name' in the method call and passed the variable `$name` to
 
 <a name='resultsets'></a>
 
-### Model Resultsets
+### Возвращение результатов моделью
 
 While `findFirst()` returns directly an instance of the called class (when there is data to be returned), the `find()` method returns a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This is an object that encapsulates all the functionality a resultset has like traversing, seeking specific records, counting, etc.
 
@@ -540,7 +540,7 @@ $this->view->mydata = $robots->getSomeData();
 
 <a name='filters'></a>
 
-### Filtering Resultsets
+### Фильтрация результатов
 
 The most efficient way to filter data is setting some search criteria, databases will use indexes set on tables to return data faster. Phalcon additionally allows you to filter the data using PHP using any resource that is not available in the database:
 
@@ -561,7 +561,7 @@ $customers = $customers->filter(
 
 <a name='binding-parameters'></a>
 
-### Binding Parameters
+### Подготавливаемые запросы
 
 Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. Связывание параметров может быть легко достигнуто следующим образом:
 
@@ -691,7 +691,7 @@ $robots = Robots::findByName('Ultron');
 
 <a name='preparing-records'></a>
 
-## Initializing/Preparing fetched records
+## Инициализация/изменение полученных записей
 
 May be the case that after obtaining a record from the database is necessary to initialise the data before being used by the rest of the application. You can implement the `afterFetch()` method in a model, this event will be executed just after create the instance and assign the data to it:
 
@@ -756,7 +756,7 @@ class Robots extends Model
 
 <a name='calculations'></a>
 
-## Generating Calculations
+## Использование расчетов
 
 Calculations (or aggregations) are helpers for commonly used functions of database systems such as `COUNT`, `SUM`, `MAX`, `MIN` or `AVG`. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) allows to use these functions directly from the exposed methods.
 
@@ -923,7 +923,7 @@ $salary = Employees::minimum(
 
 <a name='create-update-records'></a>
 
-## Creating/Updating Records
+## Создание/обновление записей
 
 The `Phalcon\Mvc\Model::save()` method allows you to create/update records according to whether they already exist in the table associated with a model. The save method is called internally by the create and update methods of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). For this to work as expected it is necessary to have properly defined a primary key in the entity to determine whether a record should be updated or created.
 
@@ -1005,7 +1005,7 @@ $robot->save(
 
 <a name='create-update-with-confidence'></a>
 
-### Create/Update with Confidence
+### Создание/обновление с уверенностью
 
 When an application has a lot of competition, we could be expecting create a record but it is actually updated. This could happen if we use `Phalcon\Mvc\Model::save()` to persist the records in the database. If we want to be absolutely sure that a record is created or updated, we can change the `save()` call with `create()` or `update()`:
 
@@ -1038,7 +1038,7 @@ The methods `create` and `update` also accept an array of values as parameter.
 
 <a name='delete-records'></a>
 
-## Deleting Records
+## Удаление записей
 
 The `Phalcon\Mvc\Model::delete()` method allows to delete a record. You can use it as follows:
 
@@ -1123,7 +1123,7 @@ class Robots extends Model
 
 <a name='hydration-modes'></a>
 
-## Hydration Modes
+## Режимы гидрации
 
 As mentioned previously, resultsets are collections of complete objects, this means that every returned result is an object representing a row in the database. These objects can be modified and saved again to persistence:
 
@@ -1224,7 +1224,7 @@ echo $robots->getSource(); // will return wp_robots
 
 <a name='identity-columns'></a>
 
-## Auto-generated identity columns
+## Автоматически генерируемый столбец
 
 Some models may have identity columns. These columns usually are the primary key of the mapped table. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can recognize the identity column omitting it in the generated SQL `INSERT`, so the database system can generate an auto-generated value for it. Always after creating a record, the identity field will be registered with the value generated in the database system for it:
 
@@ -1258,7 +1258,7 @@ class Robots extends Model
 
 <a name='skipping-columns'></a>
 
-## Skipping Columns
+## Пропуск столбцов
 
 To tell [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that always omits some fields in the creation and/or update of records in order to delegate the database system the assignation of the values by a trigger or a default:
 
@@ -1341,7 +1341,7 @@ class Robots extends Model
 
 <a name='dynamic-updates'></a>
 
-## Dynamic Updates
+## Динамические обновления
 
 SQL `UPDATE` statements are by default created with every column defined in the model (full all-field SQL update). You can change specific models to make dynamic updates, in this case, just the fields that had changed are used to create the final SQL statement.
 
@@ -1365,7 +1365,7 @@ class Robots extends Model
 
 <a name='column-mapping'></a>
 
-## Independent Column Mapping
+## Независимое сопоставление столбцов
 
 The ORM supports an independent column map, which allows the developer to use different column names in the model to the ones in the table. Phalcon will recognize the new column names and will rename them accordingly to match the respective columns in the database. This is a great feature when one needs to rename fields in the database without having to worry about all the queries in the code. A change in the column map in the model will take care of the rest. For example:
 
@@ -1449,7 +1449,7 @@ The independent column map allows you to:
 
 <a name='record-snapshots'></a>
 
-## Record Snapshots
+## Запись снимков
 
 Specific models could be set to maintain a record snapshot when they're queried. You can use this feature to implement auditing or just to know what fields are changed according to the data queried from the persistence:
 
@@ -1549,7 +1549,7 @@ array(0) {
 
 <a name='different-schemas'></a>
 
-## Pointing to a different schema
+## Ссылка на другую схему
 
 If a model is mapped to a table that is in a different schemas/databases than the default. You can use the `setSchema()` method to define that:
 
@@ -1738,7 +1738,7 @@ The `notSaved` event is triggered every time that a `create` or `update` action 
 
 <a name='disabling-enabling-features'></a>
 
-## Disabling/Enabling Features
+## Отключение/включение возможностей
 
 In the ORM we have implemented a mechanism that allow you to enable/disable specific features or options globally on the fly. According to how you use the ORM you can disable that you aren't using. These options can also be temporarily disabled if required:
 
@@ -1787,7 +1787,7 @@ The available options are:
 
 <a name='stand-alone-component'></a>
 
-## Stand-Alone component
+## Самостоятельный компонент
 
 Using [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) in a stand-alone mode can be demonstrated below:
 
