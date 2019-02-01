@@ -4,11 +4,11 @@ language: 'cs-cz'
 version: '4.0'
 category: 'installation'
 ---
-# Instalace
+# Installation
 
 * * *
 
-## Požadavky
+## Requirements
 
 ### PSR
 
@@ -18,7 +18,7 @@ Phalcon requires the PSR extension. The extension can be downloaded and compiled
 extension=psr.so
 ```
 
-před
+before
 
 ```ini
 extension=phalcon.so
