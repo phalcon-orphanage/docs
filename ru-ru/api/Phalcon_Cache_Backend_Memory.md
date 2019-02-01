@@ -33,7 +33,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Methods
+## Методы
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
