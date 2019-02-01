@@ -34,7 +34,7 @@ Checks whether there are messages
 
 public **getMessages** ([*mixed* $type], [*mixed* $remove])
 
-Returns the messages in the session flasher
+Επιστρέφει μηνύματα τα στο φλας
 
 public **output** ([*mixed* $remove])
 
@@ -70,7 +70,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Returns the internal dependency injector
+Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
