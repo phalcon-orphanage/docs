@@ -3,7 +3,7 @@ layout: article
 language: 'id-id'
 version: '4.0'
 ---
-# New Pull Request
+# Tarik Permintaan Baru
 
 A pull request a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality
 
