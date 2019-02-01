@@ -6,24 +6,24 @@ title: 'Phalcon\Mvc\Micro\LazyLoader'
 ---
 # Class **Phalcon\Mvc\Micro\LazyLoader**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/lazyloader.zep)
 
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
-## Methods
+## Metode
 
-public **getDefinition** ()
+publik **getDefinition** ()
 
 ...
 
-public **__construct** (*mixed* $definition)
+publik **__construct** (*mixed* $definition)
 
 Phalcon\Mvc\Micro\LazyLoader constructor
 
-public *mixed* **__call** (*string* $method, *array* $arguments)
+publik *campuran* **__memanggil** (*tali* $method, *array* $arguments)
 
-Initializes the internal handler, calling functions on it
+Menginiliasasi handler internal, memangil fungsi di atasnya
 
 public *mixed* **callMethod** (*string* $method, *array* $arguments, [[Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder])
 
-Calling __call method
+Metode Calling __call
