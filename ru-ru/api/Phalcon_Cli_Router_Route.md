@@ -14,7 +14,7 @@ This class represents every route added to the router
 
 *string* **DEFAULT_DELIMITER**
 
-## Методы
+## Methods
 
 public **__construct** (*string* $pattern, [*array* $paths])
 
@@ -32,7 +32,7 @@ public **reConfigure** (*string* $pattern, [*array* $paths])
 
 Reconfigure the route adding a new pattern and a set of paths
 
-общественная **метод getname** ()
+public **getName** ()
 
 Returns the route's name
 
