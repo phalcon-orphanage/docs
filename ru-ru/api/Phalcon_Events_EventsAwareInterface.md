@@ -8,7 +8,7 @@ title: 'Phalcon\Events\EventsAwareInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
