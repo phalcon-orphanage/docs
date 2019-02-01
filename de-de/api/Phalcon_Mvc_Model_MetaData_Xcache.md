@@ -10,13 +10,13 @@ title: 'Phalcon\Mvc\Model\MetaData\Xcache'
 
 *implements* [Phalcon\Mvc\Model\MetaDataInterface](Phalcon_Mvc_Model_MetaDataInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/xcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/xcache.zep)
 
 Stores model meta-data in the XCache cache. Data will erased if the web server is restarted
 
 By default meta-data is stored for 48 hours (172800 seconds)
 
-Sie können die Meta-Daten abfragen, indem xcache_get('$PMM$') oder xcache_get('$PMM$my-app-id') ausgegeben wird
+You can query the meta-data by printing xcache_get('$PMM$') or xcache_get('$PMM$my-app-id')
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Xcache(
 
 ```
 
-## Konstanten
+## Constants
 
 *integer* **MODELS_ATTRIBUTES**
 
@@ -64,7 +64,7 @@ $metaData = new Phalcon\Mvc\Model\Metadata\Xcache(
 
 *integer* **MODELS_REVERSE_COLUMN_MAP**
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $options])
 
@@ -72,11 +72,11 @@ Phalcon\Mvc\Model\MetaData\Xcache constructor
 
 public *array* **read** (*string* $key)
 
-Liest Metadaten aus XCache
+Reads metadata from XCache
 
 public **write** (*string* $key, *array* $data)
 
-Schreibt die Metadaten in XCache
+Writes the metadata to XCache
 
 final protected **_initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $key, *mixed* $table, *mixed* $schema) inherited from [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
 
