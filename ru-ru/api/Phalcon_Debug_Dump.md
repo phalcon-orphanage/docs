@@ -30,7 +30,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## Методы
+## Methods
 
 public **getDetailed** ()
 
