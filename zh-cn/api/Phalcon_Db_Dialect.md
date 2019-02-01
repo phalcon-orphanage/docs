@@ -47,7 +47,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a FOR UPDATE clause
+返回使用FOR UPDATE子句修改的SQL
 
 ```php
 <?php
@@ -59,7 +59,7 @@ echo $sql; // SELECT * FROM robots FOR UPDATE
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Returns a SQL modified with a LOCK IN SHARE MODE clause
+返回使用LOCK IN SHARE MODE子句修改的SQL
 
 ```php
 <?php
