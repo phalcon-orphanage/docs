@@ -8,9 +8,9 @@ title: 'Phalcon\Cli\Router'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-Phalcon\Cli\Router is the standard framework router. Routing adalah proses mengambil argumen baris perintah dan mendekomposisinya menjadi parameter untuk menentukan modul, tugas, dan tindakan dari tugas itu harus menerima permintaan tersebut
+Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
 ```php
 <?php
@@ -29,7 +29,7 @@ echo $router->getTaskName();
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([*mixed* $defaultRoutes])
 
@@ -37,21 +37,21 @@ Phalcon\Cli\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Menetapkan nama modul default
+Sets the name of the default module
 
-umum **setDefaultTask** (*campuran* $taskName)
+public **setDefaultTask** (*mixed* $taskName)
 
-Menetapkan nama pengontrol default
+Sets the default controller name
 
-publik **setDefaultTindakan** (*campuraduk* $actionName)
+public **setDefaultAction** (*mixed* $actionName)
 
 Sets the default action name
 
@@ -71,13 +71,13 @@ $router->setDefaults(
 
 ```
 
-public **menangani** ([*array* $arguments])
+public **handle** ([*array* $arguments])
 
-Menangani informasi routing yang diterima dari argumen command-line
+Handles routing information received from command-line arguments
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
-Menambahkan rute ke router
+Adds a route to the router
 
 ```php
 <?php
@@ -86,42 +86,42 @@ $router->add("/about", "About::main");
 
 ```
 
-publik **mendapatkanNamaModul** ()
+public **getModuleName** ()
 
-Mengembalikan nama modul yang diproses
+Returns processed module name
 
-umum **getActiveRole** ()
+public **getTaskName** ()
 
-Kembali memproses nama tugas
+Returns processed task name
 
-publik **dapatkanNamaAksi** ()
+public **getActionName** ()
 
-Mengembalikan nama tindakan yang diproses
+Returns processed action name
 
-publik *array* **MendapatkanParams** ()
+public *array* **getParams** ()
 
-Mengembalikan params ekstra yang diproses
+Returns processed extra params
 
-publik **DapatkanRuteyangsesuai** ()
+public **getMatchedRoute** ()
 
-Mengembalikan rute yang sesuai dengan URI yang ditangani
+Returns the route that matches the handled URI
 
-publiK *array* **dapatkanPertandingan** ()
+public *array* **getMatches** ()
 
-Mengembalikan sub ekspresi dalam ekspresi reguler yang sesuai
+Returns the sub expressions in the regular expression matched
 
-publik **telahDicantumkan** ()
+public **wasMatched** ()
 
-Memeriksa apakah router cocok dengan rute yang ditentukan
+Checks if the router matches any of the defined routes
 
-publik **mendapatkanRute** ()
+public **getRoutes** ()
 
-Mengembalikan semua rute yang didefinisikan di router
+Returns all the routes defined in the router
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
-Mengembalikan objek rute dengan idnya
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-Mengembalikan objek rute dengan namanya
+Returns a route object by its name
