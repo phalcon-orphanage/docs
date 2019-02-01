@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Backend\File'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
 
-Bir dosya arka planı kullanarak çıktı parçalarını önbelleğe almaya izin verir
+Allows to cache output fragments using a file backend
 
 ```php
 <?php
@@ -48,7 +48,7 @@ if ($content === null) {
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 
@@ -56,19 +56,19 @@ Phalcon\Cache\Backend\File constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Ön bellekte saklanan içeriği döndürür
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Önbellek içeriğini dosya arka ucuna depolar ve önden yüklenmesini durdurur
+Stores cached content into the file backend and stops the frontend
 
 public **delete** (*int* | *string* $keyName)
 
-Ön bellekteki bir değeri anahtarı ile birlikte siler
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Varolan bekletilmiş anahtarları sorgulayın.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -82,11 +82,11 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Ön bellekte olup olmadığını ve süresinin dolup dolmadığını denetler
+Checks if cache exists and it isn't expired
 
 public **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
-Verilen bir anahtarın sayıya göre artması $value
+Increment of a given key, by number $value
 
 public **decrement** ([*string* | *int* $keyName], [*mixed* $value])
 
@@ -94,15 +94,15 @@ Decrement of a given key, by number $value
 
 public **flush** ()
 
-Mevcut öğelerin tümünü geçersiz kılar.
+Immediately invalidates all existing items.
 
 public **getKey** (*mixed* $key)
 
-Belirli bir anahtarın güvenli bir dosya sistemi tanımlayıcısını döndürür
+Return a file-system safe identifier for a given key
 
 public **useSafeKey** (*mixed* $useSafeKey)
 
-Güvenli anahtarı kullanıp kullanmamayı ayarla
+Set whether to use the safekey or not
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Herhangi bir önbelleklenmiş içerik depolamadan ön yüzü durdurur
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son önbelleğin yeni ya da önbelleklenmiş olup olmadığını kontrol eder
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ön belleğin ara belleğe aktarımına başlamış olup olmadığını denetler
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son çalışma zamanı ayarını getir
+Gets the last lifetime set
