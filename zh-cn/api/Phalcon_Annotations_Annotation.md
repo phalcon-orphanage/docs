@@ -8,7 +8,7 @@ title: 'Phalcon\Annotations\Annotation'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
-表示注释集合中的单个注释
+Represents a single annotation in an annotations collection
 
 ## 方法
 
@@ -18,36 +18,36 @@ Phalcon\Annotations\Annotation constructor
 
 public **getName** ()
 
-返回所批注的名称
+Returns the annotation's name
 
 public *mixed* **getExpression** (*array* $expr)
 
-解析表达式注释
+Resolves an annotation expression
 
 public *array* **getExprArguments** ()
 
-返回表达式参数没有解决
+Returns the expression arguments without resolving
 
 public *array* **getArguments** ()
 
-返回表达式参数
+Returns the expression arguments
 
 public **numberArguments** ()
 
-返回批注具有的参数数目
+Returns the number of arguments that the annotation has
 
 public *mixed* **getArgument** (*int* | *string* $position)
 
-返回参数中的特定位置
+Returns an argument in a specific position
 
 public *boolean* **hasArgument** (*int* | *string* $position)
 
-返回参数中的特定位置
+Returns an argument in a specific position
 
 public *mixed* **getNamedArgument** (*mixed* $name)
 
-返回一个已命名的参数
+Returns a named argument
 
 public *mixed* **getNamedParameter** (*mixed* $name)
 
-返回一个已命名的参数
+Returns a named parameter
