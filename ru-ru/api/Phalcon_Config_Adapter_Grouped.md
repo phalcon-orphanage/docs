@@ -72,7 +72,7 @@ $config = new Grouped(
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Методы
 
 public **__construct** (*array* $arrayConfig, [*mixed* $defaultAdapter])
 
