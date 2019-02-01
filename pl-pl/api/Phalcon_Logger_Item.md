@@ -6,7 +6,7 @@ title: 'Phalcon\Logger\Item'
 ---
 # Class **Phalcon\Logger\Item**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
 Represents each item in a logging transaction
 
@@ -14,7 +14,7 @@ Represents each item in a logging transaction
 
 public **getType** ()
 
-Log type
+Typ dziennika
 
 public **getMessage** ()
 
