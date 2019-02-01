@@ -6,7 +6,7 @@ title: 'Phalcon\FlashInterface'
 ---
 # Interface **Phalcon\FlashInterface**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
 
 ## Metody
 
