@@ -16,28 +16,28 @@ This is the base class for Phalcon\Annotations adapters
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-设置批注分析器
+Sets the annotations parser
 
 public **getReader** ()
 
-返回批注读者
+Returns the annotation reader
 
 public **get** (*string* | *object* $className)
 
-解析或检索发现在类中的所有批注
+Parses or retrieves all the annotations found in a class
 
 public **getMethods** (*mixed* $className)
 
-返回该类的所有方法中发现的批注
+Returns the annotations found in all the class' methods
 
 public **getMethod** (*mixed* $className, *mixed* $methodName)
 
-返回特定方法中找到的注释
+Returns the annotations found in a specific method
 
 public **getProperties** (*mixed* $className)
 
-返回该类的所有方法中发现的批注
+Returns the annotations found in all the class' methods
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-返回在特定的属性中找到的注释
+Returns the annotations found in a specific property
