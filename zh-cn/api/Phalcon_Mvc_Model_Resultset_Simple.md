@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Model\Resultset\Simple'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
-Simple resultsets only contains a complete objects This class builds every complete object as it is required
+简单的结果集只包含此类生成每个完整的对象，因为它是所需的完整对象
 
 ## 常量
 
@@ -38,7 +38,7 @@ Returns current row in the resultset
 
 public **toArray** ([*mixed* $renameColumns])
 
-Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. Export the resultset to an array couldn't be faster with a large number of records
+Returns a complete resultset as an array, if the resultset has a big number of rows it could consume more memory than currently it does. 导出到一个数组中的结果集不能更快地大量的记录
 
 public **serialize** ()
 
