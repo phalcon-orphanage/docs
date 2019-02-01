@@ -8,21 +8,21 @@ title: 'Phalcon\Mvc\Collection\Behavior'
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behavior.zep)
 
-Bu, ORM davranışlarına yönelik isteğe bağlı bir taban sınıfıdır
+This is an optional base class for ORM behaviors
 
-## Metodlar
+## Methods
 
-herkese açık **__düzenle**([* sıra* $seçenekler])
+public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
-Davranışın belirli bir etkinlikte harekete geçip geçmeyeceğini denetler
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName])
 
-Bir etkinlik ile alakalı davranış seçeneklerini döndürür
+Returns the behavior options related to an event
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
@@ -30,4 +30,4 @@ This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, *mixed* $method, [*mixed* $arguments])
 
-Koleksiyonda eksik bir yöntem çağrıldığında yedek olarak davranır
+Acts as fallbacks when a missing method is called on the collection
