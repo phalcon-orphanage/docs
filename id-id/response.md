@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Returning Responses
+# Tanggapan Kembali
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -59,7 +59,7 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## Bekerja dengan header
 
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
@@ -90,7 +90,7 @@ $contentType = $headers->get('Content-Type');
 
 <a name='redirections'></a>
 
-## Making Redirections
+## Membuat Pengalihan
 
 With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
@@ -129,20 +129,20 @@ Even if there is a view associated with the current action, it will not be rende
 
 <a name='http-cache'></a>
 
-## HTTP Cache
+## Cache HTTP
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
 HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
-* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
+* **`Kedaluwarsa:`**Dengan judul ini, aplikasi dapat menetapkan tanggal di masa depan atau masa lalu yang memberitahukan browser saat halaman harus kedaluwarsa.
 * **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
 * **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
 * **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
 <a name='http-cache-expiration-time'></a>
 
-### Setting an Expiration Time
+### Mengatur Waktu Kadaluarsa
 
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
@@ -172,7 +172,7 @@ Browsers rely on the client's clock to assess if this date has passed or not. Th
 
 <a name='http-cache-control'></a>
 
-### Cache-Control
+### Kontrol-Cache
 
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
