@@ -35,7 +35,7 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 ```
 
-## Методы
+## Methods
 
 public [Phalcon\Db\Profiler](Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
