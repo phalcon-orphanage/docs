@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## События
+## Events
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
