@@ -14,7 +14,7 @@ title: 'Phalcon\Assets\Inline\Css'
 
 Represents an inlined CSS
 
-## Methods
+## Методы
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
