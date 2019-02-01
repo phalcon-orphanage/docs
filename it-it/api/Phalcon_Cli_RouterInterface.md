@@ -6,9 +6,9 @@ title: 'Phalcon\Cli\RouterInterface'
 ---
 # Interface **Phalcon\Cli\RouterInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setDefaultModule** (*mixed* $moduleName)
 
