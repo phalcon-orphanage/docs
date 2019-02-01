@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\IntVal'
 ---
 # Class [Phalcon\Filter\Sanitizer\IntVal](Phalcon_Filter_Sanitizer_IntVal)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/intval.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/intval.zep)
 
 Sanitizes a value to an integer
 
-### Methods
+### Metode
 
 ```php
 public function __invoke( mixed $input ): mixed
