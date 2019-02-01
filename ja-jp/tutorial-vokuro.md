@@ -13,7 +13,7 @@ Vökuró is another sample application you can use to learn more about Phalcon. 
 
 <a name='structure'></a>
 
-## プロジェクトの構成
+## Project Structure
 
 ドキュメントルートでプロジェクトをcloneすると、次のような構造が表示されます:
 
