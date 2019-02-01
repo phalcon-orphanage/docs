@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Transaction\Manager'
 
 *implements* [Phalcon\Mvc\Model\Transaction\ManagerInterface](Phalcon_Mvc_Model_Transaction_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
 
 A transaction acts on a single database connection. If you have multiple class-specific databases, the transaction will not protect interaction among them.
 
@@ -52,7 +52,7 @@ try {
 
 ```
 
-## Methods
+## Metode
 
 public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -60,31 +60,31 @@ Phalcon\Mvc\Model\Transaction\Manager constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injection container
+Menetapkan ketergantungan injeksi wadah
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the dependency injection container
+Kembali wadah injeksi ketergantungan
 
 public **setDbService** (*mixed* $service)
 
-Sets the database service used to run the isolated transactions
+Mengatur layanan database yang digunakan untuk menjalankan transaksi isolasi
 
 public *string* **getDbService** ()
 
-Returns the database service used to isolate the transaction
+Mengembalikan layanan database yang digunakan untuk transaksi isolasi
 
 public **setRollbackPendent** (*mixed* $rollbackPendent)
 
-Set if the transaction manager must register a shutdown function to clean up pendent transactions
+Mengatur jika manajer transaksi harus mendaftarkan fungsi shutdown untuk membersihkan transaksi yang tidak tepat
 
 public **getRollbackPendent** ()
 
-Check if the transaction manager is registering a shutdown function to clean up pendent transactions
+Periksa apakah manager transaksi mendaftarkan fungsi pada shutdown untuk membersihkan transaksi tidak tepat
 
 public **has** ()
 
-Checks whether the manager has an active transaction
+Periksa apakah manajer memiliki sebuah transaksi aktif
 
 public **get** ([*mixed* $autoBegin])
 
@@ -92,32 +92,32 @@ Returns a new \Phalcon\Mvc\Model\Transaction or an already created once This met
 
 public **getOrCreateTransaction** ([*mixed* $autoBegin])
 
-Create/Returns a new transaction or an existing one
+Membuat/Mengembalikan transaksi terbaru atau yang sudah ada
 
 public **rollbackPendent** ()
 
-Rollbacks active transactions within the manager
+Memutar kembali transaksi aktif didalam manajer
 
-public **commit** ()
+publik **komit** ()
 
-Commits active transactions within the manager
+Berkomitmen transaksi aktif didalam manajer
 
 public **rollback** ([*boolean* $collect])
 
-Rollbacks active transactions within the manager Collect will remove the transaction from the manager
+Memutar kembali transaksi aktif didalam manajer Kumpulan akan dihapus transaksi itu dari manajer
 
 public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a rollbacked transaction
+Memeberitahukan manajer tentang sebuah transaksi rollbacked
 
 public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Notifies the manager about a committed transaction
+Memberitahukan manajer tentang sebuah transaksi yang dilakukan
 
 protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-Removes transactions from the TransactionManager
+Menghapus transaksi dari TransactionManager
 
 public **collectTransactions** ()
 
-Remove all the transactions from the manager
+Menghapus semua transaksi dari manajer
