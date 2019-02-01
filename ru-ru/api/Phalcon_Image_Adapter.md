@@ -12,7 +12,7 @@ title: 'Phalcon\Image\Adapter'
 
 All image adapters must use this class
 
-## Methods
+## Методы
 
 public **getImage** ()
 
