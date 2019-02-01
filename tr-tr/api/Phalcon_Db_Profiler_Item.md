@@ -6,27 +6,27 @@ title: 'Phalcon\Db\Profiler\Item'
 ---
 # Class **Phalcon\Db\Profiler\Item**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
-## Metodlar
+## Methods
 
 public **setSqlStatement** (*mixed* $sqlStatement)
 
-Profil ile alakalı SQL deyimi
+SQL statement related to the profile
 
 public **getSqlStatement** ()
 
-Profil ile alakalı SQL deyimi
+SQL statement related to the profile
 
 public **setSqlVariables** (*array* $sqlVariables)
 
-Profil ile alakalı SQL deyimi
+SQL variables related to the profile
 
-genel **getSqlVariables** ()
+public **getSqlVariables** ()
 
-Profil ile alakalı SQL deyimi
+SQL variables related to the profile
 
 public **setSqlBindTypes** (*array* $sqlBindTypes)
 
@@ -38,11 +38,11 @@ SQL bind types related to the profile
 
 public **setInitialTime** (*mixed* $initialTime)
 
-Profil başladığı zaman zaman damgası
+Timestamp when the profile started
 
 public **getInitialTime** ()
 
-Profil başladığı zaman zaman damgası
+Timestamp when the profile started
 
 public **setFinalTime** (*mixed* $finalTime)
 
@@ -54,4 +54,4 @@ Timestamp when the profile ended
 
 public **getTotalElapsedSeconds** ()
 
-Profil tarafından kullanılmış olan toplam saniye türünden süreyi döndürür
+Returns the total time in seconds spent by the profile
