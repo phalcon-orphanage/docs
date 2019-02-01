@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Hidden'
 
 Component INPUT[type=hidden] for forms
 
-## Methods
+## Методы
 
 public **render** ([*array* $attributes])
 
