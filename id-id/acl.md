@@ -10,17 +10,17 @@ category: 'acl'
 * * *
 
 - [Access Control Lists (ACL)](acl-overview)
-- [Membuat sebuah ACL](acl-setup)
+- [Creating an ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [Mendefinisikan Kontrol Akses](acl-access-controls)
-- [Mengajukan sebuah ACL](acl-querying)
-- [Akses berdasarkan fungsi](acl-function-based-access)
+- [Defining Access Controls](acl-access-controls)
+- [Querying an ACL](acl-querying)
+- [Function based access](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
 - [Serializing ACL lists](acl-serialization)
-- [Kegiatan](acl-events)
-- [Menerapkan adapter Anda sendiri](acl-custom-adapters)
+- [Events](acl-events)
+- [Implementing your own adapters](acl-custom-adapters)
 
 * * *
 
