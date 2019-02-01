@@ -2,7 +2,7 @@
 layout: article
 language: 'tr-tr'
 version: '4.0'
-title: 'Phalcon\Annotations\Faktör'
+title: 'Phalcon\Annotations\Factory'
 ---
 # Class **Phalcon\Annotations\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Annotations\Faktör'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/factory.zep)
 
-'adapter' tercihini kullanarak Annotations Adapter sınıfını yükler
+Loads Annotations Adapter class using 'adapter' option
 
 ```php
 <?php
@@ -28,7 +28,7 @@ $annotations = Factory::load($options);
 
 ```
 
-## Metodlar
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
