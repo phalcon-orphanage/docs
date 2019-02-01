@@ -23,7 +23,7 @@ Phalcon offers the `Phalcon\Tag::setDoctype()` helper to set document type of th
 
 Available document type constants in [Phalcon\Tag](api/Phalcon_Tag) namespace are:
 
-| Constant             | Document type          |
+| Stałe                | Document type          |
 | -------------------- | ---------------------- |
 | HTML32               | HTML 4.0               |
 | HTML401_STRICT       | HTML 4.01 Strict       |
@@ -66,7 +66,7 @@ The following HTML will be produced.
 </html>
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```twig
 {% raw %}
@@ -197,7 +197,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```twig
 {% raw %}
@@ -487,7 +487,7 @@ The following HTML will generated:
 
 <a name='static-content-helpers-images'></a>
 
-### Images
+### Obrazki
 
 ```php
 <?php
@@ -504,7 +504,7 @@ echo $this->tag->image(
 );
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```twig
 {% raw %}
@@ -518,7 +518,7 @@ Volt syntax:
 
 <a name='static-content-helpers-stylesheets'></a>
 
-### Stylesheets
+### Arkusze stylów
 
 ```php
 <?php
@@ -530,7 +530,7 @@ echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Rosario
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```twig
 {% raw %}
@@ -556,7 +556,7 @@ echo $this->tag->javascriptInclude('https://localhost/javascript/jquery.min.js',
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```twig
 {% raw %}
@@ -596,7 +596,7 @@ echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-Volt syntax:
+Składnia wolt:
 
 ```php
 {% raw %}
