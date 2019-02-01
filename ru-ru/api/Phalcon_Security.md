@@ -50,7 +50,7 @@ if ($user) {
 
 *integer* **CRYPT_SHA512**
 
-## Methods
+## Методы
 
 public **setWorkFactor** (*mixed* $workFactor)
 
