@@ -10,7 +10,7 @@ title: 'Phalcon\Events\Event'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
-This class offers contextual information of a fired event in the EventsManager
+EventManager η κλάση περιεχόμενο πληροφορίες σχετικές με το aυτή παρέχει μιας εκδήλωσης στο
 
 ## Methods
 
@@ -53,7 +53,7 @@ if ($event->isCancelable()) {
 
 public **isStopped** ()
 
-Check whether the event is currently stopped.
+Ελέγξτε αν η εκδήλωση σταματήσει έχει αυτήν τη στιγμή.
 
 public **isCancelable** ()
 
