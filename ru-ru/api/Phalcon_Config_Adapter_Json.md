@@ -39,7 +39,7 @@ echo $config->models->metadata;
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Methods
+## Методы
 
 public **__construct** (*mixed* $filePath)
 
