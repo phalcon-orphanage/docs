@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Form'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-Komponen ini memungkinkan untuk membangun bentuk-bentuk yang menggunakan antarmuka berorientasi objek
+This component allows to build forms using an object-oriented interface
 
-## Metode
+## Methods
 
 public **setValidation** (*mixed* $validation)
 
@@ -30,67 +30,67 @@ Phalcon\Forms\Form constructor
 
 public **setAction** (*mixed* $action)
 
-Menetapkan tindakan formulir
+Sets the form's action
 
 public **getAction** ()
 
-Mengembalikan tindakan formulir
+Returns the form's action
 
 public **setUserOption** (*string* $option, *mixed* $value)
 
-Menetapkan pilihan untuk elemen
+Sets an option for the form
 
 public **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Mengembalikan nilai opsi jika ada
+Returns the value of an option if present
 
 public **setUserOptions** (*array* $options)
 
-Menyetel opsi untuk elemen
+Sets options for the element
 
 public **getUserOptions** ()
 
-Mengembalikan opsi untuk elemen
+Returns the options for the element
 
 public **setEntity** (*object* $entity)
 
-Set entitas terkait dengan model
+Sets the entity related to the model
 
 public *object* **getEntity** ()
 
-Kembali entitas terkait dengan model
+Returns the entity related to the model
 
 public **getElements** ()
 
-Kembali unsur-unsur bentuk yang ditambahkan ke formulir
+Returns the form elements added to the form
 
 public **bind** (*array* $data, *object* $entity, [*array* $whitelist])
 
-Mengikat data entitas
+Binds data to the entity
 
 public **isValid** ([*array* $data], [*object* $entity])
 
-Memvalidasi bentuk
+Validates the form
 
 public **getMessages** ([*mixed* $byItemName])
 
-Mengembalikan pesan yang dihasilkan oleh validator
+Returns the messages generated in the validation
 
 public **getMessagesFor** (*mixed* $name)
 
-Mengembalikan pesan yang dihasilkan untuk elemen tertentu
+Returns the messages generated for a specific element
 
 public **hasMessagesFor** (*mixed* $name)
 
-Mengembalikan pesan yang dihasilkan untuk elemen tertentu
+Check if messages were generated for a specific element
 
 public **add** ([Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) $element, [*mixed* $position], [*mixed* $type])
 
-Menambahkan elemen ke bentuk
+Adds an element to the form
 
 public **render** (*string* $name, [*array* $attributes])
 
-Menuliskan item spesifik dalam bentuk
+Renders a specific item in the form
 
 public **get** (*mixed* $name)
 
@@ -98,68 +98,68 @@ Returns an element added to the form by its name
 
 public **label** (*mixed* $name, [*array* $attributes])
 
-Menghasilkan label elemen ditambahkan ke bentuk termasuk HTML
+Generate the label of an element added to the form including HTML
 
 public **getLabel** (*mixed* $name)
 
-Mengembalikan label untuk elemen
+Returns a label for an element
 
 public **getValue** (*mixed* $name)
 
-Mendapat nilai dari entitas terkait internal atau dari nilai default
+Gets a value from the internal related entity or from the default value
 
-publik **telah** (*campuran* $name)
+public **has** (*mixed* $name)
 
-Periksa jika bentuk berisi elemen
+Check if the form contains an element
 
-umum **hapus** (*campuran* $nama)
+public **remove** (*mixed* $name)
 
-Menambahkan elemen ke bentuk
+Removes an element from the form
 
 public **clear** ([*array* $fields])
 
-Menghapus setiap elemen dalam bentuk ke nilai defaultnya
+Clears every element in the form to its default value
 
-publik **menghitung**()
+public **count** ()
 
-Mengembalikan jumlah elemen dalam formulir
+Returns the number of elements in the form
 
-publik**mundur**()
+public **rewind** ()
 
-Melakukan pemutaran balik internal iterator
+Rewinds the internal iterator
 
 public **current** ()
 
-Mengembalikan elemen arus pada iterator
+Returns the current element in the iterator
 
-publik **kunci** ()
+public **key** ()
 
-Mengembalikan posisi/kunci saat ini di iterator
+Returns the current position/key in the iterator
 
-publik **berikutnya** ()
+public **next** ()
 
-Bergerak pointer internal iterasi kepada posisi yang berikut
+Moves the internal iteration pointer to the next position
 
-publik **sah** ()
+public **valid** ()
 
-Periksa apakah pesan yang sekarang di iterator berlaku
+Check if the current element in the iterator is valid
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Menyetel pengelola acara
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Metode __get
+Magic method __get
