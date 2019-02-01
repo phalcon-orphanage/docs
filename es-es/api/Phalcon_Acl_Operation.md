@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 title: 'Phalcon\Acl\Operation'
 ---
-# Clase [Phalcon\\Acl\\Operation](Phalcon_Acl_Operation)
+# Class [Phalcon\Acl\Operation](Phalcon_Acl_Operation)
 
 **implements**{:.language-php .highlighter-rouge .highligter .hljs-keyword} [Phalcon\Acl\OperationInterface](Phalcon_Acl_OperationInterface)
 
