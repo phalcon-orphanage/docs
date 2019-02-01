@@ -8,18 +8,18 @@ title: 'Phalcon\Di\Service\Builder'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
-Esta clase crea instancias basadas en definiciones complejas
+This class builds instances based on complex definitions
 
 ## Métodos
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 
-Resuelve un parámetro de un constructor o llamada
+Resolves a constructor/call parameter
 
 private **_buildParameters** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $arguments)
 
-Resuelve un arreglo de parámetros
+Resolves an array of parameters
 
 public *mixed* **build** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *array* $definition, [*array* $parameters])
 
-Crea un servicio utilizando una definición de servicio compleja
+Builds a service using a complex service definition
