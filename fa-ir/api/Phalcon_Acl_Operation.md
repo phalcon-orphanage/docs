@@ -8,11 +8,11 @@ title: 'Phalcon\Acl\Operation'
 
 **implements**{:.language-php .highlighter-rouge .highligter .hljs-keyword} [Phalcon\Acl\OperationInterface](Phalcon_Acl_OperationInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operation.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operation.zep)
 
 This class defines a subject entity and its description
 
-## Methods
+## روش ها
 
 ```php
 public __construct( string $name [, string $description = NULL] )
