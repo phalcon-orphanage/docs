@@ -53,7 +53,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Methods
+## Методы
 
 public **getLibmemcached** ()
 
