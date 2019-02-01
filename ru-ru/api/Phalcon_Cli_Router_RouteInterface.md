@@ -8,7 +8,7 @@ title: 'Phalcon\Cli\Router\RouteInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **compilePattern** (*mixed* $pattern)
 
