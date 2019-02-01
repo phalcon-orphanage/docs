@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Resource'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resource.zep)
 
-Represents an asset resource
+Bir varlık kaynağını temsil eder
 
 ```php
 <?php
@@ -19,9 +19,9 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## Methods
+## Metodlar
 
-public **getType** ()
+genel **getType** ()
 
 public **getPath** ()
 
@@ -49,52 +49,52 @@ Phalcon\Assets\Resource constructor
 
 public **setType** (*mixed* $type)
 
-Sets the resource's type
+Kaynağın türünü ayarlar
 
 public **setPath** (*mixed* $path)
 
-Sets the resource's path
+Kaynağın yolunu ayarlar
 
 public **setLocal** (*mixed* $local)
 
-Sets if the resource is local or external
+Kaynağın yerel mi yoksa harici mi olduğunu ayarlar
 
 public **setFilter** (*mixed* $filter)
 
-Sets if the resource must be filtered or not
+Kaynağın filtrelenmesi gerekip gerekmediğini ayarlar
 
 public **setAttributes** (*array* $attributes)
 
-Sets extra HTML attributes
+Ek HTML özellikleri ayarlar
 
 public **setTargetUri** (*mixed* $targetUri)
 
-Sets a target uri for the generated HTML
+Oluşturulan HTML için hedef URI ayarlar
 
 public **setSourcePath** (*mixed* $sourcePath)
 
-Sets the resource's source path
+Kaynağın anahtarı ile kaynağın kaynak yolunu ayarlar
 
 public **setTargetPath** (*mixed* $targetPath)
 
-Sets the resource's target path
+Kaynağın hedef yolunu ayarlar
 
 public **getContent** ([*mixed* $basePath])
 
-Returns the content of the resource as an string Optionally a base path where the resource is located can be set
+Kaynağın içeriğini bir dizge olarak döndürür İsteğe bağlı olarak kaynağın bulunduğu bir taban yolu ayarlanabilir
 
 public **getRealTargetUri** ()
 
-Returns the real target uri for the generated HTML
+Oluşturulan HTML için gerçek hedef URL'yi döndürür
 
 public **getRealSourcePath** ([*mixed* $basePath])
 
-Returns the complete location where the resource is located
+Kaynağın bulunduğu tam konumu döndürür
 
 public **getRealTargetPath** ([*mixed* $basePath])
 
-Returns the complete location where the resource must be written
+Kaynağın yazıldığı tam konumu döndürür
 
 public **getResourceKey** ()
 
-Gets the resource's key.
+Kaynağın anahtarının getirir.
