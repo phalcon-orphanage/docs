@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Message Formatting
+## Formato de mensaje
 
 ### JSON Formatter
 
