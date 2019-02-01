@@ -3,7 +3,7 @@ layout: article
 language: 'de-de'
 version: '4.0'
 ---
-# Generating a backtrace
+# Einen backtrace erzeugen
 
 Sometimes due to segmentation faults, Phalcon could crash some of your web server processes. Please help us to identify the problem by adding a crash backtrace to your bug report.
 
