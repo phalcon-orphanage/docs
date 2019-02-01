@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Adapter\Xcache'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/xcache.zep)
 
-Stores the parsed annotations to XCache. This adapter is suitable for production
+Stores the parsed annotations to XCache. Este adaptador es adecuado para ambientes en producción
 
 ```php
 <?php
