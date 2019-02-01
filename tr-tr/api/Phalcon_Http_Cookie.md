@@ -8,11 +8,11 @@ title: 'Phalcon\Http\Cookie'
 
 *implements* [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
+[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 Provide OO wrappers to manage a HTTP cookie
 
-## Methods
+## Metodlar
 
 public **__construct** (*string* $name, [*mixed* $value], [*int* $expire], [*string* $path], [*boolean* $secure], [*string* $domain], [*boolean* $httpOnly])
 
@@ -20,7 +20,7 @@ Phalcon\Http\Cookie constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the dependency injector
+Bağımlılık enjektörünü ayarlar
 
 public **getDI** ()
 
@@ -28,15 +28,15 @@ Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-Sets the cookie's value
+Çerezin değerini ayarlar
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-Returns the cookie's value
+Çerezin değerini döndürür
 
 public **send** ()
 
-Sends the cookie to the HTTP client Stores the cookie definition in session
+Çerezi HTTP istemcisine gönderir Çerez tanımını oturuma kaydeder
 
 public **restore** ()
 
@@ -44,7 +44,7 @@ Reads the cookie-related info from the SESSION to restore the cookie as it was s
 
 public **delete** ()
 
-Deletes the cookie by setting an expire time in the past
+Çerezi geçmişte dolma süresi belirleyerek siler
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -60,52 +60,52 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 public **isUsingEncryption** ()
 
-Check if the cookie is using implicit encryption
+Çerezin örtülü şifreleme kullanıp kullanmadığını kontrol edin
 
 public **setExpiration** (*mixed* $expire)
 
-Sets the cookie's expiration time
+Çerezin son kullanma süresini ayarlar
 
 public **getExpiration** ()
 
-Returns the current expiration time
+Geçerli son kullanma süresini döndürür
 
 public **setPath** (*mixed* $path)
 
-Sets the cookie's expiration time
+Çerezin son kullanma süresini ayarlar
 
-public **getName** ()
+herkese açık ** isim al** ()
 
-Returns the current cookie's name
+Geçerli çerezin adını döndürür
 
 public **getPath** ()
 
-Returns the current cookie's path
+Geçerli çerezin yolunu döndürür
 
 public **setDomain** (*mixed* $domain)
 
-Sets the domain that the cookie is available to
+Çerezin mevcut olduğu alan adını ayarlar
 
 public **getDomain** ()
 
-Returns the domain that the cookie is available to
+Çerezin mevcut olduğu alan adını döndürür
 
 public **setSecure** (*mixed* $secure)
 
-Sets if the cookie must only be sent when the connection is secure (HTTPS)
+Çerezin yalnızca bağlantı güvenli olduğunda gönderileceğini ayarlar (HTTPS)
 
 public **getSecure** ()
 
-Returns whether the cookie must only be sent when the connection is secure (HTTPS)
+Çerezin yalnızca bağlantı güvenli olduğunda gönderilmesi gerekip gerekmediğini döndürür (HTTPS)
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-Sets if the cookie is accessible only through the HTTP protocol
+Çereze yalnızca HTTP protokolü aracılığıyla erişilebilir olup olmadığını ayarlar
 
 public **getHttpOnly** ()
 
-Returns if the cookie is accessible only through the HTTP protocol
+Tanımlama bilgisine yalnızca HTTP protokolü aracılığıyla erişilebiliyorsa döner
 
-public **__toString** ()
+herkese açık **__ sırala** ()
 
 Magic __toString method converts the cookie's value to string
