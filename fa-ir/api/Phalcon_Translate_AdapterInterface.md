@@ -6,9 +6,9 @@ title: 'Phalcon\Translate\AdapterInterface'
 ---
 # Interface **Phalcon\Translate\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
 
-## Methods
+## روش ها
 
 abstract public **t** (*mixed* $translateKey, [*mixed* $placeholders])
 
