@@ -6,7 +6,7 @@ title: 'Phalcon\Filter\Sanitizer\Replace'
 ---
 # Class [Phalcon\Filter\Sanitizer\Replace](Phalcon_Filter_Sanitizer_Replace)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/replace.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/replace.zep)
 
 Sanitizes a value performing `preg_replace`
 
