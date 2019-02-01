@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Security
+# Keamanan
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 <a name='hashing'></a>
 
-## Password Hashing
+## Hashing Password
 
 Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods '[md5](https://php.net/manual/en/function.md5.php)' and '[sha1](https://php.net/manual/en/function.sha1.php)'. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
@@ -28,23 +28,23 @@ This component offers a simple interface to use the algorithm:
 ```php
 <?php
 
-use Phalcon\Mvc\Controller;
+gunakan Phalcon\Mvc\Controller;
 
-class UsersController extends Controller
+kelas PenggunaPengontrol perluasan Pengontrol
 {
-    public function registerAction()
+    tindakan daftar fungsi publik()
     {
-        $user = new Users();
+        $user = Pengguna baru ();
 
-        $login    = $this->request->getPost('login');
-        $password = $this->request->getPost('password');
+        $login   =$this->permintaan->dapatkanPost('masuk');
+        $password = $this->permintaan->dapatkanPost('password');
 
-        $user->login = $login;
+        $user->masuk = $login;
 
-        // Store the password hashed
-        $user->password = $this->security->hash($password);
+        // Simpan kata sandinya
+        $user->katasandi = $this->keamanan->hash($password);
 
-        $user->save();
+        $user->simpan();
     }
 }
 ```
@@ -69,9 +69,9 @@ class SessionController extends Controller
                 // The password is valid
             }
         } else {
-            // To protect against timing attacks. Regardless of whether a user
-            // exists or not, the script will take roughly the same amount as
-            // it will always be computing a hash.
+            // To protect against timing attacks. Terlepas dari apakah pengguna
+            // ada atau tidak, script akan memakan kira-kira jumlah yang sama dengan
+            // itu akan selalu menghitung hash.
             $this->security->hash(rand());
         }
 
@@ -84,7 +84,7 @@ The salt is generated using pseudo-random bytes with the PHP's function [openssl
 
 <a name='csrf'></a>
 
-## Cross-Site Request Forgery (CSRF) protection
+## Permintaan Paten Lintas Situs (CSRF) perlindungan
 
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
@@ -142,7 +142,7 @@ Adding a [captcha](https://www.google.com/recaptcha) to the form is also recomme
 
 <a name='setup'></a>
 
-## Setting up the component
+## Menyiapkan komponen
 
 This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
 
@@ -167,7 +167,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Random
+## Acak
 
 The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
 
@@ -195,11 +195,11 @@ $base64Safe = $random->base64Safe($len);
 $uuid       = $random->uuid();
 
 // Generate a random integer between 0 and $n.
-$number     = $random->number($n);
+$number    = $random->nomor($n);
 ```
 
 <a name='resources'></a>
 
-## External Resources
+## Sumber Eksternal
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)
