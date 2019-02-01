@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\OperationAware'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/operationaware.zep)
 
-## Methods
+## Методы
 
 ```php
 abstract public getOperationName()
