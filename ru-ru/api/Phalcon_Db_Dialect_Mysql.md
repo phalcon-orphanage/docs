@@ -14,7 +14,7 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 Generates database specific SQL for the MySQL RDBMS
 
-## Methods
+## Методы
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
