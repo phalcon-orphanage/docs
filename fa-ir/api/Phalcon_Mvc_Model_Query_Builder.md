@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query\Builder'
 
 *implements* [Phalcon\Mvc\Model\Query\BuilderInterface](Phalcon_Mvc_Model_Query_BuilderInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
 
 Helps to create PHQL queries using an OO interface
 
@@ -44,13 +44,13 @@ $queryBuilder = new \Phalcon\Mvc\Model\Query\Builder($params);
 
 ```
 
-## ثابت ها
+## Constants
 
 *string* **OPERATOR_OR**
 
 *string* **OPERATOR_AND**
 
-## روش ها
+## Methods
 
 public **__construct** ([*mixed* $params], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
