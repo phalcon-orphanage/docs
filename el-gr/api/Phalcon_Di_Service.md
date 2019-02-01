@@ -57,7 +57,7 @@ Resolves the service
 
 public **setParameter** (*mixed* $position, *array* $parameter)
 
-Changes a parameter in the definition without resolve the service
+Αλλάζει μια παράμετρο στον να ορισμό χωρίς επιλύσει την υπηρεσία
 
 public *array* **getParameter** (*int* $position)
 
