@@ -33,9 +33,9 @@ $reference = new \Phalcon\Db\Reference(
 
 ```
 
-## Methods
+## Методы
 
-public **getName** ()
+общественная **метод getname** ()
 
 Constraint name
 
