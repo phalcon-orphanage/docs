@@ -6,18 +6,18 @@ title: 'Phalcon\Mvc\View\EngineInterface'
 ---
 # Interface **Phalcon\Mvc\View\EngineInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engineinterface.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engineinterface.zep)
 
-## Methods
+## Metode
 
-abstract public **getContent** ()
-
-...
-
-abstract public **partial** (*mixed* $partialPath, [*mixed* $params])
+abstrak publik 0 getContent 0
 
 ...
 
-abstract public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
+abstrak publik **mulai** (*campuran * $partialPath, [*mixed* $params])
+
+...
+
+abstrak publik **api** (*campuran* $path, *mixed* $params, [*mixed* $mustClean])
 
 ...
