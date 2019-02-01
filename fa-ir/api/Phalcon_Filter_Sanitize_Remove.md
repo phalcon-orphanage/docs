@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\Remove'
 ---
 # Class [Phalcon\Filter\Sanitizer\Remove](Phalcon_Filter_Sanitizer_Remove)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/remove.zep)
+[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/remove.zep)
 
 Sanitizes a value removing parts of the value
 
-### Methods
+### روش ها
 
 ```php
 public function __invoke( array | string $input, array | string $replace ): mixed
