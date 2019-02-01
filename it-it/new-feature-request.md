@@ -3,7 +3,7 @@ layout: article
 language: 'it-it'
 version: '4.0'
 ---
-# New Feature Request
+# Richiesta di nuove funzionalità
 
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
