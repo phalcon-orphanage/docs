@@ -6,9 +6,9 @@ title: 'Phalcon\Image'
 ---
 # Class **Phalcon\Image**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
 
-## Sabitler
+## Constants
 
 *integer* **NONE**
 
