@@ -43,7 +43,7 @@ $di->setShared(
 
 <a name='start-factory'></a>
 
-## Fabryka
+## Factory
 
 Loads Session Adapter class using `adapter` option
 
@@ -228,7 +228,7 @@ The data added to the session (`$this->session`) are available throughout the ap
 
 <a name='custom-adapters'></a>
 
-## Realizacja własnych kart
+## Implementing your own adapters
 
 The [Phalcon\Session\AdapterInterface](api/Phalcon_Session_AdapterInterface) interface must be implemented in order to create your own session adapters or extend the existing ones.
 
