@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\ModuleDefinitionInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
 
-## Методы
+## Methods
 
 abstract public **registerAutoloaders** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
