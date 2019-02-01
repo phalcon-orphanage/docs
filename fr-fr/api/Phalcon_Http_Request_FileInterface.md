@@ -6,9 +6,9 @@ title: 'Phalcon\Http\Request\FileInterface'
 ---
 # Interface **Phalcon\Http\Request\FileInterface**
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/fileinterface.zep)
 
-## Méthodes
+## Methods
 
 abstract public **getSize** ()
 
