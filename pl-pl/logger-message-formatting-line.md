@@ -23,7 +23,7 @@ Formats the messages using a one-line string. The default logging format is:
 
 If the default format of the message does not fit the needs of your application you can change it using the `setFormat()` method. The log format variables allowed are:
 
-| Zmienny   | Ious                                     |
+| Variable  | Description                              |
 | --------- | ---------------------------------------- |
 | %message% | The message itself expected to be logged |
 | %date%    | Date the message was added               |
