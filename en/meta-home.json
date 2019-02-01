@@ -19,7 +19,7 @@
   "gab": "Gab.ai",
   "general": "General",
   "general_official_docs": "General - Official Phalcon Documentation",
-  "get_support": "Get Support From Real People",
+  "get_support": "Get Support From Other Developers",
   "github": "GitHub Project",
   "incubator_amazing_features": "Our community is developing amazing extra features for Phalcon every day via Incubator.",
   "incredible_api": "An incredible API has been created for you to use as reference when developing Phalcon based solutions",
@@ -44,6 +44,6 @@
   "version": "Version",
   "we_did_our_Best": "We did our best to cover all topics related to this product. Each section have number which represent number of topic in each category.",
   "what_is_phalcon": "What is Phalcon",
-  "when_you_are_stuck": "When you are stuck in something don't waste your time just let us know we are here to help you",
+  "when_you_are_stuck": "When you are stuck in something don't waste any time. Get in touch with us, and we will be more than happy to help you.",
   "write_to_us_now": "Write to Us Now"
 }
