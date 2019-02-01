@@ -77,7 +77,7 @@ class Data extends \Phalcon\Mvc\Collection
 
 *integer* **VERSION_6**
 
-## Методы
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 
