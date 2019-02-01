@@ -11,10 +11,10 @@ version: '4.0'
 
 In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
 
-* `GET` to retrieve and search data
-* `POST` to add data
-* `PUT` to update data
-* `DELETE` to delete data
+* `GET` Для получения и поиска данных
+* `POST` to добавления данных
+* `PUT` для обновления данных
+* `DELETE` для удаления данных
 
 <a name='definitions'></a>
 
@@ -22,14 +22,14 @@ In this tutorial, we will explain how to create a simple application that provid
 
 The API consists of the following methods:
 
-| Метод    | URL                      | Действие                                       |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| Метод    | URL                      | Действие                                                       |
+| -------- | ------------------------ | -------------------------------------------------------------- |
+| `GET`    | /api/robots              | Получает всех роботов                                          |
+| `GET`    | /api/robots/search/Astro | Ищет роботов, которые содержат строку 'Astro' в своем названии |
+| `GET`    | /api/robots/2            | Получает робота по его id (основной ключ)                      |
+| `POST`   | /api/robots              | Добавляет нового робота                                        |
+| `PUT`    | /api/robots/2            | Обновляет робота с заданным id (основной ключ)                 |
+| `DELETE` | /api/robots/2            | Удаляет робота по id (основной ключ)                           |
 
 <a name='implementation'></a>
 
@@ -137,7 +137,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Creating a Model
+## Создание модели
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -665,6 +665,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Conclusion
+## Заключение
 
 As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).
