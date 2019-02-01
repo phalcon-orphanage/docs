@@ -19,12 +19,12 @@ Views represent the user interface of your application. Views are often HTML fil
 
 Phalcon automatically passes the execution to the view component as soon as a particular controller has completed its cycle. The view component will look in the views folder for a folder named as the same name of the last controller executed and then for a file named as the last action executed. For instance, if a request is made to the URL *https://127.0.0.1/blog/posts/show/301*, Phalcon will parse the URL as follows:
 
-| Server Address    | 127.0.0.1 |
-| ----------------- | --------- |
-| Phalcon Directory | blog      |
-| Controller        | posts     |
-| Action            | show      |
-| Parameter         | 301       |
+| Server Address | 127.0.0.1 |
+| -------------- | --------- |
+| فهرست Phalcon  | وبلاگ     |
+| کنترل کننده    | پست ها    |
+| عملیات         | نمایش     |
+| پارامتر        | 301       |
 
 The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
@@ -58,7 +58,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
+| نام               | File                          | توضیحات                                                                                                                                                                                                                  |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -333,7 +333,7 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Description                                                              | Order |
+| Class Constant          | توضیحات                                                                  | Order |
 | ----------------------- | ------------------------------------------------------------------------ |:-----:|
 | `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
 | `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
@@ -1041,17 +1041,17 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. برخی از رویدادها هنگام بازگشت غلط غلط می توانند عملیات فعال را متوقف کنند. حوادث زیر پشتیبانی می شوند:
 
-| Event Name       | Triggered                                     | Can stop operation? |
-| ---------------- | --------------------------------------------- |:-------------------:|
-| beforeRender     | Triggered before starting the render process  |         Yes         |
-| beforeRenderView | Triggered before rendering an existing view   |         Yes         |
-| afterRenderView  | Triggered after rendering an existing view    |         No          |
-| afterRender      | Triggered after completing the render process |         No          |
-| notFoundView     | Triggered when a view was not found           |         No          |
+| نام رویداد       | باعث شد                                       | میتواند متوقف کند؟ |
+| ---------------- | --------------------------------------------- |:------------------:|
+| beforeRender     | Triggered before starting the render process  |        بله         |
+| beforeRenderView | Triggered before rendering an existing view   |        بله         |
+| afterRenderView  | Triggered after rendering an existing view    |         نه         |
+| afterRender      | Triggered after completing the render process |         نه         |
+| notFoundView     | Triggered when a view was not found           |         نه         |
 
-The following example demonstrates how to attach listeners to this component:
+مثال زیر نشان می دهد که چگونه می توان شنوندگان را به این مولفه وصل کرد:
 
 ```php
 <?php
