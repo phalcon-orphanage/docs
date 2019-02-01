@@ -9,9 +9,9 @@ category: 'logger'
 
 * * *
 
-## Formato de mensaje
+## Message Formatting
 
-### Formateador de línea
+### Line Formatter
 
 Formats the messages using a one-line string. The default logging format is:
 
