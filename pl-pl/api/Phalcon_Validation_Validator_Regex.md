@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Regex'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
+[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
 Allows validate if the value of a field matches a regular expression
 
@@ -65,11 +65,11 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Checks if an option has been defined
+Sprawdź czy opcja została zdefiniowana
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Checks if an option is defined
+Sprawdza, czy opcja jest zdefiniowana
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
