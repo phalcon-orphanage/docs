@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\AdapterInterface'
 ---
 # Interface **Phalcon\Acl\AdapterInterface**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
+[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapterinterface.zep)
 
-## Methods
+## Methoden
 
 abstract public **setDefaultAction** (*mixed* $defaultAccess)
 
@@ -16,7 +16,7 @@ Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 abstract public **getDefaultAction** ()
 
-Returns the default ACL access level
+Gibt die Standard ACL-Zugriffsebene zurück
 
 abstract public **setNoArgumentsDefaultAction** (*mixed* $defaultAccess)
 
