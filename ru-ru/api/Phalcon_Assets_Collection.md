@@ -12,7 +12,7 @@ title: 'Phalcon\Assets\Collection'
 
 Represents a collection of resources
 
-## Methods
+## Методы
 
 public **getPrefix** ()
 
