@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Message\Group'
 
 Represents a group of validation messages
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $messages])
 
