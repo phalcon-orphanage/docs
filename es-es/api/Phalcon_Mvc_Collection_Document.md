@@ -16,15 +16,15 @@ This component allows Phalcon\Mvc\Collection to return rows without an associate
 
 public *boolean* **offsetExists** (*int* $index)
 
-Comprueba si un offset existe en el documento
+Checks whether an offset exists in the document
 
 public **offsetGet** (*mixed* $index)
 
-Devuelve el valor de un campo utilizando la interfaz ArrayAccess
+Returns the value of a field using the ArrayAccess interfase
 
 public **offsetSet** (*mixed* $index, *mixed* $value)
 
-Cambia un valor utilizando la interfaz ArrayAccess
+Change a value using the ArrayAccess interface
 
 public **offsetUnset** (*string* $offset)
 
@@ -32,7 +32,7 @@ Rows cannot be changed. It has only been implemented to meet the definition of t
 
 public *mixed* **readAttribute** (*string* $attribute)
 
-Lee un valor de atributo por su nombre
+Reads an attribute value by its name
 
 ```php
 <?php
@@ -43,7 +43,7 @@ Lee un valor de atributo por su nombre
 
 public **writeAttribute** (*string* $attribute, *mixed* $value)
 
-Escribe un valor atributo por su nombre
+Writes an attribute value by its name
 
 ```php
 <?php
@@ -54,4 +54,4 @@ Escribe un valor atributo por su nombre
 
 public *array* **toArray** ()
 
-Devuelve la instancia como una representación de arreglo
+Returns the instance as an array representation
