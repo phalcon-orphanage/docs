@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Adapter\Pdo\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/factory.zep)
 
 Loads PDO Adapter class using 'adapter' option
 
@@ -31,7 +31,7 @@ $db = Factory::load($options);
 
 ```
 
-## Metodi
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
