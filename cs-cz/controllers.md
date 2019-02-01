@@ -7,11 +7,11 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Přehled
+# Overview
 
 <a name='using'></a>
 
-## Použití controllerů / řadičů
+## Using Controllers
 
 Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
@@ -204,7 +204,7 @@ class PostsController extends Controller
 
 <a name='injecting-services'></a>
 
-## Aplikace služeb
+## Injecting Services
 
 If a controller extends [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) then it has easy access to the service container in application. For example, if we have registered a service like this:
 
@@ -259,7 +259,7 @@ If you're using Phalcon as a full-stack framework, you can read the services pro
 
 <a name='request-response'></a>
 
-## Požadavek a odpověď
+## Request and Response
 
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
 
@@ -313,7 +313,7 @@ Learn more about the HTTP environment in their dedicated articles [request](/4.0
 
 <a name='session-data'></a>
 
-## Relační data (session)
+## Session Data
 
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) from any controller to encapsulate data that needs to be persistent:
 
@@ -338,7 +338,7 @@ class UserController extends Controller
 
 <a name='services'></a>
 
-## Používání služeb jako controllerů
+## Using Services as Controllers
 
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
@@ -368,7 +368,7 @@ $di->set(
 
 <a name='events'></a>
 
-## Události v controllerech
+## Events in Controllers
 
 Controllers automatically act as listeners for [dispatcher](/4.0/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
