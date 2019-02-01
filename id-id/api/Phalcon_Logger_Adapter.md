@@ -8,73 +8,73 @@ title: 'Phalcon\Logger\Adapter'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter.zep)
 
 Base class for Phalcon\Logger adapters
 
-## Methods
+## Metode
 
-public **setLogLevel** (*mixed* $level)
+publik **menetapkan tahap catatan** (*campur* $level)
 
-Filters the logs sent to the handlers that are less or equal than a specific level
+Menyaring log yang dikirim ke penangan yang kurang atau sama dari pada tingkat tertentu
 
-public **getLogLevel** ()
+publik **mendapatkan tahapan catatan** ()
 
-Returns the current log level
+Mengembalikan tingkat log saat ini
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-Sets the message formatter
+Mengatur formatter pesan
 
-public **begin** ()
+publik **mulai** ()
 
-Starts a transaction
+Mulai transaksi
 
-public **commit** ()
+publik **komit** ()
 
-Commits the internal transaction
+Melakukan transaksi internal
 
-public **rollback** ()
+publik **putar kembali** ()
 
-Rollbacks the internal transaction
+Rollbacks transaksi internal
 
-public **isTransaction** ()
+publik **kepada Transaksi** ()
 
-Returns the whether the logger is currently in an active transaction or not
+Mengembalikan apakah logger saat ini dalam transaksi aktif atau tidak
 
-public **critical** (*mixed* $message, [*array* $context])
+publik **kritis** (*campur* $message, [*susun* $context])
 
-Sends/Writes a critical message to the log
+Mengirim / Menulis pesan penting ke log
 
-public **emergency** (*mixed* $message, [*array* $context])
+publick **darurat** (*campur* $message, [*susunan* $context])
 
-Sends/Writes an emergency message to the log
+Mengirim / Menulis pesan penting ke log
 
-public **debug** (*mixed* $message, [*array* $context])
+publik **debug** (*dicampur* $message, [*susuan* $context])
 
-Sends/Writes a debug message to the log
+Mengirim / Menulis pesan debug ke log
 
-public **error** (*mixed* $message, [*array* $context])
+publik **kesalahan** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an error message to the log
+Mengirim / Menulis pesan kesalahan ke log
 
-public **info** (*mixed* $message, [*array* $context])
+publik **info** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an info message to the log
+Mengirim / Menulis pesan info ke log
 
-public **notice** (*mixed* $message, [*array* $context])
+publik **melihat** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes a notice message to the log
+Mengirim / Menulis pesan pemberitahuan ke log
 
-public **warning** (*mixed* $message, [*array* $context])
+publik **peringatan** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes a warning message to the log
+Mengirim / Menulis pesan peringatan ke log
 
-public **alert** (*mixed* $message, [*array* $context])
+publik **waspada** (*dicampur* $message, [*susunan* $context])
 
-Sends/Writes an alert message to the log
+Mengirim / Menulis pesan peringatan ke log
 
-public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
+publik **log** (*campur* $type, [*campur* $message], [*susunan* $context])
 
 Logs messages to the internal logger. Appends logs to the logger
 
