@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Criteria'
 
 *implements* [Phalcon\Mvc\Model\CriteriaInterface](Phalcon_Mvc_Model_CriteriaInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
+[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
 
 This class is used to build the array parameter required by Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an object-oriented interface.
 
@@ -25,39 +25,39 @@ $robots = Robots::query()
 
 ```
 
-## Methods
+## Metode
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Sets the DependencyInjector container
+Menetapkan kontainer Injector Ketergantungan
 
-public **getDI** ()
+publik **mendapatkanDI** ()
 
-Returns the DependencyInjector container
+Mengembalikan kontainer DependencyInjector
 
 public **setModelName** (*mixed* $modelName)
 
-Set a model on which the query will be executed
+Tetapkan model di mana kueri akan dieksekusi
 
 public **getModelName** ()
 
-Returns an internal model name on which the criteria will be applied
+Mengembalikan nama model internal yang menjadi kriteria untuk diterapkan
 
 public **bind** (*array* $bindParams, [*mixed* $merge])
 
-Sets the bound parameters in the criteria This method replaces all previously set bound parameters
+Menetapkan parameter terikat dalam kriteria Metode ini menggantikan semua parameter terikat yang telah ditetapkan sebelumnya
 
 public **bindTypes** (*array* $bindTypes)
 
-Sets the bind types in the criteria This method replaces all previously set bound parameters
+Menetapkan tipe pengikat dalam kriteria Metode ini menggantikan semua parameter terikat yang telah ditetapkan sebelumnya
 
 public **distinct** (*mixed* $distinct)
 
-Sets SELECT DISTINCT / SELECT ALL flag
+Set PILIH DISTINCT / PILIH SEMUA bendera
 
 public [Phalcon\Mvc\Model\Criteria](Phalcon_Mvc_Model_Criteria) **columns** (*string* | *array* $columns)
 
-Sets the columns to be queried
+Menetapkan kolom yang akan ditanyakan
 
 ```php
 <?php
@@ -73,7 +73,7 @@ $criteria->columns(
 
 public **join** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias], [*mixed* $type])
 
-Adds an INNER join to the query
+Menambahkan INNER bergabung ke kueri
 
 ```php
 <?php
@@ -87,7 +87,7 @@ $criteria->join("Robots", "r.id = RobotsParts.robots_id", "r", "LEFT");
 
 public **innerJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds an INNER join to the query
+Menambahkan INNER bergabung ke kueri
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $criteria->innerJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **leftJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a LEFT join to the query
+Menambahkan KIRI bergabung ke kueri
 
 ```php
 <?php
@@ -111,7 +111,7 @@ $criteria->leftJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **rightJoin** (*mixed* $model, [*mixed* $conditions], [*mixed* $alias])
 
-Adds a RIGHT join to the query
+Menambahkan RIGHT bergabung ke kueri
 
 ```php
 <?php
@@ -122,11 +122,11 @@ $criteria->rightJoin("Robots", "r.id = RobotsParts.robots_id", "r");
 
 public **where** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Sets the conditions parameter in the criteria
+Menetapkan parameter kondisi dalam kriteria
 
 public **addWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an AND operator (deprecated)
+Menambahkan kondisi pada kondisi saat ini menggunakan operator AND (tidak berlaku lagi)
 
 public **andWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
@@ -134,11 +134,11 @@ Appends a condition to the current conditions using an AND operator
 
 public **orWhere** (*mixed* $conditions, [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Appends a condition to the current conditions using an OR operator
+Menambahkan kondisi ke kondisi saat ini dengan menggunakan operator OR
 
 public **betweenWhere** (*mixed* $expr, *mixed* $minimum, *mixed* $maximum)
 
-Appends a BETWEEN condition to the current conditions
+Menambahkan kondisi antara kondisi saat ini
 
 ```php
 <?php
@@ -160,7 +160,7 @@ $criteria->notBetweenWhere("price", 100.25, 200.50);
 
 public **inWhere** (*mixed* $expr, *array* $values)
 
-Appends an IN condition to the current conditions
+Menambahkan aplikasi DI kondisi ke kondisi saat ini
 
 ```php
 <?php
@@ -171,7 +171,7 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 public **notInWhere** (*mixed* $expr, *array* $values)
 
-Appends a NOT IN condition to the current conditions
+Menambahkan sebuah TIDAK DALAM kondisi untuk kondisi saat ini
 
 ```php
 <?php
@@ -182,7 +182,7 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 public **conditions** (*mixed* $conditions)
 
-Adds the conditions parameter to the criteria
+Menambahkan parameter kondisi ke kriteria
 
 public **order** (*mixed* $orderColumns)
 
@@ -190,19 +190,19 @@ Adds the order-by parameter to the criteria (deprecated)
 
 public **orderBy** (*mixed* $orderColumns)
 
-Adds the order-by clause to the criteria
+Menambahkan perintah-oleh klausul untuk kriteria
 
 public **groupBy** (*mixed* $group)
 
-Adds the group-by clause to the criteria
+Menambahkan kelompok-oleh ayat untuk kriteria
 
 public **having** (*mixed* $having)
 
-Adds the having clause to the criteria
+Menambahkan klausul dengan kriteria
 
 public **limit** (*mixed* $limit, [*mixed* $offset])
 
-Adds the limit parameter to the criteria.
+Menambahkan parameter batas ke kriteria.
 
 ```php
 <?php
@@ -223,19 +223,19 @@ Adds the "shared_lock" parameter to the criteria
 
 public **cache** (*array* $cache)
 
-Sets the cache options in the criteria This method replaces all previously set cache options
+Menetapkan pengaturan cache dalam kriteria Metode ini menggantikan semua pengaturan cache yang telah di tetapkan sebelumnya
 
 public **getWhere** ()
 
-Returns the conditions parameter in the criteria
+Mengembalikan parameter kondisi dalam kriteria
 
 public *string* | *array* | *null* **getColumns** ()
 
-Returns the columns to be queried
+Mengembalikan kolom yang akan ditanyakan
 
 public **getConditions** ()
 
-Returns the conditions parameter in the criteria
+Mengembalikan parameter kondisi dalam kriteria
 
 public *int* | *array* | *null* **getLimit** ()
 
@@ -243,19 +243,19 @@ Returns the limit parameter in the criteria, which will be an integer if limit w
 
 public **getOrderBy** ()
 
-Returns the order clause in the criteria
+Mengembalikan urutan klausa dalam kriteria
 
 public **getGroupBy** ()
 
-Returns the group clause in the criteria
+Mengembalikan klausa kelompok dalam kriteria
 
 public **getHaving** ()
 
-Returns the having clause in the criteria
+Mengembalikan klausa yang ada di dalam kriteria
 
-public *array* **getParams** ()
+publik *array* **MendapatkanParams** ()
 
-Returns all the parameters defined in the criteria
+Mengembalikan semua parameter yang telah didefinisikan dalam kriteria
 
 public static **fromInput** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *mixed* $modelName, *array* $data, [*mixed* $operator])
 
@@ -263,7 +263,7 @@ Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 
 public **createBuilder** ()
 
-Creates a query builder from criteria.
+Menciptakan query builder dari kriteria.
 
 ```php
 <?php
@@ -275,6 +275,6 @@ $builder = Robots::query()
 
 ```
 
-public **execute** ()
+publik **menjalankan** ()
 
-Executes a find using the parameters built with the criteria
+Mengeksekusi sebuah penemuan menggunakan parameter dibangun dengan kriteria
