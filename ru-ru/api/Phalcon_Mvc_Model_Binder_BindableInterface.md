@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Binder\BindableInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/binder/bindableinterface.zep)
 
-## Methods
+## Методы
 
 abstract public **getModelName** ()
 
