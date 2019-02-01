@@ -17,8 +17,8 @@ Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently 
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
-* You are making complex calculations that every time return the same result (changing infrequently)
-* You are using a lot of helpers and the output generated is almost always the same
+* Κάνετε φορά υπολογισμούς κάθε επιστρέφουν ίδιο αποτέλεσμα το πολύπλοκους που αλλάζοντας σπάνια
+* Χρησιμοποιείτε πολλούς βοηθούς και η παραγωγή είναι που παράγεται σχεδόν πάντα η ίδια
 * You are accessing database data constantly and these data rarely change
 
 <div class='alert alert-warning'>
@@ -631,7 +631,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](https://mo
 | Option       | Περιγραφή                                                   |
 | ------------ | ----------------------------------------------------------- |
 | `prefix`     | A prefix that is automatically prepended to the cache keys. |
-| `server`     | A MongoDB connection string.                                |
+| `server`     | Μια σύνδεσης συμβολοσειρά MongoDB.                          |
 | `db`         | Mongo database name.                                        |
 | `collection` | Mongo collection in the database.                           |
 
