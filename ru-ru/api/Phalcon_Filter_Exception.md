@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Exception'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
-Exceptions thrown in `Phalcon\Filter` will use this class
+Exceptions thrown in `Phalcon\Filter\*` will use this class
 
 ## Methods
 
