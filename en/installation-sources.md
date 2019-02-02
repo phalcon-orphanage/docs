@@ -58,4 +58,19 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
+The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+
+```bash
+cd cphalcon/
+git checkout tags/v4.0.0-alpha1 ./
+zephir fullclean
+zephir compile
+cd ext
+phpize
+./configure
+make && make install
+```
+
+If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+
 [zephir-phar]: https://github.com/phalcon/zephir/releases
