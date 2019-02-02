@@ -4,9 +4,9 @@
 
 # Phalcon Framework - Documentation
 
-<a href="https://www.netlify.com">
+<p align="center"><a href="https://www.netlify.com">
     <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
-</a>
+</a></p>
 
 You can find our documentation project in Crowdin [here](https://crowdin.com/project/phalcon-documentation)
 
@@ -24,7 +24,7 @@ Submit a PR with your modifications **only** to the `en/` folder. Since the Engl
 #### Translations
 You can start translating documentation in a language other than English that you speak. You can do so by joining our project in [Crowdin](https://crowdin.com) [here](https://crowdin.com/project/phalcon-documentation/)
 
-<p>
+<p align="center">
     <a href="https://crowdin.com">
         <img src="https://support.crowdin.com/assets/logos/crowdin-CollaborativeTranslationTool-logo.png" width="40%"/>
     </a>
