@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Model\Validator\Regex'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validator/regex.zep)
 
-Επιτρέπει την επικύρωση η τιμή εάν ενός πεδίου αντιστοιχεί σε μια κανονική έκφραση
+Allows validate if the value of a field matches a regular expression
 
 This validator is only for use with Phalcon\Mvc\Collection. If you are using Phalcon\Mvc\Model, please use the validators provided by Phalcon\Validation.
 
@@ -70,4 +70,4 @@ Returns an option
 
 public **isSetOption** (*mixed* $option) inherited from [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)
 
-Ελέγξτε αν έχει οριστεί επιλογή μια στις επιλογές επικύρωσης
+Check whether an option has been defined in the validator options

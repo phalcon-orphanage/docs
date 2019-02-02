@@ -9,22 +9,22 @@ category: 'acl'
 
 * * *
 
-- [لیست های کنترل دسترسی ACL))](acl-overview)
-- [ایجاد یک ای سی ال](acl-setup)
+- [Access Control Lists (ACL)](acl-overview)
+- [Creating an ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
 - [Adding Subjects](acl-adding-subjects)
-- [تعریف کنترل دسترسی](acl-access-controls)
-- [درخواست ACL](acl-querying)
-- [دسترسی مبتنی بر عملکرد](acl-function-based-access)
+- [Defining Access Controls](acl-access-controls)
+- [Querying an ACL](acl-querying)
+- [Function based access](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
-- [لیست های ACL مرتب سازی](acl-serialization)
-- [رویداد ها](acl-events)
-- [پیاده سازی آداپتورهای خود را](acl-custom-adapters)
+- [Serializing ACL lists](acl-serialization)
+- [Events](acl-events)
+- [Implementing your own adapters](acl-custom-adapters)
 
 * * *
 
-## لیست های کنترل دسترسی ACL))
+## Access Control Lists (ACL)
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 

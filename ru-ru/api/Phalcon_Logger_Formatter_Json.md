@@ -14,7 +14,7 @@ title: 'Phalcon\Logger\Formatter\Json'
 
 Formats messages using JSON encoding
 
-## Методы
+## Methods
 
 public *string* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 

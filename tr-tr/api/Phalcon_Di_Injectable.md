@@ -8,15 +8,15 @@ title: 'Phalcon\Di\Injectable'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
-Bu sınıf, yalnızca kayıtlı bir hizmetin aynı adlı halka açık bir mülkiyete erişerek hizmetler kapsayıcısındaki hizmetlere erişmesine olanak tanır
+This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-## Metodlar
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** ()
 
@@ -24,12 +24,12 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Olay yöneticisi ayarlar
+Sets the event manager
 
-herkes **Olay yöneticisini al** ()
+public **getEventsManager** ()
 
-Dahili olay yöneticisini döndürür
+Returns the internal event manager
 
 public **__get** (*string* $propertyName)
 
-Magic method __get, hizmetlerin adını kullanarak kolayca erişmesini sağlar
+Magic method __get to easily get access to services through the name of them

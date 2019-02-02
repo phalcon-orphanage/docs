@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Check'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
 Component INPUT[type=check] for forms
 
-## Metodi
+## Methods
 
 public **render** ([*array* $attributes])
 

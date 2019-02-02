@@ -23,7 +23,7 @@ require $compiler->getCompiledTemplatePath();
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** ([[Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view])
 

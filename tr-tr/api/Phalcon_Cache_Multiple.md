@@ -6,9 +6,9 @@ title: 'Phalcon\Cache\Multiple'
 ---
 # Class **Phalcon\Cache\Multiple**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/multiple.zep)
 
-Birden çok arka plana yazılmış zincirleme arka uç bağdaştırıcılarını okumaya izin verir
+Allows to read to chained backend adapters writing to multiple backends
 
 ```php
 <?php
@@ -69,7 +69,7 @@ $cache->save("my-key", $data);
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([[Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backends])
 
@@ -77,27 +77,27 @@ Phalcon\Cache\Multiple constructor
 
 public **push** ([Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface) $backend)
 
-Bir arka uç ekler
+Adds a backend
 
 public *mixed* **get** (*string* | *int* $keyName, [*int* $lifetime])
 
-Dahili arka yüzleri okuyan önbelleklenmiş bir içerik döner
+Returns a cached content reading the internal backends
 
 public **start** (*string* | *int* $keyName, [*int* $lifetime])
 
-Her arka planı başlatır
+Starts every backend
 
-yerel **kaydet** ([*dizi* $keyName], [*dizi* $content], [*int* $lifetime], [*booledeğeri* $stopBuffer])
+public **save** ([*string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Önbelleğe alınan içeriği tüm arka uçlara depolar ve ön ucu durdurur
+Stores cached content into all backends and stops the frontend
 
 public *boolean* **delete** (*string* | *int* $keyName)
 
-Her arka planda bir değeri siler
+Deletes a value from each backend
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Önbelleğin en az bir arka yüzde var olup olmadığını kontrol eder
+Checks if cache exists in at least one backend
 
 public **flush** ()
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Lower'
 
 Sanitizes a string to lowercase
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

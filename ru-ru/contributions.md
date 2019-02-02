@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='contributing'></a>
 
-# Вклад в Phalcon
+# Contributing to Phalcon
 
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
 
@@ -17,7 +17,7 @@ The Phalcon source code (along with documentation, websites etc.) is stored in [
 
 <a name='contributions'></a>
 
-## Вклад
+## Contributions
 
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
@@ -39,13 +39,13 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='questions-and-support'></a>
 
-## Вопросы и ответы
+## Questions and Support
 
 > We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server. {:.alert .alert-danger}
 
 <a name='bug-report-checklist'></a>
 
-## Контрольный список отчета об ошибках
+## Bug Report Checklist
 
 - Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
 - Only bugs found in the latest released version of Phalcon will be addressed.
@@ -55,7 +55,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Генерация трассировки
+### Generating a backtrace
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
@@ -68,7 +68,7 @@ Please check the following links for instructions on how to generate the backtra
 
 <a name='pull-request-checklist'></a>
 
-## Контрольный список пулл реквеста
+## Pull Request Checklist
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
 - Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
@@ -85,13 +85,13 @@ Before submitting **new functionality**, please open a [NFR](/4.0/en/new-feature
 
 <a name='getting-support'></a>
 
-## Получение поддержки
+## Getting Support
 
 If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
 
 <a name='requesting-features'></a>
 
-## Предложение идей
+## Requesting Features
 
 If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
 

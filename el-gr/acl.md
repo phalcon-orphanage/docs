@@ -11,8 +11,8 @@ category: 'acl'
 
 - [Λίστες ελέγχου πρόσβασης (ACL)](acl-overview)
 - [Δημιουργώντας Λίστες Ελέγχου Πρόσβασης](acl-setup)
-- [Προσθήκη Λειτουργιών](acl-adding-operations)
-- [Προσθήκη Θεμάτων](acl-adding-subjects)
+- [Adding Operations](acl-adding-operations)
+- [Adding Subjects](acl-adding-subjects)
 - [Καθορισμός ελέγχων πρόσβασης](acl-access-controls)
 - [Αναζητώντας ένα ACL](acl-querying)
 - [Πρόσβαση βασισμένη σε λειτουργίες](acl-function-based-access)
@@ -20,7 +20,7 @@ category: 'acl'
 - [Operations Inheritance](acl-operations-inheritance)
 - [Σειρογραφία Λίστες ACL](acl-serialization)
 - [Γεγονότα](acl-events)
-- [Εφαρμογή των δικών σας προσαρμογέων](acl-custom-adapters)
+- [Implementing your own adapters](acl-custom-adapters)
 
 * * *
 

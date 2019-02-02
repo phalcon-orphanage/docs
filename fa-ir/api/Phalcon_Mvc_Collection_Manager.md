@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Collection\Manager'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
 
 This components controls the initialization of models, keeping record of relations between the different models of the application.
 
@@ -30,7 +30,7 @@ $robot = new Robots($di);
 
 ```
 
-## روش ها
+## Methods
 
 public **getServiceName** ()
 
@@ -52,9 +52,9 @@ public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_Ma
 
 Sets the event manager
 
-عمومی **مدیریت رویداد** ()
+public **getEventsManager** ()
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
 public **setCustomEventsManager** ([Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 

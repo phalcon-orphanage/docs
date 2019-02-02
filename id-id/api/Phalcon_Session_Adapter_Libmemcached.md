@@ -10,9 +10,9 @@ title: 'Phalcon\Session\Adapter\Libmemcached'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
-Sesi toko adaptor ini di libmemcached
+This adapter store sessions in libmemcached
 
 ```php
 <?php
@@ -47,19 +47,19 @@ echo $session->get("var");
 
 ## Constants
 
-*bilangan bulat* **SESSION_ACTIVE **
+*integer* **SESSION_ACTIVE**
 
-*bilangan bulat* **SESSION_NONE **   Teks paragraf
+*integer* **SESSION_NONE**
 
-*bilangan bulat* **SESSION_DISABLED **
+*integer* **SESSION_DISABLED**
 
-## Metode
+## Methods
 
 public **getLibmemcached** ()
 
 ...
 
-publik ** getLifetime ** ()
+public **getLifetime** ()
 
 ...
 
@@ -71,7 +71,7 @@ public **open** ()
 
 ...
 
-publik **tutup** ()
+public **close** ()
 
 ...
 
@@ -85,11 +85,11 @@ public **gc** ()
 
 public **start** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Mulai sesi (jika header sudah dikirim sesi tidak akan dimulai)
+Starts the session (if headers are already sent the session will not be started)
 
 public **setOptions** (*array* $options) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Menetapkan pilihan sesi
+Sets session's options
 
 ```php
 <?php
@@ -104,21 +104,21 @@ $session->setOptions(
 
 public **getOptions** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Dapatkan pilihan internal
+Get internal options
 
 public **setName** (*mixed* $name) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Tetapkan nama sesi
+Set session name
 
 public **getName** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Dapatkan nama sesi
+Get session name
 
 public **regenerateId** ([*mixed* $deleteOldSession]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
 public **get** (*mixed* $index, [*mixed* $defaultValue], [*mixed* $remove]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Mendapat variabel sesi dari konteks aplikasi
+Gets a session variable from an application context
 
 ```php
 <?php
@@ -129,7 +129,7 @@ $session->get("auth", "yes");
 
 public **set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Menetapkan variabel sesi dalam konteks aplikasi
+Sets a session variable in an application context
 
 ```php
 <?php
@@ -140,7 +140,7 @@ $session->set("auth", "yes");
 
 public **has** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Periksa apakah variabel sesi diatur dalam konteks aplikasi
+Check whether a session variable is set in an application context
 
 ```php
 <?php
@@ -153,7 +153,7 @@ var_dump(
 
 public **remove** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Menghapus variabel sesi dari konteks aplikasi
+Removes a session variable from an application context
 
 ```php
 <?php
@@ -164,7 +164,7 @@ $session->remove("auth");
 
 public **getId** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Mengembalikan id sesi aktif
+Returns active session id
 
 ```php
 <?php
@@ -175,7 +175,7 @@ echo $session->getId();
 
 public **setId** (*mixed* $id) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Tetapkan Id sesi saat ini
+Set the current session id
 
 ```php
 <?php
@@ -186,7 +186,7 @@ $session->setId($id);
 
 public **isStarted** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Periksa apakah sesi sudah dimulai
+Check whether the session has been started
 
 ```php
 <?php
@@ -199,7 +199,7 @@ var_dump(
 
 public **status** () inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Mengembalikan status sesi saat ini.
+Returns the status of the current session.
 
 ```php
 <?php
@@ -216,19 +216,19 @@ if ($session->status() !== $session::SESSION_ACTIVE) {
 
 public **__get** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Mendapat variabel sesi dari konteks aplikasi
+Alias: Gets a session variable from an application context
 
 public **__set** (*mixed* $index, *mixed* $value) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Menetapkan variabel sesi dalam konteks aplikasi
+Alias: Sets a session variable in an application context
 
 public **__isset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Periksa apakah variabel sesi diatur dalam konteks aplikasi
+Alias: Check whether a session variable is set in an application context
 
 public **__unset** (*mixed* $index) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 
-Alias: Menghapus variabel sesi dari konteks aplikasi
+Alias: Removes a session variable from an application context
 
 ```php
 <?php

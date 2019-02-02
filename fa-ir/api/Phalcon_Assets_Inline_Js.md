@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Inline\Js'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
 
-یک جاوا اسکریپت داخلی را نشان می دهد
+Represents an inline Javascript
 
-## روش ها
+## Methods
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
@@ -36,16 +36,16 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](Phalcon_Asset
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-نوع خطی را تنظیم می کند
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-تعیین می کند که آیا منابع باید فیلتر شوند یا خیر
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-ویژگی های HTML اضافی را تعیین می کند
+Sets extra HTML attributes
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-کلید منبع را دریافت می کند.
+Gets the resource's key.

@@ -8,36 +8,36 @@ title: 'Phalcon\Annotations\Adapter'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
 
 This is the base class for Phalcon\Annotations adapters
 
-## Metode
+## Methods
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Menyetel anotasi
+Sets the annotations parser
 
 public **getReader** ()
 
-Mengembalikan pembaca anotasi
+Returns the annotation reader
 
-public **dapatkan** (*string* | *objek* $className)
+public **get** (*string* | *object* $className)
 
-Mengurai atau mengambil semua anotasi yang ditemukan di kelas
+Parses or retrieves all the annotations found in a class
 
 public **getMethods** (*mixed* $className)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas'
+Returns the annotations found in all the class' methods
 
 public **getMethod** (*mixed* $className, *mixed* $methodName)
 
-Mengembalikan anotasi yang ditemukan dalam metode tertentu
+Returns the annotations found in a specific method
 
 public **getProperties** (*mixed* $className)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas'
+Returns the annotations found in all the class' methods
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-Mengembalikan anotasi yang ditemukan di properti tertentu
+Returns the annotations found in a specific property

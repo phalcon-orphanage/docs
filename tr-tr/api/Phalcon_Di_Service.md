@@ -8,9 +8,9 @@ title: 'Phalcon\Di\Service'
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
-Servis konteynırının içindeki tek bir hizmeti ifade eder
+Represents individually a service in the services container
 
 ```php
 <?php
@@ -23,45 +23,45 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-## Metodlar
+## Methods
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
-herkese açık ** isim al** ()
+public **getName** ()
 
-Hizmetin ismini döndürür
+Returns the service's name
 
 public **setShared** (*mixed* $shared)
 
-Hizmetin paylaşılıp paylaşılmadığını ayarlar
+Sets if the service is shared or not
 
 public **isShared** ()
 
-Hizmetin paylaşılıp paylaşılmadığını kontrol eder
+Check whether the service is shared or not
 
 public **setSharedInstance** (*mixed* $sharedInstance)
 
-Hizmet ile ilgili paylaşılan örneği ayarlar/sıfırlar
+Sets/Resets the shared instance related to the service
 
 public **setDefinition** (*mixed* $definition)
 
-Hizmet tanımını ayarlar
+Set the service definition
 
 public *mixed* **getDefinition** ()
 
-Hizmet tanımını döndürür
+Returns the service definition
 
 public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
-Hizmeti Yeniden Başlat
+Resolves the service
 
 public **setParameter** (*mixed* $position, *array* $parameter)
 
-Hizmeti çözmeden tanımdaki bir parametreyi değiştirir
+Changes a parameter in the definition without resolve the service
 
 public *array* **getParameter** (*int* $position)
 
-Belirli bir konumdaki parametreyi döndürür
+Returns a parameter in a specific position
 
 public **isResolved** ()
 
@@ -69,4 +69,4 @@ Returns true if the service was resolved
 
 public static **__set_state** (*array* $attributes)
 
-İç servis durumunu geri yükleyin
+Restore the internal state of a service

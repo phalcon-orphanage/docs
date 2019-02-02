@@ -12,7 +12,7 @@ title: 'Phalcon\Image\Factory'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/factory.zep)
 
-Carga la clase de adaptador de imagen utilizando la opción "adapter"
+Loads Image Adapter class using 'adapter' option
 
 ```php
 <?php

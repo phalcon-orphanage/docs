@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Einführung",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Testing environment",
                 "url": "/testing-environment"
             }
         ]
@@ -127,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Anwendungsfall",
+                "text": "Use case",
                 "url": "/use-case"
             }
         ]
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Modelle",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -221,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Ereignisse",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -297,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controller",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
@@ -309,7 +309,7 @@
                 "url": "/events"
             },
             {
-                "text": "Filter",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
@@ -367,7 +367,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalisierung",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {

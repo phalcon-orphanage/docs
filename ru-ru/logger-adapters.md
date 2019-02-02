@@ -31,6 +31,6 @@ This is a black hole adapter. It sends messages to *infinity and beyond*! This a
 
 <a name='adapters-factory'></a>
 
-### Фабрика
+### Factory
 
 *This component is not working as expected for the time being. We will need to refactor it to align with the new implementation* [#13672](https://github.com/phalcon/cphalcon/issues/13672)

@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# ابزارهای توسعه Phalcon در لینوکس
+# Phalcon Developer Tools on Linux
 
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
 

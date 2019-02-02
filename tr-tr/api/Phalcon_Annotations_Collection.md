@@ -8,67 +8,68 @@ title: 'Phalcon\Annotations\Collection'
 
 *implements* [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 Represents a collection of annotations. This class allows to traverse a group of annotations easily
 
 ```php
 <?php
 
-// Ek açıklamalarla git
+//Traverse annotations
 foreach ($classAnnotations as $annotation) {
     echo "Name=", $annotation->getName(), PHP_EOL;
 }
-// Ek açıklamaların belirli bir özelliğe sahip olup olmadığını kontrol edin
+
+//Check if the annotations has a specific
 var_dump($classAnnotations->has("Cacheable"));
 
-// Koleksiyonun belirli bir açıklaması alın
+//Get an specific annotation in the collection
 $annotation = $classAnnotations->get("Cacheable");
 
 ```
 
-## Metodlar
+## Methods
 
-herkese açık **__düzenle** ([*dizi* $Yansıma Verileri])
+public **__construct** ([*array* $reflectionData])
 
 Phalcon\Annotations\Collection constructor
 
-herkese açık **say** ()
+public **count** ()
 
-Koleksiyondaki ek açıklamalar sayısını geri getirir
+Returns the number of annotations in the collection
 
-herkese açık **geri sarma** ()
+public **rewind** ()
 
-Dahili yineleyiciyi başa sarar
+Rewinds the internal iterator
 
 public [Phalcon\Annotations\Annotation](Phalcon_Annotations_Annotation) **current** ()
 
-Yineleyicide geçerli ek açıklamayı geri getirir
+Returns the current annotation in the iterator
 
-herkese açık **anahtar** ()
+public **key** ()
 
-Yineleyicideki şuanki konumu/anahtarı döner
+Returns the current position/key in the iterator
 
-herkese açık **sonraki** ()
+public **next** ()
 
-İç yineleyici işaretçisini sıradaki konuma taşır
+Moves the internal iteration pointer to the next position
 
-herkese açık **geçerli** ()
+public **valid** ()
 
-Yineleyici içindeki mevcut ek açıklamanın geçerli olup olmadığını kontrol eder
+Check if the current annotation in the iterator is valid
 
-herkese açık ** Açıklamaları al** ()
+public **getAnnotations** ()
 
-Dahili ek açıklamaları bir dizi olarak döndürür
+Returns the internal annotations as an array
 
-herkese açık **al** (*dizi* $isim)
+public **get** (*string* $name)
 
-Bir isim ile eşleşen ilk ek açıklamayı döndürür
+Returns the first annotation that match a name
 
-herkese açık **Hepsini al** (*dizi* $isim)
+public **getAll** (*string* $name)
 
-Bir isim ile eşleşen tüm ek açıklamaları döndürür
+Returns all the annotations that match a name
 
-herkese açık **var** (*dizi* $isim)
+public **has** (*string* $name)
 
-Künyede açıklama var mı kontrol edin
+Check if an annotation exists in a collection

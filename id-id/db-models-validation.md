@@ -7,15 +7,15 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Memvalidasi Model
+# Validating Models
 
 <a name='data-integrity'></a>
 
-## Memvalidasi Integritas Data
+## Validating Data Integrity
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. Khusus `validasi` acara ini memungkinkan kita untuk memanggil built-in validator selama merekam. Phalcon memaparkan beberapa validator bawaan yang dapat digunakan pada tahap validasi ini.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
-Contoh berikut menunjukkan bagaimana cara menggunakannya:
+The following example shows how to use it:
 
 ```php
 <?php
@@ -96,11 +96,11 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Pesan validasi
+## Validation Messages
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
-Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. Setiap pesan memberikan informasi tambahan seperti nama field yang menghasilkan pesan atau jenis pesan:
+Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. Each message provides extended information like the field name that generated the message or the message type:
 
 ```php
 <?php
@@ -118,13 +118,13 @@ if ($robot->save() === false) {
 
 [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
 
-| Mengetik                     | Deskripsi                                                                                                                                             |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Kehadiran dari`             | Dihasilkan saat field dengan atribut non-null pada database sedang mencoba memasukkan/update nilai null                                               |
-| `Pelanggaran Kendala`        | Dihasilkan ketika sebuah bagian lapangan dari kunci asing virtual mencoba memasukkan/memperbarui nilai yang tidak ada dalam model yang direferensikan |
-| `Nilai tidak valid`          | Dihasilkan saat validator gagal karena nilai yang tidak valid                                                                                         |
-| `Percobaan Buat Tidak Valid` | Diproduksi saat sebuah rekaman dicoba diciptakan tapi sudah ada                                                                                       |
-| `InvalidUpdateAttempt`       | Diproduksi saat sebuah rekaman dicoba diperbaharui namun tidak ada                                                                                    |
+| Type                   | Description                                                                                                                        |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `PresenceOf`           | Generated when a field with a non-null attribute on the database is trying to insert/update a null value                           |
+| `ConstraintViolation`  | Generated when a field part of a virtual foreign key is trying to insert/update a value that doesn't exist in the referenced model |
+| `InvalidValue`         | Generated when a validator failed because of an invalid value                                                                      |
+| `InvalidCreateAttempt` | Produced when a record is attempted to be created but it already exists                                                            |
+| `InvalidUpdateAttempt` | Produced when a record is attempted to be updated but it doesn't exist                                                             |
 
 The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
 
@@ -164,11 +164,11 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validasi Gagal
+## Validation Failed Events
 
 Another type of events are available when the data validation process finds any inconsistency:
 
-| Operasi                       | Nama                  | Penjelasan                                                             |
-| ----------------------------- | --------------------- | ---------------------------------------------------------------------- |
-| Sisipkan atau Perbarui        | `tidak disimpan`      | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
-| Sisipkan, Hapus atau Perbarui | `padaPengesahanGagal` | Dipicu saat operasi manipulasi data gagal                              |
+| Operation                | Name                | Explanation                                                            |
+| ------------------------ | ------------------- | ---------------------------------------------------------------------- |
+| Insert or Update         | `notSaved`          | Triggered when the `INSERT` or `UPDATE` operation fails for any reason |
+| Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails                   |

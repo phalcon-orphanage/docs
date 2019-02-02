@@ -6,7 +6,7 @@ title: 'Phalcon\Queue\Beanstalk'
 ---
 # Class **Phalcon\Queue\Beanstalk**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/queue/beanstalk.zep)
 
 Class to access the beanstalk queue service. Partially implements the protocol version 1.2
 
@@ -25,7 +25,7 @@ $queue = new Beanstalk(
 
 ```
 
-## Stałe
+## Constants
 
 *integer* **DEFAULT_DELAY**
 

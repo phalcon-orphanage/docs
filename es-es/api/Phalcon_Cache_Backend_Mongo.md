@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Backend\Mongo'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/mongo.zep)
 
-Permite almacenar en cache fragmentos de producción, datos PHP o datos sin procesar hacia un MongoDb backend
+Allows to cache output fragments, PHP data or raw data to a MongoDb backend
 
 ```php
 <?php
@@ -56,11 +56,11 @@ Phalcon\Cache\Backend\Mongo constructor
 
 final protected *MongoCollection* **_getCollection** ()
 
-Devuelve una colección de MongoDb basándose en los parámetros de backend
+Returns a MongoDb collection based on the backend parameters
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Devuelve el contenido almacenado en caché
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -68,11 +68,11 @@ Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Elimina el valor almacenado en caché por la clave
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Indagar las claves almacenadas en caché existentes.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -94,15 +94,15 @@ gc
 
 public **increment** (*int* | *string* $keyName, [*mixed* $value])
 
-Incremento de la llave predeterminado, por el numero $value
+Increment of a given key by $value
 
 public **decrement** (*int* | *string* $keyName, [*mixed* $value])
 
-Reducción de la llave predeterminada, por el numero $value
+Decrement of a given key by $value
 
 public **flush** ()
 
-Anula inmediatamente todos los elementos existentes.
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -130,20 +130,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comienza una caché. El KeyName permite identificar el fragmento creado
+Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Detiene el frontend sin almacenar ningún contenido almacenado en caché
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el último almacenamiento en caché esta actualizado o no
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el caché ha empezado a almacenarse o no
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Obtiene la última duración establecida
+Gets the last lifetime set

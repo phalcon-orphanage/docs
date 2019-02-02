@@ -10,7 +10,7 @@ title: 'Phalcon\Paginator\Adapter\Model'
 
 *implements* [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
 
@@ -31,7 +31,7 @@ $paginate = $paginator->getPaginate();
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** (*array* $config)
 
@@ -43,12 +43,12 @@ Returns a slice of the resultset to show in the pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Legen Sie die aktuelle Seitenzahl fest
+Set the current page number
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Legt die maximale Anzahl Zeilen pro Seite fest
+Set current rows limit
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-Gibt die maximale Anzahl Zeilen pro Seite zurück
+Get current rows limit

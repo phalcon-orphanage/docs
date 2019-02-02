@@ -10,7 +10,7 @@ title: 'Phalcon\Cli\Router'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-Phalcon\Cli\Router is the standard framework router. Enrutamiento es el proceso de tomar una línea de comandos y argumentos descomponiéndolo en parámetros para determinar qué módulo, tarea y la acción de esa tarea debe recibir la solicitud
+Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request
 
 ```php
 <?php
@@ -37,23 +37,23 @@ Phalcon\Cli\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** ()
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-Establece el nombre del módulo predeterminado
+Sets the name of the default module
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Establece el nombre predeterminado del controlador
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName)
 
-Establece el nombre de acción predeterminado
+Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
@@ -73,11 +73,11 @@ $router->setDefaults(
 
 public **handle** ([*array* $arguments])
 
-Maneja la información de enrutamiento recibida de los argumentos de la línea de comando
+Handles routing information received from command-line arguments
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **add** (*string* $pattern, [*string/array* $paths])
 
-Adiciona una ruta al enrutador
+Adds a route to the router
 
 ```php
 <?php
@@ -88,40 +88,40 @@ $router->add("/about", "About::main");
 
 public **getModuleName** ()
 
-Devuelve el nombre del módulo procesado
+Returns processed module name
 
 public **getTaskName** ()
 
-Devuelve el nombre de tarea procesada
+Returns processed task name
 
 public **getActionName** ()
 
-Devuelve el nombre de la acción procesada
+Returns processed action name
 
 public *array* **getParams** ()
 
-Devuelve los parámetros extra procesados
+Returns processed extra params
 
 public **getMatchedRoute** ()
 
-Devuelve la ruta que coincide con el URI manejado
+Returns the route that matches the handled URI
 
 public *array* **getMatches** ()
 
-Devuelve las sub expresiones en la expresión regular combinada
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** ()
 
-Comprueba si el enrutador coincide con alguna de las rutas definidas
+Checks if the router matches any of the defined routes
 
 public **getRoutes** ()
 
-Devuelve todas las rutas definidas en el enrutador
+Returns all the routes defined in the router
 
 public [Phalcon\Cli\Router\Route](Phalcon_Cli_Router_Route) **getRouteById** (*int* $id)
 
-Devuelve un objeto de ruta por su identidad
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-Devuelve un objeto de ruta por su nombre
+Returns a route object by its name

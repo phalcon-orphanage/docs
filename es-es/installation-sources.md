@@ -4,15 +4,15 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Instalación
+# Installation
 
 * * *
 
-## Compilar desde código fuente
+## Compile from Sources
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Requerimentos
+### Requirements
 
 * PHP 7.2.x/7.3.x development resources
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
@@ -29,7 +29,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compilar Phalcon
+Compile Phalcon
 
 ```bash
 cd cphalcon/

@@ -51,11 +51,11 @@ Phalcon\Mvc\Router constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** ()
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -84,23 +84,23 @@ $router->setUriSource(
 
 public **removeExtraSlashes** (*mixed* $remove)
 
-设置是否在已处理的路由，路由器必须移除多余的斜线
+Set whether router must remove the extra slashes in the handled routes
 
 public **setDefaultNamespace** (*mixed* $namespaceName)
 
-设置默认命名空间的名称
+Sets the name of the default namespace
 
 public **setDefaultModule** (*mixed* $moduleName)
 
-设置默认模块的名称
+Sets the name of the default module
 
 public **setDefaultController** (*mixed* $controllerName)
 
-设置默认控制器名称
+Sets the default controller name
 
 public **setDefaultAction** (*mixed* $actionName)
 
-设置默认操作名称
+Sets the default action name
 
 public **setDefaults** (*array* $defaults)
 
@@ -120,7 +120,7 @@ $router->setDefaults(
 
 public **getDefaults** ()
 
-返回一个数组的默认参数
+Returns an array of default parameters
 
 public **handle** ([*mixed* $uri])
 
@@ -139,7 +139,7 @@ $router->handle("/posts/edit/1");
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods], [*mixed* $position])
 
-将路由添加到路由器没有任何 HTTP 约束
+Adds a route to the router without any HTTP constraint
 
 ```php
 <?php
@@ -158,96 +158,96 @@ Adds a route to the router that only match if the HTTP method is GET
 
 public **addPost** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 POST
+Adds a route to the router that only match if the HTTP method is POST
 
 public **addPut** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 PUT
+Adds a route to the router that only match if the HTTP method is PUT
 
 public **addPatch** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-添加到路由器，如果 HTTP 方法是只匹配路由修补
+Adds a route to the router that only match if the HTTP method is PATCH
 
 public **addDelete** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 public **addOptions** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是OPTIONS
+Add a route to the router that only match if the HTTP method is OPTIONS
 
 public **addHead** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是HEAD
+Adds a route to the router that only match if the HTTP method is HEAD
 
 public **addPurge** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是PURGE （Squid 和Varnish 支持）
+Adds a route to the router that only match if the HTTP method is PURGE (Squid and Varnish support)
 
 public **addTrace** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是TRACE
+Adds a route to the router that only match if the HTTP method is TRACE
 
 public **addConnect** (*mixed* $pattern, [*mixed* $paths], [*mixed* $position])
 
-将路由添加到路由器只匹配如果 HTTP 方法是 CONNECT
+Adds a route to the router that only match if the HTTP method is CONNECT
 
 public **mount** ([Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface) $group)
 
-安装路由器中的路由组
+Mounts a group of routes in the router
 
 public **notFound** (*mixed* $paths)
 
-设置路径时没有已定义的路由匹配返回一组
+Set a group of paths to be returned when none of the defined routes are matched
 
 public **clear** ()
 
-删除所有预定义的路由
+Removes all the pre-defined routes
 
 public **getNamespaceName** ()
 
-返回已处理命名空间名称
+Returns the processed namespace name
 
 public **getModuleName** ()
 
-返回已处理的模块名称
+Returns the processed module name
 
 public **getControllerName** ()
 
-返回已处理的控制器名称
+Returns the processed controller name
 
 public **getActionName** ()
 
-返回相应的加工的操作名称
+Returns the processed action name
 
 public **getParams** ()
 
-返回的加工的参数
+Returns the processed parameters
 
 public **getMatchedRoute** ()
 
-返回匹配处理的 URI 的路线
+Returns the route that matches the handled URI
 
 public **getMatches** ()
 
-返回的子表达式匹配的正则表达式
+Returns the sub expressions in the regular expression matched
 
 public **wasMatched** ()
 
-检查是否路由器匹配任何已定义的路由
+Checks if the router matches any of the defined routes
 
 public **getRoutes** ()
 
-返回所有定义在路由器中的路由
+Returns all the routes defined in the router
 
 public **getRouteById** (*mixed* $id)
 
-按其 id 返回路由对象
+Returns a route object by its id
 
 public **getRouteByName** (*mixed* $name)
 
-按其名称返回路由对象
+Returns a route object by its name
 
 public **isExactControllerName** ()
 
-返回是否不应该出错的控制器的名称
+Returns whether controller name should not be mangled

@@ -17,7 +17,7 @@ The component `Phalcon\Translate` aids in creating multilingual applications. Ap
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
-| Adapter                                                                               | Beschreibung                                                                            |
+| Adapter                                                                               | Description                                                                             |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 
@@ -52,7 +52,7 @@ Translation strings are stored in files. The structure of these files could vary
 ```bash
 app/messages/en.php
 app/messages/es.php
-app/messages/de.php
+app/messages/fr.php
 app/messages/zh.php
 ```
 
@@ -73,12 +73,12 @@ $messages = [
 ```php
 <?php
 
-// app/messages/de.php
+// app/messages/fr.php
 $messages = [
-    'hi'      => 'Hallo',
-    'bye'     => 'Auf Wiedersehen',
-    'hi-name' => 'Hallo %name%',
-    'song'    => 'Das Lied ist %song%',
+    'hi'      => 'Bonjour',
+    'bye'     => 'Au revoir',
+    'hi-name' => 'Bonjour %name%',
+    'song'    => 'La chanson est %song%',
 ];
 ```
 
@@ -102,22 +102,29 @@ class UserController extends Controller
 
         $translationFile = 'app/messages/' . $language . '.php';
 
-        // Prüfe, ob wir eine Übersetzungsdatei für diese Sprache haben
+        // Check if we have a translation file for that lang
         if (file_exists($translationFile)) {
             require $translationFile;
         } else {
-            // Wenn nein, nutze die Standard-Sprache
+            // Fallback to some default
             require 'app/messages/en.php';
         }
 
-        // Gebe ein Übersetzungsobjekt zurück
-        // $messages bekommen wir durch die obige "require"-Anweisung 
+        // Return a translation object $messages comes from the require
+        // statement above
         return new NativeArray(
             [
                 'content' => $messages,
             ]
         );
     }
+
+    public function indexAction()
+    {
+        $this->view->name = 'Mike';
+        $this->view->t    = $this->getTranslation();
+    }
+}
 ```
 
 The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
@@ -131,8 +138,8 @@ The `_getTranslation()` method is available for all actions that require transla
 The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
-<!-- Willkommen -->
-<!-- String: hi-name => 'Hallo %name%' -->
+<!-- welcome -->
+<!-- String: hi-name => 'Hello %name%' -->
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
@@ -202,7 +209,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementierung von eigenen Adaptern
+## Implementing your own adapters
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Uniqueness'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
 Check that a field is unique in the related table
 
@@ -51,7 +51,7 @@ $validator->add(
 
 ```
 
-W modelu:
+In model:
 
 ```php
 <?php
@@ -126,11 +126,11 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Sprawdź czy opcja została zdefiniowana
+Checks if an option has been defined
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Sprawdza, czy opcja jest zdefiniowana
+Checks if an option is defined
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 

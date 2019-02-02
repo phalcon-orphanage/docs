@@ -49,7 +49,7 @@ Casts the value to a boolean.
 
 It also returns `true` if the value is:
 
-* `benar`
+* `true`
 * `on`
 * `yes`
 * `y`
@@ -57,7 +57,7 @@ It also returns `true` if the value is:
 
 It also returns `false` if the value is:
 
-* `salah`
+* `false`
 * `off`
 * `no`
 * `n`

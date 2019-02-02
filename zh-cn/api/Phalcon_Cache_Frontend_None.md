@@ -58,28 +58,28 @@ foreach ($robots as $robot) {
 
 public **getLifetime** ()
 
-返回缓存生存期，总是一秒过期内容
+Returns cache lifetime, always one second expiring content
 
 public **isBuffering** ()
 
-检查是否如果前端总是 false 缓冲输出，
+Check whether if frontend is buffering output, always false
 
 public **start** ()
 
-开始输出前端
+Starts output frontend
 
 public *string* **getContent** ()
 
-返回输出缓存的内容
+Returns output cached content
 
 public **stop** ()
 
-停止输出前端
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-准备要存储的数据
+Prepare data to be stored
 
 public **afterRetrieve** (*mixed* $data)
 
-准备数据检索到用户
+Prepares data to be retrieved to user

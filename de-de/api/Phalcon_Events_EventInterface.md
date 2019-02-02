@@ -6,9 +6,9 @@ title: 'Phalcon\Events\EventInterface'
 ---
 # Interface **Phalcon\Events\EventInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **getData** ()
 

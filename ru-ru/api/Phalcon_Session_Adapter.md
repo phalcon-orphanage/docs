@@ -20,7 +20,7 @@ Base class for Phalcon\Session adapters
 
 *integer* **SESSION_DISABLED**
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options])
 
@@ -53,7 +53,7 @@ public **setName** (*mixed* $name)
 
 Set session name
 
-общественная **метод getname** ()
+public **getName** ()
 
 Get session name
 

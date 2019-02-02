@@ -10,13 +10,13 @@ title: 'Phalcon\Di\FactoryDefault\Cli'
 
 *implements* [Phalcon\DiInterface](Phalcon_DiInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
 
-## روش ها
+## Methods
 
-عمومی **__ ساخت** ()
+public **__construct** ()
 
 Phalcon\Di\FactoryDefault\Cli constructor
 
@@ -26,7 +26,7 @@ Sets the internal event manager
 
 public **getInternalEventsManager** () inherited from [Phalcon\Di](Phalcon_Di)
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 

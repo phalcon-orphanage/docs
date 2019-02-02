@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\Validator\CreditCard'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
 
-Prüft, ob ein Wert eine gültige Kreditkartennummer hat
+Checks if a value has a valid credit card number
 
 ```php
 <?php
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methoden
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
@@ -56,7 +56,7 @@ Executes the validation
 
 private *boolean* **verifyByLuhnAlgorithm** (*string* $number)
 
-eine einfache Prüfsummenformel wird verwendet, um eine Vielzahl von Identifikationsnummern zu überprüfen
+is a simple checksum formula used to validate a variety of identification numbers
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 

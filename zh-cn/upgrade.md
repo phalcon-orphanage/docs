@@ -11,7 +11,7 @@ Phalcon v4 contains a lot of changes to components, including changes to interfa
 
 <a name='requirements'></a>
 
-## 要求
+## Requirements
 
 ### PHP 7.2
 
@@ -37,7 +37,7 @@ Alternatively some distributions add a number prefix on `ini` files. If that is 
 
 <a name='installation'></a>
 
-### 安装
+### Installation
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -66,7 +66,7 @@ php -m | grep phalcon
 
 <a name='acl'></a>
 
-## 访问控制列表(ACL)
+## ACL
 
 > Status: **changes required**
 > 
@@ -76,7 +76,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 <a name='acl-overview'></a>
 
-### 概述
+### Overview
 
 The components needed for the ACL to work have been renamed. In particular `Role` has been renamed to `Operation` and `Resource` to `Subject` in all relevant interfaces, classes and methods that this component uses.
 
@@ -115,7 +115,7 @@ The components needed for the ACL to work have been renamed. In particular `Role
 
 <a name='filter'></a>
 
-## 筛选器
+## Filter
 
 > Status: **changes required**
 > 
@@ -125,7 +125,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 <a name='filter-overview'></a>
 
-### 概述
+### Overview
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 

@@ -8,11 +8,11 @@ title: 'Phalcon\Cache\Frontend\Base64'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
-Önbellek verisinin onları base64'e dönüştürmesini/geri dönüştürmesini sağlar.
+Allows to cache data converting/deconverting them to base64.
 
-Bu adaptör, base64_encode / base64_decode PHP'nin işlevlerini kullanmaktadır
+This adapter uses the base64_encode/base64_decode PHP's functions
 
 ```php
 <?php
@@ -55,7 +55,7 @@ echo $image;
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -75,16 +75,16 @@ Starts output frontend. Actually, does nothing in this adapter
 
 public *string* **getContent** ()
 
-Çıktı önbelleğine alınan içeriği getirir
+Returns output cached content
 
 public **stop** ()
 
-Çıktının frontend'ini durdurur
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Verileri depolamadan önce seri hale getirir
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes verisini sonradan geri alır
+Unserializes data after retrieval

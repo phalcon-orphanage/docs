@@ -8,15 +8,15 @@ title: 'Phalcon\Logger\Formatter'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
 
-Bu günlükçü formatlayıcılar için ana sınıftır
+This is a base class for logger formatters
 
-## Metodlar
+## Methods
 
 public **getTypeString** (*mixed* $type)
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **interpolate** (*string* $message, [*array* $context])
 

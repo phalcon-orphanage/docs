@@ -237,7 +237,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validadores",
+                "text": "Validators",
                 "url": "/db-models-validation"
             },
             {
@@ -245,7 +245,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Paginación",
+                "text": "Pagination",
                 "url": "/db-pagination"
             }
         ]

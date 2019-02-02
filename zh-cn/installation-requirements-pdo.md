@@ -4,11 +4,11 @@ language: 'zh-cn'
 version: '4.0'
 category: 'installation'
 ---
-# 安装
+# Installation
 
 * * *
 
-## 要求
+## Requirements
 
 ### PDO
 

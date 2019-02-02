@@ -2,7 +2,7 @@
 layout: article
 language: 'tr-tr'
 version: '4.0'
-title: 'Phalcon\Görüntü\Bağdaştırıcı\Imagick'
+title: 'Phalcon\Image\Adapter\Imagick'
 ---
 # Class **Phalcon\Image\Adapter\Imagick**
 
@@ -10,7 +10,7 @@ title: 'Phalcon\Görüntü\Bağdaştırıcı\Imagick'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 Image manipulation support. Allows images to be resized, cropped, etc.
 
@@ -27,11 +27,11 @@ if ($image->save()) {
 
 ```
 
-## Metodlar
+## Methods
 
 public static **check** ()
 
-Imagick etkin olup olmadığını denetler
+Checks if Imagick is enabled
 
 public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
@@ -39,7 +39,7 @@ public **__construct** (*mixed* $file, [*mixed* $width], [*mixed* $height])
 
 protected **_resize** (*mixed* $width, *mixed* $height)
 
-Bir yeniden boyutlandırma çalıştır.
+Execute a resize.
 
 protected **_liquidRescale** (*mixed* $width, *mixed* $height, *mixed* $deltaX, *mixed* $rigidity)
 
@@ -75,7 +75,7 @@ Execute a text
 
 protected **_mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $image)
 
-Bir görüntüyü başka bir görüntüye birleştir
+Composite one image onto another
 
 protected **_background** (*mixed* $r, *mixed* $g, *mixed* $b, *mixed* $opacity)
 
@@ -83,11 +83,11 @@ Execute a background.
 
 protected **_blur** (*mixed* $radius)
 
-Resim bulanıklığı
+Blur image
 
 protected **_pixelate** (*mixed* $amount)
 
-Görüntü pikselleştirme
+Pixelate image
 
 protected **_save** (*mixed* $file, *mixed* $quality)
 
@@ -99,15 +99,15 @@ Execute a render.
 
 public **__destruct** ()
 
-Kaynakları boşaltmak için yüklenen görüntü yok eder.
+Destroys the loaded image to free up resources.
 
 public **getInternalImInstance** ()
 
-Örneği al
+Get instance
 
 public **setResourceLimit** (*mixed* $type, *mixed* $limit)
 
-Belli bir özkaynağın sınırını megabayt olarak tanımlar
+Sets the limit for a particular resource in megabytes
 
 public **getImage** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -119,23 +119,23 @@ public **getRealpath** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_A
 
 public **getWidth** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim genişliği
+Image width
 
 public **getHeight** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim yüksekliği
+Image height
 
 public **getType** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim türü Sürücü bağlı
+Image type Driver dependent
 
 public **getMime** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim mime türü
+Image mime type
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen boyuta göre yeniden boyutlandır
+Resize the image to the given size
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -143,11 +143,11 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü belirtilen boyuta kırp
+Crop an image to the given size
 
 public **rotate** (*mixed* $degrees) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen miktarda döndür
+Rotate the image by a given amount
 
 public **flip** (*mixed* $direction) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -155,11 +155,11 @@ Flip the image along the horizontal or vertical axis
 
 public **sharpen** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen miktarda keskinleştirir
+Sharpen the image by a given amount
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir resme yansıtma ekleyin
+Add a reflection to an image
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -167,28 +167,28 @@ Add a watermark to an image with the specified opacity
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Belirtilen bir opaklıkla görüntüye bir metin ekleyin
+Add a text to an image with a specified opacity
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir görüntüyü başka bir görüntüye birleştir
+Composite one image onto another
 
 public **background** (*mixed* $color, [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir resmin arka plan rengini ayarlama
+Set the background color of an image
 
 public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim bulanıklığı
+Blur image
 
 public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntü pikselleştirme
+Pixelate image
 
 public **save** ([*mixed* $file], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resmi kaydet
+Save the image
 
 public **render** ([*mixed* $ext], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü oluşturun ve ikili dizgiyi döndürün
+Render the image and return the binary string

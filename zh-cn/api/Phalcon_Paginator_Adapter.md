@@ -14,15 +14,15 @@ title: 'Phalcon\Paginator\Adapter'
 
 public **setCurrentPage** (*mixed* $page)
 
-设置当前页码
+Set the current page number
 
 public **setLimit** (*mixed* $limitRows)
 
-设置当前行数限制
+Set current rows limit
 
 public **getLimit** ()
 
-获取当前行限制
+Get current rows limit
 
 abstract public **getPaginate** () inherited from [Phalcon\Paginator\AdapterInterface](Phalcon_Paginator_AdapterInterface)
 

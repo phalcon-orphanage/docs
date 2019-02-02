@@ -7,11 +7,11 @@ version: '4.0'
 
 <a name='di-service-location'></a>
 
-# Dependency Injection / Service-Standort
+# Dependency Injection / Service Location
 
 <a name='di-explained'></a>
 
-## DI erklärt
+## DI explained
 
 The following example is a bit long, but it attempts to explain why Phalcon uses service location and dependency injection. First, let's assume we are developing a component called `SomeComponent`. This performs some task. Our component has a dependency, that is a connection to a database.
 
@@ -23,9 +23,9 @@ In this first example, the connection is created inside the component. Although 
 class SomeComponent
 {
     /**
-     * Die Verbindungsinstanz ist in der Komponente hart codiert
-     * the component, deshalb ist es schwierig sie außerhalb auszutauschen
-     *  oder ihr Verhalten zu ändern
+     * The instantiation of the connection is hardcoded inside
+     * the component, therefore it's difficult replace it externally
+     * or change its behavior
      */
     public function someDbTask()
     {
@@ -57,7 +57,7 @@ class SomeComponent
     private $connection;
 
     /**
-     * Setzt die Verbindung extern
+     * Sets the connection externally
      *
      * @param Connection $connection
      */
@@ -76,7 +76,7 @@ class SomeComponent
 
 $some = new SomeComponent();
 
-// Verbindung erstellen
+// Create the connection
 $connection = new Connection(
     [
         'host'     => 'localhost',
@@ -86,7 +86,7 @@ $connection = new Connection(
     ]
 );
 
-// Die Verbindung in die Komponente injizieren
+// Inject the connection in the component
 $some->setConnection($connection);
 
 $some->someDbTask();
@@ -100,7 +100,7 @@ Now consider that we use this component in different parts of the application an
 class Registry
 {
     /**
-     * Gibt die Verbindung zurück
+     * Returns the connection
      */
     public static function getConnection()
     {
@@ -139,7 +139,7 @@ class SomeComponent
 
 $some = new SomeComponent();
 
-// Übergebe die Verbindung, welche in der Registrierung definiert wurde
+// Pass the connection defined in the registry
 $some->setConnection(Registry::getConnection());
 
 $some->someDbTask();
@@ -172,7 +172,7 @@ class Registry
     }
 
     /**
-     * Erstellt die Verbindung nur einmal und gibt sie zurück
+     * Creates a connection only once and returns it
      *
      * @return Connection
      */
@@ -211,7 +211,7 @@ class SomeComponent
     }
 
     /**
-     * Diese Methode benötigt immer die geteilte Verbindung
+     * This method always needs the shared connection
      */
     public function someDbTask()
     {
@@ -253,17 +253,17 @@ For instance, if the component has many dependencies, we will need to create mul
 ```php
 <?php
 
-//Die Abhängigkeiten erstellen oder aus der Registrierung holen
+// Create the dependencies or retrieve them from the registry
 $connection = new Connection();
 $session    = new Session();
 $fileSystem = new FileSystem();
 $filter     = new Filter();
 $selector   = new Selector();
 
-// Dem Konstruktur als Parameter übergeben
+// Pass them as constructor parameters
 $some = new SomeComponent($connection, $session, $fileSystem, $filter, $selector);
 
-// ... Oder setter nutzen
+// ... Or using setters
 $some->setConnection($connection);
 $some->setSession($session);
 $some->setFileSystem($fileSystem);
@@ -380,11 +380,11 @@ Since Phalcon is highly decoupled, [Phalcon\Di](api/Phalcon_Di) is essential to 
 
 Basically, this component implements the [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
 
-Darüber hinaus erhöht dieses Muster Testbarkeit im Code, so dass es weniger anfällig wird für Fehler.
+Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
 <a name='registering-services'></a>
 
-## Registrieren von Services im Container
+## Registering services in the Container
 
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
 
@@ -398,13 +398,13 @@ Services can be registered using several types of definitions:
 
 <a name='simple-registration'></a>
 
-### Einfache Registrierung
+### Simple Registration
 
 As seen before, there are several ways to register services. These we call simple:
 
 <a name='simple-registration-string'></a>
 
-#### Zeichenfolge
+#### String
 
 This type expects the name of a valid class, returning an object of the specified class, if the class is not loaded it will be instantiated using an auto-loader. This type of definition does not allow to specify arguments for the class constructor or parameters:
 
@@ -420,7 +420,7 @@ $di->set(
 
 <a name='class-instances'></a>
 
-#### Klasseninstanzen
+#### Class instances
 
 This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
 
@@ -438,7 +438,7 @@ $di->set(
 
 <a name='closures-anonymous-functions'></a>
 
-#### Closures/Anonyme Funktionen
+#### Closures/Anonymous functions
 
 This method offers greater freedom to build the dependency as desired, however, it is difficult to change some of the parameters externally without having to completely change the definition of dependency:
 
@@ -517,7 +517,7 @@ $di->set(
     }
 );
 
-// Den 'config' service der DI nutzen
+// Using the 'config' service from the DI
 $di->set(
     'db',
     function () {
@@ -537,7 +537,7 @@ $di->set(
 
 <a name='complex-registration'></a>
 
-### Komplexe Registrierung
+### Complex Registration
 
 If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
 
@@ -546,7 +546,7 @@ If it is required to change the definition of a service without instantiating/re
 
 use Phalcon\Logger\Adapter\File as LoggerFile;
 
-// Einen 'logger' Service mit einem Namen und seinen Parametern registrieren
+// Register a service 'logger' with a class name and its parameters
 $di->set(
     'logger',
     [
@@ -560,7 +560,7 @@ $di->set(
     ]
 );
 
-// Mittels einer anonymen Funktion
+// Using an anonymous function
 $di->set(
     'logger',
     function () {
@@ -595,7 +595,7 @@ In addition by using the array syntax you can use three types of dependency inje
 
 <a name='constructor-injection'></a>
 
-#### Konstruktor-Injektion
+#### Constructor Injection
 
 This injection type passes the dependencies/arguments to the class constructor. Let's pretend we have the following component:
 
@@ -735,7 +735,7 @@ $di->set(
 
 <a name='properties-injection'></a>
 
-#### Eigenschaften-Injektion
+#### Properties Injection
 
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
 
@@ -802,7 +802,7 @@ Supported parameter types include the following:
     </th>
     
     <th>
-      Beschreibung
+      Description
     </th>
     
     <th>
@@ -859,7 +859,7 @@ Mixing different types of definitions is allowed, everyone can decide what is th
 
 <a name='array-syntax'></a>
 
-### Array-Syntax
+### Array Syntax
 
 The array syntax is also allowed to register services:
 
@@ -899,7 +899,7 @@ Setting a service by a string is simple, but lacks flexibility. Setting services
 
 <a name='loading-from-yaml'></a>
 
-### Services aus YAML-Dateien laden
+### Loading services from YAML files
 
 This feature will let you set your services in `yaml` files or just in plain php. For example you can load services using a `yaml` file like this:
 
@@ -927,7 +927,7 @@ $di->get('config'); // will properly return config service
 
 <a name='resolving-services'></a>
 
-## Auflösen von Services
+## Resolving Services
 
 Obtaining a service from the container is a matter of simply calling the 'get' method. A new instance of the service will be returned:
 
@@ -964,18 +964,18 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Ereignisse
+### Events
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Einige Ereignisse könnten die aktive Operation stoppen, wenn sie den boolschen Wert false zurück liefern. Die folgenden Ereignisse werden unterstützt:
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Ereignisname         | Ausgelöst                                                                                                       | Kann den Vorgang stoppen? | Ausgelöst durch |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------------:|:---------------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |           Nein            |    Listeners    |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |           Nein            |    Listeners    |
+| Event Name           | Triggered                                                                                                       | Can stop operation? | Triggered on |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |:-------------------:|:------------:|
+| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |         No          |  Listeners   |
+| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |         No          |  Listeners   |
 
 <a name='shared-services'></a>
 
-## Gemeinsame Services
+## Shared services
 
 Services can be registered as 'shared' services this means that they always will act as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
@@ -1026,7 +1026,7 @@ $request = $di->getShared('request');
 
 <a name='manipulating-services-individually'></a>
 
-## Services individuell anpassen
+## Manipulating services individually
 
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
@@ -1057,7 +1057,7 @@ Once a service is registered in the service container, you can retrieve it to ma
 
 <a name='instantiating-classes-service-container'></a>
 
-## Klassen über den Servicecontainer instanziieren
+## Instantiating classes via the Service Container
 
 When you request a service to the service container, if it can't find out a service with the same name it'll try to load a class with the same name. With this behavior we can replace any class by another simply by registering a service with its name:
 
@@ -1094,7 +1094,7 @@ You can take advantage of this, always instantiating your classes via the servic
 
 <a name='automatic-injecting-di-itself'></a>
 
-## Automatische Injektion der DI selbst
+## Automatic Injecting of the DI itself
 
 If a class or component requires the DI itself to locate services, the DI can automatically inject itself to the instances it creates, to do this, you need to implement the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) in your classes:
 
@@ -1138,7 +1138,7 @@ $myClass = $di->get('myClass');
 
 <a name='organizing-services-files'></a>
 
-## Services in Dateien organisieren
+## Organizing services in files
 
 You can better organize your application by moving the service registration to individual files instead of doing everything in the application's bootstrap:
 
@@ -1188,7 +1188,7 @@ class SomeComponent
 
 <a name='service-providers'></a>
 
-## Serviceanbieter
+## Service Providers
 
 Using the `ServiceProviderInterface` you now register services by context. You can move all your `$di->set()` calls to classes like this:
 
@@ -1234,39 +1234,39 @@ $di = new FactoryDefault();
 
 <a name='service-name-conventions'></a>
 
-## Service-Namenskonventionen
+## Service Name Conventions
 
 Although you can register services with the names you want, Phalcon has a several naming conventions that allow it to get the the correct (built-in) service when you need it.
 
-| Service Name       | Beschreibung                                 | Default                                                                                | Geteilt |
-| ------------------ | -------------------------------------------- | -------------------------------------------------------------------------------------- |:-------:|
-| assets             | Assets Manager                               | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |   Ja    |
-| annotations        | Anmerkungen (Annotations)-Parser             | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |   Ja    |
-| cookies            | Http-Cookies-Management-Service              | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |   Ja    |
-| crypt              | Verschlüsselung/Entschlüsselung von Daten    | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |   Ja    |
-| db                 | Low-Level-Datenbank-Verbindung-Service       | [Phalcon\Db](api/Phalcon_Db)                                                          |   Ja    |
-| dispatcher         | Controllers Dispatching Service              | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |   Ja    |
-| eventsManager      | Events Management Service                    | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |   Ja    |
-| escaper            | Kontextbezogene Maskierung                   | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |   Ja    |
-| flash              | Flash Messaging Service                      | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |   Ja    |
-| flashSession       | Flash Session Messaging Service              | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |   Ja    |
-| filter             | Eingabe-Filter-Service                       | [Phalcon\Filter](api/Phalcon_Filter)                                                  |   Ja    |
-| modelsCache        | Backend Cache um Modelle zwischenzuspeichern | Kein(e)                                                                                |  Nein   |
-| modelsManager      | Modelle-Management-Service                   | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |   Ja    |
-| modelsMetadata     | Modelle-Meta-Daten-Service                   | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |   Ja    |
-| request            | HTTP Request Environment Service             | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |   Ja    |
-| response           | HTTP Response Environment Service            | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |   Ja    |
-| router             | Routing Service                              | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |   Ja    |
-| security           | Sicherheits-Helfer                           | [Phalcon\Security](api/Phalcon_Security)                                              |   Ja    |
-| session            | Session Service                              | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |   Ja    |
-| sessionBag         | Session Bag service                          | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |   Ja    |
-| tag                | HTML generation helpers                      | [Phalcon\Tag](api/Phalcon_Tag)                                                        |   Ja    |
-| transactionManager | Modelle-Transaktions-Manager-Dienst          | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |   Ja    |
-| url                | URL-Generator-Service                        | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |   Ja    |
-| viewsCache         | Cache-Backend für Ansichten Fragmente        | Kein(e)                                                                                |  Nein   |
+| Service Name       | Description                           | Default                                                                                | Shared |
+| ------------------ | ------------------------------------- | -------------------------------------------------------------------------------------- |:------:|
+| assets             | Assets Manager                        | [Phalcon\Assets\Manager](api/Phalcon_Assets_Manager)                                 |  Yes   |
+| annotations        | Annotations Parser                    | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory)        |  Yes   |
+| cookies            | HTTP Cookies Management Service       | [Phalcon\Http\Response\Cookies](api/Phalcon_Http_Response_Cookies)                  |  Yes   |
+| crypt              | Encrypt/Decrypt data                  | [Phalcon\Crypt](api/Phalcon_Crypt)                                                    |  Yes   |
+| db                 | Low-Level Database Connection Service | [Phalcon\Db](api/Phalcon_Db)                                                          |  Yes   |
+| dispatcher         | Controllers Dispatching Service       | [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)                                 |  Yes   |
+| eventsManager      | Events Management Service             | [Phalcon\Events\Manager](api/Phalcon_Events_Manager)                                 |  Yes   |
+| escaper            | Contextual Escaping                   | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  Yes   |
+| flash              | Flash Messaging Service               | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  Yes   |
+| flashSession       | Flash Session Messaging Service       | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  Yes   |
+| filter             | Input Filtering Service               | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  Yes   |
+| modelsCache        | Cache backend for models cache        | None                                                                                   |   No   |
+| modelsManager      | Models Management Service             | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  Yes   |
+| modelsMetadata     | Models Meta-Data Service              | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  Yes   |
+| request            | HTTP Request Environment Service      | [Phalcon\Http\Request](api/Phalcon_Http_Request)                                     |  Yes   |
+| response           | HTTP Response Environment Service     | [Phalcon\Http\Response](api/Phalcon_Http_Response)                                   |  Yes   |
+| router             | Routing Service                       | [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router)                                         |  Yes   |
+| security           | Security helpers                      | [Phalcon\Security](api/Phalcon_Security)                                              |  Yes   |
+| session            | Session Service                       | [Phalcon\Session\Adapter\Files](api/Phalcon_Session_Adapter_Files)                  |  Yes   |
+| sessionBag         | Session Bag service                   | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |  Yes   |
+| tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  Yes   |
+| transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  Yes   |
+| url                | URL Generator Service                 | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |  Yes   |
+| viewsCache         | Cache backend for views fragments     | None                                                                                   |   No   |
 
 <a name='implementing-your-own-di'></a>
 
-## Implementierung von eigener DI
+## Implementing your own DI
 
 The [Phalcon\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.

@@ -12,7 +12,7 @@ title: 'Phalcon\Forms\Element\Email'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
 
-组件的输入 [类型 = 电子邮件] 的形式
+Component INPUT[type=email] for forms
 
 ## 方法
 
@@ -26,43 +26,43 @@ Phalcon\Forms\Element constructor
 
 public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-将父级表单设置为该元素
+Sets the parent form to the element
 
 public **getForm** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回父窗体元素
+Returns the parent form to the element
 
 public **setName** (*mixed* $name) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置的元素名称
+Sets the element name
 
 public **getName** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回的元素名称
+Returns the element name
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置元素的过滤器
+Sets the element filters
 
 public **addFilter** (*mixed* $filter) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-将筛选器添加到当前的过滤器列表
+Adds a filter to current list of filters
 
 public *mixed* **getFilters** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回的元素的筛选
+Returns the element filters
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-添加一组验证程序
+Adds a group of validators
 
 public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-向元素添加一个验证器
+Adds a validator to the element
 
 public **getValidators** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回注册为该元素的验证程序
+Returns the validators registered for the element
 
 public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
@@ -70,79 +70,79 @@ Returns an array of prepared attributes for Phalcon\Tag helpers according to the
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置默认属性的元素
+Sets a default attribute for the element
 
 public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回属性的值，如果存在
+Returns the value of an attribute if present
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置默认属性的元素
+Sets default attributes for the element
 
 public **getAttributes** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回元素的默认属性
+Returns the default attributes for the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置一个元素的选项
+Sets an option for the element
 
 public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回选项的值，如果存在
+Returns the value of an option if present
 
 public **setUserOptions** (*array* $options) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-该元素的设置选项
+Sets options for the element
 
 public **getUserOptions** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回的元素的选项
+Returns the options for the element
 
 public **setLabel** (*mixed* $label) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置元素标签
+Sets the element label
 
 public **getLabel** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回的元素标签
+Returns the element label
 
 public **label** ([*array* $attributes]) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-生成的 HTML 元素的标签
+Generate the HTML to label the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-窗体不使用实体或有可用的没有价值 _POST 中的元素的情况下设置一个默认值
+Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
 public **getDefault** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回分配给该元素的默认值
+Returns the default value assigned to the element
 
 public **getValue** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回的元素的值
+Returns the element value
 
 public **getMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-返回属于的元素元素需要将其附加到窗体的消息
+Returns the messages that belongs to the element The element needs to be attached to a form
 
 public **hasMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-检查是否有消息附加到元素
+Checks whether there are messages attached to the element
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-设置与元素相关的验证消息
+Sets the validation messages related to the element
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-将消息追加到内部消息列表
+Appends a message to the internal message list
 
 public **clear** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-清除每个元素的形式为其默认值
+Clears every element in the form to its default value
 
 public **__toString** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 

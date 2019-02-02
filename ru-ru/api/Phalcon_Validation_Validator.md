@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\Validator'
 
 This is a base class for validators
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options])
 

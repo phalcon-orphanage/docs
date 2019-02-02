@@ -8,7 +8,7 @@ title: 'Phalcon\Db\IndexInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **getName** ()
 

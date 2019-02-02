@@ -7,19 +7,19 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 在 Linux 上使用 Phalcon 开发者脚手架工具
+# Phalcon Developer Tools on Linux
 
 These steps will guide you through the process of installing Phalcon Developer Tools for Linux.
 
 <a name='prerequisites'></a>
 
-## 系统必备组件
+## Prerequisites
 
 The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](/4.0/en//installation) section for instructions.
 
 <a name='installation'></a>
 
-## 安装
+## Installation
 
 You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools).
 

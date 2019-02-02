@@ -10,11 +10,11 @@ title: 'Phalcon\Mvc\Model\ValidationFailed'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/validationfailed.zep)
 
 This exception is generated when a model fails to save a record Phalcon\Mvc\Model must be set up to have this behavior
 
-## Méthodes
+## Methods
 
 public **__construct** (*Model* $model, *Message*\ [] $validationMessages)
 

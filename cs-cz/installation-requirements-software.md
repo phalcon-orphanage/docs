@@ -4,11 +4,11 @@ language: 'cs-cz'
 version: '4.0'
 category: 'installation'
 ---
-# Instalace
+# Installation
 
 * * *
 
-## Požadavky
+## Requirements
 
 ### Software
 

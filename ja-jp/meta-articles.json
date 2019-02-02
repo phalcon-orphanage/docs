@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "アクセス制御リストの作成",
+      "text": "Creating an ACL",
       "url": "/acl-setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "アクセス制御の定義",
+      "text": "Defining Access Controls",
       "url": "/acl-access-controls"
     },
     {
-      "text": "アクセス制御リストへのクエリー",
+      "text": "Querying an ACL",
       "url": "/acl-querying"
     },
     {
-      "text": "関数ベースアクセス",
+      "text": "Function based access",
       "url": "/acl-function-based-access"
     },
     {
@@ -37,15 +37,15 @@
       "url": "/acl-operations-inheritance"
     },
     {
-      "text": "アクセス制御リストリストのシリアライズ",
+      "text": "Serializing ACL lists",
       "url": "/acl-serialization"
     },
     {
-      "text": "イベント",
+      "text": "Events",
       "url": "/acl-events"
     },
     {
-      "text": "独自のアダプターを実装",
+      "text": "Implementing your own adapters",
       "url": "/acl-custom-adapters"
     }
   ],
@@ -59,7 +59,7 @@
       "url": "/annotations#setup"
     },
     {
-      "text": "アクセス制御リストへロールの追加",
+      "text": "Adding Roles to the ACL",
       "url": "/annotations#factory"
     },
     {
@@ -89,7 +89,7 @@
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "独自のアダプターを実装",
+          "text": "Implementing your own adapters",
           "url": "/annotations#adapters-custom"
         }
       ]
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "text": "イベント",
+      "text": "Events",
       "url": "/application-micro#events",
       "menu": [
         {
@@ -433,7 +433,7 @@
       "url": "/assets#overview"
     },
     {
-      "text": "リソースの追加",
+      "text": "Adding Resources",
       "url": "/assets#add"
     },
     {
@@ -473,15 +473,15 @@
   ],
   "cache": [
     {
-      "text": "キャッシュによるパフォーマンスの向上",
+      "text": "Improving Performance with Cache",
       "url": "/cache#overview"
     },
     {
-      "text": "いつキャッシュを実装する？",
+      "text": "When to implement cache?",
       "url": "/cache#implementation"
     },
     {
-      "text": "キャッシュの振る舞い",
+      "text": "Caching Behavior",
       "url": "/cache#caching-behavior"
     },
     {
@@ -489,55 +489,55 @@
       "url": "/cache#factory"
     },
     {
-      "text": "出力フラグメントのキャッシュ",
+      "text": "Caching Output Fragments",
       "url": "/cache#output-fragments",
       "menu": [
         {
-          "text": "任意データのキャッシュ",
+          "text": "Caching Arbitrary Data",
           "url": "/cache#arbitrary-data"
         },
         {
-          "text": "ファイルバックエンドの例",
+          "text": "File Backend Example",
           "url": "/cache#backend-file-example"
         },
         {
-          "text": "Memcached バックエンドの例",
+          "text": "Memcached Backend Example",
           "url": "/cache#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "キャッシュの確認",
+      "text": "Querying the cache",
       "url": "/cache#read"
     },
     {
-      "text": "キャッシュからのデータ削除",
+      "text": "Deleting data from the cache",
       "url": "/cache#delete"
     },
     {
-      "text": "キャッシュ有無の確認",
+      "text": "Checking cache existence",
       "url": "/cache#exists"
     },
     {
-      "text": "有効期間",
+      "text": "Lifetime",
       "url": "/cache#lifetime"
     },
     {
-      "text": "マルチレベルキャッシュ",
+      "text": "Multi-Level Cache",
       "url": "/cache#multi-level"
     },
     {
-      "text": "フロントエンド アダプター",
+      "text": "Frontend Adapters",
       "url": "/cache#adapters-frontend",
       "menu": [
         {
-          "text": "独自フロントエンドアダプターの実装",
+          "text": "Implementing your own Frontend adapters",
           "url": "/cache#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "バックエンドアダプター",
+      "text": "Backend Adapters",
       "url": "adapters-backend",
       "menu": [
         {
@@ -545,39 +545,39 @@
           "url": "/cache#adapters-backend-factory"
         },
         {
-          "text": "独自のバックエンドアダプターを実装",
+          "text": "Implementing your own Backend adapters",
           "url": "/cache#adapters-backend-custom"
         },
         {
-          "text": "ファイルバックエンドのオプション",
+          "text": "File Backend Options",
           "url": "/cache#adapters-backend-file"
         },
         {
-          "text": "Libmemcachedバックエンドのオプション",
+          "text": "Libmemcached Backend Options",
           "url": "/cache#adapters-backend-libmemcached"
         },
         {
-          "text": "Memcacheバックエンドのオプション",
+          "text": "Memcache Backend Options",
           "url": "/cache#adapters-backend-memcache"
         },
         {
-          "text": "APCバックエンドのオプション",
+          "text": "APC Backend Options",
           "url": "/cache#adapters-backend-apc"
         },
         {
-          "text": "APCUバックエンドのオプション",
+          "text": "APCU Backend Options",
           "url": "/cache#adapters-backend-apcu"
         },
         {
-          "text": "Mongoバックエンドのオプション",
+          "text": "Mongo Backend Options",
           "url": "/cache#adapters-backend-mongo"
         },
         {
-          "text": "XCacheバックエンドのオプション",
+          "text": "XCache Backend Options",
           "url": "/cache#adapters-backend-xcache"
         },
         {
-          "text": "Redisバックエンドのオプション",
+          "text": "Redis Backend Options",
           "url": "/cache#adapters-backend-redis"
         }
       ]
@@ -585,7 +585,7 @@
   ],
   "config": [
     {
-      "text": "設定の読み込み",
+      "text": "Reading Configurations",
       "url": "/config#overview",
       "menu": [
         {
@@ -595,15 +595,15 @@
       ]
     },
     {
-      "text": "PHPの配列",
+      "text": "Native Arrays",
       "url": "/config#native-arrays"
     },
     {
-      "text": "ファイルアダプター",
+      "text": "File Adapters",
       "url": "/config#file-adapter"
     },
     {
-      "text": "INIファイルの読み込み",
+      "text": "Reading INI Files",
       "url": "/config#ini-files"
     },
     {
@@ -611,11 +611,11 @@
       "url": "/config#merging"
     },
     {
-      "text": "ネストした設定",
+      "text": "Nested Configuration",
       "url": "/config#nested-configuration"
     },
     {
-      "text": "依存する設定のインジェクション",
+      "text": "Injecting Configuration Dependency",
       "url": "/config#injecting-into-di"
     }
   ],
@@ -695,15 +695,15 @@
   ],
   "cookies": [
     {
-      "text": "cookieの管理",
+      "text": "Cookies Management",
       "url": "/cookies#overview"
     },
     {
-      "text": "基本的な使い方",
+      "text": "Basic Usage",
       "url": "/cookies#usage"
     },
     {
-      "text": "cookieの暗号化/復号化",
+      "text": "Encryption/Decryption of Cookies",
       "url": "/cookies#encryption-decryption"
     }
   ],
@@ -713,7 +713,7 @@
       "url": "/crypt$overview"
     },
     {
-      "text": "基本的な使い方",
+      "text": "Basic Usage",
       "url": "/crypt$usage"
     },
     {
@@ -735,11 +735,11 @@
   ],
   "db-layer": [
     {
-      "text": "データベース抽象化レイヤー",
+      "text": "Database Abstraction Layer",
       "url": "/db-layer#overview"
     },
     {
-      "text": "データベースアダプター",
+      "text": "Database Adapters",
       "url": "/db-layer#adapters",
       "menu": [
         {
@@ -747,39 +747,39 @@
           "url": "/db-layer#adapters-factory"
         },
         {
-          "text": "独自のアダプターを実装",
+          "text": "Implementing your own adapters",
           "url": "/db-layer#adapters-custom"
         }
       ]
     },
     {
-      "text": "データベースの方言",
+      "text": "Database Dialects",
       "url": "/db-layer#dialects",
       "menu": [
         {
-          "text": "独自の方言を実装します",
+          "text": "Implementing your own dialects",
           "url": "/db-layer#dialects-custom"
         }
       ]
     },
     {
-      "text": "データベースへの接続",
+      "text": "Connecting to Databases",
       "url": "/db-layer#connection"
     },
     {
-      "text": "PDO の追加オプションを設定",
+      "text": "Setting up additional PDO options",
       "url": "/db-layer#options"
     },
     {
-      "text": "行の検索",
+      "text": "Finding Rows",
       "url": "/db-layer#finding-rows"
     },
     {
-      "text": "パラメーターのバインド",
+      "text": "Binding Parameters",
       "url": "/db-layer#binding-parameters"
     },
     {
-      "text": "行の挿入、更新、および削除",
+      "text": "Inserting/Updating/Deleting Rows",
       "url": "/db-layer#crud"
     },
     {
@@ -981,27 +981,27 @@
   ],
   "db-models-relationships": [
     {
-      "text": "モデルのリレーション",
+      "text": "Model Relationships",
       "url": "/db-models-relationships#overview"
     },
     {
-      "text": "モデル同士のリレーション",
+      "text": "Relationships between Models",
       "url": "/db-models-relationships#relationships",
       "menu": [
         {
-          "text": "一方向のリレーション",
+          "text": "Unidirectional relationships",
           "url": "/db-models-relationships#unidirectional"
         },
         {
-          "text": "双方向のリレーション",
+          "text": "Bidirectional relations",
           "url": "/db-models-relationships#bidirectional"
         },
         {
-          "text": "リレーションの定義",
+          "text": "Defining relationships",
           "url": "/db-models-relationships#defining",
           "menu": [
             {
-              "text": "複数フィールドのリレーション",
+              "text": "Multiple field relationships",
               "url": "/db-models-relationships#multiple-fields"
             },
             {
@@ -1011,15 +1011,15 @@
           ]
         },
         {
-          "text": "リレーションの活用",
+          "text": "Taking advantage of relationships",
           "url": "/db-models-relationships#taking-advantage-of"
         },
         {
-          "text": "リレーションのエイリアス",
+          "text": "Aliasing Relationships",
           "url": "/db-models-relationships#aliases",
           "menu": [
             {
-              "text": "Getterのマジックメソッド vs 明示的なメソッド",
+              "text": "Magic Getters vs. Explicit methods",
               "url": "/db-models-relationships#getters-vs-methods"
             }
           ]
@@ -1027,29 +1027,29 @@
       ]
     },
     {
-      "text": "仮想外部キー",
+      "text": "Virtual Foreign Keys",
       "url": "/db-models-relationships#virtual-foreign-keys",
       "menu": [
         {
-          "text": "カスケード/制限アクション",
+          "text": "Cascade/Restrict actions",
           "url": "/db-models-relationships#cascade-restrict-actions"
         }
       ]
     },
     {
-      "text": "関連レコードの保存",
+      "text": "Storing Related Records",
       "url": "/db-models-relationships#storing-related-records"
     },
     {
-      "text": "結果セットの操作",
+      "text": "Operations over Resultsets",
       "url": "/db-models-relationships#operations-over-resultsets",
       "menu": [
         {
-          "text": "関連レコードの更新",
+          "text": "Updating related records",
           "url": "/db-models-relationships#updating-related-records"
         },
         {
-          "text": "関連レコードの削除",
+          "text": "Deleting related records",
           "url": "/db-models-relationships#deleting-related-records"
         }
       ]
@@ -1093,89 +1093,89 @@
   ],
   "db-models": [
     {
-      "text": "モデルの動作",
+      "text": "Working with Models",
       "url": "/db-models#working-with"
     },
     {
-      "text": "モデルの作成",
+      "text": "Creating Models",
       "url": "/db-models#creating",
       "menu": [
         {
-          "text": "パブリックプロバティー VS セッター/ゲッター",
+          "text": "Public properties vs. Setters/Getters",
           "url": "/db-models#properties-setters-getters"
         }
       ]
     },
     {
-      "text": "オブジェクトへのレコード格納について理解する",
+      "text": "Understanding Records To Objects",
       "url": "/db-models#records-to-objects"
     },
     {
-      "text": "レコードの検索",
+      "text": "Finding Records",
       "url": "/db-models#finding-records",
       "menu": [
         {
-          "text": "モデルの結果セット",
+          "text": "Model Resultsets",
           "url": "/db-models#resultsets"
         },
         {
-          "text": "結果セットのフィルタリング",
+          "text": "Filtering Resultsets",
           "url": "/db-models#filters"
         },
         {
-          "text": "パラメーターのバインド",
+          "text": "Binding Parameters",
           "url": "/db-models#binding-parameters"
         }
       ]
     },
     {
-      "text": "取得したレコードの初期化/準備",
+      "text": "Initializing/Preparing fetched records",
       "url": "/db-models#preparing-records"
     },
     {
-      "text": "集計の生成",
+      "text": "Generating Calculations",
       "url": "/db-models#calculations"
     },
     {
-      "text": "レコードの登録と更新",
+      "text": "Creating/Updating Records",
       "url": "/db-models#create-update-records",
       "menu": [
         {
-          "text": "確実に作成/更新する",
+          "text": "Create/Update with Confidence",
           "url": "/db-models#create-update-with-confidence"
         }
       ]
     },
     {
-      "text": "レコードの削除",
+      "text": "Deleting Records",
       "url": "/db-models#delete-records"
     },
     {
-      "text": "ハイドレーションモード",
+      "text": "Hydration Modes",
       "url": "/db-models#hydration-modes"
     },
     {
-      "text": "自動生成された id カラム",
+      "text": "Auto-generated identity columns",
       "url": "/db-models#identity-columns"
     },
     {
-      "text": "カラムをスキップ",
+      "text": "Skipping Columns",
       "url": "/db-models#skipping-columns"
     },
     {
-      "text": "ダイナミックアップデート",
+      "text": "Dynamic Updates",
       "url": "/db-models#dynamic-updates"
     },
     {
-      "text": "独立したカラムマッピング",
+      "text": "Independent Column Mapping",
       "url": "/db-models#column-mapping"
     },
     {
-      "text": "レコードのスナップショット",
+      "text": "Record Snapshots",
       "url": "/db-models#record-snapshots"
     },
     {
-      "text": "別のスキーマを指す",
+      "text": "Pointing to a different schema",
       "url": "/db-models#different-schemas"
     },
     {
@@ -1187,11 +1187,11 @@
       "url": "/db-models#injecting-services-into-models"
     },
     {
-      "text": "機能の有効/無効",
+      "text": "Disabling/Enabling Features",
       "url": "/db-models#disabling-enabling-features"
     },
     {
-      "text": "独立コンポーネント",
+      "text": "Stand-Alone component",
       "url": "/db-models#stand-alone-component"
     }
   ],
@@ -1201,7 +1201,7 @@
       "url": "/db-odm#overview"
     },
     {
-      "text": "モデルの作成",
+      "text": "Creating Models",
       "url": "/db-odm#creating-models"
     },
     {
@@ -1247,7 +1247,7 @@
       ]
     },
     {
-      "text": "レコードの削除",
+      "text": "Deleting Records",
       "url": "/db-odm#deleting-records"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "/db-pagination#page-attributes"
     },
     {
-      "text": "独自のアダプターを実装",
+      "text": "Implementing your own adapters",
       "url": "/db-pagination#custom"
     }
   ],
@@ -1541,7 +1541,7 @@
       "url": "/di#resolving-services",
       "menu": [
         {
-          "text": "イベント",
+          "text": "Events",
           "url": "/di#events"
         }
       ]
@@ -1739,7 +1739,7 @@
   ],
   "filter": [
     {
-      "text": "フィルターとサニタイズ",
+      "text": "Filtering and Sanitizing",
       "url": "/filter"
     },
     {
@@ -1747,11 +1747,11 @@
       "url": "/filter-sanitizers"
     },
     {
-      "text": "データのサニタイズ",
+      "text": "Sanitizing data",
       "url": "/filter-sanitizing"
     },
     {
-      "text": "コントローラーからのサニタイズ",
+      "text": "Sanitizing from Controllers",
       "url": "/filter-sanitizing-from-controllers"
     },
     {
@@ -1759,7 +1759,7 @@
       "url": "/filter-sanitizing-action-parameters"
     },
     {
-      "text": "データのフィルタリング",
+      "text": "Filtering data",
       "url": "/filter-sanitizing-data"
     },
     {
@@ -1771,7 +1771,7 @@
       "url": "/filter-adding-sanitizers"
     },
     {
-      "text": "複雑なサニタイズとフィルタリング",
+      "text": "Complex Sanitizing and Filtering",
       "url": "/filter-complex-sanitization-filtering"
     },
     {
@@ -1789,7 +1789,7 @@
       "url": "/flash#adapters"
     },
     {
-      "text": "使い方",
+      "text": "Usage",
       "url": "/flash#usage"
     },
     {
@@ -1879,7 +1879,7 @@
           "url": "/image#adapters-factory"
         },
         {
-          "text": "独自のアダプターを実装",
+          "text": "Implementing your own adapters",
           "url": "/image#adapters-custom"
         }
       ]
@@ -1941,11 +1941,11 @@
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Installation",
       "url": "/installation"
     },
     {
-      "text": "Installation",
+      "text": "PSR",
       "url": "/installation-requirements-psr"
     },
     {
@@ -1953,11 +1953,11 @@
       "url": "/installation-requirements-pdo"
     },
     {
-      "text": "ハードウェア",
+      "text": "Hardware",
       "url": "/installation-requirements-hardware"
     },
     {
-      "text": "ソフトウェア",
+      "text": "Software",
       "url": "/installation-requirements-software"
     },
     {
@@ -1991,35 +1991,35 @@
       "url": "/loader#overview"
     },
     {
-      "text": "セキュリティ層",
+      "text": "Security Layer",
       "url": "/loader#security"
     },
     {
-      "text": "名前空間の登録",
+      "text": "Registering Namespaces",
       "url": "/loader#registering-namespaces"
     },
     {
-      "text": "ディレクトリの登録",
+      "text": "Registering Directories",
       "url": "/loader#registering-directories"
     },
     {
-      "text": "クラスの登録",
+      "text": "Registering Classes",
       "url": "/loader#registering-classes"
     },
     {
-      "text": "ファイルの登録",
+      "text": "Registering Files",
       "url": "/loader#registering-files"
     },
     {
-      "text": "追加のファイル拡張子",
+      "text": "Additional file extensions",
       "url": "/loader#registering-file-extensions"
     },
     {
-      "text": "現在の戦略の修正",
+      "text": "Modifying current strategies",
       "url": "/loader#modifying-current-strategies"
     },
     {
-      "text": "オートローディングイベント",
+      "text": "Autoloading Events",
       "url": "/loader#events"
     },
     {
@@ -2077,7 +2077,7 @@
   ],
   "mvc": [
     {
-      "text": "MVC アーキテクチャ",
+      "text": "The MVC Architecture",
       "url": "/mvc#architecture"
     },
     {
@@ -2095,15 +2095,15 @@
   ],
   "namespaces": [
     {
-      "text": "名前空間の働き",
+      "text": "Working with Namespaces",
       "url": "/namespaces#setting-up"
     },
     {
-      "text": "フレームワークの設定",
+      "text": "Setting up the framework",
       "url": "/namespaces#models"
     },
     {
-      "text": "コントローラでの名前空間",
+      "text": "Controllers in Namespaces",
       "url": "/namespaces#controllers"
     },
     {
@@ -2207,45 +2207,45 @@
       "url": "/request#overview"
     },
     {
-      "text": "値の取得",
+      "text": "Getting Values",
       "url": "/request#getting-values"
     },
     {
-      "text": "コントローラからリクエストへのアクセス",
+      "text": "Accessing the Request from Controllers",
       "url": "/request#controller-access"
     },
     {
-      "text": "ファイルのアップロード",
+      "text": "Uploading Files",
       "url": "/request#uploading-files"
     },
     {
-      "text": "HTTPヘッダの利用",
+      "text": "Working with Headers",
       "url": "/request#working-with-headers"
     }
   ],
   "response": [
     {
-      "text": "レスポンスを返す",
+      "text": "Returning Responses",
       "url": "/response#overview"
     },
     {
-      "text": "HTTPヘッダの利用",
+      "text": "Working with Headers",
       "url": "/response#working-with-headers"
     },
     {
-      "text": "リダイレクト",
+      "text": "Making Redirections",
       "url": "/response#redirections"
     },
     {
-      "text": "HTTPキャッシュ",
+      "text": "HTTP Cache",
       "url": "/response#http-cache",
       "menu": [
         {
-          "text": "期限の設定",
+          "text": "Setting an Expiration Time",
           "url": "/response#http-cache-expiration-time"
         },
         {
-          "text": "キャッシュコントロール",
+          "text": "Cache-Control",
           "url": "/response#http-cache-control"
         },
         {
@@ -2357,23 +2357,23 @@
   ],
   "security": [
     {
-      "text": "セキュリティ",
+      "text": "Security",
       "url": "/security#overview"
     },
     {
-      "text": "パスワードのハッシュ",
+      "text": "Password Hashing",
       "url": "/security#hashing"
     },
     {
-      "text": "Cross-Site Request Forgery (CSRF) の保護",
+      "text": "Cross-Site Request Forgery (CSRF) protection",
       "url": "/security#csrf"
     },
     {
-      "text": "コンポーネントの設定",
+      "text": "Setting up the component",
       "url": "/security#setup"
     },
     {
-      "text": "乱数",
+      "text": "Random",
       "url": "/security#random"
     },
     {
@@ -2383,11 +2383,11 @@
   ],
   "session": [
     {
-      "text": "セッションにデータを保存する",
+      "text": "Storing data in the Session",
       "url": "/session#overview"
     },
     {
-      "text": "セッションの開始",
+      "text": "Starting the Session",
       "url": "/session#start",
       "menu": [
         {
@@ -2397,33 +2397,33 @@
       ]
     },
     {
-      "text": "セッションへのデータ保存と取得",
+      "text": "Storing/Retrieving data in Session",
       "url": "/session#store"
     },
     {
-      "text": "セッションの削除と破棄",
+      "text": "Removing/Destroying Sessions",
       "url": "/session#remove-destroy"
     },
     {
-      "text": "アプリケーション間のセッションデータの分離",
+      "text": "Isolating Session Data between Applications",
       "url": "/session#data-isolation"
     },
     {
-      "text": "セッションバッグ",
+      "text": "Session Bags",
       "url": "/session#bags"
     },
     {
-      "text": "コンポーネントの不揮発性データ",
+      "text": "Persistent Data in Components",
       "url": "/session#data-persistence"
     },
     {
-      "text": "独自のアダプターを実装",
+      "text": "Implementing your own adapters",
       "url": "/session#custom-adapters"
     }
   ],
   "tag": [
     {
-      "text": "ビューヘルパー (タグ)",
+      "text": "View Helpers (Tags)",
       "url": "/tag#overview"
     },
     {
@@ -2502,92 +2502,92 @@
   "testing-environment": [
     {
       "text": "Overview",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Overview",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
       "text": "Installation",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
-          "text": "Phalconのコンパイル",
-          "url": "running-compile"
+          "text": "Compile Phalcon",
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
-      "text": "サービス",
-      "url": "services"
+      "text": "Services",
+      "url": "#services"
     }
   ],
   "translate": [
     {
-      "text": "多言語サポート",
+      "text": "Multi-lingual Support",
       "url": "/translate#overview"
     },
     {
@@ -2601,21 +2601,21 @@
       ]
     },
     {
-      "text": "コンポーネントの使い方",
+      "text": "Component Usage",
       "url": "/translate#usage"
     },
     {
-      "text": "独自のアダプターを実装",
+      "text": "Implementing your own adapters",
       "url": "/translate#custom"
     }
   ],
   "tutorial-base": [
     {
-      "text": "ビュー",
+      "text": "View",
       "url": "/tutorial-base#basic"
     },
     {
-      "text": "ファイル構造",
+      "text": "File structure",
       "url": "/tutorial-base#file-structure"
     },
     {
@@ -2623,45 +2623,45 @@
       "url": "/tutorial-base#bootstrap",
       "menu": [
         {
-          "text": "オートローダ",
+          "text": "Autoloaders",
           "url": "/tutorial-base#autoloaders"
         },
         {
-          "text": "依存関係の管理",
+          "text": "Dependency Management",
           "url": "/tutorial-base#dependency-management"
         },
         {
-          "text": "アプリケーションのリクエストを処理する",
+          "text": "Handling the application request",
           "url": "/tutorial-base#request"
         },
         {
-          "text": "全てを配置",
+          "text": "Putting everything together",
           "url": "/tutorial-base#full-example"
         }
       ]
     },
     {
-      "text": "Controllerの作成",
+      "text": "Creating a Controller",
       "url": "/tutorial-base#controller"
     },
     {
-      "text": "Viewに出力を送る",
+      "text": "Sending output to a view",
       "url": "/tutorial-base#view"
     },
     {
-      "text": "サインアップフォームのデザイン",
+      "text": "Designing a sign up form",
       "url": "/tutorial-base#signup-form"
     },
     {
-      "text": "Modelの作成",
+      "text": "Creating a Model",
       "url": "/tutorial-base#model"
     },
     {
-      "text": "データベース接続の設定",
+      "text": "Setting a Database Connection",
       "url": "/tutorial-base#database-connection"
     },
     {
-      "text": "Modelを使ったデータの保存",
+      "text": "Storing data using models",
       "url": "/tutorial-base#storing-data"
     },
     {
@@ -2671,11 +2671,11 @@
   ],
   "tutorial-invo": [
     {
-      "text": "チュートリアル: INVO",
+      "text": "Tutorial: INVO",
       "url": "/tutorial-invo#overview"
     },
     {
-      "text": "プロジェクトの構成",
+      "text": "Project Structure",
       "url": "/tutorial-invo#structure"
     },
     {
@@ -2683,87 +2683,87 @@
       "url": "/tutorial-invo#routing"
     },
     {
-      "text": "設定",
+      "text": "Configuration",
       "url": "/tutorial-invo#configuration"
     },
     {
-      "text": "オートローダ",
+      "text": "Autoloaders",
       "url": "/tutorial-invo#autoloaders"
     },
     {
-      "text": "サービスの登録",
+      "text": "Registering services",
       "url": "/tutorial-invo#services"
     },
     {
-      "text": "リクエストの処理",
+      "text": "Handling the Request",
       "url": "/tutorial-invo#handling-requests"
     },
     {
-      "text": "依存性の注入",
+      "text": "Dependency Injection",
       "url": "/tutorial-invo#dependency-injection"
     },
     {
-      "text": "アプリケーションへのログイン",
+      "text": "Log into the Application",
       "url": "/tutorial-invo#log-in"
     },
     {
-      "text": "バックエンドのセキュリティ保護",
+      "text": "Securing the Backend",
       "url": "/tutorial-invo#securing-backend",
       "menu": [
         {
-          "text": "イベント管理",
+          "text": "Events Management",
           "url": "/tutorial-invo#events-manager"
         },
         {
-          "text": "ACLリストの提供",
+          "text": "Getting the ACL list",
           "url": "/tutorial-invo#acl"
         }
       ]
     },
     {
-      "text": "CRUDを使用した作業",
+      "text": "Working with the CRUD",
       "url": "/tutorial-invo#working-with-crud"
     },
     {
-      "text": "検索フォーム",
+      "text": "The Search Form",
       "url": "/tutorial-invo#search-form"
     },
     {
-      "text": "検索の実行",
+      "text": "Performing a Search",
       "url": "/tutorial-invo#performing-searches"
     },
     {
-      "text": "レコードの登録と更新",
+      "text": "Creating and Updating Records",
       "url": "/tutorial-invo#creating-updating-records"
     },
     {
-      "text": "ユーザーコンポーネント",
+      "text": "User Components",
       "url": "/tutorial-invo#user-components"
     },
     {
-      "text": "タイトルの動的な変更",
+      "text": "Changing the Title Dynamically",
       "url": "/tutorial-invo#dynamic-titles"
     }
   ],
   "tutorial-rest": [
     {
-      "text": "チュートリアル: 単純な REST API の作成",
+      "text": "Tutorial: Creating a Simple REST API",
       "url": "/tutorial-rest#overview"
     },
     {
-      "text": "API の定義",
+      "text": "Defining the API",
       "url": "/tutorial-rest#definitions"
     },
     {
-      "text": "アプリケーションの作成",
+      "text": "Creating the Application",
       "url": "/tutorial-rest#implementation"
     },
     {
-      "text": "Modelの作成",
+      "text": "Creating a Model",
       "url": "/tutorial-rest#models"
     },
     {
-      "text": "データの取得",
+      "text": "Retrieving Data",
       "url": "/tutorial-rest#retrieving-data"
     },
     {
@@ -2779,7 +2779,7 @@
       "url": "/tutorial-rest#deleting-data"
     },
     {
-      "text": "アプリケーションのテスト",
+      "text": "Testing our Application",
       "url": "/tutorial-rest#testing"
     },
     {
@@ -2793,7 +2793,7 @@
       "url": "/tutorial-vokuro#overview"
     },
     {
-      "text": "プロジェクトの構成",
+      "text": "Project Structure",
       "url": "/tutorial-vokuro#structure"
     },
     {
@@ -2829,11 +2829,11 @@
       "url": "/unit-testing#overview"
     },
     {
-      "text": "PhalconとPHPUnitの統合",
+      "text": "Integrating PHPUnit with Phalcon",
       "url": "/unit-testing#integration"
     },
     {
-      "text": "PHPUnitのヘルパーファイル",
+      "text": "The PHPUnit helper file",
       "url": "/unit-testing#unit-helper"
     },
     {
@@ -2841,7 +2841,7 @@
       "url": "/unit-testing#phpunit-config"
     },
     {
-      "text": "ユニットテストのサンプル",
+      "text": "Sample Unit Test",
       "url": "/unit-testing#sample"
     }
   ],
@@ -2856,13 +2856,13 @@
         },
         {
           "text": "Installation",
-          "url": "installation"
+          "url": "#installation"
         }
       ]
     },
     {
       "text": "ALC",
-      "url": "#ACL",
+      "url": "#acl",
       "menu": [
         {
           "text": "Overview",
@@ -2891,7 +2891,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "定数",
+          "text": "Constants",
           "url": "#filter-constants"
         }
       ]
@@ -2913,7 +2913,7 @@
           "url": "#filter-di-custom"
         },
         {
-          "text": "定数",
+          "text": "Constants",
           "url": "#filter-constants"
         }
       ]
@@ -2965,19 +2965,19 @@
   ],
   "validation": [
     {
-      "text": "バリデーション",
+      "text": "Validation",
       "url": "/validation#overview"
     },
     {
-      "text": "バリデーションの初期化",
+      "text": "Initializing Validation",
       "url": "/validation#initializing"
     },
     {
-      "text": "バリデーター",
+      "text": "Validators",
       "url": "/validation#validators"
     },
     {
-      "text": "Callbackバリデーター",
+      "text": "Callback Validator",
       "url": "/validation#callback"
     },
     {
@@ -2985,49 +2985,49 @@
       "url": "/validation#messages"
     },
     {
-      "text": "データのフィルタリング",
+      "text": "Filtering of Data",
       "url": "/validation#filtering"
     },
     {
-      "text": "バリデーションイベント",
+      "text": "Validation Events",
       "url": "/validation#events"
     },
     {
-      "text": "バリデーションのキャンセル",
+      "text": "Cancelling Validations",
       "url": "/validation#cancelling"
     },
     {
-      "text": "空の値のバリデーションを避ける",
+      "text": "Avoid validating empty values",
       "url": "/validation#empty-values"
     },
     {
-      "text": "再起的バリデーション",
+      "text": "Recursive Validation",
       "url": "/validation#recursive"
     }
   ],
   "views": [
     {
-      "text": "ビューの使用",
+      "text": "Using Views",
       "url": "/views#overview"
     },
     {
-      "text": "コントローラーとビューの統合",
+      "text": "Integrating Views with Controllers",
       "url": "/views#integrating-views-with-controllers"
     },
     {
-      "text": "階層的なレンダリング",
+      "text": "Hierarchical Rendering",
       "url": "/views#hierarchical-rendering",
       "menu": [
         {
-          "text": "テンプレートを使用する",
+          "text": "Using Templates",
           "url": "/views#using-templates"
         },
         {
-          "text": "レンダリングレベルのコントロール",
+          "text": "Control Rendering Levels",
           "url": "/views#control-rendering-levels"
         },
         {
-          "text": "レンダリングレベルの無効化",
+          "text": "Disabling render levels",
           "url": "/views#disabling-render-levels"
         },
         {
@@ -3035,7 +3035,7 @@
           "url": "/views#picking-views"
         },
         {
-          "text": "Viewの無効化",
+          "text": "Disabling the view",
           "url": "/views#disabling-view"
         }
       ]
@@ -3053,11 +3053,11 @@
       "url": "/views#value-transfer"
     },
     {
-      "text": "Viewの断片のキャッシュ",
+      "text": "Caching View Fragments",
       "url": "/views#caching-fragments"
     },
     {
-      "text": "テンプレートエンジン",
+      "text": "Template Engines",
       "url": "/views#template-engines",
       "menu": [
         {
@@ -3075,11 +3075,11 @@
       "url": "/views#injecting-services"
     },
     {
-      "text": "独立コンポーネント",
+      "text": "Stand-Alone Component",
       "url": "/views#stand-alone",
       "menu": [
         {
-          "text": "階層的なレンダリング",
+          "text": "Hierarchical Rendering",
           "url": "/views#stand-alone-hierarchical-rendering"
         },
         {
@@ -3089,179 +3089,179 @@
       ]
     },
     {
-      "text": "Viewイベント",
+      "text": "View Events",
       "url": "/views#events"
     }
   ],
   "volt": [
     {
-      "text": "Volt: テンプレートエンジン",
+      "text": "Volt: Template Engine",
       "url": "/volt#overview"
     },
     {
-      "text": "はじめに",
+      "text": "Introduction",
       "url": "/volt#introduction"
     },
     {
-      "text": "Voltを使うために",
+      "text": "Activating Volt",
       "url": "/volt#setup"
     },
     {
-      "text": "基本的な使い方",
+      "text": "Basic Usage",
       "url": "/volt#basic-usage"
     },
     {
-      "text": "変数",
+      "text": "Variables",
       "url": "/volt#variables"
     },
     {
-      "text": "フィルター",
+      "text": "Filters",
       "url": "/volt#filters"
     },
     {
-      "text": "コメント",
+      "text": "Comments",
       "url": "/volt#comments"
     },
     {
-      "text": "制御構文の一覧",
+      "text": "List of Control Structures",
       "url": "/volt#control-structures",
       "menu": [
         {
-          "text": "for文",
+          "text": "For",
           "url": "/volt#control-structures-for"
         },
         {
-          "text": "ループ制御",
+          "text": "Loop Controls",
           "url": "/volt#control-structures-loops",
           "menu": [
             {
-              "text": "If文",
+              "text": "If",
               "url": "/volt#control-structures-if"
             },
             {
-              "text": "switch文",
+              "text": "Switch",
               "url": "/volt#control-structures-switch"
             }
           ]
         },
         {
-          "text": "ループ変数",
+          "text": "Loop Context",
           "url": "/volt#control-structures-loop",
           "menu": [
             {
-              "text": "変数割り当て",
+              "text": "Assignments",
               "url": "/volt#assignments"
             },
             {
-              "text": "条件式",
+              "text": "Expressions",
               "url": "/volt#expressions"
             }
           ]
         },
         {
-          "text": "定数",
+          "text": "Literals",
           "url": "/volt#expressions-literals"
         },
         {
-          "text": "配列",
+          "text": "Arrays",
           "url": "/volt#expressions-arrays"
         },
         {
-          "text": "計算",
+          "text": "Math",
           "url": "/volt#expressions-math"
         },
         {
-          "text": "比較",
+          "text": "Comparisons",
           "url": "/volt#expressions-comparisons"
         },
         {
-          "text": "演算子",
+          "text": "Logic",
           "url": "/volt#expressions-logic"
         },
         {
-          "text": "その他演算子",
+          "text": "Other Operators",
           "url": "/volt#expressions-other-operators"
         }
       ]
     },
     {
-      "text": "テスト",
+      "text": "Tests",
       "url": "/volt#tests"
     },
     {
-      "text": "マクロ",
+      "text": "Macros",
       "url": "/volt#macros"
     },
     {
-      "text": "タグヘルパーを使用する",
+      "text": "Using Tag Helpers",
       "url": "/volt#tag-helpers"
     },
     {
-      "text": "関数",
+      "text": "Functions",
       "url": "/volt#functions"
     },
     {
-      "text": "Viewとの連携",
+      "text": "View Integration",
       "url": "/volt#view-integrations",
       "menu": [
         {
-          "text": "include文",
+          "text": "Include",
           "url": "/volt#view-integration-include"
         },
         {
-          "text": "partial文 vs include文",
+          "text": "Partial vs Include",
           "url": "/volt#view-integration-partial-vs-include"
         }
       ]
     },
     {
-      "text": "テンプレートの継承",
+      "text": "Template Inheritance",
       "url": "/volt#template-inheritance",
       "menu": [
         {
-          "text": "多重継承",
+          "text": "Multiple Inheritance",
           "url": "/volt#template-inheritance-multiple"
         }
       ]
     },
     {
-      "text": "自動エスケープ モード",
+      "text": "Autoescape mode",
       "url": "/volt#autoescape"
     },
     {
-      "text": "Volt の拡張",
+      "text": "Extending Volt",
       "url": "/volt#extending",
       "menu": [
         {
-          "text": "関数",
+          "text": "Functions",
           "url": "/volt#extending-functions"
         },
         {
-          "text": "フィルター",
+          "text": "Filters",
           "url": "/volt#extending-filters"
         },
         {
-          "text": "エクステンション",
+          "text": "Extensions",
           "url": "/volt#extending-extensions"
         }
       ]
     },
     {
-      "text": "Viewの断片のキャッシュ",
+      "text": "Caching view fragments",
       "url": "/volt#caching-view-fragments"
     },
     {
-      "text": "テンプレートへのサービス注入",
+      "text": "Inject Services into a Template",
       "url": "/volt#services-in-templates"
     },
     {
-      "text": "独立コンポーネント",
+      "text": "Stand-alone component",
       "url": "/volt#stand-alone"
     }
   ],
   "webserver-wamp": [
     {
-      "text": "WAMP にインストール",
+      "text": "Installation on WAMP",
       "url": "/webserver-wamp#overview"
     },
     {
@@ -3275,7 +3275,7 @@
   ],
   "webserver-xampp": [
     {
-      "text": "XAMPP にインストール",
+      "text": "Installation on XAMPP",
       "url": "/webserver-xampp#overview"
     },
     {

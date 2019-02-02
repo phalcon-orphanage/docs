@@ -2,7 +2,7 @@
 layout: article
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Cache\Antarmuka\Pabrik'
+title: 'Phalcon\Cache\Frontend\Factory'
 ---
 # Class **Phalcon\Cache\Frontend\Factory**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Antarmuka\Pabrik'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
-Mengisi kelas Adaptor Sudut Pengaman dengan menggunakan opsi 'adaptor'
+Loads Frontend Cache Adapter class using 'adapter' option
 
 ```php
 <?php
@@ -27,10 +27,10 @@ $frontendCache = Factory::load($options);
 
 ```
 
-## Metode
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 
-protected static ** loadClass ** (* mixed * $namespace, * mixed * $config)
+protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 
 ...

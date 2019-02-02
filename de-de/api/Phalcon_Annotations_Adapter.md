@@ -8,36 +8,36 @@ title: 'Phalcon\Annotations\Adapter'
 
 *implements* [Phalcon\Annotations\AdapterInterface](Phalcon_Annotations_AdapterInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter.zep)
 
 This is the base class for Phalcon\Annotations adapters
 
-## Methoden
+## Methods
 
 public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Setzt den Anmerkungen-parser
+Sets the annotations parser
 
 public **getReader** ()
 
-Gibt den Annotation-Leser zurück
+Returns the annotation reader
 
 public **get** (*string* | *object* $className)
 
-Analysiert oder gibt alle Anmerkungen, welche in einer Klasse gefunden wurden, zurück
+Parses or retrieves all the annotations found in a class
 
 public **getMethods** (*mixed* $className)
 
-Gibt die Anmerkungen aus allen Methoden der Klasse zurück
+Returns the annotations found in all the class' methods
 
 public **getMethod** (*mixed* $className, *mixed* $methodName)
 
-Gibt die Anmerkungen, die in einer bestimmten Methode gefunden wurden, zurück
+Returns the annotations found in a specific method
 
 public **getProperties** (*mixed* $className)
 
-Gibt die Anmerkungen aus allen Methoden der Klasse zurück
+Returns the annotations found in all the class' methods
 
 public **getProperty** (*mixed* $className, *mixed* $propertyName)
 
-Gibt die Anmerkungen, die in einer bestimmten Eigenschaft gefunden wurden, zurück
+Returns the annotations found in a specific property

@@ -35,7 +35,7 @@ $logger->error("This is another error");
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** (*string* $name, [*array* $options])
 

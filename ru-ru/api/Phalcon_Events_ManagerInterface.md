@@ -8,7 +8,7 @@ title: 'Phalcon\Events\ManagerInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **attach** (*mixed* $eventType, *mixed* $handler)
 

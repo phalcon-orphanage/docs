@@ -12,32 +12,32 @@ title: 'Phalcon\Di'
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
-Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. Los desarrolladores pueden utilizar este componente para inyectar dependencias y administrar las instacias globales de las diferentes clases utilizadas en la aplicacion.
+Since Phalcon is highly decoupled, Phalcon\Di is essential to integrate the different components of the framework. The developer can also use this component to inject dependencies and manage global instances of the different classes used in the application.
 
-Básicamente, este componente implementa el patrón de `Inversión de Control`. Aplicando esto, los objetos no establecen sus dependencias usando configuradores o constructores, sino solicitando el servicio de un inyector de dependencias. Esto reduce la complejidad total puesto que hay solamente una manera de conseguir las dependencias necesarias dentro de un componente.
+Basically, this component implements the `Inversion of Control` pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity, since there is only one way to get the required dependencies within a component.
 
 Además, este patrón aumenta la posibilidad de pruebas con el código, por lo que es menos propenso a errores.
 
 ```php
-<? php 
+<?php
 
-use Phalcon\Di; 
-Use Phalcon\Http\Request;
+use Phalcon\Di;
+use Phalcon\Http\Request;
 
-$di = new Di();  
+$di = new Di();
 
-// Utilizando una definicion directa
-$di-> set ("request", Request::class, true);  
+// Using a string definition
+$di->set("request", Request::class, true);
 
-// Utilizando una función anónima 
-$di -> setShared (
-   "request", 
-   function () 
-   {return new Request();     
-   } 
-   ); 
+// Using an anonymous function
+$di->setShared(
+    "request",
+    function () {
+        return new Request();
+    }
+);
 
-$request = $di -> getRequest();
+$request = $di->getRequest();
 
 ```
 
@@ -49,27 +49,27 @@ Phalcon\Di constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Configurar el gestor de eventos interno
+Sets the internal event manager
 
 public **getInternalEventsManager** ()
 
 Devuelve el administrador de eventos interno
 
-public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
+public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Registrar un servicio en el contenedor de servicios
+Registers a service in the services container
 
 public **setShared** (*mixed* $name, *mixed* $definition)
 
-Registra un servicio "siempre compartido" en el contenedor de servicios
+Registers an "always shared" service in the services container
 
 public **remove** (*mixed* $name)
 
-Elimina un servicio en el contenedor de servicios. También elimina cualquier instancia compartida creada para el servicio
+Removes a service in the services container It also removes any shared instance created for the service
 
 public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared])
 
-Intenta registrar un servicio en el contenedor de servicios. Esto solo es posible si un servicio no ha sido registrado previamente con el mismo nombre
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition)
 
@@ -77,7 +77,7 @@ Sets a service using a raw Phalcon\Di\Service definition
 
 public **getRaw** (*mixed* $name)
 
-Devuelve una definición de servicio sin resolver
+Returns a service definition without resolving
 
 public **getService** (*mixed* $name)
 
@@ -85,31 +85,31 @@ Returns a Phalcon\Di\Service instance
 
 public **get** (*mixed* $name, [*mixed* $parameters])
 
-Resuelve el servicio basado en su configuración
+Resolves the service based on its configuration
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters])
 
-Resuelve un servicio. El servicio resuelto es almacenado en el DI. Las solicitudes subsiguientes para este servicio devolverán la misma instancia
+Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
 public **has** (*mixed* $name)
 
-Comprueba si el DI contiene un servicio por un nombre
+Check whether the DI contains a service by a name
 
 public **wasFreshInstance** ()
 
-Comprueba si el último servicio obtenido mediante getShared produjo una instancia nueva o una ya existente
+Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
 public **getServices** ()
 
-Devuelve los servicios registrados en el DI
+Return the services registered in the DI
 
 public **offsetExists** (*mixed* $name)
 
-Comprueba si un servicio está registrado utilizando la sintaxis del arreglo
+Check if a service is registered using the array syntax
 
 public **offsetSet** (*mixed* $name, *mixed* $definition)
 
-Permite registrar un servicio compartido utilizando la sintaxis del arreglo
+Allows to register a shared service using the array syntax
 
 ```php
 <?php
@@ -120,7 +120,7 @@ $di["request"] = new \Phalcon\Http\Request();
 
 public **offsetGet** (*mixed* $name)
 
-Permite obtener un servicio compartido utilizando la sintaxis del arreglo
+Allows to obtain a shared service using the array syntax
 
 ```php
 <?php
@@ -131,15 +131,15 @@ var_dump($di["request"]);
 
 public **offsetUnset** (*mixed* $name)
 
-Elimina un servicio del contenedor de servicios utilizando la sintaxis del arreglo
+Removes a service from the services container using the array syntax
 
 public **__call** (*mixed* $method, [*mixed* $arguments])
 
-Método mágico para obtener o establecer servicios utilizando setters o getters
+Magic method to get or set services using setters/getters
 
 public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider)
 
-Registra un proveedor de servicios.
+Registers a service provider.
 
 ```php
 <?php
@@ -161,19 +161,19 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 public static **setDefault** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura un contenedor de inyección de dependencia por defecto para ser obtenido en métodos estáticos
+Set a default dependency injection container to be obtained into static methods
 
 public static **getDefault** ()
 
-Devuelve el último DI creado
+Return the latest DI created
 
 public static **reset** ()
 
-Restrablece el DI interno por defecto
+Resets the internal default DI
 
 public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks])
 
-Carga los servicios desde un archivo yaml.
+Loads services from a yaml file.
 
 ```php
 <?php
@@ -189,7 +189,7 @@ $di->loadFromYaml(
 
 ```
 
-Y los servicios pueden ser especificados en el archivo como:
+And the services can be specified in the file as:
 
 ```php
 <?php
@@ -211,7 +211,7 @@ user:
 
 public **loadFromPhp** (*mixed* $filePath)
 
-Carga los servicios desde un archivo de configuración php.
+Loads services from a php config file.
 
 ```php
 <?php
@@ -220,7 +220,7 @@ $di->loadFromPhp("path/services.php");
 
 ```
 
-Y los servicios pueden ser especificados en el archivo como:
+And the services can be specified in the file as:
 
 ```php
 <?php
@@ -248,4 +248,4 @@ return [
 
 protected **loadFromConfig** ([Phalcon\Config](Phalcon_Config) $config)
 
-Carga los servicios desde un objeto de Configuración.
+Loads services from a Config object.

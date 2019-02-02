@@ -31,7 +31,7 @@ $paginate = $paginator->getPaginate();
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** (*array* $config)
 

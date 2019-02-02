@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\Query\StatusInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/statusinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **getModel** ()
 

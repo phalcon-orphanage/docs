@@ -10,7 +10,7 @@ title: 'Phalcon\Factory'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
 
-## Методы
+## Methods
 
 protected static **loadClass** (*mixed* $namespace, *mixed* $config)
 

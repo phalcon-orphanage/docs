@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\Memory'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface), [Serializable](https://php.net/manual/en/class.serializable.php)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/memory.zep)
 
 Stores content in memory. Data is lost when the request is finished
 
@@ -127,7 +127,7 @@ Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Sprawdza czy cache zaczęło bufferowanie czy nie
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 

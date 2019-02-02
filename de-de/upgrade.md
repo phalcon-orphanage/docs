@@ -11,7 +11,7 @@ Phalcon v4 contains a lot of changes to components, including changes to interfa
 
 <a name='requirements'></a>
 
-## Systemanforderungen
+## Requirements
 
 ### PHP 7.2
 
@@ -189,7 +189,7 @@ $container->set(
 
 <a name='filter-constants'></a>
 
-### Konstanten
+### Constants
 
 The constants that the v3 `Phalcon\Filter` have somewhat changed. They are now located in the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) class.
 

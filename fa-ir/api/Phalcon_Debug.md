@@ -6,11 +6,11 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
 Provides debug capabilities to Phalcon applications
 
-## روش ها
+## Methods
 
 public **setUri** (*mixed* $uri)
 

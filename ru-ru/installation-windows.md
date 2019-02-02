@@ -4,7 +4,7 @@ language: 'ru-ru'
 version: '4.0'
 category: 'installation'
 ---
-# Установка
+# Installation
 
 * * *
 
@@ -18,12 +18,12 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Архитектура | Версия | Тип                                  |
-|:-----------:|:------:| ------------------------------------ |
-|     x64     |  7.x   | Потокобезопасный                     |
-|     x64     |  7.x   | Не являющийся потокобезопасным (NTS) |
-|     x86     |  7.x   | Потокобезопасный                     |
-|     x86     |  7.x   | Не являющийся потокобезопасным (NTS) |
+| Архитектура | Version | Тип                                  |
+|:-----------:|:-------:| ------------------------------------ |
+|     x64     |   7.x   | Потокобезопасный                     |
+|     x64     |   7.x   | Не являющийся потокобезопасным (NTS) |
+|     x86     |   7.x   | Потокобезопасный                     |
+|     x86     |   7.x   | Не являющийся потокобезопасным (NTS) |
 
 Edit your php.ini file and then append at the end:
 

@@ -6,11 +6,11 @@ title: 'Phalcon\Debug'
 ---
 # Class **Phalcon\Debug**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
 Provides debug capabilities to Phalcon applications
 
-## Metodlar
+## Methods
 
 public **setUri** (*mixed* $uri)
 
@@ -22,15 +22,15 @@ Sets if files the exception's backtrace must be showed
 
 public **setShowFiles** (*mixed* $showFiles)
 
-Dosyanın arka izinin bir kısmıbın çıkışta gösterilmesi için ayarlayın
+Set if files part of the backtrace must be shown in the output
 
 public **setShowFileFragment** (*mixed* $showFileFragment)
 
-Dosyaların tamamen açılması gerekip gerekmediğini veya çıktıda gösterilip gösterilmeyeceğini veya sadece istisna ile ilgili parçaların gösterdiğini ayarlar
+Sets if files must be completely opened and showed in the output or just the fragment related to the exception
 
 public **listen** ([*mixed* $exceptions], [*mixed* $lowSeverity])
 
-Yakalanmayan istisnaları, usulsüz bildirimleri veya uyarıları dinleyin
+Listen for uncaught exceptions and unsilent notices or warnings
 
 public **listenExceptions** ()
 
@@ -40,17 +40,17 @@ public **listenLowSeverity** ()
 
 Listen for unsilent notices or warnings
 
-public **reset** ()
+public **halt** ()
 
 Halts the request showing a backtrace
 
 public **debugVar** (*mixed* $varz, [*mixed* $key])
 
-Tamir Etme çıktısına bir değişken ekler
+Adds a variable to the debug output
 
 public **clearVars** ()
 
-Önceden eklenen değişkenleri temizleme
+Clears are variables added previously
 
 protected **_escapeString** (*mixed* $value)
 
@@ -58,11 +58,11 @@ Escapes a string with htmlentities
 
 protected **_getArrayDump** (*array* $argument, [*mixed* $n])
 
-Bir dizilimin tekrarlanan temsilini üretir
+Produces a recursive representation of an array
 
 protected **_getVarDump** (*mixed* $variable)
 
-Bir değişkenin bir dizi temsilini üretir
+Produces an string representation of a variable
 
 public **getMajorVersion** ()
 
@@ -70,15 +70,15 @@ Returns the major framework's version
 
 public **getVersion** ()
 
-Geçerli sürüm belgelerine bir bağlantı oluşturur
+Generates a link to the current version documentation
 
 public **getCssSources** ()
 
-Css kaynaklarını döndürür
+Returns the css sources
 
 public **getJsSources** ()
 
-Javascript kaynaklarını döndürür
+Returns the javascript sources
 
 final protected **showTraceItem** (*mixed* $n, *array* $trace)
 
@@ -90,4 +90,4 @@ Throws an exception when a notice or warning is raised
 
 public **onUncaughtException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Yakalanmayan istisnaları işler
+Handles uncaught exceptions

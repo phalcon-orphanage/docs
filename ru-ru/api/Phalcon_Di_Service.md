@@ -23,11 +23,11 @@ $service = new \Phalcon\Di\Service(
 $request = service->resolve();
 ```
 
-## Методы
+## Methods
 
 final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $shared])
 
-общественная **метод getname** ()
+public **getName** ()
 
 Returns the service's name
 

@@ -112,7 +112,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Zarejestruj się
+## Sign Up
 
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 

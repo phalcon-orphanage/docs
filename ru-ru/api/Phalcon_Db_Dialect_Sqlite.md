@@ -14,7 +14,7 @@ title: 'Phalcon\Db\Dialect\Sqlite'
 
 Generates database specific SQL for the Sqlite RDBMS
 
-## Методы
+## Methods
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 

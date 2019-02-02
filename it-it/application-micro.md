@@ -30,7 +30,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creazione di una micro applicazione
+## Creating a Micro Application
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -44,7 +44,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Inoltro (Routing)
+## Routing
 
 Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is very easy. Routes are defined as follows:
 
@@ -54,7 +54,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is v
 
 <a name='routing-setup'></a>
 
-### Impostazione
+### Setup
 
 Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/4.0/en/routing)]
 
@@ -76,7 +76,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Oggetto Application
+### Application object
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application object as follows:
 
@@ -96,7 +96,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Oggetto Router
+### Router object
 
 You can also create a [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -123,7 +123,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 <a name='rewrite-rules'></a>
 
-## Le Rewrite Rules
+## Rewrite Rules
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
@@ -131,13 +131,13 @@ Those changes are outlined in the [rewrite rules](/4.0/en/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Gli Handlers
+## Handlers
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definizioni
+### Definitions
 
 Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
@@ -584,7 +584,7 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-collections'></a>
 
-## Collezioni
+## Collections
 
 Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
 
@@ -618,7 +618,7 @@ $app->mount($orders);
 
 <a name='routing-parameters'></a>
 
-## Parametri
+## Parameters
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
@@ -835,7 +835,7 @@ $app->get(
 
 <a name='responses'></a>
 
-# Risposte
+# Responses
 
 A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
@@ -985,28 +985,28 @@ $app->get(
 
 <a name='events'></a>
 
-# Eventi
+# Events
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 <a name='events-available-events'></a>
 
-## Eventi disponibili
+## Available events
 
-Sono supportati i seguenti eventi:
+The following events are supported:
 
-| Nome evento        | Attivato (Triggered)                                              | Possono interrompere l'operazione? |
-| ------------------ | ----------------------------------------------------------------- |:----------------------------------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |                 Si                 |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |                 Si                 |
-| afterExecuteRoute  | Handler just finished running                                     |                 No                 |
-| beforeNotFound     | Route has not been found                                          |                 Si                 |
-| afterHandleRoute   | Route just finished executing                                     |                 Si                 |
-| afterBinding       | Triggered after models are bound but before executing the handler |                 Si                 |
+| Event Name         | Triggered                                                         | Can stop operation? |
+| ------------------ | ----------------------------------------------------------------- |:-------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
+| afterExecuteRoute  | Handler just finished running                                     |         No          |
+| beforeNotFound     | Route has not been found                                          |         Yes         |
+| afterHandleRoute   | Route just finished executing                                     |         Yes         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
 
 <a name='events-available-events-authentication'></a>
 
-### Esempio autenticazione
+### Authentication example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1043,7 +1043,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 
-### Esempio non trovato
+### Not found example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1087,7 +1087,7 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event  | Descrizione                                    |
+| Event  | Description                                    |
 | ------ | ---------------------------------------------- |
 | before | Before the handler has been executed           |
 | after  | After the handler has been executed            |
@@ -1166,7 +1166,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Impostazione
+## Setup
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -1293,7 +1293,7 @@ The [events](#events) that are triggered for our application also trigger inside
 
 <a name='middleware-events-api'></a>
 
-### Esempio API
+### API example
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1629,7 +1629,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Modelli
+# Models
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 

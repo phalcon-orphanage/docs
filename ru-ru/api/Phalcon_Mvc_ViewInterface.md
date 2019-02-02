@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\ViewInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setLayoutsDir** (*mixed* $layoutsDir)
 

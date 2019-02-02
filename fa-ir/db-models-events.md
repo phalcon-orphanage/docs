@@ -7,35 +7,35 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# رویدادهای مدل
+# Model Events
 
 <a name='events'></a>
 
-## رویدادها و رویدادهای مدیر
+## Events and Events Manager
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| عملیات                 | نام                              |       میتواند متوقف کند؟        | توضیح                                                                                                                            |
-| ---------------------- | -------------------------------- |:-------------------------------:| -------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting              | afterCreate                      |               NO                | Runs after the required operation over the database system only when an inserting operation is being made                        |
-| قرار دادن/به روز رسانی | afterSave                        |               NO                | Runs after the required operation over the database system                                                                       |
-| Updating               | afterUpdate                      |               NO                | Runs after the required operation over the database system only when an updating operation is being made                         |
-| قرار دادن/به روز رسانی | پس از اعتبار سنجی                |               YES               | بعد از اینکه فیلدها برای رشته های nulls/empty یا کلید های خارجی معتبر اجرا می شوند، اجرا می شود                                  |
-| Inserting              | پس از تایید در ایجاد             |               YES               | بعد از اینکه فیلد برای رشته های nulls/empty خالی یا کلید های خارجی تایید می شود، وقتی عملیات درج ایجاد می شود، اجرا می شود       |
-| Updating               | پس از تایید بر روی به روز رسانی  |               YES               | بعد از انجام عملیات به روز رسانی، فیلدها برای رشته های nulls/empty خالی یا کلید های خارجی تایید می شوند                          |
-| Inserting              | beforeCreate                     |               YES               | Runs before the required operation over the database system only when an inserting operation is being made                       |
-| قرار دادن/به روز رسانی | beforeSave                       |               YES               | Runs before the required operation over the database system                                                                      |
-| Updating               | beforeUpdate                     |               YES               | Runs before the required operation over the database system only when an updating operation is being made                        |
-| قرار دادن/به روز رسانی | beforeValidation                 |               YES               | قبل از اینکه فیلدها برای رشته های nulls/empty یا کلید های خارجی معتبر باشند، اجرا می شود                                         |
-| Inserting              | قبل از تأیید در ایجاد            |               YES               | قبل از اینکه فیلد برای رشته های nulls/empty خالی یا کلید های خارجی تایید می شود، وقتی عملیات درج ایجاد می شود، اجرا می شود       |
-| Updating               | قبل از تایید بر روی به روز رسانی |               YES               | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made |
-| قرار دادن/به روز رسانی | در تأیید اعتبار                  | بله (در حال حاضر متوقف شده است) | بعد از اینکه اعتبار سنج یکپارچه موفق نشد اجرا می شود                                                                             |
-| قرار دادن/به روز رسانی | prepareSave                      |               NO                | Is executed before saving and allows data manipulation                                                                           |
-| قرار دادن/به روز رسانی | validation                       |               YES               | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made |
+| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
+| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
+| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |          NO           | Is executed before saving and allows data manipulation                                                                            |
+| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
 
-### اجرای رویدادها در کلاس مدل
+### Implementing Events in the Model's class
 
 The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
@@ -80,7 +80,7 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 
-### با استفاده از مدیر رویدادهای سفارشی
+### Using a custom Events Manager
 
 Additionally, this component is integrated with [Phalcon\Events\Manager](api/Phalcon_Events_Manager), this means we can create listeners that run when an event is triggered.
 
@@ -179,7 +179,7 @@ If a listener returns false that will stop the operation that is executing curre
 
 <a name='logging-sql-statements'></a>
 
-## ثبت مقادیر SQL پایین سطح
+## Logging Low-Level SQL Statements
 
 When using high-level abstraction components such as [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is supported internally by [Phalcon\Db](api/Phalcon_Db). [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
 
@@ -249,7 +249,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 <a name='profiling-sql-statements'></a>
 
-## تدوین بیانیه های اس کیو ال
+## Profiling SQL Statements
 
 Thanks to [Phalcon\Db](api/Phalcon_Db), the underlying component of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model), it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 

@@ -10,11 +10,11 @@ title: 'Phalcon\Assets\Inline\Css'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
 
 Represents an inlined CSS
 
-## Metodi
+## Methods
 
 public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 

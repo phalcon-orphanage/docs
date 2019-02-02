@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Antworten zurückgeben
+# Returning Responses
 
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
@@ -16,16 +16,16 @@ Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response
 
 use Phalcon\Http\Response;
 
-// Generiert eine Antwort Instanz
+// Getting a response instance
 $response = new Response();
 
-// Setzt den status code
+// Set status code
 $response->setStatusCode(404, 'Not Found');
 
-// Legt den Inhalt der Antwort fest
-$response->setContent("Tut uns leid, aber die Seite existiert nicht");
+// Set the content of the response
+$response->setContent("Sorry, the page doesn't exist");
 
-// Sendet die Antwort an den Client
+// Send response to the client
 $response->send();
 ```
 
@@ -41,17 +41,17 @@ class FeedController extends Controller
 {
     public function getAction()
     {
-        // Generiert eine Antwort Instanz
+        // Getting a response instance
         $response = new Response();
 
-        $feed = // ... Hier den feed laden
+        $feed = // ... Load here the feed
 
-        // Legt den Inhalt der Antwort fest
+        // Set the content of the response
         $response->setContent(
             $feed->asString()
         );
 
-        // Gibt die Antwort zurück
+        // Return the response
         return $response;
     }
 }
@@ -68,11 +68,11 @@ You can set headers in the following way:
 ```php
 <?php
 
-// Setzt einen header anhand des Namens
+// Setting a header by its name
 $response->setHeader('Content-Type', 'application/pdf');
 $response->setHeader('Content-Disposition', "attachment; filename='downloaded.pdf'");
 
-// Setzt einen rohen header
+// Setting a raw header
 $response->setRawHeader('HTTP/1.1 200 OK');
 ```
 
@@ -81,16 +81,16 @@ A [Phalcon\Http\Response\Headers](api/Phalcon_Http_Response_Headers) bag interna
 ```php
 <?php
 
-// Alle Header erhalten
+// Get the headers bag
 $headers = $response->getHeaders();
 
-// Header anhand des Namens erhalten
+// Get a header by its name
 $contentType = $headers->get('Content-Type');
 ```
 
 <a name='redirections'></a>
 
-## Umleitungen erstellen
+## Making Redirections
 
 With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
@@ -115,7 +115,7 @@ All internal URIs are generated using the [url](/4.0/en/url) service (by default
 ```php
 <?php
 
-// Umleitung basierend auf einer benannten Route
+// Redirect based on a named route
 return $response->redirect(
     [
         'for'        => 'index-lang',
@@ -129,20 +129,20 @@ Even if there is a view associated with the current action, it will not be rende
 
 <a name='http-cache'></a>
 
-## HTTP-Cache
+## HTTP Cache
 
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
 HTTP Cache can be altered in the following header values sent by the application when serving a page for the first time:
 
-* **`Expires:`** Mit diesen Header kann die Anwendung ein Datum in der Zukunft oder die Vergangenheit festlegen, um dem Browsers mitzuteilen, wann die Seite ablaufen muss.
-* **`Cache-Control:`** Dieser Header erlaubt es anzugeben, wie lange eine Seite im Browser als neu behandelt werden soll.
+* **`Expires:`** With this header the application can set a date in the future or the past telling the browser when the page must expire.
+* **`Cache-Control:`** This header allows to specify how much time a page should be considered fresh in the browser.
 * **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
 * **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
 <a name='http-cache-expiration-time'></a>
 
-### Eine Ablaufzeit einstellen
+### Setting an Expiration Time
 
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
@@ -172,14 +172,14 @@ Browsers rely on the client's clock to assess if this date has passed or not. Th
 
 <a name='http-cache-control'></a>
 
-### Cache Kontrolle
+### Cache-Control
 
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
 ```php
 <?php
 
-// Jetzt starten, die Seite für einen Tag cachen
+// Starting from now, cache the page for one day
 $response->setHeader('Cache-Control', 'max-age=86400');
 ```
 
@@ -188,7 +188,7 @@ The opposite effect (avoid page caching) is achieved in this way:
 ```php
 <?php
 
-// Seite niemals cachen
+// Never cache the served page
 $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 ```
 
@@ -201,7 +201,7 @@ An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize
 ```php
 <?php
 
-// E-Tag anhand der Änderungszeit der letzten news berechnen
+// Calculate the E-Tag based on the modification time of the latest news
 $mostRecentDate = News::maximum(
     [
         'column' => 'created_at'
@@ -210,6 +210,6 @@ $mostRecentDate = News::maximum(
 
 $eTag = md5($mostRecentDate);
 
-// Sendet einen E-Tag header
+// Send an E-Tag header
 $response->setHeader('E-Tag', $eTag);
 ```

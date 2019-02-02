@@ -6,7 +6,7 @@ title: 'Phalcon\Security\Random'
 ---
 # Class **Phalcon\Security\Random**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 Secure random number generator class.
 
@@ -77,7 +77,7 @@ echo $random->base58(7);  // 774SJD3vgP
 
 This class partially borrows SecureRandom library from Ruby
 
-## Metodi
+## Methods
 
 public **bytes** ([*mixed* $len])
 

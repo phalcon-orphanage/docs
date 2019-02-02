@@ -12,7 +12,7 @@ title: 'Phalcon\Acl\Subject'
 
 This class defines a subject entity and its description
 
-## Методы
+## Methods
 
 ```php
 public __construct( string $name [, string $description = NULL] )

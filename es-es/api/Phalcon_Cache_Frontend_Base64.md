@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Base64'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/base64.zep)
 
-Permite almacenar en caché los datos convirtiéndolos/des-convirtiéndolos a base64.
+Allows to cache data converting/deconverting them to base64.
 
-Este adaptador usa las funciones base64_encode/base64_decode PHP's
+This adapter uses the base64_encode/base64_decode PHP's functions
 
 ```php
 <?php
@@ -63,11 +63,11 @@ Phalcon\Cache\Frontend\Base64 constructor
 
 public **getLifetime** ()
 
-Devuelve el tiempo de vida del cache
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-Verifique si el frontend está almacenando la salida
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -75,16 +75,16 @@ Starts output frontend. Actually, does nothing in this adapter
 
 public *string* **getContent** ()
 
-Regresa contenido almacenado saliente
+Returns output cached content
 
 public **stop** ()
 
-Detiene la salida del frontend
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Serializa los datos antes de almacenarlos
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Deserializa los datos después de la recuperación
+Unserializes data after retrieval

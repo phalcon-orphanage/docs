@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\CollectionInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setId** (*mixed* $id)
 

@@ -58,11 +58,11 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Περιγραφή                                                                                                                                                                                                                               |
-| ----------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                                       |
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". Όλος ενέργειες κώδικας που στην διάταξη θα επαναχρησιμοποιηθεί για εφαρμόζεται όλες τις αυτού του ο ελεγκτή. |
-| Main Layout       | app/views/index.phtml         | Αυτήκύρια ενέργεια που για κάθε ελεγκτή ή ενέργεια θα που εκτελείται είναι μέσα στην εμφανιστεί η εφαρμογή.                                                                                                                             |
+| Name              | File                          | Περιγραφή                                                                                                                                                                                                                |
+| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
+| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
+| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
 
 You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
@@ -333,14 +333,14 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Class Constant          | Περιγραφή                                                             | Order |
-| ----------------------- | --------------------------------------------------------------------- |:-----:|
-| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.               |       |
-| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.      |   1   |
-| `LEVEL_BEFORE_TEMPLATE` | Δημιουργεί παρουσίασης τη διάταξη πριν πρότυπα του από ελεγκτή.       |   2   |
-| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                  |   3   |
-| `LEVEL_AFTER_TEMPLATE`  | Δημιουργεί στα διάταξη παρουσίαση πρότυπα μετά τη την του ελεγκτή.    |   4   |
-| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml |   5   |
+| Class Constant          | Περιγραφή                                                                | Order |
+| ----------------------- | ------------------------------------------------------------------------ |:-----:|
+| `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |       |
+| `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |   1   |
+| `LEVEL_BEFORE_TEMPLATE` | Generates presentation templates prior to the controller layout.         |   2   |
+| `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
+| `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
+| `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
 
 <a name='disabling-render-levels'></a>
 
@@ -1041,7 +1041,7 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Ορισμένα συμβάντα κατά την του επιστροφή boolean false θα μπορούσαν να σταματήσουν την ενεργή λειτουργία. The following events are supported:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Όνομα γεγονότος  | Ενεργοποίηση                                  | Μπορεί να σταματήσει την λειτουργία; |
 | ---------------- | --------------------------------------------- |:------------------------------------:|
@@ -1051,7 +1051,7 @@ echo $view->render(
 | afterRender      | Triggered after completing the render process |                 Όχι                  |
 | notFoundView     | Triggered when a view was not found           |                 Όχι                  |
 
-Το παρακάτω παράδειγμα δείχνει πώς προσαρτήσετε να τους ακροατές σε αυτό το στοιχείο:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php

@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Alpha'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
 
 Check for alphabetic character(s)
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methoden
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

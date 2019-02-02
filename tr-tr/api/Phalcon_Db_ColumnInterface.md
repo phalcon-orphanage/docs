@@ -6,9 +6,9 @@ title: 'Phalcon\Db\ColumnInterface'
 ---
 # Interface **Phalcon\Db\ColumnInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **getSchemaName** ()
 
@@ -18,7 +18,7 @@ abstract public **getName** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getType** ()
 
 ...
 

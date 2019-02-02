@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\ManagerInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/managerinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 

@@ -6,9 +6,9 @@ title: 'Phalcon\Db'
 ---
 # Abstract class **Phalcon\Db**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
 
-Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. Her tarz RDBMS için ayarlanabilir farklı bir sınıf vardır.
+Phalcon\Db and its related classes provide a simple SQL database interface for Phalcon Framework. The Phalcon\Db is the basic class you use to connect your PHP application to an RDBMS. There is a different adapter class for each brand of RDBMS.
 
 This component is intended to lower level database operations. If you want to interact with databases using higher level of abstraction use Phalcon\Mvc\Model.
 
@@ -17,9 +17,9 @@ Phalcon\Db is an abstract class. You only can use it with a database adapter lik
 ```php
 <?php
 
-kullan Phalcon\Db;
-kullan Phalcon\Db\Exception;
-kullan Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
+use Phalcon\Db;
+use Phalcon\Db\Exception;
+use Phalcon\Db\Adapter\Pdo\Mysql as MysqlConnection;
 
 try {
     $connection = new MysqlConnection(
@@ -44,13 +44,10 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage(), PHP_EOL;
 }
- 
-Text
-XPath: /pre/code
 
 ```
 
-## Sabitler
+## Constants
 
 *integer* **FETCH_LAZY**
 
@@ -86,8 +83,8 @@ XPath: /pre/code
 
 *integer* **FETCH_PROPS_LATE**
 
-## Metodlar
+## Methods
 
-genel sabit **setup** (*array* $options)
+public static **setup** (*array* $options)
 
-Veritabanı bileşeni içindeki seçenekleri etkinleştirir veya devre dışı bırakır
+Enables/disables options in the Database component

@@ -9,7 +9,7 @@ category: 'logger'
 
 * * *
 
-## Adaptadores
+## Adapters
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
 

@@ -6,29 +6,29 @@ title: 'Phalcon\Assets\Manager'
 ---
 # Class **Phalcon\Assets\Manager**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
 Manages collections of CSS/Javascript assets
 
-## Methoden
+## Methods
 
 public **__construct** ([*array* $options])
 
 public **setOptions** (*array* $options)
 
-Legt die Manager-Optionen fest
+Sets the manager options
 
 public **getOptions** ()
 
-Gibt die Manager-Optionen zurück
+Returns the manager options
 
 public **useImplicitOutput** (*mixed* $implicitOutput)
 
-Legt fest, ob der generierte HTML-Code direkt ausgedruckt oder zurückgegeben werden muss
+Sets if the HTML generated must be directly printed or returned
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Fügt eine Css-Ressource zur 'css' Sammlung hinzu
+Adds a Css resource to the 'css' collection
 
 ```php
 <?php
@@ -40,11 +40,11 @@ $assets->addCss("https://bootstrap.my-cdn.com/style.css", false);
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Fügt ein inline css zur 'css' Sammlung hinzu
+Adds an inline Css to the 'css' collection
 
 public **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Fügt eine javascript-Ressource zur 'js' Sammlung hinzu
+Adds a javascript resource to the 'js' collection
 
 ```php
 <?php
@@ -60,7 +60,7 @@ Adds an inline javascript to the 'js' collection
 
 public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Fügt eine Ressource von seinem Typ hinzu
+Adds a resource by its type
 
 ```php
 <?php
@@ -73,7 +73,7 @@ $assets->addResourceByType("css",
 
 public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Fügt einen Inline-Code von seinem Typ hinzu
+Adds an inline code by its type
 
 public **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
@@ -140,7 +140,7 @@ Prints the HTML for CSS resources
 
 public **outputInlineCss** ([*string* $collectionName])
 
-Druckt den HTML-Code für Inline-CSS
+Prints the HTML for inline CSS
 
 public **outputJs** ([*string* $collectionName])
 

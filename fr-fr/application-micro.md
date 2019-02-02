@@ -5,7 +5,7 @@ version: '4.0'
 ---
 **This article reflects v3.4 and has not yet been revised**
 
-# Les Micro-Applications
+# Micro Applications
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
 
@@ -742,7 +742,7 @@ $app->get(
 
 <a name='dependency-injector'></a>
 
-# La Dépendance De L'Injecteur
+# Dependency Injector
 
 When a micro application is created, a [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) services container is create implicitly.
 
@@ -932,7 +932,7 @@ $app->get(
 
 <a name='responses-return-application-response'></a>
 
-## De Retour De Réponse De L'Application
+## Return Application Response
 
 A different approach returning data back to the caller is to return the response object directly from the application. When responses are returned by handlers they are automatically sent by the application.
 
@@ -985,28 +985,28 @@ $app->get(
 
 <a name='events'></a>
 
-# Événements
+# Events
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
 <a name='events-available-events'></a>
 
-## Les événements disponibles
+## Available events
 
-Les événements suivants sont supportés :
+The following events are supported:
 
-| Nom de l'événement | Déclencheur                                                                         | Peut arrêter l'opération ? |
-| ------------------ | ----------------------------------------------------------------------------------- |:--------------------------:|
-| beforeHandleRoute  | Principale méthode appelée; les Routes n'ont pas été vérifiés encore                |            Oui             |
-| beforeExecuteRoute | Itinéraire adapté, Gestionnaire valide, le Gestionnaire n'a pas encore été exécutés |            Oui             |
-| afterExecuteRoute  | Gestionnaire de juste fini de courir                                                |            Non             |
-| beforeNotFound     | Route has not been found                                                            |            Oui             |
-| afterHandleRoute   | Route just finished executing                                                       |            Oui             |
-| afterBinding       | Déclenché après les modèles sont liés, mais avant d'exécuter le gestionnaire d'     |            Oui             |
+| Event Name         | Triggered                                                         | Can stop operation? |
+| ------------------ | ----------------------------------------------------------------- |:-------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
+| afterExecuteRoute  | Handler just finished running                                     |         No          |
+| beforeNotFound     | Route has not been found                                          |         Yes         |
+| afterHandleRoute   | Route just finished executing                                     |         Yes         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
 
 <a name='events-available-events-authentication'></a>
 
-### Exemple d'authentification
+### Authentication example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1043,7 +1043,7 @@ $app->setEventsManager($eventsManager);
 
 <a name='events-available-events-not-found'></a>
 
-### Pas trouvé d'exemple
+### Not found example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1083,21 +1083,21 @@ The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essent
 
 <a name='middleware-attached-events'></a>
 
-## Des événements attachés
+## Attached events
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
-| Event | Description                                  |
-| ----- | -------------------------------------------- |
-| avant | Avant que le conducteur n'a pas été exécutée |
-| après | Une fois le gestionnaire a été exécuté       |
-| final | Après la réponse a été envoyée à l'appelant  |
+| Event  | Description                                    |
+| ------ | ---------------------------------------------- |
+| before | Before the handler has been executed           |
+| after  | After the handler has been executed            |
+| final  | After the response has been sent to the caller |
 
 <h5 class='alert alert-warning'>You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.</h5>
 
 <a name='middleware-attached-events-before'></a>
 
-### avant
+### before
 
 This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
 
@@ -1126,7 +1126,7 @@ $app->before(
 
 <a name='middleware-attached-events-after'></a>
 
-### après
+### after
 
 This event can be used to manipulate data or perform actions that are needed after the handler has finished executing. In the example below, we manipulate our response to send JSON back to the caller.
 
@@ -1150,7 +1150,7 @@ $app->after(
 
 <a name='middleware-attached-events-finish'></a>
 
-### finition
+### finish
 
 This even will fire up when the whole request cycle has been completed. In the example below, we use it to clean up some cache files.
 
@@ -1242,7 +1242,7 @@ We then attach the middleware class in our application on one of the three liste
 
 <a name='middleware-implementation'></a>
 
-## La mise en œuvre
+## Implementation
 
 Middleware can be any kind of PHP callable functions. You can organize your code whichever way you like it to implement middleware. If you choose to use classes for your middleware, you will need them to implement the [Phalcon\Mvc\Micro\MiddlewareInterface](api/Phalcon_Mvc_Micro_MiddlewareInterface)
 
@@ -1287,13 +1287,13 @@ class CacheMiddleware implements MiddlewareInterface
 
 <a name='middleware-events'></a>
 
-## Les événements dans le Middleware
+## Events in Middleware
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the [Phalcon\Mvc\Micro\MiddlewareInterface](api/Phalcon_Mvc_Micro_MiddlewareInterface). This offers great flexibility and power for developers since we can interact with the request process.
 
 <a name='middleware-events-api'></a>
 
-### Exemple d'API
+### API example
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1301,7 +1301,7 @@ The middleware that we will use are: * Firewall * NotFound * Redirect * CORS * R
 
 <a name='middleware-events-api-firewall'></a>
 
-#### Pare-Feu Middleware
+#### Firewall Middleware
 
 This middleware is attached to the `before` event of our Micro application. The purpose of this middleware is to check who is calling our API and based on a whitelist, allow them to proceed or not
 
@@ -1363,7 +1363,7 @@ class FirewallMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-not-found'></a>
 
-#### Pas Trouvé Middleware
+#### Not Found Middleware
 
 When this middleware is processed, this means that the requesting IP is allowed to access our application. The application will try and match the route and if not found the `beforeNotFound` event will fire. We will stop the processing then and send back to the user the relevant 404 response. This middleware is attached to the `before` event of our Micro application
 
@@ -1409,7 +1409,7 @@ class NotFoundMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-redirect'></a>
 
-#### Rediriger Middleware
+#### Redirect Middleware
 
 We attach this middleware again to the `before` event of our Micro application because we don't want the request to proceed if the requested endpoint needs to be redirected.
 
@@ -1463,7 +1463,7 @@ class RedirectMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-cors'></a>
 
-#### La SCRO Middleware
+#### CORS Middleware
 
 Again this middleware is attached to the `before` event of our Micro application. We need to ensure that it fires before anything happens with our application
 
@@ -1528,7 +1528,7 @@ class CORSMiddleware implements MiddlewareInterface
 
 <a name='middleware-events-api-request'></a>
 
-#### Demande Middleware
+#### Request Middleware
 
 This middleware is receiving a JSON payload and checks it. If the JSON payload is not valid it will stop execution.
 
@@ -1629,7 +1629,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Modèles
+# Models
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1665,7 +1665,7 @@ $app->handle();
 
 <a name='model-instances'></a>
 
-# Injecter des instances de modèle
+# Inject model instances
 
 By using the [Phalcon\Mvc\Model\Binder](api/Phalcon_Mvc_Model_Binder) class you can inject model instances into your routes:
 
@@ -1699,7 +1699,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Vues
+# Views
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 
@@ -1766,7 +1766,7 @@ $app->get(
 
 <a name='error-handling'></a>
 
-# Erreur De Manipulation
+# Error Handling
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 

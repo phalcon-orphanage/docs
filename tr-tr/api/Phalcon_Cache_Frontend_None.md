@@ -8,7 +8,7 @@ title: 'Phalcon\Cache\Frontend\None'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/none.zep)
 
 Discards any kind of frontend data input. This frontend does not have expiration time or any other options
 
@@ -54,32 +54,32 @@ foreach ($robots as $robot) {
 
 ```
 
-## Metodlar
+## Methods
 
 public **getLifetime** ()
 
-Önbellek ömrünü, her zaman bir saniye boyunca süresi dolan içeriği döndürür
+Returns cache lifetime, always one second expiring content
 
 public **isBuffering** ()
 
-Önyüzün çıktıyı arabelleğe alıp almadığını kontrol edin, daima yanlış
+Check whether if frontend is buffering output, always false
 
 public **start** ()
 
-Çıktı önyüzünü başlatır
+Starts output frontend
 
 public *string* **getContent** ()
 
-Çıktı önbelleğine alınan içeriği getirir
+Returns output cached content
 
 public **stop** ()
 
-Çıktının frontend'ini durdurur
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Depolanacak verileri hazırlayınız
+Prepare data to be stored
 
 public **afterRetrieve** (*mixed* $data)
 
-Alımı olacak olan verileri kullanıcıya hazır eder
+Prepares data to be retrieved to user

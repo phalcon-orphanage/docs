@@ -68,15 +68,15 @@ Returns the dependency injection container
 
 public **setDbService** (*mixed* $service)
 
-设置用于运行隔离级别的事务的数据库服务
+Sets the database service used to run the isolated transactions
 
 public *string* **getDbService** ()
 
-返回用于隔离该事务的数据库服务
+Returns the database service used to isolate the transaction
 
 public **setRollbackPendent** (*mixed* $rollbackPendent)
 
-如果事务管理器必须注册关机功能清理下垂交易，设置
+Set if the transaction manager must register a shutdown function to clean up pendent transactions
 
 public **getRollbackPendent** ()
 
@@ -84,7 +84,7 @@ Check if the transaction manager is registering a shutdown function to clean up 
 
 public **has** ()
 
-检查是否经理有一个活动事务
+Checks whether the manager has an active transaction
 
 public **get** ([*mixed* $autoBegin])
 
@@ -92,32 +92,32 @@ Returns a new \Phalcon\Mvc\Model\Transaction or an already created once This met
 
 public **getOrCreateTransaction** ([*mixed* $autoBegin])
 
-创建/返回到新事务或一个现有
+Create/Returns a new transaction or an existing one
 
 public **rollbackPendent** ()
 
-回滚活动事务管理器中
+Rollbacks active transactions within the manager
 
 public **commit** ()
 
-提交活动事务管理器中
+Commits active transactions within the manager
 
 public **rollback** ([*boolean* $collect])
 
-回滚活动事务管理器收集内的将从管理器删除交易记录
+Rollbacks active transactions within the manager Collect will remove the transaction from the manager
 
 public **notifyRollback** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-通知关于回滚的事务管理器
+Notifies the manager about a rollbacked transaction
 
 public **notifyCommit** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-通知关于已提交的事务管理器
+Notifies the manager about a committed transaction
 
 protected **_collectTransaction** ([Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface) $transaction)
 
-从事务管理器删除事务
+Removes transactions from the TransactionManager
 
 public **collectTransactions** ()
 
-从管理器中删除的所有的事务
+Remove all the transactions from the manager

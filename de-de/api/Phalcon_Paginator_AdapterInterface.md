@@ -6,9 +6,9 @@ title: 'Phalcon\Paginator\AdapterInterface'
 ---
 # Interface **Phalcon\Paginator\AdapterInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapterinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **setCurrentPage** (*mixed* $page)
 

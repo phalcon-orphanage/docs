@@ -4,13 +4,13 @@ language: 'zh-cn'
 version: '4.0'
 category: 'installation'
 ---
-# 安装
+# Installation
 
 * * *
 
-## 要求
+## Requirements
 
-### 硬件
+### Hardware
 
 Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
 

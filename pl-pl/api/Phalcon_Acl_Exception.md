@@ -8,7 +8,7 @@ title: 'Phalcon\Acl\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
 Exceptions thrown in `Phalcon\Acl\*` will use this class
 

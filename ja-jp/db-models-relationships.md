@@ -7,29 +7,29 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# モデルのリレーション
+# Model Relationships
 
 <a name='relationships'></a>
 
-## モデル同士のリレーション
+## Relationships between Models
 
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
 <a name='unidirectional'></a>
 
-### 一方向のリレーション
+### Unidirectional relationships
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
 <a name='bidirectional'></a>
 
-### 双方向のリレーション
+### Bidirectional relations
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
 <a name='defining'></a>
 
-### リレーションの定義
+### Defining relationships
 
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
@@ -309,7 +309,7 @@ class Robots extends Model
 
 <a name='taking-advantage-of'></a>
 
-### リレーションの活用
+### Taking advantage of relationships
 
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -437,12 +437,12 @@ $robot = Robots::findFirst(
 
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
 
-| Type             | Description                                                     | Implicit Method |
-| ---------------- | --------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly         | findFirst       |
-| Has-One          | Returns a model instance of the related record directly         | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model | find            |
-| Has-Many-to-Many | 参照モデルのモデルインスタンスのコレクションを返す。これは暗黙的に関係するモデルで 'inner joins'を行う。     | (クエリの組合せ)       |
+| Type             | Description                                                                                                                | Implicit Method |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
+| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
+| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
+| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -458,7 +458,7 @@ echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 
 <a name='aliases'></a>
 
-### リレーションのエイリアス
+### Aliasing Relationships
 
 To explain better how aliases work, let's check the following example:
 
@@ -559,12 +559,12 @@ With the aliasing we can get the related records easily. You can also use the `g
 
 $robotsSimilar = RobotsSimilar::findFirst();
 
-// そのカラム (robots_id) に基づいて関連するレコードを返す
+// Returns the related record based on the column (robots_id)
 $robot = $robotsSimilar->getRobot();
 $robot = $robotsSimilar->robot;
 $robot = $robotsSimilar->getRelated('Robot');
 
-// そのカラム (similar_robots_id) に基づいて関連するレコードを返す
+// Returns the related record based on the column (similar_robots_id)
 $similarRobot = $robotsSimilar->getSimilarRobot();
 $similarRobot = $robotsSimilar->similarRobot;
 $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
@@ -584,7 +584,7 @@ namespace Store\Toys;
 use Phalcon\Mvc\Model;
 
 /**
- * ロボットのテーブルのモデルクラス
+ * Model class for the robots table.
  * @property Simple|RobotsParts[] $robotsParts
  * @method   Simple|RobotsParts[] getRobotsParts($parameters = null)
  * @method   integer              countRobotsParts()
@@ -702,7 +702,7 @@ $unpaidInvoices = $company->getRelated(
 
 <a name='virtual-foreign-keys'></a>
 
-## 仮想外部キー
+## Virtual Foreign Keys
 
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -805,7 +805,7 @@ class RobotsParts extends Model
 
 <a name='cascade-restrict-actions'></a>
 
-### カスケード/制限アクション
+### Cascade/Restrict actions
 
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -843,7 +843,7 @@ The above code set up to delete all the referenced records (parts) if the master
 
 <a name='storing-related-records'></a>
 
-## 関連レコードの保存
+## Storing Related Records
 
 Magic properties can be used to store a record and its related properties:
 
@@ -914,7 +914,7 @@ You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a 
 
 <a name='operations-over-resultsets'></a>
 
-## 結果セットの操作
+## Operations over Resultsets
 
 If a resultset is composed of complete objects, model operations can be performed on those objects. 例えば:
 
@@ -940,7 +940,7 @@ $result = $type->save();
 
 <a name='updating-related-records'></a>
 
-### 関連レコードの更新
+### Updating related records
 
 Instead of doing this:
 
@@ -1003,7 +1003,7 @@ $robots->getParts()->update(
 
 <a name='deleting-related-records'></a>
 
-### 関連レコードの削除
+### Deleting related records
 
 Instead of doing this:
 

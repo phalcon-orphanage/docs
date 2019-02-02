@@ -12,13 +12,13 @@ title: 'Phalcon\Mvc\Model\Behavior\SoftDelete'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior/softdelete.zep)
 
-En lugar de eliminar permanente mente un registro, marca el registro como eliminado cambiando el valor de una columna de marca
+Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
 ## Métodos
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Escucha las notificaciones del administrador de modelos
+Listens for notifications from the models manager
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Mvc\Model\Behavior](Phalcon_Mvc_Model_Behavior)
 
@@ -26,11 +26,11 @@ Phalcon\Mvc\Model\Behavior
 
 protected **mustTakeAction** (*mixed* $eventName) inherited from [Phalcon\Mvc\Model\Behavior](Phalcon_Mvc_Model_Behavior)
 
-Comprueba si el comportamiento debe actuar en ciertos eventos
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName]) inherited from [Phalcon\Mvc\Model\Behavior](Phalcon_Mvc_Model_Behavior)
 
-Devuelve las opciones de comportamiento relacionadas a un evento
+Returns the behavior options related to an event
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $method, [*array* $arguments]) inherited from [Phalcon\Mvc\Model\Behavior](Phalcon_Mvc_Model_Behavior)
 

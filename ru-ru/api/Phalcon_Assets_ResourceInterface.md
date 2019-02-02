@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\ResourceInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/resourceinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setType** (*mixed* $type)
 

@@ -6,9 +6,9 @@ title: 'Phalcon\FlashInterface'
 ---
 # Interface **Phalcon\FlashInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **error** (*mixed* $message)
 

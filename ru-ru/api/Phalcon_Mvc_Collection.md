@@ -28,7 +28,7 @@ This component implements a high level abstraction for NoSQL databases which wor
 
 *integer* **DIRTY_STATE_DETACHED**
 
-## Методы
+## Methods
 
 final public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector], [[Phalcon\Mvc\Collection\ManagerInterface](Phalcon_Mvc_Collection_ManagerInterface) $modelsManager])
 

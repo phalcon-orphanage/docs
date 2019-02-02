@@ -10,7 +10,7 @@ category: 'logger'
 * * *
 
 - [Logging](logger-overview)
-- [Adaptéry](logger-adapters)
+- [Adapters](logger-adapters)
 - [Creating a Logger component](logger-creating)
 - [Logging to Multiple adapters](logger-multiple)
 - [Message Formatting](logger-message-formatting) 

@@ -53,7 +53,7 @@ echo $view->getContent();
 
 *integer* **CACHE_MODE_INVERSE**
 
-## Методы
+## Methods
 
 public **getRenderLevel** ()
 

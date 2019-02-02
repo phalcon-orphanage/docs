@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Migrasi Database
+# Database Migrations
 
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
@@ -23,7 +23,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 <a name='chema-dumping'></a>
 
-## Skema Dumping
+## Schema Dumping
 
 The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
 
@@ -45,7 +45,7 @@ By default [Phalcon Developer Tools](/4.0/en/devtools-usage) uses the `app/migra
 
 <a name='class-anatomy'></a>
 
-## Anatomi Kelas Migrasi
+## Migration Class Anatomy
 
 Each file contains a unique class that extends the `Phalcon\Mvc\Model\Migration` class. These classes normally have two methods: `up()` and `down()`. `up()` performs the migration, while `down()` rolls it back.
 
@@ -146,42 +146,42 @@ class ProductsMigration_100 extends Migration
 
 The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.0.0. `morphTable()` receives an associative array with 4 possible sections:
 
-| Indeks      | Deskripsi                                                                                                                                   | Opsional |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `kolom`     | Sebuah array dengan satu set kolom tabel                                                                                                    |  Tidak   |
-| `indeks`    | Sebuah array dengan seperangkat indeks tabel.                                                                                               |    Ya    |
-| `referensi` | Sebuah array dengan satu set referensi tabel (foreign key).                                                                                 |    Ya    |
-| `pilihan`   | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |    Ya    |
+| Index        | Description                                                                                                                                 | Optional |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | An array with a set of table columns                                                                                                        |    No    |
+| `indexes`    | An array with a set of table indexes.                                                                                                       |   Yes    |
+| `references` | An array with a set of table references (foreign keys).                                                                                     |   Yes    |
+| `options`    | An array with a set of table creation options. These options are often related to the database system in which the migration was generated. |   Yes    |
 
 <a name='class-anatomy-columns'></a>
 
-### Mendefinisikan Kolom
+### Defining Columns
 
 [Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
-| Pilihan                  | Deskripsi                                                                                                                                  | Opsional |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `jenis`                  | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |  Tidak   |
-| `ukuran`                 | Beberapa jenis kolom seperti VARCHAR atau INTEGER mungkin memiliki ukuran tertentu                                                         |    Ya    |
-| `skala`                  | DESIMAL atau JUMLAH kolom dapat memiliki skala untuk menentukan berapa banyak bilangan desimal itu harus toko                              |    Ya    |
-| `belum di tanda tangani` | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |    Ya    |
-| `bukan`                  | Kolom dapat menyimpan nilai null?                                                                                                          |    Ya    |
-| `default`                | Mendefinisikan nilai default untuk kolom (hanya bisa berupa nilai sebenarnya, bukan fungsi seperti itu `NOW()`)                            |    Ya    |
-| `autoIncrement`          | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Ya    |
-| `pertama`                | Kolom harus ditempatkan pada posisi pertama dalam urutan kolom                                                                             |    Ya    |
-| `setelah`                | Kolom harus ditempatkan setelah kolom ditunjukkan                                                                                          |    Ya    |
+| Option          | Description                                                                                                                                | Optional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    No    |
+| `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Yes    |
+| `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Yes    |
+| `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Yes    |
+| `notNull`       | Column can store null values?                                                                                                              |   Yes    |
+| `default`       | Defines a default value for a column (can only be an actual value, not a function such as `NOW()`)                                         |   Yes    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |   Yes    |
+| `first`         | Column must be placed at first position in the column order                                                                                |   Yes    |
+| `after`         | Column must be placed after indicated column                                                                                               |   Yes    |
 
 Database migrations support the following database column types:
 
 * `Phalcon\Db\Column::TYPE_INTEGER`
-* `Kolom Phalcon\Db\:: TYPE_VARCHAR`
-* `Phalcon\Db\Kolom::TYPE_CHAR`
-* `Phalcon\Db\Kolom::TYPE_DATE`
-* `Phalcon\Db\Kolom::TYPE_DATETIME`
-* `Phalcon\Db\kolom::TYPE_TIMESTAMP`
-* `Phalcon\Db\kolom::TYPE_DECIMAL`
-* `Phalcon\Db\kolom::TYPE_TEXT`
-* `Phalcon\Db\Column::TYPE_JSON`
+* `Phalcon\Db\Column::TYPE_VARCHAR`
+* `Phalcon\Db\Column::TYPE_CHAR`
+* `Phalcon\Db\Column::TYPE_DATE`
+* `Phalcon\Db\Column::TYPE_DATETIME`
+* `Phalcon\Db\Column::TYPE_TIMESTAMP`
+* `Phalcon\Db\Column::TYPE_DECIMAL`
+* `Phalcon\Db\Column::TYPE_TEXT`
+* `Phalcon\Db\Column::TYPE_BOOLEAN`
 * `Phalcon\Db\Column::TYPE_FLOAT`
 * `Phalcon\Db\Column::TYPE_DOUBLE`
 * `Phalcon\Db\Column::TYPE_TINYBLOB`
@@ -194,28 +194,28 @@ Database migrations support the following database column types:
 
 <a name='class-anatomy-indexes'></a>
 
-### Mendefinisikan Indeks
+### Defining Indexes
 
 [Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 <a name='class-anatomy-references'></a>
 
-### Mendefinisikan Referensi
+### Defining References
 
 [Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
 
-| Indeks                  | Deskripsi                                                                                           | Opsional | Diimplementasikan di |
-| ----------------------- | --------------------------------------------------------------------------------------------------- |:--------:| -------------------- |
-| `direferensikanTabel`   | It's auto-descriptive. It refers to the name of the referenced table.                               |  Tidak   | Semua                |
-| `kolom`                 | Sebuah array dengan nama kolom pada tabel yang memiliki referensi                                   |  Tidak   | Semua                |
-| `direferensikanColumns` | Sebuah array dengan nama kolom pada tabel yang direferensikan                                       |  Tidak   | Semua                |
-| `dirujukSchema`         | The referenced table maybe is on another schema or database. This option allows you to define that. |    Ya    | Semua                |
-| `onDelete`              | Jika catatan asing dihapus, lakukan tindakan ini pada catatan lokal. record(s).                     |    Ya    | MySQL PostgreSQL     |
-| `di Perbaharui`         | Jika catatan asing diperbarui, lakukan tindakan ini pada catatan lokal. record(s).                  |    Ya    | MySQL PostgreSQL     |
+| Index               | Description                                                                                         | Optional | Implemented in   |
+| ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
+| `referencedTable`   | It's auto-descriptive. It refers to the name of the referenced table.                               |    No    | All              |
+| `columns`           | An array with the name of the columns at the table that have the reference                          |    No    | All              |
+| `referencedColumns` | An array with the name of the columns at the referenced table                                       |    No    | All              |
+| `referencedSchema`  | The referenced table maybe is on another schema or database. This option allows you to define that. |   Yes    | All              |
+| `onDelete`          | If the foreign record is removed, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
+| `onUpdate`          | If the foreign record is updated, perform this action on the local record(s).                       |   Yes    | MySQL PostgreSQL |
 
 <a name='writing'></a>
 
-## Menuliskan Migrasi
+## Writing Migrations
 
 Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/4.0/en/db).
 
@@ -247,7 +247,7 @@ class ProductsMigration_100 extends Migration
 
 <a name='running'></a>
 
-## Menjalankan migrasi
+## Running Migrations
 
 Once the generated migrations are uploaded on the target server, you can easily run them as shown in the following example:
 

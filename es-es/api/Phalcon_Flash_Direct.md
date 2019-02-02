@@ -18,11 +18,11 @@ This is a variant of the Phalcon\Flash that immediately outputs any message pass
 
 public **message** (*mixed* $type, *mixed* $message)
 
-Genera un mensaje
+Outputs a message
 
 public **output** ([*mixed* $remove])
 
-Imprime los mensajes acumulados en el flasher
+Prints the messages accumulated in the flasher
 
 public **__construct** ([*mixed* $cssClasses]) inherited from [Phalcon\Flash](Phalcon_Flash)
 
@@ -30,43 +30,43 @@ Phalcon\Flash constructor
 
 public **getAutoescape** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Devuelve el modo autoescape en el Html generado
+Returns the autoescape mode in generated html
 
 public **setAutoescape** (*mixed* $autoescape) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Establece el modo autoescape en el html generado
+Set the autoescape mode in generated html
 
 public **getEscaperService** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Devuelve el servicio Escaper
+Returns the Escaper Service
 
 public **setEscaperService** ([Phalcon\EscaperInterface](Phalcon_EscaperInterface) $escaperService) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Establece el servicio Escaper
+Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **setImplicitFlush** (*mixed* $implicitFlush) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Establece si la salida debe ser implícitamente vaciado a la salida o devuelto como una cadena
+Set whether the output must be implicitly flushed to the output or returned as string
 
 public **setAutomaticHtml** (*mixed* $automaticHtml) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Establece si la salida debe ser implícitamente formateada con HTML
+Set if the output must be implicitly formatted with HTML
 
 public **setCssClasses** (*array* $cssClasses) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Configura un arreglo con clases CSS para formatear los mensajes
+Set an array with CSS classes to format the messages
 
 public **error** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Muestra un mensaje de error HTML
+Shows a HTML error message
 
 ```php
 <?php
@@ -77,7 +77,7 @@ $flash->error("This is an error");
 
 public **notice** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Muestra un mensaje de información o notificación HTML
+Shows a HTML notice/information message
 
 ```php
 <?php
@@ -88,7 +88,7 @@ $flash->notice("This is an information");
 
 public **success** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Muestra un mensaje de éxito HTML
+Shows a HTML success message
 
 ```php
 <?php
@@ -99,7 +99,7 @@ $flash->success("The process was finished successfully");
 
 public **warning** (*mixed* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Muestra un mensaje de advertencia HTML
+Shows a HTML warning message
 
 ```php
 <?php
@@ -110,7 +110,7 @@ $flash->warning("Hey, this is important");
 
 public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message) inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Genera un mensaje que lo formatea con HTML
+Outputs a message formatting it with HTML
 
 ```php
 <?php
@@ -121,4 +121,4 @@ $flash->outputMessage("error", $message);
 
 public **clear** () inherited from [Phalcon\Flash](Phalcon_Flash)
 
-Borra los mensajes acumulados cuando el vaciado implícito está deshabilitado
+Clears accumulated messages when implicit flush is disabled

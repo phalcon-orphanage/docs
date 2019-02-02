@@ -12,7 +12,7 @@ title: 'Phalcon\Logger\Formatter'
 
 This is a base class for logger formatters
 
-## Методы
+## Methods
 
 public **getTypeString** (*mixed* $type)
 

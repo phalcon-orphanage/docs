@@ -8,7 +8,7 @@ title: 'Phalcon\Image\Adapter'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter.zep)
 
 All image adapters must use this class
 
@@ -28,7 +28,7 @@ Image width
 
 public **getHeight** ()
 
-Wysokość obrazka
+Image height
 
 public **getType** ()
 
@@ -84,7 +84,7 @@ Set the background color of an image
 
 public **blur** (*mixed* $radius)
 
-Rozmycie obrazu
+Blur image
 
 public **pixelate** (*mixed* $amount)
 

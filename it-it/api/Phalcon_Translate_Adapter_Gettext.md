@@ -10,7 +10,7 @@ title: 'Phalcon\Translate\Adapter\Gettext'
 
 *implements* [Phalcon\Translate\AdapterInterface](Phalcon_Translate_AdapterInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $adapter = new Gettext(
 
 Allows translate using gettext
 
-## Metodi
+## Methods
 
 public **getDirectory** ()
 

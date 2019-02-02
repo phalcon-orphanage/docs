@@ -36,7 +36,7 @@ echo $config->path('test.parent.property');                 // displays 1
 
 <a name='factory'></a>
 
-## Fabryka
+## Factory
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
 
@@ -103,7 +103,7 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| Klasa                                                             | Ious                                                                                             |
+| Klasa                                                             | Description                                                                                      |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
 | [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | Uses JSON files to store settings.                                                               |

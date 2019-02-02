@@ -10,9 +10,9 @@ title: 'Phalcon\Validation\CombinedFieldsValidator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
 
-## Méthodes
+## Methods
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 

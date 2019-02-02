@@ -10,11 +10,11 @@ title: 'Phalcon\Db\Dialect\Sqlite'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/sqlite.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/sqlite.zep)
 
 Generates database specific SQL for the Sqlite RDBMS
 
-## روش ها
+## Methods
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 

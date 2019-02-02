@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# L'Augmentation De La Performance
+# Increasing Performance
 
 Get faster applications requires refine many aspects: server, client, network, database, web server, static sources, etc. In this chapter we highlight scenarios where you can improve performance and how detect what is really slow in your application.
 
@@ -129,7 +129,7 @@ apc.enabled = On
 
 <a name='background-tasks'></a>
 
-## Ne le blocage de travail en arrière-plan
+## Do blocking work in the background
 
 Process a video, send e-mails, compress a file or an image, etc., are slow tasks that must be processed in background jobs. There are a variety of tools that provide queuing or messaging systems that work well with PHP:
 

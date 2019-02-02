@@ -8,9 +8,9 @@ title: 'Phalcon\Assets\Inline'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
-Satır içi bir varlığı belirtir
+Represents an inline asset
 
 ```php
 <?php
@@ -19,13 +19,13 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
-## Metodlar
+## Methods
 
-genel **getType** ()
+public **getType** ()
 
 ...
 
-herkese açık **İçeriğe Eriş** ()
+public **getContent** ()
 
 ...
 
@@ -43,16 +43,16 @@ Phalcon\Assets\Inline constructor
 
 public **setType** (*mixed* $type)
 
-Satır içi türünü ayarlar
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter)
 
-Kaynağın filtrelenmesi gerekip gerekmediğini ayarlar
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes)
 
-Ek HTML özellikleri ayarlar
+Sets extra HTML attributes
 
 public **getResourceKey** ()
 
-Kaynağın anahtarının getirir.
+Gets the resource's key.

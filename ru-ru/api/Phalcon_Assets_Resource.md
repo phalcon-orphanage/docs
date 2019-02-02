@@ -19,7 +19,7 @@ $resource = new \Phalcon\Assets\Resource("js", "javascripts/jquery.js");
 
 ```
 
-## Методы
+## Methods
 
 public **getType** ()
 

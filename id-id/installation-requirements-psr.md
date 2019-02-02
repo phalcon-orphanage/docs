@@ -4,11 +4,11 @@ language: 'id-id'
 version: '4.0'
 category: 'installation'
 ---
-# Pemasangan
+# Installation
 
 * * *
 
-## Persyaratan
+## Requirements
 
 ### PSR
 
@@ -18,7 +18,7 @@ Phalcon requires the PSR extension. The extension can be downloaded and compiled
 extension=psr.so
 ```
 
-sebelum
+before
 
 ```ini
 extension=phalcon.so

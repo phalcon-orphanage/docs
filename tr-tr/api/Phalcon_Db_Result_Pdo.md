@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Result\Pdo'
 
 *implements* [Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
 Encapsulates the resultset internals
 
@@ -27,7 +27,7 @@ while ($robot = $result->fetchArray()) {
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [PDOStatement](https://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 
@@ -39,7 +39,7 @@ Allows to execute the statement again. Some database systems don't support scrol
 
 public **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
 
-Alınan satıra karşılık gelen dizelerin bir dizisini/nesnesini alır veya daha fazla satır yoksa FALSE olarak işaretler. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
+Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
@@ -107,7 +107,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 
 public **dataSeek** (*mixed* $number)
 
-Dahili sonuç imlecini başka bir konuma taşır ve belirli bir satırı getirmemize izin verir
+Moves internal resultset cursor to another position letting us to fetch a certain row
 
 ```php
 <?php
@@ -155,4 +155,4 @@ $result->setFetchMode(
 
 public **getInternalResult** ()
 
-Dahili PDO sonuç nesnesini alır
+Gets the internal PDO result object

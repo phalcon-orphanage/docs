@@ -6,9 +6,9 @@ title: 'Phalcon\Db\AdapterInterface'
 ---
 # Interface **Phalcon\Db\AdapterInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapterinterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $placeholders])
 
@@ -30,43 +30,43 @@ abstract public **delete** (*mixed* $table, [*mixed* $whereCondition], [*mixed* 
 
 ...
 
-abstract public **setContent** (*mixed* $columnList)
+abstract public **getColumnList** (*mixed* $columnList)
 
 ...
 
-genel çıkarım **decrypt** (*mixed* $sqlQuery, [*mixed* $number)
+abstract public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
 ...
 
-public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
+abstract public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
 ...
 
-genel çıkarım **decrypt** (*mixed* $viewName, [*mixed* $schemaName])
+abstract public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
 ...
 
-genel özet **remove** (*mixed* $sqlQuery)
+abstract public **forUpdate** (*mixed* $sqlQuery)
 
 ...
 
-abstract public **hasPost** (*mixed* $sqlQuery)
+abstract public **sharedLock** (*mixed* $sqlQuery)
 
 ...
 
-public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
+abstract public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
 ...
 
-public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
+abstract public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
-public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
+abstract public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
 ...
 
-abstract public **redirect** ([*mixed* $viewName], [*mixed* $schemaName], [*mixed* $ifExists])
+abstract public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
 ...
 
@@ -78,7 +78,7 @@ abstract public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phal
 
 ...
 
-public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $columnName)
+abstract public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
 ...
 
@@ -86,7 +86,7 @@ abstract public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\
 
 ...
 
-abstract public **redirect** ([*mixed* $tableName], [*mixed* $schemaName], [*mixed* $indexName)
+abstract public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
 ...
 
@@ -94,7 +94,7 @@ abstract public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
+abstract public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
 ...
 
@@ -102,7 +102,7 @@ abstract public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Pha
 
 ...
 
-abstract public **redirect** ([*mixed* $tableName], [*mixed* $schemaName], [*mixed* $referenceName)
+abstract public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
 ...
 
@@ -110,67 +110,67 @@ abstract public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db
 
 ...
 
-abstract public **hasFiles** ([*mixed* $schemaName])
+abstract public **listTables** ([*mixed* $schemaName])
 
 ...
 
-abstract public **filter** (*mixed* $schemaName])
+abstract public **listViews** ([*mixed* $schemaName])
 
 ...
 
-genel çıkarım **getCipher** ()
+abstract public **getDescriptor** ()
 
 ...
 
-abstract public **getMethod** ()
+abstract public **getConnectionId** ()
 
 ...
 
-abstract public **getContent** ()
+abstract public **getSQLStatement** ()
 
 ...
 
-abstract public **getContent** ()
+abstract public **getRealSQLStatement** ()
 
 ...
 
-abstract public **getLanguages** ()
+abstract public **getSQLVariables** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getSQLBindTypes** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getType** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getDialectType** ()
 
 ...
 
-herkese açık özet **Rolleri al** ()
+abstract public **getDialect** ()
 
 ...
 
-genel **bağlantı** ([*sırala* $descriptor])
+abstract public **connect** ([*array* $descriptor])
 
 ...
 
-abstract public **getQuery** ([*mixed* $sqlStatement], [*mixed* $placeholders], [*mixed* $dataTypes])
+abstract public **query** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
-abstract public **redirect** ([*mixed* $sqlStatement], [*mixed* $placeholders], [*mixed* $dataTypes])
+abstract public **execute** (*mixed* $sqlStatement, [*mixed* $placeholders], [*mixed* $dataTypes])
 
 ...
 
-herkese açık özet **Rolleri al** ()
+abstract public **affectedRows** ()
 
 ...
 
-abstract public **isPost** ()
+abstract public **close** ()
 
 ...
 

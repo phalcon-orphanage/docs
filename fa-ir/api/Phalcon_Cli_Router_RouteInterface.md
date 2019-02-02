@@ -6,9 +6,9 @@ title: 'Phalcon\Cli\Router\RouteInterface'
 ---
 # Interface **Phalcon\Cli\Router\RouteInterface**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
-## روش ها
+## Methods
 
 abstract public **compilePattern** (*mixed* $pattern)
 
@@ -18,7 +18,7 @@ abstract public **reConfigure** (*mixed* $pattern, [*mixed* $paths])
 
 ...
 
-عمومی انتزاعی **دریافت نام** ()
+abstract public **getName** ()
 
 ...
 

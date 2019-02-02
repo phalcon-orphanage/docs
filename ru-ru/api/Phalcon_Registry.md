@@ -47,7 +47,7 @@ Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc, 
 
 Internally all the magic methods (and interfaces except JsonSerializable) are implemented using object handlers or similar techniques: this allows to bypass relatively slow method calls.
 
-## Методы
+## Methods
 
 final public **__construct** ()
 

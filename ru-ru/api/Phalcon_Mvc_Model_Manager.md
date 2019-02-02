@@ -33,7 +33,7 @@ $robot = new Robots($di);
 
 ```
 
-## Методы
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 

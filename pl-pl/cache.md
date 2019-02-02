@@ -13,7 +13,7 @@ Phalcon provides the `Phalcon\Cache` class allowing faster access to frequently 
 
 <a name='implementation'></a>
 
-## Kiedy korzystać z cache?
+## When to implement cache?
 
 Although this component is very fast, implementing it in cases that are not needed could lead to a loss of performance rather than gain. We recommend you check this cases before using a cache:
 
@@ -38,7 +38,7 @@ The caching process is divided into 2 parts:
 
 <a name='factory'></a>
 
-## Fabryka
+## Factory
 
 Instantiating frontend or backend adapters can be achieved by two ways:
 
@@ -312,7 +312,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='delete'></a>
 
-## Usuwanie danych z cache
+## Deleting data from the cache
 
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
@@ -348,7 +348,7 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Okres istnienia
+## Lifetime
 
 A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
 
@@ -457,7 +457,7 @@ $cache->save('my-key', $data);
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
-| Adapter                                                                   | Ious                                                                                                                                                           |
+| Adapter                                                                   | Description                                                                                                                                                    |
 | ------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output)     | Read input data from standard PHP output.                                                                                                                      |
 | [Phalcon\Cache\Frontend\Data](api/Phalcon_Cache_Frontend_Data)         | It's used to cache any kind of PHP data (big arrays, objects, text, etc). Data is serialized before stored in the backend.                                     |
@@ -478,7 +478,7 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 
 The backend adapters available to store cache data are:
 
-| Adapter                                                                         | Ious                                                 | Info                                          | Wymagane rozszerzenia                               |
+| Adapter                                                                         | Description                                          | Info                                          | Required Extensions                                 |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------- | --------------------------------------------------- |
 | [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                    | [APC](https://pecl.php.net/package/APC)             |
 | `Phalcon\Cache\Backend\Apcu`                                                 | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)                  | [APCu](https://pecl.php.net/package/APCu)           |
@@ -494,9 +494,9 @@ The backend adapters available to store cache data are:
 
 <a name='adapters-backend-factory'></a>
 
-### Fabryka
+### Factory
 
-There are many backend adapters (see [Backend Adapters](#adapters-backend)). Ten, którego użyjesz będzie polegał na potrzebach twojej aplikacji. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
+There are many backend adapters (see [Backend Adapters](#adapters-backend)). The one you use will depend on the needs of your application. The following example loads the Backend Cache Adapter class using `adapter` option, if frontend will be provided as array it will call Frontend Cache Factory
 
 ```php
 <?php
@@ -524,7 +524,7 @@ The [Phalcon\Cache\BackendInterface](api/Phalcon_Cache_BackendInterface) interfa
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
-| Opcja      | Ious                                                        |
+| Opcja      | Description                                                 |
 | ---------- | ----------------------------------------------------------- |
 | `prefix`   | A prefix that is automatically prepended to the cache keys. |
 | `cacheDir` | A writable directory on which cached files will be placed.  |
@@ -537,7 +537,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **General options**
 
-| Opcja           | Ious                                                                                                               |
+| Opcja           | Description                                                                                                        |
 | --------------- | ------------------------------------------------------------------------------------------------------------------ |
 | `statsKey`      | Used to tracking of cached keys.                                                                                   |
 | `prefix`        | A prefix that is automatically prepended to the cache keys.                                                        |
@@ -545,7 +545,7 @@ This backend will store cached content on a memcached server. Per default persis
 
 **Servers options**
 
-| Opcja    | Ious                                                                                                        |
+| Opcja    | Description                                                                                                 |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
 | `host`   | The `memcached` host.                                                                                       |
 | `port`   | The `memcached` port.                                                                                       |
@@ -595,12 +595,12 @@ $cache = new Libmemcached(
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
-| Opcja    | Ious                                                        |
-| -------- | ----------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys. |
-| `host`   | The memcached host.                                         |
-| `port`   | The memcached port.                                         |
-| `trwały` | Create a persistent connection to memcached?                |
+| Opcja        | Description                                                 |
+| ------------ | ----------------------------------------------------------- |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `host`       | The memcached host.                                         |
+| `port`       | The memcached port.                                         |
+| `persistent` | Create a persistent connection to memcached?                |
 
 <a name='adapters-backend-apc'></a>
 
@@ -608,7 +608,7 @@ This backend will store cached content on a memcached server. The available opti
 
 This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
-| Opcja    | Ious                                                        |
+| Opcja    | Description                                                 |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
@@ -618,7 +618,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](https://p
 
 This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
-| Opcja    | Ious                                                        |
+| Opcja    | Description                                                 |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
@@ -628,12 +628,12 @@ This backend will store cached content on Alternative PHP Cache ([APCU](https://
 
 This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
 
-| Opcja      | Ious                                                        |
-| ---------- | ----------------------------------------------------------- |
-| `prefix`   | A prefix that is automatically prepended to the cache keys. |
-| `server`   | A MongoDB connection string.                                |
-| `db`       | Mongo database name.                                        |
-| `kolekcja` | Mongo collection in the database.                           |
+| Opcja        | Description                                                 |
+| ------------ | ----------------------------------------------------------- |
+| `prefix`     | A prefix that is automatically prepended to the cache keys. |
+| `server`     | A MongoDB connection string.                                |
+| `db`         | Mongo database name.                                        |
+| `collection` | Mongo collection in the database.                           |
 
 <a name='adapters-backend-xcache'></a>
 
@@ -641,7 +641,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](https://mo
 
 This backend will store cached content on XCache ([XCache](https://xcache.lighttpd.net/)). The available options for this backend are:
 
-| Opcja    | Ious                                                        |
+| Opcja    | Description                                                 |
 | -------- | ----------------------------------------------------------- |
 | `prefix` | A prefix that is automatically prepended to the cache keys. |
 
@@ -651,13 +651,13 @@ This backend will store cached content on XCache ([XCache](https://xcache.lightt
 
 This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:
 
-| Opcja    | Ious                                                           |
-| -------- | -------------------------------------------------------------- |
-| `prefix` | A prefix that is automatically prepended to the cache keys.    |
-| `host`   | Redis host.                                                    |
-| `port`   | Redis port.                                                    |
-| `auth`   | Password to authenticate to a password-protected Redis server. |
-| `trwały` | Create a persistent connection to Redis.                       |
-| `index`  | The index of the Redis database to use.                        |
+| Opcja        | Description                                                    |
+| ------------ | -------------------------------------------------------------- |
+| `prefix`     | A prefix that is automatically prepended to the cache keys.    |
+| `host`       | Redis host.                                                    |
+| `port`       | Redis port.                                                    |
+| `auth`       | Password to authenticate to a password-protected Redis server. |
+| `persistent` | Create a persistent connection to Redis.                       |
+| `index`      | The index of the Redis database to use.                        |
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)

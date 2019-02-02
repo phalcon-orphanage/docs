@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Kolejkowanie
+# Queueing
 
 Activities like processing videos, resizing images or sending emails aren't suitable to be executed online or in real time because it may slow the loading time of pages and severely impact the user experience.
 
@@ -46,7 +46,7 @@ $queue->put(
 
 Available connection options are:
 
-| Opcja | Ious                                     | Domyślne  |
+| Opcja | Description                              | Domyślne  |
 | ----- | ---------------------------------------- | --------- |
 | host  | IP where the beanstalk server is located | 127.0.0.1 |
 | port  | Connection port                          | 11300     |
@@ -73,11 +73,11 @@ $queue->put(
 
 The following options are available:
 
-| Opcja     | Ious                                                                                                                                                                                        |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| priorytet | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
-| delay     | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
-| ttr       | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
+| Opcja    | Description                                                                                                                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| priority | It's an integer < 2**32. Jobs with smaller priority values will be scheduled before jobs with larger priorities. The most urgent priority is 0; the least urgent priority is 4,294,967,295. |
+| delay    | It's an integer number of seconds to wait before putting the job in the ready queue. The job will be in the 'delayed' state during this time.                                               |
+| ttr      | Time to run -- is an integer number of seconds to allow a worker to run this job. This time is counted from the moment a worker reserves this job.                                          |
 
 Every job put into the queue returns a `job id` which you can use to track the status of the job:
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Http\Cookie'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
-提供面向对象包装器来管理 HTTP cookie
+Provide OO wrappers to manage a HTTP cookie
 
 ## 方法
 
@@ -20,31 +20,31 @@ Phalcon\Http\Cookie constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** ()
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public [Phalcon\Http\Cookie](Phalcon_Http_Cookie) **setValue** (*string* $value)
 
-设置 cookie 的值
+Sets the cookie's value
 
 public *mixed* **getValue** ([*string* | *array* $filters], [*string* $defaultValue])
 
-返回的 cookie 的值
+Returns the cookie's value
 
 public **send** ()
 
-发送到 HTTP 客户端 cookie 在会话中存储的 cookie 定义
+Sends the cookie to the HTTP client Stores the cookie definition in session
 
 public **restore** ()
 
-从会话恢复 cookie，因为它是设置此方法设置的 cookie 相关信息将自动在内部调用的读取所以通常你不需要调用它
+Reads the cookie-related info from the SESSION to restore the cookie as it was set This method is automatically called internally so normally you don't need to call it
 
 public **delete** ()
 
-删除 cookie 将过期时间设置在过去
+Deletes the cookie by setting an expire time in the past
 
 public **setSignKey** (*string* $signKey = null): [Phalcon\Http\CookieInterface](Phalcon_Http_CookieInterface)
 
@@ -56,56 +56,56 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-如果该 cookie 必须加密/解密自动，设置
+Sets if the cookie must be encrypted/decrypted automatically
 
 public **isUsingEncryption** ()
 
-如果该 cookie 使用隐式加密检查
+Check if the cookie is using implicit encryption
 
 public **setExpiration** (*mixed* $expire)
 
-设置 cookie 的过期时间
+Sets the cookie's expiration time
 
 public **getExpiration** ()
 
-返回当前的过期时间
+Returns the current expiration time
 
 public **setPath** (*mixed* $path)
 
-设置 cookie 的过期时间
+Sets the cookie's expiration time
 
 public **getName** ()
 
-返回当前 cookie 的名称
+Returns the current cookie's name
 
 public **getPath** ()
 
-返回当前 cookie 路径
+Returns the current cookie's path
 
 public **setDomain** (*mixed* $domain)
 
-设置 cookie 是可用的域
+Sets the domain that the cookie is available to
 
 public **getDomain** ()
 
-返回的 cookie 是可用的域
+Returns the domain that the cookie is available to
 
 public **setSecure** (*mixed* $secure)
 
-如果安全 (HTTPS) 连接时，必须只有发送 cookie，设置
+Sets if the cookie must only be sent when the connection is secure (HTTPS)
 
 public **getSecure** ()
 
-返回是否只必须发送 cookie 安全 (HTTPS) 连接时
+Returns whether the cookie must only be sent when the connection is secure (HTTPS)
 
 public **setHttpOnly** (*mixed* $httpOnly)
 
-如果该 cookie 是只能通过 HTTP 协议访问，设置
+Sets if the cookie is accessible only through the HTTP protocol
 
 public **getHttpOnly** ()
 
-返回如果 cookie 是只能通过 HTTP 协议访问
+Returns if the cookie is accessible only through the HTTP protocol
 
 public **__toString** ()
 
-神奇的 __toString 方法将 cookie 的值转换为字符串
+Magic __toString method converts the cookie's value to string

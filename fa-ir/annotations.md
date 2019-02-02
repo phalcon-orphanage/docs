@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# حاشیه نویسی پارسر
+# Annotations Parser
 
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 
@@ -17,27 +17,27 @@ Annotations are read from docblocks in classes, methods and properties. An annot
 <?php
 
 /**
- * این توصیف کلاس است 
+ * This is the class description
  *
- * کلاس شگفت انگیز (درست)
- */
-مثال کلاس
+ * @AmazingClass(true)
+ */
+class Example
 {
     /**
-      * این ملک با یک ویژگی خاص است
-      *
-     * @ویژگی خاص
-      */
-     $someProperty محافظت شده است
+     * This a property with a special feature
+     *
+     * @SpecialFeature
+     */
+    protected $someProperty;
 
-     /**
-      * این یک روش است
-      *
-      *@ویژگی خاص
-      */
-     تابع عمومی someMethod()
-     {
-         // ...
+    /**
+     * This is a method
+     *
+     * @SpecialFeature
+     */
+    public function someMethod()
+    {
+        // ...
     }
 }
 ```
@@ -46,8 +46,8 @@ An annotation has the following syntax:
 
 ```php
 /**
- * @حاشیه-نویسی نام
- * @حاشیه نویسی نام (پارامتر 1، پارامتر 2، ...)
+ * @Annotation-Name
+ * @Annotation-Name(param1, param2, ...)
  */
 ```
 
@@ -57,12 +57,13 @@ Also, an annotation can be placed at any part of a docblock:
 <?php
 
 /**
+ * This a property with a special feature
  *
- * ویژگی خاص@
+ * @SpecialFeature
  *
- * نظرات بیشتر
+ * More comments
  *
- * ویژگی ویژه دیگر@ (درست)
+ * @AnotherSpecialFeature(true)
  */
 ```
 
@@ -85,19 +86,19 @@ However, to make the code more maintainable and understandable it is recommended
 <?php
 
 /**
-  * این ملک با یک ویژگی خاص است
-  * نظرات بیشتر
-  *
-  * ویژگی ویژه@({برخی پارامتر = 'مقدار'، اشتباه})
-  * ویژگی ویژه دیگر@(واقعی)
-  */
+ * This a property with a special feature
+ * More comments
+ *
+ * @SpecialFeature({someParameter='the value', false})
+ * @AnotherSpecialFeature(true)
+ */
 ```
 
 <a name='factory'></a>
 
-## کارخانه
+## Factory
 
-There are many annotations adapters available (see [Adapters](#adapters)). چیزی که شما استفاده می کنید بستگی به نیازهای نرم افزارتان دارد. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -130,7 +131,7 @@ The Factory loader provides more flexibility when dealing with instantiating ann
 
 <a name='reading'></a>
 
-## خواندن حاشیه نویسی ها
+## Reading Annotations
 
 A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
 
@@ -166,7 +167,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 <a name='types'></a>
 
-## انواع حاشیه نویسی
+## Types of Annotations
 
 Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
 
@@ -225,13 +226,13 @@ Annotations may have parameters or not. A parameter could be a simple literal (s
 
 <a name='usage'></a>
 
-## کاربرد عملی
+## Practical Usage
 
 Next we will explain some practical examples of annotations in PHP applications:
 
 <a name='usage-cache'></a>
 
-### مخزن توانمندساز با حاشیه نویسی
+### Cache Enabler with Annotations
 
 Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
 
@@ -346,7 +347,7 @@ class NewsController extends Controller
 
 <a name='usage-access-management'></a>
 
-### مناطق خصوصی/عمومی در حاشیه نویسی
+### Private/Public areas with Annotations
 
 You can use annotations to tell the ACL which controllers belong to the administrative areas:
 
@@ -386,8 +387,8 @@ class SecurityAnnotationsPlugin extends Plugin
         $annotations = $this->annotations->get($controllerName);
 
         // The controller is private?
-        اگر ($annotations->getClassAnnotations()->has('Private')) {
-            // بررسی کنید آیا متغیر جلسه فعال است?
+        if ($annotations->getClassAnnotations()->has('Private')) {
+            // Check if the session variable is active?
             if (!$this->session->get('auth')) {
 
                 // The user is no logged redirect to login
@@ -410,25 +411,25 @@ class SecurityAnnotationsPlugin extends Plugin
 
 <a name='adapters'></a>
 
-## آداپتورهای حاشیه نویسی
+## Annotations Adapters
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| کلاس                                                                           | توضیحات                                                                                                                                                                           |
-| ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [فالکون/حاشیه نویسی/آداپتور/حافظه](api/Phalcon_Annotations_Adapter_Memory)     | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| [فالکون/حاشیه نویسی/آداپتور/فایل](api/Phalcon_Annotations_Adapter_Files)       | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| [فالکون/حاشیه نویسی/آداپتور/ای پی سی](api/Phalcon_Annotations_Adapter_Apc)     | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
-| [فالکون/حاشیه نویسی/آداپتور/مخزن ایکس](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
+| Class                                                                           | Description                                                                                                                                                                       |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
+| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| [Phalcon\Annotations\Adapter\Apc](api/Phalcon_Annotations_Adapter_Apc)       | Parsed and processed annotations are stored permanently in the APC cache improving performance. This is the faster adapter                                                        |
+| [Phalcon\Annotations\Adapter\Xcache](api/Phalcon_Annotations_Adapter_Xcache) | Parsed and processed annotations are stored permanently in the XCache cache improving performance. This is a fast adapter too                                                     |
 
 <a name='adapters-custom'></a>
 
-### پیاده سازی آداپتورهای خود را
+### Implementing your own adapters
 
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
 
 <a name='resources'></a>
 
-## منابع خارجی
+## External Resources
 
-* [آموزش: ایجاد یک مدل سفارشی آغازگر با استفاده از حاشیه نویسی](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)

@@ -8,23 +8,23 @@ title: 'Phalcon\Db\Adapter'
 
 *implements* [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter.zep)
 
 Base class for Phalcon\Db adapters
 
-## Methoden
+## Methods
 
 public **getDialectType** ()
 
-Name des verwendeten Dialekts
+Name of the dialect used
 
 public **getType** ()
 
-Typ des Datenbanksystems für den der Adapter dient
+Type of database system the adapter is used for
 
 public **getSqlVariables** ()
 
-Aktive SQL gebunden Parametervariablen
+Active SQL bound parameter variables
 
 public **__construct** (*array* $descriptor)
 
@@ -32,32 +32,32 @@ Phalcon\Db\Adapter constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Legt den Event-manager fest
+Sets the event manager
 
 public **getEventsManager** ()
 
-Gibt den internen Eventmanager zurück
+Returns the internal event manager
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect)
 
-Legt den Dialekt fest, welcher verwendet wird, um die SQL-Anweisung zu produzieren
+Sets the dialect used to produce the SQL
 
 public **getDialect** ()
 
-Gibt interne Dialekt-Instanz zurück
+Returns internal dialect instance
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Gibt die erste Zeile aus einem SQL-Abfrage-Ergebnis zurück
+Returns the first row in a SQL query result
 
 ```php
 <?php
 
-// Den ersten robot holen
+// Getting first robot
 $robot = $connection->fetchOne("SELECT * FROM robots");
 print_r($robot);
 
-// Den ersten robot nur mit associativen indices holen
+// Getting first robot with associative indexes only
 $robot = $connection->fetchOne("SELECT * FROM robots", \Phalcon\Db::FETCH_ASSOC);
 print_r($robot);
 
@@ -65,12 +65,12 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Sichert das komplette Ergebnis einer Abfrage in ein array
+Dumps the complete result of a query into an array
 
 ```php
 <?php
 
-// Alle robots nur mit associativen indices ermitteln
+// Getting all robots with associative indexes only
 $robots = $connection->fetchAll(
     "SELECT * FROM robots",
     \Phalcon\Db::FETCH_ASSOC
@@ -80,7 +80,7 @@ foreach ($robots as $robot) {
     print_r($robot);
 }
 
- // Alle robots ermitteln, welche das wort "robot" im Namen enthalten
+ // Getting all robots that contains word "robot" withing the name
 $robots = $connection->fetchAll(
     "SELECT * FROM robots WHERE name LIKE :name",
     \Phalcon\Db::FETCH_ASSOC,
@@ -96,16 +96,16 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
-Gibt das n-te Feld der ersten Zeile aus einem SQL-Abfrage-Ergebnis zurück
+Returns the n'th field of first row in a SQL query result
 
 ```php
 <?php
 
-// Ermittlelt die Anzahl von robots
+// Getting count of robots
 $robotsCount = $connection->fetchColumn("SELECT count(*) FROM robots");
 print_r($robotsCount);
 
-// Den Namen des zuletzt geänderten robots ermitteln
+// Getting name of last edited robot
 $robot = $connection->fetchColumn(
     "SELECT id, name FROM robots order by modified desc",
     1
@@ -116,31 +116,31 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Daten in eine Tabelle einfügen mithilfe von benutzerdefinierter RDBMS SQL-Syntax
+Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 <?php
 
-// Einen neuen robot hinzufügen
+// Inserting a new robot
 $success = $connection->insert(
     "robots",
     ["Astro Boy", 1952],
     ["name", "year"]
 );
 
-// Die folgende SQL Anweisung wird zum Datenbanmk Systen gesendet
+// Next SQL sentence is sent to the database system
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
-Daten in eine Tabelle einfügen mithilfe von benutzerdefinierter RDBMS SQL-Syntax
+Inserts data into a table using custom RBDM SQL syntax
 
 ```php
 <?php
 
-// Einen neuen robot hinzufügen
+// Inserting a new robot
 $success = $connection->insertAsDict(
     "robots",
     [
@@ -149,19 +149,19 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Die folgende SQL Anweisung wird an das Datenbanksystem gesendet
+// Next SQL sentence is sent to the database system
 INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 ```
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
-Daten in eine Tabelle ändern mithilfe von benutzerdefinierter RDBMS SQL-Syntax
+Updates data on a table using custom RBDM SQL syntax
 
 ```php
 <?php
 
-// Vorhandenen robot ändern
+// Updating existing robot
 $success = $connection->update(
     "robots",
     ["name"],
@@ -169,7 +169,7 @@ $success = $connection->update(
     "id = 101"
 );
 
-// Die folgende SQL Anweisung wird an das Datenbanksystem gesendet
+// Next SQL sentence is sent to the database system
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 // Updating existing robot with array condition and $dataTypes
@@ -193,12 +193,12 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
-Aktualisiert die Daten in einer Tabelle mit benutzerdefinierter RBDM SQL-Syntax Eine weitere, sehr komfortable Syntax
+Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
 
 ```php
 <?php
 
-// Vorhandenen robot ändern
+// Updating existing robot
 $success = $connection->updateAsDict(
     "robots",
     [
@@ -207,32 +207,32 @@ $success = $connection->updateAsDict(
     "id = 101"
 );
 
-// Die folgende SQL Anweisung wird an das Datenbanksystem gesendet
+// Next SQL sentence is sent to the database system
 UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 ```
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Daten in eine Tabelle löschen mithilfe von benutzerdefinierter RDBMS SQL-Syntax
+Deletes data from a table using custom RBDM SQL syntax
 
 ```php
 <?php
 
-// Vorhandenen robot löschen
+// Deleting existing robot
 $success = $connection->delete(
     "robots",
     "id = 101"
 );
 
-// Die folgende SQL Anweisung wird generiert
+// Next SQL sentence is generated
 DELETE FROM `robots` WHERE `id` = 101
 
 ```
 
 public **escapeIdentifier** (*array* | *string* $identifier)
 
-Maskiert einen Spalten/Tabellen/Schema Namen
+Escapes a column/table/schema name
 
 ```php
 <?php
@@ -252,11 +252,11 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList)
 
-Gibt eine Liste der Spalten zurück
+Gets a list of columns
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
-Fügt eine LIMIT-Klausel zum $sqlQuery argument hinzu
+Appends a LIMIT clause to $sqlQuery argument
 
 ```php
 <?php
@@ -293,7 +293,7 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Liefert ein SQL, welches mit der FOR UPDATE-Klausel angepasst wurde
+Returns a SQL modified with a FOR UPDATE clause
 
 public **sharedLock** (*mixed* $sqlQuery)
 
@@ -301,63 +301,63 @@ Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Erstellt eine Tabelle
+Creates a table
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Löscht eine Tabelle aus einem Schema/Datenbank
+Drops a table from a schema/database
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Erstellen eine View
+Creates a view
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Löscht eine View
+Drops a view
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Fügt eine Spalte zu einer Tabelle hinzu
+Adds a column to a table
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Ändert eine Spalte einer Tabelle auf der Grundlage einer definition
+Modifies a table column based on a definition
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Löscht eine Spalte aus einer Tabelle
+Drops a column from a table
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Fügt einen Index zu einer Tabelle hinzu
+Adds an index to a table
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
-Löscht einen Index aus einer Tabelle
+Drop an index from a table
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Fügt einen Primärschlüssel einer Tabelle hinzu
+Adds a primary key to a table
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Löscht den Primärschlüssel einer Tabelle
+Drops a table's primary key
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Fügt einen Fremdschlüssel einer Tabelle hinzu
+Adds a foreign key to a table
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Löscht einen Fremdschlüssel aus einer Tabelle
+Drops a foreign key from a table
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Liefert die SQL Spaltendefinition einer Spalte
+Returns the SQL column definition from a column
 
 public **listTables** ([*mixed* $schemaName])
 
-Listet alle Tabellen in einer Datenbank
+List all tables on a database
 
 ```php
 <?php
@@ -370,7 +370,7 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-Listet alle Views in einer Datenbank
+List all views on a database
 
 ```php
 <?php
@@ -383,7 +383,7 @@ print_r(
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
-Listet die Tabellenindices
+Lists table indexes
 
 ```php
 <?php
@@ -396,7 +396,7 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Listet Tabellenverweise
+Lists table references
 
 ```php
 <?php
@@ -422,11 +422,11 @@ print_r(
 
 public **createSavepoint** (*mixed* $name)
 
-Erstellt einen neuen Speicherpunkt
+Creates a new savepoint
 
 public **releaseSavepoint** (*mixed* $name)
 
-Gibt einen Speicherpunkt frei
+Releases given savepoint
 
 public **rollbackSavepoint** (*mixed* $name)
 
@@ -434,11 +434,11 @@ Rollbacks given savepoint
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
-Wenn geschachtelte Transaktionen Speicherpunkte verwenden sollen
+Set if nested transactions should use savepoints
 
 public **isNestedTransactionsWithSavepoints** ()
 
-Gibt zurück, ob geschachtelte Transaktionen Speicherpunkte verwenden sollen
+Returns if nested transactions should use savepoints
 
 public **getNestedTransactionSavepointName** ()
 
@@ -451,7 +451,7 @@ Returns the default identity value to be inserted in an identity column
 ```php
 <?php
 
-//Legt einen neuen robot mit gültigen Standardwert für die Spalte 'id' an
+// Inserting a new robot with a valid default value for the column 'id'
 $success = $connection->insert(
     "robots",
     [
@@ -475,7 +475,7 @@ Returns the default value to make the RBDM use the default value declared in the
 ```php
 <?php
 
-// legt einen neuen robot mit Standardwert für die Spalte 'year' an
+// Inserting a new robot with a valid default value for the column 'year'
 $success = $connection->insert(
     "robots",
     [
@@ -492,7 +492,7 @@ $success = $connection->insert(
 
 public **supportSequences** ()
 
-Prüft, ob das Datenbanksystem eine Sequenz benötigt um automatisch numerische Werte zu erzeugen
+Check whether the database system requires a sequence to produce auto-numeric values
 
 public **useExplicitIdValue** ()
 

@@ -6,9 +6,9 @@ title: 'Phalcon\Db\IndexInterface'
 ---
 # Interface **Phalcon\Db\IndexInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **getName** ()
 
@@ -18,7 +18,7 @@ abstract public **getColumns** ()
 
 ...
 
-genel özet **getType** ()
+abstract public **getType** ()
 
 ...
 

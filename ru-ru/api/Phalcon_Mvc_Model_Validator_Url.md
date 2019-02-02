@@ -41,7 +41,7 @@ class Posts extends \Phalcon\Mvc\Collection
 
 ```
 
-## Методы
+## Methods
 
 public **validate** ([Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface) $record)
 

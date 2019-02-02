@@ -17,7 +17,7 @@ The process of pagination takes place when we need to present big groups of arbi
 
 This component makes use of adapters to encapsulate different sources of data:
 
-| Adapter                                                                                 | Beschreibung                                                                                                                                                                                                     |
+| Adapter                                                                                 | Description                                                                                                                                                                                                      |
 | --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | Use a PHP array as source data                                                                                                                                                                                   |
 | [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Since PDO doesn't support scrollable cursors this adapter shouldn't be used to paginate a large number of records |
@@ -172,7 +172,7 @@ $paginator = new PaginatorQueryBuilder(
 
 The `$page` object has the following attributes:
 
-| Eigenschaft   | Beschreibung                                           |
+| Attribute     | Description                                            |
 | ------------- | ------------------------------------------------------ |
 | `items`       | The set of records to be displayed at the current page |
 | `current`     | The current page                                       |
@@ -180,11 +180,11 @@ The `$page` object has the following attributes:
 | `next`        | The next page to the current one                       |
 | `last`        | The last page in the set of records                    |
 | `total_pages` | The number of pages                                    |
-| `total_items` | Anzahl Elemente in den Quelldaten                      |
+| `total_items` | The number of items in the source data                 |
 
 <a name='custom'></a>
 
-## Implementierung von eigenen Adaptern
+## Implementing your own adapters
 
 The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 

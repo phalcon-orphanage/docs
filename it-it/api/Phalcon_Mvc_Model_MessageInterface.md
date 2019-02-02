@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\MessageInterface'
 ---
 # Interface **Phalcon\Mvc\Model\MessageInterface**
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/messageinterface.zep)
 
-## Metodi
+## Methods
 
 abstract public **setType** (*mixed* $type)
 

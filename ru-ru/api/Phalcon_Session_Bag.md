@@ -22,7 +22,7 @@ $user->age  = 22;
 
 ```
 
-## Методы
+## Methods
 
 public **__construct** (*mixed* $name)
 

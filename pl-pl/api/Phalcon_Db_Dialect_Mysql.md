@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 Generates database specific SQL for the MySQL RDBMS
 
@@ -272,11 +272,11 @@ Resolve function calls
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Rozwiąż listę
+Resolve Lists
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Rozwiąż *
+Resolve *
 
 final protected **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 

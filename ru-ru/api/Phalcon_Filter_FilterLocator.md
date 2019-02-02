@@ -47,7 +47,7 @@ protected $services = array();
 protected $mapper   = array();
 ```
 
-## Методы
+## Methods
 
 ```php
 public function sanitize( mixed $value, string|array $sanitizers, bool $noRecursive = false ): mixed

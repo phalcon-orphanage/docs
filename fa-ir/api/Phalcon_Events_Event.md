@@ -8,11 +8,11 @@ title: 'Phalcon\Events\Event'
 
 *implements* [Phalcon\Events\EventInterface](Phalcon_Events_EventInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
 This class offers contextual information of a fired event in the EventsManager
 
-## روش ها
+## Methods
 
 public **getType** ()
 

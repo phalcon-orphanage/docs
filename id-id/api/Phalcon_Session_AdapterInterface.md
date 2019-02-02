@@ -6,11 +6,11 @@ title: 'Phalcon\Session\AdapterInterface'
 ---
 # Interface **Phalcon\Session\AdapterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapterinterface.zep)
 
-## Metode
+## Methods
 
-abstrak publik 0 mulai 0
+abstract public **start** ()
 
 ...
 
@@ -18,7 +18,7 @@ abstract public **setOptions** (*array* $options)
 
 ...
 
-abstrak publik **getOptions** ()
+abstract public **getOptions** ()
 
 ...
 
@@ -38,11 +38,11 @@ abstract public **remove** (*mixed* $index)
 
 ...
 
-abstrak publik **getId** ()
+abstract public **getId** ()
 
 ...
 
-abstrak public **IsSteded </ 0> ()</p> 
+abstract public **isStarted** ()
 
 ...
 
@@ -54,10 +54,10 @@ abstract public **regenerateId** ([*mixed* $deleteOldSession])
 
 ...
 
-abstract umum$name$name$name$name **setName** (*mixed* $nama)
+abstract public **setName** (*mixed* $name)
 
 ...
 
-abstrak publik **getName** ()
+abstract public **getName** ()
 
 ...

@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\ExclusionIn'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
 
 Check if a value is not included into a list of values
 
@@ -59,7 +59,7 @@ $validator->add(
 
 ```
 
-## Metodi
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

@@ -8,11 +8,11 @@ title: 'Phalcon\Db\Dialect'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
 
 This is the base class to each database dialect. This implements common methods to transform intermediate code into its RDBMS related syntax
 
-## Méthodes
+## Methods
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction)
 
@@ -71,7 +71,7 @@ echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Obtient une liste de colonnes avec échappé identifiants
+Gets a list of columns with escaped identifiers
 
 ```php
 <?php
@@ -91,23 +91,23 @@ Resolve Column expressions
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Transforme une représentation intermédiaire pour une expression dans un système de base de données valide expression
+Transforms an intermediate representation for an expression into a database system valid expression
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar])
 
-Transformer une représentation intermédiaire d'un schéma/tableau dans un système de base de données valide expression
+Transform an intermediate representation of a schema/table into a database system valid expression
 
 public **select** (*array* $definition)
 
-Construit une instruction SELECT
+Builds a SELECT statement
 
 public **supportsSavepoints** ()
 
-Vérifie si la plate-forme prend en charge les points d'enregistrement
+Checks whether the platform supports savepoints
 
 public **supportsReleaseSavepoints** ()
 
-Vérifie si la plate-forme appuie la diffusion de points de sauvegarde.
+Checks whether the platform supports releasing savepoints.
 
 public **createSavepoint** (*mixed* $name)
 
@@ -135,7 +135,7 @@ Resolve qualified expressions
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Résoudre des opérations binaires expressions
+Resolve binary operations expressions
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
@@ -159,7 +159,7 @@ Resolve CAST of values
 
 final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 
-Résoudre CONVERTIR des valeurs de codages
+Resolve CONVERT of values encodings
 
 final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts])
 

@@ -8,13 +8,13 @@ title: 'Phalcon\Cache\Frontend\Json'
 
 *implements* [Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/json.zep)
 
 Allows to cache data converting/deconverting them to JSON.
 
 This adapter uses the json_encode/json_decode PHP's functions
 
-Veriler JSON'da kodlandığında, aynı arka uça erişen diğer sistemler bunları işleyebilir
+As the data is encoded in JSON other systems accessing the same backend could process them
 
 ```php
 <?php
@@ -46,7 +46,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([*array* $frontendOptions])
 
@@ -66,16 +66,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-Çıktı önbelleğine alınan içeriği getirir
+Returns output cached content
 
 public **stop** ()
 
-Çıktının frontend'ini durdurur
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-Verileri depolamadan önce seri hale getirir
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes verisini sonradan geri alır
+Unserializes data after retrieval

@@ -46,7 +46,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## Методы
+## Methods
 
 public **getMemcache** ()
 

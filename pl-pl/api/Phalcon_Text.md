@@ -6,11 +6,11 @@ title: 'Phalcon\Text'
 ---
 # Abstract class **Phalcon\Text**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
 Provides utilities to work with texts
 
-## Stałe
+## Constants
 
 *integer* **RANDOM_ALNUM**
 

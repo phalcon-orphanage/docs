@@ -6,9 +6,9 @@ title: 'Phalcon\Logger\AdapterInterface'
 ---
 # Interface **Phalcon\Logger\AdapterInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 

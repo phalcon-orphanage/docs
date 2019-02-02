@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Εισαγωγή",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
@@ -127,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Περίπτωση Χρήσης",
+                "text": "Use case",
                 "url": "/use-case"
             }
         ]
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Μοντέλα",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -217,11 +217,11 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Μνήμη cache",
+                "text": "Cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Γεγονότα",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -275,7 +275,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Προβολή",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -297,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Ελεγκτές",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
@@ -309,11 +309,11 @@
                 "url": "/events"
             },
             {
-                "text": "Φίλτρα",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
-                "text": "Δρομολόγηση",
+                "text": "Routing",
                 "url": "/routing"
             },
             {
@@ -349,7 +349,7 @@
         ]
     },
     {
-        "text": "Ασφάλεια",
+        "text": "Security",
         "url": "",
         "menu": [
             {
@@ -357,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Ασφάλεια",
+                "text": "Security",
                 "url": "/security"
             }
         ]

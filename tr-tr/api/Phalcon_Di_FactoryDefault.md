@@ -10,27 +10,27 @@ title: 'Phalcon\Di\FactoryDefault'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Phalcon\DiInterface](Phalcon_DiInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
-This is a variant of the standard Phalcon\Di. Varsayılan olarak, framework tarafından sağlanan tüm hizmetleri otomatik kaydeder. Bu sayede, geliştiricinin her bir hizmeti ayrı ayrı kaydettirmesi gerekmez; bu, tam bir yığın framework ü sağlar
+This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
-## Metodlar
+## Methods
 
-genel**__construct** ()
+public **__construct** ()
 
 Phalcon\Di\FactoryDefault constructor
 
 public **setInternalEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di](Phalcon_Di)
 
-Dahili olay yöneticisini ayarlar
+Sets the internal event manager
 
 public **getInternalEventsManager** () inherited from [Phalcon\Di](Phalcon_Di)
 
-Dahili olay yöneticisini döndürür
+Returns the internal event manager
 
 public **set** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Servis konteynırının içine bir servis kaydeder
+Registers a service in the services container
 
 public **setShared** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -38,11 +38,11 @@ Registers an "always shared" service in the services container
 
 public **remove** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Hizmetler kapsayıcısındaki bir hizmeti kaldırır Ayrıca hizmet için oluşturulan paylaşılan örneği de kaldırır
+Removes a service in the services container It also removes any shared instance created for the service
 
 public **attempt** (*mixed* $name, *mixed* $definition, [*mixed* $shared]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Hizmet konteynerine kayıt olma denemesi yalnızca o servis daha önce aynı isimle kaydedilmediyse başarılı olur
+Attempts to register a service in the services container Only is successful if a service hasn't been registered previously with the same name
 
 public **setRaw** (*mixed* $name, [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface) $rawDefinition) inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -62,7 +62,7 @@ Resolves the service based on its configuration
 
 public *mixed* **getShared** (*string* $name, [*array* $parameters]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Bir hizmeti düzeltir, çözümlenen servis DI'da saklanır, bu hizmet için müteakip talepler aynı örnegi iade edecektir
+Resolves a service, the resolved service is stored in the DI, subsequent requests for this service will return the same instance
 
 public **has** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -70,7 +70,7 @@ Check whether the DI contains a service by a name
 
 public **wasFreshInstance** () inherited from [Phalcon\Di](Phalcon_Di)
 
-GetShared ile elde edilen son hizmetin yeni bir durum oluşturup oluşturmadığını veya mevcut bir örneği üretip üretmediğini kontrol eder
+Check whether the last service obtained via getShared produced a fresh instance or an existing one
 
 public **getServices** () inherited from [Phalcon\Di](Phalcon_Di)
 
@@ -82,7 +82,7 @@ Check if a service is registered using the array syntax
 
 public **offsetSet** (*mixed* $name, *mixed* $definition) inherited from [Phalcon\Di](Phalcon_Di)
 
-Dizilim sözdizimini kullanarak paylaşılan bir hizmeti kaydetmeye izin verir
+Allows to register a shared service using the array syntax
 
 ```php
 <?php
@@ -93,7 +93,7 @@ $di["request"] = new \Phalcon\Http\Request();
 
 public **offsetGet** (*mixed* $name) inherited from [Phalcon\Di](Phalcon_Di)
 
-Dizilim sözdizimini kullanarak paylaşılan bir hizmeti elde etmeyi sağlar
+Allows to obtain a shared service using the array syntax
 
 ```php
 <?php
@@ -112,7 +112,7 @@ Magic method to get or set services using setters/getters
 
 public **register** ([Phalcon\Di\ServiceProviderInterface](Phalcon_Di_ServiceProviderInterface) $provider) inherited from [Phalcon\Di](Phalcon_Di)
 
-Bir servis sağlayıcı kaydeder.
+Registers a service provider.
 
 ```php
 <?php
@@ -146,7 +146,7 @@ Resets the internal default DI
 
 public **loadFromYaml** (*mixed* $filePath, [*array* $callbacks]) inherited from [Phalcon\Di](Phalcon_Di)
 
-Servisleri bir yaml dosyasından yükler.
+Loads services from a yaml file.
 
 ```php
 <?php

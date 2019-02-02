@@ -14,7 +14,7 @@ title: 'Phalcon\Logger\Formatter\Firephp'
 
 Formats messages so that they can be sent to FirePHP
 
-## Методы
+## Methods
 
 public **getTypeString** (*mixed* $type)
 

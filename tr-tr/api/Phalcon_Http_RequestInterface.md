@@ -6,9 +6,9 @@ title: 'Phalcon\Http\RequestInterface'
 ---
 # Interface **Phalcon\Http\RequestInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
 
-## Metodlar
+## Methods
 
 abstract public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 

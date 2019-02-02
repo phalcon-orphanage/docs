@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\Alnum'
 ---
 # Class [Phalcon\Filter\Sanitizer\Alnum](Phalcon_Filter_Sanitizer_Alnum)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/alnum.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/alnum.zep)
 
 Sanitizes a value to an alphanumeric value
 
-### Methoden
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

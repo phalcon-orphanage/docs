@@ -8,7 +8,7 @@ title: 'Phalcon\Image\AdapterInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapterinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master])
 

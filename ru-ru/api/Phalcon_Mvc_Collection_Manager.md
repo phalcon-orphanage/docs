@@ -30,7 +30,7 @@ $robot = new Robots($di);
 
 ```
 
-## Методы
+## Methods
 
 public **getServiceName** ()
 

@@ -6,36 +6,36 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
 
-Bu arayüz, Phalcon\Annotations'daki adaptörler tarafından uygulanmalıdır
+This interface must be implemented by adapters in Phalcon\Annotations
 
-## Metodlar
+## Methods
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Ek açıklama ayrıştırıcısını ayarlar
+Sets the annotations parser
 
 abstract public **getReader** ()
 
-Açıklama okuyucusunu döndürür
+Returns the annotation reader
 
 abstract public **get** (*string|object* $className)
 
-Bir sınıfta bulunan tüm notaları ayrıştırır veya alır
+Parses or retrieves all the annotations found in a class
 
 abstract public **getMethods** (*string* $className)
 
-Tüm sınıfın yöntemlerinde bulunan açıklamaları geri getirir
+Returns the annotations found in all the class methods
 
 abstract public **getMethod** (*string* $className, *string* $methodName)
 
-Özel methodlarda ek açıklamaları bulur ve çevirir
+Returns the annotations found in a specific method
 
 abstract public **getProperties** (*string* $className)
 
-Tüm sınıfın yöntemlerinde bulunan açıklamaları geri getirir
+Returns the annotations found in all the class methods
 
 abstract public **getProperty** (*string* $className, *string* $propertyName)
 
-Belli bir özellikte bulunan açıklamaları getirir
+Returns the annotations found in a specific property

@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# ولت: الگوی موتور
+# Volt: Template Engine
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
@@ -17,7 +17,7 @@ Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally create
 
 <a name='introduction'></a>
 
-## معرفی
+## Introduction
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -40,7 +40,7 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 
 <a name='setup'></a>
 
-## فعال کردن ولت
+## Activating Volt
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
@@ -145,14 +145,14 @@ $di->set(
 
 The following options are available in Volt:
 
-| گزینه               | توضیحات                                                                                                                      | Default |
+| Option              | Description                                                                                                                  | Default |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
 | `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
 | `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
 | `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
 | `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `پیشوند`            | اجازه می دهد برای پیشوند یک پیشوند به قالب در مسیر تالیف                                                                     | `null`  |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
 | `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
@@ -160,8 +160,8 @@ The compilation path is generated according to the above options, if the develop
 ```php
 <?php
 
-// فقط فرمت php را به مسیر قالب اضافه کنید
-// ترک قالب های کامپایل شده در همان دایرکتوری
+// Just append the .php extension to the template path
+// leaving the compiled templates in the same directory
 $volt->setOptions(
     [
         'compiledPath' => function ($templatePath) {
@@ -188,7 +188,7 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## استفاده پایه
+## Basic Usage
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
@@ -258,7 +258,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## متغیرها
+## Variables
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -285,33 +285,33 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| فیلتر           | توضیحات                                                                                                                             |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`           | Applies the [abs](https://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
-| `درشت نویسی`    | Capitalizes a string by applying the [ucwords](https://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `تبدیل_کدگذاری` | یک رشته را از چارستی به چارست دیگر انتقال می دهد                                                                                    |
-| `پیش‌فرض`       | یک مقدار پیش فرض در صورتی که عبارت ارزیابی خالی باشد.(برای مقدار محض، تنظیم یا ارزیابی نشده است)                                    |
-| `e`             | `Phalcon\Escaper->escapeHtml()` را به مقدار اعمال می کند                                                                        |
-| `صرف نظر کردن`  | `Phalcon\Escaper->escapeHtml()` را به مقدار اعمال می کند                                                                        |
-| `فرار از_attr`  | `Phalcon\Escaper->escapeHtmlAttr()` را به مقدار اعمال می کند                                                                    |
-| `escape_css`    | `Phalcon\Escaper->escapeCss()` را به مقدار اعمال می کند                                                                         |
-| `فرار از_جسد`   | `Phalcon\Escaper->escapeJs()`را به مقدار اعمال می کند                                                                           |
-| `فرمت`          | Formats a string using [sprintf](https://php.net/manual/en/function.sprintf.php).                                                   |
-| `json_رمزگذاری` | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                 |
-| `json_رمزگشایی` | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
-| `عضویت`         | Joins the array parts using a separator [join](https://php.net/manual/en/function.join.php)                                         |
-| `کلیدها`        | Returns the array keys using [array_keys](https://php.net/manual/en/function.array-keys.php)                                        |
-| `چپ_مرتب`       | Applies the [ltrim](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `طول`           | طول رشته ها یا اینکه چندمورد در آرایه یا شیء استفاده شده است، می شمارد                                                              |
-| `lower`         | موضوع یک رشته را به حروف کوچک تغییر می دهد                                                                                          |
-| `nl2br`         | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](https://php.net/manual/en/function.nl2br.php) |
-| `راست_مرتب`     | Applies the [rtrim](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `sort`          | Sorts an array using the PHP function [asort](https://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`  | Applies the [stripslashes](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`     | Applies the [striptags](https://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`          | Applies the [trim](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`         | Change the case of a string to uppercase                                                                                            |
-| `url_encode`    | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| Filter             | Description                                                                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Applies the [abs](https://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
+| `capitalize`       | Capitalizes a string by applying the [ucwords](https://php.net/manual/en/function.ucwords.php) PHP function to the value            |
+| `convert_encoding` | Converts a string from one charset to another                                                                                       |
+| `default`          | Sets a default value in case that the evaluated expression is empty (is not set or evaluates to a falsy value)                      |
+| `e`                | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                            |
+| `escape`           | Applies `Phalcon\Escaper->escapeHtml()` to the value                                                                            |
+| `escape_attr`      | Applies `Phalcon\Escaper->escapeHtmlAttr()` to the value                                                                        |
+| `escape_css`       | Applies `Phalcon\Escaper->escapeCss()` to the value                                                                             |
+| `escape_js`        | Applies `Phalcon\Escaper->escapeJs()` to the value                                                                              |
+| `format`           | Formats a string using [sprintf](https://php.net/manual/en/function.sprintf.php).                                                   |
+| `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                 |
+| `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
+| `join`             | Joins the array parts using a separator [join](https://php.net/manual/en/function.join.php)                                         |
+| `keys`             | Returns the array keys using [array_keys](https://php.net/manual/en/function.array-keys.php)                                        |
+| `left_trim`        | Applies the [ltrim](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
+| `length`           | Counts the string length or how many items are in an array or object                                                                |
+| `lower`            | Change the case of a string to lowercase                                                                                            |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](https://php.net/manual/en/function.nl2br.php) |
+| `right_trim`       | Applies the [rtrim](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
+| `sort`             | Sorts an array using the PHP function [asort](https://php.net/manual/en/function.asort.php)                                         |
+| `stripslashes`     | Applies the [stripslashes](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
+| `striptags`        | Applies the [striptags](https://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
+| `trim`             | Applies the [trim](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
+| `upper`            | Change the case of a string to uppercase                                                                                            |
+| `url_encode`       | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
 
 Examples:
 
@@ -377,7 +377,7 @@ Examples:
 
 <a name='comments'></a>
 
-## نظرات
+## Comments
 
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
@@ -391,13 +391,13 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 <a name='control-structures'></a>
 
-## فهرست ساختارهای کنترل
+## List of Control Structures
 
 Volt provides a set of basic but powerful control structures for use in templates:
 
 <a name='control-structures-for'></a>
 
-### برای
+### For
 
 Loop over each item in a sequence. The following example shows how to traverse a set of 'robots' and print his/her name:
 
@@ -483,7 +483,7 @@ Alternative syntax:
 
 <a name='control-structures-loops'></a>
 
-### کنترل حلقه
+### Loop Controls
 
 The `break` and `continue` statements can be used to exit from a loop or force an iteration in the current block:
 
@@ -513,7 +513,7 @@ The `break` and `continue` statements can be used to exit from a loop or force a
 
 <a name='control-structures-if'></a>
 
-### اگر
+### If
 
 As PHP, an `if` statement checks if an expression is evaluated as true or false:
 
@@ -648,15 +648,15 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 
 A special variable is available inside `for` loops providing you information about
 
-| Variable         | توضیحات                                        |
-| ---------------- | ---------------------------------------------- |
-| `loop.index`     | The current iteration of the loop. (1 indexed) |
-| `loop.index0`    | The current iteration of the loop. (0 indexed) |
-| `loop.revindex`  | تعداد تکرارها از انتهای حلقه (1 نمایه شده)     |
-| `loop.revindex0` | تعداد تکرارها از انتهای حلقه (0 نمایه شده)     |
-| `تکرار.اول`      | درست در صورت تکرار اول.                        |
-| `حلقه.گذشته`     | درست در صورت تکرار گذشته.                      |
-| `طول.حلقه`       | تعداد موارد برای تکرار                         |
+| Variable         | Description                                                   |
+| ---------------- | ------------------------------------------------------------- |
+| `loop.index`     | The current iteration of the loop. (1 indexed)                |
+| `loop.index0`    | The current iteration of the loop. (0 indexed)                |
+| `loop.revindex`  | The number of iterations from the end of the loop (1 indexed) |
+| `loop.revindex0` | The number of iterations from the end of the loop (0 indexed) |
+| `loop.first`     | True if in the first iteration.                               |
+| `loop.last`      | True if in the last iteration.                                |
+| `loop.length`    | The number of items to iterate                                |
 
 Example:
 
@@ -685,7 +685,7 @@ Example:
 
 <a name='assignments'></a>
 
-## واگذاری
+## Assignments
 
 Variables may be changed in a template using the instruction `set`:
 
@@ -717,17 +717,17 @@ Additionally, you can use compound assignment operators:
 
 The following operators are available:
 
-| عملگر   | توضیحات         |
-| ------- | --------------- |
-| `=`     | تخصیص استاندارد |
-| `+=`    | تخصیص اضافی     |
-| `-=`    | منها کردن وظیفه |
-| `\*=` | تخصیص ضرب       |
-| `/=`    | تخصیص بخش       |
+| Operator | Description               |
+| -------- | ------------------------- |
+| `=`      | Standard Assignment       |
+| `+=`     | Addition assignment       |
+| `-=`     | Subtraction assignment    |
+| `\*=`  | Multiplication assignment |
+| `/=`     | Division assignment       |
 
 <a name='expressions'></a>
 
-## عبارت
+## Expressions
 
 Volt provides a basic set of expression support, including literals and common operators. A expression can be evaluated and printed using the `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}` delimiters:
 
@@ -751,14 +751,14 @@ If an expression needs to be evaluated without be printed the `do` statement can
 
 The following literals are supported:
 
-| فیلتر               | توضیحات                                                                    |
-| ------------------- | -------------------------------------------------------------------------- |
-| `'این یک رشته است'` | متن بین دو نقل قول یا نقل قول ها به صورت رشته ها مورد استفاده قرار می گیرد |
-| `100.25`            | اعداد با اعشاری به صورت دوتایی/شناور در نظر گرفته می شوند                  |
-| `100`               | اعداد بدون عدد اعشاری به عنوان عدد صحیح پردازش می شوند                     |
-| `false`             | ثابت 'اشتباه' ارزش دروغین دروغین است                                       |
-| `true`              | ثابت 'درست' ارزش واقعی boolean است                                         |
-| `null`              | مقدار 'خالی' ثابت است                                                      |
+| Filter               | Description                                                        |
+| -------------------- | ------------------------------------------------------------------ |
+| `'this is a string'` | Text between double quotes or single quotes are handled as strings |
+| `100.25`             | Numbers with a decimal part are handled as doubles/floats          |
+| `100`                | Numbers without a decimal part are handled as integers             |
+| `false`              | Constant 'false' is the boolean false value                        |
+| `true`               | Constant 'true' is the boolean true value                          |
+| `null`               | Constant 'null' is the Null value                                  |
 
 <a name='expressions-arrays'></a>
 
@@ -797,13 +797,13 @@ Curly braces also can be used to define arrays or hashes:
 
 You may make calculations in templates using the following operators:
 
-| عملگر | توضیحات                                                                                      |
-|:-----:| -------------------------------------------------------------------------------------------- |
-|  `+`  | Perform an adding operation. `{% raw %}{{ 2 + 3 }}{% endraw %}` returns 5                    |
-|  `-`  | Perform a substraction operation `{% raw %}{{ 2 - 3 }}{% endraw %}` returns -1               |
-|  `*`  | Perform a multiplication operation `{% raw %}{{ 2 * 3 }}{% endraw %}` returns 6              |
-|  `/`  | Perform a division operation `{% raw %}{{ 10 / 2 }}{% endraw %}` returns 5                   |
-|  `%`  | Calculate the remainder of an integer division `{% raw %}{{ 10 % 3 }}{% endraw %}` returns 1 |
+| Operator | Description                                                                                  |
+|:--------:| -------------------------------------------------------------------------------------------- |
+|   `+`    | Perform an adding operation. `{% raw %}{{ 2 + 3 }}{% endraw %}` returns 5                    |
+|   `-`    | Perform a substraction operation `{% raw %}{{ 2 - 3 }}{% endraw %}` returns -1               |
+|   `*`    | Perform a multiplication operation `{% raw %}{{ 2 * 3 }}{% endraw %}` returns 6              |
+|   `/`    | Perform a division operation `{% raw %}{{ 10 / 2 }}{% endraw %}` returns 5                   |
+|   `%`    | Calculate the remainder of an integer division `{% raw %}{{ 10 % 3 }}{% endraw %}` returns 1 |
 
 <a name='expressions-comparisons'></a>
 
@@ -811,17 +811,17 @@ You may make calculations in templates using the following operators:
 
 The following comparison operators are available:
 
-|   عملگر    | توضیحات                                                    |
-|:----------:| ---------------------------------------------------------- |
-|    `==`    | بررسی کنید که آیا هر دو اپندر برابر هستند                  |
-|    `!=`    | بررسی کنید که آیا دو اپندر برابر نیستند                    |
-| `<>` | بررسی کنید که آیا دو اپندر برابر نیستند                    |
-|   `>`   | بررسی کنید که آیا عملگر چپ بیشتر از درست اپندر             |
-|   `<`   | بررسی کنید که آیا عملگر چپ کمتر از درست اپندر              |
-|  `<=`   | بررسی کنید که آیا عملگر چپ کمتر یا برابر است از درست اپندر |
-|  `>=`   | بررسی کنید که آیا عملگر چپ بیشتر یا برابر از درست اپندر    |
-|   `===`    | بررسی کنید که آیا هر دو اپندر برابر هستند                  |
-|   `!==`    | بررسی کنید که آیا هر دو اپندر برابر نیستند                 |
+|  Operator  | Description                                                       |
+|:----------:| ----------------------------------------------------------------- |
+|    `==`    | Check whether both operands are equal                             |
+|    `!=`    | Check whether both operands aren't equal                          |
+| `<>` | Check whether both operands aren't equal                          |
+|   `>`   | Check whether left operand is greater than right operand          |
+|   `<`   | Check whether left operand is less than right operand             |
+|  `<=`   | Check whether left operand is less or equal than right operand    |
+|  `>=`   | Check whether left operand is greater or equal than right operand |
+|   `===`    | Check whether both operands are identical                         |
+|   `!==`    | Check whether both operands aren't identical                      |
 
 <a name='expressions-logic'></a>
 
@@ -829,12 +829,12 @@ The following comparison operators are available:
 
 Logic operators are useful in the `if` expression evaluation to combine multiple tests:
 
-|   عملگر    | توضیحات                                                                             |
-|:----------:| ----------------------------------------------------------------------------------- |
-|    `یا`    | درست اگر راستای چپ یا راست به صورت واقعی محاسبه می شود                              |
-|    `و`     | اگر هر دو اپراتور سمت چپ و راست به صورت واقعی مورد ارزیابی قرار بگیرند، درست می شود |
-|    `نه`    | یک عبارت را از بین می برد                                                           |
-| `( expr )` | هیزم والدین گروه عبارات                                                             |
+|  Operator  | Description                                                       |
+|:----------:| ----------------------------------------------------------------- |
+|    `or`    | Return true if the left or right operand is evaluated as true     |
+|   `and`    | Return true if both left and right operands are evaluated as true |
+|   `not`    | Negates an expression                                             |
+| `( expr )` | Parenthesis groups expressions                                    |
 
 <a name='expressions-other-operators'></a>
 
@@ -842,17 +842,17 @@ Logic operators are useful in the `if` expression evaluation to combine multiple
 
 Additional operators seen the following operators are available:
 
-| عملگر             | توضیحات                                                                                          |
+| Operator          | Description                                                                                      |
 | ----------------- | ------------------------------------------------------------------------------------------------ |
 | `~`               | Concatenates both operands `{% raw %}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
 | `|`               | Applies a filter in the right operand to the left `{% raw %}{{ 'hello'|uppercase }}{% endraw %}` |
 | `..`              | Creates a range `{% raw %}{{ 'a'..'z' }}{% endraw %}` `{% raw %}{{ 1..10 }}{% endraw %}`         |
-| `است`             | همانند == (برابر است)، همچنین آزمایشات را انجام می دهد                                           |
-| `در`              | برای بررسی اینکه آیا یک عبارت در عبارات دیگر `اگر 'a' در 'abc'` باشد، وجود دارد                  |
-| `نیست`            | همانطور که! = (برابر نیست)                                                                       |
+| `is`              | Same as == (equals), also performs tests                                                         |
+| `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                  |
+| `is not`          | Same as != (not equals)                                                                          |
 | `'a' ? 'b' : 'c'` | Ternary operator. The same as the PHP ternary operator                                           |
-| `++`              | ارزش را افزایش می دهد                                                                            |
-| `--`              | کاهش ارزش                                                                                        |
+| `++`              | Increments a value                                                                               |
+| `--`              | Decrements a value                                                                               |
 
 The following example shows how to use operators:
 
@@ -870,7 +870,7 @@ The following example shows how to use operators:
 
 <a name='tests'></a>
 
-## تست ها
+## Tests
 
 Tests can be used to test if a variable has a valid expected value. The operator `is` is used to perform the tests:
 
@@ -888,18 +888,18 @@ Tests can be used to test if a variable has a valid expected value. The operator
 
 The following built-in tests are available in Volt:
 
-| تست          | توضیحات                                                              |
-| ------------ | -------------------------------------------------------------------- |
-| `تعریف`      | چک کردن اگر یک متغیر تعریف شده باشد (`isset()`)                      |
-| `تقسیم بندی` | چک کردن اینکه آیا یک مقدار با مقدار دیگری قابل تقسیم است             |
-| `خالی`       | چک کنید اگر یک متغیر خالی باشد                                       |
-| `زوج`        | چک کردن اینکه آیا مقدار عددی حقیقی است                               |
-| `تکرارپذیری` | Checks if a value is iterable. Can be traversed by a 'for' statement |
-| `عددی`       | چک کردن اینکه آیا ارزش عددی است                                      |
-| `odd`        | ک کردن اینکه آیا یک عدد است عجیب خواهد بود                           |
-| `مثل`        | چک کنید اگر یک مقدار با ارزش دیگر یکسان باشد                         |
-| `اسکالر`     | چک کردن اینکه ارزش عددی (نه یک آرایه یا یک شی)                       |
-| `نوع`        | چک کردن اگر یک مقدار از نوع مشخص شده باشد                            |
+| Test          | Description                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| `defined`     | Checks if a variable is defined (`isset()`)                          |
+| `divisibleby` | Checks if a value is divisible by other value                        |
+| `empty`       | Checks if a variable is empty                                        |
+| `even`        | Checks if a numeric value is even                                    |
+| `iterable`    | Checks if a value is iterable. Can be traversed by a 'for' statement |
+| `numeric`     | Checks if value is numeric                                           |
+| `odd`         | Checks if a numeric value is odd                                     |
+| `sameas`      | Checks if a value is identical to other value                        |
+| `scalar`      | Checks if value is scalar (not an array or object)                   |
+| `type`        | Checks if a value is of the specified type                           |
 
 More examples:
 
@@ -1101,7 +1101,7 @@ To call a [Phalcon\Tag](api/Phalcon_Tag) helper, you only need to call an uncame
 
 The following built-in functions are available in Volt:
 
-| نام           | توضیحات                                                     |
+| Name          | Description                                                 |
 | ------------- | ----------------------------------------------------------- |
 | `content`     | Includes the content produced in a previous rendering stage |
 | `get_content` | Same as `content`                                           |
@@ -1169,7 +1169,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
-| نوع        | توضیحات                                                                                                    |
+| Type       | Description                                                                                                |
 | ---------- | ---------------------------------------------------------------------------------------------------------- |
 | `partial`  | allows you to include templates made in Volt and in other template engines as well                         |
 |            | allows you to pass an expression like a variable allowing to include the content of other view dynamically |
@@ -1503,7 +1503,7 @@ The above class implements the method `compileFunction` which is invoked before 
 
 The following compilation events are available to be implemented in extensions:
 
-| Event/Method        | توضیحات                                                                                                |
+| Event/Method        | Description                                                                                            |
 | ------------------- | ------------------------------------------------------------------------------------------------------ |
 | `compileFunction`   | Triggered before trying to compile any function call in a template                                     |
 | `compileFilter`     | Triggered before trying to compile any filter call in a template                                       |
@@ -1619,7 +1619,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## منابع خارجی
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)

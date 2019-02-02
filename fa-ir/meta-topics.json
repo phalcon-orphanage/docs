@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "معرفی",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
@@ -23,11 +23,11 @@
         ]
     },
     {
-        "text": "همکاری کردن",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "بررسی کلی",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Testing environment",
                 "url": "/testing-environment"
             }
         ]
@@ -127,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "مورد استفاده",
+                "text": "Use case",
                 "url": "/use-case"
             }
         ]
@@ -137,7 +137,7 @@
         "url": "",
         "menu": [
             {
-                "text": "فهرست api",
+                "text": "API Index",
                 "url": "/api/"
             },
             {
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "مدل ها",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -221,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "رویداد ها",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -237,7 +237,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "تایید کنندگان",
+                "text": "Validators",
                 "url": "/db-models-validation"
             },
             {
@@ -297,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "کنترل کننده",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
@@ -313,7 +313,7 @@
                 "url": "/filter"
             },
             {
-                "text": "مسیر یابی",
+                "text": "Routing",
                 "url": "/routing"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "اعتبار سنجی",
+                "text": "Validation",
                 "url": "/validation"
             }
         ]

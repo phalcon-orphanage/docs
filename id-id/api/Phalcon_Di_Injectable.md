@@ -8,27 +8,27 @@ title: 'Phalcon\Di\Injectable'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
-Kelas ini memperbolehkan untuk mengakses layanan dalam wadah layanan hanya dengan mengakses properti umum dengan nama yang sama dengan layanan terdaftar
+This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-## Metode
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
-publik **mendapatkanDI** ()
+public **getDI** ()
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Menyetel pengelola acara
+Sets the event manager
 
-publik **getEventsManager** ()
+public **getEventsManager** ()
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **__get** (*string* $propertyName)
 

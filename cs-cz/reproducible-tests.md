@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-## Vytvoření malého skriptu
+## Creating a small script
 
 A small PHP file can be used to showcase how to reproduce the issue:
 

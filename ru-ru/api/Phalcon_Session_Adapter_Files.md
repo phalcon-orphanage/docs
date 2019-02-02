@@ -20,7 +20,7 @@ title: 'Phalcon\Session\Adapter\Files'
 
 *integer* **SESSION_DISABLED**
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
 

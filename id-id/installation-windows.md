@@ -4,11 +4,11 @@ language: 'id-id'
 version: '4.0'
 category: 'installation'
 ---
-# Pemasangan
+# Installation
 
 * * *
 
-## Jendela
+## Windows
 
 To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download]([download](https://phalconphp.com/en/download/windows)) page.
 
@@ -18,7 +18,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architecture | Version | Mengetik              |
+| Architecture | Version | Type                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |

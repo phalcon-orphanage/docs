@@ -7,11 +7,11 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Události modelů
+# Model Events
 
 <a name='events'></a>
 
-## Události a Správce událostí
+## Events and Events Manager
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 

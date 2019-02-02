@@ -15,7 +15,7 @@ version: '4.0'
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| Operation          | Name                     |        処理中断が可能        | Explanation                                                                                                                       |
+| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
 | ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
 | Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
 | Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |

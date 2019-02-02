@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Digit'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/digit.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/digit.zep)
 
 Check for numeric character(s)
 
@@ -48,7 +48,7 @@ $validator->add(
 
 ```
 
-## Methoden
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

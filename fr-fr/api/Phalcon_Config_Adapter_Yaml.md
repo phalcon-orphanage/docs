@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Adapter\Yaml'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
 
 Reads YAML files and converts them to Phalcon\Config objects.
 
@@ -52,11 +52,11 @@ echo $config->models->metadata;
 
 ```
 
-## Constantes
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Méthodes
+## Methods
 
 public **__construct** (*mixed* $filePath, [*array* $callbacks])
 

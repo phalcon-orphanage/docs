@@ -24,7 +24,7 @@ Provides utilities to work with texts
 
 *integer* **RANDOM_DISTINCT**
 
-## Методы
+## Methods
 
 public static **camelize** (*mixed* $str, [*mixed* $delimiter])
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Service\Locator'
 
 **implements** [Phalcon\Service\LocatorInterface](Phalcon_Service_LocatorInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locator.zep)
 
 ## Properties
 

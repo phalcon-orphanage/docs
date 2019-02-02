@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# برنامه های کاربردی MVC
+# MVC Applications
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -18,10 +18,10 @@ The following bootstrap code is typical for a Phalcon application:
 
 use Phalcon\Mvc\Application;
 
-//ثبت نام لودکننده ای خودکار
+// Register autoloaders
 // ...
 
-// ثبت نام خدمات
+// Register services
 // ...
 
 // Handle the request
@@ -46,7 +46,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## بوت دستی
+## Manual bootstrapping
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -117,7 +117,8 @@ $router->handle();
 
 $dispatcher = $di['dispatcher'];
 
-// پارامترهای روتر پردازش شده را به دزدگیر منتقل کنید
+// Pass the processed router parameters to the dispatcher
+
 $dispatcher->setControllerName(
     $router->getControllerName()
 );
@@ -130,13 +131,13 @@ $dispatcher->setParams(
     $router->getParams()
 );
 
-// درخواست را ارسال کنید
+// Dispatch the request
 $dispatcher->dispatch();
 
-// مقدار برگشتی را با آخرین اقدام اجرا شده دریافت کنید
+// Get the returned value by the last executed action
 $response = $dispatcher->getReturnedValue();
 
-// بررسی کنید که آیا عمل بازگشتی یک شی "پاسخ" است
+// Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
     // Send the response
     $response->send();
@@ -199,13 +200,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## نرم افزارهای ماژول یگانه یا چندگانه
+## Single or Multi Module Applications
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### ماژول یگانه
+### Single Module
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -329,7 +330,7 @@ try {
 
 <a name='module'></a>
 
-### ماژول چندگانه
+### Multi Module
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -536,19 +537,19 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## رویدادهای برنامه کاربردی
+## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. حوادث زیر پشتیبانی می شوند:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| نام رویداد                  | باعث شد                                                       |
-| --------------------------- | ------------------------------------------------------------- |
-| `بوت`                       | هنگامی که برنامه درخواست اول خود را انجام می دهد، اجرا می شود |
-| `قبل از شروع ماژول`         | پیش از شروع ماژول، تنها زمانی که ماژول ها ثبت نام شده اند     |
-| `بعد از شروع ماژول`         | پس از راه اندازی یک ماژول، تنها زمانی که ماژول ها ثبت می شوند |
-| `قبل از درخواست اداره کردن` | قبل از اجرای حلقه ی اعزام                                     |
-| `بعد از درخواست اداره کردن` | پس از اجرای حلقه ی اعزام                                      |
+| Event Name            | Triggered                                                    |
+| --------------------- | ------------------------------------------------------------ |
+| `boot`                | Executed when the application handles its first request      |
+| `beforeStartModule`   | Before initialize a module, only when modules are registered |
+| `afterStartModule`    | After initialize a module, only when modules are registered  |
+| `beforeHandleRequest` | Before execute the dispatch loop                             |
+| `afterHandleRequest`  | After execute the dispatch loop                              |
 
-مثال زیر نشان می دهد که چگونه می توان شنوندگان را به این مولفه وصل کرد:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -570,6 +571,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## منابع خارجی
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)

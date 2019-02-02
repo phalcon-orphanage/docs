@@ -10,7 +10,7 @@ title: 'Phalcon\Forms\Element\Select'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
 Component SELECT (choice) for forms
 
@@ -22,7 +22,7 @@ Phalcon\Forms\Element constructor
 
 public [Phalcon\Forms\Element](Phalcon_Forms_Element) **setOptions** (*array* | *object* $options)
 
-Ustaw opcje wyboru
+Set the choice's options
 
 public *array* | *object* **getOptions** ()
 
@@ -142,7 +142,7 @@ Returns the messages that belongs to the element The element needs to be attache
 
 public **hasMessages** () inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 
-Sprawdza, czy są wiadomości przyczepione do tego elementu
+Checks whether there are messages attached to the element
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group) inherited from [Phalcon\Forms\Element](Phalcon_Forms_Element)
 

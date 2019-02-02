@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Model'
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface), [Phalcon\Mvc\Model\ResultInterface](Phalcon_Mvc_Model_ResultInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
 Phalcon\Mvc\Model connects business objects and database tables to create a persistable domain model where logic and data are presented in one wrapping. It's an implementation of the object-relational mapping (ORM).
 
-Model odzwierciedla informacje (dane) z aplikacji oraz zasady ich przetwarzania. Modele są przede wszystkim wykorzystywane do interakcji z odpowiednia bazą danych. W większości przypadków, każda tabela w Twojej bazie danych odpowiada jednemu modelowi w Twojej aplikacji. Większość logiki biznesowej Twojej aplikacji będzie zawarta w modelach.
+A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
 Phalcon\Mvc\Model is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
@@ -39,7 +39,7 @@ if ($robot->save() === false) {
 
 ```
 
-## Stałe
+## Constants
 
 *integer* **OP_NONE**
 
@@ -500,7 +500,7 @@ Fires an event, implicitly calls behaviors and listeners in the events manager a
 
 protected **_cancelOperation** ()
 
-Anuluj obecną operację
+Cancel the current operation
 
 public **appendMessage** ([Phalcon\Mvc\Model\MessageInterface](Phalcon_Mvc_Model_MessageInterface) $message)
 

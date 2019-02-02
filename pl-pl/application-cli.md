@@ -7,23 +7,23 @@ version: '4.0'
 
 <a name='creating-cli-application'></a>
 
-# Tworzenie aplikacji wiersza polecenia (CLI)
+# Creating a Command Line (CLI) Application
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
 
 <a name='structure'></a>
 
-## Struktura
+## Structure
 
 A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
-* `aplikacja/zadania/GłówneZadania.php`
+* `app/tasks/MainTask.php`
 * `app/cli.php` <-- main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
-## Tworzenie Bootstrap'u
+## Creating a Bootstrap
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
 
@@ -52,7 +52,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Załaduj plik aktualizacji (jeśli jest taki)
+// Load the configuration file (if any)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -106,7 +106,7 @@ php app/cli.php
 
 <a name='tasks'></a>
 
-## Zadania
+## Tasks
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -128,7 +128,7 @@ class MainTask extends Task
 
 <a name='processing-action-parameters'></a>
 
-## Parametry akcji przetwarzania
+## Processing action parameters
 
 It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
 
@@ -173,7 +173,7 @@ best regards, universe
 
 <a name='running-tasks-chain'></a>
 
-## Uruchamianie zadań w łańcuchu
+## Running tasks in a chain
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 

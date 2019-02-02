@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\File'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
 
 Allows to cache output fragments using a file backend
 
@@ -48,7 +48,7 @@ if ($content === null) {
 
 ```
 
-## روش ها
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 

@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Уровень абстракции базы данных
+# Database Abstraction Layer
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -15,7 +15,7 @@ This component allows for a lower level database manipulation than using traditi
 
 <a name='adapters'></a>
 
-## Адаптеры баз данных
+## Database Adapters
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
@@ -27,7 +27,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### Фабрика
+### Factory
 
 <a name='factory'></a>
 
@@ -52,13 +52,13 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Реализация собственных адаптеров
+### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
 <a name='dialects'></a>
 
-## Диалекты базы данных
+## Database Dialects
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
@@ -70,7 +70,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 <a name='dialects-custom'></a>
 
-### Реализация собственных диалектов
+### Implementing your own dialects
 
 The [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
 
@@ -122,7 +122,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## Подключение к базе данных
+## Connecting to Databases
 
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
@@ -194,7 +194,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## Настройка дополнительных параметров PDO
+## Setting up additional PDO options
 
 You can set PDO options at connection time by passing the parameters `options`:
 
@@ -256,7 +256,7 @@ The above will return the correct database instance and also has the advantage t
 
 <a name='finding-rows'></a>
 
-## Поиск строк
+## Finding Rows
 
 [Phalcon\Db](api/Phalcon_Db) provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
 
@@ -327,7 +327,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## Подготавливаемые запросы
+## Binding Parameters
 
 Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Связывание параметров может быть легко достигнуто следующим образом:
 
@@ -796,7 +796,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## Профилирование SQL запросов
+## Profiling SQL Statements
 
 [Phalcon\Db](api/Phalcon_Db) includes a profiling component called [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler), that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 

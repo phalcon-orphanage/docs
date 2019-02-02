@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Backend\Xcache'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/xcache.zep)
 
-Permite almacenar en caché los fragmentos de salida, los datos de PHP y los datos sin procesar usando un backend de XCache
+Allows to cache output fragments, PHP data and raw data using an XCache backend
 
 ```php
 <?php
@@ -50,7 +50,7 @@ Phalcon\Cache\Backend\Xcache constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Devuelve el contenido almacenado en caché
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -58,11 +58,11 @@ Almacena el contenido en caché en el backend del archivo y detiene el Frontend
 
 public *boolean* **delete** (*int* | *string* $keyName)
 
-Elimina el valor almacenado en caché por la clave
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Indagar las claves almacenadas en caché existentes.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -84,11 +84,11 @@ Atomic increment of a given key, by number $value
 
 public **decrement** (*string* $keyName, [*mixed* $value])
 
-Reducción atómica de una clave dada, por número $value
+Atomic decrement of a given key, by number $value
 
 public **flush** ()
 
-Anula inmediatamente todos los elementos existentes.
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -116,20 +116,20 @@ public **setLastKey** (*mixed* $lastKey) inherited from [Phalcon\Cache\Backend](
 
 public *mixed* **start** (*int* | *string* $keyName, [*int* $lifetime]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comienza una caché. El KeyName permite identificar el fragmento creado
+Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Detiene el frontend sin almacenar ningún contenido almacenado en caché
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el último almacenamiento en caché esta actualizado o no
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Comprueba si el caché ha empezado a almacenarse o no
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Obtiene la última duración establecida
+Gets the last lifetime set

@@ -36,7 +36,7 @@ print_r($dataTypes);
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| Adapter      | Ious                                                                                                                                                                                                                                                                                                                     | API                                                                                        |
+| Adapter      | Description                                                                                                                                                                                                                                                                                                              | API                                                                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | Apc          | This adapter uses the [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) to store the table metadata. You can specify the lifetime of the metadata with options. (Recommended for Production).                                                                                                 | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
 | Files        | This adapter uses plain files to store metadata. This adapter reduces database queries but has an increased I/O with the file system.                                                                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
@@ -145,20 +145,20 @@ Annotations must be placed in properties that are mapped to columns in the mappe
 
 The following annotations are supported:
 
-| Nazwa     | Ious                                              |
-| --------- | ------------------------------------------------- |
-| Primary   | Mark the field as part of the table's primary key |
-| Tożsamość | The field is an auto_increment/serial column      |
-| Column    | This marks an attribute as a mapped column        |
+| Nazwa    | Description                                       |
+| -------- | ------------------------------------------------- |
+| Primary  | Mark the field as part of the table's primary key |
+| Identity | The field is an auto_increment/serial column      |
+| Column   | This marks an attribute as a mapped column        |
 
 The annotation `@Column` supports the following parameters:
 
-| Nazwa                | Ious                                                                                                                                                                          |
+| Nazwa                | Description                                                                                                                                                                   |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | column               | Real column name                                                                                                                                                              |
 | type                 | The column's types: varchar/string (default), text, char, json, tinyblob, blob, mediumblob, longblob, integer, biginteger, float, decimal, date, datetime, timestamp, boolean |
 | length               | The column's length if any                                                                                                                                                    |
-| wartość null         | Set whether the column accepts null values or not                                                                                                                             |
+| nullable             | Set whether the column accepts null values or not                                                                                                                             |
 | skip_on_insert     | Skip this column on insert                                                                                                                                                    |
 | skip_on_update     | Skip this column on updates                                                                                                                                                   |
 | allow_empty_string | Column allow empty strings                                                                                                                                                    |

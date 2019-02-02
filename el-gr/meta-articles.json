@@ -5,27 +5,27 @@
       "url": "/acl"
     },
     {
-      "text": "Δημιουργώντας Λίστες Ελέγχου Πρόσβασης",
+      "text": "Creating an ACL",
       "url": "/acl-setup"
     },
     {
-      "text": "Προσθήκη Λειτουργιών",
+      "text": "Adding Operations",
       "url": "/acl-adding-operations"
     },
     {
-      "text": "Προσθήκη Θεμάτων",
+      "text": "Adding Subjects",
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Καθορισμός ελέγχων πρόσβασης",
+      "text": "Defining Access Controls",
       "url": "/acl-access-controls"
     },
     {
-      "text": "Αναζητώντας ένα ACL",
+      "text": "Querying an ACL",
       "url": "/acl-querying"
     },
     {
-      "text": "Πρόσβαση βασισμένη σε λειτουργίες",
+      "text": "Function based access",
       "url": "/acl-function-based-access"
     },
     {
@@ -37,15 +37,15 @@
       "url": "/acl-operations-inheritance"
     },
     {
-      "text": "Σειρογραφία Λίστες ACL",
+      "text": "Serializing ACL lists",
       "url": "/acl-serialization"
     },
     {
-      "text": "Γεγονότα",
+      "text": "Events",
       "url": "/acl-events"
     },
     {
-      "text": "Εφαρμογή των δικών σας προσαρμογέων",
+      "text": "Implementing your own adapters",
       "url": "/acl-custom-adapters"
     }
   ],
@@ -89,7 +89,7 @@
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Εφαρμογή των δικών σας προσαρμογέων",
+          "text": "Implementing your own adapters",
           "url": "/annotations#adapters-custom"
         }
       ]
@@ -335,11 +335,11 @@
           ]
         },
         {
-          "text": "Ρύθμιση",
+          "text": "Setup",
           "url": "/application-micro#middleware-setup"
         },
         {
-          "text": "Εφαρμογή",
+          "text": "Implementation",
           "url": "/application-micro#middleware-implementation"
         },
         {
@@ -441,7 +441,7 @@
       "url": "/assets#resources-local-remote"
     },
     {
-      "text": "Συλλογές",
+      "text": "Collections",
       "url": "/assets#collections"
     },
     {
@@ -485,7 +485,7 @@
       "url": "/cache#caching-behavior"
     },
     {
-      "text": "Εργοστάσιο",
+      "text": "Factory",
       "url": "/cache#factory"
     },
     {
@@ -541,7 +541,7 @@
       "url": "adapters-backend",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/cache#adapters-backend-factory"
         },
         {
@@ -589,7 +589,7 @@
       "url": "/config#overview",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/config#factory"
         }
       ]
@@ -713,7 +713,7 @@
       "url": "/crypt$overview"
     },
     {
-      "text": "Βασική Χρήση",
+      "text": "Basic Usage",
       "url": "/crypt$usage"
     },
     {
@@ -743,11 +743,11 @@
       "url": "/db-layer#adapters",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/db-layer#adapters-factory"
         },
         {
-          "text": "Εφαρμογή των δικών σας προσαρμογέων",
+          "text": "Implementing your own adapters",
           "url": "/db-layer#adapters-custom"
         }
       ]
@@ -1075,7 +1075,7 @@
   ],
   "db-models-validation": [
     {
-      "text": "Συναλλαγές Μοντέλων",
+      "text": "Model Transactions",
       "url": "/db-models-validation#overview"
     },
     {
@@ -1201,7 +1201,7 @@
       "url": "/db-odm#overview"
     },
     {
-      "text": "Δημιουργία μοντέλων",
+      "text": "Creating Models",
       "url": "/db-odm#creating-models"
     },
     {
@@ -1277,7 +1277,7 @@
       "url": "/db-pagination#data-adapters"
     },
     {
-      "text": "Εργοστάσιο",
+      "text": "Factory",
       "url": "/db-pagination#factory"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "/db-pagination#page-attributes"
     },
     {
-      "text": "Εφαρμογή των δικών σας προσαρμογέων",
+      "text": "Implementing your own adapters",
       "url": "/db-pagination#custom"
     }
   ],
@@ -1705,7 +1705,7 @@
       "url": "/events#naming-convention"
     },
     {
-      "text": "Παράδειγμα χρήσης",
+      "text": "Usage Example",
       "url": "/events#usage"
     },
     {
@@ -1875,11 +1875,11 @@
       "url": "/image#adapters",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/image#adapters-factory"
         },
         {
-          "text": "Εφαρμογή των δικών σας προσαρμογέων",
+          "text": "Implementing your own adapters",
           "url": "/image#adapters-custom"
         }
       ]
@@ -1941,11 +1941,11 @@
   ],
   "installation": [
     {
-      "text": "Προϋποθέσεις",
+      "text": "Installation",
       "url": "/installation"
     },
     {
-      "text": "Installation",
+      "text": "PSR",
       "url": "/installation-requirements-psr"
     },
     {
@@ -2081,15 +2081,15 @@
       "url": "/mvc#architecture"
     },
     {
-      "text": "Μοντέλα",
+      "text": "Models",
       "url": "/mvc#models"
     },
     {
-      "text": "Προβολές",
+      "text": "Views",
       "url": "/mvc#views"
     },
     {
-      "text": "Ελεγκτές",
+      "text": "Controllers",
       "url": "/mvc#controllers"
     }
   ],
@@ -2257,7 +2257,7 @@
   ],
   "routing": [
     {
-      "text": "Δρομολόγηση",
+      "text": "Routing",
       "url": "/routing#overview"
     },
     {
@@ -2391,7 +2391,7 @@
       "url": "/session#start",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/session#start-factory"
         }
       ]
@@ -2417,7 +2417,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Εφαρμογή των δικών σας προσαρμογέων",
+      "text": "Implementing your own adapters",
       "url": "/session#custom-adapters"
     }
   ],
@@ -2473,7 +2473,7 @@
       "url": "/tag#static-content-helpers",
       "menu": [
         {
-          "text": "Εικόνες",
+          "text": "Images",
           "url": "/tag#static-content-helpers-images"
         },
         {
@@ -2502,87 +2502,87 @@
   "testing-environment": [
     {
       "text": "Επισκόπηση",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "Επισκόπηση",
-      "url": "overview"
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
       "text": "Installation",
-      "url": "installation"
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
-      "text": "Υπηρεσίες",
-      "url": "services"
+      "text": "Services",
+      "url": "#services"
     }
   ],
   "translate": [
@@ -2595,7 +2595,7 @@
       "url": "/translate#adapters",
       "menu": [
         {
-          "text": "Εργοστάσιο",
+          "text": "Factory",
           "url": "/translate#adapters-factory"
         }
       ]
@@ -2605,7 +2605,7 @@
       "url": "/translate#usage"
     },
     {
-      "text": "Εφαρμογή των δικών σας προσαρμογέων",
+      "text": "Implementing your own adapters",
       "url": "/translate#custom"
     }
   ],
@@ -2679,7 +2679,7 @@
       "url": "/tutorial-invo#structure"
     },
     {
-      "text": "Δρομολόγηση",
+      "text": "Routing",
       "url": "/tutorial-invo#routing"
     },
     {
@@ -2847,7 +2847,7 @@
   ],
   "upgrade": [
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "#requirements",
       "menu": [
         {
@@ -2856,7 +2856,7 @@
         },
         {
           "text": "Installation",
-          "url": "installation"
+          "url": "#installation"
         }
       ]
     },
@@ -2865,7 +2865,7 @@
       "url": "#acl",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#acl-overview"
         },
         {
@@ -2879,7 +2879,7 @@
       "url": "#filter",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {
@@ -2901,7 +2901,7 @@
       "url": "#logger",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {
@@ -3107,7 +3107,7 @@
       "url": "/volt#setup"
     },
     {
-      "text": "Βασική Χρήση",
+      "text": "Basic Usage",
       "url": "/volt#basic-usage"
     },
     {
@@ -3237,7 +3237,7 @@
           "url": "/volt#extending-functions"
         },
         {
-          "text": "Φίλτρα",
+          "text": "Filters",
           "url": "/volt#extending-filters"
         },
         {

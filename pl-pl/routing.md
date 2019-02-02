@@ -49,7 +49,7 @@ $router->handle();
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
 In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
-Aplikacja może mieć wiele ścieżek i ustalanie tras dla jednego może być trudne zadanie. In these cases we can create more flexible routes:
+An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
 ```php
 <?php
@@ -72,9 +72,9 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Kontroler | Akcja | Parametr | Parametr |
-|:---------:|:-----:|:--------:|:--------:|
-|   users   | usuń  |   dave   |   301    |
+| Kontroler | Akcja  | Parametr | Parametr |
+|:---------:|:------:|:--------:|:--------:|
+|   users   | delete |   dave   |   301    |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
@@ -82,11 +82,11 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Wypełniacz     | Regular Expression       | Sposób użycia                                                                                          |
+| Placeholder    | Regular Expression       | Usage                                                                                                  |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `/:moduł`      | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
+| `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
-| `/:akcja`      | `/([a-zA-Z0-9_-]+)`      | Matches a valid action name with alpha-numeric characters only                                         |
+| `/:action`     | `/([a-zA-Z0-9_-]+)`      | Matches a valid action name with alpha-numeric characters only                                         |
 | `/:params`     | `(/.*)*`                 | Matches a list of optional words separated by slashes. Only use this placeholder at the end of a route |
 | `/:namespace`  | `/([a-zA-Z0-9\_\-]+)` | Matches a single level namespace name                                                                  |
 | `/:int`        | `/([0-9]+)`              | Matches an integer parameter                                                                           |
@@ -586,7 +586,7 @@ echo $url->get(
 
 <a name='usage'></a>
 
-## Przykłady użycia
+## Usage Examples
 
 The following are examples of custom routes:
 
@@ -974,7 +974,7 @@ $router->mount($blog);
 
 <a name='uri-sources'></a>
 
-## Identyfikatory źródła URI
+## URI Sources
 
 By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
 
@@ -1054,11 +1054,11 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Zdarzenia
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Zdarzenie                  | Ious                                 |
+| Zdarzenie                  | Description                          |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |
@@ -1155,7 +1155,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Nazwa       | Ious                                                                                              | Sposób użycia                          |
+| Nazwa       | Description                                                                                       | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1167,12 +1167,12 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Nazwa     | Ious                                                                   | Sposób użycia                                                        |
-| --------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| methods   | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
-| name      | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
-| paths     | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
-| conversor | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
+| Nazwa      | Description                                                            | Usage                                                                |
+| ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
+| name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
+| paths      | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
+| conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 
 If you're using modules in your application, it is better use the `addModuleResource()` method:
 

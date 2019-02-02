@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\Url'
 ---
 # Class [Phalcon\Filter\Sanitizer\Url](Phalcon_Filter_Sanitizer_Url)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/url.zep)
 
 Sanitizes a url string
 
-### Metode
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

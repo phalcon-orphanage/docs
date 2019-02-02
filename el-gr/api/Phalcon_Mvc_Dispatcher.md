@@ -145,7 +145,7 @@ Possible controller class name that will be located to dispatch the request
 
 public **getLastController** ()
 
-Επιστρέφει τον πιο αποστολέα πρόσφατο ελεγκτή
+Returns the latest dispatched controller
 
 public **getActiveController** ()
 
@@ -157,7 +157,7 @@ Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 

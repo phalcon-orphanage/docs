@@ -15,9 +15,9 @@ INVO was made with the client-side framework [Bootstrap](https://getbootstrap.co
 
 <a name='structure'></a>
 
-## Struktur Proyek
+## Project Structure
 
-Setelah Anda mengkloning proyek di akar dokumen Anda, Anda akan melihat struktur berikut:
+Once you clone the project in your document root you'll see the following structure:
 
 ```bash
 invo/
@@ -58,7 +58,7 @@ The following route `/session/register` executes the controller `SessionControll
 
 <a name='configuration'></a>
 
-## Konfigurasi
+## Configuration
 
 INVO has a configuration file that sets general parameters in the application. This file is located at `app/config/config.ini` and is loaded in the very first lines of the application bootstrap (`public/index.php`):
 
@@ -148,7 +148,7 @@ define(
 
 <a name='services'></a>
 
-## Mendaftarkan layanan
+## Registering services
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -191,7 +191,7 @@ We will discuss this file in depth later.
 
 <a name='handling-requests'></a>
 
-## Menangani Permintaan
+## Handling the Request
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
 
@@ -211,7 +211,7 @@ $response->send();
 
 <a name='dependency-injection'></a>
 
-## Ketergantungan Injeksi
+## Dependency Injection
 
 In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is [Phalcon\Di](api/Phalcon_Di). It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
@@ -259,7 +259,7 @@ It registers the majority of services with components provided by the framework 
 
 <a name='log-in'></a>
 
-## Masuk ke Aplikasi
+## Log into the Application
 
 A `log in` facility will allow us to work on backend controllers. The separation between backend controllers and frontend ones is only logical. All controllers are located in the same directory (`app/controllers/`).
 
@@ -490,7 +490,7 @@ return $this->dispatcher->forward(
 
 <a name='securing-backend'></a>
 
-## Mengamankan Ujung belakang
+## Securing the Backend
 
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
 
@@ -528,7 +528,7 @@ We now have total control over the Dispatcher used in the application. Many comp
 
 <a name='events-manager'></a>
 
-### Manajemen Acara
+### Events Management
 
 The [EventsManager](/4.0/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
@@ -610,7 +610,8 @@ class SecurityPlugin extends Plugin
     public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
         // ...
-    }}
+    }
+}
 ```
 
 The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), but by doing this they gain easier access to the services available in the application.
@@ -672,7 +673,7 @@ class SecurityPlugin extends Plugin
 
 <a name='acl'></a>
 
-### Mendapatkan daftar ACL
+### Getting the ACL list
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
@@ -777,7 +778,7 @@ foreach ($privateResources as $resource => $actions) {
 
 <a name='working-with-crud'></a>
 
-## Bekerja dengan CRUD
+## Working with the CRUD
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
 
@@ -862,12 +863,13 @@ class ProductsController extends ControllerBase
     public function deleteAction($id)
     {
         // ...
-    }}
+    }
+}
 ```
 
 <a name='search-form'></a>
 
-## Formulir Pencarian
+## The Search Form
 
 Every CRUD starts with a search form. This form shows each field that the table has (products), allowing the user to create a search criteria for any field. The `products` table has a relationship with the table `products_types`. In this case, we previously queried the records in this table in order to facilitate the search by that field:
 
@@ -1133,7 +1135,7 @@ When the form is submitted, the `search` action is executed in the controller pe
 
 <a name='performing-searches'></a>
 
-## Melakukan Pencarian
+## Performing a Search
 
 The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/4.0/en/request) component:
 
@@ -1459,7 +1461,7 @@ This method is defined in the model.
 
 <a name='creating-updating-records'></a>
 
-## Membuat dan Memperbarui Rekaman
+## Creating and Updating Records
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
 
@@ -1718,7 +1720,7 @@ public function saveAction()
 
 <a name='user-components'></a>
 
-## Komponen pengguna
+## User Components
 
 All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
@@ -1739,7 +1741,8 @@ class Elements extends Component
     public function getTabs()
     {
         // ...
-    }}
+    }
+}
 ```
 
 This class extends the [Phalcon\Mvc\User\Component](api/Phalcon_Mvc_User_Component). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
@@ -1798,7 +1801,7 @@ The important part is:
 
 <a name='dynamic-titles'></a>
 
-## Mengubah Judul Secara Dinamis
+## Changing the Title Dynamically
 
 When you browse between one option and another will see that the title changes dynamically indicating where we are currently working. This is achieved in each controller initializer:
 

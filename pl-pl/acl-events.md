@@ -9,14 +9,14 @@ category: 'acl'
 
 * * *
 
-## Zdarzenia
+## Events
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
 
-| Nazwa wydarzenia    | Zaistniałe                                                  | Czy można zatrzymać operację? |
-| ------------------- | ----------------------------------------------------------- |:-----------------------------:|
-| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |              Nie              |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |              Tak              |
+| Event Name          | Triggered                                                   | Can stop operation? |
+| ------------------- | ----------------------------------------------------------- |:-------------------:|
+| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |         Nie         |
+| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |         Tak         |
 
 The following example demonstrates how to attach listeners to the ACL:
 

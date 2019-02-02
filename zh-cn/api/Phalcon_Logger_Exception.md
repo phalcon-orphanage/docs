@@ -16,7 +16,7 @@ title: 'Phalcon\Logger\Exception'
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-克隆的异常
+Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 

@@ -8,7 +8,7 @@ title: 'Phalcon\Db\Result\Pdo'
 
 *implements* [Phalcon\Db\ResultInterface](Phalcon_Db_ResultInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
 Encapsulates the resultset internals
 
@@ -27,7 +27,7 @@ while ($robot = $result->fetchArray()) {
 
 ```
 
-## روش ها
+## Methods
 
 public **__construct** ([Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface) $connection, [PDOStatement](https://php.net/manual/en/class.pdostatement.php) $result, [*string* $sqlStatement], [*array* $bindParams], [*array* $bindTypes])
 

@@ -6,11 +6,11 @@ title: 'Phalcon\Filter\Sanitizer\Trim'
 ---
 # Class [Phalcon\Filter\Sanitizer\Trim](Phalcon_Filter_Sanitizer_Trim)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/trim.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/trim.zep)
 
 Sanitizes a value removing leading and trailing spaces
 
-### Metode
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

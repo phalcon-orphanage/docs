@@ -8,7 +8,7 @@ title: 'Phalcon\Crypt'
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
 Provides encryption facilities to phalcon applications
 
@@ -26,7 +26,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 ```
 
-## Sabitler
+## Constants
 
 *integer* **PADDING_ANSI_X_923**
 
@@ -64,7 +64,7 @@ The name of hashing algorithm.
 
 *boolean* **$useSigning** = false; Whether calculating message digest enabled or not **NOTE**: This feature will be enabled by default in Phalcon 4.0.0
 
-## Metodlar
+## Methods
 
 ### Public
 
@@ -173,7 +173,7 @@ protected **_cryptUnpadText** (*mixed* $text, *mixed* $mode, *mixed* $blockSize,
 
 Removes a padding from a text. If the function detects that the text was not padded, it will return it unmodified
 
-| Tür    | Isim         | Açıklama                                                      |
+| Type   | Name         | Description                                                   |
 | ------ | ------------ | ------------------------------------------------------------- |
 | string | $text        | Message to be unpadded                                        |
 | string | $mode        | Encryption mode; unpadding is applied only in CBC or ECB mode |

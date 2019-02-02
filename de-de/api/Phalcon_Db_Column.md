@@ -8,16 +8,16 @@ title: 'Phalcon\Db\Column'
 
 *implements* [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
-Erlaubt die Definition von Spalten, welche zum Erstellen oder ändern von Tabellene-Operationen verwendet werden
+Allows to define columns to be used on create or alter table operations
 
 ```php
 <?php
 
 use Phalcon\Db\Column as Column;
 
-// Spaltendefinition
+// Column definition
 $column = new Column(
     "id",
     [
@@ -30,12 +30,12 @@ $column = new Column(
     ]
 );
 
-// Diese Spalte einer bereits vorhandenen Tabellen hinzufügen
+// Add column to existing table
 $connection->addColumn("robots", null, $column);
 
 ```
 
-## Konstanten
+## Constants
 
 *integer* **TYPE_INTEGER**
 
@@ -87,39 +87,39 @@ $connection->addColumn("robots", null, $column);
 
 *integer* **BIND_SKIP**
 
-## Methoden
+## Methods
 
 public **getName** ()
 
-Spaltenname
+Column's name
 
 public **getSchemaName** ()
 
-Schema, das mit der Tabelle verknüpft ist
+Schema which table related is
 
 public **getType** ()
 
-Spaltendatentyp
+Column data type
 
 public **getTypeReference** ()
 
-Spalte Datentyp Referenz
+Column data type reference
 
 public **getTypeValues** ()
 
-Spalte Datentyp Werte
+Column data type values
 
 public **getSize** ()
 
-Ganzzahl Spaltengröße
+Integer column size
 
 public **getScale** ()
 
-Ganzzahl Spalte Anzahl Skalierung
+Integer column number scale
 
 public **getDefault** ()
 
-Standard-Spalte
+Default column value
 
 public **__construct** (*mixed* $name, *array* $definition)
 
@@ -127,27 +127,27 @@ Phalcon\Db\Column constructor
 
 public **isUnsigned** ()
 
-Gibt true zurück, wenn Spalte nicht signiert ist
+Returns true if number column is unsigned
 
 public **isNotNull** ()
 
-Nicht Null
+Not null
 
 public **isPrimary** ()
 
-Spalte ist Teil des Primärschlüssels?
+Column is part of the primary key?
 
 public **isAutoIncrement** ()
 
-Automatische Erhöhung
+Auto-Increment
 
 public **isNumeric** ()
 
-Überprüft, ob Spalte einen numerischen Typ hat
+Check whether column have an numeric type
 
 public **isFirst** ()
 
-Überprüft, ob die Spalte die erste Position in der Tabelle ist
+Check whether column have first position in table
 
 public *string* **getAfterPosition** ()
 
@@ -163,4 +163,4 @@ Restores the internal state of a Phalcon\Db\Column object
 
 public **hasDefault** ()
 
-Überprüft, ob die Spalte einen Standardwert besitzt
+Check whether column has default value

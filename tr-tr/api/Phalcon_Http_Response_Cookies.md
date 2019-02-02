@@ -8,15 +8,15 @@ title: 'Phalcon\Http\Response\Cookies'
 
 *implements* [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
-Bu sınıf, çerezleri yönetmek için bir çantadır Çerez çantası, 'yanıt' hizmetinin bir parçası olarak otomatik olarak DI'ya kaydedilir
+This class is a bag to manage the cookies A cookies bag is automatically registered as part of the 'response' service in the DI
 
-## Metodlar
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** ()
 
@@ -32,7 +32,7 @@ See: [Phalcon\Security\Random](Phalcon_Security_Random) Throws: [Phalcon\Http\Co
 
 public **useEncryption** (*mixed* $useEncryption)
 
-Çantadaki çerezlerin otomatik olarak şifrelenmesi/şifrelerin çözülmesi gerekiyorsa ayarlayın
+Set if cookies in the bag must be automatically encrypted/decrypted
 
 public **isUsingEncryption** ()
 
@@ -40,11 +40,11 @@ Returns if the bag is automatically encrypting/decrypting cookies
 
 public **set** (*mixed* $name, [*mixed* $value], [*mixed* $expire], [*mixed* $path], [*mixed* $secure], [*mixed* $domain], [*mixed* $httpOnly])
 
-İsteğin sonunda gönderilecek bir çerez bilgisi belirler. Bu yöntem, daha önce aynı adla ayarlanmış tüm tanımlama bilgilerini geçersiz kılar
+Sets a cookie to be sent at the end of the request This method overrides any cookie set before with the same name
 
 public **get** (*mixed* $name)
 
-Çantadan bir çerez alır
+Gets a cookie from the bag
 
 public **has** (*mixed* $name)
 
@@ -52,12 +52,12 @@ Check if a cookie is defined in the bag or exists in the _COOKIE superglobal
 
 public **delete** (*mixed* $name)
 
-Bir tanımlama bilgilerini adıyla siler Bu yöntem, tanımlama bilgilerini _COOKIE süper küreselinden kaldırmaz
+Deletes a cookie by its name This method does not removes cookies from the _COOKIE superglobal
 
 public **send** ()
 
-Çerezleri müşteriye gönderir Mevcut talebin üstbilgileri gönderilirse çerezler gönderilmez
+Sends the cookies to the client Cookies aren't sent if headers are sent in the current request
 
 public **reset** ()
 
-Ayarlanmış çerezleri sıfırla
+Reset set cookies

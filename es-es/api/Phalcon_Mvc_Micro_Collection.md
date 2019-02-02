@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Micro\Collection'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/collection.zep)
 
-Agrupa controladores Micro-Mvc como controladores
+Groups Micro-Mvc handlers as controllers
 
 ```php
 <?php
@@ -33,64 +33,64 @@ $app->mount($collection);
 
 protected **_addMap** (*string* | *array* $method, *string* $routePattern, *mixed* $handler, *string* $name)
 
-Una función interna para agregar un controlador al grupo
+Internal function to add a handler to the group
 
 public **setPrefix** (*mixed* $prefix)
 
-Configura un prefijo para todas las rutas agregadas a la colección
+Sets a prefix for all routes added to the collection
 
 public **getPrefix** ()
 
-Devuelve el prefijo de la colección si hay alguno
+Returns the collection prefix if any
 
 public *array* **getHandlers** ()
 
-Devuelve los controladores registrados
+Returns the registered handlers
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **setHandler** (*mixed* $handler, [*boolean* $lazy])
 
-Configura el controlador principal
+Sets the main handler
 
 public **setLazy** (*mixed* $lazy)
 
-Establece si el controlador principal debe ser cargado de forma diferida
+Sets if the main handler must be lazy loaded
 
 public **isLazy** ()
 
-Devuelve si el controlador principal debe ser cargado de forma diferida
+Returns if the main handler must be lazy loaded
 
 public *mixed* **getHandler** ()
 
-Devuelve el controlador principal
+Returns the main handler
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **map** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador
+Maps a route to a handler
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **get** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es GET
+Maps a route to a handler that only matches if the HTTP method is GET
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **post** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es POST
+Maps a route to a handler that only matches if the HTTP method is POST
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **put** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es PUT
+Maps a route to a handler that only matches if the HTTP method is PUT
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **patch** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es PATCH
+Maps a route to a handler that only matches if the HTTP method is PATCH
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **head** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es HEAD
+Maps a route to a handler that only matches if the HTTP method is HEAD
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **delete** (*string* $routePattern, *callable* $handler, [*string* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es DELETE
+Maps a route to a handler that only matches if the HTTP method is DELETE
 
 public [Phalcon\Mvc\Micro\Collection](Phalcon_Mvc_Micro_Collection) **options** (*string* $routePattern, *callable* $handler, [*mixed* $name])
 
-Asigna una ruta a un controlador que solo coincide si el método HTTP es OPTIONS
+Maps a route to a handler that only matches if the HTTP method is OPTIONS

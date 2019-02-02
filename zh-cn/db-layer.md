@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 数据库抽象层
+# Database Abstraction Layer
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -15,7 +15,7 @@ This component allows for a lower level database manipulation than using traditi
 
 <a name='adapters'></a>
 
-## 数据库适配器
+## Database Adapters
 
 This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
 
@@ -27,11 +27,11 @@ This component makes use of adapters to encapsulate specific database system det
 
 <a name='adapters-factory'></a>
 
-### 工厂
+### Factory
 
 <a name='factory'></a>
 
-Loads PDO Adapter class using `adapter` option. 例如：
+Loads PDO Adapter class using `adapter` option. For example:
 
 ```php
 <?php
@@ -52,13 +52,13 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### 实现自己的适配器
+### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
 <a name='dialects'></a>
 
-## 数据库语言
+## Database Dialects
 
 Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
 
@@ -70,7 +70,7 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 
 <a name='dialects-custom'></a>
 
-### 执行您自己的DI注入器
+### Implementing your own dialects
 
 The [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
 
@@ -122,7 +122,7 @@ $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 
 <a name='connection'></a>
 
-## 连接到数据库
+## Connecting to Databases
 
 To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
 
@@ -194,7 +194,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 
 <a name='options'></a>
 
-## PDO 的附加选项设置
+## Setting up additional PDO options
 
 You can set PDO options at connection time by passing the parameters `options`:
 
@@ -217,7 +217,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 
 <a name='connection-factory'></a>
 
-## 连接使用工厂
+## Connecting using Factory
 
 You can also use a simple `ini` file to configure/connect your `db` service to your database.
 
@@ -327,7 +327,7 @@ echo $result->numRows();
 
 <a name='binding-parameters'></a>
 
-## 绑定参数
+## Binding Parameters
 
 Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. 绑定参数可以简单地实现，如下所示：
 
@@ -506,7 +506,7 @@ However this solution requires that the developer pays special attention about h
 
 The following actions are performed according to the bind type specified:
 
-| Bind Type                    | 操作                                     |
+| Bind Type                    | Action                                 |
 | ---------------------------- | -------------------------------------- |
 | Column::BIND_PARAM_STR     | Cast the value as a native PHP string  |
 | Column::BIND_PARAM_INT     | Cast the value as a native PHP integer |
@@ -796,7 +796,7 @@ $eventsManager->attach(
 
 <a name='profiling'></a>
 
-## 分析 SQL 语句
+## Profiling SQL Statements
 
 [Phalcon\Db](api/Phalcon_Db) includes a profiling component called [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler), that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
 
@@ -986,7 +986,7 @@ foreach ($references as $reference) {
 
 A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
 
-| Field        | 类型          | Key                                                | Null                               |
+| Field        | Type        | Key                                                | Null                               |
 | ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
 | Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
 
@@ -1057,19 +1057,19 @@ $connection->createTable(
 
 `Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/Phalcon_Db_Column). The table below shows the options available to define a column:
 
-| 选项              | 描述                                                                                                                                         | 可选 |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        | 否  |
-| `primary`       | True if the column is part of the table's primary key                                                                                      | 是的 |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  | 是的 |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            | 是的 |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          | 是的 |
-| `notNull`       | 列可以存储 null 值吗？                                                                                                                             | 是的 |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     | 是的 |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. | 是的 |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     | 是的 |
-| `first`         | 列必须被放置在列顺序的第一个位置中                                                                                                                          | 是的 |
-| `after`         | 列必须置于指定列之后                                                                                                                                 | 是的 |
+| 选项              | 描述                                                                                                                                         | Optional |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    否     |
+| `primary`       | True if the column is part of the table's primary key                                                                                      |    是的    |
+| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |    是的    |
+| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |    是的    |
+| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |    是的    |
+| `notNull`       | Column can store null values?                                                                                                              |    是的    |
+| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |    是的    |
+| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    是的    |
+| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |    是的    |
+| `first`         | Column must be placed at first position in the column order                                                                                |    是的    |
+| `after`         | Column must be placed after indicated column                                                                                               |    是的    |
 
 [Phalcon\Db](api/Phalcon_Db) supports the following database column types:
 
@@ -1083,12 +1083,12 @@ $connection->createTable(
 
 The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
 
-| 索引           | 描述                                                                                                                                     | 可选 |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--:|
-| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         | 否  |
-| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           | 是的 |
-| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 | 是的 |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. | 是的 |
+| Index        | 描述                                                                                                                                     | Optional |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    否     |
+| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |    是的    |
+| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |    是的    |
+| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |    是的    |
 
 <a name='tables-altering'></a>
 

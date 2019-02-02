@@ -6,11 +6,11 @@ title: 'Phalcon\Db\RawValue'
 ---
 # Class **Phalcon\Db\RawValue**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
-Bu sınıf alıntı yapma ya da şekillendirme yapmadan saf verileri eklemeye/güncelleştirmeye izin verir.
+This class allows to insert/update raw data without quoting or formatting.
 
-Bir sonraki örnek MySQL now() fonksiyonunu değer olarak alanların nasıl kullanılacağını gösterir.
+The next example shows how to use the MySQL now() function as a field value.
 
 ```php
 <?php
@@ -24,15 +24,15 @@ $subscriber->save();
 
 ```
 
-## Metodlar
+## Methods
 
 public **getValue** ()
 
-Alıntı veya şekillendirme yapmadan saf değer
+Raw value without quoting or formatting
 
-herkese açık **__ sırala** ()
+public **__toString** ()
 
-Alıntı veya şekillendirme yapmadan saf değer
+Raw value without quoting or formatting
 
 public **__construct** (*mixed* $value)
 

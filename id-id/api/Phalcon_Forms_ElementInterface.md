@@ -6,39 +6,39 @@ title: 'Phalcon\Forms\ElementInterface'
 ---
 # Interface **Phalcon\Forms\ElementInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/elementinterface.zep)
 
-## Metode
+## Methods
 
 abstract public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
 ...
 
-publik abstrak **getForm** ()
+abstract public **getForm** ()
 
 ...
 
-abstract umum$name$name$name$name **setName** (*mixed* $nama)
+abstract public **setName** (*mixed* $name)
 
 ...
 
-abstrak publik **getName** ()
+abstract public **getName** ()
 
 ...
 
-publik abstrak **setFilters** (*dicampur* $filters)
+abstract public **setFilters** (*mixed* $filters)
 
 ...
 
-abstrak publik **addFilter** (*dicampur* $filter)
+abstract public **addFilter** (*mixed* $filter)
 
 ...
 
-abstrak publik **dapatFilter** ()
+abstract public **getFilters** ()
 
 ...
 
-publik abstrak **addValidators** (*array* $validators, [*campuran* $merge])
+abstract public **addValidators** (*array* $validators, [*mixed* $merge])
 
 ...
 
@@ -46,15 +46,15 @@ abstract public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalco
 
 ...
 
-publik abstrak **getValidators** ()
+abstract public **getValidators** ()
 
 ...
 
-abstrak public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
+abstract public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
 ...
 
-abstrak publik **setAttribute** (*campuran* $attribute, *dicampur* $value)
+abstract public **setAttribute** (*mixed* $attribute, *mixed* $value)
 
 ...
 
@@ -62,15 +62,15 @@ abstract public **getAttribute** (*mixed* $attribute, [*mixed* $defaultValue])
 
 ...
 
-atribut publik abstrak **setAttributes** (*array* $attributes)
+abstract public **setAttributes** (*array* $attributes)
 
 ...
 
-publik abstrak **getAttributes** ()
+abstract public **getAttributes** ()
 
 ...
 
-abstrak publik **setUserOption** (*mixed* $option, *mixed* $value)
+abstract public **setUserOption** (*mixed* $option, *mixed* $value)
 
 ...
 
@@ -78,43 +78,43 @@ abstract public **getUserOption** (*mixed* $option, [*mixed* $defaultValue])
 
 ...
 
-abstrak publik **setUserOptions** (*array* $options)
+abstract public **setUserOptions** (*array* $options)
 
 ...
 
-publik abstrak **getUserOptions** ()
+abstract public **getUserOptions** ()
 
 ...
 
-abstrak publik **setLabel** (*campuran* $label)
+abstract public **setLabel** (*mixed* $label)
 
 ...
 
-abstrak publik **getLabel** ()
+abstract public **getLabel** ()
 
 ...
 
-abstrak publik **label** ()
+abstract public **label** ()
 
 ...
 
-abstrak publik **setDefault** (*dicampur* $value)
+abstract public **setDefault** (*mixed* $value)
 
 ...
 
-abstrak publik **getDefault** ()
+abstract public **getDefault** ()
 
 ...
 
-publik abstrak **getValue** ()
+abstract public **getValue** ()
 
 ...
 
-abstrak publik **getMessages** ()
+abstract public **getMessages** ()
 
 ...
 
-abstrak publik **hasMessages** ()
+abstract public **hasMessages** ()
 
 ...
 
@@ -126,10 +126,10 @@ abstract public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon
 
 ...
 
-abstrak public **clear** ()
+abstract public **clear** ()
 
 ...
 
-abstrak umum **isRole** (*campuran* $attributes])
+abstract public **render** ([*mixed* $attributes])
 
 ...

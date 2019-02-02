@@ -10,9 +10,9 @@ title: 'Phalcon\Logger\Adapter\Syslog'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
-Mengirim log ke logger sistem
+Sends logs to the system logger
 
 ```php
 <?php
@@ -35,7 +35,7 @@ $logger->error("This is another error");
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** (*string* $name, [*array* $options])
 
@@ -43,75 +43,75 @@ Phalcon\Logger\Adapter\Syslog constructor
 
 public **getFormatter** ()
 
-Mengembalikan formatter internal
+Returns the internal formatter
 
 public **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
-Menulis log ke sungai itu sendiri
+Writes the log to the stream itself
 
-publik **tutup** ()
+public **close** ()
 
-Menutup logger
+Closes the logger
 
 public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Menyaring log yang dikirim ke penangan yang kurang atau sama dari pada tingkat tertentu
+Filters the logs sent to the handlers that are less or equal than a specific level
 
 public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengembalikan tingkat log saat ini
+Returns the current log level
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengatur formatter pesan
+Sets the message formatter
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mulai transaksi
+Starts a transaction
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Melakukan transaksi internal
+Commits the internal transaction
 
 public **rollback** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Rollbacks transaksi internal
+Rollbacks the internal transaction
 
 public **isTransaction** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengembalikan apakah logger saat ini dalam transaksi aktif atau tidak
+Returns the whether the logger is currently in an active transaction or not
 
 public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan penting ke log
+Sends/Writes a critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan penting ke log
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan debug ke log
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan kesalahan ke log
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan info ke log
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan pemberitahuan ke log
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan peringatan ke log
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mengirim / Menulis pesan peringatan ke log
+Sends/Writes an alert message to the log
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 

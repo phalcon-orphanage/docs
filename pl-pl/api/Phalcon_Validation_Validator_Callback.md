@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Callback'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
 Calls user function for validation
 
@@ -70,11 +70,11 @@ Phalcon\Validation\Validator constructor
 
 public **isSetOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Sprawdź czy opcja została zdefiniowana
+Checks if an option has been defined
 
 public **hasOption** (*mixed* $key) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 
-Sprawdza, czy opcja jest zdefiniowana
+Checks if an option is defined
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 

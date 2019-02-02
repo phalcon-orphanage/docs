@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Index'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
 
-Permite definir indices para ser usados en las tablas. Los indices son una manera común para mejorar el rendimiento de la base de datos. Un indice permite al servidor de base de datos encontrar y recuperar filas especificas mucho mas rápido de lo que podría hacer sin un indice
+Allows to define indexes to be used on tables. Indexes are a common way to enhance database performance. An index allows the database server to find and retrieve specific rows much faster than it could do without an index
 
 ```php
 <?php
@@ -43,15 +43,15 @@ $connection->addIndex("robots", null, $index_primary);
 
 public **getName** ()
 
-Nombre de Indice
+Index name
 
 public **getColumns** ()
 
-Columnas de Indice
+Index columns
 
 public **getType** ()
 
-Tipo de Indice
+Index type
 
 public **__construct** (*mixed* $name, *array* $columns, [*mixed* $type])
 

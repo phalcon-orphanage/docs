@@ -8,7 +8,7 @@ title: 'Phalcon\Debug\Dump'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
-Vuelca la información sobre una variable(s)
+Dumps information about a variable(s)
 
 ```php
 <?php
@@ -46,27 +46,27 @@ Phalcon\Debug\Dump constructor
 
 public **all** ()
 
-Alias del método variables()
+Alias of variables() method
 
 protected **getStyle** (*mixed* $type)
 
-Obtiene el estilo para el tipo
+Get style for type
 
 public **setStyles** ([*array* $styles])
 
-Establece estilos para el tipo vars
+Set styles for vars type
 
 public **one** (*mixed* $variable, [*mixed* $name])
 
-Alias del método variables()
+Alias of variable() method
 
 protected **output** (*mixed* $variable, [*mixed* $name], [*mixed* $tab])
 
-Prepara una cadena HTML de información sobre una única variable.
+Prepare an HTML string of information about a single variable.
 
 public **variable** (*mixed* $variable, [*mixed* $name])
 
-Devuelve una cadena HTML de información sobre una única variable.
+Returns an HTML string of information about a single variable.
 
 ```php
 <?php
@@ -77,7 +77,7 @@ echo (new \Phalcon\Debug\Dump())->variable($foo, "foo");
 
 public **variables** ()
 
-Devuelve una cadena HTML de información de depuración sobre cualquier nombre de variables, cada una envueltas en una etiqueta "pre".
+Returns an HTML string of debugging information about any number of variables, each wrapped in a "pre" tag.
 
 ```php
 <?php
@@ -92,7 +92,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 public **toJson** (*mixed* $variable)
 
-Devuelve una cadena JSON de información sobre una única variable.
+Returns an JSON string of information about a single variable.
 
 ```php
 <?php

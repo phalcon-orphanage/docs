@@ -8,7 +8,7 @@ title: 'Phalcon\FactoryInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factoryinterface.zep)
 
-## Методы
+## Methods
 
 abstract public static **load** (*mixed* $config)
 

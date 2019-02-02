@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 事件管理器
+# Events Manager
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 
-## 命名约定
+## Naming Convention
 
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
@@ -21,7 +21,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## 用法示例
+## Usage Example
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -153,7 +153,7 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 <a name='components-that-trigger-events'></a>
 
-## 创建触发事件的组件
+## Creating components that trigger Events
 
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
@@ -239,7 +239,9 @@ $myComponent->someTask();
 As `someTask()` is executed, the two methods in the listener will be executed, producing the following output:
 
 ```bash
-在这里，beforeSomeTask 在这里，在这里 someTask afterSomeTask
+Here, beforeSomeTask
+Here, someTask
+Here, afterSomeTask
 ```
 
 Additional data may also be passed when triggering an event using the third parameter of `fire()`:
@@ -276,7 +278,7 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 
-## 从DI注入容器中使用服务
+## Using Services From The DI
 
 By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
 
@@ -310,7 +312,7 @@ class SomeListener extends Plugin
 
 <a name='propagation-cancellation'></a>
 
-## 事件的加入/取消
+## Event Propagation/Cancellation
 
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
@@ -343,7 +345,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 <a name='listener-priorities'></a>
 
-## 监听器的优先等级
+## Listener Priorities
 
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
@@ -359,7 +361,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 
 <a name='collecting-responses'></a>
 
-## 收集的反应
+## Collecting Responses
 
 The events manager can collect every response returned by every notified listener. This example explains how it works:
 
@@ -404,20 +406,20 @@ The above example produces:
 
 <a name='custom'></a>
 
-## 执行您自己的 时间管理器
+## Implementing your own EventsManager
 
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
 <a name='list'></a>
 
-## 事件列表
+## List of Events
 
 The events available in Phalcon are:
 
-| 组件                 | 事件                                   |
+| Component          | Event                                |
 | ------------------ | ------------------------------------ |
-| 访问控制列表(ACL)        | `acl:afterCheckAccess`               |
-| 访问控制列表(ACL)        | `acl:beforeCheckAccess`              |
+| ACL                | `acl:afterCheckAccess`               |
+| ACL                | `acl:beforeCheckAccess`              |
 | Application        | `application:afterHandleRequest`     |
 | Application        | `application:afterStartModule`       |
 | Application        | `application:beforeHandleRequest`    |
@@ -475,12 +477,12 @@ The events available in Phalcon are:
 | Micro              | `micro:beforeExecuteRoute`           |
 | Micro              | `micro:beforeHandleRoute`            |
 | Micro              | `micro:beforeNotFound`               |
-| 中间件                | `afterBinding`                       |
-| 中间件                | `afterExecuteRoute`                  |
-| 中间件                | `afterHandleRoute`                   |
-| 中间件                | `beforeExecuteRoute`                 |
-| 中间件                | `beforeHandleRoute`                  |
-| 中间件                | `beforeNotFound`                     |
+| Middleware         | `afterBinding`                       |
+| Middleware         | `afterExecuteRoute`                  |
+| Middleware         | `afterHandleRoute`                   |
+| Middleware         | `beforeExecuteRoute`                 |
+| Middleware         | `beforeHandleRoute`                  |
+| Middleware         | `beforeNotFound`                     |
 | Model              | `afterCreate`                        |
 | Model              | `afterDelete`                        |
 | Model              | `afterSave`                          |

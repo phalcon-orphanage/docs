@@ -8,11 +8,11 @@ title: 'Phalcon\Di\Injectable'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-## روش ها
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
@@ -26,9 +26,9 @@ public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_Ma
 
 Sets the event manager
 
-عمومی **مدیریت رویداد** ()
+public **getEventsManager** ()
 
-مدیر رویداد داخلی را برمی گرداند
+Returns the internal event manager
 
 public **__get** (*string* $propertyName)
 

@@ -207,7 +207,7 @@ Help:
 
 <a name='running-compile'></a>
 
-## Phalconのコンパイル
+## Compile Phalcon
 
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 
@@ -383,7 +383,7 @@ For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-la
 
 <a name='services'></a>
 
-# サービス
+# Services
 
 The available services are: - Beanstalkd - Memcached - Mongodb - Mysql - Postgresql - Redis
 

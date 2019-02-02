@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Instalación
+# Installation
 
 * * *
 
@@ -18,7 +18,7 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Arquitectura | Versión | Tipo                  |
+| Arquitectura | Version | Tipo                  |
 |:------------:|:-------:| --------------------- |
 |     x64      |   7.x   | Thread safe           |
 |     x64      |   7.x   | Non Thread safe (NTS) |

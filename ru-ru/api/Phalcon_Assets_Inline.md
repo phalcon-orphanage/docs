@@ -19,7 +19,7 @@ $inline = new \Phalcon\Assets\Inline("js", "alert('hello world');");
 
 ```
 
-## Методы
+## Methods
 
 public **getType** ()
 

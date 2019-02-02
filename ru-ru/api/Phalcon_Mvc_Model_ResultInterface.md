@@ -8,7 +8,7 @@ title: 'Phalcon\Mvc\Model\ResultInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **setDirtyState** (*mixed* $dirtyState)
 

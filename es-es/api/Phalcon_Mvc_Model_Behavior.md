@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Behavior'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/behavior.zep)
 
-Este es una clase base opcional para comportamientos ORM
+This is an optional base class for ORM behaviors
 
 ## Métodos
 
@@ -18,15 +18,15 @@ public **__construct** ([*array* $options])
 
 protected **mustTakeAction** (*mixed* $eventName)
 
-Comprueba si el comportamiento debe actuar en ciertos eventos
+Checks whether the behavior must take action on certain event
 
 protected *array* **getOptions** ([*string* $eventName])
 
-Devuelve las opciones de comportamiento relacionadas a un evento
+Returns the behavior options related to an event
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Este método recibe las notificaciones del EventsManager
+This method receives the notifications from the EventsManager
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *string* $method, [*array* $arguments])
 

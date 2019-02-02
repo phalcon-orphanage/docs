@@ -6,11 +6,11 @@ title: 'Phalcon\Tag'
 ---
 # Class **Phalcon\Tag**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 Phalcon\Tag is designed to simplify building of HTML tags. It provides a set of helpers to generate HTML in a dynamic way. This component is an abstract class that you can extend to add more helpers.
 
-## Stałe
+## Constants
 
 *integer* **HTML32**
 
@@ -334,7 +334,7 @@ echo Phalcon\Tag::checkField(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -359,7 +359,7 @@ echo Phalcon\Tag::radioField(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -383,7 +383,7 @@ echo Phalcon\Tag::imageInput(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -403,7 +403,7 @@ echo Phalcon\Tag::submitButton("Save")
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -446,7 +446,7 @@ echo Phalcon\Tag::select(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -472,7 +472,7 @@ echo Phalcon\Tag::textArea(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -499,7 +499,7 @@ echo Phalcon\Tag::form(
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -591,7 +591,7 @@ echo Phalcon\Tag::stylesheetLink("css/style.css");
 
 ```
 
-Składnia wolt:
+Volt Syntax:
 
 ```php
 <?php
@@ -613,7 +613,7 @@ echo Phalcon\Tag::javascriptInclude("javascript/jquery.js");
 
 ```
 
-Składnia wolt:
+Volt syntax:
 
 ```php
 <?php
@@ -641,7 +641,7 @@ echo Phalcon\Tag::image(
 
 ```
 
-Składnia wolt:
+Volt Syntax:
 
 ```php
 <?php

@@ -8,11 +8,11 @@ title: 'Phalcon\Forms\Element'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
 
-Form Elemanları için temel sınıf
+This is a base class for form elements
 
-## Metodlar
+## Methods
 
 public **__construct** (*string* $name, [*array* $attributes])
 
@@ -20,127 +20,127 @@ Phalcon\Forms\Element constructor
 
 public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-Öğenin üst formunu belirler
+Sets the parent form to the element
 
 public **getForm** ()
 
-Öğenin üst formunu döner
+Returns the parent form to the element
 
 public **setName** (*mixed* $name)
 
-Öğeyi isimlendirir
+Sets the element name
 
-herkese açık ** isim al** ()
+public **getName** ()
 
-Öğenin isimini döner
+Returns the element name
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters)
 
-Öğe filtrelerini ayarlar
+Sets the element filters
 
 public **addFilter** (*mixed* $filter)
 
-Güncel filtre listesine yeni filtre ekler
+Adds a filter to current list of filters
 
 public *mixed* **getFilters** ()
 
-Öğe filtrelerini döner
+Returns the element filters
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge])
 
-Doğrulayıcı grubu ekler
+Adds a group of validators
 
 public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
-Öğeye doğrulayıcı ekler
+Adds a validator to the element
 
-public **getTargetUri** ()
+public **getValidators** ()
 
-Öğe için kaydedilmiş doğrulayıcıları döner
+Returns the validators registered for the element
 
-public **registerModules** (*array* $attributes, [*mixed* $useChecked])
+public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
 Returns an array of prepared attributes for Phalcon\Tag helpers according to the element parameters
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value)
 
-Öğe için ön tanımlı özellik belirler
+Sets a default attribute for the element
 
-public *decrement* ([**string** | *int* $attribute], [*mixed* $defaultValue])
+public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
 
-Varsa, verilen özelliğin değerini döner
+Returns the value of an attribute if present
 
 public **setAttributes** (*array* $attributes)
 
-Öğe için ön tanımlı özellikleri belirler
+Sets default attributes for the element
 
 public **getAttributes** ()
 
-Öğe için tanımlanmış ön tanımlı özellikleri döner
+Returns the default attributes for the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value)
 
-Öğe için bir seçenek belirler
+Sets an option for the element
 
-public *decrement* ([**string** | *int* $option], [*mixed* $defaultValue])
+public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Varsa, verilen seçeneğin değerini döner
+Returns the value of an option if present
 
-public **setOptions** (*array* $options)
+public **setUserOptions** (*array* $options)
 
-Öğe için seçenekleri belirler
+Sets options for the element
 
-public **getOptions** ()
+public **getUserOptions** ()
 
-Öğenin seçeneklerini döner
+Returns the options for the element
 
-public **setLocal** (*mixed* $label)
+public **setLabel** (*mixed* $label)
 
-Öğe etiketini belirler
+Sets the element label
 
-yerel **getRoles** ()
+public **getLabel** ()
 
-Öğe etiketini döner
+Returns the element label
 
-public **render** ([*array* $attributes])
+public **label** ([*array* $attributes])
 
-Öğeyi etiketlemek için HTML yaratır
+Generate the HTML to label the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value)
 
-_POST'da öğe için uygun bir değer yoksa ya da form entiti kullanmıyorsa ön tanımlı bir değer belirler
+Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
 public **getDefault** ()
 
-Öğeye atanmış ön tanımlı değeri döner
+Returns the default value assigned to the element
 
 public **getValue** ()
 
-Öğe değerini döner
+Returns the element value
 
 public **getMessages** ()
 
-Öğeye ait olan mesajları döner. Öğenin bir forma eklenmiş olması gerekir
+Returns the messages that belongs to the element The element needs to be attached to a form
 
 public **hasMessages** ()
 
-Öğeye eklenmiş mesajların olup olmadığını kontrol eder
+Checks whether there are messages attached to the element
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group)
 
-Öğe ile ilgili doğrulama mesajlarını döner
+Sets the validation messages related to the element
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message)
 
-Dahili mesaj listesine yeni mesaj ekler
+Appends a message to the internal message list
 
 public **clear** ()
 
-Formdaki tüm öğeleri ön tanımlı değerlerine geri çevirir
+Clears every element in the form to its default value
 
-herkese açık **__ sırala** ()
+public **__toString** ()
 
-__toString sihirli yöntemi Widget'ı özellikleri olmadan gösterir
+Magic method __toString renders the widget without attributes
 
 abstract public **render** ([*mixed* $attributes]) inherited from [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 

@@ -6,11 +6,11 @@ title: 'Phalcon\Version'
 ---
 # Class **Phalcon\Version**
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
 This class allows to get the installed version of the framework
 
-## Stałe
+## Constants
 
 *integer* **VERSION_MAJOR**
 

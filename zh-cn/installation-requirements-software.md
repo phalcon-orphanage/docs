@@ -4,11 +4,11 @@ language: 'zh-cn'
 version: '4.0'
 category: 'installation'
 ---
-# 安装
+# Installation
 
 * * *
 
-## 要求
+## Requirements
 
 ### Software
 
@@ -22,7 +22,7 @@ Along with PHP 7.2 or greater, depending on your application needs and the Phalc
 * [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
 * [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
 * [json](https://secure.php.net/manual/en/book.json.php)
-* `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (Mac Os)
+* `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
 * [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
 * [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
 * [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension

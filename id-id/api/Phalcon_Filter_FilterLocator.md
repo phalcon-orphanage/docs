@@ -8,7 +8,7 @@ title: 'Phalcon\Filter\FilterLocator'
 
 **extends** [Phalcon\Service\Locator](Phalcon_Service_Locator)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocator.zep)
 
 Creates a [Phalcon\Filter\FilterLocator](Phalcon_Filter_FilterLocator) class. You can add any sanitizers you want in it.
 
@@ -47,7 +47,7 @@ protected $services = array();
 protected $mapper   = array();
 ```
 
-## Metode
+## Methods
 
 ```php
 public function sanitize( mixed $value, string|array $sanitizers, bool $noRecursive = false ): mixed

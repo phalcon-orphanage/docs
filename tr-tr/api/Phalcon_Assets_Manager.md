@@ -6,29 +6,29 @@ title: 'Phalcon\Assets\Manager'
 ---
 # Class **Phalcon\Assets\Manager**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-CSS/Javascript varlıklarının koleksiyonlarını yönetir
+Manages collections of CSS/Javascript assets
 
-## Metodlar
+## Methods
 
-herkese açık **__düzenle**([* sıra* $seçenekler])
+public **__construct** ([*array* $options])
 
 public **setOptions** (*array* $options)
 
-Yönetici seçeneklerini ayarlar
+Sets the manager options
 
 public **getOptions** ()
 
-Yönetici seçeneklerini döndürür
+Returns the manager options
 
 public **useImplicitOutput** (*mixed* $implicitOutput)
 
-Oluşturulan HTML'in doğrudan yazdırılması ve veya döndürülmesi gerekip gerekmediğin ayarlar
+Sets if the HTML generated must be directly printed or returned
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-'css' koleksiyonuna bir Css kaynağı ekler
+Adds a Css resource to the 'css' collection
 
 ```php
 <?php
@@ -38,13 +38,13 @@ $assets->addCss("https://bootstrap.my-cdn.com/style.css", false);
 
 ```
 
-herkese açık **SatıriçiCssekle** (*karışık* $content, [*karışık* $filter], [*karışık* $attributes])
+public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-"css" koleksiyonuna bir satıriçi Css ekler
+Adds an inline Css to the 'css' collection
 
 public **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-'js' koleksiyonuna bir javascript kaynağı ekler
+Adds a javascript resource to the 'js' collection
 
 ```php
 <?php
@@ -56,11 +56,11 @@ $assets->addJs("https://jquery.my-cdn.com/jquery.js", false);
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-"js" koleksiyonuna bir satıriçi javascript ekler
+Adds an inline javascript to the 'js' collection
 
 public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Türüne göre bir kaynak ekler
+Adds a resource by its type
 
 ```php
 <?php
@@ -73,11 +73,11 @@ $assets->addResourceByType("css",
 
 public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Kendi türüne göre satır içi kod ekler
+Adds an inline code by its type
 
 public **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Yönteciye bir ham kaynak ekler
+Adds a raw resource to the manager
 
 ```php
 <?php
@@ -90,11 +90,11 @@ $assets->addResource(
 
 public **addInlineCode** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Yöneticiye işlenmemiş satır içi kod ekler
+Adds a raw inline code to the manager
 
 public **set** (*mixed* $id, [Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection)
 
-Varlık Yönetcisine bir koleksiyon ekler
+Sets a collection in the Assets Manager
 
 ```php
 <?php
@@ -105,7 +105,7 @@ $assets->set("js", $collection);
 
 public **get** (*mixed* $id)
 
-Kimliğe göre bir koleksiyon döndürür.
+Returns a collection by its id.
 
 ```php
 <?php
@@ -116,47 +116,47 @@ $scripts = $assets->get("js");
 
 public **getCss** ()
 
-Varlıkların CSS koleksiyonunu döndürür
+Returns the CSS collection of assets
 
 public **getJs** ()
 
-Varlıkların CSS koleksiyonunu döndürür
+Returns the CSS collection of assets
 
 public **collection** (*mixed* $name)
 
-Bir kaynak koleksiyonu oluşturur/döndürür
+Creates/Returns a collection of resources
 
 public **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
-HTML geri dönüşünü çağıran bir koleksiyonu dolaşıma sokar
+Traverses a collection calling the callback to generate its HTML
 
 public **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
-Bir koleksiyon geçirir ve onun HTML'ini oluşturur
+Traverses a collection and generate its HTML
 
 public **outputCss** ([*string* $collectionName])
 
-CSS kaynakları için HTML'i bastırır
+Prints the HTML for CSS resources
 
 public **outputInlineCss** ([*string* $collectionName])
 
-Satıriçi CSS için HTML'yi yazdırır
+Prints the HTML for inline CSS
 
 public **outputJs** ([*string* $collectionName])
 
-JS kaynakları için HTML'yi yazdırır
+Prints the HTML for JS resources
 
 public **outputInlineJs** ([*string* $collectionName])
 
-Satır içi JS için HTML'yi yazdırır
+Prints the HTML for inline JS
 
 public **getCollections** ()
 
-Yöneticide varolan koleksiyonları döner
+Returns existing collections in the manager
 
 public **exists** (*mixed* $id)
 
-Koleksiyon varsa, doğru ya da yanlış döndürür.
+Returns true or false if collection exists.
 
 ```php
 <?php

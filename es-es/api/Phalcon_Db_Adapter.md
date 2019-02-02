@@ -16,15 +16,15 @@ Base class for Phalcon\Db adapters
 
 public **getDialectType** ()
 
-Nombre del dialecto usado
+Name of the dialect used
 
 public **getType** ()
 
-Tipo de la base de datos donde el adaptador es usado
+Type of database system the adapter is used for
 
 public **getSqlVariables** ()
 
-Parámetros de cotas activas SQL
+Active SQL bound parameter variables
 
 public **__construct** (*array* $descriptor)
 
@@ -32,7 +32,7 @@ Phalcon\Db\Adapter constructor
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Establece el gestor de eventos
+Sets the event manager
 
 public **getEventsManager** ()
 
@@ -40,15 +40,15 @@ Devuelve el administrador de eventos interno
 
 public **setDialect** ([Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface) $dialect)
 
-Establece el dialecto usado para producir el SQL
+Sets the dialect used to produce the SQL
 
 public **getDialect** ()
 
-Devuelve la instancia de dialecto interno
+Returns internal dialect instance
 
 public **fetchOne** (*mixed* $sqlQuery, [*mixed* $fetchMode], [*mixed* $bindParams], [*mixed* $bindTypes])
 
-Devuelve la primera fila de un resultado de consulta SQL
+Returns the first row in a SQL query result
 
 ```php
 <?php
@@ -65,7 +65,7 @@ print_r($robot);
 
 public *array* **fetchAll** (*string* $sqlQuery, [*int* $fetchMode], [*array* $bindParams], [*array* $bindTypes])
 
-Vuelca el resultado completo de la consulta en una matriz
+Dumps the complete result of a query into an array
 
 ```php
 <?php
@@ -96,7 +96,7 @@ foreach($robots as $robot) {
 
 public *string* | ** **fetchColumn** (*string* $sqlQuery, [*array* $placeholders], [*int* | *string* $column])
 
-Devuelve el enésimo campo de la primera fila de un resultado de consulta SQL
+Returns the n'th field of first row in a SQL query result
 
 ```php
 <?php
@@ -116,7 +116,7 @@ print_r($robot);
 
 public *boolean* **insert** (*string* | *array* $table, *array* $values, [*array* $fields], [*array* $dataTypes])
 
-Inserta datos en una tabla usando la sintaxis de SQL RDBMS personalizado
+Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
 <?php
@@ -135,7 +135,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **insertAsDict** (*string* $table, *array* $data, [*array* $dataTypes])
 
-Inserta datos en una tabla usando la sintaxis RBDM SQL personalizado
+Inserts data into a table using custom RBDM SQL syntax
 
 ```php
 <?php
@@ -156,7 +156,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 
 public *boolean* **update** (*string* | *array* $table, *array* $fields, *array* $values, [*string* | *array* $whereCondition], [*array* $dataTypes])
 
-Actualiza datos en una tabla usando la sintaxis RBDM SQL personalizado
+Updates data on a table using custom RBDM SQL syntax
 
 ```php
 <?php
@@ -193,7 +193,7 @@ Warning! If $whereCondition is string it not escaped.
 
 public *boolean* **updateAsDict** (*string* $table, *array* $data, [*string* $whereCondition], [*array* $dataTypes])
 
-Actualiza datos en una tabla utilizando la sintaxis RBDM SQL personalizado Otra, sintaxis más conveniente
+Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
 
 ```php
 <?php
@@ -214,7 +214,7 @@ UPDATE `robots` SET `name` = "Astro boy" WHERE id = 101
 
 public *boolean* **delete** (*string* | *array* $table, [*string* $whereCondition], [*array* $placeholders], [*array* $dataTypes])
 
-Borra datos de una tabla usando la sintaxis RBDM SQL personalizado
+Deletes data from a table using custom RBDM SQL syntax
 
 ```php
 <?php
@@ -232,7 +232,7 @@ DELETE FROM `robots` WHERE `id` = 101
 
 public **escapeIdentifier** (*array* | *string* $identifier)
 
-Sacar un nombre de columna/tabla/esquema
+Escapes a column/table/schema name
 
 ```php
 <?php
@@ -252,11 +252,11 @@ $escapedTable = $connection->escapeIdentifier(
 
 public *string* **getColumnList** (*array* $columnList)
 
-Obtener una lista de columnas
+Gets a list of columns
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number)
 
-Anexa una clausula LIMIT al argumento $sqlQuery
+Appends a LIMIT clause to $sqlQuery argument
 
 ```php
 <?php
@@ -267,7 +267,7 @@ echo $connection->limit("SELECT * FROM robots", 5);
 
 public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Genera SQL comprobando la existencia de un cuadro.esquema
+Generates SQL checking for the existence of a schema.table
 
 ```php
 <?php
@@ -280,7 +280,7 @@ var_dump(
 
 public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Genera SQL comprobando la existencia de una vista.esquema
+Generates SQL checking for the existence of a schema.view
 
 ```php
 <?php
@@ -293,71 +293,71 @@ var_dump(
 
 public **forUpdate** (*mixed* $sqlQuery)
 
-Devuelve un SQL con una cláusula DE ACTUALIZACIÓN
+Returns a SQL modified with a FOR UPDATE clause
 
 public **sharedLock** (*mixed* $sqlQuery)
 
-Devuelve un SQL modificado con una cláusula de BLOQUEAR EN MODO COMPARTIR
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Crea una tabla
+Creates a table
 
 public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Elimina una tabla del esquema/base de datos
+Drops a table from a schema/database
 
 public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Crea una vista
+Creates a view
 
 public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Quita una vista
+Drops a view
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Agrega una columna a la tabla
+Adds a column to a table
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Modifica una columna de la tabla basada en una definición
+Modifies a table column based on a definition
 
 public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Elimina una columna de una tabla
+Drops a column from a table
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Agrega un índice a la tabla
+Adds an index to a table
 
 public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
-Quita un índice de la tabla
+Drop an index from a table
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Agrega una clave primaria a la tabla
+Adds a primary key to a table
 
 public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Quita una clave primaria de la tabla
+Drops a table's primary key
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Agrega una clave externa a una tabla
+Adds a foreign key to a table
 
 public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Elimina una clave externa de la tabla
+Drops a foreign key from a table
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Devuelve la definición SQL de una columna
+Returns the SQL column definition from a column
 
 public **listTables** ([*mixed* $schemaName])
 
-Lista de tablas en una base de datos
+List all tables on a database
 
 ```php
 <?php
@@ -370,7 +370,7 @@ print_r(
 
 public **listViews** ([*mixed* $schemaName])
 
-Lista todas las vistas en una base de datos
+List all views on a database
 
 ```php
 <?php
@@ -383,7 +383,7 @@ print_r(
 
 public [Phalcon\Db\Index](Phalcon_Db_Index) **describeIndexes** (*string* $table, [*string* $schema])
 
-Lista las tablas de índices
+Lists table indexes
 
 ```php
 <?php
@@ -396,7 +396,7 @@ print_r(
 
 public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Lista de referencias de tablas
+Lists table references
 
 ```php
 <?php
@@ -409,7 +409,7 @@ print_r(
 
 public **tableOptions** (*mixed* $tableName, [*mixed* $schemaName])
 
-Obtiene opciones de creación de tablas
+Gets creation options from a table
 
 ```php
 <?php
@@ -422,31 +422,31 @@ print_r(
 
 public **createSavepoint** (*mixed* $name)
 
-Crea un nuevo punto de guardado
+Creates a new savepoint
 
 public **releaseSavepoint** (*mixed* $name)
 
-Publica punto dado de guardado
+Releases given savepoint
 
 public **rollbackSavepoint** (*mixed* $name)
 
-Retrasa un punto guardado dado
+Rollbacks given savepoint
 
 public **setNestedTransactionsWithSavepoints** (*mixed* $nestedTransactionsWithSavepoints)
 
-Establecer si las transacciones anidadas deben usar puntos de guardado
+Set if nested transactions should use savepoints
 
 public **isNestedTransactionsWithSavepoints** ()
 
-Devuelve si las transacciones anidadas deben usar puntos de guardado
+Returns if nested transactions should use savepoints
 
 public **getNestedTransactionSavepointName** ()
 
-Devuelve el nombre de un punto de guardado para uso con transacciones anidadas
+Returns the savepoint name to use for nested transactions
 
 public **getDefaultIdValue** ()
 
-Devuelve el valor identidad predeterminado a ser insertados en una columna de identidad
+Returns the default identity value to be inserted in an identity column
 
 ```php
 <?php
@@ -470,7 +470,7 @@ $success = $connection->insert(
 
 public **getDefaultValue** ()
 
-Devuelve el valor predeterminado para hacer el uso del RBDM el valor predeterminado declarado en la definición de la tabla
+Returns the default value to make the RBDM use the default value declared in the table definition
 
 ```php
 <?php
@@ -492,31 +492,31 @@ $success = $connection->insert(
 
 public **supportSequences** ()
 
-Comprobar si las bases de datos del sistema requieren una secuencia para producir valores auto-numéricos
+Check whether the database system requires a sequence to produce auto-numeric values
 
 public **useExplicitIdValue** ()
 
-Compruebe si el sistema de bases de datos requiere un valor explícito para las columnas de identidad
+Check whether the database system requires an explicit value for identity columns
 
 public **getDescriptor** ()
 
-Devuelve el descriptor usado para conectar a la base de datos activa
+Return descriptor used to connect to the active database
 
 public *string* **getConnectionId** ()
 
-Obtener el identificador de conexión activa
+Gets the active connection unique identifier
 
 public **getSQLStatement** ()
 
-Active la declaración SQL en el objeto
+Active SQL statement in the object
 
 public **getRealSQLStatement** ()
 
-Active la declaración SQL en el objeto sin reemplazar los parámetros de enlace
+Active SQL statement in the object without replace bound parameters
 
 public *array* **getSQLBindTypes** ()
 
-Active la declaración SQL en el objeto
+Active SQL statement in the object
 
 abstract public **connect** ([*array* $descriptor]) inherited from [Phalcon\Db\AdapterInterface](Phalcon_Db_AdapterInterface)
 

@@ -6,9 +6,9 @@ title: 'Phalcon\Cli\Router\RouteInterface'
 ---
 # Interface **Phalcon\Cli\Router\RouteInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **compilePattern** (*mixed* $pattern)
 

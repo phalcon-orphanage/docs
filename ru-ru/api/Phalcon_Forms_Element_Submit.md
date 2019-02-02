@@ -14,7 +14,7 @@ title: 'Phalcon\Forms\Element\Submit'
 
 Component INPUT[type=submit] for forms
 
-## Методы
+## Methods
 
 public **render** ([*array* $attributes])
 

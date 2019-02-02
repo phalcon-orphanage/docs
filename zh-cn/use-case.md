@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# 使用案例
+# Use case
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 <a name='requirements'></a>
 
-## 要求
+## Requirements
 
 - MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 - Store data in a database (MariaDB/MySQL)

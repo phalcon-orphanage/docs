@@ -36,16 +36,16 @@ public **getAttributes** () inherited from [Phalcon\Assets\Inline](Phalcon_Asset
 
 public **setType** (*mixed* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece el tipo de activo en línea
+Sets the inline's type
 
 public **setFilter** (*mixed* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece si el recurso debe ser filtrado o no
+Sets if the resource must be filtered or not
 
 public **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Establece los atributos HTML extras
+Sets extra HTML attributes
 
 public **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Obtiene la llave del recurso.
+Gets the resource's key.

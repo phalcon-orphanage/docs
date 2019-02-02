@@ -23,7 +23,7 @@ This component makes use of adapters to read translation messages from different
 
 <a name='adapters-factory'></a>
 
-### Usine
+### Factory
 
 Loads Translate Adapter class using `adapter` option
 
@@ -209,7 +209,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Réalisation vos propres adaptateurs
+## Implementing your own adapters
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

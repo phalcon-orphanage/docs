@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Frontend\Igbinary'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/igbinary.zep)
 
-允许缓存本机 PHP 数据使用 igbinary 扩展以序列化形式
+Allows to cache native PHP data in a serialized form using igbinary extension
 
 ```php
 <?php
@@ -67,11 +67,11 @@ Phalcon\Cache\Frontend\Data constructor
 
 public **getLifetime** ()
 
-返回缓存生存期
+Returns the cache lifetime
 
 public **isBuffering** ()
 
-检查是否如果前端缓冲输出
+Check whether if frontend is buffering output
 
 public **start** ()
 
@@ -79,16 +79,16 @@ Starts output frontend. Actually, does nothing
 
 public *string* **getContent** ()
 
-返回输出缓存的内容
+Returns output cached content
 
 public **stop** ()
 
-停止输出前端
+Stops output frontend
 
 public **beforeStore** (*mixed* $data)
 
-将数据序列化存储他们之前
+Serializes data before storing them
 
 public **afterRetrieve** (*mixed* $data)
 
-Unserializes 后检索数据
+Unserializes data after retrieval

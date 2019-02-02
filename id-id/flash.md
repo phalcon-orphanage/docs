@@ -7,24 +7,24 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Pesan berkedip
+# Flashing Messages
 
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
 <a name='adapters'></a>
 
-## Adaptor
+## Adapters
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
-| Adaptor  | Deskripsi                                                                                          | API                                                  |
-| -------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Langsung | Secara langsung output pesan diteruskan ke flasher                                                 | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
-| Sidang   | Untuk sementara menyimpanan pesan dalam sesi, maka pesan dapat dicetak dalam permintaan berikutnya | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
+| Adapter | Description                                                                                  | API                                                  |
+| ------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
+| Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
 
 <a name='usage'></a>
 
-## Pemakaian
+## Usage
 
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
@@ -96,7 +96,7 @@ $this->flash->message('debug', "this is debug message, you don't say");
 
 <a name='printing'></a>
 
-## Mencetak Pesan
+## Printing Messages
 
 Messages sent to the flash service are automatically formatted with HTML:
 
@@ -149,7 +149,7 @@ Then the messages would be printed as follows:
 
 <a name='implicit-flush-vs-session'></a>
 
-## Implicit Flush vs. Sidang
+## Implicit Flush vs. Session
 
 Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later. When should you use each? That usually depends on the type of redirection you do after sending the messages. For example, if you make a `forward` is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 

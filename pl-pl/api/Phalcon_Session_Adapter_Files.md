@@ -10,9 +10,9 @@ title: 'Phalcon\Session\Adapter\Files'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/files.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/files.zep)
 
-## Stałe
+## Constants
 
 *integer* **SESSION_ACTIVE**
 

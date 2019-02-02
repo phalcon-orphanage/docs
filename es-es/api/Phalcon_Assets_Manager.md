@@ -8,7 +8,7 @@ title: 'Phalcon\Assets\Manager'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-Administra colecciondes de activos CSS/Javascript
+Manages collections of CSS/Javascript assets
 
 ## Métodos
 
@@ -16,19 +16,19 @@ public **__construct** ([*array* $options])
 
 public **setOptions** (*array* $options)
 
-Establece la opciones del administrador
+Sets the manager options
 
 public **getOptions** ()
 
-Muestra las opciones del administrador
+Returns the manager options
 
 public **useImplicitOutput** (*mixed* $implicitOutput)
 
-Configura si el HTML generado debe ser impreso directamente o si debe devuelto
+Sets if the HTML generated must be directly printed or returned
 
 public **addCss** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Agregar un recurso Css a la colección 'css'
+Adds a Css resource to the 'css' collection
 
 ```php
 <?php
@@ -40,11 +40,11 @@ $assets->addCss("https://bootstrap.my-cdn.com/style.css", false);
 
 public **addInlineCss** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Agrega un Css en línea a la colección 'css'
+Adds an inline Css to the 'css' collection
 
 public **addJs** (*mixed* $path, [*mixed* $local], [*mixed* $filter], [*mixed* $attributes])
 
-Agrega un recurso javascript a la colección 'js'
+Adds a javascript resource to the 'js' collection
 
 ```php
 <?php
@@ -56,11 +56,11 @@ $assets->addJs("https://jquery.my-cdn.com/jquery.js", false);
 
 public **addInlineJs** (*mixed* $content, [*mixed* $filter], [*mixed* $attributes])
 
-Agrega un javascript en línea a la colección 'js'
+Adds an inline javascript to the 'js' collection
 
 public **addResourceByType** (*mixed* $type, [Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Añade un recurso por su tipo
+Adds a resource by its type
 
 ```php
 <?php
@@ -73,11 +73,11 @@ $assets->addResourceByType("css",
 
 public **addInlineCodeByType** (*mixed* $type, [Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Agrega un código en línea por su tipo
+Adds an inline code by its type
 
 public **addResource** ([Phalcon\Assets\Resource](Phalcon_Assets_Resource) $resource)
 
-Añade un recurso sin procesar al administrador
+Adds a raw resource to the manager
 
 ```php
 <?php
@@ -90,11 +90,11 @@ $assets->addResource(
 
 public **addInlineCode** ([Phalcon\Assets\Inline](Phalcon_Assets_Inline) $code)
 
-Agrega un código en línea sin procesar al administrator
+Adds a raw inline code to the manager
 
 public **set** (*mixed* $id, [Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection)
 
-Establece una colección en el Administrador de Activos
+Sets a collection in the Assets Manager
 
 ```php
 <?php
@@ -105,7 +105,7 @@ $assets->set("js", $collection);
 
 public **get** (*mixed* $id)
 
-Devuelve una colección por su identificación.
+Returns a collection by its id.
 
 ```php
 <?php
@@ -116,47 +116,47 @@ $scripts = $assets->get("js");
 
 public **getCss** ()
 
-Devuelve la colección de activos CSS
+Returns the CSS collection of assets
 
 public **getJs** ()
 
-Devuelve la colección de activos CSS
+Returns the CSS collection of assets
 
 public **collection** (*mixed* $name)
 
-Crea/Devuelve una colección de recursos
+Creates/Returns a collection of resources
 
 public **output** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *callback* $callback, *string* $type)
 
-Recorre la respuesta de la llamada a una colección para generar su HTML
+Traverses a collection calling the callback to generate its HTML
 
 public **outputInline** ([Phalcon\Assets\Collection](Phalcon_Assets_Collection) $collection, *string* $type)
 
-Recorre una colección y genera su HTML
+Traverses a collection and generate its HTML
 
 public **outputCss** ([*string* $collectionName])
 
-Imprime el HTML para los recursos CCS
+Prints the HTML for CSS resources
 
 public **outputInlineCss** ([*string* $collectionName])
 
-Imprime el HTML para el CCS en línea
+Prints the HTML for inline CSS
 
 public **outputJs** ([*string* $collectionName])
 
-Imprime el HTML para los recursos JS
+Prints the HTML for JS resources
 
 public **outputInlineJs** ([*string* $collectionName])
 
-Imprime el HTML para el JS en linea
+Prints the HTML for inline JS
 
 public **getCollections** ()
 
-Devuelve colecciones existentes en el administrador
+Returns existing collections in the manager
 
 public **exists** (*mixed* $id)
 
-Devuelve verdadero o falso si las colecciones existenten.
+Returns true or false if collection exists.
 
 ```php
 <?php

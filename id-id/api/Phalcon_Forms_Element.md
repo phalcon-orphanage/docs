@@ -8,11 +8,11 @@ title: 'Phalcon\Forms\Element'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
 
-Ini adalah kelas dasar untuk elemen formulir
+This is a base class for form elements
 
-## Metode
+## Methods
 
 public **__construct** (*string* $name, [*array* $attributes])
 
@@ -20,43 +20,43 @@ Phalcon\Forms\Element constructor
 
 public **setForm** ([Phalcon\Forms\Form](Phalcon_Forms_Form) $form)
 
-Mengatur bentuk induk ke elemen
+Sets the parent form to the element
 
 public **getForm** ()
 
-Mengembalikan bentuk induk ke elemen
+Returns the parent form to the element
 
-publik **setNama** (*dicampur* $name)
+public **setName** (*mixed* $name)
 
-Mengatur nama elemen
+Sets the element name
 
-publik **getNama** ()
+public **getName** ()
 
-Mengembalikan nama elemen
+Returns the element name
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setFilters** (*array* | *string* $filters)
 
-Menyetel elemen filter
+Sets the element filters
 
 public **addFilter** (*mixed* $filter)
 
-Menambahkan filter ke daftar filter saat ini
+Adds a filter to current list of filters
 
 public *mixed* **getFilters** ()
 
-Mengembalikan filter elemen
+Returns the element filters
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **addValidators** (*array* $validators, [*mixed* $merge])
 
-Menambahkan sekelompok validator
+Adds a group of validators
 
 public **addValidator** ([Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface) $validator)
 
-Menambahkan validator ke elemen
+Adds a validator to the element
 
 public **getValidators** ()
 
-Mengembalikan validator yang terdaftar untuk elemen tersebut
+Returns the validators registered for the element
 
 public **prepareAttributes** ([*array* $attributes], [*mixed* $useChecked])
 
@@ -64,83 +64,83 @@ Returns an array of prepared attributes for Phalcon\Tag helpers according to the
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setAttribute** (*string* $attribute, *mixed* $value)
 
-Menetapkan atribut default untuk elemen
+Sets a default attribute for the element
 
 public *mixed* **getAttribute** (*string* $attribute, [*mixed* $defaultValue])
 
-Mengembalikan nilai atribut jika ada
+Returns the value of an attribute if present
 
 public **setAttributes** (*array* $attributes)
 
-Menetapkan atribut default untuk elemen
+Sets default attributes for the element
 
 public **getAttributes** ()
 
-Mengembalikan atribut default untuk elemen
+Returns the default attributes for the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setUserOption** (*string* $option, *mixed* $value)
 
-Menetapkan pilihan untuk elemen
+Sets an option for the element
 
 public *mixed* **getUserOption** (*string* $option, [*mixed* $defaultValue])
 
-Mengembalikan nilai opsi jika ada
+Returns the value of an option if present
 
 public **setUserOptions** (*array* $options)
 
-Menyetel opsi untuk elemen
+Sets options for the element
 
 public **getUserOptions** ()
 
-Mengembalikan opsi untuk elemen
+Returns the options for the element
 
 public **setLabel** (*mixed* $label)
 
-Mengatur label elemen
+Sets the element label
 
 public **getLabel** ()
 
-Mengembalikan label elemen
+Returns the element label
 
 public **label** ([*array* $attributes])
 
-Buat HTML untuk memberi label pada elemen
+Generate the HTML to label the element
 
 public [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface) **setDefault** (*mixed* $value)
 
-Menetapkan nilai default jika formulir tidak menggunakan entitas atau tidak ada nilai yang tersedia untuk elemen di _POST
+Sets a default value in case the form does not use an entity or there is no value available for the element in _POST
 
 public **getDefault** ()
 
-Mengembalikan nilai default yang ditetapkan ke elemen
+Returns the default value assigned to the element
 
-publik **getValue** ()
+public **getValue** ()
 
-Mengembalikan nilai elemen
+Returns the element value
 
 public **getMessages** ()
 
-Mengembalikan pesan yang termasuk elemen Elemen perlu dilampirkan ke formulir
+Returns the messages that belongs to the element The element needs to be attached to a form
 
 public **hasMessages** ()
 
-Memeriksa apakah ada pesan yang dilampirkan pada elemen
+Checks whether there are messages attached to the element
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group)
 
-Menetapkan pesan validasi yang terkait dengan elemen
+Sets the validation messages related to the element
 
 public **appendMessage** ([Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface) $message)
 
-Menambahkan pesan ke daftar pesan internal
+Appends a message to the internal message list
 
-publik **jelas** ()
+public **clear** ()
 
-Menghapus setiap elemen dalam bentuk ke nilai defaultnya
+Clears every element in the form to its default value
 
-publik **__keString** ()
+public **__toString** ()
 
-Metode sihir __ketali membuat widget tanpa atribut
+Magic method __toString renders the widget without attributes
 
 abstract public **render** ([*mixed* $attributes]) inherited from [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 

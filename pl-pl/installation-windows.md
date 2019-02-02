@@ -4,7 +4,7 @@ language: 'pl-pl'
 version: '4.0'
 category: 'installation'
 ---
-# Instalacja
+# Installation
 
 * * *
 
@@ -18,12 +18,12 @@ Identify your PHP installation as well as architecture. If you download the wron
 
 The available DLLs are:
 
-| Architektura | Wersja | Typ                   |
-|:------------:|:------:| --------------------- |
-|     x64      |  7.x   | Thread safe           |
-|     x64      |  7.x   | Non Thread safe (NTS) |
-|     x86      |  7.x   | Thread safe           |
-|     x86      |  7.x   | Non Thread safe (NTS) |
+| Architecture | Version | Typ                   |
+|:------------:|:-------:| --------------------- |
+|     x64      |   7.x   | Thread safe           |
+|     x64      |   7.x   | Non Thread safe (NTS) |
+|     x86      |   7.x   | Thread safe           |
+|     x86      |   7.x   | Non Thread safe (NTS) |
 
 Edit your php.ini file and then append at the end:
 

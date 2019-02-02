@@ -19,7 +19,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 
 <a name='usage'></a>
 
-## Podstawowe użycie
+## Basic Usage
 
 This component is designed be very simple to use:
 
@@ -147,7 +147,7 @@ echo $crypt->decrypt($encrypted, $key);
 
 The following options are available to change the encryption behavior:
 
-| Nazwa | Ious                                                                                                                                                                     |
+| Nazwa | Description                                                                                                                                                              |
 | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Szyfr | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php) |
 
@@ -265,7 +265,7 @@ class SecretsController extends Controller
 
 <a name='links'></a>
 
-## Linki
+## Links
 
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)

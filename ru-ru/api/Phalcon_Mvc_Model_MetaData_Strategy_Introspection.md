@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Model\MetaData\Strategy\Introspection'
 
 Queries the table meta-data in order to introspect the model's metadata
 
-## Методы
+## Methods
 
 final public **getMetaData** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Result\Pdo'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
-Encapsula los componentes internos del conjunto de resultados
+Encapsulates the resultset internals
 
 ```php
 <?php
@@ -39,7 +39,7 @@ Allows to execute the statement again. Some database systems don't support scrol
 
 public **fetch** ([*mixed* $fetchStyle], [*mixed* $cursorOrientation], [*mixed* $cursorOffset])
 
-Obtiene una matriz/objeto de cadenas que corresponde a la fila recuperada, o FALSO si no hay más filas. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
+Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using Phalcon\Db\Result\Pdo::setFetchMode
 
 ```php
 <?php
@@ -92,7 +92,7 @@ $robots = $result->fetchAll();
 
 public **numRows** ()
 
-Obtiene el número de filas devueltas por un conjunto de resultados
+Gets number of rows returned by a resultset
 
 ```php
 <?php
@@ -107,7 +107,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 
 public **dataSeek** (*mixed* $number)
 
-Mueve el cursor del conjunto de resultados interno a otra posición que nos permite buscar una determinada fila
+Moves internal resultset cursor to another position letting us to fetch a certain row
 
 ```php
 <?php
@@ -155,4 +155,4 @@ $result->setFetchMode(
 
 public **getInternalResult** ()
 
-Obtiene el objeto de resultado PDO interno
+Gets the internal PDO result object

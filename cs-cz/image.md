@@ -13,7 +13,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adaptéry
+## Adapters
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -24,7 +24,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 <a name='adapters-factory'></a>
 
-### Továrna
+### Factory
 
 Loads an Image Adapter class using `adapter` option.
 
@@ -45,7 +45,7 @@ $image = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Implementace vlastních adaptérů
+### Implementing your own adapters
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
 

@@ -8,9 +8,9 @@ title: 'Phalcon\Filter\FilterLocatorFactory'
 
 **implements** [Phalcon\Service\LocatorFactoryInterface](Phalcon_Service_LocatorFactoryInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocatorfactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocatorfactory.zep)
 
-### روش ها
+### Methods
 
 ```php
 public function newInstance(): \Phalcon\Service\LocatorInterface

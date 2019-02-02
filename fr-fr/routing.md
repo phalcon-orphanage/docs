@@ -49,7 +49,7 @@ $router->handle();
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
 In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
-Une application peut avoir plusieurs chemins d'accès et la définition des itinéraires, un par un, peut être une lourde tâche. In these cases we can create more flexible routes:
+An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
 ```php
 <?php
@@ -72,7 +72,7 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Contrôleur | Action | Paramètre | Paramètre |
+| Controller | Action | Parameter | Parameter |
 |:----------:|:------:|:---------:|:---------:|
 |   users    | delete |   dave    |    301    |
 
@@ -256,7 +256,7 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Contrôleur | Action | Paramètre |
+| Module | Controller | Action | Parameter |
 |:------:|:----------:|:------:|:---------:|
 | admin  |   users    |  edit  |   sonny   |
 
@@ -684,7 +684,7 @@ $router->add(
 
 For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Contrôleur   | Action | Paramètre  |
+|  Controller   | Action | Parameter  |
 |:-------------:|:------:|:----------:|
 | documentation |  show  | about.html |
 
@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Événements
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 

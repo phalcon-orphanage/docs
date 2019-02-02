@@ -10,19 +10,19 @@ title: 'Phalcon\Logger\Formatter\Syslog'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
 Prepares a message to be used in a Syslog backend
 
-## Metodlar
+## Methods
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 
-Dahili sistem günlüğüne göndermeden önce mesaja format uygular
+Applies a format to a message before sent it to the internal log
 
 public **getTypeString** (*mixed* $type) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 
-Günlükçü sabitinin dize anlamını döndürür
+Returns the string meaning of a logger constant
 
 public **interpolate** (*string* $message, [*array* $context]) inherited from [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
 

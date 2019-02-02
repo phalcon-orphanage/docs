@@ -12,7 +12,7 @@ category: 'installation'
 
 Compiling from source is similar to most environments (Linux/macOS).
 
-### Systemanforderungen
+### Requirements
 
 * PHP 7.2.x/7.3.x development resources
 * GCC compiler (Linux/Solaris/FreeBSD) or Xcode (macOS)

@@ -10,7 +10,7 @@ title: 'Phalcon\Db\Profiler\Item'
 
 This class identifies each profile in a Phalcon\Db\Profiler
 
-## Методы
+## Methods
 
 public **setSqlStatement** (*mixed* $sqlStatement)
 
@@ -24,7 +24,7 @@ public **setSqlVariables** (*array* $sqlVariables)
 
 SQL variables related to the profile
 
-public **getType** ()
+public **getSqlVariables** ()
 
 SQL variables related to the profile
 

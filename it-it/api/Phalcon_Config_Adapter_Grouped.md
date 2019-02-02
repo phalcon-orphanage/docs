@@ -10,7 +10,7 @@ title: 'Phalcon\Config\Adapter\Grouped'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
 
 Reads multiple files (or arrays) and merges them all together.
 
@@ -68,11 +68,11 @@ $config = new Grouped(
 
 ```
 
-## Costanti
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Metodi
+## Methods
 
 public **__construct** (*array* $arrayConfig, [*mixed* $defaultAdapter])
 
@@ -193,7 +193,7 @@ print count($config);
 
 ```
 
-oppure
+or
 
 ```php
 <?php

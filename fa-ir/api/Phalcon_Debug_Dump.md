@@ -6,7 +6,7 @@ title: 'Phalcon\Debug\Dump'
 ---
 # Class **Phalcon\Debug\Dump**
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
 Dumps information about a variable(s)
 
@@ -30,7 +30,7 @@ echo (new \Phalcon\Debug\Dump())->variables($foo, $bar, $baz);
 
 ```
 
-## روش ها
+## Methods
 
 public **getDetailed** ()
 

@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\View\Engine\Volt'
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
-## Методы
+## Methods
 
 public **setOptions** (*array* $options)
 

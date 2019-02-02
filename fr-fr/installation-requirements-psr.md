@@ -18,7 +18,7 @@ Phalcon requires the PSR extension. The extension can be downloaded and compiled
 extension=psr.so
 ```
 
-avant
+before
 
 ```ini
 extension=phalcon.so

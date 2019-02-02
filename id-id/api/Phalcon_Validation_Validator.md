@@ -8,44 +8,44 @@ title: 'Phalcon\Validation\Validator'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
 
-Ini adalah kelas dasar untuk validator
+This is a base class for validators
 
-## Metode
+## Methods
 
-umum **__membangun** ([*array* $options])
+public **__construct** ([*array* $options])
 
 Phalcon\Validation\Validator constructor
 
-umum **pilihanYangDiterapkan** (*campuran* $key)
+public **isSetOption** (*mixed* $key)
 
-Memeriksa jika pilihan telah ditetapkan
+Checks if an option has been defined
 
 public **hasOption** (*mixed* $key)
 
-Memeriksa jika pilihan didefinisikan
+Checks if an option is defined
 
 public **getOption** (*mixed* $key, [*mixed* $defaultValue])
 
-Kembali pilihan dalam pilihan validator mengembalikan null jika opsi belum menetapkan
+Returns an option in the validator's options Returns null if the option hasn't set
 
 public **setOption** (*mixed* $key, *mixed* $value)
 
-Menetapkan pilihan di validator
+Sets an option in the validator
 
 abstract public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $attribute)
 
-Menjalankan validasi
+Executes the validation
 
 protected **prepareLabel** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 
-Mempersiapkan label untuk bidang.
+Prepares a label for the field.
 
 protected **prepareMessage** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field, *mixed* $type, [*mixed* $option])
 
-Menyiapkan pesan validasi.
+Prepares a validation message.
 
-dilindungi **siapkan kpde** (*campur*$field)
+protected **prepareCode** (*mixed* $field)
 
-Menyiapkan kode validasi.
+Prepares a validation code.

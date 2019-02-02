@@ -21,7 +21,7 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## Beispiele für die Verwendung
+## Usage Example
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -416,7 +416,7 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 The events available in Phalcon are:
 
-| Component          | Ereignis                             |
+| Component          | Event                                |
 | ------------------ | ------------------------------------ |
 | ACL                | `acl:afterCheckAccess`               |
 | ACL                | `acl:beforeCheckAccess`              |

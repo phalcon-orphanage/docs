@@ -47,7 +47,7 @@ Sets the dependency injector
 
 public **getDI** ()
 
-Επιστρέφει το εγχυτήρα εσωτερικό εξάρτησης
+Returns the internal dependency injector
 
 public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue], [*mixed* $notAllowEmpty], [*mixed* $noRecursive])
 
@@ -162,7 +162,7 @@ Alias of isSoap(). It will be deprecated in future versions
 
 public **isSecure** ()
 
-Ελέγχει εάν οποιοδήποτε υποβληθεί αίτημα χρησιμοποιώντας ασφαλές έχει επίπεδο
+Checks whether request has been made using any secure layer
 
 public **isSecureRequest** ()
 

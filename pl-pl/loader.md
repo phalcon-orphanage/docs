@@ -19,7 +19,7 @@ With this component you can load files from other projects or vendors, this auto
 
 <a name='security'></a>
 
-## Warstwa zabezpieczeń
+## Security Layer
 
 [Phalcon\Loader](api/Phalcon_Loader) offers a security layer sanitizing by default class names avoiding possible inclusion of unauthorized files. Consider the following example:
 
@@ -282,13 +282,13 @@ $loader->setEventsManager($eventsManager);
 $loader->register();
 ```
 
-Some events when returning boolean `false` could stop the active operation. Poniższe wydarzenia są obsługiwane:
+Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
-| Nazwa wydarzenia   | Zaistniałe                                                                                                          | Czy można zatrzymać operację? |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
-| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                           |
-| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                           |
-| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                           |
+| Event Name         | Triggered                                                                                                           | Can stop operation? |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| `beforeCheckClass` | Triggered before starting the autoloading process                                                                   | Tak                 |
+| `pathFound`        | Triggered when the loader locate a class                                                                            | Nie                 |
+| `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | Nie                 |
 
 <a name='troubleshooting'></a>
 

@@ -6,7 +6,7 @@ title: 'Phalcon\Filter\Sanitizer\LowerFirst'
 ---
 # Class [Phalcon\Filter\Sanitizer\LowerFirst](Phalcon_Filter_Sanitizer_LowerFirst)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/lowerfirst.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/lowerfirst.zep)
 
 Sanitizes a string using `lcfirst`
 

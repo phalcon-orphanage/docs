@@ -52,7 +52,7 @@ $db = Factory::load($options);
 
 <a name='adapters-custom'></a>
 
-### Εφαρμογή των δικών σας προσαρμογέων
+### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
 
@@ -731,7 +731,7 @@ try {
 
 ## Database Events
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Ορισμένα συμβάντα κατά την του επιστροφή boolean false θα μπορούσαν να σταματήσουν την ενεργή λειτουργία. The following events are supported:
+[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                         | Μπορεί να σταματήσει την λειτουργία; |
 | --------------------- | ---------------------------------------------------- |:------------------------------------:|

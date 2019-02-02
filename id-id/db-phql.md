@@ -17,15 +17,15 @@ The parser first checks the syntax of the pass PHQL statement, then builds an in
 
 In PHQL, we've implemented a set of features to make your access to databases more secure:
 
-* Parameter batas adalah bagian dari bahasa PHQL yang membantu Anda mengamankan kode Anda
-* PHQL hanya memungkinkan satu pernyataan SQL yang akan dieksekusi per panggilan mencegah suntikan
-* PHQL mengabaikan semua SQL komentar yang sering digunakan dalam SQL suntikan
-* PHQL hanya memungkinkan manipulasi data laporan, menghindari mengubah atau menjatuhkan tabel/database oleh kesalahan atau eksternal tanpa otorisasi
-* PHQL mengimplementasikan tinggi tingkat abstraksi yang memungkinkan anda untuk menangani tabel sebagai model dan bidang-bidang sebagai atribut kelas
+* Bound parameters are part of the PHQL language helping you to secure your code
+* PHQL only allows one SQL statement to be executed per call preventing injections
+* PHQL ignores all SQL comments which are often used in SQL injections
+* PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
+* PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
 <a name='usage'></a>
 
-## Contoh penggunaan
+## Usage Example
 
 To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
 
@@ -99,7 +99,7 @@ class Brands extends Model
 
 <a name='creating'></a>
 
-## Membuat Pertanyaan PHQL
+## Creating PHQL Queries
 
 PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query):
 
@@ -157,7 +157,7 @@ $cars = $this->modelsManager->executeQuery(
 
 <a name='selecting-records'></a>
 
-## Memilih Rekaman
+## Selecting Records
 
 As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
 
@@ -200,7 +200,7 @@ $query = $manager->createQuery($phql);
 
 <a name='result-types'></a>
 
-### Jenis hasil
+### Result Types
 
 Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
 
@@ -288,7 +288,7 @@ foreach ($result as $row) {
 
 <a name='joins'></a>
 
-### Bergabung
+### Joins
 
 It's easy to request records from multiple models using PHQL. Most kinds of Joins are supported. As we defined relationships in the models, PHQL adds these conditions automatically:
 
@@ -427,7 +427,7 @@ foreach ($rows as $row) {
 
 <a name='conditions'></a>
 
-### Kondisi
+### Conditions
 
 Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
 
@@ -487,7 +487,7 @@ $cars = $manager->executeQuery(
 
 <a name='inserting-data'></a>
 
-## Memasukkan Data
+## Inserting Data
 
 With PHQL it's possible to insert data using the familiar INSERT statement:
 
@@ -559,7 +559,7 @@ if ($result->success() === false) {
 
 <a name='updating-data'></a>
 
-## Memperbarui Data
+## Updating Data
 
 Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
 
@@ -593,7 +593,7 @@ $manager->executeQuery(
 An `UPDATE` statement performs the update in two phases:
 
 * First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
-* Kedua, berdasarkan tanya benda-benda itu update/perubahan yang diminta atribut menyimpannya ke database relasional
+* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
 
 This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
 
@@ -641,7 +641,7 @@ $success = $process();
 
 <a name='deleting-data'></a>
 
-## Menghapus data
+## Deleting Data
 
 When a record is deleted the events related to the delete operation will be executed for each row:
 
@@ -688,7 +688,7 @@ if ($result->success() === false) {
 
 <a name='query-builder'></a>
 
-## Membuat pertanyaan menggunakan Pertanyaan Pembangun
+## Creating queries using the Query Builder
 
 A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
 
@@ -842,16 +842,16 @@ $builder->from('Robots')
 
 // 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%';
 $builder->from('Robots')
-        ->where('name LIKE :name:', ['name' => '%' . $nama . '%']);
+        ->where('name LIKE :name:', ['name' => '%' . $name . '%']);
 
 // 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
 $builder->from(['r' => 'Store\Robots'])
-        ->where('r.name LIKE :name:', ['name' => '%' . $nama . '%']);
+        ->where('r.name LIKE :name:', ['name' => '%' . $name . '%']);
 ```
 
 <a name='query-builder-parameters'></a>
 
-### Parameter terikat
+### Bound Parameters
 
 Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
 
@@ -877,7 +877,7 @@ $robots = $this->modelsManager->createBuilder()
 
 <a name='disallow-literals'></a>
 
-## Menilak literal di PHQL
+## Disallow literals in PHQL
 
 Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
 
@@ -930,7 +930,7 @@ Bound parameters can be used even if literals are allowed or not. Disallowing th
 
 <a name='escaping-reserved-words'></a>
 
-## Melarikan diri kata cadangan
+## Escaping Reserved Words
 
 PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
 
@@ -948,12 +948,12 @@ The delimiters are dynamically translated to valid delimiters depending on the d
 
 <a name='lifecycle'></a>
 
-## OHQL lingkaran kehidupan
+## PHQL Lifecycle
 
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
-* Yang PHQL diurai dan diubah menjadi Perantara Representasi (IR) yang independen dari SQL dilaksanakan oleh sistem database
-* IR diubah menjadi berlaku SQL menurut sistem database yang terkait dengan model
+* The PHQL is parsed and converted into an Intermediate Representation (IR) which is independent of the SQL implemented by database system
+* The IR is converted to valid SQL according to the database system associated to the model
 * PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
 <a name='raw-sql'></a>
@@ -1031,11 +1031,11 @@ $robots = Robots::findByRawSql(
 
 <a name='troubleshooting'></a>
 
-## Penyelesaian masalah
+## Troubleshooting
 
 Some things to keep in mind when using PHQL:
 
-* Kelas adalah case-sensitive, jika kelas tidak didefinisikan dengan nama yang sama seperti yang dibuat ini dapat menyebabkan perilaku tak terduga dalam operasi sistem berkas kasus-sensitif sistem seperti Linux.
-* Benar charset harus didefinisikan dalam koneksi untuk mengikat parameter dengan sukses.
-* Alias kelas tidak diganti dengan penuh pustaka kelas karena hal ini hanya terjadi di kode PHP dan tidak di dalam string.
-* Jika kolom nama diaktifkan hindari menggunakan kolom alias dengan nama yang sama dengan nama kolom yang akan diganti namanya, ini mungkin membingungkan query penyelesai.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
+* Correct charset must be defined in the connection to bind parameters with success.
+* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
+* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.

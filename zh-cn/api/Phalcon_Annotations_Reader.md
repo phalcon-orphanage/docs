@@ -10,7 +10,7 @@ title: 'Phalcon\Annotations\Reader'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
 
-解析 docblocks 返回数组与发现注释
+Parses docblocks returning an array with the found annotations
 
 ## 方法
 
@@ -20,4 +20,4 @@ Reads annotations from the class dockblocks, its methods and/or properties
 
 public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-解析返回注释的原始文档块
+Parses a raw doc block returning the annotations found

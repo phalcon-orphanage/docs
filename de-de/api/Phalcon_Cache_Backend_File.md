@@ -10,7 +10,7 @@ title: 'Phalcon\Cache\Backend\File'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/file.zep)
 
 Allows to cache output fragments using a file backend
 
@@ -48,7 +48,7 @@ if ($content === null) {
 
 ```
 
-## Methoden
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, *array* $options)
 
@@ -56,7 +56,7 @@ Phalcon\Cache\Backend\File constructor
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Liefert einen zwischengespeicherten Inhalt
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
@@ -64,7 +64,7 @@ Stores cached content into the file backend and stops the frontend
 
 public **delete** (*int* | *string* $keyName)
 
-Löscht einen Wert aus dem Cache anhand seines Schlüssels
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
@@ -82,7 +82,7 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 public **exists** ([*string* | *int* $keyName], [*int* $lifetime])
 
-Überprüft, ob Cache vorhanden und nicht abgelaufen ist
+Checks if cache exists and it isn't expired
 
 public **increment** ([*string* | *int* $keyName], [*mixed* $value])
 
@@ -134,16 +134,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Stoppt das Frontend ohne zwischengespeicherte Inhalte zu speichern
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der letzte Cache frisch oder zwischengespeichert ist
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Prüft, ob der Cache mit der Pufferung begonnen hat oder nicht
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ermittelt die zuletzt gespeicherte Lebensdauer
+Gets the last lifetime set

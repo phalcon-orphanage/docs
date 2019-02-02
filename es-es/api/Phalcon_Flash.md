@@ -28,43 +28,43 @@ Phalcon\Flash constructor
 
 public **getAutoescape** ()
 
-Devuelve el modo autoescape en el Html generado
+Returns the autoescape mode in generated html
 
 public **setAutoescape** (*mixed* $autoescape)
 
-Establece el modo autoescape en el html generado
+Set the autoescape mode in generated html
 
 public **getEscaperService** ()
 
-Devuelve el servicio Escaper
+Returns the Escaper Service
 
 public **setEscaperService** ([Phalcon\EscaperInterface](Phalcon_EscaperInterface) $escaperService)
 
-Establece el servicio Escaper
+Sets the Escaper Service
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** ()
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **setImplicitFlush** (*mixed* $implicitFlush)
 
-Establece si la salida debe ser implícitamente vaciado a la salida o devuelto como una cadena
+Set whether the output must be implicitly flushed to the output or returned as string
 
 public **setAutomaticHtml** (*mixed* $automaticHtml)
 
-Establece si la salida debe ser implícitamente formateada con HTML
+Set if the output must be implicitly formatted with HTML
 
 public **setCssClasses** (*array* $cssClasses)
 
-Configura un arreglo con clases CSS para formatear los mensajes
+Set an array with CSS classes to format the messages
 
 public **error** (*mixed* $message)
 
-Muestra un mensaje de error HTML
+Shows a HTML error message
 
 ```php
 <?php
@@ -75,7 +75,7 @@ $flash->error("This is an error");
 
 public **notice** (*mixed* $message)
 
-Muestra un mensaje de información o notificación HTML
+Shows a HTML notice/information message
 
 ```php
 <?php
@@ -86,7 +86,7 @@ $flash->notice("This is an information");
 
 public **success** (*mixed* $message)
 
-Muestra un mensaje de éxito HTML
+Shows a HTML success message
 
 ```php
 <?php
@@ -97,7 +97,7 @@ $flash->success("The process was finished successfully");
 
 public **warning** (*mixed* $message)
 
-Muestra un mensaje de advertencia HTML
+Shows a HTML warning message
 
 ```php
 <?php
@@ -108,7 +108,7 @@ $flash->warning("Hey, this is important");
 
 public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message)
 
-Genera un mensaje que lo formatea con HTML
+Outputs a message formatting it with HTML
 
 ```php
 <?php
@@ -119,7 +119,7 @@ $flash->outputMessage("error", $message);
 
 public **clear** ()
 
-Borra los mensajes acumulados cuando el vaciado implícito está deshabilitado
+Clears accumulated messages when implicit flush is disabled
 
 abstract public **message** (*mixed* $type, *mixed* $message) inherited from [Phalcon\FlashInterface](Phalcon_FlashInterface)
 

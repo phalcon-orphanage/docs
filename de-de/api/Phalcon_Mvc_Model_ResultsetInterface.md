@@ -6,9 +6,9 @@ title: 'Phalcon\Mvc\Model\ResultsetInterface'
 ---
 # Interface **Phalcon\Mvc\Model\ResultsetInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultsetinterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **getType** ()
 

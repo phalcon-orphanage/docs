@@ -12,13 +12,13 @@ title: 'Phalcon\Mvc\View\Engine\Php'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/php.zep)
 
-适配器可以使用 PHP 本身作为模板化引擎
+Adapter to use PHP itself as templating engine
 
 ## 方法
 
 public **render** (*mixed* $path, *mixed* $params, [*mixed* $mustClean])
 
-呈现一个视图，使用模板引擎
+Renders a view using the template engine
 
 public **__construct** ([Phalcon\Mvc\ViewBaseInterface](Phalcon_Mvc_ViewBaseInterface) $view, [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
@@ -26,27 +26,27 @@ Phalcon\Mvc\View\Engine constructor
 
 public **getContent** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-返回缓存输出在另一个视图舞台上
+Returns cached output on another view stage
 
 public *string* **partial** (*string* $partialPath, [*array* $params]) inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-将呈现偏内另一种观点
+Renders a partial inside another view
 
 public **getView** () inherited from [Phalcon\Mvc\View\Engine](Phalcon_Mvc_View_Engine)
 
-返回有关适配器的视图组件
+Returns the view component related to the adapter
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置依赖注入器
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-返回内部依赖注入器
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-设置事件管理器
+Sets the event manager
 
 public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

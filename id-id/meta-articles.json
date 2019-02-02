@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "Membuat sebuah ACL",
+      "text": "Creating an ACL",
       "url": "/acl-setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Mendefinisikan Kontrol Akses",
+      "text": "Defining Access Controls",
       "url": "/acl-access-controls"
     },
     {
-      "text": "Mengajukan sebuah ACL",
+      "text": "Querying an ACL",
       "url": "/acl-querying"
     },
     {
-      "text": "Akses berdasarkan fungsi",
+      "text": "Function based access",
       "url": "/acl-function-based-access"
     },
     {
@@ -41,41 +41,41 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Kegiatan",
+      "text": "Events",
       "url": "/acl-events"
     },
     {
-      "text": "Menerapkan adapter Anda sendiri",
+      "text": "Implementing your own adapters",
       "url": "/acl-custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Sekilas",
+      "text": "Overview",
       "url": "/annotations#overview"
     },
     {
-      "text": "Pabrik",
+      "text": "Factory",
       "url": "/annotations#setup"
     },
     {
-      "text": "Menambahkan Role ke ACL",
+      "text": "Adding Roles to the ACL",
       "url": "/annotations#factory"
     },
     {
-      "text": "Membaca anotasi",
+      "text": "Reading Annotations",
       "url": "/annotations#reading"
     },
     {
-      "text": "Jenis anotasi",
+      "text": "Types of Annotations",
       "url": "/annotations#types"
     },
     {
-      "text": "Penggunaan praktis",
+      "text": "Practical Usage",
       "url": "/annotations#usage",
       "menu": [
         {
-          "text": "Cache Enabler dengan Anotasi",
+          "text": "Cache Enabler with Annotations",
           "url": "/annotations#usage-cache"
         },
         {
@@ -85,49 +85,49 @@
       ]
     },
     {
-      "text": "Anotasi Adaptor",
+      "text": "Annotations Adapters",
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Menerapkan adapter Anda sendiri",
+          "text": "Implementing your own adapters",
           "url": "/annotations#adapters-custom"
         }
       ]
     },
     {
-      "text": "Sumber Eksternal",
+      "text": "External Resources",
       "url": "/annotations#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "Membuat aplikasi CLI",
+      "text": "Creating a CLI Application",
       "url": "/application-cli#creating-cli-application"
     },
     {
-      "text": "Struktur",
+      "text": "Structure",
       "url": "/application-cli#structure"
     },
     {
-      "text": "Membuat Bootstrap",
+      "text": "Creating a Bootstrap",
       "url": "/application-cli#creating-bootstrap"
     },
     {
-      "text": "Tugas",
+      "text": "Tasks",
       "url": "/application-cli#tasks"
     },
     {
-      "text": "Memproses parameter tindakan",
+      "text": "Processing action parameters",
       "url": "/application-cli#processing-action-parameters"
     },
     {
-      "text": "Menjalankan tugas dalam rantai",
+      "text": "Running tasks in a chain",
       "url": "/application-cli#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "Membuat aplikasi mikro",
+      "text": "Creating a Micro Application",
       "url": "/application-micro#creating-micro-application"
     },
     {
@@ -135,155 +135,155 @@
       "url": "/application-micro#routing",
       "menu": [
         {
-          "text": "Pengaturan",
+          "text": "Setup",
           "url": "/application-micro#routing-setup",
           "menu": [
             {
-              "text": "Objek aplikasi",
+              "text": "Application object",
               "url": "/application-micro#routing-setup-application"
             },
             {
-              "text": "Router objek",
+              "text": "Router object",
               "url": "/application-micro#routing-setup-router"
             }
           ]
         },
         {
-          "text": "Menulis ulang aturan",
+          "text": "Rewrite Rules",
           "url": "/application-micro#rewrite-rules"
         },
         {
-          "text": "Handler",
+          "text": "Handlers",
           "url": "/application-micro#routing-handlers",
           "menu": [
             {
-              "text": "Definisi",
+              "text": "Definitions",
               "url": "/application-micro#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Fungsi anonim",
+                  "text": "Anonymous Function",
                   "url": "/application-micro#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Fungsi",
+                  "text": "Function",
                   "url": "/application-micro#routing-handlers-function"
                 },
                 {
-                  "text": "Metode Statis",
+                  "text": "Static Method",
                   "url": "/application-micro#routing-handlers-static-method"
                 },
                 {
-                  "text": "Metode dalam objek",
+                  "text": "Method in an Object",
                   "url": "/application-micro#routing-handlers-object-method"
                 },
                 {
-                  "text": "Pengawas",
+                  "text": "Controllers",
                   "url": "/application-micro#routing-handlers-controllers"
                 }
               ]
             },
             {
-              "text": "Malas Loading",
+              "text": "Lazy Loading",
               "url": "/application-micro#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Gunakan perkara",
+                  "text": "Use case",
                   "url": "/application-micro#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
             },
             {
-              "text": "Tidak ditemukan (404)",
+              "text": "Not Found (404)",
               "url": "/application-micro#routing-handlers-not-found"
             }
           ]
         },
         {
-          "text": "Metode - kata kerja",
+          "text": "Methods - Verbs",
           "url": "/application-micro#routing-verbs",
           "menu": [
             {
-              "text": "hapus",
+              "text": "delete",
               "url": "/application-micro#routing-verb-delete"
             },
             {
-              "text": "mendapatkan",
+              "text": "get",
               "url": "/application-micro#routing-verb-get"
             },
             {
-              "text": "kepala",
+              "text": "head",
               "url": "/application-micro#routing-verb-head"
             },
             {
-              "text": "peta",
+              "text": "map",
               "url": "/application-micro#routing-verb-map"
             },
             {
-              "text": "pilihan",
+              "text": "options",
               "url": "/application-micro#routing-verb-options"
             },
             {
-              "text": "koreksi",
+              "text": "patch",
               "url": "/application-micro#routing-verb-patch"
             },
             {
-              "text": "kirim",
+              "text": "post",
               "url": "/application-micro#routing-verb-post"
             },
             {
-              "text": "menempatkan",
+              "text": "put",
               "url": "/application-micro#routing-verb-put"
             }
           ]
         },
         {
-          "text": "Koleksi",
+          "text": "Collections",
           "url": "/application-micro#routing-collections"
         },
         {
-          "text": "Parameter",
+          "text": "Parameters",
           "url": "/application-micro#routing-parameters"
         },
         {
-          "text": "Pengalihan",
+          "text": "Redirections",
           "url": "/application-micro#routing-redirections"
         },
         {
-          "text": "URL untuk rute",
+          "text": "URLs for Routes",
           "url": "/application-micro#routing-urls-for-routes"
         }
       ]
     },
     {
-      "text": "Depndensi injeksi",
+      "text": "Dependency Injector",
       "url": "/application-micro#dependency-injector"
     },
     {
-      "text": "Tanggapan",
+      "text": "Responses",
       "url": "/application-micro#responses",
       "menu": [
         {
-          "text": "Output langsung",
+          "text": "Direct output",
           "url": "/application-micro#responses-direct-output"
         },
         {
-          "text": "Termasuk file lain",
+          "text": "Including another file",
           "url": "/application-micro#responses-include"
         },
         {
-          "text": "Output langsung",
+          "text": "Direct output JSON",
           "url": "/application-micro#responses-direct-output-json"
         },
         {
-          "text": "Objek respon baru",
+          "text": "New Response object",
           "url": "/application-micro#responses-new-response-object"
         },
         {
-          "text": "Aplikasi respon",
+          "text": "Application Response",
           "url": "/application-micro#responses-application-response"
         },
         {
-          "text": "Aplikasi respon",
+          "text": "Return Application Response",
           "url": "/application-micro#responses-return-application-response"
         },
         {
@@ -293,19 +293,19 @@
       ]
     },
     {
-      "text": "Kegiatan",
+      "text": "Events",
       "url": "/application-micro#events",
       "menu": [
         {
-          "text": "Peristiwa-peristiwa yang tersedia",
+          "text": "Available events",
           "url": "/application-micro#events-available-events",
           "menu": [
             {
-              "text": "Contoh otentikasi",
+              "text": "Authentication example",
               "url": "/application-micro#events-available-events-authentication"
             },
             {
-              "text": "Tidak ditemukan contoh",
+              "text": "Not found example",
               "url": "/application-micro#events-available-events-not-found"
             }
           ]
@@ -317,37 +317,37 @@
       "url": "/application-micro#middleware",
       "menu": [
         {
-          "text": "Peristiwa-peristiwa yang terlampir",
+          "text": "Attached events",
           "url": "/application-micro#middleware-attached-events",
           "menu": [
             {
-              "text": "sebelum",
+              "text": "before",
               "url": "/application-micro#middleware-attached-events-before"
             },
             {
-              "text": "setelah",
+              "text": "after",
               "url": "/application-micro#middleware-attached-events-after"
             },
             {
-              "text": "selesai",
+              "text": "finish",
               "url": "/application-micro#middleware-attached-events-finish"
             }
           ]
         },
         {
-          "text": "Pengaturan",
+          "text": "Setup",
           "url": "/application-micro#middleware-setup"
         },
         {
-          "text": "Implementasi",
+          "text": "Implementation",
           "url": "/application-micro#middleware-implementation"
         },
         {
-          "text": "Acara di Middleware",
+          "text": "Events in Middleware",
           "url": "/application-micro#middleware-events",
           "menu": [
             {
-              "text": "Contoh API",
+              "text": "API example",
               "url": "/application-micro#middleware-events-api"
             },
             {
@@ -355,11 +355,11 @@
               "url": "/application-micro#middleware-events-api-firewall"
             },
             {
-              "text": "Tidak ditemukan Middleware",
+              "text": "Not Found Middleware",
               "url": "/application-micro#middleware-events-api-not-found"
             },
             {
-              "text": "Mengarahkan Middleware",
+              "text": "Redirect Middleware",
               "url": "/application-micro#middleware-events-api-redirect"
             },
             {
@@ -367,29 +367,29 @@
               "url": "/application-micro#middleware-events-api-cors"
             },
             {
-              "text": "Mengarahkan Middleware",
+              "text": "Request Middleware",
               "url": "/application-micro#middleware-events-api-request"
             },
             {
-              "text": "Mengarahkan Middleware",
+              "text": "Response Middleware",
               "url": "/application-micro#middleware-events-api-response"
             }
           ]
         },
         {
-          "text": "Model",
+          "text": "Models",
           "url": "/application-micro#models"
         },
         {
-          "text": "Menyuntikkan contoh Model",
+          "text": "Injecting Model Instances",
           "url": "/application-micro#model-instances"
         },
         {
-          "text": "Lihat",
+          "text": "Views",
           "url": "/application-micro#views"
         },
         {
-          "text": "Penanganan Kesalahan",
+          "text": "Error Handling",
           "url": "/application-micro#error-handling"
         }
       ]
@@ -397,95 +397,95 @@
   ],
   "application": [
     {
-      "text": "Sekilas",
+      "text": "Overview",
       "url": "/application#overview"
     },
     {
-      "text": "Perangkap manual boot",
+      "text": "Manual Bootstrapping",
       "url": "/application#manual-bootstrapping"
     },
     {
-      "text": "Aplikasi tunggal atau multi modul",
+      "text": "Single or Multi Module Applications",
       "url": "/application#single-vs-module",
       "menu": [
         {
-          "text": "Modul tunggal",
+          "text": "Single Module",
           "url": "/application#single"
         },
         {
-          "text": "Modul Multi",
+          "text": "Multi Module",
           "url": "/application#module"
         }
       ]
     },
     {
-      "text": "Acara Aplikasi",
+      "text": "Application Events",
       "url": "/application#events"
     },
     {
-      "text": "Sumber Eksternal",
+      "text": "External Resources",
       "url": "/application#resources"
     }
   ],
   "assets": [
     {
-      "text": "Sekilas",
+      "text": "Overview",
       "url": "/assets#overview"
     },
     {
-      "text": "Menambahkan Sumber Daya",
+      "text": "Adding Resources",
       "url": "/assets#add"
     },
     {
-      "text": "Sumber daya lokal/Remote",
+      "text": "Local/Remote resources",
       "url": "/assets#resources-local-remote"
     },
     {
-      "text": "Koleksi",
+      "text": "Collections",
       "url": "/assets#collections"
     },
     {
-      "text": "Awalan URL",
+      "text": "URL Prefixes",
       "url": "/assets#url-prefixes"
     },
     {
-      "text": "Minifickasi/penyaringan",
+      "text": "Minification/Filtering",
       "url": "/assets#minification-filtering",
       "menu": [
         {
-          "text": "Saringan Terpasang",
+          "text": "Built-In Filters",
           "url": "/assets#builtin-filters"
         },
         {
-          "text": "Penyaringan khusus",
+          "text": "Custom Filters",
           "url": "/assets#custom-filters"
         }
       ]
     },
     {
-      "text": "Khusus keluar",
+      "text": "Custom Output",
       "url": "/assets#custom-output"
     },
     {
-      "text": "Meningkatkan kinerja",
+      "text": "Improving performance",
       "url": "/assets#improving-performance"
     }
   ],
   "cache": [
     {
-      "text": "Meningkatkan performa dengan Cache",
+      "text": "Improving Performance with Cache",
       "url": "/cache#overview"
     },
     {
-      "text": "Kapan menerapkan cache?",
+      "text": "When to implement cache?",
       "url": "/cache#implementation"
     },
     {
-      "text": "Perilaku Caching",
+      "text": "Caching Behavior",
       "url": "/cache#caching-behavior"
     },
     {
-      "text": "Pabrik",
+      "text": "Factory",
       "url": "/cache#factory"
     },
     {
@@ -493,33 +493,33 @@
       "url": "/cache#output-fragments",
       "menu": [
         {
-          "text": "Caching data sewenang-wenang",
+          "text": "Caching Arbitrary Data",
           "url": "/cache#arbitrary-data"
         },
         {
-          "text": "Contoh File Backend",
+          "text": "File Backend Example",
           "url": "/cache#backend-file-example"
         },
         {
-          "text": "Contoh",
+          "text": "Memcached Backend Example",
           "url": "/cache#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "Memeriksa cache",
+      "text": "Querying the cache",
       "url": "/cache#read"
     },
     {
-      "text": "Menghapus data dari cache",
+      "text": "Deleting data from the cache",
       "url": "/cache#delete"
     },
     {
-      "text": "Memeriksa keberadaan cache",
+      "text": "Checking cache existence",
       "url": "/cache#exists"
     },
     {
-      "text": "Seumur hidup",
+      "text": "Lifetime",
       "url": "/cache#lifetime"
     },
     {
@@ -527,57 +527,57 @@
       "url": "/cache#multi-level"
     },
     {
-      "text": "Adapter ujung depan",
+      "text": "Frontend Adapters",
       "url": "/cache#adapters-frontend",
       "menu": [
         {
-          "text": "Menerapkan adapter Frontend Anda sendiri",
+          "text": "Implementing your own Frontend adapters",
           "url": "/cache#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "Adaptor ujung belakang",
+      "text": "Backend Adapters",
       "url": "adapters-backend",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/cache#adapters-backend-factory"
         },
         {
-          "text": "Menerapkan adaptor Backend Anda sendiri",
+          "text": "Implementing your own Backend adapters",
           "url": "/cache#adapters-backend-custom"
         },
         {
-          "text": "Pilihan Berkas Backend",
+          "text": "File Backend Options",
           "url": "/cache#adapters-backend-file"
         },
         {
-          "text": "Pilihan Backend Libmemcached",
+          "text": "Libmemcached Backend Options",
           "url": "/cache#adapters-backend-libmemcached"
         },
         {
-          "text": "Memanggil Pilihan Punggung",
+          "text": "Memcache Backend Options",
           "url": "/cache#adapters-backend-memcache"
         },
         {
-          "text": "Pilihan Backend APC",
+          "text": "APC Backend Options",
           "url": "/cache#adapters-backend-apc"
         },
         {
-          "text": "Pilihan Backend APCU",
+          "text": "APCU Backend Options",
           "url": "/cache#adapters-backend-apcu"
         },
         {
-          "text": "Pilihan Backend Apcu",
+          "text": "Mongo Backend Options",
           "url": "/cache#adapters-backend-mongo"
         },
         {
-          "text": "Xpilihan Cache Backend",
+          "text": "XCache Backend Options",
           "url": "/cache#adapters-backend-xcache"
         },
         {
-          "text": "Pilihan Reden Backend",
+          "text": "Redis Backend Options",
           "url": "/cache#adapters-backend-redis"
         }
       ]
@@ -585,17 +585,17 @@
   ],
   "config": [
     {
-      "text": "Membaca konfigurasi",
+      "text": "Reading Configurations",
       "url": "/config#overview",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/config#factory"
         }
       ]
     },
     {
-      "text": "Array asli",
+      "text": "Native Arrays",
       "url": "/config#native-arrays"
     },
     {
@@ -603,7 +603,7 @@
       "url": "/config#file-adapter"
     },
     {
-      "text": "Membaca file INI",
+      "text": "Reading INI Files",
       "url": "/config#ini-files"
     },
     {
@@ -611,57 +611,57 @@
       "url": "/config#merging"
     },
     {
-      "text": "Konfigurasi bersarang",
+      "text": "Nested Configuration",
       "url": "/config#nested-configuration"
     },
     {
-      "text": "Ketergantungan Konfigurasi Suntik",
+      "text": "Injecting Configuration Dependency",
       "url": "/config#injecting-into-di"
     }
   ],
   "contributions": [
     {
-      "text": "Berkontribusi untuk Phalcon",
+      "text": "Contributing to Phalcon",
       "url": "/contributions#contributing"
     },
     {
-      "text": "Kontribusi",
+      "text": "Contributions",
       "url": "/contributions#contributions"
     },
     {
-      "text": "Dukungan dan Pertanyaan",
+      "text": "Questions and Support",
       "url": "/contributions#file-adapter"
     },
     {
-      "text": "Daftar periksa laporan Bug",
+      "text": "Bug Report Checklist",
       "url": "/contributions#bug-report-checklist",
       "menu": [
         {
-          "text": "Membangkitkan backtrace",
+          "text": "Generating a backtrace",
           "url": "/contributions#bug-report-generating-backtrace"
         }
       ]
     },
     {
-      "text": "Daftar Permintaan",
+      "text": "Pull Request Checklist",
       "url": "/contributions#pull-request-checklist"
     },
     {
-      "text": "Mendapatkan Dukungan",
+      "text": "Getting Support",
       "url": "/contributions#getting-support"
     },
     {
-      "text": "Meminta Fitur",
+      "text": "Requesting Features",
       "url": "/contributions#requesting-features"
     }
   ],
   "controllers": [
     {
-      "text": "Sekilas",
+      "text": "Overview",
       "url": "/controllers#overview"
     },
     {
-      "text": "Kontrol penggunaan",
+      "text": "Using Controllers",
       "url": "/controllers#using"
     },
     {
@@ -673,109 +673,109 @@
       "url": "/controllers#initializing"
     },
     {
-      "text": "menyuntikkan Layanan",
+      "text": "Injecting Services",
       "url": "/controllers#injecting-services"
     },
     {
-      "text": "Pertanyaan dan tanggapan",
+      "text": "Request and Response",
       "url": "/controllers#request-response"
     },
     {
-      "text": "Sesi Data",
+      "text": "Session Data",
       "url": "/controllers#session-data"
     },
     {
-      "text": "Menggunakan Layanan untuk kontrol",
+      "text": "Using Services as Controllers",
       "url": "/controllers#services"
     },
     {
-      "text": "Kontrol pada acara",
+      "text": "Events in Controllers",
       "url": "/controllers#events"
     }
   ],
   "cookies": [
     {
-      "text": "Manajemen kue",
+      "text": "Cookies Management",
       "url": "/cookies#overview"
     },
     {
-      "text": "Penggunaan Dasar",
+      "text": "Basic Usage",
       "url": "/cookies#usage"
     },
     {
-      "text": "Enkripsi/Dekripsi Cookie",
+      "text": "Encryption/Decryption of Cookies",
       "url": "/cookies#encryption-decryption"
     }
   ],
   "crypt": [
     {
-      "text": "Enkripsi/dekripsi",
+      "text": "Encryption/Decryption",
       "url": "/crypt$overview"
     },
     {
-      "text": "Penggunaan Dasar",
+      "text": "Basic Usage",
       "url": "/crypt$usage"
     },
     {
-      "text": "Pilihan enkripsi",
+      "text": "Encryption Options",
       "url": "/crypt$options"
     },
     {
-      "text": "Dukungan Base64",
+      "text": "Base64 Support",
       "url": "/crypt$base64"
     },
     {
-      "text": "Menyiapkan layanan Enkripsi",
+      "text": "Setting up an Encryption service",
       "url": "/crypt$service"
     },
     {
-      "text": "Tautan",
+      "text": "Links",
       "url": "/crypt$links"
     }
   ],
   "db-layer": [
     {
-      "text": "Lapisan Abstraksi Database",
+      "text": "Database Abstraction Layer",
       "url": "/db-layer#overview"
     },
     {
-      "text": "Adaptor Basis Data",
+      "text": "Database Adapters",
       "url": "/db-layer#adapters",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/db-layer#adapters-factory"
         },
         {
-          "text": "Menerapkan adapter Anda sendiri",
+          "text": "Implementing your own adapters",
           "url": "/db-layer#adapters-custom"
         }
       ]
     },
     {
-      "text": "Dialek Database",
+      "text": "Database Dialects",
       "url": "/db-layer#dialects",
       "menu": [
         {
-          "text": "Menerapkan dialek Anda sendiri",
+          "text": "Implementing your own dialects",
           "url": "/db-layer#dialects-custom"
         }
       ]
     },
     {
-      "text": "Menghubungkan ke Database",
+      "text": "Connecting to Databases",
       "url": "/db-layer#connection"
     },
     {
-      "text": "Menyiapkan pilihan PDO tambahan",
+      "text": "Setting up additional PDO options",
       "url": "/db-layer#options"
     },
     {
-      "text": "Menemukan baris",
+      "text": "Finding Rows",
       "url": "/db-layer#finding-rows"
     },
     {
-      "text": "Parameter pengikatan",
+      "text": "Binding Parameters",
       "url": "/db-layer#binding-parameters"
     },
     {
@@ -791,7 +791,7 @@
       "url": "/db-layer#events"
     },
     {
-      "text": "Profil Pernyataan SQL",
+      "text": "Profiling SQL Statements",
       "url": "/db-layer#profiling"
     },
     {
@@ -827,43 +827,43 @@
   ],
   "db-migrations": [
     {
-      "text": "Migrasi Database",
+      "text": "Database Migrations",
       "url": "/db-migrations#overview"
     },
     {
-      "text": "Skema Dumping",
+      "text": "Schema Dumping",
       "url": "/db-migrations#schema-dumping"
     },
     {
-      "text": "Anatomi Kelas Migrasi",
+      "text": "Migration Class Anatomy",
       "url": "/db-migrations#class-anatomy",
       "menu": [
         {
-          "text": "Mendefinisikan Kolom",
+          "text": "Defining Columns",
           "url": "/db-migrations#class-anatomy-columns"
         },
         {
-          "text": "Mendefinisikan Indeks",
+          "text": "Defining Indexes",
           "url": "/db-migrations#class-anatomy-indexes"
         },
         {
-          "text": "Mendefinisikan Referensi",
+          "text": "Defining References",
           "url": "/db-migrations#class-anatomy-references"
         }
       ]
     },
     {
-      "text": "Menuliskan Migrasi",
+      "text": "Writing Migrations",
       "url": "/db-migrations#writing"
     },
     {
-      "text": "Menjalankan migrasi",
+      "text": "Running Migrations",
       "url": "/db-migrations#running"
     }
   ],
   "db-models-behaviors": [
     {
-      "text": "Perilaku Model",
+      "text": "Model Behaviors",
       "url": "/db-models-behaviors#overview"
     },
     {
@@ -875,25 +875,25 @@
       "url": "softdelete"
     },
     {
-      "text": "Menciptakan tingkah lakunya sendiri",
+      "text": "Creating your own behaviors",
       "url": "/db-models-behaviors#create-your-own-behaviors"
     },
     {
-      "text": "Menggunakan sifat sebagai perilaku",
+      "text": "Using Traits as behaviors",
       "url": "/db-models-behaviors#traits-as-behaviors"
     }
   ],
   "db-models-cache": [
     {
-      "text": "Caching ORM",
+      "text": "ORM Caching",
       "url": "/db-models-cache#overview"
     },
     {
-      "text": "Hasil Caching",
+      "text": "Caching Resultsets",
       "url": "/db-models-cache#caching-resultsets"
     },
     {
-      "text": "Memaksa Cache",
+      "text": "Forcing Cache",
       "url": "/db-models-cache#forcing-cache"
     },
     {
@@ -901,41 +901,41 @@
       "url": "/db-models-cache#caching-phql-queries"
     },
     {
-      "text": "Catatan Terkait Reusable",
+      "text": "Reusable Related Records",
       "url": "/db-models-cache#reusable-related-records"
     },
     {
-      "text": "Catatan Terkait Caching",
+      "text": "Caching Related Records",
       "url": "/db-models-cache#caching-related-records"
     },
     {
-      "text": "Catatan Terkait Caching secara rekursif",
+      "text": "Caching Related Records Recursively",
       "url": "/db-models-cache#caching-related-records-recursively"
     },
     {
-      "text": "Caching berdasarkan Kondisi",
+      "text": "Caching based on Conditions",
       "url": "/db-models-cache#caching-based-on-conditions"
     },
     {
-      "text": "Caching rencana eksekusi PHQL",
+      "text": "Caching PHQL execution plan",
       "url": "/db-models-cache#caching-phql-execution-plan"
     }
   ],
   "db-models-events": [
     {
-      "text": "Model acara",
+      "text": "Model Events",
       "url": "/db-models-events#overview"
     },
     {
-      "text": "Manajer Acara dan Acara",
+      "text": "Events and Events Manager",
       "url": "/db-models-events#events",
       "menu": [
         {
-          "text": "Melaksanakan Acara di kelas Model",
+          "text": "Implementing Events in the Model's class",
           "url": "/db-models-events#events-in-models"
         },
         {
-          "text": "Menggunakan Pengelola Peristiwa khusus",
+          "text": "Using a custom Events Manager",
           "url": "/db-models-events#custom-events-manager"
         }
       ]
@@ -945,7 +945,7 @@
       "url": "/db-models-events#logging-sql-statements"
     },
     {
-      "text": "Profil Pernyataan SQL",
+      "text": "Profiling SQL Statements",
       "url": "/db-models-events#profiling-sql-statements"
     }
   ],
@@ -959,15 +959,15 @@
       "url": "/db-models-metadata#caching-metadata"
     },
     {
-      "text": "Strategi Metadata",
+      "text": "Metadata Strategies",
       "url": "/db-models-metadata#metadata-strategies",
       "menu": [
         {
-          "text": "Strategi Introspeksi Database",
+          "text": "Database Introspection Strategy",
           "url": "/db-models-metadata#strategies-database-introspection",
           "menu": [
             {
-              "text": "Strategi Anotasi",
+              "text": "Annotations Strategy",
               "url": "/db-models-metadata#strategies-annotations"
             }
           ]
@@ -975,13 +975,13 @@
       ]
     },
     {
-      "text": "Metadata manual",
+      "text": "Manual Metadata",
       "url": "/db-models-metadata#strategies-manual"
     }
   ],
   "db-models-relationships": [
     {
-      "text": "Model Hubungan",
+      "text": "Model Relationships",
       "url": "/db-models-relationships#overview"
     },
     {
@@ -989,15 +989,15 @@
       "url": "/db-models-relationships#relationships",
       "menu": [
         {
-          "text": "Hubungan yang searah",
+          "text": "Unidirectional relationships",
           "url": "/db-models-relationships#unidirectional"
         },
         {
-          "text": "Hubungan dua arah",
+          "text": "Bidirectional relations",
           "url": "/db-models-relationships#bidirectional"
         },
         {
-          "text": "Mendefinisikan hubungan",
+          "text": "Defining relationships",
           "url": "/db-models-relationships#defining",
           "menu": [
             {
@@ -1011,15 +1011,15 @@
           ]
         },
         {
-          "text": "Mengambil keuntungan dari hubungan",
+          "text": "Taking advantage of relationships",
           "url": "/db-models-relationships#taking-advantage-of"
         },
         {
-          "text": "Aliasing Hubungan",
+          "text": "Aliasing Relationships",
           "url": "/db-models-relationships#aliases",
           "menu": [
             {
-              "text": "Magic Getter vs Eksplisit metode",
+              "text": "Magic Getters vs. Explicit methods",
               "url": "/db-models-relationships#getters-vs-methods"
             }
           ]
@@ -1027,29 +1027,29 @@
       ]
     },
     {
-      "text": "Kunci asing virtual",
+      "text": "Virtual Foreign Keys",
       "url": "/db-models-relationships#virtual-foreign-keys",
       "menu": [
         {
-          "text": "Cascade/Membatasi tindakan",
+          "text": "Cascade/Restrict actions",
           "url": "/db-models-relationships#cascade-restrict-actions"
         }
       ]
     },
     {
-      "text": "Menyimpan Catatan Yang Terkait",
+      "text": "Storing Related Records",
       "url": "/db-models-relationships#storing-related-records"
     },
     {
-      "text": "Atur hasil operasinya di atas",
+      "text": "Operations over Resultsets",
       "url": "/db-models-relationships#operations-over-resultsets",
       "menu": [
         {
-          "text": "Memperbarui catatan yang terkait",
+          "text": "Updating related records",
           "url": "/db-models-relationships#updating-related-records"
         },
         {
-          "text": "Menghapus catatan yang terkait",
+          "text": "Deleting related records",
           "url": "/db-models-relationships#deleting-related-records"
         }
       ]
@@ -1057,141 +1057,141 @@
   ],
   "db-models-transactions": [
     {
-      "text": "Transaksi Model",
+      "text": "Model Transactions",
       "url": "/db-models-transactions#overview"
     },
     {
-      "text": "Manual Transaksi",
+      "text": "Manual Transactions",
       "url": "/db-models-transactions#manual"
     },
     {
-      "text": "Implisit Transaksi",
+      "text": "Implicit Transactions",
       "url": "/db-models-transactions#implicit"
     },
     {
-      "text": "Terpencil Transaksi",
+      "text": "Isolated Transactions",
       "url": "/db-models-transactions#isolated"
     }
   ],
   "db-models-validation": [
     {
-      "text": "Transaksi Model",
+      "text": "Model Transactions",
       "url": "/db-models-validation#overview"
     },
     {
-      "text": "Memvalidasi Integritas Data",
+      "text": "Validating Data Integrity",
       "url": "/db-models-validation#data-integrity"
     },
     {
-      "text": "Pesan validasi",
+      "text": "Validation Messages",
       "url": "/db-models-validation#messages"
     },
     {
-      "text": "Validasi Gagal",
+      "text": "Validation Failed Events",
       "url": "/db-models-validation#failed-events"
     }
   ],
   "db-models": [
     {
-      "text": "Bekerja dengan Model",
+      "text": "Working with Models",
       "url": "/db-models#working-with"
     },
     {
-      "text": "Membuat Model",
+      "text": "Creating Models",
       "url": "/db-models#creating",
       "menu": [
         {
-          "text": "Properti umum vs. Penjadwal / Getters",
+          "text": "Public properties vs. Setters/Getters",
           "url": "/db-models#properties-setters-getters"
         }
       ]
     },
     {
-      "text": "Memahami Rekaman Untuk Objek",
+      "text": "Understanding Records To Objects",
       "url": "/db-models#records-to-objects"
     },
     {
-      "text": "Menemukan catatan",
+      "text": "Finding Records",
       "url": "/db-models#finding-records",
       "menu": [
         {
-          "text": "Hasil Model",
+          "text": "Model Resultsets",
           "url": "/db-models#resultsets"
         },
         {
-          "text": "Menyaring Hasil",
+          "text": "Filtering Resultsets",
           "url": "/db-models#filters"
         },
         {
-          "text": "Parameter pengikatan",
+          "text": "Binding Parameters",
           "url": "/db-models#binding-parameters"
         }
       ]
     },
     {
-      "text": "Menginisialisasi / Menyiapkan catatan yang diambil",
+      "text": "Initializing/Preparing fetched records",
       "url": "/db-models#preparing-records"
     },
     {
-      "text": "Menghasilkan Perhitungan",
+      "text": "Generating Calculations",
       "url": "/db-models#calculations"
     },
     {
-      "text": "Membuat / Memperbarui Rekaman",
+      "text": "Creating/Updating Records",
       "url": "/db-models#create-update-records",
       "menu": [
         {
-          "text": "Buat / Update dengan Keyakinan",
+          "text": "Create/Update with Confidence",
           "url": "/db-models#create-update-with-confidence"
         }
       ]
     },
     {
-      "text": "Menghapus catatan",
+      "text": "Deleting Records",
       "url": "/db-models#delete-records"
     },
     {
-      "text": "Mode hidrasi",
+      "text": "Hydration Modes",
       "url": "/db-models#hydration-modes"
     },
     {
-      "text": "Kolom identitas yang dibuat otomatis",
+      "text": "Auto-generated identity columns",
       "url": "/db-models#identity-columns"
     },
     {
-      "text": "Lompati Kolom",
+      "text": "Skipping Columns",
       "url": "/db-models#skipping-columns"
     },
     {
-      "text": "Pembaruan Dinamis",
+      "text": "Dynamic Updates",
       "url": "/db-models#dynamic-updates"
     },
     {
-      "text": "Pemetaan Kolom Independen",
+      "text": "Independent Column Mapping",
       "url": "/db-models#column-mapping"
     },
     {
-      "text": "Rekam Snapshots",
+      "text": "Record Snapshots",
       "url": "/db-models#record-snapshots"
     },
     {
-      "text": "Menunjuk ke skema yang berbeda",
+      "text": "Pointing to a different schema",
       "url": "/db-models#different-schemas"
     },
     {
-      "text": "Menetapkan beberapa database",
+      "text": "Setting multiple databases",
       "url": "/db-models#multiple-databases"
     },
     {
-      "text": "Menyuntikkan layanan ke dalam Model",
+      "text": "Injecting services into Models",
       "url": "/db-models#injecting-services-into-models"
     },
     {
-      "text": "Menonaktifkan/Mengaktifkan Fitur",
+      "text": "Disabling/Enabling Features",
       "url": "/db-models#disabling-enabling-features"
     },
     {
-      "text": "Berdiri Sendiri komponen",
+      "text": "Stand-Alone component",
       "url": "/db-models#stand-alone-component"
     }
   ],
@@ -1201,23 +1201,23 @@
       "url": "/db-odm#overview"
     },
     {
-      "text": "Membuat Model",
+      "text": "Creating Models",
       "url": "/db-odm#creating-models"
     },
     {
-      "text": "Memahami Dokumen Untuk Objek",
+      "text": "Understanding Documents To Objects",
       "url": "/db-odm#documents-to-objects"
     },
     {
-      "text": "Model di Namespaces",
+      "text": "Models in Namespaces",
       "url": "/db-odm#namespaces"
     },
     {
-      "text": "Mengatur Koneksi",
+      "text": "Setting a Connection",
       "url": "/db-odm#connection-setup"
     },
     {
-      "text": "Mencari Dokumen",
+      "text": "Finding Documents",
       "url": "/db-odm#finding-documents"
     },
     {
@@ -1229,11 +1229,11 @@
       "url": "/db-odm#creating-updating",
       "menu": [
         {
-          "text": "Pesan validasi",
+          "text": "Validation Messages",
           "url": "/db-odm#validation-messages"
         },
         {
-          "text": "Validasi Acara dan Event Manager",
+          "text": "Validation Events and Events Manager",
           "url": "/db-odm#events"
         },
         {
@@ -1241,17 +1241,17 @@
           "url": "/db-odm#business-rules"
         },
         {
-          "text": "Memvalidasi Integritas Data",
+          "text": "Validating Data Integrity",
           "url": "/db-odm#data-integrity"
         }
       ]
     },
     {
-      "text": "Menghapus catatan",
+      "text": "Deleting Records",
       "url": "/db-odm#deleting-records"
     },
     {
-      "text": "Validasi Gagal",
+      "text": "Validation Failed Events",
       "url": "/db-odm#validation-failed-events"
     },
     {
@@ -1259,11 +1259,11 @@
       "url": "/db-odm#ids-vs-primary-keys"
     },
     {
-      "text": "Menetapkan beberapa database",
+      "text": "Setting multiple databases",
       "url": "/db-odm#multiple-databases"
     },
     {
-      "text": "Menyuntikkan layanan ke dalam Model",
+      "text": "Injecting services into Models",
       "url": "/db-odm#services-in-models"
     }
   ],
@@ -1273,11 +1273,11 @@
       "url": "/db-pagination#overview"
     },
     {
-      "text": "Data Adaptor",
+      "text": "Data Adapters",
       "url": "/db-pagination#data-adapters"
     },
     {
-      "text": "Pabrik",
+      "text": "Factory",
       "url": "/db-pagination#factory"
     },
     {
@@ -1293,7 +1293,7 @@
       "url": "/db-pagination#page-attributes"
     },
     {
-      "text": "Menerapkan adapter Anda sendiri",
+      "text": "Implementing your own adapters",
       "url": "/db-pagination#custom"
     }
   ],
@@ -1303,23 +1303,23 @@
       "url": "/db-phql#overview"
     },
     {
-      "text": "Contoh penggunaan",
+      "text": "Usage Example",
       "url": "/db-phql#usage"
     },
     {
-      "text": "Membuat Pertanyaan PHQL",
+      "text": "Creating PHQL Queries",
       "url": "/db-phql#creating"
     },
     {
-      "text": "Memilih Rekaman",
+      "text": "Selecting Records",
       "url": "/db-phql#selecting-records",
       "menu": [
         {
-          "text": "Jenis hasil",
+          "text": "Result Types",
           "url": "/db-phql#result-types"
         },
         {
-          "text": "Bergabung",
+          "text": "Joins",
           "url": "/db-phql#joins"
         },
         {
@@ -1327,43 +1327,43 @@
           "url": "/db-phql#aggregations"
         },
         {
-          "text": "Kondisi",
+          "text": "Conditions",
           "url": "/db-phql#conditions"
         }
       ]
     },
     {
-      "text": "Memasukkan Data",
+      "text": "Inserting Data",
       "url": "/db-phql#inserting-data"
     },
     {
-      "text": "Memperbarui Data",
+      "text": "Updating Data",
       "url": "/db-phql#updating-data"
     },
     {
-      "text": "Menghapus data",
+      "text": "Deleting Data",
       "url": "/db-phql#deleting-data"
     },
     {
-      "text": "Membuat pertanyaan menggunakan Pertanyaan Pembangun",
+      "text": "Creating queries using the Query Builder",
       "url": "/db-phql#query-builder",
       "menu": [
         {
-          "text": "Parameter terikat",
+          "text": "Bound Parameters",
           "url": "/db-phql#query-builder-parameters"
         }
       ]
     },
     {
-      "text": "Menilak literal di PHQL",
+      "text": "Disallow literals in PHQL",
       "url": "/db-phql#disallow-literals"
     },
     {
-      "text": "Melarikan diri kata cadangan",
+      "text": "Escaping Reserved Words",
       "url": "/db-phql#escaping-reserved-words"
     },
     {
-      "text": "OHQL lingkaran kehidupan",
+      "text": "PHQL Lifecycle",
       "url": "/db-phql#lifecycle"
     },
     {
@@ -1371,7 +1371,7 @@
       "url": "/db-phql#raw-sql"
     },
     {
-      "text": "Penyelesaian masalah",
+      "text": "Troubleshooting",
       "url": "/db-phql#troubleshooting"
     }
   ],
@@ -1381,7 +1381,7 @@
       "url": "/debug#overview"
     },
     {
-      "text": "Penangkapan pengecualian",
+      "text": "Catching Exceptions",
       "url": "/debug#catching-exceptions"
     },
     {
@@ -1403,11 +1403,11 @@
       "url": "/devtools-installation#overview"
     },
     {
-      "text": "Prasyarat",
+      "text": "Prerequisites",
       "url": "/devtools-installation#prerequisites"
     },
     {
-      "text": "Pemasangan",
+      "text": "Installation",
       "url": "/devtools-installation#installation",
       "menu": [
         {
@@ -1419,7 +1419,7 @@
           "url": "/devtools-installation#installation-mac"
         },
         {
-          "text": "Jendela",
+          "text": "Windows",
           "url": "/devtools-installation#installation-windows",
           "menu": [
             {
@@ -1433,35 +1433,35 @@
   ],
   "devtools-usage": [
     {
-      "text": "Phalcon Alat Pengembang",
+      "text": "Phalcon Developer Tools",
       "url": "/devtools-usage#overview"
     },
     {
-      "text": "Unduh",
+      "text": "Download",
       "url": "/devtools-usage#download"
     },
     {
-      "text": "Pemasangan",
+      "text": "Installation",
       "url": "/devtools-usage#installation"
     },
     {
-      "text": "Perintah yanag tersedia",
+      "text": "Available Commands",
       "url": "/devtools-usage#available-commands"
     },
     {
-      "text": "Menghasilkan kerangka proyek",
+      "text": "Generating a Project Skeleton",
       "url": "/devtools-usage#project-skeleton"
     },
     {
-      "text": "Menghasilkan controller",
+      "text": "Generating Controllers",
       "url": "/devtools-usage#generating-controllers"
     },
     {
-      "text": "Mempersiapkan pengaturan Database",
+      "text": "Preparing Database Settings",
       "url": "/devtools-usage#database-settings"
     },
     {
-      "text": "Membuat Model",
+      "text": "Generating Models",
       "url": "/devtools-usage#generating-models"
     },
     {
@@ -1469,15 +1469,15 @@
       "url": "/devtools-usage#crud"
     },
     {
-      "text": "Antarmuka web Tools",
+      "text": "Web Interface to Tools",
       "url": "/devtools-usage#web-interface"
     },
     {
-      "text": "Mengintegrasikan alat dengan PhpStorm IDE",
+      "text": "Integrating Tools with PhpStorm IDE",
       "url": "/devtools-usage#phpstorm-ide"
     },
     {
-      "text": "Kesimpulan",
+      "text": "Conclusion",
       "url": "/devtools-usage#conclusion"
     }
   ],
@@ -1487,45 +1487,45 @@
       "url": "/di#di-service-location"
     },
     {
-      "text": "Penjelasan tentang DI",
+      "text": "DI explained",
       "url": "/di#di-explained"
     },
     {
-      "text": "Pendaftaran Layanan dalam wadah",
+      "text": "Registering services in the Container",
       "url": "/di#registering-services",
       "menu": [
         {
-          "text": "Pendaftaran sederhana",
+          "text": "Simple Registration",
           "url": "/di#simple-registration",
           "menu": [
             {
-              "text": "Rangkaian",
+              "text": "String",
               "url": "/di#simple-registration-string"
             },
             {
-              "text": "Contoh kelas",
+              "text": "Class instances",
               "url": "/di#class-instances"
             },
             {
-              "text": "Penutupan anonim fungsi",
+              "text": "Closures/Anonymous functions",
               "url": "/di#closures-anonymous-functions"
             }
           ]
         },
         {
-          "text": "Pendaftaran sederhana",
+          "text": "Complex Registration",
           "url": "/di#complex-registration",
           "menu": [
             {
-              "text": "Konstruktor injeksi",
+              "text": "Constructor Injection",
               "url": "/di#constructor-injection"
             },
             {
-              "text": "Setter injeksi",
+              "text": "Setter Injection",
               "url": "/di#setter-injection"
             },
             {
-              "text": "Sifat injeksi",
+              "text": "Properties Injection",
               "url": "/di#properties-injection"
             }
           ]
@@ -1537,49 +1537,49 @@
       ]
     },
     {
-      "text": "Menyelesaikan Layanan",
+      "text": "Resolving Services",
       "url": "/di#resolving-services",
       "menu": [
         {
-          "text": "Kegiatan",
+          "text": "Events",
           "url": "/di#events"
         }
       ]
     },
     {
-      "text": "Layanan bersama",
+      "text": "Shared services",
       "url": "/di#shared-services"
     },
     {
-      "text": "Memanipulasi layanan individual",
+      "text": "Manipulating services individually",
       "url": "/di#manipulating-services-individually"
     },
     {
-      "text": "Instantiating kelas melalui wadah Layanan",
+      "text": "Instantiating classes via the Service Container",
       "url": "/di#instantiating-classes-service-container"
     },
     {
-      "text": "Otomatis Injecting DI sendiri",
+      "text": "Automatic Injecting of the DI itself",
       "url": "/di#automatic-injecting-di-itself"
     },
     {
-      "text": "Mengatur layanan dalam file",
+      "text": "Organizing services in files",
       "url": "/di#organizing-services-files"
     },
     {
-      "text": "Mengakses DI di jalan statis",
+      "text": "Accessing the DI in a static way",
       "url": "/di#accessing-di-static-way"
     },
     {
-      "text": "Pabrik Default DI",
+      "text": "Factory Default DI",
       "url": "/di#factory-default-di"
     },
     {
-      "text": "Layanan nama Konvensi",
+      "text": "Service Name Conventions",
       "url": "/di#service-name-conventions"
     },
     {
-      "text": "Menerapkan adaptor Anda sendiri",
+      "text": "Implementing your own DI",
       "url": "/di#implementing-your-own-di"
     }
   ],
@@ -1621,7 +1621,7 @@
           "url": "/dispatcher#preparing-actions-removing-legacy-extensions"
         },
         {
-          "text": "Menyuntikkan contoh model",
+          "text": "Inject model instances",
           "url": "/dispatcher#preparing-actions-inject-model-instances"
         }
       ]
@@ -1675,71 +1675,71 @@
       "url": "/escaper#overview"
     },
     {
-      "text": "Keluar dari HTML",
+      "text": "Escaping HTML",
       "url": "/escaper#html"
     },
     {
-      "text": "Keluar atribut HTML",
+      "text": "Escaping HTML Attributes",
       "url": "/escaper#html-attributes"
     },
     {
-      "text": "Keluar dari URL",
+      "text": "Escaping URLs",
       "url": "/escaper#urls"
     },
     {
-      "text": "Keluar dari CSS",
+      "text": "Escaping CSS",
       "url": "/escaper#css"
     },
     {
-      "text": "Keluar dari javaScript",
+      "text": "Escaping JavaScript",
       "url": "/escaper#javascript"
     }
   ],
   "events": [
     {
-      "text": "Pengatur Acara",
+      "text": "Events Manager",
       "url": "/events#overview"
     },
     {
-      "text": "Persetujuan Menamai",
+      "text": "Naming Convention",
       "url": "/events#naming-convention"
     },
     {
-      "text": "Contoh penggunaan",
+      "text": "Usage Example",
       "url": "/events#usage"
     },
     {
-      "text": "Mencipta bagian-bagian yang memicu Acara",
+      "text": "Creating components that trigger Events",
       "url": "/events#components-that-trigger-events"
     },
     {
-      "text": "Menggunakan Layanan Dari DI",
+      "text": "Using Services From The DI",
       "url": "/events#using-services"
     },
     {
-      "text": "Peristiwa Propaganda/Pembatalan",
+      "text": "Event Propagation/Cancellation",
       "url": "/events#propagation-cancellation"
     },
     {
-      "text": "Prioaritas Pendengar",
+      "text": "Listener Priorities",
       "url": "/events#listener-priorities"
     },
     {
-      "text": "Mengumpulkan Tanggapan",
+      "text": "Collecting Responses",
       "url": "/events#collecting-responses"
     },
     {
-      "text": "Melaksanakan EventsManager milik kamu sendiri",
+      "text": "Implementing your own EventsManager",
       "url": "/events#custom"
     },
     {
-      "text": "Daftar Acara",
+      "text": "List of events",
       "url": "/events#list"
     }
   ],
   "filter": [
     {
-      "text": "Penyaringan dan Sanitasi",
+      "text": "Filtering and Sanitizing",
       "url": "/filter"
     },
     {
@@ -1781,19 +1781,19 @@
   ],
   "flash": [
     {
-      "text": "Pesan berkedip",
+      "text": "Flashing Messages",
       "url": "/flash#overview"
     },
     {
-      "text": "Adaptor",
+      "text": "Adapters",
       "url": "/flash#adapters"
     },
     {
-      "text": "Pemakaian",
+      "text": "Usage",
       "url": "/flash#usage"
     },
     {
-      "text": "Mencetak Pesan",
+      "text": "Printing Messages",
       "url": "/flash#printing"
     },
     {
@@ -1803,7 +1803,7 @@
   ],
   "forms": [
     {
-      "text": "Formulir",
+      "text": "Forms",
       "url": "/forms#overview"
     },
     {
@@ -1839,57 +1839,57 @@
       "url": "/forms#manager"
     },
     {
-      "text": "Sumber Eksternal",
+      "text": "External Resources",
       "url": "/forms#external"
     }
   ],
   "i18n": [
     {
-      "text": "Internasionalisasi",
+      "text": "Internationalization",
       "url": "/i18n#overview"
     },
     {
-      "text": "Temukan Lokal terbaik yang tersedia",
+      "text": "Find out best available Locale",
       "url": "/i18n#best-locale"
     },
     {
-      "text": "Memformat pesan berdasarkan pada lokal",
+      "text": "Formatting messages based on Locale",
       "url": "/i18n#formatting-messages"
     },
     {
-      "text": "Perbandingan Lokal-Sensitif",
+      "text": "Locale-Sensitive comparison",
       "url": "/i18n#locale-comparison"
     },
     {
-      "text": "Transliterasi",
+      "text": "Transliteration",
       "url": "/i18n#transliteration"
     }
   ],
   "image": [
     {
-      "text": "Gambar",
+      "text": "Images",
       "url": "/image#overview"
     },
     {
-      "text": "Adaptor",
+      "text": "Adapters",
       "url": "/image#adapters",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/image#adapters-factory"
         },
         {
-          "text": "Menerapkan adapter Anda sendiri",
+          "text": "Implementing your own adapters",
           "url": "/image#adapters-custom"
         }
       ]
     },
     {
-      "text": "Menyimpan dan merender gambar",
+      "text": "Saving and rendering images",
       "url": "/image#saving-rendering"
     },
     {
-      "text": "Ubah ukuran gambar",
+      "text": "Resizing images",
       "url": "/image#resizing",
       "menu": [
         {
@@ -1911,41 +1911,41 @@
       ]
     },
     {
-      "text": "Memotong gambar",
+      "text": "Cropping images",
       "url": "/image#cropping"
     },
     {
-      "text": "Memutar gambar",
+      "text": "Rotating images",
       "url": "/image#rotating"
     },
     {
-      "text": "Membalikkan gambar",
+      "text": "Flipping images",
       "url": "/image#flipping"
     },
     {
-      "text": "Mempertajam gambar",
+      "text": "Sharpening images",
       "url": "/image#sharpening"
     },
     {
-      "text": "Menambahkan tanda air ke gambar",
+      "text": "Adding watermarks to images",
       "url": "/image#watermarks"
     },
     {
-      "text": "Gambar kabur",
+      "text": "Blurring images",
       "url": "/image#blurring"
     },
     {
-      "text": "Gambar piksel",
+      "text": "Pixelating images",
       "url": "/image#pixelating"
     }
   ],
   "installation": [
     {
-      "text": "Requirements",
+      "text": "Installation",
       "url": "/installation"
     },
     {
-      "text": "Installation",
+      "text": "PSR",
       "url": "/installation-requirements-psr"
     },
     {
@@ -1953,11 +1953,11 @@
       "url": "/installation-requirements-pdo"
     },
     {
-      "text": "Perangkat Keras",
+      "text": "Hardware",
       "url": "/installation-requirements-hardware"
     },
     {
-      "text": "Perangkat Lunak",
+      "text": "Software",
       "url": "/installation-requirements-software"
     },
     {
@@ -1973,7 +1973,7 @@
       "url": "/installation-macos"
     },
     {
-      "text": "Jendela",
+      "text": "Windows",
       "url": "/installation-windows"
     },
     {
@@ -1987,43 +1987,43 @@
   ],
   "loader": [
     {
-      "text": "Persyaratan",
+      "text": "Requirements",
       "url": "/loader#overview"
     },
     {
-      "text": "Lapisan Keamanan",
+      "text": "Security Layer",
       "url": "/loader#security"
     },
     {
-      "text": "Mendaftar ruang nama",
+      "text": "Registering Namespaces",
       "url": "/loader#registering-namespaces"
     },
     {
-      "text": "Mendaftar Direktori",
+      "text": "Registering Directories",
       "url": "/loader#registering-directories"
     },
     {
-      "text": "Mendaftar Kelas",
+      "text": "Registering Classes",
       "url": "/loader#registering-classes"
     },
     {
-      "text": "Mendaftar Berkas",
+      "text": "Registering Files",
       "url": "/loader#registering-files"
     },
     {
-      "text": "Ekstensi berkas tambahan",
+      "text": "Additional file extensions",
       "url": "/loader#registering-file-extensions"
     },
     {
-      "text": "Memodifikasi strategi saat ini",
+      "text": "Modifying current strategies",
       "url": "/loader#modifying-current-strategies"
     },
     {
-      "text": "Autoloading Acara",
+      "text": "Autoloading Events",
       "url": "/loader#events"
     },
     {
-      "text": "Penyelesaian masalah",
+      "text": "Troubleshooting",
       "url": "/loader#troubleshooting"
     }
   ],
@@ -2033,7 +2033,7 @@
       "url": "/logger"
     },
     {
-      "text": "Adaptor",
+      "text": "Adapters",
       "url": "/logger-adapters"
     },
     {
@@ -2045,7 +2045,7 @@
       "url": "/logger-multiple"
     },
     {
-      "text": "Pemformatan pesan",
+      "text": "Message Formatting",
       "url": "/logger-message-formatting",
       "menu": [
         {
@@ -2077,65 +2077,65 @@
   ],
   "mvc": [
     {
-      "text": "Arsitektur MVC",
+      "text": "The MVC Architecture",
       "url": "/mvc#architecture"
     },
     {
-      "text": "Model",
+      "text": "Models",
       "url": "/mvc#models"
     },
     {
-      "text": "Lihat",
+      "text": "Views",
       "url": "/mvc#views"
     },
     {
-      "text": "Pengawas",
+      "text": "Controllers",
       "url": "/mvc#controllers"
     }
   ],
   "namespaces": [
     {
-      "text": "Bekerja dengan Ruangnama",
+      "text": "Working with Namespaces",
       "url": "/namespaces#setting-up"
     },
     {
-      "text": "Pengaturan kerangka kerja",
+      "text": "Setting up the framework",
       "url": "/namespaces#models"
     },
     {
-      "text": "Pengontrol dalam Ruangnama",
+      "text": "Controllers in Namespaces",
       "url": "/namespaces#controllers"
     },
     {
-      "text": "Model di Namespaces",
+      "text": "Models in Namespaces",
       "url": "/namespaces#models"
     }
   ],
   "performance": [
     {
-      "text": "Meningkatkan Kinerja",
+      "text": "Increasing Performance",
       "url": "/performance#overview"
     },
     {
-      "text": "Profil di Server",
+      "text": "Profile on the Server",
       "url": "/performance#profiling-server",
       "menu": [
         {
-          "text": "Profil dengan Xhprof",
+          "text": "Profiling with Xhprof",
           "url": "/performance#profiling-server-xhprof"
         },
         {
-          "text": "Profil Pernyataan SQL",
+          "text": "Profiling SQL Statements",
           "url": "/performance#profiling-server-sql-statements"
         }
       ]
     },
     {
-      "text": "Profil pada Klien",
+      "text": "Profile on the Client",
       "url": "/performance#profiling-client",
       "menu": [
         {
-          "text": "Profil dengan Chrome/Firefox",
+          "text": "Profile with Chrome/Firefox",
           "url": "/performance#profiling-client-chrome-firefox"
         },
         {
@@ -2143,25 +2143,25 @@
           "url": "/performance#profiling-client-yslow"
         },
         {
-          "text": "Profil dengan Kecepatan Tracer",
+          "text": "Profile with Speed Tracer",
           "url": "/performance#profiling-client-speed-tracer"
         }
       ]
     },
     {
-      "text": "Gunakan versi PHP terbaru",
+      "text": "Use a recent PHP version",
       "url": "/performance#php-version"
     },
     {
-      "text": "Gunakan versi PHP terbaru",
+      "text": "Use a PHP Bytecode Cache",
       "url": "/performance#bytecode-cache"
     },
     {
-      "text": "Apakah menghalangi pekerjaan di latar belakang",
+      "text": "Do blocking work in the background",
       "url": "/performance#background-tasks"
     },
     {
-      "text": "Kecepatan Google Page",
+      "text": "Google Page Speed",
       "url": "/performance#page-speed"
     }
   ],
@@ -2181,7 +2181,7 @@
   ],
   "reproducible-tests": [
     {
-      "text": "Membuat script sederhana",
+      "text": "Creating a small script",
       "url": "/reproducible-tests#overview"
     },
     {
@@ -2203,49 +2203,49 @@
   ],
   "request": [
     {
-      "text": "Permintaan lingkungan",
+      "text": "Request Environment",
       "url": "/request#overview"
     },
     {
-      "text": "Mendapatkan nilai",
+      "text": "Getting Values",
       "url": "/request#getting-values"
     },
     {
-      "text": "Mengakses permintaan dari pengontrol",
+      "text": "Accessing the Request from Controllers",
       "url": "/request#controller-access"
     },
     {
-      "text": "Menganpload berkas",
+      "text": "Uploading Files",
       "url": "/request#uploading-files"
     },
     {
-      "text": "Bekerja dengan header",
+      "text": "Working with Headers",
       "url": "/request#working-with-headers"
     }
   ],
   "response": [
     {
-      "text": "Tanggapan Kembali",
+      "text": "Returning Responses",
       "url": "/response#overview"
     },
     {
-      "text": "Bekerja dengan header",
+      "text": "Working with Headers",
       "url": "/response#working-with-headers"
     },
     {
-      "text": "Membuat Pengalihan",
+      "text": "Making Redirections",
       "url": "/response#redirections"
     },
     {
-      "text": "Cache HTTP",
+      "text": "HTTP Cache",
       "url": "/response#http-cache",
       "menu": [
         {
-          "text": "Mengatur Waktu Kadaluarsa",
+          "text": "Setting an Expiration Time",
           "url": "/response#http-cache-expiration-time"
         },
         {
-          "text": "Kontrol-Cache",
+          "text": "Cache-Control",
           "url": "/response#http-cache-control"
         },
         {
@@ -2261,7 +2261,7 @@
       "url": "/routing#overview"
     },
     {
-      "text": "Mendefinisikan Rute",
+      "text": "Defining Routes",
       "url": "/routing#defining",
       "menu": [
         {
@@ -2357,77 +2357,77 @@
   ],
   "security": [
     {
-      "text": "Keamanan",
+      "text": "Security",
       "url": "/security#overview"
     },
     {
-      "text": "Hashing Password",
+      "text": "Password Hashing",
       "url": "/security#hashing"
     },
     {
-      "text": "Permintaan Paten Lintas Situs (CSRF) perlindungan",
+      "text": "Cross-Site Request Forgery (CSRF) protection",
       "url": "/security#csrf"
     },
     {
-      "text": "Menyiapkan komponen",
+      "text": "Setting up the component",
       "url": "/security#setup"
     },
     {
-      "text": "Acak",
+      "text": "Random",
       "url": "/security#random"
     },
     {
-      "text": "Sumber Eksternal",
+      "text": "External Resources",
       "url": "/security#resources"
     }
   ],
   "session": [
     {
-      "text": "Menyimpan data dalam Sesi",
+      "text": "Storing data in the Session",
       "url": "/session#overview"
     },
     {
-      "text": "Memulai Sesi",
+      "text": "Starting the Session",
       "url": "/session#start",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/session#start-factory"
         }
       ]
     },
     {
-      "text": "Menyimpan/Mengambil data dalam Sesi",
+      "text": "Storing/Retrieving data in Session",
       "url": "/session#store"
     },
     {
-      "text": "Melepaskan/Menghancurkan Sesi",
+      "text": "Removing/Destroying Sessions",
       "url": "/session#remove-destroy"
     },
     {
-      "text": "Isolasi Sesi Data antar Aplikasi",
+      "text": "Isolating Session Data between Applications",
       "url": "/session#data-isolation"
     },
     {
-      "text": "Tas Sesi",
+      "text": "Session Bags",
       "url": "/session#bags"
     },
     {
-      "text": "Data Persistent dalam Komponen",
+      "text": "Persistent Data in Components",
       "url": "/session#data-persistence"
     },
     {
-      "text": "Menerapkan adapter Anda sendiri",
+      "text": "Implementing your own adapters",
       "url": "/session#custom-adapters"
     }
   ],
   "tag": [
     {
-      "text": "Lihat Pembantu (Tag)",
+      "text": "View Helpers (Tags)",
       "url": "/tag#overview"
     },
     {
-      "text": "Dokumen Jenis Konten",
+      "text": "Document Type of Content",
       "url": "/tag#document-type"
     },
     {
@@ -2455,17 +2455,17 @@
           "url": "/tag#helper-values-form-controllers"
         },
         {
-          "text": "Dari Permintaan",
+          "text": "From the Request",
           "url": "/tag#helper-values-from-request"
         },
         {
-          "text": "Menentukan nilai secara langsung",
+          "text": "Specifying values directly",
           "url": "/tag#helper-values-directly"
         }
       ]
     },
     {
-      "text": "Mengubah secara dinamis Judul Dokumen",
+      "text": "Changing dynamically the Document Title",
       "url": "/tag#changing-document-title-dynamically"
     },
     {
@@ -2473,7 +2473,7 @@
       "url": "/tag#static-content-helpers",
       "menu": [
         {
-          "text": "Gambar",
+          "text": "Images",
           "url": "/tag#static-content-helpers-images"
         },
         {
@@ -2501,111 +2501,111 @@
   ],
   "testing-environment": [
     {
-      "text": "Sekilas",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
-      "text": "Sekilas",
-      "url": "overview"
+      "text": "Overview",
+      "url": "#overview"
     },
     {
       "text": "The problem",
-      "url": "problem"
+      "url": "#problem"
     },
     {
       "text": "Solution",
-      "url": "solution"
+      "url": "#solution"
     },
     {
-      "text": "Pemasangan",
-      "url": "installation"
+      "text": "Installation",
+      "url": "#installation"
     },
     {
       "text": "Running the environment",
-      "url": "running",
+      "url": "#running",
       "menu": [
         {
           "text": "Fork the repository",
-          "url": "running-fork"
+          "url": "#running-fork"
         },
         {
           "text": "Clone the fork",
-          "url": "running-clone"
+          "url": "#running-clone"
         },
         {
           "text": "Copy the boxfile",
-          "url": "running-boxfile"
+          "url": "#running-boxfile"
         },
         {
           "text": "Configure nanobox",
-          "url": "running-nanobox-configure"
+          "url": "#running-nanobox-configure"
         },
         {
           "text": "Run nanobox",
-          "url": "running-nanobox-run"
+          "url": "#running-nanobox-run"
         },
         {
           "text": "Composer",
-          "url": "running-composer"
+          "url": "#running-composer"
         },
         {
           "text": "Check Zephir",
-          "url": "running-zephir"
+          "url": "#running-zephir"
         },
         {
           "text": "Compile Phalcon",
-          "url": "running-compile"
+          "url": "#running-compile"
         },
         {
           "text": "Check extensions",
-          "url": "running-extensions"
+          "url": "#running-extensions"
         }
       ]
     },
     {
       "text": "Running tests",
-      "url": "tests",
+      "url": "#tests",
       "menu": [
         {
           "text": "Unit",
-          "url": "tests-unit"
+          "url": "#tests-unit"
         },
         {
           "text": "Integration",
-          "url": "tests-integration"
+          "url": "#tests-integration"
         }
       ]
     },
     {
       "text": "Development",
-      "url": "development"
+      "url": "#development"
     },
     {
-      "text": "Jasa",
-      "url": "services"
+      "text": "Services",
+      "url": "#services"
     }
   ],
   "translate": [
     {
-      "text": "Dukungan multi-bahasa",
+      "text": "Multi-lingual Support",
       "url": "/translate#overview"
     },
     {
-      "text": "Adaptor",
+      "text": "Adapters",
       "url": "/translate#adapters",
       "menu": [
         {
-          "text": "Pabrik",
+          "text": "Factory",
           "url": "/translate#adapters-factory"
         }
       ]
     },
     {
-      "text": "Penggunaan Komponen",
+      "text": "Component Usage",
       "url": "/translate#usage"
     },
     {
-      "text": "Menerapkan adapter Anda sendiri",
+      "text": "Implementing your own adapters",
       "url": "/translate#custom"
     }
   ],
@@ -2615,7 +2615,7 @@
       "url": "/tutorial-base#basic"
     },
     {
-      "text": "Struktur file",
+      "text": "File structure",
       "url": "/tutorial-base#file-structure"
     },
     {
@@ -2627,45 +2627,45 @@
           "url": "/tutorial-base#autoloaders"
         },
         {
-          "text": "Manajemen Dependensi",
+          "text": "Dependency Management",
           "url": "/tutorial-base#dependency-management"
         },
         {
-          "text": "Menangani request aplikasi",
+          "text": "Handling the application request",
           "url": "/tutorial-base#request"
         },
         {
-          "text": "Menyatukan semuanya bersama-sama",
+          "text": "Putting everything together",
           "url": "/tutorial-base#full-example"
         }
       ]
     },
     {
-      "text": "Membuat Controller",
+      "text": "Creating a Controller",
       "url": "/tutorial-base#controller"
     },
     {
-      "text": "Mengirim output ke view",
+      "text": "Sending output to a view",
       "url": "/tutorial-base#view"
     },
     {
-      "text": "Merancang form sign up",
+      "text": "Designing a sign up form",
       "url": "/tutorial-base#signup-form"
     },
     {
-      "text": "Membuat Model",
+      "text": "Creating a Model",
       "url": "/tutorial-base#model"
     },
     {
-      "text": "Pengaturan koneksi Database",
+      "text": "Setting a Database Connection",
       "url": "/tutorial-base#database-connection"
     },
     {
-      "text": "Menyimpan data menggunakan model",
+      "text": "Storing data using models",
       "url": "/tutorial-base#storing-data"
     },
     {
-      "text": "Kesimpulan",
+      "text": "Conclusion",
       "url": "/tutorial-base#conclusion"
     }
   ],
@@ -2675,7 +2675,7 @@
       "url": "/tutorial-invo#overview"
     },
     {
-      "text": "Struktur Proyek",
+      "text": "Project Structure",
       "url": "/tutorial-invo#structure"
     },
     {
@@ -2683,7 +2683,7 @@
       "url": "/tutorial-invo#routing"
     },
     {
-      "text": "Konfigurasi",
+      "text": "Configuration",
       "url": "/tutorial-invo#configuration"
     },
     {
@@ -2691,99 +2691,99 @@
       "url": "/tutorial-invo#autoloaders"
     },
     {
-      "text": "Mendaftarkan layanan",
+      "text": "Registering services",
       "url": "/tutorial-invo#services"
     },
     {
-      "text": "Menangani Permintaan",
+      "text": "Handling the Request",
       "url": "/tutorial-invo#handling-requests"
     },
     {
-      "text": "Ketergantungan Injeksi",
+      "text": "Dependency Injection",
       "url": "/tutorial-invo#dependency-injection"
     },
     {
-      "text": "Masuk ke Aplikasi",
+      "text": "Log into the Application",
       "url": "/tutorial-invo#log-in"
     },
     {
-      "text": "Mengamankan Ujung belakang",
+      "text": "Securing the Backend",
       "url": "/tutorial-invo#securing-backend",
       "menu": [
         {
-          "text": "Manajemen Acara",
+          "text": "Events Management",
           "url": "/tutorial-invo#events-manager"
         },
         {
-          "text": "Mendapatkan daftar ACL",
+          "text": "Getting the ACL list",
           "url": "/tutorial-invo#acl"
         }
       ]
     },
     {
-      "text": "Bekerja dengan CRUD",
+      "text": "Working with the CRUD",
       "url": "/tutorial-invo#working-with-crud"
     },
     {
-      "text": "Formulir Pencarian",
+      "text": "The Search Form",
       "url": "/tutorial-invo#search-form"
     },
     {
-      "text": "Melakukan Pencarian",
+      "text": "Performing a Search",
       "url": "/tutorial-invo#performing-searches"
     },
     {
-      "text": "Membuat dan Memperbarui Rekaman",
+      "text": "Creating and Updating Records",
       "url": "/tutorial-invo#creating-updating-records"
     },
     {
-      "text": "Komponen pengguna",
+      "text": "User Components",
       "url": "/tutorial-invo#user-components"
     },
     {
-      "text": "Mengubah Judul Secara Dinamis",
+      "text": "Changing the Title Dynamically",
       "url": "/tutorial-invo#dynamic-titles"
     }
   ],
   "tutorial-rest": [
     {
-      "text": "Tutorial: Membuat sebuah REST API sederhana",
+      "text": "Tutorial: Creating a Simple REST API",
       "url": "/tutorial-rest#overview"
     },
     {
-      "text": "Mendefinisikan API",
+      "text": "Defining the API",
       "url": "/tutorial-rest#definitions"
     },
     {
-      "text": "Membuat Aplikasi",
+      "text": "Creating the Application",
       "url": "/tutorial-rest#implementation"
     },
     {
-      "text": "Membuat Model",
+      "text": "Creating a Model",
       "url": "/tutorial-rest#models"
     },
     {
-      "text": "Mengambil Data",
+      "text": "Retrieving Data",
       "url": "/tutorial-rest#retrieving-data"
     },
     {
-      "text": "Memasukkan Data",
+      "text": "Inserting Data",
       "url": "/tutorial-rest#inserting-data"
     },
     {
-      "text": "Memperbarui Data",
+      "text": "Updating Data",
       "url": "/tutorial-rest#updating-data"
     },
     {
-      "text": "Menghapus data",
+      "text": "Deleting Data",
       "url": "/tutorial-rest#deleting-data"
     },
     {
-      "text": "Menguji Aplikasi kami",
+      "text": "Testing our Application",
       "url": "/tutorial-rest#testing"
     },
     {
-      "text": "Kesimpulan",
+      "text": "Conclusion",
       "url": "/tutorial-rest#conclusion"
     }
   ],
@@ -2793,7 +2793,7 @@
       "url": "/tutorial-vokuro#overview"
     },
     {
-      "text": "Struktur Proyek",
+      "text": "Project Structure",
       "url": "/tutorial-vokuro#structure"
     },
     {
@@ -2811,7 +2811,7 @@
       "url": "#overview"
     },
     {
-      "text": "Persyaratan",
+      "text": "Requirements",
       "url": "#requirements"
     },
     {
@@ -2829,11 +2829,11 @@
       "url": "/unit-testing#overview"
     },
     {
-      "text": "Mengintegrasikan PHPUnit dengan Phalcon",
+      "text": "Integrating PHPUnit with Phalcon",
       "url": "/unit-testing#integration"
     },
     {
-      "text": "File pembantu PHPUnit",
+      "text": "The PHPUnit helper file",
       "url": "/unit-testing#unit-helper"
     },
     {
@@ -2841,13 +2841,13 @@
       "url": "/unit-testing#phpunit-config"
     },
     {
-      "text": "Uji Unit Sampel",
+      "text": "Sample Unit Test",
       "url": "/unit-testing#sample"
     }
   ],
   "upgrade": [
     {
-      "text": "Persyaratan",
+      "text": "Requirements",
       "url": "#requirements",
       "menu": [
         {
@@ -2855,8 +2855,8 @@
           "url": "#psr"
         },
         {
-          "text": "Pemasangan",
-          "url": "installation"
+          "text": "Installation",
+          "url": "#installation"
         }
       ]
     },
@@ -2865,7 +2865,7 @@
       "url": "#acl",
       "menu": [
         {
-          "text": "Sekilas",
+          "text": "Overview",
           "url": "#acl-overview"
         },
         {
@@ -2875,11 +2875,11 @@
       ]
     },
     {
-      "text": "Saringan",
+      "text": "Filter",
       "url": "#filter",
       "menu": [
         {
-          "text": "Sekilas",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {
@@ -2901,7 +2901,7 @@
       "url": "#logger",
       "menu": [
         {
-          "text": "Sekilas",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {
@@ -2947,11 +2947,11 @@
       "url": "/url#generating-uri"
     },
     {
-      "text": "Memproduksi URLs tanpa mod_menulis ulang",
+      "text": "Producing URLs without mod_rewrite",
       "url": "/url#urls-without-mod-rewrite"
     },
     {
-      "text": "Memproduksi URLs dari Volt",
+      "text": "Producing URLs from Volt",
       "url": "/url#urls-from-volt"
     },
     {
@@ -2959,7 +2959,7 @@
       "url": "/url#static-vs-dynamic-uri"
     },
     {
-      "text": "Menjalankan Generator URL anda sendiri",
+      "text": "Implementing your own URL Generator",
       "url": "/url#custom-url"
     }
   ],
@@ -2969,7 +2969,7 @@
       "url": "/validation#overview"
     },
     {
-      "text": "Menginisialisasi validasi",
+      "text": "Initializing Validation",
       "url": "/validation#initializing"
     },
     {
@@ -2977,141 +2977,141 @@
       "url": "/validation#validators"
     },
     {
-      "text": "Pemanggil balik validator",
+      "text": "Callback Validator",
       "url": "/validation#callback"
     },
     {
-      "text": "Pesan validasi",
+      "text": "Validation Messages",
       "url": "/validation#messages"
     },
     {
-      "text": "Penyaringan Data",
+      "text": "Filtering of Data",
       "url": "/validation#filtering"
     },
     {
-      "text": "Acara Validasi",
+      "text": "Validation Events",
       "url": "/validation#events"
     },
     {
-      "text": "Membatalkan Validasi",
+      "text": "Cancelling Validations",
       "url": "/validation#cancelling"
     },
     {
-      "text": "Hindari memvalidasi nilai kosong",
+      "text": "Avoid validating empty values",
       "url": "/validation#empty-values"
     },
     {
-      "text": "Validasi rekursif",
+      "text": "Recursive Validation",
       "url": "/validation#recursive"
     }
   ],
   "views": [
     {
-      "text": "Menggunakan Tampilan",
+      "text": "Using Views",
       "url": "/views#overview"
     },
     {
-      "text": "Mengintegrasikan Views dengan Controller",
+      "text": "Integrating Views with Controllers",
       "url": "/views#integrating-views-with-controllers"
     },
     {
-      "text": "Rendering hierarkis",
+      "text": "Hierarchical Rendering",
       "url": "/views#hierarchical-rendering",
       "menu": [
         {
-          "text": "Menggunakan Template",
+          "text": "Using Templates",
           "url": "/views#using-templates"
         },
         {
-          "text": "Tingkat Pengambilan Kontrol",
+          "text": "Control Rendering Levels",
           "url": "/views#control-rendering-levels"
         },
         {
-          "text": "Menonaktifkan tingkat render",
+          "text": "Disabling render levels",
           "url": "/views#disabling-render-levels"
         },
         {
-          "text": "Memilih Tampilan",
+          "text": "Picking Views",
           "url": "/views#picking-views"
         },
         {
-          "text": "Menonaktifkan tampilan",
+          "text": "Disabling the view",
           "url": "/views#disabling-view"
         }
       ]
     },
     {
-      "text": "Rendering Sederhana",
+      "text": "Simple Rendering",
       "url": "/views#simple-rendering"
     },
     {
-      "text": "Menggunakan Partial",
+      "text": "Using Partials",
       "url": "/views#using-partials"
     },
     {
-      "text": "Transfer nilai dari kontroler ke tampilan",
+      "text": "Transfer values from the controller to views",
       "url": "/views#value-transfer"
     },
     {
-      "text": "Caching Lihat Fragmen",
+      "text": "Caching View Fragments",
       "url": "/views#caching-fragments"
     },
     {
-      "text": "Mesin Templat",
+      "text": "Template Engines",
       "url": "/views#template-engines",
       "menu": [
         {
-          "text": "Membuat Adaptor Mesin Template Anda sendiri",
+          "text": "Creating your own Template Engine Adapter",
           "url": "/views#custom-template-engine"
         },
         {
-          "text": "Mengubah Template Engine",
+          "text": "Changing the Template Engine",
           "url": "/views#changing-template-engine"
         }
       ]
     },
     {
-      "text": "Layanan suntik di View",
+      "text": "Injecting services in View",
       "url": "/views#injecting-services"
     },
     {
-      "text": "Komponen Berdiri Sendiri",
+      "text": "Stand-Alone Component",
       "url": "/views#stand-alone",
       "menu": [
         {
-          "text": "Rendering hierarkis",
+          "text": "Hierarchical Rendering",
           "url": "/views#stand-alone-hierarchical-rendering"
         },
         {
-          "text": "Rendering Sederhana",
+          "text": "Simple Rendering",
           "url": "/views#stand-alone-simple-rendering"
         }
       ]
     },
     {
-      "text": "Lihat Acara",
+      "text": "View Events",
       "url": "/views#events"
     }
   ],
   "volt": [
     {
-      "text": "Volt: Template Mesin",
+      "text": "Volt: Template Engine",
       "url": "/volt#overview"
     },
     {
-      "text": "Pendahuluan",
+      "text": "Introduction",
       "url": "/volt#introduction"
     },
     {
-      "text": "Mengaktifkan volt",
+      "text": "Activating Volt",
       "url": "/volt#setup"
     },
     {
-      "text": "Penggunaan Dasar",
+      "text": "Basic Usage",
       "url": "/volt#basic-usage"
     },
     {
-      "text": "Variabel",
+      "text": "Variables",
       "url": "/volt#variables"
     },
     {
@@ -3119,19 +3119,19 @@
       "url": "/volt#filters"
     },
     {
-      "text": "Komentar",
+      "text": "Comments",
       "url": "/volt#comments"
     },
     {
-      "text": "Daftar Struktur Kontrol",
+      "text": "List of Control Structures",
       "url": "/volt#control-structures",
       "menu": [
         {
-          "text": "Untuk",
+          "text": "For",
           "url": "/volt#control-structures-for"
         },
         {
-          "text": "Kontrol Loop",
+          "text": "Loop Controls",
           "url": "/volt#control-structures-loops",
           "menu": [
             {
@@ -3139,53 +3139,53 @@
               "url": "/volt#control-structures-if"
             },
             {
-              "text": "Beralih",
+              "text": "Switch",
               "url": "/volt#control-structures-switch"
             }
           ]
         },
         {
-          "text": "Loop Konteks",
+          "text": "Loop Context",
           "url": "/volt#control-structures-loop",
           "menu": [
             {
-              "text": "Tugas",
+              "text": "Assignments",
               "url": "/volt#assignments"
             },
             {
-              "text": "Ekspresi",
+              "text": "Expressions",
               "url": "/volt#expressions"
             }
           ]
         },
         {
-          "text": "Literal",
+          "text": "Literals",
           "url": "/volt#expressions-literals"
         },
         {
-          "text": "Susunan",
+          "text": "Arrays",
           "url": "/volt#expressions-arrays"
         },
         {
-          "text": "Matematika",
+          "text": "Math",
           "url": "/volt#expressions-math"
         },
         {
-          "text": "Perbandingan",
+          "text": "Comparisons",
           "url": "/volt#expressions-comparisons"
         },
         {
-          "text": "Logika",
+          "text": "Logic",
           "url": "/volt#expressions-logic"
         },
         {
-          "text": "Operator Lain",
+          "text": "Other Operators",
           "url": "/volt#expressions-other-operators"
         }
       ]
     },
     {
-      "text": "Pengujian",
+      "text": "Tests",
       "url": "/volt#tests"
     },
     {
@@ -3193,47 +3193,47 @@
       "url": "/volt#macros"
     },
     {
-      "text": "Menggunakan Tag Pembantu",
+      "text": "Using Tag Helpers",
       "url": "/volt#tag-helpers"
     },
     {
-      "text": "Fungsi",
+      "text": "Functions",
       "url": "/volt#functions"
     },
     {
-      "text": "Tampilkan Integrasi",
+      "text": "View Integration",
       "url": "/volt#view-integrations",
       "menu": [
         {
-          "text": "Termasuk",
+          "text": "Include",
           "url": "/volt#view-integration-include"
         },
         {
-          "text": "Sebagian vs Mencakup",
+          "text": "Partial vs Include",
           "url": "/volt#view-integration-partial-vs-include"
         }
       ]
     },
     {
-      "text": "Template Warisan",
+      "text": "Template Inheritance",
       "url": "/volt#template-inheritance",
       "menu": [
         {
-          "text": "Beberapa Turunan",
+          "text": "Multiple Inheritance",
           "url": "/volt#template-inheritance-multiple"
         }
       ]
     },
     {
-      "text": "Mode Autoscape",
+      "text": "Autoescape mode",
       "url": "/volt#autoescape"
     },
     {
-      "text": "Perluas Volt",
+      "text": "Extending Volt",
       "url": "/volt#extending",
       "menu": [
         {
-          "text": "Fungsi",
+          "text": "Functions",
           "url": "/volt#extending-functions"
         },
         {
@@ -3241,17 +3241,17 @@
           "url": "/volt#extending-filters"
         },
         {
-          "text": "Ekstensi",
+          "text": "Extensions",
           "url": "/volt#extending-extensions"
         }
       ]
     },
     {
-      "text": "Caching melihat fragmen",
+      "text": "Caching view fragments",
       "url": "/volt#caching-view-fragments"
     },
     {
-      "text": "Inject Jasa ke dalam Template",
+      "text": "Inject Services into a Template",
       "url": "/volt#services-in-templates"
     },
     {
@@ -3261,11 +3261,11 @@
   ],
   "webserver-wamp": [
     {
-      "text": "Instalasi di WAMP",
+      "text": "Installation on WAMP",
       "url": "/webserver-wamp#overview"
     },
     {
-      "text": "Download versi Phalcon yang tepat",
+      "text": "Download the right version of Phalcon",
       "url": "/webserver-wamp#phalcon"
     },
     {
@@ -3275,11 +3275,11 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Instalasi di XAMPP",
+      "text": "Installation on XAMPP",
       "url": "/webserver-xampp#overview"
     },
     {
-      "text": "Download versi Phalcon yang tepat",
+      "text": "Download the right version of Phalcon",
       "url": "/webserver-xampp#phalcon"
     },
     {

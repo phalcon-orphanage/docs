@@ -10,7 +10,7 @@ title: 'Phalcon\Validation\Validator\Confirmation'
 
 *implements* [Phalcon\Validation\ValidatorInterface](Phalcon_Validation_ValidatorInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
 
 Checks that two values have the same value
 
@@ -53,7 +53,7 @@ $validator->add(
 
 ```
 
-## Metodi
+## Methods
 
 public **validate** ([Phalcon\Validation](Phalcon_Validation) $validation, *mixed* $field)
 

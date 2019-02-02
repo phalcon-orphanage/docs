@@ -4,11 +4,11 @@ language: 'id-id'
 version: '4.0'
 category: 'installation'
 ---
-# Pemasangan
+# Installation
 
 * * *
 
-## Persyaratan
+## Requirements
 
 ### PDO
 

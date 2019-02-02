@@ -6,36 +6,36 @@ title: 'Phalcon\Annotations\AdapterInterface'
 ---
 # Interface **Phalcon\Annotations\AdapterInterface**
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapterinterface.zep)
 
-Antarmuka ini harus diimplementasikan oleh adaptor di Phalcon\Anotasi
+This interface must be implemented by adapters in Phalcon\Annotations
 
-## Metode
+## Methods
 
 abstract public **setReader** ([Phalcon\Annotations\ReaderInterface](Phalcon_Annotations_ReaderInterface) $reader)
 
-Menyetel anotasi
+Sets the annotations parser
 
-abstrak umum **getReader** ()
+abstract public **getReader** ()
 
-Mengembalikan pembaca anotasi
+Returns the annotation reader
 
 abstract public **get** (*string|object* $className)
 
-Mengurai atau mengambil semua anotasi yang ditemukan di kelas
+Parses or retrieves all the annotations found in a class
 
 abstract public **getMethods** (*string* $className)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas
+Returns the annotations found in all the class methods
 
 abstract public **getMethod** (*string* $className, *string* $methodName)
 
-Mengembalikan anotasi yang ditemukan dalam metode tertentu
+Returns the annotations found in a specific method
 
-publik abstrak **mendapatkan**properti (*tali*$className)
+abstract public **getProperties** (*string* $className)
 
-Mengembalikan anotasi yang ditemukan di semua metode kelas
+Returns the annotations found in all the class methods
 
-publik abstrak **mendapatkanproperti** (*tali* $className, *tali* $propertyName)
+abstract public **getProperty** (*string* $className, *string* $propertyName)
 
-Mengembalikan anotasi yang ditemukan di properti tertentu
+Returns the annotations found in a specific property

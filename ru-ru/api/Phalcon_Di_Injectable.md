@@ -12,7 +12,7 @@ title: 'Phalcon\Di\Injectable'
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-## Методы
+## Methods
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 

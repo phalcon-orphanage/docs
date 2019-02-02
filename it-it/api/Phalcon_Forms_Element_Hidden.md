@@ -10,11 +10,11 @@ title: 'Phalcon\Forms\Element\Hidden'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
 
 Component INPUT[type=hidden] for forms
 
-## Metodi
+## Methods
 
 public **render** ([*array* $attributes])
 

@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Potwierdzenie
+# Validation
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -125,11 +125,11 @@ if (count($messages)) {
 
 <a name='validators'></a>
 
-## Potwierdzenie
+## Validators
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Klasa                                                                                         | Wyjaśnienie                                                       |
+| Klasa                                                                                         | Explanation                                                       |
 | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | Validates that a field's value is only alphanumeric character(s). |
 | [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | Validates that a field's value is only alphabetic character(s).   |

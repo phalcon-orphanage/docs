@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# آموزش: وکور
+# Tutorial: Vökuró
 
 Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
 
@@ -18,19 +18,19 @@ Vökuró is another sample application you can use to learn more about Phalcon. 
 Once you clone the project in your document root you'll see the following structure:
 
 ```bash
-وکور/
-      برنامه /
-          پیکربندی /
-          کنترل کننده ها /
-          تشکیل می دهد/
-          کتابخانه /
-          مدل ها/
-          نمایش ها /
-      کش /
-      عمومی/
-          سی اس اس/
-          ای ام جی/
-      طرح /
+vokuro/
+    app/
+        config/
+        controllers/
+        forms/
+        library/
+        models/
+        views/
+    cache/
+    public/
+        css/
+        img/
+    schemas/
 ```
 
 This project follows a quite similar structure to INVO. Once you open the application in your browser `https://localhost/vokuro` you'll see something like this:
@@ -41,13 +41,13 @@ The application is divided into two parts, a frontend, where visitors can sign u
 
 <a name='dependencies'></a>
 
-## کلاس های بار و وابستگی ها
+## Load Classes and Dependencies
 
 This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
 
 ```bash
-وکور سی دی
-نصب را بساز
+cd vokuro
+composer install
 ```
 
 Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
@@ -112,7 +112,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## ثبت نام
+## Sign Up
 
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 

@@ -8,52 +8,52 @@ title: 'Phalcon\Validation\Message'
 
 *implements* [Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message.zep)
 
 Encapsulates validation info generated in the validation process
 
-## Metode
+## Methods
 
 public **__construct** (*mixed* $message, [*mixed* $field], [*mixed* $type], [*mixed* $code])
 
 Phalcon\Validation\Message constructor
 
-publik **perangkat Tipe** (*dicampur* $type)
+public **setType** (*mixed* $type)
 
-Menetapkan jenis pesan
+Sets message type
 
-publik **berhenti** ()
+public **getType** ()
 
-Mengembalikan jenis pesan
+Returns message type
 
-publik **perangkat Pesan** (*campur* $message)
+public **setMessage** (*mixed* $message)
 
-Mengatur pesan verbose   Teks paragraf
+Sets verbose message
 
 public **getMessage** ()
 
-Mengembalikan pesan verbose
+Returns verbose message
 
-publik **setelan Bidang** (*campur* $field)
+public **setField** (*mixed* $field)
 
-Menetapkan nama bidang yang terkait dengan pesan
+Sets field name related to message
 
 public *mixed* **getField** ()
 
-Mengembalikan nama bidang yang terkait dengan pesan
+Returns field name related to message
 
-publik **mengatur Kode** (*campur* $code)
+public **setCode** (*mixed* $code)
 
-Menetapkan kode untuk pesan
+Sets code for the message
 
-publik **mendapatkan Kode** ()
+public **getCode** ()
 
-Mengembalikan kode pesan
+Returns the message code
 
-publik **__keString** ()
+public **__toString** ()
 
-Metode Magic __toString mengembalikan pesan verbose
+Magic __toString method returns verbose message
 
-statik publik **__menyetel_negara** (*aturan* $message)
+public static **__set_state** (*array* $message)
 
-Sihir __set_state membantu untuk memulihkan pesan dari serialisasi
+Magic __set_state helps to recover messages from serialization

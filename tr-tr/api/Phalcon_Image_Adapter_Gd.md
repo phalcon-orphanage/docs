@@ -2,7 +2,7 @@
 layout: article
 language: 'tr-tr'
 version: '4.0'
-title: 'Phalcon\Görüntü\Bağdaştırıcı\Gd'
+title: 'Phalcon\Image\Adapter\Gd'
 ---
 # Class **Phalcon\Image\Adapter\Gd**
 
@@ -10,9 +10,9 @@ title: 'Phalcon\Görüntü\Bağdaştırıcı\Gd'
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-## Metodlar
+## Methods
 
 public static **check** ()
 
@@ -96,23 +96,23 @@ public **getRealpath** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_A
 
 public **getWidth** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim genişliği
+Image width
 
 public **getHeight** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim yüksekliği
+Image height
 
 public **getType** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim türü Sürücü bağlı
+Image type Driver dependent
 
 public **getMime** () inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim mime türü
+Image mime type
 
 public **resize** ([*mixed* $width], [*mixed* $height], [*mixed* $master]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen boyuta göre yeniden boyutlandır
+Resize the image to the given size
 
 public **liquidRescale** (*mixed* $width, *mixed* $height, [*mixed* $deltaX], [*mixed* $rigidity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -120,11 +120,11 @@ This method scales the images using liquid rescaling method. Only support Imagic
 
 public **crop** (*mixed* $width, *mixed* $height, [*mixed* $offsetX], [*mixed* $offsetY]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü belirtilen boyuta kırp
+Crop an image to the given size
 
 public **rotate** (*mixed* $degrees) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen miktarda döndür
+Rotate the image by a given amount
 
 public **flip** (*mixed* $direction) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -132,11 +132,11 @@ Flip the image along the horizontal or vertical axis
 
 public **sharpen** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü verilen miktarda keskinleştirir
+Sharpen the image by a given amount
 
 public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $fadeIn]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir resme yansıtma ekleyin
+Add a reflection to an image
 
 public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
@@ -144,28 +144,28 @@ Add a watermark to an image with the specified opacity
 
 public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity], [*mixed* $color], [*mixed* $size], [*mixed* $fontfile]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Belirtilen bir opaklıkla görüntüye bir metin ekleyin
+Add a text to an image with a specified opacity
 
 public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir görüntüyü başka bir görüntüye birleştir
+Composite one image onto another
 
 public **background** (*mixed* $color, [*mixed* $opacity]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Bir resmin arka plan rengini ayarlama
+Set the background color of an image
 
 public **blur** (*mixed* $radius) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resim bulanıklığı
+Blur image
 
 public **pixelate** (*mixed* $amount) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntü pikselleştirme
+Pixelate image
 
 public **save** ([*mixed* $file], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Resmi kaydet
+Save the image
 
 public **render** ([*mixed* $ext], [*mixed* $quality]) inherited from [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
 
-Görüntüyü oluşturun ve ikili dizgiyi döndürün
+Render the image and return the binary string

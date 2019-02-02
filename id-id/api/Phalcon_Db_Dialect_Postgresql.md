@@ -10,75 +10,75 @@ title: 'Phalcon\Db\Dialect\Postgresql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
 
-Menghasilkan SQL spesifik database untuk RDBMS PostgreSQL
+Generates database specific SQL for the PostgreSQL RDBMS
 
-## Metode
+## Methods
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Mendapat nama kolom di PostgreSQL
+Gets the column name in PostgreSQL
 
 public **addColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
-Menghasilkan SQL untuk menambahkan kolom ke sebuah tabel
+Generates SQL to add a column to a table
 
 public **modifyColumn** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column, [[Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $currentColumn])
 
-Menghasilkan SQL untuk memodifikasi kolom dalam sebuah tabel
+Generates SQL to modify a column in a table
 
-umum **dropColumn** ($tableName *campuran*, *campuran* $schemaName, *campuran* $columnName)
+public **dropColumn** (*mixed* $tableName, *mixed* $schemaName, *mixed* $columnName)
 
-Menghasilkan SQL untuk menghapus kolom dari sebuah tabel
+Generates SQL to delete a column from a table
 
 public **addIndex** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Menghasilkan SQL untuk menambahkan indeks ke tabel
+Generates SQL to add an index to a table
 
-umum **dropIndex** ($tableName *campuran*, *campuran* $schemaName, *campuran* $indexName)
+public **dropIndex** (*mixed* $tableName, *mixed* $schemaName, *mixed* $indexName)
 
-Menghasilkan SQL untuk menghapus indeks dari tabel
+Generates SQL to delete an index from a table
 
 public **addPrimaryKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface) $index)
 
-Menghasilkan SQL untuk menambahkan primary key ke sebuah tabel
+Generates SQL to add the primary key to a table
 
-umum **getProperty** (*campuran* $tableName, *campuran* $schemaName)
+public **dropPrimaryKey** (*mixed* $tableName, *mixed* $schemaName)
 
-Menghasilkan SQL untuk menghapus primary key dari sebuah tabel
+Generates SQL to delete primary key from a table
 
 public **addForeignKey** (*mixed* $tableName, *mixed* $schemaName, [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface) $reference)
 
-Menghasilkan SQL untuk menambahkan indeks ke tabel
+Generates SQL to add an index to a table
 
-umum **dropForeignKey**(*campuran* $tableName, *mixed* $schemaName, *mixed* $referenceName)
+public **dropForeignKey** (*mixed* $tableName, *mixed* $schemaName, *mixed* $referenceName)
 
-Menghasilkan SQL untuk menghapus kunci asing dari sebuah tabel
+Generates SQL to delete a foreign key from a table
 
-publik **tambahkandilineJs** (*campuran* $tableName, [*campuran* $schemaName], [*campuran* $definition)
+public **createTable** (*mixed* $tableName, *mixed* $schemaName, *array* $definition)
 
-Menghasilkan SQL untuk membuat tabel
+Generates SQL to create a table
 
-umum **truncateTable** (*campuran* $tableName, *campuran* $schemaName)
+public **truncateTable** (*mixed* $tableName, *mixed* $schemaName)
 
-Menghasilkan SQL untuk memotong tabel
+Generates SQL to truncate a table
 
-abstrak publik **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
+public **dropTable** (*mixed* $tableName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Menghasilkan SQL untuk menjatuhkan tabel
+Generates SQL to drop a table
 
-publik **tambahkandilineJs** (*campuran* $viewName, [*campuran* $definition], [*campuran* $schemaName])
+public **createView** (*mixed* $viewName, *array* $definition, [*mixed* $schemaName])
 
-Menghasilkan SQL untuk membuat tampilan
+Generates SQL to create a view
 
-publik **tambahkandilineJs** (*campuran* $viewName, [*campuran* $schemaName], [*campuran* $ifExists])
+public **dropView** (*mixed* $viewName, [*mixed* $schemaName], [*mixed* $ifExists])
 
-Menghasilkan SQL untuk menjatuhkan tampilan
+Generates SQL to drop a view
 
-abstrak umum **getProperty** ($tableName *campuran*, *campuran* $schemaName])
+public **tableExists** (*mixed* $tableName, [*mixed* $schemaName])
 
-Menghasilkan pengecekan SQL untuk keberadaan skema
+Generates SQL checking for the existence of a schema.table
 
 ```php
 <?php
@@ -89,13 +89,13 @@ echo $dialect->tableExists("posts");
 
 ```
 
-abstrak umum **getProperty** ($viewName *campuran*, *campuran* $schemaName])
+public **viewExists** (*mixed* $viewName, [*mixed* $schemaName])
 
-Menghasilkan pengecekan SQL untuk adanya skema.view
+Generates SQL checking for the existence of a schema.view
 
-public **describColumns** (*mixed* $table, [*mixed* $schema])
+public **describeColumns** (*mixed* $table, [*mixed* $schema])
 
-Menghasilkan SQL yang menggambarkan sebuah tabel
+Generates SQL describing a table
 
 ```php
 <?php
@@ -106,9 +106,9 @@ print_r(
 
 ```
 
-umum **isResource** ([*campuran* $schemaName])
+public **listTables** ([*mixed* $schemaName])
 
-Daftar semua tabel di database
+List all tables in database
 
 ```php
 <?php
@@ -119,21 +119,21 @@ print_r(
 
 ```
 
-umum *string* **listViews** ([*string* $schemaName])
+public *string* **listViews** ([*string* $schemaName])
 
-Menghasilkan SQL untuk menampilkan semua tampilan skema atau pengguna
+Generates the SQL to list all views of a schema or user
 
 public **describeIndexes** (*mixed* $table, [*mixed* $schema])
 
-Menghasilkan SQL untuk query indeks di atas meja
+Generates SQL to query indexes on a table
 
-umum **describeReferences** (*campuran* $table, [*campuran* $schema])
+public **describeReferences** (*mixed* $table, [*mixed* $schema])
 
-Menghasilkan SQL untuk query kunci asing di atas meja
+Generates SQL to query foreign keys on a table
 
 public **tableOptions** (*mixed* $table, [*mixed* $schema])
 
-Menghasilkan SQL untuk menjelaskan pilihan pembuatan tabel
+Generates the SQL to describe the table creation options
 
 protected **_castDefault** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
@@ -145,186 +145,191 @@ protected **_getTableOptions** (*array* $definition)
 
 public **registerCustomFunction** (*mixed* $name, *mixed* $customFunction) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mendaftarkan fungsi SQL ubahsuaian
+Registers custom SQL functions
 
 public **getCustomFunctions** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mengembalikan fungsi yang terdaftar
+Returns registered functions
 
 final public **escapeSchema** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Skema Escape
+Escape Schema
 
 final public **escape** (*mixed* $str, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Pengidentifikasi melarikan diri
+Escape identifiers
 
 public **limit** (*mixed* $sqlQuery, *mixed* $number) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Menghasilkan SQL untuk LIMIT clause
+Generates the SQL for LIMIT clause
 
 ```php
 <?php
-$sql=$dialect->batas("PILIH*DARI robot",10);
-echo$sql;//PILIH*DARI robot BATAS 10
-$sql=$dialect->batas("PILIH*DARI robot",[10,50]);
-echo$sql;//PILIH*DARI robot BATAS 10 IMBANG 50
+
+$sql = $dialect->limit("SELECT * FROM robots", 10);
+echo $sql; // SELECT * FROM robots LIMIT 10
+
+$sql = $dialect->limit("SELECT * FROM robots", [10, 50]);
+echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 ```
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mengembalikan SQL yang dimodifikasi dengan klausa FOR UPDATE
+Returns a SQL modified with a FOR UPDATE clause
 
 ```php
 <?php
-$sql=$dialect->untukmemperbarui("PILIH*DARI robot");
-echo$sql;//PILIH*DARI robot DARI PEMBARUAN
+
+$sql = $dialect->forUpdate("SELECT * FROM robots");
+echo $sql; // SELECT * FROM robots FOR UPDATE
 
 ```
 
 public **sharedLock** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mengembalikan SQL yang dimodifikasi dengan klausa LOCK IN SHARE MODE
+Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
 <?php
-$sql=$dialect->Membagikunci("PILIH*DARI robot");
-gema$sql;//PILIH*DARI robot KUNCI DALAM MODE MEMBAGI
+
+$sql = $dialect->sharedLock("SELECT * FROM robots");
+echo $sql; // SELECT * FROM robots LOCK IN SHARE MODE
 
 ```
 
 final public **getColumnList** (*array* $columnList, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mendapat daftar kolom dengan pengenal yang lolos
+Gets a list of columns with escaped identifiers
 
 ```php
 <?php
-gema$dialect=>dapatdaftarkolom(
-[
-"kolom1",
-"kolom",
-]
+
+echo $dialect->getColumnList(
+    [
+        "column1",
+        "column",
+    ]
 );
 
 ```
 
 final public **getSqlColumn** (*mixed* $column, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan ekspresi Kolom
+Resolve Column expressions
 
 public **getSqlExpression** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mengubah representasi perantara untuk ekspresi ke dalam ekspresi sistem basis data yang valid
+Transforms an intermediate representation for an expression into a database system valid expression
 
 final public **getSqlTable** (*mixed* $table, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Mengubah representasi antara skema/tabel menjadi ekspresi sistem basis data yang valid
+Transform an intermediate representation of a schema/table into a database system valid expression
 
 public **select** (*array* $definition) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Buat pernyataan SELECT
+Builds a SELECT statement
 
 public **supportsSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Memeriksa apakah platform mendukung savepoints
+Checks whether the platform supports savepoints
 
 public **supportsReleaseSavepoints** () inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Memeriksa apakah platform mendukung rilis savepoints.
+Checks whether the platform supports releasing savepoints.
 
 public **createSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Menghasilkan SQL untuk menciptakan savepoint baru
+Generate SQL to create a new savepoint
 
 public **releaseSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Hasilkan SQL untuk melepaskan savepoint
+Generate SQL to release a savepoint
 
 public **rollbackSavepoint** (*mixed* $name) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Menghasilkan SQL untuk mengembalikan sebuah savepoint
+Generate SQL to rollback a savepoint
 
 final protected **getSqlExpressionScalar** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan ekspresi Kolom
+Resolve Column expressions
 
 final protected **getSqlExpressionObject** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan ekspresi objek
+Resolve object expressions
 
 final protected **getSqlExpressionQualified** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikanlah ekspresi berkualitas
+Resolve qualified expressions
 
 final protected **getSqlExpressionBinaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Putuskan ekspresi operasi biner
+Resolve binary operations expressions
 
 final protected **getSqlExpressionUnaryOperations** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan ungkapan operasi unary
+Resolve unary operations expressions
 
 final protected **getSqlExpressionFunctionCall** (*array* $expression, *mixed* $escapeChar, [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan pemanggilan fungsi
+Resolve function calls
 
 final protected **getSqlExpressionList** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Putuskan Daftar
+Resolve Lists
 
 final protected **getSqlExpressionAll** (*array* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan*
+Resolve *
 
 final protected **getSqlExpressionCastValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan nilai CAST
+Resolve CAST of values
 
 final protected **getSqlExpressionConvertValue** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan CONVERT dari pengkodean nilai
+Resolve CONVERT of values encodings
 
 final protected **getSqlExpressionCase** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan pernyataan CASE
+Resolve CASE expressions
 
 final protected **getSqlExpressionFrom** (*mixed* $expression, [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa FROM
+Resolve a FROM clause
 
 final protected **getSqlExpressionJoins** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa JOINs
+Resolve a JOINs clause
 
 final protected **getSqlExpressionWhere** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa WHERE
+Resolve a WHERE clause
 
 final protected **getSqlExpressionGroupBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa GROUP BY
+Resolve a GROUP BY clause
 
 final protected **getSqlExpressionHaving** (*array* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa GROUP BY
+Resolve a HAVING clause
 
 final protected **getSqlExpressionOrderBy** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa ORDER BY
+Resolve an ORDER BY clause
 
 final protected **getSqlExpressionLimit** (*mixed* $expression, [*mixed* $escapeChar], [*mixed* $bindCounts]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Selesaikan klausa LIMIT
+Resolve a LIMIT clause
 
 protected **prepareColumnAlias** (*mixed* $qualified, [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Siapkan kolom untuk RDBMS ini
+Prepares column for this RDBMS
 
 protected **prepareTable** (*mixed* $table, [*mixed* $schema], [*mixed* $alias], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Siapkan tabel untuk RDBMS ini
+Prepares table for this RDBMS
 
 protected **prepareQualified** (*mixed* $column, [*mixed* $domain], [*mixed* $escapeChar]) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Siapkan kualifikasi untuk RDBMS ini
+Prepares qualified for this RDBMS

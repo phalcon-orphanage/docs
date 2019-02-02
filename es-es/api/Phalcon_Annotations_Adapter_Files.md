@@ -12,7 +12,7 @@ title: 'Phalcon\Annotations\Adapter\Files'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/files.zep)
 
-Stores the parsed annotations in files. Este adaptador es adecuado para ambientes en producción
+Stores the parsed annotations in files. This adapter is suitable for production
 
 ```php
 <?php

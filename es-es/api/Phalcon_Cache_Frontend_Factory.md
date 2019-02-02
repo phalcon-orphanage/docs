@@ -12,7 +12,7 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
-Carga una clase de adaptador de almacenamiento en caché de frontend utilizando la opción "adapter"
+Loads Frontend Cache Adapter class using 'adapter' option
 
 ```php
 <?php

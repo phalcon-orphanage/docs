@@ -30,7 +30,7 @@ This class represents a relationship between two models
 
 *integer* **ACTION_CASCADE**
 
-## Методы
+## Methods
 
 public **__construct** (*int* $type, *string* $referencedModel, *string* | *array* $fields, *string* | *array* $referencedFields, [*array* $options])
 

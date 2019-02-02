@@ -13,9 +13,9 @@ Vökuró is another sample application you can use to learn more about Phalcon. 
 
 <a name='structure'></a>
 
-## Struttura del progetto
+## Project Structure
 
-Una volta che cloni il progetto nella tua directory principale, vedrai la seguente struttura:
+Once you clone the project in your document root you'll see the following structure:
 
 ```bash
 vokuro/
@@ -41,7 +41,7 @@ The application is divided into two parts, a frontend, where visitors can sign u
 
 <a name='dependencies'></a>
 
-## Caricamento di classi e dipendenze
+## Load Classes and Dependencies
 
 This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
 
@@ -112,7 +112,7 @@ class AboutController extends ControllerBase
 
 <a name='sign-up'></a>
 
-## Iscrizione
+## Sign Up
 
 First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
 

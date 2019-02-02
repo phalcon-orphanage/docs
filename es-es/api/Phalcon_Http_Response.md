@@ -32,11 +32,11 @@ Phalcon\Http\Response constructor
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** ()
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **setStatusCode** (*mixed* $code, [*mixed* $message])
 
@@ -51,7 +51,7 @@ $response->setStatusCode(404, "Not Found");
 
 public **getStatusCode** ()
 
-Devuelve el código del estado
+Returns the status code
 
 ```php
 <?php
@@ -64,11 +64,11 @@ print_r(
 
 public **setHeaders** ([Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface) $headers)
 
-Establece externamente una bolsa de cabeceras para la respuesta
+Sets a headers bag for the response externally
 
 public **getHeaders** ()
 
-Devuelve las cabeceras establecidas por el usuario
+Returns headers set by the user
 
 public **getReasonPhrase** (): *string* | *null*
 
@@ -82,15 +82,15 @@ echo $response->getReasonPhrase();
 
 public **setCookies** ([Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface) $cookies)
 
-Establece externamente una bolsa de cookies para la respuesta
+Sets a cookies bag for the response externally
 
 public [Phalcon\Http\Response\CookiesInterface](Phalcon_Http_Response_CookiesInterface) **getCookies** ()
 
-Devuelve las cookies establecidas por el usuario
+Returns cookies set by the user
 
 public **setHeader** (*mixed* $name, *mixed* $value)
 
-Sobrescribe una cabecera en la respuesta
+Overwrites a header in the response
 
 ```php
 <?php
@@ -101,7 +101,7 @@ $response->setHeader("Content-Type", "text/plain");
 
 public **setRawHeader** (*mixed* $header)
 
-Envía una cabecera sin procesar a la respuesta
+Send a raw header to the response
 
 ```php
 <?php
@@ -112,11 +112,11 @@ $response->setRawHeader("HTTP/1.1 404 Not Found");
 
 public **resetHeaders** ()
 
-Restablece todas las cabeceras establecidas
+Resets all the established headers
 
 public **setExpires** ([DateTime](https://php.net/manual/en/class.datetime.php) $datetime)
 
-Establece una cabecera Expires en la respuesta que permite utilizar el caché HTTP
+Sets an Expires header in the response that allows to use the HTTP cache
 
 ```php
 <?php

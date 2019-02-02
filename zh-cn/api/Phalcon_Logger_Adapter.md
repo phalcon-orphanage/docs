@@ -16,63 +16,63 @@ Base class for Phalcon\Logger adapters
 
 public **setLogLevel** (*mixed* $level)
 
-筛选日志发送到特定级别比都小于或等于的处理
+Filters the logs sent to the handlers that are less or equal than a specific level
 
 public **getLogLevel** ()
 
-返回当前的日志级别
+Returns the current log level
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter)
 
-设置消息格式化程序
+Sets the message formatter
 
 public **begin** ()
 
-启动一个事务
+Starts a transaction
 
 public **commit** ()
 
-提交的内部事务
+Commits the internal transaction
 
 public **rollback** ()
 
-回滚的内部事务
+Rollbacks the internal transaction
 
 public **isTransaction** ()
 
-返回是否记录器处于当前活动的事务或不
+Returns the whether the logger is currently in an active transaction or not
 
 public **critical** (*mixed* $message, [*array* $context])
 
-关键消息发送/写入日志
+Sends/Writes a critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context])
 
-紧急消息发送/写入日志
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context])
 
-调试消息发送/写入日志
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context])
 
-一条错误消息发送/写入日志
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context])
 
-Info 消息发送/写入日志
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context])
 
-通知消息发送/写入日志
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context])
 
-一条警告消息发送/写入日志
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context])
 
-警报消息发送/写入日志
+Sends/Writes an alert message to the log
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context])
 

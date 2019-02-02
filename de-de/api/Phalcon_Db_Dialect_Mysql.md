@@ -10,11 +10,11 @@ title: 'Phalcon\Db\Dialect\Mysql'
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 Generates database specific SQL for the MySQL RDBMS
 
-## Methoden
+## Methods
 
 public **getColumnDefinition** ([Phalcon\Db\ColumnInterface](Phalcon_Db_ColumnInterface) $column)
 
@@ -172,7 +172,7 @@ echo $sql; // SELECT * FROM robots LIMIT 10 OFFSET 50
 
 public **forUpdate** (*mixed* $sqlQuery) inherited from [Phalcon\Db\Dialect](Phalcon_Db_Dialect)
 
-Liefert ein SQL, welches mit der FOR UPDATE-Klausel angepasst wurde
+Returns a SQL modified with a FOR UPDATE clause
 
 ```php
 <?php

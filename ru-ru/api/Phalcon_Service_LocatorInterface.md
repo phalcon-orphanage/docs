@@ -8,7 +8,7 @@ title: 'Phalcon\Service\LocatorInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorinterface.zep)
 
-## Методы
+## Methods
 
 ```php
 public function get( string $name ): object

@@ -6,11 +6,11 @@ title: 'Phalcon\Di\Service\Builder'
 ---
 # Class **Phalcon\Di\Service\Builder**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
 This class builds instances based on complex definitions
 
-## Methoden
+## Methods
 
 private *mixed* **_buildParameter** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector, *int* $position, *array* $argument)
 

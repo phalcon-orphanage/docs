@@ -10,9 +10,9 @@ title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
-Yönlendirme, komut satırı değişkenlerini alma, modül adını, görev adını, eylem adını ve içindeki isteğe bağlı parametreleri ayıklama ve ardından bir görevi başlatma ve üzerinde bir eylem çağırma işlemidir.
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
 ```php
 <?php
@@ -32,7 +32,7 @@ $handle = $dispatcher->dispatch();
 
 ```
 
-## Sabitler
+## Constants
 
 *integer* **EXCEPTION_NO_DI**
 
@@ -46,63 +46,63 @@ $handle = $dispatcher->dispatch();
 
 *integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Metodlar
+## Methods
 
 public **setTaskSuffix** (*mixed* $taskSuffix)
 
-Varsayılan görev son ekini ayarlar
+Sets the default task suffix
 
 public **setDefaultTask** (*mixed* $taskName)
 
-Varsayılan görev adını ayarlar
+Sets the default task name
 
 public **setTaskName** (*mixed* $taskName)
 
-Gönderilecek görev adını ayarlar
+Sets the task name to be dispatched
 
 public **getTaskName** ()
 
-En son gönderilen görev adını getirir
+Gets last dispatched task name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Dahili bir istisna atar
+Throws an internal exception
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Bir kullanıcı istisnasını işler
+Handles a user exception
 
 public **getLastTask** ()
 
-En son gönderilen denetleyiciyi döner
+Returns the latest dispatched controller
 
 public **getActiveTask** ()
 
-Göndericideki aktif görevi döner
+Returns the active task in the dispatcher
 
 public **setOptions** (*array* $options)
 
-Gönderilecek seçenekleri ayarlar
+Set the options to be dispatched
 
 public **getOptions** ()
 
-Gönderilmiş seçenekleri getirir
+Get dispatched options
 
 public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-Bir seçeneği adına ve sayısal indisine göre getirir
+Gets an option by its name or numeric index
 
 public **hasOption** (*mixed* $option)
 
-Bir seçeneğin var olup olmadığını kontrol edin
+Check if an option exists
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-Eylem yöntemini çağırır.
+Calls the action method.
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -110,23 +110,23 @@ Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Olay yöneticisini ayarlar
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Dahili olay yöneticisini döndürür
+Returns the internal event manager
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Varsayılan eylemin son ekini ayarlar
+Sets the default action suffix
 
 public **getActionSuffix** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Varsayılan eylemin son ekini alır
+Gets the default action suffix
 
 public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Denetleyicinin bulunduğu modülü ayarlar (yalnızca bilgi verici)
+Sets the module where the controller is (only informative)
 
 public **getModuleName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -134,39 +134,39 @@ Gets the module where the controller class is
 
 public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Denetleyici sınıfının bulunduğu isim alanını ayarlar
+Sets the namespace where the controller class is
 
 public **getNamespaceName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Geçerli işleyici adına öncelenecek bir ad alanını döndürür
+Gets a namespace to be prepended to the current handler name
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Varsayılan isim alanını ayarlar
+Sets the default namespace
 
 public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Varsayılan isim alanını döndürür
+Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Varsayılan eylem ismini ayarlar
+Sets the default action name
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gönderilecek eylem adını ayarlar
+Sets the action name to be dispatched
 
 public **getActionName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-En son gönderilen eylemin adını getirir
+Gets the latest dispatched action name
 
 public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gönderilecek eylem parametrelerini ayarlar
+Sets action params to be dispatched
 
 public **getParams** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Eylem parametrelerini al
+Gets action params
 
 public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -178,7 +178,7 @@ Gets a param by its name or numeric index
 
 public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Parametrenin varlığını kontrol et
+Check if a param exists
 
 public **getActiveMethod** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -186,15 +186,15 @@ Returns the current method to be/executed in the dispatcher
 
 public **isFinished** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Gönderim döngüsünün bitip tamamlanmadığını kontrol eder veya gönderilecek fazla denetleyici/görevi vardır
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-En son geri getirilen değeri bir eylemle manuel olarak ayarlar
+Sets the latest returned value by an action manually
 
 public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-En son gönderilen eylem tarafından geri getirilen değeri geri getirir
+Returns value returned by the latest dispatched action
 
 public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -214,7 +214,7 @@ $di->set('dispatcher', function() {
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Dağıtım sırasında model bağlamayı etkinleştir
+Enable model binding during dispatch
 
 ```php
 <?php
@@ -230,19 +230,19 @@ $di->set('dispatcher', function() {
 
 public **getModelBinder** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Model bağlayıcıyı getirir
+Gets model binder
 
 public *object* **dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Yönlendirme parametrelerini hesaba katarak bir işleyici eylemini gönderir
+Dispatches a handle action taking into account the routing parameters
 
 protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Yönlendirme parametrelerini hesaba katarak bir işleyici eylemini gönderir
+Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Yürütme akışını başka bir denetleyiciye/eyleme iletir.
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
@@ -258,15 +258,15 @@ $this->dispatcher->forward(
 
 public **wasForwarded** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mevcut yürütülen eylemin başka biri tarafından gönderilip gönderilmediğini kontrol edin
+Check if the current executed action was forwarded by another one
 
 public **getHandlerClass** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-İsteği göndermek için bulunabilecek olası sınıf adı
+Possible class name that will be located to dispatch the request
 
 public **getBoundModels** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Bağlayıcı örneğinden bağlı modelleri döndürür
+Returns bound models from binder instance
 
 ```php
 <?php
@@ -283,4 +283,4 @@ class UserController extends Controller
 
 protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Boş özellikleri varsayılanlarına ayarlayın (varsayılanlar mevcutsa)
+Set empty properties to their defaults (where defaults are available)

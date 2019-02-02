@@ -8,12 +8,12 @@ title: 'Phalcon\Assets\Filters\None'
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
 
-Orijinal kaynakta herhangi bir değişiklik yapmadan içeriği döndürür
+Returns the content without make any modification to the original source
 
-## Metodlar
+## Methods
 
 public **filter** (*mixed* $content)
 
-Dokunulmadan içeriği döndürür
+Returns the content without be touched

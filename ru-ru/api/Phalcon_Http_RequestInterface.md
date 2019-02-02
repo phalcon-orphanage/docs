@@ -8,7 +8,7 @@ title: 'Phalcon\Http\RequestInterface'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/requestinterface.zep)
 
-## Методы
+## Methods
 
 abstract public **get** ([*mixed* $name], [*mixed* $filters], [*mixed* $defaultValue])
 

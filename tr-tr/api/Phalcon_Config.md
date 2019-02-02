@@ -8,9 +8,9 @@ title: 'Phalcon\Config'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. Uygulama kodundaki yapılandırma verisine erişmek için iç içe geçmiş bir nesne özelliğini temel alan kullanıcı arabirimi sağlar.
+Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
 ```php
 <?php
@@ -34,11 +34,11 @@ $config = new \Phalcon\Config(
 
 ```
 
-## Sabitler
+## Constants
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Metodlar
+## Methods
 
 public **__construct** ([*array* $arrayConfig])
 
@@ -46,7 +46,7 @@ Phalcon\Config constructor
 
 public **offsetExists** (*mixed* $index)
 
-Bir özelliğin dizi sözdizimini kullanarak tanımlı olup olmadığını kontrol etmeye izin verir
+Allows to check whether an attribute is defined using the array-syntax
 
 ```php
 <?php
@@ -59,7 +59,7 @@ var_dump(
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
 
-Mevcut yapılandırmada nokta kullanılarak ayrılmış yolun değerini döndürür.
+Returns a value from current config using a dot separated path.
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue])
 
-Yapılandırmadan bir özellik döndürür, eğer özellik tanımlanmamışsa boş döndürür Değer kesinlikle boş ise veya tanımlanmamışsa, bunun yerine varsayılan değer kullanılacaktır
+Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index)
 
-Dizi sözdizimini kullanarak bir özellik döndürür
+Gets an attribute using the array-syntax
 
 ```php
 <?php
@@ -107,7 +107,7 @@ $config["database"] = [
 
 public **offsetUnset** (*mixed* $index)
 
-Dizi sözdizimini kullanarak bir özelliği kaldırır
+Unsets an attribute using the array-syntax
 
 ```php
 <?php
@@ -118,7 +118,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config)
 
-Bir yapılandırma ile mevcut olanını birleştirir
+Merges a configuration into the current one
 
 ```php
 <?php
@@ -137,7 +137,7 @@ $globalConfig->merge($appConfig);
 
 public **toArray** ()
 
-Nesneyi bir diziye özyinelemeli olarak dönüştürür
+Converts recursively the object to an array
 
 ```php
 <?php
@@ -148,9 +148,9 @@ print_r(
 
 ```
 
-herkese açık **say** ()
+public **count** ()
 
-Yapılandırmada ayarlanan özelliklerin sayısını döndürür
+Returns the count of properties set in the config
 
 ```php
 <?php
@@ -159,7 +159,7 @@ print count($config);
 
 ```
 
-veya
+or
 
 ```php
 <?php
@@ -174,12 +174,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter])
 
-Varsayılan yol ayırıcı ayarlar
+Sets the default path delimiter
 
 public static **getPathDelimiter** ()
 
-Varsayılan yol ayırıcıyı getirir
+Gets the default path delimiter
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
-Yapılandırmaları birleştirme için yardımcı metot (iç içe yapılandırma örneklerini yönlendirir)
+Helper method for merge configs (forwarding nested config instance)

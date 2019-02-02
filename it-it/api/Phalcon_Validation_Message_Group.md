@@ -8,11 +8,11 @@ title: 'Phalcon\Validation\Message\Group'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/message/group.zep)
 
 Represents a group of validation messages
 
-## Metodi
+## Methods
 
 public **__construct** ([*array* $messages])
 

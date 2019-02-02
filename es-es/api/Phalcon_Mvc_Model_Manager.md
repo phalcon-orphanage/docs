@@ -10,7 +10,7 @@ title: 'Phalcon\Mvc\Model\Manager'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
 
-Este componente controla la inicialización de modelos, manteniendo el registro de relaciones entre los diferentes modelos de la aplicación.
+This components controls the initialization of models, keeping record of relations between the different models of the application.
 
 A ModelsManager is injected to a model via a Dependency Injector/Services Container such as Phalcon\Di.
 
@@ -37,11 +37,11 @@ $robot = new Robots($di);
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
 
-Configura el contenedor DependencyInjector
+Sets the DependencyInjector container
 
 public **getDI** ()
 
-Devuelve el contenedor DependencyInjector
+Returns the DependencyInjector container
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
@@ -53,11 +53,11 @@ Devuelve el administrador de eventos interno
 
 public **setCustomEventsManager** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
 
-Configura un administrador de eventos personalizado para un modelo específico
+Sets a custom events manager for a specific model
 
 public **getCustomEventsManager** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Devuelve el administrador de eventos personalizado relacionado a un modelo
+Returns a custom events manager related to a model
 
 public **initialize** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
@@ -65,7 +65,7 @@ Initializes a model in the model manager
 
 public **isInitialized** (*mixed* $modelName)
 
-Comprueba si un modelo está ya inicializado
+Check whether a model is already initialized
 
 public **getLastInitialized** ()
 
@@ -185,7 +185,7 @@ Returns the connection service name used to read or write data related to a mode
 
 public **notifyEvent** (*mixed* $eventName, [Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model)
 
-Recibe los eventos generados en los modelos y los envía al administrador de eventos si está disponible. Notifica los comportamientos que están escuchando en el modelo
+Receives events generated in the models and dispatches them to an events-manager if available Notify the behaviors that are listening in the model
 
 public **missingMethod** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $eventName, *mixed* $data)
 
@@ -193,7 +193,7 @@ Dispatch an event to the listeners and behaviors This method expects that the en
 
 public **addBehavior** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, [Phalcon\Mvc\Model\BehaviorInterface](Phalcon_Mvc_Model_BehaviorInterface) $behavior)
 
-Enlaza un comportamiento a un modelo
+Binds a behavior to a model
 
 public **keepSnapshots** ([Phalcon\Mvc\ModelInterface](Phalcon_Mvc_ModelInterface) $model, *mixed* $keepSnapshots)
 
@@ -213,7 +213,7 @@ Checks if a model is using dynamic update instead of all-field update
 
 public [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **addHasOne** ([Phalcon\Mvc\Model](Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 
-Configura una relacion 1-1 entre dos modelos
+Setup a 1-1 relation between two models
 
 public [Phalcon\Mvc\Model\Relation](Phalcon_Mvc_Model_Relation) **addBelongsTo** ([Phalcon\Mvc\Model](Phalcon_Mvc_Model) $model, *mixed* $fields, *string* $referencedModel, *mixed* $referencedFields, [*array* $options])
 

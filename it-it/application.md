@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Applicazioni MVC
+# MVC Applications
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -18,13 +18,13 @@ The following bootstrap code is typical for a Phalcon application:
 
 use Phalcon\Mvc\Application;
 
-// Registra autoloaders
+// Register autoloaders
 // ...
 
-// Registra i servizi
+// Register services
 // ...
 
-// Gestisci la richiesta
+// Handle the request
 $application = new Application($di);
 
 try {
@@ -46,14 +46,14 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## Avvio manuale
+## Manual bootstrapping
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
 ```php
 <?php
 
-// Recupera il servizio 'router' 
+// Get the 'router' service
 $router = $di['router'];
 
 $router->handle();
@@ -62,7 +62,8 @@ $view = $di['view'];
 
 $dispatcher = $di['dispatcher'];
 
-// Passa i parametri processati da router al dispatcher
+// Pass the processed router parameters to the dispatcher
+
 $dispatcher->setControllerName(
     $router->getControllerName()
 );
@@ -75,30 +76,30 @@ $dispatcher->setParams(
     $router->getParams()
 );
 
-// Avvia la vista 
+// Start the view
 $view->start();
 
-// Invia la richiesta
+// Dispatch the request
 $dispatcher->dispatch();
 
-// Genera le viste correlate
+// Render the related views
 $view->render(
     $dispatcher->getControllerName(),
     $dispatcher->getActionName(),
     $dispatcher->getParams()
 );
 
-// Termina la vista
+// Finish the view
 $view->finish();
 
 $response = $di['response'];
 
-// Passa l'output della vista alla risposta
+// Pass the output of the view to the response
 $response->setContent(
     $view->getContent()
 );
 
-// Invia la risposta
+// Send the response
 $response->send();
 ```
 
@@ -116,7 +117,8 @@ $router->handle();
 
 $dispatcher = $di['dispatcher'];
 
-// Passa i parametri processati da router al dispatcher
+// Pass the processed router parameters to the dispatcher
+
 $dispatcher->setControllerName(
     $router->getControllerName()
 );
@@ -129,13 +131,13 @@ $dispatcher->setParams(
     $router->getParams()
 );
 
-// Invia la richiesta
+// Dispatch the request
 $dispatcher->dispatch();
 
-// Ottiene il valore ritornato dall'ultima azione eseguita
+// Get the returned value by the last executed action
 $response = $dispatcher->getReturnedValue();
 
-// Controlla se l'azione ritornata è un oggetto 'response' 
+// Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
     // Send the response
     $response->send();
@@ -156,7 +158,7 @@ $router->handle();
 
 $dispatcher = $di['dispatcher'];
 
-// Passa i parametri processati da router al dispatcher
+// Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
     $router->getControllerName()
@@ -171,23 +173,23 @@ $dispatcher->setParams(
 );
 
 try {
-    // Invia la richiesta
+    // Dispatch the request
     $dispatcher->dispatch();
 } catch (Exception $e) {
-    // Si è verificata un'eccezione, inviare ad un controller/action a tale scopo
+    // An exception has occurred, dispatch some controller/action aimed for that
 
-    // Passa i parametri processati da router al dispatcher
+    // Pass the processed router parameters to the dispatcher
     $dispatcher->setControllerName('errors');
     $dispatcher->setActionName('action503');
 
-    //  Invia la richiesta
+    // Dispatch the request
     $dispatcher->dispatch();
 }
 
-// Ottiene il valore ritornato dall'ultima azione eseguita
+// Get the returned value by the last executed action
 $response = $dispatcher->getReturnedValue();
 
-// Controlla se l'azione ritornata è un oggetto 'response' 
+// Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
     // Send the response
     $response->send();
@@ -198,13 +200,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## Applicazioni a modulo singolo o multiplo
+## Single or Multi Module Applications
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Modulo singolo
+### Single Module
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -328,7 +330,7 @@ try {
 
 <a name='module'></a>
 
-### Modulo multiplo
+### Multi Module
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
@@ -535,11 +537,11 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Eventi dell'applicazione
+## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Sono supportati i seguenti eventi:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Nome evento           | Attivato (Triggered)                                         |
+| Event Name            | Triggered                                                    |
 | --------------------- | ------------------------------------------------------------ |
 | `boot`                | Executed when the application handles its first request      |
 | `beforeStartModule`   | Before initialize a module, only when modules are registered |
@@ -547,7 +549,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 | `beforeHandleRequest` | Before execute the dispatch loop                             |
 | `afterHandleRequest`  | After execute the dispatch loop                              |
 
-Nell'esempio seguente viene illustrato come allegare i listener per questo componente:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -569,6 +571,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Risorse esterne
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)

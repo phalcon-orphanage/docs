@@ -8,9 +8,9 @@ title: 'Phalcon\Mvc\Router\Group'
 
 *implements* [Phalcon\Mvc\Router\GroupInterface](Phalcon_Mvc_Router_GroupInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/group.zep)
 
-Kelas pembantu membuat kelompok rute dengan atribut umum
+Helper class to create a group of routes with common attributes
 
 ```php
 <?php
@@ -58,7 +58,7 @@ $router->mount($blog);
 
 ```
 
-## Metode
+## Methods
 
 public **__construct** ([*mixed* $paths])
 
@@ -66,19 +66,19 @@ Phalcon\Mvc\Router\Group constructor
 
 public **setHostname** (*mixed* $hostname)
 
-Tetapkan batasan nama host untuk semua rute dalam grup
+Set a hostname restriction for all the routes in the group
 
 public **getHostname** ()
 
-Mengembalikan batasan hostname
+Returns the hostname restriction
 
 public **setPrefix** (*mixed* $prefix)
 
-Tetapkan awalan umum uri untuk semua rute dalam grup ini
+Set a common uri prefix for all the routes in this group
 
 public **getPrefix** ()
 
-Mengembalikan awalan umum untuk semua rute
+Returns the common prefix for all the routes
 
 public **beforeMatch** (*mixed* $beforeMatch)
 
@@ -86,23 +86,23 @@ Sets a callback that is called if the route is matched. The developer can implem
 
 public **getBeforeMatch** ()
 
-Mengembalikan callback 'sebelum pertandingan' jika ada
+Returns the 'before match' callback if any
 
 public **setPaths** (*mixed* $paths)
 
-Tetapkan jalur umum untuk semua rute dalam grup
+Set common paths for all the routes in the group
 
-publik **mendapatkanJalan** ()
+public **getPaths** ()
 
-Mengembalikan jalur umum yang ditetapkan untuk grup ini
+Returns the common paths defined for this group
 
-publik **mendapatkanRute** ()
+public **getRoutes** ()
 
-Mengembalikan rute yang ditambahkan ke grup
+Returns the routes added to the group
 
 public **add** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Menambahkan rute ke router pada setiap metode HTTP
+Adds a route to the router on any HTTP method
 
 ```php
 <?php
@@ -113,7 +113,7 @@ $router->add("/about", "About::index");
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addGet** (*string* $pattern, [*string/array* $paths])
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP nya MENDAPATKAN
+Adds a route to the router that only match if the HTTP method is GET
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPost** (*string* $pattern, [*string/array* $paths])
 
@@ -125,24 +125,24 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addPatch** (*string* $pattern, [*string/array* $paths])
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah PATCH
+Adds a route to the router that only match if the HTTP method is PATCH
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addDelete** (*string* $pattern, [*string/array* $paths])
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah DELETE
+Adds a route to the router that only match if the HTTP method is DELETE
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addOptions** (*string* $pattern, [*string/array* $paths])
 
-Tambahkan rute ke router yang hanya cocok jika metode HTTP adalah OPTIONS
+Add a route to the router that only match if the HTTP method is OPTIONS
 
 public [Phalcon\Mvc\Router\Route](Phalcon_Mvc_Router_Route) **addHead** (*string* $pattern, [*string/array* $paths])
 
-Menambahkan rute ke router yang hanya cocok jika metode HTTP adalah KEPALA
+Adds a route to the router that only match if the HTTP method is HEAD
 
-publik **jelas** ()
+public **clear** ()
 
-Menghapus semua rute yang telah ditentukan sebelumnya
+Removes all the pre-defined routes
 
 protected **_addRoute** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
-Menambahkan rute yang menerapkan atribut umum
+Adds a route applying the common attributes

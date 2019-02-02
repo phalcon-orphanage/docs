@@ -30,7 +30,7 @@ Devuelve el administrador de eventos interno
 
 public **registerModules** (*array* $modules, [*mixed* $merge])
 
-Registra un arreglo de módulos presentes en la aplicación
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -52,19 +52,19 @@ $this->registerModules(
 
 public **getModules** ()
 
-Devuelve los módulos registrados en la aplicación
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name)
 
-Obtiene la definición de módulo registrada en la aplicación vía nombre del módulo
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule)
 
-Configura el nombre del módulo para ser usado si el router no devuelve un módulo válido
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** ()
 
-Devuelve el nombre de módulo por defecto
+Returns the default module name
 
 abstract public **handle** ()
 
@@ -72,11 +72,11 @@ Maneja una solucitud
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Configura el inyector de dependencia
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Devuelve el inyector de dependencias interno
+Returns the internal dependency injector
 
 public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

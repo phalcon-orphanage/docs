@@ -163,10 +163,10 @@ $userAgent = $request->getUserAgent();
 // Get the best acceptable content by the browser. ie text/xml
 $contentType = $request->getAcceptableContent();
 
-// Get the best charset accepted by the browser. یعنی. utf-8
+// Get the best charset accepted by the browser. ie. utf-8
 $charset = $request->getBestCharset();
 
-// Get the best language accepted configured in the browser. یعنی. en-us
+// Get the best language accepted configured in the browser. ie. en-us
 $language = $request->getBestLanguage();
 
 // Check if a header exists
@@ -177,7 +177,7 @@ if ($request->hasHeader('my-header')) {
 
 <a name='events'></a>
 
-## رویداد ها
+## Events
 
 When using HTTP authorization, the `Authorization` header has the following format:
 

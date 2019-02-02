@@ -39,7 +39,7 @@ Alpha( mixed $input ): string | array
 
 Removes all characters that are not characters of the alphabet. It uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
 
-#### متغیر بولین
+#### bool
 
 ```php
 BoolVal( mixed $input ): bool
@@ -79,7 +79,7 @@ FloatVal( mixed $input ): float
 
 Removes all characters except digits, dot, plus and minus sign and casts the value as a `double`. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(double)`.
 
-#### اینت
+#### int
 
 ```php
 IntVa( mixed $input ): int

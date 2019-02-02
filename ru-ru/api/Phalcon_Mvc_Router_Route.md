@@ -12,7 +12,7 @@ title: 'Phalcon\Mvc\Router\Route'
 
 This class represents every route added to the router
 
-## Методы
+## Methods
 
 public **__construct** (*mixed* $pattern, [*mixed* $paths], [*mixed* $httpMethods])
 
@@ -52,7 +52,7 @@ public static **getRoutePaths** ([*mixed* $paths])
 
 Returns routePaths
 
-общественная **метод getname** ()
+public **getName** ()
 
 Returns the route's name
 

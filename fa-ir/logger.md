@@ -15,7 +15,7 @@ category: 'logger'
 - [Logging to Multiple adapters](logger-multiple)
 - [Message Formatting](logger-message-formatting) 
     - [Line](logger-message-formatting-line)
-    - [جی سون](logger-message-formatting-json)
+    - [JSON](logger-message-formatting-json)
     - [Syslog](logger-message-formatting-syslog)
     - [Custom](logger-message-formatting-custom)
 - [Interpolation](logger-interpolation)

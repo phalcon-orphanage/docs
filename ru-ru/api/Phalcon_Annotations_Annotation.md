@@ -10,13 +10,13 @@ title: 'Phalcon\Annotations\Annotation'
 
 Represents a single annotation in an annotations collection
 
-## Методы
+## Methods
 
 public **__construct** (*array* $reflectionData)
 
 Phalcon\Annotations\Annotation constructor
 
-общественная **метод getname** ()
+public **getName** ()
 
 Returns the annotation's name
 

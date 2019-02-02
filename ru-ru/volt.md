@@ -7,19 +7,19 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Volt: шаблонизатор
+# Volt: Template Engine
 
-Volt это ультра-быстрый и дружелюбный язык шаблонов, написанный на C для PHP. Он представляет набор помощников для простого написания представлений. Volt сильно интегрирован с другими компонентами Phalcon, но вы можете его использовать в качестве самостоятельного компонента в ваших приложениях.
+Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
 
 ![](/assets/images/content/volt.jpg)
 
-Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Поэтому многие разработчики будут на знакомой территории использую похожий синтаксис, который они уже используют в аналогичных шаблонизаторах. Синтаксис и функции Volt были расширены за счет большего количества элементов и, конечно же, производительности, к которой привыкли разработчики при работе с Phalcon.
+Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
 <a name='introduction'></a>
 
-## Введение
+## Introduction
 
-Шаблоны Volt компилируются в чистый PHP-код, так что в основном они экономят усилия написания кода PHP вручную:
+Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
 {% raw %}
@@ -40,9 +40,9 @@ Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally create
 
 <a name='setup'></a>
 
-## Подключение Volt
+## Activating Volt
 
-Как и в других шаблонизаторах, вы можете зарегистрировать Volt в компоненте представления, используя новое расширение или повторно используя стандарт `.phtml`:
+As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
 
 ```php
 <?php
@@ -86,7 +86,7 @@ $di->set(
 );
 ```
 
-Используйте стандартное `.phtml` расширение:
+Use the standard `.phtml` extension:
 
 ```php
 <?php
@@ -98,7 +98,7 @@ $view->registerEngines(
 );
 ```
 
-Вам не нужно указывать Volt сервис в DI; Вы также можете использовать Volt с настройками по умолчанию:
+You don't have to specify the Volt Service in the DI; you can also use the Volt engine with the default settings:
 
 ```php
 <?php
@@ -110,7 +110,7 @@ $view->registerEngines(
 );
 ```
 
-Если вы не хотите повторно использовать Volt в качестве сервиса, вы можете передать анонимную функцию для регистрации шаблонизатора вместо имени сервиса:
+` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
 
 ```php
 <?php
@@ -143,19 +143,19 @@ $di->set(
 );
 ```
 
-Доступны следующие обновления в Volt:
+The following options are available in Volt:
 
-| Параметр            | Описание                                                                                                                       | По умолчанию |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------ |
-| `autoescape`        | Включает глобальное автоэкранирование в HTML                                                                                   | `false`      |
-| `compileAlways`     | Говорит Volt, должны ли шаблоны компилироваться при каждом запросе или только при изменении                                    | `false`      |
-| `compiledExtension` | Расширение, добавленное к компилированным в PHP файлам                                                                         | `.php`       |
-| `compiledPath`      | Доступный для записи путь, куда будут помещены скомпилированные шаблоны PHP                                                    | `./`         |
-| `compiledSeparator` | Volt заменяет разделители каталогов / и \ этим разделителем, для создания отдельного файла в каталоге скомпилированных файлов | `%%`         |
-| `prefix`            | Позволяет добавить префикс к шаблонам в пути компиляции                                                                        | `null`       |
-| `stat`              | Должен ли Phalcon проверять, существуют ли различия между файлом шаблона и его скомпилированным путем                          | `true`       |
+| Параметр            | Описание                                                                                                                     | По умолчанию |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false`      |
+| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false`      |
+| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`       |
+| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`         |
+| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`         |
+| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`       |
+| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`       |
 
-Путь компиляции генерируется в соответствии с указанными выше параметрами. Если разработчику требуется полная свобода, определения пути компиляции, для его генерации может использоваться анонимная функция. Эта функция получает относительный путь к шаблону в каталоге представлений. Следующие примеры показывают как изменить путь компиляции динамически:
+The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
 ```php
 <?php
@@ -188,11 +188,11 @@ $volt->setOptions(
 
 <a name='basic-usage'></a>
 
-## Базовое использование
+## Basic Usage
 
-Представления состоят из Volt кода, PHP и HTML. Для записей в режиме Volt используются специальные разделители. `{% raw %}{% ... %}{% endraw %}` используется для выполнения операторов таких как цикл for или присваивания переменных `{% raw %}{{ ... }}{% endraw %}`, выводит результат выражения в шаблон.
+A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `{% raw %}{% ... %}{% endraw %}` is used to execute statements such as for-loops or assign values and `{% raw %}{{ ... }}{% endraw %}`, prints the result of an expression to the template.
 
-Ниже приведен минимальный шаблон, который показывает некоторые основы:
+Below is a minimal template that illustrates a few basics:
 
 ```twig
 {% raw %}
@@ -227,7 +227,7 @@ $volt->setOptions(
 {% endraw %}
 ```
 
-Используя [Phalcon\Mvc\View](api/Phalcon_Mvc_View) вы можете передавать переменные из контроллеров в представления. В примере выше 4 переменные были переданы в представление: `show_navigation`, `menu`, `title` and `post`:
+Using [Phalcon\Mvc\View](api/Phalcon_Mvc_View) you can pass variables from the controller to the views. In the above example, four variables were passed to the view: `show_navigation`, `menu`, `title` and `post`:
 
 ```php
 <?php
@@ -258,7 +258,7 @@ class PostsController extends Controller
 
 <a name='variables'></a>
 
-## Переменные
+## Variables
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
@@ -271,7 +271,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 
 <a name='filters'></a>
 
-## Фильтры
+## Filters
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -283,7 +283,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 {% endraw %}
 ```
 
-Доступен следующий список встроенных фильтров в Volt:
+The following is the list of available built-in filters in Volt:
 
 | Фильтр             | Описание                                                                                                                            |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -313,7 +313,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 | `upper`            | Change the case of a string to uppercase                                                                                            |
 | `url_encode`       | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
 
-Примеры:
+Examples:
 
 ```twig
 {% raw %}
@@ -377,7 +377,7 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 <a name='comments'></a>
 
-## Комментарии
+## Comments
 
 Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw %}` delimiters. All text inside them is just ignored in the final output:
 
@@ -391,7 +391,7 @@ Comments may also be added to a template using the `{% raw %}{# ... #}{% endraw 
 
 <a name='control-structures'></a>
 
-## Список управляющих конструкций
+## List of Control Structures
 
 Volt provides a set of basic but powerful control structures for use in templates:
 
@@ -1443,7 +1443,7 @@ $compiler->addFunction('dump', 'print_r');
 
 <a name='extending-filters'></a>
 
-### Фильтры
+### Filters
 
 A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
 
@@ -1619,7 +1619,7 @@ $compiler->compile(
 require $compiler->getCompiledTemplatePath();
 ```
 
-## Дополнительная литература
+## External Resources
 
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Album-O-Rama](https://album-o-rama.phalconphp.com) is a sample application using Volt as template engine, [GitHub](https://github.com/phalcon/album-o-rama)

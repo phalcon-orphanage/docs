@@ -8,15 +8,15 @@ title: 'Phalcon\Http\Response\Headers'
 
 *implements* [Phalcon\Http\Response\HeadersInterface](Phalcon_Http_Response_HeadersInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
 This class is a bag to manage the response headers
 
-## Methoden
+## Methods
 
 public **set** (*mixed* $name, *mixed* $value)
 
-Setzt einen Header, welcher am Ende der Anforderung gesendet wird
+Sets a header to be sent at the end of the request
 
 public **get** (*mixed* $name)
 
@@ -40,7 +40,7 @@ Reset set headers
 
 public **toArray** ()
 
-Gibt die aktuellen Header als array zurück
+Returns the current headers as an array
 
 public static **__set_state** (*array* $data)
 

@@ -10,7 +10,7 @@ title: 'Phalcon\Logger\Adapter\Syslog'
 
 *implements* [Phalcon\Logger\AdapterInterface](Phalcon_Logger_AdapterInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
 Sends logs to the system logger
 
@@ -35,7 +35,7 @@ $logger->error("This is another error");
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** (*string* $name, [*array* $options])
 
@@ -43,75 +43,75 @@ Phalcon\Logger\Adapter\Syslog constructor
 
 public **getFormatter** ()
 
-Dahili formatlayıcıyı döndürür
+Returns the internal formatter
 
 public **logInternal** (*mixed* $message, *mixed* $type, *mixed* $time, *array* $context)
 
-Günlüğü dosyanın kendisine yazar
+Writes the log to the stream itself
 
 public **close** ()
 
-Günlüğü kapatır
+Closes the logger
 
 public **setLogLevel** (*mixed* $level) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Belirli bir seviyeden daha az ya da belirli bir seviyeye eşit olan işleyicilere gönderilen günlükleri filtreler
+Filters the logs sent to the handlers that are less or equal than a specific level
 
 public **getLogLevel** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Geçerli günlük düzeyini döndürür
+Returns the current log level
 
 public **setFormatter** ([Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface) $formatter) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Mesaj biçimlendiricisini ayarlar
+Sets the message formatter
 
 public **begin** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Bir işlem başlatır
+Starts a transaction
 
 public **commit** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Dahili işlemi tamamlar
+Commits the internal transaction
 
 public **rollback** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Dahili işlemi geri döndürür
+Rollbacks the internal transaction
 
 public **isTransaction** () inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Günlüğün halen aktif bir işlemde olup olmadığını döndürür
+Returns the whether the logger is currently in an active transaction or not
 
 public **critical** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne kritik bir mesaj Gönderir / Yazar
+Sends/Writes a critical message to the log
 
 public **emergency** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne acil durum mesajı Gönderir / Yazar
+Sends/Writes an emergency message to the log
 
 public **debug** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne hata giderme mesajı Gönderir / Yazar
+Sends/Writes a debug message to the log
 
 public **error** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne hata mesajı Gönderir / Yazar
+Sends/Writes an error message to the log
 
 public **info** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne bilgi mesajı Gönderir / Yazar
+Sends/Writes an info message to the log
 
 public **notice** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne bildirim mesajı Gönderir / Yazar
+Sends/Writes a notice message to the log
 
 public **warning** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne ikaz mesajı Gönderir / Yazar
+Sends/Writes a warning message to the log
 
 public **alert** (*mixed* $message, [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 
-Sistem günlüğüne uyarı mesajı Gönderir / Yazar
+Sends/Writes an alert message to the log
 
 public **log** (*mixed* $type, [*mixed* $message], [*array* $context]) inherited from [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
 

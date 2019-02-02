@@ -12,19 +12,19 @@ category: 'installation'
 
 To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
 
-### Distribuzioni (Debian, Ubuntu, ecc.) basate su DEB
+### DEB based distributions (Debian, Ubuntu, etc.)
 
-#### Installazione da repository
+#### Repository installation
 
 Add the repository to your distribution:
 
-**Versioni stabili**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Versioni "notturne"**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -38,7 +38,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb
 
 > This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {: .alert .alert-warning }
 
-#### Installazione Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to type the following commands in your terminal:
 
@@ -47,7 +47,7 @@ sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-#### Ulteriori PPAs
+#### Additional PPAs
 
 **Ondřej Surý**
 
@@ -66,19 +66,19 @@ and Phalcon:
 sudo apt-get install php-phalcon
 ```
 
-### Distribuzioni (CentOS, Fedora, ecc.) basate su RPM
+### RPM based distributions (CentOS, Fedora, etc.)
 
-#### Installazione da repository
+#### Repository installation
 
 Add the repository to your distribution:
 
-**Versioni stabili**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Versioni "notturne"**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -92,7 +92,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm
 
 > This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {; .alert .alert-warning }
 
-#### Installazione Phalcon
+#### Phalcon installation
 
 To install Phalcon you need to issue the following commands in your terminal:
 
@@ -101,7 +101,7 @@ sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-#### Ulteriori pacchetti RPM
+#### Additional RPMs
 
 **Remi**
 
@@ -125,7 +125,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon
 ```
 
-#### Codice Sorgente
+#### Source
 
 ```bash
 export CFLAGS="-O2 --fvisibility=hidden"

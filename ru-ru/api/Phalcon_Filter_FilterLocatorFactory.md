@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\FilterLocatorFactory'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterlocatorfactory.zep)
 
-### Методы
+### Methods
 
 ```php
 public function newInstance(): \Phalcon\Service\LocatorInterface

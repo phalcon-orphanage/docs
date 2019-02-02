@@ -1,19 +1,19 @@
 [
     {
-        "text": "常规信息",
+        "text": "General",
         "url": "/introduction",
         "menu": [
             {
-                "text": "简介",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
-                "text": "发行说明",
+                "text": "Release Notes",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "升級",
+                "text": "Upgrade",
                 "url": "/upgrade"
             },
             {
@@ -23,11 +23,11 @@
         ]
     },
     {
-        "text": "贡献者",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
-                "text": "概述",
+                "text": "Overview",
                 "url": "/contributions"
             },
             {
@@ -47,7 +47,7 @@
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing guide",
+                "text": "Testing environment",
                 "url": "/testing-environment"
             }
         ]
@@ -57,7 +57,7 @@
         "url": "",
         "menu": [
             {
-                "text": "安装",
+                "text": "Installation",
                 "url": "/installation"
             },
             {
@@ -89,11 +89,11 @@
         "url": "",
         "menu": [
             {
-                "text": "安装",
+                "text": "Installation",
                 "url": "/devtools-installation"
             },
             {
-                "text": "使用",
+                "text": "Usage",
                 "url": "/devtools-usage"
             },
             {
@@ -127,7 +127,7 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "使用案例",
+                "text": "Use case",
                 "url": "/use-case"
             }
         ]
@@ -137,7 +137,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API 索引",
+                "text": "API Index",
                 "url": "/api/"
             },
             {
@@ -153,7 +153,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI 容器",
+                "text": "DI Container",
                 "url": "/di"
             },
             {
@@ -163,7 +163,7 @@
         ]
     },
     {
-        "text": "服务",
+        "text": "Services",
         "url": "",
         "menu": [
             {
@@ -183,7 +183,7 @@
                 "url": "/loader"
             },
             {
-                "text": "日志记录",
+                "text": "Logging",
                 "url": "/logger"
             },
             {
@@ -193,7 +193,7 @@
         ]
     },
     {
-        "text": "数据库",
+        "text": "Database",
         "url": "",
         "menu": [
             {
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "模型",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -221,7 +221,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "事件",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -233,11 +233,11 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "交易",
+                "text": "Transactions",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "验证程序",
+                "text": "Validators",
                 "url": "/db-models-validation"
             },
             {
@@ -245,7 +245,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "分页",
+                "text": "Pagination",
                 "url": "/db-pagination"
             }
         ]
@@ -297,7 +297,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "控制器",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
@@ -309,11 +309,11 @@
                 "url": "/events"
             },
             {
-                "text": "过滤器",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
-                "text": "路由",
+                "text": "Routing",
                 "url": "/routing"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "验证",
+                "text": "Validation",
                 "url": "/validation"
             }
         ]
@@ -349,7 +349,7 @@
         ]
     },
     {
-        "text": "安全",
+        "text": "Security",
         "url": "",
         "menu": [
             {
@@ -357,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "安全",
+                "text": "Security",
                 "url": "/security"
             }
         ]
@@ -367,7 +367,7 @@
         "url": "",
         "menu": [
             {
-                "text": "国际化",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {

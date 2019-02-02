@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\StringVal'
 
 Sanitizes a value to a string
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

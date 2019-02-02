@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\LowerFirst'
 
 Sanitizes a string using `lcfirst`
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

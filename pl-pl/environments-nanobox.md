@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Przegląd
+# Overview
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
@@ -44,7 +44,7 @@ run.config:
 This tells Nanobox to:
 
 - Use the PHP [engine](https://docs.nanobox.io/engines/), a set of scripts that build your app's runtime.
-- Użyj PHP 7.1.
+- Use PHP 7.1.
 - Set the Apache document root to `public`.
 - Include the Phalcon extension. *Nanobox takes a bare-bones approach to extensions, so you'll likely need to include other extensions. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.

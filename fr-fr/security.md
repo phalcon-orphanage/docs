@@ -200,6 +200,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## Ressources Externes
+## External Resources
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)

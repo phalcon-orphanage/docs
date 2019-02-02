@@ -5,35 +5,35 @@ version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
-# Filteronderdeel
+# Filter Component
 
 * * *
 
-- [Filteren & Zuiveren](filter-overview)
-- [Ingebouwde Sanitizers](filter-sanitizers)
-- [Opschonen van gegevens](filter-sanitizing)
-- [Opschonen van Controllers](filter-sanitizing-from-controllers)
-- [Schoonmaken van de Parameters van de actie](filter-sanitizing-action-parameters)
-- [Data filteren](filter-sanitizing-data)
-- [Het combineren van Sanitizers](filter-combining-sanitizers)
+- [Filtering and Sanitizing](filter-overview)
+- [Built-in Sanitizers](filter-sanitizers)
+- [Sanitizing data](filter-sanitizing)
+- [Sanitizing from Controllers](filter-sanitizing-from-controllers)
+- [Sanitizing Action Parameters](filter-sanitizing-action-parameters)
+- [Filtering data](filter-sanitizing-data)
+- [Combining Sanitizers](filter-combining-sanitizers)
 - [Complex Sanitizing and Filtering](filter-complex-sanitization-filtering)
 - [Implementing your own Sanitizer](filter-custom)
 
 * * *
 
-## Filteren & Zuiveren
+## Filtering and Sanitizing
 
-Opschonen van gebruikersinvoer is een cruciaal onderdeel van softwareontwikkeling. Vertrouwen of niet zuiveren van de gebruikersinvoer kan leiden tot niet-geautoriseerde toegang tot de inhoud van de aanvraag, voornamelijk gebruikersgegevens, of zelfs de server waar uw toepassing op wordt gehost.
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 ![](/assets/images/content/filter-sql.png)
 
-[Volledige afbeelding op XKCD](https://xkcd.com/327)
+[Full image on XKCD](https://xkcd.com/327)
 
-Filteren van inhoud kan worden bereikt met de [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) en [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) klassen.
+Sanitizing content can be achieved using the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) and [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) classes.
 
 ## FilterLocatorFactory
 
-Dit component maakt een nieuwe locator waar vooraf gedefinieerde filters aan verbonden zijn. Elk filter word pas bij aanroep geïnitialiseerd(lazy) voor maximale prestaties. Instantiëren van de fabriek en het ophalen van de [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) met de vooraf ingestelde sanitizers gebeurt door het aanroepen van `newInstance()`
+This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) with the preset sanitizers you need to call `newInstance()`
 
 ```php
 <?php
@@ -44,11 +44,11 @@ $factory = new FilterLocatorFactory();
 $locator = $factory->newInstance();
 ```
 
-Je kunt nu de locator gebruiken waar je deze nodig hebt en zuiveren van de inhoud volgens de behoeften van de toepassing.
+You can now use the locator wherever you need and sanitize content as per the needs of your application.
 
 ## FilterLocator
 
-De filter-locator kan ook worden gebruikt als een stand-alone-component, zonder de ingebouwde filters te initialiseren.
+The filter locator can also be used as a stand alone component, without initializing the built-in filters.
 
 ```php
 <?php
@@ -63,4 +63,4 @@ $locator = new FilterLocator($services);
 $text    = $locator->hello('World');
 ```
 
-> De `Phalcon\Di` container heeft al een `Phalcon\Filter\FilterLocator` -object geladen met de vooraf gedefinieerde sanitizers. Het onderdeel kan worden gebruikt met behulp van de `filter` naam. {: .alert .alert-info }
+> The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name. {: .alert .alert-info }

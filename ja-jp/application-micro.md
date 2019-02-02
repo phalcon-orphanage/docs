@@ -985,7 +985,7 @@ $app->get(
 
 <a name='events'></a>
 
-# イベント
+# Events
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -995,14 +995,14 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 
 The following events are supported:
 
-| イベント名              | トリガー                                                              | 処理中断が可能 |
-| ------------------ | ----------------------------------------------------------------- |:-------:|
-| beforeHandleRoute  | Main method called; Routes have not been checked yet              |   はい    |
-| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |   はい    |
-| afterExecuteRoute  | Handler just finished running                                     |   いいえ   |
-| beforeNotFound     | Route has not been found                                          |   はい    |
-| afterHandleRoute   | Route just finished executing                                     |   はい    |
-| afterBinding       | Triggered after models are bound but before executing the handler |   はい    |
+| Event Name         | Triggered                                                         | Can stop operation? |
+| ------------------ | ----------------------------------------------------------------- |:-------------------:|
+| beforeHandleRoute  | Main method called; Routes have not been checked yet              |         Yes         |
+| beforeExecuteRoute | Route matched, Handler valid, Handler has not been executed yet   |         Yes         |
+| afterExecuteRoute  | Handler just finished running                                     |         No          |
+| beforeNotFound     | Route has not been found                                          |         Yes         |
+| afterHandleRoute   | Route just finished executing                                     |         Yes         |
+| afterBinding       | Triggered after models are bound but before executing the handler |         Yes         |
 
 <a name='events-available-events-authentication'></a>
 

@@ -16,4 +16,4 @@ Reads annotations from the class dockblocks, its methods and/or properties
 
 abstract public static **parseDocBlock** (*mixed* $docBlock, [*mixed* $file], [*mixed* $line])
 
-解析返回注释的原始文档块
+Parses a raw doc block returning the annotations found

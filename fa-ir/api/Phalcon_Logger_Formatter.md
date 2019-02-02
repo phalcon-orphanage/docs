@@ -8,11 +8,11 @@ title: 'Phalcon\Logger\Formatter'
 
 *implements* [Phalcon\Logger\FormatterInterface](Phalcon_Logger_FormatterInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter.zep)
 
 This is a base class for logger formatters
 
-## روش ها
+## Methods
 
 public **getTypeString** (*mixed* $type)
 

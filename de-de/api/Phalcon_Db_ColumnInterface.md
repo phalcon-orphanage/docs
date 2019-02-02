@@ -6,9 +6,9 @@ title: 'Phalcon\Db\ColumnInterface'
 ---
 # Interface **Phalcon\Db\ColumnInterface**
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
-## Methoden
+## Methods
 
 abstract public **getSchemaName** ()
 

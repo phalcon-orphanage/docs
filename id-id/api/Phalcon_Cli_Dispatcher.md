@@ -10,130 +10,143 @@ title: 'Phalcon\Cli\Dispatcher'
 
 *implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Cli\DispatcherInterface](Phalcon_Cli_DispatcherInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
-Pengiriman adalah proses mengambil argumen baris perintah, mengekstrak nama modul, tugas nama, nama tindakan, dan parameter opsional yang terkandung di dalamnya, dan kemudian instantiating tugas dan menyerukan tindakan itu.
+Dispatching is the process of taking the command-line arguments, extracting the module name, task name, action name, and optional parameters contained in it, and then instantiating a task and calling an action on it.
 
 ```php
-<? php menggunakan Phalcon\Di; menggunakan Phalcon\Cli\Dispatcher;$di = new Di();$dispatcher = new Dispatcher(); $dispatcher -> setDi($di); $dispatcher -> setTaskName("posts"); $dispatcher -> setActionName("index"); $dispatcher -> setParams([]); $handle = $dispatcher -> dispatch();
+<?php
+
+use Phalcon\Di;
+use Phalcon\Cli\Dispatcher;
+
+$di = new Di();
+$dispatcher = new Dispatcher();
+$dispatcher->setDi($di);
+
+$dispatcher->setTaskName("posts");
+$dispatcher->setActionName("index");
+$dispatcher->setParams([]);
+
+$handle = $dispatcher->dispatch();
 
 ```
 
 ## Constants
 
-*bilangan bulat* **EXCEPTION_NO_DI**
+*integer* **EXCEPTION_NO_DI**
 
-*bilangan bulat* **EXCEPTION_CYCLIC_ROUTING**
+*integer* **EXCEPTION_CYCLIC_ROUTING**
 
-*bilangan bulat* **EXCEPTION_HANDLER_NOT_FOUND**
+*integer* **EXCEPTION_HANDLER_NOT_FOUND**
 
-*bilangan bulat* **EXCEPTION_INVALID_HANDLER**
+*integer* **EXCEPTION_INVALID_HANDLER**
 
-*bilangan bulat* **EXCEPTION_INVALID_PARAMS**
+*integer* **EXCEPTION_INVALID_PARAMS**
 
-*bilangan bulat* **EXCEPTION_ACTION_NOT_FOUND**
+*integer* **EXCEPTION_ACTION_NOT_FOUND**
 
-## Metode
+## Methods
 
-umum **setTaskSuffix** (*campuran* $taskSuffix)
+public **setTaskSuffix** (*mixed* $taskSuffix)
 
-Set akhiran tugas default
+Sets the default task suffix
 
-umum **setDefaultTask** (*campuran* $taskName)
+public **setDefaultTask** (*mixed* $taskName)
 
-Menyetel nama tindakan default
+Sets the default task name
 
-umum **setDefaultTask** (*campuran* $taskName)
+public **setTaskName** (*mixed* $taskName)
 
-Menetapkan nama tindakan yang akan dikirim
+Sets the task name to be dispatched
 
-umum **getActiveRole** ()
+public **getTaskName** ()
 
-Dapatkan nama tindakan pengiriman terbaru
+Gets last dispatched task name
 
 protected **_throwDispatchException** (*mixed* $message, [*mixed* $exceptionCode])
 
-Melemparkan pengecualian internal
+Throws an internal exception
 
 protected **_handleException** ([Exception](https://php.net/manual/en/class.exception.php) $exception)
 
-Menangani pengecualian pengguna
+Handles a user exception
 
-umum **getActiveRole** ()
+public **getLastTask** ()
 
-Mengembalikan pengontrol pengiriman terbaru
+Returns the latest dispatched controller
 
-umum **getActiveRole** ()
+public **getActiveTask** ()
 
-Mengembalikan tugas aktif ke petugas operator
+Returns the active task in the dispatcher
 
 public **setOptions** (*array* $options)
 
-Menetapkan nama tindakan yang akan dikirim
+Set the options to be dispatched
 
 public **getOptions** ()
 
-Dapatkan pilihan pengiriman
+Get dispatched options
 
-umum **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
+public **getOption** (*mixed* $option, [*string* | *array* $filters], [*mixed* $defaultValue])
 
-Mendapatkan param dengan nama atau indeks numeriknya
+Gets an option by its name or numeric index
 
 public **hasOption** (*mixed* $option)
 
-Pemeriksaan jika ada indeks
+Check if an option exists
 
 public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
 
-Panggilan metode tindakan.
+Calls the action method.
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengatur injector ketergantungan
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan injector ketergantungan internal
+Returns the internal dependency injector
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Menyetel pengelola acara
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan manajer acara internal
+Returns the internal event manager
 
 public **setActionSuffix** (*mixed* $actionSuffix) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengatur akhiran aksi seperti semula
+Sets the default action suffix
 
 public **getActionSuffix** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapatkan aksi mendapatkan seperti semula
+Gets the default action suffix
 
 public **setModuleName** (*mixed* $moduleName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengatur modul dimana controller (hanya memberikan informasi)
+Sets the module where the controller is (only informative)
 
 public **getModuleName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapat modul di mana pengontrolan kelasnya
+Gets the module where the controller class is
 
 public **setNamespaceName** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengatur ruang nama dimana kelas kontrol berada
+Sets the namespace where the controller class is
 
 public **getNamespaceName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapatkan ruang nama untuk ditambahkan ke nama peralatan saat ini
+Gets a namespace to be prepended to the current handler name
 
 public **setDefaultNamespace** (*mixed* $namespaceName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengatur ruang nama seperti awal
+Sets the default namespace
 
 public **getDefaultNamespace** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan ruang nama seperti awal
+Returns the default namespace
 
 public **setDefaultAction** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
@@ -141,51 +154,51 @@ Sets the default action name
 
 public **setActionName** (*mixed* $actionName) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Menetapkan nama tindakan yang akan dikirim
+Sets the action name to be dispatched
 
 public **getActionName** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Dapatkan nama tindakan pengiriman terbaru
+Gets the latest dispatched action name
 
 public **setParams** (*array* $params) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Menetapkan parameter tindakan yang akan dikirim
+Sets action params to be dispatched
 
 public **getParams** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapatkan tindakan params
+Gets action params
 
 public **setParam** (*mixed* $param, *mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Menetapkan params tindakan yang akan dikirim
+Set a param by its name or numeric index
 
 public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapatkan param dengan nama atau indeks numeriknya
+Gets a param by its name or numeric index
 
 public *boolean* **hasParam** (*mixed* $param) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Periksa apakah param bekerja
+Check if a param exists
 
 public **getActiveMethod** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan cara saat ini ke/dieksekusi di petugas operator
+Returns the current method to be/executed in the dispatcher
 
 public **isFinished** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Memeriksa apakah putaran pengiriman selesai atau memiliki kontroler/tugas yang lebih mudah dikendalikan untuk dikirim
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
 
 public **setReturnedValue** (*mixed* $value) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Menetapkan nilai pengembalian terbaru dengan tindakan secara manua
+Sets the latest returned value by an action manually
 
 public *mixed* **getReturnedValue** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan nilai yang dikembalikan oleh tindakan pengiriman terbaru
+Returns value returned by the latest dispatched action
 
 public **setModelBinding** (*mixed* $value, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Aktifkan / Nonaktifkan model yang mengikat selama pengiriman
+Enable/Disable model binding during dispatch
 
 ```php
 <?php
@@ -201,7 +214,7 @@ $di->set('dispatcher', function() {
 
 public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache]) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Aktifkan pengikatan model selama pengiriman
+Enable model binding during dispatch
 
 ```php
 <?php
@@ -217,19 +230,19 @@ $di->set('dispatcher', function() {
 
 public **getModelBinder** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mendapat model map
+Gets model binder
 
 public *object* **dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengirimkan tindakan penanganan dengan mempertimbangkan parameter perutean
+Dispatches a handle action taking into account the routing parameters
 
 protected *object* **_dispatch** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengirimkan tindakan penanganan dengan mempertimbangkan parameter perutean
+Dispatches a handle action taking into account the routing parameters
 
 public **forward** (*array* $forward) inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Ke depan aliran eksekusi ke kontroler / tindakan lainnya.
+Forwards the execution flow to another controller/action.
 
 ```php
 <?php
@@ -245,15 +258,15 @@ $this->dispatcher->forward(
 
 public **wasForwarded** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Periksa apakah tindakan yang dijalankan saat ini diteruskan oleh yang lain
+Check if the current executed action was forwarded by another one
 
 public **getHandlerClass** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Kemungkinan nama kelas yang akan ditempatkan untuk mengirimkan permintaan
+Possible class name that will be located to dispatch the request
 
 public **getBoundModels** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Mengembalikan model terikat dari contoh pengikat
+Returns bound models from binder instance
 
 ```php
 <?php
@@ -270,4 +283,4 @@ class UserController extends Controller
 
 protected **_resolveEmptyProperties** () inherited from [Phalcon\Dispatcher](Phalcon_Dispatcher)
 
-Setel properti kosong ke kegagalan mereka (tempat kegagalan tersedia)
+Set empty properties to their defaults (where defaults are available)

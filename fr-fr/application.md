@@ -3,15 +3,15 @@ layout: article
 language: 'fr-fr'
 version: '4.0'
 ---
-**Cette article fait référence à la version 3.4 et n'a pas encore été révisé**
+**This article reflects v3.4 and has not yet been revised**
 
 <a name='overview'></a>
 
-# Les Applications MVC
+# MVC Applications
 
-Tout le travail difficile derrière l'orchestration du fonctionnement du MVC est normalement effectué par [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Ce composant encapsule toutes les opérations complexe requises en arrière-plan, instanciant chaque composant nécessaire et intégre ces composants avec le projet , afin de permettre au modèle MVC de fonctionner comme souhaité.
+All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
-Le code d'amorçage suivant est typique d'une application Phalcon :
+The following bootstrap code is typical for a Phalcon application:
 
 ```php
 <?php
@@ -46,7 +46,7 @@ $response = $application->handle();
 
 <a name='manual-bootstrapping'></a>
 
-## Manuel d'amorçage
+## Manual bootstrapping
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -200,13 +200,13 @@ Although the above implementations are a lot more verbose than the code needed w
 
 <a name='single-vs-module'></a>
 
-## Un seul ou plusieurs Applications de Module
+## Single or Multi Module Applications
 
 With this component you can run various types of MVC structures:
 
 <a name='single'></a>
 
-### Module Unique
+### Single Module
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
@@ -537,19 +537,19 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 <a name='events'></a>
 
-## Événements D'Application
+## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. Les événements suivants sont supportés :
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
-| Nom de l'événement    | Déclencheur                                                                             |
-| --------------------- | --------------------------------------------------------------------------------------- |
-| `démarrage`           | Exécuté lors de l'application gère sa première demande                                  |
-| `beforeStartModule`   | Avant d'initialiser un module, mais seulement lorsque les modules sont enregistrés      |
-| `afterStartModule`    | Après l'initialisation d'un module, mais seulement lorsque les modules sont enregistrés |
-| `beforeHandleRequest` | Avant d'exécuter la boucle de dispatching                                               |
-| `afterHandleRequest`  | Après l'exécution de la boucle de dispatching                                           |
+| Event Name            | Triggered                                                    |
+| --------------------- | ------------------------------------------------------------ |
+| `boot`                | Executed when the application handles its first request      |
+| `beforeStartModule`   | Before initialize a module, only when modules are registered |
+| `afterStartModule`    | After initialize a module, only when modules are registered  |
+| `beforeHandleRequest` | Before execute the dispatch loop                             |
+| `afterHandleRequest`  | After execute the dispatch loop                              |
 
-L’exemple suivant montre comment attacher des listeners à ce composant :
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
@@ -571,6 +571,6 @@ $eventsManager->attach(
 
 <a name='resources'></a>
 
-## Ressources Externes
+## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)

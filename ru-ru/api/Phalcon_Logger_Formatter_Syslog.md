@@ -14,7 +14,7 @@ title: 'Phalcon\Logger\Formatter\Syslog'
 
 Prepares a message to be used in a Syslog backend
 
-## Методы
+## Methods
 
 public *array* **format** (*string* $message, *int* $type, *int* $timestamp, [*array* $context])
 

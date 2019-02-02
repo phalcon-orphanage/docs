@@ -10,9 +10,9 @@ title: 'Phalcon\Mvc\Application'
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
 
-Bu bileşen, gereken her bileşeni örneklendirmenin ardındaki tüm karmaşık işlemleri kapsar ve MVC deseninin istenen şekilde çalışmasına izin vermek için geri kalanı ile bütünleştirir.
+This component encapsulates all the complex operations behind instantiating every component needed and integrating it with the rest to allow the MVC pattern to operate as desired.
 
 ```php
 <?php
@@ -56,7 +56,7 @@ $application->main();
 
 ```
 
-## Metodlar
+## Methods
 
 public **useImplicitView** (*mixed* $implicitView)
 
@@ -72,15 +72,15 @@ Phalcon\Application
 
 public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Application](Phalcon_Application)
 
-Olay yöneticisini ayarlar
+Sets the events manager
 
 public **getEventsManager** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Dahili olay yöneticisini döndürür
+Returns the internal event manager
 
 public **registerModules** (*array* $modules, [*mixed* $merge]) inherited from [Phalcon\Application](Phalcon_Application)
 
-Uygulamada mevcut bir modüller dizisi kaydedin
+Register an array of modules present in the application
 
 ```php
 <?php
@@ -102,23 +102,23 @@ $this->registerModules(
 
 public **getModules** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Uygulamada kayıtlı modülleri dönün
+Return the modules registered in the application
 
 public **getModule** (*mixed* $name) inherited from [Phalcon\Application](Phalcon_Application)
 
-Modül adını kullanarak uygulamada kayıtlı modül tanımını getirir
+Gets the module definition registered in the application via module name
 
 public **setDefaultModule** (*mixed* $defaultModule) inherited from [Phalcon\Application](Phalcon_Application)
 
-Eğer yönlendirici geçerli bir modül döndürmezse kullanılacak modül adını ayarlar
+Sets the module name to be used if the router doesn't return a valid module
 
 public **getDefaultModule** () inherited from [Phalcon\Application](Phalcon_Application)
 
-Varsayılan modül adını döner
+Returns the default module name
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
-Bağımlılık enjektörünü ayarlar
+Sets the dependency injector
 
 public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

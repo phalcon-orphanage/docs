@@ -10,7 +10,7 @@ title: 'Phalcon\Session\Adapter\Memcache'
 
 *implements* [Phalcon\Session\AdapterInterface](Phalcon_Session_AdapterInterface)
 
-[سورس کد در گیت هاب](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/memcache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/memcache.zep)
 
 This adapter store sessions in memcache
 
@@ -38,7 +38,7 @@ echo $session->get("var");
 
 ```
 
-## ثابت ها
+## Constants
 
 *integer* **SESSION_ACTIVE**
 
@@ -46,7 +46,7 @@ echo $session->get("var");
 
 *integer* **SESSION_DISABLED**
 
-## روش ها
+## Methods
 
 public **getMemcache** ()
 
@@ -56,7 +56,7 @@ public **getLifetime** ()
 
 ...
 
-عمومی **__ ساخت** ([*آرایه* $options])
+public **__construct** ([*array* $options])
 
 Phalcon\Session\Adapter\Memcache constructor
 

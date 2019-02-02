@@ -14,7 +14,7 @@ Phalcon\Mvc\Model\Binding
 
 This is an class for binding models into params for handler
 
-## Методы
+## Methods
 
 public **getBoundModels** ()
 

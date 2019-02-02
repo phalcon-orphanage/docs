@@ -8,11 +8,11 @@ title: 'Phalcon\Mvc\Model\Relation'
 
 *implements* [Phalcon\Mvc\Model\RelationInterface](Phalcon_Mvc_Model_RelationInterface)
 
-[Quellcode auf GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/relation.zep)
 
 This class represents a relationship between two models
 
-## Konstanten
+## Constants
 
 *integer* **BELONGS_TO**
 
@@ -30,7 +30,7 @@ This class represents a relationship between two models
 
 *integer* **ACTION_CASCADE**
 
-## Methoden
+## Methods
 
 public **__construct** (*int* $type, *string* $referencedModel, *string* | *array* $fields, *string* | *array* $referencedFields, [*array* $options])
 

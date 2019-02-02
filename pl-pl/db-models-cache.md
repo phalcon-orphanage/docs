@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='orm-caching'></a>
 
-# ORM buforowanie
+# ORM Caching
 
 Every application is different. In most applications though, there is data that changes infrequently. One of the most common bottlenecks in terms of performance, is accessing a database. This is due to the complex connection/communication processes that PHP perform with each request to obtain data from the database. Therefore, if we want to achieve good performance, we need to add some layers of caching where the application requires it.
 
@@ -332,11 +332,11 @@ Note that this type of cache works in memory only, this means that cached data a
 
 When a related record is queried, the ORM internally builds the appropriate condition and gets the required records using `find()`/`findFirst()` in the target model according to the following table:
 
-| Typ       | Ious                                                            | Implicit Method |
-| --------- | --------------------------------------------------------------- | --------------- |
-| Należy do | Returns a model instance of the related record directly         | `findFirst()`   |
-| Has-One   | Returns a model instance of the related record directly         | `findFirst()`   |
-| Ma wiele  | Returns a collection of model instances of the referenced model | `find()`        |
+| Typ        | Description                                                     | Implicit Method |
+| ---------- | --------------------------------------------------------------- | --------------- |
+| Belongs-To | Returns a model instance of the related record directly         | `findFirst()`   |
+| Has-One    | Returns a model instance of the related record directly         | `findFirst()`   |
+| Has-Many   | Returns a collection of model instances of the referenced model | `find()`        |
 
 This means that when you get a related record you could intercept how the data is obtained by implementing the corresponding method:
 
@@ -483,7 +483,7 @@ In this scenario, the cache is implemented differently depending on the conditio
 
 | Typ           | Cache Backend |
 | ------------- | ------------- |
-| 1- 10000      | mongo1        |
+| 1 - 10000     | mongo1        |
 | 10000 - 20000 | mongo2        |
 | > 20000       | mongo3        |
 

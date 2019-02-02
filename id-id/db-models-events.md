@@ -7,35 +7,35 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Model acara
+# Model Events
 
 <a name='events'></a>
 
-## Manajer Acara dan Acara
+## Events and Events Manager
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| Operasi             | Nama                          | Bisa berhenti operasinya? | Penjelasan                                                                                                                      |
-| ------------------- | ----------------------------- |:-------------------------:| ------------------------------------------------------------------------------------------------------------------------------- |
-| Memasukkan          | afterCreate                   |            NO             | Berjalan setelah operasi yang diperlukan melalui sistem basis data hanya saat operasi penyisipan sedang dilakukan               |
-| Masukkan/perbaharui | afterSave                     |            NO             | Berjalan setelah operasi yang diperlukan melalui sistem database                                                                |
-| Memperbarui         | afterUpdate                   |            NO             | Berjalan setelah operasi yang diperlukan melalui sistem basis data hanya saat operasi update sedang dilakukan                   |
-| Masukkan/perbaharui | setelahPengesahan             |            YA             | Apakah dieksekusi setelah ladang disahkan untuk tidak batal/senar kosong atau asing kunci                                       |
-| Memasukkan          | setelahPengesahanPadaBuat     |            YA             | Di eksekusi setelah bidang mengesahkan untuk tidak batal/senar kosong atau kunci asing saat operasi penyisipan sedang dilakukan |
-| Memperbarui         | setelahPengesahanDiUpdate     |            YA             | Di eksekusi setelah bidang disahkan untuk tidak batal/senar kosong atau kunci asing saat operasi update sedang dilakukan        |
-| Memasukkan          | sebelummembuat                |            YA             | Berjalan sebelum operasi yang diperlukan melalui sistem basis data hanya saat operasi penyisipan dilakukan                      |
-| Masukkan/perbaharui | sebelumdisimpan               |            YA             | Berjalan sebelum operasi yang diperlukan dari database sistem                                                                   |
-| Memperbarui         | sebelummemperbarui            |            YA             | Berjalan sebelum operasi yang diperlukan melalui sistem basis data hanya bila operasi update sedang dilakukan                   |
-| Masukkan/perbaharui | sebelumValidasi               |            YA             | Dieksekusi sebelum ladang dipengesahan untuk tidak batal/kosong senar atau kunci asing                                          |
-| Memasukkan          | sebelumPengesahanPadaBuat     |            YA             | Dilakukan sebelum bidang disahkan karena tidak batal/senar kosong atau kunci asing saat operasi penyisipan sedang dilakukan     |
-| Memperbarui         | sebelumPengesahanDiPerbaharui |            YA             | Dieksekusi sebelum field divalidasi untuk tidak nulls/empty string atau foreign key saat operasi update sedang dilakukan        |
-| Masukkan/perbaharui | padaPengesahanGagal           |    YA (sudah berhenti)    | Dilakukan setelah pengesahan integritas gagal                                                                                   |
-| Masukkan/perbaharui | prepareSave                   |            NO             | Is executed before saving and allows data manipulation                                                                          |
-| Masukkan/perbaharui | validation                    |            YA             | Dieksekusi sebelum field divalidasi untuk tidak nulls/empty string atau foreign key saat operasi update sedang dilakukan        |
+| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
+| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
+| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
+| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | prepareSave              |          NO           | Is executed before saving and allows data manipulation                                                                            |
+| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
 <a name='events-in-models'></a>
 
-### Melaksanakan Acara di kelas Model
+### Implementing Events in the Model's class
 
 The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
@@ -80,7 +80,7 @@ class Products extends Model
 
 <a name='custom-events-manager'></a>
 
-### Menggunakan Pengelola Peristiwa khusus
+### Using a custom Events Manager
 
 Additionally, this component is integrated with [Phalcon\Events\Manager](api/Phalcon_Events_Manager), this means we can create listeners that run when an event is triggered.
 
@@ -249,7 +249,7 @@ As above, the file *app/logs/db.log* will contain something like this:
 
 <a name='profiling-sql-statements'></a>
 
-## Profil Pernyataan SQL
+## Profiling SQL Statements
 
 Thanks to [Phalcon\Db](api/Phalcon_Db), the underlying component of [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model), it's possible to profile the SQL statements generated by the ORM in order to analyze the performance of database operations. With this you can diagnose performance problems and to discover bottlenecks.
 

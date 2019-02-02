@@ -4,11 +4,11 @@ language: 'pl-pl'
 version: '4.0'
 category: 'installation'
 ---
-# Instalacja
+# Installation
 
 * * *
 
-## Wymagania
+## Requirements
 
 ### PDO
 

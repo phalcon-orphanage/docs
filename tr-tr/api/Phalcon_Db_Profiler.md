@@ -6,9 +6,9 @@ title: 'Phalcon\Db\Profiler'
 ---
 # Class **Phalcon\Db\Profiler**
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
-Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled bilgiler milisaniye cinsinden yürütme süresi içerir. Bu uygulamalarda performans sorunlarını belirlemenize yardımcı olur.
+Instances of Phalcon\Db can generate execution profiles on SQL statements sent to the relational database. Profiled information includes execution time in milliseconds. This helps you to identify bottlenecks in your applications.
 
 ```php
 <?php
@@ -35,15 +35,15 @@ echo "Total Elapsed Time: ", $profile->getTotalElapsedSeconds(), "\n";
 
 ```
 
-## Metodlar
+## Methods
 
 public [Phalcon\Db\Profiler](Phalcon_Db_Profiler) **startProfile** (*string* $sqlStatement, [*mixed* $sqlVariables], [*mixed* $sqlBindTypes])
 
-Bir SQL cümlesinin profilini başlatır
+Starts the profile of a SQL sentence
 
 public **stopProfile** ()
 
-Etkin profili durdurur
+Stops the active profile
 
 public **getNumberTotalStatements** ()
 
@@ -51,16 +51,16 @@ Returns the total number of SQL statements processed
 
 public **getTotalElapsedSeconds** ()
 
-Profil tarafından kullanılmış olan toplam saniye türünden süreyi döndürür
+Returns the total time in seconds spent by the profiles
 
 public **getProfiles** ()
 
-İşlenen tüm profilleri döndürür
+Returns all the processed profiles
 
 public **reset** ()
 
-Profilciyi sıfırlar, tüm profilleri temizler
+Resets the profiler, cleaning up all the profiles
 
 public **getLastProfile** ()
 
-Profilcide yürütülen son profili döndürür
+Returns the last profile executed in the profiler

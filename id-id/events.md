@@ -7,13 +7,13 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Pengatur Acara
+# Events Manager
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 <a name='naming-convention'></a>
 
-## Persetujuan Menamai
+## Naming Convention
 
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
@@ -21,27 +21,27 @@ When attaching event listeners to the events manager, you can use `component` to
 
 <a name='usage'></a>
 
-## Contoh penggunaan
+## Usage Example
 
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
 ```php
 <?php
 
-menggunakan Phalcon\Acara\Peristiwa;
-menggunakan Phalcon\Acara\Pengelola sebagai EventsManager;
-menggunakan Phalcon\Db\Penghubung\Pdo\Mysql sebagai DbAdapter;
+use Phalcon\Events\Event;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-$eventsManager = EventsManager(); baru
+$eventsManager = new EventsManager();
 
 $eventsManager->attach(
     'db:afterQuery',
-    fungsi (Acara $event, $connection) {
+    function (Event $event, $connection) {
         echo $connection->getSQLStatement();
     }
 );
 
-$connection = DbAdapter( baru
+$connection = new DbAdapter(
     [
         'host'     => 'localhost',
         'username' => 'root',
@@ -50,12 +50,12 @@ $connection = DbAdapter( baru
     ]
 );
 
-// Tetapkan eventManager ke sampel adaptor db
+// Assign the eventsManager to the db adapter instance
 $connection->setEventsManager($eventsManager);
 
-// kirimkan perintah SQL ke server database 
-$connection->pertanyaan(
-    'MEMILIH * DARI produk p DIMANA p.keadaan = 1'
+// Send a SQL command to the database server
+$connection->query(
+    'SELECT * FROM products p WHERE p.status = 1'
 );
 ```
 
@@ -68,30 +68,30 @@ Instead of using lambda functions, you can use event listener classes instead. E
 ```php
 <?php
 
-menggunakan Phalcon\Db\Profiler;
-menggunakan Phalcon\Acara\Peristiwa;
-menggunakan Phalcon\Logger;
-menggunakan Phalcon\Logger\Adapter\Berkas;
+use Phalcon\Db\Profiler;
+use Phalcon\Events\Event;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\File;
 
-kelas MyDbListener
+class MyDbListener
 {
-    perlindungan $profiler;
+    protected $profiler;
 
-    perlindungan $logger;
+    protected $logger;
 
     /**
-     * Ciptakan profiler dan mulailah logging
+     * Creates the profiler and starts the logging
      */
-    fungsi umum  __membangun()
+    public function __construct()
     {
-        $this->profiler = Profiler(); baru
-        $this->logger   = Logger('../apps/logs/db.log'); baru
+        $this->profiler = new Profiler();
+        $this->logger   = new Logger('../apps/logs/db.log');
     }
 
     /**
-     * Ini dijalankan jika acara dipicu 'beforeQuery'
+     * This is executed if the event triggered is 'beforeQuery'
      */
-    fungsi umum beforeQuery(Event $event, $connection)
+    public function beforeQuery(Event $event, $connection)
     {
         $this->profiler->startProfile(
             $connection->getSQLStatement()
@@ -99,9 +99,9 @@ kelas MyDbListener
     }
 
     /**
-     * Ini dijalankan jika acara dipicu 'afterQuery'
+     * This is executed if the event triggered is 'afterQuery'
      */
-    fungsi umum afterQuery(Event $event, $connection)
+    public function afterQuery(Event $event, $connection)
     {
         $this->logger->log(
             $connection->getSQLStatement(),
@@ -111,9 +111,9 @@ kelas MyDbListener
         $this->profiler->stopProfile();
     }
 
-    fungsi umum getProfiler()
+    public function getProfiler()
     {
-        kembali $this->profiler;
+        return $this->profiler;
     }
 }
 ```
@@ -123,10 +123,10 @@ Attaching an event listener to the events manager is as simple as:
 ```php
 <?php
 
-// Ciptakan sebuah pendengar database
-$dbListener = MyDbListener(); baru
+// Create a database listener
+$dbListener = new MyDbListener();
 
-// Dengarkan semua database acara 
+// Listen all the database events
 $eventsManager->attach(
     'db',
     $dbListener
@@ -138,12 +138,12 @@ The resulting profile data can be obtained from the listener:
 ```php
 <?php
 
-// Kirim perintah SQL ke server database
+// Send a SQL command to the database server
 $connection->execute(
     'SELECT * FROM products p WHERE p.status = 1'
 );
 
-bagi tiap-tiap ($dbListener->getProfiler()->getProfiles() as $profile) {
+foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
     echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
     echo 'Start Time: ', $profile->getInitialTime(), '\n';
     echo 'Final Time: ', $profile->getFinalTime(), '\n';
@@ -153,7 +153,7 @@ bagi tiap-tiap ($dbListener->getProfiler()->getProfiles() as $profile) {
 
 <a name='components-that-trigger-events'></a>
 
-## Mencipta bagian-bagian yang memicu Acara
+## Creating components that trigger Events
 
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
@@ -194,16 +194,16 @@ Notice that in this example, we're using the `my-component` event namespace. Now
 ```php
 <?php
 
-menggunakan Phalcon\Acara\Peristiwa;
+use Phalcon\Events\Event;
 
-kelas SomeListener
+class SomeListener
 {
-    fungsi umum beforeSomeTask(Peristiwa $event, $myComponent)
+    public function beforeSomeTask(Event $event, $myComponent)
     {
         echo "Here, beforeSomeTask\n";
     }
 
-    fungsi umum afterSomeTask(Event $event, $myComponent)
+    public function afterSomeTask(Event $event, $myComponent)
     {
         echo "Here, afterSomeTask\n";
     }
@@ -215,33 +215,33 @@ Now let's make everything work together:
 ```php
 <?php
 
-menggunakan Phalcon\Acara\Pengatur seperti EventsManager;
+use Phalcon\Events\Manager as EventsManager;
 
-// Ciptakan sebuah Pengatur Acara
-$eventsManager = EventsManager(); baru
+// Create an Events Manager
+$eventsManager = new EventsManager();
 
-// Ciptakan contoh MyComponent
-$myComponent = MyComponent(); baru
+// Create the MyComponent instance
+$myComponent = new MyComponent();
 
-// Mengikat contoh ke eventManager
+// Bind the eventsManager to the instance
 $myComponent->setEventsManager($eventsManager);
 
-// Lampirkan pendengar ke EventManager
+// Attach the listener to the EventsManager
 $eventsManager->attach(
     'my-component',
     new SomeListener()
 );
 
-// Jalankan metode di bagian
+// Execute methods in the component
 $myComponent->someTask();
 ```
 
 As `someTask()` is executed, the two methods in the listener will be executed, producing the following output:
 
 ```bash
-Sini, beforeSomeTask
-Sini, someTask
-Sini, afterSomeTask
+Here, beforeSomeTask
+Here, someTask
+Here, afterSomeTask
 ```
 
 Additional data may also be passed when triggering an event using the third parameter of `fire()`:
@@ -257,20 +257,20 @@ In a listener the third parameter also receives this data:
 ```php
 <?php
 
-menggunakan Phalcon\Acara\Peristiwa;
+use Phalcon\Events\Event;
 
-// Menerima data dalam parameter ketiga
+// Receiving the data in the third parameter
 $eventsManager->attach(
     'my-component',
-    fungsi (Event $event, $component, $data) {
+    function (Event $event, $component, $data) {
         print_r($data);
     }
 );
 
-// Menerima data dari konteks acara
+// Receiving the data from the event context
 $eventsManager->attach(
     'my-component',
-    fungsi (Event $event, $component) {
+    function (Event $event, $component) {
         print_r($event->getData());
     }
 );
@@ -278,19 +278,19 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 
-## Menggunakan Layanan Dari DI
+## Using Services From The DI
 
 By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
 
 ```php
 <?php
 
-menggunakan Phalcon\Acara\Peristiwa;
-menggunakan Phalcon\Mvc\Pengguna\Plugin;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\User\Plugin;
 
-kelas SomeListener memperluas Plugin
+class SomeListener extends Plugin
 {
-    fungsi umum beforeSomeTask(Event $event, $myComponent)
+    public function beforeSomeTask(Event $event, $myComponent)
     {
         echo 'Here, beforeSomeTask\n';
 
@@ -299,7 +299,7 @@ kelas SomeListener memperluas Plugin
         );
     }
 
-    fungsi umum afterSomeTask(Event $event, $myComponent)
+    public function afterSomeTask(Event $event, $myComponent)
     {
         echo 'Here, afterSomeTask\n';
 
@@ -312,7 +312,7 @@ kelas SomeListener memperluas Plugin
 
 <a name='propagation-cancellation'></a>
 
-## Peristiwa Propaganda/Pembatalan
+## Event Propagation/Cancellation
 
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
@@ -345,7 +345,7 @@ $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 
 <a name='listener-priorities'></a>
 
-## Prioaritas Pendengar
+## Listener Priorities
 
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
@@ -361,7 +361,7 @@ $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 
 <a name='collecting-responses'></a>
 
-## Mengumpulkan Tanggapan
+## Collecting Responses
 
 The events manager can collect every response returned by every notified listener. This example explains how it works:
 
@@ -406,7 +406,7 @@ The above example produces:
 
 <a name='custom'></a>
 
-## Melaksanakan EventsManager milik kamu sendiri
+## Implementing your own EventsManager
 
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
@@ -416,108 +416,108 @@ The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) inter
 
 The events available in Phalcon are:
 
-| Component          | Acara                                  |
-| ------------------ | -------------------------------------- |
-| ACL                | `acl:afterCheckAccess`                 |
-| ACL                | `acl:beforeCheckAccess`                |
-| Application        | `application:afterHandleRequest`       |
-| Application        | `application:afterStartModule`         |
-| Application        | `application:beforeHandleRequest`      |
-| Application        | `application:beforeSendResponse`       |
-| Application        | `application:beforeStartModule`        |
-| Application        | `application:boot`                     |
-| Application        | `application:viewRender`               |
-| CLI                | `dispatch:beforeException`             |
-| Collection         | `afterCreate`                          |
-| Collection         | `afterSave`                            |
-| Collection         | `afterUpdate`                          |
-| Collection         | `setelahPengesahan`                    |
-| Collection         | `setelahPengesahanPadaBuat`            |
-| Collection         | `setelahPengesahanDiUpdate`            |
-| Collection         | `sebelummembuat`                       |
-| Collection         | `sebelumdisimpan`                      |
-| Collection         | `sebelummemperbarui`                   |
-| Collection         | `sebelumValidasi`                      |
-| Collection         | `sebelumPengesahanPadaBuat`            |
-| Collection         | `sebelumPengesahanDiPerbaharui`        |
-| Collection         | `notDeleted`                           |
-| Collection         | `notSave`                              |
-| Collection         | `tidak disimpan`                       |
-| Collection         | `padaPengesahanGagal`                  |
-| Collection         | `validation`                           |
-| Collection Manager | `collectionManager:afterInitialize`    |
-| Console            | `console:afterHandleTask`              |
-| Console            | `console:afterStartModule`             |
-| Console            | `console:beforeHandleTask`             |
-| Console            | `console:beforeStartModule`            |
-| Db                 | `db:afterQuery`                        |
-| Db                 | `db:beforeQuery`                       |
-| Db                 | `db:beginTransaction`                  |
-| Db                 | `db:createSavepoint`                   |
-| Db                 | `db:commitTransaction`                 |
-| Db                 | `db:releaseSavepoint`                  |
-| Db                 | `db:rollbackTransaction`               |
-| Db                 | `db:rollbackSavepoint`                 |
-| Dispatcher         | `dispatch:afterExecuteRoute`           |
-| Dispatcher         | `dispatch:afterDispatch`               |
-| Dispatcher         | `dispatch:afterDispatchLoop`           |
-| Dispatcher         | `dispatch:afterInitialize`             |
-| Dispatcher         | `dispatch:beforeException`             |
-| Dispatcher         | `dispatch:beforeExecuteRoute`          |
-| Dispatcher         | `dispatch:beforeDispatch`              |
-| Dispatcher         | `dispatch:beforeDispatchLoop`          |
-| Dispatcher         | `dispatch:beforeForward`               |
-| Dispatcher         | `dispatch:beforeNotFoundAction`        |
-| Loader             | `loader:afterCheckClass`               |
-| Loader             | `loader:beforeCheckClass`              |
-| Loader             | `loader:beforeCheckPath`               |
-| Loader             | `loader:pathFound`                     |
-| Micro              | `micro:afterHandleRoute`               |
-| Micro              | `micro:afterExecuteRoute`              |
-| Micro              | `micro:beforeExecuteRoute`             |
-| Micro              | `micro:beforeHandleRoute`              |
-| Micro              | `micro:beforeNotFound`                 |
-| Middleware         | `setelah mengikat`                     |
-| Middleware         | `setelah melakukan eksekusi rute`      |
-| Middleware         | `setelahHandleRoute`                   |
-| Middleware         | `sebelum melakukan eksekusi rute`      |
-| Middleware         | `sebelum menangani router`             |
-| Middleware         | `sebelum tidak ditemukan`              |
-| Model              | `afterCreate`                          |
-| Model              | `afterDelete`                          |
-| Model              | `afterSave`                            |
-| Model              | `afterUpdate`                          |
-| Model              | `setelahPengesahan`                    |
-| Model              | `setelahPengesahanPadaBuat`            |
-| Model              | `setelahPengesahanDiUpdate`            |
-| Model              | `beforeDelete`                         |
-| Model              | `notDeleted`                           |
-| Model              | `sebelummembuat`                       |
-| Model              | `beforeDelete`                         |
-| Model              | `sebelumdisimpan`                      |
-| Model              | `sebelummemperbarui`                   |
-| Model              | `sebelumValidasi`                      |
-| Model              | `sebelumPengesahanPadaBuat`            |
-| Model              | `sebelumPengesahanDiPerbaharui`        |
-| Model              | `notSave`                              |
-| Model              | `tidak disimpan`                       |
-| Model              | `padaPengesahanGagal`                  |
-| Model              | `prepareSave`                          |
-| Manajer Model      | `manajermodel:setelahmenginisialisasi` |
-| Request            | `request:afterAuthorizationResolve`    |
-| Request            | `request:beforeAuthorizationResolve`   |
-| Router             | `router:beforeCheckRoutes`             |
-| Router             | `router:beforeCheckRoute`              |
-| Router             | `router:matchedRoute`                  |
-| Router             | `router:notMatchedRoute`               |
-| Router             | `router:afterCheckRoutes`              |
-| Router             | `router:beforeMount`                   |
-| View               | `view:afterRender`                     |
-| View               | `view:afterRenderView`                 |
-| View               | `view:beforeRender`                    |
-| View               | `view:beforeRenderView`                |
-| View               | `view:notFoundView`                    |
-| Volt               | `compileFilter`                        |
-| Volt               | `compileFunction`                      |
-| Volt               | `compileStatement`                     |
-| Volt               | `resolveExpression`                    |
+| Component          | Event                                |
+| ------------------ | ------------------------------------ |
+| ACL                | `acl:afterCheckAccess`               |
+| ACL                | `acl:beforeCheckAccess`              |
+| Application        | `application:afterHandleRequest`     |
+| Application        | `application:afterStartModule`       |
+| Application        | `application:beforeHandleRequest`    |
+| Application        | `application:beforeSendResponse`     |
+| Application        | `application:beforeStartModule`      |
+| Application        | `application:boot`                   |
+| Application        | `application:viewRender`             |
+| CLI                | `dispatch:beforeException`           |
+| Collection         | `afterCreate`                        |
+| Collection         | `afterSave`                          |
+| Collection         | `afterUpdate`                        |
+| Collection         | `afterValidation`                    |
+| Collection         | `afterValidationOnCreate`            |
+| Collection         | `afterValidationOnUpdate`            |
+| Collection         | `beforeCreate`                       |
+| Collection         | `beforeSave`                         |
+| Collection         | `beforeUpdate`                       |
+| Collection         | `beforeValidation`                   |
+| Collection         | `beforeValidationOnCreate`           |
+| Collection         | `beforeValidationOnUpdate`           |
+| Collection         | `notDeleted`                         |
+| Collection         | `notSave`                            |
+| Collection         | `notSaved`                           |
+| Collection         | `onValidationFails`                  |
+| Collection         | `validation`                         |
+| Collection Manager | `collectionManager:afterInitialize`  |
+| Console            | `console:afterHandleTask`            |
+| Console            | `console:afterStartModule`           |
+| Console            | `console:beforeHandleTask`           |
+| Console            | `console:beforeStartModule`          |
+| Db                 | `db:afterQuery`                      |
+| Db                 | `db:beforeQuery`                     |
+| Db                 | `db:beginTransaction`                |
+| Db                 | `db:createSavepoint`                 |
+| Db                 | `db:commitTransaction`               |
+| Db                 | `db:releaseSavepoint`                |
+| Db                 | `db:rollbackTransaction`             |
+| Db                 | `db:rollbackSavepoint`               |
+| Dispatcher         | `dispatch:afterExecuteRoute`         |
+| Dispatcher         | `dispatch:afterDispatch`             |
+| Dispatcher         | `dispatch:afterDispatchLoop`         |
+| Dispatcher         | `dispatch:afterInitialize`           |
+| Dispatcher         | `dispatch:beforeException`           |
+| Dispatcher         | `dispatch:beforeExecuteRoute`        |
+| Dispatcher         | `dispatch:beforeDispatch`            |
+| Dispatcher         | `dispatch:beforeDispatchLoop`        |
+| Dispatcher         | `dispatch:beforeForward`             |
+| Dispatcher         | `dispatch:beforeNotFoundAction`      |
+| Loader             | `loader:afterCheckClass`             |
+| Loader             | `loader:beforeCheckClass`            |
+| Loader             | `loader:beforeCheckPath`             |
+| Loader             | `loader:pathFound`                   |
+| Micro              | `micro:afterHandleRoute`             |
+| Micro              | `micro:afterExecuteRoute`            |
+| Micro              | `micro:beforeExecuteRoute`           |
+| Micro              | `micro:beforeHandleRoute`            |
+| Micro              | `micro:beforeNotFound`               |
+| Middleware         | `afterBinding`                       |
+| Middleware         | `afterExecuteRoute`                  |
+| Middleware         | `afterHandleRoute`                   |
+| Middleware         | `beforeExecuteRoute`                 |
+| Middleware         | `beforeHandleRoute`                  |
+| Middleware         | `beforeNotFound`                     |
+| Model              | `afterCreate`                        |
+| Model              | `afterDelete`                        |
+| Model              | `afterSave`                          |
+| Model              | `afterUpdate`                        |
+| Model              | `afterValidation`                    |
+| Model              | `afterValidationOnCreate`            |
+| Model              | `afterValidationOnUpdate`            |
+| Model              | `beforeDelete`                       |
+| Model              | `notDeleted`                         |
+| Model              | `beforeCreate`                       |
+| Model              | `beforeDelete`                       |
+| Model              | `beforeSave`                         |
+| Model              | `beforeUpdate`                       |
+| Model              | `beforeValidation`                   |
+| Model              | `beforeValidationOnCreate`           |
+| Model              | `beforeValidationOnUpdate`           |
+| Model              | `notSave`                            |
+| Model              | `notSaved`                           |
+| Model              | `onValidationFails`                  |
+| Model              | `prepareSave`                        |
+| Models Manager     | `modelsManager:afterInitialize`      |
+| Request            | `request:afterAuthorizationResolve`  |
+| Request            | `request:beforeAuthorizationResolve` |
+| Router             | `router:beforeCheckRoutes`           |
+| Router             | `router:beforeCheckRoute`            |
+| Router             | `router:matchedRoute`                |
+| Router             | `router:notMatchedRoute`             |
+| Router             | `router:afterCheckRoutes`            |
+| Router             | `router:beforeMount`                 |
+| View               | `view:afterRender`                   |
+| View               | `view:afterRenderView`               |
+| View               | `view:beforeRender`                  |
+| View               | `view:beforeRenderView`              |
+| View               | `view:notFoundView`                  |
+| Volt               | `compileFilter`                      |
+| Volt               | `compileFunction`                    |
+| Volt               | `compileStatement`                   |
+| Volt               | `resolveExpression`                  |

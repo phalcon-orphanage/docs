@@ -23,7 +23,7 @@ The following NoSQL databases are supported:
 
 <a name='creating-models'></a>
 
-## Создание моделей
+## Creating Models
 
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -279,7 +279,7 @@ $robots = Robots::find(
 | Параметр     | Описание                                                                                                                                                                                 | Пример                                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `conditions` | Условие поиска. Используется для выделения только тех записей, которые полностью удовлетворяют условиям поиска. By default Phalcon_model assumes the first parameter are the conditions. | `'conditions' => array('$gt' => 1990)`            |
-| `fields`     | Returns specific columns instead of the full fields in the collection. При использовании этой опции возвращается не полный объект                                                        | `'fields' => array('name' => true)`               |
+| `fields`     | Returns specific columns instead of the full fields in the collection. When using this option an incomplete object is returned                                                           | `'fields' => array('name' => true)`               |
 | `sort`       | It's used to sort the resultset. Use one or more fields as each element in the array, 1 means ordering upwards, -1 downward                                                              | `'sort' => array('name' => -1, 'status' => 1)` |
 | `limit`      | Ограничивает результаты запроса.                                                                                                                                                         | `'limit' => 10`                                      |
 | `skip`       | Skips a number of results                                                                                                                                                                | `'skip' => 50`                                       |
@@ -385,7 +385,7 @@ echo 'The generated id is: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Собщения об ошибках
+### Validation Messages
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -574,7 +574,7 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Проверка целостности данных
+### Validating Data Integrity
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. Специальное событие `validation` позволяет нам вызывать встроенные валидаторы для проверки записи. Phalcon имеет несколько встроенных валидаторов, которые можно использовать на этой стадии.
 
@@ -627,7 +627,7 @@ The example above performs a validation using the built-in validator `InclusionI
 
 <a name='deleting-records'></a>
 
-## Удаление записей
+## Deleting Records
 
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -688,7 +688,7 @@ foreach ($robots as $robot) {
 
 <a name='validation-failed-events'></a>
 
-## События при ошибках валидации
+## Validation Failed Events
 
 Another type of events is available when the data validation process finds any inconsistency:
 

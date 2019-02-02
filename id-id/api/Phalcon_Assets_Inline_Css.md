@@ -10,13 +10,13 @@ title: 'Phalcon\Assets\Inline\Css'
 
 *implements* [Phalcon\Assets\ResourceInterface](Phalcon_Assets_ResourceInterface)
 
-[Sumber di GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
 
-Merupakan inline CSS
+Represents an inlined CSS
 
-## Metode
+## Methods
 
-public **__ construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
+public **__construct** (*string* $content, [*boolean* $filter], [*array* $attributes])
 
 Phalcon\Assets\Inline\Css Constructor
 
@@ -38,16 +38,16 @@ Gets extra HTML attributes.
 
 public [*self*](Phalcon_Assets_Inline_Css) **setType** (*string* $type) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Menetapkan tipe inline
+Sets the inline's type
 
 public [*self*](Phalcon_Assets_Inline_Css) **setFilter** (*boolean* $filter) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Menetapkan apakah sumber daya harus disaring atau tidak
+Sets if the resource must be filtered or not
 
 public [*self*](Phalcon_Assets_Inline_Css) **setAttributes** (*array* $attributes) inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Menetapkan beberapa atribut HTML tambahan
+Sets extra HTML attributes
 
 public *string* **getResourceKey** () inherited from [Phalcon\Assets\Inline](Phalcon_Assets_Inline)
 
-Mendapatkan kunci sumber.
+Gets the resource's key.

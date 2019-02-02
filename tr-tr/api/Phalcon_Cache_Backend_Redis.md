@@ -10,11 +10,11 @@ title: 'Phalcon\Cache\Backend\Redis'
 
 *implements* [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/backend/redis.zep)
 
-Çıktı parçalarını, PHP verilerini veya ham verileri arka uça geri döndürmek için önbellek sağlar
+Allows to cache output fragments, PHP data or raw data to a redis backend
 
-Bu adaptör, adaptör tarafından dahili olarak kullanılan tüm tuşları saklamak için "_PHCR" özel yeniden arama tuşunu kullanır
+This adapter uses the special redis key "_PHCR" to store all the keys internally used by the adapter
 
 ```php
 <?php
@@ -49,7 +49,7 @@ $data = $cache->get("my-data");
 
 ```
 
-## Metodlar
+## Methods
 
 public **__construct** ([Phalcon\Cache\FrontendInterface](Phalcon_Cache_FrontendInterface) $frontend, [*array* $options])
 
@@ -57,15 +57,15 @@ Phalcon\Cache\Backend\Redis constructor
 
 public **_connect** ()
 
-Redis'e dahili bağlantı oluşturun
+Create internal connection to redis
 
 public **get** (*mixed* $keyName, [*mixed* $lifetime])
 
-Ön bellekte saklanan içeriği döndürür
+Returns a cached content
 
 public **save** ([*int* | *string* $keyName], [*string* $content], [*int* $lifetime], [*boolean* $stopBuffer])
 
-Önbellek içeriğini dosya arka ucuna depolar ve önden yüklenmesini durdurur
+Stores cached content into the file backend and stops the frontend
 
 ```php
 <?php
@@ -79,11 +79,11 @@ $cache->save("my-key", $data, -1);
 
 public **delete** (*int* | *string* $keyName)
 
-Ön bellekteki bir değeri anahtarı ile birlikte siler
+Deletes a value from the cache by its key
 
 public **queryKeys** ([*mixed* $prefix])
 
-Varolan bekletilmiş anahtarları sorgulayın.
+Query the existing cached keys.
 
 ```php
 <?php
@@ -95,9 +95,9 @@ var_dump($cache->queryKeys("users")); // ["users-ids"]
 
 ```
 
-herkese açık **var** ([dizi</em> $anahtar adı], [*int* $ömür])
+public **exists** ([*string* $keyName], [*int* $lifetime])
 
-Ön bellekte olup olmadığını ve süresinin dolup dolmadığını denetler
+Checks if cache exists and it isn't expired
 
 public **increment** ([*string* $keyName], [*mixed* $value])
 
@@ -105,11 +105,11 @@ Increment of given $keyName by $value
 
 public **decrement** ([*string* $keyName], [*mixed* $value])
 
-Verilen $value ile $keyName azalması
+Decrement of $keyName by given $value
 
 public **flush** ()
 
-Mevcut öğelerin tümünü geçersiz kılar.
+Immediately invalidates all existing items.
 
 public **getFrontend** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
@@ -141,16 +141,16 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer]) inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Herhangi bir önbelleklenmiş içerik depolamadan ön yüzü durdurur
+Stops the frontend without store any cached content
 
 public **isFresh** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son önbelleğin yeni ya da önbelleklenmiş olup olmadığını kontrol eder
+Checks whether the last cache is fresh or cached
 
 public **isStarted** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Ön belleğin ara belleğe aktarımına başlamış olup olmadığını denetler
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** () inherited from [Phalcon\Cache\Backend](Phalcon_Cache_Backend)
 
-Son çalışma zamanı ayarını getir
+Gets the last lifetime set

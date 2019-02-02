@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Model\Query\BuilderInterface'
 
 *string* **OPERATOR_AND**
 
-## Методы
+## Methods
 
 abstract public **columns** (*mixed* $columns)
 

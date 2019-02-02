@@ -12,7 +12,7 @@ title: 'Phalcon\Validation\CombinedFieldsValidator'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
 
-## Методы
+## Methods
 
 public **__construct** ([*array* $options]) inherited from [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
 

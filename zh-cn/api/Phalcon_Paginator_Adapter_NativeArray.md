@@ -12,7 +12,7 @@ title: 'Phalcon\Paginator\Adapter\NativeArray'
 
 [源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
-使用一个 PHP 数组作为数据源分页
+Pagination using a PHP array as source of data
 
 ```php
 <?php
@@ -43,16 +43,16 @@ Phalcon\Paginator\Adapter\NativeArray constructor
 
 public **getPaginate** ()
 
-返回的结果集显示在分页中一片
+Returns a slice of the resultset to show in the pagination
 
 public **setCurrentPage** (*mixed* $page) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-设置当前页码
+Set the current page number
 
 public **setLimit** (*mixed* $limitRows) inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-设置当前行数限制
+Set current rows limit
 
 public **getLimit** () inherited from [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)
 
-获取当前行限制
+Get current rows limit

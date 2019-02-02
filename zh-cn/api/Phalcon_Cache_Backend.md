@@ -48,19 +48,19 @@ Starts a cache. The keyname allows to identify the created fragment
 
 public **stop** ([*mixed* $stopBuffer])
 
-停止前端, 不存储任何缓存的内容
+Stops the frontend without store any cached content
 
 public **isFresh** ()
 
-检查最后一个缓存是否新鲜或缓存
+Checks whether the last cache is fresh or cached
 
 public **isStarted** ()
 
-检查缓存中是否已经开始缓冲或不
+Checks whether the cache has starting buffering or not
 
 public *int* **getLifetime** ()
 
-获取最后一个生命周期
+Gets the last lifetime set
 
 abstract public **get** (*mixed* $keyName, [*mixed* $lifetime]) inherited from [Phalcon\Cache\BackendInterface](Phalcon_Cache_BackendInterface)
 

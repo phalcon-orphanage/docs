@@ -10,7 +10,7 @@ title: 'Phalcon\Config'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
 
-Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. Esto proporciona una interfaz de usuario basada en propiedades de objeto anidadas para acceder a estos datos de configuración dentro de código de aplicación.
+Phalcon\Config is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
 
 ```php
 <?php
@@ -46,7 +46,7 @@ Phalcon\Config constructor
 
 public **offsetExists** (*mixed* $index)
 
-Permite verificar si un atributo se define usando la sintaxis de matriz
+Allows to check whether an attribute is defined using the array-syntax
 
 ```php
 <?php
@@ -59,7 +59,7 @@ var_dump(
 
 public **path** (*mixed* $path, [*mixed* $defaultValue], [*mixed* $delimiter])
 
-Devuelve un valor de la configuración actual utilizando una ruta separada por puntos.
+Returns a value from current config using a dot separated path.
 
 ```php
 <?php
@@ -70,7 +70,7 @@ echo $config->path("unknown.path", "default", ".");
 
 public **get** (*mixed* $index, [*mixed* $defaultValue])
 
-Obtiene un atributo de la configuración; si el atributo no está definido, devuelve un valor nulo Si el valor es exactamente nulo o no está definido, se usará el valor predeterminado en su lugar
+Gets an attribute from the configuration, if the attribute isn't defined returns null If the value is exactly null or is not defined the default value will be used instead
 
 ```php
 <?php
@@ -81,7 +81,7 @@ echo $config->get("controllersDir", "../app/controllers/");
 
 public **offsetGet** (*mixed* $index)
 
-Obtiene un atributo usando la sintaxis de matriz
+Gets an attribute using the array-syntax
 
 ```php
 <?php
@@ -94,7 +94,7 @@ print_r(
 
 public **offsetSet** (*mixed* $index, *mixed* $value)
 
-Establece un atributo usando la sintaxis de matriz
+Sets an attribute using the array-syntax
 
 ```php
 <?php
@@ -107,7 +107,7 @@ $config["database"] = [
 
 public **offsetUnset** (*mixed* $index)
 
-Deshace un atributo usando la sintaxis de matriz
+Unsets an attribute using the array-syntax
 
 ```php
 <?php
@@ -118,7 +118,7 @@ unset($config["database"]);
 
 public **merge** ([Phalcon\Config](Phalcon_Config) $config)
 
-Fusiona una configuración en la actual
+Merges a configuration into the current one
 
 ```php
 <?php
@@ -137,7 +137,7 @@ $globalConfig->merge($appConfig);
 
 public **toArray** ()
 
-Convierte recursivamente el objeto a una matriz
+Converts recursively the object to an array
 
 ```php
 <?php
@@ -150,7 +150,7 @@ print_r(
 
 public **count** ()
 
-Devuelve el recuento de propiedades establecidas en la configuración
+Returns the count of properties set in the config
 
 ```php
 <?php
@@ -174,12 +174,12 @@ Restores the state of a Phalcon\Config object
 
 public static **setPathDelimiter** ([*mixed* $delimiter])
 
-Establece el delimitador de ruta predeterminado
+Sets the default path delimiter
 
 public static **getPathDelimiter** ()
 
-Obtiene el delimitador de ruta predeterminado
+Gets the default path delimiter
 
 final protected *Config merged config* **_merge** (*Config* $config, [*mixed* $instance])
 
-Método de ayuda para las configuraciones de combinación (reenvío de la instancia de configuración anidada)
+Helper method for merge configs (forwarding nested config instance)

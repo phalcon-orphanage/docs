@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='setup'></a>
 
-# Installazione di Server Web
+# Web Server Setup
 
 In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
 
@@ -30,13 +30,13 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 <a name='php-built-in'></a>
 
-## Webserver con integrato PHP (per sviluppatori)
+## PHP Built-In Webserver (For Developers)
 
 To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
 
 <a name='php-built-in-phalcon-configuration'></a>
 
-### Configurazione di Phalcon
+### Phalcon configuration
 
 To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file:
 <a href="https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php" target="_blank">.htrouter.php</a>
@@ -59,13 +59,13 @@ Then point your browser to https://localhost:8000/ to check if everything is wor
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Installare Nginx
+### Install Nginx
 
 <a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank">NginX Offical Site</a>
 
 <a name='nginx-phalcon-configuration'></a>
 
-### Configurazione di Phalcon
+### Phalcon configuration
 
 You can use following potential configuration to setup Nginx with Phalcon:
 
@@ -152,7 +152,7 @@ server {
 }
 ```
 
-### Avviare Nginx
+### Start Nginx
 
 Usually `start nginx` from the command line but this depends on your installation method.
 
@@ -164,7 +164,7 @@ Usually `start nginx` from the command line but this depends on your installatio
 
 <a name='apache-phalcon-configuration'></a>
 
-### Configurazione di Phalcon
+### Phalcon configuration
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](/4.0/en/routing). Commonly an application has the following structure:
 
@@ -183,7 +183,7 @@ test/
 
 <a name='apache-document-root'></a>
 
-#### Radice del documento
+#### Document root
 
 This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`).
 
@@ -229,7 +229,7 @@ If your uri contains characters other than English, you might need to resort to 
 
 <a name='apache-apache-configuration'></a>
 
-#### Configurazione di Apache
+#### Apache configuration
 
 If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
 
@@ -254,7 +254,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
 
 <a name='apache-virtual-hosts'></a>
 
-#### Host Virtuali
+#### Virtual Hosts
 
 And this second configuration allows you to install a Phalcon application in a virtual host:
 
@@ -284,7 +284,7 @@ And this second configuration allows you to install a Phalcon application in a v
 
 <a name='cherokee-phalcon-configuration'></a>
 
-### Configurazione di Phalcon
+### Phalcon configuration
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 

@@ -477,15 +477,6 @@ The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) inter
 
 The backend adapters available to store cache data are:
 
-<<<<<<< HEAD
-| Adapter                                                                         | Description                                          | Info                                          | Required Extensions                                 |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------- | --------------------------------------------------- |
-| [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                    | [APC](https://pecl.php.net/package/APC)             |
-| `Phalcon\Cache\Backend\Apcu`                                                 | Stores data to the APCu (APC without opcode caching) | [APCu](https://php.net/apcu)                  | [APCu](https://pecl.php.net/package/APCu)           |
-| [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | Stores data to local plain files.                    |                                               |                                                     |
-| [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Stores data to a memcached server.                   | [Memcached](https://secure.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
-| [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Stores data to a memcached server.                   | [Memcache](https://secure.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
-=======
 | Adapter                                                                         | Beschreibung                                         | Info                                          | Erforderlichen Erweiterungen                        |
 | ------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------- | --------------------------------------------------- |
 | [Phalcon\Cache\Backend\Apc](api/Phalcon_Cache_Backend_Apc)                   | Stores data to the Alternative PHP Cache (APC).      | [APC](https://php.net/apc)                    | [APC](https://pecl.php.net/package/APC)             |
@@ -493,7 +484,6 @@ The backend adapters available to store cache data are:
 | [Phalcon\Cache\Backend\File](api/Phalcon_Cache_Backend_File)                 | Speichert Daten in lokale Dateien.                   |                                               |                                                     |
 | [Phalcon\Cache\Backend\Libmemcached](api/Phalcon_Cache_Backend_Libmemcached) | Speichert Daten in einem Memcached-Server.           | [Memcached](https://secure.php.net/memcached) | [Memcached](https://pecl.php.net/package/memcached) |
 | [Phalcon\Cache\Backend\Memcache](api/Phalcon_Cache_Backend_Memcache)         | Speichert Daten in einem Memcached-Server.           | [Memcache](https://secure.php.net/memcache)   | [Memcache](https://pecl.php.net/package/memcache)   |
->>>>>>> 2c31350a74098a08fd9c05a6652f65b79dbe98e6
 | [Phalcon\Cache\Backend\Memory](api/Phalcon_Cache_Backend_Memory)             | Stores data in memory                                |                                               |                                                     |
 | [Phalcon\Cache\Backend\Mongo](api/Phalcon_Cache_Backend_Mongo)               | Stores data to Mongo Database.                       | [MongoDB](https://mongodb.org/)               | [Mongo](https://mongodb.org/)                       |
 | [Phalcon\Cache\Backend\Redis](api/Phalcon_Cache_Backend_Redis)               | Stores data in Redis.                                | [Redis](https://redis.io/)                    | [Redis](https://pecl.php.net/package/redis)         |

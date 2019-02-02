@@ -8,7 +8,7 @@ title: 'Phalcon\Forms\Element'
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
 
-[Źródło na GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element.zep)
 
 This is a base class for form elements
 
@@ -124,7 +124,7 @@ Returns the messages that belongs to the element The element needs to be attache
 
 public **hasMessages** ()
 
-Sprawdza, czy są wiadomości przyczepione do tego elementu
+Checks whether there are messages attached to the element
 
 public **setMessages** ([Phalcon\Validation\Message\Group](Phalcon_Validation_Message_Group) $group)
 

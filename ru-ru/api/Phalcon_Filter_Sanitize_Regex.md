@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Regex'
 
 Sanitizes a value performing `preg_replace`
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( array | string $input, array | string $pattern, array | string $replace ): mixed

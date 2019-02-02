@@ -7,7 +7,7 @@ version: '4.0'
 
 Welcome to the documentation for the Phalcon framework.
 
-## Αποστολή
+## Mission
 
 Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
 

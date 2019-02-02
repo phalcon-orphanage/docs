@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Inoltro (Routing)
+# Routing
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -72,9 +72,9 @@ $router->add(
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
-| Controllore | Azione | Parametro | Parametro |
-|:-----------:|:------:|:---------:|:---------:|
-|    users    | delete |   dave    |    301    |
+| Controller | Action | Parameter | Parameter |
+|:----------:|:------:|:---------:|:---------:|
+|   users    | delete |   dave    |    301    |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 
@@ -256,9 +256,9 @@ $router->add(
 
 In this case, the route always must have the module name as part of the URL. For example, the following URL: `/admin/users/edit/sonny`, will be processed as:
 
-| Module | Controllore | Azione | Parametro |
-|:------:|:-----------:|:------:|:---------:|
-| admin  |    users    |  edit  |   sonny   |
+| Module | Controller | Action | Parameter |
+|:------:|:----------:|:------:|:---------:|
+| admin  |   users    |  edit  |   sonny   |
 
 Or you can bind specific routes to specific modules:
 
@@ -684,7 +684,7 @@ $router->add(
 
 For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
 
-|  Controllore  | Azione | Parametro  |
+|  Controller   | Action | Parameter  |
 |:-------------:|:------:|:----------:|
 | documentation |  show  | about.html |
 
@@ -1056,11 +1056,11 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Eventi
+## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
-| Event                      | Descrizione                          |
+| Event                      | Description                          |
 | -------------------------- | ------------------------------------ |
 | `router:beforeCheckRoutes` | Fired before check all loaded routes |
 | `router:beforeCheckRoute`  | Fired before check a route           |
@@ -1157,7 +1157,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Descrizione                                                                                       | Usage                                  |
+| Name        | Description                                                                                       | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1169,9 +1169,9 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Descrizione                                                            | Usage                                                                |
+| Name       | Description                                                            | Usage                                                                |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| metodi     | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
+| methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
 | paths      | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
 | conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |

@@ -8,11 +8,11 @@ title: 'Phalcon\Assets\Collection'
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
 Represents a collection of resources
 
-## Metodi
+## Methods
 
 public **getPrefix** ()
 

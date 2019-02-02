@@ -10,17 +10,17 @@ title: 'Phalcon\Http\Cookie\Exception'
 
 *implements* [Throwable](https://php.net/manual/en/class.throwable.php)
 
-[Sorgente su GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie/exception.zep)
 
-## Metodi
+## Methods
 
 final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Clona l'eccezione
+Clone the exception
 
 public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Costruttore Exception
+Exception constructor
 
 public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
@@ -28,32 +28,32 @@ public **__wakeup** () inherited from [Exception](https://php.net/manual/en/clas
 
 final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene il messaggio dell'eccezione
+Gets the Exception message
 
 final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene il codice dell'eccezione
+Gets the Exception code
 
 final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene il file in cui si è verificata l'eccezione
+Gets the file in which the exception occurred
 
 final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene la riga in cui si è verificata l'eccezione
+Gets the line in which the exception occurred
 
 final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene la traccia dello stack
+Gets the stack trace
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Restituisce l'eccezione precedente
+Returns previous Exception
 
 final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Ottiene la traccia dello stack come stringa
+Gets the stack trace as a string
 
 public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
 
-Stringa rappresentativa dell'eccezione
+String representation of the exception

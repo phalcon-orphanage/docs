@@ -137,7 +137,7 @@ When a defined route matches the requested URI then the application executes the
 
 <a name='models'></a>
 
-## Tworzenie modelu
+## Creating a Model
 
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -425,7 +425,7 @@ $app->post(
 
 <a name='updating-data'></a>
 
-## Aktualizuj dane
+## Updating Data
 
 The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
 
@@ -487,7 +487,7 @@ $app->put(
 
 <a name='deleting-data'></a>
 
-## Usuń dane
+## Deleting Data
 
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
 
@@ -665,6 +665,6 @@ Content-Type: text/html; charset=UTF-8
 
 <a name='conclusion'></a>
 
-## Wnioski
+## Conclusion
 
 As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).

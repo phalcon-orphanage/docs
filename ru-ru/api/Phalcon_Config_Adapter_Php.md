@@ -54,7 +54,7 @@ echo $config->database->username;
 
 *string* **DEFAULT_PATH_DELIMITER**
 
-## Методы
+## Methods
 
 public **__construct** (*mixed* $filePath)
 

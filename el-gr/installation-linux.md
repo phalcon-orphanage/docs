@@ -12,7 +12,7 @@ category: 'installation'
 
 To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
 
-### Διανομές βασισμένες σε DEB (Debian, Ubuntu, κλπ.)
+### DEB based distributions (Debian, Ubuntu, etc.)
 
 #### Αποθετήριο εγκατάστασης
 

@@ -10,9 +10,9 @@ title: 'Phalcon\Cache\Frontend\Factory'
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
 
-[Kaynak kodu GitHub'da](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/frontend/factory.zep)
 
-'Adaptör' seçeneğini kullanarak ön uç Önbellek Adaptörü sınıfını yükler
+Loads Frontend Cache Adapter class using 'adapter' option
 
 ```php
 <?php
@@ -27,7 +27,7 @@ $frontendCache = Factory::load($options);
 
 ```
 
-## Metodlar
+## Methods
 
 public static **load** ([Phalcon\Config](Phalcon_Config) | *array* $config)
 

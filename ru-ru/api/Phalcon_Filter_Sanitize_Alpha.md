@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\Alpha'
 
 Sanitizes a value to an alpha value
 
-### Методы
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed

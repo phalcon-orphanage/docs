@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Bezpieczeństwo
+# Security
 
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
@@ -167,7 +167,7 @@ $di->set(
 
 <a name='random'></a>
 
-## Komponent Random
+## Random
 
 The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
 
@@ -200,6 +200,6 @@ $number     = $random->number($n);
 
 <a name='resources'></a>
 
-## Zasoby zewnętrzne
+## External Resources
 
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the Security component for avoid CSRF and password hashing, [GitHub](https://github.com/phalcon/vokuro)

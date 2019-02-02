@@ -14,7 +14,7 @@ title: 'Phalcon\Mvc\Collection\Behavior\SoftDelete'
 
 Instead of permanently delete a record it marks the record as deleted changing the value of a flag column
 
-## Методы
+## Methods
 
 public **notify** (*mixed* $type, [Phalcon\Mvc\CollectionInterface](Phalcon_Mvc_CollectionInterface) $model)
 
