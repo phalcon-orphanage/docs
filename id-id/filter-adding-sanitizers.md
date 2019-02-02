@@ -48,8 +48,6 @@ $locator->set(
 $sanitized = $locator->sanitize($value, 'md5');
 ```
 
-If you prefer to implement your sanitizer in a class:
-
 Or, if you prefer, you can implement the filter in a class:
 
 ```php

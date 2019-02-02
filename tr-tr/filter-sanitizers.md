@@ -82,7 +82,7 @@ Removes all characters except digits, dot, plus and minus sign and casts the val
 #### int
 
 ```php
-IntVa( mixed $input ): int
+IntVal( mixed $input ): int
 ```
 
 Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
@@ -181,7 +181,7 @@ Converts all characters to uppercase. If the [mbstring](https://secure.php.net/m
 UpperFirst( mixed $input ): string
 ```
 
-Converts the first character of the input to lower case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
+Converts the first character of the input to upper case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
 
 #### upperWords
 
