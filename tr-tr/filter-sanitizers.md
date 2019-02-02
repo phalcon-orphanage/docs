@@ -181,7 +181,7 @@ Converts all characters to uppercase. If the [mbstring](https://secure.php.net/m
 UpperFirst( mixed $input ): string
 ```
 
-Converts the first character of the input to upper case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
+Converts the first character of the input to lower case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
 
 #### upperWords
 

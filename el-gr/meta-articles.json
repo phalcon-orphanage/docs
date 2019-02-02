@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "Δημιουργώντας Λίστες Ελέγχου Πρόσβασης",
+      "text": "Creating an ACL",
       "url": "/acl-setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Καθορισμός ελέγχων πρόσβασης",
+      "text": "Defining Access Controls",
       "url": "/acl-access-controls"
     },
     {
-      "text": "Αναζητώντας ένα ACL",
+      "text": "Querying an ACL",
       "url": "/acl-querying"
     },
     {
-      "text": "Πρόσβαση βασισμένη σε λειτουργίες",
+      "text": "Function based access",
       "url": "/acl-function-based-access"
     },
     {
@@ -37,11 +37,11 @@
       "url": "/acl-operations-inheritance"
     },
     {
-      "text": "Σειρογραφία Λίστες ACL",
+      "text": "Serializing ACL lists",
       "url": "/acl-serialization"
     },
     {
-      "text": "Γεγονότα",
+      "text": "Events",
       "url": "/acl-events"
     },
     {
@@ -335,11 +335,11 @@
           ]
         },
         {
-          "text": "Ρύθμιση",
+          "text": "Setup",
           "url": "/application-micro#middleware-setup"
         },
         {
-          "text": "Εφαρμογή",
+          "text": "Implementation",
           "url": "/application-micro#middleware-implementation"
         },
         {
@@ -1941,148 +1941,48 @@
   ],
   "installation": [
     {
-      "text": "Προϋποθέσεις",
-      "url": "/installation#requirements",
-      "menu": [
-        {
-          "text": "Υλικό",
-          "url": "/installation#requirements-hardware"
-        },
-        {
-          "text": "Λογισμικό",
-          "url": "/installation#requirements-software",
-          "menu": [
-            {
-              "text": "Optional depending on the needs of your application",
-              "url": "/installation#requirements-software-optional"
-            }
-          ]
-        }
-      ]
+      "text": "Installation",
+      "url": "/installation"
     },
     {
-      "text": "Installation",
-      "url": "/installation#installation",
-      "menu": [
-        {
-          "text": "Linux",
-          "url": "/installation#installation-linux",
-          "menu": [
-            {
-              "text": "DEB based distributions (CentOS, Fedora, etc.)",
-              "url": "/installation#installation-linux-deb",
-              "menu": [
-                {
-                  "text": "Αποθετήριο εγκατάστασης",
-                  "url": "/installation#installation-linux-deb-repository"
-                },
-                {
-                  "text": "Σταθερές εκδόσεις",
-                  "url": "/installation#installation-linux-debian-repository-stable"
-                },
-                {
-                  "text": "Νυχτερινές εκδόσεις",
-                  "url": "/installation#installation-linux-debian-repository-nightly"
-                },
-                {
-                  "text": "Εγκατάσταση του Phalcon",
-                  "url": "/installation#installation-linux-debian-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "url": "/installation#installation-linux-debian-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "url": "/installation#installation-linux-debian-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Πρόσθετα PPA",
-                  "url": "/installation#installation-linux-debian-other-ppa"
-                }
-              ]
-            },
-            {
-              "text": "Διανομές βασισμένες σε RPM (CentOS, Fedora, κλπ.)",
-              "url": "/installation#installation-linux-rpm",
-              "menu": [
-                {
-                  "text": "Repository installation",
-                  "url": "/installation#installation-linux-rpm-repository"
-                },
-                {
-                  "text": "Stable releases",
-                  "url": "/installation#installation-linux-rpm-repository-stable",
-                  "menu": [
-                    {
-                      "text": "Nightly releases",
-                      "url": "/installation#installation-linux-rpm-repository-nightly"
-                    }
-                  ]
-                },
-                {
-                  "text": "Phalcon installation",
-                  "url": "/installation#installation-linux-rpm-phalcon",
-                  "menu": [
-                    {
-                      "text": "PHP 5.x",
-                      "url": "/installation#installation-linux-rpm-phalcon-php5"
-                    },
-                    {
-                      "text": "PHP 7",
-                      "url": "/installation#installation-linux-rpm-phalcon-php7"
-                    }
-                  ]
-                },
-                {
-                  "text": "Πρόσθετα PPA",
-                  "url": "/installation#installation-linux-rpm-other-rpm"
-                }
-              ]
-            },
-            {
-              "text": "FreeBSD",
-              "url": "/installation#installation-freebsd"
-            },
-            {
-              "text": "Gentoo",
-              "url": "/installation#installation-gentoo"
-            }
-          ]
-        },
-        {
-          "text": "macOS",
-          "url": "/installation#installation-macos",
-          "menu": [
-            {
-              "text": "Brew",
-              "url": "/installation#installation-macos-brew"
-            },
-            {
-              "text": "MacPorts",
-              "url": "/installation#installation-macos-macports"
-            }
-          ]
-        },
-        {
-          "text": "Windows",
-          "url": "/installation#installation-windows"
-        },
-        {
-          "text": "Compile from Sources",
-          "url": "/installation#installation-sources"
-        },
-        {
-          "text": "Advanced Compilation",
-          "url": "/installation#installation-sources-advanced"
-        },
-        {
-          "text": "Testing",
-          "url": "/installation#installation-testing"
-        }
-      ]
+      "text": "PSR",
+      "url": "/installation-requirements-psr"
+    },
+    {
+      "text": "PDO",
+      "url": "/installation-requirements-pdo"
+    },
+    {
+      "text": "Υλικό",
+      "url": "/installation-requirements-hardware"
+    },
+    {
+      "text": "Λογισμικό",
+      "url": "/installation-requirements-software"
+    },
+    {
+      "text": "Platforms",
+      "url": "/installation-platforms"
+    },
+    {
+      "text": "Linux",
+      "url": "/installation-linux"
+    },
+    {
+      "text": "MacOS",
+      "url": "/installation-macos"
+    },
+    {
+      "text": "Windows",
+      "url": "/installation-windows"
+    },
+    {
+      "text": "Sources",
+      "url": "/installation-sources"
+    },
+    {
+      "text": "Shared",
+      "url": "/installation-shared"
     }
   ],
   "loader": [
@@ -2681,7 +2581,7 @@
       "url": "#development"
     },
     {
-      "text": "Υπηρεσίες",
+      "text": "Services",
       "url": "#services"
     }
   ],
@@ -2947,7 +2847,7 @@
   ],
   "upgrade": [
     {
-      "text": "Προϋποθέσεις",
+      "text": "Requirements",
       "url": "#requirements",
       "menu": [
         {
@@ -2965,7 +2865,7 @@
       "url": "#acl",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#acl-overview"
         },
         {
@@ -2979,7 +2879,7 @@
       "url": "#filter",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {
@@ -3001,7 +2901,7 @@
       "url": "#logger",
       "menu": [
         {
-          "text": "Επισκόπηση",
+          "text": "Overview",
           "url": "#filter-overview"
         },
         {

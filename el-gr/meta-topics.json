@@ -217,11 +217,11 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Μνήμη cache",
+                "text": "Cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Γεγονότα",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {

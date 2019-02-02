@@ -207,7 +207,7 @@ Help:
 
 <a name='running-compile'></a>
 
-## Compilar Phalcon
+## Compile Phalcon
 
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 

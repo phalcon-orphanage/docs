@@ -125,7 +125,7 @@ Performs a replacement on the input, replacing the `replace` parameter with an e
 Replace( mixed $input, mixed $from, mixed $to ): string
 ```
 
-Performs a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
+Preforms a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
 
 #### special
 

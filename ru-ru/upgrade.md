@@ -47,7 +47,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Компиляция Phalcon
+Compile Phalcon
 
 ```bash
 cd cphalcon/

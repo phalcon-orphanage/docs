@@ -64,7 +64,7 @@ Please check the following links for instructions on how to generate the backtra
 - [生成 gdb 回溯](https://bugs.php.net/bugs-generating-backtrace.php)
 - [使用编译器在 Win32 上生成回溯](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [调试符号](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [构建PHP](https://www.phpinternalsbook.com/build_system/building_php.html)
+- [构建PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
 <a name='pull-request-checklist'></a>
 
