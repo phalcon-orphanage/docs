@@ -3,52 +3,52 @@ layout: article
 language: 'es-es'
 version: '4.0'
 upgrade: '#filter'
-category: 'filter'
+category: 'filtro'
 ---
 # Componente Filtro
 
 * * *
 
-## Adding sanitizers
+## Creación de limpiadores
 
-You can add your own sanitizers to [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator). The sanitizer can be an anonymous function when initializing the locator:
+Se pueden añadir nuevos limpiadores a [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator). El nuevo limpiador puede ser una función anónima cuando se inicializa el localizador:
 
 ```php
 <?php
 
 use Phalcon\Filter\FilterLocator;
 
-$services = [
+$servicios = [
     'md5' => function ($input) {
         return md5($input);
     },
 ];
 
-$locator   = new FilterLocator($services);
-$sanitized = $locator->sanitize($value, 'md5');
+$localizador   = new FilterLocator($servicios);
+$limpio = $localizador->sanitize($valor, 'md5');
 ```
 
-If you already have an instantiated filter locator object (for instance if you have used the [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) and `newInstance()`), then you can simply add the custom filter:
+Ahora bien, si ya hay una instancia de `FilterLocator` (p.e. si se ha usado [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) y `newInstance()`), basta con agregar el nuevo filtro:
 
 ```php
 <?php
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$factory = new FilterLocatorFactory();
-$locator = $factory->newInstance();
+$fabrica = new FilterLocatorFactory();
+$localizador = $fabrica->newInstance();
 
-$locator->set(
+$localizador->set(
     'md5',
     function ($input) {
         return md5($input);
     }
 );
 
-$sanitized = $locator->sanitize($value, 'md5');
+$limpio = $localizador->sanitize($valor, 'md5');
 ```
 
-Or, if you prefer, you can implement the filter in a class:
+O, si lo prefiere, puede implementar el filtro en una clase:
 
 ```php
 <?php
@@ -57,22 +57,22 @@ use Phalcon\Filter\FilterLocatorFactory;
 
 class IPv4
 {
-    public function __invoke($value)
+    public function __invoke($valor)
     {
-        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        return filter_var($valor, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 }
 
-$factory = new FilterLocatorFactory();
-$locator = $factory->newInstance();
+$fabrica = new FilterLocatorFactory();
+$localizador = $fabrica->newInstance();
 
-$locator->set(
+$localizador->set(
     'ipv4',
     function () {
         return new Ipv4();
     }
 );
 
-// Sanitize with the 'ipv4' filter
-$filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
+// Limpieza con el filtro 'ipv4' 
+$IpFiltrada = $localizador->sanitize('127.0.0.1', 'ipv4');
 ```
