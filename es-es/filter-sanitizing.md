@@ -3,33 +3,33 @@ layout: article
 language: 'es-es'
 version: '4.0'
 upgrade: '#filter'
-category: 'filter'
+category: 'filtro'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
-## Sanitizing data
+## Limpieza de datos
 
-Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
+Es el proceso de desinfección o saneamiento que elimina caracteres específicos de un valor, bien por ser innecesarios o bien por ser indeseados por el usuario o aplicación. Al desinfectar la entrada nos aseguramos que la integridad de las aplicaciones permanecerá intacta.
 
 ```php
 <?php
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$factory = new FilterLocatorFactory();
-$locator = $factory->newInstance();
+$fabrica = new FilterLocatorFactory();
+$localizador = $fabrica->newInstance();
 
-// 'someone@example.com'
-$locator->sanitize('some(one)@exa\mple.com', 'email');
+// devuelve 'alguien@ejemplo.com'
+$localizador->sanitize('alg(uie)n@ejemp\lo.com', 'email');
 
-// 'hello'
-$locator->sanitize('hello<<', 'string');
+// devuelve 'hola'
+$localizador->sanitize('hola<<', 'string');
 
-// '100019'
-$locator->sanitize('!100a019', 'int');
+// devuelve '100019'
+$localizador->sanitize('!100a019', 'int');
 
-// '100019.01'
-$locator->sanitize('!100a019.01a', 'float');
+// devuelve '100019.01'
+$localizador->sanitize('!100a019.01a', 'float');
 ```
