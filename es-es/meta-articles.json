@@ -1743,11 +1743,11 @@
       "url": "/filter"
     },
     {
-      "text": "Built-in Sanitizers",
+      "text": "Limpiadores predeterminados",
       "url": "/filter-sanitizers"
     },
     {
-      "text": "Sanitizing data",
+      "text": "Limpieza de datos",
       "url": "/filter-sanitizing"
     },
     {
@@ -1755,7 +1755,7 @@
       "url": "/filter-sanitizing-from-controllers"
     },
     {
-      "text": "Sanitizing Action Parameters",
+      "text": "Limpieza de los parámetros de la acción",
       "url": "/filter-sanitizing-action-parameters"
     },
     {
@@ -1763,7 +1763,7 @@
       "url": "/filter-sanitizing-data"
     },
     {
-      "text": "Combining Sanitizers",
+      "text": "Combinación de limpiadores",
       "url": "/filter-combining-sanitizers"
     },
     {
@@ -1771,7 +1771,7 @@
       "url": "/filter-adding-sanitizers"
     },
     {
-      "text": "Complex Sanitizing and Filtering",
+      "text": "Filtrado y limpieza complejas",
       "url": "/filter-complex-sanitization-filtering"
     },
     {
@@ -2985,7 +2985,7 @@
       "url": "/validation#messages"
     },
     {
-      "text": "Filtering of Data",
+      "text": "Filtrado de datos",
       "url": "/validation#filtering"
     },
     {
