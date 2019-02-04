@@ -5,20 +5,20 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
-## Events
+## Eventos
 
-[Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
+[Phalcon\Acl](api/Phalcon_Acl) puede trabajar junto con el [EventsManager](events) si está presente, para disparar eventos a tu aplicación. Los eventos se desencadenan mediante el tipo `acl`. Los eventos que devuelven `false` pueden detener la operación activa. Los siguientes eventos están disponibles:
 
-| Nombre de evento    | Disparado                                                   | ¿Detiene la operación? |
-| ------------------- | ----------------------------------------------------------- |:----------------------:|
-| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  |           No           |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access |           Si           |
+| Nombre de evento    | Disparado                                                         | ¿Detiene la operación? |
+| ------------------- | ----------------------------------------------------------------- |:----------------------:|
+| `afterCheckAccess`  | Lanzado después de comprobar si una operación/asunto tiene acceso |           No           |
+| `beforeCheckAccess` | Lanzado antes de comprobar si una operación/asunto tiene acceso   |           Si           |
 
-The following example demonstrates how to attach listeners to the ACL:
+En el ejemplo siguiente se muestra cómo adjuntar oyentes al ACL:
 
 ```php
 <?php
@@ -30,10 +30,10 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Crear un gestor de eventos
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// Adjuntar un oyente de tipo 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
@@ -47,9 +47,9 @@ $eventsManager->attach(
 
 $acl = new AclList();
 
-// Setup the $acl
+// Configurar el $acl
 // ...
 
-// Bind the eventsManager to the ACL component
+// Vincular el eventsManager al componente ACL
 $acl->setEventsManager($eventsManager);
 ```
