@@ -5,7 +5,7 @@ version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
