@@ -5,11 +5,11 @@ version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
-- [Filtering and Sanitizing](filter-overview)
+- [Filtrado y Limpieza](filter-overview)
 - [Built-in Sanitizers](filter-sanitizers)
 - [Sanitizing data](filter-sanitizing)
 - [Limpieza en controladores](filter-sanitizing-from-controllers)
@@ -21,46 +21,46 @@ category: 'filter'
 
 * * *
 
-## Filtering and Sanitizing
+## Filtrado y Limpieza
 
-Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
+Una tarea fundamental en el desarrollo de software es la limpieza o saneamiento de datos enviados por los usuarios. Descuidar esta tarea o simplemente confiar en dichos datos sin sanearlos puede facilitar el acceso no autorizado al contenido de la aplicación, a los datos de otros usuarios, o incluso al servidor donde se encuentra alojada la aplicación.
 
 ![](/assets/images/content/filter-sql.png)
 
 [Full image on XKCD](https://xkcd.com/327)
 
-Sanitizing content can be achieved using the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) and [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) classes.
+En Phalcon hay dos clases para limpiar datos: [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) y [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory).
 
 ## FilterLocatorFactory
 
-This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) with the preset sanitizers you need to call `newInstance()`
+Este componente crea un localizador con filtros predefinidos. Cada filtro se carga solo cuando es necesario ("lazy loading" en inglés) para lograr el máximo rendimiento. Para instanciar la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) con los limpiadores preconfigurados se utiliza `newInstance()`
 
 ```php
 <?php
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$factory = new FilterLocatorFactory();
-$locator = $factory->newInstance();
+$fabrica = new FilterLocatorFactory();
+$localizador = $fabrica->newInstance();
 ```
 
-You can now use the locator wherever you need and sanitize content as per the needs of your application.
+Una vez instanciado, el localizador se puede utilizar en cualquier parte para limpiar el contenido (según las necesidades de la aplicación).
 
 ## FilterLocator
 
-The filter locator can also be used as a stand alone component, without initializing the built-in filters.
+El filtro localizador (`FilterLocator`) también se puede utilizar como componente autónomo y sin necesidad de inicializar los filtros predeterminados.
 
 ```php
 <?php
 
-use MyApp\Sanitizers\HelloSanitizer;
+use MiApp\Limpiadores\HolaLimpiador;
 use Phalcon\Filter\FilterLocator;
 
-$services = [
-    'hello' => HelloSanitizer::class,
+$servicios = [
+    'hola' => HolaLimpiador::class,
 ];
-$locator = new FilterLocator($services);
-$text    = $locator->hello('World');
+$localizador = new FilterLocator($servicios);
+$texto = $localizador->hola('Mundo');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name. {: .alert .alert-info }
+> El contenedor `Phalcon\Di` trae de manera predeterminada el objeto `Phalcon\Filter\FilterLocator` junto con los demás limpiadores predefinidos. Se puede acceder al componente utilizando el nombre del filtro (`filter`). {: .alert .alert-info }
