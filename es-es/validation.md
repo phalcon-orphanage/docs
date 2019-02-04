@@ -316,7 +316,7 @@ if (count($messages)) {
 
 <a name='filtering'></a>
 
-## Filtering of Data
+## Filtrado de datos
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
 
