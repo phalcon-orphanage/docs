@@ -5,17 +5,17 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
-## Adding Subjects
+## Agregando Asuntos
 
-A [Subject](api/Phalcon_Acl_Subject) is the area of the application where access is controlled. In a MVC application, this would be a Controller. Although not mandatory, the [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) class can be used to define subjects in the application. Also it is important to add related actions to a subject so that the ACL can understand what it should control.
+Un [Subject](api/Phalcon_Acl_Subject) o Asunto es el área de la aplicación donde se controla el acceso. En una aplicación MVC, esto sería un controlador. Aunque no es obligatorio, la clase [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) puede utilizarse para definir asuntos en la aplicación. También es importante añadir acciones relacionadas a un tema para que la ACL pueda entender lo que debe controlar.
 
-There are two ways of adding subjects to our list. * by using a [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) object or * using a string, representing the name of the operation
+Hay dos maneras de agregar asuntos a nuestra lista. * Usando un objecto [Phalcon\Acl\Subject](api/Phalcon_Acl_Subject) * Usando una cadena, representando el nombre de la operación
 
-Similar to the `addOperation`, `addSubject` requires a name for the subject and an optional description.
+Similar a la `addOperation`, `addSubject` requiere un nombre para el tema y una descripción opcional.
 
 ```php
 <?php
@@ -27,19 +27,19 @@ use Phalcon\Acl\Subject;
 $acl = new AclList();
 
 /**
- * Create some Subjects and add their respective actions in the ACL
+ * Crear algunos Subjects y sus respectivas acciones en la ACL
  */
 $admin   = new Subject('admin', 'Administration Pages');
 $reports = new Subject('reports', 'Reports Pages');
 
 /**
- * Add the subjects to the ACL and attach them to relevant actions 
+ * Agregar asuntos a la ACL y adjuntarlos a las acciones relevantes
  */
 $acl->addSubject($admin, ['dashboard', 'users']);
 $acl->addSubject($reports, ['list', 'add']);
 
 /**
- * Add subjects without creating an object first 
+ * Agregar asuntos sin crear un objecto
  */
 $acl->addSubject('admin', ['dashboard', 'users']);
 $acl->addSubject('reports', ['list', 'add']);

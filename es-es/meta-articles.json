@@ -9,15 +9,15 @@
       "url": "/acl-setup"
     },
     {
-      "text": "Adding Operations",
+      "text": "Agregando Operaciones",
       "url": "/acl-adding-operations"
     },
     {
-      "text": "Adding Subjects",
+      "text": "Agregando Asuntos",
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Definición de Controles de Acceso",
       "url": "/acl-access-controls"
     },
     {
@@ -41,11 +41,11 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Events",
+      "text": "Eventos",
       "url": "/acl-events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementando sus propios adaptadores",
       "url": "/acl-custom-adapters"
     }
   ],
@@ -89,7 +89,7 @@
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementando sus propios adaptadores",
           "url": "/annotations#adapters-custom"
         }
       ]
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Eventos",
       "url": "/application-micro#events",
       "menu": [
         {
@@ -1739,31 +1739,31 @@
   ],
   "filter": [
     {
-      "text": "Filtering and Sanitizing",
+      "text": "Filtrado y Limpieza",
       "url": "/filter"
     },
     {
-      "text": "Built-in Sanitizers",
+      "text": "Limpiadores predeterminados",
       "url": "/filter-sanitizers"
     },
     {
-      "text": "Sanitizing data",
+      "text": "Limpieza de datos",
       "url": "/filter-sanitizing"
     },
     {
-      "text": "Sanitizing from Controllers",
+      "text": "Limpieza en controladores",
       "url": "/filter-sanitizing-from-controllers"
     },
     {
-      "text": "Sanitizing Action Parameters",
+      "text": "Limpieza de los parámetros de la acción",
       "url": "/filter-sanitizing-action-parameters"
     },
     {
-      "text": "Filtering data",
+      "text": "Filtrado de datos",
       "url": "/filter-sanitizing-data"
     },
     {
-      "text": "Combining Sanitizers",
+      "text": "Combinación de limpiadores",
       "url": "/filter-combining-sanitizers"
     },
     {
@@ -1771,7 +1771,7 @@
       "url": "/filter-adding-sanitizers"
     },
     {
-      "text": "Complex Sanitizing and Filtering",
+      "text": "Filtrado y limpieza complejas",
       "url": "/filter-complex-sanitization-filtering"
     },
     {
@@ -2417,7 +2417,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementando sus propios adaptadores",
       "url": "/session#custom-adapters"
     }
   ],
@@ -2985,7 +2985,7 @@
       "url": "/validation#messages"
     },
     {
-      "text": "Filtering of Data",
+      "text": "Filtrado de datos",
       "url": "/validation#filtering"
     },
     {

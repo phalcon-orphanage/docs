@@ -12,15 +12,15 @@ category: 'acl'
 - [Listas de control de acceso (ACL)](acl-overview)
 - [Creando una ACL](acl-setup)
 - [Adding Operations](acl-adding-operations)
-- [Adding Subjects](acl-adding-subjects)
-- [Defining Access Controls](acl-access-controls)
+- [Agregando Asuntos](acl-adding-subjects)
+- [Definición de Controles de Acceso](acl-access-controls)
 - [Querying an ACL](acl-querying)
 - [Function based access](acl-function-based-access)
 - [Objects as operation name and subject name](acl-objects)
 - [Operations Inheritance](acl-operations-inheritance)
 - [Serializing ACL lists](acl-serialization)
-- [Events](acl-events)
-- [Implementing your own adapters](acl-custom-adapters)
+- [Eventos](acl-events)
+- [Implementando sus propios adaptadores](acl-custom-adapters)
 
 * * *
 

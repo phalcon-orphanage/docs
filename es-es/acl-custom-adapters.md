@@ -5,10 +5,10 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
-The [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface must be implemented in order to create your own ACL adapters or extend the existing ones.
+Debe implementar la interfaz [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) para crear sus propios adaptadores ACL o extender los ya existentes.

@@ -3,12 +3,12 @@ layout: article
 language: 'es-es'
 version: '4.0'
 upgrade: '#filter'
-category: 'filter'
+category: 'filtro'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
-## Complex Sanitizing and Filtering
+## Filtrado y limpieza complejas
 
-PHP itself provides an excellent filter extension you can use: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
+PHP ofrece una extensión excelente para filtrado de datos que por supuesto también se puede utilizar con Phalcon; véase [Filtrado de datos](https://www.php.net/manual/es/book.filter.php) en el manual oficial.

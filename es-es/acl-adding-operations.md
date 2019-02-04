@@ -5,17 +5,17 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
-## Adding Operations
+## Agregando Operaciones
 
-As mentioned above, a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) is an object that can or cannot access a set of [Subject](api/Phalcon_Acl_Subject) in the access list.
+Como se ha mencionado anteriormente, un [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) es un objeto que puede o no puede acceder a un conjunto de [Subject](api/Phalcon_Acl_Subject) en la lista de acceso.
 
-There are two ways of adding operations to our list. * by using a [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) object or * using a string, representing the name of the operation
+Hay dos maneras de agregar operaciones a nuestra lista. * Usando un objecto [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) * Usando una cadena, representando el nombre de la operación
 
-To see this in action, using the example outlined above, we will add the relevant [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) objects in our list:
+Para ver esto en acción, usando el ejemplo descrito arriba, añadiremos los objetos [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) relevantes en nuestra lista:
 
 ```php
 <?php
@@ -27,23 +27,23 @@ use Phalcon\Acl\Operation;
 $acl = new AclList();
 
 /**
- * Create some Operations.
+ * Crear algunas Operaciones.
  * 
- * The first parameter is the name of the operation, 
- * the second is an optional description
+ * El primer parámetro es el nombre de la operación, 
+ * el segundo, opcional, es una descripción
  */
 
 $operationAdmins     = new Operation('admins', 'Administrator Access');
 $operationAccounting = new Operation('accounting', 'Accounting Department Access'); 
 
 /**
- * Add these operations in the list 
+ * Agregar estas operaciones a la lista
  */
 $acl->addOperation($operationAdmins);
 $acl->addOperation($operationAccounting);
 
 /**
- * Add operations without creating an object first 
+ * Agregar operaciones sin crear un objecto
  */
 $acl->addOperation('manager');
 $acl->addOperation('guest');

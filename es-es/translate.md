@@ -208,7 +208,7 @@ or in a view directly
 
 <a name='custom'></a>
 
-## Implementing your own adapters
+## Implementando sus propios adaptadores
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 

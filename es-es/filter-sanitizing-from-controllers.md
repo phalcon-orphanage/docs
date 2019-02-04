@@ -5,13 +5,13 @@ version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
-## Sanitizing from Controllers
+## Limpieza en controladores
 
-You can access the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply.
+Los controladores pueden emplear el objeto [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) con los datos de usuario que llegan mediante `GET` o `POST` (a través del objeto de petición). El primer parámetro es el nombre de la variable que se desea obtener; el segundo es el filtro que se desea aplicar. El segundo parámetro también puede ser una matriz con todos los limpiadores a utilizar.
 
 ```php
 <?php
@@ -21,20 +21,20 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
 /**
- * Class ProductsController
+ * Class ProductosController
  * 
  * @property Request $request
  */
-class ProductsController extends Controller
+class ProductosController extends Controller
 {
-    public function saveAction()
+    public function guardarAction()
     {
         if (true === $this->request->isPost()) {
-            // Sanitizing price from input
-            $price = $this->request->getPost('price', 'double');
+            // Limpiar el precio
+            $precio = $this->request->getPost('precio', 'double');
 
-            // Sanitizing email from input
-            $email = $this->request->getPost('customerEmail', FilterLocator::FILTER_EMAIL);
+            // Limpiar la dirección de correo electrónico
+            $emilio = $this->request->getPost('emilioUsuario', FilterLocator::FILTER_EMAIL);
         }
     }
 }
