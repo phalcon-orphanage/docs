@@ -3,27 +3,27 @@ layout: article
 language: 'es-es'
 version: '4.0'
 upgrade: '#filter'
-category: 'filter'
+category: 'filtro'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
-## Combining Sanitizers
+## Combinación de limpiadores
 
-There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
+Hay ocasiones en las que usar un solo limpiador no es suficiente para sanear los datos. Un caso muy común, por ejemplo, es el uso de los limpiadores `striptags` y `trim` para las entradas de texto. En estos casos, [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) puede recibir una matriz de nombres de limpiadores a utilizar con los datos de entrada. Por ejemplo:
 
 ```php
 <?php
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$factory = new FilterLocatorFactory();
-$locator = $factory->newInstance();
+$fabrica = new FilterLocatorFactory();
+$localizador = $fabrica->newInstance();
 
-// Returns 'Hello'
-$locator->sanitize(
-    '   <h1> Hello </h1>   ',
+// Devuelve 'Hola'
+$localizador->sanitize(
+    '   <h1> Hola </h1>   ',
     [
         'striptags',
         'trim',
@@ -31,7 +31,7 @@ $locator->sanitize(
 );
 ```
 
-Note that this feature also works on the [Phalcon\Http\Request](api/Phalcon_Http_Request) object, when calling methods to retrieve data from `GET` and `POST`, namely `getQuery()` and `getPost()`.
+Esta cualidad también se puede utilizar con el objeto [Phalcon\Http\Request](api/Phalcon_Http_Request), cuando se utilizan los métodos `getQuery()` y `getPost()` para procesar las entradas `GET` y `POST`. Por ejemplo:
 
 ```php
 <?php
@@ -41,17 +41,17 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
 /**
- * Class ProductsController
+ * Class ProductosController
  * 
  * @property Request $request
  */
-class ProductsController extends Controller
+class ProductosController extends Controller
 {
-    public function saveAction()
+    public function guardarAction()
     {
         if (true === $this->request->isPost()) {
-            $message =  $this->request->getPost(
-                '   <h1> Hello </h1>   ',
+            $mensaje =  $this->request->getPost(
+                '   <h1> Hola </h1>   ',
                 [
                     'striptags',
                     'trim',
