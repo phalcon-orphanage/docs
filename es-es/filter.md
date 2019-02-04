@@ -10,14 +10,14 @@ category: 'filter'
 * * *
 
 - [Filtrado y Limpieza](filter-overview)
-- [Built-in Sanitizers](filter-sanitizers)
-- [Sanitizing data](filter-sanitizing)
+- [Limpiadores predeterminados](filter-sanitizers)
+- [Limpieza de datos](filter-sanitizing)
 - [Limpieza en controladores](filter-sanitizing-from-controllers)
-- [Sanitizing Action Parameters](filter-sanitizing-action-parameters)
+- [Limpieza de los parámetros de la acción](filter-sanitizing-action-parameters)
 - [Filtrado de datos](filter-sanitizing-data)
-- [Combining Sanitizers](filter-combining-sanitizers)
-- [Complex Sanitizing and Filtering](filter-complex-sanitization-filtering)
-- [Implementing your own Sanitizer](filter-custom)
+- [Combinación de limpiadores](filter-combining-sanitizers)
+- [Filtrado y limpieza complejas](filter-complex-sanitization-filtering)
+- [Cómo implementar un limpiador propio](filter-custom)
 
 * * *
 
@@ -27,7 +27,7 @@ Una tarea fundamental en el desarrollo de software es la limpieza o saneamiento 
 
 ![](/assets/images/content/filter-sql.png)
 
-[Full image on XKCD](https://xkcd.com/327)
+[Imagen original en [XKCD](https://xkcd.com/327)](https://xkcd.com/327)
 
 En Phalcon hay dos clases para limpiar datos: [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) y [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory).
 
