@@ -5,15 +5,15 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
-## Defining Access Controls
+## Definición de Controles de Acceso
 
-After both the `Operations` and `Subjects` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the operation since a small mistake here can allow access to operations for subjects that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
+Después que las `Operations` y los `Subjects` fueron definidos, tenemos que atarlos juntos para que la lista de acceso pueda ser creada. Este es el paso más importante en la operación, ya que un pequeño error aquí puede permitir el acceso a operaciones para asuntos a los que el desarrollador no tiene intención de hacerlo. Como se mencionó anteriormente, la acción de acceso predeterminada para [Phalcon\Acl](api/Phalcon_Acl) es `Acl::DENY`, siguiendo el enfoque de [lista blanca](https://en.wikipedia.org/wiki/Whitelisting).
 
-To tie `Operations` and `Subjects` together we use the `allow()` and `deny()` methods exposed by the [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory) class.
+Para atar `Operations` y `Subjects` juntos usamos los métodos `allow()` y `deny()` expuestos por la clase [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory).
 
 ```php
 <?php
@@ -26,7 +26,7 @@ use Phalcon\Acl\Subject;
 $acl = new AclList();
 
 /**
- * Add the operations
+ * Agregar las operaciones
  */
 $acl->addOperation('manager');
 $acl->addOperation('accounting');
@@ -34,14 +34,14 @@ $acl->addOperation('guest');
 
 
 /**
- * Add the Subjects
+ * Agregar los asuntos
  */
 $acl->addSubject('admin', ['dashboard', 'users', 'view']);
 $acl->addSubject('reports', ['list', 'add', 'view']);
 $acl->addSubject('session', ['login', 'logout']);
 
 /**
- * Now tie them all together 
+ * Ahora los unimos
  */
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
@@ -51,47 +51,47 @@ $acl->allow('*', '*', 'view');
 $acl->deny('guest', '*', 'view');
 ```
 
-What the above lines tell us:
+Las líneas anteriores nos dicen:
 
 ```php
 $acl->allow('manager', 'admin', 'users');
 ```
 
-For the `manager` operation, allow access to the `admin` subject and `users` action. To bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `admin` controller and `users` action.
+Para la operación `manager`, permitir el acceso al asunto `admin` y la acción `users`. Para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `admin` y a la acción `users`.
 
 ```php
 $acl->allow('manager', 'reports', ['list', 'add']);
 ```
 
-You can also pass an array as the `action` parameter when invoking the `allow()` command. The above means that for the `manager` operation, allow access to the `reports` subject and `list` and `add` actions. Again to bring this into perspective with a MVC application, the above line says that the group `manager` is allowed to access the `reports` controller and `list` and `add` actions.
+También puede pasar una matriz como parámetro `action` al invocar el comando `allow()`. Lo anterior significa, para la operación `manager`, permitir el acceso al asunto `reports` y a las acciones `list` y `add`. Una vez más para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `reports` y a las acciones `list` y `add`.
 
 ```php
 $acl->allow('*', 'session', '*');
 ```
 
-Wildcards can also be used to do mass matching for operations, subjects or actions. In the above example, we allow every operation to access every action in the `session` subject. This command will give access to the `manager`, `accounting` and `guest` operations, access to the `session` subject and to the `login` and `logout` actions.
+Las comodines también se pueden utilizar para hacer coincidencias en masa para operaciones, asuntos o acciones. En el ejemplo anterior, permitimos que todas las operaciones accedan a todas las acciones del asunto `session`. Este comando dará acceso a las operaciones `manager`, `accounting` y `guest`, accediendo al asunto `session` y a las acciones `login` y `logout`.
 
 ```php
 $acl->allow('*', '*', 'view');
 ```
 
-Similarly the above gives access to any operation, any subject that has the `view` action. In a MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`.
+Del mismo modo, lo anterior da acceso a cualquier operación, cualquier asunto que tenga la acción `view`. En una aplicación MVC, lo anterior es el equivalente a permitir que cualquier grupo acceda a cualquier controlador que exponga una `viewAction`.
 
-> Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
+> Por favor, tenga **MUCHO** cuidado al usar el comodín `*`. Es muy fácil cometer un error y el comodín, aunque parece conveniente, puede permitir que los usuarios accedan a áreas de su aplicación que no se supone que lo hagan. La mejor manera de estar 100% seguro es escribir pruebas específicamente para probar los permisos y la ACL. Estos pueden hacerse en la `unit` de las pruebas instanciando el componente y luego comprobando el `isAllowed()` si es `true` o `false`.
 > 
-> [Codeception](https://codeception.com) is the chosen testing framework for Phalcon and there are plenty of tests in our github repository (`tests` folder) to offer guidance and ideas. {:.alert .alert-danger}
+> [Codeception](https://codeception.com) es el framework de pruebas elegido por Phalcon, hay muchas pruebas en nuestro repositorio GitHub (carpeta `tests`) para ofrecer orientación e ideas.
 
 ```php
 $acl->deny('guest', '*', 'view');
 ```
 
-For the `guest` operation, we deny access to all subjects with the `view` action. Despite the fact that the default access level is `Acl::DENY` in our example above, we specifically allowed the `view` action to all operations and subjects. This includes the `guest` operation. We want to allow the `guest` operation access only to the `session` subject and the `login` and `logout` actions, since `guests` are not logged into our application.
+Para la operación `guest`, negamos el acceso a todos los asuntos con la acción `view`. A pesar del hecho de que el nivel de acceso por defecto es `Acl::DENY` en nuestro ejemplo anterior, hemos permitido específicamente la acción `view` a todas las operaciones y temas. Esto incluye la operación `guest`. Queremos permitir el acceso al `guest` solo al asunto `session` y a las acciones `login` y `logout`, ya que los `guests` no están logeados en nuestra aplicación.
 
 ```php
 $acl->allow('*', '*', 'view');
 ```
 
-This gives access to the `view` access to everyone, but we want the `guest` operation to be excluded from that so the following line does what we need.
+Esto da acceso al acceso `view` a todo el mundo, pero queremos que la operación de `guest` debe ser excluida de ahí, entonces lo que necesitamos es la siguiente linea.
 
 ```php
 $acl->deny('guest', '*', 'view');
