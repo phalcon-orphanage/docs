@@ -1751,7 +1751,7 @@
       "url": "/filter-sanitizing"
     },
     {
-      "text": "Sanitizing from Controllers",
+      "text": "Limpieza en controladores",
       "url": "/filter-sanitizing-from-controllers"
     },
     {
@@ -1759,7 +1759,7 @@
       "url": "/filter-sanitizing-action-parameters"
     },
     {
-      "text": "Filtering data",
+      "text": "Filtrado de datos",
       "url": "/filter-sanitizing-data"
     },
     {
