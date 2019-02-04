@@ -1,11 +1,11 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
-# Filter Component
+# Componente Filtro
 
 * * *
 
