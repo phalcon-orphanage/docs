@@ -31,4 +31,4 @@ extension=php_phalcon.dll
 
 Restart your webserver.
 
-[download]: [download](https://phalconphp.com/en/download/windows)
+[download]: https://phalconphp.com/en/download/windows
