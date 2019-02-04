@@ -9,15 +9,15 @@
       "url": "/acl-setup"
     },
     {
-      "text": "Adding Operations",
+      "text": "Agregando Operaciones",
       "url": "/acl-adding-operations"
     },
     {
-      "text": "Adding Subjects",
+      "text": "Agregando Asuntos",
       "url": "/acl-adding-subjects"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Definición de Controles de Acceso",
       "url": "/acl-access-controls"
     },
     {
@@ -41,11 +41,11 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Events",
+      "text": "Eventos",
       "url": "/acl-events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementando sus propios adaptadores",
       "url": "/acl-custom-adapters"
     }
   ],
@@ -89,7 +89,7 @@
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Implementando sus propios adaptadores",
           "url": "/annotations#adapters-custom"
         }
       ]
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Eventos",
       "url": "/application-micro#events",
       "menu": [
         {
@@ -2417,7 +2417,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Implementando sus propios adaptadores",
       "url": "/session#custom-adapters"
     }
   ],
