@@ -5,7 +5,7 @@ version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
-# Access Control Lists Component
+# Componente de Listas de Control de Acceso
 
 * * *
 
