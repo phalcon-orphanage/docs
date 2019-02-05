@@ -367,11 +367,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Internacionalización",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Traducciones",
                 "url": "/translate"
             }
         ]
