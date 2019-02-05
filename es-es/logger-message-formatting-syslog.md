@@ -5,15 +5,15 @@ version: '4.0'
 upgrade: '#logger'
 category: 'logger'
 ---
-# Logger Component
+# Componente Logger
 
 * * *
 
-## Message Formatting
+## Formato de mensaje
 
-### Syslog Formatter
+### Formateador Syslog
 
-Formats the messages returning an array with the type and message as elements:
+Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como elementos:
 
 ```bash
 [
