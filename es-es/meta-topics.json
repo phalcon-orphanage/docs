@@ -237,7 +237,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Validadores",
                 "url": "/db-models-validation"
             },
             {
@@ -245,7 +245,7 @@
                 "url": "/db-migrations"
             },
             {
-                "text": "Pagination",
+                "text": "Paginación",
                 "url": "/db-pagination"
             }
         ]
@@ -255,19 +255,19 @@
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Recursos Activos",
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Mensajes Flash",
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Formularios",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Imágenes",
                 "url": "/image"
             },
             {
@@ -275,7 +275,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Vistas",
                 "url": "/views"
             },
             {
@@ -285,19 +285,19 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Lógica de Negocio",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Listas de Control de Acceso",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Anotaciones",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Controladores",
                 "url": "/controllers"
             },
             {
@@ -305,19 +305,19 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Gestor de Eventos",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtros",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Ruteo",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Sesiones",
                 "url": "/session"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Validación",
                 "url": "/validation"
             }
         ]
@@ -339,17 +339,17 @@
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "Consulta",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Respuesta",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Seguridad",
         "url": "",
         "menu": [
             {
@@ -357,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Seguridad",
                 "url": "/security"
             }
         ]
