@@ -2204,23 +2204,43 @@
   "request": [
     {
       "text": "Request Environment",
-      "url": "/request#overview"
+      "url": "/request"
     },
     {
       "text": "Getting Values",
-      "url": "/request#getting-values"
+      "url": "/request-getting-values"
+    },
+    {
+      "text": "Preset sanitizers",
+      "url": "/request-preset-sanitizers"
     },
     {
       "text": "Accessing the Request from Controllers",
-      "url": "/request#controller-access"
+      "url": "/request-controller-access"
     },
     {
-      "text": "Uploading Files",
-      "url": "/request#uploading-files"
+      "text": "Checking operations",
+      "url": "/request-checking-operations"
+    },
+    {
+      "text": "Request information",
+      "url": "/request-information"
+    },
+    {
+      "text": "Dependency Injection",
+      "url": "/request-di"
     },
     {
       "text": "Working with Headers",
-      "url": "/request#working-with-headers"
+      "url": "/request-working-with-headers"
+    },
+    {
+      "text": "Uploading Files",
+      "url": "/request-uploading-files"
+    },
+    {
+      "text": "Eventos",
+      "url": "/request-events"
     }
   ],
   "response": [
