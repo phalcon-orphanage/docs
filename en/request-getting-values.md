@@ -19,7 +19,7 @@ There are 4 methods that allow you to retrieve submitted data from a request:
 - `getPut()`
 - `getServer()`
 
-All (except from `getServer()`) accept the following parameters:
+All (except from `getServer()` accept the following parameters:
 - `name` the name of the value to get
 - `filters` (array/string) the sanitizers to apply to the value
 - `defaultValue` returned if the element is not defined (`null`)
