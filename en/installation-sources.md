@@ -74,3 +74,13 @@ make && make install
 If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
 
 [zephir-phar]: https://github.com/phalcon/zephir/releases
+
+### Tuning build
+
+By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build.
+For example
+```
+export CFLAGS="-march=native -O2 -fomit-frame-pointer"
+zephir build
+```
+This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
