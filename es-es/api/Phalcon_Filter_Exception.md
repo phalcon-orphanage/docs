@@ -54,10 +54,10 @@ Obtiene el seguimiento de la pila
 public function getTraceAsString(): string
 ```
 
-Gets the stack trace as a string
+Obtiene el seguimiento de la pila como una cadena
 
 ```php
 public function __toString(): string
 ```
 
-Gets a string representation of the thrown object
+Obtiene una representación de cadena del objeto elevado
