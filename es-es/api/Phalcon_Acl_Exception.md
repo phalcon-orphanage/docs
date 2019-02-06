@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\Exception'
 ---
 # Class [Phalcon\Acl\Exception](Phalcon_Acl_Exception)
 
-**extends** [Phalcon\Exception](Phalcon_Exception)
+**extiende** [Phalcon\Exception](Phalcon_Exception)
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
@@ -18,7 +18,7 @@ Exceptions thrown in `Phalcon\Acl\*` will use this class
 public function getCode(): int
 ```
 
-Gets the exception code
+Obtiene el código de la excepción
 
 ```php
 public function getFile(): string
@@ -30,19 +30,19 @@ Obtiene el archivo en el que se produjo la excepción
 public function getLine(): int
 ```
 
-Gets the line on which the object was instantiated
+Obtiene la línea en la cual el objeto fue instanciado
 
 ```php
 public function getMessage(): string
 ```
 
-Gets the message
+Obtiene el mensaje
 
 ```php
 public function getPrevious(): \Throwable
 ```
 
-Get the previous `\Throwable` object
+Obtiene el anterior objeto `\Throwable`
 
 ```php
 public function getTrace(): array
