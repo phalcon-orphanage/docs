@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\Sanitizer\StringVal'
 ---
@@ -10,7 +10,7 @@ title: 'Phalcon\Filter\Sanitizer\StringVal'
 
 Sanitizes a value to a string
 
-### Métodos
+### Methods
 
 ```php
 public function __invoke( mixed $input ): mixed
