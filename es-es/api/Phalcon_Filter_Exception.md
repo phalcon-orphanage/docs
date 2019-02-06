@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\Exception'
 ---
@@ -8,11 +8,11 @@ title: 'Phalcon\Filter\Exception'
 
 **extends** [Phalcon\Exception](Phalcon_Exception)
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
 Exceptions thrown in `Phalcon\Filter\*` will use this class
 
-## Métodos
+## Methods
 
 ```php
 public function getCode(): int
@@ -24,7 +24,7 @@ Gets the exception code
 public function getFile(): string
 ```
 
-Obtiene el archivo en el que se produjo la excepción
+Gets the file in which the exception occurred
 
 ```php
 public function getLine(): int
@@ -48,13 +48,13 @@ Get the previous `\Throwable` object
 public function getTrace(): array
 ```
 
-Obtiene el seguimiento de la pila
+Gets the stack trace
 
 ```php
 public function getTraceAsString(): string
 ```
 
-Obtiene el seguimiento de la pila como una cadena
+Gets the stack trace as a string
 
 ```php
 public function __toString(): string
