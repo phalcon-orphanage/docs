@@ -6,49 +6,49 @@ title: 'Phalcon\Filter\Exception'
 ---
 # Class [Phalcon\Filter\Exception](Phalcon_Filter_Exception)
 
-**extends** [Phalcon\Exception](Phalcon_Exception)
+**extiende** [Phalcon\Exception](Phalcon_Exception)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
-Exceptions thrown in `Phalcon\Filter\*` will use this class
+Esta clase será utilizada por las excepciones generadas por `Phalcon\Filter\*`
 
-## Methods
+## Métodos
 
 ```php
 public function getCode(): int
 ```
 
-Gets the exception code
+Obtiene el código de la excepción
 
 ```php
 public function getFile(): string
 ```
 
-Gets the file in which the exception occurred
+Obtiene el archivo en el que se produjo la excepción
 
 ```php
 public function getLine(): int
 ```
 
-Gets the line on which the object was instantiated
+Obtiene la línea en la cual el objeto fue instanciado
 
 ```php
 public function getMessage(): string
 ```
 
-Gets the message
+Obtiene el mensaje
 
 ```php
 public function getPrevious(): \Throwable
 ```
 
-Get the previous `\Throwable` object
+Obtiene el anterior objeto `\Throwable`
 
 ```php
 public function getTrace(): array
 ```
 
-Gets the stack trace
+Obtiene el seguimiento de la pila
 
 ```php
 public function getTraceAsString(): string
