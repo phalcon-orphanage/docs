@@ -60,4 +60,4 @@ Obtiene el seguimiento de la pila como una cadena
 public function __toString(): string
 ```
 
-Gets a string representation of the thrown object
+Obtiene una representación de cadena del objeto elevado
