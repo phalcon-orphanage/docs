@@ -211,7 +211,7 @@ $response->send();
 
 <a name='dependency-injection'></a>
 
-## Dependency Injection
+## Inyección de Dependencias
 
 In the first line of the code block above, the Application class constructor is receiving the variable `$di` as an argument. What is the purpose of that variable? Phalcon is a highly decoupled framework so we need a component that acts as glue to make everything work together. That component is [Phalcon\Di](api/Phalcon_Di). It's a service container that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
