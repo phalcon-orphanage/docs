@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 **This article reflects v3.4 and has not yet been revised**
@@ -260,7 +260,7 @@ $messages = $validation->validate(['amount' => 10]); // retornará el mensaje de
 
 <a name='messages'></a>
 
-## Validation Messages
+## Mensajes de validación
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
 
