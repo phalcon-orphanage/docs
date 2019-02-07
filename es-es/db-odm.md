@@ -1,6 +1,6 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
 **This article reflects v3.4 and has not yet been revised**
@@ -385,7 +385,7 @@ echo 'La id generada es: ', $robot->getId();
 
 <a name='validation-messages'></a>
 
-### Validation Messages
+### Mensajes de validación
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -574,7 +574,7 @@ Some events return `false` as an indication to stop the current operation. If an
 
 <a name='data-integrity'></a>
 
-### Validating Data Integrity
+### Validar la integridad de los datos
 
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
@@ -623,7 +623,7 @@ class Robots extends Collection
 
 The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a> </h5>
+<h5 class='alert alert-warning'>Para obtener más información sobre validadores, consulte la <a href="/4.0/en/validation">documentación de validación</a> </h5>
 
 <a name='deleting-records'></a>
 
@@ -688,7 +688,7 @@ Los siguientes eventos están disponibles para definir reglas de negocios person
 
 <a name='validation-failed-events'></a>
 
-## Validation Failed Events
+## Eventos de validación fallidos
 
 Another type of events is available when the data validation process finds any inconsistency:
 
