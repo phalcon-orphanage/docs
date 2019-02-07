@@ -1,9 +1,9 @@
 ---
 layout: article
-language: 'en'
+language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+**Este artículo refleja la v3.4 y todavía no ha sido revisado**
 
 <a name='overview'></a>
 
@@ -11,9 +11,9 @@ version: '4.0'
 
 <a name='data-integrity'></a>
 
-## Validating Data Integrity
+## Validar la integridad de los datos
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) provides several events to validate data and implement business rules. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) ofrece varios eventos para validar los datos e implementar reglas de negocio. El evento especial `validation` nos permite llamar a validadores incorporados en el registro. Phalcon expone algunos validadores incorporados que pueden utilizarse en esta etapa de validación.
 
 En el ejemplo siguiente se muestra cómo se utiliza:
 
@@ -59,11 +59,11 @@ class Robots extends Model
 }
 ```
 
-The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
+En el ejemplo anterior se realiza una validación utilizando el validador integrado 'InclusionIn'. Comprueba el valor del campo `type` en una lista de dominios. Si el valor no está incluido en el método entonces el validador fallará y devolverá false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a></h5>
+<h5 class='alert alert-warning'>Para obtener más información sobre validadores, consulte la <a href="/4.0/en/validation">documentación de validación</a></h5>
 
-The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
+La idea de crear validadores es hacerlos reutilizables entre muchos modelos. Un validador puede ser tan simple como:
 
 ```php
 <?php
@@ -96,11 +96,11 @@ class Robots extends Model
 
 <a name='messages'></a>
 
-## Validation Messages
+## Mensajes de validación
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) cuenta con un subsistema de mensajería que proporciona una forma flexible de salida o almacenamiento de mensajes de validación generados durante los procesos de insertar/actualizar.
 
-Each message is an instance of [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) and the set of messages generated can be retrieved with the `getMessages()` method. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
+Cada mensaje es una instancia de [Phalcon\Mvc\Model\Message](api/Phalcon_Mvc_Model_Message) y el conjunto de mensajes generados puede ser obtenido con el método `getMessages()`. Cada mensaje proporciona información ampliada como el nombre del campo que genera el mensaje o el tipo de mensaje:
 
 ```php
 <?php
@@ -116,7 +116,7 @@ if ($robot->save() === false) {
 }
 ```
 
-[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) can generate the following types of validation messages:
+[Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) puede generar los siguientes tipos de mensajes de validación:
 
 | Tipo                   | Descripción                                                                                                                                 |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,7 +126,7 @@ if ($robot->save() === false) {
 | `InvalidCreateAttempt` | Se produce cuando un registro que intenta crearse ya existe                                                                                 |
 | `InvalidUpdateAttempt` | Se produce cuando un registro que se intenta actualizar no existe                                                                           |
 
-The `getMessages()` method can be overridden in a model to replace/translate the default messages generated automatically by the ORM:
+El método `getMessages()` puede ser reemplazado en un modelo para reemplazar/traducir los mensajes generados automáticamente por el ORM:
 
 ```php
 <?php
@@ -164,9 +164,9 @@ class Robots extends Model
 
 <a name='failed-events'></a>
 
-## Validation Failed Events
+## Eventos de validación fallidos
 
-Another type of events are available when the data validation process finds any inconsistency:
+Otro tipo de eventos están disponibles cuando el proceso de validación de datos encuentra cualquier inconsistencia:
 
 | Operación                     | Nombre              | Explicación                                                                  |
 | ----------------------------- | ------------------- | ---------------------------------------------------------------------------- |
