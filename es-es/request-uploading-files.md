@@ -8,7 +8,7 @@ category: 'request'
 
 * * *
 
-## Uploading Files
+## Subiendo Archivos
 
 Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini`.
 
