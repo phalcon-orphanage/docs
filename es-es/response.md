@@ -59,7 +59,7 @@ class FeedController extends Controller
 
 <a name='working-with-headers'></a>
 
-## Working with Headers
+## Trabajando con Cabeceras
 
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
