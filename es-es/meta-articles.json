@@ -1079,15 +1079,15 @@
       "url": "/db-models-validation#overview"
     },
     {
-      "text": "Validating Data Integrity",
+      "text": "Validar la integridad de los datos",
       "url": "/db-models-validation#data-integrity"
     },
     {
-      "text": "Validation Messages",
+      "text": "Mensajes de validación",
       "url": "/db-models-validation#messages"
     },
     {
-      "text": "Validation Failed Events",
+      "text": "Eventos de validación fallidos",
       "url": "/db-models-validation#failed-events"
     }
   ],
