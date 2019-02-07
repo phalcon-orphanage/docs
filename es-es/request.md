@@ -4,37 +4,37 @@ language: 'es-es'
 version: '4.0'
 category: 'request'
 ---
-# HTTP Request Component
+# Componente de Petición HTTP
 
 * * *
 
-# Request Environment
+# Entorno de Consulta
 
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information in order to perform a particular action and send the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the request information in a simple value object.
+Cada petición HTTP (normalmente originada por un navegador) contiene información adicional sobre la petición, tal como datos de cabecera, archivos, variables, etcétera. Una aplicación basada en web necesita analizar esa información para realizar una acción particular y enviar la respuesta correcta al solicitante. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsula la información de la solicitud en un objeto de valor simple.
 
 ```php
 <?php
 
 use Phalcon\Http\Request;
 
-// Getting a request instance
+// Obteniendo una instancia de la consulta
 $request = new Request();
 
-// Check whether the request was made with method POST
+// Comprobar que la consulta este hecha por el método POST
 if (true === $request->isPost()) {
-    // Check whether the request was made with Ajax
+    // Comprobar si la consulta esta hecha con Ajax
     if (true === $request->isAjax()) {
-        echo 'Request was made using POST and AJAX';
+        echo 'La consulta fue hecha utilizando POST y AJAX';
     }
 }
 ```
 
-- [Getting Values](request-getting-values)
-- [Preset sanitizers](request-preset-sanitizers)
-- [Accessing the Request from Controllers](request-controller-access)
-- [Checking operations](request-checking-operations)
-- [Request information](request-information)
-- [Dependency Injection](request-di)
-- [Working with Headers](request-working-with-headers)
-- [Uploading Files](request-uploading-files)
+- [Obteniendo Valores](request-getting-values)
+- [Sanitizadores pre establecidos](request-preset-sanitizers)
+- [Accediendo a la Consulta desde los Controladores](request-controller-access)
+- [Comprobando operaciones](request-checking-operations)
+- [Información sobre la solicitud](request-information)
+- [Inyección de Dependencias](request-di)
+- [Trabajando con Cabeceras](request-working-with-headers)
+- [Subiendo Archivos](request-uploading-files)
 - [Eventos](request-events)
