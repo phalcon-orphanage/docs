@@ -8,7 +8,7 @@ category: 'request'
 
 * * *
 
-## Working with Headers
+## Trabajando con Cabeceras
 
 Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request](api/Phalcon_Http_Request) exposes the `getHeader()` and `getHeaders()` methods.
 
