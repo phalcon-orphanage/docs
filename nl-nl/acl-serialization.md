@@ -26,7 +26,7 @@ if (true !== is_file($aclFile)) {
     // The ACL does not exist - build it
     $acl = new AclList();
 
-    // ... Define operations, subjects, access, etc
+    // ... Define roles, components, access, etc
 
     // Store serialized list into plain file
     file_put_contents($aclFile, serialize($acl));
