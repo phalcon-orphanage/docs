@@ -9,70 +9,70 @@ category: 'acl'
 
 * * *
 
-## Operations Inheritance
+## Roles Inheritance
 
-To remove duplication and increase efficiency in your application, the ACL offers inheritance in operations. This means that you can define one [Phalcon\Acl\Operation](api/Phalcon_Acl_Operation) as a base and after that inherit from it offering access to supersets or subsets of subjects. To use operation inheritance, you need, you need to pass the inherited operation as the second parameter of the method call, when adding that operation in the list.
+To remove duplication and increase efficiency in your application, the ACL offers inheritance in roles. This means that you can define one [Phalcon\Acl\Role](api/Phalcon_Acl_Role) as a base and after that inherit from it offering access to supersets or subsets of components. To use role inheritance, you need, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
 
 ```php
 <?php
 
 use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
-use Phalcon\Acl\Operation;
+use Phalcon\Acl\Role;
 
 $acl = new AclList();
 
 /**
- * Create the operations
+ * Create the roles
  */
-$manager    = new Operation('Managers');
-$accounting = new Operation('Accounting Department');
-$guest      = new Operation('Guests');
+$manager    = new Role('Managers');
+$accounting = new Role('Accounting Department');
+$guest      = new Role('Guests');
 
 /**
- * Add the `guest` operation to the ACL 
+ * Add the `guest` role to the ACL 
  */
-$acl->addOperation($guest);
+$acl->addRole($guest);
 
 /**
  * Add the `accounting` inheriting from `guest` 
  */
-$acl->addOperation($accounting, $guest);
+$acl->addRole($accounting, $guest);
 /**
  * Add the `manager` inheriting from `accounting` 
  */
 
-$acl->addOperation($manager, $accounting);
+$acl->addRole($manager, $accounting);
 ```
 
 Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`
 
-### Setup relationships after adding operations
+### Setup relationships after adding roles
 
-Based on the application design, you might prefer to add first all the operations and then define the relationship between them.
+Based on the application design, you might prefer to add first all the roles and then define the relationship between them.
 
 ```php
 <?php
 
 use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
-use Phalcon\Acl\Operation;
+use Phalcon\Acl\Role;
 
 $acl = new AclList();
 
 /**
- * Create the operations
+ * Create the roles
  */
-$manager    = new Operation('Managers');
-$accounting = new Operation('Accounting Department');
-$guest      = new Operation('Guests');
+$manager    = new Role('Managers');
+$accounting = new Role('Accounting Department');
+$guest      = new Role('Guests');
 
 /**
- * Add all the operations
+ * Add all the roles
  */
-$acl->addOperation($manager);
-$acl->addOperation($accounting);
-$acl->addOperation($guest);
+$acl->addRole($manager);
+$acl->addRole($accounting);
+$acl->addRole($guest);
 
 /**
  * Add the inheritance 
