@@ -6,9 +6,9 @@ title: 'Phalcon\Acl\Adapter\Memory'
 ---
 # Class **Phalcon\Acl\Adapter\Memory**
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+**extends** [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) **implements** [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 
-| Extends | [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) | | Implements | [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface) |
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 ### Description
 
@@ -22,8 +22,8 @@ Manages ACL lists in memory
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Adapter\Memory;
-use Phalcon\Acl\Operation;
-use Phalcon\Acl\Subject;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Component;
 
 $acl = new Memory();
 
@@ -31,49 +31,49 @@ $acl->setDefaultAction(
     \Phalcon\Acl::DENY
 );
 
-// Register operations
-$operations = [
-    "users"  => new Operation("Users"),
-    "guests" => new Operation("Guests"),
+// Register roles
+$roles = [
+    "users"  => new Role("Users"),
+    "guests" => new Role("Guests"),
 ];
-foreach ($operations as $operation) {
-    $acl->addOperation($operation);
+foreach ($roles as $role) {
+    $acl->addRole($role);
 }
 
-// Private area subjects
-$privateSubjects = [
+// Private area components
+$privateComponents = [
     "companies" => ["index", "search", "new", "edit", "save", "create", "delete"],
     "products"  => ["index", "search", "new", "edit", "save", "create", "delete"],
     "invoices"  => ["index", "profile"],
 ];
 
-foreach ($privateSubjects as $subjectName => $actions) {
-    $acl->addSubject(new Subject($subjectName), $actions);
+foreach ($privateComponents as $componentName => $actions) {
+    $acl->addComponent(new Component($componentName), $actions);
 }
 
-// Public area subjects
-$publicSubjects = [
+// Public area components
+$publicComponents = [
     "index"   => ["index"],
     "about"   => ["index"],
     "session" => ["index", "register", "start", "end"],
     "contact" => ["index", "send"],
 ];
 
-foreach ($publicSubjects as $subjectName => $actions) {
-    $acl->addSubject(new Subject($subjectName), $actions);
+foreach ($publicComponents as $componentName => $actions) {
+    $acl->addComponent(new Component($componentName), $actions);
 }
 
 // Grant access to public areas to both users and guests
-foreach ($operations as $operation){
-    foreach ($publicSubjects as $subject => $actions) {
-        $acl->allow($operation->getName(), $subject, "");
+foreach ($roles as $role){
+    foreach ($publicComponents as $component => $actions) {
+        $acl->allow($role->getName(), $component, "");
     }
 }
 
-// Grant access to private area to operation Users
-foreach ($privateSubjects as $subject => $actions) {
+// Grant access to private area to role Users
+foreach ($privateComponents as $component => $actions) {
     foreach ($actions as $action) {
-        $acl->allow("Users", $subject, $action);
+        $acl->allow("Users", $component, $action);
     }
 }
 ```
@@ -123,34 +123,34 @@ protected mixed $noArgumentsDefaultAction = Acl::DENY
 Default action for no arguments is allow
 
 ```php
-protected mixed $operations         
+protected mixed $roles         
 ```
 
-Operations
+Roles
 
 ```php
-protected mixed $operationInherits         
+protected mixed $roleInherits         
 ```
 
-Operation Inherits
+Role Inherits
 
 ```php
-protected mixed $operationsNames         
+protected mixed $rolesNames         
 ```
 
-Operations Names
+Roles Names
 
 ```php
-protected mixed $subjects         
+protected mixed $components         
 ```
 
-Subjects
+Components
 
 ```php
-protected mixed $subjectsNames         
+protected mixed $componentsNames         
 ```
 
-Subject Names
+Component Names
 
 ### Metody
 
@@ -178,63 +178,63 @@ public function getActiveKey():? string
 
 * * *
 
-Inherit from an existing operation
+Inherit from an existing role
 
 ```php
-public function addInherit(string $operationName, mixed $operationToInherits): bool
+public function addInherit(string $roleName, mixed $roleToInherits): bool
 ```
 
 ```php
-$acl->addOperation("administrator", "consultant");
-$acl->addOperation("administrator", ["consultant", "consultant2"]);
+$acl->addRole("administrator", "consultant");
+$acl->addRole("administrator", ["consultant", "consultant2"]);
 ```
 
 * * *
 
-Adds a operation to the ACL list. Second parameter allows inheriting access data from other existing operation
+Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
 
 ```php
-public function addOperation(
-    Phalcon\Acl\OperationInterface|string|array $operation, 
+public function addRole(
+    Phalcon\Acl\RoleInterface|string|array $role, 
     string $accessInherits = null
 ): bool
 ```
 
-```php $acl->addOperation( new Phalcon\Acl\Operation("administrator"), "consultant" );
+```php $acl->addRole( new Phalcon\Acl\Role("administrator"), "consultant" );
 
-$acl->addOperation("administrator", "consultant"); $acl->addOperation("administrator", ["consultant", "consultant2"]);
+$acl->addRole("administrator", "consultant"); $acl->addRole("administrator", ["consultant", "consultant2"]);
 
     <hr/>
     
     
-    Adds a subject to the ACL list
+    Adds a component to the ACL list
     
     ```php
-    public function addSubject(
-        Phalcon\Acl\SubjectInterface|string $subjectValue, 
+    public function addComponent(
+        Phalcon\Acl\ComponentInterface|string $componentValue, 
         array|string $accessList
     ): bool
     
 
 ```php
-// Add a subject to the the list allowing access to an action
-$acl->addSubject(
-    new Phalcon\Acl\Subject("customers"),
+// Add a component to the the list allowing access to an action
+$acl->addComponent(
+    new Phalcon\Acl\Component("customers"),
     "search"
 );
 
-$acl->addSubject("customers", "search");
+$acl->addComponent("customers", "search");
 
-// Add a subject  with an access list
-$acl->addSubject(
-    new Phalcon\Acl\Subject("customers"),
+// Add a component  with an access list
+$acl->addComponent(
+    new Phalcon\Acl\Component("customers"),
     [
         "create",
         "search",
     ]
 );
 
-$acl->addSubject(
+$acl->addComponent(
     "customers",
     [
         "create",
@@ -245,18 +245,18 @@ $acl->addSubject(
 
 * * *
 
-Adds access to subjects
+Adds access to components
 
 ```php
-public function addSubjectAccess(string $subjectName, array|string $accessList): bool
+public function addComponentAccess(string $componentName, array|string $accessList): bool
 ```
 
 * * *
 
-Allow access to a operation on a subject
+Allow access to a role on a component
 
 ```php
-public function allow( string $operationName, string $subjectName, mixed $access [, mixed $func = null] )
+public function allow( string $roleName, string $componentName, mixed $access [, mixed $func = null] )
 ```
 
 ```php
@@ -266,19 +266,19 @@ $acl->allow("guests", "customers", "search");
 // Allow access to guests to search or create on customers
 $acl->allow("guests", "customers", ["search", "create"]);
 
-// Allow access to any operation to browse on products
+// Allow access to any role to browse on products
 $acl->allow("", "products", "browse");
 
-// Allow access to any operation to browse on any subject
+// Allow access to any role to browse on any component
 $acl->allow("", "", "browse");
 ```
 
 * * *
 
-Deny access to a operation on a subject
+Deny access to a role on a component
 
 ```php
-public function deny( string $operationName, string $subjectName, mixed $access [, mixed $func = null] )
+public function deny( string $roleName, string $componentName, mixed $access [, mixed $func = null] )
 ```
 
 ```php
@@ -288,19 +288,19 @@ $acl->deny("guests", "customers", "search");
 // Deny access to guests to search or create on customers
 $acl->deny("guests", "customers", ["search", "create"]);
 
-// Deny access to any operation to browse on products
+// Deny access to any role to browse on products
 $acl->deny("", "products", "browse");
 
-// Deny access to any operation to browse on any subject
+// Deny access to any role to browse on any component
 $acl->deny("", "", "browse");
 ```
 
 * * *
 
-Removes an access from a subject
+Removes an access from a component
 
 ```php
-public function dropSubjectAccess( string $subjectName, array|string $accessList )
+public function dropComponentAccess( string $componentName, array|string $accessList )
 ```
 
 * * *
@@ -313,55 +313,55 @@ public function getNoArgumentsDefaultAction(): int {}
 
 * * *
 
-Return an array with every operation registered in the list
+Return an array with every role registered in the list
 
 ```php
-public function getOperations(): Phalcon\Acl\OperationInterface[]
+public function getRoles(): Phalcon\Acl\RoleInterface[]
 ```
 
 * * *
 
-Return an array with every subject registered in the list
+Return an array with every component registered in the list
 
 ```php
-public function getSubjects(): [Phalcon\Acl\SubjectInterface](Phalcon_Acl_SubjectInterface)[]
+public function getComponents(): [Phalcon\Acl\ComponentInterface](Phalcon_Acl_ComponentInterface)[]
 ```
 
 * * *
 
-Check whether a operation is allowed to access an action from a subject
+Check whether a role is allowed to access an action from a component
 
 ```php
 public function isAllowed(
-    Phalcon\Acl\OperationInterface|Phalcon\Acl\OperationAware|string $operationName, 
-    Phalcon\Acl\SubjectInterface|Phalcon\Acl\SubjectAware|string $subjectName, 
+    Phalcon\Acl\RoleInterface|Phalcon\Acl\RoleAware|string $roleName, 
+    Phalcon\Acl\ComponentInterface|Phalcon\Acl\ComponentAware|string $componentName, 
     string $access, 
     array $parameters = null
 ): bool
 ```
 
 ```php
-// Does andres have access to the customers subject to create?
+// Does andres have access to the customers component to create?
 $acl->isAllowed("andres", "Products", "create");
 
-// Do guests have access to any subject to edit?
+// Do guests have access to any component to edit?
 $acl->isAllowed("guests", "", "edit");
 ```
 
 * * *
 
-Check whether operation exist in the operations list
+Check whether role exist in the roles list
 
 ```php
-public function isOperation(string $operationName): bool 
+public function isRole(string $roleName): bool 
 ```
 
 * * *
 
-Check whether subject exist in the subjects list
+Check whether component exist in the components list
 
 ```php
-public function isSubject(string $subjectName): bool
+public function isComponent(string $componentName): bool
 ```
 
 * * *
