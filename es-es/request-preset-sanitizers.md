@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 category: 'request'
 ---
-# HTTP Request Component
+# Componente de Petición HTTP
 
 * * *
 
