@@ -11,12 +11,12 @@ category: 'acl'
 
 ## Eventos
 
-[Phalcon\Acl](api/Phalcon_Acl) puede trabajar junto con el [EventsManager](events) si está presente, para disparar eventos a tu aplicación. Los eventos se desencadenan mediante el tipo `acl`. Los eventos que devuelven `false` pueden detener la operación activa. Los siguientes eventos están disponibles:
+[Phalcon\Acl](api/Phalcon_Acl) puede trabajar junto con el [EventsManager](events) si está presente, para disparar eventos a tu aplicación. Los eventos se desencadenan mediante el tipo `acl`. Events that return `false` can stop the active role. Los siguientes eventos están disponibles:
 
-| Nombre de evento    | Disparado                                                         | ¿Detiene la operación? |
-| ------------------- | ----------------------------------------------------------------- |:----------------------:|
-| `afterCheckAccess`  | Lanzado después de comprobar si una operación/asunto tiene acceso |           No           |
-| `beforeCheckAccess` | Lanzado antes de comprobar si una operación/asunto tiene acceso   |           Si           |
+| Nombre de evento    | Disparado                                                | Can stop role? |
+| ------------------- | -------------------------------------------------------- |:--------------:|
+| `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
+| `beforeCheckAccess` | Triggered before checking if a role/component has access |       Si       |
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes al ACL:
 
@@ -30,16 +30,16 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Crear un gestor de eventos
+// Create an event manager
 $eventsManager = new EventsManager();
 
-// Adjuntar un oyente de tipo 'acl'
+// Attach a listener for type 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
-        echo $acl->getActiveOperation() . PHP_EOL;
+        echo $acl->getActiveRole() . PHP_EOL;
 
-        echo $acl->getActiveSubject() . PHP_EOL;
+        echo $acl->getActiveComponent() . PHP_EOL;
 
         echo $acl->getActiveAccess() . PHP_EOL;
     }
