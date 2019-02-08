@@ -4,11 +4,11 @@ language: 'es-es'
 version: '4.0'
 category: 'request'
 ---
-# HTTP Request Component
+# Componente de Petición HTTP
 
 * * *
 
-## Accessing the Request from Controllers
+## Accediendo a la Consulta desde los Controladores
 
 The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
 

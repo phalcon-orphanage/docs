@@ -2203,11 +2203,11 @@
   ],
   "request": [
     {
-      "text": "Request Environment",
+      "text": "Entorno de Consulta",
       "url": "/request"
     },
     {
-      "text": "Getting Values",
+      "text": "Obteniendo Valores",
       "url": "/request-getting-values"
     },
     {
@@ -2215,11 +2215,11 @@
       "url": "/request-preset-sanitizers"
     },
     {
-      "text": "Accessing the Request from Controllers",
+      "text": "Accediendo a la Consulta desde los Controladores",
       "url": "/request-controller-access"
     },
     {
-      "text": "Checking operations",
+      "text": "Comprobando operaciones",
       "url": "/request-checking-operations"
     },
     {
@@ -2227,15 +2227,15 @@
       "url": "/request-information"
     },
     {
-      "text": "Dependency Injection",
+      "text": "Inyección de Dependencias",
       "url": "/request-di"
     },
     {
-      "text": "Working with Headers",
+      "text": "Trabajando con Cabeceras",
       "url": "/request-working-with-headers"
     },
     {
-      "text": "Uploading Files",
+      "text": "Subiendo Archivos",
       "url": "/request-uploading-files"
     },
     {
@@ -2249,7 +2249,7 @@
       "url": "/response#overview"
     },
     {
-      "text": "Working with Headers",
+      "text": "Trabajando con Cabeceras",
       "url": "/response#working-with-headers"
     },
     {
@@ -2719,7 +2719,7 @@
       "url": "/tutorial-invo#handling-requests"
     },
     {
-      "text": "Dependency Injection",
+      "text": "Inyección de Dependencias",
       "url": "/tutorial-invo#dependency-injection"
     },
     {
