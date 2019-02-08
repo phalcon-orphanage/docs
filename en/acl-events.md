@@ -9,12 +9,12 @@ category: 'acl'
 <hr/>
 
 ## Events
-[Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active operation. The following events are available:
+[Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
-| Event Name          | Triggered                                                   | Can stop operation? |
+| Event Name          | Triggered                                                   | Can stop role? |
 |---------------------|-------------------------------------------------------------|:-------------------:|
-| `afterCheckAccess`  | Triggered after checking if a operation/subject has access  | No                  |
-| `beforeCheckAccess` | Triggered before checking if a operation/subject has access | Yes                 |
+| `afterCheckAccess`  | Triggered after checking if a role/component has access  | No                  |
+| `beforeCheckAccess` | Triggered before checking if a role/component has access | Yes                 |
 
 The following example demonstrates how to attach listeners to the ACL:
 
@@ -35,9 +35,9 @@ $eventsManager = new EventsManager();
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
-        echo $acl->getActiveOperation() . PHP_EOL;
+        echo $acl->getActiveRole() . PHP_EOL;
 
-        echo $acl->getActiveSubject() . PHP_EOL;
+        echo $acl->getActiveComponent() . PHP_EOL;
 
         echo $acl->getActiveAccess() . PHP_EOL;
     }

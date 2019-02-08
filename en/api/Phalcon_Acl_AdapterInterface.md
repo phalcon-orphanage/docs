@@ -29,77 +29,77 @@ abstract public  **getNoArgumentsDefaultAction** ()
 Returns the default ACL access level for no arguments provided in isAllowed action if there exists func for accessKey
 
 
-abstract public  **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
+abstract public  **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
-Adds a operation to the ACL list. Second parameter lets to inherit access data from other existing operation
-
-
-abstract public  **addInherit** (*mixed* $operationName, *mixed* $operationToInherit)
-
-Do a operation inherit from another existing operation
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
 
-abstract public  **isOperation** (*mixed* $operationName)
+abstract public  **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Check whether operation exist in the operations list
-
-
-abstract public  **isSubject** (*mixed* $subjectName)
-
-Check whether subject exist in the subjects list
+Do a role inherit from another existing role
 
 
-abstract public  **addSubject** (*mixed* $subjectObject, *mixed* $accessList)
+abstract public  **isRole** (*mixed* $roleName)
 
-Adds a subject to the ACL list
+Check whether role exist in the roles list
+
+
+abstract public  **isComponent** (*mixed* $componentName)
+
+Check whether component exist in the components list
+
+
+abstract public  **addComponent** (*mixed* $componentObject, *mixed* $accessList)
+
+Adds a component to the ACL list
 Access names can be a particular action, by example search, update, delete, etc or a list of them
 
 
-abstract public  **addSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
+abstract public  **addComponentAccess** (*mixed* $componentName, *mixed* $accessList)
 
-Adds access to subjects
-
-
-abstract public  **dropSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
-
-Removes an access from a subject
+Adds access to components
 
 
-abstract public  **allow** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
+abstract public  **dropComponentAccess** (*mixed* $componentName, *mixed* $accessList)
 
-Allow access to a operation on a subject
-
-
-abstract public  **deny** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
-
-Deny access to a operation on a subject
+Removes an access from a component
 
 
-abstract public  **isAllowed** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*array* $parameters])
+abstract public  **allow** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*mixed* $func])
 
-Check whether a operation is allowed to access an action from a subject
-
-
-abstract public  **getActiveOperation** ()
-
-Returns the operation which the list is checking if it's allowed to certain subject/access
+Allow access to a role on a component
 
 
-abstract public  **getActiveSubject** ()
+abstract public  **deny** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*mixed* $func])
 
-Returns the subject which the list is checking if some operation can access it
+Deny access to a role on a component
+
+
+abstract public  **isAllowed** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*array* $parameters])
+
+Check whether a role is allowed to access an action from a component
+
+
+abstract public  **getActiveRole** ()
+
+Returns the role which the list is checking if it's allowed to certain component/access
+
+
+abstract public  **getActiveComponent** ()
+
+Returns the component which the list is checking if some role can access it
 
 
 abstract public  **getActiveAccess** ()
 
-Returns the access which the list is checking if some operation can access it
+Returns the access which the list is checking if some role can access it
 
 
-abstract public  **getOperations** ()
+abstract public  **getRoles** ()
 
-Return an array with every operation registered in the list
+Return an array with every role registered in the list
 
 
-abstract public  **getSubjects** ()
+abstract public  **getComponents** ()
 
-Return an array with every subject registered in the list
+Return an array with every component registered in the list

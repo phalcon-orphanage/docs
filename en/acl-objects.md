@@ -8,31 +8,31 @@ category: 'acl'
 # Access Control Lists Component
 <hr/>
 
-## Objects as operation name and subject name
-Phalcon allows developers to define their own operation and subject objects. These objects must implement the supplied interfaces:
+## Objects as role name and component name
+Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
 
-* [Phalcon\Acl\OperationAware](api/Phalcon_Acl_OperationAware) for Operation
-* [Phalcon\Acl\SubjectAware](api/Phalcon_Acl_SubjectAware) for Subject
+* [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for Role
+* [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) for Component
 
-### Operation
-We can implement the [Phalcon\Acl\OperationAware](api/Phalcon_Acl_OperationAware) in our custom class with its own logic. The example below shows a new operation object called `ManagerOperation`: 
+### Role
+We can implement the [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
 
 ```php
 <?php
 
-use Phalcon\Acl\OperationAware;
+use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as operationName
-class ManagerOperation implements OperationAware
+// Create our class which will be used as roleName
+class ManagerRole implements RoleAware
 {
     protected $id;
 
-    protected $operationName;
+    protected $roleName;
 
-    public function __construct($id, $operationName)
+    public function __construct($id, $roleName)
     {
         $this->id       = $id;
-        $this->operationName = $operationName;
+        $this->roleName = $roleName;
     }
 
     public function getId()
@@ -40,35 +40,35 @@ class ManagerOperation implements OperationAware
         return $this->id;
     }
 
-    // Implemented function from OperationAware Interface
-    public function getOperationName()
+    // Implemented function from RoleAware Interface
+    public function getRoleName()
     {
-        return $this->operationName;
+        return $this->roleName;
     }
 }
 ```
 
-### Subject
-We can implement the [Phalcon\Acl\SubjectAware](api/Phalcon_Acl_SubjectAware) in our custom class with its own logic. The example below shows a new operation object called `ReportsSubject`: 
+### Component
+We can implement the [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) in our custom class with its own logic. The example below shows a new role object called `ReportsComponent`: 
 
 ```php
 <?php
 
-use Phalcon\Acl\SubjectAware;
+use Phalcon\Acl\ComponentAware;
 
-// Create our class which will be used as subjectName
-class ReportsSubject implements SubjectAware
+// Create our class which will be used as componentName
+class ReportsComponent implements ComponentAware
 {
     protected $id;
 
-    protected $subjectName;
+    protected $componentName;
 
     protected $userId;
 
-    public function __construct($id, $subjectName, $userId)
+    public function __construct($id, $componentName, $userId)
     {
         $this->id          = $id;
-        $this->subjectName = $subjectName;
+        $this->componentName = $componentName;
         $this->userId      = $userId;
     }
 
@@ -82,10 +82,10 @@ class ReportsSubject implements SubjectAware
         return $this->userId;
     }
 
-    // Implemented function from SubjectAware Interface
-    public function getSubjectName()
+    // Implemented function from ComponentAware Interface
+    public function getComponentName()
     {
-        return $this->subjectName;
+        return $this->componentName;
     }
 }
 ```
@@ -96,45 +96,45 @@ These objects can now be used in our ACL.
 ```php
 <?php
 
-use ManagerOperation;
+use ManagerRole;
 use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
-use Phalcon\Acl\Operation;
-use Phalcon\Acl\Subject;
-use ReportsSubject;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Component;
+use ReportsComponent;
 
 $acl = new AclList();
 
 /**
- * Add the operations
+ * Add the roles
  */
-$acl->addOperation('manager');
+$acl->addRole('manager');
 
 /**
- * Add the Subjects
+ * Add the Components
  */
-$acl->addSubject('reports', ['list', 'add', 'view']);
+$acl->addComponent('reports', ['list', 'add', 'view']);
 
 /**
- * Now tie them all together with a custom function. The ManagerOperation and
+ * Now tie them all together with a custom function. The ManagerRole and
  * ModelSbject parameters are necessary for the custom function to work 
  */
 $acl->allow(
     'manager', 
     'reports', 
     'list',
-    function (ManagerOperation $manager, ModelSubject $model) {
+    function (ManagerRole $manager, ModelComponent $model) {
         return $manager->getId() === $model->getUserId();
     }
 );
 
 // Create the custom objects
-$levelOne = new ManagerOperation(1, 'manager-1');
-$levelTwo = new ManagerOperation(2, 'manager');
-$admin    = new ManagerOperation(3, 'manager');
+$levelOne = new ManagerRole(1, 'manager-1');
+$levelTwo = new ManagerRole(2, 'manager');
+$admin    = new ManagerRole(3, 'manager');
 
 // id - name - userId
-$reports  = new ModelSubject(2, 'reports', 2);
+$reports  = new ModelComponent(2, 'reports', 2);
 
 // Check whether our user objects have access 
 // Returns false
