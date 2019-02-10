@@ -6,7 +6,7 @@ title: 'Phalcon\Acl\Adapter'
 ---
 # Abstract class **Phalcon\Acl\Adapter**
 
-*implements* [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
+**implements** [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter.zep)
 
@@ -18,23 +18,23 @@ Adapter for Phalcon\Acl adapters
 public getActiveAccess()
 ```
 
-Active access which the list is checking if some operation can access it
+Active access which the list is checking if some role can access it
 
 * * *
 
 ```php
-public getActiveOperation()
+public getActiveRole()
 ```
 
-Operation which the list is checking if it's allowed to certain subject/access
+Role which the list is checking if it's allowed to certain component/access
 
 * * *
 
 ```php
-public getActiveSubject()
+public getActiveComponent()
 ```
 
-Subject which the list is checking if some operation can access it
+Component which the list is checking if some role can access it
 
 * * *
 
@@ -68,43 +68,43 @@ Sets the events manager
 * * *
 
 ```php
-abstract public addInherit(mixed $operationName, mixed $operationToInherit) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public addInherit(mixed $roleName, mixed $roleToInherit) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public addOperation(mixed $operation, [mixed $accessInherits]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public addRole(mixed $role, [mixed $accessInherits]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public addSubject(mixed $subjectObject, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public addComponent(mixed $componentObject, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public addSubjectAccess(mixed $subjectName, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public addComponentAccess(mixed $componentName, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public allow(mixed $operationName, mixed $subjectName, mixed $access, [mixed $func]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public allow(mixed $roleName, mixed $componentName, mixed $access, [mixed $func]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public deny(mixed $operationName, mixed $subjectName, mixed $access, [mixed $func]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public deny(mixed $roleName, mixed $componentName, mixed $access, [mixed $func]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public dropSubjectAccess(mixed $subjectName, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public dropComponentAccess(mixed $componentName, mixed $accessList) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
@@ -116,31 +116,31 @@ abstract public getNoArgumentsDefaultAction() inherited from [Phalcon\Acl\Adapte
 * * *
 
 ```php
-abstract public getOperations() inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public getRoles() inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public getSubjects() inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public getComponents() inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public isAllowed(mixed $operationName, mixed $subjectName, mixed $access, [array $parameters]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public isAllowed(mixed $roleName, mixed $componentName, mixed $access, [array $parameters]) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public isOperation(mixed $operationName) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public isRole(mixed $roleName) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *
 
 ```php
-abstract public isSubject(mixed $subjectName) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
+abstract public isComponent(mixed $componentName) inherited from [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 ```
 
 * * *

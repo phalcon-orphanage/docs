@@ -26,62 +26,62 @@ abstract public **getNoArgumentsDefaultAction** ()
 
 isAllowedアクションに引数が指定されていなかった際のデフォルトのアクセスレベルを返します。ただしaccessKeyのfuncは存在しているものとします。
 
-abstract public **addOperation** (*mixed* $operation, [*mixed* $accessInherits])
+abstract public **addRole** (*mixed* $role, [*mixed* $accessInherits])
 
-Adds a operation to the ACL list. Second parameter lets to inherit access data from other existing operation
+Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
-abstract public **addInherit** (*mixed* $operationName, *mixed* $operationToInherit)
+abstract public **addInherit** (*mixed* $roleName, *mixed* $roleToInherit)
 
-Do a operation inherit from another existing operation
+Do a role inherit from another existing role
 
-abstract public **isOperation** (*mixed* $operationName)
+abstract public **isRole** (*mixed* $roleName)
 
-Check whether operation exist in the operations list
+Check whether role exist in the roles list
 
-abstract public **isSubject** (*mixed* $subjectName)
+abstract public **isComponent** (*mixed* $componentName)
 
-Check whether subject exist in the subjects list
+Check whether component exist in the components list
 
-abstract public **addSubject** (*mixed* $subjectObject, *mixed* $accessList)
+abstract public **addComponent** (*mixed* $componentObject, *mixed* $accessList)
 
-Adds a subject to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
+Adds a component to the ACL list Access names can be a particular action, by example search, update, delete, etc or a list of them
 
-abstract public **addSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
+abstract public **addComponentAccess** (*mixed* $componentName, *mixed* $accessList)
 
-Adds access to subjects
+Adds access to components
 
-abstract public **dropSubjectAccess** (*mixed* $subjectName, *mixed* $accessList)
+abstract public **dropComponentAccess** (*mixed* $componentName, *mixed* $accessList)
 
-Removes an access from a subject
+Removes an access from a component
 
-abstract public **allow** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
+abstract public **allow** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*mixed* $func])
 
-Allow access to a operation on a subject
+Allow access to a role on a component
 
-abstract public **deny** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*mixed* $func])
+abstract public **deny** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*mixed* $func])
 
-Deny access to a operation on a subject
+Deny access to a role on a component
 
-abstract public **isAllowed** (*mixed* $operationName, *mixed* $subjectName, *mixed* $access, [*array* $parameters])
+abstract public **isAllowed** (*mixed* $roleName, *mixed* $componentName, *mixed* $access, [*array* $parameters])
 
-Check whether a operation is allowed to access an action from a subject
+Check whether a role is allowed to access an action from a component
 
-abstract public **getActiveOperation** ()
+abstract public **getActiveRole** ()
 
-Returns the operation which the list is checking if it's allowed to certain subject/access
+Returns the role which the list is checking if it's allowed to certain component/access
 
-abstract public **getActiveSubject** ()
+abstract public **getActiveComponent** ()
 
-Returns the subject which the list is checking if some operation can access it
+Returns the component which the list is checking if some role can access it
 
 abstract public **getActiveAccess** ()
 
-Returns the access which the list is checking if some operation can access it
+Returns the access which the list is checking if some role can access it
 
-abstract public **getOperations** ()
+abstract public **getRoles** ()
 
-Return an array with every operation registered in the list
+Return an array with every role registered in the list
 
-abstract public **getSubjects** ()
+abstract public **getComponents** ()
 
-Return an array with every subject registered in the list
+Return an array with every component registered in the list

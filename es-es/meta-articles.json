@@ -9,12 +9,12 @@
       "url": "/acl-setup"
     },
     {
-      "text": "Agregando Operaciones",
-      "url": "/acl-adding-operations"
+      "text": "Adding Roles",
+      "url": "/acl-adding-roles"
     },
     {
-      "text": "Agregando Asuntos",
-      "url": "/acl-adding-subjects"
+      "text": "Adding Components",
+      "url": "/acl-adding-components"
     },
     {
       "text": "Definición de Controles de Acceso",
@@ -29,12 +29,12 @@
       "url": "/acl-function-based-access"
     },
     {
-      "text": "Objects as Operation and Subject name",
+      "text": "Objects as Roles and Component name",
       "url": "/acl-objects"
     },
     {
-      "text": "Operations Inheritance",
-      "url": "/acl-operations-inheritance"
+      "text": "Roles Inheritance",
+      "url": "/acl-roles-inheritance"
     },
     {
       "text": "Serializing ACL lists",

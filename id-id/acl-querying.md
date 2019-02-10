@@ -11,29 +11,29 @@ category: 'acl'
 
 ## Querying an ACL
 
-Once the list has been defined, we can query it to check if a particular operation has access to a particular subject and action. To do so, we need to use the `isAllowed()` method.
+Once the list has been defined, we can query it to check if a particular role has access to a particular component and action. To do so, we need to use the `isAllowed()` method.
 
 ```php
 <?php
 
 use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory as AclList;
-use Phalcon\Acl\Operation;
-use Phalcon\Acl\Subject;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Component;
 
 $acl = new AclList();
 
 /**
  * Setup the ACL
  */
-$acl->addOperation('manager');                   
-$acl->addOperation('accounting');                   
-$acl->addOperation('guest');                       
+$acl->addRole('manager');                   
+$acl->addRole('accounting');                   
+$acl->addRole('guest');                       
 
 
-$acl->addSubject('admin', ['dashboard', 'users', 'view']);
-$acl->addSubject('reports', ['list', 'add', 'view']);
-$acl->addSubject('session', ['login', 'logout']);
+$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addComponent('reports', ['list', 'add', 'view']);
+$acl->addComponent('session', ['login', 'logout']);
 
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);

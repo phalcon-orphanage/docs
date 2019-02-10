@@ -11,13 +11,13 @@ category: 'acl'
 
 - [Λίστες ελέγχου πρόσβασης (ACL)](acl-overview)
 - [Δημιουργώντας Λίστες Ελέγχου Πρόσβασης](acl-setup)
-- [Adding Operations](acl-adding-operations)
-- [Adding Subjects](acl-adding-subjects)
+- [Adding Roles](acl-adding-roles)
+- [Adding Components](acl-adding-components)
 - [Καθορισμός ελέγχων πρόσβασης](acl-access-controls)
 - [Αναζητώντας ένα ACL](acl-querying)
 - [Πρόσβαση βασισμένη σε λειτουργίες](acl-function-based-access)
-- [Objects as operation name and subject name](acl-objects)
-- [Operations Inheritance](acl-operations-inheritance)
+- [Objects as role name and component name](acl-objects)
+- [Roles Inheritance](acl-roles-inheritance)
 - [Σειρογραφία Λίστες ACL](acl-serialization)
 - [Γεγονότα](acl-events)
 - [Implementing your own adapters](acl-custom-adapters)
@@ -28,16 +28,17 @@ category: 'acl'
 
 Το [Phalcon \ Acl](api/Phalcon_Acl) παρέχει μια εύκολη και ελαφριά διαχείριση των ACL καθώς και τα δικαιώματα που τους συνοδεύουν. [Οι λίστες ελέγχου πρόσβασης](https://en.wikipedia.org/wiki/Access_control_list) (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
 
-Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε την πρόσβαση. Στον κόσμο του προγραμματισμού, αυτές αναφέρονται συνήθωςι ως πράξεις και θέματα. Στον κόσμο του Phalcon, χρησιμοποιούμε την ορολογία [λειτουργία](api/Phalcon_Acl_Operation) και [θέμα](api/Phalcon_Acl_Subject).
+Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε την πρόσβαση. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role](api/Phalcon_Acl_Role) and [Component](api/Phalcon_Acl_Component).
 
 > **Use Case**
 > 
 > Μια εφαρμογή λογιστικής χρειάζεται διαφορετικές ομάδες χρηστών να έχουν πρόσβαση σε διάφορες περιοχές της εφαρμογής.
 > 
-> **Operation** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
+> **Role** - Administrator Access - Accounting Department Access - Manager Access - Guest Access
 > 
-> **Subject** - Login page - Admin page - Invoices page - Reports page {:.alert .alert-info}
+> **Component** - Login page - Admin page - Invoices page - Reports page
+{:.alert .alert-info}
 
-Όπως φαίνεται ανωτέρω, στην περίπτωση χρήσης, μια [λειτουργία](api/Phalcon_Acl_Operation) ορίζεται ως ποιός χρειάζεται για να αποκτήσει πρόσβαση σε ένα συγκεκριμένο [θέμα](api/Phalcon_Acl_Subject) δηλαδή, μια περιοχή από της εφαρμογής. Σαν [θέμα](api/Phalcon_Acl_Subject) ορίζουμε την περιοχή της εφαρμογής που πρέπει να προσβληθεί.
+As seen above in the use case, an [Role](api/Phalcon_Acl_Role) is defined as who needs to access a particular [Component](api/Phalcon_Acl_Component) i.e. an area of the application. A [Component](api/Phalcon_Acl_Component) is defined as the area of the application that needs to be accessed.
 
-Χρησιμοποιώντας το στοιχείο [Phalcon\Acl](api/Phalcon_Acl), μπορούμε να συνδέσουμε αυτά τα δύο μαζί, και να ενισχύσουμε την ασφάλεια της εφαρμογής μας, επιτρέποντας μόνο συγκεκριμένες λειτουργίες να δεσμευθούν σε συγκεκριμένα θέματα.
+Using the [Phalcon\Acl](api/Phalcon_Acl) component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.

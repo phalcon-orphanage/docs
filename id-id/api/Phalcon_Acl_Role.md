@@ -4,29 +4,40 @@ language: 'id-id'
 version: '4.0'
 title: 'Phalcon\Acl\Role'
 ---
+# Class [Phalcon\Acl\Role](Phalcon_Acl_Role)
 
-# Class **Phalcon\Acl\Role**
+**implements** [Phalcon\Acl\RoleInterface](Phalcon_Acl_RoleInterface)
 
-*implements* [Phalcon\Acl\RoleInterface](api/Phalcon_Acl_RoleInterface)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl/role.zep" class="btn btn-default btn-sm">Source on GitHub</a>
-
-This class defines role entity and its description
+This class defines a component entity and its description
 
 ## Methods
 
-public **getName** ()
+```php
+public __construct( string $name [, string $description = NULL] )
+```
 
-Role name
+Phalcon\Acl\Role constructor
 
-public **__toString** ()
-
-Role name
-
-public **getDescription** ()
+```php
+public getDescription(): string
+```
 
 Role description
 
-public **__construct** (*mixed* $name, [*mixed* $description])
+* * *
 
-Phalcon\Acl\Role constructor
+```php
+public getName(): string
+```
+
+Role name
+
+* * *
+
+```php
+public __toString(): string
+```
+
+Role name

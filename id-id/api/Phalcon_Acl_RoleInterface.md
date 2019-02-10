@@ -4,21 +4,32 @@ language: 'id-id'
 version: '4.0'
 title: 'Phalcon\Acl\RoleInterface'
 ---
-
 # Interface **Phalcon\Acl\RoleInterface**
 
-<a href="https://github.com/phalcon/cphalcon/tree/v4.0.0/phalcon/acl/roleinterface.zep" class="btn btn-default btn-sm">Source on GitHub</a>
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleinterface.zep)
 
 ## Methods
 
-abstract public **getName** ()
+```php
+public getDescription(): string
+```
 
-Returns the role name
+Role description
 
-abstract public **getDescription** ()
+* * *
 
-Returns role description
+```php
+public getName(): string
+```
 
-abstract public **__toString** ()
+Role name
 
-Magic method __toString
+* * *
+
+```php
+public __toString(): string
+```
+
+Role name
+
+* * *
