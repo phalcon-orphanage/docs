@@ -8,7 +8,7 @@ category: 'request'
 <hr/>
 
 ## Uploading Files
-Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini`.
+Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
 <?php
@@ -49,3 +49,5 @@ Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instanc
 The `getUploadedFiles()` accepts two parameters.
 - `$onlySuccessful`: Contains only successful uploads
 - `$namedKeys`: Returns the array with named keys obtained by the upload process
+
+[php-uploads]: https://secure.php.net/manual/en/ini.core.php#ini.file-uploads

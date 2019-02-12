@@ -24,7 +24,7 @@ When using HTTP authorization, the `Authorization` header has the following form
 Authorization: <type> <credentials>
 ```
 
-where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes][iana] and [Authentication for AWS servers (AWS4-HMAC-SHA256)][aws-auth]. In 99.99% use cases the authentication type is:
+where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes][iana] and [Authentication for AWS servers (AWS4-HMAC-SHA256)][aws-auth]. In most use cases the authentication type is:
 * `AWS4-HMAC-SHA256`
 * `Basic`
 * `Bearer`

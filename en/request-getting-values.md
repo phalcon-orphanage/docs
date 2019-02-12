@@ -26,6 +26,19 @@ All (except from `getServer()` accept the following parameters:
 - `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null`
 - `noRecursive` applies the sanitizers recursively in the value (if value is an array)
 
+```php
+$request->get(
+    string $name = null, 
+    mixed $filters = null, 
+    mixed $defaultValue = null, 
+    bool notAllowEmpty = false, 
+    bool noRecursive = false
+): mixed
+```
+
+`getServer()` accepts only a `name` (string) variable, representing the name of the server variable that you need to retrieve.
+
+
 ### $_REQUEST
 The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/Phalcon_Http_Request) object as follows: 
 

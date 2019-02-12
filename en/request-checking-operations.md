@@ -8,7 +8,7 @@ category: 'request'
 <hr/>
 
 ## Checking operations
-The Request component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
+The [Phalcon\Http\Request](api/Phalcon_Http_Request) component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
 - `isAjax()`: Checks whether request has been made using AJAX
 - `isConnect()`: Checks whether HTTP method is CONNECT
 - `isDelete()`: Checks whether HTTP method is DELETE
