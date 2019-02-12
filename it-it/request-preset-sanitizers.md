@@ -12,7 +12,7 @@ category: 'request'
 
 It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function to another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
 
-To make the sanitization process easuer, when retrieving such fields, [Phalcon\Http\Request](api/Phalcon_Http_Request) offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
+To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request](api/Phalcon_Http_Request) offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
 
 ```php
 <?php
