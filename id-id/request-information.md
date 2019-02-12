@@ -10,7 +10,7 @@ category: 'request'
 
 ## Request information
 
-The Request object offers methods that provide additional information regarding the request.
+The [Phalcon\Http\Request](api/Phalcon_Http_Request) object offers methods that provide additional information regarding the request.
 
 ### Authentication
 
@@ -44,7 +44,7 @@ The Request object offers methods that provide additional information regarding 
 - `getServerAddress()`: Gets active server address IP
 - `getServerName()`: Gets active server name
 - `getScheme()`: Gets HTTP schema (http/https)
-- `getURI()`" Gets HTTP URI which request has been made
+- `getURI()`: Gets HTTP URI which request has been made
 
 ```php
 <?php
