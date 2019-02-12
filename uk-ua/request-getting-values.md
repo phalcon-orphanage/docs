@@ -18,6 +18,18 @@ There are 4 methods that allow you to retrieve submitted data from a request: - 
 
 All (except from `getServer()` accept the following parameters: - `name` the name of the value to get - `filters` (array/string) the sanitizers to apply to the value - `defaultValue` returned if the element is not defined (`null`) - `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null` - `noRecursive` applies the sanitizers recursively in the value (if value is an array)
 
+```php
+$request->get(
+    string $name = null, 
+    mixed $filters = null, 
+    mixed $defaultValue = null, 
+    bool notAllowEmpty = false, 
+    bool noRecursive = false
+): mixed
+```
+
+`getServer()` accepts only a `name` (string) variable, representing the name of the server variable that you need to retrieve.
+
 ### $_REQUEST
 
 The [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://secure.php.net/manual/en/reserved.variables.cookies.php). You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/Phalcon_Http_Request) object as follows:
