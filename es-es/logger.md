@@ -13,7 +13,7 @@ category: 'logger'
 - [Adapters](logger-adapters)
 - [Creating a Logger component](logger-creating)
 - [Logging to Multiple adapters](logger-multiple)
-- [Formato de mensaje](logger-message-formatting) 
+- [Message Formatting](logger-message-formatting) 
     - [Line](logger-message-formatting-line)
     - [JSON](logger-message-formatting-json)
     - [Syslog](logger-message-formatting-syslog)
