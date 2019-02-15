@@ -2057,7 +2057,7 @@
           "url": "/logger-message-formatting-json"
         },
         {
-          "text": "Syslog",
+          "text": "Syslog (Registro del sistema)",
           "url": "/logger-message-formatting-syslog"
         },
         {
