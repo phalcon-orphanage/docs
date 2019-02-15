@@ -5,7 +5,7 @@ version: '4.0'
 upgrade: '#logger'
 category: 'logger'
 ---
-# Logger Component
+# Componente Registro
 
 * * *
 
