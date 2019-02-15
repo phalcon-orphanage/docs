@@ -13,7 +13,7 @@ Flash messages are used to notify the user about the state of actions he/she mad
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
