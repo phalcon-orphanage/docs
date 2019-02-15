@@ -13,7 +13,7 @@ version: '4.0'
 
 <a name='adapters'></a>
 
-## Adapters
+## Adaptadores
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
