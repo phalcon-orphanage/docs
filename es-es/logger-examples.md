@@ -5,13 +5,13 @@ version: '4.0'
 upgrade: '#logger'
 category: 'logger'
 ---
-# Logger Component
+# Componente Registro
 
 * * *
 
 ## Examples
 
-### Stream
+### Stream (flujo)
 
 Logging to a file:
 
@@ -52,7 +52,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-### Syslog
+### Syslog (Registro del sistema)
 
 ```php
 <?php
@@ -79,7 +79,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-### Noop
+### Noop (No operación)
 
 ```php
 <?php
