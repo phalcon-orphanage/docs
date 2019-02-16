@@ -1785,7 +1785,7 @@
       "url": "/flash#overview"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptadores",
       "url": "/flash#adapters"
     },
     {
@@ -2033,7 +2033,7 @@
       "url": "/logger"
     },
     {
-      "text": "Adapters",
+      "text": "Adaptadores",
       "url": "/logger-adapters"
     },
     {
@@ -2057,7 +2057,7 @@
           "url": "/logger-message-formatting-json"
         },
         {
-          "text": "Syslog",
+          "text": "Syslog (Registro del sistema)",
           "url": "/logger-message-formatting-syslog"
         },
         {
