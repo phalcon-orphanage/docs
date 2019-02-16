@@ -1262,7 +1262,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | sessionBag         | Session Bag service                   | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |   Да   |
 | tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |   Да   |
 | transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |   Да   |
-| url                | URL Generator Service                 | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |   Да   |
+| url                | URL Generator Service                 | [Phalcon\Url](api/Phalcon_Url)                                               |   Да   |
 | viewsCache         | Cache backend for views fragments     | None                                                                                   |  Нет   |
 
 <a name='implementing-your-own-di'></a>

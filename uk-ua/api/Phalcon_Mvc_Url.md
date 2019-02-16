@@ -2,11 +2,11 @@
 layout: article
 language: 'uk-ua'
 version: '4.0'
-title: 'Phalcon\Mvc\Url'
+title: 'Phalcon\Url'
 ---
-# Class **Phalcon\Mvc\Url**
+# Class **Phalcon\Url**
 
-*implements* [Phalcon\Mvc\UrlInterface](Phalcon_Mvc_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+*implements* [Phalcon\UrlInterface](Phalcon_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
 

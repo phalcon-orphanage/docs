@@ -2,9 +2,9 @@
 layout: article
 language: 'de-de'
 version: '4.0'
-title: 'Phalcon\Mvc\Url\Exception'
+title: 'Phalcon\Url\Exception'
 ---
-# Class **Phalcon\Mvc\Url\Exception**
+# Class **Phalcon\Url\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
 
