@@ -896,7 +896,7 @@ There are adapters available for several template engines on the [Phalcon Incuba
 ## Injecting services in View
 Every view executed is included inside a [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) instance, providing easy access to the application's service container.
 
-The following example shows how to write a jQuery [ajax request](https://api.jquery.com/jQuery.ajax/) using a URL with the framework conventions. The service `url` (usually [Phalcon\Url](api/Phalcon_Url)) is injected in the view by accessing a property with the same name:
+The following example shows how to write a jQuery [ajax request](https://api.jquery.com/jQuery.ajax/) using a URL with the framework conventions. The service `url` (usually [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)) is injected in the view by accessing a property with the same name:
 
 ```js
 <script type='text/javascript'>

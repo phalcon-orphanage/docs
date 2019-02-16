@@ -2,9 +2,9 @@
 layout: article
 language: 'es-es'
 version: '4.0'
-title: 'Phalcon\UrlInterface'
+title: 'Phalcon\Mvc\UrlInterface'
 ---
-# Interface **Phalcon\UrlInterface**
+# Interface **Phalcon\Mvc\UrlInterface**
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/urlinterface.zep)
 

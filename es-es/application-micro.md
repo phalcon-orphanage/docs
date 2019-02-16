@@ -718,7 +718,7 @@ $app
     ->setName('show-order');
 ```
 
-* We need to use the [Phalcon\Url](api/Phalcon_Url) component to generate URLs for the named routes.
+* We need to use the [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) component to generate URLs for the named routes.
 
 ```php
 // Usar el nombre de ruta y generar una URL desde esta

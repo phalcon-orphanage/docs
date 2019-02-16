@@ -110,7 +110,7 @@ $response->redirect('https://en.wikipedia.org', true);
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Url](api/Phalcon_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
+All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
