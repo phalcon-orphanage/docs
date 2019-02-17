@@ -166,7 +166,7 @@ Service registration is achieved with closures for lazy loading the required com
 ```php
 <?php
 
-use Phalcon\Mvc\Url as UrlProvider;
+use Phalcon\Url as UrlProvider;
 
 // ...
 
