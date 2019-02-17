@@ -594,7 +594,7 @@ $route = $router->add(
 $route->setName('show-posts');
 ```
 
-Then, using for example the component [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) we can build routes from its name:
+Then, using for example the component [Phalcon\Url](api/Phalcon_Url) we can build routes from its name:
 
 ```php
 <?php
