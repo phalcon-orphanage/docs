@@ -381,15 +381,18 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 $users = new MicroCollection();
 $users->setHandler(new UsersController());
 $users->setPrefix('/users');
-$users->get('/get/{id}', 'get');
-$users->get('/add/{payload}', 'add');
+$users->get('/get/{id}
+', 'get');
+$users->get('/add/{payload}
+', 'add');
 $app->mount($users);
 
 // Orders handler
 $orders = new MicroCollection();
 $orders->setHandler(new OrdersController());
 $orders->setPrefix('/users');
-$orders->get('/get/{id}', 'get');
+$orders->get('/get/{id}
+', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
@@ -397,7 +400,8 @@ $app->mount($orders);
 $products = new MicroCollection();
 $products->setHandler(new ProductsController());
 $products->setPrefix('/products');
-$products->get('/get/{id}', 'get');
+$products->get('/get/{id}
+', 'get');
 $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
@@ -715,7 +719,7 @@ $app
     ->setName('show-order');
 ```
 
-* We need to use the [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) component to generate URLs for the named routes.
+* We need to use the [Phalcon\Url](api/Phalcon_Url) component to generate URLs for the named routes.
 
 ```php
 // Use the named route and produce a URL from it

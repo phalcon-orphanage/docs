@@ -9,7 +9,7 @@ version: '4.0'
 
 # Generating URLs and Paths
 
-[Phalcon\Mvc\Url](api/Phalcon_Mvc_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
+[Phalcon\Url](api/Phalcon_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
 <a name='base-uri'></a>
 
@@ -22,7 +22,7 @@ For example, if your document root is `/var/www/htdocs` and your application is 
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $url = new Url();
 
@@ -34,7 +34,7 @@ By default, Phalcon automatically may detect your baseUri, but if you want to in
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $url = new Url();
 
@@ -53,7 +53,7 @@ Usually, this component must be registered in the Dependency Injector container,
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $di->set(
     'url',
@@ -122,14 +122,14 @@ You can use this component also to create URLs without mod_rewrite:
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $url = new Url();
 
-// Pasar el URI en $_GET['_url']
+// Pass the URI in $_GET['_url']
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// Esto produce: /invo/index.php?_url=/products/save
+// This produce: /invo/index.php?_url=/products/save
 echo $url->get('products/save');
 ```
 
@@ -138,14 +138,14 @@ You can also use `$_SERVER['REQUEST_URI']`:
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $url = new Url();
 
-// Pasar el URI en $_GET['_url']
+// Pass the URI in $_GET['_url']
 $url->setBaseUri('/invo/index.php?_url=/');
 
-// Pasar el URI usando $_SERVER['REQUEST_URI']
+// Pass the URI using $_SERVER['REQUEST_URI']
 $url->setBaseUri('/invo/index.php/');
 ```
 
@@ -203,7 +203,7 @@ This component allow you to set up a different base URI for static resources in 
 ```php
 <?php
 
-use Phalcon\Mvc\Url;
+use Phalcon\Url;
 
 $url = new Url();
 
@@ -220,4 +220,4 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 ## Implementing your own URL Generator
 
-The [Phalcon\Mvc\UrlInterface](api/Phalcon_Mvc_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.
+The [Phalcon\UrlInterface](api/Phalcon_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

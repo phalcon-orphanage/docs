@@ -1260,7 +1260,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | sessionBag          | Servicio de bolsa de sesión                           | [Phalcon\Session\Bag](api/Phalcon_Session_Bag)                                       |     Si     |
 | tag                 | Ayudantes de generación de HTML                       | [Phalcon\Tag](api/Phalcon_Tag)                                                        |     Si     |
 | transactionManager  | Servicio de administrador de transacciones de modelos | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |     Si     |
-| url                 | Servicio de generador de URL                          | [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url)                                               |     Si     |
+| url                 | Servicio de generador de URL                          | [Phalcon\Url](api/Phalcon_Url)                                                        |     Si     |
 | viewsCache          | Backend de cache para cache de fragmentos de vista    | Nada                                                                                   |     No     |
 
 <a name='implementing-your-own-di'></a>
