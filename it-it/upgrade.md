@@ -262,7 +262,7 @@ use Phalcon\Logger\Adapter\Stream;
 $container = new Di();
 
 $container->set(
-    'filter',
+    'logger',
     function () {
         $adapter = new Stream('/logs/application.log');
         $logger  = new Logger(
