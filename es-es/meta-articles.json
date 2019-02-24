@@ -17,7 +17,7 @@
       "url": "/acl-adding-components"
     },
     {
-      "text": "Definición de Controles de Acceso",
+      "text": "Defining Access Controls",
       "url": "/acl-access-controls"
     },
     {
@@ -41,11 +41,11 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Eventos",
+      "text": "Events",
       "url": "/acl-events"
     },
     {
-      "text": "Implementando sus propios adaptadores",
+      "text": "Implementing your own adapters",
       "url": "/acl-custom-adapters"
     }
   ],
@@ -1739,31 +1739,31 @@
   ],
   "filter": [
     {
-      "text": "Filtrado y Limpieza",
+      "text": "Filtering and Sanitizing",
       "url": "/filter"
     },
     {
-      "text": "Limpiadores predeterminados",
+      "text": "Built-in Sanitizers",
       "url": "/filter-sanitizers"
     },
     {
-      "text": "Limpieza de datos",
+      "text": "Sanitizing data",
       "url": "/filter-sanitizing"
     },
     {
-      "text": "Limpieza en controladores",
+      "text": "Sanitizing from Controllers",
       "url": "/filter-sanitizing-from-controllers"
     },
     {
-      "text": "Limpieza de los parámetros de la acción",
+      "text": "Sanitizing Action Parameters",
       "url": "/filter-sanitizing-action-parameters"
     },
     {
-      "text": "Filtrado de datos",
+      "text": "Filtering data",
       "url": "/filter-sanitizing-data"
     },
     {
-      "text": "Combinación de limpiadores",
+      "text": "Combining Sanitizers",
       "url": "/filter-combining-sanitizers"
     },
     {
@@ -1771,7 +1771,7 @@
       "url": "/filter-adding-sanitizers"
     },
     {
-      "text": "Filtrado y limpieza complejas",
+      "text": "Complex Sanitizing and Filtering",
       "url": "/filter-complex-sanitization-filtering"
     },
     {
@@ -1981,7 +1981,7 @@
       "url": "/installation-sources"
     },
     {
-      "text": "Compartido",
+      "text": "Shared",
       "url": "/installation-shared"
     }
   ],
@@ -2033,7 +2033,7 @@
       "url": "/logger"
     },
     {
-      "text": "Adaptadores",
+      "text": "Adapters",
       "url": "/logger-adapters"
     },
     {
@@ -2045,7 +2045,7 @@
       "url": "/logger-multiple"
     },
     {
-      "text": "Formato de mensaje",
+      "text": "Message Formatting",
       "url": "/logger-message-formatting",
       "menu": [
         {
@@ -2057,7 +2057,7 @@
           "url": "/logger-message-formatting-json"
         },
         {
-          "text": "Syslog (Registro del sistema)",
+          "text": "Syslog",
           "url": "/logger-message-formatting-syslog"
         },
         {
@@ -2215,11 +2215,11 @@
       "url": "/request-preset-sanitizers"
     },
     {
-      "text": "Accediendo a la Consulta desde los Controladores",
+      "text": "Accessing the Request from Controllers",
       "url": "/request-controller-access"
     },
     {
-      "text": "Comprobando operaciones",
+      "text": "Checking operations",
       "url": "/request-checking-operations"
     },
     {
@@ -2227,19 +2227,19 @@
       "url": "/request-information"
     },
     {
-      "text": "Inyección de Dependencias",
+      "text": "Dependency Injection",
       "url": "/request-di"
     },
     {
-      "text": "Trabajando con Cabeceras",
+      "text": "Working with Headers",
       "url": "/request-working-with-headers"
     },
     {
-      "text": "Subiendo Archivos",
+      "text": "Uploading Files",
       "url": "/request-uploading-files"
     },
     {
-      "text": "Eventos",
+      "text": "Events",
       "url": "/request-events"
     }
   ],
@@ -2437,7 +2437,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Implementando sus propios adaptadores",
+      "text": "Implementing your own adapters",
       "url": "/session#custom-adapters"
     }
   ],
