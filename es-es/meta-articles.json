@@ -637,7 +637,7 @@
       "url": "/contributions#bug-report-checklist",
       "menu": [
         {
-          "text": "Generating a backtrace",
+          "text": "Generar una traza inversa",
           "url": "/contributions#bug-report-generating-backtrace"
         }
       ]
@@ -1407,7 +1407,7 @@
       "url": "/devtools-installation#prerequisites"
     },
     {
-      "text": "Installation",
+      "text": "Instalación",
       "url": "/devtools-installation#installation",
       "menu": [
         {
@@ -1987,7 +1987,7 @@
   ],
   "loader": [
     {
-      "text": "Requirements",
+      "text": "Requerimentos",
       "url": "/loader#overview"
     },
     {
@@ -2867,7 +2867,7 @@
   ],
   "upgrade": [
     {
-      "text": "Requirements",
+      "text": "Requerimentos",
       "url": "#requirements",
       "menu": [
         {
@@ -2875,7 +2875,7 @@
           "url": "#psr"
         },
         {
-          "text": "Installation",
+          "text": "Instalación",
           "url": "#installation"
         }
       ]
