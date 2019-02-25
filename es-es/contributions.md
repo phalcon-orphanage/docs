@@ -55,7 +55,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 <a name='bug-report-generating-backtrace'></a>
 
-### Generating a backtrace
+### Generar una traza inversa
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
