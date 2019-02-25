@@ -4,17 +4,17 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Installation
+# Instalación
 
 * * *
 
 ## macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+En sistemas macOS puede compilar e instalar la extensión con `brew`, `macports` o el código fuente:
 
-### Requirements
+### Requerimentos
 
-* PHP 7.2.x development resources
+* Recursos de desarrollo para PHP 7.2.x
 * XCode
 
 <a name='installation-macos-brew'></a>
@@ -36,10 +36,10 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Edit your php.ini file and then append at the end:
+Editar el archivo php.ini y luego añadir al final:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Restart your webserver.
+Reiniciar tu navegador web.
