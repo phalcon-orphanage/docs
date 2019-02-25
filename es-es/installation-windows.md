@@ -4,7 +4,7 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Installation
+# Instalación
 
 * * *
 
@@ -25,10 +25,10 @@ The available DLLs are:
 |     x86      |   7.x   | Thread safe           |
 |     x86      |   7.x   | Non Thread safe (NTS) |
 
-Edit your php.ini file and then append at the end:
+Editar el archivo php.ini y luego añadir al final:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Restart your webserver.
+Reiniciar tu navegador web.
