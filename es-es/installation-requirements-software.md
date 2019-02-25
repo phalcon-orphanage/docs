@@ -4,33 +4,33 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Installation
+# Instalación
 
 * * *
 
-## Requirements
+## Requerimentos
 
 ### Software
 
-> You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance. {: .alert .alert-danger }
+> Siempre deberias utilizar la última versión de PHP y Phalcon para evitar bugs, mejorar la seguridad y el rendimento. {: .alert .alert-danger }
 
-Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los componentes de Phalcon que necesites, podrías necesitar instalar algunas de las siguientes extensiones:
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2](https://secure.php.net/manual/en/book.image.php) (para usar la clase [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd))
+* [imagick](https://secure.php.net/manual/en/book.imagick.php) (para usar la clase [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick))
 * [json](https://secure.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (en macOS)
-* [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
-* [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* La extensión [PDO](https://php.net/manual/en/book.pdo.php), así como la extensión específica pertinente a su RDBMS ([MySQL](https://php.net/manual/en/ref.pdo-mysql.php),[PostgreSQL](https://php.net/manual/en/ref.pdo-pgsql.php),etc.)
+* La extensión [OpenSSL](https://php.net/manual/en/book.openssl.php)
+* La extensión [Mbstring](https://php.net/manual/en/book.mbstring.php)
+* [Memcached](https://php.net/manual/en/book.memcached.php) u otros adaptadores de caché relevantes en función de su uso de caché
 
-> Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions. {: .alert .alert-info }
+> La instalación de estos paquetes variará en función de su sistema operativo, así como del gestor de paquetes que utilice (si corresponde). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones. {: .alert .alert-info }
 
-For the `libpcre3-dev` package you can use the following commands:
+Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
 
 #### Debian
 
@@ -51,9 +51,9 @@ sudo yum install pcre-devel
 brew install pcre
 ```
 
-without brew
+sin brew
 
-Go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+Ir al sitio web de [PCRE](https://www.pcre.org/) y descargar la última pcre:
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -65,13 +65,13 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Para Maverick
 
 ```bash
 brew install pcre
 ```
 
-if it gives you error, you can use
+si te da error, puedes usar
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/

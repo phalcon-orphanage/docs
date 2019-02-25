@@ -21,7 +21,7 @@ You can download or clone a cross platform package containing the developer tool
 
 <a name='installation'></a>
 
-## Installation
+## Instalación
 
 These are detailed instructions on how to install the developer tools on different platforms:
 

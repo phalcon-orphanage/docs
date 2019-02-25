@@ -4,16 +4,16 @@ language: 'es-es'
 version: '4.0'
 category: 'installation'
 ---
-# Installation
+# Instalación
 
 * * *
 
-## Platforms
+## Platafomas
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en el servidor web.
 
 * [Linux](installation-linux)
 * [MacOS](installation-macos)
 * [Windows](installation-windows)
-* [Sources](installation-sources)
-* [Shared Hosting](installation-shared)
+* [Fuentes](installation-sources)
+* [Hosting compartido](installation-shared)
