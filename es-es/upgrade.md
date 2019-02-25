@@ -11,7 +11,7 @@ Phalcon v4 contains a lot of changes to components, including changes to interfa
 
 <a name='requirements'></a>
 
-## Requirements
+## Requerimentos
 
 ### PHP 7.2
 
@@ -37,7 +37,7 @@ Alternatively some distributions add a number prefix on `ini` files. If that is 
 
 <a name='installation'></a>
 
-### Installation
+### Instalación
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
