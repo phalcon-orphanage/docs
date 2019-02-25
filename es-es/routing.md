@@ -104,7 +104,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Marcador       | Expresión regular        | Usage                                                                                                  |
+| Marcador       | Expresión regular        | Uso                                                                                                    |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de módulo válido con caracteres alfanuméricos únicamente                        |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Coincide con un nombre de controlador válido con caracteres alfanuméricos únicamente                   |
@@ -1180,7 +1180,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Nombre      | Descripción                                                                                       | Usage                                  |
+| Nombre      | Descripción                                                                                       | Uso                                    |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 | Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
@@ -1192,7 +1192,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Nombre     | Descripción                                                         | Usage                                                                |
+| Nombre     | Descripción                                                         | Uso                                                                  |
 | ---------- | ------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | methods    | Define uno o más métodos HTTP que la ruta debe cumplir              | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define el nombre de la ruta                                         | `@Route('/api/products', name='get-products')`                       |
