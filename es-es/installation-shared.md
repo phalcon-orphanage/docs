@@ -8,8 +8,8 @@ category: 'installation'
 
 * * *
 
-## Shared hosting - cPanel
+## Hosting compartido - cPanel
 
-Although dedicated hosting is extremely cheap, you might choose to opt for shared hosting. This might restrict you in installing Phalcon, especially if you do not have root access.
+Aunque el alojamiento dedicado es extremadamente barato, usted puede optar por el alojamiento compartido. Esto podría restringirle la instalación de Phalcon, especialmente si no tiene acceso root.
 
-If your shared hosting server is running cPanel, you can install Phalcon by following the instructions on [this repository](https://github.com/thecpaneladmin/EA-PhalconPHP)
+Si su servidor de hosting compartido está ejecutando cPanel, puede instalar Phalcon siguiendo las instrucciones en [este repositorio](https://github.com/thecpaneladmin/EA-PhalconPHP)
