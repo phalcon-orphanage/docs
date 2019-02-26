@@ -14,7 +14,7 @@ category: 'installation'
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 años y su [soporte activo](https://secure.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
 
 * Requerimentos 
     * [PSR](installation-requirements-psr)
@@ -25,5 +25,5 @@ Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ag
     * [Linux](installation-linux)
     * [MacOS](installation-macos)
     * [Windows](installation-windows)
-    * [Sources](installation-sources)
+    * [Fuentes](installation-sources)
     * [Compartido](installation-shared)

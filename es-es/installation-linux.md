@@ -10,114 +10,114 @@ category: 'installation'
 
 ## Linux
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Para instalar Phalcon en Linux, necesitará agregar nuestro repositorio en su distribución y luego instalarlo.
 
 ### Distribuciones basadas en DEB (Debian, Ubuntu, etc)
 
-#### Repository installation
+#### Instalación desde el repositorio
 
-Add the repository to your distribution:
+Agregar el repositorio en su distribución:
 
-**Stable releases**
+**Versiones estables**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Nightly releases**
+**Versiones nocturnas**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Versiones principales (alpha, beta, etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {: .alert .alert-warning }
+> Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas. {: .alert .alert-warning }
 
-#### Phalcon installation
+#### Instalación de Phalcon
 
-To install Phalcon you need to type the following commands in your terminal:
+Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-#### Additional PPAs
+#### PPAs adicionales
 
 **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+Si no desea usar nuestro repositorio en [packagecloud.io](https://packagecloud.io/phalcon), puede utilizar uno ofrecido por [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
 
-Installation of the repo:
+Instalación del repositorio:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+y Phalcon:
 
 ```php
 sudo apt-get install php-phalcon
 ```
 
-### RPM based distributions (CentOS, Fedora, etc.)
+### Distribuciones basadas en RPM (CentOS, Fedora, etc.)
 
-#### Repository installation
+#### Instalación desde el repositorio
 
-Add the repository to your distribution:
+Agregar el repositorio en su distribución:
 
-**Stable releases**
+**Versiones estables**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Nightly releases**
+**Versiones nocturnas**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Versiones principales (alpha, beta, etc.)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds. {; .alert .alert-warning }
+> Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas. {; .alert .alert-warning }
 
-#### Phalcon installation
+#### Instalación de Phalcon
 
-To install Phalcon you need to issue the following commands in your terminal:
+Para instalar Phalcon es necesario ejecutar los siguientes comandos en su terminal:
 
 ```bash
 sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-#### Additional RPMs
+#### RPMs adicionales
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) mantiene un excelente repositorio de RPM basado en instalaciones. Puede encontrar instrucciones sobre cómo activar en su distribución [aquí](https://blog.remirepo.net/pages/Config-en).
 
-Installing Phalcon after that is as easy as:
+La instalación de Phalcon después de eso, es tan fácil como:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+Versiones adicionales están disponibles para cada arquitectura específica (x86/x64), así como versiones específicas de PHP
 
 ### FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los siguientes comandos:
 
 #### pkg_add
 
@@ -139,4 +139,4 @@ make install clean
 
 #### Gentoo
 
-An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
+Un overlay para la instalación de Phalcon se puede encontrar [aquí](https://github.com/smoke/phalcon-gentoo-overlay)
