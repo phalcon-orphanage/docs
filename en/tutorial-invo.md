@@ -578,7 +578,7 @@ SecurityPlugin is a class located at (`app/plugins/SecurityPlugin.php`). This cl
 <?php
 
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 use Phalcon\Mvc\Dispatcher;
 
 class SecurityPlugin extends Plugin
@@ -592,7 +592,7 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), but by doing this they gain easier access to the services available in the application.
+The hook events always receive a first parameter that contains contextual information of the event produced (`$event`) and a second one that is the object that produced the event itself (`$dispatcher`). It is not mandatory that plugins extend the class [Phalcon\Plugin](api/Phalcon_Plugin), but by doing this they gain easier access to the services available in the application.
 
 Now, we're verifying the role in the current session, checking if the user has access using the ACL list. If the user does not have access we redirect to the home screen as explained before:
 
@@ -601,7 +601,7 @@ Now, we're verifying the role in the current session, checking if the user has a
 
 use Phalcon\Acl;
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 use Phalcon\Mvc\Dispatcher;
 
 class SecurityPlugin extends Plugin
@@ -1694,9 +1694,9 @@ This part of the application is implemented in the component `Elements` (`app/li
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use Phalcon\Plugin;
 
-class Elements extends Component
+class Elements extends Plugin
 {
     public function getMenu()
     {
@@ -1710,7 +1710,7 @@ class Elements extends Component
 }
 ```
 
-This class extends the [Phalcon\Mvc\User\Component](api/Phalcon_Mvc_User_Component). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+This class extends the [Phalcon\Plugin](api/Phalcon_Plugin). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
 
 ```php
 <?php
