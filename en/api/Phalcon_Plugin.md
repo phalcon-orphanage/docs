@@ -2,9 +2,9 @@
 layout: article
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Mvc\User\Plugin'
+title: 'Phalcon\Plugin'
 ---
-# Class **Phalcon\Mvc\User\Plugin**
+# Class **Phalcon\Plugin**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 

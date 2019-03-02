@@ -270,13 +270,13 @@ $eventsManager->attach(
 
 <a name='using-services'></a>
 ## Using Services From The DI
-By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
+By extending [Phalcon\Plugin](api/Phalcon_Plugin), you can access services from the DI, just like you would in a controller:
 
 ```php
 <?php
 
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 
 class SomeListener extends Plugin
 {
