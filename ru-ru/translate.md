@@ -150,18 +150,18 @@ You can always wrap this functionality in its own class and register that class 
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use Phalcon\Plugin;
 use Phalcon\Translate\Adapter\NativeArray;
 
-class Locale extends Component
+class Locale extends Plugin
 {
     public function getTranslator()
     {
-        // Получение оптимального языка из браузера
+        // Ask browser what is the best language
         $language = $this->request->getBestLanguage();
 
         /**
-         * Здесь мы используем JSON-файлы для хранения переводов. 
+         * We are using JSON based files for storing translations. 
          * Помните, вам необходимо убедиться, что файл существует! 
          */
         $translations = json_decode(
