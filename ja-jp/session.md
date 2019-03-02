@@ -207,13 +207,13 @@ In a component:
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use Phalcon\Di\Injectable;
 
-class Security extends Component
+class Security extends Injectable
 {
     public function auth()
     {
-        // persistent 変数 'name' の作成
+        // Create a persistent variable 'name'
         $this->persistent->name = 'Laura';
     }
 
