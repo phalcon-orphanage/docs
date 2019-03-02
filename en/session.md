@@ -191,7 +191,7 @@ In a component:
 ```php
 <?php
 
-use \Phalcon\Di\Injectable;
+use Phalcon\Di\Injectable;
 
 class Security extends Injectable
 {
