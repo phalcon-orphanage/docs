@@ -1694,9 +1694,9 @@ This part of the application is implemented in the component `Elements` (`app/li
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use Phalcon\Plugin;
 
-class Elements extends Component
+class Elements extends Plugin
 {
     public function getMenu()
     {
@@ -1710,7 +1710,7 @@ class Elements extends Component
 }
 ```
 
-This class extends the [Phalcon\Mvc\User\Component](api/Phalcon_Mvc_User_Component). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
+This class extends the [Phalcon\Plugin](api/Phalcon_Plugin). It is not imposed to extend a component with this class, but it helps to get access more quickly to the application services. Now, we are going to register our first user component in the services container:
 
 ```php
 <?php

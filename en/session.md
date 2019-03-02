@@ -191,9 +191,9 @@ In a component:
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use \Phalcon\Di\Injectable;
 
-class Security extends Component
+class Security extends Injectable
 {
     public function auth()
     {
