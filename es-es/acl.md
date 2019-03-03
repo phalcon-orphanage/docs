@@ -14,7 +14,7 @@ category: 'acl'
 - [Agregando Roles](acl-adding-roles)
 - [Adding Components](acl-adding-components)
 - [Definición de Controles de Acceso](acl-access-controls)
-- [Querying an ACL](acl-querying)
+- [Consultando una ACL](acl-querying)
 - [Function based access](acl-function-based-access)
 - [Objects as role name and component name](acl-objects)
 - [Roles Inheritance](acl-roles-inheritance)
