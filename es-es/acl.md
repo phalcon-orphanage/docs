@@ -18,7 +18,7 @@ category: 'acl'
 - [Function based access](acl-function-based-access)
 - [Objects as role name and component name](acl-objects)
 - [Roles Inheritance](acl-roles-inheritance)
-- [Serializing ACL lists](acl-serialization)
+- [Serializando listas ACL](acl-serialization)
 - [Eventos](acl-events)
 - [Implementando sus propios adaptadores](acl-custom-adapters)
 
