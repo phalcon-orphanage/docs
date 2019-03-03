@@ -15,7 +15,7 @@ Como se ha mencionado anteriormente, un [Phalcon\Acl\Role](api/Phalcon_Acl_Role)
 
 Hay dos maneras de agregar roles a nuestra lista. * Usando un objecto [Phalcon\Acl\Role](api/Phalcon_Acl_Role) * Usando una cadena, representando el nombre del rol
 
-To see this in action, using the example outlined above, we will add the relevant [Phalcon\Acl\Role](api/Phalcon_Acl_Role) objects in our list:
+Para ver esto en acción, usando el ejemplo descrito arriba, añadiremos los objetos [Phalcon\Acl\Role](api/Phalcon_Acl_Role) relevantes en nuestra lista:
 
 ```php
 <?php
@@ -27,23 +27,23 @@ use Phalcon\Acl\Role;
 $acl = new AclList();
 
 /**
- * Create some Roles.
+ * Crear algunos Roles.
  * 
- * The first parameter is the name of the role, 
- * the second is an optional description
+ * El primer parámetro es el nombre del rol, 
+ * el segundo, es opcional, es la descripción
  */
 
 $roleAdmins     = new Role('admins', 'Administrator Access');
 $roleAccounting = new Role('accounting', 'Accounting Department Access'); 
 
 /**
- * Add these roles in the list 
+ * Agregar esos roles a la lista
  */
 $acl->addRole($roleAdmins);
 $acl->addRole($roleAccounting);
 
 /**
- * Add roles without creating an object first 
+ * Agregar roles sin crear un objecto
  */
 $acl->addRole('manager');
 $acl->addRole('guest');
