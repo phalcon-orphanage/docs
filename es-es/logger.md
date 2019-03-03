@@ -5,21 +5,21 @@ version: '4.0'
 upgrade: '#logger'
 category: 'logger'
 ---
-# Logger Component
+# Componente Registro
 
 * * *
 
-- [Logging](logger-overview)
-- [Adapters](logger-adapters)
-- [Creating a Logger component](logger-creating)
-- [Logging to Multiple adapters](logger-multiple)
-- [Message Formatting](logger-message-formatting) 
-    - [Line](logger-message-formatting-line)
+- [Registro](logger-overview)
+- [Adaptadores](logger-adapters)
+- [Creación del componente de registro](logger-creating)
+- [Registro con múltiples adaptadores](logger-multiple)
+- [Formato de mensaje](logger-message-formatting) 
+    - [Línea](logger-message-formatting-line)
     - [JSON](logger-message-formatting-json)
     - [Syslog](logger-message-formatting-syslog)
-    - [Custom](logger-message-formatting-custom)
-- [Interpolation](logger-interpolation)
-- [Examples](logger-examples)
+    - [Personalizado](logger-message-formatting-custom)
+- [Interpolación](logger-interpolation)
+- [Ejemplos](logger-examples)
 
 * * *
 
