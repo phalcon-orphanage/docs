@@ -12,7 +12,7 @@ category: 'acl'
 - [Listas de control de acceso (ACL)](acl-overview)
 - [Creando una ACL](acl-setup)
 - [Agregando Roles](acl-adding-roles)
-- [Adding Components](acl-adding-components)
+- [Agregando Componentes](acl-adding-components)
 - [Definición de Controles de Acceso](acl-access-controls)
 - [Consultando una ACL](acl-querying)
 - [Function based access](acl-function-based-access)
