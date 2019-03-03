@@ -9,11 +9,11 @@ category: 'acl'
 
 * * *
 
-## Adding Roles
+## Agregando Roles
 
-As mentioned above, a [Phalcon\Acl\Role](api/Phalcon_Acl_Role) is an object that can or cannot access a set of [Component](api/Phalcon_Acl_Component) in the access list.
+Como se ha mencionado anteriormente, un [Phalcon\Acl\Role](api/Phalcon_Acl_Role) es un objeto que puede o no puede acceder a un conjunto de [Component](api/Phalcon_Acl_Component) en la lista de acceso.
 
-There are two ways of adding roles to our list. * by using a [Phalcon\Acl\Role](api/Phalcon_Acl_Role) object or * using a string, representing the name of the role
+Hay dos maneras de agregar roles a nuestra lista. * Usando un objecto [Phalcon\Acl\Role](api/Phalcon_Acl_Role) * Usando una cadena, representando el nombre del rol
 
 To see this in action, using the example outlined above, we will add the relevant [Phalcon\Acl\Role](api/Phalcon_Acl_Role) objects in our list:
 
