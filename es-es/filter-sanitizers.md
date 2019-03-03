@@ -58,7 +58,7 @@ Devuelve `true` (verdadero) si el valor es:
 Devuelve `false` (falso) si el valor es:
 
 * `false`
-* `off`
+* `off (apagado)`
 * `no`
 * `n`
 * `0`
