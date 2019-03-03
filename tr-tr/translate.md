@@ -152,10 +152,10 @@ You can always wrap this functionality in its own class and register that class 
 ```php
 <?php
 
-use Phalcon\Mvc\User\Component;
+use Phalcon\Plugin;
 use Phalcon\Translate\Adapter\NativeArray;
 
-class Locale extends Component
+class Locale extends Plugin
 {
     public function getTranslator()
     {

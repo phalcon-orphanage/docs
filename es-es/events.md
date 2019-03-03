@@ -280,31 +280,31 @@ $eventsManager->attach(
 
 ## Using Services From The DI
 
-By extending [Phalcon\Mvc\User\Plugin](api/Phalcon_Mvc_User_Plugin), you can access services from the DI, just like you would in a controller:
+By extending [Phalcon\Plugin](api/Phalcon_Plugin), you can access services from the DI, just like you would in a controller:
 
 ```php
 <?php
 
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 
 class SomeListener extends Plugin
 {
     public function beforeSomeTask(Event $event, $myComponent)
     {
-        echo 'Aquí, beforeSomeTask\n';
+        echo 'Here, beforeSomeTask\n';
 
         $this->logger->debug(
-            'beforeSomeTask ha sido ejecutado'
+            'beforeSomeTask has been triggered'
         );
     }
 
     public function afterSomeTask(Event $event, $myComponent)
     {
-        echo 'Aquí, afterSomeTask\n';
+        echo 'Here, afterSomeTask\n';
 
         $this->logger->debug(
-            'afterSomeTask ha sido ejecutado'
+            'afterSomeTask has been triggered'
         );
     }
 }

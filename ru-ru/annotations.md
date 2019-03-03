@@ -266,43 +266,43 @@ $di['dispatcher'] = function () {
 
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 
 /**
- * Включение кэша для представления, если
- * последнее запущенное действие имело аннотацию @Cache
+ * Enables the cache for a view if the latest
+ * executed action has the annotation @Cache
  */
 class CacheEnablerPlugin extends Plugin
 {
     /**
-     * Это событие запускается перед запуском каждого маршрута в диспетчере
+     * This event is executed before every route is executed in the dispatcher
      */
     public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
     {
-        // Разбор аннотаций в текущем запущенном методе
+        // Parse the annotations in the method currently executed
         $annotations = $this->annotations->getMethod(
             $dispatcher->getControllerClass(),
             $dispatcher->getActiveMethod()
         );
 
-        // Проверить, имеет ли метод аннотацию 'Cache'
+        // Check if the method has an annotation 'Cache'
         if ($annotations->has('Cache')) {
-            // Метод имеет аннотацию 'Cache'
+            // The method has the annotation 'Cache'
             $annotation = $annotations->get('Cache');
 
-            // Получить время жизни кэша
+            // Get the lifetime
             $lifetime = $annotation->getNamedParameter('lifetime');
 
             $options = [
                 'lifetime' => $lifetime,
             ];
 
-            // Проверить, есть ли определенный пользователем ключ кэша
+            // Check if there is a user defined cache key
             if ($annotation->hasNamedParameter('key')) {
                 $options['key'] = $annotation->getNamedParameter('key');
             }
 
-            // Включить кэш для текущего метода
+            // Enable the cache for the current method
             $this->view->cache($options);
         }
     }
@@ -358,18 +358,17 @@ use Phalcon\Acl;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Resource;
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Acl\Adapter\Memory as AclList;
 
 /**
- * Это плагин безопастности, который контролирует,
- * что пользователи имеют доступ только к разрешенным модулям
+ * This is the security plugin which controls that users only have access to the modules they're assigned to
  */
 class SecurityAnnotationsPlugin extends Plugin
 {
     /**
-     * Этот метод будет вызван перед выполнением любого действия контроллера 
+     * This action is executed before execute any action in the application
      *
      * @param Event $event
      * @param Dispatcher $dispatcher
@@ -378,16 +377,16 @@ class SecurityAnnotationsPlugin extends Plugin
      */
     public function beforeDispatch(Event $event, Dispatcher $dispatcher)
     {
-        // Название класса контроллера
+        // Possible controller class name
         $controllerName = $dispatcher->getControllerClass();
 
-        // Название метода
+        // Possible method name
         $actionName = $dispatcher->getActiveMethod();
 
-        // Получаем аннотации из класса контроллера
+        // Get annotations in the controller class
         $annotations = $this->annotations->get($controllerName);
 
-        // Является ли контроллер приватным?
+        // The controller is private?
         if ($annotations->getClassAnnotations()->has('Private')) {
             // Проверяем аутентификацию с использованием сессии
             if (!$this->session->get('auth')) {

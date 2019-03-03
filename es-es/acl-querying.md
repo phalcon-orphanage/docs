@@ -9,9 +9,9 @@ category: 'acl'
 
 * * *
 
-## Querying an ACL
+## Consultando una ACL
 
-Once the list has been defined, we can query it to check if a particular role has access to a particular component and action. To do so, we need to use the `isAllowed()` method.
+Una vez definida la lista, podemos consultarla para comprobar si un rol, en particular, tiene acceso a un componente y una acción. Para hacerlo, necesitamos usar el método `isAllowed()`.
 
 ```php
 <?php
@@ -24,7 +24,7 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Setup the ACL
+ * Establecer el ACL
  */
 $acl->addRole('manager');                   
 $acl->addRole('accounting');                   
@@ -45,18 +45,18 @@ $acl->deny('guest', '*', 'view');
 // ....
 
 
-// true - defined explicitly
+// true - definido explicitamente
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// true - defiled with wildcard
+// true - definido con comodines
 $acl->isAllowed('manager', 'session', 'login');
 
-// true - defined with wildcard
+// true - definido con comodines
 $acl->isAllowed('accounting', 'reports', 'view');
 
-// false - defined explicitly
+// false - definido explicitamente
 $acl->isAllowed('guest', 'reports', 'view');
 
-// false - default access level
+// false - nivel de acceso por defecto
 $acl->isAllowed('guest', 'reports', 'add');
 ```

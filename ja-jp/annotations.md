@@ -266,7 +266,7 @@ $di['dispatcher'] = function () {
 
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 
 /**
  * Enables the cache for a view if the latest
@@ -358,7 +358,7 @@ use Phalcon\Acl;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Resource;
 use Phalcon\Events\Event;
-use Phalcon\Mvc\User\Plugin;
+use Phalcon\Plugin;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Acl\Adapter\Memory as AclList;
 

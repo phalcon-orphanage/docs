@@ -11,12 +11,12 @@ category: 'acl'
 
 ## Eventos
 
-[Phalcon\Acl](api/Phalcon_Acl) puede trabajar junto con el [EventsManager](events) si está presente, para disparar eventos a tu aplicación. Los eventos se desencadenan mediante el tipo `acl`. Events that return `false` can stop the active role. Los siguientes eventos están disponibles:
+[Phalcon\Acl](api/Phalcon_Acl) puede trabajar junto con el [EventsManager](events) si está presente, para disparar eventos a tu aplicación. Los eventos se desencadenan mediante el tipo `acl`. Los eventos que devuelven `false` pueden detener el rol activo. Los siguientes eventos están disponibles:
 
-| Nombre de evento    | Disparado                                                | Can stop role? |
-| ------------------- | -------------------------------------------------------- |:--------------:|
-| `afterCheckAccess`  | Triggered after checking if a role/component has access  |       No       |
-| `beforeCheckAccess` | Triggered before checking if a role/component has access |       Si       |
+| Nombre de evento    | Disparado                                                        | ¿Puede detener el rol? |
+| ------------------- | ---------------------------------------------------------------- |:----------------------:|
+| `afterCheckAccess`  | Lanzado después de comprobar si un rol o componente tiene acceso |           No           |
+| `beforeCheckAccess` | Lanzado antes de comprobar si un rol o componente tiene acceso   |           Si           |
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes al ACL:
 
@@ -30,14 +30,14 @@ use Phalcon\Events\Manager as EventsManager;
 
 // ...
 
-// Create an event manager
+// Crear un gestor de eventos
 $eventsManager = new EventsManager();
 
-// Attach a listener for type 'acl'
+// Adjuntar un oyente de tipo 'acl'
 $eventsManager->attach(
     'acl:beforeCheckAccess',
     function (Event $event, $acl) {
-        echo $acl->getActiveRole() . PHP_EOL;
+        echo $acl->getActiveRol() . PHP_EOL;
 
         echo $acl->getActiveComponent() . PHP_EOL;
 
