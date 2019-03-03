@@ -247,7 +247,7 @@ $logger  = new Logger(
     ]
 );
 
-$logger->error('Something went wrong');
+$logger->error('Algo falló');
 ```
 
 Registering it in the DI
