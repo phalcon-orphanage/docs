@@ -11,7 +11,7 @@ category: 'acl'
 
 - [Listas de control de acceso (ACL)](acl-overview)
 - [Creando una ACL](acl-setup)
-- [Adding Roles](acl-adding-roles)
+- [Agregando Roles](acl-adding-roles)
 - [Adding Components](acl-adding-components)
 - [Definición de Controles de Acceso](acl-access-controls)
 - [Querying an ACL](acl-querying)
