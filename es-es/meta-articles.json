@@ -13,7 +13,7 @@
       "url": "/acl-adding-roles"
     },
     {
-      "text": "Adding Components",
+      "text": "Agregando Componentes",
       "url": "/acl-adding-components"
     },
     {
@@ -2037,11 +2037,11 @@
       "url": "/logger-adapters"
     },
     {
-      "text": "Creating a Logger component",
+      "text": "Creación del componente de registro",
       "url": "/logger-creating"
     },
     {
-      "text": "Logging to Multiple adapters",
+      "text": "Registro con múltiples adaptadores",
       "url": "/logger-multiple"
     },
     {
@@ -2049,7 +2049,7 @@
       "url": "/logger-message-formatting",
       "menu": [
         {
-          "text": "Line",
+          "text": "Línea",
           "url": "/logger-message-formatting-line"
         },
         {
@@ -2061,7 +2061,7 @@
           "url": "/logger-message-formatting-syslog"
         },
         {
-          "text": "Custom",
+          "text": "Personalizado",
           "url": "/logger-message-formatting-custom"
         }
       ]
