@@ -93,7 +93,7 @@ $translate = Factory::load($options);
 ```
 
 ### Gettext
-The translation strings are stored in `.po` and `.mo` files. More about it on the [offcial documentation](http://php.net/manual/en/book.gettext.php). The files hierarchy is bound to this standard.
+The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](http://php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
 
 ```php
 <?php
@@ -292,3 +292,44 @@ class MyTranslateAdapter implements AdapterInterface
 ```
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+## Interpolation
+In many cases, the translated strings are to be interpolated with data. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
+
+```php
+<?php
+$translate = return new NativeArray([
+    'content' => ['hi-name' => 'Hello %name%, good %time% !']
+]);
+
+$name = 'Henry';
+$translate->_('hi-name', ['name' => $name, 'time' => 'day']; // Hello Henry, good day !
+$translate->_('hi-name', ['name' => $name, 'time' => 'night']; // Hello Henry, good night !
+```
+
+[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](http://php.net/sprintf) convention.
+
+```php
+<?php
+use Phalcon\Translate\Interpolator\IndexedArray;
+
+$translate = return new NativeArray([
+    'interpolator' => new IndexedArray(),
+    'content' => ['hi-name' => 'Hello %1$s, it's %2$d o'clock'],
+]);
+
+$name = 'Henry';
+$translate->_('hi-name', [$name, 'time' => 8]; // Hello Henry, it's 5 o'clock
+```
+
+```php
+<?php
+use Phalcon\Translate\Interpolator\IndexedArray;
+
+$translate = return new NativeArray([
+    'interpolator' => new IndexedArray(),
+    'content' => ['hi-name' => 'Son las %2$d, hola %1$s']
+]);
+
+$name = 'Henry';
+$translate->_('hi-name', [$name, 'time' => 8]; // Son las 8, hola Henry
+```
