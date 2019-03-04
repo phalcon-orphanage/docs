@@ -302,8 +302,8 @@ $translate = return new NativeArray([
 ]);
 
 $name = 'Henry';
-$translate->_('hi-name', ['name' => $name, 'time' => 'day']; // Hello Henry, good day !
-$translate->_('hi-name', ['name' => $name, 'time' => 'night']; // Hello Henry, good night !
+$translate->_('hi-name', ['name' => $name, 'time' => 'day']); // Hello Henry, good day !
+$translate->_('hi-name', ['name' => $name, 'time' => 'night']); // Hello Henry, good night !
 ```
 
 [Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](http://php.net/sprintf) convention.
@@ -318,7 +318,7 @@ $translate = return new NativeArray([
 ]);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 'time' => 8]; // Hello Henry, it's 5 o'clock
+$translate->_('hi-name', [$name, 'time' => 8]); // Hello Henry, it's 5 o'clock
 ```
 
 ```php
@@ -331,5 +331,5 @@ $translate = return new NativeArray([
 ]);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 'time' => 8]; // Son las 8, hola Henry
+$translate->_('hi-name', [$name, 'time' => 8]); // Son las 8, hola Henry
 ```
