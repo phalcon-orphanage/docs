@@ -314,7 +314,7 @@ use Phalcon\Translate\Interpolator\IndexedArray;
 
 $translate = return new NativeArray([
     'interpolator' => new IndexedArray(),
-    'content' => ['hi-name' => 'Hello %1$s, it's %2$d o\'clock'],
+    'content' => ['hi-name' => 'Hello %1$s, it\'s %2$d o\'clock'],
 ]);
 
 $name = 'Henry';
