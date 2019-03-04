@@ -33,7 +33,7 @@ This component makes use of adapters to read translation messages from different
 | Adapter                                 | Description                                                                             |
 |-----------------------------------------|-----------------------------------------------------------------------------------------|
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv) | Uses a CSV to store the messages. |
+| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv) | Uses a CSV to store the messages for a langage. |
 | [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext) | Uses gettext to retrieve the messages from a .po file. |
 
 <a name='adapters-factory'></a>
