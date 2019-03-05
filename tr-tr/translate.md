@@ -329,7 +329,7 @@ $translate = return new NativeArray([
 ]);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 'time' => 8]); // Hello Henry, it's 5 o'clock
+$translate->_('hi-name', [$name, 8]); // Hello Henry, it's 8 o'clock
 ```
 
 ```php
@@ -342,5 +342,5 @@ $translate = return new NativeArray([
 ]);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 'time' => 8]); // Son las 8, hola Henry
+$translate->_('hi-name', [$name, 8]); // Son las 8, hola Henry
 ```
