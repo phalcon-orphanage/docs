@@ -9,9 +9,9 @@ category: 'acl'
 
 * * *
 
-## Roles Inheritance
+## Herencia de roles
 
-To remove duplication and increase efficiency in your application, the ACL offers inheritance in roles. This means that you can define one [Phalcon\Acl\Role](api/Phalcon_Acl_Role) as a base and after that inherit from it offering access to supersets or subsets of components. To use role inheritance, you need, you need to pass the inherited role as the second parameter of the method call, when adding that role in the list.
+Para eliminar la duplicación y aumentar la eficiencia en su aplicación, ACL ofrece herencia en roles. Esto significa que puedes definir un [Phalcon\Acl\Role](api/Phalcon_Acl_Role) como base y después que hereden de él, ofreciendo acceso a superconjuntos o subconjuntos de componentes. Para utilizar la herencia de roles, necesita pasar el rol heredado como el segundo parámetro de la llamada del método, al añadir ese rol en la lista.
 
 ```php
 <?php
@@ -23,33 +23,33 @@ use Phalcon\Acl\Role;
 $acl = new AclList();
 
 /**
- * Create the roles
+ * Crear los roles
  */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
 /**
- * Add the `guest` role to the ACL 
+ * Agregar el rol `guest` al ACL 
  */
 $acl->addRole($guest);
 
 /**
- * Add the `accounting` inheriting from `guest` 
+ * Agregar `accounting` heredando desde `guest` 
  */
 $acl->addRole($accounting, $guest);
-/**
- * Add the `manager` inheriting from `accounting` 
- */
 
+/**
+ * Agregar `manager` heredando de `accounting` 
+ */
 $acl->addRole($manager, $accounting);
 ```
 
-Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`
+Sea cual sea el acceso que tenga `guests`, se propagará a `acoounting` y a su vez `accounting` se propagará a `manager`
 
-### Setup relationships after adding roles
+### Configurar relaciones después que se agregan los roles
 
-Based on the application design, you might prefer to add first all the roles and then define the relationship between them.
+Basado en el diseño de aplicaciones, podría preferir añadir primero todos los roles y luego definir la relación entre ellos.
 
 ```php
 <?php
@@ -61,21 +61,21 @@ use Phalcon\Acl\Role;
 $acl = new AclList();
 
 /**
- * Create the roles
+ * Crear los roles
  */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
 /**
- * Add all the roles
+ * Agregar todos los roles
  */
 $acl->addRole($manager);
 $acl->addRole($accounting);
 $acl->addRole($guest);
 
 /**
- * Add the inheritance 
+ * Agregar las herencias
  */
 $acl->addInherit($manager, $accounting);
 $acl->addInherit($accounting, $guest);
