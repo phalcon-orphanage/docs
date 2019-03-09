@@ -11,9 +11,9 @@ category: 'acl'
 
 ## Definición de Controles de Acceso
 
-After both the `Roles` and `Components` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the role since a small mistake here can allow access to roles for components that the developer does not intend to. Como se mencionó anteriormente, la acción de acceso predeterminada para [Phalcon\Acl](api/Phalcon_Acl) es `Acl::DENY`, siguiendo el enfoque de [lista blanca](https://en.wikipedia.org/wiki/Whitelisting).
+Después que los `Roles` y los `Components` fueron definidos, tenemos que atarlos juntos para que la lista de acceso pueda ser creada. Este es el paso más importante en el rol, ya que un pequeño error aquí, puede permitir el acceso de roles a componentes a los que el desarrollador no pretende. Como se mencionó anteriormente, la acción de acceso predeterminada para [Phalcon\Acl](api/Phalcon_Acl) es `Acl::DENY`, siguiendo el enfoque de [lista blanca](https://en.wikipedia.org/wiki/Whitelisting).
 
-To tie `Roles` and `Components` together we use the `allow()` and `deny()` methods exposed by the [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory) class.
+Para atar `Roles` y `Components` juntos, utilizamos los métodos `allow()` y `deny()` expuestos por la clase [Phalcon\Acl\Memory](api/Phalcon_Acl_Memory).
 
 ```php
 <?php
@@ -26,7 +26,7 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Add the roles
+ * Agregar roles
  */
 $acl->addRole('manager');
 $acl->addRole('accounting');
@@ -34,14 +34,14 @@ $acl->addRole('guest');
 
 
 /**
- * Add the Components
+ * Agregar Componentes
  */
 $acl->addComponent('admin', ['dashboard', 'users', 'view']);
 $acl->addComponent('reports', ['list', 'add', 'view']);
 $acl->addComponent('session', ['login', 'logout']);
 
 /**
- * Now tie them all together 
+ * Ahora atarlos juntos
  */
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
@@ -57,42 +57,42 @@ Las líneas anteriores nos dicen:
 $acl->allow('manager', 'admin', 'users');
 ```
 
-For the `manager` role, allow access to the `admin` component and `users` action. Para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `admin` y a la acción `users`.
+Para el rol `manager`, permitir el acceso al componente `admin` y la acción `users`. Para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `admin` y a la acción `users`.
 
 ```php
 $acl->allow('manager', 'reports', ['list', 'add']);
 ```
 
-También puede pasar una matriz como parámetro `action` al invocar el comando `allow()`. The above means that for the `manager` role, allow access to the `reports` component and `list` and `add` actions. Una vez más para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `reports` y a las acciones `list` y `add`.
+También puede pasar una matriz como parámetro `action` al invocar el comando `allow()`. Lo anterior significa, para el rol `manager`, permitir el acceso al componente `reports` y a las acciones `list` y `add`. Una vez más para poner esto en perspectiva con una aplicación MVC, la línea anterior dice que el grupo `manager` tiene permitido acceder al controlador `reports` y a las acciones `list` y `add`.
 
 ```php
 $acl->allow('*', 'session', '*');
 ```
 
-Wildcards can also be used to do mass matching for roles, components or actions. In the above example, we allow every role to access every action in the `session` component. This command will give access to the `manager`, `accounting` and `guest` roles, access to the `session` component and to the `login` and `logout` actions.
+Las comodines también se pueden utilizar para hacer coincidencias en masa para roles, componentes o acciones. En el ejemplo anterior, permitimos que todos los roles accedan a todas las acciones del componente `session`. Este comando dará acceso a los roles `manager`, `accounting` y `guest`, accediendo al componente `session` y a las acciones `login` y `logout`.
 
 ```php
 $acl->allow('*', '*', 'view');
 ```
 
-Similarly the above gives access to any role, any component that has the `view` action. En una aplicación MVC, lo anterior es el equivalente a permitir que cualquier grupo acceda a cualquier controlador que exponga una `viewAction`.
+Del mismo modo, lo anterior da acceso a cualquier rol o a cualquier componente que tenga la acción `view`. En una aplicación MVC, lo anterior es el equivalente a permitir que cualquier grupo acceda a cualquier controlador que exponga una `viewAction`.
 
 > Por favor, tenga **MUCHO** cuidado al usar el comodín `*`. Es muy fácil cometer un error y el comodín, aunque parece conveniente, puede permitir que los usuarios accedan a áreas de su aplicación que no se supone que lo hagan. La mejor manera de estar 100% seguro es escribir pruebas específicamente para probar los permisos y la ACL. Estos pueden hacerse en la `unit` de las pruebas instanciando el componente y luego comprobando el `isAllowed()` si es `true` o `false`.
 > 
-> [Codeception](https://codeception.com) is the chosen testing framework for Phalcon and there are plenty of tests in our github repository (`tests` folder) to offer guidance and ideas.
+> [Codeception](https://codeception.com) es el framework de pruebas elegido por Phalcon, hay muchas pruebas en nuestro repositorio GitHub (carpeta `tests`) para ofrecer orientación e ideas.
 {:.alert .alert-danger}
 
 ```php
 $acl->deny('guest', '*', 'view');
 ```
 
-For the `guest` role, we deny access to all components with the `view` action. Despite the fact that the default access level is `Acl::DENY` in our example above, we specifically allowed the `view` action to all roles and components. This includes the `guest` role. We want to allow the `guest` role access only to the `session` component and the `login` and `logout` actions, since `guests` are not logged into our application.
+Para el rol `guest`, negamos el acceso a todos los componentes con la acción `view`. A pesar del hecho de que el nivel de acceso por defecto es `Acl::DENY` en nuestro ejemplo anterior, hemos permitido específicamente la acción `view` a todos los roles y componentes. Esto incluye al rol `guest`. Queremos permitir el acceso del rol `guest` solo al componente `session` y a las acciones `login` y `logout`, ya que los `guests` no están logeados en nuestra aplicación.
 
 ```php
 $acl->allow('*', '*', 'view');
 ```
 
-This gives access to the `view` access to everyone, but we want the `guest` role to be excluded from that so the following line does what we need.
+Esto da acceso al acceso `view` a todo el mundo, pero queremos que el rol `guest` debe ser excluido de ahí, entonces lo que necesitamos es la siguiente linea.
 
 ```php
 $acl->deny('guest', '*', 'view');
