@@ -49,16 +49,6 @@ public function getMethod(): string
 Retrieves the HTTP method of the request.
 <hr/>
 ```php
-public function getProtocolVersion(): string
-```
-Retrieves the HTTP protocol version as a string.
-<hr/>
-```php
-public function getUri() : UriInterface
-```
-Retrieves the URI instance.
-<hr/>
-```php
 mixed $name // The name of the header
 
 public function getHeader( mixed $name ): array
@@ -92,9 +82,19 @@ foreach ($message->getHeaders() as $name => $values) {
 ```
 <hr/>
 ```php
+public function getProtocolVersion(): string
+```
+Retrieves the HTTP protocol version as a string.
+<hr/>
+```php
 public function getRequestTarget(): string
 ```
  Retrieves the message's request target either as it will appear (for clients), as it appeared at request (for servers), or as it was specified for the instance (see `withRequestTarget()`). In most cases, this will be the origin-form of the composed URI, unless a value was provided to the concrete implementation (see `withRequestTarget()`).
+<hr/>
+```php
+public function getUri() : UriInterface
+```
+Retrieves the URI instance.
 <hr/>
 ```php
 mixed $name // The name of the header
@@ -138,7 +138,6 @@ Return an instance with the provided HTTP method.
 Throws `\InvalidArgumentException` for invalid HTTP methods.
 <hr/>
 ```php
- */
 public function withProtocolVersion( mixed $version ): Request
 ```
 Return an instance with the specified HTTP protocol version.
