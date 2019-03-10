@@ -23,24 +23,24 @@ use Phalcon\Acl\Role;
 $acl = new AclList();
 
 /**
- * Crear los roles
+ * Create the roles
  */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
 /**
- * Agregar el rol `guest` al ACL 
+ * Add the `guest` role to the ACL 
  */
 $acl->addRole($guest);
 
 /**
- * Agregar `accounting` heredando desde `guest` 
+ * Add the `accounting` inheriting from `guest` 
  */
 $acl->addRole($accounting, $guest);
 
 /**
- * Agregar `manager` heredando de `accounting` 
+ * Add the `manager` inheriting from `accounting` 
  */
 $acl->addRole($manager, $accounting);
 ```

@@ -145,6 +145,6 @@ $acl->isAllowed($levelTwo, $reports, 'list');
 
 // Returns false
 $acl->isAllowed($admin, $reports, 'list');
-````
+```
 
 The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns `2` which in turn is evaluated in our custom function. Also note that in the custom function for `allow()` the objects are automatically bound, providing all the data necessary for the custom function to work. The custom function can accept any number of additional parameters. The order of the parameters defined in the `function()` constructor does not matter, because the objects will be automatically discovered and bound.

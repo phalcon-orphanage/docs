@@ -9,11 +9,11 @@ category: 'acl'
 
 * * *
 
-## Function based access
+## Acceso basado en una función
 
-Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
+Dependiendo de las necesidades de su aplicación, podría necesitar otra capa de cálculos para permitir o no el acceso a los usuarios a través de la ACL. El método `isAllowed()` acepta un cuarto parámetro que es un callable como una función anónima.
 
-To take advantage of this functionality, you will need to define your function when calling the `allow()` method for the role and component you need. Assume that we need to allow access to all `manager` roles to the `admin` component except if their name is 'Bob' (Poor Bob!). To achieve this we will register an anonymous function that will check this condition.
+Para aprovechar esta funcionalidad, necesitará definir su función al llamar el método `allow()` para el rol y componente que necesita. Supongamos que necesitamos permitir el acceso a todos los roles `manager` al componente `admin` excepto si su nombre es 'Bob' (¡Pobre Bob!). Para lograrlo, registraremos una función anónima que verificará esta condición.
 
 ```php
 <?php
@@ -26,12 +26,12 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Setup the ACL
+ * Establecer el ACL
  */
 $acl->addRole('manager');                   
 $acl->addComponent('admin', ['dashboard', 'users', 'view']);
 
-// Set access level for role into components with custom function
+// Establecer el nivel de acceso para un rol en un componente con una función personalizada
 $acl->allow(
     'manager',
     'admin',
@@ -42,7 +42,7 @@ $acl->allow(
 );
 ```
 
-Now that the callable is defined in the ACL, we will need to call the `isAllowed()` method with an array as the fourth parameter:
+Ahora que el callable esta definido en la ACL, necesitaremos llamar al método `isAllowed()` con un array como cuarto parámetro:
 
 ```php
 <?php
@@ -55,12 +55,12 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Setup the ACL
+ * Establecer el ACL
  */
 $acl->addRole('manager');                   
 $acl->addComponent('admin', ['dashboard', 'users', 'view']);
 
-// Set access level for role into components with custom function
+// Establecer el nivel de acceso para un rol en un componente con una función personalizada
 $acl->allow(
     'manager',
     'admin',
@@ -70,7 +70,7 @@ $acl->allow(
     }
 );
 
-// Returns true
+// Retornará true
 $acl->isAllowed(
     'manager',
     'admin',
@@ -80,7 +80,7 @@ $acl->isAllowed(
     ]
 );
 
-// Returns false
+// Retornará false
 $acl->isAllowed(
     'manager',
     'admin',
@@ -91,10 +91,10 @@ $acl->isAllowed(
 );
 ```
 
-> The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function.
+> El cuarto parámetro debe ser un array. Cada elemento del array representa un parámetro que su función anónima aceptará. La clave del elemento es el nombre del parámetro, mientras que el valor es lo que se pasará como valor de ese parámetro en la función.
 {:.alert .alert-info}
 
-You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
+También puede omitir pasar el cuarto parámetro a `isAllowed()` si lo desea. La acción por defecto para una llamada a `isAllowed()` sin el último parámetro es `Acl::DENY`. Para cambiar este comportamiento, puede hacer una llamada a `setNoArgumentsDefaultAction()`:
 
 ```php
 <?php
@@ -107,12 +107,12 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Setup the ACL
+ * Establecer el ACL
  */
 $acl->addRole('manager');                   
 $acl->addComponent('admin', ['dashboard', 'users', 'view']);
 
-// Set access level for role into components with custom function
+// Establecer el nivel de acceso para un rol en un componente con una función personalizada
 $acl->allow(
     'manager',
     'admin',
@@ -122,11 +122,11 @@ $acl->allow(
     }
 );
 
-// Returns false
+// Retornará false
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(Acl::ALLOW);
 
-// Returns true
+// Retornará true
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```

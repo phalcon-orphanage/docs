@@ -38,10 +38,10 @@ $acl->addRole($guest);
  * Add the `accounting` inheriting from `guest` 
  */
 $acl->addRole($accounting, $guest);
+
 /**
  * Add the `manager` inheriting from `accounting` 
  */
-
 $acl->addRole($manager, $accounting);
 ```
 
