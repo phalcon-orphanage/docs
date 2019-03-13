@@ -5,15 +5,17 @@ version: '4.0'
 ---
 
 
-<a name='contributing'></a>
+<a name='مشارکت'></a>
 
-# Contributing to Phalcon
+# مشارکت در فالکون
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+فالکن  یک پروژه منبع باز است و به شدت به تلاش و مشارکت داوطلبانه متکی است. ما از همه مشارکت کنندگان استقبال میکنیم!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
+لطفاً چند لحظه به برسی این سند برای درک فرایند و مشارکتی کارآمد بپردازید. با پیروی از این دستورالعمل ها، ما می توانیم مسائل را با سرعت بیشتری حل کنیم، ارتباط بهتری داشته باشیم و پروژه را با موفقیت جلو ببریم!
 
-The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub](https://github.com). You can browse our repositories in our [organization page](https://github.com/phalcon).
+کد منبع فالکن (همراه با مستندات، وب سایت ها و غیره)  ذخیره می شود در [گیت هاب](https://github.com). شما می توانید مخازن ما را در [صفحه سازمان](https://github.com/phalcon) مرور کنید.
+
+
 
 <a name='contributions'></a>
 
