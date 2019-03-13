@@ -98,26 +98,58 @@ class ReportsComponent implements ComponentAware
 
 These objects can now be used in our ACL.
 
-```php <?php
+```php
+<?php
 
-use ManagerRole; use Phalcon\Acl; use Phalcon\Acl\Adapter\Memory as AclList; use Phalcon\Acl\Role; use Phalcon\Acl\Component; use ReportsComponent;
+use ManagerRole;
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Component;
+use ReportsComponent;
 
 $acl = new AclList();
 
-/** * Add the roles */ $acl->addRole('manager');
+/**
+ * Add the roles
+ */
+$acl->addRole('manager');
 
-/** * Add the Components */ $acl->addComponent('reports', ['list', 'add', 'view']);
+/**
+ * Add the Components
+ */
+$acl->addComponent('reports', ['list', 'add', 'view']);
 
-/** * Now tie them all together with a custom function. The ManagerRole and * ModelSbject parameters are necessary for the custom function to work */ $acl->allow( 'manager', 'reports', 'list', function (ManagerRole $manager, ModelComponent $model) { return $manager->getId() === $model->getUserId(); } );
+/**
+ * Now tie them all together with a custom function. The ManagerRole and
+ * ModelSbject parameters are necessary for the custom function to work 
+ */
+$acl->allow(
+    'manager', 
+    'reports', 
+    'list',
+    function (ManagerRole $manager, ModelComponent $model) {
+        return $manager->getId() === $model->getUserId();
+    }
+);
 
-// Create the custom objects $levelOne = new ManagerRole(1, 'manager-1'); $levelTwo = new ManagerRole(2, 'manager'); $admin = new ManagerRole(3, 'manager');
+// Create the custom objects
+$levelOne = new ManagerRole(1, 'manager-1');
+$levelTwo = new ManagerRole(2, 'manager');
+$admin    = new ManagerRole(3, 'manager');
 
-// id - name - userId $reports = new ModelComponent(2, 'reports', 2);
+// id - name - userId
+$reports  = new ModelComponent(2, 'reports', 2);
 
-// Check whether our user objects have access // Returns false $acl->isAllowed($levelOne, $reports, 'list');
+// Check whether our user objects have access 
+// Returns false
+$acl->isAllowed($levelOne, $reports, 'list');
 
-// Returns true $acl->isAllowed($levelTwo, $reports, 'list');
+// Returns true
+$acl->isAllowed($levelTwo, $reports, 'list');
 
-// Returns false $acl->isAllowed($admin, $reports, 'list'); ````
+// Returns false
+$acl->isAllowed($admin, $reports, 'list');
+```
 
 The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns `2` which in turn is evaluated in our custom function. Also note that in the custom function for `allow()` the objects are automatically bound, providing all the data necessary for the custom function to work. The custom function can accept any number of additional parameters. The order of the parameters defined in the `function()` constructor does not matter, because the objects will be automatically discovered and bound.

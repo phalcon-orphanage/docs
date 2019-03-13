@@ -9,23 +9,23 @@ category: 'acl'
 
 * * *
 
-## Objects as role name and component name
+## Objetos como nombre de rol y nombre de componente
 
-Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
+Phalcon permite a los desarrolladores definir sus propios objetos de rol y componente. Estos objetos deben implementar las interfaces suministradas:
 
-* [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for Role
-* [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) for Component
+* [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) para Rol
+* [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) para Componente
 
-### Role
+### Rol
 
-We can implement the [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) in our custom class with its own logic. The example below shows a new role object called `ManagerRole`:
+Podemos implementar el [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) en nuestra clase personalizada con su propia lógica. El ejemplo siguiente muestra un nuevo objeto de rol llamado `ManagerRole`:
 
 ```php
 <?php
 
 use Phalcon\Acl\RoleAware;
 
-// Create our class which will be used as roleName
+// Crear nuestra clase que se utilizará como roleName
 class ManagerRole implements RoleAware
 {
     protected $id;
@@ -43,7 +43,7 @@ class ManagerRole implements RoleAware
         return $this->id;
     }
 
-    // Implemented function from RoleAware Interface
+    // Implementamos esta función desde RoleAware Interface
     public function getRoleName()
     {
         return $this->roleName;
@@ -53,14 +53,14 @@ class ManagerRole implements RoleAware
 
 ### Componente
 
-We can implement the [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) in our custom class with its own logic. The example below shows a new role object called `ReportsComponent`:
+Podemos implementar el [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) en nuestra clase personalizada con su propia lógica. El ejemplo siguiente muestra un nuevo objeto de rol llamado `ReportsComponent`:
 
 ```php
 <?php
 
 use Phalcon\Acl\ComponentAware;
 
-// Create our class which will be used as componentName
+// Crear nuestra clase la cual se utilizará como componentName
 class ReportsComponent implements ComponentAware
 {
     protected $id;
@@ -86,7 +86,7 @@ class ReportsComponent implements ComponentAware
         return $this->userId;
     }
 
-    // Implemented function from ComponentAware Interface
+    // Función implementada desde la interfaz ComponentAware
     public function getComponentName()
     {
         return $this->componentName;
@@ -96,28 +96,60 @@ class ReportsComponent implements ComponentAware
 
 ### ACL
 
-These objects can now be used in our ACL.
+Estos objetos pueden ser utilizados ahora en nuestra ACL.
 
-```php <?php
+```php
+<?php
 
-use ManagerRole; use Phalcon\Acl; use Phalcon\Acl\Adapter\Memory as AclList; use Phalcon\Acl\Role; use Phalcon\Acl\Component; use ReportsComponent;
+use ManagerRole;
+use Phalcon\Acl;
+use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Component;
+use ReportsComponent;
 
 $acl = new AclList();
 
-/** * Add the roles */ $acl->addRole('manager');
+/**
+ * Agregar roles
+ */
+$acl->addRole('manager');
 
-/** * Add the Components */ $acl->addComponent('reports', ['list', 'add', 'view']);
+/**
+ * Agregar Componentes
+ */
+$acl->addComponent('reports', ['list', 'add', 'view']);
 
-/** * Now tie them all together with a custom function. The ManagerRole and * ModelSbject parameters are necessary for the custom function to work */ $acl->allow( 'manager', 'reports', 'list', function (ManagerRole $manager, ModelComponent $model) { return $manager->getId() === $model->getUserId(); } );
+/**
+ * Ahora unirlos todos juntos con una función personalizada. Los parámetros ManagerRole y 
+ * ModelSbject son necesarios para que la función personalizada funcione
+ */
+$acl->allow(
+    'manager', 
+    'reports', 
+    'list',
+    function (ManagerRole $manager, ModelComponent $model) {
+        return $manager->getId() === $model->getUserId();
+    }
+);
 
-// Create the custom objects $levelOne = new ManagerRole(1, 'manager-1'); $levelTwo = new ManagerRole(2, 'manager'); $admin = new ManagerRole(3, 'manager');
+// Crear objectos personalizados
+$levelOne = new ManagerRole(1, 'manager-1');
+$levelTwo = new ManagerRole(2, 'manager');
+$admin    = new ManagerRole(3, 'manager');
 
-// id - name - userId $reports = new ModelComponent(2, 'reports', 2);
+// id - name - userId
+$reports  = new ModelComponent(2, 'reports', 2);
 
-// Check whether our user objects have access // Returns false $acl->isAllowed($levelOne, $reports, 'list');
+// Comprobar que objectos de usuarios tienen acceso
+// Retorna false
+$acl->isAllowed($levelOne, $reports, 'list');
 
-// Returns true $acl->isAllowed($levelTwo, $reports, 'list');
+// Retorna true
+$acl->isAllowed($levelTwo, $reports, 'list');
 
-// Returns false $acl->isAllowed($admin, $reports, 'list'); ````
+// Retorna false
+$acl->isAllowed($admin, $reports, 'list');
+```
 
-The second call for `$levelTwo` evaluates `true` since the `getUserId()` returns `2` which in turn is evaluated in our custom function. Also note that in the custom function for `allow()` the objects are automatically bound, providing all the data necessary for the custom function to work. The custom function can accept any number of additional parameters. The order of the parameters defined in the `function()` constructor does not matter, because the objects will be automatically discovered and bound.
+La segunda llamada para `$levelTwo` evalúa a `true` desde el `getUserId()` devuelve `2` que a su vez se evalúa en nuestra función personalizada. También ten en cuenta que en la función personalizada para `allow()` los objetos están automáticamente vinculados, proporcionando todos los datos necesarios para que la función personalizada funcione. La función personalizada puede aceptar cualquier número de parámetros adicionales. El orden de los parámetros definidos en el constructor de la `function()` no importa, porque los objetos serán automáticamente descubiertos y enlazados.
