@@ -619,6 +619,48 @@
       "url": "/config#injecting-into-di"
     }
   ],
+  "collection": [
+    {
+      "text": "Constructor",
+      "url": "/collection-constructor"
+    },
+    {
+      "text": "Reusing",
+      "url": "/collection-reusing"
+    },
+    {
+      "text": "Get",
+      "url": "/collection-get"
+    },
+    {
+      "text": "Has",
+      "url": "/collection-has"
+    },
+    {
+      "text": "Set",
+      "url": "/collection-set"
+    },
+    {
+      "text": "Remove",
+      "url": "/collection-remove"
+    },
+    {
+      "text": "Iteration",
+      "url": "/collection-iteration"
+    },
+    {
+      "text": "Count",
+      "url": "/collection-count"
+    },
+    {
+      "text": "Serialization",
+      "url": "/collection-serialization"
+    },
+    {
+      "text": "Transformations",
+      "url": "/collection-transformations"
+    }
+  ],
   "contributions": [
     {
       "text": "Contributing to Phalcon",
