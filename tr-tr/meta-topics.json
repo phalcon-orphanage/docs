@@ -1,67 +1,67 @@
 [
     {
-        "text": "General",
+        "text": "Genel",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Giriş",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Sürüm Notları",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Yükseltme",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Sponsorlar",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Katkı Sağlama",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Genel Bakış",
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "İstekleri Çekme",
                 "url": "/new-pull-request"
             },
             {
-                "text": "NFR",
+                "text": "Yeni Katkı Sağlama",
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Geri Kayıt Üretimi",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Tekrarlanabilir Testler",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Test Ortamı",
                 "url": "/testing-environment"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Başlangıç",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Kurulum",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Web Sunucusu Kurulumu",
                 "url": "/webserver-setup"
             },
             {
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "text": "Environments",
+        "text": "Ortamlar",
         "url": "",
         "menu": [
             {
@@ -85,15 +85,15 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Geliştirici Araçları",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Kurulum",
                 "url": "/devtools-installation"
             },
             {
-                "text": "Usage",
+                "text": "Kullanım",
                 "url": "/devtools-usage"
             },
             {
@@ -103,15 +103,15 @@
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Öğreticiler",
         "url": "",
         "menu": [
             {
-                "text": "Performance",
+                "text": "Performans",
                 "url": "/performance"
             },
             {
-                "text": "Basic",
+                "text": "Temel",
                 "url": "/tutorial-base"
             },
             {
@@ -127,21 +127,21 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Kullanım Durumunda",
                 "url": "/use-case"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Çekirdek",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API Sayfası",
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "Uygulama",
                 "url": "/application"
             },
             {
@@ -153,7 +153,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI Katmanı",
                 "url": "/di"
             },
             {
@@ -163,41 +163,41 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Servisler",
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "Önbellek",
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Ayar",
                 "url": "/config"
             },
             {
-                "text": "Escaper",
+                "text": "Kaçış",
                 "url": "/escaper"
             },
             {
-                "text": "Loader",
+                "text": "Yükleyici",
                 "url": "/loader"
             },
             {
-                "text": "Logging",
+                "text": "Kayıt Tutucu",
                 "url": "/logger"
             },
             {
-                "text": "Queue",
+                "text": "Kuyruk",
                 "url": "/queue"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "Veritabanı",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Katman",
                 "url": "/db-layer"
             },
             {
@@ -209,19 +209,19 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Modeller",
                 "url": "/db-models"
             },
             {
-                "text": "Behaviors",
+                "text": "Davranışlar",
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Önbellek",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Olaylar",
                 "url": "/db-models-events"
             },
             {
@@ -229,29 +229,29 @@
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "İlişkiler",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "İşlemler",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Doğrulayıcılar",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Migrations",
+                "text": "Birleştirme",
                 "url": "/db-migrations"
             },
             {
-                "text": "Pagination",
+                "text": "Sayfalama",
                 "url": "/db-pagination"
             }
         ]
     },
     {
-        "text": "Front End",
+        "text": "Ön Yüz",
         "url": "",
         "menu": [
             {
@@ -285,15 +285,15 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "İş Mantığı",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Yetki Kontrol Listesi",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Açıklamalar",
                 "url": "/annotations"
             },
             {
@@ -305,11 +305,11 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Olay Yönetimi",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Filtreler",
                 "url": "/filter"
             },
             {
@@ -317,7 +317,7 @@
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Oturumlar",
                 "url": "/session"
             },
             {
@@ -325,7 +325,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Doğrulama",
                 "url": "/validation"
             }
         ]
@@ -335,21 +335,21 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "Çerezler",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "İstek",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "Çıktı",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "Güvenlik",
         "url": "",
         "menu": [
             {
@@ -357,7 +357,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Güvenlik",
                 "url": "/security"
             }
         ]
@@ -367,29 +367,29 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Uluslararasılaşma",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Çeviri",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Yarar",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "Koleksiyon",
                 "url": "/collection"
             },
             {
-                "text": "Helper",
+                "text": "Yardım",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "Kayıt",
                 "url": "/registry"
             }
         ]
