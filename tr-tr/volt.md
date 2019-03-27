@@ -17,7 +17,7 @@ Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally create
 
 <a name='introduction'></a>
 
-## Introduction
+## Giriş
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
