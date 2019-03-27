@@ -37,4 +37,4 @@ if (true === $request->isPost()) {
 - [Dependency Injection](request-di)
 - [Working with Headers](request-working-with-headers)
 - [Uploading Files](request-uploading-files)
-- [Events](request-events)
+- [Olaylar](request-events)
