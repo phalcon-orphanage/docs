@@ -964,7 +964,7 @@ $component = $di->get(
 
 <a name='envents'></a>
 
-### Events
+### Olaylar
 
 [Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
