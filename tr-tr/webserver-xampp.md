@@ -7,21 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on XAMPP
+# XAMPP Üzerinde Kurulum
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Phalcon'un doğru sürümünü indirin
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Phalcon kütüphanesini indirdikten sonra, aşağıda gösterilen gibi bir zip dosyası bulacaksınız:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Phalcon DLL'sini edinmek için kütüphaneyi arşivden çıkarın:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -35,7 +35,7 @@ Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edit
 extension=php_phalcon.dll
 ```
 
-and save it.
+ve kaydedin.
 
 ![](/assets/images/content/webserver-xampp-4.png)
 
@@ -69,7 +69,7 @@ The following screencast is a step by step guide to install Phalcon on Windows:
 
 <a name='related'></a>
 
-## Related Guides
+## İlgili Kılavuzlar
 
-* [General Installation](/4.0/en/installation)
-* [Installation on WAMP](/4.0/en/webserver-wamp)
+* [Genel kurulum](/4.0/en/installation)
+* [WAMP Üzerinde Kurulum](/4.0/en/webserver-wamp)
