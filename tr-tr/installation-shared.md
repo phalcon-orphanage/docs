@@ -4,7 +4,7 @@ language: 'tr-tr'
 version: '4.0'
 category: 'installation'
 ---
-# Installation
+# Kurulum
 
 * * *
 
