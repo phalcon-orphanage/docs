@@ -3323,11 +3323,11 @@
   ],
   "webserver-wamp": [
     {
-      "text": "Installation on WAMP",
+      "text": "WAMP Üzerinde Kurulum",
       "url": "/webserver-wamp#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Phalcon'un doğru sürümünü indirin",
       "url": "/webserver-wamp#phalcon"
     },
     {
@@ -3337,11 +3337,11 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
+      "text": "XAMPP Üzerinde Kurulum",
       "url": "/webserver-xampp#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Phalcon'un doğru sürümünü indirin",
       "url": "/webserver-xampp#phalcon"
     },
     {
