@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Validation
+# Onaylama
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
