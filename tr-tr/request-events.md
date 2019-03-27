@@ -14,7 +14,7 @@ The [Phalcon\Http\Request](api/Phalcon_Http_Request) object implements the [Phal
 
 <a name='events'></a>
 
-## Events
+## Olaylar
 
 | Event                        | Description                                      |
 | ---------------------------- | ------------------------------------------------ |
