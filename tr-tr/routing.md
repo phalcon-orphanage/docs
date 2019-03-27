@@ -7,7 +7,7 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Routing
+# Yönlendirme
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -1056,7 +1056,7 @@ foreach ($testRoutes as $testRoute) {
 
 <a name='events'></a>
 
-## Events
+## Olaylar
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
