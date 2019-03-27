@@ -187,7 +187,7 @@
               "url": "/application-micro#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
+                  "text": "Kullanım örneği",
                   "url": "/application-micro#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
@@ -667,7 +667,7 @@
       "url": "/contributions#contributing"
     },
     {
-      "text": "Contributions",
+      "text": "Katkılar",
       "url": "/contributions#contributions"
     },
     {
@@ -1449,7 +1449,7 @@
       "url": "/devtools-installation#prerequisites"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "/devtools-installation#installation",
       "menu": [
         {
@@ -1483,7 +1483,7 @@
       "url": "/devtools-usage#download"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "/devtools-usage#installation"
     },
     {
@@ -1831,7 +1831,7 @@
       "url": "/flash#adapters"
     },
     {
-      "text": "Usage",
+      "text": "Kullanım",
       "url": "/flash#usage"
     },
     {
@@ -2227,7 +2227,7 @@
       "url": "/reproducible-tests#overview"
     },
     {
-      "text": "Database",
+      "text": "Veritabanı",
       "url": "/reproducible-tests#database"
     },
     {
@@ -2579,7 +2579,7 @@
       "url": "#solution"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "#installation"
     },
     {
@@ -2643,7 +2643,7 @@
       "url": "#development"
     },
     {
-      "text": "Services",
+      "text": "Hizmetler",
       "url": "#services"
     }
   ],
@@ -2917,7 +2917,7 @@
           "url": "#psr"
         },
         {
-          "text": "Installation",
+          "text": "Kurulum",
           "url": "#installation"
         }
       ]
@@ -3161,7 +3161,7 @@
       "url": "/volt#overview"
     },
     {
-      "text": "Introduction",
+      "text": "Giriş",
       "url": "/volt#introduction"
     },
     {
