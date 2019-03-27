@@ -19,7 +19,7 @@ category: 'acl'
 - [Objects as role name and component name](acl-objects)
 - [Roles Inheritance](acl-roles-inheritance)
 - [Serializing ACL lists](acl-serialization)
-- [Events](acl-events)
+- [Olaylar](acl-events)
 - [Implementing your own adapters](acl-custom-adapters)
 
 * * *
