@@ -41,7 +41,7 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/acl-events"
     },
     {
@@ -131,7 +131,7 @@
       "url": "/application-micro#creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/application-micro#routing",
       "menu": [
         {
@@ -177,7 +177,7 @@
                   "url": "/application-micro#routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
+                  "text": "Kontrolcüler",
                   "url": "/application-micro#routing-handlers-controllers"
                 }
               ]
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/application-micro#events",
       "menu": [
         {
@@ -377,7 +377,7 @@
           ]
         },
         {
-          "text": "Models",
+          "text": "Modeller",
           "url": "/application-micro#models"
         },
         {
@@ -1311,7 +1311,7 @@
   ],
   "db-pagination": [
     {
-      "text": "Pagination",
+      "text": "Sayfa numaralandırma",
       "url": "/db-pagination#overview"
     },
     {
@@ -1845,7 +1845,7 @@
   ],
   "forms": [
     {
-      "text": "Forms",
+      "text": "Formlar",
       "url": "/forms#overview"
     },
     {
@@ -1887,7 +1887,7 @@
   ],
   "i18n": [
     {
-      "text": "Internationalization",
+      "text": "Uluslararası yapma",
       "url": "/i18n#overview"
     },
     {
@@ -2123,7 +2123,7 @@
       "url": "/mvc#architecture"
     },
     {
-      "text": "Models",
+      "text": "Modeller",
       "url": "/mvc#models"
     },
     {
@@ -2131,7 +2131,7 @@
       "url": "/mvc#views"
     },
     {
-      "text": "Controllers",
+      "text": "Kontrolcüler",
       "url": "/mvc#controllers"
     }
   ],
@@ -2281,7 +2281,7 @@
       "url": "/request-uploading-files"
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/request-events"
     }
   ],
@@ -2319,7 +2319,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/routing#overview"
     },
     {
@@ -2419,7 +2419,7 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Güvenlik",
       "url": "/security#overview"
     },
     {
@@ -2673,7 +2673,7 @@
   ],
   "tutorial-base": [
     {
-      "text": "View",
+      "text": "Görünüm",
       "url": "/tutorial-base#basic"
     },
     {
@@ -2741,7 +2741,7 @@
       "url": "/tutorial-invo#structure"
     },
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/tutorial-invo#routing"
     },
     {
@@ -3027,7 +3027,7 @@
   ],
   "validation": [
     {
-      "text": "Validation",
+      "text": "Onaylama",
       "url": "/validation#overview"
     },
     {
@@ -3177,7 +3177,7 @@
       "url": "/volt#variables"
     },
     {
-      "text": "Filters",
+      "text": "Filtreler",
       "url": "/volt#filters"
     },
     {
@@ -3299,7 +3299,7 @@
           "url": "/volt#extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Filtreler",
           "url": "/volt#extending-filters"
         },
         {
