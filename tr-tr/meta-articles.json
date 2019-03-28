@@ -5,7 +5,7 @@
       "url": "/acl"
     },
     {
-      "text": "Creating an ACL",
+      "text": "ACL Oluşturma",
       "url": "/acl-setup"
     },
     {
@@ -17,15 +17,15 @@
       "url": "/acl-adding-components"
     },
     {
-      "text": "Defining Access Controls",
+      "text": "Erişim Kontrolleri Tanımlama",
       "url": "/acl-access-controls"
     },
     {
-      "text": "Querying an ACL",
+      "text": "ACL Sorgulama",
       "url": "/acl-querying"
     },
     {
-      "text": "Function based access",
+      "text": "Fonksiyona Dayalı Erişim",
       "url": "/acl-function-based-access"
     },
     {
@@ -37,7 +37,7 @@
       "url": "/acl-roles-inheritance"
     },
     {
-      "text": "Serializing ACL lists",
+      "text": "ACL Listelerini Seri Hale Getirme",
       "url": "/acl-serialization"
     },
     {
@@ -45,13 +45,13 @@
       "url": "/acl-events"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "/acl-custom-adapters"
     }
   ],
   "annotations": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "/annotations#overview"
     },
     {
@@ -59,75 +59,75 @@
       "url": "/annotations#setup"
     },
     {
-      "text": "Adding Roles to the ACL",
+      "text": "ACL'ye Rol Ekleme",
       "url": "/annotations#factory"
     },
     {
-      "text": "Reading Annotations",
+      "text": "Açıklamaları Okuyun",
       "url": "/annotations#reading"
     },
     {
-      "text": "Types of Annotations",
+      "text": "Açıklama Türleri",
       "url": "/annotations#types"
     },
     {
-      "text": "Practical Usage",
+      "text": "Pratik kullanım",
       "url": "/annotations#usage",
       "menu": [
         {
-          "text": "Cache Enabler with Annotations",
+          "text": "Ek Açıklamalı Önbellek Etkinleştirici",
           "url": "/annotations#usage-cache"
         },
         {
-          "text": "Private/Public areas with Annotations",
+          "text": "Açıklamalar içeren Özel / Genel alanlar",
           "url": "/annotations#usage-access-management"
         }
       ]
     },
     {
-      "text": "Annotations Adapters",
+      "text": "Ek açıklamalar bağdaştırıcıları",
       "url": "/annotations#adapters",
       "menu": [
         {
-          "text": "Implementing your own adapters",
+          "text": "Kendi Bağdaştırıcılarını Uygulama",
           "url": "/annotations#adapters-custom"
         }
       ]
     },
     {
-      "text": "External Resources",
+      "text": "Dış Kaynaklar",
       "url": "/annotations#resources"
     }
   ],
   "application-cli": [
     {
-      "text": "Creating a CLI Application",
+      "text": "CLI Uygulaması Oluşturma",
       "url": "/application-cli#creating-cli-application"
     },
     {
-      "text": "Structure",
+      "text": "Yapı",
       "url": "/application-cli#structure"
     },
     {
-      "text": "Creating a Bootstrap",
+      "text": "Bir Önyükleme Oluşturma",
       "url": "/application-cli#creating-bootstrap"
     },
     {
-      "text": "Tasks",
+      "text": "Görevler",
       "url": "/application-cli#tasks"
     },
     {
-      "text": "Processing action parameters",
+      "text": "Eylem parametrelerini işlemek",
       "url": "/application-cli#processing-action-parameters"
     },
     {
-      "text": "Running tasks in a chain",
+      "text": "Bir zincirdeki görevleri çalıştırma",
       "url": "/application-cli#running-tasks-chain"
     }
   ],
   "application-micro": [
     {
-      "text": "Creating a Micro Application",
+      "text": "Küçük Bir Uygulama Yaratma",
       "url": "/application-micro#creating-micro-application"
     },
     {
@@ -135,45 +135,45 @@
       "url": "/application-micro#routing",
       "menu": [
         {
-          "text": "Setup",
+          "text": "Ayarlar",
           "url": "/application-micro#routing-setup",
           "menu": [
             {
-              "text": "Application object",
+              "text": "Uygulama nesnesi",
               "url": "/application-micro#routing-setup-application"
             },
             {
-              "text": "Router object",
+              "text": "Yönlendirici nesnesi",
               "url": "/application-micro#routing-setup-router"
             }
           ]
         },
         {
-          "text": "Rewrite Rules",
+          "text": "Yeniden Yazma Kuralları",
           "url": "/application-micro#rewrite-rules"
         },
         {
-          "text": "Handlers",
+          "text": "İşleyiciler",
           "url": "/application-micro#routing-handlers",
           "menu": [
             {
-              "text": "Definitions",
+              "text": "Tanımlar",
               "url": "/application-micro#routing-handlers-definitions",
               "menu": [
                 {
-                  "text": "Anonymous Function",
+                  "text": "Gizli Fonksiyon",
                   "url": "/application-micro#routing-handlers-anonymous-function"
                 },
                 {
-                  "text": "Function",
+                  "text": "Fonksiyon",
                   "url": "/application-micro#routing-handlers-function"
                 },
                 {
-                  "text": "Static Method",
+                  "text": "Statik Yöntemler",
                   "url": "/application-micro#routing-handlers-static-method"
                 },
                 {
-                  "text": "Method in an Object",
+                  "text": "Bir Nesne Yöntemi",
                   "url": "/application-micro#routing-handlers-object-method"
                 },
                 {
@@ -193,7 +193,7 @@
               ]
             },
             {
-              "text": "Not Found (404)",
+              "text": "Bulunamadı (404)",
               "url": "/application-micro#routing-handlers-not-found"
             }
           ]
@@ -237,15 +237,15 @@
           ]
         },
         {
-          "text": "Collections",
+          "text": "Koleksiyonlar",
           "url": "/application-micro#routing-collections"
         },
         {
-          "text": "Parameters",
+          "text": "Parametreler",
           "url": "/application-micro#routing-parameters"
         },
         {
-          "text": "Redirections",
+          "text": "Yönlendirmeler",
           "url": "/application-micro#routing-redirections"
         },
         {
@@ -255,11 +255,11 @@
       ]
     },
     {
-      "text": "Dependency Injector",
+      "text": "Bağımlılık Enjektörü",
       "url": "/application-micro#dependency-injector"
     },
     {
-      "text": "Responses",
+      "text": "Yanıtlar",
       "url": "/application-micro#responses",
       "menu": [
         {
@@ -275,7 +275,7 @@
           "url": "/application-micro#responses-direct-output-json"
         },
         {
-          "text": "New Response object",
+          "text": "Yani yanıt objesi",
           "url": "/application-micro#responses-new-response-object"
         },
         {
@@ -335,7 +335,7 @@
           ]
         },
         {
-          "text": "Setup",
+          "text": "Ayarlar",
           "url": "/application-micro#middleware-setup"
         },
         {
@@ -423,7 +423,7 @@
       "url": "/application#events"
     },
     {
-      "text": "External Resources",
+      "text": "Dış Kaynaklar",
       "url": "/application#resources"
     }
   ],
@@ -441,7 +441,7 @@
       "url": "/assets#resources-local-remote"
     },
     {
-      "text": "Collections",
+      "text": "Koleksiyonlar",
       "url": "/assets#collections"
     },
     {
@@ -501,21 +501,21 @@
           "url": "/cache#backend-file-example"
         },
         {
-          "text": "Memcached Backend Example",
+          "text": "Memcached Backend Örneği",
           "url": "/cache#backend-memcached-example"
         }
       ]
     },
     {
-      "text": "Querying the cache",
+      "text": "Önbellekte sorgulama",
       "url": "/cache#read"
     },
     {
-      "text": "Deleting data from the cache",
+      "text": "Ön bellekten veri silme",
       "url": "/cache#delete"
     },
     {
-      "text": "Checking cache existence",
+      "text": "Önbellek varlığını kontrol etme",
       "url": "/cache#exists"
     },
     {
@@ -1881,7 +1881,7 @@
       "url": "/forms#manager"
     },
     {
-      "text": "External Resources",
+      "text": "Dış Kaynaklar",
       "url": "/forms#external"
     }
   ],
@@ -2439,7 +2439,7 @@
       "url": "/security#random"
     },
     {
-      "text": "External Resources",
+      "text": "Dış Kaynaklar",
       "url": "/security#resources"
     }
   ],
@@ -2479,7 +2479,7 @@
       "url": "/session#data-persistence"
     },
     {
-      "text": "Implementing your own adapters",
+      "text": "Kendi Bağdaştırıcılarını Uygulama",
       "url": "/session#custom-adapters"
     }
   ],
@@ -2563,11 +2563,11 @@
   ],
   "testing-environment": [
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "#overview"
     },
     {
-      "text": "Overview",
+      "text": "Genel Bakış",
       "url": "#overview"
     },
     {
@@ -2927,7 +2927,7 @@
       "url": "#acl",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Genel Bakış",
           "url": "#acl-overview"
         },
         {
@@ -2941,7 +2941,7 @@
       "url": "#filter",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Genel Bakış",
           "url": "#filter-overview"
         },
         {
@@ -2963,7 +2963,7 @@
       "url": "#logger",
       "menu": [
         {
-          "text": "Overview",
+          "text": "Genel Bakış",
           "url": "#filter-overview"
         },
         {
