@@ -18,7 +18,7 @@ final public static function between(int $value, int $from, int $to): bool
 
 Checks if the passed value is between the range specified in `from` and `to`
 
-### Parameters
+### Parametreler
 
 | `int` | `$value` | The value to check | | `int` | `$from` | The minimum range value | | `int` | `$to` | The maximum range value |
 
