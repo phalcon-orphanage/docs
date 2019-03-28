@@ -105,7 +105,7 @@ public function indexAction()
 
 <a name='collections'></a>
 
-## Collections
+## Koleksiyonlar
 
 Collections group resources of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific resources to make it easier to place those resources in the views:
 

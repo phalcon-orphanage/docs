@@ -10,17 +10,17 @@ category: 'acl'
 * * *
 
 - [Erişim Kontrol Listeleri (ACL)](acl-overview)
-- [Creating an ACL](acl-setup)
+- [ACL Oluşturma](acl-setup)
 - [Adding Roles](acl-adding-roles)
 - [Adding Components](acl-adding-components)
-- [Defining Access Controls](acl-access-controls)
-- [Querying an ACL](acl-querying)
-- [Function based access](acl-function-based-access)
+- [Erişim Kontrolleri Tanımlama](acl-access-controls)
+- [ACL Sorgulama](acl-querying)
+- [Fonksiyona Dayalı Erişim](acl-function-based-access)
 - [Objects as role name and component name](acl-objects)
 - [Roles Inheritance](acl-roles-inheritance)
-- [Serializing ACL lists](acl-serialization)
+- [ACL Listelerini Seri Hale Getirme](acl-serialization)
 - [Olaylar](acl-events)
-- [Implementing your own adapters](acl-custom-adapters)
+- [Kendi Bağdaştırıcılarını Uygulama](acl-custom-adapters)
 
 * * *
 

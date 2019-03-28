@@ -18,7 +18,7 @@ final public static function get( array $collection, mixed $index, mixed $defaul
 
 Retrieves an element from an array. If the element exists its value is returned. If not, the `defaultValue` is returned.
 
-### Parameters
+### Parametreler
 
 | `array` | `$collection` | The array to check | | `mixed` | `$index` | The index we need to retrieve | | `mixed` | `$defaultValue` | Default value returned if the index does not exist. |
 
@@ -34,7 +34,7 @@ final public static function has( array $collection, mixed $index ): bool
 
 Checks if an element exists in an array. Returns `true` if found, `false` otherwise.
 
-### Parameters
+### Parametreler
 
 | `array` | `$collection` | The array to check | | `mixed` | `$index` | The index we need to retrieve |
 
@@ -50,7 +50,7 @@ final public static function set( array $collection, mixed $value [, $index = nu
 
 Sets a value in an array element.
 
-### Parameters
+### Parametreler
 
 | `array` | `$collection` | The array to check | | `mixed` | `$value` | The value of the element | | `mixed` | `$index` | (optional) The index to store the element under |
 

@@ -77,7 +77,7 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 <a name='acl-overview'></a>
 
-### Overview
+### Genel Bakış
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -116,7 +116,7 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 <a name='filter-overview'></a>
 
-### Overview
+### Genel Bakış
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 

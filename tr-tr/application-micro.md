@@ -30,7 +30,7 @@ $app->handle();
 
 <a name='creating-micro-applications'></a>
 
-## Creating a Micro Application
+## Küçük Bir Uygulama Yaratma
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
@@ -54,7 +54,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is v
 
 <a name='routing-setup'></a>
 
-### Setup
+### Ayarlar
 
 Routing is handled by the [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object. [[Info](/4.0/en/routing)]
 
@@ -76,7 +76,7 @@ $app->get(
 
 <a name='routing-setup-application'></a>
 
-### Application object
+### Uygulama nesnesi
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application object as follows:
 
@@ -96,7 +96,7 @@ $app->get(
 
 <a name='routing-setup-router'></a>
 
-### Router object
+### Yönlendirici nesnesi
 
 You can also create a [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -123,7 +123,7 @@ Each method has its advantages and disadvantages. It all depends on the design a
 
 <a name='rewrite-rules'></a>
 
-## Rewrite Rules
+## Yeniden Yazma Kuralları
 
 In order for routes to work, certain configuration changes need to be made in your web server's configuration for your particular site.
 
@@ -131,19 +131,19 @@ Those changes are outlined in the [rewrite rules](/4.0/en/rewrite-rules).
 
 <a name='routing-handlers'></a>
 
-## Handlers
+## İşleyiciler
 
 Handlers are callable pieces of code that get attached to a route. When the route is matched, the handler is executed with all the defined parameters. A handler is any callable piece of code that exists in PHP.
 
 <a name='routing-handlers-definitions'></a>
 
-### Definitions
+### Tanımlar
 
 Phalcon offers several ways to attach a handler to a route. Your application needs and design as well as coding style will be the factors influencing your choice of implementation.
 
 <a name='routing-handlers-anonymous-function'></a>
 
-#### Anonymous Function
+#### Gizli Fonksiyon
 
 Finally we can use an anonymous function (as seen above) to handle the request
 
@@ -171,7 +171,7 @@ $app->get(
 
 <a name='routing-handlers-function'></a>
 
-#### Function
+#### Fonksiyon
 
 We can define a function as our handler and attach it to a specific route.
 
@@ -189,7 +189,7 @@ $app->get(
 
 <a name='routing-handlers-static-method'></a>
 
-#### Static Method
+#### Statik Yöntemler
 
 We can also use a static method as our handler as follows:
 
@@ -209,7 +209,7 @@ $app->get(
 
 <a name='routing-handlers-object-method'></a>
 
-#### Method in an Object
+#### Bir Nesne Yöntemi
 
 We can also use a method in an object:
 
@@ -588,7 +588,7 @@ Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 <a name='routing-collections'></a>
 
-## Collections
+## Koleksiyonlar
 
 Collections are a handy way to group collections attached to a handler and a common prefix (if needed). For a hypothetical `/orders` endpoint we could have the following endpoints:
 
@@ -622,7 +622,7 @@ $app->mount($orders);
 
 <a name='routing-parameters'></a>
 
-## Parameters
+## Parametreler
 
 We have briefly seen above how parameters are defined in the routes. Parameters are set in a route string by enclosing the name of the parameter in brackets.
 
@@ -660,7 +660,7 @@ Additional information: [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) [Info](/4.0
 
 <a name='routing-redirections'></a>
 
-## Redirections
+## Yönlendirmeler
 
 You can redirect one matched route to another using the [Phalcon\Http\Response](api/Phalcon_Http_Response) object, just like in a full application.
 
@@ -746,7 +746,7 @@ $app->get(
 
 <a name='dependency-injector'></a>
 
-# Dependency Injector
+# Bağımlılık Enjektörü
 
 When a micro application is created, a [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) services container is create implicitly.
 
@@ -839,7 +839,7 @@ $app->get(
 
 <a name='responses'></a>
 
-# Responses
+# Yanıtlar
 
 A micro application can return many different types of responses. Direct output, use a template engine, calculated data, view based data, JSON etc.
 
@@ -891,7 +891,7 @@ $app->get(
 
 <a name='responses-new-response-object'></a>
 
-## New Response object
+## Yani yanıt objesi
 
 You can use the `setContent` method of the response object to return the response back:
 
@@ -1170,7 +1170,7 @@ $app->finish(
 
 <a name='middleware-setup'></a>
 
-## Setup
+## Ayarlar
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 

@@ -22,7 +22,7 @@ category: 'collection'
 
 * * *
 
-## Overview
+## Genel Bakış
 
 `Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
 
