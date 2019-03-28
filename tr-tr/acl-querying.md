@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Querying an ACL
+## ACL Sorgulama
 
 Once the list has been defined, we can query it to check if a particular role has access to a particular component and action. To do so, we need to use the `isAllowed()` method.
 
