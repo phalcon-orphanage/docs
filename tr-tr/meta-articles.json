@@ -385,7 +385,7 @@
           "url": "/application-micro#model-instances"
         },
         {
-          "text": "Views",
+          "text": "Görüntülenmeler",
           "url": "/application-micro#views"
         },
         {
@@ -2119,7 +2119,7 @@
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
+      "text": "MVC Yapısı",
       "url": "/mvc#architecture"
     },
     {
@@ -2127,7 +2127,7 @@
       "url": "/mvc#models"
     },
     {
-      "text": "Views",
+      "text": "Görüntülenmeler",
       "url": "/mvc#views"
     },
     {
