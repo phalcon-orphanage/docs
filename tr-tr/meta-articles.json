@@ -519,25 +519,25 @@
       "url": "/cache#exists"
     },
     {
-      "text": "Lifetime",
+      "text": "Ömür",
       "url": "/cache#lifetime"
     },
     {
-      "text": "Multi-Level Cache",
+      "text": "Çok Seviyeli Önbellek",
       "url": "/cache#multi-level"
     },
     {
-      "text": "Frontend Adapters",
+      "text": "Frontend adaptörleri",
       "url": "/cache#adapters-frontend",
       "menu": [
         {
-          "text": "Implementing your own Frontend adapters",
+          "text": "Kendi Frontend bağdaştırıcılarınızı uygulama",
           "url": "/cache#adapters-frontend-custom"
         }
       ]
     },
     {
-      "text": "Backend Adapters",
+      "text": "Backend adaptörleri",
       "url": "adapters-backend",
       "menu": [
         {
@@ -545,39 +545,39 @@
           "url": "/cache#adapters-backend-factory"
         },
         {
-          "text": "Implementing your own Backend adapters",
+          "text": "Kendi Backend adaptörlerinizi uygulama",
           "url": "/cache#adapters-backend-custom"
         },
         {
-          "text": "File Backend Options",
+          "text": "Dosya Backend Seçenekleri",
           "url": "/cache#adapters-backend-file"
         },
         {
-          "text": "Libmemcached Backend Options",
+          "text": "Libmemcached Backend Seçenekleri",
           "url": "/cache#adapters-backend-libmemcached"
         },
         {
-          "text": "Memcache Backend Options",
+          "text": "Memcache Backend Seçenekleri",
           "url": "/cache#adapters-backend-memcache"
         },
         {
-          "text": "APC Backend Options",
+          "text": "APC Backend Seçenekleri",
           "url": "/cache#adapters-backend-apc"
         },
         {
-          "text": "APCU Backend Options",
+          "text": "APCU Backend Seçenekleri",
           "url": "/cache#adapters-backend-apcu"
         },
         {
-          "text": "Mongo Backend Options",
+          "text": "Mongo Backend Seçenekleri",
           "url": "/cache#adapters-backend-mongo"
         },
         {
-          "text": "XCache Backend Options",
+          "text": "XCache Backend Seçenekleri",
           "url": "/cache#adapters-backend-xcache"
         },
         {
-          "text": "Redis Backend Options",
+          "text": "Redis Backend Seçenekleri",
           "url": "/cache#adapters-backend-redis"
         }
       ]
@@ -585,7 +585,7 @@
   ],
   "config": [
     {
-      "text": "Reading Configurations",
+      "text": "Yapılandırmaları Okuma",
       "url": "/config#overview",
       "menu": [
         {
@@ -595,15 +595,15 @@
       ]
     },
     {
-      "text": "Native Arrays",
+      "text": "Doğal Diziler",
       "url": "/config#native-arrays"
     },
     {
-      "text": "File Adapters",
+      "text": "Dosya Bağdaştırıcıları",
       "url": "/config#file-adapter"
     },
     {
-      "text": "Reading INI Files",
+      "text": "INI Dosyalarını Okuma",
       "url": "/config#ini-files"
     },
     {
@@ -611,11 +611,11 @@
       "url": "/config#merging"
     },
     {
-      "text": "Nested Configuration",
+      "text": "İç İçe Yapılandırma",
       "url": "/config#nested-configuration"
     },
     {
-      "text": "Injecting Configuration Dependency",
+      "text": "Yapılandırma Bağımlılığını Enjekte Etme",
       "url": "/config#injecting-into-di"
     }
   ],
