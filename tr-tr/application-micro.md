@@ -1703,7 +1703,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Görüntülenmeler
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 
