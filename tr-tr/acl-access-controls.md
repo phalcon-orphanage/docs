@@ -9,7 +9,7 @@ category: 'acl'
 
 * * *
 
-## Defining Access Controls
+## Erişim Kontrolleri Tanımlama
 
 After both the `Roles` and `Components` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the role since a small mistake here can allow access to roles for components that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl](api/Phalcon_Acl) is `Acl::DENY`, following the [whitelist](https://en.wikipedia.org/wiki/Whitelisting) approach.
 
