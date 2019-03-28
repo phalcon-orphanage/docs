@@ -7,21 +7,21 @@ version: '4.0'
 
 <a name='overview'></a>
 
-# Installation on WAMP
+# WAMP Üzerinde Kurulum
 
 [WampServer](https://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
 <a name='phalcon'></a>
 
-## Download the right version of Phalcon
+## Phalcon'un doğru sürümünü indirin
 
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Phalcon kütüphanesini indirdikten sonra, aşağıda gösterilen gibi bir zip dosyası bulacaksınız:
 
 ![](/assets/images/content/webserver-xampp-1.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+Phalcon DLL'sini edinmek için kütüphaneyi arşivden çıkarın:
 
 ![](/assets/images/content/webserver-xampp-2.png)
 
@@ -33,7 +33,7 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 
 ```ini extension=php_phalcon.dll
 
-    <br />and save it.
+    <br />ve kaydedin.
     
     ![](/assets/images/content/webserver-wamp-2.png)
     
@@ -43,7 +43,7 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
     extension=php_phalcon.dll 
     
 
-and save it.
+ve kaydedin.
 
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
@@ -57,7 +57,7 @@ Congratulations! You are now phlying with Phalcon.
 
 <a name='related'></a>
 
-## Related Guides
+## İlgili Kılavuzlar
 
-* [General Installation](/4.0/en/installation)
-* [Installation on XAMPP](/4.0/en/webserver-xampp)
+* [Genel kurulum](/4.0/en/installation)
+* [XAMPP Üzerinde Kurulum](/4.0/en/webserver-xampp)

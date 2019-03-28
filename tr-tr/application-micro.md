@@ -44,7 +44,7 @@ $app = new Micro();
 
 <a name='routing'></a>
 
-## Routing
+## Yönlendirme
 
 Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is very easy. Routes are defined as follows:
 
@@ -233,7 +233,7 @@ $app->get(
 
 <a name='routing-handlers-controllers'></a>
 
-#### Controllers
+#### Kontrolcüler
 
 With the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
 
@@ -321,7 +321,7 @@ $orders->setHandler('Blog\Controllers\OrdersController', true);
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
 
-#### Use case
+#### Kullanım örneği
 
 We are developing an API for an online store. The endpoints are `/users`, `/orders` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -989,7 +989,7 @@ $app->get(
 
 <a name='events'></a>
 
-# Events
+# Olaylar
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1633,7 +1633,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 <a name='models'></a>
 
-# Models
+# Modeller
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1703,7 +1703,7 @@ Currently the binder will only use the models primary key to perform a `findFirs
 
 <a name='views'></a>
 
-# Views
+# Görüntülenmeler
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 

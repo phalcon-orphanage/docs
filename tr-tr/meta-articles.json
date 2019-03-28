@@ -41,7 +41,7 @@
       "url": "/acl-serialization"
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/acl-events"
     },
     {
@@ -131,7 +131,7 @@
       "url": "/application-micro#creating-micro-application"
     },
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/application-micro#routing",
       "menu": [
         {
@@ -177,7 +177,7 @@
                   "url": "/application-micro#routing-handlers-object-method"
                 },
                 {
-                  "text": "Controllers",
+                  "text": "Kontrolcüler",
                   "url": "/application-micro#routing-handlers-controllers"
                 }
               ]
@@ -187,7 +187,7 @@
               "url": "/application-micro#routing-handlers-controllers-lazy-loading",
               "menu": [
                 {
-                  "text": "Use case",
+                  "text": "Kullanım örneği",
                   "url": "/application-micro#routing-handlers-controllers-lazy-loading-use-case"
                 }
               ]
@@ -293,7 +293,7 @@
       ]
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/application-micro#events",
       "menu": [
         {
@@ -377,7 +377,7 @@
           ]
         },
         {
-          "text": "Models",
+          "text": "Modeller",
           "url": "/application-micro#models"
         },
         {
@@ -385,7 +385,7 @@
           "url": "/application-micro#model-instances"
         },
         {
-          "text": "Views",
+          "text": "Görüntülenmeler",
           "url": "/application-micro#views"
         },
         {
@@ -667,7 +667,7 @@
       "url": "/contributions#contributing"
     },
     {
-      "text": "Contributions",
+      "text": "Katkılar",
       "url": "/contributions#contributions"
     },
     {
@@ -1311,7 +1311,7 @@
   ],
   "db-pagination": [
     {
-      "text": "Pagination",
+      "text": "Sayfa numaralandırma",
       "url": "/db-pagination#overview"
     },
     {
@@ -1449,7 +1449,7 @@
       "url": "/devtools-installation#prerequisites"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "/devtools-installation#installation",
       "menu": [
         {
@@ -1479,11 +1479,11 @@
       "url": "/devtools-usage#overview"
     },
     {
-      "text": "Download",
+      "text": "İndir",
       "url": "/devtools-usage#download"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "/devtools-usage#installation"
     },
     {
@@ -1831,7 +1831,7 @@
       "url": "/flash#adapters"
     },
     {
-      "text": "Usage",
+      "text": "Kullanım",
       "url": "/flash#usage"
     },
     {
@@ -1845,7 +1845,7 @@
   ],
   "forms": [
     {
-      "text": "Forms",
+      "text": "Formlar",
       "url": "/forms#overview"
     },
     {
@@ -1887,7 +1887,7 @@
   ],
   "i18n": [
     {
-      "text": "Internationalization",
+      "text": "Uluslararası yapma",
       "url": "/i18n#overview"
     },
     {
@@ -2119,19 +2119,19 @@
   ],
   "mvc": [
     {
-      "text": "The MVC Architecture",
+      "text": "MVC Yapısı",
       "url": "/mvc#architecture"
     },
     {
-      "text": "Models",
+      "text": "Modeller",
       "url": "/mvc#models"
     },
     {
-      "text": "Views",
+      "text": "Görüntülenmeler",
       "url": "/mvc#views"
     },
     {
-      "text": "Controllers",
+      "text": "Kontrolcüler",
       "url": "/mvc#controllers"
     }
   ],
@@ -2227,7 +2227,7 @@
       "url": "/reproducible-tests#overview"
     },
     {
-      "text": "Database",
+      "text": "Veritabanı",
       "url": "/reproducible-tests#database"
     },
     {
@@ -2281,7 +2281,7 @@
       "url": "/request-uploading-files"
     },
     {
-      "text": "Events",
+      "text": "Olaylar",
       "url": "/request-events"
     }
   ],
@@ -2319,7 +2319,7 @@
   ],
   "routing": [
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/routing#overview"
     },
     {
@@ -2419,7 +2419,7 @@
   ],
   "security": [
     {
-      "text": "Security",
+      "text": "Güvenlik",
       "url": "/security#overview"
     },
     {
@@ -2579,7 +2579,7 @@
       "url": "#solution"
     },
     {
-      "text": "Installation",
+      "text": "Kurulum",
       "url": "#installation"
     },
     {
@@ -2643,7 +2643,7 @@
       "url": "#development"
     },
     {
-      "text": "Services",
+      "text": "Hizmetler",
       "url": "#services"
     }
   ],
@@ -2673,7 +2673,7 @@
   ],
   "tutorial-base": [
     {
-      "text": "View",
+      "text": "Görünüm",
       "url": "/tutorial-base#basic"
     },
     {
@@ -2741,7 +2741,7 @@
       "url": "/tutorial-invo#structure"
     },
     {
-      "text": "Routing",
+      "text": "Yönlendirme",
       "url": "/tutorial-invo#routing"
     },
     {
@@ -2917,7 +2917,7 @@
           "url": "#psr"
         },
         {
-          "text": "Installation",
+          "text": "Kurulum",
           "url": "#installation"
         }
       ]
@@ -3027,7 +3027,7 @@
   ],
   "validation": [
     {
-      "text": "Validation",
+      "text": "Onaylama",
       "url": "/validation#overview"
     },
     {
@@ -3161,7 +3161,7 @@
       "url": "/volt#overview"
     },
     {
-      "text": "Introduction",
+      "text": "Giriş",
       "url": "/volt#introduction"
     },
     {
@@ -3177,7 +3177,7 @@
       "url": "/volt#variables"
     },
     {
-      "text": "Filters",
+      "text": "Filtreler",
       "url": "/volt#filters"
     },
     {
@@ -3299,7 +3299,7 @@
           "url": "/volt#extending-functions"
         },
         {
-          "text": "Filters",
+          "text": "Filtreler",
           "url": "/volt#extending-filters"
         },
         {
@@ -3323,11 +3323,11 @@
   ],
   "webserver-wamp": [
     {
-      "text": "Installation on WAMP",
+      "text": "WAMP Üzerinde Kurulum",
       "url": "/webserver-wamp#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Phalcon'un doğru sürümünü indirin",
       "url": "/webserver-wamp#phalcon"
     },
     {
@@ -3337,11 +3337,11 @@
   ],
   "webserver-xampp": [
     {
-      "text": "Installation on XAMPP",
+      "text": "XAMPP Üzerinde Kurulum",
       "url": "/webserver-xampp#overview"
     },
     {
-      "text": "Download the right version of Phalcon",
+      "text": "Phalcon'un doğru sürümünü indirin",
       "url": "/webserver-xampp#phalcon"
     },
     {
