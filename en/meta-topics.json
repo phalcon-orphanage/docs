@@ -345,6 +345,10 @@
       {
         "text": "Response",
         "url": "/response"
+      },
+      {
+        "text": "PSR-7 Response",
+        "url": "/http-response"
       }
     ]
   },
