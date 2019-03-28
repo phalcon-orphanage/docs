@@ -217,7 +217,7 @@ foreach ($robots as $robot) {
 
 <a name='backend-memcached-example'></a>
 
-### Memcached Backend Example
+### Memcached Backend Örneği
 
 The above example changes slightly (especially in terms of configuration) when we are using a Memcached backend.
 
@@ -281,7 +281,7 @@ foreach ($robots as $robot) {
 
 <a name='read'></a>
 
-## Querying the cache
+## Önbellekte sorgulama
 
 The elements added to the cache are uniquely identified by a key. In the case of the File backend, the key is the actual filename. To retrieve data from the cache, we just have to call it using the unique key. If the key does not exist, the get method will return null.
 
@@ -312,7 +312,7 @@ $keys = $cache->queryKeys('my-prefix');
 
 <a name='delete'></a>
 
-## Deleting data from the cache
+## Ön bellekten veri silme
 
 There are times where you will need to forcibly invalidate a cache entry (due to an update in the cached data). The only requirement is to know the key that the data have been stored with.
 
@@ -332,7 +332,7 @@ foreach ($keys as $key) {
 
 <a name='exists'></a>
 
-## Checking cache existence
+## Önbellek varlığını kontrol etme
 
 It is possible to check if a cache already exists with a given key:
 
@@ -348,7 +348,7 @@ if ($cache->exists('someKey')) {
 
 <a name='lifetime'></a>
 
-## Lifetime
+## Ömür
 
 A `lifetime` is a time in seconds that a cache could live without expire. By default, all the created caches use the lifetime set in the frontend creation. You can set a specific lifetime in the creation or retrieving of the data from the cache:
 
@@ -389,7 +389,7 @@ if ($robots === null) {
 
 <a name='multi-level'></a>
 
-## Multi-Level Cache
+## Çok Seviyeli Önbellek
 
 This feature of the cache component, allows the developer to implement a multi-level cache. This new feature is very useful because you can save the same data in several cache locations with different lifetimes, reading first from the one with the faster adapter and ending with the slowest one until the data expires:
 
@@ -453,7 +453,7 @@ $cache->save('my-key', $data);
 
 <a name='adapters-frontend'></a>
 
-## Frontend Adapters
+## Frontend adaptörleri
 
 The available frontend adapters that are used as interfaces or input sources to the cache are:
 
@@ -468,13 +468,13 @@ The available frontend adapters that are used as interfaces or input sources to 
 
 <a name='adapters-frontend-custom'></a>
 
-### Implementing your own Frontend adapters
+### Kendi Frontend bağdaştırıcılarınızı uygulama
 
 The [Phalcon\Cache\FrontendInterface](api/Phalcon_Cache_FrontendInterface) interface must be implemented in order to create your own frontend adapters or extend the existing ones.
 
 <a name='adapters-backend'></a>
 
-## Backend Adapters
+## Backend adaptörleri
 
 The backend adapters available to store cache data are:
 
@@ -514,13 +514,13 @@ $backendCache = Factory::load($options);
 
 <a name='adapters-backend-custom'></a>
 
-### Implementing your own Backend adapters
+### Kendi Backend adaptörlerinizi uygulama
 
 The [Phalcon\Cache\BackendInterface](api/Phalcon_Cache_BackendInterface) interface must be implemented in order to create your own backend adapters or extend the existing ones.
 
 <a name='adapters-backend-file'></a>
 
-### File Backend Options
+### Dosya Backend Seçenekleri
 
 This backend will store cached content into files in the local server. The available options for this backend are:
 
@@ -531,7 +531,7 @@ This backend will store cached content into files in the local server. The avail
 
 <a name='adapters-backend-libmemcached'></a>
 
-### Libmemcached Backend Options
+### Libmemcached Backend Seçenekleri
 
 This backend will store cached content on a memcached server. Per default persistent memcached connection pools are used. The available options for this backend are:
 
@@ -591,7 +591,7 @@ $cache = new Libmemcached(
 
 <a name='adapters-backend-memcache'></a>
 
-### Memcache Backend Options
+### Memcache Backend Seçenekleri
 
 This backend will store cached content on a memcached server. The available options for this backend are:
 
@@ -604,7 +604,7 @@ This backend will store cached content on a memcached server. The available opti
 
 <a name='adapters-backend-apc'></a>
 
-### APC Backend Options
+### APC Backend Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APC](https://php.net/apc)). The available options for this backend are:
 
@@ -614,7 +614,7 @@ This backend will store cached content on Alternative PHP Cache ([APC](https://p
 
 <a name='adapters-backend-apcu'></a>
 
-### APCU Backend Options
+### APCU Backend Seçenekleri
 
 This backend will store cached content on Alternative PHP Cache ([APCU](https://php.net/apcu)). The available options for this backend are:
 
@@ -624,7 +624,7 @@ This backend will store cached content on Alternative PHP Cache ([APCU](https://
 
 <a name='adapters-backend-mongo'></a>
 
-### Mongo Backend Options
+### Mongo Backend Seçenekleri
 
 This backend will store cached content on a MongoDB server ([MongoDB](https://mongodb.org/)). The available options for this backend are:
 
@@ -637,7 +637,7 @@ This backend will store cached content on a MongoDB server ([MongoDB](https://mo
 
 <a name='adapters-backend-xcache'></a>
 
-### XCache Backend Options
+### XCache Backend Seçenekleri
 
 This backend will store cached content on XCache ([XCache](https://xcache.lighttpd.net/)). The available options for this backend are:
 
@@ -647,7 +647,7 @@ This backend will store cached content on XCache ([XCache](https://xcache.lightt
 
 <a name='adapters-backend-redis'></a>
 
-### Redis Backend Options
+### Redis Backend Seçenekleri
 
 This backend will store cached content on a Redis server ([Redis](https://redis.io/)). The available options for this backend are:
 
