@@ -5,15 +5,15 @@ version: '4.0'
 upgrade: '#logger'
 category: 'logger'
 ---
-# Logger Component
+# Logger Bileşeni
 
 * * *
 
-## Message Formatting
+## Mesaj Biçimlendirme
 
-### Syslog Formatter
+### Syslog Biçimlendirici
 
-Formats the messages returning an array with the type and message as elements:
+Mesaj Biçimleri geriye dizi olarak döndürülen type ve message elemanlarına sahiptir:
 
 ```bash
 [

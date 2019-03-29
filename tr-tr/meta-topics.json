@@ -345,6 +345,10 @@
             {
                 "text": "Tepki",
                 "url": "/response"
+            },
+            {
+                "text": "PSR-7 Response",
+                "url": "/http-response"
             }
         ]
     },

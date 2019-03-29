@@ -1885,6 +1885,24 @@
       "url": "/forms#external"
     }
   ],
+  "http-request": [
+    {
+      "text": "HTTP Request (PSR-7)",
+      "url": "/http-request"
+    },
+    {
+      "text": "Constructor",
+      "url": "/http-request-constructor"
+    },
+    {
+      "text": "Getters",
+      "url": "/http-request-getters"
+    },
+    {
+      "text": "With",
+      "url": "/http-request-with"
+    }
+  ],
   "i18n": [
     {
       "text": "Uluslararası yapma",
