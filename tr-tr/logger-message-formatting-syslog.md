@@ -13,7 +13,7 @@ category: 'logger'
 
 ### Syslog Biçimlendirici
 
-Formats the messages returning an array with the type and message as elements:
+Mesaj Biçimleri geriye dizi olarak döndürülen type ve message elemanlarına sahiptir:
 
 ```bash
 [
