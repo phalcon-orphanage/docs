@@ -21,7 +21,7 @@ A minimal structure of a CLI application will look like this:
 <a name='creating-bootstrap'></a>
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the CLI application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -29,7 +29,7 @@ Below is a sample bootstrap that is being used for this example.
 <?php
 
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Cli\Console as ConsoleApp;
+use Phalcon\Cli\Console;
 use Phalcon\Loader;
 
 // Using the CLI factory default services container
@@ -51,7 +51,7 @@ $loader->register();
 
 
 // Create a console application
-$console = new ConsoleApp();
+$console = new Console();
 
 $console->setDI($di);
 
@@ -96,7 +96,7 @@ php app/cli.php
 <a name='tasks'></a>
 ## Tasks
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` class and a `mainAction()` method. Every task needs to have a `mainAction()` method which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -133,18 +133,11 @@ class MainTask extends Task
         echo 'This is the default task and the default action' . PHP_EOL;
     }
 
-    /**
-     * @param array $params
-     */
     public function testAction(array $params)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf('hello %s', $params[0]) . PHP_EOL;
 
-        echo PHP_EOL;
-
-        echo sprintf('best regards, %s', $params[1]);
-
-        echo PHP_EOL;
+        echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
     }
 }
 ```
@@ -152,7 +145,7 @@ class MainTask extends Task
 We can then run the following command:
 
 ```bash
-php app/cli.php main test world universe
+$ php app/cli.php main test world universe
 
 hello world
 best regards, universe
@@ -185,7 +178,7 @@ try {
 }
 ```
 
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+Then you can use the console inside of any task. Below is an example of a modified `MainTask.php`:
 ```php
 <?php
 
