@@ -157,25 +157,14 @@ best regards, universe
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
 ```php
-<?php
+use Phalcon\Cli\Console;
+
+// Create a console application
+$console = new Console();
+
+$console->setDI($di);
 
 $di->setShared("console", $console);
-
-try {
-    // Handle incoming arguments
-    $console->handle($arguments);
-} catch (\Phalcon\Exception $e) {
-    // Do Phalcon related stuff here
-    // ..
-    fwrite(STDERR, $e->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Throwable $throwable) {
-    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
-}
 ```
 
 Then you can use the console inside of any task. Below is an example of a modified `MainTask.php`:
