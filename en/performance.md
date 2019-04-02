@@ -89,7 +89,7 @@ Most modern browsers have tools to profile the page loading time. In Chrome you 
 ![](/assets/images/content/performance-speed-tracer.jpg)
 
 This tool is very useful because it help you to get the real time used to render the whole page including HTML parsing,
-Javascript evaluation and CSS styling.
+JavaScript evaluation and CSS styling.
 
 ## Use a recent PHP version
 PHP is faster every day, using the latest version improves the performance of your applications and also of Phalcon.

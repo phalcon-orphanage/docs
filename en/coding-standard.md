@@ -67,7 +67,7 @@ class Enum
 - Class properties must be declared in camelCase.
 - Class properties must be sorted alphabetically based on name.
 - Whenever possible, properties must have a default value.
-- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration
+- Whenever possible, properties must have a docblock that defines their type with the `@var` declaration.
 - Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
 
 ```php
@@ -88,7 +88,7 @@ class Memory extends Adapter
 
 ### Methods
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class. 
+- Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
