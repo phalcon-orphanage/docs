@@ -154,20 +154,8 @@ best regards, universe
 <a name='running-tasks-chain'></a>
 ## Running tasks in a chain
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
+It's also possible to run tasks in a chain if it's required using the Dispatcher. Below is an example of a modified `MainTask.php`:
 
-```php
-use Phalcon\Cli\Console;
-
-// Create a console application
-$console = new Console();
-
-$console->setDI($di);
-
-$di->setShared("console", $console);
-```
-
-Then you can use the console inside of any task. Below is an example of a modified `MainTask.php`:
 ```php
 <?php
 
@@ -179,7 +167,7 @@ class MainTask extends Task
     {
         echo "This is the default task and the default action" . PHP_EOL;
 
-        $this->console->handle(
+        $this->dispatcher->forward(
             [
                 "task"   => "main",
                 "action" => "test",
@@ -193,5 +181,3 @@ class MainTask extends Task
     }
 }
 ```
-
-However, it's a better idea to extend [Phalcon\Cli\Task](api/Phalcon_Cli_Task) and implement this kind of logic there.
