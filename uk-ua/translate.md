@@ -3,15 +3,13 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Translation Component
 
-<a name='overview'></a>
+* * *
 
-# Multi-lingual Support
+## Multi-lingual Support
 
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
-
-<a name='adapters'></a>
 
 ## Factory
 
@@ -30,8 +28,6 @@ $options = [
 $translate = Factory::load($options);
 ```
 
-<a name='usage'></a>
-
 ## Adapters
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
@@ -41,8 +37,6 @@ This component makes use of adapters to read translation messages from different
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 | [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a CSV to store the messages for a langage.                                         |
 | [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a .po file.                                  |
-
-<a name='adapters-factory'></a>
 
 ### Native Array
 
@@ -181,7 +175,7 @@ The `_()` method is returning the translated string based on the index passed. S
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/4.0/en/routing).
+Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](routing).
 
 The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
 
@@ -244,8 +238,6 @@ or in a view directly
 ```php
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);
 ```
-
-<a name='custom'></a>
 
 ## Implementing your own adapters
 
@@ -317,7 +309,7 @@ $translate->_('hi-name', ['name' => $name, 'time' => 'day']); // Hello Henry, go
 $translate->_('hi-name', ['name' => $name, 'time' => 'night']); // Hello Henry, good night !
 ```
 
-[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](http://php.net/sprintf) convention.
+[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](https://www.php.net/manual/en/function.sprintf.php) convention.
 
 ```php
 <?php
