@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'it-it'
 version: '4.0'
 ---

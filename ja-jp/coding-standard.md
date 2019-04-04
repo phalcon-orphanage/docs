@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'ja-jp'
 version: '4.0'
 ---

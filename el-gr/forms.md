@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'el-gr'
 version: '4.0'
 ---

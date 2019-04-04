@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'tr-tr'
 version: '4.0'
 ---

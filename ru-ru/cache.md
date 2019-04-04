@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'ru-ru'
 version: '4.0'
 ---

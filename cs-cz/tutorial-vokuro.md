@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'cs-cz'
 version: '4.0'
 ---

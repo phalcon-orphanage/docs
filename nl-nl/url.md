@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'nl-nl'
 version: '4.0'
 ---
