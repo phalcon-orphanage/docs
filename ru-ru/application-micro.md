@@ -9,7 +9,7 @@ version: '4.0'
 
 Phalcon offers a very 'thin' application, so that you can create 'Micro' applications with minimal PHP code.
 
-Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our `[website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
+Micro applications are suitable for small applications that will have very low overhead. Such applications are for instance our [website](https://github.com/phalcon/website), this website ([docs](https://github.com/phalcon/docs)), our [store](https://github.com/phalcon/store), APIs, prototypes etc.
 
 ```php
 <?php
@@ -108,8 +108,7 @@ $router = new Router();
 
 $router->addGet(
     '/orders/display/{name}',
-    'OrdersClass::display';
-    }
+    'OrdersClass::display'
 );
 
 
@@ -162,8 +161,10 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>Это заказ: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+
+        $app->response->setContent($content);
+
         $app->response->send();
     }
 );
@@ -298,8 +299,9 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>Это заказ: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -315,8 +317,8 @@ In order to increase performance, you might consider implementing lazy loading f
 Lazy loading can be easily achieved when setting your handler in your [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection):
 
 ```php
-$orders->setHandler('OrdersController', true);
-$orders->setHandler('Blog\Controllers\OrdersController', true);
+$orders->setHandler(\OrdersController::class, true);
+$orders->setHandler(\Blog\Controllers\OrdersController::class, true);
 ```
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
@@ -419,38 +421,38 @@ The above implementation changes if we want to use lazy loading as follows:
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Обработчик Users
+// Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler(UsersController::class, true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
-// Обработчик Orders
+// Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler(OrdersController::class, true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
-// Обработчик Products
+// Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler(ProductsController::class, true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
 $app->mount($products);
 ```
 
-Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
+Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get()` method in it. Our application now uses less resources than before.
 
 <a name='routing-handlers-not-found'></a>
 
 ### Не найдено (404)
 
-Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
+Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application will cause it to try and execute the handler defined with the `notFound()` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound()` method which can be any callable PHP function.
 
 ```php
 <?php
@@ -482,10 +484,10 @@ The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application provides a set of met
 Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
 
 ```php
-    $app->delete(
-        '/api/products/delete/{id}',
-        'delete_product'
-    );
+$app->delete(
+    '/api/products/delete/{id}',
+    'delete_product'
+);
 ```
 
 <a name='routing-verbs-get'></a>
@@ -495,10 +497,10 @@ Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{i
 Matches if the HTTP method is `GET` and the route is `/api/products`
 
 ```php
-    $app->get(
-        '/api/products',
-        'get_products'
-    );
+$app->get(
+    '/api/products',
+    'get_products'
+);
 ```
 
 <a name='routing-verbs-head'></a>
@@ -508,10 +510,10 @@ Matches if the HTTP method is `GET` and the route is `/api/products`
 Matches if the HTTP method is `HEAD` and the route is `/api/products`
 
 ```php
-    $app->get(
-        '/api/products',
-        'get_products'
-    );
+$app->get(
+    '/api/products',
+    'get_products'
+);
 ```
 
 <a name='routing-verbs-map'></a>
@@ -521,17 +523,17 @@ Matches if the HTTP method is `HEAD` and the route is `/api/products`
 Map allows you to attach the same endpoint to more than one HTTP method. The example below matches if the HTTP method is `GET` or `POST` and the route is `/repos/store/refs`
 
 ```php
-    $app
-        ->map(
-            '/repos/store/refs',
-            'action_product'
-        )
-        ->via(
-            [
-                'GET',
-                'POST',
-            ]
-        );
+$app
+    ->map(
+        '/repos/store/refs',
+        'action_product'
+    )
+    ->via(
+        [
+            'GET',
+            'POST',
+        ]
+    );
 ```
 
 <a name='routing-verbs-options'></a>
@@ -541,10 +543,10 @@ Map allows you to attach the same endpoint to more than one HTTP method. The exa
 Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 
 ```php
-    $app->options(
-        '/api/products/options',
-        'info_product'
-    );
+$app->options(
+    '/api/products/options',
+    'info_product'
+);
 ```
 
 <a name='routing-verbs-patch'></a>
@@ -554,10 +556,10 @@ Matches if the HTTP method is `OPTIONS` and the route is `/api/products/options`
 Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id}`
 
 ```php
-    $app->patch(
-        '/api/products/update/{id}',
-        'update_product'
-    );
+$app->patch(
+    '/api/products/update/{id}',
+    'update_product'
+);
 ```
 
 <a name='routing-verbs-post'></a>
@@ -567,10 +569,10 @@ Matches if the HTTP method is `PATCH` and the route is `/api/products/update/{id
 Matches if the HTTP method is `POST` and the route is `/api/products/add`
 
 ```php
-    $app->post(
-        '/api/products',
-        'add_product'
-    );
+$app->post(
+    '/api/products',
+    'add_product'
+);
 ```
 
 <a name='routing-verbs-put'></a>
@@ -580,10 +582,10 @@ Matches if the HTTP method is `POST` and the route is `/api/products/add`
 Matches if the HTTP method is `PUT` and the route is `/api/products/update/{id}`
 
 ```php
-    $app->put(
-        '/api/products/update/{id}',
-        'update_product'
-    );
+$app->put(
+    '/api/products/update/{id}',
+    'update_product'
+);
 ```
 
 <a name='routing-collections'></a>
@@ -665,14 +667,16 @@ Additional information: [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) [Info](/4.0
 You can redirect one matched route to another using the [Phalcon\Http\Response](api/Phalcon_Http_Response) object, just like in a full application.
 
 ```php
-$app->post('/old/url',
+$app->post(
+    '/old/url',
     function () use ($app) {
         $app->response->redirect('new/url');
         $app->response->sendHeaders();
     }
 );
 
-$app->post('/new/welcome',
+$app->post(
+    '/new/welcome',
     function () use ($app) {
         echo 'This is the new Welcome';
     }
@@ -891,7 +895,7 @@ $app->get(
 
 ## New Response object
 
-You can use the `setContent` method of the response object to return the response back:
+You can use the `setContent()` method of the response object to return the response back:
 
 ```php
 $app->get(
@@ -1144,8 +1148,10 @@ $app->map(
 
 $app->after(
     function () use ($app) {
-        // Выполняется после выполнения маршрута
-        echo json_encode($app->getReturnedValue());
+        // This is executed after the route is executed
+        echo json_encode(
+            $app->getReturnedValue()
+        );
     }
 );
 ```
@@ -1159,7 +1165,7 @@ This even will fire up when the whole request cycle has been completed. In the e
 ```php
 $app->finish(
     function () use ($app) {
-        if (true === file_exists('/tmp/processing.cache')) {
+        if (file_exists('/tmp/processing.cache')) {
             unlink('/tmp/processing.cache');
         }
     }
@@ -1170,17 +1176,17 @@ $app->finish(
 
 ## Setup
 
-Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
+Attaching middleware to your application is very easy as shown above, with the `before()`, `after()` and `finish()` method calls.
 
 ```php
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("Пользователь не авторизован");
+            $app['flashSession']->error("The user isn't authenticated");
 
             $app['response']->redirect('/error');
 
-            // Возврат false останавливает нормальное выполнение
+            // Return false stops the normal execution
             return false;
         }
 
@@ -1190,8 +1196,10 @@ $app->before(
 
 $app->after(
     function () use ($app) {
-        // Выполняется после выполнения маршрута
-        echo json_encode($app->getReturnedValue());
+        // This is executed after the route is executed
+        echo json_encode(
+            $app->getReturnedValue()
+        );
     }
 );
 ```
@@ -1257,12 +1265,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CacheMiddleware
  *
- * Кэширует страницы, чтобы сократить обработку
+ * Caches pages to reduce processing
  */
 class CacheMiddleware implements MiddlewareInterface
 {
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1273,9 +1281,13 @@ class CacheMiddleware implements MiddlewareInterface
         $cache  = $application['cache'];
         $router = $application['router'];
 
-        $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+        $key = preg_replace(
+            '/^[a-zA-Z0-9]/',
+            '',
+            $router->getRewriteUri()
+        );
 
-        // Проверяет закэширован ли запрос
+        // Check if the request is cached
         if ($cache->exists($key)) {
             echo $cache->get($key);
 
@@ -1317,7 +1329,7 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * FirewallMiddleware
  *
- * Проверяет белый список и допускает клиентов или нет
+ * Checks the whitelist and allows clients or not
  */
 class FirewallMiddleware implements MiddlewareInterface
 {
@@ -1337,9 +1349,10 @@ class FirewallMiddleware implements MiddlewareInterface
             '10.4.6.3',
             '10.4.6.4',
         ];
+
         $ipAddress = $application->request->getClientAddress();
 
-        if (true !== array_key_exists($ipAddress, $whitelist)) {
+        if (!array_key_exists($ipAddress, $whitelist)) {
             $this->response->redirect('/401');
             $this->response->send();
 
@@ -1350,7 +1363,7 @@ class FirewallMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1544,12 +1557,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RequestMiddleware
  *
- * Проверяет входящие данные
+ * Check incoming payload
  */
 class RequestMiddleware implements MiddlewareInterface
 {
     /**
-     * Перед выполнением маршрута
+     * Before the route is executed
      *
      * @param Event $event
      * @param Micro $application
@@ -1558,7 +1571,10 @@ class RequestMiddleware implements MiddlewareInterface
      */
     public function beforeExecuteRoute(Event $event, Micro $application)
     {
-        json_decode($application->request->getRawBody());
+        json_decode(
+            $application->request->getRawBody()
+        );
+
         if (JSON_ERROR_NONE !== json_last_error()) {
             $application->response->redirect('/malformed');
             $application->response->send();
@@ -1571,7 +1587,7 @@ class RequestMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1590,7 +1606,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-<h5 class='alert alert-warning'>We are going to be using the <code>call</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
+<h5 class='alert alert-warning'>We are going to be using the <code>call()</code> method for this middleware, since we have nearly executed the whole request cycle.</h5>
 
 ```php
 <?php
@@ -1683,12 +1699,15 @@ $loader->registerDirs(
 )->register();
 
 $app = new \Phalcon\Mvc\Micro();
-$app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
+
+$app->setModelBinder(
+    new \Phalcon\Mvc\Model\Binder()
+);
 
 $app->get(
     "/products/{product:[0-9]+}",
     function (Products $product) {
-        // делаем что-нибудь с объектом $product
+        // do anything with $product object
     }
 );
 
@@ -1770,7 +1789,7 @@ $app->get(
 
 # Error Handling
 
-The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application also has an `error` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
+The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application also has an `error()` method, which can be used to trap any errors that originate from exceptions. The following code snippet shows basic usage of this feature:
 
 ```php
 <?php
