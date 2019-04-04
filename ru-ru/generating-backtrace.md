@@ -1,9 +1,11 @@
 ---
-layout: article
+layout: default
 language: 'ru-ru'
 version: '4.0'
 ---
 # Generating a backtrace
+
+* * *
 
 Sometimes due to segmentation faults, Phalcon could crash some of your web server processes. Please help us to identify the problem by adding a crash backtrace to your bug report.
 
