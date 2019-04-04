@@ -1,8 +1,12 @@
 ---
-layout: article
+layout: default
 language: 'de-de'
 version: '4.0'
 ---
+# Upgrade Guide
+
+* * *
+
 # Upgrading to v4
 
 So you have decided to upgrade to v4! **Congratulations**!!
