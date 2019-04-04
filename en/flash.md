@@ -1,15 +1,14 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Flash Messages
+<hr />
 
-<a name='overview'></a>
-# Flashing Messages
+## Overview
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
-<a name='adapters'></a>
 ## Adapters
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 
@@ -18,7 +17,6 @@ This component makes use of adapters to define the behavior of the messages afte
 | Direct  | Directly outputs the messages passed to the flasher                                          | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)  |
 | Session | Temporarily stores the messages in session, then messages can be printed in the next request | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
 
-<a name='usage'></a>
 ## Usage
 Usually the Flash Messaging service is requested from the services container. If you're using [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) then [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct) is automatically registered as `flash` service and [Phalcon\Flash\Session](api/Phalcon_Flash_Session) is automatically registered as `flashSession` service. You can also manually register it:
 
@@ -88,7 +86,6 @@ You can also add messages with your own types using the `message()` method:
 $this->flash->message('debug', "this is debug message, you don't say");
 ```
 
-<a name='printing'></a>
 ## Printing Messages
 Messages sent to the flash service are automatically formatted with HTML:
 
@@ -139,7 +136,6 @@ Then the messages would be printed as follows:
 <div class='alert alert-warning'>best check yo self, you're not looking too good.</div>
 ```
 
-<a name='implicit-flush-vs-session'></a>
 ## Implicit Flush vs. Session
 Depending on the adapter used to send the messages, it could be producing output directly, or be temporarily storing the messages in session to be shown later. When should you use each? That usually depends on the type of redirection you do after sending the messages. For example, if you make a `forward` is not necessary to store the messages in session, but if you do a HTTP redirect then, they need to be stored in session:
 
@@ -207,4 +203,4 @@ In this case you need to manually print the messages in the corresponding view:
 <p><?php $this->flashSession->output() ?></p>
 ```
 
-The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](/4.0/en/session) first to successfully use the `flashSession` messenger.
+The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](session) first to successfully use the `flashSession` messenger.

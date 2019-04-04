@@ -1,25 +1,20 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
 # Model Relationships
-<a name='relationships'></a>
+<hr/>
+
 ## Relationships between Models
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
-<a name='unidirectional'></a>
 ### Unidirectional relationships
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-<a name='bidirectional'></a>
 ### Bidirectional relations
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-<a name='defining'></a>
 ### Defining relationships
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
@@ -175,7 +170,6 @@ class Robots extends Model
 }
 ```
 
-<a name='parameters'></a>
 #### Relationships with parameters
 Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part. 
 
@@ -217,7 +211,6 @@ Using relationships, we can get only those parts that relate to our Robot that a
  }
  ```
 
-<a name='multiple-fields'></a>
 #### Multiple field relationships
 There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
@@ -295,7 +288,6 @@ class Robots extends Model
 
 **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
-<a name='taking-advantage-of'></a>
 ### Taking advantage of relationships
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
@@ -424,12 +416,12 @@ $robot = Robots::findFirst(
 The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use
 `find()` or `findFirst()`:
 
-| Type             | Description                                                                                                                | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-One          | Returns a model instance of the related record directly                                                                    | findFirst       |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | find            |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+| Type             | Description                                                                                                                | Implicit Method   |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Belongs-To       | Returns a model instance of the related record directly                                                                    | `findFirst`       |
+| Has-One          | Returns a model instance of the related record directly                                                                    | `findFirst`       |
+| Has-Many         | Returns a collection of model instances of the referenced model                                                            | `find`            |
+| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query)   |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
@@ -443,7 +435,6 @@ $robot = Robots::findFirst(2);
 echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
 ```
 
-<a name='aliases'></a>
 ### Aliasing Relationships
 To explain better how aliases work, let's check the following example:
 
@@ -555,7 +546,6 @@ $similarRobot = $robotsSimilar->similarRobot;
 $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
-<a name='getters-vs-methods'></a>
 #### Magic Getters vs. Explicit methods
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
@@ -589,7 +579,6 @@ class Robots extends Model
 }
 ```
 
-<a name='conditionals'></a>
 ## Conditionals
 You can also create relationships based on conditionals. When querying based on the relationship the condition will be automatically appended to the query:
 
@@ -681,7 +670,6 @@ $unpaidInvoices = $company->getRelated(
 );
 ```
 
-<a name='virtual-foreign-keys'></a>
 ## Virtual Foreign Keys
 By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
 
@@ -782,7 +770,6 @@ class RobotsParts extends Model
 }
 ```
 
-<a name='cascade-restrict-actions'></a>
 ### Cascade/Restrict actions
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
@@ -818,7 +805,6 @@ class Robots extends Model
 
 The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
 
-<a name='storing-related-records'></a>
 ## Storing Related Records
 Magic properties can be used to store a record and its related properties:
 
@@ -887,7 +873,6 @@ Note: Adding related entities by overloading the following methods is not possib
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
-<a name='operations-over-resultsets'></a>
 ## Operations over Resultsets
 If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
 
@@ -911,7 +896,6 @@ $result = $type->save();
 
 ```
 
-<a name='updating-related-records'></a>
 ### Updating related records
 Instead of doing this:
 
@@ -972,7 +956,6 @@ $robots->getParts()->update(
 );
 ```
 
-<a name='deleting-related-records'></a>
 ### Deleting related records
 Instead of doing this:
 

@@ -1,21 +1,21 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Crypt Component
+<hr />
 
-<a name='overview'></a>
-# Encryption/Decryption
-Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
+## Encryption/Decryption
+Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl][openssl] PHP's encryption library.
 
 By default, this component provides secure encryption using AES-256-CFB.
 
-The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
-<h5 class='alert alert-warning' markdown='1'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
+> You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+{: .alert .alert-warning }
 
-<a name='usage'></a>
 ## Basic Usage
 This component is designed be very simple to use:
 
@@ -138,13 +138,12 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-<a name='options'></a>
 ## Encryption Options
 The following options are available to change the encryption behavior:
 
-| Name   | Description                                                                                                                                                          |
-|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Name   | Description                                                                                                    |
+|--------|----------------------------------------------------------------------------------------------------------------|
+| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here][cipher_methods] |
 
 Example:
 
@@ -182,9 +181,8 @@ $algorithms = $crypt->getAvailableHashAlgos();
 var_dump($algorithms);
 ```
 
-<a name='base64'></a>
 ## Base64 Support
-In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://secure.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
+In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64][base64] encoding is usually applied to encrypted texts:
 
 ```php
 <?php
@@ -203,7 +201,6 @@ $encrypt = $crypt->encryptBase64($text, $key);
 echo $crypt->decryptBase64($encrypt, $key);
 ```
 
-<a name='service'></a>
 ## Setting up an Encryption service
 You can set up the encryption component in the services container in order to use it from any part of the application:
 
@@ -254,7 +251,6 @@ class SecretsController extends Controller
 }
 ```
 
-<a name='links'></a>
 ## Links
 * [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
@@ -262,3 +258,8 @@ class SecretsController extends Controller
 * [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
 * [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
 * [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
+
+[base64]: https://secure.php.net/manual/en/function.base64-encode.php
+[cipher_methods]: https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php
+[openssl]: https://secure.php.net/manual/en/book.openssl.php
+[suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography

@@ -1,14 +1,11 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Controllers
+<hr />
 
-<a name='overview'></a>
-# Overview
-
-<a name='using'></a>
 ## Using Controllers
 Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.
 
@@ -91,7 +88,6 @@ class PostsController extends Controller
 }
 ```
 
-<a name='dispatch-loop'></a>
 ## Dispatch Loop
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
 
@@ -147,7 +143,6 @@ class UsersController extends Controller
 
 There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](api/Phalcon_Mvc_View).
 
-<a name='initializing'></a>
 ## Initializing Controllers
 [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
 
@@ -176,7 +171,8 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+> The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.
+{: .alert .alert-warning }
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
@@ -194,9 +190,9 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning' markdown='1'>Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
+> Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).
+{: .alert .alert-warning }
 
-<a name='injecting-services'></a>
 ## Injecting Services
 If a controller extends [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) then it has easy access to the service container in application. For example, if we have registered a service like this:
 
@@ -247,9 +243,8 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/4.0/en/di) in the framework.
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](di) in the framework.
 
-<a name='request-response'></a>
 ## Request and Response
 Assuming that the framework provides a set of pre-registered services. We explain how to interact with the HTTP environment. The `request` service contains an instance of [Phalcon\Http\Request](api/Phalcon_Http_Request) and the `response` contains a [Phalcon\Http\Response](api/Phalcon_Http_Response) representing what is going to be sent back to the client.
 
@@ -299,9 +294,8 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/4.0/en/request) and [response](/4.0/en/response).
+Learn more about the HTTP environment in their dedicated articles [request](request) and [response](response).
 
-<a name='session-data'></a>
 ## Session Data
 Sessions help us maintain persistent data between requests. You can access a [Phalcon\Session\Bag](api/Phalcon_Session_Bag) from any controller to encapsulate data that needs to be persistent:
 
@@ -324,7 +318,6 @@ class UserController extends Controller
 }
 ```
 
-<a name='services'></a>
 ## Using Services as Controllers
 Services may act as controllers, controllers classes are always requested from the services container. Accordingly, any other class registered with its name can easily replace a controller:
 
@@ -352,9 +345,8 @@ $di->set(
 );
 ```
 
-<a name='events'></a>
 ## Events in Controllers
-Controllers automatically act as listeners for [dispatcher](/4.0/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for [dispatcher](dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
@@ -388,5 +380,3 @@ class PostsController extends Controller
     }
 }
 ```
-
-

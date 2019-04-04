@@ -1,12 +1,12 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
 # Forms
+<hr />
+
+## Overview
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
 The following example shows its basic usage:
@@ -111,7 +111,6 @@ $form->add(
 );
 ```
 
-<a name='initializing'></a>
 ## Initializing forms
 As seen before, forms can be initialized outside the form class by adding elements to it. You can re-use code or organize your form classes implementing the form in a separated file:
 
@@ -254,9 +253,8 @@ $form = new UsersForm(
 );
 ```
 
-<a name='validation'></a>
 ## Validation
-Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Phalcon forms are integrated with the [validation](validation) component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -331,7 +329,6 @@ foreach ($messages as $message) {
 }
 ```
 
-<a name='filtering'></a>
 ## Filtering
 A form is also able to filter data before it is validated. You can set filters in each element:
 
@@ -366,9 +363,9 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info' markdown='1'>Learn more about filtering in Phalcon by reading the [Filter documentation](/4.0/en/filter) </h5>
+> Learn more about filtering in Phalcon by reading the [Filter documentation](filter)
+{: .alert .alert-info }
 
-<a name='entities'></a>
 ## Forms + Entities
 An entity such as a model/collection/plain instance or just a plain PHP class can be linked to the form in order to set default values in the form's elements or assign the values from the form to the entity easily:
 
@@ -480,26 +477,24 @@ class Preferences
 }
 ```
 
-<a name='elements'></a>
 ## Form Elements
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the [Phalcon\Forms\Element](api/Phalcon_Forms_Element) namespace:
 
-| Name                             | Description                                                   |
-|----------------------------------|---------------------------------------------------------------|
-| [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)     | Generate `INPUT[type=text]` elements                          |
+| Name                                                                 | Description                                                   |
+|----------------------------------------------------------------------|---------------------------------------------------------------|
+| [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Generate `INPUT[type=text]` elements                          |
 | [Phalcon\Forms\Element\Password](api/Phalcon_Forms_Element_Password) | Generate `INPUT[type=password]` elements                      |
-| [Phalcon\Forms\Element\Select](api/Phalcon_Forms_Element_Select)   | Generate `SELECT` tag (combo lists) elements based on choices |
-| [Phalcon\Forms\Element\Check](api/Phalcon_Forms_Element_Check)    | Generate `INPUT[type=check]` elements                         |
+| [Phalcon\Forms\Element\Select](api/Phalcon_Forms_Element_Select)     | Generate `SELECT` tag (combo lists) elements based on choices |
+| [Phalcon\Forms\Element\Check](api/Phalcon_Forms_Element_Check)       | Generate `INPUT[type=check]` elements                         |
 | [Phalcon\Forms\Element\TextArea](api/Phalcon_Forms_Element_TextArea) | Generate `TEXTAREA` elements                                  |
-| [Phalcon\Forms\Element\Hidden](api/Phalcon_Forms_Element_Hidden)   | Generate `INPUT[type=hidden]` elements                        |
-| [Phalcon\Forms\Element\File](api/Phalcon_Forms_Element_File)     | Generate `INPUT[type=file]` elements                          |
-| [Phalcon\Forms\Element\Date](api/Phalcon_Forms_Element_Date)     | Generate `INPUT[type=date]` elements                          |
-| [Phalcon\Forms\Element\Numeric](api/Phalcon_Forms_Element_Numeric)  | Generate `INPUT[type=number]` elements                        |
-| [Phalcon\Forms\Element\Submit](api/Phalcon_Forms_Element_Submit)   | Generate `INPUT[type=submit]` elements                        |
-| [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)     | Generate `INPUT[type=text]` elements                          |
+| [Phalcon\Forms\Element\Hidden](api/Phalcon_Forms_Element_Hidden)     | Generate `INPUT[type=hidden]` elements                        |
+| [Phalcon\Forms\Element\File](api/Phalcon_Forms_Element_File)         | Generate `INPUT[type=file]` elements                          |
+| [Phalcon\Forms\Element\Date](api/Phalcon_Forms_Element_Date)         | Generate `INPUT[type=date]` elements                          |
+| [Phalcon\Forms\Element\Numeric](api/Phalcon_Forms_Element_Numeric)   | Generate `INPUT[type=number]` elements                        |
+| [Phalcon\Forms\Element\Submit](api/Phalcon_Forms_Element_Submit)     | Generate `INPUT[type=submit]` elements                        |
+| [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Generate `INPUT[type=text]` elements                          |
 | [Phalcon\Forms\Element\TextArea](api/Phalcon_Forms_Element_TextArea) | Generate `TEXTAREA` elements                                  |
 
-<a name='event-callback'></a>
 ## Event Callbacks
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` can be implemented in the form's class to perform pre-validations and post-validations:
 
@@ -517,7 +512,6 @@ class ContactForm extends Form
 }
 ```
 
-<a name='rendering'></a>
 ## Rendering Forms
 You can render the form with total flexibility, the following example shows how to render each element using a standard procedure:
 
@@ -615,7 +609,6 @@ echo $element->renderDecorated('name');
 echo $element->renderDecorated('telephone');
 ```
 
-<a name='creating-elements'></a>
 ## Creating Form Elements
 In addition to the form elements provided by Phalcon you can create your own custom elements:
 
@@ -635,7 +628,6 @@ class MyElement extends Element
 }
 ```
 
-<a name='manager'></a>
 ## Forms Manager
 This component provides a forms manager that can be used by the developer to register forms and access them via the service locator:
 
@@ -670,6 +662,5 @@ $loginForm = $this->forms->get('login');
 echo $loginForm->render();
 ```
 
-<a name='external'></a>
 ## External Resources
 * [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]

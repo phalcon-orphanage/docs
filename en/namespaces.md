@@ -1,15 +1,14 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Namespaces
+<hr/>
 
-<a name='overview'></a>
-# Working with Namespaces
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+## Working with Namespaces
+[Namespaces][namespaces] can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
 
-<a name='setting-up'></a>
 ## Setting up the framework
 Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
 
@@ -55,7 +54,7 @@ $router->add(
 );
 ```
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the [Dispatcher](/4.0/en/dispatcher), by doing this, you don't need to specify a full class name in the router path:
+If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the [Dispatcher](dispatcher), by doing this, you don't need to specify a full class name in the router path:
 
 ```php
 <?php
@@ -77,7 +76,6 @@ $di->set(
 );
 ```
 
-<a name='controllers'></a>
 ## Controllers in Namespaces
 The following example shows how to implement a controller that use namespaces:
 
@@ -102,7 +100,6 @@ class UsersController extends Controller
 }
 ```
 
-<a name='models'></a>
 ## Models in Namespaces
 Take the following into consideration when using models in namespaces:
 
@@ -151,3 +148,5 @@ In PHQL you must write the statements including namespaces:
 
 $phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
 ```
+
+[namespaces]: https://php.net/manual/en/language.namespaces.php 

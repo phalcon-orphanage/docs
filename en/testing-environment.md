@@ -1,13 +1,14 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-<a name='overview'></a>
-# Overview
-Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir](https://zephir-lang.com), which has a very similar syntax to PHP or Javascript. In [2003](https://blog.phalconphp.com/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
+# Testing Environment
+<hr />
 
-<a name='problem'></a>
+# Overview
+Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir][zephir], which has a very similar syntax to PHP or Javascript. In [2003][2003] we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
+
 # The problem
 Having a framework that is rich in features requires a development environment that will offer all those features and related services. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
 
@@ -15,34 +16,29 @@ When looking at all the functionality that Phalcon offers, just to run the testi
 
 If one considers the PHP version also (PHP 7.2, 7.3 etc.), developing for Phalcon is not an easy task, because of all these prerequisites.
 
-<a name='solution'></a>
 # Solution
 We have tried in the past to create a development environment based on docker, but after a while, maintaining this environment was very taxing for the core team. 
 
-Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox](https://nanobox.io). For those that do not know, nanobox is a "wrapper" to docker which creates a unique environment in your machine, ready to use. The environment is folder based so you could potentially have two folders where you have cloned Phalcon, and use the PHP 7.2 on one and the 7.3 on the other. Each of those environments is completely isolated. We have been using nanobox for a while now and it is working extremely well.
+Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox][nanobox]. For those that do not know, nanobox is a "wrapper" to docker which creates a unique environment in your machine, ready to use. The environment is folder based so you could potentially have two folders where you have cloned Phalcon, and use the PHP 7.2 on one and the 7.3 on the other. Each of those environments is completely isolated. We have been using nanobox for a while now and it is working extremely well.
 
-<a name='installation'></a>
 # Installation
-You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
+You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here][docker_installation].
 
-Go to [https://nanobox.io](https://nanobox.io) and create an account if you do not have one already, so that you can download the nanobox installation file for your platform.
+Go to [https://nanobox.io][nanobox] and create an account if you do not have one already, so that you can download the nanobox installation file for your platform.
 
 Once the file is downloaded, install it.
 
-<a name='running'></a>
 # Running the environment
-<a name='running-fork'></a>
 ## Fork the repository
-Fork the [cphalcon](https://github.com/phalcon/cphalcon) to your github account, if you have not done so already. Visit the [cphalcon](https://github.com/phalcon/cphalcon) page on your browser and click the `Fork` button at the top right of the screen.
+Fork the [cphalcon][cphalcon] to your github account, if you have not done so already. Visit the [cphalcon][cphalcon] page on your browser and click the `Fork` button at the top right of the screen.
 
-<a name='running-clone'></a>
 ## Clone the fork
 Now you will need to clone the forked repository to a folder of your choice. The example below assumes that the github account is `niden` - change it to your own.
 
 ```bash
 git clone git@github.com:niden/cphalcon
 ```
-<a name='running-boxfile'></a>
+
 ## Copy the boxfile
 Nanobox reads a file called `boxfile.yml` and located in the root of your folder. There are two files supplied in Phalcon that you can use to develop with. One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
 
@@ -53,7 +49,6 @@ cp -v ./tests/_ci/nanobox/boxfile.7.2.yml ./boxfile.yml
 ```
 You will now end up with a `boxfile.yml` file at the root of your project.
 
-<a name='running-nanobox-configure'></a>
 ## Configure nanobox
 Now we need to run nanobox for the first time. Since this will be the first time you run nanobox, it will ask you to configure it. The installation is very simple
 ```bash
@@ -92,7 +87,6 @@ How would you like to run nanobox?
 Answer: 
 ```
 
-<a name='running-nanobox-run'></a>
 ## Run nanobox
 After finishing the configuration, you will see nanobox trying to download a lot of packages and containers. This is normal and it is going to take a while depending on the connection speed you have. After packages and containers are downloaded, subsequent runs will use cached copies of those packages (unless there is an update).
 
@@ -126,7 +120,6 @@ Preparing environment :
 
 You are now inside the environment with all the extensions and services you need. Please note that the IP shown will most likely be different than the one displayed above.
 
-<a name='running-composer'></a>
 ## Composer
 Just in case update composer:
 
@@ -134,7 +127,6 @@ Just in case update composer:
 composer install
 ```
 
-<a name='running-zephir'></a>
 ## Check Zephir
 Zephir is already installed in the environment. Just check it:
 
@@ -175,7 +167,6 @@ Help:
   To display the list of available commands, please use the list command.
 ```
 
-<a name='running-compile'></a>
 ## Compile Phalcon
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 
@@ -184,7 +175,6 @@ zephir fullclean
 zephir build
 ```
 
-<a name='running-extensions'></a>
 ## Check extensions
 Type
 
@@ -214,13 +204,11 @@ redis
 Xdebug
 ```
 
-Note that Phalcon v4+ requires the [PSR](https://github.com/jbboehr/php-psr) extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
+Note that Phalcon v4+ requires the [PSR][psr] extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
 
-<a name='tests'></a>
 # Running tests
-<a name='tests-unit'></a>
 ## Unit
-Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception](https://codeception.com). For a basic introduction you can check [this](http://codeception.com/docs/01-Introduction) page. Also for the list of the commands, you can check [here](http://codeception.com/docs/reference/Commands).
+Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception][codeception]. For a basic introduction you can check [this][codeception_introduction] page. Also for the list of the commands, you can check [here][codeception_commands].
 
 We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
 
@@ -246,7 +234,6 @@ codecept run unit
 
 This will start running the unit testing suite. You will see a lot of tests and assertions. At the time of this blog post, we have `Tests: 2884, Assertions: 6987, Skipped: 1478` unit tests. The reason for so many skipped tests is because we created test stubs for every component and every method in each component. This was so as to create awareness on what needs to be checked and what components/methods we need to write tests for. Of course some of the test stubs are duplicate or obsolete. Those will be deleted once the relevant component is checked and tests written for it. Our goal is to get as close to 100% code coverage as possible. If we manage to get to 100% that would be great!
 
-<a name='tests-integration'></a>
 ## Integration
 Integration tests need to access the databases. These databases are already available in the environment. To populate the databases you will need to run the following script:
 
@@ -320,7 +307,6 @@ DNS Aliases
 
 You can use these variables to connect to your databases or other services such as Mongo, Redis etc.
 
-<a name='development'></a>
 # Development
 You can now open your favorite editor and start developing in Zephir. You can create new functionality, fix issues, write tests etc. Remember though that if you change any of the `zep` files (inside the `phalcon` folder), you will need to recompile the extension:
 
@@ -334,12 +320,10 @@ and then you can run your tests
 codecept run tests/unit/somefolder/somecestfile:sometest
 ```
 
-For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-lang.com) site.
+For Zephir documentation, you can visit the [Zephir Docs][zephir_docs] site.
 
-<a name='services'></a>
 # Services
 The available services are:
-- Beanstalkd
 - Memcached
 - Mongodb
 - Mysql
@@ -382,7 +366,21 @@ The PHP extensions enabled are:
 
 The database dumps are located under `tests/_data/assets/db/schemas`
 
-If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalconphp.com).
+If you have any questions, feel free to join us in our [Discord][discord] server or our [Forum][forum].
 
 
 <3 Phalcon Team
+
+
+[2003]: https://blog.phalconphp.com/post/phalcon-2-0-the-future
+[cphalcon]: https://github.com/phalcon/cphalcon
+[codeception]: https://codeception.com
+[codeception_commands]: http://codeception.com/docs/reference/Commands
+[codeception_introduction]: http://codeception.com/docs/01-Introduction
+[discord]: https://phalcon.link/discord
+[docker_installation]: https://docs.docker.com/engine/installation/
+[forum]: https://forum.phalconphp.com
+[nanobox]: https://nanobox.io
+[psr]: https://github.com/jbboehr/php-psr
+[zephir]: https://zephir-lang.com
+[zephir_docs]: https://docs.zephir-lang.com

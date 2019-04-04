@@ -1,12 +1,12 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Response Component
+<hr />
 
-<a name='overview'></a>
-# Returning Responses
+## Returning Responses
 Part of the HTTP cycle is returning responses to clients. [Phalcon\Http\Response](api/Phalcon_Http_Response) is the Phalcon component designed to achieve this task. HTTP responses are usually composed by headers and body. The following is an example of basic usage:
 
 ```php
@@ -55,7 +55,6 @@ class FeedController extends Controller
 }
 ```
 
-<a name='working-with-headers'></a>
 ## Working with Headers
 Headers are an important part of the HTTP response. It contains useful information about the response state like the HTTP status, type of response and much more.
 
@@ -84,7 +83,6 @@ $headers = $response->getHeaders();
 $contentType = $headers->get('Content-Type');
 ```
 
-<a name='redirections'></a>
 ## Making Redirections
 With [Phalcon\Http\Response](api/Phalcon_Http_Response) you can also execute HTTP redirections:
 
@@ -104,7 +102,7 @@ $response->redirect('https://en.wikipedia.org', true);
 $response->redirect('https://www.example.com/new-location', true, 301);
 ```
 
-All internal URIs are generated using the [url](/4.0/en/url) service (by default [Phalcon\Url](api/Phalcon_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
+All internal URIs are generated using the [url](url) service (by default [Phalcon\Url](api/Phalcon_Url)). This example demonstrates how you can redirect using a route you have defined in your application:
 
 ```php
 <?php
@@ -121,7 +119,6 @@ return $response->redirect(
 
 Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 
-<a name='http-cache'></a>
 ## HTTP Cache
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. Most modern browsers support HTTP caching and is one of the reasons why many websites are currently fast.
 
@@ -132,7 +129,6 @@ HTTP Cache can be altered in the following header values sent by the application
 * **`Last-Modified:`** This header tells the browser which was the last time the site was updated avoiding page re-loads.
 * **`ETag:`** An etag is a unique identifier that must be created including the modification timestamp of the current page.
 
-<a name='http-cache-expiration-time'></a>
 ### Setting an Expiration Time
 The expiration date is one of the easiest and most effective ways to cache a page in the client (browser). Starting from the current date we add the amount of time the page will be stored in the browser cache. Until this date expires no new content will be requested from the server:
 
@@ -160,7 +156,6 @@ $response->setExpires($expiryDate);
 
 Browsers rely on the client's clock to assess if this date has passed or not. The client clock can be modified to make pages expire and this may represent a limitation for this cache mechanism.
 
-<a name='http-cache-control'></a>
 ### Cache-Control
 This header provides a safer way to cache the pages served. We simply must specify a time in seconds telling the browser how long it must keep the page in its cache:
 
@@ -180,7 +175,6 @@ The opposite effect (avoid page caching) is achieved in this way:
 $response->setHeader('Cache-Control', 'private, max-age=0, must-revalidate');
 ```
 
-<a name='http-cache-etag'></a>
 ### E-Tag
 An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize if the page has changed or not between two requests. The identifier must be calculated taking into account that this must change if the previously served content has changed:
 

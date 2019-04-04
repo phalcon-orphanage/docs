@@ -1,15 +1,13 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Use Case
+<hr/>
 
-<a name='overview'></a>
-# Use case
 Throughout this documentation we are going to assume that we are building an accounting application. 
 
-<a name='requirements'></a>
 ## Requirements
 - MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 - Store data in a database (MariaDB/MySQL)
@@ -29,7 +27,6 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-<a name='groups'></a>
 ## Groups - User roles
 | Group          | Description                                        |
 |----------------|----------------------------------------------------|
@@ -39,7 +36,6 @@ Throughout this documentation we are going to assume that we are building an acc
 | Managers       | Accounting department managers                     |
 | Administrators | Full access to the whole application               |
 
-<a name='endpoints'></a>
 ## Endpoints
 | Endpoint                          | Description                                                  |
 |-----------------------------------|--------------------------------------------------------------|

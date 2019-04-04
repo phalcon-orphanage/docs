@@ -5,11 +5,11 @@ version: '4.0'
 upgrade: ''
 category: 'collection'
 ---
-# Collection Component
+# Registry Component
 <hr/>
 
 ## Overview
-`Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
+`Phalcon\Registry` is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -20,7 +20,7 @@ category: 'collection'
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -31,7 +31,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 ```
 
 ## Constructor
@@ -40,7 +40,7 @@ You can construct the object as any other object in PHP. However, the constructo
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -51,16 +51,16 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 ```
 
 ## Reusing
-You can also reuse the component, by repopulating it. `Phalcon\Collection` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively, 
+You can also reuse the component, by repopulating it. `Phalcon\Registry` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively, 
 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -71,7 +71,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->count(); // 2
 
@@ -86,7 +86,7 @@ echo $collection->count(); // 1
 ```
 
 ## Get
-As mentioned above, `Phalcon\Collection` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 - Property
 - `__get()`
 - array based get (`$collection[$element]`)
@@ -98,7 +98,7 @@ The fastest way is by using the property syntax:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -109,7 +109,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->year;                    // 1776
 ```
@@ -129,7 +129,7 @@ public function get(string $element, mixed $defaultValue = null, bool $insensiti
 Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned.  By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive. 
 
 ## Get
-As mentioned above, `Phalcon\Collection` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 - Property
 - `__get()`
 - array based get (`$collection[$element]`)
@@ -141,7 +141,7 @@ The fastest way is by using the property syntax:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -152,7 +152,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->year;                    // 1776
 ```
@@ -184,7 +184,7 @@ The fastest way is by using the property syntax:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -195,7 +195,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo isset($collection->year); // true
 ```
@@ -232,7 +232,7 @@ The fastest way is by using the property syntax:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -242,7 +242,7 @@ $data = [
     ],
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 $collection->year = 1776;
 ```
@@ -269,7 +269,7 @@ The fastest way is by using the property syntax:
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -279,7 +279,7 @@ $data = [
     ],
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 unset($collection->year);
 ```
@@ -309,7 +309,7 @@ Since the collection object implements `\IteratorAggregate`, you can iterate thr
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -320,7 +320,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 foreach ($collection as $key => $value) {
     echo $key . ' - ' . $value . PHP_EOL;
@@ -333,7 +333,7 @@ The implementation of the `\Countable` interface exposes the `count()` method, w
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -344,7 +344,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->count();    // 2
 ```
@@ -355,7 +355,7 @@ The `\Serializable` and `\JsonSerializable` interfaces expose methods that allow
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -366,7 +366,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->serialize();    // a:2:{s:6:"colors";a:3:{i:0;s:3:"red";i:1;s:5:"white";i:2;s:4:"blue";}s:4:"year";i:1776;}
 
@@ -377,13 +377,13 @@ echo $collection->jsonSerialize(); // $data
 ```
 
 ## Transformations
-`Phalcon\Collection` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+`Phalcon\Registry` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
 	 
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -394,7 +394,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->toArray();  // $data
 ```
@@ -411,7 +411,7 @@ You can pass any valid flags to the method according to your needs.
 ```php
 <?php
 
-use Phalcon\Collection;
+use Phalcon\Registry;
 
 $data = [
     'colors' => [
@@ -422,7 +422,7 @@ $data = [
     'year'   => 1776,
 ];
 
-$collection = new Collection($data);
+$collection = new Registry($data);
 
 echo $collection->toJson();    // ["red","white","blue"],"year":1776}
 

@@ -1,20 +1,19 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Tutorial - REST
+<hr/>
 
-<a name='basic'></a>
-# Tutorial: Creating a Simple REST API
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+## Creating a Simple REST API
+In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
 
 * `GET` to retrieve and search data
 * `POST` to add data
 * `PUT` to update data
 * `DELETE` to delete data
 
-<a name='definitions'></a>
 ## Defining the API
 The API consists of the following methods:
 
@@ -27,9 +26,8 @@ The API consists of the following methods:
 | `PUT`    | /api/robots/2            | Updates robots based on primary key            |
 | `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
 
-<a name='implementation'></a>
 ## Creating the Application
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](/4.0/en/application-micro) to meet our goal.
+As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) to meet our goal.
 
 The following file structure is more than enough:
 
@@ -129,7 +127,6 @@ Each route is defined with a method with the same name as the HTTP method, as fi
 
 When a defined route matches the requested URI then the application executes the corresponding handler.
 
-<a name='models'></a>
 ## Creating a Model
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
@@ -192,7 +189,7 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app [File: `index.php`]:
+Now, we must set up a connection to be used by this model and load it within our app `index.php`:
 
 ```php
 <?php
@@ -234,9 +231,8 @@ $di->set(
 $app = new Micro($di);
 ```
 
-<a name='retrieving-data'></a>
 ## Retrieving Data
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. [File: `index.php`]
+The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. `index.php`
 
 ```php
 <?php
@@ -263,9 +259,9 @@ $app->get(
 );
 ```
 
-[PHQL](/4.0/en/db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
 
-The searching by name handler would look like [File: `index.php`]:
+The searching by name handler would look like `index.php`:
 
 ```php
 <?php
@@ -297,7 +293,7 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not [File: `index.php`]:
+Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not `index.php`:
 
 ```php
 <?php
@@ -345,9 +341,8 @@ $app->get(
 );
 ```
 
-<a name='inserting-data'></a>
 ## Inserting Data
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion [File: `index.php`]:
+Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion `index.php`:
 
 ```php
 <?php
@@ -411,9 +406,8 @@ $app->post(
 );
 ```
 
-<a name='updating-data'></a>
 ## Updating Data
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated [File: `index.php`]:
+The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated `index.php`:
 
 ```php
 <?php
@@ -471,9 +465,8 @@ $app->put(
 );
 ```
 
-<a name='deleting-data'></a>
 ## Deleting Data
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted [File: `index.php`]:
+The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted `index.php`:
 
 ```php
 <?php
@@ -539,9 +532,8 @@ CREATE TABLE `robotics`.`robots` (
 )
 ```
 
-<a name='testing'></a>
 ## Testing our Application
-Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Using [curl][curl] we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 
@@ -645,6 +637,5 @@ Content-Type: text/html; charset=UTF-8
 {"status":"OK"}
 ```
 
-<a name='conclusion'></a>
-## Conclusion
-As we saw, developing a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API with Phalcon is easy using   [micro applications](/4.0/en/application-micro) and [PHQL](/4.0/en/db-phql).
+[restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
+[curl]: https://en.wikipedia.org/wiki/CURL

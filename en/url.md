@@ -1,15 +1,14 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Url Component
+<hr />
 
-<a name='overview'></a>
-# Generating URLs and Paths
+## Generating URLs and Paths
 [Phalcon\Url](api/Phalcon_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
 
-<a name='base-uri'></a>
 ## Setting a base URI
 Depending of which directory of your document root your application is installed, it may have a base URI or not.
 
@@ -63,11 +62,11 @@ $di->set(
 );
 ```
 
-<a name='generating-uri'></a>
 ## Generating URIs
-If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern: 
+If you are using the [Router](routing) with its default behavior, your application is able to match routes based on the following pattern: 
 
-<h5 class='alert alert-info' markdown='1'>/:controller/:action/:params </h5>
+> /:controller/:action/:params
+{: .alert .alert-info }
 
 Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
 
@@ -107,7 +106,6 @@ $url->get(
 );
 ```
 
-<a name='urls-without-mod-rewrite'></a>
 ## Producing URLs without mod_rewrite
 You can use this component also to create URLs without mod_rewrite:
 
@@ -166,7 +164,6 @@ The produced routes would look like:
 echo $url->get('products/save');
 ```
 
-<a name='urls-from-volt'></a>
 ## Producing URLs from Volt
 The function `url` is available in volt to generate URLs using this component:
 
@@ -184,7 +181,6 @@ Generate static routes:
 {% endraw %}
 ```
 
-<a name='static-vs-dynamic-uri'></a>
 ## Static vs. Dynamic URIs
 This component allow you to set up a different base URI for static resources in the application:
 
@@ -204,6 +200,5 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 
 [Phalcon\Tag](api/Phalcon_Tag) will request both dynamic and static URIs using this component.
 
-<a name='custom-url'></a>
 ## Implementing your own URL Generator
 The [Phalcon\UrlInterface](api/Phalcon_UrlInterface) interface must be implemented to create your own URL generator replacing the one provided by Phalcon.

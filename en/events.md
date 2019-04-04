@@ -1,21 +1,19 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
 # Events Manager
+<hr />
+
+## Overview
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
-<a name='naming-convention'></a>
 ## Naming Convention
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
 When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/Phalcon_Db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
 
-<a name='usage'></a>
 ## Usage Example
 In the following example, we will use the EventsManager to listen for the `afterQuery` event produced in a MySQL connection managed by [Phalcon\Db](api/Phalcon_Db):
 
@@ -55,7 +53,8 @@ $connection->query(
 
 Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-<h5 class='alert alert-warning' markdown='1'>You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
+> You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
+{: .alert .alert-warning }
 
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to detect the SQL statements that are taking longer to execute than expected:
 
@@ -145,7 +144,6 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
 }
 ```
 
-<a name='components-that-trigger-events'></a>
 ## Creating components that trigger Events
 You can create components in your application that trigger events to an EventsManager. As a consequence, there may exist listeners that react to these events when generated. In the following example we're creating a component called `MyComponent`. This component is EventsManager aware (it implements [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events_EventsAwareInterface)); when its `someTask()` method is executed it triggers two events to any listener in the EventsManager:
 
@@ -268,7 +266,6 @@ $eventsManager->attach(
 );
 ```
 
-<a name='using-services'></a>
 ## Using Services From The DI
 By extending [Phalcon\Plugin](api/Phalcon_Plugin), you can access services from the DI, just like you would in a controller:
 
@@ -300,7 +297,6 @@ class SomeListener extends Plugin
 }
 ```
 
-<a name='propagation-cancellation'></a>
 ## Event Propagation/Cancellation
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
 
@@ -331,7 +327,6 @@ By default, events are cancelable - even most of the events produced by the fram
 $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 ```
 
-<a name='listener-priorities'></a>
 ## Listener Priorities
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
 
@@ -345,7 +340,6 @@ $eventsManager->attach('db', new DbListener(), 100); // Normal priority
 $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 ```
 
-<a name='collecting-responses'></a>
 ## Collecting Responses
 The events manager can collect every response returned by every notified listener. This example explains how it works:
 
@@ -388,116 +382,114 @@ The above example produces:
     Array ( [0] => first response [1] => second response )
 ```
 
-<a name='custom'></a>
 ## Implementing your own EventsManager
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
 
-<a name='list'></a>
 ## List of Events
 The events available in Phalcon are:
 
-| Component          | Event                               |
-|--------------------|-------------------------------------|
-| ACL                | `acl:afterCheckAccess`              |
-| ACL                | `acl:beforeCheckAccess`             |
-| Application        | `application:afterHandleRequest`    |
-| Application        | `application:afterStartModule`      |
-| Application        | `application:beforeHandleRequest`   |
-| Application        | `application:beforeSendResponse`    |
-| Application        | `application:beforeStartModule`     |
-| Application        | `application:boot`                  |
-| Application        | `application:viewRender`            |
-| CLI                | `dispatch:beforeException`          |
-| Collection         | `afterCreate`                       |
-| Collection         | `afterSave`                         |
-| Collection         | `afterUpdate`                       |
-| Collection         | `afterValidation`                   |
-| Collection         | `afterValidationOnCreate`           |
-| Collection         | `afterValidationOnUpdate`           |
-| Collection         | `beforeCreate`                      |
-| Collection         | `beforeSave`                        |
-| Collection         | `beforeUpdate`                      |
-| Collection         | `beforeValidation`                  |
-| Collection         | `beforeValidationOnCreate`          |
-| Collection         | `beforeValidationOnUpdate`          |
-| Collection         | `notDeleted`                        |
-| Collection         | `notSave`                           |
-| Collection         | `notSaved`                          |
-| Collection         | `onValidationFails`                 |
-| Collection         | `validation`                        |
-| Collection Manager | `collectionManager:afterInitialize` |
-| Console            | `console:afterHandleTask`           |
-| Console            | `console:afterStartModule`          |
-| Console            | `console:beforeHandleTask`          |
-| Console            | `console:beforeStartModule`         |
-| Db                 | `db:afterQuery`                     |
-| Db                 | `db:beforeQuery`                    |
-| Db                 | `db:beginTransaction`               |
-| Db                 | `db:createSavepoint`                |
-| Db                 | `db:commitTransaction`              |
-| Db                 | `db:releaseSavepoint`               |
-| Db                 | `db:rollbackTransaction`            |
-| Db                 | `db:rollbackSavepoint`              |
-| Dispatcher         | `dispatch:afterExecuteRoute`        |
-| Dispatcher         | `dispatch:afterDispatch`            |
-| Dispatcher         | `dispatch:afterDispatchLoop`        |
-| Dispatcher         | `dispatch:afterInitialize`          |
-| Dispatcher         | `dispatch:beforeException`          |
-| Dispatcher         | `dispatch:beforeExecuteRoute`       |
-| Dispatcher         | `dispatch:beforeDispatch`           |
-| Dispatcher         | `dispatch:beforeDispatchLoop`       |
-| Dispatcher         | `dispatch:beforeForward`            |
-| Dispatcher         | `dispatch:beforeNotFoundAction`     |
-| Loader             | `loader:afterCheckClass`            |
-| Loader             | `loader:beforeCheckClass`           |
-| Loader             | `loader:beforeCheckPath`            |
-| Loader             | `loader:pathFound`                  |
-| Micro              | `micro:afterHandleRoute`            |
-| Micro              | `micro:afterExecuteRoute`           |
-| Micro              | `micro:beforeExecuteRoute`          |
-| Micro              | `micro:beforeHandleRoute`           |
-| Micro              | `micro:beforeNotFound`              |
-| Middleware         | `afterBinding`                      |
-| Middleware         | `afterExecuteRoute`                 |
-| Middleware         | `afterHandleRoute`                  |
-| Middleware         | `beforeExecuteRoute`                |
-| Middleware         | `beforeHandleRoute`                 |
-| Middleware         | `beforeNotFound`                    |
-| Model              | `afterCreate`                       |
-| Model              | `afterDelete`                       |
-| Model              | `afterSave`                         |
-| Model              | `afterUpdate`                       |
-| Model              | `afterValidation`                   |
-| Model              | `afterValidationOnCreate`           |
-| Model              | `afterValidationOnUpdate`           |
-| Model              | `beforeDelete`                      |
-| Model              | `notDeleted`                        |
-| Model              | `beforeCreate`                      |
-| Model              | `beforeDelete`                      |
-| Model              | `beforeSave`                        |
-| Model              | `beforeUpdate`                      |
-| Model              | `beforeValidation`                  |
-| Model              | `beforeValidationOnCreate`          |
-| Model              | `beforeValidationOnUpdate`          |
-| Model              | `notSave`                           |
-| Model              | `notSaved`                          |
-| Model              | `onValidationFails`                 |
-| Model              | `prepareSave`                       |
-| Models Manager     | `modelsManager:afterInitialize`     |
+| Component          | Event                                |
+|--------------------|--------------------------------------|
+| ACL                | `acl:afterCheckAccess`               |
+| ACL                | `acl:beforeCheckAccess`              |
+| Application        | `application:afterHandleRequest`     |
+| Application        | `application:afterStartModule`       |
+| Application        | `application:beforeHandleRequest`    |
+| Application        | `application:beforeSendResponse`     |
+| Application        | `application:beforeStartModule`      |
+| Application        | `application:boot`                   |
+| Application        | `application:viewRender`             |
+| CLI                | `dispatch:beforeException`           |
+| Collection         | `afterCreate`                        |
+| Collection         | `afterSave`                          |
+| Collection         | `afterUpdate`                        |
+| Collection         | `afterValidation`                    |
+| Collection         | `afterValidationOnCreate`            |
+| Collection         | `afterValidationOnUpdate`            |
+| Collection         | `beforeCreate`                       |
+| Collection         | `beforeSave`                         |
+| Collection         | `beforeUpdate`                       |
+| Collection         | `beforeValidation`                   |
+| Collection         | `beforeValidationOnCreate`           |
+| Collection         | `beforeValidationOnUpdate`           |
+| Collection         | `notDeleted`                         |
+| Collection         | `notSave`                            |
+| Collection         | `notSaved`                           |
+| Collection         | `onValidationFails`                  |
+| Collection         | `validation`                         |
+| Collection Manager | `collectionManager:afterInitialize`  |
+| Console            | `console:afterHandleTask`            |
+| Console            | `console:afterStartModule`           |
+| Console            | `console:beforeHandleTask`           |
+| Console            | `console:beforeStartModule`          |
+| Db                 | `db:afterQuery`                      |
+| Db                 | `db:beforeQuery`                     |
+| Db                 | `db:beginTransaction`                |
+| Db                 | `db:createSavepoint`                 |
+| Db                 | `db:commitTransaction`               |
+| Db                 | `db:releaseSavepoint`                |
+| Db                 | `db:rollbackTransaction`             |
+| Db                 | `db:rollbackSavepoint`               |
+| Dispatcher         | `dispatch:afterExecuteRoute`         |
+| Dispatcher         | `dispatch:afterDispatch`             |
+| Dispatcher         | `dispatch:afterDispatchLoop`         |
+| Dispatcher         | `dispatch:afterInitialize`           |
+| Dispatcher         | `dispatch:beforeException`           |
+| Dispatcher         | `dispatch:beforeExecuteRoute`        |
+| Dispatcher         | `dispatch:beforeDispatch`            |
+| Dispatcher         | `dispatch:beforeDispatchLoop`        |
+| Dispatcher         | `dispatch:beforeForward`             |
+| Dispatcher         | `dispatch:beforeNotFoundAction`      |
+| Loader             | `loader:afterCheckClass`             |
+| Loader             | `loader:beforeCheckClass`            |
+| Loader             | `loader:beforeCheckPath`             |
+| Loader             | `loader:pathFound`                   |
+| Micro              | `micro:afterHandleRoute`             |
+| Micro              | `micro:afterExecuteRoute`            |
+| Micro              | `micro:beforeExecuteRoute`           |
+| Micro              | `micro:beforeHandleRoute`            |
+| Micro              | `micro:beforeNotFound`               |
+| Middleware         | `afterBinding`                       |
+| Middleware         | `afterExecuteRoute`                  |
+| Middleware         | `afterHandleRoute`                   |
+| Middleware         | `beforeExecuteRoute`                 |
+| Middleware         | `beforeHandleRoute`                  |
+| Middleware         | `beforeNotFound`                     |
+| Model              | `afterCreate`                        |
+| Model              | `afterDelete`                        |
+| Model              | `afterSave`                          |
+| Model              | `afterUpdate`                        |
+| Model              | `afterValidation`                    |
+| Model              | `afterValidationOnCreate`            |
+| Model              | `afterValidationOnUpdate`            |
+| Model              | `beforeDelete`                       |
+| Model              | `notDeleted`                         |
+| Model              | `beforeCreate`                       |
+| Model              | `beforeDelete`                       |
+| Model              | `beforeSave`                         |
+| Model              | `beforeUpdate`                       |
+| Model              | `beforeValidation`                   |
+| Model              | `beforeValidationOnCreate`           |
+| Model              | `beforeValidationOnUpdate`           |
+| Model              | `notSave`                            |
+| Model              | `notSaved`                           |
+| Model              | `onValidationFails`                  |
+| Model              | `prepareSave`                        |
+| Models Manager     | `modelsManager:afterInitialize`      |
 | Request            | `request:afterAuthorizationResolve`  |
 | Request            | `request:beforeAuthorizationResolve` |
-| Router             | `router:beforeCheckRoutes`          |
-| Router             | `router:beforeCheckRoute`           |
-| Router             | `router:matchedRoute`               |
-| Router             | `router:notMatchedRoute`            |
-| Router             | `router:afterCheckRoutes`           |
-| Router             | `router:beforeMount`                |
-| View               | `view:afterRender`                  |
-| View               | `view:afterRenderView`              |
-| View               | `view:beforeRender`                 |
-| View               | `view:beforeRenderView`             |
-| View               | `view:notFoundView`                 |
-| Volt               | `compileFilter`                     |
-| Volt               | `compileFunction`                   |
-| Volt               | `compileStatement`                  |
-| Volt               | `resolveExpression`                 |
+| Router             | `router:beforeCheckRoutes`           |
+| Router             | `router:beforeCheckRoute`            |
+| Router             | `router:matchedRoute`                |
+| Router             | `router:notMatchedRoute`             |
+| Router             | `router:afterCheckRoutes`            |
+| Router             | `router:beforeMount`                 |
+| View               | `view:afterRender`                   |
+| View               | `view:afterRenderView`               |
+| View               | `view:beforeRender`                  |
+| View               | `view:beforeRenderView`              |
+| View               | `view:notFoundView`                  |
+| Volt               | `compileFilter`                      |
+| Volt               | `compileFunction`                    |
+| Volt               | `compileStatement`                   |
+| Volt               | `resolveExpression`                  |

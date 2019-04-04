@@ -1,25 +1,26 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Object Document Mapper
+<hr/>
 
-<h5 class='alert alert-info' markdown='1'>Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+</h5>
+## Overview
 
-<a name='overview'></a>
-# ODM (Object-Document Mapper)
-In addition to its ability to [map tables](/4.0/en/models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
+> Please note that if you are using the Mongo driver provided by PHP 7, the ODM will not work for you. There is an incubator adapter but all the Mongo code must be rewritten (new Bson type instead of arrays, no MongoId, no MongoDate, etc...). Please ensure that you test your code before upgrading to PHP 7 and/or Phalcon 3+
+{: .alert .alert-info }
+
+In addition to its ability to [map tables](db-models) in relational databases, Phalcon can map documents from NoSQL databases. The ODM offers a CRUD functionality, events, validations among other services.
 
 Due to the absence of SQL queries and planners, NoSQL databases can see real improvements in performance using the Phalcon approach. Additionally, there are no SQL building reducing the possibility of SQL injections.
 
 The following NoSQL databases are supported:
 
-| Name                               | Description                                                          |
-|------------------------------------|----------------------------------------------------------------------|
-| [MongoDB](https://www.mongodb.org/) | MongoDB is a scalable, high-performance, open source NoSQL database. |
+| Name               | Description                                                          |
+|--------------------|----------------------------------------------------------------------|
+| [MongoDB][mongodb] | MongoDB is a scalable, high-performance, open source NoSQL database. |
 
-<a name='creating-models'></a>
 ## Creating Models
 A model is a class that extends from [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection). It must be placed in the models directory. A model file must contain a single class; its class name should be in camel case notation:
 
@@ -50,7 +51,6 @@ class Robots extends Collection
 }
 ```
 
-<a name='documents-to-objects'></a>
 ## Understanding Documents To Objects
 Every instance of a model represents a document in the collection. You can easily access collection data by reading object properties. For example, for a collection `robots` with the documents:
 
@@ -67,7 +67,6 @@ connecting to: test
 >
 ```
 
-<a name='namespaces'></a>
 ## Models in Namespaces
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
 
@@ -117,7 +116,6 @@ $robot->name = 'Voltron';
 $robot->save();
 ```
 
-<a name='connection-setup'></a>
 ## Setting a Connection
 Connections are retrieved from the services container. By default, Phalcon tries to find the connection in a service called `mongo`:
 
@@ -149,7 +147,6 @@ $di->set(
 );
 ```
 
-<a name='finding-documents'></a>
 ## Finding Documents
 As [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) relies on the Mongo PHP extension you have the same facilities to query documents and convert them transparently to model instances:
 
@@ -272,9 +269,8 @@ The available query options are:
 | `limit`      | Limit the results of the query to results to certain range                                                                                                                                   | `'limit' => 10`                                |
 | `skip`       | Skips a number of results                                                                                                                                                                    | `'skip' => 50`                                 |
 
-If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart](https://secure.php.net/manual/en/mongo.sqltomongo.php).
+If you have experience with SQL databases, you may want to check the [SQL to Mongo Mapping Chart][sql_to_mongo].
 
-<a name='finding-documents-fields'></a>
 ## Querying specific fields
 To query specific fields specific fields from a MongoDB database using the Phalcon ODM, all you need to do is:
 
@@ -298,9 +294,8 @@ $myRobots = Robots:find(
 ```
 The example above returns the `name` of the robot with the `type = 'maid'`.
 
-<a name='aggregations'></a>
 ## Aggregations
-A model can return calculations using [aggregation framework](https://docs.mongodb.org/manual/applications/aggregation/) provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
+A model can return calculations using [aggregation framework][aggregation_framework] provided by Mongo. The aggregated values are calculate without having to use MapReduce. With this option is easy perform tasks such as totaling or averaging field values:
 
 ```php
 <?php
@@ -326,7 +321,6 @@ $data = Article::aggregate(
 );
 ```
 
-<a name='creating-updating'></a>
 ## Creating Updating/Records
 The `Phalcon\Mvc\Collection::save()` method allows you to create/update documents according to whether they already exist in the collection associated with a model. The `save()` method is called internally by the create and update methods of [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection).
 
@@ -354,7 +348,7 @@ if ($robot->save() === false) {
 }
 ```
 
-The `_id` property is automatically updated with the [MongoId](https://secure.php.net/manual/en/class.mongoid.php) object created by the driver:
+The `_id` property is automatically updated with the [MongoId][mongoid] object created by the driver:
 
 ```php
 <?php
@@ -364,7 +358,6 @@ $robot->save();
 echo 'The generated id is: ', $robot->getId();
 ```
 
-<a name='validation-messages'></a>
 ### Validation Messages
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the insert/update processes.
 
@@ -384,7 +377,6 @@ if ($robot->save() === false) {
 }
 ```
 
-<a name='events'></a>
 ### Validation Events and Events Manager
 Models allow you to implement events that will be thrown when performing an insert or update. They help define business rules for a certain model. The following are the events supported by [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) and their order of execution:
 
@@ -443,7 +435,7 @@ class Products extends Collection
 }
 ```
 
-Additionally, this component is integrated with the [Phalcon Events Manager](/4.0/en/events) ([Phalcon\Events\Manager](api/Phalcon_Events_Manager)), this means we can create listeners that run when an event is triggered.
+Additionally, this component is integrated with the [Phalcon Events Manager](events) ([Phalcon\Events\Manager](api/Phalcon_Events_Manager)), this means we can create listeners that run when an event is triggered.
 
 ```php
 <?php
@@ -519,13 +511,8 @@ $di->set(
 );
 ```
 
-<a name='business-rules'></a>
 ### Implementing a Business Rule
-When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above.
-
-We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly.
-
-The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
+When an insert, update or delete is executed, the model verifies if there are any methods with the names of the events listed in the table above. We recommend that validation methods are declared protected to prevent that business logic implementation from being exposed publicly. The following example implements an event that validates the year cannot be smaller than 0 on update or insert:
 
 ```php
 <?php
@@ -547,7 +534,6 @@ class Robots extends Collection
 
 Some events return `false` as an indication to stop the current operation. If an event doesn't return anything, `Phalcon\Mvc\Collection` will assume a `true` value.
 
-<a name='data-integrity'></a>
 ### Validating Data Integrity
 [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) provides several events to validate data and implement business rules. The special `validation` event allows us to call built-in validators over the record. Phalcon exposes a few built-in validators that can be used at this stage of validation.
 
@@ -596,9 +582,9 @@ class Robots extends Collection
 
 The example above performs a validation using the built-in validator `InclusionIn`. It checks that the value of the field `type` is in a `domain` list. If the value is not included in the list, then the validator will fail and return `false`.
 
-<h5 class='alert alert-warning' markdown='1'>For more information on validators, see the [Validation documentation](/4.0/en/validation) </h5>
+> For more information on validators, see the [Validation documentation](validation)
+{: .alert .alert-warning }
 
-<a name='deleting-records'></a>
 ## Deleting Records
 The `Phalcon\Mvc\Collection::delete()` method allows you to delete a document. You can use it as follows:
 
@@ -657,7 +643,6 @@ The following events are available to define custom business rules that can be e
 | Deleting  | `beforeDelete` | YES                 | Runs before the delete operation is made |
 | Deleting  | `afterDelete`  | NO                  | Runs after the delete operation was made |
 
-<a name='validation-failed-events'></a>
 ## Validation Failed Events
 Another type of events is available when the data validation process finds any inconsistency:
 
@@ -666,9 +651,8 @@ Another type of events is available when the data validation process finds any i
 | Insert or Update         | `notSave`           | Triggered when the insert/update operation fails for any reason    |
 | Insert, Delete or Update | `onValidationFails` | Triggered when any data manipulation operation fails               |
 
-<a name='ids-vs-primary-keys'></a>
 ## Implicit Ids vs. User Primary Keys
-By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds](https://secure.php.net/manual/en/class.mongoid.php).
+By default [Phalcon\Mvc\Collection](api/Phalcon_Mvc_Collection) assumes that the `_id` attribute is automatically generated using [MongoIds][mongoid].
 
 If a model uses custom primary keys this behavior can be overridden:
 
@@ -686,7 +670,6 @@ class Robots extends Collection
 }
 ```
 
-<a name='multiple-databases'></a>
 ## Setting multiple databases
 In Phalcon, all models can share the same database connection or specify a connection per model. Actually, when `Phalcon\Mvc\Collection` needs to connect to the database it requests the `mongo` service in the application's services container. You can overwrite this service by setting it in the `initialize()` method:
 
@@ -736,7 +719,6 @@ class Robots extends Collection
 }
 ```
 
-<a name='services-in-models'></a>
 ## Injecting services into Models
 You may be required to access the application services within a model, the following example explains how to do that:
 
@@ -765,3 +747,8 @@ class Robots extends Collection
 ```
 
 The `notSave` event is triggered whenever a `creating` or `updating` action fails. We're flashing the validation messages obtaining the `flash` service from the DI container. By doing this, we don't have to print messages after each saving.
+
+[mongo]: https://www.mongodb.org
+[sql_to_mongo]: https://secure.php.net/manual/en/mongo.sqltomongo.php
+[aggregation_framework]: https://docs.mongodb.org/manual/applications/aggregation 
+[MongoIds]: https://secure.php.net/manual/en/class.mongoid.php

@@ -1,15 +1,14 @@
 ---
-layout: article
+layout: default
 language: 'en'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Translation Component
+<hr />
 
-<a name='overview'></a>
-# Multi-lingual Support
+## Multi-lingual Support
 The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
 
-<a name='adapters'></a>
 ## Factory
 Loads Translate Adapter class using `adapter` option, the remaining options will be passed to the adapter constructor.
 
@@ -26,7 +25,6 @@ $options = [
 $translate = Factory::load($options);
 ```
  
-<a name='usage'></a>
 ## Adapters
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
@@ -35,8 +33,6 @@ This component makes use of adapters to read translation messages from different
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
 | [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv) | Uses a CSV to store the messages for a langage. |
 | [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext) | Uses gettext to retrieve the messages from a .po file. |
-
-<a name='adapters-factory'></a>
 
 ### Native Array
 Translation strings are stored in a php array. 
@@ -93,7 +89,7 @@ $translate = Factory::load($options);
 ```
 
 ### Gettext
-The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](http://php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
+The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation][gettext]. The files hierarchy is bound to this standard.
 
 ```php
 <?php
@@ -110,7 +106,6 @@ $translate = Factory::load($options);
 ```
 
 ## Component Usage
-
 Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
 
 A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
@@ -174,7 +169,7 @@ calculated data i.e. `Hello %name%`. These placeholders can be replaced with pas
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](/4.0/en/routing).
+Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](routing).
 
 The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
  
@@ -238,7 +233,6 @@ or in a view directly
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);
 ```
 
-<a name='custom'></a>
 ## Implementing your own adapters
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -291,7 +285,8 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+There are more adapters available for this components in the [Phalcon Incubator][incubator]
+
 ## Interpolation
 In many cases, the translated strings are to be interpolated with data. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
 
@@ -306,7 +301,7 @@ $translate->_('hi-name', ['name' => $name, 'time' => 'day']); // Hello Henry, go
 $translate->_('hi-name', ['name' => $name, 'time' => 'night']); // Hello Henry, good night !
 ```
 
-[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](http://php.net/sprintf) convention.
+[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf][sprintf] convention.
 
 ```php
 <?php
@@ -333,3 +328,7 @@ $translate = return new NativeArray([
 $name = 'Henry';
 $translate->_('hi-name', [$name, 8]); // Son las 8, hola Henry
 ```
+
+[gettext]: http://php.net/manual/book.gettext.php
+[incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
+[sprintf]: https://www.php.net/manual/en/function.sprintf.php
