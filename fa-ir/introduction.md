@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'fa-ir'
 version: '4.0'
 ---
