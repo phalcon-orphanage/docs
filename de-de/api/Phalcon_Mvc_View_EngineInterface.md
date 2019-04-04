@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'de-de'
 version: '4.0'
 title: 'Phalcon\Mvc\View\EngineInterface'
