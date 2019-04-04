@@ -1,9 +1,11 @@
 ---
-layout: article
+layout: default
 language: 'it-it'
 version: '4.0'
 ---
 # Phalcon Coding Standard
+
+* * *
 
 Last update: 2019-03-28
 
