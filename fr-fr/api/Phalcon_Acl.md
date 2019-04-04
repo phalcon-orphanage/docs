@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'fr-fr'
 version: '4.0'
 title: 'Phalcon\Acl'
 ---
