@@ -17,15 +17,14 @@ CLI applications are executed from the command line. They are useful to create c
 
 A minimal structure of a CLI application will look like this:
 
-* `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- archivo principal de ejecución
+* `app/cli.php` <-- main bootstrap file
 
 <a name='creating-bootstrap'></a>
 
 ## Creating a Bootstrap
 
-As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the index.php bootstrapper in web applications, we use a cli.php file for bootstrapping the application.
+Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the CLI application.
 
 Below is a sample bootstrap that is being used for this example.
 
@@ -33,14 +32,14 @@ Below is a sample bootstrap that is being used for this example.
 <?php
 
 use Phalcon\Di\FactoryDefault\Cli as CliDI;
-use Phalcon\Cli\Console as ConsoleApp;
+use Phalcon\Cli\Console;
 use Phalcon\Loader;
 
-// Uso del contenedor de servicios predeterminado CLI
+// Using the CLI factory default services container
 $di = new CliDI();
 
 /**
- * Registrar el autocargador e indicarle que registre el directorio de tareas
+ * Register the autoloader and tell it to register the tasks directory
  */
 $loader = new Loader();
 
@@ -52,22 +51,15 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Cargar archivo de configuración (si hay alguno)
-$configFile = __DIR__ . '/config/config.php';
 
-if (is_readable($configFile)) {
-    $config = include $configFile;
 
-    $di->set('config', $config);
-}
-
-// Crear una aplicación de consola (o de linea de comandos)
-$console = new ConsoleApp();
+// Create a console application
+$console = new Console();
 
 $console->setDI($di);
 
 /**
- * Procesar los argumentos de la consola
+ * Process the console arguments
  */
 $arguments = [];
 
@@ -82,10 +74,10 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Gestionar los argumentos recibidos
+    // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Gestionar el error de Phalcon aquí
+    // Do Phalcon related stuff here
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -108,7 +100,7 @@ php app/cli.php
 
 ## Tasks
 
-Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
+Tasks work similar to controllers. Any CLI application needs at least a `MainTask` class and a `mainAction()` method. Every task needs to have a `mainAction()` method which will run if no action is given explicitly.
 
 Below is an example of the `app/tasks/MainTask.php` file:
 
@@ -146,18 +138,11 @@ class MainTask extends Task
         echo 'Este es el Task por default y el Action por default' . PHP_EOL;
     }
 
-    /**
-     * @param array $params
-     */
     public function testAction(array $params)
     {
-        echo sprintf('hola %s', $params[0]);
+        echo sprintf('hello %s', $params[0]) . PHP_EOL;
 
-        echo PHP_EOL;
-
-        echo sprintf('saludos cordiales, %s', $params[1]);
-
-        echo PHP_EOL;
+        echo sprintf('best regards, %s', $params[1]) . PHP_EOL;
     }
 }
 ```
@@ -165,41 +150,17 @@ class MainTask extends Task
 We can then run the following command:
 
 ```bash
-php app/cli.php main test mundo universo
+$ php app/cli.php main test world universe
 
-hola mundo
-saludos cordiales, universo
+hello world
+best regards, universe
 ```
 
 <a name='running-tasks-chain'></a>
 
 ## Running tasks in a chain
 
-It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
-
-```php
-<?php
-
-$di->setShared("console", $console);
-
-try {
-    // Gestionar argumentos recibidos
-    $console->handle($arguments);
-} catch (\Phalcon\Exception $e) {
-    // Gestionar el error de Phalcon aquí
-    // ..
-    fwrite(STDERR, $e->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Throwable $throwable) {
-    fwrite(STDERR, $throwable->getMessage() . PHP_EOL);
-    exit(1);
-} catch (\Exception $exception) {
-    fwrite(STDERR, $exception->getMessage() . PHP_EOL);
-    exit(1);
-}
-```
-
-Then you can use the console inside of any task. Below is an example of a modified MainTask.php:
+It's also possible to run tasks in a chain if it's required using the Dispatcher. Below is an example of a modified `MainTask.php`:
 
 ```php
 <?php
@@ -210,9 +171,9 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "Este es el Task por default y el Action por default" . PHP_EOL;
+        echo "This is the default task and the default action" . PHP_EOL;
 
-        $this->console->handle(
+        $this->dispatcher->forward(
             [
                 "task"   => "main",
                 "action" => "test",
@@ -222,9 +183,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "Yo también seré mostrado en pantalla!" . PHP_EOL;
+        echo "I will get printed too!" . PHP_EOL;
     }
 }
 ```
-
-However, it's a better idea to extend [Phalcon\Cli\Task](api/Phalcon_Cli_Task) and implement this kind of logic there.
