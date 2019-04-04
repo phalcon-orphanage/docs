@@ -3,15 +3,13 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# CLI Application
 
-<a name='creating-cli-application'></a>
+* * *
 
-# Bir Komut Satırı (CLI) Uygulaması Oluşturma
+# Creating a Command Line (CLI) Application
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
-
-<a name='structure'></a>
 
 ## Yapı
 
@@ -19,9 +17,7 @@ A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- ana önyükleme dosyası
-
-<a name='creating-bootstrap'></a>
+* `app/cli.php` <-- main bootstrap file
 
 ## Bir Önyükleme Oluşturma
 
@@ -36,11 +32,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// CLI uygulamamız için servis kapsayıcısı 
+// Using the CLI factory default services container
 $di = new CliDI();
 
 /**
- * Otomatik yükleyiciyi çağıralım ve görev dizinini kaydettirelim
+ * Register the autoloader and tell it to register the tasks directory
  */
 $loader = new Loader();
 
@@ -52,7 +48,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Ayar dosyasını yükleyelim (varsa)
+// Load the configuration file (if any)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -104,8 +100,6 @@ This piece of code can be run using:
 php app/cli.php
 ```
 
-<a name='tasks'></a>
-
 ## Görevler
 
 Tasks work similar to controllers. Any CLI application needs at least a MainTask and a mainAction and every task needs to have a mainAction which will run if no action is given explicitly.
@@ -126,13 +120,9 @@ class MainTask extends Task
 }
 ```
 
-<a name='processing-action-parameters'></a>
-
 ## Eylem parametrelerini işlemek
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
-
-If you run the application with the following parameters and action:
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap. If you run the application with the following parameters and action:
 
 ```php
 <?php
@@ -151,11 +141,11 @@ class MainTask extends Task
      */
     public function testAction(array $params)
     {
-        echo sprintf('merhaba %s', $params[0]);
+        echo sprintf('hello %s', $params[0]);
 
         echo PHP_EOL;
 
-        echo sprintf('saygılarımla, %s', $params[1]);
+        echo sprintf('best regards, %s', $params[1]);
 
         echo PHP_EOL;
     }
@@ -165,13 +155,11 @@ class MainTask extends Task
 We can then run the following command:
 
 ```bash
-php app/cli.php main test dünya evren
+php app/cli.php main test world universe
 
-merhaba dünya
-saygılarımla, evren
+hello world
+best regards, universe
 ```
-
-<a name='running-tasks-chain'></a>
 
 ## Bir zincirdeki görevleri çalıştırma
 
@@ -210,7 +198,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "Bu varsayılan görev ve varsayılan eylemdir" . PHP_EOL;
+        echo "This is the default task and the default action" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -222,7 +210,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "Ben de ekrana basılmış olacağım!" . PHP_EOL;
+        echo "I will get printed too!" . PHP_EOL;
     }
 }
 ```
