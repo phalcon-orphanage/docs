@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'pl-pl'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\TransactionInterface'
