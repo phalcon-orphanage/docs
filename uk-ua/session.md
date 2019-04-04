@@ -3,11 +3,11 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Session Component
 
-<a name='overview'></a>
+* * *
 
-# Storing data in the Session
+## Storing data in the Session
 
 The session component provides object-oriented wrappers to access session data.
 
@@ -16,8 +16,6 @@ Reasons to use this component instead of raw-sessions:
 * You can easily isolate session data across applications on the same domain
 * Intercept where session data is set/get in your application
 * Change the session adapter according to the application needs
-
-<a name='start'></a>
 
 ## Starting the Session
 
@@ -41,8 +39,6 @@ $di->setShared(
 );
 ```
 
-<a name='start-factory'></a>
-
 ## Factory
 
 Loads Session Adapter class using `adapter` option
@@ -65,8 +61,6 @@ $options = [
 $session = Factory::load($options);
 $session->start();
 ```
-
-<a name='store'></a>
 
 ## Storing/Retrieving data in Session
 
@@ -97,8 +91,6 @@ class UserController extends Controller
 }
 ```
 
-<a name='remove-destroy'></a>
-
 ## Removing/Destroying Sessions
 
 It's also possible remove specific variables or destroy the whole session:
@@ -123,8 +115,6 @@ class UserController extends Controller
     }
 }
 ```
-
-<a name='data-isolation'></a>
 
 ## Isolating Session Data between Applications
 
@@ -155,8 +145,6 @@ $di->set(
 
 Adding a unique ID is not necessary.
 
-<a name='bags'></a>
-
 ## Session Bags
 
 [Phalcon\Session\Bag](api/Phalcon_Session_Bag) is a component that helps separating session data into `namespaces`. Working by this way you can easily create groups of session variables into the application. By only setting the variables in the `bag`, it's automatically stored in session:
@@ -173,8 +161,6 @@ $user->setDI($di);
 $user->name = 'Kimbra Johnson';
 $user->age  = 22;
 ```
-
-<a name='data-persistence'></a>
 
 ## Persistent Data in Components
 
@@ -225,8 +211,6 @@ class Security extends Injectable
 ```
 
 The data added to the session (`$this->session`) are available throughout the application, while persistent (`$this->persistent`) can only be accessed in the scope of the current class.
-
-<a name='custom-adapters'></a>
 
 ## Implementing your own adapters
 
