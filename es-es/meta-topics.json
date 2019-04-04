@@ -49,6 +49,10 @@
             {
                 "text": "Guía para Pruebas",
                 "url": "/testing-environment"
+            },
+            {
+                "text": "Coding Standard",
+                "url": "/coding-standard"
             }
         ]
     },
@@ -63,14 +67,6 @@
             {
                 "text": "Configuración de Servidor Web",
                 "url": "/webserver-setup"
-            },
-            {
-                "text": "WAMP",
-                "url": "/webserver-wamp"
-            },
-            {
-                "text": "XAMPP",
-                "url": "/webserver-xampp"
             }
         ]
     },
@@ -89,15 +85,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Instalación",
-                "url": "/devtools-installation"
+                "text": "DevTools",
+                "url": "/devtools"
             },
             {
-                "text": "Uso",
-                "url": "/devtools-usage"
-            },
-            {
-                "text": "Depuración",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
@@ -107,12 +99,8 @@
         "url": "",
         "menu": [
             {
-                "text": "Rendimiento",
-                "url": "/performance"
-            },
-            {
-                "text": "Básico",
-                "url": "/tutorial-base"
+                "text": "Basic",
+                "url": "/tutorial-basic"
             },
             {
                 "text": "Invo",
@@ -127,8 +115,12 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Casos de uso",
+                "text": "Use case",
                 "url": "/use-case"
+            },
+            {
+                "text": "Performance",
+                "url": "/performance"
             }
         ]
     },
@@ -159,6 +151,10 @@
             {
                 "text": "MVC",
                 "url": "/mvc"
+            },
+            {
+                "text": "Namespaces",
+                "url": "/namespaces"
             }
         ]
     },
@@ -183,12 +179,8 @@
                 "url": "/loader"
             },
             {
-                "text": "Logging",
+                "text": "Logger",
                 "url": "/logger"
-            },
-            {
-                "text": "Colas",
-                "url": "/queue"
             }
         ]
     },
@@ -241,11 +233,7 @@
                 "url": "/db-models-validation"
             },
             {
-                "text": "Migraciones",
-                "url": "/db-migrations"
-            },
-            {
-                "text": "Paginación",
+                "text": "Pagination",
                 "url": "/db-pagination"
             }
         ]
@@ -345,10 +333,6 @@
             {
                 "text": "Respuesta",
                 "url": "/response"
-            },
-            {
-                "text": "PSR-7 Response",
-                "url": "/http-response"
             }
         ]
     },
@@ -367,15 +351,33 @@
         ]
     },
     {
+        "text": "PSR",
+        "url": "",
+        "menu": [
+            {
+                "text": "PSR-3 Logger",
+                "url": "/logger"
+            },
+            {
+                "text": "PSR-0, PSR-4 Loader",
+                "url": "/loader"
+            },
+            {
+                "text": "PSR-7 Request",
+                "url": "/http-request"
+            }
+        ]
+    },
+    {
         "text": "i18n",
         "url": "",
         "menu": [
             {
-                "text": "Internacionalización",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {
-                "text": "Traducciones",
+                "text": "Translate",
                 "url": "/translate"
             }
         ]

@@ -3,17 +3,15 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Tutorial - INVO
 
-<a name='overview'></a>
+* * *
 
-# Tutorial: INVO
+## INVO
 
-In this second tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [GitHub](https://github.com/phalcon/invo).
+In this tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [GitHub](https://github.com/phalcon/invo).
 
-INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com/). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
-
-<a name='structure'></a>
+INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
 
 ## Project Structure
 
@@ -48,15 +46,11 @@ Once you open the application in your browser `https://localhost/invo` you'll se
 
 The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
 
-<a name='routing'></a>
-
 ## Routing
 
-INVO uses the standard route that is built-in with the [Router](/4.0/en/routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
+INVO uses the standard route that is built-in with the [Router](routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
 The following route `/session/register` executes the controller `SessionController` and its action `registerAction`.
-
-<a name='configuration'></a>
 
 ## Configuration
 
@@ -76,7 +70,7 @@ $config = new ConfigIni(
 
 ```
 
-[Phalcon Config](/4.0/en/config) ([Phalcon\Config](api/Phalcon_Config)) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](/4.0/en/config) for other file types as well. The configuration file contains the following settings:
+[Phalcon Config](config) ([Phalcon\Config](api/Phalcon_Config)) allows us to manipulate the file in an object-oriented way. In this example, we're using an ini file for configuration but Phalcon has [adapters](config) for other file types as well. The configuration file contains the following settings:
 
 ```ini
 [database]
@@ -96,8 +90,6 @@ baseUri        = /invo/
 ```
 
 Phalcon doesn't have any pre-defined settings convention. Sections help us to organize the options as appropriate. In this file there are two sections to be used later: `application` and `database`.
-
-<a name='autoloaders'></a>
 
 ## Autoloaders
 
@@ -146,8 +138,6 @@ define(
 );
 ```
 
-<a name='services'></a>
-
 ## Registering services
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
@@ -189,8 +179,6 @@ $di->set(
 
 We will discuss this file in depth later.
 
-<a name='handling-requests'></a>
-
 ## Handling the Request
 
 If we skip to the end of the file (`public/index.php`), the request is finally handled by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) which initializes and executes all that is necessary to make the application run:
@@ -208,8 +196,6 @@ $response = $application->handle();
 
 $response->send();
 ```
-
-<a name='dependency-injection'></a>
 
 ## Inyección de Dependencias
 
@@ -256,8 +242,6 @@ $di = new FactoryDefault();
 ```
 
 It registers the majority of services with components provided by the framework as standard. If we need to override the definition of some service we could just set it again as we did above with `session` or `url`. This is the reason for the existence of the variable `$di`.
-
-<a name='log-in'></a>
 
 ## Log into the Application
 
@@ -327,7 +311,7 @@ The following simple form (`app/views/session/index.volt`) requests the login in
 {% endraw %}
 ```
 
-Instead of using raw PHP as the previous tutorial, we started to use [Volt](/4.0/en/volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
+Instead of using raw PHP as the previous tutorial, we started to use [Volt](volt). This is a built-in template engine inspired by Jinja_ providing a simpler and friendly syntax to create templates. It will not take too long before you become familiar with Volt.
 
 The `SessionController::startAction` function (`app/controllers/SessionController.php`) has the task of validating the data entered in the form including checking for a valid user in the database:
 
@@ -402,7 +386,7 @@ class SessionController extends ControllerBase
 }
 ```
 
-For the sake of simplicity, we have used [sha1](https://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](/4.0/en/security) instead.
+For the sake of simplicity, we have used [sha1](https://php.net/manual/en/function.sha1.php) to store the password hashes in the database, however, this algorithm is not recommended in real applications, use [bcrypt](security) instead.
 
 Note that multiple public attributes are accessed in the controller like: `$this->flash`, `$this->request` or `$this->session`. These are services defined in the services container from earlier (`app/config/services.php`). When they're accessed the first time, they are injected as part of the controller. These services are `shared`, which means that we are always accessing the same instance regardless of the place where we invoke them. For instance, here we invoke the `session` service and then we store the user identity in the variable `auth`:
 
@@ -489,8 +473,6 @@ return $this->dispatcher->forward(
 );
 ```
 
-<a name='securing-backend'></a>
-
 ## Securing the Backend
 
 The backend is a private area where only registered users have access. Therefore, it is necessary to check that only registered users have access to these controllers. If you aren't logged into the application and you try to access, for example, the products controller (which is private) you will see a screen like this:
@@ -499,7 +481,7 @@ The backend is a private area where only registered users have access. Therefore
 
 Every time someone attempts to access any controller/action, the application verifies that the current role (in session) has access to it, otherwise it displays a message like the above and forwards the flow to the home page.
 
-Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](/4.0/en/dispatcher). It is informed about the route found by the [Routing](/4.0/en/routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
+Now let's find out how the application accomplishes this. The first thing to know is that there is a component called [Dispatcher](dispatcher). It is informed about the route found by the [Routing](routing) component. Then, it is responsible for loading the appropriate controller and execute the corresponding action method.
 
 Normally, the framework creates the Dispatcher automatically. In our case, we want to perform a verification before executing the required action, checking if the user has access to it or not. To achieve this, we have replaced the component by creating a function in the bootstrap:
 
@@ -525,13 +507,11 @@ $di->set(
 );
 ```
 
-We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](/4.0/en/events) allows us to intercept the events produced by a component, routing the events to listeners.
-
-<a name='events-manager'></a>
+We now have total control over the Dispatcher used in the application. Many components in the framework trigger events that allow us to modify their internal flow of operation. As the Dependency Injector component acts as glue for components, a new component called [EventsManager](events) allows us to intercept the events produced by a component, routing the events to listeners.
 
 ### Events Management
 
-The [EventsManager](/4.0/en/events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
+The [EventsManager](events) allows us to attach listeners to a particular type of event. The type that interests us now is 'dispatch'. The following code filters all events produced by the Dispatcher:
 
 ```php
 <?php
@@ -672,8 +652,6 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-<a name='acl'></a>
-
 ### Getting the ACL list
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
@@ -775,8 +753,6 @@ foreach ($privateResources as $resource => $actions) {
 }
 ```
 
-<a name='working-with-crud'></a>
-
 ## Working with the CRUD
 
 Backends usually provide forms to allow users to manipulate data. Continuing the explanation of INVO, we now address the creation of CRUDs, a very common task that Phalcon will facilitate you using forms, validations, paginators and more.
@@ -865,8 +841,6 @@ class ProductsController extends ControllerBase
     }
 }
 ```
-
-<a name='search-form'></a>
 
 ## The Search Form
 
@@ -975,7 +949,7 @@ class ProductsForm extends Form
 }
 ```
 
-The form is declared using an object-oriented scheme based on the elements provided by the [forms](/4.0/en/forms) component. Every element follows almost the same structure:
+The form is declared using an object-oriented scheme based on the elements provided by the <forms> component. Every element follows almost the same structure:
 
 ```php
 <?php
@@ -1132,11 +1106,9 @@ This produces the following HTML:
 
 When the form is submitted, the `search` action is executed in the controller performing the search based on the data entered by the user.
 
-<a name='performing-searches'></a>
-
 ## Performing a Search
 
-The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](/4.0/en/request) component:
+The `search` action has two behaviors. When accessed via POST, it performs a search based on the data sent from the form but when accessed via GET it moves the current page in the paginator. To differentiate HTTP methods, we check it using the [Request](request) component:
 
 ```php
 <?php
@@ -1458,8 +1430,6 @@ Printing whether the product is active or not uses a helper implemented in the m
 
 This method is defined in the model.
 
-<a name='creating-updating-records'></a>
-
 ## Creating and Updating Records
 
 Now let's see how the CRUD creates and updates records. From the `new` and `edit` views, the data entered by the user is sent to the `create` and `save` actions that perform actions of `creating` and `updating` products, respectively.
@@ -1717,11 +1687,9 @@ public function saveAction()
 }
 ```
 
-<a name='user-components'></a>
-
 ## User Components
 
-All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com/). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
+All the UI elements and visual style of the application has been achieved mostly through [Bootstrap](https://getbootstrap.com). Some elements, such as the navigation bar changes according to the state of the application. For example, in the upper right corner, the link `Log in / Sign Up` changes to `Log out` if a user is logged into the application.
 
 This part of the application is implemented in the component `Elements` (`app/library/Elements.php`).
 
@@ -1797,8 +1765,6 @@ The important part is:
 {{ elements.getMenu() }}
 {% endraw %}
 ```
-
-<a name='dynamic-titles'></a>
 
 ## Changing the Title Dynamically
 

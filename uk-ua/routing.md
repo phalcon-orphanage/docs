@@ -3,15 +3,13 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Routing Component
 
-<a name='overview'></a>
+* * *
 
-# Routing
+## Overview
 
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
-
-<a name='defining'></a>
 
 ## Defining Routes
 
@@ -46,8 +44,7 @@ $router->add(
 $router->handle();
 ````
 
-The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths.
-In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
+The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
 An application can have many paths and defining routes one by one can be a cumbersome task. In these cases we can create more flexible routes:
 
@@ -94,8 +91,6 @@ These placeholders help writing regular expressions that are more readable for d
 Controller names are camelized, this means that characters (`-`) and (`_`) are removed and the next character is uppercased. For instance, some_controller is converted to SomeController.
 
 Since you can add many routes as you need using the `add()` method, the order in which routes are added indicate their relevance, latest routes added have more relevance than first added. Internally, all defined routes are traversed in reverse order until [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) finds the one that matches the given URI and processes it, while ignoring the rest.
-
-<a name='defining-named-parameters'></a>
 
 ### Parameters with Names
 
@@ -183,8 +178,6 @@ class DocumentationController extends Controller
 }
 ```
 
-<a name='defining-short-syntax'></a>
-
 ### Short Syntax
 
 If you don't like using an array to define the route paths, an alternative syntax is also available. The following examples produce the same result:
@@ -210,8 +203,6 @@ $router->add(
 );
 ```
 
-<a name='defining-mixed-parameters'></a>
-
 ### Mixing Array and Short Syntax
 
 Array and short syntax can be mixed to define a route, in this case note that named parameters automatically are added to the route paths according to the position on which they were defined:
@@ -229,8 +220,6 @@ $router->add(
     ]
 );
 ```
-
-<a name='defining-route-to-modules'></a>
 
 ### Routing to Modules
 
@@ -314,8 +303,6 @@ $router->add(
 );
 ```
 
-<a name='defining-http-method-restrictions'></a>
-
 ### HTTP Method Restrictions
 
 When you add a route using simply `add()`, the route will be enabled for any HTTP method. Sometimes we can restrict a route to a specific method, this is especially useful when creating RESTful applications:
@@ -346,8 +333,6 @@ $router->add(
     ]
 );
 ```
-
-<a name='defining-using-conversors'></a>
 
 ### Using conversors
 
@@ -396,8 +381,6 @@ $route->convert(
     }
 );
 ```
-
-<a name='defining-groups-of-routes'></a>
 
 ### Groups of Routes
 
@@ -512,8 +495,6 @@ $router->mount(
 );
 ```
 
-<a name='matching'></a>
-
 ## Matching Routes
 
 A valid URI must be passed to the Router so that it can process it and find a matching route. By default, the routing URI is taken from the `$_GET['_url']` variable that is created by the rewrite engine module. A couple of rewrite rules that work very well with Phalcon are:
@@ -554,8 +535,6 @@ echo $router->getActionName();
 $route = $router->getMatchedRoute();
 ```
 
-<a name='naming'></a>
-
 ## Naming Routes
 
 Each route that is added to the router is stored internally as a [Phalcon\Mvc\Router\Route](api/Phalcon_Mvc_Router_Route) object. That class encapsulates all the details of each route. For instance, we can give a name to a path to identify it uniquely in our application. This is especially useful if you want to create URLs from it.
@@ -585,8 +564,6 @@ echo $url->get(
     ]
 );
 ```
-
-<a name='usage'></a>
 
 ## Usage Examples
 
@@ -674,9 +651,8 @@ $router->add(
 );
 ```
 
-<h5 class='alert alert-warning'>Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: <code>/([a-zA-Z0-9\_\-]+)</code> </h5>
-
-<a name='default-behavior'></a>
+> Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
+{: .alert .alert-warning }
 
 ## Default Behavior
 
@@ -699,8 +675,6 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 ```
 
-<a name='default-route'></a>
-
 ## Setting the default route
 
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
@@ -716,8 +690,6 @@ $router->add(
     ]
 );
 ```
-
-<a name='not-found-paths'></a>
 
 ## Not Found Paths
 
@@ -738,8 +710,6 @@ $router->notFound(
 This is typically for an Error 404 page.
 
 > This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
-
-<a name='default-paths'></a>
 
 ## Setting default paths
 
@@ -762,8 +732,6 @@ $router->setDefaults(
     ]
 );
 ```
-
-<a name='extra-slashes'></a>
 
 ## Dealing with extra/trailing slashes
 
@@ -794,8 +762,6 @@ $router->add(
     ]
 );
 ```
-
-<a name='callbacks'></a>
 
 ## Match Callbacks
 
@@ -887,8 +853,6 @@ $route->beforeMatch(
 );
 ```
 
-<a name='hostname-constraints'></a>
-
 ## Hostname Constraints
 
 The router allows you to set hostname constraints, this means that specific routes or a group of routes can be restricted to only match if the route also meets the hostname constraint:
@@ -974,8 +938,6 @@ $blog->add(
 $router->mount($blog);
 ```
 
-<a name='uri-sources'></a>
-
 ## URI Sources
 
 By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
@@ -1006,9 +968,8 @@ Or you can manually pass a URI to the `handle()` method:
 $router->handle('/some/route/to/handle');
 ```
 
-<h5 class='alert alert-danger'>Please note that using <code>Router::URI_SOURCE_GET_URL</code> automatically decodes the Uri, because it is based on the <code>$_REQUEST</code> superglobal. However, for the time being, using <code>Router::URI_SOURCE_SERVER_REQUEST_URI</code> will not automatically decode the Uri for you. This will change in the next major release.</h5>
-
-<a name='testing'></a>
+> Please note that using `Router::URI_SOURCE_GET_URL` automatically decodes the Uri, because it is based on the `$_REQUEST` superglobal. However, for the time being, using `Router::URI_SOURCE_SERVER_REQUEST_URI` will not automatically decode the Uri for you. This will change in the next major release.
+{: .alert .alert-danger }
 
 ## Testing your routes
 
@@ -1054,26 +1015,22 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-<a name='events'></a>
-
 ## Events
 
 Like many other components, routers also have events. None of the events can stop the operation. Below is a list of available events
 
 | Event                      | Description                          |
 | -------------------------- | ------------------------------------ |
-| `router:beforeCheckRoutes` | Fired before check all loaded routes |
+| `router:afterCheckRoutes`  | Fired after check all routes         |
 | `router:beforeCheckRoute`  | Fired before check a route           |
+| `router:beforeCheckRoutes` | Fired before check all loaded routes |
+| `router:beforeMount`       | Fired before mount a new route       |
 | `router:matchedRoute`      | Fired when a route is matched        |
 | `router:notMatchedRoute`   | Fired is any route is matched        |
-| `router:afterCheckRoutes`  | Fired after check all routes         |
-| `router:beforeMount`       | Fired before mount a new route       |
-
-<a name='annotations'></a>
 
 ## Annotations Router
 
-This component provides a variant that's integrated with the [annotations](/4.0/en/annotations) service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
+This component provides a variant that's integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in the service registration:
 
 ```php
 <?php
@@ -1159,22 +1116,22 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 | Name        | Description                                                                                       | Usage                                  |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
-| Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
+| Delete      | This annotation marks a method as a route restricting the HTTP method to `DELETE`                 | `@Delete('/api/products/delete/{id}')` |
 | Get         | This annotation marks a method as a route restricting the HTTP method to `GET`                    | `@Get('/api/products/search')`         |
+| Options     | This annotation marks a method as a route restricting the HTTP method to `OPTIONS`                | `@Option('/api/products/info')`        |
 | Post        | This annotation marks a method as a route restricting the HTTP method to `POST`                   | `@Post('/api/products/save')`          |
 | Put         | This annotation marks a method as a route restricting the HTTP method to `PUT`                    | `@Put('/api/products/save')`           |
-| Delete      | This annotation marks a method as a route restricting the HTTP method to `DELETE`                 | `@Delete('/api/products/delete/{id}')` |
-| Options     | This annotation marks a method as a route restricting the HTTP method to `OPTIONS`                | `@Option('/api/products/info')`        |
+| Route       | This annotation marks a method as a route. This annotation must be placed in a method docblock    | `@Route('/api/products/show')`         |
+| RoutePrefix | A prefix to be prepended to each route URI. This annotation must be placed at the class' docblock | `@RoutePrefix('/api/products')`        |
 
 For annotations that add routes, the following parameters are supported:
 
 | Name       | Description                                                            | Usage                                                                |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
 | name       | Define a name for the route                                            | `@Route('/api/products', name='get-products')`                       |
 | paths      | An array of paths like the one passed to `Phalcon\Mvc\Router::add()` | `@Route('/posts/{id}/{slug}', paths={module='backend'})`             |
-| conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 
 If you're using modules in your application, it is better use the `addModuleResource()` method:
 
@@ -1193,8 +1150,6 @@ $di['router'] = function () {
     return $router;
 };
 ```
-
-<a name='registration'></a>
 
 ## Registering Router instance
 
@@ -1245,8 +1200,6 @@ $router->add(
 
 return $router;
 ```
-
-<a name='custom'></a>
 
 ## Implementing your own Router
 

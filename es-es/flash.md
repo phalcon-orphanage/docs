@@ -3,15 +3,13 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Flash Messages
 
-<a name='overview'></a>
+* * *
 
-# Flashing Messages
+## Overview
 
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
-
-<a name='adapters'></a>
 
 ## Adaptadores
 
@@ -21,8 +19,6 @@ This component makes use of adapters to define the behavior of the messages afte
 | --------- | ------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Direct    | Las salidas de los mensajes se transfieren directamente al flasher                                                  | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)   |
 | Session   | Se almacena temporalmente los mensajes en la sesión, luego se pueden imprimir los mensajes en la siguiente consulta | [Phalcon\Flash\Session](api/Phalcon_Flash_Session) |
-
-<a name='usage'></a>
 
 ## Uso
 
@@ -94,8 +90,6 @@ You can also add messages with your own types using the `message()` method:
 $this->flash->message('debug', "Este es un mensaje de depuración, no lo digas");
 ```
 
-<a name='printing'></a>
-
 ## Printing Messages
 
 Messages sent to the flash service are automatically formatted with HTML:
@@ -146,8 +140,6 @@ Then the messages would be printed as follows:
 
 <div class='alert alert-warning'>Mejor que te revisen, no te ves muy bien.</div>
 ```
-
-<a name='implicit-flush-vs-session'></a>
 
 ## Implicit Flush vs. Session
 
@@ -217,4 +209,4 @@ In this case you need to manually print the messages in the corresponding view:
 <p><?php $this->flashSession->output() ?></p>
 ```
 
-The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the [session](/4.0/en/session) first to successfully use the `flashSession` messenger.
+The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the <session> first to successfully use the `flashSession` messenger.

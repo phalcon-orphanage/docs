@@ -4,17 +4,21 @@ language: 'es-es'
 version: '4.0'
 ---
 # Phalcon Devtools
-<hr/>
+
+* * *
 
 ## Overview
+
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-> If you prefer to use the web version instead of the console, this [blog post][blog_devtools] offers more information.
+> If you prefer to use the web version instead of the console, this [blog post](https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem) offers more information.
 {: .alert .alert-danger }
 
-## Installation
+## Instalación
+
 ### Linux
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux. The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](installation) section for instructions. You can download a cross platform package containing the developer tools from from [GitHub][github_devtools]. Open a terminal and type the command below:
+
+These steps will guide you through the process of installing Phalcon Developer Tools for Linux. The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](installation) section for instructions. You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools). Open a terminal and type the command below:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -39,6 +43,7 @@ chmod ugo+x /usr/bin/phalcon
 ```
 
 ### macOS
+
 Open a terminal and type the command below:
 
 ```bash
@@ -71,17 +76,19 @@ chmod ugo+x /usr/bin/phalcon
 ```
 
 ### Windows
+
 On the Windows platform, you need to configure the system `PATH` to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. `c:\phalcon-tools`. You will need this path in the steps below. Edit the file `phalcon.bat` by right clicking on the file and selecting `Edit`:
 
 ![](/assets/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools\`):
+Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools`):
 
 ![](/assets/images/content/devtools-windows-2.png)
 
 Save the changes.
 
 #### Adding PHP and Tools to your system PATH
+
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
 
 From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
@@ -114,9 +121,10 @@ Type the commands `php -v` and `phalcon` and you will see something like this:
 
 Congratulations you now have Phalcon tools installed!
 
+## Uso
 
-## Usage
 ### Available Commands
+
 You can get a list of available commands in Phalcon tools by typing: `phalcon commands`
 
 ```bash
@@ -124,19 +132,20 @@ $ phalcon commands
 
 Phalcon DevTools (3.0.0)
 
-Available commands:
-  commands         (alias of: list, enumerate)
-  controller       (alias of: create-controller)
-  module           (alias of: create-module)
-  model            (alias of: create-model)
-  all-models       (alias of: create-all-models)
-  project          (alias of: create-project)
-  scaffold         (alias of: create-scaffold)
-  migration        (alias of: create-migration)
-  webtools         (alias of: create-webtools)
+Comandos disponibles:
+  commands         (alias de: list, enumerate)
+  controller       (alias de: create-controller)
+  module           (alias de: create-module)
+  model            (alias de: create-model)
+  all-models       (alias de: create-all-models)
+  project          (alias de: create-project)
+  scaffold         (alias de: create-scaffold)
+  migration        (alias de: create-migration)
+  webtools         (alias de: create-webtools)
 ```
 
 ### Generating a Project Skeleton
+
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
 ```bash
@@ -158,27 +167,27 @@ $ phalcon project --help
 
 Phalcon DevTools (3.0.0)
 
-Help:
-  Creates a project
+Ayuda:
+  Crear un proyecto
 
-Usage:
+Uso:
   project [name] [type] [directory] [enable-webtools]
 
-Arguments:
-  help    Shows this help text
+Argumentos:
+  help    Muestra este texto de ayuda
 
-Example
+Ejemplo
   phalcon project store simple
 
-Options:
- --name               Name of the new project
- --enable-webtools    Determines if webtools should be enabled [optional]
- --directory=s        Base path on which project will be created [optional]
- --type=s             Type of the application to be generated (cli, micro, simple, modules)
- --template-path=s    Specify a template path [optional]
- --use-config-ini     Use a ini file as configuration file [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --help               Shows this help
+Opciones:
+ --name               Nombre del nuevo proyecto
+ --enable-webtools    Determina si las webtools deben estar activas [opcional]
+ --directory=s        Directorio donde el proyecto debe ser creado [opcional]
+ --type=s             El tipo de aplicación a generar, opciones: cli, micro, simple, modules
+ --template-path=s    Especificar la ruta del template [opcional]
+ --use-config-ini     Usar un archivo ini como archivo de configuración [opcional]
+ --trace              Mostrar las trazas del framework en caso de alguna excepción. [opcional]
+ --help               Muestra esta ayuda[optional]
 ```
 
 Accessing the project from the web server will show you:
@@ -186,10 +195,11 @@ Accessing the project from the web server will show you:
 ![](/assets/images/content/devtools-usage-02.png)
 
 ### Generating Controllers
+
 The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
 ```bash
-$ phalcon create-controller --name test
+$ phalcon create-controller --name prueba
 ```
 
 The following code is generated by the script:
@@ -199,7 +209,7 @@ The following code is generated by the script:
 
 use Phalcon\Mvc\Controller;
 
-class TestController extends Controller
+class PruebaController extends Controller
 {
     public function indexAction()
     {
@@ -209,6 +219,7 @@ class TestController extends Controller
 ```
 
 ### Preparing Database Settings
+
 When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
 Change the database section in your config.php file:
@@ -237,9 +248,9 @@ return new \Phalcon\Config([
         'libraryDir'     => APP_PATH . '/library/',
         'cacheDir'       => BASE_PATH . '/cache/',
 
-        // This allows the baseUri to be understand project paths that are not in the root directory
-        // of the webpspace.  This will break if the public/index.php entry point is moved or
-        // possibly if the web server rewrite rules are changed. This can also be set to a static path.
+        // Esto permite que la baseUri entienda las rutas del proyecto que no están en el 
+        // directorio raíz del espacio web.  Esto se romperá si se mueve el punto de entrada public/index.php o 
+        // posiblemente si se cambian las reglas de reescritura del servidor web. Esto también se puede establecer en una ruta estática.
         'baseUri'        => preg_replace(
             '/public([\/\\])index.php$/', 
             '', 
@@ -250,22 +261,23 @@ return new \Phalcon\Config([
 ```
 
 ### Generating Models
+
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
 
 ```bash
-Options:
- --name=s             Table name
- --schema=s           Name of the schema. [optional]
- --namespace=s        Model's namespace [optional]
- --get-set            Attributes will be protected and have setters/getters. [optional]
- --extends=s          Model extends the class name supplied [optional]
- --excludefields=l    Excludes fields defined in a comma separated list [optional]
- --doc                Helps to improve code completion on IDEs [optional]
- --directory=s        Base path on which project will be created [optional]
- --force              Rewrite the model. [optional]
- --trace              Shows the trace of the framework in case of exception. [optional]
- --mapcolumn          Get some code for map columns. [optional]
- --abstract           Abstract Model [optional]
+Opciones:
+ --name=s             Nombre de la tabla
+ --schema=s           Nombre del esquema. [opcional]
+ --namespace=s        Espacio de nombres de los modelos [opcional]
+ --get-set            Los atributos deben ser protegidos y tener setters y getters. [opcional]
+ --extends=s          Los modelos extienden del nombre de clase dado [opcional]
+ --excludefields=l    Excluir campos definidos en la lista separada por comas [opcional]
+ --doc                Ayuda a la mejorar el completado de código en IDEs [opcional]
+ --directory=s        Directorio base donde se creará el proyecto [opcional]
+ --force              Reescribir el modelo. [opcional]
+ --trace              Muestra la traza en caso de excepción del framework. [opcional]
+ --mapcolumn          Obtener un código para el mapa de columnas. [opcional]
+ --abstract           Modelo abstracto [opcional]
 ```
 
 The simplest way to generate a model is:
@@ -275,7 +287,7 @@ $ phalcon model products
 ```
 
 ```bash
-$ phalcon model --name tablename
+$ phalcon model --name nombreDeLaTabla
 ```
 
 All table fields are declared public for direct access.
@@ -360,7 +372,7 @@ class Products extends Model
 
 
     /**
-     * Method to set the value of field id
+     * Este método establece el valor del campo id
      *
      * @param integer $id
      */
@@ -370,7 +382,7 @@ class Products extends Model
     }
 
     /**
-     * Method to set the value of field typesId
+     * Este método establece el valor del campo typesId
      *
      * @param integer $typesId
      */
@@ -382,7 +394,7 @@ class Products extends Model
     // ...
 
     /**
-     * Returns the value of field status
+     * Returna el valor del campo status
      *
      * @return string
      */
@@ -396,10 +408,11 @@ class Products extends Model
 A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the addition or removal of fields and properties, without worrying about losing changes made to the model itself. The following screencast shows you how it works:
 
 <div align="center">
-    <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 
 ### Scaffold a CRUD
+
 Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
 
 Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `products`:
@@ -410,14 +423,14 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| File                                     | Purpose                        |
-|------------------------------------------|--------------------------------|
-| `app/controllers/ProductsController.php` | The Products controller        |
-| `app/models/Products.php`                | The Products model             |
-| `app/views/layout/products.phtml`        | Controller layout for Products |
-| `app/views/products/new.phtml`           | View for the action `new`      |
-| `app/views/products/edit.phtml`          | View for the action `edit`     |
-| `app/views/products/search.phtml`        | View for the action `search`   |
+| Archivo                                  | Propósito                                 |
+| ---------------------------------------- | ----------------------------------------- |
+| `app/controllers/ProductsController.php` | El controlador de productos               |
+| `app/models/Products.php`                | El modelo de productos                    |
+| `app/views/layout/products.phtml`        | La plantilla del controlador de productos |
+| `app/views/products/new.phtml`           | La vista de la acción `new`               |
+| `app/views/products/edit.phtml`          | La vista de la acción `edit`              |
+| `app/views/products/search.phtml`        | La vista de la acción `search`            |
 
 When browsing the recently generated controller, you will see a search form and a link to create a new Product:
 
@@ -432,19 +445,17 @@ After performing a search, a pager component is available to show paged results.
 ![](/assets/images/content/devtools-usage-05.png)
 
 ### Web Interface to Tools
+
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
 </div>
 
 ### Integrating Tools with PhpStorm IDE
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE][phpstorm]. The configuration steps could be easily adapted to other IDEs for PHP.
+
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
 </div>
-
-[blog_devtools]: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
-[github_devtools]: https://github.com/phalcon/phalcon-devtools
-[phpstorm]: https://www.jetbrains.com/phpstorm/

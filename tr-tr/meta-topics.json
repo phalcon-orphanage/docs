@@ -4,7 +4,7 @@
         "url": "/introduction",
         "menu": [
             {
-                "text": "Giriş",
+                "text": "Introduction",
                 "url": "/introduction"
             },
             {
@@ -17,13 +17,13 @@
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsorlar",
+                "text": "Sponsors",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Katkılar",
+        "text": "Contributions",
         "url": "",
         "menu": [
             {
@@ -49,6 +49,10 @@
             {
                 "text": "Test Ortamı",
                 "url": "/testing-environment"
+            },
+            {
+                "text": "Coding Standard",
+                "url": "/coding-standard"
             }
         ]
     },
@@ -57,20 +61,12 @@
         "url": "",
         "menu": [
             {
-                "text": "Kurulum",
+                "text": "Installation",
                 "url": "/installation"
             },
             {
                 "text": "Internet sunucusu kurulumu",
                 "url": "/webserver-setup"
-            },
-            {
-                "text": "WAMP",
-                "url": "/webserver-wamp"
-            },
-            {
-                "text": "XAMPP",
-                "url": "/webserver-xampp"
             }
         ]
     },
@@ -89,15 +85,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Kurulum",
-                "url": "/devtools-installation"
+                "text": "DevTools",
+                "url": "/devtools"
             },
             {
-                "text": "Kullanım",
-                "url": "/devtools-usage"
-            },
-            {
-                "text": "Hata ayıklama",
+                "text": "Debug",
                 "url": "/debug"
             }
         ]
@@ -107,12 +99,8 @@
         "url": "",
         "menu": [
             {
-                "text": "Performans",
-                "url": "/performance"
-            },
-            {
-                "text": "Temel",
-                "url": "/tutorial-base"
+                "text": "Basic",
+                "url": "/tutorial-basic"
             },
             {
                 "text": "Invo",
@@ -127,8 +115,12 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Kullanım örneği",
+                "text": "Use case",
                 "url": "/use-case"
+            },
+            {
+                "text": "Performance",
+                "url": "/performance"
             }
         ]
     },
@@ -159,6 +151,10 @@
             {
                 "text": "MVC",
                 "url": "/mvc"
+            },
+            {
+                "text": "Namespaces",
+                "url": "/namespaces"
             }
         ]
     },
@@ -183,17 +179,13 @@
                 "url": "/loader"
             },
             {
-                "text": "Günlük Oluşturma",
+                "text": "Logger",
                 "url": "/logger"
-            },
-            {
-                "text": "Kuyruk",
-                "url": "/queue"
             }
         ]
     },
     {
-        "text": "Veritabanı",
+        "text": "Database",
         "url": "",
         "menu": [
             {
@@ -209,7 +201,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Modeller",
+                "text": "Models",
                 "url": "/db-models"
             },
             {
@@ -217,11 +209,11 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Önbellek",
+                "text": "Cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Olaylar",
+                "text": "Events",
                 "url": "/db-models-events"
             },
             {
@@ -241,11 +233,7 @@
                 "url": "/db-models-validation"
             },
             {
-                "text": "Birleştirme",
-                "url": "/db-migrations"
-            },
-            {
-                "text": "Sayfa numaralandırma",
+                "text": "Pagination",
                 "url": "/db-pagination"
             }
         ]
@@ -263,7 +251,7 @@
                 "url": "/flash"
             },
             {
-                "text": "Formlar",
+                "text": "Forms",
                 "url": "/forms"
             },
             {
@@ -275,7 +263,7 @@
                 "url": "/tag"
             },
             {
-                "text": "Görünüm",
+                "text": "View",
                 "url": "/views"
             },
             {
@@ -297,7 +285,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Kontrolcüler",
+                "text": "Controllers",
                 "url": "/controllers"
             },
             {
@@ -309,11 +297,11 @@
                 "url": "/events"
             },
             {
-                "text": "Filtreler",
+                "text": "Filters",
                 "url": "/filter"
             },
             {
-                "text": "Yönlendirme",
+                "text": "Routing",
                 "url": "/routing"
             },
             {
@@ -325,7 +313,7 @@
                 "url": "/url"
             },
             {
-                "text": "Onaylama",
+                "text": "Validation",
                 "url": "/validation"
             }
         ]
@@ -345,15 +333,11 @@
             {
                 "text": "Tepki",
                 "url": "/response"
-            },
-            {
-                "text": "PSR-7 Response",
-                "url": "/http-response"
             }
         ]
     },
     {
-        "text": "Güvenlik",
+        "text": "Security",
         "url": "",
         "menu": [
             {
@@ -361,8 +345,26 @@
                 "url": "/crypt"
             },
             {
-                "text": "Güvenlik",
+                "text": "Security",
                 "url": "/security"
+            }
+        ]
+    },
+    {
+        "text": "PSR",
+        "url": "",
+        "menu": [
+            {
+                "text": "PSR-3 Logger",
+                "url": "/logger"
+            },
+            {
+                "text": "PSR-0, PSR-4 Loader",
+                "url": "/loader"
+            },
+            {
+                "text": "PSR-7 Request",
+                "url": "/http-request"
             }
         ]
     },
@@ -371,29 +373,29 @@
         "url": "",
         "menu": [
             {
-                "text": "Uluslararası yapma",
+                "text": "Internationalization",
                 "url": "/i18n"
             },
             {
-                "text": "Çeviri",
+                "text": "Translate",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Yarar",
+        "text": "Utility",
         "url": "",
         "menu": [
             {
-                "text": "Koleksiyon",
+                "text": "Collection",
                 "url": "/collection"
             },
             {
-                "text": "Yardım",
+                "text": "Helper",
                 "url": "/helper"
             },
             {
-                "text": "Kayıt",
+                "text": "Registry",
                 "url": "/registry"
             }
         ]
