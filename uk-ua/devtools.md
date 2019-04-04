@@ -4,17 +4,21 @@ language: 'uk-ua'
 version: '4.0'
 ---
 # Phalcon Devtools
-<hr/>
+
+* * *
 
 ## Overview
+
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-> If you prefer to use the web version instead of the console, this [blog post][blog_devtools] offers more information.
+> If you prefer to use the web version instead of the console, this [blog post](https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem) offers more information.
 {: .alert .alert-danger }
 
 ## Installation
+
 ### Linux
-These steps will guide you through the process of installing Phalcon Developer Tools for Linux. The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](installation) section for instructions. You can download a cross platform package containing the developer tools from from [GitHub][github_devtools]. Open a terminal and type the command below:
+
+These steps will guide you through the process of installing Phalcon Developer Tools for Linux. The Phalcon PHP extension is required to run Phalcon Tools. If you haven't installed it yet, please see the [Installation](installation) section for instructions. You can download a cross platform package containing the developer tools from from [GitHub](https://github.com/phalcon/phalcon-devtools). Open a terminal and type the command below:
 
 ```bash
 git clone git://github.com/phalcon/phalcon-devtools.git
@@ -39,6 +43,7 @@ chmod ugo+x /usr/bin/phalcon
 ```
 
 ### macOS
+
 Open a terminal and type the command below:
 
 ```bash
@@ -71,17 +76,19 @@ chmod ugo+x /usr/bin/phalcon
 ```
 
 ### Windows
+
 On the Windows platform, you need to configure the system `PATH` to include Phalcon tools as well as the PHP executable. If you download the Phalcon tools as a zip archive, extract it on any path of your local drive i.e. `c:\phalcon-tools`. You will need this path in the steps below. Edit the file `phalcon.bat` by right clicking on the file and selecting `Edit`:
 
 ![](/assets/images/content/devtools-windows-1.png)
 
-Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools\`):
+Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\phalcon-tools`):
 
 ![](/assets/images/content/devtools-windows-2.png)
 
 Save the changes.
 
 #### Adding PHP and Tools to your system PATH
+
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
 
 From the Windows start menu, right mouse click on the `Computer` icon and select `Properties`:
@@ -114,9 +121,10 @@ Type the commands `php -v` and `phalcon` and you will see something like this:
 
 Congratulations you now have Phalcon tools installed!
 
-
 ## Usage
+
 ### Available Commands
+
 You can get a list of available commands in Phalcon tools by typing: `phalcon commands`
 
 ```bash
@@ -137,6 +145,7 @@ Available commands:
 ```
 
 ### Generating a Project Skeleton
+
 You can use Phalcon tools to generate pre-defined project skeletons for your applications with Phalcon framework. By default the project skeleton generator will use mod_rewrite for Apache. Type the following command on your web server document root:
 
 ```bash
@@ -186,6 +195,7 @@ Accessing the project from the web server will show you:
 ![](/assets/images/content/devtools-usage-02.png)
 
 ### Generating Controllers
+
 The command `create-controller` generates controller skeleton structures. It's important to invoke this command inside a directory that already has a Phalcon project.
 
 ```bash
@@ -209,6 +219,7 @@ class TestController extends Controller
 ```
 
 ### Preparing Database Settings
+
 When a project is generated using developer tools. A configuration file can be found in `app/config/config.php`. To generate models or scaffold, you will need to change the settings used to connect to your database.
 
 Change the database section in your config.php file:
@@ -250,6 +261,7 @@ return new \Phalcon\Config([
 ```
 
 ### Generating Models
+
 There are several ways to create models. You can create all models from the default database connection or some selectively. Models can have public attributes for the field representations or setters/getters can be used.
 
 ```bash
@@ -396,10 +408,11 @@ class Products extends Model
 A nice feature of the model generator is that it keeps changes made by the developer between code generations. This allows the addition or removal of fields and properties, without worrying about losing changes made to the model itself. The following screencast shows you how it works:
 
 <div align="center">
-    <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    <iframe src="https://player.vimeo.com/video/39213020" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 
 ### Scaffold a CRUD
+
 Scaffolding is a quick way to generate some of the major pieces of an application. If you want to create the models, views, and controllers for a new resource in a single operation, scaffolding is the tool for the job.
 
 Once the code is generated, it will have to be customized to meet your needs. Many developers avoid scaffolding entirely, opting to write all or most of their source code from scratch. The generated code can serve as a guide to better understand of how the framework works or develop prototypes. The code below shows a scaffold based on the table `products`:
@@ -411,7 +424,7 @@ $ phalcon scaffold --table-name products
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
 | File                                     | Purpose                        |
-|------------------------------------------|--------------------------------|
+| ---------------------------------------- | ------------------------------ |
 | `app/controllers/ProductsController.php` | The Products controller        |
 | `app/models/Products.php`                | The Products model             |
 | `app/views/layout/products.phtml`        | Controller layout for Products |
@@ -432,19 +445,17 @@ After performing a search, a pager component is available to show paged results.
 ![](/assets/images/content/devtools-usage-05.png)
 
 ### Web Interface to Tools
+
 Also, if you prefer, it's possible to use Phalcon Developer Tools from a web interface. Check out the following screencast to figure out how it works:
 
 <div align="center">
-<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+<iframe src="https://player.vimeo.com/video/42367665" width="500" height="266" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen mark="crwd-mark"></iframe>
 </div>
 
 ### Integrating Tools with PhpStorm IDE
-The screencast below shows how to integrate developer tools with the [PhpStorm IDE][phpstorm]. The configuration steps could be easily adapted to other IDEs for PHP.
+
+The screencast below shows how to integrate developer tools with the [PhpStorm IDE](https://www.jetbrains.com/phpstorm/). The configuration steps could be easily adapted to other IDEs for PHP.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UbUx_6Cs6r4" frameborder="0" allowfullscreen mark="crwd-mark"></iframe>
 </div>
-
-[blog_devtools]: https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem
-[github_devtools]: https://github.com/phalcon/phalcon-devtools
-[phpstorm]: https://www.jetbrains.com/phpstorm/
