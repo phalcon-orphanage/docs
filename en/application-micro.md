@@ -288,8 +288,8 @@ In order to increase performance, you might consider implementing lazy loading f
 Lazy loading can be easily achieved when setting your handler in your [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection):
 
 ```php
-$orders->setHandler('OrdersController', true);
-$orders->setHandler('Blog\Controllers\OrdersController', true);
+$orders->setHandler(\OrdersController::class, true);
+$orders->setHandler(\Blog\Controllers\OrdersController::class, true);
 ```
 
 <a name='routing-handlers-controllers-lazy-loading-use-case'></a>
@@ -387,7 +387,7 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 // Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController(), true);
+$users->setHandler(UsersController::class, true);
 $users->setPrefix('/users');
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
@@ -395,7 +395,7 @@ $app->mount($users);
 
 // Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController(), true);
+$orders->setHandler(OrdersController::class, true);
 $orders->setPrefix('/users');
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
@@ -403,7 +403,7 @@ $app->mount($orders);
 
 // Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController(), true);
+$products->setHandler(ProductsController::class, true);
 $products->setPrefix('/products');
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
