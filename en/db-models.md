@@ -925,7 +925,7 @@ if ($robot->save() === false) {
 }
 ```
 
-An array could be passed to `save` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
+An array could be passed to `assign()` to avoid assign every column manually. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will check if there are setters implemented for the columns passed in the array giving priority to them instead of assign directly the values of the attributes:
 
 ```php
 <?php
@@ -934,13 +934,15 @@ use Store\Toys\Robots;
 
 $robot = new Robots();
 
-$robot->save(
+$robot->assign(
     [
         'type' => 'mechanical',
         'name' => 'Astro Boy',
         'year' => 1952,
     ]
 );
+
+$robots->save();
 ```
 
 Values assigned directly or via the array of attributes are escaped/sanitized according to the related attribute data type. So you can pass an insecure array without worrying about possible SQL injections:
@@ -952,7 +954,9 @@ use Store\Toys\Robots;
 
 $robot = new Robots();
 
-$robot->save($_POST);
+$robot->assign($_POST);
+
+$robot->save();
 ```
 
 > Without precautions mass assignment could allow attackers to set any database column's value. Only use this feature if you want to permit a user to insert/update every column in the model, even if those fields are not in the submitted form.
@@ -967,13 +971,15 @@ use Store\Toys\Robots;
 
 $robot = new Robots();
 
-$robot->save(
+$robot->assign(
     $_POST,
     [
         'name',
         'type',
     ]
 );
+
+$robot->save();
 ```
 
 ### Create/Update with Confidence

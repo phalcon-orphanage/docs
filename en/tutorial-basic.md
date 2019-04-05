@@ -482,14 +482,16 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        // Store and check for errors
-        $success = $user->save(
+        $user->assign(
             $this->request->getPost(),
             [
                 "name",
                 "email",
             ]
         );
+
+        // Store and check for errors
+        $success = $user->save();
 
         if ($success) {
             echo "Thanks for registering!";
