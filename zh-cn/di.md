@@ -3,19 +3,15 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='di-service-location'></a>
-
 # Dependency Injection / Service Location
 
-<a name='di-explained'></a>
+* * *
 
 ## DI explained
 
 The following example is a bit long, but it attempts to explain why Phalcon uses service location and dependency injection. First, let's assume we are developing a component called `SomeComponent`. This performs some task. Our component has a dependency, that is a connection to a database.
 
-In this first example, the connection is created inside the component. Although this is a perfectly valid implementation, it is impartical, due to the fact that we cannot change the connection parameters or the type of the database system because the component only works as created.
+In this first example, the connection is created inside the component. Although this is a perfectly valid implementation, it is impractical, due to the fact that we cannot change the connection parameters or the type of the database system because the component only works as created.
 
 ```php
 <?php
@@ -384,8 +380,6 @@ Basically, this component implements the [Inversion of Control](https://en.wikip
 
 另外，这种模式会增加可测试性的代码，从而使它不容易出错。
 
-<a name='registering-services'></a>
-
 ## Registering services in the Container
 
 The framework itself or the developer can register services. When a component A requires component B (or an instance of its class) to operate, it can request component B from the container, rather than creating a new instance component B.
@@ -398,13 +392,9 @@ This way of working gives us many advantages:
 
 Services can be registered using several types of definitions:
 
-<a name='simple-registration'></a>
-
 ### Simple Registration
 
 As seen before, there are several ways to register services. These we call simple:
-
-<a name='simple-registration-string'></a>
 
 #### String
 
@@ -419,8 +409,6 @@ $di->set(
     'Phalcon\Http\Request'
 );
 ```
-
-<a name='class-instances'></a>
 
 #### Class instances
 
@@ -437,8 +425,6 @@ $di->set(
     new Request()
 );
 ```
-
-<a name='closures-anonymous-functions'></a>
 
 #### Closures/Anonymous functions
 
@@ -537,8 +523,6 @@ $di->set(
 );
 ```
 
-<a name='complex-registration'></a>
-
 ### Complex Registration
 
 If it is required to change the definition of a service without instantiating/resolving the service, then, we need to define the services using the array syntax. Define a service using an array definition can be a little more verbose:
@@ -594,8 +578,6 @@ $di
 ```
 
 In addition by using the array syntax you can use three types of dependency injection:
-
-<a name='constructor-injection'></a>
 
 #### Constructor Injection
 
@@ -658,8 +640,6 @@ $di->set(
 ```
 
 The service 'response' ([Phalcon\Http\Response](api/Phalcon_Http_Response)) is resolved to be passed as the first argument of the constructor, while the second is a boolean value (true) that is passed as it is.
-
-<a name='setter-injection'></a>
 
 #### Setter Injection
 
@@ -735,8 +715,6 @@ $di->set(
 );
 ```
 
-<a name='properties-injection'></a>
-
 #### Properties Injection
 
 A less common strategy is to inject dependencies or parameters directly into public attributes of the class:
@@ -797,69 +775,15 @@ $di->set(
 
 Supported parameter types include the following:
 
-<table>
-  <tr>
-    <th>
-      Type
-    </th>
-    
-    <th>
-      描述
-    </th>
-    
-    <th>
-      示例
-    </th>
-  </tr>
-  
-  <tr>
-    <td>
-      参数
-    </td>
-    
-    <td>
-      表示要作为参数传递的文本值
-    </td>
-    
-    <td>
-      <pre><code>php['type' =&gt; 'parameter', 'value' =&gt; 1234]</code></pre>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      service
-    </td>
-    
-    <td>
-      表示在服务容器中的另一个服务
-    </td>
-    
-    <td>
-      <pre><code>php['type' =&gt; 'service', 'name' =&gt; 'request']</code></pre>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      instance
-    </td>
-    
-    <td>
-      表示必须动态构建的对象
-    </td>
-    
-    <td>
-      <pre><code>php['type' =&gt; 'instance', 'className' =&gt; 'DateTime', 'arguments' =&gt; ['now']]</code></pre>
-    </td>
-  </tr>
-</table>
+| Type     | 描述             | 示例                                                                                   |
+| -------- | -------------- | ------------------------------------------------------------------------------------ |
+| 参数       | 表示要作为参数传递的文本值  | `['type' => 'parameter', 'value' => 1234]`                                     |
+| service  | 表示在服务容器中的另一个服务 | `['type' => 'service', 'name' => 'request']`                                   |
+| instance | 表示必须动态构建的对象    | `['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to define and inject services.
 
 Mixing different types of definitions is allowed, everyone can decide what is the most appropriate way to register the services according to the application needs.
-
-<a name='array-syntax'></a>
 
 ### Array Syntax
 
@@ -899,8 +823,6 @@ Setting a service by a string is simple, but lacks flexibility. Setting services
 
 [Phalcon\Di](api/Phalcon_Di) offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 
-<a name='loading-from-yaml'></a>
-
 ### 从 YAML 文件加载服务
 
 This feature will let you set your services in `yaml` files or just in plain php. For example you can load services using a `yaml` file like this:
@@ -921,13 +843,8 @@ $di->loadFromYaml('services.yml');
 $di->get('config'); // will properly return config service
 ```
 
-<div class="alert alert-danger">
-    <p>
-        This approach requires that the module Yaml be installed. Please refer to <a href="https://php.net/manual/book.yaml.php">this</a> for more information.
-    </p>
-</div>
-
-<a name='resolving-services'></a>
+> This approach requires that the module Yaml be installed. Please refer to [this](https://php.net/manual/book.yaml.php) for more information.
+{: .alert .alert-danger }
 
 ## Resolving Services
 
@@ -964,22 +881,18 @@ $component = $di->get(
 );
 ```
 
-<a name='envents'></a>
-
 ### Events
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type 'di'. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type 'di'. 一些事件可以停止操作，当返回布尔值 false 时。 以下事件被支持︰
 
-| 事件名称                 | 触发器                                                                                                             | 可以停止操作吗？ |   触发条件    |
-| -------------------- | --------------------------------------------------------------------------------------------------------------- |:--------:|:---------:|
-| beforeServiceResolve | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |    否     | Listeners |
-| afterServiceResolve  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |    否     | Listeners |
-
-<a name='shared-services'></a>
+| 事件名称                   | 触发器                                                                                                             | 可以停止操作吗？ |   触发条件    |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------- |:--------:|:---------:|
+| `afterServiceResolve`  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |    否     | Listeners |
+| `beforeServiceResolve` | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |    否     | Listeners |
 
 ## Shared services
 
-Services can be registered as 'shared' services this means that they always will act as [singletons](https://en.wikipedia.org/wiki/Singleton_pattern). Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
+Services can be registered as 'shared' services this means that they always will act as \[singletons\]\[singletons\]. Once the service is resolved for the first time the same instance of it is returned every time a consumer retrieve the service from the container:
 
 ```php
 <?php
@@ -1026,8 +939,6 @@ If a service isn't registered as shared and you want to be sure that a shared in
 $request = $di->getShared('request');
 ```
 
-<a name='manipulating-services-individually'></a>
-
 ## Manipulating services individually
 
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
@@ -1056,8 +967,6 @@ Once a service is registered in the service container, you can retrieve it to ma
     // Resolve the service (return a Phalcon\Http\Request instance)
     $request = $requestService->resolve();
 ```
-
-<a name='instantiating-classes-service-container'></a>
 
 ## Instantiating classes via the Service Container
 
@@ -1093,8 +1002,6 @@ $myComponent = $di->get('MyOtherComponent');
 ```
 
 You can take advantage of this, always instantiating your classes via the service container (even if they aren't registered as services). The DI will fallback to a valid autoloader to finally load the class. By doing this, you can easily replace any class in the future by implementing a definition for it.
-
-<a name='automatic-injecting-di-itself'></a>
 
 ## Automatic Injecting of the DI itself
 
@@ -1138,8 +1045,6 @@ $di->set('myClass', 'MyClass');
 $myClass = $di->get('myClass');
 ```
 
-<a name='organizing-services-files'></a>
-
 ## Organizing services in files
 
 You can better organize your application by moving the service registration to individual files instead of doing everything in the application's bootstrap:
@@ -1167,8 +1072,6 @@ $router->post('/login');
 return $router;
 ```
 
-<a name='accessing-di-static-way'></a>
-
 ## Accessing the DI in a static way
 
 If needed you can access the latest DI created in a static function in the following way:
@@ -1187,8 +1090,6 @@ class SomeComponent
     }
 }
 ```
-
-<a name='service-providers'></a>
 
 ## 服务提供商
 
@@ -1220,8 +1121,6 @@ $di->register(new SomeServiceProvider());
 var_dump($di->get('config')); // will return properly our config
 ```
 
-<a name='factory-default-di'></a>
-
 ## Factory Default DI
 
 Although the decoupled character of Phalcon offers us great freedom and flexibility, maybe we just simply want to use it as a full-stack framework. To achieve this, the framework provides a variant of [Phalcon\Di](api/Phalcon_Di) called [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault). This class automatically registers the appropriate services bundled with the framework to act as full-stack.
@@ -1233,8 +1132,6 @@ use Phalcon\Di\FactoryDefault;
 
 $di = new FactoryDefault();
 ```
-
-<a name='service-name-conventions'></a>
 
 ## Service Name Conventions
 
@@ -1252,7 +1149,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | escaper            | Contextual Escaping | [Phalcon\Escaper](api/Phalcon_Escaper)                                                |  是的  |
 | flash              | 闪存的消息传递服务           | [Phalcon\Flash\Direct](api/Phalcon_Flash_Direct)                                     |  是的  |
 | flashSession       | Flash 会话消息服务        | [Phalcon\Flash\Session](api/Phalcon_Flash_Session)                                   |  是的  |
-| filter             | 输入过滤服务              | [Phalcon\Filter](api/Phalcon_Filter)                                                  |  是的  |
+| filter             | 输入过滤服务              | [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator)                     |  是的  |
 | modelsCache        | 模型缓存的缓存后端           | 无                                                                                      |  否   |
 | modelsManager      | 模型管理服务              | [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)                          |  是的  |
 | modelsMetadata     | 模型元数据服务             | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)         |  是的  |
@@ -1266,8 +1163,6 @@ Although you can register services with the names you want, Phalcon has a severa
 | transactionManager | 模型事务管理器服务           | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  是的  |
 | url                | URL 生成器服务           | [Phalcon\Url](api/Phalcon_Url)                                                        |  是的  |
 | viewsCache         | 视图片段缓存后端            | 无                                                                                      |  否   |
-
-<a name='implementing-your-own-di'></a>
 
 ## Implementing your own DI
 
