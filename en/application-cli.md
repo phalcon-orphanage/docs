@@ -13,7 +13,6 @@ CLI applications are executed from the command line. They are useful to create c
 
 A minimal structure of a CLI application will look like this:
 
-* `app/config/config.php`
 * `app/tasks/MainTask.php`
 * `app/cli.php` <-- main bootstrap file
 
@@ -33,6 +32,8 @@ use Phalcon\Loader;
 // Using the CLI factory default services container
 $di = new CliDI();
 
+
+
 /**
  * Register the autoloader and tell it to register the tasks directory
  */
@@ -46,14 +47,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Load the configuration file (if any)
-$configFile = __DIR__ . '/config/config.php';
 
-if (is_readable($configFile)) {
-    $config = include $configFile;
-
-    $di->set('config', $config);
-}
 
 // Create a console application
 $console = new ConsoleApp();
