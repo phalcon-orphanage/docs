@@ -3,11 +3,11 @@ layout: default
 language: 'id-id'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Validation Component
 
-<a name='overview'></a>
+* * *
 
-# Validation
+## Overview
 
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
@@ -59,8 +59,6 @@ if (count($messages)) {
 ```
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
-
-<a name='initializing'></a>
 
 ## Initializing Validation
 
@@ -122,8 +120,6 @@ if (count($messages)) {
     }
 }
 ```
-
-<a name='validators'></a>
 
 ## Validators
 
@@ -194,8 +190,6 @@ class IpValidator extends Validator
 
 It is important that validators return a valid boolean value indicating if the validation was successful or not.
 
-<a name='callback'></a>
-
 ## Callback Validator
 
 By using [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback) you can execute custom function which must return boolean or new validator class which will be used to validate the same field. By returning `true` validation will be successful, returning `false` will mean validation failed. When executing this validator Phalcon will pass data depending what it is - if it's an entity (i.e. a model, a `stdClass` etc.) then entity will be passed, otherwise data (i.e an array like `$_POST`). There is example:
@@ -258,8 +252,6 @@ $messages = $validation->validate(['amount' => 2]);  // will return message from
 $messages = $validation->validate(['amount' => 10]); // will return message from validator returned by third validator
 ```
 
-<a name='messages'></a>
-
 ## Validation Messages
 
 [Phalcon\Validation](api/Phalcon_Validation) has a messaging subsystem that provides a flexible way to output or store the validation messages generated during the validation processes.
@@ -314,8 +306,6 @@ if (count($messages)) {
 }
 ```
 
-<a name='filtering'></a>
-
 ## Filtering of Data
 
 Data can be filtered prior to the validation ensuring that malicious or incorrect data is not validated.
@@ -350,9 +340,7 @@ $validation->setFilters('name', 'trim');
 $validation->setFilters('email', 'trim');
 ```
 
-Filtering and sanitizing is performed using the [filter](/4.0/en/filter) component. You can add more filters to this component or use the built-in ones.
-
-<a name='events'></a>
+Filtering and sanitizing is performed using the <filter> component. You can add more filters to this component or use the built-in ones.
 
 ## Validation Events
 
@@ -404,8 +392,6 @@ class LoginValidation extends Validation
     }
 }
 ```
-
-<a name='cancelling'></a>
 
 ## Cancelling Validations
 
@@ -483,8 +469,6 @@ class MyValidator extends Validator
 }
 ```
 
-<a name='empty-values'></a>
-
 ## Avoid validating empty values
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
@@ -508,8 +492,6 @@ $validation->add(
     )
 );
 ```
-
-<a name='recursive'></a>
 
 ## Recursive Validation
 
