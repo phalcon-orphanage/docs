@@ -3,23 +3,19 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Events Manager
 
-The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
+* * *
 
-<a name='naming-convention'></a>
+## Overview
+
+The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
 ## Naming Convention
 
 Phalcon events use namespaces to avoid naming collisions. Each component in Phalcon occupies a different event namespace and you are free to create your own as you see fit. Event names are formatted as `component:event`. For example, as [Phalcon\Db](api/Phalcon_Db) occupies the `db` namespace, its `afterQuery` event's full name is `db:afterQuery`.
 
 When attaching event listeners to the events manager, you can use `component` to catch all events from that component (eg. `db` to catch all of the [Phalcon\Db](api/Phalcon_Db) events) or `component:event` to target a specific event (eg. `db:afterQuery`).
-
-<a name='usage'></a>
 
 ## Usage Example
 
@@ -61,7 +57,8 @@ $connection->query(
 
 Now every time a query is executed, the SQL statement will be echoed out. The first parameter passed to the lambda function contains contextual information about the event that is running, the second is the source of the event (in this case the connection itself). A third parameter may also be specified which will contain arbitrary data specific to the event.
 
-<h5 class='alert alert-warning'>You must explicitly set the Events Manager to a component using the <code>setEventsManager()</code> method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts </h5>
+> You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
+{: .alert .alert-warning }
 
 Instead of using lambda functions, you can use event listener classes instead. Event listeners also allow you to listen to multiple events. In this example, we will implement the [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to detect the SQL statements that are taking longer to execute than expected:
 
@@ -150,8 +147,6 @@ foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
     echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
-
-<a name='components-that-trigger-events'></a>
 
 ## Creating components that trigger Events
 
@@ -276,8 +271,6 @@ $eventsManager->attach(
 );
 ```
 
-<a name='using-services'></a>
-
 ## Using Services From The DI
 
 By extending [Phalcon\Plugin](api/Phalcon_Plugin), you can access services from the DI, just like you would in a controller:
@@ -310,8 +303,6 @@ class SomeListener extends Plugin
 }
 ```
 
-<a name='propagation-cancellation'></a>
-
 ## Event Propagation/Cancellation
 
 Many listeners may be added to the same event manager. This means that for the same type of event, many listeners can be notified. The listeners are notified in the order they were registered in the EventsManager. Some events are cancelable, indicating that these may be stopped preventing other listeners from being notified about the event:
@@ -343,8 +334,6 @@ By default, events are cancelable - even most of the events produced by the fram
 $eventsManager->fire('my-component:afterSomeTask', $this, $extraData, false);
 ```
 
-<a name='listener-priorities'></a>
-
 ## Listener Priorities
 
 When attaching listeners you can set a specific priority. With this feature you can attach listeners indicating the order in which they must be called:
@@ -358,8 +347,6 @@ $eventsManager->attach('db', new DbListener(), 150); // More priority
 $eventsManager->attach('db', new DbListener(), 100); // Normal priority
 $eventsManager->attach('db', new DbListener(), 50);  // Less priority
 ```
-
-<a name='collecting-responses'></a>
 
 ## Collecting Responses
 
@@ -404,13 +391,9 @@ The above example produces:
     Array ( [0] => first response [1] => second response )
 ```
 
-<a name='custom'></a>
-
 ## Implementing your own EventsManager
 
 The [Phalcon\Events\ManagerInterface](api/Phalcon_Events_ManagerInterface) interface must be implemented to create your own EventsManager replacing the one provided by Phalcon.
-
-<a name='list'></a>
 
 ## List of Events
 
