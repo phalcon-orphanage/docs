@@ -3,17 +3,15 @@ layout: default
 language: 'cs-cz'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Environments
 
-<a name='overview'></a>
+* * *
 
-# Overview
+## Overview
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
 In this post, we'll walk through getting a brand new Phalcon app up and running locally, with nothing installed other than Nanobox. First [create a free Nanobox account](https://dashboard.nanobox.io/users/register), then [download and run the Nanobox installer](https://dashboard.nanobox.io/download).
-
-<a name='create-project'></a>
 
 ## Create a New Project
 
@@ -23,8 +21,6 @@ Create a project folder and `cd` into it:
 mkdir nanobox-phalcon && cd nanobox-phalcon
 ```
 
-<a name='boxfile-yml'></a>
-
 ## Add a `boxfile.yml`
 
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
@@ -33,7 +29,7 @@ Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and 
 run.config:
   engine: php
   engine.config:
-    runtime: php-7.1
+    runtime: php-7.2
     document_root: public
     extensions:
       - phalcon
@@ -49,8 +45,6 @@ This tells Nanobox to:
 - Include the Phalcon extension. *Nanobox takes a bare-bones approach to extensions, so you'll likely need to include other extensions. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
 
-<a name='add-devtools'></a>
-
 ## Add Phalcon Devtools to your `composer.json`
 
 Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
@@ -63,9 +57,8 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-<h5 class='alert alert-warning'><strong>NOTE</strong>: The version of Phalcon Devtools depends on which PHP version you're using </h5>
-
-<a name='new-phalcon-app'></a>
+> **NOTE**: The version of Phalcon Devtools depends on which PHP version you're using.
+{: .alert .alert-warning }
 
 ## Start Nanobox and Generate a New Phalcon App
 
@@ -91,8 +84,6 @@ cp -a /tmp/myapp/* .
 exit
 ```
 
-<a name='run-app'></a>
-
 ## Run the App Locally
 
 Before actually running your new Phalcon app, we recommend using Nanobox to add a DNS alias. This will add an entry to your local `hosts` file pointing to your dev environment and provide a convenient way to access your app from a browser.
@@ -107,9 +98,7 @@ Nanobox provides a `php-server` helper script that starts both Apache (or Nginx 
 nanobox run php-server
 ```
 
-Once running, you can visit your app at [phalcon.dev](https://phalcon.dev).
-
-<a name='environment'></a>
+Once running, you can visit your app at https://phalcon.dev.
 
 ## Check Out the Environment
 
@@ -131,8 +120,6 @@ ls
 # exit the console
 exit
 ```
-
-<a name='conclusion'></a>
 
 ## Phalcon and Nanobox
 
