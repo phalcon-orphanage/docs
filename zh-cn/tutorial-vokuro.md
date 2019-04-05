@@ -3,15 +3,13 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Tutorial - Vökuró
 
-<a name='overview'></a>
+* * *
 
-# Tutorial: Vökuró
+## Vökuró
 
 Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
-
-<a name='structure'></a>
 
 ## Project Structure
 
@@ -39,11 +37,9 @@ This project follows a quite similar structure to INVO. Once you open the applic
 
 The application is divided into two parts, a frontend, where visitors can sign up the service and a backend where administrative users can manage registered users. Both frontend and backend are combined in a single module.
 
-<a name='dependencies'></a>
-
 ## Load Classes and Dependencies
 
-This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org/) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org/). Assuming you have it correctly installed, type the following command in the console:
+This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org). Assuming you have it correctly installed, type the following command in the console:
 
 ```bash
 cd vokuro
@@ -109,8 +105,6 @@ class AboutController extends ControllerBase
     // ...
 }
 ```
-
-<a name='sign-up'></a>
 
 ## Sign Up
 
