@@ -3,11 +3,11 @@ layout: default
 language: 'it-it'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Crypt Component
 
-<a name='overview'></a>
+* * *
 
-# Encryption/Decryption
+## Encryption/Decryption
 
 Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
@@ -15,9 +15,8 @@ By default, this component provides secure encryption using AES-256-CFB.
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
-<h5 class='alert alert-warning'>You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.</h5>
-
-<a name='usage'></a>
+> You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+{: .alert .alert-warning }
 
 ## Basic Usage
 
@@ -141,8 +140,6 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-<a name='options'></a>
-
 ## Encryption Options
 
 The following options are available to change the encryption behavior:
@@ -187,8 +184,6 @@ $algorithms = $crypt->getAvailableHashAlgos();
 var_dump($algorithms);
 ```
 
-<a name='base64'></a>
-
 ## Base64 Support
 
 In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://secure.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
@@ -209,8 +204,6 @@ $encrypt = $crypt->encryptBase64($text, $key);
 
 echo $crypt->decryptBase64($encrypt, $key);
 ```
-
-<a name='service'></a>
 
 ## Setting up an Encryption service
 
@@ -262,8 +255,6 @@ class SecretsController extends Controller
     }
 }
 ```
-
-<a name='links'></a>
 
 ## Links
 
