@@ -3,11 +3,11 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Εφαρμογή
 
-<a name='overview'></a>
+* * *
 
-# MVC Applications
+## Creating a MVC Application
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
 
@@ -43,8 +43,6 @@ The core of all the work of the controller occurs when `handle()` is invoked:
 
 $response = $application->handle();
 ```
-
-<a name='manual-bootstrapping'></a>
 
 ## Manual bootstrapping
 
@@ -198,13 +196,9 @@ if ($response instanceof ResponseInterface) {
 
 Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
-<a name='single-vs-module'></a>
-
 ## Single or Multi Module Applications
 
 With this component you can run various types of MVC structures:
-
-<a name='single'></a>
 
 ### Single Module
 
@@ -327,8 +321,6 @@ try {
     echo $e->getMessage();
 }
 ```
-
-<a name='module'></a>
 
 ### Multi Module
 
@@ -535,11 +527,9 @@ $application->registerModules(
 
 When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) according to the module to be executed.
 
-<a name='events'></a>
-
 ## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](/4.0/en/events) (if it is present). Events are triggered using the type `application`. The following events are supported:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Όνομα γεγονότος       | Ενεργοποίηση                                                 |
 | --------------------- | ------------------------------------------------------------ |
@@ -568,8 +558,6 @@ $eventsManager->attach(
     }
 );
 ```
-
-<a name='resources'></a>
 
 ## External Resources
 
