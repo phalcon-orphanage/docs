@@ -3,13 +3,9 @@ layout: default
 language: 'fr-fr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Controllers
 
-<a name='overview'></a>
-
-# Overview
-
-<a name='using'></a>
+* * *
 
 ## Using Controllers
 
@@ -93,8 +89,6 @@ class PostsController extends Controller
 }
 ```
 
-<a name='dispatch-loop'></a>
-
 ## Dispatch Loop
 
 The dispatch loop will be executed within the Dispatcher until there are no actions left to be executed. In the previous example only one action was executed. Now we'll see how the `forward()` method can provide a more complex flow of operation in the dispatch loop, by forwarding execution to a different controller/action.
@@ -151,8 +145,6 @@ class UsersController extends Controller
 
 There is no limit on the `forwards` you can have in your application, so long as they do not result in circular references, at which point your application will halt. If there are no other actions to be dispatched by the dispatch loop, the dispatcher will automatically invoke the view layer of the MVC that is managed by [Phalcon\Mvc\View](api/Phalcon_Mvc_View).
 
-<a name='initializing'></a>
-
 ## Initializing Controllers
 
 [Phalcon\Mvc\Controller](api/Phalcon_Mvc_Controller) offers the `initialize()` method, which is executed first, before any action is executed on a controller. The use of the `__construct()` method is not recommended.
@@ -182,7 +174,8 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>The <code>initialize()</code> method is only called if the <code>beforeExecuteRoute</code> event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.</h5>
+> The `initialize()` method is only called if the `beforeExecuteRoute` event is executed with success. This avoid that application logic in the initializer cannot be executed without authorization.
+{: .alert .alert-warning }
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
 
@@ -200,9 +193,8 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Be aware that <code>onConstruct()</code> method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).</h5>
-
-<a name='injecting-services'></a>
+> Be aware that `onConstruct()` method is executed even if the action to be executed doesn't exist in the controller or the user does not have access to it (according to custom control access provided by the developer).
+{: .alert .alert-warning }
 
 ## Injecting Services
 
@@ -255,9 +247,7 @@ class FilesController extends Controller
 }
 ```
 
-If you're using Phalcon as a full-stack framework, you can read the services provided [by default](/4.0/en/di) in the framework.
-
-<a name='request-response'></a>
+If you're using Phalcon as a full-stack framework, you can read the services provided [by default](di) in the framework.
 
 ## Request and Response
 
@@ -309,9 +299,7 @@ class PostsController extends Controller
 }
 ```
 
-Learn more about the HTTP environment in their dedicated articles [request](/4.0/en/request) and [response](/4.0/en/response).
-
-<a name='session-data'></a>
+Learn more about the HTTP environment in their dedicated articles <request> and <response>.
 
 ## Session Data
 
@@ -335,8 +323,6 @@ class UserController extends Controller
     }
 }
 ```
-
-<a name='services'></a>
 
 ## Using Services as Controllers
 
@@ -366,11 +352,9 @@ $di->set(
 );
 ```
 
-<a name='events'></a>
-
 ## Events in Controllers
 
-Controllers automatically act as listeners for [dispatcher](/4.0/en/dispatcher) events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
+Controllers automatically act as listeners for <dispatcher> events, implementing methods with those event names allow you to implement hook points before/after the actions are executed:
 
 ```php
 <?php
