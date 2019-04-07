@@ -3,15 +3,13 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Url Component
 
-<a name='overview'></a>
+* * *
 
-# Generating URLs and Paths
+## Generating URLs and Paths
 
 [Phalcon\Url](api/Phalcon_Url) is the component responsible of generate URLs in a Phalcon application. It's capable of produce independent URLs based on routes.
-
-<a name='base-uri'></a>
 
 ## Setting a base URI
 
@@ -67,13 +65,12 @@ $di->set(
 );
 ```
 
-<a name='generating-uri'></a>
-
 ## Generating URIs
 
-If you are using the [Router](/4.0/en/routing) with its default behavior, your application is able to match routes based on the following pattern:
+If you are using the [Router](routing) with its default behavior, your application is able to match routes based on the following pattern:
 
-<h5 class='alert alert-info'>/:controller/:action/:params </h5>
+> /:controller/:action/:params
+{: .alert .alert-info }
 
 Accordingly it is easy to create routes that satisfy that pattern (or any other pattern defined in the router) passing a string to the method `get`:
 
@@ -112,8 +109,6 @@ $url->get(
     ]
 );
 ```
-
-<a name='urls-without-mod-rewrite'></a>
 
 ## Producing URLs without mod_rewrite
 
@@ -174,8 +169,6 @@ The produced routes would look like:
 echo $url->get('products/save');
 ```
 
-<a name='urls-from-volt'></a>
-
 ## Producing URLs from Volt
 
 The function `url` is available in volt to generate URLs using this component:
@@ -193,8 +186,6 @@ Generate static routes:
 <link rel='stylesheet' href='{{ static_url('css/style.css') }}' type='text/css' />
 {% endraw %}
 ```
-
-<a name='static-vs-dynamic-uri'></a>
 
 ## Static vs. Dynamic URIs
 
@@ -215,8 +206,6 @@ $url->setStaticBaseUri('https://static.mywebsite.com/');
 ```
 
 [Phalcon\Tag](api/Phalcon_Tag) will request both dynamic and static URIs using this component.
-
-<a name='custom-url'></a>
 
 ## Implementing your own URL Generator
 
