@@ -3,15 +3,13 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Dispatcher Component
 
-<a name='overview'></a>
+* * *
 
-# Dispatching Controllers
+## Dispatching Controllers
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
-
-<a name='dispatch-loop'></a>
 
 ## The Dispatch Loop
 
@@ -45,26 +43,24 @@ while (!$finished) {
 
 The code above lacks validations, filters and additional checks, but it demonstrates the normal flow of operation in the dispatcher.
 
-<a name='dispatch-loop-events'></a>
-
 ### Dispatch Loop Events
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](/4.0/en/events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Son soportados los siguientes eventos:
 
-| Nombre de evento     | Disparado                                                                                                                                                                                                         | ¿Detiene la operación? | Activa en             |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------- |
-| beforeDispatchLoop   | Activado antes de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router.   | Si                     | Oyentes               |
-| beforeDispatch       | Activado después de entrar en el bucle de despacho. En este momento el distribuidor no sabe si existen el controlador o las acciones a ejecutarse. El dispatcher sólo conoce la información pasada por el Router. | Si                     | Oyentes               |
-| beforeExecuteRoute   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                           | Si                     | Listeners/Controllers |
-| initialize           | Permite inicializar globalmente el controlador en la solicitud                                                                                                                                                    | No                     | Controllers           |
-| afterExecuteRoute    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                             | No                     | Listeners/Controllers |
-| beforeNotFoundAction | Se activa cuando la acción no se encuentra en el controlador                                                                                                                                                      | Si                     | Oyentes               |
-| beforeException      | Disparado antes de que el dispatcher lance una excepción                                                                                                                                                          | Si                     | Oyentes               |
-| afterDispatch        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                             | Si                     | Oyentes               |
-| afterDispatchLoop    | Activa después de salir del bucle de despacho                                                                                                                                                                     | No                     | Oyentes               |
-| afterBinding         | Se dispara después de que los modelos están enlazados pero antes de ejecutar la ruta                                                                                                                              | Si                     | Listeners/Controllers |
+| Nombre de evento       | Disparado                                                                                                                                                                                                      | ¿Detiene la operación? | Activa en             |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------- |
+| `afterBinding`         | Triggered after models are bound but before executing route                                                                                                                                                    | Si                     | Listeners/Controllers |
+| `afterDispatch`        | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | Si                     | Oyentes               |
+| `afterDispatchLoop`    | Triggered after exiting the dispatch loop                                                                                                                                                                      | No                     | Oyentes               |
+| `afterExecuteRoute`    | Triggered after executing the controller/action method. As operation cannot be stopped, only use this event to make clean up after execute the action                                                          | No                     | Listeners/Controllers |
+| `beforeDispatch`       | Triggered after entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router.  | Si                     | Oyentes               |
+| `beforeDispatchLoop`   | Triggered before entering in the dispatch loop. At this point the dispatcher don't know if the controller or the actions to be executed exist. The Dispatcher only knows the information passed by the Router. | Si                     | Oyentes               |
+| `beforeException`      | Disparado antes de que el dispatcher lance una excepción                                                                                                                                                       | Si                     | Oyentes               |
+| `beforeExecuteRoute`   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Si                     | Listeners/Controllers |
+| `beforeNotFoundAction` | Triggered when the action was not found in the controller                                                                                                                                                      | Si                     | Oyentes               |
+| `initialize`           | Allow to globally initialize the controller in the request                                                                                                                                                     | No                     | Controllers           |
 
-The [INVO](/4.0/en/tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](/4.0/en/acl)
+The [INVO](tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](acl)
 
 En el ejemplo siguiente se muestra cómo adjuntar oyentes (listeners) a este componente:
 
@@ -122,9 +118,8 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Methods on event listeners accept an <a href="api/Phalcon_Events_Event">Phalcon\Events\Event</a> object as their first parameter - methods in controllers do not. </h5>
-
-<a name='forwarding'></a>
+> Methods on event listeners accept an [Phalcon\Events\Event](api/Phalcon_Events_Event) object as their first parameter - methods in controllers do not.
+{: .alert .alert-warning }
 
 ## Forwarding to other actions
 
@@ -189,8 +184,6 @@ A `forward` action accepts the following parameters:
 | `params`     | Un array de parámetros para la acción.                      |
 | `namespace`  | Un espacio de nombres valido donde es parte el controlador. |
 
-<a name='forwarding-events-manager'></a>
-
 ### Usando el administrador de eventos
 
 You can use the `dispatcher::beforeForward` event to change modules and redirect easier and "cleaner":
@@ -240,8 +233,6 @@ $dispatcher->forward(
 
 echo $dispatcher->getModuleName(); // mostrará 'backend'
 ```
-
-<a name='preparing-parameters'></a>
 
 ## Preparing Parameters
 
@@ -338,8 +329,6 @@ $di->set(
 );
 ```
 
-<a name='getting-parameters'></a>
-
 ## Getting Parameters
 
 When a route provides named parameters you can receive them in a controller, a view or any other component that extends [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable).
@@ -371,13 +360,9 @@ class PostsController extends Controller
 }
 ```
 
-<a name='preparing-actions'></a>
-
 ## Preparing actions
 
 You can also define an arbitrary schema for actions `before` in the dispatch loop.
-
-<a name='preparing-actions-camelizing-action-names'></a>
 
 ### Camelize action names
 
@@ -415,8 +400,6 @@ $di->set(
     }
 );
 ```
-
-<a name='preparing-actions-removing-legacy-extensions'></a>
 
 ### Remove legacy extensions
 
@@ -464,8 +447,6 @@ $di->set(
     }
 );
 ```
-
-<a name='preparing-actions-inject-model-instances'></a>
 
 ### Inject model instances
 
@@ -568,7 +549,8 @@ $dispatcher->setModelBinder(new Binder());
 return $dispatcher;
 ```
 
-<h5 class='alert alert-warning'>Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in <code>setModelBinder()</code> which can also accept service name or just by passing cache instance to <code>Binder</code> constructor. </h5>
+> Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor.
+{: .alert .alert-warning }
 
 It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
 
@@ -629,13 +611,12 @@ class PostsController extends Controller
 }
 ```
 
-<h5 class='alert alert-warning'>Currently the binder will only use the models primary key to perform a <code>findFirst()</code> on. An example route for the above would be <code>/posts/show/{1}</code> </h5>
-
-<a name='handling-404'></a>
+> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+{: .alert .alert-warning }
 
 ## Handling Not-Found Exceptions
 
-Using the [EventsManager](/4.0/en/events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
+Using the [EventsManager](events) it's possible to insert a hook point before the dispatcher throws an exception when the controller/action combination wasn't found:
 
 ```php
 <?php
@@ -729,9 +710,8 @@ class ExceptionsPlugin
 }
 ```
 
-<h5 class='alert alert-danger'>Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the <code>beforeException</code> events. Exceptions produced in listeners or controller events are redirected to the latest try/catch. </h5>
-
-<a name='custom'></a>
+> Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+{: .alert .alert-danger }
 
 ## Implementing your own Dispatcher
 
