@@ -3,15 +3,13 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Paginación
 
-The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
+* * *
 
-<a name='data-adapters'></a>
+## Overview
+
+The process of pagination takes place when we need to present big groups of arbitrary data gradually. `Phalcon\Paginator` offers a fast and convenient way to split these sets of data into browsable pages.
 
 ## Data Adapters
 
@@ -23,8 +21,6 @@ This component makes use of adapters to encapsulate different sources of data:
 | [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
 | [Phalcon\Paginator\Adapter\QueryBuilder](api/Phalcon_Paginator_Adapter_QueryBuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/Phalcon_Mvc_Model_Query_Builder) object as source data                                                                                                              |
 
-<a name='factory'></a>
-
 ## Factory
 
 Loads Paginator Adapter class using `adapter` option
@@ -34,10 +30,13 @@ Loads Paginator Adapter class using `adapter` option
 
 use Phalcon\Paginator\Factory;
 
-$builder = $this->modelsManager->createBuilder()
-                ->columns('id, name')
-                ->from('Robots')
-                ->orderBy('name');
+$builder = $this
+    ->modelsManager
+    ->createBuilder()
+    ->columns('id, name')
+    ->from('Robots')
+    ->orderBy('name')
+;
 
 $options = [
     'builder' => $builder,
@@ -49,8 +48,6 @@ $options = [
 $paginator = Factory::load($options);
 
 ```
-
-<a name='examples'></a>
 
 ## Examples
 
@@ -113,8 +110,6 @@ The `$page` object also contains navigation data:
 <?php echo 'Estas en la página ', $page->current, ' de ', $page->total_pages; ?>
 ```
 
-<a name='using-adapters'></a>
-
 ## Using Adapters
 
 An example of the source data that must be used for each adapter:
@@ -165,8 +160,6 @@ $paginator = new PaginatorQueryBuilder(
 );
 ```
 
-<a name='page-attributes'></a>
-
 ## Page Attributes
 
 The `$page` object has the following attributes:
@@ -180,8 +173,6 @@ The `$page` object has the following attributes:
 | `last`        | Número de la última página                                         |
 | `total_pages` | Cantidad de páginas                                                |
 | `total_items` | El número total de elementos de los datos de origen                |
-
-<a name='custom'></a>
 
 ## Implementando sus propios adaptadores
 
