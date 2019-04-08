@@ -490,9 +490,9 @@ use Phalcon\Mvc\Model;
 
 class Robots extends Model
 {
-    public function getSource()
+    public function initialize()
     {
-        return 'robots';
+        $this->setSource('robots');
     }
     
     public function getResultsetClass()
