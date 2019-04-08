@@ -128,18 +128,17 @@ class MainTask extends Task
         echo 'This is the default task and the default action' . PHP_EOL;
     }
 
-    /**
-     * @param array $params
-     */
-    public function testAction(array $params)
+    public function testAction(string $yourName, string $myName)
     {
-        echo sprintf('hello %s', $params[0]);
+        echo sprintf(
+            'Hello %s!' . PHP_EOL,
+            $yourName
+        );
 
-        echo PHP_EOL;
-
-        echo sprintf('best regards, %s', $params[1]);
-
-        echo PHP_EOL;
+        echo sprintf(
+            'Best regards, %s' . PHP_EOL,
+            $myName
+        );
     }
 }
 ```
@@ -149,8 +148,8 @@ We can then run the following command:
 ```bash
 php cli.php main test world universe
 
-hello world
-best regards, universe
+Hello world!
+Best regards, universe
 ```
 
 ## Running tasks in a chain
