@@ -13,8 +13,8 @@ CLI applications are executed from the command line. They are useful to create c
 
 A minimal structure of a CLI application will look like this:
 
-* `app/tasks/MainTask.php`
-* `app/cli.php` <-- main bootstrap file
+* `tasks/MainTask.php`
+* `cli.php` <-- main bootstrap file
 
 ## Creating a Bootstrap
 
@@ -89,14 +89,14 @@ try {
 This piece of code can be run using:
 
 ```bash
-php app/cli.php
+php cli.php
 ```
 
 ## Tasks
 
 Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a mainAction which will run if no action is given explicitly.
 
-Below is an example of the `app/tasks/MainTask.php` file:
+Below is an example of the `tasks/MainTask.php` file:
 
 ```php
 <?php
@@ -147,7 +147,7 @@ class MainTask extends Task
 We can then run the following command:
 
 ```bash
-php app/cli.php main test world universe
+php cli.php main test world universe
 
 hello world
 best regards, universe
