@@ -47,18 +47,13 @@ class Cars extends Model
     public $style;
 
     /**
-     * Este modelo se completa desde la tabla sample_cars
-     */
-    public function getSource()
-    {
-        return 'sample_cars';
-    }
-
-    /**
-     * Un automóvil tiene una sola marca, pero una marca tiene muchos automóviles
+     * A car only has a Brand, but a Brand have many Cars
      */
     public function initialize()
     {
+        // This model is mapped to the table sample_cars
+        $this->setSource('sample_cars');
+
         $this->belongsTo('brand_id', 'Brands', 'id');
     }
 }
@@ -78,18 +73,13 @@ class Brands extends Model
     public $name;
 
     /**
-     * El modelo Brands se completa desde la tabla 'sample_brands'
-     */
-    public function getSource()
-    {
-        return 'sample_brands';
-    }
-
-    /**
-     * Una marca tiene muchos automóviles
+     * A Brand can have many Cars
      */
     public function initialize()
     {
+        // The model Brands is mapped to the 'sample_brands' table
+        $this->setSource('sample_brands');
+
         $this->hasMany('id', 'Cars', 'brand_id');
     }
 }
