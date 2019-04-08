@@ -3,21 +3,21 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Loader
 
-<a name='overview'></a>
+* * *
 
-# Class Autoloader
+## Class Autoloader
 
 [Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
+
+![](/assets/images/implements-psr--0-orange.svg) ![](/assets/images/implements-psr--4-orange.svg)
 
 The behavior of this component is based on the PHP's capability of [autoloading classes](https://secure.php.net/manual/en/language.oop5.autoload.php). If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization).
 
 With this component you can load files from other projects or vendors, this autoloader is [PSR-0](https://www.php-fig.org/psr/psr-0/) and [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant.
 
 [Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
-
-<a name='security'></a>
 
 ## Security Layer
 
@@ -56,8 +56,6 @@ If `../processes/important-process.php` is a valid file, an external user could 
 
 To avoid these or most sophisticated attacks, [Phalcon\Loader](api/Phalcon_Loader) removes invalid characters from the class name, reducing the possibility of being attacked.
 
-<a name='registering-namespaces'></a>
-
 ## Registering Namespaces
 
 If you're organizing your code using namespaces, or using external libraries which do, the `registerNamespaces()` method provides the autoloading mechanism. It takes an associative array; the keys are namespace prefixes and their values are directories where the classes are located in. The namespace separator will be replaced by the directory separator when the loader tries to find the classes.
@@ -86,8 +84,6 @@ $loader->register();
 // file vendor/example/adapter/Some.php
 $some = new \Example\Adapter\Some();
 ```
-
-<a name='registering-directories'></a>
 
 ## Registering Directories
 
@@ -120,8 +116,6 @@ $loader->register();
 $some = new \Some();
 ```
 
-<a name='registering-classes'></a>
-
 ## Registering Classes
 
 The last option is to register the class name and its path. This autoloader can be very useful when the folder convention of the project does not allow for easy retrieval of the file using the path and the class name. This is the fastest method of autoloading. However the more your application grows, the more classes/files need to be added to this autoloader, which will effectively make maintenance of the class list very cumbersome and it is not recommended.
@@ -151,8 +145,6 @@ $loader->register();
 $some = new \Some();
 ```
 
-<a name='registering-files'></a>
-
 ## Registering Files
 
 You can also registers files that are `non-classes` hence needing a `require`. This is very useful for including files that only have functions:
@@ -179,8 +171,6 @@ $loader->register();
 
 These files are automatically loaded in the `register()` method.
 
-<a name='registering-file-extensions'></a>
-
 ## Additional file extensions
 
 Some autoloading strategies such as `prefixes`, `namespaces` or `directories` automatically append the `php` extension at the end of the checked file. If you are using additional extensions you could set it with the method `setExtensions`. Files are checked in the order as it were defined:
@@ -203,8 +193,6 @@ $loader->setExtensions(
 );
 ```
 
-<a name='file-checking-callback'></a>
-
 ## File checking callback
 
 You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback` method.
@@ -225,8 +213,6 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
-<a name='modifying-current-strategies'></a>
-
 ## Modifying current strategies
 
 Additional auto-loading data can be added to existing values by passing `true` as the second parameter:
@@ -243,8 +229,6 @@ $loader->registerDirs(
     true
 );
 ```
-
-<a name='events'></a>
 
 ## Autoloading Events
 
@@ -290,12 +274,10 @@ Some events when returning boolean `false` could stop the active operation. The 
 | `pathFound`        | Triggered when the loader locate a class                                                                            | No                  |
 | `afterCheckClass`  | Triggered after finish the autoloading process. If this event is launched the autoloader didn't find the class file | No                  |
 
-<a name='troubleshooting'></a>
-
 ## Troubleshooting
 
 Some things to keep in mind when using the universal autoloader:
 
 * Auto-loading process is case-sensitive, the class will be loaded as it is written in the code
 * Strategies based on namespaces/prefixes are faster than the directories strategy
-* If a cache bytecode like [APC](https://php.net/manual/en/book.apc.php) is installed this will used to retrieve the requested file (an implicit caching of the file is performed)
+* If a cache bytecode like [APCu](https://php.net/manual/en/book.apcu.php) is installed this will used to retrieve the requested file (an implicit caching of the file is performed)

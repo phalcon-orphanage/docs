@@ -3,15 +3,13 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# CLI Application
 
-<a name='creating-cli-application'></a>
+* * *
 
-# Создание консольного приложения
+# Creating a Command Line (CLI) Application
 
 CLI applications are executed from the command line. They are useful to create cron jobs, scripts, command utilities and more.
-
-<a name='structure'></a>
 
 ## Structure
 
@@ -19,9 +17,7 @@ A minimal structure of a CLI application will look like this:
 
 * `app/config/config.php`
 * `app/tasks/MainTask.php`
-* `app/cli.php` <-- основной загрузочный файл
-
-<a name='creating-bootstrap'></a>
+* `app/cli.php` <-- main bootstrap file
 
 ## Creating a Bootstrap
 
@@ -36,12 +32,11 @@ use Phalcon\Di\FactoryDefault\Cli as CliDI;
 use Phalcon\Cli\Console as ConsoleApp;
 use Phalcon\Loader;
 
-// Использование стандартного CLI контейнера для сервисов
+// Using the CLI factory default services container
 $di = new CliDI();
 
 /**
- * Регистрируем автозагрузчик и сообщаем ему директорию
- * для регистрации каталога задач
+ * Register the autoloader and tell it to register the tasks directory
  */
 $loader = new Loader();
 
@@ -53,7 +48,7 @@ $loader->registerDirs(
 
 $loader->register();
 
-// Загрузка файла конфигурации (если есть)
+// Load the configuration file (if any)
 $configFile = __DIR__ . '/config/config.php';
 
 if (is_readable($configFile)) {
@@ -62,13 +57,13 @@ if (is_readable($configFile)) {
     $di->set('config', $config);
 }
 
-// Создание консольного приложения
+// Create a console application
 $console = new ConsoleApp();
 
 $console->setDI($di);
 
 /**
- * Обработка аргументов консоли
+ * Process the console arguments
  */
 $arguments = [];
 
@@ -83,10 +78,10 @@ foreach ($argv as $k => $arg) {
 }
 
 try {
-    // Обработка входящих аргументов
+    // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Связанные с Phalcon вещи указываем здесь
+    // Do Phalcon related stuff here
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -104,8 +99,6 @@ This piece of code can be run using:
 ```bash
 php app/cli.php
 ```
-
-<a name='tasks'></a>
 
 ## Tasks
 
@@ -127,13 +120,9 @@ class MainTask extends Task
 }
 ```
 
-<a name='processing-action-parameters'></a>
-
 ## Processing action parameters
 
-It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap.
-
-If you run the application with the following parameters and action:
+It's possible to pass parameters to actions, the code for this is already present in the sample bootstrap. If you run the application with the following parameters and action:
 
 ```php
 <?php
@@ -172,8 +161,6 @@ hello world
 best regards, universe
 ```
 
-<a name='running-tasks-chain'></a>
-
 ## Running tasks in a chain
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
@@ -187,7 +174,7 @@ try {
     // Handle incoming arguments
     $console->handle($arguments);
 } catch (\Phalcon\Exception $e) {
-    // Связанные с Phalcon вещи указываем здесь
+    // Do Phalcon related stuff here
     // ..
     fwrite(STDERR, $e->getMessage() . PHP_EOL);
     exit(1);
@@ -211,7 +198,7 @@ class MainTask extends Task
 {
     public function mainAction()
     {
-        echo "Это задача по умолчанию с действием по умолчанию" . PHP_EOL;
+        echo "This is the default task and the default action" . PHP_EOL;
 
         $this->console->handle(
             [
@@ -223,7 +210,7 @@ class MainTask extends Task
 
     public function testAction()
     {
-        echo "Я буду напечатано тоже!" . PHP_EOL;
+        echo "I will get printed too!" . PHP_EOL;
     }
 }
 ```

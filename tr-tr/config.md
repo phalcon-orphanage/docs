@@ -3,11 +3,11 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Config Component
 
-<a name='overview'></a>
+* * *
 
-# Yapılandırmaları Okuma
+## Yapılandırmaları Okuma
 
 [Phalcon\Config](api/Phalcon_Config) is a component used to convert configuration files of various formats (using adapters) into PHP objects for use in an application.
 
@@ -34,8 +34,6 @@ echo $config->test->parent->property;                       // displays 1
 echo $config->path('test.parent.property');                 // displays 1
 ```
 
-<a name='factory'></a>
-
 ## Factory
 
 Loads Config Adapter class using `adapter` option, if no extension is provided it will be added to `filePath`
@@ -53,7 +51,6 @@ $options = [
  $config = Factory::load($options);
  ```
 
-<a name='native-arrays'></a>
 ## Native Arrays
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
@@ -97,8 +94,6 @@ require 'config/config.php';
 $config = new Config($settings);
 ```
 
-<a name='file-adapter'></a>
-
 ## Dosya Bağdaştırıcıları
 
 The adapters available are:
@@ -109,8 +104,6 @@ The adapters available are:
 | [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | Ayarları saklamak için JSON dosyalarını kullanır.                                                |
 | [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
 | [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | Ayarları saklamak için YAML dosyalarını kullanır.                                                |
-
-<a name='ini-files'></a>
 
 ## INI Dosyalarını Okuma
 
@@ -146,8 +139,6 @@ echo $config->phalcon->controllersDir, "\n";
 echo $config->database->username, "\n";
 echo $config->models->metadata->adapter, "\n";
 ```
-
-<a name='merging'></a>
 
 ## Merging Configurations
 
@@ -202,8 +193,6 @@ Phalcon\Config Object
 ```
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
-
-<a name='nested-configuration'></a>
 
 ## İç İçe Yapılandırma
 
@@ -274,8 +263,6 @@ function config() {
     return call_user_func_array([$config, 'path'], $args);
 }
 ```
-
-<a name='injecting-into-di'></a>
 
 ## Yapılandırma Bağımlılığını Enjekte Etme
 

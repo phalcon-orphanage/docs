@@ -3,15 +3,13 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Cookies Component
 
-<a name='overview'></a>
+* * *
 
-# Cookies Management
+## Cookies Management
 
 [Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
-
-<a name='usage'></a>
 
 ## Basic Usage
 
@@ -56,8 +54,6 @@ class SessionController extends Controller
 }
 ```
 
-<a name='encryption-decryption'></a>
-
 ## Encryption/Decryption of Cookies
 
 By default, cookies are automatically encrypted before being sent to the client and are decrypted when retrieved from the user. This protection prevents unauthorized users to see the cookies' contents in the client (browser). Despite this protection, sensitive data should not be stored in cookies.
@@ -81,7 +77,7 @@ $di->set(
 );
 ```
 
-If you wish to use encryption, a global key must be set in the [crypt](/4.0/en/crypt) service:
+If you wish to use encryption, a global key must be set in the <crypt> service:
 
 ```php
     <?php
@@ -129,8 +125,6 @@ If you wish to use encryption, a global key must be set in the [crypt](/4.0/en/c
     );
 ```
 
-<div class="alert alert-danger">
-    <p>
-        Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.
-    </p>
-</div>
+? Sending cookies data without encryption to clients including complex objects structures, resultsets, service information, etc. could expose internal application details that could be used by an attacker to attack the application. If you do not want to use encryption, we highly recommend you only send very basic cookie data like numbers or small string literals.
+{: .alert .alert-danger }
+

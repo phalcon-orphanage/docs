@@ -3,11 +3,11 @@ layout: default
 language: 'de-de'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Forms
+
+* * *
+
+## Overview
 
 [Phalcon\Forms\Form](api/Phalcon_Forms_Form) is a component that helps with the creation and maintenance of forms in web applications.
 
@@ -112,8 +112,6 @@ $form->add(
     )
 );
 ```
-
-<a name='initializing'></a>
 
 ## Initializing forms
 
@@ -259,11 +257,9 @@ $form = new UsersForm(
 );
 ```
 
-<a name='validation'></a>
-
 ## Validation
 
-Phalcon forms are integrated with the [validation](/4.0/en/validation) component to offer instant validation. Built-in or custom validators could be set to each element:
+Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
 ```php
 <?php
@@ -338,8 +334,6 @@ foreach ($messages as $message) {
 }
 ```
 
-<a name='filtering'></a>
-
 ## Filtering
 
 A form is also able to filter data before it is validated. You can set filters in each element:
@@ -375,9 +369,8 @@ $email->setFilters(
 $form->add($email);
 ```
 
-<h5 class='alert alert-info'>Learn more about filtering in Phalcon by reading the <a href="/4.0/en/filter">Filter documentation</a> </h5>
-
-<a name='entities'></a>
+> Learn more about filtering in Phalcon by reading the [Filter documentation](filter)
+{: .alert .alert-info }
 
 ## Forms + Entities
 
@@ -491,8 +484,6 @@ class Preferences
 }
 ```
 
-<a name='elements'></a>
-
 ## Form Elements
 
 Phalcon provides a set of built-in elements to use in your forms, all these elements are located in the [Phalcon\Forms\Element](api/Phalcon_Forms_Element) namespace:
@@ -512,8 +503,6 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Generate `INPUT[type=text]` elements                          |
 | [Phalcon\Forms\Element\TextArea](api/Phalcon_Forms_Element_TextArea) | Generate `TEXTAREA` elements                                  |
 
-<a name='event-callback'></a>
-
 ## Event Callbacks
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` can be implemented in the form's class to perform pre-validations and post-validations:
@@ -531,8 +520,6 @@ class ContactForm extends Form
     }
 }
 ```
-
-<a name='rendering'></a>
 
 ## Rendering Forms
 
@@ -632,8 +619,6 @@ echo $element->renderDecorated('name');
 echo $element->renderDecorated('telephone');
 ```
 
-<a name='creating-elements'></a>
-
 ## Creating Form Elements
 
 In addition to the form elements provided by Phalcon you can create your own custom elements:
@@ -653,8 +638,6 @@ class MyElement extends Element
     }
 }
 ```
-
-<a name='manager'></a>
 
 ## Forms Manager
 
@@ -690,8 +673,6 @@ $loginForm = $this->forms->get('login');
 
 echo $loginForm->render();
 ```
-
-<a name='external'></a>
 
 ## External Resources
 

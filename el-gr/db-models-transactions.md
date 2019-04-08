@@ -3,17 +3,15 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Συναλλαγές Μοντέλων
+
+* * *
+
+## Επισκόπηση
 
 When a process performs multiple database operations, it might be important that each step is completed successfully so that data integrity can be maintained. Transactions offer the ability to ensure that all database operations have been executed successfully before the data is committed to the database.
 
 Transactions in Phalcon allow you to commit all operations if they were executed successfully or rollback all operations if something went wrong.
-
-<a name='manual'></a>
 
 ## Manual Transactions
 
@@ -60,8 +58,6 @@ class RobotsController extends Controller
 }
 ```
 
-<a name='implicit'></a>
-
 ## Implicit Transactions
 
 Existing relationships can be used to store records and their related instances, this kind of operation implicitly creates a transaction to ensure that data is correctly stored:
@@ -84,8 +80,6 @@ $robot->robotPart  = $robotPart;
 // Creates an implicit transaction to store both records
 $robot->save();
 ```
-
-<a name='isolated'></a>
 
 ## Isolated Transactions
 

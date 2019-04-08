@@ -3,15 +3,13 @@ layout: default
 language: 'fr-fr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Image Component
 
-<a name='overview'></a>
+* * *
 
-# Images
+## Overview
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
-
-<a name='adapters'></a>
 
 ## Adapters
 
@@ -21,8 +19,6 @@ This component makes use of adapters to encapsulate specific image manipulator p
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
 | [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
-
-<a name='adapters-factory'></a>
 
 ### Factory
 
@@ -43,13 +39,9 @@ $options = [
 $image = Factory::load($options);
 ```
 
-<a name='adapters-custom'></a>
-
 ### Implementing your own adapters
 
 The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
-
-<a name='saving-rendering'></a>
 
 ## Saving and rendering images
 
@@ -103,8 +95,6 @@ $image = new \Phalcon\Image\Adapter\Gd('image.jpg');
 $image->save('image.jpg', 80);
 ```
 
-<a name='resizing'></a>
-
 ## Resizing images
 
 There are several modes of resizing:
@@ -116,8 +106,6 @@ There are several modes of resizing:
 * `\Phalcon\Image::AUTO`
 * `\Phalcon\Image::INVERSE`
 * `\Phalcon\Image::PRECISE`
-
-<a name='resizing-width'></a>
 
 ### `\Phalcon\Image::WIDTH`
 
@@ -137,8 +125,6 @@ $image->resize(
 $image->save('resized-image.jpg');
 ```
 
-<a name='resizing-height'></a>
-
 ### `\Phalcon\Image::HEIGHT`
 
 The width will automatically be generated to keep the proportions the same; if you specify a width, it will be ignored.
@@ -156,8 +142,6 @@ $image->resize(
 
 $image->save('resized-image.jpg');
 ```
-
-<a name='resizing-none'></a>
 
 ### `\Phalcon\Image::NONE`
 
@@ -180,8 +164,6 @@ $image->resize(
 $image->save('resized-image.jpg');
 ```
 
-<a name='resizing-tensile'></a>
-
 ### `\Phalcon\Image::TENSILE`
 
 * Similar to the `NONE` constant, the `TENSILE` constant ignores the original image's ratio.
@@ -202,8 +184,6 @@ $image->resize(
 $image->save('resized-image.jpg');
 ```
 
-<a name='cropping'></a>
-
 ## Cropping images
 
 For example, to get a 100px by 100px square from the centre of the image:
@@ -223,8 +203,6 @@ $image->crop($width, $height, $offsetX, $offsetY);
 $image->save('cropped-image.jpg');
 ```
 
-<a name='rotating'></a>
-
 ## Rotating images
 
 ```php
@@ -237,8 +215,6 @@ $image->rotate(90);
 
 $image->save('rotated-image.jpg');
 ```
-
-<a name='flipping'></a>
 
 ## Flipping images
 
@@ -257,8 +233,6 @@ $image->flip(
 $image->save('flipped-image.jpg');
 ```
 
-<a name='sharpening'></a>
-
 ## Sharpening images
 
 The `sharpen()` method takes a single parameter - an integer between 0 (no effect) and 100 (very sharp):
@@ -272,8 +246,6 @@ $image->sharpen(50);
 
 $image->save('sharpened-image.jpg');
 ```
-
-<a name='watermarks'></a>
 
 ## Adding watermarks to images
 
@@ -329,8 +301,6 @@ $image->watermark(
 $image->save('watermarked-image.jpg');
 ```
 
-<a name='blurring'></a>
-
 ## Blurring images
 
 The `blur()` method takes a single parameter - an integer between 0 (no effect) and 100 (very blurry):
@@ -344,8 +314,6 @@ $image->blur(50);
 
 $image->save('blurred-image.jpg');
 ```
-
-<a name='pixelating'></a>
 
 ## Pixelating images
 

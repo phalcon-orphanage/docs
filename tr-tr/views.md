@@ -3,17 +3,15 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Görüntülenmeler
 
-<a name='overview'></a>
+* * *
 
-# Using Views
+## Using Views
 
 Views represent the user interface of your application. Views are often HTML files with embedded PHP code that perform tasks related solely to the presentation of the data. Views handle the job of providing data to the web browser or other tool that is used to make requests from your application.
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are responsible for the managing the view layer of your MVC application.
-
-<a name='integrating-views-with-controllers'></a>
 
 ## Integrating Views with Controllers
 
@@ -49,8 +47,6 @@ class PostsController extends Controller
 ```
 
 The `setVar()` method allows us to create view variables on demand so that they can be used in the view template. The example above demonstrates how to pass the `$postId` parameter to the respective view template.
-
-<a name='hierarchical-rendering'></a>
 
 ## Hierarchical Rendering
 
@@ -127,8 +123,6 @@ The generated HTML by the request will be:
     </body>
 </html>
 ```
-
-<a name='using-templates'></a>
 
 ### Using Templates
 
@@ -290,8 +284,6 @@ If we had used `$this->view->setTemplateBefore('common')`, this would be the fin
 </html>
 ```
 
-<a name='control-rendering-levels'></a>
-
 ### Control Rendering Levels
 
 As seen above, [Phalcon\Mvc\View](api/Phalcon_Mvc_View) supports a view hierarchy. You might need to control the level of rendering produced by the view component. The method `Phalcon\Mvc\View::setRenderLevel()` offers this functionality.
@@ -341,8 +333,6 @@ The available render levels are:
 | `LEVEL_LAYOUT`          | Generates the presentation to the controller layout.                     |   3   |
 | `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. |   4   |
 | `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    |   5   |
-
-<a name='disabling-render-levels'></a>
 
 ### Disabling render levels
 
@@ -396,8 +386,6 @@ class PostsController extends Controller
 }
 ```
 
-<a name='picking-views'></a>
-
 ### Picking Views
 
 As mentioned above, when [Phalcon\Mvc\View](api/Phalcon_Mvc_View) is managed by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) the view rendered is the one related with the last controller and action executed. You could override this by using the `Phalcon\Mvc\View::pick()` method:
@@ -430,8 +418,6 @@ class ProductsController extends Controller
     }
 }
 ```
-
-<a name='disabling-view'></a>
 
 ### Disabling the view
 
@@ -493,8 +479,6 @@ class UsersController extends Controller
     }
 }
 ```
-
-<a name='simple-rendering'></a>
 
 ## Simple Rendering
 
@@ -597,8 +581,6 @@ $simpleView = new \Phalcon\Mvc\View\Simple();
 echo $simpleView->render('posts/show', $params);
 ```
 
-<a name='using-partials'></a>
-
 ## Using Partials
 
 Partial templates are another way of breaking the rendering process into simpler more manageable chunks that can be reused by different parts of the application. With a partial, you can move the code for rendering a particular piece of a response to its own file.
@@ -623,8 +605,6 @@ The `partial()` method does accept a second parameter as an array of variables/p
 ```php
 <?php $this->partial('shared/ad_banner', ['id' => $site->id, 'size' => 'big']); ?>
 ```
-
-<a name='value-transfer'></a>
 
 ## Transfer values from the controller to views
 
@@ -684,8 +664,6 @@ A variable with the name of the first parameter of `setVar()` will be created in
 </div>
 ```
 
-<a name='caching-fragments'></a>
-
 ## Caching View Fragments
 
 Sometimes when you develop dynamic websites and some areas of them are not updated very often, the output is exactly the same between requests. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) offers caching a part or the whole rendered output to increase performance.
@@ -740,9 +718,7 @@ class PostsController extends Controller
 }
 ```
 
-When we do not define a key to the cache, the component automatically creates one using an [MD5](https://php.net/manual/en/function.md5.php) hash of the name of the controller and view currently being rendered in the format of `controller/view`. It is a good practice to define a key for each action so you can easily identify the cache associated with each view.
-
-When the View component needs to cache something it will request a cache service from the services container. The service name convention for this service is `viewCache`:
+When we do not define a key to the cache, the component automatically creates one using an [MD5](https://php.net/manual/en/function.md5.php) hash of the name of the controller and view currently being rendered in the format of `controller/view`. It is a good practice to define a key for each action so you can easily identify the cache associated with each view. When the View component needs to cache something it will request a cache service from the services container. The service name convention for this service is `viewCache`:
 
 ```php
 <?php
@@ -775,11 +751,10 @@ $di->set(
 );
 ```
 
-<h5 class='alert alert-warning'>The frontend must always be <a href="api/Phalcon_Cache_Frontend_Output">Phalcon\Cache\Frontend\Output</a> and the service <code>viewCache</code> must be registered as always open (not shared) in the services container (DI). </h5>
+> The frontend must always be [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output) and the service `viewCache` must be registered as always open (not shared) in the services container (DI).
+{: .alert .alert-warning }
 
-When using views, caching can be used to prevent controllers from needing to generate view data on each request.
-
-To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:
+When using views, caching can be used to prevent controllers from needing to generate view data on each request. To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:
 
 ```php
 <?php
@@ -812,8 +787,6 @@ class DownloadController extends Controller
 }
 ```
 
-<a name='template-engines'></a>
-
 ## Template Engines
 
 Template Engines help designers to create views without the use of a complicated syntax. Phalcon includes a powerful and fast templating engine called `Volt`. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) allows you to use other template engines instead of plain PHP or Volt.
@@ -823,8 +796,6 @@ Using a different template engine, usually requires complex text parsing using e
 If an external template engine is used, [Phalcon\Mvc\View](api/Phalcon_Mvc_View) provides exactly the same view hierarchy and it's still possible to access the API inside these templates with a little more effort.
 
 This component uses adapters, these help Phalcon to speak with those external template engines in a unified way, let's see how to do that integration.
-
-<a name='custom-template-engine'></a>
 
 ### Creating your own Template Engine Adapter
 
@@ -874,8 +845,6 @@ class MyTemplateAdapter extends Engine
 }
 ```
 
-<a name='changing-template-engine'></a>
-
 ### Changing the Template Engine
 
 You can replace the template engine completely or use more than one template engine at the same time. The method `Phalcon\Mvc\View::registerEngines()` accepts an array containing data that define the template engines. The key of each engine is an extension that aids in distinguishing one from another. Template files related to the particular engine must have those extensions.
@@ -921,8 +890,6 @@ $di->set(
 
 There are adapters available for several template engines on the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine)
 
-<a name='injecting-services'></a>
-
 ## Injecting services in View
 
 Every view executed is included inside a [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) instance, providing easy access to the application's service container.
@@ -942,13 +909,9 @@ $.ajax({
 </script>
 ```
 
-<a name='stand-alone'></a>
-
 ## Stand-Alone Component
 
 All the components in Phalcon can be used as *glue* components individually because they are loosely coupled to each other:
-
-<a name='stand-alone-hierarchical-rendering'></a>
 
 ### Hierarchical Rendering
 
@@ -1008,8 +971,6 @@ echo $view->getRender(
 );
 ```
 
-<a name='stand-alone-simple-rendering'></a>
-
 ### Simple Rendering
 
 Using [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) in a stand-alone mode can be demonstrated below:
@@ -1037,19 +998,17 @@ echo $view->render(
 );
 ```
 
-<a name='events'></a>
-
 ## View Events
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Boolean false döndürürken bazı olaylar etkin işlemi durdurabilir. Aşağıdaki olaylar desteklenmektedir:
 
-| Olay Adı         | Tetiklendi                                    | İşlemi durdurabilir mi? |
-| ---------------- | --------------------------------------------- |:-----------------------:|
-| beforeRender     | Triggered before starting the render process  |          Evet           |
-| beforeRenderView | Triggered before rendering an existing view   |          Evet           |
-| afterRenderView  | Triggered after rendering an existing view    |          Hayır          |
-| afterRender      | Triggered after completing the render process |          Hayır          |
-| notFoundView     | Triggered when a view was not found           |          Hayır          |
+| Olay Adı           | Tetiklendi                                    | İşlemi durdurabilir mi? |
+| ------------------ | --------------------------------------------- |:-----------------------:|
+| `afterRender`      | Triggered after completing the render process |          Hayır          |
+| `afterRenderView`  | Triggered after rendering an existing view    |          Hayır          |
+| `beforeRender`     | Triggered before starting the render process  |          Evet           |
+| `beforeRenderView` | Triggered before rendering an existing view   |          Evet           |
+| `notFoundView`     | Triggered when a view was not found           |          Hayır          |
 
 Aşağıdaki örnek, dinleyicilerin bu bileşene nasıl ekleneceğini göstermektedir:
 

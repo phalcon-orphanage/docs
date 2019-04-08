@@ -3,9 +3,12 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 ---
-> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us. {:.alert .alert-info}
+# Reproducible Tests
 
-<a name='overview'></a>
+* * *
+
+> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
+{:.alert .alert-info}
 
 ## Creating a small script
 
@@ -63,11 +66,10 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-<a name='database'></a>
-
 ### Database
 
-> Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc. {:.alert .alert-info}
+> Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
+{:.alert .alert-info}
 
 ```php
 <?php
@@ -95,11 +97,10 @@ $container->setShared(
 $result = $container['db']->query('SELECT * FROM customers');
 ```
 
-<a name='single-multi'></a>
-
 ### Single/Multi-Module applications
 
-> Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules {:.alert .alert-info}
+> Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
+{:.alert .alert-info}
 
 ```php
 <?php
@@ -150,8 +151,6 @@ class Users extends Model
 echo $application->handle()->getContent();
 ```
 
-<a name='micro'></a>
-
 ### Micro application
 
 For micro applications, you can use the skeleton script below:
@@ -173,11 +172,10 @@ $application = new Micro($container);
 $application->handle();
 ```
 
-<a name='orm'></a>
-
 ### ORM
 
-> You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository). {:.alert .alert-info}
+> You can provide your own database schema or even better, use any of the existing schemas in our testing suite (located in `tests/_data/assets/db/schemas/` in the repository).
+{:.alert .alert-info}
 
 ```php
 <?php

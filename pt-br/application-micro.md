@@ -1008,7 +1008,7 @@ Middleware can be attached to a micro application in 3 different events. Those a
 | -------- | ---------------------------------------------- |
 | `before` | Before the handler has been executed           |
 | `after`  | After the handler has been executed            |
-| `final`  | After the response has been sent to the caller |
+| `finish` | After the response has been sent to the caller |
 
 > You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
 {: .alert .alert-warning }

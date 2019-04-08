@@ -5,6 +5,8 @@ version: '4.0'
 ---
 # Phalcon Coding Standard
 
+* * *
+
 Last update: 2019-03-28
 
 Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.

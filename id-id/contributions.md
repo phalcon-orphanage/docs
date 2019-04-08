@@ -3,9 +3,9 @@ layout: default
 language: 'id-id'
 version: '4.0'
 ---
+# Contributions
 
-
-<a name='contributing'></a>
+* * *
 
 # Contributing to Phalcon
 
@@ -15,15 +15,12 @@ Please take a few moments to review this document to understand the contribution
 
 The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub](https://github.com). You can browse our repositories in our [organization page](https://github.com/phalcon).
 
-<a name='contributions'></a>
-
-## Contributions
-
 If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
 
 When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be: * merged immediately or * put on hold, where the reviewer requires changes (styling, tests etc.) * put on hold, if discussion is necessary (community, core team etc.) * rejected
 
-> Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed {:.alert .alert-danger}
+> Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+{:.alert .alert-danger}
 
 ## Documentation
 
@@ -31,19 +28,17 @@ If programming in Zephir seems daunting, there are plenty of areas that you can 
 
 All you have to do is go to our [docs](https://github.com/phalcon/docs) repository, fork it, make the changes and send us a pull request.
 
-> Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder). {:.alert .alert-warning}
+> Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+{:.alert .alert-warning}
 
 ## Translations
 
 If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin](https://crowdin.com). Our project is located [here](https://crowdin.com/project/phalcon-documentation). If your language is not listed, please send us a message so that we can add it.
 
-<a name='questions-and-support'></a>
-
 ## Questions and Support
 
-> We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server. {:.alert .alert-danger}
-
-<a name='bug-report-checklist'></a>
+> We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server.
+{:.alert .alert-danger}
 
 ## Bug Report Checklist
 
@@ -52,8 +47,6 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
 - If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
-
-<a name='bug-report-generating-backtrace'></a>
 
 ### Generating a backtrace
 
@@ -66,8 +59,6 @@ Please check the following links for instructions on how to generate the backtra
 - [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
 - [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
-<a name='pull-request-checklist'></a>
-
 ## Pull Request Checklist
 
 - Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
@@ -77,19 +68,15 @@ Please check the following links for instructions on how to generate the backtra
 - Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
 - More information [here](new-pull-request)
 
-Before submitting **new functionality**, please open a [NFR](/4.0/en/new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Before submitting **new functionality**, please open a [NFR](new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
 
 - An update to the `CHANGELOG.md`
 - Unit Tests
 - Documentation or Usage Examples
 
-<a name='getting-support'></a>
-
 ## Getting Support
 
 If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
-
-<a name='requesting-features'></a>
 
 ## Requesting Features
 

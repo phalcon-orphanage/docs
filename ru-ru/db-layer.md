@@ -3,17 +3,15 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Database Abstraction Layer
+
+* * *
+
+## Overview
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
 This component allows for a lower level database manipulation than using traditional models.
-
-<a name='adapters'></a>
 
 ## Database Adapters
 
@@ -25,11 +23,7 @@ This component makes use of adapters to encapsulate specific database system det
 | [Phalcon\Db\Adapter\Pdo\Postgresql](api/Phalcon_Db_Adapter_Pdo_Postgresql) | PostgreSQL- мощная реляционная система баз данных с открытым исходным кодом. Это более чем 15 лет активного развития и проверенная архитектура, которая завоевала прочную репутацию за надежность, целостность данных и точность. |
 | [Phalcon\Db\Adapter\Pdo\Sqlite](api/Phalcon_Db_Adapter_Pdo_Sqlite)         | Библиотека SQLite реализует автономную, бессерверную, не требующую конфигурации и при этом поддерживающую транзакции базу данных на основе языка SQL.                                                                             |
 
-<a name='adapters-factory'></a>
-
 ### Factory
-
-<a name='factory'></a>
 
 Loads PDO Adapter class using `adapter` option. For example:
 
@@ -50,13 +44,9 @@ $options = [
 $db = Factory::load($options);
 ```
 
-<a name='adapters-custom'></a>
-
 ### Implementing your own adapters
 
 The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
-
-<a name='dialects'></a>
 
 ## Database Dialects
 
@@ -67,8 +57,6 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | [Phalcon\Db\Dialect\Mysql](api/Phalcon_Db_Dialect_Mysql)           | Специфичный SQL диалект для MySQL             |
 | [Phalcon\Db\Dialect\Postgresql](api/Phalcon_Db_Dialect_Postgresql) | Специфичный SQL диалект для систем PostgreSQL |
 | [Phalcon\Db\Dialect\Sqlite](api/Phalcon_Db_Dialect_Sqlite)         | Специфичный SQL диалект для SQLite            |
-
-<a name='dialects-custom'></a>
 
 ### Implementing your own dialects
 
@@ -119,8 +107,6 @@ $phql = "
 
 $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 ```
-
-<a name='connection'></a>
 
 ## Connecting to Databases
 
@@ -192,8 +178,6 @@ $config = [
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
-<a name='options'></a>
-
 ## Setting up additional PDO options
 
 You can set PDO options at connection time by passing the parameters `options`:
@@ -215,9 +199,7 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 );
 ```
 
-<a name='connection-factory'></a>
-
-## Подключение с помощью фабрики
+## Connecting using Factory
 
 You can also use a simple `ini` file to configure/connect your `db` service to your database.
 
@@ -253,8 +235,6 @@ $di->set(
 ```
 
 The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
-
-<a name='finding-rows'></a>
 
 ## Finding Rows
 
@@ -325,8 +305,6 @@ $robot = $result->fetch();
 echo $result->numRows();
 ```
 
-<a name='binding-parameters'></a>
-
 ## Binding Parameters
 
 Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. Связывание параметров может быть легко достигнуто следующим образом:
@@ -373,9 +351,7 @@ $result = $connection->query(
 );
 ```
 
-<a name='typed-placeholders'></a>
-
-## Типизированные псевдопеременные
+## Typed placeholders
 
 Placeholders allowed you to bind parameters to avoid SQL injections:
 
@@ -460,9 +436,7 @@ The following types are available:
 | array-str | Array of `Column::BIND_PARAM_STR` | `{names:array-str}` |
 | array-int | Array of `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
-<a name='cast-bound-parameter-values'></a>
-
-## Приведение типов связываемых параметров
+## Cast bound parameters values
 
 By default, bound parameters aren't casted in the PHP userland to the specified bind types, this option allows you to make Phalcon cast values before bind them with PDO. A classic situation when this problem raises is passing a string in a `LIMIT`/`OFFSET` placeholder:
 
@@ -508,14 +482,12 @@ The following actions are performed according to the bind type specified:
 
 | Bind Type                    | Действие                               |
 | ---------------------------- | -------------------------------------- |
-| Column::BIND_PARAM_STR     | Cast the value as a native PHP string  |
-| Column::BIND_PARAM_INT     | Cast the value as a native PHP integer |
-| Column::BIND_PARAM_BOOL    | Cast the value as a native PHP boolean |
-| Column::BIND_PARAM_DECIMAL | Cast the value as a native PHP double  |
+| `Column::BIND_PARAM_STR`     | Cast the value as a native PHP string  |
+| `Column::BIND_PARAM_INT`     | Cast the value as a native PHP integer |
+| `Column::BIND_PARAM_BOOL`    | Cast the value as a native PHP boolean |
+| `Column::BIND_PARAM_DECIMAL` | Cast the value as a native PHP double  |
 
-<a name='cast-on-hydrate'></a>
-
-## Приведение типов при гидрации
+## Cast on Hydrate
 
 Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a numerical or boolean type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
 
@@ -537,8 +509,6 @@ if (11 === $robot->id) {
     echo $robot->name;
 }
 ```
-
-<a name='crud'></a>
 
 ## Inserting/Updating/Deleting Rows
 
@@ -663,8 +633,6 @@ $success = $connection->delete(
 );
 ```
 
-<a name='transactions'></a>
-
 ## Transactions and Nested Transactions
 
 Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
@@ -727,21 +695,19 @@ try {
 }
 ```
 
-<a name='events'></a>
-
 ## Database Events
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](/4.0/en/events) if it's present. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
+[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](events) if it's present. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
 
 | Название события      | Срабатывает                                          | Можно остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
 | `afterConnect`        | After a successfully connection to a database system |            Нет             |
-| `beforeQuery`         | Before send a SQL statement to the database system   |             Да             |
 | `afterQuery`          | After send a SQL statement to database system        |            Нет             |
 | `beforeDisconnect`    | Before close a temporal database connection          |            Нет             |
+| `beforeQuery`         | Before send a SQL statement to the database system   |             Да             |
 | `beginTransaction`    | Before a transaction is going to be started          |            Нет             |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |            Нет             |
 | `commitTransaction`   | Before a transaction is committed                    |            Нет             |
+| `rollbackTransaction` | Before a transaction is rollbacked                   |            Нет             |
 
 Bind an EventsManager to a connection is simple, [Phalcon\Db](api/Phalcon_Db) will trigger the events with the type `db`:
 
@@ -793,8 +759,6 @@ $eventsManager->attach(
     }
 );
 ```
-
-<a name='profiling'></a>
 
 ## Profiling SQL Statements
 
@@ -888,8 +852,6 @@ $dbProfiler = new DbProfiler();
 $eventsManager->attach('db', $dbProfiler);
 ```
 
-<a name='logging-statements'></a>
-
 ## Logging SQL Statements
 
 Using high-level abstraction components such as [Phalcon\Db](api/Phalcon_Db) to access a database, it is difficult to understand which statements are sent to the database system. [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer.
@@ -939,13 +901,9 @@ As above, the file `app/logs/db.log` will contain something like this:
 (name, price) VALUES ('Hot pepper', 3.50)
 ```
 
-<a name='logger-custom'></a>
-
 ## Implementing your own Logger
 
 You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
-
-<a name='describing-tables'></a>
 
 ## Describing Tables/Views
 
@@ -1002,13 +960,9 @@ $tables = $connection->listViews('test_db');
 $exists = $connection->viewExists('robots');
 ```
 
-<a name='tables'></a>
-
 ## Creating/Altering/Dropping Tables
 
 Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
-
-<a name='tables-create'></a>
 
 ### Creating Tables
 
@@ -1090,8 +1044,6 @@ The associative array passed in `Phalcon\Db::createTable()` can have the possibl
 | `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |     Да      |
 | `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |     Да      |
 
-<a name='tables-altering'></a>
-
 ### Altering Tables
 
 As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. [Phalcon\Db](api/Phalcon_Db) is limited by these constraints.
@@ -1137,8 +1089,6 @@ $connection->dropColumn(
     'name'
 );
 ```
-
-<a name='tables-dropping'></a>
 
 ### Dropping Tables
 

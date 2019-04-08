@@ -3,19 +3,17 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Escaper Component
 
-<a name='overview'></a>
+* * *
 
-# Contextual Escaping
+## Contextual Escaping
 
 Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/Phalcon_Escaper) provides contextual escaping and is written in Zephir, providing the minimal overhead when escaping different kinds of texts.
 
-We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) created by the [OWASP](https://www.owasp.org).
+We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) created by the [OWASP](https://www.owasp.org)).
 
-Additionally, this component relies on [mbstring](https://php.net/manual/en/book.mbstring.php) to support almost any charset.
-
-To illustrate how this component works and why it is important, consider the following example:
+Additionally, this component relies on [mbstring](https://secure.php.net/manual/en/book.mbstring.php) to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
 
 ```php
 <?php
@@ -106,8 +104,6 @@ Which produces the following:
 
 Every text was escaped according to its context. Use the appropriate context is important to avoid XSS attacks.
 
-<a name='html'></a>
-
 ## Escaping HTML
 
 The most common situation when inserting unsafe data is between HTML tags:
@@ -133,8 +129,6 @@ Which produces:
     &gt;&lt;/div&gt;&lt;h1&gt;myattack&lt;/h1&gt;
 </div>
 ```
-
-<a name='html-attributes'></a>
 
 ## Escaping HTML Attributes
 
@@ -174,8 +168,6 @@ Which produces:
 </table>
 ```
 
-<a name='urls'></a>
-
 ## Escaping URLs
 
 Some HTML attributes like `href` or `url` need to be escaped differently:
@@ -202,8 +194,6 @@ Which produces:
 </a>
 ```
 
-<a name='css'></a>
-
 ## Escaping CSS
 
 CSS identifiers/values can be escaped too:
@@ -229,8 +219,6 @@ Which produces:
     Some link
 </a>
 ```
-
-<a name='javascript'></a>
 
 ## Escaping JavaScript
 

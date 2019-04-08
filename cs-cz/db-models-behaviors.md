@@ -3,11 +3,11 @@ layout: default
 language: 'cs-cz'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Model Behaviors
+
+* * *
+
+## Overview
 
 Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 
@@ -49,8 +49,6 @@ The following built-in behaviors are provided by the framework:
 | ------------- | ---------------------------------------------------------------------------------------------------------- |
 | Timestampable | Allows to automatically update a model's attribute saving the datetime when a record is created or updated |
 | SoftDelete    | Instead of permanently delete a record it marks the record as deleted changing the value of a flag column  |
-
-<a name='timestampable'></a>
 
 ## Timestampable
 
@@ -107,8 +105,6 @@ public function initialize()
 ```
 
 If the option `format` is omitted a timestamp using the PHP's function [time](https://php.net/manual/en/function.time.php), will be used.
-
-<a name='softdelete'></a>
 
 ## SoftDelete
 
@@ -178,8 +174,6 @@ mysql> select * from users;
 ```
 
 Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
-
-<a name='create-your-own-behaviors'></a>
 
 ## Creating your own behaviors
 
@@ -266,8 +260,6 @@ Call that method on a model that implements Sluggable returns a SEO friendly tit
 
 $title = $post->getSlug();
 ```
-
-<a name='traits-as-behaviors'></a>
 
 ## Using Traits as behaviors
 

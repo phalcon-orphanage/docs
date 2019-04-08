@@ -515,8 +515,7 @@ class SignupController extends Controller
     {
         $user = new Users();
 
-        // Almacenar y comprobar errores
-        $success = $user->save(
+        $user->assign(
             $this->request->getPost(),
             [
                 "name",
@@ -524,10 +523,13 @@ class SignupController extends Controller
             ]
         );
 
+        // Store and check for errors
+        $success = $user->save();
+
         if ($success) {
-            echo "¡Gracias por registrarte!";
+            echo "Thanks for registering!";
         } else {
-            echo "Lo sentimos, se generaron los siguiente problemas: ";
+            echo "Sorry, the following problems were generated: ";
 
             $messages = $user->getMessages();
 

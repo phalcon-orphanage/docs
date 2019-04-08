@@ -3,39 +3,33 @@ layout: default
 language: 'de-de'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
-
 # Model Events
 
-<a name='events'></a>
+* * *
 
 ## Events and Events Manager
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) and their order of execution:
 
-| Operation          | Name                     |  Can stop operation?  | Explanation                                                                                                                       |
-| ------------------ | ------------------------ |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
-| Inserting          | afterCreate              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
-| Inserting/Updating | afterSave                |          NO           | Runs after the required operation over the database system                                                                        |
-| Updating           | afterUpdate              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
-| Inserting/Updating | afterValidation          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
-| Inserting          | afterValidationOnCreate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
-| Updating           | afterValidationOnUpdate  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
-| Inserting          | beforeCreate             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
-| Inserting/Updating | beforeSave               |          YES          | Runs before the required operation over the database system                                                                       |
-| Updating           | beforeUpdate             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
-| Inserting/Updating | beforeValidation         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
-| Inserting          | beforeValidationOnCreate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
-| Updating           | beforeValidationOnUpdate |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
-| Inserting/Updating | onValidationFails        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
-| Inserting/Updating | prepareSave              |          NO           | Is executed before saving and allows data manipulation                                                                            |
-| Inserting/Updating | validation               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Operation          | Name                       |  Can stop operation?  | Explanation                                                                                                                       |
+| ------------------ | -------------------------- |:---------------------:| --------------------------------------------------------------------------------------------------------------------------------- |
+| Inserting          | `afterCreate`              |          NO           | Runs after the required operation over the database system only when an inserting operation is being made                         |
+| Inserting/Updating | `afterSave`                |          NO           | Runs after the required operation over the database system                                                                        |
+| Updating           | `afterUpdate`              |          NO           | Runs after the required operation over the database system only when an updating operation is being made                          |
+| Inserting/Updating | `afterValidation`          |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys                                            |
+| Inserting          | `afterValidationOnCreate`  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made  |
+| Updating           | `afterValidationOnUpdate`  |          YES          | Is executed after the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made   |
+| Inserting          | `beforeCreate`             |          YES          | Runs before the required operation over the database system only when an inserting operation is being made                        |
+| Inserting/Updating | `beforeSave`               |          YES          | Runs before the required operation over the database system                                                                       |
+| Updating           | `beforeUpdate`             |          YES          | Runs before the required operation over the database system only when an updating operation is being made                         |
+| Inserting/Updating | `beforeValidation`         |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys                                           |
+| Inserting          | `beforeValidationOnCreate` |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an insertion operation is being made |
+| Updating           | `beforeValidationOnUpdate` |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
+| Inserting/Updating | `onValidationFails`        | YES (already stopped) | Is executed after an integrity validator fails                                                                                    |
+| Inserting/Updating | `prepareSave`              |          NO           | Is executed before saving and allows data manipulation                                                                            |
+| Inserting/Updating | `validation`               |          YES          | Is executed before the fields are validated for not nulls/empty strings or foreign keys when an updating operation is being made  |
 
-<a name='events-in-models'></a>
-
-### Implementing Events in the Model's class
+### Implementing Events in Models
 
 The easier way to make a model react to events is to implement a method with the same name of the event in the model's class:
 
@@ -77,8 +71,6 @@ class Products extends Model
     }
 }
 ```
-
-<a name='custom-events-manager'></a>
 
 ### Using a custom Events Manager
 
@@ -177,8 +169,6 @@ $di->setShared(
 
 If a listener returns false that will stop the operation that is executing currently.
 
-<a name='logging-sql-statements'></a>
-
 ## Logging Low-Level SQL Statements
 
 When using high-level abstraction components such as [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) to access a database, it is difficult to understand which statements are finally sent to the database system. [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) is supported internally by [Phalcon\Db](api/Phalcon_Db). [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer, thus allowing us to log SQL statements as they happen.
@@ -246,8 +236,6 @@ if ($robot->save() === false) {
 As above, the file *app/logs/db.log* will contain something like this:
 
 > `[Mon, 30 Apr 12 13:47:18 -0500][DEBUG][Resource Id #77] INSERT INTO robots` `(name, created_at) VALUES ('Robby the Robot', '1956-07-21')`
-
-<a name='profiling-sql-statements'></a>
 
 ## Profiling SQL Statements
 

@@ -3,13 +3,9 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 ---
-**This article reflects v3.4 and has not yet been revised**
+# Model Validation
 
-<a name='overview'></a>
-
-# Валидация моделей
-
-<a name='data-integrity'></a>
+* * *
 
 ## Validating Data Integrity
 
@@ -61,7 +57,8 @@ class Robots extends Model
 
 The above example performs a validation using the built-in validator 'InclusionIn'. It checks the value of the field `type` in a domain list. If the value is not included in the method then the validator will fail and return false.
 
-<h5 class='alert alert-warning'>For more information on validators, see the <a href="/4.0/en/validation">Validation documentation</a></h5>
+> For more information on validators, see the [Validation documentation](validation)
+{: .alert .alert-warning }
 
 The idea of creating validators is make them reusable between several models. A validator can also be as simple as:
 
@@ -93,8 +90,6 @@ class Robots extends Model
     }
 }
 ```
-
-<a name='messages'></a>
 
 ## Validation Messages
 
@@ -161,8 +156,6 @@ class Robots extends Model
     }
 }
 ```
-
-<a name='failed-events'></a>
 
 ## Validation Failed Events
 
