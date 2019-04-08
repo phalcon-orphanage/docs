@@ -44,18 +44,13 @@ class Cars extends Model
     public $style;
 
     /**
-     * This model is mapped to the table sample_cars
-     */
-    public function getSource()
-    {
-        return 'sample_cars';
-    }
-
-    /**
      * A car only has a Brand, but a Brand have many Cars
      */
     public function initialize()
     {
+        // This model is mapped to the table sample_cars
+        $this->setSource('sample_cars');
+
         $this->belongsTo('brand_id', 'Brands', 'id');
     }
 }
@@ -75,18 +70,13 @@ class Brands extends Model
     public $name;
 
     /**
-     * The model Brands is mapped to the 'sample_brands' table
-     */
-    public function getSource()
-    {
-        return 'sample_brands';
-    }
-
-    /**
      * A Brand can have many Cars
      */
     public function initialize()
     {
+        // The model Brands is mapped to the 'sample_brands' table
+        $this->setSource('sample_brands');
+
         $this->hasMany('id', 'Cars', 'brand_id');
     }
 }
@@ -989,4 +979,4 @@ Some things to keep in mind when using PHQL:
 * Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
 * If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
 
-[sqlite]: https://en.wikipedia.org/wiki/Lemon_Parser_Generator 
+[sqlite]: https://en.wikipedia.org/wiki/Lemon_Parser_Generator
