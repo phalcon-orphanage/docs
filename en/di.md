@@ -1141,7 +1141,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                     | Yes    |
 | transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) | Yes    |
 | url                | URL Generator Service                 | [Phalcon\Url](api/Phalcon_Url)                                                     | Yes    |
-| viewsCache         | Cache backend for views fragments     | None                                                                               | No     |
+| viewCache          | Cache backend for views fragments     | None                                                                               | No     |
 
 ## Implementing your own DI
 The [Phalcon\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
