@@ -1160,7 +1160,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | tag                | HTML generation helpers               | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  Evet  |
 | transactionManager | Models Transaction Manager Service    | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  Evet  |
 | url                | URL Generator Service                 | [Phalcon\Url](api/Phalcon_Url)                                                        |  Evet  |
-| viewsCache         | Cache backend for views fragments     | None                                                                                   | Hayır  |
+| viewCache          | Cache backend for views fragments     | None                                                                                   | Hayır  |
 
 ## Implementing your own DI
 

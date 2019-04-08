@@ -1162,7 +1162,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | tag                | 生成的 HTML 助手         | [Phalcon\Tag](api/Phalcon_Tag)                                                        |  是的  |
 | transactionManager | 模型事务管理器服务           | [Phalcon\Mvc\Model\Transaction\Manager](api/Phalcon_Mvc_Model_Transaction_Manager) |  是的  |
 | url                | URL 生成器服务           | [Phalcon\Url](api/Phalcon_Url)                                                        |  是的  |
-| viewsCache         | 视图片段缓存后端            | 无                                                                                      |  否   |
+| viewCache          | 视图片段缓存后端            | 无                                                                                      |  否   |
 
 ## Implementing your own DI
 

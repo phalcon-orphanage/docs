@@ -2,6 +2,7 @@
 layout: default
 language: 'fa-ir'
 version: '4.0'
+upgrade: '#models'
 ---
 # Models
 
@@ -32,9 +33,6 @@ class RobotParts extends Model
 
 }
 ```
-
-> If you're using PHP 5.4/5.5 it is recommended you declare each column that makes part of the model in order to save memory and reduce the memory allocation.
-{: .alert .alert-warning }
 
 By default, the model `Store\Toys\RobotParts` will map to the table `robot_parts`. If you want to manually specify another name for the mapped table, you can use the `setSource()` method:
 

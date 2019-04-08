@@ -79,13 +79,9 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-<a name='acl-overview'></a>
-
 ### Genel Bakış
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
-
-<a name='acl-changed'></a>
 
 ### Changed
 
@@ -118,8 +114,6 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-<a name='filter-overview'></a>
-
 ### Genel Bakış
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
@@ -149,15 +143,11 @@ Calling`newInstance()` will return a [Phalcon\Filter\FilterLocator](api/Phalcon_
 
 You can instantiate the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
 
-<a name='filter-di-factorydefault'></a>
-
 ### Using the `FactoryDefault`
 
 If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
 
 Also components that utilize the filter service, such as the [Request](api/Phalcon_Http_Request) object, transparently use the new filter locator. No additional changes required for those components.
-
-<a name='filter-di-custom'></a>
 
 ### Using a custom `Di`
 
@@ -182,8 +172,6 @@ $container->set(
 
 > Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
 {: .alert .alert-warning }
-
-<a name='filter-constants'></a>
 
 ### Constants
 
@@ -233,8 +221,6 @@ In v3, the logger was incorporating the adapter in the same component. So in ess
 
 For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
-<a name='logger-creating'></a>
-
 ### Creating a logger component
 
 ```php
@@ -281,8 +267,6 @@ $container->set(
 );
 ```
 
-<a name='logger-multiple'></a>
-
 ### Multiple loggers
 
 The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
@@ -311,3 +295,31 @@ $logger->error('Something went wrong');
 ```
 
 * * *
+
+<a name='models'></a>
+
+## Modeller
+
+> Status: **changes required**
+> 
+> Usage: [Models Documentation](db-models)
+{: .alert .alert-info }
+
+### Initialization
+
+The `getSource()` method has been marked as `final`. As such you can no longer override this method in your model to set the corresponding table/source of the RDBMS. Instead, you can now use the `initialize()` method and `setSource()` to set the source of your model.
+
+```php
+<?php
+
+use Phalcon\Mvc\Model;
+
+class Users
+{
+    public function initialize()
+    {
+        $this->setSource('Users');
+        // ....
+    }
+}
+```
