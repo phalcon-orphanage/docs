@@ -47,18 +47,13 @@ class Cars extends Model
     public $style;
 
     /**
-     * This model is mapped to the table sample_cars
-     */
-    public function getSource()
-    {
-        return 'sample_cars';
-    }
-
-    /**
      * A car only has a Brand, but a Brand have many Cars
      */
     public function initialize()
     {
+        // This model is mapped to the table sample_cars
+        $this->setSource('sample_cars');
+
         $this->belongsTo('brand_id', 'Brands', 'id');
     }
 }
@@ -78,18 +73,13 @@ class Brands extends Model
     public $name;
 
     /**
-     * The model Brands is mapped to the 'sample_brands' table
-     */
-    public function getSource()
-    {
-        return 'sample_brands';
-    }
-
-    /**
      * A Brand can have many Cars
      */
     public function initialize()
     {
+        // The model Brands is mapped to the 'sample_brands' table
+        $this->setSource('sample_brands');
+
         $this->hasMany('id', 'Cars', 'brand_id');
     }
 }
