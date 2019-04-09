@@ -9,16 +9,16 @@ version: '4.0'
 # Upgrading to v4
 So you have decided to upgrade to v4! **Congratulations**!!
 
-Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smooth as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
+Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
 
 <a name='requirements'></a>
 ## Requirements
 ### PHP 7.2
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support][php-support] has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support][php-support] has lapsed, so we decided to follow actively supported PHP versions.
 
 <a name='psr'></a>
 ### PSR
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this][psr-extension] GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this][psr-extension] GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
 
 ```ini
 extension=psr.so
@@ -73,21 +73,55 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
 ### Changed
-- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component` 
-- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface` 
-- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware` 
-- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent` 
-- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent` 
-- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess` 
-- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess` 
-- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent` 
+- Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+- Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
+- Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
+- Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
+- Renamed `Phalcon\Acl\AdapterInterface::addResource` to `Phalcon\Acl\AdapterInterface::addComponent`
+- Renamed `Phalcon\Acl\AdapterInterface::addResourceAccess` to `Phalcon\Acl\AdapterInterface::addComponentAccess`
+- Renamed `Phalcon\Acl\AdapterInterface::dropResourceAccess` to `Phalcon\Acl\AdapterInterface::dropComponentAccess`
+- Renamed `Phalcon\Acl\AdapterInterface::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
 - Renamed `Phalcon\Acl\AdapterInterface::getResources` to `Phalcon\Acl\AdapterInterface::getComponents`
-- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent` 
-- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`  
-- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`  
-- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`  
-- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`  
-- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`  
+- Renamed `Phalcon\Acl\Adapter::getActiveResource` to `Phalcon\Acl\AdapterInterface::getActiveComponent`
+- Renamed `Phalcon\Acl\Adapter\Memory::isResource` to `Phalcon\Acl\Adapter\Memory::isComponent`
+- Renamed `Phalcon\Acl\Adapter\Memory::addResource` to `Phalcon\Acl\Adapter\Memory::addComponent`
+- Renamed `Phalcon\Acl\Adapter\Memory::addResourceAccess` to `Phalcon\Acl\Adapter\Memory::addComponentAccess`
+- Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
+- Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
+
+<hr/>
+
+<a name='cli'></a>
+## CLI
+
+> Status: **changes required**
+>
+> Usage: [CLI Documentation](cli)
+{: .alert .alert-info }
+
+### Parameters
+Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
+
+```php
+use Phalcon\Cli\Task;
+
+class MainTask extends Task
+{
+    public function testAction(string $yourName, string $myName)
+    {
+        echo sprintf(
+            'Hello %s!' . PHP_EOL,
+            $yourName
+        );
+
+        echo sprintf(
+            'Best regards, %s' . PHP_EOL,
+            $myName
+        );
+    }
+}
+```
+
 
 <hr/>
 
@@ -102,7 +136,7 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
 ### Overview
-The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input. 
+The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 
 The equivalent of the v3 `Phalcon\Filter` is now the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -120,8 +154,8 @@ use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
 $locator = $factory->newInstance();
-``` 
-Calling`newInstance()` will return a [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator. 
+```
+Calling`newInstance()` will return a [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
 
 #### Load only sanitizers you want
 You can instantiate the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
@@ -159,7 +193,7 @@ The constants that the v3 `Phalcon\Filter` have somewhat changed. They are now l
 
 #### Removed
 - `FILTER_INT_CAST` (`int!`)
-- `FILTER_FLOAT_CAST` (`float!`) 
+- `FILTER_FLOAT_CAST` (`float!`)
 
 By default the service sanitizers cast the value to the appropriate type so these are obsolete
 
@@ -193,7 +227,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 The `Logger` component has been rewritten to comply with [PSR-3][psr-3]. This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3][psr-3] logger, not just Phalcon based ones.
 
-In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality. 
+In v3, the logger was incorporating the adapter in the same component. So in essence when creating a logger object, the developer was creating an adapter (file, stream etc.) with logger functionality.
 
 For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3][psr-3] and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
@@ -237,7 +271,7 @@ $container->set(
                 'main' => $adapter,
             ]
         );
-        
+
         return $logger;
     }
 );
