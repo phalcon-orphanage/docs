@@ -134,6 +134,11 @@ abstract public  **getLimit** ()
 ...
 
 
+abstract public **getModels** ()
+
+
+...
+
 abstract public  **groupBy** (*mixed* $group)
 
 ...
