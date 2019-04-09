@@ -756,7 +756,7 @@ The following literals are supported:
 
 ### Arrays
 
-Whether you're using PHP 5.3 or >= 5.4 you can create arrays by enclosing a list of values in square brackets:
+You can create arrays by enclosing a list of values in square brackets:
 
 ```twig
 {%- raw -%}
