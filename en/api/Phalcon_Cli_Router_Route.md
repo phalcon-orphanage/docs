@@ -39,6 +39,12 @@ Reconfigure the route adding a new pattern and a set of paths
 
 
 
+public *string* **getDescription** ()
+
+Returns the route's description
+
+
+
 public  **getName** ()
 
 Returns the route's name
@@ -122,6 +128,12 @@ Returns the router converter
 public static  **reset** ()
 
 Resets the internal route id generator
+
+
+
+public [Phalcon\Cli\Router\RouteInterface](Phalcon_Cli_Router_RouteInterface) **setDescription** (*string* $description)
+
+Sets the route's description
 
 
 
