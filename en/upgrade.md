@@ -91,6 +91,40 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 <hr/>
 
+<a name='cli'></a>
+## CLI
+
+> Status: **changes required**
+>
+> Usage: [CLI Documentation](cli)
+{: .alert .alert-info }
+
+### Parameters
+Parameters now behave the same way as MVC controllers. Whilst previously they all existed in the `$params` property, you can now name them appropriately:
+
+```php
+use Phalcon\Cli\Task;
+
+class MainTask extends Task
+{
+    public function testAction(string $yourName, string $myName)
+    {
+        echo sprintf(
+            'Hello %s!' . PHP_EOL,
+            $yourName
+        );
+
+        echo sprintf(
+            'Best regards, %s' . PHP_EOL,
+            $myName
+        );
+    }
+}
+```
+
+
+<hr/>
+
 <a name='filter'></a>
 ## Filter
 
