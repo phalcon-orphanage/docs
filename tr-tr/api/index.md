@@ -1,10 +1,10 @@
 ---
 layout: default
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
-title: 'API Bölüm'
+title: 'API Index'
 ---
-## API Bölüm
+## API Index
 {% assign rootNamespace = '' %}
 {% for apiPage in site.pages %}
     {% if page.language == apiPage.language and page.version == apiPage.version %}
