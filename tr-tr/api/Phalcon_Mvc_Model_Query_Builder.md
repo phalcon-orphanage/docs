@@ -486,6 +486,10 @@ public *string* | *array* **getLimit** ()
 
 Returns the current LIMIT clause
 
+public *string* | *array* | *null* **getModels** ()
+
+Returns the models involved in the query
+
 public **offset** (*mixed* $offset)
 
 Sets an OFFSET clause
@@ -526,7 +530,7 @@ Returns a PHQL statement built based on the builder parameters
 
 public **getQuery** ()
 
-Kurulmuş bir sorguyu döndürür
+Returns the query built
 
 final public **autoescape** (*mixed* $identifier)
 
