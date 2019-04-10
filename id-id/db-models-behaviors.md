@@ -177,19 +177,19 @@ Note that you need to specify the deleted condition in your queries to effective
 
 ## Creating your own behaviors
 
-The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface). Also, [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) provides most of the methods needed to ease the implementation of behaviors.
+The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface) or extend [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) which provides most of the methods needed to ease the implementation of behaviors.
 
 The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations over a model:
 
 ```php
 <?php
 
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
-use Phalcon\Mvc\Model\BehaviorInterface;
 
-class Blameable extends Behavior implements BehaviorInterface
+class Blameable extends Behavior
 {
-    public function notify($eventType, $model)
+    public function notify(string $eventType, ModelInterface $model)
     {
         switch ($eventType) {
 
@@ -238,12 +238,13 @@ A behavior is also capable of intercepting missing methods on your models:
 <?php
 
 use Phalcon\Tag;
+use Phalcon\Mvc\ModelInterface;
 use Phalcon\Mvc\Model\Behavior;
 use Phalcon\Mvc\Model\BehaviorInterface;
 
-class Sluggable extends Behavior implements BehaviorInterface
+class Sluggable extends Behavior
 {
-    public function missingMethod($model, $method, $arguments = [])
+    public function missingMethod(string $model, ModelInterface $method, $arguments = [])
     {
         // If the method is 'getSlug' convert the title
         if ($method === 'getSlug') {

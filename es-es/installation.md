@@ -16,7 +16,7 @@ Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ag
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available on the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Las instrucciones de instalación están disponibles en el `README` del repositorio. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
 
 ```ini
 extension=psr.so
