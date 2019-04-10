@@ -38,6 +38,10 @@ abstract public **getCompiledPattern** ()
 
 ...
 
+abstract public **getDescription** ()
+
+...
+
 abstract public **getPaths** ()
 
 ...
@@ -47,5 +51,9 @@ abstract public **getReversedPaths** ()
 ...
 
 abstract public static **reset** ()
+
+...
+
+abstract public **setDescription** ()
 
 ...
