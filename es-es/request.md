@@ -194,7 +194,7 @@ These methods accept the same parameters as the `getPost()`, `getPut()` and `get
 
 ## Accediendo a la Consulta desde los Controladores
 
-The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
+El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. Para tener acceso al objeto [Phalcon\Http\Request](api/Phalcon_Http_Request) desde un controlador necesita utilizar la propiedad pública `$this->request` del controlador:
 
 ```php
 <?php
@@ -203,7 +203,7 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
 /**
- * Class PostsController
+ * Clase PostsController
  * 
  * @property Request $request
  */
@@ -211,9 +211,9 @@ class PostsController extends Controller
 {
     public function saveAction()
     {
-        // Check if request has made with POST
+        // Comprobar si la consulta fue hecha con POST
         if (true === $this->request->isPost()) {
-            // Access POST data
+            // Acceder a datos POST
             $customerName = $this->request->getPost('name');
             $customerBorn = $this->request->getPost('born', 'string', '1984');
         }
@@ -336,7 +336,7 @@ echo $request->getMethod();
 
 ## Inyección de Dependencias
 
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
+El objeto [Phalcon\Http\Request](api/Phalcon_Http_Request) implementa la interfaz [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface). Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Trabajando con Cabeceras
 
@@ -411,7 +411,7 @@ The `getUploadedFiles()` accepts two parameters. - `$onlySuccessful`: Contains o
 
 ## Inyección de Dependencias
 
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
+El objeto [Phalcon\Http\Request](api/Phalcon_Http_Request) implementa la interfaz [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface). Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Eventos
 
