@@ -51,7 +51,7 @@
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "Estándar de codificación",
                 "url": "/coding-standard"
             }
         ]
@@ -89,7 +89,7 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Depuración",
                 "url": "/debug"
             }
         ]
@@ -99,7 +99,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Básico",
                 "url": "/tutorial-basic"
             },
             {
@@ -115,11 +115,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Casos de uso",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "Rendimiento",
                 "url": "/performance"
             }
         ]
@@ -153,7 +153,7 @@
                 "url": "/mvc"
             },
             {
-                "text": "Namespaces",
+                "text": "Espacios de nombres",
                 "url": "/namespaces"
             }
         ]
@@ -233,7 +233,7 @@
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Paginación",
                 "url": "/db-pagination"
             }
         ]
@@ -359,11 +359,11 @@
                 "url": "/logger"
             },
             {
-                "text": "PSR-0, PSR-4 Loader",
+                "text": "PSR-0, PSR-4 Cargador",
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 Request",
+                "text": "Peticiones PSR-7",
                 "url": "/http-request"
             }
         ]
@@ -373,17 +373,17 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Internacionalización",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Traducciones",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "Utilidad",
         "url": "",
         "menu": [
             {
@@ -391,11 +391,11 @@
                 "url": "/collection"
             },
             {
-                "text": "Helper",
+                "text": "Ayudantes",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "Registro",
                 "url": "/registry"
             }
         ]

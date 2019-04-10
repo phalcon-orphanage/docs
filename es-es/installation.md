@@ -12,11 +12,11 @@ category: 'installation'
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 años y su [soporte activo](https://secure.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Las instrucciones de instalación están disponibles en el `README` del repositorio. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Las instrucciones de instalación están disponibles en el `README` del repositorio. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
 
 ```ini
 extension=psr.so
@@ -28,7 +28,7 @@ before
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
+Alternativamente algunas distribuciones añaden un prefijo numérico en los archivos `ini`. Si ese es el caso, elija un número alto para Phalcon (por ejemplo `50-phalcon.ini`).
 
 ### PDO
 
@@ -70,7 +70,7 @@ Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
 sudo apt-get install libpcre3-dev
 ```
 
-and then try and install Phalcon again
+y luego intenta instalar Phalcon nuevamente
 
 #### CentOS
 
@@ -84,7 +84,7 @@ sudo yum install pcre-devel
 brew install pcre
 ```
 
-Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+Sin `brew`, necesitas ir al sitio web [PCRE](https://www.pcre.org/) y descargar la última pcre:
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -109,7 +109,7 @@ sudo ln -s /opt/local/include/pcre.h /usr/include/
 sudo pecl install apc 
 ```
 
-## Installation Platforms
+## Plataformas de instalación
 
 Como Phalcon está compilado como una extensión PHP, su instalación es un poco diferente que cualquier otro framework PHP tradicional. Phalcon necesita ser instalado y cargado como un módulo en el servidor web.
 
@@ -304,28 +304,28 @@ extension=php_phalcon.dll
 
 Reiniciar tu navegador web.
 
-### Compile from Sources
+### Compilar desde código fuente
 
-Compiling from source is similar to most environments (Linux/macOS).
+Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
 #### Requerimentos
 
-* PHP 7.2.x/7.3.x development resources
+* Recursos de desarrollo de PHP 7.2.x/7.3.x
 * Compilador GCC (Linux/Solaris/FreeBSD) o Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-#### Compilation
+#### Compilación
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Descarga la última `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que puede acceder su sistema.
 
-Clone the repository
+Clonar el repositorio
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Compilar Phalcon
 
 ```bash
 cd cphalcon/
@@ -334,32 +334,32 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Comprueba el módulo
 
 ```bash
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
 
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php7/conf.d/ with this content:
+# Suse: Agregue un archivo llamado phalcon.ini en /etc/php7/conf.d/ con el siguiente contenido:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+# CentOS/RedHat/Fedora: Agregue un archivo llamado phalcon.ini en /etc/php.d/ con el siguiente contenido:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with this content:
+# Ubuntu/Debian con apache2: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/apache2/conf.d/ con el siguiente contenido:
 extension=phalcon.so
 
-# Ubuntu/Debian with php7-fpm: Add a file called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with this content:
+# Ubuntu/Debian con php7-fpm: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/fpm/conf.d/ con el siguiente contenido:
 extension=phalcon.so
 
-# Ubuntu/Debian with php7-cli: Add a file called 30-phalcon.ini in /etc/php7/cli/conf.d/ with this content:
+# Ubuntu/Debian con php7-cli: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/cli/conf.d/ con el siguiente contenido:
 extension=phalcon.so
 ```
 
-The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
+Las instrucciones anteriores compilarán e instalarán el módulo en su sistema. También puedes compilar la extensión y luego añadirla manualmente en tu archivo `ini`:
 
 ```bash
 cd cphalcon/
@@ -372,17 +372,17 @@ phpize
 make && make install
 ```
 
-If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
+Si usas el método anterior, necesitarás añadir la linea `extension=phalcon.so` en tu `php.ini` tanto para CLI como para el servidor web.
 
-#### Tuning build
+#### Ajuste de construcción
 
-By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
+Por defecto, compilamos para ser lo más compatible posible con todos los procesadores (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
+Esto generará el mejor código posible para ese chipset pero probablemente romperá el objeto compilado en chipsets antiguos.
 
 ### Hosting compartido - cPanel
 

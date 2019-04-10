@@ -173,7 +173,7 @@ $logger
 
 ## Formato de mensaje
 
-This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
+Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
 - [Phalcon\Logger\Formatter\Line](api/Phalcon_Logger_Formatter_Line)
 - [Phalcon\Logger\Formatter\Json](api/Phalcon_Logger_Formatter_Json)
@@ -340,9 +340,9 @@ Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como ele
 ]
 ```
 
-### Custom Formatter
+### Formateador personalizado
 
-The [Phalcon\Logger\Formatter\FormatterInterface](api/Phalcon_Logger_Formatter_FormatterInterface) interface must be implemented in order to create your own formatter or extend the existing ones.
+La interfaz [Phalcon\Logger\FormatterInterface ](api/Phalcon_Logger_Formatter_FormatterInterface) debe implementarse para crear su propio formateador o extender los existentes.
 
 ## Interpolation
 

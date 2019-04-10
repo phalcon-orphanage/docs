@@ -486,6 +486,10 @@ public *string* | *array* **getLimit** ()
 
 Returns the current LIMIT clause
 
+public *string* | *array* | *null* **getModels** ()
+
+Returns the models involved in the query
+
 public **offset** (*mixed* $offset)
 
 Sets an OFFSET clause

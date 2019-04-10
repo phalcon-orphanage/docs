@@ -58,7 +58,7 @@ Usually, the starting route in an application is the route `/`, and in most case
 ```php
 <?php
 
-// This is the start route
+// 这是一个起始路由
 $app->get(
     '/',
     function () {
@@ -67,7 +67,7 @@ $app->get(
 );
 ```
 
-#### Application object
+#### 应用程序对象
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application object as follows:
 

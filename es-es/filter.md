@@ -356,7 +356,7 @@ class ProductosController extends Controller
 
 ## Filtrado de datos
 
-Con la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) se pueden limpiar y filtrar datos --dependiendo de cuáles limpiadores y filtros se utilicen. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. The description of each sanitizer (see [Built-in Sanitizers](https://docs.phalconphp.comfilter-sanitizers)) can help you to understand and use the sanitizers according to your needs.
+Con la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) se pueden limpiar y filtrar datos --dependiendo de cuáles limpiadores y filtros se utilicen. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. La descripción de cada limpiador (véase [Limpiadores predeterminados](https://docs.phalconphp.com/4.0/es-es/filter-sanitizers)) es útil para comprender y saber cuándo utilizarlo.
 
 ```php
 <?php
@@ -501,7 +501,7 @@ PHP ofrece una extensión excelente para filtrado de datos que por supuesto tamb
 
 ## Cómo implementar un limpiador propio
 
-Se puede implementar un limpiador personalizado como función anónima. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke) method with the relevant parameters.
+Se puede implementar un limpiador personalizado como función anónima. Sin embargo, si prefieres usar una clase como limpiador, todo lo que necesitas hacer es hacerlo de una manera llamable, implementando el método [__invoke](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke) con los parámetros relevantes.
 
 ```php
 <?php

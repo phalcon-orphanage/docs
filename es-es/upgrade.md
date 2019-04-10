@@ -51,7 +51,7 @@ Clone the repository
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Compilar Phalcon
 
 ```bash
 cd cphalcon/
