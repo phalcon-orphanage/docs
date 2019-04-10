@@ -108,7 +108,7 @@ This piece of code can be run using:
 php cli.php
 ```
 
-## Tasks
+## 任务
 
 Tasks work similar to controllers. Any CLI application needs at least a `MainTask` and a `mainAction` and every task needs to have a mainAction which will run if no action is given explicitly.
 
@@ -172,7 +172,7 @@ Hello world!
 Best regards, universe
 ```
 
-## Running tasks in a chain
+## 在任务链中执行多个任务
 
 It's also possible to run tasks in a chain if it's required. To accomplish this you must add the console itself to the DI:
 
