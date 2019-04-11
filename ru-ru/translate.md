@@ -76,7 +76,7 @@ $messages = [
     'song'    => 'La chanson est %song%',;
 ```
 
-An exemple of loading such a file is provided in the *Component Usage* section.
+An example of loading such a file is provided in the *Component Usage* section.
 
 ### Csv
 
