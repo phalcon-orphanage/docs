@@ -38,7 +38,7 @@ $collection = new Registry($data);
 
 ## Constructor
 
-You can construct the object as any other object in PHP. However, the constructor accepts an optional `array` parameter, which will populate the object for you.
+Puede construir el objeto como cualquier otro objeto en PHP. Sin embargo, el constructor acepta un parámetro opcional `array`, que rellenará el objeto por usted.
 
 ```php
 <?php
@@ -59,7 +59,7 @@ $collection = new Registry($data);
 
 ## Reusing
 
-You can also reuse the component, by repopulating it. `Phalcon\Registry` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+También puede reutilizar el componente, volviéndolo a rellenar. `Phalcon\Registry` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -323,7 +323,7 @@ $collection->remove('YEAR', false);
 
 ## Iteration
 
-Since the collection object implements `\IteratorAggregate`, you can iterate through the object with ease. The method `getIterator()` returns an `ArrayIterator()` object
+Dado que el objeto de colección implementa `\IteratorAggregate`, puedes iterar con facilidad a través del objeto. El método `getIterator()` devuelve un objeto `ArrayIterator()`
 
 ```php
 <?php
@@ -348,7 +348,7 @@ foreach ($collection as $key => $value) {
 
 ## Count
 
-The implementation of the `\Countable` interface exposes the `count()` method, which stores the number of elements in the collection.
+La implementación de la interfaz `\Countable` expone el método `count()`, que almacena el número de elementos en la colección.
 
 ```php
 <?php
