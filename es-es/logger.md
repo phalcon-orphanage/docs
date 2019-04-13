@@ -375,7 +375,7 @@ $logger->info($message, $context);
 
 ## Examples
 
-### Stream (flujo)
+### Stream
 
 Logging to a file:
 
