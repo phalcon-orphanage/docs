@@ -191,11 +191,11 @@ Formats the messages using a one-line string. The default logging format is:
 
 If the default format of the message does not fit the needs of your application you can change it using the `setFormat()` method. The log format variables allowed are:
 
-| Variable  | Descripción                        |
-| --------- | ---------------------------------- |
-| %message% | El mensaje que se espera registrar |
-| %date%    | Fecha que del mensaje fue agregado |
-| %type%    | Tipo de mensaje en mayúsculas      |
+| Variable  | Description                              |
+| --------- | ---------------------------------------- |
+| %message% | The message itself expected to be logged |
+| %date%    | Date the message was added               |
+| %type%    | Uppercase string with message type       |
 
 The following example demonstrates how to change the message format:
 
