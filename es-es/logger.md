@@ -329,7 +329,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-### Formateador Syslog
+### Syslog Formatter
 
 Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como elementos:
 
