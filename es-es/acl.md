@@ -28,15 +28,15 @@ Como se ha visto arriba en el caso de uso, un [Role](api/Phalcon_Acl_Role) se de
 
 Usando el componente [Phalcon\Acl](api/Phalcon_Acl), podemos atar estos dos juntos, y fortalecer la seguridad de nuestra aplicación, permitiendo que sólo los roles específicos estén vinculados a componentes específicos.
 
-## Creating an ACL
+## Creando una ACL
 
-[Phalcon\Acl](api/Phalcon_Acl) uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
+[Phalcon\Acl](api/Phalcon_Acl) utiliza adaptadores para almacenar y trabajar con roles y componentes. El único adaptador disponible ahora es [Phalcon\Acl\Adapter\Memory](api/Phalcon_Acl_Adapter_Memory). Si el adaptador utiliza la memoria, aumenta significativamente la velocidad a la que se accede a la ACL, pero también presenta inconvenientes. El principal inconveniente es que la memoria no es persistente, por lo que el desarrollador tendrá que implementar una estrategia de almacenamiento de datos ACL, para que no se genere la ACL en cada petición. Esto fácilmente puede llevar a retrasos y procesamientos innecesario, especialmente si la ACL es bastante grande o esta almacenada en un sistema de base de datos o archivo.
 
-Phalcon also offers an easy way for developers to build their own adapters by implementing the [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface) interface.
+Phalcon también ofrece una manera fácil a los desarrolladores para construir sus propios adaptadores, mediante la implementación de la interfaz [Phalcon\Acl\AdapterInterface](api/Phalcon_Acl_AdapterInterface).
 
-### In action
+### En acción
 
-The [Phalcon\Acl](api/Phalcon_Acl) constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
+El constructor de [Phalcon\Acl](api/Phalcon_Acl) toma como primer parámetro un adaptador que se utiliza para recuperar la información relacionada a la lista de control.
 
 ```php
 <?php
@@ -46,9 +46,9 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 $acl = new AclList();
 ```
 
-There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
+Hay dos acciones autoexplicativas que proporciona [Phalcon\Acl](api/Phalcon_Acl): - `Phalcon\Acl::ALLOW` - `Phalcon\Acl::DENY`
 
-The default action is **`Phalcon\Acl::DENY`** for any [Role](api/Phalcon_Acl_Role) or [Component](api/Phalcon_Acl_Component). This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
+La acción predeterminada es **`Phalcon\Acl::DENY`** para todos los [Role](api/Phalcon_Acl_Role) o [Component](api/Phalcon_Acl_Component). Esto tiene como propósito asegurar que sólo el desarrollador o la aplicación permiten el acceso a componentes específicos y no el propio componente ACL.
 
 ```php
 <?php
@@ -58,9 +58,9 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 $acl = new AclList();
 
-// Default action is deny access
+// La acción por defecto, es denegar el acceso
 
-// Change it to allow
+// Cambiar por permitir
 $acl->setDefaultAction(Acl::ALLOW);
 ```
 
@@ -140,7 +140,7 @@ $acl->addComponent('admin', ['dashboard', 'users']);
 $acl->addComponent('reports', ['list', 'add']);
 ```
 
-## Defining Access Controls
+## Definición de Controles de Acceso
 
 Después que los `Roles` y los `Components` fueron definidos, tenemos que atarlos juntos para que la lista de acceso pueda ser creada. Este es el paso más importante en el rol, ya que un pequeño error aquí, puede permitir el acceso de roles a componentes a los que el desarrollador no pretende. Como se mencionó anteriormente, la acción de acceso predeterminada para [Phalcon\Acl](api/Phalcon_Acl) es `Acl::DENY`, siguiendo el enfoque de [lista blanca](https://en.wikipedia.org/wiki/Whitelisting).
 
@@ -548,7 +548,7 @@ $acl->isAllowed($admin, $reports, 'list');
 
 La segunda llamada para `$levelTwo` evalúa a `true` desde el `getUserId()` devuelve `2` que a su vez se evalúa en nuestra función personalizada. También ten en cuenta que en la función personalizada para `allow()` los objetos están automáticamente vinculados, proporcionando todos los datos necesarios para que la función personalizada funcione. La función personalizada puede aceptar cualquier número de parámetros adicionales. El orden de los parámetros definidos en el constructor de la `function()` no importa, porque los objetos serán automáticamente descubiertos y enlazados.
 
-## Roles Inheritance
+## Herencia de roles
 
 Para eliminar la duplicación y aumentar la eficiencia en su aplicación, ACL ofrece herencia en roles. Esto significa que puedes definir un [Phalcon\Acl\Role](api/Phalcon_Acl_Role) como base y después que hereden de él, ofreciendo acceso a superconjuntos o subconjuntos de componentes. Para utilizar la herencia de roles, necesita pasar el rol heredado como el segundo parámetro de la llamada del método, al añadir ese rol en la lista.
 
@@ -562,24 +562,24 @@ use Phalcon\Acl\Role;
 $acl = new AclList();
 
 /**
- * Create the roles
+ * Crear los roles
  */
 $manager    = new Role('Managers');
 $accounting = new Role('Accounting Department');
 $guest      = new Role('Guests');
 
 /**
- * Add the `guest` role to the ACL 
+ * Agregar el rol `guest` al ACL 
  */
 $acl->addRole($guest);
 
 /**
- * Add the `accounting` inheriting from `guest` 
+ * Agregar `accounting` heredando desde `guest` 
  */
 $acl->addRole($accounting, $guest);
 
 /**
- * Add the `manager` inheriting from `accounting` 
+ * Agregar `manager` heredando de `accounting` 
  */
 $acl->addRole($manager, $accounting);
 ```

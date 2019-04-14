@@ -21,8 +21,5 @@ Los programadores no deben conocer el lenguaje C para utilizar Phalcon. Su inter
 
 Phalcon está conformado por componentes libres de fricción (loosely coupled), permitiendo a los desarrolladores usar sólo los objetos que necesitan como componentes "pegamento" basados en las necesidades de sus aplicaciones.
 
-<div class="alert alert-danger">
-    <p>
-        La traducción de la documentación es realizada por entusiastas y colaboradores. Agradecemos tu participación y esfuerzo en la traducción con cada nuevo aporte en traducciones y/o correcciones. Las traducciones se gestionan en <a href="https://github.com/phalcon/docs">GitHub</a> para el idioma inglés, y <a href="https://crowdin.com/project/phalcon-documentation">Crowdin</a> para otros idiomas
-    </p>
-</div>
+> The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub](https://github.com/phalcon/docs) for English, and [Crowdin](https://crowdin.com/project/phalcon-documentation) for other languages
+{: .alert .alert-info }

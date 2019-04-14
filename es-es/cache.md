@@ -3,6 +3,6 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
-# Cache Component
+# Componente de caché
 
-This component is being refactored.
+Este componente está siendo reescrito.
