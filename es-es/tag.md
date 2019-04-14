@@ -703,7 +703,7 @@ try {
         [
             '../app/controllers',
             '../app/models',
-            '../app/customhelpers', // Agregamos la nueva carpeta de ayudantes
+            '../app/customhelpers', // Add the new helpers folder
         ]
     );
 
@@ -711,7 +711,7 @@ try {
 
     $di = new FactoryDefault();
 
-    // Asignamos la nueva definición de etiquetas para que podamos llamarla
+    // Assign our new tag a definition so we can call it
     $di->set(
         'MyTags',
         function () {
@@ -721,11 +721,13 @@ try {
 
     $application = new Application($di);
 
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (PhalconException $e) {
-    echo 'Excepción de Phalcon: ', $e->getMessage();
+    echo 'PhalconException: ', $e->getMessage();
 }
 ```
 
