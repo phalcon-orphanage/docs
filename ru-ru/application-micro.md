@@ -19,11 +19,13 @@ $app = new Micro();
 $app->get(
     '/orders/display/{name}',
     function ($name) {
-        echo "<h1>Это заказ: {$name}!</h1>";
+        echo "<h1>This is order: {$name}!</h1>";
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ## Creating a Micro Application
@@ -1550,7 +1552,9 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ### Inject model instances
@@ -1578,7 +1582,9 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.
