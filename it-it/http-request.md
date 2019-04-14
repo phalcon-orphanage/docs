@@ -28,12 +28,13 @@ use Phalcon\Http\Message\Uri;
 
 $request = new Request();
 $uri     = new Uri('https://api.phalconphp.com/companies/1');
+
 $jwtToken = 'abc.def.ghi';
 
 $request = $request
-   :withMethod('POST')
-   :withHeader('Authorization', 'Bearer ' , $jwtToken)
-   :withHeader('Content-Type', 'application/json')
+   ->withMethod('POST')
+   ->withHeader('Authorization', 'Bearer ' . $jwtToken)
+   ->withHeader('Content-Type', 'application/json')
 ;
 
 $result = $httpClient->send($request);
@@ -49,14 +50,14 @@ The above example can be implemented by only using the constructor parameters:
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -121,14 +122,13 @@ $jwtToken = 'abc.def.ghi';
 $fileName = dataFolder('/assets/stream/bill-of-rights.txt');
 $stream   = new Stream($fileName, 'rb');
 
-$request  = new Request(
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     $stream,
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -149,14 +149,14 @@ Returns the method
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -177,14 +177,14 @@ Returns the protocol version (default `1.1`)
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -205,14 +205,14 @@ Returns the Uri
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -233,14 +233,14 @@ Returns an array of all the header values of the passed case insensitive header 
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -262,17 +262,17 @@ Returns all of the header values of the given case-insensitive header name as a 
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
             'application/html',
         ],
-
     ]
 );
 
@@ -293,21 +293,23 @@ Returns all the message header values. The keys represent the header name as it 
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
             'application/html',
         ],
-
     ]
 );
 
-var_dump($request-getHeaders());
+var_dump(
+    $request->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -332,21 +334,23 @@ Retrieves the message's request-target either as it will appear (for clients), a
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
             'application/html',
         ],
-
     ]
 );
 
-var_dump($request-getHeaders());
+var_dump(
+    $request->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -371,17 +375,17 @@ Checks if a header exists by the given case-insensitive name. Returns `true` if 
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
             'application/html',
         ],
-
     ]
 );
 
@@ -404,19 +408,22 @@ Returns an instance with the specified header appended with the given value. Exi
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
         ],
     ]
 );
 
-var_dump($request-getHeaders());
+var_dump(
+    $request->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -426,7 +433,9 @@ var_dump($request-getHeaders());
 
 $clone = $request->withAddedHeader('Content-Type', ['application/html']);
 
-var_dump($clone-getHeaders());
+var_dump(
+    $clone->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -454,14 +463,13 @@ $jwtToken = 'abc.def.ghi';
 $fileName = dataFolder('/assets/stream/bill-of-rights.txt');
 $stream   = new Stream($fileName, 'rb');
 
-$request  = new Request(
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -476,7 +484,7 @@ echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
 public function withHeader(var name, var value): Request
 ```
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from getHeaders(). Throws `\InvalidArgumentException` for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws `\InvalidArgumentException` for invalid header names or values.
 
 ```php
 <?php
@@ -484,23 +492,33 @@ Returns an instance with the provided value replacing the specified header. Whil
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
     ]
 );
 
-var_dump($request-getHeaders());
+var_dump(
+    $request->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
 
-$clone = $request->withAddedHeader('Content-Type', ['application/html']);
+$clone = $request->withAddedHeader(
+    'Content-Type',
+    [
+        'application/html',
+    ]
+);
 
-var_dump($clone-getHeaders());
+var_dump(
+    $clone->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -523,14 +541,14 @@ Return an instance with the provided HTTP method. Throws `\InvalidArgumentExcept
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => 'application/json',
-
     ]
 );
 
@@ -560,7 +578,7 @@ echo $request->getProtocolVersion(); // '1.1'
 
 $clone = $request->withProtocolVersion('2.0');
 
-echo $clone->getProtocolVersion();   // '2.0'
+echo $clone->getProtocolVersion(); // '2.0'
 ```
 
 * * *
@@ -582,7 +600,7 @@ echo $request->getRequestTarget(); // "/"
 
 $clone = $request->withRequestTarget('/test');
 
-echo $clone->getRequestTarget();   // '/test'
+echo $clone->getRequestTarget(); // '/test'
 ```
 
 * * *
@@ -610,7 +628,7 @@ $request = new Request();
 
 $clone = $request->withUri($uri);
 
-echo $clone->getRequestTarget();   // 'https://phalconphp.com'
+echo $clone->getRequestTarget(); // 'https://phalconphp.com'
 ```
 
 * * *
@@ -627,19 +645,22 @@ Return an instance without the specified header.
 use Phalcon\Http\Message\Request;
 
 $jwtToken = 'abc.def.ghi';
-$request  = new Request(
+
+$request = new Request(
     'POST',
     'https://api.phalconphp.com/companies/1',
     'php://memory',
     [
-        'Authorization' => 'Bearer ' , $jwtToken,
+        'Authorization' => 'Bearer ' . $jwtToken,
         'Content-Type'  => [
             'application/json',
         ],
     ]
 );
 
-var_dump($request-getHeaders());
+var_dump(
+    $request->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 //     'Content-Type'  => [
@@ -649,7 +670,9 @@ var_dump($request-getHeaders());
 
 $clone = $request->withoutHeader('Content-Type');
 
-var_dump($clone-getHeaders());
+var_dump(
+    $clone->getHeaders()
+);
 // [
 //     'Authorization' => 'Bearer abc.def.ghi',
 // ]
