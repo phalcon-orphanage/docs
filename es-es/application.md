@@ -24,11 +24,13 @@ use Phalcon\Mvc\Application;
 // Registro de servicios
 // ...
 
-// Gestionamos la consulta
+// Handle the request
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -41,7 +43,9 @@ The core of all the work of the controller occurs when `handle()` is invoked:
 ```php
 <?php
 
-$response = $application->handle();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ## Manual bootstrapping
@@ -51,16 +55,18 @@ If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 ```php
 <?php
 
-// Obtenemos el servicio router
+// Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $view = $di['view'];
 
 $dispatcher = $di['dispatcher'];
 
-// Pasamos los parámetros procesados por el router al dispatcher
+// Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
     $router->getControllerName()
@@ -74,30 +80,30 @@ $dispatcher->setParams(
     $router->getParams()
 );
 
-// Iniciamos la vista
+// Start the view
 $view->start();
 
-// Despachamos la consulta
+// Dispatch the request
 $dispatcher->dispatch();
 
-// Generamos las vistas relacionadas
+// Render the related views
 $view->render(
     $dispatcher->getControllerName(),
     $dispatcher->getActionName(),
     $dispatcher->getParams()
 );
 
-// Finalizamos la vista
+// Finish the view
 $view->finish();
 
 $response = $di['response'];
 
-// Pasamos el resultado de la vista al response
+// Pass the output of the view to the response
 $response->setContent(
     $view->getContent()
 );
 
-// Enviamos al respuesta
+// Send the response
 $response->send();
 ```
 
@@ -108,14 +114,16 @@ The following replacement of [Phalcon\Mvc\Application](api/Phalcon_Mvc_Applicati
 
 use Phalcon\Http\ResponseInterface;
 
-// Obtenemos el servicio 'router' 
+// Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $dispatcher = $di['dispatcher'];
 
-// Pasamos los parámetros procesados del router al dispatcher
+// Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
     $router->getControllerName()
@@ -129,15 +137,15 @@ $dispatcher->setParams(
     $router->getParams()
 );
 
-// Despachamos la consulta
+// Dispatch the request
 $dispatcher->dispatch();
 
-// Obtenemos el valor retornado en la última acción ejecutada
+// Get the returned value by the last executed action
 $response = $dispatcher->getReturnedValue();
 
-// Chequeamos si la acción retorno un objeto 'response'
+// Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
-    // Enviamos la respuesta
+    // Send the response
     $response->send();
 }
 ```
@@ -149,14 +157,16 @@ Yet another alternative that catch exceptions produced in the dispatcher forward
 
 use Phalcon\Http\ResponseInterface;
 
-// Obtenemos el servicio 'router' 
+// Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $dispatcher = $di['dispatcher'];
 
-// Pasamos los parámetros procesados por el router al dispatcher
+// Pass the processed router parameters to the dispatcher
 
 $dispatcher->setControllerName(
     $router->getControllerName()
@@ -171,25 +181,25 @@ $dispatcher->setParams(
 );
 
 try {
-    // Despachamos la consulta
+    // Dispatch the request
     $dispatcher->dispatch();
 } catch (Exception $e) {
-    // Ocurrió una excepción, despachar un controller/action 
+    // An exception has occurred, dispatch some controller/action aimed for that
 
-    // Seteamos el controller y action para mostrar errores
+    // Pass the processed router parameters to the dispatcher
     $dispatcher->setControllerName('errors');
     $dispatcher->setActionName('action503');
 
-    // Despachamos la consulta
+    // Dispatch the request
     $dispatcher->dispatch();
 }
 
-// Obtenemos el valor retornado del último action ejecutado
+// Get the returned value by the last executed action
 $response = $dispatcher->getReturnedValue();
 
-// Chequeamos si retorno un objecto 'response'
+// Check if the action returned is a 'response' object
 if ($response instanceof ResponseInterface) {
-    // Enviar respuesta
+    // Send the response
     $response->send();
 }
 ```
@@ -239,7 +249,7 @@ $loader->register();
 
 $di = new FactoryDefault();
 
-// Registramos el componente 'view'
+// Registering the view component
 $di->set(
     'view',
     function () {
@@ -254,7 +264,9 @@ $di->set(
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -275,7 +287,7 @@ use Phalcon\Di\FactoryDefault;
 
 $loader = new Loader();
 
-// Usar autoloading con espacio de nombres
+// Use autoloading with namespaces prefixes
 $loader->registerNamespaces(
     [
         'Single\Controllers' => '../apps/controllers/',
@@ -287,7 +299,7 @@ $loader->register();
 
 $di = new FactoryDefault();
 
-// Registramos el namespace por defecto de los controllers
+// Register the default dispatcher's namespace for controllers
 $di->set(
     'dispatcher',
     function () {
@@ -299,7 +311,7 @@ $di->set(
     }
 );
 
-// Registramos el componente 'view'
+// Register the view component
 $di->set(
     'view',
     function () {
@@ -314,7 +326,9 @@ $di->set(
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -420,7 +434,7 @@ use Phalcon\Di\FactoryDefault;
 
 $di = new FactoryDefault();
 
-// Especificar las rutas de los módulos
+// Specify routes for modules
 $di->set(
     'router',
     function () {
@@ -458,10 +472,10 @@ $di->set(
     }
 );
 
-// Crear una aplicación
+// Create an application
 $application = new Application($di);
 
-// Registrar los módulos instalados
+// Register the installed modules
 $application->registerModules(
     [
         'frontend' => [
@@ -476,8 +490,10 @@ $application->registerModules(
 );
 
 try {
-    // Manejar la consulta
-    $response = $application->handle();
+    // Handle the request
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
