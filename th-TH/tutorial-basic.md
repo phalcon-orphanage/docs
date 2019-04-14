@@ -184,7 +184,11 @@ use Phalcon\Mvc\Application;
 // ...
 
 $application = new Application($di);
-$response = $application->handle();
+
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
+
 $response->send();
 ```
 
@@ -246,7 +250,9 @@ $application = new Application($di);
 
 try {
     // Handle the request
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
