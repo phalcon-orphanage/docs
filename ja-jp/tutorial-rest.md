@@ -62,9 +62,11 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// ここでルートを定義
+// Define the routes here
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Now we will create the routes as we defined above:
@@ -76,55 +78,57 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// 全ての robots を取得
+// Retrieves all robots
 $app->get(
     '/api/robots',
     function () {
-        // 全 robot を取得する操作
+        // Operation to fetch all the robots
     }
 );
 
-// 名前が $name である robotを検索
+// Searches for robots with $name in their name
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // 名前が $name である robotを検索する操作
+        // Operation to fetch robot with name $name
     }
 );
 
-// プライマリーキーで robotを指定して取得
+// Retrieves robots based on primary key
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // プライマリーキーが $idの robotを指定して取得する操作
+        // Operation to fetch robot with id $id
     }
 );
 
-// 新しいrobotの追加
+// Adds a new robot
 $app->post(
     '/api/robots',
     function () {
-        // 新しいrobotを追加する操作
+        // Operation to create a fresh robot
     }
 );
 
-// プライマリーキーで指定したrobotを更新する
+// Updates robots based on primary key
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // プライマリーキーが $id のrobotを更新する
+        // Operation to update a robot with id $id
     }
 );
 
-// プライマリーキーで指定したrobotを削除する
+// Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // プライマリーキーが $id のrobotを削除する
+        // Operation to delete the robot with id $id
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
