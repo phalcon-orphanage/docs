@@ -192,7 +192,9 @@ use Phalcon\Mvc\Application;
 
 $application = new Application($di);
 
-$response = $application->handle();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $response->send();
 ```
@@ -1198,7 +1200,7 @@ $paginator = new Paginator(
 );
 
 // Get active page in the paginator
-$page = $paginator->getPaginate();
+$page = $paginator->paginate();
 ```
 
 Finally we pass the returned page to view:
