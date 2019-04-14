@@ -961,7 +961,6 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 
 $view = new SimpleView();
 
-// A trailing directory separator is required
 $view->setViewsDir('../app/views/');
 
 // Render a view and return its contents as a string
