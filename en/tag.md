@@ -700,7 +700,9 @@ try {
 
     $application = new Application($di);
 
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (PhalconException $e) {

@@ -184,7 +184,9 @@ use Phalcon\Mvc\Application;
 
 $application = new Application($di);
 
-$response = $application->handle();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $response->send();
 ```
