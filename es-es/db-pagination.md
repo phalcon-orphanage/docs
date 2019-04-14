@@ -58,16 +58,16 @@ In the example below, the paginator will use the result of a query from a model 
 
 use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 
-// Página actual para mostrar
-// En un controlador/componente este puede ser
+// Current page to show
+// In a controller/component this can be:
 // $this->request->getQuery('page', 'int'); // GET
 // $this->request->getPost('page', 'int'); // POST
 $currentPage = (int) $_GET['page'];
 
-// El conjunto de datos a paginar
+// The data set to paginate
 $robots = Robots::find();
 
-// Crear un paginador del modelo, mostrando 10 registros por página empezando desde $currentPage
+// Create a Model paginator, show 10 rows by page starting from $currentPage
 $paginator = new PaginatorModel(
     [
         'data'  => $robots,
@@ -76,11 +76,11 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Obtener los resultados paginados
-$page = $paginator->getPaginate();
+// Get the paginated results
+$page = $paginator->paginate();
 ```
 
-The `$currentPage` variable controls the page to be displayed. The `$paginator->getPaginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
+The `$currentPage` variable controls the page to be displayed. The `$paginator->paginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
 
 ```php
 <table>
@@ -182,28 +182,28 @@ The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface)
 <?php
 
 use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
+use Phalcon\Paginator\RepositoryInterface;
 
 class MyPaginator implements PaginatorInterface
 {
     /**
-     * Constructor del adaptador
-     *
-     * @param array $config
+     * Get current rows limit
      */
-    public function __construct($config);
+    public function getLimit(): int;
 
     /**
-     * Establece la página actual
-     *
-     * @param int $page
+     * Returns a slice of the resultset to show in the pagination
      */
-    public function setCurrentPage($page);
+    public function paginate(): RepositoryInterface;
 
     /**
-     * Devuelve una parte del conjunto de resultados para mostrar en la paginación
-     *
-     * @return stdClass
+     * Set the current page number
      */
-    public function getPaginate();
+    public function setCurrentPage(int $page);
+
+    /**
+     * Set current rows limit
+     */
+    public function setLimit(int $limit);
 }
 ```
