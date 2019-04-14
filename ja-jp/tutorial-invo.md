@@ -192,7 +192,9 @@ use Phalcon\Mvc\Application;
 
 $application = new Application($di);
 
-$response = $application->handle();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $response->send();
 ```
@@ -1191,14 +1193,14 @@ use Phalcon\Paginator\Adapter\Model as Paginator;
 
 $paginator = new Paginator(
     [
-        'data'  => $products,   // ページネーション用データ
-        'limit' => 5,           // ページ内行数
-        'page'  => $numberPage, // 現在のページ
+        'data'  => $products,   // Data to paginate
+        'limit' => 5,           // Rows per page
+        'page'  => $numberPage, // Active page
     ]
 );
 
-// paginatorの現在のページを取得
-$page = $paginator->getPaginate();
+// Get active page in the paginator
+$page = $paginator->paginate();
 ```
 
 Finally we pass the returned page to view:
