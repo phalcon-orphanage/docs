@@ -20,10 +20,10 @@ The router component allows you to define routes that are mapped to controllers 
 
 use Phalcon\Mvc\Router;
 
-// Crear un Router
+// Create the router
 $router = new Router();
 
-// Definir una ruta
+// Define a route
 $router->add(
     '/admin/users/my-profile',
     [
@@ -32,7 +32,7 @@ $router->add(
     ]
 );
 
-// Otra ruta
+// Another route
 $router->add(
     '/admin/users/change-password',
     [
@@ -41,10 +41,12 @@ $router->add(
     ]
 );
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ````
 
-El primer parámetro del método <code>add()</code> es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos. En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
+The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
 
 Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
 
@@ -65,28 +67,7 @@ $router->add(
         'params'     => 3,
     ]
 );
-``` es el patrón que quieres coincidir, opcionalmente, el segundo parámetro es para definir los caminos. En este caso, si el URI es '/admin/users/my-profile', entonces se ejecutará del controlador 'users' la acción 'profile'. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
-
-Una aplicación puede tener muchos caminos y definir rutas una por una puede ser una tarea engorrosa. En estos casos podemos crear rutas más flexibles:
-
-```php
-<?php
-
-use Phalcon\Mvc\Router;
-
-// Crear el router
-$router = new Router();
-
-// Definir una ruta
-$router->add(
-    '/admin/:controller/a/:action/:params',
-    [
-        'controller' => 1,
-        'action'     => 2,
-        'params'     => 3,
-    ]
-);
-</code>
+```
 
 In the example above, we're using wildcards to make a route valid for many URIs. For example, by accessing the following URL (`/admin/users/a/delete/dave/301`) would produce:
 
@@ -541,19 +522,21 @@ $router = new Router();
 // Definir rutas aquí si alguna
 // ...
 
-// Tomando el URI de $_GET['_url']
-$router->handle();
+// Taking URI from $_GET['_url']
+$router->handle(
+    $_GET["_url"]
+);
 
-// O estableciendo el valor de URI directamente
+// Or Setting the URI value directly
 $router->handle('/employees/edit/17');
 
-// Obtener el controlador procesado
+// Getting the processed controller
 echo $router->getControllerName();
 
-// Obtener la acción procesada
+// Getting the processed action
 echo $router->getActionName();
 
-// Obtener la ruta correspondiente
+// Get the matched route
 $route = $router->getMatchedRoute();
 ```
 
@@ -960,39 +943,6 @@ $blog->add(
 $router->mount($blog);
 ```
 
-## URI Sources
-
-By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
-
-```php
-<?php
-
-use Phalcon\Mvc\Router;
-
-// ...
-
-// Usar $_GET['_url'] (por defecto)
-$router->setUriSource(
-    Router::URI_SOURCE_GET_URL
-);
-
-// Usar $_SERVER['REQUEST_URI']
-$router->setUriSource(
-    Router::URI_SOURCE_SERVER_REQUEST_URI
-);
-```
-
-Or you can manually pass a URI to the `handle()` method:
-
-```php
-<?php
-
-$router->handle('/some/route/to/handle');
-```
-
-> Please note that using `Router::URI_SOURCE_GET_URL` automatically decodes the Uri, because it is based on the `$_REQUEST` superglobal. However, for the time being, using `Router::URI_SOURCE_SERVER_REQUEST_URI` will not automatically decode the Uri for you. This will change in the next major release.
-{: .alert .alert-danger }
-
 ## Testing your routes
 
 Since this component has no dependencies, you can create a file as shown below to test your routes:
@@ -1002,7 +952,7 @@ Since this component has no dependencies, you can create a file as shown below t
 
 use Phalcon\Mvc\Router;
 
-// Estas rutas simulan URIs reales
+// These routes simulate real URIs
 $testRoutes = [
     '/',
     '/index',
@@ -1015,22 +965,22 @@ $testRoutes = [
 
 $router = new Router();
 
-// Agregar aquí las rutas personalizadas
+// Add here your custom routes
 // ...
 
-// Probar cada ruta
+// Testing each route
 foreach ($testRoutes as $testRoute) {
-    // Gestionar la ruta
+    // Handle the route
     $router->handle($testRoute);
 
-    echo 'Probando ', $testRoute, '<br>';
+    echo 'Testing ', $testRoute, '<br>';
 
-    // Comprobar si alguna ruta coincidio
+    // Check if some route was matched
     if ($router->wasMatched()) {
-        echo 'Controlador: ', $router->getControllerName(), '<br>';
-        echo 'Acción: ', $router->getActionName(), '<br>';
+        echo 'Controller: ', $router->getControllerName(), '<br>';
+        echo 'Action: ', $router->getActionName(), '<br>';
     } else {
-        echo "La ruta no coincidió con ninguna ruta<br>";
+        echo "The route wasn't matched by any route<br>";
     }
 
     echo '<br>';
@@ -1060,10 +1010,10 @@ This component provides a variant that's integrated with the <annotations> servi
 use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
 $di['router'] = function () {
-    // Usar las anotaciones del router. Pasamos el valor false ya que no queremos que el router agregue los patrones por defecto
+    // Use the annotations router. We're passing false as we don't want the router to add its default patterns
     $router = new RouterAnnotations(false);
 
-    // Leer las anotaciones desde ProductsController si las URI comienzan con /api/products
+    // Read the annotations from ProductsController if the URI starts with /api/products
     $router->addResource('Products', '/api/products');
 
     return $router;
@@ -1163,10 +1113,10 @@ If you're using modules in your application, it is better use the `addModuleReso
 use Phalcon\Mvc\Router\Annotations as RouterAnnotations;
 
 $di['router'] = function () {
-    // Usar las anotaciones del router
+    // Use the annotations router
     $router = new RouterAnnotations(false);
 
-    // Leer las anotaciones desde Backend\Controllers\ProductsController si la URI comienza con /api/products
+    // Read the annotations from Backend\Controllers\ProductsController if the URI starts with /api/products
     $router->addModuleResource('backend', 'Products', '/api/products');
 
     return $router;
