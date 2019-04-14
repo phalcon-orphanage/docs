@@ -62,9 +62,11 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// 在这定义路由
+// Define the routes here
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Now we will create the routes as we defined above:
@@ -124,7 +126,9 @@ $app->delete(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
