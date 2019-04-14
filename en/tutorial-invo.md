@@ -1182,7 +1182,7 @@ $paginator = new Paginator(
 );
 
 // Get active page in the paginator
-$page = $paginator->getPaginate();
+$page = $paginator->paginate();
 ```
 
 Finally we pass the returned page to view:
