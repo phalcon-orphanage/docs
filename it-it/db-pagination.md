@@ -77,10 +77,10 @@ $paginator = new PaginatorModel(
 );
 
 // Get the paginated results
-$page = $paginator->getPaginate();
+$page = $paginator->paginate();
 ```
 
-The `$currentPage` variable controls the page to be displayed. The `$paginator->getPaginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
+The `$currentPage` variable controls the page to be displayed. The `$paginator->paginate()` returns a `$page` object that contains the paginated data. It can be used for generating the pagination:
 
 ```php
 <table>
@@ -183,28 +183,28 @@ The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface)
 <?php
 
 use Phalcon\Paginator\AdapterInterface as PaginatorInterface;
+use Phalcon\Paginator\RepositoryInterface;
 
 class MyPaginator implements PaginatorInterface
 {
     /**
-     * Adapter constructor
-     *
-     * @param array $config
+     * Get current rows limit
      */
-    public function __construct($config);
-
-    /**
-     * Set the current page number
-     *
-     * @param int $page
-     */
-    public function setCurrentPage($page);
+    public function getLimit(): int;
 
     /**
      * Returns a slice of the resultset to show in the pagination
-     *
-     * @return stdClass
      */
-    public function getPaginate();
+    public function paginate(): RepositoryInterface;
+
+    /**
+     * Set the current page number
+     */
+    public function setCurrentPage(int $page);
+
+    /**
+     * Set current rows limit
+     */
+    public function setLimit(int $limit);
 }
 ```
