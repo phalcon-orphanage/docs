@@ -519,7 +519,9 @@ try {
 
     $application->useImplicitView(false);
 
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (Exception $e) {
