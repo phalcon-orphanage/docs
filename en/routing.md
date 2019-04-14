@@ -38,7 +38,9 @@ $router->add(
     ]
 );
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ````
 
 The first parameter of the `add()` method is the pattern you want to match and, optionally, the second parameter is a set of paths. In this case, if the URI is `/admin/users/my-profile`, then the `users` controller with its action `profile` will be executed. It's important to remember that the router does not execute the controller and action, it only collects this information to inform the correct component (i.e. [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher)) that this is the controller/action it should execute.
@@ -509,7 +511,9 @@ $router = new Router();
 // ...
 
 // Taking URI from $_GET['_url']
-$router->handle();
+$router->handle(
+    $_GET["_url"]
+);
 
 // Or Setting the URI value directly
 $router->handle('/employees/edit/17');
@@ -917,38 +921,6 @@ $blog->add(
 // Add the group to the router
 $router->mount($blog);
 ```
-
-## URI Sources
-By default the URI information is obtained from the `$_GET['_url']` variable, this is passed by the Rewrite-Engine to Phalcon, you can also use `$_SERVER['REQUEST_URI']` if required:
-
-```php
-<?php
-
-use Phalcon\Mvc\Router;
-
-// ...
-
-// Use $_GET['_url'] (default)
-$router->setUriSource(
-    Router::URI_SOURCE_GET_URL
-);
-
-// Use $_SERVER['REQUEST_URI']
-$router->setUriSource(
-    Router::URI_SOURCE_SERVER_REQUEST_URI
-);
-```
-
-Or you can manually pass a URI to the `handle()` method:
-
-```php
-<?php
-
-$router->handle('/some/route/to/handle');
-```
-
-> Please note that using `Router::URI_SOURCE_GET_URL` automatically decodes the Uri, because it is based on the `$_REQUEST` superglobal. However, for the time being, using `Router::URI_SOURCE_SERVER_REQUEST_URI` will not automatically decode the Uri for you. This will change in the next major release.
-{: .alert .alert-danger }
 
 ## Testing your routes
 Since this component has no dependencies, you can create a file as shown below to test your routes:

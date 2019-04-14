@@ -113,7 +113,11 @@ $application->setDI($container);
 
 // register modules if any
 
-echo $application->handle()->getContent();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
+
+echo $response->getContent();
 ```
 
 Include models and controllers as part of the test:
@@ -144,7 +148,11 @@ class Users extends Model
 {
 }
 
-echo $application->handle()->getContent();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
+
+echo $response->getContent();
 ```
 
 ### Micro application
@@ -164,7 +172,9 @@ $application = new Micro($container);
 
 // define your routes here
 
-$application->handle();
+$application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ### ORM
