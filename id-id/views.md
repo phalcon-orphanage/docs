@@ -866,7 +866,6 @@ $di->set(
     function () {
         $view = new View();
 
-        // A trailing directory separator is required
         $view->setViewsDir('../app/views/');
 
         // Set the engine
@@ -926,7 +925,6 @@ use Phalcon\Mvc\View;
 
 $view = new View();
 
-// A trailing directory separator is required
 $view->setViewsDir('../app/views/');
 
 // Passing variables to the views, these will be created as local variables
@@ -984,7 +982,6 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 
 $view = new SimpleView();
 
-// A trailing directory separator is required
 $view->setViewsDir('../app/views/');
 
 // Render a view and return its contents as a string
