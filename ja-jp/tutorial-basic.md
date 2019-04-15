@@ -184,7 +184,11 @@ use Phalcon\Mvc\Application;
 // ...
 
 $application = new Application($di);
-$response = $application->handle();
+
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
+
 $response->send();
 ```
 
@@ -232,7 +236,7 @@ $di->set(
     }
 );
 
-// ベースURIの設定
+// Setup a base URI
 $di->set(
     'url',
     function () {
@@ -245,8 +249,10 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // リクエストのハンドリング
-    $response = $application->handle();
+    // Handle the request
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {

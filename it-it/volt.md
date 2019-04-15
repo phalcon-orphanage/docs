@@ -54,8 +54,8 @@ $di->set(
 
         $volt->setOptions(
             [
-                'compiledPath'      => '../app/compiled-templates/',
-                'compiledExtension' => '.compiled',
+                'path'      => '../app/compiled-templates/',
+                'extension' => '.compiled',
             ]
         );
 
@@ -106,7 +106,7 @@ $view->registerEngines(
 );
 ```
 
-` If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
+If you do not want to reuse Volt as a service, you can pass an anonymous function to register the engine instead of a service name:
 
 ```php
 <?php
@@ -141,15 +141,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| Option              | Description                                                                                                                  | Default |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `autoescape`        | Enables globally autoescape of HTML                                                                                          | `false` |
-| `compileAlways`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
-| `compiledExtension` | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
-| `compiledPath`      | A writable path where the compiled PHP templates will be placed                                                              | `./`    |
-| `compiledSeparator` | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
-| `prefix`            | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
-| `stat`              | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
+| Option       | Description                                                                                                                  | Default |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `autoescape` | Enables globally autoescape of HTML                                                                                          | `false` |
+| `always`     | Tell Volt if the templates must be compiled in each request or only when they change                                         | `false` |
+| `extension`  | An additional extension appended to the compiled PHP file                                                                    | `.php`  |
+| `path`       | A writeable path where the compiled PHP templates will be placed                                                             | `./`    |
+| `separator`  | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory | `%%`    |
+| `prefix`     | Allows to prepend a prefix to the templates in the compilation path                                                          | `null`  |
+| `stat`       | Whether Phalcon must check if exists differences between the template file and its compiled path                             | `true`  |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -160,7 +160,7 @@ The compilation path is generated according to the above options, if the develop
 // leaving the compiled templates in the same directory
 $volt->setOptions(
     [
-        'compiledPath' => function ($templatePath) {
+        'path' => function ($templatePath) {
             return $templatePath . '.php';
         }
     ]
@@ -169,7 +169,7 @@ $volt->setOptions(
 // Recursively create the same structure in another directory
 $volt->setOptions(
     [
-        'compiledPath' => function ($templatePath) {
+        'path' => function ($templatePath) {
             $dirName = dirname($templatePath);
 
             if (!is_dir('cache/' . $dirName)) {
@@ -1325,7 +1325,7 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it's possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-> By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'compileAlways' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
+> By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 {: .alert .alert-warning }
 
 ## Autoescape mode

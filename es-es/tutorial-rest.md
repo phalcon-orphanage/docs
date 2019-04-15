@@ -62,9 +62,11 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Aquí definimos las rutas 
+// Define the routes here
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Now we will create the routes as we defined above:
@@ -76,55 +78,57 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Recupera todos los robots
+// Retrieves all robots
 $app->get(
     '/api/robots',
     function () {
-        // Operaciones para recuperar todos los robots
+        // Operation to fetch all the robots
     }
 );
 
-// Buscar robots que contienen $name en su nombre
+// Searches for robots with $name in their name
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operaciones para recuperar robots con que contienen $name en su nombre
+        // Operation to fetch robot with name $name
     }
 );
 
-// Recuperar robots basados en su clave primaria
+// Retrieves robots based on primary key
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Obtener un robot por su id $id
+        // Operation to fetch robot with id $id
     }
 );
 
-// Agregar un nuevo robot
+// Adds a new robot
 $app->post(
     '/api/robots',
     function () {
-        // Operación para crear un nuevo robot
+        // Operation to create a fresh robot
     }
 );
 
-// Actualizar robots basados en su clave primaria
+// Updates robots based on primary key
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operación para actualizar el robot con id $id
+        // Operation to update a robot with id $id
     }
 );
 
-// Borrar robots basados en su clave primaria
+// Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operación para borrar el robot con id $id
+        // Operation to delete the robot with id $id
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.

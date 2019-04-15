@@ -28,7 +28,9 @@ use Phalcon\Mvc\Application;
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -41,7 +43,9 @@ The core of all the work of the controller occurs when `handle()` is invoked:
 ```php
 <?php
 
-$response = $application->handle();
+$response = $application->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ## Manual bootstrapping
@@ -54,7 +58,9 @@ If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
 // Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $view = $di['view'];
 
@@ -111,7 +117,9 @@ use Phalcon\Http\ResponseInterface;
 // Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $dispatcher = $di['dispatcher'];
 
@@ -152,7 +160,9 @@ use Phalcon\Http\ResponseInterface;
 // Get the 'router' service
 $router = $di['router'];
 
-$router->handle();
+$router->handle(
+    $_SERVER["REQUEST_URI"]
+);
 
 $dispatcher = $di['dispatcher'];
 
@@ -254,7 +264,9 @@ $di->set(
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -314,7 +326,9 @@ $di->set(
 $application = new Application($di);
 
 try {
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {
@@ -477,7 +491,9 @@ $application->registerModules(
 
 try {
     // Handle the request
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (\Exception $e) {

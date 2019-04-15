@@ -23,7 +23,9 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ## Küçük Bir Uygulama Yaratma
@@ -1552,7 +1554,9 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 ### Inject model instances
@@ -1580,7 +1584,9 @@ $app->get(
     }
 );
 
-$app->handle();
+$app->handle(
+    $_SERVER["REQUEST_URI"]
+);
 ```
 
 Since Binder object is using internally Reflection Api which can be heavy, there is ability to set a cache so as to speed up the process. This can be done by using the second argument of `setModelBinder()` which can also accept a service name or just by passing a cache instance to the `Binder` constructor.

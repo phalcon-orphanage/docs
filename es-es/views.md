@@ -519,7 +519,9 @@ try {
 
     $application->useImplicitView(false);
 
-    $response = $application->handle();
+    $response = $application->handle(
+        $_SERVER["REQUEST_URI"]
+    );
 
     $response->send();
 } catch (Exception $e) {
@@ -858,23 +860,22 @@ If you want to register a template engine or a set of them for each request in t
 
 use Phalcon\Mvc\View;
 
-// Configurar el componente de vista
+// Setting up the view component
 $di->set(
     'view',
     function () {
         $view = new View();
 
-        // Se requiere un separador de directorios al final
         $view->setViewsDir('../app/views/');
 
-        // Establecer el motor
+        // Set the engine
         $view->registerEngines(
             [
                 '.my-html' => 'MyTemplateAdapter',
             ]
         );
 
-        // Utilizar más de un motor de plantillas
+        // Using more than one template engine
         $view->registerEngines(
             [
                 '.my-html' => 'MyTemplateAdapter',
@@ -924,20 +925,19 @@ use Phalcon\Mvc\View;
 
 $view = new View();
 
-// Es requerido el separador de directorios al final
 $view->setViewsDir('../app/views/');
 
-// Pasando variables a las vistas, estás se crearán como variables locales
+// Passing variables to the views, these will be created as local variables
 $view->setVar('someProducts', $products);
 $view->setVar('someFeatureEnabled', true);
 
-// Comenzar el buffer de salida
+// Start the output buffering
 $view->start();
 
-// Renderizar toda la jerarquía relacionada con la vista products/list.phtml
+// Render all the view hierarchy related to the view products/list.phtml
 $view->render('products', 'list');
 
-// Finalizamos el buffer de salida
+// Finish the output buffering
 $view->finish();
 
 echo $view->getContent();
@@ -982,13 +982,12 @@ use Phalcon\Mvc\View\Simple as SimpleView;
 
 $view = new SimpleView();
 
-// Es requerido el separador de directorios al final
 $view->setViewsDir('../app/views/');
 
-// Renderizar una vista y regresar el contenido como una cadena
+// Render a view and return its contents as a string
 echo $view->render('templates/welcomeMail');
 
-// Renderizar una vista pasando parámetros
+// Render a view passing parameters
 echo $view->render(
     'templates/welcomeMail',
     [
