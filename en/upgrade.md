@@ -331,6 +331,17 @@ class Users
 }
 ```
 
+### Criteria
+
+The second parameter of `Criteria::limit()` ('offset') must now be an integer or null. Previously there was no type requirement.
+
+```php
+$criteria->limit(10);
+
+$criteria->limit(10, 5);
+
+$criteria->limit(10, null);
+```
 
 [php-support]: https://secure.php.net/supported-versions.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/
