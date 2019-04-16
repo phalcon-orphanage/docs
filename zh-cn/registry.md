@@ -99,7 +99,7 @@ As mentioned above, `Phalcon\Registry` implements several interfaces, in order t
 - `offsetGet()`
 - `get()`
 
-The fastest way is by using the property syntax:
+最快的方式是使用属性语法：
 
 ```php
 <?php
@@ -133,7 +133,7 @@ echo $collection->get('year', 1776, true); // 1776
 public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
 ```
 
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. 默认情况下`$insensitive`被设置为`true`，使得集合中的搜索不区分大小写。 Setting this value to `false` will make the search for the element case sensitive.
 
 ## Get
 
@@ -145,7 +145,7 @@ As mentioned above, `Phalcon\Registry` implements several interfaces, in order t
 - `offsetGet()`
 - `get()`
 
-The fastest way is by using the property syntax:
+最快的方式是使用属性语法：
 
 ```php
 <?php
@@ -179,7 +179,7 @@ echo $collection->get('year', 1776, true); // 1776
 public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
 ```
 
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. 默认情况下`$insensitive`被设置为`true`，使得集合中的搜索不区分大小写。 Setting this value to `false` will make the search for the element case sensitive.
 
 ## Has
 
@@ -191,7 +191,7 @@ To check whether an element exists or not in the collection, you can use the fol
 - `offsetExists()`
 - `has()`
 
-The fastest way is by using the property syntax:
+最快的方式是使用属性语法：
 
 ```php
 <?php
@@ -225,7 +225,7 @@ echo $collection->has('year', true);      // true
 public function has(string $element, bool $insensitive = true):  bool
 ```
 
-Using `has()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `has()` offers an extra parameter. 默认情况下`$insensitive`被设置为`true`，使得集合中的搜索不区分大小写。 Setting this value to `false` will make the search for the element case sensitive.
 
 ```php
 echo $collection->has('YEAR', true);      // true
@@ -242,7 +242,7 @@ To set an element in the collection, you can use the following:
 - `offsetSet()`
 - `set()`
 
-The fastest way is by using the property syntax:
+最快的方式是使用属性语法：
 
 ```php
 <?php
@@ -281,7 +281,7 @@ To remove an element in the collection, you can use the following:
 - `offsetUnset()`
 - `remove()`
 
-The fastest way is by using the property syntax:
+最快的方式是使用属性语法：
 
 ```php
 <?php
@@ -314,7 +314,7 @@ $collection->remove('year');
 public function remove(string $element, bool $insensitive = true):  void
 ```
 
-Using `remove()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `remove()` offers an extra parameter. 默认情况下`$insensitive`被设置为`true`，使得集合中的搜索不区分大小写。 Setting this value to `false` will make the search for the element case sensitive.
 
 ```php
 $collection->remove('YEAR', true);
