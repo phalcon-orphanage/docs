@@ -49,7 +49,7 @@ $paginator = Factory::load($options);
 
 ```
 
-## Examples
+## Ejemplos
 
 In the example below, the paginator will use the result of a query from a model as its source data, and limit the displayed data to 10 records per page:
 
