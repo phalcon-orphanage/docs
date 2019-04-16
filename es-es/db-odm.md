@@ -70,7 +70,7 @@ connecting to: test
 >
 ```
 
-## Models in Namespaces
+## Modelos en Espacios de Nombres
 
 Namespaces can be used to avoid class name collision. In this case it is necessary to indicate the name of the related collection using the `setSource()` method:
 
