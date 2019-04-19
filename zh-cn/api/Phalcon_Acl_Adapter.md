@@ -43,7 +43,7 @@ Component which the list is checking if some role can access it
 public getDefaultAction()
 ```
 
-返回默认 ACL 访问级别
+Returns the default ACL access level
 
 * * *
 

@@ -208,7 +208,7 @@ $app->get(
 );
 ```
 
-##### Controllers
+##### Controladores
 
 With the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) you can create micro or medium applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application.
 
@@ -1522,7 +1522,7 @@ class ResponseMiddleware implements MiddlewareInterface
 }
 ```
 
-### Models
+### Modelos
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
@@ -1593,7 +1593,7 @@ Since Binder object is using internally Reflection Api which can be heavy, there
 
 Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/products/1`.
 
-### Views
+### Vistas
 
 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) does not have inherently a view service. We can however use the [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) component to render views.
 

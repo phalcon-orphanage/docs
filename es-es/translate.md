@@ -294,7 +294,7 @@ class MyTranslateAdapter implements AdapterInterface
 
 There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
 
-## Interpolation
+## Interpolación
 
 In many cases, the translated strings are to be interpolated with data. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
 

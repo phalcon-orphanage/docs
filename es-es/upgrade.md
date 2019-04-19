@@ -326,14 +326,14 @@ $logger = new Logger(
 );
 
 // Log to all adapters
-$logger->error('Something went wrong');
+$logger->error('Algo falló');
 ```
 
 * * *
 
 <a name='models'></a>
 
-## Models
+## Modelos
 
 > Status: **changes required**
 > 

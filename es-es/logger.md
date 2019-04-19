@@ -179,7 +179,7 @@ Este componente utiliza `formatters` para formatear mensajes antes de enviarlos 
 - [Phalcon\Logger\Formatter\Json](api/Phalcon_Logger_Formatter_Json)
 - [Phalcon\Logger\Formatter\Syslog](api/Phalcon_Logger_Formatter_Syslog)
 
-### Line Formatter
+### Formateador de línea
 
 Formats the messages using a one-line string. The default logging format is:
 
