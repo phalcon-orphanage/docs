@@ -369,3 +369,41 @@ $criteria->limit(10, 5);
 
 $criteria->limit(10, null);
 ```
+
+* * *
+
+<a name='router'></a>
+
+## Router
+
+You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
+
+```php
+use Phalcon\Mvc\Router\Group;
+
+$group = new Group();
+
+$group->addConnect(
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'connect',
+    ]
+);
+
+$group->addPurge(
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'purge',
+    ]
+);
+
+$group->addTrace(
+    '/api',
+    [
+        'controller' => 'api',
+        'action'     => 'trace',
+    ]
+);
+```
