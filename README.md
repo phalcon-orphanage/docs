@@ -8,6 +8,8 @@
     <img src="https://www.netlify.com/img/global/badges/netlify-color-accent.svg"/>
 </a></p>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/96373ff5-88bd-4788-9d2d-1d40f4759803/deploy-status)](https://app.netlify.com/sites/phalcon-docs/deploys)
+
 You can find our documentation project in Crowdin [here](https://crowdin.com/project/phalcon-documentation)
 
 ## Contributing 
