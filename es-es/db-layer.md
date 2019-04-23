@@ -700,17 +700,17 @@ try {
 
 [Phalcon\Db](api/Phalcon_Db) es capaz de enviar eventos al [EventsManager](events) si está presente. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
 
-| Nombre de evento      | Disparado                                                       | ¿Detiene la operación? |
-| --------------------- | --------------------------------------------------------------- |:----------------------:|
-| `afterConnect`        | Después de una conexión con éxito a un sistema de base de datos |           No           |
-| `afterQuery`          | After send a SQL statement to database system                   |           No           |
-| `beforeDisconnect`    | Before close a temporal database connection                     |           No           |
-| `beforeQuery`         | Before send a SQL statement to the database system              |           Si           |
-| `beginTransaction`    | Before a transaction is going to be started                     |           No           |
-| `commitTransaction`   | Before a transaction is committed                               |           No           |
-| `rollbackTransaction` | Before a transaction is rollbacked                              |           No           |
+| Nombre de evento      | Disparado                                                          | ¿Detiene la operación? |
+| --------------------- | ------------------------------------------------------------------ |:----------------------:|
+| `afterConnect`        | Después de una conexión con éxito a un sistema de base de datos    |           No           |
+| `afterQuery`          | Después de enviar una instrucción SQL a la base de datos           |           No           |
+| `beforeDisconnect`    | Antes de cerrar una conexión temporal de base de datos             |           No           |
+| `beforeQuery`         | Antes de enviar una instrucción SQL en el sistema de base de datos |           Si           |
+| `beginTransaction`    | Antes de comenzar una transacción                                  |           No           |
+| `commitTransaction`   | Antes de confirmar una transacción                                 |           No           |
+| `rollbackTransaction` | Antes de anular una transacción                                    |           No           |
 
-Bind an EventsManager to a connection is simple, [Phalcon\Db](api/Phalcon_Db) will trigger the events with the type `db`:
+Vincular un EventsManager a una conexión es muy sencillo, [Phalcon\Db](api/Phalcon_Db) activará los eventos con el tipo `db`:
 
 ```php
 <?php
@@ -736,7 +736,7 @@ $connection = new Connection(
 $connection->setEventsManager($eventsManager);
 ```
 
-Stop SQL operations are very useful if for example you want to implement some last-resource SQL injector checker:
+Detener las operaciones de SQL son muy útiles, si por ejemplo, usted desea implementar algún comprobador de inyecciones SQL de último recurso:
 
 ```php
 <?php
@@ -761,11 +761,11 @@ $eventsManager->attach(
 );
 ```
 
-## Profiling SQL Statements
+## Perfilando sentencias SQL
 
-[Phalcon\Db](api/Phalcon_Db) includes a profiling component called [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler), that is used to analyze the performance of database operations so as to diagnose performance problems and discover bottlenecks.
+[Phalcon\Db](api/Phalcon_Db) incluye un componente de generación de perfiles llamado [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler), que se utiliza para analizar el rendimiento de las operaciones de base de datos con el fin de diagnosticar problemas de rendimiento y descubrir los cuellos de botella.
 
-Database profiling is really easy With [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler):
+Perfilar base de datos es muy fácil, con [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler):
 
 ```php
 <?php
@@ -815,7 +815,7 @@ echo 'Tiempo de final: ', $profile->getFinalTime(), "\n";
 echo 'Tiempo total: ', $profile->getTotalElapsedSeconds(), "\n";
 ```
 
-You can also create your own profile class based on [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) to record real time statistics of the statements sent to the database system:
+También puede crear su propia clase de perfiles basado en [Phalcon\Db\Profiler](api/Phalcon_Db_Profiler) para grabar en tiempo real las estadísticas de las instrucciones enviadas al sistema de base de datos:
 
 ```php
 <?php
@@ -853,9 +853,9 @@ $dbProfiler = new DbProfiler();
 $eventsManager->attach('db', $dbProfiler);
 ```
 
-## Logging SQL Statements
+## Registrando sentencias SQL
 
-Using high-level abstraction components such as [Phalcon\Db](api/Phalcon_Db) to access a database, it is difficult to understand which statements are sent to the database system. [Phalcon\Logger](api/Phalcon_Logger) interacts with [Phalcon\Db](api/Phalcon_Db), providing logging capabilities on the database abstraction layer.
+Al utilizar componentes de alto nivel de abstracción como [Phalcon\Mvc\Model](api/Phalcon_Db) para acceder a una base de datos, es difícil entender qué sentencias son finalmente enviadas al sistema de base de datos. [Phalcon\Logger](api/Phalcon_Logger) interactúa con [Phalcon\Db](api/Phalcon_Db), proporcionando las funciones de registro en la capa de abstracción de base de datos.
 
 ```php
 <?php
@@ -878,10 +878,10 @@ $eventsManager->attach(
     }
 );
 
-// Assign the eventsManager to the db adapter instance
+// Asignar el eventsManager a la instancia del adaptador de base de datos
 $connection->setEventsManager($eventsManager);
 
-// Execute some SQL statement
+// Ejecutar alguna sentencia SQL
 $connection->insert(
     'products',
     [
@@ -895,37 +895,37 @@ $connection->insert(
 );
 ```
 
-As above, the file `app/logs/db.log` will contain something like this:
+Como en el anterior ejemplo, el archivo `app/logs/db.log` contendrá algo como esto:
 
 ```bash
 [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
 (name, price) VALUES ('Hot pepper', 3.50)
 ```
 
-## Implementing your own Logger
+## Implementar tu propio Logger
 
-You can implement your own logger class for database queries, by creating a class that implements a single method called `log`. The method needs to accept a string as the first argument. You can then pass your logging object to `Phalcon\Db::setLogger()`, and from then on any SQL statement executed will call that method to log the results.
+Usted puede implementar su propia clase logger para consultas de bases de datos, mediante la creación de una clase que implementa un único método llamado `log`. El método debe aceptar un `string` como primer argumento. Luego usted puede pasar su objeto de registro a `Phalcon\Db::setLogger()`, y de ahí en adelante cualquier instrucción SQL ejecutada llamará ese método para registrar los resultados.
 
-## Describing Tables/Views
+## Descripción de tablas o vistas
 
-[Phalcon\Db](api/Phalcon_Db) also provides methods to retrieve detailed information about tables and views:
+[Phalcon\Db](api/Phalcon_Db) también proporciona métodos para recuperar información detallada sobre tablas y vistas:
 
 ```php
 <?php
 
-// Get tables on the test_db database
+// Obtener las tablas en la base de datos test_db
 $tables = $connection->listTables('test_db');
 
-// Is there a table 'robots' in the database?
+// ¿Hay una tabla llamada 'robots' en la base de datos?
 $exists = $connection->tableExists('robots');
 
-// Get name, data types and special features of 'robots' fields
+// Obtener el nombre, tipos de datos y características especiales de los campos de la tabla 'robots'
 $fields = $connection->describeColumns('robots');
 foreach ($fields as $field) {
     echo 'Column Type: ', $field['Type'];
 }
 
-// Get indexes on the 'robots' table
+// Obtener los índices de la tabla 'robots'
 $indexes = $connection->describeIndexes('robots');
 foreach ($indexes as $index) {
     print_r(
@@ -933,41 +933,41 @@ foreach ($indexes as $index) {
     );
 }
 
-// Get foreign keys on the 'robots' table
+// Obtener las llaves foráneas de la tabla 'robots'
 $references = $connection->describeReferences('robots');
 foreach ($references as $reference) {
-    // Print referenced columns
+    // Imprimir las columnas referenciadas
     print_r(
         $reference->getReferencedColumns()
     );
 }
 ```
 
-A table description is very similar to the MySQL `DESCRIBE` command, it contains the following information:
+Una descripción de la tabla es muy similar al comando `DESCRIBE` de MySQL, contiene la siguiente información:
 
-| Field        | Tipo        | Key                                                | Null                               |
-| ------------ | ----------- | -------------------------------------------------- | ---------------------------------- |
-| Field's name | Column Type | Is the column part of the primary key or an index? | Does the column allow null values? |
+| Campo            | Tipo            | Clave                                                      | Nulo                              |
+| ---------------- | --------------- | ---------------------------------------------------------- | --------------------------------- |
+| Nombre del campo | Tipo de columna | ¿Es la columna parte de la clave principal o de un índice? | ¿La columna permite valores null? |
 
-Methods to get information about views are also implemented for every supported database system:
+Los métodos para obtener información acerca de las vistas también se aplican para cada sistema de base de datos soportadas:
 
 ```php
 <?php
 
-// Get views on the test_db database
+// Obtener las vistas de la base de datos test_db
 $tables = $connection->listViews('test_db');
 
-// Is there a view 'robots' in the database?
+// Hay una vista llamada 'robots' en la base de datos?
 $exists = $connection->viewExists('robots');
 ```
 
-## Creating/Altering/Dropping Tables
+## Crear/Modificar/Eliminar tablas
 
-Different database systems (MySQL, Postgresql etc.) offer the ability to create, alter or drop tables with the use of commands such as `CREATE`, `ALTER` or `DROP`. The SQL syntax differs based on which database system is used. `Phalcon\Db` offers a unified interface to alter tables, without the need to differentiate the SQL syntax based on the target storage system.
+Diferentes sistemas de base de datos (MySQL, Postgresql, etc.) ofrecen la capacidad para crear, modificar o eliminar tablas con el uso de comandos como `CREATE`, `ALTER` o `DROP`. La sintaxis SQL difiere según el sistema de base de datos utilizado. `Phalcon\Db` ofrece una interfaz unificada para modificar las tablas, sin la necesidad de diferenciar la sintaxis SQL basandose en el sistema de almacenamiento de destino.
 
-### Creating Tables
+### Crear tablas
 
-The following example shows how to create a table:
+En el ejemplo siguiente se muestra cómo crear una tabla:
 
 ```php
 <?php
@@ -1010,23 +1010,23 @@ $connection->createTable(
 );
 ```
 
-`Phalcon\Db::createTable()` accepts an associative array describing the table. Columns are defined with the class [Phalcon\Db\Column](api/Phalcon_Db_Column). The table below shows the options available to define a column:
+`Phalcon\Db::CreateTable()` acepta un array asociativo que describe la tabla. Las columnas se definen con la clase [Phalcon\Db\Column](api/Phalcon_Db_Column). La tabla siguiente muestra las opciones disponibles para definir una columna:
 
-| Opción          | Descripción                                                                                                                                | Opcional |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below for a list)                                        |    No    |
-| `primary`       | True if the column is part of the table's primary key                                                                                      |    Si    |
-| `size`          | Some type of columns like `VARCHAR` or `INTEGER` may have a specific size                                                                  |    Si    |
-| `scale`         | `DECIMAL` or `NUMBER` columns may be have a scale to specify how many decimals should be stored                                            |    Si    |
-| `unsigned`      | `INTEGER` columns may be signed or unsigned. This option does not apply to other types of columns                                          |    Si    |
-| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                 |    Si    |
-| `default`       | Default value (when used with `'notNull' => true`).                                                                                     |    Si    |
-| `autoIncrement` | With this attribute column will filled automatically with an auto-increment integer. Only one column in the table can have this attribute. |    Si    |
-| `bind`          | One of the `BIND_TYPE_*` constants telling how the column must be bound before save it                                                     |    Si    |
-| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                      |    Si    |
-| `after`         | La columna debe colocarse después de la columna indicada                                                                                   |    Si    |
+| Opción          | Descripción                                                                                                                                                | Opcional |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `type`          | Tipo de columna. Debe ser una constante de [Phalcon\Db\Column](api/Phalcon_Db_Column) (ver lista de abajo)                                               |    No    |
+| `primary`       | `true` si la columna forma parte de la clave primaria de la tabla                                                                                          |    Si    |
+| `size`          | Algunos tipos de columnas como `VARCHAR` o `INTEGER` puede tener un tamaño específico                                                                      |    Si    |
+| `scale`         | Columnas `DECIMAL` o `NUMBER` pueden tener una escala para especificar cuántos decimales deben almacenarse                                                 |    Si    |
+| `unsigned`      | Las columnas `INTEGER` puede tener o no signo. Esta opción no se aplica a otros tipos de columnas                                                          |    Si    |
+| `notNull`       | ¿La columna puede almacenar valores nulos?                                                                                                                 |    Si    |
+| `default`       | Valor por defecto (cuando se usa con `'notNull' => true`).                                                                                              |    Si    |
+| `autoIncrement` | Con este atributo, la columna se completará automáticamente con un número entero auto-incremental. Solo una columna en la tabla puede tener este atributo. |    Si    |
+| `bind`          | Una de las constantes `BIND_TYPE_*` que indica como debe tratarse la columna antes de guardarse                                                            |    Si    |
+| `first`         | La columna debe colocarse en primera posición en el orden de columnas                                                                                      |    Si    |
+| `after`         | La columna debe colocarse después de la columna indicada                                                                                                   |    Si    |
 
-[Phalcon\Db](api/Phalcon_Db) supports the following database column types:
+[Phalcon\Db](api/Phalcon_Db) soporta los siguientes tipos de columna de base de datos:
 
 * `Phalcon\Db\Column::TYPE_INTEGER`
 * `Phalcon\Db\Column::TYPE_DATE`
@@ -1036,25 +1036,25 @@ $connection->createTable(
 * `Phalcon\Db\Column::TYPE_CHAR`
 * `Phalcon\Db\Column::TYPE_TEXT`
 
-The associative array passed in `Phalcon\Db::createTable()` can have the possible keys:
+El array asociativo pasado en `Phalcon\Db::createTable()` puede tener las siguientes claves:
 
-| Índice       | Descripción                                                                                                                            | Opcional |
-| ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
-| `columns`    | An array with a set of table columns defined with [Phalcon\Db\Column](api/Phalcon_Db_Column)                                         |    No    |
-| `indexes`    | An array with a set of table indexes defined with [Phalcon\Db\Index](api/Phalcon_Db_Index)                                           |    Si    |
-| `references` | An array with a set of table references (foreign keys) defined with [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                 |    Si    |
-| `options`    | An array with a set of table creation options. These options often relate to the database system in which the migration was generated. |    Si    |
+| Índice       | Descripción                                                                                                                                                       | Opcional |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |:--------:|
+| `columns`    | Un array con un conjunto de columnas de la tabla definida con [Phalcon\Db\Column](api/Phalcon_Db_Column)                                                        |    No    |
+| `indexes`    | Un array con un conjunto de índices de la tabla definida con [Phalcon\Db\Index](api/Phalcon_Db_Index)                                                           |    Si    |
+| `references` | Un array con un conjunto de referencias de tabla (foreign keys) definidas con [Phalcon\Db\Reference](api/Phalcon_Db_Reference)                                  |    Si    |
+| `options`    | Un array con un conjunto de opciones para crear la tabla. Estas opciones a menudo se relacionan con el sistema de base de datos en el que se generó la migración. |    Si    |
 
-### Altering Tables
+### Modificar tablas
 
-As your application grows, you might need to alter your database, as part of a refactoring or adding new features. Not all database systems allow to modify existing columns or add columns between two existing ones. [Phalcon\Db](api/Phalcon_Db) is limited by these constraints.
+A medida que su aplicación crece, puede que necesite modificar su base de datos, como parte de una refactorización o añadiendo nuevas funciones. No todos los sistemas de base de datos permiten modificar las columnas existentes o agregar columnas entre dos ya existentes. [Phalcon\Db](api/Phalcon_Db) está limitado por estas restricciones.
 
 ```php
 <?php
 
 use Phalcon\Db\Column as Column;
 
-// Adding a new column
+// Agregar una columna nueva
 $connection->addColumn(
     'robots',
     null,
@@ -1069,7 +1069,7 @@ $connection->addColumn(
     )
 );
 
-// Modifying an existing column
+// Modificar una columna existente
 $connection->modifyColumn(
     'robots',
     null,
@@ -1083,7 +1083,7 @@ $connection->modifyColumn(
     )
 );
 
-// Deleting the column 'name'
+// Borrar la columna 'name'
 $connection->dropColumn(
     'robots',
     null,
@@ -1091,9 +1091,9 @@ $connection->dropColumn(
 );
 ```
 
-### Dropping Tables
+### Eliminar tablas
 
-To drop an existing table from the current database, use the `dropTable` method. To drop an table from custom database, use second parameter describes database name. Examples on dropping tables:
+Para eliminar una tabla existente de la base de datos actual, use el método `dropTable`. Para eliminar una tabla de una base de datos personalizada, use el segundo parámetro para describir el nombre de la base de datos. Ejemplos de borrado de tablas:
 
 ```php
 <?php
