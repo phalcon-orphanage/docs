@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
+
 # Upgrade Guide
 
 * * *
@@ -243,7 +244,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 <a name='logger'></a>
 
-## Logger
+## Registrador
 
 > Status: **changes required**
 > 
