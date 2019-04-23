@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 ---
+
 # Rendimiento
 
 * * *
@@ -60,7 +61,7 @@ Xhprof provides a built-in HTML viewer to analyze the profiled data:
 
 ![](/assets/images/content/performance-xhprof-1.jpg)
 
-### Profiling SQL Statements
+### Perfilando sentencias SQL
 
 Most database systems provide tools to identify slow SQL statements. Detecting and fixing slow queries is very important in order to increase performance in the server side. In the Mysql case, you can use the slow query log to know what SQL queries are taking more time than expected:
 
