@@ -4,19 +4,19 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Database Abstraction Layer
+# Capa de abstracción de base de datos
 
 * * *
 
-## Overview
+## Resumen
 
-[Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
+[Phalcon\Db](api/Phalcon_Db) es el componente detrás de [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) que impulsa la capa del modelo del framework. Este consiste en una capa de abstracción de alto nivel independiente para bases de datos, escrito completamente en C.
 
-This component allows for a lower level database manipulation than using traditional models.
+Este componente permite una manipulación de base de datos a nivel inferior que el uso de los modelos tradicionales.
 
-## Database Adapters
+## Adaptadores de base de datos
 
-This component makes use of adapters to encapsulate specific database system details. Phalcon uses PDO to connect to databases. The following database engines are supported:
+Este componente hace uso de adaptadores para encapsular los detalles especificos del sistema de base de datos. Phalcon utiliza PDO para conectarse a las bases de datos. Son soportados los siguientes motores de base de datos:
 
 | Clase                                                                          | Descripción                                                                                                                                                                                                                                                |
 | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -26,7 +26,7 @@ This component makes use of adapters to encapsulate specific database system det
 
 ### Factory
 
-Loads PDO Adapter class using `adapter` option. Por ejemplo:
+Carga la clase adaptador PDO utilizando la opción `adapter`. Por ejemplo:
 
 ```php
 <?php
@@ -47,11 +47,11 @@ $db = Factory::load($options);
 
 ### Implementando sus propios adaptadores
 
-The [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) interface must be implemented in order to create your own database adapters or extend the existing ones.
+Debe implementar la interfaz [Phalcon\Db\AdapterInterface](api/Phalcon_Db_AdapterInterface) para crear sus propios adaptadores de base de datos o extender los ya existentes.
 
-## Database Dialects
+## Dialectos de la base de datos
 
-Phalcon encapsulates the specific details of each database engine in dialects. Those provide common functions and SQL generator to the adapters.
+Phalcon encapsula los detalles específicos de cada motor de base de datos en dialectos. Estos proporcionan funciones comunes y generadores de SQL a los adaptadores.
 
 | Clase                                                                 | Descripción                                           |
 | --------------------------------------------------------------------- | ----------------------------------------------------- |
@@ -59,13 +59,13 @@ Phalcon encapsulates the specific details of each database engine in dialects. T
 | [Phalcon\Db\Dialect\Postgresql](api/Phalcon_Db_Dialect_Postgresql) | Dialecto específico SQL para base de datos PostgreSQL |
 | [Phalcon\Db\Dialect\Sqlite](api/Phalcon_Db_Dialect_Sqlite)         | Dialecto específico SQL para base de datos de SQLite  |
 
-### Implementing your own dialects
+### Implementar sus propios dialectos
 
-The [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) interface must be implemented in order to create your own database dialects or extend the existing ones. You can also enhance your current dialect by adding more commands/methods that PHQL will understand.
+Debe implementar la interfaz [Phalcon\Db\DialectInterface](api/Phalcon_Db_DialectInterface) para crear sus propios dialectos de la base de datos o extender los ya existentes. Incluso puede mejorar su dialecto actual agregando más comandos/métodos para que PHQL los entienda.
 
-For instance when using the MySQL adapter, you might want to allow PHQL to recognize the `MATCH ... AGAINST ...` syntax. We associate that syntax with `MATCH_AGAINST`
+Para instancias donde utilizamos el adaptador de MySQL, si desea permitir a PHQL reconocer la sintaxis `MATCH ... AGAINST ...`. Asociamos la sintaxis con `MATCH_AGAINST`
 
-We instantiate the dialect. We add the custom function so that PHQL understands what to do when it finds it during the parsing process. In the example below, we register a new custom function called `MATCH_AGAINST`. After that all we have to do is add the customized dialect object to our connection.
+Instanciamos el dialecto. Agregamos la función personalizada para que PHQL comprenda qué hacer cuando la encuentra durante el proceso de análisis sintáctico. En el siguiente ejemplo, registramos una nueva función personalizada llamada `MATCH_AGAINST`. Después de eso todo lo que tenemos que hacer es añadir el objeto del dialecto personalizado a nuestra conexión.
 
 ```php
 <?php
@@ -98,7 +98,7 @@ $connection = new Connection(
 );
 ```
 
-We can now use this new function in PHQL, which in turn will translate it to the proper SQL syntax:
+Ahora podemos utilizar esta nueva función en PHQL, que a su vez lo traducirá en la sintaxis SQL adecuada:
 
 ```php
 $phql = "
@@ -109,11 +109,11 @@ $phql = "
 $posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
 ```
 
-## Connecting to Databases
+## Conexión a bases de datos
 
-To create a connection it's necessary instantiate the adapter class. It only requires an array with the connection parameters. The example below shows how to create a connection passing both required and optional parameters:
+Para crear una conexión es necesario crear una instancia de la clase del adaptador. Sólo requiere una arreglo con los parámetros de conexión. En el ejemplo siguiente se muestra cómo crear una conexión pasando tanto los parámetros opcionales como los parámetros requeridos:
 
-##### MySQL Required elements
+##### Elementos requeridos en MySQL
 
 ```php
 <?php
@@ -126,19 +126,19 @@ $config = [
 ];
 ```
 
-##### MySQL Optional
+##### MySQL Opcionales
 
 ```php
 $config['persistent'] = false;
 ```
 
-##### MySQL Create a connection
+##### Crear una conexión MySQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Mysql($config);
 ```
 
-##### PostgreSQL Required elements
+##### Elementos requeridos en PostgreSQL
 
 ```php
 <?php
@@ -151,19 +151,19 @@ $config = [
 ];
 ```
 
-##### PostgreSQL Optional
+##### PostgreSQL Opcionales
 
 ```php
 $config['schema'] = 'public';
 ```
 
-##### PostgreSQL Create a connection
+##### Crear una conexión PostgreSQL
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Postgresql($config);
 ```
 
-##### SQLite Required elements
+##### Elementos requeridos en SQLite
 
 ```php
 <?php
@@ -173,15 +173,15 @@ $config = [
 ];
 ```
 
-##### SQLite Create a connection
+##### Crear una conexión SQLite
 
 ```php
 $connection = new \Phalcon\Db\Adapter\Pdo\Sqlite($config);
 ```
 
-## Setting up additional PDO options
+## Configuración de opciones adicionales de PDO
 
-You can set PDO options at connection time by passing the parameters `options`:
+Se pueden definir opciones de PDO al momento de conexión pasando los parámetros en `options`:
 
 ```php
 <?php
@@ -200,9 +200,9 @@ $connection = new \Phalcon\Db\Adapter\Pdo\Mysql(
 );
 ```
 
-## Connecting using Factory
+## Conexión usando Factory
 
-You can also use a simple `ini` file to configure/connect your `db` service to your database.
+También se puede utilizar un simple archivo `ini` para configurar o conectar el servicio `db` a la base de datos.
 
 ```ini
 [database]
@@ -235,36 +235,36 @@ $di->set(
 );
 ```
 
-The above will return the correct database instance and also has the advantage that you can change the connection credentials or even the database adapter without changing a single line of code in your application.
+Lo anterior devuelve la instancia de base de datos correcta y también tiene la ventaja de que puedes cambiar las credenciales de conexión o incluso el adaptador de la base de datos sin cambiar una sola línea de código en su aplicación.
 
-## Finding Rows
+## Encontrar Registros
 
-[Phalcon\Db](api/Phalcon_Db) provides several methods to query rows from tables. The specific SQL syntax of the target database engine is required in this case:
+[Phalcon\Db](api/Phalcon_Db) proporciona varios métodos a las filas de consulta de tablas. La sintaxis SQL específica del motor de base de datos de destino, es requerida en este caso:
 
 ```php
 <?php
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Send a SQL statement to the database system
+// Enviar una consulta SQL al sistema de base de datos
 $result = $connection->query($sql);
 
-// Print each robot name
+// Imprimir cada nombre de robot
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Get all rows in an array
+// Obtener todas las filas en un array
 $robots = $connection->fetchAll($sql);
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Get only the first row
+// Obtener solo la primera fila
 $robot = $connection->fetchOne($sql);
 ```
 
-By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
+Por defecto estas llamadas crean arrays con índices asociativos y numéricos. Usted puede cambiar este comportamiento mediante `Phalcon\Db\Result::setFetchMode()`. Este método recibe una constante, definiendo qué tipo de índice necesita.
 
 | Constante                  | Descripción                                           |
 | -------------------------- | ----------------------------------------------------- |
@@ -285,7 +285,7 @@ while ($robot = $result->fetch()) {
 }
 ```
 
-The `Phalcon\Db::query()` returns an instance of [Phalcon\Db\Result\Pdo](api/Phalcon_Db_Result_Pdo). These objects encapsulate all the functionality related to the returned resultset i.e. traversing, seeking specific records, count etc.
+`Phalcon\Db::query()` devuelve una instancia de [Phalcon\Db\Result\Pdo](api/Phalcon_Db_Result_Pdo). Estos objetos encapsulan toda la funcionalidad relacionada con el resultado devuelto, es decir, recorrer los registros, buscar registros específicos, contarlos, etcétera.
 
 ```php
 <?php
@@ -293,27 +293,27 @@ The `Phalcon\Db::query()` returns an instance of [Phalcon\Db\Result\Pdo](api/Pha
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Traverse the resultset
+// Recorrer el conjunto de resultados
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Seek to the third row
+// Buscar la tercer fila
 $result->seek(2);
 $robot = $result->fetch();
 
-// Count the resultset
+// Contar cuantos registros hay en el conjunto de resultados
 echo $result->numRows();
 ```
 
-## Binding Parameters
+## Enlazando parámetros
 
-Bound parameters is also supported in [Phalcon\Db](api/Phalcon_Db). Although there is a minimal performance impact by using bound parameters, you are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and positional placeholders are supported. El enlazado de parámetros se hace simplemente de la siguiente manera:
+Los parámetros enlazados también son compatibles con [Phalcon\Db](api/Phalcon_Db). Aunque hay un mínimo impacto en la performance al utilizar parámetros enlazados, le animamos a utilizar esta metodología, con el fin de eliminar la posibilidad que su código esté sujeto a ataques de inyección SQL. Se admiten dos tipos de marcadores: por nombre o numérico. El enlazado de parámetros se hace simplemente de la siguiente manera:
 
 ```php
 <?php
 
-// Binding with numeric placeholders
+// Enlazando con marcadores numéricos
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -322,7 +322,7 @@ $result = $connection->query(
     ]
 );
 
-// Binding with named placeholders
+// Enlazando con marcadores nombrados
 $sql     = 'INSERT INTO `robots`(name`, year) VALUES (:name, :year)';
 $success = $connection->query(
     $sql,
@@ -333,16 +333,16 @@ $success = $connection->query(
 );
 ```
 
-When using numeric placeholders, you will need to define them as integers i.e. 1 or 2. In this case '1' or '2' are considered strings and not numbers, so the placeholder could not be successfully replaced. With any adapter data are automatically escaped using [PDO Quote](https://secure.php.net/manual/en/pdo.quote.php).
+Cuando se utilizan marcadores numéricos, necesita definirlos como enteros, es decir, 1 o 2. En este caso '1' o '2' se consideran cadenas y no números, por lo que el marcador de posición no podría sustituirse con éxito. Con cualquier adaptador de datos se escapan automáticamente utilizando [PDO Quote](https://secure.php.net/manual/en/pdo.quote.php).
 
-This function takes into account the connection charset, so its recommended to define the correct charset in the connection parameters or in your database server configuration, as a wrong charset will produce undesired effects when storing or retrieving data.
+Esta función tiene en cuenta el conjunto de caracteres de conexión, por lo que se recomienda definir el conjunto de caracteres correcto en los parámetros de conexión o en la configuración de servidor de base de datos, como un conjunto de caracteres incorrecto producirá efectos no deseados al almacenar o recuperar datos.
 
-Also, you can pass your parameters directly to the `execute` or `query` methods. In this case bound parameters are directly passed to PDO:
+Además, puede pasar los parámetros directamente a los métodos `execute` o `query`. En este caso los parámetros enlazados sin pasados directamente a PDO:
 
 ```php
 <?php
 
-// Binding with PDO placeholders
+// Enlazando con marcadores PDO
 $sql    = 'SELECT * FROM robots WHERE name = ? ORDER BY name';
 $result = $connection->query(
     $sql,
@@ -352,9 +352,9 @@ $result = $connection->query(
 );
 ```
 
-## Typed placeholders
+## Marcadores con tipo de dato
 
-Placeholders allowed you to bind parameters to avoid SQL injections:
+Los marcadores permiten enlazar parámetros para evitar inyecciones de SQL:
 
 ```php
 <?php
@@ -364,7 +364,7 @@ $phql = "SELECT * FROM Store\Robots WHERE id > :id:";
 $robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
 ```
 
-However, some database systems require additional actions when using placeholders such as specifying the type of the bound parameter:
+Sin embargo, algunos sistemas de bases de datos requieren acciones adicionales al usar marcadores, como especificar el tipo de parámetro:
 
 ```php
 <?php
@@ -381,7 +381,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-You can use typed placeholders in your parameters, instead of specifying the bind type in `executeQuery()`:
+Se puede utilizar marcadores con tipo de datos en sus parámetros, en lugar de especificar los tipos en el método `executeQuery()`:
 
 ```php
 <?php
@@ -399,7 +399,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-You can also omit the type if you don't need to specify it:
+También puede omitir el tipo si usted no necesita especificarlo:
 
 ```php
 <?php
@@ -411,7 +411,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-Typed placeholders are also more powerful, since we can now bind a static array without having to pass each element independently as a placeholder:
+Los marcadores con tipo de datos son además más potentes, ya que ahora podemos enlazar un arreglo estático sin tener que pasar cada elemento independientemente como un marcador:
 
 ```php
 <?php
@@ -423,7 +423,7 @@ $robots = $this->modelsManager->executeQuery(
 );
 ```
 
-The following types are available:
+Las siguientes tipos están disponibles:
 
 | Tipo de enlace | Constante de tipo de enlace       | Ejemplo             |
 | -------------- | --------------------------------- | ------------------- |
@@ -437,9 +437,9 @@ The following types are available:
 | array-str      | Array de `Column::BIND_PARAM_STR` | `{names:array-str}` |
 | array-int      | Array de `Column::BIND_PARAM_INT` | `{flags:array-int}` |
 
-## Cast bound parameters values
+## Moldear valores de parámetros enlazados
 
-By default, bound parameters aren't casted in the PHP userland to the specified bind types, this option allows you to make Phalcon cast values before bind them with PDO. A classic situation when this problem raises is passing a string in a `LIMIT`/`OFFSET` placeholder:
+De forma predeterminada, los parámetros enlazados no se moldean en el dominio de PHP a los tipos de enlace especificados; esta opción le permite a Phalcon moldear los valores antes de vincularlos con PDO. Una situación clásica de cuando surge este problema, es al pasar una cadena en un marcador de `LIMIT`/`OFFSET`:
 
 ```php
 <?php
@@ -451,7 +451,7 @@ $robots = $modelsManager->executeQuery(
 );
 ```
 
-This causes the following exception:
+Esto provoca la siguiente excepción:
 
     Fatal error: Uncaught exception 'PDOException' with message 'SQLSTATE[42000]:
     Syntax error or access violation: 1064 You have an error in your SQL syntax;
@@ -459,7 +459,7 @@ This causes the following exception:
     syntax to use near ''100'' at line 1' in /Users/scott/demo.php:78
     
 
-This happens because 100 is a string variable. It is easily fixable by casting the value to integer first:
+Esto sucede porque 100 es una variable de tipo string. Estos se soluciona fácilmente convirtiendo primero el valor a entero:
 
 ```php
 <?php
@@ -471,7 +471,7 @@ $robots = $modelsManager->executeQuery(
 );
 ```
 
-However this solution requires that the developer pays special attention about how bound parameters are passed and their types. To make this task easier and avoid unexpected exceptions you can instruct Phalcon to do this casting for you:
+Sin embargo, esta solución requiere que el desarrollador preste especial atención acerca de los parámetros enlazados, en cómo son pasados y sus tipos. Para facilitar esta tarea y evitar excepciones inesperadas puede indicar a Phalcon que haga el moldeado por usted:
 
 ```php
 <?php
@@ -479,7 +479,7 @@ However this solution requires that the developer pays special attention about h
 \Phalcon\Db::setup(['forceCasting' => true]);
 ```
 
-The following actions are performed according to the bind type specified:
+Las siguientes acciones se llevan a cabo según el tipo de enlace especificado:
 
 | Tipo de enlace               | Action                                               |
 | ---------------------------- | ---------------------------------------------------- |
@@ -488,11 +488,11 @@ The following actions are performed according to the bind type specified:
 | `Column::BIND_PARAM_BOOL`    | Convertir el valor como un valor booleano PHP nativo |
 | `Column::BIND_PARAM_DECIMAL` | Convertir el valor como un número doble PHP nativo   |
 
-## Cast on Hydrate
+## Moldeado en Hidratación
 
-Values returned from the database system are always represented as string values by PDO, no matter if the value belongs to a numerical or boolean type column. This happens because some column types cannot be represented with its corresponding PHP native types due to their size limitations. For instance, a `BIGINT` in MySQL can store large integer numbers that cannot be represented as a 32bit integer in PHP. Because of that, PDO and the ORM by default, make the safe decision of leaving all values as strings.
+Los valores devueltos por el sistema de base de datos siempre aparecen como valores de tipo cadena en PDO, sin importar, por ejemplo, si el valor corresponde a una columna de tipo numérico o booleano. Esto sucede porque algunos tipos de columna no se pueden representar con sus correspondientes tipos nativos en PHP debido a sus limitaciones de tamaño. Por ejemplo, un `BIGINT` de MySQL el cual puede almacenar números enteros grandes, no puede ser representado como un entero de 32 bits en PHP. Por eso, PDO y el ORM, por defecto, toman la decisión segura de dejar todos los valores como cadenas.
 
-You can set up the ORM to automatically cast those types considered safe to their corresponding PHP native types:
+Puede configurar el ORM a moldear automáticamente los tipos considerados seguros a sus correspondientes tipos nativos de PHP:
 
 ```php
 <?php
@@ -500,7 +500,7 @@ You can set up the ORM to automatically cast those types considered safe to thei
 \Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
 ```
 
-This way you can use strict operators or make assumptions about the type of variables:
+De esta manera puede utilizar operadores estrictas o hacer suposiciones sobre el tipo de variables:
 
 ```php
 <?php
@@ -511,9 +511,9 @@ if (11 === $robot->id) {
 }
 ```
 
-## Inserting/Updating/Deleting Rows
+## Insertar/Actualizar/Borrar registros
 
-To insert, update or delete rows, you can use raw SQL or use the preset functions provided by the class:
+Para Insertar, actualizar o eliminar filas, puede utilizar SQL crudo o utilizar las funciones proporcionadas por la clase:
 
 ```php
 <?php
@@ -634,31 +634,31 @@ $success = $connection->delete(
 );
 ```
 
-## Transactions and Nested Transactions
+## Transacciones y transacciones anidadas
 
-Working with transactions is supported as it is with PDO. Perform data manipulation inside transactions often increase the performance on most database systems:
+Trabajar con transacciones es posible como lo es con PDO. Realizar la manipulación de datos dentro de las transacciones a menudo aumenta el rendimiento en la mayoría de los sistemas de bases de datos:
 
 ```php
 <?php
 
 try {
-    // Start a transaction
+    // Comenzar una transacción
     $connection->begin();
 
-    // Execute some SQL statements
+    // Ejecutar algunas instrucciones SQL
     $connection->execute('DELETE `robots` WHERE `id` = 101');
     $connection->execute('DELETE `robots` WHERE `id` = 102');
     $connection->execute('DELETE `robots` WHERE `id` = 103');
 
-    // Commit if everything goes well
+    // Confirmar si todo salio bien
     $connection->commit();
 } catch (Exception $e) {
-    // An exception has occurred rollback the transaction
+    // Ocurrió una excepción, deshacemos la transacción
     $connection->rollback();
 }
 ```
 
-In addition to standard transactions, [Phalcon\Db](api/Phalcon_Db) provides built-in support for [nested transactions](https://en.wikipedia.org/wiki/Nested_transaction) (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+Además de las transacciones estándar, [Phalcon\Db](api/Phalcon_Db) ofrece soporte incorporado para [transacciones anidadas](https://en.wikipedia.org/wiki/Nested_transaction) (si el sistema de base de datos las admite). Cuando se llama `begin()` por segunda vez, se crea una transacción anidada:
 
 ```php
 <?php
@@ -696,19 +696,19 @@ try {
 }
 ```
 
-## Database Events
+## Eventos de base de datos
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](events) if it's present. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
+[Phalcon\Db](api/Phalcon_Db) es capaz de enviar eventos al [EventsManager](events) si está presente. Algunos eventos cuando se devuelva `false` podrían detener la operación activa. Son soportados los siguientes eventos:
 
-| Nombre de evento      | Disparado                                            | ¿Detiene la operación? |
-| --------------------- | ---------------------------------------------------- |:----------------------:|
-| `afterConnect`        | After a successfully connection to a database system |           No           |
-| `afterQuery`          | After send a SQL statement to database system        |           No           |
-| `beforeDisconnect`    | Before close a temporal database connection          |           No           |
-| `beforeQuery`         | Before send a SQL statement to the database system   |           Si           |
-| `beginTransaction`    | Before a transaction is going to be started          |           No           |
-| `commitTransaction`   | Before a transaction is committed                    |           No           |
-| `rollbackTransaction` | Before a transaction is rollbacked                   |           No           |
+| Nombre de evento      | Disparado                                                       | ¿Detiene la operación? |
+| --------------------- | --------------------------------------------------------------- |:----------------------:|
+| `afterConnect`        | Después de una conexión con éxito a un sistema de base de datos |           No           |
+| `afterQuery`          | After send a SQL statement to database system                   |           No           |
+| `beforeDisconnect`    | Before close a temporal database connection                     |           No           |
+| `beforeQuery`         | Before send a SQL statement to the database system              |           Si           |
+| `beginTransaction`    | Before a transaction is going to be started                     |           No           |
+| `commitTransaction`   | Before a transaction is committed                               |           No           |
+| `rollbackTransaction` | Before a transaction is rollbacked                              |           No           |
 
 Bind an EventsManager to a connection is simple, [Phalcon\Db](api/Phalcon_Db) will trigger the events with the type `db`:
 
