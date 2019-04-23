@@ -4,6 +4,7 @@ language: 'es-es'
 version: '4.0'
 upgrade: '#models'
 ---
+
 # Modelos
 
 * * *
@@ -547,7 +548,7 @@ $customers = $customers->filter(
 );
 ```
 
-### Binding Parameters
+### Enlazando parámetros
 
 Bound parameters are also supported in [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model). You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both string and integer placeholders are supported. El enlazado de parámetros se hace simplemente de la siguiente manera:
 
