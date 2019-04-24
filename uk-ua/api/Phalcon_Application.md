@@ -4,6 +4,7 @@ language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Application'
 ---
+
 # Abstract class **Phalcon\Application**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
@@ -68,7 +69,7 @@ Returns the default module name
 
 abstract public **handle** ()
 
-Handles a request
+Обробляє запит
 
 public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
 
