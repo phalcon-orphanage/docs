@@ -4,6 +4,7 @@ language: 'uk-ua'
 version: '4.0'
 title: 'Phalcon\Di\Service'
 ---
+
 # Class **Phalcon\Di\Service**
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
@@ -29,27 +30,27 @@ final public **__construct** (*string* $name, *mixed* $definition, [*boolean* $s
 
 public **getName** ()
 
-Returns the service's name
+Повертає ім'я служби
 
 public **setShared** (*mixed* $shared)
 
-Sets if the service is shared or not
+Встановлює, чи є служба спільною чи ні
 
 public **isShared** ()
 
-Check whether the service is shared or not
+Перевіряє, чи служба є спільною
 
 public **setSharedInstance** (*mixed* $sharedInstance)
 
-Sets/Resets the shared instance related to the service
+Встановлює/скидає спільний екземпляр пов'язаний із службою
 
 public **setDefinition** (*mixed* $definition)
 
-Set the service definition
+Встановлює визначення служби
 
 public *mixed* **getDefinition** ()
 
-Returns the service definition
+Повертає визначення служби
 
 public *mixed* **resolve** ([*array* $parameters], [[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
 
@@ -69,4 +70,4 @@ Returns true if the service was resolved
 
 public static **__set_state** (*array* $attributes)
 
-Restore the internal state of a service
+Відновлює внутрішній стан служби
