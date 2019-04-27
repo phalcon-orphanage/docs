@@ -1,15 +1,16 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
-# Contributions
+
+# Contribuciones
 
 * * *
 
-# Contributing to Phalcon
+# Cómo contribuir en Phalcon
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+Phalcon es un proyecto de código abierto y depende en gran medida de los esfuerzos y contribuciones voluntarias. ¡Son bienvenidas las contribuciones de todos!
 
 Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
 

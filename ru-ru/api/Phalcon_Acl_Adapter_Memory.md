@@ -1,16 +1,17 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Adapter\Memory'
 ---
+
 # Class **Phalcon\Acl\Adapter\Memory**
 
 **extends** [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) **implements** [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
-### Описание
+### Description
 
 Manages ACL lists in memory
 
