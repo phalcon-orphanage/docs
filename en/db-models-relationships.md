@@ -461,19 +461,19 @@ A model that maps this table and its relationships is the following:
 ```php
 <?php
 
-class RobotsSimilar extends Phalcon\Mvc\Model
+class RobotsSimilar extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id'
         );
 
         $this->belongsTo(
             'similar_robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id'
         );
     }
@@ -509,7 +509,7 @@ class RobotsSimilar extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
                 'alias' => 'Robot',
@@ -518,7 +518,7 @@ class RobotsSimilar extends Model
 
         $this->belongsTo(
             'similar_robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
                 'alias' => 'SimilarRobot',
@@ -572,7 +572,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id'
         );
     }
@@ -601,9 +601,9 @@ class Companies extends Model
     {
         // All invoices relationship
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
                 'alias' => 'Invoices'
             ]
@@ -611,9 +611,9 @@ class Companies extends Model
 
         // Paid invoices relationship
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
                 'alias'    => 'InvoicesPaid',
                 'params'   => [
@@ -624,9 +624,9 @@ class Companies extends Model
 
         // Unpaid invoices relationship + bound parameters
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
                 'alias'    => 'InvoicesUnpaid',
                 'params'   => [
@@ -692,7 +692,7 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
                 'foreignKey' => true
@@ -701,7 +701,7 @@ class RobotsParts extends Model
 
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id',
             [
                 'foreignKey' => [
@@ -726,7 +726,7 @@ class Parts extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            \RobotsParts::class,
             'parts_id',
             [
                 'foreignKey' => [
@@ -757,7 +757,7 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id',
             [
                 'foreignKey' => [
@@ -791,7 +791,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'Parts',
+            Parts::class,
             'robots_id',
             [
                 'foreignKey' => [
