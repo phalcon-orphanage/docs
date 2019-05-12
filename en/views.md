@@ -856,15 +856,15 @@ $di->set(
         // Set the engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
+                '.my-html' => \MyTemplateAdapter::class,
             ]
         );
 
         // Using more than one template engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
-                '.phtml'   => 'Phalcon\Mvc\View\Engine\Php',
+                '.my-html' => \MyTemplateAdapter::class,
+                '.phtml'   => \Phalcon\Mvc\View\Engine\Php::class,
             ]
         );
 
