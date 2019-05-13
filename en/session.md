@@ -55,6 +55,7 @@ $options = [
 ];
 
 $session = Factory::load($options);
+
 $session->start();
 ```
 

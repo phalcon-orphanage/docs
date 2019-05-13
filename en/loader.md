@@ -25,7 +25,7 @@ With this component you can load files from other projects or vendors, this auto
 
 // Basic autoloader
 spl_autoload_register(
-    function ($className) {
+    function (string $className) {
         $filepath = $className . '.php';
 
         if (file_exists($filepath)) {

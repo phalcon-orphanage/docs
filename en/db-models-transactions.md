@@ -34,6 +34,7 @@ class RobotsController extends Controller
         // The model failed to save, so rollback the transaction
         if ($robot->save() === false) {
             $this->db->rollback();
+
             return;
         }
 

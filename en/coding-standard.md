@@ -23,7 +23,7 @@ In this document we outline the coding standard that Phalcon is using. The codin
 phalcon/Acl/Adapter/Memory.zep
 ```
 
-```php
+```zephir
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Adapter;
@@ -50,7 +50,7 @@ class Memory extends Adapter
 - Class constants must appear at the top of the class.
 - Class constants must be sorted alphabetically by constant name.
 
-```php
+```zephir
 namespace Phalcon;
 
 abstract class Acl
@@ -67,7 +67,7 @@ abstract class Acl
 - Whenever possible, properties must have a docblock that defines their type with the `@var` declaration
 - Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
 
-```php
+```zephir
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Adapter;
@@ -91,7 +91,7 @@ class Memory extends Adapter
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
 - Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
 
-```php
+```zephir
 abstract public function getElement() -> var;
 
 final public function getElement() -> var;
@@ -103,7 +103,7 @@ public static function getElement() -> var;
 - Opening braces for control structures must go on the same line, and closing braces must go on the next line after the body.
 - Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
 
-```php
+```zephir
 if typeof variable === "array" {
 
 }
@@ -114,7 +114,7 @@ if typeof variable === "array" {
 - Each method must have its type declared before it
 - Method arguments with default values must go at the end of the argument list.
 
-```php
+```zephir
 public function setElement(string! name, var value) -> void;
 ```
 

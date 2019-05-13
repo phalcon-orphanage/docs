@@ -43,7 +43,7 @@ use Phalcon\Config\Factory;
 $options = [
     'filePath' => 'path/config',
     'adapter'  => 'php',
- ];
+];
  
  $config = Factory::load($options);
  ```
@@ -62,14 +62,14 @@ $settings = [
         'host'     => 'localhost',
         'username' => 'scott',
         'password' => 'cheetah',
-        'dbname'   => 'test_db'
+        'dbname'   => 'test_db',
     ],
      'app' => [
         'controllersDir' => '../app/controllers/',
         'modelsDir'      => '../app/models/',
-        'viewsDir'       => '../app/views/'
+        'viewsDir'       => '../app/views/',
     ],
-    'mysetting' => 'the-value'
+    'mysetting' => 'the-value',
 ];
 
 $config = new Config($settings);
@@ -176,12 +176,12 @@ Phalcon\Config Object
 (
     [database] => Phalcon\Config Object
         (
-            [host] => localhost
+            [host]     => localhost
             [dbname]   => production_db
             [username] => scott
             [password] => secret
         )
-    [debug] => 1
+    [debug]   => 1
     [logging] => 1
 )
 ```
@@ -253,7 +253,10 @@ function config() {
        return $config;
     }
 
-    return call_user_func_array([$config, 'path'], $args);
+    return call_user_func_array(
+        [$config, 'path'],
+        $args
+    );
 }
 ```
 

@@ -515,17 +515,27 @@ $_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate a87421000492aa874209af8bc028';
 
 $di = new Di();
 
-$di->set('eventsManager', function () {
-    $manager = new Manager();
-    $manager->attach('request', new NegotiateAuthorizationListener());
+$di->set(
+    'eventsManager',
+    function () {
+        $manager = new Manager();
 
-    return $manager;
-});
+        $manager->attach(
+            'request',
+            new NegotiateAuthorizationListener()
+        );
+
+        return $manager;
+    }
+);
 
 $request = new Request();
+
 $request->setDI($di);
 
-print_r($request->getHeaders());
+print_r(
+    $request->getHeaders()
+);
 ```
 
 Result: 

@@ -81,7 +81,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id'
         );
     }
@@ -92,6 +92,7 @@ class Robots extends Model
 <?php
 
 use Phalcon\Mvc\Model;
+use Store\Toys\RobotsParts;
 
 class Parts extends Model
 {
@@ -103,7 +104,7 @@ class Parts extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'parts_id'
         );
     }
@@ -112,6 +113,8 @@ class Parts extends Model
 
 ```php
 <?php
+
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
@@ -127,13 +130,13 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            Robots::class,
             'id'
         );
 
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id'
         );
     }
@@ -161,9 +164,9 @@ class Robots extends Model
     {
         $this->hasManyToMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id', 'parts_id',
-            'Parts',
+            \Parts::class,
             'id'
         );
     }
@@ -177,38 +180,38 @@ Using relationships, we can get only those parts that relate to our Robot that a
 
 ```php
 <?php
- 
- namespace Store\Toys;
- 
- use Phalcon\Mvc\Model;
- 
- class Robots extends Model
- {
-     public $id;
- 
-     public $name;
- 
-     public $type;
-     
-     public function initialize()
-     {
-         $this->hasMany(
-             'id',
-             Parts::class,
-             'robotId',
-             [
-                 'reusable' => true, // cache related data
-                 'alias'    => 'mechanicalParts',
-                 'params'   => [
-                     'conditions' => 'robotTypeId = :type:',
-                     'bind'       => [
-                         'type' => 4,
-                     ]
-                 ]
-             ]
-         );
-     }
- }
+
+namespace Store\Toys;
+
+use Phalcon\Mvc\Model;
+
+class Robots extends Model
+{
+    public $id;
+
+    public $name;
+
+    public $type;
+
+    public function initialize()
+    {
+        $this->hasMany(
+            'id',
+            Parts::class,
+            'robotId',
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'mechanicalParts',
+                'params'   => [
+                    'conditions' => 'robotTypeId = :type:',
+                    'bind'       => [
+                       'type' => 4,
+                    ]
+                ]
+            ]
+        );
+    }
+}
  ```
 
 #### Multiple field relationships
@@ -356,8 +359,8 @@ $robotsParts = $robot->getRobotsParts(
     [
         'created_at = :date:',
         'bind' => [
-            'date' => '2015-03-15'
-        ]
+            'date' => '2015-03-15',
+        ],
     ]
 );
 
@@ -384,7 +387,7 @@ $robotsParts = RobotsParts::find(
         'robots_id = :id:',
         'bind' => [
             'id' => $robot->id,
-        ]
+        ],
     ]
 );
 
@@ -395,7 +398,7 @@ $robotsParts = RobotsParts::find(
         'bind' => [
             'id'   => $robot->id,
             'date' => '2015-03-15',
-        ]
+        ],
     ]
 );
 
@@ -408,7 +411,7 @@ $robot = Robots::findFirst(
         'id = :id:',
         'bind' => [
             'id' => $robotPart->robots_id,
-        ]
+        ],
     ]
 );
 ```
@@ -432,7 +435,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
+echo sprintf(
+    "The robot has %d parts\n",
+    $robot->countRobotsParts()
+);
 ```
 
 ### Aliasing Relationships
@@ -605,7 +611,7 @@ class Companies extends Model
             Invoices::class,
             'inv_id',
             [
-                'alias' => 'Invoices'
+                'alias' => 'Invoices',
             ]
         );
 
@@ -615,10 +621,10 @@ class Companies extends Model
             Invoices::class,
             'inv_id',
             [
-                'alias'    => 'InvoicesPaid',
-                'params'   => [
-                    'conditions' => "inv_status = 'paid'"
-                ]
+                'alias'  => 'InvoicesPaid',
+                'params' => [
+                    'conditions' => "inv_status = 'paid'",
+                ],
             ]
         );
 
@@ -628,11 +634,13 @@ class Companies extends Model
             Invoices::class,
             'inv_id',
             [
-                'alias'    => 'InvoicesUnpaid',
-                'params'   => [
+                'alias'  => 'InvoicesUnpaid',
+                'params' => [
                     'conditions' => "inv_status <> :status:",
-                    'bind' => ['status' => 'unpaid']
-                ]
+                    'bind'       => [
+                        'status' => 'unpaid',
+                    ],
+                ],
             ]
         );
     }
@@ -648,7 +656,9 @@ Additionally, you can use the second parameter of `getRelated()` when accessing 
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
-        'bind'       => ['id' => 1],
+        'bind'       => [
+            'id' => 1,
+        ],
     ]
 );
 
@@ -657,7 +667,9 @@ $unpaidInvoices = $company->getInvoicesUnpaid();
 $unpaidInvoices = $company->getRelated('InvoicesUnpaid');
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
-    ['conditions' => "inv_status = 'paid'"]
+    [
+        'conditions' => "inv_status = 'paid'",
+    ]
 );
 
 // Also ordered
@@ -695,7 +707,7 @@ class RobotsParts extends Model
             \Store\Toys\Robots::class,
             'id',
             [
-                'foreignKey' => true
+                'foreignKey' => true,
             ]
         );
 
@@ -705,8 +717,8 @@ class RobotsParts extends Model
             'id',
             [
                 'foreignKey' => [
-                    'message' => 'The part_id does not exist on the Parts model'
-                ]
+                    'message' => 'The part_id does not exist on the Parts model',
+                ],
             ]
         );
     }
@@ -731,7 +743,7 @@ class Parts extends Model
             [
                 'foreignKey' => [
                     'message' => 'The part cannot be deleted because other robots are using it',
-                ]
+                ],
             ]
         );
     }
@@ -763,7 +775,7 @@ class RobotsParts extends Model
                 'foreignKey' => [
                     'allowNulls' => true,
                     'message'    => 'The part_id does not exist on the Parts model',
-                ]
+                ],
             ]
         );
     }
@@ -796,7 +808,7 @@ class Robots extends Model
             [
                 'foreignKey' => [
                     'action' => Relation::ACTION_CASCADE,
-                ]
+                ],
             ]
         );
     }
@@ -835,7 +847,7 @@ Saving a record and its related records in a has-many relation:
 
 // Get an existing artist
 $artist = Artists::findFirst(
-    'name = 'Shinichi Osawa''
+    'name = "Shinichi Osawa"'
 );
 
 // Create an album
@@ -883,11 +895,17 @@ If a resultset is composed of complete objects, model operations can be performe
 $type = $robots->getRelated('type');
 
 $type->name = 'Some other type';
+
 $result = $type->save();
 
 
 // Get the related robot type but only the `name` column
-$type = $robots->getRelated('type', ['columns' => 'name']);
+$type = $robots->getRelated(
+    'type',
+    [
+        'columns' => 'name',
+    ]
+);
 
 $type->name = 'Some other type';
 
@@ -947,11 +965,7 @@ $data = [
 $robots->getParts()->update(
     $data,
     function ($part) {
-        if ($part->type === Part::TYPE_BASIC) {
-            return false;
-        }
-
-        return true;
+        return ($part->type !== Part::TYPE_BASIC);
     }
 );
 ```
@@ -993,11 +1007,7 @@ $robots->getParts()->delete();
 // Delete only whose stock is greater or equal than zero
 $robots->getParts()->delete(
     function ($part) {
-        if ($part->stock < 0) {
-            return false;
-        }
-
-        return true;
+        return ($part->stock >= 0);
     }
 );
 ```

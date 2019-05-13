@@ -195,7 +195,7 @@ $di = new Di();
 
 $modules = [
   'backend' => [
-      'className' => 'App\Backend\Bootstrap',
+      'className' => \App\Backend\Bootstrap::class,
       'path'      => '/app/Modules/Backend/Bootstrap.php',
       'metadata'  => [
           'controllersNamespace' => 'App\Backend\Controllers',
@@ -215,15 +215,19 @@ $manager->attach(
 );
 
 $dispatcher = new Dispatcher();
+
 $dispatcher->setDI($di);
+
 $dispatcher->setEventsManager($manager);
+
 $di->set('dispatcher', $dispatcher);
+
 $dispatcher->forward(
-  [
-      'module'     => 'backend',
-      'controller' => 'posts',
-      'action'     => 'index',
-  ]
+    [
+        'module'     => 'backend',
+        'controller' => 'posts',
+        'action'     => 'index',
+    ]
 );
 
 echo $dispatcher->getModuleName(); // will display properly 'backend'
@@ -395,7 +399,7 @@ $di->set(
 ### Remove legacy extensions
 If the original URL always contains a `.php` extension:
 
-```php
+```
 https://example.com/admin/products/show-latest-products.php
 https://example.com/admin/products/index.php
 ```

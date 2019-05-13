@@ -165,14 +165,18 @@ $volt->setOptions(
 // Recursively create the same structure in another directory
 $volt->setOptions(
     [
-        'path' => function ($templatePath) {
+        'path' => function (string $templatePath) {
             $dirName = dirname($templatePath);
 
             if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName , 0777 , true);
+                mkdir(
+                    'cache/' . $dirName,
+                    0777,
+                    true
+                );
             }
 
-            return 'cache/' . $dirName . '/'. $templatePath . '.php';
+            return 'cache/' . $dirName . '/' . $templatePath . '.php';
         }
     ]
 );
@@ -977,13 +981,13 @@ The following PHP is generated:
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
 
-<?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
+<?php echo Phalcon\Tag::form(['products/save', 'method' => 'post']); ?>
 
     <label for='name'>Name</label>
-    <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
+    <?php echo Phalcon\Tag::textField(['name', 'size' => 32]); ?>
 
     <label for='type'>Type</label>
-    <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
+    <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
 
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
@@ -1381,7 +1385,7 @@ class PhpFunctionExtension
     /**
      * This method is called on any attempt to compile a function call
      */
-    public function compileFunction($name, $arguments)
+    public function compileFunction(string $name, string $arguments)
     {
         if (function_exists($name)) {
             return $name . '('. $arguments . ')';

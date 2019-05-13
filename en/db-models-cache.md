@@ -148,7 +148,7 @@ class Robots extends Model
      * Implement a method that returns a string key based
      * on the query parameters
      */
-    protected static function _createKey($parameters)
+    protected static function _createKey(array $parameters)
     {
         $uniqueKey = [];
 
@@ -200,7 +200,7 @@ use Phalcon\Mvc\Model;
 
 class CacheableModel extends Model
 {
-    protected static function _createKey($parameters)
+    protected static function _createKey(array $parameters)
     {
         // ... Create a cache key based on the parameters
     }
@@ -526,20 +526,30 @@ class CustomQueryBuilder extends QueryBuilder
 {
     public function getQuery()
     {
-        $query = new CustomQuery($this->getPhql());
+        $query = new CustomQuery(
+            $this->getPhql()
+        );
 
-        $query->setDI($this->getDI());
+        $query->setDI(
+            $this->getDI()
+        );
         
-        if ( is_array($this->_bindParams) ) {
-            $query->setBindParams($this->_bindParams);
+        if (is_array($this->_bindParams)) {
+            $query->setBindParams(
+                $this->_bindParams
+            );
         }
 
-        if ( is_array($this->_bindTypes) ) {
-            $query->setBindTypes($this->_bindTypes);
+        if (is_array($this->_bindTypes)) {
+            $query->setBindTypes(
+                $this->_bindTypes
+            );
         }
 
-        if ( is_array($this->_sharedLock) ) {
-            $query->setSharedLock($this->_sharedLock);
+        if (is_array($this->_sharedLock)) {
+            $query->setSharedLock(
+                $this->_sharedLock
+            );
         }
 
         return $query;
@@ -564,12 +574,18 @@ class CustomQuery extends ModelQuery
         // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
 
-        if ( is_array($this->_bindParams) ) {
-            $params = array_merge($this->_bindParams, (array)$params);
+        if (is_array($this->_bindParams)) {
+            $params = array_merge(
+                $this->_bindParams,
+                (array) $params
+            );
         }
 
-        if ( is_array($this->_bindTypes) ) {
-            $types = array_merge($this->_bindTypes, (array)$types);
+        if (is_array($this->_bindTypes)) {
+            $types = array_merge(
+                $this->_bindTypes,
+                (array) $types
+            );
         }
 
         // Check if the query has conditions
@@ -580,7 +596,9 @@ class CustomQuery extends ModelQuery
             $visitor = new CustomNodeVisitor();
 
             // Recursively visits the nodes
-            $visitor->visit($ir['where']);
+            $visitor->visit(
+                $ir['where']
+            );
 
             $initial = $visitor->getInitial();
             $final   = $visitor->getFinal();
@@ -694,12 +712,16 @@ class Robots extends Model
 
         $builder = new CustomQueryBuilder($parameters);
 
-        $builder->from(get_called_class());
+        $builder->from(
+            get_called_class()
+        );
 
         $query = $builder->getQuery();
 
         if (isset($parameters['bind'])) {
-            return $query->execute($parameters['bind']);
+            return $query->execute(
+                $parameters['bind']
+            );
         } else {
             return $query->execute();
         }
