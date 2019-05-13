@@ -392,11 +392,11 @@ class SecurityAnnotationsPlugin extends Plugin
 ## Annotations Adapters
 This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
 
-| Class                                | Description                                                                                                                                                                       |
-|--------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Class                                                                        | Description                                                                                                                                                                       |
+|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)  | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| [Phalcon\Annotations\Adapter\Apcu](api/Phalcon_Annotations_Adapter_Apcu)    | Parsed and processed annotations are stored permanently in the APCu cache improving performance. This is the fastest adapter                                                        |
+| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
+| [Phalcon\Annotations\Adapter\Apcu](api/Phalcon_Annotations_Adapter_Apcu)     | Parsed and processed annotations are stored permanently in the APCu cache improving performance. This is the fastest adapter                                                      |
 
 ### Implementing your own adapters
 The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
