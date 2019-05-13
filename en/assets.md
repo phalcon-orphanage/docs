@@ -355,13 +355,16 @@ Then we have to configure the routing:
  */
 $router = new Phalcon\Mvc\Router();
 
-$router->addGet('/assets/(css|js)/([\w.-]+)\.(css|js)', [
-    'controller' => 'assets',
-    'action'     => 'serve',
-    'type'       => 1,
-    'collection' => 2,
-    'extension'  => 3,
-]);
+$router->addGet(
+    '/assets/(css|js)/([\w.-]+)\.(css|js)',
+    [
+        'controller' => 'assets',
+        'action'     => 'serve',
+        'type'       => 1,
+        'collection' => 2,
+        'extension'  => 3,
+    ]
+);
 
 // Other routes...
 ```
@@ -407,12 +410,18 @@ class AssetsController extends ControllerBase
             ->setTargetPath($targetPath);
 
         // Store content to the disk and return fully qualified file path
-        $contentPath = $this->assets->output($collection, function (array $parameters) {
-            return BASE_PATH . '/public/' . $parameters[0];
-        }, $type);
+        $contentPath = $this->assets->output(
+            $collection,
+            function (array $parameters) {
+                return BASE_PATH . '/public/' . $parameters[0];
+            },
+            $type
+        );
 
         // Set the content of the response
-        $response->setContent(file_get_contents($contentPath));
+        $response->setContent(
+            file_get_contents($contentPath)
+        );
 
         // Return the response
         return $response;

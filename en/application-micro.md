@@ -93,12 +93,12 @@ $router = new Router();
 
 $router->addGet(
     '/orders/display/{name}',
-    'OrdersClass::display';
-    }
+    'OrdersClass::display'
 );
 
 
 $app = new Micro();
+
 $app->setService('router', $router, true);
 ```
 
@@ -135,8 +135,10 @@ Accessing the `$app` object inside the anonymous function can be achieved by inj
 $app->get(
     '/orders/display/{name}',
     function ($name) use ($app) {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $app->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+
+        $app->response->setContent($content);
+
         $app->response->send();
     }
 );
@@ -258,8 +260,9 @@ class OrdersController extends Controller
 
     public function show($name)
     {
-        $context = "<h1>This is order: {$name}!</h1>";
-        $this->response->setContext($context);
+        $content = "<h1>This is order: {$name}!</h1>";
+
+        $this->response->setContent($content);
 
         return $this->response;
     }
@@ -273,8 +276,8 @@ In order to increase performance, you might consider implementing lazy loading f
 Lazy loading can be easily achieved when setting your handler in your [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection):
 
 ```php
-$orders->setHandler('OrdersController', true);
-$orders->setHandler('Blog\Controllers\OrdersController', true);
+$orders->setHandler(\OrdersController::class, true);
+$orders->setHandler(\Blog\Controllers\OrdersController::class, true);
 ```
 
 ##### Use case
@@ -336,26 +339,48 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 // Users handler
 $users = new MicroCollection();
-$users->setHandler(new UsersController());
+
+$users->setHandler(
+    new UsersController()
+);
+
 $users->setPrefix('/users');
+
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
+
 $app->mount($users);
+
+
 
 // Orders handler
 $orders = new MicroCollection();
-$orders->setHandler(new OrdersController());
+
+$orders->setHandler(
+    new OrdersController()
+);
+
 $orders->setPrefix('/users');
+
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
+
 $app->mount($orders);
+
+
 
 // Products handler
 $products = new MicroCollection();
-$products->setHandler(new ProductsController());
+
+$products->setHandler(
+    new ProductsController()
+);
+
 $products->setPrefix('/products');
+
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
+
 $app->mount($products);
 ```
 
@@ -371,26 +396,42 @@ use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
 // Users handler
 $users = new MicroCollection();
+
 $users->setHandler(new UsersController(), true);
+
 $users->setPrefix('/users');
+
 $users->get('/get/{id}', 'get');
 $users->get('/add/{payload}', 'add');
+
 $app->mount($users);
+
+
 
 // Orders handler
 $orders = new MicroCollection();
+
 $orders->setHandler(new OrdersController(), true);
+
 $orders->setPrefix('/users');
+
 $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
+
 $app->mount($orders);
+
+
 
 // Products handler
 $products = new MicroCollection();
+
 $products->setHandler(new ProductsController(), true);
+
 $products->setPrefix('/products');
+
 $products->get('/get/{id}', 'get');
 $products->get('/add/{payload}', 'add');
+
 $app->mount($products);
 ```
 
@@ -404,10 +445,14 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_M
 $app->notFound(
     function () use ($app) {
         $app->response->setStatusCode(404, 'Not Found');
+
         $app->response->sendHeaders();
+
+
 
         $message = 'Nothing to see here. Move along....';
         $app->response->setContent($message);
+
         $app->response->send();
     }
 );
@@ -579,6 +624,7 @@ You can redirect one matched route to another using the [Phalcon\Http\Response](
 $app->post('/old/url',
     function () use ($app) {
         $app->response->redirect('new/url');
+
         $app->response->sendHeaders();
     }
 );
@@ -603,7 +649,9 @@ class UsersController extends Controller
 {
     public function oldget($id)
     {
-        return $this->response->redirect('users/get/' . $id);
+        return $this->response->redirect(
+            'users/get/' . $id
+        );
     }
 
     public function get($id)
@@ -798,7 +846,9 @@ $app->get(
         $response->setContentType('text/plain');
 
         // Pass the content of a file
-        $response->setContent(file_get_contents('data.txt'));
+        $response->setContent(
+            file_get_contents('data.txt')
+        );
 
         // Return the response
         return $response;
@@ -1009,7 +1059,9 @@ $app->map(
 $app->after(
     function () use ($app) {
         // This is executed after the route is executed
-        echo json_encode($app->getReturnedValue());
+        echo json_encode(
+            $app->getReturnedValue()
+        );
     }
 );
 ```
@@ -1049,7 +1101,9 @@ $app->before(
 $app->after(
     function () use ($app) {
         // This is executed after the route is executed
-        echo json_encode($app->getReturnedValue());
+        echo json_encode(
+            $app->getReturnedValue()
+        );
     }
 );
 ```
@@ -1075,23 +1129,40 @@ $application   = new Micro();
 /**
  * Attach the middleware both to the events manager and the application
  */
-$eventsManager->attach('micro', new CacheMiddleware());
-$application->before(new CacheMiddleware());
+$eventsManager->attach(
+    'micro',
+    new CacheMiddleware()
+);
 
-$eventsManager->attach('micro', new NotFoundMiddleware());
-$application->before(new NotFoundMiddleware());
+$application->before(
+    new CacheMiddleware()
+);
+
+$eventsManager->attach(
+    'micro',
+    new NotFoundMiddleware()
+);
+
+$application->before(
+    new NotFoundMiddleware()
+);
 
 /**
  * This one needs to listen on the `after` event
  */
-$eventsManager->attach('micro', new ResponseMiddleware());
-$application->after(new ResponseMiddleware());
+$eventsManager->attach(
+    'micro',
+    new ResponseMiddleware()
+);
+
+$application->after(
+    new ResponseMiddleware()
+);
 
 /**
  * Make sure our events manager is in the DI container now
  */
 $application->setEventsManager($eventsManager);
-
 ```
 
 We need a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) object. This can be a newly instantiated object or we can get the one that exists in our DI container (if you have used the `FactoryDefault` one).
@@ -1128,7 +1199,11 @@ class CacheMiddleware implements MiddlewareInterface
         $cache  = $application['cache'];
         $router = $application['router'];
 
-        $key = preg_replace('/^[a-zA-Z0-9]/', '', $router->getRewriteUri());
+        $key = preg_replace(
+            '/^[a-zA-Z0-9]/',
+            '',
+            $router->getRewriteUri()
+        );
 
         // Check if the request is cached
         if ($cache->exists($key)) {
@@ -1189,6 +1264,7 @@ class FirewallMiddleware implements MiddlewareInterface
             '10.4.6.3',
             '10.4.6.4',
         ];
+
         $ipAddress = $application->request->getClientAddress();
 
         if (true !== array_key_exists($ipAddress, $whitelist)) {
@@ -1398,7 +1474,10 @@ class RequestMiddleware implements MiddlewareInterface
      */
     public function beforeExecuteRoute(Event $event, Micro $application)
     {
-        json_decode($application->request->getRawBody());
+        json_decode(
+            $application->request->getRawBody()
+        );
+
         if (JSON_ERROR_NONE !== json_last_error()) {
             $application->response->redirect('/malformed');
             $application->response->send();
@@ -1518,7 +1597,10 @@ $loader->registerDirs(
 )->register();
 
 $app = new \Phalcon\Mvc\Micro();
-$app->setModelBinder(new \Phalcon\Mvc\Model\Binder());
+
+$app->setModelBinder(
+    new \Phalcon\Mvc\Model\Binder()
+);
 
 $app->get(
     "/products/{product:[0-9]+}",

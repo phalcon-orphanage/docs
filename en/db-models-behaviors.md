@@ -33,7 +33,7 @@ class Users extends Model
                     'beforeCreate' => [
                         'field'  => 'created_at',
                         'format' => 'Y-m-d',
-                    ]
+                    ],
                 ]
             )
         );
@@ -64,7 +64,7 @@ public function initialize()
                 'beforeCreate' => [
                     'field'  => 'created_at',
                     'format' => 'Y-m-d',
-                ]
+                ],
             ]
         )
     );
@@ -93,8 +93,8 @@ public function initialize()
                         );
 
                         return $datetime->format('Y-m-d H:i:sP');
-                    }
-                ]
+                    },
+                ],
             ]
         )
     );

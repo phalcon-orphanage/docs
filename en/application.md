@@ -209,7 +209,7 @@ With this component you can run various types of MVC structures:
 ### Single Module
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
-```php
+```
 single/
     app/
         controllers/
@@ -334,7 +334,7 @@ try {
 ### Multi Module
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
-```php
+```
 multiple/
   apps/
     frontend/
@@ -472,11 +472,11 @@ $application = new Application($di);
 $application->registerModules(
     [
         'frontend' => [
-            'className' => 'Multiple\Frontend\Module',
+            'className' => \Multiple\Frontend\Module::class,
             'path'      => '../apps/frontend/Module.php',
         ],
         'backend'  => [
-            'className' => 'Multiple\Backend\Module',
+            'className' => \Multiple\Backend\Module::class,
             'path'      => '../apps/backend/Module.php',
         ]
     ]

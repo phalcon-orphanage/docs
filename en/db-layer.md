@@ -85,7 +85,7 @@ $connection = new Connection(
         "username"      => "root",
         "password"      => "",
         "dbname"        => "test",
-        "dialectClass"  => $dialect
+        "dialectClass"  => $dialect,
     ]
 );
 ```
@@ -98,7 +98,12 @@ $phql = "
   FROM   Posts
   WHERE  MATCH_AGAINST(title, :pattern:)";
   
-$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+$posts = $modelsManager->executeQuery(
+    $phql,
+    [
+        'pattern' => $pattern,
+    ]
+);
 ```
 
 ## Connecting to Databases
@@ -212,6 +217,7 @@ use Phalcon\Di;
 use Phalcon\Db\Adapter\Pdo\Factory;
 
 $di = new Di();
+
 $config = new Ini('config.ini');
 
 $di->set('config', $config);
@@ -244,6 +250,7 @@ while ($robot = $result->fetch()) {
 
 // Get all rows in an array
 $robots = $connection->fetchAll($sql);
+
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
@@ -265,9 +272,13 @@ By default these calls create arrays with both associative and numeric indexes. 
 <?php
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
+
 $result = $connection->query($sql);
 
-$result->setFetchMode(Phalcon\Db::FETCH_NUM);
+$result->setFetchMode(
+    Phalcon\Db::FETCH_NUM
+);
+
 while ($robot = $result->fetch()) {
    echo $robot[0];
 }
@@ -288,6 +299,7 @@ while ($robot = $result->fetch()) {
 
 // Seek to the third row
 $result->seek(2);
+
 $robot = $result->fetch();
 
 // Count the resultset
@@ -347,7 +359,12 @@ Placeholders allowed you to bind parameters to avoid SQL injections:
 
 $phql = "SELECT * FROM Store\Robots WHERE id > :id:";
 
-$robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    [
+        'id' => 100,
+    ]
+);
 ```
 
 However, some database systems require additional actions when using placeholders such as specifying the type of the bound parameter:
@@ -362,7 +379,9 @@ use Phalcon\Db\Column;
 $phql = "SELECT * FROM Store\Robots LIMIT :number:";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['number' => 10],
+    [
+        'number' => 10,
+    ],
     Column::BIND_PARAM_INT
 );
 ```
@@ -375,13 +394,17 @@ You can use typed placeholders in your parameters, instead of specifying the bin
 $phql = "SELECT * FROM Store\Robots LIMIT {number:int}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['number' => 10]
+    [
+        'number' => 10,
+    ]
 );
 
 $phql = "SELECT * FROM Store\Robots WHERE name <> {name:str}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['name' => $name]
+    [
+        'name' => $name,
+    ]
 );
 ```
 
@@ -393,7 +416,9 @@ You can also omit the type if you don't need to specify it:
 $phql = "SELECT * FROM Store\Robots WHERE name <> {name}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['name' => $name]
+    [
+        'name' => $name,
+    ]
 );
 ```
 
@@ -405,7 +430,9 @@ Typed placeholders are also more powerful, since we can now bind a static array 
 $phql = "SELECT * FROM Store\Robots WHERE id IN ({ids:array})";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['ids' => [1, 2, 3, 4]]
+    [
+        'ids' => [1, 2, 3, 4],
+    ]
 );
 ```
 
@@ -432,7 +459,9 @@ By default, bound parameters aren't casted in the PHP userland to the specified 
 $number = '100';
 $robots = $modelsManager->executeQuery(
     'SELECT * FROM Some\Robots LIMIT {number:int}',
-    ['number' => $number]
+    [
+        'number' => $number,
+    ]
 );
 ```
 
@@ -453,7 +482,9 @@ This happens because 100 is a string variable. It is easily fixable by casting t
 $number = '100';
 $robots = $modelsManager->executeQuery(
     'SELECT * FROM Some\Robots LIMIT {number:int}',
-    ['number' => (int) $number]
+    [
+        'number' => (int) $number,
+    ]
 );
 ```
 
@@ -462,7 +493,11 @@ However this solution requires that the developer pays special attention about h
 ```php
 <?php
 
-\Phalcon\Db::setup(['forceCasting' => true]);
+\Phalcon\Db::setup(
+    [
+        'forceCasting' => true,
+    ]
+);
 ```
 
 The following actions are performed according to the bind type specified:
@@ -482,7 +517,11 @@ You can set up the ORM to automatically cast those types considered safe to thei
 ```php
 <?php
 
-\Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
+\Phalcon\Mvc\Model::setup(
+    [
+        'castOnHydrate' => true,
+    ]
+);
 ```
 
 This way you can use strict operators or make assumptions about the type of variables:
@@ -503,7 +542,7 @@ To insert, update or delete rows, you can use raw SQL or use the preset function
 <?php
 
 // Inserting data with a raw SQL statement
-$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
+$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ("Astro Boy", 1952)';
 $success = $connection->execute($sql);
 
 // With placeholders
@@ -539,7 +578,7 @@ $success = $connection->insertAsDict(
 );
 
 // Updating data with a raw SQL statement
-$sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
+$sql     = 'UPDATE `robots` SET `name` = "Astro boy" WHERE `id` = 101';
 $success = $connection->execute($sql);
 
 // With placeholders
@@ -641,7 +680,7 @@ try {
 }
 ```
 
-In addition to standard transactions, [Phalcon\Db](api/Phalcon_Db) provides built-in support for [nested transactions][nested_transactions] (if the database system used supports them). When you call begin() for a second time a nested transaction is created:
+In addition to standard transactions, [Phalcon\Db](api/Phalcon_Db) provides built-in support for [nested transactions][nested_transactions] (if the database system used supports them). When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -877,7 +916,7 @@ $connection->insert(
 
 As above, the file `app/logs/db.log` will contain something like this:
 
-```bash
+```
 [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
 (name, price) VALUES ('Hot pepper', 3.50)
 ```

@@ -26,6 +26,7 @@ This component creates a new locator with predefined filters attached to it. Eac
 use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 ```
 
@@ -43,8 +44,10 @@ use Phalcon\Filter\FilterLocator;
 $services = [
     'hello' => HelloSanitizer::class,
 ];
+
 $locator = new FilterLocator($services);
-$text    = $locator->hello('World');
+
+$text = $locator->hello('World');
 ```
 
 > The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
@@ -274,7 +277,10 @@ class ProductsController extends Controller
             $price = $this->request->getPost('price', 'double');
 
             // Sanitizing email from input
-            $email = $this->request->getPost('customerEmail', FilterLocator::FILTER_EMAIL);
+            $email = $this->request->getPost(
+                'customerEmail',
+                FilterLocator::FILTER_EMAIL
+            );
         }
     }
 }
@@ -314,6 +320,7 @@ The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) both filter
 use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 // 'Hello'
@@ -338,7 +345,8 @@ $services = [
     },
 ];
 
-$locator   = new FilterLocator($services);
+$locator = new FilterLocator($services);
+
 $sanitized = $locator->sanitize($value, 'md5');
 ```
 
@@ -350,6 +358,7 @@ If you already have an instantiated filter locator object (for instance if you h
 use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 $locator->set(
@@ -378,6 +387,7 @@ class IPv4
 }
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 $locator->set(
@@ -401,6 +411,7 @@ There are times where one sanitizer is not enough for your data. For instance a 
 use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 // Returns 'Hello'
@@ -459,6 +470,7 @@ A custom sanitizer can be implemented as as an anonymous function. If however yo
 use Phalcon\Filter\FilterLocatorFactory;
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 $locator->set(
@@ -487,6 +499,7 @@ class IPv4
 }
 
 $factory = new FilterLocatorFactory();
+
 $locator = $factory->newInstance();
 
 $locator->set(

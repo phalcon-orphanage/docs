@@ -259,6 +259,7 @@ echo 'The robot name is ', $robot->name, "\n";
 
 // What's the first mechanical robot in robots table?
 $robot = Robots::findFirst("type = 'mechanical'");
+
 echo 'The first mechanical robot name is ', $robot->name, "\n";
 
 // Get first virtual robot ordered by name
@@ -495,7 +496,7 @@ class Robots extends Model
     
     public function getResultsetClass()
     {
-    return 'Application\Mvc\Model\Resultset\Custom';
+        return \Application\Mvc\Model\Resultset\Custom::class;
     }
 }
 ```
@@ -511,7 +512,7 @@ and finally in your code you will have something like this:
 $robots = Robots::find(
     [
         'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
-        'order'      => 'date'
+        'order'      => 'date',
     ]
 );
 
@@ -627,7 +628,7 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 use Store\Toys\Robots;
 
-$array = ['a','b','c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
+$array = ['a', 'b', 'c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
 
 unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
 
@@ -638,8 +639,8 @@ $robots = Robots::find(
     [
         'letter IN ({letter:array})',
         'bind' => [
-            'letter' => $array
-        ]
+            'letter' => $array,
+        ],
     ]
 );
 ```
@@ -750,7 +751,7 @@ $rowcount = Employees::count(
 
 // How many employees are in the Testing area?
 $rowcount = Employees::count(
-    'area = 'Testing''
+    'area = "Testing"'
 );
 
 // Count employees grouping results by their area
@@ -776,7 +777,7 @@ $group = Employees::count(
     [
         'type > ?0',
         'bind' => [
-            $type
+            $type,
         ],
     ]
 );
@@ -809,6 +810,7 @@ $group = Employees::sum(
         'group'  => 'area',
     ]
 );
+
 foreach ($group as $row) {
    echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
 }
@@ -828,7 +830,7 @@ $group = Employees::sum(
     [
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -860,7 +862,7 @@ $average = Employees::average(
         'column'     => 'age',
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -1182,8 +1184,11 @@ class Robots extends Model
 }
 
 $manager = new Manager();
+
 $manager->setModelPrefix('wp_');
+
 $robots = new Robots(null, null, $manager);
+
 echo $robots->getSource(); // will return wp_robots
 ```
 
@@ -1466,25 +1471,38 @@ use Phalcon\Mvc\Model;
 
 class User extends Model
 {
-  public function initialize()
-  {
-      $this->keepSnapshots(true);
-  }
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 
-$user       = new User();
+$user = new User();
+
 $user->name = 'Test User';
+
 $user->create();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->login = 'testuser';
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->update();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
 ```
 
 On Phalcon 4.0.0 and later it is:
 
-```php
+```
 array(0) {
 }
 array(1) {

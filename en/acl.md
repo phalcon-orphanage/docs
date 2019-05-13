@@ -66,7 +66,9 @@ $acl = new AclList();
 // Default action is deny access
 
 // Change it to allow
-$acl->setDefaultAction(Acl::ALLOW);
+$acl->setDefaultAction(
+    Acl::ALLOW
+);
 ```
 
 ## Adding Roles
@@ -401,7 +403,9 @@ $acl->allow(
 // Returns false
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-$acl->setNoArgumentsDefaultAction(Acl::ALLOW);
+$acl->setNoArgumentsDefaultAction(
+    Acl::ALLOW
+);
 
 // Returns true
 $acl->isAllowed('manager', 'admin', 'dashboard');
@@ -466,9 +470,9 @@ class ReportsComponent implements ComponentAware
 
     public function __construct($id, $componentName, $userId)
     {
-        $this->id          = $id;
+        $this->id            = $id;
         $this->componentName = $componentName;
-        $this->userId      = $userId;
+        $this->userId        = $userId;
     }
 
     public function getId()
@@ -638,14 +642,19 @@ if (true !== is_file($aclFile)) {
     // ... Define roles, components, access, etc
 
     // Store serialized list into plain file
-    file_put_contents($aclFile, serialize($acl));
+    file_put_contents(
+        $aclFile,
+        serialize($acl)
+    );
 } else {
     // Restore ACL object from serialized file
-    $acl = unserialize(file_get_contents($aclFile));
+    $acl = unserialize(
+        file_get_contents($aclFile)
+    );
 }
 
 // Use ACL list as needed
-if (true === $acl->isAllowed('manager', 'admin', 'dashboard');) {
+if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
     echo 'Access denied :(';

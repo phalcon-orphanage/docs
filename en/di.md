@@ -526,7 +526,7 @@ use Phalcon\Logger\Adapter\File as LoggerFile;
 $di->set(
     'logger',
     [
-        'className' => 'Phalcon\Logger\Adapter\File',
+        'className' => LoggerFile::class,
         'arguments' => [
             [
                 'type'  => 'parameter',
@@ -606,14 +606,14 @@ The service can be registered this way:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response'
+        'className' => \Phalcon\Http\Response::class
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'arguments' => [
             [
                 'type' => 'service',
@@ -672,14 +672,14 @@ A service with setter injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'calls'     => [
             [
                 'method'    => 'setResponse',
@@ -733,14 +733,14 @@ A service with properties injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className'  => 'SomeApp\SomeComponent',
+        'className'  => \SomeApp\SomeComponent::class,
         'properties' => [
             [
                 'name'  => 'response',
@@ -763,11 +763,11 @@ $di->set(
 
 Supported parameter types include the following:
 
-| Type      | Description                                          | Example                                                                     |
-| --------- | ---------------------------------------------------- |-----------------------------------------------------------------------------| 
-| parameter | Represents a literal value to be passed as parameter | `['type' => 'parameter', 'value' => 1234]`                                  |
-| service   | Represents another service in the service container  | `['type' => 'service', 'name' => 'request']`                                |
-| instance  | Represents an object that must be built dynamically  | `['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| Type      | Description                                          | Example                                                                           |
+| --------- | ---------------------------------------------------- |-----------------------------------------------------------------------------------|
+| parameter | Represents a literal value to be passed as parameter | `['type' => 'parameter', 'value' => 1234]`                                        |
+| service   | Represents another service in the service container  | `['type' => 'service', 'name' => 'request']`                                      |
+| instance  | Represents an object that must be built dynamically  | `['type' => 'instance', 'className' => \DateTime::class, 'arguments' => ['now']]` |
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However,
 these provide a more robust approach to define and inject services.
@@ -788,7 +788,7 @@ use Phalcon\Http\Request;
 $di = new Di();
 
 // By its class name
-$di['request'] = 'Phalcon\Http\Request';
+$di['request'] = Request::class;
 
 // Using an anonymous function, the instance will be lazy loaded
 $di['request'] = function () {
@@ -800,7 +800,7 @@ $di['request'] = new Request();
 
 // Using an array definition
 $di['request'] = [
-    'className' => 'Phalcon\Http\Request',
+    'className' => Request::class,
 ];
 ```
 
@@ -859,7 +859,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 // new MyComponent('some-parameter', 'other')
 $component = $di->get(
-    'MyComponent',
+    \MyComponent::class,
     [
         'some-parameter',
         'other',

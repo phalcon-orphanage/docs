@@ -819,7 +819,7 @@ class MyTemplateAdapter extends Engine
      * @param string $path
      * @param array $params
      */
-    public function render($path, $params)
+    public function render(string $path, $params)
     {
         // Access view
         $view = $this->_view;
