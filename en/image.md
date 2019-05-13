@@ -12,9 +12,9 @@ version: '4.0'
 ## Adapters
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
-| Class                           | Description                                                                         |
-|---------------------------------|-------------------------------------------------------------------------------------|
-| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)      | Requires the [GD PHP extension][gd]            |
+| Class                                                              | Description                                       |
+|--------------------------------------------------------------------|---------------------------------------------------|
+| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension][gd]               |
 | [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension][imagick] |
 
 ### Factory

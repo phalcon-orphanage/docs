@@ -94,11 +94,11 @@ $config = new Config($settings);
 ## File Adapters
 The adapters available are:
 
-| Class                         | Description                                                                                      |
-|-------------------------------|--------------------------------------------------------------------------------------------------|
-| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)  | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| Class                                                          | Description                                                                                      |
+|----------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
 | [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | Uses JSON files to store settings.                                                               |
-| [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)  | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
 | [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | Uses YAML files to store settings.                                                               |
 
 ## Reading INI Files
