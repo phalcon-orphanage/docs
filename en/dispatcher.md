@@ -28,7 +28,7 @@ while (!$finished) {
     call_user_func_array(
         [
             $controller,
-            $actionName . 'Action'
+            $actionName . 'Action',
         ],
         $params
     );
@@ -157,7 +157,7 @@ More forwarding examples:
 // Forward flow to another action in the current controller
 $this->dispatcher->forward(
     [
-        'action' => 'search'
+        'action' => 'search',
     ]
 );
 
@@ -166,7 +166,7 @@ $this->dispatcher->forward(
 $this->dispatcher->forward(
     [
         'action' => 'search',
-        'params' => [1, 2, 3]
+        'params' => [1, 2, 3],
     ]
 );
 ```
@@ -194,24 +194,30 @@ use Phalcon\Events\Event;
 $di = new Di();
 
 $modules = [
-  'backend' => [
-      'className' => \App\Backend\Bootstrap::class,
-      'path'      => '/app/Modules/Backend/Bootstrap.php',
-      'metadata'  => [
-          'controllersNamespace' => 'App\Backend\Controllers',
-      ],
-  ],
+    'backend' => [
+        'className' => \App\Backend\Bootstrap::class,
+        'path'      => '/app/Modules/Backend/Bootstrap.php',
+        'metadata'  => [
+            'controllersNamespace' => 'App\Backend\Controllers',
+        ],
+    ],
 ];
 
 $manager = new Manager();
 
 $manager->attach(
-  'dispatch:beforeForward',
-  function (Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
-      $metadata = $modules[$forward['module']]['metadata'];
-      $dispatcher->setModuleName($forward['module']);
-      $dispatcher->setNamespaceName($metadata['controllersNamespace']);
-  }
+    'dispatch:beforeForward',
+    function (Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
+        $moduleName = $forward['module'];
+
+        $metadata = $modules[$moduleName]['metadata'];
+
+        $dispatcher->setModuleName($moduleName);
+
+        $dispatcher->setNamespaceName(
+            $metadata['controllersNamespace']
+        );
+    }
 );
 
 $dispatcher = new Dispatcher();
@@ -288,9 +294,9 @@ If the desired schema is: `https://example.com/controller/key1:value1/key2:value
 <?php
 
 use Phalcon\Dispatcher;
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 $di->set(
     'dispatcher',
@@ -307,10 +313,13 @@ $di->set(
                 $keyParams = [];
 
                 // Explode each parameter as key,value pairs
-                foreach ($params as $number => $value) {
-                    $parts = explode(':', $value);
+                foreach ($params as $param) {
+                    $parts = explode(':', $param);
 
-                    $keyParams[$parts[0]] = $parts[1];
+                    $key   = $parts[0];
+                    $value = $parts[1];
+
+                    $keyParams[$key] = $value;
                 }
 
                 // Override parameters
@@ -382,7 +391,9 @@ $di->set(
             'dispatch:beforeDispatchLoop',
             function (Event $event, $dispatcher) {
                 $dispatcher->setActionName(
-                    Text::camelize($dispatcher->getActionName())
+                    Text::camelize(
+                        $dispatcher->getActionName()
+                    )
                 );
             }
         );
@@ -456,8 +467,6 @@ class PostsController extends Controller
 {
     /**
      * Shows posts
-     *
-     * @param \Posts $post
      */
     public function showAction(Posts $post)
     {
@@ -506,10 +515,16 @@ $di->set(
 
                         // Check if the parameter expects a model instance
                         if (is_subclass_of($className, Model::class)) {
-                            $model = $className::findFirstById($dispatcher->getParams()[0]);
+                            $model = $className::findFirstById(
+                                $dispatcher->getParams()[0]
+                            );
 
                             // Override the parameters by the model instance
-                            $dispatcher->setParams([$model]);
+                            $dispatcher->setParams(
+                                [
+                                    $model,
+                                ]
+                            );
                         }
                     }
                 } catch (Exception $e) {
@@ -537,7 +552,9 @@ use Phalcon\Mvc\Model\Binder;
 
 $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinder(new Binder());
+$dispatcher->setModelBinder(
+    new Binder()
+);
 
 return $dispatcher;
 ```
@@ -557,8 +574,6 @@ class CrudController extends Controller
 {
     /**
      * Show action
-     *
-     * @param Model $model
      */
     public function showAction(Model $model)
     {
@@ -594,8 +609,6 @@ class PostsController extends Controller
 {
     /**
      * Shows posts
-     *
-     * @param Posts $post
      */
     public function showAction(Posts $post)
     {
