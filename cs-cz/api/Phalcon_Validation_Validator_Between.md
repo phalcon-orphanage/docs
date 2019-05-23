@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Between'
 ---
+
 # Class **Phalcon\Validation\Validator\Between**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
