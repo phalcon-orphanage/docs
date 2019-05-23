@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Strategy\Introspection'
 ---
+
 # Class **Phalcon\Mvc\Model\MetaData\Strategy\Introspection**
 
 *implements* [Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface)
