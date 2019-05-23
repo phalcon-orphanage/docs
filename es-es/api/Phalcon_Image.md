@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Image'
 ---
+
 # Class **Phalcon\Image**
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
