@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 ---
+
 # Controllers
 
 * * *
@@ -333,7 +334,7 @@ Services may act as controllers, controllers classes are always requested from t
 
 // Register a controller as a service
 $di->set(
-    'IndexController',
+    \IndexController::class,
     function () {
         $component = new Component();
 
@@ -343,7 +344,7 @@ $di->set(
 
 // Register a namespaced controller as a service
 $di->set(
-    'Backend\Controllers\IndexController',
+    \Backend\Controllers\IndexController::class,
     function () {
         $component = new Component();
 
