@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Callback'
 ---
+
 # Class **Phalcon\Validation\Validator\Callback**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
