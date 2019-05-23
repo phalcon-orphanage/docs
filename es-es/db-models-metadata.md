@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Metadata
 
 * * *
@@ -34,14 +35,13 @@ print_r($dataTypes);
 
 Once the application is in a production stage, it is not necessary to query the metadata of the table from the database system each time you use the table. This could be done caching the metadata using any of the following adapters:
 
-| Adaptador    | Descripción                                                                                                                                                                                                                                                                                                              | API                                                                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| Apc          | Este adaptador utiliza [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) para almacenar los metadatos de tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción).                                                                                   | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
-| Files        | Este adaptador utiliza archivos planos para almacenar los metadatos. Este adaptador reduce las consultas a la base de datos, pero puede incrementar el acceso al sistema de archivos.                                                                                                                                    | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
-| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción)                                                                                                | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
-| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                                                                                                         | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
-| Redis        | This adapter uses [Redis](https://redis.io) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                                                                                                       | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
-| Session      | This adapter stores metadata in the `$_SESSION` superglobal. This adapter is recommended only when the application is actually using a small number of models. The metadata are refreshed every time a new session starts. This also requires the use of `session_start()` to start the session before using any models. | [Phalcon\Mvc\Model\MetaData\Session](api/Phalcon_Mvc_Model_MetaData_Session)           |
+| Adaptador    | Descripción                                                                                                                                                                                                                            | API                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Apc          | Este adaptador utiliza [Alternative PHP Cache (APC)](https://secure.php.net/manual/en/book.apc.php) para almacenar los metadatos de tabla. Puede especificar la duración de los metadatos con opciones. (Recomendado para producción). | [Phalcon\Mvc\Model\MetaData\Apc](api/Phalcon_Mvc_Model_MetaData_Apc)                   |
+| Files        | Este adaptador utiliza archivos planos para almacenar los metadatos. Este adaptador reduce las consultas a la base de datos, pero puede incrementar el acceso al sistema de archivos.                                                  | [Phalcon\Mvc\Model\MetaData\Files](api/Phalcon_Mvc_Model_MetaData_Files)               |
+| Libmemcached | This adapter uses the [Memcached Server](https://www.memcached.org) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción)              | [Phalcon\Mvc\Model\MetaData\Libmemcached](api/Phalcon_Mvc_Model_MetaData_Libmemcached) |
+| Memory       | This adapter is the default. The metadata is cached only during the request. When the request is completed, the metadata are released as part of the normal memory of the request. (Recommended for Development)                       | [Phalcon\Mvc\Model\MetaData\Memory](api/Phalcon_Mvc_Model_MetaData_Memory)             |
+| Redis        | This adapter uses [Redis](https://redis.io) to store the table metadata. Los parámetros de servidor así como la duración de la caché se especifica en las opciones. (Recomendado para producción).                                     | [Phalcon\Mvc\Model\MetaData\Redis](api/Phalcon_Mvc_Model_MetaData_Redis)               |
 
 As other ORM's dependencies, the metadata manager is requested from the services container:
 
