@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Formatter\Firephp'
 ---
+
 # Class **Phalcon\Logger\Formatter\Firephp**
 
 *extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
