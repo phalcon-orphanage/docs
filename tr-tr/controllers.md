@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
 ---
+
 # Kontrolcüler
 
 * * *
@@ -331,9 +332,9 @@ Services may act as controllers, controllers classes are always requested from t
 ```php
 <?php
 
-// Bir denetleyiciyi bir hizmet olarak kaydettirme
+// Register a controller as a service
 $di->set(
-    'IndexController',
+    \IndexController::class,
     function () {
         $component = new Component();
 
@@ -341,9 +342,9 @@ $di->set(
     }
 );
 
-// Ad alanlı bir denetleyiciyi bir hizmet olarak kaydettirme
+// Register a namespaced controller as a service
 $di->set(
-    'Backend\Controllers\IndexController',
+    \Backend\Controllers\IndexController::class,
     function () {
         $component = new Component();
 
