@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Php'
 ---
+
 # Class **Phalcon\Config\Adapter\Php**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
