@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\Behavior'
 ---
+
 # Abstract class **Phalcon\Mvc\Collection\Behavior**
 
 *implements* [Phalcon\Mvc\Collection\BehaviorInterface](Phalcon_Mvc_Collection_BehaviorInterface)
