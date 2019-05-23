@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Index'
 ---
+
 # Class **Phalcon\Db\Index**
 
 *implements* [Phalcon\Db\IndexInterface](Phalcon_Db_IndexInterface)
