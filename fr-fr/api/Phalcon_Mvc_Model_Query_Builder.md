@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Query\Builder'
 ---
+
 # Class **Phalcon\Mvc\Model\Query\Builder**
 
 *implements* [Phalcon\Mvc\Model\Query\BuilderInterface](Phalcon_Mvc_Model_Query_BuilderInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
