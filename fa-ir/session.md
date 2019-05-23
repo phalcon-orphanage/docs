@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 ---
+
 # Session Component
 
 * * *
@@ -59,6 +60,7 @@ $options = [
 ];
 
 $session = Factory::load($options);
+
 $session->start();
 ```
 
