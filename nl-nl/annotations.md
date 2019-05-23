@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 ---
+
 # Annotations Parser
 
 * * *
@@ -275,26 +276,28 @@ class CacheEnablerPlugin extends Plugin
             $dispatcher->getActiveMethod()
         );
 
-        // Check if the method has an annotation 'Cache'
-        if ($annotations->has('Cache')) {
-            // The method has the annotation 'Cache'
-            $annotation = $annotations->get('Cache');
-
-            // Get the lifetime
-            $lifetime = $annotation->getNamedParameter('lifetime');
-
-            $options = [
-                'lifetime' => $lifetime,
-            ];
-
-            // Check if there is a user defined cache key
-            if ($annotation->hasNamedParameter('key')) {
-                $options['key'] = $annotation->getNamedParameter('key');
-            }
-
-            // Enable the cache for the current method
-            $this->view->cache($options);
+        // Return normally if the method doesn't have a 'Cache' annotation
+        if (!$annotations->has('Cache')) {
+            return true;
         }
+
+        // The method has the annotation 'Cache'
+        $annotation = $annotations->get('Cache');
+
+        // Get the lifetime
+        $lifetime = $annotation->getNamedParameter('lifetime');
+
+        $options = [
+            'lifetime' => $lifetime,
+        ];
+
+        // Check if there is a user defined cache key
+        if ($annotation->hasNamedParameter('key')) {
+            $options['key'] = $annotation->getNamedParameter('key');
+        }
+
+        // Enable the cache for the current method
+        $this->view->cache($options);
     }
 }
 ```
@@ -374,25 +377,25 @@ class SecurityAnnotationsPlugin extends Plugin
         // Get annotations in the controller class
         $annotations = $this->annotations->get($controllerName);
 
-        // The controller is private?
-        if ($annotations->getClassAnnotations()->has('Private')) {
-            // Check if the session variable is active?
-            if (!$this->session->get('auth')) {
-
-                // The user is no logged redirect to login
-                $dispatcher->forward(
-                    [
-                        'controller' => 'session',
-                        'action'     => 'login',
-                    ]
-                );
-
-                return false;
-            }
+        // The controller is not private? Continue normally
+        if (!$annotations->getClassAnnotations()->has('Private')) {
+            return true;
         }
 
-        // Continue normally
-        return true;
+        // Check if the session variable is active?
+        if ($this->session->get('auth')) {
+            return true;
+        }
+
+        // The user is no logged redirect to login
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
     }
 }
 ```
