@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 upgrade: '#models'
 ---
+
 # Models
 
 * * *
@@ -263,9 +264,10 @@ echo 'The robot name is ', $robot->name, "\n";
 
 // robotsテーブルの最初の機械式のロボットは？
 $robot = Robots::findFirst("type = 'mechanical'");
+
 echo 'The first mechanical robot name is ', $robot->name, "\n";
 
-// バーチャルなロボットを名前順に並び替えて最初の100件を取得する
+// Get first virtual robot ordered by name
 $robot = Robots::findFirst(
     [
         "type = 'virtual'",
@@ -502,7 +504,7 @@ class Robots extends Model
 
     public function getResultsetClass()
     {
-    return 'Application\Mvc\Model\Resultset\Custom';
+        return \Application\Mvc\Model\Resultset\Custom::class;
     }
 }
 ```
@@ -513,17 +515,17 @@ and finally in your code you will have something like this:
 <?php
 
 /**
- * robotsの検索
+ * Find the robots 
  */
 $robots = Robots::find(
     [
         'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
-        'order'      => 'date'
+        'order'      => 'date',
     ]
 );
 
 /**
- * データをビューに渡す
+ * Pass the data to the view
  */
 $this->view->mydata = $robots->getSomeData();
 ```
@@ -636,19 +638,19 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 use Store\Toys\Robots;
 
-$array = ['a','b','c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
+$array = ['a', 'b', 'c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
 
 unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
 
-// キーの番号を振り直さなければならない
+// Now we have to renumber the keys
 $array = array_values($array); // $array: [[0] => 'a', [1] => 'c']
 
 $robots = Robots::find(
     [
         'letter IN ({letter:array})',
         'bind' => [
-            'letter' => $array
-        ]
+            'letter' => $array,
+        ],
     ]
 );
 ```
@@ -761,10 +763,10 @@ $rowcount = Employees::count(
 
 // 検査担当の従業員は何名いるか？
 $rowcount = Employees::count(
-    'area = 'Testing''
+    'area = "Testing"'
 );
 
-// 担当別にグルーピングした結果で従業員をカウントする
+// Count employees grouping results by their area
 $group = Employees::count(
     [
         'group' => 'area',
@@ -774,7 +776,7 @@ foreach ($group as $row) {
    echo 'There are ', $row->rowcount, ' in ', $row->area;
 }
 
-// 従業員を担当別にグルーピングしてカウントし、件数で結果を並び替える
+// Count employees grouping by their area and ordering the result by count
 $group = Employees::count(
     [
         'group' => 'area',
@@ -782,12 +784,12 @@ $group = Employees::count(
     ]
 );
 
-// バインドされたパラメータを使用してSQLインジェクションを避ける
+// Avoid SQL injections using bound parameters
 $group = Employees::count(
     [
         'type > ?0',
         'bind' => [
-            $type
+            $type,
         ],
     ]
 );
@@ -813,19 +815,20 @@ $total = Employees::sum(
     ]
 );
 
-// 各担当ごとの給与のグルーピングを生成する
+// Generate a grouping of the salaries of each area
 $group = Employees::sum(
     [
         'column' => 'salary',
         'group'  => 'area',
     ]
 );
+
 foreach ($group as $row) {
    echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
 }
 
-// 各担当ごとの給与のグルーピングを生成して
-// 給与が高いものから低いものへ並べる
+// Generate a grouping of the salaries of each area ordering
+// salaries from higher to lower
 $group = Employees::sum(
     [
         'column' => 'salary',
@@ -834,12 +837,12 @@ $group = Employees::sum(
     ]
 );
 
-// バインドされたパラメータを使用してSQLインジェクションを避ける
+// Avoid SQL injections using bound parameters
 $group = Employees::sum(
     [
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -865,13 +868,13 @@ $average = Employees::average(
     ]
 );
 
-// バインドされたパラメータを使用してSQLインジェクションを避ける
+// Avoid SQL injections using bound parameters
 $average = Employees::average(
     [
         'column'     => 'age',
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -1198,9 +1201,12 @@ class Robots extends Model
 }
 
 $manager = new Manager();
+
 $manager->setModelPrefix('wp_');
+
 $robots = new Robots(null, null, $manager);
-echo $robots->getSource(); // wp_robotsが返される
+
+echo $robots->getSource(); // will return wp_robots
 ```
 
 ## Auto-generated identity columns
@@ -1488,34 +1494,46 @@ use Phalcon\Mvc\Model;
 
 class User extends Model
 {
-  public function initialize()
-  {
-      $this->keepSnapshots(true);
-  }
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 
-$user       = new User();
+$user = new User();
+
 $user->name = 'Test User';
+
 $user->create();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->login = 'testuser';
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->update();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
 ```
 
 On Phalcon 4.0.0 and later it is:
 
-```php
-array(0) {
-}
-array(1) {
-[0]=> 
-    string(5) "login"
-}
-array(0) {
-}
-```
+    array(0) {
+    }
+    array(1) {
+    [0]=> 
+        string(5) "login"
+    }
+    array(0) {
+    }
+    
 
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
