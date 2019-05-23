@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\StringLength'
 ---
+
 # Class **Phalcon\Validation\Validator\StringLength**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
