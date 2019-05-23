@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Forms\Element'
 ---
+
 # Abstract class **Phalcon\Forms\Element**
 
 *implements* [Phalcon\Forms\ElementInterface](Phalcon_Forms_ElementInterface)
