@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Formatter\Json'
 ---
+
 # Class **Phalcon\Logger\Formatter\Json**
 
 *extends* abstract class [Phalcon\Logger\Formatter](Phalcon_Logger_Formatter)
