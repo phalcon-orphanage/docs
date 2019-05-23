@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Grouped'
 ---
+
 # Class **Phalcon\Config\Adapter\Grouped**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
