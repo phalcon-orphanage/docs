@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Dialect\Postgresql'
 ---
+
 # Class **Phalcon\Db\Dialect\Postgresql**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)

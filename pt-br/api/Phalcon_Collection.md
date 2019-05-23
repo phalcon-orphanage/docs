@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Collection'
 ---
+
 # Class [Phalcon\Collection](Phalcon_Collection)
 
 **implements** [ArrayAccess](https://secure.php.net/manual/en/class.arrayaccess.php), [Countable](https://secure.php.net/manual/en/class.countable.php), [IteratorAggregate](https://secure.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://secure.php.net/manual/en/class.jsonserializable.php), [Serializable](https://secure.php.net/manual/en/class.serializable.php)

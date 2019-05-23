@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Resultset'
 ---
+
 # Abstract class **Phalcon\Mvc\Model\Resultset**
 
 *implements* [Phalcon\Mvc\Model\ResultsetInterface](Phalcon_Mvc_Model_ResultsetInterface), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php), [SeekableIterator](https://php.net/manual/en/class.seekableiterator.php), [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Serializable](https://php.net/manual/en/class.serializable.php), [JsonSerializable](https://php.net/manual/en/class.jsonserializable.php)

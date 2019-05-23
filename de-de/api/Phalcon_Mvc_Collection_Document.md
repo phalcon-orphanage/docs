@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\Document'
 ---
+
 # Class **Phalcon\Mvc\Collection\Document**
 
 *implements* [Phalcon\Mvc\EntityInterface](Phalcon_Mvc_EntityInterface), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)

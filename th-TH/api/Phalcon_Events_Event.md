@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Events\Event'
 ---
+
 # Class **Phalcon\Events\Event**
 
 *implements* [Phalcon\Events\EventInterface](Phalcon_Events_EventInterface)

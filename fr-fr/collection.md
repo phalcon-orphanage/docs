@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 upgrade: ''
 category: 'collection'
 ---
+
 # Collection Component
 
 * * *

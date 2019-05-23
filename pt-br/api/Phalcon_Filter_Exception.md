@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\Exception'
 ---
+
 # Class [Phalcon\Filter\Exception](Phalcon_Filter_Exception)
 
 **extends** [Phalcon\Exception](Phalcon_Exception)

@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Exception'
 ---
+
 # Class [Phalcon\Acl\Exception](Phalcon_Acl_Exception)
 
 **extiende** [Phalcon\Exception](Phalcon_Exception)

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Adapter\Pdo\Sqlite'
 ---
+
 # Class **Phalcon\Db\Adapter\Pdo\Sqlite**
 
 *extends* abstract class [Phalcon\Db\Adapter\Pdo](Phalcon_Db_Adapter_Pdo)

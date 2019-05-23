@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Forms\Element\Text'
 ---
+
 # Class **Phalcon\Forms\Element\Text**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)

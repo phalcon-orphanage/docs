@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\CombinedFieldsValidator'
 ---
+
 # Abstract class **Phalcon\Validation\CombinedFieldsValidator**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)

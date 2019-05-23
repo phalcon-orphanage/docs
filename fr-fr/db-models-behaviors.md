@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Behaviors
 
 * * *
@@ -35,7 +36,7 @@ class Users extends Model
                     'beforeCreate' => [
                         'field'  => 'created_at',
                         'format' => 'Y-m-d',
-                    ]
+                    ],
                 ]
             )
         );
@@ -67,7 +68,7 @@ public function initialize()
                 'beforeCreate' => [
                     'field'  => 'created_at',
                     'format' => 'Y-m-d',
-                ]
+                ],
             ]
         )
     );
@@ -96,8 +97,8 @@ public function initialize()
                         );
 
                         return $datetime->format('Y-m-d H:i:sP');
-                    }
-                ]
+                    },
+                ],
             ]
         )
     );

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\FilterLocatorFactory'
 ---
+
 # Class [Phalcon\Filter\FilterLocatorFactory](Phalcon_Filter_FilterLocatorFactory)
 
 **implements** [Phalcon\Service\LocatorFactoryInterface](Phalcon_Service_LocatorFactoryInterface)

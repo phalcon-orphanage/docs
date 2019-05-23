@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Adapter\Files'
 ---
+
 # Class **Phalcon\Session\Adapter\Files**
 
 *extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)

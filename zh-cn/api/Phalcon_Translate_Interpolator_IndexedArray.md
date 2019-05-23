@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Translate\Interpolator\IndexedArray'
 ---
+
 # Class **Phalcon\Translate\Interpolator\IndexedArray**
 
 *implements* [Phalcon\Translate\InterpolatorInterface](Phalcon_Translate_InterpolatorInterface)

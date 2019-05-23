@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Cli\Dispatcher\Exception'
 ---
+
 # Class **Phalcon\Cli\Dispatcher\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

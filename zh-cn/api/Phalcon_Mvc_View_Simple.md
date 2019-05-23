@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\View\Simple'
 ---
+
 # Class **Phalcon\Mvc\View\Simple**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)

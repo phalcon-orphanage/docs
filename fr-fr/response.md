@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Response Component
 
 * * *
@@ -142,6 +143,7 @@ The expiration date is one of the easiest and most effective ways to cache a pag
 <?php
 
 $expiryDate = new DateTime();
+
 $expiryDate->modify('+2 months');
 
 $response->setExpires($expiryDate);
@@ -155,6 +157,7 @@ If we set this value to a date in the past the browser will always refresh the r
 <?php
 
 $expiryDate = new DateTime();
+
 $expiryDate->modify('-10 minutes');
 
 $response->setExpires($expiryDate);
@@ -192,7 +195,7 @@ An `entity-tag` or `E-tag` is a unique identifier that helps the browser realize
 // Calculate the E-Tag based on the modification time of the latest news
 $mostRecentDate = News::maximum(
     [
-        'column' => 'created_at'
+        'column' => 'created_at',
     ]
 );
 

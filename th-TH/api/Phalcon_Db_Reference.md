@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Reference'
 ---
+
 # Class **Phalcon\Db\Reference**
 
 *implements* [Phalcon\Db\ReferenceInterface](Phalcon_Db_ReferenceInterface)

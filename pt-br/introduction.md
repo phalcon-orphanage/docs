@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 ---
+
 # Welcome
 
 Welcome to the documentation for the Phalcon framework.

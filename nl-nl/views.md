@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 ---
+
 # Views
 
 * * *
@@ -833,7 +834,7 @@ class MyTemplateAdapter extends Engine
      * @param string $path
      * @param array $params
      */
-    public function render($path, $params)
+    public function render(string $path, $params)
     {
         // Access view
         $view = $this->_view;
@@ -871,15 +872,15 @@ $di->set(
         // Set the engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
+                '.my-html' => \MyTemplateAdapter::class,
             ]
         );
 
         // Using more than one template engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
-                '.phtml'   => 'Phalcon\Mvc\View\Engine\Php',
+                '.my-html' => \MyTemplateAdapter::class,
+                '.phtml'   => \Phalcon\Mvc\View\Engine\Php::class,
             ]
         );
 

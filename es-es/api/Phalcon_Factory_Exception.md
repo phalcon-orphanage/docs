@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Factory\Exception'
 ---
+
 # Class **Phalcon\Factory\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Espacios de nombres
 
 * * *
@@ -137,7 +138,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'Store\Models\Parts',
+            Parts::class,
             'robots_id',
             [
                 'alias' => 'parts',

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 ---
+
 # Cookies Component
 
 * * *
@@ -24,12 +25,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // cookieがすでに設定されているかどうかを確認
+        // Check if the cookie has previously set
         if ($this->cookies->has('remember-me')) {
-            // cookieの値を取得
+            // Get the cookie
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // クッキーの値を取得
+            // Get the cookie's value
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -41,6 +42,7 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+
         $this->cookies->send();
     }
 
@@ -48,7 +50,7 @@ class SessionController extends Controller
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // cookieを削除
+        // Delete the cookie
         $rememberMeCookie->delete();
     }
 }

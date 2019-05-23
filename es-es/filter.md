@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 upgrade: '#filter'
 category: 'filter'
 ---
+
 # Componente Filtro
 
 * * *
@@ -28,8 +29,9 @@ Este componente crea un localizador con filtros predefinidos. Cada filtro se car
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
+
+$locator = $factory->newInstance();
 ```
 
 Una vez instanciado, el localizador se puede utilizar en cualquier parte para limpiar el contenido (según las necesidades de la aplicación).
@@ -41,14 +43,16 @@ El filtro localizador (`FilterLocator`) también se puede utilizar como componen
 ```php
 <?php
 
-use MiApp\Limpiadores\HolaLimpiador;
+use MyApp\Sanitizers\HelloSanitizer;
 use Phalcon\Filter\FilterLocator;
 
-$servicios = [
-    'hola' => HolaLimpiador::class,
+$services = [
+    'hello' => HelloSanitizer::class,
 ];
-$localizador = new FilterLocator($servicios);
-$texto = $localizador->hola('Mundo');
+
+$locator = new FilterLocator($services);
+
+$text = $locator->hello('World');
 ```
 
 > El contenedor `Phalcon\Di` trae de manera predeterminada el objeto `Phalcon\Filter\FilterLocator` junto con los demás limpiadores predefinidos. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
@@ -309,20 +313,23 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
 /**
- * Class ProductosController
+ * Class ProductsController
  * 
  * @property Request $request
  */
-class ProductosController extends Controller
+class ProductsController extends Controller
 {
-    public function guardarAction()
+    public function saveAction()
     {
         if (true === $this->request->isPost()) {
-            // Limpiar el precio
-            $precio = $this->request->getPost('precio', 'double');
+            // Sanitizing price from input
+            $price = $this->request->getPost('price', 'double');
 
-            // Limpiar la dirección de correo electrónico
-            $emilio = $this->request->getPost('emilioUsuario', FilterLocator::FILTER_EMAIL);
+            // Sanitizing email from input
+            $email = $this->request->getPost(
+                'customerEmail',
+                FilterLocator::FILTER_EMAIL
+            );
         }
     }
 }
@@ -363,14 +370,15 @@ Con la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) se
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-// Devuelve 'Hola'
-$localizador->sanitize('<h1>Hola</h1>', 'striptags');
+$locator = $factory->newInstance();
 
-// Devuelve 'Hola'
-$localizador->sanitize('  Hola   ', 'trim');
+// 'Hello'
+$locator->sanitize('<h1>Hello</h1>', 'striptags');
+
+// 'Hello'
+$locator->sanitize('  Hello   ', 'trim');
 ```
 
 ## Creación de limpiadores
@@ -382,14 +390,15 @@ Se pueden añadir nuevos limpiadores a [Phalcon\Filter\FilterLocator](api/Phalco
 
 use Phalcon\Filter\FilterLocator;
 
-$servicios = [
+$services = [
     'md5' => function ($input) {
         return md5($input);
     },
 ];
 
-$localizador   = new FilterLocator($servicios);
-$limpio = $localizador->sanitize($valor, 'md5');
+$locator = new FilterLocator($services);
+
+$sanitized = $locator->sanitize($value, 'md5');
 ```
 
 Ahora bien, si ya hay una instancia de `FilterLocator` (p.e. si se ha usado [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) y `newInstance()`), basta con agregar el nuevo filtro:
@@ -399,17 +408,18 @@ Ahora bien, si ya hay una instancia de `FilterLocator` (p.e. si se ha usado [Pha
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-$localizador->set(
+$locator = $factory->newInstance();
+
+$locator->set(
     'md5',
     function ($input) {
         return md5($input);
     }
 );
 
-$limpio = $localizador->sanitize($valor, 'md5');
+$sanitized = $locator->sanitize($value, 'md5');
 ```
 
 O, si lo prefiere, puede implementar el filtro en una clase:
@@ -421,24 +431,25 @@ use Phalcon\Filter\FilterLocatorFactory;
 
 class IPv4
 {
-    public function __invoke($valor)
+    public function __invoke($value)
     {
-        return filter_var($valor, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 }
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-$localizador->set(
+$locator = $factory->newInstance();
+
+$locator->set(
     'ipv4',
     function () {
         return new Ipv4();
     }
 );
 
-// Limpieza con el filtro 'ipv4' 
-$IpFiltrada = $localizador->sanitize('127.0.0.1', 'ipv4');
+// Sanitize with the 'ipv4' filter
+$filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```
 
 ## Combinación de limpiadores
@@ -450,12 +461,13 @@ Hay ocasiones en las que usar un solo limpiador no es suficiente para sanear los
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-// Devuelve 'Hola'
-$localizador->sanitize(
-    '   <h1> Hola </h1>   ',
+$locator = $factory->newInstance();
+
+// Returns 'Hello'
+$locator->sanitize(
+    '   <h1> Hello </h1>   ',
     [
         'striptags',
         'trim',
@@ -508,17 +520,18 @@ Se puede implementar un limpiador personalizado como función anónima. Sin emba
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-$localizador->set(
+$locator = $factory->newInstance();
+
+$locator->set(
     'md5',
     function ($input) {
         return md5($input);
     }
 );
 
-$limpio = $localizador->sanitize($valor, 'md5');
+$sanitized = $locator->sanitize($value, 'md5');
 ```
 
 O también se puede implementar el limpiador en una clase:
@@ -530,22 +543,23 @@ use Phalcon\Filter\FilterLocatorFactory;
 
 class IPv4
 {
-    public function __invoke($valor)
+    public function __invoke($value)
     {
-        return filter_var($valor, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+        return filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 }
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
 
-$localizador->set(
+$locator = $factory->newInstance();
+
+$locator->set(
     'ipv4',
     function () {
         return new Ipv4();
     }
 );
 
-// Limpieza con el filtro 'ipv4' 
-$IpFiltrada = $localizador->sanitize('127.0.0.1', 'ipv4');
+// Sanitize with the 'ipv4' filter
+$filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 ```

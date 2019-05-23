@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 ---
+
 # New Pull Request
 
 * * *

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
 
@@ -93,7 +93,7 @@ $connection = new Connection(
         "username"      => "root",
         "password"      => "",
         "dbname"        => "test",
-        "dialectClass"  => $dialect
+        "dialectClass"  => $dialect,
     ]
 );
 ```
@@ -106,7 +106,12 @@ $phql = "
   FROM   Posts
   WHERE  MATCH_AGAINST(title, :pattern:)";
 
-$posts = $modelsManager->executeQuery($phql, ['pattern' => $pattern]);
+$posts = $modelsManager->executeQuery(
+    $phql,
+    [
+        'pattern' => $pattern,
+    ]
+);
 ```
 
 ## Conexión a bases de datos
@@ -223,6 +228,7 @@ use Phalcon\Di;
 use Phalcon\Db\Adapter\Pdo\Factory;
 
 $di = new Di();
+
 $config = new Ini('config.ini');
 
 $di->set('config', $config);
@@ -246,21 +252,22 @@ Lo anterior devuelve la instancia de base de datos correcta y también tiene la 
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
 
-// Enviar una consulta SQL al sistema de base de datos
+// Send a SQL statement to the database system
 $result = $connection->query($sql);
 
-// Imprimir cada nombre de robot
+// Print each robot name
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Obtener todas las filas en un array
+// Get all rows in an array
 $robots = $connection->fetchAll($sql);
+
 foreach ($robots as $robot) {
    echo $robot['name'];
 }
 
-// Obtener solo la primera fila
+// Get only the first row
 $robot = $connection->fetchOne($sql);
 ```
 
@@ -277,9 +284,13 @@ Por defecto estas llamadas crean arrays con índices asociativos y numéricos. U
 <?php
 
 $sql = 'SELECT id, name FROM robots ORDER BY name';
+
 $result = $connection->query($sql);
 
-$result->setFetchMode(Phalcon\Db::FETCH_NUM);
+$result->setFetchMode(
+    Phalcon\Db::FETCH_NUM
+);
+
 while ($robot = $result->fetch()) {
    echo $robot[0];
 }
@@ -293,16 +304,17 @@ while ($robot = $result->fetch()) {
 $sql = 'SELECT id, name FROM robots';
 $result = $connection->query($sql);
 
-// Recorrer el conjunto de resultados
+// Traverse the resultset
 while ($robot = $result->fetch()) {
    echo $robot['name'];
 }
 
-// Buscar la tercer fila
+// Seek to the third row
 $result->seek(2);
+
 $robot = $result->fetch();
 
-// Contar cuantos registros hay en el conjunto de resultados
+// Count the resultset
 echo $result->numRows();
 ```
 
@@ -361,7 +373,12 @@ Los marcadores permiten enlazar parámetros para evitar inyecciones de SQL:
 
 $phql = "SELECT * FROM Store\Robots WHERE id > :id:";
 
-$robots = $this->modelsManager->executeQuery($phql, ['id' => 100]);
+$robots = $this->modelsManager->executeQuery(
+    $phql,
+    [
+        'id' => 100,
+    ]
+);
 ```
 
 Sin embargo, algunos sistemas de bases de datos requieren acciones adicionales al usar marcadores, como especificar el tipo de parámetro:
@@ -376,7 +393,9 @@ use Phalcon\Db\Column;
 $phql = "SELECT * FROM Store\Robots LIMIT :number:";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['number' => 10],
+    [
+        'number' => 10,
+    ],
     Column::BIND_PARAM_INT
 );
 ```
@@ -389,13 +408,17 @@ Se puede utilizar marcadores con tipo de datos en sus parámetros, en lugar de e
 $phql = "SELECT * FROM Store\Robots LIMIT {number:int}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['number' => 10]
+    [
+        'number' => 10,
+    ]
 );
 
 $phql = "SELECT * FROM Store\Robots WHERE name <> {name:str}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['name' => $name]
+    [
+        'name' => $name,
+    ]
 );
 ```
 
@@ -407,7 +430,9 @@ También puede omitir el tipo si usted no necesita especificarlo:
 $phql = "SELECT * FROM Store\Robots WHERE name <> {name}";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['name' => $name]
+    [
+        'name' => $name,
+    ]
 );
 ```
 
@@ -419,7 +444,9 @@ Los marcadores con tipo de datos son además más potentes, ya que ahora podemos
 $phql = "SELECT * FROM Store\Robots WHERE id IN ({ids:array})";
 $robots = $this->modelsManager->executeQuery(
     $phql,
-    ['ids' => [1, 2, 3, 4]]
+    [
+        'ids' => [1, 2, 3, 4],
+    ]
 );
 ```
 
@@ -447,7 +474,9 @@ De forma predeterminada, los parámetros enlazados no se moldean en el dominio d
 $number = '100';
 $robots = $modelsManager->executeQuery(
     'SELECT * FROM Some\Robots LIMIT {number:int}',
-    ['number' => $number]
+    [
+        'number' => $number,
+    ]
 );
 ```
 
@@ -467,7 +496,9 @@ Esto sucede porque 100 es una variable de tipo string. Estos se soluciona fácil
 $number = '100';
 $robots = $modelsManager->executeQuery(
     'SELECT * FROM Some\Robots LIMIT {number:int}',
-    ['number' => (int) $number]
+    [
+        'number' => (int) $number,
+    ]
 );
 ```
 
@@ -476,7 +507,11 @@ Sin embargo, esta solución requiere que el desarrollador preste especial atenci
 ```php
 <?php
 
-\Phalcon\Db::setup(['forceCasting' => true]);
+\Phalcon\Db::setup(
+    [
+        'forceCasting' => true,
+    ]
+);
 ```
 
 Las siguientes acciones se llevan a cabo según el tipo de enlace especificado:
@@ -497,7 +532,11 @@ Puede configurar el ORM a moldear automáticamente los tipos considerados seguro
 ```php
 <?php
 
-\Phalcon\Mvc\Model::setup(['castOnHydrate' => true]);
+\Phalcon\Mvc\Model::setup(
+    [
+        'castOnHydrate' => true,
+    ]
+);
 ```
 
 De esta manera puede utilizar operadores estrictas o hacer suposiciones sobre el tipo de variables:
@@ -518,11 +557,11 @@ Para Insertar, actualizar o eliminar filas, puede utilizar SQL crudo o utilizar 
 ```php
 <?php
 
-// Insertando datos con instrucciones SQL en bruto
-$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ('Astro Boy', 1952)';
+// Inserting data with a raw SQL statement
+$sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES ("Astro Boy", 1952)';
 $success = $connection->execute($sql);
 
-// Con marcadores
+// With placeholders
 $sql     = 'INSERT INTO `robots`(`name`, `year`) VALUES (?, ?)';
 $success = $connection->execute(
     $sql,
@@ -532,7 +571,7 @@ $success = $connection->execute(
     ]
 );
 
-// Generando dinámicamente el SQL necesario
+// Generating dynamically the necessary SQL
 $success = $connection->insert(
     'robots',
     [
@@ -545,7 +584,7 @@ $success = $connection->insert(
     ],
 );
 
-// Generando dinámicamente el SQL necesario (otra sintaxis)
+// Generating dynamically the necessary SQL (another syntax)
 $success = $connection->insertAsDict(
     'robots',
     [
@@ -554,11 +593,11 @@ $success = $connection->insertAsDict(
     ]
 );
 
-// Actualizando datos con instrucciones SQL en crudo
-$sql     = 'UPDATE `robots` SET `name` = 'Astro boy' WHERE `id` = 101';
+// Updating data with a raw SQL statement
+$sql     = 'UPDATE `robots` SET `name` = "Astro boy" WHERE `id` = 101';
 $success = $connection->execute($sql);
 
-// Con marcadores
+// With placeholders
 $sql     = 'UPDATE `robots` SET `name` = ? WHERE `id` = ?';
 $success = $connection->execute(
     $sql,
@@ -658,7 +697,7 @@ try {
 }
 ```
 
-Además de las transacciones estándar, [Phalcon\Db](api/Phalcon_Db) ofrece soporte incorporado para [transacciones anidadas](https://en.wikipedia.org/wiki/Nested_transaction) (si el sistema de base de datos las admite). Cuando se llama `begin()` por segunda vez, se crea una transacción anidada:
+Además de las transacciones estándar, [Phalcon\Db](api/Phalcon_Db) ofrece soporte incorporado para [transacciones anidadas](https://en.wikipedia.org/wiki/Nested_transaction) (si el sistema de base de datos las admite). When you call `begin()` for a second time a nested transaction is created:
 
 ```php
 <?php
@@ -897,10 +936,9 @@ $connection->insert(
 
 Como en el anterior ejemplo, el archivo `app/logs/db.log` contendrá algo como esto:
 
-```bash
-[Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
-(name, price) VALUES ('Hot pepper', 3.50)
-```
+    [Sun, 29 Apr 12 22:35:26 -0500][DEBUG][Resource Id #77] INSERT INTO products
+    (name, price) VALUES ('Hot pepper', 3.50)
+    
 
 ## Implementar tu propio Logger
 

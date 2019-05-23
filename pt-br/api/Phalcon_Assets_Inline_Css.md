@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Inline\Css'
 ---
+
 # Class **Phalcon\Assets\Inline\Css**
 
 *extends* class [Phalcon\Assets\Inline](Phalcon_Assets_Inline)

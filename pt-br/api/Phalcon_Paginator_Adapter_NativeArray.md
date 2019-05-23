@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Paginator\Adapter\NativeArray'
 ---
+
 # Class **Phalcon\Paginator\Adapter\NativeArray**
 
 *extends* abstract class [Phalcon\Paginator\Adapter](Phalcon_Paginator_Adapter)

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Strategy\Annotations'
 ---
+
 # Class **Phalcon\Mvc\Model\MetaData\Strategy\Annotations**
 
 *implements* [Phalcon\Mvc\Model\MetaData\StrategyInterface](Phalcon_Mvc_Model_MetaData_StrategyInterface)

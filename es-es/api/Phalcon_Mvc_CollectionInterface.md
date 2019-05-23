@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\CollectionInterface'
 ---
+
 # Interface **Phalcon\Mvc\CollectionInterface**
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collectioninterface.zep)

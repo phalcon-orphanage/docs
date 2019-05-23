@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaDataInterface'
 ---
+
 # Interface **Phalcon\Mvc\Model\MetaDataInterface**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)

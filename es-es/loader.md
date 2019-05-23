@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Loader
 
 * * *
@@ -26,9 +27,9 @@ With this component you can load files from other projects or vendors, this auto
 ```php
 <?php
 
-// Autocargador básico
+// Basic autoloader
 spl_autoload_register(
-    function ($className) {
+    function (string $className) {
         $filepath = $className . '.php';
 
         if (file_exists($filepath)) {

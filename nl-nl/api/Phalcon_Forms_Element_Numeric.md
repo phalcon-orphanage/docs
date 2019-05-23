@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Forms\Element\Numeric'
 ---
+
 # Class **Phalcon\Forms\Element\Numeric**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Cookies Component
 
 * * *
@@ -24,12 +25,12 @@ class SessionController extends Controller
 {
     public function loginAction()
     {
-        // Chequeamos si la cookie esta previamente seteada
+        // Check if the cookie has previously set
         if ($this->cookies->has('remember-me')) {
-            // Obtenemos la cookie
+            // Get the cookie
             $rememberMeCookie = $this->cookies->get('remember-me');
 
-            // Obtenemos el valor de la cookie
+            // Get the cookie's value
             $value = $rememberMeCookie->getValue();
         }
     }
@@ -49,7 +50,7 @@ class SessionController extends Controller
     {
         $rememberMeCookie = $this->cookies->get('remember-me');
 
-        // Borramos la cookie
+        // Delete the cookie
         $rememberMeCookie->delete();
     }
 }

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Security Component
 
 * * *
@@ -62,18 +63,21 @@ class SessionController extends Controller
         $password = $this->request->getPost('password');
 
         $user = Users::findFirstByLogin($login);
+
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // La contraseña es válida
+                // The password is valid
             }
         } else {
-            // Para protegernos de reiterados ataques. Independientemente de si un usuario existe o no,
+            // To protect against timing attacks. Independientemente de si un usuario existe o no,
             // el script tomará aproximadamente la misma cantidad
             // ya que siempre se computará un hash.
-            $this->security->hash(rand());
+            $this->security->hash(
+                rand()
+            );
         }
 
-        // La validación ha fallado
+        // The validation has failed
     }
 }
 ```
@@ -87,9 +91,9 @@ This is another common attack against web sites and applications. Forms designed
 The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce))\[random_nonce\] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
-<?php echo Tag::form('session/login') ?>
+<?php echo Tag::form('session/login'); ?>
 
-    <!-- Iniciar sesión e ingresar contraseña ... -->
+    <!-- Login and password inputs ... -->
 
     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
@@ -171,23 +175,23 @@ use Phalcon\Security\Random;
 $random = new Random();
 
 // ...
-$bytes      = $random->bytes();
+$bytes = $random->bytes();
 
-// Genera una cadena aleatoria hexadecimal con largo $len.
-$hex        = $random->hex($len);
+// Generate a random hex string of length $len.
+$hex = $random->hex($len);
 
-// Genera una cadena base64 aleatoria de largo $len.
-$base64     = $random->base64($len);
+// Generate a random base64 string of length $len.
+$base64 = $random->base64($len);
 
-// Genera una cadena base64 de URL-segura con largo $len.
+// Generate a random URL-safe base64 string of length $len.
 $base64Safe = $random->base64Safe($len);
 
 // Genera un UUID (versión 4).
-// Más información en https://en.wikipedia.org/wiki/Universally_unique_identifier
-$uuid       = $random->uuid();
+// See https://en.wikipedia.org/wiki/Universally_unique_identifier
+$uuid = $random->uuid();
 
-// Genera un entero aleatorio entre 0 y $n.
-$number     = $random->number($n);
+// Generate a random integer between 0 and $n.
+$number = $random->number($n);
 ```
 
 [openssl]: https://php.net/manual/en/book.openssl.php) extension loaded.

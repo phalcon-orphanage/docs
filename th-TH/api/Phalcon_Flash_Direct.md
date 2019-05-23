@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Flash\Direct'
 ---
+
 # Class **Phalcon\Flash\Direct**
 
 *extends* abstract class [Phalcon\Flash](Phalcon_Flash)

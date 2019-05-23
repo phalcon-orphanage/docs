@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Adapter\Stream'
 ---
+
 # Class **Phalcon\Logger\Adapter\Stream**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)

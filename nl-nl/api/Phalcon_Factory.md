@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Factory'
 ---
+
 # Abstract class **Phalcon\Factory**
 
 *implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)

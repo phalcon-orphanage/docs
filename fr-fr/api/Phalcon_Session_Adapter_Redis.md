@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Adapter\Redis'
 ---
+
 # Class **Phalcon\Session\Adapter\Redis**
 
 *extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)

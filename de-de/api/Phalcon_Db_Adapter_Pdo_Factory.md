@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Adapter\Pdo\Factory'
 ---
+
 # Class **Phalcon\Db\Adapter\Pdo\Factory**
 
 *extends* abstract class [Phalcon\Factory](Phalcon_Factory)

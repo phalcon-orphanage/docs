@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Http\Message\Exception'
 ---
+
 # Class **Phalcon\Http\Message\Exception**
 
 **extends** class [Phalcon\Exception](Phalcon_Exception) **implements** [Throwable](https://secure.php.net/manual/en/class.throwable.php)

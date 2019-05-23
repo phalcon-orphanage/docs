@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Behaviors
 
 * * *
@@ -35,7 +36,7 @@ class Users extends Model
                     'beforeCreate' => [
                         'field'  => 'created_at',
                         'format' => 'Y-m-d',
-                    ]
+                    ],
                 ]
             )
         );
@@ -67,7 +68,7 @@ public function initialize()
                 'beforeCreate' => [
                     'field'  => 'created_at',
                     'format' => 'Y-m-d',
-                ]
+                ],
             ]
         )
     );
@@ -96,8 +97,8 @@ public function initialize()
                         );
 
                         return $datetime->format('Y-m-d H:i:sP');
-                    }
-                ]
+                    },
+                ],
             ]
         )
     );
@@ -175,7 +176,7 @@ mysql> select * from users;
 
 Note that you need to specify the deleted condition in your queries to effectively ignore them as deleted records, this behavior doesn't support that.
 
-## Creating your own behaviors
+## 创建你自己的行为
 
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc_Model_BehaviorInterface) or extend [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc_Model_Behavior) which provides most of the methods needed to ease the implementation of behaviors.
 

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Sponsors and Supporters
 
 * * *

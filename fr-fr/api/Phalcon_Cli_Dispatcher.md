@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cli\Dispatcher'
 ---
+
 # Class **Phalcon\Cli\Dispatcher**
 
 *extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)

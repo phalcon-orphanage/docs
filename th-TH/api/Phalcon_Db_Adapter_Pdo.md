@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Adapter\Pdo'
 ---
+
 # Abstract class **Phalcon\Db\Adapter\Pdo**
 
 *extends* abstract class [Phalcon\Db\Adapter](Phalcon_Db_Adapter)

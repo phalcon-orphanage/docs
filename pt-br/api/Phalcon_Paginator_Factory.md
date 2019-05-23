@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Paginator\Factory'
 ---
+
 # Class **Phalcon\Paginator\Factory**
 
 *extends* abstract class [Phalcon\Factory](Phalcon_Factory)

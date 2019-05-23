@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\CriteriaInterface'
 ---
+
 # Interface **Phalcon\Mvc\Model\CriteriaInterface**
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)

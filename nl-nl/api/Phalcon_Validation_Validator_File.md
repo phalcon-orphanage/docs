@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\File'
 ---
+
 # Class **Phalcon\Validation\Validator\File**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)

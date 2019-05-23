@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Filters\None'
 ---
+
 # Class **Phalcon\Assets\Filters\None**
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)

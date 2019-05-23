@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Resultset\Simple'
 ---
+
 # Class **Phalcon\Mvc\Model\Resultset\Simple**
 
 *extends* abstract class [Phalcon\Mvc\Model\Resultset](Phalcon_Mvc_Model_Resultset)

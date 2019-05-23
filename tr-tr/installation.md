@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'tr-tr'
+language: 'en'
 version: '4.0'
 category: 'installation'
 ---
+
 # Kurulum
 
 * * *

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Identical'
 ---
+
 # Class **Phalcon\Validation\Validator\Identical**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)

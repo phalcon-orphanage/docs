@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 ---
+
 # Security Component
 
 * * *
@@ -62,6 +63,7 @@ class SessionController extends Controller
         $password = $this->request->getPost('password');
 
         $user = Users::findFirstByLogin($login);
+
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
                 // The password is valid
@@ -70,7 +72,9 @@ class SessionController extends Controller
             // To protect against timing attacks. Regardless of whether a user
             // exists or not, the script will take roughly the same amount as
             // it will always be computing a hash.
-            $this->security->hash(rand());
+            $this->security->hash(
+                rand()
+            );
         }
 
         // The validation has failed
@@ -87,7 +91,7 @@ This is another common attack against web sites and applications. Forms designed
 The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce))\[random_nonce\] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
-<?php echo Tag::form('session/login') ?>
+<?php echo Tag::form('session/login'); ?>
 
     <!-- Login and password inputs ... -->
 
@@ -171,23 +175,23 @@ use Phalcon\Security\Random;
 $random = new Random();
 
 // ...
-$bytes      = $random->bytes();
+$bytes = $random->bytes();
 
 // Generate a random hex string of length $len.
-$hex        = $random->hex($len);
+$hex = $random->hex($len);
 
 // Generate a random base64 string of length $len.
-$base64     = $random->base64($len);
+$base64 = $random->base64($len);
 
 // Generate a random URL-safe base64 string of length $len.
 $base64Safe = $random->base64Safe($len);
 
 // Generate a UUID (version 4).
 // See https://en.wikipedia.org/wiki/Universally_unique_identifier
-$uuid       = $random->uuid();
+$uuid = $random->uuid();
 
 // Generate a random integer between 0 and $n.
-$number     = $random->number($n);
+$number = $random->number($n);
 ```
 
 [openssl]: https://php.net/manual/en/book.openssl.php) extension loaded.

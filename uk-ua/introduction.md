@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'uk-ua'
+language: 'en'
 version: '4.0'
 ---
+
 # Вітаємо
 
 Welcome to the documentation for the Phalcon framework.

@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Dependency Injection / Service Location
 
 * * *
@@ -530,11 +531,11 @@ If it is required to change the definition of a service without instantiating/re
 
 use Phalcon\Logger\Adapter\File as LoggerFile;
 
-// Registrar un servicio 'logger' con nombre de clase y sus parámetros
+// Register a service 'logger' with a class name and its parameters
 $di->set(
     'logger',
     [
-        'className' => 'Phalcon\Logger\Adapter\File',
+        'className' => LoggerFile::class,
         'arguments' => [
             [
                 'type'  => 'parameter',
@@ -544,7 +545,7 @@ $di->set(
     ]
 );
 
-// Utilizando una función anónima
+// Using an anonymous function
 $di->set(
     'logger',
     function () {
@@ -615,14 +616,14 @@ The service can be registered this way:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response'
+        'className' => \Phalcon\Http\Response::class
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'arguments' => [
             [
                 'type' => 'service',
@@ -679,14 +680,14 @@ A service with setter injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'calls'     => [
             [
                 'method'    => 'setResponse',
@@ -741,14 +742,14 @@ A service with properties injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className'  => 'SomeApp\SomeComponent',
+        'className'  => \SomeApp\SomeComponent::class,
         'properties' => [
             [
                 'name'  => 'response',
@@ -771,11 +772,11 @@ $di->set(
 
 Supported parameter types include the following:
 
-| Tipo      | Descripción                                                    | Ejemplo                                                                              |
-| --------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| parameter | Representa un valor literal que se pasa como parámetro         | `['type' => 'parameter', 'value' => 1234]`                                     |
-| service   | Representa otro servicio en el contenedor de servicio          | `['type' => 'service', 'name' => 'request']`                                   |
-| instance  | Representa un objeto que debe ser construido de forma dinámica | `['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| Tipo      | Descripción                                                    | Ejemplo                                                                                     |
+| --------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| parameter | Representa un valor literal que se pasa como parámetro         | `['type' => 'parameter', 'value' => 1234]`                                            |
+| service   | Representa otro servicio en el contenedor de servicio          | `['type' => 'service', 'name' => 'request']`                                          |
+| instance  | Representa un objeto que debe ser construido de forma dinámica | `['type' => 'instance', 'className' => \DateTime::class, 'arguments' => ['now']]` |
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to define and inject services.
 
@@ -791,23 +792,23 @@ The array syntax is also allowed to register services:
 use Phalcon\Di;
 use Phalcon\Http\Request;
 
-// Crear un contenedor de inyección de dependencias
+// Create the Dependency Injector Container
 $di = new Di();
 
-// Por su nombre de clase
-$di['request'] = 'Phalcon\Http\Request';
+// By its class name
+$di['request'] = Request::class;
 
-// Usando una función anónima, la instancia será con carga peresoza
+// Using an anonymous function, the instance will be lazy loaded
 $di['request'] = function () {
     return new Request();
 };
 
-// Registrando una instancia directamente
+// Registering an instance directly
 $di['request'] = new Request();
 
-// Utilizando un array como definición
+// Using an array definition
 $di['request'] = [
-    'className' => 'Phalcon\Http\Request',
+    'className' => Request::class,
 ];
 ```
 
@@ -869,7 +870,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 // new MyComponent('some-parameter', 'other')
 $component = $di->get(
-    'MyComponent',
+    \MyComponent::class,
     [
         'some-parameter',
         'other',

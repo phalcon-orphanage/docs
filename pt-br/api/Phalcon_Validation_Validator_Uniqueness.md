@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Uniqueness'
 ---
+
 # Class **Phalcon\Validation\Validator\Uniqueness**
 
 *extends* abstract class [Phalcon\Validation\CombinedFieldsValidator](Phalcon_Validation_CombinedFieldsValidator)

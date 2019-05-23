@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Numericality'
 ---
+
 # Class **Phalcon\Validation\Validator\Numericality**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)

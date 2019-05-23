@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Translate\Adapter\Gettext'
 ---
+
 # Class **Phalcon\Translate\Adapter\Gettext**
 
 *extends* abstract class [Phalcon\Translate\Adapter](Phalcon_Translate_Adapter)

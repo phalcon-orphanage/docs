@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Router\Exception'
 ---
+
 # Class **Phalcon\Mvc\Router\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

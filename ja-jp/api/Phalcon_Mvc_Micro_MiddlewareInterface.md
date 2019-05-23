@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Micro\MiddlewareInterface'
 ---
+
 # Interface **Phalcon\Mvc\Micro\MiddlewareInterface**
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro/middlewareinterface.zep)

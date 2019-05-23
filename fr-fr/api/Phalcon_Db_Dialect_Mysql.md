@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Dialect\Mysql'
 ---
+
 # Class **Phalcon\Db\Dialect\Mysql**
 
 *extends* abstract class [Phalcon\Db\Dialect](Phalcon_Db_Dialect)

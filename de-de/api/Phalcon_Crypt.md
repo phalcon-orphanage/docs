@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Crypt'
 ---
+
 # Class **Phalcon\Crypt**
 
 *implements* [Phalcon\CryptInterface](Phalcon_CryptInterface)

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Http\Response\Exception'
 ---
+
 # Class **Phalcon\Http\Response\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

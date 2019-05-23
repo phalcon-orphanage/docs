@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Transactions
 
 * * *
@@ -26,7 +27,7 @@ class RobotsController extends Controller
 {
     public function saveAction()
     {
-        // Запуск транзакции
+        // Start a transaction
         $this->db->begin();
 
         $robot = new Robots();
@@ -34,9 +35,10 @@ class RobotsController extends Controller
         $robot->name       = 'WALL-E';
         $robot->created_at = date('Y-m-d');
 
-        // Не удалось сохранить модель, поэтому откатываем транзакцию
+        // The model failed to save, so rollback the transaction
         if ($robot->save() === false) {
             $this->db->rollback();
+
             return;
         }
 
@@ -45,14 +47,14 @@ class RobotsController extends Controller
         $robotPart->robots_id = $robot->id;
         $robotPart->type      = 'head';
 
-        // Не удалось сохранить модель, поэтому откатываем транзакцию
+        // The model failed to save, so rollback the transaction
         if ($robotPart->save() === false) {
             $this->db->rollback();
 
             return;
         }
 
-        // Фиксация транзакции
+        // Commit the transaction
         $this->db->commit();
     }
 }

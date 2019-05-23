@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Events
 
 * * *
@@ -134,19 +135,18 @@ If we want all objects created in our application use the same EventsManager, th
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Регистрация сервиса modelsManager
+// Registering the modelsManager service
 $di->setShared(
     'modelsManager',
     function () {
         $eventsManager = new EventsManager();
 
-        // Добавляем анонимную функцию в качестве
-        // слушателя для событий "model"
+        // Attach an anonymous function as a listener for 'model' events
         $eventsManager->attach(
             'model:beforeSave',
             function (Event $event, $model) {
-                // Перехватываем события, производимые моделью Robots
-                if (get_class($model) === 'Store\Toys\Robots') {
+                // Catch events produced by the Robots model
+                if (get_class($model) === \Store\Toys\Robots::class) {
                     if ($model->name === 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
 
@@ -158,7 +158,7 @@ $di->setShared(
             }
         );
 
-        // Устанавливаем EventsManager по умолчанию
+        // Setting a default EventsManager
         $modelsManager = new ModelsManager();
 
         $modelsManager->setEventsManager($eventsManager);

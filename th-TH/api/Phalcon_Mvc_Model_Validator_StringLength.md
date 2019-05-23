@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Validator\StringLength'
 ---
+
 # Class **Phalcon\Mvc\Model\Validator\StringLength**
 
 *extends* abstract class [Phalcon\Mvc\Model\Validator](Phalcon_Mvc_Model_Validator)

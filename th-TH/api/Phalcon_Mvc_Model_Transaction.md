@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Transaction'
 ---
+
 # Class **Phalcon\Mvc\Model\Transaction**
 
 *implements* [Phalcon\Mvc\Model\TransactionInterface](Phalcon_Mvc_Model_TransactionInterface)

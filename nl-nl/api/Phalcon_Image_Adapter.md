@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Image\Adapter'
 ---
+
 # Abstract class **Phalcon\Image\Adapter**
 
 *implements* [Phalcon\Image\AdapterInterface](Phalcon_Image_AdapterInterface)

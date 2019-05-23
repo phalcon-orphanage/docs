@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Dispatcher'
 ---
+
 # Class **Phalcon\Mvc\Dispatcher**
 
 *extends* abstract class [Phalcon\Dispatcher](Phalcon_Dispatcher)

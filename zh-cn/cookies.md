@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 ---
+
 # Cookies Component
 
 * * *
@@ -41,6 +42,7 @@ class SessionController extends Controller
             'some value',
             time() + 15 * 86400
         );
+
         $this->cookies->send();
     }
 

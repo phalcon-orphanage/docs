@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Routing Component
 
 * * *
@@ -774,7 +775,8 @@ Sometimes, routes should only be matched if they meet specific conditions. You c
 ```php
 <?php
 
-$route = $router->add('/login',
+$route = $router->add(
+    '/login',
     [
         'module'     => 'admin',
         'controller' => 'session',
@@ -890,7 +892,7 @@ $route = $router->add(
     ]
 );
 
-    $route->setHostName('([a-z]+).company.com');
+$route->setHostName('([a-z]+).company.com');
 ```
 
 In groups of routes you can set up a hostname constraint that apply for every route in the group:

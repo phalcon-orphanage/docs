@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Behaviors
 
 * * *
@@ -32,10 +33,10 @@ class Users extends Model
         $this->addBehavior(
             new Timestampable(
                 [
-                    "beforeCreate" => [
-                        "field"  => 'created_at',
-                        "format" => 'Y-m-d',
-                    ]
+                    'beforeCreate' => [
+                        'field'  => 'created_at',
+                        'format' => 'Y-m-d',
+                    ],
                 ]
             )
         );
@@ -67,7 +68,7 @@ public function initialize()
                 'beforeCreate' => [
                     'field'  => 'created_at',
                     'format' => 'Y-m-d',
-                ]
+                ],
             ]
         )
     );
@@ -96,8 +97,8 @@ public function initialize()
                         );
 
                         return $datetime->format('Y-m-d H:i:sP');
-                    }
-                ]
+                    },
+                ],
             ]
         )
     );

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Exception'
 ---
+
 # Class **Phalcon\Db\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

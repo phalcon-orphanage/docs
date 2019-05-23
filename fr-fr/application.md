@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Application
 
 * * *
@@ -214,17 +215,16 @@ With this component you can run various types of MVC structures:
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
-```php
-single/
-    app/
-        controllers/
-        models/
-        views/
-    public/
-        css/
-        img/
-        js/
-```
+    single/
+        app/
+            controllers/
+            models/
+            views/
+        public/
+            css/
+            img/
+            js/
+    
 
 If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
 
@@ -340,24 +340,23 @@ try {
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
-```php
-multiple/
-  apps/
-    frontend/
-       controllers/
-       models/
-       views/
-       Module.php
-    backend/
-       controllers/
-       models/
-       views/
-       Module.php
-  public/
-    css/
-    img/
-    js/
-```
+    multiple/
+      apps/
+        frontend/
+           controllers/
+           models/
+           views/
+           Module.php
+        backend/
+           controllers/
+           models/
+           views/
+           Module.php
+      public/
+        css/
+        img/
+        js/
+    
 
 Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
 
@@ -479,11 +478,11 @@ $application = new Application($di);
 $application->registerModules(
     [
         'frontend' => [
-            'className' => 'Multiple\Frontend\Module',
+            'className' => \Multiple\Frontend\Module::class,
             'path'      => '../apps/frontend/Module.php',
         ],
         'backend'  => [
-            'className' => 'Multiple\Backend\Module',
+            'className' => \Multiple\Backend\Module::class,
             'path'      => '../apps/backend/Module.php',
         ]
     ]

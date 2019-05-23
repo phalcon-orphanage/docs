@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Url'
 ---
+
 # Class **Phalcon\Validation\Validator\Url**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)

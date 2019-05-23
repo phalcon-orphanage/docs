@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Exception'
 ---
+
 # Class **Phalcon\Validation\Validator\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)

@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'el-gr'
+language: 'en'
 version: '4.0'
 category: 'installation'
 ---
+
 # Εγκατάσταση
 
 * * *

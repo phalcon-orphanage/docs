@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Events
 
 * * *
@@ -145,7 +146,7 @@ $di->setShared(
             'model:beforeSave',
             function (Event $event, $model) {
                 // Catch events produced by the Robots model
-                if (get_class($model) === 'Store\Toys\Robots') {
+                if (get_class($model) === \Store\Toys\Robots::class) {
                     if ($model->name === 'Scooby Doo') {
                         echo "Scooby Doo isn't a robot!";
 

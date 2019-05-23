@@ -12,16 +12,15 @@ version: '4.0'
 
 Phalcon es un proyecto de código abierto y depende en gran medida de los esfuerzos y contribuciones voluntarias. ¡Son bienvenidas las contribuciones de todos!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
+Por favor lea con calma este documento para compenetrarse con el proceso de colaboración, de tal manera que sea lo más transparente y eficiente posible para toda la comunidad. Al seguir estas guías será posible resolver los problemas más rápido, mejorar la comunicación y ¡avanzar con el proyecto hacia adelante entre todos!
 
-The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub](https://github.com). You can browse our repositories in our [organization page](https://github.com/phalcon).
+El código fuente de Phalcon (junto con la documentación, sitios web, etc.) se almacena en [GitHub](https://github.com). Los repositorios se encuentran disponibles en nuestra [página de organización](https://github.com/phalcon).
 
-If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
+Para contribuir en Phalcon, es suficiente con crear un *[pull request](https://help.github.com/articles/using-pull-requests/)* en GitHub.
 
-When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be: * merged immediately or * put on hold, where the reviewer requires changes (styling, tests etc.) * put on hold, if discussion is necessary (community, core team etc.) * rejected
+Hay una plantilla muy útil para crear el *pull request*. Es muy importante y útil para la comunidad, incluir las pruebas del *pull request*. Cada *pull request* será revisado por un colaborador principal (con autorización para incluirlo [*merge*]). Según el tipo y contenido del *pull request*, podrá ser: * incluido de inmediato; * puesto en espera (el revisor pedirá cambios de estilo, pruebas, etc.); * puesto en espera (el revisor considera que debe ser discutido por la comunidad, el equipo principal, etc.); * rechazado.
 
-> Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
-{:.alert .alert-danger}
+> Por favor, asegúrese que la rama de destino a la que envía el *pull request* es la correcta y que ya ha rebasado su código. Tenga en cuenta que los *pull requests* a la rama ***master*** no están permitidos.
 
 ## Documentación
 

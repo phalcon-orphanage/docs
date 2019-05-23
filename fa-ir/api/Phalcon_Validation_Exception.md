@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fa-ir'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Exception'
 ---
+
 # Class **Phalcon\Validation\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
