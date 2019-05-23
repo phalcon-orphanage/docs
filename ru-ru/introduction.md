@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 ---
+
 # Добро пожаловать
 
 Welcome to the documentation for the Phalcon framework.
