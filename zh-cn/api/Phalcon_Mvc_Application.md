@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Application'
 ---
+
 # Class **Phalcon\Mvc\Application**
 
 *extends* abstract class [Phalcon\Application](Phalcon_Application)
