@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Forms\Form'
 ---
+
 # Class **Phalcon\Forms\Form**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
