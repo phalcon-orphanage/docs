@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Flash Messages
 
 * * *
@@ -159,15 +160,15 @@ class ContactController extends Controller
 
     public function saveAction()
     {
-        // Almacenar una publicación
+        // Store the post
 
-        // Utilizar flash directo
-        $this->flash->success('Tú información fue almacenada correctamente!');
+        // Using direct flash
+        $this->flash->success('Your information was stored correctly!');
 
-        // Avanzar a la acción index
+        // Forward to the index action
         return $this->dispatcher->forward(
             [
-                'action' => 'index'
+                'action' => 'index',
             ]
         );
     }
@@ -206,7 +207,7 @@ In this case you need to manually print the messages in the corresponding view:
 ```php
 <!-- app/views/contact/index.phtml -->
 
-<p><?php $this->flashSession->output() ?></p>
+<p><?php $this->flashSession->output(); ?></p>
 ```
 
 The attribute `flashSession` is how the flash was previously set into the dependency injection container. You need to start the <session> first to successfully use the `flashSession` messenger.
