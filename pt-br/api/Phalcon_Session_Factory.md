@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Factory'
 ---
+
 # Class **Phalcon\Session\Factory**
 
 *extends* abstract class [Phalcon\Factory](Phalcon_Factory)
