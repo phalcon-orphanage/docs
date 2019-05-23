@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\DiInterface'
 ---
+
 # Interface **Phalcon\DiInterface**
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
