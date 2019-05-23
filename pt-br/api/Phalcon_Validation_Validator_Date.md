@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Date'
 ---
+
 # Class **Phalcon\Validation\Validator\Date**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
