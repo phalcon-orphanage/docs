@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Http\Request'
 ---
+
 # Class **Phalcon\Http\Request**
 
 *implements* [Phalcon\Http\RequestInterface](Phalcon_Http_RequestInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
