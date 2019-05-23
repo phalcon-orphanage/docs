@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 ---
+
 # Events Manager
 
 * * *
@@ -140,7 +141,11 @@ $connection->execute(
     'SELECT * FROM products p WHERE p.status = 1'
 );
 
-foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
+$profiler = $dbListener->getProfiler();
+
+$profiles = $profiler->getProfiles();
+
+foreach ($profiles as $profile) {
     echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
     echo 'Start Time: ', $profile->getInitialTime(), '\n';
     echo 'Final Time: ', $profile->getFinalTime(), '\n';
