@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Validator\Alnum'
 ---
+
 # Class **Phalcon\Validation\Validator\Alnum**
 
 *extends* abstract class [Phalcon\Validation\Validator](Phalcon_Validation_Validator)
