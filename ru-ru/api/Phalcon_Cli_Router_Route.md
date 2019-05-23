@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Cli\Router\Route'
 ---
+
 # Class **Phalcon\Cli\Router\Route**
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
