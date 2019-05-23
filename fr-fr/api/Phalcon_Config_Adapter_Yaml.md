@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Yaml'
 ---
+
 # Class **Phalcon\Config\Adapter\Yaml**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
