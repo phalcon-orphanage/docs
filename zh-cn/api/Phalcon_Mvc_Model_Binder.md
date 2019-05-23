@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Binder'
 ---
+
 # Class **Phalcon\Mvc\Model\Binder**
 
 *implements* [Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface)
