@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'pl-pl'
+language: 'en'
 version: '4.0'
 ---
+
 # Validation Component
 
 * * *
