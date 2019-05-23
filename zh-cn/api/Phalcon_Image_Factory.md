@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Image\Factory'
 ---
+
 # Class **Phalcon\Image\Factory**
 
 *extends* abstract class [Phalcon\Factory](Phalcon_Factory)
