@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 upgrade: ''
 category: 'collection'
 ---
+
 # Helper Component
 
 * * *
