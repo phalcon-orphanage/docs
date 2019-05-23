@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Routing Component
 
 * * *
@@ -775,7 +776,8 @@ Sometimes, routes should only be matched if they meet specific conditions. You c
 ```php
 <?php
 
-$route = $router->add('/login',
+$route = $router->add(
+    '/login',
     [
         'module'     => 'admin',
         'controller' => 'session',
@@ -784,7 +786,7 @@ $route = $router->add('/login',
 
 $route->beforeMatch(
     function ($uri, $route) {
-        // Comprobar si la consulta fue hecha con Ajax
+        // Check if the request was made with Ajax
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest') {
             return false;
         }
