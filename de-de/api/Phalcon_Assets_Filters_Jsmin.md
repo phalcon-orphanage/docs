@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Assets\Filters\Jsmin'
 ---
+
 # Class **Phalcon\Assets\Filters\Jsmin**
 
 *implements* [Phalcon\Assets\FilterInterface](Phalcon_Assets_FilterInterface)
