@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\Behavior\Timestampable'
 ---
+
 # Class **Phalcon\Mvc\Collection\Behavior\Timestampable**
 
 *extends* abstract class [Phalcon\Mvc\Collection\Behavior](Phalcon_Mvc_Collection_Behavior)
