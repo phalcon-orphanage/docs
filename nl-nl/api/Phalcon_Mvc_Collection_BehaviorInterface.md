@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Collection\BehaviorInterface'
 ---
+
 # Interface **Phalcon\Mvc\Collection\BehaviorInterface**
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/behaviorinterface.zep)
