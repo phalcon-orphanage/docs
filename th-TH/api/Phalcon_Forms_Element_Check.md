@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Forms\Element\Check'
 ---
+
 # Class **Phalcon\Forms\Element\Check**
 
 *extends* abstract class [Phalcon\Forms\Element](Phalcon_Forms_Element)
