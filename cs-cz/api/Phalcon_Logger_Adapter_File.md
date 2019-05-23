@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger\Adapter\File'
 ---
+
 # Class **Phalcon\Logger\Adapter\File**
 
 *extends* abstract class [Phalcon\Logger\Adapter](Phalcon_Logger_Adapter)
