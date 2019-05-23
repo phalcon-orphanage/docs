@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Apc'
 ---
+
 # Class **Phalcon\Mvc\Model\MetaData\Apc**
 
 *extends* abstract class [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
