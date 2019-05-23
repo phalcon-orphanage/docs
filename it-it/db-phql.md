@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'it-it'
+language: 'en'
 version: '4.0'
 ---
+
 # Phalcon Query Language (PHQL)
 
 * * *
