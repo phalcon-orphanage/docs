@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Di\Service'
 ---
+
 # Class **Phalcon\Di\Service**
 
 *implements* [Phalcon\Di\ServiceInterface](Phalcon_Di_ServiceInterface)
