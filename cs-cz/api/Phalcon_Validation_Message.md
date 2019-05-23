@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Message'
 ---
+
 # Class **Phalcon\Validation\Message**
 
 *implements* [Phalcon\Validation\MessageInterface](Phalcon_Validation_MessageInterface)
