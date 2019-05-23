@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\Sanitizer\Lower'
 ---
+
 # Class [Phalcon\Filter\Sanitizer\Lower](Phalcon_Filter_Sanitizer_Lower)
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/lower.zep)
