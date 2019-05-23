@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Events\Manager'
 ---
+
 # Class **Phalcon\Events\Manager**
 
 *implements* [Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface)
