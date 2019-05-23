@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'uk-ua'
+language: 'en'
 version: '4.0'
 ---
+
 # Image Component
 
 * * *
