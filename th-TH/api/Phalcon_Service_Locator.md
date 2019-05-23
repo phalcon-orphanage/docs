@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Service\Locator'
 ---
+
 # Class **Phalcon\Service\Locatorr**
 
 **implements** [Phalcon\Service\LocatorInterface](Phalcon_Service_LocatorInterface)
