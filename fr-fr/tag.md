@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 ---
+
 # Tag Component (View Helpers)
 
 * * *
@@ -255,22 +256,22 @@ The following HTML will generated:
 You can add an `empty` option to the generated HTML:
 
 ```php
-    <?php
+<?php
 
-    $products = Products::find("type = 'vegetables'");
+$products = Products::find("type = 'vegetables'");
 
-    // Creating a Select Tag with an empty option
-    echo $this->tag->select(
-        [
-            'productId',
-            $products,
-            'using'    => [
-                'id',
-                'name',
-            ],
-            'useEmpty' => true,
-        ]
-    );
+// Creating a Select Tag with an empty option
+echo $this->tag->select(
+    [
+        'productId',
+        $products,
+        'using'    => [
+            'id',
+            'name',
+        ],
+        'useEmpty' => true,
+    ]
+);
 ```
 
 Produces this HTML:
@@ -350,8 +351,7 @@ or using Volt:
 The following HTML is generated:
 
 ```html
-<input type='text' name='price' id='price' size='20' maxlength='30'
-       placeholder='Enter a price' />
+<input type='text' name='price' id='price' size='20' maxlength='30' placeholder='Enter a price' />
 ```
 
 ## Setting Helper Values
@@ -561,6 +561,7 @@ echo $this->tag->tagHtml(
     true, 
     true
 );
+
 echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
