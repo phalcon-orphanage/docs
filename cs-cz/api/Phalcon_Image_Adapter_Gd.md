@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Image\Adapter\Gd'
 ---
+
 # Class **Phalcon\Image\Adapter\Gd**
 
 *extends* abstract class [Phalcon\Image\Adapter](Phalcon_Image_Adapter)
