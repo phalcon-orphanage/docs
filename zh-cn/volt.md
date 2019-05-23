@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 ---
+
 # Volt: Template Engine
 
 * * *
@@ -169,14 +170,18 @@ $volt->setOptions(
 // Recursively create the same structure in another directory
 $volt->setOptions(
     [
-        'path' => function ($templatePath) {
+        'path' => function (string $templatePath) {
             $dirName = dirname($templatePath);
 
             if (!is_dir('cache/' . $dirName)) {
-                mkdir('cache/' . $dirName , 0777 , true);
+                mkdir(
+                    'cache/' . $dirName,
+                    0777,
+                    true
+                );
             }
 
-            return 'cache/' . $dirName . '/'. $templatePath . '.php';
+            return 'cache/' . $dirName . '/' . $templatePath . '.php';
         }
     ]
 );
@@ -414,9 +419,7 @@ for-loops can also be nested:
 <h1>Robots</h1>
 {% for robot in robots %}
     {% for part in robot.parts %}
-        Robot: {{ robot.name|e }}
-
-Part: {{ part.name|e }} <br />
+        Robot: {{ robot.name|e }} Part: {{ part.name|e }} <br />
     {% endfor %}
 {% endfor %}
 {% endraw %}
@@ -516,7 +519,9 @@ As PHP, an `if` statement checks if an expression is evaluated as true or false:
 <ul>
     {% for robot in robots %}
         {% if robot.type === 'cyborg' %}
-            <li>{{ robot.name|e }}</li>
+            <li> {{ robot.name|e }}
+
+</li>
         {% endif %}
     {% endfor %}
 </ul>{% endraw %}
@@ -603,9 +608,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unex
 {% endraw %}
 ```
 
-Will not throw an error because `default` is a reserved word for filters like `
-{%- raw -%}
-{{ EXPRESSION | default(VALUE) }}{% endraw %}
+Will not throw an error because `default` is a reserved word for filters like `{%- raw -%}{{ EXPRESSION | default(VALUE) }}{% endraw %}
 ` but in this case the expression will only output an empty char '' .
 
 #### nested `switch`
@@ -789,30 +792,11 @@ You may make calculations in templates using the following operators:
 
 | Operator | 描述                                                                                             |
 |:--------:| ---------------------------------------------------------------------------------------------- |
-|   `+`    | Perform an adding operation. `
-{%- raw -%}
-{{ 2 + 3 }}{% endraw %}
-` returns 5                    |
-|   `-`    | Perform a substraction operation `
-
-{%- raw -%}
-{{ 2 - 3 }}{% endraw %}
-` returns -1               |
-|   `*`    | Perform a multiplication operation `
-{%- raw -%}
-{{ 2 * 3 }}
-{% endraw %}
-` returns 6              |
-|   `/`    | Perform a division operation `
-{%- raw -%}
-{{ 10 / 2 }}
-{% endraw %}
-` returns 5                   |
-|   `%`    | Calculate the remainder of an integer division `
-{%- raw -%}
-{{ 10 % 3 }}
-{% endraw %}
-` returns 1 |
+|   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` returns 5                    |
+|   `-`    | Perform a substraction operation `{%- raw -%}{{ 2 - 3 }}{% endraw %}` returns -1               |
+|   `*`    | Perform a multiplication operation `{%- raw -%}{{ 2 * 3 }}{% endraw %}` returns 6              |
+|   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}{% endraw %}` returns 5                   |
+|   `%`    | Calculate the remainder of an integer division `{%- raw -%}{{ 10 % 3 }}{% endraw %}` returns 1 |
 
 ### Comparisons
 
@@ -847,23 +831,9 @@ Additional operators seen the following operators are available:
 
 | Operator          | 描述                                                                                                 |
 | ----------------- | -------------------------------------------------------------------------------------------------- |
-| `~`               | Concatenates both operands `
-{%- raw -%}
-{{ 'hello ' ~ 'world' }}
-{% endraw %}
-`                       |
-| `|`               | Applies a filter in the right operand to the left `
-{%- raw -%}
-{{ 'hello'|uppercase }}{% endraw %}
-` |
-| `..`              | Creates a range `
-{%- raw -%}
-{{ 'a'..'z' }}
-{% endraw %}
-` `
-{%- raw -%}
-{{ 1..10 }}{% endraw %}
-`       |
+| `~`               | Concatenates both operands `{%- raw -%}{{ 'hello ' ~ 'world' }}{% endraw %}`                       |
+| `|`               | Applies a filter in the right operand to the left `{%- raw -%}{{ 'hello'|uppercase }}{% endraw %}` |
+| `..`              | Creates a range `{%- raw -%}{{ 'a'..'z' }}{% endraw %}` `{%- raw -%}{{ 1..10 }}{% endraw %}`       |
 | `is`              | Same as == (equals), also performs tests                                                           |
 | `in`              | To check if an expression is contained into other expressions `if 'a' in 'abc'`                    |
 | `is not`          | Same as != (not equals)                                                                            |
@@ -919,6 +889,7 @@ The following built-in tests are available in Volt:
 More examples:
 
 ```twig
+
 {%- raw -%}
 {% if robot is defined %}
     The robot variable is defined
@@ -962,6 +933,7 @@ More examples:
 {% if external is type('boolean') %}
     {{ 'external is false or true' }}
 {% endif %}
+
 {% endraw %}
 ```
 
@@ -991,6 +963,7 @@ Macros can be used to reuse logic in a template, they act as PHP functions, can 
 
 {# Print related links again #}
 {{ related_bar(links) }}
+
 {% endraw %}
 ```
 
@@ -1008,6 +981,7 @@ When calling macros, parameters can be passed by name:
 
 {# Call the macro #}
 {{ error_messages('type': 'Invalid', 'message': 'The name is invalid', 'field': 'name') }}
+
 {% endraw %}
 ```
 
@@ -1028,7 +1002,8 @@ Macros can return values:
 And receive optional parameters:
 
 ```twig
-{%- raw -%}{%- macro my_input(name, class='input-text') %}
+{%- raw -%}
+{%- macro my_input(name, class='input-text') %}
     {% return text_field(name, 'class': class) %}
 {%- endmacro %}
 
@@ -1043,7 +1018,8 @@ And receive optional parameters:
 Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to use the helpers provided by that component in a Volt template:
 
 ```twig
-{%- raw -%}{{ javascript_include('js/jquery.js') }}
+{%- raw -%}
+{{ javascript_include('js/jquery.js') }}
 
 {{ form('products/save', 'method': 'post') }}
 
@@ -1056,6 +1032,7 @@ Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to u
     {{ submit_button('Send') }}
 
 {{ end_form() }}
+
 {% endraw %}
 ```
 
@@ -1064,17 +1041,17 @@ The following PHP is generated:
 ```php
 <?php echo Phalcon\Tag::javascriptInclude('js/jquery.js') ?>
 
-<?php echo Phalcon\Tag::form(array('products/save', 'method' => 'post')); ?>
+<?php echo Phalcon\Tag::form(['products/save', 'method' => 'post']); ?>
 
     <label for='name'>Name</label>
-    <?php echo Phalcon\Tag::textField(array('name', 'size' => 32)); ?>
+    <?php echo Phalcon\Tag::textField(['name', 'size' => 32]); ?>
 
     <label for='type'>Type</label>
-    <?php echo Phalcon\Tag::select(array('type', $productTypes, 'using' => array('id', 'name'))); ?>
+    <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
 
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
-
-{%- raw -%}{{ end_form() }}
+{%- raw -%}
+{{ end_form() }}
 {% endraw %}
 ```
 
@@ -1126,20 +1103,21 @@ The following built-in functions are available in Volt:
 Also, Volt is integrated with [Phalcon\Mvc\View](api/Phalcon_Mvc_View), you can play with the view hierarchy and include partials as well:
 
 ```twig
-{%- raw -%}{{ content() }}
+{%- raw -%}
+{{ content() }}
 
 <!-- Simple include of a partial -->
 <div id='footer'>{{ partial('partials/footer') }}</div>
 
 <!-- Passing extra variables -->
-<div id='footer'>{{ partial('partials/footer', ['links': links]) }}</div>
-{% endraw %}
+<div id='footer'>{{ partial('partials/footer', ['links': links]) }}</div>{% endraw %}
 ```
 
 A partial is included in runtime, Volt also provides `include`, this compiles the content of a view and returns its contents as part of the view which was included:
 
 ```twig
-{%- raw -%}{# Simple include of a partial #}
+{%- raw -%}
+{# Simple include of a partial #}
 <div id='footer'>
     {% include 'partials/footer' %}
 </div>
@@ -1147,8 +1125,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {# Passing extra variables #}
 <div id='footer'>
     {% include 'partials/footer' with ['links': links] %}
-</div>
-{% endraw %}
+</div>{% endraw %}
 ```
 
 ### Include
@@ -1156,11 +1133,11 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 `include` has a special behavior that will help us improve performance a bit when using Volt, if you specify the extension when including the file and it exists when the template is compiled, Volt can inline the contents of the template in the parent template where it's included. Templates aren't inlined if the `include` have variables passed with `with`:
 
 ```twig
-{%- raw -%}{# The contents of 'partials/footer.volt' is compiled and inlined #}
+{%- raw -%}
+{# The contents of 'partials/footer.volt' is compiled and inlined #}
 <div id='footer'>
     {% include 'partials/footer.volt' %}
-</div>
-{% endraw %}
+</div>{% endraw %}
 ```
 
 ### Partial vs Include
@@ -1181,7 +1158,8 @@ Keep the following points in mind when choosing to use the `partial` function or
 With template inheritance you can create base templates that can be extended by others templates allowing to reuse code. A base template define *blocks* than can be overridden by a child template. Let's pretend that we have the following base template:
 
 ```twig
-{%- raw -%}{# templates/base.volt #}
+{%- raw -%}
+{# templates/base.volt #}
 <!DOCTYPE html>
 <html>
     <head>
@@ -1205,14 +1183,14 @@ With template inheritance you can create base templates that can be extended by 
             {% block footer %}&copy; Copyright 2015, All rights reserved.{% endblock %}
         </div>
     </body>
-</html>
-{% endraw %}
+</html>{% endraw %}
 ```
 
 From other template we could extend the base template replacing the blocks:
 
 ```twig
-{%- raw -%}{% extends 'templates/base.volt' %}
+{%- raw -%}
+{% extends 'templates/base.volt' %}
 
 {% block title %}Index{% endblock %}
 
@@ -1256,7 +1234,8 @@ Not all blocks must be replaced at a child template, only those that are needed.
 Extended templates can extend other templates. The following example illustrates this:
 
 ```twig
-{%- raw -%}{# main.volt #}
+{%- raw -%}
+{# main.volt #}
 <!DOCTYPE html>
 <html>
     <head>
@@ -1273,7 +1252,8 @@ Extended templates can extend other templates. The following example illustrates
 Template `layout.volt` extends `main.volt`
 
 ```twig
-{%- raw -%}{# layout.volt #}
+{%- raw -%}
+{# layout.volt #}
 {% extends 'main.volt' %}
 
 {% block content %}
@@ -1473,7 +1453,7 @@ class PhpFunctionExtension
     /**
      * This method is called on any attempt to compile a function call
      */
-    public function compileFunction($name, $arguments)
+    public function compileFunction(string $name, string $arguments)
     {
         if (function_exists($name)) {
             return $name . '('. $arguments . ')';
