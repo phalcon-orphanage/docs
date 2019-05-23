@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
+
 # Listas de Control de Acceso (ACL)
 
 * * *
@@ -58,10 +59,12 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 $acl = new AclList();
 
-// La acción por defecto, es denegar el acceso
+// Default action is deny access
 
-// Cambiar por permitir
-$acl->setDefaultAction(Acl::ALLOW);
+// Change it to allow
+$acl->setDefaultAction(
+    Acl::ALLOW
+);
 ```
 
 ## Agregando Roles
@@ -122,22 +125,50 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Crear algunos componentes y agregarles sus repectivas acciones a la ACL
+ * Create some Components and add their respective actions in the ACL
  */
 $admin   = new Component('admin', 'Administration Pages');
 $reports = new Component('reports', 'Reports Pages');
 
 /**
- * Agregar los componentes a la ACL y adjuntarlos a las acciones relacionadas
+ * Add the components to the ACL and attach them to relevant actions 
  */
-$acl->addComponent($admin, ['dashboard', 'users']);
-$acl->addComponent($reports, ['list', 'add']);
+
+$acl->addComponent(
+    $admin,
+    [
+        'dashboard',
+        'users',
+    ]
+);
+
+$acl->addComponent(
+    $reports,
+    [
+        'list',
+        'add',
+    ]
+);
 
 /**
- * Agregar componentes sin crear objectos
+ * Add components without creating an object first 
  */
-$acl->addComponent('admin', ['dashboard', 'users']);
-$acl->addComponent('reports', ['list', 'add']);
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+    ]
+);
+
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+    ]
+);
 ```
 
 ## Definición de Controles de Acceso
@@ -157,7 +188,7 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Agregar roles
+ * Add the roles
  */
 $acl->addRole('manager');
 $acl->addRole('accounting');
@@ -165,14 +196,37 @@ $acl->addRole('guest');
 
 
 /**
- * Agregar Componentes
+ * Add the Components
  */
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
-$acl->addComponent('reports', ['list', 'add', 'view']);
-$acl->addComponent('session', ['login', 'logout']);
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'session',
+    [
+        'login',
+        'logout',
+    ]
+);
 
 /**
- * Ahora atarlos juntos
+ * Now tie them all together 
  */
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
@@ -244,16 +298,37 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Establecer el ACL
+ * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addRole('accounting');                   
-$acl->addRole('guest');                       
+$acl->addRole('manager');
+$acl->addRole('accounting');
+$acl->addRole('guest');
 
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
 
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
-$acl->addComponent('reports', ['list', 'add', 'view']);
-$acl->addComponent('session', ['login', 'logout']);
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'session',
+    [
+        'login',
+        'logout',
+    ]
+);
 
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
@@ -265,19 +340,20 @@ $acl->deny('guest', '*', 'view');
 // ....
 
 
-// true - definido explicitamente
+
+// true - defined explicitly
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// true - definido con comodines
+// true - defined with wildcard
 $acl->isAllowed('manager', 'session', 'login');
 
-// true - definido con comodines
+// true - defined with wildcard
 $acl->isAllowed('accounting', 'reports', 'view');
 
-// false - definido explicitamente
+// false - defined explicitly
 $acl->isAllowed('guest', 'reports', 'view');
 
-// false - nivel de acceso por defecto
+// false - default access level
 $acl->isAllowed('guest', 'reports', 'add');
 ```
 
@@ -298,18 +374,26 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Establecer el ACL
+ * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
 
-// Establecer el nivel de acceso para un rol en un componente con una función personalizada
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
+
+// Set access level for role into components with custom function
 $acl->allow(
     'manager',
     'admin',
     'dashboard',
     function ($name) {
-        return boolval('Bob' !== $name);
+        return ('Bob' !== $name);
     }
 );
 ```
@@ -327,12 +411,20 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Establecer el ACL
+ * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
 
-// Establecer el nivel de acceso para un rol en un componente con una función personalizada
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
+
+// Set access level for role into components with custom function
 $acl->allow(
     'manager',
     'admin',
@@ -342,7 +434,7 @@ $acl->allow(
     }
 );
 
-// Retornará true
+// Returns true
 $acl->isAllowed(
     'manager',
     'admin',
@@ -352,7 +444,7 @@ $acl->isAllowed(
     ]
 );
 
-// Retornará false
+// Returns false
 $acl->isAllowed(
     'manager',
     'admin',
@@ -379,12 +471,20 @@ use Phalcon\Acl\Component;
 $acl = new AclList();
 
 /**
- * Establecer el ACL
+ * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
 
-// Establecer el nivel de acceso para un rol en un componente con una función personalizada
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
+
+// Set access level for role into components with custom function
 $acl->allow(
     'manager',
     'admin',
@@ -394,12 +494,14 @@ $acl->allow(
     }
 );
 
-// Retornará false
+// Returns false
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-$acl->setNoArgumentsDefaultAction(Acl::ALLOW);
+$acl->setNoArgumentsDefaultAction(
+    Acl::ALLOW
+);
 
-// Retornará true
+// Returns true
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```
 
@@ -454,7 +556,7 @@ Podemos implementar el [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAwa
 
 use Phalcon\Acl\ComponentAware;
 
-// Crear nuestra clase la cual se utilizará como componentName
+// Create our class which will be used as componentName
 class ReportsComponent implements ComponentAware
 {
     protected $id;
@@ -465,9 +567,9 @@ class ReportsComponent implements ComponentAware
 
     public function __construct($id, $componentName, $userId)
     {
-        $this->id          = $id;
+        $this->id            = $id;
         $this->componentName = $componentName;
-        $this->userId      = $userId;
+        $this->userId        = $userId;
     }
 
     public function getId()
@@ -480,7 +582,7 @@ class ReportsComponent implements ComponentAware
         return $this->userId;
     }
 
-    // Función implementada desde la interfaz ComponentAware
+    // Implemented function from ComponentAware Interface
     public function getComponentName()
     {
         return $this->componentName;
@@ -505,17 +607,24 @@ use ReportsComponent;
 $acl = new AclList();
 
 /**
- * Agregar roles
+ * Add the roles
  */
 $acl->addRole('manager');
 
 /**
- * Agregar Componentes
+ * Add the Components
  */
-$acl->addComponent('reports', ['list', 'add', 'view']);
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
 
 /**
- * Ahora unirlos todos juntos con una función personalizada. Los parámetros ManagerRole y 
+ * Now tie them all together with a custom function. Los parámetros ManagerRole y 
  * ModelSbject son necesarios para que la función personalizada funcione
  */
 $acl->allow(
@@ -638,17 +747,22 @@ if (true !== is_file($aclFile)) {
     // La ACL no existe, crearla
     $acl = new AclList();
 
-    // ... Definir roles, componentes, accesos, etc
+    // ... Define roles, components, access, etc
 
-    // Almacenar la lista serializada en un archivo plano
-    file_put_contents($aclFile, serialize($acl));
+    // Store serialized list into plain file
+    file_put_contents(
+        $aclFile,
+        serialize($acl)
+    );
 } else {
-    // Restaurar el objecto ACL desde el archivo serializado
-    $acl = unserialize(file_get_contents($aclFile));
+    // Restore ACL object from serialized file
+    $acl = unserialize(
+        file_get_contents($aclFile)
+    );
 }
 
-// Utilice la lista ACL como desee
-if (true === $acl->isAllowed('manager', 'admin', 'dashboard');) {
+// Use ACL list as needed
+if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
     echo 'Access denied :(';
