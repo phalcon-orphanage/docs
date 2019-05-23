@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Queue\Beanstalk\Exception'
 ---
+
 # Class **Phalcon\Queue\Beanstalk\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
