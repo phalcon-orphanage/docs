@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 ---
+
 # Dependency Injection / Service Location
 
 * * *
@@ -536,7 +537,7 @@ use Phalcon\Logger\Adapter\File as LoggerFile;
 $di->set(
     'logger',
     [
-        'className' => 'Phalcon\Logger\Adapter\File',
+        'className' => LoggerFile::class,
         'arguments' => [
             [
                 'type'  => 'parameter',
@@ -617,14 +618,14 @@ The service can be registered this way:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response'
+        'className' => \Phalcon\Http\Response::class
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'arguments' => [
             [
                 'type' => 'service',
@@ -683,14 +684,14 @@ A service with setter injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className' => 'SomeApp\SomeComponent',
+        'className' => \SomeApp\SomeComponent::class,
         'calls'     => [
             [
                 'method'    => 'setResponse',
@@ -745,14 +746,14 @@ A service with properties injection can be registered as follows:
 $di->set(
     'response',
     [
-        'className' => 'Phalcon\Http\Response',
+        'className' => \Phalcon\Http\Response::class,
     ]
 );
 
 $di->set(
     'someComponent',
     [
-        'className'  => 'SomeApp\SomeComponent',
+        'className'  => \SomeApp\SomeComponent::class,
         'properties' => [
             [
                 'name'  => 'response',
@@ -775,11 +776,11 @@ $di->set(
 
 Supported parameter types include the following:
 
-| Type     | 描述             | 示例                                                                                   |
-| -------- | -------------- | ------------------------------------------------------------------------------------ |
-| 参数       | 表示要作为参数传递的文本值  | `['type' => 'parameter', 'value' => 1234]`                                     |
-| service  | 表示在服务容器中的另一个服务 | `['type' => 'service', 'name' => 'request']`                                   |
-| instance | 表示必须动态构建的对象    | `['type' => 'instance', 'className' => 'DateTime', 'arguments' => ['now']]` |
+| Type     | 描述             | 示例                                                                                          |
+| -------- | -------------- | ------------------------------------------------------------------------------------------- |
+| 参数       | 表示要作为参数传递的文本值  | `['type' => 'parameter', 'value' => 1234]`                                            |
+| service  | 表示在服务容器中的另一个服务 | `['type' => 'service', 'name' => 'request']`                                          |
+| instance | 表示必须动态构建的对象    | `['type' => 'instance', 'className' => \DateTime::class, 'arguments' => ['now']]` |
 
 Resolving a service whose definition is complex may be slightly slower than simple definitions seen previously. However, these provide a more robust approach to define and inject services.
 
@@ -795,23 +796,23 @@ The array syntax is also allowed to register services:
 use Phalcon\Di;
 use Phalcon\Http\Request;
 
-// 创建一个依赖注入容器
+// Create the Dependency Injector Container
 $di = new Di();
 
-// 通过类名注册
-$di['request'] = 'Phalcon\Http\Request';
+// By its class name
+$di['request'] = Request::class;
 
-// 使用匿名函数，该实例将被延迟加载
+// Using an anonymous function, the instance will be lazy loaded
 $di['request'] = function () {
     return new Request();
 };
 
-// 直接注册实例
+// Registering an instance directly
 $di['request'] = new Request();
 
-// 使用数组定义
+// Using an array definition
 $di['request'] = [
-    'className' => 'Phalcon\Http\Request',
+    'className' => Request::class,
 ];
 ```
 
@@ -873,7 +874,7 @@ Arguments can be passed to the constructor by adding an array parameter to the m
 
 // new MyComponent('some-parameter', 'other')
 $component = $di->get(
-    'MyComponent',
+    \MyComponent::class,
     [
         'some-parameter',
         'other',
