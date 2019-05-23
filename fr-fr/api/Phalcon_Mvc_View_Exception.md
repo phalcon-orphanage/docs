@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\View\Exception'
 ---
+
 # Class **Phalcon\Mvc\View\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
