@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Events Manager
 
 * * *
@@ -135,16 +136,20 @@ The resulting profile data can be obtained from the listener:
 ```php
 <?php
 
-// Enviar un comando SQL al servidor de base de datos
+// Send a SQL command to the database server
 $connection->execute(
     'SELECT * FROM products p WHERE p.status = 1'
 );
 
-foreach ($dbListener->getProfiler()->getProfiles() as $profile) {
-    echo 'Declaración SQL: ', $profile->getSQLStatement(), '\n';
-    echo 'Tiempo de inicio: ', $profile->getInitialTime(), '\n';
-    echo 'Tiempo final: ', $profile->getFinalTime(), '\n';
-    echo 'Tiempo total: ', $profile->getTotalElapsedSeconds(), '\n';
+$profiler = $dbListener->getProfiler();
+
+$profiles = $profiler->getProfiles();
+
+foreach ($profiles as $profile) {
+    echo 'SQL Statement: ', $profile->getSQLStatement(), '\n';
+    echo 'Start Time: ', $profile->getInitialTime(), '\n';
+    echo 'Final Time: ', $profile->getFinalTime(), '\n';
+    echo 'Total Elapsed Time: ', $profile->getTotalElapsedSeconds(), '\n';
 }
 ```
 
