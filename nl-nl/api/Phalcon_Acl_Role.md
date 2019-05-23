@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Role'
 ---
+
 # Class [Phalcon\Acl\Role](Phalcon_Acl_Role)
 
 **implements** [Phalcon\Acl\RoleInterface](Phalcon_Acl_RoleInterface)
