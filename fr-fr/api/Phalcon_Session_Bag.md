@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Bag'
 ---
+
 # Class **Phalcon\Session\Bag**
 
 *implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Session\BagInterface](Phalcon_Session_BagInterface), [IteratorAggregate](https://php.net/manual/en/class.iteratoraggregate.php), [Traversable](https://php.net/manual/en/class.traversable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php)
