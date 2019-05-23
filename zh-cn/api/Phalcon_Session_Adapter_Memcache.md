@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Session\Adapter\Memcache'
 ---
+
 # Class **Phalcon\Session\Adapter\Memcache**
 
 *extends* abstract class [Phalcon\Session\Adapter](Phalcon_Session_Adapter)
