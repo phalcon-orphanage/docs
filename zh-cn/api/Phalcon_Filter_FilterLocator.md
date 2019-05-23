@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\FilterLocator'
 ---
+
 # Class [Phalcon\Filter\FilterLocator](Phalcon_Filter_FilterLocator)
 
 **extends** [Phalcon\Service\Locator](Phalcon_Service_Locator)
