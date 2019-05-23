@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Validation\Message\Group'
 ---
+
 # Class **Phalcon\Validation\Message\Group**
 
 *implements* [Countable](https://php.net/manual/en/class.countable.php), [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
