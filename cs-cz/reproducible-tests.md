@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 ---
+
 # Reproducible Tests
 
 * * *
@@ -23,7 +24,6 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Files;
 use Phalcon\Http\Response\Cookies;
 
-
 $container = new FactoryDefault();
 
 // Register your custom services
@@ -34,7 +34,9 @@ $container['session'] = function() {
             'save_path' => '/tmp',
          ]
     );
+
     $session->setHandler($adapter);
+
     $session->start();
 
     return $session;
@@ -42,6 +44,7 @@ $container['session'] = function() {
 
 $container['cookies'] = function() {
     $cookies = new Cookies();
+
     $cookies->useEncryption(false);
 
     return $cookies;
@@ -52,12 +55,20 @@ class SomeClass extends Injectable
     public function someMethod()
     {
         $cookies = $this->getDI()->getCookies();
-        $cookies->set('mycookie', 'test', time() + 3600, '/');
+
+        $cookies->set(
+            'mycookie',
+            'test',
+            time() + 3600,
+            '/'
+        );
     }
 }
 
 $class = new MyClass();
+
 $class->setDI($container);
+
 $class->someMethod();
 
 $container['cookies']->send();
@@ -113,6 +124,7 @@ $container = new FactoryDefault();
 // other services
 
 $application = new Application();
+
 $application->setDI($container);
 
 // register modules if any
@@ -139,6 +151,7 @@ $container = new FactoryDefault();
 // other services
 
 $application = new Application();
+
 $application->setDI($container);
 
 class IndexController extends Controller
@@ -211,13 +224,9 @@ $connection    = new Connection(
 $connection->setEventsManager($eventsManager);
 
 $eventsManager->attach(
-    'db',
+    'db:beforeQuery',
     function ($event, $connection) {
-        switch ($event->getType()) {
-            case 'beforeQuery':
-                echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
-                break;
-        }
+        echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
     }
 );
 
@@ -239,8 +248,10 @@ class User extends Model
 
     public static function createNewUserReturnId()
     {
-        $newUser        = new User();
+        $newUser = new User();
+
         $newUser->email = 'test';
+
         if (false === $newUser->save()) {
             return false;
         }
