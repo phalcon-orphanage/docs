@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 upgrade: '#acl'
 category: 'acl'
 ---
+
 # Access Control Lists Component
 
 * * *
@@ -61,7 +62,9 @@ $acl = new AclList();
 // Default action is deny access
 
 // Change it to allow
-$acl->setDefaultAction(Acl::ALLOW);
+$acl->setDefaultAction(
+    Acl::ALLOW
+);
 ```
 
 ## Adding Roles
@@ -130,14 +133,42 @@ $reports = new Component('reports', 'Reports Pages');
 /**
  * Add the components to the ACL and attach them to relevant actions 
  */
-$acl->addComponent($admin, ['dashboard', 'users']);
-$acl->addComponent($reports, ['list', 'add']);
+
+$acl->addComponent(
+    $admin,
+    [
+        'dashboard',
+        'users',
+    ]
+);
+
+$acl->addComponent(
+    $reports,
+    [
+        'list',
+        'add',
+    ]
+);
 
 /**
  * Add components without creating an object first 
  */
-$acl->addComponent('admin', ['dashboard', 'users']);
-$acl->addComponent('reports', ['list', 'add']);
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+    ]
+);
+
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+    ]
+);
 ```
 
 ## 定义访问控制
@@ -167,9 +198,32 @@ $acl->addRole('guest');
 /**
  * Add the Components
  */
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
-$acl->addComponent('reports', ['list', 'add', 'view']);
-$acl->addComponent('session', ['login', 'logout']);
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'session',
+    [
+        'login',
+        'logout',
+    ]
+);
 
 /**
  * Now tie them all together 
@@ -246,14 +300,35 @@ $acl = new AclList();
 /**
  * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addRole('accounting');                   
-$acl->addRole('guest');                       
+$acl->addRole('manager');
+$acl->addRole('accounting');
+$acl->addRole('guest');
 
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
 
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
-$acl->addComponent('reports', ['list', 'add', 'view']);
-$acl->addComponent('session', ['login', 'logout']);
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
+
+$acl->addComponent(
+    'session',
+    [
+        'login',
+        'logout',
+    ]
+);
 
 $acl->allow('manager', 'admin', 'users');
 $acl->allow('manager', 'reports', ['list', 'add']);
@@ -265,10 +340,11 @@ $acl->deny('guest', '*', 'view');
 // ....
 
 
+
 // true - defined explicitly
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-// true - defiled with wildcard
+// true - defined with wildcard
 $acl->isAllowed('manager', 'session', 'login');
 
 // true - defined with wildcard
@@ -300,8 +376,16 @@ $acl = new AclList();
 /**
  * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
 
 // Set access level for role into components with custom function
 $acl->allow(
@@ -309,7 +393,7 @@ $acl->allow(
     'admin',
     'dashboard',
     function ($name) {
-        return boolval('Bob' !== $name);
+        return ('Bob' !== $name);
     }
 );
 ```
@@ -329,8 +413,16 @@ $acl = new AclList();
 /**
  * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
 
 // Set access level for role into components with custom function
 $acl->allow(
@@ -381,8 +473,16 @@ $acl = new AclList();
 /**
  * Setup the ACL
  */
-$acl->addRole('manager');                   
-$acl->addComponent('admin', ['dashboard', 'users', 'view']);
+$acl->addRole('manager');
+
+$acl->addComponent(
+    'admin',
+    [
+        'dashboard',
+        'users',
+        'view',
+    ]
+);
 
 // Set access level for role into components with custom function
 $acl->allow(
@@ -397,7 +497,9 @@ $acl->allow(
 // Returns false
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
-$acl->setNoArgumentsDefaultAction(Acl::ALLOW);
+$acl->setNoArgumentsDefaultAction(
+    Acl::ALLOW
+);
 
 // Returns true
 $acl->isAllowed('manager', 'admin', 'dashboard');
@@ -465,9 +567,9 @@ class ReportsComponent implements ComponentAware
 
     public function __construct($id, $componentName, $userId)
     {
-        $this->id          = $id;
+        $this->id            = $id;
         $this->componentName = $componentName;
-        $this->userId      = $userId;
+        $this->userId        = $userId;
     }
 
     public function getId()
@@ -512,7 +614,14 @@ $acl->addRole('manager');
 /**
  * Add the Components
  */
-$acl->addComponent('reports', ['list', 'add', 'view']);
+$acl->addComponent(
+    'reports',
+    [
+        'list',
+        'add',
+        'view',
+    ]
+);
 
 /**
  * Now tie them all together with a custom function. The ManagerRole and
@@ -641,14 +750,19 @@ if (true !== is_file($aclFile)) {
     // ... Define roles, components, access, etc
 
     // Store serialized list into plain file
-    file_put_contents($aclFile, serialize($acl));
+    file_put_contents(
+        $aclFile,
+        serialize($acl)
+    );
 } else {
     // Restore ACL object from serialized file
-    $acl = unserialize(file_get_contents($aclFile));
+    $acl = unserialize(
+        file_get_contents($aclFile)
+    );
 }
 
 // Use ACL list as needed
-if (true === $acl->isAllowed('manager', 'admin', 'dashboard');) {
+if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
     echo 'Access granted!';
 } else {
     echo 'Access denied :(';
