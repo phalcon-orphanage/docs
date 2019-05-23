@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 ---
+
 # Translation Component
 
 * * *
@@ -22,7 +23,10 @@ use Phalcon\Translate\Factory;
 
 $options = [
     'adapter' => 'nativearray',
-    'content' => ['hi' => 'Hello', 'bye' => 'Good Bye']
+    'content' => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
 ];
 
 $translate = Factory::load($options);
@@ -89,7 +93,7 @@ The translation strings are stored in a `.csv` format files.
 $options = [
     'adapter'   => 'csv',
     'content'   => '/path/to/file.csv',
-];sdf
+];
 
 $translate = Factory::load($options);
 ```
@@ -134,13 +138,12 @@ class UserController extends Controller
 
         $translationFile = 'app/messages/' . $language . '.php';
 
-        // Check if we have a translation file for that lang
-        if (file_exists($translationFile)) {
-            require $translationFile;
-        } else {
-            // Fallback to some default
-            require 'app/messages/en.php';
+        // Check if we have a translation file for that lang or fallback to some default
+        if (!file_exists($translationFile)) {
+            $translationFile = 'app/messages/en.php';
         }
+
+        require $translationFile;
 
         // Return a translation object $messages comes from the require
         // statement above
@@ -226,7 +229,13 @@ class MyController extends Controller
     public function indexAction()
     {
         $name = 'Mike';
-        $text = $this->locale->_('hi-name', ['name' => $name]);
+
+        $text = $this->locale->_(
+            'hi-name',
+            [
+                'name' => $name,
+            ]
+        );
 
         $this->view->text = $text;
     }
@@ -300,13 +309,31 @@ In many cases, the translated strings are to be interpolated with data. [Phalcon
 
 ```php
 <?php
-$translate = return new NativeArray([
-    'content' => ['hi-name' => 'Hello %name%, good %time% !']
-]);
+$translate = return new NativeArray(
+    [
+        'content' => [
+            'hi-name' => 'Hello %name%, good %time% !',
+        ],
+    ]
+);
 
 $name = 'Henry';
-$translate->_('hi-name', ['name' => $name, 'time' => 'day']); // Hello Henry, good day !
-$translate->_('hi-name', ['name' => $name, 'time' => 'night']); // Hello Henry, good night !
+
+$translate->_(
+    'hi-name',
+    [
+        'name' => $name,
+        'time' => 'day',
+    ]
+); // Hello Henry, good day !
+
+$translate->_(
+    'hi-name',
+    [
+        'name' => $name,
+        'time' => 'night',
+    ]
+); // Hello Henry, good night !
 ```
 
 [Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate_Interpolator_IndexedArray) can also be used, it follows the [sprintf](https://www.php.net/manual/en/function.sprintf.php) convention.
@@ -315,24 +342,46 @@ $translate->_('hi-name', ['name' => $name, 'time' => 'night']); // Hello Henry, 
 <?php
 use Phalcon\Translate\Interpolator\IndexedArray;
 
-$translate = return new NativeArray([
-    'interpolator' => new IndexedArray(),
-    'content' => ['hi-name' => 'Hello %1$s, it\'s %2$d o\'clock'],
-]);
+$translate = return new NativeArray(
+    [
+        'interpolator' => new IndexedArray(),
+        'content'      => [
+            'hi-name' => 'Hello %1$s, it\'s %2$d o\'clock',
+        ],
+    ]
+);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 8]); // Hello Henry, it's 8 o'clock
+
+$translate->_(
+    'hi-name',
+    [
+        $name,
+        8,
+    ]
+); // Hello Henry, it's 8 o'clock
 ```
 
 ```php
 <?php
 use Phalcon\Translate\Interpolator\IndexedArray;
 
-$translate = return new NativeArray([
-    'interpolator' => new IndexedArray(),
-    'content' => ['hi-name' => 'Son las %2$d, hola %1$s']
-]);
+$translate = return new NativeArray(
+    [
+        'interpolator' => new IndexedArray(),
+        'content'      => [
+            'hi-name' => 'Son las %2$d, hola %1$s',
+        ],
+    ]
+);
 
 $name = 'Henry';
-$translate->_('hi-name', [$name, 8]); // Son las 8, hola Henry
+
+$translate->_(
+    'hi-name',
+    [
+        $name,
+        8,
+    ]
+); // Son las 8, hola Henry
 ```
