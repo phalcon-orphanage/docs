@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Manager'
 ---
+
 # Class **Phalcon\Mvc\Model\Manager**
 
 *implements* [Phalcon\Mvc\Model\ManagerInterface](Phalcon_Mvc_Model_ManagerInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
