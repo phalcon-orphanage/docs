@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\View'
 ---
+
 # Class **Phalcon\Mvc\View**
 
 *extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
