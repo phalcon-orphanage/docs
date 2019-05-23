@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Component'
 ---
+
 # Class [Phalcon\Acl\Component](Phalcon_Acl_Component)
 
 **implements** [Phalcon\Acl\ComponentInterface](Phalcon_Acl_ComponentInterface)
