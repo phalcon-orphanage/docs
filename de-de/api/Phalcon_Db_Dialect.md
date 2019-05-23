@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\Dialect'
 ---
+
 # Abstract class **Phalcon\Db\Dialect**
 
 *implements* [Phalcon\Db\DialectInterface](Phalcon_Db_DialectInterface)
