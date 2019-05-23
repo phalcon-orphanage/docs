@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Ini'
 ---
+
 # Class **Phalcon\Config\Adapter\Ini**
 
 *extends* class [Phalcon\Config](Phalcon_Config)
