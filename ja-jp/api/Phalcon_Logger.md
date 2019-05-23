@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger'
 ---
+
 # Abstract class **Phalcon\Logger**
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
