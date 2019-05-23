@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Relationships
 
 * * *
@@ -86,7 +87,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id'
         );
     }
@@ -97,6 +98,7 @@ class Robots extends Model
 <?php
 
 use Phalcon\Mvc\Model;
+use Store\Toys\RobotsParts;
 
 class Parts extends Model
 {
@@ -108,7 +110,7 @@ class Parts extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'parts_id'
         );
     }
@@ -117,6 +119,8 @@ class Parts extends Model
 
 ```php
 <?php
+
+namespace Store\Toys;
 
 use Phalcon\Mvc\Model;
 
@@ -132,13 +136,13 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            Robots::class,
             'id'
         );
 
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id'
         );
     }
@@ -166,9 +170,9 @@ class Robots extends Model
     {
         $this->hasManyToMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id', 'parts_id',
-            'Parts',
+            \Parts::class,
             'id'
         );
     }
@@ -184,37 +188,37 @@ Using relationships, we can get only those parts that relate to our Robot that a
 ```php
 <?php
 
- namespace Store\Toys;
+namespace Store\Toys;
 
- use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model;
 
- class Robots extends Model
- {
-     public $id;
+class Robots extends Model
+{
+    public $id;
 
-     public $name;
+    public $name;
 
-     public $type;
+    public $type;
 
-     public function initialize()
-     {
-         $this->hasMany(
-             'id',
-             Parts::class,
-             'robotId',
-             [
-                 'reusable' => true, // cache related data
-                 'alias'    => 'mechanicalParts',
-                 'params'   => [
-                     'conditions' => 'robotTypeId = :type:',
-                     'bind'       => [
-                         'type' => 4,
-                     ]
-                 ]
-             ]
-         );
-     }
- }
+    public function initialize()
+    {
+        $this->hasMany(
+            'id',
+            Parts::class,
+            'robotId',
+            [
+                'reusable' => true, // cache related data
+                'alias'    => 'mechanicalParts',
+                'params'   => [
+                    'conditions' => 'robotTypeId = :type:',
+                    'bind'       => [
+                       'type' => 4,
+                    ]
+                ]
+            ]
+        );
+    }
+}
  ```
 
 #### Multiple field relationships
@@ -354,22 +358,24 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts 
+// Robots model has a 1-n (hasMany)
+// relationship to RobotsParts then
 $robotsParts = $robot->robotsParts;
 
-// Solo Parts que coinciden con las condiciones
+// Only parts that match conditions
 $robotsParts = $robot->getRobotsParts(
     [
         'created_at = :date:',
         'bind' => [
-            'date' => '2015-03-15'
-        ]
+            'date' => '2015-03-15',
+        ],
     ]
 );
 
 $robotPart = RobotsParts::findFirst(1);
 
-// El modelo RobotsParts tiene una relación n-1 (belongsTo)
+// RobotsParts model has a n-1 (belongsTo)
+// relationship to RobotsParts then
 $robot = $robotPart->robots;
 ```
 
@@ -382,36 +388,38 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-// El modelo Robots tiene una relación 1-n (hasMany) con RobotsParts
+// Robots model has a 1-n (hasMany)
+// relationship to RobotsParts, then
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id:',
         'bind' => [
             'id' => $robot->id,
-        ]
+        ],
     ]
 );
 
-// Solo las Parts que coinciden con la condición
+// Only parts that match conditions
 $robotsParts = RobotsParts::find(
     [
         'robots_id = :id: AND created_at = :date:',
         'bind' => [
             'id'   => $robot->id,
             'date' => '2015-03-15',
-        ]
+        ],
     ]
 );
 
 $robotPart = RobotsParts::findFirst(1);
 
-// El modelo RobotsParts tiene una relación n-1 (belongsTo) con RobotsParts then
+// RobotsParts model has a n-1 (belongsTo)
+// relationship to RobotsParts then
 $robot = Robots::findFirst(
     [
         'id = :id:',
         'bind' => [
             'id' => $robotPart->robots_id,
-        ]
+        ],
     ]
 );
 ```
@@ -434,7 +442,10 @@ use Store\Toys\Robots;
 
 $robot = Robots::findFirst(2);
 
-echo 'The robot has ', $robot->countRobotsParts(), " parts\n";
+echo sprintf(
+    "The robot has %d parts\n",
+    $robot->countRobotsParts()
+);
 ```
 
 ### Aliasing Relationships
@@ -464,19 +475,19 @@ A model that maps this table and its relationships is the following:
 ```php
 <?php
 
-class RobotsSimilar extends Phalcon\Mvc\Model
+class RobotsSimilar extends \Phalcon\Mvc\Model
 {
     public function initialize()
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id'
         );
 
         $this->belongsTo(
             'similar_robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id'
         );
     }
@@ -512,7 +523,7 @@ class RobotsSimilar extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
                 'alias' => 'Robot',
@@ -521,7 +532,7 @@ class RobotsSimilar extends Model
 
         $this->belongsTo(
             'similar_robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
                 'alias' => 'SimilarRobot',
@@ -576,7 +587,7 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            RobotsParts::class,
             'robots_id'
         );
     }
@@ -592,52 +603,54 @@ You can also create relationships based on conditionals. When querying based on 
 
 use Phalcon\Mvc\Model;
 
-// Empresas que tienen facturas emitidas a ellos (pagas/impagas)
-// Model Facturas
+// Companies have invoices issued to them (paid/unpaid)
+// Invoices model
 class Invoices extends Model
 {
 
 }
 
-// Model Empresas
+// Companies model
 class Companies extends Model
 {
     public function initialize()
     {
-        // Relación: todas las facturas
+        // All invoices relationship
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
-                'alias' => 'Invoices'
+                'alias' => 'Invoices',
             ]
         );
 
-        // Relación: facturas pagadas
+        // Paid invoices relationship
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
-                'alias'    => 'InvoicesPaid',
-                'params'   => [
-                    'conditions' => "inv_status = 'paid'"
-                ]
+                'alias'  => 'InvoicesPaid',
+                'params' => [
+                    'conditions' => "inv_status = 'paid'",
+                ],
             ]
         );
 
-        // Reglación: facturas impagas con parámetros enlazados
+        // Unpaid invoices relationship + bound parameters
         $this->hasMany(
-            'id', 
-            'Invoices', 
-            'inv_id', 
+            'id',
+            Invoices::class,
+            'inv_id',
             [
-                'alias'    => 'InvoicesUnpaid',
-                'params'   => [
+                'alias'  => 'InvoicesUnpaid',
+                'params' => [
                     'conditions' => "inv_status <> :status:",
-                    'bind' => ['status' => 'unpaid']
-                ]
+                    'bind'       => [
+                        'status' => 'unpaid',
+                    ],
+                ],
             ]
         );
     }
@@ -649,11 +662,13 @@ Additionally, you can use the second parameter of `getRelated()` when accessing 
 ```php
 <?php
 
-// Facturas impagas
+// Unpaid Invoices
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
-        'bind'       => ['id' => 1],
+        'bind'       => [
+            'id' => 1,
+        ],
     ]
 );
 
@@ -662,10 +677,12 @@ $unpaidInvoices = $company->getInvoicesUnpaid();
 $unpaidInvoices = $company->getRelated('InvoicesUnpaid');
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
-    ['conditions' => "inv_status = 'paid'"]
+    [
+        'conditions' => "inv_status = 'paid'",
+    ]
 );
 
-// Ordenadas
+// Also ordered
 $unpaidInvoices = $company->getRelated(
     'Invoices', 
     [
@@ -698,21 +715,21 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'robots_id',
-            'Store\Toys\Robots',
+            \Store\Toys\Robots::class,
             'id',
             [
-                'foreignKey' => true
+                'foreignKey' => true,
             ]
         );
 
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id',
             [
                 'foreignKey' => [
-                    'message' => 'El part_id no existe en el modelo Parts'
-                ]
+                    'message' => 'The part_id does not exist on the Parts model',
+                ],
             ]
         );
     }
@@ -732,12 +749,12 @@ class Parts extends Model
     {
         $this->hasMany(
             'id',
-            'RobotsParts',
+            \RobotsParts::class,
             'parts_id',
             [
                 'foreignKey' => [
-                    'message' => 'La parte no puede ser borrada porque hay robots utilizandola',
-                ]
+                    'message' => 'The part cannot be deleted because other robots are using it',
+                ],
             ]
         );
     }
@@ -763,13 +780,13 @@ class RobotsParts extends Model
     {
         $this->belongsTo(
             'parts_id',
-            'Parts',
+            \Parts::class,
             'id',
             [
                 'foreignKey' => [
                     'allowNulls' => true,
-                    'message'    => 'El part_id no existe en el modelo Parts',
-                ]
+                    'message'    => 'The part_id does not exist on the Parts model',
+                ],
             ]
         );
     }
@@ -798,12 +815,12 @@ class Robots extends Model
     {
         $this->hasMany(
             'id',
-            'Parts',
+            Parts::class,
             'robots_id',
             [
                 'foreignKey' => [
                     'action' => Relation::ACTION_CASCADE,
-                ]
+                ],
             ]
         );
     }
@@ -841,12 +858,12 @@ Saving a record and its related records in a has-many relation:
 ```php
 <?php
 
-// Obtener un artista existente
+// Get an existing artist
 $artist = Artists::findFirst(
-    'name = 'Shinichi Osawa''
+    'name = "Shinichi Osawa"'
 );
 
-// Crear un álbum
+// Create an album
 $album = new Albums();
 
 $album->name   = 'The One';
@@ -854,20 +871,20 @@ $album->artist = $artist;
 
 $songs = [];
 
-// Crear una primer canción
+// Create a first song
 $songs[0]           = new Songs();
 $songs[0]->name     = 'Star Guitar';
 $songs[0]->duration = '5:54';
 
-// Crear una segunda canción
+// Create a second song
 $songs[1]           = new Songs();
 $songs[1]->name     = 'Last Days';
 $songs[1]->duration = '4:29';
 
-// Asignar el array de canciones
+// Assign the songs array
 $album->songs = $songs;
 
-// Guardar el algum y sus canciones
+// Save the album + its songs
 $album->save();
 ```
 
@@ -892,15 +909,21 @@ If a resultset is composed of complete objects, model operations can be performe
 $type = $robots->getRelated('type');
 
 $type->name = 'Some other type';
+
 $result = $type->save();
 
 
-// Obtener el tipo de robot relacionado pero solo la columna `name`
-$type = $robots->getRelated('type', ['columns' => 'name']);
+// Get the related robot type but only the `name` column
+$type = $robots->getRelated(
+    'type',
+    [
+        'columns' => 'name',
+    ]
+);
 
 $type->name = 'Some other type';
 
-// Esto fallará porque `$type` no es un objecto completo
+// This will fail because `$type` is not a complete object
 $result = $type->save();
 
 ```
@@ -953,15 +976,11 @@ $data = [
     'updated_at' => time(),
 ];
 
-// Actualiza todas las partes excepto las "TYPE_BASIC"
+// Update all the parts except those whose type is basic
 $robots->getParts()->update(
     $data,
     function ($part) {
-        if ($part->type === Part::TYPE_BASIC) {
-            return false;
-        }
-
-        return true;
+        return ($part->type !== Part::TYPE_BASIC);
     }
 );
 ```
@@ -1001,14 +1020,10 @@ $robots->getParts()->delete();
 ```php
 <?php
 
-// Eliminar solo las partes con stock mayor o igual a cero
+// Delete only whose stock is greater or equal than zero
 $robots->getParts()->delete(
     function ($part) {
-        if ($part->stock < 0) {
-            return false;
-        }
-
-        return true;
+        return ($part->stock >= 0);
     }
 );
 ```
