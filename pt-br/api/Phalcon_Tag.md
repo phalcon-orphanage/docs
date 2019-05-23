@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Tag'
 ---
+
 # Class **Phalcon\Tag**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
