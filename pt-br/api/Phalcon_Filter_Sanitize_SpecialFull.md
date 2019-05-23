@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Filter\Sanitizer\SpecialFull'
 ---
+
 # Class [Phalcon\Filter\Sanitizer\SpecialFull](Phalcon_Filter_Sanitizer_SpecialFull)
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitizer/specialfull.zep)
