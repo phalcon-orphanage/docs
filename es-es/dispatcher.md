@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Dispatcher Component
 
 * * *
@@ -31,12 +32,12 @@ while (!$finished) {
     call_user_func_array(
         [
             $controller,
-            $actionName . 'Action'
+            $actionName . 'Action',
         ],
         $params
     );
 
-    // '$finished' debe ser recargado para chequear si el flujo fue enviado a otro controlador
+    // '$finished' should be reloaded to check if the flow was forwarded to another controller
     $finished = true;
 }
 ```
@@ -159,18 +160,19 @@ More forwarding examples:
 ```php
 <?php
 
-// Cambiar el flujo a otra action en el controlador actual
-$this->dispatcher->forward(
-    [
-        'action' => 'search'
-    ]
-);
-
-// Cambiar el flujo a otra action en el controlador actual pero pasando parámetros
+// Forward flow to another action in the current controller
 $this->dispatcher->forward(
     [
         'action' => 'search',
-        'params' => [1, 2, 3]
+    ]
+);
+
+// Forward flow to another action in the current controller
+// passing parameters
+$this->dispatcher->forward(
+    [
+        'action' => 'search',
+        'params' => [1, 2, 3],
     ]
 );
 ```
@@ -199,39 +201,49 @@ use Phalcon\Events\Event;
 $di = new Di();
 
 $modules = [
-  'backend' => [
-      'className' => 'App\Backend\Bootstrap',
-      'path'      => '/app/Modules/Backend/Bootstrap.php',
-      'metadata'  => [
-          'controllersNamespace' => 'App\Backend\Controllers',
-      ],
-  ],
+    'backend' => [
+        'className' => \App\Backend\Bootstrap::class,
+        'path'      => '/app/Modules/Backend/Bootstrap.php',
+        'metadata'  => [
+            'controllersNamespace' => 'App\Backend\Controllers',
+        ],
+    ],
 ];
 
 $manager = new Manager();
 
 $manager->attach(
-  'dispatch:beforeForward',
-  function (Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
-      $metadata = $modules[$forward['module']]['metadata'];
-      $dispatcher->setModuleName($forward['module']);
-      $dispatcher->setNamespaceName($metadata['controllersNamespace']);
-  }
+    'dispatch:beforeForward',
+    function (Event $event, Dispatcher $dispatcher, array $forward) use ($modules) {
+        $moduleName = $forward['module'];
+
+        $metadata = $modules[$moduleName]['metadata'];
+
+        $dispatcher->setModuleName($moduleName);
+
+        $dispatcher->setNamespaceName(
+            $metadata['controllersNamespace']
+        );
+    }
 );
 
 $dispatcher = new Dispatcher();
+
 $dispatcher->setDI($di);
+
 $dispatcher->setEventsManager($manager);
+
 $di->set('dispatcher', $dispatcher);
+
 $dispatcher->forward(
-  [
-      'module'     => 'backend',
-      'controller' => 'posts',
-      'action'     => 'index',
-  ]
+    [
+        'module'     => 'backend',
+        'controller' => 'posts',
+        'action'     => 'index',
+    ]
 );
 
-echo $dispatcher->getModuleName(); // mostrará 'backend'
+echo $dispatcher->getModuleName(); // will display properly 'backend'
 ```
 
 ## Preparing Parameters
@@ -290,17 +302,17 @@ If the desired schema is: `https://example.com/controller/key1:value1/key2:value
 <?php
 
 use Phalcon\Dispatcher;
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 $di->set(
     'dispatcher',
     function () {
-        // Crear el EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        // Adjuntar el listener
+        // Attach a listener
         $eventsManager->attach(
             'dispatch:beforeDispatchLoop',
             function (Event $event, $dispatcher) {
@@ -308,14 +320,17 @@ $di->set(
 
                 $keyParams = [];
 
-                // Separar cada parámetro en pares clave valor
-                foreach ($params as $number => $value) {
-                    $parts = explode(':', $value);
+                // Explode each parameter as key,value pairs
+                foreach ($params as $param) {
+                    $parts = explode(':', $param);
 
-                    $keyParams[$parts[0]] = $parts[1];
+                    $key   = $parts[0];
+                    $value = $parts[1];
+
+                    $keyParams[$key] = $value;
                 }
 
-                // Sobre escribimos los parámetros
+                // Override parameters
                 $dispatcher->setParams($keyParams);
             }
         );
@@ -379,15 +394,17 @@ use Phalcon\Events\Manager as EventsManager;
 $di->set(
     'dispatcher',
     function () {
-        // Creamos el EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
-        // Camelizar actions
+        // Camelize actions
         $eventsManager->attach(
             'dispatch:beforeDispatchLoop',
             function (Event $event, $dispatcher) {
                 $dispatcher->setActionName(
-                    Text::camelize($dispatcher->getActionName())
+                    Text::camelize(
+                        $dispatcher->getActionName()
+                    )
                 );
             }
         );
@@ -405,10 +422,9 @@ $di->set(
 
 If the original URL always contains a `.php` extension:
 
-```php
-https://example.com/admin/products/show-latest-products.php
-https://example.com/admin/products/index.php
-```
+    https://example.com/admin/products/show-latest-products.php
+    https://example.com/admin/products/index.php
+    
 
 You can remove it before dispatch the controller/action combination:
 
@@ -462,9 +478,7 @@ use Phalcon\Mvc\Controller;
 class PostsController extends Controller
 {
     /**
-     * Ver posts
-     *
-     * @param \Posts $post
+     * Shows posts
      */
     public function showAction(Posts $post)
     {
@@ -488,39 +502,45 @@ use \ReflectionMethod;
 $di->set(
     'dispatcher',
     function () {
-        // Creamos un EventsManager
+        // Create an EventsManager
         $eventsManager = new EventsManager();
 
         $eventsManager->attach(
             'dispatch:beforeDispatchLoop',
             function (Event $event, $dispatcher) {
-                // Posible nombre de clase del controlador
+                // Possible controller class name
                 $controllerName = $dispatcher->getControllerClass();
 
-                // Posible nombre de método
+                // Possible method name
                 $actionName = $dispatcher->getActiveMethod();
 
                 try {
-                    // Obtenemos el reflection para el método a ser ejecutado
+                    // Get the reflection for the method to be executed
                     $reflection = new ReflectionMethod($controllerName, $actionName);
 
                     $parameters = $reflection->getParameters();
 
-                    // Chequeamos los parámetros
+                    // Check parameters
                     foreach ($parameters as $parameter) {
-                        // Obtenemos el nombre del modelo esperado
+                        // Get the expected model name
                         $className = $parameter->getClass()->name;
 
-                        // Chequeamos si el parámetros es instancia del modelo
+                        // Check if the parameter expects a model instance
                         if (is_subclass_of($className, Model::class)) {
-                            $model = $className::findFirstById($dispatcher->getParams()[0]);
+                            $model = $className::findFirstById(
+                                $dispatcher->getParams()[0]
+                            );
 
-                            // Reescribimos el parámetro por la instancia del modelo
-                            $dispatcher->setParams([$model]);
+                            // Override the parameters by the model instance
+                            $dispatcher->setParams(
+                                [
+                                    $model,
+                                ]
+                            );
                         }
                     }
                 } catch (Exception $e) {
-                    // Ocurrió una excepción. Quizás la clase o el action no existen?
+                    // An exception has occurred, maybe the class or action does not exist?
                 }
             }
         );
@@ -544,7 +564,9 @@ use Phalcon\Mvc\Model\Binder;
 
 $dispatcher = new Dispatcher();
 
-$dispatcher->setModelBinder(new Binder());
+$dispatcher->setModelBinder(
+    new Binder()
+);
 
 return $dispatcher;
 ```
@@ -563,9 +585,7 @@ use Phalcon\Mvc\Model;
 class CrudController extends Controller
 {
     /**
-     * Mostrar
-     *
-     * @param Model $model
+     * Show action
      */
     public function showAction(Model $model)
     {
@@ -600,9 +620,7 @@ use Models\Posts;
 class PostsController extends Controller
 {
     /**
-     * Ver posts
-     *
-     * @param Posts $post
+     * Shows posts
      */
     public function showAction(Posts $post)
     {
