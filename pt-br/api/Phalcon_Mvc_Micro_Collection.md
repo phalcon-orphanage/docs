@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Micro\Collection'
 ---
+
 # Class **Phalcon\Mvc\Micro\Collection**
 
 *implements* [Phalcon\Mvc\Micro\CollectionInterface](Phalcon_Mvc_Micro_CollectionInterface)
