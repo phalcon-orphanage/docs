@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db\ResultInterface'
 ---
+
 # Interface **Phalcon\Db\ResultInterface**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
