@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Escaper\Exception'
 ---
+
 # Class **Phalcon\Escaper\Exception**
 
 *extends* class [Phalcon\Exception](Phalcon_Exception)
