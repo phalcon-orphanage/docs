@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 upgrade: '#models'
 ---
+
 # Models
 
 * * *
@@ -263,9 +264,10 @@ echo 'Название робота: ', $robot->name, "\n";
 
 // Первый механический робот в таблице роботов
 $robot = Robots::findFirst("type = 'mechanical'");
-echo 'Название первого механического робота: ', $robot->name, "\n";
 
-// Получим первого виртуального робота, упорядочив результат по имени
+echo 'The first mechanical robot name is ', $robot->name, "\n";
+
+// Get first virtual robot ordered by name
 $robot = Robots::findFirst(
     [
         "type = 'virtual'",
@@ -273,7 +275,7 @@ $robot = Robots::findFirst(
     ]
 );
 
-echo 'Название первого виртуального робота: ', $robot->name, "\n";
+echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
 Оба метода `find()` и `findFirst()` принимают ассоциативный массив, определяющий критерии поиска:
@@ -502,7 +504,7 @@ class Robots extends Model
 
     public function getResultsetClass()
     {
-    return 'Application\Mvc\Model\Resultset\Custom';
+        return \Application\Mvc\Model\Resultset\Custom::class;
     }
 }
 ```
@@ -518,7 +520,7 @@ and finally in your code you will have something like this:
 $robots = Robots::find(
     [
         'conditions' => 'date between "2017-01-01" AND "2017-12-31"',
-        'order'      => 'date'
+        'order'      => 'date',
     ]
 );
 
@@ -636,19 +638,19 @@ If you bind arrays in bound parameters, keep in mind, that keys must be numbered
 
 use Store\Toys\Robots;
 
-$array = ['a','b','c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
+$array = ['a', 'b', 'c']; // $array: [[0] => 'a', [1] => 'b', [2] => 'c']
 
 unset($array[1]); // $array: [[0] => 'a', [2] => 'c']
 
-// Теперь необходимо перенумеровать ключи
+// Now we have to renumber the keys
 $array = array_values($array); // $array: [[0] => 'a', [1] => 'c']
 
 $robots = Robots::find(
     [
         'letter IN ({letter:array})',
         'bind' => [
-            'letter' => $array
-        ]
+            'letter' => $array,
+        ],
     ]
 );
 ```
@@ -761,20 +763,20 @@ $rowcount = Employees::count(
 
 // Сколько сотрудников работает в сфере тестирования?
 $rowcount = Employees::count(
-    'area = 'Testing''
+    'area = "Testing"'
 );
 
-// Посчитать сотрудников, сгруппировав результаты по сфере деятельности
+// Count employees grouping results by their area
 $group = Employees::count(
     [
         'group' => 'area',
     ]
 );
 foreach ($group as $row) {
-   echo $row->rowcount, ' сотрудников в ', $row->area;
+   echo 'There are ', $row->rowcount, ' in ', $row->area;
 }
 
-// Посчитать сотрудников, сгруппировав результаты по сфере деятельности, и упорядочив их по количеству
+// Count employees grouping by their area and ordering the result by count
 $group = Employees::count(
     [
         'group' => 'area',
@@ -782,12 +784,12 @@ $group = Employees::count(
     ]
 );
 
-// Избегайте SQL инъекции, используя связанные параметры
+// Avoid SQL injections using bound parameters
 $group = Employees::count(
     [
         'type > ?0',
         'bind' => [
-            $type
+            $type,
         ],
     ]
 );
@@ -813,19 +815,20 @@ $total = Employees::sum(
     ]
 );
 
-// Группирует заработные платы по каждой сфере деятельности
+// Generate a grouping of the salaries of each area
 $group = Employees::sum(
     [
         'column' => 'salary',
         'group'  => 'area',
     ]
 );
+
 foreach ($group as $row) {
-   echo 'Сумма заработной платы ', $row->area, ' составляет ', $row->sumatory;
+   echo 'The sum of salaries of the ', $row->area, ' is ', $row->sumatory;
 }
 
-// Группирует заработные платы по каждой сферы деятельности
-// и упорядочивает их от большего к меньшему
+// Generate a grouping of the salaries of each area ordering
+// salaries from higher to lower
 $group = Employees::sum(
     [
         'column' => 'salary',
@@ -834,12 +837,12 @@ $group = Employees::sum(
     ]
 );
 
-// Избегайте SQL инъекции, используя связанные параметры
+// Avoid SQL injections using bound parameters
 $group = Employees::sum(
     [
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -865,13 +868,13 @@ $average = Employees::average(
     ]
 );
 
-// Избегайте SQL инъекции, используя связанные параметры
+// Avoid SQL injections using bound parameters
 $average = Employees::average(
     [
         'column'     => 'age',
         'conditions' => 'area > ?0',
         'bind'       => [
-            $area
+            $area,
         ],
     ]
 );
@@ -1198,8 +1201,11 @@ class Robots extends Model
 }
 
 $manager = new Manager();
+
 $manager->setModelPrefix('wp_');
+
 $robots = new Robots(null, null, $manager);
+
 echo $robots->getSource(); // will return wp_robots
 ```
 
@@ -1488,34 +1494,46 @@ use Phalcon\Mvc\Model;
 
 class User extends Model
 {
-  public function initialize()
-  {
-      $this->keepSnapshots(true);
-  }
+    public function initialize()
+    {
+        $this->keepSnapshots(true);
+    }
 }
 
-$user       = new User();
+$user = new User();
+
 $user->name = 'Test User';
+
 $user->create();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->login = 'testuser';
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
+
 $user->update();
-var_dump($user->getChangedFields());
+
+var_dump(
+    $user->getChangedFields()
+);
 ```
 
 On Phalcon 4.0.0 and later it is:
 
-```php
-array(0) {
-}
-array(1) {
-[0]=> 
-    string(5) "login"
-}
-array(0) {
-}
-```
+    array(0) {
+    }
+    array(1) {
+    [0]=> 
+        string(5) "login"
+    }
+    array(0) {
+    }
+    
 
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
