@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\ViewBaseInterface'
 ---
+
 # Interface **Phalcon\Mvc\ViewBaseInterface**
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/viewbaseinterface.zep)
