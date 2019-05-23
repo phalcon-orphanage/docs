@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Model Caching
 
 * * *
@@ -150,10 +151,10 @@ use Phalcon\Mvc\Model;
 class Robots extends Model
 {
     /**
-     * Implementar un método que retorne una clave en string
-     * basada en los parámetros de la consulta
+     * Implement a method that returns a string key based
+     * on the query parameters
      */
-    protected static function _createKey($parameters)
+    protected static function _createKey(array $parameters)
     {
         $uniqueKey = [];
 
@@ -205,7 +206,7 @@ use Phalcon\Mvc\Model;
 
 class CacheableModel extends Model
 {
-    protected static function _createKey($parameters)
+    protected static function _createKey(array $parameters)
     {
         // ... Crear clave de cacheo con los parámetros
     }
@@ -536,20 +537,30 @@ class CustomQueryBuilder extends QueryBuilder
 {
     public function getQuery()
     {
-        $query = new CustomQuery($this->getPhql());
+        $query = new CustomQuery(
+            $this->getPhql()
+        );
 
-        $query->setDI($this->getDI());
+        $query->setDI(
+            $this->getDI()
+        );
 
-        if ( is_array($this->_bindParams) ) {
-            $query->setBindParams($this->_bindParams);
+        if (is_array($this->_bindParams)) {
+            $query->setBindParams(
+                $this->_bindParams
+            );
         }
 
-        if ( is_array($this->_bindTypes) ) {
-            $query->setBindTypes($this->_bindTypes);
+        if (is_array($this->_bindTypes)) {
+            $query->setBindTypes(
+                $this->_bindTypes
+            );
         }
 
-        if ( is_array($this->_sharedLock) ) {
-            $query->setSharedLock($this->_sharedLock);
+        if (is_array($this->_sharedLock)) {
+            $query->setSharedLock(
+                $this->_sharedLock
+            );
         }
 
         return $query;
@@ -567,35 +578,43 @@ use Phalcon\Mvc\Model\Query as ModelQuery;
 class CustomQuery extends ModelQuery
 {
     /**
-     * El método execute es sobre cargado
+     * The execute method is overridden
      */
     public function execute($params = null, $types = null)
     {
-        // Analizar la representación intermedia para el SELECT
+        // Parse the intermediate representation for the SELECT
         $ir = $this->parse();
 
-        if ( is_array($this->_bindParams) ) {
-            $params = array_merge($this->_bindParams, (array)$params);
+        if (is_array($this->_bindParams)) {
+            $params = array_merge(
+                $this->_bindParams,
+                (array) $params
+            );
         }
 
-        if ( is_array($this->_bindTypes) ) {
-            $types = array_merge($this->_bindTypes, (array)$types);
+        if (is_array($this->_bindTypes)) {
+            $types = array_merge(
+                $this->_bindTypes,
+                (array) $types
+            );
         }
 
-        // Comprobar si la consulta tiene condiciones
+        // Check if the query has conditions
         if (isset($ir['where'])) {
-            // Los campos en las condiciones pueden tener cualquier orden
-            // Necesitamos comprobar recursivamente el árbol de condiciones
-            // para encontrar la información que buscamos
+            // The fields in the conditions can have any order
+            // We need to recursively check the conditions tree
+            // to find the info we're looking for
             $visitor = new CustomNodeVisitor();
 
-            // Visitar los nodos recursivamente
-            $visitor->visit($ir['where']);
+            // Recursively visits the nodes
+            $visitor->visit(
+                $ir['where']
+            );
 
             $initial = $visitor->getInitial();
             $final   = $visitor->getFinal();
 
-            // Seleccionar el cache de acuerdo al rango
+            // Select the cache according to the range
             // ...
 
             // Chequeamos si el cache tiene datos
@@ -704,12 +723,16 @@ class Robots extends Model
 
         $builder = new CustomQueryBuilder($parameters);
 
-        $builder->from(get_called_class());
+        $builder->from(
+            get_called_class()
+        );
 
         $query = $builder->getQuery();
 
         if (isset($parameters['bind'])) {
-            return $query->execute($parameters['bind']);
+            return $query->execute(
+                $parameters['bind']
+            );
         } else {
             return $query->execute();
         }
