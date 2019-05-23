@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'nl-nl'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\MetaData\Files'
 ---
+
 # Class **Phalcon\Mvc\Model\MetaData\Files**
 
 *extends* abstract class [Phalcon\Mvc\Model\MetaData](Phalcon_Mvc_Model_MetaData)
