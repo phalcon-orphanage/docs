@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Translate\AdapterInterface'
 ---
+
 # Interface **Phalcon\Translate\AdapterInterface**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapterinterface.zep)
