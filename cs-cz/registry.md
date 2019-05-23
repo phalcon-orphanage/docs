@@ -1,10 +1,11 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 upgrade: ''
 category: 'collection'
 ---
+
 # Registry Component
 
 * * *
@@ -84,6 +85,7 @@ $data = [
 ];
 
 $collection->clear();
+
 $collection->init($data);
 
 echo $collection->count(); // 1
@@ -117,7 +119,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->year;                    // 1776
+echo $collection->year; // 1776
 ```
 
 You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
@@ -163,7 +165,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->year;                    // 1776
+echo $collection->year; // 1776
 ```
 
 You can use `__get($element)` but it is not advisable as it is much slower than the property syntax. The same applies to `offsetGet`
@@ -366,7 +368,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->count();    // 2
+echo $collection->count(); // 2
 ```
 
 ## Serialization
@@ -417,7 +419,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->toArray();  // $data
+echo $collection->toArray(); // $data
 ```
 
 `toJson(int $options)` returns a JSON representation of the object. It uses `json_encode` internally and accepts a parameter, which represents the flags that `json_encode` accepts. By default the options are set up with the value 74, ([RFC4327](https://www.ietf.org/rfc/rfc4627.txt)) which translates to:
@@ -446,7 +448,7 @@ $data = [
 
 $collection = new Registry($data);
 
-echo $collection->toJson();    // ["red","white","blue"],"year":1776}
+echo $collection->toJson(); // ["red","white","blue"],"year":1776}
 
 echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 /**
