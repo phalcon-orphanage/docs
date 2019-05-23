@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Debug Component
 
 * * *
@@ -122,6 +123,7 @@ To enable it, add the following to your bootstrap:
 <?php
 
 $debug = new \Phalcon\Debug();
+
 $debug->listen();
 ```
 
@@ -135,6 +137,7 @@ Any instance of a Phalcon class offers exactly the same behavior than a PHP norm
 <?php
 
 $router = new Phalcon\Mvc\Router();
+
 print_r($router);
 ```
 
