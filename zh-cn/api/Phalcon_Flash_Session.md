@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Flash\Session'
 ---
+
 # Class **Phalcon\Flash\Session**
 
 *extends* abstract class [Phalcon\Flash](Phalcon_Flash)
