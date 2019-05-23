@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'de-de'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Db'
 ---
+
 # Abstract class **Phalcon\Db**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db.zep)
