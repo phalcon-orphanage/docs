@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Http\Request\File'
 ---
+
 # Class **Phalcon\Http\Request\File**
 
 *implements* [Phalcon\Http\Request\FileInterface](Phalcon_Http_Request_FileInterface)
