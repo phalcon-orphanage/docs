@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 ---
+
 # ようこそ
 
 Welcome to the documentation for the Phalcon framework.
