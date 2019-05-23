@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'zh-cn'
+language: 'en'
 version: '4.0'
 ---
+
 # Application
 
 * * *
@@ -206,25 +207,24 @@ if ($response instanceof ResponseInterface) {
 
 Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
-## Single or Multi Module Applications
+## 单个或多模块应用程序
 
 With this component you can run various types of MVC structures:
 
-### Single Module
+### 单模块
 
 Single MVC applications consist of one module only. Namespaces can be used but are not necessary. An application like this would have the following file structure:
 
-```php
-single/
-    app/
-        controllers/
-        models/
-        views/
-    public/
-        css/
-        img/
-        js/
-```
+    single/
+        app/
+            controllers/
+            models/
+            views/
+        public/
+            css/
+            img/
+            js/
+    
 
 If namespaces are not used, the following bootstrap file could be used to orchestrate the MVC flow:
 
@@ -336,28 +336,27 @@ try {
 }
 ```
 
-### Multi Module
+### 多模块
 
 A multi-module application uses the same document root for more than one module. In this case the following file structure can be used:
 
-```php
-multiple/
-  apps/
-    frontend/
-       controllers/
-       models/
-       views/
-       Module.php
-    backend/
-       controllers/
-       models/
-       views/
-       Module.php
-  public/
-    css/
-    img/
-    js/
-```
+    multiple/
+      apps/
+        frontend/
+           controllers/
+           models/
+           views/
+           Module.php
+        backend/
+           controllers/
+           models/
+           views/
+           Module.php
+      public/
+        css/
+        img/
+        js/
+    
 
 Each directory in apps/ have its own MVC structure. A Module.php is present to configure specific settings of each module like autoloaders or custom services:
 
@@ -479,11 +478,11 @@ $application = new Application($di);
 $application->registerModules(
     [
         'frontend' => [
-            'className' => 'Multiple\Frontend\Module',
+            'className' => \Multiple\Frontend\Module::class,
             'path'      => '../apps/frontend/Module.php',
         ],
         'backend'  => [
-            'className' => 'Multiple\Backend\Module',
+            'className' => \Multiple\Backend\Module::class,
             'path'      => '../apps/backend/Module.php',
         ]
     ]
@@ -543,7 +542,7 @@ $application->registerModules(
 
 When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registered, always is necessary that every matched route returns a valid module. Each registered module has an associated class offering functions to set the module itself up. Each module class definition must implement two methods: `registerAutoloaders()` and `registerServices()`, they will be called by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) according to the module to be executed.
 
-## Application Events
+## 应用程序事件
 
 [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. 以下事件被支持︰
 
