@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'cs-cz'
+language: 'en'
 version: '4.0'
 ---
+
 # MVC - Model View Controller
 
 * * *
