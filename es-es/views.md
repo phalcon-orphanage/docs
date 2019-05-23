@@ -1,8 +1,9 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 ---
+
 # Vistas
 
 * * *
@@ -816,32 +817,32 @@ use Phalcon\Mvc\Engine;
 class MyTemplateAdapter extends Engine
 {
     /**
-     * Constructor del adaptador
+     * Adapter constructor
      *
      * @param \Phalcon\Mvc\View $view
      * @param \Phalcon\Di $di
      */
     public function __construct($view, DiInterface $di)
     {
-        // Aquí inicializamos el adaptador
+        // Initialize here the adapter
         parent::__construct($view, $di);
     }
 
     /**
-     * Renderizamos una vista usando el motor de plantillas
+     * Renders a view using the template engine
      *
      * @param string $path
      * @param array $params
      */
-    public function render($path, $params)
+    public function render(string $path, $params)
     {
-        // Accedemos a la vista
+        // Access view
         $view = $this->_view;
 
-        // Accedemos a las opciones
+        // Access options
         $options = $this->_options;
 
-        // Renderizamos la vista
+        // Render the view
         // ...
     }
 }
@@ -871,15 +872,15 @@ $di->set(
         // Set the engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
+                '.my-html' => \MyTemplateAdapter::class,
             ]
         );
 
         // Using more than one template engine
         $view->registerEngines(
             [
-                '.my-html' => 'MyTemplateAdapter',
-                '.phtml'   => 'Phalcon\Mvc\View\Engine\Php',
+                '.my-html' => \MyTemplateAdapter::class,
+                '.phtml'   => \Phalcon\Mvc\View\Engine\Php::class,
             ]
         );
 
