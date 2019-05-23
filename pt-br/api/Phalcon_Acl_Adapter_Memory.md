@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\Adapter\Memory'
 ---
+
 # Class **Phalcon\Acl\Adapter\Memory**
 
 **extends** [Phalcon\Acl\Adapter](Phalcon_Acl_Adapter) **implements** [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Acl\AdapterInterface](Phalcon_Acl_AdapterInterface)
