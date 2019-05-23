@@ -1,9 +1,10 @@
 ---
 layout: default
-language: 'fr-fr'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Service\LocatorInterface'
 ---
+
 # Class **Phalcon\Service\LocatorInterface**
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/service/locatorinterface.zep)
