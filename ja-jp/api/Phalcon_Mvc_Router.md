@@ -36,10 +36,6 @@ echo $router->getControllerName();
 
 ## 定数
 
-*integer* **URI_SOURCE_GET_URL**
-
-*integer* **URI_SOURCE_SERVER_REQUEST_URI**
-
 *integer* **POSITION_FIRST**
 
 *integer* **POSITION_LAST**
@@ -69,19 +65,6 @@ public **getEventsManager** ()
 public **getRewriteUri** ()
 
 Get rewrite info. This info is read from $_GET["_url"]. This returns '/' if the rewrite information cannot be read
-
-public **setUriSource** (*mixed* $uriSource)
-
-Sets the URI source. One of the URI_SOURCE_* constants
-
-```php
-<?php
-
-$router->setUriSource(
-    Router::URI_SOURCE_SERVER_REQUEST_URI
-);
-
-```
 
 public **removeExtraSlashes** (*mixed* $remove)
 
@@ -123,17 +106,14 @@ public **getDefaults** ()
 
 Returns an array of default parameters
 
-public **handle** ([*mixed* $uri])
+public **handle** (*string* $uri)
 
 Handles routing information received from the rewrite engine
 
 ```php
 <?php
 
-// Read the info from the rewrite engine
-$router->handle();
-
-// Manually passing an URL
+// Passing a URL
 $router->handle("/posts/edit/1");
 
 ```
