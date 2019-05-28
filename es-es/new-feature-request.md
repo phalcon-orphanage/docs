@@ -4,7 +4,7 @@ language: 'en'
 version: '4.0'
 ---
 
-# Solicita una nueva funcionalidad
+# Solicitud de Nueva Funcionalidad
 
 * * *
 
