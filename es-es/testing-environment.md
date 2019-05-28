@@ -184,7 +184,7 @@ Help:
   To display the list of available commands, please use the list command.
 ```
 
-## Compilar Phalcon
+## Compile Phalcon
 
 Phalcon is not compiled yet. We need to instruct Zephir to do that:
 
@@ -195,7 +195,7 @@ zephir build
 
 ## Check extensions
 
-Tipo
+Type
 
 ```bash
 php -m
