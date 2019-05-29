@@ -49,7 +49,7 @@ class Memory extends Adapter
 - Class names must be declared in StudlyCaps.
 - Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
 
-### Constantes
+### Constants
 
 - Class constants must be declared in all upper case with underscore separators.
 - Class constants must appear at the top of the class.
