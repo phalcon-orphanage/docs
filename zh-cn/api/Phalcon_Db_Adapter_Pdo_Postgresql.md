@@ -1,8 +1,8 @@
 ---
 layout: default
-language: 'en'
+language: 'zh-cn'
 version: '4.0'
-title: 'Phalcon\Db\Adapter\Pdo\Postgresql'
+title: 'Phalcon\Db\Adapter\Pdo\Mysql'
 ---
 
 # Class **Phalcon\Db\Adapter\Pdo\Postgresql**
