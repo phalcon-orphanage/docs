@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pl-pl'
 version: '4.0'
 title: 'Phalcon\Exception'
 ---
