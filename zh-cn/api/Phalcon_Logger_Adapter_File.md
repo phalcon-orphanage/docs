@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'zh-cn'
 version: '4.0'
 title: 'Phalcon\Logger\Adapter\File'
 ---
