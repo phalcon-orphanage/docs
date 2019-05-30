@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'el-gr'
 version: '4.0'
 title: 'Phalcon\Application'
 ---
