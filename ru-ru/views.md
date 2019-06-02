@@ -55,7 +55,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Название          | Файл                          | Описание                                                                                                                                                                                                                 |
+| Name              | File                          | Description                                                                                                                                                                                                              |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -326,7 +326,7 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Константа класса        | Описание                                                                 | Порядок |
+| Константа класса        | Description                                                              | Порядок |
 | ----------------------- | ------------------------------------------------------------------------ |:-------:|
 | `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |         |
 | `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |    1    |
