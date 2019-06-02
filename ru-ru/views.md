@@ -1000,9 +1000,9 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Название события   | Срабатывает                                   | Можно остановить операцию? |
+| Event Name         | Triggered                                     | Можно остановить операцию? |
 | ------------------ | --------------------------------------------- |:--------------------------:|
 | `afterRender`      | Triggered after completing the render process |            Нет             |
 | `afterRenderView`  | Triggered after rendering an existing view    |            Нет             |
@@ -1010,7 +1010,7 @@ echo $view->render(
 | `beforeRenderView` | Triggered before rendering an existing view   |             Да             |
 | `notFoundView`     | Triggered when a view was not found           |            Нет             |
 
-В следующем примере показано, как назначить слушателей к компоненту:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php
