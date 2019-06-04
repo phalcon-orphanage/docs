@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'cs-cz'
 version: '4.0'
 title: 'Phalcon\Config\Adapter\Yaml'
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ja-jp'
 version: '4.0'
 category: 'installation'
 ---

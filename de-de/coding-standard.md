@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'de-de'
 version: '4.0'
 ---
 
@@ -92,7 +92,7 @@ class Memory extends Adapter
 ### Methods
 
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically based on their visibility. The order is `public`, `portected` and `private`. `__construct` if defined must be at the top of the class. 
+- Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class. 
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.

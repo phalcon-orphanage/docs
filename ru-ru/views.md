@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 ---
 
@@ -10,7 +10,7 @@ version: '4.0'
 
 ## Using Views
 
-Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
+Views represent the user interface of your application. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
 
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are responsible for the managing the view layer of your MVC application.
 
@@ -55,7 +55,7 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Название          | Файл                          | Описание                                                                                                                                                                                                                 |
+| Name              | File                          | Description                                                                                                                                                                                                              |
 | ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
 | Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
@@ -326,7 +326,7 @@ class PostsController extends Controller
 
 The available render levels are:
 
-| Константа класса        | Описание                                                                 | Порядок |
+| Константа класса        | Description                                                              | Порядок |
 | ----------------------- | ------------------------------------------------------------------------ |:-------:|
 | `LEVEL_NO_RENDER`       | Indicates to avoid generating any kind of presentation.                  |         |
 | `LEVEL_ACTION_VIEW`     | Generates the presentation to the view associated to the action.         |    1    |
@@ -1000,9 +1000,9 @@ echo $view->render(
 
 ## View Events
 
-[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
+[Phalcon\Mvc\View](api/Phalcon_Mvc_View) and [Phalcon\Mvc\View\Simple](api/Phalcon_Mvc_View_Simple) are able to send events to an `EventsManager` if it is present. Events are triggered using the type `view`. Some events when returning boolean false could stop the active operation. The following events are supported:
 
-| Название события   | Срабатывает                                   | Можно остановить операцию? |
+| Event Name         | Triggered                                     | Можно остановить операцию? |
 | ------------------ | --------------------------------------------- |:--------------------------:|
 | `afterRender`      | Triggered after completing the render process |            Нет             |
 | `afterRenderView`  | Triggered after rendering an existing view    |            Нет             |
@@ -1010,7 +1010,7 @@ echo $view->render(
 | `beforeRenderView` | Triggered before rendering an existing view   |             Да             |
 | `notFoundView`     | Triggered when a view was not found           |            Нет             |
 
-В следующем примере показано, как назначить слушателей к компоненту:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php

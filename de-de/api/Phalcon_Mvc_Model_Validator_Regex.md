@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'de-de'
 version: '4.0'
 title: 'Phalcon\Mvc\Model\Validator\Regex'
 ---

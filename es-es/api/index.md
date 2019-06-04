@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'API Index'
+title: 'Índice del API'
 ---
 
 ## Índice del API
