@@ -16,7 +16,7 @@ Por favor lea con calma este documento para compenetrarse con el proceso de cola
 
 El código fuente de Phalcon (junto con la documentación, sitios web, etc.) se almacena en [GitHub](https://github.com). Los repositorios se encuentran disponibles en nuestra [página de organización](https://github.com/phalcon).
 
-Para contribuir en Phalcon, es suficiente con crear un *[pull request](https://help.github.com/articles/using-pull-requests/)* en GitHub.
+Para contribuir en Phalcon es suficiente con crear un *[pull request](https://help.github.com/articles/using-pull-requests/)* en GitHub.
 
 Hay una plantilla muy útil para crear el *pull request*. Es muy importante y útil para la comunidad, incluir las pruebas del *pull request*. Cada *pull request* será revisado por un colaborador principal (con autorización para incluirlo [*merge*]). Según el tipo y contenido del *pull request*, podrá ser: * incluido de inmediato; * puesto en espera (el revisor pedirá cambios de estilo, pruebas, etc.); * puesto en espera (el revisor considera que debe ser discutido por la comunidad, el equipo principal, etc.); * rechazado.
 
@@ -24,7 +24,7 @@ Hay una plantilla muy útil para crear el *pull request*. Es muy importante y ú
 
 ## Documentación
 
-If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
+Si la programación en Zephir parece ser asustadora, hay muchas otras áreas en las cuales se puede contribuir. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
 
 All you have to do is go to our [docs](https://github.com/phalcon/docs) repository, fork it, make the changes and send us a pull request.
 
@@ -54,7 +54,7 @@ Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation
 
 Please check the following links for instructions on how to generate the backtrace:
 
-- [Generando un backtrace de gdb](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Generando una backtrace de gdb](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generar una backtrace, con un compilador, en Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Símbolos de depuración](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
 - [Compilando PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
