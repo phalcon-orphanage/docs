@@ -14,33 +14,33 @@ La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, corr
 
 # El problema
 
-Un *framework* rico en características necesita un entorno de desarrollo con todos los servicios necesarios para utilizarlas. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
+Un *framework* rico en características necesita un entorno de desarrollo con todos los servicios necesarios para utilizarlas. Por ejemplo, es necesario tener instalados `MySQL`, `Postgresql` y `Sqlite` para comprobar que la funcionalidad del Mapeo objeto-relacional (ORM, por sus siglas en inglés) será igual en todos los adaptadores según la base de datos que necesite la aplicación. También deben estar instaladas todas las extensiones relevantes de PHP.
 
-When looking at all the functionality that Phalcon offers, just to run the testing suite, one needs a great number of extensions as well as services installed (Redis, Memcached, Beanstalkd etc.)
+Dada toda la funcionalidad que Phalcon ofrece, sólo para ejecutar la suite de pruebas se necesita tener instalado un gran número de extensiones y servicios (Redis, Memcached, Beanstalkd, etc.).
 
-If one considers the PHP version also (PHP 7.2, 7.3 etc.), developing for Phalcon is not an easy task, because of all these prerequisites.
+El problema se vuelve más complejo aun si se piensa además en todas las versiones de PHP (7.2, 7.3, etc.) que se deben probar; con todos estos prerrequisitos, el desarrollo de Phalcon no es en definitiva una tarea fácil.
 
-# Solution
+# La solución
 
-We have tried in the past to create a development environment based on docker, but after a while, maintaining this environment was very taxing for the core team.
+Originalmente se ensayó a crear un entorno de desarrollo basado en Docker, pero después de cierto tiempo, la manutención de este entorno se volvió muy dispendiosa para el equipo principal.
 
-Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox](https://nanobox.io). For those that do not know, nanobox is a "wrapper" to docker which creates a unique environment in your machine, ready to use. The environment is folder based so you could potentially have two folders where you have cloned Phalcon, and use the PHP 7.2 on one and the 7.3 on the other. Each of those environments is completely isolated. We have been using nanobox for a while now and it is working extremely well.
+Sin embargo recientemente, se decidió redoblar los esfuerzos y recrear este entorno mediante el uso de [nanobox](https://nanobox.io). Nanobox es un *envoltorio* sobre Docker que crea un entorno de desarrollo único en el PC, listo para usar. El entorno se vale del sistema de carpetas y archivos, entonces es posible tener dos carpetas donde se ha clonado Phalcon y ejecutar PHP 7.2 en una y 7.3 en la otra. Cada uno de dichos entornos está completamente aislado. Hasta la fecha, Nanobox funciona muy bien.
 
-# Installation
+# Instalación
 
-You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
+El primer paso es tener Docker instalado (Instrucciones de instalación [aquí](https://docs.docker.com/engine/installation/)).
 
-Go to <https://nanobox.io> and create an account if you do not have one already, so that you can download the nanobox installation file for your platform.
+El segundo es ir a <https://nanobox.io> y crear una cuenta o ingresar con una existente para descargar la versión de Nanobox indicada para su sistema operativo.
 
-Once the file is downloaded, install it.
+El tercer paso es instalar la versión descargada.
 
-# Running the environment
+# Ejecución del entorno
 
-## Fork the repository
+## Clonación (*fork*) del repositorio
 
-Fork the [cphalcon](https://github.com/phalcon/cphalcon) to your github account, if you have not done so already. Visit the [cphalcon](https://github.com/phalcon/cphalcon) page on your browser and click the `Fork` button at the top right of the screen.
+Es necesario clonar (*fork*) [cphalcon](https://github.com/phalcon/cphalcon) en su cuenta de Github (si aún no se ha hecho): En la página [cphalcon](https://github.com/phalcon/cphalcon) dé un clic al botón `Fork` en la parte superior derecha de la pantalla.
 
-## Clone the fork
+## Copia del *fork*
 
 Now you will need to clone the forked repository to a folder of your choice. The example below assumes that the github account is `niden` - change it to your own.
 
