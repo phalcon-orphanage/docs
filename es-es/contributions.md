@@ -64,24 +64,24 @@ Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo
 - No se aceptan *pull requests* a la rama `master`. Por favor haga un *fork* del repositorio y cree su rama (*branch*) de la rama "fuente" necesaria, por ejemplo `4.0.x`. Si es el caso, por favor haga un *rebase* de su rama antes de enviar el *pull request*. En caso de que se presenten conflictos, le pediremos por favor vuelva a hacer el *rebase* de su rama.
 - Agregar pruebas al *pull request* o ajustar las existentes. Es muy importante hacerlo porque básicamente es la justificación del *pull request*. Por favor, revise la página de [pruebas](testing-environment) para saber cómo configurar un entorno de pruebas y cómo escribirlas.
 - Dado que Phalcon está escrito en [Zephir](https://zephir-lang.com), por favor, no envíe *commits* que modifiquen los archivos creados en C directamente.
-- Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
+- Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. Todas las pruebas en código PHP se ajustan a la normativa [PSR-2](https://www.php-fig.org/psr/).
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su *pull request*.
-- More information [here](new-pull-request)
+- Más información [aquí](new-pull-request)
 
-Before submitting **new functionality**, please open a [NFR](new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+Antes de enviar **una nueva característica**, por favor cree una [Solicitud de Nueva Característica](new-feature-request) *(New Feature Request, NFR)* en GitHub para debatir su impacto o los cambios necesarios en la extensión principal. Una vez que la funcionalidad sea aprobada, confirme que su *pull request (PR)* contiene lo siguiente:
 
 - Una actualización al `CHANGELOG.md`
 - Pruebas unitarias
 - Documentación o ejemplos de uso
 
-## Getting Support
+## Obtener ayuda
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
+Para consultas sobre cómo utilizar Phalcon, por favor visite la [página de soporte](http://phalcon.link/support).
 
-## Requesting Features
+## Solicitar nuevas funcionalidades
 
-If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
+Si tiene un cambio o una nueva funcionalidad en mente, por favor envíe una *[NFR](new-feature-request)*.
 
-Thanks!
+¡Muchas gracias!
 
 <3 Phalcon Team
