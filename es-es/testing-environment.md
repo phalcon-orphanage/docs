@@ -4,17 +4,17 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Testing Environment
+# Entorno de prueba
 
 * * *
 
-# Overview
+# Preámbulo
 
-Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir](https://zephir-lang.com), which has a very similar syntax to PHP or Javascript. In [2003](https://blog.phalconphp.com/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
+La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. Esto se debía principalmente a que la mayoría de desarrolladores no sabe programar en C. Por este motivo se creo [Zephir](https://zephir-lang.com), un nuevo lenguaje con una sintaxis similar a la de PHP o JavaScript. En 2003 se presentó [este plan](https://blog.phalconphp.com/post/phalcon-2-0-the-future) y algunos meses después se lanzó Zephir y Phalcon fue completamente reescrito en él. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
 
-# The problem
+# El problema
 
-Having a framework that is rich in features requires a development environment that will offer all those features and related services. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
+Un *framework* rico en características necesita un entorno de desarrollo con todos los servicios necesarios para utilizarlas. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
 
 When looking at all the functionality that Phalcon offers, just to run the testing suite, one needs a great number of extensions as well as services installed (Redis, Memcached, Beanstalkd etc.)
 
