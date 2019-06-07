@@ -24,47 +24,47 @@ Hay una plantilla muy útil para crear el *pull request*. Es muy importante y ú
 
 ## Documentación
 
-Si la programación en Zephir parece ser asustadora, hay muchas otras áreas en las cuales se puede contribuir. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
+Si la programación en Zephir le parece desalentadora, hay muchas otras áreas en las cuales se puede contribuir. Por ejemplo, se puede revisar o corregir la documentación, en caso que se presente algún error tipográfico o de contenido. También es posible mejorar la documentación contribuyendo con más ejemplos en las páginas correspondientes.
 
-All you have to do is go to our [docs](https://github.com/phalcon/docs) repository, fork it, make the changes and send us a pull request.
+El procedimiento es muy sencillo: solo hay que ir al repositorio de [docs](https://github.com/phalcon/docs), hacer un *fork*, realizar los cambios y enviar el *pull request*.
 
-> Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+> **Nota:** solo es posible hacer cambios en el repositorio de `docs` en la versión en inglés, que se encuentra en la carpeta `en`.
 {:.alert .alert-warning}
 
-## Translations
+## Traducciones
 
-If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin](https://crowdin.com). Our project is located [here](https://crowdin.com/project/phalcon-documentation). If your language is not listed, please send us a message so that we can add it.
+Para contribuir con la traducción de los documentos de Phalcon a su lengua materna puede utilizar el excelente servicio de nuestros amigos de [Crowdin](https://crowdin.com). Nuestro proyecto está ubicado [aquí](https://crowdin.com/project/phalcon-documentation). Si su idioma no está listado, por favor, envíenos un mensaje para que podamos añadirlo.
 
-## Questions and Support
+## Preguntas y ayuda
 
-> We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.link/forum) or our [Discord](https://phalcon.link/discord) server.
+> Solo aceptamos reportes de errores; las solicitudes de nuevas funcionalidades y *pull requests* se deben hacer en GitHub. Para hacer preguntas sobre el uso del *framework* o para solicitar ayuda visite el [foro oficial](https://phalcon.link/forum) o nuestro servidor en [Discord](https://phalcon.link/discord).
 {:.alert .alert-danger}
 
-## Bug Report Checklist
+## Lista de verificación para reporte de errores
 
-- Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
-- Only bugs found in the latest released version of Phalcon will be addressed.
-- We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
+- Verificar que se está utilizando la última versión de Phalcon antes de reportar un incidente en GitHub.
+- Solo se revisarán los errores encontrados en la última versión publicada de Phalcon.
+- Utilizar la plantilla para reportar problemas, incluyendo todos los pasos necesarios para que el equipo principal pueda reproducirlos y resolverlos. El detalle en estos pasos reduce de manera significativa el tiempo necesario para identificar la causa del problema y resolverlo. Agradecemos también (si es posible) que se incluya el código de las pruebas con errores. Para más información, por favor, revise la guía para crear [pruebas reproducibles](reproducible-tests).
 - Como parte del reporte, por favor incluya información adicional, como el sistema operativo, versión de PHP, versión de Phalcon, servidor web, memoria, etcétera.
-- If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#bug-report-generating-backtrace) section for more information.
+- Si se trata de un error de violación de acceso (*[Segmentation Fault](https://es.wikipedia.org/wiki/Violaci%C3%B3n_de_acceso)*) es necesario incluir el registro de seguimiento (*backlog*). Por favor consulte la guía de [generación de traza inversa](#bug-report-generating-backtrace) para obtener más información.
 
 ### Generar una traza inversa
 
-Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
+A veces, debido a un error de [violación de acceso (*Segmentation Fault*)](https://es.wikipedia.org/wiki/Violaci%C3%B3n_de_acceso), Phalcon podría bloquear algunos procesos de su servidor web. Para ayudarnos a encontrar la causa de esta violación, es necesario incluir la traza inversa de la caída del sistema.
 
-Please check the following links for instructions on how to generate the backtrace:
+Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo generar dicha traza:
 
 - [Generando una backtrace de gdb](https://bugs.php.net/bugs-generating-backtrace.php)
 - [Generar una backtrace, con un compilador, en Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
 - [Símbolos de depuración](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
 - [Compilando PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
 
-## Pull Request Checklist
+## Lista de verificación para *Pull Request(s)*
 
-- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
-- Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
-- Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
+- No se aceptan *pull requests* a la rama `master`. Por favor haga un *fork* del repositorio y cree su rama (*branch*) de la rama "fuente" necesaria, por ejemplo `4.0.x`. Si es el caso, por favor haga un *rebase* de su rama antes de enviar el *pull request*. En caso de que se presenten conflictos, le pediremos por favor vuelva a hacer el *rebase* de su rama.
+- Agregar pruebas al *pull request* o ajustar las existentes. Es muy importante hacerlo porque básicamente es la justificación del *pull request*. Por favor, revise la página de [pruebas](testing-environment) para saber cómo configurar un entorno de pruebas y cómo escribirlas.
+- Dado que Phalcon está escrito en [Zephir](https://zephir-lang.com), por favor, no envíe *commits* que modifiquen los archivos creados en C directamente.
+- Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su *pull request*.
 - More information [here](new-pull-request)
 
