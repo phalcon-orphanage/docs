@@ -61,7 +61,7 @@ Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo
 
 ## Lista de verificación para *Pull Request(s)*
 
-- No se aceptan *pull requests* a la rama `master`. Por favor haga un *fork* del repositorio y cree su rama (*branch*) de la rama "fuente" necesaria, por ejemplo `4.0.x`. Si es el caso, por favor haga un *rebase* de su rama antes de enviar el *pull request*. En caso de que se presenten conflictos, le pediremos por favor vuelva a hacer el *rebase* de su rama.
+- No se aceptan *pull requests* a la rama `master`. Por favor haga un *fork* del repositorio y cree su rama (*branch*) de la rama "fuente" necesaria, por ejemplo `4.0.x`. Si es el caso, por favor haga un *rebase* de su rama antes de enviar el *pull request*. En caso de que se presenten conflictos, le pediremos que por favor vuelva a hacer el *rebase* de su rama.
 - Agregar pruebas al *pull request* o ajustar las existentes. Es muy importante hacerlo porque básicamente es la justificación del *pull request*. Por favor, revise la página de [pruebas](testing-environment) para saber cómo configurar un entorno de pruebas y cómo escribirlas.
 - Dado que Phalcon está escrito en [Zephir](https://zephir-lang.com), por favor, no envíe *commits* que modifiquen los archivos creados en C directamente.
 - Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. Todas las pruebas en código PHP se ajustan a la normativa [PSR-2](https://www.php-fig.org/psr/).
