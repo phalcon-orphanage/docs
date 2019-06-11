@@ -50,7 +50,7 @@ git clone git@github.com:niden/cphalcon
 
 ## Copia del *boxfile*
 
-Nanobox reads a file called `boxfile.yml` and located in the root of your folder. There are two files supplied in Phalcon that you can use to develop with. One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
+Nanobox lee un archivo llamado `boxfile.yml`, ubicado en la raíz de la carpeta. Phalcon ofrece dos archivos para facilitar el desarrollo: uno para PHP 7.2 y otro para 7.3. Se debe copiar alguno de ellos a la raíz de la carpeta en la que se clonó el repositorio.
 
 ```bash
 cd ./cphalcon
@@ -58,17 +58,17 @@ cp -v ./tests/_ci/nanobox/boxfile.7.2.yml ./boxfile.yml
 
 ```
 
-You will now end up with a `boxfile.yml` file at the root of your project.
+Aparecerá entonces el archivo `boxfile.hml` en la raíz de la carpeta del proyecto.
 
-## Configure nanobox
+## Configuración de Nanobox
 
-Now we need to run nanobox for the first time. Since this will be the first time you run nanobox, it will ask you to configure it. The installation is very simple
+Ahora se puede ejecutar Nanobox. Por ser la primera vez, es necesario seguir los pasos de configuración, muy sencillos:
 
 ```bash
 nanobox run
 ```
 
-It will ask you to log in first. Type your nanobox username and password, the same credentials you used when creating the nanobox account, so that you can download the installation file.
+Ahora se debe iniciar la sesión utilizando los mismos nombre de usuario y contraseña de la cuenta de Nanobox para poder iniciar la descarga del archivo de instalación.
 
 ```bash
 $ nanobox login
@@ -76,9 +76,9 @@ Nanobox Username: niden
 Nanobox Password: 
 ```
 
-You will also need to configure nanobox. The next step is to decide how you want nanobox to work. There are two options * a lightweight VM (Virtualbox) * docker native
+También es necesario configurar Nanobox. Se debe escoger cómo se quiere que trabaje. Hay dos opciones: * Máquina Virtual (VM, por sus siglas en inglés) liviana utilizando Virtualbox * Docker nativo
 
-It is highly recommended you use docker (hence the requirement above to ensure that you have docker installed).
+Se recomienda escoger la opción **b**, *Docker nativo* (de aquí que se aconsejara instalar Docker desde el principio) como respuesta al final de los siguientes párrafos en la terminal, después de `Answer`:
 
 ```bash
 CONFIGURE NANOBOX
@@ -99,11 +99,11 @@ How would you like to run nanobox?
 Answer: 
 ```
 
-## Run nanobox
+## Ejecución de Nanobox
 
-After finishing the configuration, you will see nanobox trying to download a lot of packages and containers. This is normal and it is going to take a while depending on the connection speed you have. After packages and containers are downloaded, subsequent runs will use cached copies of those packages (unless there is an update).
+Terminada la configuración, Nanobox empezará a descargar un montón de paquetes y contenedores. Esto es normal y tardará un poco según la velocidad de conexión del sistema. Finalizada la descarga, todas las ejecuciones posteriores utilizarán estos paquetes y contenedores (salvo que haya alguna actualización disponible).
 
-Once the whole process finishes, you will end up with a screen that looks like this:
+Al terminar el proceso de instalación, aparecerá una ventana similar a esta:
 
 ```bash
 Preparing environment :
@@ -132,25 +132,25 @@ Preparing environment :
 --------------------------------------------------------------------------------
 ```
 
-You are now inside the environment with all the extensions and services you need. Please note that the IP shown will most likely be different than the one displayed above.
+Esto significa que la instalación ha sido exitosa y ahora están a su alcance todas las extensiones y servicios necesarios. Nota: Es probable que la IP `172.18.0.2` que aparece al final del ejemplo sea diferente en su sistema.
 
 ## Composer
 
-Just in case update composer:
+Por precaución es preferible actualizar `composer`:
 
 ```bash
 composer install
 ```
 
-## Check Zephir
+## Verificación de Zephir
 
-Zephir is already installed in the environment. Just check it:
+Zephir ya se encuentra instalado en el entorno. Para verificarlo:
 
 ```bash
 zephir help
 ```
 
-A screen like the one below should appear:
+Debe aparecer una pantalla similar a la siguiente:
 
 ```bash
 Usage:
@@ -184,24 +184,24 @@ Help:
   To display the list of available commands, please use the list command.
 ```
 
-## Compile Phalcon
+## Compilación de Phalcon
 
-Phalcon is not compiled yet. We need to instruct Zephir to do that:
+Phalcon aún no está compilado. Hay que darle las instrucciones a Zephir para que lo haga:
 
 ```bash
 zephir fullclean
 zephir build
 ```
 
-## Check extensions
+## Revisión de las extensiones
 
-Type
+Se digita:
 
 ```bash
 php -m
 ```
 
-and you will see:
+y se debe recibir:
 
 ```bash
 [PHP Modules]
@@ -223,21 +223,21 @@ redis
 Xdebug
 ```
 
-Note that Phalcon v4+ requires the [PSR](https://github.com/jbboehr/php-psr) extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
+Nota: Phalcon v4+ requiere la extensión [PSR](https://github.com/jbboehr/php-psr) que debe ser cargada antes que Phalcon. En este entorno ya se encuentra compilada. Si aparece `Phalcon` en la lista de extensiones, significa que ya ha sido compilado y está listo para ser utilizado.
 
-# Running tests
+# Ejecución de pruebas
 
-## Unit
+## Unitaria
 
-Now that the environment is set up, we need to run the tests. The testing framework Phalcon uses is [Codeception](https://codeception.com). For a basic introduction you can check [this](http://codeception.com/docs/01-Introduction) page. Also for the list of the commands, you can check [here](http://codeception.com/docs/reference/Commands).
+Con el entorno ya preparado es el momento de ejecutar las pruebas. El *framework* que Phalcon utiliza para hacerlas es [Codeception](https://codeception.com). Para una introducción básica a este *framework* se recomienda leer [esta página](http://codeception.com/docs/01-Introduction). La lista de comandos se encuentra [aquí](http://codeception.com/docs/reference/Commands).
 
-We need to first build the Codeception base classes. This needs to happen every time new functionality is introduced in Codeception's helpers.
+El primer paso es crear las clases base de Codeception. Este paso se debe repetir cada vez que se agrega nueva funcionalidad en los auxiliadores (*helpers*) de Codeception:
 
 ```bash
 codecept build
 ```
 
-The output should show:
+El resultado debe ser:
 
 ```bash
 Building Actor classes for suites: cli, integration, unit
@@ -249,32 +249,32 @@ Building Actor classes for suites: cli, integration, unit
 \UnitTester includes modules: Asserts, Filesystem, Redis, Helper\Unit, Helper\PhalconCacheFile, Helper\PhalconLibmemcached
 ```
 
-Now we can run the tests:
+Ahora sí se pueden ejecutar las pruebas:
 
 ```bash
 codecept run unit
 ```
 
-This will start running the unit testing suite. You will see a lot of tests and assertions. At the time of this blog post, we have `Tests: 2884, Assertions: 6987, Skipped: 1478` unit tests. The reason for so many skipped tests is because we created test stubs for every component and every method in each component. This was so as to create awareness on what needs to be checked and what components/methods we need to write tests for. Of course some of the test stubs are duplicate or obsolete. Those will be deleted once the relevant component is checked and tests written for it. Our goal is to get as close to 100% code coverage as possible. If we manage to get to 100% that would be great!
+Se inicia así la ejecución de la suite de prueba unitaria. Aparecerán muchas pruebas y confirmaciones. Por ejemplo, el conteo de pruebas de unidad al escribir este texto es: Pruebas, 2.884; Confirmaciones: 6.987; Omitidas: 1.478. La razón por la cual hay tantas pruebas omitidas es porque se crearon [*stubs*](https://es.wikipedia.org/wiki/Stub) de prueba para cada componente (incluyendo cada uno de sus métodos). De esta manera se resalta qué es lo que se necesita revisar y cuáles son los componentes o métodos para los cuales se deben diseñar las pruebas. Por cierto, varios de los *stubs* de prueba se encuentran duplicados u obsoletos: serán eliminados una vez que el componente relevante sea revisado y las pruebas pertinentes sean creadas. El objetivo de Phalcon es alcanzar el máximo de cobertura del código posible. Si se alcanza el 100% será maravilloso.
 
-## Integration
+## Integración
 
-Integration tests need to access the databases. These databases are already available in the environment. To populate the databases you will need to run the following script:
+Las pruebas de integración necesitan acceso a las bases de datos -- que ya se encuentran disponibles en el entorno. Para rellenarlas hay que ejecutar el siguiente código:
 
 ```bash
 ./tests/_ci/nanobox/setup-dbs-nanobox.sh
 ```
 
-If you need to access the databases themselves, you will need the connection information. Nanobox creates that for you and stores it in environment variables. You can easily check those variables and if need be write them down.
+Si se quiere acceder a las bases de datos, es necesario proveer los datos de conexión. Nanobox los crea por defecto y guarda en las variables de entorno. Es fácil encontrarlas y, si es necesario, se pueden anotar también.
 
-Open a separate terminal and navigate to the same folder where you have nanobox running from and type:
+Basta con abrir una nueva terminal, abrir la carpeta en donde se encuentra la Nanobox que se está ejecutando y escribir:
 
 ```bash
 cd ./cphalcon/
 nanobox info local
 ```
 
-You will see an output as the one below:
+Aparecerá la siguiente información:
 
 ```bash
 ----------------------------------------
@@ -329,33 +329,33 @@ DNS Aliases
   none
 ```
 
-You can use these variables to connect to your databases or other services such as Mongo, Redis etc.
+Con estas variables se puede hacer la conexión con las bases de datos u otros servicios como Mongo, Redis, etc.
 
-# Development
+# Desarrollo
 
-You can now open your favorite editor and start developing in Zephir. You can create new functionality, fix issues, write tests etc. Remember though that if you change any of the `zep` files (inside the `phalcon` folder), you will need to recompile the extension:
+Ahora con el editor preferido se puede empezar a desarrollar en Zephir. Se puede crear nueva funcionalidad, corregir errores, escribir pruebas, etc. Si se modifican los archivos `zep` (en la carpeta `phalcon`) será necesario recompilar la extensión:
 
 ```bash
 zephir fullclean
 zephir build
 ```
 
-and then you can run your tests
+Y luego se pueden seguir ejecutando las pruebas:
 
 ```bash
 codecept run tests/unit/somefolder/somecestfile:sometest
 ```
 
-For Zephir documentation, you can visit the [Zephir Docs](https://docs.zephir-lang.com) site.
+La documentación de Zephir se encuentra en [Zephir Docs](https://docs.zephir-lang.com).
 
 # Servicios
 
-The available services are: - Memcached - Mongodb - Mysql - Postgresql - Redis
+Los servicios disponibles son: - Memcached - Mongodb - Mysql - Postgresql - Redis
 
-The PHP extensions enabled are: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
+Las extensiones de PHP activas son: - apcu - ctype - curl - dom - fileinfo - gd - gmp - gettext - imagick - iconv - igbinary - json - memcached - mbstring - mongodb - opcache - phar - pdo - pdo_mysql - pdo_pgsql - pdo_sqlite - redis - session - simplexml - tokenizer - yaml - zephir_parser - xdebug - xml - xmlwriter - zip - zlib
 
-The database dumps are located under `tests/_data/assets/db/schemas`
+Los volcados de base de datos se encuentran en `pruebas/_data/assets/db/schemas`
 
-If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalconphp.com).
+Cualquier duda o pregunta puede resolverse en nuestro servidor de [Discord](https://phalcon.link/discord) o en nuestro [Foro](https://forum.phalconphp.com).
 
 <3 Phalcon Team
