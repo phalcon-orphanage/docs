@@ -39,14 +39,14 @@ Este componente hace uso de adaptadores para leer los mensajes de traducción de
 | Adaptador                                                                             | Descripción                                                                              |
 | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. Esta es la mejor opción en términos de desempeño. |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a `.csv` file to store the messages for a language.                                 |
-| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a `.po` file.                                 |
+| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Utiliza un archivo `.csv` para almacenar los mensajes de un idioma.                      |
+| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Utiliza gettext para recuperar los mensajes de un archivo `.po`.                         |
 
 ### Native Array
 
 Translation strings are stored in a php array.
 
-The recommended usage with this adapter is to store them in specific language files, with the freedom to organize them your way. Una estructura simple podría ser:
+La mejor opción con este adaptador es almacenarlas en archivos específicos por idioma, con la libertad de organizarlos de la manera más conveniente. Una estructura simple podría ser:
 
 ```bash
 app/messages/en.php
