@@ -4,17 +4,17 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Translation Component
+# Componente de traducción
 
 * * *
 
-## Multi-lingual Support
+## Soporte Multidioma
 
-The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+El componente `Phalcon\Translate` ayuda en la creación de aplicaciones multilingües. Aplicaciones que utilizan este componente pueden mostrar el contenido en diferentes idiomas, basados en el idioma elegido por el usuario y soportado por la aplicación.
 
-## Factory
+## Factory (Fábrica)
 
-Loads Translate Adapter class using `adapter` option, the remaining options will be passed to the adapter constructor.
+Carga la clase adaptador de traducción usando la opción `adapter`, las opciones restantes se pasarán al constructor del adaptador.
 
 ```php
 <?php
@@ -34,13 +34,13 @@ $translate = Factory::load($options);
 
 ## Adaptadores
 
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Este componente hace uso de adaptadores para leer los mensajes de traducción de diferentes fuentes en forma unificada.
 
-| Adaptador                                                                             | Descripción                                                                             |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a `.csv` file to store the messages for a language.                                |
-| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a `.po` file.                                |
+| Adaptador                                                                             | Descripción                                                                              |
+| ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. Esta es la mejor opción en términos de desempeño. |
+| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a `.csv` file to store the messages for a language.                                 |
+| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a `.po` file.                                 |
 
 ### Native Array
 
