@@ -118,7 +118,7 @@ $translate = Factory::load($options);
 
 ## Component Usage
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Implementar el mecanismo de traducción en tu aplicación es trivial pero depende de cómo desees aplicarlo. Puedes utilizar la detección automática de idioma desde el navegador del usuario o puede proporcionar una página de configuración donde el usuario puede seleccionar su idioma.
 
 A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
@@ -162,7 +162,7 @@ class UserController extends Controller
 }
 ```
 
-The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
+El método `_getTranslation()` está disponible para todas las acciones que requieran traducciones. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
 
 ```php
 <!-- welcome -->
@@ -170,7 +170,7 @@ The `_getTranslation()` method is available for all actions that require transla
 <p><?php echo $t->_('hi'), ' ', $name; ?></p>
 ```
 
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+El método `_()` devuelve la cadena traducida basada en el índice pasado. Algunas cadenas necesitan incorporar marcadores de posición para datos calculados, por ejemplo: `Hola %name%`. Estos marcadores de posición pueden reemplazarse con parámetros pasados al método `_()`. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
 <!-- welcome -->
@@ -178,9 +178,9 @@ The `_()` method is returning the translated string based on the index passed. S
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](routing).
+Algunas aplicaciones implementan el soporte multilingüe en la URL como `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon puede implementar esto mediante un [Router](routing).
 
-The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
+La implementación anterior es útil pero requiere un controlador base para implementar `_getTranslation()` y devolver el componente `Phalcon\Translate\Adapter\NativeArray`. Además el componente necesita ser agregado a la vista como se ve arriba, en la variable `$t`.
 
 You can always wrap this functionality in its own class and register that class in the DI container:
 
@@ -194,11 +194,11 @@ class Locale extends Plugin
 {
     public function getTranslator()
     {
-        // Ask browser what is the best language
+        // Consultar al navegador por el mejor idioma
         $language = $this->request->getBestLanguage();
 
         /**
-         * We are using JSON based files for storing translations. 
+         * Utilizamos archivos JSON para almacenar las traducciones. 
          * You will need to check if the file exists! 
          */
         $translations = json_decode(
@@ -206,8 +206,7 @@ class Locale extends Plugin
             true
         );
 
-        // Return a translation object $messages comes from the require
-        // statement above
+        // Regresamos el objecto $messages requerido en la declaración anterior
         return new NativeArray(
             [
                 'content' => $translations,
@@ -217,7 +216,7 @@ class Locale extends Plugin
 }
 ```
 
-This way you can use the component in controllers:
+De esta manera se puede utilizar el componente en los controladores:
 
 ```php
 <?php
@@ -248,7 +247,7 @@ or in a view directly
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);
 ```
 
-## Implementando sus propios adaptadores
+## Implementing your own adapters
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -260,7 +259,7 @@ use Phalcon\Translate\AdapterInterface;
 class MyTranslateAdapter implements AdapterInterface
 {
     /**
-     * Adapter constructor
+     * Constructor del adaptador
      *
      * @param array $options
      */
@@ -274,7 +273,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function t($translateKey, $placeholders = null);
 
     /**
-     * Returns the translation string of the given key
+     * Retorna el string de traducción para la clave dada
      *
      * @param   string $translateKey
      * @param   array $placeholders
@@ -283,7 +282,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function _(string $translateKey, $placeholders = null): string;
 
     /**
-     * Returns the translation related to the given key
+     * Retorna la traducción relacionada para la clave dada
      *
      * @param   string $index
      * @param   array $placeholders
@@ -292,7 +291,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function query(string $index, $placeholders = null): string;
 
     /**
-     * Check whether is defined a translation key in the internal array
+     * Comprueba que este definida la clave de traducción en el array interno
      *
      * @param   string $index
      * @return  bool
@@ -301,11 +300,11 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+Hay disponibles más adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
 
 ## Interpolación
 
-In many cases, the translated strings are to be interpolated with data. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
+En muchos casos, las cadenas traducidas deben ser interpoladas con datos. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
 
 ```php
 <?php
