@@ -4,17 +4,17 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Translation Component
+# Componente de traducción
 
 * * *
 
-## Multi-lingual Support
+## Soporte Multidioma
 
-The component `Phalcon\Translate` aids in creating multilingual applications. Applications using this component, display content in different languages, based on the user's chosen language supported by the application.
+El componente `Phalcon\Translate` ayuda en la creación de aplicaciones multilingües. Aplicaciones que utilizan este componente pueden mostrar el contenido en diferentes idiomas, basados en el idioma elegido por el usuario y soportado por la aplicación.
 
-## Factory
+## Factory (Fábrica)
 
-Loads Translate Adapter class using `adapter` option, the remaining options will be passed to the adapter constructor.
+Carga la clase adaptador de traducción usando la opción `adapter`, las opciones restantes se pasarán al constructor del adaptador.
 
 ```php
 <?php
@@ -34,19 +34,19 @@ $translate = Factory::load($options);
 
 ## Adaptadores
 
-This component makes use of adapters to read translation messages from different sources in a unified way.
+Este componente hace uso de adaptadores para leer los mensajes de traducción de diferentes fuentes en forma unificada.
 
-| Adaptador                                                                             | Descripción                                                                             |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a CSV to store the messages for a langage.                                         |
-| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a .po file.                                  |
+| Adaptador                                                                             | Descripción                                                                              |
+| ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. Esta es la mejor opción en términos de desempeño. |
+| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Utiliza un archivo `.csv` para almacenar los mensajes de un idioma.                      |
+| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Utiliza gettext para recuperar los mensajes de un archivo `.po`.                         |
 
 ### Native Array
 
 Translation strings are stored in a php array.
 
-The recommended usage with this adapter is to store them in specific langage files, with the freedom to organize them your way. A simple structure could be:
+La mejor opción con este adaptador es almacenarlas en archivos específicos por idioma, con la libertad de organizarlos de la manera más conveniente. Una estructura simple podría ser:
 
 ```bash
 app/messages/en.php
@@ -55,17 +55,17 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Each file contains an array of the translations in a key/value manner. Para cada archivo de traducción, las llaves son únicas. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
 
-// app/messages/en.php
+// app/messages/es.php
 $messages = [
-    'hi'      => 'Hello',
-    'bye'     => 'Good Bye',
-    'hi-name' => 'Hello %name%',
-    'song'    => 'This song is %song%',
+    'hi'      => 'Hola',
+    'bye'     => 'Adi&oacute;s',
+    'hi-name' => 'Hola %name%',
+    'song'    => 'Esta canci&oacute;n es %song%',
 ];
 ```
 
@@ -85,7 +85,7 @@ An example of loading such a file is provided in the *Component Usage* section.
 
 ### Csv
 
-The translation strings are stored in a `.csv` format files.
+Las cadenas de traducción se almacenan en archivos de formato `.csv`.
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $translate = Factory::load($options);
 
 ### Gettext
 
-The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](http://php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
+Las cadenas de traducción se almacenan en archivos `.po` y `.mo`. Más información se encuentra en la [documentación oficial](https://www.php.net/manual/book.gettext.php). La jerarquía de archivos está vinculada a este estándar.
 
 ```php
 <?php
@@ -118,7 +118,7 @@ $translate = Factory::load($options);
 
 ## Component Usage
 
-Implementing the translation mechanism in your application is trivial but depends on how you wish to implement it. You can use an automatic detection of the language from the user's browser or you can provide a settings page where the user can select their language.
+Implementar el mecanismo de traducción en tu aplicación es trivial pero depende de cómo desees aplicarlo. Puedes utilizar la detección automática de idioma desde el navegador del usuario o puede proporcionar una página de configuración donde el usuario puede seleccionar su idioma.
 
 A simple way of detecting the user's language is to parse the `$_SERVER['HTTP_ACCEPT_LANGUAGE']` contents, or if you wish, access it directly by calling `$this->request->getBestLanguage()` from an action/controller:
 
@@ -162,7 +162,7 @@ class UserController extends Controller
 }
 ```
 
-The `_getTranslation()` method is available for all actions that require translations. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
+El método `_getTranslation()` está disponible para todas las acciones que requieran traducciones. The `$t` variable is passed to the views, and with it, we can translate strings in that layer:
 
 ```php
 <!-- welcome -->
@@ -170,7 +170,7 @@ The `_getTranslation()` method is available for all actions that require transla
 <p><?php echo $t->_('hi'), ' ', $name; ?></p>
 ```
 
-The `_()` method is returning the translated string based on the index passed. Some strings need to incorporate placeholders for calculated data i.e. `Hello %name%`. These placeholders can be replaced with passed parameters in the `_()` method. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
+El método `_()` devuelve la cadena traducida basada en el índice pasado. Algunas cadenas necesitan incorporar marcadores de posición para datos calculados, por ejemplo: `Hola %name%`. Estos marcadores de posición pueden reemplazarse con parámetros pasados al método `_()`. The passed parameters are in the form of a key/value array, where the key matches the placeholder name and the value is the actual data to be replaced:
 
 ```php
 <!-- welcome -->
@@ -178,9 +178,9 @@ The `_()` method is returning the translated string based on the index passed. S
 <p><?php echo $t->_('hi-name', ['name' => $name]); ?></p>
 ```
 
-Some applications implement multilingual on the URL such as `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon can implement this by using a [Router](routing).
+Algunas aplicaciones implementan el soporte multilingüe en la URL como `https://www.mozilla.org/**es-ES**/firefox/`. Phalcon puede implementar esto mediante un [Router](routing).
 
-The implementation above is helpful but it requires a base controller to implement the `_getTranslation()` and return the `Phalcon\Translate\Adapter\NativeArray` component. Additionaly the component needs to be set in the view as seen above in the `$t` variable.
+La implementación anterior es útil pero requiere un controlador base para implementar `_getTranslation()` y devolver el componente `Phalcon\Translate\Adapter\NativeArray`. Además el componente necesita ser agregado a la vista como se ve arriba, en la variable `$t`.
 
 You can always wrap this functionality in its own class and register that class in the DI container:
 
@@ -194,11 +194,11 @@ class Locale extends Plugin
 {
     public function getTranslator()
     {
-        // Ask browser what is the best language
+        // Consultar al navegador por el mejor idioma
         $language = $this->request->getBestLanguage();
 
         /**
-         * We are using JSON based files for storing translations. 
+         * Utilizamos archivos JSON para almacenar las traducciones. 
          * You will need to check if the file exists! 
          */
         $translations = json_decode(
@@ -206,8 +206,7 @@ class Locale extends Plugin
             true
         );
 
-        // Return a translation object $messages comes from the require
-        // statement above
+        // Regresamos el objecto $messages requerido en la declaración anterior
         return new NativeArray(
             [
                 'content' => $translations,
@@ -217,7 +216,7 @@ class Locale extends Plugin
 }
 ```
 
-This way you can use the component in controllers:
+De esta manera se puede utilizar el componente en los controladores:
 
 ```php
 <?php
@@ -248,7 +247,7 @@ or in a view directly
 <?php echo $locale->_('hi-name', ['name' => 'Mike']);
 ```
 
-## Implementando sus propios adaptadores
+## Implementing your own adapters
 
 The [Phalcon\Translate\AdapterInterface](api/Phalcon_Translate_AdapterInterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
@@ -260,7 +259,7 @@ use Phalcon\Translate\AdapterInterface;
 class MyTranslateAdapter implements AdapterInterface
 {
     /**
-     * Adapter constructor
+     * Constructor del adaptador
      *
      * @param array $options
      */
@@ -274,7 +273,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function t($translateKey, $placeholders = null);
 
     /**
-     * Returns the translation string of the given key
+     * Retorna el string de traducción para la clave dada
      *
      * @param   string $translateKey
      * @param   array $placeholders
@@ -283,7 +282,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function _(string $translateKey, $placeholders = null): string;
 
     /**
-     * Returns the translation related to the given key
+     * Retorna la traducción relacionada para la clave dada
      *
      * @param   string $index
      * @param   array $placeholders
@@ -292,7 +291,7 @@ class MyTranslateAdapter implements AdapterInterface
     public function query(string $index, $placeholders = null): string;
 
     /**
-     * Check whether is defined a translation key in the internal array
+     * Comprueba que este definida la clave de traducción en el array interno
      *
      * @param   string $index
      * @return  bool
@@ -301,11 +300,11 @@ class MyTranslateAdapter implements AdapterInterface
 }
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
+Hay disponibles más adaptadores para estos componentes en la [Incubadora de Phalcon](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter)
 
 ## Interpolación
 
-In many cases, the translated strings are to be interpolated with data. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
+En muchos casos, las cadenas traducidas deben ser interpoladas con datos. [Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate_Interpolator_AssociativeArray) is the one being used by default.
 
 ```php
 <?php
