@@ -42,13 +42,13 @@ Es necesario clonar (*fork*) [cphalcon](https://github.com/phalcon/cphalcon) en 
 
 ## Copia del *fork*
 
-Now you will need to clone the forked repository to a folder of your choice. The example below assumes that the github account is `niden` - change it to your own.
+Ahora es necesario clonar el *fork* en una carpeta cualquiera del PC. En el siguiente ejemplo se utiliza como cuenta de Github `niden` (debe ser remplazada por la apropiada):
 
 ```bash
 git clone git@github.com:niden/cphalcon
 ```
 
-## Copy the boxfile
+## Copia del *boxfile*
 
 Nanobox reads a file called `boxfile.yml` and located in the root of your folder. There are two files supplied in Phalcon that you can use to develop with. One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
 
