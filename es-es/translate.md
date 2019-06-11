@@ -46,7 +46,7 @@ Este componente hace uso de adaptadores para leer los mensajes de traducción de
 
 Translation strings are stored in a php array.
 
-The recommended usage with this adapter is to store them in specific language files, with the freedom to organize them your way. A simple structure could be:
+The recommended usage with this adapter is to store them in specific language files, with the freedom to organize them your way. Una estructura simple podría ser:
 
 ```bash
 app/messages/en.php
@@ -55,17 +55,17 @@ app/messages/fr.php
 app/messages/zh.php
 ```
 
-Each file contains an array of the translations in a key/value manner. For each translation file, keys are unique. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
+Each file contains an array of the translations in a key/value manner. Para cada archivo de traducción, las llaves son únicas. The same array is used in different files, where keys remain the same and values contain the translated strings depending on each language.
 
 ```php
 <?php
 
-// app/messages/en.php
+// app/messages/es.php
 $messages = [
-    'hi'      => 'Hello',
-    'bye'     => 'Good Bye',
-    'hi-name' => 'Hello %name%',
-    'song'    => 'This song is %song%',
+    'hi'      => 'Hola',
+    'bye'     => 'Adi&oacute;s',
+    'hi-name' => 'Hola %name%',
+    'song'    => 'Esta canci&oacute;n es %song%',
 ];
 ```
 
@@ -85,7 +85,7 @@ An example of loading such a file is provided in the *Component Usage* section.
 
 ### Csv
 
-The translation strings are stored in a `.csv` format files.
+Las cadenas de traducción se almacenan en archivos de formato `.csv`.
 
 ```php
 <?php
@@ -100,7 +100,7 @@ $translate = Factory::load($options);
 
 ### Gettext
 
-The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](https://www.php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
+Las cadenas de traducción se almacenan en archivos `.po` y `.mo`. More about it on the [official documentation](https://www.php.net/manual/book.gettext.php). La jerarquía de archivos está vinculada a este estándar.
 
 ```php
 <?php
