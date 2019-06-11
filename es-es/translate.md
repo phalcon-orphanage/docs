@@ -100,7 +100,7 @@ $translate = Factory::load($options);
 
 ### Gettext
 
-Las cadenas de traducción se almacenan en archivos `.po` y `.mo`. More about it on the [official documentation](https://www.php.net/manual/book.gettext.php). La jerarquía de archivos está vinculada a este estándar.
+Las cadenas de traducción se almacenan en archivos `.po` y `.mo`. Más información se encuentra en la [documentación oficial](https://www.php.net/manual/book.gettext.php). La jerarquía de archivos está vinculada a este estándar.
 
 ```php
 <?php
