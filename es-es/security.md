@@ -4,17 +4,17 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Security Component
+# Componente de seguridad
 
 * * *
 
-## Overview
+## Preámbulo
 
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+Este componente se encarga de ayudar al desarrollador en tareas comunes de seguridad como el *hashing* de contraseñas y la protección contra ataques [CSRF](https://es.wikipedia.org/wiki/Cross-site_request_forgery).
 
-## Password Hashing
+## Hashing de contraseñas
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods [md5](https://php.net/manual/en/function.md5.php)) and [sha1](https://php.net/manual/en/function.sha1.php)). However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as \[rainbow tables\]\[rainbow\].
+Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos puede tener acceso inmediato a todas las cuentas de usuario y realizar actividades sin autorización. Para prevenir este abuso muchas aplicaciones utilizan métodos de hashing conocidos, como [md5](https://php.net/manual/es/function.md5.php)) y [sha1](https://php.net/manual/es/function.sha1.php)). Sin embargo, la evolución cotidiana del hardware &mdash;que lo hace más rápido día a día&mdash; hace que se vuelvan vulnerables a los ataques de fuerza bruta, These attacks are also known as \[rainbow tables\]\[rainbow\].
 
 The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)) as the hashing algorithm. Thanks to the [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm)) key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
 
