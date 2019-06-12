@@ -10,7 +10,7 @@ version: '4.0'
 This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
 
 ## Password Hashing
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods [md5][md5] and [sha1][sha1]. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables][rainbow].
+Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods [md5][md5] and [sha1][sha1]. However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables][rainbow-tables].
 
 The security component uses [bcrypt][bcrypt] as the hashing algorithm. Thanks to the [Eksblowfish][eksblowfish] key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks. 
 
@@ -78,12 +78,12 @@ class SessionController extends Controller
 }
 ```
 
-The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes][openssl_random_pseudo_bytes] so is required to have the [openssl][openssl] extension loaded.
+The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes][openssl-random-pseudo-bytes] so is required to have the [openssl][openssl] extension loaded.
 
 ## Cross-Site Request Forgery (CSRF) protection
 This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
-The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce][random_nonce] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce][random-nonce] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
 
 ```php
 <?php echo Tag::form('session/login'); ?>
@@ -187,13 +187,13 @@ $uuid = $random->uuid();
 $number = $random->number($n);
 ```
 
-[bcrypt]: https://en.wikipedia.org/wiki/Bcrypt)
-[captcha]: https://www.google.com/recaptcha)
-[Eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm)
-[md5]: https://php.net/manual/en/function.md5.php)
-[openssl]: https://php.net/manual/en/book.openssl.php) extension loaded.
-[openssl_random_pseudo_bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php)
-[random nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce)
-[rainbow_tables]: https://en.wikipedia.org/wiki/Rainbow_table)
-[sha1]: https://php.net/manual/en/function.sha1.php)
+[bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
+[captcha]: https://www.google.com/recaptcha
+[eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
+[md5]: https://php.net/manual/en/function.md5.php
+[openssl]: https://php.net/manual/en/book.openssl.php
+[openssl-random-pseudo-bytes]: https://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+[random-nonce]: https://en.wikipedia.org/wiki/Cryptographic_nonce
+[rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
+[sha1]: https://php.net/manual/en/function.sha1.php
 [wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
