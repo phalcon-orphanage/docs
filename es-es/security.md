@@ -14,9 +14,9 @@ Este componente se encarga de ayudar al desarrollador en tareas comunes de segur
 
 ## Hashing de contraseñas
 
-Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos puede tener acceso inmediato a todas las cuentas de usuario y realizar actividades sin autorización. To combat that, many applications use the familiar one way hashing methods [md5](https://php.net/manual/en/function.md5.php) and [sha1](https://php.net/manual/en/function.sha1.php). Sin embargo, la evolución cotidiana del hardware &mdash;que lo hace más rápido día a día&mdash; hace que se vuelvan vulnerables a los ataques de fuerza bruta, también conocidos como [Tablas Arcoíris](https://en.wikipedia.org/wiki/Rainbow_table).
+Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos puede tener acceso inmediato a todas las cuentas de usuario y realizar actividades sin autorización. Para prevenir este abuso, muchas aplicaciones utilizan métodos de hashing como [md5](https://php.net/manual/en/function.md5.php) y [sha1](https://php.net/manual/en/function.sha1.php). Sin embargo, la evolución cotidiana del hardware &mdash;que lo hace más rápido día a día&mdash; hace que se vuelvan vulnerables a los ataques de fuerza bruta, también conocidos como [Tablas Arcoíris](https://en.wikipedia.org/wiki/Rainbow_table).
 
-The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) key setup algorithm, we can make the password encryption as `slow` as we want. Los algoritmos lentos reducen el impacto de los ataques de fuerza bruta.
+El componente de seguridad utiliza [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias al algoritmo de configuración de clave [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) se puede encriptar la contraseña tan lento (`slow`) como se desee. Los algoritmos lentos reducen el impacto de los ataques de fuerza bruta.
 
 Bcrypt es una función hash adaptativa basada en el algoritmo criptográfico de cifrado de bloque simétrico Blowfish. También contempla un factor de seguridad o trabajo que determina qué tan lenta será la función hash para hacer su trabajo. De esta manera se descarta el uso de técnicas de hash como FPGA o GPU.
 
@@ -82,13 +82,13 @@ class SessionController extends Controller
 }
 ```
 
-The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php) so is required to have the [openssl](https://php.net/manual/en/book.openssl.php) extension loaded.
+La sal es generada usando bytes pseudo-aleatorios con la función [ openssl_random_pseudo_bytes](https://php.net/manual/es/function.openssl-random-pseudo-bytes.php) de PHP, así se requiere que este cargada la extensión [OpenSSL](https://php.net/manual/es/book.openssl.php).
 
 ## Protección contra ataques CSRF
 
 Este es otro ataque frecuente contra los sitios web y aplicaciones. Los formularios destinados a tareas como registrarse o agregar comentarios son vulnerables a este ataque.
 
-El objetivo es prevenir que los valores de los formularios de la aplicación sean enviados desde el exterior. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+El objetivo es prevenir que los valores de los formularios de la aplicación sean enviados desde el exterior. Para solucionar este problema, se puede generar un [Random Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) o token en cada formulario, agregar el token en la sesión y luego validar el token una vez que el formulario envía los datos de regreso a nuestra aplicación, comparando el token almacenado en la sesión con el enviado por el formulario:
 
 ```php
 <?php echo Tag::form('session/login') ?>
@@ -138,7 +138,7 @@ $di->setShared(
 );
 ```
 
-Adding a [captcha](https://www.google.com/recaptcha) to the form is also recommended to completely avoid the risks of this attack.
+Añadir un [captcha](https://www.google.com/recaptcha) al formulario también es recomendado para evitar por completo los riesgos de este tipo de ataque.
 
 ## Configuración del componente
 
