@@ -187,7 +187,7 @@ $volt->setOptions(
 );
 ```
 
-## Basic Usage
+## Uso básico
 
 A view consists of Volt code, PHP and HTML. A set of special delimiters is available to enter into Volt mode. `
 {%- raw -%}
@@ -654,7 +654,7 @@ A special variable is available inside `for` loops providing you information abo
 | `loop.last`      | Si es la última iteración, el valor será `true`.                       |
 | `loop.length`    | El número de elementos iterar                                          |
 
-Example:
+Ejemplo:
 
 ```twig
 {%- raw -%}

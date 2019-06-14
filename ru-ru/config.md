@@ -49,10 +49,11 @@ $options = [
     'adapter'  => 'php',
 ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 ## Native Arrays
+
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -228,14 +229,14 @@ $config = new Config(
    ]
 );
 
-// Использование точки в качетсве разделителя
+// Using dot as delimiter
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Использование слэша в качестве разделителя. Также, может быть указано значение по умолчанию
-// которое будет возвращено если раздела конфигурации не существует.
+// Using slash as delimiter. A default value may also be specified and
+// will be returned if the configuration option does not exist.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');

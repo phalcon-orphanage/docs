@@ -12,7 +12,7 @@ version: '4.0'
 
 [Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) are a very useful way to store small pieces of data on the client's machine that can be retrieved even if the user closes his/her browser. `Phalcon\Http\Response\Cookies` acts as a global bag for cookies. Cookies are stored in this bag during the request execution and are sent automatically at the end of the request.
 
-## Basic Usage
+## Uso básico
 
 You can set/get cookies by just accessing the `cookies` service in any part of the application where services can be accessed:
 
