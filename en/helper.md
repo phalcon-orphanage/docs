@@ -745,8 +745,6 @@ Makes an underscored or dashed phrase human-readable
 
 use Phalcon\Helper\Str;
 
-$source   = 'This is a [custom] string with [other] stuff';
-
 echo Str::humanize('start-a-horse'); // 'start a horse'
 echo Str::humanize('five_cats');     // 'five cats'
 ```
@@ -762,10 +760,8 @@ Checks if a string is included in another string. Returns `true` if it is includ
 
 use Phalcon\Helper\Str;
 
-$source   = 'This is a [custom] string with [other] stuff';
-
-echo Str::humanize('start-a-horse'); // 'start a horse'
-echo Str::humanize('five_cats');     // 'five cats'
+echo Str::includes('start', 'start-a-horse'); // true
+echo Str::includes('end', 'start-a-horse'); // false
 ```
 <hr/>
 
@@ -827,7 +823,7 @@ echo Str::isPalindrome('racecar'); // true
 ```
 <hr/>
 
-### isLower
+### isUpper
 ```php
 final public static function isUpper(string $text, string $encoding = 'UTF-8'):  bool
 ```
@@ -837,8 +833,8 @@ Returns `true` if the given string is upper case, `false` otherwise. The method 
 
 use Phalcon\Helper\Str;
 
-echo Str::isLower('PHALCON FRAMEWORK'); // true
-echo Str::isLower('Phalcon Framework'); // false
+echo Str::isUpper('PHALCON FRAMEWORK'); // true
+echo Str::isUpper('Phalcon Framework'); // false
 ```
 <hr/>
 
