@@ -24,18 +24,48 @@ This component makes use of adapters to encapsulate different sources of data:
 
 ## Factory
 
-Loads Paginator Adapter class using `adapter` option
+### New Instance
+
+You can use the Pagination Factory class to instantiate a new paginator object:
 
 ```php
 <?php
 
-use Phalcon\Paginator\Factory;
+use Phalcon\Paginator\PaginatorFactory;
 
 $builder = $this
     ->modelsManager
     ->createBuilder()
     ->columns('id, name')
-    ->from('Robots')
+    ->from(Users::class)
+    ->orderBy('name')
+;
+
+$options = [
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+];
+
+$factory   = new PaginatorFactory();
+$paginator = $factory->newInstance('queryBuilder');
+
+```
+
+### Load
+
+Loads Paginator Adapter class using `adapter` option. The configuration passed can be an array or a [Phalcon\Config](config) object with the necessary entries for the class to be instantiated.
+
+```php
+<?php
+
+use Phalcon\Paginator\PaginatorFactory;
+
+$builder = $this
+    ->modelsManager
+    ->createBuilder()
+    ->columns('id, lastName, firstName')
+    ->from(Users::class)
     ->orderBy('name')
 ;
 
@@ -46,7 +76,7 @@ $options = [
     'adapter' => 'queryBuilder',
 ];
 
-$paginator = Factory::load($options);
+$paginator = (new PaginatorFactory())->load($options);
 
 ```
 
@@ -66,7 +96,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 $currentPage = (int) $_GET['page'];
 
 // The data set to paginate
-$robots = Robots::find();
+$robots = Users::find();
 
 // Create a Model paginator, show 10 rows by page starting from $currentPage
 $paginator = new PaginatorModel(
@@ -87,14 +117,16 @@ The `$currentPage` variable controls the page to be displayed. The `$paginator->
 <table>
     <tr>
         <th>Id</th>
-        <th>Nombre</th>
-        <th>Tipo</th>
+        <th>Active</th>
+        <th>Last Name</th>
+        <th>First Name</th>
     </tr>
     <?php foreach ($page->items as $item) { ?>
     <tr>
         <td><?php echo $item->id; ?></td>
-        <td><?php echo $item->name; ?></td>
-        <td><?php echo $item->type; ?></td>
+        <td><?php echo ($item->active) ? 'Y' : 'N'; ?></td>
+        <td><?php echo $item->lastName; ?></td>
+        <td><?php echo $item->firstName; ?></td>
     </tr>
     <?php } ?>
 </table>
@@ -103,15 +135,68 @@ The `$currentPage` variable controls the page to be displayed. The `$paginator->
 The `$page` object also contains navigation data:
 
 ```php
-<a href='/robots/search'>Primera</a>
-<a href='/robots/search?page=<?= $page->before; ?>'>Anterior</a>
-<a href='/robots/search?page=<?= $page->next; ?>'>Siguiente</a>
-<a href='/robots/search?page=<?= $page->last; ?>'>Última</a>
+<a href="/users/list">First</a>
+<a href="/users/list?page=<?= $page->previous; ?>">Previous</a>
+<a href="/users/list?page=<?= $page->next; ?>">Next</a>
+<a href="/users/list?page=<?= $page->last; ?>">Last</a>
 
-<?php echo 'Estas en la página ', $page->current, ' de ', $page->total_pages; ?>
+<?php echo "You are in page {$page->current}  of {$page->total_pages}"; ?>
 ```
 
 ## Using Adapters
+
+### Factory
+
+You can instantiate a Paginator class using the `AdapterFactory`.
+
+```php
+<?php
+
+use Phalcon\Paginator\AdapterFactory;
+
+$factory = new AdapterFactory();
+
+// Passing a resultset as data
+$options = [
+   'data'  => Products::find(),
+   'limit' => 10,
+   'page'  => $currentPage,
+];
+
+$paginator = $factory->newInstance('model', $options);
+
+// Passing an array as data
+$options = [
+    'data'  => [
+        ['id' => 1, 'name' => 'Artichoke'],
+        ['id' => 2, 'name' => 'Carrots'],
+        ['id' => 3, 'name' => 'Beet'],
+        ['id' => 4, 'name' => 'Lettuce'],
+        ['id' => 5, 'name' => ''],
+    ],
+    'limit' => 2,
+    'page'  => $currentPage,
+];
+$paginator = $factory->newInstance('nativeArray', $options);
+
+// Passing a QueryBuilder as data
+
+$builder = $this
+    ->modelsManager
+    ->createBuilder()
+    ->columns('id, name')
+    ->from('Robots')
+    ->orderBy('name');
+$options = [
+    'builder' => $builder,
+    'limit'   => 20,
+    'page'    => 1,
+];
+
+$paginator = $factory->newInstance('queryBuilder', $options);
+```
+
+### Individual classes
 
 An example of the source data that must be used for each adapter:
 
@@ -122,7 +207,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 use Phalcon\Paginator\Adapter\NativeArray as PaginatorArray;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 
-// Pasando un conjunto de resultados como datos
+// Passing a resultset as data
 $paginator = new PaginatorModel(
     [
         'data'  => Products::find(),
@@ -131,7 +216,7 @@ $paginator = new PaginatorModel(
     ]
 );
 
-// Pasando un array como datos
+// Passing an array as data
 $paginator = new PaginatorArray(
     [
         'data'  => [
@@ -146,7 +231,8 @@ $paginator = new PaginatorArray(
     ]
 );
 
-// Pasando un QueryBuilder como datos
+// Passing a QueryBuilder as data
+
 $builder = $this->modelsManager->createBuilder()
     ->columns('id, name')
     ->from('Robots')
@@ -169,15 +255,14 @@ The `$page` object has the following attributes:
 | ------------- | ------------------------------------------------------------------ |
 | `items`       | El conjunto de registros o elementos a mostrar en la página actual |
 | `current`     | Número de página actual                                            |
-| `before`      | Número de página anterior a la actual                              |
+| `previous`    | Número de página anterior a la actual                              |
 | `next`        | Número de página siguiente a la actual                             |
 | `last`        | Número de la última página                                         |
-| `total_pages` | Cantidad de páginas                                                |
-| `total_items` | El número total de elementos de los datos de origen                |
+| `total_items` | The number of items in the source data                             |
 
 ## Implementando sus propios adaptadores
 
-The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
+The [Phalcon\Paginator\AdapterInterface](api/Phalcon_Paginator_Adapter_AdapterInterface) interface must be implemented in order to create your own paginator adapters or extend the existing ones:
 
 ```php
 <?php
