@@ -4,24 +4,24 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Crypt Component
+# Componente Crypt
 
 * * *
 
-## Encryption/Decryption
+## Encriptación y desencriptación
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](api/Phalcon_Crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon provee el servicio de encriptación mediante el componente [Phalcon\Crypt](api/Phalcon_Crypt). Esta clase ofrece una envoltura simple orientada a objetos de la biblioteca de cifrado [OpenSSL](https://secure.php.net/manual/es/book.openssl.php) de PHP.
 
-By default, this component provides secure encryption using AES-256-CFB.
+El componente ofrece encriptación segura utilizando AES-256-CFB por defecto.
 
-The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
+El cifrado AES-256 es de uso común en las comunicaciones SSL/TLS, entre otros, en Internet y se considera como uno de los mejores. En teoría no es fácil romperlo puesto que la combinación de claves es ingente. La NSA lo ha catalogado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography) de criptografía, si bien recomienda utilizar claves de más de 128-bit para encriptar.
 
-> You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+> Se debe utilizar una llave con la longitud correspondiente al algoritmo utilizado. El algoritmo predeterminado emplea 32 bytes.
 {: .alert .alert-warning }
 
-## Basic Usage
+## Uso básico
 
-This component is designed be very simple to use:
+El componente está diseñado para ser usado de manera sencilla:
 
 ```php
 <?php
@@ -67,26 +67,26 @@ $encrypted = $crypt->encrypt($text, $key);
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can also set the algorithm and whether to calculate a digest of the message (signing) during the object construction. This removes the need to call `setCipher()` and `useSigning()`:
+Al instanciar el objeto es posible tanto definir el algoritmo como solicitar un resumen del mensaje (firma). De esta manera no es necesario llamar `setCipher()` o `useSigning()`:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear instancia
 $crypt = new Crypt('aes-256-ctr', true);
 
 $key = "T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
 
-$text = 'This is the text that you want to encrypt.';
+$text = 'Este es un texto que debe ser encriptado.';
 
 $encrypted = $crypt->encrypt($text, $key);
 
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-You can use the same instance to encrypt/decrypt several times:
+La misma instancia se puede utilizar varias veces para encriptar y desencriptar:
 
 ```php
 <?php
@@ -113,43 +113,43 @@ foreach ($texts as $key => $text) {
 }
 ```
 
-For better security, you can instruct the component to calculate a message digest based on one of the supported algorithms returned by `getAvailableHashAlgos`. As seen above this algorithm can be set during the object instantiation but can also be set afterwards.
+Para mayor seguridad, se puede ordenar al componente que calcule un resumen empleando alguno de los algoritmos que se encuentran en `getAvailableHashAlgos`. Como se mostró en un ejemplo anterior, esta opción se puede configurar al instanciar el objeto o, si se prefiere, después de hacerlo.
 
-**NOTE** Calculating the message digest (signing) will be enabled by default in Phalcon 4.0.0 or greater.
+**Nota:** A partir de Phalcon 4.0.0 o superior, el cálculo del resumen (firma) estará activo de manera predeterminada.
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Create an instance
+// Crear instancia
 $crypt = new Crypt();
 
 $crypt->setCipher('aes-256-ctr');
 $crypt->setHashAlgo('aes-256-cfb');
 
-// Force calculation of a digest of the message based on the Hash algorithm
+// Exigir el cálculo del resumen basado en el hash del algoritmo
 $crypt->useSigning(true);
 
 $key  = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\x5c";
-$text = 'This is a secret text';
+$text = 'Este es un mensaje secreto';
 
-// Perform the encryption
+// Realizar el encriptado
 $encrypted = $crypt->encrypt($text, $key);
 
-// Now decrypt
+// Ahora desencriptar
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-## Encryption Options
+## Opciones de encriptación
 
-The following options are available to change the encryption behavior:
+Las opciones para configurar la encriptación son las siguientes:
 
-| Nombre | Descripción                                                                                                                                                              |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Cipher | The cipher is one of the encryption algorithms supported by openssl. You can see a list [here](https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php) |
+| Nombre | Descripción                                                                                                                                                                            |
+| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cipher | Cipher es uno de los algoritmos de encriptación aceptados por OpenSSL. La lista completa se encuentra [aquí](https://secure.php.net/manual/es/function.openssl-get-cipher-methods.php) |
 
-Example:
+Ejemplo:
 
 ```php
 <?php
@@ -169,7 +169,7 @@ $text = 'Este es un texto secreto';
 echo $crypt->encrypt($text, $key);
 ```
 
-If you wish to check the available algorithms that your system supports you can call the `getAvailableHashAlgos()` method.
+Se puede utilizar el método `getAvailableHashAlgos()` para saber cuáles algoritmos están disponibles en el sistema.
 
 ```php
 <?php
@@ -185,9 +185,9 @@ $algorithms = $crypt->getAvailableHashAlgos();
 var_dump($algorithms);
 ```
 
-## Base64 Support
+## Soporte Base64
 
-In order for encryption to be properly transmitted (emails) or displayed (browsers) [base64](https://secure.php.net/manual/en/function.base64-encode.php) encoding is usually applied to encrypted texts:
+Para que el cifrado se transmita correctamente (correo electrónico) o se muestre (navegadores), generalmente se aplica el cifrado [base64](https://secure.php.net/manual/es/function.base64-encode.php) a los textos a encriptar:
 
 ```php
 <?php
@@ -206,9 +206,9 @@ $encrypt = $crypt->encryptBase64($text, $key);
 echo $crypt->decryptBase64($encrypt, $key);
 ```
 
-## Setting up an Encryption service
+## Configuración del servicio de encriptación
 
-You can set up the encryption component in the services container in order to use it from any part of the application:
+El componente de encriptación se puede incluir en el contenedor de servicios de tal manera que esté disponible en cualquier momento para la aplicación:
 
 ```php
 <?php
@@ -231,7 +231,7 @@ $di->set(
 );
 ```
 
-Then, for example, in a controller you can use it as follows:
+Luego, por ejemplo, se puede utilizar en un controlador de la siguiente manera:
 
 ```php
 <?php
@@ -257,7 +257,7 @@ class SecretsController extends Controller
 }
 ```
 
-## Links
+## Enlaces
 
 * [Estándar de cifrado avanzado (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 * [Qué es el bloque Cipher](https://en.wikipedia.org/wiki/Block_cipher)

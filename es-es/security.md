@@ -4,25 +4,25 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Security Component
+# Componente de seguridad
 
 * * *
 
-## Overview
+## Preámbulo
 
-This component aids the developer in common security tasks such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+Este componente se encarga de ayudar al desarrollador en tareas comunes de seguridad como el *hashing* de contraseñas y la protección contra ataques [CSRF](https://es.wikipedia.org/wiki/Cross-site_request_forgery).
 
-## Password Hashing
+## Hashing de contraseñas
 
-Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use the familiar one way hashing methods [md5](https://php.net/manual/en/function.md5.php)) and [sha1](https://php.net/manual/en/function.sha1.php)). However, hardware evolves each day, and becomes faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as \[rainbow tables\]\[rainbow\].
+Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos puede tener acceso inmediato a todas las cuentas de usuario y realizar actividades sin autorización. Para prevenir este abuso, muchas aplicaciones utilizan métodos de hashing como [md5](https://php.net/manual/en/function.md5.php) y [sha1](https://php.net/manual/en/function.sha1.php). Sin embargo, la evolución cotidiana del hardware &mdash;que lo hace más rápido día a día&mdash; hace que se vuelvan vulnerables a los ataques de fuerza bruta, también conocidos como [Tablas Arcoíris](https://en.wikipedia.org/wiki/Rainbow_table).
 
-The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt)) as the hashing algorithm. Thanks to the [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm)) key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
+El componente de seguridad utiliza [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias al algoritmo de configuración de clave [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) se puede encriptar la contraseña tan lento (`slow`) como se desee. Los algoritmos lentos reducen el impacto de los ataques de fuerza bruta.
 
-Bcrypt, is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
+Bcrypt es una función hash adaptativa basada en el algoritmo criptográfico de cifrado de bloque simétrico Blowfish. También contempla un factor de seguridad o trabajo que determina qué tan lenta será la función hash para hacer su trabajo. De esta manera se descarta el uso de técnicas de hash como FPGA o GPU.
 
-Should hardware becomes faster in the future, we can increase the work factor to mitigate this.
+Si el hardware se hace más rápido en el futuro se puede aumentar el factor de trabajo o lentitud para contrarrestarlo.
 
-This component offers a simple interface to use the algorithm:
+El componente cuenta con una interfaz sencilla para utilizar el algoritmo:
 
 ```php
 <?php
@@ -48,7 +48,7 @@ class UsersController extends Controller
 }
 ```
 
-We saved the password hashed with a default work factor. A higher work factor will make the password less vulnerable as its encryption will be slow. We can check if the password is correct as follows:
+La contraseña ha sido almacenada con el factor de trabajo predeterminado. Un factor de trabajo más alto hará que la contraseña sea menos vulnerable puesto que su encriptación será más lenta. Para revisar si la contraseña es correcta:
 
 ```php
 <?php
@@ -66,10 +66,10 @@ class SessionController extends Controller
 
         if ($user) {
             if ($this->security->checkHash($password, $user->password)) {
-                // The password is valid
+                // La contraseña es válida
             }
         } else {
-            // To protect against timing attacks. Independientemente de si un usuario existe o no,
+            // Para prevenir ataques sistemáticos Independientemente de si un usuario existe o no,
             // el script tomará aproximadamente la misma cantidad
             // ya que siempre se computará un hash.
             $this->security->hash(
@@ -77,23 +77,23 @@ class SessionController extends Controller
             );
         }
 
-        // The validation has failed
+        // La validación ha fallado
     }
 }
 ```
 
-The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php)) so is required to have the \[openssl\]\[openssl\] extension loaded.
+La sal es generada usando bytes pseudo-aleatorios con la función [ openssl_random_pseudo_bytes](https://php.net/manual/es/function.openssl-random-pseudo-bytes.php) de PHP, así se requiere que este cargada la extensión [OpenSSL](https://php.net/manual/es/book.openssl.php).
 
-## Cross-Site Request Forgery (CSRF) protection
+## Protección contra ataques CSRF
 
-This is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
+Este es otro ataque frecuente contra los sitios web y aplicaciones. Los formularios destinados a tareas como registrarse o agregar comentarios son vulnerables a este ataque.
 
-The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce))\[random_nonce\] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:
+El objetivo es prevenir que los valores de los formularios de la aplicación sean enviados desde el exterior. Para solucionar este problema, se puede generar un [Random Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) o token en cada formulario, agregar el token en la sesión y luego validar el token una vez que el formulario envía los datos de regreso a nuestra aplicación, comparando el token almacenado en la sesión con el enviado por el formulario:
 
 ```php
-<?php echo Tag::form('session/login'); ?>
+<?php echo Tag::form('session/login') ?>
 
-    <!-- Login and password inputs ... -->
+    <!-- Iniciar sesión e ingresar contraseña ... -->
 
     <input type='hidden' name='<?php echo $this->security->getTokenKey() ?>'
         value='<?php echo $this->security->getToken() ?>'/>
@@ -101,7 +101,7 @@ The idea is to prevent the form values from being sent outside our application. 
 </form>
 ```
 
-Then in the controller's action you can check if the CSRF token is valid:
+En la acción del controlador se puede verificar la validez del token contra CSRF:
 
 ```php
 <?php
@@ -121,7 +121,7 @@ class SessionController extends Controller
 }
 ```
 
-Remember to add a session adapter to your Dependency Injector, otherwise the token check won't work:
+Es muy importante agregar un adaptador de sesión al inyector de dependencias (`DI`), de lo contrario la validación del token no funcionará:
 
 ```php
 <?php
@@ -138,11 +138,11 @@ $di->setShared(
 );
 ```
 
-Adding a [captcha](https://www.google.com/recaptcha)) to the form is also recommended to completely avoid the risks of this attack.
+Añadir un [captcha](https://www.google.com/recaptcha) al formulario también es recomendado para evitar por completo los riesgos de este tipo de ataque.
 
-## Setting up the component
+## Configuración del componente
 
-This component is automatically registered in the services container as `security`, you can re-register it to setup its options:
+El componente se registra de manera automática en el contenedor de servicios como `security`; es posible registrarlo de nuevo para configurar sus opciones:
 
 ```php
 <?php
@@ -163,9 +163,9 @@ $di->set(
 );
 ```
 
-## Random
+## Aleatorio
 
-The [Phalcon\Security\Random](api/Phalcon_Security_Random) class makes it really easy to generate lots of types of random data.
+La clase [Phalcon\Security\Random](api/Phalcon_Security_Random) facilita la generación de varios tipos de datos aleatorios.
 
 ```php
 <?php
@@ -177,21 +177,19 @@ $random = new Random();
 // ...
 $bytes = $random->bytes();
 
-// Generate a random hex string of length $len.
+// Genera una cadena hex de tamaño $len.
 $hex = $random->hex($len);
 
-// Generate a random base64 string of length $len.
+// Genera una cadena base64 de tamaño $len.
 $base64 = $random->base64($len);
 
-// Generate a random URL-safe base64 string of length $len.
+// Genera una dirección segura URL en base64 con tamaño $len.
 $base64Safe = $random->base64Safe($len);
 
 // Genera un UUID (versión 4).
-// See https://en.wikipedia.org/wiki/Universally_unique_identifier
+// Véase <a href="https://es.wikipedia.org/wiki/Identificador_%C3%BAnico_universal">Identificador único universal</a>
 $uuid = $random->uuid();
 
-// Generate a random integer between 0 and $n.
+// Genera un entero aleatorio entre 0 y $n.
 $number = $random->number($n);
 ```
-
-[openssl]: https://php.net/manual/en/book.openssl.php) extension loaded.

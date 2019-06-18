@@ -49,10 +49,11 @@ $options = [
     'adapter'  => 'php',
 ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 ## Native Arrays
+
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -228,14 +229,14 @@ $config = new Config(
    ]
 );
 
-// 区切り文字としてドットを使用する
+// Using dot as delimiter
 $config->path('test.parent.property2');    // yeah
 $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// デリミタとしてスラッシュを使用する デフォルト値も指定でき、
-// 設定オプションが存在しない場合はデフォルト値が返されます。
+// Using slash as delimiter. A default value may also be specified and
+// will be returned if the configuration option does not exist.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
@@ -278,7 +279,7 @@ You can inject your configuration to the controller allowing us to use [Phalcon\
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config;
 
-// DIの生成
+// Create a DI
 $di = new FactoryDefault();
 
 $di->set(

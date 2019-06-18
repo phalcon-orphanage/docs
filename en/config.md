@@ -44,9 +44,9 @@ $options = [
     'filePath' => 'path/config',
     'adapter'  => 'php',
 ];
- 
- $config = Factory::load($options);
- ```
+
+$config = Factory::load($options);
+```
 
 ## Native Arrays
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
@@ -186,7 +186,7 @@ Phalcon\Config Object
 )
 ```
 
-There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator)
+There are more adapters available for this components in the [Phalcon Incubator][phalcon-incubator]
 
 ## Nested Configuration
 You may easily access nested configuration values using the `Phalcon\Config::path` method. This method allows to obtain values, without caring about the fact that some parts of the path are absent. Let's look at an example:
@@ -297,3 +297,5 @@ class MyController extends Controller
     }
 }
 ```
+
+[phalcon-incubator]: https://github.com/phalcon/incubator

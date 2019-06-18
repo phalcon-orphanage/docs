@@ -49,10 +49,11 @@ $options = [
     'adapter'  => 'php',
 ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 ## Native Arrays
+
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
 ```php
@@ -234,8 +235,8 @@ $config->path('database.host', null, '.'); // localhost
 
 $config->path('test.parent'); // Phalcon\Config
 
-// Using slash as delimiter. 也可以指定默认值
-// 如果配置选项不存在, 将返回。
+// Using slash as delimiter. A default value may also be specified and
+// will be returned if the configuration option does not exist.
 $config->path('test/parent/property3', 'no', '/'); // no
 
 Config::setPathDelimiter('/');
