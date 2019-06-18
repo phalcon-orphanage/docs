@@ -16,11 +16,11 @@ The process of pagination takes place when we need to present big groups of arbi
 
 This component makes use of adapters to encapsulate different sources of data:
 
-| Adaptador                                                                               | Descripción                                                                                                                                                                                                         |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator_Adapter_NativeArray)   | Usa un array PHP como origen de datos                                                                                                                                                                               |
-| [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
-| [Phalcon\Paginator\Adapter\QueryBuilder](api/Phalcon_Paginator_Adapter_QueryBuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/Phalcon_Mvc_Model_Query_Builder) object as source data                                                                                                              |
+| Adaptador                                                                                                 | Descripción                                                                                                                                                                                                         |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Phalcon\Paginator\Adapter\NativeArray](api/Phalcon_Paginator#Phalcon_Paginator_Adapter_NativeArray)   | Usa un array PHP como origen de datos                                                                                                                                                                               |
+| [Phalcon\Paginator\Adapter\Model](api/Phalcon_Paginator#Phalcon_Paginator_Adapter_Model)               | Use a [Phalcon\Mvc\Model\Resultset](api/Phalcon_Mvc_Model_Resultset) object as source data. Como PDO no admite cursores desplazables, este adaptador no se debe usar para paginar una gran cantidad de registros |
+| [Phalcon\Paginator\Adapter\QueryBuilder](api/Phalcon_Paginator$Phalcon_Paginator_Adapter_QueryBuilder) | Use a [Phalcon\Mvc\Model\Query\Builder](api/Phalcon_Mvc_Model_Query_Builder) object as source data                                                                                                              |
 
 ## Factory
 
