@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ja-jp'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Acl\ComponentAware'
 ---
