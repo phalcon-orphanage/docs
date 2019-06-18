@@ -3,54 +3,54 @@ files:
     translation: /%locale%/%original_file_name%
     languages_mapping:
       locale:
-        el: el-gr
         bg: bg-bg
-        zh-CN: zh-cn
         cs: cs-cz
-        fr: fr-fr
         de: de-de
+        el: el-gr
+        es-ES: es-es
+        fa: fa-ir
+        fr: fr-fr
         hu: hu-hu
         id: id-id
         it: it-it
         ja: ja-jp
         ko: ko-kr
-        fa: fa-ir
+        nl: nl-nl
         pl: pl-pl
         pt-BR: pt-br
         pt-PT: pt-pt
         ro: ro-ro
         ru: ru-ru
-        es-ES: es-es
+        sr-SP: sr-sp
         tr: tr-tr
         th-TH: th-th
-        sr-SP: sr-sp
         uk: uk-ua
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
-        nl: nl-nl
+        zh-CN: zh-cn
   - source: /en/*.md
     translation: /%locale%/%original_file_name%
     languages_mapping:
       locale:
-        el: el-gr
         bg: bg-bg
-        zh-CN: zh-cn
         cs: cs-cz
-        fr: fr-fr
         de: de-de
+        el: el-gr
+        es-ES: es-es
+        fa: fa-ir
+        fr: fr-fr
         hu: hu-hu
         id: id-id
         it: it-it
         ja: ja-jp
         ko: ko-kr
-        fa: fa-ir
+        nl: nl-nl
         pl: pl-pl
         pt-BR: pt-br
         pt-PT: pt-pt
         ro: ro-ro
         ru: ru-ru
-        es-ES: es-es
         sr-SP: sr-sp
         tr: tr-tr
         th-TH: th-th
@@ -58,29 +58,29 @@ files:
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
-        nl: nl-nl
+        zh-CN: zh-cn
   - source: /en/api/*.md
     translation: /%locale%/api/%original_file_name%
     languages_mapping:
       locale:
-        el: el-gr
         bg: bg-bg
-        zh-CN: zh-cn
         cs: cs-cz
-        fr: fr-fr
         de: de-de
+        el: el-gr
+        es-ES: es-es
+        fa: fa-ir
+        fr: fr-fr
         hu: hu-hu
         id: id-id
         it: it-it
         ja: ja-jp
         ko: ko-kr
-        fa: fa-ir
+        nl: nl-nl
         pl: pl-pl
         pt-BR: pt-br
         pt-PT: pt-pt
         ro: ro-ro
         ru: ru-ru
-        es-ES: es-es
         sr-SP: sr-sp
         tr: tr-tr
         th-TH: th-th
@@ -88,4 +88,4 @@ files:
         ur-IN: ur-in
         ur-PK: ur-pk
         vi: vi-vn
-        nl: nl-nl
+        zh-CN: zh-cn
