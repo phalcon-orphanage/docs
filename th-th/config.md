@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'th-th'
+language: 'en'
 version: '4.0'
 ---
 
@@ -49,10 +49,11 @@ $options = [
     'adapter'  => 'php',
 ];
 
- $config = Factory::load($options);
- ```
+$config = Factory::load($options);
+```
 
 ## Native Arrays
+
 The first example shows how to convert native arrays into [Phalcon\Config](api/Phalcon_Config) objects. This option offers the best performance since no files are read during this request.
 
 ```php
