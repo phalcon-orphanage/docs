@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'th-th'
+language: 'en'
 version: '4.0'
 ---
 
@@ -164,7 +164,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 ## Types of Annotations
 
-Annotations may have parameters or not. A parameter could be a simple literal (strings, number, boolean, null), an array, a hashed list or other annotation:
+Annotations may have parameters or not. A parameter could be a simple literal (`strings`, `number`, `boolean`, `null`), an `array`, a hashed list or other annotation:
 
 ```php
 <?php
