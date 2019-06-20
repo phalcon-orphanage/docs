@@ -21,11 +21,11 @@ title: 'Phalcon\Paginator'
 
 *extends* [Phalcon\Factory\AbstractFactory](Phalcon_Factory#AbstractFactory)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/PaginatorFactory.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/PaginatorFactory.zep)
 
 A factory class to create Paginators. Other than the existing paginators, the factory can receive an array of custom paginator objects to be available for construction.
 
-## 方法
+## Methods
 
 ```php
 public function __construct(array $services = [])
@@ -59,7 +59,7 @@ Returns an array of available adapters
 
 *implements* [Phalcon\Paginator\RepositoryInterface](#Phalcon_Paginator_RepositoryInterface)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Repository.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Repository.zep)
 
 ## Properties
 
@@ -75,7 +75,7 @@ protected aliases    = []
 protected properties = []
 ```
 
-## 方法
+## Methods
 
 ```php
 public function __get(string $property): mixed | null
@@ -167,7 +167,7 @@ Resolve alias property name
 
 # Interface **Phalcon\Paginator\RepositoryInterface**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/RepositoryInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/RepositoryInterface.zep)
 
 ## 常量
 
@@ -182,7 +182,7 @@ const PROPERTY_PREVIOUS_PAGE = "previous"
 const PROPERTY_TOTAL_ITEMS   = "total_items"
 ```
 
-## 方法
+## Methods
 
 ```php
 public function getAliases(): array
@@ -258,7 +258,7 @@ Sets values for properties of the repository
 
 *extends* [Phalcon\Exception](Phalcon_Exception)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Exception.zep)
 
 <hr />
 
@@ -266,9 +266,9 @@ Sets values for properties of the repository
 
 # Interface **Phalcon\Paginator\Adapter\AdapterInterface**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AdapterInterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AdapterInterface.zep)
 
-## 方法
+## Methods
 
 ```php
 public function getLimit(): int
@@ -302,7 +302,7 @@ Set current rows limit
 
 *implements* [Phalcon\Paginator\Adapter\AdapterInterface](#Phalcon_Paginator_Adapter_AdapterInterface)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AbstractAdapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AbstractAdapter.zep)
 
 ## Properties
 
@@ -342,7 +342,7 @@ protected repository
 
 Repository for pagination
 
-## 方法
+## Methods
 
 ```php
 public function getLimit(): int
@@ -394,9 +394,9 @@ Gets current repository for pagination
 
 *extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/Model.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/Model.zep)
 
-## 方法
+## Methods
 
 ```php
 public function paginate(): \Phalcon\Paginator\RepositoryInterface
@@ -412,9 +412,9 @@ Returns a slice of the resultset to show in the pagination
 
 *extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/NativeArray.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/NativeArray.zep)
 
-## 方法
+## Methods
 
 ```php
 public function paginate(): \Phalcon\Paginator\RepositoryInterface
@@ -430,7 +430,7 @@ Returns a slice of the resultset to show in the pagination
 
 *extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/QueryBuilder.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/QueryBuilder.zep)
 
 ## Properties
 
@@ -449,7 +449,7 @@ protected $columns
 
 Columns for count query if builder has having
 
-## 方法
+## Methods
 
 ```php
 public function __construct(array $config)
