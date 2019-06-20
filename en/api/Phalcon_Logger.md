@@ -28,13 +28,13 @@ title: 'Phalcon\Logger'
 
 ## Methods
 ```php
-public function __construct(\Phalcon\Logger\AdapterFactory $factory)
+public function __construct( \Phalcon\Logger\AdapterFactory $factory )
 ```
 
 Constructor. Accepts an array of key/value pairs for Logger objects. Key is the unique name, while the value holds the class name.
 
 ```php
-public function load(mixed $config): \Phalcon\Logger\Logger
+public function load( mixed $config ): \Phalcon\Logger\Logger
 ```
 
 Constructs a Logger object based on configuration passed. The configuration can be either an array or a [Phalcon\Config](Phalcon_Config) object.
@@ -84,7 +84,7 @@ protected $excluded = []; // The excluded adapters for this log process
 
 ## Methods
 ```php
-public function __construct(string $name, array $adapters = [])
+public function __construct( string $name, array $adapters = [] )
 ```
 
 Constructor. Accepts the The name of the logger and an array of adapters to be used for logging (default [])
@@ -99,43 +99,43 @@ public function addAdapter(
 Add an adapter to the stack. For processing we use FIFO
 
 ```php
-public function alert(mixed $message, array $context = []): void
+public function alert( mixed $message, array $context = [] ): void
 ```
 
 Action must be taken immediately. Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
 
 ```php
-public function critical(mixed $message, array $context = []): void
+public function critical( mixed $message, array $context = [] ): void
 ```
 
 Critical conditions. Example: Application component unavailable, unexpected exception.
 
 ```php
-public function debug(mixed $message, array $context = []): void
+public function debug( mixed $message, array $context = [] ): void
 ```
 
 Detailed debug information.
 
 ```php
-public function error(mixed $message, array $context = []): void
+public function error( mixed $message, array $context = [] ): void
 ```
 
 Runtime errors that do not require immediate action but should typically be logged and monitored.
 
 ```php
-public function emergency(mixed $message, array $context = []): void
+public function emergency( mixed $message, array $context = [] ): void
 ```
 
 System is unusable.
 
 ```php
-public function excludeAdapters(array $adapters = []): \Phalcon\Logger\Logger
+public function excludeAdapters( array $adapters = [] ): \Phalcon\Logger\Logger
 ```
 
 Exclude certain adapters.
 
 ```php
-public function getAdapter(string name): \Phalcon\Logger\Adapter\AdapterInterface
+public function getAdapter( string $name ): \Phalcon\Logger\Adapter\AdapterInterface
 ```
 
 Returns an adapter from the stack
@@ -153,43 +153,43 @@ public function getName(): string
 Returns the name of the logger
 
 ```php
-public function info(mixed $message, array $context = []): void
+public function info( mixed $message, array $context = [] ): void
 ```
 
 Interesting events.
 
 ```php
-public function log(level, message, array context = []): void
+public function log( mixed $level, message, array $context = [] ): void
 ```
 
 Logs with an arbitrary level.
 
 ```php
-public function notice(mixed $message, array $context = []): void
+public function notice( mixed $message, array $context = [] ): void
 ```
 
 Normal but significant events.
 
 ```php
-public function removeAdapter(string name): \Phalcon\Logger\Logger
+public function removeAdapter( string $name ): \Phalcon\Logger\Logger
 ```
 
 Removes an adapter from the stack
 
 ```php
-public function setAdapters(array! adapters): \Phalcon\Logger\Logger
+public function setAdapters( array $adapters ): \Phalcon\Logger\Logger
 ```
 
 Sets the adapters stack overriding what is already there
 
 ```php
-public function warning(mixed $message, array $context = []): void
+public function warning( mixed $message, array $context = [] ): void
 ```
 
 Exceptional occurrences that are not errors.
 
 ```php
-protected function addMessage(int level, string message, array context = []): bool
+protected function addMessage( int $level, string $message, array $context = [] ): bool
 ```
 
 Adds a message to each handler for processing
@@ -244,7 +244,7 @@ protected getName(): string
 The log name
 
 ```php
-protected getTime()(): int
+protected getTime(): int
 ```
 The log timestamp
 
@@ -315,7 +315,7 @@ public function __destruct()
 Destructor / cleanup
 
 ```php
-public function add(\Phalcon\Logger\Item $item): \Phalcon\Logger\Adapter\AdapterInterface
+public function add( \Phalcon\Logger\Item $item ): \Phalcon\Logger\Adapter\AdapterInterface
 ```
 Adds a message to the queue
 
@@ -340,7 +340,7 @@ public function inTransaction(): bool
 Returns the whether the logger is currently in an active transaction or not
 
 ```php
-abstract public function process(\Phalcon\Logger\Item $item): void
+abstract public function process( \Phalcon\Logger\Item $item ): void
 ```
 Processes the message in the adapter - implemented in adapters
 
@@ -365,7 +365,7 @@ Sets the message formatter
 
 ## Methods
 ```php
-public function add(\Phalcon\Logger\Item $item): \Phalcon\Logger\Adapter\AdapterInterface
+public function add( \Phalcon\Logger\Item $item ): \Phalcon\Logger\Adapter\AdapterInterface
 ```
 Adds a message to the queue
 
@@ -390,7 +390,7 @@ public function getFormatter(): \Phalcon\Logger\Formatter\FormatterInterface
 Returns the current formatter for the messages
 
 ```php
-public function process(\Phalcon\Logger\Item $item): void
+public function process( \Phalcon\Logger\Item $item ): void
 ```
 Processes the message in the adapter
 
@@ -417,12 +417,12 @@ Sets the message formatter
 
 ## Methods
 ```php
-public function close() -> bool
+public function close(): bool
 ```
 Closes the stream
 
 ```php
-public function process(\Phalcon\Logger\Item item): void
+public function process( \Phalcon\Logger\Item $item ): void
 ```
 Processes the message - blackhole
 
@@ -437,53 +437,34 @@ Processes the message - blackhole
 
 ## Properties
 ```php
-/**
- * Stream handler resource
- *
- * @var resource|null
- */
-protected $handler = null
-
-/**
- * The file open mode. Defaults to "ab"
- *
- * @var string
- */
-protected $mode = "ab"
-
-/**
- * Stream name
- *
- * @var string
- */
-protected $name
-
-/**
- * Path options
- *
- * @var array
- */
-protected $options
+// resource | null
+protected $handler = null; // Stream handler resource
+// string
+protected $mode    = "ab"; // The file open mode. Defaults to "ab"
+// string
+protected $name;           // Stream name
+// array
+protected $options;        // Path options
 ```
 
 ## Methods
 ```php
-public function __construct(string! name, array options = [])
+public function __construct( string $name, array $options = [] )
 ```
 Constructor. Accepts the name and options
 
 ```php
-public function close() -> bool
+public function close(): bool
 ```
 Closes the stream
 
 ```php
-public function getName() -> string
+public function getName(): string
 ```
 Returns the name of the file
 
 ```php
-public function process(\Phalcon\Logger\Item item): void
+public function process( \Phalcon\Logger\Item $item ): void
 ```
 Processes the message i.e. writes it to the file
 
@@ -498,47 +479,31 @@ Processes the message i.e. writes it to the file
 
 ## Properties
 ```php
-/**
- * Name of the default formatter class
- *
- * @var string
- */
-protected $defaultFormatter = "Syslog"
-
-/**
- * @var int
- */
-protected $facility = 0
-
-/**
- * @var string
- */
-protected $name = ""
-
-/**
- * @var bool
- */
-protected $opened = false
-
-/**
- * @var int
- */
-protected $option = 0
+// string
+protected $defaultFormatter = "Syslog"; // Name of the default formatter class
+// int
+protected $facility         = 0;        // The facility 
+// string
+protected $name             = "";
+// bool
+protected $opened           = false;    // Whether the log has been opened or not
+// int
+protected $option           = 0;        
 ```
 
 ## Methods
 ```php
-public function __construct(string! name, array options = [])
+public function __construct( string $name, array $options = [] )
 ```
 Constructor. Accepts the name and options
 
 ```php
-public function close() -> bool
+public function close(): bool
 ```
 Closes the stream
 
 ```php
-public function process(\Phalcon\Logger\Item item): void
+public function process( \Phalcon\Logger\Item $item ): void
 ```
 Processes the message i.e. writes it to the file
 
@@ -553,7 +518,7 @@ Processes the message i.e. writes it to the file
 
 ## Methods
 ```php
-public function interpolate(string $message, $context = null): void
+public function interpolate( string $message, $context = null ): void
 ```
 Interpolates context values into the message placeholders
 
@@ -566,7 +531,7 @@ Interpolates context values into the message placeholders
 
 ## Methods
 ```php
-public function format(\Phalcon\Logger\Item $item): string | array
+public function format( \Phalcon\Logger\Item $item ): string | array
 ```
 Formats the item passed
 
@@ -587,12 +552,12 @@ protected $dateFormat = "D, d M y H:i:s O"); // The date format of the message
 
 ## Methods
 ```php
-public function __construct(string $dateFormat = "D, d M y H:i:s O")
+public function __construct( string $dateFormat = "D, d M y H:i:s O" )
 ```
 Constructor
 
 ```php
-public function format(\Phalcon\Logger\Item $item): string | array
+public function format( \Phalcon\Logger\Item $item ): string | array
 ```
 Formats the item passed
 
@@ -602,7 +567,7 @@ public function getDateFormat(): string
 Returns the date format
 
 ```php
-public function setDateFormat(string $dateFormat): void
+public function setDateFormat( string $dateFormat ): void
 ```
 Sets the date format
 
@@ -633,7 +598,7 @@ public function __construct(
 Constructor
 
 ```php
-public function format(\Phalcon\Logger\Item $item): string | array
+public function format( \Phalcon\Logger\Item $item ): string | array
 ```
 Formats the item passed
 
@@ -653,7 +618,7 @@ public function setDateFormat(string $dateFormat): void
 Sets the date format
 
 ```php
-public function setFormat(string $format): void
+public function setFormat( string $format ): void
 ```
 Sets the message format
 
@@ -668,6 +633,6 @@ Sets the message format
 
 ## Methods
 ```php
-public function format(\Phalcon\Logger\Item $item): string | array
+public function format( \Phalcon\Logger\Item $item ): string | array
 ```
 Formats the item passed

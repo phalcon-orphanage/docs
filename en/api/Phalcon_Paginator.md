@@ -26,27 +26,23 @@ A factory class to create Paginators. Other than the existing paginators, the fa
 ## Methods
 
 ```php
-public function __construct(array $services = [])
+public function __construct( array $services = [] )
 ```
-
 Constructor. Accepts an array of key/value pairs for Paginator objects. Key is the unique name, while the value holds the class name.
 
 ```php
-public function load(mixed $config): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function load( mixed $config ): \Phalcon\Paginator\Adapter\AbstractAdapter
 ```
-
 Constructs a Paginator adapter based on configuration passed. The configuration can be either an array or a [Phalcon\Config](Phalcon_Config) object.
 
 ```php
-public function newInstance(string $name, array $options = []): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function newInstance( string $name, array $options = [] ): \Phalcon\Paginator\Adapter\AbstractAdapter
 ```
-
 Creates a new Paginator object based on the passed name and adapter options.
 
 ```php
 protected function getAdapters(): array
 ```
-
 Returns an array of available adapters
 
 <hr>
@@ -61,100 +57,81 @@ Returns an array of available adapters
 ## Properties
 
 ```php
-/**
- * @var array
- */
+// array
 protected aliases    = []
-
-/**
- * @var array
- */
+// array
 protected properties = []
 ```
 
 ## Methods
 ```php
-public function __get(string $property): mixed | null
+public function __get( string $property ): mixed | null
 ```
-
 Magic get method for available properties
 
 ```php
 public function getAliases(): array
 ```
-
 Gets the aliases for properties repository
 
 ```php
 public function getCurrent(): int
 ```
-
 Gets number of the current page
 
 ```php
 public function getFirst(): int
 ```
-
 Gets number of the first page
 
 ```php
 public function getItems(): mixed
 ```
-
 Gets the items on the current page
 
 ```php
 public function getLast(): int
 ```
-
 Gets number of the last page
 
 ```php
 public function getLimit(): int
 ```
-
 Gets current rows limit
 
 ```php
 public function getNext(): int
 ```
-
 Gets number of the next page
 
 ```php
 public function getPrevious(): int
 ```
-
 Gets number of the previous page
 
 ```php
 public function getTotalItems(): int
 ```
-
 Gets the total number of items
 
 ```php
-public function setAliases(array $aliases): \Phalcon\Paginator\RepositoryInterface
+public function setAliases( array $aliases ): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Sets the aliases for properties repository
 
 ```php
-public function setProperties(array $properties): \Phalcon\Paginator\RepositoryInterface
+public function setProperties( array $properties ): \Phalcon\Paginator\RepositoryInterface
  ```
-   
 Sets values for properties of the repository
     
 ```php
-protected function getProperty(string $property, mixed $defaultValue = null): mixed
+protected function getProperty( string $property, mixed $defaultValue = null ): mixed
 ```
-
 Gets value of property by name
 
 ```php
-protected function getRealNameProperty(string $property): string
+protected function getRealNameProperty( string $property ): string
 ```
-
 Resolve alias property name
 
 <hr>
@@ -182,67 +159,56 @@ const PROPERTY_TOTAL_ITEMS   = "total_items"
 ```php
 public function getAliases(): array
 ```
-
 Gets the aliases for properties repository
 
 ```php
 public function getCurrent(): int
 ```
-
 Gets number of the current page
 
 ```php
 public function getFirst(): int
 ```
-
 Gets number of the first page
 
 ```php
 public function getItems(): mixed
 ```
-
 Gets the items on the current page
 
 ```php
 public function getLast(): int
 ```
-
 Gets number of the last page
 
 ```php
 public function getLimit(): int
 ```
-
 Gets current rows limit
 
 ```php
 public function getNext(): int
 ```
-
 Gets number of the next page
 
 ```php
 public function getPrevious(): int
 ```
-
 Gets number of the previous page
 
 ```php
 public function getTotalItems(): int
 ```
-
 Gets the total number of items
 
 ```php
-public function setAliases(array $aliases): \Phalcon\Paginator\RepositoryInterface
+public function setAliases( array $aliases ): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Sets the aliases for properties repository
 
 ```php
-public function setProperties(array $properties): \Phalcon\Paginator\RepositoryInterface
+public function setProperties( array $properties ): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Sets values for properties of the repository
 
 <hr>
@@ -266,25 +232,21 @@ Sets values for properties of the repository
 ```php
 public function getLimit(): int
 ```
-
 Get current rows limit
 
 ```php
 public function paginate():  \Phalcon\Paginator\RepositoryInterface
 ```
-
 Returns a slice of the resultset to show in the pagination
 
 ```php
-public function setCurrentPage(int $page)
+public function setCurrentPage( int $page )
 ```
-
 Set the current page number
 
 ```php
-public function setLimit(int $limit)
+public function setLimit( int $limit )
 ```
-
 Set current rows limit
 
 <hr>
@@ -299,83 +261,55 @@ Set current rows limit
 ## Properties
 
 ```php
-/**
- * @var array
- */
-protected config
+// array
+protected $config;           // Configuration of the paginator
+// int | null
+protected $limitRows = null; // Number of rows to show in the paginator. By default is null
+// int | null
+protected $page      = null; // Current page in paginate
+// \Phalcon\Paginator\RepositoryInterface
+protected $repository;       // Repository for pagination
 ```
-
-Configuration of paginator
-
-```php
-/**
- * @var int|null
- */
-protected limitRows = null
-```
-
-Number of rows to show in the paginator. By default is null
-
-```php
-/**
- * @var int|null
- */
-protected page = null
-```
-
-Current page in paginate
-
-```php
-/**
- * @var RepositoryInterface
- */
-protected repository
-```
-
-Repository for pagination
 
 ## Methods
 
 ```php
 public function getLimit(): int
 ```
-
 Get current rows limit
 
 ```php
-public function __construct(array $config)
+public function __construct( array $config )
 ```
-
 Constructor
 
 ```php
 public function getLimit(): int
 ```
-
 Get current rows limit
 
 ```php
-public function setCurrentPage(int $page): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setCurrentPage( int $page ): \Phalcon\Paginator\Adapter\AbstractAdapter
 ```
-
 Set the current page number
 
 ```php
-public function setLimit(int $limitRows): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setLimit( int $limitRows ): \Phalcon\Paginator\Adapter\AbstractAdapter
 ```
-
 Set current rows limit
 
 ```php
-public function setRepository(\Phalcon\Paginator\RepositoryInterface $repository): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setRepository(
+    \Phalcon\Paginator\RepositoryInterface $repository
+): \Phalcon\Paginator\Adapter\AbstractAdapter
 ```
-
 Sets current repository for pagination
 
 ```php
-protected function getRepository(array $properties = null): \Phalcon\Paginator\RepositoryInterface
+protected function getRepository(
+    array $properties = null
+): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Gets current repository for pagination
 
 <hr>
@@ -392,7 +326,6 @@ Gets current repository for pagination
 ```php
 public function paginate(): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Returns a slice of the resultset to show in the pagination
 
 <hr>
@@ -409,7 +342,6 @@ Returns a slice of the resultset to show in the pagination
 ```php
 public function paginate(): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Returns a slice of the resultset to show in the pagination
 
 <hr>
@@ -424,48 +356,35 @@ Returns a slice of the resultset to show in the pagination
 ## Properties
 
 ```php
-/**
- * @var \Phalcon\Mvc\Model\Query\Builder
- */
-protected $builder
+// \Phalcon\Mvc\Model\Query\Builder
+protected $builder; // Paginator's data
+protected $columns;  // Columns for count query if builder has having
 ```
-
-Paginator's data
-
-```php
-protected $columns
-```
-
-Columns for count query if builder has having
 
 ## Methods
-
 ```php
-public function __construct(array $config)
+public function __construct( array $config )
 ```
-
 Constructor
 
 ```php
 public function getCurrentPage(): int
 ```
-
 Get the current page number
 
 ```php
 public function getQueryBuilder(): \Phalcon\Mvc\Model\Query\Builder
 ```
-
 Get query builder object
 
 ```php
 public function paginate(): \Phalcon\Paginator\RepositoryInterface
 ```
-
 Returns a slice of the resultset to show in the pagination
 
 ```php
-public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): \Phalcon\Paginator\Adapter\QueryBuilder
+public function setQueryBuilder(
+    \Phalcon\Mvc\Model\Query\Builder $builder
+): \Phalcon\Paginator\Adapter\QueryBuilder
 ```
-
 Set query builder object
