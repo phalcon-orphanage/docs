@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'sr-sp'
+language: 'en'
 version: '4.0'
 ---
 
@@ -39,14 +39,14 @@ This component makes use of adapters to read translation messages from different
 | Adapter                                                                               | Description                                                                             |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate_Adapter_NativeArray) | Uses PHP arrays to store the messages. This is the best option in terms of performance. |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a CSV to store the messages for a langage.                                         |
-| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a .po file.                                  |
+| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate_Adapter_Csv)                 | Uses a `.csv` file to store the messages for a language.                                |
+| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate_Adapter_Gettext)         | Uses gettext to retrieve the messages from a `.po` file.                                |
 
 ### Native Array
 
 Translation strings are stored in a php array.
 
-The recommended usage with this adapter is to store them in specific langage files, with the freedom to organize them your way. A simple structure could be:
+The recommended usage with this adapter is to store them in specific language files, with the freedom to organize them your way. A simple structure could be:
 
 ```bash
 app/messages/en.php
@@ -100,7 +100,7 @@ $translate = Factory::load($options);
 
 ### Gettext
 
-The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](http://php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
+The translation strings are stored in `.po` and `.mo` files. More about it on the [official documentation](https://www.php.net/manual/book.gettext.php). The files hierarchy is bound to this standard.
 
 ```php
 <?php

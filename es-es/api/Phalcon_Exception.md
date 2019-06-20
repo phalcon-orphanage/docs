@@ -5,6 +5,8 @@ version: '4.0'
 title: 'Phalcon\Exception'
 ---
 
+<a name="Phalcon_Exception"></a>
+
 # Class **Phalcon\Exception**
 
 *extends* class [Exception](https://php.net/manual/en/class.exception.php)
@@ -15,46 +17,62 @@ title: 'Phalcon\Exception'
 
 ## Métodos
 
-final private [Exception](https://php.net/manual/en/class.exception.php) **__clone** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
-
-Clona la excepción
-
-public **__construct** ([*mixed* $message], [*mixed* $code], [*mixed* $previous]) inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function __construct( [string $message = "" [, int $code = 0 [, \Throwable $previous = NULL ]]] )
+```
 
 Constructor de la excepción
 
-public **__wakeup** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final private function __clone(): void
+```
 
-...
+Clone the object
 
-final public *string* **getMessage** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+public function __toString(): string
+```
+
+Representación de la excepción como una cadena
+
+```php
+final public function getMessage(): string
+```
 
 Obtiene el mensaje de excepción
 
-final public *int* **getCode** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getCode(): int
+```
 
 Obtiene el código de Exception
 
-final public *string* **getFile** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getFile(): string
+```
 
 Obtiene el archivo en el que se produjo la excepción
 
-final public *int* **getLine** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getLine(): int
+```
 
 Obtiene la línea en que se produjo la excepción
 
-final public *array* **getTrace** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getTrace(): array
+```
 
 Obtiene el seguimiento de la pila
 
-final public [Exception](https://php.net/manual/en/class.exception.php) **getPrevious** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getPrevious(): \Throwable
+```
 
 Devuelve la excepción anterior
 
-final public [Exception](https://php.net/manual/en/class.exception.php) **getTraceAsString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
+```php
+final public function getTraceAsString(): string
+```
 
 Obtiene el seguimiento de la pila como una cadena
-
-public *string* **__toString** () inherited from [Exception](https://php.net/manual/en/class.exception.php)
-
-Representación de la excepción como una cadena

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'th-th'
+language: 'en'
 version: '4.0'
 ---
 
@@ -12,7 +12,7 @@ Last update: 2019-03-28
 
 Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
 
-In this document we outline the coding standard that Phalcon is using. The coding standard is a combination of [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) developed by [PHP-FIG](https://www.php-fig.org/)
+In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a combination of [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) developed by [PHP-FIG](https://www.php-fig.org/)
 
 ## Files
 
@@ -92,7 +92,7 @@ class Memory extends Adapter
 ### Methods
 
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically based on their visibility. The order is `public`, `portected` and `private`. `__construct` if defined must be at the top of the class. 
+- Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class. 
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.

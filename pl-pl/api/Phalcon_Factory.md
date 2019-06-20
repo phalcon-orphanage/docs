@@ -5,18 +5,56 @@ version: '4.0'
 title: 'Phalcon\Factory'
 ---
 
-# Abstract class **Phalcon\Factory**
+- Class [Phalcon\Factory\AbstractFactory](#Phalcon_Factory_AbstractFactory)
+- Class [Phalcon\Factory\Exception](#Phalcon_Factory_Exception)
 
-*implements* [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
+<a name="Phalcon_Factory_AbstractFactory"></a>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory.zep)
+# Abstract Class **Phalcon\Factory\AbstractFactory**
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
+
+## Property
+
+```php
+// array
+protected $mapper   = []; // Holds the mapping of names to classes
+// array 
+protected $services = []; // Holds the resolved instances
+```
 
 ## Metody
 
-protected static **loadClass** (*mixed* $namespace, *mixed* $config)
+```php
+protected function checkService( string $name ): void
+```
 
-...
+Checks if a service exists and throws an exception
 
-abstract public static **load** (*mixed* $config) inherited from [Phalcon\FactoryInterface](Phalcon_FactoryInterface)
+```php
+protected function checkConfig( mixed $config ): array
+```
 
-...
+Checks the config if it is a valid object
+
+```php
+abstract protected function getAdapters(): array
+```
+
+Returns the adapters for the factory
+
+```php
+protected function init( array $services = [] ): void
+```
+
+Populates the internal array of services
+
+<hr />
+
+<a name="Phalcon_Factory_Exception"></a>
+
+# Class **Phalcon\Factory\Exception**
+
+*extends* [Phalcon\Exception](Phalcon_Exception)
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/Exception.zep)
