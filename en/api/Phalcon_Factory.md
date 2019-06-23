@@ -5,48 +5,76 @@ version: '4.0'
 title: 'Phalcon\Factory'
 ---
 
-- Class [Phalcon\Factory\AbstractFactory](#Phalcon_Factory_AbstractFactory)
-- Class [Phalcon\Factory\Exception](#Phalcon_Factory_Exception)
+* [Phalcon\Factory\AbstractFactory](#Factory_AbstractFactory)
+* [Phalcon\Factory\Exception](#Factory_Exception)
+        
+<h1 id="Factory_AbstractFactory">Class Phalcon\Factory\AbstractFactory</h1>
 
-<a name="Phalcon_Factory_AbstractFactory"></a>
-# Abstract Class **Phalcon\Factory\AbstractFactory**
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/abstractfactory.zep)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
+| Namespace  | Phalcon\Factory |
+| Uses       | Phalcon\Config\Config, Phalcon\Factory\Exception |
 
-## Property
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalconphp.com>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+## Properties
 ```php
-// array
-protected $mapper   = []; // Holds the mapping of names to classes
-// array 
-protected $services = []; // Holds the resolved instances
+/**
+ * @var array
+ */
+protected mapper;
+
+/**
+ * @var array
+ */
+protected services;
+
 ```
 
 ## Methods
 ```php
-protected function checkService( string $name ): void
-```
-Checks if a service exists and throws an exception
-
-```php
-protected function checkConfig( mixed $config ): array
+protected function checkConfig( mixed $config ): array;
 ```
 Checks the config if it is a valid object
 
+
 ```php
-abstract protected function getAdapters(): array
+protected function checkService( string $name ): void;
+```
+Checks if a service exists and throws an exception
+
+
+```php
+abstract protected function getAdapters(): array;
 ```
 Returns the adapters for the factory
 
+
 ```php
-protected function init( array $services = [] ): void
+protected function init( array $services ): void;
 ```
-Populates the internal array of services
+AdapterFactory constructor.
 
-<hr>
 
-<a name="Phalcon_Factory_Exception"></a>
-# Class **Phalcon\Factory\Exception**
 
-*extends* [Phalcon\Exception](Phalcon_Exception)
+        
+<h1 id="Factory_Exception">Class Phalcon\Factory\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/Exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/exception.zep)
+
+| Namespace  | Phalcon\Factory |
+| Extends    | \Phalcon\Exception |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalconphp.com>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
