@@ -25,7 +25,7 @@ Phalcon automatically passes the execution to the view component as soon as a pa
 | Действие                 | show      |
 | Параметр                 | 301       |
 
-The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
+Диспетчер будет искать `PostsController` и его метод `showAction`. Код простейшего контроллера для этого примера:
 
 ```php
 <?php
@@ -55,11 +55,11 @@ The `setVar()` method allows us to create view variables on demand so that they 
 
 This component uses by default PHP itself as the template engine, therefore views should have the `.phtml` extension. If the views directory is *app/views* then view component will find automatically for these 3 view files.
 
-| Name              | File                          | Description                                                                                                                                                                                                              |
-| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                                        |
-| Controller Layout | app/views/layouts/posts.phtml | This is the view related to the controller. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
-| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                                     |
+| Name              | File                          | Description                                                                                                                                                                                                   |
+| ----------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Action View       | app/views/posts/show.phtml    | This is the view related to the action. It only will be shown when the `show` action is executed.                                                                                                             |
+| Controller Layout | app/views/layouts/posts.phtml | Макет, связанный с контроллером. It only will be shown for every action executed within the controller "posts". All the code implemented in the layout will be reused for all the actions in this controller. |
+| Main Layout       | app/views/index.phtml         | This is main action it will be shown for every controller or action executed within the application.                                                                                                          |
 
 You are not required to implement all of the files mentioned above. [Phalcon\Mvc\View](api/Phalcon_Mvc_View) will simply move to the next view level in the hierarchy of files. If all three view files are implemented, they will be processed as follows:
 
