@@ -5,478 +5,519 @@ version: '4.0'
 title: 'Phalcon\Paginator'
 ---
 
-- Class [Phalcon\Paginator\PaginatorFactory](#Phalcon_Paginator_PaginatorFactory)
-- Class [Phalcon\Paginator\Repository](#Phalcon_Paginator_Repository)
-- Interface [Phalcon\Paginator\RepositoryInterface](#Phalcon_Paginator_RepositoryInterface)
-- Class [Phalcon\Paginator\Exception](#Phalcon_Paginator_Exception)
-- Interface [Phalcon\Paginator\Adapter\AdapterInterface](#Phalcon_Paginator_Adapter_AdapterInterface)
-- Abstract Class [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
-- Class [Phalcon\Paginator\Adapter\Model](#Phalcon_Paginator_Adapter_Model)
-- Class [Phalcon\Paginator\Adapter\NativeArray](#Phalcon_Paginator_Adapter_NativeArray)
-- Class [Phalcon\Paginator\Adapter\QueryBuilder](#Phalcon_Paginator_Adapter_QueryBuilder)
+* [Phalcon\Paginator\Adapter\AbstractAdapter](#Paginator_Adapter_AbstractAdapter)
+* [Phalcon\Paginator\Adapter\AdapterInterface](#Paginator_Adapter_AdapterInterface)
+* [Phalcon\Paginator\Adapter\Model](#Paginator_Adapter_Model)
+* [Phalcon\Paginator\Adapter\NativeArray](#Paginator_Adapter_NativeArray)
+* [Phalcon\Paginator\Adapter\QueryBuilder](#Paginator_Adapter_QueryBuilder)
+* [Phalcon\Paginator\Exception](#Paginator_Exception)
+* [Phalcon\Paginator\PaginatorFactory](#Paginator_PaginatorFactory)
+* [Phalcon\Paginator\Repository](#Paginator_Repository)
+* [Phalcon\Paginator\RepositoryInterface](#Paginator_RepositoryInterface)
 
-<a name="Phalcon_Paginator_PaginatorFactory"></a>
+<h1 id="Paginator_Adapter_AbstractAdapter">Abstract Class Phalcon\Paginator\Adapter\AbstractAdapter</h1>
 
-# Class **Phalcon\Paginator\PaginatorFactory**
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
 
-*extends* [Phalcon\Factory\AbstractFactory](Phalcon_Factory#AbstractFactory)
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface | | Implements | AdapterInterface |
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/PaginatorFactory.zep)
-
-A factory class to create Paginators. Other than the existing paginators, the factory can receive an array of custom paginator objects to be available for construction.
-
-## Methoden
-
-```php
-public function __construct(array $services = [])
-```
-
-Constructor. Accepts an array of key/value pairs for Paginator objects. Key is the unique name, while the value holds the class name.
-
-```php
-public function load(mixed $config): \Phalcon\Paginator\Adapter\AbstractAdapter
-```
-
-Constructs a Paginator adapter based on configuration passed. The configuration can be either an array or a [Phalcon\Config](Phalcon_Config) object.
-
-```php
-public function newInstance(string $name, array $options = []): \Phalcon\Paginator\Adapter\AbstractAdapter
-```
-
-Creates a new Paginator object based on the passed name and adapter options.
-
-```php
-protected function getAdapters(): array
-```
-
-Returns an array of available adapters
-
-<hr />
-
-<a name="Phalcon_Paginator_Repository"></a>
-
-# Class **Phalcon\Paginator\Repository**
-
-*implements* [Phalcon\Paginator\RepositoryInterface](#Phalcon_Paginator_RepositoryInterface)
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Repository.zep)
+Phalcon\Paginator\Adapter\AbstractAdapter
 
 ## Properties
 
 ```php
 /**
- * @var array
+ * Configuration of paginator
  */
-protected aliases    = []
+protected config;
 
 /**
- * @var array
+ * Number of rows to show in the paginator. By default is null
  */
-protected properties = []
-```
+protected limitRows;
 
-## Methoden
-
-```php
-public function __get(string $property): mixed | null
-```
-
-Magic get method for available properties
-
-```php
-public function getAliases(): array
-```
-
-Gets the aliases for properties repository
-
-```php
-public function getCurrent(): int
-```
-
-Gets number of the current page
-
-```php
-public function getFirst(): int
-```
-
-Gets number of the first page
-
-```php
-public function getItems(): mixed
-```
-
-Gets the items on the current page
-
-```php
-public function getLast(): int
-```
-
-Gets number of the last page
-
-```php
-public function getLimit(): int
-```
-
-Gets current rows limit
-
-```php
-public function getNext(): int
-```
-
-Gets number of the next page
-
-```php
-public function getPrevious(): int
-```
-
-Gets number of the previous page
-
-```php
-public function getTotalItems(): int
-```
-
-Gets the total number of items
-
-```php
-public function setAliases(array $aliases): \Phalcon\Paginator\RepositoryInterface
-```
-
-Sets the aliases for properties repository
-
-```php
-public function setProperties(array $properties): \Phalcon\Paginator\RepositoryInterface
- ```
-
-Sets values for properties of the repository
-
-```php
-protected function getProperty(string $property, mixed $defaultValue = null): mixed
-```
-
-Gets value of property by name
-
-```php
-protected function getRealNameProperty(string $property): string
-```
-
-Resolve alias property name
-
-<hr />
-
-<a name="Phalcon_Paginator_RepositoryInterface"></a>
-
-# Interface **Phalcon\Paginator\RepositoryInterface**
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/RepositoryInterface.zep)
-
-## Constanten
-
-```php
-const PROPERTY_CURRENT_PAGE  = "current"
-const PROPERTY_FIRST_PAGE    = "first"
-const PROPERTY_ITEMS         = "items"
-const PROPERTY_LAST_PAGE     = "last"
-const PROPERTY_LIMIT         = "limit"
-const PROPERTY_NEXT_PAGE     = "next"
-const PROPERTY_PREVIOUS_PAGE = "previous"
-const PROPERTY_TOTAL_ITEMS   = "total_items"
-```
-
-## Methoden
-
-```php
-public function getAliases(): array
-```
-
-Gets the aliases for properties repository
-
-```php
-public function getCurrent(): int
-```
-
-Gets number of the current page
-
-```php
-public function getFirst(): int
-```
-
-Gets number of the first page
-
-```php
-public function getItems(): mixed
-```
-
-Gets the items on the current page
-
-```php
-public function getLast(): int
-```
-
-Gets number of the last page
-
-```php
-public function getLimit(): int
-```
-
-Gets current rows limit
-
-```php
-public function getNext(): int
-```
-
-Gets number of the next page
-
-```php
-public function getPrevious(): int
-```
-
-Gets number of the previous page
-
-```php
-public function getTotalItems(): int
-```
-
-Gets the total number of items
-
-```php
-public function setAliases(array $aliases): \Phalcon\Paginator\RepositoryInterface
-```
-
-Sets the aliases for properties repository
-
-```php
-public function setProperties(array $properties): \Phalcon\Paginator\RepositoryInterface
-```
-
-Sets values for properties of the repository
-
-<hr />
-
-<a name="Phalcon_Paginator_Exception"></a>
-
-# Class **Phalcon\Paginator\Exception**
-
-*extends* [Phalcon\Exception](Phalcon_Exception)
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Exception.zep)
-
-<hr />
-
-<a name="Phalcon_Paginator_Adapter_AdapterInterface"></a>
-
-# Interface **Phalcon\Paginator\Adapter\AdapterInterface**
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AdapterInterface.zep)
-
-## Methoden
-
-```php
-public function getLimit(): int
-```
-
-Get current rows limit
-
-```php
-public function paginate():  \Phalcon\Paginator\RepositoryInterface
-```
-
-Returns a slice of the resultset to show in the pagination
-
-```php
-public function setCurrentPage(int $page)
-```
-
-Set the current page number
-
-```php
-public function setLimit(int $limit)
-```
-
-Set current rows limit
-
-<hr />
-
-<a name="Phalcon_Paginator_Adapter_AbstractAdapter"></a>
-
-# Abstract Class **Phalcon\Paginator\Adapter\AbstractAdapter**
-
-*implements* [Phalcon\Paginator\Adapter\AdapterInterface](#Phalcon_Paginator_Adapter_AdapterInterface)
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/AbstractAdapter.zep)
-
-## Properties
-
-```php
 /**
- * @var array
+ * Current page in paginate
  */
-protected config
-```
+protected page;
 
-Configuration of paginator
-
-```php
 /**
- * @var int|null
- */
-protected limitRows = null
-```
-
-Number of rows to show in the paginator. By default is null
-
-```php
-/**
- * @var int|null
- */
-protected page = null
-```
-
-Current page in paginate
-
-```php
-/**
+ * Repository for pagination
+ *
  * @var RepositoryInterface
  */
-protected repository
-```
+protected repository;
 
-Repository for pagination
+```
 
 ## Methoden
 
 ```php
-public function getLimit(): int
+public function __construct( array $config ): void;
+```
+
+Phalcon\Paginator\Adapter\AbstractAdapter constructor
+
+```php
+public function getLimit(): int;
 ```
 
 Get current rows limit
 
 ```php
-public function __construct(array $config)
-```
-
-Constructor
-
-```php
-public function getLimit(): int
-```
-
-Get current rows limit
-
-```php
-public function setCurrentPage(int $page): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setCurrentPage( int $page ): Adapter;
 ```
 
 Set the current page number
 
 ```php
-public function setLimit(int $limitRows): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setLimit( int $limitRows ): Adapter;
 ```
 
 Set current rows limit
 
 ```php
-public function setRepository(\Phalcon\Paginator\RepositoryInterface $repository): \Phalcon\Paginator\Adapter\AbstractAdapter
+public function setRepository( mixed $repository ): Adapter;
 ```
 
 Sets current repository for pagination
 
 ```php
-protected function getRepository(array $properties = null): \Phalcon\Paginator\RepositoryInterface
+protected function getRepository( array $properties ): RepositoryInterface;
 ```
 
 Gets current repository for pagination
 
-<hr />
+<h1 id="Paginator_Adapter_AdapterInterface">Interface Phalcon\Paginator\Adapter\AdapterInterface</h1>
 
-<a name="Phalcon_Paginator_Adapter_Model"></a>
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/adapterinterface.zep)
 
-# Class **Phalcon\Paginator\Adapter\Model**
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\RepositoryInterface |
 
-*extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/Model.zep)
+Interface for Phalcon\Paginator adapters
 
 ## Methoden
 
 ```php
-public function paginate(): \Phalcon\Paginator\RepositoryInterface
+public function getLimit(): int;
+```
+
+Get current rows limit
+
+```php
+public function paginate(): RepositoryInterface;
 ```
 
 Returns a slice of the resultset to show in the pagination
 
-<hr />
+```php
+public function setCurrentPage( int $page );
+```
 
-<a name="Phalcon_Paginator_Adapter_NativeArray"></a>
+Set the current page number
 
-# Class **Phalcon\Paginator\Adapter\NativeArray**
+```php
+public function setLimit( int $limit );
+```
 
-*extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
+Set current rows limit
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/NativeArray.zep)
+<h1 id="Paginator_Adapter_Model">Class Phalcon\Paginator\Adapter\Model</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
+
+This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a base.
+
+```php
+use Phalcon\Paginator\Adapter\Model;
+
+$paginator = new Model(
+    [
+        "data"  => Robots::find(),
+        "limit" => 25,
+        "page"  => $currentPage,
+    ]
+);
+
+$paginate = $paginator->paginate();
+```
 
 ## Methoden
 
 ```php
-public function paginate(): \Phalcon\Paginator\RepositoryInterface
+public function paginate(): RepositoryInterface;
 ```
 
 Returns a slice of the resultset to show in the pagination
 
-<hr />
+<h1 id="Paginator_Adapter_NativeArray">Class Phalcon\Paginator\Adapter\NativeArray</h1>
 
-<a name="Phalcon_Paginator_Adapter_QueryBuilder"></a>
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
-# Class **Phalcon\Paginator\Adapter\QueryBuilder**
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
 
-*extends* [Phalcon\Paginator\Adapter\AbstractAdapter](#Phalcon_Paginator_Adapter_AbstractAdapter)
+Pagination using a PHP array as source of data
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Paginator/Adapter/QueryBuilder.zep)
+```php
+use Phalcon\Paginator\Adapter\NativeArray;
+
+$paginator = new NativeArray(
+    [
+        "data"  => [
+            ["id" => 1, "name" => "Artichoke"],
+            ["id" => 2, "name" => "Carrots"],
+            ["id" => 3, "name" => "Beet"],
+            ["id" => 4, "name" => "Lettuce"],
+            ["id" => 5, "name" => ""],
+        ],
+        "limit" => 2,
+        "page"  => $currentPage,
+    ]
+);
+```
+
+## Methoden
+
+```php
+public function paginate(): RepositoryInterface;
+```
+
+Returns a slice of the resultset to show in the pagination
+
+<h1 id="Paginator_Adapter_QueryBuilder">Class Phalcon\Paginator\Adapter\QueryBuilder</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Mvc\Model\Query\Builder, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Exception, Phalcon\Db | | Extends | AbstractAdapter |
+
+Pagination using a PHQL query builder as source of data
+
+```php
+use Phalcon\Paginator\Adapter\QueryBuilder;
+
+$builder = $this->modelsManager->createBuilder()
+                ->columns("id, name")
+                ->from(Robots::class)
+                ->orderBy("name");
+
+$paginator = new QueryBuilder(
+    [
+        "builder" => $builder,
+        "limit"   => 20,
+        "page"    => 1,
+    ]
+);
+```
 
 ## Properties
 
 ```php
 /**
- * @var \Phalcon\Mvc\Model\Query\Builder
+ * Paginator's data
  */
-protected $builder
+protected builder;
+
+/**
+ * Columns for count query if builder has having
+ */
+protected columns;
+
 ```
-
-Paginator's data
-
-```php
-protected $columns
-```
-
-Columns for count query if builder has having
 
 ## Methoden
 
 ```php
-public function __construct(array $config)
+public function __construct( array $config ): void;
 ```
 
-Constructor
+Phalcon\Paginator\Adapter\QueryBuilder
 
 ```php
-public function getCurrentPage(): int
+public function getCurrentPage(): int;
 ```
 
 Get the current page number
 
 ```php
-public function getQueryBuilder(): \Phalcon\Mvc\Model\Query\Builder
+public function getQueryBuilder(): Builder;
 ```
 
 Get query builder object
 
 ```php
-public function paginate(): \Phalcon\Paginator\RepositoryInterface
+public function paginate(): RepositoryInterface;
 ```
 
 Returns a slice of the resultset to show in the pagination
 
 ```php
-public function setQueryBuilder(\Phalcon\Mvc\Model\Query\Builder $builder): \Phalcon\Paginator\Adapter\QueryBuilder
+public function setQueryBuilder( mixed $builder ): QueryBuilder;
 ```
 
 Set query builder object
+
+<h1 id="Paginator_Exception">Class Phalcon\Paginator\Exception</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/exception.zep)
+
+| Namespace | Phalcon\Paginator | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Paginator will use this class
+
+<h1 id="Paginator_PaginatorFactory">Class Phalcon\Paginator\PaginatorFactory</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/paginatorfactory.zep)
+
+| Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalconphp.com>
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
+## Methoden
+
+```php
+public function __construct( array $services );
+```
+
+AdapterFactory constructor.
+
+```php
+public function load( mixed $config ): mixed;
+```
+
+Factory to create an instace from a Config object
+
+```php
+use Phalcon\Paginator\PaginatorFactory;
+
+$builder = $this
+     ->modelsManager
+     ->createBuilder()
+     ->columns("id, name")
+     ->from(Robots::class)
+     ->orderBy("name");
+
+$options = [
+    "builder" => $builder,
+    "limit"   => 20,
+    "page"    => 1,
+    "adapter" => "queryBuilder",
+];
+
+$paginator = (new PaginatorFactory())->load($options);
+```
+
+```php
+public function newInstance( string $name, array $options ): AbstractAdapter;
+```
+
+Create a new instance of the adapter
+
+```php
+protected function getAdapters(): array;
+```
+
+//
+
+<h1 id="Paginator_Repository">Class Phalcon\Paginator\Repository</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repository.zep)
+
+| Namespace | Phalcon\Paginator | | Uses | Phalcon\Helper\Arr | | Implements | RepositoryInterface |
+
+Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
+
+## Properties
+
+```php
+/**
+ * @var array
+ */
+protected aliases;
+
+/**
+ * @var array
+ */
+protected properties;
+
+```
+
+## Methoden
+
+```php
+public function __get( string $property ): mixed | null;
+```
+{@inheritdoc}
+
+
+```php
+public function getAliases(): array;
+```
+{@inheritdoc}
+
+
+```php
+public function getCurrent(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getFirst(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getItems(): mixed;
+```
+{@inheritdoc}
+
+
+```php
+public function getLast(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getLimit(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getNext(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getPrevious(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function getTotalItems(): int;
+```
+{@inheritdoc}
+
+
+```php
+public function setAliases( array $aliases ): RepositoryInterface;
+```
+{@inheritdoc}
+
+
+```php
+public function setProperties( array $properties ): RepositoryInterface;
+```
+{@inheritdoc}
+
+
+```php
+protected function getProperty( string $property, mixed $defaultValue ): mixed;
+```
+
+Gets value of property by name
+
+```php
+protected function getRealNameProperty( string $property ): string;
+```
+
+Resolve alias property name
+
+<h1 id="Paginator_RepositoryInterface">Interface Phalcon\Paginator\RepositoryInterface</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repositoryinterface.zep)
+
+| Namespace | Phalcon\Paginator |
+
+Interface for the repository of current state Phalcon\Paginator\AdapterInterface::paginate()
+
+## Constanten
+
+```php
+const PROPERTY_CURRENT_PAGE = current;
+const PROPERTY_FIRST_PAGE = first;
+const PROPERTY_ITEMS = items;
+const PROPERTY_LAST_PAGE = last;
+const PROPERTY_LIMIT = limit;
+const PROPERTY_NEXT_PAGE = next;
+const PROPERTY_PREVIOUS_PAGE = previous;
+const PROPERTY_TOTAL_ITEMS = total_items;
+```
+
+## Methoden
+
+```php
+public function getAliases(): array;
+```
+
+Gets the aliases for properties repository
+
+```php
+public function getCurrent(): int;
+```
+
+Gets number of the current page
+
+```php
+public function getFirst(): int;
+```
+
+Gets number of the first page
+
+```php
+public function getItems(): mixed;
+```
+
+Gets the items on the current page
+
+```php
+public function getLast(): int;
+```
+
+Gets number of the last page
+
+```php
+public function getLimit(): int;
+```
+
+Gets current rows limit
+
+```php
+public function getNext(): int;
+```
+
+Gets number of the next page
+
+```php
+public function getPrevious(): int;
+```
+
+Gets number of the previous page
+
+```php
+public function getTotalItems(): int;
+```
+
+Gets the total number of items
+
+```php
+public function setAliases( array $aliases ): RepositoryInterface;
+```
+
+Sets the aliases for properties repository
+
+```php
+public function setProperties( array $properties ): RepositoryInterface;
+```
+
+Sets values for properties of the repository
