@@ -5,215 +5,515 @@ version: '4.0'
 title: 'Phalcon\Dispatcher'
 ---
 
-# Abstract class **Phalcon\Dispatcher**
+* [Phalcon\Dispatcher](#Dispatcher)
+* [Phalcon\DispatcherInterface](#DispatcherInterface)
 
-*implements* [Phalcon\DispatcherInterface](Phalcon_DispatcherInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface), [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
+<h1 id="Dispatcher">Abstract Class Phalcon\Dispatcher</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+
+| Namespace | Phalcon | | Uses | Exception, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\DispatcherInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Exception, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 
 ## Constanten
 
-*integer* **EXCEPTION_NO_DI**
+```php
+const EXCEPTION_ACTION_NOT_FOUND = 5;
+const EXCEPTION_CYCLIC_ROUTING = 1;
+const EXCEPTION_HANDLER_NOT_FOUND = 2;
+const EXCEPTION_INVALID_HANDLER = 3;
+const EXCEPTION_INVALID_PARAMS = 4;
+const EXCEPTION_NO_DI = 0;
+```
 
-*integer* **EXCEPTION_CYCLIC_ROUTING**
+## Properties
 
-*integer* **EXCEPTION_HANDLER_NOT_FOUND**
+```php
+//
+protected activeHandler;
 
-*integer* **EXCEPTION_INVALID_HANDLER**
+/**
+ * @var array
+ */
+protected activeMethodMap;
 
-*integer* **EXCEPTION_INVALID_PARAMS**
+//
+protected actionName;
 
-*integer* **EXCEPTION_ACTION_NOT_FOUND**
+/**
+ * @var string
+ */
+protected actionSuffix = Action;
+
+/**
+ * @var array
+ */
+protected camelCaseMap;
+
+//
+protected container;
+
+/**
+ * @var string
+ */
+protected defaultAction = ;
+
+//
+protected defaultNamespace;
+
+//
+protected defaultHandler;
+
+/**
+ * @var array
+ */
+protected handlerHashes;
+
+//
+protected handlerName;
+
+/**
+ * @var string
+ */
+protected handlerSuffix = ;
+
+//
+protected eventsManager;
+
+/**
+ * @var bool
+ */
+protected finished = false;
+
+/**
+ * @var bool
+ */
+protected forwarded = false;
+
+/**
+ * @var bool
+ */
+protected isControllerInitialize = false;
+
+//
+protected lastHandler;
+
+//
+protected modelBinder;
+
+/**
+ * @var bool
+ */
+protected modelBinding = false;
+
+//
+protected moduleName;
+
+//
+protected namespaceName;
+
+/**
+ * @var array
+ */
+protected params;
+
+//
+protected previousActionName;
+
+//
+protected previousHandlerName;
+
+//
+protected previousNamespaceName;
+
+//
+protected returnedValue;
+
+```
 
 ## Methoden
 
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
-
-Sets the dependency injector
-
-public **getDI** ()
-
-Returns the internal dependency injector
-
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
-
-Sets the events manager
-
-public **getEventsManager** ()
-
-Returns the internal event manager
-
-public **setActionSuffix** (*mixed* $actionSuffix)
-
-Sets the default action suffix
-
-public **getActionSuffix** ()
-
-Gets the default action suffix
-
-public **setModuleName** (*mixed* $moduleName)
-
-Sets the module where the controller is (only informative)
-
-public **getModuleName** ()
-
-Gets the module where the controller class is
-
-public **setNamespaceName** (*mixed* $namespaceName)
-
-Sets the namespace where the controller class is
-
-public **getNamespaceName** ()
-
-Gets a namespace to be prepended to the current handler name
-
-public **setDefaultNamespace** (*mixed* $namespaceName)
-
-Sets the default namespace
-
-public **getDefaultNamespace** ()
-
-Returns the default namespace
-
-public **setDefaultAction** (*mixed* $actionName)
-
-Sets the default action name
-
-public **setActionName** (*mixed* $actionName)
-
-Sets the action name to be dispatched
-
-public **getActionName** ()
-
-Gets the latest dispatched action name
-
-public **setParams** (*array* $params)
-
-Sets action params to be dispatched
-
-public **getParams** ()
-
-Gets action params
-
-public **setParam** (*mixed* $param, *mixed* $value)
-
-Set a param by its name or numeric index
-
-public *mixed* **getParam** (*mixed* $param, [*string* | *array* $filters], [*mixed* $defaultValue])
-
-Gets a param by its name or numeric index
-
-public *boolean* **hasParam** (*mixed* $param)
-
-Check if a param exists
-
-public **getActiveMethod** ()
-
-Returns the current method to be/executed in the dispatcher
-
-public **isFinished** ()
-
-Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
-
-public **setReturnedValue** (*mixed* $value)
-
-Sets the latest returned value by an action manually
-
-public *mixed* **getReturnedValue** ()
-
-Returns value returned by the latest dispatched action
-
-public **setModelBinding** (*mixed* $value, [*mixed* $cache])
-
-Enable/Disable model binding during dispatch
-
 ```php
-<?php
-
-$di->set('dispatcher', function() {
-    $dispatcher = new Dispatcher();
-
-    $dispatcher->setModelBinding(true, 'cache');
-    return $dispatcher;
-});
-
+public function callActionMethod( mixed $handler, string $actionMethod, array $params );
 ```
 
-public **setModelBinder** ([Phalcon\Mvc\Model\BinderInterface](Phalcon_Mvc_Model_BinderInterface) $modelBinder, [*mixed* $cache])
-
-Enable model binding during dispatch
+//
 
 ```php
-<?php
-
-$di->set('dispatcher', function() {
-    $dispatcher = new Dispatcher();
-
-    $dispatcher->setModelBinder(new Binder(), 'cache');
-    return $dispatcher;
-});
-
+public function dispatch(): object | bool;
 ```
 
-public **getModelBinder** ()
+Process the results of the router by calling into the appropriate controller action(s) including any routing data or injected parameters.
 
-Gets model binder
+@return object|false Returns the dispatched handler class (the Controller for Mvc dispatching or a Task for CLI dispatching) or <tt>false</tt> if an exception occurred and the operation was stopped by returning <tt>false</tt> in the exception handler.
 
-public *object* **dispatch** ()
+@throws \Exception if any uncaught or unhandled exception occurs during the dispatcher process.
 
-Dispatches a handle action taking into account the routing parameters
-
-protected *object* **_dispatch** ()
-
-Dispatches a handle action taking into account the routing parameters
-
-public **forward** (*array* $forward)
+```php
+public function forward( array $forward ): void;
+```
 
 Forwards the execution flow to another controller/action.
 
 ```php
-<?php
-
 $this->dispatcher->forward(
     [
         "controller" => "posts",
         "action"     => "index",
     ]
 );
-
 ```
 
-public **wasForwarded** ()
+@throws \Phalcon\Exception
 
-Check if the current executed action was forwarded by another one
+```php
+public function getActionName(): string;
+```
 
-public **getHandlerClass** ()
+Gets the latest dispatched action name
 
-Possible class name that will be located to dispatch the request
+```php
+public function getActionSuffix(): string;
+```
 
-public **callActionMethod** (*mixed* $handler, *mixed* $actionMethod, [*array* $params])
+Gets the default action suffix
 
-...
+```php
+public function getActiveMethod(): string;
+```
 
-public **getBoundModels** ()
+Returns the current method to be/executed in the dispatcher
+
+```php
+public function getBoundModels(): array;
+```
 
 Returns bound models from binder instance
 
 ```php
-<?php
-
 class UserController extends Controller
 {
     public function showAction(User $user)
     {
-        $boundModels = $this->dispatcher->getBoundModels(); // return array with $user
+        // return array with $user
+        $boundModels = $this->dispatcher->getBoundModels();
     }
 }
-
 ```
 
-protected **_resolveEmptyProperties** ()
+```php
+public function getDI(): DiInterface;
+```
+
+Returns the internal dependency injector
+
+```php
+public function getDefaultNamespace(): string;
+```
+
+Returns the default namespace
+
+```php
+public function getEventsManager(): ManagerInterface;
+```
+
+Returns the internal event manager
+
+```php
+public function getHandlerClass(): string;
+```
+
+Possible class name that will be located to dispatch the request
+
+```php
+public function getHandlerSuffix(): string;
+```
+
+Gets the default handler suffix
+
+```php
+public function getModelBinder(): BinderInterface | null;
+```
+
+Gets model binder
+
+```php
+public function getModuleName(): string;
+```
+
+Gets the module where the controller class is
+
+```php
+public function getNamespaceName(): string;
+```
+
+Gets a namespace to be prepended to the current handler name
+
+```php
+public function getParam( mixed $param, mixed $filters, mixed $defaultValue ): mixed;
+```
+
+Gets a param by its name or numeric index
+
+@param mixed param @param string|array filters @param mixed defaultValue @return mixed
+
+```php
+public function getParams(): array;
+```
+
+Gets action params
+
+```php
+public function getReturnedValue(): mixed;
+```
+
+Returns value returned by the latest dispatched action
+
+```php
+public function hasParam( mixed $param ): bool;
+```
+
+Check if a param exists
+
+```php
+public function isFinished(): bool;
+```
+
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+
+```php
+public function setActionName( string $actionName ): void;
+```
+
+Sets the action name to be dispatched
+
+```php
+public function setActionSuffix( string $actionSuffix ): void;
+```
+
+Sets the default action suffix
+
+```php
+public function setDI( mixed $container ): void;
+```
+
+Sets the dependency injector
+
+```php
+public function setDefaultAction( string $actionName ): void;
+```
+
+Sets the default action name
+
+```php
+public function setDefaultNamespace( string $namespaceName ): void;
+```
+
+Sets the default namespace
+
+```php
+public function setEventsManager( mixed $eventsManager ): void;
+```
+
+Sets the events manager
+
+```php
+public function setHandlerSuffix( string $handlerSuffix ): void;
+```
+
+Sets the default suffix for the handler
+
+```php
+public function setModelBinder( mixed $modelBinder, mixed $cache ): Dispatcher;
+```
+
+Enable model binding during dispatch
+
+```php
+$di->set(
+    'dispatcher',
+    function() {
+        $dispatcher = new Dispatcher();
+
+        $dispatcher->setModelBinder(
+            new Binder(),
+            'cache'
+        );
+
+        return $dispatcher;
+    }
+);
+```
+
+```php
+public function setModuleName( string $moduleName ): void;
+```
+
+Sets the module where the controller is (only informative)
+
+```php
+public function setNamespaceName( string $namespaceName ): void;
+```
+
+Sets the namespace where the controller class is
+
+```php
+public function setParam( mixed $param, mixed $value ): void;
+```
+
+Set a param by its name or numeric index
+
+```php
+public function setParams( array $params ): void;
+```
+
+Sets action params to be dispatched
+
+```php
+public function setReturnedValue( mixed $value ): void;
+```
+
+Sets the latest returned value by an action manually
+
+```php
+public function wasForwarded(): bool;
+```
+
+Check if the current executed action was forwarded by another one
+
+```php
+protected function resolveEmptyProperties(): void;
+```
 
 Set empty properties to their defaults (where defaults are available)
+
+```php
+protected function toCamelCase( string $input ): string;
+```
+
+//
+
+<h1 id="DispatcherInterface">Interface Phalcon\DispatcherInterface</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
+
+| Namespace | Phalcon |
+
+Interface for Phalcon\Dispatcher
+
+## Methoden
+
+```php
+public function dispatch(): object | bool;
+```
+
+Dispatches a handle action taking into account the routing parameters
+
+```php
+public function forward( array $forward ): void;
+```
+
+Forwards the execution flow to another controller/action
+
+```php
+public function getActionName(): string;
+```
+
+Gets last dispatched action name
+
+```php
+public function getActionSuffix(): string;
+```
+
+Gets the default action suffix
+
+```php
+public function getHandlerSuffix(): string;
+```
+
+Gets the default handler suffix
+
+```php
+public function getParam( mixed $param, mixed $filters ): mixed;
+```
+
+Gets a param by its name or numeric index
+
+```php
+public function getParams(): array;
+```
+
+Gets action params
+
+```php
+public function getReturnedValue(): mixed;
+```
+
+Returns value returned by the latest dispatched action
+
+```php
+public function hasParam( mixed $param ): bool;
+```
+
+Check if a param exists
+
+```php
+public function isFinished(): bool;
+```
+
+Checks if the dispatch loop is finished or has more pendent controllers/tasks to dispatch
+
+```php
+public function setActionName( string $actionName ): void;
+```
+
+Sets the action name to be dispatched
+
+```php
+public function setActionSuffix( string $actionSuffix ): void;
+```
+
+Sets the default action suffix
+
+```php
+public function setDefaultAction( string $actionName ): void;
+```
+
+Sets the default action name
+
+```php
+public function setDefaultNamespace( string $defaultNamespace ): void;
+```
+
+Sets the default namespace
+
+```php
+public function setHandlerSuffix( string $handlerSuffix ): void;
+```
+
+Sets the default suffix for the handler
+
+```php
+public function setModuleName( string $moduleName ): void;
+```
+
+Sets the module name which the application belongs to
+
+```php
+public function setNamespaceName( string $namespaceName ): void;
+```
+
+Sets the namespace which the controller belongs to
+
+```php
+public function setParam( mixed $param, mixed $value ): void;
+```
+
+Set a param by its name or numeric index
+
+```php
+public function setParams( array $params ): void;
+```
+
+Sets action params to be dispatched
