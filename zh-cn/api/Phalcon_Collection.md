@@ -5,204 +5,212 @@ version: '4.0'
 title: 'Phalcon\Collection'
 ---
 
-# Class [Phalcon\Collection](Phalcon_Collection)
+* [Phalcon\Collection\Collection](#Collection_Collection)
+* [Phalcon\Collection\Exception](#Collection_Exception)
+* [Phalcon\Collection\ReadCollection](#Collection_ReadCollection)
 
-**implements** [ArrayAccess](https://secure.php.net/manual/en/class.arrayaccess.php), [Countable](https://secure.php.net/manual/en/class.countable.php), [IteratorAggregate](https://secure.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://secure.php.net/manual/en/class.jsonserializable.php), [Serializable](https://secure.php.net/manual/en/class.serializable.php)
+<h1 id="Collection_Collection">Class Phalcon\Collection\Collection</h1>
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/collection.zep)
 
-Phalcon\Collection is a supercharged object oriented array.
+| Namespace | Phalcon\Collection | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
-It can be used in any part of the application that needs collection of data. Such implementations are for instance accessing globals `$_GET`, `$_POST` etc.
+`Phalcon\Collection\Collection` is a supercharged object oriented array. It implements [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php), [Countable](https://www.php.net/manual/en/class.countable.php), [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php), [Serializable](https://www.php.net/manual/en/class.serializable.php)
+
+It can be used in any part of the application that needs collection of data Such implementations are for instance accessing globals `$_GET`, `$_POST` etc.
 
 ## Properties
 
 ```php
-protected $data = [];
+/**
+ * @var array
+ */
+protected data;
+
+/**
+ * @var bool
+ */
+protected insensitive = true;
+
+/**
+ * @var array
+ */
+protected lowerKeys;
+
 ```
 
-Internal array holding the data of the collection.
+## Methods
 
 ```php
-protected $lowerKeys = [];
+public function __construct( array $data, bool $insensitive = true );
 ```
 
-Internal array, storing the case insensitive key to the case sensitive key map.
-
-## 方法
+Collection constructor.
 
 ```php
-public function __construct( [array $data = []] ): void
+public function __get( string $element ): mixed;
 ```
 
-Object Constructor
-
-* * *
+Magic getter to get an element from the collection
 
 ```php
-public function __get( string $element ): mixed
+public function __isset( string $element ): bool;
 ```
 
-Magic getter to get an element from the collection.
-
-* * *
+Magic isset to check whether an element exists or not
 
 ```php
-public function __isset( string $element ): bool
+public function __set( string $element, mixed $value ): void;
 ```
 
-Magic `isset` to check whether an element exists or not. This method is **not** case insensitive.
-
-* * *
+Magic setter to assign values to an element
 
 ```php
-public function __set( string $element, mixed $value ): void
+public function __unset( string $element ): void;
 ```
 
-Magic setter to assign values to an element.
-
-* * *
+Magic unset to remove an element from the collection
 
 ```php
-public function __unset( string $element ): void
+public function clear(): void;
 ```
 
-Magic `unset` to remove an element from the collection.
-
-* * *
+Clears the internal collection
 
 ```php
-public function clear(): void
+public function count(): int;
 ```
 
-Clears the internal collection.
-
-* * *
+Count elements of an object. See [count](https://php.net/manual/en/countable.count.php)
 
 ```php
-public function count(): int
+public function get( string $element, mixed $defaultValue ): mixed;
 ```
 
-* * *
+Get the element from the collection
 
 ```php
-public function get( 
-    string $element [, mixed $defaultValue = null [, bool $insensitive = true]] 
-): bool
+public function getIterator(): Traversable;
 ```
 
-Get an element element from the collection. The method checks the key of the internal array. The default behavior is to check the key in a case-insensitive manner. If this is not desired, you can pass `false` as the third parameter. You can also supply a default value as the second parameter. It will returned if the element does not exist in the collection.
-
-* * *
+Returns the iterator of the class
 
 ```php
-public function getIterator(): Traversable
+public function has( string $element ): bool;
 ```
 
-Returns the iterator of the class.
-
-* * *
+Get the element from the collection
 
 ```php
-public function has( string $element [, bool $insensitive = true] ): bool
+public function init( array $data ): void;
 ```
 
-Check if an element exists in the collection. The method checks the key of the internal array. The default behavior is to check the key in a case-insensitive manner. If this is not desired, you can pass `false` as the second parameter.
-
-* * *
+Initialize internal array
 
 ```php
-public function init( [array $data = []] )
+public function jsonSerialize(): array;
 ```
 
-Initializes the internal collection with the supplied array. This method can be used to repopulate the collection after the object was created. Calling this method will clear the internal array and repopulate it with the supplied data. If an empty array has been supplied or the method is called without parameters, this method operates the same way as `clear()`.
-
-* * *
+Specify data which should be serialized to JSON See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
 
 ```php
-public function jsonSerialize(): array
+public function offsetExists( mixed $element ): bool;
 ```
 
-Specify data which should be serialized to JSON.
-
-* * *
+Whether a offset exists See [offsetExists](https://php.net/manual/en/arrayaccess.offsetexists.php)
 
 ```php
-public function offsetGet( mixed $element ): mixed
+public function offsetGet( mixed $element );
 ```
 
-Get an element from the collection.
-
-* * *
+Offset to retrieve See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
 
 ```php
-public function offsetExists( mixed $element ): bool
+public function offsetSet( mixed $element, mixed $value ): void;
 ```
 
-Check whether an element exists or not. This method is **not** case insensitive.
-
-* * *
+Offset to set See [offsetSet](@link)https://php.net/manual/en/arrayaccess.offsetset.php)
 
 ```php
-public function offsetSet( mixed $element, mixed $value ): void
+public function offsetUnset( mixed $element ): void;
 ```
 
-Magic setter to assign values to an element.
-
-* * *
+Offset to unset See [offsetUnset](https://php.net/manual/en/arrayaccess.offsetunset.php)
 
 ```php
-public function offsetUnset( mixed $element ): void
+public function remove( string $element ): void;
 ```
 
-Remove an element from the collection.
-
-* * *
+Delete the element from the collection
 
 ```php
-public function remove( string $element [, bool $insensitive = true] ): void
+public function serialize(): string;
 ```
 
-Remove an element from the collection. The method checks the key of the internal array. The default behavior is to check the key in a case-insensitive manner. If this is not desired, you can pass `false` as the second parameter.
-
-* * *
+String representation of object See [serialize](https://php.net/manual/en/serializable.serialize.php)
 
 ```php
-public function serialize(): string
+public function set( string $element, mixed $value ): void;
 ```
 
-String representation of the object.
-
-* * *
+Set an element in the collection
 
 ```php
-public function set( string $element, mixed $value ): void
-```
-
-Assign values to an element.
-
-* * *
-
-```php
-public function toArray(): array
+public function toArray(): array;
 ```
 
 Returns the object in an array format
 
-* * *
-
 ```php
-public function toJson(): string
+public function toJson( int $options = 79 ): string;
 ```
 
-Returns the object in a JSON format. The default string uses the following options for `json_encode`: `JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`, `JSON_UNESCAPED_SLASHES`
+Returns the object in a JSON format
 
-* * *
+The default string uses the following options for json_encode
+
+`JSON_HEX_TAG`, `JSON_HEX_APOS`, `JSON_HEX_AMP`, `JSON_HEX_QUOT`, `JSON_UNESCAPED_SLASHES`
+
+See [rfc4627](https://www.ietf.org/rfc/rfc4627.txt)
 
 ```php
-public function unserialize( mixed $serialized ): void
+public function unserialize( mixed $serialized ): void;
 ```
 
-Constructs the object by unserializing the passed string. It uses `unserialize` internally. Calling this method will overwrite the internal array.
+Constructs the object See [unserialize](https://php.net/manual/en/serializable.unserialize.php)
 
-* * *
+```php
+protected function setData( string $element, mixed $value ): void;
+```
+
+Internal method to set data
+
+<h1 id="Collection_Exception">Class Phalcon\Collection\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
+
+| Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Exception | | Implements | Throwable |
+
+Exceptions for the Collection object
+
+<h1 id="Collection_ReadCollection">Class Phalcon\Collection\ReadCollection</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readcollection.zep)
+
+| Namespace | Phalcon\Collection | | Uses | Phalcon\Collection\Collection, Phalcon\Collection\Exception | | Extends | Collection |
+
+Phalcon\Collection\ReadCollection is a read only Collection object
+
+## Methods
+
+```php
+public function remove( string $element ): void;
+```
+
+Delete the element from the collection
+
+```php
+public function set( string $element, mixed $value ): void;
+```
+
+Set an element in the collection
