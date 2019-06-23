@@ -5,90 +5,191 @@ version: '4.0'
 title: 'Phalcon\Escaper'
 ---
 
-# Class **Phalcon\Escaper**
+* [Phalcon\Escaper](#Escaper)
+* [Phalcon\Escaper\Exception](#Escaper_Exception)
+* [Phalcon\EscaperInterface](#EscaperInterface)
 
-*implements* [Phalcon\EscaperInterface](Phalcon_EscaperInterface)
+<h1 id="Escaper">Class Phalcon\Escaper</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
 
 Escapes different kinds of text securing them. By using this component you may prevent XSS attacks.
 
 This component only works with UTF-8. The PREG extension needs to be compiled with UTF-8 support.
 
 ```php
-<?php
-
 $escaper = new \Phalcon\Escaper();
 
 $escaped = $escaper->escapeCss("font-family: <Verdana>");
 
 echo $escaped; // font\2D family\3A \20 \3C Verdana\3E
+```
+
+## Properties
+
+```php
+/**
+ * @var bool
+ */
+protected doubleEncode = true;
+
+/**
+ * @var string
+ */
+protected encoding = utf-8;
+
+//
+protected htmlEscapeMap;
+
+//
+protected htmlQuoteType = 3;
 
 ```
 
 ## Métodos
 
-public **setEncoding** (*mixed* $encoding)
-
-Establece la codificación para ser utilizada por el escaper
-
 ```php
-<?php
-
-$escaper->setEncoding("utf-8");
-
+final public function detectEncoding( string $str ): string | null;
 ```
 
-public **getEncoding** ()
-
-Devuelve la codificación interna utilizada por el escaper
-
-public **setHtmlQuoteType** (*mixed* $quoteType)
-
-Establece el tipo de comillas HTML para ser utilizadas en htmlspecialchars
+Detect the character encoding of a string to be handled by an encoder. Special-handling for chr(172) and chr(128) to chr(159) which fail to be detected by mb_detect_encoding()
 
 ```php
-<?php
-
-$escaper->setHtmlQuoteType(ENT_XHTML);
-
+public function escapeCss( string $css ): string;
 ```
 
-public **setDoubleEncode** (*mixed* $doubleEncode)
-
-Establece el double_encode para ser utilizado por el escaper
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 ```php
-<?php
-
-$escaper->setDoubleEncode(false);
-
+public function escapeHtml( string $text ): string;
 ```
-
-final public **detectEncoding** (*mixed* $str)
-
-Detecta la codificación de caracteres de una cadena para ser manejada por un codificador de Manejo especial para chr(172) y chr(128) a chr(159) que no pueden ser detectados por mb_detect_encoding()
-
-final public **normalizeEncoding** (*mixed* $str)
-
-Utilidad para normalizar una cadena de codificación a UTF-32.
-
-public **escapeHtml** (*mixed* $text)
 
 Escapes a HTML string. Internally uses htmlspecialchars
 
-public **escapeHtmlAttr** (*mixed* $attribute)
+```php
+public function escapeHtmlAttr( string $attribute ): string;
+```
 
-Escapa una cadena de atributo HTML
+Escapes a HTML attribute string
 
-public **escapeCss** (*mixed* $css)
+```php
+public function escapeJs( string $js ): string;
+```
 
-Escape cadenas de CSS sustituyendo caracteres no alfanuméricos por su representación hexadecimal
+Escape javascript strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
-public **escapeJs** (*mixed* $js)
-
-Escapa cadenas de javascript mediante la sustitución de caracteres no alfanuméricos por su representación hexadecimal
-
-public **escapeUrl** (*mixed* $url)
+```php
+public function escapeUrl( string $url ): string;
+```
 
 Escapes a URL. Internally uses rawurlencode
+
+```php
+public function getEncoding(): string;
+```
+
+Returns the internal encoding used by the escaper
+
+```php
+final public function normalizeEncoding( string $str ): string;
+```
+
+Utility to normalize a string's encoding to UTF-32.
+
+```php
+public function setDoubleEncode( bool $doubleEncode ): void;
+```
+
+Sets the double_encode to be used by the escaper
+
+```php
+$escaper->setDoubleEncode(false);
+```
+
+```php
+public function setEncoding( string $encoding ): void;
+```
+
+Sets the encoding to be used by the escaper
+
+```php
+$escaper->setEncoding("utf-8");
+```
+
+```php
+public function setHtmlQuoteType( int $quoteType ): void;
+```
+
+Sets the HTML quoting type for htmlspecialchars
+
+```php
+$escaper->setHtmlQuoteType(ENT_XHTML);
+```
+
+<h1 id="Escaper_Exception">Class Phalcon\Escaper\Exception</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/exception.zep)
+
+| Namespace | Phalcon\Escaper | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Escaper will use this class
+
+<h1 id="EscaperInterface">Interface Phalcon\EscaperInterface</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
+
+| Namespace | Phalcon |
+
+Interface for Phalcon\Escaper
+
+## Métodos
+
+```php
+public function escapeCss( string $css ): string;
+```
+
+Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+```php
+public function escapeHtml( string $text ): string;
+```
+
+Escapes a HTML string
+
+```php
+public function escapeHtmlAttr( string $text ): string;
+```
+
+Escapes a HTML attribute string
+
+```php
+public function escapeJs( string $js ): string;
+```
+
+Escape Javascript strings by replacing non-alphanumeric chars by their hexadecimal representation
+
+```php
+public function escapeUrl( string $url ): string;
+```
+
+Escapes a URL. Internally uses rawurlencode
+
+```php
+public function getEncoding(): string;
+```
+
+Returns the internal encoding used by the escaper
+
+```php
+public function setEncoding( string $encoding ): void;
+```
+
+Sets the encoding to be used by the escaper
+
+```php
+public function setHtmlQuoteType( int $quoteType ): void;
+```
+
+Sets the HTML quoting type for htmlspecialchars
