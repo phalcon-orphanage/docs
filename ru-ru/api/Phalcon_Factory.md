@@ -5,56 +5,70 @@ version: '4.0'
 title: 'Phalcon\Factory'
 ---
 
-- Class [Phalcon\Factory\AbstractFactory](#Phalcon_Factory_AbstractFactory)
-- Class [Phalcon\Factory\Exception](#Phalcon_Factory_Exception)
+* [Phalcon\Factory\AbstractFactory](#Factory_AbstractFactory)
+* [Phalcon\Factory\Exception](#Factory_Exception)
 
-<a name="Phalcon_Factory_AbstractFactory"></a>
+<h1 id="Factory_AbstractFactory">Class Phalcon\Factory\AbstractFactory</h1>
 
-# Abstract Class **Phalcon\Factory\AbstractFactory**
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/abstractfactory.zep)
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/AbstractFactory.zep)
+| Namespace | Phalcon\Factory | | Uses | Phalcon\Config\Config, Phalcon\Factory\Exception |
 
-## Property
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team [&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;](&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;)
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
+
+## Properties
 
 ```php
-// array
-protected $mapper   = []; // Holds the mapping of names to classes
-// array 
-protected $services = []; // Holds the resolved instances
+/**
+ * @var array
+ */
+protected mapper;
+
+/**
+ * @var array
+ */
+protected services;
+
 ```
 
 ## Methods
 
 ```php
-protected function checkService( string $name ): void
-```
-
-Checks if a service exists and throws an exception
-
-```php
-protected function checkConfig( mixed $config ): array
+protected function checkConfig( mixed $config ): array;
 ```
 
 Checks the config if it is a valid object
 
 ```php
-abstract protected function getAdapters(): array
+protected function checkService( string $name ): void;
+```
+
+Checks if a service exists and throws an exception
+
+```php
+abstract protected function getAdapters(): array;
 ```
 
 Returns the adapters for the factory
 
 ```php
-protected function init( array $services = [] ): void
+protected function init( array $services ): void;
 ```
 
-Populates the internal array of services
+AdapterFactory constructor.
 
-<hr />
+<h1 id="Factory_Exception">Class Phalcon\Factory\Exception</h1>
 
-<a name="Phalcon_Factory_Exception"></a>
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/exception.zep)
 
-# Class **Phalcon\Factory\Exception**
+| Namespace | Phalcon\Factory | | Extends | \Phalcon\Exception |
 
-*extends* [Phalcon\Exception](Phalcon_Exception)
+This file is part of the Phalcon Framework.
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/Factory/Exception.zep)
+(c) Phalcon Team [&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;](&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;)
+
+For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
