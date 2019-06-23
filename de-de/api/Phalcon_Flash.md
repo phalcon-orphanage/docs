@@ -5,123 +5,312 @@ version: '4.0'
 title: 'Phalcon\Flash'
 ---
 
-# Abstract class **Phalcon\Flash**
+* [Phalcon\Flash](#Flash)
+* [Phalcon\Flash\Direct](#Flash_Direct)
+* [Phalcon\Flash\Exception](#Flash_Exception)
+* [Phalcon\Flash\Session](#Flash_Session)
+* [Phalcon\FlashInterface](#FlashInterface)
 
-*implements* [Phalcon\FlashInterface](Phalcon_FlashInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+<h1 id="Flash">Abstract Class Phalcon\Flash</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\Flash\Exception, Phalcon\Di\InjectionAwareInterface | | Implements | FlashInterface, InjectionAwareInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
 ```php
-<?php
-
 $flash->success("The record was successfully deleted");
 $flash->error("Cannot open the file");
+```
+
+## Properties
+
+```php
+/**
+ * @var bool
+ */
+protected autoescape = true;
+
+/**
+ * @var bool
+ */
+protected automaticHtml = true;
+
+/**
+ * @var array
+ */
+protected cssClasses;
+
+/**
+ * @var string
+ */
+protected customTemplate = ;
+
+//
+protected container;
+
+//
+protected escaperService;
+
+/**
+ * @var bool
+ */
+protected implicitFlush = true;
+
+//
+protected messages;
 
 ```
 
 ## Methods
 
-public **__construct** ([*mixed* $cssClasses])
+```php
+public function __construct( mixed $cssClasses ): void;
+```
 
 Phalcon\Flash constructor
 
-public **getAutoescape** ()
+```php
+public function clear(): void;
+```
 
-Returns the autoescape mode in generated html
+Clears accumulated messages when implicit flush is disabled
 
-public **setAutoescape** (*mixed* $autoescape)
-
-Set the autoescape mode in generated html
-
-public **getEscaperService** ()
-
-Returns the Escaper Service
-
-public **setEscaperService** ([Phalcon\EscaperInterface](Phalcon_EscaperInterface) $escaperService)
-
-Sets the Escaper Service
-
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
-
-Sets the dependency injector
-
-public **getDI** ()
-
-Returns the internal dependency injector
-
-public **setImplicitFlush** (*mixed* $implicitFlush)
-
-Set whether the output must be implicitly flushed to the output or returned as string
-
-public **setAutomaticHtml** (*mixed* $automaticHtml)
-
-Set if the output must be implicitly formatted with HTML
-
-public **setCssClasses** (*array* $cssClasses)
-
-Set an array with CSS classes to format the messages
-
-public **error** (*mixed* $message)
+```php
+public function error( string $message ): string;
+```
 
 Shows a HTML error message
 
 ```php
-<?php
-
 $flash->error("This is an error");
-
 ```
 
-public **notice** (*mixed* $message)
+```php
+public function getAutoescape(): bool;
+```
+
+Returns the autoescape mode in generated html
+
+```php
+public function getCustomTemplate(): string;
+```
+
+Returns the custom template set
+
+```php
+public function getDI(): DiInterface;
+```
+
+Returns the internal dependency injector
+
+```php
+public function getEscaperService(): EscaperInterface;
+```
+
+Returns the Escaper Service
+
+```php
+public function notice( string $message ): string;
+```
 
 Shows a HTML notice/information message
 
 ```php
-<?php
-
 $flash->notice("This is an information");
-
 ```
-
-public **success** (*mixed* $message)
-
-Shows a HTML success message
 
 ```php
-<?php
-
-$flash->success("The process was finished successfully");
-
+public function outputMessage( string $type, mixed $message );
 ```
-
-public **warning** (*mixed* $message)
-
-Shows a HTML warning message
-
-```php
-<?php
-
-$flash->warning("Hey, this is important");
-
-```
-
-public *string* | *void* **outputMessage** (*mixed* $type, *string* | *array* $message)
 
 Outputs a message formatting it with HTML
 
 ```php
-<?php
-
 $flash->outputMessage("error", $message);
-
 ```
 
-public **clear** ()
+```php
+public function setAutoescape( bool $autoescape ): Flash;
+```
 
-Clears accumulated messages when implicit flush is disabled
+Set the autoescape mode in generated html
 
-abstract public **message** (*mixed* $type, *mixed* $message) inherited from [Phalcon\FlashInterface](Phalcon_FlashInterface)
+```php
+public function setAutomaticHtml( bool $automaticHtml ): FlashInterface;
+```
 
-...
+Set if the output must be implicitly formatted with HTML
+
+```php
+public function setCssClasses( array $cssClasses ): FlashInterface;
+```
+
+Set an array with CSS classes to format the messages
+
+```php
+public function setCustomTemplate( string $customTemplate ): FlashInterface;
+```
+
+Set an custom template for showing the messages
+
+```php
+public function setDI( mixed $container ): Flash;
+```
+
+Sets the dependency injector
+
+```php
+public function setEscaperService( mixed $escaperService ): Flash;
+```
+
+Sets the Escaper Service
+
+```php
+public function setImplicitFlush( bool $implicitFlush ): FlashInterface;
+```
+
+Set whether the output must be implicitly flushed to the output or returned as string
+
+```php
+public function success( string $message ): string;
+```
+
+Shows a HTML success message
+
+```php
+$flash->success("The process was finished successfully");
+```
+
+```php
+public function warning( string $message ): string;
+```
+
+Shows a HTML warning message
+
+```php
+$flash->warning("Hey, this is important");
+```
+
+<h1 id="Flash_Direct">Class Phalcon\Flash\Direct</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
+
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash | | Extends | FlashBase |
+
+This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
+
+## Methods
+
+```php
+public function message( string $type, mixed $message ): string;
+```
+
+Outputs a message
+
+```php
+public function output( bool $remove = true ): void;
+```
+
+Prints the messages accumulated in the flasher
+
+<h1 id="Flash_Exception">Class Phalcon\Flash\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/exception.zep)
+
+| Namespace | Phalcon\Flash | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Flash will use this class
+
+<h1 id="Flash_Session">Class Phalcon\Flash\Session</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
+
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash, Phalcon\DiInterface, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | FlashBase |
+
+Temporarily stores the messages in session, then messages can be printed in the next request
+
+## Methods
+
+```php
+public function clear(): void;
+```
+
+Clear messages in the session messenger
+
+```php
+public function getMessages( mixed $type, bool $remove = true ): array;
+```
+
+Returns the messages in the session flasher
+
+```php
+public function has( mixed $type ): bool;
+```
+
+Checks whether there are messages
+
+```php
+public function message( string $type, string $message ): void;
+```
+
+Adds a message to the session flasher
+
+```php
+public function output( bool $remove = true ): void;
+```
+
+Prints the messages in the session flasher
+
+```php
+protected function getSessionMessages( bool $remove, mixed $type ): array;
+```
+
+Returns the messages stored in session
+
+```php
+protected function setSessionMessages( array $messages ): array;
+```
+
+Stores the messages in session
+
+<h1 id="FlashInterface">Interface Phalcon\FlashInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
+
+| Namespace | Phalcon |
+
+Interface for Phalcon\Flash
+
+## Methods
+
+```php
+public function error( string $message ): string;
+```
+
+Shows a HTML error message
+
+```php
+public function message( string $type, string $message );
+```
+
+Outputs a message
+
+```php
+public function notice( string $message ): string;
+```
+
+Shows a HTML notice/information message
+
+```php
+public function success( string $message ): string;
+```
+
+Shows a HTML success message
+
+```php
+public function warning( string $message ): string;
+```
+
+Shows a HTML warning message

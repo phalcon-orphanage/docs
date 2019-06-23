@@ -5,80 +5,117 @@ version: '4.0'
 title: 'Phalcon\Application'
 ---
 
-# Abstract class **Phalcon\Application**
+* [Phalcon\Application](#Application)
+* [Phalcon\Application\Exception](#Application_Exception)
 
-*extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+<h1 id="Application">Abstract Class Phalcon\Application</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application.zep)
 
+| Namespace | Phalcon | | Uses | Phalcon\Application\Exception, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
+
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
+
+## Properties
+
+```php
+/**
+ * @var DiInterface
+ */
+protected container;
+
+/**
+ * @var string
+ */
+protected defaultModule;
+
+/**
+ * @var null | ManagerInterface
+ */
+protected eventsManager;
+
+/**
+ * @var array
+ */
+protected modules;
+
+```
 
 ## メソッド
 
-public **__construct** ([[Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector])
+```php
+public function __construct( mixed $container ): void;
+```
 
-Phalcon\Application Constructor
+Phalcon\Application constructor
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
+```php
+public function getDefaultModule(): string;
+```
 
-イベントマネージャーをセットします
+Returns the default module name
 
-public **getEventsManager** ()
+```php
+public function getEventsManager(): ManagerInterface;
+```
 
 内部イベントマネージャーを返します
 
-public **registerModules** (*array* $modules, [*mixed* $merge])
+```php
+public function getModule( string $name ): array | object;
+```
+
+Gets the module definition registered in the application via module name
+
+```php
+public function getModules(): array;
+```
+
+Return the modules registered in the application
+
+```php
+abstract public function handle();
+```
+
+Handles a request
+
+```php
+public function registerModules( array $modules, bool $merge = false ): Application;
+```
 
 Register an array of modules present in the application
 
 ```php
-<?php
-
 $this->registerModules(
     [
         "frontend" => [
-            "className" => "Multiple\Frontend\Module",
+            "className" => \Multiple\Frontend\Module::class,
             "path"      => "../apps/frontend/Module.php",
         ],
         "backend" => [
-            "className" => "Multiple\Backend\Module",
+            "className" => \Multiple\Backend\Module::class,
             "path"      => "../apps/backend/Module.php",
         ],
     ]
 );
-
 ```
 
-public **getModules** ()
-
-Return the modules registered in the application
-
-public **getModule** (*mixed* $name)
-
-Gets the module definition registered in the application via module name
-
-public **setDefaultModule** (*mixed* $defaultModule)
+```php
+public function setDefaultModule( string $defaultModule ): Application;
+```
 
 Sets the module name to be used if the router doesn't return a valid module
 
-public **getDefaultModule** ()
+```php
+public function setEventsManager( mixed $eventsManager ): Application;
+```
 
-Returns the default module name
+イベントマネージャーをセットします
 
-abstract public **handle** ()
+<h1 id="Application_Exception">Class Phalcon\Application\Exception</h1>
 
-リクエストを処理します。
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/exception.zep)
 
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
+| Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 
-Sets the dependency injector
-
-public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Returns the internal dependency injector
-
-public **__get** (*string* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Magic method __get
+Exceptions thrown in Phalcon\Application class will use this class

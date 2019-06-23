@@ -9,7 +9,7 @@ title: 'Phalcon\Registry'
 
 *implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
 
@@ -48,7 +48,7 @@ Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc, 
 
 Internally all the magic methods (and interfaces except JsonSerializable) are implemented using object handlers or similar techniques: this allows to bypass relatively slow method calls.
 
-## 方法
+## Methods
 
 final public **__construct** ()
 

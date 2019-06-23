@@ -1,0 +1,621 @@
+---
+layout: default
+language: 'ja-jp'
+version: '4.0'
+title: 'Phalcon\Annotations'
+---
+
+* [Phalcon\Annotations\Adapter\AbstractAdapter](#Annotations_Adapter_AbstractAdapter)
+* [Phalcon\Annotations\Adapter\AdapterInterface](#Annotations_Adapter_AdapterInterface)
+* [Phalcon\Annotations\Adapter\Apcu](#Annotations_Adapter_Apcu)
+* [Phalcon\Annotations\Adapter\Memory](#Annotations_Adapter_Memory)
+* [Phalcon\Annotations\Adapter\Stream](#Annotations_Adapter_Stream)
+* [Phalcon\Annotations\Annotation](#Annotations_Annotation)
+* [Phalcon\Annotations\AnnotationsFactory](#Annotations_AnnotationsFactory)
+* [Phalcon\Annotations\Collection](#Annotations_Collection)
+* [Phalcon\Annotations\Exception](#Annotations_Exception)
+* [Phalcon\Annotations\Reader](#Annotations_Reader)
+* [Phalcon\Annotations\ReaderInterface](#Annotations_ReaderInterface)
+* [Phalcon\Annotations\Reflection](#Annotations_Reflection)
+
+<h1 id="Annotations_Adapter_AbstractAdapter">Abstract Class Phalcon\Annotations\Adapter\AbstractAdapter</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/abstractadapter.zep)
+
+| Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface | | Implements | AdapterInterface |
+
+This is the base class for Phalcon\Annotations adapters
+
+## Properties
+
+```php
+/**
+ * @var array
+ */
+protected annotations;
+
+/**
+ * @var Reader
+ */
+protected reader;
+
+```
+
+## メソッド
+
+```php
+public function get( mixed $className ): Reflection;
+```
+
+Parses or retrieves all the annotations found in a class
+
+```php
+public function getMethod( string $className, string $methodName ): Collection;
+```
+
+Returns the annotations found in a specific method
+
+```php
+public function getMethods( string $className ): array;
+```
+
+Returns the annotations found in all the class' methods
+
+```php
+public function getProperties( string $className ): array;
+```
+
+Returns the annotations found in all the class' methods
+
+```php
+public function getProperty( string $className, string $propertyName ): Collection;
+```
+
+Returns the annotations found in a specific property
+
+```php
+public function getReader(): ReaderInterface;
+```
+
+Returns the annotation reader
+
+```php
+public function setReader( mixed $reader );
+```
+
+Sets the annotations parser
+
+<h1 id="Annotations_Adapter_AdapterInterface">Interface Phalcon\Annotations\Adapter\AdapterInterface</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/adapterinterface.zep)
+
+| Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Reflection, Phalcon\Annotations\Collection, Phalcon\Annotations\ReaderInterface |
+
+This interface must be implemented by adapters in Phalcon\Annotations
+
+## メソッド
+
+```php
+public function get( string $className ): Reflection;
+```
+
+Parses or retrieves all the annotations found in a class
+
+```php
+public function getMethod( string $className, string $methodName ): Collection;
+```
+
+Returns the annotations found in a specific method
+
+```php
+public function getMethods( string $className ): array;
+```
+
+Returns the annotations found in all the class' methods
+
+```php
+public function getProperties( string $className ): array;
+```
+
+Returns the annotations found in all the class' methods
+
+```php
+public function getProperty( string $className, string $propertyName ): Collection;
+```
+
+Returns the annotations found in a specific property
+
+```php
+public function getReader(): ReaderInterface;
+```
+
+Returns the annotation reader
+
+```php
+public function setReader( mixed $reader );
+```
+
+Sets the annotations parser
+
+<h1 id="Annotations_Adapter_Apcu">Class Phalcon\Annotations\Adapter\Apcu</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
+
+| Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection | | Extends | AbstractAdapter |
+
+Stores the parsed annotations in APCu. This adapter is suitable for production
+
+```php
+use Phalcon\Annotations\Adapter\Apcu;
+
+$annotations = new Apcu();
+```
+
+## Properties
+
+```php
+/**
+ * @var string
+ */
+protected prefix = ;
+
+/**
+ * @var int
+ */
+protected ttl = 172800;
+
+```
+
+## メソッド
+
+```php
+public function __construct( array $options ): void;
+```
+
+Phalcon\Annotations\Adapter\Apcu constructor
+
+```php
+public function read( string $key ): Reflection | bool;
+```
+
+Reads parsed annotations from APCu
+
+```php
+public function write( string $key, mixed $data ): bool;
+```
+
+Writes parsed annotations to APCu
+
+<h1 id="Annotations_Adapter_Memory">Class Phalcon\Annotations\Adapter\Memory</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
+
+| Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection | | Extends | AbstractAdapter |
+
+Stores the parsed annotations in memory. This adapter is the suitable development/testing
+
+## Properties
+
+```php
+/**
+ * @var mixed
+ */
+protected data;
+
+```
+
+## メソッド
+
+```php
+public function read( string $key ): Reflection | bool;
+```
+
+Reads parsed annotations from memory
+
+```php
+public function write( string $key, mixed $data ): void;
+```
+
+Writes parsed annotations to memory
+
+<h1 id="Annotations_Adapter_Stream">Class Phalcon\Annotations\Adapter\Stream</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/stream.zep)
+
+| Namespace | Phalcon\Annotations\Adapter | | Uses | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception | | Extends | AbstractAdapter |
+
+Stores the parsed annotations in files. This adapter is suitable for production
+
+```php
+use Phalcon\Annotations\Adapter\Stream;
+
+$annotations = new Stream(
+    [
+        "annotationsDir" => "app/cache/annotations/",
+    ]
+);
+```
+
+## Properties
+
+```php
+/**
+ * @var string
+ */
+protected annotationsDir = ./;
+
+```
+
+## メソッド
+
+```php
+public function __construct( array $options ): void;
+```
+
+Phalcon\Annotations\Adapter\Stream constructor
+
+```php
+public function read( string $key ): Reflection | bool | int;
+```
+
+Reads parsed annotations from files
+
+```php
+public function write( string $key, mixed $data ): void;
+```
+
+Writes parsed annotations to files
+
+<h1 id="Annotations_Annotation">Class Phalcon\Annotations\Annotation</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
+
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Annotation, Phalcon\Annotations\Exception |
+
+Represents a single annotation in an annotations collection
+
+## Properties
+
+```php
+/**
+ * Annotation Arguments
+ *
+ * @var array
+ */
+protected arguments;
+
+/**
+ * Annotation ExprArguments
+ *
+ * @var string
+ */
+protected exprArguments;
+
+/**
+ * Annotation Name
+ *
+ * @var string
+ */
+protected name;
+
+```
+
+## メソッド
+
+```php
+public function __construct( array $reflectionData ): void;
+```
+
+Phalcon\Annotations\Annotation constructor
+
+```php
+public function getArgument( mixed $position );
+```
+
+Returns an argument in a specific position
+
+```php
+public function getArguments(): array;
+```
+
+Returns the expression arguments
+
+```php
+public function getExprArguments(): array;
+```
+
+Returns the expression arguments without resolving
+
+```php
+public function getExpression( array $expr ): mixed;
+```
+
+Resolves an annotation expression
+
+```php
+public function getName(): string;
+```
+
+Returns the annotation's name
+
+```php
+public function getNamedArgument( string $name );
+```
+
+Returns a named argument
+
+```php
+public function getNamedParameter( string $name ): mixed;
+```
+
+Returns a named parameter
+
+```php
+public function hasArgument( mixed $position ): bool;
+```
+
+Returns an argument in a specific position
+
+```php
+public function numberArguments(): int;
+```
+
+Returns the number of arguments that the annotation has
+
+<h1 id="Annotations_AnnotationsFactory">Class Phalcon\Annotations\AnnotationsFactory</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotationsfactory.zep)
+
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+
+Factory to create annotations components
+
+## メソッド
+
+```php
+public function __construct( array $services );
+```
+
+AdapterFactory constructor.
+
+```php
+public function load( mixed $config ): mixed;
+```
+
+Factory to create an instace from a Config object
+
+```php
+public function newInstance( string $name, array $options ): AbstractAdapter;
+```
+
+Create a new instance of the adapter
+
+```php
+protected function getAdapters(): array;
+```
+
+The available adapters
+
+<h1 id="Annotations_Collection">Class Phalcon\Annotations\Collection</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
+
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Annotation, Phalcon\Annotations\Exception | | Implements | \Iterator, \Countable |
+
+Represents a collection of annotations. This class allows to traverse a group of annotations easily
+
+```php
+// Traverse annotations
+foreach ($classAnnotations as $annotation) {
+    echo "Name=", $annotation->getName(), PHP_EOL;
+}
+
+// Check if the annotations has a specific
+var_dump($classAnnotations->has("Cacheable"));
+
+// Get an specific annotation in the collection
+$annotation = $classAnnotations->get("Cacheable");
+```
+
+## Properties
+
+```php
+/**
+ * @var array
+ */
+protected annotations;
+
+/**
+ * @var int
+ */
+protected position = 0;
+
+```
+
+## メソッド
+
+```php
+public function __construct( array $reflectionData ): void;
+```
+
+Phalcon\Annotations\Collection constructor
+
+```php
+public function count(): int;
+```
+
+Returns the number of annotations in the collection
+
+```php
+public function current(): Annotation | bool;
+```
+
+Returns the current annotation in the iterator
+
+```php
+public function get( string $name ): Annotation;
+```
+
+Returns the first annotation that match a name
+
+```php
+public function getAll( string $name ): Annotation[];
+```
+
+Returns all the annotations that match a name
+
+```php
+public function getAnnotations(): Annotation[];
+```
+
+Returns the internal annotations as an array
+
+```php
+public function has( string $name ): bool;
+```
+
+Check if an annotation exists in a collection
+
+```php
+public function key(): int;
+```
+
+イテレータ中の現在の位置/キーを返します。
+
+```php
+public function next(): void;
+```
+
+内部のイテレータの位置を次の位置に移動します。
+
+```php
+public function rewind(): void;
+```
+
+内部のイテレータを巻き戻します。
+
+```php
+public function valid(): bool;
+```
+
+Check if the current annotation in the iterator is valid
+
+<h1 id="Annotations_Exception">Class Phalcon\Annotations\Exception</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/exception.zep)
+
+| Namespace | Phalcon\Annotations | | Extends | \Phalcon\Exception |
+
+Class for exceptions thrown by Phalcon\Annotations
+
+<h1 id="Annotations_Reader">Class Phalcon\Annotations\Reader</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
+
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\ReaderInterface | | Implements | ReaderInterface |
+
+Parses docblocks returning an array with the found annotations
+
+## メソッド
+
+```php
+public function parse( string $className ): array;
+```
+
+Reads annotations from the class docblocks, its methods and/or properties
+
+<h1 id="Annotations_ReaderInterface">Interface Phalcon\Annotations\ReaderInterface</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
+
+| Namespace | Phalcon\Annotations |
+
+Parses docblocks returning an array with the found annotations
+
+## メソッド
+
+```php
+public function parse( string $className ): array;
+```
+
+Reads annotations from the class docblocks, its methods and/or properties
+
+<h1 id="Annotations_Reflection">Class Phalcon\Annotations\Reflection</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
+
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Collection |
+
+Allows to manipulate the annotations reflection in an OO manner
+
+```php
+use Phalcon\Annotations\Reader;
+use Phalcon\Annotations\Reflection;
+
+// Parse the annotations in a class
+$reader = new Reader();
+$parsing = $reader->parse("MyComponent");
+
+// Create the reflection
+$reflection = new Reflection($parsing);
+
+// Get the annotations in the class docblock
+$classAnnotations = $reflection->getClassAnnotations();
+```
+
+## Properties
+
+```php
+//
+protected classAnnotations;
+
+//
+protected methodAnnotations;
+
+//
+protected propertyAnnotations;
+
+/**
+ * @var array
+ */
+protected reflectionData;
+
+```
+
+## メソッド
+
+```php
+public function __construct( array $reflectionData ): void;
+```
+
+Phalcon\Annotations\Reflection constructor
+
+```php
+public static function __set_state( array $data ): Reflection;
+```
+
+Restores the state of a Phalcon\Annotations\Reflection variable export
+
+```php
+public function getClassAnnotations(): Collection | bool;
+```
+
+Returns the annotations found in the class docblock
+
+```php
+public function getMethodsAnnotations(): Collection[] | bool;
+```
+
+Returns the annotations found in the methods' docblocks
+
+```php
+public function getPropertiesAnnotations(): Collection[] | bool;
+```
+
+Returns the annotations found in the properties' docblocks
+
+```php
+public function getReflectionData(): array;
+```
+
+Returns the raw parsing intermediate definitions used to construct the reflection

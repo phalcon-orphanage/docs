@@ -7,7 +7,7 @@ title: 'Phalcon\Version'
 
 # Class **Phalcon\Version**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
 This class allows to get the installed version of the framework
 
@@ -23,7 +23,7 @@ This class allows to get the installed version of the framework
 
 *integer* **VERSION_SPECIAL_NUMBER**
 
-## 方法
+## Methods
 
 protected static **_getVersion** ()
 

@@ -7,7 +7,7 @@ title: 'Phalcon\Text'
 
 # Abstract class **Phalcon\Text**
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
 Provides utilities to work with texts
 
@@ -25,7 +25,7 @@ Provides utilities to work with texts
 
 *integer* **RANDOM_DISTINCT**
 
-## 方法
+## Methods
 
 public static **camelize** (*mixed* $str, [*mixed* $delimiter])
 

@@ -5,17 +5,18 @@ version: '4.0'
 title: 'Phalcon\Loader'
 ---
 
-# Class **Phalcon\Loader**
+* [Phalcon\Loader](#Loader)
+* [Phalcon\Loader\Exception](#Loader_Exception)
 
-*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface)
+<h1 id="Loader">Class Phalcon\Loader</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | EventsAwareInterface |
 
 This component helps to load your project classes automatically based on some conventions
 
 ```php
-<?php
-
 use Phalcon\Loader;
 
 // Creates the autoloader
@@ -24,8 +25,8 @@ $loader = new Loader();
 // Register some namespaces
 $loader->registerNamespaces(
     [
-        "Example\Base"    => "vendor/example/base/",
-        "Example\Adapter" => "vendor/example/adapter/",
+        "Example\\Base"    => "vendor/example/base/",
+        "Example\\Adapter" => "vendor/example/adapter/",
         "Example"          => "vendor/example/",
     ]
 );
@@ -35,38 +36,168 @@ $loader->register();
 
 // Requiring this class will automatically include file vendor/example/adapter/Some.php
 $adapter = new \Example\Adapter\Some();
+```
+
+## Properties
+
+```php
+//
+protected checkedPath;
+
+/**
+ * @var array
+ */
+protected classes;
+
+/**
+ * @var array
+ */
+protected directories;
+
+//
+protected eventsManager;
+
+/**
+ * @var array
+ */
+protected extensions;
+
+//
+protected fileCheckingCallback = is_file;
+
+/**
+ * @var array
+ */
+protected files;
+
+/**
+ * @var bool
+ */
+protected foundPath;
+
+/**
+ * @var array
+ */
+protected namespaces;
+
+/**
+ * @var bool
+ */
+protected registered = false;
 
 ```
 
 ## Metody
 
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager)
+```php
+public function autoLoad( string $className ): bool;
+```
 
-Sets the events manager
+Autoloads the registered classes
 
-public **getEventsManager** ()
+```php
+public function getCheckedPath(): string;
+```
+
+Get the path the loader is checking for a path
+
+```php
+public function getClasses(): array;
+```
+
+Returns the class-map currently registered in the autoloader
+
+```php
+public function getDirs(): array;
+```
+
+Returns the directories currently registered in the autoloader
+
+```php
+public function getEventsManager(): ManagerInterface;
+```
 
 Returns the internal event manager
 
-public **setExtensions** (*array* $extensions)
-
-Sets an array of file extensions that the loader must try in each attempt to locate the file
-
-public **getExtensions** ()
+```php
+public function getExtensions(): array;
+```
 
 Returns the file extensions registered in the loader
 
-public **registerNamespaces** (*array* $namespaces, [*mixed* $merge])
+```php
+public function getFiles(): array;
+```
+
+Returns the files currently registered in the autoloader
+
+```php
+public function getFoundPath(): string;
+```
+
+Get the path when a class was found
+
+```php
+public function getNamespaces(): array;
+```
+
+Returns the namespaces currently registered in the autoloader
+
+```php
+public function loadFiles(): void;
+```
+
+Checks if a file exists and then adds the file by doing virtual require
+
+```php
+public function register( bool $prepend = false ): Loader;
+```
+
+Register the autoload method
+
+```php
+public function registerClasses( array $classes, bool $merge = false ): Loader;
+```
+
+Register classes and their locations
+
+```php
+public function registerDirs( array $directories, bool $merge = false ): Loader;
+```
+
+Register directories in which "not found" classes could be found
+
+```php
+public function registerFiles( array $files, bool $merge = false ): Loader;
+```
+
+Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
+
+```php
+public function registerNamespaces( array $namespaces, bool $merge = false ): Loader;
+```
 
 Register namespaces and their related directories
 
-public **setFileCheckingCallback** (*mixed* $callback = null): [Phalcon\Loader](Phalcon_Loader)
+```php
+public function setEventsManager( mixed $eventsManager ): void;
+```
+
+Sets the events manager
+
+```php
+public function setExtensions( array $extensions ): Loader;
+```
+
+Sets an array of file extensions that the loader must try in each attempt to locate the file
+
+```php
+public function setFileCheckingCallback( mixed $callback ): Loader;
+```
 
 Sets the file check callback.
 
 ```php
-<?php
-
 // Default behavior.
 $loader->setFileCheckingCallback("is_file");
 
@@ -78,60 +209,22 @@ $loader->setFileCheckingCallback("stream_resolve_include_path");
 $loader->setFileCheckingCallback(null);
 ```
 
-A [Phalcon\Loader\Exception](Phalcon_Loader_Exception) is thrown if the $callback parameter is not a `callable` or `null`;
-
-protected **prepareNamespace** (*array* $namespace)
-
-...
-
-public **getNamespaces** ()
-
-Returns the namespaces currently registered in the autoloader
-
-public **registerDirs** (*array* $directories, [*mixed* $merge])
-
-Register directories in which "not found" classes could be found
-
-public **getDirs** ()
-
-Returns the directories currently registered in the autoloader
-
-public **registerFiles** (*array* $files, [*mixed* $merge])
-
-Registers files that are "non-classes" hence need a "require". This is very useful for including files that only have functions
-
-public **getFiles** ()
-
-Returns the files currently registered in the autoloader
-
-public **registerClasses** (*array* $classes, [*mixed* $merge])
-
-Register classes and their locations
-
-public **getClasses** ()
-
-Returns the class-map currently registered in the autoloader
-
-public **register** ([*mixed* $prepend])
-
-Register the autoload method
-
-public **unregister** ()
+```php
+public function unregister(): Loader;
+```
 
 Unregister the autoload method
 
-public **loadFiles** ()
+```php
+protected function prepareNamespace( array $namespaceName ): array;
+```
 
-Checks if a file exists and then adds the file by doing virtual require
+//
 
-public **autoLoad** (*mixed* $className)
+<h1 id="Loader_Exception">Class Phalcon\Loader\Exception</h1>
 
-Autoloads the registered classes
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
 
-public **getFoundPath** ()
+| Namespace | Phalcon\Loader | | Extends | \Phalcon\Exception |
 
-Get the path when a class was found
-
-public **getCheckedPath** ()
-
-Get the path the loader is checking for a path
+Exceptions thrown in Phalcon\Loader will use this class

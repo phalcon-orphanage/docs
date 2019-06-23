@@ -5,12 +5,12 @@ version: '4.0'
 title: 'Phalcon\Kernel'
 ---
 
-# Class **Phalcon\Kernel**
+* [Phalcon\Kernel](#Kernel)
 
-[源码在GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
+<h1 id="Kernel">Class Phalcon\Kernel</h1>
 
-## 方法
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
 
-public static **preComputeHashKey** (*mixed* $key)
+| Namespace | Phalcon |
 
-...
+This class allows to change the internal behavior of the framework in runtime
