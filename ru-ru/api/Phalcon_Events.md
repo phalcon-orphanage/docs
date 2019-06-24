@@ -18,6 +18,8 @@ title: 'Phalcon\Events'
 
 | Namespace | Phalcon\Events | | Implements | EventInterface |
 
+Phalcon\Events\Event
+
 This class offers contextual information of a fired event in the EventsManager
 
 ## Properties
@@ -63,7 +65,7 @@ protected type;
 ## Methods
 
 ```php
-public function __construct( string $type, mixed $source, mixed $data, bool $cancelable = true ): void;
+public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool ): void;
 ```
 
 Phalcon\Events\Event constructor
@@ -101,7 +103,7 @@ public function isStopped(): bool;
 Check whether the event is currently stopped.
 
 ```php
-public function setData( mixed $data ): EventInterface;
+public function setData( mixed $data = null ): EventInterface;
 ```
 
 Sets event data.
@@ -129,6 +131,8 @@ if ($event->isCancelable()) {
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
 | Namespace | Phalcon\Events |
+
+Phalcon\Events\EventInterface
 
 Interface for Phalcon\Events\Event class
 
@@ -159,7 +163,7 @@ public function isStopped(): bool;
 Check whether the event is currently stopped
 
 ```php
-public function setData( mixed $data ): EventInterface;
+public function setData( mixed $data = null ): EventInterface;
 ```
 
 Sets event data
@@ -181,6 +185,8 @@ Stops the event preventing propagation
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
 
 | Namespace | Phalcon\Events |
+
+Phalcon\Events\EventsAwareInterface
 
 This interface must for those classes that accept an EventsManager and dispatch events
 
@@ -204,6 +210,8 @@ Sets the events manager
 
 | Namespace | Phalcon\Events | | Extends | \Phalcon\Exception |
 
+Phalcon\Events\Exception
+
 Exceptions thrown in Phalcon\Events will use this class
 
 <h1 id="Events_Manager">Class Phalcon\Events\Manager</h1>
@@ -211,6 +219,8 @@ Exceptions thrown in Phalcon\Events will use this class
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
 
 | Namespace | Phalcon\Events | | Uses | Phalcon\Events\Event, SplPriorityQueue | | Implements | ManagerInterface |
+
+Phalcon\Events\Manager
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
@@ -250,7 +260,7 @@ public function arePrioritiesEnabled(): bool;
 Returns if priorities are enabled
 
 ```php
-public function attach( string $eventType, mixed $handler, int $priority ): void;
+public function attach( string $eventType, mixed $handler, int $priority = static-constant-access ): void;
 ```
 
 Attach a listener to the events manager
@@ -272,7 +282,7 @@ Detach the listener from the events manager
 @param object handler
 
 ```php
-public function detachAll( string $type ): void;
+public function detachAll( string $type = null ): void;
 ```
 
 Removes all events from the EventsManager
@@ -284,7 +294,7 @@ public function enablePriorities( bool $enablePriorities ): void;
 Set if priorities are enabled in the EventsManager
 
 ```php
-public function fire( string $eventType, mixed $source, mixed $data, bool $cancelable = true );
+public function fire( string $eventType, mixed $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
@@ -333,6 +343,8 @@ Check if the events manager is collecting all all the responses returned by ever
 
 | Namespace | Phalcon\Events |
 
+Phalcon\Events\Manager
+
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
 ## Methods
@@ -354,13 +366,13 @@ Detach the listener from the events manager
 @param object handler
 
 ```php
-public function detachAll( string $type ): void;
+public function detachAll( string $type = null ): void;
 ```
 
 Removes all events from the EventsManager
 
 ```php
-public function fire( string $eventType, mixed $source, mixed $data );
+public function fire( string $eventType, mixed $source, mixed $data = null );
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
