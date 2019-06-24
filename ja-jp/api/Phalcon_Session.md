@@ -86,7 +86,7 @@ Phalcon\Session\Adapter\Libmemcached
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options ): void;
+public function __construct( mixed $factory, array $options = [] ): void;
 ```
 
 Constructor
@@ -96,6 +96,8 @@ Constructor
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/noop.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | SessionHandlerInterface | | Implements | SessionHandlerInterface |
+
+Phalcon\Session\Adapter\Noop
 
 This is an "empty" or null adapter. It can be used for testing or any other purpose that no session needs to be invoked
 
@@ -143,7 +145,7 @@ protected ttl = 8600;
 ## メソッド
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 Constructor
@@ -201,7 +203,7 @@ Phalcon\Session\Adapter\Redis
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options ): void;
+public function __construct( mixed $factory, array $options = [] ): void;
 ```
 
 Constructor
@@ -211,6 +213,8 @@ Constructor
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/stream.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Helper\Str, Phalcon\Session\Exception | | Extends | Noop |
+
+Phalcon\Session\Adapter\Stream
 
 This is the file based adapter. It stores sessions in a file based system
 
@@ -242,7 +246,7 @@ private path = ;
 ## メソッド
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 //
@@ -282,6 +286,8 @@ public function write( mixed $id, mixed $data ): bool;
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
 
 | Namespace | Phalcon\Session | | Uses | Phalcon\Collection\Collection, Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface | | Extends | Collection | | Implements | InjectionAwareInterface |
+
+Phalcon\Session\Bag
 
 This component helps to separate session data into "namespaces". Working by this way you can easily create groups of session variables into the application
 
@@ -327,7 +333,7 @@ public function getDI(): DiInterface;
 Returns the DependencyInjector container
 
 ```php
-public function init( array $data ): void;
+public function init( array $data = [] ): void;
 ```
 
 Removes a property from the internal bag
@@ -356,6 +362,8 @@ Sets the DependencyInjector container
 
 | Namespace | Phalcon\Session | | Extends | \Phalcon\Exception |
 
+Phalcon\Session\Exception
+
 Exceptions thrown in Phalcon\Session will use this class
 
 <h1 id="Session_Manager">Class Phalcon\Session\Manager</h1>
@@ -363,6 +371,8 @@ Exceptions thrown in Phalcon\Session will use this class
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DiInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface | | Implements | ManagerInterface, InjectionAwareInterface |
+
+Phalcon\Session\Manager
 
 Session manager class
 
@@ -399,7 +409,7 @@ private uniqueId = ;
 ## メソッド
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 Manager constructor.
@@ -441,7 +451,7 @@ public function exists(): bool;
 Check whether the session has been started
 
 ```php
-public function get( string $key, mixed $defaultValue, bool $remove = false ): mixed;
+public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
 
 Gets a session variable from an application context
@@ -483,7 +493,7 @@ public function has( string $key ): bool;
 Check whether a session variable is set in an application context
 
 ```php
-public function regenerateId( mixed $deleteOldSession = true ): ManagerInterface;
+public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
 Regenerates the session id using the handler.
@@ -560,6 +570,8 @@ Returns the status of the current session.
 
 | Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
 
+Phalcon\Session
+
 Interface for the Phalcon\Session\Manager
 
 ## 定数
@@ -609,7 +621,7 @@ public function exists(): bool;
 Check whether the session has been started
 
 ```php
-public function get( string $key, mixed $defaultValue, bool $remove = false ): mixed;
+public function get( string $key, mixed $defaultValue = null, bool $remove = bool ): mixed;
 ```
 
 Gets a session variable from an application context
@@ -645,7 +657,7 @@ public function has( string $key ): bool;
 Check whether a session variable is set in an application context
 
 ```php
-public function regenerateId( mixed $deleteOldSession = true ): ManagerInterface;
+public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
 Regenerates the session id using the handler.
