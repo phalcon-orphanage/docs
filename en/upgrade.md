@@ -11,7 +11,6 @@ So you have decided to upgrade to v4! **Congratulations**!!
 
 Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
 
-<a name='requirements'></a>
 ## Requirements
 ### PHP 7.2
 Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support][php-support] has lapsed, so we decided to follow actively supported PHP versions.
@@ -32,7 +31,6 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-<a name='installation'></a>
 ### Installation
 Download the latest `zephir.phar` from [here][zephir-phar]. Add it to a folder that can be accessed by your system.
 
@@ -59,7 +57,6 @@ php -m | grep phalcon
 
 <hr/>
 
-<a name='acl'></a>
 ## ACL
 
 > Status: **changes required**
@@ -91,7 +88,74 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 <hr/>
 
-<a name='cli'></a>
+## Cache
+
+> Status: **changes required**
+>
+> Usage: [Cache Documentation](cache)
+{: .alert .alert-info }
+
+The `Cache` component has been rewritten to comply with [PSR-16][psr-16]. This allows you to use the [Phalcon\Cache\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16][psr-16] cache, not just Phalcon based ones.
+
+In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
+
+For v4, we rewrote the component completely. We first created a `Storage` class which is the basis of the Cache classes. We created Serializer classes whose sole responsibility is to serialize and unserialize the data before they are saved in the cache adapter and after they are retrieved. These classes are injected (based on the developer's choice) to an Adapter object which connects to a backend (`Memcached`, `Redis` etc.), while abiding by a common adapter interface.
+
+The Cache class implements [PSR-16][psr-16] and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data. 
+
+For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation. 
+
+### Creating a cache
+
+```php
+<?php
+
+use Phalcon\Cache\Cache;
+use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+$adapterFactory    = new AdapterFactory($serializerFactory);
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
+];
+
+$adapter = $adapterFactory->newInstance('apcu', $options);
+
+$cache = new Cache($adapter);
+```
+
+Registering it in the DI
+
+```php
+<?php
+
+use Phalcon\Cache\Cache;
+use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$container = new Di();
+
+$container->set(
+    'cache',
+    function () {
+        $options = [
+            'defaultSerializer' => 'Json',
+            'lifetime'          => 7200
+        ];
+        
+        $adapter = (new AdapterFactory(new SerializerFactory()))
+                    ->newInstance('apcu', $options); 
+
+        return new Cache($adapter);
+    }
+);
+```
+
+<hr/>
+
 ## CLI
 
 > Status: **changes required**
@@ -125,7 +189,6 @@ class MainTask extends Task
 
 <hr/>
 
-<a name='filter'></a>
 ## Filter
 
 > Status: **changes required**
@@ -217,7 +280,6 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 <hr/>
 
-<a name='logger'></a>
 ## Logger
 
 > Status: **changes required**
@@ -305,7 +367,6 @@ $logger->error('Something went wrong');
 
 <hr/>
 
-<a name='models'></a>
 ## Models
 
 > Status: **changes required**
@@ -332,7 +393,6 @@ class Users
 ```
 
 ### Criteria
-
 The second parameter of `Criteria::limit()` ('offset') must now be an integer or null. Previously there was no type requirement.
 
 ```php
@@ -345,9 +405,7 @@ $criteria->limit(10, null);
 
 <hr/>
 
-<a name='router'></a>
 ## Router
-
 You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
 
 ```php
@@ -382,5 +440,6 @@ $group->addTrace(
 
 [php-support]: https://secure.php.net/supported-versions.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/
+[psr-16]: https://www.php-fig.org/psr/psr-16/
 [psr-extension]: https://github.com/jbboehr/php-psr
 [zephir-phar]: https://github.com/phalcon/zephir/releases

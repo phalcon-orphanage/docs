@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+upgrade: '#cache'
+category: 'cache'
 ---
 # Cache Component
 <hr>
