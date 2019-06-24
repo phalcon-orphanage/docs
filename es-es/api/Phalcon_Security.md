@@ -5,17 +5,19 @@ version: '4.0'
 title: 'Phalcon\Security'
 ---
 
-# Class **Phalcon\Security**
+- [Phalcon\Security](#Security)
+- [Phalcon\Security\Exception](#Security_Exception)
+- [Phalcon\Security\Random](#Security_Random)
 
-*implements* [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+<h1 id="Security">Class Phalcon\Security</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
 
-Este componente provee un conjunto de funciones para mejorar la seguridad en aplicaciones Phalcon
+| Namespace | Phalcon | | Uses | Phalcon\DiInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface | | Implements | InjectionAwareInterface |
+
+This component provides a set of functions to improve the security in Phalcon applications
 
 ```php
-<?php
-
 $login    = $this->request->getPost("login");
 $password = $this->request->getPost("password");
 
@@ -23,129 +25,419 @@ $user = Users::findFirstByLogin($login);
 
 if ($user) {
     if ($this->security->checkHash($password, $user->password)) {
-        // La contraseña es válida
+        // The password is valid
     }
 }
-
 ```
 
 ## Constantes
 
-*integer* **CRYPT_DEFAULT**
+```php
+const CRYPT_BLOWFISH = 4;
+const CRYPT_BLOWFISH_A = 5;
+const CRYPT_BLOWFISH_X = 6;
+const CRYPT_BLOWFISH_Y = 7;
+const CRYPT_DEFAULT = 0;
+const CRYPT_EXT_DES = 2;
+const CRYPT_MD5 = 3;
+const CRYPT_SHA256 = 8;
+const CRYPT_SHA512 = 9;
+const CRYPT_STD_DES = 1;
+```
 
-*integer* **CRYPT_STD_DES**
+## Properties
 
-*integer* **CRYPT_EXT_DES**
+```php
+//
+protected container;
 
-*integer* **CRYPT_MD5**
+//
+protected defaultHash;
 
-*integer* **CRYPT_BLOWFISH**
+//
+protected numberBytes = 16;
 
-*integer* **CRYPT_BLOWFISH_A**
+//
+protected random;
 
-*integer* **CRYPT_BLOWFISH_X**
+//
+protected requestToken;
 
-*integer* **CRYPT_BLOWFISH_Y**
+//
+protected token;
 
-*integer* **CRYPT_SHA256**
+//
+protected tokenKey;
 
-*integer* **CRYPT_SHA512**
+//
+protected tokenKeySessionId = $PHALCON/CSRF/KEY$;
+
+//
+protected tokenValueSessionId = $PHALCON/CSRF$;
+
+//
+protected workFactor = 8;
+
+```
 
 ## Métodos
 
-public **setWorkFactor** (*mixed* $workFactor)
-
-...
-
-public **getWorkFactor** ()
-
-...
-
-public **__construct** ()
+```php
+public function __construct(): void;
+```
 
 Phalcon\Security constructor
 
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
+```php
+public function checkHash( string $password, string $passwordHash, int $maxPassLength = int ): bool;
+```
 
-Sets the dependency injector
+Checks a plain text password and its hash version to check if the password matches
 
-public **getDI** ()
+```php
+public function checkToken( mixed $tokenKey = null, mixed $tokenValue = null, bool $destroyIfValid = bool ): bool;
+```
+
+Check if the CSRF token sent in the request is the same that the current in session
+
+```php
+public function computeHmac( string $data, string $key, string $algo, bool $raw = bool ): string;
+```
+
+Computes a HMAC
+
+```php
+public function destroyToken(): Security;
+```
+
+Removes the value of the CSRF token and key from session
+
+```php
+public function getDI(): DiInterface;
+```
 
 Returns the internal dependency injector
 
-public **setRandomBytes** (*mixed* $randomBytes)
+```php
+public function getDefaultHash(): int | null;
+```
 
-Establece un número de bytes a ser generado por el generador pseudo aleatorio de openssl
-
-public **getRandomBytes** ()
-
-Retorna el número de bytes a ser generado por el generador pseudo aleatorio de openssl
-
-public **getRandom** ()
-
-Devuelve una instancia del generador seguro de números aleatorio
-
-public **getSaltBytes** ([*mixed* $numberBytes])
-
-Generar una cadena pseudo aleatoria de longitud >22-longitud para ser utilizado como sal para contraseñas
-
-public **hash** (*mixed* $password, [*mixed* $workFactor])
-
-Crea un hash de contraseña utilizando bcrypt con una sal pseudo aleatoria
-
-public **checkHash** (*mixed* $password, *mixed* $passwordHash, [*mixed* $maxPassLength])
-
-Comprueba si una contraseña de texto plano y su versión hash coinciden
-
-public **isLegacyHash** (*mixed* $passwordHash)
-
-Comprueba si una contraseña hash es un hash bcrypt válido
-
-public **getTokenKey** ()
-
-Genera un token pseudo aleatorio para ser usando como nombre en inputs en el chequeo de CSRF
-
-public **getToken** ()
-
-Genera un token pseudo aleatorio para ser usando como valor en inputs en el chequeo de CSRF
-
-public **checkToken** ([*mixed* $tokenKey], [*mixed* $tokenValue], [*mixed* $destroyIfValid])
-
-Comprueba si el token CSRF enviado en la consulta es el mismo que el almacenado en la sesión actual
-
-public **getSessionToken** ()
-
-Regresa el valor del token CSRF almacenado en sesión
-
-public **destroyToken** ()
-
-Remueve el valor del token CSTF y la clave de la sesión
-
-public **computeHmac** (*mixed* $data, *mixed* $key, *mixed* $algo, [*mixed* $raw])
-
-Computa un HMAC
-
-public **setDefaultHash** (*mixed* $defaultHash)
-
-Establece el hash por defecto
-
-public **getDefaultHash** ()
-
-Regresa el hash por defecto
-
-public **hasLibreSsl** ()
-
-Probando para LibreSSL
-
-public **getSslVersionNumber** ()
-
-Obtiene la versión de OpenSSL o LibreSSL. Analiza el valor OPENSSL_VERSION_TEXT porque OPENSSL_VERSION_NUMBER no es utilizado por LibreSSL.
+Returns the default hash
 
 ```php
-<?php
-
-if ($security->getSslVersionNumber() >= 20105) {
-    // ...
-}
-
+public function getRandom(): Random;
 ```
+
+Returns a secure random number generator instance
+
+```php
+public function getRandomBytes(): string;
+```
+
+Returns a number of bytes to be generated by the openssl pseudo random generator
+
+```php
+public function getRequestToken(): string;
+```
+
+Returns the value of the CSRF token for the current request.
+
+```php
+public function getSaltBytes( int $numberBytes = int ): string;
+```
+
+Generate a >22-length pseudo random string to be used as salt for passwords
+
+```php
+public function getSessionToken(): string;
+```
+
+Returns the value of the CSRF token in session
+
+```php
+public function getToken(): string;
+```
+
+Generates a pseudo random token value to be used as input's value in a CSRF check
+
+```php
+public function getTokenKey(): string;
+```
+
+Generates a pseudo random token key to be used as input's name in a CSRF check
+
+```php
+public function getWorkFactor()
+```
+
+```php
+public function hash( string $password, int $workFactor = int ): string;
+```
+
+Creates a password hash using bcrypt with a pseudo random salt
+
+```php
+public function isLegacyHash( string $passwordHash ): bool;
+```
+
+Checks if a password hash is a valid bcrypt's hash
+
+```php
+public function setDI( mixed $container ): void;
+```
+
+Sets the dependency injector
+
+```php
+public function setDefaultHash( int $defaultHash ): Security;
+```
+
+Sets the default hash
+
+```php
+public function setRandomBytes( long $randomBytes ): Security;
+```
+
+Sets a number of bytes to be generated by the openssl pseudo random generator
+
+```php
+public function setWorkFactor( $workFactor )
+```
+
+<h1 id="Security_Exception">Class Phalcon\Security\Exception</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/exception.zep)
+
+| Namespace | Phalcon\Security | | Extends | \Phalcon\Exception |
+
+Phalcon\Security\Exception
+
+Exceptions thrown in Phalcon\Security will use this class
+
+<h1 id="Security_Random">Class Phalcon\Security\Random</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+
+| Namespace | Phalcon\Security |
+
+Phalcon\Security\Random
+
+Asegure la clase de generador de números aleatorios.
+
+Proporciona un generador seguro de números aleatorios que es adecuado para generar clave de sesión en cookies HTTP, etc.
+
+Es compatible con siguientes generadores de números aleatorios seguros:
+
+- random_bytes (PHP 7)
+- libsodium
+- openssl, libressl
+- /dev/urandom
+
+`Phalcon\Security\Random` could be mainly useful for:
+
+- Generación de claves (por ejemplo, generación de claves complicadas)
+- Generando contraseñas aleatorias para nuevas cuentas de usuario
+- Sistemas de cifrado
+
+```php
+$random = new \Phalcon\Security\Random();
+
+// Random binary string
+$bytes = $random->bytes();
+
+// Random hex string
+echo $random->hex(10); // a29f470508d5ccb8e289
+echo $random->hex(10); // 533c2f08d5eee750e64a
+echo $random->hex(11); // f362ef96cb9ffef150c9cd
+echo $random->hex(12); // 95469d667475125208be45c4
+echo $random->hex(13); // 05475e8af4a34f8f743ab48761
+
+// Random base62 string
+echo $random->base62(); // z0RkwHfh8ErDM1xw
+
+// Random base64 string
+echo $random->base64(12); // XfIN81jGGuKkcE1E
+echo $random->base64(12); // 3rcq39QzGK9fUqh8
+echo $random->base64();   // DRcfbngL/iOo9hGGvy1TcQ==
+echo $random->base64(16); // SvdhPcIHDZFad838Bb0Swg==
+
+// Random URL-safe base64 string
+echo $random->base64Safe();           // PcV6jGbJ6vfVw7hfKIFDGA
+echo $random->base64Safe();           // GD8JojhzSTrqX7Q8J6uug
+echo $random->base64Safe(8);          // mGyy0evy3ok
+echo $random->base64Safe(null, true); // DRrAgOFkS4rvRiVHFefcQ==
+
+// Random UUID
+echo $random->uuid(); // db082997-2572-4e2c-a046-5eefe97b1235
+echo $random->uuid(); // da2aa0e2-b4d0-4e3c-99f5-f5ef62c57fe2
+echo $random->uuid(); // 75e6b628-c562-4117-bb76-61c4153455a9
+echo $random->uuid(); // dc446df1-0848-4d05-b501-4af3c220c13d
+
+// Random number between 0 and $len
+echo $random->number(256); // 84
+echo $random->number(256); // 79
+echo $random->number(100); // 29
+echo $random->number(300); // 40
+
+// Random base58 string
+echo $random->base58();   // 4kUgL2pdQMSCQtjE
+echo $random->base58();   // Umjxqf7ZPwh765yR
+echo $random->base58(24); // qoXcgmw4A9dys26HaNEdCRj9
+echo $random->base58(7);  // 774SJD3vgP
+```
+
+Esta clase toma en préstamo parcialmente la librería SecureRandom de Ruby
+
+@link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
+
+## Métodos
+
+```php
+public function base58( int $len = null ): string;
+```
+
+Generates a random base58 string
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. El resultado puede contener caracteres alfanuméricos excepto 0, O, I y l.
+
+It is similar to `Phalcon\Security\Random::base64()` but has been modified to avoid both non-alphanumeric characters and letters which might look ambiguous when printed.
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->base58(); // 4kUgL2pdQMSCQtjE
+```
+
+@see \Phalcon\Security\Random:base64 @link https://en.wikipedia.org/wiki/Base58 @throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function base62( int $len = null ): string;
+```
+
+Generates a random base62 string
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro.
+
+It is similar to `Phalcon\Security\Random::base58()` but has been modified to provide the largest value that can safely be used in URLs without needing to take extra characters into consideration because it is [A-Za-z0-9].
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->base62(); // z0RkwHfh8ErDM1xw
+```
+
+@see \Phalcon\Security\Random:base58 @throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function base64( int $len = null ): string;
+```
+
+Generates a random base64 string
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len. Size formula: 4($len / 3) rounded up to a multiple of 4.
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->base64(12); // 3rcq39QzGK9fUqh8
+```
+
+@throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function base64Safe( int $len = null, bool $padding = bool ): string;
+```
+
+Generates a random URL-safe base64 string
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
+
+By default, padding is not generated because "=" may be used as a URL delimiter. El resultado puede contener A-Z, a-z, 0-9, "-" y "_". "=" is also used if $padding is true. See RFC 3548 for the definition of URL-safe base64.
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
+```
+
+@link https://www.ietf.org/rfc/rfc3548.txt @throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function bytes( int $len = int ): string;
+```
+
+Generates a random binary string
+
+The `Random::bytes` method returns a string and accepts as input an int representing the length in bytes to be returned.
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. El resultado puede contener cualquier byte: "x00" - "xFF".
+
+```php
+$random = new \Phalcon\Security\Random();
+
+$bytes = $random->bytes();
+var_dump(bin2hex($bytes));
+// Possible output: string(32) "00f6c04b144b41fad6a59111c126e1ee"
+```
+
+@throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function hex( int $len = null ): string;
+```
+
+Generates a random hex string
+
+Si $len no se especifica, se asume 16. Puede ser más grande en el futuro. La longitud de la cadena resultante suele ser mayor de $len.
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->hex(10); // a29f470508d5ccb8e289
+```
+
+@throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+public function number( int $len ): int;
+```
+
+Generates a random number between 0 and $len
+
+Returns an integer: 0 <= result <= $len.
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->number(16); // 8
+```
+
+@throws Exception If secure random number generator is not available, unexpected partial read or $len <= 0
+
+```php
+public function uuid(): string;
+```
+
+Generates a v4 random UUID (Universally Unique IDentifier)
+
+The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See RFC 4122 for details of UUID.
+
+This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx where x is any hexadecimal digit and y is one of 8, 9, A, or B (e.g., f47ac10b-58cc-4372-a567-0e02b2c3d479).
+
+```php
+$random = new \Phalcon\Security\Random();
+
+echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
+```
+
+@link https://www.ietf.org/rfc/rfc4122.txt @throws Exception If secure random number generator is not available or unexpected partial read
+
+```php
+protected function base( string $alphabet, int $base, mixed $n = null ): string;
+```
+
+Generates a random string based on the number ($base) of characters ($alphabet).
+
+If $n is not specified, 16 is assumed. Puede ser más grande en el futuro.
+
+@throws Exception If secure random number generator is not available or unexpected partial read
