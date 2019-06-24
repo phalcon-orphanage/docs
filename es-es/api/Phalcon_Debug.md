@@ -69,7 +69,7 @@ public function clearVars(): Debug;
 Clears are variables added previously
 
 ```php
-public function debugVar( mixed $varz, string $key ): Debug;
+public function debugVar( mixed $varz, string $key = null ): Debug;
 ```
 
 Adds a variable to the debug output
@@ -99,7 +99,7 @@ public function halt(): void;
 Halts the request showing a backtrace
 
 ```php
-public function listen( bool $exceptions = true, bool $lowSeverity = false ): Debug;
+public function listen( bool $exceptions = bool, bool $lowSeverity = bool ): Debug;
 ```
 
 Listen for uncaught exceptions and unsilent notices or warnings
@@ -165,7 +165,7 @@ protected function escapeString( mixed $value ): string;
 Escapes a string with htmlentities
 
 ```php
-protected function getArrayDump( array $argument, mixed $n ): string | null;
+protected function getArrayDump( array $argument, mixed $n = int ): string | null;
 ```
 
 Produces a recursive representation of an array
@@ -227,7 +227,7 @@ protected styles;
 ## Métodos
 
 ```php
-public function __construct( array $styles, bool $detailed = false ): void;
+public function __construct( array $styles = [], bool $detailed = bool ): void;
 ```
 
 Phalcon\Debug\Dump constructor
@@ -243,7 +243,7 @@ public function getDetailed(): bool
 ```
 
 ```php
-public function one( mixed $variable, string $name ): string;
+public function one( mixed $variable, string $name = null ): string;
 ```
 
 Alias of variable() method
@@ -253,7 +253,7 @@ public function setDetailed( bool $detailed )
 ```
 
 ```php
-public function setStyles( array $styles ): array;
+public function setStyles( array $styles = [] ): array;
 ```
 
 Set styles for vars type
@@ -278,7 +278,7 @@ echo (new \Phalcon\Debug\Dump())->toJson($foo);
 ```
 
 ```php
-public function variable( mixed $variable, string $name ): string;
+public function variable( mixed $variable, string $name = null ): string;
 ```
 
 Returns an HTML string of information about a single variable.
@@ -308,7 +308,7 @@ protected function getStyle( string $type ): string;
 Get style for type
 
 ```php
-protected function output( mixed $variable, string $name, int $tab = 1 ): string;
+protected function output( mixed $variable, string $name = null, int $tab = int ): string;
 ```
 
 Prepare an HTML string of information about a single variable.
