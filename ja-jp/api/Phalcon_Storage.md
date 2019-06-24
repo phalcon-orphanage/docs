@@ -82,7 +82,7 @@ protected serializerFactory;
 ## メソッド
 
 ```php
-protected function __construct( mixed $factory, array $options ): void;
+protected function __construct( mixed $factory = null, array $options ): void;
 ```
 
 Sets parameters based on options
@@ -94,7 +94,7 @@ abstract public function clear(): bool;
 Flushes/clears the cache
 
 ```php
-abstract public function decrement( string $key, int $value = 1 ): int | bool;
+abstract public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -138,13 +138,13 @@ abstract public function has( string $key ): bool;
 Checks if an element exists in the cache
 
 ```php
-abstract public function increment( string $key, int $value = 1 ): int | bool;
+abstract public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
 
 ```php
-abstract public function set( string $key, mixed $value, mixed $ttl ): bool;
+abstract public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -176,7 +176,7 @@ Calculates the TTL for a cache item
 @return int @throws Exception
 
 ```php
-protected function getUnserializedData( mixed $content, mixed $defaultValue ): mixed;
+protected function getUnserializedData( mixed $content, mixed $defaultValue = null ): mixed;
 ```
 
 Returns unserialized data
@@ -193,6 +193,8 @@ Initializes the serializer
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Storage\Serializer\SerializerInterface |
 
+Phalcon\Logger\AdapterInterface
+
 Interface for Phalcon\Logger adapters
 
 ## メソッド
@@ -204,7 +206,7 @@ public function clear(): bool;
 Flushes/clears the cache
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -246,13 +248,13 @@ public function has( string $key ): bool;
 Checks if an element exists in the cache
 
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -262,6 +264,8 @@ Stores data in the adapter
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+
+Phalcon\Storage\Adapter\Apcu
 
 Apcu adapter
 
@@ -278,7 +282,7 @@ protected options;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options );
+public function __construct( mixed $factory = null, array $options = [] );
 ```
 
 Constructor
@@ -290,7 +294,7 @@ public function clear(): bool;
 Flushes/clears the cache
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -310,7 +314,7 @@ Reads data from the adapter
 @return bool
 
 ```php
-public function get( string $key, mixed $defaultValue ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
@@ -346,7 +350,7 @@ Checks if an element exists in the cache
 @return bool
 
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
@@ -356,7 +360,7 @@ Increments a stored number
 @return bool|int
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -370,6 +374,8 @@ Stores data in the adapter
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/libmemcached.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+
+Phalcon\Storage\Adapter\Libmemcached
 
 Libmemcached adapter
 
@@ -386,7 +392,7 @@ protected options;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options );
+public function __construct( mixed $factory = null, array $options = [] );
 ```
 
 Libmemcached constructor.
@@ -402,7 +408,7 @@ Flushes/clears the cache
 @return bool @throws Exception
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -418,7 +424,7 @@ Reads data from the adapter
 @return bool @throws Exception
 
 ```php
-public function get( string $key, mixed $defaultValue ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
@@ -454,7 +460,7 @@ Checks if an element exists in the cache
 @return bool @throws Exception
 
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
@@ -464,7 +470,7 @@ Increments a stored number
 @return bool|int @throws Exception
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -478,6 +484,8 @@ Stores data in the adapter
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/memory.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+
+Phalcon\Storage\Adapter\Memory
 
 Memory adapter
 
@@ -499,7 +507,7 @@ protected options;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options );
+public function __construct( mixed $factory = null, array $options = [] );
 ```
 
 Constructor
@@ -511,7 +519,7 @@ public function clear(): bool;
 Flushes/clears the cache
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -531,7 +539,7 @@ Reads data from the adapter
 @return bool
 
 ```php
-public function get( string $key, mixed $defaultValue ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
@@ -567,7 +575,7 @@ Checks if an element exists in the cache
 @return bool
 
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
@@ -577,7 +585,7 @@ Increments a stored number
 @return bool|int
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -591,6 +599,8 @@ Stores data in the adapter
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/redis.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+
+Phalcon\Storage\Adapter\Redis
 
 Redis adapter
 
@@ -607,7 +617,7 @@ protected options;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options );
+public function __construct( mixed $factory = null, array $options = [] );
 ```
 
 Constructor
@@ -621,7 +631,7 @@ Flushes/clears the cache
 @return bool @throws Exception
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
@@ -641,7 +651,7 @@ Reads data from the adapter
 @return bool @throws Exception
 
 ```php
-public function get( string $key, mixed $defaultValue ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
@@ -677,7 +687,7 @@ Checks if an element exists in the cache
 @return bool @throws Exception
 
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
@@ -687,7 +697,7 @@ Increments a stored number
 @return bool|int @throws Exception
 
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
@@ -722,10 +732,14 @@ protected options;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $options );
+public function __construct( mixed $factory = null, array $options = [] );
 ```
 
 Stream constructor.
+
+@param array $options
+
+@throws Exception
 
 ```php
 public function clear(): bool;
@@ -734,10 +748,14 @@ public function clear(): bool;
 Flushes/clears the cache
 
 ```php
-public function decrement( string $key, int $value = 1 ): int | bool;
+public function decrement( string $key, int $value = int ): int | bool;
 ```
 
 Decrements a stored number
+
+@param string $key @param int $value
+
+@return bool|int @throws \Exception
 
 ```php
 public function delete( string $key ): bool;
@@ -745,11 +763,19 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
+@param string $key
+
+@return bool
+
 ```php
-public function get( string $key, mixed $defaultValue ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
+
+@param string $key @param null $defaultValue
+
+@return mixed|null
 
 ```php
 public function getAdapter(): mixed;
@@ -769,17 +795,29 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache and is not expired
 
+@param string $key
+
+@return bool
+
 ```php
-public function increment( string $key, int $value = 1 ): int | bool;
+public function increment( string $key, int $value = int ): int | bool;
 ```
 
 Increments a stored number
 
+@param string $key @param int $value
+
+@return bool|int @throws \Exception
+
 ```php
-public function set( string $key, mixed $value, mixed $ttl ): bool;
+public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
+
+@param string $key @param mixed $value @param null $ttl
+
+@return bool @throws \Exception
 
 <h1 id="Storage_AdapterFactory">Class Phalcon\Storage\AdapterFactory</h1>
 
@@ -806,13 +844,13 @@ private serializerFactory;
 ## メソッド
 
 ```php
-public function __construct( mixed $factory, array $services );
+public function __construct( mixed $factory = null, array $services = [] );
 ```
 
 AdapterFactory constructor.
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 
 Create a new instance of the adapter
@@ -828,6 +866,8 @@ protected function getAdapters(): array;
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/exception.zep)
 
 | Namespace | Phalcon\Storage | | Extends | \Phalcon\Exception |
+
+Phalcon\Storage\Exception
 
 Exceptions thrown in Phalcon\Storage will use this class
 
@@ -856,7 +896,7 @@ protected data;
 ## メソッド
 
 ```php
-public function __construct( mixed $data ): void;
+public function __construct( mixed $data = null ): void;
 ```
 
     Constructor
@@ -1085,7 +1125,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 ## メソッド
 
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 
 SerializerFactory constructor.
