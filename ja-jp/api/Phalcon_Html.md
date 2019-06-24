@@ -53,7 +53,9 @@ Render attributes as HTML attributes
 
 | Namespace | Phalcon\Html\Attributes | | Uses | Phalcon\Html\Attributes |
 
-Interface Phalcon\Html\Attributes\AttributesInterface
+* Phalcon\Html\Attributes\AttributesInterface
+* 
+* Interface Phalcon\Html\Attributes\AttributesInterface */
 
 ## メソッド
 
@@ -75,7 +77,9 @@ Set Attributes
 
 | Namespace | Phalcon\Html\Attributes |
 
-Interface Phalcon\Html\Attributes\RenderInterface
+* Phalcon\Html\Attributes\RenderInterface
+* 
+* Interface Phalcon\Html\Attributes\RenderInterface */
 
 ## メソッド
 
@@ -90,6 +94,8 @@ Generate a string represetation
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/breadcrumbs.zep)
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\DiInterface |
+
+Phalcon\Html\Breadcrumbs
 
 This component offers an easy way to create breadcrumbs for your application. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
@@ -122,7 +128,7 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 ## メソッド
 
 ```php
-public function add( string $label, string $link ): Breadcrumbs;
+public function add( string $label, string $link = string ): Breadcrumbs;
 ```
 
 Adds a new crumb.
@@ -189,6 +195,8 @@ Returns the internal breadcrumbs array
 
 | Namespace | Phalcon\Html | | Extends | \Phalcon\Exception |
 
+Phalcon\Html\Tag\Exception
+
 Exceptions thrown in Phalcon\Html\Tag will use this class
 
 <h1 id="Html_Helper_AbstractHelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
@@ -196,6 +204,8 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/abstracthelper.zep)
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception, Phalcon\EscaperInterface |
+
+Phalcon\Html\Helper\AbstractHelper
 
 Abstract class for all html helpers
 
@@ -234,19 +244,19 @@ protected function renderAttributes( array $attributes ): string;
 Renders all the attributes
 
 ```php
-protected function renderElement( string $tag, array $attributes ): string;
+protected function renderElement( string $tag, array $attributes = [] ): string;
 ```
 
 Renders an element
 
 ```php
-protected function renderFullElement( string $tag, string $text, array $attributes, bool $raw = false ): string;
+protected function renderFullElement( string $tag, string $text, array $attributes = [], bool $raw = bool ): string;
 ```
 
 Renders an element
 
 ```php
-protected function selfClose( string $tag, array $attributes ): string;
+protected function selfClose( string $tag, array $attributes = [] ): string;
 ```
 
 Produces a self close tag i.e. <img />
@@ -257,12 +267,14 @@ Produces a self close tag i.e. <img />
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Anchor
+
 Creates an anchor
 
 ## メソッド
 
 ```php
-public function __invoke( string $href, string $text, array $attributes ): string;
+public function __invoke( string $href, string $text, array $attributes = [] ): string;
 ```
 
 @var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
@@ -273,12 +285,14 @@ public function __invoke( string $href, string $text, array $attributes ): strin
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\AnchorRaw
+
 Creates a raw anchor
 
 ## メソッド
 
 ```php
-public function __invoke( string $href, string $text, array $attributes ): string;
+public function __invoke( string $href, string $text, array $attributes = [] ): string;
 ```
 
 @var string href The href tag @var string text The text for the anchor @var array attributes Any additional attributes
@@ -289,12 +303,14 @@ public function __invoke( string $href, string $text, array $attributes ): strin
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Body
+
 Creates a body tag
 
 ## メソッド
 
 ```php
-public function __invoke( array $attributes ): string;
+public function __invoke( array $attributes = [] ): string;
 ```
 
 @var array attributes Any additional attributes
@@ -305,12 +321,14 @@ public function __invoke( array $attributes ): string;
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Button
+
 Creates a button tag
 
 ## メソッド
 
 ```php
-public function __invoke( string $text, array $attributes ): string;
+public function __invoke( string $text, array $attributes = [] ): string;
 ```
 
 @var string text The text for the anchor @var array attributes Any additional attributes
@@ -320,6 +338,8 @@ public function __invoke( string $text, array $attributes ): string;
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/close.zep)
 
 | Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
+
+Phalcon\Html\Helper\Close
 
 Creates a closing tag
 
@@ -339,12 +359,14 @@ public function __invoke( string $tag ): string;
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Address
+
 Creates an element
 
 ## メソッド
 
 ```php
-public function __invoke( string $tag, string $text, array $attributes ): string;
+public function __invoke( string $tag, string $text, array $attributes = [] ): string;
 ```
 
 @var string tag The tag name @var string text The text for the anchor @var array attributes Any additional attributes
@@ -355,12 +377,14 @@ public function __invoke( string $tag, string $text, array $attributes ): string
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\ElementRaw
+
 Creates an element raw
 
 ## メソッド
 
 ```php
-public function __invoke( string $tag, string $text, array $attributes ): string;
+public function __invoke( string $tag, string $text, array $attributes = [] ): string;
 ```
 
 @param string $tag The tag for the anchor @param string $text The text for the anchor @param array $attributes Any additional attributes
@@ -373,12 +397,14 @@ public function __invoke( string $tag, string $text, array $attributes ): string
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Form
+
 Creates a form opening tag
 
 ## メソッド
 
 ```php
-public function __invoke( array $attributes ): string;
+public function __invoke( array $attributes = [] ): string;
 ```
 
 @var array attributes Any additional attributes
@@ -389,15 +415,19 @@ public function __invoke( array $attributes ): string;
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Img
+
 Creates am img tag
 
 ## メソッド
 
 ```php
-public function __invoke( string $src, array $attributes ): string;
+public function __invoke( string $src, array $attributes = [] ): string;
 ```
 
 @param string $src @param array $attributes Any additional attributes
+
+@return string @throws Exception
 
 <h1 id="Html_Helper_Label">Class Phalcon\Html\Helper\Label</h1>
 
@@ -405,12 +435,14 @@ public function __invoke( string $src, array $attributes ): string;
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Exception | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\Label
+
 Creates a label
 
 ## メソッド
 
 ```php
-public function __invoke( array $attributes ): string;
+public function __invoke( array $attributes = [] ): string;
 ```
 
 @param array $attributes Any additional attributes
@@ -423,12 +455,14 @@ public function __invoke( array $attributes ): string;
 
 | Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
 
+Phalcon\Html\Helper\TextArea
+
 Creates a textarea tag
 
 ## メソッド
 
 ```php
-public function __invoke( string $text, array $attributes ): string;
+public function __invoke( string $text, array $attributes = [] ): string;
 ```
 
 @var string text The text for the anchor @var array attributes Any additional attributes
@@ -438,6 +472,8 @@ public function __invoke( string $text, array $attributes ): string;
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
 | Namespace | Phalcon\Html | | Uses | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface | | Implements | InjectionAwareInterface |
+
+Phalcon\Html\Tag
 
 Phalcon\Html\Tag is designed to simplify building of HTML tags. It provides a set of helpers to dynamically generate HTML.
 
@@ -461,7 +497,7 @@ const XHTML5 = 11;
 
 ```php
 /**
- * @var <DiInterface>
+ * @var DiInterface
  */
 protected container;
 
@@ -510,7 +546,7 @@ private url;
 ## メソッド
 
 ```php
-public function __construct( mixed $escaper, mixed $url );
+public function __construct( mixed $escaper = null, mixed $url = null );
 ```
 
 Constructor
@@ -522,7 +558,7 @@ public function appendTitle( mixed $title ): Tag;
 Appends a text to current document title
 
 ```php
-public function button( string $name, array $parameters ): string;
+public function button( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="button"] tag
@@ -538,7 +574,7 @@ echo $tag->button('Click Me');
 Volt syntax:
 
 ```php
-{{ button('Click Me') }}
+{% raw %}{{ button('Click Me') }}{% endraw %}
 ```
 
 ```php
@@ -548,7 +584,7 @@ public function clear(): void;
 Resets the request and internal values to avoid those fields will have any default value.
 
 ```php
-public function element( string $tag, array $parameters ): string;
+public function element( string $tag, array $parameters = [] ): string;
 ```
 
 Builds a HTML tag
@@ -556,7 +592,7 @@ Builds a HTML tag
 Parameters `onlyStart` Only process the start of th element `selfClose` It is a self close element `useEol` Append PHP_EOL at the end
 
 ```php
-public function elementClose( string $tag, array $parameters ): string;
+public function elementClose( string $tag, array $parameters = [] ): string;
 ```
 
 Builds the closing tag of an html element
@@ -583,13 +619,13 @@ echo $tag->elementClose(
 ```
 
 ```php
-public function endForm( bool $eol = true ): string;
+public function endForm( bool $eol = bool ): string;
 ```
 
 Returns the closing tag of a form element
 
 ```php
-public function form( string $action, array $parameters ): string;
+public function form( string $action, array $parameters = [] ): string;
 ```
 
 Builds a HTML FORM tag
@@ -612,12 +648,12 @@ echo $tag->form(
 Volt syntax:
 
 ```php
-{{ form('posts/save') }}
-{{ form('posts/save', ['method': 'post') }}
+{% raw %}{{ form('posts/save') }}{% endraw %}
+{% raw %}{{ form('posts/save', ['method': 'post') }}{% endraw %}
 ```
 
 ```php
-public function friendlyTitle( string $text, array $parameters ): string;
+public function friendlyTitle( string $text, array $parameters = [] ): string;
 ```
 
 Converts text to URL-friendly strings
@@ -640,7 +676,7 @@ echo $tag->friendlyTitle(
 Volt Syntax:
 
 ```php
-{{ friendly_title(['text': 'These are big important news', 'separator': '-']) }}
+{% raw %}{{ friendly_title(['text': 'These are big important news', 'separator': '-']) }}{% endraw %}
 ```
 
 ```php
@@ -656,7 +692,7 @@ public function getDocType(): string;
 Get the document type declaration of content. If the docType has not been set properly, XHTML5 is returned
 
 ```php
-public function getTitle( bool $prepend = true, bool $append = true ): string;
+public function getTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
 
 Gets the current document title. The title will be automatically escaped.
@@ -681,7 +717,7 @@ echo $tag->getTitle(false, false); // World
 Volt syntax:
 
 ```php
-{{ get_title() }}
+{% raw %}{{ get_title() }}{% endraw %}
 ```
 
 ```php
@@ -701,11 +737,11 @@ echo $tag->getTitleSeparator();
 Volt syntax:
 
 ```php
-{{ get_title_separator() }}
+{% raw %}{{ get_title_separator() }}{% endraw %}
 ```
 
 ```php
-public function getValue( string $name, array $parameters ): mixed | null;
+public function getValue( string $name, array $parameters = [] ): mixed | null;
 ```
 
 Every helper calls this function to check whether a component has a predefined value using `setAttribute` or value from $_POST
@@ -717,7 +753,7 @@ public function hasValue( string $name ): bool;
 Check if a helper has a default value set using `setAttribute()` or value from $_POST
 
 ```php
-public function image( string $url, array $parameters ): string;
+public function image( string $url = string, array $parameters = [] ): string;
 ```
 
 Builds HTML IMG tags
@@ -749,13 +785,13 @@ echo $tag->image(
 Volt Syntax:
 
 ```php
-{{ image('img/bg.png') }}
-{{ image('img/photo.jpg', ['alt': 'Some Photo') }}
-{{ image('http://static.mywebsite.com/img/bg.png', ['local': false]) }}
+{% raw %}{{ image('img/bg.png') }}{% endraw %}
+{% raw %}{{ image('img/photo.jpg', ['alt': 'Some Photo') }}{% endraw %}
+{% raw %}{{ image('http://static.mywebsite.com/img/bg.png', ['local': false]) }}{% endraw %}
 ```
 
 ```php
-public function inputCheckbox( string $name, array $parameters ): string;
+public function inputCheckbox( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="check"] tag
@@ -772,17 +808,17 @@ echo $tag->inputCheckbox(
 Volt syntax:
 
 ```php
-{{ input_checkbox(['name': 'terms, 'value': 'Y']) }}
+{% raw %}{{ input_checkbox(['name': 'terms, 'value': 'Y']) }}{% endraw %}
 ```
 
 ```php
-public function inputColor( string $name, array $parameters ): string;
+public function inputColor( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='color'] tag
 
 ```php
-public function inputDate( string $name, array $parameters ): string;
+public function inputDate( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='date'] tag
@@ -803,11 +839,11 @@ echo $tag->inputDate(
 Volt syntax:
 
 ```php
-{{ input_date(['name':'born', 'value':'14-12-1980']) }}
+{% raw %}{{ input_date(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
 ```
 
 ```php
-public function inputDateTime( string $name, array $parameters ): string;
+public function inputDateTime( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='datetime'] tag
@@ -828,11 +864,11 @@ echo $tag->inputDateTime(
 Volt syntax:
 
 ```php
-{{ input_date_time(['name':'born', 'value':'14-12-1980']) }}
+{% raw %}{{ input_date_time(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
 ```
 
 ```php
-public function inputDateTimeLocal( string $name, array $parameters ): string;
+public function inputDateTimeLocal( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='datetime-local'] tag
@@ -853,11 +889,11 @@ echo $tag->inputDateTimeLocal(
 Volt syntax:
 
 ```php
-{{ input_date_time_local(['name':'born', 'value':'14-12-1980']) }}
+{% raw %}{{ input_date_time_local(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
 ```
 
 ```php
-public function inputEmail( string $name, array $parameters ): string;
+public function inputEmail( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='email'] tag
@@ -877,11 +913,11 @@ echo $tag->inputEmail(
 Volt syntax:
 
 ```php
-{{ input_email(['name': 'email']);
+{% raw %}{{ input_email(['name': 'email']);{% endraw %}
 ```
 
 ```php
-public function inputFile( string $name, array $parameters ): string;
+public function inputFile( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='file'] tag
@@ -901,11 +937,11 @@ echo $tag->inputFile(
 Volt syntax:
 
 ```php
-{{ input_file(['name': 'file']);
+{% raw %}{{ input_file(['name': 'file']){% endraw %}
 ```
 
 ```php
-public function inputHidden( string $name, array $parameters ): string;
+public function inputHidden( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='hidden'] tag
@@ -924,7 +960,7 @@ echo $tag->inputHidden(
 ```
 
 ```php
-public function inputImage( string $name, array $parameters ): string;
+public function inputImage( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="image"] tag
@@ -943,17 +979,17 @@ echo $tag->inputImage(
 Volt syntax:
 
 ```php
-{{ input_image(['src': '/img/button.png']) }}
+{% raw %}{{ input_image(['src': '/img/button.png']) }}{% endraw %}
 ```
 
 ```php
-public function inputMonth( string $name, array $parameters ): string;
+public function inputMonth( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='month'] tag
 
 ```php
-public function inputNumeric( string $name, array $parameters ): string;
+public function inputNumeric( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='number'] tag
@@ -973,7 +1009,7 @@ echo $tag->numericField(
 ```
 
 ```php
-public function inputPassword( string $name, array $parameters ): string;
+public function inputPassword( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='password'] tag
@@ -992,7 +1028,7 @@ echo $tag->passwordField(
 ```
 
 ```php
-public function inputRadio( string $name, array $parameters ): string;
+public function inputRadio( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="radio"] tag
@@ -1013,29 +1049,29 @@ echo $tag->inputRadio(
 Volt syntax:
 
 ```php
-{{ input_radio(['name': 'weather', 'value": 'hot']) }}
+{% raw %}{{ input_radio(['name': 'weather', 'value": 'hot']) }}{% endraw %}
 ```
 
 ```php
-public function inputRange( string $name, array $parameters ): string;
+public function inputRange( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='range'] tag
 
 ```php
-public function inputSearch( string $name, array $parameters ): string;
+public function inputSearch( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='search'] tag
 
 ```php
-public function inputTel( string $name, array $parameters ): string;
+public function inputTel( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='tel'] tag
 
 ```php
-public function inputText( string $name, array $parameters ): string;
+public function inputText( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='text'] tag
@@ -1054,25 +1090,25 @@ echo $tag->inputText(
 ```
 
 ```php
-public function inputTime( string $name, array $parameters ): string;
+public function inputTime( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='time'] tag
 
 ```php
-public function inputUrl( string $name, array $parameters ): string;
+public function inputUrl( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='url'] tag
 
 ```php
-public function inputWeek( string $name, array $parameters ): string;
+public function inputWeek( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type='week'] tag
 
 ```php
-public function javascript( string $url, array $parameters ): string;
+public function javascript( string $url, array $parameters = [] ): string;
 ```
 
 Builds a script[type="javascript"] tag
@@ -1097,12 +1133,12 @@ echo $tag->javascript('javascript/jquery.js');
 Volt syntax:
 
 ```php
-{{ javascript('http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js', ['local': false]) }}
-{{ javascript('javascript/jquery.js') }}
+{% raw %}{{ javascript('http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js', ['local': false]) }}{% endraw %}
+{% raw %}{{ javascript('javascript/jquery.js') }}{% endraw %}
 ```
 
 ```php
-public function link( string $url, string $text, array $parameters ): string;
+public function link( string $url, string $text = string, array $parameters = [] ): string;
 ```
 
 Builds a HTML A tag using framework conventions
@@ -1149,7 +1185,7 @@ public function prependTitle( mixed $title ): Tag;
 Prepends a text to current document title
 
 ```php
-public function renderTitle( bool $prepend = true, bool $append = true ): string;
+public function renderTitle( bool $prepend = bool, bool $append = bool ): string;
 ```
 
 Renders the title with title tags. The title is automaticall escaped
@@ -1172,11 +1208,11 @@ echo $tag->renderTitle(false, false); // <title>World</title>
 ```
 
 ```php
-{{ render_title() }}
+{% raw %}{{ render_title() }}{% endraw %}
 ```
 
 ```php
-public function reset( string $name, array $parameters ): string;
+public function reset( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="reset"] tag
@@ -1192,11 +1228,11 @@ echo $tag->reset('Reset')
 Volt syntax:
 
 ```php
-{{ reset('Save') }}
+{% raw %}{{ reset('Save') }}{% endraw %}
 ```
 
 ```php
-public function select( string $name, array $parameters, mixed $data ): string;
+public function select( string $name, array $parameters = [], mixed $data = null ): string;
 ```
 
 Builds a select element. It accepts an array or a resultset from a Phalcon\Mvc\Model
@@ -1243,8 +1279,6 @@ echo $tag->select(
 );
 ```
 
-@param array data
-
 ```php
 public function setAttribute( string $name, mixed $value ): Tag;
 ```
@@ -1264,7 +1298,7 @@ echo $tag->inputText('name'); // Will have the value 'peter' by default
 ```
 
 ```php
-public function setAttributes( array $values, bool $merge = false ): Tag;
+public function setAttributes( array $values, bool $merge = bool ): Tag;
 ```
 
 Assigns default values to generated tags by helpers
@@ -1297,8 +1331,6 @@ public function setDocType( int $doctype ): Tag;
 
 Set the document type of content
 
-@param int doctype A valid doctype for the content
-
 ```php
 public function setTitle( string $title ): Tag;
 ```
@@ -1328,7 +1360,7 @@ echo $tag->setTitleSeparator('-');
 ```
 
 ```php
-public function stylesheet( string $url, array $parameters ): string;
+public function stylesheet( string $url, array $parameters = [] ): string;
 ```
 
 Builds a LINK[rel="stylesheet"] tag
@@ -1353,12 +1385,12 @@ echo $tag->stylesheet('css/style.css');
 Volt syntax:
 
 ```php
-{{ stylesheet('http://fonts.googleapis.com/css?family=Rosario', ['local': false]) }}
-{{ stylesheet('css/style.css') }}
+{% raw %}{{ stylesheet('http://fonts.googleapis.com/css?family=Rosario', ['local': false]) }}{% endraw %}
+{% raw %}{{ stylesheet('css/style.css') }}{% endraw %}
 ```
 
 ```php
-public function submit( string $name, array $parameters ): string;
+public function submit( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML input[type="submit"] tag
@@ -1374,11 +1406,11 @@ echo $tag->submit('Save');
 Volt syntax:
 
 ```php
-{{ submit('Save') }}
+{% raw %}{{ submit('Save') }}{% endraw %}
 ```
 
 ```php
-public function textArea( string $name, array $parameters ): string;
+public function textArea( string $name, array $parameters = [] ): string;
 ```
 
 Builds a HTML TEXTAREA tag
@@ -1400,7 +1432,7 @@ echo $tag->textArea(
 Volt syntax:
 
 ```php
-{{ text_area('comments', ['cols': 10, 'rows': 4]) }}
+{% raw %}{{ text_area('comments', ['cols': 10, 'rows': 4]) }}{% endraw %}
 ```
 
 <h1 id="Html_TagFactory">Class Phalcon\Html\TagFactory</h1>
@@ -1415,7 +1447,7 @@ ServiceLocator implementation for Tag helpers
 
 ```php
 /**
- * @var EscaperInterface
+ * @var <EscaperInterface>
  */
 private escaper;
 
@@ -1424,7 +1456,7 @@ private escaper;
 ## メソッド
 
 ```php
-public function __construct( mixed $escaper, array $services );
+public function __construct( mixed $escaper, array $services = [] );
 ```
 
 TagFactory constructor.
