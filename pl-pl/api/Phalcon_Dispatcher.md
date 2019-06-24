@@ -135,7 +135,7 @@ protected returnedValue;
 ## Metody
 
 ```php
-public function callActionMethod( mixed $handler, string $actionMethod, array $params );
+public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] );
 ```
 
 //
@@ -251,7 +251,7 @@ public function getNamespaceName(): string;
 Gets a namespace to be prepended to the current handler name
 
 ```php
-public function getParam( mixed $param, mixed $filters, mixed $defaultValue ): mixed;
+public function getParam( mixed $param, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
 Gets a param by its name or numeric index
@@ -325,7 +325,7 @@ public function setHandlerSuffix( string $handlerSuffix ): void;
 Sets the default suffix for the handler
 
 ```php
-public function setModelBinder( mixed $modelBinder, mixed $cache ): Dispatcher;
+public function setModelBinder( mixed $modelBinder, mixed $cache = null ): Dispatcher;
 ```
 
 Enable model binding during dispatch
@@ -435,10 +435,12 @@ public function getHandlerSuffix(): string;
 Gets the default handler suffix
 
 ```php
-public function getParam( mixed $param, mixed $filters ): mixed;
+public function getParam( mixed $param, mixed $filters = null ): mixed;
 ```
 
 Gets a param by its name or numeric index
+
+@param string|array filters
 
 ```php
 public function getParams(): array;
@@ -511,6 +513,8 @@ public function setParam( mixed $param, mixed $value ): void;
 ```
 
 Set a param by its name or numeric index
+
+@param mixed value
 
 ```php
 public function setParams( array $params ): void;
