@@ -44,13 +44,13 @@ protected options;
 ## メソッド
 
 ```php
-public function handle( array $arguments );
+public function handle( array $arguments = null );
 ```
 
 Handle the whole command-line tasks
 
 ```php
-public function setArgument( array $arguments, bool $str = true, bool $shift = true ): Console;
+public function setArgument( array $arguments = null, bool $str = bool, bool $shift = bool ): Console;
 ```
 
 Set an specific argument
@@ -116,7 +116,7 @@ protected options;
 ## メソッド
 
 ```php
-public function callActionMethod( mixed $handler, string $actionMethod, array $params ): mixed;
+public function callActionMethod( mixed $handler, string $actionMethod, array $params = [] ): mixed;
 ```
 
 Calls the action method.
@@ -134,7 +134,7 @@ public function getLastTask(): TaskInterface;
 Returns the latest dispatched controller
 
 ```php
-public function getOption( mixed $option, mixed $filters, mixed $defaultValue ): mixed;
+public function getOption( mixed $option, mixed $filters = null, mixed $defaultValue = null ): mixed;
 ```
 
 Gets an option by its name or numeric index
@@ -196,7 +196,7 @@ protected function handleException( mixed $exception );
 Handles a user exception
 
 ```php
-protected function throwDispatchException( string $message, int $exceptionCode );
+protected function throwDispatchException( string $message, int $exceptionCode = int );
 ```
 
 Throws an internal exception
@@ -346,13 +346,13 @@ protected wasMatched = false;
 ## メソッド
 
 ```php
-public function __construct( bool $defaultRoutes = true ): void;
+public function __construct( bool $defaultRoutes = bool ): void;
 ```
 
 Phalcon\Cli\Router constructor
 
 ```php
-public function add( string $pattern, mixed $paths ): RouteInterface;
+public function add( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
 Adds a route to the router
@@ -426,7 +426,7 @@ public function getTaskName(): string;
 Returns processed task name
 
 ```php
-public function handle( mixed $arguments );
+public function handle( mixed $arguments = null );
 ```
 
 Handles routing information received from command-line arguments
@@ -541,10 +541,8 @@ protected static uniqueId = 0;
 ## メソッド
 
 ```php
-public function __construct( string $pattern, mixed $paths ): void;
+public function __construct( string $pattern, mixed $paths = null ): void;
 ```
-
-Phalcon\Cli\Router\Route constructor
 
 @param array|string paths
 
@@ -631,7 +629,7 @@ public function getRouteId(): string;
 Returns the route's id
 
 ```php
-public function reConfigure( string $pattern, mixed $paths ): void;
+public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
 Reconfigure the route adding a new pattern and a set of paths
@@ -718,7 +716,7 @@ public function getRouteId(): string;
 Returns the route's id
 
 ```php
-public function reConfigure( string $pattern, mixed $paths ): void;
+public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
 Reconfigure the route adding a new pattern and a set of paths
@@ -746,7 +744,7 @@ Interface for Phalcon\Cli\Router
 ## メソッド
 
 ```php
-public function add( string $pattern, mixed $paths ): RouteInterface;
+public function add( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 
 Adds a route to the router on any HTTP method
@@ -806,7 +804,7 @@ public function getTaskName(): string;
 Returns processed task name
 
 ```php
-public function handle( mixed $arguments );
+public function handle( mixed $arguments = null );
 ```
 
 Handles routing information received from the rewrite engine
