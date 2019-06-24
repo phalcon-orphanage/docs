@@ -5,17 +5,19 @@ version: '4.0'
 title: 'Phalcon\Url'
 ---
 
-# Class **Phalcon\Url**
+* [Phalcon\Url](#Url)
+* [Phalcon\Url\Exception](#Url_Exception)
+* [Phalcon\UrlInterface](#UrlInterface)
 
-*implements* [Phalcon\UrlInterface](Phalcon_UrlInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+<h1 id="Url">Class Phalcon\Url</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/url.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\DiInterface, Phalcon\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
 
 This components helps in the generation of: URIs, URLs and Paths
 
 ```php
-<?php
-
 // Generate a URL appending the URI to the base URI
 echo $url->get("products/edit/1");
 
@@ -27,73 +29,45 @@ echo $url->get(
         "year"  => "2012",
     ]
 );
+```
+
+## Properties
+
+```php
+/**
+ * @var null | string
+ */
+protected baseUri;
+
+/**
+ * @var null | string
+ */
+protected basePath;
+
+/**
+ * @var <DiInterface>
+ */
+protected container;
+
+//
+protected router;
+
+/**
+ * @var null | string
+ */
+protected staticBaseUri;
 
 ```
 
 ## Metody
 
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector)
-
-Sets the DependencyInjector container
-
-public **getDI** ()
-
-Returns the DependencyInjector container
-
-public **setBaseUri** (*mixed* $baseUri)
-
-Sets a prefix for all the URIs to be generated
-
 ```php
-<?php
-
-$url->setBaseUri("/invo/");
-
-$url->setBaseUri("/invo/index.php/");
-
+public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
 ```
-
-public **setStaticBaseUri** (*mixed* $staticBaseUri)
-
-Sets a prefix for all static URLs generated
-
-```php
-<?php
-
-$url->setStaticBaseUri("/invo/");
-
-```
-
-public **getBaseUri** ()
-
-Returns the prefix for all the generated urls. By default /
-
-public **getStaticBaseUri** ()
-
-Returns the prefix for all the generated static urls. By default /
-
-public **setBasePath** (*mixed* $basePath)
-
-Sets a base path for all the generated paths
-
-```php
-<?php
-
-$url->setBasePath("/var/www/htdocs/");
-
-```
-
-public **getBasePath** ()
-
-Returns the base path
-
-public **get** ([*mixed* $uri], [*mixed* $args], [*mixed* $local], [*mixed* $baseUri])
 
 Generates a URL
 
 ```php
-<?php
-
 // Generate a URL appending the URI to the base URI
 echo $url->get("products/edit/1");
 
@@ -121,16 +95,33 @@ echo $url->get(
     null,
     false
 );
-
 ```
 
-public **getStatic** ([*mixed* $uri])
+```php
+public function getBasePath(): string;
+```
+
+Returns the base path
+
+```php
+public function getBaseUri(): string;
+```
+
+Returns the prefix for all the generated urls. By default /
+
+```php
+public function getDI(): DiInterface;
+```
+
+Returns the DependencyInjector container
+
+```php
+public function getStatic( mixed $uri = null ): string;
+```
 
 Generates a URL for a static resource
 
 ```php
-<?php
-
 // Generate a URL for a static resource
 echo $url->getStatic("img/logo.png");
 
@@ -140,9 +131,112 @@ echo $url->getStatic(
         "for" => "logo-cdn",
     ]
 );
-
 ```
 
-public **path** ([*mixed* $path])
+```php
+public function getStaticBaseUri(): string;
+```
+
+Returns the prefix for all the generated static urls. By default /
+
+```php
+public function path( string $path = null ): string;
+```
 
 Generates a local path
+
+```php
+public function setBasePath( string $basePath ): UrlInterface;
+```
+
+Sets a base path for all the generated paths
+
+```php
+$url->setBasePath("/var/www/htdocs/");
+```
+
+```php
+public function setBaseUri( string $baseUri ): UrlInterface;
+```
+
+Sets a prefix for all the URIs to be generated
+
+```php
+$url->setBaseUri("/invo/");
+
+$url->setBaseUri("/invo/index.php/");
+```
+
+```php
+public function setDI( mixed $container ): void;
+```
+
+Sets the DependencyInjector container
+
+```php
+public function setStaticBaseUri( string $staticBaseUri ): UrlInterface;
+```
+
+Sets a prefix for all static URLs generated
+
+```php
+$url->setStaticBaseUri("/invo/");
+```
+
+<h1 id="Url_Exception">Class Phalcon\Url\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url/exception.zep)
+
+| Namespace | Phalcon\Url | | Extends | \Phalcon\Exception |
+
+Phalcon\Url\Exception
+
+Exceptions thrown in Phalcon\Url will use this class
+
+<h1 id="UrlInterface">Interface Phalcon\UrlInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/urlinterface.zep)
+
+| Namespace | Phalcon |
+
+Interface for Phalcon\UrlInterface
+
+## Metody
+
+```php
+public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
+```
+
+Generates a URL
+
+@param string|array uri @param array|object args Optional arguments to be appended to the query string
+
+```php
+public function getBasePath(): string;
+```
+
+Returns a base path
+
+```php
+public function getBaseUri(): string;
+```
+
+Returns the prefix for all the generated urls. By default /
+
+```php
+public function path( string $path = null ): string;
+```
+
+Generates a local path
+
+```php
+public function setBasePath( string $basePath ): UrlInterface;
+```
+
+Sets a base paths for all the generated paths
+
+```php
+public function setBaseUri( string $baseUri ): UrlInterface;
+```
+
+Sets a prefix to all the urls generated
