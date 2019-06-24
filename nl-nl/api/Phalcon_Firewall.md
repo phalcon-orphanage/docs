@@ -145,7 +145,7 @@ protected function fireEventOrThrowException( mixed $role, string $actionName, s
 Fires event or throwing exception
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 
 Gets access from cache
@@ -163,7 +163,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
 Saves access in cache and internal cache
 
 ```php
-protected function throwFirewallException( string $message, int $exceptionCode ): bool;
+protected function throwFirewallException( string $message, int $exceptionCode = int ): bool;
 ```
 
 Throws an internal exception
@@ -225,12 +225,10 @@ protected roleCacheCallback;
 ## Methoden
 
 ```php
-public function __construct( string $aclServiceName, array $boundModelsKeyMap );
+public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
 ```
 
 Phalcon\Firewall\Adapter\Acl constructor
-
-@param string aclServiceName @param array boundModelsKeyMap
 
 ```php
 public function afterBinding( mixed $event, mixed $dispatcher, mixed $data );
@@ -270,7 +268,7 @@ public function getRoleCacheCallback(): mixed
 public function isMultiModuleConfiguration(): bool;
 ```
 
-Returns multiModuleConfiguration
+Returns multiModuleConfiguration @return bool
 
 ```php
 public function setAclServiceName( string $aclServiceName )
@@ -295,7 +293,7 @@ public function useMultiModuleConfiguration( bool $multiModuleConfiguration );
 Sets multiModuleConfiguration
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 
 //
@@ -356,8 +354,6 @@ public function __construct( mixed $annotationsAdapter );
 
 Phalcon\Firewall\Adapter\Annotations constructor
 
-@param mixed annotationsAdapter
-
 ```php
 public function beforeExecuteRoute( mixed $event, mixed $dispatcher, mixed $data );
 ```
@@ -397,7 +393,7 @@ protected function checkControllerAnnotationAccess( string $controllerClass, str
 //
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 
 //
@@ -473,7 +469,7 @@ protected routeNameConfiguration = true;
 ## Methoden
 
 ```php
-public function __construct( string $aclServiceName, array $boundModelsKeyMap );
+public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
 ```
 
 //
@@ -545,7 +541,7 @@ protected function fireEventOrThrowException( mixed $role, string $actionName, s
 Fires event or throwing exception
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 
 //

@@ -5,17 +5,19 @@ version: '4.0'
 title: 'Phalcon\Registry'
 ---
 
-# Final class **Phalcon\Registry**
+* [Phalcon\Registry](#Registry)
 
-*implements* [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php), [Countable](https://php.net/manual/en/class.countable.php), [Iterator](https://php.net/manual/en/class.iterator.php), [Traversable](https://php.net/manual/en/class.traversable.php)
+<h1 id="Registry">Final Class Phalcon\Registry</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\Collection\Collection, Traversable | | Extends | Collection |
+
+Phalcon\Registry
 
 A registry is a container for storing objects and values in the application space. By storing the value in a registry, the same object is always available throughout your application.
 
 ```php
-<?php
-
 $registry = new \Phalcon\Registry();
 
 // Set value
@@ -37,7 +39,6 @@ $exists = isset($registry["something"]);
 unset($registry->something);
 // or
 unset($registry["something"]);
-
 ```
 
 In addition to ArrayAccess, Phalcon\Registry also implements Countable (count($registry) will return the number of elements in the registry), Serializable and Iterator (you can iterate over the registry using a foreach loop) interfaces. For PHP 5.4 and higher, JsonSerializable interface is implemented.
@@ -50,62 +51,156 @@ Internally all the magic methods (and interfaces except JsonSerializable) are im
 
 ## Methods
 
-final public **__construct** ()
+```php
+final public function __construct( array $data = null ): void;
+```
 
-Registry constructor
+Constructor
 
-final public **offsetExists** (*mixed* $offset)
+```php
+final public function __get( string $element ): mixed;
+```
 
-Checks if the element is present in the registry
+Magic getter to get an element from the collection
 
-final public **offsetGet** (*mixed* $offset)
+```php
+final public function __isset( string $element ): bool;
+```
 
-Returns an index in the registry
+Magic isset to check whether an element exists or not
 
-final public **offsetSet** (*mixed* $offset, *mixed* $value)
+```php
+final public function __set( string $element, mixed $value ): void;
+```
 
-Sets an element in the registry
+Magic setter to assign values to an element
 
-final public **offsetUnset** (*mixed* $offset)
+```php
+final public function __unset( string $element ): void;
+```
 
-Unsets an element in the registry
+Magic unset to remove an element from the collection
 
-final public **count** ()
+```php
+final public function clear(): void;
+```
 
-Checks how many elements are in the register
+Clears the internal collection
 
-final public **next** ()
+```php
+final public function count(): int;
+```
 
-Moves cursor to next row in the registry
+Count elements of an object
 
-final public **key** ()
+@link https://php.net/manual/en/countable.count.php
 
-Gets pointer number of active row in the registry
+```php
+final public function get( string $element, mixed $defaultValue = null ): mixed;
+```
 
-final public **rewind** ()
+Get the element from the collection
 
-Rewinds the registry cursor to its beginning
+```php
+final public function getIterator(): Traversable;
+```
 
-public **valid** ()
+Returns the iterator of the class
 
-Checks if the iterator is valid
+```php
+final public function has( string $element ): bool;
+```
 
-public **current** ()
+Get the element from the collection
 
-Obtains the current value in the internal iterator
+```php
+final public function init( array $data = [] ): void;
+```
 
-final public **__set** (*mixed* $key, *mixed* $value)
+Initialize internal array
 
-Sets an element in the registry
+```php
+final public function jsonSerialize(): array;
+```
 
-final public **__get** (*mixed* $key)
+Specify data which should be serialized to JSON
 
-Returns an index in the registry
+@link https://php.net/manual/en/jsonserializable.jsonserialize.php
 
-final public **__isset** (*mixed* $key)
+```php
+final public function offsetExists( mixed $element ): bool;
+```
 
-...
+Whether a offset exists
 
-final public **__unset** (*mixed* $key)
+@link https://php.net/manual/en/arrayaccess.offsetexists.php
 
-...
+```php
+final public function offsetGet( mixed $element ): mixed;
+```
+
+Offset to retrieve
+
+@link https://php.net/manual/en/arrayaccess.offsetget.php
+
+```php
+final public function offsetSet( mixed $element, mixed $value ): void;
+```
+
+Offset to set
+
+@link https://php.net/manual/en/arrayaccess.offsetset.php
+
+```php
+final public function offsetUnset( mixed $element ): void;
+```
+
+Offset to unset
+
+@link https://php.net/manual/en/arrayaccess.offsetunset.php
+
+```php
+final public function remove( string $element ): void;
+```
+
+Delete the element from the collection
+
+```php
+final public function serialize(): string;
+```
+
+String representation of object
+
+@link https://php.net/manual/en/serializable.serialize.php
+
+```php
+final public function set( string $element, mixed $value ): void;
+```
+
+Set an element in the collection
+
+```php
+final public function toArray(): array;
+```
+
+Returns the object in an array format
+
+```php
+final public function toJson( int $options = int ): string;
+```
+
+Returns the object in a JSON format
+
+The default string uses the following options for json_encode
+
+JSON_HEX_TAG, JSON_HEX_APOS, JSON_HEX_AMP, JSON_HEX_QUOT, JSON_UNESCAPED_SLASHES
+
+@see https://www.ietf.org/rfc/rfc4627.txt
+
+```php
+final public function unserialize( mixed $serialized ): void;
+```
+
+Constructs the object
+
+@link https://php.net/manual/en/serializable.unserialize.php

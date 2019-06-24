@@ -42,7 +42,7 @@ protected lowerKeys;
 ## Methoden
 
 ```php
-public function __construct( array $data, bool $insensitive = true );
+public function __construct( array $data = [], bool $insensitive = bool );
 ```
 
 Collection constructor.
@@ -84,7 +84,7 @@ public function count(): int;
 Count elements of an object. See [count](https://php.net/manual/en/countable.count.php)
 
 ```php
-public function get( string $element, mixed $defaultValue ): mixed;
+public function get( string $element, mixed $defaultValue = null ): mixed;
 ```
 
 Get the element from the collection
@@ -102,7 +102,7 @@ public function has( string $element ): bool;
 Get the element from the collection
 
 ```php
-public function init( array $data ): void;
+public function init( array $data = [] ): void;
 ```
 
 Initialize internal array
@@ -162,7 +162,7 @@ public function toArray(): array;
 Returns the object in an array format
 
 ```php
-public function toJson( int $options = 79 ): string;
+public function toJson( int $options = int ): string;
 ```
 
 Returns the object in a JSON format

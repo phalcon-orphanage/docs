@@ -169,7 +169,7 @@ protected ttl = 172800;
 ## メソッド
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 Phalcon\Annotations\Adapter\Apcu constructor
@@ -249,7 +249,7 @@ protected annotationsDir = ./;
 ## メソッド
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 Phalcon\Annotations\Adapter\Stream constructor
@@ -373,7 +373,7 @@ Factory to create annotations components
 ## メソッド
 
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 
 AdapterFactory constructor.
@@ -385,7 +385,7 @@ public function load( mixed $config ): mixed;
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 
 Create a new instance of the adapter
@@ -435,7 +435,7 @@ protected position = 0;
 ## メソッド
 
 ```php
-public function __construct( array $reflectionData ): void;
+public function __construct( array $reflectionData = [] ): void;
 ```
 
 Phalcon\Annotations\Collection constructor
@@ -585,7 +585,7 @@ protected reflectionData;
 ## メソッド
 
 ```php
-public function __construct( array $reflectionData ): void;
+public function __construct( array $reflectionData = [] ): void;
 ```
 
 Phalcon\Annotations\Reflection constructor

@@ -91,7 +91,7 @@ protected version;
 ## Métodos
 
 ```php
-public function __construct( string $type, string $path, bool $local = true, bool $filter = true, array $attributes, string $version, bool $autoVersion = false ): void;
+public function __construct( string $type, string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
 ```
 
 Phalcon\Assets\Asset constructor
@@ -107,7 +107,7 @@ public function getAttributes(): array | null
 ```
 
 ```php
-public function getContent( string $basePath ): string;
+public function getContent( string $basePath = null ): string;
 ```
 
 Returns the content of the asset as an string Optionally a base path where the asset is located can be set
@@ -125,13 +125,13 @@ public function getPath(): string
 ```
 
 ```php
-public function getRealSourcePath( string $basePath ): string;
+public function getRealSourcePath( string $basePath = null ): string;
 ```
 
 Returns the complete location where the asset is located
 
 ```php
-public function getRealTargetPath( string $basePath ): string;
+public function getRealTargetPath( string $basePath = null ): string;
 ```
 
 Returns the complete location where the asset must be written
@@ -235,7 +235,7 @@ Represents CSS assets
 ## Métodos
 
 ```php
-public function __construct( string $path, bool $local = true, bool $filter = true, array $attributes, string $version, bool $autoVersion = false ): void;
+public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
 ```
 
 Phalcon\Assets\Asset\Css constructor
@@ -251,7 +251,7 @@ Represents Javascript assets
 ## Métodos
 
 ```php
-public function __construct( string $path, bool $local = true, bool $filter = true, array $attributes, string $version, bool $autoVersion = false ): void;
+public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
 ```
 
 Phalcon\Assets\Asset\Js constructor
@@ -413,7 +413,7 @@ public function add( mixed $asset ): Collection;
 Adds a asset to the collection
 
 ```php
-public function addCss( string $path, mixed $local, bool $filter = true, mixed $attributes, string $version, bool $autoVersion = false ): Collection;
+public function addCss( string $path, mixed $local = null, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Collection;
 ```
 
 Adds a CSS asset to the collection
@@ -431,19 +431,19 @@ public function addInline( mixed $code ): Collection;
 Adds an inline code to the collection
 
 ```php
-public function addInlineCss( string $content, bool $filter = true, mixed $attributes ): Collection;
+public function addInlineCss( string $content, bool $filter = bool, mixed $attributes = null ): Collection;
 ```
 
 Adds an inline CSS to the collection
 
 ```php
-public function addInlineJs( string $content, bool $filter = true, mixed $attributes ): Collection;
+public function addInlineJs( string $content, bool $filter = bool, mixed $attributes = null ): Collection;
 ```
 
 Adds an inline javascript to the collection
 
 ```php
-public function addJs( string $path, mixed $local, bool $filter = true, mixed $attributes, string $version, bool $autoVersion = false ): Collection;
+public function addJs( string $path, mixed $local = null, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Collection;
 ```
 
 Adds a javascript asset to the collection
@@ -748,7 +748,7 @@ protected type;
 ## Métodos
 
 ```php
-public function __construct( string $type, string $content, bool $filter = true, array $attributes ): void;
+public function __construct( string $type, string $content, bool $filter = bool, array $attributes = [] ): void;
 ```
 
 Phalcon\Assets\Inline constructor
@@ -804,7 +804,7 @@ Represents an inlined CSS
 ## Métodos
 
 ```php
-public function __construct( string $content, bool $filter = true, mixed $attributes ): void;
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
 ```
 
 Phalcon\Assets\Inline\Css constructor
@@ -820,7 +820,7 @@ Represents an inline JavaScript
 ## Métodos
 
 ```php
-public function __construct( string $content, bool $filter = true, mixed $attributes ): void;
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
 ```
 
 Phalcon\Assets\Inline\Js constructor
@@ -862,7 +862,7 @@ protected implicitOutput = true;
 ## Métodos
 
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 
 Phalcon\Assets\Manager constructor
@@ -893,7 +893,7 @@ $assets->addAssetByType(
 ```
 
 ```php
-public function addCss( string $path, mixed $local = true, bool $filter = true, mixed $attributes, string $version, bool $autoVersion = false ): Manager;
+public function addCss( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
 
 Adds a Css asset to the 'css' collection
@@ -916,19 +916,19 @@ public function addInlineCodeByType( string $type, mixed $code ): Manager;
 Adds an inline code by its type
 
 ```php
-public function addInlineCss( string $content, mixed $filter = true, mixed $attributes ): Manager;
+public function addInlineCss( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 
 Adds an inline Css to the 'css' collection
 
 ```php
-public function addInlineJs( string $content, mixed $filter = true, mixed $attributes ): Manager;
+public function addInlineJs( string $content, mixed $filter = bool, mixed $attributes = null ): Manager;
 ```
 
 Adds an inline javascript to the 'js' collection
 
 ```php
-public function addJs( string $path, mixed $local = true, bool $filter = true, mixed $attributes, string $version, bool $autoVersion = false ): Manager;
+public function addJs( string $path, mixed $local = bool, bool $filter = bool, mixed $attributes = null, string $version = null, bool $autoVersion = bool ): Manager;
 ```
 
 Adds a javascript asset to the 'js' collection
@@ -1012,7 +1012,7 @@ Traverses a collection calling the callback to generate its HTML
 @param callback callback @param string type
 
 ```php
-public function outputCss( string $collectionName ): string;
+public function outputCss( string $collectionName = null ): string;
 ```
 
 Prints the HTML for CSS assets
@@ -1026,19 +1026,19 @@ Traverses a collection and generate its HTML
 @param string type
 
 ```php
-public function outputInlineCss( string $collectionName ): string;
+public function outputInlineCss( string $collectionName = null ): string;
 ```
 
 Prints the HTML for inline CSS
 
 ```php
-public function outputInlineJs( string $collectionName ): string;
+public function outputInlineJs( string $collectionName = null ): string;
 ```
 
 Prints the HTML for inline JS
 
 ```php
-public function outputJs( string $collectionName ): string;
+public function outputJs( string $collectionName = null ): string;
 ```
 
 Prints the HTML for JS assets

@@ -227,13 +227,13 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Creates a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): bool;
+public function createView( string $viewName, array $definition, string $schemaName = null ): bool;
 ```
 
 Creates a view
 
 ```php
-public function delete( string $table, mixed $whereCondition, mixed $placeholders, mixed $dataTypes ): bool;
+public function delete( string $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 
 Deletes data from a table using custom RBDM SQL syntax
@@ -250,7 +250,7 @@ DELETE FROM `robots` WHERE `id` = 101
 ```
 
 ```php
-public function describeIndexes( string $table, string $schema ): IndexInterface[];
+public function describeIndexes( string $table, string $schema = null ): IndexInterface[];
 ```
 
 Lists table indexes
@@ -262,7 +262,7 @@ print_r(
 ```
 
 ```php
-public function describeReferences( string $table, string $schema ): ReferenceInterface[];
+public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
 ```
 
 Lists table references
@@ -298,13 +298,13 @@ public function dropPrimaryKey( string $tableName, string $schemaName ): bool;
 Drops a table's primary key
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = true ): bool;
+public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): bool;
 ```
 
 Drops a table from a schema/database
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): bool;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): bool;
 ```
 
 Drops a view
@@ -329,7 +329,7 @@ $escapedTable = $connection->escapeIdentifier(
 ```
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode, mixed $bindParams, mixed $bindTypes ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
 ```
 
 Dumps the complete result of a query into an array
@@ -359,7 +359,7 @@ foreach($robots as $robot) {
 ```
 
 ```php
-public function fetchColumn( string $sqlQuery, array $placeholders, mixed $column ): string | bool;
+public function fetchColumn( string $sqlQuery, array $placeholders = [], mixed $column = int ): string | bool;
 ```
 
 Returns the n'th field of first row in a SQL query result
@@ -378,7 +378,7 @@ print_r($robot);
 ```
 
 ```php
-public function fetchOne( string $sqlQuery, mixed $fetchMode, mixed $bindParams, mixed $bindTypes ): array;
+public function fetchOne( string $sqlQuery, mixed $fetchMode = static-constant-access, mixed $bindParams = null, mixed $bindTypes = null ): array;
 ```
 
 Returns the first row in a SQL query result
@@ -519,7 +519,7 @@ public function getType(): string
 ```
 
 ```php
-public function insert( string $table, array $values, mixed $fields, mixed $dataTypes ): bool;
+public function insert( string $table, array $values, mixed $fields = null, mixed $dataTypes = null ): bool;
 ```
 
 Inserts data into a table using custom RDBMS SQL syntax
@@ -537,7 +537,7 @@ INSERT INTO `robots` (`name`, `year`) VALUES ("Astro boy", 1952);
 ```
 
 ```php
-public function insertAsDict( string $table, mixed $data, mixed $dataTypes ): bool;
+public function insertAsDict( string $table, mixed $data, mixed $dataTypes = null ): bool;
 ```
 
 Inserts data into a table using custom RBDM SQL syntax
@@ -573,7 +573,7 @@ echo $connection->limit("SELECTFROM robots", 5);
 ```
 
 ```php
-public function listTables( string $schemaName ): array;
+public function listTables( string $schemaName = null ): array;
 ```
 
 List all tables on a database
@@ -585,7 +585,7 @@ print_r(
 ```
 
 ```php
-public function listViews( string $schemaName ): array;
+public function listViews( string $schemaName = null ): array;
 ```
 
 List all views on a database
@@ -597,7 +597,7 @@ print_r(
 ```
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): bool;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): bool;
 ```
 
 Modifies a table column based on a definition
@@ -645,7 +645,7 @@ public function supportSequences(): bool;
 Check whether the database system requires a sequence to produce auto-numeric values
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): bool;
+public function tableExists( string $tableName, string $schemaName = null ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.table
@@ -657,7 +657,7 @@ var_dump(
 ```
 
 ```php
-public function tableOptions( string $tableName, string $schemaName ): array;
+public function tableOptions( string $tableName, string $schemaName = null ): array;
 ```
 
 Gets creation options from a table
@@ -669,7 +669,7 @@ print_r(
 ```
 
 ```php
-public function update( string $table, mixed $fields, mixed $values, mixed $whereCondition, mixed $dataTypes ): bool;
+public function update( string $table, mixed $fields, mixed $values, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
 ```
 
 Updates data on a table using custom RBDM SQL syntax
@@ -706,7 +706,7 @@ $success = $connection->update(
 Warning! If $whereCondition is string it not escaped.
 
 ```php
-public function updateAsDict( string $table, mixed $data, mixed $whereCondition, mixed $dataTypes ): bool;
+public function updateAsDict( string $table, mixed $data, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
 ```
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
@@ -732,7 +732,7 @@ public function useExplicitIdValue(): bool;
 Check whether the database system requires an explicit value for identity columns
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): bool;
+public function viewExists( string $viewName, string $schemaName = null ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -805,7 +805,7 @@ echo $connection->affectedRows(), " were deleted";
 ```
 
 ```php
-public function begin( bool $nesting = true ): bool;
+public function begin( bool $nesting = bool ): bool;
 ```
 
 Starts a transaction in the connection
@@ -817,13 +817,13 @@ public function close(): bool;
 Closes the active connection returning success. Phalcon automatically closes and destroys active connections when the request ends
 
 ```php
-public function commit( bool $nesting = true ): bool;
+public function commit( bool $nesting = bool ): bool;
 ```
 
 Commits the active transaction in the connection
 
 ```php
-public function connect( array $descriptor ): bool;
+public function connect( array $descriptor = null ): bool;
 ```
 
 This method is automatically called in \Phalcon\Db\Adapter\Pdo constructor.
@@ -849,7 +849,7 @@ $connection->connect();
 ```
 
 ```php
-public function convertBoundParams( string $sql, array $params ): array;
+public function convertBoundParams( string $sql, array $params = [] ): array;
 ```
 
 Converts bound parameters such as :name: or ?1 into PDO bind params ?
@@ -876,7 +876,7 @@ $escapedStr = $connection->escapeString("some dangerous value");
 ```
 
 ```php
-public function execute( string $sqlStatement, mixed $bindParams, mixed $bindTypes ): bool;
+public function execute( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): bool;
 ```
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
@@ -954,7 +954,7 @@ var_dump(
 ```
 
 ```php
-public function lastInsertId( mixed $sequenceName ): int | bool;
+public function lastInsertId( mixed $sequenceName = null ): int | bool;
 ```
 
 Returns the insert id for the auto_increment/serial column inserted in the latest executed SQL statement
@@ -1002,7 +1002,7 @@ $result = $connection->executePrepared(
 ```
 
 ```php
-public function query( string $sqlStatement, mixed $bindParams, mixed $bindTypes ): ResultInterface | bool;
+public function query( string $sqlStatement, mixed $bindParams = null, mixed $bindTypes = null ): ResultInterface | bool;
 ```
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server is returning rows
@@ -1022,7 +1022,7 @@ $resultset = $connection->query(
 ```
 
 ```php
-public function rollback( bool $nesting = true ): bool;
+public function rollback( bool $nesting = bool ): bool;
 ```
 
 Rollbacks the active transaction in the connection
@@ -1079,7 +1079,7 @@ public function addForeignKey( string $tableName, string $schemaName, mixed $ref
 Adds a foreign key to a table
 
 ```php
-public function describeColumns( string $table, string $schema ): ColumnInterface[];
+public function describeColumns( string $table, string $schema = null ): ColumnInterface[];
 ```
 
 Returns an array of Phalcon\Db\Column objects describing a table
@@ -1091,7 +1091,7 @@ print_r(
 ```
 
 ```php
-public function describeIndexes( string $table, string $schema ): IndexInterface[];
+public function describeIndexes( string $table, string $schema = null ): IndexInterface[];
 ```
 
 Lists table indexes
@@ -1103,7 +1103,7 @@ print_r(
 ```
 
 ```php
-public function describeReferences( string $table, string $schema ): ReferenceInterface[];
+public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
 ```
 
 Lists table references
@@ -1166,7 +1166,7 @@ public function __construct( array $descriptor ): void;
 Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
 
 ```php
-public function connect( array $descriptor ): bool;
+public function connect( array $descriptor = null ): bool;
 ```
 
 This method is automatically called in Phalcon\Db\Adapter\Pdo constructor. Call it when you need to restore a database connection.
@@ -1178,7 +1178,7 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Creates a table
 
 ```php
-public function describeColumns( string $table, string $schema ): ColumnInterface[];
+public function describeColumns( string $table, string $schema = null ): ColumnInterface[];
 ```
 
 Returns an array of Phalcon\Db\Column objects describing a table
@@ -1190,7 +1190,7 @@ print_r(
 ```
 
 ```php
-public function describeReferences( string $table, string $schema ): ReferenceInterface[];
+public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
 ```
 
 Lists table references
@@ -1225,7 +1225,7 @@ $success = $connection->insert(
 ```
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): bool;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): bool;
 ```
 
 Modifies a table column based on a definition
@@ -1290,13 +1290,13 @@ public function __construct( array $descriptor ): void;
 Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
 
 ```php
-public function connect( array $descriptor ): bool;
+public function connect( array $descriptor = null ): bool;
 ```
 
 This method is automatically called in Phalcon\Db\Adapter\Pdo constructor. Call it when you need to restore a database connection.
 
 ```php
-public function describeColumns( string $table, string $schema ): ColumnInterface[];
+public function describeColumns( string $table, string $schema = null ): ColumnInterface[];
 ```
 
 Returns an array of Phalcon\Db\Column objects describing a table
@@ -1308,7 +1308,7 @@ print_r(
 ```
 
 ```php
-public function describeIndexes( string $table, string $schema ): IndexInterface[];
+public function describeIndexes( string $table, string $schema = null ): IndexInterface[];
 ```
 
 Lists table indexes
@@ -1320,7 +1320,7 @@ print_r(
 ```
 
 ```php
-public function describeReferences( string $table, string $schema ): ReferenceInterface[];
+public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
 ```
 
 Lists table references
@@ -1373,7 +1373,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 ## Métodos
 
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 
 Constructor
@@ -1385,7 +1385,7 @@ public function load( mixed $config ): mixed;
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 
 Create a new instance of the adapter
@@ -1437,7 +1437,7 @@ public function affectedRows(): int;
 Returns the number of affected rows by the last INSERT/UPDATE/DELETE reported by the database system
 
 ```php
-public function begin( bool $nesting = true ): bool;
+public function begin( bool $nesting = bool ): bool;
 ```
 
 Starts a transaction in the connection
@@ -1449,13 +1449,13 @@ public function close(): bool;
 Closes active connection returning success. Phalcon automatically closes and destroys active connections within Phalcon\Db\Pool
 
 ```php
-public function commit( bool $nesting = true ): bool;
+public function commit( bool $nesting = bool ): bool;
 ```
 
 Commits the active transaction in the connection
 
 ```php
-public function connect( array $descriptor ): bool;
+public function connect( array $descriptor = null ): bool;
 ```
 
 This method is automatically called in \Phalcon\Db\Adapter\Pdo constructor. Call it when you need to restore a database connection
@@ -1473,31 +1473,31 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Creates a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): bool;
+public function createView( string $viewName, array $definition, string $schemaName = null ): bool;
 ```
 
 Creates a view
 
 ```php
-public function delete( string $table, mixed $whereCondition, mixed $placeholders, mixed $dataTypes ): bool;
+public function delete( string $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 
 Deletes data from a table using custom RDBMS SQL syntax
 
 ```php
-public function describeColumns( string $table, string $schema ): ColumnInterface[];
+public function describeColumns( string $table, string $schema = null ): ColumnInterface[];
 ```
 
 Returns an array of Phalcon\Db\Column objects describing a table
 
 ```php
-public function describeIndexes( string $table, string $schema ): IndexInterface[];
+public function describeIndexes( string $table, string $schema = null ): IndexInterface[];
 ```
 
 Lists table indexes
 
 ```php
-public function describeReferences( string $table, string $schema ): ReferenceInterface[];
+public function describeReferences( string $table, string $schema = null ): ReferenceInterface[];
 ```
 
 Lists table references
@@ -1527,13 +1527,13 @@ public function dropPrimaryKey( string $tableName, string $schemaName ): bool;
 Drops primary key from a table
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = true ): bool;
+public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): bool;
 ```
 
 Drops a table from a schema/database
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): bool;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): bool;
 ```
 
 Drops a view
@@ -1551,19 +1551,19 @@ public function escapeString( string $str ): string;
 Escapes a value to avoid SQL injections
 
 ```php
-public function execute( string $sqlStatement, mixed $placeholders, mixed $dataTypes ): bool;
+public function execute( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server doesn't return any rows
 
 ```php
-public function fetchAll( string $sqlQuery, int $fetchMode = 2, mixed $placeholders ): array;
+public function fetchAll( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
 ```
 
 Dumps the complete result of a query into an array
 
 ```php
-public function fetchColumn( string $sqlQuery, array $placeholders, mixed $column ): string | bool;
+public function fetchColumn( string $sqlQuery, array $placeholders = [], mixed $column = int ): string | bool;
 ```
 
 Returns the n'th field of first row in a SQL query result
@@ -1582,7 +1582,7 @@ print_r($robot);
 ```
 
 ```php
-public function fetchOne( string $sqlQuery, int $fetchMode = 2, mixed $placeholders ): array;
+public function fetchOne( string $sqlQuery, int $fetchMode = int, mixed $placeholders = null ): array;
 ```
 
 Returns the first row in a SQL query result
@@ -1678,13 +1678,13 @@ public function getType(): string;
 Returns type of database system the adapter is used for
 
 ```php
-public function insert( string $table, array $values, mixed $fields, mixed $dataTypes ): bool;
+public function insert( string $table, array $values, mixed $fields = null, mixed $dataTypes = null ): bool;
 ```
 
 Inserts data into a table using custom RDBMS SQL syntax
 
 ```php
-public function insertAsDict( string $table, mixed $data, mixed $dataTypes ): bool;
+public function insertAsDict( string $table, mixed $data, mixed $dataTypes = null ): bool;
 ```
 
 Inserts data into a table using custom RBDM SQL syntax
@@ -1716,7 +1716,7 @@ public function isUnderTransaction(): bool;
 Checks whether connection is under database transaction
 
 ```php
-public function lastInsertId( mixed $sequenceName );
+public function lastInsertId( mixed $sequenceName = null );
 ```
 
 Returns insert id for the auto_increment column inserted in the last SQL statement
@@ -1728,25 +1728,25 @@ public function limit( string $sqlQuery, int $number ): string;
 Appends a LIMIT clause to sqlQuery argument
 
 ```php
-public function listTables( string $schemaName ): array;
+public function listTables( string $schemaName = null ): array;
 ```
 
 List all tables on a database
 
 ```php
-public function listViews( string $schemaName ): array;
+public function listViews( string $schemaName = null ): array;
 ```
 
 List all views on a database
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): bool;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): bool;
 ```
 
 Modifies a table column based on a definition
 
 ```php
-public function query( string $sqlStatement, mixed $placeholders, mixed $dataTypes ): ResultInterface | bool;
+public function query( string $sqlStatement, mixed $placeholders = null, mixed $dataTypes = null ): ResultInterface | bool;
 ```
 
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server returns rows
@@ -1758,7 +1758,7 @@ public function releaseSavepoint( string $name ): bool;
 Releases given savepoint
 
 ```php
-public function rollback( bool $nesting = true ): bool;
+public function rollback( bool $nesting = bool ): bool;
 ```
 
 Rollbacks the active transaction in the connection
@@ -1788,25 +1788,25 @@ public function supportSequences(): bool;
 Check whether the database system requires a sequence to produce auto-numeric values
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): bool;
+public function tableExists( string $tableName, string $schemaName = null ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.table
 
 ```php
-public function tableOptions( string $tableName, string $schemaName ): array;
+public function tableOptions( string $tableName, string $schemaName = null ): array;
 ```
 
 Gets creation options from a table
 
 ```php
-public function update( string $table, mixed $fields, mixed $values, mixed $whereCondition, mixed $dataTypes ): bool;
+public function update( string $table, mixed $fields, mixed $values, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
 ```
 
 Updates data on a table using custom RDBMS SQL syntax
 
 ```php
-public function updateAsDict( string $table, mixed $data, mixed $whereCondition, mixed $dataTypes ): bool;
+public function updateAsDict( string $table, mixed $data, mixed $whereCondition = null, mixed $dataTypes = null ): bool;
 ```
 
 Updates data on a table using custom RBDM SQL syntax Another, more convenient syntax
@@ -1832,7 +1832,7 @@ public function useExplicitIdValue(): bool;
 Check whether the database system requires an explicit value for identity columns
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): bool;
+public function viewExists( string $viewName, string $schemaName = null ): bool;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -2242,13 +2242,13 @@ public function createSavepoint( string $name ): string;
 Generate SQL to create a new savepoint
 
 ```php
-final public function escape( string $str, string $escapeChar ): string;
+final public function escape( string $str, string $escapeChar = null ): string;
 ```
 
 Escape identifiers
 
 ```php
-final public function escapeSchema( string $str, string $escapeChar ): string;
+final public function escapeSchema( string $str, string $escapeChar = null ): string;
 ```
 
 Escape Schema
@@ -2266,7 +2266,7 @@ echo $sql; // SELECTFROM robots FOR UPDATE
 ```
 
 ```php
-final public function getColumnList( array $columnList, string $escapeChar, mixed $bindCounts ): string;
+final public function getColumnList( array $columnList, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Gets a list of columns with escaped identifiers
@@ -2287,19 +2287,19 @@ public function getCustomFunctions(): array;
 Returns registered functions
 
 ```php
-final public function getSqlColumn( mixed $column, string $escapeChar, mixed $bindCounts ): string;
+final public function getSqlColumn( mixed $column, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve Column expressions
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar, mixed $bindCounts ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Transforms an intermediate representation for an expression into a database system valid expression
 
 ```php
-final public function getSqlTable( mixed $table, string $escapeChar ): string;
+final public function getSqlTable( mixed $table, string $escapeChar = null ): string;
 ```
 
 Transform an intermediate representation of a schema/table into a database system valid expression
@@ -2385,127 +2385,127 @@ protected function getColumnSizeAndScale( mixed $column ): string;
 Returns the column size and scale enclosed in parentheses
 
 ```php
-final protected function getSqlExpressionAll( array $expression, string $escapeChar ): string;
+final protected function getSqlExpressionAll( array $expression, string $escapeChar = null ): string;
 ```
 
 Resolve
 
 ```php
-final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionBinaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve binary operations expressions
 
 ```php
-final protected function getSqlExpressionCase( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionCase( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve CASE expressions
 
 ```php
-final protected function getSqlExpressionCastValue( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionCastValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve CAST of values
 
 ```php
-final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionConvertValue( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve CONVERT of values encodings
 
 ```php
-final protected function getSqlExpressionFrom( mixed $expression, string $escapeChar ): string;
+final protected function getSqlExpressionFrom( mixed $expression, string $escapeChar = null ): string;
 ```
 
 Resolve a FROM clause
 
 ```php
-final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionFunctionCall( array $expression, string $escapeChar = null, mixed $bindCounts ): string;
 ```
 
 Resolve function calls
 
 ```php
-final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionGroupBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve a GROUP BY clause
 
 ```php
-final protected function getSqlExpressionHaving( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionHaving( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve a HAVING clause
 
 ```php
-final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionJoins( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve a JOINs clause
 
 ```php
-final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionLimit( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve a LIMIT clause
 
 ```php
-final protected function getSqlExpressionList( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionList( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve Lists
 
 ```php
-final protected function getSqlExpressionObject( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionObject( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve object expressions
 
 ```php
-final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionOrderBy( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve an ORDER BY clause
 
 ```php
-final protected function getSqlExpressionQualified( array $expression, string $escapeChar ): string;
+final protected function getSqlExpressionQualified( array $expression, string $escapeChar = null ): string;
 ```
 
 Resolve qualified expressions
 
 ```php
-final protected function getSqlExpressionScalar( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionScalar( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve Column expressions
 
 ```php
-final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionUnaryOperations( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve unary operations expressions
 
 ```php
-final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar, mixed $bindCounts ): string;
+final protected function getSqlExpressionWhere( mixed $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Resolve a WHERE clause
 
 ```php
-protected function prepareColumnAlias( string $qualified, string $alias, string $escapeChar ): string;
+protected function prepareColumnAlias( string $qualified, string $alias = null, string $escapeChar = null ): string;
 ```
 
 Prepares column for this RDBMS
 
 ```php
-protected function prepareQualified( string $column, string $domain, string $escapeChar ): string;
+protected function prepareQualified( string $column, string $domain = null, string $escapeChar = null ): string;
 ```
 
 Prepares qualified for this RDBMS
 
 ```php
-protected function prepareTable( string $table, string $schema, string $alias, string $escapeChar ): string;
+protected function prepareTable( string $table, string $schema = null, string $alias = null, string $escapeChar = null ): string;
 ```
 
 Prepares table for this RDBMS
@@ -2561,13 +2561,13 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Generates SQL to create a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): string;
+public function createView( string $viewName, array $definition, string $schemaName = null ): string;
 ```
 
 Generates SQL to create a view
 
 ```php
-public function describeColumns( string $table, string $schema ): string;
+public function describeColumns( string $table, string $schema = null ): string;
 ```
 
 Generates SQL describing a table
@@ -2579,13 +2579,13 @@ print_r(
 ```
 
 ```php
-public function describeIndexes( string $table, string $schema ): string;
+public function describeIndexes( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query indexes on a table
 
 ```php
-public function describeReferences( string $table, string $schema ): string;
+public function describeReferences( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query foreign keys on a table
@@ -2615,13 +2615,13 @@ public function dropPrimaryKey( string $tableName, string $schemaName ): string;
 Generates SQL to delete primary key from a table
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = true ): string;
+public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a table
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): string;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a view
@@ -2639,7 +2639,7 @@ public function getForeignKeyChecks(): string;
 Generates SQL to check DB parameter FOREIGN_KEY_CHECKS.
 
 ```php
-public function listTables( string $schemaName ): string;
+public function listTables( string $schemaName = null ): string;
 ```
 
 List all tables in database
@@ -2651,13 +2651,13 @@ print_r(
 ```
 
 ```php
-public function listViews( string $schemaName ): string;
+public function listViews( string $schemaName = null ): string;
 ```
 
 Generates the SQL to list all views of a schema or user
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): string;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): string;
 ```
 
 Generates SQL to modify a column in a table
@@ -2675,7 +2675,7 @@ echo $sql; // SELECTFROM robots LOCK IN SHARE MODE
 ```
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): string;
+public function tableExists( string $tableName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.table
@@ -2687,7 +2687,7 @@ echo $dialect->tableExists("posts");
 ```
 
 ```php
-public function tableOptions( string $table, string $schema ): string;
+public function tableOptions( string $table, string $schema = null ): string;
 ```
 
 Generates the SQL to describe the table creation options
@@ -2699,7 +2699,7 @@ public function truncateTable( string $tableName, string $schemaName ): string;
 Generates SQL to truncate a table
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): string;
+public function viewExists( string $viewName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -2761,13 +2761,13 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Generates SQL to create a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): string;
+public function createView( string $viewName, array $definition, string $schemaName = null ): string;
 ```
 
 Generates SQL to create a view
 
 ```php
-public function describeColumns( string $table, string $schema ): string;
+public function describeColumns( string $table, string $schema = null ): string;
 ```
 
 Generates SQL describing a table
@@ -2779,13 +2779,13 @@ print_r(
 ```
 
 ```php
-public function describeIndexes( string $table, string $schema ): string;
+public function describeIndexes( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query indexes on a table
 
 ```php
-public function describeReferences( string $table, string $schema ): string;
+public function describeReferences( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query foreign keys on a table
@@ -2815,13 +2815,13 @@ public function dropPrimaryKey( string $tableName, string $schemaName ): string;
 Generates SQL to delete primary key from a table
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = true ): string;
+public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a table
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): string;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a view
@@ -2833,7 +2833,7 @@ public function getColumnDefinition( mixed $column ): string;
 Gets the column name in PostgreSQL
 
 ```php
-public function listTables( string $schemaName ): string;
+public function listTables( string $schemaName = null ): string;
 ```
 
 List all tables in database
@@ -2845,13 +2845,13 @@ print_r(
 ```
 
 ```php
-public function listViews( string $schemaName ): string;
+public function listViews( string $schemaName = null ): string;
 ```
 
 Generates the SQL to list all views of a schema or user
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): string;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): string;
 ```
 
 Generates SQL to modify a column in a table
@@ -2863,7 +2863,7 @@ public function sharedLock( string $sqlQuery ): string;
 Returns a SQL modified a shared lock statement. For now this method returns the original query
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): string;
+public function tableExists( string $tableName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.table
@@ -2875,7 +2875,7 @@ echo $dialect->tableExists("posts");
 ```
 
 ```php
-public function tableOptions( string $table, string $schema ): string;
+public function tableOptions( string $table, string $schema = null ): string;
 ```
 
 Generates the SQL to describe the table creation options
@@ -2887,7 +2887,7 @@ public function truncateTable( string $tableName, string $schemaName ): string;
 Generates SQL to truncate a table
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): string;
+public function viewExists( string $viewName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -2955,13 +2955,13 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Generates SQL to create a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): string;
+public function createView( string $viewName, array $definition, string $schemaName = null ): string;
 ```
 
 Generates SQL to create a view
 
 ```php
-public function describeColumns( string $table, string $schema ): string;
+public function describeColumns( string $table, string $schema = null ): string;
 ```
 
 Generates SQL describing a table
@@ -2979,13 +2979,13 @@ public function describeIndex( string $index ): string;
 Generates SQL to query indexes detail on a table
 
 ```php
-public function describeIndexes( string $table, string $schema ): string;
+public function describeIndexes( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query indexes on a table
 
 ```php
-public function describeReferences( string $table, string $schema ): string;
+public function describeReferences( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query foreign keys on a table
@@ -3015,13 +3015,13 @@ public function dropPrimaryKey( string $tableName, string $schemaName ): string;
 Generates SQL to delete primary key from a table
 
 ```php
-public function dropTable( string $tableName, string $schemaName, bool $ifExists = true ): string;
+public function dropTable( string $tableName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a table
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): string;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a view
@@ -3039,7 +3039,7 @@ public function getColumnDefinition( mixed $column ): string;
 Gets the column name in SQLite
 
 ```php
-public function listIndexesSql( string $table, string $schema, string $keyName ): string;
+public function listIndexesSql( string $table, string $schema = null, string $keyName = null ): string;
 ```
 
 Generates the SQL to get query list of indexes
@@ -3051,7 +3051,7 @@ print_r(
 ```
 
 ```php
-public function listTables( string $schemaName ): string;
+public function listTables( string $schemaName = null ): string;
 ```
 
 List all tables in database
@@ -3063,13 +3063,13 @@ print_r(
 ```
 
 ```php
-public function listViews( string $schemaName ): string;
+public function listViews( string $schemaName = null ): string;
 ```
 
 Generates the SQL to list all views of a schema or user
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): string;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): string;
 ```
 
 Generates SQL to modify a column in a table
@@ -3081,7 +3081,7 @@ public function sharedLock( string $sqlQuery ): string;
 Returns a SQL modified a shared lock statement. For now this method returns the original query
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): string;
+public function tableExists( string $tableName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.table
@@ -3093,7 +3093,7 @@ echo $dialect->tableExists("posts");
 ```
 
 ```php
-public function tableOptions( string $table, string $schema ): string;
+public function tableOptions( string $table, string $schema = null ): string;
 ```
 
 Generates the SQL to describe the table creation options
@@ -3105,7 +3105,7 @@ public function truncateTable( string $tableName, string $schemaName ): string;
 Generates SQL to truncate a table
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): string;
+public function viewExists( string $viewName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -3157,25 +3157,25 @@ public function createTable( string $tableName, string $schemaName, array $defin
 Generates SQL to create a table
 
 ```php
-public function createView( string $viewName, array $definition, string $schemaName ): string;
+public function createView( string $viewName, array $definition, string $schemaName = null ): string;
 ```
 
 Generates SQL to create a view
 
 ```php
-public function describeColumns( string $table, string $schema ): string;
+public function describeColumns( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to describe a table
 
 ```php
-public function describeIndexes( string $table, string $schema ): string;
+public function describeIndexes( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query indexes on a table
 
 ```php
-public function describeReferences( string $table, string $schema ): string;
+public function describeReferences( string $table, string $schema = null ): string;
 ```
 
 Generates SQL to query foreign keys on a table
@@ -3211,7 +3211,7 @@ public function dropTable( string $tableName, string $schemaName ): string;
 Generates SQL to drop a table
 
 ```php
-public function dropView( string $viewName, string $schemaName, bool $ifExists = true ): string;
+public function dropView( string $viewName, string $schemaName = null, bool $ifExists = bool ): string;
 ```
 
 Generates SQL to drop a view
@@ -3241,7 +3241,7 @@ public function getCustomFunctions(): array;
 Returns registered functions
 
 ```php
-public function getSqlExpression( array $expression, string $escapeChar, mixed $bindCounts ): string;
+public function getSqlExpression( array $expression, string $escapeChar = null, mixed $bindCounts = null ): string;
 ```
 
 Transforms an intermediate representation for an expression into a database system valid expression
@@ -3253,13 +3253,13 @@ public function limit( string $sqlQuery, mixed $number ): string;
 Generates the SQL for LIMIT clause
 
 ```php
-public function listTables( string $schemaName ): string;
+public function listTables( string $schemaName = null ): string;
 ```
 
 List all tables in database
 
 ```php
-public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn ): string;
+public function modifyColumn( string $tableName, string $schemaName, mixed $column, mixed $currentColumn = null ): string;
 ```
 
 Generates SQL to modify a column in a table
@@ -3307,19 +3307,19 @@ public function supportsSavepoints(): bool;
 Checks whether the platform supports savepoints
 
 ```php
-public function tableExists( string $tableName, string $schemaName ): string;
+public function tableExists( string $tableName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.table
 
 ```php
-public function tableOptions( string $table, string $schema ): string;
+public function tableOptions( string $table, string $schema = null ): string;
 ```
 
 Generates the SQL to describe the table creation options
 
 ```php
-public function viewExists( string $viewName, string $schemaName ): string;
+public function viewExists( string $viewName, string $schemaName = null ): string;
 ```
 
 Generates SQL checking for the existence of a schema.view
@@ -3393,7 +3393,7 @@ protected type;
 ## Métodos
 
 ```php
-public function __construct( string $name, array $columns, string $type ): void;
+public function __construct( string $name, array $columns, string $type = string ): void;
 ```
 
 Phalcon\Db\Index constructor
@@ -3562,7 +3562,7 @@ public function reset(): Profiler;
 Resets the profiler, cleaning up all the profiles
 
 ```php
-public function startProfile( string $sqlStatement, mixed $sqlVariables, mixed $sqlBindTypes ): Profiler;
+public function startProfile( string $sqlStatement, mixed $sqlVariables = null, mixed $sqlBindTypes = null ): Profiler;
 ```
 
 Starts the profile of a SQL sentence
@@ -3971,7 +3971,7 @@ protected sqlStatement;
 ## Métodos
 
 ```php
-public function __construct( mixed $connection, mixed $result, mixed $sqlStatement, mixed $bindParams, mixed $bindTypes ): void;
+public function __construct( mixed $connection, mixed $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null ): void;
 ```
 
 Phalcon\Db\Result\Pdo constructor
@@ -4001,7 +4001,7 @@ public function execute(): bool;
 Allows to execute the statement again. Some database systems don't support scrollable cursors. So, as cursors are forward only, we need to execute the cursor again to fetch rows from the begining
 
 ```php
-public function fetch( mixed $fetchStyle, mixed $cursorOrientation, mixed $cursorOffset );
+public function fetch( mixed $fetchStyle = null, mixed $cursorOrientation = null, mixed $cursorOffset = null );
 ```
 
 Fetches an array/object of strings that corresponds to the fetched row, or FALSE if there are no more rows. This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
@@ -4019,7 +4019,7 @@ while ($robot = $result->fetch()) {
 ```
 
 ```php
-public function fetchAll( mixed $fetchStyle, mixed $fetchArgument, mixed $ctorArgs ): array;
+public function fetchAll( mixed $fetchStyle = null, mixed $fetchArgument = null, mixed $ctorArgs = null ): array;
 ```
 
 Returns an array of arrays containing all the records in the result This method is affected by the active fetch flag set using `Phalcon\Db\Result\Pdo::setFetchMode()`
@@ -4071,7 +4071,7 @@ echo "There are ", $result->numRows(), " rows in the resultset";
 ```
 
 ```php
-public function setFetchMode( int $fetchMode, mixed $colNoOrClassNameOrObject, mixed $ctorargs ): bool;
+public function setFetchMode( int $fetchMode, mixed $colNoOrClassNameOrObject = null, mixed $ctorargs = null ): bool;
 ```
 
 Changes the fetching mode affecting Phalcon\Db\Result\Pdo::fetch()

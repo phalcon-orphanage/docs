@@ -73,7 +73,7 @@ $config = new Grouped(
 ## Methods
 
 ```php
-public function __construct( array $arrayConfig, string $defaultAdapter = php );
+public function __construct( array $arrayConfig, string $defaultAdapter = string );
 ```
 
 Phalcon\Config\Adapter\Grouped constructor
@@ -125,7 +125,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 ## Methods
 
 ```php
-public function __construct( string $filePath, mixed $mode ): void;
+public function __construct( string $filePath, mixed $mode = null ): void;
 ```
 
 Ini constructor.
@@ -268,7 +268,7 @@ echo $config->models->metadata;
 ## Methods
 
 ```php
-public function __construct( string $filePath, array $callbacks ): void;
+public function __construct( string $filePath, array $callbacks = null ): void;
 ```
 
 Phalcon\Config\Adapter\Yaml constructor
@@ -345,7 +345,7 @@ $globalConfig->merge($appConfig);
 ```
 
 ```php
-public function path( string $path, mixed $defaultValue, mixed $delimiter );
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
 ```
 
 Returns a value from current config using a dot separated path.
@@ -355,7 +355,7 @@ echo $config->path("unknown.path", "default", ".");
 ```
 
 ```php
-public function setPathDelimiter( string $delimiter ): Config;
+public function setPathDelimiter( string $delimiter = null ): Config;
 ```
 
 Sets the default path delimiter
@@ -406,7 +406,7 @@ $config = (new ConfigFactory())->load($options);
 ## Methods
 
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 
 ConfigFactory constructor.
@@ -418,7 +418,7 @@ public function load( mixed $config ): object;
 Load a config to create a new instance
 
 ```php
-public function newInstance( string $name, string $fileName, mixed $params ): object;
+public function newInstance( string $name, string $fileName, mixed $params = null ): object;
 ```
 
 Returns a new Config instance

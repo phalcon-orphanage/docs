@@ -108,13 +108,13 @@ protected useSigning = true;
 ## Methoden
 
 ```php
-public function __construct( string $cipher = aes-256-cfb, bool $useSigning = false ): void;
+public function __construct( string $cipher = string, bool $useSigning = bool ): void;
 ```
 
 Phalcon\Crypt constructor.
 
 ```php
-public function decrypt( string $text, string $key ): string;
+public function decrypt( string $text, string $key = null ): string;
 ```
 
 Decrypts an encrypted text.
@@ -127,7 +127,7 @@ $encrypted = $crypt->decrypt(
 ```
 
 ```php
-public function decryptBase64( string $text, mixed $key, bool $safe = false ): string;
+public function decryptBase64( string $text, mixed $key = null, bool $safe = bool ): string;
 ```
 
 Decrypt a text that is coded as a base64 string.
@@ -135,7 +135,7 @@ Decrypt a text that is coded as a base64 string.
 @throws \Phalcon\Crypt\Mismatch
 
 ```php
-public function encrypt( string $text, string $key ): string;
+public function encrypt( string $text, string $key = null ): string;
 ```
 
 Encrypts a text.
@@ -148,7 +148,7 @@ $encrypted = $crypt->encrypt(
 ```
 
 ```php
-public function encryptBase64( string $text, mixed $key, bool $safe = false ): string;
+public function encryptBase64( string $text, mixed $key = null, bool $safe = bool ): string;
 ```
 
 Encrypts a text returning the result as a base64 string.
@@ -322,25 +322,25 @@ Interface for Phalcon\Crypt
 ## Methoden
 
 ```php
-public function decrypt( string $text, string $key ): string;
+public function decrypt( string $text, string $key = null ): string;
 ```
 
 Decrypts a text
 
 ```php
-public function decryptBase64( string $text, mixed $key ): string;
+public function decryptBase64( string $text, mixed $key = null ): string;
 ```
 
 Decrypt a text that is coded as a base64 string
 
 ```php
-public function encrypt( string $text, string $key ): string;
+public function encrypt( string $text, string $key = null ): string;
 ```
 
 Encrypts a text
 
 ```php
-public function encryptBase64( string $text, mixed $key ): string;
+public function encryptBase64( string $text, mixed $key = null ): string;
 ```
 
 Encrypts a text returning the result as a base64 string

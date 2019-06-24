@@ -16,6 +16,8 @@ title: 'Phalcon\Messages'
 
 | Namespace | Phalcon\Messages | | Extends | \Phalcon\Exception |
 
+Phalcon\Validation\Exception
+
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 <h1 id="Messages_Message">Class Phalcon\Messages\Message</h1>
@@ -23,6 +25,8 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
 
 | Namespace | Phalcon\Messages | | Uses | Phalcon\Messages\MessageInterface | | Implements | MessageInterface, \JsonSerializable |
+
+Phalcon\Messages\Message
 
 Stores a message from various components
 
@@ -59,7 +63,7 @@ protected metaData;
 ## Methods
 
 ```php
-public function __construct( string $message, mixed $field, string $type, int $code, array $metaData ): void;
+public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] ): void;
 ```
 
 Phalcon\Messages\Message constructor
@@ -138,6 +142,8 @@ Sets message type
 
 | Namespace | Phalcon\Messages | | Uses | Phalcon\Messages\Message |
 
+Phalcon\Messages\MessageInterface
+
 Interface for Phalcon\Messages\MessageInterface
 
 ## Methods
@@ -149,16 +155,20 @@ public function __toString(): string;
 Magic __toString method returns verbose message
 
 ```php
-public function getCode(): int;
+public function getCode();
 ```
 
 Returns the message code related to this message
 
+@return int
+
 ```php
-public function getField(): string;
+public function getField();
 ```
 
 Returns field name related to message
+
+@return string
 
 ```php
 public function getMessage(): string;
@@ -234,7 +244,7 @@ protected messages;
 ## Methods
 
 ```php
-public function __construct( array $messages ): void;
+public function __construct( array $messages = [] ): void;
 ```
 
 Phalcon\Messages\Messages constructor

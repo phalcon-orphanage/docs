@@ -13,4 +13,6 @@ title: 'Phalcon\Exception'
 
 | Namespace | Phalcon | | Extends | \Exception | | Implements | \Throwable |
 
+Phalcon\Exception
+
 All framework exceptions should use or extend this exception
