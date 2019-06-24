@@ -86,13 +86,13 @@ private serializerFactory;
 ## Métodos
 
 ```php
-public function __construct( mixed $factory, array $services );
+public function __construct( mixed $factory = null, array $services = [] );
 ```
 
 AdapterFactory constructor.
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 
 Create a new instance of the adapter
@@ -166,7 +166,7 @@ Deletes multiple cache items in a single operation.
 @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
 
 ```php
-public function get( mixed $key, mixed $defaultValue ): mixed;
+public function get( mixed $key, mixed $defaultValue = null ): mixed;
 ```
 
 Fetches a value from the cache.
@@ -182,7 +182,7 @@ public function getAdapter(): AdapterInterface
 ```
 
 ```php
-public function getMultiple( mixed $keys, mixed $defaultValue ): mixed;
+public function getMultiple( mixed $keys, mixed $defaultValue = null ): mixed;
 ```
 
 Obtains multiple cache items by their unique keys.
@@ -206,7 +206,7 @@ Determines whether an item is present in the cache.
 @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
-public function set( mixed $key, mixed $value, mixed $ttl ): bool;
+public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Persists data in the cache, uniquely referenced by a key with an optional expiration TTL time.
@@ -218,7 +218,7 @@ Persists data in the cache, uniquely referenced by a key with an optional expira
 @throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
-public function setMultiple( mixed $values, mixed $ttl ): bool;
+public function setMultiple( mixed $values, mixed $ttl = null ): bool;
 ```
 
 Persists a set of key => value pairs in the cache, with an optional TTL.
@@ -274,7 +274,7 @@ public function load( mixed $config ): mixed;
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options ): CacheInterface;
+public function newInstance( string $name, array $options = [] ): CacheInterface;
 ```
 
 Constructs a new Cache instance.
