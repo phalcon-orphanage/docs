@@ -132,6 +132,8 @@ Sets the message formatter
 | Namespace  | Phalcon\Logger\Adapter |
 | Uses       | Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 
+Phalcon\Logger\AdapterInterface
+
 Interface for Phalcon\Logger adapters
 
 
@@ -194,6 +196,8 @@ Sets the message formatter
 | Uses       | Phalcon\Logger\Item |
 | Extends    | AbstractAdapter |
 
+Phalcon\Logger\Adapter\Noop
+
 Adapter to store logs in plain text files
 
 ```php
@@ -228,6 +232,8 @@ Processes the message i.e. writes it to the file
 | Namespace  | Phalcon\Logger\Adapter |
 | Uses       | Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 | Extends    | AbstractAdapter |
+
+Phalcon\Logger\Adapter\Stream
 
 Adapter to store logs in plain text files
 
@@ -276,7 +282,7 @@ protected options;
 
 ## Methods
 ```php
-public function __construct( string $name, array $options );
+public function __construct( string $name, array $options = [] );
 ```
 Constructor. Accepts the name and some options
 
@@ -307,6 +313,8 @@ Processes the message i.e. writes it to the file
 | Namespace  | Phalcon\Logger\Adapter |
 | Uses       | Phalcon\Logger\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 | Extends    | AbstractAdapter |
+
+Phalcon\Logger\Adapter\Syslog
 
 Sends logs to the system logger
 
@@ -362,7 +370,7 @@ protected option = 0;
 
 ## Methods
 ```php
-public function __construct( string $name, array $options );
+public function __construct( string $name, array $options = [] );
 ```
 Phalcon\Logger\Adapter\Syslog constructor
 
@@ -399,13 +407,13 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 AdapterFactory constructor.
 
 
 ```php
-public function newInstance( string $name, string $fileName, array $options ): AdapterInterface;
+public function newInstance( string $name, string $fileName, array $options = [] ): AdapterInterface;
 ```
 Create a new instance of the adapter
 
@@ -423,6 +431,8 @@ protected function getAdapters(): array;
 
 | Namespace  | Phalcon\Logger |
 | Extends    | \Phalcon\Exception |
+
+Phalcon\Logger\Exception
 
 Exceptions thrown in Phalcon\Logger will use this class
 
@@ -446,7 +456,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function interpolate( string $message, mixed $context );
+public function interpolate( string $message, mixed $context = null );
 ```
 Interpolates context values into the message placeholders
 
@@ -463,6 +473,8 @@ Interpolates context values into the message placeholders
 
 | Namespace  | Phalcon\Logger\Formatter |
 | Uses       | Phalcon\Logger\Item |
+
+Phalcon\Logger\FormatterInterface
 
 This interface must be implemented by formatters in Phalcon\Logger
 
@@ -484,6 +496,8 @@ Applies a format to an item
 | Uses       | Phalcon\Logger\Formatter\AbstractFormatter, Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
+Phalcon\Logger\Formatter\Json
+
 Formats messages using JSON encoding
 
 
@@ -500,7 +514,7 @@ protected dateFormat;
 
 ## Methods
 ```php
-public function __construct( string $dateFormat = D, d M y H:i:s O ): void;
+public function __construct( string $dateFormat = string ): void;
 ```
 Phalcon\Logger\Formatter\Json construct
 
@@ -531,6 +545,8 @@ public function setDateFormat( string $dateFormat )
 | Uses       | Phalcon\Logger\Formatter\Formatter, Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
+Phalcon\Logger\Formatter\Line
+
 Formats messages using an one-line string
 
 
@@ -554,7 +570,7 @@ protected format;
 
 ## Methods
 ```php
-public function __construct( string $format = [%date%][%type%] %message%, string $dateFormat = D, d M y H:i:s O ): void;
+public function __construct( string $format = string, string $dateFormat = string ): void;
 ```
 Phalcon\Logger\Formatter\Line construct
 
@@ -595,6 +611,8 @@ public function setFormat( string $format )
 | Uses       | Phalcon\Logger\Formatter\AbstractFormatter, Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
+Phalcon\Logger\Formatter\Syslog
+
 Prepares a message to be used in a Syslog backend
 
 
@@ -612,6 +630,8 @@ Applies a format to a message before sent it to the internal log
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
 | Namespace  | Phalcon\Logger |
+
+Phalcon\Logger\Item
 
 Represents each item in a logging transaction
 
@@ -654,7 +674,7 @@ protected type;
 
 ## Methods
 ```php
-public function __construct( string $message, string $name, int $type, int $time, mixed $context );
+public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
 ```
 Phalcon\Logger\Item constructor
 
@@ -693,6 +713,8 @@ public function getType(): integer
 | Namespace  | Phalcon\Logger |
 | Uses       | Psr\Log\LoggerInterface, Psr\Log\InvalidArgumentException, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception |
 | Implements | LoggerInterface |
+
+Phalcon\Logger
 
 This component offers logging capabilities for your application. The
 component accepts multiple adapters, working also as a multiple logger.
@@ -763,7 +785,7 @@ protected excluded;
 
 ## Methods
 ```php
-public function __construct( string $name, array $adapters ): void;
+public function __construct( string $name, array $adapters = [] ): void;
 ```
 Constructor.
 
@@ -781,7 +803,7 @@ Add an adapter to the stack. For processing we use FIFO
 
 
 ```php
-public function alert( mixed $message, array $context ): void;
+public function alert( mixed $message, array $context = [] ): void;
 ```
 Action must be taken immediately.
 
@@ -792,7 +814,7 @@ trigger the SMS alerts and wake you up.
 
 
 ```php
-public function critical( mixed $message, array $context ): void;
+public function critical( mixed $message, array $context = [] ): void;
 ```
 Critical conditions.
 
@@ -802,7 +824,7 @@ Example: Application component unavailable, unexpected exception.
 
 
 ```php
-public function debug( mixed $message, array $context ): void;
+public function debug( mixed $message, array $context = [] ): void;
 ```
 Detailed debug information.
 
@@ -810,7 +832,7 @@ Detailed debug information.
 
 
 ```php
-public function emergency( mixed $message, array $context ): void;
+public function emergency( mixed $message, array $context = [] ): void;
 ```
 System is unusable.
 
@@ -818,7 +840,7 @@ System is unusable.
 
 
 ```php
-public function error( mixed $message, array $context ): void;
+public function error( mixed $message, array $context = [] ): void;
 ```
 Runtime errors that do not require immediate action but should typically
 be logged and monitored.
@@ -827,7 +849,7 @@ be logged and monitored.
 
 
 ```php
-public function excludeAdapters( array $adapters ): Logger;
+public function excludeAdapters( array $adapters = [] ): Logger;
 ```
 Exclude certain adapters.
 
@@ -857,7 +879,7 @@ Returns the name of the logger
 
 
 ```php
-public function info( mixed $message, array $context ): void;
+public function info( mixed $message, array $context = [] ): void;
 ```
 Interesting events.
 
@@ -867,7 +889,7 @@ Example: User logs in, SQL logs.
 
 
 ```php
-public function log( mixed $level, mixed $message, array $context ): void;
+public function log( mixed $level, mixed $message, array $context = [] ): void;
 ```
 Logs with an arbitrary level.
 
@@ -876,7 +898,7 @@ Logs with an arbitrary level.
 
 
 ```php
-public function notice( mixed $message, array $context ): void;
+public function notice( mixed $message, array $context = [] ): void;
 ```
 Normal but significant events.
 
@@ -902,7 +924,7 @@ Sets the adapters stack overriding what is already there
 
 
 ```php
-public function warning( mixed $message, array $context ): void;
+public function warning( mixed $message, array $context = [] ): void;
 ```
 Exceptional occurrences that are not errors.
 
@@ -913,7 +935,7 @@ that are not necessarily wrong.
 
 
 ```php
-protected function addMessage( int $level, string $message, array $context ): bool;
+protected function addMessage( int $level, string $message, array $context = [] ): bool;
 ```
 Adds a message to each handler for processing
 
@@ -937,6 +959,8 @@ Returns an array of log levels with integer to string conversion
 
 | Namespace  | Phalcon\Logger |
 | Uses       | Phalcon\Config\Config, Phalcon\Helper\Arr, Phalcon\Logger\Logger, Phalcon\Logger\AdapterFactory |
+
+PhalconNG\Logger\LoggerFactory
 
 Logger factory
 
@@ -963,7 +987,7 @@ Factory to create an instace from a Config object
 
 
 ```php
-public function newInstance( string $name, array $adapters ): Logger;
+public function newInstance( string $name, array $adapters = [] ): Logger;
 ```
 Returns a Logger object
 

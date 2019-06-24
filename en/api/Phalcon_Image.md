@@ -49,6 +49,8 @@ const WIDTH = 2;
 | Uses       | Phalcon\Image, Phalcon\Image\Exception |
 | Implements | AdapterInterface |
 
+Phalcon\Image\Adapter
+
 All image adapters must use this class
 
 
@@ -100,7 +102,7 @@ protected width;
 
 ## Methods
 ```php
-public function background( string $color, int $opacity = 100 ): Adapter;
+public function background( string $color, int $opacity = int ): Adapter;
 ```
  Set the background color of an image
  
@@ -112,7 +114,7 @@ public function blur( int $radius ): Adapter;
  
 
 ```php
-public function crop( int $width, int $height, int $offsetX, int $offsetY ): Adapter;
+public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): Adapter;
 ```
  Crop an image to the given size
  
@@ -154,7 +156,7 @@ public function getWidth(): int
 
 
 ```php
-public function liquidRescale( int $width, int $height, int $deltaX, int $rigidity ): Adapter;
+public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): Adapter;
 ```
 This method scales the images using liquid rescaling method. Only support
 Imagick
@@ -178,19 +180,19 @@ public function pixelate( int $amount ): Adapter;
  
 
 ```php
-public function reflection( int $height, int $opacity = 100, bool $fadeIn = false ): Adapter;
+public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): Adapter;
 ```
  Add a reflection to an image
  
 
 ```php
-public function render( string $ext, int $quality = 100 ): string;
+public function render( string $ext = null, int $quality = int ): string;
 ```
  Render the image and return the binary string
  
 
 ```php
-public function resize( int $width, int $height, int $master ): Adapter;
+public function resize( int $width = null, int $height = null, int $master = static-constant-access ): Adapter;
 ```
  Resize the image to the given size
  
@@ -202,7 +204,7 @@ public function rotate( int $degrees ): Adapter;
  
 
 ```php
-public function save( string $file, int $quality = -1 ): Adapter;
+public function save( string $file = null, int $quality = int ): Adapter;
 ```
  Save the image
  
@@ -214,13 +216,13 @@ public function sharpen( int $amount ): Adapter;
  
 
 ```php
-public function text( string $text, mixed $offsetX = false, mixed $offsetY = false, int $opacity = 100, string $color = 000000, int $size = 12, string $fontfile ): Adapter;
+public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): Adapter;
 ```
  Add a text to an image with a specified opacity
  
 
 ```php
-public function watermark( mixed $watermark, int $offsetX, int $offsetY, int $opacity = 100 ): Adapter;
+public function watermark( mixed $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): Adapter;
 ```
  Add a watermark to an image with the specified opacity
  
@@ -243,7 +245,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function background( string $color, int $opacity = 100 );
+public function background( string $color, int $opacity = int );
 ```
 //
 
@@ -253,7 +255,7 @@ public function blur( int $radius );
 //
 
 ```php
-public function crop( int $width, int $height, int $offsetX, int $offsetY );
+public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null );
 ```
 //
 
@@ -273,17 +275,17 @@ public function pixelate( int $amount );
 //
 
 ```php
-public function reflection( int $height, int $opacity = 100, bool $fadeIn = false );
+public function reflection( int $height, int $opacity = int, bool $fadeIn = bool );
 ```
 //
 
 ```php
-public function render( string $ext, int $quality = 100 );
+public function render( string $ext = null, int $quality = int );
 ```
 //
 
 ```php
-public function resize( int $width, int $height, int $master );
+public function resize( int $width = null, int $height = null, int $master = static-constant-access );
 ```
 //
 
@@ -293,7 +295,7 @@ public function rotate( int $degrees );
 //
 
 ```php
-public function save( string $file, int $quality = 100 );
+public function save( string $file = null, int $quality = int );
 ```
 //
 
@@ -303,12 +305,12 @@ public function sharpen( int $amount );
 //
 
 ```php
-public function text( string $text, int $offsetX, int $offsetY, int $opacity = 100, string $color = 000000, int $size = 12, string $fontfile );
+public function text( string $text, int $offsetX = int, int $offsetY = int, int $opacity = int, string $color = string, int $size = int, string $fontfile = null );
 ```
 //
 
 ```php
-public function watermark( mixed $watermark, int $offsetX, int $offsetY, int $opacity = 100 );
+public function watermark( mixed $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int );
 ```
 //
 
@@ -339,7 +341,7 @@ protected static checked = false;
 
 ## Methods
 ```php
-public function __construct( string $file, int $width, int $height );
+public function __construct( string $file, int $width = null, int $height = null );
 ```
 //
 
@@ -433,6 +435,8 @@ protected function processWatermark( mixed $watermark, int $offsetX, int $offset
 | Uses       | Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception |
 | Extends    | AbstractAdapter |
 
+Phalcon\Image\Adapter\Imagick
+
 Image manipulation support. Allows images to be resized, cropped, etc.
 
 ```php
@@ -458,7 +462,7 @@ protected static version = 0;
 
 ## Methods
 ```php
-public function __construct( string $file, int $width, int $height );
+public function __construct( string $file, int $width = null, int $height = null );
 ```
 \Phalcon\Image\Adapter\Imagick constructor
 
@@ -614,7 +618,7 @@ Phalcon\Image/ImageFactory
 
 ## Methods
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 TagFactory constructor.
 
@@ -626,7 +630,7 @@ Factory to create an instace from a Config object
 
 
 ```php
-public function newInstance( string $name, string $file, int $width, int $height ): AdapterInterface;
+public function newInstance( string $name, string $file, int $width = null, int $height = null ): AdapterInterface;
 ```
 Creates a new instance
 

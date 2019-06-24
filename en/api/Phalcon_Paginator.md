@@ -84,7 +84,7 @@ Sets current repository for pagination
 
 
 ```php
-protected function getRepository( array $properties ): RepositoryInterface;
+protected function getRepository( array $properties = null ): RepositoryInterface;
 ```
 Gets current repository for pagination
 
@@ -97,6 +97,8 @@ Gets current repository for pagination
 
 | Namespace  | Phalcon\Paginator\Adapter |
 | Uses       | Phalcon\Paginator\RepositoryInterface |
+
+Phalcon\Paginator\AdapterInterface
 
 Interface for Phalcon\Paginator adapters
 
@@ -136,6 +138,8 @@ Set current rows limit
 | Uses       | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface |
 | Extends    | AbstractAdapter |
 
+Phalcon\Paginator\Adapter\Model
+
 This adapter allows to paginate data using a Phalcon\Mvc\Model resultset as a
 base.
 
@@ -170,6 +174,8 @@ Returns a slice of the resultset to show in the pagination
 | Namespace  | Phalcon\Paginator\Adapter |
 | Uses       | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface |
 | Extends    | AbstractAdapter |
+
+Phalcon\Paginator\Adapter\NativeArray
 
 Pagination using a PHP array as source of data
 
@@ -208,6 +214,8 @@ Returns a slice of the resultset to show in the pagination
 | Namespace  | Phalcon\Paginator\Adapter |
 | Uses       | Phalcon\Mvc\Model\Query\Builder, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Exception, Phalcon\Db |
 | Extends    | AbstractAdapter |
+
+Phalcon\Paginator\Adapter\QueryBuilder
 
 Pagination using a PHQL query builder as source of data
 
@@ -283,6 +291,8 @@ Set query builder object
 | Namespace  | Phalcon\Paginator |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Paginator\Exception
+
 Exceptions thrown in Phalcon\Paginator will use this class
 
 
@@ -305,7 +315,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 AdapterFactory constructor.
 
@@ -337,7 +347,7 @@ $paginator = (new PaginatorFactory())->load($options);
 
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 Create a new instance of the adapter
 
@@ -356,6 +366,8 @@ protected function getAdapters(): array;
 | Namespace  | Phalcon\Paginator |
 | Uses       | Phalcon\Helper\Arr |
 | Implements | RepositoryInterface |
+
+Phalcon\Paginator\Repository
 
 Repository of current state Phalcon\Paginator\AdapterInterface::paginate()
 
@@ -448,7 +460,7 @@ public function setProperties( array $properties ): RepositoryInterface;
 
 
 ```php
-protected function getProperty( string $property, mixed $defaultValue ): mixed;
+protected function getProperty( string $property, mixed $defaultValue = null ): mixed;
 ```
 Gets value of property by name
 
@@ -466,6 +478,8 @@ Resolve alias property name
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repositoryinterface.zep)
 
 | Namespace  | Phalcon\Paginator |
+
+Phalcon\Paginator\RepositoryInterface
 
 Interface for the repository of current state
 Phalcon\Paginator\AdapterInterface::paginate()

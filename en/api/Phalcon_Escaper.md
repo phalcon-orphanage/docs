@@ -17,6 +17,8 @@ title: 'Phalcon\Escaper'
 | Uses       | Phalcon\EscaperInterface, Phalcon\Escaper\Exception |
 | Implements | EscaperInterface |
 
+Phalcon\Escaper
+
 Escapes different kinds of text securing them. By using this component you
 may prevent XSS attacks.
 

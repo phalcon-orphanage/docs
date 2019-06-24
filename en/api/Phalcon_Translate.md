@@ -25,6 +25,8 @@ title: 'Phalcon\Translate'
 | Uses       | Phalcon\Helper\Arr, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AdapterInterface, Phalcon\Translate\InterpolatorFactory |
 | Implements | AdapterInterface |
 
+Phalcon\Translate\Adapter
+
 Base class for Phalcon\Translate adapters
 
 
@@ -49,7 +51,7 @@ public function __construct( mixed $interpolator, array $options );
 //
 
 ```php
-public function _( string $translateKey, mixed $placeholders ): string;
+public function _( string $translateKey, mixed $placeholders = null ): string;
 ```
 Returns the translation string of the given key (alias of method 't')
 
@@ -83,7 +85,7 @@ Unsets a translation from the dictionary
 
 
 ```php
-public function t( string $translateKey, mixed $placeholders ): string;
+public function t( string $translateKey, mixed $placeholders = null ): string;
 ```
 Returns the translation string of the given key
 
@@ -91,7 +93,7 @@ Returns the translation string of the given key
 
 
 ```php
-protected function replacePlaceholders( string $translation, mixed $placeholders ): string;
+protected function replacePlaceholders( string $translation, mixed $placeholders = null ): string;
 ```
 Replaces placeholders by the values passed
 
@@ -104,6 +106,8 @@ Replaces placeholders by the values passed
 
 | Namespace  | Phalcon\Translate\Adapter |
 
+Phalcon\Translate\AdapterInterface
+
 Interface for Phalcon\Translate adapters
 
 
@@ -115,7 +119,7 @@ Check whether is defined a translation key in the internal array
 
 
 ```php
-public function query( string $translateKey, mixed $placeholders ): string;
+public function query( string $translateKey, mixed $placeholders = null ): string;
 ```
 Returns the translation related to the given key
 
@@ -123,7 +127,7 @@ Returns the translation related to the given key
 
 
 ```php
-public function t( string $translateKey, mixed $placeholders ): string;
+public function t( string $translateKey, mixed $placeholders = null ): string;
 ```
 Returns the translation string of the given key
 
@@ -140,6 +144,8 @@ Returns the translation string of the given key
 | Uses       | Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory |
 | Extends    | AbstractAdapter |
 | Implements | \ArrayAccess |
+
+Phalcon\Translate\Adapter\Csv
 
 Allows to define translation lists using CSV file
 
@@ -167,7 +173,7 @@ Check whether is defined a translation key in the internal array
 
 
 ```php
-public function query( string $index, mixed $placeholders ): string;
+public function query( string $index, mixed $placeholders = null ): string;
 ```
 Returns the translation related to the given key
 
@@ -182,6 +188,8 @@ Returns the translation related to the given key
 | Uses       | Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory |
 | Extends    | AbstractAdapter |
 | Implements | \ArrayAccess |
+
+Phalcon\Translate\Adapter\Gettext
 
 ```php
 use Phalcon\Translate\Adapter\Gettext;
@@ -257,7 +265,7 @@ public function getLocale(): string
 
 
 ```php
-public function nquery( string $msgid1, string $msgid2, int $count, mixed $placeholders, string $domain ): string;
+public function nquery( string $msgid1, string $msgid2, int $count, mixed $placeholders = null, string $domain = null ): string;
 ```
 The plural version of gettext().
 Some languages have more than one form for plural messages dependent on
@@ -265,7 +273,7 @@ the count.
 
 
 ```php
-public function query( string $index, mixed $placeholders ): string;
+public function query( string $index, mixed $placeholders = null ): string;
 ```
 Returns the translation related to the given key.
 
@@ -352,6 +360,8 @@ Validator for constructor
 | Extends    | AbstractAdapter |
 | Implements | \ArrayAccess |
 
+Phalcon\Translate\Adapter\NativeArray
+
 Allows to define translation lists using PHP arrays
 
 
@@ -389,7 +399,7 @@ Whenever a key is not found this medhod will be called
 
 
 ```php
-public function query( string $index, mixed $placeholders ): string;
+public function query( string $index, mixed $placeholders = null ): string;
 ```
 Returns the translation related to the given key
 
@@ -402,6 +412,8 @@ Returns the translation related to the given key
 
 | Namespace  | Phalcon\Translate |
 | Extends    | \Phalcon\Exception |
+
+Phalcon\Translate\Exception
 
 Class for exceptions thrown by Phalcon\Translate
 
@@ -425,7 +437,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function replacePlaceholders( string $translation, array $placeholders ): string;
+public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 Replaces placeholders by the values passed
 
@@ -450,7 +462,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function replacePlaceholders( string $translation, array $placeholders ): string;
+public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 Replaces placeholders by the values passed
 
@@ -463,12 +475,14 @@ Replaces placeholders by the values passed
 
 | Namespace  | Phalcon\Translate\Interpolator |
 
+Phalcon\Translate\InterpolatorInterface
+
 Interface for Phalcon\Translate interpolators
 
 
 ## Methods
 ```php
-public function replacePlaceholders( string $translation, array $placeholders ): string;
+public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 Replaces placeholders by the values passed
 
@@ -507,7 +521,7 @@ private services;
 
 ## Methods
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 AdapterFactory constructor.
 
@@ -552,7 +566,7 @@ private interpolator;
 
 ## Methods
 ```php
-public function __construct( mixed $interpolator, array $services );
+public function __construct( mixed $interpolator, array $services = [] );
 ```
 AdapterFactory constructor.
 
@@ -564,7 +578,7 @@ Factory to create an instace from a Config object
 
 
 ```php
-public function newInstance( string $name, array $options ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
 ```
 Create a new instance of the adapter
 

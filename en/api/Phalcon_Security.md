@@ -90,21 +90,21 @@ Phalcon\Security constructor
 
 
 ```php
-public function checkHash( string $password, string $passwordHash, int $maxPassLength ): bool;
+public function checkHash( string $password, string $passwordHash, int $maxPassLength = int ): bool;
 ```
 Checks a plain text password and its hash version to check if the
 password matches
 
 
 ```php
-public function checkToken( mixed $tokenKey, mixed $tokenValue, bool $destroyIfValid = true ): bool;
+public function checkToken( mixed $tokenKey = null, mixed $tokenValue = null, bool $destroyIfValid = bool ): bool;
 ```
 Check if the CSRF token sent in the request is the same that the current
 in session
 
 
 ```php
-public function computeHmac( string $data, string $key, string $algo, bool $raw = false ): string;
+public function computeHmac( string $data, string $key, string $algo, bool $raw = bool ): string;
 ```
 Computes a HMAC
 
@@ -147,7 +147,7 @@ Returns the value of the CSRF token for the current request.
 
 
 ```php
-public function getSaltBytes( int $numberBytes ): string;
+public function getSaltBytes( int $numberBytes = int ): string;
 ```
 Generate a >22-length pseudo random string to be used as salt for
 passwords
@@ -179,7 +179,7 @@ public function getWorkFactor()
 
 
 ```php
-public function hash( string $password, int $workFactor ): string;
+public function hash( string $password, int $workFactor = int ): string;
 ```
 Creates a password hash using bcrypt with a pseudo random salt
 
@@ -223,6 +223,8 @@ public function setWorkFactor( $workFactor )
 | Namespace  | Phalcon\Security |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Security\Exception
+
 Exceptions thrown in Phalcon\Security will use this class
 
 
@@ -232,6 +234,8 @@ Exceptions thrown in Phalcon\Security will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 | Namespace  | Phalcon\Security |
+
+Phalcon\Security\Random
 
 Secure random number generator class.
 
@@ -305,7 +309,7 @@ This class partially borrows SecureRandom library from Ruby
 
 ## Methods
 ```php
-public function base58( int $len ): string;
+public function base58( int $len = null ): string;
 ```
 Generates a random base58 string
 
@@ -328,7 +332,7 @@ echo $random->base58(); // 4kUgL2pdQMSCQtjE
 
 
 ```php
-public function base62( int $len ): string;
+public function base62( int $len = null ): string;
 ```
 Generates a random base62 string
 
@@ -350,7 +354,7 @@ echo $random->base62(); // z0RkwHfh8ErDM1xw
 
 
 ```php
-public function base64( int $len ): string;
+public function base64( int $len = null ): string;
 ```
 Generates a random base64 string
 
@@ -368,7 +372,7 @@ echo $random->base64(12); // 3rcq39QzGK9fUqh8
 
 
 ```php
-public function base64Safe( int $len, bool $padding = false ): string;
+public function base64Safe( int $len = null, bool $padding = bool ): string;
 ```
 Generates a random URL-safe base64 string
 
@@ -391,7 +395,7 @@ echo $random->base64Safe(); // GD8JojhzSTrqX7Q8J6uug
 
 
 ```php
-public function bytes( int $len = 16 ): string;
+public function bytes( int $len = int ): string;
 ```
 Generates a random binary string
 
@@ -413,7 +417,7 @@ var_dump(bin2hex($bytes));
 
 
 ```php
-public function hex( int $len ): string;
+public function hex( int $len = null ): string;
 ```
 Generates a random hex string
 
@@ -470,7 +474,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 
 ```php
-protected function base( string $alphabet, int $base, mixed $n ): string;
+protected function base( string $alphabet, int $base, mixed $n = null ): string;
 ```
 Generates a random string based on the number ($base) of characters
 ($alphabet).

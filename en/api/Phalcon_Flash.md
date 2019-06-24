@@ -68,7 +68,7 @@ protected messages;
 
 ## Methods
 ```php
-public function __construct( mixed $cssClasses ): void;
+public function __construct( mixed $cssClasses = null ): void;
 ```
 Phalcon\Flash constructor
 
@@ -131,6 +131,9 @@ Outputs a message formatting it with HTML
 ```php
 $flash->outputMessage("error", $message);
 ```
+
+@param string|array message
+@return string|void
 
 
 ```php
@@ -218,7 +221,7 @@ Outputs a message
 
 
 ```php
-public function output( bool $remove = true ): void;
+public function output( bool $remove = bool ): void;
 ```
 Prints the messages accumulated in the flasher
 
@@ -256,13 +259,13 @@ Clear messages in the session messenger
 
 
 ```php
-public function getMessages( mixed $type, bool $remove = true ): array;
+public function getMessages( mixed $type = null, bool $remove = bool ): array;
 ```
 Returns the messages in the session flasher
 
 
 ```php
-public function has( mixed $type ): bool;
+public function has( mixed $type = null ): bool;
 ```
 Checks whether there are messages
 
@@ -274,13 +277,13 @@ Adds a message to the session flasher
 
 
 ```php
-public function output( bool $remove = true ): void;
+public function output( bool $remove = bool ): void;
 ```
 Prints the messages in the session flasher
 
 
 ```php
-protected function getSessionMessages( bool $remove, mixed $type ): array;
+protected function getSessionMessages( bool $remove, mixed $type = null ): array;
 ```
 Returns the messages stored in session
 
@@ -298,6 +301,8 @@ Stores the messages in session
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
 
 | Namespace  | Phalcon |
+
+Phalcon\FlashInterface
 
 Interface for Phalcon\Flash
 

@@ -81,15 +81,19 @@ protected static urlService;
 
 ## Methods
 ```php
-static final protected function inputField( string $type, mixed $parameters, bool $asValue = false ): string;
+static final protected function inputField( string $type, mixed $parameters, bool $asValue = bool ): string;
 ```
 Builds generic INPUT tags
+
+@param array parameters
 
 
 ```php
 static final protected function inputFieldChecked( string $type, mixed $parameters ): string;
 ```
 Builds INPUT tags that implements the checked attribute
+
+@param array parameters
 
 
 
@@ -101,6 +105,8 @@ Builds INPUT tags that implements the checked attribute
 | Namespace  | Phalcon\Tag |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Tag\Exception
+
 Exceptions thrown in Phalcon\Tag will use this class
 
 
@@ -111,6 +117,8 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 | Namespace  | Phalcon\Tag |
 | Uses       | Phalcon\Tag\Exception, Phalcon\Tag, Phalcon\EscaperInterface, Phalcon\Mvc\Model\ResulsetInterface |
+
+Phalcon\Tag\Select
 
 Generates a SELECT html tag using a static array of values or a
 Phalcon\Mvc\Model resultset

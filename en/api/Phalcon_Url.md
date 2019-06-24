@@ -63,7 +63,7 @@ protected staticBaseUri;
 
 ## Methods
 ```php
-public function get( mixed $uri, mixed $args, bool $local, mixed $baseUri ): string;
+public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
 ```
 Generates a URL
 
@@ -117,7 +117,7 @@ Returns the DependencyInjector container
 
 
 ```php
-public function getStatic( mixed $uri ): string;
+public function getStatic( mixed $uri = null ): string;
 ```
 Generates a URL for a static resource
 
@@ -141,7 +141,7 @@ Returns the prefix for all the generated static urls. By default /
 
 
 ```php
-public function path( string $path ): string;
+public function path( string $path = null ): string;
 ```
 Generates a local path
 
@@ -193,6 +193,8 @@ $url->setStaticBaseUri("/invo/");
 | Namespace  | Phalcon\Url |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Url\Exception
+
 Exceptions thrown in Phalcon\Url will use this class
 
 
@@ -208,9 +210,12 @@ Interface for Phalcon\UrlInterface
 
 ## Methods
 ```php
-public function get( mixed $uri, mixed $args, bool $local ): string;
+public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;
 ```
 Generates a URL
+
+@param string|array uri
+@param array|object args Optional arguments to be appended to the query string
 
 
 ```php
@@ -226,7 +231,7 @@ Returns the prefix for all the generated urls. By default /
 
 
 ```php
-public function path( string $path ): string;
+public function path( string $path = null ): string;
 ```
 Generates a local path
 

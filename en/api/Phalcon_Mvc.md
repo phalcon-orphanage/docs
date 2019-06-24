@@ -105,6 +105,8 @@ title: 'Phalcon\Mvc'
 | Uses       | Phalcon\Application, Phalcon\DiInterface, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\RouterInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\DispatcherInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface |
 | Extends    | BaseApplication |
 
+Phalcon\Mvc\Application
+
 This component encapsulates all the complex operations behind instantiating
 every component needed and integrating it with the rest to allow the MVC
 pattern to operate as desired.
@@ -195,6 +197,8 @@ You can full disable the view component using this method
 | Namespace  | Phalcon\Mvc\Application |
 | Extends    | \Phalcon\Application\Exception |
 
+Phalcon\Mvc\Application\Exception
+
 Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 
@@ -206,6 +210,8 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Collection\BehaviorInterface, Phalcon\Mvc\Collection\Document, Phalcon\Mvc\Collection\Exception, Phalcon\Mvc\Collection\ManagerInterface, Phalcon\Messages\Message, Phalcon\ValidationInterface, Phalcon\Storage\Serializer\SerializerInterface |
 | Implements | EntityInterface, CollectionInterface, InjectionAwareInterface, \Serializable |
+
+Phalcon\Mvc\Collection
 
 This component implements a high level abstraction for NoSQL databases which
 works with documents
@@ -261,7 +267,7 @@ protected source;
 
 ## Methods
 ```php
-final public function __construct( mixed $container, mixed $modelsManager );
+final public function __construct( mixed $container = null, mixed $modelsManager = null );
 ```
 Phalcon\Mvc\Collection constructor
 
@@ -475,6 +481,8 @@ public function setId( mixed $id );
 ```
 Sets a value for the _id property, creates a MongoId object if needed
 
+@param mixed id
+
 
 ```php
 public function skipOperation( bool $skip );
@@ -623,6 +631,8 @@ class Subscriptors extends Collection
 | Uses       | Phalcon\Mvc\CollectionInterface |
 | Implements | BehaviorInterface |
 
+Phalcon\Mvc\Collection\Behavior
+
 This is an optional base class for ORM behaviors
 
 
@@ -635,13 +645,13 @@ protected options;
 
 ## Methods
 ```php
-public function __construct( array $options );
+public function __construct( array $options = [] );
 ```
 Phalcon\Mvc\Collection\Behavior
 
 
 ```php
-public function missingMethod( mixed $model, string $method, array $arguments );
+public function missingMethod( mixed $model, string $method, array $arguments = [] );
 ```
 Acts as fallbacks when a missing method is called on the collection
 
@@ -653,7 +663,7 @@ This method receives the notifications from the EventsManager
 
 
 ```php
-protected function getOptions( string $eventName );
+protected function getOptions( string $eventName = null );
 ```
 Returns the behavior options related to an event
 
@@ -676,6 +686,8 @@ Checks whether the behavior must take action on certain event
 | Uses       | Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\Behavior, Phalcon\Mvc\Collection\Exception |
 | Extends    | Behavior |
 
+Phalcon\Mvc\Collection\Behavior\SoftDelete
+
 Instead of permanently delete a record it marks the record as
 deleted changing the value of a flag column
 
@@ -697,6 +709,8 @@ Listens for notifications from the models manager
 | Uses       | Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\Behavior, Phalcon\Mvc\Collection\Exception |
 | Extends    | Behavior |
 
+Phalcon\Mvc\Collection\Behavior\Timestampable
+
 Allows to automatically update a model’s attribute saving the
 datetime when a record is created or updated
 
@@ -717,12 +731,14 @@ Listens for notifications from the models manager
 | Namespace  | Phalcon\Mvc\Collection |
 | Uses       | Phalcon\Mvc\CollectionInterface |
 
+Phalcon\Mvc\Collection\BehaviorInterface
+
 Interface for Phalcon\Mvc\Collection\Behavior
 
 
 ## Methods
 ```php
-public function missingMethod( mixed $collection, string $method, array $arguments );
+public function missingMethod( mixed $collection, string $method, array $arguments = [] );
 ```
 Calls a method when it's missing in the collection
 
@@ -742,6 +758,8 @@ This method receives the notifications from the EventsManager
 | Namespace  | Phalcon\Mvc\Collection |
 | Uses       | Phalcon\Mvc\EntityInterface, Phalcon\Mvc\Collection\Exception |
 | Implements | EntityInterface, \ArrayAccess |
+
+Phalcon\Mvc\Collection\Document
 
 This component allows Phalcon\Mvc\Collection to return rows without an associated entity.
 This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
@@ -807,7 +825,10 @@ Writes an attribute value by its name
 | Namespace  | Phalcon\Mvc\Collection |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Mvc\Collection\Exception
+
 Exceptions thrown in Phalcon\Mvc\Collection\* classes will use this class
+
 
 
         
@@ -818,6 +839,8 @@ Exceptions thrown in Phalcon\Mvc\Collection\* classes will use this class
 | Namespace  | Phalcon\Mvc\Collection |
 | Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\BehaviorInterface |
 | Implements | InjectionAwareInterface, EventsAwareInterface |
+
+Phalcon\Mvc\Collection\Manager
 
 This components controls the initialization of models, keeping record of relations
 between the different models of the application.
@@ -995,6 +1018,8 @@ Sets whether a model must use implicit objects ids
 
 | Namespace  | Phalcon\Mvc\Collection |
 | Uses       | Phalcon\Db\AdapterInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\BehaviorInterface, Phalcon\Events\ManagerInterface |
+
+Phalcon\Mvc\Collection\Manager
 
 This components controls the initialization of models, keeping record of relations
 between the different models of the application.
@@ -1208,6 +1233,8 @@ Check whether validation process has generated any messages
 | Extends    | Injectable |
 | Implements | ControllerInterface |
 
+Phalcon\Mvc\Controller
+
 Every application controller should extend this class that encapsulates all
 the controller functionality
 
@@ -1261,6 +1288,8 @@ Phalcon\Mvc\Controller constructor
 
 | Namespace  | Phalcon\Mvc\Controller |
 
+Phalcon\Mvc\Controller\BindModelInterface
+
 Interface for Phalcon\Mvc\Controller
 
 
@@ -1270,6 +1299,8 @@ Interface for Phalcon\Mvc\Controller
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/controllerinterface.zep)
 
 | Namespace  | Phalcon\Mvc |
+
+Phalcon\Mvc\ControllerInterface
 
 Interface for controller handlers
 
@@ -1448,7 +1479,7 @@ Handles a user exception
 
 
 ```php
-protected function throwDispatchException( string $message, int $exceptionCode );
+protected function throwDispatchException( string $message, int $exceptionCode = int );
 ```
 Throws an internal exception
 
@@ -1462,6 +1493,8 @@ Throws an internal exception
 | Namespace  | Phalcon\Mvc\Dispatcher |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Mvc\Dispatcher\Exception
+
 Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 
 
@@ -1473,6 +1506,8 @@ Exceptions thrown in Phalcon\Mvc\Dispatcher will use this class
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Mvc\ControllerInterface, Phalcon\DispatcherInterface |
 | Extends    | Array |
+
+Phalcon\Mvc\DispatcherInterface
 
 Interface for Phalcon\Mvc\Dispatcher
 
@@ -1522,6 +1557,8 @@ Sets the default controller name
 
 | Namespace  | Phalcon\Mvc |
 
+Phalcon\Mvc\EntityInterface
+
 Interface for Phalcon\Mvc\Collection and Phalcon\Mvc\Model
 
 
@@ -1548,6 +1585,8 @@ Writes an attribute value by its name
 | Uses       | Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\Controller, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface |
 | Extends    | Injectable |
 | Implements | \ArrayAccess |
+
+Phalcon\Mvc\Micro
 
 With Phalcon you can create "Micro-Framework like" applications. By doing
 this, you only need to write a minimal amount of code to create a PHP
@@ -1616,7 +1655,7 @@ protected stopped;
 
 ## Methods
 ```php
-public function __construct( mixed $container );
+public function __construct( mixed $container = null );
 ```
 Phalcon\Mvc\Micro constructor
 
@@ -1865,7 +1904,7 @@ Sets the DependencyInjector container
 
 
 ```php
-public function setModelBinder( mixed $modelBinder, mixed $cache ): Micro;
+public function setModelBinder( mixed $modelBinder, mixed $cache = null ): Micro;
 ```
 Sets model binder
 
@@ -1889,7 +1928,7 @@ response handler
 
 
 ```php
-public function setService( string $serviceName, mixed $definition, bool $shared = false ): ServiceInterface;
+public function setService( string $serviceName, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 Sets a service from the DI
 
@@ -1909,6 +1948,8 @@ executed
 
 | Namespace  | Phalcon\Mvc\Micro |
 | Implements | CollectionInterface |
+
+Phalcon\Mvc\Micro\Collection
 
 Groups Micro-Mvc handlers as controllers
 
@@ -1945,7 +1986,7 @@ protected prefix;
 
 ## Methods
 ```php
-public function delete( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function delete( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE.
 
@@ -1953,7 +1994,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE.
 
 
 ```php
-public function get( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function get( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is GET.
 
@@ -1979,7 +2020,7 @@ Returns the collection prefix if any
 
 
 ```php
-public function head( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function head( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD.
 
@@ -1993,7 +2034,7 @@ Returns if the main handler must be lazy loaded
 
 
 ```php
-public function map( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function map( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler.
 
@@ -2001,7 +2042,7 @@ Maps a route to a handler.
 
 
 ```php
-public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name ): CollectionInterface;
+public function mapVia( string $routePattern, mixed $handler, mixed $method, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler via methods.
 
@@ -2019,7 +2060,7 @@ $collection->mapVia(
 
 
 ```php
-public function options( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function options( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is
 OPTIONS.
@@ -2028,7 +2069,7 @@ OPTIONS.
 
 
 ```php
-public function patch( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function patch( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH.
 
@@ -2036,7 +2077,7 @@ Maps a route to a handler that only matches if the HTTP method is PATCH.
 
 
 ```php
-public function post( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function post( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is POST.
 
@@ -2044,7 +2085,7 @@ Maps a route to a handler that only matches if the HTTP method is POST.
 
 
 ```php
-public function put( string $routePattern, mixed $handler, string $name ): CollectionInterface;
+public function put( string $routePattern, mixed $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT.
 
@@ -2052,7 +2093,7 @@ Maps a route to a handler that only matches if the HTTP method is PUT.
 
 
 ```php
-public function setHandler( mixed $handler, bool $lazy = false ): CollectionInterface;
+public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 Sets the main handler.
 
@@ -2088,18 +2129,20 @@ Internal function to add a handler to the group.
 
 | Namespace  | Phalcon\Mvc\Micro |
 
+Phalcon\Mvc\Micro\CollectionInterface
+
 Interface for Phalcon\Mvc\Micro\Collection
 
 
 ## Methods
 ```php
-public function delete( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function delete( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
 
 ```php
-public function get( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function get( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is GET
 
@@ -2123,7 +2166,7 @@ Returns the collection prefix if any
 
 
 ```php
-public function head( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function head( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
@@ -2135,37 +2178,37 @@ Returns if the main handler must be lazy loaded
 
 
 ```php
-public function map( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function map( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler
 
 
 ```php
-public function options( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function options( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
 
 ```php
-public function patch( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function patch( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
 
 ```php
-public function post( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function post( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is POST
 
 
 ```php
-public function put( string $routePattern, callable $handler, string $name ): CollectionInterface;
+public function put( string $routePattern, callable $handler, string $name = null ): CollectionInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT
 
 
 ```php
-public function setHandler( mixed $handler, bool $lazy = false ): CollectionInterface;
+public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInterface;
 ```
 Sets the main handler
 
@@ -2202,6 +2245,8 @@ Exceptions thrown in Phalcon\Mvc\Micro will use this class
 | Namespace  | Phalcon\Mvc\Micro |
 | Uses       | Phalcon\Mvc\Model\BinderInterface |
 
+Phalcon\Mvc\Micro\LazyLoader
+
 Lazy-Load of handlers for Mvc\Micro using auto-loading
 
 
@@ -2223,9 +2268,12 @@ Phalcon\Mvc\Micro\LazyLoader constructor
 
 
 ```php
-public function callMethod( string $method, mixed $arguments, mixed $modelBinder ): mixed;
+public function callMethod( string $method, mixed $arguments, mixed $modelBinder = null );
 ```
 Calling __call method
+
+@param  array arguments
+@return mixed
 
 
 ```php
@@ -2260,6 +2308,8 @@ Calls the middleware
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Db\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Db\RawValue, Phalcon\Di, Phalcon\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\ValidationInterface, Phalcon\Events\ManagerInterface |
 | Implements | EntityInterface, ModelInterface, ResultInterface, InjectionAwareInterface, \Serializable, \JsonSerializable |
+
+Phalcon\Mvc\Model
 
 Phalcon\Mvc\Model connects business objects and database tables to create a
 persistable domain model where logic and data are presented in one wrapping.
@@ -2375,7 +2425,7 @@ Handles method calls when a static method is not implemented
 
 
 ```php
-final public function __construct( mixed $data, mixed $container, mixed $modelsManager ): void;
+final public function __construct( mixed $data = null, mixed $container = null, mixed $modelsManager = null ): void;
 ```
 Phalcon\Mvc\Model constructor
 
@@ -2457,7 +2507,7 @@ class Robots extends Model
 
 
 ```php
-public function assign( array $data, mixed $dataColumnMap, mixed $whiteList ): ModelInterface;
+public function assign( array $data, mixed $dataColumnMap = null, mixed $whiteList = null ): ModelInterface;
 ```
 Assigns values to a model from an array
 
@@ -2622,7 +2672,7 @@ Returns the custom events manager
 
 
 ```php
-public function getMessages( mixed $filter ): MessageInterface[];
+public function getMessages( mixed $filter = null ): MessageInterface[];
 ```
 Returns array of validation messages
 
@@ -2686,7 +2736,7 @@ related the model
 
 
 ```php
-public function getRelated( string $alias, mixed $arguments );
+public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
@@ -2750,7 +2800,7 @@ data related to the model
 
 
 ```php
-public function hasChanged( mixed $fieldName, bool $allFields = false ): bool;
+public function hasChanged( mixed $fieldName = null, bool $allFields = bool ): bool;
 ```
 Check if a specific attribute has changed
 This only works if the model is keeping data snapshots
@@ -2781,7 +2831,7 @@ Checks if the object has internal snapshot data
 
 
 ```php
-public function hasUpdated( mixed $fieldName, bool $allFields = false ): bool;
+public function hasUpdated( mixed $fieldName = null, bool $allFields = bool ): bool;
 ```
 Check if a specific attribute was updated
 This only works if the model is keeping data snapshots
@@ -2895,7 +2945,7 @@ Sets a custom events manager
 
 
 ```php
-public function setOldSnapshotData( array $data, mixed $columnMap );
+public function setOldSnapshotData( array $data, mixed $columnMap = null );
 ```
 Sets the record's old snapshot data.
 This method is used internally to set old snapshot data when the model
@@ -2912,7 +2962,7 @@ Sets the DependencyInjection connection service name used to read data
 
 
 ```php
-public function setSnapshotData( array $data, mixed $columnMap ): void;
+public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 ```
 Sets the record's snapshot data.
 This method is used internally to set snapshot data when the model was
@@ -2976,7 +3026,7 @@ Skips the current operation forcing a success state
 
 
 ```php
-public function toArray( mixed $columns ): array;
+public function toArray( mixed $columns = null ): array;
 ```
 Returns the instance as an array representation
 
@@ -3172,7 +3222,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function belongsTo( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options ): Relation;
+protected function belongsTo( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 Setup a reverse 1-1 or n-1 relation between two models
 
@@ -3192,7 +3242,7 @@ class RobotsParts extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasMany( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options ): Relation;
+protected function hasMany( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 Setup a 1-n relation between two models
 
@@ -3212,7 +3262,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options ): Relation;
+protected function hasManyToMany( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 Setup an n-n relation between two models, through an intermediate
 relation
@@ -3243,7 +3293,7 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
-protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options ): Relation;
+protected function hasOne( mixed $fields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
 ```
 Setup a 1-1 relation between two models
 
@@ -3417,6 +3467,8 @@ class Subscriptors extends Model
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\BehaviorInterface |
 | Implements | BehaviorInterface |
 
+Phalcon\Mvc\Model\Behavior
+
 This is an optional base class for ORM behaviors
 
 
@@ -3431,13 +3483,13 @@ protected options;
 
 ## Methods
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 Phalcon\Mvc\Model\Behavior
 
 
 ```php
-public function missingMethod( mixed $model, string $method, array $arguments );
+public function missingMethod( mixed $model, string $method, array $arguments = [] );
 ```
 Acts as fallbacks when a missing method is called on the model
 
@@ -3449,7 +3501,7 @@ This method receives the notifications from the EventsManager
 
 
 ```php
-protected function getOptions( string $eventName );
+protected function getOptions( string $eventName = null );
 ```
 Returns the behavior options related to an event
 
@@ -3472,6 +3524,8 @@ Checks whether the behavior must take action on certain event
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
 | Extends    | Behavior |
 
+Phalcon\Mvc\Model\Behavior\SoftDelete
+
 Instead of permanently delete a record it marks the record as deleted
 changing the value of a flag column
 
@@ -3493,6 +3547,8 @@ Listens for notifications from the models manager
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Behavior, Phalcon\Mvc\Model\Exception |
 | Extends    | Behavior |
 
+Phalcon\Mvc\Model\Behavior\Timestampable
+
 Allows to automatically update a model’s attribute saving the datetime when a
 record is created or updated
 
@@ -3513,12 +3569,14 @@ Listens for notifications from the models manager
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
 
+Phalcon\Mvc\Model\BehaviorInterface
+
 Interface for Phalcon\Mvc\Model\Behavior
 
 
 ## Methods
 ```php
-public function missingMethod( mixed $model, string $method, array $arguments );
+public function missingMethod( mixed $model, string $method, array $arguments = [] );
 ```
 Calls a method when it's missing in the model
 
@@ -3538,6 +3596,8 @@ This method receives the notifications from the EventsManager
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\Controller\BindModelInterface, Phalcon\Mvc\Model\Binder\BindableInterface, Phalcon\Cache\Adapter\AdapterInterface |
 | Implements | BinderInterface |
+
+Phalcon\Mvc\Model\Binding
 
 This is an class for binding models into params for handler
 
@@ -3570,13 +3630,13 @@ protected originalValues;
 
 ## Methods
 ```php
-public function __construct( mixed $cache ): void;
+public function __construct( mixed $cache = null ): void;
 ```
 Phalcon\Mvc\Model\Binder constructor
 
 
 ```php
-public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName ): array;
+public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName = null ): array;
 ```
 Bind models into params in proper handler
 
@@ -3629,6 +3689,8 @@ Get modified params for handler using reflection
 
 | Namespace  | Phalcon\Mvc\Model\Binder |
 
+Phalcon\Mvc\Model\Binder\BindableInterface
+
 Interface for bindable classes
 
 
@@ -3649,12 +3711,14 @@ this class
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface |
 
+Phalcon\Mvc\Model\BinderInterface
+
 Interface for Phalcon\Mvc\Model\Binder
 
 
 ## Methods
 ```php
-public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName ): array;
+public function bindToHandler( object $handler, array $params, string $cacheKey, string $methodName = null ): array;
 ```
 Bind models into params in proper handler
 
@@ -3686,6 +3750,8 @@ Sets cache instance
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\DiInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
 | Implements | CriteriaInterface, InjectionAwareInterface |
+
+Phalcon\Mvc\Model\Criteria
 
 This class is used to build the array parameter required by
 Phalcon\Mvc\Model::find() and Phalcon\Mvc\Model::findFirst() using an
@@ -3723,7 +3789,7 @@ protected params;
 
 ## Methods
 ```php
-public function andWhere( string $conditions, mixed $bindParams, mixed $bindTypes ): CriteriaInterface;
+public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an AND operator
 
@@ -3739,7 +3805,7 @@ $criteria->betweenWhere("price", 100.25, 200.50);
 
 
 ```php
-public function bind( array $bindParams, bool $merge = false ): CriteriaInterface;
+public function bind( array $bindParams, bool $merge = bool ): CriteriaInterface;
 ```
 Sets the bound parameters in the criteria
 This method replaces all previously set bound parameters
@@ -3808,7 +3874,7 @@ Executes a find using the parameters built with the criteria
 
 
 ```php
-public function forUpdate( bool $forUpdate = true ): CriteriaInterface;
+public function forUpdate( bool $forUpdate = bool ): CriteriaInterface;
 ```
 Adds the "for_update" parameter to the criteria
 
@@ -3902,7 +3968,7 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 
 ```php
-public function innerJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function innerJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds an INNER join to the query
 
@@ -3925,7 +3991,7 @@ $criteria->innerJoin(
 
 
 ```php
-public function join( string $model, mixed $conditions, mixed $alias, mixed $type ): CriteriaInterface;
+public function join( string $model, mixed $conditions = null, mixed $alias = null, mixed $type = null ): CriteriaInterface;
 ```
 Adds an INNER join to the query
 
@@ -3955,7 +4021,7 @@ $criteria->join(
 
 
 ```php
-public function leftJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function leftJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds a LEFT join to the query
 
@@ -3969,7 +4035,7 @@ $criteria->leftJoin(
 
 
 ```php
-public function limit( int $limit, int $offset ): CriteriaInterface;
+public function limit( int $limit, int $offset = int ): CriteriaInterface;
 ```
 Adds the limit parameter to the criteria.
 
@@ -4001,7 +4067,7 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 
 ```php
-public function orWhere( string $conditions, mixed $bindParams, mixed $bindTypes ): CriteriaInterface;
+public function orWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an OR operator
 
@@ -4013,7 +4079,7 @@ Adds the order-by clause to the criteria
 
 
 ```php
-public function rightJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function rightJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds a RIGHT join to the query
 
@@ -4039,13 +4105,13 @@ Set a model on which the query will be executed
 
 
 ```php
-public function sharedLock( bool $sharedLock = true ): CriteriaInterface;
+public function sharedLock( bool $sharedLock = bool ): CriteriaInterface;
 ```
 Adds the "shared_lock" parameter to the criteria
 
 
 ```php
-public function where( string $conditions, mixed $bindParams, mixed $bindTypes ): CriteriaInterface;
+public function where( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Sets the conditions parameter in the criteria
 
@@ -4059,12 +4125,14 @@ Sets the conditions parameter in the criteria
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\DiInterface |
 
+Phalcon\Mvc\Model\CriteriaInterface
+
 Interface for Phalcon\Mvc\Model\Criteria
 
 
 ## Methods
 ```php
-public function andWhere( string $conditions, mixed $bindParams, mixed $bindTypes ): CriteriaInterface;
+public function andWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an AND operator
 
@@ -4125,7 +4193,7 @@ Executes a find using the parameters built with the criteria
 
 
 ```php
-public function forUpdate( bool $forUpdate = true ): CriteriaInterface;
+public function forUpdate( bool $forUpdate = bool ): CriteriaInterface;
 ```
 Sets the "for_update" parameter to the criteria
 
@@ -4211,7 +4279,7 @@ $criteria->inWhere("id", [1, 2, 3]);
 
 
 ```php
-public function innerJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function innerJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds an INNER join to the query
 
@@ -4234,7 +4302,7 @@ $criteria->innerJoin(
 
 
 ```php
-public function leftJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function leftJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds a LEFT join to the query
 
@@ -4248,7 +4316,7 @@ $criteria->leftJoin(
 
 
 ```php
-public function limit( int $limit, int $offset ): CriteriaInterface;
+public function limit( int $limit, int $offset = int ): CriteriaInterface;
 ```
 Sets the limit parameter to the criteria
 
@@ -4277,7 +4345,7 @@ $criteria->notInWhere("id", [1, 2, 3]);
 
 
 ```php
-public function orWhere( string $conditions, mixed $bindParams, mixed $bindTypes ): CriteriaInterface;
+public function orWhere( string $conditions, mixed $bindParams = null, mixed $bindTypes = null ): CriteriaInterface;
 ```
 Appends a condition to the current conditions using an OR operator
 
@@ -4292,7 +4360,7 @@ Adds the order-by parameter to the criteria
 
 
 ```php
-public function rightJoin( string $model, mixed $conditions, mixed $alias ): CriteriaInterface;
+public function rightJoin( string $model, mixed $conditions = null, mixed $alias = null ): CriteriaInterface;
 ```
 Adds a RIGHT join to the query
 
@@ -4312,7 +4380,7 @@ Set a model on which the query will be executed
 
 
 ```php
-public function sharedLock( bool $sharedLock = true ): CriteriaInterface;
+public function sharedLock( bool $sharedLock = bool ): CriteriaInterface;
 ```
 Sets the "shared_lock" parameter to the criteria
 
@@ -4332,6 +4400,8 @@ Sets the conditions parameter in the criteria
 | Namespace  | Phalcon\Mvc\Model |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Mvc\Model\Exception
+
 Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 
@@ -4344,7 +4414,9 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 | Uses       | Phalcon\DiInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Db\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface |
 | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
-* This components controls the initialization of models, keeping record of
+Phalcon\Mvc\Model\Manager
+
+This components controls the initialization of models, keeping record of
 relations between the different models of the application.
 
 A ModelsManager is injected to a model via a Dependency Injector/Services
@@ -4495,7 +4567,7 @@ Binds a behavior to a model
 
 
 ```php
-public function addBelongsTo( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addBelongsTo( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation reverse many to one between two models
 
@@ -4503,7 +4575,7 @@ Setup a relation reverse many to one between two models
 
 
 ```php
-public function addHasMany( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasMany( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation 1-n between two models
 
@@ -4512,7 +4584,7 @@ Setup a relation 1-n between two models
 
 
 ```php
-public function addHasManyToMany( mixed $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasManyToMany( mixed $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setups a relation n-m between two models
 
@@ -4524,7 +4596,7 @@ Setups a relation n-m between two models
 
 
 ```php
-public function addHasOne( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasOne( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a 1-1 relation between two models
 
@@ -4538,7 +4610,7 @@ Clears the internal reusable list
 
 
 ```php
-public function createBuilder( mixed $params ): BuilderInterface;
+public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
 
@@ -4550,7 +4622,7 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 
 ```php
-public function executeQuery( string $phql, mixed $placeholders, mixed $types ): QueryInterface;
+public function executeQuery( string $phql, mixed $placeholders = null, mixed $types = null ): QueryInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
 
@@ -4592,7 +4664,7 @@ $relations = $modelsManager->getBelongsTo(
 
 
 ```php
-public function getBelongsToRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ResultsetInterface | bool;
+public function getBelongsToRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets belongsTo related records from a model
 
@@ -4622,7 +4694,7 @@ Gets hasMany relations defined on a model
 
 
 ```php
-public function getHasManyRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ResultsetInterface | bool;
+public function getHasManyRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets hasMany related records from a model
 
@@ -4646,7 +4718,7 @@ Gets hasOne relations defined on a model
 
 
 ```php
-public function getHasOneRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ModelInterface | bool;
+public function getHasOneRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ModelInterface | bool;
 ```
 Gets belongsTo related records from a model
 
@@ -4700,7 +4772,7 @@ Returns a relation by its alias
 
 
 ```php
-public function getRelationRecords( mixed $relation, mixed $record, mixed $parameters, string $method );
+public function getRelationRecords( mixed $relation, mixed $record, mixed $parameters = null, string $method = null );
 ```
 Helper method to query records based on a relation definition
 
@@ -4908,6 +4980,8 @@ Merge two arrays of find parameters
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Db\AdapterInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface |
 
+Phalcon\Mvc\Model\ManagerInterface
+
 Interface for Phalcon\Mvc\Model\Manager
 
 
@@ -4919,7 +4993,7 @@ Binds a behavior to a model
 
 
 ```php
-public function addBelongsTo( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addBelongsTo( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation reverse 1-1  between two models
 
@@ -4929,7 +5003,7 @@ Setup a relation reverse 1-1  between two models
 
 
 ```php
-public function addHasMany( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasMany( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a relation 1-n between two models
 
@@ -4939,7 +5013,7 @@ Setup a relation 1-n between two models
 
 
 ```php
-public function addHasManyToMany( mixed $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasManyToMany( mixed $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setups a relation n-m between two models
 
@@ -4951,7 +5025,7 @@ Setups a relation n-m between two models
 
 
 ```php
-public function addHasOne( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options ): RelationInterface;
+public function addHasOne( mixed $model, mixed $fields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
 ```
 Setup a 1-1 relation between two models
 
@@ -4961,7 +5035,7 @@ Setup a 1-1 relation between two models
 
 
 ```php
-public function createBuilder( mixed $params ): BuilderInterface;
+public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
 
@@ -4975,7 +5049,7 @@ Creates a Phalcon\Mvc\Model\Query without execute it
 
 
 ```php
-public function executeQuery( string $phql, mixed $placeholders ): QueryInterface;
+public function executeQuery( string $phql, mixed $placeholders = null ): QueryInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
 
@@ -5013,7 +5087,7 @@ Gets belongsTo relations defined on a model
 
 
 ```php
-public function getBelongsToRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ResultsetInterface | bool;
+public function getBelongsToRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets belongsTo related records from a model
 
@@ -5031,7 +5105,7 @@ Gets hasMany relations defined on a model
 
 
 ```php
-public function getHasManyRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ResultsetInterface | bool;
+public function getHasManyRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ResultsetInterface | bool;
 ```
 Gets hasMany related records from a model
 
@@ -5061,7 +5135,7 @@ Gets hasOne relations defined on a model
 
 
 ```php
-public function getHasOneRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters, string $method ): ModelInterface | bool;
+public function getHasOneRecords( string $modelName, string $modelRelation, mixed $record, mixed $parameters = null, string $method = null ): ModelInterface | bool;
 ```
 Gets belongsTo related records from a model
 
@@ -5115,7 +5189,7 @@ Returns a relation by its alias
 
 
 ```php
-public function getRelationRecords( mixed $relation, mixed $record, mixed $parameters, string $method );
+public function getRelationRecords( mixed $relation, mixed $record, mixed $parameters = null, string $method = null );
 ```
 Helper method to query records based on a relation definition
 
@@ -5258,6 +5332,8 @@ Sets if a model must use dynamic update instead of the all-field update
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Cache\Adapter\AdapterInterface |
 | Implements | InjectionAwareInterface, MetaDataInterface |
+
+Phalcon\Mvc\Model\MetaData
 
 Because Phalcon\Mvc\Model requires meta-data like field names, data types,
 primary keys, etc. This component collect them and store for further
@@ -5463,6 +5539,9 @@ print_r(
     )
 );
 ```
+
+@param  Phalcon\Mvc\ModelInterface model
+@return string
 
 
 ```php
@@ -5725,6 +5804,8 @@ Initialize the metadata for certain table
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
+Phalcon\Mvc\Model\MetaData\Apcu
+
 Stores model meta-data in the APCu cache. Data will erased if the web server is restarted
 
 By default meta-data is stored for 48 hours (172800 seconds)
@@ -5743,7 +5824,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 
 ## Methods
 ```php
-public function __construct( mixed $factory, array $options ): void;
+public function __construct( mixed $factory, array $options = null ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Apcu constructor
 
@@ -5760,6 +5841,8 @@ Phalcon\Mvc\Model\MetaData\Apcu constructor
 | Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
+Phalcon\Mvc\Model\MetaData\Libmemcached
+
 Stores model meta-data in the Memcache.
 
 By default meta-data is stored for 48 hours (172800 seconds)
@@ -5767,7 +5850,7 @@ By default meta-data is stored for 48 hours (172800 seconds)
 
 ## Methods
 ```php
-public function __construct( mixed $factory, array $options ): void;
+public function __construct( mixed $factory, array $options = [] ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Libmemcached constructor
 
@@ -5790,12 +5873,15 @@ Flush Memcache data and resets internal meta-data in order to regenerate it
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
 | Extends    | MetaData |
 
+Phalcon\Mvc\Model\MetaData\Memory
+
 Stores model meta-data in memory. Data will be erased when the request finishes
+
 
 
 ## Methods
 ```php
-public function __construct( mixed $options ): void;
+public function __construct( mixed $options = null ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Memory constructor
 
@@ -5824,6 +5910,8 @@ Writes the meta-data to temporal memory
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
+Phalcon\Mvc\Model\MetaData\Redis
+
 Stores model meta-data in the Redis.
 
 By default meta-data is stored for 48 hours (172800 seconds)
@@ -5845,7 +5933,7 @@ $metaData = new Redis(
 
 ## Methods
 ```php
-public function __construct( mixed $factory, array $options ): void;
+public function __construct( mixed $factory, array $options = [] ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Redis constructor
 
@@ -5898,6 +5986,8 @@ The meta-data is obtained by reading the column descriptions from the database i
 | Namespace  | Phalcon\Mvc\Model\MetaData\Strategy |
 | Uses       | Phalcon\DiInterface, Phalcon\Db\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface |
 | Implements | StrategyInterface |
+
+Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
 Queries the table meta-data in order to introspect the model's metadata
 
@@ -5957,6 +6047,8 @@ The meta-data is obtained by reading the column descriptions from the database i
 | Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception |
 | Extends    | MetaData |
 
+Phalcon\Mvc\Model\MetaData\Stream
+
 Stores model meta-data in PHP files.
 
 ```php
@@ -5977,7 +6069,7 @@ protected metaDataDir = ./;
 
 ## Methods
 ```php
-public function __construct( mixed $options ): void;
+public function __construct( mixed $options = null ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Files constructor
 
@@ -6004,6 +6096,8 @@ Writes the meta-data to files
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\StrategyInterface |
+
+Phalcon\Mvc\Model\MetaDataInterface
 
 Interface for Phalcon\Mvc\Model\MetaData
 
@@ -6193,6 +6287,8 @@ Writes meta-data for certain model using a MODEL_* constant
 | Uses       | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\AdapterInterface, Phalcon\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Db\DialectInterface, Phalcon\Cache\Adapter\AdapterInterface |
 | Implements | QueryInterface, InjectionAwareInterface |
 
+Phalcon\Mvc\Model\Query
+
 This class takes a PHQL intermediate representation and executes it.
 
 ```php
@@ -6332,7 +6428,7 @@ protected _transaction;
 
 ## Methods
 ```php
-public function __construct( string $phql, mixed $container, array $options ): void;
+public function __construct( string $phql = null, mixed $container = null, array $options = [] ): void;
 ```
 Phalcon\Mvc\Model\Query constructor
 
@@ -6344,7 +6440,7 @@ Sets the cache parameters of the query
 
 
 ```php
-public function execute( array $bindParams, array $bindTypes );
+public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 Executes a parsed PHQL statement
 
@@ -6388,7 +6484,7 @@ Returns the intermediate representation of the PHQL statement
 
 
 ```php
-public function getSingleResult( array $bindParams, array $bindTypes ): ModelInterface;
+public function getSingleResult( array $bindParams = [], array $bindTypes = [] ): ModelInterface;
 ```
 Executes the query returning the first result
 
@@ -6427,13 +6523,13 @@ Phalcon\Mvc\Model\Query
 
 
 ```php
-public function setBindParams( array $bindParams, bool $merge = false ): QueryInterface;
+public function setBindParams( array $bindParams, bool $merge = bool ): QueryInterface;
 ```
 Set default bind parameters
 
 
 ```php
-public function setBindTypes( array $bindTypes, bool $merge = false ): QueryInterface;
+public function setBindTypes( array $bindTypes, bool $merge = bool ): QueryInterface;
 ```
 Set default bind parameters
 
@@ -6451,7 +6547,7 @@ Allows to set the IR to be executed
 
 
 ```php
-public function setSharedLock( bool $sharedLock = false ): QueryInterface;
+public function setSharedLock( bool $sharedLock = bool ): QueryInterface;
 ```
 Set SHARED LOCK clause
 
@@ -6490,7 +6586,7 @@ Phalcon\Mvc\Model\Query\Status
 
 
 ```php
-final protected function _executeSelect( array $intermediate, array $bindParams, array $bindTypes, bool $simulate = false ): ResultsetInterface | array;
+final protected function _executeSelect( array $intermediate, array $bindParams, array $bindTypes, bool $simulate = bool ): ResultsetInterface | array;
 ```
 Executes the SELECT intermediate representation producing a
 Phalcon\Mvc\Model\Resultset
@@ -6516,7 +6612,7 @@ Resolves an expression in a single call argument
 
 
 ```php
-final protected function _getExpression( array $expr, bool $quoting = true ): string;
+final protected function _getExpression( array $expr, bool $quoting = bool ): string;
 ```
 Resolves an expression from its intermediate code into a string
 
@@ -6625,7 +6721,7 @@ later
 
 
 ```php
-final protected function _prepareSelect( mixed $ast, bool $merge = false ): array;
+final protected function _prepareSelect( mixed $ast = null, bool $merge = bool ): array;
 ```
 Analyzes a SELECT intermediate code and produces an array to be executed later
 
@@ -6638,14 +6734,14 @@ later
 
 
 ```php
-protected function getReadConnection( mixed $model, array $intermediate, array $bindParams, array $bindTypes ): AdapterInterface;
+protected function getReadConnection( mixed $model, array $intermediate = null, array $bindParams = [], array $bindTypes = [] ): AdapterInterface;
 ```
 Gets the read connection from the model if there is no transaction set
 inside the query object
 
 
 ```php
-protected function getWriteConnection( mixed $model, array $intermediate, array $bindParams, array $bindTypes ): AdapterInterface;
+protected function getWriteConnection( mixed $model, array $intermediate = null, array $bindParams = [], array $bindTypes = [] ): AdapterInterface;
 ```
 Gets the write connection from the model if there is no transaction
 inside the query object
@@ -6660,6 +6756,8 @@ inside the query object
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Di, Phalcon\Db\Column, Phalcon\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\BuilderInterface |
 | Implements | BuilderInterface, InjectionAwareInterface |
+
+Phalcon\Mvc\Model\Query\Builder
 
 Helps to create PHQL queries using an OO interface
 
@@ -6751,13 +6849,13 @@ protected sharedLock;
 
 ## Methods
 ```php
-public function __construct( mixed $params, mixed $container ): void;
+public function __construct( mixed $params = null, mixed $container = null ): void;
 ```
 Phalcon\Mvc\Model\Query\Builder constructor
 
 
 ```php
-public function addFrom( string $model, string $alias ): BuilderInterface;
+public function addFrom( string $model, string $alias = null ): BuilderInterface;
 ```
 Add a model to take part of the query
 
@@ -6776,7 +6874,7 @@ $builder->addFrom(
 
 
 ```php
-public function andHaving( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function andHaving( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current HAVING conditions clause using a AND operator
 
@@ -6793,7 +6891,7 @@ $builder->andHaving(
 
 
 ```php
-public function andWhere( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function andWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current WHERE conditions using a AND operator
 
@@ -6817,7 +6915,7 @@ Automatically escapes identifiers but only if they need to be escaped.
 
 
 ```php
-public function betweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function betweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a BETWEEN condition to the current HAVING conditions clause
 
@@ -6827,7 +6925,7 @@ $builder->betweenHaving("SUM(Robots.price)", 100.25, 200.50);
 
 
 ```php
-public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a BETWEEN condition to the current WHERE conditions
 
@@ -7030,7 +7128,7 @@ $builder->groupBy(
 
 
 ```php
-public function having( mixed $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function having( mixed $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Sets the HAVING condition clause
 
@@ -7047,7 +7145,7 @@ $builder->having(
 
 
 ```php
-public function inHaving( string $expr, array $values, string $operator ): BuilderInterface;
+public function inHaving( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends an IN condition to the current HAVING conditions clause
 
@@ -7057,7 +7155,7 @@ $builder->inHaving("SUM(Robots.price)", [100, 200]);
 
 
 ```php
-public function inWhere( string $expr, array $values, string $operator ): BuilderInterface;
+public function inWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends an IN condition to the current WHERE conditions
 
@@ -7070,7 +7168,7 @@ $builder->inWhere(
 
 
 ```php
-public function innerJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function innerJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds an INNER join to the query
 
@@ -7096,7 +7194,7 @@ $builder->innerJoin(
 
 
 ```php
-public function join( string $model, string $conditions, string $alias, string $type ): BuilderInterface;
+public function join( string $model, string $conditions = null, string $alias = null, string $type = null ): BuilderInterface;
 ```
 Adds an :type: join (by default type - INNER) to the query
 
@@ -7130,7 +7228,7 @@ $builder->join(
 
 
 ```php
-public function leftJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function leftJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds a LEFT join to the query
 
@@ -7144,7 +7242,7 @@ $builder->leftJoin(
 
 
 ```php
-public function limit( int $limit, mixed $offset ): BuilderInterface;
+public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 ```
 Sets a LIMIT clause, optionally an offset clause
 
@@ -7156,7 +7254,7 @@ $builder->limit("100", "20");
 
 
 ```php
-public function notBetweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function notBetweenHaving( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT BETWEEN condition to the current HAVING conditions clause
 
@@ -7166,7 +7264,7 @@ $builder->notBetweenHaving("SUM(Robots.price)", 100.25, 200.50);
 
 
 ```php
-public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT BETWEEN condition to the current WHERE conditions
 
@@ -7176,7 +7274,7 @@ $builder->notBetweenWhere("price", 100.25, 200.50);
 
 
 ```php
-public function notInHaving( string $expr, array $values, string $operator ): BuilderInterface;
+public function notInHaving( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT IN condition to the current HAVING conditions clause
 
@@ -7186,7 +7284,7 @@ $builder->notInHaving("SUM(Robots.price)", [100, 200]);
 
 
 ```php
-public function notInWhere( string $expr, array $values, string $operator ): BuilderInterface;
+public function notInWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT IN condition to the current WHERE conditions
 
@@ -7206,7 +7304,7 @@ $builder->offset(30);
 
 
 ```php
-public function orHaving( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function orHaving( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current HAVING conditions clause using an OR operator
 
@@ -7223,7 +7321,7 @@ $builder->orHaving(
 
 
 ```php
-public function orWhere( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function orWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current conditions using an OR operator
 
@@ -7255,7 +7353,7 @@ $builder->orderBy(["Robots.name DESC"]);
 
 
 ```php
-public function rightJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function rightJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds a RIGHT join to the query
 
@@ -7269,13 +7367,13 @@ $builder->rightJoin(
 
 
 ```php
-public function setBindParams( array $bindParams, bool $merge = false ): BuilderInterface;
+public function setBindParams( array $bindParams, bool $merge = bool ): BuilderInterface;
 ```
 Set default bind parameters
 
 
 ```php
-public function setBindTypes( array $bindTypes, bool $merge = false ): BuilderInterface;
+public function setBindTypes( array $bindTypes, bool $merge = bool ): BuilderInterface;
 ```
 Set default bind types
 
@@ -7287,7 +7385,7 @@ Sets the DependencyInjector container
 
 
 ```php
-public function where( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function where( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Sets the query WHERE conditions
 
@@ -7339,6 +7437,8 @@ Appends a NOT IN condition
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Mvc\Model\QueryInterface |
 
+Phalcon\Mvc\Model\Query\BuilderInterface
+
 Interface for Phalcon\Mvc\Model\Query\Builder
 
 
@@ -7350,19 +7450,19 @@ const OPERATOR_OR = or;
 
 ## Methods
 ```php
-public function addFrom( string $model, string $alias ): BuilderInterface;
+public function addFrom( string $model, string $alias = null ): BuilderInterface;
 ```
 Add a model to take part of the query
 
 
 ```php
-public function andWhere( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function andWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current conditions using a AND operator
 
 
 ```php
-public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a BETWEEN condition to the current conditions
 
@@ -7522,19 +7622,19 @@ Sets a HAVING condition clause
 
 
 ```php
-public function inWhere( string $expr, array $values, string $operator ): BuilderInterface;
+public function inWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends an IN condition to the current conditions
 
 
 ```php
-public function innerJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function innerJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds an INNER join to the query
 
 
 ```php
-public function join( string $model, string $conditions, string $alias ): BuilderInterface;
+public function join( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds an :type: join (by default type - INNER) to the query
 
@@ -7546,13 +7646,13 @@ Adds an :type: join (by default type - INNER) to the query
 
 
 ```php
-public function leftJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function leftJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds a LEFT join to the query
 
 
 ```php
-public function limit( int $limit, mixed $offset ): BuilderInterface;
+public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 ```
 Sets a LIMIT clause
 
@@ -7560,7 +7660,7 @@ Sets a LIMIT clause
 
 
 ```php
-public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator ): BuilderInterface;
+public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT BETWEEN condition to the current conditions
 
@@ -7569,7 +7669,7 @@ Appends a NOT BETWEEN condition to the current conditions
 
 
 ```php
-public function notInWhere( string $expr, array $values, string $operator ): BuilderInterface;
+public function notInWhere( string $expr, array $values, string $operator = static-constant-access ): BuilderInterface;
 ```
 Appends a NOT IN condition to the current conditions
 
@@ -7581,7 +7681,7 @@ Sets an OFFSET clause
 
 
 ```php
-public function orWhere( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function orWhere( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Appends a condition to the current conditions using an OR operator
 
@@ -7593,25 +7693,25 @@ Sets an ORDER BY condition clause
 
 
 ```php
-public function rightJoin( string $model, string $conditions, string $alias ): BuilderInterface;
+public function rightJoin( string $model, string $conditions = null, string $alias = null ): BuilderInterface;
 ```
 Adds a RIGHT join to the query
 
 
 ```php
-public function setBindParams( array $bindParams, bool $merge = false ): BuilderInterface;
+public function setBindParams( array $bindParams, bool $merge = bool ): BuilderInterface;
 ```
 Set default bind parameters
 
 
 ```php
-public function setBindTypes( array $bindTypes, bool $merge = false ): BuilderInterface;
+public function setBindTypes( array $bindTypes, bool $merge = bool ): BuilderInterface;
 ```
 Set default bind types
 
 
 ```php
-public function where( string $conditions, array $bindParams, array $bindTypes ): BuilderInterface;
+public function where( string $conditions, array $bindParams = [], array $bindTypes = [] ): BuilderInterface;
 ```
 Sets conditions for the query
 
@@ -7623,6 +7723,8 @@ Sets conditions for the query
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/lang.zep)
 
 | Namespace  | Phalcon\Mvc\Model\Query |
+
+Phalcon\Mvc\Model\Query\Lang
 
 PHQL is implemented as a parser (written in C) that translates syntax in
 that of the target RDBMS. It allows Phalcon to offer a unified SQL language to
@@ -7649,6 +7751,8 @@ $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Query\StatusInterface |
 | Implements | StatusInterface |
+
+Phalcon\Mvc\Model\Query\Status
 
 This class represents the status returned by a PHQL
 statement like INSERT, UPDATE or DELETE. It offers context
@@ -7687,7 +7791,7 @@ protected success;
 
 ## Methods
 ```php
-public function __construct( bool $success, mixed $model ): void;
+public function __construct( bool $success, mixed $model = null ): void;
 ```
 Phalcon\Mvc\Model\Query\Status
 
@@ -7718,6 +7822,8 @@ Allows to check if the executed operation was successful
 
 | Namespace  | Phalcon\Mvc\Model\Query |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface |
+
+Phalcon\Mvc\Model\Query\StatusInterface
 
 Interface for Phalcon\Mvc\Model\Query\Status
 
@@ -7750,6 +7856,8 @@ Allows to check if the executed operation was successful
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
 
+Phalcon\Mvc\Model\QueryInterface
+
 Interface for Phalcon\Mvc\Model\Query
 
 
@@ -7761,7 +7869,7 @@ Sets the cache parameters of the query
 
 
 ```php
-public function execute( array $bindParams, array $bindTypes );
+public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 Executes a parsed PHQL statement
 
@@ -7787,7 +7895,7 @@ Returns the current cache options
 
 
 ```php
-public function getSingleResult( array $bindParams, array $bindTypes ): ModelInterface;
+public function getSingleResult( array $bindParams = [], array $bindTypes = [] ): ModelInterface;
 ```
 Executes the query returning the first result
 
@@ -7812,19 +7920,19 @@ intermediate representation that could be executed by Phalcon\Mvc\Model\Query
 
 
 ```php
-public function setBindParams( array $bindParams, bool $merge = false ): QueryInterface;
+public function setBindParams( array $bindParams, bool $merge = bool ): QueryInterface;
 ```
 Set default bind parameters
 
 
 ```php
-public function setBindTypes( array $bindTypes, bool $merge = false ): QueryInterface;
+public function setBindTypes( array $bindTypes, bool $merge = bool ): QueryInterface;
 ```
 Set default bind parameters
 
 
 ```php
-public function setSharedLock( bool $sharedLock = false ): QueryInterface;
+public function setSharedLock( bool $sharedLock = bool ): QueryInterface;
 ```
 Set SHARED LOCK clause
 
@@ -7844,6 +7952,8 @@ Tells to the query if only the first row in the resultset must be returned
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\Model\RelationInterface |
 | Implements | RelationInterface |
+
+Phalcon\Mvc\Model\Relation
 
 This class represents a relationship between two models
 
@@ -7890,7 +8000,7 @@ protected type;
 
 ## Methods
 ```php
-public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options ): void;
+public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] ): void;
 ```
 Phalcon\Mvc\Model\Relation constructor
 
@@ -8012,6 +8122,8 @@ Sets the intermediate model data for has-*-through relations
 
 | Namespace  | Phalcon\Mvc\Model |
 
+Phalcon\Mvc\Model\RelationInterface
+
 Interface for Phalcon\Mvc\Model\Relation
 
 
@@ -8131,6 +8243,8 @@ Sets the intermediate model dat for has-*-through relations
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
 
+Phalcon\Mvc\Model\ResultInterface
+
 All single objects passed as base objects to Resultsets must implement this interface
 
 
@@ -8150,6 +8264,8 @@ Sets the object's state
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Closure, Phalcon\Db, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface |
 | Implements | ResultsetInterface, \Iterator, \SeekableIterator, \Countable, \ArrayAccess, \Serializable, \JsonSerializable |
+
+Phalcon\Mvc\Model\Resultset
 
 This component allows to Phalcon\Mvc\Model returns large resultsets with the minimum memory consumption
 Resultsets can be traversed using a standard foreach or a while statement. If a resultset is serialized
@@ -8237,7 +8353,7 @@ protected result;
 
 ## Methods
 ```php
-public function __construct( mixed $result, mixed $cache ): void;
+public function __construct( mixed $result, mixed $cache = null ): void;
 ```
 Phalcon\Mvc\Model\Resultset constructor
 
@@ -8251,7 +8367,7 @@ Counts how many rows are in the resultset
 
 
 ```php
-public function delete( mixed $conditionCallback ): bool;
+public function delete( mixed $conditionCallback = null ): bool;
 ```
 Deletes every record in the resultset
 
@@ -8392,7 +8508,7 @@ Set if the resultset is fresh or an old one cached
 
 
 ```php
-public function update( mixed $data, mixed $conditionCallback ): bool;
+public function update( mixed $data, mixed $conditionCallback = null ): bool;
 ```
 Updates every record in the resultset
 
@@ -8416,6 +8532,8 @@ Check whether internal resource has rows to fetch
 | Extends    | Resultset |
 | Implements | ResultsetInterface |
 
+Phalcon\Mvc\Model\Resultset\Complex
+
 Complex resultsets may include complete objects and scalar values.
 This class builds every complex row as it is required
 
@@ -8435,7 +8553,7 @@ protected disableHydration = false;
 
 ## Methods
 ```php
-public function __construct( mixed $columnTypes, mixed $result, mixed $cache ): void;
+public function __construct( mixed $columnTypes, mixed $result = null, mixed $cache = null ): void;
 ```
 Phalcon\Mvc\Model\Resultset\Complex constructor
 
@@ -8477,6 +8595,8 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 | Uses       | Phalcon\Di, Phalcon\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | Resultset |
 
+Phalcon\Mvc\Model\Resultset\Simple
+
 Simple resultsets only contains a complete objects
 This class builds every complete object as it is required
 
@@ -8498,7 +8618,7 @@ protected keepSnapshots = false;
 
 ## Methods
 ```php
-public function __construct( mixed $columnMap, mixed $model, mixed $result, mixed $cache, bool $keepSnapshots ): void;
+public function __construct( mixed $columnMap, mixed $model, mixed $result, mixed $cache = null, bool $keepSnapshots = null ): void;
 ```
 Phalcon\Mvc\Model\Resultset\Simple constructor
 
@@ -8519,7 +8639,7 @@ Serializing a resultset will dump all related rows into a big array
 
 
 ```php
-public function toArray( bool $renameColumns = true ): array;
+public function toArray( bool $renameColumns = bool ): array;
 ```
 Returns a complete resultset as an array, if the resultset has a big
 number of rows it could consume more memory than currently it does.
@@ -8543,12 +8663,14 @@ the saved state
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Cache\Adapter\AdapterInterface |
 
+Phalcon\Mvc\Model\ResultsetInterface
+
 Interface for Phalcon\Mvc\Model\Resultset
 
 
 ## Methods
 ```php
-public function delete( mixed $conditionCallback ): bool;
+public function delete( mixed $conditionCallback = null ): bool;
 ```
 Deletes every record in the resultset
 
@@ -8631,7 +8753,7 @@ it could consume more memory than currently it does.
 
 
 ```php
-public function update( mixed $data, mixed $conditionCallback ): bool;
+public function update( mixed $data, mixed $conditionCallback = null ): bool;
 ```
 Updates every record in the resultset
 
@@ -8647,6 +8769,8 @@ Updates every record in the resultset
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultInterface |
 | Implements | EntityInterface, ResultInterface, \ArrayAccess, \JsonSerializable |
+
+Phalcon\Mvc\Model\Row
 
 This component allows Phalcon\Mvc\Model to return rows without an associated entity.
 This objects implements the ArrayAccess interface to allow access the object as object->x or array[x].
@@ -8740,6 +8864,8 @@ $robot->writeAttribute("name", "Rosey");
 | Uses       | Phalcon\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface |
 | Implements | TransactionInterface |
 
+Phalcon\Mvc\Model\Transaction
+
 Transactions are protective blocks where SQL statements are only permanent if
 they can all succeed as one atomic action. Phalcon\Transaction is intended to
 be used with Phalcon_Model_Base. Phalcon Transactions should be created using
@@ -8812,7 +8938,7 @@ protected rollbackThrowException = false;
 
 ## Methods
 ```php
-public function __construct( mixed $container, bool $autoBegin = false, string $service = db ): void;
+public function __construct( mixed $container, bool $autoBegin = bool, string $service = string ): void;
 ```
 Phalcon\Mvc\Model\Transaction constructor
 
@@ -8854,7 +8980,7 @@ Checks whether internal connection is under an active transaction
 
 
 ```php
-public function rollback( string $rollbackMessage, mixed $rollbackRecord ): bool;
+public function rollback( string $rollbackMessage = null, mixed $rollbackRecord = null ): bool;
 ```
 Rollbacks the transaction
 
@@ -8898,6 +9024,8 @@ Enables throwing exception
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Extends    | \Phalcon\Mvc\Model\Exception |
 
+Phalcon\Mvc\Model\Transaction\Exception
+
 Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 
 
@@ -8909,6 +9037,8 @@ Exceptions thrown in Phalcon\Mvc\Model\Transaction will use this class
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\Messages\MessageInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Exception |
 | Extends    | Exception |
+
+Phalcon\Mvc\Model\Transaction\Failed
 
 This class will be thrown to exit a try/catch block for isolated transactions
 
@@ -8922,7 +9052,7 @@ protected record;
 
 ## Methods
 ```php
-public function __construct( string $message, mixed $record ): void;
+public function __construct( string $message, mixed $record = null ): void;
 ```
 Phalcon\Mvc\Model\Transaction\Failed constructor
 
@@ -8948,6 +9078,8 @@ Returns validation record messages which stop the transaction
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\Transaction\Exception, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface |
 | Implements | ManagerInterface, InjectionAwareInterface |
+
+Phalcon\Mvc\Model\Transaction\Manager
 
 A transaction acts on a single database connection. If you have multiple
 class-specific databases, the transaction will not protect interaction among
@@ -9020,7 +9152,7 @@ protected transactions;
 
 ## Methods
 ```php
-public function __construct( mixed $container ): void;
+public function __construct( mixed $container = null ): void;
 ```
 Phalcon\Mvc\Model\Transaction\Manager constructor
 
@@ -9038,7 +9170,7 @@ Commits active transactions within the manager
 
 
 ```php
-public function get( bool $autoBegin = true ): TransactionInterface;
+public function get( bool $autoBegin = bool ): TransactionInterface;
 ```
 Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
 This method registers a shutdown function to rollback active connections
@@ -9057,7 +9189,7 @@ Returns the database service used to isolate the transaction
 
 
 ```php
-public function getOrCreateTransaction( bool $autoBegin = true ): TransactionInterface;
+public function getOrCreateTransaction( bool $autoBegin = bool ): TransactionInterface;
 ```
 Create/Returns a new transaction or an existing one
 
@@ -9088,7 +9220,7 @@ Notifies the manager about a rollbacked transaction
 
 
 ```php
-public function rollback( bool $collect = true ): void;
+public function rollback( bool $collect = bool ): void;
 ```
 Rollbacks active transactions within the manager
 Collect will remove the transaction from the manager
@@ -9134,6 +9266,8 @@ Removes transactions from the TransactionManager
 | Namespace  | Phalcon\Mvc\Model\Transaction |
 | Uses       | Phalcon\Mvc\Model\TransactionInterface |
 
+Phalcon\Mvc\Model\Transaction\ManagerInterface
+
 Interface for Phalcon\Mvc\Model\Transaction\Manager
 
 
@@ -9151,7 +9285,7 @@ Commits active transactions within the manager
 
 
 ```php
-public function get( bool $autoBegin = true ): \Phalcon\Mvc\Model\TransactionInterface;
+public function get( bool $autoBegin = bool ): \Phalcon\Mvc\Model\TransactionInterface;
 ```
 Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
 
@@ -9187,7 +9321,7 @@ Notifies the manager about a rollbacked transaction
 
 
 ```php
-public function rollback( bool $collect = false ): void;
+public function rollback( bool $collect = bool ): void;
 ```
 Rollbacks active transactions within the manager
 Collect will remove transaction from the manager
@@ -9219,6 +9353,8 @@ Set if the transaction manager must register a shutdown function to clean up pen
 
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface |
+
+Phalcon\Mvc\Model\TransactionInterface
 
 Interface for Phalcon\Mvc\Model\Transaction
 
@@ -9261,7 +9397,7 @@ Checks whether internal connection is under an active transaction
 
 
 ```php
-public function rollback( string $rollbackMessage, mixed $rollbackRecord ): bool;
+public function rollback( string $rollbackMessage = null, mixed $rollbackRecord = null ): bool;
 ```
 Rollbacks the transaction
 
@@ -9305,6 +9441,8 @@ Enables throwing exception
 | Namespace  | Phalcon\Mvc\Model |
 | Uses       | Phalcon\Mvc\ModelInterface |
 | Extends    | Exception |
+
+Phalcon\Mvc\Model\ValidationFailed
 
 This exception is generated when a model fails to save a record
 Phalcon\Mvc\Model must be set up to have this behavior
@@ -9350,6 +9488,8 @@ Returns the model that generated the messages
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Db\AdapterInterface, Phalcon\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ModelInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\ModelInterface |
 
+Phalcon\Mvc\ModelInterface
+
 Interface for Phalcon\Mvc\Model
 
 
@@ -9361,7 +9501,7 @@ Appends a customized message on the validation process
 
 
 ```php
-public function assign( array $data, mixed $dataColumnMap, mixed $whiteList ): ModelInterface;
+public function assign( array $data, mixed $dataColumnMap = null, mixed $whiteList = null ): ModelInterface;
 ```
 Assigns values to a model from an array
 
@@ -9436,7 +9576,7 @@ Returns DependencyInjection connection service used to read data
 
 
 ```php
-public function getRelated( string $alias, mixed $arguments );
+public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
@@ -9501,7 +9641,7 @@ Sets the DependencyInjection connection service used to read data
 
 
 ```php
-public function setSnapshotData( array $data, mixed $columnMap ): void;
+public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 ```
 Sets the record's snapshot data. This method is used internally to set
 snapshot data when the model was set up to keep snapshot data
@@ -9550,12 +9690,14 @@ Check whether validation process has generated any messages
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\DiInterface |
 
+Phalcon\Mvc\ModuleDefinitionInterface
+
 This interface must be implemented by class module definitions
 
 
 ## Methods
 ```php
-public function registerAutoloaders( mixed $container );
+public function registerAutoloaders( mixed $container = null );
 ```
 Registers an autoloader related to the module
 
@@ -9575,6 +9717,8 @@ Registers services related to the module
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\DiInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\Exception, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface |
 | Implements | InjectionAwareInterface, RouterInterface, EventsAwareInterface |
+
+Phalcon\Mvc\Router
 
 Phalcon\Mvc\Router is the standard framework router. Routing is the
 process of taking a URI endpoint (that part of the URI which comes after the
@@ -9677,13 +9821,13 @@ protected wasMatched = false;
 
 ## Methods
 ```php
-public function __construct( bool $defaultRoutes = true );
+public function __construct( bool $defaultRoutes = bool );
 ```
 Phalcon\Mvc\Router constructor
 
 
 ```php
-public function add( string $pattern, mixed $paths, mixed $httpMethods, mixed $position ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router without any HTTP constraint
 
@@ -9708,68 +9852,68 @@ $router->add(
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 (Squid and Varnish support)
 
 
 ```php
-public function addPut( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths, mixed $position ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null, mixed $position = static-constant-access ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( mixed $route, mixed $position ): RouterInterface;
+public function attach( mixed $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 Attach Route object to the routes stack.
 
@@ -9999,6 +10143,8 @@ Checks if the router matches any of the defined routes
 | Uses       | Phalcon\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation, Phalcon\Mvc\Router\Exception |
 | Extends    | Router |
 
+Phalcon\Mvc\Router\Annotations
+
 A router that reads routes annotations from classes/resources
 
 ```php
@@ -10037,7 +10183,7 @@ protected routePrefix;
 
 ## Methods
 ```php
-public function addModuleResource( string $module, string $handler, string $prefix ): Annotations;
+public function addModuleResource( string $module, string $handler, string $prefix = null ): Annotations;
 ```
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
@@ -10045,7 +10191,7 @@ The class is located in a module
 
 
 ```php
-public function addResource( string $handler, string $prefix ): Annotations;
+public function addResource( string $handler, string $prefix = null ): Annotations;
 ```
 Adds a resource to the annotations handler
 A resource is a class that contains routing annotations
@@ -10096,6 +10242,8 @@ Changes the controller class suffix
 | Namespace  | Phalcon\Mvc\Router |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Mvc\Router\Exception
+
 Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 
@@ -10106,6 +10254,8 @@ Exceptions thrown in Phalcon\Mvc\Router will use this class
 
 | Namespace  | Phalcon\Mvc\Router |
 | Implements | GroupInterface |
+
+Phalcon\Mvc\Router\Group
 
 Helper class to create a group of routes with common attributes
 
@@ -10174,13 +10324,13 @@ protected routes;
 
 ## Methods
 ```php
-public function __construct( mixed $paths );
+public function __construct( mixed $paths = null );
 ```
 Phalcon\Mvc\Router\Group constructor
 
 
 ```php
-public function add( string $pattern, mixed $paths, mixed $httpMethods ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 Adds a route to the router on any HTTP method
 
@@ -10190,7 +10340,7 @@ $router->add("/about", "About::index");
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
@@ -10198,7 +10348,7 @@ Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
@@ -10206,7 +10356,7 @@ Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
@@ -10214,7 +10364,7 @@ Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
@@ -10222,7 +10372,7 @@ Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
@@ -10230,7 +10380,7 @@ Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
@@ -10238,7 +10388,7 @@ Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
@@ -10246,7 +10396,7 @@ Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 
@@ -10254,7 +10404,7 @@ Adds a route to the router that only match if the HTTP method is PURGE
 
 
 ```php
-public function addPut( string $pattern, mixed $paths ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
@@ -10262,7 +10412,7 @@ Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
@@ -10332,7 +10482,7 @@ Set a common uri prefix for all the routes in this group
 
 
 ```php
-protected function addRoute( string $pattern, mixed $paths, mixed $httpMethods ): RouteInterface;
+protected function addRoute( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 Adds a route applying the common attributes
 
@@ -10345,6 +10495,8 @@ Adds a route applying the common attributes
 
 | Namespace  | Phalcon\Mvc\Router |
 | Uses       | Phalcon\Mvc\Router\RouteInterface |
+
+Phalcon\Mvc\Router\GroupInterface
 
 ```php
 $router = new \Phalcon\Mvc\Router();
@@ -10392,7 +10544,7 @@ $router->mount($blog);
 
 ## Methods
 ```php
-public function add( string $pattern, mixed $paths, mixed $httpMethods ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 Adds a route to the router on any HTTP method
 
@@ -10402,61 +10554,61 @@ router->add("/about", "About::index");
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 
 
 ```php
-public function addPut( string $pattern, mixed $paths ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
@@ -10535,6 +10687,8 @@ Set a common uri prefix for all the routes in this group
 | Uses       | Phalcon\Mvc\Router\Exception |
 | Implements | RouteInterface |
 
+Phalcon\Mvc\Router\Route
+
 This class represents every route added to the router
 
 
@@ -10580,7 +10734,7 @@ protected static uniqueId = 0;
 
 ## Methods
 ```php
-public function __construct( string $pattern, mixed $paths, mixed $httpMethods );
+public function __construct( string $pattern, mixed $paths = null, mixed $httpMethods = null );
 ```
 Phalcon\Mvc\Router\Route constructor
 
@@ -10725,7 +10879,7 @@ $router->add(
 
 
 ```php
-public function reConfigure( string $pattern, mixed $paths ): void;
+public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 Reconfigure the route adding a new pattern and a set of paths
 
@@ -10803,6 +10957,8 @@ $route->via(
 
 | Namespace  | Phalcon\Mvc\Router |
 
+Phalcon\Mvc\Router\RouteInterface
+
 Interface for Phalcon\Mvc\Router\Route
 
 
@@ -10868,7 +11024,7 @@ Returns the route's id
 
 
 ```php
-public function reConfigure( string $pattern, mixed $paths ): void;
+public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 Reconfigure the route adding a new pattern and a set of paths
 
@@ -10911,74 +11067,74 @@ Interface for Phalcon\Mvc\Router
 
 ## Methods
 ```php
-public function add( string $pattern, mixed $paths, mixed $httpMethods ): RouteInterface;
+public function add( string $pattern, mixed $paths = null, mixed $httpMethods = null ): RouteInterface;
 ```
 Adds a route to the router on any HTTP method
 
 
 ```php
-public function addConnect( string $pattern, mixed $paths ): RouteInterface;
+public function addConnect( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
 
 ```php
-public function addDelete( string $pattern, mixed $paths ): RouteInterface;
+public function addDelete( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
 
 ```php
-public function addGet( string $pattern, mixed $paths ): RouteInterface;
+public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
 
 ```php
-public function addHead( string $pattern, mixed $paths ): RouteInterface;
+public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
 
 ```php
-public function addOptions( string $pattern, mixed $paths ): RouteInterface;
+public function addOptions( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
 
 ```php
-public function addPatch( string $pattern, mixed $paths ): RouteInterface;
+public function addPatch( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
 
 ```php
-public function addPost( string $pattern, mixed $paths ): RouteInterface;
+public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
 
 ```php
-public function addPurge( string $pattern, mixed $paths ): RouteInterface;
+public function addPurge( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 (Squid and Varnish support)
 
 
 ```php
-public function addPut( string $pattern, mixed $paths ): RouteInterface;
+public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
 
 ```php
-public function addTrace( string $pattern, mixed $paths ): RouteInterface;
+public function addTrace( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
 
 ```php
-public function attach( mixed $route, mixed $position ): RouterInterface;
+public function attach( mixed $route, mixed $position = static-constant-access ): RouterInterface;
 ```
 Attach Route object to the routes stack.
 
@@ -11102,6 +11258,8 @@ Check if the router matches any of the defined routes
 | Extends    | Injectable |
 | Implements | ViewInterface |
 
+Phalcon\Mvc\View
+
 Phalcon\Mvc\View is a class for working with the "view" portion of the
 model-view-controller pattern. That is, it exists to help keep the view
 script separate from the model and controller scripts. It provides a system
@@ -11208,7 +11366,7 @@ protected viewParams;
 
 ## Methods
 ```php
-public function __construct( array $options );
+public function __construct( array $options = [] );
 ```
 Phalcon\Mvc\View constructor
 
@@ -11352,7 +11510,7 @@ Returns parameters to views
 
 
 ```php
-public function getPartial( string $partialPath, mixed $params ): string;
+public function getPartial( string $partialPath, mixed $params = null ): string;
 ```
 Renders a partial view
 
@@ -11384,7 +11542,7 @@ public function getRegisteredEngines()
 
 
 ```php
-public function getRender( string $controllerName, string $actionName, array $params, mixed $configCallback ): string;
+public function getRender( string $controllerName, string $actionName, array $params = [], mixed $configCallback = null ): string;
 ```
 Perform the automatic rendering returning the output as a string
 
@@ -11425,7 +11583,7 @@ Whether automatic rendering is enabled
 
 
 ```php
-public function partial( string $partialPath, mixed $params );
+public function partial( string $partialPath, mixed $params = null );
 ```
 Renders a partial view
 
@@ -11467,7 +11625,7 @@ class ProductsController extends Controller
 
 
 ```php
-public function processRender( string $controllerName, string $actionName, array $params, bool $fireEvents = true ): bool;
+public function processRender( string $controllerName, string $actionName, array $params = [], bool $fireEvents = bool ): bool;
 ```
 Processes the view and templates; Fires events if needed
 
@@ -11489,7 +11647,7 @@ $this->view->registerEngines(
 
 
 ```php
-public function render( string $controllerName, string $actionName, array $params ): View | bool;
+public function render( string $controllerName, string $actionName, array $params = [] ): View | bool;
 ```
 Executes render process from dispatching data
 
@@ -11619,7 +11777,7 @@ $this->view->setVar("products", $products);
 
 
 ```php
-public function setVars( array $params, bool $merge = true ): View;
+public function setVars( array $params, bool $merge = bool ): View;
 ```
 Set all the render params
 
@@ -11646,13 +11804,13 @@ Starts rendering process enabling the output buffering
 
 
 ```php
-public function toString( string $controllerName, string $actionName, array $params ): string;
+public function toString( string $controllerName, string $actionName, array $params = [] ): string;
 ```
 Renders the view and returns it as a string
 
 
 ```php
-protected function engineRender( array $engines, string $viewPath, bool $silence, bool $mustClean = true );
+protected function engineRender( array $engines, string $viewPath, bool $silence, bool $mustClean = bool );
 ```
 Checks whether view exists on registered extensions and render it
 
@@ -11700,7 +11858,7 @@ protected view;
 
 ## Methods
 ```php
-public function __construct( mixed $view, mixed $container );
+public function __construct( mixed $view, mixed $container = null );
 ```
 Phalcon\Mvc\View\Engine constructor
 
@@ -11718,7 +11876,7 @@ Returns the view component related to the adapter
 
 
 ```php
-public function partial( string $partialPath, mixed $params ): string;
+public function partial( string $partialPath, mixed $params = null ): string;
 ```
 Renders a partial inside another view
 
@@ -11740,7 +11898,7 @@ Adapter to use PHP itself as templating engine
 
 ## Methods
 ```php
-public function render( string $path, mixed $params, bool $mustClean = false );
+public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
 
@@ -11773,7 +11931,7 @@ protected options;
 
 ## Methods
 ```php
-public function callMacro( string $name, array $arguments ): mixed;
+public function callMacro( string $name, array $arguments = [] ): mixed;
 ```
 Checks if a macro is defined and calls it
 
@@ -11809,7 +11967,7 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 
 
 ```php
-public function render( string $templatePath, mixed $params, bool $mustClean = false );
+public function render( string $templatePath, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
 
@@ -11821,7 +11979,7 @@ Set Volt's options
 
 
 ```php
-public function slice( mixed $value, int $start, mixed $end );
+public function slice( mixed $value, int $start = int, mixed $end = null );
 ```
 Extracts a slice from a string/array/traversable object value
 
@@ -11922,7 +12080,7 @@ protected view;
 
 ## Methods
 ```php
-public function __construct( mixed $view );
+public function __construct( mixed $view = null );
 ```
 Phalcon\Mvc\View\Engine\Volt\Compiler
 
@@ -11952,7 +12110,7 @@ Resolves attribute reading
 
 
 ```php
-public function compile( string $templatePath, bool $extendsMode = false );
+public function compile( string $templatePath, bool $extendsMode = bool );
 ```
 Compiles a template into a file applying the compiler options
 This method does not return the compiled path if the template was not compiled
@@ -11971,7 +12129,7 @@ Compiles a "autoescape" statement returning PHP code
 
 
 ```php
-public function compileCache( array $statement, bool $extendsMode = false ): string;
+public function compileCache( array $statement, bool $extendsMode = bool ): string;
 ```
 Compiles a "cache" statement returning PHP code
 
@@ -11983,7 +12141,7 @@ Compiles calls to macros
 
 
 ```php
-public function compileCase( array $statement, bool $caseClause = true ): string;
+public function compileCase( array $statement, bool $caseClause = bool ): string;
 ```
 Compiles a "case"/"default" clause returning PHP code
 
@@ -11997,7 +12155,7 @@ Compiles a "do" statement returning PHP code
 ```php
 public function compileEcho( array $statement ): string;
 ```
-Compiles a '{{' '}}' statement returning PHP code
+Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
 
 
 ```php
@@ -12007,7 +12165,7 @@ Compiles a "elseif" statement returning PHP code
 
 
 ```php
-public function compileFile( string $path, string $compiledPath, bool $extendsMode = false );
+public function compileFile( string $path, string $compiledPath, bool $extendsMode = bool );
 ```
 Compiles a template into a file forcing the destination path
 
@@ -12028,13 +12186,13 @@ Generates a 'forelse' PHP code
 
 
 ```php
-public function compileForeach( array $statement, bool $extendsMode = false ): string;
+public function compileForeach( array $statement, bool $extendsMode = bool ): string;
 ```
 Compiles a "foreach" intermediate code representation into plain PHP code
 
 
 ```php
-public function compileIf( array $statement, bool $extendsMode = false ): string;
+public function compileIf( array $statement, bool $extendsMode = bool ): string;
 ```
 Compiles a 'if' statement returning PHP code
 
@@ -12064,17 +12222,17 @@ Compiles a "set" statement returning PHP code
 
 
 ```php
-public function compileString( string $viewCode, bool $extendsMode = false ): string;
+public function compileString( string $viewCode, bool $extendsMode = bool ): string;
 ```
 Compiles a template into a string
 
 ```php
-echo $compiler->compileString('{{ "hello world" }}');
+echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
 ```
 
 
 ```php
-public function compileSwitch( array $statement, bool $extendsMode = false ): string;
+public function compileSwitch( array $statement, bool $extendsMode = bool ): string;
 ```
 Compiles a 'switch' statement returning PHP code
 
@@ -12086,7 +12244,7 @@ Resolves an expression node in an AST volt tree
 
 
 ```php
-final public function fireExtensionEvent( string $name, mixed $arguments );
+final public function fireExtensionEvent( string $name, mixed $arguments = null );
 ```
 Fires an event to registered extensions
 
@@ -12164,7 +12322,7 @@ Parses a Volt template returning its intermediate representation
 
 ```php
 print_r(
-    $compiler->parse("{{ 3 + 2 }}")
+    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
 );
 ```
 
@@ -12204,7 +12362,7 @@ Set a unique prefix to be used as prefix for compiled variables
 
 
 ```php
-protected function compileSource( string $viewCode, bool $extendsMode = false ): string;
+protected function compileSource( string $viewCode, bool $extendsMode = bool ): string;
 ```
 Compiles a Volt source code returning a PHP plain version
 
@@ -12222,7 +12380,7 @@ Resolves filter intermediate code into PHP function calls
 
 
 ```php
-final protected function statementList( array $statements, bool $extendsMode = false ): string;
+final protected function statementList( array $statements, bool $extendsMode = bool ): string;
 ```
 Traverses a statement list compiling each of its nodes
 
@@ -12258,7 +12416,7 @@ protected statement;
 
 ## Methods
 ```php
-public function __construct( string $message, array $statement, int $code, mixed $previous );
+public function __construct( string $message = string, array $statement = [], int $code = int, mixed $previous = null );
 ```
 //
 
@@ -12288,13 +12446,13 @@ Returns cached output on another view stage
 
 
 ```php
-public function partial( string $partialPath, mixed $params ): string;
+public function partial( string $partialPath, mixed $params = null ): string;
 ```
 Renders a partial inside another view
 
 
 ```php
-public function render( string $path, mixed $params, bool $mustClean = false );
+public function render( string $path, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
 
@@ -12308,6 +12466,8 @@ Renders a view using the template engine
 | Namespace  | Phalcon\Mvc\View |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Mvc\View\Exception
+
 Class for exceptions thrown by Phalcon\Mvc\View
 
 
@@ -12320,6 +12480,8 @@ Class for exceptions thrown by Phalcon\Mvc\View
 | Uses       | Closure, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\EngineInterface, Phalcon\Mvc\View\Engine\Php |
 | Extends    | Injectable |
 | Implements | ViewBaseInterface |
+
+Phalcon\Mvc\View\Simple
 
 This component allows to render views without hierarchical levels
 
@@ -12380,7 +12542,7 @@ protected viewParams;
 
 ## Methods
 ```php
-public function __construct( array $options );
+public function __construct( array $options = [] );
 ```
 Phalcon\Mvc\View\Simple constructor
 
@@ -12441,7 +12603,7 @@ Gets views directory
 
 
 ```php
-public function partial( string $partialPath, mixed $params );
+public function partial( string $partialPath, mixed $params = null );
 ```
 Renders a partial view
 
@@ -12478,7 +12640,7 @@ $this->view->registerEngines(
 
 
 ```php
-public function render( string $path, array $params ): string;
+public function render( string $path, array $params = [] ): string;
 ```
 Renders a view
 
@@ -12514,7 +12676,7 @@ $this->view->setVar("products", $products);
 
 
 ```php
-public function setVars( array $params, bool $merge = true ): Simple;
+public function setVars( array $params, bool $merge = bool ): Simple;
 ```
 Set all the render params
 
@@ -12557,6 +12719,8 @@ Phalcon\Mvc\View\Engine\Php
 | Namespace  | Phalcon\Mvc |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface |
 
+Phalcon\Mvc\ViewInterface
+
 Interface for Phalcon\Mvc\View and Phalcon\Mvc\View\Simple
 
 
@@ -12580,7 +12744,7 @@ Gets views directory
 
 
 ```php
-public function partial( string $partialPath, mixed $params );
+public function partial( string $partialPath, mixed $params = null );
 ```
 Renders a partial view
 
@@ -12618,6 +12782,8 @@ slash or backslash
 
 | Namespace  | Phalcon\Mvc |
 | Extends    | Array |
+
+Phalcon\Mvc\ViewInterface
 
 Interface for Phalcon\Mvc\View
 
@@ -12720,7 +12886,7 @@ Register templating engines
 
 
 ```php
-public function render( string $controllerName, string $actionName, array $params ): ViewInterface | bool;
+public function render( string $controllerName, string $actionName, array $params = [] ): ViewInterface | bool;
 ```
 Executes render process from dispatching data
 

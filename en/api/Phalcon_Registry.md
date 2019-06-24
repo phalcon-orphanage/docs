@@ -15,6 +15,8 @@ title: 'Phalcon\Registry'
 | Uses       | Phalcon\Collection\Collection, Traversable |
 | Extends    | Collection |
 
+Phalcon\Registry
+
 A registry is a container for storing objects and values in the application
 space. By storing the value in a registry, the same object is always
 available throughout your application.
@@ -65,7 +67,7 @@ bypass relatively slow method calls.
 
 ## Methods
 ```php
-final public function __construct( array $data ): void;
+final public function __construct( array $data = null ): void;
 ```
 Constructor
 
@@ -109,7 +111,7 @@ Count elements of an object
 
 
 ```php
-final public function get( string $element, mixed $defaultValue ): mixed;
+final public function get( string $element, mixed $defaultValue = null ): mixed;
 ```
 Get the element from the collection
 
@@ -127,7 +129,7 @@ Get the element from the collection
 
 
 ```php
-final public function init( array $data ): void;
+final public function init( array $data = [] ): void;
 ```
 Initialize internal array
 
@@ -199,7 +201,7 @@ Returns the object in an array format
 
 
 ```php
-final public function toJson( int $options = 79 ): string;
+final public function toJson( int $options = int ): string;
 ```
 Returns the object in a JSON format
 

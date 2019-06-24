@@ -46,7 +46,7 @@ protected modules;
 
 ## Methods
 ```php
-public function __construct( mixed $container ): void;
+public function __construct( mixed $container = null ): void;
 ```
 Phalcon\Application constructor
 
@@ -82,7 +82,7 @@ Handles a request
 
 
 ```php
-public function registerModules( array $modules, bool $merge = false ): Application;
+public function registerModules( array $modules, bool $merge = bool ): Application;
 ```
 Register an array of modules present in the application
 

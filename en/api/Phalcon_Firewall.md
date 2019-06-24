@@ -149,7 +149,7 @@ Fires event or throwing exception
 
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 Gets access from cache
 
@@ -167,7 +167,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
    
 
 ```php
-protected function throwFirewallException( string $message, int $exceptionCode ): bool;
+protected function throwFirewallException( string $message, int $exceptionCode = int ): bool;
 ```
 Throws an internal exception
 
@@ -232,12 +232,9 @@ protected roleCacheCallback;
 
 ## Methods
 ```php
-public function __construct( string $aclServiceName, array $boundModelsKeyMap );
+public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
 ```
 Phalcon\Firewall\Adapter\Acl constructor
-
-@param string aclServiceName
-@param array boundModelsKeyMap
 
 
 ```php
@@ -280,6 +277,7 @@ public function getRoleCacheCallback(): mixed
 public function isMultiModuleConfiguration(): bool;
 ```
 Returns multiModuleConfiguration
+@return bool
 
 
 ```php
@@ -309,7 +307,7 @@ Sets multiModuleConfiguration
 
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 //
 
@@ -369,8 +367,6 @@ public function __construct( mixed $annotationsAdapter );
 ```
 Phalcon\Firewall\Adapter\Annotations constructor
 
-@param mixed annotationsAdapter
-
 
 ```php
 public function beforeExecuteRoute( mixed $event, mixed $dispatcher, mixed $data );
@@ -409,7 +405,7 @@ protected function checkControllerAnnotationAccess( string $controllerClass, str
 //
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 //
 
@@ -486,7 +482,7 @@ protected routeNameConfiguration = true;
 
 ## Methods
 ```php
-public function __construct( string $aclServiceName, array $boundModelsKeyMap );
+public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
 ```
 //
 
@@ -564,7 +560,7 @@ Fires event or throwing exception
 
 
 ```php
-protected function getAccessFromCache( string $key, array $originalValues, string $roleCacheKey ): bool | null;
+protected function getAccessFromCache( string $key, array $originalValues = null, string $roleCacheKey = null ): bool | null;
 ```
 //
 

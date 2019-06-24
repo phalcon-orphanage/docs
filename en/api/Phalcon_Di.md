@@ -92,7 +92,7 @@ protected static _default;
 
 ## Methods
 ```php
-public function __call( string $method, array $arguments ): mixed | null;
+public function __call( string $method, array $arguments = [] ): mixed | null;
 ```
 Magic method to get or set services using setters/getters
 
@@ -104,7 +104,7 @@ Phalcon\Di constructor
 
 
 ```php
-public function attempt( string $name, mixed $definition, bool $shared = false ): ServiceInterface | bool;
+public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
@@ -112,7 +112,7 @@ with the same name
 
 
 ```php
-public function get( string $name, mixed $parameters ): mixed;
+public function get( string $name, mixed $parameters = null ): mixed;
 ```
 Resolves the service based on its configuration
 
@@ -142,7 +142,7 @@ Return the services registered in the DI
 
 
 ```php
-public function getShared( string $name, mixed $parameters ): mixed;
+public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 Resolves a service, the resolved service is stored in the DI, subsequent
 requests for this service will return the same instance
@@ -190,7 +190,7 @@ return [
 
 
 ```php
-public function loadFromYaml( string $filePath, array $callbacks ): void;
+public function loadFromYaml( string $filePath, array $callbacks = null ): void;
 ```
 Loads services from a yaml file.
 
@@ -289,7 +289,7 @@ It also removes any shared instance created for the service
 
 
 ```php
-public function set( string $name, mixed $definition, bool $shared = false ): ServiceInterface;
+public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 Registers a service in the services container
 
@@ -339,7 +339,7 @@ Exceptions thrown in Phalcon\Di will use this class
 | Uses       | Phalcon\Di\Exception\ServiceResolutionException |
 | Extends    | \Phalcon\Di\Exception |
 
- Phalcon\Di\Exception\ServiceResolutionException Exception
+ Phalcon\Di\Exception\ServiceResolutionException
  
 
         
@@ -373,6 +373,8 @@ Phalcon\Di\FactoryDefault constructor
 | Namespace  | Phalcon\Di\FactoryDefault |
 | Uses       | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory |
 | Extends    | FactoryDefault |
+
+Phalcon\Di\FactoryDefault\Cli
 
 This is a variant of the standard Phalcon\Di. By default it automatically
 registers all the services provided by the framework.
@@ -545,9 +547,9 @@ protected sharedInstance;
 
 ## Methods
 ```php
-final public function __construct( mixed $definition, bool $shared = false ): void;
+final public function __construct( mixed $definition, bool $shared = bool ): void;
 ```
-Phalcon\Di\Service constructor
+Phalcon\Di\Service
 
 
 ```php
@@ -583,9 +585,11 @@ Check whether the service is shared or not
 
 
 ```php
-public function resolve( mixed $parameters, mixed $container ): mixed;
+public function resolve( mixed $parameters = null, mixed $container = null ): mixed;
 ```
 Resolves the service
+
+@param array parameters
 
 
 ```php
@@ -621,14 +625,19 @@ Sets/Resets the shared instance related to the service
 | Namespace  | Phalcon\Di\Service |
 | Uses       | Phalcon\DiInterface, Phalcon\Di\Exception |
 
+Phalcon\Di\Service\Builder
+
 This class builds instances based on complex definitions
 
 
 ## Methods
 ```php
-public function build( mixed $container, array $definition, mixed $parameters );
+public function build( mixed $container, array $definition, mixed $parameters = null );
 ```
 Builds a service using a complex service definition
+
+@param array parameters
+@return mixed
 
 
 
@@ -677,9 +686,11 @@ Check whether the service is shared or not
 
 
 ```php
-public function resolve( mixed $parameters, mixed $container ): mixed;
+public function resolve( mixed $parameters = null, mixed $container = null ): mixed;
 ```
 Resolves the service
+
+@param array parameters
 
 
 ```php
@@ -755,15 +766,17 @@ Interface for Phalcon\Di
 
 ## Methods
 ```php
-public function attempt( string $name, mixed $definition, bool $shared = false ): ServiceInterface | bool;
+public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
 ```
 Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
 
+@param mixed definition
+
 
 ```php
-public function get( string $name, mixed $parameters ): mixed;
+public function get( string $name, mixed $parameters = null ): mixed;
 ```
 Resolves the service based on its configuration
 
@@ -787,7 +800,7 @@ Return the services registered in the DI
 
 
 ```php
-public function getShared( string $name, mixed $parameters ): mixed;
+public function getShared( string $name, mixed $parameters = null ): mixed;
 ```
 Returns a shared service based on their configuration
 
@@ -805,7 +818,7 @@ Removes a service in the services container
 
 
 ```php
-public function set( string $name, mixed $definition, bool $shared = false ): ServiceInterface;
+public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 Registers a service in the services container
 

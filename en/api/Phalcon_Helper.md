@@ -39,6 +39,8 @@ Exceptions thrown in Phalcon\Helper will use this class
 | Namespace  | Phalcon\Helper |
 | Uses       | Phalcon\Helper\Exception |
 
+Phalcon\Helper\number
+
 This class offers numeric functions for the framework
 
 

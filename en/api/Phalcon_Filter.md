@@ -38,6 +38,8 @@ title: 'Phalcon\Filter'
 | Namespace  | Phalcon\Filter |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Filter\Exception
+
 Exceptions thrown in Phalcon\Filter will use this class
 
 
@@ -94,7 +96,7 @@ protected services;
 
 ## Methods
 ```php
-public function __construct( array $mapper ): void;
+public function __construct( array $mapper = [] ): void;
 ```
 Key value pairs with name as the key and a callable as the value for
 the service object
@@ -114,7 +116,7 @@ Checks if a service exists in the map array
 
 
 ```php
-public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = false ): mixed;
+public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
 Sanitizes a value with a specified single or set of sanitizers
 
@@ -174,7 +176,7 @@ Lazy loads, stores and exposes sanitizer objects
 
 ## Methods
 ```php
-public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = false ): mixed;
+public function sanitize( mixed $value, mixed $sanitizers, bool $noRecursive = bool ): mixed;
 ```
 Sanitizes a value with a specified single or set of sanitizers
 
@@ -187,6 +189,8 @@ Sanitizes a value with a specified single or set of sanitizers
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\AbsInt
+
 Sanitizes a value to absolute integer
 
 
@@ -194,7 +198,7 @@ Sanitizes a value to absolute integer
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -205,6 +209,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Alnum
+
 Sanitizes a value to an alphanumeric value
 
 
@@ -212,7 +218,7 @@ Sanitizes a value to an alphanumeric value
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -223,6 +229,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Alpha
+
 Sanitizes a value to an alpha value
 
 
@@ -230,7 +238,7 @@ Sanitizes a value to an alpha value
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -241,6 +249,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\BoolVal
+
 Sanitizes a value to boolean
 
 
@@ -248,7 +258,7 @@ Sanitizes a value to boolean
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -259,6 +269,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Email
+
 Sanitizes an email string
 
 
@@ -266,7 +278,7 @@ Sanitizes an email string
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -277,6 +289,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\FloatVal
+
 Sanitizes a value to float
 
 
@@ -284,7 +298,7 @@ Sanitizes a value to float
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -295,6 +309,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\IntVal
+
 Sanitizes a value to integer
 
 
@@ -302,7 +318,7 @@ Sanitizes a value to integer
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -313,6 +329,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Lower
+
 Sanitizes a value to lowercase
 
 
@@ -320,7 +338,7 @@ Sanitizes a value to lowercase
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -331,6 +349,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\LowerFirst
+
 Sanitizes a value to lcfirst
 
 
@@ -338,7 +358,7 @@ Sanitizes a value to lcfirst
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -349,6 +369,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Regex
+
 Sanitizes a value performing preg_replace
 
 
@@ -356,7 +378,7 @@ Sanitizes a value performing preg_replace
 ```php
 public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -367,6 +389,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Remove
+
 Sanitizes a value removing parts of a string
 
 
@@ -374,7 +398,7 @@ Sanitizes a value removing parts of a string
 ```php
 public function __invoke( mixed $input, mixed $replace );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -385,6 +409,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Replace
+
 Sanitizes a value replacing parts of a string
 
 
@@ -392,7 +418,7 @@ Sanitizes a value replacing parts of a string
 ```php
 public function __invoke( mixed $input, mixed $from, mixed $to );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -403,6 +429,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Special
+
 Sanitizes a value special characters
 
 
@@ -410,7 +438,7 @@ Sanitizes a value special characters
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -421,6 +449,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\SpecialFull
+
 Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 
 
@@ -428,7 +458,7 @@ Sanitizes a value special characters (htmlspecialchars() and ENT_QUOTES)
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -439,6 +469,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\String
+
 Sanitizes a value to string
 
 
@@ -446,7 +478,7 @@ Sanitizes a value to string
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -457,6 +489,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Striptags
+
 Sanitizes a value striptags
 
 
@@ -464,7 +498,7 @@ Sanitizes a value striptags
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -475,6 +509,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Trim
+
 Sanitizes a value removing leading and trailing spaces
 
 
@@ -482,7 +518,7 @@ Sanitizes a value removing leading and trailing spaces
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -493,6 +529,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Upper
+
 Sanitizes a value to uppercase
 
 
@@ -500,7 +538,7 @@ Sanitizes a value to uppercase
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -511,6 +549,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\UpperFirst
+
 Sanitizes a value to ucfirst
 
 
@@ -518,7 +558,7 @@ Sanitizes a value to ucfirst
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -529,6 +569,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\UpperWords
+
 Sanitizes a value to uppercase teh first character of each word
 
 
@@ -536,7 +578,7 @@ Sanitizes a value to uppercase teh first character of each word
 ```php
 public function __invoke( string $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 
 
@@ -547,6 +589,8 @@ Invokes the sanitizer
 
 | Namespace  | Phalcon\Filter\Sanitize |
 
+Phalcon\Filter\Sanitize\Url
+
 Sanitizes a value url
 
 
@@ -554,6 +598,6 @@ Sanitizes a value url
 ```php
 public function __invoke( mixed $input );
 ```
-Invokes the sanitizer
+@var mixed input The text to sanitize
 
 

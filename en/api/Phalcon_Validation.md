@@ -57,6 +57,8 @@ title: 'Phalcon\Validation'
 | Extends    | Injectable |
 | Implements | ValidationInterface |
 
+Phalcon\Validation
+
 Allows to validate data using custom or built-in validators
 
 
@@ -90,7 +92,7 @@ protected values;
 
 ## Methods
 ```php
-public function __construct( array $validators ): void;
+public function __construct( array $validators = [] ): void;
 ```
 Phalcon\Validation constructor
 
@@ -113,6 +115,9 @@ public function bind( mixed $entity, mixed $data ): ValidationInterface;
 Assigns the data to an entity
 The entity is used to obtain the validation values
 
+@param object entity
+@param array|object data
+
 
 ```php
 public function getData()
@@ -126,7 +131,7 @@ Returns the bound entity
 
 
 ```php
-public function getFilters( string $field ): mixed | null;
+public function getFilters( string $field = null ): mixed | null;
 ```
 Returns all the filters or a specific one
 
@@ -135,6 +140,8 @@ Returns all the filters or a specific one
 public function getLabel( mixed $field ): string;
 ```
 Get label for field
+
+@param string field
 
 
 ```php
@@ -172,11 +179,16 @@ public function setEntity( mixed $entity ): void;
 ```
 Sets the bound entity
 
+@param object entity
+
 
 ```php
 public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
 ```
 Adds filters to the field
+
+@param string field
+@param array|string filters
 
 
 ```php
@@ -191,9 +203,12 @@ public function setValidators( $validators )
 
 
 ```php
-public function validate( mixed $data, mixed $entity ): Messages;
+public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 Validate a set of data according to a set of rules
+
+@param array|object data
+@param object entity
 
 
 ```php
@@ -211,6 +226,8 @@ Internal validations, if it returns true, then skip the current validator
 | Namespace  | Phalcon\Validation |
 | Extends    | Validator |
 
+Phalcon\Validation\CombinedFieldsValidator
+
 This is a base class for combined fields validators
 
 
@@ -221,6 +238,8 @@ This is a base class for combined fields validators
 
 | Namespace  | Phalcon\Validation |
 | Extends    | \Phalcon\Exception |
+
+Phalcon\Validation\Exception
 
 Exceptions thrown in Phalcon\Validation\* classes will use this class
 
@@ -233,6 +252,8 @@ Exceptions thrown in Phalcon\Validation\* classes will use this class
 | Namespace  | Phalcon\Validation |
 | Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface |
 | Implements | ValidatorInterface |
+
+Phalcon\Validation\Validator
 
 This is a base class for validators
 
@@ -260,20 +281,20 @@ protected options;
 
 ## Methods
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 Phalcon\Validation\Validator constructor
 
 
 ```php
-public function getOption( string $key, mixed $defaultValue ): mixed;
+public function getOption( string $key, mixed $defaultValue = null ): mixed;
 ```
 Returns an option in the validator's options
 Returns null if the option hasn't set
 
 
 ```php
-public function getTemplate( string $field ): string;
+public function getTemplate( string $field = null ): string;
 ```
    Get the template message
    
@@ -296,7 +317,7 @@ Checks if an option is defined
 
 
 ```php
-public function messageFactory( mixed $validation, mixed $field, array $replacements ): Message;
+public function messageFactory( mixed $validation, mixed $field, array $replacements = [] ): Message;
 ```
    Create a default message by factory
    
@@ -413,6 +434,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Alpha
+
 Check for alphabetic character(s)
 
 ```php
@@ -470,6 +493,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\Between
 
 Validates that a value is between an inclusive range of two values.
 For a value x, the test is passed if minimum<=x<=maximum.
@@ -540,6 +565,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Callback
+
 Calls user function for validation
 
 ```php
@@ -607,6 +634,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\Confirmation
 
 Checks that two values have the same value
 
@@ -677,6 +706,8 @@ Compare strings
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\CreditCard
+
 Checks if a value has a valid credit card number
 
 ```php
@@ -734,6 +765,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\Date
 
 Checks if a value is a valid date
 
@@ -798,6 +831,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Digit
+
 Check for numeric character(s)
 
 ```php
@@ -856,6 +891,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Email
+
 Checks if a value has a correct e-mail format
 
 ```php
@@ -913,6 +950,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Extends    | \Phalcon\Exception |
 
+Phalcon\Validation\Exception
+
 Exceptions thrown in Phalcon\Validation\Validator\* classes will use this
 class
 
@@ -925,6 +964,8 @@ class
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\ExclusionIn
 
 Check if a value is not included into a list of values
 
@@ -995,6 +1036,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\ValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min |
 | Extends    | ValidatorComposite |
 
+Phalcon\Validation\Validator\File
+
 Checks if a value has a correct file
 
 ```php
@@ -1064,7 +1107,7 @@ $validator->add(
 
 ## Methods
 ```php
-public function __construct( array $options );
+public function __construct( array $options = [] );
 ```
 Constructor
 
@@ -1078,6 +1121,8 @@ Constructor
 | Namespace  | Phalcon\Validation\Validator\File |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\File
 
 Checks if a value has a correct file
 
@@ -1237,6 +1282,8 @@ public function setMessageValid( $messageValid )
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
 
+Phalcon\Validation\Validator\File
+
 Checks if a value has a correct file mime type
 
 ```php
@@ -1321,6 +1368,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
 
+Phalcon\Validation\Validator\File\Resolution\Equal
+
 Checks if a file has the rigth resolution
 
 ```php
@@ -1383,6 +1432,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator\File\Resolution |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
+
+Phalcon\Validation\Validator\File\Resolution\Max
 
 Checks if a file has the rigth resolution
 
@@ -1452,6 +1503,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
 
+Phalcon\Validation\Validator\File\Resolution\Min
+
 Checks if a file has the rigth resolution
 
 ```php
@@ -1519,6 +1572,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator\File\Size |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
+
+Phalcon\Validation\Validator\File
 
 Checks if a value has a correct file
 
@@ -1588,6 +1643,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
 
+Phalcon\Validation\Validator\File
+
 Checks if a value has a correct file
 
 ```php
@@ -1655,6 +1712,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator\File\Size |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\FileAbstract |
 | Extends    | FileAbstract |
+
+Phalcon\Validation\Validator\File
 
 Checks if a value has a correct file
 
@@ -1724,6 +1783,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Identical
+
 Checks if a value is identical to other
 
 ```php
@@ -1787,6 +1848,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\InclusionIn
+
 Check if a value is included into a list of values
 
 ```php
@@ -1849,6 +1912,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Messages\Message |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\ip
 
 Check for IP addresses
 
@@ -1931,6 +1996,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Numericality
+
 Check for a valid numeric value
 
 ```php
@@ -1989,6 +2056,8 @@ Executes the validation
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\PresenceOf
+
 Validates that a value is not null or empty string
 
 ```php
@@ -2046,6 +2115,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\Regex
 
 Allows validate if the value of a field matches a regular expression
 
@@ -2182,7 +2253,7 @@ $validation->add(
 
 ## Methods
 ```php
-public function __construct( array $options ): void;
+public function __construct( array $options = [] ): void;
 ```
 Constructor
 
@@ -2196,6 +2267,8 @@ Constructor
 | Namespace  | Phalcon\Validation\Validator\StringLength |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\StringLength
 
 Validates that a string has the specified maximum constraints
 The test is passed if for a string's length L, L<=max, i.e. L must
@@ -2266,6 +2339,8 @@ Executes the validation
 | Namespace  | Phalcon\Validation\Validator\StringLength |
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception |
 | Extends    | Validator |
+
+Phalcon\Validation\Validator\StringLength
 
 Validates that a string has the specified minimum constraints
 The test is passed if for a string's length L, min<=L, i.e. L must
@@ -2457,6 +2532,8 @@ Uniqueness method used for model
 | Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator |
 | Extends    | Validator |
 
+Phalcon\Validation\Validator\Url
+
 Checks if a value has a url format
 
 ```php
@@ -2516,6 +2593,8 @@ Executes the validation
 | Extends    | Validator |
 | Implements | ValidatorCompositeInterface |
 
+Phalcon\Validation\CombinedFieldsValidator
+
 This is a base class for combined fields validators
 
 
@@ -2548,6 +2627,8 @@ Executes the validation
 
 | Namespace  | Phalcon\Validation |
 | Uses       | Phalcon\Validation |
+
+Phalcon\Validation\CombinedFieldsValidator
 
 This is a base class for combined fields validators
 
@@ -2585,7 +2666,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function __construct( array $services );
+public function __construct( array $services = [] );
 ```
 TagFactory constructor.
 
@@ -2615,10 +2696,12 @@ Interface for Phalcon\Validation\Validator
 
 ## Methods
 ```php
-public function getOption( string $key, mixed $defaultValue ): mixed;
+public function getOption( string $key, mixed $defaultValue = null ): mixed;
 ```
 Returns an option in the validator's options
 Returns null if the option hasn't set
+
+@return mixed
 
 
 ```php
@@ -2626,11 +2709,16 @@ public function getTemplate( string $field ): string;
 ```
    Get the template message
    
+   @return string
+   @throw InvalidArgumentException When the field does not exists
+   
 
 ```php
 public function getTemplates(): array;
 ```
    Get message templates
+   
+   @return array
    
 
 ```php
@@ -2638,11 +2726,15 @@ public function hasOption( string $key ): bool;
 ```
 Checks if an option is defined
 
+@return boolean
+
 
 ```php
 public function setTemplate( string $template ): ValidatorInterface;
 ```
    Set a new temlate message
+   
+   @return ValidatorInterface
    
 
 ```php
@@ -2650,11 +2742,15 @@ public function setTemplates( array $templates ): ValidatorInterface;
 ```
    Clear current template and set new from an array,
    
+   @return ValidatorInterface
+   
 
 ```php
 public function validate( mixed $validation, mixed $field ): bool;
 ```
 Executes the validation
+
+@return boolean
 
 
 
@@ -2688,6 +2784,9 @@ public function bind( mixed $entity, mixed $data ): ValidationInterface;
 Assigns the data to an entity
 The entity is used to obtain the validation values
 
+@param object entity
+@param array|object data
+
 
 ```php
 public function getEntity(): object;
@@ -2696,7 +2795,7 @@ Returns the bound entity
 
 
 ```php
-public function getFilters( string $field ): mixed | null;
+public function getFilters( string $field = null ): mixed | null;
 ```
 Returns all the filters or a specific one
 
@@ -2742,6 +2841,8 @@ public function setFilters( string $field, mixed $filters ): ValidationInterface
 ```
 Adds filters to the field
 
+@param array|string filters
+
 
 ```php
 public function setLabels( array $labels ): void;
@@ -2750,8 +2851,11 @@ Adds labels for fields
 
 
 ```php
-public function validate( mixed $data, mixed $entity ): Messages;
+public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 Validate a set of data according to a set of rules
+
+@param array|object data
+@param object entity
 
 
