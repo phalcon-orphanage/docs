@@ -56,7 +56,7 @@ abstract protected function getAdapters(): array;
 Returns the adapters for the factory
 
 ```php
-protected function init( array $services ): void;
+protected function init( array $services = [] ): void;
 ```
 
 AdapterFactory constructor.
