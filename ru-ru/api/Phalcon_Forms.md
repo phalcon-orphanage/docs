@@ -68,7 +68,7 @@ protected value;
 ## Methods
 
 ```php
-public function __construct( string $name, array $attributes ): void;
+public function __construct( string $name, array $attributes = [] ): void;
 ```
 
 Phalcon\Forms\Element constructor
@@ -94,7 +94,7 @@ public function addValidator( mixed $validator ): ElementInterface;
 Adds a validator to the element
 
 ```php
-public function addValidators( array $validators, bool $merge = true ): ElementInterface;
+public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
 
 Adds a group of validators
@@ -114,7 +114,7 @@ public function clear(): ElementInterface;
 Clears element to its default value
 
 ```php
-public function getAttribute( string $attribute, mixed $defaultValue ): mixed;
+public function getAttribute( string $attribute, mixed $defaultValue = null ): mixed;
 ```
 
 Returns the value of an attribute if present
@@ -164,7 +164,7 @@ public function getName(): string;
 Returns the element name
 
 ```php
-public function getUserOption( string $option, mixed $defaultValue ): mixed;
+public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 
 Returns the value of an option if present
@@ -194,13 +194,13 @@ public function hasMessages(): bool;
 Checks whether there are messages attached to the element
 
 ```php
-public function label( array $attributes ): string;
+public function label( array $attributes = [] ): string;
 ```
 
 Generate the HTML to label the element
 
 ```php
-public function prepareAttributes( array $attributes, bool $useChecked = false ): array;
+public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
 ```
 
 Returns an array of prepared attributes for Phalcon\Tag helpers according to the element parameters
@@ -273,12 +273,14 @@ Sets options for the element
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Check
+
 Component INPUT[type=check] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -294,7 +296,7 @@ Component INPUT[type=date] for forms
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -305,12 +307,14 @@ Renders the element widget returning html
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Email
+
 Component INPUT[type=email] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -326,7 +330,7 @@ Component INPUT[type=file] for forms
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -337,12 +341,14 @@ Renders the element widget returning html
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Hidden
+
 Component INPUT[type=hidden] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -353,12 +359,14 @@ Renders the element widget returning html
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Numeric
+
 Component INPUT[type=number] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -369,12 +377,14 @@ Renders the element widget returning html
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Password
+
 Component INPUT[type=password] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -385,12 +395,14 @@ Renders the element widget returning html
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Radio
+
 Component INPUT[type=radio] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -400,6 +412,8 @@ Renders the element widget returning html
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Forms\Element, Phalcon\Tag\Select | | Extends | Element |
+
+Phalcon\Forms\Element\Select
 
 Component SELECT (choice) for forms
 
@@ -414,7 +428,7 @@ protected optionsValues;
 ## Methods
 
 ```php
-public function __construct( string $name, mixed $options, mixed $attributes ): void;
+public function __construct( string $name, mixed $options = null, mixed $attributes = null ): void;
 ```
 
 Phalcon\Forms\Element constructor
@@ -438,7 +452,7 @@ Returns the choices' options
 @return array|object
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget returning html
@@ -462,7 +476,7 @@ Component INPUT[type=submit] for forms
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget
@@ -473,12 +487,14 @@ Renders the element widget
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag, Phalcon\Forms\Element | | Extends | Element |
 
+Phalcon\Forms\Element\Text
+
 Component INPUT[type=text] for forms
 
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget
@@ -494,7 +510,7 @@ Component TEXTAREA for forms
 ## Methods
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget
@@ -522,7 +538,7 @@ public function addValidator( mixed $validator ): ElementInterface;
 Adds a validator to the element
 
 ```php
-public function addValidators( array $validators, bool $merge = true ): ElementInterface;
+public function addValidators( array $validators, bool $merge = bool ): ElementInterface;
 ```
 
 Adds a group of validators
@@ -542,7 +558,7 @@ public function clear(): ElementInterface;
 Clears every element in the form to its default value
 
 ```php
-public function getAttribute( string $attribute, mixed $defaultValue ): mixed;
+public function getAttribute( string $attribute, mixed $defaultValue = null ): mixed;
 ```
 
 Returns the value of an attribute if present
@@ -592,7 +608,7 @@ public function getName(): string;
 Returns the element's name
 
 ```php
-public function getUserOption( string $option, mixed $defaultValue ): mixed;
+public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 
 Returns the value of an option if present
@@ -628,13 +644,13 @@ public function label(): string;
 Generate the HTML to label the element
 
 ```php
-public function prepareAttributes( array $attributes, bool $useChecked = false ): array;
+public function prepareAttributes( array $attributes = [], bool $useChecked = bool ): array;
 ```
 
 Returns an array of prepared attributes for Phalcon\Tag helpers according to the element's parameters
 
 ```php
-public function render( array $attributes ): string;
+public function render( array $attributes = [] ): string;
 ```
 
 Renders the element widget
@@ -752,21 +768,19 @@ protected validation;
 ## Methods
 
 ```php
-public function __construct( mixed $entity, array $userOptions ): void;
+public function __construct( mixed $entity = null, array $userOptions = [] ): void;
 ```
 
 Phalcon\Forms\Form constructor
 
-@param object entity
-
 ```php
-public function add( mixed $element, string $position, bool $type ): Form;
+public function add( mixed $element, string $position = null, bool $type = null ): Form;
 ```
 
 Adds an element to the form
 
 ```php
-public function bind( array $data, mixed $entity, mixed $whitelist ): Form;
+public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
 ```
 
 Binds data to the entity
@@ -774,7 +788,7 @@ Binds data to the entity
 @param object entity @param array whitelist
 
 ```php
-public function clear( mixed $fields ): Form;
+public function clear( mixed $fields = null ): Form;
 ```
 
 Clears every element in the form to its default value
@@ -854,7 +868,7 @@ public function getMessagesFor( string $name ): Messages;
 Returns the messages generated for a specific element
 
 ```php
-public function getUserOption( string $option, mixed $defaultValue ): mixed;
+public function getUserOption( string $option, mixed $defaultValue = null ): mixed;
 ```
 
 Returns the value of an option if present
@@ -888,7 +902,7 @@ public function hasMessagesFor( string $name ): bool;
 Check if messages were generated for a specific element
 
 ```php
-public function isValid( mixed $data, mixed $entity ): bool;
+public function isValid( mixed $data = null, mixed $entity = null ): bool;
 ```
 
 Validates the form
@@ -902,7 +916,7 @@ public function key(): int;
 Returns the current position/key in the iterator
 
 ```php
-public function label( string $name, array $attributes ): string;
+public function label( string $name, array $attributes = null ): string;
 ```
 
 Generate the label of an element added to the form including HTML
@@ -920,7 +934,7 @@ public function remove( string $name ): bool;
 Removes an element from the form
 
 ```php
-public function render( string $name, array $attributes ): string;
+public function render( string $name, array $attributes = [] ): string;
 ```
 
 Renders a specific item in the form
@@ -981,7 +995,7 @@ Check if the current element in the iterator is valid
 
 | Namespace | Phalcon\Forms |
 
-Phalcon\Forms\Manager
+Forms Manager
 
 ## Properties
 
@@ -994,7 +1008,7 @@ protected forms;
 ## Methods
 
 ```php
-public function create( string $name, mixed $entity ): Form;
+public function create( string $name, mixed $entity = null ): Form;
 ```
 
 Creates a form registering it in the forms manager
