@@ -14,19 +14,17 @@ So you have decided to upgrade to v4! **Congratulations**!!
 
 Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
 
-<a name='requirements'></a>
-
 ## Requerimentos
 
 ### PHP 7.2
 
-Phalcon v4 supports only PHP 7.2 and above. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 was released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 <a name='psr'></a>
 
 ### PSR
 
-Phalcon requires the PSR extension. The extension can be downloaded and compiled from [this](https://github.com/jbboehr/php-psr) GitHub repository. Installation instructions are available in the `README` of the repository. Once the extension has been compiled and is available in your system, you will need to load it to your `php.ini`. You will need to add this line:
+Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar desde [este repositorio de GitHub](https://github.com/jbboehr/php-psr). Installation instructions are available in the `README` of the repository. Una vez que la extensión haya sido compilada y esté disponible en su sistema, necesitará cargarla a su `php.ini`. Necesitarás añadir esta línea:
 
 ```ini
 extension=psr.so
@@ -38,21 +36,19 @@ before
 extension=phalcon.so
 ```
 
-Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
-
-<a name='installation'></a>
+Alternativamente algunas distribuciones añaden un prefijo numérico en los archivos `ini`. Si ese es el caso, elija un número alto para Phalcon (por ejemplo `50-phalcon.ini`).
 
 ### Instalación
 
-Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
+Descarga la última `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que puede acceder su sistema.
 
-Clone the repository
+Clonar el repositorio
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compile Phalcon
+Compilar Phalcon
 
 ```bash
 cd cphalcon/
@@ -61,15 +57,13 @@ zephir fullclean
 zephir build
 ```
 
-Check the module
+Comprueba el módulo
 
 ```bash
 php -m | grep phalcon
 ```
 
 * * *
-
-<a name='acl'></a>
 
 ## ACL
 
@@ -104,7 +98,73 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 * * *
 
-<a name='cli'></a>
+## Cache
+
+> Status: **changes required**
+> 
+> Usage: [Cache Documentation](cache)
+{: .alert .alert-info }
+
+The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
+
+In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
+
+For v4, we rewrote the component completely. We first created a `Storage` class which is the basis of the Cache classes. We created Serializer classes whose sole responsibility is to serialize and unserialize the data before they are saved in the cache adapter and after they are retrieved. These classes are injected (based on the developer's choice) to an Adapter object which connects to a backend (`Memcached`, `Redis` etc.), while abiding by a common adapter interface.
+
+The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and accepts an adapter in its constructor, which in turn is doing all the heavy lifting with connecting to the back end and manipulating data.
+
+For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
+
+### Creating a cache
+
+```php
+<?php
+
+use Phalcon\Cache\Cache;
+use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$serializerFactory = new SerializerFactory();
+$adapterFactory    = new AdapterFactory($serializerFactory);
+
+$options = [
+    'defaultSerializer' => 'Json',
+    'lifetime'          => 7200
+];
+
+$adapter = $adapterFactory->newInstance('apcu', $options);
+
+$cache = new Cache($adapter);
+```
+
+Registering it in the DI
+
+```php
+<?php
+
+use Phalcon\Cache\Cache;
+use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Storage\Serializer\SerializerFactory;
+
+$container = new Di();
+
+$container->set(
+    'cache',
+    function () {
+        $options = [
+            'defaultSerializer' => 'Json',
+            'lifetime'          => 7200
+        ];
+
+        $adapter = (new AdapterFactory(new SerializerFactory()))
+                    ->newInstance('apcu', $options); 
+
+        return new Cache($adapter);
+    }
+);
+```
+
+* * *
 
 ## CLI
 
@@ -139,8 +199,6 @@ class MainTask extends Task
 
 * * *
 
-<a name='filter'></a>
-
 ## Filtro
 
 > Status: **changes required**
@@ -169,8 +227,8 @@ You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filte
 
 use Phalcon\Filter\FilterLocatorFactory;
 
-$fabrica = new FilterLocatorFactory();
-$localizador = $fabrica->newInstance();
+$factory = new FilterLocatorFactory();
+$locator = $factory->newInstance();
 ```
 
 Calling`newInstance()` will return a [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
@@ -241,8 +299,6 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - `FILTER_UPPERWORDS` - sanitize using `ucwords`
 
 * * *
-
-<a name='logger'></a>
 
 ## Registrador
 
@@ -332,8 +388,6 @@ $logger->error('Algo falló');
 
 * * *
 
-<a name='models'></a>
-
 ## Modelos
 
 > Status: **changes required**
@@ -373,8 +427,6 @@ $criteria->limit(10, null);
 ```
 
 * * *
-
-<a name='router'></a>
 
 ## Router
 
