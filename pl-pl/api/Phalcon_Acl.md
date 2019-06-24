@@ -196,19 +196,19 @@ public function addInherit( string $roleName, mixed $roleToInherit ): bool;
 Do a role inherit from another existing role
 
 ```php
-public function addRole( mixed $role, mixed $accessInherits ): bool;
+public function addRole( mixed $role, mixed $accessInherits = null ): bool;
 ```
 
 Adds a role to the ACL list. Second parameter lets to inherit access data from other existing role
 
 ```php
-public function allow( string $roleName, string $componentName, mixed $access, mixed $func ): void;
+public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
 Allow access to a role on a component
 
 ```php
-public function deny( string $roleName, string $componentName, mixed $access, mixed $func ): void;
+public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
 Deny access to a role on a component
@@ -262,7 +262,7 @@ public function getRoles(): RoleInterface[];
 Return an array with every role registered in the list
 
 ```php
-public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters ): bool;
+public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
 ```
 
 Check whether a role is allowed to access an action from a component
@@ -511,7 +511,7 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 ```
 
 ```php
-public function addRole( mixed $role, mixed $accessInherits ): bool;
+public function addRole( mixed $role, mixed $accessInherits = null ): bool;
 ```
 
 Adds a role to the ACL list. Second parameter allows inheriting access data from other existing role
@@ -527,7 +527,7 @@ $acl->addRole("administrator", ["consultant", "consultant2"]);
 ```
 
 ```php
-public function allow( string $roleName, string $componentName, mixed $access, mixed $func ): void;
+public function allow( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
 Allow access to a role on a component. You can use `*` as wildcard
@@ -547,7 +547,7 @@ $acl->allow("*", "*", "browse");
 
 
 ```php
-public function deny( string $roleName, string $componentName, mixed $access, mixed $func ): void;
+public function deny( string $roleName, string $componentName, mixed $access, mixed $func = null ): void;
 ```
 
 Deny access to a role on a component. You can use `*` as wildcard
@@ -603,7 +603,7 @@ public function getRoles(): RoleInterface[];
 Return an array with every role registered in the list
 
 ```php
-public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters ): bool;
+public function isAllowed( mixed $roleName, mixed $componentName, string $access, array $parameters = null ): bool;
 ```
 
 Check whether a role is allowed to access an action from a component
@@ -664,7 +664,7 @@ private name;
 ## Metody
 
 ```php
-public function __construct( string $name, string $description ): void;
+public function __construct( string $name, string $description = null ): void;
 ```
 
 Phalcon\Acl\Component constructor
@@ -763,7 +763,7 @@ private description;
 ## Metody
 
 ```php
-public function __construct( string $name, string $description ): void;
+public function __construct( string $name, string $description = null ): void;
 ```
 
 Phalcon\Acl\Role constructor
