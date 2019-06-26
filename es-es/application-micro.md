@@ -354,7 +354,7 @@ We register the handlers:
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Gestor de usuarios
 $users = new MicroCollection();
 
 $users->setHandler(
@@ -371,7 +371,7 @@ $users->get('/add/{payload}
 $app->mount($users);
 
 
-// Orders handler
+// Gestor de ordenes
 $orders = new MicroCollection();
 
 $orders->setHandler(
@@ -387,7 +387,7 @@ $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
 
-// Products handler
+// Gestor de productos
 $products = new MicroCollection();
 
 $products->setHandler(
@@ -414,7 +414,7 @@ The above implementation changes if we want to use lazy loading as follows:
 
 use Phalcon\Mvc\Micro\Collection as MicroCollection;
 
-// Users handler
+// Gestor de usuarios
 $users = new MicroCollection();
 
 $users->setHandler(new UsersController(), true);
@@ -427,7 +427,7 @@ $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
 
-// Orders handler
+// Gestor de ordenes
 $orders = new MicroCollection();
 
 $orders->setHandler(new OrdersController(), true);
@@ -440,7 +440,7 @@ $orders->get('/add/{payload}', 'add');
 $app->mount($orders);
 
 
-// Products handler
+// Gestor de productos
 $products = new MicroCollection();
 
 $products->setHandler(new ProductsController(), true);
@@ -467,7 +467,7 @@ $app->notFound(
         $app->response->setStatusCode(404, 'Not Found');
         $app->response->sendHeaders();
 
-        $message = 'Nothing to see here. Move along....';
+        $message = 'Nada que ver aqui. Move along....';
         $app->response->setContent($message);
 
         $app->response->send();
