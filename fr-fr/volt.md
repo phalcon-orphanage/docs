@@ -637,8 +637,7 @@ Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: A nested switch de
 
 Will throw `Fatal error: Uncaught Phalcon\Mvc\View\Exception: Syntax error, unexpected token
 {%- raw -%}
-%}{% endraw %}
-in ... on line ...`
+%}{% endraw %} in ... on line ...`
 
 ### Loop Context
 
@@ -933,7 +932,6 @@ More examples:
 {% if external is type('boolean') %}
     {{ 'external is false or true' }}
 {% endif %}
-
 {% endraw %}
 ```
 
@@ -1010,6 +1008,7 @@ And receive optional parameters:
 {# Call the macro #}
 {{ '<p>' ~ my_input('name') ~ '</p>' }}
 {{ '<p>' ~ my_input('name', 'input-text') ~ '</p>' }}
+
 {% endraw %}
 ```
 
@@ -1032,7 +1031,6 @@ Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to u
     {{ submit_button('Send') }}
 
 {{ end_form() }}
-
 {% endraw %}
 ```
 
@@ -1052,6 +1050,7 @@ The following PHP is generated:
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
 {%- raw -%}
 {{ end_form() }}
+
 {% endraw %}
 ```
 
@@ -1245,8 +1244,7 @@ Extended templates can extend other templates. The following example illustrates
     <body>
         {% block content %}{% endblock %}
     </body>
-</html>
-{% endraw %}
+</html>{% endraw %}
 ```
 
 Template `layout.volt` extends `main.volt`
