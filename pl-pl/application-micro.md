@@ -369,7 +369,6 @@ $users->get('/add/{payload}
 $app->mount($users);
 
 
-
 // Orders handler
 $orders = new MicroCollection();
 
@@ -384,7 +383,6 @@ $orders->get('/get/{id}
 $orders->get('/add/{payload}', 'add');
 
 $app->mount($orders);
-
 
 
 // Products handler
@@ -427,7 +425,6 @@ $users->get('/add/{payload}', 'add');
 $app->mount($users);
 
 
-
 // Orders handler
 $orders = new MicroCollection();
 
@@ -439,7 +436,6 @@ $orders->get('/get/{id}', 'get');
 $orders->get('/add/{payload}', 'add');
 
 $app->mount($orders);
-
 
 
 // Products handler
@@ -467,10 +463,7 @@ Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_M
 $app->notFound(
     function () use ($app) {
         $app->response->setStatusCode(404, 'Not Found');
-
         $app->response->sendHeaders();
-
-
 
         $message = 'Nothing to see here. Move along....';
         $app->response->setContent($message);
@@ -795,7 +788,7 @@ $app->post(
 You can also use the array syntax to register services in the dependency injection container from the application object:
 
 ```php
-<br /><?php
+<?php
 
 use Phalcon\Mvc\Micro;
 use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
