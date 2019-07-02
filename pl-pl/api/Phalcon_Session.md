@@ -5,17 +5,17 @@ version: '4.0'
 title: 'Phalcon\Session'
 ---
 
-* [Phalcon\Session\Adapter\AbstractAdapter](#Session_Adapter_AbstractAdapter)
-* [Phalcon\Session\Adapter\Libmemcached](#Session_Adapter_Libmemcached)
-* [Phalcon\Session\Adapter\Noop](#Session_Adapter_Noop)
-* [Phalcon\Session\Adapter\Redis](#Session_Adapter_Redis)
-* [Phalcon\Session\Adapter\Stream](#Session_Adapter_Stream)
-* [Phalcon\Session\Bag](#Session_Bag)
-* [Phalcon\Session\Exception](#Session_Exception)
-* [Phalcon\Session\Manager](#Session_Manager)
-* [Phalcon\Session\ManagerInterface](#Session_ManagerInterface)
+* [Phalcon\Session\Adapter\AbstractAdapter](#session-adapter-abstractadapter)
+* [Phalcon\Session\Adapter\Libmemcached](#session-adapter-libmemcached)
+* [Phalcon\Session\Adapter\Noop](#session-adapter-noop)
+* [Phalcon\Session\Adapter\Redis](#session-adapter-redis)
+* [Phalcon\Session\Adapter\Stream](#session-adapter-stream)
+* [Phalcon\Session\Bag](#session-bag)
+* [Phalcon\Session\Exception](#session-exception)
+* [Phalcon\Session\Manager](#session-manager)
+* [Phalcon\Session\ManagerInterface](#session-managerinterface)
 
-<h1 id="Session_Adapter_AbstractAdapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
+<h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/abstractadapter.zep)
 
@@ -75,7 +75,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 Write
 
-<h1 id="Session_Adapter_Libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
+<h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
@@ -86,12 +86,12 @@ Phalcon\Session\Adapter\Libmemcached
 ## Metody
 
 ```php
-public function __construct( mixed $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] ): void;
 ```
 
 Constructor
 
-<h1 id="Session_Adapter_Noop">Class Phalcon\Session\Adapter\Noop</h1>
+<h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/noop.zep)
 
@@ -192,7 +192,7 @@ protected function getPrefixedName( mixed $name ): string;
 
 Helper method to get the name prefixed
 
-<h1 id="Session_Adapter_Redis">Class Phalcon\Session\Adapter\Redis</h1>
+<h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
@@ -203,12 +203,12 @@ Phalcon\Session\Adapter\Redis
 ## Metody
 
 ```php
-public function __construct( mixed $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] ): void;
 ```
 
 Constructor
 
-<h1 id="Session_Adapter_Stream">Class Phalcon\Session\Adapter\Stream</h1>
+<h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/stream.zep)
 
@@ -281,7 +281,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 //
 
-<h1 id="Session_Bag">Class Phalcon\Session\Bag</h1>
+<h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
 
@@ -351,12 +351,12 @@ public function set( string $element, mixed $value );
 Sets a value in the session bag
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
 
-<h1 id="Session_Exception">Class Phalcon\Session\Exception</h1>
+<h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
 
@@ -366,7 +366,7 @@ Phalcon\Session\Exception
 
 Exceptions thrown in Phalcon\Session will use this class
 
-<h1 id="Session_Manager">Class Phalcon\Session\Manager</h1>
+<h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
@@ -499,7 +499,7 @@ public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface
 Regenerates the session id using the handler.
 
 ```php
-public function registerHandler( mixed $handler ): bool;
+public function registerHandler( SessionHandlerInterface $handler ): bool;
 ```
 
 Registers a handler with the session
@@ -517,13 +517,13 @@ public function set( string $key, mixed $value ): void;
 Sets a session variable in an application context
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
 
 ```php
-public function setHandler( mixed $handler ): ManagerInterface;
+public function setHandler( SessionHandlerInterface $handler ): ManagerInterface;
 ```
 
 Set the handler for the session
@@ -564,7 +564,7 @@ public function status(): int;
 
 Returns the status of the current session.
 
-<h1 id="Session_ManagerInterface">Interface Phalcon\Session\ManagerInterface</h1>
+<h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/managerinterface.zep)
 
@@ -663,7 +663,7 @@ public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface
 Regenerates the session id using the handler.
 
 ```php
-public function registerHandler( mixed $handler ): bool;
+public function registerHandler( SessionHandlerInterface $handler ): bool;
 ```
 
 Registers a handler with the session
@@ -681,7 +681,7 @@ public function set( string $key, mixed $value ): void;
 Sets a session variable in an application context
 
 ```php
-public function setHandler( mixed $handler ): ManagerInterface;
+public function setHandler( SessionHandlerInterface $handler ): ManagerInterface;
 ```
 
 Set the handler for the session

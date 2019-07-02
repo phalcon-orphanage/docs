@@ -5,14 +5,14 @@ version: '4.0'
 title: 'Phalcon\Events'
 ---
 
-* [Phalcon\Events\Event](#Events_Event)
-* [Phalcon\Events\EventInterface](#Events_EventInterface)
-* [Phalcon\Events\EventsAwareInterface](#Events_EventsAwareInterface)
-* [Phalcon\Events\Exception](#Events_Exception)
-* [Phalcon\Events\Manager](#Events_Manager)
-* [Phalcon\Events\ManagerInterface](#Events_ManagerInterface)
+* [Phalcon\Events\Event](#events-event)
+* [Phalcon\Events\EventInterface](#events-eventinterface)
+* [Phalcon\Events\EventsAwareInterface](#events-eventsawareinterface)
+* [Phalcon\Events\Exception](#events-exception)
+* [Phalcon\Events\Manager](#events-manager)
+* [Phalcon\Events\ManagerInterface](#events-managerinterface)
 
-<h1 id="Events_Event">Class Phalcon\Events\Event</h1>
+<h1 id="events-event">Class Phalcon\Events\Event</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
@@ -126,7 +126,7 @@ if ($event->isCancelable()) {
 }
 ```
 
-<h1 id="Events_EventInterface">Interface Phalcon\Events\EventInterface</h1>
+<h1 id="events-eventinterface">Interface Phalcon\Events\EventInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventinterface.zep)
 
@@ -180,7 +180,7 @@ public function stop(): EventInterface;
 
 Stops the event preventing propagation
 
-<h1 id="Events_EventsAwareInterface">Interface Phalcon\Events\EventsAwareInterface</h1>
+<h1 id="events-eventsawareinterface">Interface Phalcon\Events\EventsAwareInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/eventsawareinterface.zep)
 
@@ -199,12 +199,12 @@ public function getEventsManager(): ManagerInterface;
 Returns the internal event manager
 
 ```php
-public function setEventsManager( mixed $eventsManager ): void;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the events manager
 
-<h1 id="Events_Exception">Class Phalcon\Events\Exception</h1>
+<h1 id="events-exception">Class Phalcon\Events\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/exception.zep)
 
@@ -214,11 +214,11 @@ Phalcon\Events\Exception
 
 Exceptions thrown in Phalcon\Events will use this class
 
-<h1 id="Events_Manager">Class Phalcon\Events\Manager</h1>
+<h1 id="events-manager">Class Phalcon\Events\Manager</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
 
-| Namespace | Phalcon\Events | | Uses | Phalcon\Events\Event, SplPriorityQueue | | Implements | ManagerInterface |
+| Namespace | Phalcon\Events | | Uses | Closure, Phalcon\Events\Event, SplPriorityQueue | | Implements | ManagerInterface |
 
 Phalcon\Events\Manager
 
@@ -306,7 +306,7 @@ $eventsManager->fire("db", $connection);
 @param object source @param mixed data @return mixed
 
 ```php
-final public function fireQueue( mixed $queue, mixed $event );
+final public function fireQueue( SplPriorityQueue $queue, EventInterface $event );
 ```
 
 Internal handler to call a queue of events
@@ -337,7 +337,7 @@ public function isCollecting(): bool;
 
 Check if the events manager is collecting all all the responses returned by every registered listener in a single fire
 
-<h1 id="Events_ManagerInterface">Interface Phalcon\Events\ManagerInterface</h1>
+<h1 id="events-managerinterface">Interface Phalcon\Events\ManagerInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/managerinterface.zep)
 

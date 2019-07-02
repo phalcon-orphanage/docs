@@ -2,13 +2,13 @@
 layout: default
 language: 'de-de'
 version: '4.0'
-title: 'Phalcon\Loader'
+title: 'Phalcon\Loader.zep'
 ---
 
-* [Phalcon\Loader](#Loader)
-* [Phalcon\Loader\Exception](#Loader_Exception)
+* [Phalcon\Loader](#loader)
+* [Phalcon\Loader\Exception](#loader-exception)
 
-<h1 id="Loader">Class Phalcon\Loader</h1>
+<h1 id="loader">Class Phalcon\Loader</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
@@ -180,7 +180,7 @@ public function registerNamespaces( array $namespaces, bool $merge = bool ): Loa
 Register namespaces and their related directories
 
 ```php
-public function setEventsManager( mixed $eventsManager ): void;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the events manager
@@ -221,7 +221,7 @@ protected function prepareNamespace( array $namespaceName ): array;
 
 //
 
-<h1 id="Loader_Exception">Class Phalcon\Loader\Exception</h1>
+<h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
 

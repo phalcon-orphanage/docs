@@ -5,17 +5,17 @@ version: '4.0'
 title: 'Phalcon\Flash'
 ---
 
-* [Phalcon\Flash](#Flash)
-* [Phalcon\Flash\Direct](#Flash_Direct)
-* [Phalcon\Flash\Exception](#Flash_Exception)
-* [Phalcon\Flash\Session](#Flash_Session)
-* [Phalcon\FlashInterface](#FlashInterface)
+* [Phalcon\Flash\AbstractFlash](#flash-abstractflash)
+* [Phalcon\Flash\Direct](#flash-direct)
+* [Phalcon\Flash\Exception](#flash-exception)
+* [Phalcon\Flash\FlashInterface](#flash-flashinterface)
+* [Phalcon\Flash\Session](#flash-session)
 
-<h1 id="Flash">Abstract Class Phalcon\Flash</h1>
+<h1 id="flash-abstractflash">Abstract Class Phalcon\Flash\AbstractFlash</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/abstractflash.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Flash\Exception, Phalcon\Di\InjectionAwareInterface | | Implements | FlashInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception | | Implements | FlashInterface, InjectionAwareInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -158,13 +158,13 @@ public function setCustomTemplate( string $customTemplate ): FlashInterface;
 Set an custom template for showing the messages
 
 ```php
-public function setDI( mixed $container ): Flash;
+public function setDI( DiInterface $container ): FlashInterface;
 ```
 
 Sets the dependency injector
 
 ```php
-public function setEscaperService( mixed $escaperService ): Flash;
+public function setEscaperService( EscaperInterface $escaperService ): FlashInterface;
 ```
 
 Sets the Escaper Service
@@ -195,11 +195,11 @@ Shows a HTML warning message
 $flash->warning("Hey, this is important");
 ```
 
-<h1 id="Flash_Direct">Class Phalcon\Flash\Direct</h1>
+<h1 id="flash-direct">Class Phalcon\Flash\Direct</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash | | Extends | FlashBase |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash\AbstractFlash | | Extends | AbstractFlash |
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
@@ -217,7 +217,7 @@ public function output( bool $remove = bool ): void;
 
 Prints the messages accumulated in the flasher
 
-<h1 id="Flash_Exception">Class Phalcon\Flash\Exception</h1>
+<h1 id="flash-exception">Class Phalcon\Flash\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/exception.zep)
 
@@ -225,11 +225,53 @@ Prints the messages accumulated in the flasher
 
 Exceptions thrown in Phalcon\Flash will use this class
 
-<h1 id="Flash_Session">Class Phalcon\Flash\Session</h1>
+<h1 id="flash-flashinterface">Interface Phalcon\Flash\FlashInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/flashinterface.zep)
+
+| Namespace | Phalcon\Flash |
+
+Phalcon\FlashInterface
+
+Interface for Phalcon\Flash
+
+## Methods
+
+```php
+public function error( string $message ): string;
+```
+
+Shows a HTML error message
+
+```php
+public function message( string $type, string $message );
+```
+
+Outputs a message
+
+```php
+public function notice( string $message ): string;
+```
+
+Shows a HTML notice/information message
+
+```php
+public function success( string $message ): string;
+```
+
+Shows a HTML success message
+
+```php
+public function warning( string $message ): string;
+```
+
+Shows a HTML warning message
+
+<h1 id="flash-session">Class Phalcon\Flash\Session</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash, Phalcon\DiInterface, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | FlashBase |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\DiInterface, Phalcon\Flash\AbstractFlash, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
@@ -276,45 +318,3 @@ protected function setSessionMessages( array $messages ): array;
 ```
 
 Stores the messages in session
-
-<h1 id="FlashInterface">Interface Phalcon\FlashInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flashinterface.zep)
-
-| Namespace | Phalcon |
-
-Phalcon\FlashInterface
-
-Interface for Phalcon\Flash
-
-## Methods
-
-```php
-public function error( string $message ): string;
-```
-
-Shows a HTML error message
-
-```php
-public function message( string $type, string $message );
-```
-
-Outputs a message
-
-```php
-public function notice( string $message ): string;
-```
-
-Shows a HTML notice/information message
-
-```php
-public function success( string $message ): string;
-```
-
-Shows a HTML success message
-
-```php
-public function warning( string $message ): string;
-```
-
-Shows a HTML warning message

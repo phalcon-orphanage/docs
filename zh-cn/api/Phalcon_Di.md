@@ -2,23 +2,23 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
-title: 'Phalcon\Di'
+title: 'Phalcon\Di.zep'
 ---
 
-* [Phalcon\Di](#Di)
-* [Phalcon\Di\Exception](#Di_Exception)
-* [Phalcon\Di\Exception\ServiceResolutionException](#Di_Exception_ServiceResolutionException)
-* [Phalcon\Di\FactoryDefault](#Di_FactoryDefault)
-* [Phalcon\Di\FactoryDefault\Cli](#Di_FactoryDefault_Cli)
-* [Phalcon\Di\Injectable](#Di_Injectable)
-* [Phalcon\Di\InjectionAwareInterface](#Di_InjectionAwareInterface)
-* [Phalcon\Di\Service](#Di_Service)
-* [Phalcon\Di\Service\Builder](#Di_Service_Builder)
-* [Phalcon\Di\ServiceInterface](#Di_ServiceInterface)
-* [Phalcon\Di\ServiceProviderInterface](#Di_ServiceProviderInterface)
-* [Phalcon\DiInterface](#DiInterface)
+* [Phalcon\Di](#di)
+* [Phalcon\Di\Exception](#di-exception)
+* [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
+* [Phalcon\Di\FactoryDefault](#di-factorydefault)
+* [Phalcon\Di\FactoryDefault\Cli](#di-factorydefault-cli)
+* [Phalcon\Di\Injectable](#di-injectable)
+* [Phalcon\Di\InjectionAwareInterface](#di-injectionawareinterface)
+* [Phalcon\Di\Service](#di-service)
+* [Phalcon\Di\Service\Builder](#di-service-builder)
+* [Phalcon\Di\ServiceInterface](#di-serviceinterface)
+* [Phalcon\Di\ServiceProviderInterface](#di-serviceproviderinterface)
+* [Phalcon\DiInterface](#diinterface)
 
-<h1 id="Di">Class Phalcon\Di</h1>
+<h1 id="di">Class Phalcon\Di</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
@@ -246,7 +246,7 @@ public function offsetUnset( mixed $name ): void;
 Removes a service from the services container using the array syntax
 
 ```php
-public function register( mixed $provider ): void;
+public function register( ServiceProviderInterface $provider ): void;
 ```
 
 Registers a service provider.
@@ -282,13 +282,13 @@ public function set( string $name, mixed $definition, bool $shared = bool ): Ser
 Registers a service in the services container
 
 ```php
-public function setInternalEventsManager( mixed $eventsManager );
+public function setInternalEventsManager( ManagerInterface $eventsManager );
 ```
 
 Sets the internal event manager
 
 ```php
-public function setRaw( string $name, mixed $rawDefinition ): ServiceInterface;
+public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
 Sets a service using a raw Phalcon\Di\Service definition
@@ -300,12 +300,12 @@ public function setShared( string $name, mixed $definition ): ServiceInterface;
 Registers an "always shared" service in the services container
 
 ```php
-protected function loadFromConfig( mixed $config ): void;
+protected function loadFromConfig( Config $config ): void;
 ```
 
 Loads services from a Config object.
 
-<h1 id="Di_Exception">Class Phalcon\Di\Exception</h1>
+<h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception.zep)
 
@@ -313,7 +313,7 @@ Loads services from a Config object.
 
 Exceptions thrown in Phalcon\Di will use this class
 
-<h1 id="Di_Exception_ServiceResolutionException">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
+<h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
 
@@ -321,7 +321,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 Phalcon\Di\Exception\ServiceResolutionException
 
-<h1 id="Di_FactoryDefault">Class Phalcon\Di\FactoryDefault</h1>
+<h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
@@ -337,7 +337,7 @@ public function __construct(): void;
 
 Phalcon\Di\FactoryDefault constructor
 
-<h1 id="Di_FactoryDefault_Cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
+<h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
 
@@ -355,7 +355,7 @@ public function __construct(): void;
 
 Phalcon\Di\FactoryDefault\Cli constructor
 
-<h1 id="Di_Injectable">Abstract Class Phalcon\Di\Injectable</h1>
+<h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
@@ -363,7 +363,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-@property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router @property \Phalcon\Url|\Phalcon\UrlInterface $url @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies @property \Phalcon\Filter\FilterLocator $filter @property \Phalcon\Flash\Direct $flash @property \Phalcon\Flash\Session $flashSession @property \Phalcon\Session\ManagerInterface $session @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager @property \Phalcon\Db\AdapterInterface $db @property \Phalcon\Security $security @property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt @property \Phalcon\Tag $tag @property \Phalcon\Escaper|\Phalcon\EscaperInterface $escaper @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager @property \Phalcon\Assets\Manager $assets @property \Phalcon\Di|\Phalcon\DiInterface $di @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
+@property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router @property \Phalcon\Url|\Phalcon\UrlInterface $url @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies @property \Phalcon\Filter\FilterLocator $filter @property \Phalcon\Flash\Direct $flash @property \Phalcon\Flash\Session $flashSession @property \Phalcon\Session\ManagerInterface $session @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager @property \Phalcon\Db\Adapter\AdapterInterface $db @property \Phalcon\Security\Security $security @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt @property \Phalcon\Tag $tag @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager @property \Phalcon\Assets\Manager $assets @property \Phalcon\Di|\Phalcon\DiInterface $di @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
 
 ## Properties
 
@@ -405,18 +405,18 @@ public function getEventsManager(): ManagerInterface;
 返回内部事件管理器
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the dependency injector
 
 ```php
-public function setEventsManager( mixed $eventsManager ): void;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the event manager
 
-<h1 id="Di_InjectionAwareInterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
+<h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
@@ -433,12 +433,12 @@ public function getDI(): DiInterface;
 Returns the internal dependency injector
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the dependency injector
 
-<h1 id="Di_Service">Class Phalcon\Di\Service</h1>
+<h1 id="di-service">Class Phalcon\Di\Service</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
@@ -485,12 +485,6 @@ final public function __construct( mixed $definition, bool $shared = bool ): voi
 Phalcon\Di\Service
 
 ```php
-public static function __set_state( array $attributes ): ServiceInterface;
-```
-
-Restore the internal state of a service
-
-```php
 public function getDefinition(): mixed;
 ```
 
@@ -517,7 +511,7 @@ public function isShared(): bool;
 Check whether the service is shared or not
 
 ```php
-public function resolve( mixed $parameters = null, mixed $container = null ): mixed;
+public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
 Resolves the service
@@ -548,7 +542,7 @@ public function setSharedInstance( mixed $sharedInstance ): void;
 
 Sets/Resets the shared instance related to the service
 
-<h1 id="Di_Service_Builder">Class Phalcon\Di\Service\Builder</h1>
+<h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
@@ -561,14 +555,14 @@ This class builds instances based on complex definitions
 ## Methods
 
 ```php
-public function build( mixed $container, array $definition, mixed $parameters = null );
+public function build( DiInterface $container, array $definition, mixed $parameters = null );
 ```
 
 Builds a service using a complex service definition
 
 @param array parameters @return mixed
 
-<h1 id="Di_ServiceInterface">Interface Phalcon\Di\ServiceInterface</h1>
+<h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
@@ -577,12 +571,6 @@ Builds a service using a complex service definition
 Represents a service in the services container
 
 ## Methods
-
-```php
-public static function __set_state( array $attributes ): ServiceInterface;
-```
-
-Restore the internal state of a service
 
 ```php
 public function getDefinition(): mixed;
@@ -611,7 +599,7 @@ public function isShared(): bool;
 Check whether the service is shared or not
 
 ```php
-public function resolve( mixed $parameters = null, mixed $container = null ): mixed;
+public function resolve( mixed $parameters = null, DiInterface $container = null ): mixed;
 ```
 
 Resolves the service
@@ -636,7 +624,7 @@ public function setShared( bool $shared );
 
 Sets if the service is shared or not
 
-<h1 id="Di_ServiceProviderInterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
+<h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
@@ -667,16 +655,16 @@ class SomeServiceProvider implements ServiceProviderInterface
 ## Methods
 
 ```php
-public function register( mixed $di ): void;
+public function register( DiInterface $di ): void;
 ```
 
 Registers a service provider.
 
-<h1 id="DiInterface">Interface Phalcon\DiInterface</h1>
+<h1 id="diinterface">Interface Phalcon\DiInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\DiInterface, Phalcon\Di\ServiceInterface | | Extends | Array |
+| Namespace | Phalcon | | Uses | ArrayAccess, Phalcon\DiInterface, Phalcon\Di\ServiceInterface | | Extends | ArrayAccess |
 
 Interface for Phalcon\Di
 
@@ -739,7 +727,7 @@ public function set( string $name, mixed $definition, bool $shared = bool ): Ser
 Registers a service in the services container
 
 ```php
-public function setRaw( string $name, mixed $rawDefinition ): ServiceInterface;
+public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
 Sets a service using a raw Phalcon\Di\Service definition

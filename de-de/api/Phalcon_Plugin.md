@@ -2,35 +2,15 @@
 layout: default
 language: 'de-de'
 version: '4.0'
-title: 'Phalcon\Plugin'
+title: 'Phalcon\Plugin.zep'
 ---
 
-# Class **Phalcon\Plugin**
+* [Phalcon\Plugin](#plugin)
 
-*extends* abstract class [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
+<h1 id="plugin">Abstract Class Phalcon\Plugin</h1>
 
-*implements* [Phalcon\Events\EventsAwareInterface](Phalcon_Events_EventsAwareInterface), [Phalcon\Di\InjectionAwareInterface](Phalcon_Di_InjectionAwareInterface)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/plugin.zep)
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/user/plugin.zep)
+| Namespace | Phalcon | | Uses | Phalcon\Di\Injectable | | Extends | Injectable |
 
-## Methods
-
-public **setDI** ([Phalcon\DiInterface](Phalcon_DiInterface) $dependencyInjector) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Sets the dependency injector
-
-public **getDI** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Returns the internal dependency injector
-
-public **setEventsManager** ([Phalcon\Events\ManagerInterface](Phalcon_Events_ManagerInterface) $eventsManager) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Sets the event manager
-
-public **getEventsManager** () inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Returns the internal event manager
-
-public **__get** (*mixed* $propertyName) inherited from [Phalcon\Di\Injectable](Phalcon_Di_Injectable)
-
-Magic method __get
+This class can be used to provide user plugins an easy access to services in the application

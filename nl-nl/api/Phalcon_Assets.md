@@ -5,22 +5,22 @@ version: '4.0'
 title: 'Phalcon\Assets'
 ---
 
-* [Phalcon\Assets\Asset](#Assets_Asset)
-* [Phalcon\Assets\Asset\Css](#Assets_Asset_Css)
-* [Phalcon\Assets\Asset\Js](#Assets_Asset_Js)
-* [Phalcon\Assets\AssetInterface](#Assets_AssetInterface)
-* [Phalcon\Assets\Collection](#Assets_Collection)
-* [Phalcon\Assets\Exception](#Assets_Exception)
-* [Phalcon\Assets\FilterInterface](#Assets_FilterInterface)
-* [Phalcon\Assets\Filters\CssMin](#Assets_Filters_CssMin)
-* [Phalcon\Assets\Filters\JsMin](#Assets_Filters_JsMin)
-* [Phalcon\Assets\Filters\None](#Assets_Filters_None)
-* [Phalcon\Assets\Inline](#Assets_Inline)
-* [Phalcon\Assets\Inline\Css](#Assets_Inline_Css)
-* [Phalcon\Assets\Inline\Js](#Assets_Inline_Js)
-* [Phalcon\Assets\Manager](#Assets_Manager)
+* [Phalcon\Assets\Asset](#assets-asset)
+* [Phalcon\Assets\Asset\Css](#assets-asset-css)
+* [Phalcon\Assets\Asset\Js](#assets-asset-js)
+* [Phalcon\Assets\AssetInterface](#assets-assetinterface)
+* [Phalcon\Assets\Collection](#assets-collection)
+* [Phalcon\Assets\Exception](#assets-exception)
+* [Phalcon\Assets\FilterInterface](#assets-filterinterface)
+* [Phalcon\Assets\Filters\CssMin](#assets-filters-cssmin)
+* [Phalcon\Assets\Filters\JsMin](#assets-filters-jsmin)
+* [Phalcon\Assets\Filters\None](#assets-filters-none)
+* [Phalcon\Assets\Inline](#assets-inline)
+* [Phalcon\Assets\Inline\Css](#assets-inline-css)
+* [Phalcon\Assets\Inline\Js](#assets-inline-js)
+* [Phalcon\Assets\Manager](#assets-manager)
 
-<h1 id="Assets_Asset">Class Phalcon\Assets\Asset</h1>
+<h1 id="assets-asset">Class Phalcon\Assets\Asset</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset.zep)
 
@@ -224,7 +224,7 @@ Sets the asset's type
 public function setVersion(     string $version )
 ```
 
-<h1 id="Assets_Asset_Css">Class Phalcon\Assets\Asset\Css</h1>
+<h1 id="assets-asset-css">Class Phalcon\Assets\Asset\Css</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset/css.zep)
 
@@ -240,7 +240,7 @@ public function __construct( string $path, bool $local = bool, bool $filter = bo
 
 Phalcon\Assets\Asset\Css constructor
 
-<h1 id="Assets_Asset_Js">Class Phalcon\Assets\Asset\Js</h1>
+<h1 id="assets-asset-js">Class Phalcon\Assets\Asset\Js</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/asset/js.zep)
 
@@ -256,7 +256,7 @@ public function __construct( string $path, bool $local = bool, bool $filter = bo
 
 Phalcon\Assets\Asset\Js constructor
 
-<h1 id="Assets_AssetInterface">Interface Phalcon\Assets\AssetInterface</h1>
+<h1 id="assets-assetinterface">Interface Phalcon\Assets\AssetInterface</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/assetinterface.zep)
 
@@ -308,11 +308,11 @@ public function setType( string $type ): AssetInterface;
 
 Sets the asset's type.
 
-<h1 id="Assets_Collection">Class Phalcon\Assets\Collection</h1>
+<h1 id="assets-collection">Class Phalcon\Assets\Collection</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-| Namespace | Phalcon\Assets | | Uses | Phalcon\Assets\Asset, Phalcon\Assets\FilterInterface, Phalcon\Assets\Inline, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css | | Implements | \Countable, \Iterator |
+| Namespace | Phalcon\Assets | | Uses | Countable, Iterator, Phalcon\Assets\Asset, Phalcon\Assets\FilterInterface, Phalcon\Assets\Inline, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css | | Implements | Countable, Iterator |
 
 Represents a collection of assets
 
@@ -407,7 +407,7 @@ public function __construct(): void;
 Phalcon\Assets\Collection constructor
 
 ```php
-public function add( mixed $asset ): Collection;
+public function add( AssetInterface $asset ): Collection;
 ```
 
 Adds a asset to the collection
@@ -419,13 +419,13 @@ public function addCss( string $path, mixed $local = null, bool $filter = bool, 
 Adds a CSS asset to the collection
 
 ```php
-public function addFilter( mixed $filter ): Collection;
+public function addFilter( FilterInterface $filter ): Collection;
 ```
 
 Adds a filter to the collection
 
 ```php
-public function addInline( mixed $code ): Collection;
+public function addInline( Inline $code ): Collection;
 ```
 
 Adds an inline code to the collection
@@ -521,7 +521,7 @@ public function getVersion():   string
 ```
 
 ```php
-public function has( mixed $asset ): bool;
+public function has( AssetInterface $asset ): bool;
 ```
 
 Checks this the asset is added to the collection.
@@ -631,12 +631,12 @@ public function valid(): bool;
 Check if the current element in the iterator is valid
 
 ```php
-final protected function addAsset( mixed $asset ): bool;
+final protected function addAsset( AssetInterface $asset ): bool;
 ```
 
 Adds a asset or inline-code to the collection
 
-<h1 id="Assets_Exception">Class Phalcon\Assets\Exception</h1>
+<h1 id="assets-exception">Class Phalcon\Assets\Exception</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/exception.zep)
 
@@ -644,7 +644,7 @@ Adds a asset or inline-code to the collection
 
 Exceptions thrown in Phalcon\Assets will use this class
 
-<h1 id="Assets_FilterInterface">Interface Phalcon\Assets\FilterInterface</h1>
+<h1 id="assets-filterinterface">Interface Phalcon\Assets\FilterInterface</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filterinterface.zep)
 
@@ -660,7 +660,7 @@ public function filter( string $content ): string;
 
 Filters the content returning a string with the filtered content
 
-<h1 id="Assets_Filters_CssMin">Class Phalcon\Assets\Filters\Cssmin</h1>
+<h1 id="assets-filters-cssmin">Class Phalcon\Assets\Filters\Cssmin</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/cssmin.zep)
 
@@ -676,7 +676,7 @@ public function filter( string $content ): string;
 
 Filters the content using CSSMIN NOTE: This functionality is not currently available
 
-<h1 id="Assets_Filters_JsMin">Class Phalcon\Assets\Filters\Jsmin</h1>
+<h1 id="assets-filters-jsmin">Class Phalcon\Assets\Filters\Jsmin</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/jsmin.zep)
 
@@ -692,7 +692,7 @@ public function filter( string $content ): string;
 
 Filters the content using JSMIN NOTE: This functionality is not currently available
 
-<h1 id="Assets_Filters_None">Class Phalcon\Assets\Filters\None</h1>
+<h1 id="assets-filters-none">Class Phalcon\Assets\Filters\None</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/filters/none.zep)
 
@@ -708,7 +708,7 @@ public function filter( string $content ): string;
 
 Returns the content as is
 
-<h1 id="Assets_Inline">Class Phalcon\Assets\Inline</h1>
+<h1 id="assets-inline">Class Phalcon\Assets\Inline</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline.zep)
 
@@ -793,7 +793,7 @@ public function setType( string $type ): AssetInterface;
 
 Sets the inline's type
 
-<h1 id="Assets_Inline_Css">Class Phalcon\Assets\Inline\Css</h1>
+<h1 id="assets-inline-css">Class Phalcon\Assets\Inline\Css</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/css.zep)
 
@@ -809,7 +809,7 @@ public function __construct( string $content, bool $filter = bool, mixed $attrib
 
 Phalcon\Assets\Inline\Css constructor
 
-<h1 id="Assets_Inline_Js">Class Phalcon\Assets\Inline\Js</h1>
+<h1 id="assets-inline-js">Class Phalcon\Assets\Inline\Js</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/inline/js.zep)
 
@@ -825,7 +825,7 @@ public function __construct( string $content, bool $filter = bool, mixed $attrib
 
 Phalcon\Assets\Inline\Js constructor
 
-<h1 id="Assets_Manager">Class Phalcon\Assets\Manager</h1>
+<h1 id="assets-manager">Class Phalcon\Assets\Manager</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
@@ -868,7 +868,7 @@ public function __construct( array $options = [] ): void;
 Phalcon\Assets\Manager constructor
 
 ```php
-public function addAsset( mixed $asset ): Manager;
+public function addAsset( Asset $asset ): Manager;
 ```
 
 Adds a raw asset to the manager
@@ -880,7 +880,7 @@ $assets->addAsset(
 ```
 
 ```php
-public function addAssetByType( string $type, mixed $asset ): Manager;
+public function addAssetByType( string $type, Asset $asset ): Manager;
 ```
 
 Adds a asset by its type
@@ -904,13 +904,13 @@ Adds a Css asset to the 'css' collection
    ```
 
 ```php
-public function addInlineCode( mixed $code ): Manager;
+public function addInlineCode( Inline $code ): Manager;
 ```
 
 Adds a raw inline code to the manager
 
 ```php
-public function addInlineCodeByType( string $type, mixed $code ): Manager;
+public function addInlineCodeByType( string $type, Inline $code ): Manager;
 ```
 
 Adds an inline code by its type
@@ -1004,7 +1004,7 @@ public function getOptions(): array;
 Returns the manager options
 
 ```php
-public function output( mixed $collection, mixed $callback, mixed $type ): string | null;
+public function output( Collection $collection, mixed $callback, mixed $type ): string | null;
 ```
 
 Traverses a collection calling the callback to generate its HTML
@@ -1018,7 +1018,7 @@ public function outputCss( string $collectionName = null ): string;
 Prints the HTML for CSS assets
 
 ```php
-public function outputInline( mixed $collection, mixed $type ): string;
+public function outputInline( Collection $collection, mixed $type ): string;
 ```
 
 Traverses a collection and generate its HTML
@@ -1044,7 +1044,7 @@ public function outputJs( string $collectionName = null ): string;
 Prints the HTML for JS assets
 
 ```php
-public function set( string $id, mixed $collection ): Manager;
+public function set( string $id, Collection $collection ): Manager;
 ```
 
 Sets a collection in the Assets Manager
@@ -1054,7 +1054,7 @@ $assets->set("js", $collection);
 ```
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the dependency injector

@@ -5,12 +5,12 @@ version: '4.0'
 title: 'Phalcon\Messages'
 ---
 
-* [Phalcon\Messages\Exception](#Messages_Exception)
-* [Phalcon\Messages\Message](#Messages_Message)
-* [Phalcon\Messages\MessageInterface](#Messages_MessageInterface)
-* [Phalcon\Messages\Messages](#Messages_Messages)
+* [Phalcon\Messages\Exception](#messages-exception)
+* [Phalcon\Messages\Message](#messages-message)
+* [Phalcon\Messages\MessageInterface](#messages-messageinterface)
+* [Phalcon\Messages\Messages](#messages-messages)
 
-<h1 id="Messages_Exception">Class Phalcon\Messages\Exception</h1>
+<h1 id="messages-exception">Class Phalcon\Messages\Exception</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/exception.zep)
 
@@ -20,11 +20,11 @@ Phalcon\Validation\Exception
 
 Exceptions thrown in Phalcon\Messages\* classes will use this class
 
-<h1 id="Messages_Message">Class Phalcon\Messages\Message</h1>
+<h1 id="messages-message">Class Phalcon\Messages\Message</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
 
-| Namespace | Phalcon\Messages | | Uses | Phalcon\Messages\MessageInterface | | Implements | MessageInterface, \JsonSerializable |
+| Namespace | Phalcon\Messages | | Uses | JsonSerializable, Phalcon\Messages\MessageInterface | | Implements | MessageInterface, JsonSerializable |
 
 Phalcon\Messages\Message
 
@@ -67,12 +67,6 @@ public function __construct( string $message, mixed $field = string, string $typ
 ```
 
 Phalcon\Messages\Message constructor
-
-```php
-public static function __set_state( array $message ): MessageInterface;
-```
-
-Magic __set_state helps to re-build messages variable exporting
 
 ```php
 public function __toString(): string;
@@ -136,7 +130,7 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
-<h1 id="Messages_MessageInterface">Interface Phalcon\Messages\MessageInterface</h1>
+<h1 id="messages-messageinterface">Interface Phalcon\Messages\MessageInterface</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messageinterface.zep)
 
@@ -218,11 +212,11 @@ public function setType( string $type ): MessageInterface;
 
 Sets message type
 
-<h1 id="Messages_Messages">Class Phalcon\Messages\Messages</h1>
+<h1 id="messages-messages">Class Phalcon\Messages\Messages</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messages.zep)
 
-| Namespace | Phalcon\Messages | | Uses | Phalcon\Messages\Message, Phalcon\Messages\Exception, Phalcon\Messages\MessageInterface | | Implements | \ArrayAccess, \Countable, \Iterator, \JsonSerializable |
+| Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable, Phalcon\Messages\Message, Phalcon\Messages\Exception, Phalcon\Messages\MessageInterface | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 
 Represents a collection of messages
 
@@ -250,7 +244,7 @@ public function __construct( array $messages = [] ): void;
 Phalcon\Messages\Messages constructor
 
 ```php
-public function appendMessage( mixed $message );
+public function appendMessage( MessageInterface $message );
 ```
 
 Appends a message to the collection

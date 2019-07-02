@@ -5,16 +5,16 @@ version: '4.0'
 title: 'Phalcon\Config'
 ---
 
-* [Phalcon\Config\Adapter\Grouped](#Config_Adapter_Grouped)
-* [Phalcon\Config\Adapter\Ini](#Config_Adapter_Ini)
-* [Phalcon\Config\Adapter\Json](#Config_Adapter_Json)
-* [Phalcon\Config\Adapter\Php](#Config_Adapter_Php)
-* [Phalcon\Config\Adapter\Yaml](#Config_Adapter_Yaml)
-* [Phalcon\Config\Config](#Config_Config)
-* [Phalcon\Config\ConfigFactory](#Config_ConfigFactory)
-* [Phalcon\Config\Exception](#Config_Exception)
+* [Phalcon\Config\Adapter\Grouped](#config-adapter-grouped)
+* [Phalcon\Config\Adapter\Ini](#config-adapter-ini)
+* [Phalcon\Config\Adapter\Json](#config-adapter-json)
+* [Phalcon\Config\Adapter\Php](#config-adapter-php)
+* [Phalcon\Config\Adapter\Yaml](#config-adapter-yaml)
+* [Phalcon\Config\Config](#config-config)
+* [Phalcon\Config\ConfigFactory](#config-configfactory)
+* [Phalcon\Config\Exception](#config-exception)
 
-<h1 id="Config_Adapter_Grouped">Class Phalcon\Config\Adapter\Grouped</h1>
+<h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
 
@@ -78,7 +78,7 @@ public function __construct( array $arrayConfig, string $defaultAdapter = string
 
 Phalcon\Config\Adapter\Grouped constructor
 
-<h1 id="Config_Adapter_Ini">Class Phalcon\Config\Adapter\Ini</h1>
+<h1 id="config-adapter-ini">Class Phalcon\Config\Adapter\Ini</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
 
@@ -142,7 +142,7 @@ protected function parseIniString( string $path, mixed $value ): array;
 
 Build multidimensional array from string
 
-<h1 id="Config_Adapter_Json">Class Phalcon\Config\Adapter\Json</h1>
+<h1 id="config-adapter-json">Class Phalcon\Config\Adapter\Json</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
 
@@ -175,7 +175,7 @@ public function __construct( string $filePath ): void;
 
 Phalcon\Config\Adapter\Json constructor
 
-<h1 id="Config_Adapter_Php">Class Phalcon\Config\Adapter\Php</h1>
+<h1 id="config-adapter-php">Class Phalcon\Config\Adapter\Php</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
 
@@ -223,7 +223,7 @@ public function __construct( string $filePath ): void;
 
 Phalcon\Config\Adapter\Php constructor
 
-<h1 id="Config_Adapter_Yaml">Class Phalcon\Config\Adapter\Yaml</h1>
+<h1 id="config-adapter-yaml">Class Phalcon\Config\Adapter\Yaml</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
 
@@ -273,7 +273,7 @@ public function __construct( string $filePath, array $callbacks = null ): void;
 
 Phalcon\Config\Adapter\Yaml constructor
 
-<h1 id="Config_Config">Class Phalcon\Config\Config</h1>
+<h1 id="config-config">Class Phalcon\Config\Config</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/config.zep)
 
@@ -384,7 +384,7 @@ protected function setData( mixed $element, mixed $value ): void;
 
 Sets the collection data
 
-<h1 id="Config_ConfigFactory">Class Phalcon\Config\ConfigFactory</h1>
+<h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/configfactory.zep)
 
@@ -429,7 +429,7 @@ protected function getAdapters(): array;
 
 Returns the adapters for the factory
 
-<h1 id="Config_Exception">Class Phalcon\Config\Exception</h1>
+<h1 id="config-exception">Class Phalcon\Config\Exception</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/exception.zep)
 

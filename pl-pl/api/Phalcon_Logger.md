@@ -5,23 +5,23 @@ version: '4.0'
 title: 'Phalcon\Logger'
 ---
 
-* [Phalcon\Logger\Adapter\AbstractAdapter](#Logger_Adapter_AbstractAdapter)
-* [Phalcon\Logger\Adapter\AdapterInterface](#Logger_Adapter_AdapterInterface)
-* [Phalcon\Logger\Adapter\Noop](#Logger_Adapter_Noop)
-* [Phalcon\Logger\Adapter\Stream](#Logger_Adapter_Stream)
-* [Phalcon\Logger\Adapter\Syslog](#Logger_Adapter_Syslog)
-* [Phalcon\Logger\AdapterFactory](#Logger_AdapterFactory)
-* [Phalcon\Logger\Exception](#Logger_Exception)
-* [Phalcon\Logger\Formatter\AbstractFormatter](#Logger_Formatter_AbstractFormatter)
-* [Phalcon\Logger\Formatter\FormatterInterface](#Logger_Formatter_FormatterInterface)
-* [Phalcon\Logger\Formatter\Json](#Logger_Formatter_Json)
-* [Phalcon\Logger\Formatter\Line](#Logger_Formatter_Line)
-* [Phalcon\Logger\Formatter\Syslog](#Logger_Formatter_Syslog)
-* [Phalcon\Logger\Item](#Logger_Item)
-* [Phalcon\Logger\Logger](#Logger_Logger)
-* [Phalcon\Logger\LoggerFactory](#Logger_LoggerFactory)
+* [Phalcon\Logger\Adapter\AbstractAdapter](#logger-adapter-abstractadapter)
+* [Phalcon\Logger\Adapter\AdapterInterface](#logger-adapter-adapterinterface)
+* [Phalcon\Logger\Adapter\Noop](#logger-adapter-noop)
+* [Phalcon\Logger\Adapter\Stream](#logger-adapter-stream)
+* [Phalcon\Logger\Adapter\Syslog](#logger-adapter-syslog)
+* [Phalcon\Logger\AdapterFactory](#logger-adapterfactory)
+* [Phalcon\Logger\Exception](#logger-exception)
+* [Phalcon\Logger\Formatter\AbstractFormatter](#logger-formatter-abstractformatter)
+* [Phalcon\Logger\Formatter\FormatterInterface](#logger-formatter-formatterinterface)
+* [Phalcon\Logger\Formatter\Json](#logger-formatter-json)
+* [Phalcon\Logger\Formatter\Line](#logger-formatter-line)
+* [Phalcon\Logger\Formatter\Syslog](#logger-formatter-syslog)
+* [Phalcon\Logger\Item](#logger-item)
+* [Phalcon\Logger\Logger](#logger-logger)
+* [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
 
-<h1 id="Logger_Adapter_AbstractAdapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
+<h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
 
@@ -75,7 +75,7 @@ public function __destruct();
 Destructor cleanup
 
 ```php
-public function add( mixed $item ): AdapterInterface;
+public function add( Item $item ): AdapterInterface;
 ```
 
 Adds a message to the queue
@@ -105,7 +105,7 @@ public function inTransaction(): bool;
 Returns the whether the logger is currently in an active transaction or not
 
 ```php
-abstract public function process( mixed $item ): void;
+abstract public function process( Item $item ): void;
 ```
 
 Processes the message in the adapter
@@ -117,12 +117,12 @@ public function rollback(): AdapterInterface;
 Rollbacks the internal transaction
 
 ```php
-public function setFormatter( mixed $formatter ): AdapterInterface;
+public function setFormatter( FormatterInterface $formatter ): AdapterInterface;
 ```
 
 Sets the message formatter
 
-<h1 id="Logger_Adapter_AdapterInterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
+<h1 id="logger-adapter-adapterinterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/adapterinterface.zep)
 
@@ -135,7 +135,7 @@ Interface for Phalcon\Logger adapters
 ## Metody
 
 ```php
-public function add( mixed $item ): void;
+public function add( Item $item ): void;
 ```
 
 Adds a message in the queue
@@ -165,7 +165,7 @@ public function getFormatter(): FormatterInterface;
 Returns the internal formatter
 
 ```php
-public function process( mixed $item ): void;
+public function process( Item $item ): void;
 ```
 
 Processes the message in the adapter
@@ -177,12 +177,12 @@ public function rollback(): AdapterInterface;
 Rollbacks the internal transaction
 
 ```php
-public function setFormatter( mixed $formatter ): AdapterInterface;
+public function setFormatter( FormatterInterface $formatter ): AdapterInterface;
 ```
 
 Sets the message formatter
 
-<h1 id="Logger_Adapter_Noop">Class Phalcon\Logger\Adapter\Noop</h1>
+<h1 id="logger-adapter-noop">Class Phalcon\Logger\Adapter\Noop</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/noop.zep)
 
@@ -210,16 +210,16 @@ public function close(): bool;
 Closes the stream
 
 ```php
-public function process( mixed $item ): void;
+public function process( Item $item ): void;
 ```
 
 Processes the message i.e. writes it to the file
 
-<h1 id="Logger_Adapter_Stream">Class Phalcon\Logger\Adapter\Stream</h1>
+<h1 id="logger-adapter-stream">Class Phalcon\Logger\Adapter\Stream</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
 
-| Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item, UnexpectedValueException | | Extends | AbstractAdapter |
 
 Phalcon\Logger\Adapter\Stream
 
@@ -287,16 +287,16 @@ public function getName(): string
 ```
 
 ```php
-public function process( mixed $item ): void;
+public function process( Item $item ): void;
 ```
 
 Processes the message i.e. writes it to the file
 
-<h1 id="Logger_Adapter_Syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
+<h1 id="logger-adapter-syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
-| Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Logger\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
 Phalcon\Logger\Adapter\Syslog
 
@@ -367,12 +367,12 @@ public function close(): bool;
 Closes the logger
 
 ```php
-public function process( mixed $item ): void;
+public function process( Item $item ): void;
 ```
 
 Processes the message i.e. writes it to the syslog
 
-<h1 id="Logger_AdapterFactory">Class Phalcon\Logger\AdapterFactory</h1>
+<h1 id="logger-adapterfactory">Class Phalcon\Logger\AdapterFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterfactory.zep)
 
@@ -404,7 +404,7 @@ protected function getAdapters(): array;
 
 //
 
-<h1 id="Logger_Exception">Class Phalcon\Logger\Exception</h1>
+<h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/exception.zep)
 
@@ -414,7 +414,7 @@ Phalcon\Logger\Exception
 
 Exceptions thrown in Phalcon\Logger will use this class
 
-<h1 id="Logger_Formatter_AbstractFormatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
+<h1 id="logger-formatter-abstractformatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
 
@@ -436,7 +436,7 @@ Interpolates context values into the message placeholders
 
 @see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message @param string $message @param array $context
 
-<h1 id="Logger_Formatter_FormatterInterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
+<h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/formatterinterface.zep)
 
@@ -449,12 +449,12 @@ This interface must be implemented by formatters in Phalcon\Logger
 ## Metody
 
 ```php
-public function format( mixed $item ): string | array;
+public function format( Item $item ): string | array;
 ```
 
 Applies a format to an item
 
-<h1 id="Logger_Formatter_Json">Class Phalcon\Logger\Formatter\Json</h1>
+<h1 id="logger-formatter-json">Class Phalcon\Logger\Formatter\Json</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
@@ -485,7 +485,7 @@ public function __construct( string $dateFormat = string ): void;
 Phalcon\Logger\Formatter\Json construct
 
 ```php
-public function format( mixed $item ): string;
+public function format( Item $item ): string;
 ```
 
 Applies a format to a message before sent it to the internal log
@@ -498,7 +498,7 @@ public function getDateFormat(): string
 public function setDateFormat( string $dateFormat )
 ```
 
-<h1 id="Logger_Formatter_Line">Class Phalcon\Logger\Formatter\Line</h1>
+<h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
@@ -536,7 +536,7 @@ public function __construct( string $format = string, string $dateFormat = strin
 Phalcon\Logger\Formatter\Line construct
 
 ```php
-public function format( mixed $item ): string;
+public function format( Item $item ): string;
 ```
 
 Applies a format to a message before sent it to the internal log
@@ -557,7 +557,7 @@ public function setDateFormat( string $dateFormat )
 public function setFormat( string $format )
 ```
 
-<h1 id="Logger_Formatter_Syslog">Class Phalcon\Logger\Formatter\Syslog</h1>
+<h1 id="logger-formatter-syslog">Class Phalcon\Logger\Formatter\Syslog</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
@@ -570,12 +570,12 @@ Prepares a message to be used in a Syslog backend
 ## Metody
 
 ```php
-public function format( mixed $item ): array;
+public function format( Item $item ): array;
 ```
 
 Applies a format to a message before sent it to the internal log
 
-<h1 id="Logger_Item">Class Phalcon\Logger\Item</h1>
+<h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
@@ -649,7 +649,7 @@ public function getTime(): integer
 public function getType(): integer
 ```
 
-<h1 id="Logger_Logger">Class Phalcon\Logger\Logger</h1>
+<h1 id="logger-logger">Class Phalcon\Logger\Logger</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/logger.zep)
 
@@ -734,7 +734,7 @@ Constructor.
 @param string name The name of the logger @param array adapters The collection of adapters to be used for logging (default [])
 
 ```php
-public function addAdapter( string $name, mixed $adapter ): Logger;
+public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
 ```
 
 Add an adapter to the stack. For processing we use FIFO
@@ -885,7 +885,7 @@ protected function getLevels(): array;
 
 Returns an array of log levels with integer to string conversion
 
-<h1 id="Logger_LoggerFactory">Class Phalcon\Logger\LoggerFactory</h1>
+<h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
 
@@ -908,7 +908,7 @@ private adapterFactory;
 ## Metody
 
 ```php
-public function __construct( mixed $factory );
+public function __construct( AdapterFactory $factory );
 ```
 
 //

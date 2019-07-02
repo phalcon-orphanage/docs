@@ -5,15 +5,15 @@ version: '4.0'
 title: 'Phalcon\Escaper'
 ---
 
-* [Phalcon\Escaper](#Escaper)
-* [Phalcon\Escaper\Exception](#Escaper_Exception)
-* [Phalcon\EscaperInterface](#EscaperInterface)
+* [Phalcon\Escaper\Escaper](#escaper-escaper)
+* [Phalcon\Escaper\EscaperInterface](#escaper-escaperinterface)
+* [Phalcon\Escaper\Exception](#escaper-exception)
 
-<h1 id="Escaper">Class Phalcon\Escaper</h1>
+<h1 id="escaper-escaper">Class Phalcon\Escaper\Escaper</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/escaper.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
+| Namespace | Phalcon\Escaper | | Uses | Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
 
 Phalcon\Escaper
 
@@ -130,19 +130,11 @@ Sets the HTML quoting type for htmlspecialchars
 $escaper->setHtmlQuoteType(ENT_XHTML);
 ```
 
-<h1 id="Escaper_Exception">Class Phalcon\Escaper\Exception</h1>
+<h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/exception.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/escaperinterface.zep)
 
-| Namespace | Phalcon\Escaper | | Extends | \Phalcon\Exception |
-
-Exceptions thrown in Phalcon\Escaper will use this class
-
-<h1 id="EscaperInterface">Interface Phalcon\EscaperInterface</h1>
-
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaperinterface.zep)
-
-| Namespace | Phalcon |
+| Namespace | Phalcon\Escaper |
 
 Interface for Phalcon\Escaper
 
@@ -195,3 +187,11 @@ public function setHtmlQuoteType( int $quoteType ): void;
 ```
 
 Sets the HTML quoting type for htmlspecialchars
+
+<h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/exception.zep)
+
+| Namespace | Phalcon\Escaper | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Escaper will use this class

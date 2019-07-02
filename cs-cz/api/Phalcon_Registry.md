@@ -2,12 +2,12 @@
 layout: default
 language: 'cs-cz'
 version: '4.0'
-title: 'Phalcon\Registry'
+title: 'Phalcon\Registry.zep'
 ---
 
-* [Phalcon\Registry](#Registry)
+* [Phalcon\Registry](#registry)
 
-<h1 id="Registry">Final Class Phalcon\Registry</h1>
+<h1 id="registry">Final Class Phalcon\Registry</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 

@@ -5,10 +5,10 @@ version: '4.0'
 title: 'Phalcon\Factory'
 ---
 
-* [Phalcon\Factory\AbstractFactory](#Factory_AbstractFactory)
-* [Phalcon\Factory\Exception](#Factory_Exception)
+* [Phalcon\Factory\AbstractFactory](#factory-abstractfactory)
+* [Phalcon\Factory\Exception](#factory-exception)
 
-<h1 id="Factory_AbstractFactory">Class Phalcon\Factory\AbstractFactory</h1>
+<h1 id="factory-abstractfactory">Class Phalcon\Factory\AbstractFactory</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/abstractfactory.zep)
 
@@ -61,7 +61,7 @@ protected function init( array $services = [] ): void;
 
 AdapterFactory constructor.
 
-<h1 id="Factory_Exception">Class Phalcon\Factory\Exception</h1>
+<h1 id="factory-exception">Class Phalcon\Factory\Exception</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/exception.zep)
 
