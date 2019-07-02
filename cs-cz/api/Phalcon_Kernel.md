@@ -2,12 +2,12 @@
 layout: default
 language: 'cs-cz'
 version: '4.0'
-title: 'Phalcon\Kernel'
+title: 'Phalcon\Kernel.zep'
 ---
 
-* [Phalcon\Kernel](#Kernel)
+* [Phalcon\Kernel](#kernel)
 
-<h1 id="Kernel">Class Phalcon\Kernel</h1>
+<h1 id="kernel">Class Phalcon\Kernel</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/kernel.zep)
 
