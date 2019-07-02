@@ -5,14 +5,14 @@ version: '4.0'
 title: 'Phalcon\Domain'
 ---
 
-* [Phalcon\Domain\Payload\Payload](#Domain_Payload_Payload)
-* [Phalcon\Domain\Payload\PayloadFactory](#Domain_Payload_PayloadFactory)
-* [Phalcon\Domain\Payload\PayloadInterface](#Domain_Payload_PayloadInterface)
-* [Phalcon\Domain\Payload\ReadableInterface](#Domain_Payload_ReadableInterface)
-* [Phalcon\Domain\Payload\Status](#Domain_Payload_Status)
-* [Phalcon\Domain\Payload\WriteableInterface](#Domain_Payload_WriteableInterface)
+* [Phalcon\Domain\Payload\Payload](#domain-payload-payload)
+* [Phalcon\Domain\Payload\PayloadFactory](#domain-payload-payloadfactory)
+* [Phalcon\Domain\Payload\PayloadInterface](#domain-payload-payloadinterface)
+* [Phalcon\Domain\Payload\ReadableInterface](#domain-payload-readableinterface)
+* [Phalcon\Domain\Payload\Status](#domain-payload-status)
+* [Phalcon\Domain\Payload\WriteableInterface](#domain-payload-writeableinterface)
 
-<h1 id="Domain_Payload_Payload">Class Phalcon\Domain\Payload\Payload</h1>
+<h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payload.zep)
 
@@ -112,7 +112,7 @@ public function setStatus( mixed $status ): PayloadInterface;
 
 Sets the payload status.
 
-<h1 id="Domain_Payload_PayloadFactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
+<h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadfactory.zep)
 
@@ -128,15 +128,15 @@ public function newInstance(): PayloadInterface;
 
 Instantiate a new object
 
-<h1 id="Domain_Payload_PayloadInterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
+<h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadinterface.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Uses | Phalcon\Domain\Payload\ReadableInterface, Phalcon\Domain\Payload\WriteableInterface | | Extends | Array |
+| Namespace | Phalcon\Domain\Payload | | Uses | Phalcon\Domain\Payload\ReadableInterface, Phalcon\Domain\Payload\WriteableInterface | | Extends | ReadableInterface |
 
 This interface is used for consumers
 
-<h1 id="Domain_Payload_ReadableInterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
+<h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/readableinterface.zep)
 
@@ -186,7 +186,7 @@ Gets the status of this payload.
 
 @return mixed
 
-<h1 id="Domain_Payload_Status">Class Phalcon\Domain\Payload\Status</h1>
+<h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/status.zep)
 
@@ -227,7 +227,7 @@ final private function __construct();
 
 Instantiation not allowed.
 
-<h1 id="Domain_Payload_WriteableInterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
+<h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/writeableinterface.zep)
 
