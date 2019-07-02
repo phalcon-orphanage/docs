@@ -5,23 +5,23 @@ version: '4.0'
 title: 'Phalcon\Crypt'
 ---
 
-* [Phalcon\Crypt](#Crypt)
-* [Phalcon\Crypt\Exception](#Crypt_Exception)
-* [Phalcon\Crypt\Mismatch](#Crypt_Mismatch)
-* [Phalcon\CryptInterface](#CryptInterface)
+* [Phalcon\Crypt\Crypt](#crypt-crypt)
+* [Phalcon\Crypt\CryptInterface](#crypt-cryptinterface)
+* [Phalcon\Crypt\Exception](#crypt-exception)
+* [Phalcon\Crypt\Mismatch](#crypt-mismatch)
         
-<h1 id="Crypt">Class Phalcon\Crypt</h1>
+<h1 id="crypt-crypt">Class Phalcon\Crypt\Crypt</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/crypt.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch |
+| Namespace  | Phalcon\Crypt |
+| Uses       | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch |
 | Implements | CryptInterface |
 
 Provides encryption capabilities to Phalcon applications.
 
 ```php
-use Phalcon\Crypt;
+use Phalcon\Crypt\Crypt;
 
 $crypt = new Crypt();
 
@@ -110,7 +110,7 @@ protected useSigning = true;
 ```php
 public function __construct( string $cipher = string, bool $useSigning = bool ): void;
 ```
-Phalcon\Crypt constructor.
+Phalcon\Crypt\Crypt constructor.
 
 
 ```php
@@ -304,35 +304,13 @@ Initialize available cipher algorithms.
 
 
         
-<h1 id="Crypt_Exception">Class Phalcon\Crypt\Exception</h1>
+<h1 id="crypt-cryptinterface">Interface Phalcon\Crypt\CryptInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/exception.zep)
-
-| Namespace  | Phalcon\Crypt |
-| Extends    | \Phalcon\Exception |
-
-Exceptions thrown in Phalcon\Crypt use this class
-
-
-        
-<h1 id="Crypt_Mismatch">Class Phalcon\Crypt\Mismatch</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/cryptinterface.zep)
 
 | Namespace  | Phalcon\Crypt |
-| Extends    | Exception |
 
-Exceptions thrown in Phalcon\Crypt will use this class.
-
-
-        
-<h1 id="CryptInterface">Interface Phalcon\CryptInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cryptinterface.zep)
-
-| Namespace  | Phalcon |
-
-Interface for Phalcon\Crypt
+Interface for Phalcon\Crypt\Crypt
 
 
 ## Methods
@@ -431,4 +409,26 @@ public function setPadding( int $scheme ): CryptInterface;
 ```
 Changes the padding scheme used.
 
+
+
+        
+<h1 id="crypt-exception">Class Phalcon\Crypt\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/exception.zep)
+
+| Namespace  | Phalcon\Crypt |
+| Extends    | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Crypt\Crypt use this class
+
+
+        
+<h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/mismatch.zep)
+
+| Namespace  | Phalcon\Crypt |
+| Extends    | Exception |
+
+Exceptions thrown in Phalcon\Crypt\Crypt will use this class.
 

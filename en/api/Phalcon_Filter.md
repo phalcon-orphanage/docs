@@ -5,33 +5,33 @@ version: '4.0'
 title: 'Phalcon\Filter'
 ---
 
-* [Phalcon\Filter\Exception](#Filter_Exception)
-* [Phalcon\Filter\Filter](#Filter_Filter)
-* [Phalcon\Filter\FilterFactory](#Filter_FilterFactory)
-* [Phalcon\Filter\FilterInterface](#Filter_FilterInterface)
-* [Phalcon\Filter\Sanitize\AbsInt](#Filter_Sanitize_AbsInt)
-* [Phalcon\Filter\Sanitize\Alnum](#Filter_Sanitize_Alnum)
-* [Phalcon\Filter\Sanitize\Alpha](#Filter_Sanitize_Alpha)
-* [Phalcon\Filter\Sanitize\BoolVal](#Filter_Sanitize_BoolVal)
-* [Phalcon\Filter\Sanitize\Email](#Filter_Sanitize_Email)
-* [Phalcon\Filter\Sanitize\FloatVal](#Filter_Sanitize_FloatVal)
-* [Phalcon\Filter\Sanitize\IntVal](#Filter_Sanitize_IntVal)
-* [Phalcon\Filter\Sanitize\Lower](#Filter_Sanitize_Lower)
-* [Phalcon\Filter\Sanitize\LowerFirst](#Filter_Sanitize_LowerFirst)
-* [Phalcon\Filter\Sanitize\Regex](#Filter_Sanitize_Regex)
-* [Phalcon\Filter\Sanitize\Remove](#Filter_Sanitize_Remove)
-* [Phalcon\Filter\Sanitize\Replace](#Filter_Sanitize_Replace)
-* [Phalcon\Filter\Sanitize\Special](#Filter_Sanitize_Special)
-* [Phalcon\Filter\Sanitize\SpecialFull](#Filter_Sanitize_SpecialFull)
-* [Phalcon\Filter\Sanitize\StringVal](#Filter_Sanitize_StringVal)
-* [Phalcon\Filter\Sanitize\Striptags](#Filter_Sanitize_Striptags)
-* [Phalcon\Filter\Sanitize\Trim](#Filter_Sanitize_Trim)
-* [Phalcon\Filter\Sanitize\Upper](#Filter_Sanitize_Upper)
-* [Phalcon\Filter\Sanitize\UpperFirst](#Filter_Sanitize_UpperFirst)
-* [Phalcon\Filter\Sanitize\UpperWords](#Filter_Sanitize_UpperWords)
-* [Phalcon\Filter\Sanitize\Url](#Filter_Sanitize_Url)
+* [Phalcon\Filter\Exception](#filter-exception)
+* [Phalcon\Filter\Filter](#filter-filter)
+* [Phalcon\Filter\FilterFactory](#filter-filterfactory)
+* [Phalcon\Filter\FilterInterface](#filter-filterinterface)
+* [Phalcon\Filter\Sanitize\AbsInt](#filter-sanitize-absint)
+* [Phalcon\Filter\Sanitize\Alnum](#filter-sanitize-alnum)
+* [Phalcon\Filter\Sanitize\Alpha](#filter-sanitize-alpha)
+* [Phalcon\Filter\Sanitize\BoolVal](#filter-sanitize-boolval)
+* [Phalcon\Filter\Sanitize\Email](#filter-sanitize-email)
+* [Phalcon\Filter\Sanitize\FloatVal](#filter-sanitize-floatval)
+* [Phalcon\Filter\Sanitize\IntVal](#filter-sanitize-intval)
+* [Phalcon\Filter\Sanitize\Lower](#filter-sanitize-lower)
+* [Phalcon\Filter\Sanitize\LowerFirst](#filter-sanitize-lowerfirst)
+* [Phalcon\Filter\Sanitize\Regex](#filter-sanitize-regex)
+* [Phalcon\Filter\Sanitize\Remove](#filter-sanitize-remove)
+* [Phalcon\Filter\Sanitize\Replace](#filter-sanitize-replace)
+* [Phalcon\Filter\Sanitize\Special](#filter-sanitize-special)
+* [Phalcon\Filter\Sanitize\SpecialFull](#filter-sanitize-specialfull)
+* [Phalcon\Filter\Sanitize\StringVal](#filter-sanitize-stringval)
+* [Phalcon\Filter\Sanitize\Striptags](#filter-sanitize-striptags)
+* [Phalcon\Filter\Sanitize\Trim](#filter-sanitize-trim)
+* [Phalcon\Filter\Sanitize\Upper](#filter-sanitize-upper)
+* [Phalcon\Filter\Sanitize\UpperFirst](#filter-sanitize-upperfirst)
+* [Phalcon\Filter\Sanitize\UpperWords](#filter-sanitize-upperwords)
+* [Phalcon\Filter\Sanitize\Url](#filter-sanitize-url)
         
-<h1 id="Filter_Exception">Class Phalcon\Filter\Exception</h1>
+<h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
 
@@ -44,12 +44,12 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 
         
-<h1 id="Filter_Filter">Class Phalcon\Filter\Filter</h1>
+<h1 id="filter-filter">Class Phalcon\Filter\Filter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filter.zep)
 
 | Namespace  | Phalcon\Filter |
-| Uses       | Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface |
+| Uses       | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface |
 | Implements | FilterInterface |
 
 Lazy loads, stores and exposes sanitizer objects
@@ -135,7 +135,7 @@ Loads the objects in the internal mapper array
 
 
         
-<h1 id="Filter_FilterFactory">Class Phalcon\Filter\FilterFactory</h1>
+<h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterfactory.zep)
 
@@ -165,7 +165,7 @@ protected function getAdapters(): array;
 
 
         
-<h1 id="Filter_FilterInterface">Interface Phalcon\Filter\FilterInterface</h1>
+<h1 id="filter-filterinterface">Interface Phalcon\Filter\FilterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterinterface.zep)
 
@@ -183,7 +183,7 @@ Sanitizes a value with a specified single or set of sanitizers
 
 
         
-<h1 id="Filter_Sanitize_AbsInt">Class Phalcon\Filter\Sanitize\AbsInt</h1>
+<h1 id="filter-sanitize-absint">Class Phalcon\Filter\Sanitize\AbsInt</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/absint.zep)
 
@@ -203,7 +203,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_Alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
+<h1 id="filter-sanitize-alnum">Class Phalcon\Filter\Sanitize\Alnum</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/alnum.zep)
 
@@ -223,7 +223,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_Alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
+<h1 id="filter-sanitize-alpha">Class Phalcon\Filter\Sanitize\Alpha</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/alpha.zep)
 
@@ -243,7 +243,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_BoolVal">Class Phalcon\Filter\Sanitize\BoolVal</h1>
+<h1 id="filter-sanitize-boolval">Class Phalcon\Filter\Sanitize\BoolVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/boolval.zep)
 
@@ -263,7 +263,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_Email">Class Phalcon\Filter\Sanitize\Email</h1>
+<h1 id="filter-sanitize-email">Class Phalcon\Filter\Sanitize\Email</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/email.zep)
 
@@ -283,7 +283,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_FloatVal">Class Phalcon\Filter\Sanitize\FloatVal</h1>
+<h1 id="filter-sanitize-floatval">Class Phalcon\Filter\Sanitize\FloatVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/floatval.zep)
 
@@ -303,7 +303,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_IntVal">Class Phalcon\Filter\Sanitize\IntVal</h1>
+<h1 id="filter-sanitize-intval">Class Phalcon\Filter\Sanitize\IntVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/intval.zep)
 
@@ -323,7 +323,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_Lower">Class Phalcon\Filter\Sanitize\Lower</h1>
+<h1 id="filter-sanitize-lower">Class Phalcon\Filter\Sanitize\Lower</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/lower.zep)
 
@@ -343,7 +343,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_LowerFirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
+<h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/lowerfirst.zep)
 
@@ -363,7 +363,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_Regex">Class Phalcon\Filter\Sanitize\Regex</h1>
+<h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/regex.zep)
 
@@ -383,7 +383,7 @@ public function __invoke( mixed $input, mixed $pattern, mixed $replace );
 
 
         
-<h1 id="Filter_Sanitize_Remove">Class Phalcon\Filter\Sanitize\Remove</h1>
+<h1 id="filter-sanitize-remove">Class Phalcon\Filter\Sanitize\Remove</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/remove.zep)
 
@@ -403,7 +403,7 @@ public function __invoke( mixed $input, mixed $replace );
 
 
         
-<h1 id="Filter_Sanitize_Replace">Class Phalcon\Filter\Sanitize\Replace</h1>
+<h1 id="filter-sanitize-replace">Class Phalcon\Filter\Sanitize\Replace</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/replace.zep)
 
@@ -423,7 +423,7 @@ public function __invoke( mixed $input, mixed $from, mixed $to );
 
 
         
-<h1 id="Filter_Sanitize_Special">Class Phalcon\Filter\Sanitize\Special</h1>
+<h1 id="filter-sanitize-special">Class Phalcon\Filter\Sanitize\Special</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/special.zep)
 
@@ -443,7 +443,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_SpecialFull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
+<h1 id="filter-sanitize-specialfull">Class Phalcon\Filter\Sanitize\SpecialFull</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/specialfull.zep)
 
@@ -463,7 +463,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_StringVal">Class Phalcon\Filter\Sanitize\StringVal</h1>
+<h1 id="filter-sanitize-stringval">Class Phalcon\Filter\Sanitize\StringVal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/stringval.zep)
 
@@ -483,7 +483,7 @@ public function __invoke( mixed $input );
 
 
         
-<h1 id="Filter_Sanitize_Striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
+<h1 id="filter-sanitize-striptags">Class Phalcon\Filter\Sanitize\Striptags</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/striptags.zep)
 
@@ -503,7 +503,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_Trim">Class Phalcon\Filter\Sanitize\Trim</h1>
+<h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/trim.zep)
 
@@ -523,7 +523,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_Upper">Class Phalcon\Filter\Sanitize\Upper</h1>
+<h1 id="filter-sanitize-upper">Class Phalcon\Filter\Sanitize\Upper</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upper.zep)
 
@@ -543,7 +543,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_UpperFirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
+<h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upperfirst.zep)
 
@@ -563,7 +563,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_UpperWords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
+<h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/upperwords.zep)
 
@@ -583,7 +583,7 @@ public function __invoke( string $input );
 
 
         
-<h1 id="Filter_Sanitize_Url">Class Phalcon\Filter\Sanitize\Url</h1>
+<h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/sanitize/url.zep)
 

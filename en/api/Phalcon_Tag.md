@@ -5,20 +5,20 @@ version: '4.0'
 title: 'Phalcon\Tag'
 ---
 
-* [Phalcon\Tag](#Tag)
-* [Phalcon\Tag\Exception](#Tag_Exception)
-* [Phalcon\Tag\Select](#Tag_Select)
+* [Phalcon\Tag](#tag)
+* [Phalcon\Tag\Exception](#tag-exception)
+* [Phalcon\Tag\Select](#tag-select)
         
-<h1 id="Tag">Class Phalcon\Tag</h1>
+<h1 id="tag">Class Phalcon\Tag</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\UrlInterface |
+| Uses       | Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\UrlInterface |
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.
-This component is an abstract class that you can extend to add more helpers.
+This component is a class that you can extend to add more helpers.
 
 
 ## Constants
@@ -98,7 +98,7 @@ Builds INPUT tags that implements the checked attribute
 
 
         
-<h1 id="Tag_Exception">Class Phalcon\Tag\Exception</h1>
+<h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/exception.zep)
 
@@ -111,12 +111,12 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 
         
-<h1 id="Tag_Select">Abstract Class Phalcon\Tag\Select</h1>
+<h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
 
 | Namespace  | Phalcon\Tag |
-| Uses       | Phalcon\Tag\Exception, Phalcon\Tag, Phalcon\EscaperInterface, Phalcon\Mvc\Model\ResulsetInterface |
+| Uses       | Phalcon\Tag\Exception, Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResulsetInterface |
 
 Phalcon\Tag\Select
 

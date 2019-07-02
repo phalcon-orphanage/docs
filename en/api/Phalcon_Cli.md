@@ -5,26 +5,26 @@ version: '4.0'
 title: 'Phalcon\Cli'
 ---
 
-* [Phalcon\Cli\Console](#Cli_Console)
-* [Phalcon\Cli\Console\Exception](#Cli_Console_Exception)
-* [Phalcon\Cli\Dispatcher](#Cli_Dispatcher)
-* [Phalcon\Cli\Dispatcher\Exception](#Cli_Dispatcher_Exception)
-* [Phalcon\Cli\DispatcherInterface](#Cli_DispatcherInterface)
-* [Phalcon\Cli\Router](#Cli_Router)
-* [Phalcon\Cli\Router\Exception](#Cli_Router_Exception)
-* [Phalcon\Cli\Router\Route](#Cli_Router_Route)
-* [Phalcon\Cli\Router\RouteInterface](#Cli_Router_RouteInterface)
-* [Phalcon\Cli\RouterInterface](#Cli_RouterInterface)
-* [Phalcon\Cli\Task](#Cli_Task)
-* [Phalcon\Cli\TaskInterface](#Cli_TaskInterface)
+* [Phalcon\Cli\Console](#cli-console)
+* [Phalcon\Cli\Console\Exception](#cli-console-exception)
+* [Phalcon\Cli\Dispatcher](#cli-dispatcher)
+* [Phalcon\Cli\Dispatcher\Exception](#cli-dispatcher-exception)
+* [Phalcon\Cli\DispatcherInterface](#cli-dispatcherinterface)
+* [Phalcon\Cli\Router](#cli-router)
+* [Phalcon\Cli\Router\Exception](#cli-router-exception)
+* [Phalcon\Cli\Router\Route](#cli-router-route)
+* [Phalcon\Cli\Router\RouteInterface](#cli-router-routeinterface)
+* [Phalcon\Cli\RouterInterface](#cli-routerinterface)
+* [Phalcon\Cli\Task](#cli-task)
+* [Phalcon\Cli\TaskInterface](#cli-taskinterface)
         
-<h1 id="Cli_Console">Class Phalcon\Cli\Console</h1>
+<h1 id="cli-console">Class Phalcon\Cli\Console</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Application, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\DiInterface, Phalcon\Events\ManagerInterface |
-| Extends    | BaseApplication |
+| Uses       | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\DiInterface, Phalcon\Events\ManagerInterface |
+| Extends    | AbstractApplication |
 
 This component allows to create CLI applications using Phalcon
 
@@ -58,7 +58,7 @@ Set an specific argument
 
 
         
-<h1 id="Cli_Console_Exception">Class Phalcon\Cli\Console\Exception</h1>
+<h1 id="cli-console-exception">Class Phalcon\Cli\Console\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console/exception.zep)
 
@@ -69,12 +69,12 @@ Exceptions thrown in Phalcon\Cli\Console will use this class
 
 
         
-<h1 id="Cli_Dispatcher">Class Phalcon\Cli\Dispatcher</h1>
+<h1 id="cli-dispatcher">Class Phalcon\Cli\Dispatcher</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Cli\Dispatcher\Exception, Phalcon\Dispatcher, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface |
+| Uses       | Phalcon\Cli\Dispatcher\Exception, Phalcon\Dispatcher\AbstractDispatcher, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface |
 | Extends    | CliDispatcher |
 | Implements | DispatcherInterface |
 
@@ -202,7 +202,7 @@ Sets the default task suffix
 
 
 ```php
-protected function handleException( mixed $exception );
+protected function handleException( \Exception $exception );
 ```
 Handles a user exception
 
@@ -215,24 +215,24 @@ Throws an internal exception
 
 
         
-<h1 id="Cli_Dispatcher_Exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
+<h1 id="cli-dispatcher-exception">Class Phalcon\Cli\Dispatcher\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcher/exception.zep)
 
 | Namespace  | Phalcon\Cli\Dispatcher |
-| Extends    | \Phalcon\Exception |
+| Extends    | \Phalcon\Dispatcher\Exception |
 
 Exceptions thrown in Phalcon\Cli\Dispatcher will use this class
 
 
         
-<h1 id="Cli_DispatcherInterface">Interface Phalcon\Cli\DispatcherInterface</h1>
+<h1 id="cli-dispatcherinterface">Interface Phalcon\Cli\DispatcherInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/dispatcherinterface.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\DispatcherInterface |
-| Extends    | Array |
+| Uses       | Phalcon\Dispatcher\DispatcherInterface |
+| Extends    | DispatcherInterfaceBase |
 
 Interface for Phalcon\Cli\Dispatcher
 
@@ -294,13 +294,13 @@ Sets the default task suffix
 
 
         
-<h1 id="Cli_Router">Class Phalcon\Cli\Router</h1>
+<h1 id="cli-router">Class Phalcon\Cli\Router</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\DiInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception |
-| Implements | \Phalcon\Di\InjectionAwareInterface |
+| Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception |
+| Implements | InjectionAwareInterface |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
 of taking a command-line arguments and decomposing it into parameters to
@@ -459,7 +459,7 @@ Handles routing information received from command-line arguments
 
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 Sets the dependency injector
 
@@ -507,7 +507,7 @@ Checks if the router matches any of the defined routes
 
 
         
-<h1 id="Cli_Router_Exception">Class Phalcon\Cli\Router\Exception</h1>
+<h1 id="cli-router-exception">Class Phalcon\Cli\Router\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/exception.zep)
 
@@ -518,7 +518,7 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 
         
-<h1 id="Cli_Router_Route">Class Phalcon\Cli\Router\Route</h1>
+<h1 id="cli-router-route">Class Phalcon\Cli\Router\Route</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
@@ -693,7 +693,7 @@ $router->add(
 
 
         
-<h1 id="Cli_Router_RouteInterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
+<h1 id="cli-router-routeinterface">Interface Phalcon\Cli\Router\RouteInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/routeinterface.zep)
 
@@ -772,7 +772,7 @@ Sets the route's name
 
 
         
-<h1 id="Cli_RouterInterface">Interface Phalcon\Cli\RouterInterface</h1>
+<h1 id="cli-routerinterface">Interface Phalcon\Cli\RouterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/routerinterface.zep)
 
@@ -883,7 +883,7 @@ Check if the router matches any of the defined routes
 
 
         
-<h1 id="Cli_Task">Class Phalcon\Cli\Task</h1>
+<h1 id="cli-task">Class Phalcon\Cli\Task</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
@@ -925,7 +925,7 @@ Phalcon\Cli\Task constructor
 
 
         
-<h1 id="Cli_TaskInterface">Interface Phalcon\Cli\TaskInterface</h1>
+<h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/taskinterface.zep)
 

@@ -2,12 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Version'
+title: 'Phalcon\Version.zep'
 ---
 
-* [Phalcon\Version](#Version)
+* [Phalcon\Version](#version)
         
-<h1 id="Version">Class Phalcon\Version</h1>
+<h1 id="version">Class Phalcon\Version</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 

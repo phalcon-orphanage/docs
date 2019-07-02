@@ -5,11 +5,11 @@ version: '4.0'
 title: 'Phalcon\Collection'
 ---
 
-* [Phalcon\Collection\Collection](#Collection_Collection)
-* [Phalcon\Collection\Exception](#Collection_Exception)
-* [Phalcon\Collection\ReadCollection](#Collection_ReadCollection)
+* [Phalcon\Collection\Collection](#collection-collection)
+* [Phalcon\Collection\Exception](#collection-exception)
+* [Phalcon\Collection\ReadCollection](#collection-readcollection)
         
-<h1 id="Collection_Collection">Class Phalcon\Collection\Collection</h1>
+<h1 id="collection-collection">Class Phalcon\Collection\Collection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/collection.zep)
 
@@ -200,7 +200,7 @@ Internal method to set data
 
 
         
-<h1 id="Collection_Exception">Class Phalcon\Collection\Exception</h1>
+<h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
 
@@ -213,7 +213,7 @@ Exceptions for the Collection object
 
 
         
-<h1 id="Collection_ReadCollection">Class Phalcon\Collection\ReadCollection</h1>
+<h1 id="collection-readcollection">Class Phalcon\Collection\ReadCollection</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readcollection.zep)
 

@@ -5,16 +5,16 @@ version: '4.0'
 title: 'Phalcon\Debug'
 ---
 
-* [Phalcon\Debug](#Debug)
-* [Phalcon\Debug\Dump](#Debug_Dump)
-* [Phalcon\Debug\Exception](#Debug_Exception)
+* [Phalcon\Debug\Debug](#debug-debug)
+* [Phalcon\Debug\Dump](#debug-dump)
+* [Phalcon\Debug\Exception](#debug-exception)
         
-<h1 id="Debug">Class Phalcon\Debug</h1>
+<h1 id="debug-debug">Class Phalcon\Debug\Debug</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/debug.zep)
 
-| Namespace  | Phalcon |
-| Uses       | Phalcon\Helper\Arr |
+| Namespace  | Phalcon\Debug |
+| Uses       | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
 Provides debug capabilities to Phalcon applications
 
@@ -117,7 +117,7 @@ Listen for unsilent notices or warnings
 
 
 ```php
-public function onUncaughtException( mixed $exception ): bool;
+public function onUncaughtException( \Exception $exception ): bool;
 ```
 Handles uncaught exceptions
 
@@ -185,12 +185,12 @@ Shows a backtrace item
 
 
         
-<h1 id="Debug_Dump">Class Phalcon\Debug\Dump</h1>
+<h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
 | Namespace  | Phalcon\Debug |
-| Uses       | Phalcon\Di |
+| Uses       | Phalcon\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
 Dumps information about a variable(s)
 
@@ -321,7 +321,7 @@ Prepare an HTML string of information about a single variable.
 
 
         
-<h1 id="Debug_Exception">Class Phalcon\Debug\Exception</h1>
+<h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
 

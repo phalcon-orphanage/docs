@@ -5,27 +5,27 @@ version: '4.0'
 title: 'Phalcon\Html'
 ---
 
-* [Phalcon\Html\Attributes](#Html_Attributes)
-* [Phalcon\Html\Attributes\AttributesInterface](#Html_Attributes_AttributesInterface)
-* [Phalcon\Html\Attributes\RenderInterface](#Html_Attributes_RenderInterface)
-* [Phalcon\Html\Breadcrumbs](#Html_Breadcrumbs)
-* [Phalcon\Html\Exception](#Html_Exception)
-* [Phalcon\Html\Helper\AbstractHelper](#Html_Helper_AbstractHelper)
-* [Phalcon\Html\Helper\Anchor](#Html_Helper_Anchor)
-* [Phalcon\Html\Helper\AnchorRaw](#Html_Helper_AnchorRaw)
-* [Phalcon\Html\Helper\Body](#Html_Helper_Body)
-* [Phalcon\Html\Helper\Button](#Html_Helper_Button)
-* [Phalcon\Html\Helper\Close](#Html_Helper_Close)
-* [Phalcon\Html\Helper\Element](#Html_Helper_Element)
-* [Phalcon\Html\Helper\ElementRaw](#Html_Helper_ElementRaw)
-* [Phalcon\Html\Helper\Form](#Html_Helper_Form)
-* [Phalcon\Html\Helper\Img](#Html_Helper_Img)
-* [Phalcon\Html\Helper\Label](#Html_Helper_Label)
-* [Phalcon\Html\Helper\TextArea](#Html_Helper_TextArea)
-* [Phalcon\Html\Tag](#Html_Tag)
-* [Phalcon\Html\TagFactory](#Html_TagFactory)
+* [Phalcon\Html\Attributes](#html-attributes)
+* [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)
+* [Phalcon\Html\Attributes\RenderInterface](#html-attributes-renderinterface)
+* [Phalcon\Html\Breadcrumbs](#html-breadcrumbs)
+* [Phalcon\Html\Exception](#html-exception)
+* [Phalcon\Html\Helper\AbstractHelper](#html-helper-abstracthelper)
+* [Phalcon\Html\Helper\Anchor](#html-helper-anchor)
+* [Phalcon\Html\Helper\AnchorRaw](#html-helper-anchorraw)
+* [Phalcon\Html\Helper\Body](#html-helper-body)
+* [Phalcon\Html\Helper\Button](#html-helper-button)
+* [Phalcon\Html\Helper\Close](#html-helper-close)
+* [Phalcon\Html\Helper\Element](#html-helper-element)
+* [Phalcon\Html\Helper\ElementRaw](#html-helper-elementraw)
+* [Phalcon\Html\Helper\Form](#html-helper-form)
+* [Phalcon\Html\Helper\Img](#html-helper-img)
+* [Phalcon\Html\Helper\Label](#html-helper-label)
+* [Phalcon\Html\Helper\TextArea](#html-helper-textarea)
+* [Phalcon\Html\Tag](#html-tag)
+* [Phalcon\Html\TagFactory](#html-tagfactory)
         
-<h1 id="Html_Attributes">Class Phalcon\Html\Attributes</h1>
+<h1 id="html-attributes">Class Phalcon\Html\Attributes</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/attributes.zep)
 
@@ -52,7 +52,7 @@ Render attributes as HTML attributes
 
 
         
-<h1 id="Html_Attributes_AttributesInterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
+<h1 id="html-attributes-attributesinterface">Interface Phalcon\Html\Attributes\AttributesInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/attributes/attributesinterface.zep)
 
@@ -72,14 +72,14 @@ Get Attributes
 
 
 ```php
-public function setAttributes( mixed $attributes ): AttributesInterface;
+public function setAttributes( Attributes $attributes ): AttributesInterface;
 ```
 Set Attributes
 
 
 
         
-<h1 id="Html_Attributes_RenderInterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
+<h1 id="html-attributes-renderinterface">Interface Phalcon\Html\Attributes\RenderInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/attributes/renderinterface.zep)
 
@@ -99,7 +99,7 @@ Generate a string represetation
 
 
         
-<h1 id="Html_Breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
+<h1 id="html-breadcrumbs">Class Phalcon\Html\Breadcrumbs</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/breadcrumbs.zep)
 
@@ -187,7 +187,6 @@ public function render(): string;
 Renders and outputs breadcrumbs based on previously set template.
 
 ```php
-// PHP Engine
 echo $breadcrumbs->render();
 ```
 
@@ -205,7 +204,7 @@ Returns the internal breadcrumbs array
 
 
         
-<h1 id="Html_Exception">Class Phalcon\Html\Exception</h1>
+<h1 id="html-exception">Class Phalcon\Html\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/exception.zep)
 
@@ -218,12 +217,12 @@ Exceptions thrown in Phalcon\Html\Tag will use this class
 
 
         
-<h1 id="Html_Helper_AbstractHelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
+<h1 id="html-helper-abstracthelper">Abstract Class Phalcon\Html\Helper\AbstractHelper</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/abstracthelper.zep)
 
 | Namespace  | Phalcon\Html\Helper |
-| Uses       | Phalcon\Html\Exception, Phalcon\EscaperInterface |
+| Uses       | Phalcon\Html\Exception, Phalcon\Escaper\EscaperInterface |
 
 Phalcon\Html\Helper\AbstractHelper
 
@@ -241,7 +240,7 @@ protected escaper;
 
 ## Methods
 ```php
-public function __construct( mixed $escaper );
+public function __construct( EscaperInterface $escaper );
 ```
 Constructor
 
@@ -283,7 +282,7 @@ Produces a self close tag i.e. <img />
 
 
         
-<h1 id="Html_Helper_Anchor">Class Phalcon\Html\Helper\Anchor</h1>
+<h1 id="html-helper-anchor">Class Phalcon\Html\Helper\Anchor</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/anchor.zep)
 
@@ -307,7 +306,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 
         
-<h1 id="Html_Helper_AnchorRaw">Class Phalcon\Html\Helper\AnchorRaw</h1>
+<h1 id="html-helper-anchorraw">Class Phalcon\Html\Helper\AnchorRaw</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/anchorraw.zep)
 
@@ -331,7 +330,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 
         
-<h1 id="Html_Helper_Body">Class Phalcon\Html\Helper\Body</h1>
+<h1 id="html-helper-body">Class Phalcon\Html\Helper\Body</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/body.zep)
 
@@ -353,7 +352,7 @@ public function __invoke( array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Helper_Button">Class Phalcon\Html\Helper\Button</h1>
+<h1 id="html-helper-button">Class Phalcon\Html\Helper\Button</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/button.zep)
 
@@ -376,7 +375,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Helper_Close">Class Phalcon\Html\Helper\Close</h1>
+<h1 id="html-helper-close">Class Phalcon\Html\Helper\Close</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/close.zep)
 
@@ -399,7 +398,7 @@ public function __invoke( string $tag ): string;
 
 
         
-<h1 id="Html_Helper_Element">Class Phalcon\Html\Helper\Element</h1>
+<h1 id="html-helper-element">Class Phalcon\Html\Helper\Element</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/element.zep)
 
@@ -423,7 +422,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 
         
-<h1 id="Html_Helper_ElementRaw">Class Phalcon\Html\Helper\ElementRaw</h1>
+<h1 id="html-helper-elementraw">Class Phalcon\Html\Helper\ElementRaw</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/elementraw.zep)
 
@@ -450,7 +449,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 
         
-<h1 id="Html_Helper_Form">Class Phalcon\Html\Helper\Form</h1>
+<h1 id="html-helper-form">Class Phalcon\Html\Helper\Form</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/form.zep)
 
@@ -472,7 +471,7 @@ public function __invoke( array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Helper_Img">Class Phalcon\Html\Helper\Img</h1>
+<h1 id="html-helper-img">Class Phalcon\Html\Helper\Img</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/img.zep)
 
@@ -498,7 +497,7 @@ public function __invoke( string $src, array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Helper_Label">Class Phalcon\Html\Helper\Label</h1>
+<h1 id="html-helper-label">Class Phalcon\Html\Helper\Label</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/label.zep)
 
@@ -523,7 +522,7 @@ public function __invoke( array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Helper_TextArea">Class Phalcon\Html\Helper\TextArea</h1>
+<h1 id="html-helper-textarea">Class Phalcon\Html\Helper\TextArea</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/textarea.zep)
 
@@ -546,12 +545,12 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 
         
-<h1 id="Html_Tag">Class Phalcon\Html\Tag</h1>
+<h1 id="html-tag">Class Phalcon\Html\Tag</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface |
+| Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface |
 | Implements | InjectionAwareInterface |
 
 Phalcon\Html\Tag
@@ -626,7 +625,7 @@ private url;
 
 ## Methods
 ```php
-public function __construct( mixed $escaper = null, mixed $url = null );
+public function __construct( EscaperInterface $escaper = null, UrlInterface $url = null );
 ```
 Constructor
 
@@ -1400,7 +1399,7 @@ echo $tag->inputText('name'); // Will have the value 'peter' by default
 
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 Sets the dependency injector
 
@@ -1515,12 +1514,12 @@ Volt syntax:
 
 
         
-<h1 id="Html_TagFactory">Class Phalcon\Html\TagFactory</h1>
+<h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tagfactory.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Escaper, Phalcon\EscaperInterface, Phalcon\Factory\AbstractFactory |
+| Uses       | Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory |
 | Extends    | AbstractFactory |
 
 ServiceLocator implementation for Tag helpers
@@ -1537,7 +1536,7 @@ private escaper;
 
 ## Methods
 ```php
-public function __construct( mixed $escaper, array $services = [] );
+public function __construct( EscaperInterface $escaper, array $services = [] );
 ```
 TagFactory constructor.
 

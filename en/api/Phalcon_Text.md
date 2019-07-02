@@ -2,12 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Text'
+title: 'Phalcon\Text.zep'
 ---
 
-* [Phalcon\Text](#Text)
+* [Phalcon\Text](#text)
         
-<h1 id="Text">Abstract Class Phalcon\Text</h1>
+<h1 id="text">Class Phalcon\Text</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 

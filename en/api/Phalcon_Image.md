@@ -5,48 +5,20 @@ version: '4.0'
 title: 'Phalcon\Image'
 ---
 
-* [Phalcon\Image](#Image)
-* [Phalcon\Image\Adapter\AbstractAdapter](#Image_Adapter_AbstractAdapter)
-* [Phalcon\Image\Adapter\AdapterInterface](#Image_Adapter_AdapterInterface)
-* [Phalcon\Image\Adapter\Gd](#Image_Adapter_Gd)
-* [Phalcon\Image\Adapter\Imagick](#Image_Adapter_Imagick)
-* [Phalcon\Image\Exception](#Image_Exception)
-* [Phalcon\Image\ImageFactory](#Image_ImageFactory)
+* [Phalcon\Image\Adapter\AbstractAdapter](#image-adapter-abstractadapter)
+* [Phalcon\Image\Adapter\AdapterInterface](#image-adapter-adapterinterface)
+* [Phalcon\Image\Adapter\Gd](#image-adapter-gd)
+* [Phalcon\Image\Adapter\Imagick](#image-adapter-imagick)
+* [Phalcon\Image\Enum](#image-enum)
+* [Phalcon\Image\Exception](#image-exception)
+* [Phalcon\Image\ImageFactory](#image-imagefactory)
         
-<h1 id="Image">Class Phalcon\Image</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image.zep)
-
-| Namespace  | Phalcon |
-
-This file is part of the Phalcon Framework.
-
-(c) Phalcon Team <team@phalconphp.com>
-
-For the full copyright and license information, please view the LICENSE.txt
-file that was distributed with this source code.
-
-
-## Constants
-```php
-const AUTO = 4;
-const HEIGHT = 3;
-const HORIZONTAL = 11;
-const INVERSE = 5;
-const NONE = 1;
-const PRECISE = 6;
-const TENSILE = 7;
-const VERTICAL = 12;
-const WIDTH = 2;
-```
-
-        
-<h1 id="Image_Adapter_AbstractAdapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
+<h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image, Phalcon\Image\Exception |
+| Uses       | Phalcon\Image\Enum, Phalcon\Image\Exception |
 | Implements | AdapterInterface |
 
 Phalcon\Image\Adapter
@@ -168,7 +140,7 @@ Imagick
 
 
 ```php
-public function mask( mixed $watermark ): Adapter;
+public function mask( AdapterInterface $watermark ): Adapter;
 ```
  Composite one image onto another
  
@@ -222,14 +194,14 @@ public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool
  
 
 ```php
-public function watermark( mixed $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): Adapter;
+public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): Adapter;
 ```
  Add a watermark to an image with the specified opacity
  
 
 
         
-<h1 id="Image_Adapter_AdapterInterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
+<h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/adapterinterface.zep)
 
@@ -265,7 +237,7 @@ public function flip( int $direction );
 //
 
 ```php
-public function mask( mixed $watermark );
+public function mask( AdapterInterface $watermark );
 ```
 //
 
@@ -310,18 +282,18 @@ public function text( string $text, int $offsetX = int, int $offsetY = int, int 
 //
 
 ```php
-public function watermark( mixed $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int );
+public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int );
 ```
 //
 
 
         
-<h1 id="Image_Adapter_Gd">Class Phalcon\Image\Adapter\Gd</h1>
+<h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception |
+| Uses       | Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception |
 | Extends    | AbstractAdapter |
 
 This file is part of the Phalcon Framework.
@@ -376,7 +348,7 @@ protected function processFlip( int $direction );
 //
 
 ```php
-protected function processMask( mixed $mask );
+protected function processMask( AdapterInterface $mask );
 ```
 //
 
@@ -421,18 +393,18 @@ protected function processText( string $text, int $offsetX, int $offsetY, int $o
 //
 
 ```php
-protected function processWatermark( mixed $watermark, int $offsetX, int $offsetY, int $opacity );
+protected function processWatermark( AdapterInterface $watermark, int $offsetX, int $offsetY, int $opacity );
 ```
 //
 
 
         
-<h1 id="Image_Adapter_Imagick">Class Phalcon\Image\Adapter\Imagick</h1>
+<h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
-| Uses       | Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception |
+| Uses       | Imagick, ImagickDraw, ImagickPixel, Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception |
 | Extends    | AbstractAdapter |
 
 Phalcon\Image\Adapter\Imagick
@@ -526,7 +498,7 @@ Imagick
 
 
 ```php
-protected function processMask( mixed $image );
+protected function processMask( AdapterInterface $image );
 ```
 Composite one image onto another
 
@@ -582,14 +554,42 @@ Execute a text
 
 
 ```php
-protected function processWatermark( mixed $image, int $offsetX, int $offsetY, int $opacity );
+protected function processWatermark( AdapterInterface $image, int $offsetX, int $offsetY, int $opacity );
 ```
 Execute a watermarking.
 
 
 
         
-<h1 id="Image_Exception">Class Phalcon\Image\Exception</h1>
+<h1 id="image-enum">Class Phalcon\Image\Enum</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/enum.zep)
+
+| Namespace  | Phalcon\Image |
+
+This file is part of the Phalcon Framework.
+
+(c) Phalcon Team <team@phalconphp.com>
+
+For the full copyright and license information, please view the LICENSE.txt
+file that was distributed with this source code.
+
+
+## Constants
+```php
+const AUTO = 4;
+const HEIGHT = 3;
+const HORIZONTAL = 11;
+const INVERSE = 5;
+const NONE = 1;
+const PRECISE = 6;
+const TENSILE = 7;
+const VERTICAL = 12;
+const WIDTH = 2;
+```
+
+        
+<h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
 
@@ -605,7 +605,7 @@ file that was distributed with this source code.
 
 
         
-<h1 id="Image_ImageFactory">Class Phalcon\Image\ImageFactory</h1>
+<h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
 

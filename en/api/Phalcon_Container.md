@@ -5,13 +5,13 @@ version: '4.0'
 title: 'Phalcon\Container'
 ---
 
-* [Phalcon\Container](#Container)
+* [Phalcon\Container\Container](#container-container)
         
-<h1 id="Container">Class Phalcon\Container</h1>
+<h1 id="container-container">Class Phalcon\Container\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container/container.zep)
 
-| Namespace  | Phalcon |
+| Namespace  | Phalcon\Container |
 | Uses       | Psr\Container\ContainerInterface, Phalcon\DiInterface |
 | Implements | ContainerInterface |
 
@@ -29,7 +29,7 @@ protected container;
 
 ## Methods
 ```php
-public function __construct( mixed $container ): void;
+public function __construct( DiInterface $container ): void;
 ```
 Phalcon\Container constructor
 
