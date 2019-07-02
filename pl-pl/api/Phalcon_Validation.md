@@ -5,237 +5,60 @@ version: '4.0'
 title: 'Phalcon\Validation'
 ---
 
-* [Phalcon\Validation](#Validation)
-* [Phalcon\Validation\CombinedFieldsValidator](#Validation_CombinedFieldsValidator)
-* [Phalcon\Validation\Exception](#Validation_Exception)
-* [Phalcon\Validation\Validator](#Validation_Validator)
-* [Phalcon\Validation\Validator\Alnum](#Validation_Validator_Alnum)
-* [Phalcon\Validation\Validator\Alpha](#Validation_Validator_Alpha)
-* [Phalcon\Validation\Validator\Between](#Validation_Validator_Between)
-* [Phalcon\Validation\Validator\Callback](#Validation_Validator_Callback)
-* [Phalcon\Validation\Validator\Confirmation](#Validation_Validator_Confirmation)
-* [Phalcon\Validation\Validator\CreditCard](#Validation_Validator_CreditCard)
-* [Phalcon\Validation\Validator\Date](#Validation_Validator_Date)
-* [Phalcon\Validation\Validator\Digit](#Validation_Validator_Digit)
-* [Phalcon\Validation\Validator\Email](#Validation_Validator_Email)
-* [Phalcon\Validation\Validator\Exception](#Validation_Validator_Exception)
-* [Phalcon\Validation\Validator\ExclusionIn](#Validation_Validator_ExclusionIn)
-* [Phalcon\Validation\Validator\File](#Validation_Validator_File)
-* [Phalcon\Validation\Validator\File\FileAbstract](#Validation_Validator_File_FileAbstract)
-* [Phalcon\Validation\Validator\File\MimeType](#Validation_Validator_File_MimeType)
-* [Phalcon\Validation\Validator\File\Resolution](#Validation_Validator_File_Resolu)
-* [Phalcon\Validation\Validator\File\Resolution\Equal](#Validation_Validator_File_Resolution_Equal)
-* [Phalcon\Validation\Validator\File\Resolution\Max](#Validation_Validator_File_Resolution_Max)
-* [Phalcon\Validation\Validator\File\Resolution\Min](#Validation_Validator_File_Resolution_Min)
-* [Phalcon\Validation\Validator\File\Size\Equal](#Validation_Validator_File_Size_Equal)
-* [Phalcon\Validation\Validator\File\Size\Max](#Validation_Validator_File_Size_Max)
-* [Phalcon\Validation\Validator\File\Size\Min](#Validation_Validator_File_Size_Min)
-* [Phalcon\Validation\Validator\Identical](#Validation_Validator_Identical)
-* [Phalcon\Validation\Validator\InclusionIn](#Validation_Validator_InclusionIn)
-* [Phalcon\Validation\Validator\Ip](#Validation_Validator_Ip)
-* [Phalcon\Validation\Validator\Numericality](#Validation_Validator_Numericality)
-* [Phalcon\Validation\Validator\PresenceOf](#Validation_Validator_PresenceOf)
-* [Phalcon\Validation\Validator\Regex](#Validation_Validator_Regex)
-* [Phalcon\Validation\Validator\StringLength](#Validation_Validator_StringLe)
-* [Phalcon\Validation\Validator\StringLength](#Validation_Validator_StringLength)
-* [Phalcon\Validation\Validator\StringLength\Max](#Validation_Validator_StringLength_Max)
-* [Phalcon\Validation\Validator\StringLength\Min](#Validation_Validator_StringLength_Min)
-* [Phalcon\Validation\Validator\Uniqueness](#Validation_Validator_Uniqueness)
-* [Phalcon\Validation\Validator\Url](#Validation_Validator_Url)
-* [Phalcon\Validation\ValidatorComposite](#Validation_ValidatorComposite)
-* [Phalcon\Validation\ValidatorCompositeInterface](#Validation_ValidatorCompositeInterface)
-* [Phalcon\Validation\ValidatorFactory](#Validation_ValidatorFactory)
-* [Phalcon\Validation\ValidatorInterface](#Validation_ValidatorInterface)
-* [Phalcon\ValidationInterface](#ValidationInterface)
+* [Phalcon\Validation\AbstractCombinedFieldsValidator](#validation-abstractcombinedfieldsvalidator)
+* [Phalcon\Validation\AbstractValidator](#validation-abstractvalidator)
+* [Phalcon\Validation\AbstractValidatorComposite](#validation-abstractvalidatorcomposite)
+* [Phalcon\Validation\Exception](#validation-exception)
+* [Phalcon\Validation\Validation](#validation-validation)
+* [Phalcon\Validation\ValidationInterface](#validation-validationinterface)
+* [Phalcon\Validation\Validator\Alnum](#validation-validator-alnum)
+* [Phalcon\Validation\Validator\Alpha](#validation-validator-alpha)
+* [Phalcon\Validation\Validator\Between](#validation-validator-between)
+* [Phalcon\Validation\Validator\Callback](#validation-validator-callback)
+* [Phalcon\Validation\Validator\Confirmation](#validation-validator-confirmation)
+* [Phalcon\Validation\Validator\CreditCard](#validation-validator-creditcard)
+* [Phalcon\Validation\Validator\Date](#validation-validator-date)
+* [Phalcon\Validation\Validator\Digit](#validation-validator-digit)
+* [Phalcon\Validation\Validator\Email](#validation-validator-email)
+* [Phalcon\Validation\Validator\Exception](#validation-validator-exception)
+* [Phalcon\Validation\Validator\ExclusionIn](#validation-validator-exclusionin)
+* [Phalcon\Validation\Validator\File](#validation-validator-file)
+* [Phalcon\Validation\Validator\File\AbstractFile](#validation-validator-file-abstractfile)
+* [Phalcon\Validation\Validator\File\MimeType](#validation-validator-file-mimetype)
+* [Phalcon\Validation\Validator\File\Resolution\Equal](#validation-validator-file-resolution-equal)
+* [Phalcon\Validation\Validator\File\Resolution\Max](#validation-validator-file-resolution-max)
+* [Phalcon\Validation\Validator\File\Resolution\Min](#validation-validator-file-resolution-min)
+* [Phalcon\Validation\Validator\File\Size\Equal](#validation-validator-file-size-equal)
+* [Phalcon\Validation\Validator\File\Size\Max](#validation-validator-file-size-max)
+* [Phalcon\Validation\Validator\File\Size\Min](#validation-validator-file-size-min)
+* [Phalcon\Validation\Validator\Identical](#validation-validator-identical)
+* [Phalcon\Validation\Validator\InclusionIn](#validation-validator-inclusionin)
+* [Phalcon\Validation\Validator\Ip](#validation-validator-ip)
+* [Phalcon\Validation\Validator\Numericality](#validation-validator-numericality)
+* [Phalcon\Validation\Validator\PresenceOf](#validation-validator-presenceof)
+* [Phalcon\Validation\Validator\Regex](#validation-validator-regex)
+* [Phalcon\Validation\Validator\StringLength](#validation-validator-stringlength)
+* [Phalcon\Validation\Validator\StringLength\Max](#validation-validator-stringlength-max)
+* [Phalcon\Validation\Validator\StringLength\Min](#validation-validator-stringlength-min)
+* [Phalcon\Validation\Validator\Uniqueness](#validation-validator-uniqueness)
+* [Phalcon\Validation\Validator\Url](#validation-validator-url)
+* [Phalcon\Validation\ValidatorCompositeInterface](#validation-validatorcompositeinterface)
+* [Phalcon\Validation\ValidatorFactory](#validation-validatorfactory)
+* [Phalcon\Validation\ValidatorInterface](#validation-validatorinterface)
 
-<h1 id="Validation">Class Phalcon\Validation</h1>
+<h1 id="validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Validation\AbstractCombinedFieldsValidator</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractcombinedfieldsvalidator.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\CombinedFieldsValidator | | Extends | Injectable | | Implements | ValidationInterface |
-
-Phalcon\Validation
-
-Allows to validate data using custom or built-in validators
-
-## Properties
-
-```php
-//
-protected combinedFieldsValidators;
-
-//
-protected data;
-
-//
-protected entity;
-
-//
-protected filters;
-
-//
-protected labels;
-
-//
-protected messages;
-
-//
-protected validators;
-
-//
-protected values;
-
-```
-
-## Metody
-
-```php
-public function __construct( array $validators = [] ): void;
-```
-
-Phalcon\Validation constructor
-
-```php
-public function add( mixed $field, mixed $validator ): ValidationInterface;
-```
-
-Adds a validator to a field
-
-```php
-public function appendMessage( mixed $message ): ValidationInterface;
-```
-
-Appends a message to the messages list
-
-```php
-public function bind( mixed $entity, mixed $data ): ValidationInterface;
-```
-
-Assigns the data to an entity The entity is used to obtain the validation values
-
-@param object entity @param array|object data
-
-```php
-public function getData()
-```
-
-```php
-public function getEntity(): object;
-```
-
-Returns the bound entity
-
-```php
-public function getFilters( string $field = null ): mixed | null;
-```
-
-Returns all the filters or a specific one
-
-```php
-public function getLabel( mixed $field ): string;
-```
-
-Get label for field
-
-@param string field
-
-```php
-public function getMessages(): Messages;
-```
-
-Returns the registered validators
-
-```php
-public function getValidators(): array;
-```
-
-Returns the validators added to the validation
-
-```php
-public function getValue( string $field ): mixed | null;
-```
-
-Gets the a value to validate in the array/object data source
-
-```php
-public function rule( mixed $field, mixed $validator ): ValidationInterface;
-```
-
-Alias of `add` method
-
-```php
-public function rules( mixed $field, array $validators ): ValidationInterface;
-```
-
-Adds the validators to a field
-
-```php
-public function setEntity( mixed $entity ): void;
-```
-
-Sets the bound entity
-
-@param object entity
-
-```php
-public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
-```
-
-Adds filters to the field
-
-@param string field @param array|string filters
-
-```php
-public function setLabels( array $labels ): void;
-```
-
-Adds labels for fields
-
-```php
-public function setValidators( $validators )
-```
-
-```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages;
-```
-
-Validate a set of data according to a set of rules
-
-@param array|object data @param object entity
-
-```php
-protected function preChecking( mixed $field, mixed $validator ): bool;
-```
-
-Internal validations, if it returns true, then skip the current validator
-
-<h1 id="Validation_CombinedFieldsValidator">Abstract Class Phalcon\Validation\CombinedFieldsValidator</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/combinedfieldsvalidator.zep)
-
-| Namespace | Phalcon\Validation | | Extends | Validator |
-
-Phalcon\Validation\CombinedFieldsValidator
+| Namespace | Phalcon\Validation | | Extends | AbstractValidator |
 
 This is a base class for combined fields validators
 
-<h1 id="Validation_Exception">Class Phalcon\Validation\Exception</h1>
+<h1 id="validation-abstractvalidator">Abstract Class Phalcon\Validation\AbstractValidator</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidator.zep)
 
-| Namespace | Phalcon\Validation | | Extends | \Phalcon\Exception |
-
-Phalcon\Validation\Exception
-
-Exceptions thrown in Phalcon\Validation\* classes will use this class
-
-<h1 id="Validation_Validator">Abstract Class Phalcon\Validation\Validator</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator.zep)
-
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface | | Implements | ValidatorInterface |
-
-Phalcon\Validation\Validator
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface | | Implements | ValidatorInterface |
 
 This is a base class for validators
 
@@ -298,7 +121,7 @@ public function hasOption( string $key ): bool;
 Checks if an option is defined
 
 ```php
-public function messageFactory( mixed $validation, mixed $field, array $replacements = [] ): Message;
+public function messageFactory( Validation $validation, mixed $field, array $replacements = [] ): Message;
 ```
 
 Create a default message by factory
@@ -330,7 +153,7 @@ Clear current templates and set new from an array,
 @return Validator
 
 ```php
-abstract public function validate( mixed $validation, mixed $field ): bool;
+abstract public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
@@ -342,21 +165,318 @@ protected function prepareCode( string $field ): int | null;
 Prepares a validation code.
 
 ```php
-protected function prepareLabel( mixed $validation, string $field ): mixed;
+protected function prepareLabel( Validation $validation, string $field ): mixed;
 ```
 
 Prepares a label for the field.
 
-<h1 id="Validation_Validator_Alnum">Class Phalcon\Validation\Validator\Alnum</h1>
+<h1 id="validation-abstractvalidatorcomposite">Abstract Class Phalcon\Validation\AbstractValidatorComposite</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidatorcomposite.zep)
+
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation\Validation | | Extends | AbstractValidator | | Implements | ValidatorCompositeInterface |
+
+This is a base class for combined fields validators
+
+## Properties
+
+```php
+/**
+ * @var array
+ */
+protected validators;
+
+```
+
+## Metody
+
+```php
+public function getValidators(): array
+```
+
+```php
+public function validate( Validation $validation, mixed $field ): bool;
+```
+
+Executes the validation
+
+<h1 id="validation-exception">Class Phalcon\Validation\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/exception.zep)
+
+| Namespace | Phalcon\Validation | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Validation\* classes will use this class
+
+<h1 id="validation-validation">Class Phalcon\Validation\Validation</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validation.zep)
+
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator | | Extends | Injectable | | Implements | ValidationInterface |
+
+Allows to validate data using custom or built-in validators
+
+## Properties
+
+```php
+//
+protected combinedFieldsValidators;
+
+//
+protected data;
+
+//
+protected entity;
+
+//
+protected filters;
+
+//
+protected labels;
+
+//
+protected messages;
+
+//
+protected validators;
+
+//
+protected values;
+
+```
+
+## Metody
+
+```php
+public function __construct( array $validators = [] ): void;
+```
+
+Phalcon\Validation\Validation constructor
+
+```php
+public function add( mixed $field, ValidatorInterface $validator ): ValidationInterface;
+```
+
+Adds a validator to a field
+
+```php
+public function appendMessage( MessageInterface $message ): ValidationInterface;
+```
+
+Appends a message to the messages list
+
+```php
+public function bind( mixed $entity, mixed $data ): ValidationInterface;
+```
+
+Assigns the data to an entity The entity is used to obtain the validation values
+
+@param object entity @param array|object data
+
+```php
+public function getData()
+```
+
+```php
+public function getEntity(): object;
+```
+
+Returns the bound entity
+
+```php
+public function getFilters( string $field = null ): mixed | null;
+```
+
+Returns all the filters or a specific one
+
+```php
+public function getLabel( mixed $field ): string;
+```
+
+Get label for field
+
+@param string field
+
+```php
+public function getMessages(): Messages;
+```
+
+Returns the registered validators
+
+```php
+public function getValidators(): array;
+```
+
+Returns the validators added to the validation
+
+```php
+public function getValue( string $field ): mixed | null;
+```
+
+Gets the a value to validate in the array/object data source
+
+```php
+public function rule( mixed $field, ValidatorInterface $validator ): ValidationInterface;
+```
+
+Alias of `add` method
+
+```php
+public function rules( mixed $field, array $validators ): ValidationInterface;
+```
+
+Adds the validators to a field
+
+```php
+public function setEntity( mixed $entity ): void;
+```
+
+Sets the bound entity
+
+@param object entity
+
+```php
+public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
+```
+
+Adds filters to the field
+
+@param string field @param array|string filters
+
+```php
+public function setLabels( array $labels ): void;
+```
+
+Adds labels for fields
+
+```php
+public function setValidators( $validators )
+```
+
+```php
+public function validate( mixed $data = null, mixed $entity = null ): Messages;
+```
+
+Validate a set of data according to a set of rules
+
+@param array|object data @param object entity
+
+```php
+protected function preChecking( mixed $field, ValidatorInterface $validator ): bool;
+```
+
+Internal validations, if it returns true, then skip the current validator
+
+<h1 id="validation-validationinterface">Interface Phalcon\Validation\ValidationInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validationinterface.zep)
+
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface |
+
+Interface for the Phalcon\Validation component
+
+## Metody
+
+```php
+public function add( string $field, ValidatorInterface $validator ): ValidationInterface;
+```
+
+Adds a validator to a field
+
+```php
+public function appendMessage( MessageInterface $message ): ValidationInterface;
+```
+
+Appends a message to the messages list
+
+```php
+public function bind( mixed $entity, mixed $data ): ValidationInterface;
+```
+
+Assigns the data to an entity The entity is used to obtain the validation values
+
+@param object entity @param array|object data
+
+```php
+public function getEntity(): object;
+```
+
+Returns the bound entity
+
+```php
+public function getFilters( string $field = null ): mixed | null;
+```
+
+Returns all the filters or a specific one
+
+```php
+public function getLabel( string $field ): string;
+```
+
+Get label for field
+
+```php
+public function getMessages(): Messages;
+```
+
+Returns the registered validators
+
+```php
+public function getValidators(): array;
+```
+
+Returns the validators added to the validation
+
+```php
+public function getValue( string $field ): mixed | null;
+```
+
+Gets the a value to validate in the array/object data source
+
+```php
+public function rule( string $field, ValidatorInterface $validator ): ValidationInterface;
+```
+
+Alias of `add` method
+
+```php
+public function rules( string $field, array $validators ): ValidationInterface;
+```
+
+Adds the validators to a field
+
+```php
+public function setFilters( string $field, mixed $filters ): ValidationInterface;
+```
+
+Adds filters to the field
+
+@param array|string filters
+
+```php
+public function setLabels( array $labels ): void;
+```
+
+Adds labels for fields
+
+```php
+public function validate( mixed $data = null, mixed $entity = null ): Messages;
+```
+
+Validate a set of data according to a set of rules
+
+@param array|object data @param object entity
+
+<h1 id="validation-validator-alnum">Class Phalcon\Validation\Validator\Alnum</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alnum.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for alphanumeric character(s)
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Alnum as AlnumValidator;
 
 $validator = new Validation();
@@ -397,23 +517,21 @@ protected template = Field :field must contain only letters and numbers;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Alpha">Class Phalcon\Validation\Validator\Alpha</h1>
+<h1 id="validation-validator-alpha">Class Phalcon\Validation\Validator\Alpha</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Alpha
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for alphabetic character(s)
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Alpha as AlphaValidator;
 
 $validator = new Validation();
@@ -454,23 +572,21 @@ protected template = Field :field must contain only letters;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Between">Class Phalcon\Validation\Validator\Between</h1>
+<h1 id="validation-validator-between">Class Phalcon\Validation\Validator\Between</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Between
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Between;
 
 $validator = new Validation();
@@ -521,23 +637,21 @@ protected template = Field :field must be within the range of :min to :max;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Callback">Class Phalcon\Validation\Validator\Callback</h1>
+<h1 id="validation-validator-callback">Class Phalcon\Validation\Validator\Callback</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Callback
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Calls user function for validation
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Callback as CallbackValidator;
 use Phalcon\Validation\Validator\Numericality as NumericalityValidator;
 
@@ -588,23 +702,21 @@ protected template = Field :field must match the callback function;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Confirmation">Class Phalcon\Validation\Validator\Confirmation</h1>
+<h1 id="validation-validator-confirmation">Class Phalcon\Validation\Validator\Confirmation</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Confirmation
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks that two values have the same value
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Confirmation;
 
 $validator = new Validation();
@@ -650,7 +762,7 @@ protected template = Field :field must be the same as :with;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
@@ -661,18 +773,16 @@ final protected function compare( string $a, string $b ): bool;
 
 Compare strings
 
-<h1 id="Validation_Validator_CreditCard">Class Phalcon\Validation\Validator\CreditCard</h1>
+<h1 id="validation-validator-creditcard">Class Phalcon\Validation\Validator\CreditCard</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\CreditCard
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a valid credit card number
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
 
 $validator = new Validation();
@@ -713,23 +823,21 @@ protected template = Field :field is not valid for a credit card number;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Date">Class Phalcon\Validation\Validator\Date</h1>
+<h1 id="validation-validator-date">Class Phalcon\Validation\Validator\Date</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/date.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Date
+| Namespace | Phalcon\Validation\Validator | | Uses | DateTime, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value is a valid date
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Date as DateValidator;
 
 $validator = new Validation();
@@ -775,23 +883,21 @@ protected template = Field :field is not a valid date;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Digit">Class Phalcon\Validation\Validator\Digit</h1>
+<h1 id="validation-validator-digit">Class Phalcon\Validation\Validator\Digit</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/digit.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Digit
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for numeric character(s)
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Digit as DigitValidator;
 
 $validator = new Validation();
@@ -832,23 +938,21 @@ protected template = Field :field must be numeric;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Email">Class Phalcon\Validation\Validator\Email</h1>
+<h1 id="validation-validator-email">Class Phalcon\Validation\Validator\Email</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Email
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a correct e-mail format
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Email as EmailValidator;
 
 $validator = new Validation();
@@ -889,33 +993,29 @@ protected template = Field :field must be an email address;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Exception">Class Phalcon\Validation\Validator\Exception</h1>
+<h1 id="validation-validator-exception">Class Phalcon\Validation\Validator\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exception.zep)
 
 | Namespace | Phalcon\Validation\Validator | | Extends | \Phalcon\Exception |
 
-Phalcon\Validation\Exception
-
 Exceptions thrown in Phalcon\Validation\Validator\* classes will use this class
 
-<h1 id="Validation_Validator_ExclusionIn">Class Phalcon\Validation\Validator\ExclusionIn</h1>
+<h1 id="validation-validator-exclusionin">Class Phalcon\Validation\Validator\ExclusionIn</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception | | Extends | Validator |
-
-Phalcon\Validation\Validator\ExclusionIn
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Check if a value is not included into a list of values
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
 $validator = new Validation();
@@ -967,23 +1067,21 @@ protected template = Field :field must not be a part of list: :domain;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File">Class Phalcon\Validation\Validator\File</h1>
+<h1 id="validation-validator-file">Class Phalcon\Validation\Validator\File</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\ValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min | | Extends | ValidatorComposite |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min | | Extends | AbstractValidatorComposite |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File as FileValidator;
 
 $validator = new Validation();
@@ -1054,18 +1152,16 @@ public function __construct( array $options = [] );
 
 Constructor
 
-<h1 id="Validation_Validator_File_FileAbstract">Abstract Class Phalcon\Validation\Validator\File\FileAbstract</h1>
+<h1 id="validation-validator-file-abstractfile">Abstract Class Phalcon\Validation\Validator\File\AbstractFile</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/fileabstract.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/abstractfile.zep)
 
-| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1123,7 +1219,7 @@ protected messageValid = Field :field is not valid;
 ## Metody
 
 ```php
-public function checkUpload( mixed $validation, mixed $field ): bool;
+public function checkUpload( Validation $validation, mixed $field ): bool;
 ```
 
 Check upload
@@ -1131,7 +1227,7 @@ Check upload
 @param Valiation $validation @param mixed $field @return bool
 
 ```php
-public function checkUploadIsEmpty( mixed $validation, mixed $field ): bool;
+public function checkUploadIsEmpty( Validation $validation, mixed $field ): bool;
 ```
 
 Check if upload is empty
@@ -1139,7 +1235,7 @@ Check if upload is empty
 @param Valiation $validation @param mixed $field @return boolean
 
 ```php
-public function checkUploadIsValid( mixed $validation, mixed $field ): bool;
+public function checkUploadIsValid( Validation $validation, mixed $field ): bool;
 ```
 
 Check if upload is valid
@@ -1147,7 +1243,7 @@ Check if upload is valid
 @param Valiation $validation @param mixed $field @return boolean
 
 ```php
-public function checkUploadMaxSize( mixed $validation, mixed $field ): bool;
+public function checkUploadMaxSize( Validation $validation, mixed $field ): bool;
 ```
 
 Check if uploaded file is larger than PHP allowed size
@@ -1175,7 +1271,7 @@ public function getMessageValid()
 ```
 
 ```php
-public function isAllowEmpty( mixed $validation, string $field ): bool;
+public function isAllowEmpty( Validation $validation, string $field ): bool;
 ```
 
 Check on empty
@@ -1194,18 +1290,16 @@ public function setMessageIniSize( $messageIniSize )
 public function setMessageValid( $messageValid )
 ```
 
-<h1 id="Validation_Validator_File_MimeType">Class Phalcon\Validation\Validator\File\MimeType</h1>
+<h1 id="validation-validator-file-mimetype">Class Phalcon\Validation\Validator\File\MimeType</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/mimetype.zep)
 
-| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file mime type
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\MimeType;
 
 $validator = new Validation();
@@ -1260,29 +1354,23 @@ protected template = File :field must be of type: :types;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
 @param Valiation $validation @param mixed $field @return bool
 
-<h1 id="Validation_Validator_File_Resolu"></h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution)
-
-<h1 id="Validation_Validator_File_Resolution_Equal">Class Phalcon\Validation\Validator\File\Resolution\Equal</h1>
+<h1 id="validation-validator-file-resolution-equal">Class Phalcon\Validation\Validator\File\Resolution\Equal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/equal.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File\Resolution\Equal
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Equal;
 
 $validator = new Validation();
@@ -1328,23 +1416,21 @@ protected template = The resolution of the field :field has to be equal :resolut
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File_Resolution_Max">Class Phalcon\Validation\Validator\File\Resolution\Max</h1>
+<h1 id="validation-validator-file-resolution-max">Class Phalcon\Validation\Validator\File\Resolution\Max</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File\Resolution\Max
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Max;
 
 $validator = new Validation();
@@ -1395,23 +1481,21 @@ protected template = File :field exceeds the maximum resolution of :resolution;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File_Resolution_Min">Class Phalcon\Validation\Validator\File\Resolution\Min</h1>
+<h1 id="validation-validator-file-resolution-min">Class Phalcon\Validation\Validator\File\Resolution\Min</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File\Resolution\Min
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Min;
 
 $validator = new Validation();
@@ -1462,23 +1546,21 @@ protected template = File :field can not have the minimum resolution of :resolut
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File_Size_Equal">Class Phalcon\Validation\Validator\File\Size\Equal</h1>
+<h1 id="validation-validator-file-size-equal">Class Phalcon\Validation\Validator\File\Size\Equal</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/equal.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1529,23 +1611,21 @@ protected template = File :field does not have the exact :size filesize;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File_Size_Max">Class Phalcon\Validation\Validator\File\Size\Max</h1>
+<h1 id="validation-validator-file-size-max">Class Phalcon\Validation\Validator\File\Size\Max</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1596,23 +1676,21 @@ protected template = File :field exceeds the size of :size;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_File_Size_Min">Class Phalcon\Validation\Validator\File\Size\Min</h1>
+<h1 id="validation-validator-file-size-min">Class Phalcon\Validation\Validator\File\Size\Min</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\FileAbstract | | Extends | FileAbstract |
-
-Phalcon\Validation\Validator\File
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1663,23 +1741,21 @@ protected template = File :field can not have the minimum size of :size;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Identical">Class Phalcon\Validation\Validator\Identical</h1>
+<h1 id="validation-validator-identical">Class Phalcon\Validation\Validator\Identical</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/identical.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Identical
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value is identical to other
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Identical;
 
 $validator = new Validation();
@@ -1725,23 +1801,21 @@ protected template = Field :field does not have the expected value;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_InclusionIn">Class Phalcon\Validation\Validator\InclusionIn</h1>
+<h1 id="validation-validator-inclusionin">Class Phalcon\Validation\Validator\InclusionIn</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception | | Extends | Validator |
-
-Phalcon\Validation\Validator\InclusionIn
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Check if a value is included into a list of values
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 
 $validator = new Validation();
@@ -1787,18 +1861,16 @@ protected template = Field :field must be a part of list: :domain;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Ip">Class Phalcon\Validation\Validator\Ip</h1>
+<h1 id="validation-validator-ip">Class Phalcon\Validation\Validator\Ip</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/ip.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Messages\Message | | Extends | Validator |
-
-Phalcon\Validation\Validator\ip
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Messages\Message | | Extends | AbstractValidator |
 
 Check for IP addresses
 
@@ -1868,23 +1940,21 @@ protected template = Field :field must be a valid IP address;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Numericality">Class Phalcon\Validation\Validator\Numericality</h1>
+<h1 id="validation-validator-numericality">Class Phalcon\Validation\Validator\Numericality</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Numericality
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for a valid numeric value
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Numericality;
 
 $validator = new Validation();
@@ -1925,23 +1995,21 @@ protected template = Field :field does not have a valid numeric format;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_PresenceOf">Class Phalcon\Validation\Validator\PresenceOf</h1>
+<h1 id="validation-validator-presenceof">Class Phalcon\Validation\Validator\PresenceOf</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\PresenceOf
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Validates that a value is not null or empty string
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 
 $validator = new Validation();
@@ -1982,23 +2050,21 @@ protected template = Field :field is required;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Regex">Class Phalcon\Validation\Validator\Regex</h1>
+<h1 id="validation-validator-regex">Class Phalcon\Validation\Validator\Regex</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Regex
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Allows validate if the value of a field matches a regular expression
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Regex as RegexValidator;
 
 $validator = new Validation();
@@ -2044,25 +2110,21 @@ protected template = Field :field does not match the required format;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_StringLe"></h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength)
-
-<h1 id="Validation_Validator_StringLength">Class Phalcon\Validation\Validator\StringLength</h1>
+<h1 id="validation-validator-stringlength">Class Phalcon\Validation\Validator\StringLength</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validator, Phalcon\Validation\ValidatorComposite, Phalcon\Validation\Validator\StringLength\Max, Phalcon\Validation\Validator\StringLength\Min, Phalcon\Validation\Exception | | Extends | ValidatorComposite |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\AbstractValidator, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\StringLength\Max, Phalcon\Validation\Validator\StringLength\Min, Phalcon\Validation\Exception | | Extends | AbstractValidatorComposite |
 
 Validates that a string has the specified maximum and minimum constraints The test is passed if for a string's length L, min<=L<=max, i.e. L must be at least min, and at most max. Since Phalcon v4.0 this valitor works like a container
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\StringLength as StringLength;
 
 $validator = new Validation();
@@ -2125,18 +2187,16 @@ public function __construct( array $options = [] ): void;
 
 Constructor
 
-<h1 id="Validation_Validator_StringLength_Max">Class Phalcon\Validation\Validator\StringLength\Max</h1>
+<h1 id="validation-validator-stringlength-max">Class Phalcon\Validation\Validator\StringLength\Max</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception | | Extends | Validator |
-
-Phalcon\Validation\Validator\StringLength
+| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Validates that a string has the specified maximum constraints The test is passed if for a string's length L, L<=max, i.e. L must be at most max.
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\StringLength\Max;
 
 $validator = new Validation();
@@ -2187,23 +2247,21 @@ protected template = Field :field must not exceed :max characters long;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_StringLength_Min">Class Phalcon\Validation\Validator\StringLength\Min</h1>
+<h1 id="validation-validator-stringlength-min">Class Phalcon\Validation\Validator\StringLength\Min</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator, Phalcon\Validation\Exception | | Extends | Validator |
-
-Phalcon\Validation\Validator\StringLength
+| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Validates that a string has the specified minimum constraints The test is passed if for a string's length L, min<=L, i.e. L must be at least min.
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\StringLength\Min;
 
 $validator = new Validation();
@@ -2254,21 +2312,21 @@ protected template = Field :field must be at least :min characters long;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_Validator_Uniqueness">Class Phalcon\Validation\Validator\Uniqueness</h1>
+<h1 id="validation-validator-uniqueness">Class Phalcon\Validation\Validator\Uniqueness</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\CombinedFieldsValidator, Phalcon\Validation\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Collection | | Extends | CombinedFieldsValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Collection | | Extends | AbstractCombinedFieldsValidator |
 
 Check that a field is unique in the related table
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
 
 $validator = new Validation();
@@ -2350,7 +2408,7 @@ private columnMap;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
@@ -2362,7 +2420,7 @@ protected function getColumnNameReal( mixed $record, string $field ): string;
 The column map is used in the case to get real column name
 
 ```php
-protected function isUniqueness( mixed $validation, mixed $field ): bool;
+protected function isUniqueness( Validation $validation, mixed $field ): bool;
 ```
 
 //
@@ -2379,18 +2437,16 @@ protected function isUniquenessModel( mixed $record, array $field, array $values
 
 Uniqueness method used for model
 
-<h1 id="Validation_Validator_Url">Class Phalcon\Validation\Validator\Url</h1>
+<h1 id="validation-validator-url">Class Phalcon\Validation\Validator\Url</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/url.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator | | Extends | Validator |
-
-Phalcon\Validation\Validator\Url
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a url format
 
 ```php
-use Phalcon\Validation;
+use Phalcon\Validation\Validation;
 use Phalcon\Validation\Validator\Url as UrlValidator;
 
 $validator = new Validation();
@@ -2431,50 +2487,16 @@ protected template = Field :field must be a url;
 ## Metody
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_ValidatorComposite">Abstract Class Phalcon\Validation\ValidatorComposite</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorcomposite.zep)
-
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation | | Extends | Validator | | Implements | ValidatorCompositeInterface |
-
-Phalcon\Validation\CombinedFieldsValidator
-
-This is a base class for combined fields validators
-
-## Properties
-
-```php
-/**
- * @var array
- */
-protected validators;
-
-```
-
-## Metody
-
-```php
-public function getValidators(): array
-```
-
-```php
-public function validate( mixed $validation, mixed $field ): bool;
-```
-
-Executes the validation
-
-<h1 id="Validation_ValidatorCompositeInterface">Interface Phalcon\Validation\ValidatorCompositeInterface</h1>
+<h1 id="validation-validatorcompositeinterface">Interface Phalcon\Validation\ValidatorCompositeInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorcompositeinterface.zep)
 
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation |
-
-Phalcon\Validation\CombinedFieldsValidator
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation\Validation |
 
 This is a base class for combined fields validators
 
@@ -2487,12 +2509,12 @@ public function getValidators(): array;
 Executes the validation
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
-<h1 id="Validation_ValidatorFactory">Class Phalcon\Validation\ValidatorFactory</h1>
+<h1 id="validation-validatorfactory">Class Phalcon\Validation\ValidatorFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorfactory.zep)
 
@@ -2524,13 +2546,13 @@ protected function getAdapters(): array;
 
 //
 
-<h1 id="Validation_ValidatorInterface">Interface Phalcon\Validation\ValidatorInterface</h1>
+<h1 id="validation-validatorinterface">Interface Phalcon\Validation\ValidatorInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorinterface.zep)
 
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Validation |
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Validation\Validation |
 
-Interface for Phalcon\Validation\Validator
+Interface for Phalcon\Validation\AbstractValidator
 
 ## Metody
 
@@ -2583,109 +2605,9 @@ Clear current template and set new from an array,
 @return ValidatorInterface
 
 ```php
-public function validate( mixed $validation, mixed $field ): bool;
+public function validate( Validation $validation, mixed $field ): bool;
 ```
 
 Executes the validation
 
 @return boolean
-
-<h1 id="ValidationInterface">Interface Phalcon\ValidationInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validationinterface.zep)
-
-| Namespace | Phalcon | | Uses | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface |
-
-Interface for the Phalcon\Validation component
-
-## Metody
-
-```php
-public function add( string $field, mixed $validator ): ValidationInterface;
-```
-
-Adds a validator to a field
-
-```php
-public function appendMessage( mixed $message ): ValidationInterface;
-```
-
-Appends a message to the messages list
-
-```php
-public function bind( mixed $entity, mixed $data ): ValidationInterface;
-```
-
-Assigns the data to an entity The entity is used to obtain the validation values
-
-@param object entity @param array|object data
-
-```php
-public function getEntity(): object;
-```
-
-Returns the bound entity
-
-```php
-public function getFilters( string $field = null ): mixed | null;
-```
-
-Returns all the filters or a specific one
-
-```php
-public function getLabel( string $field ): string;
-```
-
-Get label for field
-
-```php
-public function getMessages(): Messages;
-```
-
-Returns the registered validators
-
-```php
-public function getValidators(): array;
-```
-
-Returns the validators added to the validation
-
-```php
-public function getValue( string $field ): mixed | null;
-```
-
-Gets the a value to validate in the array/object data source
-
-```php
-public function rule( string $field, mixed $validator ): ValidationInterface;
-```
-
-Alias of `add` method
-
-```php
-public function rules( string $field, array $validators ): ValidationInterface;
-```
-
-Adds the validators to a field
-
-```php
-public function setFilters( string $field, mixed $filters ): ValidationInterface;
-```
-
-Adds filters to the field
-
-@param array|string filters
-
-```php
-public function setLabels( array $labels ): void;
-```
-
-Adds labels for fields
-
-```php
-public function validate( mixed $data = null, mixed $entity = null ): Messages;
-```
-
-Validate a set of data according to a set of rules
-
-@param array|object data @param object entity
