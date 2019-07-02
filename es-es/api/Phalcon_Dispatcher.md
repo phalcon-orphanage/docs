@@ -5,27 +5,17 @@ version: '4.0'
 title: 'Phalcon\Dispatcher'
 ---
 
-* [Phalcon\Dispatcher](#Dispatcher)
-* [Phalcon\DispatcherInterface](#DispatcherInterface)
+* [Phalcon\Dispatcher\AbstractDispatcher](#dispatcher-abstractdispatcher)
+* [Phalcon\Dispatcher\DispatcherInterface](#dispatcher-dispatcherinterface)
+* [Phalcon\Dispatcher\Exception](#dispatcher-exception)
 
-<h1 id="Dispatcher">Abstract Class Phalcon\Dispatcher</h1>
+<h1 id="dispatcher-abstractdispatcher">Abstract Class Phalcon\Dispatcher\AbstractDispatcher</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/abstractdispatcher.zep)
 
-| Namespace | Phalcon | | Uses | Exception, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\DispatcherInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Exception, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
+| Namespace | Phalcon\Dispatcher | | Uses | Exception, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Dispatcher\DispatcherInterface, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
-
-## Constantes
-
-```php
-const EXCEPTION_ACTION_NOT_FOUND = 5;
-const EXCEPTION_CYCLIC_ROUTING = 1;
-const EXCEPTION_HANDLER_NOT_FOUND = 2;
-const EXCEPTION_INVALID_HANDLER = 3;
-const EXCEPTION_INVALID_PARAMS = 4;
-const EXCEPTION_NO_DI = 0;
-```
 
 ## Properties
 
@@ -295,7 +285,7 @@ public function setActionSuffix( string $actionSuffix ): void;
 Sets the default action suffix
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the dependency injector
@@ -313,7 +303,7 @@ public function setDefaultNamespace( string $namespaceName ): void;
 Sets the default namespace
 
 ```php
-public function setEventsManager( mixed $eventsManager ): void;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Establece el administrador de eventos
@@ -325,7 +315,7 @@ public function setHandlerSuffix( string $handlerSuffix ): void;
 Sets the default suffix for the handler
 
 ```php
-public function setModelBinder( mixed $modelBinder, mixed $cache = null ): Dispatcher;
+public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): Dispatcher;
 ```
 
 Enable model binding during dispatch
@@ -394,13 +384,13 @@ protected function toCamelCase( string $input ): string;
 
 //
 
-<h1 id="DispatcherInterface">Interface Phalcon\DispatcherInterface</h1>
+<h1 id="dispatcher-dispatcherinterface">Interface Phalcon\Dispatcher\DispatcherInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcherinterface.zep)
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/dispatcherinterface.zep)
 
-| Namespace | Phalcon |
+| Namespace | Phalcon\Dispatcher |
 
-Interface for Phalcon\Dispatcher
+Interface for Phalcon\Dispatcher\AbstractDispatcher
 
 ## Métodos
 
@@ -521,3 +511,22 @@ public function setParams( array $params ): void;
 ```
 
 Sets action params to be dispatched
+
+<h1 id="dispatcher-exception">Class Phalcon\Dispatcher\Exception</h1>
+
+[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/exception.zep)
+
+| Namespace | Phalcon\Dispatcher | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Dispatcher/* will use this class
+
+## Constantes
+
+```php
+const EXCEPTION_ACTION_NOT_FOUND = 5;
+const EXCEPTION_CYCLIC_ROUTING = 1;
+const EXCEPTION_HANDLER_NOT_FOUND = 2;
+const EXCEPTION_INVALID_HANDLER = 3;
+const EXCEPTION_INVALID_PARAMS = 4;
+const EXCEPTION_NO_DI = 0;
+```
