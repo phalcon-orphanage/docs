@@ -2,16 +2,16 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Exception'
+title: 'Phalcon\Exception.zep'
 ---
 
-* [Phalcon\Exception](#Exception)
+* [Phalcon\Exception](#exception)
 
-<h1 id="Exception">Class Phalcon\Exception</h1>
+<h1 id="exception">Class Phalcon\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/exception.zep)
 
-| Namespace | Phalcon | | Extends | \Exception | | Implements | \Throwable |
+| Namespace | Phalcon | | Uses | Throwable | | Extends | \Exception | | Implements | Throwable |
 
 Phalcon\Exception
 
