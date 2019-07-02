@@ -5,11 +5,11 @@ version: '4.0'
 title: 'Phalcon\Url'
 ---
 
-* [Phalcon\Url](#Url)
-* [Phalcon\Url\Exception](#Url_Exception)
-* [Phalcon\UrlInterface](#UrlInterface)
+* [Phalcon\Url](#url)
+* [Phalcon\Url\Exception](#url-exception)
+* [Phalcon\UrlInterface](#urlinterface)
 
-<h1 id="Url">Class Phalcon\Url</h1>
+<h1 id="url">Class Phalcon\Url</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
 
@@ -168,7 +168,7 @@ $url->setBaseUri("/invo/index.php/");
 ```
 
 ```php
-public function setDI( mixed $container ): void;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
@@ -183,7 +183,7 @@ Sets a prefix for all static URLs generated
 $url->setStaticBaseUri("/invo/");
 ```
 
-<h1 id="Url_Exception">Class Phalcon\Url\Exception</h1>
+<h1 id="url-exception">Class Phalcon\Url\Exception</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url/exception.zep)
 
@@ -193,7 +193,7 @@ Phalcon\Url\Exception
 
 Exceptions thrown in Phalcon\Url will use this class
 
-<h1 id="UrlInterface">Interface Phalcon\UrlInterface</h1>
+<h1 id="urlinterface">Interface Phalcon\UrlInterface</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/urlinterface.zep)
 
