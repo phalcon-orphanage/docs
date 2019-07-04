@@ -97,7 +97,7 @@ protected value;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool );
@@ -275,7 +275,7 @@ Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 Interface for Phalcon\Http\Cookie
 
-## Methods
+## Методы
 
 ```php
 public function delete();
@@ -389,7 +389,7 @@ Sets if the cookie must be encrypted/decrypted automatically
 
 Common methods
 
-## Methods
+## Методы
 
 ```php
 final protected function checkStringParameter( mixed $element ): void;
@@ -467,7 +467,7 @@ protected uri;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getBody(): <StreamInterface>
@@ -776,7 +776,7 @@ protected uri;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getMethod(): string
@@ -890,7 +890,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 PSR-7 Request
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $method = string, mixed $uri = null, mixed $body = string, mixed $headers = [] );
@@ -908,7 +908,7 @@ Request constructor.
 
 PSR-17 RequestFactory
 
-## Methods
+## Методы
 
 ```php
 public function createRequest( string $method, mixed $uri ): RequestInterface;
@@ -960,7 +960,7 @@ private statusCode = 200;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $body = string, int $code = int, array $headers = [] );
@@ -1002,7 +1002,7 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 PSR-17 ResponseFactory
 
-## Methods
+## Методы
 
 ```php
 public function createResponse( int $code = int, string $reasonPhrase = string ): ResponseInterface;
@@ -1098,7 +1098,7 @@ private uploadedFiles;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $method = string, mixed $uri = null, array $serverParams = [], mixed $body = string, mixed $headers = [], array $cookies = [], array $queryParams = [], array $uploadFiles = [], mixed $parsedBody = null, string $protocol = string );
@@ -1252,7 +1252,7 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 PSR-17 ServerRequestFactory
 
-## Methods
+## Методы
 
 ```php
 public function createServerRequest( string $method, mixed $uri, array $serverParams = [] ): ServerRequestInterface;
@@ -1316,7 +1316,7 @@ protected warning = false;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $stream, string $mode = string );
@@ -1487,7 +1487,7 @@ private eof = false;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct();
@@ -1547,7 +1547,7 @@ Describes a data stream from "php://memory"
 
 Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $mode = string ): void;
@@ -1565,7 +1565,7 @@ Describes a data stream from "php://temp"
 
 Typically, an instance will wrap a PHP stream; this interface provides a wrapper around the most common operations, including serialization of the entire stream to a string.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $mode = string ): void;
@@ -1581,7 +1581,7 @@ Constructor
 
 PSR-17 StreamFactory
 
-## Methods
+## Методы
 
 ```php
 public function createStream( string $content = string ): StreamInterface;
@@ -1707,7 +1707,7 @@ private stream;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null );
@@ -1777,7 +1777,7 @@ If you wish to move to a stream, use getStream(), as SAPI operations cannot guar
 
 PSR-17 UploadedFileFactory
 
-## Methods
+## Методы
 
 ```php
 public function createUploadedFile( StreamInterface $stream, int $size = null, int $error = int, string $clientFilename = null, string $clientMediaType = null ): UploadedFileInterface;
@@ -1885,7 +1885,7 @@ private user = ;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $uri = string );
@@ -2065,7 +2065,7 @@ Return an instance with the specified user information.
 
 PSR-17 UriFactory
 
-## Methods
+## Методы
 
 ```php
 public function createUri( string $uri = string ): UriInterface;
@@ -2134,7 +2134,7 @@ private strictHostCheck = false;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -2690,7 +2690,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $file, mixed $key = null );
@@ -2762,7 +2762,7 @@ Phalcon\Http\Request\FileInterface
 
 Interface for Phalcon\Http\Request\File
 
-## Methods
+## Методы
 
 ```php
 public function getName(): string;
@@ -2808,7 +2808,7 @@ Move the temporary file to a destination
 
 Interface for Phalcon\Http\Request
 
-## Methods
+## Методы
 
 ```php
 public function get( string $name = null, mixed $filters = null, mixed $defaultValue = null, bool $notAllowEmpty = bool, bool $noRecursive = bool ): mixed;
@@ -3235,7 +3235,7 @@ protected statusCodes;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $content = null, mixed $code = null, mixed $status = null );
@@ -3602,7 +3602,7 @@ protected useEncryption = true;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( bool $useEncryption = bool, string $signKey = null );
@@ -3714,7 +3714,7 @@ Phalcon\Http\Response\CookiesInterface
 
 Interface for Phalcon\Http\Response\Cookies
 
-## Methods
+## Методы
 
 ```php
 public function delete( string $name ): bool;
@@ -3792,7 +3792,7 @@ protected headers;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function get( string $name ): string | bool;
@@ -3852,7 +3852,7 @@ Phalcon\Http\Response\HeadersInterface
 
 Interface for Phalcon\Http\Response\Headers compatible bags
 
-## Methods
+## Методы
 
 ```php
 public function get( string $name ): string | bool;
@@ -3900,7 +3900,7 @@ Phalcon\Http\Response
 
 Interface for Phalcon\Http\Response
 
-## Methods
+## Методы
 
 ```php
 public function appendContent( mixed $content ): ResponseInterface;
@@ -4048,7 +4048,7 @@ Participant in processing a server request and response.
 
 An HTTP middleware component participates in processing an HTTP message: by acting on the request, generating the response, or forwarding the request to a subsequent middleware and possibly acting on its response.
 
-## Methods
+## Методы
 
 ```php
 abstract public function process( ServerRequestInterface $request, RequestHandlerInterface $handler ): ResponseInterface;
@@ -4068,7 +4068,7 @@ Handles a server request and produces a response.
 
 An HTTP request handler process an HTTP request in order to produce an HTTP response.
 
-## Methods
+## Методы
 
 ```php
 abstract public function handle( ServerRequestInterface $request ): ResponseInterface;
