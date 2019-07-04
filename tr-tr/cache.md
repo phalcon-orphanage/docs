@@ -3,7 +3,7 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 upgrade: '#cache'
-category: 'cache'
+title: 'Önbellek'
 ---
 
 # Cache Component
