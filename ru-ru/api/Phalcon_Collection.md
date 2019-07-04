@@ -39,7 +39,7 @@ protected lowerKeys;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $data = [], bool $insensitive = bool );
@@ -201,7 +201,7 @@ Exceptions for the Collection object
 
 Phalcon\Collection\ReadCollection is a read only Collection object
 
-## Methods
+## Методы
 
 ```php
 public function remove( string $element ): void;
