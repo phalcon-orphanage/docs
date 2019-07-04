@@ -2,11 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Coding Standard'
 ---
 # Phalcon Coding Standard
 <hr />
 
-Last update: 2019-03-28
+Last update: 2019-07-04
 
 Phalcon is written in [Zephir][zephir], a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
 
@@ -19,11 +20,11 @@ In this document we outline the coding standard that Phalcon is using for editin
 - All files must end with a single blank line.
 - Folders are also named StudlyCaps and the folder/subfolder tree follows the namespace of the class.
 
-```bash
+```php
 phalcon/Acl/Adapter/Memory.zep
 ```
 
-```zephir
+```php
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Adapter;
@@ -44,16 +45,18 @@ class Memory extends Adapter
 ## Classes
 - Class names must be declared in StudlyCaps.
 - Opening braces for classes must go on the next line, and closing braces must go on the next line after the body.
+- Abstract classes must be prefixed by `Abstract`
+- Interfaces must be suffixed by `Interface`
 
 ### Constants
 - Class constants must be declared in all upper case with underscore separators.
 - Class constants must appear at the top of the class.
 - Class constants must be sorted alphabetically by constant name.
 
-```zephir
-namespace Phalcon;
+```php
+namespace Phalcon\Acl;
 
-abstract class Acl
+class Enum
 {
     const ALLOW = 1;
     const DENY  = 0;
@@ -67,7 +70,7 @@ abstract class Acl
 - Whenever possible, properties must have a docblock that defines their type with the `@var` declaration
 - Properties must not be prefixed with underscore `_`. The only exception is if the property name is a reserved keyword such as `default`, `namespace` etc.
 
-```zephir
+```php
 namespace Phalcon\Acl\Adapter;
 
 use Phalcon\Acl\Adapter;
@@ -91,7 +94,7 @@ class Memory extends Adapter
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
 - Visibility must be declared on all properties and methods; `abstract` and `final` must be declared before the visibility; `static` must be declared after the visibility.
 
-```zephir
+```php
 abstract public function getElement() -> var;
 
 final public function getElement() -> var;
@@ -103,7 +106,7 @@ public static function getElement() -> var;
 - Opening braces for control structures must go on the same line, and closing braces must go on the next line after the body.
 - Control structures such as `if` must not have parentheses around the conditional, unless it is a complex one.
 
-```zephir
+```php
 if typeof variable === "array" {
 
 }
@@ -114,7 +117,7 @@ if typeof variable === "array" {
 - Each method must have its type declared before it
 - Method arguments with default values must go at the end of the argument list.
 
-```zephir
+```php
 public function setElement(string! name, var value) -> void;
 ```
 
