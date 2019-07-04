@@ -50,7 +50,7 @@ protected repository;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $config ): void;
@@ -98,7 +98,7 @@ Phalcon\Paginator\AdapterInterface
 
 Interface for Phalcon\Paginator adapters
 
-## Methods
+## Методы
 
 ```php
 public function getLimit(): int;
@@ -148,7 +148,7 @@ $paginator = new Model(
 $paginate = $paginator->paginate();
 ```
 
-## Methods
+## Методы
 
 ```php
 public function paginate(): RepositoryInterface;
@@ -184,7 +184,7 @@ $paginator = new NativeArray(
 );
 ```
 
-## Methods
+## Методы
 
 ```php
 public function paginate(): RepositoryInterface;
@@ -234,7 +234,7 @@ protected columns;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $config ): void;
@@ -288,7 +288,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -359,7 +359,7 @@ protected properties;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __get( string $property ): mixed | null;
@@ -468,7 +468,7 @@ const PROPERTY_PREVIOUS_PAGE = previous;
 const PROPERTY_TOTAL_ITEMS = total_items;
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getAliases(): array;
