@@ -105,7 +105,7 @@ protected useSigning = true;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $cipher = string, bool $useSigning = bool ): void;
@@ -303,7 +303,7 @@ Initialize available cipher algorithms.
 
 Interface for Phalcon\Crypt\Crypt
 
-## Methods
+## Методы
 
 ```php
 public function decrypt( string $text, string $key = null ): string;
