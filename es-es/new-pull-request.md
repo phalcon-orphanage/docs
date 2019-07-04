@@ -2,6 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Nuevo <i>Pull Request (PR)</i>'
 ---
 
 # Nuevo *Pull Request (PR)* 
