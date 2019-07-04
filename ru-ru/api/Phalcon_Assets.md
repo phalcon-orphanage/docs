@@ -88,7 +88,7 @@ protected version;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $type, string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
@@ -232,7 +232,7 @@ public function setVersion(     string $version )
 
 Represents CSS assets
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
@@ -248,7 +248,7 @@ Phalcon\Assets\Asset\Css constructor
 
 Represents Javascript assets
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
@@ -264,7 +264,7 @@ Phalcon\Assets\Asset\Js constructor
 
 Interface for custom Phalcon\Assets reources
 
-## Methods
+## Методы
 
 ```php
 public function getAssetKey(): string;
@@ -398,7 +398,7 @@ protected version;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct(): void;
@@ -652,7 +652,7 @@ Exceptions thrown in Phalcon\Assets will use this class
 
 Interface for custom Phalcon\Assets filters
 
-## Methods
+## Методы
 
 ```php
 public function filter( string $content ): string;
@@ -668,7 +668,7 @@ Filters the content returning a string with the filtered content
 
 Minify the css - removes comments removes newlines and line feeds keeping removes last semicolon from last property
 
-## Methods
+## Методы
 
 ```php
 public function filter( string $content ): string;
@@ -684,7 +684,7 @@ Filters the content using CSSMIN NOTE: This functionality is not currently avail
 
 Deletes the characters which are insignificant to JavaScript. Comments will be removed. Tabs will be replaced with spaces. Carriage returns will be replaced with linefeeds. Most spaces and linefeeds will be removed.
 
-## Methods
+## Методы
 
 ```php
 public function filter( string $content ): string;
@@ -700,7 +700,7 @@ Filters the content using JSMIN NOTE: This functionality is not currently availa
 
 Returns the content without make any modification to the original source
 
-## Methods
+## Методы
 
 ```php
 public function filter( string $content ): string;
@@ -745,7 +745,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $type, string $content, bool $filter = bool, array $attributes = [] ): void;
@@ -801,7 +801,7 @@ Sets the inline's type
 
 Represents an inlined CSS
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
@@ -817,7 +817,7 @@ Phalcon\Assets\Inline\Css constructor
 
 Represents an inline JavaScript
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
@@ -859,7 +859,7 @@ protected implicitOutput = true;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
