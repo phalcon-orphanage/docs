@@ -72,7 +72,7 @@ protected roleCallback;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getActiveIdentity()
@@ -222,7 +222,7 @@ protected roleCacheCallback;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
@@ -318,7 +318,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
 
 Interface for Phalcon\Mvc\Dispatcher\Firewall adapters
 
-## Methods
+## Методы
 
 ```php
 public function getDefaultAccess(): int;
@@ -398,7 +398,7 @@ protected resolvedRole;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( AdapterInterface $annotationsAdapter );
@@ -518,7 +518,7 @@ protected routeNameConfiguration = true;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $aclServiceName, array $boundModelsKeyMap = null );
