@@ -2,6 +2,7 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
+title: 'Generating a backtrace'
 ---
 
 # Generating a backtrace
