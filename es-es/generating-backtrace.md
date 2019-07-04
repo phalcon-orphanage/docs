@@ -2,6 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Generar una traza inversa'
 ---
 
 # Generar una traza inversa
