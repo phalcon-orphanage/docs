@@ -3,7 +3,7 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Λίστες ελέγχου πρόσβασης (ACL)'
 ---
 
 # Access Control Lists Component
