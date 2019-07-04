@@ -79,7 +79,7 @@ protected static _default;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __call( string $method, array $arguments = [] ): mixed | null;
@@ -329,7 +329,7 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
-## Methods
+## Методы
 
 ```php
 public function __construct(): void;
@@ -347,7 +347,7 @@ Phalcon\Di\FactoryDefault\Cli
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
 
-## Methods
+## Методы
 
 ```php
 public function __construct(): void;
@@ -384,7 +384,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __get( string $propertyName ): mixed | null;
@@ -424,7 +424,7 @@ Sets the event manager
 
 This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
 
-## Methods
+## Методы
 
 ```php
 public function getDI(): DiInterface;
@@ -476,7 +476,7 @@ protected sharedInstance;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 final public function __construct( mixed $definition, bool $shared = bool ): void;
@@ -552,7 +552,7 @@ Phalcon\Di\Service\Builder
 
 This class builds instances based on complex definitions
 
-## Methods
+## Методы
 
 ```php
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
@@ -570,7 +570,7 @@ Builds a service using a complex service definition
 
 Represents a service in the services container
 
-## Methods
+## Методы
 
 ```php
 public function getDefinition(): mixed;
@@ -652,7 +652,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 }
 ```
 
-## Methods
+## Методы
 
 ```php
 public function register( DiInterface $di ): void;
@@ -668,7 +668,7 @@ Registers a service provider.
 
 Interface for Phalcon\Di
 
-## Methods
+## Методы
 
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
