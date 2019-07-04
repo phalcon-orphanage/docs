@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Listas de control de acceso (ACL)'
 ---
 
 # Listas de Control de Acceso (ACL)
