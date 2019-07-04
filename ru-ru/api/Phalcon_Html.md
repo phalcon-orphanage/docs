@@ -33,7 +33,7 @@ title: 'Phalcon\Html'
 
 This class helps to work with HTML Attributes
 
-## Methods
+## Методы
 
 ```php
 public function __toString(): string;
@@ -57,7 +57,7 @@ Render attributes as HTML attributes
 * 
 * Interface Phalcon\Html\Attributes\AttributesInterface */
 
-## Methods
+## Методы
 
 ```php
 public function getAttributes(): Attributes;
@@ -81,7 +81,7 @@ Set Attributes
 * 
 * Interface Phalcon\Html\Attributes\RenderInterface */
 
-## Methods
+## Методы
 
 ```php
 public function render(): string;
@@ -125,7 +125,7 @@ private template = <dt><a href=\"%link%\">%label%</a></dt>;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function add( string $label, string $link = string ): Breadcrumbs;
@@ -218,7 +218,7 @@ protected escaper;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( EscaperInterface $escaper );
@@ -270,7 +270,7 @@ Phalcon\Html\Helper\Anchor
 
 Creates an anchor
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
@@ -288,7 +288,7 @@ Phalcon\Html\Helper\AnchorRaw
 
 Creates a raw anchor
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $href, string $text, array $attributes = [] ): string;
@@ -306,7 +306,7 @@ Phalcon\Html\Helper\Body
 
 Creates a body tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -324,7 +324,7 @@ Phalcon\Html\Helper\Button
 
 Creates a button tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
@@ -342,7 +342,7 @@ Phalcon\Html\Helper\Close
 
 Creates a closing tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $tag ): string;
@@ -362,7 +362,7 @@ Phalcon\Html\Helper\Address
 
 Creates an element
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [] ): string;
@@ -380,7 +380,7 @@ Phalcon\Html\Helper\ElementRaw
 
 Creates an element raw
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $tag, string $text, array $attributes = [] ): string;
@@ -400,7 +400,7 @@ Phalcon\Html\Helper\Form
 
 Creates a form opening tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -418,7 +418,7 @@ Phalcon\Html\Helper\Img
 
 Creates am img tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $src, array $attributes = [] ): string;
@@ -438,7 +438,7 @@ Phalcon\Html\Helper\Label
 
 Creates a label
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( array $attributes = [] ): string;
@@ -458,7 +458,7 @@ Phalcon\Html\Helper\TextArea
 
 Creates a textarea tag
 
-## Methods
+## Методы
 
 ```php
 public function __invoke( string $text, array $attributes = [] ): string;
@@ -542,7 +542,7 @@ private url;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( EscaperInterface $escaper = null, UrlInterface $url = null );
@@ -1452,7 +1452,7 @@ private escaper;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( EscaperInterface $escaper, array $services = [] );

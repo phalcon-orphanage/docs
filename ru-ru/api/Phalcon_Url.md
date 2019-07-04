@@ -59,7 +59,7 @@ protected staticBaseUri;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
@@ -201,7 +201,7 @@ Exceptions thrown in Phalcon\Url will use this class
 
 Interface for Phalcon\UrlInterface
 
-## Methods
+## Методы
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null ): string;

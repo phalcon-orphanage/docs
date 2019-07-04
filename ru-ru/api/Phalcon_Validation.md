@@ -84,7 +84,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -188,7 +188,7 @@ protected validators;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getValidators(): array
@@ -245,7 +245,7 @@ protected values;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $validators = [] ): void;
@@ -375,7 +375,7 @@ Internal validations, if it returns true, then skip the current validator
 
 Interface for the Phalcon\Validation component
 
-## Methods
+## Методы
 
 ```php
 public function add( string $field, ValidatorInterface $validator ): ValidationInterface;
@@ -514,7 +514,7 @@ protected template = Field :field must contain only letters and numbers;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -569,7 +569,7 @@ protected template = Field :field must contain only letters;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -634,7 +634,7 @@ protected template = Field :field must be within the range of :min to :max;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -699,7 +699,7 @@ protected template = Field :field must match the callback function;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -759,7 +759,7 @@ protected template = Field :field must be the same as :with;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -820,7 +820,7 @@ protected template = Field :field is not valid for a credit card number;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -880,7 +880,7 @@ protected template = Field :field is not a valid date;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -935,7 +935,7 @@ protected template = Field :field must be numeric;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -990,7 +990,7 @@ protected template = Field :field must be an email address;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1064,7 +1064,7 @@ protected template = Field :field must not be a part of list: :domain;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1144,7 +1144,7 @@ $validator->add(
 );
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] );
@@ -1216,7 +1216,7 @@ protected messageValid = Field :field is not valid;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function checkUpload( Validation $validation, mixed $field ): bool;
@@ -1351,7 +1351,7 @@ protected template = File :field must be of type: :types;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1413,7 +1413,7 @@ protected template = The resolution of the field :field has to be equal :resolut
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1478,7 +1478,7 @@ protected template = File :field exceeds the maximum resolution of :resolution;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1543,7 +1543,7 @@ protected template = File :field can not have the minimum resolution of :resolut
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1608,7 +1608,7 @@ protected template = File :field does not have the exact :size filesize;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1673,7 +1673,7 @@ protected template = File :field exceeds the size of :size;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1738,7 +1738,7 @@ protected template = File :field can not have the minimum size of :size;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1798,7 +1798,7 @@ protected template = Field :field does not have the expected value;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1858,7 +1858,7 @@ protected template = Field :field must be a part of list: :domain;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1937,7 +1937,7 @@ protected template = Field :field must be a valid IP address;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -1992,7 +1992,7 @@ protected template = Field :field does not have a valid numeric format;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2047,7 +2047,7 @@ protected template = Field :field is required;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2107,7 +2107,7 @@ protected template = Field :field does not match the required format;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2179,7 +2179,7 @@ $validation->add(
 );
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -2244,7 +2244,7 @@ protected template = Field :field must not exceed :max characters long;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2309,7 +2309,7 @@ protected template = Field :field must be at least :min characters long;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2405,7 +2405,7 @@ private columnMap;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2484,7 +2484,7 @@ protected template = Field :field must be a url;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function validate( Validation $validation, mixed $field ): bool;
@@ -2500,7 +2500,7 @@ Executes the validation
 
 This is a base class for combined fields validators
 
-## Methods
+## Методы
 
 ```php
 public function getValidators(): array;
@@ -2526,7 +2526,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -2554,7 +2554,7 @@ protected function getAdapters(): array;
 
 Interface for Phalcon\Validation\AbstractValidator
 
-## Methods
+## Методы
 
 ```php
 public function getOption( string $key, mixed $defaultValue = null ): mixed;

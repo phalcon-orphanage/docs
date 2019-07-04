@@ -65,7 +65,7 @@ protected value;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $attributes = [] ): void;
@@ -277,7 +277,7 @@ Phalcon\Forms\Element\Check
 
 Component INPUT[type=check] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -293,7 +293,7 @@ Renders the element widget returning html
 
 Component INPUT[type=date] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -309,7 +309,7 @@ Renders the element widget returning html
 
 Interface for Phalcon\Forms\Element classes
 
-## Methods
+## Методы
 
 ```php
 public function addFilter( string $filter ): ElementInterface;
@@ -513,7 +513,7 @@ Phalcon\Forms\Element\Email
 
 Component INPUT[type=email] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -529,7 +529,7 @@ Renders the element widget returning html
 
 Component INPUT[type=file] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -547,7 +547,7 @@ Phalcon\Forms\Element\Hidden
 
 Component INPUT[type=hidden] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -565,7 +565,7 @@ Phalcon\Forms\Element\Numeric
 
 Component INPUT[type=number] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -583,7 +583,7 @@ Phalcon\Forms\Element\Password
 
 Component INPUT[type=password] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -601,7 +601,7 @@ Phalcon\Forms\Element\Radio
 
 Component INPUT[type=radio] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -627,7 +627,7 @@ protected optionsValues;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, mixed $options = null, mixed $attributes = null ): void;
@@ -675,7 +675,7 @@ Set the choice's options
 
 Component INPUT[type=submit] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -693,7 +693,7 @@ Phalcon\Forms\Element\Text
 
 Component INPUT[type=text] for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -709,7 +709,7 @@ Renders the element widget
 
 Component TEXTAREA for forms
 
-## Methods
+## Методы
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -765,7 +765,7 @@ protected validation;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $entity = null, array $userOptions = [] ): void;
@@ -1005,7 +1005,7 @@ protected forms;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function create( string $name, mixed $entity = null ): Form;

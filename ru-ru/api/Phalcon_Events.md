@@ -62,7 +62,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool ): void;
@@ -136,7 +136,7 @@ Phalcon\Events\EventInterface
 
 Interface for Phalcon\Events\Event class
 
-## Methods
+## Методы
 
 ```php
 public function getData(): mixed;
@@ -190,7 +190,7 @@ Phalcon\Events\EventsAwareInterface
 
 This interface must for those classes that accept an EventsManager and dispatch events
 
-## Methods
+## Методы
 
 ```php
 public function getEventsManager(): ManagerInterface;
@@ -251,7 +251,7 @@ protected responses;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function arePrioritiesEnabled(): bool;
@@ -347,7 +347,7 @@ Phalcon\Events\Manager
 
 Phalcon Events Manager, offers an easy way to intercept and manipulate, if needed, the normal flow of operation. With the EventsManager the developer can create hooks or plugins that will offer monitoring of data, manipulation, conditional execution and much more.
 
-## Methods
+## Методы
 
 ```php
 public function attach( string $eventType, mixed $handler ): void;

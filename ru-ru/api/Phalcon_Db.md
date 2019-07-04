@@ -161,7 +161,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $descriptor );
@@ -730,7 +730,7 @@ var_dump(
 
 Interface for Phalcon\Db adapters
 
-## Methods
+## Методы
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
@@ -1202,7 +1202,7 @@ protected pdo;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $descriptor ): void;
@@ -1490,7 +1490,7 @@ protected type = mysql;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1577,7 +1577,7 @@ protected type = pgsql;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $descriptor ): void;
@@ -1701,7 +1701,7 @@ protected type = sqlite;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $descriptor ): void;
@@ -1790,7 +1790,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -1985,7 +1985,7 @@ protected unsigned = false;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $definition ): void;
@@ -2083,7 +2083,7 @@ Returns true if number column is unsigned
 
 Interface for Phalcon\Db\Column
 
-## Methods
+## Методы
 
 ```php
 public function getAfterPosition(): string;
@@ -2200,7 +2200,7 @@ protected customFunctions;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function createSavepoint( string $name ): string;
@@ -2495,7 +2495,7 @@ protected escapeChar = `;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2695,7 +2695,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2889,7 +2889,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3085,7 +3085,7 @@ Generates SQL checking for the existence of a schema.view
 
 Interface for Phalcon\Db dialects
 
-## Methods
+## Методы
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3387,7 +3387,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $columns, string $type = string ): void;
@@ -3415,7 +3415,7 @@ public function getType(): string
 
 Interface for Phalcon\Db\Index
 
-## Methods
+## Методы
 
 ```php
 public function getColumns(): array;
@@ -3514,7 +3514,7 @@ protected totalSeconds = 0;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getLastProfile(): Item;
@@ -3606,7 +3606,7 @@ protected sqlVariables;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getFinalTime(): double
@@ -3685,7 +3685,7 @@ protected value;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $value ): void;
@@ -3788,7 +3788,7 @@ protected onUpdate;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $definition ): void;
@@ -3836,7 +3836,7 @@ public function getSchemaName(): string
 
 Interface for Phalcon\Db\Reference
 
-## Methods
+## Методы
 
 ```php
 public function getColumns(): array;
@@ -3941,7 +3941,7 @@ protected sqlStatement;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( Db\AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null ): void;
@@ -4079,7 +4079,7 @@ $result->setFetchMode(
 
 Interface for Phalcon\Db\Result objects
 
-## Methods
+## Методы
 
 ```php
 public function dataSeek( long $number );

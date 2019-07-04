@@ -60,7 +60,7 @@ protected output;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function getExtras(): mixed
@@ -120,7 +120,7 @@ Sets the payload status.
 
 Factory to create payload objects
 
-## Methods
+## Методы
 
 ```php
 public function newInstance(): PayloadInterface;
@@ -144,7 +144,7 @@ This interface is used for consumers
 
 This interface is used for consumers (read only)
 
-## Methods
+## Методы
 
 ```php
 public function getExtras(): mixed;
@@ -219,7 +219,7 @@ const UPDATED = UPDATED;
 const VALID = VALID;
 ```
 
-## Methods
+## Методы
 
 ```php
 final private function __construct();
@@ -235,7 +235,7 @@ Instantiation not allowed.
 
 This interface is used for consumers (write)
 
-## Methods
+## Методы
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;

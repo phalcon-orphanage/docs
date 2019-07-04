@@ -95,7 +95,7 @@ This class partially borrows SecureRandom library from Ruby
 
 @link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
-## Methods
+## Методы
 
 ```php
 public function base58( int $len = null ): string;
@@ -318,7 +318,7 @@ protected workFactor = 8;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct(): void;

@@ -63,7 +63,7 @@ protected messages;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $cssClasses = null ): void;
@@ -203,7 +203,7 @@ $flash->warning("Hey, this is important");
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
-## Methods
+## Методы
 
 ```php
 public function message( string $type, mixed $message ): string;
@@ -235,7 +235,7 @@ Phalcon\FlashInterface
 
 Interface for Phalcon\Flash
 
-## Methods
+## Методы
 
 ```php
 public function error( string $message ): string;
@@ -275,7 +275,7 @@ Shows a HTML warning message
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
-## Methods
+## Методы
 
 ```php
 public function clear(): void;

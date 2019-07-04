@@ -37,7 +37,7 @@ protected adapter;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function close(): bool;
@@ -83,7 +83,7 @@ Write
 
 Phalcon\Session\Adapter\Libmemcached
 
-## Methods
+## Методы
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] ): void;
@@ -142,7 +142,7 @@ protected ttl = 8600;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -200,7 +200,7 @@ Helper method to get the name prefixed
 
 Phalcon\Session\Adapter\Redis
 
-## Methods
+## Методы
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] ): void;
@@ -243,7 +243,7 @@ private path = ;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -312,7 +312,7 @@ private session;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name ): void;
@@ -406,7 +406,7 @@ private uniqueId = ;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -582,7 +582,7 @@ const SESSION_DISABLED = 0;
 const SESSION_NONE = 1;
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __get( string $key ): void;

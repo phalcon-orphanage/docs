@@ -66,7 +66,7 @@ protected queue;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __destruct();
@@ -132,7 +132,7 @@ Phalcon\Logger\AdapterInterface
 
 Interface for Phalcon\Logger adapters
 
-## Methods
+## Методы
 
 ```php
 public function add( Item $item ): void;
@@ -201,7 +201,7 @@ $logger->error("This is another error");
 $logger->close();
 ```
 
-## Methods
+## Методы
 
 ```php
 public function close(): bool;
@@ -268,7 +268,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -352,7 +352,7 @@ protected option = 0;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -384,7 +384,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -426,7 +426,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function interpolate( string $message, mixed $context = null );
@@ -446,7 +446,7 @@ Phalcon\Logger\FormatterInterface
 
 This interface must be implemented by formatters in Phalcon\Logger
 
-## Methods
+## Методы
 
 ```php
 public function format( Item $item ): string | array;
@@ -476,7 +476,7 @@ protected dateFormat;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $dateFormat = string ): void;
@@ -527,7 +527,7 @@ protected format;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $format = string, string $dateFormat = string ): void;
@@ -567,7 +567,7 @@ Phalcon\Logger\Formatter\Syslog
 
 Prepares a message to be used in a Syslog backend
 
-## Methods
+## Методы
 
 ```php
 public function format( Item $item ): array;
@@ -621,7 +621,7 @@ protected type;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
@@ -723,7 +723,7 @@ protected excluded;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( string $name, array $adapters = [] ): void;
@@ -905,7 +905,7 @@ private adapterFactory;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( AdapterFactory $factory );

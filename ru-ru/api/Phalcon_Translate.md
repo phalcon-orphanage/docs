@@ -42,7 +42,7 @@ protected interpolatorFactory;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options );
@@ -108,7 +108,7 @@ Phalcon\Translate\AdapterInterface
 
 Interface for Phalcon\Translate adapters
 
-## Methods
+## Методы
 
 ```php
 public function exists( string $index ): bool;
@@ -152,7 +152,7 @@ protected translate;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options ): void;
@@ -220,7 +220,7 @@ protected locale;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options ): void;
@@ -358,7 +358,7 @@ private triggerError = false;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $options ): void;
@@ -406,7 +406,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -426,7 +426,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -444,7 +444,7 @@ Phalcon\Translate\InterpolatorInterface
 
 Interface for Phalcon\Translate interpolators
 
-## Methods
+## Методы
 
 ```php
 public function replacePlaceholders( string $translation, array $placeholders = [] ): string;
@@ -479,7 +479,7 @@ private services;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -521,7 +521,7 @@ private interpolator;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( InterpolatorFactory $interpolator, array $services = [] );

@@ -41,7 +41,7 @@ protected reader;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function get( mixed $className ): Reflection;
@@ -93,7 +93,7 @@ Sets the annotations parser
 
 This interface must be implemented by adapters in Phalcon\Annotations
 
-## Methods
+## Методы
 
 ```php
 public function get( string $className ): Reflection;
@@ -166,7 +166,7 @@ protected ttl = 172800;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -204,7 +204,7 @@ protected data;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function read( string $key ): Reflection | bool;
@@ -246,7 +246,7 @@ protected annotationsDir = ./;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $options = [] ): void;
@@ -300,7 +300,7 @@ protected name;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $reflectionData ): void;
@@ -370,7 +370,7 @@ Returns the number of arguments that the annotation has
 
 Factory to create annotations components
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
@@ -432,7 +432,7 @@ protected position = 0;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $reflectionData = [] ): void;
@@ -516,7 +516,7 @@ Class for exceptions thrown by Phalcon\Annotations
 
 Parses docblocks returning an array with the found annotations
 
-## Methods
+## Методы
 
 ```php
 public function parse( string $className ): array;
@@ -532,7 +532,7 @@ Reads annotations from the class docblocks, its methods and/or properties
 
 Parses docblocks returning an array with the found annotations
 
-## Methods
+## Методы
 
 ```php
 public function parse( string $className ): array;
@@ -582,7 +582,7 @@ protected reflectionData;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $reflectionData = [] ): void;
