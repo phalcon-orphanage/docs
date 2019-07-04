@@ -79,7 +79,7 @@ protected serializerFactory;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 protected function __construct( SerializerFactory $factory = null, array $options ): void;
@@ -195,7 +195,7 @@ Initializes the serializer
 
 Interface for Phalcon\Logger adapters
 
-## Methods
+## Методы
 
 ```php
 public function clear(): bool;
@@ -275,7 +275,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -383,7 +383,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -496,7 +496,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -604,7 +604,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -719,7 +719,7 @@ protected options;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -831,7 +831,7 @@ private serializerFactory;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
@@ -883,7 +883,7 @@ protected data;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 public function __construct( mixed $data = null ): void;
@@ -918,7 +918,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string;
@@ -946,7 +946,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string;
@@ -974,7 +974,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string;
@@ -1002,7 +1002,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string | null;
@@ -1030,7 +1030,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string;
@@ -1058,7 +1058,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function serialize(): string;
@@ -1086,7 +1086,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function getData(): mixed;
@@ -1112,7 +1112,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Методы
 
 ```php
 public function __construct( array $services = [] );
