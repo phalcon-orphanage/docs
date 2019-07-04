@@ -77,7 +77,7 @@ protected static urlService;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 static final protected function inputField( string $type, mixed $parameters, bool $asValue = bool ): string;
