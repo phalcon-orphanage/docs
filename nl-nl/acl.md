@@ -3,7 +3,7 @@ layout: default
 language: 'nl-nl'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Toegangscontrolelijst (ACL)'
 ---
 
 # Access Control Lists Component
