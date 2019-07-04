@@ -3,7 +3,7 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: '访问控制列表 (ACL)'
 ---
 
 # Access Control Lists Component
