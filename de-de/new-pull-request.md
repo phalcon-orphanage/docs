@@ -2,6 +2,7 @@
 layout: default
 language: 'de-de'
 version: '4.0'
+title: 'New Pull Request'
 ---
 
 # New Pull Request
