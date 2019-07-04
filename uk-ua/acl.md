@@ -3,7 +3,7 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Access Control Lists (ACL)'
 ---
 
 # Access Control Lists Component
