@@ -3,7 +3,7 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Erişim Kontrol Listeleri (ACL)'
 ---
 
 # Access Control Lists Component
