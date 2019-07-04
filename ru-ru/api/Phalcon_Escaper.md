@@ -50,7 +50,7 @@ protected htmlQuoteType = 3;
 
 ```
 
-## Methods
+## Методы
 
 ```php
 final public function detectEncoding( string $str ): string | null;
@@ -138,7 +138,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 Interface for Phalcon\Escaper
 
-## Methods
+## Методы
 
 ```php
 public function escapeCss( string $css ): string;
