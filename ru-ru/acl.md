@@ -3,7 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 upgrade: '#acl'
-category: 'acl'
+title: 'Списки управления доступом (ACL)'
 ---
 
 # Access Control Lists Component

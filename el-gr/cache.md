@@ -3,7 +3,7 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 upgrade: '#cache'
-category: 'cache'
+title: 'Μνήμη cache'
 ---
 
 # Cache Component

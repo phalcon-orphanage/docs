@@ -2,6 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Entorno de prueba'
 ---
 
 # Entorno de prueba

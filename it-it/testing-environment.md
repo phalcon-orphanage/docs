@@ -2,6 +2,7 @@
 layout: default
 language: 'it-it'
 version: '4.0'
+title: 'Testing Environment'
 ---
 
 # Testing Environment

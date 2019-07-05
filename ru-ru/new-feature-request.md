@@ -2,6 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
+title: 'New Feature Request'
 ---
 
 # New Feature Request

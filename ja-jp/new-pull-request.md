@@ -2,6 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
+title: 'New Pull Request'
 ---
 
 # New Pull Request

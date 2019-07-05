@@ -2,6 +2,7 @@
 layout: default
 language: 'fr-fr'
 version: '4.0'
+title: 'Environments - Nanobox'
 ---
 
 # Environments
@@ -12,9 +13,11 @@ version: '4.0'
 
 [Nanobox](https://nanobox.io) is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
 
-In this post, we'll walk through getting a brand new Phalcon app up and running locally, with nothing installed other than Nanobox. First [create a free Nanobox account](https://dashboard.nanobox.io/users/register), then [download and run the Nanobox installer](https://dashboard.nanobox.io/download).
+## Local Development
 
-## Create a New Project
+Nanobox can be used for local development on any number of projects (not only restricted to PHP). To start working with nanobox you will first [create a free Nanobox account](https://dashboard.nanobox.io/users/register), then [download and run the Nanobox installer](https://dashboard.nanobox.io/download). The account is used only to login to nanobox using the console command. Nanobox will remember your credentials so you only have to do this once. If your intent is only to use nanobox locally, you do not need to do anything else. The same login however can be used later on if you wish to deploy your application to a live environment.
+
+### Create a New Project
 
 Create a project folder and `cd` into it:
 
@@ -22,7 +25,7 @@ Create a project folder and `cd` into it:
 mkdir nanobox-phalcon && cd nanobox-phalcon
 ```
 
-## Add a `boxfile.yml`
+### Add a `boxfile.yml`
 
 Nanobox uses the [`boxfile.yml`](https://docs.nanobox.io/boxfile/) to build and configure your app's runtime and environment. In the root of your project, create a `boxfile.yml` with the following:
 
@@ -41,12 +44,12 @@ run.config:
 This tells Nanobox to:
 
 - Use the PHP [engine](https://docs.nanobox.io/engines/), a set of scripts that build your app's runtime.
-- Use PHP 7.1.
+- Use PHP 7.2.
 - Set the Apache document root to `public`.
 - Include the Phalcon extension. *Nanobox takes a bare-bones approach to extensions, so you'll likely need to include other extensions. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
 
-## Add Phalcon Devtools to your `composer.json`
+### Add Phalcon Devtools to your `composer.json`
 
 Create a `composer.json` file in the root of your project and add the `phalcon/devtools` package to your dev requirements:
 
@@ -58,10 +61,10 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 }
 ```
 
-> **NOTE**: The version of Phalcon Devtools depends on which PHP version you're using.
+> **NOTE**: The version of Phalcon Devtools depends on which PHP version as well as Phalcon version you're using.
 {: .alert .alert-warning }
 
-## Start Nanobox and Generate a New Phalcon App
+### Start Nanobox and Generate a New Phalcon App
 
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
 
@@ -85,7 +88,7 @@ cp -a /tmp/myapp/* .
 exit
 ```
 
-## Run the App Locally
+### Run the App
 
 Before actually running your new Phalcon app, we recommend using Nanobox to add a DNS alias. This will add an entry to your local `hosts` file pointing to your dev environment and provide a convenient way to access your app from a browser.
 
@@ -93,17 +96,25 @@ Before actually running your new Phalcon app, we recommend using Nanobox to add 
 nanobox dns add local phalcon.dev
 ```
 
+Alternatively you can use the IP address of your container. The IP address is displayed when you first run your container. If you forgot or did not notice it, on a separate terminal, navigate to the same folder that your project lives on your system and type
+
+```bash
+nanobox info local
+```
+
+The output of this command will show you all the IP addresses of your containers/components as well as passwords to databases (if applicable).
+
 Nanobox provides a `php-server` helper script that starts both Apache (or Nginx depending on your `boxfile.yml` config) and PHP. When passed with the `nanobox run` command, it will start the local dev environment and immediately run your app.
 
 ```bash
 nanobox run php-server
 ```
 
-Once running, you can visit your app at https://phalcon.dev.
+Once running, you can visit your app at `https://phalcon.dev`.
 
-## Check Out the Environment
+### Check Out the Environment
 
-Your virtual environment includes everything you need to run your Phalcon app. Feel free to poke around.
+Your virtual environment includes everything you need to run your Phalcon application.
 
 ```bash
 # drop into a Nanobox console
@@ -121,9 +132,3 @@ ls
 # exit the console
 exit
 ```
-
-## Phalcon and Nanobox
-
-Nanobox gives you everything you need develop and run your Phalcon app in an isolated virtual environment. With the `boxfile.yml` in your project, collaborators can get up and running in minutes simply by running `nanobox run`.
-
-Nanobox has a [Phalcon Quickstart](https://github.com/nanobox-quickstarts/nanobox-phalcon) that includes everything covered in this post. They also have as guides for [using Phalcon with Nanobox](https://guides.nanobox.io/php/phalcon/). In future posts, we'd like to cover other aspects of using Phalcon with Nanobox, including adding and connecting to a database, deploying Phalcon into production, etc. If you're interested [let us know on Twitter](https://twitter.com/nanobox_io).

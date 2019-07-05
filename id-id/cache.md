@@ -3,7 +3,7 @@ layout: default
 language: 'id-id'
 version: '4.0'
 upgrade: '#cache'
-category: 'cache'
+title: 'Cache'
 ---
 
 # Cache Component
