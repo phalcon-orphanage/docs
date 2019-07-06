@@ -29,12 +29,12 @@ Frequently used data or already processed/calculated data, can be stored in a ca
 
 ## Önbellek
 
-In order to instantiate a new `Phalcon\Cache\Cache` component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the `Phalcon\Cache\Adapter\AdapterInterface`. For a detailed explanation on adapters and serializers, see below.
+In order to instantiate a new `Phalcon\Cache` component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the `Phalcon\Cache\Adapter\AdapterInterface`. For a detailed explanation on adapters and serializers, see below.
 
 ```php
 <?php
 
-use Phalcon\Cache\Cache;
+use Phalcon\Cache;
 use Phalcon\Cache\Adapter\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
@@ -53,7 +53,7 @@ $cache = new Cache($adapter);
 
 ### Operations
 
-Since the cache component is [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible so it implements all the necessary methods to satisfy that implementation. Each Cache component contains a supplied Cache adapter which in turn is responsible for all operations.
+Since the cache component is [PSR-16](https://www.php-fig.org/psr/psr-16/) compatible it implements all the necessary methods to satisfy the PSR-16 interfaces. Each Cache component contains a supplied Cache adapter which in turn is responsible for all operations.
 
 ### `get` - `getMultiple`
 
@@ -121,7 +121,7 @@ If you wish to clear all the keys, you can call the `clear()` method. The method
 
 ### `newInstance`
 
-We can easily create a `Phalcon\Cache\Cache` class using the `new` keyword. However Phalcon offers the `Phalcon\Cache\CacheFactory` class, so that developers can easily instantiate cache objects. The factory will accept a `Phalcon\Cache\AdapterFactory` object which will in turn be used to instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of `Phalcon\Cache\Cache`.
+We can easily create a `Phalcon\Cache` class using the `new` keyword. However Phalcon offers the `Phalcon\Cache\CacheFactory` class, so that developers can easily instantiate cache objects. The factory will accept a `Phalcon\Cache\AdapterFactory` object which will in turn be used to instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of `Phalcon\Cache`.
 
 The example below shows how you can create a cache object using the `Apcu` adapter and `Json` serializer:
 
