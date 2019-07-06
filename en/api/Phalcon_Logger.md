@@ -20,7 +20,7 @@ title: 'Phalcon\Logger'
 * [Phalcon\Logger\Item](#logger-item)
 * [Phalcon\Logger\Logger](#logger-logger)
 * [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
-        
+
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)

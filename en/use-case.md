@@ -2,6 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Use Case'
 ---
 # Use Case
 <hr/>
@@ -28,6 +29,7 @@ Throughout this documentation we are going to assume that we are building an acc
         - Reports
 
 ## Groups - User roles
+
 | Group          | Description                                        |
 |----------------|----------------------------------------------------|
 | Guests         | Users that are not logged in, visitors to the site |
@@ -37,6 +39,7 @@ Throughout this documentation we are going to assume that we are building an acc
 | Administrators | Full access to the whole application               |
 
 ## Endpoints
+
 | Endpoint                          | Description                                                  |
 |-----------------------------------|--------------------------------------------------------------|
 | `/login`                          | Path `/session/login`. Presents the login screen             |

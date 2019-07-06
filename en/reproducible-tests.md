@@ -2,11 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Reproducible Tests'
 ---
 # Reproducible Tests
 <hr/>
 
-> If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
+> If you have found a bug, you can open an issue in [GitHub][issues]. Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist][gist] to post any code you want to share with us.
 {:.alert .alert-info}
 
 ## Creating a small script
@@ -75,6 +76,7 @@ var_dump($_COOKIE);
 ```
 
 ### Database
+
 > Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}
 
@@ -105,6 +107,7 @@ $result = $container['db']->query('SELECT * FROM customers');
 ```
 
 ### Single/Multi-Module applications
+
 > Remember to add to the script how you are creating the `Phalcon\Mvc\Application` instance and how you register your modules
 {:.alert .alert-info}
 
@@ -255,3 +258,6 @@ class User extends Model
 
 echo User::createNewUserReturnId();
 ```
+
+[issues]: https://github.com/phalcon/cphalcon/issues
+[gist]: https://gist.github.com/
