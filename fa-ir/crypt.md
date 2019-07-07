@@ -2,6 +2,7 @@
 layout: default
 language: 'fa-ir'
 version: '4.0'
+title: 'Crypt'
 ---
 
 # Crypt Component
