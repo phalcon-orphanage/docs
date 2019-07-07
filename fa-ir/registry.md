@@ -2,8 +2,7 @@
 layout: default
 language: 'fa-ir'
 version: '4.0'
-upgrade: ''
-category: 'collection'
+title: 'Registry'
 ---
 
 # Registry Component
