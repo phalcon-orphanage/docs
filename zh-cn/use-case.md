@@ -2,6 +2,7 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: 'Use Case'
 ---
 
 # Use Case

@@ -3,7 +3,7 @@ layout: default
 language: 'cs-cz'
 version: '4.0'
 upgrade: ''
-category: 'collection'
+title: 'Helper'
 ---
 
 # Helper Component
@@ -21,7 +21,11 @@ This class exposes static methods that offer quick access to common functionalit
 ### chunk
 
 ```php
-final public static function chunk(array $collection, int $size, bool $preserveKeys = false): array
+final public static function chunk(
+    array $collection, 
+    int $size, 
+    bool $preserveKeys = false
+): array
 ```
 
 Chunks an array into smaller arrays of a specified size.
@@ -54,7 +58,10 @@ $chunks = Arr::chunk($source, 2);
 ### first
 
 ```php
-final public static function first(array $collection, mixed $method = null): var
+final public static function first(
+    array $collection, 
+    mixed $method = null
+): var
 ```
 
 Returns the first element of the collection. If a callable is passed, the element returned is the first that validates `true`
@@ -86,7 +93,10 @@ echo $result; // 'Framework'
 ### firstKey
 
 ```php
-final public static function firstKey(array $collection, mixed $method = null): var
+final public static function firstKey(
+    array $collection, 
+    mixed $method = null
+): var
 ```
 
 Returns the key of the first element of the collection. If a callable is passed, the element returned is the first that validates true
@@ -118,7 +128,10 @@ echo $result; // 3
 ### flatten
 
 ```php
-final public static function flatten(array $collection, bool $deep = false): array
+final public static function flatten(
+    array $collection, 
+    bool $deep = false
+): array
 ```
 
 Flattens an array up to the one level depth. If `$deep` is set to `true`, it traverses all elements and flattens them all.
@@ -147,7 +160,11 @@ var_dump(
 ### get
 
 ```php
-final public static function get(array $collection, mixed $index, mixed $defaultValue): mixed
+final public static function get(
+    array $collection, 
+    mixed $index, 
+    mixed $defaultValue
+): mixed
 ```
 
 Retrieves an element from an array. If the element exists its value is returned. If not, the `defaultValue` is returned.
@@ -175,7 +192,10 @@ echo Arr::get($data, 'unknown', 1776); // 1776
 ### group
 
 ```php
-final public static function group(array $collection, mixed $method): array
+final public static function group(
+    array $collection, 
+    mixed $method
+): array
 ```
 
 Groups the elements of an array based on the passed callable and returns the array of the groupped elements back. The callable can be a string as the element name, a callable or a method available. The array can contain sub arrays as elements or objects with relevant properties.
@@ -322,7 +342,10 @@ $result = Arr::isUnique($collection); // false
 ### last
 
 ```php
-final public static function last(array $collection, mixed $method = null): var
+final public static function last(
+    array $collection, 
+    mixed $method = null
+): var
 ```
 
 Returns the last element of the collection. If a callable is passed, the element returned is the last that validates `true`
@@ -354,7 +377,10 @@ echo $result; // 'Phalcon'
 ### lastKey
 
 ```php
-final public static function lastKey(array $collection, mixed $method = null): var
+final public static function lastKey(
+    array $collection, 
+    mixed $method = null
+): var
 ```
 
 Returns the key of the last element of the collection. If a callable is passed, the element returned is the last that validates `true`
@@ -386,7 +412,11 @@ echo $result; // 1
 ### order
 
 ```php
-final public static function order(array $collection, var attribute, string order = 'asc'): array
+final public static function order(
+    array $collection, 
+    mixed $attribute, 
+    string $order = 'asc'
+): array
 ```
 
 Sorts a collection of arrays or objects by `attribute` and returns the sorted array. The third parameter controls the sort order.
@@ -424,7 +454,10 @@ var_dump($result);
 ### pluck
 
 ```php
-final public static function pluck(array $collection, string element): array
+final public static function pluck(
+    array $collection, 
+    string element
+): array
 ```
 
 Retrieves all of the values for a given key returning them as an array
@@ -452,7 +485,11 @@ var_dump($result);
 ### set
 
 ```php
-final public static function set(array $collection, mixed $value, mixed $index = null): array
+final public static function set(
+    array $collection, 
+    mixed $value, 
+    mixed $index = null
+): array
 ```
 
 Sets an array element and returns the new array back. The third parameter is the index/key.
@@ -485,7 +522,10 @@ var_dump($result);
 ### sliceLeft
 
 ```php
-final public static function sliceLeft(array $collection, int $elements = 1): array
+final public static function sliceLeft(
+    array $collection, 
+    int $elements = 1
+): array
 ```
 
 Returns a new array with n elements removed from the left.
@@ -522,7 +562,10 @@ var_dump($result);
 ### sliceRight
 
 ```php
-final public static function sliceRight(array $collection, int $elements = 1): array
+final public static function sliceRight(
+    array $collection, 
+    int $elements = 1
+): array
 ```
 
 Returns a new array with n elements removed from the right.
@@ -584,10 +627,41 @@ var_dump($result);
 
 * * *
 
+### toObject
+
+```php
+final public static function toObject(array $collection)
+```
+
+Converts an array to an object
+
+```php
+<?php
+
+use Phalcon\Helper\Arr;
+
+$collection = [
+    1 => 'Phalcon',
+    3 => 'Framework',
+];
+
+$result = Arr::toObject($collection);
+var_dump($result);
+// object(stdClass)#1 (2) {
+//   ["1"]=>
+//   string(7) "Phalcon"
+//   ["3"]=>
+//   string(9) "Framework"
+// }
+```
+
 ### validateAll
 
 ```php
-final public static function validateAll(array $collection, mixed $method): bool
+final public static function validateAll(
+    array $collection, 
+    mixed $method
+): bool
 ```
 
 Returns true if the provided function returns `true` for all elements of the collection, `false` otherwise.
@@ -608,31 +682,72 @@ $result     = Arr::validateAll(
 var_dump($result); // true
 ```
 
-* * *
-
-### flatten
+### validateAny
 
 ```php
-final public static function validateAny(array $collection, mixed $method): bool
+final public static function validateAny(
+    array $collection, 
+    mixed $method
+): bool
 ```
 
-Returns true if the provided function returns `true` for at least one element fo the collection, `false` otherwise.
+Returns true if the provided function returns `true` for at least one element of the collection, `false` otherwise.
 
 ```php
 <?php
 
 use Phalcon\Helper\Arr;
 
-$collection = [1, 2, 3, 4, 5];
+$collection = [2, 3, 4, 5];
 $result     = Arr::validateAny(
     $collection,
     function ($element) {
-        return $element < 2;
+        return $element > 4;
     }
 );
 
 var_dump($result); // true
 ```
+
+### whiteList
+
+```php
+final public static function whiteList(
+    array $collection, 
+    array $whiteList 
+): array
+```
+
+Returns a subset of the array, white listing elements by key. The returned array contains only the elements of the source array that have keys identical to the whitelist array that was passed as a parameter.
+
+```php
+<?php
+
+use Phalcon\Helper\Arr;
+
+$collection = [
+    2     => 'Phalcon',
+    3     => 'Apples',
+    'one' => 'Framework',
+    'two' => 'Oranges',
+];
+$result     = Arr::whiteList(
+    $collection,
+    [2, 'one']
+);
+
+var_dump($result);
+// [
+//     2     => 'Phalcon',
+//     'one' => 'Framework'
+// ]
+```
+
+* * *
+
+## Exception
+
+Any exceptions thrown in the `Arr` component will be of this type: `Phalcon\Helper\Exception`
 
 * * *
 
@@ -642,6 +757,14 @@ This class exposes static methods that offer quick access to common functionalit
 
 ### between
 
+```php
+final public static function between(
+    int $value, 
+    int $from, 
+    int $to
+) -> bool
+```
+
 Checks if the passed value is between the range specified in `from` and `to`
 
 ```php
@@ -649,8 +772,8 @@ Checks if the passed value is between the range specified in `from` and `to`
 
 use Phalcon\Helper\Number;
 
-$min = 10;
-$max = 100;
+$min   = 10;
+$max   = 100;
 $value = 13;
 
 echo Number::between($value, $min, $max);   // true
@@ -686,10 +809,15 @@ echo Str::camelize('co_co-bon_go', '_-'); // CoCoBonGo
 ### concat
 
 ```php
-final public static function concat(string $separator, string $a, string $b [, string $x] ): string
+final public static function concat(
+    string $separator, 
+    string $a, 
+    string $b 
+    [, string $x] ... 
+): string
 ```
 
-Concatenates strings using the separator only once, removing duplicate delimiters.
+Concatenates strings using the separator only once, removing duplicate delimiters. The first parameter is the separator, the subsequent ones are the strings to concatenate together. The minimum required parameters are three.
 
 ```php
 <?php
@@ -733,7 +861,11 @@ echo Str::countVowels($source); // 8
 ### decapitalize
 
 ```php
-final public static function decapitalize(string $text, bool $upperRest = false, string $encoding = 'UTF-8'): string
+final public static function decapitalize(
+    string $text, 
+    bool $upperRest = false, 
+    string $encoding = 'UTF-8'
+): string
 ```
 
 Decapitalizes the first letter of the string and then adds it back. If the `upperRest` parameter is set to `false` the rest of the string remains intact, otherwise it is converted to uppercase. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback. The last parameter is the encoding that `mbstring` methods will use. It defaults to `UTF-8`.
@@ -754,7 +886,10 @@ echo Str::decapitalize($source, true); // bEETLEJUICE
 ### decrement
 
 ```php
-final public static function decrement(string $text, string $separator = '_'): string
+final public static function decrement(
+    string $text, 
+    string $separator = '_'
+): string
 ```
 
 Removes a number from a string or decrements that number if it already is defined.
@@ -766,6 +901,42 @@ use Phalcon\Helper\Str;
 
 echo Str::decrement('a_1'); // 'a'
 echo Str::decrement('a_2'); // 'a_1'
+```
+
+* * *
+
+### dirFromFile
+
+```php
+final public static function dirFromFile(string $file): string
+```
+
+Accepts a file name (without extension) and returns a calculated directory structure with the filename in the end
+
+```php
+<?php
+
+use Phalcon\Helper\Str;
+
+echo Str::dirFromFile("file1234.jpg"); // fi/le/12/
+```
+
+* * *
+
+### dirSeparator
+
+```php
+final public static function dirSeparator(string $directory): string
+```
+
+Accepts a directory name and ensures that it ends with `DIRECTORY_SEPARATOR`
+
+```php
+<?php
+
+use Phalcon\Helper\Str;
+
+echo Str::dirSeparator("/home/phalcon"); // /home/phalcon/
 ```
 
 * * *
@@ -798,7 +969,11 @@ echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo
 ### endsWith
 
 ```php
-final public static function endsWith(string $text, string $end, bool $ignoreCase = true): bool
+final public static function endsWith(
+    string $text, 
+    string $end, 
+    bool $ignoreCase = true
+): bool
 ```
 
 Returns `true` if a string ends with a given string. If the last parameter is `true` (default), the search is made in a case-insensitive manner.
@@ -861,7 +1036,10 @@ echo Str::humanize('five_cats');     // 'five cats'
 ### includes
 
 ```php
-final public static function includes(string $needle, string $haystack): bool
+final public static function includes(
+    string $needle, 
+    string $haystack
+): bool
 ```
 
 Checks if a string is included in another string. Returns `true` if it is included, `false` otherwise. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback.
@@ -880,7 +1058,10 @@ echo Str::includes('end', 'start-a-horse'); // false
 ### increment
 
 ```php
-final public static function increment(string $text, string $separator = '_'): string
+final public static function increment(
+    string $text, 
+    string $separator = '_'
+): string
 ```
 
 Adds a number to a string or increment that number if it already is defined.
@@ -899,7 +1080,10 @@ echo Str::increment('a_1'); // 'a_2'
 ### isAnagram
 
 ```php
-final public static function isAnagram(string $first, string $second): bool
+final public static function isAnagram(
+    string $first, 
+    string $second
+): bool
 ```
 
 Compare two strings and returns `true` if both strings are anagram, `false` otherwise.
@@ -917,7 +1101,10 @@ echo Str::isAnagram('rail safety', 'fairy tales'); // true
 ### isLower
 
 ```php
-final public static function isLower(string $text, string $encoding = 'UTF-8'):  bool
+final public static function isLower(
+    string $text, 
+    string $encoding = 'UTF-8'
+):  bool
 ```
 
 Returns `true` if the given string is lower case, `false` otherwise. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback. The last parameter is the encoding that `mbstring` methods will use. It defaults to `UTF-8`.
@@ -954,7 +1141,10 @@ echo Str::isPalindrome('racecar'); // true
 ### isUpper
 
 ```php
-final public static function isUpper(string $text, string $encoding = 'UTF-8'):  bool
+final public static function isUpper(
+    string $text, 
+    string $encoding = 'UTF-8'
+):  bool
 ```
 
 Returns `true` if the given string is upper case, `false` otherwise. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback. The last parameter is the encoding that `mbstring` methods will use. It defaults to `UTF-8`.
@@ -973,7 +1163,10 @@ echo Str::isUpper('Phalcon Framework'); // false
 ### lower
 
 ```php
-final public static function lower(string $text, string $encoding = 'UTF-8'): string
+final public static function lower(
+    string $text, 
+    string $encoding = 'UTF-8'
+): string
 ```
 
 Converts a string to lowercase characters. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback. The last parameter is the encoding that `mbstring` methods will use. It defaults to `UTF-8`.
@@ -991,10 +1184,20 @@ echo Str::lower('PHALCON FRAMEWORK'); // phalcon framework
 ### random
 
 ```php
-final public static function random(int $type = 0, long $length = 8): string
+final public static function random(
+    int $type = 0, 
+    long $length = 8
+): string
 ```
 
 Generates a random string based on the given type. The first parameter is one of the `RANDOM_*` constants. The second parameter specifies the length of the string (defaults to 8).
+
+* RANDOM_ALNUM
+* RANDOM_ALPHA
+* RANDOM_DISTINCT
+* RANDOM_HEXDEC
+* RANDOM_NOZERO
+* RANDOM_NUMERIC
 
 ```php
 <?php
@@ -1028,7 +1231,11 @@ echo Str::reduceSlashes('http://foo.bar///baz/buz'); // http://foo.bar/baz/buz
 ### startsWith
 
 ```php
-final public static function startsWith(string $text, string $start, bool $ignoreCase = true): bool
+final public static function startsWith(
+    string $text, 
+    string $start, 
+    bool $ignoreCase = true
+): bool
 ```
 
 Returns `true` if a string starts with a given string. If the last parameter is `true` (default), the search is made in a case-insensitive manner.
@@ -1048,7 +1255,10 @@ echo Str::startsWith('Hello', 'he');        // true
 ### uncamelize
 
 ```php
-final public static function uncamelize(string $text, mixed $delimiter = null): string
+final public static function uncamelize(
+    string $text,   
+    mixed $delimiter = null
+): string
 ```
 
 Uncamelize strings which are camelized
@@ -1086,7 +1296,10 @@ echo Str::underscore('Awesome Phalcon'); // 'Awesome_Phalcon'
 ### upper
 
 ```php
-final public static function upper(string $text, string $encoding = 'UTF-8'): string
+final public static function upper(
+    string $text, 
+    string $encoding = 'UTF-8'
+): string
 ```
 
 Converts a string to uppercase characters. The method will try to use methods provided by the `mbstring` extension and use the PHP equivalent as a fallback. The last parameter is the encoding that `mbstring` methods will use. It defaults to `UTF-8`.

@@ -2,6 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Contributing'
 ---
 
 # Contribuciones
@@ -26,7 +27,7 @@ Hay una plantilla muy útil para crear el *pull request*. Es muy importante y ú
 
 Si la programación en Zephir le parece desalentadora, hay muchas otras áreas en las cuales se puede contribuir. Por ejemplo, se puede revisar o corregir la documentación, en caso que se presente algún error tipográfico o de contenido. También es posible mejorar la documentación contribuyendo con más ejemplos en las páginas correspondientes.
 
-El procedimiento es muy sencillo: solo hay que ir al repositorio de [docs](https://github.com/phalcon/docs), hacer un *fork*, realizar los cambios y enviar el *pull request*.
+All you have to do is go to our [docs](https://crowdin.com/project/phalcon-documentation) repository, fork it, make the changes and send us a pull request.
 
 > **Nota:** solo es posible hacer cambios en el repositorio de `docs` en la versión en inglés, que se encuentra en la carpeta `en`.
 {:.alert .alert-warning}
@@ -46,7 +47,7 @@ Para contribuir con la traducción de los documentos de Phalcon a su lengua mate
 - Solo se revisarán los errores encontrados en la última versión publicada de Phalcon.
 - Utilizar la plantilla para reportar problemas, incluyendo todos los pasos necesarios para que el equipo principal pueda reproducirlos y resolverlos. El detalle en estos pasos reduce de manera significativa el tiempo necesario para identificar la causa del problema y resolverlo. Agradecemos también (si es posible) que se incluya el código de las pruebas con errores. Para más información, por favor, revise la guía para crear [pruebas reproducibles](reproducible-tests).
 - Como parte del reporte, por favor incluya información adicional, como el sistema operativo, versión de PHP, versión de Phalcon, servidor web, memoria, etcétera.
-- Si se trata de un error de violación de acceso (*[Segmentation Fault](https://es.wikipedia.org/wiki/Violaci%C3%B3n_de_acceso)*) es necesario incluir el registro de seguimiento (*backlog*). Por favor consulte la guía de [generación de traza inversa](#bug-report-generating-backtrace) para obtener más información.
+- Si se trata de un error de violación de acceso (*[Segmentation Fault](https://es.wikipedia.org/wiki/Violaci%C3%B3n_de_acceso)*) es necesario incluir el registro de seguimiento (*backlog*). Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
 ### Generar una traza inversa
 
@@ -66,7 +67,7 @@ Por favor consulte los siguientes enlaces para obtener instrucciones sobre cómo
 - Dado que Phalcon está escrito en [Zephir](https://zephir-lang.com), por favor, no envíe *commits* que modifiquen los archivos creados en C directamente.
 - Phalcon sigue una guía de estilo. Por favor, instale el complemento `editorconfig` en su entorno de desarrollo integrado (*IDE*) que se encuentra en el archivo `.editorconfig` del repositorio, así no tendrá que preocuparse por las normas de codificación. Todas las pruebas en código PHP se ajustan a la normativa [PSR-2](https://www.php-fig.org/psr/).
 - Suprimir cualquier cambio hecho a los archivos `ext/kernel`, `*. zep.c` y `*. zep.h` antes de enviar su *pull request*.
-- Más información [aquí](new-pull-request)
+- More information [here](new-pull-request).
 
 Antes de enviar **una nueva característica**, por favor cree una [Solicitud de Nueva Característica](new-feature-request) *(New Feature Request, NFR)* en GitHub para debatir su impacto o los cambios necesarios en la extensión principal. Una vez que la funcionalidad sea aprobada, confirme que su *pull request (PR)* contiene lo siguiente:
 

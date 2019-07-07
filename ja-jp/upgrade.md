@@ -2,6 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
+title: 'Upgrade Guide'
 ---
 
 # Upgrade Guide
@@ -105,7 +106,7 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 > Usage: [Cache Documentation](cache)
 {: .alert .alert-info }
 
-The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
+The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
 
 In v3, the cache was split into two components, the Frontend and the Backend. This did create a bit of confusion but it was functional. In order to create a cache component you had to create the Frontend first and then inject that to the relevant Backend (which acted as an adapter also).
 
@@ -120,7 +121,7 @@ For a more detailed explanation on how the new Cache component works, please vis
 ```php
 <?php
 
-use Phalcon\Cache\Cache;
+use Phalcon\Cache;
 use Phalcon\Cache\Adapter\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
@@ -142,7 +143,7 @@ Registering it in the DI
 ```php
 <?php
 
-use Phalcon\Cache\Cache;
+use Phalcon\Cache;
 use Phalcon\Cache\Adapter\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
