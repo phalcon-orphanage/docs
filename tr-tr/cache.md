@@ -14,7 +14,7 @@ title: 'Önbellek'
 
 The `Phalcon\Cache` namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
 
-![](/assets/images/implements-psr--16-orange.svg)
+![](/assets/images/implements-psr--16-blue.svg)
 
 Frequently used data or already processed/calculated data, can be stored in a cache storage for easier and faster retrieval. Since `Phalcon\Cache` components are written in Zephir, and therefore compiled as C code, they can achieve higher performance, while reducing the overhead that comes with getting data from any storage container. Some examples that warrant the use of cache are:
 
