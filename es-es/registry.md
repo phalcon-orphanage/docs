@@ -2,8 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-upgrade: ''
-category: 'collection'
+title: 'Registro'
 ---
 
 # Registry Component
