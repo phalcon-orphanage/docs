@@ -10,7 +10,7 @@ category: 'http-request'
 ## Overview
 `Phalcon\Http\Message\Request` is an implementation of the PSR-7 HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/psr/psr-7/).
 
-![](/assets/images/implements-psr--7-orange.svg) ![](/assets/images/implements-psr--17-orange.svg)
+![](/assets/images/implements-psr--7-blue.svg) ![](/assets/images/implements-psr--17-blue.svg)
 
 Applications often need to send requests to external endpoints. To achieve this you can use the `Phalcon\Http\Message\Request` object. In return, our application will receive back a response object. 
 
