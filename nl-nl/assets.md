@@ -2,6 +2,7 @@
 layout: default
 language: 'nl-nl'
 version: '4.0'
+upgrade: '#assets'
 title: 'Assets'
 ---
 
