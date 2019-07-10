@@ -100,12 +100,13 @@ $config = new Config($settings);
 
 The adapters available are:
 
-| 类                                                                 | 描述                                                                                               |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config_Adapter_Ini)   | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
-| [Phalcon\Config\Adapter\Json](api/Phalcon_Config_Adapter_Json) | 使用 JSON 文件来存储设置。                                                                                 |
-| [Phalcon\Config\Adapter\Php](api/Phalcon_Config_Adapter_Php)   | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
-| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config_Adapter_Yaml) | 使用 YAML 文件来存储设置。                                                                                 |
+| 类                                                                          | 描述                                                                                               |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config#config-adapter-grouped) | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| [Phalcon\Config\Adapter\Ini](api/Phalcon_Config#config-adapter-ini)     | Uses INI files to store settings. Internally the adapter uses the PHP function `parse_ini_file`. |
+| [Phalcon\Config\Adapter\Json](api/Phalcon_Config#config-adapter-json)   | Uses JSON files to store settings.                                                               |
+| [Phalcon\Config\Adapter\Php](api/Phalcon_Config#config-adapter-php)     | Uses PHP multidimensional arrays to store settings. This adapter offers the best performance.    |
+| [Phalcon\Config\Adapter\Yaml](api/Phalcon_Config#config-adapter-yaml)   | Uses YAML files to store settings.                                                               |
 
 ## Reading INI Files
 
