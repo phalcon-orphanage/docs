@@ -126,27 +126,38 @@ if (count($messages)) {
 
 Phalcon exposes a set of built-in validators for this component:
 
-| 类                                                                                             | Explanation                                                    |
-| --------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | 验证字段值只能是字母和数字字符                                                |
-| [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | 验证字段值只能是字母字符                                                   |
-| [Phalcon\Validation\Validator\Date](api/Phalcon_Validation_Validator_Date)                 | 验证字段值是一个有效的日期。                                                 |
-| [Phalcon\Validation\Validator\Digit](api/Phalcon_Validation_Validator_Digit)               | 验证字段值只能是数字字符。                                                  |
-| [Phalcon\Validation\Validator\File](api/Phalcon_Validation_Validator_File)                 | 验证字段的值是正确的文件。                                                  |
-| [Phalcon\Validation\Validator\Uniqueness](api/Phalcon_Validation_Validator_Uniqueness)     | Validates that a field's value is unique in the related model. |
-| [Phalcon\Validation\Validator\Numericality](api/Phalcon_Validation_Validator_Numericality) | 验证字段值是一个有效的数值                                                  |
-| [Phalcon\Validation\Validator\PresenceOf](api/Phalcon_Validation_Validator_PresenceOf)     | 验证字段的值不是 null 或空字符串                                            |
-| [Phalcon\Validation\Validator\Identical](api/Phalcon_Validation_Validator_Identical)       | 验证字段值是否于指定的值相同                                                 |
-| [Phalcon\Validation\Validator\Email](api/Phalcon_Validation_Validator_Email)               | 验证字段包含一个有效的电子邮件格式                                              |
-| [Phalcon\Validation\Validator\ExclusionIn](api/Phalcon_Validation_Validator_ExclusionIn)   | 验证的值不在列表中                                                      |
-| [Phalcon\Validation\Validator\InclusionIn](api/Phalcon_Validation_Validator_InclusionIn)   | 验证值存在列表中                                                       |
-| [Phalcon\Validation\Validator\Regex](api/Phalcon_Validation_Validator_Regex)               | 验证字段的值匹配的正则表达式                                                 |
-| [Phalcon\Validation\Validator\StringLength](api/Phalcon_Validation_Validator_StringLength) | 验证一个字符串的长度                                                     |
-| [Phalcon\Validation\Validator\Between](api/Phalcon_Validation_Validator_Between)           | 验证值是两个值之间                                                      |
-| [Phalcon\Validation\Validator\Confirmation](api/Phalcon_Validation_Validator_Confirmation) | 验证值是相同的数据中的字段                                                  |
-| [Phalcon\Validation\Validator\Url](api/Phalcon_Validation_Validator_Url)                   | 验证字段包含一个有效的 URL                                                |
-| [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | 验证的信用卡卡号                                                       |
-| [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | 验证时使用回调函数                                                      |
+| 类                                                                                                                            | Explanation                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation#validation-validator-alnum)                                   | 验证字段值只能是字母和数字字符                                                   |
+| [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation#validation-validator-alpha)                                   | 验证字段值只能是字母字符                                                      |
+| [Phalcon\Validation\Validator\Between](api/Phalcon_Validation#validation-validator-between)                               | Validates that a value is between two values                      |
+| [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation#validation-validator-callback)                             | Validates using callback function                                 |
+| [Phalcon\Validation\Validator\Confirmation](api/Phalcon_Validation#validation-validator-confirmation)                     | Validates that a value is the same as another present in the data |
+| [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation#validation-validator-creditcard)                         | Validates a credit card number                                    |
+| [Phalcon\Validation\Validator\Date](api/Phalcon_Validation#validation-validator-date)                                     | Validates that a field's value is a valid date.                   |
+| [Phalcon\Validation\Validator\Digit](api/Phalcon_Validation#validation-validator-digit)                                   | Validates that a field's value is only numeric character(s).      |
+| [Phalcon\Validation\Validator\Email](api/Phalcon_Validation#validation-validator-email)                                   | Validates that field contains a valid email format                |
+| [Phalcon\Validation\Validator\ExclusionIn](api/Phalcon_Validation#validation-validator-exclusionin)                       | Validates that a value is not within a list of possible values    |
+| [Phalcon\Validation\Validator\File](api/Phalcon_Validation#validation-validator-file)                                     | Validates that a field's value is a correct file.                 |
+| [Phalcon\Validation\Validator\File\AbstractFile](api/Phalcon_Validation#validation-validator-file-abstractfile)          |                                                                   |
+| [Phalcon\Validation\Validator\File\MimeType](api/Phalcon_Validation#validation-validator-file-mimetype)                  |                                                                   |
+| [Phalcon\Validation\Validator\File\Resolution\Equal](api/Phalcon_Validation#validation-validator-file-resolution-equal) |                                                                   |
+| [Phalcon\Validation\Validator\File\Resolution\Max](api/Phalcon_Validation#validation-validator-file-resolution-max)     |                                                                   |
+| [Phalcon\Validation\Validator\File\Resolution\Min](api/Phalcon_Validation#validation-validator-file-resolution-min)     |                                                                   |
+| [Phalcon\Validation\Validator\File\Size\Equal](api/Phalcon_Validation#validation-validator-file-size-equal)             |                                                                   |
+| [Phalcon\Validation\Validator\File\Size\Max](api/Phalcon_Validation#validation-validator-file-size-max)                 |                                                                   |
+| [Phalcon\Validation\Validator\File\Size\Min](api/Phalcon_Validation#validation-validator-file-size-min)                 |                                                                   |
+| [Phalcon\Validation\Validator\Identical](api/Phalcon_Validation#validation-validator-identical)                           | Validates that a field's value is the same as a specified value   |
+| [Phalcon\Validation\Validator\InclusionIn](api/Phalcon_Validation#validation-validator-inclusionin)                       | Validates that a value is within a list of possible values        |
+| [Phalcon\Validation\Validator\Ip](api/Phalcon_Validation#validation-validator-ip)                                         |                                                                   |
+| [Phalcon\Validation\Validator\Numericality](api/Phalcon_Validation#validation-validator-numericality)                     | Validates that a field's value is a valid numeric value.          |
+| [Phalcon\Validation\Validator\PresenceOf](api/Phalcon_Validation#validation-validator-presenceof)                         | Validates that a field's value is not null or empty string.       |
+| [Phalcon\Validation\Validator\Regex](api/Phalcon_Validation#validation-validator-regex)                                   | Validates that the value of a field matches a regular expression  |
+| [Phalcon\Validation\Validator\StringLength](api/Phalcon_Validation#validation-validator-stringlength)                     | Validates the length of a string                                  |
+| [Phalcon\Validation\Validator\StringLength\Max](api/Phalcon_Validation#validation-validator-stringlength-max)            |                                                                   |
+| [Phalcon\Validation\Validator\StringLength\Min](api/Phalcon_Validation#validation-validator-stringlength-min)            |                                                                   |
+| [Phalcon\Validation\Validator\Uniqueness](api/Phalcon_Validation#validation-validator-uniqueness)                         | Validates that a field's value is unique in the related model.    |
+| [Phalcon\Validation\Validator\Url](api/Phalcon_Validation#validation-validator-url)                                       | Validates that field contains a valid URL                         |
 
 The following example explains how to create additional validators for this component:
 
