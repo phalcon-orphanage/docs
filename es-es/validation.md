@@ -126,27 +126,38 @@ if (count($messages)) {
 
 Phalcon exposes a set of built-in validators for this component:
 
-| Clase                                                                                         | Explicación                                                            |
-| --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation_Validator_Alnum)               | Valida que el valor de un campo tenga solo caracteres alfanuméricos.   |
-| [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation_Validator_Alpha)               | Valida que el valor de un campo tenga solo caracteres alfabéticos.     |
-| [Phalcon\Validation\Validator\Date](api/Phalcon_Validation_Validator_Date)                 | Valida que el valor de un campo sea una fecha válida.                  |
-| [Phalcon\Validation\Validator\Digit](api/Phalcon_Validation_Validator_Digit)               | Valida que el valor de un campo tenga solo caracteres numéricos.       |
-| [Phalcon\Validation\Validator\File](api/Phalcon_Validation_Validator_File)                 | Valida que el valor de un campo sea un archivo correcto.               |
-| [Phalcon\Validation\Validator\Uniqueness](api/Phalcon_Validation_Validator_Uniqueness)     | Valida que el valor de un campo sea único en el modelo relacionado.    |
-| [Phalcon\Validation\Validator\Numericality](api/Phalcon_Validation_Validator_Numericality) | Valida que el valor de un campo sea un valor numérico.                 |
-| [Phalcon\Validation\Validator\PresenceOf](api/Phalcon_Validation_Validator_PresenceOf)     | Valida que el valor de un campo no sea nulo o una cadena vacía.        |
-| [Phalcon\Validation\Validator\Identical](api/Phalcon_Validation_Validator_Identical)       | Valida que el valor de un campo sea el mismo que el valor especificado |
-| [Phalcon\Validation\Validator\Email](api/Phalcon_Validation_Validator_Email)               | Valida que un campo contenga un email con formato válido               |
-| [Phalcon\Validation\Validator\ExclusionIn](api/Phalcon_Validation_Validator_ExclusionIn)   | Valida que un valor no este incluido en una lista de posibles valores  |
-| [Phalcon\Validation\Validator\InclusionIn](api/Phalcon_Validation_Validator_InclusionIn)   | Valida que un valor este incluido en una lista de posibles valores     |
-| [Phalcon\Validation\Validator\Regex](api/Phalcon_Validation_Validator_Regex)               | Valida que el valor del campo coincida con una expresión regular       |
-| [Phalcon\Validation\Validator\StringLength](api/Phalcon_Validation_Validator_StringLength) | Valida el largo de una cadena                                          |
-| [Phalcon\Validation\Validator\Between](api/Phalcon_Validation_Validator_Between)           | Valida que un valor este entre dos valores                             |
-| [Phalcon\Validation\Validator\Confirmation](api/Phalcon_Validation_Validator_Confirmation) | Valida que un valor sea igual a otro presente en los datos             |
-| [Phalcon\Validation\Validator\Url](api/Phalcon_Validation_Validator_Url)                   | Valida que el campo contenga una URL válida                            |
-| [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation_Validator_CreditCard)     | Valida un número de tarjeta de crédito                                 |
-| [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation_Validator_Callback)         | Valida utilizando una función de retorno de llamada                    |
+| Clase                                                                                                                        | Explicación                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [Phalcon\Validation\Validator\Alnum](api/Phalcon_Validation#validation-validator-alnum)                                   | Valida que el valor de un campo tenga solo caracteres alfanuméricos. |
+| [Phalcon\Validation\Validator\Alpha](api/Phalcon_Validation#validation-validator-alpha)                                   | Valida que el valor de un campo tenga solo caracteres alfabéticos.   |
+| [Phalcon\Validation\Validator\Between](api/Phalcon_Validation#validation-validator-between)                               | Validates that a value is between two values                         |
+| [Phalcon\Validation\Validator\Callback](api/Phalcon_Validation#validation-validator-callback)                             | Validates using callback function                                    |
+| [Phalcon\Validation\Validator\Confirmation](api/Phalcon_Validation#validation-validator-confirmation)                     | Validates that a value is the same as another present in the data    |
+| [Phalcon\Validation\Validator\CreditCard](api/Phalcon_Validation#validation-validator-creditcard)                         | Validates a credit card number                                       |
+| [Phalcon\Validation\Validator\Date](api/Phalcon_Validation#validation-validator-date)                                     | Validates that a field's value is a valid date.                      |
+| [Phalcon\Validation\Validator\Digit](api/Phalcon_Validation#validation-validator-digit)                                   | Validates that a field's value is only numeric character(s).         |
+| [Phalcon\Validation\Validator\Email](api/Phalcon_Validation#validation-validator-email)                                   | Validates that field contains a valid email format                   |
+| [Phalcon\Validation\Validator\ExclusionIn](api/Phalcon_Validation#validation-validator-exclusionin)                       | Validates that a value is not within a list of possible values       |
+| [Phalcon\Validation\Validator\File](api/Phalcon_Validation#validation-validator-file)                                     | Validates that a field's value is a correct file.                    |
+| [Phalcon\Validation\Validator\File\AbstractFile](api/Phalcon_Validation#validation-validator-file-abstractfile)          |                                                                      |
+| [Phalcon\Validation\Validator\File\MimeType](api/Phalcon_Validation#validation-validator-file-mimetype)                  |                                                                      |
+| [Phalcon\Validation\Validator\File\Resolution\Equal](api/Phalcon_Validation#validation-validator-file-resolution-equal) |                                                                      |
+| [Phalcon\Validation\Validator\File\Resolution\Max](api/Phalcon_Validation#validation-validator-file-resolution-max)     |                                                                      |
+| [Phalcon\Validation\Validator\File\Resolution\Min](api/Phalcon_Validation#validation-validator-file-resolution-min)     |                                                                      |
+| [Phalcon\Validation\Validator\File\Size\Equal](api/Phalcon_Validation#validation-validator-file-size-equal)             |                                                                      |
+| [Phalcon\Validation\Validator\File\Size\Max](api/Phalcon_Validation#validation-validator-file-size-max)                 |                                                                      |
+| [Phalcon\Validation\Validator\File\Size\Min](api/Phalcon_Validation#validation-validator-file-size-min)                 |                                                                      |
+| [Phalcon\Validation\Validator\Identical](api/Phalcon_Validation#validation-validator-identical)                           | Validates that a field's value is the same as a specified value      |
+| [Phalcon\Validation\Validator\InclusionIn](api/Phalcon_Validation#validation-validator-inclusionin)                       | Validates that a value is within a list of possible values           |
+| [Phalcon\Validation\Validator\Ip](api/Phalcon_Validation#validation-validator-ip)                                         |                                                                      |
+| [Phalcon\Validation\Validator\Numericality](api/Phalcon_Validation#validation-validator-numericality)                     | Validates that a field's value is a valid numeric value.             |
+| [Phalcon\Validation\Validator\PresenceOf](api/Phalcon_Validation#validation-validator-presenceof)                         | Validates that a field's value is not null or empty string.          |
+| [Phalcon\Validation\Validator\Regex](api/Phalcon_Validation#validation-validator-regex)                                   | Validates that the value of a field matches a regular expression     |
+| [Phalcon\Validation\Validator\StringLength](api/Phalcon_Validation#validation-validator-stringlength)                     | Validates the length of a string                                     |
+| [Phalcon\Validation\Validator\StringLength\Max](api/Phalcon_Validation#validation-validator-stringlength-max)            |                                                                      |
+| [Phalcon\Validation\Validator\StringLength\Min](api/Phalcon_Validation#validation-validator-stringlength-min)            |                                                                      |
+| [Phalcon\Validation\Validator\Uniqueness](api/Phalcon_Validation#validation-validator-uniqueness)                         | Validates that a field's value is unique in the related model.       |
+| [Phalcon\Validation\Validator\Url](api/Phalcon_Validation#validation-validator-url)                                       | Validates that field contains a valid URL                            |
 
 The following example explains how to create additional validators for this component:
 
