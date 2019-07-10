@@ -9,11 +9,11 @@ version: '4.0'
 ## Class Autoloader
 [Phalcon\Loader](api/Phalcon_Loader) allows you to load project classes automatically, based on some predefined rules. Since this component is written in C, it provides the lowest overhead in reading and interpreting external PHP files.
 
-![](/assets/images/implements-psr--0-blue.svg) ![](/assets/images/implements-psr--4-blue.svg)
+![](/assets/images/implements-psr--4-blue.svg)
 
 The behavior of this component is based on the PHP's capability of [autoloading classes][autoloading]. If a class that does not yet exist is used in any part of the code, a special handler will try to load it. [Phalcon\Loader](api/Phalcon_Loader) serves as the special handler for this operation. By loading classes on a need-to-load basis, the overall performance is increased since the only file reads that occur are for the files needed. This technique is called [lazy initialization][lazy_initialization].
 
-With this component you can load files from other projects or vendors, this autoloader is [PSR-0][psr-0] and [PSR-4][psr-4] compliant.
+With this component you can load files from other projects or vendors, this autoloader is [PSR-4][psr-4] compliant.
 
 [Phalcon\Loader](api/Phalcon_Loader) offers four options to autoload classes. You can use them one at a time or combine them.
 
@@ -274,7 +274,6 @@ Some things to keep in mind when using the universal autoloader:
 
 [autoloading]: https://secure.php.net/manual/en/language.oop5.autoload.php
 [lazy_initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
-[psr-0]: https://www.php-fig.org/psr/psr-0/
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [apcu]: https://php.net/manual/en/book.apcu.php
 
