@@ -18,8 +18,8 @@ This component makes use of adapters to encapsulate specific image manipulator p
 
 | 类                                                                     | 描述                                                                                   |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
-| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
+| [Phalcon\Image\Adapter\Gd](api/Phalcon_Image)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
+| [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
 ### Factory
 
@@ -42,7 +42,7 @@ $image = Factory::load($options);
 
 ### Implementing your own adapters
 
-The [Phalcon\Image\AdapterInterface](api/Phalcon_Image_AdapterInterface) interface must be implemented in order to create your own image adapters or extend the existing ones.
+The [Phalcon\Image\AdapterInterface](api/Phalcon_Image) interface must be implemented in order to create your own image adapters or extend the existing ones.
 
 ## Saving and rendering images
 

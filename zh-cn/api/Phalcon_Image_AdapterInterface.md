@@ -35,7 +35,7 @@ abstract public **reflection** (*mixed* $height, [*mixed* $opacity], [*mixed* $f
 
 ...
 
-abstract public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
+abstract public **watermark** ([Phalcon\Image\Adapter](Phalcon_Image) $watermark, [*mixed* $offsetX], [*mixed* $offsetY], [*mixed* $opacity])
 
 ...
 
@@ -43,7 +43,7 @@ abstract public **text** (*mixed* $text, [*mixed* $offsetX], [*mixed* $offsetY],
 
 ...
 
-abstract public **mask** ([Phalcon\Image\Adapter](Phalcon_Image_Adapter) $watermark)
+abstract public **mask** ([Phalcon\Image\Adapter](Phalcon_Image) $watermark)
 
 ...
 
