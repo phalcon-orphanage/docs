@@ -2,6 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
+upgrade: '#assets'
 title: 'Assets'
 ---
 # Assets Management

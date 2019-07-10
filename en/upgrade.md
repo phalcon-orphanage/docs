@@ -89,6 +89,21 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 <hr/>
 
+## Assets
+
+> Status: **changes required**
+>
+> Usage: [Assets Documentation](assets)
+{: .alert .alert-info }
+
+CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.  
+
+### Removed
+- Removed `Phalcon\Assets\Filters\CssMin`
+- Removed `Phalcon\Assets\Filters\JsMin`
+
+<hr/>
+
 ## Cache
 
 > Status: **changes required**
@@ -438,6 +453,18 @@ $group->addTrace(
     ]
 );
 ```
+
+<hr/>
+
+## Text
+
+> Status: **changes required**
+>
+> Usage: [Str Documentation](helpers#str)
+{: .alert .alert-info }
+
+The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
+
 
 [php-support]: https://secure.php.net/supported-versions.php
 [psr-3]: https://www.php-fig.org/psr/psr-3/
