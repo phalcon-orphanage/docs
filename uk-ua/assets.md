@@ -2,6 +2,7 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+upgrade: '#assets'
 title: 'Assets'
 ---
 
