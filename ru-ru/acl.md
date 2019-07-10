@@ -393,7 +393,7 @@ $acl->allow(
     'admin',
     'dashboard',
     function ($name) {
-        return ('Bob' !== $name);
+        return boolval('Bob' !== $name);
     }
 );
 ```
@@ -632,7 +632,7 @@ $acl->allow(
     'reports', 
     'list',
     function (ManagerRole $manager, ModelComponent $model) {
-        return $manager->getId() === $model->getUserId();
+        return boolval($manager->getId() === $model->getUserId());
     }
 );
 

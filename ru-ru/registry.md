@@ -2,8 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-upgrade: ''
-category: 'collection'
+title: 'Registry'
 ---
 
 # Registry Component
