@@ -393,7 +393,7 @@ $acl->allow(
     'admin',
     'dashboard',
     function ($name) {
-        return ('Bob' !== $name);
+        return boolval('Bob' !== $name);
     }
 );
 ```
@@ -624,19 +624,19 @@ $acl->addComponent(
 );
 
 /**
- * Now tie them all together with a custom function. Los parámetros ManagerRole y 
- * ModelSbject son necesarios para que la función personalizada funcione
+ * Now tie them all together with a custom function. The ManagerRole and
+ * ModelSbject parameters are necessary for the custom function to work 
  */
 $acl->allow(
     'manager', 
     'reports', 
     'list',
     function (ManagerRole $manager, ModelComponent $model) {
-        return $manager->getId() === $model->getUserId();
+        return boolval($manager->getId() === $model->getUserId());
     }
 );
 
-// Crear objectos personalizados
+// Create the custom objects
 $levelOne = new ManagerRole(1, 'manager-1');
 $levelTwo = new ManagerRole(2, 'manager');
 $admin    = new ManagerRole(3, 'manager');
@@ -644,14 +644,14 @@ $admin    = new ManagerRole(3, 'manager');
 // id - name - userId
 $reports  = new ModelComponent(2, 'reports', 2);
 
-// Comprobar que objectos de usuarios tienen acceso
-// Retorna false
+// Check whether our user objects have access 
+// Returns false
 $acl->isAllowed($levelOne, $reports, 'list');
 
-// Retorna true
+// Returns true
 $acl->isAllowed($levelTwo, $reports, 'list');
 
-// Retorna false
+// Returns false
 $acl->isAllowed($admin, $reports, 'list');
 ```
 

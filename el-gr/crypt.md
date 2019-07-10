@@ -2,6 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Crypt'
 ---
 
 # Crypt Component

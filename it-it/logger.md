@@ -14,7 +14,7 @@ title: 'Logger'
 
 [Phalcon\Logger](api/Phalcon_Logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
-![](/assets/images/implements-psr--3-orange.svg)
+![](/assets/images/implements-psr--3-blue.svg)
 
 The [Phalcon\Logger](api/Phalcon_Logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
 
