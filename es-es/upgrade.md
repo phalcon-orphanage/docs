@@ -99,6 +99,22 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 * * *
 
+## Recursos Activos
+
+> Status: **changes required**
+> 
+> Usage: [Assets Documentation](assets)
+{: .alert .alert-info }
+
+CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
+
+### Removed
+
+- Removed `Phalcon\Assets\Filters\CssMin`
+- Removed `Phalcon\Assets\Filters\JsMin`
+
+* * *
+
 ## Cache
 
 > Status: **changes required**
@@ -308,7 +324,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 > Usage: [Logger Documentation](logger)
 {: .alert .alert-info }
 
-The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). de tal manera que se puede utilizar con cualquier aplicación que necesite un componente de registro compatible con [PSR-3](https://www.php-fig.org/psr/psr-3/) --incluso sin estar basada en Phalcon.
+The `Logger` component has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
 
 En Phalcon v3.x el componente trae incorporado el adaptador. Esto en esencia significa que cuando se inicia el objeto de registro, el desarrollador está en realidad creando un adaptador (de archivo, flujo, etc.) con capacidad de registro.
 
@@ -462,3 +478,14 @@ $group->addTrace(
     ]
 );
 ```
+
+* * *
+
+## Text
+
+> Status: **changes required**
+> 
+> Usage: [Str Documentation](helpers#str)
+{: .alert .alert-info }
+
+The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
