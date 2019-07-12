@@ -5,6 +5,7 @@ version: '4.0'
 title: 'Phalcon\Cache'
 ---
 
+* [Phalcon\Cache](#cache)
 * [Phalcon\Cache\Adapter\AdapterInterface](#cache-adapter-adapterinterface)
 * [Phalcon\Cache\Adapter\Apcu](#cache-adapter-apcu)
 * [Phalcon\Cache\Adapter\Libmemcached](#cache-adapter-libmemcached)
@@ -12,98 +13,11 @@ title: 'Phalcon\Cache'
 * [Phalcon\Cache\Adapter\Redis](#cache-adapter-redis)
 * [Phalcon\Cache\Adapter\Stream](#cache-adapter-stream)
 * [Phalcon\Cache\AdapterFactory](#cache-adapterfactory)
-* [Phalcon\Cache\Cache](#cache-cache)
 * [Phalcon\Cache\CacheFactory](#cache-cachefactory)
 * [Phalcon\Cache\Exception\Exception](#cache-exception-exception)
 * [Phalcon\Cache\Exception\InvalidArgumentException](#cache-exception-invalidargumentexception)
 
-<h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/adapterinterface.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface | | Extends | StorageAdapterInterface |
-
-Interface for Phalcon\Cache adapters
-
-<h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/apcu.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends | StorageApcu | | Implements | CacheAdapterInterface |
-
-Apcu adapter
-
-<h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/libmemcached.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends | StorageLibmemcached | | Implements | CacheAdapterInterface |
-
-Libmemcached adapter
-
-<h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/memory.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends | StorageMemory | | Implements | CacheAdapterInterface |
-
-Memory adapter
-
-<h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/redis.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends | StorageRedis | | Implements | CacheAdapterInterface |
-
-Redis adapter
-
-<h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/stream.zep)
-
-| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends | StorageStream | | Implements | CacheAdapterInterface |
-
-Stream adapter
-
-<h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapterfactory.zep)
-
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AbstractAdapter, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
-
-Factory to create Cache adapters
-
-## Properties
-
-```php
-/**
- * @var SerializerFactory
- */
-private serializerFactory;
-
-```
-
-## Methoden
-
-```php
-public function __construct( SerializerFactory $factory = null, array $services = [] );
-```
-
-AdapterFactory constructor.
-
-```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
-```
-
-Create a new instance of the adapter
-
-```php
-protected function getAdapters(): array;
-```
-
-Returns the available adapters
-
-<h1 id="cache-cache">Class Phalcon\Cache\Cache</h1>
+<h1 id="cache">Class Phalcon\Cache</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cache.zep)
 
@@ -241,11 +155,97 @@ protected function checkKeys( mixed $keys ): void;
 
 Checks the key. If it contains invalid characters an exception is thrown
 
+<h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/adapterinterface.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface | | Extends | StorageAdapterInterface |
+
+Interface for Phalcon\Cache adapters
+
+<h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/apcu.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends | StorageApcu | | Implements | CacheAdapterInterface |
+
+Apcu adapter
+
+<h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/libmemcached.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends | StorageLibmemcached | | Implements | CacheAdapterInterface |
+
+Libmemcached adapter
+
+<h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/memory.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends | StorageMemory | | Implements | CacheAdapterInterface |
+
+Memory adapter
+
+<h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/redis.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends | StorageRedis | | Implements | CacheAdapterInterface |
+
+Redis adapter
+
+<h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/stream.zep)
+
+| Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends | StorageStream | | Implements | CacheAdapterInterface |
+
+Stream adapter
+
+<h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapterfactory.zep)
+
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AbstractAdapter, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
+
+Factory to create Cache adapters
+
+## Properties
+
+```php
+/**
+ * @var SerializerFactory
+ */
+private serializerFactory;
+
+```
+
+## Methoden
+
+```php
+public function __construct( SerializerFactory $factory = null, array $services = [] );
+```
+
+AdapterFactory constructor.
+
+```php
+public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+```
+
+Create a new instance of the adapter
+
+```php
+protected function getAdapters(): array;
+```
+
+Returns the available adapters
+
 <h1 id="cache-cachefactory">Class Phalcon\Cache\CacheFactory</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cachefactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache\Cache, Phalcon\Cache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache, Phalcon\Cache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
 
 Creates a new Cache class
 
