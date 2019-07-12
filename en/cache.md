@@ -8,7 +8,7 @@ title: 'Cache'
 # Cache Component
 <hr>
 
-## Improving Performance with Cache
+## Overview
 
 The `Phalcon\Cache` namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
 
