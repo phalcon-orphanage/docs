@@ -5,12 +5,12 @@ version: '4.0'
 title: 'Phalcon\Config'
 ---
 
+* [Phalcon\Config](#config-config)
 * [Phalcon\Config\Adapter\Grouped](#config-adapter-grouped)
 * [Phalcon\Config\Adapter\Ini](#config-adapter-ini)
 * [Phalcon\Config\Adapter\Json](#config-adapter-json)
 * [Phalcon\Config\Adapter\Php](#config-adapter-php)
 * [Phalcon\Config\Adapter\Yaml](#config-adapter-yaml)
-* [Phalcon\Config\Config](#config-config)
 * [Phalcon\Config\ConfigFactory](#config-configfactory)
 * [Phalcon\Config\Exception](#config-exception)
         
@@ -19,7 +19,7 @@ title: 'Phalcon\Config'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/grouped.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
-| Uses       | Phalcon\Config\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory |
+| Uses       | Phalcon\Config, Phalcon\Config\Exception, Phalcon\Factory\Exception, Phalcon\Config\ConfigFactory |
 | Extends    | Config |
 
 Reads multiple files (or arrays) and merges them all together.
@@ -87,7 +87,7 @@ Phalcon\Config\Adapter\Grouped constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/ini.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
-| Uses       | Phalcon\Config\Config, Phalcon\Config\Exception |
+| Uses       | Phalcon\Config, Phalcon\Config\Exception |
 | Extends    | Config |
 
 Reads ini files and converts them to Phalcon\Config objects.
@@ -159,7 +159,7 @@ Build multidimensional array from string
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
-| Uses       | Phalcon\Config\Config |
+| Uses       | Phalcon\Config |
 | Extends    | Config |
 
 Reads JSON files and converts them to Phalcon\Config objects.
@@ -196,7 +196,7 @@ Phalcon\Config\Adapter\Json constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/php.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
-| Uses       | Phalcon\Config\Config |
+| Uses       | Phalcon\Config |
 | Extends    | Config |
 
 Reads php files and converts them to Phalcon\Config objects.
@@ -248,7 +248,7 @@ Phalcon\Config\Adapter\Php constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/yaml.zep)
 
 | Namespace  | Phalcon\Config\Adapter |
-| Uses       | Phalcon\Config\Config, Phalcon\Config\Exception |
+| Uses       | Phalcon\Config, Phalcon\Config\Exception |
 | Extends    | Config |
 
 Reads YAML files and converts them to Phalcon\Config objects.
@@ -297,7 +297,7 @@ Phalcon\Config\Adapter\Yaml constructor
 
 
         
-<h1 id="config-config">Class Phalcon\Config\Config</h1>
+<h1 id="config-config">Class Phalcon\Config</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/config.zep)
 

@@ -610,7 +610,7 @@ file that was distributed with this source code.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
 
 | Namespace  | Phalcon\Image |
-| Uses       | Phalcon\Config\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface |
+| Uses       | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface |
 | Extends    | AbstractFactory |
 
 Phalcon\Image/ImageFactory

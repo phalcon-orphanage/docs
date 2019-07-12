@@ -23,7 +23,7 @@ title: 'Phalcon\Di.zep'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Config\Config, Phalcon\Di\Service, Phalcon\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
+| Uses       | Phalcon\Config, Phalcon\Di\Service, Phalcon\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
 | Implements | DiInterface |
 
 Phalcon\Di is a component that implements Dependency Injection/Service
