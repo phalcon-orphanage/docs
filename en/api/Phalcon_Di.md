@@ -414,7 +414,7 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Session\ManagerInterface $session
 @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
 @property \Phalcon\Db\Adapter\AdapterInterface $db
-@property \Phalcon\Security\Security $security
+@property \Phalcon\Security $security
 @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt
 @property \Phalcon\Tag $tag
 @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
