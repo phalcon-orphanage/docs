@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'pt-br'
+language: 'en'
 version: '4.0'
 title: 'API Index'
 ---
