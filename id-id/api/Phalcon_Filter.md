@@ -6,7 +6,7 @@ title: 'Phalcon\Filter'
 ---
 
 * [Phalcon\Filter\Exception](#filter-exception)
-* [Phalcon\Filter\Filter](#filter-filter)
+* [Phalcon\Filter\Filter](#filter)
 * [Phalcon\Filter\FilterFactory](#filter-filterfactory)
 * [Phalcon\Filter\FilterInterface](#filter-filterinterface)
 * [Phalcon\Filter\Sanitize\AbsInt](#filter-sanitize-absint)
@@ -41,9 +41,9 @@ Phalcon\Filter\Exception
 
 Exceptions thrown in Phalcon\Filter will use this class
 
-<h1 id="filter-filter">Class Phalcon\Filter\Filter</h1>
+<h1 id="filter">Class Phalcon\Filter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
 
 | Namespace | Phalcon\Filter | | Uses | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface | | Implements | FilterInterface |
 

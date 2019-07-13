@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'sr-sp'
+language: 'en'
 version: '4.0'
 title: 'Registry'
 ---
@@ -11,7 +11,7 @@ title: 'Registry'
 
 ## Overview
 
-`Phalcon\Registry` is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
+[Phalcon\Registry](api/Phalcon_Registry#registry) is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -59,7 +59,7 @@ $collection = new Registry($data);
 
 ## Reusing
 
-You can also reuse the component, by repopulating it. `Phalcon\Registry` exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+You can also reuse the component, by repopulating it. [Phalcon\Registry](api/Phalcon_Registry#registry) exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -92,7 +92,7 @@ echo $collection->count(); // 1
 
 ## Get
 
-As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, [Phalcon\Registry](api/Phalcon_Registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
 - Property
 - `__get()`
@@ -138,7 +138,7 @@ Using `get()` offers two extra parameters. When `$defaultValue` is defined in th
 
 ## Get
 
-As mentioned above, `Phalcon\Registry` implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, [Phalcon\Registry](api/Phalcon_Registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
 - Property
 - `__get()`
@@ -400,7 +400,7 @@ echo $collection->jsonSerialize(); // $data
 
 ## Transformations
 
-`Phalcon\Registry` also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+[Phalcon\Registry](api/Phalcon_Registry#registry) also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
 ```php
 <?php

@@ -607,7 +607,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
 
-| Namespace | Phalcon\Image | | Uses | Phalcon\Config\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
+| Namespace | Phalcon\Image | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
 Phalcon\Image/ImageFactory
 
