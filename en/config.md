@@ -8,7 +8,7 @@ title: 'Config'
 <hr />
 
 ## Overview
-Nearly all applications require configuration data for it to operate correctly. The configuration can contain location of log files, database connection values, services registered etc. The [Phalcon\Config][config] is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config][config] extends the [Phalcon\Collection][collection] object and thus inheriting its functionality. 
+Nearly all applications require configuration data for it to operate correctly. The configuration can contain parameters and initial settings for the application like location of log files, database connection values, services registered etc. The [Phalcon\Config][config] is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config][config] extends the [Phalcon\Collection][collection] object and thus inheriting its functionality. 
  
 ```php
 <?php
@@ -36,7 +36,7 @@ echo $config->path('app.name');         // PHALCON
 
 ## Factory
 ### `newInstance`
-We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `neeInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
+We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `newInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
 
 The allowed values for `name`, which correspond to a different adapter class are:
 * `grouped`
@@ -154,13 +154,13 @@ use Phalcon\Config;
 $config = new Config(
     [
         'app' => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'PHALCON'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'UTC'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         // 
         ],
     ]
 );
@@ -279,13 +279,13 @@ $loader = (new josegonzalez\Dotenv\Loader('/app/.env'))
 $envConfig= new Config(
     [
         'app'     => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'MYAPP'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'America/New_York'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         //
         ],
         'logging' => true,
     ]
@@ -799,4 +799,4 @@ Also in your views (Volt syntax)
 [config-exception]: api/Phalcon_Config#config-exception
 [dotenv]: https://github.com/josegonzalez/php-dotenv
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
-[yanl-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
+[yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
