@@ -86,7 +86,7 @@ These statuses can be used at the display/view layer of your application to proc
 
 use Application\Models\Reports;
 use Phalcon\Domain\PayloadFactory;
-use Phalcon\Domain\Payload\Staus;
+use Phalcon\Domain\Payload\Status;
 use Phalcon\Mvc\Controller;
 
 class ReportsController extends Controller
