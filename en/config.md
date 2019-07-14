@@ -799,4 +799,4 @@ Also in your views (Volt syntax)
 [config-exception]: api/Phalcon_Config#config-exception
 [dotenv]: https://github.com/josegonzalez/php-dotenv
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
-[yanl-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
+[yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php
