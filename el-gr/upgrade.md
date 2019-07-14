@@ -489,3 +489,12 @@ $group->addTrace(
 {: .alert .alert-info }
 
 The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
+
+## Διεύθυνση URL
+
+> Status: **changes required**
+> 
+> Usage: [Url Documentation](url)
+{: .alert .alert-info }
+
+The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functionality remains the same.
