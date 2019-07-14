@@ -154,13 +154,13 @@ use Phalcon\Config;
 $config = new Config(
     [
         'app' => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'PHALCON'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'UTC'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         // 
         ],
     ]
 );
@@ -279,13 +279,13 @@ $loader = (new josegonzalez\Dotenv\Loader('/app/.env'))
 $envConfig= new Config(
     [
         'app'     => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'MYAPP'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'America/New_York'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         //
         ],
         'logging' => true,
     ]
