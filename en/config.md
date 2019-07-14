@@ -8,7 +8,7 @@ title: 'Config'
 <hr />
 
 ## Overview
-Nearly all applications require configuration data for it to operate correctly. The configuration can contain location of log files, database connection values, services registered etc. The [Phalcon\Config][config] is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config][config] extends the [Phalcon\Collection][collection] object and thus inheriting its functionality. 
+Nearly all applications require configuration data for it to operate correctly. The configuration can contain parameters and initial settings for the application like location of log files, database connection values, services registered etc. The [Phalcon\Config][config] is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config][config] extends the [Phalcon\Collection][collection] object and thus inheriting its functionality. 
  
 ```php
 <?php
@@ -36,7 +36,7 @@ echo $config->path('app.name');         // PHALCON
 
 ## Factory
 ### `newInstance`
-We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `neeInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
+We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `newInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
 
 The allowed values for `name`, which correspond to a different adapter class are:
 * `grouped`
