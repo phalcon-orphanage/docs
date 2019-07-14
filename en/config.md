@@ -121,7 +121,7 @@ $config = $factory->load($fileName);
 ```
 
 ## Exceptions
-Any exceptions thrown in the Config component will be of type [Phalcon\Config\Exception][config-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the [Phalcon\Config][config] component will be of type [Phalcon\Config\Exception][config-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -766,7 +766,11 @@ The component is now available in your controllers using the `config` key
 <?php
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Config;
 
+/**
+ * @property Config $config
+ */
 class MyController extends Controller
 {
     private function getDatabaseName()
@@ -779,7 +783,7 @@ class MyController extends Controller
 Also in your views (Volt syntax)
 
 ```twig
-{{ config.database.dbname }}
+{% raw %}{{ config.database.dbname }}{% endraw %}
 ```
 
 [config]: api/Phalcon_Config
