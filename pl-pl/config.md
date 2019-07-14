@@ -11,7 +11,7 @@ title: 'Config'
 
 ## Overview
 
-Nearly all applications require configuration data for it to operate correctly. The configuration can contain location of log files, database connection values, services registered etc. The [Phalcon\Config](api/Phalcon_Config) is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config](api/Phalcon_Config) extends the [Phalcon\Collection](api/Phalcon_Collection) object and thus inheriting its functionality.
+Nearly all applications require configuration data for it to operate correctly. The configuration can contain parameters and initial settings for the application like location of log files, database connection values, services registered etc. The [Phalcon\Config](api/Phalcon_Config) is designed to store this configuration data in an easy object oriented way. The component can be instantiated using a PHP array directly or read configuration files from various formats as described further down in the adapters section. [Phalcon\Config](api/Phalcon_Config) extends the [Phalcon\Collection](api/Phalcon_Collection) object and thus inheriting its functionality.
 
 ```php
 <?php
@@ -41,7 +41,7 @@ echo $config->path('app.name');         // PHALCON
 
 ### `newInstance`
 
-We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `neeInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
+We can easily create a `Phalcon\Config` or any of the supporting adapter classes `Phalcon\Config\Adapter\*` by using the `new` keyword. However Phalcon offers the `Phalcon\Config\ConfigFactory` class, so that developers can easily instantiate config objects. Calling `newInstance` with the `name`, `fileName` and a `parameters` array will return the new config object.
 
 The allowed values for `name`, which correspond to a different adapter class are: * `grouped` * `ini` * `json` * `php` * `yaml`
 
@@ -123,7 +123,7 @@ $config = $factory->load($fileName);
 
 ## Exceptions
 
-Any exceptions thrown in the Config component will be of type [Phalcon\Config\Exception](api/Phalcon_Config#config-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the [Phalcon\Config](api/Phalcon_Config) component will be of type [Phalcon\Config\Exception](api/Phalcon_Config#config-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -157,13 +157,13 @@ use Phalcon\Config;
 $config = new Config(
     [
         'app' => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'PHALCON'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'UTC'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         // 
         ],
     ]
 );
@@ -289,13 +289,13 @@ $loader = (new josegonzalez\Dotenv\Loader('/app/.env'))
 $envConfig= new Config(
     [
         'app'     => [
-            'baseUri'  => getenv('APP_BASE_URI'),
-            'env'      => getenv('APP_ENV'),
-            'name'     => getenv('APP_NAME'),
-            'timezone' => getenv('APP_TIMEZONE'),
-            'url'      => getenv('APP_URL'),
-            'version'  => getenv('VERSION'),
-            'time'     => microtime(true),
+            'baseUri'  => getenv('APP_BASE_URI'),  // '/'
+            'env'      => getenv('APP_ENV'),       // 3
+            'name'     => getenv('APP_NAME'),      // 'MYAPP'
+            'timezone' => getenv('APP_TIMEZONE'),  // 'America/New_York'
+            'url'      => getenv('APP_URL'),       // 'http://127.0.0.1',
+            'version'  => getenv('VERSION'),       // '0.1'
+            'time'     => microtime(true),         //
         ],
         'logging' => true,
     ]
@@ -786,7 +786,11 @@ The component is now available in your controllers using the `config` key
 <?php
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Config;
 
+/**
+ * @property Config $config
+ */
 class MyController extends Controller
 {
     private function getDatabaseName()
@@ -799,5 +803,5 @@ class MyController extends Controller
 Also in your views (Volt syntax)
 
 ```twig
-{{ config.database.dbname }}
+{% raw %}{{ config.database.dbname }}{% endraw %}
 ```
