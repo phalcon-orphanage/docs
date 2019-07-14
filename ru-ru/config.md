@@ -659,7 +659,7 @@ $config = $factory->newinstance('php', $fileName);
 > Requires PHP's yaml extension to be present in the system
 {: .alert .alert-info }
 
-Another common file format is YAML. [Phalcon\Config\Yaml](api/Phalcon_Config#config-adapter-yaml) requires the `yaml` PHP extension to be present in your system. It uses the PHP function \[yaml_parse_file\]\[yaml-parse-file\] to read these files. The adapter reads a `yaml` file supplied as the first parameter of the constructor, but also accepts a second parameter `callbacks` as an array. The `callbacks` supplies content handlers for YAML nodes. It is an associative array of `tag => callable` mappings.
+Another common file format is YAML. [Phalcon\Config\Yaml](api/Phalcon_Config#config-adapter-yaml) requires the `yaml` PHP extension to be present in your system. It uses the PHP function [yaml_parse_file](https://www.php.net/manual/en/function.yaml-parse-file.php) to read these files. The adapter reads a `yaml` file supplied as the first parameter of the constructor, but also accepts a second parameter `callbacks` as an array. The `callbacks` supplies content handlers for YAML nodes. It is an associative array of `tag => callable` mappings.
 
 ```yaml
 app:
