@@ -26,7 +26,7 @@ By default, this component utilizes the `AES-256-CFB` cipher.
 
 El cifrado AES-256 es de uso común en las comunicaciones SSL/TLS, entre otros, en Internet y se considera como uno de los mejores. En teoría no es fácil romperlo puesto que la combinación de claves es ingente. La NSA lo ha catalogado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography) de criptografía, si bien recomienda utilizar claves de más de 128-bit para encriptar.
 
-> You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
+> You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
 {: .alert .alert-warning }
 
 ## Uso básico
@@ -192,7 +192,9 @@ The component offers a getter and a setter for the key to be used. Once the key 
 * `getKey()`: Returns the encryption key.
 * `setKey()` Sets the encryption key.
 
-> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string.
+> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. The longer and more random the key is the better. The length of course depends on the chosen cipher.
+> 
+> Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string.
 {: .alert .alert-danger }
 
 ### Signing

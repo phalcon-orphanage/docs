@@ -9,9 +9,11 @@ title: 'Generar una traza inversa'
 
 * * *
 
-A veces, debido a fallas de segmentación, Phalcon podría bloquear algunos de los procesos de su servidor web. Por favor ayúdanos a identificar el problema añadiendo un backtrace del bloqueo de procesos a su informe de fallo.
+Phalcon is compiled into a C extension loaded on your web server. Because of that, bugs lead to segmentation faults, causing Phalcon to crash some of your web server processes.
 
-Por favor sigue estas indicaciones para entender cómo generar el backtrace.
+For debugging these segmentation faults a stacktrace is required. Creating a stack trace requires a special build of php and some steps need to be done to generate a trace that allows the phalcon team to debug this behavior.
+
+Please follow this guide to understand how to generate the backtrace.
 
 <https://bugs.php.net/bugs-generating-backtrace.php>
 
