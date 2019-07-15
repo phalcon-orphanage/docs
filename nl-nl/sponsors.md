@@ -4,10 +4,6 @@ language: 'nl-nl'
 version: '4.0'
 ---
 
-# Sponsors and Supporters
-
-* * *
-
 # Becoming a sponsor
 
 Voor degenen die ons werk willen sponsoren en de ontwikkeling van Phalcon willen bevorderen, bieden we verschillende sponsoropties die bij elk budget passen. Door ons werk te sponsoren kunnen we meer tijd aan het project besteden, sneller reageren op bugs en functies en de stabiliteit van de projecten garanderen.
@@ -27,7 +23,7 @@ Voor degenen die ons werk willen sponsoren en de ontwikkeling van Phalcon willen
     </a>
     <a href="https://mctekk.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/mctekk-149x34.svg"
-             alt="Mctekk">
+             alt="{mctekk}">
     </a>
     <a href="https://abits.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/abits-100x34.svg"

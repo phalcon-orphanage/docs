@@ -4,11 +4,7 @@ language: 'es-es'
 version: '4.0'
 ---
 
-# Patrocinadores y Colaboradores
-
-* * *
-
-# Convertirse en un patrocinador
+# Becoming a sponsor
 
 Para aquellos que quieran patrocinar nuestro trabajo y el desarrollo de Phalcon, ofrecemos varias opciones de patrocinio que se ajustan a cualquier presupuesto. Patrocinar nuestro trabajo nos permite dedicar más tiempo al proyecto, ofrecer respuestas más rápidas a errores, nuevas características y asegurar la estabilidad de los proyectos.
 
@@ -27,7 +23,7 @@ Para aquellos que quieran patrocinar nuestro trabajo y el desarrollo de Phalcon,
     </a>
     <a href="https://mctekk.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/mctekk-149x34.svg"
-             alt="Mctekk">
+             alt="{mctekk}">
     </a>
     <a href="https://abits.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/abits-100x34.svg"
