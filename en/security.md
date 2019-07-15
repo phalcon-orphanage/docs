@@ -23,7 +23,6 @@ The security component uses [bcrypt][bcrypt] as the hashing algorithm. Thanks to
 
 Should hardware becomes faster in the future, we can increase the work factor to mitigate this. The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes][openssl-random-pseudo-bytes].
 
-
 This component offers a simple interface to use the algorithm:
 
 ```php
@@ -51,7 +50,7 @@ $password = $_POST['password'] ?? '';
 $security = new Security();
 $hashed = $security->hash('Phalcon');
 
-echo $security->checkHash($password, $hashed); // true or false
+echo $security->checkHash($password, $hashed); // true / false
 ```
 
 The above example simply shows how the `checkHash()` can be used. In production applications we will definitely need to sanitize input and also we need to store the hashed password in a data store such as a database. Using controllers, the above example can be shown as:
@@ -71,7 +70,7 @@ use Phalcon\Security;
 class SessionController extends Controller
 {
     /**
-     * Logs the user in
+     * Login
      */
     public function loginAction()
     {
@@ -93,17 +92,17 @@ class SessionController extends Controller
                 ->checkHash($password, $user->password);
             
             if (true === $check) {
-                // The password is valid
+                // OK
             }
         } else {
             $this->security->hash(rand());
         }
 
-        // The validation has failed
+        // ERROR
     }
 
     /**
-     * Registers the user
+     * Register
      */
     public function registerAction()
     {
@@ -112,9 +111,7 @@ class SessionController extends Controller
 
         $user = new Users();
 
-        $user->login = $login;
-
-        // Store the password hashed
+        $user->login    = $login;
         $user->password = $this->security->hash($password);
 
         $user->save();
@@ -123,9 +120,11 @@ class SessionController extends Controller
 }
 ```
 
-The (incomplete and not to be used as is for production) `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` object and assigns the passed data to it before saving. Notice that for the password, we use the `hash()` method of the [Phalcon\Security][security] component so that we do not save it as plain text in our database.
+Let's explain the above code snippet - which is incomplete and **must not be used as is for production applications**:
 
-The `loginAction()` (also incomplete and not to be used as is for production) accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database. 
+The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security][security] component so that we do not save it as plain text in our database.
+
+The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database. 
 
 > You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
 {: .alert .alert-info }
@@ -202,7 +201,7 @@ class SessionController extends Controller
     {
         if ($this->request->isPost()) {
             if ($this->security->checkToken()) {
-                // The token is OK
+                // OK
             }
         }
     }
@@ -453,7 +452,6 @@ $container->set(
     function () {
         $security = new Security();
 
-        // Set the password hashing factor to 12 rounds
         $security->setWorkFactor(12);
 
         return $security;
@@ -461,6 +459,7 @@ $container->set(
     true
 );
 ```
+In the above example, the `setWorkFactor()` sets the password hashing factor to 12 rounds.
 
 The component is now available in your controllers using the `security` key
 
