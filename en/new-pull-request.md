@@ -7,9 +7,9 @@ title: 'New Pull Request'
 # New Pull Request
 <hr/>
 
-A pull request a collection of changes to the code that:
+A pull request for Phalcon must be against our [main repository[cphalcon]. It is a collection of changes to the code that:
 - fix a bug (current issue)
-- introduce new functionality
+- introduce new functionality or enhancement.
 
 Your pull request must include:
 * Target the correct branch.
@@ -28,3 +28,5 @@ For new functionality, we will need to have an issue created and referenced. If 
 Additionally any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version. 
 
 It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.
+
+[cphalcon]: https://github.com/phalcon/cphalcon

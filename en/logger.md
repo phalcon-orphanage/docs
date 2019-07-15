@@ -35,7 +35,7 @@ This adapter sends messages to the system log. The syslog behavior may vary from
 ### Noop
 This is a black hole adapter. It sends messages to *infinity and beyond*! This adapter is used mostly for testing or if you want to joke with a colleague.
 
-## Logger Factory 
+## Factory 
 You can use the [Phalcon\Logger\LoggerFactory][L5] component to create a logger. For the [Phalcon\Logger\LoggerFactory][L5] to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory][L6]:
 
 ```php
@@ -165,7 +165,7 @@ The log generated is as follows:
 [Tue, 25 Dec 18 12:13:14 -0400][WARNING] This is warning message
 ```
 
-## Logging to Multiple Adapters
+## Multiple Adapters
 [Phalcon\Logger][L1] can send messages to multiple adapters with a just single call:
 
 ```php
@@ -223,6 +223,9 @@ $logger
     ->excludeAdapters(['local'])
     ->info('This does not go to the "local" logger');
 ```
+
+> **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
+{: .alert .alert-warning }
 
 ## Message Formatting
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
