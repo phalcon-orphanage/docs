@@ -23,7 +23,7 @@ Para aquellos que quieran patrocinar nuestro trabajo y el desarrollo de Phalcon,
     </a>
     <a href="https://mctekk.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/mctekk-149x34.svg"
-             alt="{mctekk}">
+             alt="Mctekk">
     </a>
     <a href="https://abits.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalconphp.com/phalcon/images/backers/abits-100x34.svg"
