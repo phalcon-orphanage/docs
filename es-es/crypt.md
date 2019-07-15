@@ -9,219 +9,237 @@ title: 'Crypt'
 
 * * *
 
-## Encriptación y desencriptación
+## Overview
 
-Phalcon provee el servicio de encriptación mediante el componente [Phalcon\Crypt](api/Phalcon_Crypt). Esta clase ofrece una envoltura simple orientada a objetos de la biblioteca de cifrado [OpenSSL](https://secure.php.net/manual/es/book.openssl.php) de PHP.
+> Requires PHP's [openssl](https://secure.php.net/manual/en/book.openssl.php) extension to be present in the system
+{: .alert .alert-info }
 
-El componente ofrece encriptación segura utilizando AES-256-CFB por defecto.
+> 
+> **DOES NOT** support insecure algorithms with modes:
+> 
+> `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
+{: .alert .alert-danger }
+
+Phalcon provides encryption facilities via the [Phalcon\Crypt](Phalcon_Crypt#crypt) component. Esta clase ofrece una envoltura simple orientada a objetos de la biblioteca de cifrado [OpenSSL](https://secure.php.net/manual/es/book.openssl.php) de PHP.
+
+By default, this component utilizes the `AES-256-CFB` cipher.
 
 El cifrado AES-256 es de uso común en las comunicaciones SSL/TLS, entre otros, en Internet y se considera como uno de los mejores. En teoría no es fácil romperlo puesto que la combinación de claves es ingente. La NSA lo ha catalogado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography) de criptografía, si bien recomienda utilizar claves de más de 128-bit para encriptar.
 
-> Se debe utilizar una llave con la longitud correspondiente al algoritmo utilizado. El algoritmo predeterminado emplea 32 bytes.
+> You must use a key length corresponding to the current algorithm. For the algorithm used by default it is 32 bytes.
 {: .alert .alert-warning }
 
 ## Uso básico
 
-El componente está diseñado para ser usado de manera sencilla:
+This component is designed to be very simple to use:
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Crear una instancia
-$crypt = new Crypt();
+$key = "12345"; // Your luggage combination
 
-/**
- * Establecer el algoritmo de cifrado.
- *
- * El cifrado `aes-256-gcm' es el preferido, pero no se puede utilizar
- * hasta que la librería openssl este actualizada. Disponible desde PHP 7.1.
- *
- * El `aes-256-ctr' es posiblemente la mejor opción de algoritmo de cifrado
- * en estos días.
- */
-$crypt->setCipher('aes-256-ctr');
-
-/**
- * Establecer la clave de encriptación.
- *
- * El `$key' debe ser generado previamente de una manera criptográficamente segura.
- *
- * Clave insegura:
- * "mi password"
- *
- * Mejor (pero aún insegura):
- * "#1dj8$=dp?.ak//j1V$~%*0X"
- *
- * Clave segura:
- * "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
- *
- * Utiliza tu propia clave. No copiar y pegar esta clave de ejemplo.
- */
-$key = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
-
-$text = 'Este es el texto que deseas encriptar.';
-
+$crypt     = new Crypt();
+$text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
 
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-Al instanciar el objeto es posible tanto definir el algoritmo como solicitar un resumen del mensaje (firma). De esta manera no es necesario llamar `setCipher()` o `useSigning()`:
+If no parameters are passed in the constructor, the component will use the `aes-256-cfb` cipher with signing by default. You can always change the cipher as well as disable signing.
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Crear instancia
-$crypt = new Crypt('aes-256-ctr', true);
+$key = "12345"; // Your luggage combination
 
-$key = "T4\xb1\x8d\xa9\x98\x05\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
+$crypt     = new Crypt();
 
-$text = 'Este es un texto que debe ser encriptado.';
+$crypt
+    ->setCipher('aes-256-gcm')
+    ->useSigning(false)
+;
 
+$text      = 'This is the text that you want to encrypt.';
 $encrypted = $crypt->encrypt($text, $key);
 
 echo $crypt->decrypt($encrypted, $key);
 ```
 
-La misma instancia se puede utilizar varias veces para encriptar y desencriptar:
+## Encrypt
+
+The `encrypt()` method encrypts a string. The component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
 
 ```php
 <?php
 
 use Phalcon\Crypt;
 
-// Crear una instancia
+$key = "12345"; // Your luggage combination
+
 $crypt = new Crypt();
+$crypt->setKey($key);
 
-$crypt->setCipher('aes-256-ctr');
+$text      = 'This is the text that you want to encrypt.';
+$encrypted = $crypt->encrypt($text);
+```
 
-// ¡Utilice sus propias claves!
-$texts = [
-    "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\\x5c" => 'Este es un texto secreto',
-    "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3" => 'Esto es muy secreto',
-];
+or using the key as the second parameter
 
-foreach ($texts as $key => $text) {
-    // Realizar la encriptación
-    $encrypted = $crypt->encrypt($text, $key);
+```php
+<?php
 
-    // Ahora descencriptar
-    echo $crypt->decrypt($encrypted, $key);
+use Phalcon\Crypt;
+
+$key = "12345"; // Your luggage combination
+
+$crypt     = new Crypt();
+$text      = 'This is the text that you want to encrypt.';
+$encrypted = $crypt->encrypt($text, $key);
+```
+
+The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
+
+## Decrypt
+
+The `decrypt()` method decrypts a string. Similar to `encrypt()` the component will use the previously set cipher, which has been set in the constructor or explicitly. If no `key` is passed in the parameter, the previously set key will be used.
+
+```php
+<?php
+
+use Phalcon\Crypt;
+
+$key = "12345"; // Your luggage combination
+
+$crypt = new Crypt();
+$crypt->setKey($key);
+
+$text      = 'T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3';
+$encrypted = $crypt->decrypt($text);
+```
+
+or using the key as the second parameter
+
+```php
+<?php
+
+use Phalcon\Crypt;
+
+$key = "12345"; // Your luggage combination
+
+$crypt     = new Crypt();
+$crypt->setKey($key);
+
+$text      = 'T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3';
+$encrypted = $crypt->decrypt($text, $key);
+```
+
+The method will also internally use signing by default. You can always use `useSigning(false)` prior to the method call to disable it.
+
+## Base64 Encrypt
+
+The `encryptBase64()` can be used to encrypt a string in a URL friendly way. It uses `encrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for non URL *friendly* characters such as `+` or `/`.
+
+## Base64 Decrypt
+
+The `decryptBase64()` can be used to deecrypt a string in a URL friendly way. Similar to `encryptBase64()` it uses `decrypt()` internally and accepts the `text` and optionally the `key` of the element to encrypt. There is also a third parameter `safe` (defaults to `false`) which will perform string replacements for previously replaced non URL *friendly* characters such as `+` or `/`.
+
+## Exceptions
+
+Exceptions thrown in the [Phalcon\Crypt](Phalcon_Crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](Phalcon_Crypt#crypt-mismatch) will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+
+```php
+<?php
+
+use Phalcon\Crypt\Mismatch;
+use Phalcon\Mvc\Controller;
+
+class IndexController extends Controller
+{
+    public function index()
+    {
+        try {
+            // Get some configuration values
+            $this->crypt->decrypt('hello');
+        } catch (Mismatch $ex) {
+            echo $ex->getMessage();
+        }
+    }
 }
 ```
 
-Para mayor seguridad, se puede ordenar al componente que calcule un resumen empleando alguno de los algoritmos que se encuentran en `getAvailableHashAlgos`. Como se mostró en un ejemplo anterior, esta opción se puede configurar al instanciar el objeto o, si se prefiere, después de hacerlo.
+## Functionality
 
-**Nota:** A partir de Phalcon 4.0.0 o superior, el cálculo del resumen (firma) estará activo de manera predeterminada.
+### Ciphers
 
-```php
-<?php
+The getter `getCipher()` returns the currently selected cipher. If none has been explicitly defined either by the setter `setCipher()` or the constructor of the object the `aes-256-cfb` is selected by default. The `aes-256-gcm` is the preferable cipher.
 
-use Phalcon\Crypt;
+You can always get an array of all the available ciphers for your system by calling `getAvailableCiphers()`.
 
-// Crear instancia
-$crypt = new Crypt();
+### Hash algorithm
 
-$crypt->setCipher('aes-256-ctr');
-$crypt->setHashAlgo('aes-256-cfb');
+The getter `getHashAlgo()` returns the hashing algorithm use by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a \[Phalcon\Crypt\Exception\]\[crypt=exception\] will be thrown.
 
-// Exigir el cálculo del resumen basado en el hash del algoritmo
-$crypt->useSigning(true);
+You can always get an array of all the available hashing algorithms for your system by calling `getAvailableHashAlgos()`.
 
-$key  = "T4\xb1\x8d\xa9\x98\x054t7w!z%C*F-Jk\x98\x05\\x5c";
-$text = 'Este es un mensaje secreto';
+### Keys
 
-// Realizar el encriptado
-$encrypted = $crypt->encrypt($text, $key);
+The component offers a getter and a setter for the key to be used. Once the key is set, it will be used for any encrypting or decrypting operation (provided that the `key` parameter is not defined when using these methods).
 
-// Ahora desencriptar
-echo $crypt->decrypt($encrypted, $key);
-```
+* `getKey()`: Returns the encryption key.
+* `setKey()` Sets the encryption key.
 
-## Opciones de encriptación
+> You should always create as secure keys as possible. `12345` might be good for your luggage combination, or `password1` for your email, but for your application you should try something a lot more complex. Several online services can generate a random and strong text that can be used for a key. Alternatively you can always use the `hash()` methods from the [Phalcon\Security](security) component, which can offer a strong key by hashing a string.
+{: .alert .alert-danger }
 
-Las opciones para configurar la encriptación son las siguientes:
+### Signing
 
-| Nombre | Descripción                                                                                                                                                                            |
-| ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cipher | Cipher es uno de los algoritmos de encriptación aceptados por OpenSSL. La lista completa se encuentra [aquí](https://secure.php.net/manual/es/function.openssl-get-cipher-methods.php) |
+To instruct the component to use signing or not, `useSigning` is available. It accepts a boolean which sets a flag internally, specifying whether signing will be used or not.
 
-Ejemplo:
+### Auth Data
 
-```php
-<?php
+If the cipher selected is of type `gcm` or `ccm` (what the cipher name ends with), auth data is required for the component to correctly encrypt or decrypt data. The methods available for this operation are:
 
-use Phalcon\Crypt;
+* `setAuthTag()`
+* `setAuthData()`
+* `setAuthTagLength()` - defaults to `16`
 
-// Crear una instancia
-$crypt = new Crypt();
+### Padding
 
-// Usar blowfish
-$crypt->setCipher('bf-cbc');
+You can also set the padding used by the component by using `setPadding()`. By default the component will use `PADDING_DEFAULT`. The available padding constants are:
 
-// ¡Usar tu propia clave!
-$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
-$text = 'Este es un texto secreto';
+* `PADDING_ANSI_X_923`
+* `PADDING_DEFAULT`
+* `PADDING_ISO_10126`
+* `PADDING_ISO_IEC_7816_4`
+* `PADDING_PKCS7`
+* `PADDING_SPACE`
+* `PADDING_ZERO`
 
-echo $crypt->encrypt($text, $key);
-```
+## Inyección de Dependencias
 
-Se puede utilizar el método `getAvailableHashAlgos()` para saber cuáles algoritmos están disponibles en el sistema.
+As with most Phalcon components, you can store the [Phalcon\Crypt](Phalcon_Crypt#crypt) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+
+An example of the registration of the service as well as accessing it is below:
 
 ```php
 <?php
 
+use Phalcon\Di\FactoryDefault;
 use Phalcon\Crypt;
 
-// Crear una instancia
-$crypt = new Crypt();
+// Create a container
+$container = new FactoryDefault();
 
-// Obtener algoritmos disponibles
-$algorithms = $crypt->getAvailableHashAlgos();
-
-var_dump($algorithms);
-```
-
-## Soporte Base64
-
-Para que el cifrado se transmita correctamente (correo electrónico) o se muestre (navegadores), generalmente se aplica el cifrado [base64](https://secure.php.net/manual/es/function.base64-encode.php) a los textos a encriptar:
-
-```php
-<?php
-
-use Phalcon\Crypt;
-
-// Crear una instancia
-$crypt = new Crypt();
-
-// ¡Usar tu propia clave!
-$key  = "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3";
-$text = 'Este es un texto secreto';
-
-$encrypt = $crypt->encryptBase64($text, $key);
-
-echo $crypt->decryptBase64($encrypt, $key);
-```
-
-## Configuración del servicio de encriptación
-
-El componente de encriptación se puede incluir en el contenedor de servicios de tal manera que esté disponible en cualquier momento para la aplicación:
-
-```php
-<?php
-
-use Phalcon\Crypt;
-
-$di->set(
+$container->set(
     'crypt',
     function () {
         $crypt = new Crypt();
 
-        // Establecer una clave de encriptación global
+        // Set a global encryption key
         $crypt->setKey(
             "T4\xb1\x8d\xa9\x98\x05\\\x8c\xbe\x1d\x07&[\x99\x18\xa4~Lc1\xbeW\xb3"
         );
@@ -232,13 +250,20 @@ $di->set(
 );
 ```
 
-Luego, por ejemplo, se puede utilizar en un controlador de la siguiente manera:
+The component is now available in your controllers using the `crypt` key
 
 ```php
 <?php
 
+use MyApp\Models\Secrets;
+use Phalcon\Crypt;
+use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
+/**
+ * @property Crypt   $crypt
+ * @property Request $request
+ */
 class SecretsController extends Controller
 {
     public function saveAction()
@@ -251,7 +276,7 @@ class SecretsController extends Controller
 
         if ($secret->save()) {
             $this->flash->success(
-                '¡Secreto creado correctamente!'
+                'Secret was successfully created!'
             );
         }
     }
@@ -260,9 +285,9 @@ class SecretsController extends Controller
 
 ## Enlaces
 
-* [Estándar de cifrado avanzado (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
-* [Qué es el bloque Cipher](https://en.wikipedia.org/wiki/Block_cipher)
-* [Introducción a Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
-* [CTR-Mode Encriptado](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
-* [Recomendación para modos de operación de cifrado en bloque: métodos y técnicas](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
-* [Modo de contador (CTR)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
+* [Advanced Encryption Standard (AES)](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
+* [What is block cipher](https://en.wikipedia.org/wiki/Block_cipher)
+* [Introduction to Blowfish](https://www.splashdata.com/splashid/blowfish.htm)
+* [CTR-Mode Encryption](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.79.1353&rep=rep1&type=pdf)
+* [Recommendation for Block Cipher Modes of Operation: Methods and Techniques](https://csrc.nist.gov/publications/detail/sp/800-38a/final)
+* [Counter (CTR) mode](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Counter_.28CTR.29)
