@@ -9,7 +9,9 @@ title: 'Generating a backtrace'
 
 * * *
 
-Sometimes due to segmentation faults, Phalcon could crash some of your web server processes. Please help us to identify the problem by adding a crash backtrace to your bug report.
+Phalcon is compiled into a C extension loaded on your web server. Because of that, bugs lead to segmentation faults, causing Phalcon to crash some of your web server processes.
+
+For debugging these segmentation faults a stacktrace is required. Creating a stack trace requires a special build of php and some steps need to be done to generate a trace that allows the phalcon team to debug this behavior.
 
 Please follow this guide to understand how to generate the backtrace.
 
