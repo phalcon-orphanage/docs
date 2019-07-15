@@ -27,7 +27,7 @@ The cipher AES-256 is used among other places in SSL/TLS across the Internet. It
 {: .alert .alert-warning }
 
 ## Basic Usage
-This component is designed be very simple to use:
+This component is designed to be very simple to use:
 
 ```php
 <?php

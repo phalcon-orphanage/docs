@@ -38,6 +38,25 @@ run.config:
     extensions:
       - phalcon
   extra_steps:
+    #===========================================================================
+    # PSR extension compilation
+    - |
+      (
+        CURRENT_FOLDER=$(pwd)
+        rm -fR /tmp/php-psr
+        cd /tmp/build
+        git clone --depth=1 https://github.com/jbboehr/php-psr.git
+        cd php-psr
+        set -e
+        phpize
+        ./configure --with-php-config=$(which php-config)
+        make -j"$(getconf _NPROCESSORS_ONLN)"
+        make install
+        cd $CURRENT_FOLDER
+        rm -fR /tmp/php-psr
+        unset CURRENT_FOLDER
+      )
+    - echo -e 'extension=psr.so' >> "/data/etc/php/dev_php.ini"
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
 
@@ -47,7 +66,26 @@ This tells Nanobox to:
 - Use PHP 7.2.
 - Establezca la raíz de documento de Apache en `public`.
 - Incluir la extensión de Phalcon. *Nanobox adopta un enfoque básico para extensiones, así que es probable que necesite incluir otras extensiones. Puede encontrar más información [aquí](https://guides.nanobox.io/php/phalcon/php-extensions/).*
-- Agregar un alias al bash para Phalcon Devtools por lo que se puede usar el comando `phalcon`.
+- Install the required [PSR](https://github.com/jbboehr/php-psr.git) extension
+- Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
+
+Depending on the needs of your application, you might need to add additional extensions. For instance you might want to add `mbcrypt`, `igbinary`, `json`, `session` and `redis`. Your `extensions` section in the `boxfile.yml` will look like this:
+
+```yaml
+run.config:
+  engine: php
+  engine.config:
+    extensions:
+      - json
+      - mbstring
+      - igbinary
+      - session
+      - phalcon
+      - redis
+```
+
+> **NOTE** The order of the extensions **does** matter. Certain extensions will not load if their prerequisites are not loaded. For instance `igbinary` has to be loaded before `redis` etc.
+{: .alert .alert-warning }
 
 ### Add Phalcon Devtools to your `composer.json`
 
@@ -69,22 +107,22 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
 
 ```bash
-# iniciar nanobox e ingresar a la consola
+# start nanobox and drop into a nanobox console
 nanobox run
 
-# cambiar al directorio /tmp
+# cd into the /tmp directory
 cd /tmp
 
-# generar una nueva aplicación Phalcon
+# generate a new phalcon app
 phalcon project myapp
 
-# cambiar al directorio /app
+# change back to the /app dir
 cd -
 
-# copiar la aplicación generada al proyecto
+# copy the generated app into your project
 cp -a /tmp/myapp/* .
 
-# salir de la consola
+# exit the console
 exit
 ```
 

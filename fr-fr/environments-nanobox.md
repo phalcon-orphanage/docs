@@ -38,6 +38,25 @@ run.config:
     extensions:
       - phalcon
   extra_steps:
+    #===========================================================================
+    # PSR extension compilation
+    - |
+      (
+        CURRENT_FOLDER=$(pwd)
+        rm -fR /tmp/php-psr
+        cd /tmp/build
+        git clone --depth=1 https://github.com/jbboehr/php-psr.git
+        cd php-psr
+        set -e
+        phpize
+        ./configure --with-php-config=$(which php-config)
+        make -j"$(getconf _NPROCESSORS_ONLN)"
+        make install
+        cd $CURRENT_FOLDER
+        rm -fR /tmp/php-psr
+        unset CURRENT_FOLDER
+      )
+    - echo -e 'extension=psr.so' >> "/data/etc/php/dev_php.ini"
     - echo "alias phalcon=\'phalcon.php\'" >> /data/var/home/gonano/.bashrc
 ```
 
@@ -47,7 +66,26 @@ This tells Nanobox to:
 - Use PHP 7.2.
 - Set the Apache document root to `public`.
 - Include the Phalcon extension. *Nanobox takes a bare-bones approach to extensions, so you'll likely need to include other extensions. More information can be found [here](https://guides.nanobox.io/php/phalcon/php-extensions/).*
+- Install the required [PSR](https://github.com/jbboehr/php-psr.git) extension
 - Add a bash alias for Phalcon Devtools so you can just use the `phalcon` command.
+
+Depending on the needs of your application, you might need to add additional extensions. For instance you might want to add `mbcrypt`, `igbinary`, `json`, `session` and `redis`. Your `extensions` section in the `boxfile.yml` will look like this:
+
+```yaml
+run.config:
+  engine: php
+  engine.config:
+    extensions:
+      - json
+      - mbstring
+      - igbinary
+      - session
+      - phalcon
+      - redis
+```
+
+> **NOTE** The order of the extensions **does** matter. Certain extensions will not load if their prerequisites are not loaded. For instance `igbinary` has to be loaded before `redis` etc.
+{: .alert .alert-warning }
 
 ### Add Phalcon Devtools to your `composer.json`
 
