@@ -144,7 +144,7 @@ Finally you will notice in the example that when the user is not found, we call:
 $this->security->hash(rand());
 ```
 
-This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result..
+This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
 
 ## Exceptions
 Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception][security-exception]. You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
@@ -489,7 +489,7 @@ Also in your views (Volt syntax)
 
 
 [bcrypt]: https://en.wikipedia.org/wiki/Bcrypt
-[captcha]: https://www.google.com/recaptcha
+[captcha]: https://en.wikipedia.org/wiki/ReCAPTCHA
 [eksblowfish]: https://en.wikipedia.org/wiki/Bcrypt#Algorithm
 [md5]: https://php.net/manual/en/function.md5.php
 [openssl]: https://php.net/manual/en/book.openssl.php
