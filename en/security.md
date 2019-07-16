@@ -96,7 +96,6 @@ class SessionController extends Controller
                 // The password is valid
             }
         } else {
-            // Protection against timing attacks
             $this->security->hash(rand());
         }
 
