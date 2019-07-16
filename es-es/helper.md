@@ -1215,7 +1215,7 @@ echo Str::random(Str::RANDOM_ALNUM); // 'aloiwkqz'
 final public static function reduceSlashes(string $text): string
 ```
 
-Reduces multiple slashes in a string to single slashes
+Reduces multiple slashes in a string to single slashes. If a scheme is present (`https://`, `ftp://` it will not be changed)
 
 ```php
 <?php
@@ -1224,6 +1224,9 @@ use Phalcon\Helper\Str;
 
 echo Str::reduceSlashes('foo//bar/baz');             // foo/bar/baz
 echo Str::reduceSlashes('http://foo.bar///baz/buz'); // http://foo.bar/baz/buz
+echo Str::reduceSlashes('//foo.bar///baz/buz');      // /foo.bar/baz/buz
+echo Str::reduceSlashes('ftp://foo.bar///baz/buz');  // ftp://foo.bar/baz/buz
+echo Str::reduceSlashes('ftp//foo.bar///baz/buz');   // ftp/foo.bar/baz/buz
 ```
 
 * * *

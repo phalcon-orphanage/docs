@@ -42,7 +42,7 @@ Se usa para guardar los mensajes en el registro del sistema (*Syslog*). El compo
 
 Este adaptador es un agujero negro: ¡Envía mensajes al *infinito y más allá!* Se usa especialmente para pruebas --o para hacerle una broma a un colega.
 
-## Logger Factory
+## Factory
 
 You can use the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/Phalcon_Logger#logger-adapterfactory):
 
@@ -178,7 +178,7 @@ El resultado de los anteriores mensajes registrados es:
 [Tue, 25 Dec 18 12:13:14 -0400][WARNING] Este es un mensaje de advertencia
 ```
 
-## Logging to Multiple Adapters
+## Multiple Adapters
 
 [Phalcon\Logger](api/Phalcon_Logger#logger-logger) can send messages to multiple adapters with a just single call:
 
@@ -238,6 +238,9 @@ $logger
     ->excludeAdapters(['local'])
     ->info('This does not go to the "local" logger');
 ```
+
+> **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
+{: .alert .alert-warning }
 
 ## Formato de mensaje
 
