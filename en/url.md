@@ -191,7 +191,7 @@ $router = new Router();
 
 $router
     ->add(
-        '/portal/invoices/edit//{id}',
+        '/portal/invoices/edit/{id}',
         [
             'module'     => 'portal',
             'controller' => 'invoices',
