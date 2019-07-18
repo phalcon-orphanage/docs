@@ -6,13 +6,13 @@ upgrade: '#assets'
 title: 'Assets'
 ---
 
-# Assets Management
+# 资源管理器
 
 * * *
 
-## Overview
+## 概述
 
-`Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
+`Phalcon\Assets` 是一个组件，允许您管理如 CSS 样式表或 JavaScript 库在 web 应用程序中的静态资源。
 
 [Phalcon\Assets\Manager](api/Phalcon_Assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](di) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
 
