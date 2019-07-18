@@ -8,7 +8,7 @@ version: '4.0'
 
 * * *
 
-## Overview
+## 概述
 
 The purpose of this component is to intercept the execution of most of the other components of the framework by creating 'hook points'. These hook points allow the developer to obtain status information, manipulate data or change the flow of execution during the process of a component.
 
