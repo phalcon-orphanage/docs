@@ -8,7 +8,7 @@ version: '4.0'
 
 * * *
 
-## Overview
+## 概述
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
