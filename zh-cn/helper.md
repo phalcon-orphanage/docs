@@ -10,7 +10,7 @@ title: 'Helper'
 
 * * *
 
-## Overview
+## 概述
 
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.
 
