@@ -368,11 +368,11 @@ $headerCollection = $this->
     ->addJs('js/bootstrap.min.js');
 ```
 
-### Built-In Filters
+### 内置过滤器
 
 Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for Javascript and Css, license limitations do not allow us to continue using those libaries. For v4 we are offering only the [None](api/Phalcon_Assets#assets-filters-none) filter (which does not change the asset contents) and the [FilterInterface](api/Phalcon_Assets#assets-filterinterface) interface, offering the ability to create custom filters.
 
-### Custom Filters
+### 自定义过滤规则
 
 Creating custom filters is very easy. You can use this extensibility to take advantage of existing and more advanced filtering/minification tools like [YUI](https://yui.github.io/yuicompressor), [Sass](https://sass-lang.com), [Closure](https://developers.google.com/closure/compiler), etc.:
 
