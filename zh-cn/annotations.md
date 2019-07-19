@@ -8,7 +8,7 @@ version: '4.0'
 
 * * *
 
-## Overview
+## 概述
 
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
 

@@ -75,7 +75,7 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-### Overview
+### 概述
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -225,7 +225,7 @@ class MainTask extends Task
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### 概述
 
 The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
 

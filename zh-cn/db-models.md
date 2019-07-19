@@ -9,7 +9,7 @@ upgrade: '#models'
 
 * * *
 
-## Overview
+## 概述
 
 模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
 

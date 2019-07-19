@@ -8,7 +8,7 @@ version: '4.0'
 
 * * *
 
-## Overview
+## 概述
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
@@ -66,7 +66,7 @@ The following HTML will be produced.
 </html>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 {% raw %}
@@ -191,7 +191,7 @@ Phalcon provides a series of helpers to generate form elements such as text fiel
 ) ?>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 {% raw %}
@@ -479,7 +479,7 @@ echo $this->tag->image(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 {% raw %}
@@ -503,7 +503,7 @@ echo $this->tag->stylesheetLink('https://fonts.googleapis.com/css?family=Rosario
 echo $this->tag->stylesheetLink('css/styles.css');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 {% raw %}
@@ -527,7 +527,7 @@ echo $this->tag->javascriptInclude('https://localhost/javascript/jquery.min.js',
 echo $this->tag->javascriptInclude('javascript/jquery.min.js');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 {% raw %}
@@ -566,7 +566,7 @@ echo 'This is my canvas';
 echo $this->tag->tagHtmlClose('canvas');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}

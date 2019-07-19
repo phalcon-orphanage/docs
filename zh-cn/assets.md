@@ -6,13 +6,13 @@ upgrade: '#assets'
 title: 'Assets'
 ---
 
-# Assets Management
+# 资源管理器
 
 * * *
 
-## Overview
+## 概述
 
-`Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
+`Phalcon\Assets` 是一个组件，允许您管理如 CSS 样式表或 JavaScript 库在 web 应用程序中的静态资源。
 
 [Phalcon\Assets\Manager](api/Phalcon_Assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](di) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
 
@@ -368,11 +368,11 @@ $headerCollection = $this->
     ->addJs('js/bootstrap.min.js');
 ```
 
-### Built-In Filters
+### 内置过滤器
 
 Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for Javascript and Css, license limitations do not allow us to continue using those libaries. For v4 we are offering only the [None](api/Phalcon_Assets#assets-filters-none) filter (which does not change the asset contents) and the [FilterInterface](api/Phalcon_Assets#assets-filterinterface) interface, offering the ability to create custom filters.
 
-### Custom Filters
+### 自定义过滤规则
 
 Creating custom filters is very easy. You can use this extensibility to take advantage of existing and more advanced filtering/minification tools like [YUI](https://yui.github.io/yuicompressor), [Sass](https://sass-lang.com), [Closure](https://developers.google.com/closure/compiler), etc.:
 
@@ -502,7 +502,7 @@ $footerCollection->addJs('js/jquery.js');
 $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
-Then in the views:
+然后在视图中：
 
 ```php
 <html>
@@ -520,7 +520,7 @@ Then in the views:
 <html>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 <html>
@@ -572,7 +572,7 @@ Then in the views:
 <html>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 <html>
@@ -697,7 +697,7 @@ The above will result in the following script as the output (assuming that your 
 > **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unecessary read operations on the file system. 
 {: .alert .alert-warning }
 
-## Improving performance
+## 提高性能
 
 There are many ways to optimize processing assets. One method is to allow your web server to handle the assets, thus improving response time. First we need to set up the Assets Manager. We will use a base controller, but you can use the manager anywhere you need to, accessing it from the Di container:
 

@@ -8,7 +8,7 @@ version: '4.0'
 
 * * *
 
-## Overview
+## 概述
 
 Behaviors are shared constructs that several models may adopt in order to re-use code. The ORM provides an API to implement behaviors in your models. Also, you can use the events and callbacks as seen before as an alternative to implement Behaviors with more freedom.
 

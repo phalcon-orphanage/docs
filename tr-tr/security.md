@@ -147,7 +147,7 @@ Finally you will notice in the example that when the user is not found, we call:
 $this->security->hash(rand());
 ```
 
-This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result..
+This is done to protect against timing attacks. Irrespective of whether a user exists or not, the script will take roughly the same amount of time to execute, since it is computing a hash again, even though we will never use that result.
 
 ## Exceptions
 
@@ -216,7 +216,7 @@ class SessionController extends Controller
 > It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
 {: .alert .alert-warning }
 
-Adding a [captcha](https://www.google.com/recaptcha) to the form is also recommended to completely avoid the risks of this attack.
+Adding a [captcha](https://en.wikipedia.org/wiki/ReCAPTCHA) to the form is also recommended to completely avoid the risks of this attack.
 
 ## Functionality
 

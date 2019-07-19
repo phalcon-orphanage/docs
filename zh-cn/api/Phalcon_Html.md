@@ -570,7 +570,7 @@ $tag = new Tag();
 echo $tag->button('Click Me');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ button('Click Me') }}{% endraw %}
@@ -644,7 +644,7 @@ echo $tag->form(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ form('posts/save') }}{% endraw %}
@@ -713,7 +713,7 @@ echo $tag->getTitle(true, false);  // Hello World
 echo $tag->getTitle(false, false); // World
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ get_title() }}{% endraw %}
@@ -733,7 +733,7 @@ $tag = new Tag();
 echo $tag->getTitleSeparator();
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ get_title_separator() }}{% endraw %}
@@ -804,7 +804,7 @@ echo $tag->inputCheckbox(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_checkbox(['name': 'terms, 'value': 'Y']) }}{% endraw %}
@@ -835,7 +835,7 @@ echo $tag->inputDate(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_date(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
@@ -860,7 +860,7 @@ echo $tag->inputDateTime(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_date_time(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
@@ -885,7 +885,7 @@ echo $tag->inputDateTimeLocal(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_date_time_local(['name':'born', 'value':'14-12-1980']) }}{% endraw %}
@@ -909,7 +909,7 @@ echo $tag->inputEmail(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_email(['name': 'email']);{% endraw %}
@@ -933,7 +933,7 @@ echo $tag->inputFile(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_file(['name': 'file']){% endraw %}
@@ -975,7 +975,7 @@ echo $tag->inputImage(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_image(['src': '/img/button.png']) }}{% endraw %}
@@ -1045,7 +1045,7 @@ echo $tag->inputRadio(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ input_radio(['name': 'weather', 'value": 'hot']) }}{% endraw %}
@@ -1129,7 +1129,7 @@ echo $tag->javascript(
 echo $tag->javascript('javascript/jquery.js');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ javascript('http://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js', ['local': false]) }}{% endraw %}
@@ -1224,7 +1224,7 @@ $tag = new Tag();
 echo $tag->reset('Reset')
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ reset('Save') }}{% endraw %}
@@ -1381,7 +1381,7 @@ echo $tag->stylesheet(
 echo $tag->stylesheet('css/style.css');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ stylesheet('http://fonts.googleapis.com/css?family=Rosario', ['local': false]) }}{% endraw %}
@@ -1402,7 +1402,7 @@ $tag = new Tag();
 echo $tag->submit('Save');
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ submit('Save') }}{% endraw %}
@@ -1428,7 +1428,7 @@ echo $tag->textArea(
 );
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```php
 {% raw %}{{ text_area('comments', ['cols': 10, 'rows': 4]) }}{% endraw %}
