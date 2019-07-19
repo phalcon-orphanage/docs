@@ -37,7 +37,7 @@ echo $config->app->name;                // PHALCON
 echo $config->path('app.name');         // PHALCON
 ```
 
-## Factory
+## 工厂
 
 ### `newInstance`
 
