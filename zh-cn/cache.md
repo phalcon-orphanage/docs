@@ -75,7 +75,7 @@ $value = $cache->getMultiple(['my-key1', 'my-key2'], 'default');
 
 ### `has`
 
-To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. The method will return `true` if the key exists, or `false` otherwise.
+To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
 
 ```php
 $exists = $cache->has('my-key');
@@ -89,7 +89,7 @@ To save the data in the cache, you will need to use the `set()` method. The meth
 $result = $cache->setMultiple('my-key', $data);
 ```
 
-If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). The method will return `true` if the key exists, or `false` otherwise.
+If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
 
 ```php
 $value = $cache->setMultiple(
@@ -103,21 +103,21 @@ $value = $cache->setMultiple(
 
 ### `delete` - `deleteMultiple` - `clear`
 
-To delete an item from the cache you need to call the `delete()` method with a key. The method returns `true` on success and `false` on failure. `
+To delete an item from the cache you need to call the `delete()` method with a key. 方法返回 `true` 成功， `错误` 失败。 `
 
 ```php
 $result = $cache->delete('my-key');
 ```
 
-If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. The method returns `true` on success and `false` on failure. If even one key is not successfully deleted, the method will return `false`. `
+If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. 方法返回 `true` 成功， `错误` 失败。 If even one key is not successfully deleted, the method will return `false`. `
 
 ```php
 $result = $cache->deleteMultiple(['my-key1', 'my-key2']);
 ```
 
-If you wish to clear all the keys, you can call the `clear()` method. The method returns `true` on success and `false` on failure.
+If you wish to clear all the keys, you can call the `clear()` method. 方法返回 `true` 成功， `错误` 失败。
 
-## Factory
+## 工厂
 
 ### `newInstance`
 
