@@ -502,7 +502,7 @@ $footerCollection->addJs('js/jquery.js');
 $footerCollection->addJs('js/bootstrap.min.js');
 ```
 
-Then in the views:
+然后在视图中：
 
 ```php
 <html>
@@ -520,7 +520,7 @@ Then in the views:
 <html>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 <html>
@@ -572,7 +572,7 @@ Then in the views:
 <html>
 ```
 
-Volt syntax:
+Volt 的语法：
 
 ```twig
 <html>
