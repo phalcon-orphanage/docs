@@ -6,7 +6,7 @@ upgrade: '#cache'
 title: 'Cache'
 ---
 
-# Cache Component
+# 缓存组件
 
 <hr />
 
