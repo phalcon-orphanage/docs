@@ -95,7 +95,7 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
-## Factory
+## 工厂
 
 There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 The traditional way of instantiating such an adapter is as follows:
 
