@@ -354,7 +354,7 @@ The parameters you can use for the factory are:
 * `none` for [Phalcon\Storage\Serializer\None](api/Phalcon_Storage#storage-serializer-none)
 * `php` for [Phalcon\Storage\Serializer\Php](api/Phalcon_Storage#storage-serializer-php)
 
-## Adapters
+## 适配器
 
 The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface](api/Phalcon_Cache#cache-adapter-adapterinterface) interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code.
 
