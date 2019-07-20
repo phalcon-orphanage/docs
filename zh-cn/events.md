@@ -406,8 +406,8 @@ The events available in Phalcon are:
 
 | Component          | Event                                |
 | ------------------ | ------------------------------------ |
-| ACL                | `acl:afterCheckAccess`               |
-| ACL                | `acl:beforeCheckAccess`              |
+| 访问控制列表(ACL)        | `acl:afterCheckAccess`               |
+| 访问控制列表(ACL)        | `acl:beforeCheckAccess`              |
 | Application        | `application:afterHandleRequest`     |
 | Application        | `application:afterStartModule`       |
 | Application        | `application:beforeHandleRequest`    |
