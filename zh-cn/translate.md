@@ -232,7 +232,7 @@ Some applications use the URL of the request to distinguish content based on dif
     $translator = $factory->newInstance('array', $options);
     
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 
