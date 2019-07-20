@@ -351,7 +351,7 @@ If you need to get the object back as an array `toArray()` and `toJson()` are av
 
 For additional information, you can check the [Phalcon\Collection](api/Phalcon_Collection) documentation.
 
-## Adapters
+## 适配器
 
 Other than the base component [Phalcon\Config](api/Phalcon_Config), which accepts a string (file name and path) or a native PHP array, there are several available adapters that can read different file types and load teh configuration from them.
 
