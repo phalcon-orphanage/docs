@@ -66,7 +66,7 @@ php -m | grep phalcon
 
 * * *
 
-## ACL
+## 访问控制列表(ACL)
 
 > Status: **changes required**
 > 
