@@ -389,7 +389,7 @@ This adapter uses `Apcu` to store the data. In order to use this adapter, you wi
 | `defaultSerializer` | `Php`      |
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
-| `前缀`                | `ph-apcu-` |
+| `prefix`            | `ph-apcu-` |
 
 The following example demonstrates how to create a new `Apcu` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200.
 
@@ -437,7 +437,7 @@ This adapter utilizes PHP's [memcached](https://www.php.net/manual/en/book.memca
 | `defaultSerializer`                              | `Php`                                  |
 | `lifetime`                                       | `3600`                                 |
 | `serializer`                                     | `null`                                 |
-| `前缀`                                             | `ph-memc-`                             |
+| `prefix`                                         | `ph-memc-`                             |
 | `servers[0]['host']`                             | `127.0.0.1`                            |
 | `servers[0]['port']`                             | `11211`                                |
 | `servers[0]['weight']`                           | `1`                                    |
