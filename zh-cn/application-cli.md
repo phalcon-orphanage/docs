@@ -20,7 +20,7 @@ A minimal structure of a CLI application will look like this:
 * `src/Tasks/MainTask.php`
 * `cli.php` <-- main bootstrap file
 
-## Creating a Bootstrap
+## 创建一个引导
 
 As in regular MVC applications, a bootstrap file is used to bootstrap the application. Instead of the `index.php` bootstrapper in web applications, we use a `cli.php` file for bootstrapping the application.
 
