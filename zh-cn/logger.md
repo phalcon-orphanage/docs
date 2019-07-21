@@ -22,7 +22,7 @@ In v3, the logger was incorporating the adapter in the same component. So in ess
 
 For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to store the logged messages. The use of adapters allows for a common logging interface which provides the ability to easily switch back-ends, or use multiple adapters if necessary. The adapters supported are:
 
@@ -42,7 +42,7 @@ This adapter sends messages to the system log. The syslog behavior may vary from
 
 This is a black hole adapter. It sends messages to *infinity and beyond*! This adapter is used mostly for testing or if you want to joke with a colleague.
 
-## Factory
+## 工厂
 
 You can use the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/Phalcon_Logger#logger-adapterfactory):
 

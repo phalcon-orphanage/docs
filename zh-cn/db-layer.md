@@ -24,7 +24,7 @@ This component makes use of adapters to encapsulate specific database system det
 | [Phalcon\Db\Adapter\Pdo\Mysql](api/Phalcon_Db_Adapter_Pdo_Postgresql) | PostgreSQL 是一个功能强大的开源关系型数据库系统。 它有超过 15 年的积极发展和行之有效的体系结构，它赢得了良好声誉的可靠性、 数据完整性和正确性。 |
 | [Phalcon\Db\Adapter\Pdo\Sqlite](api/Phalcon_Db_Adapter_Pdo_Sqlite)    | SQLite 是一个软件库，实现了一个自包含、 无服务器、 零配置、 事务性的 SQL 数据库引擎                                |
 
-### Factory
+### 工厂
 
 Loads PDO Adapter class using `adapter` option. For example:
 

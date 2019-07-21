@@ -74,7 +74,7 @@ In the example above, we're using wildcards to make a route valid for many URIs.
 
 | Controller | Action | Parameter | Parameter |
 |:----------:|:------:|:---------:|:---------:|
-|   users    | delete |   dave    |    301    |
+|   users    |   删除   |   dave    |    301    |
 
 The `add()` method receives a pattern that can optionally have predefined placeholders and regular expression modifiers. All the routing patterns must start with a forward slash character (`/`). The regular expression syntax used is the same as the [PCRE regular expressions](https://secure.php.net/manual/en/book.pcre.php). Note that, it is not necessary to add regular expression delimiters. All route patterns are case-insensitive.
 

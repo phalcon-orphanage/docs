@@ -4,11 +4,11 @@ language: 'zh-cn'
 version: '4.0'
 ---
 
-# Micro Application
+# 微型应用
 
 * * *
 
-Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually API ones, prototypes etc.
+Phalcon 提供一个非常 '轻' 的应用，因此您可以用很少的的 PHP 代码创建 '微型' 应用。 微应用程序，适合小的应用，这样会有很低的资源开销。 这类应用程序通常是 API 应用程序、原型应用程序等。
 
 ```php
 <?php
@@ -29,9 +29,9 @@ $app->handle(
 );
 ```
 
-## Creating a Micro Application
+## 创建一个微型的应用程序
 
-The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
+[Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) 类是负责创建一个微型的应用程序。
 
 ```php
 <?php
@@ -41,9 +41,9 @@ use Phalcon\Mvc\Micro;
 $app = new Micro();
 ```
 
-## Routing
+## 路由
 
-Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is very easy. Routes are defined as follows:
+在 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) 应用程序中定义路由是很容易的。 Routes are defined as follows:
 
 ```text
    Application -> (method/verb) -> (route url/regex, callable PHP function)
@@ -481,7 +481,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application provides a set of methods to bind the HTTP method with the route it is intended to.
 
-#### delete
+#### 删除
 
 Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
 

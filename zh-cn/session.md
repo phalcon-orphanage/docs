@@ -40,7 +40,7 @@ $di->setShared(
 );
 ```
 
-## Factory
+## 工厂
 
 Loads Session Adapter class using `adapter` option
 

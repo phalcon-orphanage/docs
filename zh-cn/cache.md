@@ -75,7 +75,7 @@ $value = $cache->getMultiple(['my-key1', 'my-key2'], 'default');
 
 ### `has`
 
-To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. The method will return `true` if the key exists, or `false` otherwise.
+To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
 
 ```php
 $exists = $cache->has('my-key');
@@ -89,7 +89,7 @@ To save the data in the cache, you will need to use the `set()` method. The meth
 $result = $cache->setMultiple('my-key', $data);
 ```
 
-If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). The method will return `true` if the key exists, or `false` otherwise.
+If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
 
 ```php
 $value = $cache->setMultiple(
@@ -103,21 +103,21 @@ $value = $cache->setMultiple(
 
 ### `delete` - `deleteMultiple` - `clear`
 
-To delete an item from the cache you need to call the `delete()` method with a key. The method returns `true` on success and `false` on failure. `
+To delete an item from the cache you need to call the `delete()` method with a key. 方法返回 `true` 成功， `错误` 失败。 `
 
 ```php
 $result = $cache->delete('my-key');
 ```
 
-If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. The method returns `true` on success and `false` on failure. If even one key is not successfully deleted, the method will return `false`. `
+If you wish to delete more than one key with one call, you can call `deleteMultiple()`, passing an array with the keys needed. 方法返回 `true` 成功， `错误` 失败。 If even one key is not successfully deleted, the method will return `false`. `
 
 ```php
 $result = $cache->deleteMultiple(['my-key1', 'my-key2']);
 ```
 
-If you wish to clear all the keys, you can call the `clear()` method. The method returns `true` on success and `false` on failure.
+If you wish to clear all the keys, you can call the `clear()` method. 方法返回 `true` 成功， `错误` 失败。
 
-## Factory
+## 工厂
 
 ### `newInstance`
 
@@ -231,7 +231,7 @@ The `JSON` serializer uses `json_encode` and `json_decode`. The target system mu
 
 Similar to `igbinary` the `msgpack` serializer uses `msgpack_pack` and `msgpack_unpack` for serializing and unserializing data. This, along with `igbinary` is one of the fastest and most efficient serializers. However, it requires that the [msgpack](https://msgpack.org/) PHP extension is loaded on the target system.
 
-### `无`
+### `None`
 
 This serializer does not transform the data at all. Both its `serialize` and `unserialize` get and set the data without altering it.
 
@@ -354,7 +354,7 @@ The parameters you can use for the factory are:
 * `none` for [Phalcon\Storage\Serializer\None](api/Phalcon_Storage#storage-serializer-none)
 * `php` for [Phalcon\Storage\Serializer\Php](api/Phalcon_Storage#storage-serializer-php)
 
-## Adapters
+## 适配器
 
 The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface](api/Phalcon_Cache#cache-adapter-adapterinterface) interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code.
 
@@ -389,7 +389,7 @@ This adapter uses `Apcu` to store the data. In order to use this adapter, you wi
 | `defaultSerializer` | `Php`      |
 | `lifetime`          | `3600`     |
 | `serializer`        | `null`     |
-| `前缀`                | `ph-apcu-` |
+| `prefix`            | `ph-apcu-` |
 
 The following example demonstrates how to create a new `Apcu` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200.
 
@@ -437,7 +437,7 @@ This adapter utilizes PHP's [memcached](https://www.php.net/manual/en/book.memca
 | `defaultSerializer`                              | `Php`                                  |
 | `lifetime`                                       | `3600`                                 |
 | `serializer`                                     | `null`                                 |
-| `前缀`                                             | `ph-memc-`                             |
+| `prefix`                                         | `ph-memc-`                             |
 | `servers[0]['host']`                             | `127.0.0.1`                            |
 | `servers[0]['port']`                             | `11211`                                |
 | `servers[0]['weight']`                           | `1`                                    |

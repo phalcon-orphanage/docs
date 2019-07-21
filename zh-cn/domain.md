@@ -38,7 +38,7 @@ The component offers getters and setters for the above properties.
 > All the setters return back a [Phalcon\Domain\Payload](Phalcon_Domain##domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
 {: .alert .alert-info }
 
-## Factory
+## 工厂
 
 [Phalcon\Domain\PayloadFactory](Phalcon_Domain##domain-payload-payloadfactory) is also available, offering an easy way to generate new Payload objects.
 

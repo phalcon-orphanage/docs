@@ -12,7 +12,7 @@ version: '4.0'
 
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to define the behavior of the messages after being passed to the Flasher:
 

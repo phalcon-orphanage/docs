@@ -12,7 +12,7 @@ version: '4.0'
 
 [Phalcon\Image](api/Phalcon_Image) is the component that allows you to manipulate image files. Multiple operations can be performed on the same image object.
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to encapsulate specific image manipulator programs. The following image manipulator programs are supported:
 
@@ -21,7 +21,7 @@ This component makes use of adapters to encapsulate specific image manipulator p
 | [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
 | [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
-### Factory
+### 工厂
 
 Loads an Image Adapter class using `adapter` option.
 

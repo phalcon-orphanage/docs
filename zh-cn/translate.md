@@ -204,7 +204,7 @@ and for Volt:
 <p>{% raw %}{{ locale._('hi-name', ['name' => 'Mike']) }}{% endraw %}</p>
 ```
 
-### Routing
+### 路由
 
 Some applications use the URL of the request to distinguish content based on different languages, in order to help with SEO. A sample URL is: ```bash https://mozilla.org/es-ES/firefox/
 
@@ -232,7 +232,7 @@ Some applications use the URL of the request to distinguish content based on dif
     $translator = $factory->newInstance('array', $options);
     
 
-## Adapters
+## 适配器
 
 This component makes use of adapters to read translation messages from different sources in a unified way.
 

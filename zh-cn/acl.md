@@ -590,7 +590,7 @@ class ReportsComponent implements ComponentAware
 }
 ```
 
-### ACL
+### 访问控制列表(ACL)
 
 These objects can now be used in our ACL.
 
