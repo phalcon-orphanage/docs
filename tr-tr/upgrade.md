@@ -587,6 +587,49 @@ $group->addTrace(
 
 * * *
 
+## Session
+
+> Status: **changes required**
+> 
+> Usage: [Session Documentation](session)
+{: .alert .alert-info }
+
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+
+#### Added
+
+- `Phalcon\Session\Adapter\AbstractAdapter`
+- `Phalcon\Session\Adapter\Noop`
+- `Phalcon\Session\Adapter\Stream`
+- `Phalcon\Session\Manager`
+- `Phalcon\Session\ManagerInterface`
+
+#### Removed
+
+- `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
+- `Phalcon\Session\AdapterInterface`
+- `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
+- `Phalcon\Session\Adapter\Memcache`
+- `Phalcon\Session\BagInterface`
+- `Phalcon\Session\Factory`
+
+### Session\Adapter
+
+Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
+
+- `Phalcon\Session\Adapter\AbstractAdapter`
+- `Phalcon\Session\Adapter\Libmemcached`
+- `Phalcon\Session\Adapter\Noop`
+- `Phalcon\Session\Adapter\Redis`
+- `Phalcon\Session\Adapter\Stream`
+
+### Session\Manager
+
+- Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
+- Developers can add any adapter that implements `SessionHandlerInterface`
+
+* * *
+
 ## Text
 
 > Status: **changes required**
