@@ -503,7 +503,7 @@ $criteria->limit(10, null);
 <hr/>
 
 ## Plugin
-- Added `Phalcon\Plugin` - replaces `Phalcon\Mvc\User\Component`
+- Added `Phalcon\Plugin` - replaces `Phalcon\Mvc\User\Component`, `Phalcon\Mvc\User\Plugin` and `Phalcon\Mvc\User\Module`
 
 
 ## Router
