@@ -13,7 +13,7 @@ The domain component incorporates components that are used for the implementatio
 
 ## Payload
 
-The [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) requires a data transfer mechanism between the three layers to serve your application. The [Phalcon\Domain\Payload](Phalcon_Domain##domain-payload-payload) is a data transfer object that is used to send data between the three layers of the pattern.
+The [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) requires a data transfer mechanism between the three layers to serve your application. The [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) is a data transfer object that is used to send data between the three layers of the pattern.
 
 ```php
 <?php
@@ -35,12 +35,12 @@ The properties stored are:
 
 The component offers getters and setters for the above properties.
 
-> All the setters return back a [Phalcon\Domain\Payload](Phalcon_Domain##domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
+> All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
 {: .alert .alert-info }
 
 ## Factory
 
-[Phalcon\Domain\PayloadFactory](Phalcon_Domain##domain-payload-payloadfactory) is also available, offering an easy way to generate new Payload objects.
+[Phalcon\Domain\PayloadFactory](api/phalcon_domain#domain-payload-payloadfactory) is also available, offering an easy way to generate new Payload objects.
 
 ```php
 <?php
@@ -61,7 +61,7 @@ There are three interfaces that you can take advantage of if you wish to extend 
 
 ## Status Values
 
-The [Phalcon\Domain\Payload\Status](Phalcon_Domain##domain-payload-status) class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
+The [Phalcon\Domain\Payload\Status](api/phalcon_domain#domain-payload-status) class contains several constants to help with the domain status of your Payload objects. You can always extend the class and introduce your own domain statuses, depending on the needs of your application.
 
 * `ACCEPTED` 
 * `AUTHENTICATED` 
