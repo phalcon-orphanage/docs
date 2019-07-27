@@ -445,6 +445,112 @@ $criteria->limit(10, null);
 
 * * *
 
+## MVC
+
+> Status: **changes required**
+> 
+> Usage: [MVC Documentation](mvc)
+{: .alert .alert-info }
+
+### Mvc\Collection
+
+- Removed `Phalcon\Mvc\Collection::validationHasFailed`
+- Removed calling `Phalcon\Mvc\Collection::validate` with object of type `Phalcon\Mvc\Model\ValidatorInterface`
+
+### Mvc\Micro\Lazyloader
+
+- Removed `__call` in favor of `callMethod`
+
+### Mvc\Model
+
+- Removed `Phalcon\Model::reset`
+- Added `isRelationshipLoaded` to check if relationship is loaded
+
+### Mvc\Model\Criteria
+
+- Removed `addWhere`
+- Removed `order`
+- Removed `order` in favor of `orderBy`
+
+### Mvc\Model\CriteriaInterface
+
+- Added `distinct`, `leftJoin`, `innerJoin`, `rightJoin`, `groupBy`, `having`, `cache`, `getColumns`, `getGroupBy`, `getHaving`
+
+### Mvc\Model\Manager
+
+- `Load` no longer reuses already initialized models
+
+### Mvc\Model\ManagerInterface
+
+- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`, `registerNamespaceAlias`, `getNamespaceAlias`
+
+### Mvc\Model\MessageInterface
+
+- Added `setModel`, `getModel`, `setCode`, `getCode`
+
+### Mvc\Model\QueryInterface
+
+- Added `getSingleResult`, `setBindParams`, `getBindParams`, `setBindTypes`, `setSharedLock`, `getBindTypes`, `getSql`
+
+### Mvc\Model\Query\BuilderInterface
+
+- Added `offset`
+
+### Mvc\Model\Query\Builder
+
+- Added bind support. The Query Builder has the same methods as `Phalcon\Mvc\Model\Query`; `getBindParams`, `setBindParams`, `getBindTypes` and `setBindTypes`.
+- Changed `addFrom` to remove third parameter `$with`
+
+### Mvc\Model\Query\BuilderInterface
+
+- Added `distinct`, `getDistinct`, `forUpdate`, `offset`, `getOffset`
+
+### Mvc\Model\RelationInterface
+
+- Added `getParams`
+
+### Mvc\Model\ResultsetInterface
+
+- Added `setHydrateMode`, `getHydrateMode`, `getMessages`, `update`, `delete`, `filter`
+
+### Mvc\Model\Transaction\ManagerInterface
+
+- Added `setDbService`, `getDbService`, `setRollbackPendent`, `getRollbackPendent`
+
+### Mvc\Model\Validator*
+
+- Removed `Phalcon\Mvc\Model\Validator\*` in favor of `Phalcon\Validation\Validator\*`
+
+### Mvc\ModelInterface
+
+- Added `getModelsMetaData`
+
+### Mvc\RouterInterface
+
+- Added `attach`
+
+### Mvc\Router\RouteInterface
+
+- Added `convert` so that calling `add` will return an instance that has `convert` method
+
+### Mvc\Router\RouteInterface
+
+- Added response handler to `Phalcon\Mvc\Micro`, `Phalcon\Mvc\Micro::setResponseHandler`, to allow use of a custom response handler.
+
+### Mvc\User
+
+- Removed `Phalcon\Mvc\User\Component` - replaced by `Phalcon\Plugin`
+
+### Mvc\View
+
+- Removed `getParams`
+
+* * *
+
+## Plugin
+
+- Added `Phalcon\Plugin` - replaces `Phalcon\Mvc\User\Component`, `Phalcon\Mvc\User\Plugin` and `Phalcon\Mvc\User\Module`
+
 ## Router
 
 You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
@@ -478,6 +584,49 @@ $group->addTrace(
     ]
 );
 ```
+
+* * *
+
+## Session
+
+> Status: **changes required**
+> 
+> Usage: [Session Documentation](session)
+{: .alert .alert-info }
+
+`Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
+
+#### Added
+
+- `Phalcon\Session\Adapter\AbstractAdapter`
+- `Phalcon\Session\Adapter\Noop`
+- `Phalcon\Session\Adapter\Stream`
+- `Phalcon\Session\Manager`
+- `Phalcon\Session\ManagerInterface`
+
+#### Removed
+
+- `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
+- `Phalcon\Session\AdapterInterface`
+- `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
+- `Phalcon\Session\Adapter\Memcache`
+- `Phalcon\Session\BagInterface`
+- `Phalcon\Session\Factory`
+
+### Session\Adapter
+
+Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
+
+- `Phalcon\Session\Adapter\AbstractAdapter`
+- `Phalcon\Session\Adapter\Libmemcached`
+- `Phalcon\Session\Adapter\Noop`
+- `Phalcon\Session\Adapter\Redis`
+- `Phalcon\Session\Adapter\Stream`
+
+### Session\Manager
+
+- Now is the single component that offers session manipulation by using adapters (see above). Each adapter implements PHP's `SessionHandlerInterface`
+- Developers can add any adapter that implements `SessionHandlerInterface`
 
 * * *
 
