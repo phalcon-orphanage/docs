@@ -66,6 +66,20 @@ php -m | grep phalcon
 
 * * *
 
+## General Notes
+
+### Applications
+
+- The Phalcon\Mvc\Application, Phalcon\Mvc\Micro and Phalcon\Mvc\Router now must have a URI to process
+
+### Exceptions
+
+- Changed catch `Exception` to `Throwable`
+
+* * *
+
+# Components
+
 ## ACL
 
 > Status: **changes required**
@@ -97,6 +111,11 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 - Renamed `Phalcon\Acl\Adapter\Memory::dropResourceAccess` to `Phalcon\Acl\Adapter\Memory::dropComponentAccess`
 - Renamed `Phalcon\Acl\Adapter\Memory::getResources` to `Phalcon\Acl\Adapter\Memory::getComponents`
 
+### Acl\Adapter\Memory
+
+- Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
+- Added `addOpertion` support multiple inherited
+
 * * *
 
 ## Assets
@@ -113,6 +132,14 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 - Removed `Phalcon\Assets\Filters\CssMin`
 - Removed `Phalcon\Assets\Filters\JsMin`
 
+### Renamed
+
+- Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
+- Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
+- Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
+- Renamed `Phalcon\Assets\Manager::addResourceByType` to `Phalcon\Assets\Manager::addAssetByType`
+- Renamed `Phalcon\Assets\Manager::collectionResourcesByType` to `Phalcon\Assets\Manager::collectionAssetsByType`
+
 * * *
 
 ## Cache
@@ -121,6 +148,17 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 > 
 > Usage: [Cache Documentation](cache)
 {: .alert .alert-info }
+
+`xcache`, `apc` and `memcache` adapters have been deprecated and removed. The first two are not supported for PHP 7.2+. `apc` has been replaced with `apcu` and `memcache` can be replaced with the `libmemcached` one.
+
+- Removed `Phalcon\Annotations\Adapter\Apc`
+- Removed `Phalcon\Annotations\Adapter\Xcache`
+- Removed `Phalcon\Cache\Backend\Apc`
+- Removed `Phalcon\Cache\Backend\Memcache`
+- Removed `Phalcon\Cache\Backend\Xcache`
+- Removed `Phalcon\Mvc\Model\Metadata\Apc`
+- Removed `Phalcon\Mvc\Model\Metadata\Memcache`
+- Removed `Phalcon\Mvc\Model\Metadata\Xcache`
 
 The `Cache` component has been rewritten to comply with [PSR-16](https://www.php-fig.org/psr/psr-16/). This allows you to use the [Phalcon\Cache](api/Phalcon_Cache) to any application that utilizes a [PSR-16](https://www.php-fig.org/psr/psr-16/) cache, not just Phalcon based ones.
 
@@ -213,6 +251,115 @@ class MainTask extends Task
     }
 }
 ```
+
+### Cli\Console
+
+- Removed `Phalcon\Cli\Console::addModules` in favor of `Phalcon\Cli\Console::registerModules`
+
+### Cli\Router\RouteInterface
+
+- Added `delimiter`, `getDelimiter`
+
+### Cli\Dispatcher
+
+- Added `getTaskSuffix()`, `setTaskSuffix()`
+
+### Cli\DispatcherInterface
+
+- Added `setOptions`, `getOptions`
+
+* * *
+
+## Container
+
+- Added `Phalcon\Container`, a proxy container class to the `Phalcon\DI` implementing PSR-11
+
+* * *
+
+## Debug
+
+- Removed `Phalcon\Debug::getMajorVersion`
+
+* * *
+
+## Db
+
+- Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
+
+### Db\AdapterInterface
+
+- Added fetchColumn, insertAsDict, updateAsDict
+
+### Db\Adapter\Pdo
+
+- Added more column types for the Mysql adapter. The adapters support -`TYPE_BIGINTEGER` 
+    - `TYPE_BIT`
+    - `TYPE_BLOB`
+    - `TYPE_BOOLEAN`
+    - `TYPE_CHAR`
+    - `TYPE_DATE`
+    - `TYPE_DATETIME`
+    - `TYPE_DECIMAL`
+    - `TYPE_DOUBLE`
+    - `TYPE_ENUM`
+    - `TYPE_FLOAT`
+    - `TYPE_INTEGER`
+    - `TYPE_JSON`
+    - `TYPE_JSONB`
+    - `TYPE_LONGBLOB`
+    - `TYPE_LONGTEXT`
+    - `TYPE_MEDIUMBLOB`
+    - `TYPE_MEDIUMINTEGER`
+    - `TYPE_MEDIUMTEXT`
+    - `TYPE_SMALLINTEGER`
+    - `TYPE_TEXT`
+    - `TYPE_TIME`
+    - `TYPE_TIMESTAMP`
+    - `TYPE_TINYBLOB`
+    - `TYPE_TINYINTEGER`
+    - `TYPE_TINYTEXT`
+    - `TYPE_VARCHAR` Some adapters do not support certain types. For instance `JSON` is not supported for `Sqlite`. It will be automatically changed to `VARCHAR`.
+
+### Db\DialectInterface
+
+- Added `registerCustomFunction`, `getCustomFunctions`, `getSqlExpression`
+
+### Db\Dialect\Postgresql
+
+- Changed addPrimaryKey to make primary key constraints names unique by prefixing them with the table name.
+
+* * *
+
+## DI
+
+### Di\ServiceInterface
+
+- Added getParameter, isResolved
+
+### Di\Service
+
+- Changed Phalcon\Di\Service constructor to no longer takes the name of the service.
+
+* * *
+
+## Dispatcher
+
+- Removed Phalcon\Dispatcher::setModelBinding in favor of Phalcon\Dispatcher::setModelBinder
+- Added getHandlerSuffix(), setHandlerSuffix()
+
+* * *
+
+## Events
+
+### Events\ManagerInterface
+
+- Added hasListeners
+
+* * *
+
+## Flash
+
+- Added ability to set a custom template for the Flash Messenger.
 
 * * *
 
@@ -317,6 +464,39 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
+## Forms
+
+### Forms\Form
+
+- `Phalcon\Forms\Form::clear` will no longer call `Phalcon\Forms\Element::clear`, instead it will clear/set default value itself, and `Phalcon\Forms\Element::clear` will now call `Phalcon\Forms\Form::clear` if it’s assigned to the form, otherwise it will just clear itself.
+- `Phalcon\Forms\Form::getValue` will now also try to get the value by calling `Tag::getValue` or element’s `getDefault` method before returning `null`, and `Phalcon\Forms\Element::getValue` calls `Tag::getDefault` only if it’s not added to the form.
+
+* * *
+
+## Html
+
+### Html\Breadcrumbs
+
+- Added `Phalcon\Html\Breadcrumbs`, a component that creates HTML code for breadcrumbs.
+
+### Html\Tag
+
+- Added `Phalcon\Html\Tag`, a component that creates HTML elements. It will replace `Phalcon\Tag` in a future version. This component does not use static method calls.
+
+### Http\RequestInterface
+
+- Removed `isSecureRequest` in favor of `isSecure`
+- Removed `isSoapRequested` in favor of `isSoap`
+
+### Http\Response
+
+- Added `hasHeader()` method to `Phalcon\Http\Response` to provide the ability to check if a header exists.
+- Added `Phalcon\Http\Response\Cookies::getCookies`
+- Changed `setHeaders` now merges the headers with any pre-existing ones in the internal collection
+- Added two new events `response::beforeSendHeaders` and `response::afterSendHeaders`
+
+* * *
+
 ## Logger
 
 > Status: **changes required**
@@ -405,12 +585,22 @@ $logger->error('Something went wrong');
 
 * * *
 
+## Messages
+
+- `Phalcon\Messages\Message` and its collection `Phalcon\Messages\Messages` are new components that handle messages for models and validation. In the past we had two components, one for validation and one for models. We have merged these two, so you should be getting back a `MessageInterface[]` back when calling `save` on a model or when retrieving validation messages. 
+    - Changed `Phalcon\Mvc\Model` to use the `Phalcon\Messages\Message` object for its messages
+    - Changed `Phalcon\Validation\*` to use the `Phalcon\Messages\Message` object for its messages
+
+* * *
+
 ## Models
 
 > Status: **changes required**
 > 
 > Usage: [Models Documentation](db-models)
 {: .alert .alert-info }
+
+- You can no longer assign data to models while saving them
 
 ### Initialization
 
@@ -547,6 +737,13 @@ $criteria->limit(10, null);
 
 * * *
 
+## Paginator
+
+- `getPaginate` not becomes `paginate`
+- `$before` is removed and replaced with `$previous`
+- `$total_pages` is removed since it contained the same information as `$last`
+- Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
+
 ## Plugin
 
 - Added `Phalcon\Plugin` - replaces `Phalcon\Mvc\User\Component`, `Phalcon\Mvc\User\Plugin` and `Phalcon\Mvc\User\Module`
@@ -584,6 +781,15 @@ $group->addTrace(
     ]
 );
 ```
+
+* * *
+
+## Security
+
+- Removed `hasLibreSsl`
+- Removed `getSslVersionNumber`
+- Added `setPadding`
+- Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
 
 * * *
 
@@ -630,6 +836,14 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 * * *
 
+## Tag
+
+- Added `renderTitle()` that renders the title enclosed in `<title>` tags.
+- Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
+- Changed `textArea` to use `htmlspecialchars` to prevent XSS injection.
+
+* * *
+
 ## Text
 
 > Status: **changes required**
@@ -638,6 +852,27 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 {: .alert .alert-info }
 
 The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\Str`. The functionality offered by `Phalcon\Text` in v3 is replicated and enhanced in the new class: `Phalcon\Helper\Str`.
+
+* * *
+
+## Validation
+
+### Validation\Message
+
+- Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
+- Removed `Phalcon\Validation\MessageInterface` and `Phalcon\Mvc\Model\MessageInterface` in favor of `Phalcon\Messages\MessageInterface`
+- Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
+- Removed `Phalcon\Validation\Message\Group` in favor of `Phalcon\Messages\Messages`
+
+### Validation\Validator
+
+- Removed `isSetOption`
+
+### Validation\Validator\Ip
+
+- Added `Phalcon\Validation\Validator\Ip`, class used to validate ip address fields. It allows to validate a field selecting IPv4 or IPv6, allowing private or reserved ranges and empty values if necessary.
+
+* * *
 
 ## Url
 
