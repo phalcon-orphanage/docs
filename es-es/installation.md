@@ -385,8 +385,14 @@ Por defecto, compilamos para ser lo más compatible posible con todos los proces
 
 Esto generará el mejor código posible para ese chipset pero probablemente romperá el objeto compilado en chipsets antiguos.
 
-### Hosting compartido - cPanel
+### Shared hosting
 
-Aunque el alojamiento dedicado es extremadamente barato, usted puede optar por el alojamiento compartido. Esto podría restringirle la instalación de Phalcon, especialmente si no tiene acceso root.
+Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
 
-Si su servidor de hosting compartido está ejecutando cPanel, puede instalar Phalcon siguiendo las instrucciones en [este repositorio](https://github.com/thecpaneladmin/EA-PhalconPHP)
+#### cPanel & WHM
+
+cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
+
+#### Plesk
+
+The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)
