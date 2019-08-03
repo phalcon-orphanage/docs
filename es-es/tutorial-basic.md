@@ -278,7 +278,7 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        echo '<h1>Hola!</h1>';
+        return '<h1>Hello!</h1>';
     }
 }
 ```
