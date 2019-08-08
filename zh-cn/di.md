@@ -1027,7 +1027,7 @@ class MyClass implements InjectionAwareInterface
         $this->di = $di;
     }
 
-    public function getDi()
+    public function getDi(): DiInterface
     {
         return $this->di;
     }
