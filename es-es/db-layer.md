@@ -31,18 +31,20 @@ Carga la clase adaptador PDO utilizando la opción `adapter`. Por ejemplo:
 ```php
 <?php
 
-use Phalcon\Db\Adapter\Pdo\Factory;
+use Phalcon\Db\Adapter\PdoFactory;
 
-$options = [
-    'host'     => 'localhost',
-    'dbname'   => 'blog',
-    'port'     => 3306,
-    'username' => 'sigma',
-    'password' => 'secret',
-    'adapter'  => 'mysql',
+$config = [
+    'adapter' => 'mysql',
+    'options' => [
+        'host'     => 'localhost',
+        'dbname'   => 'blog',
+        'port'     => 3306,
+        'username' => 'sigma',
+        'password' => 'secret',
+    ],
 ];
 
-$db = Factory::load($options);
+$db = (new PdoFactory())->load($config);
 ```
 
 ### Implementando sus propios adaptadores
