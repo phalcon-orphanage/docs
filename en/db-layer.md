@@ -36,7 +36,6 @@ $config = [
         'port'     => 3306,
         'username' => 'sigma',
         'password' => 'secret',
-        'adapter'  => 'mysql',
     ],
 ];
 
