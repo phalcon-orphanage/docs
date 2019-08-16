@@ -546,10 +546,13 @@ $logger->error('Something went wrong');
 
 <hr/>
 
-## Transactions
+### Transactions
 Removed in version 4.0:
 - Removed `$logger->begin()`
 - Removed `$logger->commit()`
+
+### Log level
+- Removed `$logger->setLogLevel()`
 
 ## Models
 
