@@ -689,7 +689,7 @@ public function addOption( mixed $option ): Element;
 ```
 Adds an option to the current options
 
-@param array option
+@param array|string option
 
 
 ```php
