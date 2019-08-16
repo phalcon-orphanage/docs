@@ -546,6 +546,11 @@ $logger->error('Something went wrong');
 
 <hr/>
 
+## Transactions
+Removed in version 4.0:
+- Removed `$logger->begin()`
+- Removed `$logger->commit()`
+
 ## Models
 
 > Status: **changes required**
