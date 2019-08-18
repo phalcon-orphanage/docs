@@ -13,7 +13,7 @@ title: 'Phalcon\Dispatcher'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/abstractdispatcher.zep)
 
-| Namespace | Phalcon\Dispatcher | | Uses | Exception, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Dispatcher\DispatcherInterface, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
+| Namespace | Phalcon\Dispatcher | | Uses | Exception, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Dispatcher\DispatcherInterface, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface | | Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher. This class can't be instantiated directly, you can use it to create your own dispatchers.
 

@@ -301,7 +301,7 @@ A practical and elegant way to solve these problems is using a container for dep
 <?php
 
 use Phalcon\Di;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class SomeComponent
 {
@@ -314,25 +314,25 @@ class SomeComponent
 
     public function someDbTask()
     {
-        // Obtiene el servicio de conexión
-        // Siempre devuelve una conexión nueva 
+        // Get the connection service
+        // Always returns a new connection
         $connection = $this->di->get('db');
     }
 
     public function someOtherDbTask()
     {
-        // Obtiene el servicio de conexión compartida
-        // Siempre regresa la misma conexión
+        // Get a shared connection service,
+        // this will return the same connection every time
         $connection = $this->di->getShared('db');
 
-        // Este método requiere el servicio 'filter'
+        // This method also requires an input filtering service
         $filter = $this->di->get('filter');
     }
 }
 
 $di = new Di();
 
-// Registrar el servicio 'db' en el contenedor
+// Register a 'db' service in the container
 $di->set(
     'db',
     function () {
@@ -347,7 +347,7 @@ $di->set(
     }
 );
 
-// Registrar el servicio 'filter' en el contenedor
+// Register a 'filter' service in the container
 $di->set(
     'filter',
     function () {
@@ -355,7 +355,7 @@ $di->set(
     }
 );
 
-// Registrar el servicio 'session' en el contenedor
+// Register a 'session' service in the container
 $di->set(
     'session',
     function () {
@@ -363,7 +363,7 @@ $di->set(
     }
 );
 
-// Pasamos al contenedor de servicios como único parámetro
+// Pass the service container as unique parameter
 $some = new SomeComponent($di);
 
 $some->someDbTask();
@@ -1007,7 +1007,7 @@ If a class or component requires the DI itself to locate services, the DI can au
 ```php
 <?php
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 
 class MyClass implements InjectionAwareInterface
@@ -1096,7 +1096,7 @@ Using the `ServiceProviderInterface` you now register services by context. You c
 <?php
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di;
 use Phalcon\Config\Adapter\Ini;
 
@@ -1115,7 +1115,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 
 $di = new Di();
 $di->register(new SomeServiceProvider());
-var_dump($di->get('config')); // Retornará nuestro config
+var_dump($di->get('config')); // will return properly our config
 ```
 
 ## Factory Default DI
@@ -1163,4 +1163,4 @@ Although you can register services with the names you want, Phalcon has a severa
 
 ## Implementing your own DI
 
-The [Phalcon\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
+The [Phalcon\Di\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.

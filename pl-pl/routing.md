@@ -846,7 +846,7 @@ $route->beforeMatch(
         /**
          * @var string $uri
          * @var \Phalcon\Mvc\Router\Route $route
-         * @var \Phalcon\DiInterface $this
+         * @var \Phalcon\Di\DiInterface $this
          * @var \Phalcon\Http\Request $request
          */
         $request = $this->getShared('request');

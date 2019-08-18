@@ -22,7 +22,7 @@ title: 'Phalcon\Cli'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
-| Namespace | Phalcon\Cli | | Uses | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\DiInterface, Phalcon\Events\ManagerInterface | | Extends | AbstractApplication |
+| Namespace | Phalcon\Cli | | Uses | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface | | Extends | AbstractApplication |
 
 This component allows to create CLI applications using Phalcon
 
@@ -277,7 +277,7 @@ Sets the default task suffix
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-| Namespace | Phalcon\Cli | | Uses | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Implements | InjectionAwareInterface |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request.
 

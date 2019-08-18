@@ -13,7 +13,7 @@ title: 'Phalcon\Security'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/security.zep)
 
-| Namespace | Phalcon\Security | | Uses | Phalcon\DiInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Security | | Uses | Phalcon\Di\DiInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface | | Implements | InjectionAwareInterface |
 
 This component provides a set of functions to improve the security in Phalcon applications
 

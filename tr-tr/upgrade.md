@@ -593,6 +593,14 @@ $logger->error('Something went wrong');
 
 * * *
 
+### İşlemler
+
+Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+
+### Log level
+
+- Removed `$logger->setLogLevel()`
+
 ## Modeller
 
 > Status: **changes required**

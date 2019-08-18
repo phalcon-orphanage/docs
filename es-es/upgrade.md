@@ -593,6 +593,14 @@ $logger->error('Algo falló');
 
 * * *
 
+### Transacciones
+
+Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+
+### Log level
+
+- Removed `$logger->setLogLevel()`
+
 ## Modelos
 
 > Status: **changes required**
