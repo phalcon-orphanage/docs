@@ -93,7 +93,7 @@ Generate a string represetation
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/breadcrumbs.zep)
 
-| Namespace | Phalcon\Html | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface |
 
 Phalcon\Html\Breadcrumbs
 
@@ -470,7 +470,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
-| Namespace | Phalcon\Html | | Uses | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface | | Implements | InjectionAwareInterface |
 
 Phalcon\Html\Tag
 
