@@ -47,7 +47,7 @@ title: 'Phalcon\Http'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\DiInterface, Phalcon\Crypt\CryptInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Crypt\Mismatch, Phalcon\Session\ManagerInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Crypt\CryptInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Crypt\Mismatch, Phalcon\Session\ManagerInterface |
 | Implements | CookieInterface, InjectionAwareInterface |
 
 Provide OO wrappers to manage a HTTP cookie.
@@ -2436,7 +2436,7 @@ functions
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, UnexpectedValueException, stdClass |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, UnexpectedValueException, stdClass |
 | Implements | RequestInterface, InjectionAwareInterface |
 
 Encapsulates request information for easy and secure access from application
@@ -3626,7 +3626,7 @@ if $_SERVER["REQUEST_METHOD"] === "TRACE"
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\DiInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
+| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
 | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Part of the HTTP cycle is return responses to the clients.
@@ -3975,7 +3975,7 @@ $response->setStatusCode(404, "Not Found");
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\DiInterface, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Http\Cookie\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Http\Cookie\Exception |
 | Implements | CookiesInterface, InjectionAwareInterface |
 
 Phalcon\Http\Response\Cookies

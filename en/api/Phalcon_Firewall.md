@@ -17,7 +17,7 @@ title: 'Phalcon\Firewall'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Firewall\Adapter |
-| Uses       | Closure, Phalcon\Acl\Enum, Phalcon\Acl\RoleAware, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\Dispatcher |
+| Uses       | Closure, Phalcon\Acl\Enum, Phalcon\Acl\RoleAware, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\Dispatcher |
 | Implements | AdapterInterface, EventsAwareInterface |
 
 Adapter for Phalcon\Firewall adapters
@@ -476,7 +476,7 @@ protected function handleAnnotation( mixed $annotation, bool $access, mixed $rol
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/micro/acl.zep)
 
 | Namespace  | Phalcon\Firewall\Adapter\Micro |
-| Uses       | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\DiInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Adapter\AbstractAdapter, Phalcon\Firewall\Exception, Phalcon\Mvc\Micro, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router |
+| Uses       | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Adapter\AbstractAdapter, Phalcon\Firewall\Exception, Phalcon\Mvc\Micro, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router |
 | Extends    | AbstractAdapter |
 
 Firewall for Phalcon\Mvc\Micro which depends on ACL

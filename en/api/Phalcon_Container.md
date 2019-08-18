@@ -12,7 +12,7 @@ title: 'Phalcon\Container'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container/container.zep)
 
 | Namespace  | Phalcon\Container |
-| Uses       | Psr\Container\ContainerInterface, Phalcon\DiInterface |
+| Uses       | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface |
 | Implements | ContainerInterface |
 
 PSR-11 Wrapper for `Phalcon\Di`

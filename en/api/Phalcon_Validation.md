@@ -229,7 +229,7 @@ Exceptions thrown in Phalcon\Validation\* classes will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validation.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator |
+| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator |
 | Extends    | Injectable |
 | Implements | ValidationInterface |
 
