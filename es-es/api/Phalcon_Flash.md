@@ -15,7 +15,7 @@ title: 'Phalcon\Flash'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/abstractflash.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception | | Implements | FlashInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception | | Implements | FlashInterface, InjectionAwareInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -271,7 +271,7 @@ Shows a HTML warning message
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\DiInterface, Phalcon\Flash\AbstractFlash, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di\DiInterface, Phalcon\Flash\AbstractFlash, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
