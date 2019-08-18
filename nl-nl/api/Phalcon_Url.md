@@ -13,7 +13,7 @@ title: 'Phalcon\Url'
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\DiInterface, Phalcon\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
 
 This components helps in the generation of: URIs, URLs and Paths
 
