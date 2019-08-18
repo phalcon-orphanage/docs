@@ -367,14 +367,14 @@ namespace Multiple\Backend;
 
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 
 class Module implements ModuleDefinitionInterface
 {
     /**
-     * Регистрация специфичного автозагрузчика для модуля
+     * Register a specific autoloader for the module
      */
     public function registerAutoloaders(DiInterface $di = null)
     {
@@ -391,7 +391,7 @@ class Module implements ModuleDefinitionInterface
     }
 
     /**
-     * Регистрация специфичных сервисов для модуля
+     * Register specific services for the module
      */
     public function registerServices(DiInterface $di)
     {
@@ -407,7 +407,7 @@ class Module implements ModuleDefinitionInterface
             }
         );
 
-        // Регистрация компонента представлений
+        // Registering the view component
         $di->set(
             'view',
             function () {
