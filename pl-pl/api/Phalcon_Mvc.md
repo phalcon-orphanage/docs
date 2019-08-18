@@ -101,7 +101,7 @@ title: 'Phalcon\Mvc'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/application.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\Application\AbstractApplication, Phalcon\DiInterface, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\RouterInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\DispatcherInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface | | Extends | AbstractApplication |
+| Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\Application\AbstractApplication, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\RouterInterface, Phalcon\Http\ResponseInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\DispatcherInterface, Phalcon\Mvc\Application\Exception, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\ModuleDefinitionInterface | | Extends | AbstractApplication |
 
 Phalcon\Mvc\Application
 
@@ -198,7 +198,7 @@ Exceptions thrown in Phalcon\Mvc\Application class will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Mongo, MongoCollection, MongoId, Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Collection\BehaviorInterface, Phalcon\Mvc\Collection\Document, Phalcon\Mvc\Collection\Exception, Phalcon\Mvc\Collection\ManagerInterface, Phalcon\Messages\Message, Phalcon\Validation\ValidationInterface, Phalcon\Storage\Serializer\SerializerInterface, Serializable | | Implements | EntityInterface, CollectionInterface, InjectionAwareInterface, Serializable |
+| Namespace | Phalcon\Mvc | | Uses | Mongo, MongoCollection, MongoId, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Collection\BehaviorInterface, Phalcon\Mvc\Collection\Document, Phalcon\Mvc\Collection\Exception, Phalcon\Mvc\Collection\ManagerInterface, Phalcon\Messages\Message, Phalcon\Validation\ValidationInterface, Phalcon\Storage\Serializer\SerializerInterface, Serializable | | Implements | EntityInterface, CollectionInterface, InjectionAwareInterface, Serializable |
 
 Phalcon\Mvc\Collection
 
@@ -793,7 +793,7 @@ Exceptions thrown in Phalcon\Mvc\Collection\* classes will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/collection/manager.zep)
 
-| Namespace | Phalcon\Mvc\Collection | | Uses | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\BehaviorInterface | | Implements | InjectionAwareInterface, EventsAwareInterface |
+| Namespace | Phalcon\Mvc\Collection | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Collection\BehaviorInterface | | Implements | InjectionAwareInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Collection\Manager
 
@@ -1486,7 +1486,7 @@ Writes an attribute value by its name
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | ArrayAccess, Closure, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\Controller, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable | | Extends | Injectable | | Implements | ArrayAccess |
+| Namespace | Phalcon\Mvc | | Uses | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\Controller, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable | | Extends | Injectable | | Implements | ArrayAccess |
 
 Phalcon\Mvc\Micro
 
@@ -2178,7 +2178,7 @@ Calls the middleware
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\InjectionAwareInterface, Phalcon\Di, Phalcon\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Phalcon\Events\ManagerInterface, Serializable | | Implements | EntityInterface, ModelInterface, ResultInterface, InjectionAwareInterface, Serializable, JsonSerializable |
+| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\InjectionAwareInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Phalcon\Events\ManagerInterface, Serializable | | Implements | EntityInterface, ModelInterface, ResultInterface, InjectionAwareInterface, Serializable, JsonSerializable |
 
 Phalcon\Mvc\Model
 
@@ -3542,7 +3542,7 @@ Sets cache instance
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteria.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\DiInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Query\BuilderInterface | | Implements | CriteriaInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Query\BuilderInterface | | Implements | CriteriaInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Criteria
 
@@ -3907,7 +3907,7 @@ Sets the conditions parameter in the criteria
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/criteriainterface.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface |
 
 Phalcon\Mvc\Model\CriteriaInterface
 
@@ -4180,7 +4180,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\DiInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface | | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface | | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Model\Manager
 
@@ -5055,7 +5055,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | InjectionAwareInterface, MetaDataInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | InjectionAwareInterface, MetaDataInterface |
 
 Phalcon\Mvc\Model\MetaData
 
@@ -5655,7 +5655,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/annotations.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Mvc\Model\Exception | | Implements | StrategyInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Mvc\Model\Exception | | Implements | StrategyInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -5681,7 +5681,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface | | Implements | StrategyInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface | | Implements | StrategyInterface |
 
 Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
@@ -5705,7 +5705,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\DiInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -5967,7 +5967,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Db\DialectInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | QueryInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Db\DialectInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | QueryInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query
 
@@ -6417,7 +6417,7 @@ Gets the write connection from the model if there is no transaction inside the q
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query/builder.zep)
 
-| Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\BuilderInterface | | Implements | BuilderInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\Model\Query | | Uses | Phalcon\Di, Phalcon\Db\Column, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\BuilderInterface | | Implements | BuilderInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query\Builder
 
@@ -8138,7 +8138,7 @@ Check whether internal resource has rows to fetch
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
 
-| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Mvc\Model, Phalcon\Mvc\Model\Row, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\DiInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends | Resultset | | Implements | ResultsetInterface |
+| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Mvc\Model, Phalcon\Mvc\Model\Row, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Di\DiInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends | Resultset | | Implements | ResultsetInterface |
 
 Phalcon\Mvc\Model\Resultset\Complex
 
@@ -8196,7 +8196,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
-| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends | Resultset |
+| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
 
@@ -8446,7 +8446,7 @@ $robot->writeAttribute("name", "Rosey");
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface | | Implements | TransactionInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Transaction\Failed, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\TransactionInterface | | Implements | TransactionInterface |
 
 Phalcon\Mvc\Model\Transaction
 
@@ -8649,7 +8649,7 @@ Returns validation record messages which stop the transaction
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/transaction/manager.zep)
 
-| Namespace | Phalcon\Mvc\Model\Transaction | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\Transaction\Exception, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface | | Implements | ManagerInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\Model\Transaction | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Transaction\ManagerInterface, Phalcon\Mvc\Model\Transaction\Exception, Phalcon\Mvc\Model\Transaction, Phalcon\Mvc\Model\TransactionInterface | | Implements | ManagerInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Transaction\Manager
 
@@ -9037,7 +9037,7 @@ Returns the model that generated the messages
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/modelinterface.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ModelInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\ModelInterface |
+| Namespace | Phalcon\Mvc | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ModelInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\ModelInterface |
 
 Phalcon\Mvc\ModelInterface
 
@@ -9223,7 +9223,7 @@ Check whether validation process has generated any messages
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/moduledefinitioninterface.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface |
 
 Phalcon\Mvc\ModuleDefinitionInterface
 
@@ -9247,7 +9247,7 @@ Registers services related to the module
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Phalcon\DiInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\Exception, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | InjectionAwareInterface, RouterInterface, EventsAwareInterface |
+| Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\Exception, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | InjectionAwareInterface, RouterInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Router
 
@@ -9659,7 +9659,7 @@ Checks if the router matches any of the defined routes
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router/annotations.zep)
 
-| Namespace | Phalcon\Mvc\Router | | Uses | Phalcon\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation, Phalcon\Mvc\Router\Exception | | Extends | Router |
+| Namespace | Phalcon\Mvc\Router | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\Router, Phalcon\Annotations\Annotation, Phalcon\Mvc\Router\Exception | | Extends | Router |
 
 Phalcon\Mvc\Router\Annotations
 
@@ -10743,7 +10743,7 @@ Check if the router matches any of the defined routes
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewInterface |
+| Namespace | Phalcon\Mvc | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewInterface |
 
 Phalcon\Mvc\View
 
@@ -11312,7 +11312,7 @@ Loads registered template engines, if none is registered it will use Phalcon\Mvc
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/abstractengine.zep)
 
-| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface | | Extends | Injectable | | Implements | EngineInterface |
+| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\ViewBaseInterface | | Extends | Injectable | | Implements | EngineInterface |
 
 All the template engine adapters must inherit this class. This provides basic interfacing between the engine and the Phalcon\Mvc\View component.
 
@@ -11356,7 +11356,7 @@ Renders a partial inside another view
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/engineinterface.zep)
 
-| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\DiInterface, Phalcon\Mvc\ViewBaseInterface |
+| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface |
 
 Interface for Phalcon\Mvc\View engine adapters
 
@@ -11400,7 +11400,7 @@ Renders a view using the template engine
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
-| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\DiInterface, Phalcon\Mvc\View\Engine\AbstractEngine, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine |
+| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\View\Engine\AbstractEngine, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception | | Extends | AbstractEngine |
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
@@ -11484,7 +11484,7 @@ Sorts an array
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt/compiler.zep)
 
-| Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Closure, Phalcon\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\View\Engine\Volt\Exception | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\View\Engine\Volt | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\View\Engine\Volt\Exception | | Implements | InjectionAwareInterface |
 
 This class reads and compiles Volt templates into PHP plain code
 
@@ -11921,7 +11921,7 @@ Class for exceptions thrown by Phalcon\Mvc\View
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
-| Namespace | Phalcon\Mvc\View | | Uses | Closure, Phalcon\DiInterface, Phalcon\Di\Injectable, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewBaseInterface |
+| Namespace | Phalcon\Mvc\View | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php | | Extends | Injectable | | Implements | ViewBaseInterface |
 
 Phalcon\Mvc\View\Simple
 
