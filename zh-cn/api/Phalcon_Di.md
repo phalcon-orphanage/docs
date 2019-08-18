@@ -16,13 +16,13 @@ title: 'Phalcon\Di.zep'
 * [Phalcon\Di\Service\Builder](#di-service-builder)
 * [Phalcon\Di\ServiceInterface](#di-serviceinterface)
 * [Phalcon\Di\ServiceProviderInterface](#di-serviceproviderinterface)
-* [Phalcon\DiInterface](#diinterface)
+* [Phalcon\Di\DiInterface](#diinterface)
 
 <h1 id="di">Class Phalcon\Di</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Config, Phalcon\Di\Service, Phalcon\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Config, Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -252,7 +252,7 @@ public function register( ServiceProviderInterface $provider ): void;
 Registers a service provider.
 
 ```php
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
@@ -359,11 +359,11 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface, EventsAwareInterface |
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface, EventsAwareInterface |
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
-@property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router @property \Phalcon\Url|\Phalcon\UrlInterface $url @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies @property \Phalcon\Filter\FilterLocator $filter @property \Phalcon\Flash\Direct $flash @property \Phalcon\Flash\Session $flashSession @property \Phalcon\Session\ManagerInterface $session @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager @property \Phalcon\Db\Adapter\AdapterInterface $db @property \Phalcon\Security $security @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt @property \Phalcon\Tag $tag @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager @property \Phalcon\Assets\Manager $assets @property \Phalcon\Di|\Phalcon\DiInterface $di @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
+@property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router @property \Phalcon\Url|\Phalcon\UrlInterface $url @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies @property \Phalcon\Filter\FilterLocator $filter @property \Phalcon\Flash\Direct $flash @property \Phalcon\Flash\Session $flashSession @property \Phalcon\Session\ManagerInterface $session @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager @property \Phalcon\Db\Adapter\AdapterInterface $db @property \Phalcon\Security $security @property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt @property \Phalcon\Tag $tag @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations @property \Phalcon\Mvc\Model\Manager|\Phalcon\Mvc\Model\ManagerInterface $modelsManager @property \Phalcon\Mvc\Model\MetaData\Memory|\Phalcon\Mvc\Model\MetadataInterface $modelsMetadata @property \Phalcon\Mvc\Model\Transaction\Manager|\Phalcon\Mvc\Model\Transaction\ManagerInterface $transactionManager @property \Phalcon\Assets\Manager $assets @property \Phalcon\Di|\Phalcon\Di\DiInterface $di @property \Phalcon\Session\Bag|\Phalcon\Session\BagInterface $persistent @property \Phalcon\Mvc\View|\Phalcon\Mvc\ViewInterface $view
 
 ## Properties
 
@@ -420,7 +420,7 @@ Sets the event manager
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
 
 This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
 
@@ -442,7 +442,7 @@ Sets the dependency injector
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
-| Namespace | Phalcon\Di | | Uses | Closure, Phalcon\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\ServiceInterface, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
+| Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\ServiceInterface, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
 Represents individually a service in the services container
 
@@ -546,7 +546,7 @@ Sets/Resets the shared instance related to the service
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
-| Namespace | Phalcon\Di\Service | | Uses | Phalcon\DiInterface, Phalcon\Di\Exception |
+| Namespace | Phalcon\Di\Service | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
 
 Phalcon\Di\Service\Builder
 
@@ -566,7 +566,7 @@ Builds a service using a complex service definition
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
 
 Represents a service in the services container
 
@@ -628,14 +628,14 @@ Sets if the service is shared or not
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\DiInterface |
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
 
 Should be implemented by service providers, or such components, which register a service in the service container.
 
 ```php
 namespace Acme;
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\ServiceProviderInterface;
 
 class SomeServiceProvider implements ServiceProviderInterface
@@ -660,11 +660,11 @@ public function register( DiInterface $di ): void;
 
 Registers a service provider.
 
-<h1 id="diinterface">Interface Phalcon\DiInterface</h1>
+<h1 id="diinterface">Interface Phalcon\Di\DiInterface</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
 
-| Namespace | Phalcon | | Uses | ArrayAccess, Phalcon\DiInterface, Phalcon\Di\ServiceInterface | | Extends | ArrayAccess |
+| Namespace | Phalcon | | Uses | ArrayAccess, Phalcon\Di\DiInterface, Phalcon\Di\ServiceInterface | | Extends | ArrayAccess |
 
 Interface for Phalcon\Di
 
