@@ -593,6 +593,14 @@ $logger->error('Something went wrong');
 
 * * *
 
+### Transactions
+
+Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
+
+### Log level
+
+- Removed `$logger->setLogLevel()`
+
 ## Μοντέλα
 
 > Status: **changes required**
