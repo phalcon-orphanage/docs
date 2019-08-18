@@ -22,7 +22,7 @@ If you wish to contribute to our documentation you can do so as follows:
 
 #### Changes to English documents
 Submit a PR with your modifications **only** to the `en/` folder. Since the English folder is the 'master' one, any changes to the files under the `en/` folder will be propagated to the other languages.
-API documentation can be [generated](https://github.com/phalcon/cphalcon#api-documentation-generation) from the Phalcon source files.
+API documentation can be [generated](https://github.com/phalcon/cphalcon#generating-api-documentation) from the Phalcon source files.
 #### Translations
 You can start translating documentation in a language other than English that you speak. You can do so by joining our project in [Crowdin](https://crowdin.com) [here](https://crowdin.com/project/phalcon-documentation/)
 
