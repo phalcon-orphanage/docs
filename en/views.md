@@ -796,7 +796,7 @@ The method `render()` accepts an absolute path to the view file and the view par
 ```php
 <?php
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Engine;
 
 class MyTemplateAdapter extends Engine

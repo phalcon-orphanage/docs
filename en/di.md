@@ -298,7 +298,7 @@ A practical and elegant way to solve these problems is using a container for dep
 <?php
 
 use Phalcon\Di;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 
 class SomeComponent
 {
@@ -993,7 +993,7 @@ If a class or component requires the DI itself to locate services, the DI can au
 ```php
 <?php
 
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di\InjectionAwareInterface;
 
 class MyClass implements InjectionAwareInterface
@@ -1080,7 +1080,7 @@ Using the `ServiceProviderInterface` you now register services by context. You c
 <?php
 
 use Phalcon\Di\ServiceProviderInterface;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Di;
 use Phalcon\Config\Adapter\Ini;
 
@@ -1144,7 +1144,7 @@ Although you can register services with the names you want, Phalcon has a severa
 | viewCache          | Cache backend for views fragments     | None                                                                               | No     |
 
 ## Implementing your own DI
-The [Phalcon\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
+The [Phalcon\Di\DiInterface](api/Phalcon_DiInterface) interface must be implemented to create your own DI replacing the one provided by Phalcon or extend the current one.
 
 
 [ioc]: https://en.wikipedia.org/wiki/Inversion_of_control

@@ -23,7 +23,7 @@ title: 'Phalcon\Cli'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/console.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\DiInterface, Phalcon\Events\ManagerInterface |
+| Uses       | Phalcon\Application\AbstractApplication, Phalcon\Cli\Router\Route, Phalcon\Cli\Console\Exception, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface |
 | Extends    | AbstractApplication |
 
 This component allows to create CLI applications using Phalcon
@@ -299,7 +299,7 @@ Sets the default task suffix
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception |
 | Implements | InjectionAwareInterface |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process

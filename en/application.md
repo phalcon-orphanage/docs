@@ -361,7 +361,7 @@ namespace Multiple\Backend;
 
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
-use Phalcon\DiInterface;
+use Phalcon\Di\DiInterface;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\ModuleDefinitionInterface;
 

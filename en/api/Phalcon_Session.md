@@ -299,7 +299,7 @@ public function write( mixed $id, mixed $data ): bool;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Di, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface |
+| Uses       | Phalcon\Collection\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
 | Extends    | Collection |
 | Implements | InjectionAwareInterface |
 
@@ -393,7 +393,7 @@ Exceptions thrown in Phalcon\Session will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DiInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
+| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\DiInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
 | Implements | ManagerInterface, InjectionAwareInterface |
 
 Phalcon\Session\Manager
