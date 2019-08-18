@@ -829,7 +829,7 @@ Phalcon\Assets\Inline\Js constructor
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset, Phalcon\Assets\Collection, Phalcon\Assets\Exception, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset, Phalcon\Assets\Collection, Phalcon\Assets\Exception, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
 
 Phalcon\Assets\Manager
 
