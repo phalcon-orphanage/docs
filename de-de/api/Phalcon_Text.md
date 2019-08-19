@@ -2,7 +2,7 @@
 layout: default
 language: 'de-de'
 version: '4.0'
-title: 'Phalcon\Text.zep'
+title: 'Phalcon\Text'
 ---
 
 * [Phalcon\Text](#text)
