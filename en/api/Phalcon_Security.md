@@ -11,9 +11,9 @@ title: 'Phalcon\Security'
         
 <h1 id="security">Class Phalcon\Security</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/security.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
 
-| Namespace  | Phalcon\Security |
+| Namespace  | Phalcon |
 | Uses       | Phalcon\Di\DiInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface |
 | Implements | InjectionAwareInterface |
 
@@ -215,6 +215,7 @@ public function setWorkFactor( $workFactor )
 
 
 
+        
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/exception.zep)
@@ -483,5 +484,3 @@ If $n is not specified, 16 is assumed. It may be larger in future.
 @throws Exception If secure random number generator is not available or unexpected partial read
 
 
-
-        

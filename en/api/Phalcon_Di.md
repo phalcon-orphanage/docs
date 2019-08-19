@@ -2,10 +2,11 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Di.zep'
+title: 'Phalcon\Di'
 ---
 
 * [Phalcon\Di](#di)
+* [Phalcon\Di\DiInterface](#di-diinterface)
 * [Phalcon\Di\Exception](#di-exception)
 * [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
 * [Phalcon\Di\FactoryDefault](#di-factorydefault)
@@ -16,7 +17,6 @@ title: 'Phalcon\Di.zep'
 * [Phalcon\Di\Service\Builder](#di-service-builder)
 * [Phalcon\Di\ServiceInterface](#di-serviceinterface)
 * [Phalcon\Di\ServiceProviderInterface](#di-serviceproviderinterface)
-* [Phalcon\Di\DiInterface](#diinterface)
         
 <h1 id="di">Class Phalcon\Di</h1>
 
@@ -320,6 +320,90 @@ Loads services from a Config object.
 
 
         
+<h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
+
+| Namespace  | Phalcon\Di |
+| Uses       | ArrayAccess, Phalcon\Di\ServiceInterface |
+| Extends    | ArrayAccess |
+
+Interface for Phalcon\Di
+
+
+## Methods
+```php
+public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
+```
+Attempts to register a service in the services container
+Only is successful if a service hasn't been registered previously
+with the same name
+
+@param mixed definition
+
+
+```php
+public function get( string $name, mixed $parameters = null ): mixed;
+```
+Resolves the service based on its configuration
+
+
+```php
+public function getRaw( string $name ): mixed;
+```
+Returns a service definition without resolving
+
+
+```php
+public function getService( string $name ): ServiceInterface;
+```
+Returns the corresponding Phalcon\Di\Service instance for a service
+
+
+```php
+public function getServices(): ServiceInterface[];
+```
+Return the services registered in the DI
+
+
+```php
+public function getShared( string $name, mixed $parameters = null ): mixed;
+```
+Returns a shared service based on their configuration
+
+
+```php
+public function has( string $name ): bool;
+```
+Check whether the DI contains a service by a name
+
+
+```php
+public function remove( string $name ): void;
+```
+Removes a service in the services container
+
+
+```php
+public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
+```
+Registers a service in the services container
+
+
+```php
+public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+```
+Sets a service using a raw Phalcon\Di\Service definition
+
+
+```php
+public function setShared( string $name, mixed $definition ): ServiceInterface;
+```
+Registers an "always shared" service in the services container
+
+
+
+        
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception.zep)
@@ -404,7 +488,7 @@ accessing a public property with the same name of a registered service
 
 @property \Phalcon\Mvc\Dispatcher|\Phalcon\Mvc\DispatcherInterface $dispatcher
 @property \Phalcon\Mvc\Router|\Phalcon\Mvc\RouterInterface $router
-@property \Phalcon\Url|\Phalcon\UrlInterface $url
+@property \Phalcon\Url|\Phalcon\Url\UrlInterface $url
 @property \Phalcon\Http\Request|\Phalcon\Http\RequestInterface $request
 @property \Phalcon\Http\Response|\Phalcon\Http\ResponseInterface $response
 @property \Phalcon\Http\Response\Cookies|\Phalcon\Http\Response\CookiesInterface $cookies
@@ -415,7 +499,7 @@ accessing a public property with the same name of a registered service
 @property \Phalcon\Events\Manager|\Phalcon\Events\ManagerInterface $eventsManager
 @property \Phalcon\Db\Adapter\AdapterInterface $db
 @property \Phalcon\Security $security
-@property \Phalcon\Crypt\Crypt|\Phalcon\Crypt\CryptInterface $crypt
+@property \Phalcon\Crypt|\Phalcon\CryptInterface $crypt
 @property \Phalcon\Tag $tag
 @property \Phalcon\Escaper|\Phalcon\Escaper\EscaperInterface $escaper
 @property \Phalcon\Annotations\Adapter\Memory|\Phalcon\Annotations\Adapter $annotations
@@ -737,89 +821,5 @@ class SomeServiceProvider implements ServiceProviderInterface
 public function register( DiInterface $di ): void;
 ```
 Registers a service provider.
-
-
-
-        
-<h1 id="diinterface">Interface Phalcon\Di\DiInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/diinterface.zep)
-
-| Namespace  | Phalcon |
-| Uses       | ArrayAccess, Phalcon\Di\DiInterface, Phalcon\Di\ServiceInterface |
-| Extends    | ArrayAccess |
-
-Interface for Phalcon\Di
-
-
-## Methods
-```php
-public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
-```
-Attempts to register a service in the services container
-Only is successful if a service hasn't been registered previously
-with the same name
-
-@param mixed definition
-
-
-```php
-public function get( string $name, mixed $parameters = null ): mixed;
-```
-Resolves the service based on its configuration
-
-
-```php
-public function getRaw( string $name ): mixed;
-```
-Returns a service definition without resolving
-
-
-```php
-public function getService( string $name ): ServiceInterface;
-```
-Returns the corresponding Phalcon\Di\Service instance for a service
-
-
-```php
-public function getServices(): ServiceInterface[];
-```
-Return the services registered in the DI
-
-
-```php
-public function getShared( string $name, mixed $parameters = null ): mixed;
-```
-Returns a shared service based on their configuration
-
-
-```php
-public function has( string $name ): bool;
-```
-Check whether the DI contains a service by a name
-
-
-```php
-public function remove( string $name ): void;
-```
-Removes a service in the services container
-
-
-```php
-public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
-```
-Registers a service in the services container
-
-
-```php
-public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
-```
-Sets a service using a raw Phalcon\Di\Service definition
-
-
-```php
-public function setShared( string $name, mixed $definition ): ServiceInterface;
-```
-Registers an "always shared" service in the services container
 
 

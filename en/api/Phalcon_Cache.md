@@ -16,12 +16,12 @@ title: 'Phalcon\Cache'
 * [Phalcon\Cache\CacheFactory](#cache-cachefactory)
 * [Phalcon\Cache\Exception\Exception](#cache-exception-exception)
 * [Phalcon\Cache\Exception\InvalidArgumentException](#cache-exception-invalidargumentexception)
-
+        
 <h1 id="cache">Class Phalcon\Cache</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cache.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache.zep)
 
-| Namespace  | Phalcon\Cache |
+| Namespace  | Phalcon |
 | Uses       | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable |
 | Implements | CacheInterface |
 

@@ -445,7 +445,7 @@ clone of the object back
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/abstractmessage.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Http\Message\AbstractCommon, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Collection, Phalcon\Http\Message\AbstractCommon, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface |
 | Extends    | AbstractCommon |
 
 Message methods
@@ -811,7 +811,7 @@ Checks the protocol
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/abstractrequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Uri, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Collection, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Uri, Psr\Http\Message\UriInterface |
 | Extends    | AbstractMessage |
 
 Request methods
@@ -1164,7 +1164,7 @@ Create a new response.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/serverrequest.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Http\Message\AbstractRequest, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
+| Uses       | Phalcon\Collection, Phalcon\Http\Message\AbstractRequest, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface |
 | Extends    | AbstractRequest |
 | Implements | ServerRequestInterface |
 
@@ -1457,7 +1457,7 @@ the attribute.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/serverrequestfactory.zep)
 
 | Namespace  | Phalcon\Http\Message |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\ServerRequest, Phalcon\Http\Message\UploadedFile, Phalcon\Http\Message\Uri, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
+| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\ServerRequest, Phalcon\Http\Message\UploadedFile, Phalcon\Http\Message\Uri, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface |
 | Implements | ServerRequestFactoryInterface |
 
 PSR-17 ServerRequestFactory
@@ -3626,7 +3626,7 @@ if $_SERVER["REQUEST_METHOD"] === "TRACE"
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
+| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
 | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Part of the HTTP cycle is return responses to the clients.
@@ -3990,7 +3990,7 @@ used to generate a message authentication code use
 
 ```php
 use Phalcon\Di;
-use Phalcon\Crypt\Crypt;
+use Phalcon\Crypt;
 use Phalcon\Http\Response\Cookies;
 
 $di = new Di();

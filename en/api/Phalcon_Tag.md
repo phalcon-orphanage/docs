@@ -14,7 +14,7 @@ title: 'Phalcon\Tag'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\UrlInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
 Phalcon\Tag is designed to simplify building of HTML tags.
 It provides a set of helpers to generate HTML in a dynamic way.

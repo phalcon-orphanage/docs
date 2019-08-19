@@ -30,7 +30,7 @@ title: 'Phalcon\Html'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/attributes.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag |
+| Uses       | Phalcon\Collection, Phalcon\Html\Attributes\RenderInterface, Phalcon\Tag |
 | Extends    | Collection |
 | Implements | RenderInterface |
 
@@ -550,7 +550,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\UrlInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface |
 | Implements | InjectionAwareInterface |
 
 Phalcon\Html\Tag
@@ -1519,7 +1519,7 @@ Volt syntax:
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tagfactory.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Escaper\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory |
+| Uses       | Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Factory\AbstractFactory |
 | Extends    | AbstractFactory |
 
 ServiceLocator implementation for Tag helpers

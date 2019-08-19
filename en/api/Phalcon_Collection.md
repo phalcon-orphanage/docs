@@ -5,19 +5,19 @@ version: '4.0'
 title: 'Phalcon\Collection'
 ---
 
-* [Phalcon\Collection\Collection](#collection-collection)
+* [Phalcon\Collection](#collection)
 * [Phalcon\Collection\Exception](#collection-exception)
-* [Phalcon\Collection\ReadCollection](#collection-readcollection)
+* [Phalcon\Collection\ReadOnly](#collection-readonly)
         
-<h1 id="collection-collection">Class Phalcon\Collection\Collection</h1>
+<h1 id="collection">Class Phalcon\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/collection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
 
-| Namespace  | Phalcon\Collection |
+| Namespace  | Phalcon |
 | Uses       | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Serializable, Traversable |
 | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
-`Phalcon\Collection\Collection` is a supercharged object oriented array. It implements [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php), [Countable](https://www.php.net/manual/en/class.countable.php), [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php), [Serializable](https://www.php.net/manual/en/class.serializable.php)
+`Phalcon\Collection` is a supercharged object oriented array. It implements [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php), [Countable](https://www.php.net/manual/en/class.countable.php), [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php), [Serializable](https://www.php.net/manual/en/class.serializable.php)
 
 It can be used in any part of the application that needs collection of data
 Such implementations are for instance accessing globals `$_GET`, `$_POST`
@@ -213,15 +213,15 @@ Exceptions for the Collection object
 
 
         
-<h1 id="collection-readcollection">Class Phalcon\Collection\ReadCollection</h1>
+<h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readcollection.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
 
 | Namespace  | Phalcon\Collection |
-| Uses       | Phalcon\Collection\Collection, Phalcon\Collection\Exception |
+| Uses       | Phalcon\Collection, Phalcon\Collection\Exception |
 | Extends    | Collection |
 
-Phalcon\Collection\ReadCollection is a read only Collection object
+Phalcon\Collection\ReadOnly is a read only Collection object
 
 
 ## Methods
