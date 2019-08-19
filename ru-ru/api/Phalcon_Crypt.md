@@ -5,21 +5,21 @@ version: '4.0'
 title: 'Phalcon\Crypt'
 ---
 
-* [Phalcon\Crypt\Crypt](#crypt-crypt)
+* [Phalcon\Crypt](#crypt)
 * [Phalcon\Crypt\CryptInterface](#crypt-cryptinterface)
 * [Phalcon\Crypt\Exception](#crypt-exception)
 * [Phalcon\Crypt\Mismatch](#crypt-mismatch)
 
-<h1 id="crypt-crypt">Class Phalcon\Crypt\Crypt</h1>
+<h1 id="crypt">Class Phalcon\Crypt</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt/crypt.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/crypt.zep)
 
-| Namespace | Phalcon\Crypt | | Uses | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch | | Implements | CryptInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Exception, Phalcon\Crypt\Mismatch | | Implements | CryptInterface |
 
 Provides encryption capabilities to Phalcon applications.
 
 ```php
-use Phalcon\Crypt\Crypt;
+use Phalcon\Crypt;
 
 $crypt = new Crypt();
 
@@ -111,7 +111,7 @@ protected useSigning = true;
 public function __construct( string $cipher = string, bool $useSigning = bool ): void;
 ```
 
-Phalcon\Crypt\Crypt constructor.
+Phalcon\Crypt constructor.
 
 ```php
 public function decrypt( string $text, string $key = null ): string;
@@ -301,7 +301,7 @@ Initialize available cipher algorithms.
 
 | Namespace | Phalcon\Crypt |
 
-Interface for Phalcon\Crypt\Crypt
+Interface for Phalcon\Crypt
 
 ## Методы
 
@@ -407,7 +407,7 @@ Changes the padding scheme used.
 
 | Namespace | Phalcon\Crypt | | Extends | \Phalcon\Exception |
 
-Exceptions thrown in Phalcon\Crypt\Crypt use this class
+Exceptions thrown in Phalcon\Crypt use this class
 
 <h1 id="crypt-mismatch">Class Phalcon\Crypt\Mismatch</h1>
 
@@ -415,4 +415,4 @@ Exceptions thrown in Phalcon\Crypt\Crypt use this class
 
 | Namespace | Phalcon\Crypt | | Extends | Exception |
 
-Exceptions thrown in Phalcon\Crypt\Crypt will use this class.
+Exceptions thrown in Phalcon\Crypt will use this class.

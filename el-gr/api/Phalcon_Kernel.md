@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Phalcon\Kernel.zep'
+title: 'Phalcon\Kernel'
 ---
 
 * [Phalcon\Kernel](#kernel)

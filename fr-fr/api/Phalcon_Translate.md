@@ -503,7 +503,7 @@ protected function getAdapters(): array;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/translatefactory.zep)
 
-| Namespace | Phalcon\Translate | | Uses | Phalcon\Config\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractFactory |
+| Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 

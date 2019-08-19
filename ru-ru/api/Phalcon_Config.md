@@ -5,7 +5,7 @@ version: '4.0'
 title: 'Phalcon\Config'
 ---
 
-* [Phalcon\Config](#config-config)
+* [Phalcon\Config](#config)
 * [Phalcon\Config\Adapter\Grouped](#config-adapter-grouped)
 * [Phalcon\Config\Adapter\Ini](#config-adapter-ini)
 * [Phalcon\Config\Adapter\Json](#config-adapter-json)
@@ -13,6 +13,117 @@ title: 'Phalcon\Config'
 * [Phalcon\Config\Adapter\Yaml](#config-adapter-yaml)
 * [Phalcon\Config\ConfigFactory](#config-configfactory)
 * [Phalcon\Config\Exception](#config-exception)
+
+<h1 id="config">Class Phalcon\Config</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config.zep)
+
+| Namespace | Phalcon | | Uses | Phalcon\Collection, Phalcon\Config\Exception | | Extends | Collection |
+
+`Phalcon\Config` is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
+
+```php
+$config = new \Phalcon\Config(
+    [
+        "database" => [
+            "adapter"  => "Mysql",
+            "host"     => "localhost",
+            "username" => "scott",
+            "password" => "cheetah",
+            "dbname"   => "test_db",
+        ],
+        "phalcon" => [
+            "controllersDir" => "../app/controllers/",
+            "modelsDir"      => "../app/models/",
+            "viewsDir"       => "../app/views/",
+        ],
+    ]
+);
+```
+
+## Константы
+
+```php
+const DEFAULT_PATH_DELIMITER = .;
+```
+
+## Properties
+
+```php
+/**
+ * @var string
+ */
+protected pathDelimiter;
+
+```
+
+## Методы
+
+```php
+public function getPathDelimiter(): string;
+```
+
+Gets the default path delimiter
+
+@return string
+
+```php
+public function merge( mixed $toMerge ): Config;
+```
+
+Merges a configuration into the current one
+
+```php
+$appConfig = new \Phalcon\Config(
+    [
+        "database" => [
+            "host" => "localhost",
+        ],
+    ]
+);
+
+$globalConfig->merge($appConfig);
+```
+
+```php
+public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
+```
+
+Returns a value from current config using a dot separated path.
+
+```php
+echo $config->path("unknown.path", "default", ".");
+```
+
+```php
+public function setPathDelimiter( string $delimiter = null ): Config;
+```
+
+Sets the default path delimiter
+
+```php
+public function toArray(): array;
+```
+
+Converts recursively the object to an array
+
+```php
+print_r(
+    $config->toArray()
+);
+```
+
+```php
+final protected function internalMerge( array $source, array $target ): array;
+```
+
+Performs a merge recursively
+
+```php
+protected function setData( mixed $element, mixed $value ): void;
+```
+
+Sets the collection data
 
 <h1 id="config-adapter-grouped">Class Phalcon\Config\Adapter\Grouped</h1>
 
@@ -273,122 +384,11 @@ public function __construct( string $filePath, array $callbacks = null ): void;
 
 Phalcon\Config\Adapter\Yaml constructor
 
-<h1 id="config-config">Class Phalcon\Config</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/config.zep)
-
-| Namespace | Phalcon\Config | | Uses | Phalcon\Collection\Collection, Phalcon\Config\Exception | | Extends | Collection |
-
-`Phalcon\Config` is designed to simplify the access to, and the use of, configuration data within applications. It provides a nested object property based user interface for accessing this configuration data within application code.
-
-```php
-$config = new \Phalcon\Config(
-    [
-        "database" => [
-            "adapter"  => "Mysql",
-            "host"     => "localhost",
-            "username" => "scott",
-            "password" => "cheetah",
-            "dbname"   => "test_db",
-        ],
-        "phalcon" => [
-            "controllersDir" => "../app/controllers/",
-            "modelsDir"      => "../app/models/",
-            "viewsDir"       => "../app/views/",
-        ],
-    ]
-);
-```
-
-## Константы
-
-```php
-const DEFAULT_PATH_DELIMITER = .;
-```
-
-## Properties
-
-```php
-/**
- * @var string
- */
-protected pathDelimiter;
-
-```
-
-## Методы
-
-```php
-public function getPathDelimiter(): string;
-```
-
-Gets the default path delimiter
-
-@return string
-
-```php
-public function merge( mixed $toMerge ): Config;
-```
-
-Merges a configuration into the current one
-
-```php
-$appConfig = new \Phalcon\Config(
-    [
-        "database" => [
-            "host" => "localhost",
-        ],
-    ]
-);
-
-$globalConfig->merge($appConfig);
-```
-
-```php
-public function path( string $path, mixed $defaultValue = null, mixed $delimiter = null );
-```
-
-Returns a value from current config using a dot separated path.
-
-```php
-echo $config->path("unknown.path", "default", ".");
-```
-
-```php
-public function setPathDelimiter( string $delimiter = null ): Config;
-```
-
-Sets the default path delimiter
-
-```php
-public function toArray(): array;
-```
-
-Converts recursively the object to an array
-
-```php
-print_r(
-    $config->toArray()
-);
-```
-
-```php
-final protected function internalMerge( array $source, array $target ): array;
-```
-
-Performs a merge recursively
-
-```php
-protected function setData( mixed $element, mixed $value ): void;
-```
-
-Sets the collection data
-
 <h1 id="config-configfactory">Class Phalcon\Config\ConfigFactory</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/configfactory.zep)
 
-| Namespace | Phalcon\Config | | Uses | Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Config | | Uses | Phalcon\Config, Phalcon\Config\Adapter\Grouped, Phalcon\Config\Adapter\Ini, Phalcon\Config\Adapter\Json, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Config\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Factory\Exception, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 Loads Config Adapter class using 'adapter' option, if no extension is provided it will be added to filePath
 

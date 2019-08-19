@@ -7,13 +7,13 @@ title: 'Phalcon\Url'
 
 * [Phalcon\Url](#url)
 * [Phalcon\Url\Exception](#url-exception)
-* [Phalcon\UrlInterface](#urlinterface)
+* [Phalcon\Url\UrlInterface](#url-urlinterface)
 
 <h1 id="url">Class Phalcon\Url</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Url\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
 
 This components helps in the generation of: URIs, URLs and Paths
 
@@ -193,13 +193,13 @@ Phalcon\Url\Exception
 
 Exceptions thrown in Phalcon\Url will use this class
 
-<h1 id="urlinterface">Interface Phalcon\UrlInterface</h1>
+<h1 id="url-urlinterface">Interface Phalcon\Url\UrlInterface</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/urlinterface.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url/urlinterface.zep)
 
-| Namespace | Phalcon |
+| Namespace | Phalcon\Url |
 
-Interface for Phalcon\UrlInterface
+Interface for Phalcon\Url\UrlInterface
 
 ## Methoden
 

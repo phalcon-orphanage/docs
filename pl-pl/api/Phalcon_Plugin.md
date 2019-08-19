@@ -2,7 +2,7 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
-title: 'Phalcon\Plugin.zep'
+title: 'Phalcon\Plugin'
 ---
 
 * [Phalcon\Plugin](#plugin)

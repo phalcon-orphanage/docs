@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Phalcon\Registry.zep'
+title: 'Phalcon\Registry'
 ---
 
 * [Phalcon\Registry](#registry)
@@ -11,7 +11,7 @@ title: 'Phalcon\Registry.zep'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Collection\Collection, Traversable | | Extends | Collection |
+| Namespace | Phalcon | | Uses | Phalcon\Collection, Traversable | | Extends | Collection |
 
 Phalcon\Registry
 

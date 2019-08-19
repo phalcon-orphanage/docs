@@ -5,13 +5,13 @@ version: '4.0'
 title: 'Phalcon\Container'
 ---
 
-* [Phalcon\Container\Container](#container-container)
+* [Phalcon\Container](#container)
 
-<h1 id="container-container">Class Phalcon\Container\Container</h1>
+<h1 id="container">Class Phalcon\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container/container.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container.zep)
 
-| Namespace | Phalcon\Container | | Uses | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
+| Namespace | Phalcon | | Uses | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
 PSR-11 Wrapper for `Phalcon\Di`
 

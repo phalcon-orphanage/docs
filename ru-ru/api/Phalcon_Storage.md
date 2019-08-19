@@ -477,7 +477,7 @@ Stores data in the adapter
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/memory.zep)
 
-| Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
 Memory adapter
 

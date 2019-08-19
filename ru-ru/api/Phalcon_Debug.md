@@ -5,15 +5,15 @@ version: '4.0'
 title: 'Phalcon\Debug'
 ---
 
-* [Phalcon\Debug\Debug](#debug-debug)
+* [Phalcon\Debug](#debug)
 * [Phalcon\Debug\Dump](#debug-dump)
 * [Phalcon\Debug\Exception](#debug-exception)
 
-<h1 id="debug-debug">Class Phalcon\Debug\Debug</h1>
+<h1 id="debug">Class Phalcon\Debug</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/debug.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
-| Namespace | Phalcon\Debug | | Uses | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
+| Namespace | Phalcon | | Uses | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
 Provides debug capabilities to Phalcon applications
 

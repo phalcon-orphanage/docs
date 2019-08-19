@@ -729,7 +729,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-| Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\FilterInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Exception, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
+| Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\FilterInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Exception, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
 
 This component allows to build forms using an object-oriented interface
 
