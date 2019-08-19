@@ -263,6 +263,13 @@ class MainTask extends Task
 
 ## Db
 - Added global setting `orm.case_insensitive_column_map` to attempt to find value in the column map case-insensitively. Can be also enabled by setting `caseInsensitiveColumnMap` key in `\Phalcon\Mvc\Model::setup()`
+- Removed `Phalcon\Db` namespace. Replaced by `Phalcon\Db\AbstractDb` for necessary methods and `Phalcon\Db\Enum` for constants, i.e.:
+
+```php
+use Phalcon\Db\Enum;
+
+echo Enum::FETCH_ASSOC;
+```
 
 ### Db\AdapterInterface
 - Added fetchColumn, insertAsDict, updateAsDict
