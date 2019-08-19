@@ -2,27 +2,26 @@
 layout: default
 language: 'en'
 version: '4.0'
-category: 'request'
+title: 'HTTP Request'
 ---
 # Request Component
 <hr />
 
-# Request Environment
-Every HTTP request (usually originated by a browser) contains additional information regarding the request such as header data, files, variables, etc. A web based application needs to parse that information in order to perform a particular action and send the correct response back to the requester. [Phalcon\Http\Request](api/Phalcon_Http_Request) encapsulates the request information in a simple value object.
+## Overview
+[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. Note that this is not _only_ the actual request payload. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
 
 ```php
 <?php
 
 use Phalcon\Http\Request;
 
-// Getting a request instance
 $request = new Request();
 
-// Check whether the request was made with method POST
+// POST
 if (true === $request->isPost()) {
-    // Check whether the request was made with Ajax
+    // AJAX
     if (true === $request->isAjax()) {
-        echo 'Request was made using POST and AJAX';
+        // ....
     }
 }
 ```
@@ -30,7 +29,7 @@ if (true === $request->isPost()) {
 ## Getting Values
 PHP automatically fills the superglobal arrays [$_GET][get], [$_POST][post] and [$_REQUEST][request] depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection][sql-injection] or [Cross Site Scripting (XSS)][xss] attacks.
 
-[Phalcon\Http\Request](api/Phalcon_Http_Request) allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter](filter) service, (by default [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator)). 
+[Phalcon\Http\Request][http-request] allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter](filter) service. 
 
 There are 4 methods that allow you to retrieve submitted data from a request:
 - `get()`
@@ -39,7 +38,7 @@ There are 4 methods that allow you to retrieve submitted data from a request:
 - `getPut()`
 - `getServer()`
 
-All (except from `getServer()` accept the following parameters:
+All (except `getServer()`) accept the following parameters:
 - `name` the name of the value to get
 - `filters` (array/string) the sanitizers to apply to the value
 - `defaultValue` returned if the element is not defined (`null`)
@@ -47,20 +46,28 @@ All (except from `getServer()` accept the following parameters:
 - `noRecursive` applies the sanitizers recursively in the value (if value is an array)
 
 ```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
 $request->get(
-    string $name = null, 
-    mixed $filters = null, 
-    mixed $defaultValue = null, 
-    bool notAllowEmpty = false, 
-    bool noRecursive = false
+    $name = null,            // string
+    $filters = null,         // mixed
+    $defaultValue = null,    // mixed
+    $notAllowEmpty = false,  // bool
+    $noRecursive = false     // bool
 ): mixed
 ```
 
 `getServer()` accepts only a `name` (string) variable, representing the name of the server variable that you need to retrieve.
 
-
 ### $_REQUEST
-The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/Phalcon_Http_Request) object as follows: 
+The [$_REQUEST][request] superglobal contains an associative array that contains the contents of [$_GET][get], [$_POST][post] and [$_COOKIE][cookie]. You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request][http-request] object as follows: 
+
+**Examples**
+Get the `userEmail` field from the `$_REQUEST` superglobal:
 
 ```php
 <?php
@@ -69,21 +76,39 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-// Get the "user_email" field from the $_REQUEST superglobal
-$email = $request->get('user_email');
+$email = $request->get('userEmail');
+```
 
-// Get the "user_email" field from the $_REQUEST superglobal.
-// Sanitize the value with the "email" sanitizer
-$email = $request->get('user_email', 'email', 'some@example.com');
+Get the `userEmail` field from the `$_REQUEST` superglobal. Sanitize the value with the `email` sanitizer:
 
-// Get the "user_email" field from the $_REQUEST superglobal. Do not sanitize it.
-// If the parameter is null, return the default value
-$email = $request->get('user_email', null, 'some@example.com');
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->get('userEmail', 'email', 'some@example.com');
+```
+
+Get the `userEmail` field from the `$_REQUEST` superglobal. Do not sanitize it. If the parameter is null, return the default value:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->get('userEmail', null, 'some@example.com');
 ```
 
 ### $_GET
 The [$_GET][get] superglobal contains an associative array that contains the variables passed to the current script via URL parameters (also known as the query string). You can retrieve the data stored in the array by calling the `getQuery()` method as follows: 
 
+**Examples**
+Get the `userEmail` field from the `$_GET` superglobal:
+
 ```php
 <?php
 
@@ -91,21 +116,40 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-// Get the "user_email" field from the $_GET superglobal
-$email = $request->getQuery('user_email');
-
-// Get the "user_email" field from the $_GET superglobal
-// Sanitize the value with the "email" sanitizer
-$email = $request->getQuery('user_email', 'email', 'some@example.com');
-
-// Get the "user_email" field from the $_GET superglobal. Do not sanitize it.
-// If the parameter is null, return the default value
-$email = $request->getQuery('user_email', null, 'some@example.com');
+$email = $request->getQuer('userEmail');
 ```
+
+Get the `userEmail` field from the `$_GET` superglobal. Sanitize the value with the `email` sanitizer:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getQuery('userEmail', 'email', 'some@example.com');
+```
+
+Get the `userEmail` field from the `$_GET` superglobal. Do not sanitize it. If the parameter is null, return the default value:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getQuery('userEmail', null, 'some@example.com');
+```
+
 
 ### $_POST
 The [$_POST][post] superglobal contains an associative array that contains the variables passed to the current script via the HTTP POST method when using `application/x-www-form-urlencoded` or `multipart/form-data` as the HTTP `Content-Type` in the request. You can retrieve the data stored in the array by calling the `getPost()` method as follows: 
 
+**Examples**
+Get the `userEmail` field from the `$_POST` superglobal:
+
 ```php
 <?php
 
@@ -113,21 +157,39 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-// Get the "user_email" field from the $_POST superglobal
-$email = $request->getPost('user_email');
+$email = $request->getPost('userEmail');
+```
 
-// Get the "user_email" field from the $_POST superglobal.
-// Sanitize the value with the "email" sanitizer
-$email = $request->getPost('user_email', 'email', 'some@example.com');
+Get the `userEmail` field from the `$_POST` superglobal. Sanitize the value with the `email` sanitizer:
 
-// Get the "user_email" field from the $_POST superglobal. Do not sanitize it.
-// If the parameter is null, return the default value
-$email = $request->getPost('user_email', null, 'some@example.com');
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getPost('userEmail', 'email', 'some@example.com');
+```
+
+Get the `userEmail` field from the `$_POST` superglobal. Do not sanitize it. If the parameter is null, return the default value:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getPost('userEmail', null, 'some@example.com');
 ```
 
 ### Put
 The request object parses the PUT stream that has been received internally. You can retrieve the data stored in the array by calling the `getPut()` method as follows: 
 
+**Examples**
+Get the `userEmail` field from the `PUT` stream:
+
 ```php
 <?php
 
@@ -135,21 +197,39 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-// Get the "user_email" field from the PUT stream
-$email = $request->getPut('user_email');
+$email = $request->getPut('userEmail');
+```
 
-// Get the "user_email" field from the PUT stream.
-// Sanitize the value with the "email" sanitizer
-$email = $request->getPut('user_email', 'email', 'some@example.com');
+Get the `userEmail` field from the `PUT` stream. Sanitize the value with the `email` sanitizer:
 
-// Get the "user_email" field from the PUT stream. Do not sanitize it.
-// If the parameter is null, return the default value
-$email = $request->getPut('user_email', null, 'some@example.com');
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getPut('userEmail', 'email', 'some@example.com');
+```
+
+Get the `userEmail` field from the `PUT` stream. Do not sanitize it. If the parameter is null, return the default value:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+
+$request = new Request();
+
+$email = $request->getPut('userEmail', null, 'some@example.com');
 ```
 
 ### $_SERVER
 The [$_SERVER][server] superglobal contains an array containing information such as headers, paths, and script locations. You can retrieve the data stored in the array by calling the `getServer()` method as follows: 
 
+**Examples**
+Get the `SERVER_NAME` value from the `$_SERVER` superglobal:
+
 ```php
 <?php
 
@@ -157,20 +237,19 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-// Get the name of the server $_SERVER superglobal
 $name = $request->getServer('SERVER_NAME');
 ```
 
 ## Preset sanitizers
-It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function to another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
+It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function with another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
 
-To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request](api/Phalcon_Http_Request) offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
+To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request][http-request] offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
 
 ```php
 <?php
 
 use Phalcon\Di;
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 use Phalcon\Http\Request;
 
 $container = new Di();
@@ -180,7 +259,7 @@ $container->set(
     function () {
         $request = new Request();
         $request
-            ->setParameterFilters('id', FilterLocator::FILTER_ABSINT, ['post'])
+            ->setParameterFilters('id', Filter::FILTER_ABSINT, ['post'])
             ->setParameterFilters('name', ['trim', 'string'], ['post'])
         ;
         
@@ -197,8 +276,8 @@ The above will automatically sanitize any parameter that is POSTed from a form t
 
 These methods accept the same parameters as the `getPost()`, `getPut()` and `getQuery()` but without the `$filter` parameter.
 
-## Accessing the Request from Controllers
-The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request](api/Phalcon_Http_Request) object from a controller you will need to use the `$this->request` public property of the controller:
+## Controllers
+If you use the [Phalcon\Di\FactoryDefault][di-factorydefault] container, the [Phalcon\Http\Request][http-request] is already registered for you. The most common place to access the request environment is in an action of a controller. To access the [Phalcon\Http\Request][http-request] object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -226,7 +305,7 @@ class PostsController extends Controller
 ```
 
 ## Checking operations
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
+The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
 - `isAjax()`: Checks whether request has been made using AJAX
 - `isConnect()`: Checks whether HTTP method is CONNECT
 - `isDelete()`: Checks whether HTTP method is DELETE
@@ -254,7 +333,7 @@ There are a number of methods available that allow you to check the existence of
 - `hasServer()`: Checks whether $_SERVER superglobal has a certain element
 
 ## Request information
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) object offers methods that provide additional information regarding the request. 
+The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request. 
 ### Authentication
 - `getBasicAuth()`: Gets auth info accepted by the browser/client
 - `getDigestAuth()`: Gets auth info accepted by the browser/client
@@ -351,10 +430,10 @@ echo $request->getMethod();
 ```
 
 ## Dependency Injection
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
+The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 ## Working with Headers
-Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request](api/Phalcon_Http_Request) exposes the `getHeader()` and `getHeaders()` methods.
+Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request][http-request] exposes the `getHeader()` and `getHeaders()` methods.
 
 ```php
 <?php
@@ -385,7 +464,7 @@ The `getHttpHost()` method will return the host name used by the request. The me
 Optionally `getHttpHost()` validates and performs a strict check on the host name. To achieve that you can use the `setStrictHostCheck()` method.
 
 ## Uploading Files
-Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http_Request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
+Another common task is file uploading. [Phalcon\Http\Request][http-request] offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
 <?php
@@ -428,7 +507,7 @@ The `getUploadedFiles()` accepts two parameters.
 - `$namedKeys`: Returns the array with named keys obtained by the upload process
 
 ## Dependency Injection
-The [Phalcon\Http\Request](api/Phalcon_Http_Request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di_InjectionAwareInterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
+The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 ## Events
 
@@ -560,3 +639,41 @@ Credentials: a87421000492aa874209af8bc028
 [server]: https://secure.php.net/manual/en/reserved.variables.server.php
 [sql-injection]: https://en.wikipedia.org/wiki/SQL_injection
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+[http-cookie]: api/Phalcon_Http#http-cookie
+[http-cookie-exception]: api/Phalcon_Http#http-cookie-exception
+[http-cookieinterface]: api/Phalcon_Http#http-cookieinterface
+[http-message-abstractcommon]: api/Phalcon_Http#http-message-abstractcommon
+[http-message-abstractmessage]: api/Phalcon_Http#http-message-abstractmessage
+[http-message-abstractrequest]: api/Phalcon_Http#http-message-abstractrequest
+[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
+[http-message-request]: api/Phalcon_Http#http-message-request
+[http-message-requestfactory]: api/Phalcon_Http#http-message-requestfactory
+[http-message-response]: api/Phalcon_Http#http-message-response
+[http-message-responsefactory]: api/Phalcon_Http#http-message-responsefactory
+[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
+[http-message-serverrequestfactory]: api/Phalcon_Http#http-message-serverrequestfactory
+[http-message-stream]: api/Phalcon_Http#http-message-stream
+[http-message-stream-input]: api/Phalcon_Http#http-message-stream-input
+[http-message-stream-memory]: api/Phalcon_Http#http-message-stream-memory
+[http-message-stream-temp]: api/Phalcon_Http#http-message-stream-temp
+[http-message-streamfactory]: api/Phalcon_Http#http-message-streamfactory
+[http-message-uploadedfile]: api/Phalcon_Http#http-message-uploadedfile
+[http-message-uploadedfilefactory]: api/Phalcon_Http#http-message-uploadedfilefactory
+[http-message-uri]: api/Phalcon_Http#http-message-uri
+[http-message-urifactory]: api/Phalcon_Http#http-message-urifactory
+[http-request]: api/Phalcon_Http#http-request
+[http-request-exception]: api/Phalcon_Http#http-request-exception
+[http-request-file]: api/Phalcon_Http#http-request-file
+[http-request-fileinterface]: api/Phalcon_Http#http-request-fileinterface
+[http-requestinterface]: api/Phalcon_Http#http-requestinterface
+[http-response]: api/Phalcon_Http#http-response
+[http-response-cookies]: api/Phalcon_Http#http-response-cookies
+[http-response-cookiesinterface]: api/Phalcon_Http#http-response-cookiesinterface
+[http-response-exception]: api/Phalcon_Http#http-response-exception
+[http-response-headers]: api/Phalcon_Http#http-response-headers
+[http-response-headersinterface]: api/Phalcon_Http#http-response-headersinterface
+[http-responseinterface]: api/Phalcon_Http#http-responseinterface
+[http-server-abstractmiddleware]: api/Phalcon_Http#http-server-abstractmiddleware
+[http-server-abstractrequesthandler]: api/Phalcon_Http#http-server-abstractrequesthandler
+[di-injectionawareinterface]: api/Phalcon_Di#di-injectionawareinterface
+[di-factorydefault]: api/Phalcon_Di#di-factorydefault
