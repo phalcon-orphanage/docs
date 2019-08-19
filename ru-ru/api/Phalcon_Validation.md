@@ -5,11 +5,11 @@ version: '4.0'
 title: 'Phalcon\Validation'
 ---
 
+* [Phalcon\Validation](#validation)
 * [Phalcon\Validation\AbstractCombinedFieldsValidator](#validation-abstractcombinedfieldsvalidator)
 * [Phalcon\Validation\AbstractValidator](#validation-abstractvalidator)
 * [Phalcon\Validation\AbstractValidatorComposite](#validation-abstractvalidatorcomposite)
 * [Phalcon\Validation\Exception](#validation-exception)
-* [Phalcon\Validation\Validation](#validation-validation)
 * [Phalcon\Validation\ValidationInterface](#validation-validationinterface)
 * [Phalcon\Validation\Validator\Alnum](#validation-validator-alnum)
 * [Phalcon\Validation\Validator\Alpha](#validation-validator-alpha)
@@ -46,173 +46,11 @@ title: 'Phalcon\Validation'
 * [Phalcon\Validation\ValidatorFactory](#validation-validatorfactory)
 * [Phalcon\Validation\ValidatorInterface](#validation-validatorinterface)
 
-<h1 id="validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Validation\AbstractCombinedFieldsValidator</h1>
+<h1 id="validation">Class Phalcon\Validation</h1>
 
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractcombinedfieldsvalidator.zep)
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation.zep)
 
-| Namespace | Phalcon\Validation | | Extends | AbstractValidator |
-
-This is a base class for combined fields validators
-
-<h1 id="validation-abstractvalidator">Abstract Class Phalcon\Validation\AbstractValidator</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidator.zep)
-
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface | | Implements | ValidatorInterface |
-
-This is a base class for validators
-
-## Properties
-
-```php
-/**
-    * Message template
-    *
-    * @var string|null
-    */
-protected template;
-
-/**
-    * Message templates
-    *
-    * @var array
-    */
-protected templates;
-
-//
-protected options;
-
-```
-
-## Методы
-
-```php
-public function __construct( array $options = [] ): void;
-```
-
-Phalcon\Validation\Validator constructor
-
-```php
-public function getOption( string $key, mixed $defaultValue = null ): mixed;
-```
-
-Returns an option in the validator's options Returns null if the option hasn't set
-
-```php
-public function getTemplate( string $field = null ): string;
-```
-
-Get the template message
-
-@return string @throw InvalidArgumentException When the field does not exists
-
-```php
-public function getTemplates(): array;
-```
-
-Get templates collection object
-
-@return array
-
-```php
-public function hasOption( string $key ): bool;
-```
-
-Checks if an option is defined
-
-```php
-public function messageFactory( Validation $validation, mixed $field, array $replacements = [] ): Message;
-```
-
-Create a default message by factory
-
-@return Message
-
-@throw Exception
-
-```php
-public function setOption( string $key, mixed $value ): void;
-```
-
-Sets an option in the validator
-
-```php
-public function setTemplate( string $template ): ValidatorInterface;
-```
-
-Set a new template message
-
-@return Validator
-
-```php
-public function setTemplates( array $templates ): ValidatorInterface;
-```
-
-Clear current templates and set new from an array,
-
-@return Validator
-
-```php
-abstract public function validate( Validation $validation, mixed $field ): bool;
-```
-
-Executes the validation
-
-```php
-protected function prepareCode( string $field ): int | null;
-```
-
-Prepares a validation code.
-
-```php
-protected function prepareLabel( Validation $validation, string $field ): mixed;
-```
-
-Prepares a label for the field.
-
-<h1 id="validation-abstractvalidatorcomposite">Abstract Class Phalcon\Validation\AbstractValidatorComposite</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidatorcomposite.zep)
-
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation\Validation | | Extends | AbstractValidator | | Implements | ValidatorCompositeInterface |
-
-This is a base class for combined fields validators
-
-## Properties
-
-```php
-/**
- * @var array
- */
-protected validators;
-
-```
-
-## Методы
-
-```php
-public function getValidators(): array
-```
-
-```php
-public function validate( Validation $validation, mixed $field ): bool;
-```
-
-Executes the validation
-
-<h1 id="validation-exception">Class Phalcon\Validation\Exception</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/exception.zep)
-
-| Namespace | Phalcon\Validation | | Extends | \Phalcon\Exception |
-
-Exceptions thrown in Phalcon\Validation\* classes will use this class
-
-<h1 id="validation-validation">Class Phalcon\Validation\Validation</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validation.zep)
-
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator | | Extends | Injectable | | Implements | ValidationInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator | | Extends | Injectable | | Implements | ValidationInterface |
 
 Allows to validate data using custom or built-in validators
 
@@ -251,7 +89,7 @@ protected values;
 public function __construct( array $validators = [] ): void;
 ```
 
-Phalcon\Validation\Validation constructor
+Phalcon\Validation constructor
 
 ```php
 public function add( mixed $field, ValidatorInterface $validator ): ValidationInterface;
@@ -367,6 +205,168 @@ protected function preChecking( mixed $field, ValidatorInterface $validator ): b
 
 Internal validations, if it returns true, then skip the current validator
 
+<h1 id="validation-abstractcombinedfieldsvalidator">Abstract Class Phalcon\Validation\AbstractCombinedFieldsValidator</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractcombinedfieldsvalidator.zep)
+
+| Namespace | Phalcon\Validation | | Extends | AbstractValidator |
+
+This is a base class for combined fields validators
+
+<h1 id="validation-abstractvalidator">Abstract Class Phalcon\Validation\AbstractValidator</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidator.zep)
+
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface | | Implements | ValidatorInterface |
+
+This is a base class for validators
+
+## Properties
+
+```php
+/**
+    * Message template
+    *
+    * @var string|null
+    */
+protected template;
+
+/**
+    * Message templates
+    *
+    * @var array
+    */
+protected templates;
+
+//
+protected options;
+
+```
+
+## Методы
+
+```php
+public function __construct( array $options = [] ): void;
+```
+
+Phalcon\Validation\Validator constructor
+
+```php
+public function getOption( string $key, mixed $defaultValue = null ): mixed;
+```
+
+Returns an option in the validator's options Returns null if the option hasn't set
+
+```php
+public function getTemplate( string $field = null ): string;
+```
+
+Get the template message
+
+@return string @throw InvalidArgumentException When the field does not exists
+
+```php
+public function getTemplates(): array;
+```
+
+Get templates collection object
+
+@return array
+
+```php
+public function hasOption( string $key ): bool;
+```
+
+Checks if an option is defined
+
+```php
+public function messageFactory( Validation $validation, mixed $field, array $replacements = [] ): Message;
+```
+
+Create a default message by factory
+
+@return Message
+
+@throw Exception
+
+```php
+public function setOption( string $key, mixed $value ): void;
+```
+
+Sets an option in the validator
+
+```php
+public function setTemplate( string $template ): ValidatorInterface;
+```
+
+Set a new template message
+
+@return Validator
+
+```php
+public function setTemplates( array $templates ): ValidatorInterface;
+```
+
+Clear current templates and set new from an array,
+
+@return Validator
+
+```php
+abstract public function validate( Validation $validation, mixed $field ): bool;
+```
+
+Executes the validation
+
+```php
+protected function prepareCode( string $field ): int | null;
+```
+
+Prepares a validation code.
+
+```php
+protected function prepareLabel( Validation $validation, string $field ): mixed;
+```
+
+Prepares a label for the field.
+
+<h1 id="validation-abstractvalidatorcomposite">Abstract Class Phalcon\Validation\AbstractValidatorComposite</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidatorcomposite.zep)
+
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation | | Extends | AbstractValidator | | Implements | ValidatorCompositeInterface |
+
+This is a base class for combined fields validators
+
+## Properties
+
+```php
+/**
+ * @var array
+ */
+protected validators;
+
+```
+
+## Методы
+
+```php
+public function getValidators(): array
+```
+
+```php
+public function validate( Validation $validation, mixed $field ): bool;
+```
+
+Executes the validation
+
+<h1 id="validation-exception">Class Phalcon\Validation\Exception</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/exception.zep)
+
+| Namespace | Phalcon\Validation | | Extends | \Phalcon\Exception |
+
+Exceptions thrown in Phalcon\Validation\* classes will use this class
+
 <h1 id="validation-validationinterface">Interface Phalcon\Validation\ValidationInterface</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validationinterface.zep)
@@ -471,12 +471,12 @@ Validate a set of data according to a set of rules
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alnum.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for alphanumeric character(s)
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Alnum as AlnumValidator;
 
 $validator = new Validation();
@@ -526,12 +526,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/alpha.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for alphabetic character(s)
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Alpha as AlphaValidator;
 
 $validator = new Validation();
@@ -581,12 +581,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/between.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Validates that a value is between an inclusive range of two values. For a value x, the test is passed if minimum<=x<=maximum.
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Between;
 
 $validator = new Validation();
@@ -646,12 +646,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/callback.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Calls user function for validation
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Callback as CallbackValidator;
 use Phalcon\Validation\Validator\Numericality as NumericalityValidator;
 
@@ -711,12 +711,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/confirmation.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks that two values have the same value
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Confirmation;
 
 $validator = new Validation();
@@ -777,12 +777,12 @@ Compare strings
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/creditcard.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a valid credit card number
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\CreditCard as CreditCardValidator;
 
 $validator = new Validation();
@@ -832,12 +832,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/date.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | DateTime, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | DateTime, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value is a valid date
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Date as DateValidator;
 
 $validator = new Validation();
@@ -892,12 +892,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/digit.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for numeric character(s)
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Digit as DigitValidator;
 
 $validator = new Validation();
@@ -947,12 +947,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/email.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a correct e-mail format
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Email as EmailValidator;
 
 $validator = new Validation();
@@ -1010,12 +1010,12 @@ Exceptions thrown in Phalcon\Validation\Validator\* classes will use this class
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/exclusionin.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Check if a value is not included into a list of values
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
 $validator = new Validation();
@@ -1076,12 +1076,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min | | Extends | AbstractValidatorComposite |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidatorComposite, Phalcon\Validation\Validator\File\MimeType, Phalcon\Validation\Validator\File\Resolution\Equal, Phalcon\Validation\Validator\File\Resolution\Max, Phalcon\Validation\Validator\File\Resolution\Min, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\Size\Min | | Extends | AbstractValidatorComposite |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File as FileValidator;
 
 $validator = new Validation();
@@ -1156,12 +1156,12 @@ Constructor
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/abstractfile.zep)
 
-| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1294,12 +1294,12 @@ public function setMessageValid( $messageValid )
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/mimetype.zep)
 
-| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file mime type
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\MimeType;
 
 $validator = new Validation();
@@ -1365,12 +1365,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/equal.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Equal;
 
 $validator = new Validation();
@@ -1425,12 +1425,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Max;
 
 $validator = new Validation();
@@ -1490,12 +1490,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/resolution/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Resolution | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a file has the rigth resolution
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Resolution\Min;
 
 $validator = new Validation();
@@ -1555,12 +1555,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/equal.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1620,12 +1620,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1685,12 +1685,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\File\Size;
 
 $validator = new Validation();
@@ -1750,12 +1750,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/identical.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value is identical to other
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Identical;
 
 $validator = new Validation();
@@ -1810,12 +1810,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/inclusionin.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Check if a value is included into a list of values
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\InclusionIn;
 
 $validator = new Validation();
@@ -1870,7 +1870,7 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/ip.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Messages\Message | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Messages\Message | | Extends | AbstractValidator |
 
 Check for IP addresses
 
@@ -1949,12 +1949,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/numericality.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Check for a valid numeric value
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Numericality;
 
 $validator = new Validation();
@@ -2004,12 +2004,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/presenceof.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Validates that a value is not null or empty string
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\PresenceOf;
 
 $validator = new Validation();
@@ -2059,12 +2059,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/regex.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Allows validate if the value of a field matches a regular expression
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Regex as RegexValidator;
 
 $validator = new Validation();
@@ -2124,7 +2124,7 @@ Executes the validation
 Validates that a string has the specified maximum and minimum constraints The test is passed if for a string's length L, min<=L<=max, i.e. L must be at least min, and at most max. Since Phalcon v4.0 this valitor works like a container
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\StringLength as StringLength;
 
 $validator = new Validation();
@@ -2191,12 +2191,12 @@ Constructor
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Validates that a string has the specified maximum constraints The test is passed if for a string's length L, L<=max, i.e. L must be at most max.
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\StringLength\Max;
 
 $validator = new Validation();
@@ -2256,12 +2256,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/stringlength/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator\StringLength | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator, Phalcon\Validation\Exception | | Extends | AbstractValidator |
 
 Validates that a string has the specified minimum constraints The test is passed if for a string's length L, min<=L, i.e. L must be at least min.
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\StringLength\Min;
 
 $validator = new Validation();
@@ -2321,12 +2321,12 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Collection | | Extends | AbstractCombinedFieldsValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Collection | | Extends | AbstractCombinedFieldsValidator |
 
 Check that a field is unique in the related table
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness as UniquenessValidator;
 
 $validator = new Validation();
@@ -2441,12 +2441,12 @@ Uniqueness method used for model
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/url.zep)
 
-| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
+| Namespace | Phalcon\Validation\Validator | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractValidator | | Extends | AbstractValidator |
 
 Checks if a value has a url format
 
 ```php
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\Url as UrlValidator;
 
 $validator = new Validation();
@@ -2496,7 +2496,7 @@ Executes the validation
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorcompositeinterface.zep)
 
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation\Validation |
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Validation |
 
 This is a base class for combined fields validators
 
@@ -2550,7 +2550,7 @@ protected function getAdapters(): array;
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorinterface.zep)
 
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Validation\Validation |
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Collection, Phalcon\Validation |
 
 Interface for Phalcon\Validation\AbstractValidator
 
