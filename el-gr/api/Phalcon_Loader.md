@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Phalcon\Loader.zep'
+title: 'Phalcon\Loader'
 ---
 
 * [Phalcon\Loader](#loader)
