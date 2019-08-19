@@ -5,15 +5,15 @@ version: '4.0'
 title: 'Phalcon\Escaper'
 ---
 
-* [Phalcon\Escaper\Escaper](#escaper-escaper)
+* [Phalcon\Escaper](#escaper)
 * [Phalcon\Escaper\EscaperInterface](#escaper-escaperinterface)
 * [Phalcon\Escaper\Exception](#escaper-exception)
 
-<h1 id="escaper-escaper">Class Phalcon\Escaper\Escaper</h1>
+<h1 id="escaper">Class Phalcon\Escaper</h1>
 
-[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/escaper.zep)
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
-| Namespace | Phalcon\Escaper | | Uses | Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
 
 Phalcon\Escaper
 
