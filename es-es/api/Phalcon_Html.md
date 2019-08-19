@@ -470,7 +470,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
-| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface, Phalcon\Mvc\Model\ResultsetInterface | | Implements | InjectionAwareInterface |
 
 Phalcon\Html\Tag
 
