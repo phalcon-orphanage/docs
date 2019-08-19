@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Exception.zep'
+title: 'Phalcon\Exception'
 ---
 
 * [Phalcon\Exception](#exception)
