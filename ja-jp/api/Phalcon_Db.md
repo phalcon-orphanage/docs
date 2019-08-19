@@ -212,7 +212,7 @@ public function createView( string $viewName, array $definition, string $schemaN
 Creates a view
 
 ```php
-public function delete( string $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
+public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 
 Deletes data from a table using custom RBDM SQL syntax
@@ -805,7 +805,7 @@ public function createView( string $viewName, array $definition, string $schemaN
 Creates a view
 
 ```php
-public function delete( string $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
+public function delete( mixed $table, mixed $whereCondition = null, mixed $placeholders = null, mixed $dataTypes = null ): bool;
 ```
 
 Deletes data from a table using custom RDBMS SQL syntax
