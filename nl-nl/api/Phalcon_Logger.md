@@ -889,7 +889,7 @@ Returns an array of log levels with integer to string conversion
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
 
-| Namespace | Phalcon\Logger | | Uses | Phalcon\Config\Config, Phalcon\Helper\Arr, Phalcon\Logger\Logger, Phalcon\Logger\AdapterFactory |
+| Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger\Logger, Phalcon\Logger\AdapterFactory |
 
 PhalconNG\Logger\LoggerFactory
 
