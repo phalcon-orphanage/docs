@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Phalcon\Version.zep'
+title: 'Phalcon\Version'
 ---
 
 * [Phalcon\Version](#version)
