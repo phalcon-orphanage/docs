@@ -242,13 +242,6 @@ Secure random number generator class.
 Provides secure random number generator which is suitable for generating
 session key in HTTP cookies, etc.
 
-It supports following secure random number generators:
-
-- random_bytes (PHP 7)
-- libsodium
-- openssl, libressl
-- /dev/urandom
-
 `Phalcon\Security\Random` could be mainly useful for:
 
 - Key generation (e.g. generation of complicated keys)

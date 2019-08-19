@@ -136,8 +136,7 @@ See [offsetGet](https://php.net/manual/en/arrayaccess.offsetget.php)
 public function offsetSet( mixed $element, mixed $value ): void;
 ```
 Offset to set
-See [offsetSet](
-@link )https://php.net/manual/en/arrayaccess.offsetset.php)
+See [offsetSet](https://php.net/manual/en/arrayaccess.offsetset.php)
 
 
 ```php
