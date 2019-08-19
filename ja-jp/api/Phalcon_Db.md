@@ -78,7 +78,7 @@ try {
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | AdapterInterface, EventsAwareInterface |
+| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
 Base class for Phalcon\Db adapters
 
@@ -726,7 +726,7 @@ var_dump(
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/adapterinterface.zep)
 
-| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
+| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\ResultInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
 
 Interface for Phalcon\Db adapters
 
@@ -3890,7 +3890,7 @@ Gets the schema where referenced table is
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
-| Namespace | Phalcon\Db\Result | | Uses | Phalcon\Db\Enum, Phalcon\Db\ResultInterface | | Implements | ResultInterface |
+| Namespace | Phalcon\Db\Result | | Uses | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
 
 Encapsulates the resultset internals
 
@@ -3944,7 +3944,7 @@ protected sqlStatement;
 ## メソッド
 
 ```php
-public function __construct( Db\AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null ): void;
+public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null ): void;
 ```
 
 Phalcon\Db\Result\Pdo constructor
