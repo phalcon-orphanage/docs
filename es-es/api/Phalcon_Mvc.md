@@ -579,7 +579,7 @@ Executes validators on every validation call
 
 ```php
 use Phalcon\Mvc\Collection;
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Collection
@@ -2672,7 +2672,7 @@ $hasChanged = $robot->hasChanged(["type", "name"]); // returns true
 $hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
 ```
 
-@param string|array fieldName
+@param string|array fieldName @param boolean allFields
 
 ```php
 public function hasSnapshotData(): bool;
@@ -2909,7 +2909,7 @@ Check whether validation process has generated any messages
 
 ```php
 use Phalcon\Mvc\Model;
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
@@ -3255,7 +3255,7 @@ Executes validators on every validation call
 
 ```php
 use Phalcon\Mvc\Model;
-use Phalcon\Validation\Validation;
+use Phalcon\Validation;
 use Phalcon\Validation\Validator\ExclusionIn;
 
 class Subscriptors extends Model
@@ -11356,7 +11356,7 @@ Renders a partial inside another view
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/engineinterface.zep)
 
-| Namespace | Phalcon\Mvc\View\Engine | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ViewBaseInterface |
+| Namespace | Phalcon\Mvc\View\Engine |
 
 Interface for Phalcon\Mvc\View engine adapters
 
