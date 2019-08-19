@@ -226,13 +226,6 @@ Asegure la clase de generador de números aleatorios.
 
 Proporciona un generador seguro de números aleatorios que es adecuado para generar clave de sesión en cookies HTTP, etc.
 
-Es compatible con siguientes generadores de números aleatorios seguros:
-
-- random_bytes (PHP 7)
-- libsodium
-- openssl, libressl
-- /dev/urandom
-
 `Phalcon\Security\Random` could be mainly useful for:
 
 - Generación de claves (por ejemplo, generación de claves complicadas)

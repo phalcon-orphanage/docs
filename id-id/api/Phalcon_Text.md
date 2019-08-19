@@ -2,7 +2,7 @@
 layout: default
 language: 'id-id'
 version: '4.0'
-title: 'Phalcon\Text.zep'
+title: 'Phalcon\Text'
 ---
 
 * [Phalcon\Text](#text)

@@ -80,7 +80,7 @@ abstract public function handle();
 Handles a request
 
 ```php
-public function registerModules( array $modules, bool $merge = bool ): Application;
+public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
 
 Register an array of modules present in the application
@@ -101,13 +101,13 @@ $this->registerModules(
 ```
 
 ```php
-public function setDefaultModule( string $defaultModule ): Application;
+public function setDefaultModule( string $defaultModule ): AbstractApplication;
 ```
 
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
-public function setEventsManager( ManagerInterface $eventsManager ): Application;
+public function setEventsManager( ManagerInterface $eventsManager ): AbstractApplication;
 ```
 
 イベントマネージャーをセットします
