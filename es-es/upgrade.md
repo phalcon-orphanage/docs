@@ -93,6 +93,16 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
+### Added
+
+- `Phalcon\Acl\Adapter\AbstractAdapter`
+- `Acl\Enum`
+
+### Removed
+
+- `Phalcon\Acl`
+- `Phalcon\Acl\Adapter`
+
 ### Changed
 
 - Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
@@ -115,6 +125,18 @@ The components needed for the ACL to work have been renamed. In particular `Reso
 
 - Added `getActiveKey`, `activeFunctionCustomArgumentsCount` and `getActiveFunction` to get latest key, number of custom arguments, and function used to acquire access
 - Added `addOpertion` support multiple inherited
+
+### Acl\Enum (Constants)
+
+Ejemplo:
+
+```php
+use Phalcon\Acl\Enum;
+
+echo Enum::ALLOW; //prints 1
+echo Enum::DENY;  //prints 0
+
+```
 
 * * *
 
@@ -501,6 +523,47 @@ By default the service sanitizers cast the value to the appropriate type so thes
 - Added `Phalcon\Http\Response\Cookies::getCookies`
 - Changed `setHeaders` now merges the headers with any pre-existing ones in the internal collection
 - Added two new events `response::beforeSendHeaders` and `response::afterSendHeaders`
+
+* * *
+
+## Imágenes
+
+### Added
+
+- `Phalcon\Image\Enum`
+
+### Renamed
+
+- `Phalcon\Image\Adapter` is now `Phalcon\Image\Adapter\AbstractAdapter`
+
+- `Phalcon\Image\Factory` is now `Phalcon\Image\ImageFactory`
+
+### Removed
+
+- `Phalcon\Image`
+
+## Image\Enum (Constants)
+
+Ejemplo:
+
+```php
+<?php
+
+use Phalcon\Image\Enum;
+
+// Resizing constraints
+echo Enum::AUTO;    // prints 4
+echo Enum::HEIGHT;  // prints  3
+echo Enum::INVERSE; // prints  5
+echo Enum::NONE;   // prints  1
+echo Enum::PRECISE; // prints  6
+echo Enum::TENSILE; // prints  7
+echo Enum::WIDTH;   // prints  2
+
+// Flipping directions
+echo Enum::HORIZONTAL; // prints  11
+echo Enum::VERTICAL;   // prints  12
+```
 
 * * *
 
