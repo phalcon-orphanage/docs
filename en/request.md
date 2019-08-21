@@ -31,7 +31,7 @@ PHP automatically fills the superglobal arrays [$_GET][get], [$_POST][post] and 
 
 [Phalcon\Http\Request][http-request] allows you to access the values stored in the [$_GET][get], [$_POST][post] and [$_REQUEST][request] arrays and sanitize or filter them with the [filter](filter) service. 
 
-There are 4 methods that allow you to retrieve submitted data from a request:
+There are 5 methods that allow you to retrieve submitted data from a request:
 - `get()`
 - `getQuery()`
 - `getPost()` 
@@ -116,7 +116,7 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-$email = $request->getQuer('userEmail');
+$email = $request->getQuery('userEmail');
 ```
 
 Get the `userEmail` field from the `$_GET` superglobal. Sanitize the value with the `email` sanitizer:
