@@ -34,7 +34,7 @@ PHP automatically fills the superglobal arrays [$_GET](https://secure.php.net/ma
 
 [Phalcon\Http\Request](api/Phalcon_Http#http-request) allows you to access the values stored in the [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
 
-There are 4 methods that allow you to retrieve submitted data from a request: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
+There are 5 methods that allow you to retrieve submitted data from a request: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
 
 All (except `getServer()`) accept the following parameters: - `name` the name of the value to get - `filters` (array/string) the sanitizers to apply to the value - `defaultValue` returned if the element is not defined (`null`) - `notAllowEmpty` if set (default) and the value is empty, the `defaultValue` will be returned; otherwise `null` - `noRecursive` applies the sanitizers recursively in the value (if value is an array)
 
@@ -109,7 +109,7 @@ use Phalcon\Http\Request;
 
 $request = new Request();
 
-$email = $request->getQuer('userEmail');
+$email = $request->getQuery('userEmail');
 ```
 
 Get the `userEmail` field from the `$_GET` superglobal. Sanitize the value with the `email` sanitizer:
