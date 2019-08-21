@@ -525,6 +525,7 @@ class SignupController extends Controller
 
         $user->assign(
             $this->request->getPost(),
+            null,
             [
                 "name",
                 "email",
