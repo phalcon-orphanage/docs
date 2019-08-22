@@ -196,7 +196,7 @@ echo $config->path('app-unknown', 'default', '-');  // default
 
 You can also use the `getPathDelimiter()` and `setPathDelimiter()` methods to get or set the delimiter that the component will use. The `delimiter` parameter in the `path()` method can then be used as an override if you like, for a special case, while the default delimiter is set using the getter and setter. The default delimiter is `.`.
 
-You can also use functional programming in conjuction with `path()` to obtain configuration data:
+You can also use functional programming in conjunction with `path()` to obtain configuration data:
 
 ```php
 <?php
@@ -332,7 +332,7 @@ The component also supports `set()` which allows you to programmatically add or 
 ### Serialization
 The object can be serialized and saved in a file or a cache service using the `serialize()` method. The reverse can be achieved using the `unserialize` method
 
-### toArray / toJson
+### `toArray` / `toJson`
 If you need to get the object back as an array `toArray()` and `toJson()` are available.
 
 For additional information, you can check the [Phalcon\Collection][collection] documentation.
