@@ -28,6 +28,6 @@ You can start translating documentation in a language other than English that yo
 
 <p align="center">
     <a href="https://crowdin.com">
-        <img src="https://support.crowdin.com/assets/logos/crowdin-CollaborativeTranslationTool-logo.png" width="40%"/>
+        <img src="https://assets.phalconphp.com/phalcon/images/backers/crowdin.png" width="40%"/>
     </a>
 </p>
