@@ -287,33 +287,33 @@ Variables can be formatted or modified using filters. The pipe operator `|` is u
 
 The following is the list of available built-in filters in Volt:
 
-| Filtro             | Descripción                                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `abs`              | Applies the [abs](https://php.net/manual/en/function.abs.php) PHP function to a value.                                              |
-| `capitalize`       | Capitalizes a string by applying the [ucwords](https://php.net/manual/en/function.ucwords.php) PHP function to the value            |
-| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                            |
-| `default`          | Establece un valor predeterminado en caso de que la expresión evaluada este vacía (no se establece o se evalúa como un valor falso) |
-| `e`                | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                              |
-| `escape`           | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                              |
-| `escape_attr`      | Se aplica `Phalcon\Escaper->escapeHtmlAttr()` al valor                                                                          |
-| `escape_css`       | Se aplica `Phalcon\Escaper->escapeCss()` al valor                                                                               |
-| `escape_js`        | Se aplica `Phalcon\Escaper->escapeJs()` al valor                                                                                |
-| `format`           | Formats a string using [sprintf](https://php.net/manual/en/function.sprintf.php).                                                   |
-| `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                 |
-| `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation         |
-| `join`             | Joins the array parts using a separator [join](https://php.net/manual/en/function.join.php)                                         |
-| `keys`             | Returns the array keys using [array_keys](https://php.net/manual/en/function.array-keys.php)                                        |
-| `left_trim`        | Applies the [ltrim](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
-| `length`           | Cuenta la longitud de la cadena de texto o cuántos elementos hay en un array u objeto                                               |
-| `lower`            | Cambiar una cadena a minúsculas                                                                                                     |
-| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [nl2br](https://php.net/manual/en/function.nl2br.php) |
-| `right_trim`       | Applies the [rtrim](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
-| `sort`             | Sorts an array using the PHP function [asort](https://php.net/manual/en/function.asort.php)                                         |
-| `stripslashes`     | Applies the [stripslashes](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
-| `striptags`        | Applies the [striptags](https://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
-| `trim`             | Applies the [trim](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
-| `upper`            | Change the case of a string to uppercase                                                                                            |
-| `url_encode`       | Applies the [urlencode](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
+| Filtro             | Descripción                                                                                                                           |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `abs`              | Applies the [abs](https://php.net/manual/en/function.abs.php) PHP function to a value.                                                |
+| `capitalize`       | Capitalizes a string by applying the [`ucwords`](https://php.net/manual/en/function.ucwords.php) PHP function to the value            |
+| `convert_encoding` | Convierte una cadena de un conjunto de caracteres a otro                                                                              |
+| `default`          | Establece un valor predeterminado en caso de que la expresión evaluada este vacía (no se establece o se evalúa como un valor falso)   |
+| `e`                | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                |
+| `escape`           | Se aplica `Phalcon\Escaper->escapeHtml()` al valor                                                                                |
+| `escape_attr`      | Se aplica `Phalcon\Escaper->escapeHtmlAttr()` al valor                                                                            |
+| `escape_css`       | Se aplica `Phalcon\Escaper->escapeCss()` al valor                                                                                 |
+| `escape_js`        | Se aplica `Phalcon\Escaper->escapeJs()` al valor                                                                                  |
+| `format`           | Formats a string using [`sprintf`](https://php.net/manual/en/function.sprintf.php).                                                   |
+| `json_encode`      | Converts a value into its [JSON](https://php.net/manual/en/function.json-encode.php) representation                                   |
+| `json_decode`      | Converts a value from its [JSON](https://php.net/manual/en/function.json-encode.php) representation to a PHP representation           |
+| `join`             | Joins the array parts using a separator [`join`](https://php.net/manual/en/function.join.php)                                         |
+| `keys`             | Returns the array keys using [`array_keys`](https://php.net/manual/en/function.array-keys.php)                                        |
+| `left_trim`        | Applies the [`ltrim`](https://php.net/manual/en/function.ltrim.php) PHP function to the value. Removing extra spaces                  |
+| `length`           | Cuenta la longitud de la cadena de texto o cuántos elementos hay en un array u objeto                                                 |
+| `lower`            | Cambiar una cadena a minúsculas                                                                                                       |
+| `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`](https://php.net/manual/en/function.nl2br.php) |
+| `right_trim`       | Applies the [`rtrim`](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                  |
+| `sort`             | Sorts an array using the PHP function [`asort`](https://php.net/manual/en/function.asort.php)                                         |
+| `stripslashes`     | Applies the [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes  |
+| `striptags`        | Applies the [`striptags`](https://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags             |
+| `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                    |
+| `upper`            | Change the case of a string to uppercase                                                                                              |
+| `url_encode`       | Applies the [`urlencode`](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                 |
 
 Examples:
 
@@ -792,7 +792,7 @@ You may make calculations in templates using the following operators:
 | Operator | Descripción                                                                                    |
 |:--------:| ---------------------------------------------------------------------------------------------- |
 |   `+`    | Perform an adding operation. `{%- raw -%}{{ 2 + 3 }}{% endraw %}` returns 5                    |
-|   `-`    | Perform a substraction operation `{%- raw -%}{{ 2 - 3 }}{% endraw %}` returns -1               |
+|   `-`    | Perform a subtraction operation `{%- raw -%}{{ 2 - 3 }}{% endraw %}` returns -1                |
 |   `*`    | Perform a multiplication operation `{%- raw -%}{{ 2 * 3 }}{% endraw %}` returns 6              |
 |   `/`    | Perform a division operation `{%- raw -%}{{ 10 / 2 }}{% endraw %}` returns 5                   |
 |   `%`    | Calculate the remainder of an integer division `{%- raw -%}{{ 10 % 3 }}{% endraw %}` returns 1 |
@@ -1408,7 +1408,7 @@ $compiler->addFunction('dump', 'print_r');
 
 ### Filters
 
-A filter has the following form in a template: leftExpr|name(optional-args). Adding new filters is similar as seen with the functions:
+A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as seen with the functions:
 
 ```php
 <?php
