@@ -85,7 +85,7 @@ $asset = new Js(
 
 ### Inline
 
-There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Inline](api/Phalcon_Assets#assets-inline) class to generate this content. The object can be created with the following parameterS: * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `content`: the content to be injected * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset
+There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Inline](api/Phalcon_Assets#assets-inline) class to generate this content. The object can be created with the following parameters: * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `content`: the content to be injected * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset
 
 ```php
 <?php
@@ -370,7 +370,7 @@ $headerCollection = $this->
 
 ### Built-In Filters
 
-Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for Javascript and Css, license limitations do not allow us to continue using those libaries. For v4 we are offering only the [None](api/Phalcon_Assets#assets-filters-none) filter (which does not change the asset contents) and the [FilterInterface](api/Phalcon_Assets#assets-filterinterface) interface, offering the ability to create custom filters.
+Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v4 we are offering only the [None](api/Phalcon_Assets#assets-filters-none) filter (which does not change the asset contents) and the [FilterInterface](api/Phalcon_Assets#assets-filterinterface) interface, offering the ability to create custom filters.
 
 ### Custom Filters
 
@@ -482,7 +482,7 @@ class LicenseStamper implements FilterInterface
 
 ## Output
 
-After all the assets have been added to their relevant collections you can use the output methods to *print* HtML in your views. These methods are `output()`, `outputCss()`, `outputJs()`, `outputInline()`, `outputInlineCss()` and `outputInlineJs()`.
+After all the assets have been added to their relevant collections you can use the output methods to *print* HTML in your views. These methods are `output()`, `outputCss()`, `outputJs()`, `outputInline()`, `outputInlineCss()` and `outputInlineJs()`.
 
 To output files:
 
@@ -842,6 +842,6 @@ Every time the application requests assets such as `/assets/js/global.js` the ap
 
 We do not recommend to use the above example in production environments and for high load applications. However, the example does show what is possible using this component. The implementation you choose depends on the needs of your application.
 
-In most cases, your web server, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) or services such as [Varnish HTTP Cache](https://varnish-cache.org/) would be more prefferable.
+In most cases, your web server, [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) or services such as [Varnish HTTP Cache](https://varnish-cache.org/) would be more preferable.
 
 [collections]: * api/Phalcon_Assets#assets-collection

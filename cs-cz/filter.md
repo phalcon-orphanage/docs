@@ -61,28 +61,28 @@ $text = $locator->hello('World');
 
 ## Built-in Sanitizers
 
-> Where appropriate, the sanitizers will cast the value to the type expected. For example the [absint](https://secure.php.net/manual/en/function.absint.php) sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
+> Where appropriate, the sanitizers will cast the value to the type expected. For example the [`absint`](https://secure.php.net/manual/en/function.absint.php) sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
 
 The following are the built-in filters provided by this component:
 
-#### absint
+#### `absint`
 
 ```php
 AbsInt( mixed $input ): int
 ```
 
-Removes any non numeric characters, casts the value to integer and returns its absolute value. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) for the integer part, [intval](https://secure.php.net/manual/en/function.intval.php) for casting and [absint](https://secure.php.net/manual/en/function.absint.php).
+Removes any non numeric characters, casts the value to integer and returns its absolute value. Internally it uses [`filter_var`] for the integer part, [`intval`](https://secure.php.net/manual/en/function.intval.php) for casting and [`absint`](https://secure.php.net/manual/en/function.absint.php).
 
-#### alnum
+#### `alnum`
 
 ```php
 Alnum( mixed $input ): string | array
 ```
 
-Removes all characters that are not numbers or characters of the alphabet. It uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
+Removes all characters that are not numbers or characters of the alphabet. It uses [`preg_replace`](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
 
-#### alpha
+#### `alpha`
 
 ```php
 Alpha( mixed $input ): string | array
@@ -90,7 +90,7 @@ Alpha( mixed $input ): string | array
 
 Removes all characters that are not characters of the alphabet. It uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php) which can also accept arrays of strings as the parameters.
 
-#### bool
+#### `bool`
 
 ```php
 BoolVal( mixed $input ): bool
@@ -114,135 +114,135 @@ It also returns `false` if the value is:
 * `n`
 * `0`
 
-#### email
+#### `email`
 
 ```php
 Email( mixed $input ): string
 ```
 
-Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
+Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php).
 
-#### float
+#### `float`
 
 ```php
 FloatVal( mixed $input ): float
 ```
 
-Removes all characters except digits, dot, plus and minus sign and casts the value as a `double`. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(double)`.
+Removes all characters except digits, dot, plus and minus sign and casts the value as a `double`. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php) and `(double)`.
 
-#### int
+#### `int`
 
 ```php
 IntVal( mixed $input ): int
 ```
 
-Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
+Remove all characters except digits, plus and minus sign abd casts the value as an integer. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php) and `(int)`.
 
-#### lower
+#### `lower`
 
 ```php
 Lower( mixed $input ): string
 ```
 
-Converts all characters to lowercase. If the [mbstring](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [mb_convert_case](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [strtolower](https://secure.php.net/manual/en/function.strtolower.php) PHP function, with [utf8_decode](https://secure.php.net/manual/en/function.utf8-decode.php).
+Converts all characters to lowercase. If the [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [mb_convert_case](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [`strtolower`](https://secure.php.net/manual/en/function.strtolower.php) PHP function, with [utf8_decode](https://secure.php.net/manual/en/function.utf8-decode.php).
 
-#### lowerFirst
+#### `lowerFirst`
 
 ```php
 LowerFirst( mixed $input ): string
 ```
 
-Converts the first character of the input to lower case. Internally it uses [lcfirst](https://secure.php.net/manual/en/function.lcfirst.php).
+Converts the first character of the input to lower case. Internally it uses [`lcfirst`](https://secure.php.net/manual/en/function.lcfirst.php).
 
-#### regex
+#### `regex`
 
 ```php
 Regex( mixed $input, mixed $pattern, mixed $replace ): string
 ```
 
-Performs a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [preg_replace](https://secure.php.net/manual/en/function.preg-replace.php).
+Performs a regex replacement on the input using a `pattern` and the `replace` parameter. Internally it uses [`preg_replace`](https://secure.php.net/manual/en/function.preg-replace.php).
 
-#### remove
+#### `remove`
 
 ```php
 Remove( mixed $input, mixed $remove ): string
 ```
 
-Performs a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
+Performs a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [`str_replace`](https://secure.php.net/manual/en/function.str-replace.php).
 
-#### replace
+#### `replace`
 
 ```php
 Replace( mixed $input, mixed $from, mixed $to ): string
 ```
 
-Performs a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [str_replace](https://secure.php.net/manual/en/function.str-replace.php).
+Performs a replacement on the input based on the `from` and `to` passed parameters. Internally it uses [`str_replace`](https://secure.php.net/manual/en/function.str-replace.php).
 
-#### special
+#### `special`
 
 ```php
 Special( mixed $input ): string
 ```
 
-Escapes all HTML characters of the input, as well as `'"<>&` and characters with ASCII value less than 32. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
+Escapes all HTML characters of the input, as well as `'"<>&` and characters with ASCII value less than 32. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php).
 
-#### specialFull
+#### `specialFull`
 
 ```php
 SpecialFull( mixed $input ): string
 ```
 
-Converts all the special characters of the input to HTML entities (both double and single quotes). Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
+Converts all the special characters of the input to HTML entities (both double and single quotes). Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php).
 
-#### string
+#### `string`
 
 ```php
 StringVal( mixed $input ): string
 ```
 
-Strip tags and encode HTML entities, including single and double quotes. Internally it uses [filter_var](https://secure.php.net/manual/en/function.filter-var.php).
+Strip tags and encode HTML entities, including single and double quotes. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php).
 
-#### striptags
+#### `striptags`
 
 ```php
 StripTags( mixed $input ): int
 ```
 
-Removes all HTML and PHP tags from the input. Internally it uses [strip_tags](https://www.php.net/manual/en/function.strip-tags.php).
+Removes all HTML and PHP tags from the input. Internally it uses [`strip_tags`](https://www.php.net/manual/en/function.strip-tags.php).
 
-#### trim
+#### `trim`
 
 ```php
 Trim( mixed $input ): string
 ```
 
-Removes all leading and trailing whitespace from the input. Internally it uses [trim](https://www.php.net/manual/en/function.trim.php).
+Removes all leading and trailing whitespace from the input. Internally it uses [`trim`](https://www.php.net/manual/en/function.trim.php).
 
-#### upper
+#### `upper`
 
 ```php
 Upper( mixed $input ): string
 ```
 
-Converts all characters to uppercase. If the [mbstring](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [mb_convert_case](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [strtoupper](https://secure.php.net/manual/en/function.strtoupper.php) PHP function, with [utf8_decode](https://secure.php.net/manual/en/function.utf8-decode.php).
+Converts all characters to uppercase. If the [`mbstring`](https://secure.php.net/manual/en/book.mbstring.php) extension is loaded, it will use [`mb_convert_case`](https://secure.php.net/manual/en/function.mb-convert-case.php) to perform the transformation. As a fallback it uses the [`strtoupper`](https://secure.php.net/manual/en/function.strtoupper.php) PHP function, with [`utf8_decode`](https://secure.php.net/manual/en/function.utf8-decode.php).
 
-#### upperFirst
+#### `upperFirst`
 
 ```php
 UpperFirst( mixed $input ): string
 ```
 
-Converts the first character of the input to upper case. Internally it uses [ucfirst](https://secure.php.net/manual/en/function.ucfirst.php).
+Converts the first character of the input to upper case. Internally it uses [`ucfirst`](https://secure.php.net/manual/en/function.ucfirst.php).
 
-#### upperWords
+#### `upperWords`
 
 ```php
 UpperWords( mixed $input ): string
 ```
 
-Converts into uppercase the first character of each word from the input. Internally it uses [ucwords](https://secure.php.net/manual/en/function.ucwords.php).
+Converts into uppercase the first character of each word from the input. Internally it uses [`ucwords`](https://secure.php.net/manual/en/function.ucwords.php).
 
-#### url
+#### `url`
 
 ```php
 Url( mixed $input ): string
