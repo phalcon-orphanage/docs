@@ -4,11 +4,11 @@ language: 'nl-nl'
 version: '4.0'
 ---
 
-# Becoming a sponsor
+# Sponsor worden
 
 Voor degenen die ons werk willen sponsoren en de ontwikkeling van Phalcon willen bevorderen, bieden we verschillende sponsoropties die bij elk budget passen. Door ons werk te sponsoren kunnen we meer tijd aan het project besteden, sneller reageren op bugs en functies en de stabiliteit van de projecten garanderen.
 
-# Sponsors and Supporters
+# Sponsors en Supporters
 
 <div class="phalcon-blog__sponsors-items">
     <a href="https://pdffiller.com" class="phalcon-blog__sponsors-item">
@@ -43,6 +43,6 @@ Voor degenen die ons werk willen sponsoren en de ontwikkeling van Phalcon willen
              alt="Crowdin">
     </a>
     <a href="https://phalcon.link/fund" class="phalcon-blog__sponsors-item">
-        <span>Support Us</span>
+        <span>Ondersteun ons</span>
     </a>
 </div>
