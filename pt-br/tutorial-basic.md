@@ -1,18 +1,18 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 ---
 
-# Tutorial - Basic
+# Tutorial - Básico
 
 * * *
 
-## Basic
+## Performance
 
-Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
+Ao seguir este tutorial, nós o conduziremos através da criação de uma aplicação do zero com um simples formulário de cadastro. Este guia provê uma introdução aos aspectos do design do framework Phalcon.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. O código deste tutorial pode ser utilizado como um laboratório para aprender outros conceitos e ideias específicos do Phalcon.
+Este tutorial cobre a implementação de uma simples aplicação MVC, mostrando o quão rápido e fácil isso pode ser feito com Phalcon. Esse tutorial o ajudara a começar a criar uma aplicação que você poderá adaptar para qualquer necessidade. O código deste tutorial pode ser utilizado como um laboratório para aprender outros conceitos e ideias específicos do Phalcon.
 
 <div class="alert alert-info">
     <p>
@@ -20,13 +20,13 @@ This tutorial covers the implementation of a simple MVC application, showing how
     </p>
 </div>
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools). (É recomendado que caso você não tenha experiência com o framework que volte para cá caso fique estagnado).
+Se deseja começar já, você pode pular este tutorial e criar um projeto do Phalcon automaticamente com as nossas [ferramentas de desenvolvedor](devtools). (É recomendado que caso você não tenha experiência com o framework que volte para cá caso fique estagnado).
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our \[Forum\]\[forum\].
+A melhor forma de utilizar este guia é seguindo em frente e tentar se divertir. Você pode baixar o código completo [aqui](https://github.com/phalcon/tutorial). Se você se sentir entusiasmado com algo, por favor nos visite no [Discord](https://phalcon.link/discord) ou em nosso \[Forum\]\[forum\].
 
-## File structure
+## Estrutura de arquivos
 
-A key feature of Phalcon is it's loosely coupled, you can build a Phalcon project with a directory structure that is convenient for your specific application. That said some uniformity is helpful when collaborating with others, so this tutorial will use a "Standard" structure where you should feel at home if you have worked with other MVC's in the past.
+Uma das características chaves do Phalcon é sua baixa dependência, você pode construir um projeto com Phalcon em uma estrutura de diretório que seja conveniente para as especificidades da sua aplicação. Dito isso, uma certa uniformidade ajuda quando estamos colaborando com outras pessoas, e este tutorial utilizará uma estrutura "Padrão" para que você se sinta em casa caso já tenha trabalhado com outros MVC's no passado.
 
 ```text
 .
@@ -45,32 +45,32 @@ A key feature of Phalcon is it's loosely coupled, you can build a Phalcon projec
         └── js
 ```
 
-> Note: You will not see a `vendor` directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](installation) and finish the installation before continuing.
+> Nota: Você não verá um diretório `vendor` já que todas as dependências principais do Phalcon são carregadas em memória através da extensão que você já deve ter instalado. Se você se esqueceu dessa parte e não instalou a extensão do Phalcon [por favor volte](installation) e termine a instalação antes de continuar.
 {: .alert .alert-warning }
 
 Se está começando agora, é recomendado que você instale o [Devtools Phalcon](devtools), já que elas se baseiam no servidor embutido do PHP para que você rode sua aplicação sem ter que configurar um servidor web, bastando adicionar esse [.htroteador](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) na raiz do seu projeto.
 
-Otherwise if you want to use Nginx here are some additional setup [here](webserver-setup#nginx).
+Entretanto, se você deseja utilizar o Nginx, [aqui](webserver-setup#nginx) estão as configurações adicionais.
 
-Apache can also be used with these additional setup [here](webserver-setup#apache).
+O Apache também pode ser utilizado com [estas](webserver-setup#apache) configurações.
 
-Finally, if you flavor is Cherokee use the setup [here](webserver-setup#cherokee).
+E, finalmente, se você prefere o Cherokee, utilize [estas](webserver-setup#cherokee) configurações.
 
-## Bootstrap
+## Inicialização
 
-O primeiro arquivo que você precisa criar é o arquivo de inicialização (bootstrap). This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
+O primeiro arquivo que você precisa criar é o arquivo de inicialização (bootstrap). Este arquivo age como um ponto de entrada para sua aplicação e carrega suas configurações. Neste arquivo você pode implementar a inicialização de componentes bem como o comportamento de sua aplicação.
 
-This file handles 3 things:
+Este arquivo é responsável por três coisas:
 
-- Registration of component autoloaders
-- Configuring Services and registering them with the Dependency Injection context
-- Resolving the application's HTTP requests
+- Registro de componentes autoloaders
+- Configuração de Serviços e seus registros no contexto de Injeção de Dependência
+- Resolver as requisições HTTP da aplicação
 
 ### Autoloaders
 
-Autoloaders (carregadores automáticos) baseiam-se no arquivo carregador em conformidade com a [PSR-4](https://www.php-fig.org/psr/psr-4/) que roda através do Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](loader#overview).
+Autoloaders (carregadores automáticos) baseiam-se no arquivo carregador em conformidade com a [PSR-4](https://www.php-fig.org/psr/psr-4/) que roda através do Phalcon. Coisas comuns que devem ser adicionadas ao autoloader são suas controllers e models. Você pode registrar diretórios que serão pesquisados por arquivos dentro do namespace da aplicação. Se você deseja saber mais sobre outras formas de utilizar os autoloaders leia [aqui](loader#overview).
 
-To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
+Para começar, vamos registrar os diretórios `controllers` e `models` da nossa aplicação. Não esqueça de incluir o carregador do `Phalcon\Loader`.
 
 `public/index.php`
 
@@ -91,23 +91,23 @@ $loader = new Loader(); $loader->registerDirs(     [         APP_PATH . '/contro
 $loader->register();
 ```
 
-### Dependency Management
+### Gerenciamento de Dependência
 
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
+Já que o Phalcon possuí baixa dependência, serviços são registrados com o Gerenciador de Dependência do framework para que eles possam ser injetados automaticamente nos componentes e serviços englobados pelo contêiner de [IoC](https://pt.wikipedia.org/wiki/Invers%C3%A3o_de_controle). Frequentemente você encontrará o termo DI que significa em inglês - Dependency Injection, ou, Injeção de Dependência. Injeção de Dependência e Inversão de Controle (em inglês IoC) podem soar como características complexas, mas no Phalcon o seu uso é muito simples e prático. O contêiner de IoC do Phalcon consiste dos seguintes conceitos:
 
-- Service Container: a "bag" where we globally store the services that our application needs to function.
+- Contêiner de Serviço: Uma "caixa" em que os serviços para o funcionamento da aplicação são guardados globalmente.
 - Serviço ou Componente: Objetos processadores de dados que serão injetados em componentes.
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
+Toda a vez que o framework requerer um componente ou serviço, ele perguntará ao contêiner pelo nome conhecido do serviço. Não se esqueça de incluir o `Phalcon\Di` que configurará o contêiner de serviço.
 
-> If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](di) covering many use cases.
+> Se você estiver interessado nos detalhes, por favor veja este artigo de [Martin Fowler](https://martinfowler.com/articles/injection.html). Nós também temos um [bom tutorial](di) cobrindo vários casos de uso.
 {: .alert .alert-warning }
 
 ### Factory Default
 
-The [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that come with Phalcon. We recommend that you register your services manually but this has been included to help lower the barrier of entry when getting used to Dependency Management. Later, you can always specify once you become more comfortable with the concept.
+O [\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) - fábrica padrão - é uma variação do [Phalcon\Di](api/Phalcon_Di). Para tornar as coisas mais fáceis ele irá registrar automaticamente a maioria dos componentes existentes no Phalcon. Nós recomendamos que você registre seus serviços manualmente, mas o incluímos para facilitar sua utilização quando tratamos de Gerenciamento de Dependência. Mais tarde, quando estiver mais confortável com o conceito, você poderá especificá-las.
 
-Services can be registered in several ways, but for our tutorial, we'll use an [anonymous function](https://php.net/manual/en/functions.anonymous.php):
+Serviços podem ser registrados de várias formas, mas para este tutorial utilizaremos [funções anônimas](https://www.php.net/manual/pt_BR/functions.anonymous.php):
 
 `public/index.php`
 
@@ -118,11 +118,11 @@ use Phalcon\Di\FactoryDefault;
 
 // ...
 
-// Create a DI
+// Criar uma DI
 $di = new FactoryDefault();
 ```
 
-In the next part, we register the "view" service indicating the directory where the framework will find the views files. As the views do not correspond to classes, they cannot be charged with an autoloader.
+Na próxima parte, nós registraremos um serviços de "view" - visualização - indicando o diretório em que o framework irá procurar pelos arquivos de view. Como as views não correspondem para classes, elas não podem ser carregadas com o autoloader.
 
 `public/index.php`
 
@@ -133,7 +133,7 @@ use Phalcon\Mvc\View;
 
 // ...
 
-// Setup the view component
+// Definindo o componente de view
 $di->set(
     'view',
     function () {
@@ -144,7 +144,7 @@ $di->set(
 );
 ```
 
-Next, we register a base URI so that all URIs generated by Phalcon match the application's base path of `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate a hyperlink.
+A seguir, registraremos a URI base para que todas as URIs geradas pelo Phalcon correspondam ao caminho base da aplicação `/`. Isso se mostrará importante mais adiante neste tutorial, quando utilizarmos a classe `Phalcon\Tag` para gerar os links.
 
 `public/index.php`
 
@@ -155,7 +155,7 @@ use Phalcon\Url as UrlProvider;
 
 // ...
 
-// Setup a base URI
+// Definindo a URI base
 $di->set(
     'url',
     function () {
@@ -166,9 +166,9 @@ $di->set(
 );
 ```
 
-### Handling the application request
+### Tratando da requisição da aplicação
 
-In the last part of this file, we find [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Its purpose is to initialize the request environment, route the incoming request, and then dispatch any discovered actions; it aggregates any responses and returns them when the process is complete.
+Na última parte deste arquivo vemos um [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). Seu propósito é inicializar o ambiente de requisições, roteando a requisição que chega e então despachando para qualquer ação conhecida; ela agrega qualquer resposta e as retorna assim que o processo é completo.
 
 `public/index.php`
 
@@ -188,9 +188,9 @@ $response = $application->handle(
 $response->send();
 ```
 
-### Putting everything together
+### Juntando tudo
 
-The `tutorial/public/index.php` file should look like:
+O arquivo `tutorial/public/index.php` deverá se parecer com o seguinte:
 
 `public/index.php`
 
@@ -203,11 +203,11 @@ use Phalcon\Mvc\Application;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Url as UrlProvider;
 
-// Define some absolute path constants to aid in locating resources
+// Define algumas constantes com caminhos absolutos para ajudar na localização
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Register an autoloader
+// Registra o autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -222,7 +222,7 @@ $loader->register();
 // Create a DI
 $di = new FactoryDefault();
 
-// Setup the view component
+// Define o componente de view
 $di->set(
     'view',
     function () {
@@ -232,7 +232,7 @@ $di->set(
     }
 );
 
-// Setup a base URI
+// Definindo a URI base
 $di->set(
     'url',
     function () {
@@ -245,7 +245,7 @@ $di->set(
 $application = new Application($di);
 
 try {
-    // Handle the request
+    // Trata a requisição
     $response = $application->handle(
         $_SERVER["REQUEST_URI"]
     );
@@ -256,11 +256,11 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. Congratulations you are well on your to having created a flexible MVC application in less than 30 lines of code.
+Como você pode ver, o arquivo de inicialização é bastante pequeno e nós não precisamos incluir nenhum arquivo adicional. Parabéns por ter criado uma aplicação MVC flexível com menos de 60 linhas de código bem estruturado.
 
-## Creating a Controller
+## Criando um Controller
 
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost:8000/`). An `IndexController` and its `IndexAction` should resemble the following example:
+Por padrão o Phalcon procurará por um controller - controlador - chamado `IndexController`. É o seu ponto de partida quando nenhum controle ou ação foi adicionado na requisição (ex: `https://localhost:8000/`). Um `IndexController` e seu `IndexAction` devem se basear no seguinte exemplo:
 
 `app/controllers/IndexController.php`
 
@@ -273,28 +273,28 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        return '<h1>Hello!</h1>';
+        return '<h1>Ol&aacute;!</h1>';
     }
 }
 ```
 
-The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. If you access the application from your browser, you should see something like this:
+A classe do controller deve possuir o sufixo `Controller` e as ações do controller devem possuír o sufixo `Action`. Se você acessar sua aplicação pelo browser, deverá ver algo parecido com isso:
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
-Congratulations, you're phlying with Phalcon!
+Parabéns, você está voando com o "Phalcão"!
 
-## Sending output to a view
+## Enviando dados para a view
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. In our case (`app/views/index/index.phtml`):
+Enviar dados para a tela através do controller é muitas vezes necessário, mas não é algo muito bem visto pelos membros mais assíduos da comunidade MVC. Tudo deve ser enviado para a view, que é a responsável por escrever os dados na tela. O Phalcon procurará por uma view com o mesmo nome da última ação executada dentro do diretório com o nome do último controller executado. No nosso caso (`app/views/index/index.phtml`):
 
 `app/views/index/index.phtml`
 
 ```php
-<?php echo "<h1>Hello!</h1>";
+<?php echo "<h1>Ol&aacute;!</h1>";
 ```
 
-Our controller (`app/controllers/IndexController.php`) now has an empty action definition:
+Nosso controller (`app/controllers/IndexController.php`) agora possuirá uma ação vazia:
 
 `app/controllers/IndexController.php`
 
@@ -312,18 +312,18 @@ class IndexController extends Controller
 }
 ```
 
-The browser output should remain the same. The `Phalcon\Mvc\View` static component is automatically created when the action execution has ended. Learn more about views usage [here](views).
+A saída do navegador deverá continuar a mesma. O componente estático `Phalcon\Mvc\View` é automaticamente criado quando a ação executada termina. Aprenda mais sobre a utilização das views [aqui](views).
 
-## Designing a sign-up form
+## Modelando um formulário de cadastro
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named "signup". The goal is to allow users to sign up within our application.
+Agora modificaremos o arquivo da view `index.phtml` para adicionar um link para o novo controller chamado "singup". O objetivo é permitir que os usuários possam se cadastrar em nossa aplicação:
 
 `app/views/index/index.phtml`
 
 ```php
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Ol&aacute;!</h1>";
 
 echo PHP_EOL;
 
@@ -331,27 +331,27 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     'signup',
-    'Sign Up Here!'
+    'Cadastre-se aqui!'
 );
 ```
 
-The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new controller:
+O código HTML gerado exibe um link (`<a>`) apontando para o novo controller:
 
-`app/views/index/index.phtml` (rendered)
+`app/views/index/index.phtml` (interpretado)
 
 ```html
-<h1>Hello!</h1>
+<h1>Ol&aacute;!</h1>
 
-<a href="/signup">Sign Up Here!</a>
+<a href="/signup">Cadastre-se aqui!</a>
 ```
 
-To generate the tag we use the class `Phalcon\Tag`. This is a utility class that allows us to build HTML tags with framework conventions in mind. As this class is also a service registered in the DI we use `$this->tag` to access it.
+Para gerar esse link nós utilizamos a classe `Phalcon\Tag`. Essa é uma classe de utilidades que nos permite construir tags HTML com as convenções de um framework em mente. Como essa classe também é um serviço registrado no DI nós utilizamos `$this->tag` para acessá-la.
 
-A more detailed article regarding HTML generation [can be found here](tag).
+Um artigo mais detalhado sobre a geração de HTML pode ser encontrado [aqui](tag).
 
 ![](/images/content/tutorial-basic-2.png)
 
-Here is the Signup controller (`app/controllers/SignupController.php`):
+Aqui está o Signup controller (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -369,17 +369,17 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+Essa ação index vazia dá livre passagem para a view com a definição do formulário (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
 ```html
-<h2>Sign up using this form</h2>
+<h2>Cadastre-se utilizando este formul&aacute;rio</h2>
 
 <?php echo $this->tag->form("signup/register"); ?>
 
     <p>
-        <label for="name">Name</label>
+        <label for="name">Nome</label>
         <?php echo $this->tag->textField("name"); ?>
     </p>
 
@@ -395,21 +395,21 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will show something like this:
+Visualizando o formulário em seu browser aparecerá algo semelhante a isto:
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-[Phalcon\Tag](api/Phalcon_Tag) also provides useful methods to build form elements.
+O [Phalcon\Tag](api/Phalcon_Tag) também provê métodos úteis para construir elementos de formulário.
 
-The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application.
+O método `Phalcon\Tag::form()` recebe apenas um parâmetro por instância, uma URI relativa para o controller/action da aplicação.
 
-By clicking the "Send" button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
+Clicando no botão "Send", você notará uma excessão sendo disparada pelo framework, indicando que a action `register` está falando no controller `signup`. Nosso arquivo `public/index.php` lançou a seguinte exceção:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+Implementando este método iremos remover a exceção:
 
 `app/controllers/SignupController.php`
 
@@ -432,13 +432,13 @@ class SignupController extends Controller
 }
 ```
 
-If you click the "Send" button again, you will see a blank page. The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+Se você clicar no botão "Send" novamente verá uma tela em branco. Os campos name e email informados pelo usuário devem ser guardados em uma base de dados. De acordo com as boas práticas do MVC, interações com banco de dados devem ser feitas através de models para garantir um código limpo completamente orientado à objetos.
 
-## Creating a Model
+## Criando um Model
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+O Phalcon trás o primeiro ORM para PHP escrito completamente em linguagem C. Ao invés de aumentar a complexidade do desenvolvimento, ele o simplifica.
 
-Before creating our first model, we need to create a database table outside of Phalcon to map it to. A simple table to store registered users can be created like this:
+Antes de criarmos nosso primeiro model, nós precisamos criar a base de dados com a tabela fora do Phalcon para então mapeá-la para dentro dele. Uma simples tabela para guardar os usuários registrados pode ser criada da seguinte forma:
 
 `create_users_table.sql`
 
@@ -452,7 +452,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the "users" table:
+Um model (`app/models/Users.php`) deve estar localizado no diretório `app/models`. O model aponta para a tabela "users":
 
 `app/models/Users.php`
 
@@ -469,9 +469,9 @@ class Users extends Model
 }
 ```
 
-## Setting a Database Connection
+## Configurando uma Conexão com o Banco
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has that can be used for several components:
+Para que possamos utilizar uma conexão com o banco e dados e consequentemente acessar os dados através de nossos models, precisamos especificá-la em nosso arquivo de inicialização. Uma conexão com um banco de dados é simplesmente outro serviço que nossa aplicação possuí e que pode ser utilizada por vários componentes:
 
 `public/index.php`
 
@@ -480,25 +480,25 @@ In order to use a database connection and subsequently access data through our m
 
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 
-// Setup the database service
+// Define o serviço do banco de dados
 $di->set(
     'db',
     function () {
         return new DbAdapter(
             [
-                'host'     => '127.0.0.1',
+                'host' => '127.0.0.1',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'tutorial1',
+                'dbname' => 'tutorial1',
             ]
         );
     }
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application.
+Com os parâmetros corretos da base de dados, nossos models estão prontos para interagir com o resto da aplicação.
 
-## Storing data using models
+## Guardando dados utilizando models
 
 `app/controllers/SignupController.php`
 
@@ -527,13 +527,13 @@ class SignupController extends Controller
             ]
         );
 
-        // Store and check for errors
+        // Guarda e verificar por erros
         $success = $user->save();
 
         if ($success) {
-            echo "Thanks for registering!";
+            echo "Obrigado por se registrar!";
         } else {
-            echo "Sorry, the following problems were generated: ";
+            echo "Desculpe, os seguintes problemas foram gerados:";
 
             $messages = $user->getMessages();
 
@@ -547,19 +547,19 @@ class SignupController extends Controller
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object from the Users class, which manages a User's record. The class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a boolean value which indicates whether the storing of the data was successful or not.
+No começo da `registerAction` nós criamos um objeto "user" vazio para a classe Users que gerencia os registros de usuários. As propriedades públicas da classe apontam para os campos da tabela `users` em nossa base de dados. Configurar os valores relevantes para um novo registro e chamar o método `save()` irá gravar os dados na da base para aquele registro. O método `save()` retorna um valor booleano que indica se os dados foram salvos com sucesso ou não.
 
-The ORM automatically escapes the input preventing SQL injections so we only need to pass the request to the `save()` method.
+O ORM escapa automaticamente a entrada de dados prevenindo SQL injection, desta forma nós precisamos apenas passar a requisição para o método `save()`.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we don't enter any of the required fields in the sign-up form our screen will look like this:
+Validações adicionais acontecem automaticamente para os campos que são definidos como not null (obrigatórios). Se nós não escrevermos nenhum dos campos obrigatórios no formulário de cadastro, nossa tela será parecida com a seguinte:
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
-## List of users
+## Lista de Usuários
 
-Now let's see how to obtain and see the users that we have registered in the database.
+Agora vamos ver como obter e visualizar os usuários que nós registramos no banco de dados.
 
-The first thing that we are going to do in our `indexAction` of the`IndexController` is to show the result of the search of all the users, which is done simply in the following way `Users::find()`. Let's see how our `indexAction` would look
+A primeira coisa que nós vamos fazer é modificar a `indexAction` do `IndexController` exibindo o resultado da busca de todos os usuários, que é feito simplesmente chamando `Users::find()`. Vamos ver como nossa `indexAction` deverá parecer:
 
 `app/controllers/IndexController.php`
 
@@ -571,7 +571,7 @@ use Phalcon\Mvc\Controller;
 class IndexController extends Controller
 {
     /**
-     * Welcome and user list
+     * Boas vindas e a lista de usuários
      */
     public function indexAction()
     {
@@ -580,18 +580,18 @@ class IndexController extends Controller
 }
 ```
 
-Now, in our view file `views/index/index.phtml` we will have access to the users found in the database. These will be available in the variable `$users`. This variable has the same name as the one we use in `$this->view->users`.
+Agora em nosso arquivo `views/index/index.phtml` nós vamos acessar os usuários encontrados na base de dados. Eles estarão disponíveis na variável `$users`. Essa variável possuí o mesmo nome que utilizamos em `$this->view->users`.
 
-The view will look like this:
+A view deverá parecer com o seguinte:
 
 `views/index/index.phtml`
 
 ```html
 <?php
 
-echo "<h1>Hello!</h1>";
+echo "<h1>Ol&aacute;!</h1>";
 
-echo $this->tag->linkTo(["signup", "Sign Up Here!", 'class' => 'btn btn-primary']);
+echo $this->tag->linkTo(["signup", "Cadastre-se aqui!", 'class' => 'btn btn-primary']);
 
 if ($users->count() > 0) {
     ?>
@@ -599,13 +599,13 @@ if ($users->count() > 0) {
         <thead class="thead-light">
         <tr>
             <th>#</th>
-            <th>Name</th>
+            <th>Nome</th>
             <th>Email</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <td colspan="3">Users quantity: <?php echo $users->count(); ?></td>
+            <td colspan="3">Quantidade de usuários: <?php echo $users->count(); ?></td>
         </tr>
         </tfoot>
         <tbody>
@@ -622,15 +622,15 @@ if ($users->count() > 0) {
 }
 ```
 
-As you can see our variables `$users` can be iterated and counted, this we will see in depth later on when viewing the [models](db-models).
+Como você pode ver, nossa variável `$users` pode ser iterada e somada. Nós veremos isso mais a fundo adiante ao analisar os [models](db-models).
 
 ![](/images/content/tutorial-basic-5.png)
 
-## Adding Style
+## Adicionando um estilo
 
-To give a design touch to our first application we will add bootstrap and a small template that will be used in all views.
+Para dar um toque de estilo para a nossa primeira aplicação, vamos adicionar um bootstrap e um pequeno template que será utilizado em todas as views.
 
-We will add an `index.phtml` file in the`views` folder, with the following content:
+Adicionaremos um arquivo `index.phtml` no diretório `views`, com o seguinte conteúdo:
 
 `app/views/index.phtml`
 
@@ -639,7 +639,7 @@ We will add an `index.phtml` file in the`views` folder, with the following conte
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Phalcon Tutorial</title>
+    <title>Tutorial Phalcon</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
@@ -650,12 +650,12 @@ We will add an `index.phtml` file in the`views` folder, with the following conte
 </html>
 ```
 
-The most important thing to highlight in our template is the function `getContent()` which will give us the content generated by the view. Now, our application will be something like this:
+O ponto mais importante a se notar em nosso template é a função `getContent()` que nos retornará o conteúdo gerado pela view. Agora nossa aplicação se parece com algo assim:
 
 ![](/images/content/tutorial-basic-6.png)
 
-## Conclusion
+## Conclusão
 
-As you can see, it's easy to start building an application using Phalcon. The fact that Phalcon runs from an extension significantly reduces the footprint of projects as well as giving it a considerable performance boost.
+Como você pode ver é muito fácil começar a construir uma aplicação utilizando o Phalcon. O fato de que o Phalcon roda através de uma extensão reduz significamente o tamanho de nosso projetos bem como nos dá um ganho significante na performance.
 
-If you are ready to learn more check out the [Rest Tutorial](tutorial-rest) next.
+Se você está pronto para aprender mais dê uma olhada a seguir no [Tutorial Rest](tutorial-rest).
