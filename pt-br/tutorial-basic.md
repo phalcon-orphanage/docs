@@ -12,7 +12,7 @@ version: '4.0'
 
 Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas.
+This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. This tutorial will get you started and help create an application that you can extend to address many needs. O código deste tutorial pode ser utilizado como um laboratório para aprender outros conceitos e ideias específicos do Phalcon.
 
 <div class="alert alert-info">
     <p>
@@ -20,7 +20,7 @@ This tutorial covers the implementation of a simple MVC application, showing how
     </p>
 </div>
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools). (It is recommended that if you have not had experience with to come back here if you get stuck)
+If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools). (É recomendado que caso você não tenha experiência com o framework que volte para cá caso fique estagnado).
 
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get hung-up on something please visit us on [Discord](https://phalcon.link/discord) or in our \[Forum\]\[forum\].
 
@@ -48,7 +48,7 @@ A key feature of Phalcon is it's loosely coupled, you can build a Phalcon projec
 > Note: You will not see a `vendor` directory as all of Phalcon's core dependencies are loaded into memory via the Phalcon extension you should have installed. If you missed that part have not installed the Phalcon extension [please go back](installation) and finish the installation before continuing.
 {: .alert .alert-warning }
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) since it leverages PHP's built-in server you to get your app running without having to configure a web server by adding this [.htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) to the root of your project.
+Se está começando agora, é recomendado que você instale o [Devtools Phalcon](devtools), já que elas se baseiam no servidor embutido do PHP para que você rode sua aplicação sem ter que configurar um servidor web, bastando adicionar esse [.htroteador](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php) na raiz do seu projeto.
 
 Otherwise if you want to use Nginx here are some additional setup [here](webserver-setup#nginx).
 
@@ -58,7 +58,7 @@ Finally, if you flavor is Cherokee use the setup [here](webserver-setup#cherokee
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
+O primeiro arquivo que você precisa criar é o arquivo de inicialização (bootstrap). This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well as application behavior.
 
 This file handles 3 things:
 
@@ -68,7 +68,7 @@ This file handles 3 things:
 
 ### Autoloaders
 
-Autoloaders leverage a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader running through the Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](loader#overview).
+Autoloaders (carregadores automáticos) baseiam-se no arquivo carregador em conformidade com a [PSR-4](https://www.php-fig.org/psr/psr-4/) que roda através do Phalcon. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace. If you want to read about other ways that you can use autoloaders head [here](loader#overview).
 
 To start, lets register our app's `controllers` and `models` directories. Don't forget to include the loader from `Phalcon\Loader`.
 
@@ -81,14 +81,9 @@ use Phalcon\Loader;
 
 // Define some absolute path constants to aid in locating resources
 define('BASE_PATH', dirname(__DIR__));
-define('APP_PATH', BASE_PATH . '/app');
-// ...
+define('APP_PATH', BASE_PATH . '/app'); // ...
 
-$loader = new Loader();
-
-$loader->registerDirs(
-    [
-        APP_PATH . '/controllers/',
+$loader = new Loader(); $loader->registerDirs(     [         APP_PATH . '/controllers/',
         APP_PATH . '/models/',
     ]
 );
@@ -101,7 +96,7 @@ $loader->register();
 Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound like a complex feature but in Phalcon their use is very simple and practical. Phalcon's IoC container consists of the following concepts:
 
 - Service Container: a "bag" where we globally store the services that our application needs to function.
-- Service or Component: Data processing object which will be injected into components
+- Serviço ou Componente: Objetos processadores de dados que serão injetados em componentes.
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. Don't forget to include `Phalcon\Di` with setting up the service container.
 
