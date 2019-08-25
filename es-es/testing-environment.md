@@ -11,7 +11,7 @@ title: 'Entorno de prueba'
 
 # Preámbulo
 
-La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. Esto se debía principalmente a que la mayoría de desarrolladores no sabe programar en C. Por este motivo se creo [Zephir](https://zephir-lang.com), un nuevo lenguaje con una sintaxis similar a la de PHP o JavaScript. En 2003 se presentó [este plan](https://blog.phalconphp.com/post/phalcon-2-0-the-future) y algunos meses después se lanzó Zephir y Phalcon fue completamente reescrito en él. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
+La comunidad de Phalcon es pequeña y no cuenta con muchos *pull requests*, correcciones de errores o mejoras comparada con otros *frameworks* de PHP. Esto se debía principalmente a que la mayoría de desarrolladores no sabe programar en C. Por este motivo se creo [Zephir](https://zephir-lang.com), un nuevo lenguaje con una sintaxis similar a la de PHP o JavaScript. In [2003](https://blog.phalcon.io/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. Desde entonces se utiliza Zephir para el desarrollo de Phalcon.
 
 # El problema
 
@@ -357,6 +357,6 @@ Las extensiones de PHP activas son: - apcu - ctype - curl - dom - fileinfo - gd 
 
 Los volcados de base de datos se encuentran en `pruebas/_data/assets/db/schemas`
 
-Cualquier duda o pregunta puede resolverse en nuestro servidor de [Discord](https://phalcon.link/discord) o en nuestro [Foro](https://forum.phalconphp.com).
+If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalcon.io).
 
 <3 Phalcon Team
