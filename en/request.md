@@ -463,7 +463,7 @@ The `getHttpHost()` method will return the host name used by the request. The me
 
 Optionally `getHttpHost()` validates and performs a strict check on the host name. To achieve that you can use the `setStrictHostCheck()` method.
 
-## Uploading Files
+## Uploaded Files
 Another common task is file uploading. [Phalcon\Http\Request][http-request] offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
