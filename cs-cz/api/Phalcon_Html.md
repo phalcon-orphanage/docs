@@ -1160,7 +1160,7 @@ echo $tag->link(
 );
 
 echo $tag->link(
-    'https://phalconphp.com/',
+    'https://phalcon.io/',
     'Phalcon!',
     [
         'local' => false,
@@ -1168,7 +1168,7 @@ echo $tag->link(
 );
 
 echo $tag->link(
-    'https://phalconphp.com/',
+    'https://phalcon.io/',
     'Phalcon!',
     [
         'local'  => false,
