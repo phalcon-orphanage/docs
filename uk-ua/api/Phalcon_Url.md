@@ -91,7 +91,7 @@ echo $url->get(
 
 // Generate an absolute URL by setting the third parameter as false.
 echo $url->get(
-    "https://phalconphp.com/",
+    "https://phalcon.io/",
     null,
     false
 );
