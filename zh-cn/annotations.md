@@ -416,4 +416,4 @@ The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterf
 
 ## External Resources
 
-* [教程︰ 创建一个自定义的初始化模型，附带注释](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [教程︰ 创建一个自定义的初始化模型，附带注释](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)
