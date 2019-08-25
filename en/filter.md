@@ -8,22 +8,22 @@ category: 'filter'
 # Filter Component
 <hr/>
 
-## Filtering and Sanitizing
+## Overview
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 ![](/assets/images/content/filter-sql.png)
 
 [Full image on XKCD](https://xkcd.com/327)
 
-Sanitizing content can be achieved using the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) and [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) classes.
+Sanitizing content can be achieved using the [Phalcon\Filter][filter-filter] and [Phalcon\Filter\FilterFactory][filter-filterfactory] classes.
 
 ## FilterLocatorFactory
-This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) with the preset sanitizers you need to call `newInstance()`
+This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter][filter-filter] with the preset sanitizers you need to call `newInstance()`
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 
@@ -32,14 +32,14 @@ $locator = $factory->newInstance();
 
 You can now use the locator wherever you need and sanitize content as per the needs of your application. 
 
-## FilterLocator
-The filter locator can also be used as a stand alone component, without initializing the built-in filters. 
+## Filter
+The [Phalcon\Filter][filter-filter] component implements a locator service and can be used as a stand alone component, without initializing the built-in filters. 
 
 ```php
 <?php
 
 use MyApp\Sanitizers\HelloSanitizer;
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 
 $services = [
     'hello' => HelloSanitizer::class,
@@ -50,7 +50,7 @@ $locator = new FilterLocator($services);
 $text = $locator->hello('World');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter\FilterLocator` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+> The `Phalcon\Di` container already has a `Phalcon\Filter` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 {: .alert .alert-info }
 
 
@@ -235,7 +235,7 @@ Sanitizing is the process which removes specific characters from a value, that a
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 $locator = $factory->newInstance();
@@ -254,12 +254,12 @@ $locator->sanitize('!100a019.01a', 'float');
 ```
 
 ## Sanitizing from Controllers
-You can access the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply. 
+You can access the [Phalcon\Filter][filter-filter] object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply. 
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
@@ -287,14 +287,14 @@ class ProductsController extends Controller
 ```
 
 ## Sanitizing Action Parameters
-If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
+If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter][filter-filter] is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 We can sanitize values passed into controller actions as follows:
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 use Phalcon\Mvc\Controller;
 
 /**
@@ -312,12 +312,12 @@ class ProductsController extends Controller
 ```
 
 ## Filtering data
-The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (see [Built-in Sanitizers](https://docs.phalcon.iofilter-sanitizers)) can help you to understand and use the sanitizers according to your needs.
+The [Phalcon\Filter][filter-filter] both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (see [Built-in Sanitizers](#built-in-sanitizers)) can help you to understand and use the sanitizers according to your needs.
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 
@@ -332,12 +332,12 @@ $locator->sanitize('  Hello   ', 'trim');
 
 
 ## Adding sanitizers
-You can add your own sanitizers to [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator). The sanitizer can be an anonymous function when initializing the locator:
+You can add your own sanitizers to [Phalcon\Filter][filter-filter]. The sanitizer can be an anonymous function when initializing the locator:
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 
 $services = [
     'md5' => function ($input) {
@@ -350,12 +350,12 @@ $locator = new FilterLocator($services);
 $sanitized = $locator->sanitize($value, 'md5');
 ```
 
-If you already have an instantiated filter locator object (for instance if you have used the [Phalcon\Filter\FilterLocatorFactory](api/Phalcon_Filter_FilterLocatorFactory) and `newInstance()`), then you can simply add the custom filter:
+If you already have an instantiated filter locator object (for instance if you have used the [Phalcon\Filter\FilterFactory][filter-filterfactory] and `newInstance()`), then you can simply add the custom filter:
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 
@@ -376,7 +376,7 @@ Or, if you prefer, you can implement the filter in a class:
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 class IPv4
 {
@@ -403,12 +403,12 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 
 
 ## Combining Sanitizers
-There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
+There are times where one sanitizer is not enough for your data. For instance a very common usage is the `striptags` and `trim` sanitizers for text input. The [Phalcon\Filter][filter-filter] component offers the ability to accept an array of names for sanitizers to be applied on the input value. The following example demonstrates this:
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 
@@ -429,7 +429,7 @@ Note that this feature also works on the [Phalcon\Http\Request](api/Phalcon_Http
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocator;
+use Phalcon\Filter;
 use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
@@ -467,7 +467,7 @@ A custom sanitizer can be implemented as as an anonymous function. If however yo
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $factory = new FilterLocatorFactory();
 
@@ -488,7 +488,7 @@ Or, if you prefer, you can implement the sanitizer in a class:
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 class IPv4
 {
@@ -530,4 +530,29 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [ucfirst]: https://secure.php.net/manual/en/function.ucfirst.php
 [ucwords]: https://secure.php.net/manual/en/function.ucwords.php
 [utf8_decode]: https://secure.php.net/manual/en/function.utf8-decode.php
-
+[filter-exception]: Phalcon_Filter#filter-exception
+[filter-filter]: Phalcon_Filter#filter
+[filter-filterfactory]: Phalcon_Filter#filter-filterfactory
+[filter-filterinterface]: Phalcon_Filter#filter-filterinterface
+[filter-sanitize-absint]: api/Phalcon_Filter#filter-sanitize-absint
+[filter-sanitize-alnum]: api/Phalcon_Filter#filter-sanitize-alnum
+[filter-sanitize-alpha]: api/Phalcon_Filter#filter-sanitize-alpha
+[filter-sanitize-boolval]: api/Phalcon_Filter#filter-sanitize-boolval
+[filter-sanitize-email]: api/Phalcon_Filter#filter-sanitize-email
+[filter-sanitize-floatval]: api/Phalcon_Filter#filter-sanitize-floatval
+[filter-sanitize-intval]: api/Phalcon_Filter#filter-sanitize-intval
+[filter-sanitize-lower]: api/Phalcon_Filter#filter-sanitize-lower
+[filter-sanitize-lowerfirst]: api/Phalcon_Filter#filter-sanitize-lowerfirst
+[filter-sanitize-regex]: api/Phalcon_Filter#filter-sanitize-regex
+[filter-sanitize-remove]: api/Phalcon_Filter#filter-sanitize-remove
+[filter-sanitize-replace]: api/Phalcon_Filter#filter-sanitize-replace
+[filter-sanitize-special]: api/Phalcon_Filter#filter-sanitize-special
+[filter-sanitize-specialfull]: api/Phalcon_Filter#filter-sanitize-specialfull
+[filter-sanitize-stringval]: api/Phalcon_Filter#filter-sanitize-stringval
+[filter-sanitize-striptags]: api/Phalcon_Filter#filter-sanitize-striptags
+[filter-sanitize-trim]: api/Phalcon_Filter#filter-sanitize-trim
+[filter-sanitize-upper]: api/Phalcon_Filter#filter-sanitize-upper
+[filter-sanitize-upperfirst]: api/Phalcon_Filter#filter-sanitize-upperfirst
+[filter-sanitize-upperwords]: api/Phalcon_Filter#filter-sanitize-upperwords
+[filter-sanitize-url]: api/Phalcon_Filter#filter-sanitize-url
+  
