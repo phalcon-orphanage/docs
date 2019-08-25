@@ -4266,7 +4266,7 @@ Sets a header to be sent at the end of the request
 
 
 ```php
-public function remove( string $header );
+public function remove( string $header ): HeadersInterface;
 ```
 Removes a header to be sent at the end of the request
 
@@ -4284,13 +4284,13 @@ Sends the headers to the client
 
 
 ```php
-public function set( string $name, string $value );
+public function set( string $name, string $value ): HeadersInterface;
 ```
 Sets a header to be sent at the end of the request
 
 
 ```php
-public function setRaw( string $header );
+public function setRaw( string $header ): HeadersInterface;
 ```
 Sets a raw header to be sent at the end of the request
 
