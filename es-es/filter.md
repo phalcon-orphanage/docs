@@ -363,7 +363,7 @@ class ProductosController extends Controller
 
 ## Filtrado de datos
 
-Con la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) se pueden limpiar y filtrar datos --dependiendo de cuáles limpiadores y filtros se utilicen. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. La descripción de cada limpiador (véase [Limpiadores predeterminados](https://docs.phalconphp.com/4.0/es-es/filter-sanitizers)) es útil para comprender y saber cuándo utilizarlo.
+Con la clase [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) se pueden limpiar y filtrar datos --dependiendo de cuáles limpiadores y filtros se utilicen. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. The description of each sanitizer (see [Built-in Sanitizers](https://docs.phalcon.iofilter-sanitizers)) can help you to understand and use the sanitizers according to your needs.
 
 ```php
 <?php
