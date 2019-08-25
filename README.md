@@ -1,5 +1,5 @@
-<p align="center"><a href="https://docs.phalconphp.com" target="_blank">
-    <img src="https://assets.phalconphp.com/phalcon/images/svg/phalcon-logo-transparent-black.svg" height="100" alt="Phalcon"/>
+<p align="center"><a href="https://docs.phalcon.io" target="_blank">
+    <img src="https://assets.phalcon.io/phalcon/images/svg/phalcon-logo-transparent-black.svg" height="100" alt="Phalcon"/>
 </a></p>
 
 # Phalcon Framework - Documentation
@@ -28,6 +28,6 @@ You can start translating documentation in a language other than English that yo
 
 <p align="center">
     <a href="https://crowdin.com">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/crowdin.png" width="40%"/>
+        <img src="https://assets.phalcon.io/phalcon/images/backers/crowdin.png" width="40%"/>
     </a>
 </p>

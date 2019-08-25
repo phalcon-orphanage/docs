@@ -174,7 +174,7 @@ return [
 ];
 ```
 
-@link https://docs.phalconphp.com/en/latest/reference/di.html
+@link https://docs.phalcon.io/en/latest/reference/di.html
 
 ```php
 public function loadFromYaml( string $filePath, array $callbacks = null ): void;
@@ -211,7 +211,7 @@ user:
    className: \Acme\User
 ```
 
-@link https://docs.phalconphp.com/en/latest/reference/di.html
+@link https://docs.phalcon.io/en/latest/reference/di.html
 
 ```php
 public function offsetExists( mixed $name ): bool;

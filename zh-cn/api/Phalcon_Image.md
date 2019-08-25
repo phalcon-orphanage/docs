@@ -196,7 +196,7 @@ Add a watermark to an image with the specified opacity
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
@@ -294,7 +294,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
@@ -573,7 +573,7 @@ Execute a watermarking.
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
@@ -599,7 +599,7 @@ const WIDTH = 2;
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 

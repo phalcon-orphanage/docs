@@ -11,7 +11,7 @@ version: '4.0'
 
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalconphp.com/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
+<h5 class='alert alert-danger'>If you prefer to use the web version instead of the console, this <a href="https://blog.phalcon.io/post/dont-like-command-line-and-consoles-no-problem">blog post</a> offers more information. </h5>
 
 <a name='download'></a>
 

@@ -416,4 +416,4 @@ The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterf
 
 ## External Resources
 
-* [Tutorial: Creando el inicializador de modelos personalizado con anotaciones](https://blog.phalconphp.com/post/tutorial-creating-a-custom-models-initializer)
+* [Tutorial: Creando el inicializador de modelos personalizado con anotaciones](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)

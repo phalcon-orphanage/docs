@@ -673,4 +673,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-* [Vökuró](https://vokuro.phalconphp.com), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://vokuro.phalcon.io), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
