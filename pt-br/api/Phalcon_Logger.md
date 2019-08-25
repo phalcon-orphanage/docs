@@ -29,7 +29,7 @@ title: 'Phalcon\Logger'
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team [&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;](&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;)
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
@@ -380,7 +380,7 @@ Processes the message i.e. writes it to the syslog
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team [&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;](&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;)
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
@@ -422,7 +422,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team [&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;](&#109;&#x61;&#105;&#x6c;&#116;&#x6f;&#58;&#x74;e&#97;&#x6d;&#64;&#x70;&#104;&#x61;&#108;&#x63;&#111;&#110;&#x70;&#104;&#x70;&#46;&#x63;&#111;&#x6d;)
+(c) Phalcon Team [&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;](&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#58;&#116;&#x65;&#97;&#109;&#x40;&#112;&#104;&#x61;&#108;c&#x6f;&#110;&#x2e;&#x69;&#111;)
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
