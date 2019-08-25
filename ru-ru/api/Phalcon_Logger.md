@@ -5,6 +5,7 @@ version: '4.0'
 title: 'Phalcon\Logger'
 ---
 
+* [Phalcon\Logger](#logger)
 * [Phalcon\Logger\Adapter\AbstractAdapter](#logger-adapter-abstractadapter)
 * [Phalcon\Logger\Adapter\AdapterInterface](#logger-adapter-adapterinterface)
 * [Phalcon\Logger\Adapter\Noop](#logger-adapter-noop)
@@ -18,14 +19,249 @@ title: 'Phalcon\Logger'
 * [Phalcon\Logger\Formatter\Line](#logger-formatter-line)
 * [Phalcon\Logger\Formatter\Syslog](#logger-formatter-syslog)
 * [Phalcon\Logger\Item](#logger-item)
-* [Phalcon\Logger\Logger](#logger-logger)
 * [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
+
+<h1 id="logger">Class Phalcon\Logger</h1>
+
+[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+
+| Namespace | Phalcon | | Uses | Psr\Log\LoggerInterface, Psr\Log\InvalidArgumentException, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
+
+Phalcon\Logger
+
+This component offers logging capabilities for your application. The component accepts multiple adapters, working also as a multiple logger. Phalcon\Logger implements PSR-3.
+
+```php
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+$adapter3 = new Stream('/manager/third-log.log');
+
+$logger = new Logger(
+        'messages',
+        [
+            'local'   => $adapter1,
+            'remote'  => $adapter2,
+            'manager' => $adapter3,
+        ]
+    );
+
+// Log to all adapters
+$logger->error('Something went wrong');
+
+// Log to specific adapters
+$logger
+        ->excludeAdapters(['manager'])
+        ->info('This does not go to the "manager" logger);
+```
+
+## Константы
+
+```php
+const ALERT = 2;
+const CRITICAL = 1;
+const CUSTOM = 8;
+const DEBUG = 7;
+const EMERGENCY = 0;
+const ERROR = 3;
+const INFO = 6;
+const NOTICE = 5;
+const WARNING = 4;
+```
+
+## Properties
+
+```php
+/**
+ * The adapter stack
+ *
+ * @var AdapterInterface[]
+ */
+protected adapters;
+
+/**
+ * @var string
+ */
+protected name = ;
+
+/**
+ * The excluded adapters for this log process
+ *
+ * @var AdapterInterface[]
+ */
+protected excluded;
+
+```
+
+## Методы
+
+```php
+public function __construct( string $name, array $adapters = [] ): void;
+```
+
+Constructor.
+
+@param string name The name of the logger @param array adapters The collection of adapters to be used for logging (default [])
+
+```php
+public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
+```
+
+Add an adapter to the stack. For processing we use FIFO
+
+@param string name The name of the adapter @param <adapterinterface> adapter The adapter to add to the stack
+
+```php
+public function alert( mixed $message, array $context = [] ): void;
+```
+
+Action must be taken immediately.
+
+Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
+
+@param string message
+
+```php
+public function critical( mixed $message, array $context = [] ): void;
+```
+
+Critical conditions.
+
+Example: Application component unavailable, unexpected exception.
+
+@param string message
+
+```php
+public function debug( mixed $message, array $context = [] ): void;
+```
+
+Detailed debug information.
+
+@param string message
+
+```php
+public function emergency( mixed $message, array $context = [] ): void;
+```
+
+System is unusable.
+
+@param string message
+
+```php
+public function error( mixed $message, array $context = [] ): void;
+```
+
+Runtime errors that do not require immediate action but should typically be logged and monitored.
+
+@param string message
+
+```php
+public function excludeAdapters( array $adapters = [] ): Logger;
+```
+
+Exclude certain adapters.
+
+```php
+public function getAdapter( string $name ): AdapterInterface;
+```
+
+Returns an adapter from the stack
+
+@param string name The name of the adapter
+
+@throws <exception>
+
+```php
+public function getAdapters(): array;
+```
+
+Returns the adapter stack array
+
+@return AdapterInterface[]
+
+```php
+public function getName(): string;
+```
+
+Returns the name of the logger
+
+```php
+public function info( mixed $message, array $context = [] ): void;
+```
+
+Interesting events.
+
+Example: User logs in, SQL logs.
+
+@param string message
+
+```php
+public function log( mixed $level, mixed $message, array $context = [] ): void;
+```
+
+Logs with an arbitrary level.
+
+@param mixed level @param string message
+
+```php
+public function notice( mixed $message, array $context = [] ): void;
+```
+
+Normal but significant events.
+
+@param string message
+
+```php
+public function removeAdapter( string $name ): Logger;
+```
+
+Removes an adapter from the stack
+
+@param string name The name of the adapter
+
+@throws <Logger\Exception>
+
+```php
+public function setAdapters( array $adapters ): Logger;
+```
+
+Sets the adapters stack overriding what is already there
+
+@param array adapters An array of adapters
+
+```php
+public function warning( mixed $message, array $context = [] ): void;
+```
+
+Exceptional occurrences that are not errors.
+
+Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
+
+@param string message
+
+```php
+protected function addMessage( int $level, string $message, array $context = [] ): bool;
+```
+
+Adds a message to each handler for processing
+
+@param int level @param string message
+
+@throws <Logger\Exception>
+
+```php
+protected function getLevels(): array;
+```
+
+Returns an array of log levels with integer to string conversion
 
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Logger, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Implements | AdapterInterface |
+| Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -296,7 +532,7 @@ Processes the message i.e. writes it to the file
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
-| Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Logger\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
 Phalcon\Logger\Adapter\Syslog
 
@@ -418,7 +654,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
 
-| Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Logger | | Implements | FormatterInterface |
+| Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger | | Implements | FormatterInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -649,247 +885,11 @@ public function getTime(): integer
 public function getType(): integer
 ```
 
-<h1 id="logger-logger">Class Phalcon\Logger\Logger</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/logger.zep)
-
-| Namespace | Phalcon\Logger | | Uses | Psr\Log\LoggerInterface, Psr\Log\InvalidArgumentException, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
-
-Phalcon\Logger
-
-This component offers logging capabilities for your application. The component accepts multiple adapters, working also as a multiple logger. Phalcon\Logger implements PSR-3.
-
-```php
-use Phalcon\Logger;
-use Phalcon\Logger\Adapter\Stream;
-
-$adapter1 = new Stream('/logs/first-log.log');
-$adapter2 = new Stream('/remote/second-log.log');
-$adapter3 = new Stream('/manager/third-log.log');
-
-$logger = new Logger(
-        'messages',
-        [
-            'local'   => $adapter1,
-            'remote'  => $adapter2,
-            'manager' => $adapter3,
-        ]
-    );
-
-// Log to all adapters
-$logger->error('Something went wrong');
-
-// Log to specific adapters
-$logger
-        ->excludeAdapters(['manager'])
-        ->info('This does not go to the "manager" logger);
-```
-
-## Константы
-
-```php
-const ALERT = 2;
-const CRITICAL = 1;
-const CUSTOM = 8;
-const DEBUG = 7;
-const EMERGENCY = 0;
-const ERROR = 3;
-const INFO = 6;
-const NOTICE = 5;
-const WARNING = 4;
-```
-
-## Properties
-
-```php
-/**
- * The adapter stack
- *
- * @var AdapterInterface[]
- */
-protected adapters;
-
-/**
- * @var string
- */
-protected name = ;
-
-/**
- * The excluded adapters for this log process
- *
- * @var AdapterInterface[]
- */
-protected excluded;
-
-```
-
-## Методы
-
-```php
-public function __construct( string $name, array $adapters = [] ): void;
-```
-
-Constructor.
-
-@param string name The name of the logger @param array adapters The collection of adapters to be used for logging (default [])
-
-```php
-public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
-```
-
-Add an adapter to the stack. For processing we use FIFO
-
-@param string name The name of the adapter @param <adapterinterface> adapter The adapter to add to the stack
-
-```php
-public function alert( mixed $message, array $context = [] ): void;
-```
-
-Action must be taken immediately.
-
-Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
-
-@param string message
-
-```php
-public function critical( mixed $message, array $context = [] ): void;
-```
-
-Critical conditions.
-
-Example: Application component unavailable, unexpected exception.
-
-@param string message
-
-```php
-public function debug( mixed $message, array $context = [] ): void;
-```
-
-Detailed debug information.
-
-@param string message
-
-```php
-public function emergency( mixed $message, array $context = [] ): void;
-```
-
-System is unusable.
-
-@param string message
-
-```php
-public function error( mixed $message, array $context = [] ): void;
-```
-
-Runtime errors that do not require immediate action but should typically be logged and monitored.
-
-@param string message
-
-```php
-public function excludeAdapters( array $adapters = [] ): Logger;
-```
-
-Exclude certain adapters.
-
-```php
-public function getAdapter( string $name ): AdapterInterface;
-```
-
-Returns an adapter from the stack
-
-@param string name The name of the adapter
-
-@throws <exception>
-
-```php
-public function getAdapters(): array;
-```
-
-Returns the adapter stack array
-
-@return AdapterInterface[]
-
-```php
-public function getName(): string;
-```
-
-Returns the name of the logger
-
-```php
-public function info( mixed $message, array $context = [] ): void;
-```
-
-Interesting events.
-
-Example: User logs in, SQL logs.
-
-@param string message
-
-```php
-public function log( mixed $level, mixed $message, array $context = [] ): void;
-```
-
-Logs with an arbitrary level.
-
-@param mixed level @param string message
-
-```php
-public function notice( mixed $message, array $context = [] ): void;
-```
-
-Normal but significant events.
-
-@param string message
-
-```php
-public function removeAdapter( string $name ): Logger;
-```
-
-Removes an adapter from the stack
-
-@param string name The name of the adapter
-
-@throws <Logger\Exception>
-
-```php
-public function setAdapters( array $adapters ): Logger;
-```
-
-Sets the adapters stack overriding what is already there
-
-@param array adapters An array of adapters
-
-```php
-public function warning( mixed $message, array $context = [] ): void;
-```
-
-Exceptional occurrences that are not errors.
-
-Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
-
-@param string message
-
-```php
-protected function addMessage( int $level, string $message, array $context = [] ): bool;
-```
-
-Adds a message to each handler for processing
-
-@param int level @param string message
-
-@throws <Logger\Exception>
-
-```php
-protected function getLevels(): array;
-```
-
-Returns an array of log levels with integer to string conversion
-
 <h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
 
-| Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger\Logger, Phalcon\Logger\AdapterFactory |
+| Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\AdapterFactory |
 
 PhalconNG\Logger\LoggerFactory
 
