@@ -11,7 +11,7 @@ title: 'HTTP Response'
 
 ## Overview
 
-[Phalcon\Http\Response](api/Phalcon_Http#http-response) is a component that encapsulates the actual HTTP response by the application to the user. Note that this is not *only* the actual response payload. The most commonly returned payload is headers and content.
+[Phalcon\Http\Response](api/Phalcon_Http#http-response) is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not *only* the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response](api/Phalcon_Http#http-message-response) for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
 
 ```php
 <?php
@@ -229,7 +229,7 @@ $response->setHeader(
 $response->sendHeaders();
 ```
 
-The [Phalcon\Http\Response](api/Phalcon_Http#http-response) object also wraps the [Phalcon\Http\Response\Headers](api/Phalcon_Http_Response_Headers) collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers](api/Phalcon_Http#http-response-headers) object or any object that implements the [Phalcon\Http\Response\HeadersInterface](api/Phalcon_Http#http-response-headersinterface) and then set it in the response using `setHeaders()`:
+The [Phalcon\Http\Response](api/Phalcon_Http#http-response) object also wraps the [Phalcon\Http\Response\Headers](api/Phalcon_Http#http-response-headers) collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers](api/Phalcon_Http#http-response-headers) object or any object that implements the [Phalcon\Http\Response\HeadersInterface](api/Phalcon_Http#http-response-headersinterface) and then set it in the response using `setHeaders()`:
 
 ```php
 <?php
@@ -340,6 +340,11 @@ $response->setCookies($cookies);
 ```
 
 > The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. You can always use the `Crypt` component to generate a good `signKey`.
+{: .alert .alert-danger }
+
+
+> 
+> Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 {: .alert .alert-danger }
 
 There are several methods available to help you retrieve data from the component:
@@ -647,6 +652,32 @@ $response->setNotModified();
 ## Dependency Injection
 
 The [Phalcon\Http\Response](api/Phalcon_Http#http-response) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di#di-injectionawareinterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
+
+If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) DI container for your application, the service is already registered for you. You can access it using the `response` name. The example below shows the usage in a controller
+
+```php
+<?php
+
+use Phalcon\Http\Response;
+use Phalcon\Mvc\Controller;
+
+/**
+ * Class PostsController
+ * 
+ * @property Response $response
+ */
+class PostsController extends Controller
+{
+    public function uploadAction()
+    {
+        return $this
+            ->response
+            ->setStatusCode(404, 'Not Found')
+            ->setContent("Sorry, the page doesn't exist")
+            ->send();
+    }
+}
+```
 
 ## Events
 

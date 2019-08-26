@@ -11,7 +11,7 @@ title: 'HTTP Request'
 
 ## Overview
 
-[Phalcon\Http\Request](api/Phalcon_Http#http-request) is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. Note that this is not *only* the actual request payload. The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
+[Phalcon\Http\Request](api/Phalcon_Http#http-request) is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
 
 ```php
 <?php
@@ -505,10 +505,10 @@ The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the 
 
 The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Events\EventsAware](api/Phalcon_Events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Событие                      | Описание                                         |
-| ---------------------------- | ------------------------------------------------ |
-| `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |
-| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |
+| Событие                      | Описание                                         | Can stop operation |
+| ---------------------------- | ------------------------------------------------ |:------------------:|
+| `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |        Нет         |
+| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |         Да         |
 
 When using HTTP authorization, the `Authorization` header has the following format:
 

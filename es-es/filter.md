@@ -3,7 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#filter'
-category: 'filter'
+title: 'Filtro'
 ---
 
 # Componente Filtro
@@ -20,7 +20,7 @@ Una tarea fundamental en el desarrollo de software es la limpieza o saneamiento 
 
 Sanitizing content can be achieved using the [Phalcon\Filter](Phalcon_Filter#filter) and [Phalcon\Filter\FilterFactory](Phalcon_Filter#filter-filterfactory) classes.
 
-## FilterLocatorFactory
+## FilterFactory
 
 Este componente crea un localizador con filtros predefinidos. Cada filtro se carga solo cuando es necesario ("lazy loading" en inglés) para lograr el máximo rendimiento. To instantiate the factory and retrieve the [Phalcon\Filter](Phalcon_Filter#filter) with the preset sanitizers you need to call `newInstance()`
 
@@ -29,7 +29,7 @@ Este componente crea un localizador con filtros predefinidos. Cada filtro se car
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 ```
@@ -50,7 +50,7 @@ $services = [
     'hello' => HelloSanitizer::class,
 ];
 
-$locator = new FilterLocator($services);
+$locator = new Filter($services);
 
 $text = $locator->hello('World');
 ```
@@ -285,7 +285,7 @@ Es el proceso de desinfección o saneamiento que elimina caracteres específicos
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 $locator = $factory->newInstance();
 
 // 'someone@example.com'
@@ -328,7 +328,7 @@ class ProductsController extends Controller
             // Sanitizing email from input
             $email = $this->request->getPost(
                 'customerEmail',
-                FilterLocator::FILTER_EMAIL
+                Filter::FILTER_EMAIL
             );
         }
     }
@@ -350,7 +350,7 @@ use Phalcon\Mvc\Controller;
 /**
  * Class ProductsController
  * 
- * @property FilterLocator $filter
+ * @property Filter $filter
  */
 class ProductsController extends Controller
 {
@@ -370,7 +370,7 @@ The [Phalcon\Filter](Phalcon_Filter#filter) both filters and sanitizes data, dep
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
@@ -396,7 +396,7 @@ $services = [
     },
 ];
 
-$locator = new FilterLocator($services);
+$locator = new Filter($services);
 
 $sanitized = $locator->sanitize($value, 'md5');
 ```
@@ -408,7 +408,7 @@ If you already have an instantiated filter locator object (for instance if you h
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
@@ -437,7 +437,7 @@ class IPv4
     }
 }
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
@@ -461,7 +461,7 @@ Hay ocasiones en las que usar un solo limpiador no es suficiente para sanear los
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
@@ -520,7 +520,7 @@ Se puede implementar un limpiador personalizado como función anónima. Sin emba
 
 use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
@@ -549,7 +549,7 @@ class IPv4
     }
 }
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 
 $locator = $factory->newInstance();
 
