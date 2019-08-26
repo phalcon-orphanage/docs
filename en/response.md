@@ -8,7 +8,7 @@ title: 'HTTP Response'
 <hr />
 
 ## Overview
-[Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. Note that this is not _only_ the actual response payload. The most commonly returned payload is headers and content.
+[Phalcon\Http\Response][http-response] is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not _only_ the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response][http-message-response] for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
 
 ```php
 <?php
@@ -228,7 +228,7 @@ $response->setHeader(
 $response->sendHeaders();
 ```
 
-The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers](http-response-headers) collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
+The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers][http-response-headers] collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
 
 ```php
 <?php
@@ -709,3 +709,4 @@ class PostsController extends Controller
 [status-codes]: http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 [events-eventsawareinterface]: api/Phalcon_Events#events-eventsawareinterface
 [readfile]: https://www.php.net/manual/en/function.readfile.php
+[http-message-response]: api/Phalcon_Http#http-message-response

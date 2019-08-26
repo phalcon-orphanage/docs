@@ -8,7 +8,7 @@ title: 'HTTP Request'
 <hr />
 
 ## Overview
-[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. Note that this is not _only_ the actual request payload. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
+[Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
 
 ```php
 <?php
@@ -339,7 +339,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 - `getDigestAuth()`: Gets auth info accepted by the browser/client
 
 ### Client
-- `getClientAddress()`: Gets most possible client IP Address
+- `getClientAddress()`: Gets most possible client IPv4 Address
 - `getClientCharsets()`: Gets a charsets array and their quality accepted by the browser/client
 - `getUserAgent()`: Gets HTTP user agent used to made the request
 - `getHTTPReferer()`: Gets web page that refers active request
