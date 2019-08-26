@@ -228,7 +228,7 @@ $response->setHeader(
 $response->sendHeaders();
 ```
 
-The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers][http-response-headers] collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
+The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers](http-response-headers) collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
 
 ```php
 <?php
