@@ -648,7 +648,7 @@ $router->add(
 ## Default Behavior
 [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) has a default behavior that provides a very simple routing that always expects a URI that matches the following pattern: `/:controller/:action/:params`
 
-For example, for a URL like this `https://phalconphp.com/documentation/show/about.html`, this router will translate it as follows:
+For example, for a URL like this `https://phalcon.io/documentation/show/about.html`, this router will translate it as follows:
 
 | Controller    | Action | Parameter  |
 |:-------------:|:------:|:----------:|
@@ -1152,5 +1152,5 @@ return $router;
 ## Implementing your own Router
 The `Phalcon\Mvc\RouterInterface` interface must be implemented to create your own router replacing the one provided by Phalcon.
 
-[devtools]: https://phalconphp.com/en/download/tools
+[devtools]: https://phalcon.io/en/download/tools
 [pcre]: https://secure.php.net/manual/en/book.pcre.php

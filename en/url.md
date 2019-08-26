@@ -54,9 +54,9 @@ use Phalcon\Url;
 
 $url = new Url();
 
-$this->setStaticBaseUri('https://assets.phalconphp.com/');
+$this->setStaticBaseUri('https://assets.phalcon.io/');
 
-echo $url->getStaticBaseUri(); // https://assets.phalconphp.com/
+echo $url->getStaticBaseUri(); // https://assets.phalcon.io/
 ```
 
 and when in need to use a CDN for your production environment:
@@ -69,13 +69,13 @@ use Phalcon\Url;
 $url = new Url();
 
 if ($environment === 'production') {
-    $this->setStaticBaseUri('https://assets.phalconphp.com/');
+    $this->setStaticBaseUri('https://assets.phalcon.io/');
 }
 
-echo $url->getStatic('img/logo.png'); // https://assets.phalconphp.com/img/logo.png
+echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
 ```
 
-The above code will prefix all the static assets with `https://assets.phalconphp.com`, ensuring that assets in your production environment use the CDN URL, while local development loads them directly from your machine.
+The above code will prefix all the static assets with `https://assets.phalcon.io`, ensuring that assets in your production environment use the CDN URL, while local development loads them directly from your machine.
 
 > The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 {: .alert .alert-info }

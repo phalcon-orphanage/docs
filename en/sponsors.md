@@ -12,23 +12,23 @@ For those that wish to sponsor our work and further the development of Phalcon, 
 
 <div class="phalcon-blog__sponsors-items">
     <a href="https://pdffiller.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/pdffiller-164x34.svg"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/pdffiller-164x34.svg"
              alt="PDFfiller">
     </a>
     <a href="https://mctekk.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/mctekk-149x34.svg"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/mctekk-149x34.svg"
              alt="Mctekk">
     </a>
     <a href="https://abits.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/abits-100x34.svg"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/abits-100x34.svg"
              alt="Abits">
     </a>
     <a href="https://algolia.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/algolia-725x360.svg"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/algolia-725x360.svg"
              alt="Algolia">
     </a>
     <a href="https://netlify.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/netlify-147x40.svg"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/netlify-147x40.svg"
              alt="Netlify">
     </a>
     <a href="https://odva.pro/" class="phalcon-blog__sponsors-item">
@@ -39,7 +39,7 @@ For those that wish to sponsor our work and further the development of Phalcon, 
         </svg>
     </a>
     <a href="https://crowdin.com/" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalconphp.com/phalcon/images/backers/crowdin.png"
+        <img src="https://assets.phalcon.io/phalcon/images/backers/crowdin.png"
              alt="Crowdin">
     </a>
     <a href="https://phalcon.link/fund" class="phalcon-blog__sponsors-item">

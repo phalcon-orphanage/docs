@@ -363,7 +363,7 @@ The plesk control panel doesn't have Phalcon support but you can find installati
 [plesk]: https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-
 [cpanel-phalcon]: https://github.com/CpanelInc/scl-phalcon
 [curl]: https://secure.php.net/manual/en/book.curl.php
-[download]: https://phalconphp.com/en/download/windows
+[download]: https://phalcon.io/en/download/windows
 [fileinfo]: https://secure.php.net/manual/en/book.fileinfo.php
 [gettext]: https://secure.php.net/manual/en/book.gettext.php
 [gd2]: https://secure.php.net/manual/en/book.image.php

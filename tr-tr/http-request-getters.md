@@ -30,7 +30,7 @@ $stream   = new Stream($fileName, 'rb');
 
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     $stream,
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -58,7 +58,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -86,7 +86,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -114,7 +114,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -123,7 +123,7 @@ $request  = new Request(
     ]
 );
 
-echo $request->getUri(); // UriInterface : https://api.phalconphp.com/companies/1
+echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
 
 * * *
@@ -142,7 +142,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -171,7 +171,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -202,7 +202,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -241,7 +241,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,
@@ -280,7 +280,7 @@ use Phalcon\Http\Message\Request;
 $jwtToken = 'abc.def.ghi';
 $request  = new Request(
     'POST',
-    'https://api.phalconphp.com/companies/1',
+    'https://api.phalcon.io/companies/1',
     'php://memory',
     [
         'Authorization' => 'Bearer ' , $jwtToken,

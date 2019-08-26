@@ -373,14 +373,14 @@ If you have any questions, feel free to join us in our [Discord][discord] server
 <3 Phalcon Team
 
 
-[2003]: https://blog.phalconphp.com/post/phalcon-2-0-the-future
+[2003]: https://blog.phalcon.io/post/phalcon-2-0-the-future
 [cphalcon]: https://github.com/phalcon/cphalcon
 [codeception]: https://codeception.com
 [codeception_commands]: http://codeception.com/docs/reference/Commands
 [codeception_introduction]: http://codeception.com/docs/01-Introduction
 [discord]: https://phalcon.link/discord
 [docker_installation]: https://docs.docker.com/engine/installation/
-[forum]: https://forum.phalconphp.com
+[forum]: https://forum.phalcon.io
 [nanobox]: https://nanobox.io
 [psr]: https://github.com/jbboehr/php-psr
 [zephir]: https://zephir-lang.com

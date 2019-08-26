@@ -342,7 +342,7 @@ Constructs a new Cache instance.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/exception.zep)
 
 | Namespace  | Phalcon\Cache\Exception |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 | Implements | \Psr\SimpleCache\CacheException |
 
 Exceptions thrown in Phalcon\Cache will use this class
@@ -354,7 +354,7 @@ Exceptions thrown in Phalcon\Cache will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/invalidargumentexception.zep)
 
 | Namespace  | Phalcon\Cache\Exception |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 | Implements | \Psr\SimpleCache\InvalidArgumentException |
 
 Exceptions thrown in Phalcon\Cache will use this class

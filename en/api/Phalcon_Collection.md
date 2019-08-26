@@ -205,7 +205,7 @@ Internal method to set data
 
 | Namespace  | Phalcon\Collection |
 | Uses       | Throwable |
-| Extends    | \Exception |
+| Extends    | \Phalcon\Exception |
 | Implements | Throwable |
 
 Exceptions for the Collection object

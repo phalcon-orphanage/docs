@@ -463,7 +463,7 @@ The `getHttpHost()` method will return the host name used by the request. The me
 
 Optionally `getHttpHost()` validates and performs a strict check on the host name. To achieve that you can use the `setStrictHostCheck()` method.
 
-## Uploading Files
+## Uploaded Files
 Another common task is file uploading. [Phalcon\Http\Request][http-request] offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads][php-uploads]).
 
 ```php
@@ -500,16 +500,30 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http_Request_File) class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File][http-request-file] which implements the [Phalcon\Http\Request\FileInterface][http-request-fileinterface] class. Using the `$_FILES` superglobal array offers the same behavior. [Phalcon\Http\Request\File][http-request-file] encapsulates only the information related to each file uploaded with the request.
 
 The `getUploadedFiles()` accepts two parameters.
 - `$onlySuccessful`: Contains only successful uploads
 - `$namedKeys`: Returns the array with named keys obtained by the upload process
 
+The method returns an array of [Phalcon\Http\Request\File][http-request-file] objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
+
+- `getError()` (string) - Returns any error that happened with this file
+- `getExtension()` (string) - Returns the extension of the file
+- `getKey()` (string) - Returns the internal key of the file
+- `getName()` (string) -Returns the real name of the uploaded file
+- `getRealType()` (string) - Return the real mime type of the upload file using finfo
+- `getSize()`  (int) - Returns the file size of the uploaded file
+- `getTempName()` (string) - Returns the temporary name of the uploaded file
+- `getType()` (string) - Returns the mime type reported by the browser. This mime type is not completely secure, use `getRealType()` instead
+- `isUploadedFile()` (bool) - Checks whether the file has been uploaded via `POST`.
+- `moveTo(string $destination)` (bool) - Moves the temporary file to a destination within the application
+
 ## Dependency Injection
 The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 ## Events
+ The [Phalcon\Http\Request][http-request] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 | Event                        | Description                                      |
 |------------------------------|--------------------------------------------------|
@@ -535,7 +549,13 @@ where `<type>` is an authentication type. A common type is `Basic`. Additional a
 * `SCRAM-SHA-256`
 * `vapid`
 
-You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. A custom authorization resolver is required.
+You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. 
+
+The `request:beforeAuthorizationResolve` receives the `SERVER` array with the key `server` as the second parameter of the event. 
+
+The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the hey `headers`.
+
+A custom authorization resolver is required.
 
 Example without using custom authorization resolver:
 ```php
@@ -646,34 +666,11 @@ Credentials: a87421000492aa874209af8bc028
 [http-message-abstractmessage]: api/Phalcon_Http#http-message-abstractmessage
 [http-message-abstractrequest]: api/Phalcon_Http#http-message-abstractrequest
 [http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
-[http-message-request]: api/Phalcon_Http#http-message-request
-[http-message-requestfactory]: api/Phalcon_Http#http-message-requestfactory
-[http-message-response]: api/Phalcon_Http#http-message-response
-[http-message-responsefactory]: api/Phalcon_Http#http-message-responsefactory
-[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
-[http-message-serverrequestfactory]: api/Phalcon_Http#http-message-serverrequestfactory
-[http-message-stream]: api/Phalcon_Http#http-message-stream
-[http-message-stream-input]: api/Phalcon_Http#http-message-stream-input
-[http-message-stream-memory]: api/Phalcon_Http#http-message-stream-memory
-[http-message-stream-temp]: api/Phalcon_Http#http-message-stream-temp
-[http-message-streamfactory]: api/Phalcon_Http#http-message-streamfactory
-[http-message-uploadedfile]: api/Phalcon_Http#http-message-uploadedfile
-[http-message-uploadedfilefactory]: api/Phalcon_Http#http-message-uploadedfilefactory
-[http-message-uri]: api/Phalcon_Http#http-message-uri
-[http-message-urifactory]: api/Phalcon_Http#http-message-urifactory
 [http-request]: api/Phalcon_Http#http-request
 [http-request-exception]: api/Phalcon_Http#http-request-exception
 [http-request-file]: api/Phalcon_Http#http-request-file
 [http-request-fileinterface]: api/Phalcon_Http#http-request-fileinterface
 [http-requestinterface]: api/Phalcon_Http#http-requestinterface
-[http-response]: api/Phalcon_Http#http-response
-[http-response-cookies]: api/Phalcon_Http#http-response-cookies
-[http-response-cookiesinterface]: api/Phalcon_Http#http-response-cookiesinterface
-[http-response-exception]: api/Phalcon_Http#http-response-exception
-[http-response-headers]: api/Phalcon_Http#http-response-headers
-[http-response-headersinterface]: api/Phalcon_Http#http-response-headersinterface
-[http-responseinterface]: api/Phalcon_Http#http-responseinterface
-[http-server-abstractmiddleware]: api/Phalcon_Http#http-server-abstractmiddleware
-[http-server-abstractrequesthandler]: api/Phalcon_Http#http-server-abstractrequesthandler
 [di-injectionawareinterface]: api/Phalcon_Di#di-injectionawareinterface
 [di-factorydefault]: api/Phalcon_Di#di-factorydefault
+[events-eventsawareinterface]: api/Phalcon_Events#events-eventsawareinterface

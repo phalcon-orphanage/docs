@@ -5960,7 +5960,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
@@ -6018,7 +6018,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 This file is part of the Phalcon Framework.
 
-(c) Phalcon Team <team@phalconphp.com>
+(c) Phalcon Team <team@phalcon.io>
 
 For the full copyright and license information, please view the LICENSE.txt
 file that was distributed with this source code.
