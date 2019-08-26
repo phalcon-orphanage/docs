@@ -339,7 +339,7 @@ The [Phalcon\Http\Request][http-request] object offers methods that provide addi
 - `getDigestAuth()`: Gets auth info accepted by the browser/client
 
 ### Client
-- `getClientAddress()`: Gets most possible client IPv4 Address
+- `getClientAddress()`: Gets most possible client IP Address
 - `getClientCharsets()`: Gets a charsets array and their quality accepted by the browser/client
 - `getUserAgent()`: Gets HTTP user agent used to made the request
 - `getHTTPReferer()`: Gets web page that refers active request
