@@ -442,7 +442,7 @@ The `getHttpHost()` method will return the host name used by the request. The me
 
 Optionally `getHttpHost()` validates and performs a strict check on the host name. To achieve that you can use the `setStrictHostCheck()` method.
 
-## Uploading Files
+## Uploaded Files
 
 Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http#http-request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://secure.php.net/manual/en/ini.core.php#ini.file-uploads)).
 
@@ -480,15 +480,30 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http_Request_File) class. Using the `$_FILES` superglobal array offers the same behavior. `Phalcon\Http\Request\File` encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) which implements the [Phalcon\Http\Request\FileInterface](api/Phalcon_Http#http-request-fileinterface) class. Using the `$_FILES` superglobal array offers the same behavior. [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) encapsulates only the information related to each file uploaded with the request.
 
 The `getUploadedFiles()` accepts two parameters. - `$onlySuccessful`: Contains only successful uploads - `$namedKeys`: Returns the array with named keys obtained by the upload process
+
+The method returns an array of [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
+
+* `getError()` (string) - Returns any error that happened with this file
+* `getExtension()` (string) - Returns the extension of the file
+* `getKey()` (string) - Returns the internal key of the file
+* `getName()` (string) -Returns the real name of the uploaded file
+* `getRealType()` (string) - Return the real mime type of the upload file using finfo
+* `getSize()` (int) - Returns the file size of the uploaded file
+* `getTempName()` (string) - Returns the temporary name of the uploaded file
+* `getType()` (string) - Returns the mime type reported by the browser. This mime type is not completely secure, use `getRealType()` instead
+* `isUploadedFile()` (bool) - Checks whether the file has been uploaded via `POST`.
+* `moveTo(string $destination)` (bool) - Moves the temporary file to a destination within the application
 
 ## Dependency Injection
 
 The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di#di-injectionawareinterface) interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
 ## Events
+
+The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Events\EventsAware](api/Phalcon_Events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 | Event                        | 描述                                               |
 | ---------------------------- | ------------------------------------------------ |
@@ -503,7 +518,13 @@ Authorization: <type> <credentials>
 
 where `<type>` is an authentication type. A common type is `Basic`. Additional authentication types are described in [IANA registry of Authentication schemes](https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml) and [Authentication for AWS servers (AWS4-HMAC-SHA256)](https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html). In most use cases the authentication type is: * `AWS4-HMAC-SHA256` * `Basic` * `Bearer` * `Digest` * `HOBA` * `Mutual` * `Negotiate` * `OAuth` * `SCRAM-SHA-1` * `SCRAM-SHA-256` * `vapid`
 
-You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves. A custom authorization resolver is required.
+You can use the `request:beforeAuthorizationResolve` and `request:afterAuthorizationResolve` events to perform additional operations before or after the authorization resolves.
+
+The `request:beforeAuthorizationResolve` receives the `SERVER` array with the key `server` as the second parameter of the event.
+
+The `request:afterAuthorizationResolve` receives the `SERVER` array with the key `server` as well as the headers with the hey `headers`.
+
+A custom authorization resolver is required.
 
 Example without using custom authorization resolver:
 

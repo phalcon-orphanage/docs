@@ -189,7 +189,7 @@ Internal method to set data
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
 
-| Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Exception | | Implements | Throwable |
+| Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Phalcon\Exception | | Implements | Throwable |
 
 Exceptions for the Collection object
 
