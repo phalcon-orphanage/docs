@@ -501,6 +501,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 | [Phalcon\Forms\Element\Numeric](api/Phalcon_Forms_Element_Numeric)   | Genera elementos `INPUT[type=number]`        |
 | [Phalcon\Forms\Element\Submit](api/Phalcon_Forms_Element_Submit)     | Genera elementos `INPUT[type=submit]`        |
 | [Phalcon\Forms\Element\Text](api/Phalcon_Forms_Element_Text)         | Genera elementos `INPUT[type=text]`          |
+| [Phalcon\Forms\Element\TextArea](api/Phalcon_Forms_Element_TextArea) | Genera elementos `TEXTAREA`                  |
 
 ## Event Callbacks
 
