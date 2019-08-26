@@ -494,6 +494,8 @@ The events available in Phalcon are:
 | Models Manager      | `modelsManager:afterInitialize`      |
 | Αίτηση              | `request:afterAuthorizationResolve`  |
 | Αίτηση              | `request:beforeAuthorizationResolve` |
+| Ανταπόκριση         | `response:afterSendHeaders`          |
+| Ανταπόκριση         | `response:beforeSendHeaders`         |
 | Router              | `router:beforeCheckRoutes`           |
 | Router              | `router:beforeCheckRoute`            |
 | Router              | `router:matchedRoute`                |
