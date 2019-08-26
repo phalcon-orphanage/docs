@@ -228,7 +228,7 @@ $response->setHeader(
 $response->sendHeaders();
 ```
 
-The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers](api/Phalcon_Http_Response_Headers) collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
+The [Phalcon\Http\Response][http-response] object also wraps the [Phalcon\Http\Response\Headers][http-response-headers] collection object automatically, which offers more methods for header manipulation. You can instantiate a [Phalcon\Http\Response\Headers][http-response-headers] object or any object that implements the [Phalcon\Http\Response\HeadersInterface][http-response-headersinterface] and then set it in the response using `setHeaders()`:
 
 ```php
 <?php
@@ -337,6 +337,10 @@ $response->setCookies($cookies);
 ```
 
 > The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. You can always use the `Crypt` component to generate a good `signKey`.
+{: .alert .alert-danger }
+
+
+> Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 {: .alert .alert-danger }
 
 There are several methods available to help you retrieve data from the component:
@@ -652,6 +656,33 @@ $response->setNotModified();
 ## Dependency Injection
 The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\InjectionAwareInterface][di-injectionawareinterface] interface. As a result, the DI container is available and can be retrieved using the `getDI()` method. A container can also be set using the `setDI()` method.
 
+
+If you have used the [Phalcon\Di\FactoryDefault][di-factorydefault] DI container for your application, the service is already registered for you. You can access it using the `response` name. The example below shows the usage in a controller
+
+```php
+<?php
+
+use Phalcon\Http\Response;
+use Phalcon\Mvc\Controller;
+
+/**
+ * Class PostsController
+ * 
+ * @property Response $response
+ */
+class PostsController extends Controller
+{
+    public function uploadAction()
+    {
+        return $this
+            ->response
+            ->setStatusCode(404, 'Not Found')
+            ->setContent("Sorry, the page doesn't exist")
+            ->send();
+    }
+}
+```
+
 ## Events
  The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Events\EventsAware][events-eventsawareinterface] interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
@@ -664,30 +695,6 @@ The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\Inj
 [http-cookie]: api/Phalcon_Http#http-cookie
 [http-cookie-exception]: api/Phalcon_Http#http-cookie-exception
 [http-cookieinterface]: api/Phalcon_Http#http-cookieinterface
-[http-message-abstractcommon]: api/Phalcon_Http#http-message-abstractcommon
-[http-message-abstractmessage]: api/Phalcon_Http#http-message-abstractmessage
-[http-message-abstractrequest]: api/Phalcon_Http#http-message-abstractrequest
-[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
-[http-message-request]: api/Phalcon_Http#http-message-request
-[http-message-requestfactory]: api/Phalcon_Http#http-message-requestfactory
-[http-message-response]: api/Phalcon_Http#http-message-response
-[http-message-responsefactory]: api/Phalcon_Http#http-message-responsefactory
-[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
-[http-message-serverrequestfactory]: api/Phalcon_Http#http-message-serverrequestfactory
-[http-message-stream]: api/Phalcon_Http#http-message-stream
-[http-message-stream-input]: api/Phalcon_Http#http-message-stream-input
-[http-message-stream-memory]: api/Phalcon_Http#http-message-stream-memory
-[http-message-stream-temp]: api/Phalcon_Http#http-message-stream-temp
-[http-message-streamfactory]: api/Phalcon_Http#http-message-streamfactory
-[http-message-uploadedfile]: api/Phalcon_Http#http-message-uploadedfile
-[http-message-uploadedfilefactory]: api/Phalcon_Http#http-message-uploadedfilefactory
-[http-message-uri]: api/Phalcon_Http#http-message-uri
-[http-message-urifactory]: api/Phalcon_Http#http-message-urifactory
-[http-request]: api/Phalcon_Http#http-request
-[http-request-exception]: api/Phalcon_Http#http-request-exception
-[http-request-file]: api/Phalcon_Http#http-request-file
-[http-request-fileinterface]: api/Phalcon_Http#http-request-fileinterface
-[http-requestinterface]: api/Phalcon_Http#http-requestinterface
 [http-response]: api/Phalcon_Http#http-response
 [http-response-cookies]: api/Phalcon_Http#http-response-cookies
 [http-response-cookiesinterface]: api/Phalcon_Http#http-response-cookiesinterface
@@ -695,9 +702,8 @@ The [Phalcon\Http\Response][http-response] object implements the [Phalcon\Di\Inj
 [http-response-headers]: api/Phalcon_Http#http-response-headers
 [http-response-headersinterface]: api/Phalcon_Http#http-response-headersinterface
 [http-responseinterface]: api/Phalcon_Http#http-responseinterface
-[http-server-abstractmiddleware]: api/Phalcon_Http#http-server-abstractmiddleware
-[http-server-abstractrequesthandler]: api/Phalcon_Http#http-server-abstractrequesthandler
 [di-injectionawareinterface]: api/Phalcon_Di#di-injectionawareinterface
+[di-factorydefault]: api/Phalcon_Di#di-factorydefault
 [url]: api/Phalcon_Url
 [json-encode]: https://www.php.net/manual/en/function.json-encode.php
 [status-codes]: http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
