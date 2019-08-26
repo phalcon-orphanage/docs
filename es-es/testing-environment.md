@@ -357,6 +357,6 @@ Las extensiones de PHP activas son: - apcu - ctype - curl - dom - fileinfo - gd 
 
 Los volcados de base de datos se encuentran en `pruebas/_data/assets/db/schemas`
 
-Cualquier duda o pregunta puede resolverse en nuestro servidor de [Discord](https://phalcon.link/discord) o en nuestro [Foro](https://forum.phalcon.io).
+If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalcon.io).
 
 <3 Phalcon Team
