@@ -505,10 +505,10 @@ The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the 
 
 The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Events\EventsAware](api/Phalcon_Events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
-| Event                        | Περιγραφή                                        |
-| ---------------------------- | ------------------------------------------------ |
-| `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |
-| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |
+| Event                        | Περιγραφή                                        | Can stop operation |
+| ---------------------------- | ------------------------------------------------ |:------------------:|
+| `afterAuthorizationResolve`  | Fires when the authorization has been resolved   |        Όχι         |
+| `beforeAuthorizationResolve` | Fires before the authorization has been resolved |        Ναι         |
 
 When using HTTP authorization, the `Authorization` header has the following format:
 
