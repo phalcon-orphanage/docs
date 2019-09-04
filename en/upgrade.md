@@ -1239,18 +1239,6 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 |                                            | New        | Phalcon\Validation\AbstractValidatorComposite      |
 |                                            | New        | Phalcon\Validation\Exception                       |
 |                                            | New        | Phalcon\Validation\ValidatorFactory                |
-|                                            | New        | Phalcon\Validation\Validator\Alnum                 |
-|                                            | New        | Phalcon\Validation\Validator\Alpha                 |
-|                                            | New        | Phalcon\Validation\Validator\Between               |
-|                                            | New        | Phalcon\Validation\Validator\Callback              |
-|                                            | New        | Phalcon\Validation\Validator\Confirmation          |
-|                                            | New        | Phalcon\Validation\Validator\CreditCard            |
-|                                            | New        | Phalcon\Validation\Validator\Date                  |
-|                                            | New        | Phalcon\Validation\Validator\Digit                 |
-|                                            | New        | Phalcon\Validation\Validator\Email                 |
-|                                            | New        | Phalcon\Validation\Validator\Exception             |
-|                                            | New        | Phalcon\Validation\Validator\ExclusionIn           |
-|                                            | New        | Phalcon\Validation\Validator\File                  |
 |                                            | New        | Phalcon\Validation\Validator\File\AbstractFile     |
 |                                            | New        | Phalcon\Validation\Validator\File\MimeType         |
 |                                            | New        | Phalcon\Validation\Validator\File\Resolution\Equal |
@@ -1259,17 +1247,8 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 |                                            | New        | Phalcon\Validation\Validator\File\Size\Equal       |
 |                                            | New        | Phalcon\Validation\Validator\File\Size\Max         |
 |                                            | New        | Phalcon\Validation\Validator\File\Size\Min         |
-|                                            | New        | Phalcon\Validation\Validator\Identical             |
-|                                            | New        | Phalcon\Validation\Validator\InclusionIn           |
-|                                            | New        | Phalcon\Validation\Validator\Ip                    |
-|                                            | New        | Phalcon\Validation\Validator\Numericality          |
-|                                            | New        | Phalcon\Validation\Validator\PresenceOf            |
-|                                            | New        | Phalcon\Validation\Validator\Regex                 |
-|                                            | New        | Phalcon\Validation\Validator\StringLength          |
 |                                            | New        | Phalcon\Validation\Validator\StringLength\Max      |
 |                                            | New        | Phalcon\Validation\Validator\StringLength\Min      |
-|                                            | New        | Phalcon\Validation\Validator\Uniqueness            |
-|                                            | New        | Phalcon\Validation\Validator\Url                   |
 
 
 [php-support]: https://secure.php.net/supported-versions.php
