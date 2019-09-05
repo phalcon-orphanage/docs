@@ -6,6 +6,7 @@ title: 'Phalcon\Di'
 ---
 
 * [Phalcon\Di](#di)
+* [Phalcon\Di\AbstractDiAware](#di-abstractdiaware)
 * [Phalcon\Di\DiInterface](#di-diinterface)
 * [Phalcon\Di\Exception](#di-exception)
 * [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
@@ -304,6 +305,40 @@ protected function loadFromConfig( Config $config ): void;
 ```
 
 Loads services from a Config object.
+
+<h1 id="di-abstractdiaware">Abstract Class Phalcon\Di\AbstractDiAware</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractdiaware.zep)
+
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
+
+This abstract class offers common access to the DI in a class
+
+## Properties
+
+```php
+/**
+ * Dependency Injector
+ *
+ * @var DiInterface
+ */
+protected container;
+
+```
+
+## メソッド
+
+```php
+public function getDI(): DiInterface;
+```
+
+Returns the internal dependency injector
+
+```php
+public function setDI( DiInterface $container ): void;
+```
+
+Sets the dependency injector
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
