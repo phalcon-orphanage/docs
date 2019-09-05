@@ -102,7 +102,7 @@ The constructor accepts parameters allowing you to create the object with certai
 
 ### `getBody()`
 
-Returns the body as a `StreamInterface` object
+Returns the body as a `StreamInterface` object. This method is useful also when in need to quickly adjust the body of the message. You can check the methods you can call by checking the [Phalcon\Http\Message\Stream](http-stream) class.
 
 ```php
 <?php
@@ -116,6 +116,28 @@ $stream   = new Stream($fileName, 'rb');
 $response = new Response($stream);
 
 echo $response->getBody(); // '/assets/stream/bill-of-rights.txt'
+
+
+$response->getBody()->write('additional content goes here');
+```
+
+To get all the contents of the stream:
+
+```php
+<?php
+
+use Phalcon\Http\Message\Response;
+use Phalcon\Http\Message\Stream;
+
+$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$stream   = new Stream($fileName, 'rb');
+
+$response = new Response($stream);
+
+$body = $response->getBody();
+$body->rewind()
+
+$text = $body->getContents();
 ```
 
 ### `getHeader()`
