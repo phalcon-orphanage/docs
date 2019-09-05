@@ -277,7 +277,7 @@ Sets the default task suffix
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Extends | AbstractDiAware |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request.
 
@@ -300,9 +300,6 @@ echo $router->getTaskName();
 ```php
 //
 protected action;
-
-//
-protected container;
 
 //
 protected defaultAction;
@@ -370,12 +367,6 @@ public function getActionName(): string;
 Returns processed action name
 
 ```php
-public function getDI(): DiInterface;
-```
-
-Returns the internal dependency injector
-
-```php
 public function getMatchedRoute(): RouteInterface;
 ```
 
@@ -432,12 +423,6 @@ public function handle( mixed $arguments = null );
 Handles routing information received from command-line arguments
 
 @param array arguments
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
 
 ```php
 public function setDefaultAction( string $actionName );
