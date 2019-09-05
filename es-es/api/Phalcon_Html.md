@@ -470,7 +470,7 @@ public function __invoke( string $text, array $attributes = [] ): string;
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
-| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface, Phalcon\Mvc\Model\ResultsetInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Html | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface, Phalcon\Mvc\Model\ResultsetInterface | | Extends | AbstractDiAware |
 
 Phalcon\Html\Tag
 
@@ -495,11 +495,6 @@ const XHTML5 = 11;
 ## Properties
 
 ```php
-/**
- * @var DiInterface
- */
-protected container;
-
 /**
  * @var array
  */
@@ -679,12 +674,6 @@ Sintaxis Volt:
 ```
 
 ```php
-public function getDI(): DiInterface;
-```
-
-Returns the internal dependency injector
-
-```php
 public function getDocType(): string;
 ```
 
@@ -723,7 +712,7 @@ Sintaxis Volt:
 public function getTitleSeparator(): string;
 ```
 
-Obtiene el separador de título del documento actual
+Gets the current document title separator
 
 ```php
 use Phalcon\Html\Tag;
@@ -755,7 +744,7 @@ Check if a helper has a default value set using `setAttribute()` or value from $
 public function image( string $url = string, array $parameters = [] ): string;
 ```
 
-Construye etiquetas IMG de HTML
+Builds HTML IMG tags
 
 Parameters `local` Local resource or not (default `true`)
 
@@ -793,7 +782,7 @@ Sintaxis Volt:
 public function inputCheckbox( string $name, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta input[type="check"] de HTML
+Builds a HTML input[type="check"] tag
 
 ```php
 echo $tag->inputCheckbox(
@@ -962,7 +951,7 @@ echo $tag->inputHidden(
 public function inputImage( string $name, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta Input[type="image"] de HTML
+Builds a HTML input[type="image"] tag
 
 ```php
 use Phalcon\Html\Tag;
@@ -1030,7 +1019,7 @@ echo $tag->passwordField(
 public function inputRadio( string $name, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta Input[type="radio"] de HTML
+Builds a HTML input[type="radio"] tag
 
 ```php
 use Phalcon\Html\Tag;
@@ -1140,7 +1129,7 @@ Sintaxis Volt:
 public function link( string $url, string $text = string, array $parameters = [] ): string;
 ```
 
-Construye un etiqueta HTML A usando convenciones del framework
+Builds a HTML A tag using framework conventions
 
 Parameters `local` Local resource or not (default `true`)
 
@@ -1181,7 +1170,7 @@ echo $tag->link(
 public function prependTitle( mixed $title ): Tag;
 ```
 
-Antepone un texto al título del documento actual
+Prepends a text to current document title
 
 ```php
 public function renderTitle( bool $prepend = bool, bool $append = bool ): string;
@@ -1319,22 +1308,16 @@ echo $tag->inputText('name'); // Will have the value 'peter' by default
 ```
 
 ```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
-
-```php
 public function setDocType( int $doctype ): Tag;
 ```
 
-Establece el tipo del documento de contenido
+Set the document type of content
 
 ```php
 public function setTitle( string $title ): Tag;
 ```
 
-Establece el separador de título del contenido vizualizado
+Set the title separator of view content
 
 ```php
 use Phalcon\Html\Tag;
@@ -1348,7 +1331,7 @@ $tag->setTitle('Phalcon Framework');
 public function setTitleSeparator( string $separator ): Tag;
 ```
 
-Establece el separador de título del contenido vizualizado
+Set the title separator of view content
 
 ```php
 use Phalcon\Html\Tag;
@@ -1362,7 +1345,7 @@ echo $tag->setTitleSeparator('-');
 public function stylesheet( string $url, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta LINK[rel="stylesheet"]
+Builds a LINK[rel="stylesheet"] tag
 
 Parameters `local` Local resource or not (default `true`)
 
@@ -1392,7 +1375,7 @@ Sintaxis Volt:
 public function submit( string $name, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta input[type="submit"] de HTML
+Builds a HTML input[type="submit"] tag
 
 ```php
 use Phalcon\Html\Tag;
@@ -1412,7 +1395,7 @@ Sintaxis Volt:
 public function textArea( string $name, array $parameters = [] ): string;
 ```
 
-Construye una etiqueta TEXTAREA de HTML
+Builds a HTML TEXTAREA tag
 
 ```php
 use Phalcon\Html\Tag;

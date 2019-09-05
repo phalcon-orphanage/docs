@@ -13,7 +13,7 @@ title: 'Phalcon\Url'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Url\UrlInterface, Phalcon\Url\Exception, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface | | Implements | UrlInterface, InjectionAwareInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface | | Extends | AbstractDiAware | | Implements | UrlInterface |
 
 This components helps in the generation of: URIs, URLs and Paths
 
@@ -45,11 +45,8 @@ protected baseUri;
 protected basePath;
 
 /**
- * @var <DiInterface>
+ * @var <RouterInterface> | null
  */
-protected container;
-
-//
 protected router;
 
 /**
@@ -60,6 +57,12 @@ protected staticBaseUri;
 ```
 
 ## メソッド
+
+```php
+public function __construct( RouterInterface $router = null );
+```
+
+//
 
 ```php
 public function get( mixed $uri = null, mixed $args = null, bool $local = null, mixed $baseUri = null ): string;
@@ -108,12 +111,6 @@ public function getBaseUri(): string;
 ```
 
 Returns the prefix for all the generated urls. By default /
-
-```php
-public function getDI(): DiInterface;
-```
-
-Returns the DependencyInjector container
 
 ```php
 public function getStatic( mixed $uri = null ): string;
@@ -166,12 +163,6 @@ $url->setBaseUri("/invo/");
 
 $url->setBaseUri("/invo/index.php/");
 ```
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the DependencyInjector container
 
 ```php
 public function setStaticBaseUri( string $staticBaseUri ): UrlInterface;
