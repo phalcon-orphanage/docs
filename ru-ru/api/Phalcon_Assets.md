@@ -829,7 +829,7 @@ Phalcon\Assets\Inline\Js constructor
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset, Phalcon\Assets\Collection, Phalcon\Assets\Exception, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset, Phalcon\Assets\Collection, Phalcon\Assets\Exception, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware | | Extends | AbstractDiAware |
 
 Phalcon\Assets\Manager
 
@@ -840,11 +840,6 @@ Manages collections of CSS/Javascript assets
 ```php
 //
 protected collections;
-
-/**
- * @var DiInterface
- */
-protected container;
 
 /**
  * Options configure
@@ -986,12 +981,6 @@ public function getCss(): Collection;
 Returns the CSS collection of assets
 
 ```php
-public function getDI(): DiInterface;
-```
-
-Returns the internal dependency injector
-
-```php
 public function getJs(): Collection;
 ```
 
@@ -1052,12 +1041,6 @@ Sets a collection in the Assets Manager
 ```php
 $assets->set("js", $collection);
 ```
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
 
 ```php
 public function setOptions( array $options ): Manager;
