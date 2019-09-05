@@ -14,8 +14,8 @@ title: 'Phalcon\Security'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Session\ManagerInterface |
-| Implements | InjectionAwareInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractDiAware |
 
 This component provides a set of functions to improve the security in Phalcon
 applications
@@ -51,9 +51,6 @@ const CRYPT_STD_DES = 1;
 ## Properties
 ```php
 //
-protected container;
-
-//
 protected defaultHash;
 
 //
@@ -80,11 +77,17 @@ protected tokenValueSessionId = $PHALCON/CSRF$;
 //
 protected workFactor = 8;
 
+//
+private localSession;
+
+//
+private localRequest;
+
 ```
 
 ## Methods
 ```php
-public function __construct(): void;
+public function __construct( SessionInterface $session = null, RequestInterface $request = null ): void;
 ```
 Phalcon\Security constructor
 
@@ -116,12 +119,6 @@ Removes the value of the CSRF token and key from session
 
 
 ```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
-
-
-```php
 public function getDefaultHash(): int | null;
 ```
  Returns the default hash
@@ -141,7 +138,7 @@ generator
 
 
 ```php
-public function getRequestToken(): string;
+public function getRequestToken(): string | null;
 ```
 Returns the value of the CSRF token for the current request.
 
@@ -154,7 +151,7 @@ passwords
 
 
 ```php
-public function getSessionToken(): string;
+public function getSessionToken(): string | null;
 ```
 Returns the value of the CSRF token in session
 
@@ -188,12 +185,6 @@ Creates a password hash using bcrypt with a pseudo random salt
 public function isLegacyHash( string $passwordHash ): bool;
 ```
 Checks if a password hash is a valid bcrypt's hash
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php

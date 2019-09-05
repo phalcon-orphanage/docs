@@ -550,8 +550,8 @@ public function __invoke( string $text, array $attributes = [] ): string;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/tag.zep)
 
 | Namespace  | Phalcon\Html |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface, Phalcon\Mvc\Model\ResultsetInterface |
-| Implements | InjectionAwareInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Escaper, Phalcon\Escaper\EscaperInterface, Phalcon\Helper\Arr, Phalcon\Html\Exception, Phalcon\Url\UrlInterface, Phalcon\Mvc\Model\ResultsetInterface |
+| Extends    | AbstractDiAware |
 
 Phalcon\Html\Tag
 
@@ -576,11 +576,6 @@ const XHTML5 = 11;
 
 ## Properties
 ```php
-/**
- * @var DiInterface
- */
-protected container;
-
 /**
  * @var array
  */
@@ -762,12 +757,6 @@ Volt Syntax:
 ```php
 {% raw %}{{ friendly_title(['text': 'These are big important news', 'separator': '-']) }}{% endraw %}
 ```
-
-
-```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
 
 
 ```php
@@ -1396,12 +1385,6 @@ $tag->setAttribute(
 // Later in the view
 echo $tag->inputText('name'); // Will have the value 'peter' by default
 ```
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php

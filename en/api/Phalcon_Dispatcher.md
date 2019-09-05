@@ -14,8 +14,9 @@ title: 'Phalcon\Dispatcher'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/dispatcher/abstractdispatcher.zep)
 
 | Namespace  | Phalcon\Dispatcher |
-| Uses       | Exception, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Dispatcher\DispatcherInterface, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface |
-| Implements | DispatcherInterface, InjectionAwareInterface, EventsAwareInterface |
+| Uses       | Exception, Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Dispatcher\DispatcherInterface, Phalcon\Dispatcher\Exception, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Mvc\Model\Binder, Phalcon\Mvc\Model\BinderInterface |
+| Extends    | AbstractDiAware |
+| Implements | DispatcherInterface, EventsAwareInterface |
 
 This is the base class for Phalcon\Mvc\Dispatcher and Phalcon\Cli\Dispatcher.
 This class can't be instantiated directly, you can use it to create your own
@@ -44,9 +45,6 @@ protected actionSuffix = Action;
  * @var array
  */
 protected camelCaseMap;
-
-//
-protected container;
 
 /**
  * @var string
@@ -198,12 +196,6 @@ class UserController extends Controller
 
 
 ```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
-
-
-```php
 public function getDefaultNamespace(): string;
 ```
 Returns the default namespace
@@ -291,12 +283,6 @@ Sets the action name to be dispatched
 public function setActionSuffix( string $actionSuffix ): void;
 ```
 Sets the default action suffix
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php

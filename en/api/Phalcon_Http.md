@@ -47,17 +47,15 @@ title: 'Phalcon\Http'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Crypt\CryptInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Crypt\Mismatch, Phalcon\Session\ManagerInterface |
-| Implements | CookieInterface, InjectionAwareInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractDiAware |
+| Implements | CookieInterface |
 
 Provide OO wrappers to manage a HTTP cookie.
 
 
 ## Properties
 ```php
-//
-protected container;
-
 //
 protected domain;
 
@@ -116,12 +114,6 @@ Magic __toString method converts the cookie's value to string
 public function delete();
 ```
 Deletes the cookie by setting an expire time in the past
-
-
-```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
 
 
 ```php
@@ -189,12 +181,6 @@ public function send(): CookieInterface;
 Sends the cookie to the HTTP client.
 
 Stores the cookie definition in session.
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php
@@ -2436,8 +2422,9 @@ functions
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, UnexpectedValueException, stdClass |
-| Implements | RequestInterface, InjectionAwareInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
+| Extends    | AbstractDiAware |
+| Implements | RequestInterface |
 
 Encapsulates request information for easy and secure access from application
 controllers.
@@ -2467,9 +2454,6 @@ $request->getLanguages();
 
 ## Properties
 ```php
-//
-private container;
-
 //
 private filterService;
 
@@ -2566,12 +2550,6 @@ from _SERVER["HTTP_ACCEPT_CHARSET"]
 public function getContentType(): string | null;
 ```
 Gets content type which request has been made
-
-
-```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
 
 
 ```php
@@ -2948,12 +2926,6 @@ if _SERVER["REQUEST_METHOD"]==="TRACE"
 public function isValidHttpMethod( string $method ): bool;
 ```
 Checks if a method is a valid HTTP method
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php
@@ -3626,7 +3598,7 @@ if $_SERVER["REQUEST_METHOD"] === "TRACE"
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
+| Uses       | DateTime, DateTimeZone, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Helper\Fs, Phalcon\Http\Response\Exception, Phalcon\Http\Response\HeadersInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Url\UrlInterface, Phalcon\Mvc\ViewInterface, Phalcon\Http\Response\Headers, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface |
 | Implements | ResponseInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Part of the HTTP cycle is return responses to the clients.
@@ -3975,8 +3947,9 @@ $response->setStatusCode(404, "Not Found");
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Http\Cookie\Exception |
-| Implements | CookiesInterface, InjectionAwareInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Cookie\Exception |
+| Extends    | AbstractDiAware |
+| Implements | CookiesInterface |
 
 Phalcon\Http\Response\Cookies
 
@@ -4029,9 +4002,6 @@ $di->set(
 ## Properties
 ```php
 //
-protected container;
-
-//
 protected cookies;
 
 //
@@ -4072,12 +4042,6 @@ Gets a cookie from the bag
 public function getCookies(): array;
 ```
 Gets all cookies from the bag
-
-
-```php
-public function getDI(): DiInterface;
-```
-Returns the internal dependency injector
 
 
 ```php
@@ -4126,12 +4090,6 @@ $cookies->set(
     (int) $tomorrow->format('U'),
 );
 ```
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the dependency injector
 
 
 ```php

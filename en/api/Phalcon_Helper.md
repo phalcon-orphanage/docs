@@ -7,6 +7,7 @@ title: 'Phalcon\Helper'
 
 * [Phalcon\Helper\Arr](#helper-arr)
 * [Phalcon\Helper\Exception](#helper-exception)
+* [Phalcon\Helper\Fs](#helper-fs)
 * [Phalcon\Helper\Number](#helper-number)
 * [Phalcon\Helper\Str](#helper-str)
         
@@ -29,6 +30,16 @@ This class offers quick array functions throughout the framework
 | Extends    | \Phalcon\Exception |
 
 Exceptions thrown in Phalcon\Helper will use this class
+
+
+        
+<h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/fs.zep)
+
+| Namespace  | Phalcon\Helper |
+
+This class offers file operation helper
 
 
         

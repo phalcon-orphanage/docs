@@ -280,7 +280,10 @@ public function gc( mixed $maxlifetime ): bool;
 ```php
 public function open( mixed $savePath, mixed $sessionName ): bool;
 ```
-//
+   Ignore the savePath and use local defined path
+   
+   @return bool
+   
 
 ```php
 public function read( mixed $id ): string;
@@ -393,8 +396,9 @@ Exceptions thrown in Phalcon\Session will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\DiInterface, Phalcon\DI\InjectionAwareInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
-| Implements | ManagerInterface, InjectionAwareInterface |
+| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DI\AbstractDiAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractDiAware |
+| Implements | ManagerInterface |
 
 Phalcon\Session\Manager
 
@@ -403,11 +407,6 @@ Session manager class
 
 ## Properties
 ```php
-/**
- * @var <DiInterface>
- */
-private container;
-
 /**
  * @var <SessionHandlerInterface>|null
  */
@@ -480,12 +479,6 @@ Gets a session variable from an application context
 
 
 ```php
-public function getDI(): DiInterface;
-```
-Returns the DependencyInjector container
-
-
-```php
 public function getHandler(): SessionHandlerInterface;
 ```
 Returns the stored session handler
@@ -537,12 +530,6 @@ Removes a session variable from an application context
 public function set( string $key, mixed $value ): void;
 ```
 Sets a session variable in an application context
-
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-Sets the DependencyInjector container
 
 
 ```php

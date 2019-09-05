@@ -12,7 +12,7 @@ title: 'HTTP Request (PSR-7)'
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-These interface implementations have been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request][http-message-request] object. In return, our application will receive back a response object. 
+This implementation has been created to establish a standard between middleware implementations. Applications often need to send requests to external endpoints. To achieve this you can use the [Phalcon\Http\Message\Request][http-message-request] object. In return, our application will receive back a response object. 
 
 > **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
 {: .alert .alert-info }
@@ -258,32 +258,10 @@ Returns a string representing the message's request-target either as it will app
 
 use Phalcon\Http\Message\Request;
 
-$jwtToken = 'abc.def.ghi';
+$request = new Request();
+$request = $request->withRequestTarget('/test');
 
-$request = new Request(
-    'POST',
-    'https://api.phalcon.io/companies/1',
-    'php://memory',
-    [
-        'Authorization' => 'Bearer ' . $jwtToken,
-        'Content-Type'  => [
-            'application/json',
-            'application/html',
-        ],
-    ]
-);
-
-var_dump(
-    $request->getHeaders()
-);
-// [
-//     'Authorization' => 'Bearer abc.def.ghi',
-//     'Content-Type'  => [
-//         'application/json',
-//         'application/html',
-//     ],
-// ]
-
+echo $request->getRequestTarget(); // '/test'
 ```
 
 ### `getUri()`
@@ -376,7 +354,13 @@ var_dump(
 //     ],
 // ]
 
-$clone = $request->withAddedHeader('Content-Type', ['application/html']);
+$clone = $request
+    ->withAddedHeader(
+        'Content-Type', 
+        [
+            'application/html'
+        ]
+    );
 
 var_dump(
     $clone->getHeaders()
