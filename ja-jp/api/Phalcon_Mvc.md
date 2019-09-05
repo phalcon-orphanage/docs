@@ -2178,7 +2178,7 @@ Calls the middleware
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\InjectionAwareInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Phalcon\Events\ManagerInterface, Serializable | | Implements | EntityInterface, ModelInterface, ResultInterface, InjectionAwareInterface, Serializable, JsonSerializable |
+| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractDiAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Phalcon\Events\ManagerInterface, Serializable | | Extends | AbstractDiAware | | Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
 
 Phalcon\Mvc\Model
 
@@ -2224,9 +2224,6 @@ const TRANSACTION_INDEX = transaction;
 ## Properties
 
 ```php
-//
-protected container;
-
 //
 protected dirtyState = 1;
 
@@ -2510,12 +2507,6 @@ print_r($robots->getChangedFields()); // ["deleted"]
 ```
 
 ```php
-public function getDI(): DiInterface;
-```
-
-Returns the dependency injection container
-
-```php
 public function getDirtyState(): int;
 ```
 
@@ -2771,12 +2762,6 @@ final public function setConnectionService( string $connectionService ): ModelIn
 ```
 
 Sets the DependencyInjection connection service name
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injection container
 
 ```php
 public function setDirtyState( int $dirtyState ): ModelInterface | bool;
@@ -9247,7 +9232,7 @@ Registers services related to the module
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/router.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\Exception, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | InjectionAwareInterface, RouterInterface, EventsAwareInterface |
+| Namespace | Phalcon\Mvc | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Http\RequestInterface, Phalcon\Mvc\Router\Exception, Phalcon\Mvc\Router\GroupInterface, Phalcon\Mvc\Router\Route, Phalcon\Mvc\Router\RouteInterface | | Extends | AbstractDiAware | | Implements | RouterInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Router
 
@@ -9285,9 +9270,6 @@ const POSITION_LAST = 1;
 ```php
 //
 protected action;
-
-//
-protected container;
 
 //
 protected controller;
@@ -9482,12 +9464,6 @@ public function getControllerName(): string;
 Returns the processed controller name
 
 ```php
-public function getDI(): DiInterface;
-```
-
-Returns the internal dependency injector
-
-```php
 public function getDefaults(): array;
 ```
 
@@ -9589,12 +9565,6 @@ public function removeExtraSlashes( bool $remove ): RouterInterface;
 ```
 
 Set whether router must remove the extra slashes in the handled routes
-
-```php
-public function setDI( DiInterface $container ): void;
-```
-
-Sets the dependency injector
 
 ```php
 public function setDefaultAction( string $actionName ): RouterInterface;
