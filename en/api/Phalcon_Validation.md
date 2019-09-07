@@ -2470,7 +2470,7 @@ Executes the validation
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/uniqueness.zep)
 
 | Namespace  | Phalcon\Validation\Validator |
-| Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\CollectionInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Collection |
+| Uses       | Phalcon\Messages\Message, Phalcon\Mvc\Model, Phalcon\Mvc\ModelInterface, Phalcon\Validation, Phalcon\Validation\AbstractCombinedFieldsValidator, Phalcon\Validation\Exception |
 | Extends    | AbstractCombinedFieldsValidator |
 
 Check that a field is unique in the related table
@@ -2570,12 +2570,6 @@ The column map is used in the case to get real column name
 protected function isUniqueness( Validation $validation, mixed $field ): bool;
 ```
 //
-
-```php
-protected function isUniquenessCollection( mixed $record, array $field, array $values );
-```
-Uniqueness method used for collection
-
 
 ```php
 protected function isUniquenessModel( mixed $record, array $field, array $values );

@@ -16,8 +16,9 @@ title: 'Phalcon\Flash'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/abstractflash.zep)
 
 | Namespace  | Phalcon\Flash |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception |
-| Implements | FlashInterface, InjectionAwareInterface |
+| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractInjectionAware |
+| Implements | FlashInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be
 stylized using CSS
@@ -50,10 +51,9 @@ protected cssClasses;
  */
 protected customTemplate = ;
 
-//
-protected container;
-
-//
+/**
+ * @var EscaperInterface | null
+ */
 protected escaperService;
 
 /**
@@ -61,14 +61,21 @@ protected escaperService;
  */
 protected implicitFlush = true;
 
-//
+/**
+ * @var array
+ */
 protected messages;
+
+/**
+ * @var SessionInterface | null
+ */
+protected sessionService;
 
 ```
 
 ## Methods
 ```php
-public function __construct( mixed $cssClasses = null ): void;
+public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null ): void;
 ```
 Phalcon\Flash constructor
 
@@ -96,15 +103,13 @@ Returns the autoescape mode in generated html
 
 
 ```php
-public function getCustomTemplate(): string;
+public function getCssClasses(): array
 ```
-Returns the custom template set
 
 
 ```php
-public function getDI(): DiInterface;
+public function getCustomTemplate(): string
 ```
-Returns the internal dependency injector
 
 
 ```php
@@ -137,7 +142,7 @@ $flash->outputMessage("error", $message);
 
 
 ```php
-public function setAutoescape( bool $autoescape ): Flash;
+public function setAutoescape( bool $autoescape ): FlashInterface;
 ```
 Set the autoescape mode in generated html
 
@@ -158,12 +163,6 @@ Set an array with CSS classes to format the messages
 public function setCustomTemplate( string $customTemplate ): FlashInterface;
 ```
 Set an custom template for showing the messages
-
-
-```php
-public function setDI( DiInterface $container ): FlashInterface;
-```
-Sets the dependency injector
 
 
 ```php
@@ -215,7 +214,7 @@ passed to it
 
 ## Methods
 ```php
-public function message( string $type, mixed $message ): string;
+public function message( string $type, mixed $message ): string | null;
 ```
 Outputs a message
 
@@ -258,7 +257,7 @@ Shows a HTML error message
 
 
 ```php
-public function message( string $type, string $message );
+public function message( string $type, string $message ): string | null;
 ```
 Outputs a message
 
@@ -309,13 +308,19 @@ Returns the messages in the session flasher
 
 
 ```php
+public function getSessionService(): SessionInterface;
+```
+Returns the Session Service
+
+
+```php
 public function has( mixed $type = null ): bool;
 ```
 Checks whether there are messages
 
 
 ```php
-public function message( string $type, string $message ): void;
+public function message( string $type, string $message ): string | null;
 ```
 Adds a message to the session flasher
 

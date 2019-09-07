@@ -396,8 +396,8 @@ Exceptions thrown in Phalcon\Session will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DI\AbstractDiAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractDiAware |
+| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DI\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractInjectionAware |
 | Implements | ManagerInterface |
 
 Phalcon\Session\Manager

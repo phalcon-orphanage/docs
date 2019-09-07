@@ -47,8 +47,8 @@ title: 'Phalcon\Http'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
-| Extends    | AbstractDiAware |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
+| Extends    | AbstractInjectionAware |
 | Implements | CookieInterface |
 
 Provide OO wrappers to manage a HTTP cookie.
@@ -2422,8 +2422,8 @@ functions
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
-| Extends    | AbstractDiAware |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Events\ManagerInterface, Phalcon\Filter\FilterInterface, Phalcon\Http\Request\File, Phalcon\Http\Request\FileInterface, Phalcon\Http\Request\Exception, UnexpectedValueException, stdClass |
+| Extends    | AbstractInjectionAware |
 | Implements | RequestInterface |
 
 Encapsulates request information for easy and secure access from application
@@ -3947,8 +3947,8 @@ $response->setStatusCode(404, "Not Found");
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Cookie\Exception |
-| Extends    | AbstractDiAware |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Cookie\Exception |
+| Extends    | AbstractInjectionAware |
 | Implements | CookiesInterface |
 
 Phalcon\Http\Response\Cookies

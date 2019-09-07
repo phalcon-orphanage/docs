@@ -14,8 +14,8 @@ title: 'Phalcon\Url'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/url.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface |
-| Extends    | AbstractDiAware |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Mvc\RouterInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Url\Exception, Phalcon\Url\UrlInterface |
+| Extends    | AbstractInjectionAware |
 | Implements | UrlInterface |
 
 This components helps in the generation of: URIs, URLs and Paths
