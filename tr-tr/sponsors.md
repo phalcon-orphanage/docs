@@ -42,6 +42,10 @@ For those that wish to sponsor our work and further the development of Phalcon, 
         <img src="https://assets.phalcon.io/phalcon/images/backers/crowdin.png"
              alt="Crowdin">
     </a>
+    <a href="https://www.uptrends.com" class="phalcon-blog__sponsors-item">
+        <img src="https://assets.phalcon.io/phalcon/images/backers/uptrends-200x60.svg"
+             alt="Uptrends Web Application Monitoring">
+    </a>
     <a href="https://phalcon.link/fund" class="phalcon-blog__sponsors-item">
         <span>Support Us</span>
     </a>
