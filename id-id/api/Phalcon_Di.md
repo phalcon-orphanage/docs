@@ -6,7 +6,7 @@ title: 'Phalcon\Di'
 ---
 
 * [Phalcon\Di](#di)
-* [Phalcon\Di\AbstractDiAware](#di-abstractdiaware)
+* [Phalcon\Di\AbstractInjectionAware](#di-abstractinjectionaware)
 * [Phalcon\Di\DiInterface](#di-diinterface)
 * [Phalcon\Di\Exception](#di-exception)
 * [Phalcon\Di\Exception\ServiceResolutionException](#di-exception-serviceresolutionexception)
@@ -306,9 +306,9 @@ protected function loadFromConfig( Config $config ): void;
 
 Loads services from a Config object.
 
-<h1 id="di-abstractdiaware">Abstract Class Phalcon\Di\AbstractDiAware</h1>
+<h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractdiaware.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
 

@@ -277,7 +277,7 @@ Sets the default task suffix
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
-| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractDiAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Extends | AbstractDiAware |
+| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception | | Extends | AbstractInjectionAware |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process of taking a command-line arguments and decomposing it into parameters to determine which module, task, and action of that task should receive the request.
 
