@@ -97,9 +97,8 @@ $flash->error("This is an error");
 
 
 ```php
-public function getAutoescape(): bool;
+public function getAutoescape(): bool
 ```
-Returns the autoescape mode in generated html
 
 
 ```php

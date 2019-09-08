@@ -328,7 +328,6 @@ $flash->clear();
 {: .alert .alert-info }
 
 ## Implicit Flush
-
 By default implicit flushing is set to `true`. You can however turn it off by using `setImplicitFlush(false)`. The purpose of this method is to set whether the output must be implicitly flushed to the output or returned as string
 
 ```php
