@@ -373,8 +373,8 @@ echo Enum::FETCH_ASSOC;
 
 ## Dispatcher
 
-- Removed Phalcon\Dispatcher::setModelBinding in favor of Phalcon\Dispatcher::setModelBinder
-- Added getHandlerSuffix(), setHandlerSuffix()
+- Removed `Phalcon\Dispatcher::setModelBinding()` in favor of `Phalcon\Dispatcher::setModelBinder()`
+- Added `getHandlerSuffix()`, `setHandlerSuffix()`
 
 * * *
 
@@ -389,6 +389,8 @@ echo Enum::FETCH_ASSOC;
 ## Flash
 
 - Added ability to set a custom template for the Flash Messenger.
+- Constructor no longer accepts an array for the CSS classes. You will need to use `setCssClasses()` to set your custom CSS classes for the component
+- The constructor now accepts an optional `Phalcon\Escaper` object, as well as a `Phalcon\Session\Manager` object (in the case of `Phalcon\Flash\Session`), in case you do not wish to use the DI and set it yourself.
 
 * * *
 

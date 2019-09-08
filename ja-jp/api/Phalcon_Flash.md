@@ -15,7 +15,7 @@ title: 'Phalcon\Flash'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/abstractflash.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception | | Implements | FlashInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | FlashInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -47,10 +47,9 @@ protected cssClasses;
  */
 protected customTemplate = ;
 
-//
-protected container;
-
-//
+/**
+ * @var EscaperInterface | null
+ */
 protected escaperService;
 
 /**
@@ -58,15 +57,22 @@ protected escaperService;
  */
 protected implicitFlush = true;
 
-//
+/**
+ * @var array
+ */
 protected messages;
+
+/**
+ * @var SessionInterface | null
+ */
+protected sessionService;
 
 ```
 
 ## メソッド
 
 ```php
-public function __construct( mixed $cssClasses = null ): void;
+public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null ): void;
 ```
 
 Phalcon\Flash constructor
@@ -94,16 +100,12 @@ public function getAutoescape(): bool;
 Returns the autoescape mode in generated html
 
 ```php
-public function getCustomTemplate(): string;
+public function getCssClasses(): array
 ```
-
-Returns the custom template set
 
 ```php
-public function getDI(): DiInterface;
+public function getCustomTemplate(): string
 ```
-
-Returns the internal dependency injector
 
 ```php
 public function getEscaperService(): EscaperInterface;
@@ -134,7 +136,7 @@ $flash->outputMessage("error", $message);
 @param string|array message @return string|void
 
 ```php
-public function setAutoescape( bool $autoescape ): Flash;
+public function setAutoescape( bool $autoescape ): FlashInterface;
 ```
 
 Set the autoescape mode in generated html
@@ -156,12 +158,6 @@ public function setCustomTemplate( string $customTemplate ): FlashInterface;
 ```
 
 Set an custom template for showing the messages
-
-```php
-public function setDI( DiInterface $container ): FlashInterface;
-```
-
-Sets the dependency injector
 
 ```php
 public function setEscaperService( EscaperInterface $escaperService ): FlashInterface;
@@ -206,7 +202,7 @@ This is a variant of the Phalcon\Flash that immediately outputs any message pass
 ## メソッド
 
 ```php
-public function message( string $type, mixed $message ): string;
+public function message( string $type, mixed $message ): string | null;
 ```
 
 Outputs a message
@@ -244,7 +240,7 @@ public function error( string $message ): string;
 Shows a HTML error message
 
 ```php
-public function message( string $type, string $message );
+public function message( string $type, string $message ): string | null;
 ```
 
 Outputs a message
@@ -290,13 +286,19 @@ public function getMessages( mixed $type = null, bool $remove = bool ): array;
 Returns the messages in the session flasher
 
 ```php
+public function getSessionService(): SessionInterface;
+```
+
+Returns the Session Service
+
+```php
 public function has( mixed $type = null ): bool;
 ```
 
 Checks whether there are messages
 
 ```php
-public function message( string $type, string $message ): void;
+public function message( string $type, string $message ): string | null;
 ```
 
 Adds a message to the session flasher
