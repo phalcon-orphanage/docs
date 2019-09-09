@@ -139,8 +139,6 @@ public function getOption( mixed $option, mixed $filters = null, mixed $defaultV
 
 Gets an option by its name or numeric index
 
-@param mixed $option @param string|array $filters @param mixed $defaultValue
-
 ```php
 public function getOptions(): array;
 ```
@@ -358,8 +356,6 @@ Adds a route to the router
 $router->add("/about", "About::main");
 ```
 
-@param string|array paths
-
 ```php
 public function getActionName(): string;
 ```
@@ -396,8 +392,6 @@ public function getRouteById( mixed $id ): RouteInterface | bool;
 
 Returns a route object by its id
 
-@param int id
-
 ```php
 public function getRouteByName( string $name ): RouteInterface | bool;
 ```
@@ -421,8 +415,6 @@ public function handle( mixed $arguments = null );
 ```
 
 Handles routing information received from command-line arguments
-
-@param array arguments
 
 ```php
 public function setDefaultAction( string $actionName );
@@ -529,15 +521,11 @@ protected static uniqueId = 0;
 public function __construct( string $pattern, mixed $paths = null ): void;
 ```
 
-@param array|string paths
-
 ```php
 public function beforeMatch( mixed $callback ): RouteInterface;
 ```
 
 Sets a callback that is called if the route is matched. The developer can implement any arbitrary conditions here If the callback returns false the route is treated as not matched
-
-@param callback callback
 
 ```php
 public function compilePattern( string $pattern ): string;
@@ -551,7 +539,11 @@ public function convert( string $name, mixed $converter ): RouteInterface;
 
 Adds a converter to perform an additional transformation for certain parameter
 
-@param callable converter
+```php
+public static function delimiter( string $delimiter = null ): void;
+```
+
+Set the routing delimiter
 
 ```php
 public function extractNamedParams( string $pattern ): array | bool;
@@ -576,6 +568,12 @@ public function getConverters(): array;
 ```
 
 Returns the router converter
+
+```php
+public static function getDelimiter(): string;
+```
+
+Get routing delimiter
 
 ```php
 public function getDescription(): string;
@@ -619,7 +617,11 @@ public function reConfigure( string $pattern, mixed $paths = null ): void;
 
 Reconfigure the route adding a new pattern and a set of paths
 
-@param array|string paths
+```php
+public static function reset(): void;
+```
+
+Resets the internal route id generator
 
 ```php
 public function setDescription( string $description ): RouteInterface;
@@ -659,10 +661,22 @@ public function compilePattern( string $pattern ): string;
 Replaces placeholders from pattern returning a valid PCRE regular expression
 
 ```php
+public static function delimiter( string $delimiter = null );
+```
+
+Set the routing delimiter
+
+```php
 public function getCompiledPattern(): string;
 ```
 
 Returns the route's pattern
+
+```php
+public static function getDelimiter(): string;
+```
+
+Get routing delimiter
 
 ```php
 public function getDescription(): string;
@@ -705,6 +719,12 @@ public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 
 Reconfigure the route adding a new pattern and a set of paths
+
+```php
+public static function reset(): void;
+```
+
+Resets the internal route id generator
 
 ```php
 public function setDescription( string $description ): RouteInterface;
@@ -793,8 +813,6 @@ public function handle( mixed $arguments = null );
 ```
 
 Handles routing information received from the rewrite engine
-
-@param array arguments
 
 ```php
 public function setDefaultAction( string $actionName ): void;
