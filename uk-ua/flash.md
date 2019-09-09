@@ -388,7 +388,7 @@ will produce
 
 ## Dependency Injection
 
-If you use the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container, the [Phalcon\Flash\Direct](api/Phalcon_Flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) is already registered for you with the name `flashSession`.
+If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, the [Phalcon\Flash\Direct](api/Phalcon_Flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) is already registered for you with the name `flashSession`.
 
 An example of the registration of the service as well as accessing it is below:
 
