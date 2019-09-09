@@ -16,3 +16,11 @@ title: 'Phalcon\Exception'
 Phalcon\Exception
 
 All framework exceptions should use or extend this exception
+
+## Métodos
+
+```php
+public static function containerServiceNotFound( string $service ): string;
+```
+
+//
