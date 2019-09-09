@@ -126,8 +126,6 @@ public function liquidRescale( int $width, int $height, int $deltaX = int, int $
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
-@param int $width new width @param int $height new height @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight. @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
-
 ```php
 public function mask( AdapterInterface $watermark ): Adapter;
 ```
@@ -321,6 +319,18 @@ public function __destruct();
 //
 
 ```php
+public static function check(): bool;
+```
+
+//
+
+```php
+public static function getVersion(): string;
+```
+
+//
+
+```php
 protected function processBackground( int $r, int $g, int $b, int $opacity );
 ```
 
@@ -456,6 +466,12 @@ public function __destruct();
 Destroys the loaded image to free up resources.
 
 ```php
+public static function check(): bool;
+```
+
+Checks if Imagick is enabled
+
+```php
 public function getInternalImInstance(): \Imagick;
 ```
 
@@ -481,8 +497,6 @@ protected function processBlur( int $radius );
 
 Blur image
 
-@param int $radius Blur radius
-
 ```php
 protected function processCrop( int $width, int $height, int $offsetX, int $offsetY );
 ```
@@ -501,8 +515,6 @@ protected function processLiquidRescale( int $width, int $height, int $deltaX, i
 
 This method scales the images using liquid rescaling method. Only support Imagick
 
-@param int $width new width @param int $height new height @param int $deltaX How much the seam can traverse on x-axis. Passing 0 causes the seams to be straight. @param int $rigidity Introduces a bias for non-straight seams. This parameter is typically 0.
-
 ```php
 protected function processMask( AdapterInterface $image );
 ```
@@ -514,8 +526,6 @@ protected function processPixelate( int $amount );
 ```
 
 Pixelate image
-
-@param int $amount amount to pixelate
 
 ```php
 protected function processReflection( int $height, int $opacity, bool $fadeIn );
