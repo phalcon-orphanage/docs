@@ -171,8 +171,6 @@ protected function getTtl( mixed $ttl ): int;
 
 Calculates the TTL for a cache item
 
-@param DateInterval|int|null $ttl
-
 @return int @throws Exception
 
 ```php
@@ -295,8 +293,6 @@ public function decrement( string $key, int $value = int ): int | bool;
 
 Decrements a stored number
 
-@param string $key @param int $value
-
 @return bool|int
 
 ```php
@@ -305,8 +301,6 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
-@param string $key
-
 @return bool
 
 ```php
@@ -314,8 +308,6 @@ public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
-
-@param string $key @param null $defaultValue
 
 @return mixed
 
@@ -341,8 +333,6 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache
 
-@param string $key
-
 @return bool
 
 ```php
@@ -351,8 +341,6 @@ public function increment( string $key, int $value = int ): int | bool;
 
 Increments a stored number
 
-@param string $key @param int $value
-
 @return bool|int
 
 ```php
@@ -360,8 +348,6 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
-
-@param string $key @param mixed $value @param null $ttl
 
 @return bool @throws \Exception
 
@@ -391,8 +377,6 @@ public function __construct( SerializerFactory $factory = null, array $options =
 
 Libmemcached constructor.
 
-@param array $options
-
 ```php
 public function clear(): bool;
 ```
@@ -413,8 +397,6 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
-@param string $key
-
 @return bool @throws Exception
 
 ```php
@@ -422,8 +404,6 @@ public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
-
-@param string $key @param null $defaultValue
 
 @return mixed @throws Exception
 
@@ -449,8 +429,6 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache
 
-@param string $key
-
 @return bool @throws Exception
 
 ```php
@@ -459,8 +437,6 @@ public function increment( string $key, int $value = int ): int | bool;
 
 Increments a stored number
 
-@param string $key @param int $value
-
 @return bool|int @throws Exception
 
 ```php
@@ -468,8 +444,6 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
-
-@param string $key @param mixed $value @param null $ttl
 
 @return bool @throws Exception
 
@@ -516,8 +490,6 @@ public function decrement( string $key, int $value = int ): int | bool;
 
 Decrements a stored number
 
-@param string $key @param int $value
-
 @return bool|int
 
 ```php
@@ -526,8 +498,6 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
-@param string $key
-
 @return bool
 
 ```php
@@ -535,8 +505,6 @@ public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
-
-@param string $key @param mixed|null $defaultValue
 
 @return mixed
 
@@ -562,8 +530,6 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache
 
-@param string $key
-
 @return bool
 
 ```php
@@ -572,8 +538,6 @@ public function increment( string $key, int $value = int ): int | bool;
 
 Increments a stored number
 
-@param string $key @param int $value
-
 @return bool|int
 
 ```php
@@ -581,8 +545,6 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
-
-@param string $key @param mixed $value @param null $ttl
 
 @return bool
 
@@ -626,8 +588,6 @@ public function decrement( string $key, int $value = int ): int | bool;
 
 Decrements a stored number
 
-@param string $key @param int $value
-
 @return bool|int @throws Exception
 
 ```php
@@ -636,8 +596,6 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
-@param string $key
-
 @return bool @throws Exception
 
 ```php
@@ -645,8 +603,6 @@ public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
-
-@param string $key @param null $defaultValue
 
 @return mixed @throws Exception
 
@@ -672,8 +628,6 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache
 
-@param string $key
-
 @return bool @throws Exception
 
 ```php
@@ -682,8 +636,6 @@ public function increment( string $key, int $value = int ): int | bool;
 
 Increments a stored number
 
-@param string $key @param int $value
-
 @return bool|int @throws Exception
 
 ```php
@@ -691,8 +643,6 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
-
-@param string $key @param mixed $value @param null $ttl
 
 @return bool @throws Exception
 
@@ -727,8 +677,6 @@ public function __construct( SerializerFactory $factory = null, array $options =
 
 Stream constructor.
 
-@param array $options
-
 @throws Exception
 
 ```php
@@ -743,8 +691,6 @@ public function decrement( string $key, int $value = int ): int | bool;
 
 Decrements a stored number
 
-@param string $key @param int $value
-
 @return bool|int @throws \Exception
 
 ```php
@@ -753,8 +699,6 @@ public function delete( string $key ): bool;
 
 Reads data from the adapter
 
-@param string $key
-
 @return bool
 
 ```php
@@ -762,8 +706,6 @@ public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 
 Reads data from the adapter
-
-@param string $key @param null $defaultValue
 
 @return mixed|null
 
@@ -785,8 +727,6 @@ public function has( string $key ): bool;
 
 Checks if an element exists in the cache and is not expired
 
-@param string $key
-
 @return bool
 
 ```php
@@ -795,8 +735,6 @@ public function increment( string $key, int $value = int ): int | bool;
 
 Increments a stored number
 
-@param string $key @param int $value
-
 @return bool|int @throws \Exception
 
 ```php
@@ -804,8 +742,6 @@ public function set( string $key, mixed $value, mixed $ttl = null ): bool;
 ```
 
 Stores data in the adapter
-
-@param string $key @param mixed $value @param null $ttl
 
 @return bool @throws \Exception
 
@@ -1098,8 +1034,6 @@ public function getData(): mixed;
 public function setData( mixed $data ): void;
 ```
 
-@param $data
-
 <h1 id="storage-serializerfactory">Class Phalcon\Storage\SerializerFactory</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializerfactory.zep)
@@ -1120,13 +1054,9 @@ public function __construct( array $services = [] );
 
 SerializerFactory constructor.
 
-@param array services
-
 ```php
 public function newInstance( string $name ): SerializerInterface;
 ```
-
-@param string name
 
 @return mixed @throws Exception
 
