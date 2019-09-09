@@ -75,6 +75,10 @@
     "url": "",
     "menu": [
       {
+        "text": "Devilbox",
+        "url": "/environments-devilbox"
+      },
+      {
         "text": "Nanobox",
         "url": "/environments-nanobox"
       }
@@ -363,8 +367,32 @@
         "url": "/loader"
       },
       {
-        "text": "PSR-7 Request",
+        "text": "PSR-7 HTTP Request",
         "url": "/http-request"
+      },
+      {
+        "text": "PSR-7 HTTP Response",
+        "url": "/http-response"
+      },
+      {
+        "text": "PSR-7 HTTP Server Request",
+        "url": "/http-server-request"
+      },
+      {
+        "text": "PSR-7 HTTP Stream",
+        "url": "/http-stream"
+      },
+      {
+        "text": "PSR-7 HTTP UploadedFile",
+        "url": "/http-uploaded-file"
+      },
+      {
+        "text": "PSR-7 HTTP Uri",
+        "url": "/http-uri"
+      },
+      {
+        "text": "PSR-17 HTTP Factories",
+        "url": "/http-factories"
       }
     ]
   },
@@ -389,6 +417,10 @@
       {
         "text": "Collection",
         "url": "/collection"
+      },
+      {
+        "text": "Domain",
+        "url": "/domain"
       },
       {
         "text": "Helper",

@@ -15,3 +15,14 @@ title: 'Phalcon\Kernel'
 
 This class allows to change the internal behavior of the framework in runtime
 
+
+## Methods
+```php
+public static function preComputeHashKey( string $key );
+```
+Produces a pre-computed hash key based on a string. This function
+produces different numbers in 32bit/64bit processors
+
+@return string
+
+

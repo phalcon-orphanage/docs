@@ -262,6 +262,14 @@ Phalcon\Mvc\Controller\BindModelInterface
 Interface for Phalcon\Mvc\Controller
 
 
+## Methods
+```php
+public static function getModelName(): string;
+```
+Return the model name associated with this controller
+
+
+
         
 <h1 id="mvc-controllerinterface">Interface Phalcon\Mvc\ControllerInterface</h1>
 
@@ -377,7 +385,6 @@ $this->dispatcher->forward(
 );
 ```
 
-@param array forward
 
 
 ```php
@@ -634,7 +641,6 @@ public function after( mixed $handler ): Micro;
 ```
 Appends an 'after' middleware to be called after execute the route
 
-@param callable handler
 
 
 ```php
@@ -642,7 +648,6 @@ public function afterBinding( mixed $handler ): Micro;
 ```
 Appends a afterBinding middleware to be called after model binding
 
-@param callable handler
 
 
 ```php
@@ -650,7 +655,6 @@ public function before( mixed $handler ): Micro;
 ```
 Appends a before middleware to be called before execute the route
 
-@param callable handler
 
 
 ```php
@@ -658,7 +662,6 @@ public function delete( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE
 
-@param callable handler
 
 
 ```php
@@ -667,7 +670,6 @@ public function error( mixed $handler ): Micro;
 Sets a handler that will be called when an exception is thrown handling
 the route
 
-@param callable handler
 
 
 ```php
@@ -675,7 +677,6 @@ public function finish( mixed $handler ): Micro;
 ```
 Appends a 'finish' middleware to be called when the request is finished
 
-@param callable handler
 
 
 ```php
@@ -683,7 +684,6 @@ public function get( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is GET
 
-@param callable handler
 
 
 ```php
@@ -747,7 +747,6 @@ public function handle( string $uri );
 ```
 Handle the whole request
 
-@param string uri
 @return mixed
 
 
@@ -762,7 +761,6 @@ public function head( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD
 
-@param callable handler
 
 
 ```php
@@ -770,7 +768,6 @@ public function map( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler without any HTTP method constraint
 
-@param callable handler
 
 
 ```php
@@ -785,7 +782,6 @@ public function notFound( mixed $handler ): Micro;
 Sets a handler that will be called when the router doesn't match any of
 the defined routes
 
-@param callable handler
 
 
 ```php
@@ -831,7 +827,6 @@ public function options( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is OPTIONS
 
-@param callable handler
 
 
 ```php
@@ -839,7 +834,6 @@ public function patch( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH
 
-@param callable $handler
 
 
 ```php
@@ -847,7 +841,6 @@ public function post( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is POST
 
-@param callable handler
 
 
 ```php
@@ -855,7 +848,6 @@ public function put( string $routePattern, mixed $handler ): RouteInterface;
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT
 
-@param callable $handler
 
 
 ```php
@@ -863,7 +855,6 @@ public function setActiveHandler( mixed $activeHandler );
 ```
 Sets externally the handler that must be called by the matched route
 
-@param callable activeHandler
 
 
 ```php
@@ -893,7 +884,6 @@ public function setResponseHandler( mixed $handler ): Micro;
 Appends a custom 'reponse' handler to be called insted of the default
 response handler
 
-@param callable handler
 
 
 ```php
@@ -959,7 +949,6 @@ public function delete( string $routePattern, mixed $handler, string $name = nul
 ```
 Maps a route to a handler that only matches if the HTTP method is DELETE.
 
-@param callable|string handler
 
 
 ```php
@@ -967,7 +956,6 @@ public function get( string $routePattern, mixed $handler, string $name = null )
 ```
 Maps a route to a handler that only matches if the HTTP method is GET.
 
-@param callable|string handler
 
 
 ```php
@@ -993,7 +981,6 @@ public function head( string $routePattern, mixed $handler, string $name = null 
 ```
 Maps a route to a handler that only matches if the HTTP method is HEAD.
 
-@param callable|string handler
 
 
 ```php
@@ -1007,7 +994,6 @@ public function map( string $routePattern, mixed $handler, string $name = null )
 ```
 Maps a route to a handler.
 
-@param callable|string handler
 
 
 ```php
@@ -1024,8 +1010,6 @@ $collection->mapVia(
 );
 ```
 
-@param callable handler
-@param string|array method
 
 
 ```php
@@ -1034,7 +1018,6 @@ public function options( string $routePattern, mixed $handler, string $name = nu
 Maps a route to a handler that only matches if the HTTP method is
 OPTIONS.
 
-@param callable|string handler
 
 
 ```php
@@ -1042,7 +1025,6 @@ public function patch( string $routePattern, mixed $handler, string $name = null
 ```
 Maps a route to a handler that only matches if the HTTP method is PATCH.
 
-@param callable|string handler
 
 
 ```php
@@ -1050,7 +1032,6 @@ public function post( string $routePattern, mixed $handler, string $name = null 
 ```
 Maps a route to a handler that only matches if the HTTP method is POST.
 
-@param callable|string handler
 
 
 ```php
@@ -1058,7 +1039,6 @@ public function put( string $routePattern, mixed $handler, string $name = null )
 ```
 Maps a route to a handler that only matches if the HTTP method is PUT.
 
-@param callable|string handler
 
 
 ```php
@@ -1066,7 +1046,6 @@ public function setHandler( mixed $handler, bool $lazy = bool ): CollectionInter
 ```
 Sets the main handler.
 
-@param callable|string handler
 
 
 ```php
@@ -1086,8 +1065,6 @@ protected function addMap( mixed $method, string $routePattern, mixed $handler, 
 ```
 Internal function to add a handler to the group.
 
-@param string|array    method
-@param callable|string handler
 
 
 
@@ -1241,7 +1218,6 @@ public function callMethod( string $method, mixed $arguments, BinderInterface $m
 ```
 Calling __call method
 
-@param  array arguments
 @return mixed
 
 
@@ -1418,7 +1394,6 @@ public function __set( string $property, mixed $value );
 ```
 Magic method to assign values to the the model
 
-@param mixed value
 
 
 ```php
@@ -1522,8 +1497,99 @@ $robot->assign(
 );
 ```
 
-@param array dataColumnMap array to transform keys of data to another
-@param array whiteList
+
+
+```php
+public static function average( mixed $parameters = null ): double;
+```
+Returns the average value on a column for a result-set of rows matching
+the specified conditions
+
+```php
+// What's the average price of robots?
+$average = Robots::average(
+    [
+        "column" => "price",
+    ]
+);
+
+echo "The average price is ", $average, "\n";
+
+// What's the average price of mechanical robots?
+$average = Robots::average(
+    [
+        "type = 'mechanical'",
+        "column" => "price",
+    ]
+);
+
+echo "The average price of mechanical robots is ", $average, "\n";
+```
+
+@return double
+
+
+```php
+public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
+```
+Assigns values to a model from an array returning a new model
+
+```php
+$robot = Phalcon\Mvc\Model::cloneResult(
+    new Robots(),
+    [
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
+    ]
+);
+```
+
+
+```php
+public static function cloneResultMap( mixed $base, array $data, mixed $columnMap, int $dirtyState = int, bool $keepSnapshots = null ): ModelInterface;
+```
+Assigns values to a model from an array, returning a new model.
+
+```php
+$robot = \Phalcon\Mvc\Model::cloneResultMap(
+    new Robots(),
+    [
+        "type" => "mechanical",
+        "name" => "Astro Boy",
+        "year" => 1952,
+    ]
+);
+```
+
+
+
+```php
+public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
+```
+Returns an hydrated result based on the data and the column map
+
+@return mixed
+
+
+```php
+public static function count( mixed $parameters = null ): int;
+```
+Counts how many records match the specified conditions
+
+```php
+// How many robots are there?
+$number = Robots::count();
+
+echo "There are ", $number, "\n";
+
+// How many mechanical robots are there?
+$number = Robots::count("type = 'mechanical'");
+
+echo "There are ", $number, " mechanical robots\n";
+```
+
+@return mixed
 
 
 ```php
@@ -1587,6 +1653,238 @@ var_dump(
     $robot->dump()
 );
 ```
+
+
+```php
+public static function find( mixed $parameters = null ): ResultsetInterface;
+```
+Query for a set of records that match the specified conditions
+
+```php
+// How many robots are there?
+$robots = Robots::find();
+
+echo "There are ", count($robots), "\n";
+
+// How many mechanical robots are there?
+$robots = Robots::find(
+    "type = 'mechanical'"
+);
+
+echo "There are ", count($robots), "\n";
+
+// Get and print virtual robots ordered by name
+$robots = Robots::find(
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
+);
+
+foreach ($robots as $robot) {
+    echo $robot->name, "\n";
+}
+
+// Get first 100 virtual robots ordered by name
+$robots = Robots::find(
+    [
+        "type = 'virtual'",
+        "order" => "name",
+        "limit" => 100,
+    ]
+);
+
+foreach ($robots as $robot) {
+    echo $robot->name, "\n";
+}
+
+// encapsulate find it into an running transaction esp. useful for application unit-tests
+// or complex business logic where we wanna control which transactions are used.
+
+$myTransaction = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction->begin();
+
+$newRobot = new Robot();
+$newRobot->setTransaction($myTransaction);
+
+$newRobot->assign(
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
+);
+
+$newRobot->save();
+
+$resultInsideTransaction = Robot::find(
+    [
+        'name' => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
+);
+
+$resultOutsideTransaction = Robot::find(['name' => 'test']);
+
+foreach ($setInsideTransaction as $robot) {
+    echo $robot->name, "\n";
+}
+
+foreach ($setOutsideTransaction as $robot) {
+    echo $robot->name, "\n";
+}
+
+// reverts all not commited changes
+$myTransaction->rollback();
+
+// creating two different transactions
+$myTransaction1 = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction1->begin();
+$myTransaction2 = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction2->begin();
+
+ // add a new robots
+$firstNewRobot = new Robot();
+$firstNewRobot->setTransaction($myTransaction1);
+$firstNewRobot->assign(
+    [
+        'name' => 'first-transaction-robot',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
+);
+$firstNewRobot->save();
+
+$secondNewRobot = new Robot();
+$secondNewRobot->setTransaction($myTransaction2);
+$secondNewRobot->assign(
+    [
+        'name' => 'second-transaction-robot',
+        'type' => 'fictional',
+        'year' => 1984,
+    ]
+);
+$secondNewRobot->save();
+
+// this transaction will find the robot.
+$resultInFirstTransaction = Robot::find(
+    [
+        'name'                   => 'first-transaction-robot',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
+);
+
+// this transaction won't find the robot.
+$resultInSecondTransaction = Robot::find(
+    [
+        'name'                   => 'first-transaction-robot',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
+);
+
+// this transaction won't find the robot.
+$resultOutsideAnyExplicitTransaction = Robot::find(
+    [
+        'name' => 'first-transaction-robot',
+    ]
+);
+
+// this transaction won't find the robot.
+$resultInFirstTransaction = Robot::find(
+    [
+        'name'                   => 'second-transaction-robot',
+        Model::TRANSACTION_INDEX => $myTransaction2,
+    ]
+);
+
+// this transaction will find the robot.
+$resultInSecondTransaction = Robot::find(
+    [
+        'name'                   => 'second-transaction-robot',
+        Model::TRANSACTION_INDEX => $myTransaction1,
+    ]
+);
+
+// this transaction won't find the robot.
+$resultOutsideAnyExplicitTransaction = Robot::find(
+    [
+        'name' => 'second-transaction-robot',
+    ]
+);
+
+$transaction1->rollback();
+$transaction2->rollback();
+```
+
+
+```php
+public static function findFirst( mixed $parameters = null ): ModelInterface | bool;
+```
+Query the first record that matches the specified conditions
+
+```php
+// What's the first robot in robots table?
+$robot = Robots::findFirst();
+
+echo "The robot name is ", $robot->name;
+
+// What's the first mechanical robot in robots table?
+$robot = Robots::findFirst(
+    "type = 'mechanical'"
+);
+
+echo "The first mechanical robot name is ", $robot->name;
+
+// Get first virtual robot ordered by name
+$robot = Robots::findFirst(
+    [
+        "type = 'virtual'",
+        "order" => "name",
+    ]
+);
+
+echo "The first virtual robot name is ", $robot->name;
+
+// behaviour with transaction
+$myTransaction = new Transaction(\Phalcon\Di::getDefault());
+$myTransaction->begin();
+
+$newRobot = new Robot();
+$newRobot->setTransaction($myTransaction);
+$newRobot->assign(
+    [
+        'name' => 'test',
+        'type' => 'mechanical',
+        'year' => 1944,
+    ]
+);
+$newRobot->save();
+
+$findsARobot = Robot::findFirst(
+    [
+        'name'                   => 'test',
+        Model::TRANSACTION_INDEX => $myTransaction,
+    ]
+);
+
+$doesNotFindARobot = Robot::findFirst(
+    [
+        'name' => 'test',
+    ]
+);
+
+var_dump($findARobot);
+var_dump($doesNotFindARobot);
+
+$transaction->commit();
+
+$doesFindTheRobotNow = Robot::findFirst(
+    [
+        'name' => 'test',
+    ]
+);
+```
+
 
 
 ```php
@@ -1702,7 +2000,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
-@param array arguments
 @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
 
 
@@ -1783,8 +2080,6 @@ $hasChanged = $robot->hasChanged(["type", "name"]); // returns true
 $hasChanged = $robot->hasChanged(["type", "name"], true); // returns false
 ```
 
-@param string|array fieldName
-@param boolean allFields
 
 
 ```php
@@ -1799,7 +2094,6 @@ public function hasUpdated( mixed $fieldName = null, bool $allFields = bool ): b
 Check if a specific attribute was updated
 This only works if the model is keeping data snapshots
 
-@param string|array fieldName
 
 
 ```php
@@ -1834,6 +2128,71 @@ public function jsonSerialize(): array;
    echo json_encode($robot);
    ```
    
+
+```php
+public static function maximum( mixed $parameters = null ): mixed;
+```
+Returns the maximum value of a column for a result-set of rows that match
+the specified conditions
+
+```php
+// What is the maximum robot id?
+$id = Robots::maximum(
+    [
+        "column" => "id",
+    ]
+);
+
+echo "The maximum robot id is: ", $id, "\n";
+
+// What is the maximum id of mechanical robots?
+$sum = Robots::maximum(
+    [
+        "type = 'mechanical'",
+        "column" => "id",
+    ]
+);
+
+echo "The maximum robot id of mechanical robots is ", $id, "\n";
+```
+
+@return mixed
+
+
+```php
+public static function minimum( mixed $parameters = null ): mixed;
+```
+Returns the minimum value of a column for a result-set of rows that match
+the specified conditions
+
+```php
+// What is the minimum robot id?
+$id = Robots::minimum(
+    [
+        "column" => "id",
+    ]
+);
+
+echo "The minimum robot id is: ", $id;
+
+// What is the minimum id of mechanical robots?
+$sum = Robots::minimum(
+    [
+        "type = 'mechanical'",
+        "column" => "id",
+    ]
+);
+
+echo "The minimum robot id of mechanical robots is ", $id;
+```
+
+
+
+```php
+public static function query( DiInterface $container = null ): CriteriaInterface;
+```
+Create a criteria for a specific model
+
 
 ```php
 public function readAttribute( string $attribute ): mixed | null;
@@ -1908,8 +2267,6 @@ Sets the record's old snapshot data.
 This method is used internally to set old snapshot data when the model
 was set up to keep snapshot data
 
-@param array data
-@param array columnMap
 
 
 ```php
@@ -1925,7 +2282,6 @@ Sets the record's snapshot data.
 This method is used internally to set snapshot data when the model was
 set up to keep snapshot data
 
-@param array columnMap
 
 
 ```php
@@ -1977,9 +2333,45 @@ Sets the DependencyInjection connection service name used to write data
 
 
 ```php
+public static function setup( array $options ): void;
+```
+Enables/disables options in the ORM
+
+
+```php
 public function skipOperation( bool $skip ): void;
 ```
 Skips the current operation forcing a success state
+
+
+```php
+public static function sum( mixed $parameters = null ): double;
+```
+Calculates the sum on a column for a result-set of rows that match the
+specified conditions
+
+```php
+// How much are all robots?
+$sum = Robots::sum(
+    [
+        "column" => "price",
+    ]
+);
+
+echo "The total price of robots is ", $sum, "\n";
+
+// How much are mechanical robots?
+$sum = Robots::sum(
+    [
+        "type = 'mechanical'",
+        "column" => "price",
+    ]
+);
+
+echo "The total price of mechanical robots is  ", $sum, "\n";
+```
+
+@return double
 
 
 ```php
@@ -1993,7 +2385,6 @@ print_r(
 );
 ```
 
-@param array $columns
 
 
 ```php
@@ -2096,8 +2487,6 @@ protected function _doLowInsert( MetaDataInterface $metaData, AdapterInterface $
 ```
 Sends a pre-build INSERT SQL statement to the relational database system
 
-@param string|array table
-@param bool|string identityField
 
 
 ```php
@@ -2105,7 +2494,6 @@ protected function _doLowUpdate( MetaDataInterface $metaData, AdapterInterface $
 ```
 Sends a pre-build UPDATE SQL statement to the relational database system
 
-@param string|array table
 
 
 ```php
@@ -2119,8 +2507,14 @@ protected function _getRelatedRecords( string $modelName, string $method, mixed 
 ```
 Returns related records defined relations depending on the method name
 
-@param array arguments
 @return mixed
+
+
+```php
+protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
+```
+Generate a PHQL SELECT statement for an aggregate
+
 
 
 ```php
@@ -2140,7 +2534,6 @@ protected function _postSaveRelatedRecords( AdapterInterface $connection, mixed 
 ```
 Save the related records assigned in the has-one/has-many relations
 
-@param  Phalcon\Mvc\ModelInterface[] related
 
 
 ```php
@@ -2154,7 +2547,6 @@ protected function _preSaveRelatedRecords( AdapterInterface $connection, mixed $
 ```
 Saves related records that must be stored prior to save the master record
 
-@param \Phalcon\Mvc\ModelInterface[] related
 
 
 ```php
@@ -2242,11 +2634,6 @@ class Robots extends \Phalcon\Mvc\Model
 }
 ```
 
-@param    string|array fields
-@param    string|array intermediateFields
-@param    string|array intermediateReferencedFields
-@param    string|array referencedFields
-@param    array options
 
 
 ```php
@@ -2796,7 +3183,6 @@ $criteria->columns(
 );
 ```
 
-@param string|array columns
 
 
 ```php
@@ -2834,6 +3220,12 @@ Executes a find using the parameters built with the criteria
 public function forUpdate( bool $forUpdate = bool ): CriteriaInterface;
 ```
 Adds the "for_update" parameter to the criteria
+
+
+```php
+public static function fromInput( DiInterface $container, string $modelName, array $data, string $operator = string ): CriteriaInterface;
+```
+Builds a Phalcon\Mvc\Model\Criteria based on an input array like $_POST
 
 
 ```php
@@ -3093,8 +3485,6 @@ public function andWhere( string $conditions, mixed $bindParams = null, mixed $b
 ```
 Appends a condition to the current conditions using an AND operator
 
-@param array bindParams
-@param array bindTypes
 
 
 ```php
@@ -3106,8 +3496,6 @@ Appends a BETWEEN condition to the current conditions
 $criteria->betweenWhere("price", 100.25, 200.50);
 ```
 
-@param mixed minimum
-@param mixed maximum
 
 
 ```php
@@ -3287,8 +3675,6 @@ Appends a NOT BETWEEN condition to the current conditions
 $criteria->notBetweenWhere("price", 100.25, 200.50);
 ```
 
-@param mixed minimum
-@param mixed maximum
 
 
 ```php
@@ -3306,8 +3692,6 @@ public function orWhere( string $conditions, mixed $bindParams = null, mixed $bi
 ```
 Appends a condition to the current conditions using an OR operator
 
-@param array bindParams
-@param array bindTypes
 
 
 ```php
@@ -3528,7 +3912,6 @@ public function addBelongsTo( ModelInterface $model, mixed $fields, string $refe
 ```
 Setup a relation reverse many to one between two models
 
-@param    array options
 
 
 ```php
@@ -3536,8 +3919,6 @@ public function addHasMany( ModelInterface $model, mixed $fields, string $refere
 ```
 Setup a relation 1-n between two models
 
-@param    mixed referencedFields
-@param    array options
 
 
 ```php
@@ -3545,11 +3926,6 @@ public function addHasManyToMany( ModelInterface $model, mixed $fields, string $
 ```
 Setups a relation n-m between two models
 
-@param    string fields
-@param    string intermediateFields
-@param    string intermediateReferencedFields
-@param    string referencedFields
-@param   array options
 
 
 ```php
@@ -3557,7 +3933,6 @@ public function addHasOne( ModelInterface $model, mixed $fields, string $referen
 ```
 Setup a 1-1 relation between two models
 
-@param array options
 
 
 ```php
@@ -3954,9 +4329,6 @@ public function addBelongsTo( ModelInterface $model, mixed $fields, string $refe
 ```
 Setup a relation reverse 1-1  between two models
 
-@param    mixed  fields
-@param    mixed  referencedFields
-@param    array  options
 
 
 ```php
@@ -3964,9 +4336,6 @@ public function addHasMany( ModelInterface $model, mixed $fields, string $refere
 ```
 Setup a relation 1-n between two models
 
-@param    mixed  fields
-@param    mixed  referencedFields
-@param    array  options
 
 
 ```php
@@ -3974,11 +4343,6 @@ public function addHasManyToMany( ModelInterface $model, mixed $fields, string $
 ```
 Setups a relation n-m between two models
 
-@param    string fields
-@param    string intermediateFields
-@param    string intermediateReferencedFields
-@param    string referencedFields
-@param   array options
 
 
 ```php
@@ -3986,9 +4350,6 @@ public function addHasOne( ModelInterface $model, mixed $fields, string $referen
 ```
 Setup a 1-1 relation between two models
 
-@param    mixed  fields
-@param    mixed  referencedFields
-@param    array  options
 
 
 ```php
@@ -3996,7 +4357,6 @@ public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
 
-@param string $params
 
 
 ```php
@@ -4010,7 +4370,6 @@ public function executeQuery( string $phql, mixed $placeholders = null ): QueryI
 ```
 Creates a Phalcon\Mvc\Model\Query and execute it
 
-@param array $placeholders
 
 
 ```php
@@ -4048,11 +4407,6 @@ public function getBelongsToRecords( string $modelName, string $modelRelation, M
 ```
 Gets belongsTo related records from a model
 
-@param string            $modelName
-@param string            $modelRelation
-@param array|string|null $parameters
-@param ModelInterface    $record
-@param string|null       $method
 
 
 ```php
@@ -4066,11 +4420,6 @@ public function getHasManyRecords( string $modelName, string $modelRelation, Mod
 ```
 Gets hasMany related records from a model
 
-@param string            $modelName
-@param string            $modelRelation
-@param array|string|null $parameters
-@param ModelInterface    $record
-@param string|null       $method
 
 
 ```php
@@ -4096,11 +4445,6 @@ public function getHasOneRecords( string $modelName, string $modelRelation, Mode
 ```
 Gets belongsTo related records from a model
 
-@param string            $modelName
-@param string            $modelRelation
-@param array|string|null $parameters
-@param ModelInterface    $record
-@param string|null       $method
 
 
 ```php
@@ -4233,7 +4577,6 @@ Dispatch an event to the listeners and behaviors
 This method expects that the endpoint listeners/behaviors returns true
 meaning that a least one is implemented
 
-@param array data
 @return bool
 
 
@@ -4497,7 +4840,6 @@ print_r(
 );
 ```
 
-@param  Phalcon\Mvc\ModelInterface model
 @return string
 
 
@@ -4785,7 +5127,6 @@ public function __construct( AdapterFactory $factory, array $options = null ): v
 ```
 Phalcon\Mvc\Model\MetaData\Apcu constructor
 
-@param array options
 
 
 
@@ -4811,7 +5152,6 @@ public function __construct( AdapterFactory $factory, array $options = [] ): voi
 ```
 Phalcon\Mvc\Model\MetaData\Libmemcached constructor
 
-@param array options
 
 
 ```php
@@ -4842,7 +5182,6 @@ public function __construct( mixed $options = null ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Memory constructor
 
-@param array options
 
 
 ```php
@@ -4894,7 +5233,6 @@ public function __construct( AdapterFactory $factory, array $options = [] ): voi
 ```
 Phalcon\Mvc\Model\MetaData\Redis constructor
 
-@param array options
 
 
 ```php
@@ -5030,7 +5368,6 @@ public function __construct( mixed $options = null ): void;
 ```
 Phalcon\Mvc\Model\MetaData\Files constructor
 
-@param array options
 
 
 ```php
@@ -5397,6 +5734,12 @@ Sets the cache parameters of the query
 
 
 ```php
+public static function clean(): void;
+```
+Destroys the internal PHQL cache
+
+
+```php
 public function execute( array $bindParams = [], array $bindTypes = [] );
 ```
 Executes a parsed PHQL statement
@@ -5616,7 +5959,6 @@ final protected function _getMultiJoin( string $joinType, mixed $joinSource, str
 ```
 Resolves joins involving many-to-many relations
 
-@param string joinSource
 
 
 ```php
@@ -5624,7 +5966,6 @@ final protected function _getOrderClause( mixed $order ): array;
 ```
 Returns a processed order clause for a SELECT statement
 
-@param array|string order
 
 
 ```php
@@ -5652,7 +5993,6 @@ final protected function _getSingleJoin( string $joinType, mixed $joinSource, st
 ```
 Resolves joins involving has-one/belongs-to/has-many relations
 
-@param string joinSource
 
 
 ```php
@@ -6081,7 +6421,6 @@ $builder->groupBy(
 );
 ```
 
-@param string|array group
 
 
 ```php
@@ -6306,7 +6645,6 @@ $builder->orderBy(["1", "Robots.name"]);
 $builder->orderBy(["Robots.name DESC"]);
 ```
 
-@param string|array orderBy
 
 
 ```php
@@ -6423,8 +6761,6 @@ public function betweenWhere( string $expr, mixed $minimum, mixed $maximum, stri
 ```
 Appends a BETWEEN condition to the current conditions
 
-@param mixed minimum
-@param mixed maximum
 
 
 ```php
@@ -6432,7 +6768,6 @@ public function columns( mixed $columns ): BuilderInterface;
 ```
 Sets the columns to be queried
 
-@param string|array columns
 
 
 ```php
@@ -6461,7 +6796,6 @@ public function from( mixed $models ): BuilderInterface;
 ```
 Sets the models who makes part of the query
 
-@param string|array models
 
 
 ```php
@@ -6569,7 +6903,6 @@ public function groupBy( mixed $group ): BuilderInterface;
 ```
 Sets a GROUP BY clause
 
-@param string|array group
 
 
 ```php
@@ -6595,10 +6928,6 @@ public function join( string $model, string $conditions = null, string $alias = 
 ```
 Adds an :type: join (by default type - INNER) to the query
 
-@param string model
-@param string conditions
-@param string alias
-@param string type
 @return BuilderInterface
 
 
@@ -6613,7 +6942,6 @@ public function limit( int $limit, mixed $offset = null ): BuilderInterface;
 ```
 Sets a LIMIT clause
 
-@param int offset
 
 
 ```php
@@ -6621,8 +6949,6 @@ public function notBetweenWhere( string $expr, mixed $minimum, mixed $maximum, s
 ```
 Appends a NOT BETWEEN condition to the current conditions
 
-@param mixed minimum
-@param mixed maximum
 
 
 ```php
@@ -6698,6 +7024,14 @@ $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
     "SELECT r.* FROM Robots r LIMIT 10"
 );
 ```
+
+
+## Methods
+```php
+public static function parsePHQL( string $phql ): string;
+```
+Parses a PHQL statement returning an intermediate representation (IR)
+
 
 
         
@@ -6961,8 +7295,6 @@ public function __construct( int $type, string $referencedModel, mixed $fields, 
 ```
 Phalcon\Mvc\Model\Relation constructor
 
-@param string|array fields
-@param string|array referencedFields
 
 
 ```php
@@ -7067,8 +7399,6 @@ public function setIntermediateRelation( mixed $intermediateFields, string $inte
 ```
 Sets the intermediate model data for has-*-through relations
 
-@param string|array intermediateFields
-@param string       intermediateReferencedFields
 
 
 
@@ -7187,8 +7517,6 @@ public function setIntermediateRelation( mixed $intermediateFields, string $inte
 ```
 Sets the intermediate model dat for has-*-through relations
 
-@param string|array intermediateFields
-@param string|array intermediateReferencedFields
 
 
 
@@ -7314,7 +7642,6 @@ public function __construct( mixed $result, AdapterInterface $cache = null ): vo
 ```
 Phalcon\Mvc\Model\Resultset constructor
 
-@param \Phalcon\Db\ResultInterface|false result
 
 
 ```php
@@ -7429,8 +7756,6 @@ public function offsetSet( mixed $index, mixed $value ): void;
 ```
 Resultsets cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
-@param int index
-@param \Phalcon\Mvc\ModelInterface value
 
 
 ```php
@@ -7469,7 +7794,6 @@ public function update( mixed $data, Closure $conditionCallback = null ): bool;
 ```
 Updates every record in the resultset
 
-@param array data
 
 
 ```php
@@ -7514,7 +7838,6 @@ public function __construct( mixed $columnTypes, ResultInterface $result = null,
 ```
 Phalcon\Mvc\Model\Resultset\Complex constructor
 
-@param array columnTypes
 
 
 ```php
@@ -7579,8 +7902,6 @@ public function __construct( mixed $columnMap, mixed $model, mixed $result, Adap
 ```
 Phalcon\Mvc\Model\Resultset\Simple constructor
 
-@param array                                             columnMap
-@param \Phalcon\Mvc\ModelInterface|Phalcon\Mvc\Model\Row model
 
 
 ```php
@@ -7714,7 +8035,6 @@ public function update( mixed $data, Closure $conditionCallback = null ): bool;
 ```
 Updates every record in the resultset
 
-@param array data
 
 
 
@@ -7745,7 +8065,6 @@ public function offsetExists( mixed $index ): bool;
 ```
 Checks whether offset exists in the row
 
-@param string|int $index
 
 
 ```php
@@ -7753,7 +8072,6 @@ public function offsetGet( mixed $index ): mixed;
 ```
 Gets a record in a specific position of the row
 
-@param string|int index
 
 @return string|Phalcon\Mvc\ModelInterface
 
@@ -7763,8 +8081,6 @@ public function offsetSet( mixed $index, mixed $value ): void;
 ```
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
-@param string|int index
-@param \Phalcon\Mvc\ModelInterface value
 
 
 ```php
@@ -7772,7 +8088,6 @@ public function offsetUnset( mixed $offset ): void;
 ```
 Rows cannot be changed. It has only been implemented to meet the definition of the ArrayAccess interface
 
-@param string|int offset
 
 
 ```php
@@ -7808,7 +8123,6 @@ Writes an attribute value by its name
 $robot->writeAttribute("name", "Rosey");
 ```
 
-@param mixed value
 
 
 
@@ -8421,7 +8735,6 @@ public function __construct( ModelInterface $model, array $validationMessages ):
 ```
 Phalcon\Mvc\Model\ValidationFailed constructor
 
-@param Message[] validationMessages
 
 
 ```php
@@ -8462,7 +8775,44 @@ public function assign( array $data, mixed $dataColumnMap = null, mixed $whiteLi
 ```
 Assigns values to a model from an array
 
-@param array columnMap
+
+
+```php
+public static function average( mixed $parameters = null ): double;
+```
+Allows to calculate the average value on a column matching the specified
+conditions
+
+@return double
+
+
+```php
+public static function cloneResult( ModelInterface $base, array $data, int $dirtyState = int ): ModelInterface;
+```
+Assigns values to a model from an array returning a new model
+
+
+```php
+public static function cloneResultMap( mixed $base, array $data, mixed $columnMap, int $dirtyState = int, bool $keepSnapshots = null ): ModelInterface;
+```
+Assigns values to a model from an array returning a new model
+
+@return \Phalcon\Mvc\Model result
+
+
+```php
+public static function cloneResultMapHydrate( array $data, mixed $columnMap, int $hydrationMode );
+```
+Returns an hydrated result based on the data and the column map
+
+
+
+```php
+public static function count( mixed $parameters = null ): int;
+```
+Allows to count how many records match the specified conditions
+
+@return int
 
 
 ```php
@@ -8477,6 +8827,19 @@ false otherwise.
 public function delete(): bool;
 ```
 Deletes a model instance. Returning true on success or false otherwise.
+
+
+```php
+public static function find( mixed $parameters = null ): ResultsetInterface;
+```
+Allows to query a set of records that match the specified conditions
+
+
+```php
+public static function findFirst( mixed $parameters = null ): ModelInterface | bool;
+```
+Allows to query the first record that match the specified conditions
+
 
 
 ```php
@@ -8537,7 +8900,6 @@ public function getRelated( string $alias, mixed $arguments = null );
 ```
 Returns related records based on defined relations
 
-@param array arguments
 @return \Phalcon\Mvc\Model\Resultset\Simple|Phalcon\Mvc\Model\Resultset\Simple|false
 
 
@@ -8563,6 +8925,30 @@ Gets internal database connection
 public function getWriteConnectionService(): string;
 ```
 Returns DependencyInjection connection service used to write data
+
+
+```php
+public static function maximum( mixed $parameters = null ): mixed;
+```
+Allows to get the maximum value of a column that match the specified
+conditions
+
+@return mixed
+
+
+```php
+public static function minimum( mixed $parameters = null ): mixed;
+```
+Allows to get the minimum value of a column that match the specified
+conditions
+
+@return mixed
+
+
+```php
+public static function query( DiInterface $container = null ): CriteriaInterface;
+```
+Create a criteria for a specific model
 
 
 ```php
@@ -8603,7 +8989,6 @@ public function setSnapshotData( array $data, mixed $columnMap = null ): void;
 Sets the record's snapshot data. This method is used internally to set
 snapshot data when the model was set up to keep snapshot data
 
-@param array columnMap
 
 
 ```php
@@ -8622,6 +9007,14 @@ Sets the DependencyInjection connection service used to write data
 public function skipOperation( bool $skip ): void;
 ```
 Skips the current operation forcing a success state
+
+
+```php
+public static function sum( mixed $parameters = null ): double;
+```
+Allows to calculate a sum on a column that match the specified conditions
+
+@return double
 
 
 ```php
@@ -9287,7 +9680,6 @@ public function addConnect( string $pattern, mixed $paths = null ): RouteInterfa
 ```
 Adds a route to the router that only match if the HTTP method is CONNECT
 
-@param string|array paths
 
 
 ```php
@@ -9295,7 +9687,6 @@ public function addDelete( string $pattern, mixed $paths = null ): RouteInterfac
 ```
 Adds a route to the router that only match if the HTTP method is DELETE
 
-@param string|array paths
 
 
 ```php
@@ -9303,7 +9694,6 @@ public function addGet( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is GET
 
-@param string|array paths
 
 
 ```php
@@ -9311,7 +9701,6 @@ public function addHead( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is HEAD
 
-@param string|array paths
 
 
 ```php
@@ -9319,7 +9708,6 @@ public function addOptions( string $pattern, mixed $paths = null ): RouteInterfa
 ```
 Add a route to the router that only match if the HTTP method is OPTIONS
 
-@param string|array paths
 
 
 ```php
@@ -9327,7 +9715,6 @@ public function addPatch( string $pattern, mixed $paths = null ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is PATCH
 
-@param string|array paths
 
 
 ```php
@@ -9335,7 +9722,6 @@ public function addPost( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is POST
 
-@param string|array paths
 
 
 ```php
@@ -9343,7 +9729,6 @@ public function addPurge( string $pattern, mixed $paths = null ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is PURGE
 
-@param string|array paths
 
 
 ```php
@@ -9351,7 +9736,6 @@ public function addPut( string $pattern, mixed $paths = null ): RouteInterface;
 ```
 Adds a route to the router that only match if the HTTP method is PUT
 
-@param string|array paths
 
 
 ```php
@@ -9359,7 +9743,6 @@ public function addTrace( string $pattern, mixed $paths = null ): RouteInterface
 ```
 Adds a route to the router that only match if the HTTP method is TRACE
 
-@param string|array paths
 
 
 ```php
@@ -9611,7 +9994,6 @@ public function setPaths( mixed $paths ): GroupInterface;
 ```
 Set common paths for all the routes in the group
 
-@param array paths
 
 
 ```php
@@ -9805,6 +10187,12 @@ Returns the route's id
 
 
 ```php
+public static function getRoutePaths( mixed $paths = null ): array;
+```
+Returns routePaths
+
+
+```php
 public function match( mixed $callback ): RouteInterface;
 ```
 Allows to set a callback to handle the request directly in the route
@@ -9825,6 +10213,12 @@ $router->add(
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 Reconfigure the route adding a new pattern and a set of paths
+
+
+```php
+public static function reset(): void;
+```
+Resets the internal route id generator
 
 
 ```php
@@ -9970,6 +10364,12 @@ Returns the route's id
 public function reConfigure( string $pattern, mixed $paths = null ): void;
 ```
 Reconfigure the route adding a new pattern and a set of paths
+
+
+```php
+public static function reset(): void;
+```
+Resets the internal route id generator
 
 
 ```php
@@ -10499,7 +10899,6 @@ $template = $this->view->getRender(
 );
 ```
 
-@param mixed configCallback
 
 
 ```php
@@ -10823,7 +11222,6 @@ public function partial( string $partialPath, mixed $params = null ): string;
 ```
 Renders a partial inside another view
 
-@param array params
 
 
 
@@ -11221,7 +11619,6 @@ final public function fireExtensionEvent( string $name, mixed $arguments = null 
 ```
 Fires an event to registered extensions
 
-@param array arguments
 @return mixed
 
 
@@ -11319,7 +11716,6 @@ public function setOption( string $option, mixed $value );
 ```
 Sets a single compiler option
 
-@param mixed value
 
 
 ```php
@@ -11363,7 +11759,6 @@ final protected function statementListOrExtends( mixed $statements );
 ```
 Compiles a block of statements
 
-@param array statements
 @return string|array
 
 
@@ -11642,7 +12037,6 @@ final protected function internalRender( string $path, mixed $params );
 ```
 Tries to render the view with every engine registered in the component
 
-@param array  params
 
 
 ```php
@@ -11887,7 +12281,6 @@ public function setTemplateAfter( mixed $templateAfter );
 ```
 Appends template after controller layout
 
-@param string|array templateAfter
 
 
 ```php
@@ -11895,7 +12288,6 @@ public function setTemplateBefore( mixed $templateBefore );
 ```
 Appends template before controller layout
 
-@param string|array templateBefore
 
 
 ```php

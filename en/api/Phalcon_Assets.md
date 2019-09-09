@@ -472,7 +472,6 @@ public function addJs( string $path, mixed $local = null, bool $filter = bool, m
 ```
 Adds a javascript asset to the collection
 
-@param array attributes
 
 
 ```php
@@ -1078,8 +1077,6 @@ public function output( Collection $collection, mixed $callback, mixed $type ): 
 ```
 Traverses a collection calling the callback to generate its HTML
 
-@param callback callback
-@param string type
 
 
 ```php
@@ -1093,7 +1090,6 @@ public function outputInline( Collection $collection, mixed $type ): string;
 ```
 Traverses a collection and generate its HTML
 
-@param string type
 
 
 ```php

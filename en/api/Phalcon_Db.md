@@ -82,6 +82,14 @@ try {
 ```
 
 
+## Methods
+```php
+public static function setup( array $options ): void;
+```
+Enables/disables options in the Database component
+
+
+
         
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 

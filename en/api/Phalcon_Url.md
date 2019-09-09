@@ -205,8 +205,6 @@ public function get( mixed $uri = null, mixed $args = null, bool $local = null )
 ```
 Generates a URL
 
-@param string|array uri
-@param array|object args Optional arguments to be appended to the query string
 
 
 ```php

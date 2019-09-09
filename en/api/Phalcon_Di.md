@@ -119,6 +119,12 @@ Resolves the service based on its configuration
 
 
 ```php
+public static function getDefault(): DiInterface | null;
+```
+Return the latest DI created
+
+
+```php
 public function getInternalEventsManager(): ManagerInterface;
 ```
 Returns the internal event manager
@@ -290,9 +296,22 @@ It also removes any shared instance created for the service
 
 
 ```php
+public static function reset(): void;
+```
+Resets the internal default DI
+
+
+```php
 public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 Registers a service in the services container
+
+
+```php
+public static function setDefault( DiInterface $container ): void;
+```
+Set a default dependency injection container to be obtained into static
+methods
 
 
 ```php
@@ -377,13 +396,18 @@ Attempts to register a service in the services container
 Only is successful if a service hasn't been registered previously
 with the same name
 
-@param mixed definition
 
 
 ```php
 public function get( string $name, mixed $parameters = null ): mixed;
 ```
 Resolves the service based on its configuration
+
+
+```php
+public static function getDefault(): DiInterface | null;
+```
+Return the last DI created
 
 
 ```php
@@ -423,9 +447,22 @@ Removes a service in the services container
 
 
 ```php
+public static function reset(): void;
+```
+Resets the internal default DI
+
+
+```php
 public function set( string $name, mixed $definition, bool $shared = bool ): ServiceInterface;
 ```
 Registers a service in the services container
+
+
+```php
+public static function setDefault( DiInterface $container ): void;
+```
+Set a default dependency injection container to be obtained into static
+methods
 
 
 ```php
@@ -705,7 +742,6 @@ public function resolve( mixed $parameters = null, DiInterface $container = null
 ```
 Resolves the service
 
-@param array parameters
 
 
 ```php
@@ -752,7 +788,6 @@ public function build( DiInterface $container, array $definition, mixed $paramet
 ```
 Builds a service using a complex service definition
 
-@param array parameters
 @return mixed
 
 
@@ -800,7 +835,6 @@ public function resolve( mixed $parameters = null, DiInterface $container = null
 ```
 Resolves the service
 
-@param array parameters
 
 
 ```php

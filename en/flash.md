@@ -473,3 +473,4 @@ class InvoicesController extends Controller
 [flash-flashinterface]: api/Phalcon_Flash#flash-flashinterface
 [flash-session]: api/Phalcon_Flash#flash-session
 [di-injectable]: api/Phalcon_Di#di-injectable
+[factorydefault]: api/Phalcon_Di#di-factorydefault

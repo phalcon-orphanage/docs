@@ -166,7 +166,6 @@ public function getExtras(): mixed;
 ```
 Gets arbitrary extra values produced by the domain layer.
 
-@param mixed
 
 
 ```php
@@ -261,7 +260,6 @@ public function setExtras( mixed $extras ): PayloadInterface;
 ```
 Sets arbitrary extra values produced by the domain layer.
 
-@param mixed $extras Arbitrary extra values produced by the domain layer.
 
 
 ```php
@@ -270,7 +268,6 @@ public function setInput( mixed $input ): PayloadInterface;
 
 Sets the input received by the domain layer.
 
-@param mixed $input The input received by the domain layer.
 
 
 
@@ -279,7 +276,6 @@ public function setMessages( mixed $messages ): PayloadInterface;
 ```
 Sets the messages produced by the domain layer.
 
-@param mixed $messages The messages produced by the domain layer.
 
 
 ```php
@@ -287,7 +283,6 @@ public function setOutput( mixed $output ): PayloadInterface;
 ```
 Sets the output produced from the domain layer.
 
-@param mixed $output The output produced from the domain layer.
 
 
 ```php
@@ -295,6 +290,5 @@ public function setStatus( mixed $status ): PayloadInterface;
 ```
 Sets the status of this payload.
 
-@param mixed $status The status for this payload.
 
 

@@ -550,7 +550,6 @@ public function setName( string $name ): ManagerInterface;
 Set the session name. Throw exception if the session has started
 and do not allow poop names
 
-@param  string name
 
 @throws InvalidArgumentException
 

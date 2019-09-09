@@ -73,8 +73,6 @@ public function __construct( string $name, array $attributes = [] ): void;
 ```
 Phalcon\Forms\Element constructor
 
-@param string name       Attribute name (value of 'name' attribute of HTML element)
-@param array  attributes Additional HTML element attributes
 
 
 ```php
@@ -100,7 +98,6 @@ public function addValidators( array $validators, bool $merge = bool ): ElementI
 ```
 Adds a group of validators
 
-@param \Phalcon\Validation\ValidatorInterface[] validators
 
 
 ```php
@@ -233,7 +230,6 @@ public function setFilters( mixed $filters ): ElementInterface;
 ```
 Sets the element filters
 
-@param array|string filters
 
 
 ```php
@@ -344,7 +340,6 @@ public function addValidators( array $validators, bool $merge = bool ): ElementI
 ```
 Adds a group of validators
 
-@param \Phalcon\Validation\ValidatorInterface[]
 
 
 ```php
@@ -483,7 +478,6 @@ public function setFilters( mixed $filters ): ElementInterface;
 ```
 Sets the element's filters
 
-@param array|string filters
 
 
 ```php
@@ -680,8 +674,6 @@ public function __construct( string $name, mixed $options = null, mixed $attribu
 ```
 Phalcon\Forms\Element constructor
 
-@param object|array options
-@param array        attributes
 
 
 ```php
@@ -689,7 +681,6 @@ public function addOption( mixed $option ): Element;
 ```
 Adds an option to the current options
 
-@param array|string option
 
 
 ```php
@@ -711,7 +702,6 @@ public function setOptions( mixed $options ): Element;
 ```
 Set the choice's options
 
-@param array|object options
 
 
 
@@ -850,8 +840,6 @@ public function bind( array $data, mixed $entity, mixed $whitelist = null ): For
 ```
 Binds data to the entity
 
-@param object entity
-@param array whitelist
 
 
 ```php
@@ -859,7 +847,6 @@ public function clear( mixed $fields = null ): Form;
 ```
 Clears every element in the form to its default value
 
-@param array|string|null fields
 
 
 ```php
@@ -974,8 +961,6 @@ public function isValid( mixed $data = null, mixed $entity = null ): bool;
 ```
 Validates the form
 
-@param array data
-@param object entity
 
 
 ```php
@@ -1033,7 +1018,6 @@ public function setEntity( mixed $entity ): Form;
 ```
 Sets the entity related to the model
 
-@param object entity
 
 
 ```php
@@ -1083,7 +1067,6 @@ public function create( string $name, mixed $entity = null ): Form;
 ```
 Creates a form registering it in the forms manager
 
-@param object entity
 
 
 ```php

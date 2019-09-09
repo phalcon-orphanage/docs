@@ -555,6 +555,12 @@ public function parse( string $className ): array;
 Reads annotations from the class docblocks, its methods and/or properties
 
 
+```php
+public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
+```
+Parses a raw doc block returning the annotations found
+
+
 
         
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
@@ -571,6 +577,12 @@ Parses docblocks returning an array with the found annotations
 public function parse( string $className ): array;
 ```
 Reads annotations from the class docblocks, its methods and/or properties
+
+
+```php
+public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
+```
+Parses a raw docblock returning the annotations found
 
 
 

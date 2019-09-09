@@ -12,9 +12,9 @@ title: 'Helper'
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework. 
 
 ## Arr
-This class exposes static methods that offer quick access to common functionality when working with arrays.
+[Phalcon\Helper\Arr][helper-arr] exposes static methods that offer quick access to common functionality when working with arrays.
 
-### chunk
+### `chunk`
 ```php
 final public static function chunk(
     array $collection, 
@@ -78,9 +78,8 @@ $result = Arr::first(
 
 echo $result; // 'Framework'
 ```
-<hr/>
 
-### firstKey
+### `firstKey`
 ```php
 final public static function firstKey(
     array $collection, 
@@ -110,9 +109,8 @@ $result = Arr::firstKey(
 
 echo $result; // 3
 ```
-<hr/>
 
-### flatten
+### `flatten`
 ```php
 final public static function flatten(
     array $collection, 
@@ -138,9 +136,8 @@ var_dump(
 );
 // [1, 2, 3, 4, 5];
 ```
-<hr/>
 
-### get
+### `get`
 ```php
 final public static function get(
     array $collection, 
@@ -167,9 +164,8 @@ $data = [
 echo Arr::get($data, 'year');          // 1776
 echo Arr::get($data, 'unknown', 1776); // 1776
 ```
-<hr/>
 
-### group
+### `group`
 ```php
 final public static function group(
     array $collection, 
@@ -255,9 +251,8 @@ var_dump($result);
 //     5 => ['three']
 // ]
 ```
-<hr/>
 
-### has
+### `has`
 ```php
 final public static function has(array $collection, mixed $index): bool
 ```
@@ -280,9 +275,8 @@ $data = [
 echo Arr::has($data, 'year');          // true
 echo Arr::has($data, 'unknown');       // false
 ```
-<hr/>
 
-### isUnique
+### `isUnique`
 ```php
 final public static function isUnique(array $collection): bool
 ```
@@ -306,9 +300,8 @@ $collection = [
 ];
 $result = Arr::isUnique($collection); // false
 ```
-<hr/>
 
-### last
+### `last`
 ```php
 final public static function last(
     array $collection, 
@@ -338,9 +331,8 @@ $result = Arr::last(
 
 echo $result; // 'Phalcon'
 ```
-<hr/>
 
-### lastKey
+### `lastKey`
 ```php
 final public static function lastKey(
     array $collection, 
@@ -370,9 +362,8 @@ $result = Arr::firstKey(
 
 echo $result; // 1
 ```
-<hr/>
 
-### order
+### `order`
 ```php
 final public static function order(
     array $collection, 
@@ -408,9 +399,8 @@ var_dump($result);
 //     ['id' => 1],
 // ]
 ```
-<hr/>
 
-### pluck
+### `pluck`
 ```php
 final public static function pluck(
     array $collection, 
@@ -437,7 +427,7 @@ var_dump($result);
 ```
 <hr/>
 
-### set
+### `set`
 ```php
 final public static function set(
     array $collection, 
@@ -468,9 +458,8 @@ var_dump($result);
 //     1 => 'Framework',
 // ]
 ```
-<hr/>
 
-### sliceLeft
+### `sliceLeft`
 ```php
 final public static function sliceLeft(
     array $collection, 
@@ -504,9 +493,8 @@ var_dump($result);
 //     'for',
 // ]
 ```
-<hr/>
 
-### sliceRight
+### `sliceRight`
 ```php
 final public static function sliceRight(
     array $collection, 
@@ -540,9 +528,8 @@ var_dump($result);
 //     'PHP',
 // ]
 ```
-<hr/>
 
-### split
+### `split`
 ```php
 final public static function split(array $collection): array
 ```
@@ -564,9 +551,8 @@ var_dump($result);
 //     ['Phalcon', 'Framework']
 // ]
 ```
-<hr/>
 
-### toObject
+### `toObject`
 ```php
 final public static function toObject(array $collection)
 ```
@@ -585,14 +571,12 @@ $collection = [
 $result = Arr::toObject($collection);
 var_dump($result);
 // object(stdClass)#1 (2) {
-//   ["1"]=>
-//   string(7) "Phalcon"
-//   ["3"]=>
-//   string(9) "Framework"
+//   ["1"] => string(7) "Phalcon"
+//   ["3"] => string(9) "Framework"
 // }
 ```
 
-### validateAll
+### `validateAll`
 ```php
 final public static function validateAll(
     array $collection, 
@@ -616,7 +600,7 @@ $result     = Arr::validateAll(
 var_dump($result); // true
 ```
 
-### validateAny
+### `validateAny`
 ```php
 final public static function validateAny(
     array $collection, 
@@ -640,7 +624,7 @@ $result     = Arr::validateAny(
 var_dump($result); // true
 ```
 
-### whiteList
+### `whiteList`
 ```php
 final public static function whiteList(
     array $collection, 
@@ -671,17 +655,44 @@ var_dump($result);
 // ]
 ```
 
-<hr/>
-
 ## Exception
-Any exceptions thrown in the `Arr` component will be of this type: `Phalcon\Helper\Exception`
+Any exceptions thrown in the `Phalcon\Helper\*` components will be of this type: [Phalcon\Helper\Exception][helper-exception]
 
-<hr/>
+## Fs
+[Phalcon\Helper\Fs][helper-fs] exposes static methods that offer file operation helper methods
+
+### `basename`
+```php
+final public static function basename(
+    int $uri, 
+    mixed $suffix
+) -> string
+```
+
+Gets the filename from a given path, This method is similar to PHP's [basename()][basename] but has non-ASCII character support. PHP's [basename()][basename] does not properly support streams or filenames beginning with a non-US-ASCII character.
+
+```php
+<?php
+
+use Phalcon\Helper\Fs;
+
+$file = '/file/热爱中文.txt';
+
+echo Fs::basename($file); // '热爱中文.txt'
+
+$file = '/myfolder/日本語のファイル名.txt';
+
+echo Fs::basename($file); // '日本語のファイル名.txt'
+
+$file = '/root/ελληνικά.txt';
+
+echo Fs::basename($file); // 'ελληνικά.txt';
+```
 
 ## Number
-This class exposes static methods that offer quick access to common functionality when working with numbers.
+[Phalcon\Helper\Number][helper-number] exposes static methods that offer quick access to common functionality when working with numbers.
 
-### between
+### `between`
 ```php
 final public static function between(
     int $value, 
@@ -708,9 +719,9 @@ echo Number::between($value, $min, $max);   // false
 ```
 
 ## Str
-This class exposes static methods that offer quick manipulations to strings.
+[Phalcon\Helper\Str][helper-str] exposes static methods that offer quick manipulations to strings.
 
-### camelize
+### `camelize`
 ```php
 final public static function camelize(string $text, mixed $delimiter = null): string
 ```
@@ -724,9 +735,8 @@ echo Str::camelize('coco_bongo');         // CocoBongo
 echo Str::camelize('co_co-bon_go', '-');  // Co_coBon_go
 echo Str::camelize('co_co-bon_go', '_-'); // CoCoBonGo
 ```
-<hr/>
 
-### concat
+### `concat`
 ```php
 final public static function concat(
     string $separator, 
@@ -752,9 +762,8 @@ $folder = Str::concat(
 echo $folder; // /tmp/folder_1/folder_2/folder_3/
 
 ```
-<hr/>
 
-### countVowels
+### `countVowels`
 ```php
 final public static function countVowels(string $text): int
 ```
@@ -768,9 +777,8 @@ $source = 'Luke, I am your father!';
 
 echo Str::countVowels($source); // 8
 ```
-<hr/>
 
-### decapitalize
+### `decapitalize`
 ```php
 final public static function decapitalize(
     string $text, 
@@ -807,9 +815,8 @@ use Phalcon\Helper\Str;
 echo Str::decrement('a_1'); // 'a'
 echo Str::decrement('a_2'); // 'a_1'
 ```
-<hr/>
 
-### dirFromFile
+### `dirFromFile`
 ```php
 final public static function dirFromFile(string $file): string
 ```
@@ -822,9 +829,8 @@ use Phalcon\Helper\Str;
 
 echo Str::dirFromFile("file1234.jpg"); // fi/le/12/
 ```
-<hr/>
 
-### dirSeparator
+### `dirSeparator`
 ```php
 final public static function dirSeparator(string $directory): string
 ```
@@ -837,9 +843,8 @@ use Phalcon\Helper\Str;
 
 echo Str::dirSeparator("/home/phalcon"); // /home/phalcon/
 ```
-<hr/>
 
-### dynamic
+### `dynamic`
 ```php
 final public static function dynamic(
     string $text,
@@ -858,9 +863,8 @@ echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Han Solo
 echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Leia Skywalker
 echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo
 ```
-<hr/>
 
-### endsWith
+### `endsWith`
 ```php
 final public static function endsWith(
     string $text, 
@@ -878,9 +882,8 @@ echo Str::endsWith('Hello', 'llo');        // true
 echo Str::endsWith('Hello', 'LLO', false); // false
 echo Str::endsWith('Hello', 'LLO');        // true
 ```
-<hr/>
 
-### firstBetween
+### `firstBetween`
 ```php
 final public static function firstBetween(
     string $haystack,
@@ -898,9 +901,8 @@ $source   = 'This is a [custom] string with [other] stuff';
 
 echo Str::firstBetween($source, '[', ']'); // custom
 ```
-<hr/>
 
-### humanize
+### `humanize`
 ```php
 final public static function humanize(string $text): string
 ```
@@ -913,9 +915,8 @@ use Phalcon\Helper\Str;
 echo Str::humanize('start-a-horse'); // 'start a horse'
 echo Str::humanize('five_cats');     // 'five cats'
 ```
-<hr/>
 
-### includes
+### `includes`
 ```php
 final public static function includes(
     string $needle, 
@@ -931,9 +932,8 @@ use Phalcon\Helper\Str;
 echo Str::includes('start', 'start-a-horse'); // true
 echo Str::includes('end', 'start-a-horse'); // false
 ```
-<hr/>
 
-### increment
+### `increment`
 ```php
 final public static function increment(
     string $text, 
@@ -949,9 +949,8 @@ use Phalcon\Helper\Str;
 echo Str::increment('a');   // 'a_1'
 echo Str::increment('a_1'); // 'a_2'
 ```
-<hr/>
 
-### isAnagram
+### `isAnagram`
 ```php
 final public static function isAnagram(
     string $first, 
@@ -966,9 +965,8 @@ use Phalcon\Helper\Str;
 
 echo Str::isAnagram('rail safety', 'fairy tales'); // true
 ```
-<hr/>
 
-### isLower
+### `isLower`
 ```php
 final public static function isLower(
     string $text, 
@@ -984,9 +982,8 @@ use Phalcon\Helper\Str;
 echo Str::isLower('phalcon framework'); // true
 echo Str::isLower('Phalcon Framework'); // false
 ```
-<hr/>
 
-### isPalindrome
+### `isPalindrome`
 ```php
 final public static function isPalindrome(string $text): bool
 ```
@@ -998,9 +995,8 @@ use Phalcon\Helper\Str;
 
 echo Str::isPalindrome('racecar'); // true
 ```
-<hr/>
 
-### isUpper
+### `isUpper`
 ```php
 final public static function isUpper(
     string $text, 
@@ -1016,9 +1012,8 @@ use Phalcon\Helper\Str;
 echo Str::isUpper('PHALCON FRAMEWORK'); // true
 echo Str::isUpper('Phalcon Framework'); // false
 ```
-<hr/>
 
-### lower
+### `lower`
 ```php
 final public static function lower(
     string $text, 
@@ -1033,9 +1028,8 @@ use Phalcon\Helper\Str;
 
 echo Str::lower('PHALCON FRAMEWORK'); // phalcon framework
 ```
-<hr/>
 
-### random
+### `random`
 ```php
 final public static function random(
     int $type = 0, 
@@ -1044,12 +1038,12 @@ final public static function random(
 ```
 Generates a random string based on the given type. The first parameter is one of the `RANDOM_*` constants. The second parameter specifies the length of the string (defaults to 8).
 
-* RANDOM_ALNUM
-* RANDOM_ALPHA
-* RANDOM_DISTINCT
-* RANDOM_HEXDEC
-* RANDOM_NOZERO
-* RANDOM_NUMERIC
+- RANDOM_ALNUM
+- RANDOM_ALPHA
+- RANDOM_DISTINCT
+- RANDOM_HEXDEC
+- RANDOM_NOZERO
+- RANDOM_NUMERIC
 
 ```php
 <?php
@@ -1058,9 +1052,8 @@ use Phalcon\Helper\Str;
 
 echo Str::random(Str::RANDOM_ALNUM); // 'aloiwkqz'
 ```
-<hr/>
 
-### reduceSlashes
+### `reduceSlashes`
 ```php
 final public static function reduceSlashes(string $text): string
 ```
@@ -1076,9 +1069,8 @@ echo Str::reduceSlashes('//foo.bar///baz/buz');      // /foo.bar/baz/buz
 echo Str::reduceSlashes('ftp://foo.bar///baz/buz');  // ftp://foo.bar/baz/buz
 echo Str::reduceSlashes('ftp//foo.bar///baz/buz');   // ftp/foo.bar/baz/buz
 ```
-<hr/>
 
-### startsWith
+### `startsWith`
 ```php
 final public static function startsWith(
     string $text, 
@@ -1096,9 +1088,8 @@ echo Str::startsWith('Hello', 'He');        // true
 echo Str::startsWith('Hello', 'he', false); // false
 echo Str::startsWith('Hello', 'he');        // true
 ```
-<hr/>
 
-### uncamelize
+### `uncamelize`
 ```php
 final public static function uncamelize(
     string $text,   
@@ -1116,7 +1107,7 @@ echo Str::uncamelize('CocoBongo', '-'); // coco-bongo
 ```
 <hr/>
 
-### underscore
+### `underscore`
 ```php
 final public static function underscore(string $text): string
 ```
@@ -1129,9 +1120,8 @@ use Phalcon\Helper\Str;
 echo Str::underscore('look behind');     // 'look_behind'
 echo Str::underscore('Awesome Phalcon'); // 'Awesome_Phalcon'
 ```
-<hr/>
 
-### upper
+### `upper`
 ```php
 final public static function upper(
     string $text, 
@@ -1146,4 +1136,10 @@ use Phalcon\Helper\Str;
 
 echo Str::upper('phalcon framework'); // PHALCON FRAMEWORK
 ```
-<hr/>
+
+[basename]: https://www.php.net/manual/en/function.basename.php
+[helper-arr]: api/Phalcon_Helper#helper-arr
+[helper-exception]: api/Phalcon_Helper#helper-exception
+[helper-fs]: api/Phalcon_Helper#helper-fs
+[helper-number]: api/Phalcon_Helper#helper-number
+[helper-str]: api/Phalcon_Helper#helper-str

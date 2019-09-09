@@ -70,7 +70,6 @@ public function __construct( string $type, mixed $source, mixed $data = null, bo
 ```
 Phalcon\Events\Event constructor
 
-@param object source
 
 
 ```php
@@ -281,7 +280,6 @@ public function attach( string $eventType, mixed $handler, int $priority = stati
 ```
 Attach a listener to the events manager
 
-@param object|callable handler
 
 
 ```php
@@ -296,7 +294,6 @@ public function detach( string $eventType, mixed $handler ): void;
 ```
 Detach the listener from the events manager
 
-@param object handler
 
 
 ```php
@@ -321,8 +318,6 @@ notified about it
 $eventsManager->fire("db", $connection);
 ```
 
-@param object source
-@param mixed  data
 @return mixed
 
 
@@ -382,7 +377,6 @@ public function attach( string $eventType, mixed $handler ): void;
 ```
 Attach a listener to the events manager
 
-@param object|callable handler
 
 
 ```php
@@ -390,7 +384,6 @@ public function detach( string $eventType, mixed $handler ): void;
 ```
 Detach the listener from the events manager
 
-@param object handler
 
 
 ```php
@@ -405,8 +398,6 @@ public function fire( string $eventType, mixed $source, mixed $data = null );
 Fires an event in the events manager causing the active listeners to be
 notified about it
 
-@param object source
-@param mixed  data
 @return mixed
 
 

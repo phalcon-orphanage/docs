@@ -279,7 +279,6 @@ Appends an array of messages to the collection
 $messages->appendMessages($messagesArray);
 ```
 
-@param \Phalcon\Messages\MessageInterface[] messages
 
 
 ```php
@@ -335,7 +334,6 @@ var_dump(
 );
 ```
 
-@param int index
 
 
 ```php
@@ -359,7 +357,6 @@ Sets an attribute using the array-syntax
 $messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
 
-@param \Phalcon\Messages\Message message
 
 
 ```php
