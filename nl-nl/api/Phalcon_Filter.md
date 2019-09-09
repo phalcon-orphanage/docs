@@ -5,8 +5,8 @@ version: '4.0'
 title: 'Phalcon\Filter'
 ---
 
+* [Phalcon\Filter](#filter)
 * [Phalcon\Filter\Exception](#filter-exception)
-* [Phalcon\Filter\Filter](#filter-filter)
 * [Phalcon\Filter\FilterFactory](#filter-filterfactory)
 * [Phalcon\Filter\FilterInterface](#filter-filterinterface)
 * [Phalcon\Filter\Sanitize\AbsInt](#filter-sanitize-absint)
@@ -31,21 +31,11 @@ title: 'Phalcon\Filter'
 * [Phalcon\Filter\Sanitize\UpperWords](#filter-sanitize-upperwords)
 * [Phalcon\Filter\Sanitize\Url](#filter-sanitize-url)
 
-<h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
+<h1 id="filter">Class Phalcon\Filter</h1>
 
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter.zep)
 
-| Namespace | Phalcon\Filter | | Extends | \Phalcon\Exception |
-
-Phalcon\Filter\Exception
-
-Exceptions thrown in Phalcon\Filter will use this class
-
-<h1 id="filter-filter">Class Phalcon\Filter\Filter</h1>
-
-[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filter.zep)
-
-| Namespace | Phalcon\Filter | | Uses | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface | | Implements | FilterInterface |
+| Namespace | Phalcon | | Uses | Closure, Phalcon\Filter\Exception, Phalcon\Filter\FilterInterface | | Implements | FilterInterface |
 
 Lazy loads, stores and exposes sanitizer objects
 
@@ -128,11 +118,21 @@ protected function init( array $mapper ): void;
 
 Loads the objects in the internal mapper array
 
+<h1 id="filter-exception">Class Phalcon\Filter\Exception</h1>
+
+[Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/exception.zep)
+
+| Namespace | Phalcon\Filter | | Extends | \Phalcon\Exception |
+
+Phalcon\Filter\Exception
+
+Exceptions thrown in Phalcon\Filter will use this class
+
 <h1 id="filter-filterfactory">Class Phalcon\Filter\FilterFactory</h1>
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterfactory.zep)
 
-| Namespace | Phalcon\Filter | | Uses | Phalcon\Filter\Filter |
+| Namespace | Phalcon\Filter | | Uses | Phalcon\Filter |
 
 This file is part of the Phalcon Framework.
 

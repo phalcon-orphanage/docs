@@ -405,38 +405,36 @@ The `Filter` component has been rewritten, utilizing a service locator. Each san
 
 ### Overview
 
-The `Phalcon\Filter` object has been removed from the framework. In its place we have two components that can help with sanitizing input.
-
-The equivalent of the v3 `Phalcon\Filter` is now the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object. This object allows you to sanitize input as before using the `sanitize()` method.
+The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
 The values sanitized are automatically cast to the relevant types. This is the default behavior for the `int`, `bool` and `float` filters.
 
-When instantiating the locator object, it does not know about any sanitizers. You have two options:
+When instantiating the filter object, it does not know about any sanitizers. You have two options:
 
 #### Load all the default sanitizers
 
-You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterLocatorFactory](Phalcon_Filter_FilterLocatorFactory) component.
+You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
 
 ```php
 <?php
 
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
-$factory = new FilterLocatorFactory();
+$factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-Calling`newInstance()` will return a [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
+Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
 
 #### Load only sanitizers you want
 
-You can instantiate the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
+You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
 
 ### Using the `FactoryDefault`
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
+If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
 
-Also components that utilize the filter service, such as the [Request](api/Phalcon_Http_Request) object, transparently use the new filter locator. No additional changes required for those components.
+Also components that utilize the filter service, such as the [Request](api/Phalcon_Http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
 
 ### Using a custom `Di`
 
@@ -446,14 +444,14 @@ If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself
 <?php
 
 use Phalcon\Di;
-use Phalcon\Filter\FilterLocatorFactory;
+use Phalcon\Filter\FilterFactory;
 
 $container = new Di();
 
 $container->set(
     'filter',
     function () {
-        $factory = new FilterLocatorFactory();
+        $factory = new FilterFactory();
         return $factory->newInstance();
     }
 );
@@ -464,7 +462,7 @@ $container->set(
 
 ### Constants
 
-The constants that the v3 `Phalcon\Filter` have somewhat changed. They are now located in the [Phalcon\Filter\FilterLocator](api/Phalcon_Filter_FilterLocator) class.
+The constants that the v3 `Phalcon\Filter` have somewhat changed.
 
 #### Removed
 
@@ -808,7 +806,9 @@ $criteria->limit(10, null);
 
 ### Mvc\User
 
-- Removed `Phalcon\Mvc\User\Component` - replaced by `Phalcon\Plugin`
+- Removed `Phalcon\Mvc\User\Component` - use `Phalcon\Di\Injectable` instead
+- Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
+- Removed `Phalcon\Mvc\User\Plugin` - use `Phalcon\Di\Injectable` instead
 
 ### Mvc\View
 
@@ -822,10 +822,6 @@ $criteria->limit(10, null);
 - `$before` is removed and replaced with `$previous`
 - `$total_pages` is removed since it contained the same information as `$last`
 - Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
-
-## Plugin
-
-- Added `Phalcon\Plugin` - replaces `Phalcon\Mvc\User\Component`, `Phalcon\Mvc\User\Plugin` and `Phalcon\Mvc\User\Module`
 
 ## Router
 
@@ -1080,31 +1076,30 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 ### Filtr
 
-| 3.4.x           | State      | 4.0.x                                  |
-| --------------- | ---------- | -------------------------------------- |
-| Phalcon\Filter | Renamed to | Phalcon\Filter\Filter                |
-|                 | New        | Phalcon\Filter\FilterFactory         |
-|                 | New        | Phalcon\Filter\Sanitize\AbsInt      |
-|                 | New        | Phalcon\Filter\Sanitize\Alnum       |
-|                 | New        | Phalcon\Filter\Sanitize\Alpha       |
-|                 | New        | Phalcon\Filter\Sanitize\BoolVal     |
-|                 | New        | Phalcon\Filter\Sanitize\Email       |
-|                 | New        | Phalcon\Filter\Sanitize\FloatVal    |
-|                 | New        | Phalcon\Filter\Sanitize\IntVal      |
-|                 | New        | Phalcon\Filter\Sanitize\Lower       |
-|                 | New        | Phalcon\Filter\Sanitize\LowerFirst  |
-|                 | New        | Phalcon\Filter\Sanitize\Regex       |
-|                 | New        | Phalcon\Filter\Sanitize\Remove      |
-|                 | New        | Phalcon\Filter\Sanitize\Replace     |
-|                 | New        | Phalcon\Filter\Sanitize\Special     |
-|                 | New        | Phalcon\Filter\Sanitize\SpecialFull |
-|                 | New        | Phalcon\Filter\Sanitize\StringVal   |
-|                 | New        | Phalcon\Filter\Sanitize\Striptags   |
-|                 | New        | Phalcon\Filter\Sanitize\Trim        |
-|                 | New        | Phalcon\Filter\Sanitize\Upper       |
-|                 | New        | Phalcon\Filter\Sanitize\UpperFirst  |
-|                 | New        | Phalcon\Filter\Sanitize\UpperWords  |
-|                 | New        | Phalcon\Filter\Sanitize\Url         |
+| 3.4.x | State | 4.0.x                                  |
+| ----- | ----- | -------------------------------------- |
+|       | New   | Phalcon\Filter\FilterFactory         |
+|       | New   | Phalcon\Filter\Sanitize\AbsInt      |
+|       | New   | Phalcon\Filter\Sanitize\Alnum       |
+|       | New   | Phalcon\Filter\Sanitize\Alpha       |
+|       | New   | Phalcon\Filter\Sanitize\BoolVal     |
+|       | New   | Phalcon\Filter\Sanitize\Email       |
+|       | New   | Phalcon\Filter\Sanitize\FloatVal    |
+|       | New   | Phalcon\Filter\Sanitize\IntVal      |
+|       | New   | Phalcon\Filter\Sanitize\Lower       |
+|       | New   | Phalcon\Filter\Sanitize\LowerFirst  |
+|       | New   | Phalcon\Filter\Sanitize\Regex       |
+|       | New   | Phalcon\Filter\Sanitize\Remove      |
+|       | New   | Phalcon\Filter\Sanitize\Replace     |
+|       | New   | Phalcon\Filter\Sanitize\Special     |
+|       | New   | Phalcon\Filter\Sanitize\SpecialFull |
+|       | New   | Phalcon\Filter\Sanitize\StringVal   |
+|       | New   | Phalcon\Filter\Sanitize\Striptags   |
+|       | New   | Phalcon\Filter\Sanitize\Trim        |
+|       | New   | Phalcon\Filter\Sanitize\Upper       |
+|       | New   | Phalcon\Filter\Sanitize\UpperFirst  |
+|       | New   | Phalcon\Filter\Sanitize\UpperWords  |
+|       | New   | Phalcon\Filter\Sanitize\Url         |
 
 ### Firewall
 
