@@ -265,8 +265,6 @@ Appends an array of messages to the collection
 $messages->appendMessages($messagesArray);
 ```
 
-@param \Phalcon\Messages\MessageInterface[] messages
-
 ```php
 public function count(): int;
 ```
@@ -320,8 +318,6 @@ var_dump(
 );
 ```
 
-@param int index
-
 ```php
 public function offsetGet( mixed $index ): mixed;
 ```
@@ -343,8 +339,6 @@ Sets an attribute using the array-syntax
 ```php
 $messages[0] = new \Phalcon\Messages\Message("This is a message");
 ```
-
-@param \Phalcon\Messages\Message message
 
 ```php
 public function offsetUnset( mixed $index ): void;
