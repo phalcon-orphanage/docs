@@ -109,8 +109,6 @@ public function bind( mixed $entity, mixed $data ): ValidationInterface;
 
 Assigns the data to an entity The entity is used to obtain the validation values
 
-@param object entity @param array|object data
-
 ```php
 public function getData()
 ```
@@ -132,8 +130,6 @@ public function getLabel( mixed $field ): string;
 ```
 
 Get label for field
-
-@param string field
 
 ```php
 public function getMessages(): Messages;
@@ -171,15 +167,11 @@ public function setEntity( mixed $entity ): void;
 
 Sets the bound entity
 
-@param object entity
-
 ```php
 public function setFilters( mixed $field, mixed $filters ): ValidationInterface;
 ```
 
 Adds filters to the field
-
-@param string field @param array|string filters
 
 ```php
 public function setLabels( array $labels ): void;
@@ -196,8 +188,6 @@ public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 
 Validate a set of data according to a set of rules
-
-@param array|object data @param object entity
 
 ```php
 protected function preChecking( mixed $field, ValidatorInterface $validator ): bool;
@@ -395,8 +385,6 @@ public function bind( mixed $entity, mixed $data ): ValidationInterface;
 
 Assigns the data to an entity The entity is used to obtain the validation values
 
-@param object entity @param array|object data
-
 ```php
 public function getEntity(): object;
 ```
@@ -451,8 +439,6 @@ public function setFilters( string $field, mixed $filters ): ValidationInterface
 
 Adds filters to the field
 
-@param array|string filters
-
 ```php
 public function setLabels( array $labels ): void;
 ```
@@ -464,8 +450,6 @@ public function validate( mixed $data = null, mixed $entity = null ): Messages;
 ```
 
 Validate a set of data according to a set of rules
-
-@param array|object data @param object entity
 
 <h1 id="validation-validator-alnum">Class Phalcon\Validation\Validator\Alnum</h1>
 
@@ -1224,7 +1208,8 @@ public function checkUpload( Validation $validation, mixed $field ): bool;
 
 Check upload
 
-@param Valiation $validation @param mixed $field @return bool
+         @return bool
+    
 
 ```php
 public function checkUploadIsEmpty( Validation $validation, mixed $field ): bool;
@@ -1232,7 +1217,8 @@ public function checkUploadIsEmpty( Validation $validation, mixed $field ): bool
 
 Check if upload is empty
 
-@param Valiation $validation @param mixed $field @return boolean
+         @return boolean
+    
 
 ```php
 public function checkUploadIsValid( Validation $validation, mixed $field ): bool;
@@ -1240,7 +1226,8 @@ public function checkUploadIsValid( Validation $validation, mixed $field ): bool
 
 Check if upload is valid
 
-@param Valiation $validation @param mixed $field @return boolean
+         @return boolean
+    
 
 ```php
 public function checkUploadMaxSize( Validation $validation, mixed $field ): bool;
@@ -1248,7 +1235,8 @@ public function checkUploadMaxSize( Validation $validation, mixed $field ): bool
 
 Check if uploaded file is larger than PHP allowed size
 
-@param Valiation $validation @param mixed $field @return boolean
+         @return boolean
+    
 
 ```php
 public function getFileSizeInBytes( string $size ): double;
@@ -1256,7 +1244,8 @@ public function getFileSizeInBytes( string $size ): double;
 
 Convert a string like "2.5MB" in bytes
 
-@param string $size @return float
+      @return float
+    
 
 ```php
 public function getMessageFileEmpty()
@@ -1276,7 +1265,7 @@ public function isAllowEmpty( Validation $validation, string $field ): bool;
 
 Check on empty
 
-@param Valiation $validation @param mixed $field @return bool
+@return bool
 
 ```php
 public function setMessageFileEmpty( $messageFileEmpty )
@@ -1359,7 +1348,7 @@ public function validate( Validation $validation, mixed $field ): bool;
 
 Executes the validation
 
-@param Valiation $validation @param mixed $field @return bool
+@return bool
 
 <h1 id="validation-validator-file-resolution-equal">Class Phalcon\Validation\Validator\File\Resolution\Equal</h1>
 
