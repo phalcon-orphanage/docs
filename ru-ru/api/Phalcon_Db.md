@@ -74,6 +74,14 @@ try {
 }
 ```
 
+## Методы
+
+```php
+public static function setup( array $options ): void;
+```
+
+Enables/disables options in the Database component
+
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/abstractadapter.zep)

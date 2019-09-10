@@ -103,15 +103,11 @@ public function __construct( string $name, array $adapters = [] ): void;
 
 Constructor.
 
-@param string name The name of the logger @param array adapters The collection of adapters to be used for logging (default [])
-
 ```php
 public function addAdapter( string $name, AdapterInterface $adapter ): Logger;
 ```
 
 Add an adapter to the stack. For processing we use FIFO
-
-@param string name The name of the adapter @param <adapterinterface> adapter The adapter to add to the stack
 
 ```php
 public function alert( mixed $message, array $context = [] ): void;
@@ -121,8 +117,6 @@ Action must be taken immediately.
 
 Example: Entire website down, database unavailable, etc. This should trigger the SMS alerts and wake you up.
 
-@param string message
-
 ```php
 public function critical( mixed $message, array $context = [] ): void;
 ```
@@ -131,15 +125,11 @@ Critical conditions.
 
 Example: Application component unavailable, unexpected exception.
 
-@param string message
-
 ```php
 public function debug( mixed $message, array $context = [] ): void;
 ```
 
 Detailed debug information.
-
-@param string message
 
 ```php
 public function emergency( mixed $message, array $context = [] ): void;
@@ -147,15 +137,11 @@ public function emergency( mixed $message, array $context = [] ): void;
 
 System is unusable.
 
-@param string message
-
 ```php
 public function error( mixed $message, array $context = [] ): void;
 ```
 
 Runtime errors that do not require immediate action but should typically be logged and monitored.
-
-@param string message
 
 ```php
 public function excludeAdapters( array $adapters = [] ): Logger;
@@ -168,8 +154,6 @@ public function getAdapter( string $name ): AdapterInterface;
 ```
 
 Returns an adapter from the stack
-
-@param string name The name of the adapter
 
 @throws <exception>
 
@@ -195,15 +179,11 @@ Interesting events.
 
 Example: User logs in, SQL logs.
 
-@param string message
-
 ```php
 public function log( mixed $level, mixed $message, array $context = [] ): void;
 ```
 
 Logs with an arbitrary level.
-
-@param mixed level @param string message
 
 ```php
 public function notice( mixed $message, array $context = [] ): void;
@@ -211,15 +191,11 @@ public function notice( mixed $message, array $context = [] ): void;
 
 Normal but significant events.
 
-@param string message
-
 ```php
 public function removeAdapter( string $name ): Logger;
 ```
 
 Removes an adapter from the stack
-
-@param string name The name of the adapter
 
 @throws <Logger\Exception>
 
@@ -229,8 +205,6 @@ public function setAdapters( array $adapters ): Logger;
 
 Sets the adapters stack overriding what is already there
 
-@param array adapters An array of adapters
-
 ```php
 public function warning( mixed $message, array $context = [] ): void;
 ```
@@ -239,15 +213,11 @@ Exceptional occurrences that are not errors.
 
 Example: Use of deprecated APIs, poor use of an API, undesirable things that are not necessarily wrong.
 
-@param string message
-
 ```php
 protected function addMessage( int $level, string $message, array $context = [] ): bool;
 ```
 
 Adds a message to each handler for processing
-
-@param int level @param string message
 
 @throws <Logger\Exception>
 
@@ -670,7 +640,7 @@ public function interpolate( string $message, mixed $context = null );
 
 Interpolates context values into the message placeholders
 
-@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message @param string $message @param array $context
+@see http://www.php-fig.org/psr/psr-3/ Section 1.2 Message
 
 <h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
@@ -924,7 +894,5 @@ public function newInstance( string $name, array $adapters = [] ): Logger;
 ```
 
 Returns a Logger object
-
-@param string $name @param array $adapters
 
 @return Logger

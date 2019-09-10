@@ -56,8 +56,6 @@ public function _( string $translateKey, mixed $placeholders = null ): string;
 
 Returns the translation string of the given key (alias of method 't')
 
-@param array placeholders
-
 ```php
 public function offsetExists( mixed $translateKey ): bool;
 ```
@@ -76,8 +74,6 @@ public function offsetSet( mixed $offset, mixed $value ): void;
 
 Sets a translation value
 
-@param string value
-
 ```php
 public function offsetUnset( mixed $offset ): void;
 ```
@@ -89,8 +85,6 @@ public function t( string $translateKey, mixed $placeholders = null ): string;
 ```
 
 Returns the translation string of the given key
-
-@param array placeholders
 
 ```php
 protected function replacePlaceholders( string $translation, mixed $placeholders = null ): string;
@@ -122,15 +116,11 @@ public function query( string $translateKey, mixed $placeholders = null ): strin
 
 Returns the translation related to the given key
 
-@param array placeholders
-
 ```php
 public function t( string $translateKey, mixed $placeholders = null ): string;
 ```
 
 Returns the translation string of the given key
-
-@param array placeholders
 
 <h1 id="translate-adapter-csv">Class Phalcon\Translate\Adapter\Csv</h1>
 
@@ -266,8 +256,6 @@ Returns the translation related to the given key.
 $translator->query("你好 %name%！", ["name" => "Phalcon"]);
 ```
 
-@param array placeholders
-
 ```php
 public function resetDomain(): string;
 ```
@@ -298,8 +286,6 @@ $gettext->setDirectory(
     ]
 );
 ```
-
-@param string|array directory The directory path or an array of directories and domains
 
 ```php
 public function setDomain( mixed $domain ): string;

@@ -226,8 +226,6 @@ public function setValue( mixed $value ): CookieInterface;
 
 Sets the cookie's value
 
-@param string value
-
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
@@ -358,8 +356,6 @@ public function setValue( mixed $value ): CookieInterface;
 
 Sets the cookie's value
 
-@param string value
-
 ```php
 public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
@@ -382,15 +378,11 @@ final protected function checkStringParameter( mixed $element ): void;
 
 Checks the element passed if it is a string
 
-@param mixed $element
-
 ```php
 final protected function cloneInstance( mixed $element, string $property ): object;
 ```
 
 Returns a new instance having set the parameter
-
-@param mixed $element @param string $property
 
 @return mixed
 
@@ -399,8 +391,6 @@ final protected function processWith( mixed $element, string $property ): object
 ```
 
 Checks the element passed; assigns it to the property and returns a clone of the object back
-
-@param mixed $element @param string $property
 
 @return mixed
 
@@ -468,8 +458,6 @@ This method returns an array of all the header values of the given case-insensit
 
 If the header does not appear in the message, this method MUST return an empty array.
 
-@param string $name
-
 @return array
 
 ```php
@@ -483,8 +471,6 @@ This method returns all of the header values of the given case-insensitive heade
 NOTE: Not all header values may be appropriately represented using comma concatenation. For such headers, use getHeader() instead and supply your own delimiter when concatenating.
 
 If the header does not appear in the message, this method MUST return an empty string.
-
-@param string $name
 
 @return string
 
@@ -527,8 +513,6 @@ public function hasHeader( mixed $name ): bool;
 
 Checks if a header exists by the given case-insensitive name.
 
-@param string $name
-
 @return bool
 
 ```php
@@ -540,8 +524,6 @@ Return an instance with the specified header appended with the given value.
 Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new header and/or value.
-
-@param string $name @param string|string[] $value
 
 @return self
 
@@ -555,8 +537,6 @@ The body MUST be a StreamInterface object.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return a new instance that has the new body stream.
 
-@param StreamInterface $body
-
 @return self @throws InvalidArgumentException When the body is not valid.
 
 ```php
@@ -568,8 +548,6 @@ Return an instance with the provided value replacing the specified header.
 While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from getHeaders().
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new and/or updated header and value.
-
-@param string $name @param string|string[] $value
 
 @return self @throws InvalidArgumentException for invalid header names or values.
 
@@ -583,8 +561,6 @@ The version string MUST contain only the HTTP version number (e.g., '1.1', '1.0'
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the new protocol version.
 
-@param string $version
-
 @return self
 
 ```php
@@ -597,8 +573,6 @@ Header resolution MUST be done without case-sensitivity.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that removes the named header.
 
-@param string $name
-
 @return self
 
 ```php
@@ -609,8 +583,6 @@ Ensure Host is the first header.
 
 @see: http://tools.ietf.org/html/rfc7230#section-5.4
 
-@param Collection $collection
-
 @return Collection
 
 ```php
@@ -620,8 +592,6 @@ final protected function checkHeaderName( mixed $name ): void;
 Check the name of the header. Throw exception if not valid
 
 @see http://tools.ietf.org/html/rfc7230#section-3.2
-
-@param $name
 
 ```php
 final protected function checkHeaderValue( mixed $value ): void;
@@ -661,15 +631,11 @@ A sender SHOULD NOT generate a quoted-pair in a quoted-string except where neces
 
 @see https://tools.ietf.org/html/rfc7230#section-3.2.6
 
-@param $value
-
 ```php
 final protected function getHeaderValue( mixed $values ): array;
 ```
 
 Returns the header values checked for validity
-
-@param $values
 
 @return array
 
@@ -679,8 +645,6 @@ final protected function getUriHost( UriInterface $uri ): string;
 
 Return the host and if applicable the port
 
-@param UriInterface $uri
-
 @return string
 
 ```php
@@ -688,8 +652,6 @@ final protected function populateHeaderCollection( array $headers ): Collection;
 ```
 
 Populates the header collection
-
-@param array $headers
 
 @return Collection
 
@@ -699,8 +661,6 @@ final protected function processBody( mixed $body = string, string $mode = strin
 
 Set a valid stream
 
-@param StreamInterface|resource|string $body @param string $mode
-
 @return StreamInterface
 
 ```php
@@ -709,8 +669,6 @@ final protected function processHeaders( mixed $headers ): Collection;
 
 Sets the headers
 
-@param $headers
-
 @return Collection
 
 ```php
@@ -718,8 +676,6 @@ final protected function processProtocol( mixed $protocol = string ): string;
 ```
 
 Checks the protocol
-
-@param string $protocol
 
 @return string
 
@@ -793,8 +749,6 @@ While HTTP method names are typically all uppercase characters, HTTP method name
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the changed request method.
 
-@param string $method
-
 @return object @throws InvalidArgumentException for invalid HTTP methods.
 
 ```php
@@ -808,8 +762,6 @@ If the request needs a non-origin-form request-target — e.g., for specifying a
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the changed request target.
 
 @see http://tools.ietf.org/html/rfc7230#section-5.3 (for the various request-target forms allowed in request messages)
-
-@param mixed $requestTarget
 
 @return object
 
@@ -831,8 +783,6 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 @see http://tools.ietf.org/html/rfc3986#section-4.3
 
-@param UriInterface $uri @param bool $preserveHost
-
 @return object
 
 ```php
@@ -841,8 +791,6 @@ final protected function processMethod( mixed $method = string ): string;
 
 Check the method
 
-@param string $method
-
 @return string
 
 ```php
@@ -850,8 +798,6 @@ final protected function processUri( mixed $uri ): UriInterface;
 ```
 
 Sets a valid Uri
-
-@param UriInterface|string|null $uri
 
 @return UriInterface
 
@@ -883,8 +829,6 @@ public function __construct( string $method = string, mixed $uri = null, mixed $
 
 Request constructor.
 
-@param string $method @param UriInterface|string|null $uri @param StreamInterface|resource|string $body @param array $headers
-
 <h1 id="http-message-requestfactory">Final Class Phalcon\Http\Message\RequestFactory</h1>
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/requestfactory.zep)
@@ -900,8 +844,6 @@ public function createRequest( string $method, mixed $uri ): RequestInterface;
 ```
 
 Create a new request.
-
-@param string $method @param UriInterface|string|null $uri
 
 @return RequestInterface
 
@@ -953,8 +895,6 @@ public function __construct( mixed $body = string, int $code = int, array $heade
 
 Response constructor.
 
-@param string $body @param int $code @param array $headers
-
 ```php
 public function getReasonPhrase(): string
 ```
@@ -975,8 +915,6 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 @see http://tools.ietf.org/html/rfc7231#section-6 @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
-@param int $code @param string $reasonPhrase
-
 @return Response
 
 <h1 id="http-message-responsefactory">Final Class Phalcon\Http\Message\ResponseFactory</h1>
@@ -995,7 +933,10 @@ public function createResponse( int $code = int, string $reasonPhrase = string )
 
 Create a new response.
 
-@param int $code The HTTP status code. Defaults to 200. @param string $reasonPhrase The reason phrase to associate with the status code in the generated response. If none is provided, implementations MAY use the defaults as suggested in the HTTP specification.
+                            code in the generated response. If none is
+                            provided, implementations MAY use the defaults
+                            as suggested in the HTTP specification.
+    
 
 @return ResponseInterface
 
@@ -1091,8 +1032,6 @@ public function __construct( string $method = string, mixed $uri = null, array $
 
 ServerRequest constructor.
 
-@param string $method @param UriInterface|string|null $uri @param array $serverParams @param StreamInterface|string $body @param array $headers @param array $cookies @param array $queryParams @param array $uploadFiles @param null|array|object $parsedBody @param string $protocol
-
 ```php
 public function getAttribute( mixed $name, mixed $defaultValue = null ): mixed;
 ```
@@ -1102,8 +1041,6 @@ Retrieve a single derived request attribute.
 Retrieves a single derived request attribute as described in getAttributes(). If the attribute has not been previously set, returns the default value as provided.
 
 This method obviates the need for a hasAttribute() method, as it allows specifying a default value to return if the attribute is not found.
-
-@param string $name @param mixed|null $defaultValue
 
 @return mixed
 
@@ -1147,8 +1084,6 @@ This method allows setting a single derived request attribute as described in ge
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated attribute.
 
-@param string $name @param mixed $value
-
 @return ServerRequest
 
 ```php
@@ -1162,8 +1097,6 @@ The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST be comp
 This method MUST NOT update the related Cookie header of the request instance, nor related values in the server params.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated cookie values.
-
-@param array $cookies
 
 @return ServerRequest
 
@@ -1183,8 +1116,6 @@ As an example, if content negotiation determines that the request data is a JSON
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated body parameters.
 
-@param array|object|null $data
-
 @return ServerRequest @throws InvalidArgumentException if an unsupported argument type is provided.
 
 ```php
@@ -1199,8 +1130,6 @@ Setting query string arguments MUST NOT change the URI stored by the request, no
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated query string arguments.
 
-@param array $query
-
 @return ServerRequest
 
 ```php
@@ -1210,8 +1139,6 @@ public function withUploadedFiles( array $uploadedFiles ): ServerRequest;
 Create a new instance with the specified uploaded files.
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that has the updated body parameters.
-
-@param array $uploadedFiles
 
 @return ServerRequest @throws InvalidArgumentException if an invalid structure is provided.
 
@@ -1224,8 +1151,6 @@ Return an instance that removes the specified derived request attribute.
 This method allows removing a single derived request attribute as described in getAttributes().
 
 This method MUST be implemented in such a way as to retain the immutability of the message, and MUST return an instance that removes the attribute.
-
-@param string $name
 
 @return ServerRequest
 
@@ -1247,7 +1172,14 @@ Create a new server request.
 
 Note that server-params are taken precisely as given - no parsing/processing of the given values is performed, and, in particular, no attempt is made to determine the HTTP method or URI, which must be provided explicitly.
 
-@param string $method The HTTP method associated with the request. @param UriInterface|string $uri The URI associated with the request. If the value is a string, the factory MUST create a UriInterface instance based on it. @param array $serverParams Array of SAPI parameters with which to seed the generated request instance.
+                                         the request.
+                                         request. If the value is a
+                                         string, the factory MUST create
+                                         a UriInterface instance based
+                                         on it.
+                                         which to seed the generated
+                                         request instance.
+    
 
 @return ServerRequestInterface
 
@@ -1260,8 +1192,6 @@ Create a request from the supplied superglobal values.
 If any argument is not supplied, the corresponding superglobal value will be used.
 
 The ServerRequest created is then passed to the fromServer() method in order to marshal the request URI and headers.
-
-@param array $server $_SERVER superglobal @param array $get $_GET superglobal @param array $post $_POST superglobal @param array $cookies $_COOKIE superglobal @param array $files $_FILES superglobal
 
 @return ServerRequest @see fromServer()
 
@@ -1308,8 +1238,6 @@ public function __construct( mixed $stream, string $mode = string );
 ```
 
 Stream constructor.
-
-@param mixed $stream @param string $mode
 
 ```php
 public function __destruct();
@@ -1367,8 +1295,6 @@ Get stream metadata as an associative array or retrieve a specific key.
 
 The keys returned are identical to the keys returned from PHP's stream_get_meta_data() function.
 
-@param mixed|null $key
-
 @return array|mixed|null
 
 ```php
@@ -1401,8 +1327,6 @@ public function read( mixed $length ): string;
 
 Read data from the stream.
 
-@param int $length
-
 @return string
 
 ```php
@@ -1419,15 +1343,11 @@ public function seek( mixed $offset, mixed $whence = int ): void;
 
 Seek to a position in the stream.
 
-@param int $offset @param int $whence
-
 ```php
 public function setStream( mixed $stream, string $mode = string ): void;
 ```
 
 Sets the stream - existing instance
-
-@param mixed $stream @param string $mode
 
 ```php
 public function tell(): int;
@@ -1442,8 +1362,6 @@ public function write( mixed $data ): int;
 ```
 
 Write data to the stream.
-
-@param string $data
 
 @return int
 
@@ -1502,8 +1420,6 @@ Returns the remaining contents in a string
 
 @throws RuntimeException if unable to read. @throws RuntimeException if error occurs while reading.
 
-@param int $length
-
 @return string
 
 ```php
@@ -1517,8 +1433,6 @@ public function read( mixed $length ): string;
 ```
 
 Read data from the stream.
-
-@param int $length
 
 @return string
 
@@ -1576,8 +1490,6 @@ Create a new stream from a string.
 
 The stream SHOULD be created with a temporary resource.
 
-@param string $content String content with which to populate the stream.
-
 @return StreamInterface
 
 ```php
@@ -1590,7 +1502,9 @@ The file MUST be opened using the given mode, which may be any mode supported by
 
 The `$filename` MAY be any string supported by `fopen()`.
 
-@param string $filename The filename or stream URI to use as basis of stream. @param string $mode The mode with which to open the underlying filename/stream.
+                        stream.
+                        filename/stream.
+    
 
 @return StreamInterface
 
@@ -1700,8 +1614,6 @@ public function __construct( mixed $stream, int $size = null, int $error = int, 
 
 UploadedFile constructor.
 
-@param StreamInterface|string|null $stream @param int|null $size @param int $error @param string|null $clientFilename @param string|null $clientMediaType
-
 ```php
 public function getClientFilename(): string | null
 ```
@@ -1750,8 +1662,6 @@ If you wish to move to a stream, use getStream(), as SAPI operations cannot guar
 
 @see http://php.net/is_uploaded_file @see http://php.net/move_uploaded_file
 
-@param string $targetPath Path to which to move the uploaded file.
-
 @throws InvalidArgumentException if the $targetPath specified is invalid. @throws RuntimeException on any error during the move operation, or on the second or subsequent call to the method.
 
 <h1 id="http-message-uploadedfilefactory">Final Class Phalcon\Http\Message\UploadedFileFactory</h1>
@@ -1774,7 +1684,8 @@ If a size is not provided it will be determined by checking the size of the stre
 
 @link http://php.net/manual/features.file-upload.post-method.php @link http://php.net/manual/features.file-upload.errors.php
 
-@param StreamInterface $stream The underlying stream representing the uploaded file content. @param int $size The size of the file in bytes. @param int $error The PHP file upload error. @param string $clientFilename The filename as provided by the client, if any. @param string $clientMediaType The media type as provided by the client, if any.
+                                        uploaded file content.
+    
 
 @throws \InvalidArgumentException If the file resource is not readable.
 
@@ -1878,8 +1789,6 @@ public function __construct( string $uri = string );
 
 Uri constructor.
 
-@param string $uri
-
 ```php
 public function __toString(): string;
 ```
@@ -1948,8 +1857,6 @@ Users can provide both encoded and decoded fragment characters. Implementations 
 
 An empty fragment value is equivalent to removing the fragment.
 
-@param string $fragment
-
 @return Uri
 
 ```php
@@ -1961,8 +1868,6 @@ Return an instance with the specified host.
 This method MUST retain the state of the current instance, and return an instance that contains the specified host.
 
 An empty host value is equivalent to removing the host.
-
-@param string $host
 
 @return Uri @throws InvalidArgumentException for invalid hostnames.
 
@@ -1980,8 +1885,6 @@ If an HTTP path is intended to be host-relative rather than path-relative then i
 
 Users can provide both encoded and decoded path characters. Implementations ensure the correct encoding as outlined in getPath().
 
-@param string $path
-
 @return Uri @throws InvalidArgumentException for invalid paths.
 
 ```php
@@ -1995,8 +1898,6 @@ This method MUST retain the state of the current instance, and return an instanc
 Implementations MUST raise an exception for ports outside the established TCP and UDP port ranges.
 
 A null value provided for the port is equivalent to removing the port information.
-
-@param int|null $port
 
 @return Uri @throws InvalidArgumentException for invalid ports.
 
@@ -2012,8 +1913,6 @@ Users can provide both encoded and decoded query characters. Implementations ens
 
 An empty query string value is equivalent to removing the query string.
 
-@param string $query
-
 @return Uri @throws InvalidArgumentException for invalid query strings.
 
 ```php
@@ -2028,8 +1927,6 @@ Implementations MUST support the schemes "http" and "https" case insensitively, 
 
 An empty scheme is equivalent to removing the scheme.
 
-@param string $scheme
-
 @return Uri @throws InvalidArgumentException for invalid schemes. @throws InvalidArgumentException for unsupported schemes.
 
 ```php
@@ -2037,8 +1934,6 @@ public function withUserInfo( mixed $user, mixed $password = null ): Uri;
 ```
 
 Return an instance with the specified user information.
-
-@param string $user @param string|null $password
 
 @return Uri
 
@@ -3113,8 +3008,6 @@ public function isMethod( mixed $methods, bool $strict = bool ): bool;
 
 Check if HTTP method match any of the passed methods
 
-@param string|array methods
-
 ```php
 public function isOptions(): bool;
 ```
@@ -3940,8 +3833,6 @@ public function setContentType( string $contentType, mixed $charset = null ): Re
 ```
 
 Sets the response content-type mime, optionally the charset
-
-@param string charset
 
 ```php
 public function setExpires( DateTime $datetime ): ResponseInterface;
