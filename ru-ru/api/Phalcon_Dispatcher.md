@@ -237,7 +237,7 @@ public function getParam( mixed $param, mixed $filters = null, mixed $defaultVal
 
 Gets a param by its name or numeric index
 
-@param mixed param @param string|array filters @param mixed defaultValue @return mixed
+@return mixed
 
 ```php
 public function getParams(): array;
@@ -415,8 +415,6 @@ public function getParam( mixed $param, mixed $filters = null ): mixed;
 
 Gets a param by its name or numeric index
 
-@param string|array filters
-
 ```php
 public function getParams(): array;
 ```
@@ -488,8 +486,6 @@ public function setParam( mixed $param, mixed $value ): void;
 ```
 
 Set a param by its name or numeric index
-
-@param mixed value
 
 ```php
 public function setParams( array $params ): void;

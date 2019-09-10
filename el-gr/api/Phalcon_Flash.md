@@ -131,7 +131,7 @@ Outputs a message formatting it with HTML
 $flash->outputMessage("error", $message);
 ```
 
-@param string|array message @return string|void
+@return string|void
 
 ```php
 public function setAutoescape( bool $autoescape ): FlashInterface;

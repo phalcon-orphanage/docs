@@ -524,6 +524,12 @@ public function parse( string $className ): array;
 
 Reads annotations from the class docblocks, its methods and/or properties
 
+```php
+public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
+```
+
+Parses a raw doc block returning the annotations found
+
 <h1 id="annotations-readerinterface">Interface Phalcon\Annotations\ReaderInterface</h1>
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/readerinterface.zep)
@@ -539,6 +545,12 @@ public function parse( string $className ): array;
 ```
 
 Reads annotations from the class docblocks, its methods and/or properties
+
+```php
+public static function parseDocBlock( string $docBlock, mixed $file = null, mixed $line = null ): array;
+```
+
+Parses a raw docblock returning the annotations found
 
 <h1 id="annotations-reflection">Class Phalcon\Annotations\Reflection</h1>
 
