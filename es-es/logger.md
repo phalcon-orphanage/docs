@@ -6,11 +6,11 @@ upgrade: '#logger'
 title: 'Registrador'
 ---
 
-# Componente Registro
+# Registrador
 
 * * *
 
-## Logging
+## Overview
 
 [Phalcon\Logger](api/Phalcon_Logger#logger-logger) is a component providing logging services for applications. con backends y adaptadores diversos. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
@@ -26,9 +26,11 @@ En Phalcon v4 el componente se reescribió de tal manera que se dedica a la func
 
 El componente registro hace uso de diversos adaptadores para guardar los mensajes. El uso de adaptadores permite una interfaz común de registro de mensajes y proporciona la capacidad de cambiar fácilmente de backend o utilizar múltiples adaptadores en caso de ser necesario. Los adaptadores disponibles son:
 
-- [Phalcon\Logger\Adapter\Noop](api/Phalcon_Logger#logger-adapter-noop)
-- [Phalcon\Logger\Adapter\Stream](api/Phalcon_Logger#logger-adapter-stream)
-- [Phalcon\Logger\Adapter\Syslog](api/Phalcon_Logger#logger-adapter-syslog)
+| Adaptador                                                                    | Description                                 |
+| ---------------------------------------------------------------------------- | ------------------------------------------- |
+| [Phalcon\Logger\Adapter\Noop](api/Phalcon_Logger#logger-adapter-noop)     | Blackhole adapter (used for testing mostly) |
+| [Phalcon\Logger\Adapter\Stream](api/Phalcon_Logger#logger-adapter-stream) | Logs messages on a file stream              |
+| [Phalcon\Logger\Adapter\Syslog](api/Phalcon_Logger#logger-adapter-syslog) | Logs messages to the Syslog                 |
 
 ### Stream (flujo)
 
@@ -56,7 +58,7 @@ $adapterFactory = new AdapterFactory();
 $loggerFactory  = new LoggerFactory($adapterFactory);
 ```
 
-### load
+### `load()`
 
 [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object.
 
@@ -91,7 +93,7 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 $logger = $loggerFactory->load($config);
 ```
 
-### newInstance
+### `newInstance()`
 
 The [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) also offers the `newInstance()` method, that constructs a logger based on the supplied name and array of relevant adapters. Using the use case above:
 
@@ -246,9 +248,11 @@ $logger
 
 Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
-- [Phalcon\Logger\Formatter\Line](api/Phalcon_Logger#logger-formatter-line)
-- [Phalcon\Logger\Formatter\Json](api/Phalcon_Logger#logger-formatter-json)
-- [Phalcon\Logger\Formatter\Syslog](api/Phalcon_Logger#logger-formatter-syslog)
+| Adaptador                                                                        | Descripción                                            |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [Phalcon\Logger\Formatter\Line](api/Phalcon_Logger#logger-formatter-line)     | Formats the message on a single line of text           |
+| [Phalcon\Logger\Formatter\Json](api/Phalcon_Logger#logger-formatter-json)     | Formats the message in a JSON string                   |
+| [Phalcon\Logger\Formatter\Syslog](api/Phalcon_Logger#logger-formatter-syslog) | Formats the message in an array compatible with Syslog |
 
 ### Formateador de línea
 
@@ -262,11 +266,11 @@ Formatea los mensajes utilizando una cadena de una línea. El formato por defect
 
 En caso de que el formato predeterminado no se ajuste a las necesidades de la aplicación, se puede personalizar mediante el método `setFormat()`. Las variables de formato de registro permitidas son:
 
-| Variable    | Description                              |
-| ----------- | ---------------------------------------- |
-| `%message%` | The message itself expected to be logged |
-| `%date%`    | Date the message was added               |
-| `%type%`    | Uppercase string with message type       |
+| Variable    | Descripción                        |
+| ----------- | ---------------------------------- |
+| `%message%` | El mensaje que se espera registrar |
+| `%date%`    | Fecha que del mensaje fue agregado |
+| `%type%`    | Tipo de mensaje en mayúsculas      |
 
 Ejemplo de cómo modificar el formato del mensaje:
 
@@ -583,10 +587,39 @@ $logger  = new Logger(
 $logger->error('Algo falló');
 ```
 
-### Implementando sus propios adaptadores
+### Custom Adapters
 
 The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger#logger-adapter-adapterinterface) interface must be implemented in order to create your own logger adapters or extend the existing ones. You can also take advantage of the functionality in [Phalcon\Logger\Adapter\AbstractAdapter](api/Phalcon_Logger#logger-adapter-abstractadapter) abstract class.
 
-#### Abstract Classes
+### Abstract Classes
 
-There are two abstract classes that offer useful functionality when creating custom adapters
+There are two abstract classes that offer useful functionality when creating custom adapters: [Phalcon\Logger\Adapter\AbstractAdapter](api/Phalcon_Logger#logger-adapter-abstractadapter) and [Phalcon\Logger\Formatter\AbstractFormatter](api/Phalcon_Logger#logger-formatter-abstractformatter).
+
+## Inyección de Dependencias
+
+You can register as many loggers as you want in the \[Phalcon\Di\FactoryDefault\]\[factorydefault\] container. An example of the registration of the service as well as accessing it is below:
+
+```php
+<?php
+
+use Phalcon\Di;
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$container = new Di();
+
+$container->set(
+    'logger',
+    function () use () {
+        $adapter = new Stream('/storage/logs/main.log');
+        $logger  = new Logger(
+            'messages',
+            [
+                'main' => $adapter,
+            ]
+        );
+
+        return new $logger;
+    }
+);
+```
