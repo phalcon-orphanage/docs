@@ -475,26 +475,45 @@ $image->save('watermark-image.jpg');
 
 ## Εργοστάσιο
 
-The [Phalcon\Image\ImageFactory](Phalcon_Image#image-imagefactory) offers an easy way to create adapter objects. There are two adapters already preset for you:
+### `newInstance`
+
+The [Phalcon\Image\ImageFactory](Phalcon_Image#image-imagefactory) offers an easy way to create image adapter objects. There are two adapters already preset for you:
 
 - `gd`- [Phalcon\Image\Adapter\Gd](Phalcon_Image#image-adapter-gd) 
 - `imagick` - [Phalcon\Image\Adapter\Imagick](Phalcon_Image#image-adapter-imagick)
 
-You can always add more adapters to the factory's constructor with a key/value array. The key is a unique identifier and the value is the class of the new component.
+Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface](Phalcon_Image#image-adapter-adapterinterface).
 
 ```php
 <?php
 
-use MyClass\Image\Exif;
 use Phalcon\Image\ImageFactory;
 
-$factory = new TranslateFactory();
+$factory = new ImageFactory();
 
-$adapters = [
-    'exif' => Exif::class,
+$image = $factory->newInstance('gd', 'image.jpg');
+```
+
+The available parameters for `newInstance()` are: - `name` - `string` - the name of the adapter - `file` - `string` - the file name - `width` - `int` - the width of the image (optional) - `height` - `int` - the height of the image (optional)
+
+### `load`
+
+The Image Factory also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config](config) object, with directives that are used to set up the image adapter. The object requires the `adapter` element, as well as the `file` element. `width` and `height` can also be set as options.
+
+```php
+<?php
+
+use Phalcon\Image\ImageFactory;
+
+$factory = new ImageFactory();
+$options = [
+    'adapter' => 'gd',
+    'file'    => 'image.jpg',
+    'width'   => 400,
+    'height'  => 200,
 ];
 
-$factory = new TranslateFactory($adapters);
+$image = $factory->load($options);
 ```
 
 ## Exceptions
