@@ -970,6 +970,9 @@ Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to u
     <label for='type'>Type</label>
     {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
 
+    <label for='type'>Section</label>
+    {{ select({'type', productSections, 'using': ['id', 'name'], 'useEmpty': true, 'emptyText': '...', 'emptyValue': '', 'class': 'form-control'}) }}
+
     {{ submit_button('Send') }}
 
 {{ end_form() }}
@@ -988,6 +991,9 @@ The following PHP is generated:
 
     <label for='type'>Type</label>
     <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
+
+    <label for='type'>Section</label>
+    <?php echo Phalcon\Tag::select(['type', $productSections, 'using' => ['id', 'name'], 'useEmpty' => true, 'emptyText' => '...', 'emptyValue' => '', 'class' => 'form-control']); ?>
 
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
