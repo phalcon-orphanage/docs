@@ -237,7 +237,7 @@ Returns the available adapters
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cachefactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache, Phalcon\Cache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache, Phalcon\Cache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Helper\Arr |
 
 Creates a new Cache class
 
