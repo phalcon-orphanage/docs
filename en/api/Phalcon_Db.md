@@ -1853,7 +1853,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdofactory.zep)
 
 | Namespace  | Phalcon\Db\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
+| Uses       | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.

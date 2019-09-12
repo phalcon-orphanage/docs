@@ -74,25 +74,25 @@ protected width;
 
 ## Methods
 ```php
-public function background( string $color, int $opacity = int ): Adapter;
+public function background( string $color, int $opacity = int ): AdapterInterface;
 ```
  Set the background color of an image
  
 
 ```php
-public function blur( int $radius ): Adapter;
+public function blur( int $radius ): AdapterInterface;
 ```
  Blur image
  
 
 ```php
-public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): Adapter;
+public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
 ```
  Crop an image to the given size
  
 
 ```php
-public function flip( int $direction ): Adapter;
+public function flip( int $direction ): AdapterInterface;
 ```
  Flip the image along the horizontal or vertical axis
  
@@ -128,7 +128,7 @@ public function getWidth(): int
 
 
 ```php
-public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): Adapter;
+public function liquidRescale( int $width, int $height, int $deltaX = int, int $rigidity = int ): AbstractAdapter;
 ```
 This method scales the images using liquid rescaling method. Only support
 Imagick
@@ -136,19 +136,19 @@ Imagick
 
 
 ```php
-public function mask( AdapterInterface $watermark ): Adapter;
+public function mask( AdapterInterface $watermark ): AdapterInterface;
 ```
  Composite one image onto another
  
 
 ```php
-public function pixelate( int $amount ): Adapter;
+public function pixelate( int $amount ): AdapterInterface;
 ```
  Pixelate image
  
 
 ```php
-public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): Adapter;
+public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): AdapterInterface;
 ```
  Add a reflection to an image
  
@@ -160,37 +160,37 @@ public function render( string $ext = null, int $quality = int ): string;
  
 
 ```php
-public function resize( int $width = null, int $height = null, int $master = static-constant-access ): Adapter;
+public function resize( int $width = null, int $height = null, int $master = static-constant-access ): AdapterInterface;
 ```
  Resize the image to the given size
  
 
 ```php
-public function rotate( int $degrees ): Adapter;
+public function rotate( int $degrees ): AdapterInterface;
 ```
  Rotate the image by a given amount
  
 
 ```php
-public function save( string $file = null, int $quality = int ): Adapter;
+public function save( string $file = null, int $quality = int ): AdapterInterface;
 ```
  Save the image
  
 
 ```php
-public function sharpen( int $amount ): Adapter;
+public function sharpen( int $amount ): AdapterInterface;
 ```
  Sharpen the image by a given amount
  
 
 ```php
-public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): Adapter;
+public function text( string $text, mixed $offsetX = bool, mixed $offsetY = bool, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
 ```
  Add a text to an image with a specified opacity
  
 
 ```php
-public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): Adapter;
+public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
  Add a watermark to an image with the specified opacity
  
@@ -202,6 +202,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/adapterinterface.zep)
 
 | Namespace  | Phalcon\Image\Adapter |
+| Uses       | Phalcon\Image\Enum |
 
 This file is part of the Phalcon Framework.
 
@@ -213,72 +214,72 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function background( string $color, int $opacity = int );
+public function background( string $color, int $opacity = int ): AdapterInterface;
 ```
 //
 
 ```php
-public function blur( int $radius );
+public function blur( int $radius ): AdapterInterface;
 ```
 //
 
 ```php
-public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null );
+public function crop( int $width, int $height, int $offsetX = null, int $offsetY = null ): AdapterInterface;
 ```
 //
 
 ```php
-public function flip( int $direction );
+public function flip( int $direction ): AdapterInterface;
 ```
 //
 
 ```php
-public function mask( AdapterInterface $watermark );
+public function mask( AdapterInterface $watermark ): AdapterInterface;
 ```
 //
 
 ```php
-public function pixelate( int $amount );
+public function pixelate( int $amount ): AdapterInterface;
 ```
 //
 
 ```php
-public function reflection( int $height, int $opacity = int, bool $fadeIn = bool );
+public function reflection( int $height, int $opacity = int, bool $fadeIn = bool ): AdapterInterface;
 ```
 //
 
 ```php
-public function render( string $ext = null, int $quality = int );
+public function render( string $ext = null, int $quality = int ): string;
 ```
 //
 
 ```php
-public function resize( int $width = null, int $height = null, int $master = static-constant-access );
+public function resize( int $width = null, int $height = null, int $master = static-constant-access ): AdapterInterface;
 ```
 //
 
 ```php
-public function rotate( int $degrees );
+public function rotate( int $degrees ): AdapterInterface;
 ```
 //
 
 ```php
-public function save( string $file = null, int $quality = int );
+public function save( string $file = null, int $quality = int ): AdapterInterface;
 ```
 //
 
 ```php
-public function sharpen( int $amount );
+public function sharpen( int $amount ): AdapterInterface;
 ```
 //
 
 ```php
-public function text( string $text, int $offsetX = int, int $offsetY = int, int $opacity = int, string $color = string, int $size = int, string $fontfile = null );
+public function text( string $text, int $offsetX = int, int $offsetY = int, int $opacity = int, string $color = string, int $size = int, string $fontfile = null ): AdapterInterface;
 ```
 //
 
 ```php
-public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int );
+public function watermark( AdapterInterface $watermark, int $offsetX = int, int $offsetY = int, int $opacity = int ): AdapterInterface;
 ```
 //
 

@@ -20,7 +20,7 @@ title: 'Phalcon\Paginator'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Paginator\Adapter |
-| Uses       | Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface |
+| Uses       | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface |
 | Implements | AdapterInterface |
 
 Phalcon\Paginator\Adapter\AbstractAdapter

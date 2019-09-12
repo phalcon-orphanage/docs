@@ -10,7 +10,7 @@ title: 'Use Case'
 Throughout this documentation we are going to assume that we are building an accounting application. 
 
 ## Requirements
-- MVC application using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application)
+- MVC application using [Phalcon\Mvc\Application][application]
 - Store data in a database (MariaDB/MySQL)
 - Offer a UI for users to work
     - Login page
@@ -70,3 +70,5 @@ Throughout this documentation we are going to assume that we are building an acc
 | `/admin/users/edit/{0-9}`         | Edit a user                                                  |
 | `/admin/users/delete/{0-9}`       | Delete a user                                                |
 | `/admin/users/view/{0-9}`         | View a user                                                  |
+
+[application]: application
