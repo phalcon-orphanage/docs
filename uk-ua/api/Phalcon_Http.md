@@ -2273,10 +2273,20 @@ public function getServerName(): string;
 Gets active server name
 
 ```php
-final public function getURI(): string;
+final public function getURI( bool $onlyPath = bool ): string;
 ```
 
-Gets HTTP URI which request has been made
+Gets HTTP URI which request has been made to
+
+```php
+// Returns /some/path?with=queryParams
+$uri = $request->getURI();
+
+// Returns /some/path
+$uri = $request->getURI(true);
+```
+
+@return string
 
 ```php
 public function getUploadedFiles( bool $onlySuccessful = bool, bool $namedKeys = bool ): FileInterface[];
@@ -2913,10 +2923,20 @@ public function getServerName(): string;
 Gets active server name
 
 ```php
-final public function getURI(): string;
+final public function getURI( bool $onlyPath = bool ): string;
 ```
 
-Gets HTTP URI which request has been made
+Gets HTTP URI which request has been made to
+
+```php
+// Returns /some/path?with=queryParams
+$uri = $request->getURI();
+
+// Returns /some/path
+$uri = $request->getURI(true);
+```
+
+@return string
 
 ```php
 public function getUploadedFiles( bool $onlySuccessful = bool, bool $namedKeys = bool ): FileInterface[];
