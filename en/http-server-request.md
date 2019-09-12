@@ -47,8 +47,7 @@ $request = $request
     ->withMethod('GET')
     ->withProtocolVersion('1.1')
     ->withUploadedFiles($_FILES)
-    ->withUri($uri)
-;
+    ->withUri($uri);
 ```
 
 We are creating a new [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] object and a new [Phalcon\Http\Message\Uri][http-message-uri] object with the target URL. Following that we define the method (`GET`), a protocol version, uploaded files and additional headers. 
