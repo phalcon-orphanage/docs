@@ -108,7 +108,7 @@ use Phalcon\Session\Manager;
 use Phalcon\Session\Adapter\Noop;
 
 $session = new Manager();
-$session->setHandler(new Noop());
+$session->setAdapter(new Noop());
 ```
 
 ## Properties
@@ -230,7 +230,7 @@ $files = new Stream(
         'savePath' => '/tmp',
     ]
 );
-$session->setHandler($files);
+$session->setAdapter($files);
 ```
 
 ## Properties
@@ -384,7 +384,7 @@ Session manager class
 /**
  * @var <SessionHandlerInterface>|null
  */
-private handler;
+private adapter;
 
 /**
  * @var string
@@ -454,10 +454,10 @@ public function get( string $key, mixed $defaultValue = null, bool $remove = boo
 Gets a session variable from an application context
 
 ```php
-public function getHandler(): SessionHandlerInterface;
+public function getAdapter(): SessionHandlerInterface;
 ```
 
-Returns the stored session handler
+Returns the stored session adapter
 
 ```php
 public function getId(): string;
@@ -487,13 +487,13 @@ Check whether a session variable is set in an application context
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
-Regenerates the session id using the handler.
+Regenerates the session id using the adapter.
 
 ```php
-public function registerHandler( SessionHandlerInterface $handler ): bool;
+public function registerAdapter( SessionHandlerInterface $adapter ): bool;
 ```
 
-Registers a handler with the session
+Registers a adapter with the session
 
 ```php
 public function remove( string $key );
@@ -508,10 +508,10 @@ public function set( string $key, mixed $value ): void;
 Sets a session variable in an application context
 
 ```php
-public function setHandler( SessionHandlerInterface $handler ): ManagerInterface;
+public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
 
-Set the handler for the session
+Set the adapter for the session
 
 ```php
 public function setId( string $id ): ManagerInterface;
@@ -610,10 +610,10 @@ public function get( string $key, mixed $defaultValue = null, bool $remove = boo
 Gets a session variable from an application context
 
 ```php
-public function getHandler(): SessionHandlerInterface;
+public function getAdapter(): SessionHandlerInterface;
 ```
 
-Returns the stored session handler
+Returns the stored session adapter
 
 ```php
 public function getId(): string;
@@ -643,13 +643,13 @@ Check whether a session variable is set in an application context
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 
-Regenerates the session id using the handler.
+Regenerates the session id using the adapter.
 
 ```php
-public function registerHandler( SessionHandlerInterface $handler ): bool;
+public function registerAdapter( SessionHandlerInterface $adapter ): bool;
 ```
 
-Registers a handler with the session
+Registers a adapter with the session
 
 ```php
 public function remove( string $key ): void;
@@ -664,10 +664,10 @@ public function set( string $key, mixed $value ): void;
 Sets a session variable in an application context
 
 ```php
-public function setHandler( SessionHandlerInterface $handler ): ManagerInterface;
+public function setAdapter( SessionHandlerInterface $adapter ): ManagerInterface;
 ```
 
-Set the handler for the session
+Set the adapter for the session
 
 ```php
 public function setId( string $id ): ManagerInterface;
