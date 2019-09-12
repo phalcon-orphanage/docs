@@ -968,7 +968,7 @@ Volt is highly integrated with [Phalcon\Tag](api/Phalcon_Tag), so it's easy to u
     {{ text_field('name', 'size': 32) }}
 
     <label for='type'>Type</label>
-    {{ select('type', productTypes, 'using': ['id', 'name']) }}
+    {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
 
     {{ submit_button('Send') }}
 
