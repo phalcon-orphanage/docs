@@ -198,7 +198,7 @@ This class offers file operation helper
 ## Методы
 
 ```php
-final public static function basename( string $uri, string $suffix = null ): string;
+final public static function basename( string $uri, mixed $suffix = null ): string;
 ```
 
 Gets the filename from a given path, Same as PHP's basename() but has non-ASCII support. PHP's basename() does not properly support streams or filenames beginning with a non-US-ASCII character. see https://bugs.php.net/bug.php?id=37738
