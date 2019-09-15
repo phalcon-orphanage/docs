@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually API ones, prototypes etc.
 
 ```php

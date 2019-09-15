@@ -9,6 +9,8 @@ upgrade: '#models'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## 概述
 
 模型表示的信息 （数据） 的应用程序和规则来操作这些数据。 Models are primarily used for managing the rules of interaction with a corresponding database table. 在大多数情况下，每个数据库中的表将对应于在应用程序中的一个模型。 您的应用程序的业务逻辑的大部分将集中在模型。
@@ -191,7 +193,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-一旦该记录是在内存中，可以对其数据进行修改，然后保存更改：
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 ```php
 <?php
@@ -251,7 +253,7 @@ foreach ($robots as $robot) {
 > If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.
 {: .alert .alert-warning }
 
-你也可以使用 `findFirst()` 方法去只匹配给定的条件的第一个记录：
+You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
@@ -278,7 +280,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-`Find （）` 和 `findFirst()` 方法接受一个关联数组，指定的搜索条件：
+Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
 
 ```php
 <?php
@@ -303,7 +305,7 @@ $robots = Robots::find(
 );
 ```
 
-可用的查询选项有：
+The available query options are:
 
 | Parameter     | 描述                                                                                                                                           | 示例                                                                   |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1078,7 +1080,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-以下事件可以用来定义可以执行删除操作时执行的自定义业务规则：
+The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
 | Operation | Name           | 可以停止操作吗？ | Explanation                              |
 | --------- | -------------- |:--------:| ---------------------------------------- |

@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Creating a MVC Application
 
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
@@ -544,7 +546,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 
 ## Application Events
 
-[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. Поддерживаются следующие типы событий:
+[Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 
 | Название события      | Срабатывает                                              |
 | --------------------- | -------------------------------------------------------- |
@@ -554,7 +556,7 @@ When [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application) have modules registe
 | `beforeHandleRequest` | До выполнения цикла диспетчера                           |
 | `afterHandleRequest`  | После выполнения цикла диспетчера                        |
 
-В следующем примере показано, как назначить слушателей к компоненту:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php

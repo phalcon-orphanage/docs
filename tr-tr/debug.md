@@ -9,6 +9,8 @@ title: 'Debug'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 ![](/assets/images/content/xdebug-1.jpg)

@@ -9,6 +9,8 @@ title: 'HTTP Response'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Επισκόπηση
 
 [Phalcon\Http\Response](api/Phalcon_Http#http-response) is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not *only* the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response](api/Phalcon_Http#http-message-response) for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.

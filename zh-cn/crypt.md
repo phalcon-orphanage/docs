@@ -9,6 +9,8 @@ title: 'Crypt'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## 概述
 
 > Requires PHP's [openssl](https://secure.php.net/manual/en/book.openssl.php) extension to be present in the system

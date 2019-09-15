@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 # Архитектура
 
 Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) in your application. This design pattern is widely used by other web frameworks and desktop applications.
@@ -25,7 +27,7 @@ If you decide to use MVC, every request to your application resources will be ma
 
 ## Views
 
-Представление отвечает за пользовательский интерфейс вашего приложения. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению. [Learn more](views)
+Views represent the user interface of your application. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению. [Learn more](views)
 
 ## Controllers
 

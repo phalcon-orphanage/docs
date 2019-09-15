@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Overview
 
 Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.

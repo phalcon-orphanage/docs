@@ -9,12 +9,14 @@ title: 'New Feature Request'
 
 * * *
 
-Το αίτημα νέας λειτουργικότητας (NFR) είναι ένα μιρκό κείμενο, που εξηγεί πώς πρέπει να υποβληθεί το νέο άιτημα λειτουργικότητας, πώς μπορεί να εφαρμοστεί και πώς μπορεί να βοηθήσει τα μέλη της ομάδας Phalcon και άλλους χρήστες να το καταλάβουν και να το αναπτύξουν.
+![](/assets/images/document-status-stable-success.svg)
 
-Το NFR περιέχει: * Προτεινόμενη σύνταξη * Προτεινόμενα ονόματα ταξεων και μεθόδων * Λεπτομερή περιγραφή χρήσης * Πώς το μπορεί να ωφελήσει το πλαίσιο και την κοινότητα * Αν αυτό το αίτημα έχει ήδη αναπτυχθεί σε άλλα πλαίσια, μία σύντομη εξήγηση του πώς αναπτύχθηκε και τα πλεονεκτήματά του
+A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
-Ενα αίτημα νέας λειτουργικότητας θα απορριφθεί **αν**: * Η νέα λειτουργηκότητα κάνει το πλαίσιο αργό * Η νέα λειτουργηκότητα δεν παρέχει οποιαδήποτε πρόσθετη αξία στο πλαίσιο * Η αίτηση νέας λειτουργηκότητας δεν είναι σαφής, κακή τεκμηρίωση, ασαφής εξήγηση, κλπ. * The NFR does not follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster does not provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Uses static methods - (not allowed)
+A NFR contains: * Suggested syntax * Suggested class names and methods * A description detailing the usage * How it can benefit the framework and the community * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
 
-To send a NFR you do not need to provide Zephir or C code or develop the feature. Οι αιτήσεις νέας λειτουργηκότητας εξηγούν τον στόχο και εφαρμογή τους και ξεκινούν μια συζήτηση σχετικά με τον καλύτερο τρόπο της ανάπτυξης τους.
+In the following cases a new feature request will be rejected **if**: * The feature makes the framework slow * The feature does not provide any additional value to the framework * The NFR is not clear, bad documentation, unclear explanation, etc. * The NFR does not follow the current guidelines/philosophy of the framework * The NFR affects/breaks applications developed in current/older versions of the framework * The original poster does not provide feedback/input when requested * It's technically impossible to implement * It can only be used in the development/testing stages * Submitted/proposed classes/components don't follow the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) * Uses static methods - (not allowed)
 
-Όλες οι αίτησεις νέας λειτουργηκότητας πρέπει να καταχωρηθούν ως νέο ζήτημα στο [GitHub](https://github.com/phalcon/cphalcon/issues). Παρακαλούμε βεβαιωθείτε ότι χρησιμοποιείτε το πρόθεμα `[NFR]` στον τίτλο του θέματος.
+To send a NFR you do not need to provide Zephir or C code or develop the feature. New Feature requests explain the goal of the intended implementation and start a discussion on how best to implement it.
+
+All NFRs should be posted as a new issue on [GitHub](https://github.com/phalcon/cphalcon/issues). Please make sure to use the prefix `[NFR]` in the title of your issue.

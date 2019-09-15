@@ -10,6 +10,8 @@ title: 'Collection'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 `Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:

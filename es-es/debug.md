@@ -9,6 +9,8 @@ title: 'Depuración'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Overview
 
 ![](/assets/images/content/xdebug-1.jpg)

@@ -10,6 +10,8 @@ title: 'Helper'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.

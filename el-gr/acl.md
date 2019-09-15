@@ -10,11 +10,13 @@ title: 'Λίστες ελέγχου πρόσβασης (ACL)'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Λίστες ελέγχου πρόσβασης (ACL)
 
-Το [Phalcon \ Acl](api/Phalcon_Acl) παρέχει μια εύκολη και ελαφριά διαχείριση των ACL καθώς και τα δικαιώματα που τους συνοδεύουν. [Οι λίστες ελέγχου πρόσβασης](https://en.wikipedia.org/wiki/Access_control_list) (ACL) επιτρέπουν σε μια εφαρμογή να ελέγχει την πρόσβαση στις περιοχές της και τα αντικείμενα από τα αιτήματα.
+[Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
-Εν ολίγοις, οι ACL έχουν δύο αντικείμενα: το αντικείμενο που χρειάζεται πρόσβαση, και το αντικείμενο που χρειαζόμαστε την πρόσβαση. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role](api/Phalcon_Acl_Role) and [Component](api/Phalcon_Acl_Component).
+In short, ACLs have two objects: The object that needs access, and the object that we need access to. In the programming world, these are usually referred to as Roles and Components. In the Phalcon world, we use the terminology [Role](api/Phalcon_Acl_Role) and [Component](api/Phalcon_Acl_Component).
 
 > **Use Case**
 > 

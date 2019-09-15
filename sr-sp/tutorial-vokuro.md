@@ -2,41 +2,192 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Tutorial - Vökuró'
 ---
 
 # Tutorial - Vökuró
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Vökuró
 
-Vökuró is another sample application you can use to learn more about Phalcon. Vökuró is a small website that shows how to implement a security features and management of users and permissions. You can clone its code from [GitHub](https://github.com/phalcon/vokuro).
+[Vökuró](https://github.com/phalcon/vokuro) is a sammple application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
 
-## Project Structure
+> You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
+{: .alert .alert-info }
 
-Once you clone the project in your document root you'll see the following structure:
+> 
+> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern.
+{: .alert .alert-warning }
+
+## Installation
+
+### Downloading
+
+In order to install the application, you can either clone or download it from [GitHub](https://github.com/phalcon/vokuro). You can visit the GitHub page, download the application and then unzip it to a directory on your machine. Alternatively you can use `git clone`:
+
+```bash
+git clone https://github.com/phalcon/vokuro
+```
+
+### Extensions
+
+There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - igbinary - mbstring - memcached - opcache - pdo - pdo_mysql - psr - session - simplexml - tokenizer - xml - xmlwriter - zip
+
+Finally you will need to have Phalcon v4 installed. Head over to the <installation> if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
+
+### Docker
+
+In the `resopurces` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application.
+
+**add how**
+
+### Nanobox
+
+In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. All you have to do is copy the file to the root of your directory and run `nanobox run php-server`. Once the application is set up for the first time, you will be able to navigate to the IP address presented on screen and work with the application.
+
+For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides](https://guides.nanobox.io/php/) page
+
+> In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
+{: .alert .alert-info }
+
+## Structure
+
+Looking at the structure of the application we have the following:
 
 ```bash
 vokuro/
-    app/
-        config/
-        controllers/
-        forms/
-        library/
-        models/
-        views/
-    cache/
-    public/
-        css/
-        img/
-    schemas/
+    .ci
+    app
+        Controllers
+        Forms
+        Models
+        Phalcon
+        Plugins
+        Providers
+    configs
+    db
+        migrations
+        seeds
+    public
+    resources
+    tests
+    themes
+        vokuro
+    var
+        cache
+            acl
+            metaData
+            session
+            volt
+        logs
+    vendor
 ```
 
-This project follows a quite similar structure to INVO. Once you open the application in your browser `https://localhost/vokuro` you'll see something like this:
+| Directory         | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `.ci`             | Files necessary for setting services for the CI       |
+| `app`             | Where the application lives (controllers, forms etc.) |
+| `app/Controllers` | Controllers                                           |
+| `app/Forms`       | Forms                                                 |
+| `app/Models`      | Database Models                                       |
+| `app/Plugins`     | Plugins                                               |
+| `app/Providers`   | Providers: setting services in the DI container       |
+| `configs`         | Configuration files                                   |
+| `db`              | Holds the migrations for the databsae                 |
+| `public`          | Entry point for the application, css, js, images      |
+| `resources`       | Docker/nanobox files for setting the application      |
+| `tests`           | Tests                                                 |
+| `themes`          | Themes/views for easy customization                   |
+| `themes/vokuro`   | Default theme for the application                     |
+| `var`             | Various supporting files                              |
+| `var/cache`       | Cache files                                           |
+| `var/logs`        | Logs                                                  |
+| `vendor`          | Vendor/composer based libraries                       |
+
+## Configuration
+
+### `.env`
+
+[Vökuró](https://github.com/phalcon/vokuro) uses the popular [Dotenv](https://github.com/vlucas/phpdotenv) library by Vance Lucas. The library utilizes a `.env` file located in your root folder, which holds configuration parameters such as the database server host, username, password etc. There is a `.env.example` file that comes with Vökuró that you can copy and rename to `.env` and then edit it to match your environment. You need to do this first so that your application can run properly.
+
+Once the configuration file is in place, visiting the IP address will present a screen similar to this:
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-The application is divided into two parts, a frontend, where visitors can sign up the service and a backend where administrative users can manage registered users. Both frontend and backend are combined in a single module.
+### `Database`
+
+You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
+
+We will now need to run the migrations. To check the status of our database:
+
+```bash
+/app $ ./vendor/bin/phinx status
+```
+
+You will see the following screen:
+
+![](/assets/images/content/tutorial-vokuro-2.png)
+
+To initialize the database we need to run the migrations:
+
+```bash
+/app $ ./vendor/bin/phinx migrate
+```
+
+The screen will show the operation:
+
+![](/assets/images/content/tutorial-vokuro-3.png)
+
+And the `status` command will now show all green:
+
+![](/assets/images/content/tutorial-vokuro-4.png)
+
+### `acl.php`
+
+Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of *routes* that controls which routes are visible to only logged in users.
+
+The current setup will require a user to be logged in, if they visit these routes:
+
+- `users/index`
+- `users/search`
+- `users/edit`
+- `users/create`
+- `users/delete`
+- `users/changePassword`
+- `profiles/index`
+- `profiles/search`
+- `profiles/edit`
+- `profiles/create`
+- `profiles/delete`
+- `permissions/index`
+
+If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism.
+
+> Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+{: .alert .alert-info }
+
+### Providers
+
+## Composer
+
+## Database
+
+## Models
+
+## Controllers
+
+## Views
+
+## Components
+
+### Acl
+
+### Auth
+
+### Mail
 
 ## Load Classes and Dependencies
 
