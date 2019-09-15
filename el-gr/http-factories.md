@@ -9,6 +9,8 @@ title: 'HTTP Factories (PSR-17)'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Επισκόπηση
 
 [Phalcon\Http\Message\RequestFactory](api/Phalcon_Http#http-message-requestfactory), [Phalcon\Http\Message\ResponseFactory](api/Phalcon_Http#http-message-responsefactory), [Phalcon\Http\Message\ServerRequestFactory](api/Phalcon_Http#http-message-serverrequestfactory), [Phalcon\Http\Message\StreamFactory](api/Phalcon_Http#http-message-streamfactory), [Phalcon\Http\Message\UploadedFileFactory](api/Phalcon_Http#http-message-uploadedfilefactory), [Phalcon\Http\Message\UriFactory](api/Phalcon_Http#http-message-urifactory) are the factories implemented of the [PSR-17](https://www.php-fig.org/psr/psr-17/) HTTP messaging interface factories as defined by [PHP-FIG](https://www.php-fig.org/).
