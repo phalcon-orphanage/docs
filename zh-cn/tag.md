@@ -9,6 +9,8 @@ title: 'Tag'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## 概述
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
