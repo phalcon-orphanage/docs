@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Using Views
 
 Views represent the user interface of your application. Чаще всего это HTML файлы с вставками PHP кода исключительно для вывода данных. Этот слой отвечает за вывод данных в веб-браузер или другой инструмент, который обращается к вашему приложению.
@@ -25,7 +27,7 @@ Phalcon automatically passes the execution to the view component as soon as a pa
 | Действие                 | show      |
 | Параметр                 | 301       |
 
-Диспетчер будет искать `PostsController` и его метод `showAction`. Код простейшего контроллера для этого примера:
+The dispatcher will look for a `PostsController` and its action `showAction`. A simple controller file for this example:
 
 ```php
 <?php
