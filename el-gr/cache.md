@@ -10,6 +10,8 @@ title: 'Μνήμη cache'
 
 <hr />
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Επισκόπηση
 
 The [Phalcon\Cache](api/Phalcon_Cache#cache) namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
