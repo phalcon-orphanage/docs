@@ -9,6 +9,8 @@ upgrade: '#models'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Overview
 
 Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos.
@@ -191,7 +193,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Una vez que el registro está en la memoria, puede hacer modificaciones a sus datos y guardar los cambios:
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 ```php
 <?php
@@ -251,7 +253,7 @@ foreach ($robots as $robot) {
 > If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.
 {: .alert .alert-warning }
 
-También puede utilizar el método `findFirst()` para obtener sólo el primer registro que coincida con el criterio dado:
+You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
@@ -278,7 +280,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-Ambos métodos `find()` y `findFirst()` aceptan un array asociativo, especificando los criterios de búsqueda:
+Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
 
 ```php
 <?php
@@ -303,7 +305,7 @@ $robots = Robots::find(
 );
 ```
 
-Las opciones disponibles de consulta son:
+The available query options are:
 
 | Parameter     | Descripción                                                                                                                                                                                                                                         | Ejemplo                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1078,7 +1080,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Los siguientes eventos están disponibles para definir reglas de negocios personalizadas que se pueden ejecutar cuando se realiza una operación de eliminación:
+The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
 | Operación | Nombre         | ¿Detiene la operación? | Explicación                                       |
 | --------- | -------------- |:----------------------:| ------------------------------------------------- |
@@ -1598,7 +1600,7 @@ $di->set(
 );
 ```
 
-Luego, en el método `initialize()`, definimos el servicio de conexión para el modelo:
+Then, in the `initialize()` method, we define the connection service for the model:
 
 ```php
 <?php
@@ -1692,7 +1694,7 @@ $robot = Robots::findFirst('id = 101');
 
 ## Injecting services into Models
 
-Si requiere acceder a los servicios de la aplicación dentro de un modelo, en el siguiente ejemplo se explica cómo hacerlo:
+You may be required to access the application services within a model, the following example explains how to do that:
 
 ```php
 <?php
