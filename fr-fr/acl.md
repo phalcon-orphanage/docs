@@ -10,6 +10,8 @@ title: 'Listes de contrôle d''accès (Access Control Lists)'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Listes de contrôle d'accès (Access Control Lists)
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
