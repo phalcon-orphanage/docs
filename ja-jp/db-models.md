@@ -9,6 +9,8 @@ upgrade: '#models'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Overview
 
 モデルは、アプリケーションの情報 (データ) と、そのデータを操作するためのルールを表します。 モデルは主に、それに対応するテーブルとの対話のルールを管理するために使用されます。 ほとんどの場合、データベース内の各テーブルは、アプリケーション内の1つのモデルと対応します。 アプリケーションのビジネスロジックの大半は、モデルに集中します。
@@ -191,7 +193,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-一度レコードがメモリ内に格納されれば、データを更新して、その変更を保存することができます:
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 ```php
 <?php
@@ -251,7 +253,7 @@ foreach ($robots as $robot) {
 > If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.
 {: .alert .alert-warning }
 
-`findFirst()` メソッドを使用して、指定した条件に一致する最初のレコードのみを取得することもできます。
+You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
@@ -278,7 +280,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-`find()` および `findFirst()` メソッドは、検索条件を指定する連想配列を受け付けます:
+Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
 
 ```php
 <?php
@@ -303,7 +305,7 @@ $robots = Robots::find(
 );
 ```
 
-使用可能なクエリのオプションは次のとおりです:
+The available query options are:
 
 | Parameter     | Description                                                                                                                                          | 例                                                                    |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1078,7 +1080,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-削除が処理される際に、カスタムビジネスルールの実行を定義するには、次のイベントを使用します。
+The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
 | Operation | Name           | Can stop operation? | Explanation                              |
 | --------- | -------------- |:-------------------:| ---------------------------------------- |
