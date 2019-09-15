@@ -9,6 +9,8 @@ category: 'installation'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Προϋποθέσεις
 
 ### PHP 7.2
