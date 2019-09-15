@@ -5,6 +5,7 @@ version: '4.0'
 ---
 # MVC - Model View Controller
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 # Architecture
 Phalcon offers the object-oriented classes, necessary to implement the Model, View, Controller architecture (often referred to as [MVC][wiki-mvc]) in your application. This design pattern is widely used by other web frameworks and desktop applications.

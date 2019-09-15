@@ -6,6 +6,7 @@ version: '4.0'
 ---
 # Url Component
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Url][url] is the component responsible of generate URLs in a Phalcon application. It can also be used to construct URLs based on routes.

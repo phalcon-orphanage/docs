@@ -7,6 +7,7 @@ title: 'Logger'
 ---
 # Logger
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Logger][logger-logger] is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger][logger-logger] for any logging need your application has, from debugging processes to tracing application flow.

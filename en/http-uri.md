@@ -6,6 +6,7 @@ title: 'HTTP Uri (PSR-7)'
 ---
 # HTTP Uri (PSR-7)
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 [Phalcon\Http\Message\Uri][http-message-uri] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
 

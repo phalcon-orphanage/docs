@@ -5,6 +5,7 @@ version: '4.0'
 ---
 # Tutorial - REST
 <hr/>
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Creating a Simple REST API
 In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:

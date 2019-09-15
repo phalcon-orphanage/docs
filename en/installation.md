@@ -6,6 +6,7 @@ category: 'installation'
 ---
 # Installation
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Requirements
 

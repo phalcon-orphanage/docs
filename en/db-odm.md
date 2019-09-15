@@ -6,6 +6,7 @@ title: 'Object Document Mapper'
 ---
 # Object Document Mapper
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 > The Object Document Mapper functionality has been **temporarily** removed for v4.0.
 >

@@ -6,6 +6,7 @@ title: 'Contributing'
 ---
 # Contributions
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 # Contributing to Phalcon
 Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!

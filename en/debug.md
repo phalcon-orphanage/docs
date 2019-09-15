@@ -6,6 +6,7 @@ title: 'Debug'
 ---
 # Debug
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

@@ -7,6 +7,7 @@ title: 'Flash Messages'
 ---
 # Flash Messages
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 Flash messages are used to notify the user about the state of actions he/she made or simply show information to the users. These kinds of messages can be generated using this component.

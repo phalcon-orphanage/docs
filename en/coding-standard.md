@@ -6,6 +6,7 @@ title: 'Coding Standard'
 ---
 # Phalcon Coding Standard
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 Last update: 2019-07-04
 

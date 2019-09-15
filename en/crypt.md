@@ -6,6 +6,7 @@ title: 'Crypt'
 ---
 # Crypt Component
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

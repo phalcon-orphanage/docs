@@ -6,6 +6,7 @@ title: 'Performance'
 ---
 # Performance
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:

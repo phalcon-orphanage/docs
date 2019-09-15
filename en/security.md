@@ -6,6 +6,7 @@ title: 'Security'
 ---
 # Security Component
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 
