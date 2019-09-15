@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Overview
 
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
@@ -739,7 +741,7 @@ try {
 
 ## Database Events
 
-[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](events) if it's present. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
+[Phalcon\Db](api/Phalcon_Db) is able to send events to a [EventsManager](events) if it's present. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Название события      | Срабатывает                                          | Можно остановить операцию? |
 | --------------------- | ---------------------------------------------------- |:--------------------------:|
