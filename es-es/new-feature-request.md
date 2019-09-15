@@ -9,6 +9,8 @@ title: 'Solicitud de Nueva Funcionalidad'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
 A NFR contains: * Suggested syntax * Suggested class names and methods * A description detailing the usage * How it can benefit the framework and the community * If the feature is already implemented in other frameworks, a short explanation of how that was implemented and its advantages
