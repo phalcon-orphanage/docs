@@ -9,6 +9,8 @@ title: 'Security'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Preámbulo
 
 > Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
@@ -18,15 +20,15 @@ title: 'Security'
 
 ## Hashing de contraseñas
 
-Almacenar contraseñas en texto plano es una mala práctica de seguridad. Cualquier persona con acceso a la base de datos puede tener acceso inmediato a todas las cuentas de usuario y realizar actividades sin autorización. To combat that, many applications use popular one way hashing methods [md5](https://php.net/manual/en/function.md5.php) and [sha1](https://php.net/manual/en/function.sha1.php). However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. también conocidos como [Tablas Arcoíris](https://en.wikipedia.org/wiki/Rainbow_table).
+Storing passwords in plain text is a bad security practice. Anyone with access to the database will immediately have access to all user accounts thus being able to engage in unauthorized activities. To combat that, many applications use popular one way hashing methods [md5](https://php.net/manual/en/function.md5.php) and [sha1](https://php.net/manual/en/function.sha1.php). However, hardware evolves on a daily basis and as processors become faster, these algorithms are becoming vulnerable to brute force attacks. These attacks are also known as [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table).
 
-El componente de seguridad utiliza [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) como algoritmo de hashing. Gracias al algoritmo de configuración de clave [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) se puede encriptar la contraseña tan lento (`slow`) como se desee. Los algoritmos lentos reducen el impacto de los ataques de fuerza bruta.
+The security component uses [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) as the hashing algorithm. Thanks to the [Eksblowfish](https://en.wikipedia.org/wiki/Bcrypt#Algorithm) key setup algorithm, we can make the password encryption as `slow` as we want. Slow algorithms minimize the impact of bruce force attacks.
 
-[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. También contempla un factor de seguridad o trabajo que determina qué tan lenta será la función hash para hacer su trabajo. De esta manera se descarta el uso de técnicas de hash como FPGA o GPU.
+[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt), is an adaptive hash function based on the Blowfish symmetric block cipher cryptographic algorithm. It also introduces a security or work factor, which determines how slow the hash function will be to generate the hash. This effectively negates the use of FPGA or GPU hashing techniques.
 
 Should hardware becomes faster in the future, we can increase the work factor to mitigate this. The salt is generated using pseudo-random bytes with the PHP's function [openssl_random_pseudo_bytes](https://php.net/manual/en/function.openssl-random-pseudo-bytes.php).
 
-El componente cuenta con una interfaz sencilla para utilizar el algoritmo:
+This component offers a simple interface to use the algorithm:
 
 ```php
 <?php
