@@ -2,6 +2,7 @@
 layout: default
 language: 'it-it'
 version: '4.0'
+title: 'Volt'
 ---
 
 # Volt: Template Engine
@@ -12,31 +13,40 @@ version: '4.0'
 
 ## Overview
 
-Volt is an ultra-fast and designer friendly templating language written in C for PHP. It provides you a set of helpers to write views in an easy way. Volt is highly integrated with other components of Phalcon, just as you can use it as a stand-alone component in your applications.
+Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
 
-![](/assets/images/content/volt.jpg)
+![](/assets/images/content/volt.png)
 
-Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko). Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
+
+Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
 
 ## Introduction
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
 ```twig
-{%- raw -%}
-{# app/views/products/show.volt #}
-
-{% block last_products %}
-
-{% for product in products %}
-    * Name: {{ product.name|e }}
-    {% if product.status === 'Active' %}
-       Price: {{ product.price + product.taxes/100 }}
-    {% endif  %}
-{% endfor  %}
-
-{% endblock %}
-{% endraw %}
+{% raw %}
+{% for invoice in invoices %}
+<div class='row'>
+    <div>
+        ID: {{ invoice.inv_id }}
+    </div>
+    <div>
+        {%- if 1 === invoice.inv_status_flag -%}
+        Paid
+        {%- else -%}
+        Unpaid
+        {%- endif -%}
+    </div>
+    <div>
+        {{ invoice.inv_description }}
+    </div>
+    <div>
+        {{ invoice.inv_total }}
+    </div>
+</div>
+{% endfor %}{% endraw %}
 ```
 
 ## Activating Volt
