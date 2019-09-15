@@ -9,6 +9,8 @@ category: 'installation'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Requirements
 
 ### PHP 7.2
