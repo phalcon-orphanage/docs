@@ -10,6 +10,8 @@ title: 'Cache'
 
 <hr />
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## 概述
 
 The [Phalcon\Cache](api/Phalcon_Cache#cache) namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
@@ -75,7 +77,7 @@ $value = $cache->getMultiple(['my-key1', 'my-key2'], 'default');
 
 ### `has`
 
-To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
+To check whether a key exists in the cache (or it has not expired) you can call the `has()` method. The method will return `true` if the key exists, or `false` otherwise.
 
 ```php
 $exists = $cache->has('my-key');
@@ -89,7 +91,7 @@ To save the data in the cache, you will need to use the `set()` method. The meth
 $result = $cache->setMultiple('my-key', $data);
 ```
 
-If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). 如果密钥存在，方法将返回 `true` ，或者 `false` 否则。
+If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). The method will return `true` if the key exists, or `false` otherwise.
 
 ```php
 $value = $cache->setMultiple(
