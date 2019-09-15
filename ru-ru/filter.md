@@ -6,9 +6,11 @@ upgrade: '#filter'
 title: 'Фильтр'
 ---
 
-# Filter Component
+# Фильтр
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 
@@ -59,7 +61,7 @@ $text = $locator->hello('World');
 {: .alert .alert-info }
 
 
-## Built-in Sanitizers
+## Built-in
 
 > Where appropriate, the sanitizers will cast the value to the type expected. For example the [`absint`](https://secure.php.net/manual/en/function.absint.php) sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
@@ -301,7 +303,7 @@ $locator->sanitize('!100a019', 'int');
 $locator->sanitize('!100a019.01a', 'float');
 ```
 
-## Sanitizing from Controllers
+## Controllers
 
 You can access the [Phalcon\Filter](Phalcon_Filter#filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply.
 
@@ -335,9 +337,9 @@ class ProductsController extends Controller
 }
 ```
 
-## Sanitizing Action Parameters
+## Action Parameters
 
-If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter](Phalcon_Filter#filter) is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
+If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) as your DI container, the [Phalcon\Filter](Phalcon_Filter#filter) is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 We can sanitize values passed into controller actions as follows:
 
@@ -507,11 +509,7 @@ class ProductsController extends Controller
 }
 ```
 
-## Complex Sanitizing and Filtering
-
-PHP itself provides an excellent filter extension you can use: [Data Filtering at PHP Documentation](https://www.php.net/manual/en/book.filter.php)
-
-## Implementing your own Sanitizer
+## Custom Sanitizer
 
 A custom sanitizer can be implemented as as an anonymous function. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke) method with the relevant parameters.
 
