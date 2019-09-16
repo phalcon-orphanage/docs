@@ -60,19 +60,19 @@ Looking at the structure of the application we have the following:
 ```bash
 vokuro/
     .ci
-    app
-        Controllers
-        Forms
-        Models
-        Phalcon
-        Plugins
-        Providers
     configs
     db
         migrations
         seeds
     public
     resources
+    src
+        Controllers
+        Forms
+        Models
+        Phalcon
+        Plugins
+        Providers
     tests
     themes
         vokuro
@@ -89,16 +89,16 @@ vokuro/
 | Directory         | 描述                                                    |
 | ----------------- | ----------------------------------------------------- |
 | `.ci`             | Files necessary for setting services for the CI       |
-| `app`             | Where the application lives (controllers, forms etc.) |
-| `app/Controllers` | Controllers                                           |
-| `app/Forms`       | Forms                                                 |
-| `app/Models`      | Database Models                                       |
-| `app/Plugins`     | Plugins                                               |
-| `app/Providers`   | Providers: setting services in the DI container       |
 | `configs`         | Configuration files                                   |
 | `db`              | Holds the migrations for the databsae                 |
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
+| `src`             | Where the application lives (controllers, forms etc.) |
+| `src/Controllers` | Controllers                                           |
+| `src/Forms`       | Forms                                                 |
+| `src/Models`      | Database Models                                       |
+| `src/Plugins`     | Plugins                                               |
+| `src/Providers`   | Providers: setting services in the DI container       |
 | `tests`           | Tests                                                 |
 | `themes`          | Themes/views for easy customization                   |
 | `themes/vokuro`   | Default theme for the application                     |
