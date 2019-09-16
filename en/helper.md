@@ -47,7 +47,6 @@ $chunks = Arr::chunk($source, 2);
 //    [5, 6],
 // ]
 ```
-<hr/>
 
 ### first
 ```php
@@ -426,7 +425,6 @@ var_dump($result);
 //     'Chair'
 // ]
 ```
-<hr/>
 
 ### `set`
 ```php
@@ -798,7 +796,6 @@ $source   = 'BeetleJuice';
 echo Str::decapitalize($source);       // beetleJuice
 echo Str::decapitalize($source, true); // bEETLEJUICE
 ```
-<hr/>
 
 ### decrement
 ```php
@@ -1106,7 +1103,6 @@ use Phalcon\Helper\Str;
 echo Str::uncamelize('CocoBongo');      // coco_bongo
 echo Str::uncamelize('CocoBongo', '-'); // coco-bongo
 ```
-<hr/>
 
 ### `underscore`
 ```php
