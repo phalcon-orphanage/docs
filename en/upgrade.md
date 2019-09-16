@@ -671,6 +671,7 @@ $criteria->limit(10, null);
 ### Mvc\Model
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
+- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
 
 ### Mvc\Model\Criteria
 - Removed `addWhere`
