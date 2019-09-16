@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'sr-sp'
+language: 'en'
 upgrade: '#url'
 version: '4.0'
 ---

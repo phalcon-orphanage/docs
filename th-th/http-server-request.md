@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'th-th'
+language: 'en'
 version: '4.0'
 title: 'HTTP Server Request (PSR-7)'
 ---

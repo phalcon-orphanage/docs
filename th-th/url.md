@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'th-th'
+language: 'en'
 upgrade: '#url'
 version: '4.0'
 ---
