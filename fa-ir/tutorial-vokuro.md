@@ -36,7 +36,7 @@ git clone https://github.com/phalcon/vokuro
 
 There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - igbinary - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - tokenizer - xml - xmlwriter - zip
 
-Phalcon needs to be installed. Head over to the <installation> if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
+Phalcon needs to be installed. Head over to the <installation> page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
 
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
@@ -52,7 +52,7 @@ The above command will start serving the site for `localhost` at the port `8080`
 
 ### Docker
 
-In the `resopurces` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application.
+In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application.
 
 **add how**
 
@@ -487,75 +487,6 @@ The available providers are:
 ### Auth
 
 ### Mail
-
-## Load Classes and Dependencies
-
-This project uses [Phalcon\Loader](api/Phalcon_Loader) to load controllers, models, forms, etc. within the project and [composer](https://getcomposer.org) to load the project's dependencies. So, the first thing you have to do before execute Vökuró is install its dependencies via [composer](https://getcomposer.org). Assuming you have it correctly installed, type the following command in the console:
-
-```bash
-cd vokuro
-composer install
-```
-
-Vökuró sends emails to confirm the sign up of registered users using Swift, the `composer.json` looks like:
-
-```json
-{
-    "require" : {
-        "php": ">=5.5.0",
-        "ext-phalcon": ">=3.0.0",
-        "swiftmailer/swiftmailer": "^5.4",
-        "amazonwebservices/aws-sdk-for-php": "~1.0"
-    }
-}
-```
-
-Now, there is a file called `app/config/loader.php` where all the auto-loading stuff is set up. At the end of this file you can see that the composer autoloader is included enabling the application to autoload any of the classes in the downloaded dependencies:
-
-```php
-<?php
-
-// ...
-
-// Use composer autoloader to load vendor classes
-require_once BASE_PATH . '/vendor/autoload.php';
-```
-
-Moreover, Vökuró, unlike the INVO, utilizes namespaces for controllers and models which is the recommended practice to structure a project. This way the autoloader looks slightly different than the one we saw before (`app/config/loader.php`):
-
-```php
-<?php
-
-use Phalcon\Loader;
-
-$loader = new Loader();
-
-$loader->registerNamespaces(
-    [
-        'Vokuro\Models'      => $config->application->modelsDir,
-        'Vokuro\Controllers' => $config->application->controllersDir,
-        'Vokuro\Forms'       => $config->application->formsDir,
-        'Vokuro'             => $config->application->libraryDir,
-    ]
-);
-
-$loader->register();
-
-// ...
-```
-
-Instead of using `registerDirectories()`, we use `registerNamespaces()`. Every namespace points to a directory defined in the configuration file (app/config/config.php). For instance the namespace `Vokuro\Controllers` points to `app/controllers` so all the classes required by the application within this namespace requires it in its definition:
-
-```php
-<?php
-
-namespace Vokuro\Controllers;
-
-class AboutController extends ControllerBase
-{
-    // ...
-}
-```
 
 ## Sign Up
 
