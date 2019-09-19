@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'HTTP Response (PSR-7)'
 ---
