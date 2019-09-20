@@ -19,7 +19,11 @@ title: 'Tutorial - Vökuró'
 {: .alert .alert-info }
 
 > 
-> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern.
+> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+{: .alert .alert-warning }
+
+> 
+> Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
 ## Installation
@@ -713,9 +717,6 @@ The component exposes the following methods:
 
 ## Sign Up
 
-> Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
-
 **Kontroler**
 
 In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
@@ -1223,3 +1224,19 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 
 This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
+
+## References
+
+- [Access Control Lists definition](https://en.wikipedia.org/wiki/Access-control_list)
+- [Composer](https://getcomposer.org) 
+- [DotEnv - Vance Lucas](https://github.com/vlucas/phpdotenv)
+- [Model-View-Controller definition](https://en.wikipedia.org/wiki/Model–view–controller)
+- [Nanobox Guides](https://guides.nanobox.io/php/)
+- [Phinx - Cake PHP](https://github.com/cakephp/phinx)
+- [PSR](https://github.com/jbboehr/php-psr)
+- [Swift Mailer](https://swiftmailer.symfony.com)
+- [Phalcon ACL](acl)
+- [Phalcon Forms](forms)
+- [Phalcon HTTP Response](response)
+- [Phalcon Security](security)
+- [Vökuró - Github Repository](https://github.com/phalcon/vokuro)
