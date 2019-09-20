@@ -18,7 +18,10 @@ title: 'Tutorial - Vökuró'
 > You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
 {: .alert .alert-info }
 
-> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern.
+> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+{: .alert .alert-warning }
+
+> Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
 ## Installation
@@ -712,9 +715,6 @@ The component exposes the following methods:
 
 ## Sign Up
 
-> Note the code below has been formatted to increase readability
-{: .alert .alert-warning }
-
 **Controller**
 
 In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button. 
@@ -1224,6 +1224,21 @@ Now we need to check the `Users` model, since there is some logic we have applie
 
 This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
 
+## References
+
+- [Access Control Lists definition][acl]
+- [Composer][composer] 
+- [DotEnv - Vance Lucas][dotenv]
+- [Model-View-Controller definition][mvc]
+- [Nanobox Guides][nanobox-guides]
+- [Phinx - Cake PHP][phinx]
+- [PSR][psr]
+- [Swift Mailer][swiftmailer]
+- [Phalcon ACL](acl)
+- [Phalcon Forms](forms)
+- [Phalcon HTTP Response](response)
+- [Phalcon Security](security)
+- [Vökuró - Github Repository][github_vokuro]
 
 
 [acl]: https://en.wikipedia.org/wiki/Access-control_list
