@@ -68,9 +68,40 @@ php -S localhost:8080 -t public/
 The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
 
 ### Docker
-In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application. 
+In the `resources` folder you will find a `Dockerfile` which allows you to quickly set up the environment and run the application. To use the `Dockerfile` we need to decide the name of our dockerized application. For the purposes of this tutorial, we will use `phalcon-tutorial-vokuro`.
 
-**add how**
+From the root of the application we need to compile the project (you only need to do this once):
+
+```bash
+$ docker build -t phalcon-tutorial-vokuro -f resources/Dockerfile .
+```
+
+and then run it
+
+```bash
+$ docker run -it --rm phalcon-tutorial-vokuro bash
+```
+
+This will enter us in the dockerized environment. To check the PHP version:
+
+```bash
+root@c7b43060b115:/code $ php -v
+
+PHP 7.3.9 (cli) (built: Sep 12 2019 10:08:33) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.9, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.3.9, Copyright (c) 1999-2018, by Zend Technologies
+```
+
+and Phalcon:
+
+```bash
+root@c7b43060b115:/code $ php -r 'echo Phalcon\Version::get();'
+
+4.0.0
+```
+
+You now have a dockerized environment with all the necessary components to run Vökuró.
 
 ### Nanobox
 In the `resources` folder you will also find a `boxfile.yml` file that allows you to use nanobox in order to set up the environment quickly. All you have to do is copy the file to the root of your directory and run `nanobox run php-server`. Once the application is set up for the first time, you will be able to navigate to the IP address presented on screen and work with the application.
@@ -714,8 +745,7 @@ The component exposes the following methods:
 {: .alert .alert-info } 
 
 ## Sign Up
-
-**Controller**
+### Controller
 
 In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button. 
 
@@ -758,7 +788,28 @@ class SessionController extends ControllerBase
 }
 ```
 
-**Form**
+The workflow of the application is:
+
+- Visit `/session/signup`
+    - Create form, send form to the view, render the form
+- Submit data (not post)
+    - Form shows again, nothing else happens
+- Submit data (post)
+    - Errors
+        - Form validators have errors, send the form to 
+          the view, render the form (errors will show)
+    - No errors
+        - Data is sanitized
+        - New Model created
+        - Data saved in the database
+            - Error
+                - Show message on screen and refresh the form
+            - Success
+                - Record saved
+                - Show confirmation on screen
+                - Send email (if applicable)
+
+### Form
 
 In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen. 
 
@@ -995,7 +1046,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-**View**
+### View
 
 Now that we have everything set up in our form, we pass the form to the view:
 
@@ -1077,7 +1128,7 @@ After that we have regular HTML tags with the relevant styling. In order to disp
 
 At the end of the view we render the `CSRF` hidden field as well as the submit button `Sign Up`.
 
-**Post**
+### Post
 As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will _self post_ i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
 
 ```php
@@ -1218,7 +1269,7 @@ if ($user->save()) {
 
 If the `$user->save()` returns `true`, the user will be forwarded to the home page (`index/index`) and a success message will appear on screen. 
 
-**Model**
+### Model
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events. 
 
