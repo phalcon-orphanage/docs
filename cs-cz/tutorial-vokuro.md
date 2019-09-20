@@ -180,7 +180,9 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### `acl.php`
+### Config
+
+**acl.php**
 
 Looking at the `config/` folder, you will notice four files. There is no need for you to change these files to start the application but if you wish to customize it, this is the place to visit. The `acl.php` file returns an array of *routes* that controls which routes are visible to only logged in users.
 
@@ -204,17 +206,17 @@ If you use Vökuró as a starting point for your own application, you will need 
 > Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
 {: .alert .alert-info }
 
-### `config.php`
+**config.php**
 
 This file holds all configuration parameters that Vökuró needs. Usually you will not need to change this file, since the elements of the array are set by the `.env` file and [Dotenv](https://github.com/vlucas/phpdotenv). However, you might want to change the location of your logs or other paths, should you decide to change the directory structure.
 
 One of the elements you might want to consider when working with Vökuró on your local machine is the `useMail` and set it to `false`. This will instruct Vökuró not to try to connect to a mail server and send an email when a user registers on the site.
 
-### `providers.php`
+**providers.php**
 
 This file contains all the providers that Vökuró needs. This is a list of classes in the application, that registers the particular class in the DI container. If you need to register new components to your DI container, you can add them to the array of this file.
 
-### `routes.php`
+**routes.php**
 
 This file contains the routes that Vökuró understands. The router already registers the default routes, so any routes defined in `routes.php` are specific ones. You can add any non standard routes you need, when customizing Vökuró, in this file. As a reminder, the default routes are:
 
@@ -474,90 +476,750 @@ The available providers are:
 
 ## Database
 
+As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
+
+| Table                 | Description                             |
+| --------------------- | --------------------------------------- |
+| `email_confirmations` | Email confirmations for registration    |
+| `failed_logins`       | Failed login attempts                   |
+| `password_changes`    | When a password was changed and by whom |
+| `permissions`         | Permission matrix                       |
+| `phinxlog`            | Phinx migration table                   |
+| `profiles`            | Profile for each user                   |
+| `remember_tokens`     | *Remember Me* functionality tokens      |
+| `reset_passwords`     | Reset password tokens table             |
+| `success_logins`      | Successful login attempts               |
+| `users`               | Users                                   |
+
 ## Models
 
-## Controllers
-
-## Views
-
-## Components
-
-### Acl
-
-### Auth
-
-### Mail
-
-## Sign Up
-
-First, let's check how users are registered in Vökuró. When a user clicks the `Create an Account` button, the controller SessionController is invoked and the action `signup` is executed:
+Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
 ```php
 <?php
+declare(strict_types=1);
 
-namespace Vokuro\Controllers;
+namespace Vokuro\Models;
 
-use Vokuro\Forms\SignUpForm;
+use Phalcon\Mvc\Model;
 
-class SessionController extends ControllerBase
+/**
+ * SuccessLogins
+ *
+ * This model registers successfully logins registered users have made
+ */
+class SuccessLogins extends Model
 {
-    public function signupAction()
+    /**
+     * @var integer
+     */
+    public $id;
+
+    /**
+     * @var integer
+     */
+    public $usersId;
+
+    /**
+     * @var string
+     */
+    public $ipAddress;
+
+    /**
+     * @var string
+     */
+    public $userAgent;
+
+    public function initialize()
     {
-        $form = new SignUpForm();
-
-        // ...
-
-        $this->view->form = $form;
+        $this->belongsTo(
+            'usersId', 
+            Users::class, 
+            'id', 
+            [
+                'alias' => 'user',
+            ]
+        );
     }
 }
 ```
 
-This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
+In the model above, we have defined all the fields of the table as public properties for easy access:
+
+```php
+echo $successLogin->ipAddress;
+```
+
+> If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+{: .alert .alert-warning }
+
+In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
+
+```php
+echo $successLogin->user->name;
+```
+
+> Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+{: .alert .alert-info }
+
+## Controllers
+
+Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
+
+The default controller is `IndexController`. All controller classes have the suffix `Controller`. Each controller has methods suffixed with `Action` and the default action is `indexAction`. Therefore if you visit the site with just the URL, the `IndexController` will be called and the `indexAction` will be executed.
+
+After that, unless you have registered specific routes, the default routes (automatically registered) will try to match:
+
+```bash
+/profiles/search
+```
+
+to
+
+```bash
+/src/Controllers/SearchController.php -> searchAction
+```
+
+The available controllers, actions and routes for Vökuró are:
+
+| Controller    | Akce             | Route                     | Description                                 |
+| ------------- | ---------------- | ------------------------- | ------------------------------------------- |
+| `About`       | `index`          | `/about`                  | Shows the `about` page                      |
+| `Index`       | `index`          | `/`                       | Default action - home page                  |
+| `Permissions` | `index`          | `/permissions`            | View/change permissions for a profile level |
+| `Privacy`     | `index`          | `/privacy`                | View the privacy page                       |
+| `Profiles`    | `index`          | `/profiles`               | View profiles default page                  |
+| `Profiles`    | `create`         | `/profiles/create`        | Create profile                              |
+| `Profiles`    | `delete`         | `/profiles/delete`        | Delete profile                              |
+| `Profiles`    | `edit`           | `/profiles/edit`          | Edit profile                                |
+| `Profiles`    | `search`         | `/profiles/search`        | Search profiles                             |
+| `Session`     | `index`          | `/session`                | Session default action                      |
+| `Session`     | `forgotPassword` | `/session/forgotPassword` | Forget password                             |
+| `Session`     | `login`          | `/session/login`          | Login                                       |
+| `Session`     | `logout`         | `/session/logout`         | Logout                                      |
+| `Session`     | `signup`         | `/session/signup`         | Signup                                      |
+| `Terms`       | `index`          | `/terms`                  | View the terms page                         |
+| `UserControl` | `confirmEmail`   | `/confirm`                | Confirm email                               |
+| `UserControl` | `resetPassword`  | `/reset-password`         | Reset password                              |
+| `Users`       | `index`          | `/users`                  | Users default screen                        |
+| `Users`       | `changePassword` | `/users/changePassword`   | Change user password                        |
+| `Users`       | `create`         | `/users/create`           | Create user                                 |
+| `Users`       | `delete`         | `/users/delete`           | Delete user                                 |
+| `Users`       | `edit`           | `/users/edit`             | Edit user                                   |
+
+## Views
+
+The last element of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
+
+> Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+{: .alert .alert-info }
+
+The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
+
+```bash
+/profiles/create
+```
+
+maps to:
+
+```bash
+ProfilesController -> createAction
+```
+
+and the view is located:
+
+```bash
+/themes/vokuro/profiles/create.volt
+```
+
+The available views are:
+
+| Controller    | Akce             | View                           | Description                                 |
+| ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
+| `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
+| `Index`       | `index`          | `/index/index.volt`            | Default action - home page                  |
+| `Permissions` | `index`          | `/permissions/index.volt`      | View/change permissions for a profile level |
+| `Privacy`     | `index`          | `/privacy/index.volt`          | View the privacy page                       |
+| `Profiles`    | `index`          | `/profiles/index.volt`         | View profiles default page                  |
+| `Profiles`    | `create`         | `/profiles/create.volt`        | Create profile                              |
+| `Profiles`    | `delete`         | `/profiles/delete.volt`        | Delete profile                              |
+| `Profiles`    | `edit`           | `/profiles/edit.volt`          | Edit profile                                |
+| `Profiles`    | `search`         | `/profiles/search.volt`        | Search profiles                             |
+| `Session`     | `index`          | `/session/index.volt`          | Session default action                      |
+| `Session`     | `forgotPassword` | `/session/forgotPassword.volt` | Forget password                             |
+| `Session`     | `login`          | `/session/login.volt`          | Login                                       |
+| `Session`     | `logout`         | `/session/logout.volt`         | Logout                                      |
+| `Session`     | `signup`         | `/session/signup.volt`         | Signup                                      |
+| `Terms`       | `index`          | `/terms/index.volt`            | View the terms page                         |
+| `Users`       | `index`          | `/users/index.volt`            | Users default screen                        |
+| `Users`       | `changePassword` | `/users/changePassword.volt`   | Change user password                        |
+| `Users`       | `create`         | `/users/create.volt`           | Create user                                 |
+| `Users`       | `delete`         | `/users/delete.volt`           | Delete user                                 |
+| `Users`       | `edit`           | `/users/edit.volt`             | Edit user                                   |
+
+The `/index.volt` file contains the main layout of the page, including stylesheets, javascript references etc. The `/layouts` directory contains different layouts that are used in the application, for instance a `public` one if the user is not logged in, and a `private` one for logged in users. The individual views are injected into the layouts and construct the final page.
+
+## Components
+
+There are several components that we use in Vökuró, offering functionality throughout the application. All these components are located in the `/src/Plugins` directory.
+
+### Acl
+
+`Vokuro\Plugins\Acl\Acl` is a component that implements an [Access Control List](https://en.wikipedia.org/wiki/Access-control_list) for our application. The ACL controls which user has access to which resources. You can read more about ACL in our [dedicated page](acl).
+
+In this component, We define the resources that are considered *private*. These are held in an internal array with controller as the key and action as the value, and identify which controller/actions require authentication. It also holds human readable descriptions for actions used throughout the application.
+
+The component exposes the following methods:
+
+| Method                                      | Returns      | Description                                                     |
+| ------------------------------------------- | ------------ | --------------------------------------------------------------- |
+| `getActionDescription($action)`             | `string`     | Returns the action description according to its simplified name |
+| `getAcl()`                                  | `ACL object` | Returns the ACL list                                            |
+| `getPermissions(Profiles $profile)`         | `array`      | Returns the permissions assigned to a profile                   |
+| `getResources()`                            | `array`      | Returns all the resources and their actions available           |
+| `isAllowed($profile, $controller, $action)` | `bool`       | Checks if the current profile is allowed to access a resource   |
+| `isPrivate($controllerName)`                | `bool`       | Checks if a controller is private or not                        |
+| `rebuild()`                                 | `ACL object` | Rebuilds the access list into a file                            |
+
+### Auth
+
+`Vokuro\Plugins\Auth\Auth` is a component that manages authentication and offers identity management in Vökuró.
+
+The component exposes the following methods:
+
+| Method                                   | Description                                                                            |
+| ---------------------------------------- | -------------------------------------------------------------------------------------- |
+| `check($credentials)`                    | Checks the user credentials                                                            |
+| `saveSuccessLogin($user)`                | Creates the remember me environment settings the related cookies and generating tokens |
+| `registerUserThrottling($userId)`        | Implements login throttling. Reduces the effectiveness of brute force attacks          |
+| `createRememberEnvironment(Users $user)` | Creates the remember me environment settings the related cookies and generating tokens |
+| `hasRememberMe(): bool`                  | Check if the session has a remember me cookie                                          |
+| `loginWithRememberMe(): Response`        | Logs on using the information in the cookies                                           |
+| `checkUserFlags(Users $user)`            | Checks if the user is banned/inactive/suspended                                        |
+| `getIdentity(): array / null`            | Returns the current identity                                                           |
+| `getName(): string`                      | Returns the name of the user                                                           |
+| `remove()`                               | Removes the user identity information from session                                     |
+| `authUserById($id)`                      | Authenticates the user by his/her id                                                   |
+| `getUser(): Users`                       | Get the entity related to user in the active identity                                  |
+| `findFirstByToken($token): int / null`   | Returns the current token user                                                         |
+| `deleteToken(int $userId)`               | Delete the current user token in session                                               |
+
+### Mail
+
+`Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
+
+> Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+{: .alert .alert-info } 
+
+## Sign Up
+
+> Note the code below has been formatted to increase readability
+{: .alert .alert-warning }
+
+**Controller**
+
+In order to access all the areas of Vökuró you need to have an account. Vökuró allows you to sign up to the site by clicking the `Create an Account` button.
+
+What this will do is navigate you to the `/session/signup` URL, which in turn will call the `SessionController` and `signupAction`. Let's have a look what is going on in the `signupAction`:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Controllers;
+
+use Phalcon\Flash\Direct;
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Security;
+use Phalcon\Mvc\View;
+use Vokuro\Forms\SignUpForm;
+use Vokuro\Models\Users;
+
+/**
+ * @property Dispatcher $dispatcher
+ * @property Direct     $flash
+ * @property Request    $request
+ * @property Security   $security
+ * @property View       $view
+ */
+class SessionController extends ControllerBase
+{
+    /**
+     * Allow a user to signup to the system
+     */
+    public function signupAction()
+    {
+        $form = new SignUpForm();
+
+        // ....
+
+        $this->view->setVar('form', $form);
+    }
+}
+```
+
+**Form**
+
+In order to have validation for user supplied data, we are utilizing the [Phalcon\Forms\Form](forms) and [Phalcon\Validation\*](validation) classes. These classes allow us to create HTML elements and attach validators to them. The form is then passed to the view, where the actual HTML elements are rendered on the screen.
+
+When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
+
+> All the forms for Vökuró are located in `/src/Forms`
+{: .alert .alert-info }
+
+First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Forms;
+
+use Phalcon\Forms\Element\Check;
+use Phalcon\Forms\Element\Hidden;
+use Phalcon\Forms\Element\Password;
+use Phalcon\Forms\Element\Submit;
+use Phalcon\Forms\Element\Text;
+use Phalcon\Forms\Form;
+use Phalcon\Validation\Validator\Confirmation;
+use Phalcon\Validation\Validator\Email;
+use Phalcon\Validation\Validator\Identical;
+use Phalcon\Validation\Validator\PresenceOf;
+use Phalcon\Validation\Validator\StringLength;
+
+class SignUpForm extends Form
+{
+    /**
+     * @param string|null $entity
+     * @param array       $options
+     */
+    public function initialize(
+        string $entity = null, 
+        array $options = []
+    ) {
+        $name = new Text('name');
+        $name->setLabel('Name');
+        $name->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'The name is required',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($name);
+
+        // Email
+        $email = new Text('email');
+        $email->setLabel('E-Mail');
+        $email->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'The e-mail is required',
+                    ]
+                ),
+                new Email(
+                    [
+                        'message' => 'The e-mail is not valid',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($email);
+
+        // Password
+        $password = new Password('password');
+        $password->setLabel('Password');
+        $password->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'The password is required',
+                    ]
+                ),
+                new StringLength(
+                    [
+                        'min'            => 8,
+                        'messageMinimum' => 'Password is too short. ' .
+                                            'Minimum 8 characters',
+                    ]
+                ),
+                new Confirmation(
+                    [
+                        'message' => "Password doesn't match " .
+                                     "confirmation",
+                        'with'    => 'confirmPassword',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($password);
+
+        // Confirm Password
+        $confirmPassword = new Password('confirmPassword');
+        $confirmPassword->setLabel('Confirm Password');
+        $confirmPassword->addValidators(
+            [
+                new PresenceOf(
+                    [
+                        'message' => 'The confirmation password ' .
+                                     'is required',
+                    ]
+                ),
+            ]
+        );
+
+        $this->add($confirmPassword);
+
+        // Remember
+        $terms = new Check(
+            'terms', 
+            [
+                'value' => 'yes',
+            ]
+        );
+
+        $terms->setLabel('Accept terms and conditions');
+        $terms->addValidator(
+            new Identical(
+                [
+                    'value'   => 'yes',
+                    'message' => 'Terms and conditions must be ' .
+                                 'accepted',
+                ]
+            )
+        );
+
+        $this->add($terms);
+
+        // CSRF
+        $csrf = new Hidden('csrf');
+        $csrf->addValidator(
+            new Identical(
+                [
+                    'value'   => $this->security->getRequestToken(),
+                    'message' => 'CSRF validation failed',
+                ]
+            )
+        );
+        $csrf->clear();
+
+        $this->add($csrf);
+
+        // Sign Up
+        $this->add(
+            new Submit(
+                'Sign Up', 
+                [
+                    'class' => 'btn btn-success',
+                ]
+            )
+        );
+    }
+
+    /**
+     * Prints messages for a specific element
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    public function messages(string $name)
+    {
+        if ($this->hasMessagesFor($name)) {
+            foreach ($this->getMessagesFor($name) as $message) {
+                return $message;
+            }
+        }
+
+        return '';
+    }
+}
+```
+
+In the `initialize` method we are setting up all the HTML elements we need. These elements are:
+
+| Element           | Type       | Description                  |
+| ----------------- | ---------- | ---------------------------- |
+| `name`            | `Text`     | The name of the user         |
+| `email`           | `Text`     | The email for the account    |
+| `password`        | `Password` | The password for the account |
+| `confirmPassword` | `Password` | Password confirmation        |
+| `terms`           | `Check`    | Accept the terms checkbox    |
+| `csrf`            | `Hidden`   | CSRF protection element      |
+| `Sign Up`         | `Submit`   | Submit button                |
+
+Adding elements is pretty straight forward:
+
+```php
+<?php
+declare(strict_types=1);
+
+// Email
+$email = new Text('email');
+$email->setLabel('E-Mail');
+$email->addValidators(
+    [
+        new PresenceOf(
+            [
+                'message' => 'The e-mail is required',
+            ]
+        ),
+        new Email(
+            [
+                'message' => 'The e-mail is not valid',
+            ]
+        ),
+    ]
+);
+
+$this->add($email);
+```
+
+First we create a `Text` object and set its name to `email`. We also set the label of the element to `E-Mail`. After that we attach various validators on the element. These will be invoked after the user submits data, and that data is passed in the form.
+
+As we see above, we attach the `PresenceOf` validator on the `email` element with a message `The e-mail is required`. The validator will check if the user has submitted data when they clicked the submit button and will produce the message if the validator fails. The validator checks the passed array (usually `$_POST`) and for this particular element it will check `$_POST['email']`.
+
+We also attach the `Email` validator, which is responsible for checking for a valid email address. As you can see the validators belong in an array, so you can easily attach as many validators as you need on any particular element.
+
+The last thing we do is to add the element in the form.
+
+You will notice that the `terms` element does not have any validators attached to it, so our form will not check the contents of the element.
+
+Special attention to the `password` and `confirmPassword` elements. You will notice that both elements are of type `Password`. The idea is that you need to type your password twice, and the passwords need to match in order to avoid errors.
+
+The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
+
+**View**
+
+Now that we have everything set up in our form, we pass the form to the view:
+
+```php
+$this->view->setVar('form', $form);
+```
+
+Our view now needs to *render* the elements:
 
 ```twig
 {% raw %}
-{{ form('class': 'form-search') }}
+{# ... #}
+{% 
+    set isEmailValidClass = form.messages('email') ? 
+        'form-control is-invalid' : 
+        'form-control' 
+%}
+{# ... #}
 
-    <h2>
-        Sign Up
-    </h2>
+<h1 class="mt-3">Sign Up</h1>
 
-    <p>{{ form.label('name') }}</p>
-    <p>
-        {{ form.render('name') }}
-        {{ form.messages('name') }}
-    </p>
+<form method="post">
+    {# ... #}
 
-    <p>{{ form.label('email') }}</p>
-    <p>
-        {{ form.render('email') }}
-        {{ form.messages('email') }}
-    </p>
+    <div class="form-group row">
+        {{ 
+            form.label(
+                'email', 
+                [
+                    'class': 'col-sm-2 col-form-label'
+                ]
+            ) 
+        }}
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'email', 
+                    [
+                        'class': isEmailValidClass, 
+                        'placeholder': 'Email'
+                    ]
+                ) 
+            }}
+            <div class="invalid-feedback">
+                {{ form.messages('email') }}
+            </div>
+        </div>
+    </div>
 
-    <p>{{ form.label('password') }}</p>
-    <p>
-        {{ form.render('password') }}
-        {{ form.messages('password') }}
-    </p>
+    {# ... #}
+    <div class="form-group row">
+        <div class="col-sm-10">
+            {{ 
+                form.render(
+                    'csrf', 
+                    [
+                        'value': security.getToken()
+                    ]
+                ) 
+            }}
+            {{ form.messages('csrf') }}
 
-    <p>{{ form.label('confirmPassword') }}</p>
-    <p>
-        {{ form.render('confirmPassword') }}
-        {{ form.messages('confirmPassword') }}
-    </p>
+            {{ form.render('Sign Up') }}
+        </div>
+    </div>
+</form>
 
-    <p>
-        {{ form.render('terms') }} {{ form.label('terms') }}
-        {{ form.messages('terms') }}
-    </p>
+<hr>
 
-    <p>{{ form.render('Sign Up') }}</p>
-
-    {{ form.render('csrf', ['value': security.getToken()]) }}
-    {{ form.messages('csrf') }}
-
-    <hr>
-
-{{ endForm() }}
+{{ link_to('session/login', "&larr; Back to Login") }}
 {% endraw %}
 ```
+
+The variable that we set in our view for our `SignUpForm` object is called `form`. We therefore use it directly and call the methods of it. The syntax in Volt is slightly different. In PHP we would use `$form->render()` whereas in Volt we will use `form.render()`.
+
+The view contains a conditional at the top, checking whether there have been any errors in our form, and if there were, it attaches the `is-invalid` CSS class to the element. This class puts a nice red border by the element, highlighting the error and showing the message.
+
+After that we have regular HTML tags with the relevant styling. In order to display the HTML code of each element we need to call `render()` on the `form` with the relevant element name. Also note that we also call `form.label()` with the same element name, so that we can create respective `<label>` tags.
+
+At the end of the view we render the `CSRF` hidden field as well as the submit button `Sign Up`.
+
+**Post** As mentioned above, once the user fills the form and clicks the `Sign Up` button, the form will *self post* i.e. it will post the data on the same controller and action (in our case `/session/signup`). The action now needs to process this posted data:
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Controllers;
+
+use Phalcon\Flash\Direct;
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Security;
+use Phalcon\Mvc\View;
+use Vokuro\Forms\SignUpForm;
+use Vokuro\Models\Users;
+
+/**
+ * @property Dispatcher $dispatcher
+ * @property Direct     $flash
+ * @property Request    $request
+ * @property Security   $security
+ * @property View       $view
+ */
+class SessionController extends ControllerBase
+{
+    /**
+     * Allow a user to signup to the system
+     */
+    public function signupAction()
+    {
+        $form = new SignUpForm();
+
+        if (true === $this->request->isPost()) {
+            if (false !== $form->isValid($this->request->getPost())) {
+                $name     = $this
+                    ->request
+                    ->getPost('name', 'striptags')
+                ;
+                $email    = $this
+                    ->request
+                    ->getPost('email')
+                ;
+                $password = $this
+                    ->request
+                    ->getPost('password')
+                ;
+                $password = $this
+                    ->security
+                    ->hash($password)
+                ;
+
+                $user = new Users(
+                    [
+                        'name'       => $name,
+                        'email'      => $email,
+                        'password'   => $password,
+                        'profilesId' => 2,
+                    ]
+                );
+
+                if ($user->save()) {
+                    return $this->dispatcher->forward([
+                        'controller' => 'index',
+                        'action'     => 'index',
+                    ]);
+                }
+
+                foreach ($user->getMessages() as $message) {
+                    $this->flash->error((string) $message);
+                }
+            }
+        }
+
+        $this->view->setVar('form', $form);
+    }
+}
+```
+
+If the user has submitted data, the following line will evaluate and we will be executing code inside the `if` statement:
+
+```php
+if (true === $this->request->isPost()) {
+```
+
+Here we are checking the request that came from the user, if it is a `POST`. Now that it is, we need to use the form validators and check if we have any errors. The [Phalcon\Http\Request](request) object, allows us to get that data easily by using:
+
+```php
+$this->request->getPost()
+```
+
+We now need to pass this posted data in the form and call `isValid`. This will fire all the validators for each element and if any of them fail, the form will populate the internal messages collection and return `false`
+
+```php
+if (false !== $form->isValid($this->request->getPost())) {
+```
+
+If everything is fine, we use again the [Phalcon\Http\Request](request) object to retrieve the submitted data but also sanitize them. The following example strips the tags from the submitted `name` string:
+
+```php
+$name     = $this
+    ->request
+    ->getPost('name', 'striptags')
+;
+```
+
+Note that we never store clear text passwords. Instead we use the [Phalcon\Security](security) component and call `hash` on it, to transform the supplied password to a one way hash and store that instead. This way, if someone compromises our database, at least they have no access to clear text passwords.
+
+```php
+$password = $this
+    ->security
+    ->hash($password)
+;
+```
+
+We now need to store the supplied data in the database. We do that by creating a new `Users` model, pass the sanitized data into it and then call `save`:
+
+```php
+$user = new Users(
+    [
+        'name'       => $name,
+        'email'      => $email,
+        'password'   => $password,
+        'profilesId' => 2,
+    ]
+);
+
+if ($user->save()) {
+    return $this
+        ->dispatcher
+        ->forward(
+            [
+                'controller' => 'index',
+                'action'     => 'index',
+            ]
+        );
+}
+```
+
+If the `$user->save()` returns `true`, the user will be forwarded to the home page (`index/index`) and a success message will appear on screen.
+
+**Model**
+
+Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
+
+This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
