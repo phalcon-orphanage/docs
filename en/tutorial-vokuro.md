@@ -9,7 +9,7 @@ title: 'Tutorial - Vökuró'
 ![](/assets/images/document-status-under-review-red.svg)
 
 ## Vökuró
-[Vökuró][github_vokuro] is a sammple application, showcasing a typical web application written in Phalcon. This application focuses on:
+[Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
 - User Login (security)
 - User Signup (security)
 - User Permissions
