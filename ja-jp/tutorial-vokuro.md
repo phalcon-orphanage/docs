@@ -13,7 +13,7 @@ title: 'Tutorial - Vökuró'
 
 ## Vökuró
 
-[Vökuró](https://github.com/phalcon/vokuro) is a sammple application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
+[Vökuró](https://github.com/phalcon/vokuro) is a sample application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
 
 > You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
 {: .alert .alert-info }
