@@ -1274,9 +1274,290 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 ### Model
 
+**Relationships**
+
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 
-This action simply pass a form instance of `SignUpForm` to the view, which itself is rendered to allow the user enter the login details:
+The core method, the setup if you like happens in the `inintialize` method. That is the spot where we set all the [relationships](db-models-relationships) for the model. For the `Users` class we have several relationships defined. Why relationships you might ask? Phalcon offers an easy way to retrieve related data to a particular model.
+
+If for instance we want to check all the successful logins for a particular user, we can do so with the following code snippet:
+
+```php
+<?php
+declare(strict_types=1);
+
+use Vokuro\Models\SuccessLogins;
+use Vokuro\Models\Users;
+
+$user = Users::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
+);
+
+$logins = SuccessLogin::find(
+    [
+        'conditions' => 'userId = :userId:',
+        'bind'       => [
+            'userId' => 7,
+        ] 
+    ]
+);
+```
+
+The above code gets the user with id `7` and then gets all the successful logins from the relevant table for that user.
+
+Using relationships we can let Phalcon do all the heavy lifting for us. So the code above becomes:
+
+```php
+<?php
+declare(strict_types=1);
+
+use Vokuro\Models\SuccessLogins;
+use Vokuro\Models\Users;
+
+$user = Users::findFirst(
+    [
+        'conditions' => 'id = :id:',
+        'bind'       => [
+            'id' => 7,
+        ] 
+    ]
+);
+
+$logins = $user->successLogins;
+
+$logins = $user->getRelated('successLogins');
+```
+
+The last two lines do exactly the same thing. It is a matter of preference which syntax you want to use. Phalcon will query the related table, filtering the related table with the id of the user.
+
+For our `Users` table we define the following relationships:
+
+| Название          | Source field | Target field | Model             |
+| ----------------- | ------------ | ------------ | ----------------- |
+| `passwordChanges` | `id`         | `usersId`    | `PasswordChanges` |
+| `profile`         | `profileId`  | `id`         | `Profiles`        |
+| `resetPasswords`  | `id`         | `usersId`    | `ResetPasswords`  |
+| `successLogins`   | `id`         | `usersId`    | `SuccessLogins`   |
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * All the users registered in the application
+ */
+class Users extends Model
+{
+    // ...
+
+    public function initialize()
+    {
+        $this->belongsTo(
+            'profilesId', 
+            Profiles::class, 
+            'id', 
+            [
+                'alias'    => 'profile',
+                'reusable' => true,
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            SuccessLogins::class, 
+            'usersId', 
+            [
+                'alias'      => 'successLogins',
+                'foreignKey' => [
+                    'message' => 'User cannot be deleted because ' .
+                                 'he/she has activity in the system',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            PasswordChanges::class, 
+            'usersId', 
+            [
+                'alias'      => 'passwordChanges',
+                'foreignKey' => [
+                    'message' => 'User cannot be deleted because ' .
+                                 'he/she has activity in the system',
+                ],
+            ]
+        );
+
+        $this->hasMany(
+            'id', 
+            ResetPasswords::class, 
+            'usersId', [
+            'alias'      => 'resetPasswords',
+            'foreignKey' => [
+                'message' => 'User cannot be deleted because ' .
+                             'he/she has activity in the system',
+            ],
+        ]);
+    }
+
+    // ...
+}
+```
+
+As you can see in the defined relationships, we have a `belongsTo` and three `hasMany`. All relationships have an alias so that we can access them easier. The `belongsTo` relationship also has the `reusable` flag set to on. This means that if the relationship is called more than once in the same request, Phalcon would perform the database query only the first time and cache the resultset. Any subsequent calls will use the cached resultset.
+
+Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
+
+**Events**
+
+[Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
+
+For the `Users` model, we attach code to the `afterSave` and `beforeValidationOnCreate` events.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * All the users registered in the application
+ */
+class Users extends Model
+{
+    public function beforeValidationOnCreate()
+    {
+        if (true === empty($this->password)) {
+            $tempPassword = preg_replace(
+                '/[^a-zA-Z0-9]/', 
+                '', 
+                base64_encode(openssl_random_pseudo_bytes(12))
+            );
+
+            $this->mustChangePassword = 'Y';
+
+            $this->password = $this->getDI()
+                                   ->getSecurity()
+                                   ->hash($tempPassword)
+            ;
+        } else {
+            $this->mustChangePassword = 'N';
+        }
+
+        if ($this->getDI()->get('config')->useMail) {
+            $this->active = 'N';
+        } else {
+            $this->active = 'Y';
+        }
+
+        $this->suspended = 'N';
+
+        $this->banned = 'N';
+    }
+}
+```
+
+The `beforeValidationOnCreate` will fire every time we have a new record (`Create`), before any validations occur. We check if we have a defined password and if not, we will generate a random string, then hash that string using [Phalcon\Security](security) amd storing it in the `password` property. We also set the flag to change the password.
+
+If the password is not empty, we just set the `mustChangePassword` field to `N`. Finally, we set some defaults on whether the user is `active`, `suspended` or `banned`. This ensures that our record is ready before it is inserted in the database.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * All the users registered in the application
+ */
+class Users extends Model
+{
+    public function afterSave()
+    {
+        if ($this->getDI()->get('config')->useMail) {
+            if ($this->active == 'N') {
+                $emailConfirmation          = new EmailConfirmations();
+                $emailConfirmation->usersId = $this->id;
+
+                if ($emailConfirmation->save()) {
+                    $this->getDI()
+                         ->getFlash()
+                         ->notice(
+                            'A confirmation mail has ' .
+                            'been sent to ' . $this->email
+                        )
+                    ;
+                }
+            }
+        }
+    }
+}
+```
+
+The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
+
+> Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
+{: .alert .alert=info }
+
+**Validation**
+
+The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
+
+```php
+<?php
+declare(strict_types=1);
+
+namespace Vokuro\Models;
+
+use Phalcon\Mvc\Model;
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Uniqueness;
+
+/**
+ * All the users registered in the application
+ */
+class Users extends Model
+{
+    public function validation()
+    {
+        $validator = new Validation();
+
+        $validator->add(
+            'email', 
+            new Uniqueness(
+                [
+                    "message" => "The email is already registered",
+                ]
+            )
+        );
+
+        return $this->validate($validator);
+    }
+}
+```
+
+## Conclusion
+
+Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
 ## References
 
