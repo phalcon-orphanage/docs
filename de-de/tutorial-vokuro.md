@@ -9,7 +9,7 @@ title: 'Tutorial - Vökuró'
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Vökuró
 
@@ -38,7 +38,7 @@ git clone https://github.com/phalcon/vokuro
 
 ### Extensions
 
-There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - igbinary - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - tokenizer - xml - xmlwriter - zip
+There are some prerequisites for the Vökuró to run. You will need to have PHP >= 7.2 installed on your machine and the following extensions: - ctype - curl - dom - json - iconv - mbstring - memcached - opcache - openssl - pdo - pdo_mysql - psr - session - simplexml - xml - xmlwriter
 
 Phalcon needs to be installed. Head over to the <installation> page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr](https://github.com/jbboehr/php-psr) GitHub page.
 
