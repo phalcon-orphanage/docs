@@ -2,7 +2,7 @@
 layout: default
 language: 'ja-jp'
 version: '4.0'
-title: 'Volt'
+title: 'Volt: Template Engine'
 ---
 
 # Volt: Template Engine
@@ -19,9 +19,9 @@ Volt is an ultra-fast and designer friendly templating engine written in C for P
 
 Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
 
-Therefore many developers will be in familiar territory using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to while working with Phalcon.
+Many developers will be in familiar territory, using the same syntax they have been using with similar template engines. Volt's syntax and features have been enhanced with more elements and of course with the performance that developers have been accustomed to, while working with Phalcon.
 
-## Introduction
+## Syntax
 
 Volt views are compiled to pure PHP code, so basically they save the effort of writing PHP code manually:
 
@@ -49,6 +49,31 @@ Volt views are compiled to pure PHP code, so basically they save the effort of w
 {% endfor %}{% endraw %}
 ```
 
+compared to:
+
+```php
+<?php foreach ($invoices as $invoice) { ?>
+<div class='row'>
+    <div>
+        ID: <?php echo $invoice->inv_id; ?>
+    </div>
+    <div>
+        <?php if (1 === $invoice->inv_status_flag) { ?>
+        Paid
+        <?php } else { ?>
+        Unpaid
+        <?php } ?>
+    </div>
+    <div>
+        <?php echo $invoice->inv_description; ?>
+    </div>
+    <div>
+        <?php echo $invoice->total; ?>
+    </div>
+</div>
+<?php } ?>
+```
+
 ## Activating Volt
 
 As with other templating engines, you may register Volt in the view component, using a new extension or reusing the standard `.phtml`:
@@ -56,19 +81,26 @@ As with other templating engines, you may register Volt in the view component, u
 ```php
 <?php
 
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// Register Volt as a service
-$di->set(
-    'voltService',
-    function ($view, $di) {
-        $volt = new Volt($view, $di);
+$container = new FactoryDefault();
 
+$container->setShared(
+    'voltService',
+    function (ViewBaseInterface $view, DiInterface $container) {
+        $volt = new Volt($view, $container);
         $volt->setOptions(
             [
-                'path'      => '../app/compiled-templates/',
-                'extension' => '.compiled',
+                'always'    => true,
+                'extension' => '.php',
+                'separator' => '_',
+                'stat'      => true,
+                'path'      => appPath('storage/cache/volt/'),
+                'prefix'    => '-prefix-',
             ]
         );
 
@@ -76,8 +108,7 @@ $di->set(
     }
 );
 
-// Register Volt as template engine
-$di->set(
+$container->set(
     'view',
     function () {
         $view = new View();
@@ -95,7 +126,7 @@ $di->set(
 );
 ```
 
-Use the standard `.phtml` extension:
+To use the standard `.phtml` extension:
 
 ```php
 <?php
@@ -112,9 +143,12 @@ You don't have to specify the Volt Service in the DI; you can also use the Volt 
 ```php
 <?php
 
+use Phalcon\Mvc\View\Engine\Volt;
+
+
 $view->registerEngines(
     [
-        '.volt' => Phalcon\Mvc\View\Engine\Volt::class,
+        '.volt' => Volt::class,
     ]
 );
 ```
@@ -124,23 +158,38 @@ If you do not want to reuse Volt as a service, you can pass an anonymous functio
 ```php
 <?php
 
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Di\DiInterface;
+use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt;
 
-// 無名関数によってVoltをテンプレートエンジンとして登録
-$di->set(
+$container = new FactoryDefault();
+
+$container->set(
     'view',
     function () {
         $view = new View();
 
         $view->setViewsDir('../app/views/');
-
         $view->registerEngines(
             [
-                '.volt' => function ($view, $di) {
-                    $volt = new Volt($view, $di);
+                '.volt' => function (
+                    ViewBaseInterface $view, 
+                    DiInterface $container
+                ) {
+                    $volt = new Volt($view, $container);
 
-                    // Set some options here
+                    $volt->setOptions(
+                        [
+                            'always'    => true,
+                            'extension' => '.php',
+                            'separator' => '_',
+                            'stat'      => true,
+                            'path'      => appPath('storage/cache/volt/'),
+                            'prefix'    => '-prefix-',
+                        ]
+                    );
 
                     return $volt;
                 }
@@ -154,15 +203,15 @@ $di->set(
 
 The following options are available in Volt:
 
-| オプション        | Description                                                                                      | デフォルト   |
-| ------------ | ------------------------------------------------------------------------------------------------ | ------- |
-| `autoescape` | Enables globally autoescape of HTML                                                              | `false` |
-| `always`     | Tell Volt if the templates must be compiled in each request or only when they change             | `false` |
-| `extension`  | An additional extension appended to the compiled PHP file                                        | `.php`  |
-| `path`       | A writeable path where the compiled PHP templates will be placed                                 | `./`    |
-| `separator`  | Voltはコンパイルされたディレクトリに単一のファイルを作成するために、この区切り文字/を\に置き換えます                                           | `%%`    |
-| `prefix`     | コンパイルパスのテンプレートにプレフィックスを付加することができます                                                               | `null`  |
-| `stat`       | Whether Phalcon must check if exists differences between the template file and its compiled path | `true`  |
+| オプション        | デフォルト   | Description                                                                                                                  |
+| ------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `autoescape` | `false` | Enables globally autoescape of HTML                                                                                          |
+| `always`     | `false` | Tell Volt if the templates must be compiled in each request or only when they change                                         |
+| `extension`  | `.php`  | An additional extension appended to the compiled PHP file                                                                    |
+| `path`       | `./`    | A writeable path where the compiled PHP templates will be placed                                                             |
+| `separator`  | `%%`    | Volt replaces the directory separators / and \ by this separator in order to create a single file in the compiled directory |
+| `prefix`     | `null`  | Allows to prepend a prefix to the templates in the compilation path                                                          |
+| `stat`       | `true`  | Whether Phalcon must check if exists differences between the template file and its compiled path                             |
 
 The compilation path is generated according to the above options, if the developer wants total freedom defining the compilation path, an anonymous function can be used to generate it, this function receives the relative path to the template in the views directory. The following examples show how to change the compilation path dynamically:
 
@@ -1376,14 +1425,14 @@ Treat the arguments independently and unresolved:
 $compiler->addFunction(
     'repeat',
     function ($resolvedArgs, $exprArgs) use ($compiler) {
-        // 最初の引数を解決する
+        // Resolve the first argument
         $firstArgument = $compiler->expression($exprArgs[0]['expr']);
 
-        // 2番目の引数が渡されたかどうかをチェックする
+        // Checks if the second argument was passed
         if (isset($exprArgs[1])) {
             $secondArgument = $compiler->expression($exprArgs[1]['expr']);
         } else {
-            // デフォルトで '10' を使用
+            // Use '10' as default
             $secondArgument = '10';
         }
 
@@ -1414,7 +1463,7 @@ Built-in functions can be overridden adding a function with its name:
 ```php
 <?php
 
-// 組み込み関数のdumpを置き換える
+// Replace built-in function dump
 $compiler->addFunction('dump', 'print_r');
 ```
 
@@ -1425,7 +1474,7 @@ A filter has the following form in a template: `leftExpr|name(optional-args)`. A
 ```php
 <?php
 
-// これにより、PHP関数 'md5'を使用するフィルタ 'hash' が作成されます。
+// This creates a filter 'hash' that uses the PHP function 'md5'
 $compiler->addFilter('hash', 'md5');
 ```
 
@@ -1445,7 +1494,7 @@ Built-in filters can be overridden adding a function with its name:
 ```php
 <?php
 
-// 組み込みフィルタを置き換える 'capitalize'
+// Replace built-in filter 'capitalize'
 $compiler->addFilter('capitalize', 'lcfirst');
 ```
 
@@ -1488,7 +1537,7 @@ Volt extensions must be in registered in the compiler making them available in c
 ```php
 <?php
 
-// コンパイラに拡張機能を登録する
+// Register the extension in the compiler
 $compiler->addExtension(
     new PhpFunctionExtension()
 );
@@ -1552,33 +1601,33 @@ Using Volt in a stand-alone mode can be demonstrated below:
 
 use Phalcon\Mvc\View\Engine\Volt\Compiler as VoltCompiler;
 
-// コンパイラーを生成
+// Create a compiler
 $compiler = new VoltCompiler();
 
-// オプションでいくつかのオプションを追加する
+// Optionally add some options
 $compiler->setOptions(
     [
         // ...
     ]
 );
 
-// PHPコードを返すテンプレート文字列をコンパイルする
+// Compile a template string returning PHP code
 echo $compiler->compileString(
     "{{ 'hello' }}"
 );
 
-// コピー先のファイルを指定してファイル内のテンプレートをコンパイルする
+// Compile a template in a file specifying the destination file
 $compiler->compileFile(
     'layouts/main.volt',
     'cache/layouts/main.volt.php'
 );
 
-// コンパイラに渡されるオプションに基づいてファイル内のテンプレートをコンパイルする
+// Compile a template in a file based on the options passed to the compiler
 $compiler->compile(
     'layouts/main.volt'
 );
 
-// コンパイルされたテンプレートをrequire（オプション）
+// Require the compiled templated (optional)
 require $compiler->getCompiledTemplatePath();
 ```
 
