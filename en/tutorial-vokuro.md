@@ -6,7 +6,7 @@ title: 'Tutorial - Vökuró'
 ---
 # Tutorial - Vökuró
 <hr/>
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Vökuró
 [Vökuró][github_vokuro] is a sample application, showcasing a typical web application written in Phalcon. This application focuses on:
@@ -39,7 +39,6 @@ There are some prerequisites for the Vökuró to run. You will need to have PHP 
 - dom
 - json
 - iconv
-- igbinary
 - mbstring
 - memcached
 - opcache
@@ -49,10 +48,8 @@ There are some prerequisites for the Vökuró to run. You will need to have PHP 
 - psr
 - session
 - simplexml
-- tokenizer
 - xml
 - xmlwriter
-- zip
 
 Phalcon needs to be installed. Head over to the [installation](installation) page if you need help with installing Phalcon. Note that Phalcon v4 requires the PSR extension to be installed and loaded **before** Phalcon. To install PSR you can check the [php-psr][psr] GitHub page. 
 
