@@ -49,7 +49,7 @@ Finally, you will also need to ensure that you have updated the composer package
 If all the above requirements are satisfied, you can run the application using PHP's built in web server by issuing the following command on a terminal:
 
 ```bash
-php -S localhost:8080 -t public/
+php -S localhost:8080 -t public/ .htrouter.php
 ```
 
 The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
@@ -1567,7 +1567,7 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Model-View-Controller definition](https://en.wikipedia.org/wiki/Model–view–controller)
 - [Nanobox Guides](https://guides.nanobox.io/php/)
 - [Phinx - Cake PHP](https://github.com/cakephp/phinx)
-- [PSR](https://github.com/jbboehr/php-psr)
+- [PSR Extension](https://github.com/jbboehr/php-psr)
 - [Swift Mailer](https://swiftmailer.symfony.com)
 - [Phalcon ACL](acl)
 - [Phalcon Forms](forms)
