@@ -59,7 +59,7 @@ Finally, you will also need to ensure that you have updated the composer package
 If all the above requirements are satisfied, you can run the application using PHP's built in web server by issuing the following command on a terminal:
 
 ```bash
-php -S localhost:8080 -t public/
+php -S localhost:8080 -t public/ .htrouter.php
 ```
 
 The above command will start serving the site for `localhost` at the port `8080`. You can change those settings to suit your needs. Alternatively you can set up your site in Apache or nginX using a virtual host. Please consult the relevant documentation on how to set up a virtual host for these web servers.
@@ -1554,7 +1554,6 @@ class Users extends Model
 ## Conclusion
 Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
-
 ## References
 
 - [Access Control Lists definition][acl]
@@ -1563,7 +1562,7 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Model-View-Controller definition][mvc]
 - [Nanobox Guides][nanobox-guides]
 - [Phinx - Cake PHP][phinx]
-- [PSR][psr]
+- [PSR Extension][psr]
 - [Swift Mailer][swiftmailer]
 - [Phalcon ACL](acl)
 - [Phalcon Forms](forms)
