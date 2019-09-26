@@ -544,7 +544,7 @@ class SignupController extends Controller
             $messages = $user->getMessages();
 
             foreach ($messages as $message) {
-                echo $message->getMessage(), "<br/>";
+                echo $message->getMessage(), "<br />";
             }
         }
 
