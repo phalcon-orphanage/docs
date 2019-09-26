@@ -229,7 +229,7 @@ $connection->setEventsManager($eventsManager);
 $eventsManager->attach(
     'db:beforeQuery',
     function ($event, $connection) {
-        echo $connection->getSqlStatement(), '<br>' . PHP_EOL;
+        echo $connection->getSqlStatement(), '<br >' . PHP_EOL;
     }
 );
 
