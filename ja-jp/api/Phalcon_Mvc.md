@@ -7201,30 +7201,30 @@ This component allows to Phalcon\Mvc\Model returns large resultsets with the min
 $robots = Robots::find(
     [
         "type = 'virtual'",
-        "order" =&gt; "name",
+        "order" => "name",
     ]
 );
 
 foreach ($robots as robot) {
-    echo robot-&gt;name, "\n";
+    echo robot->name, "\n";
 }
 
 // Using a while
 $robots = Robots::find(
     [
         "type = 'virtual'",
-        "order" =&gt; "name",
+        "order" => "name",
     ]
 );
 
-$robots-&gt;rewind();
+$robots->rewind();
 
-while ($robots-&gt;valid()) {
-    $robot = $robots-&gt;current();
+while ($robots->valid()) {
+    $robot = $robots->current();
 
-    echo $robot-&gt;name, "\n";
+    echo $robot->name, "\n";
 
-    $robots-&gt;next();
+    $robots->next();
 }
 ```
 
