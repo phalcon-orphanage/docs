@@ -1622,7 +1622,7 @@ $app->get(
         $products = \MyModels\Products::find();
 
         foreach ($products as $product) {
-            echo $product->name, '<br>';
+            echo $product->name, '<br >';
         }
     }
 );
