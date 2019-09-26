@@ -836,7 +836,7 @@ if ($form->isValid($_POST) == false) {
     $messages = $form->getMessages();
 
     foreach ($messages as $message) {
-        echo $message, "<br>";
+        echo $message, "<br >";
     }
 }
 ```
