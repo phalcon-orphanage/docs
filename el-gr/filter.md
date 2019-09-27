@@ -10,7 +10,7 @@ title: 'Filter'
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Επισκόπηση
 
@@ -57,9 +57,8 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+> The [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container already has a [Phalcon\Filter](Phalcon_Filter#filter) object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 {: .alert .alert-info }
-
 
 ## Built-in
 
