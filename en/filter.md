@@ -7,7 +7,7 @@ title: 'Filter'
 ---
 # Filter
 <hr/>
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
@@ -51,9 +51,8 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+> The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 {: .alert .alert-info }
-
 
 ## Built-in
 
