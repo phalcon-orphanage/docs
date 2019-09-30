@@ -2,6 +2,8 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
+title: 'Micro Application'
+keywords: 'application, micro, handlers, api'
 ---
 
 # Micro Application
@@ -1621,7 +1623,7 @@ $app->get(
         $products = \MyModels\Products::find();
 
         foreach ($products as $product) {
-            echo $product->name, '<br >';
+            echo $product->name, '<br>';
         }
     }
 );
