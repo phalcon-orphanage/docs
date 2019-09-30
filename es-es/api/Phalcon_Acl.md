@@ -100,7 +100,7 @@ public function getEventsManager(): ManagerInterface;
 Devuelve el administrador de eventos interno
 
 ```php
-public function setDefaultAction( int $defaultAccess );
+public function setDefaultAction( int $defaultAccess ): void;
 ```
 
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
@@ -241,7 +241,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
-| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Adapter\AbstractAdapter, Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\RoleInterface, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Adapter\AbstractAdapter, Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
 
 Manages ACL lists in memory
 
@@ -397,7 +397,7 @@ protected rolesNames;
 ## Métodos
 
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 
 Phalcon\Acl\Adapter\Memory constructor
@@ -610,7 +610,7 @@ private name;
 ## Métodos
 
 ```php
-public function __construct( string $name, string $description = null ): void;
+public function __construct( string $name, string $description = null );
 ```
 
 Phalcon\Acl\Component constructor
@@ -724,7 +724,7 @@ private description;
 ## Métodos
 
 ```php
-public function __construct( string $name, string $description = null ): void;
+public function __construct( string $name, string $description = null );
 ```
 
 Phalcon\Acl\Role constructor
