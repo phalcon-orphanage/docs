@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Configuración'
+keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 
 # Config Component
