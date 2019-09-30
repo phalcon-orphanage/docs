@@ -2,6 +2,8 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Σχολιασμοί'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Annotations Parser
