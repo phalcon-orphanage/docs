@@ -89,7 +89,7 @@ public function __call( string $method, array $arguments = [] ): mixed | null;
 Magic method to get or set services using setters/getters
 
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 
 Phalcon\Di constructor
@@ -479,7 +479,7 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 ## Métodos
 
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 
 Phalcon\Di\FactoryDefault constructor
@@ -497,7 +497,7 @@ This is a variant of the standard Phalcon\Di. By default it automatically regist
 ## Métodos
 
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 
 Phalcon\Di\FactoryDefault\Cli constructor
@@ -546,7 +546,7 @@ public function getDI(): DiInterface;
 Returns the internal dependency injector
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 
 Devuelve el administrador de eventos interno
@@ -626,7 +626,7 @@ protected sharedInstance;
 ## Métodos
 
 ```php
-final public function __construct( mixed $definition, bool $shared = bool ): void;
+final public function __construct( mixed $definition, bool $shared = bool );
 ```
 
 Phalcon\Di\Service
