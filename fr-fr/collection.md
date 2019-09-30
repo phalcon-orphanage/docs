@@ -2,8 +2,8 @@
 layout: default
 language: 'fr-fr'
 version: '4.0'
-upgrade: ''
 title: 'Collection'
+keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
 # Collection Component
