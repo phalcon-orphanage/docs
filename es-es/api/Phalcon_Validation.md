@@ -86,7 +86,7 @@ protected values;
 ## Métodos
 
 ```php
-public function __construct( array $validators = [] ): void;
+public function __construct( array $validators = [] );
 ```
 
 Phalcon\Validation constructor
@@ -236,7 +236,7 @@ protected options;
 ## Métodos
 
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 
 Phalcon\Validation\Validator constructor
@@ -1544,7 +1544,7 @@ Executes the validation
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/equal.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Equal, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
@@ -1609,7 +1609,7 @@ Executes the validation
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/max.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Max, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
@@ -1674,7 +1674,7 @@ Executes the validation
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/size/min.zep)
 
-| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\Size\Min, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
+| Namespace | Phalcon\Validation\Validator\File\Size | | Uses | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Validator\File\AbstractFile | | Extends | AbstractFile |
 
 Checks if a value has a correct file
 
@@ -2171,7 +2171,7 @@ $validation->add(
 ## Métodos
 
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 
 Constructor

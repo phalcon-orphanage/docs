@@ -3,6 +3,7 @@ layout: default
 language: 'tr-tr'
 version: '4.0'
 title: 'Yapılandırma'
+keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 
 # Config Component

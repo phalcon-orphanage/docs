@@ -3,6 +3,7 @@ layout: default
 language: 'sr-sp'
 version: '4.0'
 title: 'Debug'
+keywords: 'debug, debugging, error handling'
 ---
 
 # Debug

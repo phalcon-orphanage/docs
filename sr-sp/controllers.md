@@ -2,6 +2,8 @@
 layout: default
 language: 'sr-sp'
 version: '4.0'
+title: 'Controllers'
+keywords: 'controllers, mvc'
 ---
 
 # Controllers

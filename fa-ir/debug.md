@@ -3,6 +3,7 @@ layout: default
 language: 'fa-ir'
 version: '4.0'
 title: 'Debug'
+keywords: 'debug, debugging, error handling'
 ---
 
 # Debug

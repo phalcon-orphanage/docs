@@ -2,6 +2,8 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Kontrolcüler'
+keywords: 'controllers, mvc'
 ---
 
 # Kontrolcüler

@@ -44,7 +44,7 @@ protected modules;
 ## Metody
 
 ```php
-public function __construct( DiInterface $container = null ): void;
+public function __construct( DiInterface $container = null );
 ```
 
 Phalcon\AbstractApplication constructor
@@ -74,12 +74,6 @@ public function getModules(): array;
 Return the modules registered in the application
 
 ```php
-abstract public function handle();
-```
-
-Handles a request
-
-```php
 public function registerModules( array $modules, bool $merge = bool ): AbstractApplication;
 ```
 
@@ -107,7 +101,7 @@ public function setDefaultModule( string $defaultModule ): AbstractApplication;
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
-public function setEventsManager( ManagerInterface $eventsManager ): AbstractApplication;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the events manager

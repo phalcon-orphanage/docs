@@ -974,17 +974,17 @@ foreach ($testRoutes as $testRoute) {
     // Handle the route
     $router->handle($testRoute);
 
-    echo 'Testing ', $testRoute, '<br >';
+    echo 'Testing ', $testRoute, '<br>';
 
     // Check if some route was matched
     if ($router->wasMatched()) {
-        echo 'Controller: ', $router->getControllerName(), '<br >';
-        echo 'Action: ', $router->getActionName(), '<br >';
+        echo 'Controller: ', $router->getControllerName(), '<br>';
+        echo 'Action: ', $router->getActionName(), '<br>';
     } else {
-        echo "The route wasn't matched by any route<br >";
+        echo "The route wasn't matched by any route<br>";
     }
 
-    echo '<br >';
+    echo '<br>';
 }
 ```
 

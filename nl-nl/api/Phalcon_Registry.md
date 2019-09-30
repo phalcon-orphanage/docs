@@ -52,7 +52,7 @@ Internally all the magic methods (and interfaces except JsonSerializable) are im
 ## Methoden
 
 ```php
-final public function __construct( array $data = null ): void;
+final public function __construct( array $data = null );
 ```
 
 Constructor

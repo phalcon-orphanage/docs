@@ -3,6 +3,7 @@ layout: default
 language: 'th-th'
 version: '4.0'
 title: 'Coding Standard'
+keywords: 'coding standard, zephir'
 ---
 
 # Phalcon Coding Standard

@@ -2,6 +2,8 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Devtools'
+keywords: 'devtools, developer tools, models, controllers'
 ---
 
 # Phalcon Devtools

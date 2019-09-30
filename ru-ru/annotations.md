@@ -2,6 +2,8 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Парсер аннотаций

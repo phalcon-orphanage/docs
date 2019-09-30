@@ -2,6 +2,8 @@
 layout: default
 language: 'th-th'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Annotations Parser
