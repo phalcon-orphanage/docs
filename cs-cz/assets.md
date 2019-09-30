@@ -4,6 +4,7 @@ language: 'cs-cz'
 version: '4.0'
 upgrade: '#assets'
 title: 'Assets'
+keywords: 'assets, js, css'
 ---
 
 # Správa assetů
