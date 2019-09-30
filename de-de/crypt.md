@@ -3,6 +3,7 @@ layout: default
 language: 'de-de'
 version: '4.0'
 title: 'Crypt'
+keywords: 'crypt, encryption, decryption, ciphers'
 ---
 
 # Crypt Component
