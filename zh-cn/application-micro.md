@@ -2,6 +2,8 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: '微型应用'
+keywords: 'application, micro, handlers, api'
 ---
 
 # 微型应用
@@ -1624,7 +1626,7 @@ $app->get(
         $products = \MyModels\Products::find();
 
         foreach ($products as $product) {
-            echo $product->name, '<br >';
+            echo $product->name, '<br>';
         }
     }
 );
