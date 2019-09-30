@@ -2,6 +2,8 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
+title: 'Controllers'
+keywords: 'controllers, mvc'
 ---
 
 # Controllers
