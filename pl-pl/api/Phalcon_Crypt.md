@@ -108,7 +108,7 @@ protected useSigning = true;
 ## Metody
 
 ```php
-public function __construct( string $cipher = string, bool $useSigning = bool ): void;
+public function __construct( string $cipher = string, bool $useSigning = bool );
 ```
 
 Phalcon\Crypt constructor.
