@@ -4,6 +4,7 @@ language: 'tr-tr'
 version: '4.0'
 upgrade: '#assets'
 title: 'Varlıklar'
+keywords: 'assets, js, css'
 ---
 
 # Assets Management
