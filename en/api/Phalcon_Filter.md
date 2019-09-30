@@ -83,7 +83,7 @@ protected services;
 
 ## Methods
 ```php
-public function __construct( array $mapper = [] ): void;
+public function __construct( array $mapper = [] );
 ```
 Key value pairs with name as the key and a callable as the value for
 the service object
@@ -140,7 +140,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterfactory.zep)
 
 | Namespace  | Phalcon\Filter |
-| Uses       | Phalcon\Filter |
+| Uses       | Phalcon\Filter, Phalcon\Filter\FilterInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -152,7 +152,7 @@ file that was distributed with this source code.
 
 ## Methods
 ```php
-public function newInstance(): LocatorInterface;
+public function newInstance(): FilterInterface;
 ```
 Returns a Locator object with all the helpers defined in anonynous
 functions

@@ -250,7 +250,7 @@ $config = new \Phalcon\Config\Adapter\Ini(
 
 ## Methods
 ```php
-public function __construct( string $filePath, mixed $mode = null ): void;
+public function __construct( string $filePath, mixed $mode = null );
 ```
 Ini constructor.
 
@@ -300,7 +300,7 @@ echo $config->models->metadata;
 
 ## Methods
 ```php
-public function __construct( string $filePath ): void;
+public function __construct( string $filePath );
 ```
 Phalcon\Config\Adapter\Json constructor
 
@@ -352,7 +352,7 @@ echo $config->database->username;
 
 ## Methods
 ```php
-public function __construct( string $filePath ): void;
+public function __construct( string $filePath );
 ```
 Phalcon\Config\Adapter\Php constructor
 
@@ -406,7 +406,7 @@ echo $config->models->metadata;
 
 ## Methods
 ```php
-public function __construct( string $filePath, array $callbacks = null ): void;
+public function __construct( string $filePath, array $callbacks = null );
 ```
 Phalcon\Config\Adapter\Yaml constructor
 

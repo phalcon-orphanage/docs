@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Use Case'
+keywords: 'use case, examples'
 ---
 # Use Case
 <hr/>

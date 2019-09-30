@@ -296,7 +296,7 @@ Sets the default task suffix
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router.zep)
 
 | Namespace  | Phalcon\Cli |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Cli\Router\Route, Phalcon\Cli\Router\Exception, Phalcon\Cli\Router\RouteInterface |
 | Extends    | AbstractInjectionAware |
 
 Phalcon\Cli\Router is the standard framework router. Routing is the process
@@ -365,7 +365,7 @@ protected wasMatched = false;
 
 ## Methods
 ```php
-public function __construct( bool $defaultRoutes = bool ): void;
+public function __construct( bool $defaultRoutes = bool );
 ```
 Phalcon\Cli\Router constructor
 
@@ -550,7 +550,7 @@ protected static uniqueId = 0;
 
 ## Methods
 ```php
-public function __construct( string $pattern, mixed $paths = null ): void;
+public function __construct( string $pattern, mixed $paths = null );
 ```
 
 
@@ -928,7 +928,7 @@ class HelloTask extends \Phalcon\Cli\Task
 
 ## Methods
 ```php
-final public function __construct(): void;
+final public function __construct();
 ```
 Phalcon\Cli\Task constructor
 

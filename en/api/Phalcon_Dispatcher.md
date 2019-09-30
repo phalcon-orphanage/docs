@@ -307,7 +307,7 @@ Sets the default suffix for the handler
 
 
 ```php
-public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): Dispatcher;
+public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): DispatcherInterface;
 ```
 Enable model binding during dispatch
 

@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 upgrade: '#flash'
 title: 'Flash Messages'
+keywords: 'flash, flash messages, flash direct, flash session, templates'
 ---
 # Flash Messages
 <hr />

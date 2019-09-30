@@ -1248,7 +1248,7 @@ protected pdo;
 
 ## Methods
 ```php
-public function __construct( array $descriptor ): void;
+public function __construct( array $descriptor );
 ```
 Constructor for Phalcon\Db\Adapter\Pdo
 
@@ -1639,7 +1639,7 @@ protected type = pgsql;
 
 ## Methods
 ```php
-public function __construct( array $descriptor ): void;
+public function __construct( array $descriptor );
 ```
 Constructor for Phalcon\Db\Adapter\Pdo\Postgresql
 
@@ -1769,7 +1769,7 @@ protected type = sqlite;
 
 ## Methods
 ```php
-public function __construct( array $descriptor ): void;
+public function __construct( array $descriptor );
 ```
 Constructor for Phalcon\Db\Adapter\Pdo\Sqlite
 
@@ -2063,7 +2063,7 @@ protected unsigned = false;
 
 ## Methods
 ```php
-public function __construct( string $name, array $definition ): void;
+public function __construct( string $name, array $definition );
 ```
 Phalcon\Db\Column constructor
 
@@ -3500,7 +3500,7 @@ protected type;
 
 ## Methods
 ```php
-public function __construct( string $name, array $columns, string $type = string ): void;
+public function __construct( string $name, array $columns, string $type = string );
 ```
 Phalcon\Db\Index constructor
 
@@ -3820,7 +3820,7 @@ protected value;
 
 ## Methods
 ```php
-public function __construct( mixed $value ): void;
+public function __construct( mixed $value );
 ```
 Phalcon\Db\RawValue constructor
 
@@ -3927,7 +3927,7 @@ protected onUpdate;
 
 ## Methods
 ```php
-public function __construct( string $name, array $definition ): void;
+public function __construct( string $name, array $definition );
 ```
 Phalcon\Db\Reference constructor
 
@@ -4093,7 +4093,7 @@ protected sqlStatement;
 
 ## Methods
 ```php
-public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null ): void;
+public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
 ```
 Phalcon\Db\Result\Pdo constructor
 

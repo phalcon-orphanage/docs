@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Views'
+keywords: 'mvc, view, view component, simple view, responses'
 ---
 # Views
 <hr />

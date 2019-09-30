@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 upgrade: ''
 title: 'Helper'
+keywords: 'helpers, array, string, file system, number, utilities'
 ---
 # Helper Component
 <hr/>

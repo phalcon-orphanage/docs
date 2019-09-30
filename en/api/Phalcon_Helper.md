@@ -170,12 +170,9 @@ values as another
 
 
 ```php
-final public static function toObject( array $collection ): \stdClass;
+final public static function toObject( array $collection );
 ```
-Converts an array to an object
-
-
-@return stdClass
+Returns the passed array as an object
 
 
 ```php

@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Reproducible Tests'
+keywords: 'tests, testing, reproducible tests'
 ---
 # Reproducible Tests
 <hr/>

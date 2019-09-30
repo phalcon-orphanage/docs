@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Web Server Setup'
+keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
 ---
 # Webserver Setup
 <hr/>

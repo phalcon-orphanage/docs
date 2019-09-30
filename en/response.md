@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Response'
+keywords: 'http, http response, response'
 ---
 # Response Component
 <hr />

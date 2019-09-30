@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Dependency Injection'
+keywords: 'dependency injection, di, ioc'
 ---
 # Dependency Injection / Service Location
 <hr />

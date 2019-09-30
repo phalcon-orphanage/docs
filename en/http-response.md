@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Response (PSR-7)'
+keywords: 'psr-7, http, http response'
 ---
 # HTTP Response (PSR-7)
 <hr/>

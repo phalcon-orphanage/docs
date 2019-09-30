@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Namespaces'
+keywords: 'namespaces, namespaced classes'
 ---
 # Namespaces
 <hr/>

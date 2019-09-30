@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 upgrade: '#filter'
 title: 'Filter'
+keywords: 'filter, sanitize'
 ---
 # Filter
 <hr/>

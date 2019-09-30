@@ -91,7 +91,7 @@ protected version;
 
 ## Methods
 ```php
-public function __construct( string $type, string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
+public function __construct( string $type, string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
 ```
 Phalcon\Assets\Asset constructor
 
@@ -251,7 +251,7 @@ Represents CSS assets
 
 ## Methods
 ```php
-public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
+public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
 ```
 Phalcon\Assets\Asset\Css constructor
 
@@ -271,7 +271,7 @@ Represents Javascript assets
 
 ## Methods
 ```php
-public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool ): void;
+public function __construct( string $path, bool $local = bool, bool $filter = bool, array $attributes = [], string $version = null, bool $autoVersion = bool );
 ```
 Phalcon\Assets\Asset\Js constructor
 
@@ -426,7 +426,7 @@ protected version;
 
 ## Methods
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 Phalcon\Assets\Collection constructor
 
@@ -813,7 +813,7 @@ protected type;
 
 ## Methods
 ```php
-public function __construct( string $type, string $content, bool $filter = bool, array $attributes = [] ): void;
+public function __construct( string $type, string $content, bool $filter = bool, array $attributes = [] );
 ```
 Phalcon\Assets\Inline constructor
 
@@ -877,7 +877,7 @@ Represents an inlined CSS
 
 ## Methods
 ```php
-public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null );
 ```
 Phalcon\Assets\Inline\Css constructor
 
@@ -897,7 +897,7 @@ Represents an inline JavaScript
 
 ## Methods
 ```php
-public function __construct( string $content, bool $filter = bool, mixed $attributes = null ): void;
+public function __construct( string $content, bool $filter = bool, mixed $attributes = null );
 ```
 Phalcon\Assets\Inline\Js constructor
 
@@ -937,7 +937,7 @@ protected implicitOutput = true;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 Phalcon\Assets\Manager constructor
 

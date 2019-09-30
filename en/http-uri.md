@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Uri (PSR-7)'
+keywords: 'psr-7, http, http uri'
 ---
 # HTTP Uri (PSR-7)
 <hr/>

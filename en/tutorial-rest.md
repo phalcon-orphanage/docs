@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Tutorial - REST'
+keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
 # Tutorial - REST
 <hr/>

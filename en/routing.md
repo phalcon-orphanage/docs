@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Routing'
+keywords: 'routing, routes'
 ---
 # Routing Component
 <hr />

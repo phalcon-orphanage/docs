@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Tutorial - Basic'
+keywords: 'tutorial, basic tutorial, step by step, mvc'
 ---
 # Tutorial - Basic
 <hr/>

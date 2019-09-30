@@ -92,7 +92,7 @@ Phalcon\Session\Adapter\Libmemcached
 
 ## Methods
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 Constructor
 
@@ -155,7 +155,7 @@ protected ttl = 8600;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 Constructor
 
@@ -217,7 +217,7 @@ Phalcon\Session\Adapter\Redis
 
 ## Methods
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 Constructor
 
@@ -263,7 +263,7 @@ private path = ;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 //
 
@@ -335,7 +335,7 @@ private session;
 
 ## Methods
 ```php
-public function __construct( string $name ): void;
+public function __construct( string $name );
 ```
 Phalcon\Session\Bag constructor
 
@@ -365,7 +365,7 @@ Removes a property from the internal bag
 
 
 ```php
-public function set( string $element, mixed $value );
+public function set( string $element, mixed $value ): void;
 ```
 Sets a value in the session bag
 
@@ -431,7 +431,7 @@ private uniqueId = ;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 Manager constructor.
 
@@ -515,13 +515,7 @@ Regenerates the session id using the adapter.
 
 
 ```php
-public function registerAdapter( SessionHandlerInterface $adapter ): bool;
-```
-Registers a adapter with the session
-
-
-```php
-public function remove( string $key );
+public function remove( string $key ): void;
 ```
 Removes a session variable from an application context
 
@@ -598,7 +592,7 @@ const SESSION_NONE = 1;
 
 ## Methods
 ```php
-public function __get( string $key ): void;
+public function __get( string $key ): mixed;
 ```
 Alias: Gets a session variable from an application context
 
@@ -673,12 +667,6 @@ Check whether a session variable is set in an application context
 public function regenerateId( mixed $deleteOldSession = bool ): ManagerInterface;
 ```
 Regenerates the session id using the adapter.
-
-
-```php
-public function registerAdapter( SessionHandlerInterface $adapter ): bool;
-```
-Registers a adapter with the session
 
 
 ```php

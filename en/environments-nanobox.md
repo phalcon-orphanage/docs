@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Environments - Nanobox'
+keywords: 'environment, nanobox, docker'
 ---
 # Environments
 <hr/>

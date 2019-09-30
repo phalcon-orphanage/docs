@@ -3,8 +3,9 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Domain'
+keywords: 'domain, adr, payload'
 ---
-# Domain Component
+# Domain
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 

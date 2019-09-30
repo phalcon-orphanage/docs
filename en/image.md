@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Image'
+keywords: 'image, gd, imagick'
 ---
 # Image
 <hr />

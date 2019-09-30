@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Security'
+keywords: 'security, hashing, passwords'
 ---
 # Security Component
 <hr />

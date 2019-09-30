@@ -2,6 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Events Manager'
+keywords: 'events, events manager'
 ---
 # Events Manager
 <hr />

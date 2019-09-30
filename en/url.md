@@ -3,6 +3,8 @@ layout: default
 language: 'en'
 upgrade: '#url'
 version: '4.0'
+title: 'URL'
+keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
 # Url Component
 <hr />

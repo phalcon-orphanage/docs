@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Tutorial - Vökuró'
+keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 ---
 # Tutorial - Vökuró
 <hr/>

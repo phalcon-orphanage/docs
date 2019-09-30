@@ -1413,9 +1413,6 @@ Create a request from the supplied superglobal values.
 If any argument is not supplied, the corresponding superglobal value will
 be used.
 
-The ServerRequest created is then passed to the fromServer() method in
-order to marshal the request URI and headers.
-
 
 @return ServerRequest
 @see fromServer()
@@ -1453,11 +1450,6 @@ protected handle;
  * @var resource | string
  */
 protected stream;
-
-/**
- * @var bool
- */
-protected warning = false;
 
 ```
 
@@ -1704,7 +1696,7 @@ the entire stream to a string.
 
 ## Methods
 ```php
-public function __construct( mixed $mode = string ): void;
+public function __construct( mixed $mode = string );
 ```
 Constructor
 
@@ -1728,7 +1720,7 @@ the entire stream to a string.
 
 ## Methods
 ```php
-public function __construct( mixed $mode = string ): void;
+public function __construct( mixed $mode = string );
 ```
 Constructor
 
@@ -3350,7 +3342,7 @@ Gets active server name
 
 
 ```php
-final public function getURI( bool $onlyPath = bool ): string;
+public function getURI( bool $onlyPath = bool ): string;
 ```
 Gets HTTP URI which request has been made to
 

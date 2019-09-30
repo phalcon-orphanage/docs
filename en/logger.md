@@ -4,6 +4,7 @@ language: 'en'
 version: '4.0'
 upgrade: '#logger'
 title: 'Logger'
+keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 # Logger
 <hr/>

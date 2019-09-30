@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Request'
+keywords: 'http, http request, request'
 ---
 # Request Component
 <hr />

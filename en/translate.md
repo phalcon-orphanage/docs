@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Translate'
+keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---
 # Translation Component
 <hr />
@@ -113,12 +114,12 @@ To achieve this, we can implement a new component as a Plugin and register it in
 
 namespace MyApp;
 
-use Phalcon\Plugin;
+use Phalcon\Di\Injectable;
 use Phalcon\Translate\Adapter\NativeArray;
 use Phalcon\Translate\InterpolatorFactory;
 use Phalcon\Translate\TranslateFactory;
 
-class Locale extends Plugin
+class Locale extends Injectable
 {
     /**
      * @return NativeArray

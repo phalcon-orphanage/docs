@@ -66,7 +66,7 @@ protected type;
 
 ## Methods
 ```php
-public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool ): void;
+public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool );
 ```
 Phalcon\Events\Event constructor
 
@@ -201,7 +201,7 @@ dispatch events
 
 ## Methods
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Returns the internal event manager
 

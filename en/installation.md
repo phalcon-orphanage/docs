@@ -2,7 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
-category: 'installation'
+title: 'Installation'
+keywords: 'installation, installing Phalcon'
 ---
 # Installation
 <hr/>

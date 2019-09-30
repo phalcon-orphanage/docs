@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Volt: Template Engine'
+keywords: 'volt, template engine, php generation, view data'
 ---
 # Volt: Template Engine
 <hr />

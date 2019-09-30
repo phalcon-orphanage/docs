@@ -425,6 +425,7 @@ $image->resize(200, 200)->rotate(90)->crop(100, 100);
 
 if ($image->save()) {
     echo "success";
+
 }
 ```
 
@@ -459,7 +460,7 @@ Checks if Imagick is enabled
 
 
 ```php
-public function getInternalImInstance(): \Imagick;
+public function getInternalImInstance(): ImagicNative;
 ```
 Get instance
 
