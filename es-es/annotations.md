@@ -2,6 +2,8 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Anotaciones'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Analizador de anotaciones
