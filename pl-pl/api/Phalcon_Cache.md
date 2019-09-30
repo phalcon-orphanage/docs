@@ -40,7 +40,7 @@ protected adapter;
 ## Metody
 
 ```php
-public function __construct( AdapterInterface $adapter ): void;
+public function __construct( AdapterInterface $adapter );
 ```
 
 Constructor.
@@ -199,7 +199,7 @@ Stream adapter
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapterfactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AbstractAdapter, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
 
 Factory to create Cache adapters
 
@@ -222,7 +222,7 @@ public function __construct( SerializerFactory $factory = null, array $services 
 AdapterFactory constructor.
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
 Create a new instance of the adapter
@@ -237,7 +237,7 @@ Returns the available adapters
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cachefactory.zep)
 
-| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache, Phalcon\Cache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Helper\Arr |
+| Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\AdapterFactory, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Helper\Arr |
 
 Creates a new Cache class
 
