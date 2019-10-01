@@ -107,12 +107,12 @@ Returns the body as a `StreamInterface` object. This method is useful also when 
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response($stream);
 
-echo $response->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $response->getBody(); // '/assets/stream/mit.txt'
 
 
 $response->getBody()->write('additional content goes here');
@@ -126,7 +126,7 @@ To get all the contents of the stream:
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response($stream);
@@ -147,7 +147,7 @@ Returns an array of all the header values of the passed case insensitive header 
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -172,7 +172,7 @@ Returns all of the header values of the given case-insensitive header name as a 
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -199,7 +199,7 @@ Returns an array with all the message header values. The keys represent the head
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -235,7 +235,7 @@ Returns the protocol version as as string (default `1.1`)
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -261,7 +261,7 @@ Returns the response reason phrase associated with the status code. Because a re
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -286,7 +286,7 @@ Returns the response status code. The status code is a 3-digit integer result co
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -311,7 +311,7 @@ Returns the Uri as a `UriInterface` object
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -339,7 +339,7 @@ Checks if a header exists by the given case-insensitive name. Returns `true` if 
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $response = new Response(
@@ -369,7 +369,7 @@ Returns an instance with an additional header appended with the given value. Exi
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $jwtToken = 'abc.def.ghi';
@@ -418,7 +418,7 @@ Returns an instance with the specified message body which implements `StreamInte
 use Phalcon\Http\Message\Response;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $jwtToken = 'abc.def.ghi';
@@ -433,7 +433,7 @@ $response = new Response(
 
 $clone = $response->withBody($stream);
 
-echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $clone->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `withHeader()`

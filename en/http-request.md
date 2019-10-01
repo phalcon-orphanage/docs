@@ -98,7 +98,7 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
@@ -111,7 +111,7 @@ $request = new Request(
     ]
 );
 
-echo $request->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $request->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `getHeader()`
@@ -387,7 +387,7 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
@@ -402,7 +402,7 @@ $request = new Request(
 
 $clone = $request->withBody($stream);
 
-echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $clone->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `withHeader()`
