@@ -3,6 +3,7 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 title: 'HTTP Uploaded File (PSR-7)'
+keywords: 'psr-7, http, http uploaded file'
 ---
 
 # HTTP Uploaded File (PSR-7)
@@ -148,7 +149,7 @@ If the `moveTo()` method has been called previously, a [Phalcon\Http\Message\Exc
 use Phalcon\Http\Message\Stream;
 use Phalcon\Http\Message\UploadedFile;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(
@@ -158,7 +159,7 @@ $file = new UploadedFile(
     'phalcon.txt'
 );
 
-echo $file->getStream(); // '/assets/stream/bill-of-rights.txt'
+echo $file->getStream(); // '/assets/stream/mit.txt'
 ```
 
 ## `moveTo()`
@@ -175,7 +176,7 @@ The method performs necessary checks internally so that permissions are properly
 use Phalcon\Http\Message\Stream;
 use Phalcon\Http\Message\UploadedFile;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(
