@@ -33,7 +33,7 @@ In order to instantiate a new [Phalcon\Cache][cache-cache] component, you will n
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();

@@ -182,7 +182,7 @@ For a more detailed explanation on how the new Cache component works, please vis
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
@@ -204,7 +204,7 @@ Registering it in the DI
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $container = new Di();
