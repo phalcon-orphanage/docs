@@ -684,9 +684,14 @@ $criteria->limit(10, null);
 
 ### Mvc\Model\Manager
 - `Load` no longer reuses already initialized models
+- Removed `Phalcon\Model\Manager::registerNamespaceAlias()`
+- Removed `Phalcon\Model\Manager::getNamespaceAlias()`
+- Removed `Phalcon\Model\Manager::getNamespaceAliases()`
 
 ### Mvc\Model\ManagerInterface
-- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`, `registerNamespaceAlias`, `getNamespaceAlias`
+- Added `isVisibleModelProperty`, `keepSnapshots`, `isKeepingSnapshots`, `useDynamicUpdate`, `isUsingDynamicUpdate`, `addHasManyToMany`, `existsHasManyToMany`, `getRelationRecords`, `getHasManyToMany`
+- Removed `Phalcon\Model\ManagerInterface::getNamespaceAlias()`
+- Removed `Phalcon\Model\ManagerInterface::registerNamespaceAlias()`
 
 ### Mvc\Model\MessageInterface
 - Added `setModel`, `getModel`, `setCode`, `getCode`
