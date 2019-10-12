@@ -1724,6 +1724,102 @@ You can finally include the compiled template if needed:
 require $compiler->getCompiledTemplatePath();
 ```
 
+## Compiling
+Every time you deploy your application to production, you will need to delete the pre-compiled `.volt` files, so that any changes you made in your templates are displayed to your users. A very easy way to do this is to clean the `volt/` folder using a CLI script or manually delete all files.
+
+If we assume that your `volt` path is located at: `/app/storage/cache/volt/` then the following script will allow you to clear that folder anytime you run it, usually after a deployment. 
+
+```php
+<?php
+
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use function in_array;
+use function substr;
+
+$fileList    = [];
+$whitelist   = ['.', '..', '.gitignore'];
+$path        = appPath('storage/cache');
+$dirIterator = new RecursiveDirectoryIterator($path);
+$iterator    = new RecursiveIteratorIterator(
+    $dirIterator,
+    RecursiveIteratorIterator::CHILD_FIRST
+);
+
+foreach ($iterator as $file) {
+    if (true !== $file->isDir() && 
+        true !== in_array($file->getFilename(), $whitelist)) {
+        $fileList[] = $file->getPathname();
+    }
+}
+
+echo sprintf('Found %s files', count($fileList)) . PHP_EOL;
+foreach ($fileList as $file) {
+    echo '.';
+    unlink($file);
+}
+
+echo PHP_EOL . 'Folder cleared' . PHP_EOL;
+```
+
+In the example above, we use PHP's [RecursiveDirectoryIterator][recursivedirectoryiterator] and [RecursiveIteratorIterator][recursiveiteratoriterator] to iterate through a folder recursively and create a list of files in the `$fileList` array. After that, we iterate through that array and [unlink][unlink] each file in turn.
+
+As mentioned above, based on the options provided during setup, Volt can check whether the compiled files exist and generate them accordingly. Additionally, Volt can check if the files have been changed and if yes, generate them.
+
+These checks are performed when the `always` and `stat` options are set to `true`. For any project, checking the file system multiple times per request (one time per Volt file), is consuming resources. Additionally, you need to ensure that the folder used by Volt to compile the templates is writeable by your web server.
+
+You can create a script or a CLI task (using the [CLI Application](application-cli)) to compile and save all the Volt files when you deploy code. This way, you will be able to instruct Volt not to compile or stat each file in turn, increasing performance. Additionally, since these files are compiled during the deployment process, the volt folder will not need to be writeable, increasing security. Since the compiled Volt templates are phtml fragments, not allowing the web server to generate executable code is always a good idea.
+
+Remember this script will be executed at the command line, but in order to compile our templates we will need to bootstrap our web application. In the example below, we will need to get the DI container that has all the services registered for our web application. Then we can use the Volt compiler to compile all the templates to the relevant folder.
+
+In the example below, we assume that we have a `Bootstrap\Web` class that is responsible for setting up all of our services for the Web application. The class returns the DI container using `getContainer()`. Your implementation might vary.
+
+```php
+<?php
+
+use MyApp\Library\Bootstrap\Web;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use function in_array;
+use function substr;
+
+if (php_sapi_name() !== "cli") {
+    throw new Exception(
+        'You need to run this script from the command line'
+    );
+}
+
+$bootstrap = new Web();
+$container = $bootstrap->getContainer();
+$view      = $container->getShared('view'); 
+$viewPath  = $view->getViewsDir();
+$volt      = $container->getShared('volt');
+
+$fileList    = [];
+$whitelist   = ['.', '..', '.gitignore'];
+$path        = $viewPath;
+$dirIterator = new RecursiveDirectoryIterator($path);
+$iterator    = new RecursiveIteratorIterator(
+    $dirIterator,
+    RecursiveIteratorIterator::CHILD_FIRST
+);
+
+foreach ($iterator as $file) {
+    if (true !== $file->isDir() && 
+        true !== in_array($file->getFilename(), $whitelist)) {
+        $fileList[] = $file->getPathname();
+    }
+}
+
+echo sprintf('Found %s files', count($fileList)) . PHP_EOL;
+foreach ($fileList as $file) {
+    echo '.';
+    $volt->getCompiler()->compile($file);
+}
+
+echo PHP_EOL . 'Templates compiled' . PHP_EOL;
+```
+
 ## External Resources
 * A bundle for Sublime/Textmate is available [here](https://github.com/phalcon/volt-sublime-textmate)
 * [Phosphorum](https://forum.phalcon.io), the Phalcon's forum, also uses Volt, [GitHub](https://github.com/phalcon/forum)
@@ -1754,3 +1850,6 @@ require $compiler->getCompiledTemplatePath();
 [vue]: https://vuejs.org
 [vokuro]: tutorial-vokuro
 [control_structures]: https://php.net/control-structures.alternative-syntax
+[recursivedirectoryiterator]: https://www.php.net/manual/en/class.recursivedirectoryiterator.php
+[recursiveiteratoriterator]: https://www.php.net/manual/en/class.recursiveiteratoriterator.php
+[unlink]: https://www.php.net/manual/en/function.unlink.php
