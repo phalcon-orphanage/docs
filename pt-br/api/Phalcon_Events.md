@@ -16,11 +16,20 @@ title: 'Phalcon\Events'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
-| Namespace | Phalcon\Events | | Implements | EventInterface |
+| Namespace | Phalcon\Events | | Uses | Phalcon\Events\Exception | | Implements | EventInterface |
 
 Phalcon\Events\Event
 
 This class offers contextual information of a fired event in the EventsManager
+
+```php
+Phalcon\Events\Event;
+
+$event = new Event("db:afterQuery", $this, ["data" => "mydata"], true);
+if ($event->isCancelable()) {
+    $event->stop();
+}
+```
 
 ## Properties
 
@@ -65,7 +74,7 @@ protected type;
 ## Methods
 
 ```php
-public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool );
+public function __construct( string $type, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Phalcon\Events\Event constructor

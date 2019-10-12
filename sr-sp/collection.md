@@ -133,10 +133,26 @@ echo $collection->get('year', 1776, true); // 1776
 ```
 
 ```php
-public function get(string $element, mixed $defaultValue = null, bool $insensitive = true):  mixed
+public function get(
+    string $element, 
+    mixed $defaultValue = null, 
+    bool $insensitive = true, 
+    string $cast = null
+):  mixed
 ```
 
-Using `get()` offers two extra parameters. When `$defaultValue` is defined in the call, if the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive.
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element in a case sensitive manner. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+
+- `array`
+- `bool`
+- `boolean`
+- `double`
+- `float`
+- `int`
+- `integer`
+- `null`
+- `object`
+- `string`
 
 ## Has
 

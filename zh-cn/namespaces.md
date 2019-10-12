@@ -2,80 +2,79 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: 'Namespaces'
+keywords: 'namespaces, namespaced classes'
 ---
 
 # Namespaces
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
-## Working with Namespaces
+## 概述
 
-[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.
+[Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
 
-## Setting up the framework
+## Setup
 
-Using namespaces has some implications when loading the appropriate controller. To adjust the framework behavior to namespaces is necessary to perform one or all of the following tasks:
-
-Use an autoload strategy that takes into account the namespaces, for example with [Phalcon\Loader](api/Phalcon_Loader):
+If you decided to use namespaces for your application, you will need to instruct your autoloader on where your namespaces reside. This is the most common way to distinguish between namespaces in your application. If you chose to use the [Phalcon\Loader](loader) component, then you will need to register your namespaces accordingly:
 
 ```php
 <?php
 
 $loader->registerNamespaces(
     [
-       'Store\Admin\Controllers' => '../bundles/admin/controllers/',
-       'Store\Admin\Models'      => '../bundles/admin/models/',
+       'MyApp\Admin\Controllers' => '/app/web/admin/controllers/',
+       'MyApp\Admin\Models'      => '/app/web/admin/models/',
     ]
 );
 ```
 
-Specify it in the routes as a separate parameter in the route's paths:
+You can also specify the namespace when defining your routes, using the [Router](routing) component:
 
 ```php
 <?php
 
 $router->add(
-    '/admin/users/my-profile',
+    '/admin/invoices/list',
     [
-        'namespace'  => 'Store\Admin',
-        'controller' => 'Users',
-        'action'     => 'profile',
+        'namespace'  => 'MyApp\Admin',
+        'controller' => 'Invoices',
+        'action'     => 'list',
     ]
 );
 ```
 
-Passing it as part of the route:
+or passing it as part of the route as a parameter
 
 ```php
 <?php
 
 $router->add(
-    '/:namespace/admin/users/my-profile',
+    '/:namespace/invoices/list',
     [
         'namespace'  => 1,
-        'controller' => 'Users',
-        'action'     => 'profile',
+        'controller' => 'Invoices',
+        'action'     => 'list',
     ]
 );
 ```
 
-If you are only working with the same namespace for every controller in your application, then you can define a default namespace in the [Dispatcher](dispatcher), by doing this, you don't need to specify a full class name in the router path:
+Finally, if you are only working with the same namespace for every controller, you can define a default namespace in your [Dispatcher](dispatcher). Doing so, you will not need to specify the full class in the router path:
 
 ```php
 <?php
 
 use Phalcon\Mvc\Dispatcher;
 
-// Registering a dispatcher
 $di->set(
     'dispatcher',
     function () {
         $dispatcher = new Dispatcher();
 
         $dispatcher->setDefaultNamespace(
-            'Store\Admin\Controllers'
+            'MyApp\Admin\Controllers'
         );
 
         return $dispatcher;
@@ -83,43 +82,43 @@ $di->set(
 );
 ```
 
-## Controllers in Namespaces
+## Controllers
 
-The following example shows how to implement a controller that use namespaces:
+The following example shows how to implement a controller that uses namespaces:
 
 ```php
 <?php
 
-namespace Store\Admin\Controllers;
+namespace MyApp\Admin\Controllers;
 
 use Phalcon\Mvc\Controller;
 
-class UsersController extends Controller
+class InvoicesController extends Controller
 {
     public function indexAction()
     {
 
     }
 
-    public function profileAction()
+    public function listAction()
     {
 
     }
 }
 ```
 
-## Models in Namespaces
+## Models
 
-Take the following into consideration when using models in namespaces:
+The following example shows a model that is namespaced:
 
 ```php
 <?php
 
-namespace Store\Models;
+namespace MyApp\Admin\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
 
 }
@@ -130,20 +129,20 @@ If models have relationships they must include the namespace too:
 ```php
 <?php
 
-namespace Store\Models;
+namespace MyApp\Admin\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            Parts::class,
-            'robots_id',
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
             [
-                'alias' => 'parts',
+                'alias' => 'customers',
             ]
         );
     }
@@ -155,5 +154,7 @@ In PHQL you must write the statements including namespaces:
 ```php
 <?php
 
-$phql = 'SELECT r.* FROM Store\Models\Robots r JOIN Store\Models\Parts p';
+$phql = 'SELECT i.* '
+      . 'FROM MyApp\Admin\Models\Invoices i '
+      . 'JOIN MyApp\Admin\Models\Customers c';
 ```
