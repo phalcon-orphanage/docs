@@ -143,10 +143,23 @@ var_dump(
 final public static function get(
     array $collection, 
     mixed $index, 
-    mixed $defaultValue
+    mixed $defaultValue,
+    string $cast = null
 ): mixed
 ```
-Retrieves an element from an array. If the element exists its value is returned. If not, the `defaultValue` is returned.
+Retrieves an element from an array. If the element exists its value is returned. If not, the `defaultValue` is returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+
+- `array`
+- `bool`
+- `boolean`
+- `double`
+- `float`
+- `int`
+- `integer`
+- `null`
+- `object`
+- `string`
+
 
 ```php
 <?php
@@ -162,8 +175,9 @@ $data = [
     'year'   => 1776,
 ];
 
-echo Arr::get($data, 'year');          // 1776
-echo Arr::get($data, 'unknown', 1776); // 1776
+echo Arr::get($data, 'year');                    // 1776
+echo Arr::get($data, 'unknown', 1776);           // 1776
+echo Arr::get($data, 'unknown', 1776, 'string'); // '1776'
 ```
 
 ### `group`
