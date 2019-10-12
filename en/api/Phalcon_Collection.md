@@ -17,7 +17,12 @@ title: 'Phalcon\Collection'
 | Uses       | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Serializable, Traversable |
 | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
-`Phalcon\Collection` is a supercharged object oriented array. It implements [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php), [Countable](https://www.php.net/manual/en/class.countable.php), [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php), [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php), [Serializable](https://www.php.net/manual/en/class.serializable.php)
+`Phalcon\Collection` is a supercharged object oriented array. It implements:
+- [ArrayAccess](https://www.php.net/manual/en/class.arrayaccess.php)
+- [Countable](https://www.php.net/manual/en/class.countable.php)
+- [IteratorAggregate](https://www.php.net/manual/en/class.iteratoraggregate.php)
+- [JsonSerializable](https://www.php.net/manual/en/class.jsonserializable.php)
+- [Serializable](https://www.php.net/manual/en/class.serializable.php)
 
 It can be used in any part of the application that needs collection of data
 Such implementations are for instance accessing globals `$_GET`, `$_POST`
@@ -88,7 +93,7 @@ See [count](https://php.net/manual/en/countable.count.php)
 
 
 ```php
-public function get( string $element, mixed $defaultValue = null ): mixed;
+public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 Get the element from the collection
 

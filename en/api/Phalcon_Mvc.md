@@ -558,9 +558,9 @@ Writes an attribute value by its name
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/micro.zep)
 
 | Namespace  | Phalcon\Mvc |
-| Uses       | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\Controller, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable |
+| Uses       | ArrayAccess, Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Mvc\Controller, Phalcon\Di\FactoryDefault, Phalcon\Mvc\Micro\Exception, Phalcon\Di\ServiceInterface, Phalcon\Mvc\Micro\Collection, Phalcon\Mvc\Micro\LazyLoader, Phalcon\Http\ResponseInterface, Phalcon\Mvc\Model\BinderInterface, Phalcon\Mvc\Router\RouteInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\Micro\MiddlewareInterface, Phalcon\Mvc\Micro\CollectionInterface, Throwable |
 | Extends    | Injectable |
-| Implements | ArrayAccess |
+| Implements | ArrayAccess, EventsAwareInterface |
 
 Phalcon\Mvc\Micro
 
@@ -602,6 +602,9 @@ protected container;
 
 //
 protected errorHandler;
+
+//
+protected eventsManager;
 
 //
 protected finishHandlers;
@@ -698,6 +701,12 @@ Return the handler that will be called for the matched route
 public function getBoundModels(): array;
 ```
 Returns bound models from binder instance
+
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
 
 
 ```php
@@ -861,6 +870,12 @@ Sets externally the handler that must be called by the matched route
 public function setDI( DiInterface $container ): void;
 ```
 Sets the DependencyInjector container
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
 
 
 ```php
@@ -10597,9 +10612,9 @@ Check if the router matches any of the defined routes
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view.zep)
 
 | Namespace  | Phalcon\Mvc |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewInterface, Phalcon\Mvc\View\Engine\Php |
+| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\View\Engine\Php |
 | Extends    | Injectable |
-| Implements | ViewInterface |
+| Implements | ViewInterface, EventsAwareInterface |
 
 Phalcon\Mvc\View
 
@@ -10665,6 +10680,9 @@ protected disabledLevels;
 
 //
 protected engines = false;
+
+//
+protected eventsManager;
 
 //
 protected layout;
@@ -10826,6 +10844,12 @@ Gets the name of the controller rendered
 ```php
 public function getCurrentRenderLevel()
 ```
+
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
 
 
 ```php
@@ -11027,6 +11051,12 @@ $this->view->setContent("<h1>hello</h1>");
 
 
 ```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
+
+
+```php
 public function setLayout( string $layout ): View;
 ```
 Change the layout to be used instead of using the name of the latest
@@ -11218,7 +11248,7 @@ Returns the view component related to the adapter
 
 
 ```php
-public function partial( string $partialPath, mixed $params = null ): string;
+public function partial( string $partialPath, mixed $params = null ): void;
 ```
 Renders a partial inside another view
 
@@ -11243,7 +11273,7 @@ Returns cached output on another view stage
 
 
 ```php
-public function partial( string $partialPath, mixed $params = null ): string;
+public function partial( string $partialPath, mixed $params = null ): void;
 ```
 Renders a partial inside another view
 
@@ -11281,8 +11311,9 @@ Renders a view using the template engine
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/engine/volt.zep)
 
 | Namespace  | Phalcon\Mvc\View\Engine |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\View\Engine\AbstractEngine, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Mvc\View\Engine\AbstractEngine, Phalcon\Mvc\View\Engine\Volt\Compiler, Phalcon\Mvc\View\Exception |
 | Extends    | AbstractEngine |
+| Implements | EventsAwareInterface |
 
 Designer friendly and fast template engine for PHP written in Zephir/C
 
@@ -11291,6 +11322,9 @@ Designer friendly and fast template engine for PHP written in Zephir/C
 ```php
 //
 protected compiler;
+
+//
+protected eventsManager;
 
 //
 protected macros;
@@ -11320,6 +11354,12 @@ Returns the Volt's compiler
 
 
 ```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
+
+
+```php
 public function getOptions(): array;
 ```
 Return Volt's options
@@ -11341,6 +11381,12 @@ Length filter. If an array/object is passed a count is performed otherwise a str
 public function render( string $templatePath, mixed $params, bool $mustClean = bool );
 ```
 Renders a view using the template engine
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
 
 
 ```php
@@ -11814,9 +11860,9 @@ Class for exceptions thrown by Phalcon\Mvc\View
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/view/simple.zep)
 
 | Namespace  | Phalcon\Mvc\View |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
+| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Mvc\View\Exception, Phalcon\Mvc\ViewBaseInterface, Phalcon\Mvc\View\Engine\EngineInterface, Phalcon\Mvc\View\Engine\Php |
 | Extends    | Injectable |
-| Implements | ViewBaseInterface |
+| Implements | ViewBaseInterface, EventsAwareInterface |
 
 Phalcon\Mvc\View\Simple
 
@@ -11857,6 +11903,9 @@ protected content;
  * @var \Phalcon\Mvc\View\EngineInterface[]|false
  */
 protected engines = false;
+
+//
+protected eventsManager;
 
 //
 protected options;
@@ -11914,6 +11963,12 @@ Returns the path of the view that is currently rendered
 public function getContent(): string;
 ```
 Returns output from another view stage
+
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+Returns the internal event manager
 
 
 ```php
@@ -11990,6 +12045,12 @@ Externally sets the view content
 ```php
 $this->view->setContent("<h1>hello</h1>");
 ```
+
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+Sets the events manager
 
 
 ```php

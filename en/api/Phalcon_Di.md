@@ -555,8 +555,8 @@ Phalcon\Di\FactoryDefault\Cli constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface |
-| Implements | InjectionAwareInterface, EventsAwareInterface |
+| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface |
+| Implements | InjectionAwareInterface |
 
 This class allows to access services in the services container by just only
 accessing a public property with the same name of a registered service
@@ -596,13 +596,6 @@ accessing a public property with the same name of a registered service
  */
 protected container;
 
-/**
- * Events Manager
- *
- * @var \Phalcon\Events\ManagerInterface
- */
-protected eventsManager;
-
 ```
 
 ## Methods
@@ -613,27 +606,21 @@ Magic method __get
 
 
 ```php
+public function __isset( string $name ): bool;
+```
+Magic method __isset
+
+
+```php
 public function getDI(): DiInterface;
 ```
 Returns the internal dependency injector
 
 
 ```php
-public function getEventsManager(): ManagerInterface | null;
-```
-Returns the internal event manager
-
-
-```php
 public function setDI( DiInterface $container ): void;
 ```
 Sets the dependency injector
-
-
-```php
-public function setEventsManager( ManagerInterface $eventsManager ): void;
-```
-Sets the event manager
 
 
 

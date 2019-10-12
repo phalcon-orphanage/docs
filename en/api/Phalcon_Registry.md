@@ -111,7 +111,7 @@ Count elements of an object
 
 
 ```php
-final public function get( string $element, mixed $defaultValue = null ): mixed;
+final public function get( string $element, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 Get the element from the collection
 

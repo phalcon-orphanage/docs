@@ -61,7 +61,7 @@ Flattens an array up to the one level depth, unless `$deep` is set to `true`
 
 
 ```php
-final public static function get( array $collection, mixed $index, mixed $defaultValue = null ): mixed;
+final public static function get( array $collection, mixed $index, mixed $defaultValue = null, string $cast = null ): mixed;
 ```
 Helper method to get an array element or a default
 
