@@ -219,7 +219,33 @@ mysql> select * from co_invoices;
 
 The ORM provides an API to create your own behaviors. A behavior must be a class implementing the [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc#mvc-model-behaviorinterface) or extend [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc#mvc-model-behavior) which exposes most of the methods required for implementing custom behaviors.
 
-The following behavior is an example, it implements the Blameable behavior which helps identify the user that is performed operations on a model:
+The [Phalcon\Mvc\Model\BehaviorInterface](api/Phalcon_Mvc#mvc-model-behaviorinterface) requires two methods to be present in your custom behavior:
+
+```php
+public function missingMethod(
+    ModelInterface $model, 
+    string $method, 
+    array $arguments = []
+)
+```
+
+This methods acts as a fallback when a missing method is called on the model
+
+```php
+public function notify(
+    string $type, 
+    ModelInterface $model
+)
+```
+
+This method receives the notifications from the [Events Manager](events).
+
+Additionally if you extend [Phalcon\Mvc\Model\Behavior](api/Phalcon_Mvc#mvc-model-behavior), you have access to:
+
+- `getOptions(string $eventName = null)` - Returns the behavior options related to an event
+- `mustTakeAction(string $eventName)` - `bool` - Checks whether the behavior must take action on certain event
+
+The following behavior is an example, it implements the `Blameable` behavior which helps identify the user that is performed operations on a model:
 
 ```php
 <?php
@@ -307,7 +333,7 @@ $title = $invoice->getSlug();
 
 ## Traits
 
-You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the Timestampable behavior:
+You can use [Traits](https://php.net/manual/en/language.oop5.traits.php) to re-use code in your classes, this is another way to implement custom behaviors. The following trait implements a simple version of the `Timestampable` behavior:
 
 ```php
 <?php
