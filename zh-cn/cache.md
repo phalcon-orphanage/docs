@@ -7,7 +7,7 @@ title: 'Cache'
 keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
 ---
 
-# 缓存组件
+# Cache
 
 <hr />
 
