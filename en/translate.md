@@ -320,6 +320,34 @@ $options      = [
 $translator = new NativeArray($interpolator, $options);
 ```
 
+**Not Found**
+
+If the option `triggerError` is passed and set to `true` then the `notFound()` method will be called when a key is not found. The method will trigger an error.
+
+```php
+<?php
+
+use Phalcon\Translate\InterpolatorFactory;
+use Phalcon\Translate\TranslateFactory;
+
+$interpolator = new InterpolatorFactory();
+$factory      = new TranslateFactory($interpolator);
+
+$options = [
+    'content'      => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
+    'triggerError' => true,
+];
+
+$translator = $factory->newInstance('array', $options);
+
+echo $translator->query('unknown');
+```
+
+The code above will trigger an error when we try to access the `unknown` entry.
+
 ### Csv
 If your translation strings are stored in a `.csv` file. The [Phalcon\Translate\Adapter\Csv][csv] adapter accepts the interpolator factory and an array with options necessary for loading the translations. The options array accepts:
 - `content`: The location of the CSV file on the file system
