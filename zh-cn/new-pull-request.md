@@ -3,6 +3,7 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 title: 'New Pull Request'
+keywords: 'new pull request, pull request, pr'
 ---
 
 # New Pull Request
@@ -25,3 +26,48 @@ For new functionality, we will need to have an issue created and referenced. If 
 Additionally any new functionality that introduces breaking changes will not be accepted for the current release but instead will need to be updated to target the next major version.
 
 It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.
+
+## Branch and commits
+
+The following steps are recommended but not mandatory.
+
+If you are working on an issue, note the number of the issue down. Let us assume that the issue is:
+
+`#12345 - Create New Object`
+
+- Checkout the `4.0.x` branch
+- Create a branch: `T12345-create-new-object`
+
+The name of the branch starts with `T`, followed by the number of the issue and then the title of the issue as a slug.
+
+In your `cphalcon` folder navigate to `.git/hooks`
+
+Create a new file called `commit-msg` and paste the code below in it and save it:
+
+```bash
+#!/bin/bash
+# This way you can customize which branches should be skipped when
+# prepending commit message.
+if [ -z "$BRANCHES_TO_SKIP" ]; then
+  BRANCHES_TO_SKIP=(master develop)
+fi
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+BRANCH_NAME="${BRANCH_NAME##*/}"
+BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
+BRANCH_IN_COMMIT=$(grep -c "\[$BRANCH_NAME\]" $1)
+if [ -n "$BRANCH_NAME" ] && ! [[ $BRANCH_EXCLUDED -eq 1 ]] && ! [[ $BRANCH_IN_COMMIT -ge 1 ]]; then
+  ISSUE="$(echo $BRANCH_NAME | cut -d'-' -f 1)"
+  ISSUE="${ISSUE/T/#}"
+  sed -i.bak -e "1s/^/[$ISSUE] - /" $1
+fi
+```
+
+Ensure that the file is executable
+
+```bash
+chmod a+x commit-msg
+```
+
+Any commits you add now to your branch will appear tied to the `12345` issue.
+
+Doing the above allows everyone to see which commits relate to which issue.
