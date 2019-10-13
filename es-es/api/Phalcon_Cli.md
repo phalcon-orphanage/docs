@@ -467,7 +467,7 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-| Namespace | Phalcon\Cli\Router |
+| Namespace | Phalcon\Cli\Router | | Uses | Phalcon\Cli\Router\RouteInterface | | Implements | RouteInterface |
 
 This class represents every route added to the router
 
@@ -848,7 +848,7 @@ Check if the router matches any of the defined routes
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/task.zep)
 
-| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\Injectable | | Extends | Injectable | | Implements | TaskInterface |
+| Namespace | Phalcon\Cli | | Uses | Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | TaskInterface, EventsAwareInterface |
 
 Every command-line task should extend this class that encapsulates all the task functionality
 
@@ -870,6 +870,14 @@ class HelloTask extends \Phalcon\Cli\Task
 }
 ```
 
+## Properties
+
+```php
+//
+protected eventsManager;
+
+```
+
 ## Métodos
 
 ```php
@@ -877,6 +885,18 @@ final public function __construct();
 ```
 
 Phalcon\Cli\Task constructor
+
+```php
+public function getEventsManager(): ManagerInterface | null;
+```
+
+Devuelve el administrador de eventos interno
+
+```php
+public function setEventsManager( ManagerInterface $eventsManager ): void;
+```
+
+Establece el administrador de eventos
 
 <h1 id="cli-taskinterface">Interface Phalcon\Cli\TaskInterface</h1>
 

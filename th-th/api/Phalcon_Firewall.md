@@ -129,7 +129,7 @@ public function setEventsManager( ManagerInterface $eventsManager ): void;
 Sets the events manager
 
 ```php
-public function setRoleCallback( mixed $callback ): AdapterInterface;
+public function setRoleCallback( Closure $callback ): AdapterInterface;
 ```
 
 Sets role callback to fetch role name
@@ -316,7 +316,7 @@ protected function saveAccessInCache( string $key, bool $access ): void;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/adapterinterface.zep)
 
-| Namespace | Phalcon\Firewall\Adapter | | Uses | Phalcon\Mvc\DispatcherInterface, Phalcon\Cache\Adapter\AdapterInterface |
+| Namespace | Phalcon\Firewall\Adapter | | Uses | Closure, Phalcon\Mvc\DispatcherInterface, Phalcon\Cache\Adapter\AdapterInterface |
 
 Interface for Phalcon\Mvc\Dispatcher\Firewall adapters
 
@@ -329,7 +329,7 @@ public function getDefaultAccess(): int;
 Returns the default ACL access level
 
 ```php
-public function getRoleCallback();
+public function getRoleCallback(): Closure;
 ```
 
 Gets role callback to fetch role name
@@ -359,7 +359,7 @@ public function setDefaultAccess( int $defaultAccess ): AdapterInterface;
 Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 
 ```php
-public function setRoleCallback( mixed $callback ): AdapterInterface;
+public function setRoleCallback( Closure $callback ): AdapterInterface;
 ```
 
 Sets role callback to fetch role name
