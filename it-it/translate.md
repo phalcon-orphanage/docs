@@ -3,6 +3,7 @@ layout: default
 language: 'it-it'
 version: '4.0'
 title: 'Translate'
+keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---
 
 # Translation Component
@@ -119,12 +120,12 @@ To achieve this, we can implement a new component as a Plugin and register it in
 
 namespace MyApp;
 
-use Phalcon\Plugin;
+use Phalcon\Di\Injectable;
 use Phalcon\Translate\Adapter\NativeArray;
 use Phalcon\Translate\InterpolatorFactory;
 use Phalcon\Translate\TranslateFactory;
 
-class Locale extends Plugin
+class Locale extends Injectable
 {
     /**
      * @return NativeArray
@@ -329,6 +330,34 @@ $options      = [
 
 $translator = new NativeArray($interpolator, $options);
 ```
+
+**Not Found**
+
+If the option `triggerError` is passed and set to `true` then the `notFound()` method will be called when a key is not found. The method will trigger an error.
+
+```php
+<?php
+
+use Phalcon\Translate\InterpolatorFactory;
+use Phalcon\Translate\TranslateFactory;
+
+$interpolator = new InterpolatorFactory();
+$factory      = new TranslateFactory($interpolator);
+
+$options = [
+    'content'      => [
+        'hi'  => 'Hello',
+        'bye' => 'Good Bye',
+    ],
+    'triggerError' => true,
+];
+
+$translator = $factory->newInstance('array', $options);
+
+echo $translator->query('unknown');
+```
+
+The code above will trigger an error when we try to access the `unknown` entry.
 
 ### Csv
 
