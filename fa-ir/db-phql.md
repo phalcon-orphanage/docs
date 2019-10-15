@@ -2,23 +2,25 @@
 layout: default
 language: 'fa-ir'
 version: '4.0'
+title: 'Phalcon Query Language (PHQL)'
+keywords: 'phql, phalcon query language, query language'
 ---
 
 # Phalcon Query Language (PHQL)
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
-## PHQL
+## Overview
 
-Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
+Phalcon Query Language, PhalconQL or simply PHQL is a high-level, object-oriented SQL dialect that allows you to write queries using a standardized SQL-like language. PHQL is implemented as a parser (written in C) that translates syntax in that of the target RDBMS.
 
 To achieve the highest performance possible, Phalcon provides a parser that uses the same technology as [SQLite](https://en.wikipedia.org/wiki/Lemon_Parser_Generator). This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
-The parser first checks the syntax of the pass PHQL statement, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
+The parser first checks the syntax of the PHQL statement to be parsed, then builds an intermediate representation of the statement and finally it converts it to the respective SQL dialect of the target RDBMS.
 
-In PHQL, we've implemented a set of features to make your access to databases more secure:
+In PHQL, we have implemented a set of features to make your access to databases more securely:
 
 * Bound parameters are part of the PHQL language helping you to secure your code
 * PHQL only allows one SQL statement to be executed per call preventing injections
@@ -26,250 +28,451 @@ In PHQL, we've implemented a set of features to make your access to databases mo
 * PHQL only allows data manipulation statements, avoiding altering or dropping tables/databases by mistake or externally without authorization
 * PHQL implements a high-level abstraction allowing you to handle tables as models and fields as class attributes
 
-## Usage Example
-
-To better explain how PHQL works consider the following example. We have two models `Cars` and `Brands`:
+To better explain how PHQL works, for this article we are going to use two models `Invoices` and `Customers`:
 
 ```php
 <?php
 
+namespace MyApp\Models;
+
+use MyApp\Models\Customers;
 use Phalcon\Mvc\Model;
 
-class Cars extends Model
+class Invoices extends Model
 {
-    public $id;
+    public $inv_cst_id;
 
-    public $name;
+    public $inv_id;
 
-    public $brand_id;
+    public $inv_status_flag;
 
-    public $price;
+    public $inv_title;
 
-    public $year;
+    public $inv_created_at;
 
-    public $style;
-
-    /**
-     * A car only has a Brand, but a Brand have many Cars
-     */
     public function initialize()
     {
-        // This model is mapped to the table sample_cars
-        $this->setSource('sample_cars');
+        $this->setSource('co_invoices');
 
-        $this->belongsTo('brand_id', 'Brands', 'id');
+        $this->belongsTo(
+            'inv_cst_id', 
+            Customers::class, 
+            'cst_id'
+        );
     }
 }
 ```
 
-And every Car has a Brand, so a Brand has many Cars:
+And every Customer has one or more invoices:
 
 ```php
 <?php
 
+namespace MyApp\Models;
+
+use MyApp\Models\Invoices;
 use Phalcon\Mvc\Model;
 
-class Brands extends Model
+class Customers extends Model
 {
-    public $id;
+    public $cst_id;
 
-    public $name;
+    public $cst_active_flag;
 
-    /**
-     * A Brand can have many Cars
-     */
+    public $cst_name_last;
+
+    public $cst_name_first;
+
+    public $cst_created_at;
+
     public function initialize()
     {
-        // The model Brands is mapped to the 'sample_brands' table
-        $this->setSource('sample_brands');
+        $this->setSource('co_customers');
 
-        $this->hasMany('id', 'Cars', 'brand_id');
+        $this->hasMany(
+            'cst_id', 
+            Invoices::class, 
+            'inv_cst_id'
+        );
     }
 }
 ```
 
-## Creating PHQL Queries
+## Query
 
-PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc_Model_Query):
+PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query):
 
 ```php
 <?php
 
 use Phalcon\Mvc\Model\Query;
 
-// Instantiate the Query
-$query = new Query(
-    'SELECT * FROM Cars',
-    $this->getDI()
+$container = Di::getDefault();
+$query     = new Query(
+    'SELECT * FROM Invoices',
+    $container
 );
 
-// Execute the query returning a result if any
-$cars = $query->execute();
+$invoices = $query->execute();
 ```
 
-From a controller or a view, it's easy to create/execute them using an injected `models manager` ([Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc_Model_Manager)):
+The [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query) requires the second parameter of the constructor to be the DI container. When calling the above code from a controller or any class that extends the [Phalcon\Di\Injectable](api/Phalcon_Di#di-injectable), you can use:
 
 ```php
 <?php
 
-// Executing a simple query
-$query = $this->modelsManager->createQuery('SELECT * FROM Cars');
-$cars  = $query->execute();
+use Phalcon\Di;
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Query;
+use Phalcon\Mvc\View;
 
-// With bound parameters
-$query = $this->modelsManager->createQuery('SELECT * FROM Cars WHERE name = :name:');
-$cars  = $query->execute(
+/**
+ * @property Di   $di
+ * @property View $view
+ */
+class Invoices extends Controller
+{
+    public function listAction()
+    {
+        $query = new Query(
+            'SELECT * FROM Invoices',
+            $this->di
+        );
+
+        $invoices = $query->execute();
+
+        $this->view->setVar('invoices', $invoices);
+    }
+}
+```
+
+## Models Manager
+
+We can also utilize the [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc#mvc-model-manager) which is injected in the DI container:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\View;
+
+/**
+ * @property Manager $modelsManager
+ * @property View    $view
+ */
+class Invoices extends Controller
+{
+    public function listAction()
+    {
+        $query = $this
+            ->modelsManager
+            ->createQuery(
+                'SELECT * FROM Invoices'
+            )
+        ;
+
+        $invoices = $query->execute();
+
+        $this->view->setVar('invoices', $invoices);
+    }
+}
+```
+
+Using bound parameters:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\View;
+
+/**
+ * @property Manager $modelsManager
+ * @property Request $request
+ * @property View    $view
+ */
+class Invoices extends Controller
+{
+    public function viewAction()
+    {
+        $invoiceId = $this->request->getQuery('id', 'int');
+        $query     = $this
+            ->modelsManager
+            ->createQuery(
+                'SELECT * FROM Invoices WHERE inv_id = :id:'
+            )
+        ;
+
+        $invoices = $query->execute(
+            [
+                'id' => $invoiceId,
+            ]
+        );
+
+        $this->view->setVar('invoices', $invoices);
+    }
+}
+```
+
+You can also skip creating the query and then executing it and instead execute the query directly from the Models Manager object:
+
+```php
+<?php
+
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\View;
+
+/**
+ * @property Manager $modelsManager
+ * @property View    $view
+ */
+class Invoices extends Controller
+{
+    public function listAction()
+    {
+        $invoices = $this
+            ->modelsManager
+            ->executeQuery(
+                'SELECT * FROM Invoices'
+            )
+        ;
+
+        $this->view->setVar('invoices', $invoices);
+    }
+}
+```
+
+Using bound parameters:
+
+```php
+<?php
+
+use Phalcon\Http\Request;
+use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\Model\Manager;
+use Phalcon\Mvc\View;
+
+/**
+ * @property Manager $modelsManager
+ * @property Request $request
+ * @property View    $view
+ */
+class Invoices extends Controller
+{
+    public function viewAction()
+    {
+        $invoiceId = $this->request->getQuery('id', 'int');
+        $invoices  = $this
+            ->modelsManager
+            ->executeQuery(
+                'SELECT * FROM Invoices WHERE inv_id = :id:',
+                [
+                    'id' => $invoiceId,
+                ]
+            )
+        ;
+
+        $this->view->setVar('invoices', $invoices);
+    }
+}
+```
+
+## Select
+
+As the familiar SQL, PHQL allows selecting records using the `SELECT` statement we know, except that instead of specifying tables, we use the model classes:
+
+```sql
+SELECT 
+    * 
+FROM   
+    Invoices  
+ORDER BY 
+    Invoices.inv_title
+```
+
+```sql
+SELECT 
+    Invoices.inv_id, 
+    Invoices.inv_title, 
+    Invoices.inv_status_flag
+FROM   
+    Invoices  
+ORDER BY 
+    Invoices.inv_title
+```
+
+Classes with namespaces are also allowed
+
+```sql
+SELECT 
+    * 
+FROM   
+    MyApp\Models\Invoices
+ORDER BY 
+    MyApp\Models\Invoices.inv_title'
+```
+
+Aliases for models are also supported
+
+```sql
+SELECT 
+    i.inv_id, 
+    i.inv_title, 
+    i.inv_status_flag
+FROM   
+    Invoices i  
+ORDER BY 
+    i.inv_title
+```
+
+Most of the SQL standard is supported by PHQL, even nonstandard directives such as `LIMIT`:
+
+```sql
+SELECT 
+    i.inv_id, 
+    i.inv_title, 
+    i.inv_status_flag
+FROM   
+    Invoices i
+WHERE  
+    i.inv_status_flag = 1  
+ORDER BY 
+    i.inv_title
+LIMIT 100
+```
+
+### Results
+
+Depending on the columns we query as well as the tables, the result types will vary.
+
+If you retrieve all the columns from a single table, you will get back a fully functional [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc#mvc-model-resultset-simple) object back. The object returned is a *complete* and can be modified and re-saved in the database because they represent a complete record of the associated table.
+
+The following examples return identical results:
+
+**Model**
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
     [
-        'name' => 'Audi',
+        'order' => 'inv_title'
     ]
 );
-```
 
-Or simply execute it:
-
-```php
-<?php
-
-// Executing a simple query
-$cars = $this->modelsManager->executeQuery(
-    'SELECT * FROM Cars'
-);
-
-// Executing with bound parameters
-$cars = $this->modelsManager->executeQuery(
-    'SELECT * FROM Cars WHERE name = :name:',
-    [
-        'name' => 'Audi',
-    ]
-);
-```
-
-## Selecting Records
-
-As the familiar SQL, PHQL allows querying of records using the SELECT statement we know, except that instead of specifying tables, we use the models classes:
-
-```php
-<?php
-
-$query = $manager->createQuery(
-    'SELECT * FROM Cars ORDER BY Cars.name'
-);
-
-$query = $manager->createQuery(
-    'SELECT Cars.name FROM Cars ORDER BY Cars.name'
-);
-```
-
-Classes in namespaces are also allowed:
-
-```php
-<?php
-
-$phql  = 'SELECT * FROM Formula\Cars ORDER BY Formula\Cars.name';
-$query = $manager->createQuery($phql);
-
-$phql  = 'SELECT Formula\Cars.name FROM Formula\Cars ORDER BY Formula\Cars.name';
-$query = $manager->createQuery($phql);
-
-$phql  = 'SELECT c.name FROM Formula\Cars c ORDER BY c.name';
-$query = $manager->createQuery($phql);
-```
-
-Most of the SQL standard is supported by PHQL, even nonstandard directives such as LIMIT:
-
-```php
-<?php
-
-$phql = 'SELECT c.name FROM Cars AS c WHERE c.brand_id = 21 ORDER BY c.name LIMIT 100';
-
-$query = $manager->createQuery($phql);
-```
-
-### Result Types
-
-Depending on the type of columns we query, the result type will vary. If you retrieve a single whole object, then the object returned is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). This kind of resultset is a set of complete model objects:
-
-```php
-<?php
-
-$phql = 'SELECT c.* FROM Cars AS c ORDER BY c.name';
-
-$cars = $manager->executeQuery($phql);
-
-foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
-This is exactly the same as:
+**PHQL**
 
 ```php
 <?php
 
-$cars = Cars::find(
-    [
-        'order' => 'name'
-    ]
-);
+$phql = "
+    SELECT 
+        * 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
-Complete objects can be modified and re-saved in the database because they represent a complete record of the associated table. There are other types of queries that do not return complete objects, for example:
+Any queries that use specific columns do not return *complete* objects, and therefore database operations cannot be performed on them. However, they are much smaller than their complete counterparts and offer micro optimizations in your code.
 
 ```php
 <?php
 
-$phql = 'SELECT c.id, c.name FROM Cars AS c ORDER BY c.name';
+$phql = "
+    SELECT 
+        inv_id, inv_title 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-$cars = $manager->executeQuery($phql);
-
-foreach ($cars as $car) {
-    echo 'Name: ', $car->name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->inv_id, ' - ', $invoice->inv_name, PHP_EOL;
 }
 ```
 
-We are only requesting some fields in the table, therefore those cannot be considered an entire object, so the returned object is still a resultset of type [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc_Model_Resultset_Simple). However, each element is a standard object that only contain the two columns that were requested.
+The returned result is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc#mvc-model-resultset-simple) object. However, However, each element is a standard object that only contain the two columns that were requested.
 
-These values that don't represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
+These values that do not represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
 ```php
 <?php
 
-$phql = "SELECT CONCAT(c.id, ' ', c.name) AS id_name FROM Cars AS c ORDER BY c.name";
+$phql = "
+    SELECT 
+        CONCAT(inv_id, ' - ', inv_title) AS id_name 
+    FROM 
+        Invoices 
+    ORDER BY 
+        inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-$cars = $manager->executeQuery($phql);
-
-foreach ($cars as $car) {
-    echo $car->id_name, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->id_name, PHP_EOL;
 }
 ```
 
-As we can query complete objects or scalars, we can also query both at once:
+We can query complete objects or scalars, therefore can also query both at once:
 
 ```php
 <?php
 
-$phql = 'SELECT c.price*0.16 AS taxes, c.* FROM Cars AS c ORDER BY c.name';
-
-$result = $manager->executeQuery($phql);
+$phql = "
+    SELECT 
+        i.*, 
+        IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status 
+    FROM 
+        Invoices i 
+    ORDER BY 
+        i.inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
-The result in this case is an object [Phalcon\Mvc\Model\Resultset\Complex](api/Phalcon_Mvc_Model_Resultset_Complex). This allows access to both complete objects and scalars at once:
+The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex](api/Phalcon_Mvc#mvc-model-resultset-complex) object. This allows access to both complete objects and scalars at once:
 
 ```php
 <?php
 
-foreach ($result as $row) {
-    echo 'Name: ', $row->cars->name, "\n";
-    echo 'Price: ', $row->cars->price, "\n";
-    echo 'Taxes: ', $row->taxes, "\n";
+foreach ($invoices as $invoice) {
+    echo $invoice->status, 
+         $invoice->invoices->inv_id, 
+         $invoice->invoices->inv_name, 
+         PHP_EOL
+    ;
 }
 ```
 
-` Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model.
+Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model. In the above example, the scalar `status` is accessed directly from the object, while the database row can be accessed by the `invoices` property, which is the same name as the name of the model.
 
 ### Joins
 
@@ -278,238 +481,716 @@ It's easy to request records from multiple models using PHQL. Most kinds of Join
 ```php
 <?php
 
-$phql = 'SELECT Cars.name AS car_name, Brands.name AS brand_name FROM Cars JOIN Brands';
+$phql = "
+    SELECT 
+        Invoices.inv_id AS invoice_id, 
+        Invoices.inv_title AS invoice_title, 
+        Customers.cst_id AS customer_id,
+        Customers.cst_name_last,
+        Customers.cst_name_first 
+    FROM 
+        Customers
+    INNER JOIN 
+        Invoices 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-$rows = $manager->executeQuery($phql);
-
-foreach ($rows as $row) {
-    echo $row->car_name, "\n";
-    echo $row->brand_name, "\n";
+foreach ($records as $record) {
+    echo $record->invoice_id, 
+         $record->invoice_title, 
+         $record->customer_id,
+         $record->cst_name_last,
+         $record->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
-By default, an INNER JOIN is assumed. You can specify the type of JOIN in the query:
+> By default, an `INNER JOIN` is assumed. 
+{: .alert .alert-info }
+
+You can specify the following types of joins in your query:
+
+* `CROSS JOIN`
+* `LEFT JOIN`
+* `LEFT OUTER JOIN`
+* `INNER JOIN`
+* `JOIN`
+* `RIGHT JOIN`
+* `RIGHT OUTER JOIN`
+
+The PHQL parser will automatically resolve the conditions of the `JOIN` operation, depending on the relationships set up in the `initialize()` of each model. These are calls to `hasMany`, `hasOne`, `belongsTo` etc.
+
+It is however possible to manually set the conditions of the `JOIN`:
 
 ```php
 <?php
 
-$phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands';
-$rows = $manager->executeQuery($phql);
+$phql = "
+    SELECT 
+        Invoices.inv_id AS invoice_id, 
+        Invoices.inv_title AS invoice_title, 
+        Customers.cst_id AS customer_id,
+        Customers.cst_name_last,
+        Customers.cst_name_first 
+    FROM 
+        Customers
+    INNER JOIN 
+        Invoices
+    ON 
+        Customers.cst_id = Invoices.inv_cst_id 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
 
-$phql = 'SELECT Cars.*, Brands.* FROM Cars LEFT JOIN Brands';
-$rows = $manager->executeQuery($phql);
-
-$phql = 'SELECT Cars.*, Brands.* FROM Cars LEFT OUTER JOIN Brands';
-$rows = $manager->executeQuery($phql);
-
-$phql = 'SELECT Cars.*, Brands.* FROM Cars CROSS JOIN Brands';
-$rows = $manager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
-It is also possible to manually set the conditions of the JOIN:
+Also, the joins can be created using multiple tables in the `FROM` clause, using the alternative *join* syntax:
 
 ```php
 <?php
 
-$phql = 'SELECT Cars.*, Brands.* FROM Cars INNER JOIN Brands ON Brands.id = Cars.brands_id';
+$phql = "
+    SELECT 
+        Invoices.*, 
+        Customers.* 
+    FROM 
+        Customers, Invoices
+    WHERE 
+        Customers.cst_id = Invoices.inv_cst_id 
+    ORDER BY 
+        Customers.cst_name_last, Customers.cst_name_first";
 
-$rows = $manager->executeQuery($phql);
-```
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-Also, the joins can be created using multiple tables in the FROM clause:
-
-```php
-<?php
-
-$phql = 'SELECT Cars.*, Brands.* FROM Cars, Brands WHERE Brands.id = Cars.brands_id';
-
-$rows = $manager->executeQuery($phql);
-
-foreach ($rows as $row) {
-    echo 'Car: ', $row->cars->name, "\n";
-    echo 'Brand: ', $row->brands->name, "\n";
+foreach ($records as $record) {
+    echo $record->invoices->inv_id, 
+         $record->invoices->inv_title, 
+         $record->customers->cst_id,
+         $record->customers->cst_name_last,
+         $record->customers->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
-If an alias is used to rename the models in the query, those will be used to name the attributes in the every row of the result:
+If aliases are used for models, then the resultset will use those aliases to name the attributes in the every row of the result:
 
 ```php
 <?php
 
-$phql = 'SELECT c.*, b.* FROM Cars c, Brands b WHERE b.id = c.brands_id';
+$phql = "
+    SELECT 
+        i.*, 
+        c.* 
+    FROM 
+        Customers c, Invoices i
+    WHERE 
+        c.cst_id = i.inv_cst_id 
+    ORDER BY 
+        c.cst_name_last, c.cst_name_first";
 
-$rows = $manager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-foreach ($rows as $row) {
-    echo 'Car: ', $row->c->name, "\n";
-    echo 'Brand: ', $row->b->name, "\n";
+foreach ($records as $record) {
+    echo $record->i->inv_id, 
+         $record->i->inv_title, 
+         $record->c->cst_id,
+         $record->c->cst_name_last,
+         $record->c->cst_name_first, 
+         PHP_EOL
+    ;
 }
 ```
 
-When the joined model has a many-to-many relation to the `from` model, the intermediate model is implicitly added to the generated query:
+When the joined model has a many-to-many relation to the `from` model, the intermediate model is implicitly added to the generated query. For this example we have `Invoices`, `InvoicesXProducts` and `Products` models:
 
 ```php
 <?php
 
-$phql = 'SELECT Artists.name, Songs.name FROM Artists ' .
-        'JOIN Songs WHERE Artists.genre = "Trip-Hop"';
+$phql = "
+    SELECT 
+        Invoices.inv_id, 
+        Invoices.inv_title, 
+        Products.prd_id,
+        Products.prd_title 
+    FROM 
+        Invoices
+    JOIN
+        Products
+    WHERE 
+        Invoices.inv_id = 1 
+    ORDER BY 
+        Products.prd_name";
 
-$result = $this->modelsManager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
 This code executes the following SQL in MySQL:
 
 ```sql
-SELECT `artists`.`name`, `songs`.`name` FROM `artists`
-INNER JOIN `albums` ON `albums`.`artists_id` = `artists`.`id`
-INNER JOIN `songs` ON `albums`.`songs_id` = `songs`.`id`
-WHERE `artists`.`genre` = 'Trip-Hop'
+SELECT 
+    co_invoices.inv_id, 
+    co_invoices.inv_title, 
+    co_products.prd_id,
+    co_products.prd_title 
+FROM 
+    co_invoices
+JOIN JOIN
+    co_invoices_x_products 
+ON 
+    co_invoices.inv_id = co_invoices_x_products.ixp_inv_id
+JOIN JOIN
+    co_products 
+ON 
+    co_invoices_x_products.ixp_prd_id = co_products.prd_id
+WHERE
+    co_invoices.inv_id = 1
+ORDER BY
+    co_products.prd_name
 ```
 
 ### Aggregations
 
 The following examples show how to use aggregations in PHQL:
 
+**Average**
+
+What is the average amount of invoices for a customer with `inv_cst_id = 1`
+
 ```php
 <?php
 
-// How much are the prices of all the cars?
-$phql = 'SELECT SUM(price) AS summatory FROM Cars';
-$row  = $manager->executeQuery($phql)->getFirst();
-echo $row['summatory'];
+$phql = "
+    SELECT 
+        AVERAGE(inv_total) AS invoice_average
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
 
-// How many cars are by each brand?
-$phql = 'SELECT Cars.brand_id, COUNT(*) FROM Cars GROUP BY Cars.brand_id';
-$rows = $manager->executeQuery($phql);
-foreach ($rows as $row) {
-    echo $row->brand_id, ' ', $row['1'], "\n";
-}
+$results  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-// How many cars are by each brand?
-$phql = 'SELECT Brands.name, COUNT(*) FROM Cars JOIN Brands GROUP BY 1';
-$rows = $manager->executeQuery($phql);
-foreach ($rows as $row) {
-    echo $row->name, ' ', $row['1'], "\n";
-}
+echo $results['invoice_average'], PHP_EOL;
+```
 
-$phql = 'SELECT MAX(price) AS maximum, MIN(price) AS minimum FROM Cars';
-$rows = $manager->executeQuery($phql);
-foreach ($rows as $row) {
-    echo $row['maximum'], ' ', $row['minimum'], "\n";
-}
+**Count**
 
-// Count distinct used brands
-$phql = 'SELECT COUNT(DISTINCT brand_id) AS brandId FROM Cars';
-$rows = $manager->executeQuery($phql);
-foreach ($rows as $row) {
-    echo $row->brandId, "\n";
+How many invoices does each customer have
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        inv_cst_id,
+        COUNT(*) AS invoice_count
+    FROM 
+        Invoices
+    GROUP BY 
+        Invoices.inv_cst_id
+    ORDER BY 
+        Invoices.inv_cst_id";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+foreach ($records as $record) {
+    echo $record->inv_cst_id, 
+         $record->invoice_count, 
+         PHP_EOL
+    ;
 }
+```
+
+**Count Distinct**
+
+Hoa many invoices does each customer have
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        COUNT(DISTINCT inv_cst_id) AS customer_id
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+foreach ($records as $record) {
+    echo $record->inv_cst_id, 
+         PHP_EOL
+    ;
+}
+```
+
+**Max**
+
+What is the maximum invoice amount for a customer with `inv_cst_id = 1`
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        MAX(inv_total) AS invoice_max
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
+
+$results  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+echo $results['invoice_max'], PHP_EOL;
+```
+
+**Min**
+
+What is the minimum invoice amount for a customer with `inv_cst_id = 1`
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        MIN(inv_total) AS invoice_min
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
+
+$results  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+echo $results['invoice_min'], PHP_EOL;
+```
+
+**Sum**
+
+What is the total amount of invoices for a customer with `inv_cst_id = 1`
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        SUM(inv_total) AS invoice_total
+    FROM 
+        Invoices
+    WHERE 
+        Invoices.inv_cst_id = 1";
+
+$results  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+echo $results['invoice_total'], PHP_EOL;
 ```
 
 ### Conditions
 
-Conditions allow us to filter the set of records we want to query. The `WHERE` clause allows to do that:
+Conditions allow us to filter the set of records we want to query using the `WHERE` keyword.
+
+Select a record with a single numeric comparison:
 
 ```php
 <?php
 
-// Simple conditions
-$phql = 'SELECT * FROM Cars WHERE Cars.name = "Lamborghini Espada"';
-$cars = $manager->executeQuery($phql);
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id = 1";
 
-$phql = 'SELECT * FROM Cars WHERE Cars.price > 10000';
-$cars = $manager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-$phql = 'SELECT * FROM Cars WHERE TRIM(Cars.name) = "Audi R8"';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.name LIKE "Ferrari%"';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.name NOT LIKE "Ferrari%"';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.price IS NULL';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.id IN (120, 121, 122)';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.id NOT IN (430, 431)';
-$cars = $manager->executeQuery($phql);
-
-$phql = 'SELECT * FROM Cars WHERE Cars.id BETWEEN 1 AND 100';
-$cars = $manager->executeQuery($phql);
 ```
 
-Also, as part of PHQL, prepared parameters automatically escape the input data, introducing more security:
+Select records with a greater than numeric comparison:
 
 ```php
 <?php
 
-$phql = 'SELECT * FROM Cars WHERE Cars.name = :name:';
-$cars = $manager->executeQuery(
-    $phql,
-    [
-        'name' => 'Lamborghini Espada'
-    ]
-);
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_total > 1000";
 
-$phql = 'SELECT * FROM Cars WHERE Cars.name = ?0';
-$cars = $manager->executeQuery(
-    $phql,
-    [
-        0 => 'Lamborghini Espada'
-    ]
-);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
-## Inserting Data
-
-With PHQL it's possible to insert data using the familiar INSERT statement:
+Select records with a single text comparison using `TRIM`:
 
 ```php
 <?php
 
-// Inserting without columns
-$phql = 'INSERT INTO Cars VALUES (NULL, "Lamborghini Espada", '
-      . '7, 10000.00, 1969, "Grand Tourer")';
-$manager->executeQuery($phql);
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        TRIM(Invoices.inv_title) = 'Invoice for ACME Inc.'";
 
-// Specifying columns to insert
-$phql = 'INSERT INTO Cars (name, brand_id, year, style) '
-      . 'VALUES ("Lamborghini Espada", 7, 1969, "Grand Tourer")';
-$manager->executeQuery($phql);
-
-// Inserting using placeholders
-$phql = 'INSERT INTO Cars (name, brand_id, year, style) '
-      . 'VALUES (:name:, :brand_id:, :year:, :style)';
-$manager->executeQuery(
-    $phql,
-    [
-        'name'     => 'Lamborghini Espada',
-        'brand_id' => 7,
-        'year'     => 1969,
-        'style'    => 'Grand Tourer',
-    ]
-);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
-Phalcon doesn't only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually. Let's add a business rule on the model cars. A car cannot cost less than $ 10,000:
+Select records using the `LIKE` keyword:
 
 ```php
 <?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_title LIKE '%ACME%'";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Select records using the `NOT LIKE` keywords:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_title NOT LIKE '%ACME%'";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Select records where a field is `NULL`:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_total IS NULL";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Select records using the `IN` keyword:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id IN (1, 3, 5)";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Select records using the `NOT IN` keywords:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id NOT IN (1, 3, 5)";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Select records using the `BETWEEN` keywords:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id BETWEEN 1 AND 5";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+### Parameters
+
+PHQL automatically escapes parameters, introducing more security:
+
+Using named parameters:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id = :customer_id:";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customer_id' => 1,
+        ]
+    )
+;
+```
+
+Using numeric indexes:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        *
+    FROM 
+        Invoices
+    ORDER BY 
+        Invoices.inv_cst_id = ?2";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            2 => 1,
+        ]
+    )
+;
+```
+
+## Insert
+
+With PHQL it's possible to insert data using the familiar `INSERT` statement:
+
+Inserting data without columns:
+
+```php
+<?php
+
+$phql = "
+    INSERT INTO Invoices
+    VALUES (
+        NULL,
+        1,
+        0,
+        'Invoice for ACME Inc.',
+        0
+    )";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Inserting data with specific columns columns:
+
+```php
+<?php
+
+$phql = "
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        NULL,
+        1,
+        0,
+        'Invoice for ACME Inc.',
+        0
+    )";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Inserting data with named placeholders:
+
+```php
+<?php
+
+$phql = "
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        :id:,
+        :cst_id:,
+        :status_flag:,
+        :title:,
+        :total:
+    )";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'id'          => NULL,
+            'cst_id'      => 1,
+            'status_flag' => 0,
+            'title'       => 'Invoice for ACME Inc.',
+            'total'       => 0
+        ]
+    )
+;
+```
+
+Inserting data with numeric placeholders:
+
+```php
+<?php
+
+$phql = "
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        ?0,
+        ?1,
+        ?2,
+        ?3,
+        ?4
+    )";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => NULL,
+            1 => 1,
+            2 => 0,
+            3 => 'Invoice for ACME Inc.',
+            4 => 0
+        ]
+    )
+;
+```
+
+Phalcon does not only transform the PHQL statements into SQL. All events and business rules defined in the model are executed as if we created individual objects manually.
+
+If we add a business rule in the `beforeCreate` event for the `Invoices` model, the event be called and our code will be executed. Assuming we add a rule where an invoice cannot have a negative total:
+
+```php
+<?php
+
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
+use Phalcon\Messages\Message;
 
-class Cars extends Model
+class Invoices extends Model
 {
     public function beforeCreate()
     {
-        if ($this->price < 10000) {
+        if ($this->inv_total < 0) {
             $this->appendMessage(
-                new Message('A car cannot cost less than $ 10,000')
+                new Message('An invoice cannot have a negative total')
             );
 
             return false;
@@ -518,68 +1199,186 @@ class Cars extends Model
 }
 ```
 
-If we made the following `INSERT` in the models Cars, the operation will not be successful because the price does not meet the business rule that we implemented. By checking the status of the insertion we can print any validation messages generated internally:
+If we issue the following `INSERT` statement:
 
 ```php
 <?php
 
-$phql = "INSERT INTO Cars VALUES (NULL, 'Nissan Versa', 7, 9999.00, 2015, 'Sedan')";
+$phql = "
+    INSERT INTO Invoices (
+        inv_id,
+        inv_cst_id,
+        inv_status_flag,
+        inv_title,
+        inv_total
+    )
+    VALUES (
+        ?0,
+        ?1,
+        ?2,
+        ?3,
+        ?4
+    )";
 
-$result = $manager->executeQuery($phql);
+$result  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => NULL,
+            1 => 1,
+            2 => 0,
+            3 => 'Invoice for ACME Inc.',
+            4 => -100
+        ]
+    )
+;
 
-if ($result->success() === false) {
+if (false === $result->success()) {
     foreach ($result->getMessages() as $message) {
         echo $message->getMessage();
     }
 }
 ```
 
-## Updating Data
+Since we tried to insert a negative number for the `inv_total` the `beforeCreate` was invoked prior to saving the record. As a result the operation fails and the relevant error messages are being sent back.
 
-Updating rows is very similar than inserting rows. As you may know, the instruction to update records is UPDATE. When a record is updated the events related to the update operation will be executed for each row.
+## Update
+
+Updating rows uses the same rules as inserting rows. For that operation we use the `UPDATE` command. Just as with inserting rows, when a record is updated the events related to the update operation will be executed for each row.
+
+Updating one column
 
 ```php
 <?php
 
-// Updating a single column
-$phql = 'UPDATE Cars SET price = 15000.00 WHERE id = 101';
-$manager->executeQuery($phql);
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_total = 0
+    WHERE
+        inv_cst_id = 1";
 
-// Updating multiples columns
-$phql = 'UPDATE Cars SET price = 15000.00, type = "Sedan" WHERE id = 101';
-$manager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
 
-// Updating multiples rows
-$phql = 'UPDATE Cars SET price = 7000.00, type = "Sedan" WHERE brands_id > 5';
-$manager->executeQuery($phql);
+Updating multiple columns
 
-// Using placeholders
-$phql = 'UPDATE Cars SET price = ?0, type = ?1 WHERE brands_id > ?2';
-$manager->executeQuery(
-    $phql,
-    [
-        0 => 7000.00,
-        1 => 'Sedan',
-        2 => 5,
-    ]
-);
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id = 1";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Updating multiple rows:
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id > 10";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+Updating data with named placeholders:
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_status_flag = :status:,
+        inv_total = :total:
+    WHERE
+        inv_cst_id > :customerId:";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'status'     => 0,
+            'total'      => 0,
+            'customerId' => 10,
+        ]
+    )
+;
+```
+
+Updating data with numeric placeholders:
+
+```php
+<?php
+
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_status_flag = ?0,
+        inv_total = ?1
+    WHERE
+        inv_cst_id > ?2";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            0 => 0,
+            1 => 0,
+            2 => 10,
+        ]
+    )
+;
 ```
 
 An `UPDATE` statement performs the update in two phases:
 
-* First, if the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
-* Second, based on the queried objects it updates/changes the requested attributes storing them to the relational database
+* If the `UPDATE` has a `WHERE` clause it retrieves all the objects that match these criteria,
+* Based on the queried objects it updates the requested attributes storing them in the database
 
-This way of operation allows that events, virtual foreign keys and validations take part of the updating process. In summary, the following code:
+This way of operation allows that events, virtual foreign keys and validations to be executed during the updating process. In short, the code:
 
 ```php
 <?php
 
-$phql = 'UPDATE Cars SET price = 15000.00 WHERE id > 101';
+$phql = "
+    UPDATE Invoices
+    SET
+        inv_status_flag = 0,
+        inv_total = 0
+    WHERE
+        inv_cst_id > 10";
 
-$result = $manager->executeQuery($phql);
+$result = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 
-if ($result->success() === false) {
+if (false === $result->success()) {
     $messages = $result->getMessages();
 
     foreach ($messages as $message) {
@@ -593,64 +1392,138 @@ is somewhat equivalent to:
 ```php
 <?php
 
-$messages = null;
+use MyApp\Models\Invoices;
 
-$process = function () use (&$messages) {
-    $cars = Cars::find('id > 101');
+$messages = [];
+$invoices = Invoices::find(
+    [
+        'conditions' => 'inc_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 10,
+        ],
+    ]  
+);
 
-    foreach ($cars as $car) {
-        $car->price = 15000;
+foreach ($invoices as $invoice) {
+    $invoice->inv_status_flag = 0;
+    $invoice->inv_total       = 0;
 
-        if ($car->save() === false) {
-            $messages = $car->getMessages();
-
-            return false;
-        }
-    }
-
-    return true;
-};
-
-$success = $process();
+    $result = $invoice->save();
+    if (false === $result) {
+        $messages[] = $invoice->getMessages();
+    } 
+}
 ```
 
 ## Deleting Data
 
-When a record is deleted the events related to the delete operation will be executed for each row:
+Similar to updating records, deleting records uses the same rules. For that operation we use the `DELETE` command. When a record is deleted the events related to the update operation will be executed for each row.
+
+Deleting one row
 
 ```php
 <?php
 
-// Deleting a single row
-$phql = 'DELETE FROM Cars WHERE id = 101';
-$manager->executeQuery($phql);
+$phql = "
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id = 1";
 
-// Deleting multiple rows
-$phql = 'DELETE FROM Cars WHERE id > 100';
-$manager->executeQuery($phql);
-
-// Using placeholders
-$phql = 'DELETE FROM Cars WHERE id BETWEEN :initial: AND :final:';
-$manager->executeQuery(
-    $phql,
-    [
-        'initial' => 1,
-        'final'   => 100,
-    ]
-);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
 ```
 
-`DELETE` operations are also executed in two phases like `UPDATEs`. To check if the deletion produces any validation messages you should check the status code returned:
+Deleting multiple rows:
 
 ```php
 <?php
 
-// Deleting multiple rows
-$phql = 'DELETE FROM Cars WHERE id > 100';
+$phql = "
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > 10";
 
-$result = $manager->executeQuery($phql);
+$records  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
 
-if ($result->success() === false) {
+Deleting data with named placeholders:
+
+```php
+<?php
+
+$phql = "
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > :customerId:";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            'customerId' => 10,
+        ]
+    )
+;
+```
+
+Deleting data with numeric placeholders:
+
+```php
+<?php
+
+$phql = "
+    DELETE
+    FROM 
+        Invoices
+    WHERE
+        inv_cst_id > ?2";
+
+$records  = $this
+    ->modelsManager
+    ->executeQuery(
+        $phql,
+        [
+            2 => 10,
+        ]
+    )
+;
+```
+
+A `DELETE` statement performs the delete in two phases:
+
+* If the `DELETE` has a `WHERE` clause it retrieves all the objects that match these criteria,
+* Based on the queried objects it deletes the requested objects from the relational database
+
+Just as the rest of the operations, checking the status code returned allows you to retrieve back any validation messages returned by operations hooked up to your models
+
+```php
+<?php
+
+$phql = "
+    DELETE
+    FROM
+        Invoices
+    WHERE
+        inv_cst_id > 10";
+
+$result = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+
+if (false === $result->success()) {
     $messages = $result->getMessages();
 
     foreach ($messages as $message) {
@@ -659,227 +1532,1279 @@ if ($result->success() === false) {
 }
 ```
 
-## Creating queries using the Query Builder
+## Query Builder
 
-A builder is available to create PHQL queries without the need to write PHQL statements, also providing IDE facilities:
+[Phalcon\Mvc\Query\Builder](api/Phalcon_Mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
+
+The PHQL query:
+
+```sql
+SELECT 
+    * 
+FROM 
+    Invoices 
+ORDER BY 
+    inv_title
+```
+
+can be created and executed as follows:
 
 ```php
 <?php
 
-// Getting a whole set
-$robots = $this->modelsManager->createBuilder()
-    ->from('Robots')
-    ->join('RobotsParts')
-    ->orderBy('Robots.name')
+use MyApp\Models\Invoices;
+
+$invoices = $this
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->orderBy('inv_title')
     ->getQuery()
     ->execute();
+```
 
-// Getting the first row
-$robots = $this->modelsManager->createBuilder()
-    ->from('Robots')
-    ->join('RobotsParts')
-    ->orderBy('Robots.name')
+To get a single row:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = $this
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->orderBy('inv_title')
     ->getQuery()
     ->getSingleResult();
 ```
 
-That is the same as:
+### Parameters
+
+Whether you create a [Phalcon\Mvc\Query\Builder](api/Phalcon_Mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
+
+* `bind` - `array` - array of the data to be bound
+* `bindTypes` - `array` - PDO parameter types
+* `columns` - `array | string` - columns to select 
+* `conditions` - `array | string` - conditions (where)
+* `distinct` - `string` - distinct column 
+* `for_update` - `bool` - for update or not
+* `group` - `string` - group by columns
+* `having` - `string` - having columns
+* `joins` - `array` - model classes used for joins
+* `limit` - `array | int` - limit for the records (i.e. `20` or `[20, 20]`)
+* `models` - `array` - model classes used
+* `offset` - `int` - the offset
+* `order` - `array | string` - order columns
+* `shared_lock` - `bool` - issue shared lock or not
 
 ```php
 <?php
 
-$phql = 'SELECT Robots.* FROM Robots JOIN RobotsParts p ORDER BY Robots.name LIMIT 20';
+use PDO;
+use Phalcon\Mvc\Model\Query\Builder;
 
-$result = $manager->executeQuery($phql);
+$params = [
+    "models"     => [
+        Users::class,
+    ],
+    "columns"    => ["id", "name", "status"],
+    "conditions" => [
+        [
+            "created > :min: AND created < :max:",
+            [
+                "min" => "2013-01-01",
+                "max" => "2014-01-01",
+            ],
+            [
+                "min" => PDO::PARAM_STR,
+                "max" => PDO::PARAM_STR,
+            ],
+        ],
+    ],
+    // or "conditions" => "created > '2013-01-01' AND created < '2014-01-01'",
+    "group"      => ["id", "name"],
+    "having"     => "name = 'Kamil'",
+    "order"      => ["name", "id"],
+    "limit"      => 20,
+    "offset"     => 20,
+    // or "limit" => [20, 20],
+];
+
+$builder = new Builder($params);
 ```
 
-More examples of the builder:
+### Getters
+
+* `autoescape(string $identifier)` - `string` - Automatically escapes identifiers but only if they need to be escaped.
+* `getBindParams(): array` - Returns default bind params
+* `getBindTypes(): array` - Returns default [bind types](https://www.php.net/manual/en/pdo.constants.php)
+* `getColumns()` - `string | array` - Return the columns to be queried
+* `getDistinct()` - `bool` - Returns the `SELECT DISTINCT` / `SELECT ALL` clause 
+* `getFrom()` - `string | array` - Return the models for the query
+* `getGroupBy()` - `array` - Returns the `GROUP BY` clause
+* `getHaving()` - `string` - Returns the `HAVING` clause
+* `getJoins()` - `array` - Returns `JOIN` join parts of the query
+* `getLimit()` - `string | array` - Returns the current `LIMIT` clause
+* `getModels()` - `string | array | null` - Returns the models involved in the query
+* `getOffset()` - `int` - Returns the current `OFFSET` clause
+* `getOrderBy()` - `string / array` - Returns the `ORDER BY` clause
+* `getPhql()` - `string` - Returns the generated PHQL statement
+* `getQuery()` - `QueryInterface` - Returns the query built
+* `getWhere()` - `string | array` - Return the conditions for the query
+
+### Methods
+
+```php
+public function addFrom(
+    string $model, 
+    string $alias = null
+): BuilderInterface
+```
+
+Add a model. The first parameter is the model while the second one is the alias for the model.
 
 ```php
 <?php
 
-// 'SELECT Robots.* FROM Robots';
-$builder->from('Robots');
+$builder->addFrom(
+    Customers::class
+);
 
-// 'SELECT Robots.*, RobotsParts.* FROM Robots, RobotsParts';
-$builder->from(
+$builder->addFrom(
+    Customers::class,
+    "c"
+);
+```
+
+```php
+public function andHaving(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
+
+Appends a condition to the current `HAVING` conditions clause using an `AND` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->andHaving("SUM(Invoices.inv_total) > 1000");
+
+$builder->andHaving(
+    "SUM(Invoices.inv_total) > :sum:",
     [
-        'Robots',
-        'RobotsParts',
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
+
+```php
+public function andWhere(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
+
+Appends a condition to the current `WHERE` conditions clause using an `AND` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->andWhere("SUM(Invoices.inv_total) > 1000");
+
+$builder->andWhere(
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
+
+```php
+public function betweenHaving(
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends a `BETWEEN` condition to the current `HAVING` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->betweenHaving(
+    "SUM(Invoices.inv_total)",
+    1000,
+    5000
+);
+```
+
+```php
+public function betweenWhere(
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends a `BETWEEN` condition to the current `WHERE` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->betweenWhere(
+    "Invoices.inv_total",
+    1000,
+    5000
+);
+```
+
+```php
+public function columns(mixed $columns): BuilderInterface
+```
+
+Sets the columns to be queried. The method accepts either a `string` or an `array`. If you specify an array with specific `keys`, they will be used as aliases for the relevant columns.
+
+```php
+<?php
+
+// SELECT inv_id, inv_title
+$builder->columns("inv_id, inv_title");
+
+// SELECT inv_id, inv_title
+$builder->columns(
+    [
+        "inv_id",
+        "inv_title",
     ]
 );
 
-// 'SELECT * FROM Robots';
-$phql = $builder->columns('*')
-                ->from('Robots');
+// SELECT inv_cst_id, inv_total
+$builder->columns(
+    [
+        "inv_cst_id",
+        "inv_total" => "SUM(inv_total)",
+    ]
+);
+```
 
-// 'SELECT id FROM Robots';
-$builder->columns('id')
-        ->from('Robots');
+```php
+public function distinct(mixed $distinct): BuilderInterface
+```
 
-// 'SELECT id, name FROM Robots';
-$builder->columns(['id', 'name'])
-        ->from('Robots');
+Sets `SELECT DISTINCT` / `SELECT ALL` flag
 
-// 'SELECT Robots.* FROM Robots WHERE Robots.name = 'Voltron'';
-$builder->from('Robots')
-        ->where("Robots.name = 'Voltron'");
+```php
+<?php
 
-// 'SELECT Robots.* FROM Robots WHERE Robots.id = 100';
-$builder->from('Robots')
-        ->where(100);
+$builder->distinct("status");
+$builder->distinct(null);
+```
 
-// 'SELECT Robots.* FROM Robots WHERE Robots.type = 'virtual' AND Robots.id > 50';
-$builder->from('Robots')
-        ->where("type = 'virtual'")
-        ->andWhere('id > 50');
+```php
+public function forUpdate(bool $forUpdate): BuilderInterface
+```
 
-// 'SELECT Robots.* FROM Robots WHERE Robots.type = 'virtual' OR Robots.id > 50';
-$builder->from('Robots')
-        ->where("type = 'virtual'")
-        ->orWhere('id > 50');
+Sets a `FOR UPDATE` clause
 
-// 'SELECT Robots.* FROM Robots GROUP BY Robots.name';
-$builder->from('Robots')
-        ->groupBy('Robots.name');
+```php
+<?php
 
-// 'SELECT Robots.* FROM Robots GROUP BY Robots.name, Robots.id';
-$builder->from('Robots')
-        ->groupBy(['Robots.name', 'Robots.id']);
+$builder->forUpdate(true);
+```
 
-// 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name';
-$builder->columns(['Robots.name', 'SUM(Robots.price)'])
-    ->from('Robots')
-    ->groupBy('Robots.name');
+```php
+public function from(mixed $models): BuilderInterface
+```
 
-// 'SELECT Robots.name, SUM(Robots.price) FROM Robots GROUP BY Robots.name HAVING SUM(Robots.price) > 1000';
-$builder->columns(['Robots.name', 'SUM(Robots.price)'])
-    ->from('Robots')
-    ->groupBy('Robots.name')
-    ->having('SUM(Robots.price) > 1000');
+Sets the models for the query. The method accepts either a `string` or an `array`. If you specify an array with specific `keys`, they will be used as aliases for the relevant models.
 
-// 'SELECT Robots.* FROM Robots JOIN RobotsParts';
-$builder->from('Robots')
-    ->join('RobotsParts');
+```php
+<?php
 
-// 'SELECT Robots.* FROM Robots JOIN RobotsParts AS p';
-$builder->from('Robots')
-    ->join('RobotsParts', null, 'p');
+$builder->from(
+    Invoices::class
+);
 
-// 'SELECT Robots.* FROM Robots JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p';
-$builder->from('Robots')
-    ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p');
+$builder->from(
+    [
+        Invoices::class,
+        Customers::class,
+    ]
+);
 
-// 'SELECT Robots.* FROM Robots
-// JOIN RobotsParts ON Robots.id = RobotsParts.robots_id AS p
-// JOIN Parts ON Parts.id = RobotsParts.parts_id AS t';
-$builder->from('Robots')
-    ->join('RobotsParts', 'Robots.id = RobotsParts.robots_id', 'p')
-    ->join('Parts', 'Parts.id = RobotsParts.parts_id', 't');
+$builder->from(
+    [
+        'i' => Invoices::class,
+        'c' => Customers::class,
+    ]
+);
+```
 
-// 'SELECT r.* FROM Robots AS r';
-$builder->addFrom('Robots', 'r');
+```php
+public function groupBy(mixed $group): BuilderInterface
+```
 
-// 'SELECT Robots.*, p.* FROM Robots, Parts AS p';
-$builder->from('Robots')
-    ->addFrom('Parts', 'p');
+Adds a `GROUP BY` condition to the builder.
 
-// 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
-$builder->from(['r' => 'Robots'])
-        ->addFrom('Parts', 'p');
+```php
+<?php
 
-// 'SELECT r.*, p.* FROM Robots AS r, Parts AS p';
-$builder->from(['r' => 'Robots', 'p' => 'Parts']);
+$builder->groupBy(
+    [
+        "Invoices.inv_cst_id",
+    ]
+);
+```
 
-// 'SELECT Robots.* FROM Robots LIMIT 10';
-$builder->from('Robots')
-    ->limit(10);
+```php
+public function having(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
 
-// 'SELECT Robots.* FROM Robots LIMIT 10 OFFSET 5';
-$builder->from('Robots')
-        ->limit(10, 5);
+Sets the `HAVING` condition clause. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
 
-// 'SELECT Robots.* FROM Robots WHERE id BETWEEN 1 AND 100';
-$builder->from('Robots')
-        ->betweenWhere('id', 1, 100);
+```php
+<?php
 
-// 'SELECT Robots.* FROM Robots WHERE id IN (1, 2, 3)';
-$builder->from('Robots')
-        ->inWhere('id', [1, 2, 3]);
+$builder->having("SUM(Invoices.inv_total) > 1000");
 
-// 'SELECT Robots.* FROM Robots WHERE id NOT IN (1, 2, 3)';
-$builder->from('Robots')
-        ->notInWhere('id', [1, 2, 3]);
+$builder->having(
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
 
-// 'SELECT Robots.* FROM Robots WHERE name LIKE '%Art%';
-$builder->from('Robots')
-        ->where('name LIKE :name:', ['name' => '%' . $name . '%']);
+```php
+public function inHaving(
+    string $expr, 
+    array $values, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
 
-// 'SELECT r.* FROM Store\Robots WHERE r.name LIKE '%Art%';
-$builder->from(['r' => 'Store\Robots'])
-        ->where('r.name LIKE :name:', ['name' => '%' . $name . '%']);
+Appends a `IN` condition to the current `HAVING` conditions clause. The method accepts the expression, an array with the `IN` values as well as the operator for the `IN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->inHaving(
+    "SUM(Invoices.inv_total)",
+    [
+        1000,
+        5000,
+    ]
+);
+```
+
+```php
+public function innerJoin(
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
+): BuilderInterface
+```
+
+Adds an `INNER` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+
+```php
+<?php
+
+$builder->innerJoin(
+    Customers::class
+);
+
+$builder->innerJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
+);
+
+$builder->innerJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id",
+    "c"
+);
+```
+
+```php
+public function inWhere(
+    string $expr, 
+    array $values,  
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends an `IN` condition to the current `WHERE` conditions clause. The method accepts the expression, an array with the values for the `IN` clause as well as the operator for the `IN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->inWhere(
+    "Invoices.inv_id",
+    [1, 3, 5]
+);
+```
+
+```php
+public function join(
+    string $model, 
+    string $conditions = null, 
+    string $alias = null, 
+    string $type = null
+): BuilderInterface
+```
+
+Adds a join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias. The last parameter defines the `type` of the join. By default the join is `INNER`. Acceptable values are: `INNER`, `LEFT` and `RIGHT`.
+
+```php
+<?php
+
+$builder->join(
+    Customers::class
+);
+
+$builder->join(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
+);
+
+$builder->join(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id",
+    "c"
+);
+
+$builder->join(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id",
+    "c",
+    "INNER"
+);
+```
+
+```php
+public function leftJoin(
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
+): BuilderInterface
+```
+
+Adds a `LEFT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+
+```php
+<?php
+
+$builder->leftJoin(
+    Customers::class
+);
+
+$builder->leftJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
+);
+
+$builder->leftJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id",
+    "c"
+);
+```
+
+```php
+public function limit(
+    int $limit, 
+    mixed $offset = null
+): BuilderInterface
+```
+
+Sets a `LIMIT` clause, optionally an offset clause as the second parameter
+
+```php
+<?php
+
+$builder->limit(100);
+$builder->limit(100, 20);
+$builder->limit("100", "20");
+```
+
+```php
+public function notBetweenHaving(
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends a `NOT BETWEEN` condition to the current `HAVING` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `NOT BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->notBetweenHaving(
+    "SUM(Invoices.inv_total)",
+    1000,
+    5000
+);
+```
+
+```php
+public function notBetweenWhere(
+    string $expr, 
+    mixed $minimum, 
+    mixed $maximum, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends a `NOT BETWEEN` condition to the current `WHERE` conditions clause. The method accepts the expression, minimum and maximum as well as the operator for the `NOT BETWEEN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->notBetweenWhere(
+    "Invoices.inv_total",
+    1000,
+    5000
+);
+```
+
+```php
+public function notInHaving(
+    string $expr, 
+    array $values, 
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends a `NOT IN` condition to the current `HAVING` conditions clause. The method accepts the expression, an array with the `IN` values as well as the operator for the `NOT IN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->notInHaving(
+    "SUM(Invoices.inv_total)",
+    [
+        1000,
+        5000,
+    ]
+);
+```
+
+```php
+public function notInWhere(
+    string $expr, 
+    array $values,  
+    string $operator = BuilderInterface::OPERATOR_AND
+): BuilderInterface
+```
+
+Appends an `NOT IN` condition to the current `WHERE` conditions clause. The method accepts the expression, an array with the values for the `IN` clause as well as the operator for the `NOT IN` (`OPERATOR_AND` or `OPERATOR_OR`)
+
+```php
+<?php
+
+$builder->notInWhere(
+    "Invoices.inv_id",
+    [1, 3, 5]
+);
+```
+
+```php
+public function offset(int $offset): BuilderInterface
+```
+
+Sets an `OFFSET` clause
+
+```php
+<?php
+
+$builder->offset(30);
+```
+
+```php
+public function orderBy(mixed $orderBy): BuilderInterface
+```
+
+Sets an `ORDER BY` condition clause. The parameter can be a string or an array. You can also suffix each column with `ASC` or `DESC` to define the order direction.
+
+```php
+<?php
+
+$builder->orderBy("Invoices.inv_total");
+
+$builder->orderBy(
+    [
+        "Invoices.inv_total",
+    ]
+);
+
+$builder->orderBy(
+    [
+        "Invoices.inv_total DESC",
+    ]
+);
+```
+
+```php
+public function orHaving(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
+
+Appends a condition to the current `HAVING` condition clause using an `OR` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->orHaving("SUM(Invoices.inv_total) > 1000");
+
+$builder->orHaving(
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
+
+```php
+public function orWhere(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
+
+Appends a condition to the current `WHERE` condition clause using an `OR` operator. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->orWhere("SUM(Invoices.inv_total) > 1000");
+
+$builder->orWhere(
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
+
+```php
+public function rightJoin(
+    string $model, 
+    string $conditions = null, 
+    string $alias = null
+): BuilderInterface
+```
+
+Adds a `RIGHT` join to the query. The first parameter is the model. The join conditions are automatically calculated, if the relevant relationships have been properly set in the respective models. However you can set the conditions manually using the second parameter is the conditions, while the third one (if specified) is the alias.
+
+```php
+<?php
+
+$builder->rightJoin(
+    Customers::class
+);
+
+$builder->rightJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id"
+);
+
+$builder->rightJoin(
+    Customers::class,
+    "Invoices.inv_cst_id = Customers.cst_id",
+    "c"
+);
+```
+
+```php
+public function setBindParams(
+    array $bindParams, 
+    bool $merge = false
+): BuilderInterface
+```
+
+Set default bind parameters. The first parameter is an array, where the key is the bound parameter name or number. The second parameter is a boolean, instructing the component to merge the supplied parameters to the existing stack or not.
+
+```php
+<?php
+
+$builder->setBindParams(
+    [
+        "sum" => 1000,
+    ]
+);
+
+$builder->setBindParams(
+    [
+        "cst_id" => 10,
+    ],
+    true
+);
+
+$builder->where(
+    "SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:",
+    [
+        "sum"    => PDO::PARAM_INT,
+        "cst_id" => PDO::PARAM_INT,
+    ]
+);
+```
+
+```php
+public function setBindTypes(
+    array bindTypes, 
+    bool $merge = false
+): BuilderInterface
+```
+
+Set default bind types. The first parameter is an array, where the key is the bound parameter name or number. The second parameter is a boolean, instructing the component to merge the supplied parameters to the existing stack or not. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->setBindParams(
+    [
+        "sum" => 1000,
+    ]
+);
+
+$builder->setBindParams(
+    [
+        "cst_id" => 10,
+    ],
+    true
+);
+
+$builder->setBindTypes(
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+
+$builder->setBindTypes(
+    [
+        "cst_id" => PDO::PARAM_INT,
+    ],
+    true
+);
+
+$builder->where(
+    "SUM(Invoices.inv_total) > :sum: AND inv_cst_id > :cst_id:"
+);
+```
+
+```php
+public function where(
+    mixed $conditions, 
+    array $bindParams = [], 
+    array $bindTypes = []
+): BuilderInterface
+```
+
+Sets the `WHERE` condition clause. The first parameter is the expression. The second parameter is an array with the bound parameter name as the key. The last parameter is an array that defines the bound type for each parameter. The bound types are [PDO constants](https://www.php.net/manual/en/pdo.constants.php).
+
+```php
+<?php
+
+$builder->where("SUM(Invoices.inv_total) > 1000");
+
+$builder->where(
+    "SUM(Invoices.inv_total) > :sum:",
+    [
+        "sum" => 1000,
+    ],
+    [
+        "sum" => PDO::PARAM_INT,
+    ]
+);
+```
+
+### Examples
+
+```php
+<?php
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices
+$builder->from(Invoices::class);
+
+// SELECT 
+//      Invoices*, 
+//      Customers.* 
+// FROM 
+//      Invoices, 
+//      Customers
+$builder->from(
+    [
+        Invoices::class,
+        Customers::class,
+    ]
+);
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices
+$builder
+    ->columns('*')
+    ->from(Invoices::class)
+;
+
+// SELECT 
+//      Invoices.inv_id 
+// FROM 
+//      Invoices
+$builder
+    ->columns('inv_id')
+    ->from(Invoices::class)
+;
+
+// SELECT 
+//      Invoices.inv_id, 
+//      Invoices.inv_title 
+// FROM 
+//      Invoices
+$builder
+    ->columns(
+        [
+            'inv_id', 
+            'inv_title',
+        ]
+    )
+    ->from(Invoices::class)
+;
+
+// SELECT 
+//      Invoices.inv_id, 
+//      Invoices.title_alias 
+// FROM 
+//      Invoices
+$builder
+    ->columns(
+        [
+            'inv_id', 
+            'title_alias' => 'inv_title',
+        ]
+    )
+    ->from(Invoices::class)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      Invoices.inv_cst_id = 1
+$builder
+    ->from(Invoices::class)
+    ->where("Invoices.inv_cst_id = 1")
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      Invoices.inv_id = 1
+$builder
+    ->from(Invoices::class)
+    ->where(1)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      Invoices.inv_cst_id = 1
+// AND 
+//      Invoices.inv_total > 1000
+$builder
+    ->from(Invoices::class)
+    ->where("inv_cst_id = 1")
+    ->andWhere('inv_total > 1000')
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      Invoices.inv_cst_id = 1
+// OR 
+//      Invoices.inv_total > 1000
+$builder
+    ->from(Invoices::class)
+    ->where("inv_cst_id = 1")
+    ->orWhere('inv_total > 1000')
+;
+
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// GROUP BY 
+//      Invoices.inv_cst_id
+$builder
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// GROUP BY 
+//      Invoices.inv_cst_id,
+//      Invoices.inv_status_flag
+$builder
+    ->from(Invoices::class)
+    ->groupBy(
+        [
+            'Invoices.inv_cst_id',
+            'Invoices.inv_status_flag',
+        ]
+    )
+;
+
+// SELECT 
+//      Invoices.inv_title, 
+//      SUM(Invoices.inv_total) AS total
+// FROM 
+//      Invoices 
+// GROUP BY 
+//      Invoices.inv_cst_id
+$builder
+    ->columns(
+        [
+            'Invoices.inv_title', 
+            'total' => 'SUM(Invoices.inv_total)'
+        ]
+    )
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
+;
+
+// SELECT 
+//      Invoices.inv_title, 
+//      SUM(Invoices.inv_total) AS total
+// FROM 
+//      Invoices 
+// GROUP BY 
+//      Invoices.inv_cst_id
+// HAVING
+//      Invoices.inv_total > 1000
+$builder
+    ->columns(
+        [
+            'Invoices.inv_title', 
+            'total' => 'SUM(Invoices.inv_total)'
+        ]
+    )
+    ->from(Invoices::class)
+    ->groupBy('Invoices.inv_cst_id')
+    ->having('SUM(Invoices.inv_total) > 1000')
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// JOIN 
+//      Customers
+$builder
+    ->from(Invoices::class)
+    ->join(Customers::class)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// JOIN 
+//      Customers AS c
+$builder
+    ->from(Invoices::class)
+    ->join(Customers::class, null, 'c')
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices AS i
+// JOIN 
+//      Customers AS c
+// ON
+//      i.inv_cst_id = c.cst_id
+$builder
+    ->from(Invoices::class, 'i')
+    ->join(
+        Customers::class, 
+        'i.inv_cst_id = c.cst_id', 
+        'c'
+    )
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices AS i
+// JOIN 
+//      InvoicesXProducts AS x
+// ON
+//      i.inv_id = x.ixp_inv_id
+// JOIN 
+//      Products AS prd
+// ON
+//      x.ixp_prd_id = p.prd_id
+$builder
+    ->addFrom(Invoices::class, 'i')
+    ->join(
+        InvoicesXProducts::class, 
+        'i.inv_id = x.ixp_inv_id', 
+        'x'
+    )
+    ->join(
+        Products::class, 
+        'x.ixp_prd_id = p.prd_id', 
+        'p'
+    )
+;
+
+// SELECT 
+//      Invoices.*, 
+//      c.* 
+// FROM 
+//      Invoices, 
+//      Customers AS c
+$builder
+    ->from(Invoices::class)
+    ->addFrom(Customers::class, 'c')
+;
+
+// SELECT 
+//      i.*, 
+//      c.* 
+// FROM 
+//      Invoices AS i, 
+//      Customers AS c
+$builder
+    ->from(
+        [
+            'i' => Invoices::class,
+            'c' => Customers::class,
+        ]
+    )
+;
+
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// LIMIT 
+//      10
+$builder
+    ->from(Invoices::class)
+    ->limit(10)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// LIMIT 
+//      10
+// OFFSET
+//      5
+$builder
+    ->from(Invoices::class)
+    ->limit(10, 5)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      inv_id 
+// BETWEEN 
+//      1 
+// AND 
+//      100
+$builder
+    ->from(Invoices::class)
+    ->betweenWhere('inv_id', 1, 100)
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      inv_id 
+// IN 
+//      (1, 2, 3)
+$builder
+    ->from(Invoices::class)
+    ->inWhere(
+        'inv_id', 
+        [1, 2, 3]
+    )
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      inv_id 
+// NOT IN 
+//      (1, 2, 3)
+$builder
+    ->from(Invoices::class)
+    ->notInWhere(
+        'inv_id', 
+        [1, 2, 3]
+    )
+;
+
+// SELECT 
+//      Invoices.* 
+// FROM 
+//      Invoices 
+// WHERE 
+//      inv_title 
+// LIKE 
+//      '%ACME%';
+$title = 'ACME';
+$builder
+    ->from(Invoices::class)
+    ->where(
+        'inv_title LIKE :title:', 
+        [
+            'title' => '%' . $title . '%',
+        ]
+    )
+;
 ```
 
 ### Bound Parameters
 
-Bound parameters in the query builder can be set as the query is constructed or past all at once when executing:
+Bound parameters in the query builder can be set as the query is built or when it is being executed:
 
 ```php
 <?php
 
-// Passing parameters in the query construction
-$robots = $this->modelsManager->createBuilder()
-    ->from('Robots')
-    ->where('name = :name:', ['name' => $name])
-    ->andWhere('type = :type:', ['type' => $type])
+$invoices = $this
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->where(
+        'inv_cst_id = :cst_id:', 
+        [
+            'cst_id' => 1,
+        ]
+    )
+    ->andWhere(
+        'inv_total = :total:', 
+        [
+            'total' => 1000,
+        ]
+    )
     ->getQuery()
     ->execute();
 
-// Passing parameters in query execution
-$robots = $this->modelsManager->createBuilder()
-    ->from('Robots')
-    ->where('name = :name:')
-    ->andWhere('type = :type:')
+$invoices = $this
+    ->modelsManager
+    ->createBuilder()
+    ->from(Invoices::class)
+    ->where('inv_cst_id = :cst_id:')
+    ->andWhere('inv_total = :total:')
     ->getQuery()
-    ->execute(['name' => $name, 'type' => $type]);
+    ->execute(
+        [
+            'cst_id' => 1,
+            'total'  => 1000,
+        ]
+    )
+;
 ```
 
-## Disallow literals in PHQL
+## Disable literals in PHQL
 
-Literals can be disabled in PHQL, this means that directly using strings, numbers and boolean values in PHQL strings will be disallowed. If PHQL statements are created embedding external data on them, this could open the application to potential SQL injections:
+Literals can be disabled in PHQL. This means that you will not be able to use strings, numbers or boolean values in PHQL. You will have to use bound parameters instead.
+
+> Disabling literals increases the security of your database statements and reduces the possibility of SQL injections.
+{: .alert .alert-info }
+
+The following query could potentially lead to a SQL injection:
 
 ```php
 <?php
 
-$login  = 'voltron';
-$phql   = "SELECT * FROM Models\Users WHERE login = '$login'";
+$login  = 'admin';
+$phql   = "SELECT * FROM Users WHERE login = '$login'";
 $result = $manager->executeQuery($phql);
 ```
 
 If `$login` is changed to `' OR '' = '`, the produced PHQL is:
 
 ```sql
-SELECT * FROM Models\Users WHERE login = '' OR '' = ''
+SELECT * FROM Users WHERE login = '' OR '' = ''
 ```
 
-Which is always `true` no matter what the login stored in the database is.
-
-If literals are disallowed strings can be used as part of a PHQL statement, thus an exception will be thrown forcing the developer to use bound parameters. The same query can be written in a secure way like this:
+Which is always `true` no matter what the login stored in the database is. If literals are disabled, using strings, numbers or booleans in PHQL strings will cause an exception to be thrown, forcing the developer to use bound parameters. The same query can be written more securely as:
 
 ```php
 <?php
 
-$type   = 'virtual';
-$phql   = 'SELECT Robots.* FROM Robots WHERE Robots.type = :type:';
+$login  = 'admin';
+$phql   = "SELECT * FROM Users WHERE login = :login:";
 $result = $manager->executeQuery(
     $phql,
     [
-        'type' => $type,
+        'login' => $login,
     ]
 );
 ```
 
-You can disallow literals in the following way:
+You can disallow literals as follows:
 
 ```php
 <?php
@@ -893,11 +2818,11 @@ Model::setup(
 );
 ```
 
-Bound parameters can be used even if literals are allowed or not. Disallowing them is just another security decision a developer could take in web applications.
+You can (and should) use bound parameters whether literals are disabled or not.
 
-## Escaping Reserved Words
+## Reserved Words
 
-PHQL has a few reserved words, if you want to use any of them as attributes or models names, you need to escape those words using the cross-database escaping delimiters `[` and `]`:
+PHQL uses some reserved words internally. If you want to use any of them as attributes or model names, you will need to escape them using the cross-database escaping delimiters `[` and `]`:
 
 ```php
 <?php
@@ -909,9 +2834,9 @@ $phql   = 'SELECT id, [Like] FROM Posts';
 $result = $manager->executeQuery($phql);
 ```
 
-The delimiters are dynamically translated to valid delimiters depending on the database system where the application is currently running on.
+The delimiters are dynamically translated to valid delimiters depending on the database system where the application connecting to.
 
-## PHQL Lifecycle
+## Lifecycle
 
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 
@@ -919,9 +2844,9 @@ Being a high-level language, PHQL gives developers the ability to personalize an
 * The IR is converted to valid SQL according to the database system associated to the model
 * PHQL statements are parsed once and cached in memory. Further executions of the same statement result in a slightly faster execution
 
-## Using Raw SQL
+## Raw SQL
 
-A database system could offer specific SQL extensions that aren't supported by PHQL, in this case, a raw SQL can be appropriate:
+A database system could offer specific SQL extensions that are not supported by PHQL, in this case, a raw SQL can be appropriate:
 
 ```php
 <?php
@@ -929,21 +2854,18 @@ A database system could offer specific SQL extensions that aren't supported by P
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
-class Robots extends Model
+class Invoices extends Model
 {
     public static function findByCreateInterval()
     {
-        // A raw SQL statement
-        $sql = 'SELECT * FROM robots WHERE id > 0';
-
-        // Base model
-        $robot = new Robots();
+        $sql     = 'SELECT * FROM Invoices WHERE inv_id > 1';
+        $invoice = new Invoices();
 
         // Execute the query
         return new Resultset(
             null,
-            $robot,
-            $robot->getReadConnection()->query($sql)
+            $invoice,
+            $invoice->getReadConnection()->query($sql)
         );
     }
 }
@@ -957,21 +2879,20 @@ If raw SQL queries are common in your application a generic method could be adde
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Resultset\Simple as Resultset;
 
-class Robots extends Model
+class Invoices extends Model
 {
-    public static function findByRawSql($conditions, $params = null)
-    {
-        // A raw SQL statement
-        $sql = 'SELECT * FROM robots WHERE $conditions';
-
-        // Base model
-        $robot = new Robots();
+    public static function findByRawSql(
+        string $conditions, 
+        array $params = null
+    ) {
+        $sql     = 'SELECT * FROM Invoices WHERE ' . $conditions;
+        $invoice = new Invoices();
 
         // Execute the query
         return new Resultset(
             null,
-            $robot,
-            $robot->getReadConnection()->query($sql, $params)
+            $invoice,
+            $invoice->getReadConnection()->query($sql, $params)
         );
     }
 }
@@ -982,8 +2903,8 @@ The above `findByRawSql` could be used as follows:
 ```php
 <?php
 
-$robots = Robots::findByRawSql(
-    'id > ?',
+$robots = Invoices::findByRawSql(
+    'id > ?0',
     [
         10
     ]
@@ -994,7 +2915,7 @@ $robots = Robots::findByRawSql(
 
 Some things to keep in mind when using PHQL:
 
-* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case-sensitive file systems such as Linux.
-* Correct charset must be defined in the connection to bind parameters with success.
-* Aliased classes aren't replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
-* If column renaming is enabled avoid using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
+* Classes are case-sensitive, if a class is not defined with the same name as it was created this could lead to an unexpected behavior in operating systems with case sensitive file systems such as Linux.
+* The correct charset must be defined in the connection to bind parameters successfully.
+* Aliased classes are not replaced by full namespaced classes since this only occurs in PHP code and not inside strings.
+* If column renaming is enabled avoid, using column aliases with the same name as columns to be renamed, this may confuse the query resolver.
