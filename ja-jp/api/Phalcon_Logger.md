@@ -502,7 +502,7 @@ Processes the message i.e. writes it to the file
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
-| Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
 Phalcon\Logger\Adapter\Syslog
 
@@ -861,7 +861,7 @@ public function getType(): integer
 
 | Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\AdapterFactory |
 
-PhalconNG\Logger\LoggerFactory
+Phalcon\Logger\LoggerFactory
 
 Logger factory
 
