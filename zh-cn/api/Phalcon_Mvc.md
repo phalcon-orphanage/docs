@@ -2368,12 +2368,12 @@ protected function _exists( MetaDataInterface $metaData, AdapterInterface $conne
 Checks whether the current record already exists
 
 ```php
-protected function _getRelatedRecords( string $modelName, string $method, mixed $arguments );
+protected function _getRelatedRecords( string $modelName, string $method, array $arguments );
 ```
 
-Returns related records defined relations depending on the method name
+Returns related records defined relations depending on the method name. Returns false if the relation is non-existent.
 
-@return mixed
+@return ResultsetInterface|ModelInterface|bool|null
 
 ```php
 protected static function _groupResult( string $functionName, string $alias, mixed $parameters ): ResultsetInterface;
