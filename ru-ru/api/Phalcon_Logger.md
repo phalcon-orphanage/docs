@@ -57,7 +57,7 @@ $logger
         ->info('This does not go to the "manager" logger);
 ```
 
-## Константы
+## Constants
 
 ```php
 const ALERT = 2;
