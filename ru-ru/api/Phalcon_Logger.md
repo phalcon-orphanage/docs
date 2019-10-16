@@ -95,7 +95,7 @@ protected excluded;
 
 ```
 
-## Методы
+## Methods
 
 ```php
 public function __construct( string $name, array $adapters = [] );
