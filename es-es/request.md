@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'HTTP Request'
+keywords: 'http, http request, request'
 ---
 
 # Request Component
@@ -255,8 +256,23 @@ $container->set(
     function () {
         $request = new Request();
         $request
-            ->setParameterFilters('id', Filter::FILTER_ABSINT, ['post'])
-            ->setParameterFilters('name', ['trim', 'string'], ['post'])
+            ->setParameterFilters(
+                'id', 
+                Filter::FILTER_ABSINT, 
+                [
+                    'post'
+                ]
+            )
+            ->setParameterFilters(
+                'name', 
+                [
+                    'trim', 
+                    'string'
+                ], 
+                [
+                    'post'
+                ]
+            )
         ;
 
         return $request;
@@ -280,7 +296,7 @@ use Phalcon\Http\Request;
 use Phalcon\Mvc\Controller;
 
 /**
- * Clase PostsController
+ * Class PostsController
  * 
  * @property Request $request
  */
@@ -288,11 +304,15 @@ class PostsController extends Controller
 {
     public function saveAction()
     {
-        // Comprobar si la consulta fue hecha con POST
+        // Check if request has made with POST
         if (true === $this->request->isPost()) {
-            // Acceder a datos POST
-            $customerName = $this->request->getPost('name');
-            $customerBorn = $this->request->getPost('born', 'string', '1984');
+            // Access POST data
+            $customerName = $this
+                ->request
+                ->getPost('name');
+            $customerBorn = $this
+                ->request
+                ->getPost('born', 'string', '1984');
         }
     }
 }
@@ -359,25 +379,45 @@ if ($request->isAjax()) {
 if ($request->isSecure()) {
     echo 'The request was made using a secure layer';
 }
+```
 
-// Get the servers's IP address. Por ejemplo: 192.168.0.100
+Some methods:
+
+```php
 $ipAddress = $request->getServerAddress();
+```
 
-// Obtener la dirección IP del cliente. Por ejemplo: 201.245.53.51
+Get the servers's IP address. Por ejemplo, `192.168.0.100`
+
+```php
 $ipAddress = $request->getClientAddress();
+```
 
-// Obtener el agente del usuario (HTTP_USER_AGENT)
+Get the client's IP address ie. `201.245.53.51`
+
+```php
 $userAgent = $request->getUserAgent();
+```
 
-// Obtener el mejor contenido aceptable por el navegador. Por ejemplo: text/xml
+Get the User Agent (`HTTP_USER_AGENT`)
+
+```php
 $contentType = $request->getAcceptableContent();
+```
 
-// Obtener el mejor conjunto de caracteres aceptados por el navegador. Por ejemplo, utf-8
+Get the best acceptable content by the browser. ie text/xml
+
+```php
 $charset = $request->getBestCharset();
+```
 
-// Obtener el mejor idioma aceptado configurado por el navegador. Por ejemplo, en-us
+Get the best charset accepted by the browser. Por ejemplo, `utf-8`
+
+```php
 $language = $request->getBestLanguage();
 ```
+
+Get the best language accepted configured in the browser. Por ejemplo, `en-us`
 
 ### Método
 
@@ -394,10 +434,7 @@ $request = new Request();
 $_SERVER['REQUEST_METHOD'] = 'POST';
 echo $request->getMethod();
 
-// GET
 /**
- * Assume
- * 
  * header('X-HTTP-Method-Override: GET');
  */ 
 $_SERVER['REQUEST_METHOD'] = 'POST';
@@ -463,16 +500,12 @@ class PostsController extends Controller
 {
     public function uploadAction()
     {
-        // Check if the user has uploaded files
         if ($this->request->hasFiles()) {
             $files = $this->request->getUploadedFiles();
 
-            // Print the real file names and sizes
             foreach ($files as $file) {
-                // Print file details
                 echo $file->getName(), ' ', $file->getSize(), '\n';
 
-                // Move the file into the application
                 $file->moveTo(
                     'files/' . $file->getName()
                 );
@@ -571,7 +604,11 @@ class NegotiateAuthorizationListener
             return false;
         }
 
-        list($type,) = explode(' ', $data['server']['CUSTOM_KERBEROS_AUTH'], 2);
+        list($type,) = explode(
+            ' ', 
+            $data['server']['CUSTOM_KERBEROS_AUTH'], 
+            2
+        );
 
         if (!$type || stripos($type, 'negotiate') !== 0) {
             return false;
@@ -583,7 +620,8 @@ class NegotiateAuthorizationListener
     }
 }
 
-$_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate a87421000492aa874209af8bc028';
+$_SERVER['CUSTOM_KERBEROS_AUTH'] = 'Negotiate '
+                                 . 'a87421000492aa874209af8bc028';
 
 $di = new Di();
 
