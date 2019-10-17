@@ -708,10 +708,7 @@ class EventsManager implements ManagerInterface
      * @param string          $eventType
      * @param object|callable $handler
      */
-    public function attach(string $eventType, $handler)
-    {
-    
-    }
+    public function attach(string $eventType, $handler);
 
     /**
      * Detach the listener from the events manager
@@ -719,20 +716,14 @@ class EventsManager implements ManagerInterface
      * @param string          $eventType
      * @param object|callable $handler
      */
-    public function detach(string $eventType, $handler)
-    {
-    
-    }
+    public function detach(string $eventType, $handler;
 
     /**
      * Removes all events from the EventsManager
      * 
      * @param string $type
      */
-    public function detachAll(string $type = null)
-    {
-    
-    }
+    public function detachAll(string $type = null);
 
     /**
      * Fires an event in the events manager causing the active 
@@ -750,9 +741,7 @@ class EventsManager implements ManagerInterface
         $source, 
         $data = null, 
         bool $cancelable = false
-    ) {
-
-    }
+    );
 
     /**
      * Returns all the attached listeners of a certain type
@@ -761,10 +750,7 @@ class EventsManager implements ManagerInterface
      *
      * @return array
      */
-    public function getListeners(string $type): array
-    {
-    
-    }
+    public function getListeners(string $type): array;
 
     /**
      * Check whether certain type of event has listeners
@@ -773,10 +759,7 @@ class EventsManager implements ManagerInterface
      *
      * @return bool
      */
-    public function hasListeners(string $type): bool
-    {
-    
-    }
+    public function hasListeners(string $type): bool;
 }
 ```
 

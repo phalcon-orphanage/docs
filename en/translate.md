@@ -13,7 +13,7 @@ keywords: 'translate, translations, translation adapters, native array, csv, get
 The component [Phalcon\Translate][translate] offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 
 ## Usage
-Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request][Phalcon_Http#request] object).
+Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request][request] object).
 
 ```php
 <?php
@@ -473,25 +473,31 @@ class MyTranslateAdapter implements AdapterInterface
     public function __construct(array $options);
 
     /**
-     * @param  string     $translateKey
-     * @param  array|null $placeholders
+     * @param  string $translateKey
+     * @param  array  $placeholders
+     * 
      * @return string
      */
-    public function t($translateKey, $placeholders = null);
+    public function t(string $translateKey, array $placeholders = []);
     
     /**
      * @param   string $translateKey
-     * @param   array $placeholders
+     * @param   array  $placeholders
+     * 
      * @return  string
      */
-    public function _(string $translateKey, $placeholders = null): string;
+    public function _(
+        string $translateKey, 
+        array $placeholders = []
+    ): string;
 
     /**
      * @param   string $index
-     * @param   array $placeholders
+     * @param   array  $placeholders
+     * 
      * @return  string
      */
-    public function query(string $index, $placeholders = null): string;
+    public function query(string $index, array $placeholders = []): string;
 
     /**
      * @param   string $index
@@ -632,20 +638,21 @@ $translator = $factory->newInstance(
 );
 ```
 
-[wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
-[php-gettext]: https://www.php.net/manual/book.gettext.php
-[incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
-[sprintf]: https://www.php.net/manual/en/function.sprintf.php
-[translate]: api/Phalcon_Translate
 [abstractadapter]: api/Phalcon_Translate#translate-adapter-abstractadapter
 [adapterinterface]: api/Phalcon_Translate#translate-adapter-adapterinterface
-[csv]: api/Phalcon_Translate#translate-adapter-csv
-[gettext]: api/Phalcon_Translate#translate-adapter-gettext
-[nativearray]: api/Phalcon_Translate#translate-adapter-nativearray
-[exception]: api/Phalcon_Translate#translate-exception
 [associativearray]: api/Phalcon_Translate#translate-interpolator-associativearray
+[csv]: api/Phalcon_Translate#translate-adapter-csv
+[exception]: api/Phalcon_Translate#translate-exception
+[gettext]: api/Phalcon_Translate#translate-adapter-gettext
+[incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
 [indexedarray]: api/Phalcon_Translate#translate-interpolator-indexedarray
 [interpolatorinterface]: api/Phalcon_Translate#translate-interpolator-interpolatorinterface
 [interpolatorfactory]: api/Phalcon_Translate#translate-interpolatorfactory
-[translatefactory]: api/Phalcon_Translate#translate-translatefactory
+[nativearray]: api/Phalcon_Translate#translate-adapter-nativearray
+[php-gettext]: https://www.php.net/manual/book.gettext.php
 [poedit]: https://poedit.net/
+[request]: api/Phalcon_Http#request
+[sprintf]: https://www.php.net/manual/en/function.sprintf.php
+[translate]: api/Phalcon_Translate
+[translatefactory]: api/Phalcon_Translate#translate-translatefactory
+[wiki-gettext]: https://en.wikipedia.org/wiki/Gettext
