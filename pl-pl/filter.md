@@ -4,6 +4,7 @@ language: 'pl-pl'
 version: '4.0'
 upgrade: '#filter'
 title: 'Filtr'
+keywords: 'filter, sanitize'
 ---
 
 # Filtr
@@ -323,10 +324,8 @@ class ProductsController extends Controller
     public function saveAction()
     {
         if (true === $this->request->isPost()) {
-            // Sanitizing price from input
             $price = $this->request->getPost('price', 'double');
 
-            // Sanitizing email from input
             $email = $this->request->getPost(
                 'customerEmail',
                 Filter::FILTER_EMAIL
