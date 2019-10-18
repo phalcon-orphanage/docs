@@ -1268,7 +1268,7 @@ public function __call( string $method, array $arguments );
 
 Handles method calls when a method is not implemented
 
-@return mixed
+@return mixed @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
 
 ```php
 public static function __callStatic( string $method, array $arguments );
@@ -1276,7 +1276,7 @@ public static function __callStatic( string $method, array $arguments );
 
 Handles method calls when a static method is not implemented
 
-@return mixed
+@return mixed @throws \Phalcon\Mvc\Model\Exception If the method doesn't exist
 
 ```php
 final public function __construct( mixed $data = null, DiInterface $container = null, ManagerInterface $modelsManager = null );

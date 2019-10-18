@@ -51,7 +51,7 @@ public function __construct( InterpolatorFactory $interpolator, array $options )
 //
 
 ```php
-public function _( string $translateKey, mixed $placeholders = null ): string;
+public function _( string $translateKey, array $placeholders = [] ): string;
 ```
 
 Returns the translation string of the given key (alias of method 't')
@@ -81,13 +81,13 @@ public function offsetUnset( mixed $offset ): void;
 Unsets a translation from the dictionary
 
 ```php
-public function t( string $translateKey, mixed $placeholders = null ): string;
+public function t( string $translateKey, array $placeholders = [] ): string;
 ```
 
 Returns the translation string of the given key
 
 ```php
-protected function replacePlaceholders( string $translation, mixed $placeholders = null ): string;
+protected function replacePlaceholders( string $translation, array $placeholders = [] ): string;
 ```
 
 Replaces placeholders by the values passed
@@ -111,13 +111,13 @@ public function exists( string $index ): bool;
 Check whether is defined a translation key in the internal array
 
 ```php
-public function query( string $translateKey, mixed $placeholders = null ): string;
+public function query( string $translateKey, array $placeholders = [] ): string;
 ```
 
 Returns the translation related to the given key
 
 ```php
-public function t( string $translateKey, mixed $placeholders = null ): string;
+public function t( string $translateKey, array $placeholders = [] ): string;
 ```
 
 Returns the translation string of the given key
@@ -157,7 +157,7 @@ public function exists( string $index ): bool;
 Check whether is defined a translation key in the internal array
 
 ```php
-public function query( string $index, mixed $placeholders = null ): string;
+public function query( string $index, array $placeholders = [] ): string;
 ```
 
 Returns the translation related to the given key
@@ -241,13 +241,13 @@ public function getLocale(): string
 ```
 
 ```php
-public function nquery( string $msgid1, string $msgid2, int $count, mixed $placeholders = null, string $domain = null ): string;
+public function nquery( string $msgid1, string $msgid2, int $count, array $placeholders = [], string $domain = null ): string;
 ```
 
 The plural version of gettext(). Some languages have more than one form for plural messages dependent on the count.
 
 ```php
-public function query( string $index, mixed $placeholders = null ): string;
+public function query( string $index, array $placeholders = [] ): string;
 ```
 
 Returns the translation related to the given key.
@@ -365,7 +365,7 @@ public function notFound( string $index ): string;
 Whenever a key is not found this medhod will be called
 
 ```php
-public function query( string $index, mixed $placeholders = null ): string;
+public function query( string $index, array $placeholders = [] ): string;
 ```
 
 Returns the translation related to the given key
