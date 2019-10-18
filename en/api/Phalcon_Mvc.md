@@ -327,7 +327,7 @@ protected handlerSuffix = Controller;
 
 ## Methods
 ```php
-public function forward( mixed $forward ): void;
+public function forward( array $forward ): void;
 ```
 Forwards the execution flow to another controller/action.
 
