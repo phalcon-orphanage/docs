@@ -297,7 +297,7 @@ public function enablePriorities( bool $enablePriorities ): void;
 Set if priorities are enabled in the EventsManager
 
 ```php
-public function fire( string $eventType, mixed $source, mixed $data = null, bool $cancelable = bool );
+public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
@@ -371,7 +371,7 @@ public function detachAll( string $type = null ): void;
 Removes all events from the EventsManager
 
 ```php
-public function fire( string $eventType, mixed $source, mixed $data = null );
+public function fire( string $eventType, object $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Fires an event in the events manager causing the active listeners to be notified about it
