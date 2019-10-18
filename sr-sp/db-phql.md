@@ -1589,7 +1589,7 @@ Whether you create a [Phalcon\Mvc\Query\Builder](api/Phalcon_Mvc#mvc-model-query
 * `conditions` - `array | string` - conditions (where)
 * `distinct` - `string` - distinct column 
 * `for_update` - `bool` - for update or not
-* `group` - `string` - group by columns
+* `group` - `array` - group by columns
 * `having` - `string` - having columns
 * `joins` - `array` - model classes used for joins
 * `limit` - `array | int` - limit for the records (i.e. `20` or `[20, 20]`)

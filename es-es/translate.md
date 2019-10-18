@@ -18,7 +18,7 @@ The component [Phalcon\Translate](api/Phalcon_Translate) offers multilingual cap
 
 ## Uso
 
-Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the \[Phalcon\Http\Request\]\[Phalcon_Http#request\] object).
+Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request](api/Phalcon_Http#request) object).
 
 ```php
 <?php
@@ -483,25 +483,31 @@ class MyTranslateAdapter implements AdapterInterface
     public function __construct(array $options);
 
     /**
-     * @param  string     $translateKey
-     * @param  array|null $placeholders
+     * @param  string $translateKey
+     * @param  array  $placeholders
+     * 
      * @return string
      */
-    public function t($translateKey, $placeholders = null);
+    public function t(string $translateKey, array $placeholders = []);
 
     /**
      * @param   string $translateKey
-     * @param   array $placeholders
+     * @param   array  $placeholders
+     * 
      * @return  string
      */
-    public function _(string $translateKey, $placeholders = null): string;
+    public function _(
+        string $translateKey, 
+        array $placeholders = []
+    ): string;
 
     /**
      * @param   string $index
-     * @param   array $placeholders
+     * @param   array  $placeholders
+     * 
      * @return  string
      */
-    public function query(string $index, $placeholders = null): string;
+    public function query(string $index, array $placeholders = []): string;
 
     /**
      * @param   string $index
