@@ -868,7 +868,7 @@ AdapterFactory constructor.
 
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 Create a new instance of the adapter
 
