@@ -698,7 +698,7 @@ The above example produces:
 > In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
 {: .alert .alert-info }
 
-## Exception
+## Exceptions
 
 Any exceptions thrown in the Paginator component will be of type [Phalcon\Events\Exception](Phalcon_Events#events-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 
@@ -715,6 +715,133 @@ try {
     $eventsManager->attach('custom:custom', true);
 } catch (Exception $ex) {
     echo $ex->getMessage();
+}
+```
+
+## Controllers
+
+Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
+
+For instance if we want to send a user to the `/login` page if they are not logged in, we can add the following code in our master controller:
+
+```php
+<?php
+
+namespace MyApp\Controller;
+
+use Phalcon\Logger;
+use Phalcon\Dispatcher;
+use Phalcon\Http\Response;
+use Phalcon\Mvc\Controller;
+use MyApp\Auth\Adapters\AbstractAdapter;
+
+/**
+ * Class BaseController
+ *
+ * @property AbstractAdapter $auth
+ * @property Logger          $logger
+ * @property Response        $response
+ */
+class BaseController extends Controller
+{
+    /**
+     * Execute before the router so we can determine if 
+     * the user is logged in or not. If not, forward them
+     * to the login page.
+     *
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExecuteRoute(Dispatcher $dispatcher)
+    {
+        /**
+         * Send them to the login page if no identity exists
+         */
+        if (true !== $this->auth->isLoggedIn()) {
+            $this->response->redirect(
+                '/login',
+                true
+            );
+
+            return false;
+        }
+
+        return true;
+    }
+}
+```
+
+## Models
+
+Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
+
+In the following example, we are use the `beforeCreate` event, to automatically calculate an invoice number:
+
+```php
+<?php
+
+namespace MyApp\Controller;
+
+use Phalcon\Mvc\Model;use function str_pad;
+
+/**
+ * Class Invoices
+ *
+ * @property string $inv_created_at
+ * @property int    $inv_cst_id
+ * @property int    $inv_id
+ * @property string $inv_number
+ * @property string $inv_title
+ * @property float  $inv_total
+ */
+class Invoices extends Model
+{
+    /**
+     * @var int
+     */
+    public $inv_cst_id;
+
+    /**
+     * @var string
+     */
+    public $inv_created_at;
+
+    /**
+     * @var int
+     */
+    public $inv_id;
+
+    /**
+     * @var string
+     */
+    public $inv_number;
+
+    /**
+     * @var string
+     */
+    public $inv_title;
+
+    /**
+     * @var float
+     */
+    public $inv_total;
+
+    /**
+     * Fires before a record is created
+     */
+    public function beforeCreate()
+    {
+        $date     = date('YmdHis');
+        $customer = substr(
+            str_pad(
+                $this->inv_cst_id, 6, '0', STR_PAD_LEFT
+            ),
+            -6
+        );
+
+        $this->inv_number = 'INV-' . $customer . '-' . $date;
+    }
 }
 ```
 
@@ -794,95 +921,96 @@ class EventsManager implements ManagerInterface
 
 ## List of Events
 
-The events available in Phalcon are:
+The event will always have as The events available in Phalcon are:
 
-| Component                       | Event                                |
-| ------------------------------- | ------------------------------------ |
-| [ACL](acl)                      | `acl:afterCheckAccess`               |
-| [ACL](acl)                      | `acl:beforeCheckAccess`              |
-| [Application](application)      | `application:afterHandleRequest`     |
-| [Application](application)      | `application:afterStartModule`       |
-| [Application](application)      | `application:beforeHandleRequest`    |
-| [Application](application)      | `application:beforeSendResponse`     |
-| [Application](application)      | `application:beforeStartModule`      |
-| [Application](application)      | `application:boot`                   |
-| [Application](application)      | `application:viewRender`             |
-| [CLI](application-cli)          | `dispatch:beforeException`           |
-| [Console](application-cli)      | `console:afterHandleTask`            |
-| [Console](application-cli)      | `console:afterStartModule`           |
-| [Console](application-cli)      | `console:beforeHandleTask`           |
-| [Console](application-cli)      | `console:beforeStartModule`          |
-| [Console](application-cli)      | `console:boot`                       |
-| [Db](db-layer)                  | `db:afterQuery`                      |
-| [Db](db-layer)                  | `db:beforeQuery`                     |
-| [Db](db-layer)                  | `db:beginTransaction`                |
-| [Db](db-layer)                  | `db:createSavepoint`                 |
-| [Db](db-layer)                  | `db:commitTransaction`               |
-| [Db](db-layer)                  | `db:releaseSavepoint`                |
-| [Db](db-layer)                  | `db:rollbackTransaction`             |
-| [Db](db-layer)                  | `db:rollbackSavepoint`               |
-| [Dispatcher](dispatcher)        | `dispatch:afterExecuteRoute`         |
-| [Dispatcher](dispatcher)        | `dispatch:afterDispatch`             |
-| [Dispatcher](dispatcher)        | `dispatch:afterDispatchLoop`         |
-| [Dispatcher](dispatcher)        | `dispatch:afterInitialize`           |
-| [Dispatcher](dispatcher)        | `dispatch:beforeException`           |
-| [Dispatcher](dispatcher)        | `dispatch:beforeExecuteRoute`        |
-| [Dispatcher](dispatcher)        | `dispatch:beforeDispatch`            |
-| [Dispatcher](dispatcher)        | `dispatch:beforeDispatchLoop`        |
-| [Dispatcher](dispatcher)        | `dispatch:beforeForward`             |
-| [Dispatcher](dispatcher)        | `dispatch:beforeNotFoundAction`      |
-| [Loader](loader)                | `loader:afterCheckClass`             |
-| [Loader](loader)                | `loader:beforeCheckClass`            |
-| [Loader](loader)                | `loader:beforeCheckPath`             |
-| [Loader](loader)                | `loader:pathFound`                   |
-| [Micro](application-micro)      | `micro:afterHandleRoute`             |
-| [Micro](application-micro)      | `micro:afterExecuteRoute`            |
-| [Micro](application-micro)      | `micro:beforeExecuteRoute`           |
-| [Micro](application-micro)      | `micro:beforeHandleRoute`            |
-| [Micro](application-micro)      | `micro:beforeNotFound`               |
-| [Middleware](application-micro) | `micro::afterBinding`                |
-| [Middleware](application-micro) | `micro::afterExecuteRoute`           |
-| [Middleware](application-micro) | `micro::afterHandleRoute`            |
-| [Middleware](application-micro) | `micro::beforeExecuteRoute`          |
-| [Middleware](application-micro) | `micro::beforeHandleRoute`           |
-| [Middleware](application-micro) | `micro::beforeNotFound`              |
-| [Model](db-models)              | `model:afterCreate`                  |
-| [Model](db-models)              | `model:afterDelete`                  |
-| [Model](db-models)              | `model:afterSave`                    |
-| [Model](db-models)              | `model:afterUpdate`                  |
-| [Model](db-models)              | `model:afterValidation`              |
-| [Model](db-models)              | `model:afterValidationOnCreate`      |
-| [Model](db-models)              | `model:afterValidationOnUpdate`      |
-| [Model](db-models)              | `model:beforeDelete`                 |
-| [Model](db-models)              | `model:notDeleted`                   |
-| [Model](db-models)              | `model:beforeCreate`                 |
-| [Model](db-models)              | `model:beforeDelete`                 |
-| [Model](db-models)              | `model:beforeSave`                   |
-| [Model](db-models)              | `model:beforeUpdate`                 |
-| [Model](db-models)              | `model:beforeValidation`             |
-| [Model](db-models)              | `model:beforeValidationOnCreate`     |
-| [Model](db-models)              | `model:beforeValidationOnUpdate`     |
-| [Model](db-models)              | `model:notSave`                      |
-| [Model](db-models)              | `model:notSaved`                     |
-| [Model](db-models)              | `model:onValidationFails`            |
-| [Model](db-models)              | `model:prepareSave`                  |
-| [Models Manager](db-models)     | `modelsManager:afterInitialize`      |
-| [Request](request)              | `request:afterAuthorizationResolve`  |
-| [Request](request)              | `request:beforeAuthorizationResolve` |
-| [Response](response)            | `response:afterSendHeaders`          |
-| [Response](response)            | `response:beforeSendHeaders`         |
-| [Router](routing)               | `router:beforeCheckRoutes`           |
-| [Router](routing)               | `router:beforeCheckRoute`            |
-| [Router](routing)               | `router:matchedRoute`                |
-| [Router](routing)               | `router:notMatchedRoute`             |
-| [Router](routing)               | `router:afterCheckRoutes`            |
-| [Router](routing)               | `router:beforeMount`                 |
-| [View](view)                    | `view:afterRender`                   |
-| [View](view)                    | `view:afterRenderView`               |
-| [View](view)                    | `view:beforeRender`                  |
-| [View](view)                    | `view:beforeRenderView`              |
-| [View](view)                    | `view:notFoundView`                  |
-| [Volt](volt)                    | `compileFilter`                      |
-| [Volt](volt)                    | `compileFunction`                    |
-| [Volt](volt)                    | `compileStatement`                   |
-| [Volt](volt)                    | `resolveExpression`                  |
+| Component                   | Event                                | Parameters                                              |
+| --------------------------- | ------------------------------------ | ------------------------------------------------------- |
+| [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
+| [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
+| [Application](application)  | `application:afterHandleRequest`     | Application, Controller                                 |
+| [Application](application)  | `application:afterStartModule`       | Application, Module                                     |
+| [Application](application)  | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
+| [Application](application)  | `application:beforeSendResponse`     | Application, Response                                   |
+| [Application](application)  | `application:beforeStartModule`      | Application, Module                                     |
+| [Application](application)  | `application:boot`                   | Application                                             |
+| [Application](application)  | `application:viewRender`             | Application, View                                       |
+| [CLI](application-cli)      | `dispatch:beforeException`           | Console, Exception                                      |
+| [Console](application-cli)  | `console:afterHandleTask`            | Console, Task                                           |
+| [Console](application-cli)  | `console:afterStartModule`           | Console, Module                                         |
+| [Console](application-cli)  | `console:beforeHandleTask`           | Console, Dispatcher                                     |
+| [Console](application-cli)  | `console:beforeStartModule`          | Console, Module                                         |
+| [Console](application-cli)  | `console:boot`                       | Console                                                 |
+| [Db](db-layer)              | `db:afterQuery`                      | Db                                                      |
+| [Db](db-layer)              | `db:beforeQuery`                     | Db                                                      |
+| [Db](db-layer)              | `db:beginTransaction`                | Db                                                      |
+| [Db](db-layer)              | `db:createSavepoint`                 | Db, Savepoint Name                                      |
+| [Db](db-layer)              | `db:commitTransaction`               | Db                                                      |
+| [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
+| [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
+| [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
+| [Dispatcher](dispatcher)    | `dispatch:afterExecuteRoute`         | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:afterDispatch`             | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:afterDispatchLoop`         | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:afterInitialize`           | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [Dispatcher](dispatcher)    | `dispatch:beforeExecuteRoute`        | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:beforeDispatch`            | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:beforeDispatchLoop`        | Dispatcher                                              |
+| [Dispatcher](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array                                       |
+| [Dispatcher](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
+| [Firewall](acl)             | `firewall:beforeException`           | Adapter, Exception                                      |
+| [Firewall](acl)             | `firewall:afterCheck`                | Acl / Annotations / Acl                                 |
+| [Firewall](acl)             | `firewall:beforeCheck`               | Annotations                                             |
+| [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [Loader](loader)            | `loader:beforeCheckPath`             | Loader                                                  |
+| [Loader](loader)            | `loader:pathFound`                   | Loader, File Path                                       |
+| [Micro](application-micro)  | `micro:afterBinding`                 | Micro                                                   |
+| [Micro](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
+| [Micro](application-micro)  | `micro:afterExecuteRoute`            | Micro                                                   |
+| [Micro](application-micro)  | `micro:beforeException`              | Micro, Exception                                        |
+| [Micro](application-micro)  | `micro:beforeExecuteRoute`           | Micro                                                   |
+| [Micro](application-micro)  | `micro:beforeHandleRoute`            | Micro                                                   |
+| [Micro](application-micro)  | `micro:beforeNotFound`               | Micro                                                   |
+| [Model](db-models)          | `model:afterCreate`                  | Model                                                   |
+| [Model](db-models)          | `model:afterDelete`                  | Model                                                   |
+| [Model](db-models)          | `model:afterFetch`                   | Model                                                   |
+| [Model](db-models)          | `model:afterSave`                    | Model                                                   |
+| [Model](db-models)          | `model:afterUpdate`                  | Model                                                   |
+| [Model](db-models)          | `model:afterValidation`              | Model                                                   |
+| [Model](db-models)          | `model:afterValidationOnCreate`      | Model                                                   |
+| [Model](db-models)          | `model:afterValidationOnUpdate`      | Model                                                   |
+| [Model](db-models)          | `model:beforeDelete`                 | Model                                                   |
+| [Model](db-models)          | `model:beforeCreate`                 | Model                                                   |
+| [Model](db-models)          | `model:beforeSave`                   | Model                                                   |
+| [Model](db-models)          | `model:beforeUpdate`                 | Model                                                   |
+| [Model](db-models)          | `model:beforeValidation`             | Model                                                   |
+| [Model](db-models)          | `model:beforeValidationOnCreate`     | Model                                                   |
+| [Model](db-models)          | `model:beforeValidationOnUpdate`     | Model                                                   |
+| [Model](db-models)          | `model:notDeleted`                   | Model                                                   |
+| [Model](db-models)          | `model:notSaved`                     | Model                                                   |
+| [Model](db-models)          | `model:onValidationFails`            | Model                                                   |
+| [Model](db-models)          | `model:prepareSave`                  | Model                                                   |
+| [Model](db-models)          | `model:validation`                   | Model                                                   |
+| [Models Manager](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
+| [Request](request)          | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
+| [Request](request)          | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
+| [Response](response)        | `response:afterSendHeaders`          | Response                                                |
+| [Response](response)        | `response:beforeSendHeaders`         | Response                                                |
+| [Router](routing)           | `router:afterCheckRoutes`            | Router                                                  |
+| [Router](routing)           | `router:beforeCheckRoutes`           | Router                                                  |
+| [Router](routing)           | `router:beforeCheckRoute`            | Router, Route                                           |
+| [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
+| [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
+| [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
+| [View](view)                | `view:afterCompile`                  | Volt                                                    |
+| [View](view)                | `view:afterRender`                   | View                                                    |
+| [View](view)                | `view:afterRenderView`               | View                                                    |
+| [View](view)                | `view:beforeCompile`                 | Volt                                                    |
+| [View](view)                | `view:beforeRender`                  | View                                                    |
+| [View](view)                | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [View](view)                | `view:notFoundView`                  | View, View Engine Path                                  |
+| [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
+| [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
+| [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |
+| [Volt](volt)                | `resolveExpression`                  | Volt, [expression]                                      |
