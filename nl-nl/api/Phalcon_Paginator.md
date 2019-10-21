@@ -280,7 +280,7 @@ Exceptions thrown in Phalcon\Paginator will use this class
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/paginatorfactory.zep)
 
-| Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -297,7 +297,7 @@ public function __construct( array $services = [] );
 AdapterFactory constructor.
 
 ```php
-public function load( mixed $config ): mixed;
+public function load( mixed $config ): AdapterInterface;
 ```
 
 Factory to create an instace from a Config object
@@ -323,7 +323,7 @@ $paginator = (new PaginatorFactory())->load($options);
 ```
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
 Create a new instance of the adapter
@@ -338,7 +338,7 @@ protected function getAdapters(): array;
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repository.zep)
 
-| Namespace | Phalcon\Paginator | | Uses | Phalcon\Helper\Arr | | Implements | RepositoryInterface |
+| Namespace | Phalcon\Paginator | | Uses | JsonSerializable, Phalcon\Helper\Arr | | Implements | RepositoryInterface, JsonSerializable |
 
 Phalcon\Paginator\Repository
 
@@ -420,6 +420,12 @@ public function getTotalItems(): int;
 ```
 {@inheritdoc}
 
+
+```php
+public function jsonSerialize(): array;
+```
+
+See [jsonSerialize](https://php.net/manual/en/jsonserializable.jsonserialize.php)
 
 ```php
 public function setAliases( array $aliases ): RepositoryInterface;
