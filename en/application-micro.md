@@ -272,6 +272,11 @@ class OrdersController extends Controller
 }
 ```
 
+##### Named routes
+
+The routes defined in [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) can be named in order to be used with [Phalcon\Mvc\Url](api/Phalcon_Mvc_Url] for [generating urls](url.md).
+
+TODO : examples.
 
 #### Lazy Loading
 In order to increase performance, you might consider implementing lazy loading for your controllers (handlers). The controller will be loaded only if the relevant route is matched.
