@@ -713,10 +713,28 @@ $app
     ->setName('show-order');
 ```
 
+* That naming process is handled internally by the [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection) when such a component is mounted on the app. It needs the name as the optional third parameter of the methods setting the routes.
+
+```php
+// Orders handler
+$orders = new MicroCollection();
+
+$orders->setHandler(
+    new OrdersController()
+);
+
+$orders->setPrefix('/users');
+
+$orders->get('/get/{id}', 'get', 'get-order');
+$orders->get('/add/{payload}', 'add', 'add-order);
+
+$app->mount($orders);
+```
+
 * We need to use the [Phalcon\Url](api/Phalcon_Url) component to generate URLs for the named routes.
 
 ```php
-// Usar el nombre de ruta y generar una URL desde esta
+// Use the named route and produce a URL from it
 $app->get(
     '/',
     function () use ($app) {
@@ -779,7 +797,7 @@ $app->setDI($di);
 $app->get(
     '/',
     function () use ($app) {
-        // Leer una configuración desde el config
+        // Read a setting from the config
         echo $app->config->app_name;
     }
 );
@@ -802,7 +820,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Establece el servicio de Base de Datos
+// Setup the database service
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -903,11 +921,11 @@ You can also use the [Phalcon\Http\Response](api/Phalcon_Http_Response) object t
 $app->get(
     '/show/data',
     function () use ($app) {
-        // Establecer la cabecera Content-Type
+        // Set the Content-Type header
         $app->response->setContentType('text/plain');
         $app->response->sendHeaders();
 
-        // Imprimir un archivo
+        // Print a file
         readfile('data.txt');
     }
 );
@@ -925,7 +943,7 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Devuelve una respuesta
+// Return a response
 $app->get(
     '/welcome/index',
     function () {
@@ -990,7 +1008,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Crear un gestor de eventos
+// Create a events manager
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1002,7 +1020,7 @@ $eventsManager->attach(
             $app->response->redirect('/');
             $app->response->sendHeaders();
 
-            // Devolver (false) y detener la operación
+            // Return (false) stop the operation
             return false;
         }
     }
@@ -1010,7 +1028,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Enlazar el gestor de eventos a la aplicación
+// Bind the events manager to the app
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1025,7 +1043,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Crear un gestor de eventos
+// Create a events manager
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1040,7 +1058,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Enlazar el gestor de eventos a la aplicación
+// Bind the events manager to the app
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1072,8 +1090,8 @@ This event is perfect for stopping execution of the application if certain crite
 
 $app = new Phalcon\Mvc\Micro();
 
-// Ejecutado antes que cada route se ejecute
-// Retornar false cancela la ejecución del route
+// Executed before every route is executed
+// Return false cancels the route execution
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
@@ -1081,7 +1099,7 @@ $app->before(
 
             $app['response']->redirect('/error');
 
-            // Retornamos false para detener la ejecución 
+            // Return false stops the normal execution
             return false;
         }
 
@@ -1171,7 +1189,7 @@ use Website\Middleware\NotFoundMiddleware;
 use Website\Middleware\ResponseMiddleware;
 
 /**
- * Crear un nuevo Gestor de Eventos.
+ * Create a new Events Manager.
  */
 $eventsManager = new Manager();
 $application   = new Micro();
@@ -1352,12 +1370,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * NotFoundMiddleware
  *
- * Procesa los 404s
+ * Processes the 404s
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
-     * La ruta no ha sido encontrada
+     * The route has not been found
      *
      * @returns bool
      */
@@ -1370,7 +1388,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Llama al middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1397,12 +1415,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RedirectMiddleware
  *
- * Verificar la solicitud y redireccionar al usuario a algún lugar si se necesario
+ * Checks the request and redirects the user somewhere else if need be
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
     /**
-     * Antes que nada ocurra
+     * Before anything happens
      *
      * @param Event $event
      * @param Micro $application
@@ -1422,7 +1440,7 @@ class RedirectMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Llama al middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1449,12 +1467,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CORSMiddleware
  *
- * Verificación CORS
+ * CORS checking
  */
 class CORSMiddleware implements MiddlewareInterface
 {
     /**
-     * Antes de que algo suceda
+     * Before anything happens
      *
      * @param Event $event
      * @param Micro $application
@@ -1571,12 +1589,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
 * ResponseMiddleware
 *
-* Se manipula la respuesta
+* Manipulates the response
 */
 class ResponseMiddleware implements MiddlewareInterface
 {
      /**
-      * Antes que cualquier cosa ocurra
+      * Before anything happens
       *
       * @param Micro $application
       *
@@ -1690,11 +1708,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Devolver una vista
+// Return a rendered view
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Construir app/views/products/show.phtml pasando algunas variables
+        // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render(
             'products/show',
             [
@@ -1722,11 +1740,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Devuelve una vista
+// Return a rendered view
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Construye app/views/products/show.phtml pasando algunas variables
+        // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render(
             'products',
             'show',
