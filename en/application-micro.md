@@ -674,7 +674,7 @@ $app
     ->setName('show-order');
 ```
 
-* That naming process is handled internally by the [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection) when such a component is mounted on the app. It needs the name as the optional third paramater of the functions setting the routes.
+* That naming process is handled internally by the [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection) when such a component is mounted on the app. It needs the name as the optional third parameter of the methods setting the routes.
 
 ```php
 // Orders handler
