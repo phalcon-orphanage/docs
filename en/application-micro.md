@@ -686,8 +686,8 @@ $orders->setHandler(
 
 $orders->setPrefix('/users');
 
-$orders->get('/get/{id}', 'get', 'orders-get');
-$orders->get('/add/{payload}', 'add', 'orders-add);
+$orders->get('/get/{id}', 'get', 'get-order');
+$orders->get('/add/{payload}', 'add', 'add-order);
 
 $app->mount($orders);
 ```
