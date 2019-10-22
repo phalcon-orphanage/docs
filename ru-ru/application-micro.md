@@ -713,10 +713,28 @@ $app
     ->setName('show-order');
 ```
 
+* That naming process is handled internally by the [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection) when such a component is mounted on the app. It needs the name as the optional third parameter of the methods setting the routes.
+
+```php
+// Orders handler
+$orders = new MicroCollection();
+
+$orders->setHandler(
+    new OrdersController()
+);
+
+$orders->setPrefix('/users');
+
+$orders->get('/get/{id}', 'get', 'get-order');
+$orders->get('/add/{payload}', 'add', 'add-order);
+
+$app->mount($orders);
+```
+
 * We need to use the [Phalcon\Url](api/Phalcon_Url) component to generate URLs for the named routes.
 
 ```php
-// Используем именованный маршрут и создаем URL от него
+// Use the named route and produce a URL from it
 $app->get(
     '/',
     function () use ($app) {
@@ -757,6 +775,8 @@ $app->get(
 You can also create a Di container yourself, and assign it to the micro application, therefore manipulating the services depending on the needs of your application.
 
 ```php
+<?php
+
 use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Config\Adapter\Ini as IniConfig;
@@ -777,7 +797,7 @@ $app->setDI($di);
 $app->get(
     '/',
     function () use ($app) {
-        // Читаем настройки из конфига
+        // Read a setting from the config
         echo $app->config->app_name;
     }
 );
@@ -785,7 +805,7 @@ $app->get(
 $app->post(
     '/contact',
     function () use ($app) {
-        $app->flash->success('Что ты делаешь Дэйв?');
+        $app->flash->success('What are you doing Dave?');
     }
 );
 ```
@@ -800,7 +820,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as MysqlAdapter;
 
 $app = new Micro();
 
-// Настройка сервиса базы данных
+// Setup the database service
 $app['db'] = function () {
     return new MysqlAdapter(
         [
@@ -901,11 +921,11 @@ You can also use the [Phalcon\Http\Response](api/Phalcon_Http_Response) object t
 $app->get(
     '/show/data',
     function () use ($app) {
-        // Установка заголовка Content-Type
+        // Set the Content-Type header
         $app->response->setContentType('text/plain');
         $app->response->sendHeaders();
 
-        // Вывод файла
+        // Print a file
         readfile('data.txt');
     }
 );
@@ -923,14 +943,14 @@ use Phalcon\Http\Response;
 
 $app = new Micro();
 
-// Возврат объекта Response
+// Return a response
 $app->get(
     '/welcome/index',
     function () {
         $response = new Response();
 
-        $response->setStatusCode(401, 'Не авторизован');
-        $response->setContent('Доступ не авторизован');
+        $response->setStatusCode(401, 'Unauthorized');
+        $response->setContent('Access is not authorized');
 
         return $response;
     }
@@ -949,7 +969,7 @@ $app->get(
         $data = [
             'code'    => 401,
             'status'  => 'error',
-            'message' => 'Не авторизированный доступ',
+            'message' => 'Unauthorized access',
             'payload' => [],
         ];
 
@@ -988,7 +1008,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Создаем менеджер событий
+// Create a events manager
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1000,7 +1020,7 @@ $eventsManager->attach(
             $app->response->redirect('/');
             $app->response->sendHeaders();
 
-            // Возврат (false) останавливает операцию
+            // Return (false) stop the operation
             return false;
         }
     }
@@ -1008,7 +1028,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Привязываем менеджер событий к приложению
+// Bind the events manager to the app
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1023,7 +1043,7 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager as EventsManager;
 
-// Создаем менеджер событий
+// Create a events manager
 $eventsManager = new EventsManager();
 
 $eventsManager->attach(
@@ -1038,7 +1058,7 @@ $eventsManager->attach(
 
 $app = new Micro();
 
-// Привязываем менеджер событий к приложению
+// Bind the events manager to the app
 $app->setEventsManager($eventsManager);
 ```
 
@@ -1070,16 +1090,16 @@ This event is perfect for stopping execution of the application if certain crite
 
 $app = new Phalcon\Mvc\Micro();
 
-// Вызывается перед выполнением каждого маршрута
-// Возврат false отменяет выполнение маршрута
+// Executed before every route is executed
+// Return false cancels the route execution
 $app->before(
     function () use ($app) {
         if (false === $app['session']->get('auth')) {
-            $app['flashSession']->error("Пользователь не авторизован");
+            $app['flashSession']->error("The user isn't authenticated");
 
             $app['response']->redirect('/error');
 
-            // Возврат false останавливает нормальное выполнение
+            // Return false stops the normal execution
             return false;
         }
 
@@ -1350,12 +1370,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * NotFoundMiddleware
  *
- * Обрабатывает 404
+ * Processes the 404s
  */
 class NotFoundMiddleware implements MiddlewareInterface
 {
     /**
-     * Маршрут не был найден
+     * The route has not been found
      *
      * @returns bool
      */
@@ -1368,7 +1388,7 @@ class NotFoundMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1395,12 +1415,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * RedirectMiddleware
  *
- * Проверяет запрос и перенаправляет пользователя куда-нибудь еще, если необходимо
+ * Checks the request and redirects the user somewhere else if need be
  */
 class RedirectMiddleware implements MiddlewareInterface
 {
     /**
-     * Прежде чем что-то произойдет
+     * Before anything happens
      *
      * @param Event $event
      * @param Micro $application
@@ -1420,7 +1440,7 @@ class RedirectMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1447,12 +1467,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
  * CORSMiddleware
  *
- * Проверка CORS
+ * CORS checking
  */
 class CORSMiddleware implements MiddlewareInterface
 {
     /**
-     * Прежде, чем что-нибудь случится
+     * Before anything happens
      *
      * @param Event $event
      * @param Micro $application
@@ -1483,7 +1503,7 @@ class CORSMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Вызывает middleware
+     * Calls the middleware
      *
      * @param Micro $application
      *
@@ -1569,12 +1589,12 @@ use Phalcon\Mvc\Micro\MiddlewareInterface;
 /**
 * ResponseMiddleware
 *
-* Изменяет ответ
+* Manipulates the response
 */
 class ResponseMiddleware implements MiddlewareInterface
 {
      /**
-      * Прежде, чем что-нибудь случится
+      * Before anything happens
       *
       * @param Micro $application
       *
@@ -1688,11 +1708,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Вернуть отображенный вид
+// Return a rendered view
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Отобразить app/views/products/show.phtml с передачей некоторых переменных
+        // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render(
             'products/show',
             [
@@ -1720,11 +1740,11 @@ $app['view'] = function () {
     return $view;
 };
 
-// Вернуть отображенный вид
+// Return a rendered view
 $app->get(
     '/products/show',
     function () use ($app) {
-        // Отображаем app/views/products/show.phtml с передачей некоторых переменных
+        // Render app/views/products/show.phtml passing some variables
         echo $app['view']->render(
             'products',
             'show',
@@ -1749,7 +1769,7 @@ $app = new Phalcon\Mvc\Micro();
 $app->get(
     '/',
     function () {
-        throw new \Exception('Произошла ошибка', 401);
+        throw new \Exception('Some error happened', 401);
     }
 );
 
