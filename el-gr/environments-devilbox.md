@@ -3,6 +3,7 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'Environments - Devilbox'
+keywords: 'environment, devilbox, docker'
 ---
 
 # Περιβάλλοντα

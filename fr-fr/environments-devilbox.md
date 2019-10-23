@@ -3,6 +3,7 @@ layout: default
 language: 'fr-fr'
 version: '4.0'
 title: 'Environments - Devilbox'
+keywords: 'environment, devilbox, docker'
 ---
 
 # Environments
