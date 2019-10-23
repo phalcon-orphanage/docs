@@ -1,18 +1,21 @@
 ---
-layout: article
+layout: default
 language: 'ja-jp'
 version: '4.0'
+title: 'Database Migrations'
 ---
-
-**This article reflects v3.4 and has not yet been revised**
-
-<a name='overview'></a>
 
 # Database Migrations
 
+* * *
+
+![](/assets/images/document-status-under-review-red.svg)
+
+## Overview
+
 Migrations are a convenient way for you to alter your database in a structured and organized manner.
 
-<h5 class='alert alert-danger'>Migrations are available in <a href="/4.0/en/devtools-usage">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
+<h5 class='alert alert-danger'>Migrations are available in <a href="/3.4/en/devtools">Phalcon Developer Tools</a> You need at least Phalcon Framework version 0.5.0 to use developer tools.</h5>
 
 Often in development we need to update changes in production environments. Some of these changes could be database modifications like new fields, new tables, removing indexes, etc.
 
@@ -26,7 +29,7 @@ When a migration is generated a set of classes are created to describe how your 
 
 ## Schema Dumping
 
-The [Phalcon Developer Tools](/4.0/en/devtools-usage) provides scripts to manage migrations (generation, running and rollback).
+The [Phalcon Developer Tools](/3.4/en/devtools) provides scripts to manage migrations (generation, running and rollback).
 
 The available options for generating migrations are:
 
@@ -40,7 +43,7 @@ Each migration has a version identifier associated with it. The version number a
 
 When a migration is generated, instructions are displayed on the console to describe the different steps of the migration and the execution time of those statements. At the end, a migration version is generated.
 
-By default [Phalcon Developer Tools](/4.0/en/devtools-usage) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
+By default [Phalcon Developer Tools](/3.4/en/devtools) uses the `app/migrations` directory to dump the migration files. You can change the location by setting one of the parameters on the generation script. Each table in the database has its respective class generated in a separated file under a directory referring its version:
 
 ![](/assets/images/content/migrations-2.png)
 
@@ -158,11 +161,11 @@ The class is called `ProductsMigration_100`. Suffix 100 refers to the version 1.
 
 ### Defining Columns
 
-[Phalcon\Db\Column](api/Phalcon_Db_Column) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
+[Phalcon\Db\Column](api/Phalcon_Db) is used to define table columns. It encapsulates a wide variety of column related features. Its constructor receives as first parameter the column name and an array describing the column. The following options are available when describing columns:
 
 | オプション           | Description                                                                                                                                | Optional |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |:--------:|
-| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db_Column) constant (see below)                                                   |    No    |
+| `type`          | Column type. Must be a [Phalcon\Db\Column](api/Phalcon_Db) constant (see below)                                                          |    No    |
 | `size`          | Some type of columns like VARCHAR or INTEGER may have a specific size                                                                      |   Yes    |
 | `scale`         | DECIMAL or NUMBER columns may be have a scale to specify how much decimals it must store                                                   |   Yes    |
 | `unsigned`      | INTEGER columns may be signed or unsigned. This option does not apply to other types of columns                                            |   Yes    |
@@ -197,13 +200,13 @@ Database migrations support the following database column types:
 
 ### Defining Indexes
 
-[Phalcon\Db\Index](api/Phalcon_Db_Index) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
+[Phalcon\Db\Index](api/Phalcon_Db) defines table indexes. An index only requires that you define a name for it and a list of its columns. Note that if any index has the name PRIMARY, Phalcon will create a primary key index for that table.
 
 <a name='class-anatomy-references'></a>
 
 ### Defining References
 
-[Phalcon\Db\Reference](api/Phalcon_Db_Reference) defines table references (also called foreign keys). The following options can be used to define a reference:
+[Phalcon\Db\Reference](api/Phalcon_Db) defines table references (also called foreign keys). The following options can be used to define a reference:
 
 | Index               | Description                                                                                         | Optional | Implemented in   |
 | ------------------- | --------------------------------------------------------------------------------------------------- |:--------:| ---------------- |
@@ -218,7 +221,7 @@ Database migrations support the following database column types:
 
 ## Writing Migrations
 
-Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/db-layer).
+Migrations aren't only designed to 'morph' table. A migration is just a regular PHP class so you're not limited to these functions. For example after adding a column you could write code to set the value of that column for existing records. For more details and examples of individual methods, check the [database component](/3.4/en/db).
 
 ```php
 <?php
