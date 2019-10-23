@@ -3,6 +3,7 @@ layout: default
 language: 'pl-pl'
 version: '4.0'
 title: 'Session'
+keywords: 'session, session manager, session adapters, redis, libmemcached, none, stream'
 ---
 
 # Session
