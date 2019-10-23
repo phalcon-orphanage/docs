@@ -3,6 +3,7 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 title: 'Environments - Devilbox'
+keywords: 'environment, devilbox, docker'
 ---
 
 # Environments
@@ -13,7 +14,7 @@ title: 'Environments - Devilbox'
 
 ## Overview
 
-The [Devilbox](https://devilbox.com) The Devilbox is a modern and highly customisable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
+The [Devilbox](https://devilbox.org) The Devilbox is a modern and highly customisable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
 Furthermore, the Devilbox provides an identical and reproducible development environment for different host operating systems.
 
@@ -144,7 +145,7 @@ Save the file as `nginx.yml` and ensure not to use any tabs in the file or devil
 
 ## References
 
-- [Devilbox.com](https://devilbox.com)
+- [Devilbox.com](https://devilbox.org)
 - [Devilbox Documentation](https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html)
 - [HOST_PATH_HTTPD_DATADIR](https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-httpd-datadir)
 - [Enter the PHP container](https://devilbox.readthedocs.io/en/latest/getting-started/enter-the-php-container.html#enter-the-php-container) 
