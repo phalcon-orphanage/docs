@@ -22,7 +22,7 @@ If we want to increase performance, we will need to implement some layers of cac
 
 A well established technique to avoid querying the database in every request, is to cache resultsets that do not change frequently, using a system with faster access (usually memory).
 
-When [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a <cache> component that can store any kind of data. Integrating this service with your code requires a [Cache](cache) object.
+When [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) requires a service to cache resultsets, it will request it from the Dependency Injection Container. The service name is called `modelsCache`. Phalcon offers a <cache> component that can store any kind of data. Integrating this service with your code requires a [Cache](cache) object.
 
 ```php
 <?php
@@ -152,7 +152,7 @@ What resultsets to cache and for how long will depend on the needs of your appli
 
 ## Forcing Cache
 
-Earlier we saw how [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
+Earlier we saw how [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) integrates with the caching component provided by the framework. To make a record/resultset cacheable we pass the key `cache` in the array of parameters:
 
 ```php
 <?php
@@ -722,7 +722,7 @@ class CustomQueryBuilder extends QueryBuilder
 }
 ```
 
-Instead of directly returning a [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query), our custom builder returns a `CustomQuery` instance:
+Instead of directly returning a [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query), our custom builder returns a `CustomQuery` instance:
 
 ```php
 <?php
@@ -780,7 +780,7 @@ class CustomQuery extends ModelQuery
 }
 ```
 
-In the above code snippet we call the `parse()` method from the [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query) in order to get the intermediate representation of the PHQL query itself. We then ensure that we process all the parameters and types (if passed). Then we check if there are any conditions supplied in the `where` element of the intermediate representation. The fields in the conditions can have an `order` also. We will need to recursively check the conditions tree to find the information that we are looking for.
+In the above code snippet we call the `parse()` method from the [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query) in order to get the intermediate representation of the PHQL query itself. We then ensure that we process all the parameters and types (if passed). Then we check if there are any conditions supplied in the `where` element of the intermediate representation. The fields in the conditions can have an `order` also. We will need to recursively check the conditions tree to find the information that we are looking for.
 
 We are using the `CustomNodeVisitor` helper that recursively checks the conditions looking for fields that will return the range to be used in the cache.
 
