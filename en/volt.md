@@ -2121,7 +2121,7 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 [rtrim]: https://php.net/manual/en/function.rtrim.php
 [sprintf]: https://php.net/manual/en/function.sprintf.php
 [stripslashes]: https://php.net/manual/en/function.stripslashes.php
-[striptags]: https://php.net/manual/en/function.striptags.php
+[striptags]: https://php.net/manual/en/function.strip-tags.php
 [trim]: https://php.net/manual/en/function.trim.php
 [ucwords]: https://php.net/manual/en/function.ucwords.php
 [strtoupper]: https://www.php.net/manual/en/function.strtoupper.php

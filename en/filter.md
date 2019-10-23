@@ -57,7 +57,7 @@ $text = $locator->hello('World');
 
 ## Built-in
 
-> Where appropriate, the sanitizers will cast the value to the type expected. For example the [`absint`][absint] sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
+> Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
 
 The following are the built-in filters provided by this component:

@@ -640,7 +640,7 @@ class InvoicesController extends Controller
 }
 ```
 
-[incubator]: (https://github.com/phalcon/incubator/
+[incubator]: https://github.com/phalcon/incubator/
 [session-adapter-abstractadapter]: api/Phalcon_Session#session-adapter-abstractadapter
 [session-adapter-libmemcached]: api/Phalcon_Session#session-adapter-libmemcached
 [session-adapter-noop]: api/Phalcon_Session#session-adapter-noop

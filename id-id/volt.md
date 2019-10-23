@@ -519,7 +519,7 @@ The available built-in filters are:
 | `right_trim`       | Applies the [`rtrim`](https://php.net/manual/en/function.rtrim.php) PHP function to the value. Removing extra spaces                            |
 | `sort`             | Sorts an array using the PHP function [`asort`](https://php.net/manual/en/function.asort.php)                                                   |
 | `stripslashes`     | Applies the [`stripslashes`](https://php.net/manual/en/function.stripslashes.php) PHP function to the value. Removing escaped quotes            |
-| `striptags`        | Applies the [`striptags`](https://php.net/manual/en/function.striptags.php) PHP function to the value. Removing HTML tags                       |
+| `striptags`        | Applies the [`striptags`](https://php.net/manual/en/function.strip-tags.php) PHP function to the value. Removing HTML tags                       |
 | `trim`             | Applies the [`trim`](https://php.net/manual/en/function.trim.php) PHP function to the value. Removing extra spaces                              |
 | `upper`            | Applies the [`strtoupper`](https://www.php.net/manual/en/function.strtoupper.php) PHP function to the value.                                    |
 | `url_encode`       | Applies the [`urlencode`](https://php.net/manual/en/function.urlencode.php) PHP function to the value                                           |
