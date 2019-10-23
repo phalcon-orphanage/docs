@@ -23,7 +23,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 > `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
 {: .alert .alert-danger }
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](Phalcon_Crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
+Phalcon provides encryption facilities via the [Phalcon\Crypt](api/phalcon_crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
@@ -152,7 +152,7 @@ The `decryptBase64()` can be used to deecrypt a string in a URL friendly way. Si
 
 ## Exceptions
 
-Exceptions thrown in the [Phalcon\Crypt](Phalcon_Crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](Phalcon_Crypt#crypt-mismatch) will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Exceptions thrown in the [Phalcon\Crypt](api/phalcon_crypt#crypt) component will be of type \[Phalcon\Crypt\Exception\]\[config-exception\]. If however you are using signing and the calculated hash for `decrypt()` does not match, [Phalcon\Crypt\Mismatch](api/phalcon_crypt#crypt-mismatch) will be thrown. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -226,7 +226,7 @@ You can also set the padding used by the component by using `setPadding()`. By d
 
 ## Inyección de Dependencias
 
-As with most Phalcon components, you can store the [Phalcon\Crypt](Phalcon_Crypt#crypt) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+As with most Phalcon components, you can store the [Phalcon\Crypt](api/phalcon_crypt#crypt) object in your [Phalcon\Di](di) container. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 

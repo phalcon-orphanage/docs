@@ -19,7 +19,7 @@ CLI stands for Command Line Interface. CLI applications are executed from the co
 
 ## Yapı
 
-You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console](api/Phalcon_Cli#cli-console) class. This class extends from the main abstract application class, and uses a directory in which the Task scripts are located. Task scripts are classes that extend [Phalcon\Cli\Task](api/Phalcon_Cli#cli-task) and contain the code that we need executed.
+You can create a CLI application in Phalcon, using the [Phalcon\Cli\Console](api/phalcon_cli#cli-console) class. This class extends from the main abstract application class, and uses a directory in which the Task scripts are located. Task scripts are classes that extend [Phalcon\Cli\Task](api/phalcon_cli#cli-task) and contain the code that we need executed.
 
 The directory structure of a CLI application can look like this:
 
@@ -118,7 +118,7 @@ Create the Phalcon autoloader adn register the namespace to point to the `src/` 
 $container  = new CliDI();
 ```
 
-We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/Phalcon_Di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/Phalcon_Di#di) and register the services you need, one after another.
+We need a Dependency Injection container. You can use the [Phalcon\Di\FactoryDefault\Cli](api/phalcon_di#di-factorydefault-cli) container, which already has services registered for you. Alternatively, you can always use the [Phalcon\Di](api/phalcon_di#di) and register the services you need, one after another.
 
 **Gönderici**
 
@@ -129,7 +129,7 @@ $dispatcher->setDefaultNamespace('MyApp\Tasks');
 $container->setShared('dispatcher', $dispatcher);
 ```
 
-CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/Phalcon_Cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
+CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) offers the same functionality as the main dispatcher for MVC applications, but it is tailored to CLI applications. As expected, we instantiate the dispatcher object, we set our default namespace and then register it in the DI container.
 
 **Uygulama**
 
@@ -137,7 +137,7 @@ CLI applications need a specific dispatcher. [Phalcon\Cli\Dispatcher](api/Phalco
 $console = new Console($container);
 ```
 
-As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console](api/Phalcon_Cli#cli-console) class. Here we instantiate it and pass in it the DI container.
+As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console](api/phalcon_cli#cli-console) class. Here we instantiate it and pass in it the DI container.
 
 **Arguments** Our application needs arguments. These come in the form of :
 
@@ -191,7 +191,7 @@ In the code above, we use our console object and call `handle` with the calculat
 
 ## Exceptions
 
-Any exception thrown in the [Phalcon\Cli\Console](api/Phalcon_Cli#cli-console) component will be of type [Phalcon\Cli\Console\Exception](api/Phalcon_Cli#cli-console-exception), which allows you to trap the exception specifically.
+Any exception thrown in the [Phalcon\Cli\Console](api/phalcon_cli#cli-console) component will be of type [Phalcon\Cli\Console\Exception](api/phalcon_cli#cli-console-exception), which allows you to trap the exception specifically.
 
 ## Görevler
 
@@ -217,7 +217,7 @@ class MainTask extends Task
 }
 ```
 
-You can implement your own tasks by either extending the supplied [Phalcon\Cli\Task](api/Phalcon_Cli#cli-task) or writing your own class implementing the [Phalcon\Cli\TaskInterface](api/Phalcon_Cli#cli-taskinterface).
+You can implement your own tasks by either extending the supplied [Phalcon\Cli\Task](api/phalcon_cli#cli-task) or writing your own class implementing the [Phalcon\Cli\TaskInterface](api/phalcon_cli#cli-taskinterface).
 
 ## Actions
 
@@ -342,7 +342,7 @@ class UsersTask extends Task
 }
 ```
 
-This technique allows you to run any task and any action from any other task. However, it is not recommended because it could lead to maintenance nightmares. It is better to extend [Phalcon\Cli\Task](api/Phalcon_Cli#cli-task) and implement your logic there.
+This technique allows you to run any task and any action from any other task. However, it is not recommended because it could lead to maintenance nightmares. It is better to extend [Phalcon\Cli\Task](api/phalcon_cli#cli-task) and implement your logic there.
 
 ## Modules
 
@@ -438,9 +438,9 @@ cli.php
 
 ## Routes
 
-The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router](api/Phalcon_Cli#cli-router) object, but you can implement your own by using the [Phalcon\Cli\RouterInterface](api/Phalcon_Cli#cli-routerinterface).
+The CLI application has its own router. By default the Phalcon CLI application uses the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) object, but you can implement your own by using the [Phalcon\Cli\RouterInterface](api/phalcon_cli#cli-routerinterface).
 
-Similar to a MVC application, the [Phalcon\Cli\Router](api/Phalcon_Cli#cli-router) uses [Phalcon\Cli\Router\Route](api/Phalcon_Cli#cli-router-route) objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface](api/Phalcon_Cli#cli-router-routeinterface).
+Similar to a MVC application, the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) uses [Phalcon\Cli\Router\Route](api/phalcon_cli#cli-router-route) objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface](api/phalcon_cli#cli-router-routeinterface).
 
 The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There are also additional placholders that you can take advantage of:
 
@@ -453,12 +453,12 @@ The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There a
 | `:params`    | Any parameters                             |
 | `:int`       | Whether this is an integer route parameter |
 
-The [Phalcon\Cli\Router](api/Phalcon_Cli#cli-router) comes with two predefined routes, so that it works right out of the box. These are:
+The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. These are:
 
 - `/:task/:action`
 - `/:task/:action/:params`
 
-If you do not wish to use the default routes, all you have to do is pass `false` in the [Phalcon\Cli\Router](api/Phalcon_Cli#cli-router) object upon construction.
+If you do not wish to use the default routes, all you have to do is pass `false` in the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) object upon construction.
 
 ```php
 <?php
@@ -486,4 +486,4 @@ The following events are available:
 | `beforeStartModule` | Evet  | Called before processing a module (if modules are used) |
 | `boot`              | Evet  | Called when the application boots                       |
 
-If you use the [Phalcon\Cli\Dispatcher](api/Phalcon_Cli#cli-dispatcher) you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object.
+If you use the [Phalcon\Cli\Dispatcher](api/phalcon_cli#cli-dispatcher) you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object.

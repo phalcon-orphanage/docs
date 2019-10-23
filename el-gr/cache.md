@@ -15,11 +15,11 @@ keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, mem
 
 ## Επισκόπηση
 
-The [Phalcon\Cache](api/Phalcon_Cache#cache) namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
+The [Phalcon\Cache](api/phalcon_cache#cache) namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
 
 ![](/assets/images/implements-psr--16-blue.svg)
 
-Frequently used data or already processed/calculated data, can be stored in a cache storage for easier and faster retrieval. Since [Phalcon\Cache](api/Phalcon_Cache#cache) components are written in Zephir, and therefore compiled as C code, they can achieve higher performance, while reducing the overhead that comes with getting data from any storage container. Some examples that warrant the use of cache are:
+Frequently used data or already processed/calculated data, can be stored in a cache storage for easier and faster retrieval. Since [Phalcon\Cache](api/phalcon_cache#cache) components are written in Zephir, and therefore compiled as C code, they can achieve higher performance, while reducing the overhead that comes with getting data from any storage container. Some examples that warrant the use of cache are:
 
 * You are making complex calculations and the output does not change frequently
 * You are producing HTML using the same data all the time (same HTML)
@@ -28,11 +28,11 @@ Frequently used data or already processed/calculated data, can be stored in a ca
 > **NOTE** Even after implementing the cache, you should always check the hit ratio of your cache backend over a period of time, to ensure that your cache strategy is optimal.
 {: .alert .alert-warning}
 
-[Phalcon\Cache](api/Phalcon_Cache#cache) components rely on `Phalcon\Storage` components. `Phalcon\Storage` is split into two categories: Serializers and Adapters.
+[Phalcon\Cache](api/phalcon_cache#cache) components rely on `Phalcon\Storage` components. `Phalcon\Storage` is split into two categories: Serializers and Adapters.
 
 ## Μνήμη cache
 
-In order to instantiate a new [Phalcon\Cache](api/Phalcon_Cache#cache) component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the [Phalcon\Cache\Adapter\AdapterInterface](api/Phalcon_Cache#cache-adapter-adapterinterface). For a detailed explanation on adapters and serializers, see below.
+In order to instantiate a new [Phalcon\Cache](api/phalcon_cache#cache) component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface). For a detailed explanation on adapters and serializers, see below.
 
 ```php
 <?php
@@ -124,7 +124,7 @@ If you wish to clear all the keys, you can call the `clear()` method. The method
 
 ### `newInstance`
 
-We can easily create a [Phalcon\Cache](api/Phalcon_Cache#cache) class using the `new` keyword. However Phalcon offers the [Phalcon\Cache\CacheFactory](api/Phalcon_Cache#cache-cachefactory) class, so that developers can easily instantiate cache objects. The factory will accept a [Phalcon\Cache\AdapterFactory](api/Phalcon_Cache#cache-adapterfactory) object which will in turn be used to instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of [Phalcon\Cache](api/Phalcon_Cache#cache).
+We can easily create a [Phalcon\Cache](api/phalcon_cache#cache) class using the `new` keyword. However Phalcon offers the [Phalcon\Cache\CacheFactory](api/phalcon_cache#cache-cachefactory) class, so that developers can easily instantiate cache objects. The factory will accept a [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory) object which will in turn be used to instantiate the necessary Cache class with the selected adapter and options. The factory always returns a new instance of [Phalcon\Cache](api/phalcon_cache#cache).
 
 The example below shows how you can create a cache object using the `Apcu` adapter and `Json` serializer:
 
@@ -187,7 +187,7 @@ $cache = $cacheFactory->load($cacheOptions);
 
 ## Exceptions
 
-Any exceptions thrown in the Cache component will be of type [Phalcon\Cache\Exception\Exception](api/Phalcon_Cache#cache-exception-exception) which implements [Psr\SimpleCache\CacheException](https://www.php-fig.org/psr/psr-16/#22-cacheexception). Additionally the [Phalcon\Cache\Exception\InvalidArgumentException](api/Phalcon_Cache#cache-exception-invalidargumentexception) which implements also the [Psr\SimpleCache\CacheException](https://www.php-fig.org/psr/psr-16/#23-invalidargumentexception). It is thrown when the data supplied to the component or any sub components is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Cache component will be of type [Phalcon\Cache\Exception\Exception](api/phalcon_cache#cache-exception-exception) which implements [Psr\SimpleCache\CacheException](https://www.php-fig.org/psr/psr-16/#22-cacheexception). Additionally the [Phalcon\Cache\Exception\InvalidArgumentException](api/phalcon_cache#cache-exception-invalidargumentexception) which implements also the [Psr\SimpleCache\CacheException](https://www.php-fig.org/psr/psr-16/#23-invalidargumentexception). It is thrown when the data supplied to the component or any sub components is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -244,7 +244,7 @@ This is the default serializer. It uses PHP's `serialize` and `unserialize` meth
 
 ### Custom
 
-Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface](api/Phalcon_Storage#storage-serializer-serializerinterface)` which can be implemented in a custom class. The class can offer the serialization you require.
+Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface](api/phalcon_storage#storage-serializer-serializerinterface)` which can be implemented in a custom class. The class can offer the serialization you require.
 
 ```php
 <?php
@@ -332,7 +332,7 @@ echo $garble->getData(); // "I came, I saw, I conquered."
 
 ## Serializer Factory
 
-Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built in one.The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built in one.The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The example below shows how you can create a `Json` serializer either using the `new` keyword or the factory:
 
@@ -350,16 +350,16 @@ $jsonSerializer = $factory->newInstance('json');
 
 The parameters you can use for the factory are:
 
-* `base64` for [Phalcon\Storage\Serializer\Base64](api/Phalcon_Storage#storage-serializer-base64)
-* `igbinary` for [Phalcon\Storage\Serializer\Igbinary](api/Phalcon_Storage#storage-serializer-igbinary)
-* `json` for [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json)
-* `msgpack` for [Phalcon\Storage\Serializer\Msgpack](api/Phalcon_Storage#storage-serializer-msgpack)
-* `none` for [Phalcon\Storage\Serializer\None](api/Phalcon_Storage#storage-serializer-none)
-* `php` for [Phalcon\Storage\Serializer\Php](api/Phalcon_Storage#storage-serializer-php)
+* `base64` for [Phalcon\Storage\Serializer\Base64](api/phalcon_storage#storage-serializer-base64)
+* `igbinary` for [Phalcon\Storage\Serializer\Igbinary](api/phalcon_storage#storage-serializer-igbinary)
+* `json` for [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json)
+* `msgpack` for [Phalcon\Storage\Serializer\Msgpack](api/phalcon_storage#storage-serializer-msgpack)
+* `none` for [Phalcon\Storage\Serializer\None](api/phalcon_storage#storage-serializer-none)
+* `php` for [Phalcon\Storage\Serializer\Php](api/phalcon_storage#storage-serializer-php)
 
 ## Adapters
 
-The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface](api/Phalcon_Cache#cache-adapter-adapterinterface) interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code.
+The `Phalcon\Cache\Adapter` namespace offers classes that implement the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface) interface. It exposes common methods that are used to perform operations on the storage adapter or cache backend. These adapters act as wrappers to respective backend code.
 
 The available methdods are:
 
@@ -379,7 +379,7 @@ The available methdods are:
 > The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter.
 {: .alert .alert-info }
 
-To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
+To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
 
 The available adapters are:
 
@@ -394,7 +394,7 @@ This adapter uses `Apcu` to store the data. In order to use this adapter, you wi
 | `serializer`        | `null`     |
 | `prefix`            | `ph-apcu-` |
 
-The following example demonstrates how to create a new `Apcu` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200.
+The following example demonstrates how to create a new `Apcu` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200.
 
 ```php
 <?php
@@ -412,7 +412,7 @@ $options = [
 $adapter = new Apcu($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
+The above example used a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
 
 ```php
 <?php
@@ -455,7 +455,7 @@ This adapter utilizes PHP's [memcached](https://www.php.net/manual/en/book.memca
 
 You can specify more than one server in the options array passed in the constructor. If `SASL` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options or the class cannot add one or more servers in the pool, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Libmemcached` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the first server with weight `1` connecting to port `11211` and `10.4.13.110` as the second server with weight `5` again connecting to port `11211`.
+The following example demonstrates how to create a new `Libmemcached` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the first server with weight `1` connecting to port `11211` and `10.4.13.110` as the second server with weight `5` again connecting to port `11211`.
 
 ```php
 <?php
@@ -485,7 +485,7 @@ $options = [
 $adapter = new Libmemcached($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
+The above example used a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
 
 ```php
 <?php
@@ -516,7 +516,7 @@ $options = [
 $adapter = new Libmemcached(null, $options);
 ```
 
-**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached](api/Phalcon_Cache#cache-adapter-libmemcached) uses, offers support for serializing out of the box. The built in serializers are:
+**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) uses, offers support for serializing out of the box. The built in serializers are:
 
 * `\Memcached::SERIALIZER_PHP`
 * `\Memcached::SERIALIZER_JSON`
@@ -538,7 +538,7 @@ This adapter uses the computer's memory to store the data. As all data is stored
 | `serializer`        | `null`     |
 | `prefix`            | `ph-memo-` |
 
-The following example demonstrates how to create a new `Memory` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200.
+The following example demonstrates how to create a new `Memory` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200.
 
 ```php
 <?php
@@ -556,7 +556,7 @@ $options = [
 $adapter = new Memory($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
+The above example used a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
 
 ```php
 <?php
@@ -594,7 +594,7 @@ This adapter utilizes PHP's [redis](https://github.com/phpredis/phpredis) extens
 
 If `auth` data is defined, the adapter will try to authenticate using the passed data. If there is an error in the options, or the server cannot connect or authenticate, a `Phalcon\Storage\Exception` will be thrown.
 
-The following example demonstrates how to create a new `Redis` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379` and select the index `1`.
+The following example demonstrates how to create a new `Redis` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will use the `10.4.13.100` as the host, connect to port `6379` and select the index `1`.
 
 ```php
 <?php
@@ -615,7 +615,7 @@ $options = [
 $adapter = new Redis($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
+The above example used a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
 
 ```php
 <?php
@@ -636,7 +636,7 @@ $options = [
 $adapter = new Redis(null, $options);
 ```
 
-**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis](api/Phalcon_Cache#cache-adapter-redis) uses, offers support for serializing out of the box. The built in serializers are:
+**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis) uses, offers support for serializing out of the box. The built in serializers are:
 
 * `\Redis::SERIALIZER_NONE`
 * `\Redis::SERIALIZER_PHP`
@@ -665,7 +665,7 @@ If the `cacheDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 > The adapter utilizes logic to store files in separate sub directories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
 {: .alert .alert-info }
 
-The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/Phalcon_Storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.
+The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.
 
 ```php
 <?php
@@ -684,7 +684,7 @@ $options = [
 $adapter = new Stream($serializerFactory, $options);
 ```
 
-The above example used a [Phalcon\Storage\SerializerFactory](api/Phalcon_Storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
+The above example used a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object and the `defaultSerializer` option to tell the adapter to instantiate the relevant serializer. If you already have a serializer instantiated, you can pass `null` for the serializer factory, and set the serializer in the options as shown below:
 
 ```php
 <?php
@@ -705,7 +705,7 @@ $adapter = new Stream(null, $options);
 
 ### Custom
 
-Phalcon also offers the [Phalcon\Cache\Adapter\AdapterInterface](api/Phalcon_Cache#cache-adapter-adapterinterface) which can be implemented in a custom class. The class can offer the cache adapter functionality you require.
+Phalcon also offers the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface) which can be implemented in a custom class. The class can offer the cache adapter functionality you require.
 
 ```php
 <?php
@@ -815,7 +815,7 @@ $custom->set('my-key', $data);
 
 ## Adapter Factory
 
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory](api/Phalcon_Cache#cache-adapterfactory) class, so that developers can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory) class, so that developers can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The example below shows how you can create a `Apcu` cache adapter the `new` keyword or the factory:
 
@@ -853,7 +853,7 @@ $options = [
 $adapter = $adapterFactory->newInstance('apcu', $options);
 ```
 
-The parameters you can use for the factory are: * `apcu` for [Phalcon\Cache\Adapter\Apcu](api/Phalcon_Cache#cache-adapter-apcu)  
-* `libmemcached` for [Phalcon\Cache\Adapter\Libmemcached](api/Phalcon_Cache#cache-adapter-libmemcached) * `memory` for [Phalcon\Cache\Adapter\Memory](api/Phalcon_Cache#cache-adapter-memory)  
-* `redis` for [Phalcon\Cache\Adapter\Redis](api/Phalcon_Cache#cache-adapter-redis)  
-* `stream` for [Phalcon\Cache\Adapter\Stream](api/Phalcon_Cache#cache-adapter-stream)
+The parameters you can use for the factory are: * `apcu` for [Phalcon\Cache\Adapter\Apcu](api/phalcon_cache#cache-adapter-apcu)  
+* `libmemcached` for [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) * `memory` for [Phalcon\Cache\Adapter\Memory](api/phalcon_cache#cache-adapter-memory)  
+* `redis` for [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis)  
+* `stream` for [Phalcon\Cache\Adapter\Stream](api/phalcon_cache#cache-adapter-stream)
