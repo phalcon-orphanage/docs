@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'id-id'
 version: '4.0'
 ---

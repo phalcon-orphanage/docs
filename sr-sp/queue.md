@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'sr-sp'
 version: '4.0'
 ---

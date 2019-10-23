@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: default
 language: 'zh-cn'
 version: '4.0'
 ---
