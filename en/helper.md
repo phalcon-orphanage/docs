@@ -1150,8 +1150,8 @@ echo Str::upper('phalcon framework'); // PHALCON FRAMEWORK
 ```
 
 [basename]: https://www.php.net/manual/en/function.basename.php
-[helper-arr]: api/Phalcon_Helper#helper-arr
-[helper-exception]: api/Phalcon_Helper#helper-exception
-[helper-fs]: api/Phalcon_Helper#helper-fs
-[helper-number]: api/Phalcon_Helper#helper-number
-[helper-str]: api/Phalcon_Helper#helper-str
+[helper-arr]: api/phalcon_helper#helper-arr
+[helper-exception]: api/phalcon_helper#helper-exception
+[helper-fs]: api/phalcon_helper#helper-fs
+[helper-number]: api/phalcon_helper#helper-number
+[helper-str]: api/phalcon_helper#helper-str

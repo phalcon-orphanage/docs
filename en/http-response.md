@@ -585,6 +585,6 @@ var_dump(
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
-[http-message-response]: api/Phalcon_Http#http-message-response
+[http-message-response]: api/phalcon_http#http-message-response
 [rfc-7231]: https://tools.ietf.org/html/rfc7231#section-6
-[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception

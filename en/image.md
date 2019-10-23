@@ -696,11 +696,11 @@ class MyImageAdapter implements AdapterInterface
 
 [gd]: https://php.net/manual/en/book.image.php
 [imagick]: https://php.net/manual/en/book.imagick.php
-[image-adapter-abstractadapter]: Phalcon_Image#image-adapter-abstractadapter
-[image-adapter-adapterinterface]: Phalcon_Image#image-adapter-adapterinterface
-[image-adapter-gd]: Phalcon_Image#image-adapter-gd
-[image-adapter-imagick]: Phalcon_Image#image-adapter-imagick
-[image-enum]: Phalcon_Image#image-enum
-[image-exception]: Phalcon_Image#image-exception
-[image-imagefactory]: Phalcon_Image#image-imagefactory
+[image-adapter-abstractadapter]: api/phalcon_image#image-adapter-abstractadapter
+[image-adapter-adapterinterface]: api/phalcon_image#image-adapter-adapterinterface
+[image-adapter-gd]: api/phalcon_image#image-adapter-gd
+[image-adapter-imagick]: api/phalcon_image#image-adapter-imagick
+[image-enum]: api/phalcon_image#image-enum
+[image-exception]: api/phalcon_image#image-exception
+[image-imagefactory]: api/phalcon_image#image-imagefactory
 [imagick-liquidrescale]: https://www.php.net/manual/en/imagick.liquidrescaleimage.php 

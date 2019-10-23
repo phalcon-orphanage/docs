@@ -946,15 +946,15 @@ The events available in Phalcon are:
 | [Volt](volt)                    | `resolveExpression`                  | Volt, [expression]                                      |
 
 
-[db]: api/Phalcon_Db
-[di-factorydefaul]: api/Phalcon_Di#di-factorydefault
-[events-event]: Phalcon_Events#events-event
-[events-eventinterface]: Phalcon_Events#events-eventinterface
-[events-eventsawareinterface]: Phalcon_Events#events-eventsawareinterface
-[events-exception]: Phalcon_Events#events-exception
-[events-manager]: Phalcon_Events#events-manager
-[events-managerinterface]: Phalcon_Events#events-managerinterface
-[mvc-controller]: api/Phalcon_Mvc#mvc-controller
-[mvc-model]: api/Phalcon_Mvc#mvc-model
+[db]: api/phalcon_db
+[di-factorydefaul]: api/phalcon_di#di-factorydefault
+[events-event]: api/phalcon_events#events-event
+[events-eventinterface]: api/phalcon_events#events-eventinterface
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
+[events-exception]: api/phalcon_events#events-exception
+[events-manager]: api/phalcon_events#events-manager
+[events-managerinterface]: api/phalcon_events#events-managerinterface
+[mvc-controller]: api/phalcon_mvc#mvc-controller
+[mvc-model]: api/phalcon_mvc#mvc-model
 [splpriorityqueue]: https://www.php.net/manual/en/class.splpriorityqueue.php
 

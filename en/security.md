@@ -500,11 +500,11 @@ Also in your views (Volt syntax)
 [rainbow-tables]: https://en.wikipedia.org/wiki/Rainbow_table
 [sha1]: https://php.net/manual/en/function.sha1.php
 [wiki-csrf]: https://en.wikipedia.org/wiki/Cross-site_request_forgery
-[security-exception]: api/Phalcon\Security#security-exception
-[security-random]: api/Phalcon\Security#security-random
-[security]: api/Phalcon\Security#security
-[security-random]: api/Phalcon\Security#security-random
-[factorydefault]: api/Phalcon\Di#di-factorydefault
+[security-exception]: api/phalcon_security#security-exception
+[security-random]: api/phalcon_security#security-random
+[security]: api/phalcon_security#security
+[security-random]: api/phalcon_security#security-random
+[factorydefault]: api/phalcon_di#di-factorydefault
 [hash-hmac]: https://www.php.net/manual/en/function.hash-hmac.php
 [secure-random]: https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 [rfc-3548]: https://www.ietf.org/rfc/rfc3548.txt

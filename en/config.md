@@ -788,17 +788,17 @@ Also in your views (Volt syntax)
 {% raw %}{{ config.database.dbname }}{% endraw %}
 ```
 
-[config]: api/Phalcon_Config
-[collection]: api/Phalcon_Collection
+[config]: api/phalcon_config
+[collection]: api/phalcon_collection
 [phalcon-incubator]: https://github.com/phalcon/incubator
-[grouped]: api/Phalcon_Config#config-adapter-grouped
-[ini]: api/Phalcon_Config#config-adapter-ini
-[json]: api/Phalcon_Config#config-adapter-json
-[php]: api/Phalcon_Config#config-adapter-php
-[yaml]: api/Phalcon_Config#config-adapter-yaml
-[config-config]: api/Phalcon_Config#config-config
-[config-configfactory]: api/Phalcon_Config#config-configfactory
-[config-exception]: api/Phalcon_Config#config-exception
+[grouped]: api/phalcon_config#config-adapter-grouped
+[ini]: api/phalcon_config#config-adapter-ini
+[json]: api/phalcon_config#config-adapter-json
+[php]: api/phalcon_config#config-adapter-php
+[yaml]: api/phalcon_config#config-adapter-yaml
+[config-config]: api/phalcon_config#config-config
+[config-configfactory]: api/phalcon_config#config-configfactory
+[config-exception]: api/phalcon_config#config-exception
 [dotenv]: https://github.com/josegonzalez/php-dotenv
 [parse-ini-file]: https://www.php.net/manual/en/function.parse-ini-file.php
 [yaml-parse-file]: https://www.php.net/manual/en/function.yaml-parse-file.php

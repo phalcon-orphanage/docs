@@ -185,9 +185,9 @@ $file->moveTo('/storage/files/');
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
-[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
-[http-message-uploadedfile]: api/Phalcon_Http#http-message-uploadedfile
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-uploadedfile]: api/phalcon_http#http-message-uploadedfile
 [upload-errors]: http://php.net/manual/en/features.file-upload.errors.php
-[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
 [move-uploaded-file]: https://www.php.net/manual/en/function.move-uploaded-file.php
 [stream-copy-to-stream]: https://www.php.net/manual/en/function.stream-copy-to-stream.php

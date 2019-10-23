@@ -1738,6 +1738,6 @@ echo MyTags::audioField(
 
 You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag][tag].
 
-[factorydefault]: api/Phalcon_Di#di-factorydefault
-[injectable]: api/Phalcon_Di#di-injectable
-[tag]: api/Phalcon_Tag
+[factorydefault]: api/phalcon_di#di-factorydefault
+[injectable]: api/phalcon_di#di-injectable
+[tag]: api/phalcon_tag

@@ -415,4 +415,4 @@ echo $collection->toJson(74 + JSON_PRETTY_PRINT);
 */
 ```
 
-[registry]: api/Phalcon_Registry#registry
+[registry]: api/phalcon_registry#registry

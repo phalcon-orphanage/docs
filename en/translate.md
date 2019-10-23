@@ -638,21 +638,21 @@ $translator = $factory->newInstance(
 );
 ```
 
-[abstractadapter]: api/Phalcon_Translate#translate-adapter-abstractadapter
-[adapterinterface]: api/Phalcon_Translate#translate-adapter-adapterinterface
-[associativearray]: api/Phalcon_Translate#translate-interpolator-associativearray
-[csv]: api/Phalcon_Translate#translate-adapter-csv
-[exception]: api/Phalcon_Translate#translate-exception
-[gettext]: api/Phalcon_Translate#translate-adapter-gettext
+[abstractadapter]: api/phalcon_translate#translate-adapter-abstractadapter
+[adapterinterface]: api/phalcon_translate#translate-adapter-adapterinterface
+[associativearray]: api/phalcon_translate#translate-interpolator-associativearray
+[csv]: api/phalcon_translate#translate-adapter-csv
+[exception]: api/phalcon_translate#translate-exception
+[gettext]: api/phalcon_translate#translate-adapter-gettext
 [incubator]: https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Translate/Adapter
-[indexedarray]: api/Phalcon_Translate#translate-interpolator-indexedarray
-[interpolatorinterface]: api/Phalcon_Translate#translate-interpolator-interpolatorinterface
-[interpolatorfactory]: api/Phalcon_Translate#translate-interpolatorfactory
-[nativearray]: api/Phalcon_Translate#translate-adapter-nativearray
+[indexedarray]: api/phalcon_translate#translate-interpolator-indexedarray
+[interpolatorinterface]: api/phalcon_translate#translate-interpolator-interpolatorinterface
+[interpolatorfactory]: api/phalcon_translate#translate-interpolatorfactory
+[nativearray]: api/phalcon_translate#translate-adapter-nativearray
 [php-gettext]: https://www.php.net/manual/book.gettext.php
 [poedit]: https://poedit.net/
-[request]: api/Phalcon_Http#request
+[request]: api/phalcon_http#request
 [sprintf]: https://www.php.net/manual/en/function.sprintf.php
-[translate]: api/Phalcon_Translate
-[translatefactory]: api/Phalcon_Translate#translate-translatefactory
+[translate]: api/phalcon_translate
+[translatefactory]: api/phalcon_translate#translate-translatefactory
 [wiki-gettext]: https://en.wikipedia.org/wiki/Gettext

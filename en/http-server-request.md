@@ -953,7 +953,7 @@ var_dump(
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
-[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
-[http-message-uri]: api/Phalcon_Http#http-message-uri
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-uri]: api/phalcon_http#http-message-uri
 [parse-str]: https://www.php.net/manual/en/function.parse-str.php
-[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception

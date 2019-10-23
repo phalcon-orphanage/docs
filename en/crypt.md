@@ -283,8 +283,8 @@ class SecretsController extends Controller
 [cipher_methods]: https://secure.php.net/manual/en/function.openssl-get-cipher-methods.php
 [openssl]: https://secure.php.net/manual/en/book.openssl.php
 [suite_b]: https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography
-[crypt]: Phalcon_Crypt#crypt
-[crypt-cryptinterface]: Phalcon_Crypt#crypt-cryptinterface
-[crypt-exception]: Phalcon_Crypt#crypt-exception
-[crypt-mismatch]: Phalcon_Crypt#crypt-mismatch
+[crypt]: api/phalcon_crypt#crypt
+[crypt-cryptinterface]: api/phalcon_crypt#crypt-cryptinterface
+[crypt-exception]: api/phalcon_crypt#crypt-exception
+[crypt-mismatch]: api/phalcon_crypt#crypt-mismatch
 

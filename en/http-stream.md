@@ -329,7 +329,7 @@ echo $stream->write($source); // 126
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
-[http-message-stream]: api/Phalcon_Http#http-message-stream
+[http-message-stream]: api/phalcon_http#http-message-stream
 [fopen]: https://www.php.net/manual/en/function.fopen.php
 [stream-get-meta-data]: https://php.net/manual/en/function.stream-get-meta-data.php
 [fseek]: https://www.php.net/manual/en/function.fseek.php

@@ -469,10 +469,10 @@ class InvoicesController extends Controller
 }
 ```
 
-[flash-abstractflash]: api/Phalcon_Flash#flash-abstractflash
-[flash-direct]: api/Phalcon_Flash#flash-direct
-[flash-exception]: api/Phalcon_Flash#flash-exception
-[flash-flashinterface]: api/Phalcon_Flash#flash-flashinterface
-[flash-session]: api/Phalcon_Flash#flash-session
-[di-injectable]: api/Phalcon_Di#di-injectable
-[factorydefault]: api/Phalcon_Di#di-factorydefault
+[flash-abstractflash]: api/phalcon_flash#flash-abstractflash
+[flash-direct]: api/phalcon_flash#flash-direct
+[flash-exception]: api/phalcon_flash#flash-exception
+[flash-flashinterface]: api/phalcon_flash#flash-flashinterface
+[flash-session]: api/phalcon_flash#flash-session
+[di-injectable]: api/phalcon_di#di-injectable
+[factorydefault]: api/phalcon_di#di-factorydefault

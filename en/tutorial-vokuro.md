@@ -1574,7 +1574,7 @@ Vökuró is a sample application that we use to demonstrate some of the features
 
 [acl]: https://en.wikipedia.org/wiki/Access-control_list
 [composer]: https://getcomposer.org 
-[di-serviceproviderinterface]: api/Phalcon_Di#di-serviceproviderinterface
+[di-serviceproviderinterface]: api/phalcon_di#di-serviceproviderinterface
 [dotenv]: https://github.com/vlucas/phpdotenv
 [github_vokuro]: https://github.com/phalcon/vokuro
 [mvc]: https://en.wikipedia.org/wiki/Model–view–controller

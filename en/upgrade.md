@@ -396,7 +396,7 @@ You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component an
 ### Using the `FactoryDefault`
 If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
 
-Also components that utilize the filter service, such as the [Request](api/Phalcon_Http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
+Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
 
 ### Using a custom `Di`
 If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:

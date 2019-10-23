@@ -694,21 +694,21 @@ class PostsController extends Controller
 | `afterSendHeaders`  | Fires after the headers have been sent  | No                 |
 | `beforeSendHeaders` | Fires before the headers have been sent | Yes                |
 
-[http-cookie]: api/Phalcon_Http#http-cookie
-[http-cookie-exception]: api/Phalcon_Http#http-cookie-exception
-[http-cookieinterface]: api/Phalcon_Http#http-cookieinterface
-[http-response]: api/Phalcon_Http#http-response
-[http-response-cookies]: api/Phalcon_Http#http-response-cookies
-[http-response-cookiesinterface]: api/Phalcon_Http#http-response-cookiesinterface
-[http-response-exception]: api/Phalcon_Http#http-response-exception
-[http-response-headers]: api/Phalcon_Http#http-response-headers
-[http-response-headersinterface]: api/Phalcon_Http#http-response-headersinterface
-[http-responseinterface]: api/Phalcon_Http#http-responseinterface
-[di-injectionawareinterface]: api/Phalcon_Di#di-injectionawareinterface
-[di-factorydefault]: api/Phalcon_Di#di-factorydefault
-[url]: api/Phalcon_Url
+[http-cookie]: api/phalcon_http#http-cookie
+[http-cookie-exception]: api/phalcon_http#http-cookie-exception
+[http-cookieinterface]: api/phalcon_http#http-cookieinterface
+[http-response]: api/phalcon_http#http-response
+[http-response-cookies]: api/phalcon_http#http-response-cookies
+[http-response-cookiesinterface]: api/phalcon_http#http-response-cookiesinterface
+[http-response-exception]: api/phalcon_http#http-response-exception
+[http-response-headers]: api/phalcon_http#http-response-headers
+[http-response-headersinterface]: api/phalcon_http#http-response-headersinterface
+[http-responseinterface]: api/phalcon_http#http-responseinterface
+[di-injectionawareinterface]: api/phalcon_di#di-injectionawareinterface
+[di-factorydefault]: api/phalcon_di#di-factorydefault
+[url]: api/phalcon_url
 [json-encode]: https://www.php.net/manual/en/function.json-encode.php
 [status-codes]: http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
-[events-eventsawareinterface]: api/Phalcon_Events#events-eventsawareinterface
+[events-eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
 [readfile]: https://www.php.net/manual/en/function.readfile.php
-[http-message-response]: api/Phalcon_Http#http-message-response
+[http-message-response]: api/phalcon_http#http-message-response

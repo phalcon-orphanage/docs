@@ -409,7 +409,7 @@ You can of course access the object the same way as any registered service in th
 {% raw %}{{ url.get('/portal/invoices/link') }}{% endraw %}
 ```
 
-[url]: api/Phalcon_Url#url
-[url-exception]: api/Phalcon_Url\Exception#url-exception
-[urlinterface]: api/Phalcon_UrlInterface#urlinterface
-[factorydefault]: api/Phalcon_Di#di-factorydefault
+[url]: api/phalcon_url#url
+[url-exception]: api/phalcon_url#url-exception
+[urlinterface]: api/phalcon_url#urlinterface
+[factorydefault]: api/phalcon_di#di-factorydefault

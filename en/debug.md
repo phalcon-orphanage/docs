@@ -416,9 +416,9 @@ Xdebug offers several ways to get debug and trace information regarding the exec
 To set up Xdebug for PHPStorm you can check [this][phpstorm-xdebug] article.
 
 [bootstrap]: https://getbootstrap.com/
-[debug]: api/Phalcon_Debug#debug
-[debug-dump]: api/Phalcon_Debug#debug-dump
-[debug-exception]: api/Phalcon_Debug#debug-exception
+[debug]: api/phalcon_debug#debug
+[debug-dump]: api/phalcon_debug#debug-dump
+[debug-exception]: api/phalcon_debug#debug-exception
 [exception]: https://secure.php.net/manual/en/language.exceptions.php
 [exception_gettrace]: https://secure.php.net/manual/en/exception.gettrace.php
 [phalcon-exception]: api/Phalcon_Exception

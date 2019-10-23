@@ -618,14 +618,14 @@ class MyPaginator implements PaginatorInterface
 }
 ```
 
-[mvc-model-query-builder]: api/Phalcon_Mvc#mvc-model-query-builder
-[mvc-model-resultset]: api/Phalcon_Mvc#mvc-model-resultset
-[paginator-adapter-abstractadapter]: api/Phalcon_Paginator#paginator-adapter-abstractadapter
-[paginator-adapter-adapterinterface]: api/Phalcon_Paginator#paginator-adapter-adapterinterface
-[paginator-adapter-model]: api/Phalcon_Paginator#paginator-adapter-model
-[paginator-adapter-nativearray]: api/Phalcon_Paginator#paginator-adapter-nativearray
-[paginator-adapter-querybuilder]: api/Phalcon_Paginator#paginator-adapter-querybuilder
-[paginator-exception]: api/Phalcon_Paginator#paginator-exception
-[paginator-paginatorfactory]: api/Phalcon_Paginator#paginator-paginatorfactory
-[paginator-repository]: api/Phalcon_Paginator#paginator-repository
-[paginator-repositoryinterface]: api/Phalcon_Paginator#paginator-repositoryinterface
+[mvc-model-query-builder]: api/phalcon_mvc#mvc-model-query-builder
+[mvc-model-resultset]: api/phalcon_mvc#mvc-model-resultset
+[paginator-adapter-abstractadapter]: api/phalcon_paginator#paginator-adapter-abstractadapter
+[paginator-adapter-adapterinterface]: api/phalcon_paginator#paginator-adapter-adapterinterface
+[paginator-adapter-model]: api/phalcon_paginator#paginator-adapter-model
+[paginator-adapter-nativearray]: api/phalcon_paginator#paginator-adapter-nativearray
+[paginator-adapter-querybuilder]: api/phalcon_paginator#paginator-adapter-querybuilder
+[paginator-exception]: api/phalcon_paginator#paginator-exception
+[paginator-paginatorfactory]: api/phalcon_paginator#paginator-paginatorfactory
+[paginator-repository]: api/phalcon_paginator#paginator-repository
+[paginator-repositoryinterface]: api/phalcon_paginator#paginator-repositoryinterface

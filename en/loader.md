@@ -579,8 +579,8 @@ Some things to keep in mind when using the autoloader:
 [lazy_initialization]: https://en.wikipedia.org/wiki/Lazy_initialization
 [psr-4]: https://www.php-fig.org/psr/psr-4/
 [apcu]: https://php.net/manual/en/book.apcu.php
-[loader]: api/Phalcon_Loader#loader
-[loader-exception]: api/Phalcon_Loader#loader-exception
-[eventsawareinterface]: api/Phalcon_Events#events-eventsawareinterface
+[loader]: api/phalcon_loader#loader
+[loader-exception]: api/phalcon_loader#loader-exception
+[eventsawareinterface]: api/phalcon_events#events-eventsawareinterface
 
 

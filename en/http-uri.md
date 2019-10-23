@@ -319,5 +319,5 @@ echo $clone->getUserInfo(); // 'phalcon:notsecret'
 
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
-[http-message-uri]: api/Phalcon_Http#http-message-uri
+[http-message-uri]: api/phalcon_http#http-message-uri
 [rfc3986]: http://tools.ietf.org/html/rfc3986

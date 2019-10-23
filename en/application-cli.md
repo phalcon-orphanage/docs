@@ -469,18 +469,18 @@ The following events are available:
 
 If you use the [Phalcon\Cli\Dispatcher][cli-dispatcher] you can also take advantage of the `beforeException` event, which can stop operations and is fired from the dispatcher object. 
 
-[cli-console]: api/Phalcon_Cli#cli-console
-[cli-console-exception]: api/Phalcon_Cli#cli-console-exception
-[cli-dispatcher]: api/Phalcon_Cli#cli-dispatcher
-[cli-dispatcher-exception]: api/Phalcon_Cli#cli-dispatcher-exception
-[cli-dispatcherinterface]: api/Phalcon_Cli#cli-dispatcherinterface
-[cli-router]: api/Phalcon_Cli#cli-router
-[cli-router-exception]: api/Phalcon_Cli#cli-router-exception
-[cli-router-route]: api/Phalcon_Cli#cli-router-route
-[cli-router-routeinterface]: api/Phalcon_Cli#cli-router-routeinterface
-[cli-routerinterface]: api/Phalcon_Cli#cli-routerinterface
-[cli-task]: api/Phalcon_Cli#cli-task
-[cli-taskinterface]: api/Phalcon_Cli#cli-taskinterface
-[di]: api/Phalcon_Di#di
-[di-factorydefault-cli]: api/Phalcon_Di#di-factorydefault-cli
+[cli-console]: api/phalcon_cli#cli-console
+[cli-console-exception]: api/phalcon_cli#cli-console-exception
+[cli-dispatcher]: api/phalcon_cli#cli-dispatcher
+[cli-dispatcher-exception]: api/phalcon_cli#cli-dispatcher-exception
+[cli-dispatcherinterface]: api/phalcon_cli#cli-dispatcherinterface
+[cli-router]: api/phalcon_cli#cli-router
+[cli-router-exception]: api/phalcon_cli#cli-router-exception
+[cli-router-route]: api/phalcon_cli#cli-router-route
+[cli-router-routeinterface]: api/phalcon_cli#cli-router-routeinterface
+[cli-routerinterface]: api/phalcon_cli#cli-routerinterface
+[cli-task]: api/phalcon_cli#cli-task
+[cli-taskinterface]: api/phalcon_cli#cli-taskinterface
+[di]: api/phalcon_di#di
+[di-factorydefault-cli]: api/phalcon_di#di-factorydefault-cli
 

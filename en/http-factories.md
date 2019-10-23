@@ -148,21 +148,19 @@ $uri = $factory->createUri('https://api.phalcon.io/companies/1');
 [php-fig]: https://www.php-fig.org/
 [psr-7]: https://www.php-fig.org/psr/psr-7/
 [psr-17]: https://www.php-fig.org/psr/psr-17/
-[http-message-request]: api/Phalcon_Http#http-message-request
-[http-message-requestfactory]: api/Phalcon_Http#http-message-requestfactory
-[http-message-response]: api/Phalcon_Http#http-message-response
-[http-message-responsefactory]: api/Phalcon_Http#http-message-responsefactory
-[http-message-serverrequest]: api/Phalcon_Http#http-message-serverrequest
-[http-message-serverrequestfactory]: api/Phalcon_Http#http-message-serverrequestfactory
-[http-message-stream]: api/Phalcon_Http#http-message-stream
-[http-message-streamfactory]: api/Phalcon_Http#http-message-streamfactory
-[http-message-uploadedfile]: api/Phalcon_Http#http-message-uploadedfile
-[http-message-uploadedfilefactory]: api/Phalcon_Http#http-message-uploadedfilefactory
-[http-message-uri]: api/Phalcon_Http#http-message-uri
-[http-message-urifactory]: api/Phalcon_Http#http-message-urifactory
-
-
-[http-message-exception-invalidargumentexception]: api/Phalcon_Http#http-message-exception-invalidargumentexception
-[http-message-stream-input]: api/Phalcon_Http#http-message-stream-input
-[http-message-stream-memory]: api/Phalcon_Http#http-message-stream-memory
-[http-message-stream-temp]: api/Phalcon_Http#http-message-stream-temp
+[http-message-request]: api/phalcon_http#http-message-request
+[http-message-requestfactory]: api/phalcon_http#http-message-requestfactory
+[http-message-response]: api/phalcon_http#http-message-response
+[http-message-responsefactory]: api/phalcon_http#http-message-responsefactory
+[http-message-serverrequest]: api/phalcon_http#http-message-serverrequest
+[http-message-serverrequestfactory]: api/phalcon_http#http-message-serverrequestfactory
+[http-message-stream]: api/phalcon_http#http-message-stream
+[http-message-streamfactory]: api/phalcon_http#http-message-streamfactory
+[http-message-uploadedfile]: api/phalcon_http#http-message-uploadedfile
+[http-message-uploadedfilefactory]: api/phalcon_http#http-message-uploadedfilefactory
+[http-message-uri]: api/phalcon_http#http-message-uri
+[http-message-urifactory]: api/phalcon_http#http-message-urifactory
+[http-message-exception-invalidargumentexception]: api/phalcon_http#http-message-exception-invalidargumentexception
+[http-message-stream-input]: api/phalcon_http#http-message-stream-input
+[http-message-stream-memory]: api/phalcon_http#http-message-stream-memory
+[http-message-stream-temp]: api/phalcon_http#http-message-stream-temp
