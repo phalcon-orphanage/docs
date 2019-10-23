@@ -247,12 +247,6 @@ use Phalcon\Events\Event;
  */
 class QueryListener extends Injectable
 {
-    /**
-     * Fires before a query is executed
-     *
-     * @param Event $event
-     * @param AdapterInterface $connection
-     */
     public function beforeQuery(Event $event, AdapterInterface $connection)
     {
         if ($this->config->path('app.logLevel') > 1) {
@@ -266,11 +260,6 @@ class QueryListener extends Injectable
         }
     }
 
-    /**
-     * Fires when we have a rollback
-     *
-     * @param Event $event
-     */
     public function rollbackTransaction(Event $event)
     {
         if ($this->config->path('app.logLevel') > 1) {
@@ -314,15 +303,6 @@ use MyApp\Auth\Adapters\AbstractAdapter;
  */
 class NotFoundListener extends Injectable
 {
-    /**
-     * This action is executed before execute any action in the application
-     *
-     * @param Event      $event
-     * @param Dispatcher $disp
-     * @param \Exception $ex
-     *
-     * @return bool
-     */
     public function beforeException(
         Event $event, 
         Dispatcher $dispatcher, 
@@ -398,19 +378,11 @@ class NotificationsAware extends Injectable implements EventsAwareInterface
 {
     protected $eventsManager;
     
-    /**
-     * Returns the events manager
-     */
     public function getEventsManager()
     {
         return $this->eventsManager;
     }
 
-    /**
-     * Sets the events manager
-     *
-     * @property ManagerInterface\ $eventsManager
-     */
     public function setEventsManager(ManagerInterface $eventsManager)
     {
         $this->eventsManager = $eventsManager;
@@ -715,15 +687,6 @@ use MyApp\Auth\Adapters\AbstractAdapter;
  */
 class BaseController extends Controller
 {
-    /**
-     * Execute before the router so we can determine if 
-     * the user is logged in or not. If not, forward them
-     * to the login page.
-     *
-     * @param Dispatcher $dispatcher
-     *
-     * @return bool
-     */
     public function beforeExecuteRoute(Dispatcher $dispatcher)
     {
         /**
@@ -742,6 +705,7 @@ class BaseController extends Controller
     }
 }
 ``` 
+Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
 
 ## Models
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
@@ -751,7 +715,7 @@ In the following example, we are use the `beforeCreate` event, to automatically 
 ```php
 <?php
 
-namespace MyApp\Controller;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;use function str_pad;
 
@@ -797,9 +761,6 @@ class Invoices extends Model
      */
     public $inv_total;
 
-    /**
-     * Fires before a record is created
-     */
     public function beforeCreate()
     {
         $date     = date('YmdHis');

@@ -491,6 +491,8 @@ The available built-in filters are:
 | `lower`            | Change the case of a string to lowercase                                                             |
 | `nl2br`            | Changes newlines `\n` by line breaks (`<br />`). Uses the PHP function [`nl2br`][nl2br]              |
 | `right_trim`       | Applies the [`rtrim`][rtrim] PHP function to the value. Removing extra spaces                        |
+| `slashes`          | Applies the [`addslashes`][addslashes] PHP function to the value.                                    |
+| `slice`            | Slices strings, arrays or traversable objects                                                        |
 | `sort`             | Sorts an array using the PHP function [`asort`][asort]                                               |
 | `stripslashes`     | Applies the [`stripslashes`][stripslashes] PHP function to the value. Removing escaped quotes        |
 | `striptags`        | Applies the [`striptags`][striptags] PHP function to the value. Removing HTML tags                   |
@@ -1238,10 +1240,12 @@ The following built-in functions are available in Volt:
 | `dump`        | Calls the PHP function `var_dump()`                         |
 | `get_content` | Same as `content`                                           |
 | `partial`     | Dynamically loads a partial view in the current template    |
+| `static_url`  | Generate a static url using the `url` service               |
 | `super`       | Render the contents of the parent block                     |
 | `time`        | Calls the PHP function with the same name                   |
-| `url`         | Generate a URL using the 'url' service                      |
+| `url`         | Generate a URL using the `url` service                      |
 | `version`     | Returns the current version of the framework                |
+| `version_id`  | Returns the current version id of the framework             |
 
 ## View 
 Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the view hierarchy and include partials as well:
@@ -1621,8 +1625,282 @@ $compiler->addExtension(
 );
 ```
 
+### Compiler
+The Volt compiler depends on the Volt parser. The parser parses the Volt templates and creates an Intermediate Representation (IR) from it. The compiler uses that representation and produces the compiled PHP code.
+
+```php
+<?php
+
+use Phalcon\Mvc\View\Engine\Volt\Compiler;
+
+$compiler = new Compiler();
+
+$compiler->compile("views/partials/header.volt");
+
+require $compiler->getCompiledTemplatePath();
+```
+
+The [Phalcon\Mvc\View\Engine\Volt\Compiler][mvc-view-engine-volt-compiler] offers a number of methods that can be extended to suit your application needs.
+
+```php
+public function __construct(ViewBaseInterface $view = null)
+```
+Constructor
+
+```php
+public function addExtension(mixed $extension): Compiler
+```
+Registers an extension 
+
+```php
+public function addFilter(
+    string $name, 
+    mixed definition
+): Compiler
+```
+Register a new filter
+
+```php
+public function addFunction(
+    string $name, 
+    mixed $definition
+): Compiler
+```
+Register a new function
+
+```php
+public function attributeReader(array $expr): string
+```
+Resolves attribute reading
+
+```php
+public function compile(
+    string $templatePath, 
+    bool $extendsMode = false
+)
+```
+Compiles a template into a file applying the compiler options. This method does not return the compiled path if the template was not compiled
+
+``php
+$compiler->compile("views/layouts/main.volt");
+
+require $compiler->getCompiledTemplatePath();
+```
+
+```php
+public function compileAutoEscape(
+    array $statement, 
+    bool $extendsMode
+): string
+```
+Compiles a "autoescape" statement returning PHP code
+
+```php
+public function compileCache(
+    array $statement, 
+    bool $extendsMode = false
+): string
+```
+Compiles a `cache` statement returning PHP code
+
+```php
+public function compileCall(array $statement, bool $extendsMode)
+```
+Compiles calls to macros
+
+```php
+public function compileCase(
+    array $statement, 
+    bool $caseClause = true
+): string
+```
+Compiles a `case`/`default` clause returning PHP code
+
+```php
+public function compileDo(array $statement): string
+```
+Compiles a `do` statement returning PHP code
+
+```php
+public function compileEcho(array $statement): string
+```
+Compiles a {% raw %}`{{` `}}`{% endraw %} statement returning PHP code
+
+```php
+public function compileElseIf(array $statement): string
+```
+Compiles a `elseif` statement returning PHP code
+
+```php
+public function compileFile(
+    string $path, 
+    string $compiledPath, 
+    bool $extendsMode = false
+): string | array
+```
+Compiles a template into a file also creating the desination path
+
+```php
+$compiler->compileFile(
+    "views/layouts/main.volt",
+    "views/layouts/main.volt.php"
+);
+```
+
+```php
+public function compileForeach(
+    array $statement, 
+    bool $extendsMode = false
+): string
+```
+Compiles a `foreach` statement returning PHP code
+
+```php
+public function compileForElse(): string
+```
+Compiles a `forelse` statement returning PHP code
+
+```php
+public function compileIf(
+    array $statement, 
+    bool $extendsMode = false
+): string
+```
+Compiles a `if` statement returning PHP code
+
+```php
+public function compileInclude(array $statement): string
+```
+Compiles a `include` statement returning PHP code
+
+```php
+public function compileMacro(
+    array $statement, 
+    bool $extendsMode
+): string
+```
+Compiles a macro
+
+```php
+public function compileReturn(array $statement): string
+```
+Compiles a `return` statement returning PHP code
+
+```php
+public function compileSet(array $statement): string
+```
+Compiles a setter statement (assignment of value to variable) returning PHP code
+
+```php
+public function compileString(
+    string $viewCode, 
+    bool $extendsMode = false
+): string
+```
+Compiles a template into a string
+
+```php
+echo $compiler->compileString({% raw %}'{{ "hello world" }}'{% endraw %});
+```
+
+```php
+public function compileSwitch(
+    array $statement, 
+    bool $extendsMode = false
+): string
+```
+Compiles a `switch` statement returning PHP code
+
+```php
+final public function expression(array $expr): string
+```
+Resolves an expression node in an AST volt tree
+
+```php
+final public function fireExtensionEvent(
+    string $name, 
+    array $arguments = null
+)
+```
+
+```php
+public function functionCall(array $expr): string
+```
+Resolves function intermediate code into PHP function calls
+
+```php
+public function getCompiledTemplatePath(): string
+```
+Returns the path to the last compiled template
+
+```php
+public function getExtensions(): array
+```
+Returns the registered extensions 
+
+```php
+public function getFilters(): array
+```
+Register the registered user filters
+
+```php
+public function getFunctions(): array
+```
+Register the registered user functions
+
+```php
+public function getOption(string $option): string
+```
+Returns an option of the compiler
+
+```php
+public function getOptions(): array
+```
+* Returns the compiler options
+
+```php
+public function getTemplatePath(): string
+```
+Returns the path that is currently being compiled
+
+```php
+public function getUniquePrefix(): string
+```
+Return a unique prefix to be used as prefix for compiled variables and contexts
+
+```php
+public function parse(string $viewCode): array
+```
+Parses a Volt template returning its intermediate representation
+
+```php
+print_r(
+    $compiler->parse("{% raw %}{{ 3 + 2 }}{% endraw %}")
+);
+```
+
+```php
+public function resolveTest(array $test, string $left): string
+```
+Resolves filter intermediate code into a valid PHP expression
+
+```php
+public function setOption(string $option, mixed $value)
+```
+Sets a single compiler option
+
+```php
+public function setOptions(array $options)
+```
+Sets the compiler options
+
+```php
+public function setUniquePrefix(string $prefix): Compiler
+```
+Set a unique prefix to be used as prefix for compiled variables
+
 ## Events
-The following compilation events are available to be implemented in extensions:
+The following compilation [events](events) are available to be implemented in extensions:
 
 | Event/Method        | Description                                                                                            |
 |---------------------| -------------------------------------------------------------------------------------------------------|
@@ -1827,6 +2105,7 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 
 
 [abs]: https://php.net/manual/en/function.abs.php
+[addslashes]: https://php.net/manual/en/function.addslashes.php
 [angular]: https://angular.io
 [armin]: https://github.com/mitsuhiko
 [array_keys]: https://php.net/manual/en/function.array-keys
@@ -1853,3 +2132,5 @@ echo PHP_EOL . 'Templates compiled' . PHP_EOL;
 [recursivedirectoryiterator]: https://www.php.net/manual/en/class.recursivedirectoryiterator.php
 [recursiveiteratoriterator]: https://www.php.net/manual/en/class.recursiveiteratoriterator.php
 [unlink]: https://www.php.net/manual/en/function.unlink.php
+[mvc-view-engine-volt-compiler]: api/Phalcon_Mvc#mvc-view-engine-volt-compiler
+[mvc-view-engine-volt-exception]: api/Phalcon_Mvc#mvc-view-engine-volt-exception

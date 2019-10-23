@@ -276,7 +276,9 @@ class Invoices extends Controller
 ```
 
 ## Select
-As the familiar SQL, PHQL allows selecting records using the `SELECT` statement we know, except that instead of specifying tables, we use the model classes:
+As the familiar SQL, PHQL allows selecting records using the `SELECT` statement, except that instead of specifying tables, we use the model classes:
+
+**Models**
 
 ```sql
 SELECT 
@@ -298,7 +300,7 @@ ORDER BY
     Invoices.inv_title
 ```
 
-Classes with namespaces are also allowed
+**Namespaced models**
 
 ```sql
 SELECT 
@@ -309,7 +311,7 @@ ORDER BY
     MyApp\Models\Invoices.inv_title'
 ```
 
-Aliases for models are also supported
+**Aliases**
 
 ```sql
 SELECT 
@@ -322,7 +324,26 @@ ORDER BY
     i.inv_title
 ```
 
-Most of the SQL standard is supported by PHQL, even nonstandard directives such as `LIMIT`:
+**`CASE`**
+
+```sql
+SELECT 
+    i.inv_id, 
+    i.inv_title, 
+    CASE i.inv_status_flag
+        WHEN 1 THEN 'Paid'
+        WHEN 0 THEN 'Unpaid'
+    END AS status_text
+FROM   
+    Invoices i
+WHERE  
+    i.inv_status_flag = 1  
+ORDER BY 
+    i.inv_title
+LIMIT 100
+```
+
+**`LIMIT`**
 
 ```sql
 SELECT 
@@ -336,6 +357,80 @@ WHERE
 ORDER BY 
     i.inv_title
 LIMIT 100
+```
+
+**Aliases in Namespaces**
+
+You can define aliases in namespaces to make your code a bit more readable. This is set up when you register the `modelsManager` in your DI container:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Model\Manager;
+
+$container = new FactoryDefault();
+$container->set(
+    'modelsManager',
+    function () {
+        $modelsManager = new Manager();
+        $modelsManager->registerNamespaceAlias(
+            'inv',
+             Invoices::class
+        );
+
+        return $modelsManager;
+    }
+);
+```
+
+and now our query can be written as:
+
+```sql
+SELECT 
+    i.inv_id 
+FROM   
+    inv:Invoices i
+WHERE  
+    i.inv_status_flag = 1  
+```
+
+The above _shortens_ the whole namespace for the model, replacing it with an alias.
+
+**Subqueries**
+
+PHQL also supports subqueries. The syntax is similar to the one offered by PDO.
+
+
+```sql
+SELECT 
+    i.inv_id 
+FROM   
+    Invoices i
+WHERE EXISTS (  
+    SELECT 
+        cst_id
+    FROM
+        Customers c
+    WHERE 
+        c.cst_id = i.inv_cst_id
+)
+```
+
+```sql
+SELECT 
+    inv_id 
+FROM   
+    Invoices 
+WHERE inv_cst_id IN (  
+    SELECT 
+        cst_id
+    FROM
+        Customers 
+    WHERE 
+        cst_name LIKE '%ACME%'
+)
 ```
 
 ### Results
@@ -2788,6 +2883,128 @@ $result = $manager->executeQuery($phql);
 ```
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application connecting to.
+
+## Custom Dialect
+Due to differences in SQL dialects based on the RDBMS of your choice, not all methods are supported. However you can extend the dialect, so that you can use additional functions that your RDBMS supports. 
+
+For th example below, we are using the `MATCH_AGAINST` method for MySQL.
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as Dialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new Dialect();
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+
+```php
+
+$phql = "SELECT *
+   FROM Invoices
+   WHERE MATCH_AGAINST(inv_title, :pattern:)";
+
+$invoices = $modelsManager
+    ->executeQuery(
+        $phql, 
+        [
+            'pattern' => $pattern
+        ]
+    )
+;
+```
+
+Another example showcasing `GROUP_CONCAT`:
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as Dialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new Dialect();
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        if (true !== empty($arguments[2])) {
+            return sprintf(
+                " GROUP_CONCAT(DISTINCT %s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1])
+            );
+        }
+
+        if (true !== empty($arguments[1])) {
+            return sprintf(
+                " GROUP_CONCAT(%s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1])
+            );
+        }
+
+        return sprintf(
+            " GROUP_CONCAT(%s)",
+            $dialect->getSqlExpression($arguments[0])
+        );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+
+```php
+
+$phql = "SELECT *
+   FROM Invoices
+   WHERE GROUP_CONCAT(inv_title, :first:, :separator:, :distinct:)";
+
+$invoices = $modelsManager
+    ->executeQuery(
+        $phql, 
+        [
+            'pattern'   => $pattern,
+            'separator' => $separator,
+            'distinct'  => $distinct,
+        ]
+    )
+;
+```
+
+The above will create a `GROUP_CONCAT` based on the parameters passed to the method. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
 
 ## Lifecycle
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
