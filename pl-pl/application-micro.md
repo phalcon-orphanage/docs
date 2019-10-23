@@ -710,6 +710,24 @@ $app
     ->setName('show-order');
 ```
 
+* That naming process is handled internally by the [Phalcon\Mvc\Micro\Collection](api/Phalcon_Mvc_Micro_Collection) when such a component is mounted on the app. It needs the name as the optional third parameter of the methods setting the routes.
+
+```php
+// Orders handler
+$orders = new MicroCollection();
+
+$orders->setHandler(
+    new OrdersController()
+);
+
+$orders->setPrefix('/users');
+
+$orders->get('/get/{id}', 'get', 'get-order');
+$orders->get('/add/{payload}', 'add', 'add-order);
+
+$app->mount($orders);
+```
+
 * We need to use the [Phalcon\Url](api/Phalcon_Url) component to generate URLs for the named routes.
 
 ```php

@@ -4,6 +4,7 @@ language: 'es-es'
 version: '4.0'
 upgrade: '#logger'
 title: 'Registrador'
+keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 
 # Registrador
@@ -246,6 +247,74 @@ $logger
 > **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 {: .alert .alert-warning }
 
+## Constantes
+
+The class offers a number of constants that can be used to distinguish between log levels. These constants can also be used as the first parameter in the `log()` method.
+
+| Constante   | Value |
+| ----------- |:-----:|
+| `EMERGENCY` |   0   |
+| `CRITICAL`  |   1   |
+| `ALERT`     |   2   |
+| `ERROR`     |   3   |
+| `WARNING`   |   4   |
+| `NOTICE`    |   5   |
+| `INFO`      |   6   |
+| `DEBUG`     |   7   |
+| `CUSTOM`    |   8   |
+
+## Log Levels
+
+[Phalcon\Logger](api/Phalcon_Logger#logger-logger) allows you to set the minimum log level for the logger(s) to log. If you set this integer value, any level higher in number than the one set will not be logged. Check the values of the constants in the previous section for the order that the levels are being set.
+
+In the following example, we set the log level to `ALERT`. We will only see `EMERGENCY`, `CRITICAL` **and** `ALERT` messages.
+
+```php
+<?php
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter = new Stream('/storage/logs/main.log');
+$logger  = new Logger(
+    'messages',
+    [
+        'main' => $adapter,
+    ]
+);
+
+$logger->setLogLevel(Loger::ALERT);
+
+$logger->alert("This is an alert message");
+$logger->critical("This is a critical message");
+$logger->debug("This is a debug message");
+$logger->error("This is an error message");
+$logger->emergency("This is an emergency message");
+$logger->info("This is an info message");
+$logger->log(Logger::CRITICAL, "This is a log message");
+$logger->notice("This is a notice message");
+$logger->warning("This is a warning message");
+
+```
+
+El resultado de los anteriores mensajes registrados es:
+
+```bash
+[Tue, 25 Dec 18 12:13:14 -0400][ALERT] This is an alert message
+[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a critical message
+[Tue, 25 Dec 18 12:13:14 -0400][EMERGENCY] This is an emergency message
+[Tue, 25 Dec 18 12:13:14 -0400][CRITICAL] This is a log message
+```
+
+The above can be used in situations where you want to log messages above a certain severity based on conditions in your application such as development mode vs. production.
+
+> The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
+{: .alert .alert-info }
+
+> 
+> It is never a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
+{: .alert .alert-warning }
+
 ## Formato de mensaje
 
 Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
@@ -440,7 +509,7 @@ Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como ele
 
 The [Phalcon\Logger\Formatter\FormatterInterface](api/Phalcon_Logger#logger-formatter-formatterinterface) interface must be implemented in order to create your own formatter or extend the existing ones. Additionally you can reuse the [Phalcon\Logger\Formatter\AbstractFormatter](api/Phalcon_Logger#logger-formatter-abstractformatter) abstract class.
 
-## Interpolation
+## Interpolación
 
 Con el componente registro también se puede usar interpolación. Hay casos en los que es necesario agregar texto adicional a los mensajes de registro, por ejemplo, texto que ha sido creado dinámicamente por la aplicación. Para lograrlo solo se necesita enviar una matriz como segundo parámetro del método de registro (p.e. `error`, `info`, `alert`, etc.). La matrix está conformada por llaves y valores; la llave es el índice del mensaje y el valor el contenido que será agregado al mensaje.
 
@@ -473,7 +542,7 @@ $logger->info($message, $context);
 
 The formatter classes above accept a [Phalcon\Logger\Item](api/Phalcon_Logger#logger-item) object. The object contains all the necessary data required for the logging process. It is used as a transport of data from the logger to the formatter.
 
-## Exception
+## Exceptions
 
 Any exceptions thrown in the Logger component will be of type [Phalcon\Logger\Exception](api/Phalcon_Logger#logger-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 

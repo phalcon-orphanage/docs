@@ -82,6 +82,13 @@ const WARNING = 4;
 protected adapters;
 
 /**
+ * Minimum log level for the logger
+ *
+ * @var int
+ */
+protected logLevel = 8;
+
+/**
  * @var string
  */
 protected name = ;
@@ -166,6 +173,10 @@ Returns the adapter stack array
 @return AdapterInterface[]
 
 ```php
+public function getLogLevel(): int
+```
+
+```php
 public function getName(): string;
 ```
 
@@ -201,6 +212,12 @@ Removes an adapter from the stack
 
 ```php
 public function setAdapters( array $adapters ): Logger;
+```
+
+Sets the adapters stack overriding what is already there
+
+```php
+public function setLogLevel( int $level ): Logger;
 ```
 
 Sets the adapters stack overriding what is already there
