@@ -159,7 +159,7 @@ Save the file as `nginx.yml` and ensure not to use any tabs in the file or devil
 - [Add project hosts entry on Windows][hosts-windows]
 - [Setup Auto DNS][auto-dns]
 
-[devilbox]: https://devilbox.com
+[devilbox]: https://devilbox.org
 [devilbox-documentation]: https://devilbox.readthedocs.io/en/latest/examples/setup-phalcon.html
 [host-path-httpd-datadir]: https://devilbox.readthedocs.io/en/latest/configuration-files/env-file.html#env-httpd-datadir
 [enter-container]: https://devilbox.readthedocs.io/en/latest/getting-started/enter-the-php-container.html#enter-the-php-container
