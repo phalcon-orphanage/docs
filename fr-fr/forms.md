@@ -2,6 +2,8 @@
 layout: default
 language: 'fr-fr'
 version: '4.0'
+title: 'Forms'
+keywords: 'forms, render html, validation, elements'
 ---
 
 # Forms
@@ -678,4 +680,4 @@ echo $loginForm->render();
 
 ## External Resources
 
-* [Vökuró](https://vokuro.phalcon.io), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
+* [Vökuró](https://github.com/phalcon/vokuro), is a sample application that uses the forms builder to create and manage forms, [[GitHub](https://github.com/phalcon/vokuro)]
