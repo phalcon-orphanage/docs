@@ -445,7 +445,7 @@ $session
 
 ### Custom
 
-The adapters implement PHP's [SessionHandlerInterface](https://www.php.net/manual/en/class.sessionhandlerinterface.php). As a result you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager](api/Phalcon_Session#session-manager). There are more adapters available for this components in the [Phalcon Incubator]((https://github.com/phalcon/incubator/).
+The adapters implement PHP's [SessionHandlerInterface](https://www.php.net/manual/en/class.sessionhandlerinterface.php). As a result you can create any adapter you need by extending this interface. You can also use any adapter that implements this interface and set the adapter to [Phalcon\Session\Manager](api/Phalcon_Session#session-manager). There are more adapters available for this components in the [Phalcon Incubator](https://github.com/phalcon/incubator/).
 
 ```php
 <?php
