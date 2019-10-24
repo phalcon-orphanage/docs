@@ -3,6 +3,7 @@ layout: default
 language: 'it-it'
 version: '4.0'
 title: 'Performance'
+keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
 
 # Performance
@@ -22,9 +23,12 @@ The problem with the above approach is two fold. For starters, in most cases the
 
 The problem will remain: *the poorly written application*
 
-In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfils its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware - CDN
+In order to speed up your application, you first need to ensure that your application is written with the best way possible that fulfils its requirements. Nothing beats a good design. After that, there are many aspects to consider: - server hardware - clients connecting (location, browsers) - network latency - database hardware
 
 and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
+
+> **NOTE** These are **reccommendations** and good practices. You are by no means obligated to follow the advice on this document, and by no means is this list exhaustive. Your performance enhancing strategies rely primarily on the needs of your application.
+{: .alert .alert-danger }
 
 ## Server
 
