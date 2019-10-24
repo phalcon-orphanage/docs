@@ -46,6 +46,20 @@ $response = $response
 ;
 
 $result = $httpClient->send($response);
+
+
+$payload = 'The above copyright notice and this permission '
+         . 'notice shall be included in all copies or '
+         . 'substantial portions of the Software.'
+;
+
+$response = $response
+    ->withHeader('Content-Type', 'text/html')
+    ->withBody($payload)
+    ->withStatusCode(200)
+;
+
+$result = $httpClient->send($response);
 ```
 
 We are creating a new [Phalcon\Http\Message\Response][http-message-response] object with a payload represented as JSON, the necessary headers and the status code. The client then sends the response back using the request object. 

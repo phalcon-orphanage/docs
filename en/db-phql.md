@@ -3006,6 +3006,32 @@ $invoices = $modelsManager
 
 The above will create a `GROUP_CONCAT` based on the parameters passed to the method. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
 
+## Caching
+PHQL queries can be cached. You can also check the [Models Caching](db-models-cache) document for more information.
+
+```php
+<?php
+
+$phql  = 'SELECT * FROM Customers WHERE cst_id = :cst_id:';
+$query = $this
+    ->modelsManager
+    ->createQuery($phql)
+;
+
+$query->cache(
+    [
+        'key'      => 'customers-1',
+        'lifetime' => 300,
+    ]
+);
+
+$invoice = $query->execute(
+    [
+        'cst_id' => 1,
+    ]
+);
+```
+
 ## Lifecycle
 Being a high-level language, PHQL gives developers the ability to personalize and customize different aspects in order to suit their needs. The following is the life cycle of each PHQL statement executed:
 

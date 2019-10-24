@@ -24,9 +24,11 @@ In order to speed up your application, you first need to ensure that your applic
 - clients connecting (location, browsers)
 - network latency
 - database hardware
-- CDN
 
 and many more. In this article we will try to highlight some scenarios that could provide more insight as to where your application is really slow.
+
+> **NOTE** These are **reccommendations** and good practices. You are by no means obligated to follow the advice on this document, and by no means is this list exhaustive. Your performance enhancing strategies rely primarily on the needs of your application.
+{: .alert .alert-danger }
 
 ## Server
 [Profiling][profiling] is a form of dynamic application analysis that offers metrics regarding your application. Profiling offers the real picture on what is really going on at any given time in your application, and thus guide you to areas where you application needs attention. Profiling should be continuous in a production application. 
