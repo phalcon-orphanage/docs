@@ -2,6 +2,8 @@
 layout: default
 language: 'nl-nl'
 version: '4.0'
+title: 'Forms'
+keywords: 'forms, render html, validation, elements'
 ---
 
 # Forms
