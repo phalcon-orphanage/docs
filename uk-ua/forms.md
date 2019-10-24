@@ -2,6 +2,8 @@
 layout: default
 language: 'uk-ua'
 version: '4.0'
+title: 'Forms'
+keywords: 'forms, render html, validation, elements'
 ---
 
 # Forms
