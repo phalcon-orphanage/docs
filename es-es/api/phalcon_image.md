@@ -424,7 +424,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
-| Namespace | Phalcon\Image\Adapter | | Uses | Imagick, ImagickDraw, ImagickPixel, Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
 Phalcon\Image\Adapter\Imagick
 
@@ -473,7 +473,7 @@ public static function check(): bool;
 Checks if Imagick is enabled
 
 ```php
-public function getInternalImInstance(): ImagicNative;
+public function getInternalImInstance(): \Imagick;
 ```
 
 Get instance
