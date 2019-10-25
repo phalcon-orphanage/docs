@@ -14,7 +14,7 @@ keywords: 'psr-7, http, http stream'
 
 ## Overview
 
-[Phalcon\Http\Message\Stream](api/Phalcon_Http#http-message-stream) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Stream](api/phalcon_http#http-message-stream) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 

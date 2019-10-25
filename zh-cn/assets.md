@@ -17,7 +17,7 @@ keywords: 'assets, js, css'
 
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
-[Phalcon\Assets\Manager](api/Phalcon_Assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](di) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
+[Phalcon\Assets\Manager](api/phalcon_assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](api/phalcon_di@di-factorydefault) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
 
 ```php
 <?php
@@ -30,7 +30,7 @@ $manager   = $container->get('assets')
 
 ## Assets
 
-Assets can be added to the manager or a collection using the Asset related classes. The [Assets](api/Phalcon_Assets#assets-asset) class. The object accepts the necessary data to create the asset. * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `path` : the path of the asset * `local`: whether this is a local asset or not * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset * `version`: version of the asset * `autoVersion`: let the component auto version this asset or not
+Assets can be added to the manager or a collection using the Asset related classes. The [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) class. The object accepts the necessary data to create the asset. * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `path` : the path of the asset * `local`: whether this is a local asset or not * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset * `version`: version of the asset * `autoVersion`: let the component auto version this asset or not
 
 ```php
 <?php
@@ -50,7 +50,7 @@ $asset = new Asset(
 
 #### CSS
 
-You can also use the [CSS](api/Phalcon_Assets#assets-asset-css) class to create a CSS asset. This class is a helper class that extends the [Asset](api/Phalcon_Assets#assets-asset) class and internally sets the first parameter to `css`.
+You can also use the [Phalcon\Assets\Asset\Css](api/phalcon_assets#assets-asset-css) class to create a CSS asset. This class is a helper class that extends the [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) class and internally sets the first parameter to `css`.
 
 ```php
 <?php
@@ -69,7 +69,7 @@ $asset = new Css(
 
 #### JS
 
-You can also use the [JS](api/Phalcon_Assets#assets-asset-js) class to create a JS asset. This class is a helper class that extends the [Asset](api/Phalcon_Assets#assets-asset) class and internally sets the first parameter to `js`.
+You can also use the [Phalcon\Assets\Asset\Js](api/phalcon_assets#assets-asset-js) class to create a JS asset. This class is a helper class that extends the [Phalcon\Assets\Asset](api/phalcon_assets#assets-asset) class and internally sets the first parameter to `js`.
 
 ```php
 <?php
@@ -88,7 +88,7 @@ $asset = new Js(
 
 ### Inline
 
-There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Inline](api/Phalcon_Assets#assets-inline) class to generate this content. The object can be created with the following parameters: * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `content`: the content to be injected * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset
+There are times that the application needs generated CSS or JS to be injected into the view. You can use the [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) class to generate this content. The object can be created with the following parameters: * `type`: can be `css`, `js` or something else, depending on whether you want to extend the functionality of the component. * `content`: the content to be injected * `filter`: any filter attached to this asset * `attributes`: attributes relative to the asset
 
 ```php
 <?php
@@ -103,7 +103,7 @@ $asset = new Inline(
 
 #### CSS
 
-You can also use the [CSS](api/Phalcon_Assets#assets-inline-css) class to create an inline CSS asset. This class is a helper class that extends the [InlineAsset](api/Phalcon_Assets#assets-inline) class and internally sets the first parameter to `css`.
+You can also use the [Phalcon\Assets\Inline\Css](api/phalcon_assets#assets-inline-css) class to create an inline CSS asset. This class is a helper class that extends the [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) class and internally sets the first parameter to `css`.
 
 ```php
 <?php
@@ -117,7 +117,7 @@ $asset = new Css(
 
 #### JS
 
-You can also use the [JS](api/Phalcon_Assets#assets-inline-js) class to create an inline JS asset. This class is a helper class that extends the [Inline](api/Phalcon_Assets#assets-inline) class and internally sets the first parameter to `js`.
+You can also use the [Phalcon\Assets\Inline\Js](api/phalcon_assets#assets-inline-js) class to create an inline JS asset. This class is a helper class that extends the [Phalcon\Assets\Inline](api/phalcon_assets#assets-inline) class and internally sets the first parameter to `js`.
 
 ```php
 <?php
@@ -131,11 +131,11 @@ $asset = new Js(
 
 ### Custom
 
-Implementing the [AssetInterface](api/Phalcon_Assets#assets-assetinterface) enables you to create different asset classes that can be handled by the Asset Manager.
+Implementing the [Phalcon\Assets\AssetInterface](api/phalcon_assets#assets-assetinterface) enables you to create different asset classes that can be handled by the Asset Manager.
 
 ## Exception
 
-Any exceptions thrown in the Assets Manager component will be of type [Phalcon\Assets\Exception](api/Phalcon_Assets#assets-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Assets Manager component will be of type [Phalcon\Assets\Exception](api/phalcon_assets#assets-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -274,11 +274,10 @@ public function indexAction()
 
 ## Collections
 
-[Collections](api/Phalcon_Assets#assets-collection) are objects that group assets of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific assets to make it easier to place those assets in the views:
+[Phalcon\Assets\Collections](api/phalcon_assets#assets-collection) are objects that group assets of the same type. The assets manager implicitly creates two collections: `css` and `js`. You can create additional collections to group specific assets to make it easier to place those assets in the views:
 
 ```php
 <?php
-
 
 // Javascript - header
 $headerCollection = $this->assets->collection('headerJs');
@@ -368,7 +367,7 @@ $headerCollection = $this
 
 ### 内置过滤器
 
-Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v4 we are offering only the [None](api/Phalcon_Assets#assets-filters-none) filter (which does not change the asset contents) and the [FilterInterface](api/Phalcon_Assets#assets-filterinterface) interface, offering the ability to create custom filters.
+Assets can be filtered i.e. manipulated before their output to the view. Although Phalcon v3 offered minifiers for JavaScript and CSS, license limitations do not allow us to continue using those libraries. For v4 we are offering only the [Phalcon\Assets\Filters\None](api/phalcon_assets#assets-filters-none) filter (which does not change the asset contents) and the [Phalcon\Assets\FilterInterface](api/phalcon_assets#assets-filterinterface) interface, offering the ability to create custom filters.
 
 ### 自定义过滤规则
 

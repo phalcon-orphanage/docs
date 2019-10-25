@@ -14,11 +14,11 @@ keywords: 'psr-7, http, http response'
 
 ## 概述
 
-[Phalcon\Http\Message\Response](api/Phalcon_Http#http-message-response) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-[Phalcon\Http\Message\Response](api/Phalcon_Http#http-message-response) is a representation of an outgoing, server-side response. As per the HTTP specification, this interface includes properties for each of the following:
+[Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is a representation of an outgoing, server-side response. As per the HTTP specification, this interface includes properties for each of the following:
 
 - Protocol version
 - Status code and reason phrase
@@ -51,9 +51,23 @@ $response = $response
 ;
 
 $result = $httpClient->send($response);
+
+
+$payload = 'The above copyright notice and this permission '
+         . 'notice shall be included in all copies or '
+         . 'substantial portions of the Software.'
+;
+
+$response = $response
+    ->withHeader('Content-Type', 'text/html')
+    ->withBody($payload)
+    ->withStatusCode(200)
+;
+
+$result = $httpClient->send($response);
 ```
 
-We are creating a new [Phalcon\Http\Message\Response](api/Phalcon_Http#http-message-response) object with a payload represented as JSON, the necessary headers and the status code. The client then sends the response back using the request object.
+We are creating a new [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) object with a payload represented as JSON, the necessary headers and the status code. The client then sends the response back using the request object.
 
 The above example can be implemented by only using the constructor parameters:
 
@@ -83,7 +97,7 @@ $request = new Response(
 $result = $httpClient->send($request);
 ```
 
-The [Response](api/Phalcon_Http#http-message-response) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [Response](api/phalcon_http#http-message-response) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Constructor
 
@@ -97,7 +111,7 @@ public function __construct(
 
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the body, status code as well as the headers. All parameters are optional.
 
-- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/Phalcon_Http#http-message-exception-invalidargumentexception) is thrown
+- `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
 - `code` - An integer representing the status code for the response. It defaults to `200`.
 - `headers` - A key value array, with key as the header name and value as the header value.
 
@@ -368,7 +382,7 @@ The Request object is immutable. However there are a number of methods that allo
 
 ### `withAddedHeader()`
 
-Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/Phalcon_Http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
+Returns an instance with an additional header appended with the given value. Existing values for the specified header will be maintained. The new value(s) will be appended to the existing list. If the header did not exist previously, it will be added. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values. The header values can be a string or an array of strings.
 
 ```php
 <?php
@@ -417,7 +431,7 @@ var_dump(
 
 ### `withBody()`
 
-Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/Phalcon_Http#http-message-exception-invalidargumentexception) when the body is not valid.
+Returns an instance with the specified message body which implements `StreamInterface`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) when the body is not valid.
 
 ```php
 <?php
@@ -445,7 +459,7 @@ echo $clone->getBody(); // '/assets/stream/mit.txt'
 
 ### `withHeader()`
 
-Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/Phalcon_Http#http-message-exception-invalidargumentexception) for invalid header names or values.
+Returns an instance with the provided value replacing the specified header. While header names are case-insensitive, the casing of the header will be preserved by this function, and returned from `getHeaders()`. Throws [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) for invalid header names or values.
 
 ```php
 <?php

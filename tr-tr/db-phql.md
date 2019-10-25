@@ -100,7 +100,7 @@ class Customers extends Model
 
 ## Query
 
-PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query):
+PHQL queries can be created just by instantiating the class [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query):
 
 ```php
 <?php
@@ -116,7 +116,7 @@ $query     = new Query(
 $invoices = $query->execute();
 ```
 
-The [Phalcon\Mvc\Model\Query](api/Phalcon_Mvc#mvc-model-query) requires the second parameter of the constructor to be the DI container. When calling the above code from a controller or any class that extends the [Phalcon\Di\Injectable](api/Phalcon_Di#di-injectable), you can use:
+The [Phalcon\Mvc\Model\Query](api/phalcon_mvc#mvc-model-query) requires the second parameter of the constructor to be the DI container. When calling the above code from a controller or any class that extends the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable), you can use:
 
 ```php
 <?php
@@ -148,7 +148,7 @@ class Invoices extends Controller
 
 ## Models Manager
 
-We can also utilize the [Phalcon\Mvc\Model\Manager](api/Phalcon_Mvc#mvc-model-manager) which is injected in the DI container:
+We can also utilize the [Phalcon\Mvc\Model\Manager](api/phalcon_mvc#mvc-model-manager) which is injected in the DI container:
 
 ```php
 <?php
@@ -283,7 +283,9 @@ class Invoices extends Controller
 
 ## Select
 
-As the familiar SQL, PHQL allows selecting records using the `SELECT` statement we know, except that instead of specifying tables, we use the model classes:
+As the familiar SQL, PHQL allows selecting records using the `SELECT` statement, except that instead of specifying tables, we use the model classes:
+
+**Modeller**
 
 ```sql
 SELECT 
@@ -305,7 +307,7 @@ ORDER BY
     Invoices.inv_title
 ```
 
-Classes with namespaces are also allowed
+**Namespaced models**
 
 ```sql
 SELECT 
@@ -316,7 +318,7 @@ ORDER BY
     MyApp\Models\Invoices.inv_title'
 ```
 
-Aliases for models are also supported
+**Aliases**
 
 ```sql
 SELECT 
@@ -329,7 +331,26 @@ ORDER BY
     i.inv_title
 ```
 
-Most of the SQL standard is supported by PHQL, even nonstandard directives such as `LIMIT`:
+**`CASE`**
+
+```sql
+SELECT 
+    i.inv_id, 
+    i.inv_title, 
+    CASE i.inv_status_flag
+        WHEN 1 THEN 'Paid'
+        WHEN 0 THEN 'Unpaid'
+    END AS status_text
+FROM   
+    Invoices i
+WHERE  
+    i.inv_status_flag = 1  
+ORDER BY 
+    i.inv_title
+LIMIT 100
+```
+
+**`LIMIT`**
 
 ```sql
 SELECT 
@@ -345,11 +366,84 @@ ORDER BY
 LIMIT 100
 ```
 
+**Aliases in Namespaces**
+
+You can define aliases in namespaces to make your code a bit more readable. This is set up when you register the `modelsManager` in your DI container:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Mvc\Model\Manager;
+
+$container = new FactoryDefault();
+$container->set(
+    'modelsManager',
+    function () {
+        $modelsManager = new Manager();
+        $modelsManager->registerNamespaceAlias(
+            'inv',
+             Invoices::class
+        );
+
+        return $modelsManager;
+    }
+);
+```
+
+and now our query can be written as:
+
+```sql
+SELECT 
+    i.inv_id 
+FROM   
+    inv:Invoices i
+WHERE  
+    i.inv_status_flag = 1  
+```
+
+The above *shortens* the whole namespace for the model, replacing it with an alias.
+
+**Subqueries**
+
+PHQL also supports subqueries. The syntax is similar to the one offered by PDO.
+
+```sql
+SELECT 
+    i.inv_id 
+FROM   
+    Invoices i
+WHERE EXISTS (  
+    SELECT 
+        cst_id
+    FROM
+        Customers c
+    WHERE 
+        c.cst_id = i.inv_cst_id
+)
+```
+
+```sql
+SELECT 
+    inv_id 
+FROM   
+    Invoices 
+WHERE inv_cst_id IN (  
+    SELECT 
+        cst_id
+    FROM
+        Customers 
+    WHERE 
+        cst_name LIKE '%ACME%'
+)
+```
+
 ### Results
 
 Depending on the columns we query as well as the tables, the result types will vary.
 
-If you retrieve all the columns from a single table, you will get back a fully functional [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc#mvc-model-resultset-simple) object back. The object returned is a *complete* and can be modified and re-saved in the database because they represent a complete record of the associated table.
+If you retrieve all the columns from a single table, you will get back a fully functional [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple) object back. The object returned is a *complete* and can be modified and re-saved in the database because they represent a complete record of the associated table.
 
 The following examples return identical results:
 
@@ -415,7 +509,7 @@ foreach ($invoices as $invoice) {
 }
 ```
 
-The returned result is a [Phalcon\Mvc\Model\Resultset\Simple](api/Phalcon_Mvc#mvc-model-resultset-simple) object. However, However, each element is a standard object that only contain the two columns that were requested.
+The returned result is a [Phalcon\Mvc\Model\Resultset\Simple](api/phalcon_mvc#mvc-model-resultset-simple) object. However, However, each element is a standard object that only contain the two columns that were requested.
 
 These values that do not represent complete objects are what we call scalars. PHQL allows you to query all types of scalars: fields, functions, literals, expressions, etc..:
 
@@ -458,7 +552,7 @@ $invoices  = $this
 ;
 ```
 
-The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex](api/Phalcon_Mvc#mvc-model-resultset-complex) object. This allows access to both complete objects and scalars at once:
+The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex](api/phalcon_mvc#mvc-model-resultset-complex) object. This allows access to both complete objects and scalars at once:
 
 ```php
 <?php
@@ -1534,7 +1628,7 @@ if (false === $result->success()) {
 
 ## Query Builder
 
-[Phalcon\Mvc\Query\Builder](api/Phalcon_Mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
+[Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) is a very handy builder that allows you to construct PHQL statements in an object oriented way. Most methods return the buider object, allowing you to use a fluent interface and is flexible enough allowing you to add conditionals if you need to without having to create complex `if` statements and string concatenations constructing the PHQL statement.
 
 The PHQL query:
 
@@ -1581,7 +1675,7 @@ $invoices = $this
 
 ### Parametreler
 
-Whether you create a [Phalcon\Mvc\Query\Builder](api/Phalcon_Mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
+Whether you create a [Phalcon\Mvc\Query\Builder](api/phalcon_mvc#mvc-model-query-builder) object directly or you are using the Models Manager's `createBuilder` method, you can always use the fluent interface to build your query or pass an array with parameters in the constructor. The keys of the array are:
 
 * `bind` - `array` - array of the data to be bound
 * `bindTypes` - `array` - PDO parameter types
@@ -2835,6 +2929,154 @@ $result = $manager->executeQuery($phql);
 ```
 
 The delimiters are dynamically translated to valid delimiters depending on the database system where the application connecting to.
+
+## Custom Dialect
+
+Due to differences in SQL dialects based on the RDBMS of your choice, not all methods are supported. However you can extend the dialect, so that you can use additional functions that your RDBMS supports.
+
+For th example below, we are using the `MATCH_AGAINST` method for MySQL.
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as Dialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new Dialect();
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        return sprintf(
+            " MATCH (%s) AGAINST (%)",
+            $dialect->getSqlExpression($arguments[0]),
+            $dialect->getSqlExpression($arguments[1])
+         );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+
+```php
+<br />$phql = "SELECT *
+   FROM Invoices
+   WHERE MATCH_AGAINST(inv_title, :pattern:)";
+
+$invoices = $modelsManager
+    ->executeQuery(
+        $phql, 
+        [
+            'pattern' => $pattern
+        ]
+    )
+;
+```
+
+Another example showcasing `GROUP_CONCAT`:
+
+```php
+<?php
+
+use Phalcon\Db\Dialect\MySQL as Dialect;
+use Phalcon\Db\Adapter\Pdo\MySQL as Connection;
+
+$dialect = new Dialect();
+$dialect->registerCustomFunction(
+    'MATCH_AGAINST',
+    function ($dialect, $expression) {
+        $arguments = $expression['arguments'];
+        if (true !== empty($arguments[2])) {
+            return sprintf(
+                " GROUP_CONCAT(DISTINCT %s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1])
+            );
+        }
+
+        if (true !== empty($arguments[1])) {
+            return sprintf(
+                " GROUP_CONCAT(%s SEPARATOR %s)",
+                $dialect->getSqlExpression($arguments[0]),
+                $dialect->getSqlExpression($arguments[1])
+            );
+        }
+
+        return sprintf(
+            " GROUP_CONCAT(%s)",
+            $dialect->getSqlExpression($arguments[0])
+        );
+    }
+);
+
+$connection = new Connection(
+    [
+        "host"          => "localhost",
+        "username"      => "root",
+        "password"      => "secret",
+        "dbname"        => "phalcon",
+        "dialectClass"  => $dialect
+    ]
+);
+```
+
+Now you can use this function in PHQL and it internally translates to the correct SQL using the custom function:
+
+```php
+<br />$phql = "SELECT *
+   FROM Invoices
+   WHERE GROUP_CONCAT(inv_title, :first:, :separator:, :distinct:)";
+
+$invoices = $modelsManager
+    ->executeQuery(
+        $phql, 
+        [
+            'pattern'   => $pattern,
+            'separator' => $separator,
+            'distinct'  => $distinct,
+        ]
+    )
+;
+```
+
+The above will create a `GROUP_CONCAT` based on the parameters passed to the method. If three parameters passed we will have a `GROUP_CONCAT` with a `DISTINCT` and `SEPARATOR`, if two parameters passed we will have a `GROUP_CONCAT` with `SEPARATOR` and if only one parameter passed just a `GROUP_CONCAT`
+
+## Caching
+
+PHQL queries can be cached. You can also check the [Models Caching](db-models-cache) document for more information.
+
+```php
+<?php
+
+$phql  = 'SELECT * FROM Customers WHERE cst_id = :cst_id:';
+$query = $this
+    ->modelsManager
+    ->createQuery($phql)
+;
+
+$query->cache(
+    [
+        'key'      => 'customers-1',
+        'lifetime' => 300,
+    ]
+);
+
+$invoice = $query->execute(
+    [
+        'cst_id' => 1,
+    ]
+);
+```
 
 ## Lifecycle
 

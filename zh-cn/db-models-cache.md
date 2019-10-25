@@ -14,9 +14,9 @@ keywords: 'models, caching, phql, resultsets, reuse'
 
 ## 概述
 
-In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. This is due to the complex connection and communication processes that PHP uses with each request to obtain the data from the database. The issue intensifies if the data queried is complex and involves multiple joins on tables.
+In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. We first have a layer of complexity that allows PHP to communicate with the database and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
 
-If we want to increase performance, we will need to implement some layers of caching where required. This will ensure that data is queried from the database only when absolutely necessary. This article showcases some areas that caching could increasing performance.
+Implementing some layers of caching, reduces the number of connections and lookups to your database. This will ensure that data is queried from the database only when absolutely necessary. This article showcases some areas that caching could increase performance.
 
 ## Resultsets
 
