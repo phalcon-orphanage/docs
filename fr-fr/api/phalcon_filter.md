@@ -312,7 +312,7 @@ Sanitizes a value to lowercase
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-lowerfirst">Class Phalcon\Filter\Sanitize\LowerFirst</h1>
 
@@ -330,7 +330,7 @@ Sanitizes a value to lcfirst
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-regex">Class Phalcon\Filter\Sanitize\Regex</h1>
 
@@ -456,7 +456,7 @@ Sanitizes a value striptags
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-trim">Class Phalcon\Filter\Sanitize\Trim</h1>
 
@@ -492,7 +492,7 @@ Sanitizes a value to uppercase
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-upperfirst">Class Phalcon\Filter\Sanitize\UpperFirst</h1>
 
@@ -510,7 +510,7 @@ Sanitizes a value to ucfirst
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-upperwords">Class Phalcon\Filter\Sanitize\UpperWords</h1>
 
@@ -528,7 +528,7 @@ Sanitizes a value to uppercase teh first character of each word
 public function __invoke( string $input );
 ```
 
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 <h1 id="filter-sanitize-url">Class Phalcon\Filter\Sanitize\Url</h1>
 
