@@ -338,7 +338,7 @@ Sanitizes a value to lowercase
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 
@@ -358,7 +358,7 @@ Sanitizes a value to lcfirst
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 
@@ -498,7 +498,7 @@ Sanitizes a value striptags
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 
@@ -538,7 +538,7 @@ Sanitizes a value to uppercase
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 
@@ -558,7 +558,7 @@ Sanitizes a value to ucfirst
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 
@@ -578,7 +578,7 @@ Sanitizes a value to uppercase teh first character of each word
 ```php
 public function __invoke( string $input );
 ```
-@var mixed input The text to sanitize
+@var string input The text to sanitize
 
 
 

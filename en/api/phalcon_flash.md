@@ -306,7 +306,7 @@ Returns the messages in the session flasher
 
 
 ```php
-public function getSessionService(): SessionInterface;
+public function getSessionService(): ManagerInterface;
 ```
 Returns the Session Service
 

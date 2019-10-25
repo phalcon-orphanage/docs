@@ -69,14 +69,14 @@ protected prefix = ;
 /**
  * Serializer
  *
- * @var <SerializerInterface>
+ * @var SerializerInterface
  */
 protected serializer;
 
 /**
  * Serializer Factory
  *
- * @var <SerializerFactory>
+ * @var SerializerFactory
  */
 protected serializerFactory;
 
@@ -273,7 +273,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | APCUIterator, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | AbstractAdapter |
 
 Apcu adapter
@@ -444,7 +444,7 @@ public function getAdapter(): mixed;
 Returns the already connected adapter or connects to the Memcached
 server(s)
 
-@return Memcached
+@return \Memcached
 @throws Exception
 
 
@@ -840,7 +840,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapterfactory.zep)
 
 | Namespace  | Phalcon\Storage |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\SerializerFactory |
+| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Adapter\AdapterInterface, Phalcon\Storage\SerializerFactory |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.
@@ -854,7 +854,7 @@ file that was distributed with this source code.
 ## Properties
 ```php
 /**
- * @var <SerializerFactory>
+ * @var SerializerFactory
  */
 private serializerFactory;
 
@@ -1189,7 +1189,7 @@ SerializerFactory constructor.
 public function newInstance( string $name ): SerializerInterface;
 ```
 
-@return mixed
+@return SerializerInterface
 @throws Exception
 
 

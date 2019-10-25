@@ -435,12 +435,12 @@ Message methods
 /**
  * Gets the body of the message.
  *
- * @var <StreamInterface>
+ * @var StreamInterface
  */
 protected body;
 
 /**
- * @var <Collection>
+ * @var Collection
  */
 protected headers;
 
@@ -471,7 +471,7 @@ protected uri;
 
 ## Methods
 ```php
-public function getBody(): <StreamInterface>
+public function getBody(): StreamInterface
 ```
 
 
@@ -659,7 +659,6 @@ Check the name of the header. Throw exception if not valid
 @see http://tools.ietf.org/html/rfc7230#section-3.2
 
 
-
 ```php
 final protected function checkHeaderValue( mixed $value ): void;
 ```
@@ -708,14 +707,10 @@ backslash octets occurring within that comment.
 @see https://tools.ietf.org/html/rfc7230#section-3.2.6
 
 
-
 ```php
 final protected function getHeaderValue( mixed $values ): array;
 ```
 Returns the header values checked for validity
-
-
-@return array
 
 
 ```php
@@ -749,9 +744,6 @@ Set a valid stream
 final protected function processHeaders( mixed $headers ): Collection;
 ```
 Sets the headers
-
-
-@return Collection
 
 
 ```php

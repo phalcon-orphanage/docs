@@ -166,6 +166,7 @@ public function getExtras(): mixed;
 ```
 Gets arbitrary extra values produced by the domain layer.
 
+@return mixed
 
 
 ```php

@@ -173,7 +173,7 @@ public function getAdapter( string $name ): AdapterInterface;
 Returns an adapter from the stack
 
 
-@throws <Exception>
+@throws Exception
 
 
 ```php
@@ -224,7 +224,7 @@ public function removeAdapter( string $name ): Logger;
 Removes an adapter from the stack
 
 
-@throws <Logger\Exception>
+@throws Logger\Exception
 
 
 ```php
@@ -238,7 +238,6 @@ Sets the adapters stack overriding what is already there
 public function setLogLevel( int $level ): Logger;
 ```
 Sets the adapters stack overriding what is already there
-
 
 
 ```php
@@ -257,7 +256,7 @@ protected function addMessage( int $level, string $message, array $context = [] 
 Adds a message to each handler for processing
 
 
-@throws <Logger\Exception>
+@throws Logger\Exception
 
 
 ```php
@@ -296,7 +295,7 @@ protected defaultFormatter = Line;
 /**
  * Formatter
  *
- * @var <FormatterInterface>
+ * @var FormatterInterface
  */
 protected formatter;
 

@@ -48,7 +48,7 @@ protected baseUri;
 protected basePath;
 
 /**
- * @var <RouterInterface> | null
+ * @var RouterInterface | null
  */
 protected router;
 

@@ -231,7 +231,7 @@ Abstract class for all html helpers
 ## Properties
 ```php
 /**
- * @var <EscaperInterface>
+ * @var EscaperInterface
  */
 protected escaper;
 
@@ -549,7 +549,7 @@ ServiceLocator implementation for Tag helpers
 ## Properties
 ```php
 /**
- * @var <EscaperInterface>
+ * @var EscaperInterface
  */
 private escaper;
 
