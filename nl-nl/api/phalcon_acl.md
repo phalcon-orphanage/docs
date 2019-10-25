@@ -115,7 +115,7 @@ Sets the events manager
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
 
-| Namespace | Phalcon\Acl\Adapter |
+| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
 Interface for Phalcon\Acl adapters
 
