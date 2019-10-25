@@ -66,14 +66,14 @@ protected prefix = ;
 /**
  * Serializer
  *
- * @var <SerializerInterface>
+ * @var SerializerInterface
  */
 protected serializer;
 
 /**
  * Serializer Factory
  *
- * @var <SerializerFactory>
+ * @var SerializerFactory
  */
 protected serializerFactory;
 
@@ -259,7 +259,7 @@ Stores data in the adapter
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
 
-| Namespace | Phalcon\Storage\Adapter | | Uses | APCUIterator, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Storage\Adapter | | Uses | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
 Apcu adapter
 
@@ -413,7 +413,7 @@ public function getAdapter(): mixed;
 
 Returns the already connected adapter or connects to the Memcached server(s)
 
-@return Memcached @throws Exception
+@return \Memcached @throws Exception
 
 ```php
 public function getKeys(): array;
@@ -754,7 +754,7 @@ Stores data in the adapter
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapterfactory.zep)
 
-| Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
+| Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Adapter\AdapterInterface, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -766,7 +766,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 ```php
 /**
- * @var <SerializerFactory>
+ * @var SerializerFactory
  */
 private serializerFactory;
 
@@ -1065,7 +1065,7 @@ SerializerFactory constructor.
 public function newInstance( string $name ): SerializerInterface;
 ```
 
-@return mixed @throws Exception
+@return SerializerInterface @throws Exception
 
 ```php
 protected function getAdapters(): array;

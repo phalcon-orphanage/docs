@@ -31,7 +31,7 @@ For the full copyright and license information, please view the LICENSE file tha
 
 ```php
 /**
- * @var <AdapterInterface>
+ * @var AdapterInterface
  */
 protected adapter;
 
@@ -372,7 +372,7 @@ Exceptions thrown in Phalcon\Session will use this class
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
-| Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\DI\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | ManagerInterface |
+| Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | ManagerInterface |
 
 Phalcon\Session\Manager
 
@@ -382,7 +382,7 @@ Session manager class
 
 ```php
 /**
- * @var <SessionHandlerInterface>|null
+ * @var SessionHandlerInterface|null
  */
 private adapter;
 

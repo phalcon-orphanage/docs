@@ -19,7 +19,7 @@ PSR-11 Wrapper for `Phalcon\Di`
 
 ```php
 /**
- * @var <DiInterface>
+ * @var DiInterface
  */
 protected container;
 

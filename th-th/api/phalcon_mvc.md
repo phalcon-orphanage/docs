@@ -40,7 +40,7 @@ title: 'Phalcon\Mvc'
 * [Phalcon\Mvc\Model\MetaData\Redis](#mvc-model-metadata-redis)
 * [Phalcon\Mvc\Model\MetaData\Strategy\Annotations](#mvc-model-metadata-strategy-annotations)
 * [Phalcon\Mvc\Model\MetaData\Strategy\Introspection](#mvc-model-metadata-strategy-introspection)
-* [Phalcon\Mvc\Model\MetaData\StrategyInterface](#mvc-model-metadata-strategyinterface)
+* [Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface](#mvc-model-metadata-strategy-strategyinterface)
 * [Phalcon\Mvc\Model\MetaData\Stream](#mvc-model-metadata-stream)
 * [Phalcon\Mvc\Model\MetaDataInterface](#mvc-model-metadatainterface)
 * [Phalcon\Mvc\Model\Query](#mvc-model-query)
@@ -3054,8 +3054,6 @@ public function getColumns(): string | null;
 
 Returns the columns to be queried
 
-@return string|array|null
-
 ```php
 public function getConditions(): string | null;
 ```
@@ -3358,8 +3356,6 @@ public function getColumns(): string | null;
 ```
 
 Returns the columns to be queried
-
-@return string|array|null
 
 ```php
 public function getConditions(): string | null;
@@ -4401,7 +4397,7 @@ Sets if a model must use dynamic update instead of the all-field update
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | InjectionAwareInterface, MetaDataInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData\Strategy\Introspection, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface, Phalcon\Mvc\ModelInterface | | Implements | InjectionAwareInterface, MetaDataInterface |
 
 Phalcon\Mvc\Model\MetaData
 
@@ -4609,8 +4605,6 @@ print_r(
     )
 );
 ```
-
-@return string
 
 ```php
 public function getNonPrimaryKeyAttributes( ModelInterface $model ): array;
@@ -4993,7 +4987,7 @@ Flush Redis data and resets internal meta-data in order to regenerate it
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/annotations.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface, Phalcon\Mvc\Model\Exception | | Implements | StrategyInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface, Phalcon\Mvc\Model\Exception | | Implements | StrategyInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -5019,7 +5013,7 @@ The meta-data is obtained by reading the column descriptions from the database i
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/introspection.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\StrategyInterface | | Implements | StrategyInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Di\DiInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface | | Implements | StrategyInterface |
 
 Phalcon\Mvc\Model\MetaData\Strategy\Introspection
 
@@ -5039,11 +5033,11 @@ final public function getMetaData( ModelInterface $model, DiInterface $container
 
 The meta-data is obtained by reading the column descriptions from the database information schema
 
-<h1 id="mvc-model-metadata-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\StrategyInterface</h1>
+<h1 id="mvc-model-metadata-strategy-strategyinterface">Interface Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategyinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/strategy/strategyinterface.zep)
 
-| Namespace | Phalcon\Mvc\Model\MetaData | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
+| Namespace | Phalcon\Mvc\Model\MetaData\Strategy | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Di\DiInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -5117,7 +5111,7 @@ Writes the meta-data to files
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadatainterface.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\StrategyInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\MetaData\Strategy\StrategyInterface |
 
 Phalcon\Mvc\Model\MetaDataInterface
 
@@ -7456,7 +7450,7 @@ Check whether internal resource has rows to fetch
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/complex.zep)
 
-| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Mvc\Model, Phalcon\Mvc\Model\Row, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Di\DiInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends | Resultset | | Implements | ResultsetInterface |
+| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Db\ResultInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface, stdClass | | Extends | Resultset | | Implements | ResultsetInterface |
 
 Phalcon\Mvc\Model\Resultset\Complex
 
@@ -7512,7 +7506,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
-| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, Phalcon\Mvc\ModelInterface | | Extends | Resultset |
+| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\ModelInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
 
@@ -7670,7 +7664,7 @@ Updates every record in the resultset
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/row.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | ArrayAccess, JsonSerializable, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultInterface | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
+| Namespace | Phalcon\Mvc\Model | | Uses | ArrayAccess, JsonSerializable, Phalcon\Mvc\EntityInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\ModelInterface | | Implements | EntityInterface, ResultInterface, ArrayAccess, JsonSerializable |
 
 Phalcon\Mvc\Model\Row
 
