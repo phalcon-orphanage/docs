@@ -162,7 +162,7 @@ public function getAdapter( string $name ): AdapterInterface;
 
 Returns an adapter from the stack
 
-@throws <exception>
+@throws Exception
 
 ```php
 public function getAdapters(): array;
@@ -208,7 +208,7 @@ public function removeAdapter( string $name ): Logger;
 
 Removes an adapter from the stack
 
-@throws <Logger\Exception>
+@throws Logger\Exception
 
 ```php
 public function setAdapters( array $adapters ): Logger;
@@ -236,7 +236,7 @@ protected function addMessage( int $level, string $message, array $context = [] 
 
 Adds a message to each handler for processing
 
-@throws <Logger\Exception>
+@throws Logger\Exception
 
 ```php
 protected function getLevels(): array;
@@ -269,7 +269,7 @@ protected defaultFormatter = Line;
 /**
  * Formatter
  *
- * @var <FormatterInterface>
+ * @var FormatterInterface
  */
 protected formatter;
 
