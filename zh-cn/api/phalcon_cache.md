@@ -61,7 +61,7 @@ Delete an item from the cache by its unique key.
 
 @return bool True if the item was successfully removed. False if there was an error.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
+@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
 public function deleteMultiple( mixed $keys ): bool;
@@ -71,7 +71,7 @@ Deletes multiple cache items in a single operation.
 
 @return bool True if the items were successfully removed. False if there was an error.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
+@throws InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
 
 ```php
 public function get( mixed $key, mixed $defaultValue = null ): mixed;
@@ -81,7 +81,7 @@ Fetches a value from the cache.
 
 @return mixed The value of the item from the cache, or $default in case of cache miss.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
+@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
 public function getAdapter(): AdapterInterface
@@ -95,7 +95,7 @@ Obtains multiple cache items by their unique keys.
 
 @return iterable A list of key => value pairs. Cache keys that do not exist or are stale will have $default as value.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
+@throws InvalidArgumentException MUST be thrown if $keys is neither an array nor a Traversable, or if any of the $keys are not a legal value.
 
 ```php
 public function has( mixed $key ): bool;
@@ -105,7 +105,7 @@ Determines whether an item is present in the cache.
 
 @return bool
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
+@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
 public function set( mixed $key, mixed $value, mixed $ttl = null ): bool;
@@ -119,7 +119,7 @@ Persists data in the cache, uniquely referenced by a key with an optional expira
 
 @return bool True on success and false on failure.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if the $key string is not a legal value.
+@throws InvalidArgumentException MUST be thrown if the $key string is not a legal value.
 
 ```php
 public function setMultiple( mixed $values, mixed $ttl = null ): bool;
@@ -133,7 +133,7 @@ Persists a set of key => value pairs in the cache, with an optional TTL.
 
 @return bool True on success and false on failure.
 
-@throws Phalcon\Cache\Exception\InvalidArgumentException MUST be thrown if $values is neither an array nor a Traversable, or if any of the $values are not a legal value.
+@throws InvalidArgumentException MUST be thrown if $values is neither an array nor a Traversable, or if any of the $values are not a legal value.
 
 ```php
 protected function checkKey( mixed $key ): void;
