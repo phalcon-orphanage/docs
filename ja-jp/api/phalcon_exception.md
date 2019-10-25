@@ -11,7 +11,7 @@ title: 'Phalcon\Exception'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/exception.zep)
 
-| Namespace | Phalcon | | Uses | Throwable | | Extends | \Exception | | Implements | Throwable |
+| Namespace | Phalcon | | Extends | \Exception | | Implements | \Throwable |
 
 Phalcon\Exception
 
