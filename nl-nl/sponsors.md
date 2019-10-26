@@ -2,6 +2,8 @@
 layout: default
 language: 'nl-nl'
 version: '4.0'
+title: 'Sponsors'
+keywords: 'sponsors, opencollective, supporters'
 ---
 
 # Sponsor worden
@@ -44,7 +46,7 @@ For those that wish to sponsor our work and further the development of Phalcon, 
         <img src="https://assets.phalcon.io/phalcon/images/backers/uptrends-200x60.svg"
              alt="Uptrends Web Application Monitoring">
     </a>
-    <a href="https://phalcon.link/fund" class="phalcon-blog__sponsors-item">
-        <span>Ondersteun ons</span>
+    <a href="https://phalcon.io/fundfund" class="phalcon-blog__sponsors-item">
+        <span>Support Us</span>
     </a>
 </div>
