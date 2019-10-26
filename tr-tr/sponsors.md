@@ -2,6 +2,8 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Sponsorlar'
+keywords: 'sponsors, opencollective, supporters'
 ---
 
 # Becoming a sponsor

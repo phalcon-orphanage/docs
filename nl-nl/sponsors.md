@@ -2,6 +2,8 @@
 layout: default
 language: 'nl-nl'
 version: '4.0'
+title: 'Sponsors'
+keywords: 'sponsors, opencollective, supporters'
 ---
 
 # Sponsor worden

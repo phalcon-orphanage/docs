@@ -2,6 +2,8 @@
 layout: default
 language: 'pl-pl'
 version: '4.0'
+title: 'Sponsors'
+keywords: 'sponsors, opencollective, supporters'
 ---
 
 # Becoming a sponsor

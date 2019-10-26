@@ -3,6 +3,7 @@ layout: default
 language: 'nl-nl'
 version: '4.0'
 title: 'Testing Environment'
+keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
 
 # Testing Environment

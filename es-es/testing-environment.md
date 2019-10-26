@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Entorno de prueba'
+keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
 
 # Entorno de prueba
