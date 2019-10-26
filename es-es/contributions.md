@@ -41,7 +41,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 ## Preguntas y ayuda
 
-> Solo aceptamos reportes de errores; las solicitudes de nuevas funcionalidades y *pull requests* se deben hacer en GitHub. Para hacer preguntas sobre el uso del *framework* o para solicitar ayuda visite el [foro oficial](https://phalcon.link/forum) o nuestro servidor en [Discord](https://phalcon.link/discord).
+> Solo aceptamos reportes de errores; las solicitudes de nuevas funcionalidades y *pull requests* se deben hacer en GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/fundforum) or our [Discord](https://phalcon.io/funddiscord) server.
 {:.alert .alert-danger}
 
 ## Lista de verificación para reporte de errores
@@ -80,7 +80,7 @@ Before submitting **new functionality**, please open a [NFR](new-feature-request
 
 ## Obtener ayuda
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.link/support).
+If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/fundsupport).
 
 ## Solicitar nuevas funcionalidades
 
