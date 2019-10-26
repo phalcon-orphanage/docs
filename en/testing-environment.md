@@ -380,7 +380,7 @@ If you have any questions, feel free to join us in our [Discord][discord] server
 [codeception]: https://codeception.com
 [codeception_commands]: http://codeception.com/docs/reference/Commands
 [codeception_introduction]: http://codeception.com/docs/01-Introduction
-[discord]: https://phalcon.link/discord
+[discord]: https://phalcon.io/funddiscord
 [docker_installation]: https://docs.docker.com/engine/installation/
 [forum]: https://forum.phalcon.io
 [nanobox]: https://nanobox.io

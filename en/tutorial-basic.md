@@ -656,8 +656,8 @@ As you can see, it is very easy to start building an application using Phalcon. 
 If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro) next.
 
 [anonymous_function]: https://php.net/manual/en/functions.anonymous.php
-[discord]: https://phalcon.link/discord
-[forum]: https://phalcon.link/forum
+[discord]: https://phalcon.io/funddiscord
+[forum]: https://phalcon.io/fundforum
 [github_tutorial]: https://github.com/phalcon/tutorial
 [htrouter]: https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php
 [injection]: https://martinfowler.com/articles/injection.html
