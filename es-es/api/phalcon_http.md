@@ -408,12 +408,12 @@ Message methods
 /**
  * Gets the body of the message.
  *
- * @var <StreamInterface>
+ * @var StreamInterface
  */
 protected body;
 
 /**
- * @var <Collection>
+ * @var Collection
  */
 protected headers;
 
@@ -445,7 +445,7 @@ protected uri;
 ## Métodos
 
 ```php
-public function getBody(): <StreamInterface>
+public function getBody(): StreamInterface
 ```
 
 ```php
@@ -637,8 +637,6 @@ final protected function getHeaderValue( mixed $values ): array;
 
 Returns the header values checked for validity
 
-@return array
-
 ```php
 final protected function getUriHost( UriInterface $uri ): string;
 ```
@@ -668,8 +666,6 @@ final protected function processHeaders( mixed $headers ): Collection;
 ```
 
 Sets the headers
-
-@return Collection
 
 ```php
 final protected function processProtocol( mixed $protocol = string ): string;
@@ -819,7 +815,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 | Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Stream\Input, Phalcon\Http\Message\AbstractRequest, Psr\Http\Message\RequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends | AbstractRequest | | Implements | RequestInterface |
 
-Peticiones PSR-7
+PSR-7 Request
 
 ## Métodos
 

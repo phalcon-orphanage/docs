@@ -721,7 +721,7 @@ This component allows to build forms using an object-oriented interface
 
 ```php
 /**
- * @var <Attributes> | null
+ * @var Attributes | null
  */
 protected attributes;
 

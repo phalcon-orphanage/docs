@@ -970,7 +970,7 @@ public function getDialectType(): string;
 Returns the name of the dialect used
 
 ```php
-public function getInternalHandler(): \Pdo;
+public function getInternalHandler(): \PDO;
 ```
 
 Return internal PDO handler
@@ -1204,7 +1204,7 @@ protected affectedRows;
 /**
  * PDO Handler
  *
- * @var \Pdo
+ * @var \PDO
  */
 protected pdo;
 
@@ -1355,7 +1355,7 @@ public function getErrorInfo();
 Return the error info, if any
 
 ```php
-public function getInternalHandler(): \Pdo;
+public function getInternalHandler(): \PDO;
 ```
 
 Return internal PDO handler
