@@ -91,8 +91,8 @@ Thanks!
 [phalcon-docs]: https://github.com/phalcon/docs
 [crowdin]: https://crowdin.com
 [phalcon-docs]: https://crowdin.com/project/phalcon-documentation
-[phalcon-forum]: https://phalcon.link/forum
-[phalcon-discord]: https://phalcon.link/discord
+[phalcon-forum]: https://phalcon.io/fundforum
+[phalcon-discord]: https://phalcon.io/funddiscord
 [tests]: reproducible-tests
 [segfault]: https://en.wikipedia.org/wiki/Segmentation_fault 
 [gdb]: https://bugs.php.net/bugs-generating-backtrace.php
@@ -104,4 +104,4 @@ Thanks!
 [psr-2]: https://www.php-fig.org/psr/
 [pr]: new-pull-request
 [nfr]: new-feature-request
-[support]: http://phalcon.link/support
+[support]: http://phalcon.io/fundsupport
