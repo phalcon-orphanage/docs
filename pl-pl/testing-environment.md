@@ -3,6 +3,7 @@ layout: default
 language: 'pl-pl'
 version: '4.0'
 title: 'Testing Environment'
+keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
 
 # Testing Environment
@@ -359,6 +360,6 @@ The PHP extensions enabled are: - apcu - ctype - curl - dom - fileinfo - gd - gm
 
 The database dumps are located under `tests/_data/assets/db/schemas`
 
-If you have any questions, feel free to join us in our [Discord](https://phalcon.link/discord) server or our [Forum](https://forum.phalcon.io).
+If you have any questions, feel free to join us in our [Discord](https://phalcon.io/funddiscord) server or our [Forum](https://forum.phalcon.io).
 
 <3 Phalcon Team
