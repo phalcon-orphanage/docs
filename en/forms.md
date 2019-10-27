@@ -514,7 +514,7 @@ $form = new CustomersForm(
 The code above will check the `options` array during the `initialize` method. The code will check for the `mode` element in the array and if not present it will default to `view`. If the `mode` is `edit`, we are going to add a [Phalcon\Forms\Element\Hidden][forms-element-hidden] element with the entity's ID in the form. By using the `options` array we can create reusable forms and also pass in our form additional data that could be required.
 
 ## Entities
-An entity such as a [Phalcon\Mvc\Model][db-models], a PHP class or even a `\stdClass` object can be passed to the form in order to set default values, or to assign the values from the form to the object.
+An entity such as a [Phalcon\Mvc\Model](db-models), a PHP class or even a `\stdClass` object can be passed to the form in order to set default values, or to assign the values from the form to the object.
 
 ```php
 <?php
