@@ -7,7 +7,7 @@ keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php buil
 ---
 # Webserver Setup
 <hr/>
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
@@ -59,7 +59,7 @@ After executing the command above, navigating to `http://localhost:8000/` will s
 ## PHP-FPM
 The [PHP-FPM][php_fpm] (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
 
-On **Windows** PHP-FPM is in the PHP distribution archive through the file `php-cgi.exe` and you can start it with this script to help set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+On **Windows** PHP-FPM is in the PHP distribution archive. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
 
 Create the file `php-fcgi.bat` with the following contents:
 
@@ -75,13 +75,13 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install Nginx
-[NginX Offical Site][nginx_installation]
+### Install nginX
+[nginX Official Site][nginx_installation]
 
 ### Phalcon configuration
 You can use following potential configuration to setup Nginx with Phalcon:
 
-```nginx
+```
 server {
     # Port 80 will require Nginx to be started with root permissions
     # Depending on how you install Nginx to use port 80 you will need
@@ -164,17 +164,23 @@ server {
 }
 ```
 
-### Start Nginx
-Usually `start nginx` from the command line but this depends on your installation method.
+### Start 
+Depending on your system, the command to start nginX could be one of the following:
+
+```bash
+start nginx
+/etc/init.d/nginx start
+service nginx start
+```
 
 ## Apache
 [Apache][apache] is a popular and well known web server available on many platforms.
 
 ### Phalcon configuration
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). Commonly an application has the following structure:
+The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
 
 ```bash
-test/
+tutorial/
   app/
     controllers/
     models/
@@ -186,14 +192,14 @@ test/
     index.php
 ```
 
-#### Document root
-This being the most common case, the application is installed in any directory under the document root. In this case, we use two `.htaccess` files, the first one to hide the application code forwarding all requests to the application's document root (`public/`). 
+**Document root**
+The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files.  The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`). 
 
 > Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
  {: .alert .alert-warning}
 
-```apacheconfig
-# test/.htaccess
+```
+# tutorial/.htaccess
 
 <IfModule mod_rewrite.c>
     RewriteEngine on
@@ -204,8 +210,8 @@ This being the most common case, the application is installed in any directory u
 
 A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
 
-```apacheconfig
-# test/public/.htaccess
+```
+# tutorial/public/.htaccess
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -215,10 +221,11 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 </IfModule>
 ```
 
+**International Characters**
 For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
 
-```apacheconfig
-# test/public/.htaccess
+```
+# tutorial/public/.htaccess
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
@@ -231,8 +238,9 @@ For users that are using the Persian letter 'م' (meem) in uri parameters, there
 If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
 #### Apache configuration
-If you do not want to use `.htaccess` files you can move these configurations to the apache's main configuration file:
-```apacheconfig
+If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
+
+```
 <IfModule mod_rewrite.c>
 
     <Directory "/var/www/test">
@@ -241,7 +249,7 @@ If you do not want to use `.htaccess` files you can move these configurations to
         RewriteRule  ((?s).*) public/$1 [L]
     </Directory>
 
-    <Directory "/var/www/test/public">
+    <Directory "/var/www/tutorial/public">
         RewriteEngine On
         RewriteCond   %{REQUEST_FILENAME} !-d
         RewriteCond   %{REQUEST_FILENAME} !-f
@@ -252,17 +260,18 @@ If you do not want to use `.htaccess` files you can move these configurations to
 ```
 
 #### Virtual Hosts
-And this second configuration allows you to install a Phalcon application in a virtual host:
-```apacheconfig
+The configuration below is for when you want to install your application in a virtual host:
+
+```
 <VirtualHost *:80>
 
     ServerAdmin    admin@example.host
-    DocumentRoot   "/var/vhosts/test/public"
+    DocumentRoot   "/var/vhosts/tutorial/public"
     DirectoryIndex index.php
     ServerName     example.host
     ServerAlias    www.example.host
 
-    <Directory "/var/vhosts/test/public">
+    <Directory "/var/vhosts/tutorial/public">
         Options       All
         AllowOverride All
         Require       all granted
@@ -272,25 +281,42 @@ And this second configuration allows you to install a Phalcon application in a v
 ```
 
 ## WAMP
-
 [WampServer][wamp] is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
+> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+{: .alert .alert-warning }
+
+> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+{: .alert .alert-warning }
+
 ### Download Phalcon
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+
+![](/assets/images/content/webserver-architecture.png)
+
+Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+
+```
+phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+```
+
+which will match `x86`, `vc15` and `TS` which is _Thread Safe_. If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL. 
+
 WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
 
 After downloading the Phalcon library you will have a zip file like the one shown below:
 
-![](/assets/images/content/webserver-xampp-1.png)
+![](/assets/images/content/webserver-zip-icon.png)
 
 Extract the library from the archive to get the Phalcon DLL:
 
-![](/assets/images/content/webserver-xampp-2.png)
+![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php5.5.12\ext` (assuming your WAMP installation installed PHP 5.5.12).
+Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php7.2.18\ext` (assuming your WAMP installation installed PHP 7.2.18).
 
-![](/assets/images/content/webserver-wamp-1.png)
+![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
  
  ```ini
  extension=php_phalcon.dll
@@ -298,7 +324,7 @@ Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php5.5.12\php.ini`. I
 
 and save it.
 
-![](/assets/images/content/webserver-wamp-2.png)
+![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
 
 Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
 
@@ -308,34 +334,60 @@ extension=php_phalcon.dll
 
 and save it.
 
+> **NOTE**: The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
+{: .alert .alert-warning }
+
+> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+{: .alert .alert-warning }
+
+![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
+
 Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
 
-![](/assets/images/content/webserver-wamp-3.png)
+![](/assets/images/content/webserver-wamp-manager.png)
 
 Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
 
-![](/assets/images/content/webserver-wamp-4.png)
+![](/assets/images/content/webserver-wamp-phalcon.png)
 
-Congratulations! You are now phlying with Phalcon.
+> Congratulations! You are now phlying with Phalcon.
+{: .alert .alert-info }
 
 ## XAMPP
-
 [XAMPP][xampp] is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
+> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+{: .alert .alert-warning }
+
+> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+{: .alert .alert-warning }
+
 ### Download Phalcon
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+
+![](/assets/images/content/webserver-architecture.png)
+
+Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+
+```
+phalcon_x86_vc15_php7.2_4.0.0+4237.zip
+```
+
+which will match `x86`, `vc15` and `TS` which is _Thread Safe_. If your system reports `NTS` (_Non Thread Safe_) then you should download that DLL. 
+
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
 After downloading the Phalcon library you will have a zip file like the one shown below:
 
-![](/assets/images/content/webserver-xampp-1.png)
+![](/assets/images/content/webserver-zip-icon.png)
 
 Extract the library from the archive to get the Phalcon DLL:
 
-![](/assets/images/content/webserver-xampp-2.png)
+![](/assets/images/content/webserver-extracted-dlls.png)
 
 Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
 
-![](/assets/images/content/webserver-xampp-3.png)
+![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
 Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++][notepad_plus] to avoid issues with line endings. Append at the end of the file:
 
@@ -345,32 +397,22 @@ extension=php_phalcon.dll
 
 and save it.
 
-![](/assets/images/content/webserver-xampp-4.png)
+> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+{: .alert .alert-warning }
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration.
+![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
-![](/assets/images/content/webserver-xampp-5.png)
+Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
 
-Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
+![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-![](/assets/images/content/webserver-xampp-6.png)
+[phpinfo][phpinfo] will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-![](/assets/images/content/webserver-xampp-7.png)
+> Congratulations! You are now phlying with Phalcon.
+{: .alert .alert-info }
 
-If you can see the phalcon version in the `phpinfo()` output, congratulations!, You are now phlying with Phalcon.
-
-### Screencast
-The following screencast is a step by step guide to install Phalcon on Windows:
-
-<div align="center">
-  <iframe src="https://player.vimeo.com/video/40265988" 
-          width="500" 
-          height="266" 
-          frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen>
-  </iframe>
-</div>
 
 ## Cherokee
 
@@ -399,7 +441,7 @@ Normally this behavior does not require additional settings. Add another behavio
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-In the 'Handler' tab choose `List & Send` as handler:
+In the `Handler` tab choose `List & Send` as handler:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 
@@ -423,5 +465,6 @@ Execute the application in a browser:
 [nginx_installation]: https://www.nginx.com/resources/wiki/start/topics/tutorials/install/
 [notepad_plus]: https://notepad-plus-plus.org/
 [php_fpm]: https://php.net/manual/en/install.fpm.php
-[wamp]: https://www.wampserver.com/en/
+[wamp]: http://www.wampserver.com/en/
 [xampp]: https://www.apachefriends.org/download.html
+[phpinfo]: https://php.net/manual/en/function.phpinfo.php
