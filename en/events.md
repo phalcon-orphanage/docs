@@ -76,7 +76,7 @@ Tells the event manager if it needs to collect all the responses returned by eve
 
 ```php
 public function detach(string $eventType, mixed $handler)
-```php
+```
 Detach the listener from the events manager
 
 ```php
