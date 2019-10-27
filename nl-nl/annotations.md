@@ -6,15 +6,17 @@ title: 'Annotations'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
-# Annotations Parser
+# Annotations
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 
-It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.
+Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offer an easy way to parse and cache annotations in PHP applications.
+
+## Usage
 
 Annotations are read from docblocks in classes, methods and properties. An annotation can be placed at any position in the docblock:
 
@@ -99,299 +101,375 @@ However, to make the code more maintainable and understandable it is recommended
  */
 ```
 
-## Factory
-
-There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
+An example for a model is:
 
 ```php
 <?php
 
-use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
+use Phalcon\Mvc\Model;
 
-$reader = new MemoryAdapter();
+/**
+ * Customers
+ *
+ * Represents a customer record
+ *
+ * @Source('co_customers');
+ * @HasMany("cst_id", "Invoices", "inv_cst_id")
+ */
+class Customers extends Model
+{
+    /**
+     * @Primary
+     * @Identity
+     * @Column(type="integer", nullable=false, column="cst_id")
+     */
+    public $id;
 
-// .....
-```
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_first")
+     */
+    public $nameFirst;
 
-However you can also utilize the factory method to achieve the same thing:
-
-```php
-<?php
-
-
-use Phalcon\Annotations\Factory;
-
-$options = [
-    'prefix'   => 'annotations',
-    'lifetime' => '3600',
-    'adapter'  => 'memory',      // Load the Memory adapter
-];
-
-$annotations = Factory::load($options);
-```
-
-The Factory loader provides more flexibility when dealing with instantiating annotations adapters from configuration files.
-
-## Reading Annotations
-
-A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface:
-
-```php
-<?php
-
-use Phalcon\Annotations\Adapter\Memory as MemoryAdapter;
-
-$reader = new MemoryAdapter();
-
-// Reflect the annotations in the class Example
-$reflector = $reader->get('Example');
-
-// Read the annotations in the class' docblock
-$annotations = $reflector->getClassAnnotations();
-
-// Traverse the annotations
-foreach ($annotations as $annotation) {
-    // Print the annotation name
-    echo $annotation->getName(), PHP_EOL;
-
-    // Print the number of arguments
-    echo $annotation->numberArguments(), PHP_EOL;
-
-    // Print the arguments
-    print_r($annotation->getArguments());
+    /**
+     * @Column(type="string", nullable=false, column="cst_name_last")
+     */
+    public $nameLast;
 }
 ```
 
-The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter. Adapters cache the processed annotations avoiding the need of parse the annotations again and again.
-
-[Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) was used in the above example. This adapter only caches the annotations while the request is running and for this reason the adapter is more suitable for development. There are other adapters to swap out when the application is in production stage.
-
-## Types of Annotations
+## Types
 
 Annotations may have parameters or not. A parameter could be a simple literal (`strings`, `number`, `boolean`, `null`), an `array`, a hashed list or other annotation:
 
 ```php
-<?php
-
 /**
- * Simple Annotation
- *
  * @SomeAnnotation
  */
+```
 
+Simple Annotation
+
+```php
 /**
- * Annotation with parameters
- *
  * @SomeAnnotation('hello', 'world', 1, 2, 3, false, true)
  */
+```
 
+Annotation with parameters
+
+```php
 /**
- * Annotation with named parameters
- *
  * @SomeAnnotation(first='hello', second='world', third=1)
  * @SomeAnnotation(first: 'hello', second: 'world', third: 1)
  */
+```
 
+Annotation with named parameters
+
+```php
 /**
- * Passing an array
- *
  * @SomeAnnotation([1, 2, 3, 4])
  * @SomeAnnotation({1, 2, 3, 4})
  */
+```
 
+Passing an array
+
+```php
 /**
- * Passing a hash as parameter
- *
  * @SomeAnnotation({first=1, second=2, third=3})
  * @SomeAnnotation({'first'=1, 'second'=2, 'third'=3})
  * @SomeAnnotation({'first': 1, 'second': 2, 'third': 3})
  * @SomeAnnotation(['first': 1, 'second': 2, 'third': 3])
  */
+```
 
+Passing a hash as parameter
+
+```php
 /**
- * Nested arrays/hashes
- *
  * @SomeAnnotation({'name'='SomeName', 'other'={
  *     'foo1': 'bar1', 'foo2': 'bar2', {1, 2, 3},
  * }})
  */
+```
 
+Nested arrays/hashes
+
+```php
 /**
- * Nested Annotations
- *
  * @SomeAnnotation(first=@AnotherAnnotation(1, 2, 3))
  */
 ```
 
-## Practical Usage
+Nested Annotations
 
-Next we will explain some practical examples of annotations in PHP applications:
+## Adapters
 
-### Cache Enabler with Annotations
+This component makes use of adapters to cache or no cache the parsed and processed annotations improving performance:
 
-Let's pretend we've created the following controller and you want to create a plugin that automatically starts the cache if the last action executed is marked as cacheable. First off all, we register a plugin in the Dispatcher service to be notified when a route is executed:
+| Adapter                                                                                     | Description                                                                 |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [Phalcon\Annotations\Adapter\Apcu](api/phalcon_annotations#annotations-adapter-apcu)     | Use APCu to store parsed and processed annotations (production)             |
+| [Phalcon\Annotations\Adapter\Memory](api/phalcon_annotations#annotations-adapter-memory) | Use memory fo store annotations (development)                               |
+| [Phalcon\Annotations\Adapter\Stream](api/phalcon_annotations#annotations-adapter-stream) | Use a file stream to store annotations. Must be used with a bytecode cache. |
+
+### Apcu
+
+[Phalcon\Annotations\Adapter\Apcu](api/phalcon_annotations#annotations-adapter-apcu) stores the parsed and processed annotations using the APCu cache. This adapter is suitable for production systems. However, once the web server restarts, the cache will be cleared and will have to be rebuilt. The adapter accepts two parameters in the constructor's `options` array: - `prefix` - the prefix for the key stored - `lifetime` - the cache lifetime
 
 ```php
 <?php
 
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Annotations\Adapter\Apcu;
 
-$di['dispatcher'] = function () {
-    $eventsManager = new EventsManager();
-
-    // Attach the plugin to 'dispatch' events
-    $eventsManager->attach(
-        'dispatch',
-        new CacheEnablerPlugin()
-    );
-
-    $dispatcher = new MvcDispatcher();
-
-    $dispatcher->setEventsManager($eventsManager);
-
-    return $dispatcher;
-};
+$adapter = new Apcu(
+    [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
+);
 ```
 
-`CacheEnablerPlugin` is a plugin that intercepts every action executed in the dispatcher enabling the cache if needed:
+Internally, the adapter stores data prefixing every key with `_PHAN`. This setting cannot be changed. It however gives you the option to scan APCu for keys that are prefixed with `_PHAN` and clear them if needed.
 
 ```php
 <?php
 
-use Phalcon\Events\Event;
-use Phalcon\Mvc\Dispatcher;
-use Phalcon\Plugin;
+use APCuIterator;
 
-/**
- * Enables the cache for a view if the latest
- * executed action has the annotation @Cache
- */
-class CacheEnablerPlugin extends Plugin
-{
-    /**
-     * This event is executed before every route is executed in the dispatcher
-     */
-    public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher)
-    {
-        // Parse the annotations in the method currently executed
-        $annotations = $this->annotations->getMethod(
-            $dispatcher->getControllerClass(),
-            $dispatcher->getActiveMethod()
-        );
+$result   = true;
+$pattern  = "/^_PHAN/";
+$iterator = new APCuIterator($pattern);
 
-        // Return normally if the method doesn't have a 'Cache' annotation
-        if (!$annotations->has('Cache')) {
-            return true;
-        }
+if (true === is_object($iterator)) {
+    return false;
+}
 
-        // The method has the annotation 'Cache'
-        $annotation = $annotations->get('Cache');
-
-        // Get the lifetime
-        $lifetime = $annotation->getNamedParameter('lifetime');
-
-        $options = [
-            'lifetime' => $lifetime,
-        ];
-
-        // Check if there is a user defined cache key
-        if ($annotation->hasNamedParameter('key')) {
-            $options['key'] = $annotation->getNamedParameter('key');
-        }
-
-        // Enable the cache for the current method
-        $this->view->cache($options);
+foreach ($iterator as $item) {
+    if (true !== apcu_delete($item["key"])) {
+        $result = false;
     }
+}
+
+return $result;
+```
+
+### Memory
+
+[Phalcon\Annotations\Adapter\Memory](api/phalcon_annotations#annotations-adapter-memory) stores the parsed and processed annotations in memory. This adapter is suitable for development systems. The cache is rebuilt on every request, and therefore can immediately reflect changes while developing your application.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+```
+
+### Stream
+
+[Phalcon\Annotations\Adapter\Stream](api/phalcon_annotations#annotations-adapter-stream) stores the parsed and processed annotations in a file on the server. This adapter can be used in production systems but it will increase the I/O since for every request the annotations cache files will need to be read from the file system. The adapter accepts one parameter in the constructor's `options` array: - `annotationsDir` - the directory to store the annotations cache
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Stream;
+
+$adapter = new Stream(
+    [
+        'annotationsDir' => '/app/storage/cache/annotations',
+    ]
+);
+```
+
+If there is a problem with storing the data in the folder due to permissions or any other reason, a [Phalcon\Annotations\Exception](api/phalcon_annotations#annotations-exception) will be thrown.
+
+### Custom
+
+[Phalcon\Annotations\Adapter\AdapterInterface](api/phalcon_annotations#annotations-adapter-adapterinterface) is available. Extending this interface will allow you to create custom adapters.
+
+## Factory
+
+### `newInstance`
+
+We can easily create an annotations adapter class using the `new` keyword. However Phalcon offers the [Phalcon\Annotations\AnnotationsFactory](api/phalcon_annotations#annotations-annotationsfactory) class, so that developers can easily instantiate annotations adapters. The factory will accept an array of options which will in turn be used to instantiate the necessary adapter class. The factory always returns a new instance that implements the [Phalcon\Annotations\Adapter\AdapterInterface](api/phalcon_annotations#annotations-adapter-adapterinterface). The names of the preconfigured adapters are:
+
+| Name     | Adapter                                                                                     |
+| -------- | ------------------------------------------------------------------------------------------- |
+| `apcu`   | [Phalcon\Annotations\Adapter\Apcu](api/phalcon_annotations#annotations-adapter-apcu)     |
+| `memory` | [Phalcon\Annotations\Adapter\Memory](api/phalcon_annotations#annotations-adapter-memory) |
+| `stream` | [Phalcon\Annotations\Adapter\Stream](api/phalcon_annotations#annotations-adapter-stream) |
+
+The example below shows how you can create an Apcu annotations adapter:
+
+```php
+<?php
+
+use Phalcon\Annotations\AnnotationsFactory;
+
+$options = [
+    'prefix'   => 'my-prefix',
+    'lifetime' => 3600,
+];
+
+$factory = new AdapterFactory();
+$apcu    = $factory->newInstance('apcu', $options);
+```
+
+### `load`
+
+The [Phalcon\Annotations\AnnotationsFactory](api/phalcon_annotations#annotations-annotationsfactory) also offers the `load` method, which accepts a configuration object. This object can be an array or a [Phalcon\Config](config) object, with directives that are used to set up the adapter. The object requires the `adapter` element, as well as the `options` element with the necessary directives.
+
+```php
+<?php
+
+use Phalcon\Annotations\AnnotationsFactory;
+
+$options = [
+    'adapter' => 'apcu',
+    'options' => [
+        'prefix'   => 'my-prefix',
+        'lifetime' => 3600,
+    ]
+];
+
+$factory = new AdapterFactory();
+$apcu    = $factory->load($options);
+```
+
+## Reading Annotations
+
+A reflector is implemented to easily get the annotations defined on a class using an object-oriented interface. [Phalcon\Annotations\Reader](api/phalcon_annotations#annotations-reader) is used along with [Phalcon\Annotations\Reflection](api/phalcon_annotations#annotations-reflection). They also utilize the collection [Phalcon\Annotations\Collection](api/phalcon_annotations#annotations-collection) that contains [Phalcon\Annotations\Annotation](api/phalcon_annotations#annotations-annotation) objects once the annotations are parsed.
+
+```php
+<?php
+
+use Phalcon\Annotations\Adapter\Memory;
+
+$adapter = new Memory();
+
+$reflector   = $adapter->get('Invoices');
+$annotations = $reflector->getClassAnnotations();
+
+foreach ($annotations as $annotation) {
+    echo $annotation->getName(), PHP_EOL;
+    echo $annotation->numberArguments(), PHP_EOL;
+
+    print_r($annotation->getArguments());
 }
 ```
 
-Now, we can use the annotation in a controller:
+In the above example we first create the memory annotations adapter. We then call `get` on it to load the annotations from the `Invoices` class. The `getClassAnnotations` will return a [Phalcon\Annotations\Collection](api/phalcon_annotations#annotations-collection) class. We iterate through the collection and print out the name (`getName`), the number arguments (`numberArguments`) and then we print all the arguments (`getArguments`) on screen.
+
+The annotation reading process is very fast, however, for performance reasons it is recommended to store the parsed annotations using an adapter so as to reduce unnecessary CPU cycles for parsing.
+
+## Exceptions
+
+Any exceptions thrown in the `Phalcon\Annotations` namespace will be of type [Phalcon\Annotations\Exception](api/phalcon_annotations#annotations-exception). You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
 
+use Phalcon\Annotations\Adapter\Memory;
+use Phalcon\Annotations\Exception;
 use Phalcon\Mvc\Controller;
 
-class NewsController extends Controller
+class IndexController extends Controller
 {
-    public function indexAction()
+    public function index()
     {
+        try {
+            $adapter = new Memory();
 
-    }
+            $reflector   = $adapter->get('Invoices');
+            $annotations = $reflector->getClassAnnotations();
 
-    /**
-     * This is a comment
-     *
-     * @Cache(lifetime=86400)
-     */
-    public function showAllAction()
-    {
-        $this->view->article = Articles::find();
-    }
-
-    /**
-     * This is a comment
-     *
-     * @Cache(key='my-key', lifetime=86400)
-     */
-    public function showAction($slug)
-    {
-        $this->view->article = Articles::findFirstByTitle($slug);
+            foreach ($annotations as $annotation) {
+                echo $annotation->getExpression('unknown-expression');
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
     }
 }
 ```
 
-### Private/Public areas with Annotations
+## Examples
 
-You can use annotations to tell the ACL which controllers belong to the administrative areas:
+You can use annotations to define which areas are controlled by the ACL. We can do this by registering a plugin in the events manager listening to the `beforeDispatch` event, or simply implement the method in our base controller.
+
+First we need to set the annotations manager in our DI container:
 
 ```php
 <?php
 
-use Phalcon\Acl;
-use Phalcon\Acl\Role;
-use Phalcon\Acl\Resource;
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Annotations\Adapter\Apcu;
+
+$container = new FactoryDefault();
+
+$container->set(
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
+);
+```
+
+and now in the base controller we implement the `beforeDispatch` method:
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use Phalcon\Annotations\Adapter\Apcu;
 use Phalcon\Events\Event;
-use Phalcon\Plugin;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Mvc\Controller
+use MyApp\Components\Auth;
 
 /**
- * This is the security plugin which controls that users only have access to the modules they're assigned to
+ * @property Apcu $annotations
+ * @property Auth $auth 
  */
-class SecurityAnnotationsPlugin extends Plugin
+class BaseController extends Controller
 {
     /**
-     * This action is executed before execute any action in the application
-     *
      * @param Event $event
      * @param Dispatcher $dispatcher
      *
      * @return bool
      */
-    public function beforeDispatch(Event $event, Dispatcher $dispatcher)
-    {
-        // Possible controller class name
+    public function beforeDispatch(
+        Event $event, 
+        Dispatcher $dispatcher
+    ) {
         $controllerName = $dispatcher->getControllerClass();
 
-        // Possible method name
-        $actionName = $dispatcher->getActiveMethod();
+        $annotations = $this
+            ->annotations
+            ->get($controllerName)
+        ;
 
-        // Get annotations in the controller class
-        $annotations = $this->annotations->get($controllerName);
+        $exists = $annotations
+            ->getClassAnnotations()
+            ->has('Private')
+        ;
 
-        // The controller is not private? Continue normally
-        if (!$annotations->getClassAnnotations()->has('Private')) {
+        if (true !== $exists) {
             return true;
         }
 
-        // Check if the session variable is active?
-        if ($this->session->get('auth')) {
+        if (true === $this->auth->isLoggedIn()) {
             return true;
         }
 
-        // The user is no logged redirect to login
         $dispatcher->forward(
             [
                 'controller' => 'session',
@@ -404,20 +482,26 @@ class SecurityAnnotationsPlugin extends Plugin
 }
 ```
 
-## Annotations Adapters
+and in our controllers we can specify:
 
-This component makes use of adapters to cache or no cache the parsed and processed annotations thus improving the performance or providing facilities to development/testing:
+```php
+<?php
 
-| Class                                                                           | Description                                                                                                                                                                       |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Phalcon\Annotations\Adapter\Memory](api/Phalcon_Annotations_Adapter_Memory) | The annotations are cached only in memory. When the request ends the cache is cleaned reloading the annotations in each request. This adapter is suitable for a development stage |
-| [Phalcon\Annotations\Adapter\Files](api/Phalcon_Annotations_Adapter_Files)   | Parsed and processed annotations are stored permanently in PHP files improving performance. This adapter must be used together with a bytecode cache.                             |
-| [Phalcon\Annotations\Adapter\Apcu](api/Phalcon_Annotations_Adapter_Apcu)     | Parsed and processed annotations are stored permanently in the APCu cache improving performance. This is the fastest adapter                                                      |
+namespace MyApp\Controllers;
 
-### Implementing your own adapters
+use MyApp\Controllers\BaseController;
 
-The [Phalcon\Annotations\AdapterInterface](api/Phalcon_Annotations_AdapterInterface) interface must be implemented in order to create your own annotations adapters or extend the existing ones.
+/**
+ * @Private(true) 
+ */
+class Invoices extends BaseController
+{
+    public function indexAction()
+    {
+    }
+}
+```
 
-## External Resources
+## Additional Resources
 
 * [Tutorial: Creating a custom model's initializer with Annotations](https://blog.phalcon.io/post/tutorial-creating-a-custom-models-initializer)
