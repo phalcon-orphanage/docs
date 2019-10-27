@@ -25,7 +25,7 @@ The directory structure of a CLI application can look like this:
 
 ```bash
 src/tasks/MainTask.php
-cli.php
+php cli.php
 ```
 
 In the above example, the `cli.php` is the entry point of our application, while the `src/tasks` directory contains all the task classes that handle each command.
@@ -142,7 +142,7 @@ As mentioned above, a CLI application is handled by the [Phalcon\Cli\Console](ap
 **Arguments** Our application needs arguments. These come in the form of :
 
 ```bash
-./cli.php argument1 argument2 argument3 ...
+php ./cli.php argument1 argument2 argument3 ...
 ```
 
 The first argument relates to the task to be executed. The second is the action and after that follow the parameters we need to pass.
@@ -165,7 +165,7 @@ As you can see in the above, we use the `$argv` to receive what has been passed 
 So for the following example:
 
 ```bash
-./cli.php users recalculate 10
+php ./cli.php users recalculate 10
 ```
 
 Our application will invoke the `UsersTask`, call the `recalculate` action and pass the parameter `10`.
@@ -433,7 +433,7 @@ The above code assumes that you have structured your directories to contain modu
 src/
 src/backend/Module.php
 src/frontend/Module.php
-cli.php
+php cli.php
 ```
 
 ## Routes
