@@ -365,7 +365,7 @@ class Invoices extends Model
 }
 ```
 
-> You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name.
+> You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
 {: .alert .alert-info }
 
 
