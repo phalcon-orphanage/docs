@@ -76,7 +76,7 @@ Tells the event manager if it needs to collect all the responses returned by eve
 
 ```php
 public function detach(string $eventType, mixed $handler)
-```php
+```
 Detach the listener from the events manager
 
 ```php
@@ -802,7 +802,7 @@ class EventsManager implements ManagerInterface
      * @param string          $eventType
      * @param object|callable $handler
      */
-    public function detach(string $eventType, $handler;
+    public function detach(string $eventType, $handler);
 
     /**
      * Removes all events from the EventsManager
