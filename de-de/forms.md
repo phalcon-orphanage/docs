@@ -554,7 +554,7 @@ The code above will check the `options` array during the `initialize` method. Th
 
 ## Entities
 
-An entity such as a \[Phalcon\Mvc\Model\]\[db-models\], a PHP class or even a `\stdClass` object can be passed to the form in order to set default values, or to assign the values from the form to the object.
+An entity such as a [Phalcon\Mvc\Model](db-models), a PHP class or even a `\stdClass` object can be passed to the form in order to set default values, or to assign the values from the form to the object.
 
 ```php
 <?php
