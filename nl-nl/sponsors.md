@@ -47,6 +47,6 @@ For those that wish to sponsor our work and further the development of Phalcon, 
              alt="Uptrends Web Application Monitoring">
     </a>
     <a href="https://phalcon.io/fund" class="phalcon-blog__sponsors-item">
-        <span>Ondersteun ons</span>
+        <span>Support Us</span>
     </a>
 </div>

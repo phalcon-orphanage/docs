@@ -41,7 +41,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 ## Preguntas y ayuda
 
-> Solo aceptamos reportes de errores; las solicitudes de nuevas funcionalidades y *pull requests* se deben hacer en GitHub. Para hacer preguntas sobre el uso del *framework* o para solicitar ayuda visite el [foro oficial](https://phalcon.io/forum) o nuestro servidor en [Discord](https://phalcon.io/discord).
+> Solo aceptamos reportes de errores; las solicitudes de nuevas funcionalidades y *pull requests* se deben hacer en GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## Lista de verificación para reporte de errores

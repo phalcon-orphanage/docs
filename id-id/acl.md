@@ -52,7 +52,10 @@ $acl = new AclList();
 
 There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl\Enum::ALLOW` - `Phalcon\Acl\Enum::DENY`
 
-The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role](api/Phalcon_Acl#acl-role) or [Component](api/Phalcon_Acl#acl-component). This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
+> The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role](api/Phalcon_Acl#acl-role) or [Component](api/Phalcon_Acl#acl-component).
+{: .alert .alert-info } 
+
+This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
 
 ```php
 <?php

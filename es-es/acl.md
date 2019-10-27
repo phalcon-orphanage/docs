@@ -52,7 +52,10 @@ $acl = new AclList();
 
 There are two self explanatory actions that the [Phalcon\Acl](api/Phalcon_Acl) provides: - `Phalcon\Acl\Enum::ALLOW` - `Phalcon\Acl\Enum::DENY`
 
-The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role](api/Phalcon_Acl#acl-role) or [Component](api/Phalcon_Acl#acl-component). This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
+> The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role](api/Phalcon_Acl#acl-role) or [Component](api/Phalcon_Acl#acl-component).
+{: .alert .alert-info } 
+
+This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
 
 ```php
 <?php
@@ -257,9 +260,9 @@ $acl->allow('*', '*', 'view');
 
 Similarly the above gives access to any role, any component that has the `view` action. In a MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`.
 
-> Por favor, tenga **MUCHO** cuidado al usar el comodín `*`. Es muy fácil cometer un error y el comodín, aunque parece conveniente, puede permitir que los usuarios accedan a áreas de su aplicación que no se supone que lo hagan. La mejor manera de estar 100% seguro es escribir pruebas específicamente para probar los permisos y la ACL. Estos pueden hacerse en la `unit` de las pruebas instanciando el componente y luego comprobando el `isAllowed()` si es `true` o `false`.
+> Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
 > 
-> [Codeception](https://codeception.com) es el framework de pruebas elegido por Phalcon, hay muchas pruebas en nuestro repositorio GitHub (carpeta `tests`) para ofrecer orientación e ideas.
+> [Codeception](https://codeception.com) is the chosen testing framework for Phalcon and there are plenty of tests in our github repository (`tests` folder) to offer guidance and ideas.
 {:.alert .alert-danger}
 
 ```php
@@ -450,7 +453,7 @@ $acl->isAllowed(
 );
 ```
 
-> El cuarto parámetro debe ser un array. Cada elemento del array representa un parámetro que su función anónima aceptará. La clave del elemento es el nombre del parámetro, mientras que el valor es lo que se pasará como valor de ese parámetro en la función.
+> The fourth parameter must be an array. Each array element represents a parameter that your anonymous function accepts. The key of the element is the name of the parameter, while the value is what will be passed as the value of that the parameter of to the function.
 {:.alert .alert-info}
 
 You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The default action for a call to `isAllowed()` without the last parameter is `Acl\Enum::DENY`. To change this behavior, you can make a call to `setNoArgumentsDefaultAction()`:
