@@ -802,7 +802,7 @@ class EventsManager implements ManagerInterface
      * @param string          $eventType
      * @param object|callable $handler
      */
-    public function detach(string $eventType, $handler;
+    public function detach(string $eventType, $handler);
 
     /**
      * Removes all events from the EventsManager
