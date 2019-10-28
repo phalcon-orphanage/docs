@@ -181,7 +181,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm
 ```
 
 > This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
-{; .alert .alert-warning }
+{: .alert .alert-warning }
 
 
 ##### Phalcon installation
