@@ -2,7 +2,8 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
-category: 'installation'
+title: 'Installation'
+keywords: 'installation, installing Phalcon'
 ---
 
 # Installation
@@ -208,7 +209,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm
 ```
 
 > Você só precisa fazer isso uma vez, a menos que sua distribuição mude ou você queira mudar de builds estáveis para noturnas.
-{; .alert .alert-warning }
+{: .alert .alert-warning }
 
 
 ##### Instalação do Phalcon
