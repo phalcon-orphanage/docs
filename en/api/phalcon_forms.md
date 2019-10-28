@@ -838,7 +838,7 @@ Adds an element to the form
 
 
 ```php
-public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
+public function bind( array $data, mixed $entity, array $whitelist = [] ): Form;
 ```
 Binds data to the entity
 

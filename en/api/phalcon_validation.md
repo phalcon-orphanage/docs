@@ -308,7 +308,7 @@ public function setTemplate( string $template ): ValidatorInterface;
 ```
    Set a new template message
    
-   @return Validator
+   @return ValidatorInterface
    
 
 ```php
@@ -316,7 +316,7 @@ public function setTemplates( array $templates ): ValidatorInterface;
 ```
    Clear current templates and set new from an array,
    
-   @return Validator
+   @return ValidatorInterface
    
 
 ```php
