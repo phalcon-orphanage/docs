@@ -366,7 +366,7 @@ Returns the number of arguments that the annotation has
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotationsfactory.zep)
 
-| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Annotations | | Uses | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 Factory to create annotations components
 
@@ -385,7 +385,7 @@ public function load( mixed $config ): mixed;
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
 Create a new instance of the adapter
