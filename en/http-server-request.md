@@ -146,7 +146,7 @@ $request = $request
     ->withAttribute('one', 'two')
 ;
 
-echo $request->getAttribute('one');           // 'twu'
+echo $request->getAttribute('one');           // 'two'
 echo $request->getAttribute('three', 'four'); // 'four'
 ```
 
