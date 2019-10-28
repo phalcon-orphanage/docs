@@ -2867,6 +2867,10 @@ Literals can be disabled in PHQL. This means that you will not be able to use st
 > Disabling literals increases the security of your database statements and reduces the possibility of SQL injections.
 {: .alert .alert-info }
 
+> 
+> This setting can be set globally for all models. Please refer to the [models](db-models) document for a how to and additional settings.
+{: .alert .alert-info }
+
 The following query could potentially lead to a SQL injection:
 
 ```php
