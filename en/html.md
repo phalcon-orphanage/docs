@@ -139,7 +139,7 @@ The registered names for respective helpers are:
 ### Helpers
 All helpers that are used by the [Phalcon\Html\TagFactory][html-tagfactory] are located under the `Phalcon\Html\Helper` namespace. You can create each of these classes individually if you wish to, or you can use the tag factory as shown above. Other than the `*Raw` helpers, if text is required by the helper, it will be automatically escaped using [Phalcon\Escaper](escaper).
 
-> NOTE: The code and output below has been formatted for readability
+> **NOTE**: The code and output below has been formatted for readability
 {: .alert .alert-info }
 
 ### `a`
@@ -335,7 +335,7 @@ echo $anchor($options);
 // </address>
 ```
 
-> NOTE: This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
+> **NOTE**: This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
 {: .alert .alert-info } 
 
 ### `img`        
@@ -387,7 +387,7 @@ echo $anchor($options);
 //    class="my-class">
 ```
 
-> NOTE: This helper creates only the opening `<label>` tag. You will need to use the `Close` helper to generate the closing `</label>` tag.
+> **NOTE**: This helper creates only the opening `<label>` tag. You will need to use the `Close` helper to generate the closing `</label>` tag.
 {: .alert .alert-info } 
 
 ### `textarea`   
@@ -416,7 +416,7 @@ echo $anchor('click<>me', $options);
 // </textarea>
 ```
 
-> NOTE: More helpers will become available in future versions of Phalcon. The goal is to completely replace the [Phalcon\Tag](tag) object with small HTML helper classes.
+> **NOTE**: More helpers will become available in future versions of Phalcon. The goal is to completely replace the [Phalcon\Tag](tag) object with small HTML helper classes.
 {: .alert .alert-info }
 
 [html-attributes]: api/phalcon_html#html-attributes
