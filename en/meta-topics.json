@@ -391,6 +391,10 @@
         "url": "/http-uri"
       },
       {
+        "text": "PSR-11 Container",
+        "url": "/container"
+      },
+      {
         "text": "PSR-17 HTTP Factories",
         "url": "/http-factories"
       }
