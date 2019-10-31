@@ -242,15 +242,13 @@ Uma versão está disponível para FreeBSD. Para instalá-lo, você precisará d
 ##### pkg_add
 
 ```bash
-pkg_add -r phalcon
+pkg_add -r phalcon4
 ```
 
 ##### Código Fonte
 
 ```bash
-export CFLAGS="-O2 --fvisibility=hidden"
-
-cd /usr/ports/www/phalcon
+cd /usr/ports/www/phalcon4
 
 make install clean
 ```
