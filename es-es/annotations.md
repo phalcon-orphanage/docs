@@ -397,7 +397,9 @@ class IndexController extends Controller
 
 ## Ejemplos
 
-You can use annotations to define which areas are controlled by the ACL. We can do this by registering a plugin in the events manager listening to the `beforeDispatch` event, or simply implement the method in our base controller.
+**Controller based access**
+
+You can use annotations to define which areas are controlled by the ACL. We can do this by registering a plugin in the events manager listening to the `beforeExceuteRoute` event, or simply implement the method in our base controller.
 
 First we need to set the annotations manager in our DI container:
 
@@ -421,7 +423,7 @@ $container->set(
 );
 ```
 
-and now in the base controller we implement the `beforeDispatch` method:
+and now in the base controller we implement the `beforeExceuteRoute` method:
 
 ```php
 <?php
@@ -446,8 +448,7 @@ class BaseController extends Controller
      *
      * @return bool
      */
-    public function beforeDispatch(
-        Event $event, 
+    public function beforeExceuteRoute(
         Dispatcher $dispatcher
     ) {
         $controllerName = $dispatcher->getControllerClass();
@@ -482,6 +483,9 @@ class BaseController extends Controller
 }
 ```
 
+> **NOTE** You can also implement the above to a listener and use the `beforeDispatch` event if you wish.
+{: .alert .alert-info }
+
 and in our controllers we can specify:
 
 ```php
@@ -497,6 +501,146 @@ use MyApp\Controllers\BaseController;
 class Invoices extends BaseController
 {
     public function indexAction()
+    {
+    }
+}
+```
+
+**Group based access**
+
+You might want to expand on the above and offer a more granular access control for your application. For this, we will also use the `beforeExceuteRoute` in the controller but will add the access metadata on each action. If we need a specific controller to be *locked* we can also use the `initialize` method.
+
+First we need to set the annotations manager in our DI container:
+
+```php
+<?php
+
+use Phalcon\Di\FactoryDefault;
+use Phalcon\Annotations\Adapter\Apcu;
+
+$container = new FactoryDefault();
+
+$container->set(
+    'annotations',
+    function () {
+        return new Apcu(
+            [
+                'lifetime' => 86400
+            ]
+        );
+    }
+);
+```
+
+and now in the base controller we implement the `beforeExceuteRoute` method:
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use Phalcon\Annotations\Adapter\Apcu;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Controller;
+use MyApp\Components\Auth;
+
+/**
+ * @property Apcu $annotations
+ * @property Auth $auth 
+ */
+class BaseController extends Controller
+{
+    /**
+     * @param Event $event
+     * @param Dispatcher $dispatcher
+     *
+     * @return bool
+     */
+    public function beforeExceuteRoute(
+        Dispatcher $dispatcher
+    ) {
+        $controllerName = $dispatcher->getControllerClass();
+        $actionName     = $dispatcher->getActionName()
+                        . 'Action';
+
+        $data = $this
+            ->annotations
+            ->getMethod($controllerName, $actionName)
+        ;
+        $access    = $data->get('Access');
+        $aclGroups = $access->getArguments();
+
+        $user   = $this->acl->getUser();
+        $groups = $user->getRelated('groups');
+
+        $userGroups = [];
+        foreach ($groups as $group) {
+            $userGroups[] = $group->grp_name;
+        }
+
+        $allowed = array_intersect($userGroups, $aclGroups);
+        $allowed = (count($allowed) > 0);
+
+        if (true === $allowed) {
+            return true;
+        }
+
+        $dispatcher->forward(
+            [
+                'controller' => 'session',
+                'action'     => 'login',
+            ]
+        );
+
+        return false;
+    }
+}
+```
+
+and in our controllers:
+
+```php
+<?php
+
+namespace MyApp\Controllers;
+
+use MyApp\Controllers\BaseController;
+
+/**
+ * @Private(true) 
+ */
+class Invoices extends BaseController
+{
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     *     'Users',
+     *     'Guests'
+     * )
+     */
+    public function indexAction()
+    {
+    }
+
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function listAction()
+    {
+    }
+
+    /**
+     * @Access(
+     *     'Administrators',
+     *     'Accounting',
+     * )
+     */
+    public function viewAction()
     {
     }
 }
