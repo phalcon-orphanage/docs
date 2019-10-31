@@ -1856,7 +1856,7 @@ Returns an option of the compiler
 ```php
 public function getOptions(): array
 ```
-* Returns the compiler options
+Returns the compiler options
 
 ```php
 public function getTemplatePath(): string
