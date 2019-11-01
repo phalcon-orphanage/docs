@@ -1790,7 +1790,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdofactory.zep)
 
-| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -1807,13 +1807,13 @@ public function __construct( array $services = [] );
 Constructor
 
 ```php
-public function load( mixed $config ): mixed;
+public function load( mixed $config ): AdapterInterface;
 ```
 
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
 Create a new instance of the adapter

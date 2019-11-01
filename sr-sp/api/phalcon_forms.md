@@ -766,7 +766,7 @@ public function add( ElementInterface $element, string $position = null, bool $t
 Adds an element to the form
 
 ```php
-public function bind( array $data, mixed $entity, array $whitelist = [] ): Form;
+public function bind( array $data, mixed $entity, mixed $whitelist = null ): Form;
 ```
 
 Binds data to the entity

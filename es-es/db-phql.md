@@ -559,14 +559,93 @@ The result in this case is a [Phalcon\Mvc\Model\Resultset\Complex](api/phalcon_m
 
 foreach ($invoices as $invoice) {
     echo $invoice->status, 
-         $invoice->invoices->inv_id, 
-         $invoice->invoices->inv_name, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
          PHP_EOL
     ;
 }
 ```
 
 Scalars are mapped as properties of each 'row', while complete objects are mapped as properties with the name of its related model. In the above example, the scalar `status` is accessed directly from the object, while the database row can be accessed by the `invoices` property, which is the same name as the name of the model.
+
+If you mix `*` selections from one model with columns from another, you will end up with both scalars as well as objects.
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        i.*, 
+        IF(i.inv_status_flag = 1, 'Paid', 'Unpaid') AS status
+        c.* 
+    FROM 
+        Invoices i
+    JOIN
+        Customers c
+    ON
+        i.inv_cst_id = c.cst_id 
+    ORDER BY 
+        i.inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+The above will produce:
+
+```php
+<?php
+
+foreach ($invoices as $invoice) {
+    echo $invoice->status, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
+         $invoice->c->cst_id, 
+         $invoice->c->cst_name_last, 
+         PHP_EOL
+    ;
+}
+```
+
+Another example:
+
+```php
+<?php
+
+$phql = "
+    SELECT 
+        i.*, 
+        c.cst_name_last AS name_last 
+    FROM 
+        Invoices i
+    JOIN
+        Customers c
+    ON
+        i.inv_cst_id = c.cst_id 
+    ORDER BY 
+        i.inv_title";
+$invoices  = $this
+    ->modelsManager
+    ->executeQuery($phql)
+;
+```
+
+The above will produce:
+
+```php
+<?php
+
+foreach ($invoices as $invoice) {
+    echo $invoice->name_last, 
+         $invoice->i->inv_id, 
+         $invoice->i->inv_name, 
+         PHP_EOL
+    ;
+}
+```
+
+Note that we are selecting one column from the `Customers` model and we need to alias it (`name_last`) so that it becomes a scalar in our resultset.
 
 ### Joins
 
