@@ -29,7 +29,7 @@ title: 'Phalcon\Storage'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AdapterInterface, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Implements | AdapterInterface |
 
 This file is part of the Phalcon Framework.
@@ -273,7 +273,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | AbstractAdapter |
 
 Apcu adapter
@@ -331,10 +331,9 @@ Reads data from the adapter
 ```php
 public function getAdapter(): mixed;
 ```
-Returns the already connected adapter or connects to the Memcached
-server(s)
+Always returns null
 
-@return mixed
+@return null
 
 
 ```php
@@ -380,7 +379,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/libmemcached.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | AbstractAdapter |
 
 Libmemcached adapter
@@ -494,7 +493,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/memory.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | AbstractAdapter |
 
 Memory adapter
@@ -557,10 +556,9 @@ Reads data from the adapter
 ```php
 public function getAdapter(): mixed;
 ```
-Returns the already connected adapter or connects to the Memcached
-server(s)
+Always returns null
 
-@return mixed
+@return null
 
 
 ```php
@@ -605,7 +603,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/redis.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Extends    | AbstractAdapter |
 
 Redis adapter
@@ -669,7 +667,7 @@ Reads data from the adapter
 ```php
 public function getAdapter(): mixed;
 ```
-Returns the already connected adapter or connects to the Memcached
+Returns the already connected adapter or connects to the Redis
 server(s)
 
 @return mixed|\Redis
@@ -722,7 +720,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/stream.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator |
+| Uses       | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator |
 | Extends    | AbstractAdapter |
 
 Stream adapter
@@ -794,8 +792,9 @@ Reads data from the adapter
 ```php
 public function getAdapter(): mixed;
 ```
-Returns the already connected adapter or connects to the Memcached
-server(s)
+Always returns null
+
+@return null
 
 
 ```php
@@ -840,7 +839,7 @@ Stores data in the adapter
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapterfactory.zep)
 
 | Namespace  | Phalcon\Storage |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AbstractAdapter, Phalcon\Storage\Adapter\AdapterInterface, Phalcon\Storage\SerializerFactory |
+| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AdapterInterface |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.
@@ -899,7 +898,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/abstractserializer.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | Phalcon\Storage\Exception, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | Phalcon\Storage\Exception |
 | Implements | SerializerInterface |
 
 This file is part of the Phalcon Framework.
@@ -950,7 +949,7 @@ If this returns true, then the data returns back as is
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/base64.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException, Phalcon\Storage\Serializer\AbstractSerializer |
+| Uses       | InvalidArgumentException |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -981,7 +980,6 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/igbinary.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | Phalcon\Storage\Serializer\AbstractSerializer |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -1012,7 +1010,7 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException, Phalcon\Storage\Serializer\AbstractSerializer |
+| Uses       | InvalidArgumentException |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -1043,7 +1041,6 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/msgpack.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | Phalcon\Storage\Serializer\AbstractSerializer |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -1074,7 +1071,7 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/none.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | Phalcon\Storage\Serializer\AbstractSerializer, InvalidArgumentException |
+| Uses       | InvalidArgumentException |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
@@ -1105,7 +1102,7 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/php.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException, Phalcon\Storage\Exception, Phalcon\Storage\Serializer\AbstractSerializer |
+| Uses       | InvalidArgumentException, Phalcon\Storage\Exception |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.

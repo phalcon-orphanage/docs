@@ -3282,7 +3282,7 @@ Returns the limit parameter in the criteria, which will be an integer if
 limit was set without an offset, an array with 'number' and 'offset' keys
 if an offset was set with the limit, or null if limit has not been set.
 
-@return int|array|null
+@return string|null
 
 
 ```php

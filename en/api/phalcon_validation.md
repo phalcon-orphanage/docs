@@ -2641,7 +2641,7 @@ Executes the validation
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorfactory.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr |
+| Uses       | Phalcon\Factory\AbstractFactory, Phalcon\Factory\ValidatorInterface, Phalcon\Helper\Arr |
 | Extends    | AbstractFactory |
 
 This file is part of the Phalcon Framework.
@@ -2660,7 +2660,7 @@ TagFactory constructor.
 
 
 ```php
-public function newInstance( string $name ): mixed;
+public function newInstance( string $name ): ValidatorInterface;
 ```
 Creates a new instance
 

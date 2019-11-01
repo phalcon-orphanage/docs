@@ -978,7 +978,7 @@ public function __construct( AdapterFactory $factory );
 //
 
 ```php
-public function load( mixed $config ): mixed;
+public function load( mixed $config ): Logger;
 ```
 Factory to create an instace from a Config object
 
