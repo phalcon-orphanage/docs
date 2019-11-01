@@ -242,15 +242,13 @@ Un puerto está disponible para FreeBSD. Para instalarlo deberá ejecutar los si
 ##### pkg_add
 
 ```bash
-pkg_add -r phalcon
+pkg_add -r phalcon4
 ```
 
 ##### Codigo fuente
 
 ```bash
-export CFLAGS="-O2 --fvisibility=hidden"
-
-cd /usr/ports/www/phalcon
+cd /usr/ports/www/phalcon4
 
 make install clean
 ```
