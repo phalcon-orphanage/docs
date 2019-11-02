@@ -21,7 +21,7 @@ title: 'Phalcon\Translate'
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Translate\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AdapterInterface, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
+| Namespace | Phalcon\Translate\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Implements | AdapterInterface |
 
 Phalcon\Translate\Adapter
 
@@ -126,7 +126,7 @@ Returns the translation string of the given key
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/csv.zep)
 
-| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
+| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
 Phalcon\Translate\Adapter\Csv
 
@@ -166,7 +166,7 @@ Returns the translation related to the given key
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/gettext.zep)
 
-| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
+| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
 Phalcon\Translate\Adapter\Gettext
 
@@ -323,7 +323,7 @@ Validator for constructor
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/adapter/nativearray.zep)
 
-| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\Adapter\AbstractAdapter, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
+| Namespace | Phalcon\Translate\Adapter | | Uses | ArrayAccess, Phalcon\Translate\Exception, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractAdapter | | Implements | ArrayAccess |
 
 Phalcon\Translate\Adapter\NativeArray
 
@@ -384,7 +384,7 @@ Class for exceptions thrown by Phalcon\Translate
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/associativearray.zep)
 
-| Namespace | Phalcon\Translate\Interpolator | | Uses | Phalcon\Translate\Interpolator\InterpolatorInterface | | Implements | InterpolatorInterface |
+| Namespace | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -404,7 +404,7 @@ Replaces placeholders by the values passed
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/interpolator/indexedarray.zep)
 
-| Namespace | Phalcon\Translate\Interpolator | | Uses | Phalcon\Translate\Interpolator\InterpolatorInterface | | Implements | InterpolatorInterface |
+| Namespace | Phalcon\Translate\Interpolator | | Implements | InterpolatorInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -489,7 +489,7 @@ protected function getAdapters(): array;
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/translatefactory.zep)
 
-| Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
+| Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
