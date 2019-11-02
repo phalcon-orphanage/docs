@@ -39,7 +39,7 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Δημιουργία Οπισθοεντοπισμού",
                 "url": "/generating-backtrace"
             },
             {
@@ -51,7 +51,7 @@
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "Πρότυπο Κωδικοποίησης",
                 "url": "/coding-standard"
             }
         ]
@@ -149,7 +149,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI Κοντέινερ",
                 "url": "/di"
             },
             {
@@ -157,7 +157,7 @@
                 "url": "/mvc"
             },
             {
-                "text": "Namespaces",
+                "text": "Χώροι ονομάτων",
                 "url": "/namespaces"
             }
         ]
@@ -221,7 +221,7 @@
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "Μεταδεδομένα",
                 "url": "/db-models-metadata"
             },
             {
@@ -233,7 +233,7 @@
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Επικυρωτές",
                 "url": "/db-models-validation"
             },
             {
@@ -363,7 +363,7 @@
                 "url": "/logger"
             },
             {
-                "text": "PSR-0, PSR-4 Loader",
+                "text": "PSR-0, PSR-4 Φορτωτής",
                 "url": "/loader"
             },
             {
