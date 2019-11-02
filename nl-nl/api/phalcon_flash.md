@@ -15,7 +15,7 @@ title: 'Phalcon\Flash'
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/abstractflash.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | FlashInterface |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Escaper\EscaperInterface, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware | | Implements | FlashInterface |
 
 Shows HTML notifications related to different circumstances. Classes can be stylized using CSS
 
@@ -193,7 +193,7 @@ $flash->warning("Hey, this is important");
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/direct.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Flash\AbstractFlash | | Extends | AbstractFlash |
+| Namespace | Phalcon\Flash | | Extends | AbstractFlash |
 
 This is a variant of the Phalcon\Flash that immediately outputs any message passed to it
 
@@ -265,7 +265,7 @@ Shows a HTML warning message
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/flash/session.zep)
 
-| Namespace | Phalcon\Flash | | Uses | Phalcon\Di\DiInterface, Phalcon\Flash\AbstractFlash, Phalcon\Flash\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
+| Namespace | Phalcon\Flash | | Uses | Phalcon\Di\DiInterface, Phalcon\Session\ManagerInterface | | Extends | AbstractFlash |
 
 Temporarily stores the messages in session, then messages can be printed in the next request
 
