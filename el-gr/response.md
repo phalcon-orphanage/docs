@@ -408,7 +408,7 @@ $response
 ;
 ```
 
-In the above example, we set where the file lives (`/app/storage/files/invoice.pdf`). The second parameter will set the name of the file (when downloaded by the browser) to `downloaded.pdf`. The third parameter instructs the component to set the relevant headers for the download to happen. These are:
+In the above example, we set where the file lives (`/app/storage/files/invoice.pdf`). The second parameter will set the name of the file (when downloaded by the browser) to `downloaded.pdf`. The third parameter instructs the component to set the relevant headers for the download to happen. Αυτά είναι:
 
 * `Content-Description: File Transfer`
 * `Content-Type: application/octet-stream"`
