@@ -23,7 +23,7 @@ title: 'Phalcon\Di'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
-| Namespace | Phalcon | | Uses | Phalcon\Config, Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
+| Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
 Phalcon\Di is a component that implements Dependency Injection/Service Location of services and it's itself a container for them.
 
@@ -328,7 +328,7 @@ Loads services from a Config object.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
 This abstract class offers common access to the DI in a class
 
@@ -362,7 +362,7 @@ Sets the dependency injector
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | ArrayAccess, Phalcon\Di\ServiceInterface | | Extends | ArrayAccess |
+| Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
 Interface for Phalcon\Di
 
@@ -464,7 +464,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
 
-| Namespace | Phalcon\Di\Exception | | Uses | Phalcon\Di\Exception\ServiceResolutionException | | Extends | \Phalcon\Di\Exception |
+| Namespace | Phalcon\Di\Exception | | Extends | \Phalcon\Di\Exception |
 
 Phalcon\Di\Exception\ServiceResolutionException
 
@@ -506,7 +506,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
+| Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
 This class allows to access services in the services container by just only accessing a public property with the same name of a registered service
 
@@ -554,7 +554,7 @@ Sets the dependency injector
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
+| Namespace | Phalcon\Di |
 
 This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
 
@@ -576,7 +576,7 @@ Sets the dependency injector
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
-| Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\ServiceInterface, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
+| Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
 Represents individually a service in the services container
 
@@ -698,7 +698,7 @@ Builds a service using a complex service definition
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
+| Namespace | Phalcon\Di |
 
 Represents a service in the services container
 
@@ -758,7 +758,7 @@ Sets if the service is shared or not
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
-| Namespace | Phalcon\Di | | Uses | Phalcon\Di\DiInterface |
+| Namespace | Phalcon\Di |
 
 Should be implemented by service providers, or such components, which register a service in the service container.
 
