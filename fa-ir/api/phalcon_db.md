@@ -86,7 +86,7 @@ Enables/disables options in the Database component
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | AdapterInterface, EventsAwareInterface |
+| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
 Base class for Phalcon\Db adapters
 
@@ -1790,7 +1790,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdofactory.zep)
 
-| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -1828,7 +1828,7 @@ Returns the available adapters
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
-| Namespace | Phalcon\Db | | Uses | Phalcon\Db\Exception, Phalcon\Db\ColumnInterface | | Implements | ColumnInterface |
+| Namespace | Phalcon\Db | | Implements | ColumnInterface |
 
 Allows to define columns to be used on create or alter table operations
 
@@ -3089,7 +3089,7 @@ Generates SQL checking for the existence of a schema.view
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
-| Namespace | Phalcon\Db | | Uses | Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\IndexInterface |
+| Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db dialects
 
