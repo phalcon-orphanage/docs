@@ -132,7 +132,7 @@ Exceptions thrown in Phalcon\Filter will use this class
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/filter/filterfactory.zep)
 
-| Namespace | Phalcon\Filter | | Uses | Phalcon\Filter, Phalcon\Filter\FilterInterface |
+| Namespace | Phalcon\Filter | | Uses | Phalcon\Filter |
 
 This file is part of the Phalcon Framework.
 
