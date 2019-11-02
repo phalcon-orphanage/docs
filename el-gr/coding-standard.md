@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Coding Standard'
+title: 'Πρότυπο Κωδικοποίησης'
 keywords: 'coding standard, zephir'
 ---
 
