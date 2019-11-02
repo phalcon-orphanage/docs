@@ -43,7 +43,7 @@
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Αναπαραγώγιμες Δοκιμές",
                 "url": "/reproducible-tests"
             },
             {
@@ -93,7 +93,7 @@
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Εντοπισμός σφαλμάτων",
                 "url": "/debug"
             }
         ]
@@ -103,7 +103,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Βασικό",
                 "url": "/tutorial-basic"
             },
             {
@@ -119,11 +119,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Περίπτωση Χρήσης",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "Απόδοση",
                 "url": "/performance"
             }
         ]
@@ -171,7 +171,7 @@
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Ρυθμίσεις",
                 "url": "/config"
             },
             {
@@ -205,7 +205,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Μοντέλα",
                 "url": "/db-models"
             },
             {
@@ -213,11 +213,11 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Μνήμη cache",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "Γεγονότα",
                 "url": "/db-models-events"
             },
             {
@@ -237,7 +237,7 @@
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Σελιδοποίηση",
                 "url": "/db-pagination"
             }
         ]
@@ -247,7 +247,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Πόροι",
                 "url": "/assets"
             },
             {
@@ -267,7 +267,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Προβολή",
                 "url": "/views"
             },
             {
@@ -289,7 +289,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Ελεγκτές",
                 "url": "/controllers"
             },
             {
@@ -301,11 +301,11 @@
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Φίλτρα",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Δρομολόγηση",
                 "url": "/routing"
             },
             {
@@ -341,7 +341,7 @@
         ]
     },
     {
-        "text": "Security",
+        "text": "Ασφάλεια",
         "url": "",
         "menu": [
             {
@@ -349,7 +349,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "Ασφάλεια",
                 "url": "/security"
             }
         ]
@@ -409,11 +409,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "Διεθνοποίηση",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Μετάφραση",
                 "url": "/translate"
             }
         ]
