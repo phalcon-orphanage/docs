@@ -5,24 +5,30 @@ version: '4.0'
 title: 'Phalcon\Html'
 ---
 
-* [Phalcon\Html\Attributes](#html-attributes)
-* [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)
-* [Phalcon\Html\Attributes\RenderInterface](#html-attributes-renderinterface)
-* [Phalcon\Html\Breadcrumbs](#html-breadcrumbs)
-* [Phalcon\Html\Exception](#html-exception)
-* [Phalcon\Html\Helper\AbstractHelper](#html-helper-abstracthelper)
-* [Phalcon\Html\Helper\Anchor](#html-helper-anchor)
-* [Phalcon\Html\Helper\AnchorRaw](#html-helper-anchorraw)
-* [Phalcon\Html\Helper\Body](#html-helper-body)
-* [Phalcon\Html\Helper\Button](#html-helper-button)
-* [Phalcon\Html\Helper\Close](#html-helper-close)
-* [Phalcon\Html\Helper\Element](#html-helper-element)
-* [Phalcon\Html\Helper\ElementRaw](#html-helper-elementraw)
-* [Phalcon\Html\Helper\Form](#html-helper-form)
-* [Phalcon\Html\Helper\Img](#html-helper-img)
-* [Phalcon\Html\Helper\Label](#html-helper-label)
-* [Phalcon\Html\Helper\TextArea](#html-helper-textarea)
-* [Phalcon\Html\TagFactory](#html-tagfactory)
+- [Phalcon\Html\Attributes](#html-attributes)
+- [Phalcon\Html\Attributes\AttributesInterface](#html-attributes-attributesinterface)
+- [Phalcon\Html\Attributes\RenderInterface](#html-attributes-renderinterface)
+- [Phalcon\Html\Breadcrumbs](#html-breadcrumbs)
+- [Phalcon\Html\Exception](#html-exception)
+- [Phalcon\Html\Helper\AbstractHelper](#html-helper-abstracthelper)
+- [Phalcon\Html\Helper\Anchor](#html-helper-anchor)
+- [Phalcon\Html\Helper\AnchorRaw](#html-helper-anchorraw)
+- [Phalcon\Html\Helper\Body](#html-helper-body)
+- [Phalcon\Html\Helper\Button](#html-helper-button)
+- [Phalcon\Html\Helper\Close](#html-helper-close)
+- [Phalcon\Html\Helper\Element](#html-helper-element)
+- [Phalcon\Html\Helper\ElementRaw](#html-helper-elementraw)
+- [Phalcon\Html\Helper\Form](#html-helper-form)
+- [Phalcon\Html\Helper\Img](#html-helper-img)
+- [Phalcon\Html\Helper\Label](#html-helper-label)
+- [Phalcon\Html\Helper\TextArea](#html-helper-textarea)
+- [Phalcon\Html\Link\EvolvableLink](#html-link-evolvablelink)
+- [Phalcon\Html\Link\EvolvableLinkProvider](#html-link-evolvablelinkprovider)
+- [Phalcon\Html\Link\Link](#html-link-link)
+- [Phalcon\Html\Link\LinkProvider](#html-link-linkprovider)
+- [Phalcon\Html\Link\Serializer\Header](#html-link-serializer-header)
+- [Phalcon\Html\Link\Serializer\SerializerInterface](#html-link-serializer-serializerinterface)
+- [Phalcon\Html\TagFactory](#html-tagfactory)
 
 <h1 id="html-attributes">Class Phalcon\Html\Attributes</h1>
 
@@ -52,9 +58,9 @@ Render attributes as HTML attributes
 
 | Namespace | Phalcon\Html\Attributes | | Uses | Phalcon\Html\Attributes |
 
-* Phalcon\Html\Attributes\AttributesInterface
-* 
-* Interface Phalcon\Html\Attributes\AttributesInterface */
+- Phalcon\Html\Attributes\AttributesInterface
+- 
+- Interface Phalcon\Html\Attributes\AttributesInterface */
 
 ## Metody
 
@@ -76,9 +82,9 @@ Set Attributes
 
 | Namespace | Phalcon\Html\Attributes |
 
-* Phalcon\Html\Attributes\RenderInterface
-* 
-* Interface Phalcon\Html\Attributes\RenderInterface */
+- Phalcon\Html\Attributes\RenderInterface
+- 
+- Interface Phalcon\Html\Attributes\RenderInterface */
 
 ## Metody
 
@@ -261,7 +267,7 @@ Produces a self close tag i.e. <img />
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/anchor.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\Anchor
 
@@ -279,7 +285,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/anchorraw.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\AnchorRaw
 
@@ -297,7 +303,7 @@ public function __invoke( string $href, string $text, array $attributes = [] ): 
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/body.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\Body
 
@@ -315,7 +321,7 @@ public function __invoke( array $attributes = [] ): string;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/button.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\Button
 
@@ -351,7 +357,7 @@ public function __invoke( string $tag ): string;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/element.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\Address
 
@@ -387,7 +393,7 @@ public function __invoke( string $tag, string $text, array $attributes = [] ): s
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/form.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\Form
 
@@ -441,7 +447,7 @@ public function __invoke( array $attributes = [] ): string;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/helper/textarea.zep)
 
-| Namespace | Phalcon\Html\Helper | | Uses | Phalcon\Html\Helper\AbstractHelper | | Extends | AbstractHelper |
+| Namespace | Phalcon\Html\Helper | | Extends | AbstractHelper |
 
 Phalcon\Html\Helper\TextArea
 
@@ -454,6 +460,303 @@ public function __invoke( string $text, array $attributes = [] ): string;
 ```
 
 @var string text The text for the anchor @var array attributes Any additional attributes
+
+<h1 id="html-link-evolvablelink">Class Phalcon\Html\Link\EvolvableLink</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/evolvablelink.zep)
+
+| Namespace | Phalcon\Html\Link | | Uses | Psr\Link\EvolvableLinkInterface | | Extends | Link | | Implements | EvolvableLinkInterface |
+
+Class Phalcon\Http\Link\EvolvableLink
+
+@property array attributes @property string href @property array rels @property bool templated
+
+## Metody
+
+```php
+public function withAttribute( mixed $attribute, mixed $value );
+```
+
+Returns an instance with the specified attribute added.
+
+If the specified attribute is already present, it will be overwritten with the new value.
+
+@return static
+
+```php
+public function withHref( mixed $href );
+```
+
+Returns an instance with the specified href.
+
+      The href value to include.  It must be one of:
+    
+      - An absolute URI, as defined by RFC 5988.
+      - A relative URI, as defined by RFC 5988. The base of the relative
+      link is assumed to be known based on context by the client.
+      - A URI template as defined by RFC 6570.
+      - An object implementing __toString() that produces one of the
+      above values.
+    
+
+An implementing library SHOULD evaluate a passed object to a string immediately rather than waiting for it to be returned later.
+
+@return static
+
+```php
+public function withRel( mixed $rel );
+```
+
+Returns an instance with the specified relationship included.
+
+If the specified rel is already present, this method MUST return normally without errors, but without adding the rel a second time.
+
+The relationship value to add.
+
+@return static
+
+```php
+public function withoutAttribute( mixed $attribute );
+```
+
+Returns an instance with the specified attribute excluded.
+
+If the specified attribute is not present, this method MUST return normally without errors.
+
+The attribute to remove.
+
+@return static
+
+```php
+public function withoutRel( mixed $rel );
+```
+
+Returns an instance with the specified relationship excluded.
+
+If the specified rel is already not present, this method MUST return normally without errors.
+
+The relationship value to exclude.
+
+@return static
+
+<h1 id="html-link-evolvablelinkprovider">Class Phalcon\Html\Link\EvolvableLinkProvider</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/evolvablelinkprovider.zep)
+
+| Namespace | Phalcon\Html\Link | | Uses | Psr\Link\EvolvableLinkProviderInterface, Psr\Link\LinkInterface | | Extends | LinkProvider | | Implements | EvolvableLinkProviderInterface |
+
+Class Phalcon\Http\Link\LinkProvider
+
+@property LinkInterface[] links
+
+## Metody
+
+```php
+public function withLink( LinkInterface $link );
+```
+
+Returns an instance with the specified link included.
+
+If the specified link is already present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
+
+A link object that should be included in this collection.
+
+@return static
+
+```php
+public function withoutLink( LinkInterface $link );
+```
+
+Returns an instance with the specified link removed.
+
+If the specified link is not present, this method MUST return normally without errors. The link is present if link is === identical to a link object already in the collection.
+
+The link to remove.
+
+@return static
+
+<h1 id="html-link-link">Class Phalcon\Html\Link\Link</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/link.zep)
+
+| Namespace | Phalcon\Html\Link | | Uses | Phalcon\Collection, Psr\Link\LinkInterface | | Implements | LinkInterface |
+
+Class Phalcon\Http\Link\Link
+
+@property array attributes @property string href @property array rels @property bool templated
+
+## Properties
+
+```php
+/**
+ * @var Collection
+ */
+protected attributes;
+
+/**
+ * @var string
+ */
+protected href = ;
+
+/**
+ * @var Collection
+ */
+protected rels;
+
+/**
+ * @var bool
+ */
+protected templated = false;
+
+```
+
+## Metody
+
+```php
+public function __construct( string $rel = string, string $href = string, array $attributes = [] );
+```
+
+Link constructor.
+
+```php
+public function getAttributes();
+```
+
+Returns a list of attributes that describe the target URI.
+
+@return array A key-value list of attributes, where the key is a string and the value is either a PHP primitive or an array of PHP strings. If no values are found an empty array MUST be returned.
+
+```php
+public function getHref();
+```
+
+Returns the target of the link.
+
+The target link must be one of:
+
+- An absolute URI, as defined by RFC 5988.
+- A relative URI, as defined by RFC 5988. The base of the relative link is assumed to be known based on context by the client.
+- A URI template as defined by RFC 6570.
+
+If a URI template is returned, isTemplated() MUST return True.
+
+@return string
+
+```php
+public function getRels();
+```
+
+Returns the relationship type(s) of the link.
+
+This method returns 0 or more relationship types for a link, expressed as an array of strings.
+
+@return string[]
+
+```php
+public function isTemplated();
+```
+
+Returns whether or not this is a templated link.
+
+@return bool True if this link object is templated, False otherwise.
+
+```php
+protected function hrefIsTemplated( string $href ): bool;
+```
+
+Determines if a href is a templated link or not.
+
+@see https://tools.ietf.org/html/rfc6570
+
+@return bool
+
+<h1 id="html-link-linkprovider">Class Phalcon\Html\Link\LinkProvider</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/linkprovider.zep)
+
+| Namespace | Phalcon\Html\Link | | Uses | Psr\Link\LinkInterface, Psr\Link\LinkProviderInterface | | Implements | LinkProviderInterface |
+
+Class Phalcon\Http\Link\LinkProvider
+
+@property LinkInterface[] links
+
+## Properties
+
+```php
+/**
+ * @var LinkInterface[]
+ */
+protected links;
+
+```
+
+## Metody
+
+```php
+public function __construct( array $links = [] );
+```
+
+LinkProvider constructor.
+
+```php
+public function getLinks();
+```
+
+Returns an iterable of LinkInterface objects.
+
+The iterable may be an array or any PHP \Traversable object. If no links are available, an empty array or \Traversable MUST be returned.
+
+@return LinkInterface[]|\Traversable
+
+```php
+public function getLinksByRel( mixed $rel );
+```
+
+Returns an iterable of LinkInterface objects that have a specific relationship.
+
+The iterable may be an array or any PHP \Traversable object. If no links with that relationship are available, an empty array or \Traversable MUST be returned.
+
+@return LinkInterface[]|Traversable
+
+```php
+protected function getKey( LinkInterface $link ): string;
+```
+
+Returns the object hash key
+
+@return string
+
+<h1 id="html-link-serializer-header">Class Phalcon\Html\Link\Serializer\Header</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/serializer/header.zep)
+
+| Namespace | Phalcon\Html\Link\Serializer | | Uses | Psr\Link\EvolvableLinkInterface | | Implements | SerializerInterface |
+
+Class Phalcon\Http\Link\Serializer\Header
+
+## Metody
+
+```php
+public function serialize( array $links ): string | null;
+```
+
+Serializes all the passed links to a HTTP link header
+
+<h1 id="html-link-serializer-serializerinterface">Interface Phalcon\Html\Link\Serializer\SerializerInterface</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/html/link/serializer/serializerinterface.zep)
+
+| Namespace | Phalcon\Html\Link\Serializer |
+
+Class Phalcon\Http\Link\Serializer\SerializerInterface
+
+## Metody
+
+```php
+public function serialize( array $links ): string | null;
+```
+
+Serializer method
 
 <h1 id="html-tagfactory">Class Phalcon\Html\TagFactory</h1>
 
