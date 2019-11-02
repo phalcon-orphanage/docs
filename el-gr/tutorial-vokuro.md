@@ -215,7 +215,7 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Config
+### Ρυθμίσεις
 
 **acl.php**
 
