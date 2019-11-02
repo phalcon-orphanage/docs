@@ -272,7 +272,7 @@ Returns an array of log levels with integer to string conversion
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Logger\Adapter |
-| Uses       | Phalcon\Logger, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
+| Uses       | Phalcon\Logger, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 | Implements | AdapterInterface |
 
 This file is part of the Phalcon Framework.
@@ -737,7 +737,7 @@ Applies a format to an item
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger\Formatter\AbstractFormatter, Phalcon\Logger\Item |
+| Uses       | Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
 Phalcon\Logger\Formatter\Json
@@ -786,7 +786,7 @@ public function setDateFormat( string $dateFormat )
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger\Formatter\Formatter, Phalcon\Logger\Item |
+| Uses       | Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
 Phalcon\Logger\Formatter\Line
@@ -852,7 +852,7 @@ public function setFormat( string $format )
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
 
 | Namespace  | Phalcon\Logger\Formatter |
-| Uses       | Phalcon\Logger\Formatter\AbstractFormatter, Phalcon\Logger\Item |
+| Uses       | Phalcon\Logger\Item |
 | Extends    | AbstractFormatter |
 
 Phalcon\Logger\Formatter\Syslog
@@ -955,7 +955,7 @@ public function getType(): integer
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
 
 | Namespace  | Phalcon\Logger |
-| Uses       | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\AdapterFactory |
+| Uses       | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger |
 
 Phalcon\Logger\LoggerFactory
 

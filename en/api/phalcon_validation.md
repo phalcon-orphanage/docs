@@ -51,7 +51,7 @@ title: 'Phalcon\Validation'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Filter\FilterInterface, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidationInterface, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface, Phalcon\Validation\AbstractCombinedFieldsValidator |
 | Extends    | Injectable |
 | Implements | ValidationInterface |
 
@@ -223,7 +223,7 @@ This is a base class for combined fields validators
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/abstractvalidator.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface |
+| Uses       | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Validation |
 | Implements | ValidatorInterface |
 
 This is a base class for validators
@@ -390,7 +390,7 @@ Exceptions thrown in Phalcon\Validation\* classes will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validationinterface.zep)
 
 | Namespace  | Phalcon\Validation |
-| Uses       | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\Exception, Phalcon\Validation\ValidatorInterface |
+| Uses       | Phalcon\Di\Injectable, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages |
 
 Interface for the Phalcon\Validation component
 
@@ -1362,7 +1362,7 @@ public function setMessageValid( $messageValid )
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validator/file/mimetype.zep)
 
 | Namespace  | Phalcon\Validation\Validator\File |
-| Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception, Phalcon\Validation\Validator\File\AbstractFile |
+| Uses       | Phalcon\Messages\Message, Phalcon\Validation, Phalcon\Validation\Exception |
 | Extends    | AbstractFile |
 
 Checks if a value has a correct file mime type

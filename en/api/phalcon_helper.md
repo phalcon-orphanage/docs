@@ -16,7 +16,7 @@ title: 'Phalcon\Helper'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/arr.zep)
 
 | Namespace  | Phalcon\Helper |
-| Uses       | Phalcon\Helper\Exception, stdClass |
+| Uses       | stdClass |
 
 This class offers quick array functions throughout the framework
 
@@ -246,7 +246,6 @@ see https://bugs.php.net/bug.php?id=37738
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/number.zep)
 
 | Namespace  | Phalcon\Helper |
-| Uses       | Phalcon\Helper\Exception |
 
 Phalcon\Helper\number
 
@@ -267,7 +266,7 @@ Helper method to get an array element or a default
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/str.zep)
 
 | Namespace  | Phalcon\Helper |
-| Uses       | Phalcon\Helper\Arr, Phalcon\Helper\Exception, RuntimeException |
+| Uses       | RuntimeException |
 
 This class offers quick string functions throughout the framework
 

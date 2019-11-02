@@ -84,7 +84,7 @@ Write
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Session\Adapter\AbstractAdapter |
+| Uses       | Phalcon\Storage\AdapterFactory |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Libmemcached
@@ -209,7 +209,7 @@ Helper method to get the name prefixed
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
 | Namespace  | Phalcon\Session\Adapter |
-| Uses       | Phalcon\Storage\AdapterFactory, Phalcon\Session\Adapter\AbstractAdapter |
+| Uses       | Phalcon\Storage\AdapterFactory |
 | Extends    | AbstractAdapter |
 
 Phalcon\Session\Adapter\Redis
@@ -396,7 +396,7 @@ Exceptions thrown in Phalcon\Session will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace  | Phalcon\Session |
-| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Session\ManagerInterface |
+| Uses       | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr |
 | Extends    | AbstractInjectionAware |
 | Implements | ManagerInterface |
 

@@ -17,7 +17,6 @@ title: 'Phalcon\Domain'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payload.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
-| Uses       | Phalcon\Domain\Payload\PayloadInterface |
 | Implements | PayloadInterface |
 
 Holds the payload
@@ -125,7 +124,6 @@ Sets the payload status.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadfactory.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
-| Uses       | Phalcon\Domain\Payload\Payload, Phalcon\Domain\Payload\PayloadInterface |
 
 Factory to create payload objects
 
@@ -144,7 +142,6 @@ Instantiate a new object
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadinterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
-| Uses       | Phalcon\Domain\Payload\ReadableInterface, Phalcon\Domain\Payload\WriteableInterface |
 | Extends    | ReadableInterface |
 
 This interface is used for consumers
@@ -250,7 +247,6 @@ Instantiation not allowed.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/writeableinterface.zep)
 
 | Namespace  | Phalcon\Domain\Payload |
-| Uses       | Phalcon\Domain\Payload\PayloadInterface |
 
 This interface is used for consumers (write)
 

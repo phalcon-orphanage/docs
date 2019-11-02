@@ -24,7 +24,7 @@ title: 'Phalcon\Di'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Config, Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
+| Uses       | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface |
 | Implements | DiInterface |
 
 Phalcon\Di is a component that implements Dependency Injection/Service
@@ -345,7 +345,6 @@ Loads services from a Config object.
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface |
 | Implements | InjectionAwareInterface |
 
 This abstract class offers common access to the DI in a class
@@ -382,7 +381,7 @@ Sets the dependency injector
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | ArrayAccess, Phalcon\Di\ServiceInterface |
+| Uses       | ArrayAccess |
 | Extends    | ArrayAccess |
 
 Interface for Phalcon\Di
@@ -495,7 +494,6 @@ Exceptions thrown in Phalcon\Di will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
 
 | Namespace  | Phalcon\Di\Exception |
-| Uses       | Phalcon\Di\Exception\ServiceResolutionException |
 | Extends    | \Phalcon\Di\Exception |
 
  Phalcon\Di\Exception\ServiceResolutionException
@@ -555,7 +553,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\Exception, Phalcon\Session\BagInterface |
+| Uses       | Phalcon\Di, Phalcon\Session\BagInterface |
 | Implements | InjectionAwareInterface |
 
 This class allows to access services in the services container by just only
@@ -630,7 +628,6 @@ Sets the dependency injector
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di\DiInterface |
 
 This interface must be implemented in those classes that uses internally the
 Phalcon\Di that creates them
@@ -656,7 +653,7 @@ Sets the dependency injector
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Closure, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\ServiceInterface, Phalcon\Di\Service\Builder |
+| Uses       | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder |
 | Implements | ServiceInterface |
 
 Represents individually a service in the services container
@@ -785,7 +782,6 @@ Builds a service using a complex service definition
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di\DiInterface |
 
 Represents a service in the services container
 
@@ -849,7 +845,6 @@ Sets if the service is shared or not
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
 | Namespace  | Phalcon\Di |
-| Uses       | Phalcon\Di\DiInterface |
 
 Should be implemented by service providers, or such components, which
 register a service in the service container.

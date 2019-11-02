@@ -17,7 +17,6 @@ title: 'Phalcon\Events'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/event.zep)
 
 | Namespace  | Phalcon\Events |
-| Uses       | Phalcon\Events\Exception |
 | Implements | EventInterface |
 
 Phalcon\Events\Event
@@ -242,7 +241,7 @@ Exceptions thrown in Phalcon\Events will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/events/manager.zep)
 
 | Namespace  | Phalcon\Events |
-| Uses       | Closure, Phalcon\Events\Event, SplPriorityQueue |
+| Uses       | Closure, SplPriorityQueue |
 | Implements | ManagerInterface |
 
 Phalcon\Events\Manager

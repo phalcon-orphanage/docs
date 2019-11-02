@@ -13,7 +13,7 @@ title: 'Phalcon\Factory'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/abstractfactory.zep)
 
 | Namespace  | Phalcon\Factory |
-| Uses       | Phalcon\Config, Phalcon\Factory\Exception |
+| Uses       | Phalcon\Config |
 
 This file is part of the Phalcon Framework.
 

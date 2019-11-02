@@ -12,7 +12,7 @@ title: 'Phalcon\Registry'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
 | Namespace  | Phalcon |
-| Uses       | Phalcon\Collection, Traversable |
+| Uses       | Traversable |
 | Extends    | Collection |
 
 Phalcon\Registry

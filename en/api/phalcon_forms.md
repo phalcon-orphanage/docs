@@ -275,7 +275,7 @@ Sets options for the element
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Check
@@ -297,7 +297,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Component INPUT[type=date] for forms
@@ -523,7 +523,7 @@ Sets options for the element
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Email
@@ -545,7 +545,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Component INPUT[type=file] for forms
@@ -565,7 +565,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Hidden
@@ -587,7 +587,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Numeric
@@ -609,7 +609,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Password
@@ -631,7 +631,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Radio
@@ -653,7 +653,7 @@ Renders the element widget returning html
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Forms\Element\AbstractElement, Phalcon\Tag\Select, Phalcon\Forms\Element\ElementInterface |
+| Uses       | Phalcon\Tag\Select |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Select
@@ -711,7 +711,7 @@ Set the choice's options
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Component INPUT[type=submit] for forms
@@ -731,7 +731,7 @@ Renders the element widget
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Phalcon\Forms\Element\Text
@@ -753,7 +753,7 @@ Renders the element widget
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
 
 | Namespace  | Phalcon\Forms\Element |
-| Uses       | Phalcon\Tag, Phalcon\Forms\Element\AbstractElement |
+| Uses       | Phalcon\Tag |
 | Extends    | AbstractElement |
 
 Component TEXTAREA for forms
@@ -784,7 +784,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
 | Namespace  | Phalcon\Forms |
-| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Exception, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface |
+| Uses       | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface |
 | Extends    | Injectable |
 | Implements | Countable, Iterator, AttributesInterface |
 

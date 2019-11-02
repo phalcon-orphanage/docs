@@ -180,7 +180,7 @@ Throws an internal exception
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/acl.zep)
 
 | Namespace  | Phalcon\Firewall\Adapter |
-| Uses       | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Adapter\AbstractAdapter, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface |
+| Uses       | Phalcon\Acl\Adapter\AdapterInterface, Phalcon\Di, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface |
 | Extends    | AbstractAdapter |
 
 FirewallZ for Phalcon\Application which depends on acl and dispatcher
@@ -384,7 +384,7 @@ Sets role callback to fetch role name
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/firewall/adapter/annotations.zep)
 
 | Namespace  | Phalcon\Firewall\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Adapter\AbstractAdapter, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface, ReflectionClass |
+| Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Events\Event, Phalcon\Events\ManagerInterface, Phalcon\Firewall\Exception, Phalcon\Mvc\DispatcherInterface, ReflectionClass |
 | Extends    | AbstractAdapter |
 
 Firewall which depends on annotations and dispatcher

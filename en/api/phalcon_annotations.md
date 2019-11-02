@@ -23,7 +23,7 @@ title: 'Phalcon\Annotations'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AdapterInterface, Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface |
+| Uses       | Phalcon\Annotations\Reader, Phalcon\Annotations\Exception, Phalcon\Annotations\Collection, Phalcon\Annotations\Reflection, Phalcon\Annotations\ReaderInterface |
 | Implements | AdapterInterface |
 
 This is the base class for Phalcon\Annotations adapters
@@ -148,7 +148,7 @@ Sets the annotations parser
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/apcu.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection |
+| Uses       | Phalcon\Annotations\Reflection |
 | Extends    | AbstractAdapter |
 
 Stores the parsed annotations in APCu. This adapter is suitable for production
@@ -200,7 +200,7 @@ Writes parsed annotations to APCu
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/memory.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection |
+| Uses       | Phalcon\Annotations\Reflection |
 | Extends    | AbstractAdapter |
 
 Stores the parsed annotations in memory. This adapter is the suitable
@@ -236,7 +236,7 @@ Writes parsed annotations to memory
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/stream.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
-| Uses       | Phalcon\Annotations\Adapter\AbstractAdapter, Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception |
+| Uses       | Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception |
 | Extends    | AbstractAdapter |
 
 Stores the parsed annotations in files. This adapter is suitable for production
@@ -287,7 +287,6 @@ Writes parsed annotations to files
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
 | Namespace  | Phalcon\Annotations |
-| Uses       | Phalcon\Annotations\Exception |
 
 Represents a single annotation in an annotations collection
 
@@ -423,7 +422,7 @@ The available adapters
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/collection.zep)
 
 | Namespace  | Phalcon\Annotations |
-| Uses       | Countable, Iterator, Phalcon\Annotations\Annotation, Phalcon\Annotations\Exception |
+| Uses       | Countable, Iterator |
 | Implements | Iterator, Countable |
 
 Represents a collection of annotations. This class allows to traverse a group
@@ -542,7 +541,7 @@ Class for exceptions thrown by Phalcon\Annotations
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reader.zep)
 
 | Namespace  | Phalcon\Annotations |
-| Uses       | Phalcon\Annotations\ReaderInterface, ReflectionClass |
+| Uses       | ReflectionClass |
 | Implements | ReaderInterface |
 
 Parses docblocks returning an array with the found annotations
@@ -592,7 +591,6 @@ Parses a raw docblock returning the annotations found
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/reflection.zep)
 
 | Namespace  | Phalcon\Annotations |
-| Uses       | Phalcon\Annotations\Collection |
 
 Allows to manipulate the annotations reflection in an OO manner
 
