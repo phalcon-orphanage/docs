@@ -141,7 +141,7 @@ echo Enum::DENY;  //prints 0
 
 * * *
 
-## Assets
+## Πόροι
 
 > Status: **changes required**
 > 
@@ -299,7 +299,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## Εντοπισμός σφαλμάτων
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -993,7 +993,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------------- | ---------- | ----------------------------------------- |
 | Phalcon\Application | Renamed to | Phalcon\Application\AbstractApplication |
 
-### Assets
+### Πόροι
 
 | 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
 
@@ -1033,7 +1033,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Collection\Exception |
 |       | New   | Phalcon\Collection\ReadOnly  |
 
-### Config
+### Ρυθμίσεις
 
 | 3.4.x                    | State      | 4.0.x                          |
 | ------------------------ | ---------- | ------------------------------ |
@@ -1302,7 +1302,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Storage\Serializer\None               |
 |       | New   | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Μετάφραση
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
