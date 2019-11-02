@@ -258,7 +258,7 @@ accessKey
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Namespace  | Phalcon\Acl\Adapter |
-| Uses       | Phalcon\Acl\Adapter\AbstractAdapter, Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction |
+| Uses       | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction |
 | Extends    | AbstractAdapter |
 
 Manages ACL lists in memory
@@ -609,7 +609,6 @@ accessKey
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/component.zep)
 
 | Namespace  | Phalcon\Acl |
-| Uses       | Phalcon\Acl\Exception |
 | Implements | ComponentInterface |
 
 This class defines component entity and its description
@@ -737,7 +736,6 @@ Class for exceptions thrown by Phalcon\Acl
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
 
 | Namespace  | Phalcon\Acl |
-| Uses       | Phalcon\Acl\Exception |
 | Implements | RoleInterface |
 
 This class defines role entity and its description
