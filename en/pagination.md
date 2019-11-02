@@ -58,8 +58,9 @@ public function __construct(array $config)
 Every adapter requires options to operate properly. These options are passed as a key/value array in the constructor of the adapter.
 
 - `builder` - Used only for the [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] to pass the builder object
-- `data` - The data to paginate. The type depends on the adapter
+- `data` - The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] adapter)
 - `limit` - `int` - The size of the page slice. If `limit` is negative, an exception will be thrown.
+- `model` - The data to paginage. ([Phalcon\Paginator\Adapter\Model][paginator-adapter-model] adapter)
 - `page` - `int` - The current page 
 - `repository` - [Phalcon\Paginator\RepositoryInterface][paginator-repositoryinterface] - A repository object setting up the resultset. For more about repositories see below. 
 
@@ -83,15 +84,23 @@ use Phalcon\Paginator\Adapter\Model;
 $currentPage = 2;
 $paginator   = new Model(
     [
-        "data"  => Invoices::find(),
-        "limit" => 25,
-        "page"  => $currentPage,
+        "model"      => Invoices::class,
+        "parameters" => [
+            "inv_cst_id = :cst_id:",
+              "bind" => [
+                  "cst_id" => 1
+              ],
+              "order" => "inv_title"
+        ],
+        "limit"      => 25,
+        "page"       => $currentPage,
     ]
 );
 
 $paginate = $paginator->paginate();
 ```
 
+The array accepts `model` for the model class to be used. The method `find()` will be called on it. Additionally this adapter can accept `parameters` as the array that `find()` can use with all the relevant conditionals required.
 
 ### Array
 The [Phalcon\Paginator\Adapter\NativeArray][paginator-adapter-nativearray] accepts a PHP array as the source of the data.
@@ -120,8 +129,7 @@ $paginate = $paginator->paginate();
 ```
 
 ### Query Builder
-The [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] adapter uses a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object to perform a PHQL query against the database.
-Pagination using a PHQL query builder as source of data
+The [Phalcon\Paginator\Adapter\QueryBuilder][paginator-adapter-querybuilder] adapter uses a [Phalcon\Mvc\Model\Query\Builder][mvc-model-query-builder] object to perform a PHQL query against the database. 
 
 ```php
 <?php
