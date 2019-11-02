@@ -24,7 +24,7 @@ Exceptions thrown in Phalcon\Messages\* classes will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/message.zep)
 
-| Namespace | Phalcon\Messages | | Uses | JsonSerializable, Phalcon\Messages\MessageInterface | | Implements | MessageInterface, JsonSerializable |
+| Namespace | Phalcon\Messages | | Uses | JsonSerializable | | Implements | MessageInterface, JsonSerializable |
 
 Phalcon\Messages\Message
 
@@ -134,7 +134,7 @@ Sets message type
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messageinterface.zep)
 
-| Namespace | Phalcon\Messages | | Uses | Phalcon\Messages\Message |
+| Namespace | Phalcon\Messages |
 
 Phalcon\Messages\MessageInterface
 
@@ -216,7 +216,7 @@ Sets message type
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/messages/messages.zep)
 
-| Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable, Phalcon\Messages\Message, Phalcon\Messages\Exception, Phalcon\Messages\MessageInterface | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
+| Namespace | Phalcon\Messages | | Uses | ArrayAccess, Countable, Iterator, JsonSerializable | | Implements | ArrayAccess, Countable, Iterator, JsonSerializable |
 
 Represents a collection of messages
 
