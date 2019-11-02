@@ -154,6 +154,8 @@ Using `get()` offers three extra parameters. When `$defaultValue` is defined in 
 - `object`
 - `string`
 
+The collection object also offers two more getters `getKeys` and `getValues` `getKeys( bool $insensitive = true )` returns all the keys stored internally in the collection. By default, it will return the keys case insensitive manner i.e. all lowercase. If `false` is passed in the call, it will return the keys exactly as they have been stored. `getValues` returns the values stored in the internal collection.
+
 ## Has
 
 To check whether an element exists or not in the collection, you can use the following:
