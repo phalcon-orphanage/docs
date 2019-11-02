@@ -12,7 +12,7 @@ title: 'Phalcon\Application'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/abstractapplication.zep)
 
-| Namespace | Phalcon\Application | | Uses | Phalcon\Application\Exception, Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
+| Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
 Base class for Phalcon\Cli\Console and Phalcon\Mvc\Application.
 
