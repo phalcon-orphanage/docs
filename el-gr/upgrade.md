@@ -664,7 +664,7 @@ $logger->error('Something went wrong');
 
 * * *
 
-### Transactions
+### Συναλλαγές
 
 Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
 
@@ -1025,7 +1025,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Cache\Frontend\Output      | Removed    |                                                     |
 | Phalcon\Cache\Multiple              | Removed    |                                                     |
 
-### Collection
+### Συλλογή
 
 | 3.4.x | State | 4.0.x                          |
 | ----- | ----- | ------------------------------ |
