@@ -100,7 +100,7 @@ $invoices = Invoices::find(
 
 Cache the resultset using `my-cache` as the key but now use the service `cache` from the DI container instead of the `modelsCache`
 
-## Relationships
+## Σχέσεις
 
 You can also cache resultsets that are returned by relationships.
 
