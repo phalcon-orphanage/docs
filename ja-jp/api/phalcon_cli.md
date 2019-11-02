@@ -467,7 +467,7 @@ Exceptions thrown in Phalcon\Cli\Router will use this class
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cli/router/route.zep)
 
-| Namespace | Phalcon\Cli\Router | | Uses | Phalcon\Cli\Router\RouteInterface | | Implements | RouteInterface |
+| Namespace | Phalcon\Cli\Router | | Implements | RouteInterface |
 
 This class represents every route added to the router
 

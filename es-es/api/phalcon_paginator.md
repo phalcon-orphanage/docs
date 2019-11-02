@@ -19,7 +19,7 @@ title: 'Phalcon\Paginator'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Adapter\AdapterInterface | | Implements | AdapterInterface |
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface | | Implements | AdapterInterface |
 
 Phalcon\Paginator\Adapter\AbstractAdapter
 
@@ -128,7 +128,7 @@ Set current rows limit
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
 
 Phalcon\Paginator\Adapter\Model
 
@@ -139,8 +139,55 @@ use Phalcon\Paginator\Adapter\Model;
 
 $paginator = new Model(
     [
-        "data"  => Robots::find(),
+        "model" => Robots::class,
         "limit" => 25,
+        "page"  => $currentPage,
+    ]
+);
+
+
+$paginator = new Model(
+    [
+        "model" => Robots::class,
+        "parameters" => [
+             "columns" => "id, name"
+        ],
+        "limit" => 12,
+        "page"  => $currentPage,
+    ]
+);
+
+
+$paginator = new Model(
+    [
+        "model" => Robots::class,
+        "parameters" => [
+             "type = :type:",
+             "bind" => [
+                 "type" => "mechanical"
+             ],
+             "order" => "name"
+        ],
+        "limit" => 16,
+        "page"  => $currentPage,
+    ]
+);
+
+$paginator = new Model(
+    [
+        "model" => Robots::class,
+        "parameters" => "(id % 2) = 0",
+        "limit" => 8,
+        "page"  => $currentPage,
+    ]
+);
+
+
+$paginator = new Model(
+    [
+        "model" => Robots::class,
+        "parameters" => [ "(id % 2) = 0" ],
+        "limit" => 8,
         "page"  => $currentPage,
     ]
 );
@@ -160,7 +207,7 @@ Returns a slice of the resultset to show in the pagination
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
 
 Phalcon\Paginator\Adapter\NativeArray
 
@@ -196,7 +243,7 @@ Returns a slice of the resultset to show in the pagination
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Db\Enum, Phalcon\Mvc\Model\Query\Builder, Phalcon\Paginator\Adapter\AbstractAdapter, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Exception | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Db\Enum, Phalcon\Mvc\Model\Query\Builder, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Exception | | Extends | AbstractAdapter |
 
 Phalcon\Paginator\Adapter\QueryBuilder
 

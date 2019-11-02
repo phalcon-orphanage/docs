@@ -102,6 +102,18 @@ public function getIterator(): Traversable;
 Returns the iterator of the class
 
 ```php
+public function getKeys( bool $insensitive = bool ): array;
+```
+
+//
+
+```php
+public function getValues(): array;
+```
+
+//
+
+```php
 public function has( string $element ): bool;
 ```
 
@@ -203,7 +215,7 @@ Exceptions for the Collection object
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
 
-| Namespace | Phalcon\Collection | | Uses | Phalcon\Collection, Phalcon\Collection\Exception | | Extends | Collection |
+| Namespace | Phalcon\Collection | | Uses | Phalcon\Collection | | Extends | Collection |
 
 Phalcon\Collection\ReadOnly is a read only Collection object
 

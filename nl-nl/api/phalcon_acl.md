@@ -241,7 +241,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
-| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Adapter\AbstractAdapter, Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
 
 Manages ACL lists in memory
 
@@ -584,7 +584,7 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`) fo
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/component.zep)
 
-| Namespace | Phalcon\Acl | | Uses | Phalcon\Acl\Exception | | Implements | ComponentInterface |
+| Namespace | Phalcon\Acl | | Implements | ComponentInterface |
 
 This class defines component entity and its description
 
@@ -698,7 +698,7 @@ Class for exceptions thrown by Phalcon\Acl
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
 
-| Namespace | Phalcon\Acl | | Uses | Phalcon\Acl\Exception | | Implements | RoleInterface |
+| Namespace | Phalcon\Acl | | Implements | RoleInterface |
 
 This class defines role entity and its description
 

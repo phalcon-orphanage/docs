@@ -288,7 +288,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
-| Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
 This file is part of the Phalcon Framework.
 
@@ -424,7 +424,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
-| Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Adapter\AbstractAdapter, Phalcon\Image\Exception | | Extends | AbstractAdapter |
+| Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
 Phalcon\Image\Adapter\Imagick
 

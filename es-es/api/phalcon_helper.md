@@ -15,7 +15,7 @@ title: 'Phalcon\Helper'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/arr.zep)
 
-| Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Exception, stdClass |
+| Namespace | Phalcon\Helper | | Uses | stdClass |
 
 This class offers quick array functions throughout the framework
 
@@ -207,7 +207,7 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/number.zep)
 
-| Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Exception |
+| Namespace | Phalcon\Helper |
 
 Phalcon\Helper\number
 
@@ -225,7 +225,7 @@ Helper method to get an array element or a default
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/str.zep)
 
-| Namespace | Phalcon\Helper | | Uses | Phalcon\Helper\Arr, Phalcon\Helper\Exception, RuntimeException |
+| Namespace | Phalcon\Helper | | Uses | RuntimeException |
 
 This class offers quick string functions throughout the framework
 

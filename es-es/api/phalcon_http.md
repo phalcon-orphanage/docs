@@ -398,7 +398,7 @@ Checks the element passed; assigns it to the property and returns a clone of the
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/abstractmessage.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\AbstractCommon, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends | AbstractCommon |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UriInterface | | Extends | AbstractCommon |
 
 Message methods
 
@@ -679,7 +679,7 @@ Checks the protocol
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/abstractrequest.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\AbstractMessage, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Uri, Psr\Http\Message\UriInterface | | Extends | AbstractMessage |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends | AbstractMessage |
 
 Request methods
 
@@ -829,7 +829,7 @@ Request constructor.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/requestfactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Request, Psr\Http\Message\RequestInterface, Psr\Http\Message\RequestFactoryInterface, Psr\Http\Message\UriInterface | | Implements | RequestFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Psr\Http\Message\RequestInterface, Psr\Http\Message\RequestFactoryInterface, Psr\Http\Message\UriInterface | | Implements | RequestFactoryInterface |
 
 PSR-17 RequestFactory
 
@@ -917,7 +917,7 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/responsefactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Response, Psr\Http\Message\ResponseInterface, Psr\Http\Message\ResponseFactoryInterface | | Implements | ResponseFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Psr\Http\Message\ResponseInterface, Psr\Http\Message\ResponseFactoryInterface | | Implements | ResponseFactoryInterface |
 
 PSR-17 ResponseFactory
 
@@ -940,7 +940,7 @@ Create a new response.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/serverrequest.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\AbstractRequest, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface | | Extends | AbstractRequest | | Implements | ServerRequestInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream\Input, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UriInterface | | Extends | AbstractRequest | | Implements | ServerRequestInterface |
 
 PSR-7 ServerRequest
 
@@ -1154,7 +1154,7 @@ This method MUST be implemented in such a way as to retain the immutability of t
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/serverrequestfactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\ServerRequest, Phalcon\Http\Message\UploadedFile, Phalcon\Http\Message\Uri, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface | | Implements | ServerRequestFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\ServerRequestFactoryInterface, Psr\Http\Message\ServerRequestInterface, Psr\Http\Message\UriInterface, Psr\Http\Message\UploadedFileInterface | | Implements | ServerRequestFactoryInterface |
 
 PSR-17 ServerRequestFactory
 
@@ -1465,7 +1465,7 @@ Constructor
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/streamfactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Stream, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamFactoryInterface, Psr\Http\Message\StreamInterface | | Implements | StreamFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamFactoryInterface, Psr\Http\Message\StreamInterface | | Implements | StreamFactoryInterface |
 
 PSR-17 StreamFactory
 
@@ -1509,7 +1509,7 @@ The stream MUST be readable and may be writable.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/uploadedfile.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Helper\Number, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\Stream, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException | | Implements | UploadedFileInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Helper\Number, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, RuntimeException | | Implements | UploadedFileInterface |
 
 PSR-7 UploadedFile
 
@@ -1657,7 +1657,7 @@ If you wish to move to a stream, use getStream(), as SAPI operations cannot guar
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/uploadedfilefactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Http\Message\UploadedFile, Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UploadedFileFactoryInterface | | Implements | UploadedFileFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Psr\Http\Message\StreamInterface, Psr\Http\Message\UploadedFileInterface, Psr\Http\Message\UploadedFileFactoryInterface | | Implements | UploadedFileFactoryInterface |
 
 PSR-17 UploadedFileFactory
 
@@ -1682,7 +1682,7 @@ If a size is not provided it will be determined by checking the size of the stre
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/uri.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Phalcon\Http\Message\AbstractCommon, Psr\Http\Message\UriInterface | | Extends | AbstractCommon | | Implements | UriInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Http\Message\Exception\InvalidArgumentException, Psr\Http\Message\UriInterface | | Extends | AbstractCommon | | Implements | UriInterface |
 
 PSR-7 Uri
 
@@ -1930,7 +1930,7 @@ Return an instance with the specified user information.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/message/urifactory.zep)
 
-| Namespace | Phalcon\Http\Message | | Uses | Psr\Http\Message\UriFactoryInterface, Psr\Http\Message\UriInterface, Phalcon\Http\Message\Uri | | Implements | UriFactoryInterface |
+| Namespace | Phalcon\Http\Message | | Uses | Psr\Http\Message\UriFactoryInterface, Psr\Http\Message\UriInterface | | Implements | UriFactoryInterface |
 
 PSR-17 UriFactory
 
@@ -2495,7 +2495,7 @@ Exceptions thrown in Phalcon\Http\Request will use this class
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/request/file.zep)
 
-| Namespace | Phalcon\Http\Request | | Uses | Phalcon\Http\Request\FileInterface | | Implements | FileInterface |
+| Namespace | Phalcon\Http\Request | | Implements | FileInterface |
 
 Phalcon\Http\Request\File
 
@@ -3406,7 +3406,7 @@ $response->setStatusCode(404, "Not Found");
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
-| Namespace | Phalcon\Http\Response | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\CookieInterface, Phalcon\Http\Response\CookiesInterface, Phalcon\Http\Cookie\Exception | | Extends | AbstractInjectionAware | | Implements | CookiesInterface |
+| Namespace | Phalcon\Http\Response | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\CookieInterface, Phalcon\Http\Cookie\Exception | | Extends | AbstractInjectionAware | | Implements | CookiesInterface |
 
 Phalcon\Http\Response\Cookies
 
@@ -3635,7 +3635,7 @@ Exceptions thrown in Phalcon\Http\Response will use this class.
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/headers.zep)
 
-| Namespace | Phalcon\Http\Response | | Uses | Phalcon\Http\Response\HeadersInterface | | Implements | HeadersInterface |
+| Namespace | Phalcon\Http\Response | | Implements | HeadersInterface |
 
 Phalcon\Http\Response\Headers
 

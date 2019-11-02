@@ -312,7 +312,7 @@ Sets the asset's type.
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/collection.zep)
 
-| Namespace | Phalcon\Assets | | Uses | Countable, Iterator, Phalcon\Assets\Asset, Phalcon\Assets\FilterInterface, Phalcon\Assets\Inline, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css | | Implements | Countable, Iterator |
+| Namespace | Phalcon\Assets | | Uses | Countable, Iterator, Phalcon\Assets\Asset\Css, Phalcon\Assets\Asset\Js, Phalcon\Assets\Inline\Js, Phalcon\Assets\Inline\Css | | Implements | Countable, Iterator |
 
 Represents a collection of assets
 
@@ -827,7 +827,7 @@ Phalcon\Assets\Inline\Js constructor
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/assets/manager.zep)
 
-| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset, Phalcon\Assets\Collection, Phalcon\Assets\Exception, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware | | Extends | AbstractInjectionAware |
+| Namespace | Phalcon\Assets | | Uses | Phalcon\Tag, Phalcon\Assets\Asset\Js, Phalcon\Assets\Asset\Css, Phalcon\Assets\Inline\Css, Phalcon\Assets\Inline\Js, Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware | | Extends | AbstractInjectionAware |
 
 Phalcon\Assets\Manager
 

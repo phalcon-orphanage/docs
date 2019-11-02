@@ -434,7 +434,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
 
-| Namespace | Phalcon\Tag | | Uses | Phalcon\Tag\Exception, Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
+| Namespace | Phalcon\Tag | | Uses | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
 Phalcon\Tag\Select
 
