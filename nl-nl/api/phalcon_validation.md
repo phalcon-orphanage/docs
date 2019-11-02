@@ -2501,7 +2501,7 @@ Executes the validation
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/validation/validatorfactory.zep)
 
-| Namespace | Phalcon\Validation | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
+| Namespace | Phalcon\Validation | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Factory\ValidatorInterface, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -2518,7 +2518,7 @@ public function __construct( array $services = [] );
 TagFactory constructor.
 
 ```php
-public function newInstance( string $name ): mixed;
+public function newInstance( string $name ): ValidatorInterface;
 ```
 
 Creates a new instance
