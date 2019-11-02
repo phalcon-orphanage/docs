@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Debug'
+title: 'Εντοπισμός σφαλμάτων'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# Εντοπισμός σφαλμάτων
 
 * * *
 

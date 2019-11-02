@@ -129,7 +129,7 @@ In the above snippet, if `../processes/important-process.php` is a valid file, t
 
 To avoid most of these kind of attacks, [Phalcon\Loader](api/Phalcon_Loader#loader) removes invalid characters from the class name.
 
-## Namespaces
+## Χώροι ονομάτων
 
 A very popular way to organize your application is with directories, each representing a particular namespace. [Phalcon\Loader](api/Phalcon_Loader#loader) can register those namespace to directory mapping and traverse those directories to search the file that your application is requiring.
 
