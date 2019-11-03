@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Collection'
+title: 'Συλλογή'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
@@ -14,7 +14,7 @@ keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializea
 
 ## Επισκόπηση
 
-`Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
+`Phalcon\Collection` είναι μια συστοιχία με πρόσβαση σαν αντικείμενο. Προσφέρει ταχύτητα, καθώς και υλοποιήσεις διαφόρων PHP interfaces. Αυτά είναι:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)

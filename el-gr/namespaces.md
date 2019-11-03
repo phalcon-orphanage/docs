@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Namespaces'
+title: 'Χώροι ονομάτων'
 keywords: 'namespaces, namespaced classes'
 ---
 
-# Namespaces
+# Χώροι ονομάτων
 
 * * *
 

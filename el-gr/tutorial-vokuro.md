@@ -215,7 +215,7 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Config
+### Ρυθμίσεις
 
 **acl.php**
 
@@ -1274,7 +1274,7 @@ If the `$user->save()` returns `true`, the user will be forwarded to the home pa
 
 ### Model
 
-**Relationships**
+**Σχέσεις**
 
 Now we need to check the `Users` model, since there is some logic we have applied there, in particular the `afterSave` and `beforeValidationOnCreate` events.
 

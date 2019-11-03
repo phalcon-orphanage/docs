@@ -2,10 +2,10 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Reproducible Tests'
+title: 'Αναπαραγώγιμες Δοκιμές'
 ---
 
-# Reproducible Tests
+# Αναπαραγώγιμες Δοκιμές
 
 * * *
 

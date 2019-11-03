@@ -453,7 +453,7 @@ The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There a
 | `:params`    | Any parameters                             |
 | `:int`       | Whether this is an integer route parameter |
 
-The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. These are:
+The [Phalcon\Cli\Router](api/phalcon_cli#cli-router) comes with two predefined routes, so that it works right out of the box. Αυτά είναι:
 
 - `/:task/:action`
 - `/:task/:action/:params`
