@@ -6,7 +6,7 @@ title: 'Collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Collection Component
+# Collection
 
 * * *
 
