@@ -3,9 +3,10 @@ layout: default
 language: 'pt-br'
 version: '4.0'
 title: 'Security'
+keywords: 'security, hashing, passwords'
 ---
 
-# Security Component
+# Security
 
 * * *
 
@@ -16,7 +17,7 @@ title: 'Security'
 > Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
 
-[Phalcon\Security](api/Phalcon\Security#security) is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
+[Phalcon\Security](api/phalcon_security#security) is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF](https://en.wikipedia.org/wiki/Cross-site_request_forgery)).
 
 ## Password Hashing
 
@@ -127,9 +128,9 @@ class SessionController extends Controller
 
 Let's explain the above code snippet - which is incomplete and **must not be used as is for production applications**:
 
-The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security](api/Phalcon\Security#security) component so that we do not save it as plain text in our database.
+The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security](api/phalcon_security#security) component so that we do not save it as plain text in our database.
 
-The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security](api/Phalcon\Security#security) component, to assess whether the supplied password hashed is the same as the one stored in the database.
+The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security](api/phalcon_security#security) component, to assess whether the supplied password hashed is the same as the one stored in the database.
 
 > You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
 {: .alert .alert-info }
@@ -153,7 +154,7 @@ This is done to protect against timing attacks. Irrespective of whether a user e
 
 ## Exceptions
 
-Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception](api/Phalcon\Security#security-exception). You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
+Any exceptions thrown in the Security component will be of type [Phalcon\Security\Exception](api/phalcon_security#security-exception). You can use this exception to selectively catch exceptions thrown only from this component. Exceptions can be raised if the hashing algorithm is unknown, if the `session` service is not present in the Di container etc.
 
 ```php
 <?php
@@ -258,7 +259,7 @@ Generates a keyed hash value using the HMAC method. It uses PHP's [`hash_hmac`](
 
 **`getRandom()`**
 
-Returns a [Phalcon\Security\Random](api/Phalcon\Security#security-random) object, which is secure random number generator instance. The component is explained in detail below.
+Returns a [Phalcon\Security\Random](api/phalcon_security#security-random) object, which is secure random number generator instance. The component is explained in detail below.
 
 **`getRandomBytes()` / `setRandomBytes()`**
 
@@ -296,7 +297,7 @@ Removes the value of the CSRF token and key from session
 
 ## Random
 
-The [Phalcon\Security\Random](api/Phalcon\Security#security-random) class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) library from Ruby.
+The [Phalcon\Security\Random](api/phalcon_security#security-random) class makes it really easy to generate lots of types of random data to be used in salts, new user passwords, session keys, complicated keys, encryption systems etc. This class partially borrows [SecureRandom](https://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html) library from Ruby.
 
 It supports following secure random number generators: * random_bytes * libsodium * openssl, libressl * /dev/urandom
 
@@ -442,7 +443,7 @@ echo $random->uuid(); // 1378c906-64bb-4f81-a8d6-4ae1bfcdec22
 
 ## Dependency Injection
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon\Di#di-factorydefault) container, the [Phalcon\Security](api/Phalcon\Security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/Phalcon\Di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Security](api/phalcon_security#security) is already registered for you. However you might want to override the default registration in order to set your own `workFactor()`. Alternatively if you are not using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) and instead are using the [Phalcon\Di](di) the registration is the same. By doing so, you will be able to access your configuration object from controllers, models, views and any component that implements `Injectable`.
 
 An example of the registration of the service as well as accessing it is below:
 
