@@ -435,7 +435,7 @@ You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component an
 
 If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, then the [Phalcon\Filter](api/Phalcon_Filter#filter) is automatically loaded in the container. You can then continue to use the service in your controllers or components as you did before. The name of the service in the Di is `filter`, just as before.
 
-Also components that utilize the filter service, such as the [Request](api/Phalcon_Http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
+Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
 
 ### Using a custom `Di`
 
@@ -1066,6 +1066,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x | State | 4.0.x                                              |
 | ----- | ----- | -------------------------------------------------- |
+|       | New   | Phalcon\Di\AbstractInjectionAware                |
 |       | New   | Phalcon\Di\Exception\ServiceResolutionException |
 
 ### Domain
@@ -1137,6 +1138,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | ----- | ----- | -------------------------- |
 |       | New   | Phalcon\Helper\Arr       |
 |       | New   | Phalcon\Helper\Exception |
+|       | New   | Phalcon\Helper\Fs        |
 |       | New   | Phalcon\Helper\Number    |
 |       | New   | Phalcon\Helper\Str       |
 
@@ -1159,7 +1161,6 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Html\Helper\Img            |
 |       | New   | Phalcon\Html\Helper\Label          |
 |       | New   | Phalcon\Html\Helper\TextArea       |
-|       | New   | Phalcon\Html\Tag                    |
 |       | New   | Phalcon\Html\TagFactory             |
 
 ### Http
@@ -1201,7 +1202,6 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
-| Phalcon\Logger                     | Renamed to | Phalcon\Logger\Logger                       |
 |                                     | New        | Phalcon\Logger\AdapterFactory               |
 | Phalcon\Logger\Adapter            | Renamed to | Phalcon\Logger\Adapter\AbstractAdapter     |
 | Phalcon\Logger\Adapter\Blackhole | Renamed to | Phalcon\Logger\Adapter\Noop                |
@@ -1224,6 +1224,9 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 
 | 3.4.x                                        | State      | 4.0.x                                        |
 | -------------------------------------------- | ---------- | -------------------------------------------- |
+| Phalcon\Mvc\Collection                     | Renamed to | Phalcon\Collection                          |
+| Phalcon\Mvc\Collection\Exception          | Renamed to | Phalcon\Collection\Exception               |
+|                                              | New        | Phalcon\Collection\ReadOnly                |
 | Phalcon\Mvc\Model\Message                 | Renamed to | Phalcon\Messages\Message                   |
 | Phalcon\Mvc\Model\MetaData\Apc           | Removed    |                                              |
 | Phalcon\Mvc\Model\MetaData\Files         | Renamed to | Phalcon\Mvc\Model\MetaData\Stream        |
@@ -1243,9 +1246,9 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Mvc\Model\Validator\Url          | Renamed to | Phalcon\Validation\Validator\Url          |
 | Phalcon\Mvc\Url                            | Renamed to | Phalcon\Url                                 |
 | Phalcon\Mvc\Url\Exception                 | Renamed to | Phalcon\Url\Exception                      |
-| Phalcon\Mvc\User\Component                | Renamed to | Phalcon\Plugin                              |
-| Phalcon\Mvc\User\Module                   | Renamed to | Phalcon\Plugin                              |
-| Phalcon\Mvc\User\Plugin                   | Renamed to | Phalcon\Plugin                              |
+| Phalcon\Mvc\User\Component                | Renamed to | Phalcon\Di\AbstractInjectionAware          |
+| Phalcon\Mvc\User\Module                   | Renamed to | Phalcon\Di\AbstractInjectionAware          |
+| Phalcon\Mvc\User\Plugin                   | Renamed to | Phalcon\Di\AbstractInjectionAware          |
 | Phalcon\Mvc\View\Engine                   | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine   |
 
 ### Paginator
@@ -1255,12 +1258,6 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Paginator\Adapter | Renamed to | Phalcon\Paginator\Adapter\AbstractAdapter |
 | Phalcon\Paginator\Factory | Renamed to | Phalcon\Paginator\PaginatorFactory         |
 |                             | New        | Phalcon\Paginator\Repository               |
-
-### Plugin
-
-| 3.4.x | State | 4.0.x           |
-| ----- | ----- | --------------- |
-|       | New   | Phalcon\Plugin |
 
 ### Queue
 
