@@ -658,9 +658,9 @@ This adapter is the simplest to setup since it uses the target system's file sys
 | `lifetime`          | `3600`       |
 | `serializer`        | `null`       |
 | `prefix`            | `phstrm-`    |
-| `cacheDir`          |              |
+| `storageDir`        |              |
 
-If the `cacheDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
+If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
 > The adapter utilizes logic to store files in separate sub directories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
 {: .alert .alert-info }
@@ -678,7 +678,7 @@ $serializerFactory = new SerializerFactory();
 $options = [
     'defaultSerializer' => 'Json',
     'lifetime'          => 7200,
-    'cacheDir'          => '/data/storage/cache',
+    'storageDir'        => '/data/storage/cache',
 ];
 
 $adapter = new Stream($serializerFactory, $options);
@@ -697,7 +697,7 @@ $jsonSerializer = new Json();
 $options = [
     'defaultSerializer' => 'Json',
     'lifetime'          => 7200,
-    'cacheDir'          => '/data/storage/cache',
+    'storageDir'        => '/data/storage/cache',
 ];
 
 $adapter = new Stream(null, $options);

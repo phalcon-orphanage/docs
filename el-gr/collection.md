@@ -6,7 +6,7 @@ title: 'Συλλογή'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
-# Collection Component
+# Συλλογή
 
 * * *
 
