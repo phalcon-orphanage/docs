@@ -5,7 +5,7 @@ version: '4.0'
 title: 'Security'
 keywords: 'security, hashing, passwords'
 ---
-# Security Component
+# Security
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 
@@ -218,6 +218,7 @@ Adding a [captcha][captcha] to the form is also recommended to completely avoid 
 ## Functionality
 
 ### Hash
+
 **getDefaultHash() / setDefaultHash()**
 
 Getter and setter for the default hash that the component will use. By default the hash is set to `CRYPT_DEFAULT` (`0`). The available options are:
@@ -243,10 +244,10 @@ Accepts a string (usually the password), an already hashed string (the hashed pa
 Returns `true` if the passed hashed string is a valid [bcrypt][bcrypt] hash.
 
 ### HMAC
+
 **computeHmac()** 
 
 Generates a keyed hash value using the HMAC method. It uses PHP's [`hash_hmac`][hash-hmac] method internally, therefore all the parameters it accepts are the same as the [`hash_hmac`][hash-hmac].
-
 
 ### Random
 **`getRandom()`**

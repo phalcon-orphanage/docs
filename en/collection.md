@@ -5,7 +5,7 @@ version: '4.0'
 title: 'Collection'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
-# Collection Component
+# Collection
 <hr/>
 ![](/assets/images/document-status-stable-success.svg)
 
