@@ -8,7 +8,7 @@ keywords: 'acl, access control list, permissions'
 ---
 # Access Control Lists (ACL)
 <hr />
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Acl][acl-acl] provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists][acl] (ACL) allow an application to control access to its areas and the underlying objects from requests. 
@@ -36,40 +36,38 @@ As seen above in the use case, an [Role][acl-role] is defined as who needs to ac
 
 Using the [Phalcon\Acl][acl-acl] component, we can tie those two together, and strengthen the security of our application, allowing only specific roles to be bound to specific components.
 
-## Creating an ACL
+## Setup
 [Phalcon\Acl][acl-acl] uses adapters to store and work with roles and components. The only adapter available right now is [Phalcon\Acl\Adapter\Memory][acl-adapter-memory]. Having the adapter use the memory, significantly increases the speed that the ACL is accessed but also comes with drawbacks. The main drawback is that memory is not persistent, so the developer will need to implement a storing strategy for the ACL data, so that the ACL is not generated at every request. This could easily lead to delays and unnecessary processing, especially if the ACL is quite big and/or stored in a database or file system.
 
-Phalcon also offers an easy way for developers to build their own adapters by implementing the [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface.
-
-### In action
 The [Phalcon\Acl][acl-acl] constructor takes as its first parameter an adapter used to retrieve the information related to the control list.
 
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 
-$acl = new AclList();
+$acl = new Memory();
 ```
-There are two self explanatory actions that the [Phalcon\Acl][acl-acl] provides:
-- `Phalcon\Acl\Enum::ALLOW` 
-- `Phalcon\Acl\Enum::DENY` 
-
-> The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role][acl-role] or [Component][acl-component].
-{: .alert .alert-info } 
-
-This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
+The default action is **`Phalcon\Acl\Enum::DENY`** for any [Role][acl-role] or [Component][acl-component]. This is on purpose to ensure that only the developer or application allows access to specific components and not the ACL component itself.
 
 ```php
 <?php
 
 use Phalcon\Acl\Enum;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 
-$acl = new AclList();
+$acl = new Memory();
 
 $acl->setDefaultAction(Enum::ALLOW);
 ```
+
+## Constants
+The [Phalcon\Acl\Enum][acl-enum] class offers two constants that can be used when defining access levels. 
+
+- `Phalcon\Acl\Enum::ALLOW` (`1`)
+- `Phalcon\Acl\Enum::DENY` (`0` - default)
+
+You can use these constants to define access levels for your ACL.
 
 ## Adding Roles
 As mentioned above, a [Phalcon\Acl\Role][acl-role] is an object that can or cannot access a set of [Component][acl-component] in the access list. 
@@ -85,10 +83,10 @@ Role objects. The first parameter is the name of the role, the second the descri
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 
-$acl = new AclList();
+$acl = new Memory();
 
 $roleAdmins     = new Role('admins', 'Administrator Access');
 $roleAccounting = new Role('accounting', 'Accounting Department Access'); 
@@ -102,9 +100,9 @@ Strings. Add the role with just the name directly to the ACL:
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 
-$acl = new AclList();
+$acl = new Memory();
 
 $acl->addRole('manager');
 $acl->addRole('guest');
@@ -124,10 +122,10 @@ Component objects. The first parameter is the name of the component, the second 
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 $admin   = new Component('admin', 'Administration Pages');
 $reports = new Component('reports', 'Reports Pages');
@@ -154,9 +152,9 @@ Strings. Add the component with just the name directly to the ACL:
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 
-$acl = new AclList();
+$acl = new Memory();
 
 $acl->addComponent(
     'admin',
@@ -183,11 +181,11 @@ To tie `Roles` and `Components` together we use the `allow()` and `deny()` metho
 ```php
 <?php
 
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Add the roles
@@ -264,7 +262,7 @@ $acl->allow('*', '*', 'view');
 
 Similarly the above gives access to any role, any component that has the `view` action. In a MVC application, the above is the equivalent of allowing any group to access any controller that exposes a `viewAction`. 
 
-> Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
+> **NOTE**: Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
 >
 > [Codeception][codeception] is the chosen testing framework for Phalcon and there are plenty of tests in our github repository (`tests` folder) to offer guidance and ideas.
 {:.alert .alert-danger}
@@ -292,11 +290,11 @@ Once the list has been defined, we can query it to check if a particular role ha
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Setup the ACL
@@ -367,11 +365,11 @@ To take advantage of this functionality, you will need to define your function w
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Setup the ACL
@@ -404,11 +402,11 @@ Now that the callable is defined in the ACL, we will need to call the `isAllowed
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Setup the ACL
@@ -464,11 +462,11 @@ You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Setup the ACL
@@ -505,14 +503,14 @@ $acl->setNoArgumentsDefaultAction(
 $acl->isAllowed('manager', 'admin', 'dashboard');
 ```
 
-## Objects as role name and component name
+## Custom Objects
 Phalcon allows developers to define their own role and component objects. These objects must implement the supplied interfaces:
 
-* [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) for Role
-* [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) for Component
+* [Phalcon\Acl\RoleAware][acl-roleaware] for Role
+* [Phalcon\Acl\ComponentAware][acl-componentaware] for Component
 
 ### Role
-We can implement the [Phalcon\Acl\RoleAware](api/Phalcon_Acl_RoleAware) in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
+We can implement the [Phalcon\Acl\RoleAware][acl-roleaware] in our custom class with its own logic. The example below shows a new role object called `ManagerRole`: 
 
 ```php
 <?php
@@ -546,7 +544,7 @@ class ManagerRole implements RoleAware
 ```
 
 ### Component
-We can implement the [Phalcon\Acl\ComponentAware](api/Phalcon_Acl_ComponentAware) in our custom class with its own logic. The example below shows a new role object called `ReportsComponent`: 
+We can implement the [Phalcon\Acl\ComponentAware][acl-componentaware] in our custom class with its own logic. The example below shows a new role object called `ReportsComponent`: 
 
 ```php
 <?php
@@ -595,12 +593,12 @@ These objects can now be used in our ACL.
 
 use ManagerRole;
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
 use ReportsComponent;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Add the roles
@@ -660,10 +658,10 @@ To remove duplication and increase efficiency in your application, the ACL offer
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Create the roles
@@ -690,17 +688,17 @@ $acl->addRole($manager, $accounting);
 
 Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`
 
-### Setup relationships after adding roles
+## Roles Relationships
 Based on the application design, you might prefer to add first all the roles and then define the relationship between them.
 
 ```php
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 
-$acl = new AclList();
+$acl = new Memory();
 
 /**
  * Create the roles
@@ -724,21 +722,21 @@ $acl->addInherit($accounting, $guest);
 
 ```
 
-## Serializing ACL lists
+## Serialization
 [Phalcon\Acl][acl-acl] can be serialized and stored in a cache system to improve efficiency. You can store the serialized object in APC, session, file system, database, Redis etc. This way you can retrieve the ACL quickly without having to read the underlying data that create the ACL nor will you have to compute the ACL in every request.
 
 ```php
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 
 $aclFile = 'app/security/acl.cache';
 // Check whether ACL data already exist
 if (true !== is_file($aclFile)) {
     
     // The ACL does not exist - build it
-    $acl = new AclList();
+    $acl = new Memory();
 
     // ... Define roles, components, access, etc
 
@@ -767,10 +765,10 @@ It is a good practice to not use serialization of the ACL during development, to
 ## Events
 [Phalcon\Acl][acl-acl] can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
-| Event Name          | Triggered                                                   | Can stop role? |
-|---------------------|-------------------------------------------------------------|:-------------------:|
-| `afterCheckAccess`  | Triggered after checking if a role/component has access  | No                  |
-| `beforeCheckAccess` | Triggered before checking if a role/component has access | Yes                 |
+| Event Name          | Triggered                                                | Can stop role? |
+|---------------------|----------------------------------------------------------|:--------------:|
+| `afterCheckAccess`  | Triggered after checking if a role/component has access  | No             |
+| `beforeCheckAccess` | Triggered before checking if a role/component has access | Yes            |
 
 The following example demonstrates how to attach listeners to the ACL:
 
@@ -778,14 +776,14 @@ The following example demonstrates how to attach listeners to the ACL:
 <?php
 
 use Phalcon\Acl;
-use Phalcon\Acl\Adapter\Memory as AclList;
+use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Events\Event;
-use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Events\Manager;
 
 // ...
 
 // Create an event manager
-$eventsManager = new EventsManager();
+$eventsManager = new Manager();
 
 // Attach a listener for type 'acl'
 $eventsManager->attach(
@@ -799,7 +797,7 @@ $eventsManager->attach(
     }
 );
 
-$acl = new AclList();
+$acl = new Memory();
 
 // Setup the $acl
 // ...
@@ -808,7 +806,25 @@ $acl = new AclList();
 $acl->setEventsManager($eventsManager);
 ```
 
-## Implementing your own adapters
+## Exceptions
+Any exceptions thrown in the `Phalcon\Acl` namespace will be of type [Phalcon\Acl\Exception][acl-exception]. You can use this exception to selectively catch exceptions thrown only from this component.
+
+```php
+<?php
+
+use Phalcon\Acl\Adapter\Memory;
+use Phalcon\Acl\Component;
+use Phalcon\Acl\Exception;
+
+try {
+    $acl   = new Memory();
+    $admin = new Component('*');
+} catch (Exception $ex) {
+    echo $ex->getMessage();
+}
+```
+
+## Custom
 The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must be implemented in order to create your own ACL adapters or extend the existing ones.
 
 [acl]: https://en.wikipedia.org/wiki/Access_control_list
@@ -826,3 +842,4 @@ The [Phalcon\Acl\AdapterInterface][acl-adapter-adapterinterface] interface must 
 [acl-roleinterface]: api/Phalcon_Acl#acl-roleinterface
 [codeception]: https://codeception.com
 [whitelist]: https://en.wikipedia.org/wiki/Whitelisting
+        
