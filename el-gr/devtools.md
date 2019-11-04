@@ -92,7 +92,7 @@ Change the path to the one you installed the Phalcon tools (`set PTOOLSPATH=C:\p
 
 Save the changes.
 
-#### Adding PHP and Tools to your system PATH
+#### Adding PHP and Tools to your System PATH
 
 Because the scripts are written in PHP, you need to install it on your machine. Depending on your PHP installation, the executable can be located in various places. Search for the file `php.exe` and copy its path. For instance, using WAMPP you will locate the PHP executable in a location like this: `C:\wamp\bin\php\<php version>\php.exe` (where `<php version>` is the version of PHP that WAMPP comes bundled with).
 
