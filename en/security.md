@@ -170,7 +170,7 @@ class IndexController extends Controller
 }
 ```
 
-## CSRF protection
+## CSRF Protection
 Cross-Site Request Forgery (CSRF) is another common attack against web sites and applications. Forms designed to perform tasks such as user registration or adding comments are vulnerable to this attack.
 
 The idea is to prevent the form values from being sent outside our application. To fix this, we generate a [random nonce][random-nonce] (token) in each form, add the token in the session and then validate the token once the form posts data back to our application by comparing the stored token in the session to the one submitted by the form:

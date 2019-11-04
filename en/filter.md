@@ -230,7 +230,7 @@ const FILTER_UPPERWORDS  = 'upperWords';
 const FILTER_URL         = 'url';
 ```
 
-## Sanitizing data
+## Sanitizing Data
 Sanitizing is the process which removes specific characters from a value, that are not required or desired by the user or application. By sanitizing input we ensure that application integrity will be intact.
 
 ```php
@@ -310,7 +310,7 @@ class ProductsController extends Controller
 }
 ```
 
-## Filtering data
+## Filtering Data
 The [Phalcon\Filter][filter-filter] both filters and sanitizes data, depending on the sanitizers used. For instance the `trim` sanitizer will remove all leading and trailing whitespace, leaving the remaining input unchanged. The description of each sanitizer (see [Built-in Sanitizers](#built-in-sanitizers)) can help you to understand and use the sanitizers according to your needs.
 
 ```php
@@ -330,7 +330,7 @@ $locator->sanitize('  Hello   ', 'trim');
 ```
 
 
-## Adding sanitizers
+## Adding Sanitizers
 You can add your own sanitizers to [Phalcon\Filter][filter-filter]. The sanitizer can be an anonymous function when initializing the locator:
 
 ```php

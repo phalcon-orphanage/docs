@@ -75,10 +75,10 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install nginX
+### Install NginX
 [nginX Official Site][nginx_installation]
 
-### Phalcon configuration
+### Phalcon Configuration
 You can use following potential configuration to setup Nginx with Phalcon:
 
 ```
@@ -176,7 +176,7 @@ service nginx start
 ## Apache
 [Apache][apache] is a popular and well known web server available on many platforms.
 
-### Phalcon configuration
+### Phalcon Configuration
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
 
 ```bash
@@ -237,7 +237,7 @@ For users that are using the Persian letter 'م' (meem) in uri parameters, there
 
 If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
-#### Apache configuration
+#### Apache Configuration
 If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
 
 ```
@@ -418,7 +418,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 [Cherokee][cherokee] is a high-performance web server. It is very fast, flexible and easy to configure.
 
-### Phalcon configuration
+### Phalcon Configuration
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
 Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`

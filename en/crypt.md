@@ -170,7 +170,7 @@ The getter `getCipher()` returns the currently selected cipher. If none has been
 
 You can always get an array of all the available ciphers for your system by calling  `getAvailableCiphers()`.
 
-### Hash algorithm
+### Hash Algorithm
 The getter `getHashAlgo()` returns the hashing algorithm use by the component. If none has been explicitly defined by the setter `setHashAlgo()` the `sha256` will be used. If the hash algorithm defined is not available in the system or is wrong, a [Phalcon\Crypt\Exception][crypt=exception] will be thrown.
    
 You can always get an array of all the available hashing algorithms for your system by calling  `getAvailableHashAlgos()`.

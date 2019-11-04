@@ -7,16 +7,16 @@ version: '4.0'
 <hr/>
 ![](/assets/images/document-status-under-review-red.svg)
 
-## Relationships between Models
+## Relationships Between Models
 There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
 
-### Unidirectional relationships
+### Unidirectional Relationships
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-### Bidirectional relations
+### Bidirectional Relations
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-### Defining relationships
+### Defining Relationships
 In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
 
 | Method        | Description                |
@@ -174,7 +174,7 @@ class Robots extends Model
 }
 ```
 
-#### Relationships with parameters
+#### Relationships with Parameters
 Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part. 
 
 Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
@@ -215,7 +215,7 @@ class Robots extends Model
 }
  ```
 
-#### Multiple field relationships
+#### Multiple Field Relationships
 There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
 ```php
@@ -292,7 +292,7 @@ class Robots extends Model
 
 **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
 
-### Taking advantage of relationships
+### Taking Advantage of Relationships
 When explicitly defining the relationships between models, it is easy to find related records for a particular record.
 
 ```php
@@ -553,7 +553,7 @@ $similarRobot = $robotsSimilar->similarRobot;
 $similarRobot = $robotsSimilar->getRelated('SimilarRobot');
 ```
 
-#### Magic Getters vs. Explicit methods
+#### Magic Getters Vs. Explicit Methods
 Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
 
 ```php
@@ -783,7 +783,7 @@ class RobotsParts extends Model
 }
 ```
 
-### Cascade/Restrict actions
+### Cascade/Restrict Actions
 Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
 
 ```php
@@ -886,7 +886,7 @@ Note: Adding related entities by overloading the following methods is not possib
 
 You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
 
-## Operations over Resultsets
+## Operations Over Resultsets
 If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
 
 ```php
@@ -915,7 +915,7 @@ $result = $type->save();
 
 ```
 
-### Updating related records
+### Updating Related Records
 Instead of doing this:
 
 ```php
@@ -971,7 +971,7 @@ $robots->getParts()->update(
 );
 ```
 
-### Deleting related records
+### Deleting Related Records
 Instead of doing this:
 
 ```php

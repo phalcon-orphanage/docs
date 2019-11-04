@@ -20,7 +20,7 @@ If you just want to get started you can skip this and create a Phalcon project a
 
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here][github_tutorial]. If you get stuck or have questions, please visit us on [Discord][discord] or in our [Forum][forum].
 
-## File structure
+## File Structure
 One of th ekey features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a _standard_ directory structure, commonly used in MVC applications.
 
 ```text
@@ -168,7 +168,7 @@ $container->set(
 );
 ```
 
-### Handling the application request
+### Handling the Application Request
 In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
 
 `public/index.php`
@@ -188,7 +188,7 @@ $response = $application->handle(
 $response->send();
 ```
 
-### Putting everything together
+### Putting Everything Together
 The `tutorial/public/index.php` file should look like:
 
 `public/index.php`
@@ -278,7 +278,7 @@ The controller classes must have the suffix `Controller` and controller actions 
 > Congratulations, you are Phlying with Phalcon!
 {: .alert .alert-info }
 
-## Sending output to a view
+## Sending Output to a View
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller. 
 
 Therefore in our case if the URL is:
@@ -319,7 +319,7 @@ class IndexController extends Controller
 
 The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
 
-## Designing a sign-up form
+## Designing a Sign-up Form
 Now we will change the `index.phtml` view file, to add a link to a new controller named _signup_. The goal is to allow users to sign up to our application.
 
 `app/views/index/index.phtml`
@@ -497,7 +497,7 @@ $di->set(
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application. If you use different credentials or database, you will need to adjust the code snippet above.
 
-## Storing data using models
+## Storing Data using Models
 
 `app/controllers/SignupController.php`
 ```php
@@ -553,7 +553,7 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
-## List the registered users
+## List the Registered Users
 Now we will need to get and display all the registered users in our database
 
 The first thing that we are going to do in our `indexAction` of the` IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`). 

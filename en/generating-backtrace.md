@@ -5,7 +5,7 @@ version: '4.0'
 title: 'Generating a backtrace'
 keywords: 'backtrace, debugging, segmentation faults'
 ---
-# Generating a backtrace
+# Generating a Backtrace
 <hr/>
 ![](/assets/images/document-status-stable-success.svg)
 

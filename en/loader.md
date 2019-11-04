@@ -434,7 +434,7 @@ In the example above, when referencing a file `Mail`, the autoloader will search
 
 Files are checked in the order that each extension is defined.
 
-## File checking callback
+## File Checking Callback
 You can speed up the loader by setting a different file checking callback method using the `setFileCheckingCallback()` method.
 
 The default behavior uses [is_file][is_file]. However you can also use `null` which will not check whether a file exists or not, before loading it or you can use [stream_resolve_include_path][stream_resolve_include_path] which is much faster than [is_file][is_file] but will cause problems if the target file is removed from the file system.

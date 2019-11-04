@@ -519,7 +519,7 @@ Salut %name%, bien %time%!
 
 Assuming that the context will not change based on each language's strings, you can add these placeholders to your translated strings. The Translate component with its adapters will then correctly perform the interpolation for you.
 
-### Changing the interpolator
+### Changing the Interpolator
 To change the interpolator that your adapter uses, all you have to do is pass the name of the interpolator in the options using the `defaultInterpolator` key.
 
 ```php

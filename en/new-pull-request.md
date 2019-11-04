@@ -31,7 +31,7 @@ Additionally any new functionality that introduces breaking changes will not be 
 
 It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.
 
-## Branch and commits
+## Branch and Commits
 The following steps are recommended but not mandatory.
 
 If you are working on an issue, note the number of the issue down. Let us assume that the issue is:
@@ -49,8 +49,8 @@ Create a new file called `commit-msg` and paste the code below in it and save it
 
 ```bash
 #!/bin/bash
-# This way you can customize which branches should be skipped when
-# prepending commit message.
+# This Way You can Customize Which Branches Should be Skipped When
+# Prepending Commit Message.
 if [ -z "$BRANCHES_TO_SKIP" ]; then
   BRANCHES_TO_SKIP=(master develop)
 fi

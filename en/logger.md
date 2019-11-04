@@ -107,7 +107,7 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 $logger = $loggerFactory->newInstance('prod-logger', $adapters);
 ```
 
-## Creating a logger
+## Creating a Logger
 Creating a logger is a multi step process. First you create the logger object and then you attach an adapter to it. After that you can start logging messages according to the needs of your application.
 
 ```php
@@ -198,7 +198,7 @@ $logger->error('Something went wrong');
 
 The messages are sent to the handlers in the order they were registered using the [first in first out][fifo] principle.
 
-### Excluding adapters 
+### Excluding Adapters 
 [Phalcon\Logger][logger-logger] also offers the ability to exclude logging to one or more adapters when logging a message. This is particularly useful when in need to log a `manager` related message in the `manager` log but not in the `local` log without having to instantiate a new logger.
 
 ```php

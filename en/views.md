@@ -332,7 +332,7 @@ The available render levels are:
 | `LEVEL_AFTER_TEMPLATE`  | Generates the presentation to the templates after the controller layout. | 4     |
 | `LEVEL_MAIN_LAYOUT`     | Generates the presentation to the main layout. File views/index.phtml    | 5     |
 
-### Disabling render levels
+### Disabling Render Levels
 You can permanently or temporarily disable render levels. A level could be permanently disabled if it isn't used at all in the whole application:
 
 ```php
@@ -415,7 +415,7 @@ class ProductsController extends Controller
 }
 ```
 
-### Disabling the view
+### Disabling the View
 If your controller does not produce any output in the view (or not even have one) you may disable the view component avoiding unnecessary processing:
 
 ```php
@@ -601,7 +601,7 @@ The `partial()` method does accept a second parameter as an array of variables/p
 <?php $this->partial('shared/ad_banner', ['id' => $site->id, 'size' => 'big']); ?>
 ```
 
-## Transfer values from the controller to views
+## Transfer Values From the Controller to Views
 [Phalcon\Mvc\View](api/Phalcon_Mvc_View) is available in each controller using the view variable (`$this->view`). You can use that object to set variables directly to the view from a controller action by using the `setVar()` method.
 
 ```php
@@ -879,7 +879,7 @@ $di->set(
 
 There are adapters available for several template engines on the [Phalcon Incubator](https://github.com/phalcon/incubator/tree/master/Library/Phalcon/Mvc/View/Engine)
 
-## Injecting services in View
+## Injecting Services in View
 Every view executed is included inside a [Phalcon\Di\Injectable](api/Phalcon_Di_Injectable) instance, providing easy access to the application's service container.
 
 The following example shows how to write a jQuery [ajax request](https://api.jquery.com/jQuery.ajax/) using a URL with the framework conventions. The service `url` (usually [Phalcon\Url](api/Phalcon_Url)) is injected in the view by accessing a property with the same name:

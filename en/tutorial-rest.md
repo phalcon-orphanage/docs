@@ -524,7 +524,7 @@ $app->delete(
 );
 ```
 
-## Creating database
+## Creating Database
 Now we will create database for our application.
 Run SQL queries as follows:
 ```
@@ -538,7 +538,7 @@ CREATE TABLE `robotics`.`robots` (
 )
 ```
 
-## Testing our Application
+## Testing Our Application
 Using [curl][curl] we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:

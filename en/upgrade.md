@@ -8,7 +8,7 @@ keywords: 'upgrade, v3, v4'
 # Upgrade Guide
 <hr/>
 
-# Upgrading to v4
+# Upgrading to V4
 So you have decided to upgrade to v4! **Congratulations**!!
 
 Phalcon v4 contains a lot of changes to components, including changes to interfaces, strict types, removal of components and additions of new ones. This document is an effort to help you upgrade your existing Phalcon application to v4. We will outline the areas that you need to pay attention to and make necessary alterations so that your code can run as smoothly as it has been with v3. Although the changes are significant, it is more of a methodical task than a daunting one.
@@ -176,7 +176,7 @@ The Cache class implements [PSR-16][psr-16] and accepts an adapter in its constr
 
 For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation. 
 
-### Creating a cache
+### Creating a Cache
 
 ```php
 <?php
@@ -377,7 +377,7 @@ The values sanitized are automatically cast to the relevant types. This is the d
 
 When instantiating the filter object, it does not know about any sanitizers. You have two options:
 
-#### Load all the default sanitizers
+#### Load All the Default Sanitizers
 You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
 
 ```php
@@ -390,7 +390,7 @@ $locator = $factory->newInstance();
 ```
 Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
 
-#### Load only sanitizers you want
+#### Load Only Sanitizers You Want
 You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
 
 ### Using the `FactoryDefault`
@@ -398,7 +398,7 @@ If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) contai
 
 Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
 
-### Using a custom `Di`
+### Using a Custom `Di`
 If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:
 
 ```php
@@ -526,7 +526,7 @@ In v3, the logger was incorporating the adapter in the same component. So in ess
 
 For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3][psr-3] and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
-### Creating a logger component
+### Creating a Logger Component
 
 ```php
 <?php
@@ -572,7 +572,7 @@ $container->set(
 );
 ```
 
-### Multiple loggers
+### Multiple Loggers
 The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
 
 ```php
@@ -612,7 +612,7 @@ Removed in version 4.0:
 - Removed `$logger->begin()`
 - Removed `$logger->commit()`
 
-### Log level
+### Log Level
 - Removed `$logger->setLogLevel()`
 
 ## Models
@@ -1125,7 +1125,7 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 | Phalcon\Logger\Multiple          | Removed    |                                            |
 
 
-### Message (new in v4, formerly Phalcon\Validation\Message in 3.4)
+### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
 | 3.4.x                 | State      | 4.0.x                      |
 |-----------------------|------------|----------------------------|

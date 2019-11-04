@@ -78,7 +78,7 @@ Make sure you have [MacPorts](https://www.macports.org) installed and up to date
 sudo port install php-phalcon4
 ```
 
-#### Mac/Osx using brew
+#### Mac/Osx using Brew
 ```bash
 brew install pcre
 ```
@@ -112,7 +112,7 @@ Since Phalcon is compiled as a PHP extension, its installation is somewhat diffe
 ### Linux
 To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
 
-#### DEB based distributions (Debian, Ubuntu, etc.)
+#### DEB Based Distributions (Debian, Ubuntu, Etc.)
 
 ##### Repository installation
 Add the repository to your distribution:
@@ -160,7 +160,7 @@ and Phalcon:
 sudo apt-get install php-phalcon
 ```
 
-#### RPM based distributions (CentOS, Fedora, etc.)
+#### RPM Based Distributions (CentOS, Fedora, Etc.)
 
 ##### Repository installation
 Add the repository to your distribution:
@@ -279,7 +279,7 @@ extension=php_phalcon.dll
 
 Restart your webserver.
 
-### Compile from Sources
+### Compile From Sources
 Compiling from source is similar to most environments (Linux/macOS).
 
 #### Requirements
@@ -314,19 +314,19 @@ php -m | grep phalcon
 
 You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 ```ini
-# Suse: Add a file called phalcon.ini in /etc/php7/conf.d/ with this content:
+; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Add a file called phalcon.ini in /etc/php.d/ with this content:
+; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian with apache2: Add a file called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with this content:
+; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian with php7-fpm: Add a file called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with this content:
+; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian with php7-cli: Add a file called 30-phalcon.ini in /etc/php7/cli/conf.d/ with this content:
+; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
 extension=phalcon.so
 ```
 
@@ -345,7 +345,7 @@ make && make install
 
 If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
 
-#### Tuning build
+#### Tuning Build
 
 By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build.
 For example
@@ -357,10 +357,10 @@ zephir build
 
 This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
 
-### Shared hosting 
+### Shared Hosting 
 Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
 
-#### cPanel & WHM
+#### CPanel & WHM
 cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module][cpanel-phalcon] in Easy Apache 4 (EA4).
 
 #### Plesk

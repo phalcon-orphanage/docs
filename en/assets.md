@@ -243,7 +243,7 @@ $manager
 ;
 ```
 
-## Local/Remote assets
+## Local/Remote Assets
 Local assets are those who are provided by the same application and they are located in a public location (usually `public`). The URLs for local assets are generated using the [url][url] service.
 
 Remote assets are those such as common libraries like [jQuery][jquery], [Bootstrap][bootstrap], etc. that are provided by a [CDN][cdn].
@@ -602,7 +602,7 @@ foreach ($jsCollection as $asset) {
 }
 ```
 
-## Implicit vs Explicit output
+## Implicit Vs Explicit Output
 There are times that you might need to implicitly output the output of the manager. To do this, you can use the `useImplicitOutput()` method. Calling `output()` after that will _echo_ the HTML on the screen.
 
 ```php
@@ -642,7 +642,7 @@ The above will result in the following script as the output:
 
 You can then store the version in your configuration file or any other storage and update it when a new release is pushed to production.
 
-### Auto versioning
+### Auto Versioning
 You can also use the file time of the asset file to control the versioning of your assets. 
 ```php
 <?php
@@ -667,7 +667,7 @@ Assuming that your file was last modified in May 20, the version
 > **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unecessary read operations on the file system. 
 {: .alert .alert-warning }
 
-## Improving performance
+## Improving Performance
 There are many ways to optimize processing assets. One method is to allow your web server to handle the assets, thus improving response time. First we need to set up the Assets Manager. We will use a base controller, but you can use the manager anywhere you need to, accessing it from the Di container:
 
 ```php
@@ -802,7 +802,7 @@ location @phalcon {
     rewrite ^(.*)$ /index.php?_url=$1;
 }
 
-# Other configuration directoves
+# Other Configuration Directoves
 ```
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).

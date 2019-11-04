@@ -115,7 +115,7 @@ apc.enabled = On
 
 Ensuring that `opcache` is also enabled will also help.
 
-## Slow tasks
+## Slow Tasks
 Based on the requirements of your application, there maybe times that you will need to perform long running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is:
 - The application initiates a task by sending a message to a queue service
 - The user sees a message that the task has been scheduled

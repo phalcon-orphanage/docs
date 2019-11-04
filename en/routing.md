@@ -331,7 +331,7 @@ $router->add(
 );
 ```
 
-### Using conversors
+### Using Conversors
 Conversors allow you to freely transform the route's parameters before passing them to the dispatcher. The following examples show how to use them:
 
 ```php
@@ -668,7 +668,7 @@ use Phalcon\Mvc\Router;
 $router = new Router(false);
 ```
 
-## Setting the default route
+## Setting the Default Route
 When your application is accessed without any route, the '/' route is used to determine what paths must be used to show the initial page in your website/application:
 
 ```php
@@ -702,7 +702,7 @@ This is typically for an Error 404 page.
 
 > This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
 
-## Setting default paths
+## Setting Default Paths
 It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:
 
 ```php
@@ -723,7 +723,7 @@ $router->setDefaults(
 );
 ```
 
-## Dealing with extra/trailing slashes
+## Dealing with Extra/trailing Slashes
 Sometimes a route could be accessed with extra/trailing slashes. Those extra slashes would lead to produce a not-found status in the dispatcher. You can set up the router to automatically remove the slashes from the end of handled route:
 
 ```php
@@ -926,7 +926,7 @@ $blog->add(
 $router->mount($blog);
 ```
 
-## Testing your routes
+## Testing your Routes
 Since this component has no dependencies, you can create a file as shown below to test your routes:
 
 ```php
@@ -1103,7 +1103,7 @@ $di['router'] = function () {
 };
 ```
 
-## Registering Router instance
+## Registering Router Instance
 You can register router during service registration with Phalcon dependency injector to make it available inside the controllers.
 
 You need to add code below in your bootstrap file (for example `index.php` or `app/config/services.php` if you use [Phalcon Developer Tools][devtools].

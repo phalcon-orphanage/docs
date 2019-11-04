@@ -636,7 +636,7 @@ $container->set(
 );
 ```
 
-### Class instances
+### Class Instances
 This type expects an object. Due to the fact that object does not need to be resolved as it is already an object, one could say that it is not really a dependency injection, however it is useful if you want to force the returned dependency to always be the same object/value:
 
 ```php
@@ -1061,7 +1061,7 @@ As shown in the above examples, each of the ways used to set/register a service 
 > [Phalcon\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 {: .alert .alert-info }
 
-### Load from Config
+### Load From Config
 
 **YAML**
 
@@ -1157,7 +1157,7 @@ $annotations = $container->get(
 | `afterServiceResolve`  | Triggered after resolve service. Listeners receive the service name, instance, and the parameters passed to it. |
 | `beforeServiceResolve` | Triggered before resolve service. Listeners receive the service name and the parameters passed to it.           |
 
-## Shared services
+## Shared Services
 Services can be registered as `shared` services this means that they always will act as [singletons][singletons]. Once the service is resolved for the first time the same instance of it is returned every time the service is retrieved from the container:
 
 ```php
@@ -1226,7 +1226,7 @@ $session = $container->getSession();
 $request = $container->getShared('request');
 ```
 
-## Manipulating services
+## Manipulating Services
 Once a service is registered in the service container, you can retrieve it to manipulate it individually:
 
 ```php
@@ -1254,7 +1254,7 @@ Once a service is registered in the service container, you can retrieve it to ma
     $request = $requestService->resolve();
 ```
 
-## Instantiating classes
+## Instantiating Classes
 When you request a service from the container, if it cannot be found by using the same name, it will try to load a class with the same name. This behavior allows you to replace any service with another, by simply registering a service with the common name:
 
 ```php
@@ -1336,7 +1336,7 @@ class InvoiceComponent extends AbstractInjectionAware
 }
 ```
 
-## Organizing services in files
+## Organizing Services in Files
 You can better organize your application by moving the service registration to individual files instead of register everything in the application's bootstrap:
 
 ```php
@@ -1364,7 +1364,7 @@ $router->post('/login');
 return $router;
 ```
 
-## Static access
+## Static Access
 The [Phalcon\Di][di] offers the convenient `getDefault()` static method, which returns the latest container created. This allows you to access the container even from static classes:
 
 ```php

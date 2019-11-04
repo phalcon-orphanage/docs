@@ -120,7 +120,7 @@ class PostsController extends Controller
 > Methods on event listeners accept an [Phalcon\Events\Event](api/Phalcon_Events_Event) object as their first parameter - methods in controllers do not.
 {: .alert .alert-warning }
 
-## Forwarding to other actions
+## Forwarding to Other Actions
 The dispatch loop allows us to forward the execution flow to another controller/action. This is very useful to check if the user can access to certain options, redirect users to other screens or simply reuse code.
 
 ```php
@@ -369,10 +369,10 @@ class PostsController extends Controller
 }
 ```
 
-## Preparing actions
+## Preparing Actions
 You can also define an arbitrary schema for actions `before` in the dispatch loop.
 
-### Camelize action names
+### Camelize Action Names
 If the original URL is: `https://example.com/admin/products/show-latest-products`, and for example you want to camelize `show-latest-products` to `ShowLatestProducts`, the following code is required:
 
 ```php
@@ -410,7 +410,7 @@ $di->set(
 );
 ```
 
-### Remove legacy extensions
+### Remove Legacy Extensions
 If the original URL always contains a `.php` extension:
 
 ```
@@ -456,7 +456,7 @@ $di->set(
 );
 ```
 
-### Inject model instances
+### Inject Model Instances
 In this example, the developer wants to inspect the parameters that an action will receive in order to dynamically inject model instances.
 
 The controller looks like:

@@ -2895,7 +2895,7 @@ $invoices = $this
 ;
 ```
 
-## Disable literals in PHQL
+## Disable Literals in PHQL
 Literals can be disabled in PHQL. This means that you will not be able to use strings, numbers or boolean values in PHQL. You will have to use bound parameters instead.
 
 > Disabling literals increases the security of your database statements and reduces the possibility of SQL injections.

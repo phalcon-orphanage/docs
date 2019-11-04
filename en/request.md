@@ -242,7 +242,7 @@ $request = new Request();
 $name = $request->getServer('SERVER_NAME');
 ```
 
-## Preset sanitizers
+## Preset Sanitizers
 It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function with another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
 
 To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request][http-request] offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
@@ -325,7 +325,7 @@ class PostsController extends Controller
 }
 ```
 
-## Checking operations
+## Checking Operations
 The [Phalcon\Http\Request][http-request] component contains a number of methods that help you check the current operation. For instance if you want to check if a particular request was made using AJAX, you can do so by using the `isAjax()` method. All the methods are prefixed with `is`.
 - `isAjax()`: Checks whether request has been made using AJAX
 - `isConnect()`: Checks whether HTTP method is CONNECT
@@ -343,7 +343,7 @@ The [Phalcon\Http\Request][http-request] component contains a number of methods 
 - `isTrace()`: Checks whether HTTP method is TRACE
 - `isValidHttpMethod()`: Checks if a method is a valid HTTP method
 
-## Checking existence
+## Checking Existence
 There are a number of methods available that allow you to check the existence of elements in the request. These methods are prefixed with `has`. Depending on the method used, you can check if an element exists in the `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, PUT cache and the request headers. 
 - `has()`: Checks whether the $_REQUEST superglobal has a certain element
 - `hasFiles()`: Checks whether the request has any uploaded files
@@ -353,7 +353,7 @@ There are a number of methods available that allow you to check the existence of
 - `hasQuery()`: Checks whether $_GET superglobal has a certain element
 - `hasServer()`: Checks whether $_SERVER superglobal has a certain element
 
-## Request information
+## Request Information
 The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request. 
 ### Authentication
 - `getBasicAuth()`: Gets auth info accepted by the browser/client

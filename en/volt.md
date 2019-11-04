@@ -1283,7 +1283,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% endraw %}
 ```
 
-### Partial vs Include
+### Partial Vs Include
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
 | Type          | Description 
@@ -1444,7 +1444,7 @@ Note the call to the function `super()`. With that function it is possible to re
 > By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 {: .alert .alert-warning }
 
-## Autoescape mode
+## Autoescape Mode
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
 ```twig

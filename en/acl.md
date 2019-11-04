@@ -356,7 +356,7 @@ $acl->isAllowed('guest', 'reports', 'view');
 $acl->isAllowed('guest', 'reports', 'add');
 ```
 
-## Function based access
+## Function Based Access
 Depending on the needs of your application, you might need another layer of calculations to allow or deny access to users through the ACL. The method `isAllowed()` accepts a 4th parameter which is a callable such as an anonymous function.
 
 To take advantage of this functionality, you will need to define your function when calling the `allow()` method for the role and component you need. Assume that we need to allow access to all `manager` roles to the `admin` component except if their name is 'Bob' (Poor Bob!). To achieve this we will register an anonymous function that will check this condition.

@@ -874,7 +874,7 @@ class Invoices extends Model
 }
 ```
 
-## PHQL execution plan
+## PHQL Execution Plan
 As well as most moderns database systems PHQL caches internally the execution plan, so that if the same statement is executed several times, PHQL reuses the previously generated plan improving performance. In order to take advantage of this feature, it is highly recommended to build all your SQL statements passing variable parameters as bound parameters:
 
 ```php

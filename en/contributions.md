@@ -50,7 +50,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
 - If you're submitting a [Segmentation Fault][segfault] error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
-### Generating a backtrace
+### Generating a Backtrace
 Sometimes due to [Segmentation Fault][segfault] error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
 Please check the following links for instructions on how to generate the backtrace:

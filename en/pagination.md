@@ -528,7 +528,7 @@ $options = [
 $paginator = $factory->newInstance('queryBuilder', $options);
 ```
 
-### Individual classes
+### Individual Classes
 An example of the source data that must be used for each adapter:
 
 **Model**

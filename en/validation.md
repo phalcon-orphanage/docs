@@ -476,7 +476,7 @@ class MyValidator extends Validator
 }
 ```
 
-## Avoid validating empty values
+## Avoid Validating Empty Values
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
 ```php

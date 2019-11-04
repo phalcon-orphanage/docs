@@ -30,7 +30,7 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-## Groups - User roles
+## Groups - User Roles
 
 | Group          | Description                                        |
 |----------------|----------------------------------------------------|
