@@ -52,7 +52,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 - Como parte del reporte, por favor incluya información adicional, como el sistema operativo, versión de PHP, versión de Phalcon, servidor web, memoria, etcétera.
 - Si se trata de un error de violación de acceso (*[Segmentation Fault](https://es.wikipedia.org/wiki/Violaci%C3%B3n_de_acceso)*) es necesario incluir el registro de seguimiento (*backlog*). Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
 
-### Generar una traza inversa
+### Generating a Backtrace
 
 Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
 
