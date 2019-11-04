@@ -140,7 +140,7 @@ As demostrated above, it does not matter that Phalcon is compiled as a PHP exten
 
 ## Constructor
 
-[Phalcon\Debug](api/Phalcon_Debug#debug) provides visual aids as well as additional information for developers to easily locate errors produced in an application.
+[Phalcon\Debug](api/phalcon_debug#debug) provides visual aids as well as additional information for developers to easily locate errors produced in an application.
 
 > **NOTE** Please make sure that this component is not used in production environments, as it can reveal information about your server to attackers
 {: .alert .alert-danger }
@@ -217,7 +217,7 @@ Extending the component and overriding the `getCssSources()` for instance to ret
 
 ## Setters
 
-[Phalcon\Debug](api/Phalcon_Debug#debug) also offers some setters to better customize the output when an error occurs in your application.
+[Phalcon\Debug](api/phalcon_debug#debug) also offers some setters to better customize the output when an error occurs in your application.
 
 - `setShowBackTrace(bool $showBackTrace)` - Show/hide the exception's backtrace
 - `setShowFileFragment(bool $showFileFragment)` - Show/Hide the file fragment in the output (related to the exception)
@@ -261,7 +261,7 @@ if (12345 === $password) {
 }
 ```
 
-## Blacklisting output
+## Blacklisting Output
 
 As mentioned above, the component **must not** be enabled in production environments. Since Phalcon cannot control this behavior, there is a built in blacklisting feature that allows the developer to blacklist certain pieces of information that they do not wish to be displayed on screen, just in case. These are elements of the `$_REQUEST` and `$_SERVER` arrays.
 
@@ -290,7 +290,7 @@ In the example above, we will never show the element `some` from the `$_REQUEST`
 
 ## 处理程序
 
-In order to catch exceptions and low severity errors, [Phalcon\Debug](api/Phalcon_Debug#debug) makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Most developers that use this component will never need to extend these methods. However, if you wish you can do so by extending the component and overriding these methods to manipulate the exception and return the output you require.
+In order to catch exceptions and low severity errors, [Phalcon\Debug](api/phalcon_debug#debug) makes use of `onUncaughtException()` and `onUncaughtLowSeverity()`. Most developers that use this component will never need to extend these methods. However, if you wish you can do so by extending the component and overriding these methods to manipulate the exception and return the output you require.
 
 These two methods are being set as exception handlers using PHP's [set_exception_handler](https://www.php.net/manual/en/function.set-exception-handler.php). When calling `listenExceptions()` the `onUncaughtException()` is registered, while when calling `listenLowSeverity()` the `onUncaughtLowSeverity` is registered.
 

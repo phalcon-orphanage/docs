@@ -74,7 +74,7 @@ $app->get(
 );
 ```
 
-#### 应用程序对象
+#### Application Object
 
 Routes can be set using the [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application object as follows:
 
@@ -92,7 +92,7 @@ $app->get(
 );
 ```
 
-#### Router object
+#### Router Object
 
 You can also create a [Phalcon\Mvc\Router](api/Phalcon_Mvc_Router) object, setting the routes there and then injecting it in the dependency injection container.
 
@@ -459,7 +459,7 @@ $app->mount($products);
 
 Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/orders/get/2`, our application will instantiate the `OrdersController` and call the `get` method in it. Our application now uses less resources than before.
 
-#### Not found (404)
+#### Not Found (404)
 
 Any route that has not been matched in our [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
@@ -697,7 +697,7 @@ class UsersController extends Controller
 
 Finally, you can perform redirections in your middleware (if you are using it). An example is below in the relevant section.
 
-### URLs for Routes
+### URLs For Routes
 
 Another feature of the routes is setting up named routes and generating URLs for those routes. This is a two step process. * First we need to name our route. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
 
@@ -850,7 +850,7 @@ A micro application can return many different types of responses. Direct output,
 
 Handlers may return raw responses using plain text, [Phalcon\Http\Response](api/Phalcon_Http_Response) object or a custom built component that implements the [Phalcon\Http\ResponseInterface](api/Phalcon_Http_ResponseInterface).
 
-### Direct output
+### Direct Output
 
 ```php
 $app->get(
@@ -861,7 +861,7 @@ $app->get(
 );
 ```
 
-### Including another file
+### Including Another File
 
 ```php
 $app->get(
@@ -872,7 +872,7 @@ $app->get(
 );
 ```
 
-### Direct output JSON
+### Direct Output JSON
 
 ```php
 $app->get(
@@ -888,7 +888,7 @@ $app->get(
 );
 ```
 
-### New Response object
+### New Response Object
 
 You can use the `setContent` method of the response object to return the response back:
 
@@ -984,7 +984,7 @@ $app->get(
 
 A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
-### Available events
+### Available Events
 
 以下事件被支持︰
 
@@ -997,7 +997,7 @@ A [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application works closely with a [P
 | afterHandleRoute   | Route just finished executing                                     |    是的    |
 | afterBinding       | Triggered after models are bound but before executing the handler |    是的    |
 
-### Authentication example
+### Authentication Example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1032,7 +1032,7 @@ $app = new Micro();
 $app->setEventsManager($eventsManager);
 ```
 
-### Not found example
+### Not Found Example
 
 You can easily check whether a user has been authenticated or not using the `beforeExecuteRoute` event. In the following example, we explain how to control the application security using events:
 
@@ -1068,7 +1068,7 @@ Middleware are classes that can be attached to your application and introduce an
 
 The presence of a [Phalcon\Events\Manager](api/Phalcon_Events_Manager) is essential for middleware to operate, so it has to be registered in our Di container.
 
-### Attached events
+### Attached Events
 
 Middleware can be attached to a micro application in 3 different events. Those are:
 
@@ -1290,7 +1290,7 @@ class CacheMiddleware implements MiddlewareInterface
 
 The [events](#events) that are triggered for our application also trigger inside a class that implements the [Phalcon\Mvc\Micro\MiddlewareInterface](api/Phalcon_Mvc_Micro_MiddlewareInterface). This offers great flexibility and power for developers since we can interact with the request process.
 
-#### API example
+#### API Example
 
 Assume that we have an API that we have implemented with the Micro application. We will need to attach different Middleware classes in the application so that we can better control the execution of the application.
 
@@ -1654,7 +1654,7 @@ $app->handle(
 );
 ```
 
-### Inject model instances
+### Inject Model Instances
 
 By using the [Phalcon\Mvc\Model\Binder](api/Phalcon_Mvc_Model_Binder) class you can inject model instances into your routes:
 

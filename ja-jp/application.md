@@ -53,7 +53,7 @@ $response = $application->handle(
 );
 ```
 
-## Manual bootstrapping
+## Manual Bootstrapping
 
 If you do not wish to use [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), the code above can be changed as follows:
 
@@ -211,7 +211,7 @@ if ($response instanceof ResponseInterface) {
 
 Although the above implementations are a lot more verbose than the code needed while using [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application), offers an alternative in bootstrapping your application. Depending on your needs, you might want to have full control of what should be instantiated or not, or replace certain components with those of your own to extend the default functionality.
 
-## Single or Multi Module Applications
+## Single Or Multi Module Applications
 
 With this component you can run various types of MVC structures:
 
