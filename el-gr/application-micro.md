@@ -63,7 +63,7 @@ Constructor. Accepts an optional Di container.
 ```php
 public function after(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Appends an `after` middleware to be called after execute the route
@@ -71,7 +71,7 @@ Appends an `after` middleware to be called after execute the route
 ```php
 public function afterBinding(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Appends a afterBinding middleware to be called after model binding
@@ -79,7 +79,7 @@ Appends a afterBinding middleware to be called after model binding
 ```php
 public function before(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Appends a before middleware to be called before execute the route
@@ -88,7 +88,7 @@ Appends a before middleware to be called before execute the route
 public function delete(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is DELETE
@@ -96,7 +96,7 @@ Maps a route to a handler that only matches if the HTTP method is DELETE
 ```php
 public function error(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Sets a handler that will be called when an exception is thrown handling the route
@@ -104,7 +104,7 @@ Sets a handler that will be called when an exception is thrown handling the rout
 ```php
 public function finish(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Appends a `finish` middleware to be called when the request is finished
@@ -113,43 +113,43 @@ Appends a `finish` middleware to be called when the request is finished
 public function get(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is GET
 
 ```php
-public function getActiveHandler() : callable
+public function getActiveHandler(): callable
 ```
 
 Return the handler that will be called for the matched route
 
 ```php
-public function getBoundModels() : array
+public function getBoundModels(): array
 ```
 
 Returns bound models from binder instance
 
 ```php
-public function getHandlers() : array
+public function getHandlers(): array
 ```
 
 Returns the internal handlers attached to the application
 
 ```php
-public function getModelBinder() : BinderInterface | null
+public function getModelBinder(): BinderInterface | null
 ```
 
 Get the model binder
 
 ```php
-public function getReturnedValue() : mixed
+public function getReturnedValue(): mixed
 ```
 
 Returns the value returned by the executed handler
 
 ```php
-public function getRouter() : RouterInterface
+public function getRouter(): RouterInterface
 ```
 
 Returns the internal router used by the application
@@ -157,7 +157,7 @@ Returns the internal router used by the application
 ```php
 public function getService(
     string $serviceName
-) : object
+): object
 ```
 
 Obtains a service from the DI
@@ -173,7 +173,7 @@ Obtains a shared service from the DI
 ```php
 public function handle(
     string $uri
-) : mixed
+): mixed
 ```
 
 Handle the whole request
@@ -181,7 +181,7 @@ Handle the whole request
 ```php
 public function hasService(
     string $serviceName
-) : bool
+): bool
 ```
 
 Checks if a service is registered in the DI
@@ -190,7 +190,7 @@ Checks if a service is registered in the DI
 public function head(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is HEAD
@@ -199,7 +199,7 @@ Maps a route to a handler that only matches if the HTTP method is HEAD
 public function map(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler without any HTTP method constraint
@@ -207,7 +207,7 @@ Maps a route to a handler without any HTTP method constraint
 ```php
 public function mount(
     CollectionInterface $collection
-) : Micro
+): Micro
 ```
 
 Mounts a collection of handlers
@@ -215,7 +215,7 @@ Mounts a collection of handlers
 ```php
 public function notFound(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Sets a handler that will be called when the router does not match any of the defined routes
@@ -223,7 +223,7 @@ Sets a handler that will be called when the router does not match any of the def
 ```php
 public function offsetExists(
     mixed $alias
-) : bool
+): bool
 ```
 
 Check if a service is registered in the internal DI container using the array syntax
@@ -231,7 +231,7 @@ Check if a service is registered in the internal DI container using the array sy
 ```php
 public function offsetGet(
     mixed $alias
-) : mixed
+): mixed
 ```
 
 Gets a DI service from the internal DI container using the array syntax
@@ -252,7 +252,7 @@ $app["request"] = new \Phalcon\Http\Request();
 ```php
 public function offsetUnset(
     mixed $alias
-) : void
+): void
 ```
 
 Removes a service from the internal DI container using the array syntax
@@ -261,7 +261,7 @@ Removes a service from the internal DI container using the array syntax
 public function options(    
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is `OPTIONS`
@@ -270,7 +270,7 @@ Maps a route to a handler that only matches if the HTTP method is `OPTIONS`
 public function patch(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is `PATCH`
@@ -279,7 +279,7 @@ Maps a route to a handler that only matches if the HTTP method is `PATCH`
 public function post(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is `POST`
@@ -288,7 +288,7 @@ Maps a route to a handler that only matches if the HTTP method is `POST`
 public function put(
     string $routePattern, 
     callable $handler
-) : RouteInterface
+): RouteInterface
 ```
 
 Maps a route to a handler that only matches if the HTTP method is `PUT`
@@ -305,7 +305,7 @@ Sets externally the handler that must be called by the matched route
 public function setModelBinder(
     BinderInterface $modelBinder, 
     mixed $cache = null
-) : Micro
+): Micro
 ```
 
 Sets model binder
@@ -322,7 +322,7 @@ $micro->setModelBinder(
 ```php
 public function setResponseHandler(
     callable $handler
-) : Micro
+): Micro
 ```
 
 Appends a custom `reponse` handler to be called instead of the default one
@@ -332,7 +332,7 @@ public function setService(
     string $serviceName, 
     mixed $definition, 
     bool $shared = false
-) : ServiceInterface
+): ServiceInterface
 ```
 
 Sets a service in the internal Di container. If no container is preset a [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) will be automatically created
@@ -348,7 +348,7 @@ Stops the middleware execution
 Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application is very easy. Routes are defined as follows:
 
 ```text
-   Application : (method/verb) : (route url/regex, callable PHP function/handler)
+   Application : (method/verb): (route url/regex, callable PHP function/handler)
 ```
 
 ### Ρύθμιση
