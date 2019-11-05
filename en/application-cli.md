@@ -337,7 +337,7 @@ The CLI application offers the following methods:
 - `getDefaultModule` - `string` - Returns the default module name
 - `getModule(string $name)` - `array`/`object` - Gets the module definition registered in the application via module name
 - `getModules` - `array` - Return the modules registered in the application
-- `registerModules(array $modules, bool $merge = false)` - AbstractApplication` - Register an array of modules present in the application
+- `registerModules(array $modules, bool $merge = false)` - `AbstractApplication` - Register an array of modules present in the application
 - `setDefaultModule(string $defaultModule)` - `AbstractApplication` - Sets the module name to be used if the router doesn't return a valid module
 
 You can register a `frontend` and `backend` module for your console application as follows:
