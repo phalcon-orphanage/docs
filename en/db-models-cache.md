@@ -753,7 +753,7 @@ class CustomQuery extends ModelQuery
         }
 
         $result   = $this->executeSelect($ir, $params, $types);
-        $result   = $this->uniqueRow ? $result->getFirst() : $result;
+        $result   = $this->uniqueRow ? $result->getFirst(): $result;
         $cacheKey = $this->calculateKey();
 
         $this->getDI()->get('cache')->save($cacheKey, $result);

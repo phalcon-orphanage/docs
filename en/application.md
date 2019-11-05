@@ -42,24 +42,24 @@ public function __construct(
 Constructor. Accepts a DI container with relevant services
 
 ```php
-public function getDefaultModule() : string
+public function getDefaultModule(): string
 ```
 Returns the default module name
 
 ```php
-public function getEventsManager() : ManagerInterface
+public function getEventsManager(): ManagerInterface
 ```
 Returns the internal event manager
 
 ```php
 public function getModule(
     string $name
-) : array | object
+): array | object
 ```
 Gets the module definition registered in the application via module name
 
 ```php
-public function getModules() : array
+public function getModules(): array
 ```
 Return the modules registered in the application
 
@@ -67,7 +67,7 @@ Return the modules registered in the application
 public function registerModules(
     array $modules, 
     bool $merge = false
-) : AbstractApplication
+): AbstractApplication
 ```
 Register an array of modules present in the application
 
@@ -89,42 +89,42 @@ $this->registerModules(
 ```php
 public function setDefaultModule(
     string $defaultModule
-) : AbstractApplication
+): AbstractApplication
 ```
 Sets the module name to be used if the router doesn't return a valid module
 
 ```php
 public function setEventsManager(
     ManagerInterface $eventsManager
-) : void
+): void
 ```
 Sets the events manager
 
 ```php
 public function handle(
     string $uri
-) : ResponseInterface | bool
+): ResponseInterface | bool
 ```
 Handles a MVC request. Accepts the server URI (usually `$_SERVER['REQUEST_URI`]`)
 
 ```php
 public function sendCookiesOnHandleRequest(
     bool $sendCookies
-) : Application
+): Application
 ```
 Enables or disables sending cookies by each request handling
 
 ```php
 public function sendHeadersOnHandleRequest(
     bool $sendHeaders
-) : Application
+): Application
 ```
 Enables or disables sending headers by each request handling
 
 ```php
 public function useImplicitView(
     bool $implicitView
-) : Application
+): Application
 ```
 This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
 

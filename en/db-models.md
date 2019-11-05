@@ -85,7 +85,7 @@ Handles method calls when a method is not implemented. Throws [Phalcon\Mvc\Model
 public static function __callStatic(
     string $method, 
     array $arguments
-) : mixed
+): mixed
 ```
 Handles method calls when a static method is not implemented. Throws [Phalcon\Mvc\Model\Exception][mvc-model-exception] if the method doesn't exist
 
@@ -95,7 +95,7 @@ public function __get(string $property)
 Magic method to get related records using the relation alias as a property
 
 ```php
-public function __isset(string $property) : bool
+public function __isset(string $property): bool
 ```
  Magic method to check if a property is a valid relation
 
@@ -107,7 +107,7 @@ Magic method to assign values to the the model
 ```php
 public function addBehavior(
     BehaviorInterface $behavior
-) : void
+): void
 ```
 Setups a behavior in a model
 
@@ -140,7 +140,7 @@ class Invoices extends Model
 ```php
 public function appendMessage(
     MessageInterface $message
-) : ModelInterface
+): ModelInterface
 ```
 Appends a customized message on the validation process
 
@@ -172,7 +172,7 @@ public function assign(
     mixed $data, 
     array $whiteList = null, 
     array $dataColumnMap = null
-) : ModelInterface
+): ModelInterface
 ```
 Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will not be updated during the assignment process. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
 
@@ -245,7 +245,7 @@ $invoice->assign(
 ```php
 public static function average(
     mixed $parameters = null
-) : float
+): float
 ```
 Returns the average value on a column for a result-set of rows matching the specified conditions
 
@@ -277,7 +277,7 @@ public static function cloneResult(
     ModelInterface $base, 
     array $data, 
     int $dirtyState = 0
-) : ModelInterface
+): ModelInterface
 ```
 Assigns values to a model from an array returning a new model
 
@@ -305,7 +305,7 @@ public static function cloneResultMap(
     array $columnMap, 
     int $dirtyState = 0, 
     bool $keepSnapshots = null
-) : ModelInterface
+): ModelInterface
 ```
 Assigns values to a model from an array, returning a new model, using the column map.
 
@@ -331,14 +331,14 @@ public static function cloneResultMapHydrate(
     array $data, 
     array $columnMap, 
     int $hydrationMode
-) : mixed
+): mixed
 ```
 Returns an hydrated result based on the data and the column map
 
 ```php
 public static function count(
     mixed $parameters = null
-) : int
+): int
 ```
 Returns a count of how many records match the specified conditions
 
@@ -360,7 +360,7 @@ echo 'COUNT [Customer: 1] ', $average, PHP_EOL;
 
 
 ```php
-public function create() : bool
+public function create(): bool
 ```
 Inserts a model in the database. If the record exists in the databse, `create()` will throw an exception. It will return `true` on success, `false` otherwise.
 
@@ -384,7 +384,7 @@ $result = $invoice->create();
 ```
 
 ```php
-public function delete() : bool
+public function delete(): bool
 ```
 Deletes a model instance. Returning true on success or false otherwise.
 
@@ -411,7 +411,7 @@ foreach ($invoices as $invoice) {
 ```
 
 ```php
-public function dump() : array
+public function dump(): array
 ```
 Returns a simple representation of the object that can be used with `var_dump()`
 
@@ -430,7 +430,7 @@ var_dump(
 ```php
 public static function find(
     mixed $parameters = null
-) : ResultsetInterface
+): ResultsetInterface
 ```
 Query for a set of records that match the specified conditions. `find()` is flexible enough to accept a variety of parameters to find the data required. You can check the [Finding Records](#finding-records) section for more information.
 
@@ -445,7 +445,7 @@ $invoice = Invoices::find();
 ```php
 public static function findFirst(
     mixed $parameters = null
-) : ModelInterface | bool
+): ModelInterface | bool
 ```
 Query the first record that matches the specified conditions. It will return a resultset or `false` if the record was not found.
 
@@ -458,17 +458,17 @@ $invoice  = Invoices::findFirst();
 ```
 
 ```php
-public function fireEvent(string $eventName) : bool
+public function fireEvent(string $eventName): bool
 ```
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified
 
 ```php
-public function fireEventCancel(string $eventName) : bool
+public function fireEventCancel(string $eventName): bool
 ```
 Fires an event, implicitly calls behaviors and listeners in the events manager are notified. This method stops if one of the callbacks/listeners returns `false`
 
 ```php
-public function getChangedFields() : array
+public function getChangedFields(): array
 ```
 Returns a list of changed values.
 
@@ -495,14 +495,14 @@ print_r(
 ```
 
 ```php
-public function getDirtyState() : int
+public function getDirtyState(): int
 ```
 Returns one of the `DIRTY_STATE_*` constants telling if the record exists in the database or not
 
 ```php
 public function getMessages(
     mixed $filter = null
-) : MessageInterface[]
+): MessageInterface[]
 ```
 Returns array of validation messages
 
@@ -538,32 +538,32 @@ if (false === $result) {
 ```
 
 ```php
-public function getModelsManager() : ManagerInterface
+public function getModelsManager(): ManagerInterface
 ```
 Returns the models manager related to the entity instance
 
 ```php
-public function getModelsMetaData() : MetaDataInterface
+public function getModelsMetaData(): MetaDataInterface
 ```
 Returns the model's meta-data service related to the entity instance
 
 ```php
-public function getOperationMade() : int
+public function getOperationMade(): int
 ```
 Returns the type of the latest operation performed by the ORM. Returns one of the `OP_*` class constants
 
 ```php
-public function getOldSnapshotData() : array
+public function getOldSnapshotData(): array
 ```
 Returns the internal old snapshot data
 
 ```php
-final public function getReadConnection() : AdapterInterface
+final public function getReadConnection(): AdapterInterface
 ```
 Gets the connection used to read data for the model
 
 ```php
-final public function getReadConnectionService() : string
+final public function getReadConnectionService(): string
 ```
 Returns the DependencyInjection connection service name used to read data related the model
 
@@ -571,7 +571,7 @@ Returns the DependencyInjection connection service name used to read data relate
 public function getRelated(
     string $alias, 
     mixed $arguments = null
-) : Phalcon\Mvc\Model\Resultset\Simple | false
+): Phalcon\Mvc\Model\Resultset\Simple | false
 ```
 Returns related records based on defined relations
 
@@ -587,7 +587,7 @@ $invoices = $customer->getRelated('invoices');
 ```php
 public function isRelationshipLoaded(
     string $relationshipAlias
-) : bool
+): bool
 ```
 Checks if saved related records have already been loaded. Only returns `true` if the records were previously fetched through the model without any additional parameters.
 
@@ -604,22 +604,22 @@ $invoices = $customer->isRelationshipLoaded('invoices'); // true
 ```
 
 ```php
-final public function getSchema() : string
+final public function getSchema(): string
 ```
 Returns schema name where the mapped table is located
 
 ```php
-public function getSnapshotData() : array
+public function getSnapshotData(): array
 ```
 Returns the internal snapshot data
 
 ```php
-final public function getSource() : string
+final public function getSource(): string
 ```
 Returns the table name mapped in the model
 
 ```php
-public function getUpdatedFields() : array
+public function getUpdatedFields(): array
 ```
 Returns a list of updated values.
 
@@ -658,12 +658,12 @@ print_r(
 ```
 
 ```php
-final public function getWriteConnection() : AdapterInterface
+final public function getWriteConnection(): AdapterInterface
 ```
 Gets the connection used to write data to the model
 
 ```php
-final public function getWriteConnectionService() : string
+final public function getWriteConnectionService(): string
 ```
 Returns the DependencyInjection connection service name used to write data related to the model
 
@@ -671,7 +671,7 @@ Returns the DependencyInjection connection service name used to write data relat
 public function hasChanged(
     string | array $fieldName = null, 
     bool $allFields = false
-) : bool
+): bool
 ```
 Check if a specific attribute has changed. This only works if the model is keeping data snapshots
 
@@ -711,7 +711,7 @@ $hasChanged = $invoice->hasChanged(
 ```
 
 ```php
-public function hasSnapshotData() : bool
+public function hasSnapshotData(): bool
 ```
 Checks if the object has internal snapshot data
 
@@ -719,12 +719,12 @@ Checks if the object has internal snapshot data
 public function hasUpdated(
     string | array $fieldName = null, 
     bool $allFields = false
-) : bool
+): bool
 ```
 Check if a specific attribute was updated. This only works if the model is keeping data snapshots.
 
 ```php
-public function jsonSerialize() : array
+public function jsonSerialize(): array
 ```
 Serializes the object for json_encode
 
@@ -735,7 +735,7 @@ echo json_encode($invoice);
 ```php
 public static function maximum(
     mixed $parameters = null
-) : mixed
+): mixed
 ```
 Returns the maximum value of a column for a result-set of rows that match the specified conditions
 
@@ -765,7 +765,7 @@ echo 'MAX [Customer: 1] ', $max, PHP_EOL;
 ```php
 public static function minimum(
     mixed parameters = null
-) : mixed 
+): mixed 
 ```
 Returns the minimum value of a column for a result-set of rows that match the specified conditions
 
@@ -795,14 +795,14 @@ echo 'MIN [Customer: 1] ', $max, PHP_EOL;
 ```php
 public static function query(
     DiInterface $container = null
-) : CriteriaInterface
+): CriteriaInterface
 ```
  Create a criteria for a specific model
 
 ```php
 public function readAttribute(
     string $attribute
-) : mixed | null
+): mixed | null
 ```
 Reads an attribute value by its name
 
@@ -811,12 +811,12 @@ echo $invoice->readAttribute('inv_title');
 ```
 
 ```php
-public function refresh() : ModelInterface
+public function refresh(): ModelInterface
 ```
 Refreshes the model attributes re-querying the record from the database
 
 ```php
-public function save() : bool
+public function save(): bool
 ```
 Inserts or updates a model instance. Returning `true` on success or `false` otherwise.
 
@@ -843,7 +843,7 @@ $invoice->save();
 ```
 
 ```php
-public function serialize() : string
+public function serialize(): string
 ```
 Serializes the object ignoring connections, services, related objects or static properties
 
@@ -855,14 +855,14 @@ Unserializes the object from a serialized string
 ```php
 final public function setConnectionService(
     string $connectionService
-) : void
+): void
 ```
 Sets the DependencyInjection connection service name
 
 ```php
 public function setDirtyState(
     int $dirtyState
-) : ModelInterface | bool
+): ModelInterface | bool
 ```
 Sets the dirty state of the object using one of the `DIRTY_STATE_*` constants
 
@@ -876,7 +876,7 @@ Sets a custom events manager
 ```php
 final public function setReadConnectionService(
     string $connectionService
-) : void
+): void
 ```
 Sets the DependencyInjection connection service name used to read data
 
@@ -892,14 +892,14 @@ Sets the record's old snapshot data. This method is used internally to set old s
 public function setSnapshotData(
     array $data, 
     arrau $columnMap = null
-) : void
+): void
 ```
 Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
 
 ```php
 public function setTransaction(
     TransactionInterface $transaction
-) : ModelInterface
+): ModelInterface
 ```
 Sets a transaction related to the Model instance
 
@@ -946,26 +946,26 @@ try {
 ```php
 public static function setup(
     array $options
-) : void
+): void
 ```
 Enables / disables options in the ORM such as events, column renaming etc.
 
 ```php
 final public function setWriteConnectionService(
     string $connectionService
-) : void
+): void
 ```
 Sets the DependencyInjection connection service name used to write data
 
 ```php
-public function skipOperation(bool $skip) : void
+public function skipOperation(bool $skip): void
 ```php
 Skips the current operation forcing a success state
 
 ```php
 public static function sum(
     array $parameters = null
-) : float
+): float
 ```
 Calculates the sum on a column for a result-set of rows that match the specified conditions
 
@@ -995,7 +995,7 @@ echo 'SUM [Customer: 1] ', $total, PHP_EOL;
 ```php
 public function toArray(
     array $columns = null
-) : array
+): array
 ```
 Returns the instance as an array representation. Accepts an array with column names to include in the result
 
@@ -1037,7 +1037,7 @@ print_r(
 ```
 
 ```php
-public function update() : bool
+public function update(): bool
 ```
 Updates a model instance. If the instance doesn't exist in the persistence it will throw an exception. Returning true on success or `false` otherwise.
 
@@ -1057,7 +1057,7 @@ $invoice->update();
 public function writeAttribute(
     string $attribute, 
     mixed $value
-) : void
+): void
 ```
 Writes an attribute value by its name
 
@@ -1068,7 +1068,7 @@ $invoice->writeAttribute('inv_total', 120);
 ```php
 protected function allowEmptyStringValues(
     array $attributes
-) : void
+): void
 ```
 Sets a list of attributes that must be skipped from the generated `UPDATE` statement
 
@@ -1096,7 +1096,7 @@ protected function belongsTo(
     string $referenceModel, 
     string | array $referencedFields, 
     array options = null
-) : Relation
+): Relation
 ```
 Setup a reverse 1-1 or n-1 relation between two models
 
@@ -1126,7 +1126,7 @@ protected function hasMany(
     string $referenceModel, 
     string | array $referencedFields, 
     array options = null
-) : Relation
+): Relation
 ```
 Setup a 1-n relation between two models
 
@@ -1159,7 +1159,7 @@ protected function hasManyToMany(
     string $referenceModel, 
     string | array $referencedFields,
     array $options = null
-) : Relation
+): Relation
 ```
 Setup an n-n relation between two models, through an intermediate relation
 
@@ -1192,7 +1192,7 @@ protected function hasOne(
     string $referenceModel, 
     string | array $referencedFields, 
     array options = null
-) : Relation
+): Relation
 ```
 Setup a 1-1 relation between two models
 
@@ -1219,7 +1219,7 @@ class Invoices extends Model
 ```php
 protected function keepSnapshots(
     bool $keepSnapshot
-) : void
+): void
 ```
 Sets if the model must keep the original record snapshot in memory
 
@@ -1242,14 +1242,14 @@ class Invoices extends Model
 ```php
 final protected function setSchema(
     string $schema
-) : ModelInterface
+): ModelInterface
 ```
 Sets schema name where the mapped table is located
 
 ```php
 final protected function setSource(
     string $source
-) : ModelInterface
+): ModelInterface
 ```
 Sets the table name to which model should be mapped 
 
@@ -1281,7 +1281,7 @@ class Invoices extends Model
 ```php
 protected function skipAttributesOnCreate(
     array $attributes
-) : void
+): void
 ```
 Sets a list of attributes that must be skipped from the generated `INSERT` statement
 
@@ -1308,7 +1308,7 @@ class Invoices extends Model
 ```php
 protected function skipAttributesOnUpdate(
     array $attributes
-) : void
+): void
 ```
 Sets a list of attributes that must be skipped from the generated `UPDATE` statement
 
@@ -1335,7 +1335,7 @@ class Invoices extends Model
 ```php
 protected function useDynamicUpdate(
     bool dynamicUpdate
-) : void
+): void
 ```
 Sets if a model must use dynamic update instead of the all-field update
 
@@ -1358,7 +1358,7 @@ class Invoices extends Model
 ```php
 protected function validate(
     ValidationInterface $validator
-) : bool
+): bool
 ```
 Executes validators on every validation call
 
@@ -1395,7 +1395,7 @@ class Invoices extends Model
 ```
 
 ```php
-public function validationHasFailed() : bool
+public function validationHasFailed(): bool
 ```
 Check whether validation process has generated any messages
 

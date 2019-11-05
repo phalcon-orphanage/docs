@@ -735,7 +735,7 @@ use Phalcon\Http\Response;
  */
 class AssetsController extends ControllerBase
 {
-    public function serveAction() : Response
+    public function serveAction(): Response
     {
         // Getting a response instance
         $response = new Response();

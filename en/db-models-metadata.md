@@ -290,7 +290,7 @@ public function hasAttribute(
     ModelInterface $model, 
     string $attribute
 ): bool
-```php
+```
 Check if a model has certain attribute
 
 ```php

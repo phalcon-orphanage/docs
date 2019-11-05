@@ -51,7 +51,7 @@ public function addColumn(
     string $tableName, 
     string $schemaName, 
     ColumnInterface $column
-) : bool
+): bool
 ```
 Adds a column to a table
 
@@ -60,7 +60,7 @@ public function addIndex(
     string $tableName, 
     string $schemaName,
     IndexInterface $index
-) : bool
+): bool
 ```
 Adds an index to a table
 
@@ -69,7 +69,7 @@ public function addForeignKey(
     string $tableName, 
     string $schemaName, 
     ReferenceInterface $reference
-) : bool
+): bool
 ```
 Adds a foreign key to a table
 
@@ -78,45 +78,45 @@ public function addPrimaryKey(
     string $tableName, 
     string $schemaName, 
     IndexInterface $index
-) : bool
+): bool
 ```
 Adds a primary key to a table
 
 ```php
-public function affectedRows() : int
+public function affectedRows(): int
 ```
 Returns the number of affected rows by the last `INSERT`/`UPDATE`/`DELETE` reported by the database system
 
 ```php
 public function begin(
     bool $nesting = true
-) : bool
+): bool
 ```
 Starts a transaction in the connection
 
 ```php
-public function close() : bool
+public function close(): bool
 ```
 Closes active connection returning success. Phalcon automatically closes and destroys active connections
 
 ```php
 public function commit(
     bool $nesting = true
-) : bool
+): bool
 ```
 Commits the active transaction in the connection
 
 ```php
 public function connect(
     array $descriptor = null
-) : bool
+): bool
 ```
  This method is automatically called in [Phalcon\Db\Adapter\Pdo\AbstractPdo][db-adapter-pdo-abstractpdo] constructor. Call it when you need to restore a database connection
 
 ```php
 public function createSavepoint(
     string $name
-) : bool
+): bool
 ```
 Creates a new savepoint
 
@@ -124,7 +124,7 @@ public function createTable(
     string $tableName, 
     string $schemaName, 
     array $definition
-) : bool
+): bool
 ```
 Creates a table
 
@@ -133,7 +133,7 @@ public function createView(
     string $viewName, 
     array $definition, 
     string $schemaName = null
-) : bool
+): bool
 ```
 Creates a view
 
@@ -143,7 +143,7 @@ public function delete(
     mixed $whereCondition = null, 
     mixed $placeholders = null, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Deletes data from a table using custom RDBMS SQL syntax
 
@@ -151,7 +151,7 @@ Deletes data from a table using custom RDBMS SQL syntax
 public function describeColumns(
     string $table, 
     string $schema = null
-) : ColumnInterface[]
+): ColumnInterface[]
 ```
 Returns an array of Phalcon\Db\Column objects describing a table
 
@@ -159,7 +159,7 @@ Returns an array of Phalcon\Db\Column objects describing a table
 public function describeIndexes(
     string $table, 
         string $schema = null
-) : IndexInterface[]
+): IndexInterface[]
 ```
 Lists table indexes
 
@@ -167,7 +167,7 @@ Lists table indexes
 public function describeReferences(
     string $table, 
     string $schema = null
-) : ReferenceInterface[]
+): ReferenceInterface[]
 ```
 Lists table references
 
@@ -176,7 +176,7 @@ public function dropColumn(
     string $tableName, 
     string $schemaName, 
     string $columnName
-) : bool
+): bool
 ```
 Drops a column from a table
 
@@ -185,7 +185,7 @@ public function dropForeignKey(
     string $tableName, 
     string $schemaName, 
     string $referenceName
-) : bool
+): bool
 ```
 Drops a foreign key from a table
 
@@ -194,7 +194,7 @@ public function dropIndex(
     string $tableName, 
     string $schemaName, 
     string $indexName
-) : bool
+): bool
 ```
 Drop an index from a table
 
@@ -202,7 +202,7 @@ Drop an index from a table
 public function dropPrimaryKey(
     string $tableName, 
     string $schemaName
-) : bool
+): bool
 ```
 Drops primary key from a table
 
@@ -211,7 +211,7 @@ public function dropTable(
     string $tableName, 
     string $schemaName = null, 
     bool $ifExists = true
-) : bool
+): bool
 ```
 Drops a table from a schema/database
 
@@ -220,19 +220,19 @@ public function dropView(
     string $viewName, 
     string $schemaName = null, 
     bool $ifExists = true
-) : bool
+): bool
 ```
 Drops a view
 
 ```php
 public function escapeIdentifier(
     mixed identifier
-) : string
+): string
 ```
 Escapes a column/table/schema name
 
 ```php
-public function escapeString(string $str) : string
+public function escapeString(string $str): string
 ```php
 Escapes a value to avoid SQL injections
 
@@ -241,7 +241,7 @@ public function execute(
     string $sqlStatement, 
     mixed $placeholders = null, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server does not return any rows
 
@@ -250,7 +250,7 @@ public function fetchAll(
     string $sqlQuery, 
     int $fetchMode = 2, 
     mixed $placeholders = null
-) : array
+): array
 ```
 Dumps the complete result of a query into an array
 
@@ -259,7 +259,7 @@ public function fetchColumn(
     string $sqlQuery, 
     array $placeholders = [], 
     mixed $column = 0
-) : string | bool
+): string | bool
 ```
 Returns the n'th field of first row in a SQL query result
 
@@ -282,88 +282,88 @@ public function fetchOne(
     string $sqlQuery, 
     int $fetchMode = 2, 
     mixed $placeholders = null
-) : array
+): array
 ```
 Returns the first row in a SQL query result
 
 ```php
 public function forUpdate(
     string $sqlQuery
-) : string
+): string
 ```
 Returns a SQL modified with a FOR UPDATE clause
 
 ```php
 public function getColumnDefinition(
     ColumnInterface $column
-) : string
+): string
 ```
 Returns the SQL column definition from a column
 
 ```php
 public function getColumnList(
     mixed $columnList
-) : string
+): string
 ```
 Gets a list of columns
 
 ```php
-public function getConnectionId() : string
+public function getConnectionId(): string
 ```
 Gets the active connection unique identifier
 
 ```php
-public function getDescriptor() : array
+public function getDescriptor(): array
 ```
 Return descriptor used to connect to the active database
 
 ```php
-public function getDialect() : DialectInterface
+public function getDialect(): DialectInterface
 ```
 Returns internal dialect instance
 
 ```php
-public function getDialectType() : string
+public function getDialectType(): string
 ```
 Returns the name of the dialect used
 
 ```php
-public function getDefaultIdValue() : RawValue
+public function getDefaultIdValue(): RawValue
 ```
 Return the default identity value to insert in an identity column
 
 ```php
-public function getInternalHandler() : \PDO
+public function getInternalHandler(): \PDO
 ```
 Return internal PDO handler
 
 ```php
-public function getNestedTransactionSavepointName() : string
+public function getNestedTransactionSavepointName(): string
 ```
 Returns the savepoint name to use for nested transactions
 
 ```php
-public function getRealSQLStatement() : string
+public function getRealSQLStatement(): string
 ```
 Active SQL statement in the object without replace bound parameters
 
 ```php
-public function getSQLStatement() : string
+public function getSQLStatement(): string
 ```
 Active SQL statement in the object
 
 ```php
-public function getSQLBindTypes() : array
+public function getSQLBindTypes(): array
 ```
 Active SQL statement in the object
 
 ```php
-public function getSQLVariables() : array
+public function getSQLVariables(): array
 ```
 Active SQL statement in the object
 
 ```php
-public function getType() : string
+public function getType(): string
 ```
 Returns type of database system the adapter is used for
 
@@ -373,7 +373,7 @@ public function insert(
     array $values, 
     mixed $fields = null, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Inserts data into a table using custom RDBMS SQL syntax
 
@@ -382,7 +382,7 @@ public function insertAsDict(
     string $table, 
     mixed $data, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Inserts data into a table using custom RBDM SQL syntax
 
@@ -404,12 +404,12 @@ VALUES
 ```
 
 ```php
-public function isNestedTransactionsWithSavepoints() : bool
+public function isNestedTransactionsWithSavepoints(): bool
 ```
 Returns if nested transactions should use savepoints
 
 ```php
-public function isUnderTransaction() : bool
+public function isUnderTransaction(): bool
 ```
 Checks whether connection is under database transaction
 
@@ -424,21 +424,21 @@ Returns insert id for the auto_increment column inserted in the last SQL stateme
 public function limit(
     string $sqlQuery, 
     int $number
-) : string
+): string
 ```
 Appends a LIMIT clause to sqlQuery argument
 
 ```php
 public function listTables(
     string $schemaName = null
-) : array
+): array
 ```
 List all tables on a database
 
 ```php
 public function listViews(
     string $schemaName = null
-) : array
+): array
 ```
 List all views on a database
 
@@ -448,7 +448,7 @@ public function modifyColumn(
     string $schemaName, 
     ColumnInterface $column, 
     ColumnInterface $currentColumn = null
-) : bool
+): bool
 ```
 Modifies a table column based on a definition
 
@@ -457,47 +457,47 @@ public function query(
     string $sqlStatement, 
     mixed $placeholders = null, 
     mixed $dataTypes = null
-) : ResultInterface | bool
+): ResultInterface | bool
 ```
 Sends SQL statements to the database server returning the success state. Use this method only when the SQL statement sent to the server returns rows
 
 ```php
 public function releaseSavepoint(
     string $name
-) : bool
+): bool
 ```
 Releases given savepoint
 
 ```php
 public function rollback(
     bool $nesting = true
-) : bool
+): bool
 ```
 Rollbacks the active transaction in the connection
 
 ```php
 public function rollbackSavepoint(
     string $name
-) : bool
+): bool
 ```
 Rollbacks given savepoint
 
 ```php
 public function sharedLock(
     string $sqlQuery
-) : string
+): string
 ```
 Returns a SQL modified with a LOCK IN SHARE MODE clause
 
 ```php
 public function setNestedTransactionsWithSavepoints(
     bool $nestedTransactionsWithSavepoints
-) : AdapterInterface
+): AdapterInterface
 ```
 Set if nested transactions should use savepoints
 
 ```php
-public function supportSequences() : bool
+public function supportSequences(): bool
 ```
 Check whether the database system requires a sequence to produce auto-numeric values
 
@@ -505,7 +505,7 @@ Check whether the database system requires a sequence to produce auto-numeric va
 public function tableExists(
     string $tableName, 
     string $schemaName = null
-) : bool
+): bool
 ```
 Generates SQL checking for the existence of a schema.table
 
@@ -513,7 +513,7 @@ Generates SQL checking for the existence of a schema.table
 public function tableOptions(
     string $tableName, 
     string $schemaName = null
-) : array
+): array
 ```
 Gets creation options from a table
 
@@ -524,7 +524,7 @@ public function update(
     mixed $values, 
     mixed $whereCondition = null, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Updates data on a table using custom RDBMS SQL syntax
 
@@ -534,7 +534,7 @@ public function updateAsDict(
     mixed $data, 
     mixed $whereCondition = null, 
     mixed $dataTypes = null
-) : bool
+): bool
 ```
 Updates data on a table using custom RBDM SQL syntax. Another, more convenient syntax
 
@@ -555,7 +555,7 @@ WHERE   inv_id = 1
 ```
 
 ```php
-public function useExplicitIdValue() : bool
+public function useExplicitIdValue(): bool
 ```
 Check whether the database system requires an explicit value for identity columns
 
@@ -563,7 +563,7 @@ Check whether the database system requires an explicit value for identity column
 public function viewExists(
     string $viewName, 
     string $schemaName = null
-) : bool
+): bool
 ```
 Generates SQL checking for the existence of a schema view
     
