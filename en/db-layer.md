@@ -1735,12 +1735,20 @@ $connection->insert(
 As above, the file `/storage/logs/queries.log` will contain something like this:
 
 ```
-[2019-10-29 16:17:43][INFO] INSERT INTO `co_invoices` 
+[2019-12-25 01:02:03][INFO] INSERT INTO `co_invoices` 
     SET (`inv_cst_id`, `inv_title`) 
     VALUES (1, 'Invoice for ACME Inc.')
 ```
 
 The listener will also work with models and their operations. It will also include all bound parameters that the query uses at the end of the logged statement.
+
+```
+[2019-12-25 01:02:03][INFO] SELECT `co_customers`.`cst_id`, 
+    ...,
+    FROM `co_customers` 
+    WHERE LOWER(`co_customers`.`cst_email`) = :cst_email 
+    LIMIT :APL0 - [{"emp_email":"team@phalcon.ld","APL0":1}]
+```
 
 ## Tables
 ### Describe
