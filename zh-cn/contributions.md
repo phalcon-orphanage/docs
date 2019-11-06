@@ -24,7 +24,7 @@ If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull re
 
 When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be: * merged immediately or * put on hold, where the reviewer requires changes (styling, tests etc.) * put on hold, if discussion is necessary (community, core team etc.) * rejected
 
-> Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+> **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
 {:.alert .alert-danger}
 
 ## Documentation
@@ -33,7 +33,7 @@ If programming in Zephir seems daunting, there are plenty of areas that you can 
 
 All you have to do is go to our [docs](https://crowdin.com/project/phalcon-documentation) repository, fork it, make the changes and send us a pull request.
 
-> Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+> **NOTE**: Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
 {:.alert .alert-warning}
 
 ## Translations
@@ -42,7 +42,7 @@ If you wish to contribute to Phalcon by translating our documents in your native
 
 ## Questions and Support
 
-> We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
+> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
 {:.alert .alert-danger}
 
 ## Bug Report Checklist

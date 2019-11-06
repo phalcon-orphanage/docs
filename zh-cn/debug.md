@@ -171,7 +171,7 @@ or using a shorter syntax:
 (new \Phalcon\Debug())->listen();
 ```
 
-> Any `try`/`catch` blocks must be removed or disabled to make this component work properly.
+> **NOTE**: Any `try`/`catch` blocks must be removed or disabled to make this component work properly.
 {: .alert .alert-warning }
 
 By default the component will listen for uncaught exceptions but not low severity errors (warnings, notices etc.). You can modify this behavior by passing relevant parameters in `listen()`
@@ -206,7 +206,7 @@ $debug
     ->listen();
 ```
 
-> Note that the `listenExceptions()` and `listenLowSeverity()` are **ON** switches. If you wish to switch listening to exceptions or low severity errors **OFF** you need to pass `false` in the `listen()` method.
+> **NOTE**: The `listenExceptions()` and `listenLowSeverity()` are **ON** switches. If you wish to switch listening to exceptions or low severity errors **OFF** you need to pass `false` in the `listen()` method.
 {: .alert .alert-info } 
 
 ## Getters
@@ -285,7 +285,7 @@ $debug
 
 In the example above, we will never show the element `some` from the `$_REQUEST` as well as the `hostmane` from `$_SERVER`. You can always add more elements not to be displayed, that exist in these two superglobals. This is particularly useful in case you forget to disable the component in your production environment. It is bad practice to leave it enabled but if you forget, at least certain key pieces of information about your host will not be visible to potential hackers.
 
-> The keys of the array elements to be hidden are case insensitive
+> **NOTE**: The keys of the array elements to be hidden are case insensitive
 {: .alert .alert-info }
 
 ## 处理程序
@@ -369,7 +369,7 @@ Phalcon\Mvc\Router Object
 
 Once you have xdebug installed, you can use its API to get a more detailed information about exceptions and messages.
 
-> We highly recommend using the latest version of XDebug for a better compatibility with Phalcon
+> **NOTE**: We highly recommend using the latest version of XDebug for a better compatibility with Phalcon
 {: .alert .alert-warning }
 
 The following example implements [xdebug_print_function_stack](https://xdebug.org/docs/stack_trace) to stop the execution and generate a backtrace:

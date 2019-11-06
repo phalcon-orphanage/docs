@@ -355,7 +355,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application 
 
 Routing is handled by the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) object.
 
-> Routes must always start with `/`
+> **NOTE**: Routes must always start with `/`
 {: .alert .alert-warning }
 
 Usually, the starting route for an application is `/`, accessed via the `GET` HTTP method:
@@ -966,7 +966,7 @@ $invoices->get('/delete/{id}', 'deleteAction');
 $app->mount($invoices);
 ```
 
-> The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
+> **NOTE**: The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
 {: .alert .alert-warning }
 
 **Methods**
@@ -2183,7 +2183,7 @@ class RequestMiddleware implements MiddlewareInterface
 
 This middleware is responsible for manipulating our response and sending it back to the caller as a JSON string. Therefore we need to attach it to the `after` event of our Micro application.
 
-> We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
+> **NOTE**: We are going to be using the `call` method for this middleware, since we have nearly executed the whole request cycle.
 {: .alert .alert-warning }
 
 ```php
@@ -2229,7 +2229,7 @@ class ResponseMiddleware implements MiddlewareInterface
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 
-> The relevant `db` service must be registered in your DI container.
+> **NOTE**: The relevant `db` service must be registered in your DI container.
 {: .alert .alert-warning }
 
 ```php
@@ -2346,7 +2346,7 @@ $app->get(
 );
 ```
 
-> The above example uses the [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) component instead, but to do so you will need to change the parameters passed to `render()`.
+> **NOTE**: The above example uses the [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple) component, which uses relative paths instead of controllers and actions. You can use the [Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) component instead, but to do so you will need to change the parameters passed to `render()`.
 {: .alert .alert-warning }
 
 ```php
