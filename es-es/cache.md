@@ -213,7 +213,7 @@ class IndexController extends Controller
 
 The `Phalcon\Storage\Serializer` namespace offers classes that implement the [Serializable](https://secure.php.net/manual/en/class.serializable.php) interface and thus expose the `serialize` and `unserialize` methods. The purpose of these classes is to transform the data before saving it to the storage and after retrieving it from the storage.
 
-> The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However the developer might want to use something more efficient such as [igbinary](https://github.com/igbinary/igbinary7) which is faster and achieves a better compression. 
+> **NOTE**: The default serializer for all adapters is `Phalcon\Storage\Serializer\Php` which uses PHP's `serialize` and `unserialize` methods. These methods can suit most applications. However the developer might want to use something more efficient such as [igbinary](https://github.com/igbinary/igbinary7) which is faster and achieves a better compression. 
 {: .alert .alert-info }
 
 The cache adapter can be configured to use a different serializer. The available serializers are:
@@ -376,7 +376,7 @@ The available methdods are:
 | `increment`  | Increments a stored number                                                 |
 | `set`        | Stores data in the adapter                                                 |
 
-> The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter.
+> **NOTE**: The `getAdapter()` method returns the connected adapter. This offers more flexibility to the developer, since it can be used to execute additional methods that each adapter offers. For instance for the `Redis` adapter you can use the `getAdapter()` to obtain the connected object and call `zAdd`, `zRange` and other methods not exposed by the Phalcon adapter.
 {: .alert .alert-info }
 
 To construct one of these objects, you will need to pass a [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) object in the constructor and optionally some parameters required for the adapter of your choice. The list of options is outlined below.
@@ -524,7 +524,7 @@ $adapter = new Libmemcached(null, $options);
 
 The [igbinary](https://github.com/igbinary/igbinary7) built in serializer is only available if `igbinary` is present in the target system and [Memcached](https://www.php.net/manual/en/book.memcached.php) extension is compiled with it.
 
-> If the `defaultSerializer` or the selected serializer for `Libmemcached` is supported as a built in serializer (`PHP`, `JSON`, `IGBINARY`), the built in one will be used, resulting in more speed and less resource utilization.
+> **NOTE**: If the `defaultSerializer` or the selected serializer for `Libmemcached` is supported as a built in serializer (`PHP`, `JSON`, `IGBINARY`), the built in one will be used, resulting in more speed and less resource utilization.
 {: .alert .alert-info }
 
 ### `Memory`
@@ -645,7 +645,7 @@ $adapter = new Redis(null, $options);
 
 The [igbinary](https://github.com/igbinary/igbinary7) and built in serializer is only available if `igbinary` is present in the target system and [Redis](https://github.com/phpredis/phpredis) extension is compiled with it. The same applies to [msgpack](https://msgpack.org/) built in serializer. It is only available if `msgpack` is present in the target system and the [Redis](https://github.com/phpredis/phpredis) extension is compiled with it.
 
-> If the `defaultSerializer` or the selected serializer for `Redis` is supported as a built in serializer (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), the built in one will be used, resulting in more speed and less resource utilization.
+> **NOTE**: If the `defaultSerializer` or the selected serializer for `Redis` is supported as a built in serializer (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), the built in one will be used, resulting in more speed and less resource utilization.
 {: .alert .alert-info }
 
 ### `Stream (flujo)`
@@ -662,7 +662,7 @@ This adapter is the simplest to setup since it uses the target system's file sys
 
 If the `storageDir` is not defined a `Phalcon\Storage\Exception` will be thrown.
 
-> The adapter utilizes logic to store files in separate sub directories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
+> **NOTE**: The adapter utilizes logic to store files in separate sub directories based on the name of the key passed, thus avoiding the `too many files in one folder` limit present in Windows or Linux based systems.
 {: .alert .alert-info }
 
 The following example demonstrates how to create a new `Stream` cache adapter, which will use the [Phalcon\Storage\Serializer\Json](api/phalcon_storage#storage-serializer-json) serializer and have a default lifetime of 7200. It will store the cached data in `/data/storage/cache`.
