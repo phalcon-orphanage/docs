@@ -1118,7 +1118,7 @@ $app->get('/invoices/view/{id}',
 );
 ```
 
-> **NOTE**: Ee have to pass the `$app` object in our anonymous function to have access to the `request` object.
+> **NOTE**: We have to pass the `$app` object in our anonymous function to have access to the `request` object.
 {: .alert .alert-info }
 
 When using controllers as handlers, you can perform the redirect just as easy:
