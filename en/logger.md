@@ -55,7 +55,7 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 ### `load()`
 [Phalcon\Logger\LoggerFactory][logger-loggerfactory] offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object. 
 
-> Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
+> **NOTE**: Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
 {: .alert .alert-info}
 
 ```php
@@ -201,6 +201,8 @@ The messages are sent to the handlers in the order they were registered using th
 ### Excluding Adapters 
 [Phalcon\Logger][logger-logger] also offers the ability to exclude logging to one or more adapters when logging a message. This is particularly useful when in need to log a `manager` related message in the `manager` log but not in the `local` log without having to instantiate a new logger.
 
+With the following setup:
+
 ```php
 <?php
 
@@ -219,15 +221,25 @@ $logger = new Logger(
         'manager' => $adapter3,
     ]
 );
+```
 
-// Log to all adapters
+we have the following:
+
+```php
+<?php
+
 $logger->error('Something went wrong');
+```
+Log to all adapters
 
-// Log only to remote and manager
+```php
+<?php
+
 $logger
     ->excludeAdapters(['local'])
     ->info('This does not go to the "local" logger');
 ```
+Log only to remote and manager
 
 > **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 {: .alert .alert-warning }
@@ -291,11 +303,51 @@ The log generated is as follows:
 
 The above can be used in situations where you want to log messages above a certain severity based on conditions in your application such as development mode vs. production.
 
-> The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
+> **NOTE**: The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
 {: .alert .alert-info }
 
-> It is never a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
-{: .alert .alert-warning }
+> **NOTE**: It is **never** a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
+{: .alert .alert-danger }
+
+## Transactions 
+[Phalcon\Logger][logger-logger] also offers the ability to queue the messages in your logger, and then _commit_ them all together in the log file. This is similar to a database transaction with `begin` and `commit`. Each adapter exposes the following methods:
+- `begin` - begins the logging transaction
+- `inTransaction` - `bool` if you are in a transaction or not
+- `commit` - writes all the queued messages in the log file
+
+Since the functionality is available at the adapter level, you can program your logger to use transactions on a per adapter basis.
+
+```php
+<?php
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+$adapter3 = new Stream('/manager/third-log.log');
+
+$logger = new Logger(
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
+);
+
+$logger->getAdapter('manager')->begin();
+
+$logger->error('Something happened');
+
+$logger->getAdapter('manager')->commit();
+```
+In the example above, we register three adapters. We set the `manager` logger to be in transaction mode. As soon as we call:
+
+```php
+$logger->error('Something happened');
+```
+the message will be logged in both `local` and `remote` adapters. It will be queued for the `manager` adapter and not logged until we call the `commit` method in the `manager` adapter.
 
 ## Message Formatting
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:

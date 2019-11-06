@@ -42,7 +42,7 @@ $loader->register();
 
 You can always call the `isRegistered()` method to check if your autoloader is registered or not.
 
-> If there is an error in registering the autoloader, the component will throw an exception.
+> **NOTE**: If there is an error in registering the autoloader, the component will throw an exception.
 {: .alert .alert-warning }
 
 

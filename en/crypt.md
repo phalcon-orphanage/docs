@@ -11,7 +11,7 @@ keywords: 'crypt, encryption, decryption, ciphers'
 
 ## Overview
 
-> Requires PHP's [openssl][openssl] extension to be present in the system
+> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system
 {: .alert .alert-info }
 
 > **DOES NOT** support insecure algorithms with modes: 
@@ -25,7 +25,7 @@ By default, this component utilizes the `AES-256-CFB` cipher.
 
 The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B][suite_b], they have also recommended using higher than 128-bit keys for encryption.
 
-> You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
+> **NOTE**: You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
 {: .alert .alert-warning }
 
 ## Basic Usage

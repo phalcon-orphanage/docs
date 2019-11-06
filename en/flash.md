@@ -164,7 +164,7 @@ or when using Volt
 {% raw %}{{ flashSession.output() }}{% endraw %}
 ```
 
-> In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
+> **NOTE**: In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
 {: .alert .alert-info }
 
 ## Styling
@@ -236,7 +236,7 @@ will produce:
 <div class="alert alert-danger">Error message</div>
 ```
 
-> The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
@@ -270,7 +270,7 @@ will produce:
 <span class="myErrorClass">Error message</span>
 ```
 
-> The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Messages
@@ -326,7 +326,7 @@ $flash->error('Error message');
 $flash->clear();
 ```
 
-> `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
+> **NOTE**: `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
 {: .alert .alert-info }
 
 ## Implicit Flush
@@ -351,7 +351,7 @@ echo $flash
 ;
 ```
 
-> The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Escaping
@@ -380,7 +380,7 @@ will produce
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Dependency Injection

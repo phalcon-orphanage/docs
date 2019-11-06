@@ -102,7 +102,7 @@ devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
 
 As you can see in the above listing, the `htdocs` folder that is required by the web server is now pointing to the entry point of your framework.
 
-> When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+> **NOTE**: When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
 {: .alert .alert-warning }
 
 ### DNS Record

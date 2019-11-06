@@ -92,7 +92,7 @@ $response->send();
 
 You can also accompany that with `setContentLength()` which allows you to set the length or number of bytes that the response has, as well as the `setContentType()` which tells the recipient what type the data is. This is especially handy to use, because the recipient (often a browser) will treat different types of content differently. 
 
-> All setters return the response object back so they are chainable, offering a more fluent interface
+> **NOTE**: All setters return the response object back so they are chainable, offering a more fluent interface
 {: .alert .alert-info }
 
 **Examples**
@@ -255,7 +255,7 @@ $headers
 $response->setHeaders($headers);
 ```
 
-> Note that using `setHeaders()` merges the passed headers with the ones present in the response object already. The method will not clear the headers before setting them. To clear the headers you need to call `reset()` first (or `resetHeaders()` on the response object).
+> **NOTE**: Note that using `setHeaders()` merges the passed headers with the ones present in the response object already. The method will not clear the headers before setting them. To clear the headers you need to call `reset()` first (or `resetHeaders()` on the response object).
 {: .alert .alert-warning }
 
 The [Phalcon\Http\Response\Headers][http-response-headers] object offers the following methods, allowing you to manipulate headers:
@@ -338,11 +338,11 @@ $cookies->setSignKey($signKey);
 $response->setCookies($cookies);
 ```
 
-> The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. You can always use the `Crypt` component to generate a good `signKey`.
+> **NOTE**: The `signKey` **MUST** be at least 32 characters long, and it always helps if it is generated using a cryptographically secure pseudo random generator. You can always use the `Crypt` component to generate a good `signKey`.
 {: .alert .alert-danger }
 
 
-> Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
+> **NOTE**: Cookies can contain complex structures such as service information, resultsets etc. As a result, sending cookies without encryption to clients could expose application details that can be used by attackers to compromise the application and underlying system. If you do not wish to use encryption, you could send only unique identifiers that could be tied to a database table that stores more complex information that your application can use. 
 {: .alert .alert-danger }
 
 There are several methods available to help you retrieve data from the component:
@@ -493,13 +493,13 @@ return $response->redirect(
 );
 ```
 
-> Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
+> **NOTE**: Even if there is a view associated with the current action, it will not be rendered since `redirect` disables the view.
 {: .alert .alert-warning }
 
 ## HTTP Cache
 One of the easiest ways to improve the performance in your applications and reduce the traffic is using HTTP Cache. The [Phalcon\Http\Response][http-response] object exposes methods that help with this task.
 
-> Depending on the needs of your application, you might not want to control HTTP caching using Phalcon. There are several services available on the Internet that can help with that and could potentially be cheaper and easier to maintain (BitMitigate, Varnish etc.). Implementing HTTP Cache in your application will definitely help but it will have a small impact in the performance of your application. It is up to you to decide which strategy is best for your application and audience.
+> **NOTE**: Depending on the needs of your application, you might not want to control HTTP caching using Phalcon. There are several services available on the Internet that can help with that and could potentially be cheaper and easier to maintain (BitMitigate, Varnish etc.). Implementing HTTP Cache in your application will definitely help but it will have a small impact in the performance of your application. It is up to you to decide which strategy is best for your application and audience.
 {: .alert .alert-info } 
 
 HTTP Cache is implemented by setting certain headers in the response. The cache is set (using the headers) upon the first visit of the user to our application. The following headers help with HTTP Cache:
@@ -540,7 +540,7 @@ $expiryDate->modify('-10 minutes');
 $response->setExpires($expiryDate);
 ```
 
-> Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore this caching mechanism has some limitations that the developer must account for (different timezones, clock skew etc.)
+> **NOTE**: Browsers rely on the client machine's clock to identify if the date has passed or not. Therefore this caching mechanism has some limitations that the developer must account for (different timezones, clock skew etc.)
 {: .alert .alert-warning }
 
 ### `Cache-Control`

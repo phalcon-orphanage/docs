@@ -17,7 +17,7 @@ A model represents the information (data) of the application and the rules to ma
 
 The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C languages for PHP, giving to developers high performance when interacting with databases while is also easy to use.
 
-> Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db) component documentation.
+> **NOTE**: Models are intended to work with the database on a high layer of abstraction. If you need to work with databases at a lower level check out the [Phalcon\Db](api/Phalcon_Db) component documentation.
 {: .alert .alert-warning }
 
 ```php
@@ -1573,7 +1573,7 @@ class Invoices extends Model
 
 Public properties provide less complexity in development. However getters/setters can heavily increase the testability, extensibility and maintainability of applications. You will need to decide which strategy is best for you depending on the needs of the application. The ORM is compatible with both schemes of defining properties.
 
-> Underscores in property names can be problematic when using getters and setters.
+> **NOTE**: Underscores in property names can be problematic when using getters and setters.
 {: .alert .alert-warning }
 
 If you use underscores in your property names, you must still use camel case in your getter/setter declarations for use with magic methods. (e.g. `$model->getPropertyName` instead of `$model->getProperty_name`, `$model->findByPropertyName` instead of `$model->findByProperty_name`, etc.). 
@@ -1691,7 +1691,7 @@ You can also pass a string with a `WHERE` clause. In the above example we are ge
 
 ### Parameters
 
-> It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
+> **NOTE**: It is highly recommended to use the array syntax with `conditions` and `bind` to shield yourself from SQL injections, especially when the criteria comes from user input. For more information check the [Binding Parameters](#binding-parameters)` section.
 {: .alert .alert-warning }
 
 Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria. 
@@ -2231,7 +2231,7 @@ The above example will return only the paid invoices from our table (`inv_status
 ### Binding Parameters
 Bound parameters are also supported in [Phalcon\Mvc\Model][mvc-model]. You are encouraged to use this methodology so as to eliminate the possibility of your code being subject to SQL injection attacks. Both `string` and `integer` placeholders are supported. 
 
-> When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
+> **NOTE**: When using `integer` placeholders you must prefix them with `?` (`?0`, `?1`). When using `string` placeholders you must enclose the string in `:` (`:name:`, `:total:`). 
 {: .alert .alert-info }
 
 Some examples:
@@ -2343,7 +2343,7 @@ $invoices = Invoices::find(
 );
 ```
 
-> Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
+> **NOTE**: Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
 {: .alert .alert-info }
 
 If you're using _finders_ e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string sytax for the first parameter instead of using the `conditions` array element. Also when using `findFirstBy*` the parameters are automatically bound.

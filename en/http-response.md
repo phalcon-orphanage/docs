@@ -20,7 +20,7 @@ keywords: 'psr-7, http, http response'
  - Headers
  - Message body
  
-> In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
+> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
 {: .alert .alert-info }
 
 ```php

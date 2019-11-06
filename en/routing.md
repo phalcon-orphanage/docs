@@ -645,7 +645,7 @@ $router->add(
 );
 ```
 
-> Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
+> **NOTE**: Beware of characters allowed in regular expression for controllers and namespaces. As these become class names and in turn they're passed through the file system could be used by attackers to read unauthorized files. A safe regular expression is: `/([a-zA-Z0-9\_\-]+)`
 {: .alert .alert-warning }
 
 ## Default Behavior
@@ -700,7 +700,7 @@ $router->notFound(
 
 This is typically for an Error 404 page.
 
-> This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
+> **NOTE**: This will only work if the router was created without default routes: `$router = Phalcon\Mvc\Router(FALSE);`
 
 ## Setting Default Paths
 It's possible to define default values for the module, controller or action. When a route is missing any of those paths they can be automatically filled by the router:

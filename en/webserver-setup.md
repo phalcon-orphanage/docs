@@ -195,7 +195,7 @@ tutorial/
 **Document root**
 The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files.  The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`). 
 
-> Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> **NOTE**: Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
  {: .alert .alert-warning}
 
 ```
@@ -350,7 +350,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> **Congratulations! You are now phlying with Phalcon.**
 {: .alert .alert-info }
 
 ## XAMPP
@@ -410,7 +410,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> **Congratulations! You are now phlying with Phalcon.**
 {: .alert .alert-info }
 
 

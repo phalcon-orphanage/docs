@@ -12,7 +12,7 @@ keywords: 'devtools, developer tools, models, controllers'
 ## Overview
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.
 
-> If you prefer to use the web version instead of the console, this [blog post][blog_devtools] offers more information.
+> **NOTE**: If you prefer to use the web version instead of the console, this [blog post][blog_devtools] offers more information.
 {: .alert .alert-danger }
 
 ## Installation

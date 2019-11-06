@@ -1058,7 +1058,7 @@ In the examples above, when the framework needs to access the request data, it w
 
 As shown in the above examples, each of the ways used to set/register a service has advantages and disadvantages. It is up to the developer and the particular requirements that will designate which one is used. Setting a service by a string is simple, but lacks flexibility. Setting services using an array offers a lot more flexibility, but makes the code more complicated. The lambda function is a good balance between the two, but could lead to more maintenance than one would expect.
 
-> [Phalcon\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
+> **NOTE**: [Phalcon\Di][di] offers lazy loading for every service it stores. Unless the developer chooses to instantiate an object directly and store it in the container, any object stored in it (via array, string, etc.) will be lazy loaded i.e. instantiated only when requested.
 {: .alert .alert-info }
 
 ### Load From Config
@@ -1084,7 +1084,7 @@ $container->loadFromYaml('services.yml');
 $container->get('/app/config/services.yml');
 ```
 
-> This approach requires that the module Yaml be installed. Please refer to [this document][yaml] for more information.
+> **NOTE**: This approach requires that the module Yaml be installed. Please refer to [this document][yaml] for more information.
 {: .alert .alert-danger }
 
 

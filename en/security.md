@@ -11,7 +11,7 @@ keywords: 'security, hashing, passwords'
 
 ## Overview
 
-> Requires PHP's [openssl][openssl] extension to be present in the system
+> **NOTE**: Requires PHP's [openssl][openssl] extension to be present in the system
 {: .alert .alert-info }
 
 [Phalcon\Security][security] is a component that helps developers with common security related tasks, such as password hashing and Cross-Site Request Forgery protection ([CSRF][wiki-csrf]).
@@ -128,7 +128,7 @@ The `registerAction()` above accepts posted data from the UI. It sanitizes it wi
 
 The `loginAction()` accepts posted data from the UI and then tries to find the user in the database based on the `login` field. If the user does exist, it will use the `checkHash()` method of the [Phacon\Security][security] component, to assess whether the supplied password hashed is the same as the one stored in the database. 
 
-> You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
+> **NOTE**: You do not need to hash the supplied password (first parameter) when using `checkHash()` - the component will do that for you.
 {: .alert .alert-info }
 
 If the password is not correct, you can then inform the user that something is wrong with the credentials. It is always a good idea not to provide specific information about your users to people that want to hack your site. So for instance our example above can produce two messages:
@@ -210,7 +210,7 @@ class SessionController extends Controller
 }
 ```
 
-> It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
+> **NOTE**: It is important to remember that you will need to have a valid `session` service registered in your Dependency Injection container. Otherwise the `checkToken()` will not work.
 {: .alert .alert-warning }
 
 Adding a [captcha][captcha] to the form is also recommended to completely avoid the risks of this attack.

@@ -205,7 +205,7 @@ mysql> select * from co_invoices;
 2 rows in set (0.00 sec)
 ```
 
-> You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
+> **NOTE**: You will need to ensure to specify the _deleted_ condition to filter your records so that you can get deleted or not deleted results back. This behavior does not support automatic filtering.
 {: .alert .alert-warning }
 
 ## Custom
@@ -356,7 +356,7 @@ class Invoices extends Model
 }
 ```
 
-> You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
+> **NOTE**: You can use traits instead of behaviors, but they do require that all your fields, that the behavior will affect, must have the same name. Also if you implement an event method in a trait (e.g. `beforeCreate`) you cannot have it also in your model since the two will produce an error.
 {: .alert .alert-info }
 
 

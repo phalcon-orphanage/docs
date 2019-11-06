@@ -25,7 +25,7 @@ php cli.php
 
 In the above example, the `cli.php` is the entry point of our application, while the `src/tasks` directory contains all the task classes that handle each command.
 
-> Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask` and the default method to be executed inside a task is `main` 
+> **NOTE**: Each task file and class **must** be suffixed with `Task`. The default task (if no parameters have been passed) is `MainTask` and the default method to be executed inside a task is `main` 
 {: .alert .alert-info }
 
 ## Bootstrap
@@ -102,7 +102,7 @@ $loader->register();
 
 Create the Phalcon autoloader adn register the namespace to point to the `src/` directory.
 
-> If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
+> **NOTE**: If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
 {: .alert .alert-info }
 
 **DI**

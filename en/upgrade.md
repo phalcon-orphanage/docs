@@ -418,7 +418,7 @@ $container->set(
 );
 ```
 
-> Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
+> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
 {: .alert .alert-warning }
 
 ### Constants

@@ -675,7 +675,7 @@ foreach ($records as $record) {
 }
 ```
 
-> By default, an `INNER JOIN` is assumed. 
+> **NOTE**: By default, an `INNER JOIN` is assumed. 
 {: .alert .alert-info }
 
 You can specify the following types of joins in your query:
@@ -2898,10 +2898,10 @@ $invoices = $this
 ## Disable Literals in PHQL
 Literals can be disabled in PHQL. This means that you will not be able to use strings, numbers or boolean values in PHQL. You will have to use bound parameters instead.
 
-> Disabling literals increases the security of your database statements and reduces the possibility of SQL injections.
+> **NOTE**: Disabling literals increases the security of your database statements and reduces the possibility of SQL injections.
 {: .alert .alert-info }
 
-> This setting can be set globally for all models. Please refer to the [models](db-models) document for a how to and additional settings.
+> **NOTE**: This setting can be set globally for all models. Please refer to the [models](db-models) document for a how to and additional settings.
 {: .alert .alert-info }
 
 The following query could potentially lead to a SQL injection:

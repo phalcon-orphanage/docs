@@ -107,7 +107,7 @@ Since Phalcon is loosely coupled, services are registered with the frameworks De
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
 
-> If you are still interested in the details please see this article by [Martin Fowler][injection]. Also we have [a great tutorial](di) covering many use cases.
+> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler][injection]. Also we have [a great tutorial](di) covering many use cases.
 {: .alert .alert-warning }
 
 ### Factory Default
@@ -275,7 +275,7 @@ The controller classes must have the suffix `Controller` and controller actions 
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
-> Congratulations, you are Phlying with Phalcon!
+> **Congratulations, you are Phlying with Phalcon!**
 {: .alert .alert-info }
 
 ## Sending Output to a View
@@ -349,7 +349,7 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 
 To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality. 
 
-> `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 {: .alert .alert-info }
 
 The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
@@ -468,7 +468,7 @@ class Users extends Model
 }
 ```
 
-> Note that the public properties of the model correspond to the names of the fields in our table. 
+> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
 {: .alert .alert-info }
 
 ## Setting a Database Connection
@@ -578,7 +578,7 @@ class IndexController extends Controller
 }
 ```
 
-> We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
+> **NOTE**: We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
 {: .alert .alert-info } 
 
 In our view file `views/index/index.phtml` we can use the `$users` variable as follows:

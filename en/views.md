@@ -744,7 +744,7 @@ $di->set(
 );
 ```
 
-> The frontend must always be [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output) and the service `viewCache` must be registered as always open (not shared) in the services container (DI).
+> **NOTE**: The frontend must always be [Phalcon\Cache\Frontend\Output](api/Phalcon_Cache_Frontend_Output) and the service `viewCache` must be registered as always open (not shared) in the services container (DI).
 {: .alert .alert-warning }
 
 When using views, caching can be used to prevent controllers from needing to generate view data on each request. To achieve this we must identify uniquely each cache with a key. First we verify that the cache does not exist or has expired to make the calculations/queries to display data in the view:

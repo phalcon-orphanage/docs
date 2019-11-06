@@ -52,12 +52,12 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+> **NOTE**: The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 {: .alert .alert-info }
 
 ## Built-in
 
-> Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
+> **NOTE**: Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
 
 The following are the built-in filters provided by this component:

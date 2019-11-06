@@ -494,7 +494,7 @@ $config = $factory->newinstance('ini', $fileName, $params);
 ```
 
 ## Json
-> Requires PHP's `json` extension to be present in the system
+> **NOTE**: Requires PHP's `json` extension to be present in the system
 {: .alert .alert-info }
 
 JSON is a very popular format, especially when transporting data from your application to the front end or when sending back responses from an API. It can also be used as a storage for configuration data. [Phalcon\Config\Json][json] uses `json_decode()` internally to convert a JSON file to a PHP native array and parse it accordingly.
@@ -640,7 +640,7 @@ $config = $factory->newinstance('php', $fileName);
 
 ## Yaml
 
-> Requires PHP's yaml extension to be present in the system
+> **NOTE**: Requires PHP's yaml extension to be present in the system
 {: .alert .alert-info }
 
 Another common file format is YAML. [Phalcon\Config\Yaml][yaml] requires the `yaml` PHP extension to be present in your system. It uses the PHP function [yaml_parse_file][yaml-parse-file] to read these files. The adapter reads a `yaml` file supplied as the first parameter of the constructor, but also accepts a second parameter `callbacks` as an array. The `callbacks` supplies content handlers for YAML nodes. It is an associative array of `tag => callable` mappings.

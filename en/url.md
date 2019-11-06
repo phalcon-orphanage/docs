@@ -80,7 +80,7 @@ echo $url->getStatic('img/logo.png'); // https://assets.phalcon.io/img/logo.png
 
 The above code will prefix all the static assets with `https://assets.phalcon.io`, ensuring that assets in your production environment use the CDN URL, while local development loads them directly from your machine.
 
-> The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
+> **NOTE**: The trailing slash in the `setStaticBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 {: .alert .alert-info }
 
 Finally, depending on the routes you have specified, you can retrieve a static resource which is defined in a named route by passing an array to `getStatic()` and using `for` keyword as a key and the name of the route as a value.
@@ -166,7 +166,7 @@ class InvoicesController extends Controller
 
 And now we can generate any URL using `get()` in subsequent actions, that will be prefixed with `/portal/`
 
-> The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
+> **NOTE**: The trailing slash in the `setBaseUrl()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 {: .alert .alert-info }
 
 
@@ -270,7 +270,7 @@ $url->setBaseUri('/app/public/index.php'); // $_SERVER['REQUEST_URI']
 echo $url->get('products/save'); // /app/public/index.php/portal/invoices/save
 ```
 
-> If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
+> **NOTE**: If you can, avoid replacing `mod_rewrite` with the code above. Having the necessary route matching mechanism handled by the web server is much faster than handling things in your own application.
 {: .alert .alert-info }
 
 ### View/Volt
@@ -321,7 +321,7 @@ echo $url->path('storage/config.php'); // /data/app/storage/config.php
 
 The above code will prefix all the paths with `/data/app/`.
 
-> The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
+> **NOTE**: The trailing slash in the `setBasePath()` parameter is optional. If it is not specified, it will automatically be appended to the passed parameter
 {: .alert .alert-info }
 
 ## Exceptions

@@ -20,7 +20,7 @@ Your pull request must include:
 * Updates to the documentation and usage examples as necessary
 * Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-2](https://www.php-fig.org/psr/) while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
 
-> **We do not accept Pull Requests to the `master` branch**
+> **NOTE**: **We do not accept Pull Requests to the `master` branch**
 {:.alert .alert-danger}
 
 If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.

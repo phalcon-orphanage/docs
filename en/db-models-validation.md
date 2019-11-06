@@ -92,7 +92,7 @@ class Invoices extends Model
 
 The above example performs a validation using the built-in validator [Phalcon\Validation\Validator\InclusionIn][validation-validator-inclusionin]. It checks the value of the field `inv_status_flag` in a domain list. If the value is not included in the method then the validator will fail and return `false`. 
 
-> For more information on validators, see the [Validation documentation](validation)
+> **NOTE**: For more information on validators, see the [Validation documentation](validation)
 {: .alert .alert-warning }
 
 ## Messages

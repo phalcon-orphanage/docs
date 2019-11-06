@@ -117,7 +117,7 @@ class PostsController extends Controller
 }
 ```
 
-> Methods on event listeners accept an [Phalcon\Events\Event](api/Phalcon_Events_Event) object as their first parameter - methods in controllers do not.
+> **NOTE**: Methods on event listeners accept an [Phalcon\Events\Event](api/Phalcon_Events_Event) object as their first parameter - methods in controllers do not.
 {: .alert .alert-warning }
 
 ## Forwarding to Other Actions
@@ -562,7 +562,7 @@ $dispatcher->setModelBinder(
 return $dispatcher;
 ```
 
-> Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor.
+> **NOTE**: Since the Binder object is using internally Reflection Api which can be heavy, there is ability to set cache. This can be done by using second argument in `setModelBinder()` which can also accept service name or just by passing cache instance to `Binder` constructor.
 {: .alert .alert-warning }
 
 It also introduces a new interface [Phalcon\Mvc\Model\Binder\BindableInterface](api/Phalcon_Mvc_Model_Binder_BindableInterface) which allows you to define the controllers associated models to allow models binding in base controllers.
@@ -620,7 +620,7 @@ class PostsController extends Controller
 }
 ```
 
-> Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
+> **NOTE**: Currently the binder will only use the models primary key to perform a `findFirst()` on. An example route for the above would be `/posts/show/{1}`
 {: .alert .alert-warning }
 
 ## Handling Not-Found Exceptions
@@ -718,7 +718,7 @@ class ExceptionsPlugin
 }
 ```
 
-> Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
+> **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action are notified in the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 {: .alert .alert-danger }
 
 ## Implementing your own Dispatcher

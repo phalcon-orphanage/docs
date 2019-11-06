@@ -19,7 +19,7 @@ This implementation has been created to establish a standard between middleware 
 > **NOTE** Phalcon does not restrict you in using a specific HTTP Client. Any PSR-7 compliant client will work with this component so that you can perform your requests.
 {: .alert .alert-info }
 
-> In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
+> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
 {: .alert .alert-info }
 
 ```php
