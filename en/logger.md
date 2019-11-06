@@ -349,6 +349,9 @@ $logger->error('Something happened');
 ```
 the message will be logged in both `local` and `remote` adapters. It will be queued for the `manager` adapter and not logged until we call the `commit` method in the `manager` adapter.
 
+> **NOTE**: If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
+{: .alert .alert-info }
+>
 ## Message Formatting
 This component makes use of `formatters` to format messages before sending them to the backend. The formatters available are:
 
