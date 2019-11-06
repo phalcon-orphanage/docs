@@ -20,7 +20,7 @@ An action is any public class in a controller with the `Action` suffix. These *a
 
 Controllers in Phalcon **must** have the suffix `Controller` in their file and class name and **must** extend the [Phalcon\Mvc\Controller](api/phalcon_mvc#mvc-controller) class.
 
-> The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
+> **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 {: .alert .alert-info }
 
 ## Routing
@@ -104,12 +104,12 @@ class InvoicesController extends Controller
 }
 ```
 
-> The use of the `__construct()` method is not recommended.
+> **NOTE**: The use of the `__construct()` method is not recommended.
 {: .alert .alert-warning }
 
 
 > 
-> The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
+> **NOTE**: The `initialize()` method is only called if the `beforeExecuteRoute` event has been executed successfully. This is to ensure that if you have authorization checking code in the event, `initialize` will never be invoked
 {: .alert .alert-warning }
 
 If you want to execute some initialization logic just after the controller object is constructed then you can implement the `onConstruct()` method:
@@ -128,7 +128,7 @@ class InvoicesController extends Controller
 }
 ```
 
-> Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control implemented in the application).
+> **NOTE**: Note that `onConstruct()` is executed even if the action to be executed does not exist in the controller or the user does not have access to it (assuming custom access control implemented in the application).
 {: .alert .alert-warning }
 
 ## Dispatch Loop
@@ -373,7 +373,7 @@ If you have already registered a [Request](request) and [Response](response) ser
 
 For [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault), your objects will be [Phalcon\Http\Request](api/phalcon_http#http-request) for `request` and [Phalcon\Http\Response](api/phalcon_http#http-response) for response. The `request` contains the request from the user, including all the variables set by the method use (`GET`, `POST` etc.) along with additional information regarding the request. The `response` contains data that we need to send back such as `content-type`, status code, payload etc.
 
-> In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
+> **NOTE**: In order to access the services from your controller, you will need to extend the `Phalcon\Mvc\Controller` class
 {: .alert .alert-info }
 
 ```php
@@ -546,7 +546,7 @@ class UserController extends Controller
 }
 ```
 
-> Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
+> **NOTE**: Note that the `persistent` service is automatically registered for any component (including controllers) that extend the `Phalcon\Di\Injectable` class
 {: .alert .alert-info }
 
 ## Inyección de Dependencias
