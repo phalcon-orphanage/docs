@@ -73,7 +73,7 @@ final public function __construct(
     ManagerInterface $modelsManager = null
 )
 ```
-@TODO: Constructor
+Constructs the model object. The method accepts an array of data that are used to populate the object by intenrally using `assign`. Optionally you can pass a DI container and a Models Manager object. If they are not passed, the defaults will be used. 
 
 
 ```php
