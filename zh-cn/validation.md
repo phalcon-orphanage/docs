@@ -2,13 +2,15 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: 'Validation'
+keywords: 'validation, validating forms, validating models, validating data'
 ---
 
 # Validation Component
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
 ## 概述
 
@@ -483,7 +485,7 @@ class MyValidator extends Validator
 }
 ```
 
-## Avoid validating empty values
+## Avoid Validating Empty Values
 
 You can pass the option `allowEmpty` to all the built-in validators to avoid the validation to be performed if an empty value is passed:
 
