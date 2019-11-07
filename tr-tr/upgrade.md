@@ -10,7 +10,7 @@ keywords: 'upgrade, v3, v4'
 
 * * *
 
-# Upgrading to v4
+# Upgrading to V4
 
 So you have decided to upgrade to v4! **Congratulations**!!
 
@@ -193,7 +193,7 @@ The Cache class implements [PSR-16](https://www.php-fig.org/psr/psr-16/) and acc
 
 For a more detailed explanation on how the new Cache component works, please visit the relevant page in our documentation.
 
-### Creating a cache
+### Creating a Cache
 
 ```php
 <?php
@@ -383,7 +383,7 @@ echo Enum::FETCH_ASSOC;
 
 ### Events\ManagerInterface
 
-- Added hasListeners
+- Added `hasListeners`
 
 * * *
 
@@ -412,7 +412,7 @@ The values sanitized are automatically cast to the relevant types. This is the d
 
 When instantiating the filter object, it does not know about any sanitizers. You have two options:
 
-#### Load all the default sanitizers
+#### Load All the Default Sanitizers
 
 You can load all the Phalcon supplied sanitizers by utilizing the [Phalcon\Filter\FilterFactory](api/Phalcon_Filter#filter-filterfactory) component.
 
@@ -427,7 +427,7 @@ $locator = $factory->newInstance();
 
 Calling`newInstance()` will return a [Phalcon\Filter](api/Phalcon_Filter#filter) object with all the sanitizers registered. The sanitizers are lazy loaded so they are instantiated only when called from the locator.
 
-#### Load only sanitizers you want
+#### Load Only Sanitizers You Want
 
 You can instantiate the [Phalcon\Filter](api/Phalcon_Filter#filter) component and either use the `set()` method to set all the sanitizers you need, or pass an array in the constructor with the sanitizers you want to register.
 
@@ -437,7 +437,7 @@ If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) contai
 
 Also components that utilize the filter service, such as the [Request](api/phalcon_http#http-request) object, transparently use the new filter locator. No additional changes required for those components.
 
-### Using a custom `Di`
+### Using a Custom `Di`
 
 If you have set up all the services in the [Phalcon\Di](api/Phalcon_Di) yourself and need the filter service, you will need to change its registration as follows:
 
@@ -458,7 +458,7 @@ $container->set(
 );
 ```
 
-> Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
+> **NOTE**: Note that even if you register the filter service manually, the **name** of the service must be **filter** so that other components can use it
 {: .alert .alert-warning }
 
 ### Constants
@@ -581,7 +581,7 @@ In v3, the logger was incorporating the adapter in the same component. So in ess
 
 For v4, we rewrote the component to implement only the logging functionality and to accept one or more adapters that would be responsible for doing the work of logging. This immediately offers compatibility with [PSR-3](https://www.php-fig.org/psr/psr-3/) and separates the responsibilities of the component. It also offers an easy way to attach more than one adapter to the logging component so that logging to multiple adapters can be achieved. By using this implementation we have reduced the code necessary for this component and removed the old `Logger\Multiple` component.
 
-### Creating a logger component
+### Creating a Logger Component
 
 ```php
 <?php
@@ -627,7 +627,7 @@ $container->set(
 );
 ```
 
-### Multiple loggers
+### Multiple Loggers
 
 The `Phalcon\Logger\Multiple` component has been removed. You can achieve the same functionality using the logger component and registering more than one adapter:
 
@@ -668,7 +668,7 @@ $logger->error('Something went wrong');
 
 Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
 
-### Log level
+### Log Level
 
 - Removed `$logger->setLogLevel()`
 
@@ -873,6 +873,20 @@ $group->addTrace(
 - Removed `getSslVersionNumber`
 - Added `setPadding`
 - Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
+
+* * *
+
+## İstek
+
+### Http\Request
+
+- Added `numFiles` returning `long` - the number of files present in the request
+- Changed `hasFiles` to return `bool` - if the request has files or not
+
+### Http\RequestInterface
+
+- Added `numFiles` returning `long` - the number of files present in the request
+- Changed `hasFiles` to return `bool` - if the request has files or not
 
 * * *
 
@@ -1212,7 +1226,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Logger\Formatter\Firephp | Removed    |                                               |
 | Phalcon\Logger\Multiple           | Removed    |                                               |
 
-### Message (new in v4, formerly Phalcon\Validation\Message in 3.4)
+### Message (new in V4, Formerly Phalcon\Validation\Message in 3.4)
 
 | 3.4.x | State | 4.0.x                        |
 | ----- | ----- | ---------------------------- |
