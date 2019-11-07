@@ -2296,12 +2296,10 @@ public function has( string $name ): bool;
 Checks whether $_REQUEST superglobal has certain index
 
 ```php
-public function hasFiles( bool $onlySuccessful = bool ): long;
+public function hasFiles(): bool;
 ```
 
-Returns the number of files available
-
-TODO: Check this
+Returns if the request has files or not
 
 ```php
 final public function hasHeader( string $header ): bool;
@@ -2428,6 +2426,12 @@ public function isValidHttpMethod( string $method ): bool;
 ```
 
 Checks if a method is a valid HTTP method
+
+```php
+public function numFiles( bool $onlySuccessful = bool ): long;
+```
+
+Returns the number of files available
 
 ```php
 public function setHttpMethodParameterOverride( bool $httpMethodParameterOverride )
@@ -2946,10 +2950,10 @@ public function has( string $name ): bool;
 Checks whether $_REQUEST superglobal has certain index
 
 ```php
-public function hasFiles( bool $onlySuccessful = bool ): long;
+public function hasFiles(): bool;
 ```
 
-Checks whether request include attached files TODO: We need to check the name. Not very intuitive
+Checks whether request include attached files
 
 ```php
 public function hasHeader( string $header ): bool;
@@ -3058,6 +3062,12 @@ public function isTrace(): bool;
 ```
 
 Checks whether HTTP method is TRACE. if $_SERVER["REQUEST_METHOD"] === "TRACE"
+
+```php
+public function numFiles( bool $onlySuccessful = bool ): long;
+```
+
+Returns the number of files available
 
 <h1 id="http-response">Class Phalcon\Http\Response</h1>
 
