@@ -2674,6 +2674,32 @@ class Robots extends \Phalcon\Mvc\Model
 
 
 ```php
+protected function hasOneThrough( mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referenceModel, mixed $referencedFields, mixed $options = null ): Relation;
+```
+Setup a 1-1 relation between two models, through an intermediate
+relation
+
+```php
+class Robots extends \Phalcon\Mvc\Model
+{
+    public function initialize()
+    {
+        // Setup a 1-1 relation to one item from Parts through RobotsParts
+        $this->hasOneThrough(
+            "id",
+            RobotsParts::class,
+            "robots_id",
+            "parts_id",
+            Parts::class,
+            "id",
+        );
+    }
+}
+```
+
+
+
+```php
 protected function keepSnapshots( bool $keepSnapshot ): void;
 ```
 Sets if the model must keep the original record snapshot in memory
@@ -3765,7 +3791,7 @@ Exceptions thrown in Phalcon\Mvc\Model\* classes will use this class
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/manager.zep)
 
 | Namespace  | Phalcon\Mvc\Model |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Mvc\ModelInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Events\EventsAwareInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Events\ManagerInterface |
 | Implements | ManagerInterface, InjectionAwareInterface, EventsAwareInterface |
 
 Phalcon\Mvc\Model\Manager
@@ -3856,6 +3882,16 @@ protected hasOne;
  * Has one relations by model
  */
 protected hasOneSingle;
+
+/**
+ * Has one through relations
+ */
+protected hasOneThrough;
+
+/**
+ * Has one through relations by model
+ */
+protected hasOneThroughSingle;
 
 /**
  * Mark initialized models
@@ -3949,6 +3985,13 @@ Setup a 1-1 relation between two models
 
 
 ```php
+public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+```
+Setups a relation 1-1 between two models using an intermediate model
+
+
+
+```php
 public function clearReusableObjects(): void;
 ```
 Clears the internal reusable list
@@ -3994,6 +4037,12 @@ Checks whether a model has a hasManyToMany relation with another model
 public function existsHasOne( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasOne relation with another model
+
+
+```php
+public function existsHasOneThrough( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOneThrough relation with another model
 
 
 ```php
@@ -4066,6 +4115,12 @@ Gets hasOne relations defined on a model
 public function getHasOneRecords( string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string $method = null ): ModelInterface | bool;
 ```
 Gets belongsTo related records from a model
+
+
+```php
+public function getHasOneThrough( ModelInterface $model ): RelationInterface[] | array;
+```
+Gets hasOneThrough relations defined on a model
 
 
 ```php
@@ -4366,6 +4421,13 @@ Setup a 1-1 relation between two models
 
 
 ```php
+public function addHasOneThrough( ModelInterface $model, mixed $fields, string $intermediateModel, mixed $intermediateFields, mixed $intermediateReferencedFields, string $referencedModel, mixed $referencedFields, mixed $options = null ): RelationInterface;
+```
+Setups a 1-1 relation between two models using an intermediate table
+
+
+
+```php
 public function createBuilder( mixed $params = null ): BuilderInterface;
 ```
 Creates a Phalcon\Mvc\Model\Query\Builder
@@ -4407,6 +4469,12 @@ Checks whether a model has a hasManyToMany relation with another model
 public function existsHasOne( string $modelName, string $modelRelation ): bool;
 ```
 Checks whether a model has a hasOne relation with another model
+
+
+```php
+public function existsHasOneThrough( string $modelName, string $modelRelation ): bool;
+```
+Checks whether a model has a hasOneThrough relation with another model
 
 
 ```php
@@ -4456,8 +4524,14 @@ Gets hasOne relations defined on a model
 ```php
 public function getHasOneRecords( string $modelName, string $modelRelation, ModelInterface $record, mixed $parameters = null, string $method = null ): ModelInterface | bool;
 ```
-Gets belongsTo related records from a model
+Gets hasOne related records from a model
 
+
+
+```php
+public function getHasOneThrough( ModelInterface $model ): RelationInterface[] | array;
+```
+Gets hasOneThrough relations defined on a model
 
 
 ```php

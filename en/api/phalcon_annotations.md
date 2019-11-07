@@ -236,7 +236,7 @@ Writes parsed annotations to memory
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/adapter/stream.zep)
 
 | Namespace  | Phalcon\Annotations\Adapter |
-| Uses       | Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception |
+| Uses       | Phalcon\Annotations\Reflection, Phalcon\Annotations\Exception, RuntimeException |
 | Extends    | AbstractAdapter |
 
 Stores the parsed annotations in files. This adapter is suitable for production

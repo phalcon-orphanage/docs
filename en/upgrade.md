@@ -350,7 +350,7 @@ echo Enum::FETCH_ASSOC;
 ## Events
 
 ### Events\ManagerInterface
-- Added hasListeners
+- Added `hasListeners`
 
 <hr/>
 
@@ -789,6 +789,18 @@ $group->addTrace(
 - Removed `getSslVersionNumber`
 - Added `setPadding`
 - Added a retainer for the current token to be used during the checks, so when `getToken` is called the token used for checks does not change
+
+<hr/>
+
+## Request
+
+### Http\Request
+- Added `numFiles` returning `long` - the number of files present in the request
+- Changed `hasFiles` to return `bool` - if the request has files or not
+
+### Http\RequestInterface
+- Added `numFiles` returning `long` - the number of files present in the request
+- Changed `hasFiles` to return `bool` - if the request has files or not
 
 <hr/>
 

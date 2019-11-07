@@ -2,6 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
+upgrade: '#request'
 title: 'HTTP Request'
 keywords: 'http, http request, request'
 ---
@@ -352,6 +353,7 @@ There are a number of methods available that allow you to check the existence of
 - `hasPut()`: Checks whether the PUT data has a certain element
 - `hasQuery()`: Checks whether $_GET superglobal has a certain element
 - `hasServer()`: Checks whether $_SERVER superglobal has a certain element
+- `numFiles()`: Returns the number of files present in the request
 
 ## Request Information
 The [Phalcon\Http\Request][http-request] object offers methods that provide additional information regarding the request. 
@@ -514,6 +516,7 @@ class PostsController extends Controller
 {
     public function uploadAction()
     {
+        // if ($this->request->numFiles() > 0) {
         if ($this->request->hasFiles()) {
             $files = $this->request->getUploadedFiles();
 

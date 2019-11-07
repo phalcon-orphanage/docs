@@ -2668,11 +2668,9 @@ Checks whether $_REQUEST superglobal has certain index
 
 
 ```php
-public function hasFiles( bool $onlySuccessful = bool ): long;
+public function hasFiles(): bool;
 ```
-Returns the number of files available
-
-TODO: Check this
+Returns if the request has files or not
 
 
 ```php
@@ -2811,6 +2809,12 @@ if _SERVER["REQUEST_METHOD"]==="TRACE"
 public function isValidHttpMethod( string $method ): bool;
 ```
 Checks if a method is a valid HTTP method
+
+
+```php
+public function numFiles( bool $onlySuccessful = bool ): long;
+```
+Returns the number of files available
 
 
 ```php
@@ -3368,10 +3372,9 @@ Checks whether $_REQUEST superglobal has certain index
 
 
 ```php
-public function hasFiles( bool $onlySuccessful = bool ): long;
+public function hasFiles(): bool;
 ```
 Checks whether request include attached files
-TODO: We need to check the name. Not very intuitive
 
 
 ```php
@@ -3482,6 +3485,12 @@ public function isTrace(): bool;
 ```
 Checks whether HTTP method is TRACE.
 if $_SERVER["REQUEST_METHOD"] === "TRACE"
+
+
+```php
+public function numFiles( bool $onlySuccessful = bool ): long;
+```
+Returns the number of files available
 
 
 
