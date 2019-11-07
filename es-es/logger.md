@@ -15,11 +15,11 @@ keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 
 ## Overview
 
-[Phalcon\Logger](api/Phalcon_Logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
+[Phalcon\Logger](api/phalcon_logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/phalcon_logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
 ![](/assets/images/implements-psr--3-blue.svg)
 
-The [Phalcon\Logger](api/Phalcon_Logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
+The [Phalcon\Logger](api/phalcon_logger#logger-logger) has been rewritten to comply with [PSR-3](https://www.php-fig.org/psr/psr-3/). This allows you to use the [Phalcon\Logger](api/phalcon_logger#logger-logger) to any application that utilizes a [PSR-3](https://www.php-fig.org/psr/psr-3/) logger, not just Phalcon based ones.
 
 En Phalcon v3.x el componente trae incorporado el adaptador. Esto en esencia significa que cuando se inicia el objeto de registro, el desarrollador está en realidad creando un adaptador (de archivo, flujo, etc.) con capacidad de registro.
 
@@ -31,9 +31,9 @@ El componente registro hace uso de diversos adaptadores para guardar los mensaje
 
 | Adaptador                                                                    | Description                                 |
 | ---------------------------------------------------------------------------- | ------------------------------------------- |
-| [Phalcon\Logger\Adapter\Noop](api/Phalcon_Logger#logger-adapter-noop)     | Blackhole adapter (used for testing mostly) |
-| [Phalcon\Logger\Adapter\Stream](api/Phalcon_Logger#logger-adapter-stream) | Logs messages on a file stream              |
-| [Phalcon\Logger\Adapter\Syslog](api/Phalcon_Logger#logger-adapter-syslog) | Logs messages to the Syslog                 |
+| [Phalcon\Logger\Adapter\Noop](api/phalcon_logger#logger-adapter-noop)     | Blackhole adapter (used for testing mostly) |
+| [Phalcon\Logger\Adapter\Stream](api/phalcon_logger#logger-adapter-stream) | Logs messages on a file stream              |
+| [Phalcon\Logger\Adapter\Syslog](api/phalcon_logger#logger-adapter-syslog) | Logs messages to the Syslog                 |
 
 ### Stream (flujo)
 
@@ -49,7 +49,7 @@ Este adaptador es un agujero negro: ¡Envía mensajes al *infinito y más allá!
 
 ## Factory
 
-You can use the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/Phalcon_Logger#logger-adapterfactory):
+You can use the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) component to create a logger. For the [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) to work, it needs to be instantiated with an [Phalcon\Logger\AdapterFactory](api/phalcon_logger#logger-adapterfactory):
 
 ```php
 <?php
@@ -63,9 +63,9 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 
 ### `load()`
 
-[Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object.
+[Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) offers the `load` method, that constructs a logger based on supplied configuration. The configuration can be an array or a [Phalcon\Config](config) object.
 
-> Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
+> **NOTE**: Use Case: Create a Logger with two Stream adapters. One adapter will be called `main` for logging all messages, while the second one will be called `admin`, logging only messages generated in the admin area of our application 
 {: .alert .alert-info}
 
 ```php
@@ -98,7 +98,7 @@ $logger = $loggerFactory->load($config);
 
 ### `newInstance()`
 
-The [Phalcon\Logger\LoggerFactory](api/Phalcon_Logger#logger-loggerfactory) also offers the `newInstance()` method, that constructs a logger based on the supplied name and array of relevant adapters. Using the use case above:
+The [Phalcon\Logger\LoggerFactory](api/phalcon_logger#logger-loggerfactory) also offers the `newInstance()` method, that constructs a logger based on the supplied name and array of relevant adapters. Using the use case above:
 
 ```php
 <?php
@@ -118,7 +118,7 @@ $loggerFactory  = new LoggerFactory($adapterFactory);
 $logger = $loggerFactory->newInstance('prod-logger', $adapters);
 ```
 
-## Crear un registro
+## Creating a Logger
 
 La creación de un registro se hace en varios pasos. Primero, se crea un objeto de registro y, segundo, se incluye un adaptador. Cumplidos estos pasos, se pueden empezar a registar mensajes según las necesidades de la aplicación.
 
@@ -139,7 +139,7 @@ $logger  = new Logger(
 $logger->error('Something went wrong');
 ```
 
-The above example creates a [Stream](api/Phalcon_Logger#logger-adapter-stream) adapter. Luego se crea un objeto de registro y se le adjunta el adaptador. Cada adaptador debe tener un nombre único, de tal manera que el registro sepa dónde guardar los mensajes. When calling the `error()` method on the logger object, the message is going to be stored in the `/storage/logs/main.log`.
+The above example creates a [Stream](api/phalcon_logger#logger-adapter-stream) adapter. Luego se crea un objeto de registro y se le adjunta el adaptador. Cada adaptador debe tener un nombre único, de tal manera que el registro sepa dónde guardar los mensajes. When calling the `error()` method on the logger object, the message is going to be stored in the `/storage/logs/main.log`.
 
 Dado que el componente de registro implementa PSR-3, los siguientes métodos están disponibles:
 
@@ -185,7 +185,7 @@ El resultado de los anteriores mensajes registrados es:
 
 ## Multiple Adapters
 
-[Phalcon\Logger](api/Phalcon_Logger#logger-logger) can send messages to multiple adapters with a just single call:
+[Phalcon\Logger](api/phalcon_logger#logger-logger) can send messages to multiple adapters with a just single call:
 
 ```php
 <?php
@@ -212,9 +212,11 @@ $logger->error('Algo falló');
 
 Los mensajes se envían a los gestores en el orden en que fueron registrados según el principio [Primero en entrar, primero en salir](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)).
 
-### Exclusión de adaptadores
+### Excluding Adapters
 
-[Phalcon\Logger](api/Phalcon_Logger#logger-logger) also offers the ability to exclude logging to one or more adapters when logging a message. En especial, por ejemplo, cuando es necesario registrar un mensaje en el adaptador `manager` pero no en el adaptador `local` sin necesidad de instanciar un nuevo registro:
+[Phalcon\Logger](api/phalcon_logger#logger-logger) also offers the ability to exclude logging to one or more adapters when logging a message. En especial, por ejemplo, cuando es necesario registrar un mensaje en el adaptador `manager` pero no en el adaptador `local` sin necesidad de instanciar un nuevo registro:
+
+With the following setup:
 
 ```php
 <?php
@@ -234,15 +236,27 @@ $logger = new Logger(
         'manager' => $adapter3,
     ]
 );
+```
 
-// Log to all adapters
+we have the following:
+
+```php
+<?php
+
 $logger->error('Something went wrong');
+```
 
-// Log only to remote and manager
+Log to all adapters
+
+```php
+<?php
+
 $logger
     ->excludeAdapters(['local'])
     ->info('This does not go to the "local" logger');
 ```
+
+Log only to remote and manager
 
 > **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 {: .alert .alert-warning }
@@ -265,7 +279,7 @@ The class offers a number of constants that can be used to distinguish between l
 
 ## Log Levels
 
-[Phalcon\Logger](api/Phalcon_Logger#logger-logger) allows you to set the minimum log level for the logger(s) to log. If you set this integer value, any level higher in number than the one set will not be logged. Check the values of the constants in the previous section for the order that the levels are being set.
+[Phalcon\Logger](api/phalcon_logger#logger-logger) allows you to set the minimum log level for the logger(s) to log. If you set this integer value, any level higher in number than the one set will not be logged. Check the values of the constants in the previous section for the order that the levels are being set.
 
 In the following example, we set the log level to `ALERT`. We will only see `EMERGENCY`, `CRITICAL` **and** `ALERT` messages.
 
@@ -308,22 +322,64 @@ El resultado de los anteriores mensajes registrados es:
 
 The above can be used in situations where you want to log messages above a certain severity based on conditions in your application such as development mode vs. production.
 
-> The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
+> **NOTE**: The log level set is included in the logging. Anything **below** that level (i.e. higher number) will not be logged
 {: .alert .alert-info }
 
 > 
-> It is never a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
-{: .alert .alert-warning }
+> **NOTE**: It is **never** a good idea to suppress logging levels in your application, since even warning errors do require CPU cycles to be processed and neglecting these errors could potentially lead to unintended circumstances 
+{: .alert .alert-danger }
 
+## Transacciones
+
+[Phalcon\Logger](api/phalcon_logger#logger-logger) also offers the ability to queue the messages in your logger, and then *commit* them all together in the log file. This is similar to a database transaction with `begin` and `commit`. Each adapter exposes the following methods: - `begin` - begins the logging transaction - `inTransaction` - `bool` if you are in a transaction or not - `commit` - writes all the queued messages in the log file
+
+Since the functionality is available at the adapter level, you can program your logger to use transactions on a per adapter basis.
+
+```php
+<?php
+
+use Phalcon\Logger;
+use Phalcon\Logger\Adapter\Stream;
+
+$adapter1 = new Stream('/logs/first-log.log');
+$adapter2 = new Stream('/remote/second-log.log');
+$adapter3 = new Stream('/manager/third-log.log');
+
+$logger = new Logger(
+    'messages',
+    [
+        'local'   => $adapter1,
+        'remote'  => $adapter2,
+        'manager' => $adapter3,
+    ]
+);
+
+$logger->getAdapter('manager')->begin();
+
+$logger->error('Something happened');
+
+$logger->getAdapter('manager')->commit();
+```
+
+In the example above, we register three adapters. We set the `manager` logger to be in transaction mode. As soon as we call:
+
+```php
+$logger->error('Something happened');
+```
+
+the message will be logged in both `local` and `remote` adapters. It will be queued for the `manager` adapter and not logged until we call the `commit` method in the `manager` adapter.
+
+> **NOTE**: If you set one or more adapters to be in transaction mode (i.e. call `begin`) and forget to call `commit`, The adapter will call `commit` for you right before it is destroyed.
+{: .alert .alert-info }
 ## Formato de mensaje
 
 Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
 | Adaptador                                                                        | Descripción                                            |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [Phalcon\Logger\Formatter\Line](api/Phalcon_Logger#logger-formatter-line)     | Formats the message on a single line of text           |
-| [Phalcon\Logger\Formatter\Json](api/Phalcon_Logger#logger-formatter-json)     | Formats the message in a JSON string                   |
-| [Phalcon\Logger\Formatter\Syslog](api/Phalcon_Logger#logger-formatter-syslog) | Formats the message in an array compatible with Syslog |
+| [Phalcon\Logger\Formatter\Line](api/phalcon_logger#logger-formatter-line)     | Formats the message on a single line of text           |
+| [Phalcon\Logger\Formatter\Json](api/phalcon_logger#logger-formatter-json)     | Formats the message in a JSON string                   |
+| [Phalcon\Logger\Formatter\Syslog](api/phalcon_logger#logger-formatter-syslog) | Formats the message in an array compatible with Syslog |
 
 ### Formateador de línea
 
@@ -507,7 +563,7 @@ Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como ele
 
 ### Formateador personalizado
 
-The [Phalcon\Logger\Formatter\FormatterInterface](api/Phalcon_Logger#logger-formatter-formatterinterface) interface must be implemented in order to create your own formatter or extend the existing ones. Additionally you can reuse the [Phalcon\Logger\Formatter\AbstractFormatter](api/Phalcon_Logger#logger-formatter-abstractformatter) abstract class.
+The [Phalcon\Logger\Formatter\FormatterInterface](api/phalcon_logger#logger-formatter-formatterinterface) interface must be implemented in order to create your own formatter or extend the existing ones. Additionally you can reuse the [Phalcon\Logger\Formatter\AbstractFormatter](api/phalcon_logger#logger-formatter-abstractformatter) abstract class.
 
 ## Interpolación
 
@@ -540,11 +596,11 @@ $logger->info($message, $context);
 
 ## Item
 
-The formatter classes above accept a [Phalcon\Logger\Item](api/Phalcon_Logger#logger-item) object. The object contains all the necessary data required for the logging process. It is used as a transport of data from the logger to the formatter.
+The formatter classes above accept a [Phalcon\Logger\Item](api/phalcon_logger#logger-item) object. The object contains all the necessary data required for the logging process. It is used as a transport of data from the logger to the formatter.
 
 ## Exceptions
 
-Any exceptions thrown in the Logger component will be of type [Phalcon\Logger\Exception](api/Phalcon_Logger#logger-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Logger component will be of type [Phalcon\Logger\Exception](api/phalcon_logger#logger-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -660,11 +716,11 @@ $logger->error('Algo falló');
 
 ### Custom Adapters
 
-The [Phalcon\Logger\AdapterInterface](api/Phalcon_Logger#logger-adapter-adapterinterface) interface must be implemented in order to create your own logger adapters or extend the existing ones. You can also take advantage of the functionality in [Phalcon\Logger\Adapter\AbstractAdapter](api/Phalcon_Logger#logger-adapter-abstractadapter) abstract class.
+The [Phalcon\Logger\AdapterInterface](api/phalcon_logger#logger-adapter-adapterinterface) interface must be implemented in order to create your own logger adapters or extend the existing ones. You can also take advantage of the functionality in [Phalcon\Logger\Adapter\AbstractAdapter](api/phalcon_logger#logger-adapter-abstractadapter) abstract class.
 
 ### Abstract Classes
 
-There are two abstract classes that offer useful functionality when creating custom adapters: [Phalcon\Logger\Adapter\AbstractAdapter](api/Phalcon_Logger#logger-adapter-abstractadapter) and [Phalcon\Logger\Formatter\AbstractFormatter](api/Phalcon_Logger#logger-formatter-abstractformatter).
+There are two abstract classes that offer useful functionality when creating custom adapters: [Phalcon\Logger\Adapter\AbstractAdapter](api/phalcon_logger#logger-adapter-abstractadapter) and [Phalcon\Logger\Formatter\AbstractFormatter](api/phalcon_logger#logger-formatter-abstractformatter).
 
 ## Inyección de Dependencias
 

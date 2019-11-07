@@ -236,5 +236,5 @@ class ProductsController extends Controller
 }
 ```
 
-> While a transaction is active, the transaction manager will always return the same transaction across the application.
+> **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application.
 {: .alert .alert-info }

@@ -147,7 +147,7 @@ When a cached resultset needs to be invalidated, you can simply delete it from t
 
 What resultsets to cache and for how long will depend on the needs of your application. Resultsets that change frequently should not be cached, since the cache results will be invalidated quickly with subsequent changes to the underlying records that represent these resultsets.
 
-> Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
+> **NOTE**: Caching data comes with the cost of compiling and storing that data in the cache. You should always leverage that processing cost when formulating your caching strategy. What data is cached and for how long depends on the needs of your application.
 {: .alert .alert-info }
 
 ## Forcing Cache
@@ -547,7 +547,7 @@ class Invoices extends Model
 
 Getting all the invoices will also loop through the resultset and get all related `Customer` records, storing them in the resultset using the `customer` property. Once the operation is completed, the whole resultset is stored in the cache. Any subsequent call to `find` in `Invoices` will use the cached resultset without hitting the database.
 
-> You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
+> **NOTE**: You need to ensure that you have a strategy to invalidate the cache when the underlying records in the database change so that you always get the correct data with your queries.
 {: .alert .alert-warning }
 
 The above can also be performed using PHQL:
@@ -770,7 +770,7 @@ class CustomQuery extends ModelQuery
         }
 
         $result   = $this->executeSelect($ir, $params, $types);
-        $result   = $this->uniqueRow ? $result->getFirst() : $result;
+        $result   = $this->uniqueRow ? $result->getFirst(): $result;
         $cacheKey = $this->calculateKey();
 
         $this->getDI()->get('cache')->save($cacheKey, $result);

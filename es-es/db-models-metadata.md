@@ -16,7 +16,7 @@ keywords: 'model, caching, metadata, query fields'
 
 When using [Phalcon\Mvc\Model](api/Phalcon_Mvc#mvc-model) classes, which correspond to actual tables in the database, Phalcon needs to know essential information regarding those tables, such as fields, data types, primary and foreign keys as well as relationships. The [Phalcon\Mvc\Model\MetaData](api/Phalcon_Mvc#mvc-model-metadata) object is offering this functionality, transparently querying the database and generating the necessary data from the database schema. The data can then be stored in a data store (such as Redis, APCu etc.) to ensure that the database is not queried for the schema every time a query is executed.
 
-> During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
+> **NOTE**: During deployments to production, please ensure that you always invalidate the metaData cache so that database changes that propagated during your deployment are available in your application. The metaData cache will be rebuilt with all the necessary changes.
 {: .alert .alert-warning } 
 
 
@@ -308,7 +308,8 @@ public function hasAttribute(
     ModelInterface $model, 
     string $attribute
 ): bool
-```php
+```
+
 Check if a model has certain attribute
 
 ```php
@@ -517,7 +518,7 @@ Initialize the metadata for certain table
 
 Retrieving the metadata is an expensive database operation and we certainly do not want to perform it every time we run a query. We can however use one of many adapters available in order to cache the metadata.
 
-> For local development, the [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) adapter is recommended so that any changes to the database can be reflected immediately. 
+> **NOTE**: For local development, the [Phalcon\Mvc\Models\MetaData\Memory](api/Phalcon_Mvc#mvc-model-metadata-memory) adapter is recommended so that any changes to the database can be reflected immediately. 
 {: .alert .alert-info }
  
 | Adaptador                                                                                       | Descripción                                                                                                                                  |
