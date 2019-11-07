@@ -2,6 +2,7 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+upgrade: '#request'
 title: 'HTTP Request'
 keywords: 'http, http request, request'
 ---
@@ -14,7 +15,7 @@ keywords: 'http, http request, request'
 
 ## Overview
 
-[Phalcon\Http\Request](api/Phalcon_Http#http-request) is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
+[Phalcon\Http\Request](api/phalcon_http#http-request) is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request](api/phalcon_http#http-request) object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.
 
 ```php
 <?php
@@ -36,7 +37,7 @@ if (true === $request->isPost()) {
 
 PHP automatically fills the superglobal arrays [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) depending on the type of the request. These arrays contain the values present in forms submitted or the parameters sent via the URL. The variables in the arrays are never sanitized and can contain illegal characters or even malicious code, which can lead to [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) or [Cross Site Scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
 
-[Phalcon\Http\Request](api/Phalcon_Http#http-request) allows you to access the values stored in the [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
+[Phalcon\Http\Request](api/phalcon_http#http-request) allows you to access the values stored in the [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) arrays and sanitize or filter them with the <filter> service.
 
 There are 5 methods that allow you to retrieve submitted data from a request: - `get()` - `getQuery()` - `getPost()` - `getPut()` - `getServer()`
 
@@ -62,7 +63,7 @@ $request->get(
 
 ### $_REQUEST
 
-The [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://secure.php.net/manual/en/reserved.variables.cookies.php). You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/Phalcon_Http#http-request) object as follows:
+The [$_REQUEST](https://secure.php.net/manual/en/reserved.variables.request.php) superglobal contains an associative array that contains the contents of [$_GET](https://secure.php.net/manual/en/reserved.variables.get.php), [$_POST](https://secure.php.net/manual/en/reserved.variables.post.php) and [$_COOKIE](https://secure.php.net/manual/en/reserved.variables.cookies.php). You can retrieve the data stored in the array by calling the `get()` method in the [Phalcon\Http\Request](api/phalcon_http#http-request) object as follows:
 
 **Examples** Get the `userEmail` field from the `$_REQUEST` superglobal:
 
@@ -236,11 +237,11 @@ $request = new Request();
 $name = $request->getServer('SERVER_NAME');
 ```
 
-## Preset sanitizers
+## Preset Sanitizers
 
 It is relatively common that certain fields are using the same name throughout your application. A field posted from a form in your application can have the same name and function with another form in a different area. Examples of this behavior could be `id` fields, `name` etc.
 
-To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request](api/Phalcon_Http#http-request) offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
+To make the sanitization process easier, when retrieving such fields, [Phalcon\Http\Request](api/phalcon_http#http-request) offers a method to define those sanitizing filters based on HTTP methods when setting up the object.
 
 ```php
 <?php
@@ -287,7 +288,7 @@ These methods accept the same parameters as the `getPost()`, `getPut()` and `get
 
 ## Controladores
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, the [Phalcon\Http\Request](api/Phalcon_Http#http-request) is already registered for you. El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request](api/Phalcon_Http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Http\Request](api/phalcon_http#http-request) is already registered for you. El lugar más común para acceder el ambiente de la petición es en una acción de un controlador. To access the [Phalcon\Http\Request](api/phalcon_http#http-request) object from a controller you will need to use the `$this->request` public property of the controller:
 
 ```php
 <?php
@@ -318,17 +319,17 @@ class PostsController extends Controller
 }
 ```
 
-## Comprobando operaciones
+## Checking Operations
 
-The [Phalcon\Http\Request](api/Phalcon_Http#http-request) component contains a number of methods that help you check the current operation. Por ejemplo, si quieres comprobar si se ha realizado una solicitud en particular usando AJAX, puedes hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`. - `isAjax()`: comprueba si solicitud ha sido formulada utilizando AJAX - `isConnect()`: comprueba si el método HTTP es CONNECT - `isDelete()`: comprueba si método HTTP es DELETE - `isGet()`: comprueba si método HTTP es GET - `isHead()`: comprueba si método HTTP es HEAD - `isMethod()`: comprueba si el método HTTP coincide con ninguno de los métodos pasados - `isOptions()`: comprueba si el método HTTP es OPTIONS - `isPatch()`: comprueba si el método HTTP es PATCH - `isPost()`: comprueba si método HTTP es POST - `isPurge()`: comprueba si el método HTTP es PURGE (soporte para Squid y Varnish) - `isPut()`: comprueba si el método HTTP se PUT - `isSecure()`: comprueba si solicitud ha sido formulada con alguna capa segura - `isSoap()`: comprueba si solicitud ha sido formulada con SOAP - `isTrace()`: comprueba si método HTTP es TRACE - `isValidHttpMethod()`: comprueba si un método es un método HTTP válido
+The [Phalcon\Http\Request](api/phalcon_http#http-request) component contains a number of methods that help you check the current operation. Por ejemplo, si quieres comprobar si se ha realizado una solicitud en particular usando AJAX, puedes hacerlo usando el método `isAjax()`. Todos los métodos llevan el prefijo `is`. - `isAjax()`: comprueba si solicitud ha sido formulada utilizando AJAX - `isConnect()`: comprueba si el método HTTP es CONNECT - `isDelete()`: comprueba si método HTTP es DELETE - `isGet()`: comprueba si método HTTP es GET - `isHead()`: comprueba si método HTTP es HEAD - `isMethod()`: comprueba si el método HTTP coincide con ninguno de los métodos pasados - `isOptions()`: comprueba si el método HTTP es OPTIONS - `isPatch()`: comprueba si el método HTTP es PATCH - `isPost()`: comprueba si método HTTP es POST - `isPurge()`: comprueba si el método HTTP es PURGE (soporte para Squid y Varnish) - `isPut()`: comprueba si el método HTTP se PUT - `isSecure()`: comprueba si solicitud ha sido formulada con alguna capa segura - `isSoap()`: comprueba si solicitud ha sido formulada con SOAP - `isTrace()`: comprueba si método HTTP es TRACE - `isValidHttpMethod()`: comprueba si un método es un método HTTP válido
 
-## Comprobando existencia
+## Checking Existence
 
-Hay un número de métodos disponibles que le permiten comprobar la existencia de elementos de la solicitud. Estos métodos llevan el prefijo `has`. Dependiendo del método utilizado, puede comprobar si existe un elemento en el `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, caché PUT y los encabezados de solicitud. - `has()`: comprueba si la superglobal $_REQUEST tiene un cierto elemento - `hasFiles()`: comprueba si la solicitud tiene subido archivos - `hasHeader()`: comprueba si las cabeceras tienen un cierto elemento - `hasPost()`: comprueba si $_POST superglobal tiene un cierto elemento - `hasPut()`: comprueba si PUT tiene un cierto elemento - `hasQuery()`: comprueba si la superglobal $_GET tiene un cierto elemento - `hasServer()`: comprueba si la superglobal $_SERVER tiene un cierto elemento
+Hay un número de métodos disponibles que le permiten comprobar la existencia de elementos de la solicitud. Estos métodos llevan el prefijo `has`. Dependiendo del método utilizado, puede comprobar si existe un elemento en el `$_REQUEST`, `$_GET`, `$_POST`, `$_SERVER`, `$_FILES`, caché PUT y los encabezados de solicitud. - `has()`: Checks whether the $_REQUEST superglobal has a certain element - `hasFiles()`: Checks whether the request has any uploaded files - `hasHeader()`: Checks whether the headers have a certain element - `hasPost()`: Checks whether $_POST superglobal has a certain element - `hasPut()`: Checks whether the PUT data has a certain element - `hasQuery()`: Checks whether $_GET superglobal has a certain element - `hasServer()`: Checks whether $_SERVER superglobal has a certain element - `numFiles()`: Returns the number of files present in the request
 
-## Request information
+## Request Information
 
-The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object offers methods that provide additional information regarding the request.
+The [Phalcon\Http\Request](api/phalcon_http#http-request) object offers methods that provide additional information regarding the request.
 
 ### Authentication
 
@@ -450,11 +451,11 @@ echo $request->getMethod();
 
 ## Inyección de Dependencias
 
-The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di#di-injectionawareinterface) interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
+The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Trabajando con Cabeceras
 
-Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request](api/Phalcon_Http#http-request) exposes the `getHeader()` and `getHeaders()` methods.
+Request headers contain useful information, allowing you to take necessary steps to send the proper response back to the user. The [Phalcon\Http\Request](api/phalcon_http#http-request) exposes the `getHeader()` and `getHeaders()` methods.
 
 ```php
 <?php
@@ -483,7 +484,7 @@ Optionally `getHttpHost()` validates and performs a strict check on the host nam
 
 ## Uploaded Files
 
-Another common task is file uploading. [Phalcon\Http\Request](api/Phalcon_Http#http-request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://secure.php.net/manual/en/ini.core.php#ini.file-uploads)).
+Another common task is file uploading. [Phalcon\Http\Request](api/phalcon_http#http-request) offers an object-oriented way work with files. For the whole upload process to work, you will need to make the necessary changes to your `php.ini` (see [php-uploads](https://secure.php.net/manual/en/ini.core.php#ini.file-uploads)).
 
 ```php
 <?php
@@ -500,6 +501,7 @@ class PostsController extends Controller
 {
     public function uploadAction()
     {
+        // if ($this->request->numFiles() > 0) {
         if ($this->request->hasFiles()) {
             $files = $this->request->getUploadedFiles();
 
@@ -515,11 +517,11 @@ class PostsController extends Controller
 }
 ```
 
-Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) which implements the [Phalcon\Http\Request\FileInterface](api/Phalcon_Http#http-request-fileinterface) class. Using the `$_FILES` superglobal array offers the same behavior. [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) encapsulates only the information related to each file uploaded with the request.
+Each object returned by `Phalcon\Http\Request::getUploadedFiles()` is an instance of the [Phalcon\Http\Request\File](api/phalcon_http#http-request-file) which implements the [Phalcon\Http\Request\FileInterface](api/phalcon_http#http-request-fileinterface) class. Using the `$_FILES` superglobal array offers the same behavior. [Phalcon\Http\Request\File](api/phalcon_http#http-request-file) encapsulates only the information related to each file uploaded with the request.
 
 The `getUploadedFiles()` accepts two parameters. - `$onlySuccessful`: Contains only successful uploads - `$namedKeys`: Returns the array with named keys obtained by the upload process
 
-The method returns an array of [Phalcon\Http\Request\File](api/Phalcon_Http#http-request-file) objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
+The method returns an array of [Phalcon\Http\Request\File](api/phalcon_http#http-request-file) objects. Each object offers the following properties and methods, allowing you to work with uploaded files:
 
 * `getError()` (string) - Returns any error that happened with this file
 * `getExtension()` (string) - Returns the extension of the file
@@ -534,11 +536,11 @@ The method returns an array of [Phalcon\Http\Request\File](api/Phalcon_Http#http
 
 ## Inyección de Dependencias
 
-The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/Phalcon_Di#di-injectionawareinterface) interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
+The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Di\InjectionAwareInterface](api/phalcon_di#di-injectionawareinterface) interface. Como resultado, el contenedor DI está disponible y puede ser recuperado usando el método `getDI()`. Un contenedor también puede ser establecido usando el método `setDI()`.
 
 ## Eventos
 
-The [Phalcon\Http\Request](api/Phalcon_Http#http-request) object implements the [Phalcon\Events\EventsAware](api/Phalcon_Events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
+The [Phalcon\Http\Request](api/phalcon_http#http-request) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 
 | Evento                       | Descripción                                      | Can stop operation |
 | ---------------------------- | ------------------------------------------------ |:------------------:|
