@@ -61,7 +61,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 | `beforeException`      | Triggered before the dispatcher throws any exception                                                                                                                                                           | Evet                    | Listeners             |
 | `beforeExecuteRoute`   | Triggered before executing the controller/action method. At this point the dispatcher has been initialized the controller and know if the action exist.                                                        | Evet                    | Listeners/Controllers |
 | `beforeNotFoundAction` | Triggered when the action was not found in the controller                                                                                                                                                      | Evet                    | Listeners             |
-| `initialize`           | Allow to globally initialize the controller in the request                                                                                                                                                     | Hayır                   | Kontrolcüler          |
+| `initialize`           | Allow to globally initialize the controller in the request                                                                                                                                                     | Hayır                   | Controllers           |
 
 The [INVO](tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](acl)
 

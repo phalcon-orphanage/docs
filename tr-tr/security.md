@@ -2,11 +2,11 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
-title: 'Güvenlik'
+title: 'Security'
 keywords: 'security, hashing, passwords'
 ---
 
-# Güvenlik
+# Security
 
 * * *
 

@@ -526,7 +526,7 @@ $app->get(
 );
 ```
 
-**Kontrolcüler**
+**Controllers**
 
 With the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) you can create micro or *medium* applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application. In medium applications you can organize handlers in controllers.
 
@@ -623,7 +623,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-**Kullanım örneği**
+**Use case**
 
 We are developing an API for an online store. The endpoints are `/users`, `/invoices` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -1546,7 +1546,7 @@ $app->get(
 );
 ```
 
-## Olaylar
+## Events
 
 A [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application works closely with an [Events Manager](events) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -2225,7 +2225,7 @@ class ResponseMiddleware implements MiddlewareInterface
 }
 ```
 
-### Modeller
+### Models
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 

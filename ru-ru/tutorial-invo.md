@@ -4,7 +4,7 @@ language: 'ru-ru'
 version: '4.0'
 ---
 
-# Tutorial - INVO
+# Урок: INVO
 
 * * *
 
@@ -12,13 +12,13 @@ version: '4.0'
 
 ## INVO
 
-In this tutorial, we'll explain a more complete application in order to gain a deeper understanding of developing with Phalcon. INVO is one of the sample applications we have created. INVO is a small website that allows users to generate invoices and do other tasks such as manage customers and products. You can clone its code from [GitHub](https://github.com/phalcon/invo).
+В этом уроке мы разберем более полное приложение, чтобы полнее получить представление о разработке с Phalcon. INVO является одним из примеров приложений, которые мы создали. INVO это небольшой веб-сайт, который позволяет пользователям создавать счета и выполнять другие задачи, такие как управление клиентами и продуктами. Вы можете клонировать его код с [GitHub](https://github.com/phalcon/invo).
 
-INVO was made with the client-side framework [Bootstrap](https://getbootstrap.com). Although the application does not generate actual invoices, it still serves as an example showing how the framework works.
+INVO был создан с клиентским фреймворком [Bootstrap](https://getbootstrap.com). Хотя приложение не генерирует фактические счета, он по-прежнему служит примером того, как работает фреймворк.
 
-## Project Structure
+## Структура проекта
 
-Once you clone the project in your document root you'll see the following structure:
+После клонирования проекта в корне документа вы увидите следующую структуру:
 
 ```bash
 invo/
@@ -41,9 +41,9 @@ invo/
     schemas/
 ```
 
-As you know, Phalcon does not impose a particular file structure for application development. This project has a simple MVC structure and a public document root.
+Как вы знаете, Phalcon не навязывает определенную файловую структуру для разработки приложений. Этот проект имеет простую MVC-структуру и корневой каталог публичных документов.
 
-Once you open the application in your browser `https://localhost/invo` you'll see something like this:
+Как только вы откроете приложение в вашем браузере `https://localhost/invo` вы увидите что-то вроде этого:
 
 ![](/assets/images/content/tutorial-invo-1.png)
 
@@ -1389,7 +1389,7 @@ class Products extends Model
 }
 ```
 
-A model can have a method called `initialize()`, this method is called once per request and it serves the ORM to initialize a model. In this case, 'Products' is initialized by defining that this model has a one-to-many relationship to another model called 'ProductTypes'.
+Модель может иметь метод `initialize()`, этот метод вызывается один раз по запросу и служит ORM для инициализации модели. В этом случае 'Products' инициализируется определением того, что эта модель имеет связь один ко многим с другой моделью, называемой 'ProductTypes'.
 
 ```php
 <?php
@@ -1434,7 +1434,7 @@ Printing whether the product is active or not uses a helper implemented in the m
 {% endraw %}
 ```
 
-This method is defined in the model.
+Этот метод определен в модели.
 
 ## Creating and Updating Records
 

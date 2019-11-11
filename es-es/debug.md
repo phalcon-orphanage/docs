@@ -12,7 +12,7 @@ keywords: 'debug, debugging, error handling'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 ![](/assets/images/content/xdebug-1.jpg)
 

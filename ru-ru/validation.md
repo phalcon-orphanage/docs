@@ -2,7 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Validation'
+title: 'Валидация'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -270,7 +270,7 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Validation\Validator\Digit](api/phalcon_validation#validation-validator-digit)                                   | Numeric character(s).      |
 | [Phalcon\Validation\Validator\Email](api/phalcon_validation#validation-validator-email)                                   | Email                      |
 | [Phalcon\Validation\Validator\ExclusionIn](api/phalcon_validation#validation-validator-exclusionin)                       | Not within value set       |
-| [Phalcon\Validation\Validator\File](api/phalcon_validation#validation-validator-file)                                     | Файл                       |
+| [Phalcon\Validation\Validator\File](api/phalcon_validation#validation-validator-file)                                     | File                       |
 | [Phalcon\Validation\Validator\File\MimeType](api/phalcon_validation#validation-validator-file-mimetype)                  | Mimetype File              |
 | [Phalcon\Validation\Validator\File\Resolution\Equal](api/phalcon_validation#validation-validator-file-resolution-equal) | Equal resolution of File   |
 | [Phalcon\Validation\Validator\File\Resolution\Max](api/phalcon_validation#validation-validator-file-resolution-max)     | Minimum resolution of File |
@@ -766,7 +766,7 @@ $validator->add(
 );
 ```
 
-### Файл
+### File
 
 Checks if a value has a correct file
 
@@ -1640,7 +1640,7 @@ $validator->add(
 );
 ```
 
-### Url
+### URL
 
 Checks if a value has a url format
 

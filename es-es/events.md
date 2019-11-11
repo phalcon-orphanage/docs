@@ -12,7 +12,7 @@ keywords: 'events, events manager, hooks'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 The purpose of this component is to intercept the execution of components in the framework by creating *hooks*. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event](api/phalcon_events#events-event) objects, which contain information about each hook/event.
 
@@ -966,13 +966,13 @@ The event will always have as The events available in Phalcon are:
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [View](view)                | `view:afterCompile`                  | Volt                                                    |
-| [View](view)                | `view:afterRender`                   | View                                                    |
-| [View](view)                | `view:afterRenderView`               | View                                                    |
-| [View](view)                | `view:beforeCompile`                 | Volt                                                    |
-| [View](view)                | `view:beforeRender`                  | View                                                    |
-| [View](view)                | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [View](view)                | `view:notFoundView`                  | View, View Engine Path                                  |
+| [Vistas](view)              | `view:afterCompile`                  | Volt                                                    |
+| [Vistas](view)              | `view:afterRender`                   | Vistas                                                  |
+| [Vistas](view)              | `view:afterRenderView`               | Vistas                                                  |
+| [Vistas](view)              | `view:beforeCompile`                 | Volt                                                    |
+| [Vistas](view)              | `view:beforeRender`                  | Vistas                                                  |
+| [Vistas](view)              | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [Vistas](view)              | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |

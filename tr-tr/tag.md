@@ -1421,7 +1421,7 @@ Volt syntax:
 ) }}{% endraw %}
 ```
 
-## Formlar
+## Forms
 
 Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/Phalcon_Tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 

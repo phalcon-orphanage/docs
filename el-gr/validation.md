@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Validation'
+title: 'Επικύρωση'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -254,7 +254,7 @@ if (count($messages)) {
 }
 ```
 
-## Validators
+## Επικυρωτές
 
 Phalcon offers a set of built-in validators for this component:
 

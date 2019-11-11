@@ -2,10 +2,10 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Image'
+title: 'Изображения'
 ---
 
-# Image
+# Изображения
 
 * * *
 
@@ -486,7 +486,7 @@ $image->watermark(
 $image->save('watermark-image.jpg');
 ```
 
-## Factory
+## Фабрика
 
 ### `newInstance`
 

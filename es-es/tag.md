@@ -11,7 +11,7 @@ title: 'Tag'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
@@ -1421,7 +1421,7 @@ Sintaxis Volt:
 ) }}{% endraw %}
 ```
 
-## Forms
+## Formularios
 
 Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/Phalcon_Tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 

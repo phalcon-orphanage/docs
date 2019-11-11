@@ -430,7 +430,7 @@ $ phalcon scaffold --table-name products
 
 The scaffold generator will build several files in your application, along with some folders. Here's a quick overview of what will be generated:
 
-| Файл                                     | Предназначение                      |
+| File                                     | Предназначение                      |
 | ---------------------------------------- | ----------------------------------- |
 | `app/controllers/ProductsController.php` | Контроллер продуктов                |
 | `app/models/Products.php`                | Модель продуктов                    |

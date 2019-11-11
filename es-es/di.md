@@ -12,7 +12,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 [Phalcon\Di](api/phalcon_di#di) is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
 
@@ -1596,7 +1596,7 @@ The services registered in the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-fac
 | `request`            | [Phalcon\Http\Request](request)                                   | Si     | HTTP Request                 |
 | `response`           | [Phalcon\Http\Response](response)                                 | Si     | HTTP Response                |
 | `router`             | [Phalcon\Mvc\Router](routing)                                     | Si     | Router                       |
-| `security`           | [Phalcon\Security](security)                                       | Si     | Security                     |
+| `security`           | [Phalcon\Security](security)                                       | Si     | Seguridad                    |
 | `session`            |                                                                     |        | Session Service              |
 | `sessionBag`         | [Phalcon\Session\Bag](session#bag)                                | Si     | Session Bag service          |
 | `tag`                | [Phalcon\Tag](tag)                                                 | Si     | HTML Tag helpers             |

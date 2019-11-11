@@ -142,7 +142,7 @@ vokuro/
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
 | `src/Controllers` | Controladores                                         |
-| `src/Forms`       | Forms                                                 |
+| `src/Forms`       | Formularios                                           |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
@@ -187,7 +187,7 @@ Once the configuration file is in place, visiting the IP address will present a 
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-### `Database`
+### `Base de Datos`
 
 You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
@@ -501,7 +501,7 @@ The available providers are:
 | `MailProvider`           | Mail support                                      |
 | `ModelsMetadataProvider` | Metadata for models                               |
 | `RouterProvider`         | Routes                                            |
-| `SecurityProvider`       | Security                                          |
+| `SecurityProvider`       | Seguridad                                         |
 | `SessionBagProvider`     | Session data                                      |
 | `SessionProvider`        | Session data                                      |
 | `UrlProvider`            | URL handling                                      |
@@ -509,7 +509,7 @@ The available providers are:
 
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
-## Database
+## Base de Datos
 
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
@@ -669,7 +669,7 @@ and the view is located:
 
 The available views are:
 
-| Controller    | Action           | View                           | Descripción                                 |
+| Controller    | Action           | Vistas                         | Descripción                                 |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Índice`      | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1048,7 +1048,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### View
+### Vistas
 
 Now that we have everything set up in our form, we pass the form to the view:
 
@@ -1518,7 +1518,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**Validación**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 

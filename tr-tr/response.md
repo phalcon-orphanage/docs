@@ -681,7 +681,7 @@ class PostsController extends Controller
 }
 ```
 
-## Olaylar
+## Events
 
 The [Phalcon\Http\Response](api/Phalcon_Http#http-response) object implements the [Phalcon\Events\EventsAware](api/Phalcon_Events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 

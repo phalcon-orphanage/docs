@@ -221,7 +221,7 @@ use Phalcon\Url;
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Регистрируем автозагрузчик
+// Register an autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
@@ -317,7 +317,7 @@ If found it will parse it and send the output on screen. Our view then will have
 `app/views/index/index.phtml`
 
 ```php
-<?php echo "<h1>Привет!</h1>";
+<?php echo "<h1>Hello!</h1>";
 ```
 
 and since we moved the `echo` from our controller action to the view, it will be empty now:
@@ -340,7 +340,7 @@ class IndexController extends Controller
 
 The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
 
-## Проектирование формы регистрации
+## Designing a sign-up form
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
 
@@ -349,7 +349,7 @@ Now we will change the `index.phtml` view file, to add a link to a new controlle
 ```php
 <?php
 
-echo "<h1>Привет!</h1>";
+echo "<h1>Hello!</h1>";
 
 echo PHP_EOL;
 
@@ -357,7 +357,7 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     'signup',
-    'Регистрируйся!'
+    'Sign Up Here!'
 );
 ```
 

@@ -26,7 +26,7 @@ Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar 
 extension=psr.so
 ```
 
-before
+antes
 
 ```ini
 extension=phalcon.so
@@ -335,7 +335,7 @@ Clonar el repositorio
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compilar Phalcon
+Compilación de Phalcon
 
 ```bash
 cd cphalcon/

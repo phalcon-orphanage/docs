@@ -118,7 +118,7 @@ Returns cached output on another view stage
 getOptions(): array
 ```
 
-Return Volt's options
+Возвращает опции Volt
 
 ```php
 getView(): ViewBaseInterface
@@ -136,7 +136,7 @@ Checks if the needle is included in the haystack
 length(mixed $item): int
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Фильтр длины. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 ```php
 partial(string $partialPath, mixed $params = null): string
@@ -166,7 +166,7 @@ Extracts a slice from a string/array/traversable object value
 sort(array $value): array
 ```
 
-Sorts an array
+Сортирует массив
 
 ## Activation
 

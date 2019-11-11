@@ -285,7 +285,7 @@ class Invoices extends Controller
 
 As the familiar SQL, PHQL allows selecting records using the `SELECT` statement, except that instead of specifying tables, we use the model classes:
 
-**Modeller**
+**Models**
 
 ```sql
 SELECT 

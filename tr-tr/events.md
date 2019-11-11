@@ -691,7 +691,7 @@ try {
 }
 ```
 
-## Kontrolcüler
+## Controllers
 
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
@@ -738,7 +738,7 @@ class BaseController extends Controller
 
 Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
 
-## Modeller
+## Models
 
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
@@ -966,13 +966,13 @@ The event will always have as The events available in Phalcon are:
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [Görünüm](view)             | `view:afterCompile`                  | Volt                                                    |
-| [Görünüm](view)             | `view:afterRender`                   | Görünüm                                                 |
-| [Görünüm](view)             | `view:afterRenderView`               | Görünüm                                                 |
-| [Görünüm](view)             | `view:beforeCompile`                 | Volt                                                    |
-| [Görünüm](view)             | `view:beforeRender`                  | Görünüm                                                 |
-| [Görünüm](view)             | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [Görünüm](view)             | `view:notFoundView`                  | View, View Engine Path                                  |
+| [View](view)                | `view:afterCompile`                  | Volt                                                    |
+| [View](view)                | `view:afterRender`                   | View                                                    |
+| [View](view)                | `view:afterRenderView`               | View                                                    |
+| [View](view)                | `view:beforeCompile`                 | Volt                                                    |
+| [View](view)                | `view:beforeRender`                  | View                                                    |
+| [View](view)                | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [View](view)                | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |

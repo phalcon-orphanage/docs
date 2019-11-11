@@ -12,7 +12,7 @@ keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializea
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 `Phalcon\Collection` is an object oriented array. It offers speed, as well as implementations of various PHP interfaces. These are:
 

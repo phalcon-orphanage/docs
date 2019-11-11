@@ -12,7 +12,7 @@ keywords: 'controllers, mvc'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called *actions* that contain such business logic and handle user requests.
 
@@ -23,7 +23,7 @@ Controllers in Phalcon **must** have the suffix `Controller` in their file and c
 > **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 {: .alert .alert-info }
 
-## Routing
+## Ruteo
 
 [Routing](routing) is further explained in the relevant document. However the default route is:
 

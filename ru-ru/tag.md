@@ -2,7 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Tag'
+title: 'Теги'
 ---
 
 # Tag (View Helpers)
@@ -1200,7 +1200,7 @@ echo $this->tag->tagHtmlClose('canvas');
 {% endraw %}
 ```
 
-## Assets
+## Медиа-ресурсы
 
 [Phalcon\Tag](api/Phalcon_Tag) offers helper methods to generate stylesheet and javascript HTML tags.
 
@@ -1421,7 +1421,7 @@ echo $this->tag->linkTo(
 ) }}{% endraw %}
 ```
 
-## Forms
+## Формы
 
 Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/Phalcon_Tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 

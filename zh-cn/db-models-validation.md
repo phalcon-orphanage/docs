@@ -12,7 +12,7 @@ keywords: 'models, validation, uniqueness, inclusionin'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## 概述
+## Overview
 
 [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) provides several events to validate data and implement business rules.
 

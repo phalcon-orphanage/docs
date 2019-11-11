@@ -82,7 +82,7 @@ $di->set(
 );
 ```
 
-## Kontrolcüler
+## Controllers
 
 The following example shows how to implement a controller that uses namespaces:
 
@@ -107,7 +107,7 @@ class InvoicesController extends Controller
 }
 ```
 
-## Modeller
+## Models
 
 The following example shows a model that is namespaced:
 

@@ -6,7 +6,7 @@ title: 'Contributing'
 keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
-# Доповнення
+# Contributions
 
 * * *
 

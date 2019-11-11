@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Forms'
+title: 'Φόρμες'
 keywords: 'forms, render html, validation, elements'
 ---
 
-# Forms
+# Φόρμες
 
 * * *
 
@@ -751,7 +751,7 @@ $email
 > For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Validation
+## Επικύρωση
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 

@@ -3,7 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 upgrade: '#request'
-title: 'HTTP Request'
+title: 'HTTP Запрос'
 keywords: 'http, http request, request'
 ---
 

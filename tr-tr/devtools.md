@@ -19,7 +19,7 @@ These tools are a collection of useful scripts to generate skeleton code. Core c
 > **NOTE**: If you prefer to use the web version instead of the console, this [blog post](https://blog.phalcon.io/post/dont-like-command-line-and-consoles-no-problem) offers more information.
 {: .alert .alert-danger }
 
-## Kurulum
+## Installation
 
 ### Linux
 

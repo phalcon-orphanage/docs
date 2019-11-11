@@ -2,7 +2,7 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Installation'
+title: 'Εγκατάσταση'
 keywords: 'installation, installing Phalcon'
 ---
 
