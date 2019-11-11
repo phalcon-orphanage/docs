@@ -142,7 +142,7 @@ vokuro/
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
 | `src/Controllers` | Controllers                                           |
-| `src/Forms`       | Forms                                                 |
+| `src/Forms`       | Формы                                                 |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
 | `src/Providers`   | Providers: setting services in the DI container       |
@@ -215,7 +215,7 @@ And the `status` command will now show all green:
 
 ![](/assets/images/content/tutorial-vokuro-4.png)
 
-### Config
+### Конфигурация
 
 **acl.php**
 
@@ -1518,7 +1518,7 @@ The `afterSave` event fires right after a record is saved in the database. In th
 > Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
-**Validation**
+**Валидация**
 
 The model also has the `validate` method which allows us to attach a validator to any number of fields in our model. For the `Users` table, we need the `email` to be unique. As such, we attach the `Uniqueness` [validator](validation) to it. The validator will fire right before any save operation is performed on the model and the message will be returned back if the validation fails.
 
