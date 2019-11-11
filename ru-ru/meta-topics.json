@@ -167,11 +167,11 @@
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "Кэш",
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "Конфигурация",
                 "url": "/config"
             },
             {
@@ -213,7 +213,7 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "Кэш",
                 "url": "/db-models-cache"
             },
             {
@@ -247,7 +247,7 @@
         "url": "",
         "menu": [
             {
-                "text": "Assets",
+                "text": "Медиа-ресурсы",
                 "url": "/assets"
             },
             {
@@ -255,15 +255,15 @@
                 "url": "/flash"
             },
             {
-                "text": "Forms",
+                "text": "Формы",
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "Изображения",
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "Теги",
                 "url": "/tag"
             },
             {
@@ -285,7 +285,7 @@
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "Аннотации",
                 "url": "/annotations"
             },
             {
@@ -313,11 +313,11 @@
                 "url": "/session"
             },
             {
-                "text": "Url",
+                "text": "URL",
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "Валидация",
                 "url": "/validation"
             }
         ]
@@ -413,7 +413,7 @@
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "Helper",
                 "url": "/translate"
             }
         ]
