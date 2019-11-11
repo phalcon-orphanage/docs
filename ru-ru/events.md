@@ -923,7 +923,7 @@ The event will always have as The events available in Phalcon are:
 | [Dispatcher](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
 | [Firewall](acl)             | `firewall:beforeException`           | Adapter, Exception                                      |
 | [Firewall](acl)             | `firewall:afterCheck`                | Acl / Annotations / Acl                                 |
-| [Firewall](acl)             | `firewall:beforeCheck`               | Annotations                                             |
+| [Firewall](acl)             | `firewall:beforeCheck`               | Аннотации                                               |
 | [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Loader](loader)            | `loader:beforeCheckPath`             | Loader                                                  |
