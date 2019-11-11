@@ -11,7 +11,7 @@ title: 'Image'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## 概述
+## Overview
 
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
