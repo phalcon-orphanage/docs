@@ -32,7 +32,7 @@ Phalcon requiere la extensión PSR. La extensión se puede descargar y compilar 
 extension=psr.so
 ```
 
-before
+antes
 
 ```ini
 extension=phalcon.so
@@ -50,7 +50,7 @@ Clonar el repositorio
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Compilar Phalcon
+Compilación de Phalcon
 
 ```bash
 cd cphalcon/
@@ -90,7 +90,7 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-### Overview
+### Controladores
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -404,7 +404,7 @@ echo Enum::FETCH_ASSOC;
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### Controladores
 
 The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -494,7 +494,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## Formularios
 
 ### Forms\Form
 
@@ -568,7 +568,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Registrador
+## Logger
 
 > Status: **changes required**
 > 
@@ -867,7 +867,7 @@ $group->addTrace(
 
 * * *
 
-## Security
+## Seguridad
 
 - Removed `hasLibreSsl`
 - Removed `getSslVersionNumber`
@@ -952,7 +952,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## Validación
 
 ### Validation\Message
 
@@ -1140,7 +1140,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Formularios
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1212,7 +1212,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
 
-### Registrador
+### Logger
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
@@ -1329,7 +1329,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### Validación
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |
