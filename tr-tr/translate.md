@@ -207,7 +207,7 @@ and for Volt:
 <p>{% raw %}{{ locale._('hi-name', ['name' => 'Mike']) }}{% endraw %}</p>
 ```
 
-### Yönlendirme
+### Routing
 
 Some applications use the URL of the request to distinguish content based on different languages, in order to help with SEO. A sample URL is: ```bash https://mozilla.org/es-ES/firefox/
 
