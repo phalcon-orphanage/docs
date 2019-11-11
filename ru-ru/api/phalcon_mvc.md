@@ -10881,7 +10881,7 @@ Returns the internal event manager
 public function getOptions(): array;
 ```
 
-Return Volt's options
+Возвращает опции Volt
 
 ```php
 public function isIncluded( mixed $needle, mixed $haystack ): bool;
@@ -10893,7 +10893,7 @@ Checks if the needle is included in the haystack
 public function length( mixed $item ): int;
 ```
 
-Length filter. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
+Фильтр длины. If an array/object is passed a count is performed otherwise a strlen/mb_strlen
 
 ```php
 public function render( string $templatePath, mixed $params, bool $mustClean = bool );
@@ -10923,7 +10923,7 @@ Extracts a slice from a string/array/traversable object value
 public function sort( array $value ): array;
 ```
 
-Sorts an array
+Сортирует массив
 
 <h1 id="mvc-view-engine-volt-compiler">Class Phalcon\Mvc\View\Engine\Volt\Compiler</h1>
 
