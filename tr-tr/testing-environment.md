@@ -30,7 +30,7 @@ We have tried in the past to create a development environment based on docker, b
 
 Recently however, we have redoubled our efforts to create this environment and we decided to use [nanobox](https://nanobox.io). For those that do not know, nanobox is a "wrapper" to docker which creates a unique environment in your machine, ready to use. The environment is folder based so you could potentially have two folders where you have cloned Phalcon, and use the PHP 7.2 on one and the 7.3 on the other. Each of those environments is completely isolated. We have been using nanobox for a while now and it is working extremely well.
 
-# Kurulum
+# Installation
 
 You will first need to have docker installed on your machine. Instructions on how to do that, can be found [here](https://docs.docker.com/engine/installation/).
 
