@@ -175,7 +175,7 @@ And now we can generate any URL using `get()` in subsequent actions, that will b
 {: .alert .alert-info }
 
 
-### Yönlendirme
+### Routing
 
 If you are using the [Router](routing) with its default behavior, your application is able to match routes based on the following pattern:
 
