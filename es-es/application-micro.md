@@ -12,7 +12,7 @@ keywords: 'application, micro, handlers, api'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
 
@@ -623,7 +623,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-**Use case**
+**Casos de uso**
 
 We are developing an API for an online store. The endpoints are `/users`, `/invoices` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -1638,14 +1638,14 @@ Middleware can be attached to a micro application in 3 different events. Those a
 
 | Evento   | Descripción                                                                   |
 | -------- | ----------------------------------------------------------------------------- |
-| `before` | Antes de que el manejador haya sido ejecutado                                 |
+| `antes`  | Antes de que el manejador haya sido ejecutado                                 |
 | `after`  | Después de que el manejador haya sido ejecutado                               |
 | `finish` | Después de que la respuesta ha sido enviada al componente que hizo la llamada |
 
 > **NOTE**: You can attach as many middleware classes as you want in each of the above events. They will be executed sequentially when the relevant event fires.
 {: .alert .alert-warning }
 
-**before**
+**antes**
 
 This event is perfect for stopping execution of the application if certain criteria is not met. In the below example we are checking if the user has been authenticated and stop execution with the necessary redirect.
 
