@@ -2,11 +2,11 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
-title: 'Sayfa numaralandırma'
+title: 'Pagination'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
 
-# Sayfa numaralandırma
+# Pagination
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 
