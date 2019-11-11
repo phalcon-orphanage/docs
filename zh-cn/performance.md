@@ -12,7 +12,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## 概述
+## Overview
 
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
 
