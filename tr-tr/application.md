@@ -695,7 +695,7 @@ try {
 }
 ```
 
-## Olaylar
+## Events
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. Aşağıdaki olaylar desteklenmektedir:
 
