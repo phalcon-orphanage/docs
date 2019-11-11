@@ -2,17 +2,17 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Forms'
+title: 'Formularios'
 keywords: 'forms, render html, validation, elements'
 ---
 
-# Forms
+# Formularios
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
 
@@ -751,7 +751,7 @@ $email
 > For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Validation
+## Validación
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
