@@ -2,7 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Validation'
+title: 'Валидация'
 keywords: 'validation, validating forms, validating models, validating data'
 ---
 
@@ -1640,7 +1640,7 @@ $validator->add(
 );
 ```
 
-### Url
+### URL
 
 Checks if a value has a url format
 
