@@ -2,11 +2,11 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Security'
+title: 'Seguridad'
 keywords: 'security, hashing, passwords'
 ---
 
-# Security
+# Seguridad
 
 * * *
 
