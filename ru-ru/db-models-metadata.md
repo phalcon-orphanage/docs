@@ -711,7 +711,7 @@ $container->set(
 
 This strategy does not require any customization and is implicitly used by all the metadata adapters.
 
-### Annotations
+### Аннотации
 
 This strategy makes use of <annotations> to describe the columns in a model.
 
