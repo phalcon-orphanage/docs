@@ -2,10 +2,10 @@
 layout: default
 language: 'es-es'
 version: '4.0'
-title: 'Use Case'
+title: 'Caso de Uso'
 ---
 
-# Use Case
+# Caso de Uso
 
 * * *
 
