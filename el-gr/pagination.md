@@ -2,11 +2,11 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
-title: 'Pagination'
+title: 'Σελιδοποίηση'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
 
-# Pagination
+# Σελιδοποίηση
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 
