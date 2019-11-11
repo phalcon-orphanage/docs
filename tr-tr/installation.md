@@ -2,11 +2,11 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
-title: 'Kurulum'
+title: 'Installation'
 keywords: 'installation, installing Phalcon'
 ---
 
-# Kurulum
+# Installation
 
 * * *
 
