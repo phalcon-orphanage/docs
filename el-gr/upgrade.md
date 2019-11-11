@@ -40,7 +40,7 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-### Installation
+### Εγκατάσταση
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -494,7 +494,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## Φόρμες
 
 ### Forms\Form
 
@@ -952,7 +952,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## Επικύρωση
 
 ### Validation\Message
 
@@ -1140,7 +1140,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Φόρμες
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1329,7 +1329,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### Επικύρωση
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |
