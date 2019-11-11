@@ -141,7 +141,7 @@ echo Enum::DENY;  //prints 0
 
 * * *
 
-## Assets
+## Медиа-ресурсы
 
 > Status: **changes required**
 > 
@@ -165,7 +165,7 @@ CSS and JS filters have been removed from the [Assets](assets) component. Due to
 
 * * *
 
-## Cache
+## Кэш
 
 > Status: **changes required**
 > 
@@ -494,7 +494,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Forms
+## Формы
 
 ### Forms\Form
 
@@ -527,7 +527,7 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 * * *
 
-## Image
+## Изображения
 
 ### Added
 
@@ -933,7 +933,7 @@ Each adapter implements PHP's `SessionHandlerInterface`. Available adapters are:
 
 * * *
 
-## Tag
+## Теги
 
 - Added `renderTitle()` that renders the title enclosed in `<title>` tags.
 - Changed `getTitle`. It returns only the text. It accepts `prepend`, `append` booleans to prepend or append the relevant text to the title.
@@ -952,7 +952,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Validation
+## Валидация
 
 ### Validation\Message
 
@@ -971,7 +971,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 
 * * *
 
-## Url
+## URL
 
 > Status: **changes required**
 > 
@@ -991,7 +991,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | Phalcon\Acl\Resource | Renamed to | Phalcon\Acl\Component                |
 |                        | New        | Phalcon\Acl\Enum                     |
 
-### Annotations
+### Аннотации
 
 | 3.4.x                                 | State      | 4.0.x                                          |
 | ------------------------------------- | ---------- | ---------------------------------------------- |
@@ -1007,11 +1007,11 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------------- | ---------- | ----------------------------------------- |
 | Phalcon\Application | Renamed to | Phalcon\Application\AbstractApplication |
 
-### Assets
+### Медиа-ресурсы
 
 | 3.4.x | State | 4.0.x | |\---\---\---\---\---\---\---\---\---|\---\---\---\---|\---\---\---\---\---\---\---\-----| Phalcon\Assets\Resource | Renamed to | Phalcon\Assets\Asset | Phalcon\Assets\Resource\Css | Renamed to | Phalcon\Assets\Asset\Css | Phalcon\Assets\Resource\Js | Renamed to | Phalcon\Assets\Asset\Js |
 
-### Cache
+### Кэш
 
 | 3.4.x                                 | State      | 4.0.x                                               |
 | ------------------------------------- | ---------- | --------------------------------------------------- |
@@ -1047,7 +1047,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Collection\Exception |
 |       | New   | Phalcon\Collection\ReadOnly  |
 
-### Config
+### Конфигурация
 
 | 3.4.x                    | State      | 4.0.x                          |
 | ------------------------ | ---------- | ------------------------------ |
@@ -1091,7 +1091,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Domain\Payload\PayloadFactory |
 |       | New   | Phalcon\Domain\Payload\Status         |
 
-### Factory
+### Фабрика
 
 | 3.4.x            | State      | 4.0.x                             |
 | ---------------- | ---------- | --------------------------------- |
@@ -1140,7 +1140,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 | -------------- | ---------- | ----------------------------- |
 | Phalcon\Flash | Renamed to | Phalcon\Flash\AbstractFlash |
 
-### Forms
+### Формы
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1203,7 +1203,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Http\Server\AbstractMiddleware                   |
 |       | New   | Phalcon\Http\Server\AbstractRequestHandler               |
 
-### Image
+### Изображения
 
 | 3.4.x                   | State      | 4.0.x                                    |
 | ----------------------- | ---------- | ---------------------------------------- |
@@ -1313,7 +1313,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Storage\Serializer\None               |
 |       | New   | Phalcon\Storage\Serializer\Php                |
 
-### Translate
+### Helper
 
 | 3.4.x                       | State      | 4.0.x                                        |
 | --------------------------- | ---------- | -------------------------------------------- |
@@ -1322,14 +1322,14 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                             | New        | Phalcon\Translate\InterpolatorFactory      |
 | Phalcon\Translate\Factory | Renamed to | Phalcon\Translate\TranslateFactory         |
 
-### Url
+### URL
 
 | 3.4.x | State | 4.0.x                   |
 | ----- | ----- | ----------------------- |
 |       | New   | Phalcon\Url            |
 |       | New   | Phalcon\Url\Exception |
 
-### Validation
+### Валидация
 
 | 3.4.x                                        | State      | 4.0.x                                                   |
 | -------------------------------------------- | ---------- | ------------------------------------------------------- |
