@@ -221,7 +221,7 @@ use Phalcon\Url;
 define('BASE_PATH', dirname(__DIR__));
 define('APP_PATH', BASE_PATH . '/app');
 
-// Регистрируем автозагрузчик
+// Register an autoloader
 $loader = new Loader();
 
 $loader->registerDirs(
