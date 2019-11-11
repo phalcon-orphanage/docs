@@ -375,11 +375,10 @@ the message will be logged in both `local` and `remote` adapters. It will be que
 
 Este componente utiliza `formatters` para formatear mensajes antes de enviarlos al backend. Los formateadores disponibles son:
 
-| Adaptador                                                                        | Descripción                                            |
-| -------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| [Phalcon\Logger\Formatter\Line](api/phalcon_logger#logger-formatter-line)     | Formats the message on a single line of text           |
-| [Phalcon\Logger\Formatter\Json](api/phalcon_logger#logger-formatter-json)     | Formats the message in a JSON string                   |
-| [Phalcon\Logger\Formatter\Syslog](api/phalcon_logger#logger-formatter-syslog) | Formats the message in an array compatible with Syslog |
+| Adaptador                                                                    | Descripción                                  |
+| ---------------------------------------------------------------------------- | -------------------------------------------- |
+| [Phalcon\Logger\Formatter\Line](api/phalcon_logger#logger-formatter-line) | Formats the message on a single line of text |
+| [Phalcon\Logger\Formatter\Json](api/phalcon_logger#logger-formatter-json) | Formats the message in a JSON string         |
 
 ### Formateador de línea
 
@@ -548,17 +547,6 @@ Resultado:
     "message"   : "Something went wrong",
     "timestamp" : "20181225-121314"
 }
-```
-
-### Formateador Syslog
-
-Formatea los mensajes que devuelven una matriz con el tipo y el mensaje como elementos:
-
-```bash
-[
-    "type",
-    "message",
-]
 ```
 
 ### Formateador personalizado
