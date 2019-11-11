@@ -317,7 +317,7 @@ If found it will parse it and send the output on screen. Our view then will have
 `app/views/index/index.phtml`
 
 ```php
-<?php echo "<h1>Привет!</h1>";
+<?php echo "<h1>Hello!</h1>";
 ```
 
 and since we moved the `echo` from our controller action to the view, it will be empty now:
