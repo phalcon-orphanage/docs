@@ -285,7 +285,7 @@ echo $paginate->myTotalItems;    // 1
 
 You can also create your custom repository class by implementing the [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface) interface.
 
-## Factory
+## Фабрика
 You can use the Pagination Factory class to instantiate a new paginator object. The names of the services are:
 
 - `model` - [Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model)
@@ -459,7 +459,7 @@ The `$page` object also contains navigation data:
 <?php echo "Page {$page->getCurrent()}  of {$page->getLast()}"; ?>
 ```
 
-### Factory
+### Фабрика
 You can instantiate a Paginator class using the `AdapterFactory`.
 
 **Model**
