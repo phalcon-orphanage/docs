@@ -359,7 +359,6 @@ This component makes use of `formatters` to format messages before sending them 
 |------------------------------------------------------------|--------------------------------------------------------|
 | [Phalcon\Logger\Formatter\Line][logger-formatter-line]     | Formats the message on a single line of text           |
 | [Phalcon\Logger\Formatter\Json][logger-formatter-json]     | Formats the message in a JSON string                   |
-| [Phalcon\Logger\Formatter\Syslog][logger-formatter-syslog] | Formats the message in an array compatible with Syslog |
 
 ### Line Formatter
 Formats the messages using a one-line string. The default logging format is:
@@ -522,16 +521,6 @@ which produces:
     "message"   : "Something went wrong",
     "timestamp" : "20181225-121314"
 }
-```
-
-### Syslog Formatter
-Formats the messages returning an array with the type and message as elements:
-
-```bash
-[
-    "type",
-    "message",
-]
 ```
 
 ### Custom Formatter
