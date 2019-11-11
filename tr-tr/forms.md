@@ -2,11 +2,11 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
-title: 'Formlar'
+title: 'Forms'
 keywords: 'forms, render html, validation, elements'
 ---
 
-# Formlar
+# Forms
 
 * * *
 
@@ -751,7 +751,7 @@ $email
 > For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Onaylama
+## Validation
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -910,7 +910,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Olaylar
+## Events
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
