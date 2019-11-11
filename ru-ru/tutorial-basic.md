@@ -340,7 +340,7 @@ class IndexController extends Controller
 
 The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
 
-## Проектирование формы регистрации
+## Designing a sign-up form
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
 
@@ -349,7 +349,7 @@ Now we will change the `index.phtml` view file, to add a link to a new controlle
 ```php
 <?php
 
-echo "<h1>Привет!</h1>";
+echo "<h1>Hello!</h1>";
 
 echo PHP_EOL;
 
@@ -357,7 +357,7 @@ echo PHP_EOL;
 
 echo $this->tag->linkTo(
     'signup',
-    'Регистрируйся!'
+    'Sign Up Here!'
 );
 ```
 
