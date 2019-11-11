@@ -3,11 +3,11 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 upgrade: '#cache'
-title: 'Cache'
+title: 'Кэш'
 keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
 ---
 
-# Cache
+# Кэш
 
 <hr />
 
@@ -30,7 +30,7 @@ Frequently used data or already processed/calculated data, can be stored in a ca
 
 [Phalcon\Cache](api/phalcon_cache#cache) components rely on `Phalcon\Storage` components. `Phalcon\Storage` is split into two categories: Serializers and Adapters.
 
-## Cache
+## Кэш
 
 In order to instantiate a new [Phalcon\Cache](api/phalcon_cache#cache) component, you will need to pass a `Phalcon\Cache\Adapter\*` class in it or one that implements the [Phalcon\Cache\Adapter\AdapterInterface](api/phalcon_cache#cache-adapter-adapterinterface). For a detailed explanation on adapters and serializers, see below.
 
@@ -120,7 +120,7 @@ $result = $cache->deleteMultiple(['my-key1', 'my-key2']);
 
 If you wish to clear all the keys, you can call the `clear()` method. The method returns `true` on success and `false` on failure.
 
-## Factory
+## Фабрика
 
 ### `newInstance`
 
