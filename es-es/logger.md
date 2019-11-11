@@ -3,17 +3,17 @@ layout: default
 language: 'es-es'
 version: '4.0'
 upgrade: '#logger'
-title: 'Registrador'
+title: 'Logger'
 keywords: 'psr-3, logger, adapters, noop, stream, syslog'
 ---
 
-# Registrador
+# Logger
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 [Phalcon\Logger](api/phalcon_logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/phalcon_logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
