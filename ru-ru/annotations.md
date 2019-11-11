@@ -2,11 +2,11 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Annotations'
+title: 'Аннотации'
 keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
-# Annotations
+# Аннотации
 
 * * *
 
@@ -289,7 +289,7 @@ If there is a problem with storing the data in the folder due to permissions or 
 
 [Phalcon\Annotations\Adapter\AdapterInterface](api/phalcon_annotations#annotations-adapter-adapterinterface) is available. Extending this interface will allow you to create custom adapters.
 
-## Factory
+## Фабрика
 
 ### `newInstance`
 
