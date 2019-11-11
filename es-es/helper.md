@@ -13,7 +13,7 @@ keywords: 'helpers, array, string, file system, number, utilities'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Controladores
 
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.
 
