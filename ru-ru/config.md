@@ -2,7 +2,7 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Config'
+title: 'Конфигурация'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 
@@ -40,7 +40,7 @@ echo $config->app->name;                // PHALCON
 echo $config->path('app.name');         // PHALCON
 ```
 
-## Factory
+## Фабрика
 
 ### `newInstance`
 
