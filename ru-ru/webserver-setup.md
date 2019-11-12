@@ -283,9 +283,9 @@ tutorial/
 
 ## WAMP
 
-[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[ WampServer ](http://www.wampserver.com/ru/) — это веб-среда разработки под Windows. Она позволяет создавать веб-приложения с помощью Apache2, PHP и MySQL. Ниже приведены подробные инструкции по установке Phalcon на WampServer для Windows. Крайне рекомендуем использовать последнюю версию WampServer.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
 {: .alert .alert-warning }
 
 > 
@@ -358,7 +358,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
 {: .alert .alert-warning }
 
 > 
