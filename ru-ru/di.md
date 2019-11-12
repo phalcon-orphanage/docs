@@ -12,7 +12,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 [Phalcon\Di](api/phalcon_di#di) is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
 
@@ -1183,7 +1183,7 @@ $annotations = $container->get(
 );
 ```
 
-## Events
+## События
 
 [Phalcon\Di](api/phalcon_di#di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `di`.
 
