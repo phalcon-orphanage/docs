@@ -2,11 +2,11 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Installation'
+title: 'Установка'
 keywords: 'installation, installing Phalcon'
 ---
 
-# Installation
+# Установка
 
 * * *
 
