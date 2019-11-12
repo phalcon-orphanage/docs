@@ -200,7 +200,7 @@ tutorial/
 
 **Корневой каталог** Наиболее распространенным вариантом является установка приложения в корневой каталог. Если это так, то мы можем использовать `.htaccess` файлы. Во первых, он будет использоваться для скрытия кода приложения, пересылающего все запросы в корневой каталог приложения (`public/`).
 
-> Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> Обратите внимание, что для использования файлов `.htaccess` требуется. чтобы была установлена опция `AllowOverride All`.
  {: .alert .alert-warning}
 
 # tutorial/.htaccess
@@ -212,7 +212,7 @@ tutorial/
     </IfModule>
     
 
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
+Во вторых, файл `.htaccess` находящийся в каталоге `public/`, перезаписывает все URI в `public/index.php` файл:
 
     # tutorial/public/.htaccess
     
@@ -224,7 +224,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-**International Characters** For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+**Международные символы** При использовании `mod_rewrite` существует проблема для пользователей, использующих персидскую букву 'م' (meem) в параметрах uri. Чтобы сопоставление работало как и с английскими символами, вам нужно изменить файл `.htaccess`:
 
     # tutorial/public/.htaccess
     
@@ -236,11 +236,11 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
+Если URI вашего приложения может содержать символы, отличные от английского, вам, возможно, придется применить указанное выше изменение, чтобы результат работы модуля `mod_rewrite` точно соответствовал маршруту (роуту) приложения.
 
-#### Apache configuration
+#### Конфигурация Apache
 
-If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
+Если вы не хотите использовать файлы `.htaccess`, вы можете переместить соответствующие директивы в основной конфигурационный файл apache:
 
     <IfModule mod_rewrite.c>
     
@@ -260,9 +260,9 @@ If you do not want to use `.htaccess` files, you can move the relevant directive
     </IfModule>
     
 
-#### Virtual Hosts
+#### Виртуальные хосты
 
-The configuration below is for when you want to install your application in a virtual host:
+Конфигурация ниже предназначена для установки вашего приложения на виртуальном хосте:
 
     <VirtualHost *:80>
     
