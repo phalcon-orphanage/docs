@@ -2,10 +2,10 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'API Index'
+title: 'API оглавление'
 ---
 
-## API Index
+## API оглавление
 {% for element in site.data.api %}
 ### {{ element['title'] }}
     {% for document in element['docs'] %}
