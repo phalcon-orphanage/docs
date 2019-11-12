@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Настройка веб-сервера'
 keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp, cherokee, встроенный сервер php'
@@ -14,7 +14,7 @@ keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp,
 
 ## Введение
 
-In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Ниже приведены инструкции для популярных веб-серверов:
+Для работы приложения Phalcon вам нужно настроить ваш веб-сервер таким образом, чтобы он должным образом обрабатывал перенаправления. Ниже приведены инструкции для популярных веб-серверов:
 
 ## Встроенный в PHP
 
@@ -30,9 +30,9 @@ $(which php) -S <host>:<port> -t <directory> <setup file>
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The above command does: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+Рассмотрим, что делает команда, представленная выше: - `$(which php)` - вставляет абсолютный путь к вашей двоичной версии PHP - `-S localhost:8000` - вызовет режим сервера с предоставленным `host:port` - `-t public` - определяет корневую директорию сервера, необходимую для того, чтобы php перенаправлял запросы к таким ресурсам, как JS, CSS, и изображениям в вашем публичном каталоге - `. trouter.php` - входная точка, которая будет оцениваться для каждого запроса
 
-The `.htrouter.php` file must contain:
+Файл `.htrouter.php` должен содержать:
 
 ```php
 <?php
@@ -52,17 +52,17 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/public/index.php';
 ```
 
-If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to.
+Если ваша точка входа не `public/index.php`, то отредактируйте `. trouter.php` файл соответственно (последняя строка), а также вызов скрипта. Вы также можете изменить порт, если хотите, а также сетевой интерфейс, к которому он привязан.
 
-After executing the command above, navigating to `http://localhost:8000/` will show your your site.
+После выполнения команды выше, перейдите по ссылке `http://localhost:8000/`, по которой отбразится ваш сайт.
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
+Менеджер процессов FastCGI ([PHP-FPM](https://php.net/manual/ru/install.fpm.php)) обычно используется для управления процессом обработки PHP файлов. В настоящее время PHP-FPM комплектуется со всеми основанными на Linux дистрибутивами PHP.
 
-On **Windows** PHP-FPM is in the PHP distribution archive. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+На **Windows** PHP-FPM находится в архиве дистрибутива PHP. Файл `php-cgi.exe` может быть использован для запуска процесса и установки параметров. Windows не поддерживает unix сокеты, поэтому этот скрипт запустит fast-cgi в режиме TCP на `9000` порту.
 
-Create the file `php-fcgi.bat` with the following contents:
+Создайте файл `php-fcgi.bat` со следующим содержимым:
 
 ```bat
 @ECHO OFF
@@ -77,13 +77,13 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install nginX
+### Установка Nginx
 
 [nginX Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
-### Phalcon configuration
+### Конфигурация Phalcon
 
-You can use following potential configuration to setup Nginx with Phalcon:
+Вы можете использовать следующую конфигурацию Nginx для работы с Phalcon:
 
     server {
         # Port 80 will require Nginx to be started with root permissions
@@ -181,7 +181,7 @@ service nginx start
 
 [Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
 
-### Phalcon configuration
+### Конфигурация Phalcon
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
 
@@ -421,7 +421,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 [Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
-### Phalcon configuration
+### Конфигурация Phalcon
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
