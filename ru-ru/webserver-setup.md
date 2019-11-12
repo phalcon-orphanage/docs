@@ -73,13 +73,13 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[Nginx](https://wiki.nginx.org/Main) — это свободный, высокопроизводительный HTTP-сервер и прокси-сервер с открытым исходным кодом, а также IMAP/POP3 прокси-сервер. В отличие от традиционных серверов Nginx не использует потоки для обработки запросов. Вместо этого он использует гораздо более масштабируемую (асинхронную) архитектуру. Эта архитектура под высокой нагрузкой использует небольшой, и главное, предсказуемый объем памяти.
 
-Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Phalcon с Nginx и PHP-FPM обеспечивают мощный набор инструментов, которые обеспечивают максимальную производительность ваших PHP приложений.
 
 ### Установка Nginx
 
-[nginX Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[Официальный сайт Nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
 ### Конфигурация Phalcon
 
@@ -167,9 +167,9 @@ Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximu
     }
     
 
-### Start
+### Запуск Nginx
 
-Depending on your system, the command to start nginX could be one of the following:
+В зависимости от вашей системы команда запуска Nginx может быть одна из следующих:
 
 ```bash
 start nginx
@@ -179,11 +179,11 @@ service nginx start
 
 ## Apache
 
-[Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](https://httpd.apache.org/) — это популярный веб-сервер, доступный на большинстве современных платформ.
 
 ### Конфигурация Phalcon
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
+Ниже приведены возможные конфигурации, которые можно использовать для настройки Apache с Phalcon. Эти примеры в основном нацелены на настройку модуля ` mod_rewrite`, позволяющего использовать понятные URL-адреса (ЧПУ) и [компонента маршрутизации](routing). Типичное приложение имеет следующую структуру:
 
 ```bash
 tutorial/
@@ -198,7 +198,7 @@ tutorial/
     index.php
 ```
 
-**Document root** The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files. The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`).
+**Корневой каталог** Наиболее распространенным вариантом является установка приложения в корневой каталог. Если это так, то мы можем использовать `.htaccess` файлы. Во первых, он будет использоваться для скрытия кода приложения, пересылающего все запросы в корневой каталог приложения (`public/`).
 
 > Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
  {: .alert .alert-warning}
