@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Logger'
 ---
@@ -17,7 +17,6 @@ title: 'Phalcon\Logger'
 * [Phalcon\Logger\Formatter\FormatterInterface](#logger-formatter-formatterinterface)
 * [Phalcon\Logger\Formatter\Json](#logger-formatter-json)
 * [Phalcon\Logger\Formatter\Line](#logger-formatter-line)
-* [Phalcon\Logger\Formatter\Syslog](#logger-formatter-syslog)
 * [Phalcon\Logger\Item](#logger-item)
 * [Phalcon\Logger\LoggerFactory](#logger-loggerfactory)
 
@@ -551,7 +550,7 @@ $logger->error("This is another error");
  *
  * @var string
  */
-protected defaultFormatter = Syslog;
+protected defaultFormatter = Line;
 
 /**
  * @var int
@@ -779,24 +778,6 @@ public function setDateFormat( string $dateFormat )
 ```php
 public function setFormat( string $format )
 ```
-
-<h1 id="logger-formatter-syslog">Class Phalcon\Logger\Formatter\Syslog</h1>
-
-[Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/syslog.zep)
-
-| Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Item | | Extends | AbstractFormatter |
-
-Phalcon\Logger\Formatter\Syslog
-
-Prepares a message to be used in a Syslog backend
-
-## Методы
-
-```php
-public function format( Item $item ): array;
-```
-
-Applies a format to a message before sent it to the internal log
 
 <h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Micro Application'
 keywords: 'application, micro, handlers, api'
@@ -12,7 +12,7 @@ keywords: 'application, micro, handlers, api'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
 
@@ -36,7 +36,7 @@ $app->handle(
 );
 ```
 
-## Setup
+## Activation
 
 The [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) class is the one responsible for creating a Micro application.
 
@@ -351,7 +351,7 @@ Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application 
    Application : (method/verb): (route url/regex, callable PHP function/handler)
 ```
 
-### Setup
+### Activation
 
 Routing is handled by the [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) object.
 
@@ -526,7 +526,7 @@ $app->get(
 );
 ```
 
-**Controllers**
+**Контроллеры**
 
 With the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) you can create micro or *medium* applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application. In medium applications you can organize handlers in controllers.
 
@@ -623,7 +623,7 @@ $invoices
 $app->mount($invoices);
 ```
 
-**Use case**
+**Пример использования**
 
 We are developing an API for an online store. The endpoints are `/users`, `/invoices` and `/products`. Each of those endpoints are registered using handlers, and each handler is a controller with relevant actions.
 
@@ -1546,7 +1546,7 @@ $app->get(
 );
 ```
 
-## Events
+## События
 
 A [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application works closely with an [Events Manager](events) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -1727,7 +1727,7 @@ $app->finish(
 
 In the above example we utilize the `finish` event to do some cache cleaning.
 
-### Setup
+### Activation
 
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
@@ -2225,7 +2225,7 @@ class ResponseMiddleware implements MiddlewareInterface
 }
 ```
 
-### Models
+### Модели
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 

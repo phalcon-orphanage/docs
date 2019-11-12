@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Формы'
 keywords: 'forms, render html, validation, elements'
@@ -12,7 +12,7 @@ keywords: 'forms, render html, validation, elements'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
 
@@ -910,7 +910,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Events
+## События
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 

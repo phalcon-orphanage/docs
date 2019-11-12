@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Model Caching'
 keywords: 'models, caching, phql, resultsets, reuse'
@@ -12,7 +12,7 @@ keywords: 'models, caching, phql, resultsets, reuse'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 In most applications, there is data that changes infrequently. One of the most common bottlenecks in terms of performance is accessing data from a database. We first have a layer of complexity that allows PHP to communicate with the database and then we have the layer of complexity and potentially bottleneck within the database itself, when trying to analyze the query sent and return the data back (especially when the query contains multiple joins and group statements).
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Аннотации'
 keywords: 'annotations, routing, annotations parser, docblocks'
@@ -12,7 +12,7 @@ keywords: 'annotations, routing, annotations parser, docblocks'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 Phalcon introduced the first annotations parser component written in C for PHP. The `Phalcon\Annotations` namespace contains general purpose components that offer an easy way to parse and cache annotations in PHP applications.
 

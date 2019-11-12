@@ -21,7 +21,7 @@ This component aids with receiving and setting services in the DI container
 > 
 > {: .alert .alert-warning }
 
-## Ρύθμιση
+## Activation
 To set the container up, you first need to have a [Phalcon\Di](di) object already set up.
 
 ```php

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Mvc'
 ---
@@ -4663,7 +4663,7 @@ print_r(
 ```
 
 ```php
-public function getIdentityField( ModelInterface $model ): string;
+public function getIdentityField( ModelInterface $model ): string | null;
 ```
 
 Returns the name of identity field (if one is present)
@@ -5244,7 +5244,7 @@ public function getEmptyStringAttributes( ModelInterface $model ): array;
 Returns attributes allow empty strings
 
 ```php
-public function getIdentityField( ModelInterface $model ): string;
+public function getIdentityField( ModelInterface $model ): string | null;
 ```
 
 Returns the name of identity field (if one is present)

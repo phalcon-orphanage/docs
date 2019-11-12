@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Application'
 keywords: 'application, mvc, controllers'
@@ -12,7 +12,7 @@ keywords: 'application, mvc, controllers'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is a component that encapsulates all the complex operations behind instantiating every component required to run an MVC application. This is a full stack application integrated with all the additional services required to allow the MVC pattern to operate as desired.
 
@@ -144,7 +144,7 @@ public function useImplicitView(
 
 This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
 
-## Setup
+## Activation
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) performs all the work necessary to glue all the necessary components together so that the application can run. There are several ways that you can bootstrap your application. The most common way to bootstrap the application is:
 
@@ -695,7 +695,7 @@ try {
 }
 ```
 
-## Events
+## События
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) is able to send events to the [EventsManager](events) (if it is present). Events are triggered using the type `application`. The following events are supported:
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Html'
 keywords: 'html, attributes, tag, tag factory'
@@ -10,7 +10,7 @@ keywords: 'html, attributes, tag, tag factory'
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 This namespace contains components that help with the generation of HTML.
 
 ## Attributes

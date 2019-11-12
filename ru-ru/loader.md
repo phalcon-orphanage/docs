@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Loader'
 ---
@@ -11,7 +11,7 @@ title: 'Loader'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 [Phalcon\Loader](api/Phalcon_Loader#loader) is an autoloader that implements [PSR-4](https://www.php-fig.org/psr/psr-4/). Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
 
@@ -486,7 +486,7 @@ $loader->setFileCheckingCallback(null);
 
 Do not check file existence.
 
-## Events
+## События
 
 The \[Events Manager\]\[events\] component offers hooks that can be implemented to observe or expand the functionality of the loader. The [Phalcon\Loader](api/Phalcon_Loader#loader) implements the [Phalcon\Events\EventsAwareInterface](api/Phalcon_Events#events-eventsawareinterface), and therefore the `getEventsManager()` and `setEventsManager()` methods are available.
 

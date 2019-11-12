@@ -1,16 +1,16 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
-title: 'Pagination'
+title: 'Постраничная навигация'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
 ---
 
-# Pagination
+# Постраничная навигация
 <hr />
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 A paginator is a component which helps with splitting a large amount of data gradually. An example would be displaying all the posts of a blog, 5 at a time. The Phalcon Paginator accepts parameters and based on those returns the relevant _slice_ of the whole resultset so that the developer can present the paginated data.
 
  ```php

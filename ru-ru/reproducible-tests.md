@@ -1,11 +1,11 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
-title: 'Reproducible Tests'
+title: 'Воспроизводимые тесты'
 ---
 
-# Reproducible Tests
+# Воспроизводимые тесты
 
 * * *
 
@@ -80,7 +80,7 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### База данных
 
 > Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}

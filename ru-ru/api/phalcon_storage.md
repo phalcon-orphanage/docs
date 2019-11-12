@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Phalcon\Storage'
 ---
@@ -911,7 +911,7 @@ public function unserialize( mixed $data ): void;
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
 
-| Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
+| Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, JsonSerializable | | Extends | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
 

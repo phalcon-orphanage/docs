@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
@@ -12,11 +12,11 @@ keywords: 'volt, template engine, php generation, view data'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
 
-![](/assets/images/content/volt.png)
+![](/assets/images/content/views-volt.png)
 
 Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
 
@@ -482,7 +482,7 @@ Object variables may have attributes which can be accessed using the syntax: `fo
 {% endraw %}
 ```
 
-## Filters
+## Фильтры
 
 Variables can be formatted or modified using filters. The pipe operator `|` is used to apply filters to variables:
 
@@ -1314,7 +1314,7 @@ The following built-in functions are available in Volt:
 | `version`     | Returns the current version of the framework                |
 | `version_id`  | Returns the current version id of the framework             |
 
-## View
+## Представления
 
 Also, Volt is integrated with [Phalcon\Mvc\View](view), you can play with the view hierarchy and include partials as well:
 
@@ -1350,7 +1350,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% endraw %}
 ```
 
-### Partial vs Include
+### Partial Vs Include
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
@@ -1516,10 +1516,10 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-> By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
+> **NOTE**: By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 {: .alert .alert-warning }
 
-## Autoescape mode
+## Autoescape Mode
 
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 
@@ -1636,7 +1636,7 @@ You can also override built in functions by using the same name in the defined f
 $compiler->addFunction('dump', 'print_r');
 ```
 
-### Filters
+### Фильтры
 
 A filter has the following form in a template: `leftExpr|name(optional-args)`. Adding new filters is similar as with the functions.
 
@@ -2018,7 +2018,7 @@ public function setUniquePrefix(string $prefix): Compiler
 
 Set a unique prefix to be used as prefix for compiled variables
 
-## Events
+## События
 
 The following compilation <events> are available to be implemented in extensions:
 
@@ -2064,7 +2064,7 @@ Any valid expression can be used as cache key:
 
 The caching is done by the [Phalcon\Cache](cache) component via the view component.
 
-## Services
+## Сервисы
 
 If a service container (DI) is available for Volt. Any registered service in the DI container is available in volt, with a variable having the same name as the one that the service is registered with. In the example below we use the `flash` service as well as the `security` one:
 

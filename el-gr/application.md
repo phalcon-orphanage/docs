@@ -144,7 +144,7 @@ public function useImplicitView(
 
 This is enabled by default. The view is implicitly buffering all the output. You can fully disable the view component using this method
 
-## Ρύθμιση
+## Activation
 
 [Phalcon\Mvc\Application](api/phalcon_mvc#mvc-application) performs all the work necessary to glue all the necessary components together so that the application can run. There are several ways that you can bootstrap your application. The most common way to bootstrap the application is:
 

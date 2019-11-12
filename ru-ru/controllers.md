@@ -1,18 +1,18 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
-title: 'Controllers'
+title: 'Контроллеры'
 keywords: 'controllers, mvc'
 ---
 
-# Controllers
+# Контроллеры
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called *actions* that contain such business logic and handle user requests.
 
@@ -23,7 +23,7 @@ Controllers in Phalcon **must** have the suffix `Controller` in their file and c
 > **NOTE**: The default controller (when no controller has been specified in the UR)L is **IndexController** and the default action (when no action has been specified in the URL) is **indexAction**.
 {: .alert .alert-info }
 
-## Routing
+## Маршрутизация
 
 [Routing](routing) is further explained in the relevant document. However the default route is:
 
@@ -324,7 +324,7 @@ class InvoicesController extends Controller
 
 The above parameters will match the route the way it was defined.
 
-## Events
+## События
 
 Controllers automatically act as listeners for <dispatcher> <events>, implementing methods with those event names allowing you to implement hook points before/after the actions are executed:
 

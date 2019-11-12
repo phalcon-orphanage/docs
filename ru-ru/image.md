@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Изображения'
 ---
@@ -11,7 +11,7 @@ title: 'Изображения'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
