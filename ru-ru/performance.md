@@ -2,17 +2,17 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
-title: 'Performance'
+title: 'Производительность'
 keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
 
-# Performance
+# Производительность
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:
 
