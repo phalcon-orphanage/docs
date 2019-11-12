@@ -2,8 +2,8 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Web Server Setup'
-keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
+title: 'Настройка веб-сервера'
+keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp, cherokee, встроенный сервер php'
 ---
 
 # Настройка веб-сервера
