@@ -14,17 +14,17 @@ keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp,
 
 ## Введение
 
-In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
+In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Ниже приведены инструкции для популярных веб-серверов:
 
-## PHP Built-in
+## Встроенный в PHP
 
-The PHP built in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
+Встроенный в PHP веб-сервер не рекомендуется для производственных приложений. Тем не менее, его можно легко использовать в целях разработки. Способ запуска:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>
 ```
 
-If your application has its entry point in `/public/index.php` or your project has been created by the [Phalcon Devtools](devtools), then you can start the web server with the following command:
+Если ваше приложение имеет точку входа в `/public/index. hp` или ваш проект был создан [Phalcon Devtools](devtools), то вы можете запустить веб-сервер следующей командой:
 
 ```bash
 $(which php) -S localhost:8000 -t public .htrouter.php
