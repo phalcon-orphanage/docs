@@ -40,7 +40,7 @@ extension=phalcon.so
 
 Alternatively some distributions add a number prefix on `ini` files. If that is the case, choose a high number for Phalcon (e.g. `50-phalcon.ini`).
 
-### Installation
+### Установка
 
 Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
@@ -90,7 +90,7 @@ php -m | grep phalcon
 
 The [ACL](acl) component has had some methods and components renamed. The functionality remains the same as in previous versions.
 
-### Overview
+### Введение
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
@@ -299,7 +299,7 @@ class MainTask extends Task
 
 * * *
 
-## Debug
+## Отладка
 
 - Removed `Phalcon\Debug::getMajorVersion`
 
@@ -379,7 +379,7 @@ echo Enum::FETCH_ASSOC;
 
 * * *
 
-## Events
+## События
 
 ### Events\ManagerInterface
 
@@ -404,7 +404,7 @@ echo Enum::FETCH_ASSOC;
 
 The `Filter` component has been rewritten, utilizing a service locator. Each sanitizer is now enclosed on its own class and lazy loaded to provide maximum performance and the lowest resource usage as possible.
 
-### Overview
+### Введение
 
 The `Phalcon\Filter` object has been rewritten to act as a service locator for different *sanitizers*. This object allows you to sanitize input as before using the `sanitize()` method.
 
@@ -568,7 +568,7 @@ echo Enum::VERTICAL;   // prints  12
 
 * * *
 
-## Logger
+## Журналирование
 
 > Status: **changes required**
 > 
@@ -664,7 +664,7 @@ $logger->error('Something went wrong');
 
 * * *
 
-### Transactions
+### Транзакции
 
 Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit()`
 
@@ -672,7 +672,7 @@ Removed in version 4.0: - Removed `$logger->begin()` - Removed `$logger->commit(
 
 - Removed `$logger->setLogLevel()`
 
-## Models
+## Модели
 
 > Status: **changes required**
 > 
@@ -1212,7 +1212,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |                         | New        | Phalcon\Image\Enum                     |
 | Phalcon\Image\Factory | Renamed to | Phalcon\Image\ImageFactory             |
 
-### Logger
+### Журналирование
 
 | 3.4.x                               | State      | 4.0.x                                         |
 | ----------------------------------- | ---------- | --------------------------------------------- |
