@@ -22,7 +22,7 @@ If you just want to get started you can skip this and create a Phalcon project a
 
 The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get stuck or have questions, please visit us on [Discord](https://phalcon.io/discord) or in our [Forum](https://phalcon.io/forum).
 
-## File structure
+## File Structure
 
 One of th ekey features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
 
@@ -116,7 +116,7 @@ Since Phalcon is loosely coupled, services are registered with the frameworks De
 
 Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
 
-> If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](di) covering many use cases.
+> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](di) covering many use cases.
 {: .alert .alert-warning }
 
 ### Factory por defecto
@@ -180,7 +180,7 @@ $container->set(
 );
 ```
 
-### Handling the application request
+### Handling the Application Request
 
 In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
 
@@ -202,7 +202,7 @@ $response = $application->handle(
 $response->send();
 ```
 
-### Putting everything together
+### Putting Everything Together
 
 The `tutorial/public/index.php` file should look like:
 
@@ -247,7 +247,7 @@ $container->set(
 $container->set(
     'url',
     function () {
-        $url = new UrlProvider();
+        $url = new Url();
         $url->setBaseUri('/');
         return $url;
     }
@@ -293,10 +293,10 @@ The controller classes must have the suffix `Controller` and controller actions 
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
-> Congratulations, you are Phlying with Phalcon!
+> **Congratulations, you are Phlying with Phalcon!**
 {: .alert .alert-info }
 
-## Sending output to a view
+## Sending Output to a View
 
 Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller.
 
@@ -340,7 +340,7 @@ class IndexController extends Controller
 
 The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
 
-## Diseñar un formulario de registro
+## Designing a Sign-up Form
 
 Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
 
@@ -373,7 +373,7 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 
 To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality.
 
-> `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
 {: .alert .alert-info }
 
 The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
@@ -497,7 +497,7 @@ class Users extends Model
 }
 ```
 
-> Note that the public properties of the model correspond to the names of the fields in our table. 
+> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
 {: .alert .alert-info }
 
 ## Setting a Database Connection
@@ -528,7 +528,7 @@ $di->set(
 
 With the correct database parameters, our models are ready to work and interact with the rest of the application. If you use different credentials or database, you will need to adjust the code snippet above.
 
-## Storing data using models
+## Storing Data using Models
 
 `app/controllers/SignupController.php`
 
@@ -585,7 +585,7 @@ Additional validation happens automatically on fields that are defined as not nu
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
-## List the registered users
+## List the Registered Users
 
 Now we will need to get and display all the registered users in our database
 
@@ -612,7 +612,7 @@ class IndexController extends Controller
 }
 ```
 
-> We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
+> **NOTE**: We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
 {: .alert .alert-info } 
 
 In our view file `views/index/index.phtml` we can use the `$users` variable as follows:
