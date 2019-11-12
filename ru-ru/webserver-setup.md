@@ -6,13 +6,13 @@ title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
 ---
 
-# Webserver Setup
+# Настройка веб-сервера
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
 
