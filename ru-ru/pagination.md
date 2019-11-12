@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Постраничная навигация'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
