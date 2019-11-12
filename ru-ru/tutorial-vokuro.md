@@ -26,7 +26,7 @@ title: 'Tutorial - Vökuró'
 > Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
-## Installation
+## Установка
 
 ### Downloading
 
@@ -141,7 +141,7 @@ vokuro/
 | `public`          | Entry point for the application, css, js, images      |
 | `resources`       | Docker/nanobox files for setting the application      |
 | `src`             | Where the application lives (controllers, forms etc.) |
-| `src/Controllers` | Controllers                                           |
+| `src/Controllers` | Контроллеры                                           |
 | `src/Forms`       | Формы                                                 |
 | `src/Models`      | Database Models                                       |
 | `src/Plugins`     | Plugins                                               |
@@ -187,7 +187,7 @@ Once the configuration file is in place, visiting the IP address will present a 
 
 ![](/assets/images/content/tutorial-vokuro-1.png)
 
-### `Database`
+### `База данных`
 
 You also need to initialize the database. [Vökuró](https://github.com/phalcon/vokuro) uses the popular library [Phinx](https://github.com/cakephp/phinx) by Rob Morgan (now the Cake Foundation). The library uses its own configuration file (`phinx.php`), but for Vökuró you don't need to adjust any settings since `phinx.php` reads the `.env` file to retrieve the configuration settings. This allows you to set your configuration parameters in one place.
 
@@ -509,7 +509,7 @@ The available providers are:
 
 `run()` will now handle the `REQUEST_URI`, handle it and return the content back. Internally the application will calculate the route based on the request, and dispatch the relevant controller and view before returning the result of this operation back to the user as a response.
 
-## Database
+## База данных
 
 As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, PostgreSql or SQLite as the database store. For the purposes of this tutorial, we are using MariaDB. The tables that the application uses are:
 
@@ -526,7 +526,7 @@ As mentioned above, Vökuró can be installed with MariaDB/MySQL/Aurora, Postgre
 | `success_logins`      | Successful login attempts               |
 | `users`               | Users                                   |
 
-## Models
+## Модели
 
 Following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one model per database table (excluding the `phinxlog`). The models allow us to interact with the database tables in an easy object oriented manner. The models are located in the `/src/Models` directory, and each model defines the relevant fields, source table as well as any relationships between the model and others. Some models also implement validation rules to ensure that data is stored properly in the database.
 
@@ -597,7 +597,7 @@ echo $successLogin->user->name;
 > Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
 {: .alert .alert-info }
 
-## Controllers
+## Контроллеры
 
 Again following the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern, Vökuró has one controller to handle a specific *parent* route. This means that the `AboutController` handles the `/about` route. All controllers are located in the `/src/Cotnrollers` directory.
 
@@ -669,7 +669,7 @@ and the view is located:
 
 The available views are:
 
-| Контроллер    | Действие         | View                           | Описание                                    |
+| Контроллер    | Действие         | Представления                  | Описание                                    |
 | ------------- | ---------------- | ------------------------------ | ------------------------------------------- |
 | `About`       | `index`          | `/about/index.volt`            | Shows the `about` page                      |
 | `Параметр`    | `index`          | `/index/index.volt`            | Default action - home page                  |
@@ -1048,7 +1048,7 @@ Special attention to the `password` and `confirmPassword` elements. You will not
 
 The `password` field has two validators for content: `PresenceOf` i.e. it is required and `StringLength`: we need the password to be more than 8 characters. We also attach a third validator called `Confirmation`. This special validator ties the `password` element with the `confirmPassword` element. When it is triggered to validate it will check the contents of both elements and if they are not identical, the error message will appear i.e. the validation will fail.
 
-### View
+### Представления
 
 Now that we have everything set up in our form, we pass the form to the view:
 
@@ -1419,7 +1419,7 @@ As you can see in the defined relationships, we have a `belongsTo` and three `ha
 
 Also notable is that we define specific messages for foreign keys. If the particular relationship is violated, the defined message will be raised.
 
-**Events**
+**События**
 
 [Phalcon\Mvc\Model](db-models) is designed to fire specific <events>. These event methods can be located either in a listener or in the same model.
 
