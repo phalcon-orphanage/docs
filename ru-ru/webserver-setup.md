@@ -285,14 +285,14 @@ tutorial/
 
 [ WampServer ](http://www.wampserver.com/ru/) — это веб-среда разработки под Windows. Она позволяет создавать веб-приложения с помощью Apache2, PHP и MySQL. Ниже приведены подробные инструкции по установке Phalcon на WampServer для Windows. Крайне рекомендуем использовать последнюю версию WampServer.
 
-> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Для получения дальнейших инструкций касательно установки расширения обратитесь к [домашней странице расширения](https://pecl.php.net/package/psr/0.6.0/windows). Установка DLL расширения аналогична той, которую вы использовали для Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **Примечание:** Используемые пути к файлам и каталогам в этом руководстве должны быть относительными установленному WampServer.
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Установка Phalcon
 
 For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
 
@@ -358,11 +358,11 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **Примечание:** Начиная с версии Phalcon 4, вам понадобится установить дополнительное расширение `PHP-PSR` используя PECL. Для получения дальнейших инструкций касательно установки расширения обратитесь к [домашней странице расширения](https://pecl.php.net/package/psr/0.6.0/windows). Установка DLL расширения аналогична той, которую вы использовали для Phalcon.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **Примечание:** Используемые пути к файлам и каталогам в этом руководстве должны быть относительными установленному WampServer.
 {: .alert .alert-warning }
 
 ### Download Phalcon
