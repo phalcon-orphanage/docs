@@ -1,37 +1,37 @@
 [
     {
-        "text": "General",
+        "text": "Главная",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "Введение",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "Примечания к выпуску",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "Обновление",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "Спонсоры",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "Вклад",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "Введение",
                 "url": "/contributions"
             },
             {
-                "text": "Pull Requests",
+                "text": "Пулл реквесты",
                 "url": "/new-pull-request"
             },
             {
@@ -39,15 +39,15 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Генерация трассировки выполнения",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "Воспроизводимые тесты",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "Тестовое окружение",
                 "url": "/testing-environment"
             },
             {
@@ -57,21 +57,21 @@
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "Приступая к работе",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "Установка",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "Настройка веб-сервера",
                 "url": "/webserver-setup"
             }
         ]
     },
     {
-        "text": "Environments",
+        "text": "Окружение",
         "url": "",
         "menu": [
             {
@@ -85,25 +85,25 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "Инструменты разработчика",
         "url": "",
         "menu": [
             {
-                "text": "DevTools",
+                "text": "Инструменты разработчика",
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "Отладка",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "Уроки",
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "Основы",
                 "url": "/tutorial-basic"
             },
             {
@@ -119,21 +119,21 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "Пример использования",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "Производительность",
                 "url": "/performance"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "Ядро",
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API Оглавление",
                 "url": "/api/"
             },
             {
@@ -145,11 +145,11 @@
                 "url": "/application-micro"
             },
             {
-                "text": "Cli",
+                "text": "CLI",
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI контейнер",
                 "url": "/di"
             },
             {
@@ -163,7 +163,7 @@
         ]
     },
     {
-        "text": "Services",
+        "text": "Сервисы",
         "url": "",
         "menu": [
             {
@@ -183,17 +183,17 @@
                 "url": "/loader"
             },
             {
-                "text": "Logger",
+                "text": "Журналирование",
                 "url": "/logger"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "База данных",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "Слой",
                 "url": "/db-layer"
             },
             {
@@ -205,7 +205,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "Модели",
                 "url": "/db-models"
             },
             {
@@ -217,7 +217,7 @@
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "События",
                 "url": "/db-models-events"
             },
             {
@@ -229,21 +229,21 @@
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "Транзакции",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "Валидаторы",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "Постраничная навигация",
                 "url": "/db-pagination"
             }
         ]
     },
     {
-        "text": "Front End",
+        "text": "Фронтенд",
         "url": "",
         "menu": [
             {
@@ -251,7 +251,7 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "Всплывающие сообщения",
                 "url": "/flash"
             },
             {
@@ -267,7 +267,7 @@
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "Представления",
                 "url": "/views"
             },
             {
@@ -277,11 +277,11 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "Бизнес-логика",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "Контроль доступа",
                 "url": "/acl"
             },
             {
@@ -289,7 +289,7 @@
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "Контроллеры",
                 "url": "/controllers"
             },
             {
@@ -297,19 +297,19 @@
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "Управление событиями",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "Фильтры",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "Маршрутизация",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "Сессии",
                 "url": "/session"
             },
             {
