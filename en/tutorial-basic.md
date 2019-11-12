@@ -231,7 +231,7 @@ $container->set(
 $container->set(
     'url',
     function () {
-        $url = new UrlProvider();
+        $url = new Url();
         $url->setBaseUri('/');
         return $url;
     }

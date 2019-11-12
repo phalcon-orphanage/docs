@@ -175,7 +175,7 @@ public function validate(
 ```
 Validate a set of data according to a set of rules
 
-## Setup
+## Activation
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation][validation] object. You can put your validations in a separate file for better code reuse and organization.
 
 ```php

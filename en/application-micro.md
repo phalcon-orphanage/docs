@@ -31,7 +31,7 @@ $app->handle(
 );
 ```
 
-## Setup
+## Activation
 The [Phalcon\Mvc\Micro][mvc-micro] class is the one responsible for creating a Micro application.
 
 ```php
@@ -309,7 +309,7 @@ Defining routes in a [Phalcon\Mvc\Micro][mvc-micro] application is very easy. Ro
    Application : (method/verb): (route url/regex, callable PHP function/handler)
 ```
 
-### Setup
+### Activation
 Routing is handled by the [Phalcon\Mvc\Router][mvc-router] object. 
 
 > **NOTE**: Routes must always start with `/`
@@ -1635,7 +1635,7 @@ $app->finish(
 ```
 In the above example we utilize the `finish` event to do some cache cleaning.
 
-### Setup
+### Activation
 Attaching middleware to your application is very easy as shown above, with the `before`, `after` and `finish` method calls.
 
 ```php

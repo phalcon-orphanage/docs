@@ -19,7 +19,7 @@ This component aids with receiving and setting services in the DI container
 > **NOTE**: [Phalcon\Container][container] is not a _real_ implementation of [PSR-11][psr-11]. For now it acts as a proxy to the [Phalcon\Di](di) container. In future versions, we will implement this component fully and it will replace the current Dependency Injection container.
 {: .alert .alert-warning }
 
-## Setup
+## Activation
 To set the container up, you first need to have a [Phalcon\Di](di) object already set up.
 
 ```php

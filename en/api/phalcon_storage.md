@@ -1010,7 +1010,7 @@ public function unserialize( mixed $data ): void;
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
 
 | Namespace  | Phalcon\Storage\Serializer |
-| Uses       | InvalidArgumentException |
+| Uses       | InvalidArgumentException, JsonSerializable |
 | Extends    | AbstractSerializer |
 
 This file is part of the Phalcon Framework.

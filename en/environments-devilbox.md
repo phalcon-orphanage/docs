@@ -31,7 +31,7 @@ The following configuration will be used:
 > * On your host operating system, projects are by default in `./data/www/` inside the Devilbox git directory. This path can be changed via `HOST_PATH_HTTPD_DATADIR`.
 {: .alert .alert-info }
 
-## Setup
+## Activation
 
 Your environment will be ready in six simple steps:
 
