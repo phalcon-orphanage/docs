@@ -294,18 +294,18 @@ tutorial/
 
 ### Установка Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+Для того, чтобы Phalcon заработал в Windows, необходимо установить правильную версию, соответствующую вашей архитектуре и сборке расширений. Откройте страницу `phpinfo`, предоставляемую WAMP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+Проверьте значения `Architecture` и `Extension Build`. Это позволит вам скачать нужную версию DLL файла. Используя приведенный выше пример, вы должны скачать файл:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+обратите внимание на составные части файла: `x86`, `vc15` и аббревиатуру `TS`, которая означает *потоковую безопасность* (Thread Safe). Если вы используете NTS-версию PHP (*потоко-небезопасная версия, Non Thread Safe*), вам следует скачать соответствующую версию DLL.
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+WampServer предоставляет как 32-битные, так и 64-битные версии. Вам следует скачать именно ту версию Phalcon, которая подходит для вашей установки WampServer.
 
 После скачивания библиотеки Phalcon у вас будет zip-файл, примерно такой как показано ниже:
 
@@ -367,16 +367,16 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ### Download Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+Для того, чтобы Phalcon заработал в Windows, необходимо установить правильную версию, соответствующую вашей архитектуре и сборке расширений. Откройте страницу `phpinfo`, предоставляемую WAMP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+Проверьте значения `Architecture` и `Extension Build`. Это позволит вам скачать нужную версию DLL файла. Используя приведенный выше пример, вы должны скачать файл:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+обратите внимание на составные части файла: `x86`, `vc15` и аббревиатуру `TS`, которая означает *потоковую безопасность* (Thread Safe). Если вы используете NTS-версию PHP (*потоко-небезопасная версия, Non Thread Safe*), вам следует скачать соответствующую версию DLL.
 
 XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
 
