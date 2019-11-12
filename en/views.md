@@ -57,7 +57,7 @@ public function __get(string $key): mixed | null
 Magic method to retrieve a variable passed to the view
 
 ```php
-echo $this->view->products;
+echo $this->view->invoices;
 ```
 
 ```php
@@ -66,7 +66,7 @@ public function __isset(string $key): bool
 Magic method to retrieve if a variable is set in the view
 
 ```php
-echo isset($this->view->products);
+echo isset($this->view->invoices);
 ```
 
 ```php
@@ -75,7 +75,7 @@ public function __set(string $key, var value)
 Magic method to pass variables to the views
 
 ```php
-$this->view->products = $products;
+$this->view->invoices = $invoices;
 ```
 
 ```php
@@ -205,10 +205,10 @@ Perform the automatic rendering returning the output as a string
 
 ```php
 $template = $this->view->getRender(
-    "products",
+    "invoices",
     "show",
     [
-        "products" => $products,
+        "invoices" => $invoices,
     ]
 );
 ```
@@ -234,7 +234,10 @@ public function isDisabled(): bool
 Whether automatic rendering is enabled
 
 ```php
-public function partial(string! partialPath, var params = null)
+public function partial(
+    string $partialPath, 
+    mixed $params = null
+)
 ```
 Renders a partial view
 
@@ -267,7 +270,7 @@ class ProductsController extends Controller
     {
         // ...
 
-        $this->view->pick("products/list");
+        $this->view->pick("invoices/list");
     }
 }
 ```
@@ -396,7 +399,7 @@ Adds parameters to views (alias of setVar)
 ```php
 $this
     ->view
-    ->setParamToView("products", $products)
+    ->setParamToView("invoices", $invoices)
 ;
 ```
 
@@ -439,19 +442,22 @@ Set a single view parameter
 ```php
 $this
     ->view
-    ->setVar("products", $products)
+    ->setVar("invoices", $invoices)
 ;
 ```
 
 ```php
-public function setVars(array! params, bool merge = true): View
+public function setVars(
+    array $params, 
+    bool $merge = true
+): View
 ```
 Set all the render params
 
 ```php
 $this->view->setVars(
     [
-        "products" => $products,
+        "invoices" => $invoices,
     ]
 );
 ```
@@ -1533,7 +1539,7 @@ $manager->attach(
 : api/phalcon_mvc#mvc-view-engine-volt-exception
 : api/phalcon_mvc#mvc-view-exception
 
-Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view] or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\Exception][mvc-view-exception] or [Phalcon\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt][volt]. You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the view components ([Phalcon\Mvc\View][mvc-view] or [Phalcon\Mvc\View\Simple][mvc-view-simple]) will be of type [Phalcon\Mvc\Exception][mvc-view-exception] or [Phalcon\View\Engine\Volt\Exception][mvc-view-engine-volt-exception] if you are using [Volt](volt). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
