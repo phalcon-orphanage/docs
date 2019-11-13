@@ -386,8 +386,7 @@ $config = new Grouped($options);
 
 The keys set for each array element (representing one configuration file) mirror the constructor parameters of each adapter. More information regarding the parameters required or optional can be found in the relevant section describing each adapter.
 
-You can finally use `array` as the adapter value. If you choose to do so, you will need to use `config` as the second key, with values that represent the actual values of the configuration you want to load.
-
+You can also use `array` as the adapter value. If you choose to do so, you will need to use `config` as the second key, with values that represent the actual values of the configuration you want to load.
 
 ```php
 <?php
@@ -406,6 +405,41 @@ $options = [
                 'baseUri'  => '/',
                 'env'      => 3,
                 'name'     => 'PHALCON',
+                'timezone' => 'UTC',
+                'url'      => 'http://127.0.0.1',
+                'version'  => '0.1',
+            ],
+        ],
+    ],
+];
+
+$config = new Grouped($options);
+```
+
+Finally you can also use a [Phalcon\Config][config] object, as an option to your grouped object.
+
+```php
+<?php
+
+use Phalcon\Config;
+use Phalcon\Config\Adapter\Grouped;
+
+$baseConfig = new Config(
+    [
+        'app' => [
+            'baseUri'  => '/',
+            'env'      => 3,
+            'name'     => 'PHALCON',
+        ],
+    ]
+);
+
+$options = [
+    $baseConfig,
+    [
+        'adapter'  => 'array',
+        'config'   => [
+            'app' => [
                 'timezone' => 'UTC',
                 'url'      => 'http://127.0.0.1',
                 'version'  => '0.1',

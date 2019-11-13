@@ -43,7 +43,52 @@ The [Phalcon\Db\Enum][db-enum] class exposes a number of constants that can be u
 - `FETCH_PROPS_LATE` = `\Pdo::FETCH_PROPS_LATE`
 - `FETCH_SERIALIZE`  = `\Pdo::FETCH_SERIALIZE`
 - `FETCH_UNIQUE`     = `\Pdo::FETCH_UNIQUE`
-    
+
+Additional constants are available in the [Phalcon\Db\Column][db-column] object. This object is used to describe a column (or field) in a database table. These constants also define which types are supported by the ORM.
+
+**Bind Types**
+
+- `BIND_PARAM_BLOB` - Blob
+- `BIND_PARAM_BOOL` - Bool
+- `BIND_PARAM_DECIMAL` - Decimal
+- `BIND_PARAM_INT` - Integer
+- `BIND_PARAM_NULL` - Null
+- `BIND_PARAM_STR` - String
+- `BIND_SKIP` - Skip binding
+
+**Column Types**
+
+- `TYPE_BIGINTEGER` - Big integer
+- `TYPE_BIT` - Bit
+- `TYPE_BLOB` - Blob
+- `TYPE_BOOLEAN` - Boolean
+- `TYPE_CHAR` - Char
+- `TYPE_DATE` - Date
+- `TYPE_DATETIME` - Datetime
+- `TYPE_DECIMAL` - Decimal
+- `TYPE_DOUBLE` - Double
+- `TYPE_ENUM` - Enum
+- `TYPE_FLOAT` - Float
+- `TYPE_INTEGER` - Integer
+- `TYPE_JSON` - JSON
+- `TYPE_JSONB` - JSONB
+- `TYPE_LONGBLOB` - Long Blob
+- `TYPE_LONGTEXT` - Long Text
+- `TYPE_MEDIUMBLOB` - Medium Blob
+- `TYPE_MEDIUMINTEGER` - Medium Integer
+- `TYPE_MEDIUMTEXT` - Medium Text
+- `TYPE_SMALLINTEGER` - Small Integer
+- `TYPE_TEXT` - Text
+- `TYPE_TIME` - Time
+- `TYPE_TIMESTAMP` - Timestamp
+- `TYPE_TINYBLOB` - Tiny Blob
+- `TYPE_TINYINTEGER` - Tiny Integer
+- `TYPE_TINYTEXT` - Tiny Text
+- `TYPE_VARCHAR` - Varchar
+
+> **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
+{: .alert .alert-info }
+
 ### Methods
 
 ```php
