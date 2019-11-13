@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Object Document Mapper'
 keywords: 'mongo, odm, object document mapper'

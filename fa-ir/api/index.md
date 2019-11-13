@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'fa-ir'
 version: '4.0'
 title: 'API Index'
 ---

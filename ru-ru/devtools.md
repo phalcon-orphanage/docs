@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Devtools'
 keywords: 'devtools, developer tools, models, controllers'
