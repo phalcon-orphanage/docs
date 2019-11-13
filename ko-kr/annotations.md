@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Annotations'
 keywords: 'annotations, routing, annotations parser, docblocks'
