@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Environments - Devilbox'
 keywords: 'environment, devilbox, docker'

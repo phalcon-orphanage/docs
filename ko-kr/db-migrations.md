@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Database Migrations'
 keywords: 'database, migrations, schema, tables, columns'

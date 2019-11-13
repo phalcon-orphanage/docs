@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Web Server Setup'
 keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'

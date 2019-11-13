@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Session'
 keywords: 'session, session manager, session adapters, redis, libmemcached, none, stream'

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Model View Controller (MVC)'
 keywords: 'model, view, controller, model view controller, mvc'
