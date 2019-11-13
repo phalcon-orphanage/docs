@@ -1,12 +1,12 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
-title: 'Debug'
+title: 'Отладка'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# Отладка
 
 * * *
 

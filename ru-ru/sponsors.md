@@ -1,8 +1,8 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
-title: 'Sponsors'
+title: 'Спонсоры'
 keywords: 'sponsors, opencollective, supporters'
 ---
 

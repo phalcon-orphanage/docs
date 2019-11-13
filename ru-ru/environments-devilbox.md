@@ -1,18 +1,18 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Environments - Devilbox'
 keywords: 'environment, devilbox, docker'
 ---
 
-# Environments
+# Окружение
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 The [Devilbox](https://devilbox.org) The Devilbox is a modern and highly customisable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. The main goal is to easily switch and combine any version required for local development. It supports an unlimited number of projects for which vhosts, SSL certificates and DNS records are created automatically. Reverse proxies per project are supported to ensure listening server such as NodeJS can also be reached. Email catch-all and popular development tools will be at your service as well. Configuration is not necessary, as everything is already pre-setup.
 
@@ -30,7 +30,7 @@ The following configuration will be used:
 > * On your host operating system, projects are by default in `./data/www/` inside the Devilbox git directory. This path can be changed via `HOST_PATH_HTTPD_DATADIR`.
 {: .alert .alert-info }
 
-## Setup
+## Activation
 
 Your environment will be ready in six simple steps:
 
@@ -42,7 +42,7 @@ Your environment will be ready in six simple steps:
 - Visit `http://my-phalcon.loc` in your browser
 - (Nginx) Create custom vhost config file
 
-### Enter the PHP container
+### Enter the PHP Container
 
 All the work will be performed inside the PHP container since it offers all the necessary tools. Navigate to the Devilbox git directory and execute `./shell.sh` (or `shell.bat` on Windows) to enter the running PHP container.
 
@@ -50,7 +50,7 @@ All the work will be performed inside the PHP container since it offers all the 
 host> ./shell.sh
 ```
 
-### Create new vhost directory
+### Create New Vhost Directory
 
 The vhost directory defines the name under which your project will be available. (`<vhost dir>.TLD_SUFFIX` will be the final URL ).
 
@@ -77,7 +77,7 @@ devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
 1 directory, 0 files
 ```
 
-### Symlink webroot
+### Symlink Webroot
 
 Symlinking the actual webroot directory to `htdocs` is important. The web server expects every project's document root to be in `<vhost dir>/htdocs/`. This is the path where it will serve the files. This is also the path where the entry point of your application (usually `index.php`) needs to reside.
 
@@ -100,10 +100,10 @@ devilbox@php-7.3 in /shared/httpd/my-phalcon $ tree -L 1
 
 As you can see in the above listing, the `htdocs` folder that is required by the web server is now pointing to the entry point of your framework.
 
-> When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
+> **NOTE**: When using **Docker Toolbox**, you need to **explicitly allow** the usage of **symlinks**.
 {: .alert .alert-warning }
 
-### DNS record
+### DNS Record
 
 If you **have** Auto DNS configured already, you can skip this section, because DNS entries will be available automatically by the bundled DNS server.
 
@@ -113,11 +113,11 @@ If you **do not have** Auto DNS configured, you will need to add the following l
 127.0.0.1 my-phalcon.loc
 ```
 
-### Open your browser
+### Open your Browser
 
 Open your browser and navigate to `http://my-phalcon.loc` or `https://my-phalcon.loc`
 
-### Create custom vhost config file (Nginx Only)
+### Create Custom Vhost Config File (Nginx Only)
 
 By default routes will not work if using Nginx. To fix this, you will need to create a custom vhost configuration.
 

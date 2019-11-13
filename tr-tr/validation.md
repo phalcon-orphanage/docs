@@ -193,7 +193,7 @@ public function validate(
 
 Validate a set of data according to a set of rules
 
-## Ayarlar
+## Activation
 
 Validation chains can be initialized in a direct manner by just adding validators to the [Phalcon\Validation](api/phalcon_validation#validation) object. You can put your validations in a separate file for better code reuse and organization.
 

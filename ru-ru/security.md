@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Security'
 keywords: 'security, hashing, passwords'
@@ -12,7 +12,7 @@ keywords: 'security, hashing, passwords'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 > Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }

@@ -16,7 +16,7 @@ keywords: 'volt, template engine, php generation, view data'
 
 Volt is an ultra-fast and designer friendly templating engine written in C for PHP. It offers a set of helpers to write views easily. Volt is highly integrated with other components of Phalcon, but can be used as a stand alone component in your application.
 
-![](/assets/images/content/volt.png)
+![](/assets/images/content/views-volt.png)
 
 Volt is inspired by [Jinja](https://github.com/pallets/jinja), originally created by [Armin Ronacher](https://github.com/mitsuhiko).
 
@@ -1350,7 +1350,7 @@ A partial is included in runtime, Volt also provides `include`, this compiles th
 {% endraw %}
 ```
 
-### Partial vs Include
+### Partial Vs Include
 
 Keep the following points in mind when choosing to use the `partial` function or `include`:
 
@@ -1516,10 +1516,10 @@ Rendering `index.volt` produces:
 
 Note the call to the function `super()`. With that function it is possible to render the contents of the parent block. As partials, the path set to `extends` is a relative path under the current views directory (i.e. `app/views/`).
 
-> By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
+> **NOTE**: By default, and for performance reasons, Volt only checks for changes in the children templates to know when to re-compile to plain PHP again, so it is recommended initialize Volt with the option `'always' => true`. Thus, the templates are compiled always taking into account changes in the parent templates.
 {: .alert .alert-warning }
 
-## Autoescape mode
+## Autoescape Mode
 
 You can enable auto-escaping of all variables printed in a block using the autoescape mode:
 

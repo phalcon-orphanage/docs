@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 upgrade: ''
 title: 'Helper'
@@ -13,7 +13,7 @@ keywords: 'helpers, array, string, file system, number, utilities'
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## Введение
 
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.
 
