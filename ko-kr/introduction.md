@@ -1,26 +1,26 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 ---
 
-# Welcome
+# 환영합니다!
 
-Welcome to the documentation for the Phalcon framework.
+Phalcon 프레임워크에 대한 문서에 오신 것을 환영합니다.
 
-## Mission
+## 미션
 
-Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
+우리의 미션은 풍부한 기능의 고급 도구를 개발자들에게 제공하여 서버부담은 낮지만 고성능의 강력한 어플리케이션을 개발할 수 있도록 하는 것입니다.
 
-## What is Phalcon
+## 팔콘은 무엇인가?
 
-Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
+Phalcon은 C-익스텐션으로 작성된, PHP를 위한 오픈소스 풀스택 프레임워크입니다. Phalcon은 고성능을 위해 최적화되어 있습니다. 부하가 큰 파일상태, 파일읽기를 채용한 전통적인 PHP프레임워크와 달리, Phalcon의 고유한 아키텍처 덕분에 이 프레임워크는 메모리에 상주하면서 기능들을 필요할 때마다 바로바로 제공할 수 있도록 해줍니다.
 
 ## Usage
 
-Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
+C 언어를 몰라도 Phalcon을 사용하는데에는 지장이 없습니다. Phalcon의 인터페이스는 `Phalcon` 네임스페이스 아래에 PHP 클래스로 만들어져 있어서, 바로 사용할 수 있습니다.
 
-Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
+Phalcon은 느슨하게 연결되어 있어서, 개발자들이 어플리케이션 개발 시 필요한 객체만 연결 컴포넌트(glue components) 로 사용할 수 있습니다.
 
-> The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub](https://github.com/phalcon/docs) for English, and [Crowdin](https://crowdin.com/project/phalcon-documentation) for other languages
+> 이 문서의 번역은 열광적인 팬들과 기여자들이 주도하고 있습니다. 새로운 번역 추가 혹은 교정 등의 번역작업에 참여하실 분들은 언제나 환영합니다. 이 번역판의 영어버전은 [GitHub](https://github.com/phalcon/docs) 에서 관리하고 있으며, 나머지 언어들은 [Crowdin](https://crowdin.com/project/phalcon-documentation) 에서 관리합니다.
 {: .alert .alert-info }
