@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Helper'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'
