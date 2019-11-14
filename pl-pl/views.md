@@ -1620,10 +1620,6 @@ $manager->attach(
 
 ## Exceptions
 
-
-:   api/phalcon_mvc#mvc-view-engine-volt-exception
-:   api/phalcon_mvc#mvc-view-exception
-
 Any exceptions thrown in the view components ([Phalcon\Mvc\View](api/phalcon_mvc#mvc-view) or [Phalcon\Mvc\View\Simple](api/phalcon_mvc#mvc-view-simple)) will be of type [Phalcon\Mvc\Exception](api/phalcon_mvc#mvc-view-exception) or [Phalcon\View\Engine\Volt\Exception](api/phalcon_mvc#mvc-view-engine-volt-exception) if you are using [Volt](volt). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php

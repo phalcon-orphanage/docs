@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'es-es'
+language: 'en'
 version: '4.0'
 title: 'Índice del API'
 ---

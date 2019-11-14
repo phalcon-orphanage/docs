@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'HTML Link (PSR-13)'
 keywords: 'psr-13, http, link, evolvable link'
@@ -142,7 +142,7 @@ $links = [
         ->withAttribute('nopush', true),
     (new EvolvableLink('alternate', '/2'))
         ->withRel('next')
-        ->withAttribute('hreflang', ['ru-ru', 'es'])
+        ->withAttribute('hreflang', ['en', 'es'])
 ];
 
 echo $serializer->serialize([$link]);
