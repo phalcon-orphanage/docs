@@ -56,7 +56,8 @@ Process the results of the router by calling into the appropriate controller act
 public function forward(
     array $forward
 ): void
-```php
+```
+
 Forwards the execution flow to another controller/action.
 
 ```php
