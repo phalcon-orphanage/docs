@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Dependency Injection / Service Locator'
 keywords: 'dependency injection, di, ioc, service locator'
