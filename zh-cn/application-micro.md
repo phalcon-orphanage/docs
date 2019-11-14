@@ -348,7 +348,7 @@ Stops the middleware execution
 Defining routes in a [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application is very easy. Routes are defined as follows:
 
 ```text
-   Application : (method/verb): (route url/regex, callable PHP function/handler)
+   Application : (http method): (route url/regex, callable PHP function/handler)
 ```
 
 ### Activation
@@ -419,7 +419,7 @@ $application = new Micro($container);
 $application->setService('router', $router, true);
 ```
 
-Setting up your routes using the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) applications verb methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application. Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
+Setting up your routes using the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) applications http methods (`get`, `post`, etc.) is much easier than setting up a router object with relevant routes and then injecting it in the application. Each method has its advantages and disadvantages. It all depends on the design and needs of your application.
 
 ### Rewrite Rules
 
@@ -799,7 +799,7 @@ Using this simple change in implementation, all handlers remain uninstantiated u
 
 #### Not found (404)
 
-Any route that has not been matched in our [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other methods/verbs (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
+Any route that has not been matched in our [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application will cause it to try and execute the handler defined with the `notFound` method. Similar to other http methods (`get`, `post` etc.), you can register a handler in the `notFound` method which can be any callable PHP function.
 
 ```php
 <?php
@@ -820,7 +820,7 @@ $app->notFound(
 
 You can also handle routes that have not been matched (404) with Middleware discussed below.
 
-### Methods - Verbs
+### HTTP methods
 
 The [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application provides a set of methods to bind the HTTP method with the route it is intended to.
 
@@ -1231,7 +1231,7 @@ Finally, you can perform redirections in your middleware (if you are using it). 
 
 Another feature of the routes is setting up named routes and generating URLs for those routes.
 
-You will need to name your routes to take advantage of this feature. This can be achieved with the `setName()` method that is exposed from the methods/verbs in our application (`get`, `post`, etc.);
+You will need to name your routes to take advantage of this feature. This can be achieved with the `setName()` method that is exposed from the http methods in our application (`get`, `post`, etc.);
 
 ```php
 <?php
