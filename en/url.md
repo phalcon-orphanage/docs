@@ -99,8 +99,8 @@ echo $url->getStatic(
 );
 ```
 
-## URLs
-URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Url][url] component offers an easy way to generate those URLs. 
+## Dynamic URLs
+Dynamic URLs are URLs that are generated dynamically i.e. based on the routes or URLs of your application. The [Phalcon\Url][url] component offers an easy way to generate those URLs. 
 
 Depending of which directory of your document root your application is installed, it may have a base URI or not. For example, if your document root is `/var/www/htdocs` and your application is installed in `/var/www/htdocs/app` then your baseUri will be `/app/`. If you are using a VirtualHost or your application is installed on the document root, then your base URI is `/`. 
 
