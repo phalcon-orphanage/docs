@@ -36,37 +36,37 @@ extension=phalcon.so #Phalcon 익스텐션
 
 ### PDO
 
-Phalcon은 느슨하게 연결되어 있기 때문에, 추가적인 익스텐션 필요없이 기능을 사용할 수 있습니다. 하지만 특정 컴포넌트는 동작을 위해 추가적인 익스텐션이 필요한 경우가 있습니다. 데이터베이스 연결 및 사용이 필요한 경우, `php_pdo` 익스텐션을 설치해야 합니다. 사용중인 RDBMS가 MYSQL/MariaDB 혹은 Aurora인 경우, `php_mysqlnd` 익스텍션도 필요합니다. Similarly, using a PostgreSql database with Phalcon requires the `php_pgsql` extension.
+Phalcon은 느슨하게 연결되어 있기 때문에, 추가적인 익스텐션 필요없이 기능을 사용할 수 있습니다. 하지만 특정 컴포넌트는 동작을 위해 추가적인 익스텐션이 필요한 경우가 있습니다. 데이터베이스 연결 및 사용이 필요한 경우, `php_pdo` 익스텐션을 설치해야 합니다. 사용중인 RDBMS가 MYSQL/MariaDB 혹은 Aurora인 경우, `php_mysqlnd` 익스텍션도 필요합니다. 마찬가지로, Phalcon에서 PostgreSql을 사용하는 경우 `php_pgsql` 익스텐션이 필요합니다.
 
-### Hardware
+### 하드웨어
 
-Phalcon is designed to use as little resources as possible, while offering high performance. Although we have tested Phalcon in various low end environments, (such as 0.25GB RAM, 0.5 CPU), the hardware that you will choose will depend on the your application needs.
+Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스를 사용하도록 설계되어 있습니다. Phalcon을 다양한 저사양의 환경(예를 들어 0.5CPU에 0.25GB 램) 에서 테스트 해보기는 했지만, 하드웨어의 선택은 전적으로 구동시키는 어플리케이션의 필요에 따라야 할 것입니다.
 
-We have hosted our website and blog for the last few years on an Amazon VM with 512MB RAM and 1 vCPU.
+우리는 최근 몇년간 아마존AWS에서 1 vCPU/512MB RAM 의 VM 사양으로 웹사이트와 블로그를 호스팅 해왔습니다.
 
-### Software
+### 소프트웨어
 
-> You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> 버그 해결, 보안 강화 뿐만이 아니라 성능향상을 위해서라도 Phalcon과 PHP는 가능한 항상 최신버전을 사용해야 합니다.
 {: .alert .alert-danger }
 
-Along with PHP 7.2 or greater, depending on your application needs and the Phalcon components you need, you might need to install the following extensions:
+어플리케이션의 요구사항과 필요한 Phalcon 컴포넌트에 따라, PHP 7.2 이상을 사용해야 하는 것 외에도 다음의 익스텐션들을 추가해야 할 수 있습니다.
 
 * [curl](https://secure.php.net/manual/en/book.curl.php)
 * [fileinfo](https://secure.php.net/manual/en/book.fileinfo.php)
 * [gettext](https://secure.php.net/manual/en/book.gettext.php)
-* [gd2](https://secure.php.net/manual/en/book.image.php) (to use the [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) class)
-* [imagick](https://secure.php.net/manual/en/book.imagick.php) (to use the [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) class)
+* [gd2](https://secure.php.net/manual/en/book.image.php) ( [Phalcon\Image\Adapter\Gd](api/Phalcon_Image_Adapter_Gd) 클래스 사용시 필요)
+* [imagick](https://secure.php.net/manual/en/book.imagick.php) ( [Phalcon\Image\Adapter\Imagick](api/Phalcon_Image_Adapter_Imagick) 클래스 사용시 필요)
 * [json](https://secure.php.net/manual/en/book.json.php)
 * `libpcre3-dev` (Debian/Ubuntu), `pcre-devel` (CentOS), `pcre` (macOS)
-* [PDO](https://php.net/manual/en/book.pdo.php) Extension as well as the relevant RDBMS specific extension (i.e. [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) etc.)
-* [OpenSSL](https://php.net/manual/en/book.openssl.php) Extension
-* [Mbstring](https://php.net/manual/en/book.mbstring.php) Extension
-* [Memcached](https://php.net/manual/en/book.memcached.php) or other relevant cache adapters depending on your usage of cache
+* [PDO](https://php.net/manual/en/book.pdo.php) 익스텐션과 사용해야할 특정 RDBMS 익스텐션 (즉, [MySQL](https://php.net/manual/en/ref.pdo-mysql.php), [PostgreSql](https://php.net/manual/en/ref.pdo-pgsql.php) 등)
+* [OpenSSL](https://php.net/manual/en/book.openssl.php) 익스텐션
+* [Mbstring](https://php.net/manual/en/book.mbstring.php) 익스텐션
+* 캐시 사용 여부 및 방식에 따라 [Memcached](https://php.net/manual/en/book.memcached.php) 혹은 관련된 다른 캐시 어댑터
 
-> Installing these packages will vary based on your operating system as well as the package manager you use (if any). Please consult the relevant documentation on how to install these extensions.
+> 이 패키지들의 설치는 사용중인 운영체제와 (있다면) 패키지관리자에 따라 달라질 수 있습니다. 이 익스텐션들의 설치방법에 대해서는 관련문서를 참조 해주세요.
 {: .alert .alert-info }
 
-For the `libpcre3-dev` package you can use the following commands:
+`libpcre3-dev` 패키지의 경우에 다음의 명령어를 사용하시면 됩니다:
 
 #### Debian
 
@@ -74,7 +74,7 @@ For the `libpcre3-dev` package you can use the following commands:
 sudo apt-get install libpcre3-dev
 ```
 
-and then try and install Phalcon again
+설치 후 Phalcon을 다시한번 설치해주세요.
 
 #### CentOS
 
@@ -82,21 +82,21 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using MacPorts
+#### Mac/Osx 에서 MacPorts 사용시
 
-Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
+[MacPorts](https://www.macports.org) 가 설치되어 있고 최신 버전인지 확인(`sudo port -v selfupdate`) 해주세요.
 
 ```bash
 sudo port install php-phalcon4
 ```
 
-#### Mac/Osx using brew
+#### Mac/Osx에서 brew 사용시
 
 ```bash
 brew install pcre
 ```
 
-Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
+`brew`없이 바로 설치하시려면, [PCRE](https://www.pcre.org/) 웹사이트에서 해당 모듈의 최신버전을 직접 다운로드받으세요.
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz
@@ -108,136 +108,136 @@ ln -s /usr/local/pcre-8.42 /usr/sbin/pcre
 ln -s /usr/local/pcre-8.42/include/pcre.h /usr/include/pcre.h
 ```
 
-For Maverick
+Maverick
 
 ```bash
 brew install pcre
 ```
 
-if it gives you error, you can use
+에러가 발생하는 경우, 다음과 같이 입력
 
 ```bash
 sudo ln -s /opt/local/include/pcre.h /usr/include/
 sudo pecl install apc 
 ```
 
-## Installation Platforms
+## 설치 플랫폼
 
-Since Phalcon is compiled as a PHP extension, its installation is somewhat different than any other traditional PHP framework. Phalcon needs to be installed and loaded as a module on your web server.
+Phalcon은 PHP 익스텐션 형태로 컴파일 되기 때문에, 설치과정이 다른 전통적인 PHP 프레임워크와는 다른 부분들이 좀 있습니다. Phalcon은 웹서버의 모듈형태로 설치/로드 되어져야 합니다.
 
-### Linux
+### 리눅스
 
-To install Phalcon on Linux, you will need to add our repository in your distribution and then install it.
+Phalcon을 리눅스에 설치하시려면, 리눅스 배포판에 있는 우리의 저장소를 추가한 후 설치하세요.
 
-#### DEB based distributions (Debian, Ubuntu, etc.)
+#### DEB 기반의 배포판 ( Debian, Ubuntu 등)
 
-##### Repository installation
+##### 저장소 설치
 
-Add the repository to your distribution:
+다음과 같이 배포판에 저장소를 추가하세요
 
-**Stable releases**
+**Stable 릴리즈**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Nightly releases**
+**Nightly 릴리즈**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Mainline 릴리즈 ( 알파버전, 베타버전 등)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
 {: .alert .alert-warning }
 
-##### Phalcon installation
+##### Phalcon 설치
 
-To install Phalcon you need to type the following commands in your terminal:
+Phalcon을 설치하시려면 터미널에서 아래와 같이 명령어를 입력하세요:
 
 ```bash
 sudo apt-get update
 sudo apt-get install php7.2-phalcon
 ```
 
-##### Additional PPAs
+##### 다른 PPA
 
 **Ondřej Surý**
 
-If you do not wish to use our repository at [packagecloud.io](https://packagecloud.io/phalcon), you can always use the one offered by [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/).
+[packagecloud.io](https://packagecloud.io/phalcon)에 있는 공식 저장소를 사용하고 싶지 않으신 경우, [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php/)가 제공하는 것을 사용하실 수 있습니다.
 
-Installation of the repo:
+저장소 설치:
 
 ```php
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
 ```
 
-and Phalcon:
+Phalcon 설치:
 
 ```php
 sudo apt-get install php-phalcon
 ```
 
-#### RPM based distributions (CentOS, Fedora, etc.)
+#### RPM 기반 배포판 (CentOS, Fedora 등)
 
-##### Repository installation
+##### 저장소 설치
 
-Add the repository to your distribution:
+다음과 같이 배포판에 저장소를 추가하세요
 
-**Stable releases**
+**Stable 릴리즈**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Nightly releases**
+**Nightly 릴리즈**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
 ```
 
-**Mainline releases (alpha, beta etc.)**
+**Mainline 릴리즈 ( 알파버전, 베타버전 등)**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
 {: .alert .alert-warning }
 
 
-##### Phalcon installation
+##### Phalcon 설치
 
-To install Phalcon you need to issue the following commands in your terminal:
+Phalcon을 설치하시려면 터미널에서 아래와 같이 명령어를 입력하세요:
 
 ```bash
 sudo yum update
 sudo yum install php72u-phalcon
 ```
 
-##### Additional RPMs
+##### 다른 RPM
 
 **Remi**
 
-[Remi Collet](https://github.com/remicollet) maintains an excellent repository for RPM based installations. You can find instructions on how to enable it for your distribution [here](https://blog.remirepo.net/pages/Config-en).
+[Remi Collet](https://github.com/remicollet) 님은 RPM 기반 설치를 위한 최고의 저장소를 유지관리 중입니다. [여기](https://blog.remirepo.net/pages/Config-en) 가시면 배포판 별로 어떻게 활성화 하는지에 대한 설명을 확인하실 수 있습니다.
 
-Installing Phalcon after that is as easy as:
+그다음 Phalcon의 설치는 너무 간단합니다:
 
 ```bash
 yum install php72-php-phalcon4
 ```
 
-Additional versions are available both architecture specific (x86/x64) as well as PHP version specific
+특정 아키텍처(x86/x64) 나 PHP버전에 맞춘 추가적인 버전들도 있습니다.
 
 #### FreeBSD
 
-A port is available for FreeBSD. To install it you will need to issue the following commands:
+FreeBSD 용의 포팅버전이 있습니다. 설치하시려면 아래의 명령어를 입력해 주세요.
 
 ##### pkg_add
 
@@ -245,7 +245,7 @@ A port is available for FreeBSD. To install it you will need to issue the follow
 pkg_add -r phalcon4
 ```
 
-##### Source
+##### 소스
 
 ```bash
 cd /usr/ports/www/phalcon4
@@ -255,16 +255,16 @@ make install clean
 
 ##### Gentoo
 
-An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
+[여기](https://github.com/smoke/phalcon-gentoo-overlay)에서 Phalcon 설치를 위한 오버레이이를 확인하실 수 있습니다.
 
 ### macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+macOS 시스템에서는 `brew`, `macports` 를 이용하거나 소스코드에서 직접 컴파일 할 수 있습니다:
 
-#### Requirements
+#### 사전 요구사항
 
-* PHP 7.2.x development resources
-* XCode
+* PHP 7.2x 개발 환경
+* Xcode
 
 #### Brew
 
