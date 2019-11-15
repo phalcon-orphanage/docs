@@ -84,7 +84,7 @@ The second parameter defines how the matched parts should bind to the controller
 
 These placeholders help writing regular expressions that are more readable for developers and easier to understand. The following placeholders are supported:
 
-| Placeholder    | Regular Expression       | Usage                                                                                                  |
+| Placeholder    | Regular Expression       | 사용                                                                                                     |
 | -------------- | ------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `/:module`     | `/([a-zA-Z0-9\_\-]+)` | Matches a valid module name with alpha-numeric characters only                                         |
 | `/:controller` | `/([a-zA-Z0-9\_\-]+)` | Matches a valid controller name with alpha-numeric characters only                                     |
@@ -1089,7 +1089,7 @@ class ProductsController
 
 Only methods marked with valid annotations are used as routes. List of annotations supported:
 
-| Name        | Description                                                                                       | Usage                                  |
+| Name        | Description                                                                                       | 사용                                     |
 | ----------- | ------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | Delete      | This annotation marks a method as a route restricting the HTTP method to `DELETE`                 | `@Delete('/api/products/delete/{id}')` |
 | Get         | This annotation marks a method as a route restricting the HTTP method to `GET`                    | `@Get('/api/products/search')`         |
@@ -1101,7 +1101,7 @@ Only methods marked with valid annotations are used as routes. List of annotatio
 
 For annotations that add routes, the following parameters are supported:
 
-| Name       | Description                                                            | Usage                                                                |
+| Name       | Description                                                            | 사용                                                                   |
 | ---------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | conversors | A hash of conversors to be applied to the parameters                   | `@Route('/posts/{id}/{slug}', conversors={id='MyConversor::getId'})` |
 | methods    | Define one or more HTTP method that route must meet with               | `@Route('/api/products', methods={'GET', 'POST'})`                   |
