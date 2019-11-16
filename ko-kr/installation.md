@@ -1,5 +1,5 @@
 ---
-layout: 기본값
+layout: default
 language: 'ko'
 version: '4.0'
 title: '설치하기'
