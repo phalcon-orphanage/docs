@@ -1068,24 +1068,29 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### Html
 
-| 3.4.x                 | State      | 4.0.x                              |
-|-----------------------|------------|------------------------------------|
-|                       | New        | Phalcon\Html\Attributes            |
-|                       | New        | Phalcon\Html\Breadcrumbs           |
-|                       | New        | Phalcon\Html\Exception             |
-|                       | New        | Phalcon\Html\Helper\AbstractHelper |
-|                       | New        | Phalcon\Html\Helper\Anchor         |
-|                       | New        | Phalcon\Html\Helper\AnchorRaw      |
-|                       | New        | Phalcon\Html\Helper\Body           |
-|                       | New        | Phalcon\Html\Helper\Button         |
-|                       | New        | Phalcon\Html\Helper\Close          |
-|                       | New        | Phalcon\Html\Helper\Element        |
-|                       | New        | Phalcon\Html\Helper\ElementRaw     |
-|                       | New        | Phalcon\Html\Helper\Form           |
-|                       | New        | Phalcon\Html\Helper\Img            |
-|                       | New        | Phalcon\Html\Helper\Label          |
-|                       | New        | Phalcon\Html\Helper\TextArea       |
-|                       | New        | Phalcon\Html\TagFactory            |
+| 3.4.x                 | State      | 4.0.x                                  |
+|-----------------------|------------|----------------------------------------|
+|                       | New        | Phalcon\Html\Attributes                |
+|                       | New        | Phalcon\Html\Breadcrumbs               |
+|                       | New        | Phalcon\Html\Exception                 |
+|                       | New        | Phalcon\Html\Helper\AbstractHelper     |
+|                       | New        | Phalcon\Html\Helper\Anchor             |
+|                       | New        | Phalcon\Html\Helper\AnchorRaw          |
+|                       | New        | Phalcon\Html\Helper\Body               |
+|                       | New        | Phalcon\Html\Helper\Button             |
+|                       | New        | Phalcon\Html\Helper\Close              |
+|                       | New        | Phalcon\Html\Helper\Element            |
+|                       | New        | Phalcon\Html\Helper\ElementRaw         |
+|                       | New        | Phalcon\Html\Helper\Form               |
+|                       | New        | Phalcon\Html\Helper\Img                |
+|                       | New        | Phalcon\Html\Helper\Label              |
+|                       | New        | Phalcon\Html\Helper\TextArea           |
+|                       | New        | Phalcon\Html\Link\EvolvableLink        |
+|                       | New        | Phalcon\Html\Link\EvolvableLinkProvider|
+|                       | New        | Phalcon\Html\Link\Link                 |
+|                       | New        | Phalcon\Html\Link\LinkProvider         |
+|                       | New        | Phalcon\Html\Link\Serializer\Header    |
+|                       | New        | Phalcon\Html\TagFactory                |
 
 ### Http
 
@@ -1134,6 +1139,7 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 | Phalcon\Logger\Factory           | Renamed to | Phalcon\Logger\LoggerFactory               |
 | Phalcon\Logger\Formatter         | Renamed to | Phalcon\Logger\Formatter\AbstractFormatter |
 | Phalcon\Logger\Formatter\Firephp | Removed    |                                            |
+| Phalcon\Logger\Formatter\Syslog  | Removed    |                                            |
 | Phalcon\Logger\Multiple          | Removed    |                                            |
 
 
@@ -1147,34 +1153,39 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 
 ### Mvc
 
-| 3.4.x                                    | State      | 4.0.x                                     |
-|------------------------------------------|------------|-------------------------------------------|
-| Phalcon\Mvc\Collection                   | Renamed to | Phalcon\Collection                        |
-| Phalcon\Mvc\Collection\Exception         | Renamed to | Phalcon\Collection\Exception              |
-|                                          | New        | Phalcon\Collection\ReadOnly               |
-| Phalcon\Mvc\Model\Message                | Renamed to | Phalcon\Messages\Message                  |
-| Phalcon\Mvc\Model\MetaData\Apc           | Removed    |                                           |
-| Phalcon\Mvc\Model\MetaData\Files         | Renamed to | Phalcon\Mvc\Model\MetaData\Stream         |
-| Phalcon\Mvc\Model\MetaData\Memcache      | Removed    |                                           |
-| Phalcon\Mvc\Model\MetaData\Session       | Removed    |                                           |
-| Phalcon\Mvc\Model\MetaData\Xcache        | Removed    |                                           |
-| Phalcon\Mvc\Model\Validator              | Renamed to | Phalcon\Validation\Validator              |
-| Phalcon\Mvc\Model\Validator\Email        | Renamed to | Phalcon\Validation\Validator\Email        |
-| Phalcon\Mvc\Model\Validator\Exclusionin  | Renamed to | Phalcon\Validation\Validator\ExclusionIn  |
-| Phalcon\Mvc\Model\Validator\Inclusionin  | Renamed to | Phalcon\Validation\Validator\InclusionIn  |
-| Phalcon\Mvc\Model\Validator\Ip           | Renamed to | Phalcon\Validation\Validator\Ip           |
-| Phalcon\Mvc\Model\Validator\Numericality | Renamed to | Phalcon\Validation\Validator\Numericality |
-| Phalcon\Mvc\Model\Validator\PresenceOf   | Renamed to | Phalcon\Validation\Validator\PresenceOf   |
-| Phalcon\Mvc\Model\Validator\Regex        | Renamed to | Phalcon\Validation\Validator\Regex        |
-| Phalcon\Mvc\Model\Validator\StringLength | Renamed to | Phalcon\Validation\Validator\StringLength |
-| Phalcon\Mvc\Model\Validator\Uniqueness   | Renamed to | Phalcon\Validation\Validator\Uniqueness   |
-| Phalcon\Mvc\Model\Validator\Url          | Renamed to | Phalcon\Validation\Validator\Url          |
-| Phalcon\Mvc\Url                          | Renamed to | Phalcon\Url                               |
-| Phalcon\Mvc\Url\Exception                | Renamed to | Phalcon\Url\Exception                     |
-| Phalcon\Mvc\User\Component               | Renamed to | Phalcon\Di\AbstractInjectionAware         |
-| Phalcon\Mvc\User\Module                  | Renamed to | Phalcon\Di\AbstractInjectionAware         |
-| Phalcon\Mvc\User\Plugin                  | Renamed to | Phalcon\Di\AbstractInjectionAware         |
-| Phalcon\Mvc\View\Engine                  | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine    |
+| 3.4.x                                        | State      | 4.0.x                                     |
+|----------------------------------------------|------------|-------------------------------------------|
+| Phalcon\Mvc\Collection                       | Renamed to | Phalcon\Collection                        |
+| Phalcon\Mvc\Collection\Behavior              | Removed    |                                           |
+| Phalcon\Mvc\Collection\Behavior\SoftDelete   | Removed    |                                           |
+| Phalcon\Mvc\Collection\Behavior\Timestampable| Removed    |                                           |
+| Phalcon\Mvc\Collection\Document              | Removed    |                                           |
+| Phalcon\Mvc\Collection\Exception             | Renamed to | Phalcon\Collection\Exception              |
+| Phalcon\Mvc\Collection\Manager               | Removed    |                                           |
+|                                              | New        | Phalcon\Collection\ReadOnly               |
+| Phalcon\Mvc\Model\Message                    | Renamed to | Phalcon\Messages\Message                  |
+| Phalcon\Mvc\Model\MetaData\Apc               | Removed    |                                           |
+| Phalcon\Mvc\Model\MetaData\Files             | Renamed to | Phalcon\Mvc\Model\MetaData\Stream         |
+| Phalcon\Mvc\Model\MetaData\Memcache          | Removed    |                                           |
+| Phalcon\Mvc\Model\MetaData\Session           | Removed    |                                           |
+| Phalcon\Mvc\Model\MetaData\Xcache            | Removed    |                                           |
+| Phalcon\Mvc\Model\Validator                  | Renamed to | Phalcon\Validation\Validator              |
+| Phalcon\Mvc\Model\Validator\Email            | Renamed to | Phalcon\Validation\Validator\Email        |
+| Phalcon\Mvc\Model\Validator\Exclusionin      | Renamed to | Phalcon\Validation\Validator\ExclusionIn  |
+| Phalcon\Mvc\Model\Validator\Inclusionin      | Renamed to | Phalcon\Validation\Validator\InclusionIn  |
+| Phalcon\Mvc\Model\Validator\Ip               | Renamed to | Phalcon\Validation\Validator\Ip           |
+| Phalcon\Mvc\Model\Validator\Numericality     | Renamed to | Phalcon\Validation\Validator\Numericality |
+| Phalcon\Mvc\Model\Validator\PresenceOf       | Renamed to | Phalcon\Validation\Validator\PresenceOf   |
+| Phalcon\Mvc\Model\Validator\Regex            | Renamed to | Phalcon\Validation\Validator\Regex        |
+| Phalcon\Mvc\Model\Validator\StringLength     | Renamed to | Phalcon\Validation\Validator\StringLength |
+| Phalcon\Mvc\Model\Validator\Uniqueness       | Renamed to | Phalcon\Validation\Validator\Uniqueness   |
+| Phalcon\Mvc\Model\Validator\Url              | Renamed to | Phalcon\Validation\Validator\Url          |
+| Phalcon\Mvc\Url                              | Renamed to | Phalcon\Url                               |
+| Phalcon\Mvc\Url\Exception                    | Renamed to | Phalcon\Url\Exception                     |
+| Phalcon\Mvc\User\Component                   | Renamed to | Phalcon\Di\AbstractInjectionAware         |
+| Phalcon\Mvc\User\Module                      | Renamed to | Phalcon\Di\AbstractInjectionAware         |
+| Phalcon\Mvc\User\Plugin                      | Renamed to | Phalcon\Di\AbstractInjectionAware         |
+| Phalcon\Mvc\View\Engine                      | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine    |
 
 ### Paginator
 
@@ -1200,7 +1211,6 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 | Phalcon\Session\Adapter\Files    | Renamed to | Phalcon\Session\Adapter\Stream          |
 |                                  | New        | Phalcon\Session\Adapter\Noop            |
 | Phalcon\Session\Adapter\Memcache | Removed    |                                         |
-| Phalcon\Session\BagInterface     | Removed    |                                         |
 | Phalcon\Session\Factory          | Renamed to | Phalcon\Session\Manager                 |
 
 ### Storage
