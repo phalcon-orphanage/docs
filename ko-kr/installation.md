@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko'
+language: 'en'
 version: '4.0'
 title: '설치하기'
 keywords: '설치, Phalcon 설치, 팔콘설치'
@@ -29,7 +29,7 @@ extension=psr.so
 phalcon 익스텐션보다 위에 위치해야 함
 
 ```ini
-extension=phalcon.so #Phalcon 익스텐션
+extension=phalcon.so
 ```
 
 일부 배포판의 경우 `ini` 파일명에 접두어로 숫자를 붙이는 경우가 있습니다. 그런 경우, Phalcon 에는 높은 숫자를 할당해 주세요 ( 예. `50-phalcon.ini`).
@@ -125,7 +125,7 @@ sudo pecl install apc
 
 Phalcon은 PHP 익스텐션 형태로 컴파일 되기 때문에, 설치과정이 다른 전통적인 PHP 프레임워크와는 다른 부분들이 좀 있습니다. Phalcon은 웹서버의 모듈형태로 설치/로드 되어져야 합니다.
 
-### 리눅스
+### Linux
 
 Phalcon을 리눅스에 설치하시려면, 리눅스 배포판에 있는 우리의 저장소를 추가한 후 설치하세요.
 
@@ -264,7 +264,7 @@ macOS 시스템에서는 `brew`, `macports` 를 이용하거나 소스코드에�
 #### 사전 요구사항
 
 * PHP 7.2x 개발 환경
-* Xcode
+* XCode
 
 #### Brew
 
@@ -289,7 +289,7 @@ extension=php_phalcon.so
 
 웹서버를 재시작하세요.
 
-### 윈도우
+### Windows
 
 Phalcon을 윈도우에서 사용하시려면, 먼저 phalcon.dll을 설치해야 합니다. 대상 플랫폼 별로 몇개의 DLL파일을 컴파일 해두었습니다. 이 DLL파일들은 [다운로드](https://phalcon.io/en/download/windows) 페이지에서 받으실 수 있습니다.
 

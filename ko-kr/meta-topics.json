@@ -133,7 +133,7 @@
         "url": "",
         "menu": [
             {
-                "text": "API Index",
+                "text": "API 인덱스",
                 "url": "/api/"
             },
             {
