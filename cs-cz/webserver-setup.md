@@ -77,11 +77,11 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install nginX
+### Install NginX
 
 [nginX Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
-### Phalcon configuration
+### Phalcon Configuration
 
 You can use following potential configuration to setup Nginx with Phalcon:
 
@@ -181,7 +181,7 @@ service nginx start
 
 [Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
 
-### Phalcon configuration
+### Phalcon Configuration
 
 The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
 
@@ -200,7 +200,7 @@ tutorial/
 
 **Document root** The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files. The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`).
 
-> Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> **NOTE**: Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
  {: .alert .alert-warning}
 
 # tutorial/.htaccess
@@ -238,7 +238,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
 
 If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
 
-#### Apache configuration
+#### Apache Configuration
 
 If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
 
@@ -285,7 +285,7 @@ The configuration below is for when you want to install your application in a vi
 
 [WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
 {: .alert .alert-warning }
 
 > 
@@ -351,14 +351,14 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> **Congratulations! You are now phlying with Phalcon.**
 {: .alert .alert-info }
 
 ## XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
 {: .alert .alert-warning }
 
 > 
@@ -367,7 +367,7 @@ Open your browser to navigate to https://localhost. The WAMP welcome page will a
 
 ### Download Phalcon
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by XAMPP:
 
 ![](/assets/images/content/webserver-architecture.png)
 
@@ -413,7 +413,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> **Congratulations! You are now phlying with Phalcon.**
 {: .alert .alert-info }
 
 
@@ -421,7 +421,7 @@ Restart the Apache Web Server from the XAMPP Control Center. This will load the 
 
 [Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
 
-### Phalcon configuration
+### Phalcon Configuration
 
 Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
 
