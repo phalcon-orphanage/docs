@@ -1,92 +1,92 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
-title: 'Contributing'
-keywords: 'contributing, nfr, pull request, pr, new feature request'
+title: '기여하기'
+keywords: 'contributing, nfr, pull request, pr, new feature request, 기여하기, 새로운 기능 요청'
 ---
 
-# Contributions
+# 공헌
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-# Contributing to Phalcon
+# Phalcon에 기여하기
 
-Phalcon is an open source project and relies heavily on volunteer efforts and contributions. We welcome contributions from everyone!
+Phalcon은 오픈소스 프로젝트이며 자원봉사자들의 노력과 기여에 주로 의존하고 있습니다. 누구든 기여하실 분들은 대환영입니다!
 
-Please take a few moments to review this document to understand the contribution process and make it as efficient as possible for all. By following these guidelines, we can have faster resolution of issues, better communication and we can all move the project forward!
+기여 절차를 이해할 수 있도록 잠시 시간을 내어 문서를 검토하셔서 모두에게 가능한 효율적이 될수 있도록 해주세요. 다음의 가인드라인을 따라 주심으로써, 우리는 발생하는 문제들에 대한 더 빠른 해결과 더 나은 커뮤니케이션을 얻을 수 있게 되고, 다함께 프로젝트가 한발짝 더 나갈 수 있도록 할 수 있습니다!
 
-The Phalcon source code (along with documentation, websites etc.) is stored in [GitHub](https://github.com). You can browse our repositories in our [organization page](https://github.com/phalcon).
+Phalcon 소스코드 ( 문서, 웹사이트 등을 포함해서) 는 [GitHub](https://github.com) 에 저장되어 있습니다. [organization 페이지](https://github.com/phalcon)에서 모든 저장소를 둘러 보실 수 있습니다.
 
-If you wish to contribute to Phalcon, you can do so by issuing a [GitHub pull request](https://help.github.com/articles/using-pull-requests/).
+Phalcon에 기여하고 싶으시다면, [GitHub pull request](https://help.github.com/articles/using-pull-requests/) 를 생성해 주시면 됩니다.
 
-When you create a pull request, we have a handy template to help you describe what is the scope of the pull request. It is very important and helpful to the community that you add tests to your pull request. Each pull request will be reviewed by a core contributor (someone with permissions to merge pull requests). Based on the type and content of the pull request, it could be: * merged immediately or * put on hold, where the reviewer requires changes (styling, tests etc.) * put on hold, if discussion is necessary (community, core team etc.) * rejected
+Pull request 를 생성하실 때, pull request의 범위를 설명하는데 도움이 될 수 있는 간편한 템플릿을 준비해 뒀습니다. Pull request 에 대한 테스트를 추가해 주시는 것은 매우 중요하며 커뮤니티에게도 큰 도움이 됩니다. 각각의 pull request는 핵심 기여자(pull request의 merge권한이 있는 누군가) 가 검토하게 됩니다. Pull reqeust 의 타입과 내용에 따라, 진행은 몇가지로 나뉠 수 있습니다: * 즉시 merge됨 * 적용 보류, 검토자가 변경 필요 (스타일링, 테스트 등) * 적용 보류, 논의가 필요함 (커뮤니티, 코어팀 등) * 거절
 
-> **NOTE**: Please make sure that the target branch that you send your pull request is correct and that you have already rebased your code. Pull requests to the **master** branch are not allowed
+> **주의**: pull request를 보낸 대상 브랜치가 확실히 맞는지, 그리고 코드를 rebase 했는지 여부 등을 반드시 확인해 주세요. **master** 브랜치로의 pull request는 허용되지 않습니다
 {:.alert .alert-danger}
 
-## Documentation
+## 문서
 
-If programming in Zephir seems daunting, there are plenty of areas that you can contribute. You can always check the documentation for any typographic or context errors. You could also enhance the documentation with more examples in the respective pages.
+Zephir 프로그래밍이 쉽지 않으시다면, 그밖에도 기여할 수 있는 영역은 차고 넘칩니다. 문서의 오탈자나 문맥 오류는 언제나 잡아내실 수 있구요. 각 페이지 내에서 예시를 추가해서 문서를 향상시키는 것도 가능하지요.
 
-All you have to do is go to our [docs](https://crowdin.com/project/phalcon-documentation) repository, fork it, make the changes and send us a pull request.
+[docs](https://crowdin.com/project/phalcon-documentation) 저장소로 가셔서, fork 하시고, 수정하신 다음 우리에게 pull request만 보내주시면 됩니다.
 
-> **NOTE**: Note that changes to the `docs` repository are allowed **only** to the English documents (`en` folder).
+> **주의**: `docs` 저장소의 변경사항은 **오직** 영문 문서 (`en` 폴더) 만 가능하다는 사실을 명심해 주세요.
 {:.alert .alert-warning}
 
-## Translations
+## 번역
 
-If you wish to contribute to Phalcon by translating our documents in your native tongue, you can utilize the excellent service of our friends at [Crowdin](https://crowdin.com). Our project is located [here](https://crowdin.com/project/phalcon-documentation). If your language is not listed, please send us a message so that we can add it.
+자신의 모국어로 문서를 번역하는 것으로 Phalcon에 기여하실 분들은, 우리의 친구 [Crowdin](https://crowdin.com) 사에서 제공하는 최상의 서비스를 사용하실 수 있습니다. 프로젝트는 [여기](https://crowdin.com/project/phalcon-documentation)에 있습니다. 리스트에 당신의 언어가 보이지 않는다면, 추가할 수 있도록 우리에게 메시지를 보내주세요.
 
-## Questions and Support
+## 질문과 지원
 
-> **NOTE**: We only accept bug reports, new feature requests and pull requests in GitHub. For questions regarding the usage of the framework or support requests please visit the [official forum](https://phalcon.io/forum) or our [Discord](https://phalcon.io/discord) server.
+> **주의**: 우리는 Github에서 버그리포트, 새로운기능 요청 그리고 pull request만 받습니다. 프레임워크 사용에 대한 문의나 지원요청 등은 [공식 포럼](https://phalcon.io/forum) 이나 [Discord](https://phalcon.io/discord) 서버를 이용해 주세요.
 {:.alert .alert-danger}
 
-## Bug Report Checklist
+## 버그 리포트 체크리스트
 
-- Make sure you are using the latest released version of Phalcon before creating an issue in GitHub.
-- Only bugs found in the latest released version of Phalcon will be addressed.
-- We have a handy template when creating an issue to help you provide as much information for the core team to reproduce and address. Being able to reproduce a bug significantly reduces the time to find the cause and fix it. Scripts of even failing tests are more than appreciated. Please check how to create the [reproducible tests](reproducible-tests) page for more information.
-- As part of your report, please include additional information such as the OS, PHP version, Phalcon version, web server, memory etc.
-- If you're submitting a [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, we require a backtrace. Please check the [Generating a Backtrace](#generating-a-backtrace) section for more information.
+- Github에 이슈를 생성하기 전에 현재 사용중이신 Phalcon의 버전이 최신버전인지 확인해 주세요.
+- 최신 버전의 Phalcon에서 발견된 버그의 경우만 다루어집니다.
+- 우리 코어팀에서 문제를 재현해 보고 다룰 수 있을 정도로 충분한 정보를 이슈를 생성하실 때 제공하실 수 있도록 편리한 템플릿을 제공합니다. 버그를 재현해 볼 수 있다면 문제의 원인을 찾고 고치는데에 엄청난 시간을 절약할 수 있습니다. 심지어 실패한 테스트의 스크립트도 저희에게는 큰 도움이 됩니다. 더 많은 정보를 알고 싶으시다면 [재현가능한 테스트](reproducible-tests) 페이지에서 확인하실 수 있습니다.
+- OS, PHP 버전, Phalcon 버전, 웹서버, 메모리 등등의 추가정보도 리포트의 한 부분으로 추가해 주시기를 부탁드립니다.
+- [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) 오류를 제출하시려는 경우, backtrace 로그가 필요합니다. 더 자세한 정보는 [Backtrace 생성](#generating-a-backtrace) 섹션을 참고하세요.
 
-### Generating a Backtrace
+### Backtrace 생성
 
-Sometimes due to [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) error, Phalcon could crash some of your web server processes. In order to help us find the cause of this segmentation fault, we will need the crash backtrace.
+때로는 [Segmentation Fault](https://en.wikipedia.org/wiki/Segmentation_fault) 오류 때문에, Phalcon이 웹 서버 프로세스의 일부를 멈춰버리게 만들 수 있습니다. 이 segmentation fault 의 원인을 찾도록 도와주시려면, crash backtrace 를 보내주세요.
 
-Please check the following links for instructions on how to generate the backtrace:
+다음의 링크에서 backtrace 생성 방법에 대한 설명을 확인하실 수 있습니다:
 
-- [Generating a gdb backtrace](https://bugs.php.net/bugs-generating-backtrace.php)
-- [Generating a backtrace, with a compiler, on Win32](https://bugs.php.net/bugs-generating-backtrace-win32.php)
-- [Debugging Symbols](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
-- [Building PHP](http://www.phpinternalsbook.com/build_system/building_php.html)
+- [gdb backtrace 생성](https://bugs.php.net/bugs-generating-backtrace.php)
+- [Win32 환경의 컴파일러에서 backtrace 생성하기](https://bugs.php.net/bugs-generating-backtrace-win32.php)
+- [심볼 디버그하기](https://github.com/oerdnj/deb.sury.org/wiki/Debugging-symbols)
+- [PHP 빌드](http://www.phpinternalsbook.com/build_system/building_php.html)
 
-## Pull Request Checklist
+## Pull Request 체크리스트
 
-- Pull requests to the `master` branch are not accepted. Please fork the repository and create your branch from the necessary "source" branch, for instance `4.0.x` and if need be rebase your branch before submitting your pull request. If there are collisions, we will ask you to rebase your branch again.
-- Add tests to your pull request or adjust existing ones. This is very important since it helps justify your pull request. Please check our [testing](testing-environment) page for more information on how to set up a test environment and how to write tests.
-- Since Phalcon is written in [Zephir](https://zephir-lang.com), please do not submit commits that modify the C generated files directly
-- Phalcon follows a specific coding style. Please install the `editorconfig` plugin in your favorite IDE to take advantage of the supplied `.editorconfig` file that comes with this repository and not to have to worry about coding standards. All tests (PHP code), follow the [PSR-2](https://www.php-fig.org/psr/) standard
-- Remove any change to `ext/kernel`, `*.zep.c` and `*.zep.h` files before submitting the pull request
-- More information [here](new-pull-request).
+- `master` 브랜치로의 pull request는 허용되지 않습니다. 저장소를 fork 해서 필요한 예를 들어 `4.0.x` 같은 "소스" 브랜치에서 자신의 브랜치를 생성하세요. 필요하다면 pull request를 제출하기 전 브랜치를 rebase 하세요. 충돌이 일어난다면, 브랜치를 다시한번 rebase해달라고 요청드릴 것입니다.
+- Pull request에 테스트를 추가하거나 기존에 있는 테스트를 적절하게 수정하세요. 이것은 당신의 pull request 가 합당한지 여부를 판단하는데 도움이 되므로 매우 중요합니다. 테스트 환경 설정방법과 테스트 작성 방법에 대해 더 자세히 알고 싶으시다면 [testing](testing-environment) 페이지를 참조하세요.
+- Phalcon 은 [Zephir](https://zephir-lang.com) 로 작성되었으므로, C에서 생성한 파일을 직접 수정하는 커밋을 제출하지는 말아주시기 바랍니다.
+- Phalcon은 특정한 코딩스타일을 따릅니다. 저장소에 같이 있는 `.editorconfig` 파일을 선호하는 IDE에 `editorconfig` 플러그인으로 설치하시면 코딩스탠다드에 대해 고민하지 않으셔도 됩니다. 모든 테스트(PHP 코드)는 [PSR-2](https://www.php-fig.org/psr/) 스탠다드를 따릅니다.
+- Pull reqeust를 제출하기 전 `ext/kernel`, `*.zep.c` 그리고 `*.zep.h` 파일에 대한 수정사항이 있다면 제거해 주세요.
+- 자세한 내용은 [여기에](new-pull-request).
 
-Before submitting **new functionality**, please open a [NFR](new-feature-request) as a new issue on GitHub to discuss the impact of including the functionality or changes in the core extension. Once the functionality is approved, make sure your PR contains the following:
+**새로운 기능** 을 제출하시기 전, Github 에서 [NFR](new-feature-request) 을 새로운 이슈로 열어주세요. 해당 기능을 포함할 경우의 영향과 코어 익스텐션의 변경사항을 논의하기 위함입니다. 기능이 승인되면, PR이 다음을 포함하고 있는지 다시한번 확인해 주세요:
 
-- An update to the `CHANGELOG.md`
-- Unit Tests
-- Documentation or Usage Examples
+- `CHANGELOG.md`의 업데이트
+- 단위 테스트
+- 도움말 문서 혹은 사용 예제
 
-## Getting Support
+## 지원 받기
 
-If you have any questions about how to use Phalcon, please see the [support page](http://phalcon.io/support).
+Phalcon 사용방법에 대해 문의사항이 있으신 경우, [지원 페이지](http://phalcon.io/support)를 확인해 주세요.
 
-## Requesting Features
+## 기능 요청
 
-If you have any changes or new features in mind, please fill an [NFR](new-feature-request).
+무언가 변경사항이 있거나 새로운 기능에 대한 아이디어가 있으시다면, [NFR](new-feature-request) 서식을 채워주세요.
 
-Thanks!
+감사합니닷!
 
-<3 Phalcon Team
+<3 Phalcon 팀
