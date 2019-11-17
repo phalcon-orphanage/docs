@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Конфигурация'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'

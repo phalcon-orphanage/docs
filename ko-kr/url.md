@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 upgrade: '#url'
 version: '4.0'
 title: 'URL'
