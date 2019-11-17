@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko'
+language: 'en'
 version: '4.0'
 ---
 
