@@ -2,37 +2,37 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Web Server Setup'
-keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
+title: '웹서버 설정'
+keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server, 웹서버, 서버'
 ---
 
-# Webserver Setup
+# 웹서버 설정
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg)
 
-## Overview
+## 개요
 
-In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
+Phalcon 어플리케이션의 라우팅 기능이 동작하도록 하려면, 웹 서버가 리다이렉트를 적절하게 처리할 수 있도록 설정이 필요합니다. 아래는 일반적으로 많이 쓰는 웹서버들의 경우 설정방법입니다.
 
-## PHP Built-in
+## PHP 내장 웹서버
 
-The PHP built in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
+PHP 내장서버는 실제 프로덕션 환경에서는 사용을 추천하지 않습니다. 하지만 개발목적으로는 아주 쉽게 사용하실 수 있습니다. 문법은 다음과 같습니다:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>
 ```
 
-If your application has its entry point in `/public/index.php` or your project has been created by the [Phalcon Devtools](devtools), then you can start the web server with the following command:
+어플리케이션의 진입점이 `/public/index.php` 이거나 [Phalcon 개발자도구](devtools)로 프로젝트를 생성하신 경우, 아래의 명령어로 웹서버를 시작하실 수 있습니다:
 
 ```bash
 $(which php) -S localhost:8000 -t public .htrouter.php
 ```
 
-The above command does: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+위의 명령어는 다음의 기능을 수행합니다: - `$(which php)` - PHP 바이너리에 대한 절대경로 - `-S localhost:8000` - `host:port` 로 서버모드 실행 - `-t public` - 서버의 루트디렉토리를 지정. 공개 디렉토리에 있는 JS, CSS, 이미지 파일같은 자원에 대한 클라이언트 요청을 php가 라우팅하기 위해 필요 - `.htrouter.php` - 각각의 요청을 처리하는 진입점
 
-The `.htrouter.php` file must contain:
+`.htrouter.php` 파일에는 반드시 다음의 내용이 있어야 합니다:
 
 ```php
 <?php
@@ -52,51 +52,51 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/public/index.php';
 ```
 
-If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to.
+진입점이 `public/index.php` 가 아닌 경우, `.htrouter.php` 의 마지막 줄과 스크립트 호출부분을 그에 맞춰 적절하게 수정해 주세요. 원하시는 경우 포트나 바인딩되는 네트워크 인터페이스등을 변경하실 수 있습니다.
 
-After executing the command above, navigating to `http://localhost:8000/` will show your your site.
+위의 명령어를 실행하신 후, 브라우저에서 `http://localhost:8000/` 로 가 보시면 사이트가 표시됩니다.
 
 ## PHP-FPM
 
-The [PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) is usually used to allow the processing of PHP files. Nowadays, PHP-FPM is bundled with all Linux based PHP distributions.
+[PHP-FPM](https://php.net/manual/en/install.fpm.php) (FastCGI Process Manager) 은 주로 PHP 파일 실행처리를 위해 사용되었습니다. 요즘은 리눅스 기반의 PHP 배포판에 PHP-FPM이 번들되어 배포됩니다.
 
-On **Windows** PHP-FPM is in the PHP distribution archive. The file `php-cgi.exe` can be used to start the process and set options. Windows does not support unix sockets so this script will start fast-cgi in TCP mode on port `9000`.
+**윈도우** 환경의 경우 PHP 배포판 아카이브에 PHP-FPM 이 있습니다. `php-cgi.exe` 파일은 프로세스를 시작하고 옵션을 설정하는데 사용할 수 있습니다. 윈도우는 유닉스 소켓을 지원하지 않기 때문에 이 스크립트는 `9000`번 포트에서 TCP모드로 fast-cgi를 시작해 줍니다.
 
-Create the file `php-fcgi.bat` with the following contents:
+아래의 내용으로 `php-fcgi.bat` 파일을 생성하세요:
 
 ```bat
 @ECHO OFF
-ECHO Starting PHP FastCGI...
+ECHO PHP FastCGI를 시작합니다...
 set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
 ## Nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[Nginx](https://wiki.nginx.org/Main) 는 무료이며 오픈소스인 고성능의 HTTP서버이자 리버스프록시 이면서 동시에 IMAP/POP3 프록시 서버이기도 합니다. 전통적인 서버와 달리, Nginx는 쓰레드에 의존해서 요청을 처리하지 않습니다. 그 대신 훨씬 더 확장가능한 이벤트 기반(비동기적) 아키텍쳐를 사용하고 있습니다. 이 아키텍쳐는 작은 양의 메모리만 사용하는데, 그보다 중요한 것은 예측가능한 크기의 메모리를 사용한다는 것입니다.
 
-Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Phalcon 은 Nginx, PHP-FPM 과 함께 사용함으로써 최고 성능의 PHP 어플리케이션을 만들 수 있는 강력한 도구들을 제공합니다.
 
-### Install nginX
+### Nginx 설치
 
-[nginX Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[Nginx 공식 사이트](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
-### Phalcon configuration
+### Phalcon 설정
 
-You can use following potential configuration to setup Nginx with Phalcon:
+Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세요:
 
     server {
-        # Port 80 will require Nginx to be started with root permissions
-        # Depending on how you install Nginx to use port 80 you will need
-        # to start the server with `sudo` ports about 1000 do not require
-        # root privileges
+        # 80번 포트는 Nginx 시작 시 루트권한이 필요합니다
+        # 80번 포트를 사용하려면 Nginx를 설치한 방법에 따라
+        # 서버 시작시 'sudo' 로 서버를 시작해야 할 수 있습니다. 다른 포트, 예를 들어
+        # 1000번포트의 경우는 루트권한이 필요없습니다
         # listen      80;
     
         listen        8000;
         server_name   default;
     
         ##########################
-        # In production require SSL
+        # production환경에서는 SSL이 필요하겠지요
         # listen 443 ssl default_server;
     
         # ssl on;
@@ -105,12 +105,12 @@ You can use following potential configuration to setup Nginx with Phalcon:
         # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
         # ssl_prefer_server_ciphers   on;
     
-        # These locations depend on where you store your certs
+        # 아래 경로는 인증서(cert) 저장한 위치에 따라 달라집니다
         # ssl_certificate        /var/nginx/certs/default.cert;
         # ssl_certificate_key    /var/nginx/certs/default.key;
         ##########################
     
-        # This is the folder that index.php is in
+        # index.php파일이 있는 폴더 지정
         root /var/www/default/public;
         index index.php index.html index.htm;
     
@@ -118,25 +118,25 @@ You can use following potential configuration to setup Nginx with Phalcon:
         client_max_body_size 100M;
         fastcgi_read_timeout 1800;
     
-        # Represents the root of the domain
+        #도메인의 루트
         # https://localhost:8000/[index.php]
         location / {
             # Matches URLS `$_GET['_url']`
             try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
     
-        # When the HTTP request does not match the above
-        # and the file ends in .php
+        # HTTP 요청이 위의 식과 일치하지 않고
+        # 파일명이 .php 로 끝날때
         location ~ [^/]\.php(/|$) {
             # try_files $uri =404;
     
-            # Ubuntu and PHP7.0-fpm in socket mode
-            # This path is dependent on the version of PHP install
+            # Ubuntu와 PHP7.0-fpm 소켓모드
+            # 이 경로는 설치한 PHP 버전에 따라 다름
             fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
     
     
-            # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
-            # You will need to configure FPM to listen on a standard port
+            # 그 대신 TCP모드 PHP-FPM 사용시(윈도우에서는 필수값)
+            # FPM이 표준 포트를 읽도록 설정해야 합니다
             # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
             # fastcgi_pass  127.0.0.1:9000;
     
@@ -167,9 +167,9 @@ You can use following potential configuration to setup Nginx with Phalcon:
     }
     
 
-### Start
+### 시작
 
-Depending on your system, the command to start nginX could be one of the following:
+시스템에 따라 nginX 시작 명령어는 다음 중 하나가 될 것입니다:
 
 ```bash
 start nginx
@@ -179,11 +179,11 @@ service nginx start
 
 ## Apache
 
-[Apache](https://httpd.apache.org/) is a popular and well known web server available on many platforms.
+[Apache](https://httpd.apache.org/) 다양한 플랫폼을 지원하는 인기있고 잘 알려진 웹서버입니다.
 
-### Phalcon configuration
+### Phalcon 설정
 
-The following are potential configurations you can use to setup Apache with Phalcon. These notes are primarily focused on the configuration of the `mod_rewrite` module allowing to use friendly URLs and the [router component](routing). A common directory structure for an application is:
+다음은 Apache에서 Phalcon을 사용하는 경우 참고하실 수 있는 설정입니다 이 섹션은 friendly URLs 와 [라우터 콤포넌트](routing)를 사용하기 위한 `mod_rewrite` 모듈의 설정에 대해 주로 다루고 있습니다. 어플리케이션을 위한 일반적인 디렉토리 구조는 다음과 같습니다:
 
 ```bash
 tutorial/
@@ -198,9 +198,9 @@ tutorial/
     index.php
 ```
 
-**Document root** The most common case is for an application to be installed in a directory under the document root. If that is the case, we can use `.htaccess` files. The first one will be used to hide the application code forwarding all requests to the application's document root (`public/`).
+**Document root** 어플리케이션을 document root 아래에 설치하는 것이 가장 일반적인 케이스이지요. 그런 경우, `.htaccess` 파일을 이용할 수 있습니다. 첫번째. htaccess파일은 모든 요청을 어플리케이션의 document root(`public/`) 로 포워딩시켜 어플리케이션 코드를 감추는데 사용합니다.
 
-> Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> Apache 설치시 `AllowOverride All` 옵션을 설정해주셔야 `.htaccess` 파일을 사용할 수 있다는 점 주의해 주세요.
  {: .alert .alert-warning}
 
 # tutorial/.htaccess
@@ -212,7 +212,7 @@ tutorial/
     </IfModule>
     
 
-A second `.htaccess` file is located in the `public/` directory, this re-writes all the URIs to the `public/index.php` file:
+두번째 `.htaccess` 파일은 `public/` 디렉토리에 존재하며, 모든 URI를 `public/index.php` 파일로 re-write 합니다:
 
     # tutorial/public/.htaccess
     
@@ -224,7 +224,7 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-**International Characters** For users that are using the Persian letter 'م' (meem) in uri parameters, there is an issue with `mod_rewrite`. To allow the matching to work as it does with English characters, you will need to change your `.htaccess` file:
+**International Characters** uri 파라미터에 페르시아 문자인 'م' (meem) 을 사용하는 사용자의 경우, `mod_rewrite` 사용에 문제가 발생합니다. 영문자 처럼 매칭이 잘 동작하도록 하기 위해서는, `.htaccess` 파일의 수정이 필요합니다:
 
     # tutorial/public/.htaccess
     
@@ -236,11 +236,11 @@ A second `.htaccess` file is located in the `public/` directory, this re-writes 
     </IfModule>
     
 
-If your uri contains characters other than English, you might need to resort to the above change to allow `mod_rewrite` to accurately match your route.
+uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확하게 라우트를 매칭시키기 위해서는 위의 코드를 참고해서 해당문자에 맞게 적용시켜야 할 수 있습니다.
 
-#### Apache configuration
+#### Apache 설정
 
-If you do not want to use `.htaccess` files, you can move the relevant directives to apache's main configuration file:
+`.htaccess` 파일을 사용하고 싶지 않으시다면, 관련 설정을 apache의 메인 설정파일에 넣으셔도 됩니다:
 
     <IfModule mod_rewrite.c>
     
@@ -260,9 +260,9 @@ If you do not want to use `.htaccess` files, you can move the relevant directive
     </IfModule>
     
 
-#### Virtual Hosts
+#### 가상 호스트
 
-The configuration below is for when you want to install your application in a virtual host:
+어플리케이션을 가상호스트에 설치하실 때 아래의 설정을 참조하세요:
 
     <VirtualHost *:80>
     
@@ -283,181 +283,181 @@ The configuration below is for when you want to install your application in a vi
 
 ## WAMP
 
-[WampServer](http://www.wampserver.com/en/) is a Windows web development environment. It allows you to create web applications with Apache2, PHP and a MySQL database. Below are detailed instructions on how to install Phalcon on WampServer for Windows. Using the latest WampServer version is highly recommended.
+[WampServer](http://www.wampserver.com/en/) 는 윈도우용 웹 개발환경입니다. 이 환경을 이용해서 Apache2, PHP 와 MySQL 데이터베이스를 이용해서 웹 어플리케이션을 개발하실 수 있습니다. 다음은 WampServer 에서 Phalcon을 설치하는 방법에 대한 상세한 설명입니다. 최신버전 WampServer 사용을 강력히 권고드립니다.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.6.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **주의** 이 가이드 상에서의 경로는 WAMP 설치하신 것에 맞춘 상대경로로 확인하셔야 합니다
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Phalcon 다운로드
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. WAMP에서 제공하는 `phpinfo` 페이지를 로드하세요:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+`Architecture` 와 `Extension Build` 값을 확인하세요. 그 값 기준으로 호환되는 DLL파일을 다운로드 받으실 수 있습니다. 위의 예시를 기준으로 보면 다음의 파일을 다운로드 해야 합니다:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+`x86`, `vc15` 이면서 `TS` 즉, *Thread Safe(다중스레드지원)*인 조건에 맞는 파일입니다. 시스템에서 `NTS` (*Non Thread Safe(단일스레드지원)*) 로 나온다면 그에 맞는 DLL을 내려받아야 하겠죠.
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+WAMP는 32bit와 64bit 버전이 있습니다. 다운로드 섹션에서, 설치된 WAMPP와 호환되는 Phalcon DLL 다운로드가 가능합니다.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비슷한 zip 파일이 있을겁니다:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+압축파일을 해제하시면 Phalcon DLL 파일이 있을겁니다:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions folder. If WAMP is installed in the `C:\wamp` folder, the extension needs to be in `C:\wamp\bin\php\php7.2.18\ext` (assuming your WAMP installation installed PHP 7.2.18).
+`php_phalcon.dll` 파일을 PHP 의 extensions 폴더로 복사하세요. WAMP가 `C:\wamp` 폴더에 설치되어 있는 경우, 익스텐션은 `C:\wamp\bin\php\php7.2.18\ext` 폴더에 있어야 합니다. (WAMP 설치시 설치된 PHP버전이 7.2.18이라고 가정).
 
 ![](/assets/images/content/webserver-wamp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\wamp\bin\php\php7.2.18\php.ini`. It can be edited with Notepad or a similar program. We recommend Notepad++ to avoid issues with line endings. Append at the end of the file:
+`php.ini` 파일을 수정하세요. 이 파일은 `C:\wamp\bin\php\php7.2.18\php.ini` 에 있습니다. 메모장이나 기타 텍스트편집 프로그램으로 수정하실 수 있습니다. 줄바꿈 문제를 겪지 않으시려면 Notepad++ 사용을 추천합니다. 파일의 제일 아랫쪽에 추가해주세요:
 
 ```ini extension=php_phalcon.dll
 
-    <br />and save it.
+    <br />그리고 저장해주세요.
     
     ![](/assets/images/content/webserver-wamp-phalcon-php-ini.png)
     
-    Also edit the `php.ini` file, which is located at `C:\wamp\bin\apache\apache2.4.9\bin\php.ini`. Append at the end of the file: 
+    `C:\wamp\bin\apache\apache2.4.9\bin\php.ini` 에 있는 `php.ini` 파일도 동일한 수정이 필요합니다. 파일 제일 아랫쪽에 추가: 
     
     ```ini
     extension=php_phalcon.dll 
     
 
-and save it.
+그리고 저장해주세요.
 
-> **NOTE**: The path above might differ depending on the apache installation you have for your web server. Adjust it accordingly.
+> **주의**: 웹서버로 사용하는 apache 설치방식에 따라 경로는 달라질 수 있습니다. 감안해서 파일을 찾아 수정해주세요.
 {: .alert .alert-warning }
 
 > 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+> **주의**: 위에서 언급한 바와 같이 `PSR` 익스텐션의 설치가 필요하며 이 익스텐션은 Phalcon이 로드되기 전에 로드되어야 합니다. 위의 이미지에 나타난 것 처럼 Phalcon 관련 줄 윗쪽에`extension=php_psr.dll` 줄이 위치해야 합니다.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-wamp-apache-phalcon-php-ini.png)
 
-Restart the Apache Web Server. Do a single click on the WampServer icon at system tray. Choose `Restart All Services` from the pop-up menu. Check out that tray icon will become green again.
+Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServer 아이콘을 클릭. 팝업 메뉴에서 `Restart All Services` 를 선택. 트레이 아이콘이 다시 녹색으로 바뀌는지 확인.
 
 ![](/assets/images/content/webserver-wamp-manager.png)
 
-Open your browser to navigate to https://localhost. The WAMP welcome page will appear. Check the section `extensions loaded` to ensure that phalcon was loaded.
+브라우저를 실행해서 주소창에 https://localhost 입력 후 엔터 WAMP 의 환영페이지가 나타날 것입니다. `extensions loaded` 섹션에서 Phalcon이 정상적으로 로드되었는지 확인해주세요.
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> 축하합니다! 당신은 이제 Phalcon과 함께 phlying 하고 계십니다.
 {: .alert .alert-info }
 
 ## XAMPP
 
-[XAMPP](https://www.apachefriends.org/download.html) is an easy to install Apache distribution containing MySQL, PHP and Perl. Once you download XAMPP, all you have to do is extract it and start using it. Below are detailed instructions on how to install Phalcon on XAMPP for Windows. Using the latest XAMPP version is highly recommended.
+[XAMPP](https://www.apachefriends.org/download.html) 는 MYSQL,PHP와 Perl이 포함된, 쉽게 설치할 수 있는 Apache 배포판입니다. XAMPP를 다운로드 하신 후, 압축을 풀고 그냥 사용하시면 됩니다. 아래는 윈도우 에서 돌아가는 XAMPP 상에서 Phalcon을 설치하는 방법에 대한 자세한 안내입니다. 최신버전의 XAMPP를 사용하시기를 강력히 권해 드립니다.
 
-> **NOTE** Since v4, you must install the `PSR` extension from PECL. Visit [this URL](https://pecl.php.net/package/psr/0.6.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.6.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
 
 > 
-> **NOTE** Paths in this guide should be relative, according to your installation WAMP
+> **주의** 이 가이드 상에서의 경로는 WAMP 설치하신 것에 맞춘 상대경로로 확인하셔야 합니다
 {: .alert .alert-warning }
 
-### Download Phalcon
+### Phalcon 다운로드
 
-For Phalcon to work on Windows, you must install the correct version that matches your architecture and extension built. Load up the `phpinfo` page provided by WAMP:
+Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. WAMP에서 제공하는 `phpinfo` 페이지를 로드하세요:
 
 ![](/assets/images/content/webserver-architecture.png)
 
-Check the `Architecture` and `Extension Build` values. Those will allow you to download the correct DLL. In the above example you should download the file:
+`Architecture` 와 `Extension Build` 값을 확인하세요. 그 값 기준으로 호환되는 DLL파일을 다운로드 받으실 수 있습니다. 위의 예시를 기준으로 보면 다음의 파일을 다운로드 해야 합니다:
 
     phalcon_x86_vc15_php7.2_4.0.0+4237.zip
     
 
-which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
+`x86`, `vc15` 이면서 `TS` 즉, *Thread Safe(다중스레드지원)*인 조건에 맞는 파일입니다. 시스템에서 `NTS` (*Non Thread Safe(단일스레드지원)*) 로 나온다면 그에 맞는 DLL을 내려받아야 하겠죠.
 
-XAMPP is always releasing 32 bit versions of Apache and PHP. You will need to download the x86 version of Phalcon for Windows from the download section.
+XAMPP 항상 32 bit 버전의 Apache와 PHP를 릴리즈합니다. 다운로드 섹션에서 x86버전의 윈도우용 Phalcon을 다운로드 받으셔야 합니다.
 
-After downloading the Phalcon library you will have a zip file like the one shown below:
+Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비슷한 zip 파일이 있을겁니다:
 
 ![](/assets/images/content/webserver-zip-icon.png)
 
-Extract the library from the archive to get the Phalcon DLL:
+압축파일을 해제하시면 Phalcon DLL 파일이 있을겁니다:
 
 ![](/assets/images/content/webserver-extracted-dlls.png)
 
-Copy the file `php_phalcon.dll` to the PHP extensions directory. If you have installed XAMPP in the `C:\xampp` folder, the extension needs to be in `C:\xampp\php\ext`
+`php_phalcon.dll` 파일을 PHP 익스텐션 디렉토리로 복사하세요. XAMPP를 `C:\xampp` 폴더에 설치하신 경우 익스텐션은`C:\xampp\php\ext` 폴더에 들어가야 합니다.
 
 ![](/assets/images/content/webserver-xampp-phalcon-psr-ext-folder.png)
 
-Edit the `php.ini` file, it is located at `C:\xampp\php\php.ini`. It can be edited with Notepad or a similar program. We recommend [Notepad++](https://notepad-plus-plus.org/) to avoid issues with line endings. Append at the end of the file:
+`C:\xampp\php\php.ini` 에 있는 `php.ini` 파일을 편집하세요. 메모장이나 기타 텍스트편집 프로그램으로 수정하실 수 있습니다. 줄바꿈관련 문제를 겪지 않으려면 [Notepad++](https://notepad-plus-plus.org/) 프로그램 이용을 추천합니다. 파일의 제일 아랫쪽에 추가해주세요:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-and save it.
+그리고 저장해주세요.
 
-> **NOTE**: As mentioned above the `PSR` extension needs to be installed and loaded before Phalcon. Add the `extension=php_psr.dll` line before the one for Phalcon as shown in the image above.
+> **주의**: 위에서 언급한 바와 같이 `PSR` 익스텐션의 설치가 필요하며 이 익스텐션은 Phalcon이 로드되기 전에 로드되어야 합니다. 위의 이미지에 나타난 것 처럼 Phalcon 관련 줄 윗쪽에`extension=php_psr.dll` 줄이 위치해야 합니다.
 {: .alert .alert-warning }
 
 ![](/assets/images/content/webserver-xampp-phalcon-php-ini.png)
 
-Restart the Apache Web Server from the XAMPP Control Center. This will load the new PHP configuration. Open your browser to navigate to `https://localhost`. The XAMPP welcome page will appear. Click on the link `phpinfo()`.
+XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시작 하면 변경된 PHP 설정을 읽어들입니다. 브라우저를 실행해서 주소창에 `https://localhost` 입력 후 엔터 XAMPP 환영 페이지가 나타날 것입니다. `phpinfo()` 링크를 클릭하세요.
 
 ![](/assets/images/content/webserver-xampp-phpinfo.png)
 
-[phpinfo](https://php.net/manual/en/function.phpinfo.php) will output a significant amount of information on screen about the current state of PHP. Scroll down to check if the phalcon extension has been loaded correctly.
+[phpinfo](https://php.net/manual/en/function.phpinfo.php) 는 현재 PHP이 상태에 대한 엄청난 양의 정보를 표시할 것입니다. Phalcon익스텐션이 정상적으로 로드되었는지 아래로 스크롤 해서 확인해주세요.
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> Congratulations! You are now phlying with Phalcon.
+> 축하합니다! 당신은 이제 Phalcon과 함께 phlying 하고 계십니다.
 {: .alert .alert-info }
 
 
 ## Cherokee
 
-[Cherokee](https://www.cherokee-project.com/) is a high-performance web server. It is very fast, flexible and easy to configure.
+[Cherokee](https://www.cherokee-project.com/) 는 고성능의 웹서버입니다. 매우 빠르고, 유연하며, 설정이 쉽습니다.
 
-### Phalcon configuration
+### Phalcon 설정
 
-Cherokee provides a friendly graphical interface to configure almost every setting available in the web server.
+Cherokee 는 웹서버에서 가능한 거의 모든 값을 설정 할 수 있도록 친숙한 그래픽 UI를 제공합니다.
 
-Start the cherokee administrator by executing as root `/path-to-cherokee/sbin/cherokee-admin`
+`/path-to-cherokee/sbin/cherokee-admin` 를 root 권한으로 실행해서 cherokee 관리자를 시작합니다
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Create a new virtual host by clicking on `vServers`, then add a new virtual server:
+`vServers`를 클릭해서 새로운 가상호스트를 생성한 후, 새로운 가상서버를 생성하세요:
 
 ![](/assets/images/content/webserver-cherokee-2.jpg)
 
-The recently added virtual server must appear at the left bar of the screen. In the `Behaviors` tab you will see a set of default behaviors for this virtual server. Click the `Rule Management` button. Remove those labeled as `Directory /cherokee_themes` and `Directory /icons`:
+가장 최근에 추가된 가상 서버가 화면 좌측 바에 나타날 것입니다. `Behaviors`탭에서는 가상서버의 동작에 대한 기본값들을 확인하실 수 있습니다. `Rule Management`버튼을 클릭하세요. `Directory /cherokee_themes` 부분과 `Directory /icons` 부분을 삭제하세요:
 
 ![](/assets/images/content/webserver-cherokee-3.jpg)
 
-Add the `PHP Language` behavior using the wizard. This behavior allows you to run PHP applications:
+마법사를 이용해서 `PHP Language` behavior를 추가하세요. 이 behavior값이 PHP어플리케이션이 동작하도록 해줍니다:
 
 ![](/assets/images/content/webserver-cherokee-1.jpg)
 
-Normally this behavior does not require additional settings. Add another behavior, this time in the `Manual Configuration` section. In `Rule Type` choose `File Exists`, then make sure the option `Match any file` is enabled:
+일반적으로 이 behavior는 추가적인 설정을 할 필요는 없습니다. 이번에는 `Manual Configuration`섹션에 다른 behavior를 추가합시다. `Rule Type` 부분에서 `File Exists`를 선택하신 후, `Match any file` 옵션이 활성화 되도록 해주세요:
 
 ![](/assets/images/content/webserver-cherokee-5.jpg)
 
-In the `Handler` tab choose `List & Send` as handler:
+`Handler` 탭에서 핸들러로 `List & Send`를 선택하세요:
 
 ![](/assets/images/content/webserver-cherokee-7.jpg)
 
-Edit the `Default` behavior in order to enable the URL-rewrite engine. Change the handler to `Redirection`, then add the following regular expression to the engine `^(.*)$`:
+`Default` behavior 를 수정해서 URL-rewrite 엔진을 활성화 합니다. `Redirection` 을 핸들러로 선택한 후, 엔진에 다음의 정규식을 추가해 주세요 `^(.*)$`:
 
 ![](/assets/images/content/webserver-cherokee-6.jpg)
 
-Finally, make sure the behaviors have the following order:
+마지막으로, behaviors가 다음의 순서대로 되어있는지 확인해 주세요:
 
 ![](/assets/images/content/webserver-cherokee-8.jpg)
 
-Execute the application in a browser:
+브라우저에서 어플리케이션을 실행해주세요
 
 ![](/assets/images/content/webserver-cherokee-9.jpg)
