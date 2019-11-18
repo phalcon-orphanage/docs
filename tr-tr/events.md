@@ -10,7 +10,7 @@ keywords: 'events, events manager, hooks'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
 
@@ -208,7 +208,7 @@ $connection->query(
 
 In the above example, we are using the events manager to listen to the `afterQuery` event produced by the `db` service, in this case MySQL. We use the `attach` method to attach our event to the manager and use the `db:afterQuery` event. We add an anonymous function as the handler for this event, which accepts a [Phalcon\Events\Event](api/phalcon_events#events-event) as the first parameter. This object contains contextual information regarding the event that has been fired. The database connection object as the second. Using the connection variable we print out the SQL statement. You can always pass a third parameter with arbitrary data specific to the event, or even a logger object in the anonymous function so that you can log your queries in a separate log file.
 
-> You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
+> **NOTE**: You must explicitly set the Events Manager to a component using the `setEventsManager()` method in order for that component to trigger events. You can create a new Events Manager instance for each component or you can set the same Events Manager to multiple components as the naming convention will avoid conflicts
 {: .alert .alert-warning }
   
 ## İşleyiciler
@@ -620,11 +620,11 @@ $eventsManager->attach(
 ); 
 ```
 
-> In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
+> **NOTE**: In order for the priorities to work `enablePriorities()` has to be called with `true` so as to enable them. Priorities are disabled by default
 {: .alert .alert-info }
 
 > 
-> A high priority number means that the listener will be processed before those with lower priorities
+> **NOTE**: A high priority number means that the listener will be processed before those with lower priorities
 {: .alert .alert-warning }
 
 ## Yanıtlar
@@ -668,7 +668,7 @@ The above example produces:
 ]
 ```
 
-> In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
+> **NOTE**: In order for the priorities to work `collectResponses()` has to be called with `true` so as to enable collecting them.
 {: .alert .alert-info }
 
 ## Exceptions
