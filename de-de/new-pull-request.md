@@ -10,13 +10,13 @@ keywords: 'new pull request, pull request, pr'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 A pull request for Phalcon must be against our [main repository[cphalcon](https://github.com/phalcon/cphalcon). It is a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality or enhancement.
 
 Your pull request must include: * Target the correct branch. * Update the relevant `CHANGELOG.md` * Contain unit tests * Updates to the documentation and usage examples as necessary * Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-2](https://www.php-fig.org/psr/) while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.
 
-> **We do not accept Pull Requests to the `master` branch**
+> **NOTE**: **We do not accept Pull Requests to the `master` branch**
 {:.alert .alert-danger}
 
 If your pull request relates to fixing an issue/bug, please link the issue number in the pull request body. You can utilize the template we have in GitHub to present this information. If no issue exists, please create one.
@@ -27,7 +27,7 @@ Additionally any new functionality that introduces breaking changes will not be 
 
 It is highly recommended to discuss your NFR and PR with the core team and most importantly with the community so as to get feedback, guidance and to work on a release plan that will benefit everyone.
 
-## Branch and commits
+## Branch and Commits
 
 The following steps are recommended but not mandatory.
 
@@ -46,8 +46,8 @@ Create a new file called `commit-msg` and paste the code below in it and save it
 
 ```bash
 #!/bin/bash
-# This way you can customize which branches should be skipped when
-# prepending commit message.
+# This Way You can Customize Which Branches Should be Skipped When
+# Prepending Commit Message.
 if [ -z "$BRANCHES_TO_SKIP" ]; then
   BRANCHES_TO_SKIP=(master develop)
 fi
