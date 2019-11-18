@@ -7,7 +7,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
 # Tutorial - REST
 <hr/>
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-advanced.svg)
 
 ## Creating a Simple REST API
 In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
