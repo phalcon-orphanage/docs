@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Environments - Nanobox'
 keywords: 'environment, nanobox, docker'
@@ -113,7 +113,7 @@ From the root of your project, run the following commands to start Nanobox and g
 # Start Nanobox and Drop into a Nanobox Console
 nanobox run
 
-# Cd into the /tmp Directory
+# cd into the /tmp Directory
 cd /tmp
 
 # Generate a New Phalcon App
