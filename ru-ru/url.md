@@ -11,7 +11,7 @@ keywords: 'url, url handling, url generation, static url, dynamic url'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 
