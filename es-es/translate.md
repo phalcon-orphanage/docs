@@ -10,15 +10,15 @@ keywords: 'translate, translations, translation adapters, native array, csv, get
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Controladores
 
-The component [Phalcon\Translate](api/Phalcon_Translate) offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
+The component [Phalcon\Translate](api/phalcon_translate) offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 
 ## Uso
 
-Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request](api/Phalcon_Http#request) object).
+Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request](api/phalcon_http#request) object).
 
 ```php
 <?php
@@ -241,9 +241,9 @@ This component makes use of adapters to read translation messages from different
 
 | Adaptador                                                                                       | Descripción                                                         |
 | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| [Phalcon\Translate\Adapter\NativeArray](api/Phalcon_Translate#translate-adapter-nativearray) | Uses PHP arrays to store the messages.                              |
-| [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate#translate-adapter-csv)                 | Utiliza un archivo `.csv` para almacenar los mensajes de un idioma. |
-| [Phalcon\Translate\Adapter\Gettext](api/Phalcon_Translate#translate-adapter-gettext)         | Utiliza gettext para recuperar los mensajes de un archivo `.po`.    |
+| [Phalcon\Translate\Adapter\NativeArray](api/phalcon_translate#translate-adapter-nativearray) | Uses PHP arrays to store the messages.                              |
+| [Phalcon\Translate\Adapter\Csv](api/phalcon_translate#translate-adapter-csv)                 | Utiliza un archivo `.csv` para almacenar los mensajes de un idioma. |
+| [Phalcon\Translate\Adapter\Gettext](api/phalcon_translate#translate-adapter-gettext)         | Utiliza gettext para recuperar los mensajes de un archivo `.po`.    |
 
 ### Native Array
 
@@ -361,7 +361,7 @@ The code above will trigger an error when we try to access the `unknown` entry.
 
 ### Csv
 
-If your translation strings are stored in a `.csv` file. The [Phalcon\Translate\Adapter\Csv](api/Phalcon_Translate#translate-adapter-csv) adapter accepts the interpolator factory and an array with options necessary for loading the translations. The options array accepts: - `content`: The location of the CSV file on the file system - `delimiter`: The delimiter the CSV file uses (optional - defaults to `;`) - `enclosure`: The character that surrounds the text (optional - defaults to `"`)
+If your translation strings are stored in a `.csv` file. The [Phalcon\Translate\Adapter\Csv](api/phalcon_translate#translate-adapter-csv) adapter accepts the interpolator factory and an array with options necessary for loading the translations. The options array accepts: - `content`: The location of the CSV file on the file system - `delimiter`: The delimiter the CSV file uses (optional - defaults to `;`) - `enclosure`: The character that surrounds the text (optional - defaults to `"`)
 
 ```php
 <?php
@@ -404,7 +404,7 @@ $translator = new Csv($interpolator, $options);
 
 ### Gettext
 
-> This adapter **requires** the [gettext](https://www.php.net/manual/book.gettext.php) PHP extension. Please make sure that your system has it installed so that you can take advantage of this adapter's functionality
+> **NOTE**: This adapter **requires** the [gettext](https://www.php.net/manual/book.gettext.php) PHP extension. Please make sure that your system has it installed so that you can take advantage of this adapter's functionality
 {: .alert .alert-warning }
 
 The [gettext](https://en.wikipedia.org/wiki/Gettext) format has been around for years and many applications are using it because it has become a standard and it is easy to use. The translations are stored in `.po` and `.mo` files, and content can be easily added or changed using online editors or tools such as [POEdit](https://poedit.net/). This adapter requires files to be in specific folders so it can locate the translation files. The options array accepts:
@@ -468,7 +468,7 @@ $translator = new Gettext($interpolator, $options);
 
 ## Personalizado
 
-The [Phalcon\Translate\Adapter\AdapterInterface](api/Phalcon_Translate#translate-adapter-adapterinterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
+The [Phalcon\Translate\Adapter\AdapterInterface](api/phalcon_translate#translate-adapter-adapterinterface) interface must be implemented in order to create your own translate adapters or extend the existing ones:
 
 ```php
 <?php
@@ -530,7 +530,7 @@ Salut %name%, bien %time%!
 
 Assuming that the context will not change based on each language's strings, you can add these placeholders to your translated strings. The Translate component with its adapters will then correctly perform the interpolation for you.
 
-### Changing the interpolator
+### Changing the Interpolator
 
 To change the interpolator that your adapter uses, all you have to do is pass the name of the interpolator in the options using the `defaultInterpolator` key.
 
@@ -555,7 +555,7 @@ $translator = $factory->newInstance('array', $options);
 
 ### AssociatedArray
 
-[Phalcon\Translate\Interpolator\AssociativeArray](api/Phalcon_Translate#translate-interpolator-associativearray) is the default interpolator. It allows you to do a key/value replacement of the placeholders.
+[Phalcon\Translate\Interpolator\AssociativeArray](api/phalcon_translate#translate-interpolator-associativearray) is the default interpolator. It allows you to do a key/value replacement of the placeholders.
 
 ```php
 <?php
@@ -595,7 +595,7 @@ $translator->_(
 
 ### AssociatedArray
 
-[Phalcon\Translate\Interpolator\IndexedArray](api/Phalcon_Translate#translate-interpolator-indexedarray) is another option that you can use as the interpolator. This interpolator follows the [sprintf](https://www.php.net/manual/en/function.sprintf.php) convention.
+[Phalcon\Translate\Interpolator\IndexedArray](api/phalcon_translate#translate-interpolator-indexedarray) is another option that you can use as the interpolator. This interpolator follows the [sprintf](https://www.php.net/manual/en/function.sprintf.php) convention.
 
 ```php
 <?php
@@ -628,11 +628,11 @@ $translator->_(
 
 ### Custom Interpolators
 
-The [Phalcon\Translate\Interpolator\InterpolatorInterface](api/Phalcon_Translate#translate-interpolator-interpolatorinterface) interface must be implemented in order to create your own interpolators or extend the existing ones:
+The [Phalcon\Translate\Interpolator\InterpolatorInterface](api/phalcon_translate#translate-interpolator-interpolatorinterface) interface must be implemented in order to create your own interpolators or extend the existing ones:
 
 ### Interpolator Factory
 
-The [Phalcon\Translate\InterpolatorFactory](api/Phalcon_Translate#translate-interpolatorfactory) factory offers an easy way to create interpolators. It is an object required to be passed to the translate adapters and translate factory, so that in turn can create the relevant interpolation class that the adapter will use.
+The [Phalcon\Translate\InterpolatorFactory](api/phalcon_translate#translate-interpolatorfactory) factory offers an easy way to create interpolators. It is an object required to be passed to the translate adapters and translate factory, so that in turn can create the relevant interpolation class that the adapter will use.
 
 ```php
 <?php
