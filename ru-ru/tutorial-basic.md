@@ -10,7 +10,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 
