@@ -2,13 +2,15 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
+title: 'Tutorial - Invo'
+keywords: 'tutorial, invo tutorial, step by step, mvc'
 ---
 
 # Tutorial - INVO
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/level-intermediate.svg)
 
 ## INVO
 
@@ -141,7 +143,7 @@ define(
 );
 ```
 
-## Registering services
+## Registering Services
 
 Another file that is required in the bootstrap is (`app/config/services.php`). This file allows us to organize the services that INVO uses.
 
@@ -656,7 +658,7 @@ class SecurityPlugin extends Plugin
 }
 ```
 
-### Getting the ACL list
+### Getting the ACL List
 
 In the above example we have obtained the ACL using the method `$this->getAcl()`. This method is also implemented in the Plugin. Now we are going to explain step-by-step how we built the access control list (ACL):
 
