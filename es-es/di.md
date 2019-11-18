@@ -10,7 +10,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Controladores
 
