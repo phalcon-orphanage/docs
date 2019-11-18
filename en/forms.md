@@ -7,7 +7,7 @@ keywords: 'forms, render html, validation, elements'
 ---
 # Forms
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.

@@ -10,7 +10,7 @@ keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp,
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Введение
 

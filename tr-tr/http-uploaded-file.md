@@ -10,7 +10,7 @@ keywords: 'psr-7, http, http uploaded file'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
 

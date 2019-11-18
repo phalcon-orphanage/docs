@@ -10,7 +10,7 @@ keywords: 'translate, translations, translation adapters, native array, csv, get
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 

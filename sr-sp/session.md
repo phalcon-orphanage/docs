@@ -10,7 +10,7 @@ keywords: 'session, session manager, session adapters, redis, libmemcached, none
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 

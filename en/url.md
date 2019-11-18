@@ -8,7 +8,7 @@ keywords: 'url, url handling, url generation, static url, dynamic url'
 ---
 # Url Component
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Url][url] is the component responsible of generate URLs in a Phalcon application. It can also be used to construct URLs based on routes.

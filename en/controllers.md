@@ -7,7 +7,7 @@ keywords: 'controllers, mvc'
 ---
 # Controllers
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 A controller is a class that contains business logic for an application. It is also responsible for executing the requests from users. Controllers have methods called _actions_ that contain such business logic and handle user requests.

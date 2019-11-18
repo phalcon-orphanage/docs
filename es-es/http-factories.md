@@ -9,7 +9,7 @@ title: 'HTTP Factories (PSR-17)'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Controladores
 

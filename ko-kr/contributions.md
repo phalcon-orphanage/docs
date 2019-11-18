@@ -10,7 +10,7 @@ keywords: 'contributing, nfr, pull request, pr, new feature request, 기여하�
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Phalcon에 기여하기
 
