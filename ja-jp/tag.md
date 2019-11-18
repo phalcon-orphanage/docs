@@ -3,13 +3,14 @@ layout: default
 language: 'ja-jp'
 version: '4.0'
 title: 'Tag'
+keywords: 'tag, helpers, view helpers, html generators'
 ---
 
 # Tag (View Helpers)
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 
@@ -17,7 +18,7 @@ Writing and maintaining HTML markup can quickly become a tedious task because of
 
 This component can be used in a plain HTML+PHP view or in a [Volt](volt) template.
 
-> This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
+> **NOTE**: This offers the same functionality as `Phalcon\Html\TagFactory`. In future versions, this component will be replaced by the `TagFactory` one. The reason for both components is to offer as much time as possible to developers to adapt their code, since HTML generation touches a lot of areas of the application, the view in particular.
 {: .alert .alert-warning } 
 
 ## DocType
@@ -73,13 +74,13 @@ or in Volt:
 
 ## Title
 
-[Phalcon\Tag](api/Phalcon_Tag) offers methods to set the tag of the resulting page or HTML sent to the user. There are several methods available:
+[Phalcon\Tag](api/phalcon_tag) offers methods to set the tag of the resulting page or HTML sent to the user. There are several methods available:
 
 ### `appendTitle()`
 
 Appends text to the current title. The method accepts either a `string` or an `array`.
 
-> If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the append title text. If however you supply an `array` the internal collection will be replaced.
 {: .alert .alert-info }
 
 ```php
@@ -182,7 +183,7 @@ echo Tag::getTitleSeparator(); // ''
 
 Prepends text to the current title. The method accepts either a `string` or an `array`.
 
-> If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
+> **NOTE**: If a `string` is supplied, it will be added to the internal collection holding the prepend title text. If however you supply an `array` the internal collection will be replaced.
 {: .alert .alert-info }
 
 ```php
@@ -1202,7 +1203,7 @@ Volt syntax:
 
 ## Assets
 
-[Phalcon\Tag](api/Phalcon_Tag) offers helper methods to generate stylesheet and javascript HTML tags.
+[Phalcon\Tag](api/phalcon_tag) offers helper methods to generate stylesheet and javascript HTML tags.
 
 ### `stylesheetLink()`
 
@@ -1287,7 +1288,7 @@ Volt Syntax:
 
 ## Links
 
-A common task in any web application is to show links that help with the navigation from one area to another. [Phalcon\Tag](api/Phalcon_Tag) offers `linkTo()` to help with this task. The method accepts three parameters. - `parameters` - `array`/`string` - The attributes and parameters of the element. If a string is passed it will be treated as the target URL for the link. If an array is passed, the following elements can be sent: - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element - `query` - the base query for the URL - `text` - the text of the link - `local` - whether this is a local or remote link - additional key/value attributes for the link - `text` - `string` - the text of the link - `local` - `bool` - whether this is a local or remote link
+A common task in any web application is to show links that help with the navigation from one area to another. [Phalcon\Tag](api/phalcon_tag) offers `linkTo()` to help with this task. The method accepts three parameters. - `parameters` - `array`/`string` - The attributes and parameters of the element. If a string is passed it will be treated as the target URL for the link. If an array is passed, the following elements can be sent: - `action` - the URL. If the `action` is an array, you can reference a named route defined in your routes using the `for` element - `query` - the base query for the URL - `text` - the text of the link - `local` - whether this is a local or remote link - additional key/value attributes for the link - `text` - `string` - the text of the link - `local` - `bool` - whether this is a local or remote link
 
 ```php
 <?php
@@ -1367,7 +1368,7 @@ Volt syntax:
 ) }}{% endraw %}
 ```
 
-If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag](api/Phalcon_Tag) will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
+If you have named routes, you can use the `for` keyword in your parameter array to reference it. [Phalcon\Tag](api/phalcon_tag) will resolve the route internally and produce the correct URL using [Phalcon\Url](url).
 
 ```php
 <?php
@@ -1423,7 +1424,7 @@ Volt syntax:
 
 ## Forms
 
-Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/Phalcon_Tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
+Forms play an important role in any web application, since they are used to collect input from the user. [Phalcon\Tag](api/phalcon_tag) offers the `form()` and `endForm()` methods, which create `<form>` elements.
 
 ```php
 <?php
@@ -1487,7 +1488,7 @@ Phalcon also provides a [form builder](forms) to create forms in an object-orien
 
 ### `setDefault()`
 
-You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag](api/Phalcon_Tag). The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
+You can use `setDefault()` to pre populate values for elements generated by [Phalcon\Tag](api/phalcon_tag). The helpers of this component will retain the values between requests. This way you can easily show validation messages without losing entered data. Every form helper supports the parameter `value`. With it you can specify a value for the helper directly. When the parameter is present, any preset value using `setDefault()` or via request will be ignored.
 
 ```php
 <?php
@@ -1598,7 +1599,7 @@ echo Tag::hasValue('framework'); // 'true'
 
 ## Escaping
 
-[Phalcon\Tag](api/Phalcon_Tag) automatically escapes text supplied for its helpers. If your application requires it, you can disable automatic escaping by using `setAutoEscape()`.
+[Phalcon\Tag](api/phalcon_tag) automatically escapes text supplied for its helpers. If your application requires it, you can disable automatic escaping by using `setAutoEscape()`.
 
 ```php
 <?php
@@ -1630,7 +1631,7 @@ echo Tag::textField(
 
 ## Dependency Injection
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, the [Phalcon\Tag](api/Phalcon_Tag) is already registered for you with the name `tag`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Tag](api/phalcon_tag) is already registered for you with the name `tag`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -1654,7 +1655,7 @@ $container->set(
 
 You can always implement your own `tag` helper and register it in the place of `tag` in the Di container.
 
-Accessing the service from any component that implements the [Phalcon\Di\Injectable](api/Phalcon_Di#di-injectable) is as simple as accessing the `tag` property.
+Accessing the service from any component that implements the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) is as simple as accessing the `tag` property.
 
 ```php
 <?php
@@ -1681,7 +1682,7 @@ You can easily extend this functionality and create your own helpers.
 - First create a new directory in your application's file system that the helper files will be stored.
 - Name it something that will represent it. For instance in this example we use `customhelpers`.
 - Create a file called `MyTags.php` in your `customhelpers` directory.
-- Extend the [Phalcon\Tag](api/Phalcon_Tag) class and implement your own methods.
+- Extend the [Phalcon\Tag](api/phalcon_tag) class and implement your own methods.
 
 ```php
 <?php
@@ -1801,4 +1802,4 @@ echo MyTags::audioField(
 ?>
 ```
 
-You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag](api/Phalcon_Tag).
+You can also check out [Volt](volt) a faster template engine for PHP, where you can use a more developer friendly syntax for helpers provided by [Phalcon\Tag](api/phalcon_tag).
