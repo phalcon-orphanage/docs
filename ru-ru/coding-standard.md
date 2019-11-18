@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Coding Standard'
 keywords: 'coding standard, zephir'
