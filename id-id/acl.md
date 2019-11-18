@@ -11,7 +11,7 @@ keywords: 'acl, access control list, permissions'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 
