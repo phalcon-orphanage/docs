@@ -10,7 +10,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Genel Bakış
 
@@ -124,7 +124,7 @@ apc.enabled = On
 
 Ensuring that `opcache` is also enabled will also help.
 
-## Slow tasks
+## Slow Tasks
 
 Based on the requirements of your application, there maybe times that you will need to perform long running tasks. Examples of such tasks could be processing a video, optimizing images, sending emails, generating PDF documents etc. These tasks should be processed using background jobs. The usual process is: - The application initiates a task by sending a message to a queue service - The user sees a message that the task has been scheduled - In the background (or different server), worker scripts peek at the queue - When a message arrives, the worker script detects the type of message and calls the relevant task script - Once the task finishes, the user is notified that their data is ready.
 
