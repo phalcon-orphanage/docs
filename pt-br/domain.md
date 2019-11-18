@@ -3,13 +3,14 @@ layout: default
 language: 'pt-br'
 version: '4.0'
 title: 'Domain'
+keywords: 'domain, adr, payload'
 ---
 
-# Domain Component
+# Domain
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 The domain component incorporates components that are used for the implementation of the [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) pattern and can also be used when implementing [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design).
 
@@ -37,7 +38,7 @@ The properties stored are:
 
 The component offers getters and setters for the above properties.
 
-> All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
+> **NOTE**: All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
 {: .alert .alert-info }
 
 ## Factory
