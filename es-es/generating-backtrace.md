@@ -3,9 +3,10 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Generar una traza inversa'
+keywords: 'backtrace, debugging, segmentation faults'
 ---
 
-# Generar una traza inversa
+# Generating a Backtrace
 
 * * *
 

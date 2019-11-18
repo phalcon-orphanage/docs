@@ -141,7 +141,7 @@ public function __construct(
 
 Constructor. Accepts optionally an `entity` object which will be read internally. If the properties of the object contain properties that match the names of the elements defined in the form, those elements will be populated with the values of the corresponding properties of the entity. The entity can be an object such as a [Phalcon\Mvc\Model](db-models) or even a `\stdClass`. The second parameter is `userOptions` an optional array with user defined data.
 
-> If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
+> **NOTE**: If the form has the `initialize` method present, the constructor will call it automatically with the same parameters
 {: .alert .alert-info }
 
 ```php
@@ -695,7 +695,7 @@ Phalcon provides a set of built-in elements to use in your forms, all these elem
 
 These elements use the [Phalcon\Tag](tag) component transparently.
 
-> For more information regarding HTML elements, you can check our [Tag document](tag)
+> **NOTE**: For more information regarding HTML elements, you can check our [Tag document](tag)
 {: .alert .alert-info }
 
 The [Phalcon\Forms\Element\Select](api/phalcon_forms#forms-element-select) supports the `useEmpty` option to enable the use of a blank element within the list of available options. The options `emptyText` and`emptyValue` are optional, which allow you to customize, respectively, the text and the value of the empty element
@@ -748,7 +748,7 @@ $email
     ->add($email);
 ```
 
-> For more information regarding filters, you can check our [Filter document](filters)
+> **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
 ## Validation

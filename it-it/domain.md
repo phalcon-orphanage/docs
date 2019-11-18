@@ -3,9 +3,10 @@ layout: default
 language: 'it-it'
 version: '4.0'
 title: 'Domain'
+keywords: 'domain, adr, payload'
 ---
 
-# Domain Component
+# Domain
 
 * * *
 
@@ -37,7 +38,7 @@ The properties stored are:
 
 The component offers getters and setters for the above properties.
 
-> All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
+> **NOTE**: All the setters return back a [Phalcon\Domain\Payload](api/phalcon_domain#domain-payload-payload) object, which allows you to chain calls for a more fluent syntax.
 {: .alert .alert-info }
 
 ## Factory

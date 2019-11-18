@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Escaper'
+keywords: 'escaper, escape html, escape js, escape css'
 ---
 
 # Escaper
@@ -13,7 +14,7 @@ title: 'Escaper'
 
 ## Controladores
 
-Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/Phalcon_Escaper#escaper) provides contextual escaping and is written in [Zephir](https://zephir-lang.com), providing the minimal overhead when escaping different kinds of texts.
+Websites and web applications are vulnerable to [XSS](https://www.owasp.org/index.php/XSS) attacks and although PHP provides escaping functionality, in some contexts it is not sufficient/appropriate. [Phalcon\Escaper](api/phalcon_escaper#escaper) provides contextual escaping and is written in [Zephir](https://zephir-lang.com), providing the minimal overhead when escaping different kinds of texts.
 
 We designed this component based on the [XSS (Cross Site Scripting) Prevention Cheat Sheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) created by the [OWASP](https://www.owasp.org). Additionally, this component relies on [mbstring](https://secure.php.net/manual/en/book.mbstring.php) to support almost any charset. To illustrate how this component works and why it is important, consider the following example:
 
@@ -177,7 +178,7 @@ Sintaxis Volt:
 
 ## Encoding
 
-[Phalcon\Escape](api/Phalcon_Escaper#escaper) also offers methods regarding the encoding of the text to be escaped.
+[Phalcon\Escape](api/phalcon_escaper#escaper) also offers methods regarding the encoding of the text to be escaped.
 
 ### `detectEncoding()`
 
@@ -267,7 +268,7 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 ## Exceptions
 
-Any exceptions thrown in the Escaper component will be of type [Phalcon\Escaper\Exception](api/Phalcon_Escaper#escaper-exception). It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Escaper component will be of type [Phalcon\Escaper\Exception](api/phalcon_escaper#escaper-exception). It is thrown when the data supplied to the component is not valid. You can use these exceptions to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -294,7 +295,7 @@ class IndexController extends Controller
 
 ## Inyección de Dependencias
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, the [Phalcon\Escaper](api/Phalcon_Escaper#escaper) is already registered for you with the name `escaper`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Escaper](api/phalcon_escaper#escaper) is already registered for you with the name `escaper`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -345,7 +346,7 @@ class InvoicesController extends Controller
 
 ## Personalizado
 
-Phalcon also offers the [Phalcon\Escaper\EscaperInterface](api/Phalcon_Escaper#escaper-escaperinterface) which can be implemented in a custom class. The class can offer the escaper functionality you require.
+Phalcon also offers the [Phalcon\Escaper\EscaperInterface](api/phalcon_escaper#escaper-escaperinterface) which can be implemented in a custom class. The class can offer the escaper functionality you require.
 
 ```php
 <?php

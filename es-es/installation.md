@@ -46,7 +46,7 @@ Hemos alojado nuestro sitio web y blog durante los últimos años en una VM de A
 
 ### Software
 
-> Siempre deberias utilizar la última versión de PHP y Phalcon para evitar bugs, mejorar la seguridad y el rendimento.
+> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
 {: .alert .alert-danger }
 
 Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de los componentes de Phalcon que necesites, podrías necesitar instalar algunas de las siguientes extensiones:
@@ -63,7 +63,7 @@ Junto con PHP 7.2 o mayor, dependiendo de las necesidades de su aplicación y de
 * La extensión [Mbstring](https://php.net/manual/en/book.mbstring.php)
 * [Memcached](https://php.net/manual/en/book.memcached.php) u otros adaptadores de caché relevantes en función de su uso de caché
 
-> La instalación de estos paquetes variará en función de su sistema operativo, así como del gestor de paquetes que utilice (si corresponde). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones.
+> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). Por favor consulte la documentación pertinente sobre cómo instalar estas extensiones.
 {: .alert .alert-info }
 
 Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
@@ -90,7 +90,7 @@ Make sure you have [MacPorts](https://www.macports.org) installed and up to date
 sudo port install php-phalcon4
 ```
 
-#### Mac/Osx using brew
+#### Mac/Osx using Brew
 
 ```bash
 brew install pcre
@@ -129,7 +129,7 @@ Como Phalcon está compilado como una extensión PHP, su instalación es un poco
 
 Para instalar Phalcon en Linux, necesitará agregar nuestro repositorio en su distribución y luego instalarlo.
 
-#### Distribuciones basadas en DEB (Debian, Ubuntu, etc)
+#### DEB Based Distributions (Debian, Ubuntu, Etc.)
 
 ##### Instalación desde el repositorio
 
@@ -153,7 +153,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas.
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 ##### Instalación de Phalcon
@@ -184,7 +184,7 @@ y Phalcon:
 sudo apt-get install php-phalcon
 ```
 
-#### Distribuciones basadas en RPM (CentOS, Fedora, etc.)
+#### RPM Based Distributions (CentOS, Fedora, Etc.)
 
 ##### Instalación desde el repositorio
 
@@ -208,7 +208,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> Esto sólo debe hacerse una sola vez, a menos que cambie su distribución o quiera cambiar de versiones estables a nocturnas.
+> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
 {: .alert .alert-warning }
 
 
@@ -314,7 +314,7 @@ extension=php_phalcon.dll
 
 Reiniciar tu navegador web.
 
-### Compilar desde código fuente
+### Compile From Sources
 
 Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
 
@@ -353,19 +353,19 @@ php -m | grep phalcon
 Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
 
 ```ini
-# Suse: Agregue un archivo llamado phalcon.ini en /etc/php7/conf.d/ con el siguiente contenido:
+; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
 extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Agregue un archivo llamado phalcon.ini en /etc/php.d/ con el siguiente contenido:
+; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian con apache2: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/apache2/conf.d/ con el siguiente contenido:
+; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian con php7-fpm: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/fpm/conf.d/ con el siguiente contenido:
+; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
 extension=phalcon.so
 
-# Ubuntu/Debian con php7-cli: Agregue un archivo llamado 30-phalcon.ini en /etc/php7/cli/conf.d/ con el siguiente contenido:
+; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
 extension=phalcon.so
 ```
 
@@ -384,7 +384,7 @@ make && make install
 
 Si usas el método anterior, necesitarás añadir la linea `extension=phalcon.so` en tu `php.ini` tanto para CLI como para el servidor web.
 
-#### Ajuste de construcción
+#### Tuning Build
 
 Por defecto, compilamos para ser lo más compatible posible con todos los procesadores (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
 
@@ -394,11 +394,11 @@ Por defecto, compilamos para ser lo más compatible posible con todos los proces
 
 Esto generará el mejor código posible para ese chipset pero probablemente romperá el objeto compilado en chipsets antiguos.
 
-### Shared hosting
+### Shared Hosting
 
 Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
 
-#### cPanel & WHM
+#### CPanel & WHM
 
 cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
 

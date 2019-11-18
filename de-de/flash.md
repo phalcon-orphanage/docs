@@ -4,6 +4,7 @@ language: 'de-de'
 version: '4.0'
 upgrade: '#flash'
 title: 'Flash Messages'
+keywords: 'flash, flash messages, flash direct, flash session, templates'
 ---
 
 # Flash Messages
@@ -18,16 +19,16 @@ Flash messages are used to notify the user about the state of actions he/she mad
 
 ## Adapters
 
-This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface](api/Phalcon_Flash#flash-flashinterface) interface.
+This component uses adapters that dictate how messages are displayed or sent to the view. There are two adapters available but you can easily create your own adapter using the [Phalcon\Flash\FlashInterface](api/phalcon_flash#flash-flashinterface) interface.
 
 | Adapter                                                    | Description                                                                                  |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| [Phalcon\Flash\Direct](api/Phalcon_Flash#flash-direct)   | Directly outputs the messages passed to the flasher                                          |
-| [Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) | Temporarily stores the messages in session, then messages can be printed in the next request |
+| [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct)   | Directly outputs the messages passed to the flasher                                          |
+| [Phalcon\Flash\Session](api/phalcon_flash#flash-session) | Temporarily stores the messages in session, then messages can be printed in the next request |
 
 ### Direct
 
-[Phalcon\Flash\Direct](api/Phalcon_Flash#flash-direct) can be used to directly output messages set in the component. This is useful in instances where you need to show data back to the user in the current request that does not employ any redirects.
+[Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) can be used to directly output messages set in the component. This is useful in instances where you need to show data back to the user in the current request that does not employ any redirects.
 
 ```php
 <?php
@@ -43,7 +44,7 @@ $flash->error('Something went wrong');
 
 ### Session
 
-[Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect.
+[Phalcon\Flash\Session](api/phalcon_flash#flash-session) can be used to output messages set in the component. The component transparently stores the messages in the session to be used after a redirect.
 
 ```php
 <?php
@@ -79,7 +80,7 @@ or when using Volt
 {% raw %}{{ flash.output() }}{% endraw %}
 ```
 
-Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) can be used to perform this task as follows:  
+Imagine a login form that you need to validate the username and password and inform the user if their credentials are correct. The [Phalcon\Flash\Session](api/phalcon_flash#flash-session) can be used to perform this task as follows:  
 - User enters credentials and clicks `Login` - The application posts the data to the `loginAction` of our controller - The application checks the data and the combination is not correct - The application stores the `Incorrect Credentials` message in the flash messenger - The application redirects the user back to the login page (`/login`) - The Flash messenger still holds the message `Incorrect Credentials` and will display it on the screen.
 
 The example below displays this behavior in the controller. If an error occurs, whether this is an actual application error or a result of incorrect credentials, the code sets the messages using `$this->flash->error()`.
@@ -165,7 +166,7 @@ or when using Volt
 {% raw %}{{ flashSession.output() }}{% endraw %}
 ```
 
-> In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
+> **NOTE**: In the above example, the `flashSession` service has been already registered in the DI container. For more information about this please check the relevant section below.
 {: .alert .alert-info }
 
 ## Styling
@@ -238,7 +239,7 @@ will produce:
 <div class="alert alert-danger">Error message</div>
 ```
 
-> The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setCssClasses()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
@@ -272,7 +273,7 @@ will produce:
 <span class="myErrorClass">Error message</span>
 ```
 
-> The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setCustomTemplate()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Messages
@@ -329,7 +330,7 @@ $flash->error('Error message');
 $flash->clear();
 ```
 
-> `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
+> **NOTE**: `clear()` works only when the implicit flush is disabled (`setImplicitFlush(false)`)
 {: .alert .alert-info }
 
 ## Implicit Flush
@@ -355,7 +356,7 @@ echo $flash
 ;
 ```
 
-> The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Escaping
@@ -385,12 +386,12 @@ will produce
 <div class="errorMessage">&lt;h1&gt;Error&lt;/h1&gt;</div>
 ```
 
-> The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
+> **NOTE**: The `setAutoescape()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
 ## Dependency Injection
 
-If you use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, the [Phalcon\Flash\Direct](api/Phalcon_Flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/Phalcon_Flash#flash-session) is already registered for you with the name `flashSession`.
+If you use the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) is already registered for you with the name `flash`. Additionally the [Phalcon\Flash\Session](api/phalcon_flash#flash-session) is already registered for you with the name `flashSession`.
 
 An example of the registration of the service as well as accessing it is below:
 
@@ -446,7 +447,7 @@ $container->set(
 > **NOTE** You do not need to pass the escaper or the session in the constructor. If you use the Di container and those services are already register in it, they will be used internally. This is another way of instantiating the components.
 {: .alert .alert-info }
 
-You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable](api/Phalcon_Di#di-injectable))
+You can now use the component in a controller (or a component that implements [Phalcon\Di\Injectable](api/phalcon_di#di-injectable))
 
 ```php
 <?php

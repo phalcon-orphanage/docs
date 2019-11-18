@@ -3,6 +3,7 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 title: 'Image'
+keywords: 'image, gd, imagick'
 ---
 
 # Image
@@ -17,16 +18,16 @@ The `Phalcon\Image` namespace exposes adapter that offer image manipulating func
 
 ## 适配器
 
-This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface](Phalcon_Image#image-adapter-adapterinterface).
+This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
 
-| 类                                                                       | 描述                                                                                   |
-| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [Phalcon\Image\Adapter\Gd](Phalcon_Image#image-adapter-gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
-| [Phalcon\Image\Adapter\Imagick](Phalcon_Image#image-adapter-imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
+| 类                                                                           | 描述                                                                                   |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd)           | Requires the [GD PHP extension](https://php.net/manual/en/book.image.php)            |
+| [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick) | Requires the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php) |
 
 ## 常量
 
-[Phalcon\Image\Enum](Phalcon_Image#image-enum) holds constants for image resizing and flipping. The available constants are:
+[Phalcon\Image\Enum](api/phalcon_image#image-enum) holds constants for image resizing and flipping. The available constants are:
 
 **Resize**
 
@@ -49,11 +50,11 @@ Each adapter offers getters to provide information about the component: - `getHe
 
 ## GD
 
-[Phalcon\Image\Adapters\Gd](Phalcon_Image#image-adapter-gd) utilizes the [GD PHP extension](https://php.net/manual/en/book.image.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapters\Gd](api/phalcon_image#image-adapter-gd) utilizes the [GD PHP extension](https://php.net/manual/en/book.image.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Imagick
 
-[Phalcon\Image\Adapters\Imagick](Phalcon_Image#image-adapter-imagick) utilizes the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
+[Phalcon\Image\Adapters\Imagick](api/phalcon_image#image-adapter-imagick) utilizes the [ImageMagick PHP extension](https://php.net/manual/en/book.imagick.php). In order for you to use this adapter, the extension has to be present in your system. The adapter offers all the methods described below in the operations section.
 
 ## Operations
 
@@ -134,7 +135,7 @@ $image->save('flip-image.jpg');
 
 ### `liquidRescale()`
 
-This method is only available in the [Phalcon\Image\Imagick](Phalcon_Image#image-adapter-imagick) adapter. It uses the [liquid](https://www.php.net/manual/en/imagick.liquidrescaleimage.php) rescaling method to rescale the image. The method accepts the following parameters: - `width` - `int` - the new width - `height` - `int` - the new height - `deltaX` - `int` - How much the seam can traverse on x-axis. Passing `0` causes the seams to be straight. (optional - default `0`) - `rigidity` - `int` - Introduces a bias for non-straight seams. (optional - default `0`).
+This method is only available in the [Phalcon\Image\Imagick](api/phalcon_image#image-adapter-imagick) adapter. It uses the [liquid](https://www.php.net/manual/en/imagick.liquidrescaleimage.php) rescaling method to rescale the image. The method accepts the following parameters: - `width` - `int` - the new width - `height` - `int` - the new height - `deltaX` - `int` - How much the seam can traverse on x-axis. Passing `0` causes the seams to be straight. (optional - default `0`) - `rigidity` - `int` - Introduces a bias for non-straight seams. (optional - default `0`).
 
 ```php
 <?php
@@ -217,7 +218,7 @@ echo $image->render('jpg', 90);
 
 Resizes the image based on the passed parameters. The method accepts the following parameters: - `width` - `int` - the width (optional) - `height` - `int` - the height (optional) - `master` - `int` - constant signifying the resizing method (default `AUTO`) - `Phalcon\Image\Enum::AUTO` - `Phalcon\Image\Enum::HEIGHT` - `Phalcon\Image\Enum::INVERSE` - `Phalcon\Image\Enum::NONE` - `Phalcon\Image\Enum::PRECISE` - `Phalcon\Image\Enum::TENSILE` - `Phalcon\Image\Enum::WIDTH`
 
-If any of the parameters are not correct, a [Phalcon\Image\Exception](Phalcon_Image#image-exception) will be thrown.
+If any of the parameters are not correct, a [Phalcon\Image\Exception](api/phalcon_image#image-exception) will be thrown.
 
 **HEIGHT**
 
@@ -490,12 +491,12 @@ $image->save('watermark-image.jpg');
 
 ### `newInstance`
 
-The [Phalcon\Image\ImageFactory](Phalcon_Image#image-imagefactory) offers an easy way to create image adapter objects. There are two adapters already preset for you:
+The [Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory) offers an easy way to create image adapter objects. There are two adapters already preset for you:
 
-- `gd`- [Phalcon\Image\Adapter\Gd](Phalcon_Image#image-adapter-gd) 
-- `imagick` - [Phalcon\Image\Adapter\Imagick](Phalcon_Image#image-adapter-imagick)
+- `gd`- [Phalcon\Image\Adapter\Gd](api/phalcon_image#image-adapter-gd) 
+- `imagick` - [Phalcon\Image\Adapter\Imagick](api/phalcon_image#image-adapter-imagick)
 
-Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface](Phalcon_Image#image-adapter-adapterinterface).
+Calling `newInstance()` with the relevant key as well as parameters will return the relevant adapter. The factory always returns a new instance of [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
 
 ```php
 <?php
@@ -531,7 +532,7 @@ $image = $factory->load($options);
 
 ## Exceptions
 
-Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](Phalcon_Image#image-exception). You can use this exception to selectively catch exceptions thrown only from this component.
+Any exceptions thrown in the Image components will be of type [Phalcon\Image\Exception](api/phalcon_image#image-exception). You can use this exception to selectively catch exceptions thrown only from this component.
 
 ```php
 <?php
@@ -558,7 +559,7 @@ class IndexController extends Controller
 
 ## Custom
 
-The [Phalcon\Image\Adapter\AdapterInterface](Phalcon_Image#image-adapter-adapterinterface) interface must be implemented in order to create your own image adapters or extend the existing ones. You can then easily add it to the [Phalcon\Image\ImageFactory](Phalcon_Image#image-imagefactory).
+The [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface) interface must be implemented in order to create your own image adapters or extend the existing ones. You can then easily add it to the [Phalcon\Image\ImageFactory](api/phalcon_image#image-imagefactory).
 
 ```php
 <?php

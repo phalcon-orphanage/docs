@@ -3,9 +3,10 @@ layout: default
 language: 'de-de'
 version: '4.0'
 title: 'Generating a backtrace'
+keywords: 'backtrace, debugging, segmentation faults'
 ---
 
-# Generating a backtrace
+# Generating a Backtrace
 
 * * *
 

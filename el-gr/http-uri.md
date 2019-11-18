@@ -3,19 +3,18 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'HTTP Uri (PSR-7)'
+keywords: 'psr-7, http, http uri'
 ---
 
 # HTTP Uri (PSR-7)
-
-* * *
-
+<hr />
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-[Phalcon\Http\Message\Uri](api/Phalcon_Http#http-message-uri) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
+[Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
-The [Phalcon\Http\Message\Uri](api/Phalcon_Http#http-message-uri) returns a value object representing a URI. The object represents a URI as defined in [RFC 3986](http://tools.ietf.org/html/rfc3986), providing methods for the most common operations. The primary use of this component is for HTTP requests but can be used in other contexts.
+The [Phalcon\Http\Message\Uri](api/phalcon_http#http-message-uri) returns a value object representing a URI. The object represents a URI as defined in [RFC 3986](http://tools.ietf.org/html/rfc3986), providing methods for the most common operations. The primary use of this component is for HTTP requests but can be used in other contexts.
 
 ```php
 <?php
@@ -28,7 +27,7 @@ $uri   = new Uri();
 echo $uri->getHost(); // 'd.phalcon.ld'
 ```
 
-The [Uri](api/Phalcon_Http#http-message-uri) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
+The [Uri](api/phalcon_http#http-message-uri) object created is immutable, meaning it will never change. Any call to methods prefixed with `with*` will return a clone of the object to maintain immutability, as per the standard.
 
 ## Constructor
 
@@ -37,7 +36,6 @@ public function __construct(
     [string $uri = ''] 
 )
 ```
-
 The constructor accepts an optional string, representing the URI. If specified, the URI will be processed and split into the necessary parts internally.
 
 ## Getters
@@ -185,7 +183,6 @@ echo $uri->getUserInfo(); // 'usr:pass'
 ```
 
 ## With
-
 The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
 
 ### `withFragment()`

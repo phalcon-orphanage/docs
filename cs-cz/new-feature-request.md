@@ -3,6 +3,7 @@ layout: default
 language: 'cs-cz'
 version: '4.0'
 title: 'Požadavek na funkcionalitu'
+keywords: 'new feature request, nfr'
 ---
 
 # Požadavek na funkcionalitu

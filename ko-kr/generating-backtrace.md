@@ -3,9 +3,10 @@ layout: default
 language: 'ko-kr'
 version: '4.0'
 title: 'Generating a backtrace'
+keywords: 'backtrace, debugging, segmentation faults'
 ---
 
-# Generating a backtrace
+# Backtrace 생성
 
 * * *
 

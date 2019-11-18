@@ -3,6 +3,7 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 title: 'New Feature Request'
+keywords: 'new feature request, nfr'
 ---
 
 # New Feature Request

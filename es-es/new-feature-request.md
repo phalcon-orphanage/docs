@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Solicitud de Nueva Funcionalidad'
+keywords: 'new feature request, nfr'
 ---
 
 # Solicitud de Nueva Funcionalidad

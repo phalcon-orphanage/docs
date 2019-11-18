@@ -3,6 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 title: 'Environments - Nanobox'
+keywords: 'environment, nanobox, docker'
 ---
 
 # Окружение
@@ -109,22 +110,22 @@ Create a `composer.json` file in the root of your project and add the `phalcon/d
 From the root of your project, run the following commands to start Nanobox and generate a new Phalcon app. As Nanobox starts, the PHP engine will automatically install and enable the Phalcon extension, run a `composer install` which will install Phalcon Devtools, then drop you into an interactive console inside the virtual environment. Your working directory is mounted into the `/app` directory in the VM, so as changes are made, they will be reflected both in the VM and in your local working directory.
 
 ```bash
-# start nanobox and drop into a nanobox console
+# Start Nanobox and Drop into a Nanobox Console
 nanobox run
 
-# cd into the /tmp directory
+# Cd into the /tmp Directory
 cd /tmp
 
-# generate a new phalcon app
+# Generate a New Phalcon App
 phalcon project myapp
 
-# change back to the /app dir
+# Change Back to the /app Dir
 cd -
 
-# copy the generated app into your project
+# Copy the Generated App into your Project
 cp -a /tmp/myapp/* .
 
-# exit the console
+# Exit the Console
 exit
 ```
 
@@ -157,18 +158,18 @@ Once running, you can visit your app at `https://phalcon.dev`.
 Your virtual environment includes everything you need to run your Phalcon application.
 
 ```bash
-# drop into a Nanobox console
+# Drop into a Nanobox Console
 nanobox run
 
-# check the php version
+# Check the Php Version
 php -v
 
-# check that phalcon devtools are available
+# Check that Phalcon Devtools Are Available
 phalcon info
 
-# check that your local codebase is mounted
+# Check that your Local Codebase is Mounted
 ls
 
-# exit the console
+# Exit the Console
 exit
 ```

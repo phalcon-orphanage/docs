@@ -3,6 +3,7 @@ layout: default
 language: 'it-it'
 version: '4.0'
 title: 'Tutorial - Vökuró'
+keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 ---
 
 # Tutorial - Vökuró
@@ -15,15 +16,15 @@ title: 'Tutorial - Vökuró'
 
 [Vökuró](https://github.com/phalcon/vokuro) is a sample application, showcasing a typical web application written in Phalcon. This application focuses on: - User Login (security) - User Signup (security) - User Permissions - User management
 
-> You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
+> **NOTE**: You can use Vökuró as a starting point for your application and enhance it further to meet your needs. By no means this is a perfect application and it does not fit all needs.
 {: .alert .alert-info }
 
 > 
-> This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
+> **NOTE**: This tutorial assumes that you are familiar with the concepts of the Model View Controller design pattern. (see References at the end of this tutorial)
 {: .alert .alert-warning }
 
 > 
-> Note the code below has been formatted to increase readability
+> **NOTE**: Note the code below has been formatted to increase readability
 {: .alert .alert-warning }
 
 ## Installation
@@ -97,7 +98,7 @@ In the `resources` folder you will also find a `boxfile.yml` file that allows yo
 
 For more information on how to set up nanobox, check our \[Environments Nanobox\]\[environments-nanobox\] page as well as the [Nanobox Guides](https://guides.nanobox.io/php/) page
 
-> In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
+> **NOTE**: In this tutorial, we assume that your application has been downloaded or cloned in a directory called `vokuro`.
 {: .alert .alert-info }
 
 ## Structure
@@ -238,7 +239,7 @@ The current setup will require a user to be logged in, if they visit these route
 
 If you use Vökuró as a starting point for your own application, you will need to modify this file to add or remove routes so as to ensure that your protected routes are behind the login mechanism.
 
-> Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
+> **NOTE**: Keeping the private routes in an array is efficient and easy to maintain for a small to medium application. Once your application starts growing, you might need to consider a different technique to keep your private routes such as the database with a caching mechanism.
 {: .alert .alert-info }
 
 **config.php**
@@ -265,7 +266,7 @@ As mentioned above, Vökuró uses classes called Providers in order to register 
 
 For Vökuró we decided to use one file per service as well as a `providers.php` (see above) as the registration configuration array for these services. This allows us to have much smaller chunks of code, organized in a separate file per service, as well as an array that allows us to register or unregister/disable a service without removing files. All we need to do is change the `providers.php` array.
 
-The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface](api/Phalcon_Di#di-serviceproviderinterface) interface. For more information, see the bootstrapping section below.
+The provider classes are located in `src/Providers`. Each of the provider classes implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface. For more information, see the bootstrapping section below.
 
 ## Composer
 
@@ -484,7 +485,7 @@ We then create a new [Phalcon\Mvc\Application](application) and store it in a pr
 
 We then register this class (the `Vokuro\Application`) in the Di container using the name `bootstrap`. This allows us to have access to this class from any part of our application through the Di container.
 
-The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface](api/Phalcon_Di#di-serviceproviderinterface) interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
+The last thing we do is to register all the providers. Although the [Phalcon\Di\FactoryDefault](di) object has a lot of services already registered for us, we still need to register providers that suit the needs of our application. As mentioned above, each provider class implements the [Phalcon\Di\ServiceProviderInterface](api/phalcon_di#di-serviceproviderinterface) interface, so we can load each class and call the `register()` method with the Di container to register each service. We therefore first load the configuration array `config/providers.php` and then loop through the entries and register each provider in turn.
 
 The available providers are:
 
@@ -585,7 +586,7 @@ In the model above, we have defined all the fields of the table as public proper
 echo $successLogin->ipAddress;
 ```
 
-> If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
+> **NOTE**: If you notice, the property names map exactly the case (upper/lower) of the field names in the relevant table.
 {: .alert .alert-warning }
 
 In the `initialize()` method, we also define a relationship between this model and the `Users` model. We assign the fields (local/remote) as well as an `alias` for this relationship. We can therefore access the user related to a record of this model as follows:
@@ -594,7 +595,7 @@ In the `initialize()` method, we also define a relationship between this model a
 echo $successLogin->user->name;
 ```
 
-> Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
+> **NOTE**: Feel free to open each model file and identify the relationships between the models. Check our documentation for the difference between various types of relationships
 {: .alert .alert-info }
 
 ## Controllers
@@ -646,7 +647,7 @@ The available controllers, actions and routes for Vökuró are:
 
 The last element of the [Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller) pattern is the views. Vökuró uses [Volt](volt) as the view engine for its views.
 
-> Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
+> **NOTE**: Generally, one would expect to see a `views` folder under the `/src` folder. Vökuró uses a slightly different approach, storing all the view files under `/themes/vokuro`. 
 {: .alert .alert-info }
 
 The views directory contains directories that map to each controller. Inside each of those directories, `.volt` files are mapped to each action. So for example the route:
@@ -743,7 +744,7 @@ The component exposes the following methods:
 
 `Vokuro\Plugins\Mail\Mail` is a wrapper to [Swift Mailer](https://swiftmailer.symfony.com). It exposes two methods `send()` and `getTemplate()` which allow you to get a template from the views and populate it with data. The resulting HTML can then be used in the `send()` method along with the recipient and other parameters to send the email message.
 
-> Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
+> **NOTE**: Note that this component is used only if `useMail` is enabled in your `.env` file. You will also need to ensure that the SMTP server and credentials are valid.
 {: .alert .alert-info } 
 
 ## Sign Up
@@ -817,7 +818,7 @@ In order to have validation for user supplied data, we are utilizing the [Phalco
 
 When the user submits information, we send the posted data back to the form and the relevant validators validate the input and return any potential error messages.
 
-> All the forms for Vökuró are located in `/src/Forms`
+> **NOTE**: All the forms for Vökuró are located in `/src/Forms`
 {: .alert .alert-info }
 
 First we create a `SignUpForm` object. In that object we define all the HTML elements we need with their respective validators:
@@ -1515,7 +1516,7 @@ class Users extends Model
 
 The `afterSave` event fires right after a record is saved in the database. In this event we check if emails have been enabled (see `.env` file `useMail` setting), and if active we create a new record in the `EmailConfirmations` table and then save the record. Once everything is done, a notice will appear on screen.
 
-> Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
+> **NOTE**: Note that the `EmailConfirmations` model also has an `afterCreate` event, which is responsible for actually sending the email to the user.
 {: .alert .alert=info }
 
 **Validation**

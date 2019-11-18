@@ -14,7 +14,7 @@ keywords: 'registry'
 
 ## Controladores
 
-[Phalcon\Registry](api/Phalcon_Registry#registry) is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
+[Phalcon\Registry](api/phalcon_registry#registry) is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:
 
 - [ArrayAccess](https://php.net/manual/en/class.arrayaccess.php)
 - [Countable](https://php.net/manual/en/class.countable.php)
@@ -62,7 +62,7 @@ $collection = new Registry($data);
 
 ## Reusing
 
-También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry](api/Phalcon_Registry#registry) exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
+También puede reutilizar el componente, volviéndolo a rellenar. [Phalcon\Registry](api/phalcon_registry#registry) exposes the `clear()` and `init()` methods, which will clear and repopulate the internal array respectively,
 
 ```php
 <?php
@@ -95,7 +95,7 @@ echo $collection->count(); // 1
 
 ## Get
 
-As mentioned above, [Phalcon\Registry](api/Phalcon_Registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
+As mentioned above, [Phalcon\Registry](api/phalcon_registry#registry) implements several interfaces, in order to make the component as flexible as possible. Retrieving data stored in an element can be done by using:
 
 - Property
 - `__get()`
@@ -373,7 +373,7 @@ echo $collection->jsonSerialize(); // $data
 
 ## Transformations
 
-[Phalcon\Registry](api/Phalcon_Registry#registry) also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
+[Phalcon\Registry](api/phalcon_registry#registry) also exposes two transformation methods: `toArray()` and `toJson(int $options)`. `toArray()` returns the object transformed as an array. This method returns the same array as `jsonSerialize()`.
 
 ```php
 <?php

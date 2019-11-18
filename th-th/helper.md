@@ -19,7 +19,7 @@ keywords: 'helpers, array, string, file system, number, utilities'
 
 ## Arr
 
-[Phalcon\Helper\Arr](api/Phalcon_Helper#helper-arr) exposes static methods that offer quick access to common functionality when working with arrays.
+[Phalcon\Helper\Arr](api/phalcon_helper#helper-arr) exposes static methods that offer quick access to common functionality when working with arrays.
 
 ### `chunk`
 
@@ -727,11 +727,11 @@ var_dump($result);
 
 ## Exception
 
-Any exceptions thrown in the `Phalcon\Helper\*` components will be of this type: [Phalcon\Helper\Exception](api/Phalcon_Helper#helper-exception)
+Any exceptions thrown in the `Phalcon\Helper\*` components will be of this type: [Phalcon\Helper\Exception](api/phalcon_helper#helper-exception)
 
 ## Fs
 
-[Phalcon\Helper\Fs](api/Phalcon_Helper#helper-fs) exposes static methods that offer file operation helper methods
+[Phalcon\Helper\Fs](api/phalcon_helper#helper-fs) exposes static methods that offer file operation helper methods
 
 ### `basename`
 
@@ -764,7 +764,7 @@ echo Fs::basename($file); // 'ελληνικά.txt';
 
 ## Number
 
-[Phalcon\Helper\Number](api/Phalcon_Helper#helper-number) exposes static methods that offer quick access to common functionality when working with numbers.
+[Phalcon\Helper\Number](api/phalcon_helper#helper-number) exposes static methods that offer quick access to common functionality when working with numbers.
 
 ### `between`
 
@@ -795,7 +795,7 @@ echo Number::between($value, $min, $max);   // false
 
 ## Str
 
-[Phalcon\Helper\Str](api/Phalcon_Helper#helper-str) exposes static methods that offer quick manipulations to strings.
+[Phalcon\Helper\Str](api/phalcon_helper#helper-str) exposes static methods that offer quick manipulations to strings.
 
 ### `camelize`
 

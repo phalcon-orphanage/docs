@@ -16,7 +16,7 @@ keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 
 Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir](https://zephir-lang.com), which has a very similar syntax to PHP or Javascript. In [2003](https://blog.phalcon.io/post/phalcon-2-0-the-future) we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.
 
-# The problem
+# The Problem
 
 Having a framework that is rich in features requires a development environment that will offer all those features and related services. For instance one needs to install `MySQL`, `Postgresql` and `Sqlite` to be able to check whether functionality in the ORM will be the same when using any of these adapters for your database needs. Additionally the relevant extensions for PHP have to be installed in the development system.
 
@@ -38,13 +38,13 @@ Go to <https://nanobox.io> and create an account if you do not have one already,
 
 Once the file is downloaded, install it.
 
-# Running the environment
+# Running the Environment
 
-## Fork the repository
+## Fork the Repository
 
 Fork the [cphalcon](https://github.com/phalcon/cphalcon) to your github account, if you have not done so already. Visit the [cphalcon](https://github.com/phalcon/cphalcon) page on your browser and click the `Fork` button at the top right of the screen.
 
-## Clone the fork
+## Clone the Fork
 
 Now you will need to clone the forked repository to a folder of your choice. The example below assumes that the github account is `niden` - change it to your own.
 
@@ -52,7 +52,7 @@ Now you will need to clone the forked repository to a folder of your choice. The
 git clone git@github.com:niden/cphalcon
 ```
 
-## Copy the boxfile
+## Copy the Boxfile
 
 Nanobox reads a file called `boxfile.yml` and located in the root of your folder. There are two files supplied in Phalcon that you can use to develop with. One for PHP 7.2 and one for 7.3. Copy one of them to the root of the folder you have cloned your repository.
 
@@ -64,7 +64,7 @@ cp -v ./tests/_ci/nanobox/boxfile.7.2.yml ./boxfile.yml
 
 You will now end up with a `boxfile.yml` file at the root of your project.
 
-## Configure nanobox
+## Configure Nanobox
 
 Now we need to run nanobox for the first time. Since this will be the first time you run nanobox, it will ask you to configure it. The installation is very simple
 
@@ -103,7 +103,7 @@ How would you like to run nanobox?
 Answer: 
 ```
 
-## Run nanobox
+## Run Nanobox
 
 After finishing the configuration, you will see nanobox trying to download a lot of packages and containers. This is normal and it is going to take a while depending on the connection speed you have. After packages and containers are downloaded, subsequent runs will use cached copies of those packages (unless there is an update).
 
@@ -197,7 +197,7 @@ zephir fullclean
 zephir build
 ```
 
-## Check extensions
+## Check Extensions
 
 Тип
 
@@ -229,7 +229,7 @@ Xdebug
 
 Note that Phalcon v4+ requires the [PSR](https://github.com/jbboehr/php-psr) extension to be loaded before Phalcon. In this environment we have compiled it for you. Once you see `phalcon` in the list, you have the extension compiled and ready to use.
 
-# Running tests
+# Running Tests
 
 ## Unit
 

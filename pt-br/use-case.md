@@ -3,6 +3,7 @@ layout: default
 language: 'pt-br'
 version: '4.0'
 title: 'Use Case'
+keywords: 'use case, examples'
 ---
 
 # Use Case
@@ -33,7 +34,7 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-## Groups - User roles
+## Groups - User Roles
 
 | Group          | Description                                        |
 | -------------- | -------------------------------------------------- |

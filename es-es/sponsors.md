@@ -6,7 +6,7 @@ title: 'Patrocinadores'
 keywords: 'sponsors, opencollective, supporters'
 ---
 
-# Becoming a sponsor
+# Becoming a Sponsor
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 

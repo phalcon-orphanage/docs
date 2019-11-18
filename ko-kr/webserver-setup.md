@@ -77,11 +77,11 @@ c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 
 Phalcon 은 Nginx, PHP-FPM 과 함께 사용함으로써 최고 성능의 PHP 어플리케이션을 만들 수 있는 강력한 도구들을 제공합니다.
 
-### Install NginX
+### NginX 설치
 
 [Nginx 공식 사이트](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
-### Phalcon Configuration
+### Phalcon 설정
 
 Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세요:
 
@@ -181,7 +181,7 @@ service nginx start
 
 [Apache](https://httpd.apache.org/) 다양한 플랫폼을 지원하는 인기있고 잘 알려진 웹서버입니다.
 
-### Phalcon Configuration
+### Phalcon 설정
 
 다음은 Apache에서 Phalcon을 사용하는 경우 참고하실 수 있는 설정입니다 이 섹션은 friendly URLs 와 [라우터 콤포넌트](routing)를 사용하기 위한 `mod_rewrite` 모듈의 설정에 대해 주로 다루고 있습니다. 어플리케이션을 위한 일반적인 디렉토리 구조는 다음과 같습니다:
 
@@ -200,7 +200,7 @@ tutorial/
 
 **Document root** 어플리케이션을 document root 아래에 설치하는 것이 가장 일반적인 케이스이지요. 그런 경우, `.htaccess` 파일을 이용할 수 있습니다. 첫번째. htaccess파일은 모든 요청을 어플리케이션의 document root(`public/`) 로 포워딩시켜 어플리케이션 코드를 감추는데 사용합니다.
 
-> **NOTE**: Note that using `.htaccess` files requires your apache installation to have the `AllowOverride All` option set.
+> **주의**: 설치된 apache 에 `AllowOverride All` 옵션이 설정되어 있어야 `.htaccess` 파일을 사용할 수 있습니다.
  {: .alert .alert-warning}
 
 # tutorial/.htaccess
@@ -238,7 +238,7 @@ tutorial/
 
 uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확하게 라우트를 매칭시키기 위해서는 위의 코드를 참고해서 해당문자에 맞게 적용시켜야 할 수 있습니다.
 
-#### Apache Configuration
+#### Apache 설정
 
 `.htaccess` 파일을 사용하고 싶지 않으시다면, 관련 설정을 apache의 메인 설정파일에 넣으셔도 됩니다:
 
@@ -285,7 +285,7 @@ uri가 영어 이외의 문자를 포함하는 경우, `mod_rewrite`가 정확�
 
 [WampServer](http://www.wampserver.com/en/) 는 윈도우용 웹 개발환경입니다. 이 환경을 이용해서 Apache2, PHP 와 MySQL 데이터베이스를 이용해서 웹 어플리케이션을 개발하실 수 있습니다. 다음은 WampServer 에서 Phalcon을 설치하는 방법에 대한 상세한 설명입니다. 최신버전 WampServer 사용을 강력히 권고드립니다.
 
-> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
 
 > 
@@ -352,14 +352,14 @@ Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServ
 
 ![](/assets/images/content/webserver-wamp-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
+> **축하합니다! 이제 Phalcon 과 함께 phlying 하고 계시네요.**
 {: .alert .alert-info }
 
 ## XAMPP
 
 [XAMPP](https://www.apachefriends.org/download.html) 는 MYSQL,PHP와 Perl이 포함된, 쉽게 설치할 수 있는 Apache 배포판입니다. XAMPP를 다운로드 하신 후, 압축을 풀고 그냥 사용하시면 됩니다. 아래는 윈도우 에서 돌아가는 XAMPP 상에서 Phalcon을 설치하는 방법에 대한 자세한 안내입니다. 최신버전의 XAMPP를 사용하시기를 강력히 권해 드립니다.
 
-> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. Visit [this URL](https://pecl.php.net/package/psr/0.7.0/windows) to get the DLLs and follow the same steps to install the extension just as with Phalcon's DLLs.
+> **주의** v4 버전부터는, PECL을 통해 `PSR`을 설치하셔야 합니다. [이 URL](https://pecl.php.net/package/psr/0.7.0/windows)에 방문하셔서 Phalcon의 DLL 설치와 같은 방법으로 DLL을 받으실 수 있습니다.
 {: .alert .alert-warning }
 
 > 
@@ -368,7 +368,7 @@ Apache 웹 서버를 재시작 하세요. 시스템 트레이에 있는 WampServ
 
 ### Phalcon 다운로드
 
-Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. Load up the `phpinfo` page provided by XAMPP:
+Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 버전의 빌드된 익스텐션을 설치하셔야 합니다. WAMP에서 제공하는 `phpinfo` 페이지를 로드하세요:
 
 ![](/assets/images/content/webserver-architecture.png)
 
@@ -414,7 +414,7 @@ XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시�
 
 ![](/assets/images/content/webserver-xampp-phpinfo-phalcon.png)
 
-> **Congratulations! You are now phlying with Phalcon.**
+> **축하합니다! 이제 Phalcon 과 함께 phlying 하고 계시네요.**
 {: .alert .alert-info }
 
 
@@ -422,7 +422,7 @@ XAMPP 컨트롤센터에서 Apache 웹서버를 재시작 해주세요. 재시�
 
 [Cherokee](https://www.cherokee-project.com/) 는 고성능의 웹서버입니다. 매우 빠르고, 유연하며, 설정이 쉽습니다.
 
-### Phalcon Configuration
+### Phalcon 설정
 
 Cherokee 는 웹서버에서 가능한 거의 모든 값을 설정 할 수 있도록 친숙한 그래픽 UI를 제공합니다.
 
