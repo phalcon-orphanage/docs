@@ -2,41 +2,44 @@
 layout: default
 language: 'de-de'
 version: '4.0'
+title: 'Tutorial - REST'
+keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
 
 # Tutorial - REST
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
-## Creating a Simple REST API
+## Overview
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+In this tutorial, you will learn how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using different HTTP methods:
 
 * `GET` to retrieve and search data
 * `POST` to add data
 * `PUT` to update data
 * `DELETE` to delete data
 
-## Defining the API
+> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. 
+{: .alert .alert-warning }
+
+## Methods
 
 The API consists of the following methods:
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
-| `GET`    | /api/robots              | Retrieves all robots                           |
-| `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
-| `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
-| `POST`   | /api/robots              | Adds a new robot                               |
-| `PUT`    | /api/robots/2            | Updates robots based on primary key            |
-| `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
+| Method   | URL                        | Action                                     |
+| -------- | -------------------------- | ------------------------------------------ |
+| `GET`    | `/api/robots`              | Get all robots                             |
+| `GET`    | `/api/robots/search/Astro` | Searches robots with 'Astro' in their name |
+| `GET`    | `/api/robots/2`            | Get robots based on primary key            |
+| `POST`   | `/api/robots`              | Add robot                                  |
+| `PUT`    | `/api/robots/2`            | Update robot based on primary key          |
+| `DELETE` | `/api/robots/2`            | Delete robot based on primary key          |
 
-## Creating the Application
+## Application
 
-As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) to meet our goal.
-
-The following file structure is more than enough:
+As the application is simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) application for our needs. The structure of the application is as follows:
 
 ```php
 my-rest-api/
@@ -56,7 +59,7 @@ First, we need a `.htaccess` file that contains all the rules to rewrite the req
 </IfModule>
 ```
 
-The bulk of our code will be placed in `index.php`. The file is created as follows:
+The bulk of our code will be placed in `index.php`.
 
 ```php
 <?php
@@ -64,15 +67,13 @@ The bulk of our code will be placed in `index.php`. The file is created as follo
 use Phalcon\Mvc\Micro;
 
 $app = new Micro();
-
-// Define the routes here
 
 $app->handle(
     $_SERVER["REQUEST_URI"]
 );
 ```
 
-Now we will create the routes as we defined above:
+Now we need to create the routes, so that the application can understand what to do when end users interact with our application. The `index.php` file changes to:
 
 ```php
 <?php
@@ -81,51 +82,40 @@ use Phalcon\Mvc\Micro;
 
 $app = new Micro();
 
-// Retrieves all robots
 $app->get(
     '/api/robots',
     function () {
-        // Operation to fetch all the robots
     }
 );
 
-// Searches for robots with $name in their name
 $app->get(
     '/api/robots/search/{name}',
     function ($name) {
-        // Operation to fetch robot with name $name
     }
 );
 
-// Retrieves robots based on primary key
 $app->get(
-    '/api/robots/{id:[0-9]+}',
+    '/api/robots/{id:[0-9]+}
+',
     function ($id) {
-        // Operation to fetch robot with id $id
     }
 );
 
-// Adds a new robot
 $app->post(
     '/api/robots',
     function () {
-        // Operation to create a fresh robot
     }
 );
 
-// Updates robots based on primary key
 $app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to update a robot with id $id
     }
 );
 
-// Deletes robots based on primary key
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) {
-        // Operation to delete the robot with id $id
     }
 );
 
@@ -134,21 +124,26 @@ $app->handle(
 );
 ```
 
-Each route is defined with a method with the same name as the HTTP method, as first parameter we pass a route pattern, followed by a handler. In this case, the handler is an anonymous function. The following route: `/api/robots/{id:[0-9]+}`, by example, explicitly sets that the `id` parameter must have a numeric format.
+As we add the routes, we use the actual HTTP methods as the names of the methods called in the application object. This allows us to easily define listening points for the application based on those HTTP methods.
 
-When a defined route matches the requested URI then the application executes the corresponding handler.
+The first parameter of each method call is the route and the second is the handler i.e. what do we do when the user calls that route. In our example we have anonymous functions defined for each handler. For the following route:
 
-## Creating a Model
+    /api/robots/{id:[0-9]+}
+    
 
-Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
+we explicitly set the `id` parameter to be a number. When a defined route matches the requested URI, then the corresponding handler (anonymous function) will be executed.
+
+## Models
+
+For this application we store and manipulate `Robots` in the database. To access the table we need a model. The class below, allows us to access each record of the table in an object oriented manner. We have also implemented business rules, using built-in validators. By doing so, we have high confidence that the data saved will meet the requirements of our application. This model file needs to be created in the `my-rest-api/models` directory.
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Mvc\Model\Message;
+use Phalcon\Messagesl\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 use Phalcon\Validation\Validator\InclusionIn;
@@ -159,7 +154,6 @@ class Robots extends Model
     {
         $validator = new Validation();
 
-        // Type must be: droid, mechanical or virtual
         $validator->add(
             "type",
             new InclusionIn(
@@ -174,7 +168,6 @@ class Robots extends Model
             )
         );
 
-        // Robot name must be unique
         $validator->add(
             'name',
             new Uniqueness(
@@ -185,14 +178,12 @@ class Robots extends Model
             )
         );
 
-        // Year cannot be less than zero
         if ($this->year < 0) {
             $this->appendMessage(
                 new Message('The year cannot be less than zero')
             );
         }
 
-        // Check if any messages have been produced
         if ($this->validationHasFailed() === true) {
             return false;
         }
@@ -200,7 +191,13 @@ class Robots extends Model
 }
 ```
 
-Now, we must set up a connection to be used by this model and load it within our app `index.php`:
+We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. Tje last validator checks the `year` field to be a positive number.
+
+## Database
+
+We need to connect our application to the database. For this example we are going to use the popular MariaDB or similar variants such as MySQL, Aurora etc. In addition to the database setup, we are going to set up the autoloader, so that our application is aware of where to search for files required.
+
+These changes need to be made in the `index.php` file.
 
 ```php
 <?php
@@ -210,21 +207,16 @@ use Phalcon\Mvc\Micro;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as PdoMysql;
 
-// Use Loader() to autoload our model
 $loader = new Loader();
-
 $loader->registerNamespaces(
     [
-        'Store\Toys' => __DIR__ . '/models/',
+        'MyApp\Models' => __DIR__ . '/models/',
     ]
 );
-
 $loader->register();
 
-$di = new FactoryDefault();
-
-// Set up the database service
-$di->set(
+$container = new FactoryDefault();
+$container->set(
     'db',
     function () {
         return new PdoMysql(
@@ -238,24 +230,32 @@ $di->set(
     }
 );
 
-// Create and bind the DI to the application
-$app = new Micro($di);
+$app = new Micro($container);
 ```
 
-## Retrieving Data
+## Operations
 
-The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. `index.php`
+### Get
+
+The first `handler` that we will implement is the one that retrieves data from the database, when the request is made using the `GET` HTTP method. The endpoint will return all the records from the database using a PHQL query and returning the results in JSON.
+
+The handler for `get()` and `/api/robots` becomes:
 
 ```php
 <?php
 
-// Retrieves all robots
 $app->get(
     '/api/robots',
     function () use ($app) {
-        $phql = 'SELECT * FROM Store\Toys\Robots ORDER BY name';
+        $phql = 'SELECT id, name '
+              . 'FROM MyApp\Models\Robots '
+              . 'ORDER BY name'
+        ;
 
-        $robots = $app->modelsManager->executeQuery($phql);
+        $robots = $app
+            ->modelsManager
+            ->executeQuery($phql)
+        ;
 
         $data = [];
 
@@ -271,9 +271,11 @@ $app->get(
 );
 ```
 
-[PHQL](db-phql), allow us to write queries using a high-level, object-oriented SQL dialect that internally translates to the right SQL statements depending on the database system we are using. The clause `use` in the anonymous function allows us to pass some variables from the global to local scope easily.
+[PHQL](db-phql), allows us to write queries using a high level, object oriented SQL dialect, that internally translates your query to the correct SQL statements depending on the databse system used. The `use` statement in the anonymous function offers object injection from the local scope to the anonymous function.
 
-The searching by name handler would look like `index.php`:
+### Get - Text
+
+We can get robots using their name or part of their name. This search feature will also be a `get()` as far as HTTP method is concerned and it will tie to the `/api/robots/search/{name}` endpoint. The implementation is similar to the one above. We just need to change the query slightly.
 
 ```php
 <?php
@@ -282,14 +284,22 @@ The searching by name handler would look like `index.php`:
 $app->get(
     '/api/robots/search/{name}',
     function ($name) use ($app) {
-        $phql = 'SELECT * FROM Store\Toys\Robots WHERE name LIKE :name: ORDER BY name';
+        $phql = 'SELECT * '
+              . 'FROM MyApp\Models\Robots '
+              . 'WHERE name '
+              . 'LIKE :name: '
+              . 'ORDER BY name'
+        ;
 
-        $robots = $app->modelsManager->executeQuery(
-            $phql,
-            [
-                'name' => '%' . $name . '%'
-            ]
-        );
+        $robots = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'name' => '%' . $name . '%'
+                ]
+            )
+        ;
 
         $data = [];
 
@@ -305,31 +315,37 @@ $app->get(
 );
 ```
 
-Searching by the field `id` it's quite similar, in this case, we're also notifying if the robot was found or not `index.php`:
+### Get - `id`
+
+To get a robot by using their `id` is similar to the above operations. We will just need to adjust the query that we run against the database. The HTTP method used will also be `get()` and the endpoint will be `/api/robots/{id:[0-9]+}`. For this handler, we are also reporting back if a robot has not been found.
+
+The `index.php` changes again:
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Retrieves robots based on primary key
 $app->get(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
-        $phql = 'SELECT * FROM Store\Toys\Robots WHERE id = :id:';
+        $phql = 'SELECT * '
+              . 'FROM MyApp\ModelsRobots '
+              . 'WHERE id = :id:'
+        ;
 
-        $robot = $app->modelsManager->executeQuery(
-            $phql,
-            [
-                'id' => $id,
-            ]
-        )->getFirst();
+        $robot = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id' => $id,
+                ]
+            )
+            ->getFirst()
+        ;
 
-
-
-        // Create a response
         $response = new Response();
-
         if ($robot === false) {
             $response->setJsonContent(
                 [
@@ -353,38 +369,40 @@ $app->get(
 );
 ```
 
-## Inserting Data
+### Insert
 
-Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion `index.php`:
+Our design allows users to submit data so that we can insert them in the database. The HTTP method used is `post()` to the `/api/robots` endpoint. We expect the data to be submitted as a JSON string.
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Adds a new robot
 $app->post(
     '/api/robots',
     function () use ($app) {
         $robot = $app->request->getJsonRawBody();
+        $phql  = 'INSERT INTO MyApp\ModelsRobots '
+               . '(name, type, year) '
+               . 'VALUES '
+               . '(:name:, :type:, :year:)'
+        ;
 
-        $phql = 'INSERT INTO Store\Toys\Robots (name, type, year) VALUES (:name:, :type:, :year:)';
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'name' => $robot->name,
+                    'type' => $robot->type,
+                    'year' => $robot->year,
+                ]
+            )
+        ;
 
-        $status = $app->modelsManager->executeQuery(
-            $phql,
-            [
-                'name' => $robot->name,
-                'type' => $robot->type,
-                'year' => $robot->year,
-            ]
-        );
-
-        // Create a response
         $response = new Response();
 
-        // Check if the insertion was successful
         if ($status->success() === true) {
-            // Change the HTTP status
             $response->setStatusCode(201, 'Created');
 
             $robot->id = $status->getModel()->id;
@@ -396,12 +414,9 @@ $app->post(
                 ]
             );
         } else {
-            // Change the HTTP status
             $response->setStatusCode(409, 'Conflict');
 
-            // Send errors to the client
             $errors = [];
-
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
@@ -419,37 +434,42 @@ $app->post(
 );
 ```
 
-## Updating Data
+After we run the query against our database, using PHQL, we create a brand new `Response` object. If the query was executed correctly, we manipulate the response to have a status code of `201` and text `Created`. We finally update the `id` of the recently created record, and send the robot back with the response.
 
-The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated `index.php`:
+If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
+
+## Update
+
+Updating data is similar to inserting. For this operation we are using the `put()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be updated. The data submitted is in JSON format.
 
 ```php
 <?php
 
 use Phalcon\Http\Response;
 
-// Updates robots based on primary key
-$app->put(
+/app->put(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
         $robot = $app->request->getJsonRawBody();
+        $phql  = 'UPDATE MyApp\Models\Robots '
+               . 'SET name = :name:, type = :type:, year = :year: '
+               . 'WHERE id = :id:';
 
-        $phql = 'UPDATE Store\Toys\Robots SET name = :name:, type = :type:, year = :year: WHERE id = :id:';
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id'   => $id,
+                    'name' => $robot->name,
+                    'type' => $robot->type,
+                    'year' => $robot->year,
+                ]
+            )
+        ;
 
-        $status = $app->modelsManager->executeQuery(
-            $phql,
-            [
-                'id'   => $id,
-                'name' => $robot->name,
-                'type' => $robot->type,
-                'year' => $robot->year,
-            ]
-        );
-
-        // Create a response
         $response = new Response();
 
-        // Check if the insertion was successful
         if ($status->success() === true) {
             $response->setJsonContent(
                 [
@@ -457,11 +477,9 @@ $app->put(
                 ]
             );
         } else {
-            // Change the HTTP status
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
-
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
@@ -479,9 +497,15 @@ $app->put(
 );
 ```
 
-## Deleting Data
+The operation is very similar to the one we use when inserting data. If the update operation is successful, we send back a JSON payload with `OK`.
 
-The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted `index.php`:
+If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
+
+## Delete
+
+Delete is nearly identical to the `update` process. For this operation we are using the `delete()` HTTP method and the endpoint `/api/robots/{id:[0-9]+}`. The passed `id` parameter in the URL is the id of the robot to be deleted.
+
+The `index.php` changes again:
 
 ```php
 <?php
@@ -492,16 +516,20 @@ use Phalcon\Http\Response;
 $app->delete(
     '/api/robots/{id:[0-9]+}',
     function ($id) use ($app) {
-        $phql = 'DELETE FROM Store\Toys\Robots WHERE id = :id:';
+        $phql = 'DELETE '
+              . 'FROM MyApp\Models\Robots '
+              . 'WHERE id = :id:';
 
-        $status = $app->modelsManager->executeQuery(
-            $phql,
-            [
-                'id' => $id,
-            ]
-        );
+        $status = $app
+            ->modelsManager
+            ->executeQuery(
+                $phql,
+                [
+                    'id' => $id,
+                ]
+            )
+        ;
 
-        // Create a response
         $response = new Response();
 
         if ($status->success() === true) {
@@ -511,11 +539,9 @@ $app->delete(
                 ]
             );
         } else {
-            // Change the HTTP status
             $response->setStatusCode(409, 'Conflict');
 
             $errors = [];
-
             foreach ($status->getMessages() as $message) {
                 $errors[] = $message->getMessage();
             }
@@ -533,31 +559,61 @@ $app->delete(
 );
 ```
 
-## Creating database
+If the delete operation is successful, we send back a JSON payload with `OK`.
 
-Now we will create database for our application. Run SQL queries as follows:
+If something is wrong, we change the response status code to `409` with the text `Conflict` and collect all the errors that have been produced of the database operation. We then send those error messages back with the response.
 
-    CREATE DATABASE `robotics`;
-    CREATE TABLE `robotics`.`robots` (
-     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-     `name` varchar(200) COLLATE utf8_bin NOT NULL,
-     `type` varchar(200) COLLATE utf8_bin NOT NULL,
-     `year` smallint(2) unsigned NOT NULL,
+## Schema
+
+In order to create the table in our database, we need to use the following SQL queries:
+
+    create database `robotics`;
+    
+    create table `robotics`.`robots` (
+     `id`    int(10)      unsigned         not null auto_increment,
+     `name`  varchar(200) collate utf8_bin not null,
+     `type`  varchar(20)  collate utf8_bin not null,
+     `year`  smallint(4)  unsigned         not null,
      PRIMARY KEY (`id`)
     )
     
 
-## Testing our Application
+## Run
 
-Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+You can of course set up your web server to run your application. For setup instructions you can check the [webserver setup](webserver-setup) document. If you want to use the built in PHP server, you will need to create a file called `.htrouter` as follows:
 
-Obtain all the robots:
+```php
+<?php
+
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
+
+if ($uri !== '/' && file_exists(__DIR__ . $uri)) {
+    return false;
+}
+
+$_GET['_url'] = $_SERVER['REQUEST_URI'];
+
+require_once __DIR__ . '/index.php';
+```
+
+and then run the following command:
+
+    $(which php) -S localhost:8000 -t / .htrouter.php
+    
+
+## Tests
+
+There are numerous testing suites that you can use to test this application. We will use [curl](https://en.wikipedia.org/wiki/CURL) on every route, to verify proper operation.
+
+**Get** all the robots:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:05:13 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 117
 Content-Type: text/html; charset=UTF-8
@@ -565,13 +621,13 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"1","name":"Robotina"},{"id":"2","name":"Astro Boy"},{"id":"3","name":"Terminator"}]
 ```
 
-Search a robot by its name:
+**Search** a robot by its name:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/search/Astro
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:09:23 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 31
 Content-Type: text/html; charset=UTF-8
@@ -579,13 +635,13 @@ Content-Type: text/html; charset=UTF-8
 [{"id":"2","name":"Astro Boy"}]
 ```
 
-Obtain a robot by its id:
+**Get** a robot by its id:
 
 ```bash
 curl -i -X GET https://localhost/my-rest-api/api/robots/3
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 07:12:18 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 56
 Content-Type: text/html; charset=UTF-8
@@ -593,14 +649,14 @@ Content-Type: text/html; charset=UTF-8
 {"status":"FOUND","data":{"id":"3","name":"Terminator"}}
 ```
 
-Insert a new robot:
+**Insert** a new robot:
 
 ```bash
-curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
+curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
     https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 201 Created
-Date: Tue, 21 Jul 2015 07:15:09 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 75
 Content-Type: text/html; charset=UTF-8
@@ -611,11 +667,11 @@ Content-Type: text/html; charset=UTF-8
 Try to insert a new robot with the name of an existing robot:
 
 ```bash
-curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}'
+curl -i -X POST -d '{"name":"C-3PO","type":"droid","year":1977}' \
     https://localhost/my-rest-api/api/robots
 
 HTTP/1.1 409 Conflict
-Date: Tue, 21 Jul 2015 07:18:28 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 63
 Content-Type: text/html; charset=UTF-8
@@ -623,14 +679,14 @@ Content-Type: text/html; charset=UTF-8
 {"status":"ERROR","messages":["The robot name must be unique"]}
 ```
 
-Or update a robot with an unknown type:
+**Update** a robot with an unknown type:
 
 ```bash
-curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}'
+curl -i -X PUT -d '{"name":"ASIMO","type":"humanoid","year":2000}' \
     https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 409 Conflict
-Date: Tue, 21 Jul 2015 08:48:01 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 104
 Content-Type: text/html; charset=UTF-8
@@ -639,13 +695,13 @@ Content-Type: text/html; charset=UTF-8
     list: droid, mechanical, virtual"]}
 ```
 
-Finally, delete a robot:
+**Delete** a robot:
 
 ```bash
 curl -i -X DELETE https://localhost/my-rest-api/api/robots/4
 
 HTTP/1.1 200 OK
-Date: Tue, 21 Jul 2015 08:49:29 GMT
+Date: Wed, 25 Dec 2019 01:02:03 GMT
 Server: Apache/2.2.22 (Unix) DAV/2
 Content-Length: 15
 Content-Type: text/html; charset=UTF-8
