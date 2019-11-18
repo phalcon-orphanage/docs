@@ -8,89 +8,191 @@ version: '4.0'
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg)
+![](/assets/images/document-status-stable-success.svg)
 
-## Relationships Between Models
+## Επισκόπηση
 
-There are four types of relationships: one-on-one, one-to-many, many-to-one and many-to-many. The relationship may be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from each record in a uniform way.
+[Database normalization] is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy and improve data integrity. Relationships are defined in the `initialize` method of each model.
 
-### Unidirectional Relationships
+The following types of relationships are available: - one to one
+
+    hasOne(
+        string|array $fields, 
+        string $referenceModel, 
+        string|array $referencedFields, 
+        array $options = null
+    )
+    
+    hasOneThrough(
+        string|array $fields, 
+        string $intermediateModel, 
+        string|array $intermediateFields, 
+        string|array $intermediateReferencedFields,
+        string $referenceModel, 
+        string|array $referencedFields, 
+        array $options = null
+    )
+    
+
+- one to many
+
+    hasMany(
+        string|array $fields, 
+        string $referenceModel, 
+        string|array $referencedFields, 
+        array options = null
+    )
+    
+
+- many to one
+
+    belongsTo(
+        string|array $fields, 
+        string $referenceModel, 
+        string|array $referencedFields, 
+        array options = null
+    )
+    
+
+- many to many
+
+    hasManyToMany(
+        string|array $fields, 
+        string $intermediateModel, 
+        string|array $intermediateFields, 
+        string|array $intermediateReferencedFields,
+        string $referenceModel, 
+        string|array $referencedFields, 
+        array $options = null
+    )
+    
+
+Relationships can be unidirectional or bidirectional, and each can be simple (a one to one model) or more complex (a combination of models). The model manager manages foreign key constraints for these relationships, the definition of these helps referential integrity as well as easy and fast access of related records to a model. Through the implementation of relations, it is easy to access data in related models from the source model easily and in a uniform way.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'alias'    => 'customers',
+                'reusable' => true,
+            ]
+        );
+    }
+}
+
+```
+
+## Unidirectional
 
 Unidirectional relations are those that are generated in relation to one another but not vice versa.
 
-### Bidirectional Relations
+## Bidirectional
 
 The bidirectional relations build relationships in both models and each model defines the inverse relationship of the other.
 
-### Defining Relationships
+## Setup
 
-In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasOne()`, `hasMany()` and `hasManyToMany()` define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters: local fields, referenced model, referenced fields.
+In Phalcon, relationships must be defined in the `initialize()` method of a model. The methods `belongsTo()`, `hasMany()`, `hasManyToMany()`, `hasOne()` and `hasOneThrough()`, define the relationship between one or more fields from the current model to fields in another model. Each of these methods requires 3 parameters:
 
-| Method        | Περιγραφή                  |
-| ------------- | -------------------------- |
-| hasMany       | Defines a 1-n relationship |
-| hasOne        | Defines a 1-1 relationship |
-| belongsTo     | Defines a n-1 relationship |
-| hasManyToMany | Defines a n-n relationship |
+- local fields 
+- referenced model 
+- referenced fields
+
+| Method          | Περιγραφή                  |
+| --------------- | -------------------------- |
+| `belongsTo`     | Defines a n-1 relationship |
+| `hasMany`       | Defines a 1-n relationship |
+| `hasManyToMany` | Defines a n-n relationship |
+| `hasOne`        | Defines a 1-1 relationship |
+| `hasOneThrough` | Defines a 1-1 relationship |
 
 The following schema shows 3 tables whose relations will serve us as an example regarding relationships:
 
 ```sql
-CREATE TABLE robots (
-    id int(10) unsigned NOT NULL AUTO_INCREMENT,
-    name varchar(70) NOT NULL,
-    type varchar(32) NOT NULL,
-    year int(11) NOT NULL,
-    PRIMARY KEY (id)
+create table co_invoices
+(
+    inv_id          int(10) auto_increment  primary key,
+    inv_cst_id      int(10)      null,
+    inv_status_flag tinyint(1)   null,
+    inv_title       varchar(100) null,
+    inv_total       float(10, 2) null,
+    inv_created_at  datetime     null
 );
 
-CREATE TABLE robots_parts (
-    id int(10) unsigned NOT NULL AUTO_INCREMENT,
-    robots_id int(10) NOT NULL,
-    parts_id int(10) NOT NULL,
-    created_at DATE NOT NULL,
-    PRIMARY KEY (id),
-    KEY robots_id (robots_id),
-    KEY parts_id (parts_id)
+create table co_invoices_x_products
+(
+    ixp_inv_id      int(10),
+    inv_prd_id      int(10)
 );
 
-CREATE TABLE parts (
-    id int(10) unsigned NOT NULL AUTO_INCREMENT,
-    name varchar(70) NOT NULL,
-    PRIMARY KEY (id)
+create table co_products
+(
+    prd_id          int(10) auto_increment  primary key,
+    prd_title       varchar(100) null,
+    prd_price       float(10, 2) null
 );
 ```
 
-* The model `Robots` has many `RobotsParts`.
-* The model `Parts` has many `RobotsParts`.
-* The model `RobotsParts` belongs to both `Robots` and `Parts` models as a many-to-one relation.
-* The model `Robots` has a relation many-to-many to `Parts` through `RobotsParts`.
+- The model `Invoices` has many `InvoicesProducts`.
+- The model `Products` has many `InvoicesProducts`.
+- The model `InvoicesProducts` belongs to both `Invoices` and `Products` models as a many-to-one relation.
+- The model `Invoices` has a relation many-to-many to `Products` through `InvoicesProducts`.
 
-Check the EER diagram to understand better the relations:
-
-![](/assets/images/content/models-relationships-eer-1.png)
+![](/assets/images/content/models-relationships-erd-1.png)
 
 The models with their relations could be implemented as follows:
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
-    public $id;
-
-    public $name;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
     public function initialize()
     {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+
         $this->hasMany(
-            'id',
-            RobotsParts::class,
-            'robots_id'
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoicesProducts'
+            ]
         );
     }
 }
@@ -99,21 +201,35 @@ class Robots extends Model
 ```php
 <?php
 
+namespace MyApp\Models;
+
 use Phalcon\Mvc\Model;
-use Store\Toys\RobotsParts;
 
-class Parts extends Model
+class InvoicesProducts extends Model
 {
-    public $id;
-
-    public $name;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
     public function initialize()
     {
-        $this->hasMany(
-            'id',
-            RobotsParts::class,
-            'parts_id'
+        $this->belongsTo(
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
+            [
+                'reusable' => true,
+                'alias'    => 'invoice'
+            ]
+        );
+
+        $this->belongsTo(
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'product'
+            ]
         );
     }
 }
@@ -122,30 +238,23 @@ class Parts extends Model
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class RobotsParts extends Model
+class Products extends Model
 {
-    public $id;
-
-    public $robots_id;
-
-    public $parts_id;
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
 
     public function initialize()
     {
-        $this->belongsTo(
-            'robots_id',
-            Robots::class,
-            'id'
-        );
-
-        $this->belongsTo(
-            'parts_id',
-            \Parts::class,
-            'id'
+        $this->hasMany(
+            'prd_id',
+            Products::class,
+            'ixp_prd_id'
         );
     }
 }
@@ -158,88 +267,96 @@ Many to many relationships require 3 models and define the attributes involved i
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
-    public $id;
-
-    public $name;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
     public function initialize()
     {
         $this->hasManyToMany(
-            'id',
-            RobotsParts::class,
-            'robots_id', 'parts_id',
-            \Parts::class,
-            'id'
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
         );
     }
 }
 ```
 
-#### Relationships with Parameters
+## Παράμετροι
 
-Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `parts` which has a field `type` describing the type of the part.
+Depending on the needs of our application we might want to store data in one table, that describe different behaviors. For instance you might want to only have a table called `co_customers` which has a field `cst_status_flag` describing the *status* of the customer (e.g. active, inactive, etc.).
 
-Using relationships, we can get only those parts that relate to our Robot that are of certain type. Defining that constraint in our relationship allows us to let the model do all the work.
+Using relationships, you can get only those `Customers` that relate to our `Invoices` that have a certain `cst_status_flag`. Defining that constraint in the relationship allows you to let the model do all the work.
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Invoices extends Model
 {
-    public $id;
-
-    public $name;
-
-    public $type;
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            Parts::class,
-            'robotId',
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
             [
-                'reusable' => true, // cache related data
-                'alias'    => 'mechanicalParts',
+                'reusable' => true,
+                'alias'    => 'customersActive',
                 'params'   => [
-                    'conditions' => 'robotTypeId = :type:',
+                    'conditions' => 'cst_status_flag = :status:',
                     'bind'       => [
-                       'type' => 4,
-                    ]
+                        'status' => 1,
+                     ]
                 ]
             ]
         );
     }
 }
- ```
+```
 
-#### Multiple Field Relationships
+## Multiple Fields
+
 There are times where relationships need to be defined on a combination of fields and not only one. Consider the following example:
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Products extends Model
 {
-    public $id;
-
-    public $name;
-
-    public $type;
+    public $prd_id;
+    public $prd_type_flag;
+    public $prd_name;
 }
 ```
 
@@ -248,49 +365,51 @@ and
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
 class Parts extends Model
 {
-    public $id;
-
-    public $robotId;
-
-    public $robotType;
-
-    public $name;
+    public $par_id;
+    public $par_prd_id;
+    public $par_par_id;
+    public $par_type_flag;
+    public $par_name;
 }
 ```
 
-In the above we have a `Robots` model which has three properties. A unique `id`, a `name` and a `type` which defines what this robot is (mechnical, etc.); In the `Parts` model we also have a `name` for the part but also fields that tie the robot and its type with a specific part.
+In the above we have a `Products` model which has `prd_id`, `prd_type_flag` and `prd_name` fields. The `Parts` model contains `par_id`, `par_prd_id`, `par_type_flag` and `par_name`. The relationship exists based on the product unique id as well as the type.
 
-Using the relationships options discussed earlier, binding one field between the two models will not return the results we need. For that we can use an array in our relationship:
+Using the relationship options, as seen above, binding one field between the two models will not return the results we need. We can use an array with the necessary fields to define the relationship.
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class Robots extends Model
+class Products extends Model
 {
-    public $id;
-
-    public $name;
-
-    public $type;
+    public $prd_id;
+    public $prd_type_flag;
+    public $prd_name;
 
     public function initialize()
     {
         $this->hasOne(
-            ['id', 'type'],
-            Parts::class,
-            ['robotId', 'robotType'],
             [
-                'reusable' => true, // cache related data
+                'prd_id', 
+                'prd_type_flag'
+            ],
+            Parts::class,
+            [
+                'par_prd_id', 
+                'par_type_flag'
+            ],
+            [
+                'reusable' => true, // cache
                 'alias'    => 'parts',
             ]
         );
@@ -298,299 +417,505 @@ class Robots extends Model
 }
 ```
 
-**NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+> **NOTE** The field mappings in the relationship are one for one i.e. the first field of the source model array matches the first field of the target array etc. The field count must be identical in both source and target models.
+{: .alert .alert-info }
 
-### Taking Advantage of Relationships
+## Accessing
 
-When explicitly defining the relationships between models, it is easy to find related records for a particular record.
+There are several ways that we can access the relationships of a model.
+
+- Magic `__get`, `__set`
+- Magic `get*`
+- `getRelated`
+
+### `__get()`
+
+You can use the magic method to access the relationship. Assignning an `alias` to the relationship simplifies accessing the related data. The name of the property is the same as the one defined in the `alias`.
 
 ```php
 <?php
 
-use Store\Toys\Robots;
+$customer = Customers::findFirst(
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
 
-$robot = Robots::findFirst(2);
-
-foreach ($robot->robotsParts as $robotPart) {
-    echo $robotPart->parts->name, "\n";
+foreach ($customer->invoices as $invoice) {
+    echo $invoice->inv_title;
 }
 ```
 
-Phalcon uses the magic methods `__set`/`__get`/`__call` to store or retrieve related data using relationships.
-
-By accessing an attribute with the same name as the relationship will retrieve all its related record(s).
+or for a many to many relationship (see models above):
 
 ```php
 <?php
 
-use Store\Toys\Robots;
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
 
-$robot = Robots::findFirst();
+foreach ($invoice->invoicesProducts as $product) {
+    echo $invoice->product->prd_name;
+}
 
-// All the related records in RobotsParts
-$robotsParts = $robot->robotsParts;
+foreach ($invoice->products as $product) {
+    echo $invoice->prd_name;
+}
 ```
 
-Also, you can use a magic getter:
+Using the magic `__get` allows you to access the relationship directly but does not offer additional functionality such as filtering or ordering on the relationship.
+
+### `get*()`
+
+You can access the same relationship by using a getter method, starting with *get* and using the name of the relationship.
 
 ```php
 <?php
 
-use Store\Toys\Robots;
-
-$robot = Robots::findFirst();
-
-// All the related records in RobotsParts
-$robotsParts = $robot->getRobotsParts();
-
-// Passing parameters
-$robotsParts = $robot->getRobotsParts(
+$customer = Customers::findFirst(
     [
-        'limit' => 5,
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
     ]
 );
+
+foreach ($customer->getInvoices() as $invoice) {
+    echo $invoice->inv_title;
+}
 ```
 
-If the called method has a `get` prefix [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) will return a `findFirst()`/`find()` result. The following example compares retrieving related results with using magic methods and without:
+or for a many to many relationship (see models above):
 
 ```php
 <?php
 
-use Store\Toys\Robots;
-
-$robot = Robots::findFirst(2);
-
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts then
-$robotsParts = $robot->robotsParts;
-
-// Only parts that match conditions
-$robotsParts = $robot->getRobotsParts(
+$invoice = Invoices::findFirst(
     [
-        'created_at = :date:',
-        'bind' => [
-            'date' => '2015-03-15',
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
         ],
     ]
 );
 
-$robotPart = RobotsParts::findFirst(1);
+foreach ($invoice->getInvoiceProducts() as $product) {
+    echo $invoice->product->prd_name;
+}
 
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
-$robot = $robotPart->robots;
+foreach ($invoice->getProducts() as $product) {
+    echo $invoice->prd_name;
+}
 ```
 
-Getting related records manually:
+This magic getter also allows us to perform certain operations when accessing the relationship such as ordering the relationship:
 
 ```php
 <?php
 
-use Store\Toys\Robots;
-
-$robot = Robots::findFirst(2);
-
-// Robots model has a 1-n (hasMany)
-// relationship to RobotsParts, then
-$robotsParts = RobotsParts::find(
+$invoice = Invoices::findFirst(
     [
-        'robots_id = :id:',
-        'bind' => [
-            'id' => $robot->id,
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
         ],
     ]
 );
 
-// Only parts that match conditions
-$robotsParts = RobotsParts::find(
+$products = $invoice->getProducts(
     [
-        'robots_id = :id: AND created_at = :date:',
-        'bind' => [
-            'id'   => $robot->id,
-            'date' => '2015-03-15',
-        ],
+        'order' => 'prd_name',
     ]
 );
-
-$robotPart = RobotsParts::findFirst(1);
-
-// RobotsParts model has a n-1 (belongsTo)
-// relationship to RobotsParts then
-$robot = Robots::findFirst(
-    [
-        'id = :id:',
-        'bind' => [
-            'id' => $robotPart->robots_id,
-        ],
-    ]
-);
+foreach ($products as $product) {
+    echo $invoice->prd_name;
+}
 ```
 
-The prefix `get` is used to `find()`/`findFirst()` related records. Depending on the type of relation it will use `find()` or `findFirst()`:
+You can also add additional conditionals in the relationship:
 
-| Type             | Περιγραφή                                                                                                                  | Implicit Method |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Belongs-To       | Returns a model instance of the related record directly                                                                    | `findFirst`     |
-| Has-One          | Returns a model instance of the related record directly                                                                    | `findFirst`     |
-| Has-Many         | Returns a collection of model instances of the referenced model                                                            | `find`          |
-| Has-Many-to-Many | Returns a collection of model instances of the referenced model, it implicitly does 'inner joins' with the involved models | (complex query) |
+```php
+<?php
+
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+
+$products = $invoice->getProducts(
+    [
+        'prd_created_at = :date:',
+        'bind' => [
+            'date' => '2019-12-25',
+        ],
+    ]
+);
+
+foreach ($products as $product) {
+    echo $invoice->prd_name;
+}
+```
+
+To get the same records manually:
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+
+
+$invoicesProducts = InvoicesProducts::find(
+    [
+        'conditions' => 'ixp_inv_id = :invoiceId:',
+        'bind'       => [
+            'invoiceId' => $invoice->inv_id,
+        ],
+    ]
+);
+
+$productIds = [];
+foreach ($invoicesProducts as $intermediate) {
+    $productIds[] = $intermediate->ixp_prd_id;
+}
+
+$products = Products::find(
+    [
+        'conditions' => 'prd_id IN ({array:productIds})',
+        'bind'       => [
+            'productIds' => $productIds,,
+        ],
+    ]
+);
+
+foreach ($products as $product) {
+    echo $invoice->prd_name;
+}
+```
+
+The prefix `get` is used to `find()`/`findFirst()` related records.
+
+| Type             | Implicit Method | Returns                                                              |
+| ---------------- | --------------- | -------------------------------------------------------------------- |
+| Belongs-To       | `findFirst`     | Model instance of the related record directly                        |
+| Has-One          | `findFirst`     | Model instance of the related record directly                        |
+| Has-One-Through  | `findFirst`     | Model instance of the related record directly                        |
+| Has-Many         | `find`          | Collection of model instances of the referenced model                |
+| Has-Many-to-Many | (complex query) | Collection of model instances of the referenced model (`inner join`) |
 
 You can also use the `count` prefix to return an integer denoting the count of the related records:
 
 ```php
 <?php
 
-use Store\Toys\Robots;
-
-$robot = Robots::findFirst(2);
-
-echo sprintf(
-    "The robot has %d parts\n",
-    $robot->countRobotsParts()
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
 );
+
+echo $invoice->countProducts();
 ```
 
-### Aliasing Relationships
+### `getRelated()`
 
-To explain better how aliases work, let's check the following example:
-
-The `robots_similar` table has the function to define what robots are similar to others:
-
-```sql
-mysql> desc robots_similar;
-+-------------------+------------------+------+-----+---------+----------------+
-| Field             | Type             | Null | Key | Default | Extra          |
-+-------------------+------------------+------+-----+---------+----------------+
-| id                | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-| robots_id         | int(10) unsigned | NO   | MUL | NULL    |                |
-| similar_robots_id | int(10) unsigned | NO   |     | NULL    |                |
-+-------------------+------------------+------+-----+---------+----------------+
-3 rows in set (0.00 sec)
-```
-
-Both `robots_id` and `similar_robots_id` have a relation to the model Robots:
-
-![](/assets/images/content/models-relationships-eer-1.png)
-
-A model that maps this table and its relationships is the following:
+You can access the same relationship by using `getRelated()` and defining which relationship you want to get.
 
 ```php
 <?php
 
-class RobotsSimilar extends \Phalcon\Mvc\Model
+$customer = Customers::findFirst(
+    [
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+
+foreach ($customer->getRelated('invoices') as $invoice) {
+    echo $invoice->inv_title;
+}
+```
+
+or for a many to many relationship (see models above):
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+
+foreach ($invoice->getRelated('products') as $product) {
+    echo $invoice->prd_name;
+}
+```
+
+The second parameter of `getRelated()` is an array that offers additional options to be set such as filtering and ordering.
+
+```php
+<?php
+
+$invoice = Invoices::findFirst(
+    [
+        'conditions' => 'inv_cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ],
+    ]
+);
+
+$products = $invoice->getRelated(
+    'products',
+    [
+        'prd_created_at = :date:',
+        'bind' => [
+            'date' => '2019-12-25',
+        ],
+    ]
+);
+
+foreach ($products as $product) {
+    echo $invoice->prd_name;
+}
+```
+
+## Aliases
+
+Accessing a relationship cam be achieved by using the name of the remote table. Due to naming conventions, this might not be that easy and could lead to confusion. As seen above, you can define an `alias` to the relationship.
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
 {
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
+
     public function initialize()
     {
-        $this->belongsTo(
-            'robots_id',
-            \Store\Toys\Robots::class,
-            'id'
-        );
-
-        $this->belongsTo(
-            'similar_robots_id',
-            \Store\Toys\Robots::class,
-            'id'
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id'
         );
     }
 }
 ```
 
-Since both relations point to the same model (Robots), obtain the records related to the relationship could not be clear:
+With an alias:
 
 ```php
 <?php
 
-$robotsSimilar = RobotsSimilar::findFirst();
-
-// Returns the related record based on the column (robots_id)
-// Also as is a belongsTo it's only returning one record
-// but the name 'getRobots' seems to imply that return more than one
-$robot = $robotsSimilar->getRobots();
-
-// but, how to get the related record based on the column (similar_robots_id)
-// if both relationships have the same name?
-```
-
-The aliases allow us to rename both relationships to solve these problems:
-
-```php
-<?php
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-class RobotsSimilar extends Model
+class Invoices extends Model
 {
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
+
     public function initialize()
     {
-        $this->belongsTo(
-            'robots_id',
-            \Store\Toys\Robots::class,
-            'id',
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
             [
-                'alias' => 'Robot',
-            ]
-        );
-
-        $this->belongsTo(
-            'similar_robots_id',
-            \Store\Toys\Robots::class,
-            'id',
-            [
-                'alias' => 'SimilarRobot',
+                'reusable' => true,
+                'alias'    => 'products',
             ]
         );
     }
 }
 ```
 
-With the aliasing we can get the related records easily. You can also use the `getRelated()` method to access the relationship using the alias name:
+If your table structure has self joins, you will not be able to access those relationships without aliases because you will be using the same model.
 
 ```php
 <?php
 
-$robotsSimilar = RobotsSimilar::findFirst();
-
-// Returns the related record based on the column (robots_id)
-$robot = $robotsSimilar->getRobot();
-$robot = $robotsSimilar->robot;
-$robot = $robotsSimilar->getRelated('Robot');
-
-// Returns the related record based on the column (similar_robots_id)
-$similarRobot = $robotsSimilar->getSimilarRobot();
-$similarRobot = $robotsSimilar->similarRobot;
-$similarRobot = $robotsSimilar->getRelated('SimilarRobot');
-```
-
-#### Magic Getters Vs. Explicit Methods
-
-Most IDEs and editors with auto-completion capabilities can not infer the correct types when using magic getters (both methods and properties). To overcome that, you can use a class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
-
-```php
-<?php
-
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 
-/**
- * Model class for the robots table.
- * @property Simple|RobotsParts[] $robotsParts
- * @method   Simple|RobotsParts[] getRobotsParts($parameters = null)
- * @method   integer              countRobotsParts()
- */
-class Robots extends Model
+class Parts extends Model
 {
-    public $id;
-
-    public $name;
+    public $par_id;
+    public $par_prd_id;
+    public $par_par_id;
+    public $par_type_flag;
+    public $par_name;
 
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            RobotsParts::class,
-            'robots_id'
+            'par_id',
+            Invoices::class,
+            'par_par_id',
+            [
+                'reusable' => true,
+                'alias'    => 'children',
+            ]
+        );
+
+        $this->belongsTo(
+            'par_par_id',
+            Invoices::class,
+            'par_id',
+            [
+                'reusable' => true,
+                'alias'    => 'parent',
+            ]
+        );
+    }
+}
+```
+
+In the example above, we have a `Part` that has a relationship with one or more `Part` objects. Each `Part` can consist of other parts that construct it. As a result we end up with a self join relationship. For a telephone `Part` we have the following children:
+
+    <?php
+    
+    $phone = Parts::findFirst(....);
+    
+    echo $phone->getChildren();
+    
+    // --- Cover
+    // --- Battery
+    // --- Charger
+    
+
+and each of those parts has the telephone as a parent:
+
+    <?php
+    $charger = Parts::findFirst(....);
+    
+    echo $phone->getParent();
+    
+    // Phone
+    
+
+## Caching
+
+Accessing related data can significantly increase the number of queries in your database. You can reduce this load as much as possible, by utilizing the `reusable` option in your relationship. Setting this option to `true` will instruct Phalcon to cache the results of the relationship the first time it is accessed, so that subsequent calls to the same relationship can use the cached resultset and not request the data again from the database. This cache is active during the same request.
+
+> **NOTE**: You are encouraged to use the `reusable` option as often as possible in your relationships
+{: .alert .alert-info }
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public function initialize()
+    {
+        $this->hasOne(
+            'inv_cst_id',
+            Customers::class,
+            'cst_id',
+            [
+                'alias'    => 'customers',
+                'reusable' => true,
+            ]
+        );
+    }
+}
+
+```
+
+## Autocompletion
+
+Most IDEs and editors with auto-completion capabilities can not detect the correct types when using magic getters (both methods and properties). To address this issue, you can use the class docblock that specifies what magic actions are available, helping the IDE to produce a better auto-completion:
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+/**
+ * Invoices model
+ *
+ * @property Simple|Products[] $products
+ * @method   Simple|Products[] getProducts($parameters = null)
+ * @method   integer           countProducts()
+ */
+class Invoices extends Model
+{
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
+
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
         );
     }
 }
@@ -603,16 +928,36 @@ You can also create relationships based on conditionals. When querying based on 
 ```php
 <?php
 
+namespace MyApp\Models;
+
 use Phalcon\Mvc\Model;
 
-// Companies have invoices issued to them (paid/unpaid)
-// Invoices model
 class Invoices extends Model
 {
+    public $inv_id;
+    public $inv_cst_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_total;
+    public $inv_created_at;
 
+    public function initialize()
+    {
+        $this->hasManyToMany(
+            'inv_id',
+            InvoicesProducts::class,
+            'ixp_inv_id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'reusable' => true,
+                'alias'    => 'products',
+            ]
+        );
+    }
 }
 
-// Companies model
 class Companies extends Model
 {
     public function initialize()
@@ -659,12 +1004,11 @@ class Companies extends Model
 }
 ```
 
-Additionally, you can use the second parameter of `getRelated()` when accessing your relationship from your model object to further filter or order your relationship:
+Additionally, you can use the parameters of `getInvoices()` or `getRelated()` on the model, to further filter or order your relationship:
 
 ```php
 <?php
 
-// Unpaid Invoices
 $company = Companies::findFirst(
     [
         'conditions' => 'id = :id:',
@@ -673,7 +1017,7 @@ $company = Companies::findFirst(
         ],
     ]
 );
-
+*
 $unpaidInvoices = $company->InvoicesUnpaid;
 $unpaidInvoices = $company->getInvoicesUnpaid();
 $unpaidInvoices = $company->getRelated('InvoicesUnpaid');
@@ -696,66 +1040,79 @@ $unpaidInvoices = $company->getRelated(
 
 ## Virtual Foreign Keys
 
-By default, relationships do not act like database foreign keys, that is, if you try to insert/update a value without having a valid value in the referenced model, Phalcon will not produce a validation message. You can modify this behavior by adding a fourth parameter when defining a relationship.
+By default, relationships do not have any constraints attached to them, to check related data when adding, updating or deleting records. You can however attach validations to your relationships, to ensure integrity of data. This can be done with the last parameter of the relationship related method.
 
-The RobotsPart model can be changed to demonstrate this feature:
+The cross table `InvoicesProducts` can be slightly changed to demonstrate this functionality:
 
 ```php
 <?php
 
+namespace MyApp\Models;
+
 use Phalcon\Mvc\Model;
 
-class RobotsParts extends Model
+class InvoicesProducts extends Model
 {
-    public $id;
-
-    public $robots_id;
-
-    public $parts_id;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
     public function initialize()
     {
         $this->belongsTo(
-            'robots_id',
-            \Store\Toys\Robots::class,
-            'id',
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
             [
+                'alias'      => 'invoice',
                 'foreignKey' => true,
+                'reusable'   => true,
             ]
         );
 
         $this->belongsTo(
-            'parts_id',
-            \Parts::class,
-            'id',
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
             [
+                'alias'      => 'product',
                 'foreignKey' => [
-                    'message' => 'The part_id does not exist on the Parts model',
+                    'message' => 'The prd_id does not exist ' .
+                                 'in the Products model',
                 ],
+                'reusable'   => true,
             ]
         );
     }
 }
 ```
 
-If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have a valid value on the referenced model. Similarly, if a `hasMany()`/`hasOne()` is altered it will validate that the records cannot be deleted if that record is used on a referenced model.
+If you alter a `belongsTo()` relationship to act as foreign key, it will validate that the values inserted/updated on those fields have reference valid ids in the respective models. Similarly, if a `hasMany()`/`hasOne()` is changed to define the `foreignKey`, it will validate that records can or cannot if the record has related data.
 
 ```php
 <?php
 
+namespace MyApp\Models;
+
 use Phalcon\Mvc\Model;
 
-class Parts extends Model
+class Products extends Model
 {
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
+
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            \RobotsParts::class,
-            'parts_id',
+            'prd_id',
+            Products::class,
+            'ixp_prd_id',
             [
                 'foreignKey' => [
-                    'message' => 'The part cannot be deleted because other robots are using it',
+                    'message' => 'The product cannot be deleted ' . 
+                                 'because there are invoices ' .
+                                 'attached to it',
                 ],
             ]
         );
@@ -768,57 +1125,74 @@ A virtual foreign key can be set up to allow null values as follows:
 ```php
 <?php
 
+namespace MyApp\Models;
+
 use Phalcon\Mvc\Model;
 
-class RobotsParts extends Model
+class InvoicesProducts extends Model
 {
-    public $id;
-
-    public $robots_id;
-
-    public $parts_id;
+    public $ixp_inv_id;
+    public $ixp_prd_id;
 
     public function initialize()
     {
         $this->belongsTo(
-            'parts_id',
-            \Parts::class,
-            'id',
+            'ixp_inv_id',
+            Invoices::class,
+            'inv_id',
             [
+                'alias'      => 'invoice',
+                'foreignKey' => true,
+                'reusable'   => true,
+            ]
+        );
+
+        $this->belongsTo(
+            'ixp_prd_id',
+            Products::class,
+            'prd_id',
+            [
+                'alias'      => 'product',
                 'foreignKey' => [
                     'allowNulls' => true,
-                    'message'    => 'The part_id does not exist on the Parts model',
+                    'message'    => 'The prd_id does not exist ' .
+                                    'in the Products model',
                 ],
+                'reusable'   => true,
             ]
         );
     }
 }
 ```
 
-### Cascade/Restrict Actions
+### Cascade/Restrict
 
-Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data:
+Relationships that act as virtual foreign keys by default restrict the creation/update/deletion of records to maintain the integrity of data. You can define these constraints that mimic the RDBMS functionality for `CASCADE` and `RESTRICT` by using the `action` option in `foreignKey`. The [Phalcon\Mvc\Model\Relation](api/phalcon_mvc#mvc-model-relation) underlying object offers two constants:
+
+- `Relation::ACTION_CASCADE` 
+- `Relation::ACTION_RESTRICT` 
 
 ```php
 <?php
 
-namespace Store\Toys;
+namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Relation;
 
-class Robots extends Model
+class Products extends Model
 {
-    public $id;
-
-    public $name;
+    public $prd_id;
+    public $prd_title;
+    public $prd_price;
+    public $prd_created_at;
 
     public function initialize()
     {
         $this->hasMany(
-            'id',
-            Parts::class,
-            'robots_id',
+            'prd_id',
+            Products::class,
+            'ixp_prd_id',
             [
                 'foreignKey' => [
                     'action' => Relation::ACTION_CASCADE,
@@ -829,9 +1203,13 @@ class Robots extends Model
 }
 ```
 
-The above code set up to delete all the referenced records (parts) if the master record (robot) is deleted.
+The code above allows you to delete all the related record if the primary record is deleted (cascade delete).
 
-## Storing Related Records
+## Operations
+
+You can perform operations using relationships, if a resultset returns complete objects.
+
+### Save
 
 Magic properties can be used to store a record and its related properties:
 
@@ -860,91 +1238,67 @@ Saving a record and its related records in a has-many relation:
 ```php
 <?php
 
-// Get an existing artist
-$artist = Artists::findFirst(
-    'name = "Shinichi Osawa"'
-);
-
-// Create an album
-$album = new Albums();
-
-$album->name   = 'The One';
-$album->artist = $artist;
-
-$songs = [];
-
-// Create a first song
-$songs[0]           = new Songs();
-$songs[0]->name     = 'Star Guitar';
-$songs[0]->duration = '5:54';
-
-// Create a second song
-$songs[1]           = new Songs();
-$songs[1]->name     = 'Last Days';
-$songs[1]->duration = '4:29';
-
-// Assign the songs array
-$album->songs = $songs;
-
-// Save the album + its songs
-$album->save();
-```
-
-Saving the album and the artist at the same time implicitly makes use of a transaction so if anything goes wrong with saving the related records, the parent will not be saved either. Messages are passed back to the user for information regarding any errors.
-
-Note: Adding related entities by overloading the following methods is not possible:
-
-* `Phalcon\Mvc\Model::beforeSave()`
-* `Phalcon\Mvc\Model::beforeCreate()`
-* `Phalcon\Mvc\Model::beforeUpdate()`
-
-You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
-
-## Operations Over Resultsets
-
-If a resultset is composed of complete objects, model operations can be performed on those objects. For example:
-
-```php
-<?php
-
-/** @var RobotType $type */
-$type = $robots->getRelated('type');
-
-$type->name = 'Some other type';
-
-$result = $type->save();
-
-
-// Get the related robot type but only the `name` column
-$type = $robots->getRelated(
-    'type',
+$customer = Customers::findFirst(
     [
-        'columns' => 'name',
+        'conditions' => 'cst_id = :customerId:',
+        'bind'       => [
+            'customerId' => 1,
+        ]
     ]
 );
 
-$type->name = 'Some other type';
+$invoice1 = new Invoices();
+$invoice1-> inv_status_flag = 0;
+$invoice1-> inv_title       = 'Invoice for ACME Inc. #1';
+$invoice1-> inv_total       = 100;
+$invoice1-> inv_created_at  = time();
 
-// This will fail because `$type` is not a complete object
-$result = $type->save();
+$invoice2 = new Invoices();
+$invoice2-> inv_status_flag = 0;
+$invoice2-> inv_title       = 'Invoice for ACME Inc. #2';
+$invoice2-> inv_total       = 200;
+$invoice2-> inv_created_at  = time();
 
+
+$customer->invoices = [
+    $invoice1,
+    $invoice2
+];
+
+
+$customer->save();
 ```
 
-### Updating Related Records
+The code above gets a customer from our database. Two invoices are created and assigned to the `invoices` relationship fo the customer as an array. The customer record is then saved, which also saves the two invoices in the database and links them to the customer.
+
+Although the syntax above is very handy, it is not always ideal to use it, especially when updating related records. Phalcon does not know which records need to be added or removed using an **update**, and as a result it will perform a replace. In update situations, it is better to control the data yourself vs. leaving it to the framework to do that.
+
+Saving data with the above syntax will implicitly create a transaction and commit it if all goes well. Messages generated during the save process of the whole transaction will be passed back to the user for more information.
+
+> **NOTE**: Adding related entities by overloading the following methods/events is **not** possible:
+> 
+> - `Phalcon\Mvc\Model::beforeSave()`
+> - `Phalcon\Mvc\Model::beforeCreate()`
+> - `Phalcon\Mvc\Model::beforeUpdate()`
+{: .alert .alert-warning }
+
+You need to overload `Phalcon\Mvc\Model::save()` for this to work from within a model.
+
+### Update
 
 Instead of doing this:
 
 ```php
 <?php
 
-$parts = $robots->getParts();
+$invoices = $customer->getInvoices();
 
-foreach ($parts as $part) {
-    $part->stock      = 100;
-    $part->updated_at = time();
+foreach ($invoices as $invoice) {
+    $invoice->inv_total      = 100;
+    $invoice->inv_updated_at = time();
 
-    if ($part->update() === false) {
-        $messages = $part->getMessages();
+    if (false === $invoice->update()) {
+        $messages = $invoice->getMessages();
 
         foreach ($messages as $message) {
             echo $message;
@@ -960,10 +1314,10 @@ you can do this:
 ```php
 <?php
 
-$robots->getParts()->update(
+$customer->getInvoices()->update(
     [
-        'stock'      => 100,
-        'updated_at' => time(),
+        'inv_total'      => 100,
+        'inv_updated_at' => time(),
     ]
 );
 ```
@@ -974,31 +1328,30 @@ $robots->getParts()->update(
 <?php
 
 $data = [
-    'stock'      => 100,
-    'updated_at' => time(),
+    'inv_total'      => 100,
+    'inv_updated_at' => time(),
 ];
 
-// Update all the parts except those whose type is basic
-$robots->getParts()->update(
+$customer->getInvoices()->update(
     $data,
-    function ($part) {
-        return ($part->type !== Part::TYPE_BASIC);
+    function ($invoice) {
+        return ($invoice->inv_cst_id !== 1);
     }
 );
 ```
 
-### Deleting Related Records
+### Delete
 
 Instead of doing this:
 
 ```php
 <?php
 
-$parts = $robots->getParts();
+$invoices = $customer->getInvoices();
 
-foreach ($parts as $part) {
-    if ($part->delete() === false) {
-        $messages = $part->getMessages();
+foreach ($invoices as $invoice) {
+    if (false === $invoice->delete()) {
+        $messages = $invoice->getMessages();
 
         foreach ($messages as $message) {
             echo $message;
@@ -1014,7 +1367,7 @@ you can do this:
 ```php
 <?php
 
-$robots->getParts()->delete();
+$customer->getInvoices()->delete();
 ```
 
 `delete()` also accepts an anonymous function to filter what records must be deleted:
@@ -1022,10 +1375,9 @@ $robots->getParts()->delete();
 ```php
 <?php
 
-// Delete only whose stock is greater or equal than zero
-$robots->getParts()->delete(
-    function ($part) {
-        return ($part->stock >= 0);
+$customer->getInvoices()->delete(
+    function ($invoice) {
+        return ($invoice->inv_total >= 0);
     }
 );
 ```
