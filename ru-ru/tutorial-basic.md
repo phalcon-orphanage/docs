@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Tutorial - Basic'
 keywords: 'tutorial, basic tutorial, step by step, mvc'
@@ -10,7 +10,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Введение
 
