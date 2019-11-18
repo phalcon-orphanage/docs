@@ -10,7 +10,7 @@ keywords: 'session, session manager, session adapters, redis, libmemcached, none
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 
@@ -24,7 +24,7 @@ Sessions are used in PHP to persist data between requests. This enables develope
 
 [Phalcon\Session\Manager](api/Phalcon_Session#session-manager) is a component that allows you to manipulate sessions in your application. This manager accepts a an adapter which is the way the data will be communicated to a particular store.
 
-> PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a *handler* in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
+> **NOTE**: PHP uses the term `handler` for the component that will be responsible for storing and retrieving the data. In `Phalcon\Session\Manager` we use the term `adapter`. So in order to set a *handler* in your session, for `Phalcon\Session\Manager` you need to call `setAdapter()`. The functionality is the same.
 {: .alert .alert-warning }
 
 
@@ -214,7 +214,7 @@ var_dump(
 
 You can also set the session id. The session id is set in a HTTP cookie. You can set the name by calling `setId()`. `getId()` is used to retrieve the session id.
 
-> You need call this method before calling `start()` for the id to take effect
+> **NOTE**: You need call this method before calling `start()` for the id to take effect
 {: .alert .alert-info }
 
 ```php
@@ -241,7 +241,7 @@ echo $session->getId(); // 'phalcon-id'
 
 Each session can have a name. The session name is set in a HTTP cookie. If this is not set, the `session.name` `php.ini` setting is used. You can set the name by calling `setName()`. `getName()` is used to retrieve the session name.
 
-> You need to call this method before calling `start()` for the name to take effect
+> **NOTE**: You need to call this method before calling `start()` for the name to take effect
 {: .alert .alert-info }
 
 ```php
