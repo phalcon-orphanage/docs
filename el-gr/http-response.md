@@ -7,26 +7,23 @@ keywords: 'psr-7, http, http response'
 ---
 
 # HTTP Response (PSR-7)
-
-* * *
-
-![](/assets/images/document-status-stable-success.svg)
+<hr />
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
-
 [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
 
 [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) is a representation of an outgoing, server-side response. As per the HTTP specification, this interface includes properties for each of the following:
+ - Protocol version
+ - Status code and reason phrase
+ - Headers
+ - Message body
 
-- Protocol version
-- Status code and reason phrase
-- Headers
-- Message body
-
-> In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
-{: .alert .alert-info }
+> **NOTE**: In the examples below, `$httpClient` is the client of your choice which implements PSR-7. 
+> 
+> {: .alert .alert-info }
 
 ```php
 <?php
@@ -108,12 +105,11 @@ public function __construct(
     [, array $headers = [] ]]]
 )
 ```
-
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the body, status code as well as the headers. All parameters are optional.
 
 - `body` - It defaults to `php://memory`. The method accepts either an object that implements the `StreamInterface` interface or a string such as the name of the stream. The default mode for the stream is `w+b`. If a non valid stream is passed, an [InvalidArgumentException](api/phalcon_http#http-message-exception-invalidargumentexception) is thrown
-- `code` - An integer representing the status code for the response. It defaults to `200`.
-- `headers` - A key value array, with key as the header name and value as the header value.
+- `code`  - An integer representing the status code for the response. It defaults to `200`.
+- `headers`  - A key value array, with key as the header name and value as the header value.
 
 ## Getters
 
@@ -377,7 +373,6 @@ echo $response->hasHeader('content-type'); // true
 ```
 
 ## With
-
 The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
 
 ### `withAddedHeader()`
