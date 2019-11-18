@@ -10,7 +10,7 @@ keywords: 'application, micro, handlers, api'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 
@@ -824,7 +824,7 @@ You can also handle routes that have not been matched (404) with Middleware disc
 
 The [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application provides a set of methods to bind the HTTP method with the route it is intended to.
 
-**删除**
+**delete**
 
 Matches if the HTTP method is `DELETE` and the route is `/api/products/delete/{id}`
 
