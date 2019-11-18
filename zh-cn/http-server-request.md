@@ -7,13 +7,10 @@ keywords: 'psr-7, http, http server request'
 ---
 
 # HTTP Server Request (PSR-7)
-
-* * *
-
-![](/assets/images/document-status-stable-success.svg)
+<hr />
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-
 [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) is an implementation of the [PSR-7](https://www.php-fig.org/psr/psr-7/) HTTP messaging interface as defined by [PHP-FIG](https://www.php-fig.org/).
 
 ![](/assets/images/implements-psr--7-blue.svg)
@@ -100,7 +97,6 @@ public function __construct(
     [, string protocol = "1.1"]]]]]]]]]]
 )
 ```
-
 The constructor accepts parameters allowing you to create the object with certain properties populated. You can define the target HTTP method, the URL, the body as well as the headers. All parameters are optional.
 
 - `method` - defaults to `GET`. The supported methods are: `GET`, `CONNECT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`, `POST`, `PUT`, `TRACE`
@@ -497,6 +493,7 @@ $request = new ServerRequest(
 echo $request->getUri(); // UriInterface : https://api.phalcon.io/companies/1
 ```
 
+
 ## Existence
 
 ### `hasHeader()`
@@ -528,7 +525,6 @@ echo $request->hasHeader('content-type'); // true
 ```
 
 ## With
-
 The Request object is immutable. However there are a number of methods that allow you to inject data into it. The returned object is a clone of the original one.
 
 ### `withAddedHeader()`
