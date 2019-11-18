@@ -396,7 +396,7 @@
             },
             {
                 "text": "PSR-13 HTML Links",
-                "url": "/http-link"
+                "url": "/html-link"
             },
             {
                 "text": "PSR-17 HTTP Factories",
