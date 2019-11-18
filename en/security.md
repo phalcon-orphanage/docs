@@ -7,7 +7,7 @@ keywords: 'security, hashing, passwords'
 ---
 # Security
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 

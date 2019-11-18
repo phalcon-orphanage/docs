@@ -10,7 +10,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Επισκόπηση
 

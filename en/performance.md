@@ -7,7 +7,7 @@ keywords: 'performance, profiling, xdebug, xhprof, yslow, bytecode'
 ---
 # Performance
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 A poorly written application will always have poor performance. A very common way for developers to increase the performance of their application is:

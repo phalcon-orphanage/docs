@@ -7,7 +7,7 @@ keywords: 'models, validation, uniqueness, inclusionin'
 ---
 # Model Validation
 <hr/>
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Mvc\Model][mvc-model] provides several events to validate data and implement business rules. 

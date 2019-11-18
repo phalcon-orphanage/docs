@@ -7,7 +7,7 @@ keywords: 'environment, nanobox, docker'
 ---
 # Environments
 <hr/>
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Nanobox][nanobox] is a portable, micro platform for developing and deploying apps. When working locally, Nanobox uses Docker to spin up and configure a virtual development environment configured to your specific needs. When you're ready to deploy to live servers, Nanobox will take that same environment and spin it up on your cloud provider of choice, where you can then manage and scale your app through the Nanobox dashboard.
@@ -104,7 +104,7 @@ From the root of your project, run the following commands to start Nanobox and g
 # Start Nanobox and Drop into a Nanobox Console
 nanobox run
 
-# Cd into the /tmp Directory
+# cd into the /tmp Directory
 cd /tmp
 
 # Generate a New Phalcon App

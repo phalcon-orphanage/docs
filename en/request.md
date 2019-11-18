@@ -8,7 +8,7 @@ keywords: 'http, http request, request'
 ---
 # Request Component
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Http\Request][http-request] is a component that encapsulates the actual HTTP request (usually originated by a browser) and sent to our application. The [Phalcon\Http\Request][http-request] object is a simple value object that is passed between the dispatcher and controller classes, wrapping the HTTP request environment. It also offers easy access to information such as header data, files, method, variables etc.

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Views'
 keywords: 'mvc, view, view component, simple view, responses'
@@ -10,7 +10,7 @@ keywords: 'mvc, view, view component, simple view, responses'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 

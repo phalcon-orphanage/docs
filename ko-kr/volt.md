@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
@@ -10,7 +10,7 @@ keywords: 'volt, template engine, php generation, view data'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 

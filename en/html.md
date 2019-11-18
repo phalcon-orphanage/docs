@@ -7,7 +7,7 @@ keywords: 'html, attributes, tag, tag factory'
 ---
 # HTML Helpers
 <hr/>
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 This namespace contains components that help with the generation of HTML.

@@ -7,7 +7,7 @@ keywords: 'mongo, odm, object document mapper'
 ---
 # Object Document Mapper
 <hr/>
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 > **NOTE**: The Object Document Mapper functionality has been **temporarily** removed for v4.0.
 >

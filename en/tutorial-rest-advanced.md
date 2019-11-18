@@ -1,18 +1,84 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
+title: 'Tutorial - REST'
+keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
-
 # Tutorial - REST
+<hr/>
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-* * *
+## Overview
+The `REST API` application is an application that shows how you can create a [RESTful][restful] API utilizing Phalcon. In this tutorial, we will use the [Micro](application-micro) application. We will also utilize [Phinx][phinx] for our database migrations, [JSON Web Tokens (JWT)][jwt] for authentication as well as [JSON API][jsonapi] for the structured responses.  
 
-![](/assets/images/document-status-under-review-red.svg)
+## Installation
+## Structure
+## Installation
+## Dependencies
+The application needs a minimum of PHP 7.2 and the following extensions available:
+- curl
+- json
+- iconv
+- igbinary
+- mbstring
+- memcached
+- opcache
+- pdo
+- pdo_mysql
+- phalcon
+- session
+- zip
 
-## Creating a Simple REST API
+The remaining dependencies for the project are installed using composer.
 
-In this tutorial, we will explain how to create a simple application that provides a [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) API using the different HTTP methods:
+## Providers
+Setting up the 
+
+
+## Controllers
+## Models
+## Routes
+
+| Method | Description                                                                       |
+|:------:|-----------------------------------------------------------------------------------|
+| `GET`  | `/companies/`                                                                     |
+| `GET`  | `/companies/`                                                                     |
+| `POST` | `/companies/`                                                                     |
+| `GET`  | `/companies/{recordId:[0-9]+}']`                                                  |
+| `GET`  | `/companies/{recordId:[0-9]+}/{relationships:[a-zA-Z-,.]+}']`                     |
+| `GET`  | `/companies/{recordId:[0-9]+}/relationships/{relationships:[a-zA-Z-,.]+}'`        |
+| `GET`  | `/individuals/`                                                                   |
+| `GET`  | `/individuals/{recordId:[0-9]+}']`                                                |
+| `GET`  | `/individuals/{recordId:[0-9]+}/{relationships:[a-zA-Z-,.]+}']`                   |
+| `GET`  | `/individuals/{recordId:[0-9]+}/relationships/{relationships:[a-zA-Z-,.]+}'`      |
+| `GET`  | `/individual-types/`                                                              |
+| `GET`  | `/individual-types/{recordId:[0-9]+}']`                                           |
+| `GET`  | `/individual-types/{recordId:[0-9]+}/{relationships:[a-zA-Z-,.]+}']`              |
+| `GET`  | `/individual-types/{recordId:[0-9]+}/relationships/{relationships:[a-zA-Z-,.]+}'` |
+| `GET`  | `/products/`                                                                      |
+| `GET`  | `/products/{recordId:[0-9]+}']`                                                   |
+| `GET`  | `/products/{recordId:[0-9]+}/{relationships:[a-zA-Z-,.]+}']`                      |
+| `GET`  | `/products/{recordId:[0-9]+}/relationships/{relationships:[a-zA-Z-,.]+}'`         |
+| `GET`  | `/product-types/`                                                                 |
+| `GET`  | `/product-types/{recordId:[0-9]+}']`                                              |
+| `GET`  | `/product-types/{recordId:[0-9]+}/{relationships:[a-zA-Z-,.]+}']`                 |
+| `GET`  | `/product-types/{recordId:[0-9]+}/relationships/{relationships:[a-zA-Z-,.]+}'`    |
+
+## Middleware
+### 404
+### Authentication
+### Tokens
+### Verification
+### Validation
+### Response
+
+## CLI
+
+
+ 
+
+In this tutorial, we will explain how to create a simple application that provides a [RESTful][restful] API using the different HTTP methods:
 
 * `GET` to retrieve and search data
 * `POST` to add data
@@ -20,11 +86,10 @@ In this tutorial, we will explain how to create a simple application that provid
 * `DELETE` to delete data
 
 ## Defining the API
-
 The API consists of the following methods:
 
-| Method   | URL                      | Action                                         |
-| -------- | ------------------------ | ---------------------------------------------- |
+| Method   |  URL                     | Action                                         |
+|----------|--------------------------|------------------------------------------------|
 | `GET`    | /api/robots              | Retrieves all robots                           |
 | `GET`    | /api/robots/search/Astro | Searches for robots with 'Astro' in their name |
 | `GET`    | /api/robots/2            | Retrieves robots based on primary key          |
@@ -33,7 +98,6 @@ The API consists of the following methods:
 | `DELETE` | /api/robots/2            | Deletes robots based on primary key            |
 
 ## Creating the Application
-
 As the application is so simple, we will not implement any full MVC environment to develop it. In this case, we will use a [micro application](application-micro) to meet our goal.
 
 The following file structure is more than enough:
@@ -139,7 +203,6 @@ Each route is defined with a method with the same name as the HTTP method, as fi
 When a defined route matches the requested URI then the application executes the corresponding handler.
 
 ## Creating a Model
-
 Our API provides information about `robots`, these data are stored in a database. The following model allows us to access that table in an object-oriented way. We have implemented some business rules using built-in validators and simple validations. Doing this will give us the peace of mind that saved data meet the requirements of our application. This model file should be placed in your `Models` folder.
 
 ```php
@@ -158,7 +221,7 @@ class Robots extends Model
     public function validation()
     {
         $validator = new Validation();
-
+        
         // Type must be: droid, mechanical or virtual
         $validator->add(
             "type",
@@ -243,7 +306,6 @@ $app = new Micro($di);
 ```
 
 ## Retrieving Data
-
 The first `handler` that we will implement is which by method GET returns all available robots. Let's use PHQL to perform this simple query returning the results as JSON. `index.php`
 
 ```php
@@ -354,7 +416,6 @@ $app->get(
 ```
 
 ## Inserting Data
-
 Taking the data as a JSON string inserted in the body of the request, we also use PHQL for insertion `index.php`:
 
 ```php
@@ -420,7 +481,6 @@ $app->post(
 ```
 
 ## Updating Data
-
 The data update is similar to insertion. The `id` passed as parameter indicates what robot must be updated `index.php`:
 
 ```php
@@ -480,7 +540,6 @@ $app->put(
 ```
 
 ## Deleting Data
-
 The data delete is similar to update. The `id` passed as parameter indicates what robot must be deleted `index.php`:
 
 ```php
@@ -534,22 +593,21 @@ $app->delete(
 ```
 
 ## Creating database
-
-Now we will create database for our application. Run SQL queries as follows:
-
-    CREATE DATABASE `robotics`;
-    CREATE TABLE `robotics`.`robots` (
-     `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-     `name` varchar(200) COLLATE utf8_bin NOT NULL,
-     `type` varchar(200) COLLATE utf8_bin NOT NULL,
-     `year` smallint(2) unsigned NOT NULL,
-     PRIMARY KEY (`id`)
-    )
-    
+Now we will create database for our application.
+Run SQL queries as follows:
+```
+CREATE DATABASE `robotics`;
+CREATE TABLE `robotics`.`robots` (
+ `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+ `name` varchar(200) COLLATE utf8_bin NOT NULL,
+ `type` varchar(200) COLLATE utf8_bin NOT NULL,
+ `year` smallint(2) unsigned NOT NULL,
+ PRIMARY KEY (`id`)
+)
+```
 
 ## Testing our Application
-
-Using [curl](https://en.wikipedia.org/wiki/CURL) we'll test every route in our application verifying its proper operation.
+Using [curl][curl] we'll test every route in our application verifying its proper operation.
 
 Obtain all the robots:
 
@@ -652,3 +710,6 @@ Content-Type: text/html; charset=UTF-8
 
 {"status":"OK"}
 ```
+
+[restful]: https://en.wikipedia.org/wiki/Representational_state_transfer
+[curl]: https://en.wikipedia.org/wiki/CURL

@@ -10,7 +10,7 @@ keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php buil
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Controladores
 

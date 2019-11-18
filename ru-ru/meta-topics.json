@@ -113,7 +113,11 @@
             {
                 "text": "REST",
                 "url": "/tutorial-rest"
-            },
+      },
+      {
+        "text": "REST - Advanced",
+        "url": "/tutorial-rest-advanced"
+      },
             {
                 "text": "Vokuro",
                 "url": "/tutorial-vokuro"

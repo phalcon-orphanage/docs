@@ -7,7 +7,7 @@ keywords: 'testing environment, codeception, nanobox, testing, phpunit, tests'
 ---
 # Testing Environment
 <hr />
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 # Overview
 Phalcon has always had a small development community and not that many pull requests, offering bug fixes and enhancements, compared to other PHP frameworks. This was primarily due to the fact that most developers do not really know C. To help developers contribute, we have created a new language called [Zephir][zephir], which has a very similar syntax to PHP or Javascript. In [2003][2003] we announced this plan and a few months later we released the language and rewrote all the Phalcon code in Zephir. We have been using Zephir ever since for developing Phalcon.

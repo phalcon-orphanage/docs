@@ -7,7 +7,7 @@ keywords: 'psr-7, http, http uploaded file'
 ---
 # HTTP Uploaded File (PSR-7)
 <hr/>
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 [Phalcon\Http\Message\UploadedFile][http-message-uploadedfile] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
