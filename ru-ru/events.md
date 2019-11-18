@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'Events Manager'
 keywords: 'events, events manager, hooks'

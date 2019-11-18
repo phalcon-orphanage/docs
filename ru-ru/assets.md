@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 upgrade: '#assets'
 title: 'Медиа-ресурсы'

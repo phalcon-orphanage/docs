@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Translate'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'

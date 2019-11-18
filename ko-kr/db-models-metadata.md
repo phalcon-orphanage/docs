@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Models Metadata'
 keywords: 'model, caching, metadata, query fields'
