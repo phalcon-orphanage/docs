@@ -3,13 +3,14 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Solicitud de Nueva Funcionalidad'
+keywords: 'new feature request, nfr'
 ---
 
 # Solicitud de Nueva Funcionalidad
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 A NFR is a short document explaining how a new feature request must be submitted, how it can be implemented, and how it can help core developers and others to understand and implement it.
 
