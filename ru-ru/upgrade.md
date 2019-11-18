@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Upgrade Guide'
 keywords: 'upgrade, v3, v4'
