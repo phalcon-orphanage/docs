@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 upgrade: '#acl'
 title: 'Списки управления доступом (ACL)'

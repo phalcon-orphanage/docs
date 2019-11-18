@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Model Transactions'
 keywords: 'models, transactions'

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Формы'
 keywords: 'forms, render html, validation, elements'
