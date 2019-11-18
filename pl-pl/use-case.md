@@ -3,13 +3,14 @@ layout: default
 language: 'pl-pl'
 version: '4.0'
 title: 'Use Case'
+keywords: 'use case, examples'
 ---
 
 # Use Case
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 
@@ -33,7 +34,7 @@ Throughout this documentation we are going to assume that we are building an acc
         - Payment
         - Reports
 
-## Groups - User roles
+## Groups - User Roles
 
 | Group          | Description                                        |
 | -------------- | -------------------------------------------------- |
