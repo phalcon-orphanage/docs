@@ -11,7 +11,7 @@ keywords: 'filter, sanitize'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Controladores
 
@@ -58,12 +58,12 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container already has a [Phalcon\Filter](api/phalcon_filter#filter) object loaded with the predefined sanitizers. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
+> **NOTE**: The [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container already has a [Phalcon\Filter](api/phalcon_filter#filter) object loaded with the predefined sanitizers. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
 {: .alert .alert-info }
 
 ## Built-in
 
-> Cuando sea apropiado, los limpiadores convertirán el valor al tipo esperado. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
+> **NOTE**: Where appropriate, the sanitizers will cast the value to the type expected. For example the `absint` sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
 
 A continuación se enlistan los filtros predeterminados del componente. (N. del T.: se preserva la palabra inglesa *mixed* [mixto], para definir que el filtro acepta como entrada [`$input`] tanto cadenas de caracteres [`string`] como matrices [`array`]):
@@ -278,7 +278,7 @@ const FILTER_UPPERWORDS  = 'upperWords';
 const FILTER_URL         = 'url';
 ```
 
-## Limpieza de datos
+## Sanitizing Data
 
 Es el proceso de desinfección o saneamiento que elimina caracteres específicos de un valor, bien por ser innecesarios o bien por ser indeseados por el usuario o aplicación. Al desinfectar la entrada nos aseguramos que la integridad de las aplicaciones permanecerá intacta.
 
@@ -361,7 +361,7 @@ class ProductsController extends Controller
 }
 ```
 
-## Filtrado de datos
+## Filtering Data
 
 The [Phalcon\Filter](api/phalcon_filter#filter) both filters and sanitizes data, depending on the sanitizers used. Por ejemplo, el limpiador `trim` eliminará todos los espacios antes y después de la entrada sin afectar su contenido. The description of each sanitizer (see [Built-in Sanitizers](#built-in-sanitizers)) can help you to understand and use the sanitizers according to your needs.
 
@@ -381,7 +381,7 @@ $locator->sanitize('<h1>Hello</h1>', 'striptags');
 $locator->sanitize('  Hello   ', 'trim');
 ```
 
-## Creación de limpiadores
+## Adding Sanitizers
 
 You can add your own sanitizers to [Phalcon\Filter](api/phalcon_filter#filter). El nuevo limpiador puede ser una función anónima cuando se inicializa el localizador:
 
