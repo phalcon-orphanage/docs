@@ -10,7 +10,7 @@ keywords: 'firewall, dispatcher, events, acl, access control list, permissions, 
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-The `Phalcon\Firewall` namespace contains 
+The `Phalcon\Firewall` namespace contains adapters that bind to the [Phalcon\Mvc\Dispatcher](dispatcher). This binding is event driven. meaning that you need to have an active [Events Manager](events). The Firewall component can be attached to either the `afterBinding` event or the `beforeExecuteRoute`.
 
 ## Micro\Acl
 
