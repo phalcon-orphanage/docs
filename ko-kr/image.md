@@ -2,17 +2,17 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Image'
+title: '이미지'
 keywords: 'image, gd, imagick'
 ---
 
-# Image
+# 이미지
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
