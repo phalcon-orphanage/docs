@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'HTTP Server Request (PSR-7)'
 keywords: 'psr-7, http, http server request'
