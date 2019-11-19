@@ -46,7 +46,7 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 
 ### 소프트웨어
 
-> **NOTE**: You should always try and use the latest version of Phalcon and PHP as both address bugs, security enhancements as well as performance.
+> **주의**: 버그 해결, 보안 강화 뿐만이 아니라 성능향상을 위해서라도 Phalcon과 PHP는 가능한 항상 최신버전을 사용해야 합니다.
 {: .alert .alert-danger }
 
 어플리케이션의 요구사항과 필요한 Phalcon 컴포넌트에 따라, PHP 7.2 이상을 사용해야 하는 것 외에도 다음의 익스텐션들을 추가해야 할 수 있습니다.
@@ -63,7 +63,7 @@ Phalcon은 최고의 성능을 제공하면서도 가능한 최소의 리소스�
 * [Mbstring](https://php.net/manual/en/book.mbstring.php) 익스텐션
 * 캐시 사용 여부 및 방식에 따라 [Memcached](https://php.net/manual/en/book.memcached.php) 혹은 관련된 다른 캐시 어댑터
 
-> **NOTE**: Installing these packages will vary based on your operating system as well as the package manager you use (if any). 이 익스텐션들의 설치방법에 대해서는 관련문서를 참조 해주세요.
+> **주의**: 이 패키지들의 설치는 사용중인 운영체제와 (있다면) 패키지관리자에 따라 달라질 수 있습니다. 이 익스텐션들의 설치방법에 대해서는 관련문서를 참조 해주세요.
 {: .alert .alert-info }
 
 `libpcre3-dev` 패키지의 경우에 다음의 명령어를 사용하시면 됩니다:
@@ -90,7 +90,7 @@ sudo yum install pcre-devel
 sudo port install php-phalcon4
 ```
 
-#### Mac/Osx using Brew
+#### Mac/Osx에서 Brew 사용시
 
 ```bash
 brew install pcre
@@ -129,7 +129,7 @@ Phalcon은 PHP 익스텐션 형태로 컴파일 되기 때문에, 설치과정�
 
 Phalcon을 리눅스에 설치하시려면, 리눅스 배포판에 있는 우리의 저장소를 추가한 후 설치하세요.
 
-#### DEB Based Distributions (Debian, Ubuntu, Etc.)
+#### DEB 기반의 배포판 ( Debian, Ubuntu 등)
 
 ##### 저장소 설치
 
@@ -153,7 +153,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.deb.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **주의**: 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
 {: .alert .alert-warning }
 
 ##### Phalcon 설치
@@ -184,7 +184,7 @@ Phalcon 설치:
 sudo apt-get install php-phalcon
 ```
 
-#### RPM Based Distributions (CentOS, Fedora, Etc.)
+#### RPM 기반 배포판 (CentOS, Fedora 등)
 
 ##### 저장소 설치
 
@@ -208,7 +208,7 @@ curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.
 curl -s https://packagecloud.io/install/repositories/phalcon/mainline/script.rpm.sh | sudo bash
 ```
 
-> **NOTE**: This only needs to be done only once, unless your distribution changes or you want to switch from stable to nightly builds.
+> **주의**: 이 버전의 경우에는 배포판을 변경하거나 Stable 릴리즈에서 nightly 빌드로 전환 하는 경우가 아니라면 최초 한번만 실행하시면 됩니다.
 {: .alert .alert-warning }
 
 
@@ -314,7 +314,7 @@ extension=php_phalcon.dll
 
 웹서버를 재시작하세요.
 
-### Compile From Sources
+### 소스를 직접 컴파일하기
 
 소스를 직접 컴파일 하는 방법은 대부분환경에서 비슷합니다 (Linux/macOS)
 
@@ -353,20 +353,15 @@ php -m | grep phalcon
 PHP ini 파일에 `extension=phalcon.so` 라인을 추가하신 후 웹서버를 재시작해서 추가한 익스텐션이 로드되도록 해주세요.
 
 ```ini
-; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
-extension=phalcon.so
+# Suse: Phalcon.ini 파일을 만들어 extension= phalcon.so 라인을 추가한 후 /etc/php7/conf.d/ 폴더에 저장해 주세요.
 
-; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
-extension=phalcon.so
+# CentOS/RedHat/Fedora: Phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php.d/ 폴더에 저장해 주세요.
 
-; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
-extension=phalcon.so
+# Ubuntu/Debian 에서 Apache2 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/apache2/conf.d/ 폴더에 저장해 주세요.
 
-; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
-extension=phalcon.so
+# Ubuntu/Debian 에서 Php7-fpm 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/fpm/conf.d/ 폴더에 저장해 주세요.
 
-; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
-extension=phalcon.so
+# Ubuntu/Debian 에서 Php7-cli 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/cli/conf.d/ 폴더에 저장해 주세요.
 ```
 
 위의 설명대로 따라 하시면 컴파일 **과 함께** 시스템 상에 모듈 설치까지 진행됩니다. 물론 익스텐션을 컴파일만 한 후 수동으로 직접 `ini`파일에 추가하실 수도 있습니다.
@@ -384,7 +379,7 @@ make && make install
 
 이렇게 하시는 경우 CLI와 웹서버 용의 `php.ini` 파일들에 직접`extension=phalcon.so` 라인을 추가해 주셔야 합니다.
 
-#### Tuning Build
+#### 빌드 세부조정
 
 기본값은 모든 프로세서에 대해 가능한 최대한 호환되도록 컴파일 하는 것입니다(`gcc -mtune=native -O2 -fomit-frame-pointer`). 컴파일 시 현재 사용중인 프로세스에 맞게 최적화된 머신코드를 생성하시려면, 빌드 전 CFLAGS 값을 export 하여 자신이 원하는 컴파일 플래그를 설정하실 수 있습니다. 예를 들어
 
@@ -394,7 +389,7 @@ make && make install
 
 와 같이 하시는 경우, 사용하시는 칩셋에 대해서는 가능한 최적의 코드를 생성해 주지만, 반대로 컴파일된 개체가 구형 칩셋에 대해서는 호환되지 않을 가능성이 큽니다.
 
-### Shared Hosting
+### 공유 호스팅
 
 공유 호스팅 환경에서 어플리케이션을 운영하실 경우, 특히 root 권한이 없을 경우에 Phalcon 설치가 제한될 가능성이 큽니다. 일부 웹 호스팅사의 경우 운 좋게도 제어판에서 Phalcon 설치를 지원합니다.
 
