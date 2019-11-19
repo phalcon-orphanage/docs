@@ -1628,7 +1628,7 @@ $compiler->addFunction(
 );
 ```
 
-You can also override built in functions by using the same name in the defined function. In the example below, we *replace* the built in Volt function `dump()` with PHP's `print_r`.
+You can also override built-in functions by using the same name in the defined function. In the example below, we *replace* the built-in Volt function `dump()` with PHP's `print_r`.
 
 ```php
 <?php
@@ -1661,7 +1661,7 @@ $compiler->addFilter(
 );
 ```
 
-Built-in filters can be overridden adding a function with the same name. The example below will replace the built in `capitalize` filter with PHP's [lcfirst](https://php.net/manual/en/function.lcfirst.php) function:
+Built-in filters can be overridden adding a function with the same name. The example below will replace the built-in `capitalize` filter with PHP's [lcfirst](https://php.net/manual/en/function.lcfirst.php) function:
 
 ```php
 <?php

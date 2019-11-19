@@ -18,7 +18,7 @@ In order for the routing for a Phalcon application to work, you will need to set
 
 ## PHP Built-in
 
-The PHP built in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
+The PHP built-in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>

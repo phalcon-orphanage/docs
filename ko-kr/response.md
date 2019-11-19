@@ -12,7 +12,7 @@ keywords: 'http, http response, response'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 [Phalcon\Http\Response](api/phalcon_http#http-response) is a component that encapsulates the actual HTTP response by the application to the user. The most commonly returned payload is headers and content. Note that this is not *only* the actual response payload. The component acts as a constructor of the response and as a HTTP client to send the response back to the caller. You can always use the [Phalcon\Http\Message\Response](api/phalcon_http#http-message-response) for a PSR-7 compatible response and use a client such as Guzzle to send it back to the caller.
 
@@ -284,7 +284,7 @@ $headers->set('Content-Type', 'application/json');
 $response->setHeaders($headers);
 ```
 
-## Cookies
+## 쿠키
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) offers a collection to store and manipulate cookies. You can then send those cookies back with the response.
 
@@ -682,7 +682,7 @@ class PostsController extends Controller
 }
 ```
 
-## Events
+## 이벤트
 
 The [Phalcon\Http\Response](api/phalcon_http#http-response) object implements the [Phalcon\Events\EventsAware](api/phalcon_events#events-eventsawareinterface) interfaces. As a result `getEventsManager()` and `setEventsManager()` are available for you to use.
 

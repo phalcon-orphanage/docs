@@ -12,7 +12,7 @@ keywords: 'events, events manager, hooks'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The purpose of this component is to intercept the execution of components in the framework by creating *hooks*. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event](api/phalcon_events#events-event) objects, which contain information about each hook/event.
 
@@ -691,7 +691,7 @@ try {
 }
 ```
 
-## Controllers
+## 컨트롤러
 
 Controllers act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
@@ -738,7 +738,7 @@ class BaseController extends Controller
 
 Execute the code before the router so we can determine if the user is logged in or not. If not, forward them to the login page.
 
-## Models
+## 모델
 
 Similar to Controllers, Models also act as listeners already registered in the events manager. As a result, you only need to create a method with the same name as a registered event and it will be fired.
 
@@ -890,13 +890,13 @@ The event will always have as The events available in Phalcon are:
 | --------------------------- | ------------------------------------ | ------------------------------------------------------- |
 | [ACL](acl)                  | `acl:afterCheckAccess`               | Acl                                                     |
 | [ACL](acl)                  | `acl:beforeCheckAccess`              | Acl                                                     |
-| [Application](application)  | `application:afterHandleRequest`     | Application, Controller                                 |
-| [Application](application)  | `application:afterStartModule`       | Application, Module                                     |
-| [Application](application)  | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
-| [Application](application)  | `application:beforeSendResponse`     | Application, Response                                   |
-| [Application](application)  | `application:beforeStartModule`      | Application, Module                                     |
-| [Application](application)  | `application:boot`                   | Application                                             |
-| [Application](application)  | `application:viewRender`             | Application, View                                       |
+| [어플리케이션](application)       | `application:afterHandleRequest`     | Application, Controller                                 |
+| [어플리케이션](application)       | `application:afterStartModule`       | Application, Module                                     |
+| [어플리케이션](application)       | `application:beforeHandleRequest`    | Application, Dispatcher                                 |
+| [어플리케이션](application)       | `application:beforeSendResponse`     | Application, Response                                   |
+| [어플리케이션](application)       | `application:beforeStartModule`      | Application, Module                                     |
+| [어플리케이션](application)       | `application:boot`                   | 어플리케이션                                                  |
+| [어플리케이션](application)       | `application:viewRender`             | Application, View                                       |
 | [CLI](application-cli)      | `dispatch:beforeException`           | Console, Exception                                      |
 | [Console](application-cli)  | `console:afterHandleTask`            | Console, Task                                           |
 | [Console](application-cli)  | `console:afterStartModule`           | Console, Module                                         |
@@ -911,30 +911,30 @@ The event will always have as The events available in Phalcon are:
 | [Db](db-layer)              | `db:releaseSavepoint`                | Db, Savepoint Name                                      |
 | [Db](db-layer)              | `db:rollbackTransaction`             | Db                                                      |
 | [Db](db-layer)              | `db:rollbackSavepoint`               | Db, Savepoint Name                                      |
-| [Dispatcher](dispatcher)    | `dispatch:afterExecuteRoute`         | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterDispatch`             | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterDispatchLoop`         | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:afterInitialize`           | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeException`           | Dispatcher, Exception                                   |
-| [Dispatcher](dispatcher)    | `dispatch:beforeExecuteRoute`        | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeDispatch`            | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeDispatchLoop`        | Dispatcher                                              |
-| [Dispatcher](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Dispatcher](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher                                              |
+| [디스패쳐](dispatcher)          | `dispatch:afterExecuteRoute`         | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:afterDispatch`             | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:afterDispatchLoop`         | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:afterInitialize`           | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:beforeException`           | Dispatcher, Exception                                   |
+| [디스패쳐](dispatcher)          | `dispatch:beforeExecuteRoute`        | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:beforeDispatch`            | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:beforeDispatchLoop`        | 디스패쳐                                                    |
+| [디스패쳐](dispatcher)          | `dispatch:beforeForward`             | Dispatcher, array                                       |
+| [디스패쳐](dispatcher)          | `dispatch:beforeNotFoundAction`      | 디스패쳐                                                    |
 | [Firewall](acl)             | `firewall:beforeException`           | Adapter, Exception                                      |
 | [Firewall](acl)             | `firewall:afterCheck`                | Acl / Annotations / Acl                                 |
-| [Firewall](acl)             | `firewall:beforeCheck`               | Annotations                                             |
-| [Loader](loader)            | `loader:afterCheckClass`             | Loader, Class Name                                      |
-| [Loader](loader)            | `loader:beforeCheckClass`            | Loader, Class Name                                      |
-| [Loader](loader)            | `loader:beforeCheckPath`             | Loader                                                  |
-| [Loader](loader)            | `loader:pathFound`                   | Loader, File Path                                       |
-| [Micro](application-micro)  | `micro:afterBinding`                 | Micro                                                   |
-| [Micro](application-micro)  | `micro:afterHandleRoute`             | Micro, return value mixed                               |
-| [Micro](application-micro)  | `micro:afterExecuteRoute`            | Micro                                                   |
-| [Micro](application-micro)  | `micro:beforeException`              | Micro, Exception                                        |
-| [Micro](application-micro)  | `micro:beforeExecuteRoute`           | Micro                                                   |
-| [Micro](application-micro)  | `micro:beforeHandleRoute`            | Micro                                                   |
-| [Micro](application-micro)  | `micro:beforeNotFound`               | Micro                                                   |
+| [Firewall](acl)             | `firewall:beforeCheck`               | 주석                                                      |
+| [로더](loader)                | `loader:afterCheckClass`             | Loader, Class Name                                      |
+| [로더](loader)                | `loader:beforeCheckClass`            | Loader, Class Name                                      |
+| [로더](loader)                | `loader:beforeCheckPath`             | 로더                                                      |
+| [로더](loader)                | `loader:pathFound`                   | Loader, File Path                                       |
+| [마이크로](application-micro)   | `micro:afterBinding`                 | 마이크로                                                    |
+| [마이크로](application-micro)   | `micro:afterHandleRoute`             | Micro, return value mixed                               |
+| [마이크로](application-micro)   | `micro:afterExecuteRoute`            | 마이크로                                                    |
+| [마이크로](application-micro)   | `micro:beforeException`              | Micro, Exception                                        |
+| [마이크로](application-micro)   | `micro:beforeExecuteRoute`           | 마이크로                                                    |
+| [마이크로](application-micro)   | `micro:beforeHandleRoute`            | 마이크로                                                    |
+| [마이크로](application-micro)   | `micro:beforeNotFound`               | 마이크로                                                    |
 | [Model](db-models)          | `model:afterCreate`                  | Model                                                   |
 | [Model](db-models)          | `model:afterDelete`                  | Model                                                   |
 | [Model](db-models)          | `model:afterFetch`                   | Model                                                   |
@@ -956,23 +956,23 @@ The event will always have as The events available in Phalcon are:
 | [Model](db-models)          | `model:prepareSave`                  | Model                                                   |
 | [Model](db-models)          | `model:validation`                   | Model                                                   |
 | [Models Manager](db-models) | `modelsManager:afterInitialize`      | Manager, Model                                          |
-| [Request](request)          | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
-| [Request](request)          | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
-| [Response](response)        | `response:afterSendHeaders`          | Response                                                |
-| [Response](response)        | `response:beforeSendHeaders`         | Response                                                |
+| [요청](request)               | `request:afterAuthorizationResolve`  | Request, ['server' => Server array]                     |
+| [요청](request)               | `request:beforeAuthorizationResolve` | Request, ['headers' => [Headers], 'server' => [Server]] |
+| [응답](response)              | `response:afterSendHeaders`          | 응답                                                      |
+| [응답](response)              | `response:beforeSendHeaders`         | 응답                                                      |
 | [Router](routing)           | `router:afterCheckRoutes`            | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoutes`           | Router                                                  |
 | [Router](routing)           | `router:beforeCheckRoute`            | Router, Route                                           |
 | [Router](routing)           | `router:beforeMount`                 | Router, Group                                           |
 | [Router](routing)           | `router:matchedRoute`                | Router, Route                                           |
 | [Router](routing)           | `router:notMatchedRoute`             | Router, Route                                           |
-| [View](view)                | `view:afterCompile`                  | Volt                                                    |
-| [View](view)                | `view:afterRender`                   | View                                                    |
-| [View](view)                | `view:afterRenderView`               | View                                                    |
-| [View](view)                | `view:beforeCompile`                 | Volt                                                    |
-| [View](view)                | `view:beforeRender`                  | View                                                    |
-| [View](view)                | `view:beforeRenderView`              | View, View Engine Path                                  |
-| [View](view)                | `view:notFoundView`                  | View, View Engine Path                                  |
+| [뷰](view)                   | `view:afterCompile`                  | Volt                                                    |
+| [뷰](view)                   | `view:afterRender`                   | 뷰                                                       |
+| [뷰](view)                   | `view:afterRenderView`               | 뷰                                                       |
+| [뷰](view)                   | `view:beforeCompile`                 | Volt                                                    |
+| [뷰](view)                   | `view:beforeRender`                  | 뷰                                                       |
+| [뷰](view)                   | `view:beforeRenderView`              | View, View Engine Path                                  |
+| [뷰](view)                   | `view:notFoundView`                  | View, View Engine Path                                  |
 | [Volt](volt)                | `compileFilter`                      | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileFunction`                    | Volt, [name, arguments, function arguments]             |
 | [Volt](volt)                | `compileStatement`                   | Volt, [statement]                                       |

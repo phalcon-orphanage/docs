@@ -1,33 +1,33 @@
 [
     {
-        "text": "General",
+        "text": "일반 정보",
         "url": "/introduction",
         "menu": [
             {
-                "text": "Introduction",
+                "text": "소 개",
                 "url": "/introduction"
             },
             {
-                "text": "Release Notes",
+                "text": "릴리스 노트",
                 "url": "https://github.com/phalcon/cphalcon/blob/4.0.x/CHANGELOG.md",
                 "external": true
             },
             {
-                "text": "Upgrade",
+                "text": "업그레이드",
                 "url": "/upgrade"
             },
             {
-                "text": "Sponsors",
+                "text": "후원자",
                 "url": "/sponsors"
             }
         ]
     },
     {
-        "text": "Contributions",
+        "text": "기여하기",
         "url": "",
         "menu": [
             {
-                "text": "Overview",
+                "text": "개요",
                 "url": "/contributions"
             },
             {
@@ -39,39 +39,39 @@
                 "url": "/new-feature-request"
             },
             {
-                "text": "Backtrace Generation",
+                "text": "Backtrace 생성",
                 "url": "/generating-backtrace"
             },
             {
-                "text": "Reproducible Tests",
+                "text": "재현가능한 테스트",
                 "url": "/reproducible-tests"
             },
             {
-                "text": "Testing environment",
+                "text": "테스트 환경",
                 "url": "/testing-environment"
             },
             {
-                "text": "Coding Standard",
+                "text": "코딩 표준",
                 "url": "/coding-standard"
             }
         ]
     },
     {
-        "text": "Getting Started",
+        "text": "시작하기",
         "url": "",
         "menu": [
             {
-                "text": "Installation",
+                "text": "설치",
                 "url": "/installation"
             },
             {
-                "text": "Webserver Setup",
+                "text": "웹서버 설정",
                 "url": "/webserver-setup"
             }
         ]
     },
     {
-        "text": "Environments",
+        "text": "개발환경",
         "url": "",
         "menu": [
             {
@@ -85,25 +85,25 @@
         ]
     },
     {
-        "text": "Development Tools",
+        "text": "개발 도구",
         "url": "",
         "menu": [
             {
-                "text": "DevTools",
+                "text": "개발도구",
                 "url": "/devtools"
             },
             {
-                "text": "Debug",
+                "text": "디버그",
                 "url": "/debug"
             }
         ]
     },
     {
-        "text": "Tutorials",
+        "text": "튜토리얼",
         "url": "",
         "menu": [
             {
-                "text": "Basic",
+                "text": "기초",
                 "url": "/tutorial-basic"
             },
             {
@@ -115,7 +115,7 @@
                 "url": "/tutorial-rest"
             },
             {
-                "text": "REST - Advanced",
+                "text": "REST - 고급",
                 "url": "/tutorial-rest-advanced"
             },
             {
@@ -123,17 +123,17 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Use case",
+                "text": "활용 예시",
                 "url": "/use-case"
             },
             {
-                "text": "Performance",
+                "text": "성능",
                 "url": "/performance"
             }
         ]
     },
     {
-        "text": "Core",
+        "text": "핵심",
         "url": "",
         "menu": [
             {
@@ -141,11 +141,11 @@
                 "url": "/api/"
             },
             {
-                "text": "Application",
+                "text": "어플리케이션",
                 "url": "/application"
             },
             {
-                "text": "Micro",
+                "text": "마이크로",
                 "url": "/application-micro"
             },
             {
@@ -153,7 +153,7 @@
                 "url": "/application-cli"
             },
             {
-                "text": "DI Container",
+                "text": "DI 컨테이너",
                 "url": "/di"
             },
             {
@@ -161,21 +161,21 @@
                 "url": "/mvc"
             },
             {
-                "text": "Namespaces",
+                "text": "네임스페이스",
                 "url": "/namespaces"
             }
         ]
     },
     {
-        "text": "Services",
+        "text": "서비스",
         "url": "",
         "menu": [
             {
-                "text": "Cache",
+                "text": "캐시",
                 "url": "/cache"
             },
             {
-                "text": "Config",
+                "text": "구성",
                 "url": "/config"
             },
             {
@@ -183,21 +183,21 @@
                 "url": "/escaper"
             },
             {
-                "text": "Loader",
+                "text": "로더",
                 "url": "/loader"
             },
             {
-                "text": "Logger",
+                "text": "로거",
                 "url": "/logger"
             }
         ]
     },
     {
-        "text": "Database",
+        "text": "데이터베이스",
         "url": "",
         "menu": [
             {
-                "text": "Layer",
+                "text": "레이어",
                 "url": "/db-layer"
             },
             {
@@ -209,7 +209,7 @@
                 "url": "/db-odm"
             },
             {
-                "text": "Models",
+                "text": "모델",
                 "url": "/db-models"
             },
             {
@@ -217,37 +217,37 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "캐시",
                 "url": "/db-models-cache"
             },
             {
-                "text": "Events",
+                "text": "이벤트",
                 "url": "/db-models-events"
             },
             {
-                "text": "Metadata",
+                "text": "메타데이터",
                 "url": "/db-models-metadata"
             },
             {
-                "text": "Relationships",
+                "text": "관계",
                 "url": "/db-models-relationships"
             },
             {
-                "text": "Transactions",
+                "text": "트랜잭션",
                 "url": "/db-models-transactions"
             },
             {
-                "text": "Validators",
+                "text": "검사기",
                 "url": "/db-models-validation"
             },
             {
-                "text": "Pagination",
+                "text": "페이지 나누기",
                 "url": "/db-pagination"
             }
         ]
     },
     {
-        "text": "Front End",
+        "text": "프론트 엔드",
         "url": "",
         "menu": [
             {
@@ -255,7 +255,7 @@
                 "url": "/assets"
             },
             {
-                "text": "Flash Messenger",
+                "text": "플래시 메신저",
                 "url": "/flash"
             },
             {
@@ -263,15 +263,15 @@
                 "url": "/forms"
             },
             {
-                "text": "Image",
+                "text": "이미지",
                 "url": "/image"
             },
             {
-                "text": "Tag",
+                "text": "태그",
                 "url": "/tag"
             },
             {
-                "text": "View",
+                "text": "뷰",
                 "url": "/views"
             },
             {
@@ -281,39 +281,39 @@
         ]
     },
     {
-        "text": "Business Logic",
+        "text": "비즈니스 로직",
         "url": "",
         "menu": [
             {
-                "text": "Access Control Lists",
+                "text": "접근제어목록(ACL)",
                 "url": "/acl"
             },
             {
-                "text": "Annotations",
+                "text": "주석",
                 "url": "/annotations"
             },
             {
-                "text": "Controllers",
+                "text": "컨트롤러",
                 "url": "/controllers"
             },
             {
-                "text": "Dispatcher",
+                "text": "디스패쳐",
                 "url": "/dispatcher"
             },
             {
-                "text": "Event Manager",
+                "text": "이벤트 관리자",
                 "url": "/events"
             },
             {
-                "text": "Filters",
+                "text": "필터",
                 "url": "/filter"
             },
             {
-                "text": "Routing",
+                "text": "라우팅",
                 "url": "/routing"
             },
             {
-                "text": "Sessions",
+                "text": "세션",
                 "url": "/session"
             },
             {
@@ -321,7 +321,7 @@
                 "url": "/url"
             },
             {
-                "text": "Validation",
+                "text": "유효성 검사",
                 "url": "/validation"
             }
         ]
@@ -331,29 +331,29 @@
         "url": "",
         "menu": [
             {
-                "text": "Cookies",
+                "text": "쿠키",
                 "url": "/cookies"
             },
             {
-                "text": "Request",
+                "text": "요청",
                 "url": "/request"
             },
             {
-                "text": "Response",
+                "text": "응답",
                 "url": "/response"
             }
         ]
     },
     {
-        "text": "Security",
+        "text": "보안",
         "url": "",
         "menu": [
             {
-                "text": "Crypto",
+                "text": "암호화",
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "보안",
                 "url": "/security"
             }
         ]
@@ -363,27 +363,27 @@
         "url": "",
         "menu": [
             {
-                "text": "PSR-3 Logger",
+                "text": "PSR-3 로거",
                 "url": "/logger"
             },
             {
-                "text": "PSR-0, PSR-4 Loader",
+                "text": "PSR-0, PSR-4 로더",
                 "url": "/loader"
             },
             {
-                "text": "PSR-7 HTTP Request",
+                "text": "PSR-7 HTTP 요청",
                 "url": "/http-request"
             },
             {
-                "text": "PSR-7 HTTP Response",
+                "text": "PSR-7 HTTP 응답",
                 "url": "/http-response"
             },
             {
-                "text": "PSR-7 HTTP Server Request",
+                "text": "PSR-7 HTTP 서버 요청",
                 "url": "/http-server-request"
             },
             {
-                "text": "PSR-7 HTTP Stream",
+                "text": "PSR-7 HTTP 스트림",
                 "url": "/http-stream"
             },
             {
@@ -395,15 +395,15 @@
                 "url": "/http-uri"
             },
             {
-                "text": "PSR-11 Container",
+                "text": "PSR-11 컨테이너",
                 "url": "/container"
             },
             {
-                "text": "PSR-13 HTML Links",
+                "text": "PSR-13 HTML 링크",
                 "url": "/html-link"
             },
             {
-                "text": "PSR-17 HTTP Factories",
+                "text": "PSR-17 HTTP 팩토리",
                 "url": "/http-factories"
             }
         ]
@@ -413,25 +413,25 @@
         "url": "",
         "menu": [
             {
-                "text": "Internationalization",
+                "text": "다국어 지원",
                 "url": "/i18n"
             },
             {
-                "text": "Translate",
+                "text": "번역",
                 "url": "/translate"
             }
         ]
     },
     {
-        "text": "Utility",
+        "text": "유틸리티",
         "url": "",
         "menu": [
             {
-                "text": "Collection",
+                "text": "컬렉션",
                 "url": "/collection"
             },
             {
-                "text": "Domain",
+                "text": "도메인",
                 "url": "/domain"
             },
             {
@@ -439,11 +439,11 @@
                 "url": "/html"
             },
             {
-                "text": "Helper",
+                "text": "헬퍼",
                 "url": "/helper"
             },
             {
-                "text": "Registry",
+                "text": "레지스트리",
                 "url": "/registry"
             }
         ]

@@ -12,7 +12,7 @@ keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The components under the `Phalcon\Db` namespace are the ones responsible for powering the [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -667,7 +667,7 @@ The [Phalcon\Db\AdapterInterface](api/phalcon_db#db-adapter-adapterinterface) in
 
 ### `newInstance()`
 
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory](api/phalcon_db#db-adapter-pdofactory) class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Db\Adapter\PdoFactory](api/phalcon_db#db-adapter-pdofactory) class, so that you can easily instantiate PDO adapter instances. All the above adapters are registered in the factory and lazy loaded when called. The factory allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The reserved names are: - `mysql` - [Phalcon\Db\Adapter\Pdo\Mysql](api/phalcon_db#db-adapter-pdo-mysql) - `postgresql` - [Phalcon\Db\Adapter\Pdo\Postgresql](api/phalcon_db#db-adapter-pdo-postgresql) - `sqlite` - [Phalcon\Db\Adapter\Pdo\Sqlite](api/phalcon_db#db-adapter-pdo-sqlite)
 
@@ -1605,7 +1605,7 @@ if (11 === $tutorialice->inv_id) {
 > **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
 {: .alert .alert-info }
 
-## Transactions
+## 트랜잭션
 
 Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
 
@@ -1655,7 +1655,7 @@ try {
 }
 ```
 
-## Events
+## 이벤트
 
 The adapters alsosend events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 

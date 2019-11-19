@@ -332,7 +332,7 @@ echo $garble->getData(); // "I came, I saw, I conquered."
 
 ## Serializer Factory
 
-Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built in one.The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all serializer classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Storage\SerializerFactory](api/phalcon_storage#storage-serializerfactory) class, so that developers can easily instantiate serializer classes. All the above serializers are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) serializer classes. The only thing to consider is choosing the name of the serializer in comparison to the existing ones. If you define the same name, you will overwrite the built-in one.The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The example below shows how you can create a `Json` serializer either using the `new` keyword or the factory:
 
@@ -516,15 +516,15 @@ $options = [
 $adapter = new Libmemcached(null, $options);
 ```
 
-**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) uses, offers support for serializing out of the box. The built in serializers are:
+**Serializers**: The `Memcached` class which is the adapter that the [Phalcon\Cache\Adapter\Libmemcached](api/phalcon_cache#cache-adapter-libmemcached) uses, offers support for serializing out of the box. The built-in serializers are:
 
 * `\Memcached::SERIALIZER_PHP`
 * `\Memcached::SERIALIZER_JSON`
 * `\Memcached::SERIALIZER_IGBINARY`
 
-The [igbinary](https://github.com/igbinary/igbinary7) built in serializer is only available if `igbinary` is present in the target system and [Memcached](https://www.php.net/manual/en/book.memcached.php) extension is compiled with it.
+The [igbinary](https://github.com/igbinary/igbinary7) built-in serializer is only available if `igbinary` is present in the target system and [Memcached](https://www.php.net/manual/en/book.memcached.php) extension is compiled with it.
 
-> **NOTE**: If the `defaultSerializer` or the selected serializer for `Libmemcached` is supported as a built in serializer (`PHP`, `JSON`, `IGBINARY`), the built in one will be used, resulting in more speed and less resource utilization.
+> **NOTE**: If the `defaultSerializer` or the selected serializer for `Libmemcached` is supported as a built-in serializer (`PHP`, `JSON`, `IGBINARY`), the built-in one will be used, resulting in more speed and less resource utilization.
 {: .alert .alert-info }
 
 ### `Memory`
@@ -636,16 +636,16 @@ $options = [
 $adapter = new Redis(null, $options);
 ```
 
-**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis) uses, offers support for serializing out of the box. The built in serializers are:
+**Serializers**: The `Redis` class which is the adapter that the [Phalcon\Cache\Adapter\Redis](api/phalcon_cache#cache-adapter-redis) uses, offers support for serializing out of the box. The built-in serializers are:
 
 * `\Redis::SERIALIZER_NONE`
 * `\Redis::SERIALIZER_PHP`
 * `\Redis::SERIALIZER_IGBINARY`
 * `\Redis::SERIALIZER_MSGPACK`
 
-The [igbinary](https://github.com/igbinary/igbinary7) and built in serializer is only available if `igbinary` is present in the target system and [Redis](https://github.com/phpredis/phpredis) extension is compiled with it. The same applies to [msgpack](https://msgpack.org/) built in serializer. It is only available if `msgpack` is present in the target system and the [Redis](https://github.com/phpredis/phpredis) extension is compiled with it.
+The [igbinary](https://github.com/igbinary/igbinary7) and built-in serializer is only available if `igbinary` is present in the target system and [Redis](https://github.com/phpredis/phpredis) extension is compiled with it. The same applies to [msgpack](https://msgpack.org/) built-in serializer. It is only available if `msgpack` is present in the target system and the [Redis](https://github.com/phpredis/phpredis) extension is compiled with it.
 
-> **NOTE**: If the `defaultSerializer` or the selected serializer for `Redis` is supported as a built in serializer (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), the built in one will be used, resulting in more speed and less resource utilization.
+> **NOTE**: If the `defaultSerializer` or the selected serializer for `Redis` is supported as a built-in serializer (`NONE`, `PHP`, `IGBINARY`, `MSGPACK`), the built-in one will be used, resulting in more speed and less resource utilization.
 {: .alert .alert-info }
 
 ### `Stream (flujo)`
@@ -815,7 +815,7 @@ $custom->set('my-key', $data);
 
 ## Adapter Factory
 
-Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory) class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
+Although all adapter classes can be instantiated using the `new` keyword, Phalcon offers the [Phalcon\Cache\AdapterFactory](api/phalcon_cache#cache-adapterfactory) class, so that you can easily instantiate cache adapter classes. All the above adapters are registered in the factory and lazy loaded when called. The factory also allows you to register additional (custom) adapter classes. The only thing to consider is choosing the name of the adapter in comparison to the existing ones. If you define the same name, you will overwrite the built-in one. The objects are cached in the factory so if you call the `newInstance()` method with the same parameters during the same request, you will get the same object back.
 
 The example below shows how you can create a `Apcu` cache adapter with the `new` keyword or the factory:
 
