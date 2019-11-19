@@ -3,17 +3,17 @@ layout: default
 language: 'en'
 version: '4.0'
 upgrade: '#models'
-title: 'Models'
+title: '모델'
 keywords: 'models, active record'
 ---
 
-# Models
+# 모델
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) is the `M` in MVC. It is a class that connects business objects and database tables, to create a presistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
 
@@ -3325,7 +3325,7 @@ var_dump(
 
 `getUpdatedFields()` will properly return updated fields or as mentioned above you can go back to the previous behavior by setting the relevant ini value.
 
-## Events
+## 이벤트
 
 As mentioned before [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) acts as a listener to events. Therefore, all the events that the model is listening to can be implemented as methods in the model itself. You can check the <events> document for additional information.
 
@@ -3375,7 +3375,7 @@ class Invoices extends Model
 }
 ```
 
-## Transactions
+## 트랜잭션
 
 [Transactions](db-models-transactions) are necessary to ensure data integrity, when we need to insert or update data in more than one table during the same operation. [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) exposes the `setTransaction` method that allows you to bind each model to an active transaction.
 
