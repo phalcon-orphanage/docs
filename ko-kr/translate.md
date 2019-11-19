@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Translate'
+title: '번역'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'translate, translations, translation adapters, native array, csv, get
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The component [Phalcon\Translate](api/phalcon_translate) offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 
@@ -207,7 +207,7 @@ and for Volt:
 <p>{% raw %}{{ locale._('hi-name', ['name' => 'Mike']) }}{% endraw %}</p>
 ```
 
-### Routing
+### 라우팅
 
 Some applications use the URL of the request to distinguish content based on different languages, in order to help with SEO. A sample URL is: ```bash https://mozilla.org/es-ES/firefox/
 
