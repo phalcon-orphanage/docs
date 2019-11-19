@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Routing'
+title: '라우팅'
 keywords: 'routing, routes'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'routing, routes'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) component allows you to define routes that are mapped to controllers or handlers that receive and can handle the request. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.
 
@@ -1245,7 +1245,7 @@ foreach ($testRoutes as $testRoute) {
 }
 ```
 
-## Events
+## 이벤트
 
 Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-router) also has events, when an [Events Manager](events) is present. The available events are:
 
@@ -1258,7 +1258,7 @@ Similar to other Phalcon components, [Phalcon\Mvc\Router](api/phalcon_mvc#mvc-ro
 | `router:matchedRoute`      | When a route is matched           |
 | `router:notMatchedRoute`   | When a route is not matched       |
 
-## Annotations
+## 주석
 
 This component provides a variant that is integrated with the <annotations> service. Using this strategy you can write the routes directly in the controllers instead of adding them in router component directly.
 
