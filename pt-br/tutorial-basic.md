@@ -14,7 +14,7 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 
 ## Overview
 
-Throughout this tutorial, we'll walk you through the creation of an application with a simple registration form from the ground up. The following guide is to provided to introduce you to Phalcon framework's design aspects.
+Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon.
 
 This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. Once developed, you can use this application and extend it to suit your needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe> 
 
@@ -24,7 +24,7 @@ The best way to use this guide is to follow along and try to have fun. You can g
 
 ## File Structure
 
-One of th ekey features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
+One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
 
 ```text
 .
@@ -46,7 +46,7 @@ One of th ekey features of Phalcon is that it is loosely coupled. Because of tha
 > **NOTE**: Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the <installation> page and complete the installation prior to continuing with this tutorial.
 {: .alert .alert-warning }
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
+If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
 
 ```php
 <?php
@@ -78,9 +78,9 @@ This file handles 3 things:
 - Configuração de Serviços e seus registros no contexto de Injeção de Dependência
 - Resolver as requisições HTTP da aplicação
 
-### Autoloaders
+### Autoloader
 
-Autoloaders uses [Phalcon\Loader](loader) a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can register directories which will search for files within the application's namespace.
+We are going to use [Phalcon\Loader](loader) a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
 
 To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](loader):
 

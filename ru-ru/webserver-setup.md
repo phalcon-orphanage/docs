@@ -18,7 +18,7 @@ keywords: 'веб сервер, веб-сервер, apache, nginx, xampp, wamp,
 
 ## Встроенный в PHP
 
-Встроенный в PHP веб-сервер не рекомендуется для производственных приложений. Тем не менее, его можно легко использовать в целях разработки. Способ запуска:
+The PHP built-in web server is not recommended for production applications. Тем не менее, его можно легко использовать в целях разработки. Способ запуска:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>

@@ -12,7 +12,7 @@ keywords: 'application, micro, handlers, api'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually APIs, prototypes etc.
 
@@ -526,7 +526,7 @@ $app->get(
 );
 ```
 
-**Controllers**
+**컨트롤러**
 
 With the [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) you can create micro or *medium* applications. Medium applications use the micro architecture but expand on it to utilize more than the Micro but less than the Full application. In medium applications you can organize handlers in controllers.
 
@@ -1546,7 +1546,7 @@ $app->get(
 );
 ```
 
-## Events
+## 이벤트
 
 A [Phalcon\Mvc\Micro](api/phalcon_mvc#mvc-micro) application works closely with an [Events Manager](events) if it is present, to trigger events that can be used throughout our application. The type of those events is `micro`. These events trigger in our application and can be attached to relevant handlers that will perform actions needed by our application.
 
@@ -2225,7 +2225,7 @@ class ResponseMiddleware implements MiddlewareInterface
 }
 ```
 
-### Models
+### 모델
 
 Models can be used in Micro applications, so long as we instruct the application how it can find the relevant classes with an autoloader.
 

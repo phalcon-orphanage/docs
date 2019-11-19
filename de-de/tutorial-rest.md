@@ -580,7 +580,7 @@ In order to create the table in our database, we need to use the following SQL q
 
 ## Run
 
-You can of course set up your web server to run your application. For setup instructions you can check the [webserver setup](webserver-setup) document. If you want to use the built in PHP server, you will need to create a file called `.htrouter` as follows:
+You can of course set up your web server to run your application. For setup instructions you can check the [webserver setup](webserver-setup) document. If you want to use the built-in PHP server, you will need to create a file called `.htrouter` as follows:
 
 ```php
 <?php

@@ -2,17 +2,17 @@
 layout: default
 language: 'ko-kr'
 version: '4.0'
-title: 'Debug'
+title: '디버그'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# 디버그
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 ![](/assets/images/content/xdebug-1.jpg)
 
@@ -263,7 +263,7 @@ if (12345 === $password) {
 
 ## Blacklisting Output
 
-As mentioned above, the component **must not** be enabled in production environments. Since Phalcon cannot control this behavior, there is a built in blacklisting feature that allows the developer to blacklist certain pieces of information that they do not wish to be displayed on screen, just in case. These are elements of the `$_REQUEST` and `$_SERVER` arrays.
+As mentioned above, the component **must not** be enabled in production environments. Since Phalcon cannot control this behavior, there is a built-in blacklisting feature that allows the developer to blacklist certain pieces of information that they do not wish to be displayed on screen, just in case. These are elements of the `$_REQUEST` and `$_SERVER` arrays.
 
 ```php
 <?php

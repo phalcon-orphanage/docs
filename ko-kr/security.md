@@ -2,17 +2,17 @@
 layout: default
 language: 'ko-kr'
 version: '4.0'
-title: 'Security'
+title: '보안'
 keywords: 'security, hashing, passwords'
 ---
 
-# Security
+# 보안
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 > **NOTE**: Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }

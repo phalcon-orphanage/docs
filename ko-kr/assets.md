@@ -13,7 +13,7 @@ keywords: 'assets, js, css'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
@@ -294,7 +294,7 @@ $footerCollection->addJs('js/bootstrap.min.js');
 
 ### Get
 
-The *getter* methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. The manager offers `get()`, `getCollection()`, `getCss()` and `getJs()`. These methods will return back the collection that the manager stores. The `getCss()` and `getJs()` will return the built in - pre registered - collections.
+The *getter* methods exposed by the component, allow you to get the collection from anywhere in your code and manipulate it according to your needs. The manager offers `get()`, `getCollection()`, `getCss()` and `getJs()`. These methods will return back the collection that the manager stores. The `getCss()` and `getJs()` will return the built-in - pre registered - collections.
 
 The `collection()` method acts as a *creator* and *getter* at the same time. It allows you to create a collection and get it back so that you can then add assets to it. The `getCss()` and `getJs()` perform the same function i.e. create the collection if it does not exist and return it. Those two collections set the predefined `css` and `js` collections in the manager.
 
@@ -320,7 +320,7 @@ echo $this->assets->has('headerJs'); // true
 
 ### Set
 
-If the built in `css` and `js` collections are not sufficient for your needs, you can attach a new collection to the manager by using `se()`.
+If the built-in `css` and `js` collections are not sufficient for your needs, you can attach a new collection to the manager by using `se()`.
 
 ```php
 <?php
