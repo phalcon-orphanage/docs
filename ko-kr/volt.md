@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
