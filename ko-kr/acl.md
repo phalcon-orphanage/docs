@@ -13,7 +13,7 @@ keywords: 'acl, access control list, permissions'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 [Phalcon\Acl](api/Phalcon_Acl) provides an easy and lightweight management of ACLs as well as the permissions attached to them. [Access Control Lists](https://en.wikipedia.org/wiki/Access_control_list) (ACL) allow an application to control access to its areas and the underlying objects from requests.
 
@@ -769,7 +769,7 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is built-in every request, while other adapters or means of serializing and storing the ACL in production.
 
-## Events
+## 이벤트
 
 [Phalcon\Acl](api/Phalcon_Acl) can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
