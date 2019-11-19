@@ -10,7 +10,7 @@ version: '4.0'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 [Database normalization] is a process where data is split into different tables and links are created between those tables, in order to increase flexibility, reduce data redundancy and improve data integrity. Relationships are defined in the `initialize` method of each model.
 
