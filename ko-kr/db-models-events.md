@@ -12,7 +12,7 @@ keywords: 'models, events, events manager'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 Models allow you to implement events that will be thrown while performing an insert/update/delete which can be used to define business rules. The following are the events supported by [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model-query) and their order of execution:
 
@@ -34,7 +34,7 @@ Models allow you to implement events that will be thrown while performing an ins
 | Insert/Update | `prepareSave`              |  No   | Is executed before saving and allows data manipulation                                                |
 | Insert/Update | `validation`               |  Yes  | Is executed before the fields are validated for not nulls/empty strings or foreign keys on an update  |
 
-### Events
+### 이벤트
 
 Models act as listeners to the events manager. Therefore we only need to implement the events above in the models directly as public methods:
 
