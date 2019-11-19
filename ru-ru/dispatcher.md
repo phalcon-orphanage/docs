@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Dispatcher'
 keywords: 'dispatcher, mvc, dispatch loop'
