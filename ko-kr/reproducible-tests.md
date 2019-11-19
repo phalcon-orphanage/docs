@@ -2,11 +2,11 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Reproducible Tests'
+title: '재현가능한 테스트'
 keywords: 'tests, testing, reproducible tests'
 ---
 
-# Reproducible Tests
+# 재현가능한 테스트
 
 * * *
 
@@ -81,7 +81,7 @@ var_dump($_SESSION);
 var_dump($_COOKIE);
 ```
 
-### Database
+### 데이터베이스
 
 > **NOTE**: Remember to include the register information for your `db` service, i.e. adapter, connection parameters etc.
 {:.alert .alert-info}
