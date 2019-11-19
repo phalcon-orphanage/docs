@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: '이미지'
 keywords: 'image, gd, imagick'
