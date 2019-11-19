@@ -2,17 +2,17 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Debug'
+title: '디버그'
 keywords: 'debug, debugging, error handling'
 ---
 
-# Debug
+# 디버그
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 ![](/assets/images/content/xdebug-1.jpg)
 
