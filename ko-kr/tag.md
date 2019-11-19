@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Tag'
+title: '태그'
 keywords: 'tag, helpers, view helpers, html generators'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'tag, helpers, view helpers, html generators'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 Writing and maintaining HTML markup can quickly become a tedious task because of the naming conventions and numerous attributes that have to be taken into consideration. Phalcon deals with this complexity by offering the [Phalcon\Tag](api/Phalcon_Tag) component which in turn offers view helpers to generate HTML markup.
 
