@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: '태그'
 keywords: 'tag, helpers, view helpers, html generators'
