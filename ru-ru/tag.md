@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Теги'
 keywords: 'tag, helpers, view helpers, html generators'

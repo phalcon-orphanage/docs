@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 upgrade: '#assets'
 title: 'Assets'
@@ -17,7 +17,7 @@ keywords: 'assets, js, css'
 
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
 
-[Phalcon\Assets\Manager](api/phalcon_assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](api/phalcon_di@di-factorydefault) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
+[Phalcon\Assets\Manager](api/phalcon_assets#assets-manager) is the component you can use to register your assets and use them throughout your application. If you are using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) container, the Assets Manager is already registered for you. You can access it using the `assets` key from your Di container.
 
 ```php
 <?php
@@ -203,7 +203,7 @@ class IndexController extends Controller
     public function index()
     {
         $css1 = new Css('css/style.css');
-        $css2 = new Css(('css/index.css');
+        $css2 = new Css('css/index.css');
 
         $this->assets->addAsset($css1);
         $this->assets->addAssetByType('css', $css2);

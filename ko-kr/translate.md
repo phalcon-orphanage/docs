@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: '번역'
 keywords: 'translate, translations, translation adapters, native array, csv, gettext'

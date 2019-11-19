@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Валидация'
 keywords: 'validation, validating forms, validating models, validating data'
