@@ -57,7 +57,7 @@ Phalcon needs to be installed. Head over to the [installation](installation) pag
 Finally, you will also need to ensure that you have updated the composer packages (see section below).
 
 ### Run
-If all the above requirements are satisfied, you can run the application using PHP's built in web server by issuing the following command on a terminal:
+If all the above requirements are satisfied, you can run the application using PHP's built-in web server by issuing the following command on a terminal:
 
 ```bash
 php -S localhost:8080 -t public/ .htrouter.php

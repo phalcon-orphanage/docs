@@ -760,7 +760,7 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 }
 ```
 
-It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is built in every request, while other adapters or means of serializing and storing the ACL in production.
+It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is built-in every request, while other adapters or means of serializing and storing the ACL in production.
 
 ## Events
 [Phalcon\Acl][acl-acl] can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:

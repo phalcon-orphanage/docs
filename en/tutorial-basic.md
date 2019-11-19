@@ -43,7 +43,7 @@ One of th ekey features of Phalcon is that it is loosely coupled. Because of tha
 > **NOTE**: Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the [installation](installation) page and complete the installation prior to continuing with this tutorial.
 {: .alert .alert-warning }
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
+If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
 
 ```php
 <?php
