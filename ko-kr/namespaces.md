@@ -2,17 +2,17 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Namespaces'
+title: '네임스페이스'
 keywords: 'namespaces, namespaced classes'
 ---
 
-# Namespaces
+# 네임스페이스
 
 * * *
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 [Namespaces](https://php.net/manual/en/language.namespaces.php) can be used to avoid class name collisions. This means that if you have two controllers in an application with the same name, a namespace can be used help PHP understand that they are two different classes. Namespaces are also useful when creating bundles or modules.
 
@@ -82,7 +82,7 @@ $di->set(
 );
 ```
 
-## Controllers
+## 컨트롤러
 
 The following example shows how to implement a controller that uses namespaces:
 
@@ -107,7 +107,7 @@ class InvoicesController extends Controller
 }
 ```
 
-## Models
+## 모델
 
 The following example shows a model that is namespaced:
 
