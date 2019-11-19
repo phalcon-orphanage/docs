@@ -12,7 +12,7 @@ keywords: 'forms, render html, validation, elements'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 Phalcon offers a components under the `Phalcon\Forms` namespace that help developers create and maintain forms that can be used to render HTML elements on screen but also perform validations on the input from those elements.
 
@@ -751,7 +751,7 @@ $email
 > **NOTE**: For more information regarding filters, you can check our [Filter document](filters)
 {: .alert .alert-info }
 
-## Validation
+## 유효성 검사
 
 Phalcon forms are integrated with the <validation> component to offer instant validation. Built-in or custom validators could be set to each element:
 
@@ -910,7 +910,7 @@ echo $element->renderDecorated('nameLast');
 echo $element->renderDecorated('nameFirst');
 ```
 
-## Events
+## 이벤트
 
 Whenever forms are implemented as classes, the callbacks: `beforeValidation()` and `afterValidation()` methods can be implemented in the form's class to perform pre-validations and post-validations:
 
