@@ -10,7 +10,7 @@ keywords: 'tutorial, vokuro tutorial, step by step, mvc, security, permissions'
 
 * * *
 
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Vökuró
 

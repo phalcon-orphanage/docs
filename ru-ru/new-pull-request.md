@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Создание пулл реквеста'
 keywords: 'new pull request, pull request, pr'

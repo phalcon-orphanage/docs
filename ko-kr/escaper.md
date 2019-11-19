@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Escaper'
 keywords: 'escaper, escape html, escape js, escape css'

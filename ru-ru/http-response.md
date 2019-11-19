@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'HTTP Response (PSR-7)'
 keywords: 'psr-7, http, http response'
