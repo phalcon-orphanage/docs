@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Coding Standard'
+title: '코딩 표준'
 keywords: 'coding standard, zephir'
 ---
 
