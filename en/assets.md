@@ -198,7 +198,7 @@ class IndexController extends Controller
     public function index()
     {
         $css1 = new Css('css/style.css');
-        $css2 = new Css(('css/index.css');
+        $css2 = new Css('css/index.css');
         
         $this->assets->addAsset($css1);
         $this->assets->addAssetByType('css', $css2);
