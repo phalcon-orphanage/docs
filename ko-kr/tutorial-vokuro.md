@@ -610,7 +610,7 @@ After that, unless you have registered specific routes, the default routes (auto
 /profiles/search
 ```
 
-to
+부분을
 
 ```bash
 /src/Controllers/SearchController.php -> searchAction
@@ -1560,7 +1560,7 @@ class Users extends Model
 
 Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
-## References
+## 참조
 
 - [Access Control Lists definition](https://en.wikipedia.org/wiki/Access-control_list)
 - [Composer](https://getcomposer.org) 
