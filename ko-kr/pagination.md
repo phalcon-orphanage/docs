@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: '페이지 나누기'
 keywords: 'pagination, model pagination, db pagination, array pagination, query pagination'
