@@ -12,7 +12,7 @@ keywords: 'db, dbal, phql, database, mysql, postgresql, sqlite'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The components under the `Phalcon\Db` namespace are the ones responsible for powering the [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) class - the `Model` in MVC for the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.
 
@@ -1605,7 +1605,7 @@ if (11 === $tutorialice->inv_id) {
 > **NOTE**: If you wish to return the primary key when using the `lastInsertId` as an `integer`, you can use the `castLastInsertIdToInt => true` feature on the model.
 {: .alert .alert-info }
 
-## Transactions
+## 트랜잭션
 
 Working with transactions is supported the same way as with with PDO. Using transactions increases performance in most database systems and also ensures data integrity:
 
@@ -1655,7 +1655,7 @@ try {
 }
 ```
 
-## Events
+## 이벤트
 
 The adapters alsosend events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. The following events are supported:
 
