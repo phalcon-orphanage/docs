@@ -2,7 +2,7 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Dispatcher'
+title: '디스패쳐'
 keywords: 'dispatcher, mvc, dispatch loop'
 ---
 
@@ -12,7 +12,7 @@ keywords: 'dispatcher, mvc, dispatch loop'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## 개요
 
 The [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Dispatching is the process of taking the request object, extracting the module name, controller name, action name, and optional parameters contained in it, and then instantiating a controller and calling an action of that controller.
 
@@ -1028,7 +1028,7 @@ class ExceptionsPlugin
 > **NOTE**: Only exceptions produced by the dispatcher and exceptions produced in the executed action notify the `beforeException` events. Exceptions produced in listeners or controller events are redirected to the latest try/catch.
 {: .alert .alert-danger }
 
-## Events
+## 이벤트
 
 [Phalcon\Mvc\Dispatcher](api/phalcon_mvc#mvc-dispatcher) is able to send events to an [Manager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
