@@ -5185,7 +5185,7 @@ Initialize the metadata for certain table
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/apcu.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
+| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Mvc\Model\Exception, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
 Phalcon\Mvc\Model\MetaData\Apcu
@@ -5288,7 +5288,7 @@ Writes the meta-data to temporal memory
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/metadata/redis.zep)
 
 | Namespace  | Phalcon\Mvc\Model\MetaData |
-| Uses       | Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
+| Uses       | Phalcon\Helper\Arr, Phalcon\Mvc\Model\MetaData, Phalcon\Cache\AdapterFactory |
 | Extends    | MetaData |
 
 Phalcon\Mvc\Model\MetaData\Redis
