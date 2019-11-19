@@ -51,7 +51,7 @@ Once you open the application in your browser `https://localhost/invo` you'll se
 
 The application is divided into two parts: a frontend and a backend. The frontend is a public area where visitors can receive information about INVO and request contact information. The backend is an administrative area where registered users can manage their products and customers.
 
-## Routing
+## 라우팅
 
 INVO uses the standard route that is built-in with the [Router](routing) component. These routes match the following pattern: `/:controller/:action/:params`. This means that the first part of a URI is the controller, the second the controller action and the rest are the parameters.
 
