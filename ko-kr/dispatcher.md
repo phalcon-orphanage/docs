@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: '디스패쳐'
 keywords: 'dispatcher, mvc, dispatch loop'
