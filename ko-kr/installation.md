@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '설치하기'
 keywords: '설치, Phalcon 설치, 팔콘설치'
