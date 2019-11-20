@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Firewall (Dispatcher/ACL)'
 keywords: 'firewall, dispatcher, events, acl, access control list, permissions, annotations'
