@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '로더'
 keywords: 'oader, psr-4, autoloading, autoloader'
