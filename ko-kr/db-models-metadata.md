@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ko-kr'
+language: 'en'
 version: '4.0'
 title: 'Models Metadata'
 keywords: 'model, caching, metadata, query fields'
@@ -584,6 +584,13 @@ $container->set(
         $serializerFactory = new SerializerFactory();
         $adapterFactory    = new AdapterFactory($serializerFactory);
         $options = [
+            'servers' => [
+                0 => [
+                    'host'   => '127.0.0.1',
+                    'port'   => 11211,
+                    'weight' => 1
+                ],   
+            ],
             'lifetime' => 86400,
             'prefix'   => 'my-prefix',
         ];
@@ -635,6 +642,9 @@ $container->set(
         $serializerFactory = new SerializerFactory();
         $adapterFactory    = new AdapterFactory($serializerFactory);
         $options = [
+            'host'     => '127.0.0.1',
+            'port'     => 6379,
+            'index'    => 1,
             'lifetime' => 86400,
             'prefix'   => 'my-prefix',
         ];
