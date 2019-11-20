@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '유효성 검사'
 keywords: 'validation, validating forms, validating models, validating data'
