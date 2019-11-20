@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'ru-ru'
+language: 'en'
 version: '4.0'
 title: 'Теги'
 keywords: 'tag, helpers, view helpers, html generators'
@@ -1224,6 +1224,17 @@ echo Tag::stylesheetLink(
 // <link rel='stylesheet' 
 //       href='https://fonts.googleapis.com/css?family=Rosario' 
 //       type='text/css'>
+
+echo Tag::stylesheetLink(
+    [
+        'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
+        'class' => 'some-class',
+    ],
+    false
+);
+// <link rel='stylesheet' 
+//       href='https://fonts.googleapis.com/css?family=Rosario' 
+//       type='text/css'>
 ```
 
 HTML syntax
@@ -1237,13 +1248,35 @@ echo $this->tag->stylesheetLink(
     'https://fonts.googleapis.com/css?family=Rosario',
     false
 ); ?>
+
+<?php 
+
+echo $this->tag->stylesheetLink(
+    [
+        'href'  => 'https://fonts.googleapis.com/css?family=Rosario',
+        'class' => 'some-class',
+    ],
+    false
+); ?>
 ```
 
 Volt Syntax:
 
 ```php
 {% raw %}{{ stylesheet_link('css/style.css') }}
-{{ stylesheet_link('https://fonts.googleapis.com/css?family=Rosario', false) }}{% endraw %}
+{{ stylesheet_link(
+        'https://fonts.googleapis.com/css?family=Rosario', 
+        false
+    ) 
+}}{% endraw %}
+{{ stylesheet_link(
+        [
+            'href'  : 'https://fonts.googleapis.com/css?family=Rosario',
+            'class' : 'some-class',
+        ],
+        false
+    ) 
+}}{% endraw %}
 ```
 
 ### `javascriptInclude()`
@@ -1264,6 +1297,16 @@ echo Tag::javascriptInclude(
 );
 // <script src='https://code.jquery.com/jquery/jquery.min.js' 
 //         type='text/javascript'></script>
+
+echo Tag::javascriptInclude(
+    [
+        'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
+        'type' => 'application/javascript',
+    ],
+    false
+);
+// <script src='https://code.jquery.com/jquery/jquery.min.js' 
+//         type='application/javascript'></script>
 ```
 
 HTML syntax
@@ -1277,13 +1320,35 @@ echo $this->tag->javascriptInclude(
     'https://fonts.googleapis.com/css?family=Rosario',
     false
 ); ?>
+
+<?php 
+
+echo $this->tag->javascriptInclude(
+    [
+        'src'  => 'https://code.jquery.com/jquery/jquery.min.js',
+        'type' => 'application/javascript',
+    ],
+    false
+); ?>
 ```
 
 Volt Syntax:
 
 ```php
 {% raw %}{{ javascript_include('js/jquery.js') }}
-{{ javascript_include('https://code.jquery.com/jquery/jquery.min.js', false) }}{% endraw %}
+{{ javascript_include(
+        'https://code.jquery.com/jquery/jquery.min.js', 
+        false
+    ) 
+}}{% endraw %}
+{{ javascript_include(
+        [
+            'src'  : 'https://code.jquery.com/jquery/jquery.min.js',
+            'type' : 'application/javascript',
+        ],
+        false
+    ) 
+}}{% endraw %}
 ```
 
 ## Links
