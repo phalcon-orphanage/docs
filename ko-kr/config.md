@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '구성'
 keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
