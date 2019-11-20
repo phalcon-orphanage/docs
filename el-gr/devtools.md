@@ -126,7 +126,7 @@ Type the commands `php -v` and `phalcon` and you will see something like this:
 
 Congratulations you now have Phalcon tools installed!
 
-## Usage
+## Χρήση
 
 ### Available Commands
 
