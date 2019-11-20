@@ -1211,7 +1211,7 @@ Volt Syntax:
         false
     ) 
 }}{% endraw %}
-{{ stylesheet_link(
+{% raw %}{{ stylesheet_link(
         [
             'href'  : 'https://fonts.googleapis.com/css?family=Rosario',
             'class' : 'some-class',
@@ -1282,7 +1282,7 @@ Volt Syntax:
         false
     ) 
 }}{% endraw %}
-{{ javascript_include(
+{% raw %}{{ javascript_include(
         [
             'src'  : 'https://code.jquery.com/jquery/jquery.min.js',
             'type' : 'application/javascript',
