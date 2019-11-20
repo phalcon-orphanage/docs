@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'HTTP Uri (PSR-7)'
 keywords: 'psr-7, http, http uri'

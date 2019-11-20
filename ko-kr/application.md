@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '어플리케이션'
 keywords: 'application, mvc, controllers'

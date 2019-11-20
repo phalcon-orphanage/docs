@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: 'Model Validation'
 keywords: 'models, validation, uniqueness, inclusionin'

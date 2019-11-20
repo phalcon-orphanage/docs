@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '네임스페이스'
 keywords: 'namespaces, namespaced classes'

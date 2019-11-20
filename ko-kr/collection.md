@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '컬렉션'
 keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'

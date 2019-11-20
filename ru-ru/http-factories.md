@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ru-ru'
 version: '4.0'
 title: 'HTTP Factories (PSR-17)'
 keywords: 'psr-17, http, http factories'
