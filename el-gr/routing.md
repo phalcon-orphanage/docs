@@ -1339,7 +1339,7 @@ class InvoicesController
 
 Only methods marked with valid annotations are used as routes. The available annotations are:
 
-| Annotation    | Περιγραφή                                                                      | Usage                              |
+| Annotation    | Περιγραφή                                                                      | Χρήση                              |
 | ------------- | ------------------------------------------------------------------------------ | ---------------------------------- |
 | `Delete`      | Restrict the HTTP method to `DELETE`                                           | `@Delete('/invoices/delete/{id}')` |
 | `Get`         | Restrict the HTTP method to `GET`                                              | `@Get('/invoices/search')`         |
@@ -1351,7 +1351,7 @@ Only methods marked with valid annotations are used as routes. The available ann
 
 For annotations that add routes, the following parameters are supported:
 
-| Name         | Περιγραφή                                      | Usage                                                               |
+| Name         | Περιγραφή                                      | Χρήση                                                               |
 | ------------ | ---------------------------------------------- | ------------------------------------------------------------------- |
 | `converters` | A hash of converters for the parameters        | `@Route('/posts/{id}/{slug}', converter={id='MyConverter::getId'})` |
 | `methods`    | One or more HTTP methods allowed for the route | `@Route('/api/products', methods={'GET', 'POST'})`                  |
