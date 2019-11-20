@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'ko-kr'
 version: '4.0'
 title: '개발환경 - Devilbox'
 keywords: 'environment, devilbox, docker, 개발환경'
