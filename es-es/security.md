@@ -42,7 +42,7 @@ echo $security->hash('Phalcon');
 // $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O
 ```
 
-The hash that was created used the default work factor which is set to `8`. Using a higher work factor will take a bit more time to calculate the hash.
+The hash that was created used the default work factor which is set to `10`. Using a higher work factor will take a bit more time to calculate the hash.
 
 We can now check if a value sent to us by a user through the UI of our application, is identical to our hashed string:
 
@@ -126,7 +126,8 @@ class SessionController extends Controller
 }
 ```
 
-Let's explain the above code snippet - which is incomplete and **must not be used as is for production applications**:
+> **NOTE** The code snippet above is incomplete and **must not be used as is for production applications**
+{: .alert .alert-danger }
 
 The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security](api/phalcon_security#security) component so that we do not save it as plain text in our database.
 
@@ -429,7 +430,7 @@ echo $random->number(16); // 8
 
 Generates a v4 random UUID (Universally Unique IDentifier). The version 4 UUID is purely random (except the version). It doesn't contain meaningful information such as MAC address, time, etc. See [RFC 4122](https://www.ietf.org/rfc/rfc4122.txt) for details of UUID.
 
-Este algoritmo establece el número de versión (4 bits) y dos bits reservados. Todos los demás bits (los 122 bits restantes) se establecen utilizando una fuente de datos aleatoria o pseudoaleatoria. Version 4 UUIDs have the form `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` where x is any hexadecimal digit and `y` is one of `8`, `9`, `A`, or `B` (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`). *
+This algorithm sets the version number (4 bits) as well as two reserved bits. All other bits (the remaining 122 bits) are set using a random or pseudorandom data source. Version 4 UUIDs have the form `xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx` where x is any hexadecimal digit and `y` is one of `8`, `9`, `A`, or `B` (e.g., `f47ac10b-58cc-4372-a567-0e02b2c3d479`). *
 
 ```php
 <?php

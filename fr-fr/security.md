@@ -42,7 +42,7 @@ echo $security->hash('Phalcon');
 // $2y$08$ZUFGUUk5c3VpcHFoVUFXeOYoA4NPFEP4G9gcm6rdo3jFPaNFdR2/O
 ```
 
-The hash that was created used the default work factor which is set to `8`. Using a higher work factor will take a bit more time to calculate the hash.
+The hash that was created used the default work factor which is set to `10`. Using a higher work factor will take a bit more time to calculate the hash.
 
 We can now check if a value sent to us by a user through the UI of our application, is identical to our hashed string:
 
@@ -126,7 +126,8 @@ class SessionController extends Controller
 }
 ```
 
-Let's explain the above code snippet - which is incomplete and **must not be used as is for production applications**:
+> **NOTE** The code snippet above is incomplete and **must not be used as is for production applications**
+{: .alert .alert-danger }
 
 The `registerAction()` above accepts posted data from the UI. It sanitizes it with the `string` filter and then creates a new `User` model object. It then assigns the passed data to the relevant properties before saving it. Notice that for the password, we use the `hash()` method of the [Phalcon\Security](api/phalcon_security#security) component so that we do not save it as plain text in our database.
 
