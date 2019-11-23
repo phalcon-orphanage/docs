@@ -30,7 +30,7 @@ When [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) requires a service to cache 
 use Phalcon\Cache;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 
