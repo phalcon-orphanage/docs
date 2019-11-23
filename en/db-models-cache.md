@@ -25,7 +25,7 @@ When [Phalcon\Mvc\Model][mvc-model] requires a service to cache resultsets, it w
 use Phalcon\Cache;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 
