@@ -438,7 +438,7 @@ In the example above `$currentPage` contains an integer, user supplied variable,
         <th>Status</th>
         <th>Title</th>
     </tr>
-    <?php foreach ($page->->getItems() as $item) { ?>
+    <?php foreach ($page->getItems() as $item) { ?>
     <tr>
         <td><?php echo $item->inv_id; ?></td>
         <td><?php echo ($item->inv_status_flag) ? 'Paid' : ''; ?></td>
