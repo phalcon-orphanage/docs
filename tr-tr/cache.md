@@ -39,7 +39,7 @@ In order to instantiate a new [Phalcon\Cache](api/phalcon_cache#cache) component
 
 use Phalcon\Cache;
 use Phalcon\Cache\AdapterFactory;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 $adapterFactory    = new AdapterFactory($serializerFactory);
@@ -251,7 +251,7 @@ Phalcon also offers the [Phalcon\Storage\Serializer\SerializerInterface](api/pha
 
 namespace MyApp\Storage\Serializer;
 
-use Phalcon\Storage\Serializer\SerializerInterface;
+use Phalcon\Storage\SerializerInterface;
 
 class Garble extends SerializerInterface
 {
@@ -400,7 +400,7 @@ The following example demonstrates how to create a new `Apcu` cache adapter, whi
 <?php
 
 use Phalcon\Cache\Adapter\Apcu;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 
@@ -461,7 +461,7 @@ The following example demonstrates how to create a new `Libmemcached` cache adap
 <?php
 
 use Phalcon\Cache\Adapter\Libmemcached;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 
@@ -544,7 +544,7 @@ The following example demonstrates how to create a new `Memory` cache adapter, w
 <?php
 
 use Phalcon\Cache\Adapter\Memory;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 
@@ -600,7 +600,7 @@ The following example demonstrates how to create a new `Redis` cache adapter, wh
 <?php
 
 use Phalcon\Cache\Adapter\Redis;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 
@@ -671,7 +671,7 @@ The following example demonstrates how to create a new `Stream` cache adapter, w
 <?php
 
 use Phalcon\Cache\Adapter\Stream;
-use Phalcon\Storage\Serializer\SerializerFactory;
+use Phalcon\Storage\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
 
