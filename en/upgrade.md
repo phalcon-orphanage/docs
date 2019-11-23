@@ -1182,9 +1182,9 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 | Phalcon\Mvc\Model\Validator\Url              | Renamed to | Phalcon\Validation\Validator\Url          |
 | Phalcon\Mvc\Url                              | Renamed to | Phalcon\Url                               |
 | Phalcon\Mvc\Url\Exception                    | Renamed to | Phalcon\Url\Exception                     |
-| Phalcon\Mvc\User\Component                   | Renamed to | Phalcon\Di\AbstractInjectionAware         |
-| Phalcon\Mvc\User\Module                      | Renamed to | Phalcon\Di\AbstractInjectionAware         |
-| Phalcon\Mvc\User\Plugin                      | Renamed to | Phalcon\Di\AbstractInjectionAware         |
+| Phalcon\Mvc\User\Component                   | Renamed to | Phalcon\Di\Injectable                     |
+| Phalcon\Mvc\User\Module                      | Renamed to | Phalcon\Di\Injectable                     |
+| Phalcon\Mvc\User\Plugin                      | Renamed to | Phalcon\Di\Injectable                     |
 | Phalcon\Mvc\View\Engine                      | Renamed to | Phalcon\Mvc\View\Engine\AbstractEngine    |
 
 ### Paginator
