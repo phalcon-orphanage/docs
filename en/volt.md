@@ -1175,7 +1175,10 @@ Volt is highly integrated with [Phalcon\Tag](tag), so it's easy to use the helpe
     {{ text_field('name', 'size': 32) }}
 
     <label for='type'>Type</label>
-    {{ select('type', productTypes, 'using': ['id', 'name']) }}
+    {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
+
+    <label for='type'>Section</label>
+    {{ select({'type', productSections, 'using': ['id', 'name'], 'useEmpty': true, 'emptyText': '...', 'emptyValue': '', 'class': 'form-control'}) }}
 
     {{ submit_button('Send') }}
 
@@ -1195,6 +1198,9 @@ The following PHP is generated:
 
     <label for='type'>Type</label>
     <?php echo Phalcon\Tag::select(['type', $productTypes, 'using' => ['id', 'name']]); ?>
+
+    <label for='type'>Section</label>
+    <?php echo Phalcon\Tag::select(['type', $productSections, 'using' => ['id', 'name'], 'useEmpty' => true, 'emptyText' => '...', 'emptyValue' => '', 'class' => 'form-control']); ?>
 
     <?php echo Phalcon\Tag::submitButton('Send'); ?>
 
