@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'HTTP Request'
 ---
@@ -8,6 +8,8 @@ title: 'HTTP Request'
 # Request Component
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

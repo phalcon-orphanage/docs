@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Controllers'
+keywords: 'controllers, mvc'
 ---
 # Controllers
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Using Controllers
 Actions are methods on a controller that handle requests. By default all public methods on a controller map to actions and are accessible by a URL. Actions are responsible for interpreting the request and creating the response. Usually responses are in the form of a rendered view, but there are other ways to create responses as well.

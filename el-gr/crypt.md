@@ -3,11 +3,14 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'Crypt'
+keywords: 'crypt, encryption, decryption, ciphers'
 ---
 
 # Crypt Component
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Επισκόπηση
 

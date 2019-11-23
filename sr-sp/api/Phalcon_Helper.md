@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 title: 'Phalcon\Helper'
 ---
@@ -148,12 +148,10 @@ Returns a new array with keys of the passed array as one element and values as a
 @return array
 
 ```php
-final public static function toObject( array $collection ): \stdClass;
+final public static function toObject( array $collection );
 ```
 
-Converts an array to an object
-
-@return stdClass
+Returns the passed array as an object
 
 ```php
 final public static function validateAll( array $collection, mixed $method ): bool;

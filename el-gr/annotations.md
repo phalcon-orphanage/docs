@@ -2,11 +2,15 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Σχολιασμοί'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Annotations Parser
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Επισκόπηση
 
@@ -97,7 +101,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 ## Εργοστάσιο
 
-There are many annotations adapters available (see [Adapters](#adapters)). Αυτός που χρησιμοποιείτε εξαρτάται τις ανάγκες από της αίτησής σας. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php

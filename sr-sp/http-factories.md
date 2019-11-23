@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 title: 'HTTP Factories (PSR-17)'
 ---
@@ -8,6 +8,8 @@ title: 'HTTP Factories (PSR-17)'
 # HTTP Factories (PSR-17)
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

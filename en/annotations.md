@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 # Annotations Parser
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 It is the first time that an annotations parser component is written in C for the PHP world. `Phalcon\Annotations` is a general purpose component that provides ease of parsing and caching annotations in PHP classes to be used in applications.

@@ -72,7 +72,7 @@ protected sessionService;
 ## Metody
 
 ```php
-public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null ): void;
+public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
 ```
 
 Phalcon\Flash constructor

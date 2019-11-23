@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Namespaces'
+keywords: 'namespaces, namespaced classes'
 ---
 # Namespaces
 <hr/>
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Working with Namespaces
 [Namespaces][namespaces] can be used to avoid class name collisions; this means that if you have two controllers in an application with the same name, a namespace can be used to differentiate them. Namespaces are also useful for creating bundles or modules.

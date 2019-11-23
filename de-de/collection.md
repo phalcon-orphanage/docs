@@ -2,13 +2,15 @@
 layout: default
 language: 'de-de'
 version: '4.0'
-upgrade: ''
 title: 'Collection'
+keywords: 'collection, arrayaccess, countable, iteratoraggregate, jsonserializeable, serializable'
 ---
 
 # Collection Component
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

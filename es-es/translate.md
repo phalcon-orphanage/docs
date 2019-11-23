@@ -9,7 +9,9 @@ title: 'Traducciones'
 
 * * *
 
-## Soporte Multidioma
+![](/assets/images/document-status-stable-success.svg)
+
+## Overview
 
 The component [Phalcon\Translate](api/Phalcon_Translate) offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 

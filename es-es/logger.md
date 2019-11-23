@@ -10,9 +10,11 @@ title: 'Registrador'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Overview
 
-[Phalcon\Logger](api/Phalcon_Logger#logger-logger) is a component providing logging services for applications. con backends y adaptadores diversos. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
+[Phalcon\Logger](api/Phalcon_Logger#logger-logger) is a component providing logging services for applications. It offers logging to different back-ends using different adapters. It also offers transaction logging, configuration options and different logging formats. You can use the [Phalcon\Logger](api/Phalcon_Logger#logger-logger) for any logging need your application has, from debugging processes to tracing application flow.
 
 ![](/assets/images/implements-psr--3-blue.svg)
 

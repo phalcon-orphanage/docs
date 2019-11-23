@@ -3,11 +3,14 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Crypt'
+keywords: 'crypt, encryption, decryption, ciphers'
 ---
 
 # Componente Crypt
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 
@@ -20,11 +23,11 @@ title: 'Crypt'
 > `des*`, `rc2*`, `rc4*`, `des*`, `*ecb`
 {: .alert .alert-danger }
 
-Phalcon provides encryption facilities via the [Phalcon\Crypt](Phalcon_Crypt#crypt) component. Esta clase ofrece una envoltura simple orientada a objetos de la biblioteca de cifrado [OpenSSL](https://secure.php.net/manual/es/book.openssl.php) de PHP.
+Phalcon provides encryption facilities via the [Phalcon\Crypt](Phalcon_Crypt#crypt) component. This class offers simple object-oriented wrappers to the [openssl](https://secure.php.net/manual/en/book.openssl.php) PHP's encryption library.
 
 By default, this component utilizes the `AES-256-CFB` cipher.
 
-El cifrado AES-256 es de uso común en las comunicaciones SSL/TLS, entre otros, en Internet y se considera como uno de los mejores. En teoría no es fácil romperlo puesto que la combinación de claves es ingente. La NSA lo ha catalogado en la [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography) de criptografía, si bien recomienda utilizar claves de más de 128-bit para encriptar.
+The cipher AES-256 is used among other places in SSL/TLS across the Internet. It's considered among the top ciphers. In theory it's not crackable since the combinations of keys are massive. Although NSA has categorized this in [Suite B](https://en.wikipedia.org/wiki/NSA_Suite_B_Cryptography), they have also recommended using higher than 128-bit keys for encryption.
 
 > You must use a key length corresponding to the current algorithm. For the default algorithm `aes-256-cfb` the default key length is 32 bytes.
 {: .alert .alert-warning }

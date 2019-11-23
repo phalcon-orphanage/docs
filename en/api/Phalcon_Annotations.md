@@ -176,7 +176,7 @@ protected ttl = 172800;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 Phalcon\Annotations\Adapter\Apcu constructor
 
@@ -263,7 +263,7 @@ protected annotationsDir = ./;
 
 ## Methods
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 Phalcon\Annotations\Adapter\Stream constructor
 
@@ -287,7 +287,7 @@ Writes parsed annotations to files
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/annotations/annotation.zep)
 
 | Namespace  | Phalcon\Annotations |
-| Uses       | Phalcon\Annotations\Annotation, Phalcon\Annotations\Exception |
+| Uses       | Phalcon\Annotations\Exception |
 
 Represents a single annotation in an annotations collection
 
@@ -319,7 +319,7 @@ protected name;
 
 ## Methods
 ```php
-public function __construct( array $reflectionData ): void;
+public function __construct( array $reflectionData );
 ```
 Phalcon\Annotations\Annotation constructor
 
@@ -459,7 +459,7 @@ protected position = 0;
 
 ## Methods
 ```php
-public function __construct( array $reflectionData = [] ): void;
+public function __construct( array $reflectionData = [] );
 ```
 Phalcon\Annotations\Collection constructor
 
@@ -632,7 +632,7 @@ protected reflectionData;
 
 ## Methods
 ```php
-public function __construct( array $reflectionData = [] ): void;
+public function __construct( array $reflectionData = [] );
 ```
 Phalcon\Annotations\Reflection constructor
 

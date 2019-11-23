@@ -1,13 +1,16 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 title: 'Coding Standard'
+keywords: 'coding standard, zephir'
 ---
 
 # Phalcon Coding Standard
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 Last update: 2019-07-04
 

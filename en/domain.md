@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Domain'
+keywords: 'domain, adr, payload'
 ---
-# Domain Component
+# Domain
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 The domain component incorporates components that are used for the implementation of the [Action Domain Responder][adr] ([ADR][adr-jones]) pattern and can also be used when implementing [Domain Driven Design][ddd].
 

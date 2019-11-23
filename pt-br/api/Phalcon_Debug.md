@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Phalcon\Debug'
 ---
@@ -227,7 +227,7 @@ protected styles;
 ## Methods
 
 ```php
-public function __construct( array $styles = [], bool $detailed = bool ): void;
+public function __construct( array $styles = [], bool $detailed = bool );
 ```
 
 Phalcon\Debug\Dump constructor

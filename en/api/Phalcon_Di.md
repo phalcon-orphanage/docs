@@ -99,7 +99,7 @@ Magic method to get or set services using setters/getters
 
 
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 Phalcon\Di constructor
 
@@ -518,7 +518,7 @@ full stack framework
 
 ## Methods
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 Phalcon\Di\FactoryDefault constructor
 
@@ -543,7 +543,7 @@ This class is specially suitable for CLI applications
 
 ## Methods
 ```php
-public function __construct(): void;
+public function __construct();
 ```
 Phalcon\Di\FactoryDefault\Cli constructor
 
@@ -619,7 +619,7 @@ Returns the internal dependency injector
 
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 Returns the internal event manager
 
@@ -706,7 +706,7 @@ protected sharedInstance;
 
 ## Methods
 ```php
-final public function __construct( mixed $definition, bool $shared = bool ): void;
+final public function __construct( mixed $definition, bool $shared = bool );
 ```
 Phalcon\Di\Service
 

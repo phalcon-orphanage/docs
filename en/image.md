@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Image'
+keywords: 'image, gd, imagick'
 ---
 # Image
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
@@ -22,6 +24,7 @@ This component uses adapters that offer methods to manipulate images. You can ea
 [Phalcon\Image\Enum][image-enum] holds constants for image resizing and flipping. The available constants are:
 
 **Resize**
+
 - `AUTO`
 - `HEIGHT`
 - `INVERSE`
@@ -31,6 +34,7 @@ This component uses adapters that offer methods to manipulate images. You can ea
 - `WIDTH`
 
 **Flip**
+
 - `HORIZONTAL`
 - `VERTICAL`
 
@@ -246,7 +250,7 @@ $image->save('resize-height-image.jpg');
 
 **INVERSE**
 
-- Resizes and inverts the width and height passed
+Resizes and inverts the width and height passed
 
 ```php
 <?php

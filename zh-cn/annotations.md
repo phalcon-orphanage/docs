@@ -2,11 +2,15 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # 注释语法分析器
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## 概述
 
@@ -97,7 +101,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 ## 工厂
 
-There are many annotations adapters available (see [Adapters](#adapters)). 您使用将取决于您的应用程序的需要。 The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php

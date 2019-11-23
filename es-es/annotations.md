@@ -2,11 +2,15 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Anotaciones'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Analizador de anotaciones
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 
@@ -97,7 +101,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 ## Factory
 
-There are many annotations adapters available (see [Adapters](#adapters)). El que desee utilizar dependerá de las necesidades de su aplicación. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php
@@ -164,7 +168,7 @@ The annotation reading process is very fast, however, for performance reasons it
 
 ## Types of Annotations
 
-Annotations may have parameters or not. Un parámetro podría ser un simple literal (`string`, `number`, `boolean`, `null`), un `array`, una lista hash u otra anotación:
+Annotations may have parameters or not. A parameter could be a simple literal (`strings`, `number`, `boolean`, `null`), an `array`, a hashed list or other annotation:
 
 ```php
 <?php

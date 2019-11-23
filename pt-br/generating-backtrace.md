@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Generating a backtrace'
 ---
@@ -8,6 +8,8 @@ title: 'Generating a backtrace'
 # Generating a backtrace
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 Phalcon is compiled into a C extension loaded on your web server. Because of that, bugs lead to segmentation faults, causing Phalcon to crash some of your web server processes.
 

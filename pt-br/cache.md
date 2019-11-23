@@ -1,14 +1,17 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 upgrade: '#cache'
 title: 'Cache'
+keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
 ---
 
 # Cache Component
 
 <hr />
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

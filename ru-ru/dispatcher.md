@@ -8,6 +8,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Dispatching Controllers
 
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
@@ -46,7 +48,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 ### Dispatch Loop Events
 
-[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. Поддерживаются следующие типы событий:
+[Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type `dispatch`. Some events when returning boolean `false` could stop the active operation. The following events are supported:
 
 | Название события       | Срабатывает                                                                                                                                                                                                    | Можно остановить операцию? | Triggered on          |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | --------------------- |
@@ -63,7 +65,7 @@ The code above lacks validations, filters and additional checks, but it demonstr
 
 The [INVO](tutorial-invo) tutorial shows how to take advantage of dispatching events implementing a security filter with [Acl](acl)
 
-В следующем примере показано, как назначить слушателей к компоненту:
+The following example demonstrates how to attach listeners to this component:
 
 ```php
 <?php

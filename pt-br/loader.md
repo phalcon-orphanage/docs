@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Loader'
 ---
@@ -8,6 +8,8 @@ title: 'Loader'
 # Loader
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

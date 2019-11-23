@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 title: 'Phalcon\Image'
 ---
@@ -437,6 +437,7 @@ $image->resize(200, 200)->rotate(90)->crop(100, 100);
 
 if ($image->save()) {
     echo "success";
+
 }
 ```
 
@@ -472,7 +473,7 @@ public static function check(): bool;
 Checks if Imagick is enabled
 
 ```php
-public function getInternalImInstance(): \Imagick;
+public function getInternalImInstance(): ImagicNative;
 ```
 
 Get instance

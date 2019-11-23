@@ -9,6 +9,8 @@ upgrade: '#models'
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Overview
 
 Модель представляет собой информацию (данные) приложения и правила для манипуляции этими данными. Модели в основном используется для управления соответствующей таблицей базы данных и правил взаимодействия с ней. В большинстве случаев, каждая таблица в вашей базе данных соответствует одной модели в вашем приложении. Большая часть всей бизнес-логики вашего приложения будет сосредоточена в моделях.
@@ -191,7 +193,7 @@ $robot = Robots::findFirst(3);
 echo $robot->name;
 ```
 
-Как только запись будет зарезервирована в памяти, мы можете производить изменения ее данных, а затем сохранить изменения:
+Once the record is in memory, you can make modifications to its data and then save changes:
 
 ```php
 <?php
@@ -251,7 +253,7 @@ foreach ($robots as $robot) {
 > If you want find record by external data (such as user input) or variable data you must use [Binding Parameters](#binding-parameters)`.
 {: .alert .alert-warning }
 
-Вы также можете использовать метод `findFirst()`, чтобы получить только первую запись для данного критерия:
+You could also use the `findFirst()` method to get only the first record matching the given criteria:
 
 ```php
 <?php
@@ -278,7 +280,7 @@ $robot = Robots::findFirst(
 echo 'The first virtual robot name is ', $robot->name, "\n";
 ```
 
-Оба метода `find()` и `findFirst()` принимают ассоциативный массив, определяющий критерии поиска:
+Both `find()` and `findFirst()` methods accept an associative array specifying the search criteria:
 
 ```php
 <?php
@@ -303,7 +305,7 @@ $robots = Robots::find(
 );
 ```
 
-Доступные параметры запроса:
+The available query options are:
 
 | Параметр      | Описание                                                                                                                                                                                                                | Пример                                                               |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
@@ -1078,7 +1080,7 @@ foreach ($robots as $robot) {
 }
 ```
 
-Следующие события, доступные для определения пользовательской бизнес-логики, вызываются при выполнении операции удаления:
+The following events are available to define custom business rules that can be executed when a delete operation is performed:
 
 | Операция | Название       | Можно остановить операцию? | Пояснение                                |
 | -------- | -------------- |:--------------------------:| ---------------------------------------- |

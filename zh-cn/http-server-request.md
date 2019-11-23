@@ -3,11 +3,14 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 title: 'HTTP Server Request (PSR-7)'
+keywords: 'psr-7, http, http server request'
 ---
 
 # HTTP Server Request (PSR-7)
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## 概述
 
@@ -186,12 +189,12 @@ use Phalcon\Http\Message\ServerRequest;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new ServerRequest('GET', null, [], $stream);
 
-echo $request->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $request->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `getCookieParams()`
@@ -617,14 +620,14 @@ Returns an instance with the specified message body which implements `StreamInte
 use Phalcon\Http\Message\ServerRequest;
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new ServerRequest();
 
 $clone = $request->withBody($stream);
 
-echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $clone->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `withCookieParams()`
@@ -811,7 +814,7 @@ Creates a new instance with the specified uploaded files. It accepts an array tr
 use Phalcon\Http\Message\ServerRequest;
 use Phalcon\Http\Message\UploadedFile;
 
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $file = new UploadedFile(

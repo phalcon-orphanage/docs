@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Loader'
+keywords: 'oader, psr-4, autoloading, autoloader'
 ---
 # Loader
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Loader][loader] is an autoloader that implements [PSR-4][psr-4]. Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost. 

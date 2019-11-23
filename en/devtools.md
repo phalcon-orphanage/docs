@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Devtools'
+keywords: 'devtools, developer tools, models, controllers'
 ---
 # Phalcon Devtools
 <hr/>
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 These tools are a collection of useful scripts to generate skeleton code. Core components of your application can be generated with a simple command, allowing you to easily develop applications using Phalcon.

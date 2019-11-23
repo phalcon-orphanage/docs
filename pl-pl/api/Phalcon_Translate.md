@@ -145,7 +145,7 @@ protected translate;
 ## Metody
 
 ```php
-public function __construct( InterpolatorFactory $interpolator, array $options ): void;
+public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
 Phalcon\Translate\Adapter\Csv constructor
@@ -213,7 +213,7 @@ protected locale;
 ## Metody
 
 ```php
-public function __construct( InterpolatorFactory $interpolator, array $options ): void;
+public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
 Phalcon\Translate\Adapter\Gettext constructor
@@ -347,7 +347,7 @@ private triggerError = false;
 ## Metody
 
 ```php
-public function __construct( InterpolatorFactory $interpolator, array $options ): void;
+public function __construct( InterpolatorFactory $interpolator, array $options );
 ```
 
 Phalcon\Translate\Adapter\NativeArray constructor
@@ -489,7 +489,7 @@ protected function getAdapters(): array;
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/translate/translatefactory.zep)
 
-| Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory | | Extends | AbstractFactory |
+| Namespace | Phalcon\Translate | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Translate\InterpolatorFactory, Phalcon\Translate\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -522,7 +522,7 @@ public function load( mixed $config ): mixed;
 Factory to create an instace from a Config object
 
 ```php
-public function newInstance( string $name, array $options = [] ): AbstractAdapter;
+public function newInstance( string $name, array $options = [] ): AdapterInterface;
 ```
 
 Create a new instance of the adapter

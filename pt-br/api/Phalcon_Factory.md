@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Phalcon\Factory'
 ---
@@ -8,7 +8,7 @@ title: 'Phalcon\Factory'
 * [Phalcon\Factory\AbstractFactory](#factory-abstractfactory)
 * [Phalcon\Factory\Exception](#factory-exception)
 
-<h1 id="factory-abstractfactory">Class Phalcon\Factory\AbstractFactory</h1>
+<h1 id="factory-abstractfactory">Abstract Class Phalcon\Factory\AbstractFactory</h1>
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/factory/abstractfactory.zep)
 

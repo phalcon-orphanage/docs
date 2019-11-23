@@ -9,11 +9,13 @@ category: 'installation'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Requerimentos
 
 ### PHP 7.2
 
-Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 ha sido publicado hace 2 años y su [soporte activo](https://secure.php.net/supported-versions.php) ha caducado, así que decidimos seguir activamente las versiones soportadas de PHP.
+Phalcon v4 soporta sólo PHP 7.2 y superiores. PHP 7.1 has been released 2 years ago and its [active support](https://secure.php.net/supported-versions.php) has lapsed, so we decided to follow actively supported PHP versions.
 
 ### PSR
 
@@ -71,7 +73,7 @@ Para el paquete `libpcre3-dev` puedes usar los siguientes comandos:
 sudo apt-get install libpcre3-dev
 ```
 
-y luego intenta instalar Phalcon nuevamente
+and then try and install Phalcon again
 
 #### CentOS
 
@@ -79,13 +81,21 @@ y luego intenta instalar Phalcon nuevamente
 sudo yum install pcre-devel
 ```
 
-#### Mac
+#### Mac/Osx using MacPorts
+
+Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
+
+```bash
+sudo port install php-phalcon4
+```
+
+#### Mac/Osx using brew
 
 ```bash
 brew install pcre
 ```
 
-Sin `brew`, necesitas ir al sitio web [PCRE](https://www.pcre.org/) y descargar la última pcre:
+Without `brew`, you need to go to the [PCRE](https://www.pcre.org/) website and download the latest pcre:
 
 ```bash
 tar -xzvf pcre-8.42.tar.gz

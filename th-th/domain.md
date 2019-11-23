@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Domain'
 ---
@@ -8,6 +8,8 @@ title: 'Domain'
 # Domain Component
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 The domain component incorporates components that are used for the implementation of the [Action Domain Responder](https://en.wikipedia.org/wiki/Action%E2%80%93domain%E2%80%93responder) ([ADR](http://pmjones.io/adr/)) pattern and can also be used when implementing [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design).
 

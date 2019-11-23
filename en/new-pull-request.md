@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'New Pull Request'
+keywords: 'new pull request, pull request, pr'
 ---
 # New Pull Request
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 A pull request for Phalcon must be against our [main repository[cphalcon]. It is a collection of changes to the code that:
 - fix a bug (current issue)

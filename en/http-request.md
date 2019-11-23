@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Request (PSR-7)'
+keywords: 'psr-7, http, http request'
 ---
 # HTTP Request (PSR-7)
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Http\Message\Request][http-message-request] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
@@ -96,7 +98,7 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
@@ -109,7 +111,7 @@ $request = new Request(
     ]
 );
 
-echo $request->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $request->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `getHeader()`
@@ -385,7 +387,7 @@ use Phalcon\Http\Message\Request;
 use Phalcon\Http\Message\Stream;
 
 $jwtToken = 'abc.def.ghi';
-$fileName = dataFolder('/assets/stream/bill-of-rights.txt');
+$fileName = dataFolder('/assets/stream/mit.txt');
 $stream   = new Stream($fileName, 'rb');
 
 $request = new Request(
@@ -400,7 +402,7 @@ $request = new Request(
 
 $clone = $request->withBody($stream);
 
-echo $clone->getBody(); // '/assets/stream/bill-of-rights.txt'
+echo $clone->getBody(); // '/assets/stream/mit.txt'
 ```
 
 ### `withHeader()`

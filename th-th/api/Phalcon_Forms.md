@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Phalcon\Forms'
 ---
@@ -68,7 +68,7 @@ protected value;
 ## Methods
 
 ```php
-public function __construct( string $name, array $attributes = [] ): void;
+public function __construct( string $name, array $attributes = [] );
 ```
 
 Phalcon\Forms\Element constructor
@@ -603,7 +603,7 @@ Renders the element widget returning html
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
-| Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Forms\Element\AbstractElement, Phalcon\Tag\Select | | Extends | AbstractElement |
+| Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Forms\Element\AbstractElement, Phalcon\Tag\Select, Phalcon\Forms\Element\ElementInterface | | Extends | AbstractElement |
 
 Phalcon\Forms\Element\Select
 
@@ -620,13 +620,13 @@ protected optionsValues;
 ## Methods
 
 ```php
-public function __construct( string $name, mixed $options = null, mixed $attributes = null ): void;
+public function __construct( string $name, mixed $options = null, mixed $attributes = null );
 ```
 
 Phalcon\Forms\Element constructor
 
 ```php
-public function addOption( mixed $option ): Element;
+public function addOption( mixed $option ): ElementInterface;
 ```
 
 Adds an option to the current options
@@ -646,7 +646,7 @@ public function render( array $attributes = [] ): string;
 Renders the element widget returning html
 
 ```php
-public function setOptions( mixed $options ): Element;
+public function setOptions( mixed $options ): ElementInterface;
 ```
 
 Set the choice's options
@@ -713,7 +713,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
-| Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\FilterInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Exception, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
+| Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Exception, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
 
 This component allows to build forms using an object-oriented interface
 
@@ -752,7 +752,7 @@ protected validation;
 ## Methods
 
 ```php
-public function __construct( mixed $entity = null, array $userOptions = [] ): void;
+public function __construct( mixed $entity = null, array $userOptions = [] );
 ```
 
 Phalcon\Forms\Form constructor
@@ -1002,7 +1002,7 @@ public function has( string $name ): bool;
 Checks if a form is registered in the forms manager
 
 ```php
-public function set( string $name, Form $form ): FormManager;
+public function set( string $name, Form $form ): Manager;
 ```
 
 Registers a form in the Forms Manager

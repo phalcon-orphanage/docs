@@ -3,11 +3,14 @@ layout: default
 language: 'fr-fr'
 version: '4.0'
 title: 'Config'
+keywords: 'config, factory, configuration, grouped, ini, json, array, yaml'
 ---
 
 # Config Component
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

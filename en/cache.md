@@ -4,9 +4,11 @@ language: 'en'
 version: '4.0'
 upgrade: '#cache'
 title: 'Cache'
+keywords: 'cache, psr-16, base64, igbinary, json, msgpack, serialize, redis, memcached, apcu, factory, memory, stream'
 ---
 # Cache Component
 <hr>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 The [Phalcon\Cache][cache-cache] namespace offers a Cache component, that implements the [PSR-16](psr-16) interface, making it compatible with any component that requires that interface for its cache.
@@ -31,7 +33,7 @@ In order to instantiate a new [Phalcon\Cache][cache-cache] component, you will n
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
@@ -492,16 +494,6 @@ $adapter = new Libmemcached(null, $options);
 * `\Memcached::SERIALIZER_PHP`
 * `\Memcached::SERIALIZER_JSON`
 * `\Memcached::SERIALIZER_IGBINARY`
-
-[cache-adapter-adapterinterface]: api/Phalcon_Cache#cache-adapter-adapterinterface
-[cache-adapter-apcu]: api/Phalcon_Cache#cache-adapter-apcu
-[cache-adapter-libmemcached]: api/Phalcon_Cache#cache-adapter-libmemcached
-[cache-adapter-memory]: api/Phalcon_Cache#cache-adapter-memory
-[cache-adapter-redis]: api/Phalcon_Cache#cache-adapter-redis
-[cache-adapter-stream]: api/Phalcon_Cache#cache-adapter-stream
-[cache-adapterfactory]: api/Phalcon_Cache#cache-adapterfactory
-[cache-cachefactory]: api/Phalcon_Cache#cache-cachefactory
-
 
 The [igbinary][igbinary] built in serializer is only available if `igbinary` is present in the target system and [Memcached][memcached] extension is compiled with it.
 

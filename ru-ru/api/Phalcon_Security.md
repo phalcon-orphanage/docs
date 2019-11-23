@@ -86,7 +86,7 @@ private localRequest;
 ## Методы
 
 ```php
-public function __construct( SessionInterface $session = null, RequestInterface $request = null ): void;
+public function __construct( SessionInterface $session = null, RequestInterface $request = null );
 ```
 
 Phalcon\Security constructor

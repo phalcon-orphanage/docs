@@ -1,12 +1,14 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 ---
 
 # Routing Component
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 

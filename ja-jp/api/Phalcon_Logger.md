@@ -98,7 +98,7 @@ protected excluded;
 ## メソッド
 
 ```php
-public function __construct( string $name, array $adapters = [] ): void;
+public function __construct( string $name, array $adapters = [] );
 ```
 
 Constructor.
@@ -341,7 +341,7 @@ Interface for Phalcon\Logger adapters
 ## メソッド
 
 ```php
-public function add( Item $item ): void;
+public function add( Item $item ): AdapterInterface;
 ```
 
 Adds a message in the queue
@@ -582,7 +582,7 @@ Processes the message i.e. writes it to the syslog
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterfactory.zep)
 
-| Namespace | Phalcon\Logger | | Uses | Phalcon\Factory\AbstractFactory | | Extends | AbstractFactory |
+| Namespace | Phalcon\Logger | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Logger\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
 This file is part of the Phalcon Framework.
 
@@ -685,7 +685,7 @@ protected dateFormat;
 ## メソッド
 
 ```php
-public function __construct( string $dateFormat = string ): void;
+public function __construct( string $dateFormat = string );
 ```
 
 Phalcon\Logger\Formatter\Json construct
@@ -736,7 +736,7 @@ protected format;
 ## メソッド
 
 ```php
-public function __construct( string $format = string, string $dateFormat = string ): void;
+public function __construct( string $format = string, string $dateFormat = string );
 ```
 
 Phalcon\Logger\Formatter\Line construct

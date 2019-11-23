@@ -6,23 +6,25 @@ upgrade: '#filter'
 title: 'Filtro'
 ---
 
-# Componente Filtro
+# Filtro
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Overview
 
-Una tarea fundamental en el desarrollo de software es la limpieza o saneamiento de datos enviados por los usuarios. Descuidar esta tarea o simplemente confiar en dichos datos sin sanearlos puede facilitar el acceso no autorizado al contenido de la aplicación, a los datos de otros usuarios, o incluso al servidor donde se encuentra alojada la aplicación.
+Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
 
 ![](/assets/images/content/filter-sql.png)
 
-[Imagen original en [XKCD](https://xkcd.com/327)](https://xkcd.com/327)
+[Full image on XKCD](https://xkcd.com/327)
 
 Sanitizing content can be achieved using the [Phalcon\Filter](Phalcon_Filter#filter) and [Phalcon\Filter\FilterFactory](Phalcon_Filter#filter-filterfactory) classes.
 
 ## FilterFactory
 
-Este componente crea un localizador con filtros predefinidos. Cada filtro se carga solo cuando es necesario ("lazy loading" en inglés) para lograr el máximo rendimiento. To instantiate the factory and retrieve the [Phalcon\Filter](Phalcon_Filter#filter) with the preset sanitizers you need to call `newInstance()`
+This component creates a new locator with predefined filters attached to it. Each filter is lazy loaded for maximum performance. To instantiate the factory and retrieve the [Phalcon\Filter](Phalcon_Filter#filter) with the preset sanitizers you need to call `newInstance()`
 
 ```php
 <?php
@@ -34,7 +36,7 @@ $factory = new FilterFactory();
 $locator = $factory->newInstance();
 ```
 
-Una vez instanciado, el localizador se puede utilizar en cualquier parte para limpiar el contenido (según las necesidades de la aplicación).
+You can now use the locator wherever you need and sanitize content as per the needs of your application.
 
 ## Filtro
 
@@ -55,11 +57,10 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter` object loaded with the predefined sanitizers. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
+> The [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container already has a [Phalcon\Filter](Phalcon_Filter#filter) object loaded with the predefined sanitizers. Se puede acceder al componente utilizando el nombre del filtro (`filter`).
 {: .alert .alert-info }
 
-
-## Limpiadores predeterminados
+## Built-in
 
 > Cuando sea apropiado, los limpiadores convertirán el valor al tipo esperado. For example the [`absint`](https://secure.php.net/manual/en/function.absint.php) sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
@@ -301,7 +302,7 @@ $locator->sanitize('!100a019', 'int');
 $locator->sanitize('!100a019.01a', 'float');
 ```
 
-## Limpieza en controladores
+## Controladores
 
 You can access the [Phalcon\Filter](Phalcon_Filter#filter) object from your controllers when accessing `GET` or `POST` input data (through the request object). El primer parámetro es el nombre de la variable que se desea obtener; el segundo es el filtro que se desea aplicar. El segundo parámetro también puede ser una matriz con todos los limpiadores a utilizar.
 
@@ -335,9 +336,9 @@ class ProductsController extends Controller
 }
 ```
 
-## Limpieza de los parámetros de la acción
+## Action Parameters
 
-If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter](Phalcon_Filter#filter) is already registered for you with the default sanitizers. Para emplearlo se utiliza la palabra clave `filter`. Cuando no se utiliza el contenedor [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) es necesario definirlo como servicio, de tal manera que sea accessible por los controladores.
+If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) as your DI container, the [Phalcon\Filter](Phalcon_Filter#filter) is already registered for you with the default sanitizers. Para emplearlo se utiliza la palabra clave `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 A continuación un ejemplo de cómo limpiar los valores pasados a las acciones del controlador:
 
@@ -507,11 +508,7 @@ class ProductsController extends Controller
 }
 ```
 
-## Filtrado y limpieza complejas
-
-PHP ofrece una extensión excelente para filtrado de datos que por supuesto también se puede utilizar con Phalcon; véase [Filtrado de datos](https://www.php.net/manual/es/book.filter.php) en el manual oficial.
-
-## Cómo implementar un limpiador propio
+## Custom Sanitizer
 
 Se puede implementar un limpiador personalizado como función anónima. Sin embargo, si prefieres usar una clase como limpiador, todo lo que necesitas hacer es hacerlo de una manera llamable, implementando el método [__invoke](https://secure.php.net/manual/en/language.oop5.magic.php#object.invoke) con los parámetros relevantes.
 

@@ -2,11 +2,15 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
+title: 'Dependency Injection'
+keywords: 'dependency injection, di, ioc'
 ---
 
 # Dependency Injection / Service Location
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## DI explained
 
@@ -882,7 +886,7 @@ $component = $di->get(
 
 ### Events
 
-[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type 'di'. Некоторые события могут возвращать false, чтобы прервать текущую операцию. Поддерживаются следующие типы событий:
+[Phalcon\Di](api/Phalcon_Di) is able to send events to an [EventsManager](events) if it is present. Events are triggered using the type 'di'. Some events when returning boolean false could stop the active operation. The following events are supported:
 
 | Название события       | Срабатывает                                                                                                     | Можно остановить операцию? | Triggered on |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------- |:--------------------------:|:------------:|

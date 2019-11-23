@@ -4,9 +4,11 @@ language: 'en'
 version: '4.0'
 upgrade: '#assets'
 title: 'Assets'
+keywords: 'assets, js, css'
 ---
 # Assets Management
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 `Phalcon\Assets` is a component that allows you to manage static assets such as CSS stylesheets or JavaScript libraries in a web application.
@@ -254,13 +256,11 @@ The second parameter of `addCss()` and `addJs()` signifies whether asset is loca
 
 public function indexAction()
 {
-    // Add some remote CSS assets
     $this->assets->addCss(
         '//cdn.assets.com/bootstrap/4/css/library.min.css', 
         false
     );
 
-    // Then add some local CSS assets
     $this->assets->addCss('css/style.css', true);
     $this->assets->addCss('css/extra.css');
 }
@@ -273,13 +273,13 @@ public function indexAction()
 <?php
 
 
-// Javascript in the header
+// Javascript - header
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript in the footer
+// Javascript - footer
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -294,10 +294,8 @@ The `collection()` method acts as a _creator_ and _getter_ at the same time. It 
 ```php
 <?php
 
-// Javascript in the header
 $headerCollection = $this->assets->collection('headerJs');
 
-// Javascript in the header
 $headerCollection = $this->assets->get('headerJs');
 ```
 
@@ -306,7 +304,6 @@ The `exists` method allows you to check if a particular collection exists in the
 ```php
 <?php
 
-// Javascript in the header
 $headerCollection = $this->assets->collection('headerJs');
 
 echo $this->assets->has('headerJs'); // true
@@ -348,8 +345,8 @@ You can also chain the method calls if that syntax is more preferable:
 ```php
 <?php
 
-$headerCollection = $this->
-    assets
+$headerCollection = $this
+    ->assets
     ->collection('header')
     ->setPrefix('https://cdn.example.com/')
     ->setLocal(false)
@@ -389,8 +386,6 @@ class CssYUICompressor implements FilterInterface
     }
 
     /**
-     * Do the filtering
-     *
      * @param string $contents
      *
      * @return string
@@ -436,7 +431,7 @@ $css->addFilter(
 );
 ```
 
-In a previous example, we used a custom filter called `LicenseStamper`:
+In a previous example, we used a custom filter called `LicenseStamper`, which adds the license message at the top of the file:
 
 ```php
 <?php
@@ -444,8 +439,6 @@ In a previous example, we used a custom filter called `LicenseStamper`:
 use Phalcon\Assets\FilterInterface;
 
 /**
- * Adds a license message to the top of the file
- *
  * @param string $contents
  *
  * @return string
@@ -475,13 +468,13 @@ To output files:
 ```php
 <?php
 
-// Javascript in the header
+// Javascript - header
 $headerCollection = $this->assets->collection('headerJs');
 
 $headerCollection->addJs('js/jquery.js');
 $headerCollection->addJs('js/bootstrap.min.js');
 
-// Javascript in the footer
+// Javascript - footer
 $footerCollection = $this->assets->collection('footerJs');
 
 $footerCollection->addJs('js/jquery.js');
@@ -670,7 +663,7 @@ $asset = new Css(
 The above will result in the following script as the output (assuming that your file was modified in May 20th 2019):
 Assuming that your file was last modified in May 20, the version 
 ```html
-<link rel="stylesheet" href="css/bootstrap.css?ver=1558392141"
+<link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
 > **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unecessary read operations on the file system. 
@@ -830,7 +823,7 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [sass]: https://sass-lang.com
 [closure]: https://developers.google.com/closure/compiler
 [url]: url
-[collections]: * api/Phalcon_Assets#assets-collection
+[collections]: api/Phalcon_Assets#assets-collection
 [filter-interface]: api/Phalcon_Assets#assets-filterinterface
 [filter-none]: api/Phalcon_Assets#assets-filters-none
 [varnish]: https://varnish-cache.org/

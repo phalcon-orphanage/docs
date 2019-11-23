@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Environments - Nanobox'
 ---
@@ -8,6 +8,8 @@ title: 'Environments - Nanobox'
 # Environments
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

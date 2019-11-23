@@ -19,7 +19,7 @@ title: 'Phalcon\Paginator'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface | | Implements | AdapterInterface |
+| Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Adapter\AdapterInterface | | Implements | AdapterInterface |
 
 Phalcon\Paginator\Adapter\AbstractAdapter
 
@@ -53,7 +53,7 @@ protected repository;
 ## Методы
 
 ```php
-public function __construct( array $config ): void;
+public function __construct( array $config );
 ```
 
 Phalcon\Paginator\Adapter\AbstractAdapter constructor
@@ -65,19 +65,19 @@ public function getLimit(): int;
 Get current rows limit
 
 ```php
-public function setCurrentPage( int $page ): Adapter;
+public function setCurrentPage( int $page ): AdapterInterface;
 ```
 
 Set the current page number
 
 ```php
-public function setLimit( int $limitRows ): Adapter;
+public function setLimit( int $limitRows ): AdapterInterface;
 ```
 
 Set current rows limit
 
 ```php
-public function setRepository( RepositoryInterface $repository ): Adapter;
+public function setRepository( RepositoryInterface $repository ): AdapterInterface;
 ```
 
 Sets current repository for pagination
@@ -237,7 +237,7 @@ protected columns;
 ## Методы
 
 ```php
-public function __construct( array $config ): void;
+public function __construct( array $config );
 ```
 
 Phalcon\Paginator\Adapter\QueryBuilder

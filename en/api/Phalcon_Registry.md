@@ -67,7 +67,7 @@ bypass relatively slow method calls.
 
 ## Methods
 ```php
-final public function __construct( array $data = null ): void;
+final public function __construct( array $data = null );
 ```
 Constructor
 

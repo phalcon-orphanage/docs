@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Crypt'
+keywords: 'crypt, encryption, decryption, ciphers'
 ---
 # Crypt Component
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

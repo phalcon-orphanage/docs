@@ -28,7 +28,7 @@ protected container;
 ## Métodos
 
 ```php
-public function __construct( DiInterface $container ): void;
+public function __construct( DiInterface $container );
 ```
 
 Phalcon\Container constructor

@@ -9,6 +9,8 @@ title: 'Nuevo <i>Pull Request (PR)</i>'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 A pull request for Phalcon must be against our [main repository[cphalcon](https://github.com/phalcon/cphalcon). It is a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality or enhancement.
 
 Your pull request must include: * Target the correct branch. * Update the relevant `CHANGELOG.md` * Contain unit tests * Updates to the documentation and usage examples as necessary * Your code must abide by the coding standards that Phalcon uses. For PHP code we use [PSR-2](https://www.php-fig.org/psr/) while for Zephir code, we have an `.editorconfig` file available at the root of the repository to help you follow the standards.

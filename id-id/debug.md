@@ -3,11 +3,14 @@ layout: default
 language: 'id-id'
 version: '4.0'
 title: 'Debug'
+keywords: 'debug, debugging, error handling'
 ---
 
 # Debug
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

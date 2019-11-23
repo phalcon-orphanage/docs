@@ -3,11 +3,14 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'Contributing'
+keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
 # Συνεισφορές
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 # Συμβάλλοντας στο Phalcon
 

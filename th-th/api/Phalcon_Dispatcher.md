@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Phalcon\Dispatcher'
 ---
@@ -300,7 +300,7 @@ public function setHandlerSuffix( string $handlerSuffix ): void;
 Sets the default suffix for the handler
 
 ```php
-public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): Dispatcher;
+public function setModelBinder( BinderInterface $modelBinder, mixed $cache = null ): DispatcherInterface;
 ```
 
 Enable model binding during dispatch

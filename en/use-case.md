@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Use Case'
+keywords: 'use case, examples'
 ---
 # Use Case
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application. 
 

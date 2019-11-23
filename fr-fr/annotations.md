@@ -2,11 +2,15 @@
 layout: default
 language: 'fr-fr'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Annotations Parser
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 

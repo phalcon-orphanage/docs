@@ -2,31 +2,37 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Model View Controller (MVC)'
+keywords: 'model, view, controller, model view controller, mvc'
 ---
 
 # MVC - Model View Controller
 
 * * *
 
-# Arquitectura
+![](/assets/images/document-status-stable-success.svg)
 
-Phalcon ofrece las clases orientadas a objetos necesarias para implementar el arquitectura Modelo, Vista, Controlador (referido a menudo como [MVC](https://en.wikipedia.org/wiki/Model–view–controller)) en su aplicación. Este patrón es ampliamente utilizado por otros frameworks web y aplicaciones de escritorio.
+## Overview
 
-Los beneficios de MVC incluyen:
+Model View Controller ([MVC](https://en.wikipedia.org/wiki/Model–view–controller)) is a software architectural pattern, which divides the application logic into three interconnected elements, separating internal representations of information of the application.
+
+Phalcon offers the object-oriented classes, necessary to implement the Model View Controller in your application. This design pattern is widely used by other web frameworks and desktop applications.
+
+MVC benefits include:
 
 * Aislamiento de la lógica de negocio de la interfaz de usuario y la capa de base de datos
 * Deja claro a cual parte de esta arquitectura pertenece cada tipo de código para facilitar el mantenimiento
 
-Si usted decide utilizar MVC, cada solicitud a los recursos de la aplicación será administrada por la arquitectura MVC. Las clases de Phalcon están escritas en lenguaje C, ofreciendo un enfoque de alto rendimiento de este patrón en una aplicación basada en PHP.
+If you decide to use MVC, every request to your application resources will be managed by the MVC architecture. Phalcon classes are written in Zephir, which is translated to C, offering a high performance implementation of the MVC pattern in PHP applications.
 
 ## Modelos
 
-Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos. [Más información](db-models)
+Un modelo representa la información (datos) de la aplicación y las reglas para manipular estos datos. Los modelos se utilizan principalmente para gestionar las reglas de interacción con una tabla de base de datos correspondiente. En la mayoría de los casos, cada tabla de la base de datos corresponderá a un modelo en su aplicación. La mayor parte de la lógica de negocio de su aplicación se concentrará en los modelos. [more...](db-models)
 
 ## Vistas
 
-Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que es usada para hacer solicitudes desde su aplicación. [Más Información](views)
+Las vistas representan la interfaz de usuario de su aplicación. Las vistas, son a menudo, archivos HTML con código PHP incrustado que realizan tareas relacionadas solamente a la presentación de datos. Las vistas llevan a cabo el trabajo de proveer datos al navegador web u otra herramienta que es usada para hacer solicitudes desde su aplicación. [more...](views)
 
 ## Controladores
 
-Los controladores proporcionan el 'flujo' entre modelos y vistas. Los controladores son responsables de procesar las peticiones entrantes desde el navegador web, solicitar datos a los modelos y pasar esos datos a las vistas para la representación de la información. [Más información](controllers)
+The controllers provide the *flow* between models and views. Controllers are responsible for processing the incoming requests from the web browser, interrogating the models for data, and passing that data on to the views for presentation. [more...](controllers)

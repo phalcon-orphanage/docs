@@ -9,6 +9,8 @@ version: '4.0'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 [Phalcon\Url](api/Phalcon_Url#url) is the component responsible of generate URLs in a Phalcon application. It can also be used to construct URLs based on routes.

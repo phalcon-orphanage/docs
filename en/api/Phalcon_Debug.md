@@ -230,7 +230,7 @@ protected styles;
 
 ## Methods
 ```php
-public function __construct( array $styles = [], bool $detailed = bool ): void;
+public function __construct( array $styles = [], bool $detailed = bool );
 ```
 Phalcon\Debug\Dump constructor
 

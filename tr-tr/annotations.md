@@ -2,11 +2,15 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Açıklamalar'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Annotations Parser
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Genel Bakış
 

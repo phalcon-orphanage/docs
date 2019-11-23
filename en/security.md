@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Security'
+keywords: 'security, hashing, passwords'
 ---
 # Security Component
 <hr />
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

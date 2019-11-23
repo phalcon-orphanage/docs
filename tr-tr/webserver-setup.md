@@ -2,15 +2,59 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Web Server Setup'
+keywords: 'web server, webserver, apache, nginx, xampp, wamp, cherokee, php built-in server'
 ---
 
 # Internet sunucusu kurulumu
 
 * * *
 
+![](/assets/images/document-status-under-review-red.svg)
+
 ## Genel Bakış
 
-In order for the routing of the Phalcon application to work, you will need to set up your web server to process the redirects properly. Setup instructions for popular web servers are:
+In order for the routing for a Phalcon application to work, you will need to set up your web server in a way that it will process redirects properly. Below are instructions for popular web servers:
+
+## PHP Built-in
+
+The PHP built in web server is not recommended for production applications. You can use it though very easily for development purposes. The syntax is:
+
+```bash
+$(which php) -S <host>:<port> -t <directory> <setup file>
+```
+
+If your application has its entry point in `/public/index.php` or your project has been created by the [Phalcon Devtools](devtools), then you can start the web server with the following command:
+
+```bash
+$(which php) -S localhost:8000 -t public .htrouter.php
+```
+
+The above command does: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
+
+The `.htrouter.php` file must contain:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
+
+if ($uri !== '/' && file_exists(__DIR__ . '/public' . $uri)) {
+    return false;
+}
+
+$_GET['_url'] = $_SERVER['REQUEST_URI'];
+
+require_once __DIR__ . '/public/index.php';
+```
+
+If your entry point is not `public/index.php`, then adjust the `.htrouter.php` file accordingly (last line) as well as the script call. You can also change the port if you like as well as the network interface that it binds to.
+
+After executing the command above, navigating to `http://localhost:8000/` will show your your site.
 
 ## PHP-FPM
 
@@ -26,24 +70,6 @@ ECHO Starting PHP FastCGI...
 set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
-
-## PHP Built-In Webserver (For Developers)
-
-To speed up getting your Phalcon application running in development the easiest way is to use this built-in PHP server. Do not use this server in a production environment. The following configurations for [Nginx](#nginx) and [Apache](#apache) are what you need.
-
-### Phalcon configuration
-
-To enable dynamic URI rewrites, without Apache or Nginx, that Phalcon needs, you can use the following router file: [.htrouter[[htrouter](https://github.com/phalcon/phalcon-devtools/blob/master/templates/.htrouter.php).
-
-If you created your application with [Phalcon-Devtools](devtools) this file should already exist in the root directory of your project and you can start the server with the following command:
-
-```bash
-$(which php) -S localhost:8000 -t public .htrouter.php
-```
-
-The anatomy of the command above: - `$(which php)` - will insert the absolute path to your PHP binary - `-S localhost:8000` - invokes server mode with the provided `host:port` - `-t public` - defines the servers root directory, necessary for php to route requests to assets like JS, CSS, and images in your public directory - `.htrouter.php` - the entry point that will be evaluated for each request
-
-Then point your browser to https://localhost:8000/ to check if everything is working.
 
 ## Nginx
 

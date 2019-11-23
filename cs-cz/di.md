@@ -2,11 +2,15 @@
 layout: default
 language: 'cs-cz'
 version: '4.0'
+title: 'Dependency Injection'
+keywords: 'dependency injection, di, ioc'
 ---
 
 # Dependency Injection / Service Location
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## DI explained
 

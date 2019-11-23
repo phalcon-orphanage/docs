@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Phalcon\Security'
 ---
@@ -86,7 +86,7 @@ private localRequest;
 ## Methods
 
 ```php
-public function __construct( SessionInterface $session = null, RequestInterface $request = null ): void;
+public function __construct( SessionInterface $session = null, RequestInterface $request = null );
 ```
 
 Phalcon\Security constructor

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Phalcon\Container'
 ---
@@ -28,7 +28,7 @@ protected container;
 ## Methods
 
 ```php
-public function __construct( DiInterface $container ): void;
+public function __construct( DiInterface $container );
 ```
 
 Phalcon\Container constructor

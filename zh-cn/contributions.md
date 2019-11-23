@@ -3,11 +3,14 @@ layout: default
 language: 'zh-cn'
 version: '4.0'
 title: 'Contributing'
+keywords: 'contributing, nfr, pull request, pr, new feature request'
 ---
 
 # Contributions
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 # Contributing to Phalcon
 

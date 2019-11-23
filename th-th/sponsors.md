@@ -1,20 +1,18 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 ---
 
 # Becoming a sponsor
+
+![](/assets/images/document-status-stable-success.svg)
 
 For those that wish to sponsor our work and further the development of Phalcon, we offer various sponsorship options that will fit any budget. Sponsoring our work allows us to devote more time to the project, offer faster responses to bugs and features and ensure the projects's stability.
 
 # Sponsors and Supporters
 
 <div class="phalcon-blog__sponsors-items">
-    <a href="https://pdffiller.com" class="phalcon-blog__sponsors-item">
-        <img src="https://assets.phalcon.io/phalcon/images/backers/pdffiller-164x34.svg"
-             alt="PDFfiller">
-    </a>
     <a href="https://mctekk.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalcon.io/phalcon/images/backers/mctekk-149x34.svg"
              alt="Mctekk">

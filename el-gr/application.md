@@ -2,11 +2,15 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Εφαρμογή'
+keywords: 'application, mvc, controllers'
 ---
 
 # Εφαρμογή
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Creating a MVC Application
 
@@ -577,3 +581,24 @@ $eventsManager->attach(
 ## External Resources
 
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
+    
+    * This component encapsulates all the complex operations behind instantiating
+    * every component needed and integrating it with the rest to allow the MVC
+    * pattern to operate as desired.
+
+public function __construct(<diinterface> container = null) * Phalcon\AbstractApplication constructor public function getDefaultModule() -> string * Returns the default module name public function getEventsManager() -> <managerinterface> * Returns the internal event manager public function getModule(string! name) -> array | object * Gets the module definition registered in the application via module name public function getModules() -> array * Return the modules registered in the application public function registerModules(array modules, bool merge = false) -> <abstractapplication> * Register an array of modules present in the application * * 
+
+    php
+    * $this->registerModules(
+    *     [
+    *         "frontend" => [
+    *             "className" => \Multiple\Frontend\Module::class,
+    *             "path"      => "../apps/frontend/Module.php",
+    *         ],
+    *         "backend" => [
+    *             "className" => \Multiple\Backend\Module::class,
+    *             "path"      => "../apps/backend/Module.php",
+    *         ],
+    *     ]
+    * );
+    * */ public function setDefaultModule(string! defaultModule) -> <abstractapplication> * Sets the module name to be used if the router doesn't return a valid module public function setEventsManager(<managerinterface> eventsManager) -> void * Sets the events manager public function handle(string! uri) -> <responseinterface> | bool * Handles a MVC request public function sendCookiesOnHandleRequest(bool sendCookies) -> <application> * Enables or disables sending cookies by each request handling public function sendHeadersOnHandleRequest(bool sendHeaders) -> <application> * Enables or disables sending headers by each request handling public function useImplicitView(bool implicitView) -> <application> * By default. The view is implicitly buffering all the output You can full disable the view component using this method

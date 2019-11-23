@@ -2,11 +2,15 @@
 layout: default
 language: 'es-es'
 version: '4.0'
+title: 'Controladores'
+keywords: 'controllers, mvc'
 ---
 
 # Controladores
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Using Controllers
 

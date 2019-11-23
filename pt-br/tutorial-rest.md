@@ -1,12 +1,14 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 ---
 
 # Tutorial - REST
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Creating a Simple REST API
 

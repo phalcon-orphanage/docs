@@ -82,7 +82,7 @@ protected serializerFactory;
 ## Методы
 
 ```php
-protected function __construct( SerializerFactory $factory = null, array $options ): void;
+protected function __construct( SerializerFactory $factory = null, array $options );
 ```
 
 Sets parameters based on options
@@ -660,12 +660,17 @@ Stream adapter
 /**
     * @var string
     */
-protected cacheDir = ;
+protected storageDir = ;
 
 /**
  * @var array
  */
 protected options;
+
+/**
+ * @var bool
+ */
+private warning = false;
 
 ```
 
@@ -822,18 +827,20 @@ protected data;
 ## Методы
 
 ```php
-public function __construct( mixed $data = null ): void;
+public function __construct( mixed $data = null );
 ```
 
     Constructor
     
 
 ```php
-public function getData(): mixed
+public function getData(): mixed;
 ```
 
+@return mixed
+
 ```php
-public function setData( mixed $data )
+public function setData( mixed $data ): void;
 ```
 
 ```php
@@ -902,7 +909,7 @@ public function unserialize( mixed $data ): void;
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
 
-| Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Serializer\AbstractSerializer | | Extends | AbstractSerializer |
+| Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, Phalcon\Storage\Serializer\AbstractSerializer | | Extends | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
 
@@ -958,7 +965,7 @@ public function unserialize( mixed $data ): void;
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/none.zep)
 
-| Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Serializer\AbstractSerializer | | Extends | AbstractSerializer |
+| Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Serializer\AbstractSerializer, InvalidArgumentException | | Extends | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
 
@@ -986,7 +993,7 @@ public function unserialize( mixed $data ): void;
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/php.zep)
 
-| Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Exception, Phalcon\Storage\Serializer\AbstractSerializer | | Extends | AbstractSerializer |
+| Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, Phalcon\Storage\Exception, Phalcon\Storage\Serializer\AbstractSerializer | | Extends | AbstractSerializer |
 
 This file is part of the Phalcon Framework.
 
@@ -1028,7 +1035,7 @@ For the full copyright and license information, please view the LICENSE.txt file
 public function getData(): mixed;
 ```
 
-@var mixed
+@return mixed
 
 ```php
 public function setData( mixed $data ): void;

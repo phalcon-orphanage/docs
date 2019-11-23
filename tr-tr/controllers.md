@@ -2,11 +2,15 @@
 layout: default
 language: 'tr-tr'
 version: '4.0'
+title: 'Kontrolcüler'
+keywords: 'controllers, mvc'
 ---
 
 # Kontrolcüler
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Using Controllers
 

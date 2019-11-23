@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Use Case'
 ---
@@ -8,6 +8,8 @@ title: 'Use Case'
 # Use Case
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 Throughout this documentation we are going to assume that we are building an accounting application.
 

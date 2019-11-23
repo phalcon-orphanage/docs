@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 category: 'installation'
 ---
@@ -8,6 +8,8 @@ category: 'installation'
 # Installation
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Requirements
 
@@ -79,7 +81,15 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac
+#### Mac/Osx using MacPorts
+
+Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
+
+```bash
+sudo port install php-phalcon4
+```
+
+#### Mac/Osx using brew
 
 ```bash
 brew install pcre

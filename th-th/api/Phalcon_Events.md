@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Phalcon\Events'
 ---
@@ -65,7 +65,7 @@ protected type;
 ## Methods
 
 ```php
-public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool ): void;
+public function __construct( string $type, mixed $source, mixed $data = null, bool $cancelable = bool );
 ```
 
 Phalcon\Events\Event constructor
@@ -191,7 +191,7 @@ This interface must for those classes that accept an EventsManager and dispatch 
 ## Methods
 
 ```php
-public function getEventsManager(): ManagerInterface;
+public function getEventsManager(): ManagerInterface | null;
 ```
 
 Returns the internal event manager

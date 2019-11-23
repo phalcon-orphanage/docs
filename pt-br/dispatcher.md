@@ -1,12 +1,14 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 ---
 
 # Dispatcher Component
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Dispatching Controllers
 

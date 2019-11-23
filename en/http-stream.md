@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'HTTP Response (PSR-7)'
+keywords: 'psr-7, http, http stream'
 ---
 # HTTP Response (PSR-7)
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Http\Message\Stream][http-message-stream] is an implementation of the [PSR-7][psr-7] HTTP messaging interface as defined by [PHP-FIG][php-fig].
@@ -19,11 +21,11 @@ This class describes a data stream. Typically, an instance will wrap a PHP strea
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
-echo $stream->getContents(); // 'Congress shall ...'
+echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
 ## Constructor
@@ -55,11 +57,11 @@ Reads all data from the stream into a string, from the beginning to end. The met
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
-echo (string) $stream; // 'Congress shall ...'
+echo (string) $stream; // 'The MIT License (MIT) ...'
 ```
 
 ### `getContents()`
@@ -71,11 +73,11 @@ Returns a string with the remaining contents in a string. If the stream cannot b
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
-echo $stream->getContents(); // 'Congress shall ...'
+echo $stream->getContents(); // 'The MIT License (MIT) ...'
 ```
 
 ### `getMetadata()`
@@ -87,7 +89,7 @@ Returns the stream metadata as an associative array. If the parameter `$key` is 
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -120,11 +122,11 @@ Returns the size of the stream. If it is not known, `null` will be returned
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
-echo $stream->getSize(); // 2331
+echo $stream->getSize(); // 1087
 ```
 
 ## Is
@@ -138,7 +140,7 @@ Returns `true` if the stream is seekable, `false` otherwise.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -154,7 +156,7 @@ Returns `true` if the stream is readable, `false` otherwise.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'w');
 
@@ -170,7 +172,7 @@ Returns `true` if the stream is writable, `false` otherwise.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -186,7 +188,7 @@ Closes the stream and any underlying resources.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -202,7 +204,7 @@ Separates any underlying resources from the stream. After the stream has been de
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -219,7 +221,7 @@ Returns `true` if the stream is at the end of the stream, `false` otherwise.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -239,11 +241,11 @@ Read data from the stream. The method accepts an integer specifying the number o
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
-echo $stream->read(8); // 'Congress'
+echo $stream->read(15); // 'The MIT License'
 ```
 
 ## `rewind()`
@@ -255,14 +257,14 @@ Seek to the beginning of the stream. Uses [fseek()][fseek] calling `seek(0)` int
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
 $stream->seek(8);
-echo $stream->read(5); // 'shall'
+echo $stream->read(7); // 'License'
 $stream->rewind();
-echo $stream->read(8); // 'Congress'
+echo $stream->read(3); // 'The'
 ```
 
 ## `seek()`
@@ -281,14 +283,14 @@ If an error occurs, a `RuntimeException` will be thrown.
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
 $stream->seek(8);
-echo $stream->read(5); // 'shall'
+echo $stream->read(7); // 'License'
 $stream->rewind();
-echo $stream->read(8); // 'Congress'
+echo $stream->read(3); // 'The'
 ```
 
 ## `tell()`
@@ -300,7 +302,7 @@ Returns the current position of the file read/write pointer as an integer. If an
 
 use Phalcon\Http\Message\Stream;
 
-$fileName = dataDir('assets/stream/bill-of-rights.txt');
+$fileName = dataDir('assets/stream/mit.txt');
 
 $stream = new Stream($fileName, 'rb');
 
@@ -318,12 +320,11 @@ Write data to the stream. It accepts a `string` parameter as the contents to be 
 use Phalcon\Http\Message\Stream;
 
 $stream = new Stream('php://memory', 'wb');
-$source = 'A well regulated Militia, '
-        . 'being necessary to the security of a free State, '
-        . 'the right of the people to keep and bear Arms, '
-        . 'shall not be infringed.';
+$source = 'The above copyright notice and this permission '
+        . 'notice shall be included in all copies or '
+        . 'substantial portions of the Software.';
 
-echo $stream->write($source); // 145
+echo $stream->write($source); // 126
 ```
 
 [php-fig]: https://www.php-fig.org/

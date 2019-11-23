@@ -2,11 +2,15 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: 'Dependency Injection'
+keywords: 'dependency injection, di, ioc'
 ---
 
 # Dependency Injection / Service Location
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## DI explained
 
@@ -379,7 +383,7 @@ Since Phalcon is highly decoupled, [Phalcon\Di](api/Phalcon_Di) is essential to 
 
 Basically, this component implements the [Inversion of Control](https://en.wikipedia.org/wiki/Inversion_of_control) pattern. Applying this, the objects do not receive their dependencies using setters or constructors, but requesting a service dependency injector. This reduces the overall complexity since there is only one way to get the required dependencies within a component.
 
-另外，这种模式会增加可测试性的代码，从而使它不容易出错。
+Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
 ## Registering services in the Container
 

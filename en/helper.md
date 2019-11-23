@@ -4,9 +4,11 @@ language: 'en'
 version: '4.0'
 upgrade: ''
 title: 'Helper'
+keywords: 'helpers, array, string, file system, number, utilities'
 ---
 # Helper Component
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework. 
@@ -46,7 +48,6 @@ $chunks = Arr::chunk($source, 2);
 //    [5, 6],
 // ]
 ```
-<hr/>
 
 ### first
 ```php
@@ -425,7 +426,6 @@ var_dump($result);
 //     'Chair'
 // ]
 ```
-<hr/>
 
 ### `set`
 ```php
@@ -797,7 +797,6 @@ $source   = 'BeetleJuice';
 echo Str::decapitalize($source);       // beetleJuice
 echo Str::decapitalize($source, true); // bEETLEJUICE
 ```
-<hr/>
 
 ### decrement
 ```php
@@ -1105,7 +1104,6 @@ use Phalcon\Helper\Str;
 echo Str::uncamelize('CocoBongo');      // coco_bongo
 echo Str::uncamelize('CocoBongo', '-'); // coco-bongo
 ```
-<hr/>
 
 ### `underscore`
 ```php

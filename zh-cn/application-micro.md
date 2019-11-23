@@ -2,13 +2,17 @@
 layout: default
 language: 'zh-cn'
 version: '4.0'
+title: '微型应用'
+keywords: 'application, micro, handlers, api'
 ---
 
 # 微型应用
 
 * * *
 
-Phalcon 提供一个非常 '轻' 的应用，因此您可以用很少的的 PHP 代码创建 '微型' 应用。 微应用程序，适合小的应用，这样会有很低的资源开销。 这类应用程序通常是 API 应用程序、原型应用程序等。
+![](/assets/images/document-status-under-review-red.svg)
+
+Phalcon offers a very 'thin' application, so that you can create `Micro` applications with minimal PHP code and overhead. Micro applications are suitable for small applications that will have very low overhead. Such applications are usually API ones, prototypes etc.
 
 ```php
 <?php
@@ -31,7 +35,7 @@ $app->handle(
 
 ## 创建一个微型的应用程序
 
-[Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) 类是负责创建一个微型的应用程序。
+The [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) class is the one responsible for creating a Micro application.
 
 ```php
 <?php
@@ -43,7 +47,7 @@ $app = new Micro();
 
 ## 路由
 
-在 [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) 应用程序中定义路由是很容易的。 Routes are defined as follows:
+Defining routes in a [Phalcon\Mvc\Micro](api/Phalcon_Mvc_Micro) application is very easy. Routes are defined as follows:
 
 ```text
    Application -> (method/verb) -> (route url/regex, callable PHP function)

@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Routing'
+keywords: 'routing, routes'
 ---
 # Routing Component
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 The router component allows you to define routes that are mapped to controllers or handlers that should receive the request. A router simply parses a URI to determine this information. The router has two modes: MVC mode and match-only mode. The first mode is ideal for working with MVC applications.

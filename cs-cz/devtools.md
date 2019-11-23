@@ -2,11 +2,15 @@
 layout: default
 language: 'cs-cz'
 version: '4.0'
+title: 'Devtools'
+keywords: 'devtools, developer tools, models, controllers'
 ---
 
 # Phalcon Devtools
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 

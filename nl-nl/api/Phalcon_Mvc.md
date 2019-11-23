@@ -300,7 +300,7 @@ protected handlerSuffix = Controller;
 ## Methoden
 
 ```php
-public function forward( mixed $forward );
+public function forward( mixed $forward ): void;
 ```
 
 Forwards the execution flow to another controller/action.
@@ -1155,7 +1155,7 @@ Calls the middleware
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Phalcon\Events\ManagerInterface, Serializable | | Extends | AbstractInjectionAware | | Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
+| Namespace | Phalcon\Mvc | | Uses | JsonSerializable, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Db\Column, Phalcon\Db\DialectInterface, Phalcon\Db\Enum, Phalcon\Db\RawValue, Phalcon\Di\AbstractInjectionAware, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Events\ManagerInterface, Phalcon\Helper\Arr, Phalcon\Messages\Message, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\BehaviorInterface, Phalcon\Mvc\Model\Criteria, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\Query, Phalcon\Mvc\Model\Query\Builder, Phalcon\Mvc\Model\Query\BuilderInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\ResultInterface, Phalcon\Mvc\Model\Resultset, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Relation, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\Model\ValidationFailed, Phalcon\Mvc\ModelInterface, Phalcon\Validation\ValidationInterface, Serializable | | Extends | AbstractInjectionAware | | Implements | EntityInterface, ModelInterface, ResultInterface, Serializable, JsonSerializable |
 
 Phalcon\Mvc\Model
 
@@ -1264,7 +1264,7 @@ Handles method calls when a static method is not implemented
 @return mixed
 
 ```php
-final public function __construct( mixed $data = null, DiInterface $container = null, ManagerInterface $modelsManager = null ): void;
+final public function __construct( mixed $data = null, DiInterface $container = null, ManagerInterface $modelsManager = null );
 ```
 
 Phalcon\Mvc\Model constructor
@@ -1343,7 +1343,7 @@ class Robots extends Model
 ```
 
 ```php
-public function assign( array $data, mixed $dataColumnMap = null, mixed $whiteList = null ): ModelInterface;
+public function assign( array $data, mixed $whiteList = null, mixed $dataColumnMap = null ): ModelInterface;
 ```
 
 Assigns values to a model from an array
@@ -1370,7 +1370,6 @@ $robot->assign(
 // Allow assign only name and year
 $robot->assign(
     $_POST,
-    null,
     [
         "name",
         "year",
@@ -1383,7 +1382,6 @@ ini_set("phalcon.orm.disable_assign_setters", true);
 
 $robot->assign(
     $_POST,
-    null,
     [
         "name",
         "year",
@@ -2111,7 +2109,7 @@ public function serialize(): string;
 Serializes the object ignoring connections, services, related objects or static properties
 
 ```php
-final public function setConnectionService( string $connectionService ): ModelInterface;
+final public function setConnectionService( string $connectionService ): void;
 ```
 
 Sets the DependencyInjection connection service name
@@ -2135,7 +2133,7 @@ public function setOldSnapshotData( array $data, mixed $columnMap = null );
 Sets the record's old snapshot data. This method is used internally to set old snapshot data when the model was set up to keep snapshot data
 
 ```php
-final public function setReadConnectionService( string $connectionService ): ModelInterface;
+final public function setReadConnectionService( string $connectionService ): void;
 ```
 
 Sets the DependencyInjection connection service name used to read data
@@ -2189,7 +2187,7 @@ try {
 ```
 
 ```php
-final public function setWriteConnectionService( string $connectionService ): ModelInterface;
+final public function setWriteConnectionService( string $connectionService ): void;
 ```
 
 Sets the DependencyInjection connection service name used to write data
@@ -2667,7 +2665,7 @@ protected options;
 ## Methoden
 
 ```php
-public function __construct( array $options = [] ): void;
+public function __construct( array $options = [] );
 ```
 
 Phalcon\Mvc\Model\Behavior
@@ -2798,7 +2796,7 @@ protected originalValues;
 ## Methoden
 
 ```php
-public function __construct( AdapterInterface $cache = null ): void;
+public function __construct( AdapterInterface $cache = null );
 ```
 
 Phalcon\Mvc\Model\Binder constructor
@@ -4001,7 +3999,7 @@ public function setDI( DiInterface $container ): void;
 Sets the DependencyInjector container
 
 ```php
-public function setEventsManager( EventsManagerInterface $eventsManager ): ManagerInterface;
+public function setEventsManager( EventsManagerInterface $eventsManager ): void;
 ```
 
 Sets a global events manager
@@ -4310,7 +4308,7 @@ public function isUsingDynamicUpdate( ModelInterface $model ): bool;
 Checks if a model is using dynamic update instead of all-field update
 
 ```php
-final public function isVisibleModelProperty( ModelInterface $model, string $property ): bool;
+public function isVisibleModelProperty( ModelInterface $model, string $property ): bool;
 ```
 
 Check whether a model property is declared as public.
@@ -4875,7 +4873,7 @@ $metaData = new \Phalcon\Mvc\Model\MetaData\Apcu(
 ## Methoden
 
 ```php
-public function __construct( AdapterFactory $factory, array $options = null ): void;
+public function __construct( AdapterFactory $factory, array $options = null );
 ```
 
 Phalcon\Mvc\Model\MetaData\Apcu constructor
@@ -4895,7 +4893,7 @@ By default meta-data is stored for 48 hours (172800 seconds)
 ## Methoden
 
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 
 Phalcon\Mvc\Model\MetaData\Libmemcached constructor
@@ -4919,7 +4917,7 @@ Stores model meta-data in memory. Data will be erased when the request finishes
 ## Methoden
 
 ```php
-public function __construct( mixed $options = null ): void;
+public function __construct( mixed $options = null );
 ```
 
 Phalcon\Mvc\Model\MetaData\Memory constructor
@@ -4965,7 +4963,7 @@ $metaData = new Redis(
 ## Methoden
 
 ```php
-public function __construct( AdapterFactory $factory, array $options = [] ): void;
+public function __construct( AdapterFactory $factory, array $options = [] );
 ```
 
 Phalcon\Mvc\Model\MetaData\Redis constructor
@@ -5083,7 +5081,7 @@ protected metaDataDir = ./;
 ## Methoden
 
 ```php
-public function __construct( mixed $options = null ): void;
+public function __construct( mixed $options = null );
 ```
 
 Phalcon\Mvc\Model\MetaData\Files constructor
@@ -5290,7 +5288,7 @@ Writes meta-data for certain model using a MODEL_* constant
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/query.zep)
 
-| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Db\DialectInterface, Phalcon\Cache\Adapter\AdapterInterface | | Implements | QueryInterface, InjectionAwareInterface |
+| Namespace | Phalcon\Mvc\Model | | Uses | Phalcon\Db\Column, Phalcon\Db\RawValue, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Helper\Arr, Phalcon\Mvc\Model\Row, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\ManagerInterface, Phalcon\Mvc\Model\QueryInterface, Phalcon\Mvc\Model\Query\Status, Phalcon\Mvc\Model\Resultset\Complex, Phalcon\Mvc\Model\Query\StatusInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\Resultset\Simple, Phalcon\Di\InjectionAwareInterface, Phalcon\Mvc\Model\RelationInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Db\DialectInterface, Phalcon\Mvc\Model\Query\Lang | | Implements | QueryInterface, InjectionAwareInterface |
 
 Phalcon\Mvc\Model\Query
 
@@ -5435,7 +5433,7 @@ protected _transaction;
 ## Methoden
 
 ```php
-public function __construct( string $phql = null, DiInterface $container = null, array $options = [] ): void;
+public function __construct( string $phql = null, DiInterface $container = null, array $options = [] );
 ```
 
 Phalcon\Mvc\Model\Query constructor
@@ -5835,7 +5833,7 @@ protected sharedLock;
 ## Methoden
 
 ```php
-public function __construct( mixed $params = null, DiInterface $container = null ): void;
+public function __construct( mixed $params = null, DiInterface $container = null );
 ```
 
 Phalcon\Mvc\Model\Query\Builder constructor
@@ -6361,7 +6359,7 @@ public function setBindTypes( array $bindTypes, bool $merge = bool ): BuilderInt
 Set default bind types
 
 ```php
-public function setDI( DiInterface $container ): BuilderInterface;
+public function setDI( DiInterface $container ): void;
 ```
 
 Sets the DependencyInjector container
@@ -6691,7 +6689,9 @@ PHQL is implemented as a parser (written in C) that translates syntax in that of
 To achieve the highest performance possible, we wrote a parser that uses the same technology as SQLite. This technology provides a small in-memory parser with a very low memory footprint that is also thread-safe.
 
 ```php
-$intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
+use Phalcon\Mvc\Model\Query\Lang;
+
+$intermediate = Lang::parsePHQL(
     "SELECT r.* FROM Robots r LIMIT 10"
 );
 ```
@@ -6699,7 +6699,7 @@ $intermediate = Phalcon\Mvc\Model\Query\Lang::parsePHQL(
 ## Methoden
 
 ```php
-public static function parsePHQL( string $phql ): string;
+public static function parsePHQL( string $phql ): array;
 ```
 
 Parses a PHQL statement returning an intermediate representation (IR)
@@ -6747,7 +6747,7 @@ protected success;
 ## Methoden
 
 ```php
-public function __construct( bool $success, ModelInterface $model = null ): void;
+public function __construct( bool $success, ModelInterface $model = null );
 ```
 
 Phalcon\Mvc\Model\Query\Status
@@ -6947,7 +6947,7 @@ protected type;
 ## Methoden
 
 ```php
-public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] ): void;
+public function __construct( int $type, string $referencedModel, mixed $fields, mixed $referencedFields, array $options = [] );
 ```
 
 Phalcon\Mvc\Model\Relation constructor
@@ -7201,30 +7201,30 @@ This component allows to Phalcon\Mvc\Model returns large resultsets with the min
 $robots = Robots::find(
     [
         "type = 'virtual'",
-        "order" =&gt; "name",
+        "order" => "name",
     ]
 );
 
 foreach ($robots as robot) {
-    echo robot-&gt;name, "\n";
+    echo robot->name, "\n";
 }
 
 // Using a while
 $robots = Robots::find(
     [
         "type = 'virtual'",
-        "order" =&gt; "name",
+        "order" => "name",
     ]
 );
 
-$robots-&gt;rewind();
+$robots->rewind();
 
-while ($robots-&gt;valid()) {
-    $robot = $robots-&gt;current();
+while ($robots->valid()) {
+    $robot = $robots->current();
 
-    echo $robot-&gt;name, "\n";
+    echo $robot->name, "\n";
 
-    $robots-&gt;next();
+    $robots->next();
 }
 ```
 
@@ -7278,7 +7278,7 @@ protected result;
 ## Methoden
 
 ```php
-public function __construct( mixed $result, AdapterInterface $cache = null ): void;
+public function __construct( mixed $result, AdapterInterface $cache = null );
 ```
 
 Phalcon\Mvc\Model\Resultset constructor
@@ -7464,7 +7464,7 @@ protected disableHydration = false;
 ## Methoden
 
 ```php
-public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null ): void;
+public function __construct( mixed $columnTypes, ResultInterface $result = null, AdapterInterface $cache = null );
 ```
 
 Phalcon\Mvc\Model\Resultset\Complex constructor
@@ -7497,7 +7497,7 @@ Unserializing a resultset will allow to only works on the rows present in the sa
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/model/resultset/simple.zep)
 
-| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface | | Extends | Resultset |
+| Namespace | Phalcon\Mvc\Model\Resultset | | Uses | Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Mvc\Model, Phalcon\Mvc\Model\Exception, Phalcon\Mvc\Model\Resultset, Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Serializer\SerializerInterface, Phalcon\Mvc\ModelInterface | | Extends | Resultset |
 
 Phalcon\Mvc\Model\Resultset\Simple
 
@@ -7522,7 +7522,7 @@ protected keepSnapshots = false;
 ## Methoden
 
 ```php
-public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null ): void;
+public function __construct( mixed $columnMap, mixed $model, mixed $result, AdapterInterface $cache = null, bool $keepSnapshots = null );
 ```
 
 Phalcon\Mvc\Model\Resultset\Simple constructor
@@ -7807,7 +7807,7 @@ protected rollbackThrowException = false;
 ## Methoden
 
 ```php
-public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string ): void;
+public function __construct( DiInterface $container, bool $autoBegin = bool, string $service = string );
 ```
 
 Phalcon\Mvc\Model\Transaction constructor
@@ -7915,7 +7915,7 @@ protected record;
 ## Methoden
 
 ```php
-public function __construct( string $message, ModelInterface $record = null ): void;
+public function __construct( string $message, ModelInterface $record = null );
 ```
 
 Phalcon\Mvc\Model\Transaction\Failed constructor
@@ -8008,7 +8008,7 @@ protected transactions;
 ## Methoden
 
 ```php
-public function __construct( DiInterface $container = null ): void;
+public function __construct( DiInterface $container = null );
 ```
 
 Phalcon\Mvc\Model\Transaction\Manager constructor
@@ -8301,7 +8301,7 @@ protected model;
 ## Methoden
 
 ```php
-public function __construct( ModelInterface $model, array $validationMessages ): void;
+public function __construct( ModelInterface $model, array $validationMessages );
 ```
 
 Phalcon\Mvc\Model\ValidationFailed constructor
@@ -8322,7 +8322,7 @@ Returns the model that generated the messages
 
 [Broncode op GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/mvc/modelinterface.zep)
 
-| Namespace | Phalcon\Mvc | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\ModelInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface, Phalcon\Mvc\ModelInterface |
+| Namespace | Phalcon\Mvc | | Uses | Phalcon\Db\Adapter\AdapterInterface, Phalcon\Di\DiInterface, Phalcon\Messages\MessageInterface, Phalcon\Mvc\Model\CriteriaInterface, Phalcon\Mvc\Model\MetaDataInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Mvc\Model\TransactionInterface |
 
 Phalcon\Mvc\ModelInterface
 
@@ -8337,7 +8337,7 @@ public function appendMessage( MessageInterface $message ): ModelInterface;
 Appends a customized message on the validation process
 
 ```php
-public function assign( array $data, mixed $dataColumnMap = null, mixed $whiteList = null ): ModelInterface;
+public function assign( array $data, mixed $whiteList = null, mixed $dataColumnMap = null ): ModelInterface;
 ```
 
 Assigns values to a model from an array
@@ -8906,7 +8906,7 @@ public function getRoutes(): RouteInterface[];
 Returns all the routes defined in the router
 
 ```php
-public function handle( string $uri );
+public function handle( string $uri ): void;
 ```
 
 Handles routing information received from the rewrite engine
@@ -9064,7 +9064,7 @@ public function getResources(): array;
 Return the registered resources
 
 ```php
-public function handle( string $uri );
+public function handle( string $uri ): void;
 ```
 
 Produce the routing parameters from the rewrite information
@@ -9878,13 +9878,13 @@ public function setHttpMethods( mixed $httpMethods ): RouteInterface;
 Sets a set of HTTP methods that constraint the matching of the route
 
 ```php
-public function setName( string $name ): void;
+public function setName( string $name ): RouteInterface;
 ```
 
 Sets the route's name
 
 ```php
-public function via( mixed $httpMethods ): void;
+public function via( mixed $httpMethods ): RouteInterface;
 ```
 
 Set one or more HTTP methods that constraint the matching of the route
@@ -10050,25 +10050,25 @@ public function mount( GroupInterface $group ): RouterInterface;
 Mounts a group of routes in the router
 
 ```php
-public function setDefaultAction( string $actionName ): void;
+public function setDefaultAction( string $actionName ): RouterInterface;
 ```
 
 Sets the default action name
 
 ```php
-public function setDefaultController( string $controllerName ): void;
+public function setDefaultController( string $controllerName ): RouterInterface;
 ```
 
 Sets the default controller name
 
 ```php
-public function setDefaultModule( string $moduleName ): void;
+public function setDefaultModule( string $moduleName ): RouterInterface;
 ```
 
 Sets the name of the default module
 
 ```php
-public function setDefaults( array $defaults ): void;
+public function setDefaults( array $defaults ): RouterInterface;
 ```
 
 Sets an array of default paths

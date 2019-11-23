@@ -9,6 +9,8 @@ title: 'Use Case'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 Throughout this documentation we are going to assume that we are building an accounting application.
 
 ## Requirements

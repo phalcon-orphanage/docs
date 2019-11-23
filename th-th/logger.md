@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 upgrade: '#logger'
 title: 'Logger'
@@ -9,6 +9,8 @@ title: 'Logger'
 # Logger
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

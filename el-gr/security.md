@@ -9,6 +9,8 @@ title: 'Ασφάλεια'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Επισκόπηση
 
 > Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system

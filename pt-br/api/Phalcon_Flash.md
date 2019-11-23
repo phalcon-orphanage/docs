@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Phalcon\Flash'
 ---
@@ -72,7 +72,7 @@ protected sessionService;
 ## Methods
 
 ```php
-public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null ): void;
+public function __construct( EscaperInterface $escaper = null, SessionInterface $session = null );
 ```
 
 Phalcon\Flash constructor

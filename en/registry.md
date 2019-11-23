@@ -3,9 +3,11 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Registry'
+keywords: 'registry'
 ---
 # Registry Component
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 [Phalcon\Registry][registry] is an object oriented array. It extends [Phalcon\Collection](collection) but cannot be extended itself since all of its methods are declared `final`. It offers speed, as well as implementations of various PHP interfaces. These are:

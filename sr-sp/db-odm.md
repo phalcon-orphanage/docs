@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 title: 'Object Document Mapper'
 ---
@@ -8,6 +8,8 @@ title: 'Object Document Mapper'
 # Object Document Mapper
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 > The Object Document Mapper functionality has been **temporarily** removed for v4.0.
 > 

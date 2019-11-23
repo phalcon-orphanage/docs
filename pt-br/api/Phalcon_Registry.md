@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Phalcon\Registry'
 ---
@@ -52,7 +52,7 @@ Internally all the magic methods (and interfaces except JsonSerializable) are im
 ## Methods
 
 ```php
-final public function __construct( array $data = null ): void;
+final public function __construct( array $data = null );
 ```
 
 Constructor

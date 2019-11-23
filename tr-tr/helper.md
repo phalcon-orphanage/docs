@@ -10,6 +10,8 @@ title: 'Helper'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 `Phalcon\Helper` a component exposing helper classes and static methods used throughout the framework.
@@ -52,8 +54,6 @@ $chunks = Arr::chunk($source, 2);
 //    [5, 6],
 // ]
 ```
-
-* * *
 
 ### first
 
@@ -459,8 +459,6 @@ var_dump($result);
 //     'Chair'
 // ]
 ```
-
-* * *
 
 ### `set`
 
@@ -874,8 +872,6 @@ echo Str::decapitalize($source);       // beetleJuice
 echo Str::decapitalize($source, true); // bEETLEJUICE
 ```
 
-* * *
-
 ### decrement
 
 ```php
@@ -1233,8 +1229,6 @@ use Phalcon\Helper\Str;
 echo Str::uncamelize('CocoBongo');      // coco_bongo
 echo Str::uncamelize('CocoBongo', '-'); // coco-bongo
 ```
-
-* * *
 
 ### `underscore`
 

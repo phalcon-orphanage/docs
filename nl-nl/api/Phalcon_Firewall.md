@@ -105,8 +105,10 @@ public function isAlwaysResolvingRole(): bool;
 Gets always resolving role option
 
 ```php
-public function setAlwaysResolvingRole( bool $alwaysResolvingRole )
+public function setAlwaysResolvingRole( bool $alwaysResolvingRole ): void;
 ```
+
+Sets always resolving role option
 
 ```php
 public function setCache( CacheAdapterInterface $cache ): AdapterInterface;
@@ -121,7 +123,7 @@ public function setDefaultAccess( int $defaultAccess ): AdapterInterface;
 Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY)
 
 ```php
-public function setEventsManager( ManagerInterface $eventsManager ): AdapterInterface;
+public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
 Sets the events manager
@@ -251,7 +253,7 @@ public function getBoundModelsKeyMap()
 ```
 
 ```php
-public function getDispatcher(): Dispatcher;
+public function getDispatcher(): DispatcherInterface;
 ```
 
 Gets dispatcher
@@ -417,7 +419,7 @@ public function getAnnotationsAdapter(): mixed
 ```
 
 ```php
-public function getDispatcher(): Dispatcher;
+public function getDispatcher(): DispatcherInterface;
 ```
 
 Gets dispatcher

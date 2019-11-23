@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Application'
+keywords: 'application, mvc, controllers'
 ---
 # Application
 <hr/>
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Creating a MVC Application
 All the hard work behind orchestrating the operation of MVC in Phalcon is normally done by [Phalcon\Mvc\Application](api/Phalcon_Mvc_Application). This component encapsulates all the complex operations required in the background, instantiating every component needed and integrating it with the project, to allow the MVC pattern to operate as desired.
@@ -569,3 +572,50 @@ $eventsManager->attach(
 
 ## External Resources
 * [MVC examples on GitHub](https://github.com/phalcon/mvc)
+
+
+
+ * This component encapsulates all the complex operations behind instantiating
+ * every component needed and integrating it with the rest to allow the MVC
+ * pattern to operate as desired.
+
+public function __construct(<DiInterface> container = null)
+* Phalcon\AbstractApplication constructor
+public function getDefaultModule() -> string
+* Returns the default module name
+public function getEventsManager() -> <ManagerInterface>
+* Returns the internal event manager
+public function getModule(string! name) -> array | object
+* Gets the module definition registered in the application via module name
+public function getModules() -> array
+* Return the modules registered in the application
+public function registerModules(array modules, bool merge = false) -> <AbstractApplication>
+* Register an array of modules present in the application
+*
+* ```php
+* $this->registerModules(
+*     [
+*         "frontend" => [
+*             "className" => \Multiple\Frontend\Module::class,
+*             "path"      => "../apps/frontend/Module.php",
+*         ],
+*         "backend" => [
+*             "className" => \Multiple\Backend\Module::class,
+*             "path"      => "../apps/backend/Module.php",
+*         ],
+*     ]
+* );
+* ```
+*/
+public function setDefaultModule(string! defaultModule) -> <AbstractApplication>
+* Sets the module name to be used if the router doesn't return a valid module
+public function setEventsManager(<ManagerInterface> eventsManager) -> void
+* Sets the events manager
+public function handle(string! uri) -> <ResponseInterface> | bool
+* Handles a MVC request
+public function sendCookiesOnHandleRequest(bool sendCookies) -> <Application>
+* Enables or disables sending cookies by each request handling
+public function sendHeadersOnHandleRequest(bool sendHeaders) -> <Application>
+* Enables or disables sending headers by each request handling
+public function useImplicitView(bool implicitView) -> <Application>
+* By default. The view is implicitly buffering all the output You can full disable the view component using this method

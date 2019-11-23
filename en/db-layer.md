@@ -5,6 +5,7 @@ version: '4.0'
 ---
 # Database Abstraction Layer
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 [Phalcon\Db](api/Phalcon_Db) is the component behind [Phalcon\Mvc\Model](api/Phalcon_Mvc_Model) that powers the model layer in the framework. It consists of an independent high-level abstraction layer for database systems completely written in C.

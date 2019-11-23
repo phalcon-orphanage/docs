@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Validation'
+keywords: 'validation, validating forms, validating models, validating data'
 ---
 # Validation Component
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 [Phalcon\Validation](api/Phalcon_Validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Tag'
 ---
@@ -8,6 +8,8 @@ title: 'Tag'
 # Tag (View Helpers)
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

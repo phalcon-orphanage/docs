@@ -4,9 +4,11 @@ language: 'en'
 version: '4.0'
 upgrade: '#filter'
 title: 'Filter'
+keywords: 'filter, sanitize'
 ---
-# Filter Component
+# Filter
 <hr/>
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 Sanitizing user input is a critical part of software development. Trusting or neglecting to sanitize user input could lead to unauthorized access to the content of your application, mainly user data, or even the server your application is hosted on.
@@ -50,11 +52,10 @@ $locator = new Filter($services);
 $text = $locator->hello('World');
 ```
 
-> The `Phalcon\Di` container already has a `Phalcon\Filter` object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
+> The [Phalcon\Di\FactoryDefault][factorydefault] container already has a [Phalcon\Filter][filter-filter] object loaded with the predefined sanitizers. The component can be accessed using the `filter` name.
 {: .alert .alert-info }
 
-
-## Built-in Sanitizers
+## Built-in
 
 > Where appropriate, the sanitizers will cast the value to the type expected. For example the [`absint`][absint] sanitizer will remove all non numeric characters from the input, cast the input to an integer and return its absolute value.
 {: .alert .alert-warning }
@@ -253,7 +254,7 @@ $locator->sanitize('!100a019', 'int');
 $locator->sanitize('!100a019.01a', 'float');
 ```
 
-## Sanitizing from Controllers
+## Controllers
 You can access the [Phalcon\Filter][filter-filter] object from your controllers when accessing `GET` or `POST` input data (through the request object). The first parameter is the name of the variable to be obtained; the second is the sanitizer to be applied on it. The second parameter can also be an array with any number of sanitizers that you want to apply. 
 
 ```php
@@ -286,8 +287,8 @@ class ProductsController extends Controller
 }
 ```
 
-## Sanitizing Action Parameters
-If you have used the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) as your DI container, the [Phalcon\Filter][filter-filter] is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di_FactoryDefault) container, you will need to set the service up in it, so that it can be accessible in your controllers.
+## Action Parameters
+If you have used the [Phalcon\Di\FactoryDefault][factorydefault] as your DI container, the [Phalcon\Filter][filter-filter] is already registered for you with the default sanitizers. To access it we can use the name `filter`. If you do not use the [Phalcon\Di\FactoryDefault][factorydefault] container, you will need to set the service up in it, so that it can be accessible in your controllers.
 
 We can sanitize values passed into controller actions as follows:
 
@@ -456,12 +457,7 @@ class ProductsController extends Controller
 }
 ```
 
-
-## Complex Sanitizing and Filtering
-PHP itself provides an excellent filter extension you can use: [Data Filtering at PHP Documentation][filter]
-
-
-## Implementing your own Sanitizer
+## Custom Sanitizer
 A custom sanitizer can be implemented as as an anonymous function. If however you prefer to use a class per sanitizer, all you need to do is make it a callable by implementing the [__invoke][invoke] method with the relevant parameters.
 
 ```php
@@ -555,4 +551,4 @@ $filteredIp = $locator->sanitize('127.0.0.1', 'ipv4');
 [filter-sanitize-upperfirst]: api/Phalcon_Filter#filter-sanitize-upperfirst
 [filter-sanitize-upperwords]: api/Phalcon_Filter#filter-sanitize-upperwords
 [filter-sanitize-url]: api/Phalcon_Filter#filter-sanitize-url
-  
+[factorydefault]: api/Phalcon_Di#di-factorydefault

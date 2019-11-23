@@ -2,11 +2,15 @@
 layout: default
 language: 'ru-ru'
 version: '4.0'
+title: 'Annotations'
+keywords: 'annotations, routing, annotations parser, docblocks'
 ---
 
 # Парсер аннотаций
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 
@@ -97,7 +101,7 @@ However, to make the code more maintainable and understandable it is recommended
 
 ## Factory
 
-There are many annotations adapters available (see [Adapters](#adapters)). Используемый вами, будет зависеть от нужд вашего приложения. The traditional way of instantiating such an adapter is as follows:
+There are many annotations adapters available (see [Adapters](#adapters)). The one you use will depend on the needs of your application. The traditional way of instantiating such an adapter is as follows:
 
 ```php
 <?php

@@ -1,12 +1,14 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 ---
 
 # Validation Component
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Overview
 

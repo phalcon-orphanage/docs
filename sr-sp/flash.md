@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'sr-sp'
 version: '4.0'
 upgrade: '#flash'
 title: 'Flash Messages'
@@ -9,6 +9,8 @@ title: 'Flash Messages'
 # Flash Messages
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'New Pull Request'
 ---
@@ -8,6 +8,8 @@ title: 'New Pull Request'
 # New Pull Request
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 A pull request for Phalcon must be against our [main repository[cphalcon](https://github.com/phalcon/cphalcon). It is a collection of changes to the code that: - fix a bug (current issue) - introduce new functionality or enhancement.
 

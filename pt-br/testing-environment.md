@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Testing Environment'
 ---
@@ -8,6 +8,8 @@ title: 'Testing Environment'
 # Testing Environment
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 # Overview
 

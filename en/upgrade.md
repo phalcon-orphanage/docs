@@ -3,6 +3,7 @@ layout: default
 language: 'en'
 version: '4.0'
 title: 'Upgrade Guide'
+keywords: 'upgrade, v3, v4'
 ---
 # Upgrade Guide
 <hr/>
@@ -181,7 +182,7 @@ For a more detailed explanation on how the new Cache component works, please vis
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $serializerFactory = new SerializerFactory();
@@ -203,7 +204,7 @@ Registering it in the DI
 <?php
 
 use Phalcon\Cache;
-use Phalcon\Cache\Adapter\AdapterFactory;
+use Phalcon\Cache\AdapterFactory;
 use Phalcon\Storage\Serializer\SerializerFactory;
 
 $container = new Di();
@@ -671,6 +672,7 @@ $criteria->limit(10, null);
 ### Mvc\Model
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
+- Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
 
 ### Mvc\Model\Criteria
 - Removed `addWhere`

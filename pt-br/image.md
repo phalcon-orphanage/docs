@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'pt-br'
 version: '4.0'
 title: 'Image'
 ---
@@ -8,6 +8,8 @@ title: 'Image'
 # Image
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 ## Overview
 
@@ -26,9 +28,20 @@ This component uses adapters that offer methods to manipulate images. You can ea
 
 [Phalcon\Image\Enum](Phalcon_Image#image-enum) holds constants for image resizing and flipping. The available constants are:
 
-**Resize** - `AUTO` - `HEIGHT` - `INVERSE` - `NONE` - `PRECISE` - `TENSILE` - `WIDTH`
+**Resize**
 
-**Flip** - `HORIZONTAL` - `VERTICAL`
+- `AUTO`
+- `HEIGHT`
+- `INVERSE`
+- `NONE`
+- `PRECISE`
+- `TENSILE`
+- `WIDTH`
+
+**Flip**
+
+- `HORIZONTAL`
+- `VERTICAL`
 
 ## Getters
 
@@ -225,7 +238,7 @@ $image->save('resize-height-image.jpg');
 
 **INVERSE**
 
-- Resizes and inverts the width and height passed
+Resizes and inverts the width and height passed
 
 ```php
 <?php

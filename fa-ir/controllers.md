@@ -2,11 +2,15 @@
 layout: default
 language: 'fa-ir'
 version: '4.0'
+title: 'Controllers'
+keywords: 'controllers, mvc'
 ---
 
 # Controllers
 
 * * *
+
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Using Controllers
 

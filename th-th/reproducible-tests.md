@@ -1,6 +1,6 @@
 ---
 layout: default
-language: 'en'
+language: 'th-th'
 version: '4.0'
 title: 'Reproducible Tests'
 ---
@@ -8,6 +8,8 @@ title: 'Reproducible Tests'
 # Reproducible Tests
 
 * * *
+
+![](/assets/images/document-status-stable-success.svg)
 
 > If you have found a bug, you can open an issue in [GitHub](https://github.com/phalcon/cphalcon/issues). Along with your description of the bug, you will need to provide as much information as possible so that the core team can reproduce the behavior you are experiencing. The best way to do this is to create a test that fails, showcasing the behavior. If the bug you found is in an application that is publicly available in a repository, please provide also the link for this repository. You can also use a [Gist](https://gist.github.com/) to post any code you want to share with us.
 {:.alert .alert-info}

@@ -9,6 +9,8 @@ title: 'Güvenlik'
 
 * * *
 
+![](/assets/images/document-status-stable-success.svg)
+
 ## Genel Bakış
 
 > Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system

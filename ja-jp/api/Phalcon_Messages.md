@@ -63,7 +63,7 @@ protected metaData;
 ## メソッド
 
 ```php
-public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] ): void;
+public function __construct( string $message, mixed $field = string, string $type = string, int $code = int, array $metaData = [] );
 ```
 
 Phalcon\Messages\Message constructor
@@ -238,7 +238,7 @@ protected messages;
 ## メソッド
 
 ```php
-public function __construct( array $messages = [] ): void;
+public function __construct( array $messages = [] );
 ```
 
 Phalcon\Messages\Messages constructor

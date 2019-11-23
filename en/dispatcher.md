@@ -2,9 +2,12 @@
 layout: default
 language: 'en'
 version: '4.0'
+title: 'Dispatcher'
+keywords: 'dispatcher, mvc'
 ---
 # Dispatcher Component
 <hr />
+![](/assets/images/document-status-under-review-red.svg)
 
 ## Dispatching Controllers
 [Phalcon\Mvc\Dispatcher](api/Phalcon_Mvc_Dispatcher) is the component responsible for instantiating controllers and executing the required actions on them in an MVC application. Understanding its operation and capabilities helps us get more out of the services provided by the framework.
