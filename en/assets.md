@@ -834,4 +834,4 @@ In most cases, your web server, [CDN][cdn] or services such as [Varnish HTTP Cac
 [asset-exception]: api/phalcon_assets#assets-exception
 [assets-manager]: api/phalcon_assets#assets-manager
 [cache-busting]: https://www.keycdn.com/support/what-is-cache-busting
-[di-factorydefault]: api/phalcon_di@di-factorydefault
+[di-factorydefault]: api/phalcon_di#di-factorydefault
