@@ -826,8 +826,9 @@ location @phalcon {
     rewrite ^(.*)$ /index.php?_url=$1;
 }
 
-# Other Configuration Directoves
 ```
+
+# Other Configuration Directives
 
 We need to create `assets/js` and `assets/css` directories in the document root of the application (eg. `public`).
 
