@@ -289,7 +289,6 @@ Once the list has been defined, we can query it to check if a particular role ha
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
@@ -364,7 +363,6 @@ To take advantage of this functionality, you will need to define your function w
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
@@ -401,7 +399,6 @@ Now that the callable is defined in the ACL, we will need to call the `isAllowed
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
@@ -461,7 +458,7 @@ You can also omit to pass the fourth parameter to `isAllowed()` if you wish. The
 ```php
 <?php
 
-use Phalcon\Acl;
+use Phalcon\Acl\Enum;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
@@ -496,7 +493,7 @@ $acl->allow(
 $acl->isAllowed('manager', 'admin', 'dashboard');
 
 $acl->setNoArgumentsDefaultAction(
-    Acl\Enum::ALLOW
+    Enum::ALLOW
 );
 
 // Returns true
@@ -592,7 +589,6 @@ These objects can now be used in our ACL.
 <?php
 
 use ManagerRole;
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 use Phalcon\Acl\Component;
@@ -657,7 +653,6 @@ To remove duplication and increase efficiency in your application, the ACL offer
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 
@@ -694,7 +689,6 @@ Based on the application design, you might prefer to add first all the roles and
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Acl\Role;
 
@@ -728,7 +722,6 @@ $acl->addInherit($accounting, $guest);
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 
 $aclFile = 'app/security/acl.cache';
@@ -775,7 +768,6 @@ The following example demonstrates how to attach listeners to the ACL:
 ```php
 <?php
 
-use Phalcon\Acl;
 use Phalcon\Acl\Adapter\Memory;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
