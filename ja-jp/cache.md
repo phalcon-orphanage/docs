@@ -89,7 +89,7 @@ $exists = $cache->has('my-key');
 To save the data in the cache, you will need to use the `set()` method. The method accepts the key we wish to store the data under and the value of the item to store. The data needs to be of a type that supports serialization i.e. PHP type or an object that implements serialization. The last (optional) parameter is the TTL (time to live) value for this item. This option might not always be available, if the underlying adapter does not support it. The method will return `true` if the key exists, or `false` otherwise. If even one key is not successfully stored, the method will return `false`.
 
 ```php
-$result = $cache->setMultiple('my-key', $data);
+$result = $cache->set('my-key', $data);
 ```
 
 If you wish to store more than one element with one call, you can call `setMultiple()`, passing an array of key => value pairs for the multiple-set operation. As with `set` the last (optional) parameter is the TTL (time to live). The method will return `true` if the key exists, or `false` otherwise.
