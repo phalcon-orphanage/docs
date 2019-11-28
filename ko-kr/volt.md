@@ -471,7 +471,7 @@ If you are using [Angular](https://angular.io) you can set the interpolators as 
 );
 ```
 
-## Variables
+## 변수
 
 Object variables may have attributes which can be accessed using the syntax: `foo.bar`. If you are passing arrays, you have to use the square bracket syntax: `foo['bar']`
 
