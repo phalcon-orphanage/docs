@@ -167,7 +167,7 @@ Realiza una operación de remplazo regex utilizando un patrón (`$pattern`) y te
 #### `remove`
 
 ```php
-Remove( mixed $input, mixed $remove ): string
+Remove( mixed $input, mixed $replace ): string
 ```
 
 Elimina contenido de la entrada sustituyendo el parámetro de remplazo (`$remove`) con una cadena vacía. Internally it uses [`str_replace`](https://secure.php.net/manual/en/function.str-replace.php).
