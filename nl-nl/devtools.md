@@ -43,7 +43,7 @@ cd phalcon-devtools/
 Create a symbolic link to the phalcon.php script:
 
 ```bash
-ln -s ~/phalcon-devtools/phalcon.php /usr/bin/phalcon
+ln -s ~/phalcon-devtools/phalcon /usr/bin/phalcon
 chmod ugo+x /usr/bin/phalcon
 ```
 

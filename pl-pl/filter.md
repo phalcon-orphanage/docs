@@ -167,7 +167,7 @@ Performs a regex replacement on the input using a `pattern` and the `replace` pa
 #### `remove`
 
 ```php
-Remove( mixed $input, mixed $remove ): string
+Remove( mixed $input, mixed $replace ): string
 ```
 
 Performs a replacement on the input, replacing the `replace` parameter with an empty string, effectively removing it. Internally it uses [`str_replace`](https://secure.php.net/manual/en/function.str-replace.php).
