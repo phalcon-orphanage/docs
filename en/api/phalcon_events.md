@@ -372,12 +372,9 @@ by every registered listener in a single fire
 
 | Namespace  | Phalcon\Events |
 
-Phalcon\Events\Manager
+Phalcon\Events\ManagerInterface
 
-Phalcon Events Manager, offers an easy way to intercept and manipulate, if
-needed, the normal flow of operation. With the EventsManager the developer
-can create hooks or plugins that will offer monitoring of data, manipulation,
-conditional execution and much more.
+Interface for Phalcon\Events managers.
 
 
 ## Methods

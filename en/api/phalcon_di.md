@@ -321,7 +321,7 @@ Sets the internal event manager
 
 
 ```php
-public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 Sets a service using a raw Phalcon\Di\Service definition
 
@@ -465,7 +465,7 @@ methods
 
 
 ```php
-public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 Sets a service using a raw Phalcon\Di\Service definition
 

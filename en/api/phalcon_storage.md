@@ -84,7 +84,7 @@ protected serializerFactory;
 
 ## Methods
 ```php
-protected function __construct( SerializerFactory $factory = null, array $options );
+protected function __construct( SerializerFactory $factory = null, array $options = [] );
 ```
 Sets parameters based on options
 
@@ -108,7 +108,7 @@ Deletes data from the adapter
 
 
 ```php
-abstract public function get( string $key ): mixed;
+abstract public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 Reads data from the adapter
 
@@ -224,7 +224,7 @@ Deletes data from the adapter
 
 
 ```php
-public function get( string $key ): mixed;
+public function get( string $key, mixed $defaultValue = null ): mixed;
 ```
 Reads data from the adapter
 
@@ -737,11 +737,6 @@ protected storageDir = ;
  * @var array
  */
 protected options;
-
-/**
- * @var bool
- */
-private warning = false;
 
 ```
 
