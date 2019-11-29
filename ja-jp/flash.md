@@ -244,7 +244,7 @@ will produce:
 
 The component also allows you to specify a different template, so that you can control the HTML produced by the component. The `setCustomTemplate()` and `getCustomTemplate()` expose this functionality. The template needs to have two placeholders:
 
-- `%cssClasses%` - where the CSS class will be injected
+- `%cssClass%` - where the CSS class will be injected
 - `%message%` - where the message will be injected
 
 ```php
@@ -256,7 +256,7 @@ use Phalcon\Flash\Direct;
 $escaper = new Escaper();
 $flash   = new Direct($escaper);
 
-$template = '<span class="%cssClasses%">%message%</span>';
+$template = '<span class="%cssClass%">%message%</span>';
 
 $flash->setCustomTemplate($template);
 ```
