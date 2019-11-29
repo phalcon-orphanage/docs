@@ -154,7 +154,7 @@ final public static function toObject( array $collection );
 Returns the passed array as an object
 
 ```php
-final public static function validateAll( array $collection, mixed $method ): bool;
+final public static function validateAll( array $collection, mixed $method = null ): bool;
 ```
 
 Returns true if the provided function returns true for all elements of the collection, false otherwise.
@@ -162,7 +162,7 @@ Returns true if the provided function returns true for all elements of the colle
 @return bool
 
 ```php
-final public static function validateAny( array $collection, mixed $method ): bool;
+final public static function validateAny( array $collection, mixed $method = null ): bool;
 ```
 
 Returns true if the provided function returns true for at least one element fo the collection, false otherwise.
