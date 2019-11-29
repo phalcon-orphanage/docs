@@ -22,6 +22,10 @@ For those that wish to sponsor our work and further the development of Phalcon, 
         <img src="https://assets.phalcon.io/phalcon/images/backers/abits-100x34.svg"
              alt="Abits">
     </a>
+    <a href="https://www.cloudflare.com/" class="phalcon-blog__sponsors-item">
+      <img src="https://assets.phalcon.io/phalcon/images/backers/cloudflare.svg"
+           alt="Cloudflare">
+    </a>
     <a href="https://algolia.com" class="phalcon-blog__sponsors-item">
         <img src="https://assets.phalcon.io/phalcon/images/backers/algolia-725x360.svg"
              alt="Algolia">
