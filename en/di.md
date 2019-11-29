@@ -597,7 +597,7 @@ public function setInternalEventsManager(
 Sets the internal event manager
 
 ```php
-public function setRaw(
+public function setService(
     string $name, 
     ServiceInterface $rawDefinition
 ): ServiceInterface
