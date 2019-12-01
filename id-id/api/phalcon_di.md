@@ -307,7 +307,7 @@ public function setInternalEventsManager( ManagerInterface $eventsManager );
 Sets the internal event manager
 
 ```php
-public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
 Sets a service using a raw Phalcon\Di\Service definition
@@ -441,7 +441,7 @@ public static function setDefault( DiInterface $container ): void;
 Set a default dependency injection container to be obtained into static methods
 
 ```php
-public function setRaw( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
+public function setService( string $name, ServiceInterface $rawDefinition ): ServiceInterface;
 ```
 
 Sets a service using a raw Phalcon\Di\Service definition
