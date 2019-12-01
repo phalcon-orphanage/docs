@@ -65,13 +65,13 @@ public function escapeCss( string $css ): string;
 Escape CSS strings by replacing non-alphanumeric chars by their hexadecimal escaped representation
 
 ```php
-public function escapeHtml( string $text ): string;
+public function escapeHtml( string $text = null ): string;
 ```
 
 Escapes a HTML string. Internally uses htmlspecialchars
 
 ```php
-public function escapeHtmlAttr( string $attribute ): string;
+public function escapeHtmlAttr( string $attribute = null ): string;
 ```
 
 Escapes a HTML attribute string
