@@ -8,6 +8,7 @@ title: 'Phalcon\Helper'
 * [Phalcon\Helper\Arr](#helper-arr)
 * [Phalcon\Helper\Exception](#helper-exception)
 * [Phalcon\Helper\Fs](#helper-fs)
+* [Phalcon\Helper\Json](#helper-json)
 * [Phalcon\Helper\Number](#helper-number)
 * [Phalcon\Helper\Str](#helper-str)
 
@@ -202,6 +203,61 @@ final public static function basename( string $uri, mixed $suffix = null ): stri
 Gets the filename from a given path, Same as PHP's basename() but has non-ASCII support. PHP's basename() does not properly support streams or filenames beginning with a non-US-ASCII character. see https://bugs.php.net/bug.php?id=37738
 
 @return string
+
+<h1 id="helper-json">Class Phalcon\Helper\Json</h1>
+
+[GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/json.zep)
+
+| Namespace | Phalcon\Helper | | Uses | InvalidArgumentException |
+
+This class offers a wrapper for JSON methods to serialize and unserialize
+
+## メソッド
+
+```php
+final public static function decode( string $data, bool $associative = bool, int $depth = int, int $options = int ): mixed;
+```
+
+Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
+
+```php
+use Phalcon\Helper\Json;
+
+$data = ' {"one":"two","0":"three"}
+';
+
+var_dump(Json::decode($data))
+// [
+//     'one' => 'two',
+//     'three'
+// ];
+```
+
+@return mixed
+
+@throws \InvalidArgumentException if the JSON cannot be decoded. @link http://www.php.net/manual/en/function.json-decode.php
+
+```php
+final public static function encode( mixed $data, int $depth = int, int $options = int ): string;
+```
+
+Encoxes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+
+```php
+use Phalcon\Helper\Json;
+
+$data = [
+    'one' => 'two',
+    'three'
+];
+
+echo Json::encode($data);
+// {"one":"two","0":"three"}
+```
+
+@return mixed
+
+@throws \InvalidArgumentException if the JSON cannot be encoded. @link http://www.php.net/manual/en/function.json-encode.php
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
