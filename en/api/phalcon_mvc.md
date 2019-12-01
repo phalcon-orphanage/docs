@@ -1325,10 +1325,14 @@ const TRANSACTION_INDEX = transaction;
 //
 protected dirtyState = 1;
 
-//
+/**
+ * @var array
+ */
 protected dirtyRelated;
 
-//
+/**
+ * @var array
+ */
 protected errorMessages;
 
 //
@@ -1337,13 +1341,17 @@ protected modelsManager;
 //
 protected modelsMetaData;
 
-//
+/**
+ * @var array
+ */
 protected related;
 
 //
 protected operationMade = 0;
 
-//
+/**
+ * @var array
+ */
 protected oldSnapshot;
 
 //
