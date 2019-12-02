@@ -762,6 +762,60 @@ $file = '/root/ελληνικά.txt';
 echo Fs::basename($file); // 'ελληνικά.txt';
 ```
 
+## Json
+
+[Phalcon\Helper\Json](api/phalcon_helper#helper-json) acts as a wrapper to `json_encode` and `json_decode` PHP methods, checking for errors and raising exceptions accordingly.
+
+### `decode`
+
+```php
+final public static function decode(
+    string $data,
+    bool $associative = false,
+    int $depth = 512,
+    int $options = 0
+ ): mixed
+```
+
+Decodes a string using `json_decode` and throws an exception if the JSON data cannot be decoded
+
+```php
+use Phalcon\Helper\Json;
+
+$data = ' {"one":"two","0":"three"}
+';
+
+var_dump(Json::decode($data));
+// [
+//     'one' => 'two',
+//     'three'
+// ];
+```
+
+### `encode`
+
+```php
+final public static function encode(
+    $data,
+    int $depth = 512,
+    int $options = 0
+): string
+```
+
+Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+
+```php
+use Phalcon\Helper\Json;
+
+$data = [
+    'one' => 'two',
+    'three'
+];
+
+echo Json::encode($data);
+// {"one":"two","0":"three"}
+```
+
 ## Number
 
 [Phalcon\Helper\Number](api/phalcon_helper#helper-number) exposes static methods that offer quick access to common functionality when working with numbers.
