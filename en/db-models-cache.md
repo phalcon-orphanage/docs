@@ -36,7 +36,7 @@ $container->set(
         $adapterFactory    = new AdapterFactory($serializerFactory);
 
         $options = [
-            'defaultSerializer' => 'Json',
+            'defaultSerializer' => 'Php',
             'lifetime'          => 7200
         ];
 
@@ -46,6 +46,10 @@ $container->set(
     }
 );
 ```
+
+> **NOTE**: It is imperative to use a serializer that can properly serialize and unserialize objects without changing their state. `Php` and `Igbinary` are such serializers. `Json` will convert objects to `stdClass` and `Simple`/`Complex` resultsets will become arrays. Choosing a serializer that cannot store objects properly will produce errors when the cache is restored for your models.
+{: .alert .alert-warning }
+
 
 You have complete control in how you create and customize the cache component before registering it. You can check the [cache](cache) document for various options and customizations available when creating the cache component.
 
