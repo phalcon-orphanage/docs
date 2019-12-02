@@ -752,8 +752,6 @@ echo Json::encode($data);
 // {"one":"two","0":"three"}
 ```
 
-
-
 ## Number
 [Phalcon\Helper\Number][helper-number] exposes static methods that offer quick access to common functionality when working with numbers.
 
