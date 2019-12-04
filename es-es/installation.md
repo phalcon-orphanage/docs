@@ -339,7 +339,7 @@ Compilación de Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir build
 ```
@@ -373,7 +373,7 @@ Las instrucciones anteriores compilarán e instalarán el módulo en su sistema.
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir compile
 cd ext
