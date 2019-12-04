@@ -339,7 +339,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir build
 ```
@@ -373,7 +373,7 @@ The instructions above will compile **and** install the module on your system. Y
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir compile
 cd ext
