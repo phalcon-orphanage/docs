@@ -359,6 +359,10 @@ echo $flash
 > **NOTE**: The `setImplicitFlush()` returns back the object so you can use in a more fluent interface by chaining calls.
 {: .alert .alert-info }
 
+> 
+> **NOTE**: When using the [Phalcon\Flash\Direct](api/phalcon_flash#flash-direct) component, to directly show results on the page you **must** set `setImplicitFlush()` to `false`.
+{: .alert .alert-warning }
+
 ## Escaping
 
 By default, the component will escape the contents of the message. There might be times however that you do not wish to escape the contents of your messages. You can use the `setAutoescape(false)`;
