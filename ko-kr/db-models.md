@@ -2101,9 +2101,77 @@ The static method `query()` returns a [Phalcon\Mvc\Model\Criteria](api/phalcon_m
 
 All the queries are internally handled as [PHQL](db-phql) queries. PHQL is a high-level, object-oriented and SQL-like language. This language offers more features to perform queries such as joining other models, group records, aggregations etc.
 
+### `findBy*`
+
+You can use the `findBy<property-name>()` method. This method expands on the `find()` method mentioned above. It allows you to quickly perform a select of records from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+
+For the following model:
+
+```php
+<?php
+
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+    public $inv_cst_id;
+    public $inv_id;
+    public $inv_status_flag;
+    public $inv_title;
+    public $inv_created_at;
+}
+```
+
+We have the properties `inv_cst_id`, `inv_id`, `inv_status_flag`, `inv_title`, `inv_created_at`. If we want to find all the invoices with `inv_total = 100` we can use:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::find(
+    [
+        'conditions'  => 'inv_total = :total:',
+        'bind'        => [
+            'total' => 100,
+        ],
+    ]
+);
+```
+
+but we can also use:
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::findByInvTotal(100);
+```
+
+> **NOTE**: The property names are changed to camel case if they have underscores. `inv_total` becomes `InvTotal`
+{: .alert .alert-info }
+
+You can also pass parameters in an array as the second parameter. These parameters are the same as the ones you can pass in the `find` method.
+
+```php
+<?php
+
+use MyApp\Models\Invoices;
+
+$invoices = Invoices::findByInvTotal(
+    100,
+    [
+        'order' => `inv_cst_id, inv_created_at`
+    ]
+);
+```
+
 ### `findFirstBy*`
 
-Finally, you can use the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned above. It allows you to quickly perform a retrieval from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
+Finally, you can use the `findFirstBy<property-name>()` method. This method expands on the `findFirst()` method mentioned above. It allows you to quickly perform a select from a table by using the property name in the method itself and passing it a parameter that contains the data you want to search for in that column.
 
 For the following model:
 
@@ -2442,7 +2510,7 @@ $invoices = Invoices::find(
 > **NOTE**: Bound parameters are available for all query methods such as `find()` and `findFirst()` but also the calculation methods like `count()`, `sum()`, `average()` etc.
 {: .alert .alert-info }
 
-If you're using *finders* e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string sytax for the first parameter instead of using the `conditions` array element. Also when using `findFirstBy*` the parameters are automatically bound.
+If you're using *finders* e.g. `find()`, `findFirst()`, etc., you can inject the bound parameters when using the string syntax for the first parameter instead of using the `conditions` array element. Also when using `findFirstBy*` the parameters are automatically bound.
 
 ```php
 <?php
