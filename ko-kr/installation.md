@@ -339,7 +339,7 @@ Phalcon 컴파일
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir build
 ```
@@ -368,7 +368,7 @@ PHP ini 파일에 `extension=phalcon.so` 라인을 추가하신 후 웹서버를
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0-rc.3 ./
 zephir fullclean
 zephir compile
 cd ext
