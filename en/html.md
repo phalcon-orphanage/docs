@@ -201,7 +201,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 <?php
 
 use Phalcon\Escaper;
-use Phalcon\Html\Helper\Bory;
+use Phalcon\Html\Helper\Body;
 
 $escaper = new Escaper();
 $anchor  = new Body($escaper);
@@ -213,6 +213,8 @@ $options = [
 echo $anchor($options);
 // <body id="my-id" class="my-class">
 ```
+> **NOTE**: This helper creates only the opening `<body>` tag. You will need to use the `Close` helper to generate the closing `</body>` tag.
+{: .alert .alert-info } 
 
 ### `button`     
 [Phalcon\Html\Helper\Button][html-helper-button] creates `<button>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
@@ -320,9 +322,11 @@ use Phalcon\Html\Helper\Form;
 $escaper = new Escaper();
 $anchor  = new Form($escaper);
 $options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
+    'class'   => 'my-class',
+    'name'    => 'my-name',
+    'id'      => 'my-id',
+    'method'  => 'post',
+    'enctype' => 'multipart/form-data'
 ];
 
 echo $anchor($options);
@@ -332,7 +336,6 @@ echo $anchor($options);
 //    class="my-class"
 //    method="post"
 //    enctype="multipart/form-data">
-// </address>
 ```
 
 > **NOTE**: This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag.
