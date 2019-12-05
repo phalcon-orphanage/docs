@@ -129,12 +129,11 @@ echo $collection->get('year', 1776, true); // 1776
 public function get(
     string $element, 
     mixed $defaultValue = null, 
-    bool $insensitive = true, 
     string $cast = null
 ):  mixed
 ```
 
-Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned.  By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element in a case sensitive manner. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
+Using `get()` offers three extra parameters. When `$defaultValue` is defined in the call and the element is not found, `$defaultValue` will be returned. The `cast` parameter accepts a string that defines what the returned value will be casted. The available values are:
 
 - `array`
 - `bool`
@@ -186,13 +185,7 @@ echo $collection->has('year', true);      // true
 ```
 
 ```php
-public function has(string $element, bool $insensitive = true):  bool
-```
-Using `has()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive. 
-
-```php
-echo $collection->has('YEAR', true);      // true
-echo $collection->has('YEAR', false);     // false
+public function has(string $element):  bool
 ```
 
 ## Set
@@ -270,13 +263,7 @@ $collection->remove('year');
 ```
 
 ```php
-public function remove(string $element, bool $insensitive = true):  void
-```
-Using `remove()` offers an extra parameter. By default `$insensitive` is set to `true`, making searches in the collection case insensitive. Setting this value to `false` will make the search for the element case sensitive. 
-
-```php
-$collection->remove('YEAR', true);
-$collection->remove('YEAR', false);
+public function remove(string $element):  void
 ```
 
 ## Iteration
