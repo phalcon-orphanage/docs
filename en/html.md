@@ -125,7 +125,7 @@ The registered names for respective helpers are:
 | Name         | Description                                                             |
 |--------------|-------------------------------------------------------------------------|
 | `a`          | [Phalcon\Html\Helper\Anchor][html-helper-anchor] - `<a>` tag            |
-| `aRaw`       | [Phalcon\Html\Helper\AchorRaw][html-helper-anchorraw] - `<a>` tag raw   |
+| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw][html-helper-anchorraw] - `<a>` tag raw   |
 | `body`       | [Phalcon\Html\Helper\Body][html-helper-body] - `<body>` tag             |
 | `button`     | [Phalcon\Html\Helper\Button][html-helper-button] - `<button>` tag       |
 | `close`      | [Phalcon\Html\Helper\Close][html-helper-close] - close tag              |
