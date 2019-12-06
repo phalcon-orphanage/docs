@@ -366,9 +366,9 @@ $collection = [
     3 => 'Framework',
 ];
 
-echo Arr::firstKey($collection); // 3
+echo Arr::lastKey($collection); // 3
 
-$result = Arr::firstKey(
+$result = Arr::lastKey(
     $collection,
     function ($element) {
         return strlen($element) < 8;
