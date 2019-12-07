@@ -95,7 +95,7 @@ class Memory extends Adapter
 }
 ```
 
-### Methods
+### Méthodes
 
 - Method names must be declared in camelCase.
 - Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
