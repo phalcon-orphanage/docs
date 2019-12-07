@@ -9,7 +9,7 @@ title: 'Phalcon\Version'
 
 <h1 id="version">Class Phalcon\Version</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/version.zep)
 
 | Namespace | Phalcon |
 
@@ -25,7 +25,7 @@ const VERSION_SPECIAL = 3;
 const VERSION_SPECIAL_NUMBER = 4;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public static function get(): string;
