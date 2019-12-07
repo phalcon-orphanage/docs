@@ -9,7 +9,7 @@ title: 'Phalcon\Container'
 
 <h1 id="container">Class Phalcon\Container</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/container.zep)
 
 | Namespace | Phalcon | | Uses | Psr\Container\ContainerInterface, Phalcon\Di\DiInterface | | Implements | ContainerInterface |
 
@@ -25,7 +25,7 @@ protected container;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( DiInterface $container );
