@@ -126,7 +126,7 @@ The registered names for respective helpers are:
 | Name         | Description                                                                                       |
 | ------------ | ------------------------------------------------------------------------------------------------- |
 | `a`          | [Phalcon\Html\Helper\Anchor](api/phalcon_html#html-helper-anchor) - `<a>` tag            |
-| `aRaw`       | [Phalcon\Html\Helper\AchorRaw](api/phalcon_html#html-helper-anchorraw) - `<a>` tag raw   |
+| `aRaw`       | [Phalcon\Html\Helper\AnchorRaw](api/phalcon_html#html-helper-anchorraw) - `<a>` tag raw  |
 | `body`       | [Phalcon\Html\Helper\Body](api/phalcon_html#html-helper-body) - `<body>` tag             |
 | `button`     | [Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) - `<button>` tag       |
 | `close`      | [Phalcon\Html\Helper\Close](api/phalcon_html#html-helper-close) - close tag                    |
@@ -203,7 +203,7 @@ echo $anchor('/myurl', 'click<>me', $options);
 <?php
 
 use Phalcon\Escaper;
-use Phalcon\Html\Helper\Bory;
+use Phalcon\Html\Helper\Body;
 
 $escaper = new Escaper();
 $anchor  = new Body($escaper);
@@ -215,6 +215,9 @@ $options = [
 echo $anchor($options);
 // <body id="my-id" class="my-class">
 ```
+> **NOTE**: This helper creates only the opening `<body>` tag. You will need to use the `Close` helper to generate the closing `</body>` tag. 
+> 
+> {: .alert .alert-info }
 
 ### `button`
 [Phalcon\Html\Helper\Button](api/phalcon_html#html-helper-button) creates `<button>` HTML tags. The component accepts the `text` as a string and optionally an array with all the attributes that the anchor needs.
@@ -322,9 +325,11 @@ use Phalcon\Html\Helper\Form;
 $escaper = new Escaper();
 $anchor  = new Form($escaper);
 $options = [
-    'class' => 'my-class',
-    'name'  => 'my-name',
-    'id'    => 'my-id',
+    'class'   => 'my-class',
+    'name'    => 'my-name',
+    'id'      => 'my-id',
+    'method'  => 'post',
+    'enctype' => 'multipart/form-data'
 ];
 
 echo $anchor($options);
@@ -334,7 +339,6 @@ echo $anchor($options);
 //    class="my-class"
 //    method="post"
 //    enctype="multipart/form-data">
-// </address>
 ```
 
 > **NOTE**: This helper creates only the opening `<form>` tag. You will need to use the `Close` helper to generate the closing `</form>` tag. 
