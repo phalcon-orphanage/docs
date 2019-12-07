@@ -26,7 +26,7 @@ title: 'Phalcon\Storage'
 
 <h1 id="storage-adapter-abstractadapter">Abstract Class Phalcon\Storage\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Implements | AdapterInterface |
 
@@ -79,7 +79,7 @@ protected serializerFactory;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 protected function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -187,13 +187,13 @@ Initializes the serializer
 
 <h1 id="storage-adapter-adapterinterface">Interface Phalcon\Storage\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Storage\Serializer\SerializerInterface |
 
 Interface for Phalcon\Logger adapters
 
-## Methods
+## Méthodes
 
 ```php
 public function clear(): bool;
@@ -257,7 +257,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapter-apcu">Class Phalcon\Storage\Adapter\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/apcu.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | APCuIterator, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -273,7 +273,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -353,7 +353,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapter-libmemcached">Class Phalcon\Storage\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/libmemcached.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/libmemcached.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -369,7 +369,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -449,7 +449,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapter-memory">Class Phalcon\Storage\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/memory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/memory.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Collection, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -470,7 +470,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -550,7 +550,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapter-redis">Class Phalcon\Storage\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/redis.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/redis.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractAdapter |
 
@@ -566,7 +566,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -648,7 +648,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapter-stream">Class Phalcon\Storage\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/stream.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/stream.zep)
 
 | Namespace | Phalcon\Storage\Adapter | | Uses | FilesystemIterator, Iterator, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface, RecursiveDirectoryIterator, RecursiveIteratorIterator | | Extends | AbstractAdapter |
 
@@ -669,7 +669,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $options = [] );
@@ -749,7 +749,7 @@ Stores data in the adapter
 
 <h1 id="storage-adapterfactory">Class Phalcon\Storage\AdapterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapterfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapterfactory.zep)
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -769,7 +769,7 @@ private serializerFactory;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
@@ -791,7 +791,7 @@ protected function getAdapters(): array;
 
 <h1 id="storage-exception">Class Phalcon\Storage\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/exception.zep)
 
 | Namespace | Phalcon\Storage | | Extends | \Phalcon\Exception |
 
@@ -801,7 +801,7 @@ Exceptions thrown in Phalcon\Storage will use this class
 
 <h1 id="storage-serializer-abstractserializer">Abstract Class Phalcon\Storage\Serializer\AbstractSerializer</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/abstractserializer.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/abstractserializer.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Phalcon\Storage\Exception | | Implements | SerializerInterface |
 
@@ -821,7 +821,7 @@ protected data;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( mixed $data = null );
@@ -848,7 +848,7 @@ If this returns true, then the data returns back as is
 
 <h1 id="storage-serializer-base64">Class Phalcon\Storage\Serializer\Base64</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/base64.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/base64.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
@@ -858,7 +858,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string;
@@ -876,7 +876,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-igbinary">Class Phalcon\Storage\Serializer\Igbinary</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/igbinary.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/igbinary.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
@@ -886,7 +886,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string;
@@ -904,7 +904,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-json">Class Phalcon\Storage\Serializer\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/json.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, JsonSerializable, Phalcon\Helper\Json | | Extends | AbstractSerializer |
 
@@ -914,7 +914,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string;
@@ -932,7 +932,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-msgpack">Class Phalcon\Storage\Serializer\Msgpack</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/msgpack.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/msgpack.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Extends | AbstractSerializer |
 
@@ -942,7 +942,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string | null;
@@ -960,7 +960,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-none">Class Phalcon\Storage\Serializer\None</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/none.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/none.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException | | Extends | AbstractSerializer |
 
@@ -970,7 +970,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string;
@@ -988,7 +988,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-php">Class Phalcon\Storage\Serializer\Php</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/php.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/php.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | InvalidArgumentException, Phalcon\Storage\Exception | | Extends | AbstractSerializer |
 
@@ -998,7 +998,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function serialize(): string;
@@ -1016,7 +1016,7 @@ public function unserialize( mixed $data ): void;
 
 <h1 id="storage-serializer-serializerinterface">Interface Phalcon\Storage\Serializer\SerializerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/serializerinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializer/serializerinterface.zep)
 
 | Namespace | Phalcon\Storage\Serializer | | Uses | Serializable | | Extends | Serializable |
 
@@ -1026,7 +1026,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function getData(): mixed;
@@ -1040,7 +1040,7 @@ public function setData( mixed $data ): void;
 
 <h1 id="storage-serializerfactory">Class Phalcon\Storage\SerializerFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializerfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/serializerfactory.zep)
 
 | Namespace | Phalcon\Storage | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Storage\Serializer\SerializerInterface | | Extends | AbstractFactory |
 
@@ -1050,7 +1050,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $services = [] );
