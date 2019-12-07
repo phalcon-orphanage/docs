@@ -10,7 +10,7 @@ title: 'Phalcon\Loader'
 
 <h1 id="loader">Class Phalcon\Loader</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Loader\Exception, Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | EventsAwareInterface |
 
@@ -87,7 +87,7 @@ protected registered = false;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function autoLoad( string $className ): bool;
@@ -223,7 +223,7 @@ protected function prepareNamespace( array $namespaceName ): array;
 
 <h1 id="loader-exception">Class Phalcon\Loader\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/loader/exception.zep)
 
 | Namespace | Phalcon\Loader | | Extends | \Phalcon\Exception |
 
