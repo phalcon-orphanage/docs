@@ -32,7 +32,7 @@ Each of the words above (apart from the last one) are links to the respective pa
 
 [Phalcon\Html\Breadcrumbs](api/phalcon_html#html-breadcrumbs) offers functionality to add text and URLs. The resulting HTML when calling `render()` will have each breadcrumb enclosed in `<dt>` tags, while the whole string is enclosed in `<dl>` tags.
 
-### Methods
+### Méthodes
 ```php
 public function add(
     string $label, 
