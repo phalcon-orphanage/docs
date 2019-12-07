@@ -68,7 +68,7 @@ if (false === $result) {
 | OP_UPDATE                |       2       |
 | TRANSACTION_INDEX        | 'transaction' |
 
-## Methods
+## Méthodes
 
 ```php
 final public function __construct(
@@ -771,7 +771,7 @@ Check if a specific attribute was updated. This only works if the model is keepi
 public function jsonSerialize(): array
 ```
 
-Serializes the object for json_encode
+Sérialise l'objet pour json_encode
 
 ```php
 echo json_encode($invoice);

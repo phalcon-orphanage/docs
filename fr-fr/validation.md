@@ -65,7 +65,7 @@ if (count($messages)) {
 
 The loosely-coupled design of this component allows you to create your own validators along with the ones provided by the framework.
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct(

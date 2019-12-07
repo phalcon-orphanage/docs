@@ -17,7 +17,7 @@ title: 'Phalcon\Session'
 
 <h1 id="session-adapter-abstractadapter">Abstract Class Phalcon\Session\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface, SessionHandlerInterface | | Implements | SessionHandlerInterface |
 
@@ -37,7 +37,7 @@ protected adapter;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function close(): bool;
@@ -77,13 +77,13 @@ Write
 
 <h1 id="session-adapter-libmemcached">Class Phalcon\Session\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/libmemcached.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Storage\AdapterFactory | | Extends | AbstractAdapter |
 
 Phalcon\Session\Adapter\Libmemcached
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -93,7 +93,7 @@ Constructor
 
 <h1 id="session-adapter-noop">Class Phalcon\Session\Adapter\Noop</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/noop.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/noop.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | SessionHandlerInterface | | Implements | SessionHandlerInterface |
 
@@ -142,7 +142,7 @@ protected ttl = 8600;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $options = [] );
@@ -194,13 +194,13 @@ Helper method to get the name prefixed
 
 <h1 id="session-adapter-redis">Class Phalcon\Session\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/redis.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Storage\AdapterFactory | | Extends | AbstractAdapter |
 
 Phalcon\Session\Adapter\Redis
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterFactory $factory, array $options = [] );
@@ -210,7 +210,7 @@ Constructor
 
 <h1 id="session-adapter-stream">Class Phalcon\Session\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/stream.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/adapter/stream.zep)
 
 | Namespace | Phalcon\Session\Adapter | | Uses | Phalcon\Helper\Str, Phalcon\Session\Exception | | Extends | Noop |
 
@@ -243,7 +243,7 @@ private path = ;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $options = [] );
@@ -285,7 +285,7 @@ public function write( mixed $id, mixed $data ): bool;
 
 <h1 id="session-bag">Class Phalcon\Session\Bag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/bag.zep)
 
 | Namespace | Phalcon\Session | | Uses | Phalcon\Collection, Phalcon\Di, Phalcon\Di\DiInterface, Phalcon\Di\InjectionAwareInterface | | Extends | Collection | | Implements | InjectionAwareInterface |
 
@@ -314,7 +314,7 @@ private session;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name );
@@ -360,7 +360,7 @@ Sets the DependencyInjector container
 
 <h1 id="session-exception">Class Phalcon\Session\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/exception.zep)
 
 | Namespace | Phalcon\Session | | Extends | \Phalcon\Exception |
 
@@ -370,7 +370,7 @@ Exceptions thrown in Phalcon\Session will use this class
 
 <h1 id="session-manager">Class Phalcon\Session\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/manager.zep)
 
 | Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Di\DiInterface, Phalcon\Helper\Arr | | Extends | AbstractInjectionAware | | Implements | ManagerInterface |
 
@@ -403,7 +403,7 @@ private uniqueId = ;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $options = [] );
@@ -543,7 +543,7 @@ Returns the status of the current session.
 
 <h1 id="session-managerinterface">Interface Phalcon\Session\ManagerInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/managerinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/session/managerinterface.zep)
 
 | Namespace | Phalcon\Session | | Uses | InvalidArgumentException, RuntimeException, SessionHandlerInterface |
 
@@ -559,7 +559,7 @@ const SESSION_DISABLED = 0;
 const SESSION_NONE = 1;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __get( string $key ): mixed;

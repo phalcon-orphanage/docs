@@ -9,7 +9,7 @@ title: 'Phalcon\Registry'
 
 <h1 id="registry">Final Class Phalcon\Registry</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/registry.zep)
 
 | Namespace | Phalcon | | Uses | Traversable | | Extends | Collection |
 
@@ -49,7 +49,7 @@ Though Phalcon\Registry exposes methods like __get(), offsetGet(), count() etc, 
 
 Internally all the magic methods (and interfaces except JsonSerializable) are implemented using object handlers or similar techniques: this allows to bypass relatively slow method calls.
 
-## Methods
+## Méthodes
 
 ```php
 final public function __construct( array $data = null );

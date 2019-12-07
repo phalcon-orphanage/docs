@@ -128,7 +128,7 @@ $form->add(
 );
 ```
 
-## Methods
+## Méthodes
 
 [Phalcon\Forms\Form](api/phalcon_forms#forms-form) exposes a number of methods that help with setting up a form with the necessary elements so that it can be used for validation, rendering elements etc.
 

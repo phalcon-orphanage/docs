@@ -49,7 +49,7 @@ There are several constants that control the behavior of the rendering process o
 | `LEVEL_NO_RENDER`       | Render Level: No render any view              |
 | `LEVEL_AFTER_TEMPLATE`  | Render Level: Render to the templates "after" |
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct(array options = [])

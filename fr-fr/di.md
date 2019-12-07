@@ -388,7 +388,7 @@ The component now can simply access the dependencies it requires when it needs t
 
 Additionally, this pattern increases testability in the code, thus making it less prone to errors.
 
-## Methods
+## Méthodes
 
 ```php
 public function __call(

@@ -22,7 +22,7 @@ title: 'Phalcon\Logger'
 
 <h1 id="logger">Class Phalcon\Logger</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
 | Namespace | Phalcon | | Uses | Psr\Log\LoggerInterface, Psr\Log\InvalidArgumentException, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
 
@@ -101,7 +101,7 @@ protected excluded;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $adapters = [] );
@@ -245,7 +245,7 @@ Returns an array of log levels with integer to string conversion
 
 <h1 id="logger-adapter-abstractadapter">Abstract Class Phalcon\Logger\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Implements | AdapterInterface |
 
@@ -288,7 +288,7 @@ protected queue;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __destruct();
@@ -346,7 +346,7 @@ Sets the message formatter
 
 <h1 id="logger-adapter-adapterinterface">Interface Phalcon\Logger\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item |
 
@@ -354,7 +354,7 @@ Phalcon\Logger\AdapterInterface
 
 Interface for Phalcon\Logger adapters
 
-## Methods
+## Méthodes
 
 ```php
 public function add( Item $item ): AdapterInterface;
@@ -406,7 +406,7 @@ Sets the message formatter
 
 <h1 id="logger-adapter-noop">Class Phalcon\Logger\Adapter\Noop</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/noop.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/noop.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
@@ -423,7 +423,7 @@ $logger->error("This is another error");
 $logger->close();
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function close(): bool;
@@ -439,7 +439,7 @@ Processes the message i.e. writes it to the file
 
 <h1 id="logger-adapter-stream">Class Phalcon\Logger\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/stream.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item, UnexpectedValueException | | Extends | AbstractAdapter |
 
@@ -490,7 +490,7 @@ protected options;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -516,7 +516,7 @@ Processes the message i.e. writes it to the file
 
 <h1 id="logger-adapter-syslog">Class Phalcon\Logger\Adapter\Syslog</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapter/syslog.zep)
 
 | Namespace | Phalcon\Logger\Adapter | | Uses | LogicException, Phalcon\Helper\Arr, Phalcon\Logger, Phalcon\Logger\Adapter, Phalcon\Logger\Exception, Phalcon\Logger\Formatter\FormatterInterface, Phalcon\Logger\Item | | Extends | AbstractAdapter |
 
@@ -574,7 +574,7 @@ protected option = 0;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $options = [] );
@@ -596,7 +596,7 @@ Processes the message i.e. writes it to the syslog
 
 <h1 id="logger-adapterfactory">Class Phalcon\Logger\AdapterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/adapterfactory.zep)
 
 | Namespace | Phalcon\Logger | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Logger\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
@@ -606,7 +606,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $services = [] );
@@ -628,7 +628,7 @@ protected function getAdapters(): array;
 
 <h1 id="logger-exception">Class Phalcon\Logger\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/exception.zep)
 
 | Namespace | Phalcon\Logger | | Extends | \Phalcon\Exception |
 
@@ -638,7 +638,7 @@ Exceptions thrown in Phalcon\Logger will use this class
 
 <h1 id="logger-formatter-abstractformatter">Abstract Class Phalcon\Logger\Formatter\AbstractFormatter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/abstractformatter.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger | | Implements | FormatterInterface |
 
@@ -648,7 +648,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function interpolate( string $message, mixed $context = null );
@@ -660,7 +660,7 @@ Interpolates context values into the message placeholders
 
 <h1 id="logger-formatter-formatterinterface">Interface Phalcon\Logger\Formatter\FormatterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/formatterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/formatterinterface.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Item |
 
@@ -668,7 +668,7 @@ Phalcon\Logger\FormatterInterface
 
 This interface must be implemented by formatters in Phalcon\Logger
 
-## Methods
+## Méthodes
 
 ```php
 public function format( Item $item ): string | array;
@@ -678,7 +678,7 @@ Applies a format to an item
 
 <h1 id="logger-formatter-json">Class Phalcon\Logger\Formatter\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Helper\Json, Phalcon\Logger\Item | | Extends | AbstractFormatter |
 
@@ -698,7 +698,7 @@ protected dateFormat;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $dateFormat = string );
@@ -722,7 +722,7 @@ public function setDateFormat( string $dateFormat )
 
 <h1 id="logger-formatter-line">Class Phalcon\Logger\Formatter\Line</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/line.zep)
 
 | Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Item | | Extends | AbstractFormatter |
 
@@ -749,7 +749,7 @@ protected format;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $format = string, string $dateFormat = string );
@@ -781,7 +781,7 @@ public function setFormat( string $format )
 
 <h1 id="logger-item">Class Phalcon\Logger\Item</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/item.zep)
 
 | Namespace | Phalcon\Logger |
 
@@ -825,7 +825,7 @@ protected type;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $message, string $name, int $type, int $time = int, mixed $context = [] );
@@ -855,7 +855,7 @@ public function getType(): integer
 
 <h1 id="logger-loggerfactory">Class Phalcon\Logger\LoggerFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/loggerfactory.zep)
 
 | Namespace | Phalcon\Logger | | Uses | Phalcon\Config, Phalcon\Helper\Arr, Phalcon\Logger |
 
@@ -873,7 +873,7 @@ private adapterFactory;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterFactory $factory );

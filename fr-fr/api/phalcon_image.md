@@ -15,7 +15,7 @@ title: 'Phalcon\Image'
 
 <h1 id="image-adapter-abstractadapter">Abstract Class Phalcon\Image\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Implements | AdapterInterface |
 
@@ -70,7 +70,7 @@ protected width;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -188,7 +188,7 @@ Add a watermark to an image with the specified opacity
 
 <h1 id="image-adapter-adapterinterface">Interface Phalcon\Image\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum |
 
@@ -198,7 +198,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function background( string $color, int $opacity = int ): AdapterInterface;
@@ -286,7 +286,7 @@ public function watermark( AdapterInterface $watermark, int $offsetX = int, int 
 
 <h1 id="image-adapter-gd">Class Phalcon\Image\Adapter\Gd</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/gd.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -304,7 +304,7 @@ protected static checked = false;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -422,7 +422,7 @@ protected function processWatermark( AdapterInterface $watermark, int $offsetX, 
 
 <h1 id="image-adapter-imagick">Class Phalcon\Image\Adapter\Imagick</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/adapter/imagick.zep)
 
 | Namespace | Phalcon\Image\Adapter | | Uses | Phalcon\Image\Enum, Phalcon\Image\Exception | | Extends | AbstractAdapter |
 
@@ -452,7 +452,7 @@ protected static version = 0;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $file, int $width = null, int $height = null );
@@ -578,7 +578,7 @@ Execute a watermarking.
 
 <h1 id="image-enum">Class Phalcon\Image\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/enum.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/enum.zep)
 
 | Namespace | Phalcon\Image |
 
@@ -604,7 +604,7 @@ const WIDTH = 2;
 
 <h1 id="image-exception">Class Phalcon\Image\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/exception.zep)
 
 | Namespace | Phalcon\Image | | Extends | \Phalcon\Exception |
 
@@ -616,13 +616,13 @@ For the full copyright and license information, please view the LICENSE.txt file
 
 <h1 id="image-imagefactory">Class Phalcon\Image\ImageFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/image/imagefactory.zep)
 
 | Namespace | Phalcon\Image | | Uses | Phalcon\Config, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr, Phalcon\Image\Adapter\AdapterInterface | | Extends | AbstractFactory |
 
 Phalcon\Image/ImageFactory
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $services = [] );

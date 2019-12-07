@@ -11,7 +11,7 @@ title: 'Phalcon\Security'
 
 <h1 id="security">Class Phalcon\Security</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\RequestInterface, Phalcon\Security\Random, Phalcon\Security\Exception, Phalcon\Session\ManagerInterface | | Extends | AbstractInjectionAware |
 
@@ -105,7 +105,7 @@ private localRequest;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SessionInterface $session = null, RequestInterface $request = null );
@@ -221,7 +221,7 @@ Sets the work factor
 
 <h1 id="security-exception">Class Phalcon\Security\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/exception.zep)
 
 | Namespace | Phalcon\Security | | Extends | \Phalcon\Exception |
 
@@ -231,7 +231,7 @@ Exceptions thrown in Phalcon\Security will use this class
 
 <h1 id="security-random">Class Phalcon\Security\Random</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/security/random.zep)
 
 | Namespace | Phalcon\Security |
 
@@ -298,7 +298,7 @@ This class partially borrows SecureRandom library from Ruby
 
 @link http://ruby-doc.org/stdlib-2.2.2/libdoc/securerandom/rdoc/SecureRandom.html
 
-## Methods
+## Méthodes
 
 ```php
 public function base58( int $len = null ): string;

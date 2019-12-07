@@ -34,7 +34,7 @@ title: 'Phalcon\Db'
 
 <h1 id="db-abstractdb">Abstract Class Phalcon\Db\AbstractDb</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/abstractdb.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/abstractdb.zep)
 
 | Namespace | Phalcon\Db | | Uses | \PDO |
 
@@ -74,7 +74,7 @@ try {
 }
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public static function setup( array $options ): void;
@@ -84,7 +84,7 @@ Enables/disables options in the Database component
 
 <h1 id="db-adapter-abstractadapter">Abstract Class Phalcon\Db\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Phalcon\Db\RawValue, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -169,7 +169,7 @@ protected type;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $descriptor );
@@ -732,13 +732,13 @@ var_dump(
 
 <h1 id="db-adapter-adapterinterface">Interface Phalcon\Db\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Db\DialectInterface, Phalcon\Db\ResultInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\ReferenceInterface |
 
 Interface for Phalcon\Db adapters
 
-## Methods
+## Méthodes
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): bool;
@@ -1173,7 +1173,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-adapter-pdo-abstractpdo">Abstract Class Phalcon\Db\Adapter\Pdo\AbstractPdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/abstractpdo.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/abstractpdo.zep)
 
 | Namespace | Phalcon\Db\Adapter\Pdo | | Uses | Phalcon\Db\Adapter\AbstractAdapter, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\Result\Pdo, Phalcon\Db\ResultInterface, Phalcon\Events\ManagerInterface | | Extends | AbstractAdapter |
 
@@ -1210,7 +1210,7 @@ protected pdo;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $descriptor );
@@ -1463,7 +1463,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-mysql">Class Phalcon\Db\Adapter\Pdo\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/mysql.zep)
 
 | Namespace | Phalcon\Db\Adapter\Pdo | | Uses | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface | | Extends | PdoAdapter |
 
@@ -1498,7 +1498,7 @@ protected type = mysql;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function addForeignKey( string $tableName, string $schemaName, ReferenceInterface $reference ): bool;
@@ -1550,7 +1550,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-postgresql">Class Phalcon\Db\Adapter\Pdo\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/postgresql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/postgresql.zep)
 
 | Namespace | Phalcon\Db\Adapter\Pdo | | Uses | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface, Throwable | | Extends | PdoAdapter |
 
@@ -1585,7 +1585,7 @@ protected type = pgsql;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $descriptor );
@@ -1678,7 +1678,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdo-sqlite">Class Phalcon\Db\Adapter\Pdo\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdo/sqlite.zep)
 
 | Namespace | Phalcon\Db\Adapter\Pdo | | Uses | Phalcon\Db\Adapter\Pdo\AbstractPdo, Phalcon\Db\Column, Phalcon\Db\ColumnInterface, Phalcon\Db\Enum, Phalcon\Db\Exception, Phalcon\Db\Index, Phalcon\Db\IndexInterface, Phalcon\Db\RawValue, Phalcon\Db\Reference, Phalcon\Db\ReferenceInterface | | Extends | PdoAdapter |
 
@@ -1709,7 +1709,7 @@ protected type = sqlite;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $descriptor );
@@ -1788,7 +1788,7 @@ Returns PDO adapter DSN defaults as a key-value map.
 
 <h1 id="db-adapter-pdofactory">Class Phalcon\Db\Adapter\PdoFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdofactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/adapter/pdofactory.zep)
 
 | Namespace | Phalcon\Db\Adapter | | Uses | Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
@@ -1798,7 +1798,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $services = [] );
@@ -1826,7 +1826,7 @@ Returns the available adapters
 
 <h1 id="db-column">Class Phalcon\Db\Column</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/column.zep)
 
 | Namespace | Phalcon\Db | | Implements | ColumnInterface |
 
@@ -1993,7 +1993,7 @@ protected unsigned = false;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $definition );
@@ -2085,13 +2085,13 @@ Returns true if number column is unsigned
 
 <h1 id="db-columninterface">Interface Phalcon\Db\ColumnInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/columninterface.zep)
 
 | Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db\Column
 
-## Methods
+## Méthodes
 
 ```php
 public function getAfterPosition(): string;
@@ -2191,7 +2191,7 @@ Returns true if number column is unsigned
 
 <h1 id="db-dialect">Abstract Class Phalcon\Db\Dialect</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect.zep)
 
 | Namespace | Phalcon\Db | | Implements | DialectInterface |
 
@@ -2208,7 +2208,7 @@ protected customFunctions;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function createSavepoint( string $name ): string;
@@ -2487,7 +2487,7 @@ Prepares table for this RDBMS
 
 <h1 id="db-dialect-mysql">Class Phalcon\Db\Dialect\Mysql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/mysql.zep)
 
 | Namespace | Phalcon\Db\Dialect | | Uses | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface | | Extends | Dialect |
 
@@ -2503,7 +2503,7 @@ protected escapeChar = `;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2687,7 +2687,7 @@ Generates SQL to add the table creation options
 
 <h1 id="db-dialect-postgresql">Class Phalcon\Db\Dialect\Postgresql</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/postgresql.zep)
 
 | Namespace | Phalcon\Db\Dialect | | Uses | Phalcon\Db\Dialect, Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface, Phalcon\Db\DialectInterface | | Extends | Dialect |
 
@@ -2703,7 +2703,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -2881,7 +2881,7 @@ protected function getTableOptions( array $definition ): string;
 
 <h1 id="db-dialect-sqlite">Class Phalcon\Db\Dialect\Sqlite</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/sqlite.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialect/sqlite.zep)
 
 | Namespace | Phalcon\Db\Dialect | | Uses | Phalcon\Db\Column, Phalcon\Db\Exception, Phalcon\Db\IndexInterface, Phalcon\Db\Dialect, Phalcon\Db\DialectInterface, Phalcon\Db\ColumnInterface, Phalcon\Db\ReferenceInterface | | Extends | Dialect |
 
@@ -2897,7 +2897,7 @@ protected escapeChar = \";
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3087,13 +3087,13 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-dialectinterface">Interface Phalcon\Db\DialectInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/dialectinterface.zep)
 
 | Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db dialects
 
-## Methods
+## Méthodes
 
 ```php
 public function addColumn( string $tableName, string $schemaName, ColumnInterface $column ): string;
@@ -3301,7 +3301,7 @@ Generates SQL checking for the existence of a schema.view
 
 <h1 id="db-enum">Class Phalcon\Db\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/enum.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/enum.zep)
 
 | Namespace | Phalcon\Db |
 
@@ -3331,7 +3331,7 @@ const FETCH_UNIQUE;
 
 <h1 id="db-exception">Class Phalcon\Db\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/exception.zep)
 
 | Namespace | Phalcon\Db | | Extends | \Phalcon\Exception |
 
@@ -3339,7 +3339,7 @@ Exceptions thrown in Phalcon\Db will use this class
 
 <h1 id="db-index">Class Phalcon\Db\Index</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/index.zep)
 
 | Namespace | Phalcon\Db | | Implements | IndexInterface |
 
@@ -3395,7 +3395,7 @@ protected type;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $columns, string $type = string );
@@ -3417,13 +3417,13 @@ public function getType(): string
 
 <h1 id="db-indexinterface">Interface Phalcon\Db\IndexInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/indexinterface.zep)
 
 | Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db\Index
 
-## Methods
+## Méthodes
 
 ```php
 public function getColumns(): array;
@@ -3445,7 +3445,7 @@ Gets the index type
 
 <h1 id="db-profiler">Class Phalcon\Db\Profiler</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler.zep)
 
 | Namespace | Phalcon\Db | | Uses | Phalcon\Db\Profiler\Item |
 
@@ -3522,7 +3522,7 @@ protected totalSeconds = 0;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getLastProfile(): Item;
@@ -3568,7 +3568,7 @@ Stops the active profile
 
 <h1 id="db-profiler-item">Class Phalcon\Db\Profiler\Item</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/profiler/item.zep)
 
 | Namespace | Phalcon\Db\Profiler |
 
@@ -3614,7 +3614,7 @@ protected sqlVariables;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getFinalTime(): double
@@ -3664,7 +3664,7 @@ public function setSqlVariables( array $sqlVariables )
 
 <h1 id="db-rawvalue">Class Phalcon\Db\RawValue</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/rawvalue.zep)
 
 | Namespace | Phalcon\Db |
 
@@ -3693,7 +3693,7 @@ protected value;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( mixed $value );
@@ -3711,7 +3711,7 @@ public function getValue(): string
 
 <h1 id="db-reference">Class Phalcon\Db\Reference</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/reference.zep)
 
 | Namespace | Phalcon\Db | | Implements | ReferenceInterface |
 
@@ -3796,7 +3796,7 @@ protected onUpdate;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $definition );
@@ -3838,13 +3838,13 @@ public function getSchemaName(): string
 
 <h1 id="db-referenceinterface">Interface Phalcon\Db\ReferenceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/referenceinterface.zep)
 
 | Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db\Reference
 
-## Methods
+## Méthodes
 
 ```php
 public function getColumns(): array;
@@ -3896,7 +3896,7 @@ Gets the schema where referenced table is
 
 <h1 id="db-result-pdo">Class Phalcon\Db\Result\Pdo</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/result/pdo.zep)
 
 | Namespace | Phalcon\Db\Result | | Uses | Phalcon\Db\Enum, Phalcon\Db\ResultInterface, Phalcon\Db\Adapter\AdapterInterface | | Implements | ResultInterface |
 
@@ -3949,7 +3949,7 @@ protected sqlStatement;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterInterface $connection, \PDOStatement $result, mixed $sqlStatement = null, mixed $bindParams = null, mixed $bindTypes = null );
@@ -4081,13 +4081,13 @@ $result->setFetchMode(
 
 <h1 id="db-resultinterface">Interface Phalcon\Db\ResultInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/db/resultinterface.zep)
 
 | Namespace | Phalcon\Db |
 
 Interface for Phalcon\Db\Result objects
 
-## Methods
+## Méthodes
 
 ```php
 public function dataSeek( long $number );
