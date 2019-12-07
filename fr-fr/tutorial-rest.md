@@ -24,7 +24,7 @@ In this tutorial, you will learn how to create a simple application that provide
 > **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. 
 {: .alert .alert-warning }
 
-## Methods
+## Méthodes
 
 The API consists of the following methods:
 
