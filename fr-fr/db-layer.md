@@ -77,7 +77,7 @@ Additional constants are available in the [Phalcon\Db\Column](api/phalcon_db#db-
 > **NOTE**: Depending on your RDBMS, certain types will not be available (e.g. `JSON` is not supported for Sqlite).
 {: .alert .alert-info }
 
-### Methods
+### Méthodes
 
 ```php
 public function addColumn(
