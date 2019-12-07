@@ -10,7 +10,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-beginner.svg)
 
 ## Genel Bakış
 
@@ -21,7 +21,7 @@ In this tutorial, you will learn how to create a simple application that provide
 * `PUT` to update data
 * `DELETE` to delete data
 
-> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. 
+> **NOTE**: This is just a sample application. It lacks a lot of features such as authentication, authorization, sanitization of input and error management to name a few. Please use it as a building block for your application, or as a tutorial to understand how you can build a REST API with Phalcon. You can also have a look at the <rest-api> project. 
 {: .alert .alert-warning }
 
 ## Methods
