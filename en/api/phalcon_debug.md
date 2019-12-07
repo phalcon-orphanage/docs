@@ -190,7 +190,7 @@ Shows a backtrace item
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
 | Namespace  | Phalcon\Debug |
-| Uses       | Phalcon\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
+| Uses       | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
 Dumps information about a variable(s)
 
