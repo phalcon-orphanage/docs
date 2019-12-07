@@ -36,7 +36,7 @@ try {
 }
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct(
