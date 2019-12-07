@@ -87,7 +87,7 @@ The above code will print the field names and also the fields to field types arr
 | `MODELS_PRIMARY_KEY`              | Every column part of the primary key                                       |
 | `MODELS_REVERSE_COLUMN_MAP`       | Reverse column map (aliases)                                               |
 
-## Methods
+## Méthodes
 
 ```php
 public function getAttributes(ModelInterface $model): array
