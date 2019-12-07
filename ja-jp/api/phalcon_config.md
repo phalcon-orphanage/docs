@@ -257,7 +257,7 @@ Build multidimensional array from string
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/config/adapter/json.zep)
 
-| Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config | | Extends | Config |
+| Namespace | Phalcon\Config\Adapter | | Uses | Phalcon\Config, Phalcon\Helper\Json | | Extends | Config |
 
 Reads JSON files and converts them to Phalcon\Config objects.
 
