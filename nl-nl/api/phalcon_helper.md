@@ -31,6 +31,14 @@ Chunks an array into smaller arrays of a specified size.
 @return array
 
 ```php
+final public static function filter( array $collection, mixed $method = null ): array;
+```
+
+Helper method to filter the collection
+
+@return array
+
+```php
 final public static function first( array $collection, mixed $method = null ): mixed;
 ```
 
@@ -226,7 +234,7 @@ use Phalcon\Helper\Json;
 $data = ' {"one":"two","0":"three"}
 ';
 
-var_dump(Json::decode($data))
+var_dump(Json::decode($data));
 // [
 //     'one' => 'two',
 //     'three'
@@ -238,10 +246,10 @@ var_dump(Json::decode($data))
 @throws \InvalidArgumentException if the JSON cannot be decoded. @link http://www.php.net/manual/en/function.json-decode.php
 
 ```php
-final public static function encode( mixed $data, int $depth = int, int $options = int ): string;
+final public static function encode( mixed $data, int $options = int, int $depth = int ): string;
 ```
 
-Encoxes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
 
 ```php
 use Phalcon\Helper\Json;
