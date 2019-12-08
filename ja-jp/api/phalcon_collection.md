@@ -13,7 +13,7 @@ title: 'Phalcon\Collection'
 
 [GitHub上のソース](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
 
-| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
+| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
 `Phalcon\Collection` is a supercharged object oriented array. It implements:
 

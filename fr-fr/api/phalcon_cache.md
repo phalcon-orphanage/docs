@@ -19,7 +19,7 @@ title: 'Phalcon\Cache'
 
 <h1 id="cache">Class Phalcon\Cache</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Cache\Exception\InvalidArgumentException, Psr\SimpleCache\CacheInterface, Traversable | | Implements | CacheInterface |
 
@@ -37,7 +37,7 @@ protected adapter;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterInterface $adapter );
@@ -149,7 +149,7 @@ Checks the key. If it contains invalid characters an exception is thrown
 
 <h1 id="cache-adapter-adapterinterface">Interface Phalcon\Cache\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Storage\Adapter\AdapterInterface | | Extends | StorageAdapterInterface |
 
@@ -157,7 +157,7 @@ Interface for Phalcon\Cache adapters
 
 <h1 id="cache-adapter-apcu">Class Phalcon\Cache\Adapter\Apcu</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/apcu.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/apcu.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Apcu | | Extends | StorageApcu | | Implements | CacheAdapterInterface |
 
@@ -165,7 +165,7 @@ Apcu adapter
 
 <h1 id="cache-adapter-libmemcached">Class Phalcon\Cache\Adapter\Libmemcached</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/libmemcached.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/libmemcached.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Libmemcached | | Extends | StorageLibmemcached | | Implements | CacheAdapterInterface |
 
@@ -173,7 +173,7 @@ Libmemcached adapter
 
 <h1 id="cache-adapter-memory">Class Phalcon\Cache\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/memory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/memory.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Memory | | Extends | StorageMemory | | Implements | CacheAdapterInterface |
 
@@ -181,7 +181,7 @@ Memory adapter
 
 <h1 id="cache-adapter-redis">Class Phalcon\Cache\Adapter\Redis</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/redis.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/redis.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Redis | | Extends | StorageRedis | | Implements | CacheAdapterInterface |
 
@@ -189,7 +189,7 @@ Redis adapter
 
 <h1 id="cache-adapter-stream">Class Phalcon\Cache\Adapter\Stream</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/stream.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapter/stream.zep)
 
 | Namespace | Phalcon\Cache\Adapter | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Storage\Adapter\Stream | | Extends | StorageStream | | Implements | CacheAdapterInterface |
 
@@ -197,7 +197,7 @@ Stream adapter
 
 <h1 id="cache-adapterfactory">Class Phalcon\Cache\AdapterFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapterfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/adapterfactory.zep)
 
 | Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache\Exception\Exception, Phalcon\Factory\AbstractFactory, Phalcon\Storage\SerializerFactory | | Extends | AbstractFactory |
 
@@ -213,7 +213,7 @@ private serializerFactory;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( SerializerFactory $factory = null, array $services = [] );
@@ -235,7 +235,7 @@ Returns the available adapters
 
 <h1 id="cache-cachefactory">Class Phalcon\Cache\CacheFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cachefactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/cachefactory.zep)
 
 | Namespace | Phalcon\Cache | | Uses | Phalcon\Cache\Adapter\AdapterInterface, Phalcon\Cache, Psr\SimpleCache\CacheInterface, Phalcon\Cache\Exception\Exception, Phalcon\Config, Phalcon\Helper\Arr |
 
@@ -251,7 +251,7 @@ protected adapterFactory;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( AdapterFactory $factory );
@@ -273,7 +273,7 @@ Constructs a new Cache instance.
 
 <h1 id="cache-exception-exception">Class Phalcon\Cache\Exception\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/exception.zep)
 
 | Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\CacheException |
 
@@ -281,7 +281,7 @@ Exceptions thrown in Phalcon\Cache will use this class
 
 <h1 id="cache-exception-invalidargumentexception">Class Phalcon\Cache\Exception\InvalidArgumentException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/invalidargumentexception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/cache/exception/invalidargumentexception.zep)
 
 | Namespace | Phalcon\Cache\Exception | | Extends | \Phalcon\Exception | | Implements | \Psr\SimpleCache\InvalidArgumentException |
 

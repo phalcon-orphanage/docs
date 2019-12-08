@@ -186,7 +186,7 @@ Shows a backtrace item
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
-| Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
+| Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
 Dumps information about a variable(s)
 

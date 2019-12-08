@@ -9,7 +9,7 @@ title: 'Phalcon\Text'
 
 <h1 id="text">Class Phalcon\Text</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/text.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Helper\Str |
 
@@ -26,7 +26,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public static function camelize( string $text, mixed $delimiter = null ): string;

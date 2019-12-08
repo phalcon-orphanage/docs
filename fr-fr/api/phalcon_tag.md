@@ -11,7 +11,7 @@ title: 'Phalcon\Tag'
 
 <h1 id="tag">Class Phalcon\Tag</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Tag\Select, Phalcon\Tag\Exception, Phalcon\Url\UrlInterface |
 
@@ -74,7 +74,7 @@ protected static urlService;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public static function appendTitle( mixed $title ): void;
@@ -422,7 +422,7 @@ Builds INPUT tags that implements the checked attribute
 
 <h1 id="tag-exception">Class Phalcon\Tag\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/exception.zep)
 
 | Namespace | Phalcon\Tag | | Extends | \Phalcon\Exception |
 
@@ -432,7 +432,7 @@ Exceptions thrown in Phalcon\Tag will use this class
 
 <h1 id="tag-select">Abstract Class Phalcon\Tag\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/tag/select.zep)
 
 | Namespace | Phalcon\Tag | | Uses | Phalcon\Tag, Phalcon\Escaper\EscaperInterface, Phalcon\Mvc\Model\ResultsetInterface |
 
@@ -440,7 +440,7 @@ Phalcon\Tag\Select
 
 Generates a SELECT html tag using a static array of values or a Phalcon\Mvc\Model resultset
 
-## Methods
+## Méthodes
 
 ```php
 public static function selectField( mixed $parameters, mixed $data = null ): string;

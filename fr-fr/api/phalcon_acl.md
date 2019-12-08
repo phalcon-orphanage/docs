@@ -19,7 +19,7 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -73,7 +73,7 @@ protected eventsManager;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getActiveAccess(): string
@@ -113,13 +113,13 @@ Sets the events manager
 
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
 Interface for Phalcon\Acl adapters
 
-## Methods
+## Méthodes
 
 ```php
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
@@ -239,7 +239,7 @@ Sets the default access level (Phalcon\Acl\Enum::ALLOW or Phalcon\Acl\Enum::DENY
 
 <h1 id="acl-adapter-memory">Class Phalcon\Acl\Adapter\Memory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/memory.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\Enum, Phalcon\Acl\Role, Phalcon\Acl\RoleInterface, Phalcon\Acl\Component, Phalcon\Acl\Exception, Phalcon\Events\Manager, Phalcon\Acl\RoleAware, Phalcon\Acl\ComponentAware, Phalcon\Acl\ComponentInterface, ReflectionFunction | | Extends | AbstractAdapter |
 
@@ -394,7 +394,7 @@ protected rolesNames;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct();
@@ -582,7 +582,7 @@ Sets the default access level (`Phalcon\Enum::ALLOW` or `Phalcon\Enum::DENY`) fo
 
 <h1 id="acl-component">Class Phalcon\Acl\Component</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/component.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/component.zep)
 
 | Namespace | Phalcon\Acl | | Implements | ComponentInterface |
 
@@ -607,7 +607,7 @@ private name;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -629,13 +629,13 @@ public function getName(): string
 
 <h1 id="acl-componentaware">Interface Phalcon\Acl\ComponentAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentaware.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentaware.zep)
 
 | Namespace | Phalcon\Acl |
 
 Interface for classes which could be used in allow method as RESOURCE
 
-## Methods
+## Méthodes
 
 ```php
 public function getComponentName(): string;
@@ -645,13 +645,13 @@ Returns component name
 
 <h1 id="acl-componentinterface">Interface Phalcon\Acl\ComponentInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/componentinterface.zep)
 
 | Namespace | Phalcon\Acl |
 
 Interface for Phalcon\Acl\Component
 
-## Methods
+## Méthodes
 
 ```php
 public function __toString(): string;
@@ -673,7 +673,7 @@ Returns the component name
 
 <h1 id="acl-enum">Class Phalcon\Acl\Enum</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/enum.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/enum.zep)
 
 | Namespace | Phalcon\Acl |
 
@@ -688,7 +688,7 @@ const DENY = 0;
 
 <h1 id="acl-exception">Class Phalcon\Acl\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/exception.zep)
 
 | Namespace | Phalcon\Acl | | Extends | \Phalcon\Exception |
 
@@ -696,7 +696,7 @@ Class for exceptions thrown by Phalcon\Acl
 
 <h1 id="acl-role">Class Phalcon\Acl\Role</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/role.zep)
 
 | Namespace | Phalcon\Acl | | Implements | RoleInterface |
 
@@ -721,7 +721,7 @@ private description;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, string $description = null );
@@ -743,13 +743,13 @@ public function getName(): string
 
 <h1 id="acl-roleaware">Interface Phalcon\Acl\RoleAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleaware.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleaware.zep)
 
 | Namespace | Phalcon\Acl |
 
 Interface for classes which could be used in allow method as ROLE
 
-## Methods
+## Méthodes
 
 ```php
 public function getRoleName(): string;
@@ -759,13 +759,13 @@ Returns role name
 
 <h1 id="acl-roleinterface">Interface Phalcon\Acl\RoleInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/roleinterface.zep)
 
 | Namespace | Phalcon\Acl |
 
 Interface for Phalcon\Acl\Role
 
-## Methods
+## Méthodes
 
 ```php
 public function __toString(): string;

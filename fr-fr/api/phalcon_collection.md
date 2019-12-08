@@ -11,9 +11,9 @@ title: 'Phalcon\Collection'
 
 <h1 id="collection">Class Phalcon\Collection</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection.zep)
 
-| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
+| Namespace | Phalcon | | Uses | ArrayAccess, ArrayIterator, Countable, IteratorAggregate, JsonSerializable, Phalcon\Helper\Json, Serializable, Traversable | | Implements | ArrayAccess, Countable, IteratorAggregate, JsonSerializable, Serializable |
 
 `Phalcon\Collection` is a supercharged object oriented array. It implements:
 
@@ -45,7 +45,7 @@ protected lowerKeys;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $data = [], bool $insensitive = bool );
@@ -205,7 +205,7 @@ Internal method to set data
 
 <h1 id="collection-exception">Class Phalcon\Collection\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/exception.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Throwable | | Extends | \Phalcon\Exception | | Implements | Throwable |
 
@@ -213,13 +213,13 @@ Exceptions for the Collection object
 
 <h1 id="collection-readonly">Class Phalcon\Collection\ReadOnly</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/collection/readonly.zep)
 
 | Namespace | Phalcon\Collection | | Uses | Phalcon\Collection | | Extends | Collection |
 
 Phalcon\Collection\ReadOnly is a read only Collection object
 
-## Methods
+## Méthodes
 
 ```php
 public function remove( string $element ): void;

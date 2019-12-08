@@ -50,7 +50,7 @@ $container = new Di();
 $app       = new Micro($container);
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct(
@@ -969,7 +969,7 @@ $app->mount($invoices);
 > **NOTE**: The name that we bind each route has a suffix of `Action`. This is not necessary, your method can be called anything you like.
 {: .alert .alert-warning }
 
-**Methods**
+**Méthodes**
 
 The available methods for the [Phalcon\Mvc\Micro\Collection](api/phalcon_mvc#mvc-micro-collection) object are:
 

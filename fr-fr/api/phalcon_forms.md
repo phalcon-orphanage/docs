@@ -25,7 +25,7 @@ title: 'Phalcon\Forms'
 
 <h1 id="forms-element-abstractelement">Abstract Class Phalcon\Forms\Element\AbstractElement</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/abstractelement.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/abstractelement.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | InvalidArgumentException, Phalcon\Forms\Form, Phalcon\Forms\Exception, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation\ValidatorInterface | | Implements | ElementInterface |
 
@@ -65,7 +65,7 @@ protected value;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, array $attributes = [] );
@@ -263,7 +263,7 @@ Sets options for the element
 
 <h1 id="forms-element-check">Class Phalcon\Forms\Element\Check</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/check.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -271,7 +271,7 @@ Phalcon\Forms\Element\Check
 
 Component INPUT[type=check] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -281,13 +281,13 @@ Renders the element widget returning html
 
 <h1 id="forms-element-date">Class Phalcon\Forms\Element\Date</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/date.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
 Component INPUT[type=date] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -297,13 +297,13 @@ Renders the element widget returning html
 
 <h1 id="forms-element-elementinterface">Interface Phalcon\Forms\Element\ElementInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/elementinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/elementinterface.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Forms\Form, Phalcon\Messages\MessageInterface, Phalcon\Messages\Messages, Phalcon\Validation\ValidatorInterface |
 
 Interface for Phalcon\Forms\Element classes
 
-## Methods
+## Méthodes
 
 ```php
 public function addFilter( string $filter ): ElementInterface;
@@ -495,7 +495,7 @@ Sets options for the element
 
 <h1 id="forms-element-email">Class Phalcon\Forms\Element\Email</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/email.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -503,7 +503,7 @@ Phalcon\Forms\Element\Email
 
 Component INPUT[type=email] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -513,13 +513,13 @@ Renders the element widget returning html
 
 <h1 id="forms-element-file">Class Phalcon\Forms\Element\File</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/file.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
 Component INPUT[type=file] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -529,7 +529,7 @@ Renders the element widget returning html
 
 <h1 id="forms-element-hidden">Class Phalcon\Forms\Element\Hidden</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/hidden.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -537,7 +537,7 @@ Phalcon\Forms\Element\Hidden
 
 Component INPUT[type=hidden] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -547,7 +547,7 @@ Renders the element widget returning html
 
 <h1 id="forms-element-numeric">Class Phalcon\Forms\Element\Numeric</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/numeric.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -555,7 +555,7 @@ Phalcon\Forms\Element\Numeric
 
 Component INPUT[type=number] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -565,7 +565,7 @@ Renders the element widget returning html
 
 <h1 id="forms-element-password">Class Phalcon\Forms\Element\Password</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/password.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -573,7 +573,7 @@ Phalcon\Forms\Element\Password
 
 Component INPUT[type=password] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -583,7 +583,7 @@ Renders the element widget returning html
 
 <h1 id="forms-element-radio">Class Phalcon\Forms\Element\Radio</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/radio.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -591,7 +591,7 @@ Phalcon\Forms\Element\Radio
 
 Component INPUT[type=radio] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -601,7 +601,7 @@ Renders the element widget returning html
 
 <h1 id="forms-element-select">Class Phalcon\Forms\Element\Select</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/select.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag\Select | | Extends | AbstractElement |
 
@@ -617,7 +617,7 @@ protected optionsValues;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( string $name, mixed $options = null, mixed $attributes = null );
@@ -653,13 +653,13 @@ Set the choice's options
 
 <h1 id="forms-element-submit">Class Phalcon\Forms\Element\Submit</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/submit.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
 Component INPUT[type=submit] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -669,7 +669,7 @@ Renders the element widget
 
 <h1 id="forms-element-text">Class Phalcon\Forms\Element\Text</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/text.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
@@ -677,7 +677,7 @@ Phalcon\Forms\Element\Text
 
 Component INPUT[type=text] for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -687,13 +687,13 @@ Renders the element widget
 
 <h1 id="forms-element-textarea">Class Phalcon\Forms\Element\TextArea</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/element/textarea.zep)
 
 | Namespace | Phalcon\Forms\Element | | Uses | Phalcon\Tag | | Extends | AbstractElement |
 
 Component TEXTAREA for forms
 
-## Methods
+## Méthodes
 
 ```php
 public function render( array $attributes = [] ): string;
@@ -703,7 +703,7 @@ Renders the element widget
 
 <h1 id="forms-exception">Class Phalcon\Forms\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/exception.zep)
 
 | Namespace | Phalcon\Forms | | Extends | \Phalcon\Exception |
 
@@ -711,7 +711,7 @@ Exceptions thrown in Phalcon\Forms will use this class
 
 <h1 id="forms-form">Class Phalcon\Forms\Form</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/form.zep)
 
 | Namespace | Phalcon\Forms | | Uses | Countable, Iterator, Phalcon\Di\Injectable, Phalcon\Di\DiInterface, Phalcon\Filter\FilterInterface, Phalcon\Forms\Element\ElementInterface, Phalcon\Html\Attributes, Phalcon\Html\Attributes\AttributesInterface, Phalcon\Messages\Messages, Phalcon\Tag, Phalcon\Validation, Phalcon\Validation\ValidationInterface | | Extends | Injectable | | Implements | Countable, Iterator, AttributesInterface |
 
@@ -751,7 +751,7 @@ protected validation;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( mixed $entity = null, array $userOptions = [] );
@@ -969,7 +969,7 @@ Check if the current element in the iterator is valid
 
 <h1 id="forms-manager">Class Phalcon\Forms\Manager</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/forms/manager.zep)
 
 | Namespace | Phalcon\Forms |
 
@@ -983,7 +983,7 @@ protected forms;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function create( string $name, mixed $entity = null ): Form;

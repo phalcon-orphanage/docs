@@ -680,7 +680,7 @@ Applies a format to an item
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger/formatter/json.zep)
 
-| Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Logger\Item | | Extends | AbstractFormatter |
+| Namespace | Phalcon\Logger\Formatter | | Uses | Phalcon\Helper\Json, Phalcon\Logger\Item | | Extends | AbstractFormatter |
 
 Phalcon\Logger\Formatter\Json
 

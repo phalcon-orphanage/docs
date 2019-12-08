@@ -52,7 +52,7 @@ For the source of the data, the component uses adapters. It comes with the follo
 > {: .alert .alert-warning}
 
 
-### Methods
+### Méthodes
 ```php
 public function __construct(array $config)
 ```
@@ -169,7 +169,7 @@ The `paginate()` method does all the work to paginate the data. It returns a [Ph
 - `PROPERTY_PREVIOUS_PAGE` = "previous";
 - `PROPERTY_TOTAL_ITEMS`   = "total_items";
 
-### Methods
+### Méthodes
 The methods exposed are:
 
 - `getAliases()` - `array` - Gets the aliases for properties repository

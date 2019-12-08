@@ -14,19 +14,27 @@ title: 'Phalcon\Helper'
 
 <h1 id="helper-arr">Class Phalcon\Helper\Arr</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/arr.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/arr.zep)
 
 | Namespace | Phalcon\Helper | | Uses | stdClass |
 
 This class offers quick array functions throughout the framework
 
-## Methods
+## Méthodes
 
 ```php
 final public static function chunk( array $collection, int $size, bool $preserveKeys = bool ): array;
 ```
 
 Chunks an array into smaller arrays of a specified size.
+
+@return array
+
+```php
+final public static function filter( array $collection, mixed $method = null ): array;
+```
+
+Helper method to filter the collection
 
 @return array
 
@@ -180,7 +188,7 @@ White list filter by key: obtain elements of an array filtering by the keys obta
 
 <h1 id="helper-exception">Class Phalcon\Helper\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/exception.zep)
 
 | Namespace | Phalcon\Helper | | Extends | \Phalcon\Exception |
 
@@ -188,13 +196,13 @@ Exceptions thrown in Phalcon\Helper will use this class
 
 <h1 id="helper-fs">Class Phalcon\Helper\Fs</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/fs.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/fs.zep)
 
 | Namespace | Phalcon\Helper |
 
 This class offers file operation helper
 
-## Methods
+## Méthodes
 
 ```php
 final public static function basename( string $uri, mixed $suffix = null ): string;
@@ -206,13 +214,13 @@ Gets the filename from a given path, Same as PHP's basename() but has non-ASCII 
 
 <h1 id="helper-json">Class Phalcon\Helper\Json</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/json.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/json.zep)
 
 | Namespace | Phalcon\Helper | | Uses | InvalidArgumentException |
 
 This class offers a wrapper for JSON methods to serialize and unserialize
 
-## Methods
+## Méthodes
 
 ```php
 final public static function decode( string $data, bool $associative = bool, int $depth = int, int $options = int ): mixed;
@@ -226,7 +234,7 @@ use Phalcon\Helper\Json;
 $data = ' {"one":"two","0":"three"}
 ';
 
-var_dump(Json::decode($data))
+var_dump(Json::decode($data));
 // [
 //     'one' => 'two',
 //     'three'
@@ -238,10 +246,10 @@ var_dump(Json::decode($data))
 @throws \InvalidArgumentException if the JSON cannot be decoded. @link http://www.php.net/manual/en/function.json-decode.php
 
 ```php
-final public static function encode( mixed $data, int $depth = int, int $options = int ): string;
+final public static function encode( mixed $data, int $options = int, int $depth = int ): string;
 ```
 
-Encoxes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
+Encodes a string using `json_encode` and throws an exception if the JSON data cannot be encoded
 
 ```php
 use Phalcon\Helper\Json;
@@ -261,7 +269,7 @@ echo Json::encode($data);
 
 <h1 id="helper-number">Class Phalcon\Helper\Number</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/number.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/number.zep)
 
 | Namespace | Phalcon\Helper |
 
@@ -269,7 +277,7 @@ Phalcon\Helper\number
 
 This class offers numeric functions for the framework
 
-## Methods
+## Méthodes
 
 ```php
 final public static function between( int $value, int $from, int $to ): bool;
@@ -279,7 +287,7 @@ Helper method to get an array element or a default
 
 <h1 id="helper-str">Class Phalcon\Helper\Str</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/str.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/helper/str.zep)
 
 | Namespace | Phalcon\Helper | | Uses | RuntimeException |
 
@@ -296,7 +304,7 @@ const RANDOM_NOZERO = 4;
 const RANDOM_NUMERIC = 3;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 final public static function camelize( string $text, mixed $delimiter = null ): string;

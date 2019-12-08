@@ -14,7 +14,7 @@ title: 'Phalcon\Domain'
 
 <h1 id="domain-payload-payload">Class Phalcon\Domain\Payload\Payload</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payload.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payload.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Implements | PayloadInterface |
 
@@ -60,7 +60,7 @@ protected output;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getExtras(): mixed
@@ -114,13 +114,13 @@ Sets the payload status.
 
 <h1 id="domain-payload-payloadfactory">Class Phalcon\Domain\Payload\PayloadFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadfactory.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
 Factory to create payload objects
 
-## Methods
+## Méthodes
 
 ```php
 public function newInstance(): PayloadInterface;
@@ -130,7 +130,7 @@ Instantiate a new object
 
 <h1 id="domain-payload-payloadinterface">Interface Phalcon\Domain\Payload\PayloadInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payloadinterface.zep)
 
 | Namespace | Phalcon\Domain\Payload | | Extends | ReadableInterface |
 
@@ -138,13 +138,13 @@ This interface is used for consumers
 
 <h1 id="domain-payload-readableinterface">Interface Phalcon\Domain\Payload\ReadableInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/readableinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/readableinterface.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
 This interface is used for consumers (read only)
 
-## Methods
+## Méthodes
 
 ```php
 public function getExtras(): mixed;
@@ -188,7 +188,7 @@ Gets the status of this payload.
 
 <h1 id="domain-payload-status">Class Phalcon\Domain\Payload\Status</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/status.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/status.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
@@ -219,7 +219,7 @@ const UPDATED = UPDATED;
 const VALID = VALID;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 final private function __construct();
@@ -229,13 +229,13 @@ Instantiation not allowed.
 
 <h1 id="domain-payload-writeableinterface">Interface Phalcon\Domain\Payload\WriteableInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/writeableinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/writeableinterface.zep)
 
 | Namespace | Phalcon\Domain\Payload |
 
 This interface is used for consumers (write)
 
-## Methods
+## Méthodes
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;

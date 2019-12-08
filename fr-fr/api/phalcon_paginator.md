@@ -17,7 +17,7 @@ title: 'Phalcon\Paginator'
 
 <h1 id="paginator-adapter-abstractadapter">Abstract Class Phalcon\Paginator\Adapter\AbstractAdapter</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\Repository, Phalcon\Paginator\RepositoryInterface | | Implements | AdapterInterface |
 
@@ -50,7 +50,7 @@ protected repository;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $config );
@@ -90,7 +90,7 @@ Gets current repository for pagination
 
 <h1 id="paginator-adapter-adapterinterface">Interface Phalcon\Paginator\Adapter\AdapterInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/adapterinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\RepositoryInterface |
 
@@ -98,7 +98,7 @@ Phalcon\Paginator\AdapterInterface
 
 Interface for Phalcon\Paginator adapters
 
-## Methods
+## Méthodes
 
 ```php
 public function getLimit(): int;
@@ -126,7 +126,7 @@ Set current rows limit
 
 <h1 id="paginator-adapter-model">Class Phalcon\Paginator\Adapter\Model</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/model.zep)
 
 | Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Helper\Arr, Phalcon\Mvc\ModelInterface, Phalcon\Mvc\Model\ResultsetInterface, Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
 
@@ -195,7 +195,7 @@ $paginator = new Model(
 $paginate = $paginator->paginate();
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function paginate(): RepositoryInterface;
@@ -205,7 +205,7 @@ Returns a slice of the resultset to show in the pagination
 
 <h1 id="paginator-adapter-nativearray">Class Phalcon\Paginator\Adapter\NativeArray</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/nativearray.zep)
 
 | Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Paginator\Exception, Phalcon\Paginator\RepositoryInterface | | Extends | AbstractAdapter |
 
@@ -231,7 +231,7 @@ $paginator = new NativeArray(
 );
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function paginate(): RepositoryInterface;
@@ -241,7 +241,7 @@ Returns a slice of the resultset to show in the pagination
 
 <h1 id="paginator-adapter-querybuilder">Class Phalcon\Paginator\Adapter\QueryBuilder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/adapter/querybuilder.zep)
 
 | Namespace | Phalcon\Paginator\Adapter | | Uses | Phalcon\Db\Enum, Phalcon\Mvc\Model\Query\Builder, Phalcon\Paginator\RepositoryInterface, Phalcon\Paginator\Exception | | Extends | AbstractAdapter |
 
@@ -281,7 +281,7 @@ protected columns;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $config );
@@ -315,7 +315,7 @@ Set query builder object
 
 <h1 id="paginator-exception">Class Phalcon\Paginator\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/exception.zep)
 
 | Namespace | Phalcon\Paginator | | Extends | \Phalcon\Exception |
 
@@ -325,7 +325,7 @@ Exceptions thrown in Phalcon\Paginator will use this class
 
 <h1 id="paginator-paginatorfactory">Class Phalcon\Paginator\PaginatorFactory</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/paginatorfactory.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/paginatorfactory.zep)
 
 | Namespace | Phalcon\Paginator | | Uses | Phalcon\Paginator\Adapter\AdapterInterface, Phalcon\Factory\AbstractFactory, Phalcon\Helper\Arr | | Extends | AbstractFactory |
 
@@ -335,7 +335,7 @@ This file is part of the Phalcon Framework.
 
 For the full copyright and license information, please view the LICENSE.txt file that was distributed with this source code.
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $services = [] );
@@ -383,7 +383,7 @@ protected function getAdapters(): array;
 
 <h1 id="paginator-repository">Class Phalcon\Paginator\Repository</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repository.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repository.zep)
 
 | Namespace | Phalcon\Paginator | | Uses | JsonSerializable, Phalcon\Helper\Arr | | Implements | RepositoryInterface, JsonSerializable |
 
@@ -406,7 +406,7 @@ protected properties;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __get( string $property ): mixed | null;
@@ -500,7 +500,7 @@ Resolve alias property name
 
 <h1 id="paginator-repositoryinterface">Interface Phalcon\Paginator\RepositoryInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repositoryinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/paginator/repositoryinterface.zep)
 
 | Namespace | Phalcon\Paginator |
 
@@ -521,7 +521,7 @@ const PROPERTY_PREVIOUS_PAGE = previous;
 const PROPERTY_TOTAL_ITEMS = total_items;
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getAliases(): array;

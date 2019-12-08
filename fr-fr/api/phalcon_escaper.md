@@ -11,7 +11,7 @@ title: 'Phalcon\Escaper'
 
 <h1 id="escaper">Class Phalcon\Escaper</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\DiInterface, Phalcon\Escaper\EscaperInterface, Phalcon\Escaper\Exception | | Implements | EscaperInterface |
 
@@ -50,7 +50,7 @@ protected htmlQuoteType = 3;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 final public function detectEncoding( string $str ): string | null;
@@ -132,13 +132,13 @@ $escaper->setHtmlQuoteType(ENT_XHTML);
 
 <h1 id="escaper-escaperinterface">Interface Phalcon\Escaper\EscaperInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/escaperinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/escaperinterface.zep)
 
 | Namespace | Phalcon\Escaper |
 
 Interface for Phalcon\Escaper
 
-## Methods
+## Méthodes
 
 ```php
 public function escapeCss( string $css ): string;
@@ -190,7 +190,7 @@ Sets the HTML quoting type for htmlspecialchars
 
 <h1 id="escaper-exception">Class Phalcon\Escaper\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/escaper/exception.zep)
 
 | Namespace | Phalcon\Escaper | | Extends | \Phalcon\Exception |
 

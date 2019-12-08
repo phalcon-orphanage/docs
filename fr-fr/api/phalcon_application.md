@@ -10,7 +10,7 @@ title: 'Phalcon\Application'
 
 <h1 id="application-abstractapplication">Abstract Class Phalcon\Application\AbstractApplication</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/abstractapplication.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/abstractapplication.zep)
 
 | Namespace | Phalcon\Application | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Injectable, Phalcon\Events\EventsAwareInterface, Phalcon\Events\ManagerInterface | | Extends | Injectable | | Implements | EventsAwareInterface |
 
@@ -41,7 +41,7 @@ protected modules;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( DiInterface $container = null );
@@ -108,7 +108,7 @@ Sets the events manager
 
 <h1 id="application-exception">Class Phalcon\Application\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/application/exception.zep)
 
 | Namespace | Phalcon\Application | | Extends | \Phalcon\Exception |
 

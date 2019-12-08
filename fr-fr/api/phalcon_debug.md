@@ -11,7 +11,7 @@ title: 'Phalcon\Debug'
 
 <h1 id="debug">Class Phalcon\Debug</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug.zep)
 
 | Namespace | Phalcon | | Uses | ErrorException, Phalcon\Helper\Arr, Phalcon\Version, Phalcon\Tag, ReflectionClass, ReflectionFunction |
 
@@ -60,7 +60,7 @@ protected uri = https://assets.phalcon.io/debug/4.0.x/;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function clearVars(): Debug;
@@ -184,9 +184,9 @@ Shows a backtrace item
 
 <h1 id="debug-dump">Class Phalcon\Debug\Dump</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/dump.zep)
 
-| Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Reflection, ReflectionClass, ReflectionProperty, stdClass |
+| Namespace | Phalcon\Debug | | Uses | Phalcon\Di, Phalcon\Helper\Json, Reflection, ReflectionClass, ReflectionProperty, stdClass |
 
 Dumps information about a variable(s)
 
@@ -224,7 +224,7 @@ protected styles;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct( array $styles = [], bool $detailed = bool );
@@ -315,7 +315,7 @@ Prepare an HTML string of information about a single variable.
 
 <h1 id="debug-exception">Class Phalcon\Debug\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/debug/exception.zep)
 
 | Namespace | Phalcon\Debug | | Extends | \Phalcon\Exception |
 

@@ -86,7 +86,7 @@ public function __construct(
 
 The constructor accepts a [Phalcon\Mvc\View](views) or any component that implements the `ViewBaseInterface`, and a DI container.
 
-## Methods
+## Méthodes
 
 There are several methods available in Volt. In most cases, only a handful of them are used in modern day applications.
 

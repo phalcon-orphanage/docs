@@ -21,7 +21,7 @@ title: 'Phalcon\Di'
 
 <h1 id="di">Class Phalcon\Di</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di.zep)
 
 | Namespace | Phalcon | | Uses | Phalcon\Di\Service, Phalcon\Di\DiInterface, Phalcon\Di\Exception, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Config\Adapter\Php, Phalcon\Config\Adapter\Yaml, Phalcon\Di\ServiceInterface, Phalcon\Events\ManagerInterface, Phalcon\Di\InjectionAwareInterface, Phalcon\Di\ServiceProviderInterface | | Implements | DiInterface |
 
@@ -80,7 +80,7 @@ protected static _default;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __call( string $method, array $arguments = [] ): mixed | null;
@@ -326,7 +326,7 @@ Loads services from a Config object.
 
 <h1 id="di-abstractinjectionaware">Abstract Class Phalcon\Di\AbstractInjectionAware</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/abstractinjectionaware.zep)
 
 | Namespace | Phalcon\Di | | Implements | InjectionAwareInterface |
 
@@ -344,7 +344,7 @@ protected container;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function getDI(): DiInterface;
@@ -360,13 +360,13 @@ Sets the dependency injector
 
 <h1 id="di-diinterface">Interface Phalcon\Di\DiInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/diinterface.zep)
 
 | Namespace | Phalcon\Di | | Uses | ArrayAccess | | Extends | ArrayAccess |
 
 Interface for Phalcon\Di
 
-## Methods
+## Méthodes
 
 ```php
 public function attempt( string $name, mixed $definition, bool $shared = bool ): ServiceInterface | bool;
@@ -454,7 +454,7 @@ Registers an "always shared" service in the services container
 
 <h1 id="di-exception">Class Phalcon\Di\Exception</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception.zep)
 
 | Namespace | Phalcon\Di | | Extends | \Phalcon\Exception |
 
@@ -462,7 +462,7 @@ Exceptions thrown in Phalcon\Di will use this class
 
 <h1 id="di-exception-serviceresolutionexception">Class Phalcon\Di\Exception\ServiceResolutionException</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/exception/serviceresolutionexception.zep)
 
 | Namespace | Phalcon\Di\Exception | | Extends | \Phalcon\Di\Exception |
 
@@ -470,13 +470,13 @@ Phalcon\Di\Exception\ServiceResolutionException
 
 <h1 id="di-factorydefault">Class Phalcon\Di\FactoryDefault</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Filter\FilterFactory | | Extends | \Phalcon\Di |
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually providing a full stack framework
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct();
@@ -486,7 +486,7 @@ Phalcon\Di\FactoryDefault constructor
 
 <h1 id="di-factorydefault-cli">Class Phalcon\Di\FactoryDefault\Cli</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/factorydefault/cli.zep)
 
 | Namespace | Phalcon\Di\FactoryDefault | | Uses | Phalcon\Di\FactoryDefault, Phalcon\Di\Service, Phalcon\Filter\FilterFactory | | Extends | FactoryDefault |
 
@@ -494,7 +494,7 @@ Phalcon\Di\FactoryDefault\Cli
 
 This is a variant of the standard Phalcon\Di. By default it automatically registers all the services provided by the framework. Thanks to this, the developer does not need to register each service individually. This class is specially suitable for CLI applications
 
-## Methods
+## Méthodes
 
 ```php
 public function __construct();
@@ -504,7 +504,7 @@ Phalcon\Di\FactoryDefault\Cli constructor
 
 <h1 id="di-injectable">Abstract Class Phalcon\Di\Injectable</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectable.zep)
 
 | Namespace | Phalcon\Di | | Uses | Phalcon\Di, Phalcon\Session\BagInterface | | Implements | InjectionAwareInterface |
 
@@ -524,7 +524,7 @@ protected container;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function __get( string $propertyName ): mixed | null;
@@ -552,13 +552,13 @@ Sets the dependency injector
 
 <h1 id="di-injectionawareinterface">Interface Phalcon\Di\InjectionAwareInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/injectionawareinterface.zep)
 
 | Namespace | Phalcon\Di |
 
 This interface must be implemented in those classes that uses internally the Phalcon\Di that creates them
 
-## Methods
+## Méthodes
 
 ```php
 public function getDI(): DiInterface;
@@ -574,7 +574,7 @@ Sets the dependency injector
 
 <h1 id="di-service">Class Phalcon\Di\Service</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service.zep)
 
 | Namespace | Phalcon\Di | | Uses | Closure, Phalcon\Di\Exception\ServiceResolutionException, Phalcon\Di\Service\Builder | | Implements | ServiceInterface |
 
@@ -610,7 +610,7 @@ protected sharedInstance;
 
 ```
 
-## Methods
+## Méthodes
 
 ```php
 final public function __construct( mixed $definition, bool $shared = bool );
@@ -676,7 +676,7 @@ Sets/Resets the shared instance related to the service
 
 <h1 id="di-service-builder">Class Phalcon\Di\Service\Builder</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/service/builder.zep)
 
 | Namespace | Phalcon\Di\Service | | Uses | Phalcon\Di\DiInterface, Phalcon\Di\Exception |
 
@@ -684,7 +684,7 @@ Phalcon\Di\Service\Builder
 
 This class builds instances based on complex definitions
 
-## Methods
+## Méthodes
 
 ```php
 public function build( DiInterface $container, array $definition, mixed $parameters = null );
@@ -696,13 +696,13 @@ Builds a service using a complex service definition
 
 <h1 id="di-serviceinterface">Interface Phalcon\Di\ServiceInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceinterface.zep)
 
 | Namespace | Phalcon\Di |
 
 Represents a service in the services container
 
-## Methods
+## Méthodes
 
 ```php
 public function getDefinition(): mixed;
@@ -756,7 +756,7 @@ Sets if the service is shared or not
 
 <h1 id="di-serviceproviderinterface">Interface Phalcon\Di\ServiceProviderInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
+[Source sur GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/di/serviceproviderinterface.zep)
 
 | Namespace | Phalcon\Di |
 
@@ -782,7 +782,7 @@ class SomeServiceProvider implements ServiceProviderInterface
 }
 ```
 
-## Methods
+## Méthodes
 
 ```php
 public function register( DiInterface $di ): void;
