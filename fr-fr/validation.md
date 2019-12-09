@@ -12,7 +12,7 @@ keywords: 'validation, validating forms, validating models, validating data'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 [Phalcon\Validation](api/phalcon_validation#validation) is an independent validation component that validates an arbitrary set of data. This component can be used to implement validation rules on data objects that do not belong to a model or collection.
 
