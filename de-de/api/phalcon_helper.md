@@ -359,6 +359,21 @@ Decapitalizes the first letter of the sring and then adds it with rest of the st
 @return string
 
 ```php
+final public static function decrement( string $text, string $separator = string ): string;
+```
+
+Removes a number from a string or decrements that number if it already is defined. defined
+
+```php
+use Phalcon\Helper\Str;
+
+echo Str::decrement("a_1");    // "a"
+echo Str::decrement("a_2");  // "a_1"
+```
+
+@return string
+
+```php
 final public static function dirFromFile( string $file ): string;
 ```
 
