@@ -16,7 +16,7 @@ Last update: 2019-07-04
 
 Phalcon is written in [Zephir](https://zephir-lang.com), a language that the Phalcon Team invented and is actively developing. Therefore, there are no established coding standards that developers can follow, should they wish to.
 
-In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a combination of [PSR-1](https://www.php-fig.org/psr/psr-1/) and [PSR-2](https://www.php-fig.org/psr/psr-2/) developed by [PHP-FIG](https://www.php-fig.org/)
+In this document we outline the coding standard that Phalcon is using for editing Zephir files. The coding standard is a variant of [PSR-12](https://www.php-fig.org/psr/psr-12/) developed by [PHP-FIG](https://www.php-fig.org/)
 
 ## Files
 
@@ -98,7 +98,7 @@ class Memory extends Adapter
 ### Methoden
 
 - Method names must be declared in camelCase.
-- Methods must be sorted alphabetically based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
+- Methods must be sorted alphabetically and based on their visibility. The order is `public`, `protected` and `private`. `__construct` if defined must be at the top of the class.
 - Method names must not be prefixed with underscore `_`.
 - All methods must have a return type. If the method does not return anything it should be marked `void`
 - Opening braces for methods must go on the next line, and closing braces must go on the next line after the body.
@@ -133,3 +133,7 @@ public function setElement(string! name, var value) -> void;
 ```
 
 - Argument lists MAY be split across multiple lines, where each subsequent line is indented once. When doing so, the first item in the list must be on the next line, and there must be only one argument per line.
+
+### PHP Files
+
+PHP files such as tests must follow [PSR-12](https://www.php-fig.org/psr/psr-12/).

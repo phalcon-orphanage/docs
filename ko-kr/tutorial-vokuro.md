@@ -1556,7 +1556,7 @@ class Users extends Model
 }
 ```
 
-## Conclusion
+## 결론
 
 Vökuró is a sample application that we use to demonstrate some of the features that Phalcon offers. It is definitely not a solution that will fit all needs. However you can use it as a starting point to develop your application.
 
