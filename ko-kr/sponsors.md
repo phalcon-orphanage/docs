@@ -2,7 +2,7 @@
 layout: default
 language: 'ko-kr'
 version: '4.0'
-title: 'Sponsors'
+title: '후원자'
 keywords: 'sponsors, opencollective, supporters'
 ---
 
