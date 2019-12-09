@@ -12,7 +12,7 @@ keywords: 'oader, psr-4, autoloading, autoloader'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 [Phalcon\Loader](api/phalcon_loader#loader) is an autoloader that implements [PSR-4](https://www.php-fig.org/psr/psr-4/). Just like any autoloader, depending on its setup, it will try and find the files your code is looking for based on file, class, namespace etc. Since this component is written in C, it offers the lowest overhead when processing its setup, thus offering a performance boost.
 

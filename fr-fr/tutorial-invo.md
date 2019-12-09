@@ -12,7 +12,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
-## Overview
+## Vue d'ensemble
 
 [INVO](https://github.com/phalcon/invo) is a small application that allows users to generate invoices, manage customers and products as well as sign up and log in. It showcases how certain tasks are handled by Phalcon. On the client side, [Bootstrap](https://getbootstrap.com) is used for the UI. The application does not generate actual invoices, but serves as an example on how these tasks are implemented using Phalcon.
 

@@ -10,7 +10,7 @@ keywords: 'firewall, dispatcher, events, acl, access control list, permissions, 
 <hr />
 ![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 The `Phalcon\Firewall` namespace contains
 
 ## Micro\Acl

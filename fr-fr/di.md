@@ -12,7 +12,7 @@ keywords: 'dependency injection, di, ioc, service locator'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 [Phalcon\Di](api/phalcon_di#di) is a container that stores services or components (classes). These services are available throughout the application and ease development. Let us assume we are developing a component called `InvoiceComponent` that performs some calculations for a customer's invoice. It requires a database connection to retrieve the `Invoice` record from the database.
 

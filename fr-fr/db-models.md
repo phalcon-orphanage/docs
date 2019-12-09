@@ -13,7 +13,7 @@ keywords: 'models, active record'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 The [Phalcon\Mvc\Model](api/phalcon_mvc#mvc-model) is the `M` in MVC. It is a class that connects business objects and database tables, to create a presistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
 

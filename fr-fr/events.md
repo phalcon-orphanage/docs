@@ -12,7 +12,7 @@ keywords: 'events, events manager, hooks'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 The purpose of this component is to intercept the execution of components in the framework by creating *hooks*. These hooks allow developers to obtain status information, manipulate data or change the flow of execution during the process of a component. The component consists of a [Phalcon\Events\Manager](api/phalcon_events#events-manager) that handles event propagation and execution of events. The manager contains various [Phalcon\Events\Event](api/phalcon_events#events-event) objects, which contain information about each hook/event.
 

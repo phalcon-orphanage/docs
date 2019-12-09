@@ -12,11 +12,11 @@ keywords: 'image, gd, imagick'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 The `Phalcon\Image` namespace exposes adapter that offer image manipulating functionality. These adapters are designed to allow multiple operations to be performed on the same image.
 
-## Adapters
+## Adaptateurs
 
 This component uses adapters that offer methods to manipulate images. You can easily create your own adapter using the [Phalcon\Image\Adapter\AdapterInterface](api/phalcon_image#image-adapter-adapterinterface).
 

@@ -12,7 +12,7 @@ keywords: 'security, hashing, passwords'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 > **NOTE**: Requires PHP's [openssl](https://php.net/manual/en/book.openssl.php) extension to be present in the system
 {: .alert .alert-info }
