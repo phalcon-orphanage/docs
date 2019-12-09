@@ -2,11 +2,11 @@
 layout: default
 language: 'ko-kr'
 version: '4.0'
-title: 'Tutorial - Basic'
-keywords: 'tutorial, basic tutorial, step by step, mvc'
+title: '지침서 - 기초'
+keywords: 'tutorial, basic tutorial, step by step, mvc, 지침서, 기초, 튜토리얼'
 ---
 
-# Tutorial - Basic
+# 지침서 - 기초
 
 * * *
 
@@ -14,17 +14,17 @@ keywords: 'tutorial, basic tutorial, step by step, mvc'
 
 ## 개요
 
-Throughout this tutorial, we will create an application with a simple registration form, while introducing the main design aspects of Phalcon.
+이 지침서 전체에 걸쳐 Phalcon 설계 상의 주요 측면에 대해 소개함과 동시에, 간단한 등록양식이 있는 어플리케이션을 만들어 보겠습니다.
 
-This tutorial covers the implementation of a simple MVC application, showing how fast and easy it can be done with Phalcon. Once developed, you can use this application and extend it to suit your needs. The code in this tutorial can also be used as a playground to learn other Phalcon specific concepts and ideas. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe> 
+이 지침서에서는 Phalcon 을 이용하면 얼마나 빠르고 쉽게 만들 수 있는지 보여주기 위해 간단한 MVC 어플리케이션의 구현을 다룹니다. 개발이 완료되면, 이 어플리케이션을 필요에 따라 확장시켜 사용하실 수있습니다. 이 지침서에 있는 코드는 다른 Phalcon 특유의 컨셉트와 아이디어를 배우는 놀이터로도 사용될 수 있습니다. <iframe width="560" height="315" src="https://www.youtube.com/embed/75W-emM4wNQ" frameborder="0" allowfullscreen mark="crwd-mark"></iframe> 
 
-If you just want to get started you can skip this and create a Phalcon project automatically with our [developer tools](devtools).
+바로 시작하기를 원하신다면 이 섹션은 건너뛰고 [developer tools](devtools)를 이용해서 자동으로 Phalcon 프로젝트를 생성하세요.
 
-The best way to use this guide is to follow along and try to have fun. You can get the complete code [here](https://github.com/phalcon/tutorial). If you get stuck or have questions, please visit us on [Discord](https://phalcon.io/discord) or in our [Forum](https://phalcon.io/forum).
+이 가이드를 사용하는 최고의 방법은 찬찬히 따라 오시면서 즐기려고 노력하시는 겁니다. 전체 코드는 [여기](https://github.com/phalcon/tutorial) 있습니다. 난관에 봉착했거나 궁금한게 있으시면, [Discord](https://phalcon.io/discord) 나 [포럼](https://phalcon.io/forum)으로 오시면 됩니다.
 
-## File Structure
+## 파일 구조
 
-One of the key features of Phalcon is that it is loosely coupled. Because of that, you can use any directory structure that is convenient to you. In this tutorial we will use a *standard* directory structure, commonly used in MVC applications.
+Phalcon의 핵심기능 중 하나는 느슨하게 연결(loosely coupled) 되어 있다는 부분입니다. 그런 이유로, 어떤 형태든 본인이 편한대로 디렉토리 구조를 만드실 수 있습니다. 이 지침서에서는 MVC 어플리케이션에서 일반적으로 사용되는 *표준* 디렉토리 구조를 사용하겠습니다.
 
 ```text
 .
@@ -43,10 +43,10 @@ One of the key features of Phalcon is that it is loosely coupled. Because of tha
         └── js
 ```
 
-> **NOTE**: Since all the code that Phalcon exposes is encapsulated in the extension (that you have loaded on your web server), you will not see `vendor` directory containing Phalcon code. Everything you need is in memory. If you have not installed the application yet, head over to the <installation> page and complete the installation prior to continuing with this tutorial.
+> **주의**: Phalcon이 노출하는 모든 코드는 (웹서버에서 로드한) 익스텐션 내에 캡슐화 되어있으므로, Phalcon 코드를 포함하고 있는 `vendor` 디렉토리는 여기에 없습니다. 필요한 모든 것이 메모리에 로드되어 있습니다. 아직 어플리케이션 설치 전이시라면, 이 자습서를 더 진행하시기 전에 [설치](installation) 페이지로 가셔서 설치과정을 완료해주시기 바랍니다
 {: .alert .alert-warning }
 
-If this is all brand new it is recommended that you install the [Phalcon Devtools](devtools) also. The DevTools leverage PHP's built-in web server, allowing you to run your application almost immediately. If you choose this option, you will need a `.htrouter.php` file at the root of your project with the following contents:
+모든 것이 처음이시라면 [Phalcon Devtools](devtools) 또한 설치하시기를 권장합니다. DevTools는 어플리케이션을 즉시 실행해 보실 수 있도록, PHP에 내장되어 있는 웹서버를 활용합니다. 이 옵션을 선택하신다면, 프로젝트 루트폴더에 `.htrouter.php` 파일을 아래와 같은 내용으로 생성해주세요:
 
 ```php
 <?php
@@ -64,25 +64,25 @@ $_GET['_url'] = $_SERVER['REQUEST_URI'];
 require_once __DIR__ . '/public/index.php';
 ```
 
-In the case of our tutorial, this file must be located in the `tutorial` directory.
+이 자습서의 경우에, 이 파일은 `tutorial` 디렉토리에 위치해야 합니다.
 
-You can also use nginX, apache, cherokee or other web servers. You can check the [webserver setup](webserver-setup) page for instructions.
+NginX, apache, cherokee 혹은 다른 웹서버를 사용하시는 것도 물론 가능합니다. [웹서버 준비](webserver-setup) 페이지게 가시면 자세한 설명을 확인하실 수 있습니다.
 
 ## Bootstrap
 
-The first file you need to create is the bootstrap file. This file acts as the entry-point and configuration for your application. In this file, you can implement initialization of components as well define application behavior.
+제일 처음에 bootstrap 파일을 생성해야 합니다. 이 파일은 어플리케이션의 실행시 최초 진입점과 어플리케이션 설정의 역할을 합니다. 이 파일에서, 컴포넌트 초기화를 적용하고 어플리케이션의 동작(behavior) 을 정의할 수 있습니다.
 
-This file handles 3 things:
+이 파일은 세가지를 처리합니다:
 
-- Registration of component autoloaders
-- Configuring Services and registering them with the Dependency Injection context
-- Resolving the application's HTTP requests
+- 컴포넌트 오토로더의 등록
+- 서비스 설정 및 의존성 주입 컨텍스트와 함께 서비스 등록
+- 어플리케이션의 HTTP 요청을 처리
 
 ### Autoloader
 
-We are going to use [Phalcon\Loader](loader) a [PSR-4](https://www.php-fig.org/psr/psr-4/) compliant file loader. Common things that should be added to the autoloader are your controllers and models. You can also register directories which will be scanned for files required by the application.
+우리는 [PSR-4](https://www.php-fig.org/psr/psr-4/) 규칙을 따르는 [Phalcon\Loader](loader) 파일로더를 사용합니다. 일반적으로 오토로더에 추가해야 할 것들은 컨트롤러와 모델 입니다. 어플리케이션이 요청하는 파일을 스캔할 디렉토리들도 등록할 수 있습니다.
 
-To start, lets register our app's `controllers` and `models` directories using [Phalcon\Loader](loader):
+자 그럼, [Phalcon\Loader](loader)를 이용해서 `컨트롤러` 와 `모델` 디렉토리를 등록해 봅시다:
 
 `public/index.php`
 
@@ -107,23 +107,23 @@ $loader->registerDirs(
 $loader->register();
 ```
 
-### Dependency Management
+### 의존성 관리
 
-Since Phalcon is loosely coupled, services are registered with the frameworks Dependency Manager so they can be injected automatically to components and services wrapped in the [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) container. Frequently you will encounter the term DI which stands for Dependency Injection. Dependency Injection and Inversion of Control(IoC) may sound complex but Phalcon ensures that their use is simple, practical and efficient. Phalcon's IoC container consists of the following concepts:
+Phalcon은 느슨히 결합된 형태이기 때문에, 서비스를 프레임워크 의존성관리자에 등록해서 [IoC](https://en.wikipedia.org/wiki/Inversion_of_control) 컨테이너 내부에 있는 컴포넌트와 서비스에 자동으로 주입(inject) 시킬 수 있도록 합니다. 앞으로 DI (Dependency Injection - 의존성 주입) 라는 단어를 자주 접하게 될것입니다. 의존성 주입과 역제어(IoC: Inversion of Control) 는 뭔가 복잡하게 들릴 수 있겠지만, Phalcon에서 이들의 사용은 간단하고 실질적이며 효과적입니다. Phalcon의 IoC 컨테이너는 다음과 같은 컨셉으로 이루어져 있습니다:
 
-- Service Container: a "bag" where we globally store the services that our application needs to function.
-- Service or Component: Data processing object which will be injected into components
+- 서비스 컨테이너: 어플리케이션이 동작하기 위해 필요한 서비스를 전역참조로 저장하는 "가방"
+- 서비스/컴포넌트: 컴포넌트에 주입될 데이터처리 객체
 
-Each time the framework requires a component or service, it will ask the container using an agreed upon name for the service. This way we have an easy way to retrieve objects necessary for our application, such as the logger, database connection etc.
+컴포넌트나 서비스가 필요할 때마다 프레임워크는 컨테이너에게 해당 서비스를 미리 약속해둔 이름으로 요청을 하게 됩니다. 이 방법으로 로거, 데이터베이스 연결 등 어플리케이션에 필요한 객체를 쉽게 가져올 수 있게 됩니다.
 
-> **NOTE**: If you are still interested in the details please see this article by [Martin Fowler](https://martinfowler.com/articles/injection.html). Also we have [a great tutorial](di) covering many use cases.
+> **주의**: 자세한 내용이 궁금하시면 [Martin Fowler](https://martinfowler.com/articles/injection.html) 의 글을 참조해주세요. 그리고 많은 유스 케이스(use cases) 를 다루고 있는 <a href="di>멋진 자습서</a>도 있습니다.
 {: .alert .alert-warning }
 
 ### Factory Default
 
-The [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) is a variant of [Phalcon\Di](api/Phalcon_Di). To make things easier, it will automatically register most of the components that are required by an application and come with Phalcon as standard. Although it is recommended to set up services manually, you can use the [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) container initially and later on customize it to fit your needs.
+[Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) 는 [Phalcon\Di](api/Phalcon_Di)의 변종입니다. 이 클래스는 보다 쉬운 사용을 위해 어플리케이션에서 필요로 하는 대부분의 컴포넌트를 자동으로 등록하며, 표준으로 Phalcon과 함께 제공됩니다. 서비스 설정은 수동으로 하기를 권하지만, 처음에는 [Phalcon\Di\FactoryDefault](api/Phalcon_Di#di-factorydefault) 를 사용하고 이후 필요에 따라 맞춤 설정하실 수도 있습니다.
 
-Services can be registered in several ways, but for our tutorial, we will use an [anonymous function](https://php.net/manual/en/functions.anonymous.php):
+서비스를 등록하는 방법은 여러가지가 있지만, 이 자습서에서는 [anonymous function](https://php.net/manual/en/functions.anonymous.php)을 이용하겠습니다:
 
 `public/index.php`
 
@@ -136,7 +136,7 @@ use Phalcon\Di\FactoryDefault;
 $container = new FactoryDefault();
 ```
 
-Now we need to register the *view* service, setting the directory where the framework will find the view files. As the views do not correspond to classes, they cannot be automatically loaded by our autoloader.
+이제 프레임워크가 뷰 파일들을 찾을 디렉토리를 설정하여 *view* 서비스를 등록해야 합니다. 뷰와 클래스는 동일하지 않기 때문에, 오토로더가 자동으로 로드할 수 없기 때문입니다.
 
 `public/index.php`
 
@@ -158,7 +158,7 @@ $container->set(
 );
 ```
 
-Now we need to register a base URI, that will offer the functionality to create all URIs by Phalcon. The component will ensure that whether you run your application through the top directory or a subdirectory, all your URIs will be correct. For this tutorial our base path is `/`. This will become important later on in this tutorial when we use the class `Phalcon\Tag` to generate hyperlinks.
+이제 Phalcon이 필요한 모든 URI 를 생성할 수 있는 기능을 제공해 줄 base URI를 등록할 차례입니다. 이 컴포넌트는 어플리케이션을 최상위 디렉토리에서 실행하던 하위 디렉토리에서 실행하던 상관없이 모든 URI가 정확하도록 보장해 줍니다. 이 자습서에서는 `/` 가 base 경로입니다. 자습서의 뒷부분에서 하이퍼링크를 생성하기 위해 `Phalcon\Tag` 를 사용하게 되면 이 base경로가 중요해질것입니다.
 
 `public/index.php`
 
@@ -180,9 +180,9 @@ $container->set(
 );
 ```
 
-### Handling the Application Request
+### 어플리케이션 요청 처리하기
 
-In order to handle any requests, the [Phalcon\Mvc\Application](application) object is used to do all the heavy lifting for us. The component will accept the request by the user, detect the routes and dispatch the controller and render the view returning back the results.
+요청을 처리하기 위해 필요한 모든 힘든 작업을 [Phalcon\Mvc\Application](application) 객체가 대신해 줍니다. 이 컴포넌트는 사용자로부터의 요청 수락, 경로(route) 감지, 컨트롤러에 전달하고, 결과를 반환하여 뷰를 렌더링합니다.
 
 `public/index.php`
 
@@ -202,9 +202,9 @@ $response = $application->handle(
 $response->send();
 ```
 
-### Putting Everything Together
+### 지금까지 내용을 다 합쳐보면
 
-The `tutorial/public/index.php` file should look like:
+`tutorial/public/index.php` 파일은 다음과 같습니다:
 
 `public/index.php`
 
@@ -267,11 +267,11 @@ try {
 }
 ```
 
-As you can see, the bootstrap file is very short and we do not need to include any additional files. You are well on your way to creating a flexible MVC application in less than 30 lines of code.
+보시는 바와 같이, 이 부트스트랩파일은 아주 짧고 추가적인 파일을 include 할 필요가 없습니다. 이제 여러분은 30줄 미만의 코드로 유연한 MVC 어플리케이션을 잘 만들 수 있게 되었습니다.
 
-## Creating a Controller
+## 컨트롤러 생성
 
-By default Phalcon will look for a controller named `IndexController`. It is the starting point when no controller or action has been added in the request (eg. `https://localhost/`). An `IndexController` and its `IndexAction` should resemble the following example:
+Phalcon 은 기본적으로 `IndexController` 라는 컨트롤러를 찾습니다. 이곳은 요청에 컨트롤러나 액션이 없을 경우의 시작점이 됩니다 (예를들어 `https://localhost/`). `IndexController` 와 `IndexAction` 는 다음의 예제코드와 비슷해야 합니다:
 
 `app/controllers/IndexController.php`
 
@@ -289,30 +289,30 @@ class IndexController extends Controller
 }
 ```
 
-The controller classes must have the suffix `Controller` and controller actions must have the suffix `Action`. For more information you can read our document about <controllers>. If you access the application from your browser, you should see something like this:
+컨트롤러 클래스이름은 `Controller`로 끝나야 하며 컨트롤러 액션은 `Action`으로 끝나야 합니다. 더 자세한 내용은 [컨트롤러](controllers) 문서를 확인해 주세요. 브라우저에서 어플리케이션에 접근하시는 경우, 아래와 같은 화면이 보여야 합니다:
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
 > **Congratulations, you are Phlying with Phalcon!**
 {: .alert .alert-info }
 
-## Sending Output to a View
+## 뷰로 출력 보내기
 
-Sending output to the screen from the controller is at times necessary but not desirable as most purists in the MVC community will attest. Everything must be passed to the view that is responsible for outputting data on screen. Phalcon will look for a view with the same name as the last executed action inside a directory named as the last executed controller.
+컨트롤러에서 화면으로 직접 출력하는 것이 가끔 필요한 경우도 있지만 MVC커뮤니티에 있는 대부분의 순수주의자들이 증언하는 바와 같이, 썩 바람직하지는 앖습니다. 모든 결과는 화면에 데이터를 출력하는 책임을 가진, 뷰에 전달되어야 합니다. Phalcon은 가장 나중에 실행된 컨트롤러의 이름과 같은 디렉토리 내에 있는 가장 나중에 실행된 액션과 동일한 이름의 뷰를 찾습니다.
 
-Therefore in our case if the URL is:
+그러므로 우리의 경우 URL이 다음과 같다면:
 
 ```php
 http://localhost/
 ```
 
-will invoke the `IndexController` and `indexAction`, and it will search the view:
+`IndexController` 컨트롤러와 `indexAction` 액션을 실행하고, 다음과 같은 뷰를 찾게 됩니다:
 
 ```php
 /views/index/index.phtml
 ```
 
-If found it will parse it and send the output on screen. Our view then will have the following contents:
+찾는데 성공하면 해당파일을 파싱해서결과물을 화면으로 보냅니다. 뷰의 내용은 다음과 같습니다:
 
 `app/views/index/index.phtml`
 
@@ -320,7 +320,7 @@ If found it will parse it and send the output on screen. Our view then will have
 <?php echo "<h1>Hello!</h1>";
 ```
 
-and since we moved the `echo` from our controller action to the view, it will be empty now:
+컨트롤러 액션에 있던 `echo` 부분을 뷰로 이동시켰기 때문에, 현재 액션은 비어있겠지요:
 
 `app/controllers/IndexController.php`
 
@@ -338,11 +338,11 @@ class IndexController extends Controller
 }
 ```
 
-The browser output will remain the same. The `Phalcon\Mvc\View` component is automatically created when the action execution has ended. You can read more about views in Phalcon [here](views).
+하지만 브라우저에 출력되는 결과물은 이전과 동일합니다. `Phalcon\Mvc\View` 컴포넌트는 액션의 실행이 종료되면 자동으로 생성됩니다.. Phalcon의 뷰에 관해 좀 더 자세한 내용을 보시려면 [여기](views)를 참조해 주세요.
 
-## Designing a Sign-up Form
+## 회원가입 Form 설계하기
 
-Now we will change the `index.phtml` view file, to add a link to a new controller named *signup*. The goal is to allow users to sign up to our application.
+이제 *signup* 이라는 이름의 새로운 컨트롤러에 링크를 추가하기 위해, `index.phtml` 뷰 파일을 변경해 보겠습니다.. 사용자들이 어플리케이션에서 회원가입 할 수 있도록 만드는 것이 우리의 목표입니다.
 
 `app/views/index/index.phtml`
 
@@ -361,9 +361,9 @@ echo $this->tag->linkTo(
 );
 ```
 
-The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new controller:
+생성된 HTML코드는 새로운 컨트롤러에 링크시키는 앵커(`<a>`) HTML 태그를 표시합니다.
 
-`app/views/index/index.phtml` (rendered)
+`app/views/index/index.phtml` (실제 렌더링결과)
 
 ```html
 <h1>Hello!</h1>
@@ -371,16 +371,16 @@ The generated HTML code displays an anchor (`<a>`) HTML tag linking to a new con
 <a href="/signup">Sign Up Here!</a>
 ```
 
-To generate the link for the `<a>` tag, we use the [Phalcon\Tag](tag) component. This is a utility class that offers an easy way to build HTML tags with framework conventions in mind. This class is also a service registered in the Dependency Injector so we can use `$this->tag` to access its functionality.
+`<a>` 태그로 링크를 만들기 위해, [Phalcon\Tag](tag) 컴포넌트를 사용합니다. 이것은 프레임워크에서 정한 규약에 맞춰 HTML태그를 쉽게 만드는 방법을 제공하는 유틸리티 클래스입니다. 이 클래스는 또한 의존성 주입기(Dependency Injector)에 등록된 서비스이기도 하므로, `$this->tag` 를 사용해서 기능애 접근할 수 있습니다.
 
-> **NOTE**: `Phalcon\Tag` is already registered in the DI container since we have used the `Phalcon\Di\FactoryDefault` container. If you registered all the services on your own, you will need to register this component in your container to make it available in your application.
+> **주의**: 우리는 `Phalcon\Di\FactoryDefault` 컨테이너를 사용하므로 `Phalcon\Tag` 는 DI 컨테이너에 이미 등록되어 있습니다. 모든 서비스를 직접 수동으로 등록하신 경우라면, 이 컴포넌트를 컨테이너에 등록하셔야 어플리케이션에서 사용하실 수 있습니다.
 {: .alert .alert-info }
 
-The [Phalcon\Tag](tag) component also uses the previously registered [Phalcon\Uri](uri) component to correctly generate URIs. A more detailed article regarding HTML generation [can be found here](tag).
+[Phalcon\Tag](tag) 컴포넌트는 정확한 URI를 생성하기 위해 [Phalcon\Uri](uri) 컴포넌트도 또한 사용합니다. HTML 생성에 관한 자세한 내용은 [이 문서를 참조해 주세요](tag).
 
 ![](/assets/images/content/tutorial-basic-2.png)
 
-And the Signup controller is (`app/controllers/SignupController.php`):
+다음으로 회원가입 컨트롤러는 (`app/controllers/SignupController.php`):
 
 `app/controllers/SignupController.php`
 
@@ -398,7 +398,7 @@ class SignupController extends Controller
 }
 ```
 
-The empty index action gives the clean pass to a view with the form definition (`app/views/signup/index.phtml`):
+Index 액션에 아무 내용이 없으면 파라미터 없이 바로 form이 정의되어있는 뷰를 호출합니다. (`app/views/signup/index.phtml`):
 
 `app/views/signup/index.phtml`
 
@@ -424,19 +424,19 @@ The empty index action gives the clean pass to a view with the form definition (
 </form>
 ```
 
-Viewing the form in your browser will display the following:
+브라우저에서 이 form을 확인하면 아래와 같이 표시됩니다:
 
 ![](/assets/images/content/tutorial-basic-3.png)
 
-As mentioned above, the [Phalcon\Tag](tag) utility class, exposes useful methods allowing you to build form HTML elements with ease. The `Phalcon\Tag::form()` method receives only one parameter for instance, a relative URI to a controller/action in the application. The `Phalcon\Tag::textField()` creates a text HTML element with the name as the passed parameter, while the `Phalcon\Tag::submitButton()` creates a submit HTML button.
+위에서 언급한것 처럼, [Phalcon\Tag](tag) 유틸리티 클래스는 form HTML 요소를 쉽게 만들 수 있는 유용한 메서드들을 제공합니다. 예를 들어 `Phalcon\Tag::form()` 메서드는 어플리케이션의 컨트롤러/액션에 대한 상대적 URI 값 하나만 파라미터로 받습니다. `Phalcon\Tag::textField()` 는 넘겨받은 파라미터 값을 이름으로 하는 텍스트 HTML요소를 생성하고, `Phalcon\Tag::submitButton()` 은 submit HTML 버튼을 생성합니다.
 
-By clicking the *Register* button, you will notice an exception thrown from the framework, indicating that we are missing the `register` action in the controller `signup`. Our `public/index.php` file throws this exception:
+*Register* 버튼을 클릭하면, `signup` 컨트롤러에 `register`액션이 없다는 메시지의 예외가 발생할 것입니다. `public/index.php` 파일은 다음과 같은 예외를 발생시킵니다:
 
 ```bash
 Exception: Action "register" was not found on handler "signup"
 ```
 
-Implementing that method will remove the exception:
+메서드를 구현해주면 이 예외는 없어집니다:
 
 `app/controllers/SignupController.php`
 
@@ -459,15 +459,15 @@ class SignupController extends Controller
 }
 ```
 
-If you click the *Register* button again, you will see a blank page.
+다시 *Register* 버튼을 클릭하면, 이젠 빈 페이지가 보일겁니다.
 
-The name and email input provided by the user should be stored in a database. According to MVC guidelines, database interactions must be done through models so as to ensure clean object-oriented code.
+사용자가 입력한 이름과 이메일은 데이터베이스에 저장되어야 합니다. MVC 가이드라인에 따르면, 깔끔한 객체지향적 코드가 될 수 있도록 데이터베이스와의 상호작용은 모델을 통해서 이루어져야 합니다.
 
-## Creating a Model
+## 모델 생성
 
-Phalcon brings the first ORM for PHP entirely written in C-language. Instead of increasing the complexity of development, it simplifies it.
+Phalcon은 100% C 언어로 만들어진 최초의 PHP용 ORM을 제공합니다. 개발의 복잡성을 증가시키지 않고, 오히려 단순화 시킵니다.
 
-Before creating our first model, we need to create a database table using a database access tool or the database command line utility. For this tutorial we are using MySQL as our database, A simple table to store registered users can be created as follows:
+첫번째 모델을 만들기 전에 우선, 데이터베이스 관리 도구나 커맨드라인 유틸리티를 이용해서 데이터베이스 테이블을 만들어야 합니다. 이 자습서에서는 MYSQL 데이터베이스를 사용해서, 가입한 사용자정보를 저장할 간단한 테이블을 다음과 같이 생성합니다:
 
 `create_users_table.sql`
 
@@ -481,7 +481,7 @@ CREATE TABLE `users` (
 );
 ```
 
-A model should be located in the `app/models` directory (`app/models/Users.php`). The model maps to the *users* table:
+모델은 `app/models` 디렉토리에 위치해야 합니다 (`app/models/Users.php`). 이 모델파일은 *users* 테이블 구조와 매칭됩니다:
 
 `app/models/Users.php`
 
@@ -498,12 +498,12 @@ class Users extends Model
 }
 ```
 
-> **NOTE**: Note that the public properties of the model correspond to the names of the fields in our table. 
+> **주의**: 모델의 public 속성들은 만들어진 테이블의 필드명과 동일하다는 부분을 주의해주세요. 
 {: .alert .alert-info }
 
-## Setting a Database Connection
+## 데이터베이스 연결 설정
 
-In order to use a database connection and subsequently access data through our models, we need to specify it in our bootstrap process. A database connection is just another service that our application has, that can be used throughout our application:
+데이터베이스 연결을 사용하고 이후 모델을 통해서 데이터에 접근하기 위해서는 부트스트랩 과정에서 이 부분을 정의해줘야 합니다. 데이터베이스 연결은 어플리케이션 전체에서 사용할 수 있는 많은 서비스 중에 하나입니다.
 
 `public/index.php`
 
@@ -527,9 +527,9 @@ $di->set(
 );
 ```
 
-With the correct database parameters, our models are ready to work and interact with the rest of the application. If you use different credentials or database, you will need to adjust the code snippet above.
+데이터베이스 매개변수가 올바르다면 모델들은 어플리케이션의 다른 부분들과 상호작용할 준비가 끝난겁니다. 만약 사용중인 데이터베이스 정보나 인증정보가 다르다면, 위의 코드를 수정해서 사용해주세요.
 
-## Storing Data using Models
+## 모델을 이용해서 데이터 저장하기
 
 `app/controllers/SignupController.php`
 
@@ -578,21 +578,21 @@ class SignupController extends Controller
 }
 ```
 
-At the beginning of the `registerAction` we create an empty user object using the `Users` class we created earlier. We will use this class to manage the record of a user. As mentioned above, the class's public properties map to the fields of the `users` table in our database. Setting the relevant values in the new record and calling `save()` will store the data in the database for that record. The `save()` method returns a `boolean` value which indicates whether the save was successful or not.
+`registerAction` 시작부분에 앞에서 만들었던 `Users` 클래스를 사용해서 비어있는 사용자 객체를 만듭니다. 우리는 이 클래스를 이용해서 사용자의 레코드를 관리하겠습니다. 위에서 말한 것처럼, 이 클래스의 퍼블릭 속성은 데이터베이스에 만들어진 `users` 테이블의 필드와 매칭됩니다. 새로운 레코드에 적절한 값을 집어 넣고 `save()` 를 호출하면 해당 레코드에 대한 데이터를 데이터베이스에 저장하게 됩니다. `save()` 메서드는 저장에 대한 성공여부를 나타내는 `boolean` 값을 반환합니다.
 
-The ORM will automatically escape the input preventing SQL injections so we only need to pass the request to the `save()` method.
+ORM은 SQL 인젝션을 방지하기 위해 자동으로 입력값을 이스케이프 시켜주기 때문에, 우리는 그냥 `save()` 메서드로 요청을 넘겨주기만 하면 됩니다.
 
-Additional validation happens automatically on fields that are defined as not null (required). If we do not enter any of the required fields in the sign-up form our screen will look like this:
+Not null (필수) 로 정의된 필드들에 대해 추가 검증이 자동으로 행해집니다. 우리가 만든 회원가입 form에서 필수입력 필드 중 하나라도 입력하지 않으면 화면은 다음과 같이 표시됩니다:
 
 ![](/assets/images/content/tutorial-basic-4.png)
 
-## List the Registered Users
+## 등록된 사용자 목록표시
 
-Now we will need to get and display all the registered users in our database
+이제 데이터베이스에 있는 모든 등록된 사용자들을 가져와서 표시 해보겠습니다
 
-The first thing that we are going to do in our `indexAction` of the`IndexController` is to show the result of the search of all the users, which is done simply by calling the static method `find()` on our model (`Users::find()`).
+`IndexController`의 `indexAction` 내에서 할 첫 번째 작업은 전체 사용자 검색에 대한 결과를 표시하는 건데요, 이 부분은 우리가 앞서 만든 모델의 static 메서드 `find()` 를 호출함으로써 간단히 해결됩니다(`Users::find()`).
 
-`indexAction` would change as follows:
+`indexAction` 메서드는 다음과 같이 변경됩니다:
 
 `app/controllers/IndexController.php`
 
@@ -613,12 +613,12 @@ class IndexController extends Controller
 }
 ```
 
-> **NOTE**: We assign the results of the `find` to a magic property on the `view` object. This sets this variable with the assigned data and makes it available in our view
+> **주의**: `view` 객체의 magic 속성에 `find` 의 결과값을 할당합니다. 이렇게 하면 이 변수에 주어진 데이터 값이 설정되어 뷰에서 사용할 수 있게 되는 것입니다
 {: .alert .alert-info } 
 
-In our view file `views/index/index.phtml` we can use the `$users` variable as follows:
+`views/index/index.phtml` 뷰 파일에서 `$users` 변수를 아래처럼 사용할 수 있습니다:
 
-The view will look like this:
+뷰는 다음과 비슷한 형태가 될것입니다:
 
 `views/index/index.phtml`
 
@@ -658,13 +658,13 @@ if ($users->count() > 0) {
 }
 ```
 
-As you can see our variables `$users` can be iterated and counted. You can get more information on how models operate in our document about [models](db-models).
+보신 바와 같이 `$users` 변수는 루핑을 돌 수 있고 카운트 할 수 있습니다. [models](db-models) 문서를 참고하시면 모델이 어떻게 동작하는 지에 대한 더 많은 정보를 확인하실 수 있습니다.
 
 ![](/assets/images/content/tutorial-basic-5.png)
 
-## Styling
+## 스타일 입히기
 
-We can now add small design touches to our application. We can add the [Bootstrap CSS](https://getbootstrap.com/) in our code so that it is used throughout our views. We will add an `index.phtml` file in the`views` folder, with the following content:
+이제 만들어진 어플리케이션에 디자인을 살짝 입혀봅시다. 코드에 [Bootstrap CSS](https://getbootstrap.com/) 를 추가해서 전체 뷰에서 사용될 수 있도록 합니다. `views` 폴더에 아래의 내용으로 `index.phtml` 파일을 추가합니다:
 
 `app/views/index.phtml`
 
@@ -684,12 +684,12 @@ We can now add small design touches to our application. We can add the [Bootstra
 </html>
 ```
 
-In the above template, the most important line is the call to the `getContent()` method. This method returns all the content that has been generated from our view. Our application will now show:
+위의 템플릿에서, 가장 중요한 곳은 `getContent()` 메서드를 호출하는 부분입니다. 이 메서드는 뷰에서 생성된 모든 컨텐츠를 반환합니다. 자 이제 우리의 어플리케이션은 다음과 같이 표시됩니다:
 
 ![](/assets/images/content/tutorial-basic-6.png)
 
-## Conclusion
+## 결론
 
-As you can see, it is very easy to start building an application using Phalcon. Because Phalcon is an extension loaded in memory, the footprint of your project will be minimal, while at the same time you will enjoy a nice performance boost.
+보시는 바와 같이, Phalcon을 이용해서 어플리케이션을 만드는 것은 매우 쉽습니다. Phalcon은 메모리에 로드되는 익스텐션이기 때문에, 멋진 성능향상을 즐기면서도 프로젝트가 받는 영향은 최소화 됩니다.
 
-If you are ready to learn more check out the [Vökuró Tutorial](tutorial-vokuro) next.
+더 공부하실 준비가 되셨다면 다음으로 [Vökuró 자습서](tutorial-vokuro)를 확인 해주세요.
