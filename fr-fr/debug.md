@@ -12,7 +12,7 @@ keywords: 'debug, debugging, error handling'
 
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
-## Overview
+## Vue d'ensemble
 
 ![](/assets/images/content/xdebug-1.jpg)
 
