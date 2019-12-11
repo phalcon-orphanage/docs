@@ -143,7 +143,7 @@ var_dump(
 final public static function get(
     array $collection, 
     mixed $index, 
-    mixed $defaultValue,
+    mixed $defaultValue = null,
     string $cast = null
 ): mixed
 ```
