@@ -314,12 +314,9 @@ Since the collection object implements `\IteratorAggregate`, you can iterate thr
 use Phalcon\Collection;
 
 $data = [
-    'colors' => [
-        'red',
-        'white',
-        'blue',
-    ],
-    'year'   => 1776,
+   'red',
+   'white',
+   'blue'
 ];
 
 $collection = new Collection($data);
