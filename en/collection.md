@@ -302,8 +302,7 @@ $data = [
         'red',
         'white',
         'blue',
-    ],
-    'year'   => 1776,
+    ]
 ];
 
 $collection = new Collection($data);
