@@ -909,7 +909,7 @@ $group->addTrace(
 #### Removed
 
 - `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
-- `Phalcon\Session\AdapterInterface`
+- `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
 - `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
 - `Phalcon\Session\Adapter\Memcache`
 - `Phalcon\Session\BagInterface`
