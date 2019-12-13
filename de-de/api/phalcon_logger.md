@@ -387,6 +387,14 @@ public function getFormatter(): FormatterInterface;
 Returns the internal formatter
 
 ```php
+public function inTransaction(): bool;
+```
+
+Returns the whether the logger is currently in an active transaction or not
+
+@return bool
+
+```php
 public function process( Item $item ): void;
 ```
 
