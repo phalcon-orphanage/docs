@@ -29,7 +29,7 @@ title: 'Phalcon\Storage'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/abstractadapter.zep)
 
 | Namespace  | Phalcon\Storage\Adapter |
-| Uses       | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
+| Uses       | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface |
 | Implements | AdapterInterface |
 
 This file is part of the Phalcon Framework.
@@ -125,7 +125,7 @@ public function getDefaultSerializer(): string
 
 
 ```php
-abstract public function getKeys(): array;
+abstract public function getKeys( string $prefix = string ): array;
 ```
 Returns all the keys stored
 
@@ -156,6 +156,15 @@ Stores data in the adapter
 ```php
 public function setDefaultSerializer( string $defaultSerializer )
 ```
+
+
+```php
+protected function getFilteredKeys( mixed $keys, string $prefix ): array;
+```
+Filters the keys array based on global and passed prefix
+
+
+@return array
 
 
 ```php
@@ -237,7 +246,7 @@ server(s)
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Returns all the keys stored
 
@@ -337,7 +346,7 @@ Always returns null
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
 
@@ -448,12 +457,11 @@ server(s)
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
 
 @return array
-@throws Exception
 
 
 ```php
@@ -562,7 +570,7 @@ Always returns null
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
 
@@ -675,7 +683,7 @@ server(s)
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
 
@@ -793,7 +801,7 @@ Always returns null
 
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 Stores data in the adapter
 

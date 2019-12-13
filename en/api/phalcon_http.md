@@ -6,8 +6,8 @@ title: 'Phalcon\Http'
 ---
 
 * [Phalcon\Http\Cookie](#http-cookie)
+* [Phalcon\Http\Cookie\CookieInterface](#http-cookie-cookieinterface)
 * [Phalcon\Http\Cookie\Exception](#http-cookie-exception)
-* [Phalcon\Http\CookieInterface](#http-cookieinterface)
 * [Phalcon\Http\Message\AbstractCommon](#http-message-abstractcommon)
 * [Phalcon\Http\Message\AbstractMessage](#http-message-abstractmessage)
 * [Phalcon\Http\Message\AbstractRequest](#http-message-abstractrequest)
@@ -47,7 +47,7 @@ title: 'Phalcon\Http'
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie.zep)
 
 | Namespace  | Phalcon\Http |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Crypt\CryptInterface, Phalcon\Crypt\Mismatch, Phalcon\Filter\FilterInterface, Phalcon\Http\Response\Exception, Phalcon\Http\Cookie\CookieInterface, Phalcon\Http\Cookie\Exception, Phalcon\Session\ManagerInterface |
 | Extends    | AbstractInjectionAware |
 | Implements | CookieInterface |
 
@@ -250,24 +250,11 @@ Assert the cookie's key is enough long.
 
 
         
-<h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
+<h1 id="http-cookie-cookieinterface">Interface Phalcon\Http\Cookie\CookieInterface</h1>
 
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie/exception.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie/cookieinterface.zep)
 
 | Namespace  | Phalcon\Http\Cookie |
-| Extends    | \Phalcon\Exception |
-
-Phalcon\Http\Cookie\Exception
-
-Exceptions thrown in Phalcon\Http\Cookie will use this class.
-
-
-        
-<h1 id="http-cookieinterface">Interface Phalcon\Http\CookieInterface</h1>
-
-[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookieinterface.zep)
-
-| Namespace  | Phalcon\Http |
 
 Interface for Phalcon\Http\Cookie
 
@@ -377,6 +364,19 @@ public function useEncryption( bool $useEncryption ): CookieInterface;
 ```
 Sets if the cookie must be encrypted/decrypted automatically
 
+
+
+        
+<h1 id="http-cookie-exception">Class Phalcon\Http\Cookie\Exception</h1>
+
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/cookie/exception.zep)
+
+| Namespace  | Phalcon\Http\Cookie |
+| Extends    | \Phalcon\Exception |
+
+Phalcon\Http\Cookie\Exception
+
+Exceptions thrown in Phalcon\Http\Cookie will use this class.
 
 
         
