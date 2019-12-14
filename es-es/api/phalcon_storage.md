@@ -28,7 +28,7 @@ title: 'Phalcon\Storage'
 
 [Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/storage/adapter/abstractadapter.zep)
 
-| Namespace | Phalcon\Storage\Adapter | | Uses | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Implements | AdapterInterface |
+| Namespace | Phalcon\Storage\Adapter | | Uses | DateInterval, DateTime, Phalcon\Helper\Arr, Phalcon\Helper\Str, Phalcon\Storage\Exception, Phalcon\Storage\SerializerFactory, Phalcon\Storage\Serializer\SerializerInterface | | Implements | AdapterInterface |
 
 This file is part of the Phalcon Framework.
 
@@ -122,7 +122,7 @@ public function getDefaultSerializer(): string
 ```
 
 ```php
-abstract public function getKeys(): array;
+abstract public function getKeys( string $prefix = string ): array;
 ```
 
 Returns all the keys stored
@@ -152,6 +152,14 @@ Stores data in the adapter
 ```php
 public function setDefaultSerializer( string $defaultSerializer )
 ```
+
+```php
+protected function getFilteredKeys( mixed $keys, string $prefix ): array;
+```
+
+Filters the keys array based on global and passed prefix
+
+@return array
 
 ```php
 protected function getPrefixedKey( mixed $key ): string;
@@ -226,7 +234,7 @@ public function getAdapter(): mixed;
 Returns the already connected adapter or connects to the backend server(s)
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Returns all the keys stored
@@ -320,7 +328,7 @@ Always returns null
 @return null
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Stores data in the adapter
@@ -416,12 +424,12 @@ Returns the already connected adapter or connects to the Memcached server(s)
 @return \Memcached @throws Exception
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Stores data in the adapter
 
-@return array @throws Exception
+@return array
 
 ```php
 public function has( string $key ): bool;
@@ -517,7 +525,7 @@ Always returns null
 @return null
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Stores data in the adapter
@@ -615,7 +623,7 @@ Returns the already connected adapter or connects to the Redis server(s)
 @return mixed|\Redis @throws Exception
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Stores data in the adapter
@@ -718,7 +726,7 @@ Always returns null
 @return null
 
 ```php
-public function getKeys(): array;
+public function getKeys( string $prefix = string ): array;
 ```
 
 Stores data in the adapter
