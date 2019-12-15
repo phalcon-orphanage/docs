@@ -122,7 +122,7 @@ It also returns `false` if the value is:
 Email( mixed $input ): string
 ```
 
-Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php).
+Removes all characters except letters, digits and ``!#$%&*+-/=?^_`{\|}~@.[]``. Internally it uses [`filter_var`](https://secure.php.net/manual/en/function.filter-var.php) with `FILTER_FLAG_EMAIL_UNICODE`.
 
 #### `float`
 
