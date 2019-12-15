@@ -1632,6 +1632,67 @@ $validator->add(
 );
 ```
 
+You can also pass the `flags` option in the array, defining `FILTER_FLAG_PATH_REQUIRED` or `FILTER_FLAG_QUERY_REQUIRED` if necessary.
+
+```php
+<?php
+
+use Phalcon\Validation;
+use Phalcon\Validation\Validator\Url;
+
+$validation = new Validation();
+
+$validation->add(
+    'url',
+    new Url(
+        [
+            'options' => FILTER_FLAG_PATH_REQUIRED
+        ]
+    )
+);
+
+$messages = $validation->validate(
+    [
+        'url' => 'phalcon.io',
+    ]
+);
+
+$validation->add(
+    'url',
+    new Url(
+        [
+            'options' => FILTER_FLAG_QUERY_REQUIRED
+        ]
+    )
+);
+
+$messages = $validation->validate(
+    [
+        'url' => 'https://',
+    ]
+);
+
+$validation->add(
+    'url',
+    new Url(
+        [
+            'options' => [
+                'flags' => [
+                    FILTER_FLAG_PATH_REQUIRED,
+                    FILTER_FLAG_QUERY_REQUIRED,
+                ],
+            ],
+        ]
+    )
+);
+
+$messages = $validation->validate(
+    [
+        'url' => 'phalcon',
+    ]
+);
+```
+
 ### Custom Validators
 You can create your own validators by implementing the [Phalcon\Validation\ValidatorInterface][validation-validatorinterface] or [Phalcon\Validation\Validator\CompositeInterface][validation-validatorcompositeinterface]. You can also extend the [Phalcon\Validation\AbstractCombinedFieldsValidator][validation-abstractcombinedfieldsvalidator], [Phalcon\Validation\AbstractValidator][validation-abstractvalidator] or [Phalcon\Validation\AbstractValidatorComposite][validation-abstractvalidatorcomposite].
 
