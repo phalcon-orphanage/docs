@@ -257,9 +257,36 @@ make install clean
 
 Un overlay para la instalación de Phalcon se puede encontrar [aquí](https://github.com/smoke/phalcon-gentoo-overlay)
 
+#### Raspberry Pi
+
+```bash
+sudo -s
+git clone https://github.com/phalcon/cphalcon
+cd cphalcon/
+git checkout tags/v4.0.0 ./
+zephir fullclean
+zephir build
+```
+
+It is also necessary to increase teh swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+
+```bash
+sudo -s
+nano /etc/dphys-swapfile
+```
+
+Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+
+After saving the setting, restart the daemon:
+
+```bash
+/etc/init.d/dphys-swapfile stop
+/etc/init.d/dphys-swapfile start
+```
+
 ### macOS
 
-En sistemas macOS puede compilar e instalar la extensión con `brew`, `macports` o el código fuente:
+On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
 #### Requerimentos
 
@@ -281,23 +308,23 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-Editar el archivo php.ini y luego añadir al final:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-Reiniciar tu navegador web.
+Restart your webserver.
 
 ### Windows
 
-Para utilizar Phalcon en Windows, usted necesitará instalar el phalcon.dll. Hemos compilado varias DLLs dependiendo de la plataforma de destino. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
 
-Identifique su instalación de PHP, así como la arquitectura. Si descarga el archivo DLL erróneo, Phalcon no funcionará. `phpinfo()` contiene esta información. En el ejemplo siguiente, vamos a necesitar la versión NTS de la DLL:
+Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-Las DLL disponibles son:
+The available DLLs are:
 
 | Arquitectura | Versión | Tipo                  |
 |:------------:|:-------:| --------------------- |
@@ -306,17 +333,17 @@ Las DLL disponibles son:
 |     x86      |   7.x   | Thread safe           |
 |     x86      |   7.x   | Non Thread safe (NTS) |
 
-Editar el archivo php.ini y luego añadir al final:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-Reiniciar tu navegador web.
+Restart your webserver.
 
 ### Compile From Sources
 
-Compilar desde código fuente es similar a la mayoría de los entornos (Linux/macOS).
+Compiling from source is similar to most environments (Linux/macOS).
 
 #### Requerimentos
 
@@ -325,7 +352,7 @@ Compilar desde código fuente es similar a la mayoría de los entornos (Linux/ma
 * re2c >= 0.13
 * libpcre-dev
 
-#### Compilación
+#### Compilation
 
 Descarga la última `zephir.phar` desde [aquí](https://github.com/phalcon/zephir/releases). Añada a una carpeta a la que puede acceder su sistema.
 
@@ -350,7 +377,7 @@ Comprueba el módulo
 php -m | grep phalcon
 ```
 
-Ahora usted tendrá que añadir `extension=phalcon.so` a su archivo PHP ini y reiniciar su servidor web, para que la extensión sea cargada.
+You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
 ; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
@@ -369,7 +396,7 @@ extension=phalcon.so
 extension=phalcon.so
 ```
 
-Las instrucciones anteriores compilarán e instalarán el módulo en su sistema. También puedes compilar la extensión y luego añadirla manualmente en tu archivo `ini`:
+The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
 
 ```bash
 cd cphalcon/
@@ -382,17 +409,17 @@ phpize
 make && make install
 ```
 
-Si usas el método anterior, necesitarás añadir la linea `extension=phalcon.so` en tu `php.ini` tanto para CLI como para el servidor web.
+If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
 
 #### Tuning Build
 
-Por defecto, compilamos para ser lo más compatible posible con todos los procesadores (`gcc -mtune=native -O2 -fomit-frame-pointer`). Si desea que el compilador genere código de máquina optimizado, que coincida con el procesador en el que se está ejecutando actualmente, puede configurar sus propios parámetros de compilación, exportando CFLAGS antes de la compilación. Por ejemplo
+By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-Esto generará el mejor código posible para ese chipset pero probablemente romperá el objeto compilado en chipsets antiguos.
+This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
 
 ### Shared Hosting
 

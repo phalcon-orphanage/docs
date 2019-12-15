@@ -686,7 +686,7 @@ $acl->addRole($accounting, $guest);
 $acl->addRole($manager, $accounting);
 ```
 
-Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`
+Whatever access `guests` have will be propagated to `accounting` and in turn `accounting` will be propagated to `manager`. You can also pass an array of roles as the second parameter of `addRole` offering more flexibility.
 
 ## Roles Relationships
 

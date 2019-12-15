@@ -257,6 +257,33 @@ make install clean
 
 An overlay for installing Phalcon can be found [here](https://github.com/smoke/phalcon-gentoo-overlay)
 
+#### Raspberry Pi
+
+```bash
+sudo -s
+git clone https://github.com/phalcon/cphalcon
+cd cphalcon/
+git checkout tags/v4.0.0 ./
+zephir fullclean
+zephir build
+```
+
+It is also necessary to increase teh swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+
+```bash
+sudo -s
+nano /etc/dphys-swapfile
+```
+
+Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+
+After saving the setting, restart the daemon:
+
+```bash
+/etc/init.d/dphys-swapfile stop
+/etc/init.d/dphys-swapfile start
+```
+
 ### macOS
 
 On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:

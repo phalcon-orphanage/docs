@@ -363,7 +363,7 @@ The [Phalcon\Http\Request](api/phalcon_http#http-request) object offers methods 
 * `getServerAddress()`: Gets active server address IP
 * `getServerName()`: Gets active server name
 * `getScheme()`: Gets HTTP schema (http/https)
-* `getURI()`: Gets HTTP URI which request has been made
+* `getURI()`: Gets HTTP URI which request has been made. If `true` is passed as a parameter, the query part will not be returned
 
 ```php
 <?php

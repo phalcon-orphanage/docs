@@ -94,19 +94,15 @@ The [ACL](acl) component has had some methods and components renamed. The functi
 
 The components needed for the ACL to work have been renamed. In particular `Resource` has been renamed to `Component` in all relevant interfaces, classes and methods that this component uses.
 
-### Added
+- Added `Phalcon\Acl\Adapter\AbstractAdapter`
+- Added `Acl\Enum`
 
-- `Phalcon\Acl\Adapter\AbstractAdapter`
-- `Acl\Enum`
+- Removed `Phalcon\Acl`
 
-### Removed
-
-- `Phalcon\Acl`
-- `Phalcon\Acl\Adapter`
-
-### Changed
+- Removed `Phalcon\Acl\Adapter`
 
 - Renamed `Phalcon\Acl\Resource` to `Phalcon\Acl\Component`
+
 - Renamed `Phalcon\Acl\ResourceInterface` to `Phalcon\Acl\ComponentInterface`
 - Renamed `Phalcon\Acl\ResourceAware` to `Phalcon\Acl\ComponentAware`
 - Renamed `Phalcon\Acl\AdapterInterface::isResource` to `Phalcon\Acl\AdapterInterface::isComponent`
@@ -150,13 +146,8 @@ echo Enum::DENY;  //prints 0
 
 CSS and JS filters have been removed from the [Assets](assets) component. Due to license limitations, the CSS and JS minifiers (filters) have been removed for v4. In future versions with the help of the community we can introduce these filters again. You can always implement your own using the supplied `Phalcon\Assets\FilterInterface`.
 
-### Removed
-
 - Removed `Phalcon\Assets\Filters\CssMin`
 - Removed `Phalcon\Assets\Filters\JsMin`
-
-### Renamed
-
 - Renamed `Phalcon\Assets\Resource` to `Phalcon\Assets\Asset`
 - Renamed `Phalcon\Assets\ResourceInterface` to `Phalcon\Assets\AssetInterface`
 - Renamed `Phalcon\Assets\Manager::addResource` to `Phalcon\Assets\Manager::addAsset`
@@ -477,9 +468,6 @@ By default the service sanitizers cast the value to the appropriate type so thes
 #### Changed
 
 - `FILTER_SPECIAL_CHARS` has changed been removed - replaced by `FILTER_SPECIAL`
-
-#### Added
-
 - `FILTER_ALNUM` - replaced `FILTER_ALPHANUM`
 - `FILTER_ALPHA` - sanitize only alpha characters
 - `FILTER_BOOL` - sanitize boolean including "yes", "no", etc.
@@ -529,19 +517,10 @@ By default the service sanitizers cast the value to the appropriate type so thes
 
 ## Image
 
-### Added
-
-- `Phalcon\Image\Enum`
-
-### Renamed
-
-- `Phalcon\Image\Adapter` is now `Phalcon\Image\Adapter\AbstractAdapter`
-
-- `Phalcon\Image\Factory` is now `Phalcon\Image\ImageFactory`
-
-### Removed
-
-- `Phalcon\Image`
+- Added `Phalcon\Image\Enum`
+- Renamed `Phalcon\Image\Adapter` to `Phalcon\Image\Adapter\AbstractAdapter`
+- Renamed `Phalcon\Image\Factory` to `Phalcon\Image\ImageFactory`
+- Removed `Phalcon\Image`
 
 ## Image\Enum (Constants)
 
@@ -735,6 +714,8 @@ $criteria->limit(10, null);
 - Removed `Phalcon\Model::reset`
 - Added `isRelationshipLoaded` to check if relationship is loaded
 - Changed `Phalcon\Model::assign` parameters order to $data, $whiteList, $dataColumnMap
+- Changed `Phalcon\Model::findFrst` to return `null` instead of `false` if no record was found
+- Changed `Phalcon\Model::getRelated()` to return `null` for one to one relationships if no record was found
 
 ### Mvc\Model\Criteria
 
@@ -752,6 +733,10 @@ $criteria->limit(10, null);
 - Removed `Phalcon\Model\Manager::registerNamespaceAlias()`
 - Removed `Phalcon\Model\Manager::getNamespaceAlias()`
 - Removed `Phalcon\Model\Manager::getNamespaceAliases()`
+- The signature of `Phalcon\Mvc\Model\Manager::getRelationRecords()` has changed
+- The signature of `Phalcon\Mvc\Model\Manager::getBelongsToRecords()` has changed
+- The signature of `Phalcon\Mvc\Model\Manager::getHasOneRecords()` has changed
+- The signature of `Phalcon\Mvc\Model\Manager::getHasManyRecords()` has changed
 
 ### Mvc\Model\ManagerInterface
 
@@ -818,9 +803,16 @@ $criteria->limit(10, null);
 - Removed `Phalcon\Mvc\User\Module` - use `Phalcon\Di\Injectable` instead
 - Removed `Phalcon\Mvc\User\Plugin` - use `Phalcon\Di\Injectable` instead
 
-### Mvc\View
+### Mvc\View\Engine\Volt
 
-- Removed `getParams`
+The options for Volt have changed (the key names). Using the old syntax will produce a deprecation warning. The new options are:
+
+- `always` - Always compile
+- `extension` - Extension of files
+- `separator` - Separator (used for the folders/routes)
+- `stat` - Stat each file before trying to use it
+- `path` - The path of the files
+- `prefix` - The prefix of the files
 
 * * *
 
@@ -899,22 +891,17 @@ $group->addTrace(
 
 `Session` and `Session\Bag` no longer get loaded by default in `Phalcon\DI\FactoryDefault`. Session was refactored.
 
-#### Added
-
-- `Phalcon\Session\Adapter\AbstractAdapter`
-- `Phalcon\Session\Adapter\Noop`
-- `Phalcon\Session\Adapter\Stream`
-- `Phalcon\Session\Manager`
-- `Phalcon\Session\ManagerInterface`
-
-#### Removed
-
-- `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
-- `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
-- `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
-- `Phalcon\Session\Adapter\Memcache`
-- `Phalcon\Session\BagInterface`
-- `Phalcon\Session\Factory`
+- Added `Phalcon\Session\Adapter\AbstractAdapter`
+- Added `Phalcon\Session\Adapter\Noop`
+- Added `Phalcon\Session\Adapter\Stream`
+- Added `Phalcon\Session\Manager`
+- Added `Phalcon\Session\ManagerInterface`
+- Removed `Phalcon\Session\Adapter` - replaced by `Phalcon\Session\AbstractAdapter`
+- Removed `Phalcon\Session\AdapterInterface` - replaced by native `SessionHandlerInterface`
+- Removed `Phalcon\Session\Adapter\Files` - replaced by `Phalcon\Session\Adapter\Stream`
+- Removed `Phalcon\Session\Adapter\Memcache`
+- Removed `Phalcon\Session\BagInterface`
+- Removed `Phalcon\Session\Factory`
 
 ### Session\Adapter
 
@@ -960,6 +947,7 @@ The `Phalcon\Text` component has been removed in favor of the `Phalcon\Helper\St
 - Removed `Phalcon\Validation\MessageInterface` and `Phalcon\Mvc\Model\MessageInterface` in favor of `Phalcon\Messages\MessageInterface`
 - Removed `Phalcon\Validation\Message` and `Phalcon\Mvc\Model\Message` in favor of `Phalcon\Messages\Message`
 - Removed `Phalcon\Validation\Message\Group` in favor of `Phalcon\Messages\Messages`
+- Validator messages have been moved inside each validator
 
 ### Validation\Validator
 

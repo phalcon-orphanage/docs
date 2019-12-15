@@ -257,11 +257,38 @@ make install clean
 
 [여기](https://github.com/smoke/phalcon-gentoo-overlay)에서 Phalcon 설치를 위한 오버레이이를 확인하실 수 있습니다.
 
+#### Raspberry Pi
+
+```bash
+sudo -s
+git clone https://github.com/phalcon/cphalcon
+cd cphalcon/
+git checkout tags/v4.0.0 ./
+zephir fullclean
+zephir build
+```
+
+It is also necessary to increase teh swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+
+```bash
+sudo -s
+nano /etc/dphys-swapfile
+```
+
+Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+
+After saving the setting, restart the daemon:
+
+```bash
+/etc/init.d/dphys-swapfile stop
+/etc/init.d/dphys-swapfile start
+```
+
 ### macOS
 
-macOS 시스템에서는 `brew`, `macports` 를 이용하거나 소스코드에서 직접 컴파일 할 수 있습니다:
+On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
 
-#### 사전 요구사항
+#### Requirements
 
 * PHP 7.2x 개발 환경
 * XCode
@@ -281,23 +308,23 @@ sudo port install php72-phalcon
 sudo port install php73-phalcon
 ```
 
-php.ini 파일을 열어서 파일 제일 아래에 다음의 라인을 추가해 주세요:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.so
 ```
 
-웹서버를 재시작하세요.
+Restart your webserver.
 
 ### Windows
 
-Phalcon을 윈도우에서 사용하시려면, 먼저 phalcon.dll을 설치해야 합니다. 대상 플랫폼 별로 몇개의 DLL파일을 컴파일 해두었습니다. 이 DLL파일들은 [다운로드](https://phalcon.io/en/download/windows) 페이지에서 받으실 수 있습니다.
+To use Phalcon on Windows, you will need to install the phalcon.dll. We have compiled several DLLs depending on the target platform. The DLLs can be found in our [download](https://phalcon.io/en/download/windows) page.
 
-설치된 PHP 버전과 아키텍처를 우선 확인하세요. 잘못된 DLL파일을 내려받으시면 Phalcon이 동작하지 않습니다. 해당정보는 `phpinfo()` 함수로 확인하실 수 있습니다. 예를 들어 아래의 경우는 NTS버전의 DLL파일이 필요합니다:
+Identify your PHP installation as well as architecture. If you download the wrong DLL, Phalcon will not work. `phpinfo()` contains this information. In the example below, we will need the NTS version of the DLL:
 
 ![phpinfo](/assets/images/content/phpinfo-api.png)
 
-다운로드 가능한 DLL 파일들은 다음과 같습니다:
+The available DLLs are:
 
 | 아키텍처 | 버전  | 타입            |
 |:----:|:---:| ------------- |
@@ -306,36 +333,36 @@ Phalcon을 윈도우에서 사용하시려면, 먼저 phalcon.dll을 설치해�
 | x86  | 7.x | 멀티스레드 빌드(TS)  |
 | x86  | 7.x | 단일스레드 빌드(NTS) |
 
-php.ini 파일을 열어서 파일 제일 아래에 다음의 라인을 추가해 주세요:
+Edit your php.ini file and then append at the end:
 
 ```ini
 extension=php_phalcon.dll
 ```
 
-웹서버를 재시작하세요.
+Restart your webserver.
 
 ### 소스를 직접 컴파일하기
 
-소스를 직접 컴파일 하는 방법은 대부분환경에서 비슷합니다 (Linux/macOS)
+Compiling from source is similar to most environments (Linux/macOS).
 
-#### 사전 요구사항
+#### Requirements
 
 * PHP 7.2x/7.3.x 개발 환경
 * GCC 컴파일러 (리눅스/Solaris/FreeBSD) 혹은 Xcode (macOS)
 * re2c >= 0.13
 * libpcre-dev
 
-#### 컴파일
+#### Compilation
 
-[여기](https://github.com/phalcon/zephir/releases)에서 최신버전의 `zephir.phar` 를 다운받으세요. 내려받은 파일을 시스템에서 접근가능한 폴더에 집어넣습니다.
+Download the latest `zephir.phar` from [here](https://github.com/phalcon/zephir/releases). Add it to a folder that can be accessed by your system.
 
-아래와 같이 저장소를 클론 하세요
+Clone the repository
 
 ```bash
 git clone https://github.com/phalcon/cphalcon
 ```
 
-Phalcon 컴파일
+Compile Phalcon
 
 ```bash
 cd cphalcon/
@@ -344,27 +371,32 @@ zephir fullclean
 zephir build
 ```
 
-모듈 확인
+Check the module
 
 ```bash
 php -m | grep phalcon
 ```
 
-PHP ini 파일에 `extension=phalcon.so` 라인을 추가하신 후 웹서버를 재시작해서 추가한 익스텐션이 로드되도록 해주세요.
+You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
 
 ```ini
-# Suse: Phalcon.ini 파일을 만들어 extension= phalcon.so 라인을 추가한 후 /etc/php7/conf.d/ 폴더에 저장해 주세요.
+; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
+extension=phalcon.so
 
-# CentOS/RedHat/Fedora: Phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php.d/ 폴더에 저장해 주세요.
+; CentOS/RedHat/Fedora: Add a File Called Phalcon.ini in /etc/php.d/ with This Content:
+extension=phalcon.so
 
-# Ubuntu/Debian 에서 Apache2 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/apache2/conf.d/ 폴더에 저장해 주세요.
+; Ubuntu/Debian with Apache2: Add a File Called 30-phalcon.ini in /etc/php7/apache2/conf.d/ with This Content:
+extension=phalcon.so
 
-# Ubuntu/Debian 에서 Php7-fpm 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/fpm/conf.d/ 폴더에 저장해 주세요.
+; Ubuntu/Debian with Php7-fpm: Add a File Called 30-phalcon.ini in /etc/php7/fpm/conf.d/ with This Content:
+extension=phalcon.so
 
-# Ubuntu/Debian 에서 Php7-cli 사용시: 30-phalcon.ini 파일을 만들어 extension=phalcon.so 라인을 추가한 후 /etc/php7/cli/conf.d/ 폴더에 저장해 주세요.
+; Ubuntu/Debian with Php7-cli: Add a File Called 30-phalcon.ini in /etc/php7/cli/conf.d/ with This Content:
+extension=phalcon.so
 ```
 
-위의 설명대로 따라 하시면 컴파일 **과 함께** 시스템 상에 모듈 설치까지 진행됩니다. 물론 익스텐션을 컴파일만 한 후 수동으로 직접 `ini`파일에 추가하실 수도 있습니다.
+The instructions above will compile **and** install the module on your system. You can also compile the extension and then add it manually in your `ini` file:
 
 ```bash
 cd cphalcon/
@@ -377,26 +409,26 @@ phpize
 make && make install
 ```
 
-이렇게 하시는 경우 CLI와 웹서버 용의 `php.ini` 파일들에 직접`extension=phalcon.so` 라인을 추가해 주셔야 합니다.
+If you use the above method you will need to add the `extension=phalcon.so` in your `php.ini` both for CLI and web server.
 
-#### 빌드 세부조정
+#### Tuning Build
 
-기본값은 모든 프로세서에 대해 가능한 최대한 호환되도록 컴파일 하는 것입니다(`gcc -mtune=native -O2 -fomit-frame-pointer`). 컴파일 시 현재 사용중인 프로세스에 맞게 최적화된 머신코드를 생성하시려면, 빌드 전 CFLAGS 값을 export 하여 자신이 원하는 컴파일 플래그를 설정하실 수 있습니다. 예를 들어
+By default we compile to be as compatible as possible with all processors (`gcc -mtune=native -O2 -fomit-frame-pointer`). If you would like instruct the compiler to generate optimized machine code that matches the processor where it is currently running on you can set your own compile flags by exporting CFLAGS before the build. For example
 
     export CFLAGS="-march=native -O2 -fomit-frame-pointer"
     zephir build
     
 
-와 같이 하시는 경우, 사용하시는 칩셋에 대해서는 가능한 최적의 코드를 생성해 주지만, 반대로 컴파일된 개체가 구형 칩셋에 대해서는 호환되지 않을 가능성이 큽니다.
+This will generate the best possible code for that chipset but will likely break the compiled object on older chipsets.
 
 ### 공유 호스팅
 
-공유 호스팅 환경에서 어플리케이션을 운영하실 경우, 특히 root 권한이 없을 경우에 Phalcon 설치가 제한될 가능성이 큽니다. 일부 웹 호스팅사의 경우 운 좋게도 제어판에서 Phalcon 설치를 지원합니다.
+Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
 
 #### CPanel & WHM
 
-cPanel & WHM 은 Easy Apache 4 (EA4) 상에서 Phalcon을 지원합니다. Easy Apache 4 (EA4) 에 [module](https://github.com/CpanelInc/scl-phalcon)을 활성화 하셔서 Phalcon을 설치하실 수 있습니다.
+cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module](https://github.com/CpanelInc/scl-phalcon) in Easy Apache 4 (EA4).
 
 #### Plesk
 
-Plesk 제어판에서는 Phalcon을 지원하지 않지만, Plesk [웹사이트](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-) 에서 설치방법에 대한 설명서를 확인하실 수 있습니다.
+The plesk control panel doesn't have Phalcon support but you can find installation instructions on the Plesk [website](https://support.plesk.com/hc/en-us/articles/115002186489-How-to-install-Phalcon-framework-for-a-PHP-supplied-by-Plesk-)

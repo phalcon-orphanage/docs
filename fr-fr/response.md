@@ -554,7 +554,7 @@ $response->setHeader(
 );
 ```
 
-If you don't want to call the `setHeaders()`, a utility method is available to you `setCache()` which sets the `Cache-Control` for you.
+If you do not want to call the `setHeaders()`, a utility method is available to you `setCache()` which sets the `Cache-Control` for you.
 
 ```php
 <?php

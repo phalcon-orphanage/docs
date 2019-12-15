@@ -466,10 +466,13 @@ $invoice = Invoices::find();
 ```php
 public static function findFirst(
     mixed $parameters = null
-): ModelInterface | bool
+): ModelInterface | null
 ```
 
-Query the first record that matches the specified conditions. It will return a resultset or `false` if the record was not found.
+Query the first record that matches the specified conditions. It will return a resultset or `null` if the record was not found.
+
+> **NOTE**: `findFirst()` no longer returns `false` if records were not found.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -564,6 +567,9 @@ if (false === $result) {
 }
 ```
 
+> **NOTE**: `save()` no longer accepts parameters to set data. You can use `assign` instead.
+{: .alert .alert-warning }
+
 ```php
 public function getModelsManager(): ManagerInterface
 ```
@@ -604,10 +610,13 @@ Returns the DependencyInjection connection service name used to read data relate
 public function getRelated(
     string $alias, 
     mixed $arguments = null
-): Phalcon\Mvc\Model\Resultset\Simple | false
+): Phalcon\Mvc\Model\Resultset\Simple | null
 ```
 
-Returns related records based on defined relations
+Returns related records based on defined relations. If the relationship is one to one and no records have been found, it will return `null`
+
+> **NOTE**: `getRelated()` no longer returns `false` if a record was not found on a one to one relationship.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -2527,9 +2536,9 @@ $invoices = Invoices::findByInvTotal(1000);
 
 ## Before/After Fetching
 
-There are cases that we need to manipulate the data after it has been fetched from the database so that our model contains what we need in the application layer. As seen in the <events> document, models act as listeners so we can implement some events as methods in the model.
+There are cases where we need to manipulate the data after it has been fetched from the database so that our model contains what we need in the application layer. As seen in the <events> document, models act as listeners so we can implement some events as methods in the model.
 
-Such methdos are `beforeSave`, `afterSave` but also in our example here `afterFetch`. The `afterFetch` will run right after the data populates the model from the database. We can utilize this event to calculate or manipulate the data in the model.
+Such methods include `beforeSave`, `afterSave` and `afterFetch` as shown in our example below. The `afterFetch` method will run right after the data populates the model from the database. We can utilize this method to modify or transform the data in the model.
 
 ```php
 <?php
@@ -2563,7 +2572,7 @@ class Invoices extends Model
 }
 ```
 
-In the above example we receive a comma delimited string from the database and `explode` it to an array so that it can be used from our application. After that you can add or remove elements in the array, and before the model is saved it, `implode` will be called to store the array as a string in the database.
+In the above example we receive a comma delimited string from the database and `explode` it to an array so that it can be used from our application. After that, you can add or remove elements in the array; before the model saves it, `implode` will be called to store the array as a string in the database.
 
 If you use getters/setters instead of/or together with public properties, you can initialize the field once it is accessed:
 
