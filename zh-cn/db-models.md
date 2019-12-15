@@ -466,10 +466,13 @@ $invoice = Invoices::find();
 ```php
 public static function findFirst(
     mixed $parameters = null
-): ModelInterface | bool
+): ModelInterface | null
 ```
 
-Query the first record that matches the specified conditions. It will return a resultset or `false` if the record was not found.
+Query the first record that matches the specified conditions. It will return a resultset or `null` if the record was not found.
+
+> **NOTE**: `findFirst()` no longer returns `false` if records were not found.
+{: .alert .alert-warning }
 
 ```php
 <?php
@@ -564,6 +567,9 @@ if (false === $result) {
 }
 ```
 
+> **NOTE**: `save()` no longer accepts parameters to set data. You can use `assign` instead.
+{: .alert .alert-warning }
+
 ```php
 public function getModelsManager(): ManagerInterface
 ```
@@ -604,10 +610,13 @@ Returns the DependencyInjection connection service name used to read data relate
 public function getRelated(
     string $alias, 
     mixed $arguments = null
-): Phalcon\Mvc\Model\Resultset\Simple | false
+): Phalcon\Mvc\Model\Resultset\Simple | null
 ```
 
-Returns related records based on defined relations
+Returns related records based on defined relations. If the relationship is one to one and no records have been found, it will return `null`
+
+> **NOTE**: `getRelated()` no longer returns `false` if a record was not found on a one to one relationship.
+{: .alert .alert-warning }
 
 ```php
 <?php
