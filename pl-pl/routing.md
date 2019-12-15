@@ -1378,6 +1378,15 @@ $container['router'] = function () {
 
 In the above we will read the annotations from `Admin\Controllers\InvoicesController` if the URI starts with `/admin/invoices`.
 
+The router also understand prefixes to ensure that the routes are resolved as fast as possible. For instance for the following routes:
+
+    /clients/{clientId:[0-9]+}/
+    /clients/{clientId:[0-9]+}/robots
+    /clients/{clientId:[0-9]+}/parts
+    
+
+only the `/clients` prefix can be used in all controllers, thus speeding up the lookup.
+
 ## Dependency Injection
 
 You can register the router component during the container setup, to make it available inside the controllers or any other components that extend the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable) component.
