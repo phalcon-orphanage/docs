@@ -28,7 +28,7 @@ If an application only uses one connection and the transactions are not very com
 use Phalcon\Mvc\Controller;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 /**
- * @property Mysql\ $db
+ * @property Mysql $db
  */
 class InvoicesController extends Controller
 {
@@ -193,6 +193,56 @@ try {
 }
 ```
 
+## Exceptions
+
+Any exceptions thrown in the Logger component will be of type [Phalcon\Mvc\Model\Transaction\Exception](api/phalcon_mvc#mvc-model-transaction-exception) or [Phalcon\Mvc\Model\Transaction\Failed](api/phalcon_mvc#mvc-model-transaction-failed). You can use these exceptions to selectively catch exceptions thrown only from this component.
+
+Additionally you can throw an exception if the rollback was not successful, by using the `throwRollbackException(true)` method.
+
+```php
+<?php
+
+use Phalcon\Mvc\Model\Transaction\Failed as TxFailed;
+use Phalcon\Mvc\Model\Transaction\Manager as TxManager;
+
+// Create a transaction manager
+$manager = new TxManager();
+
+// Request a transaction
+$transaction = $manager
+    ->get
+    ()->throwRollbackException(true)
+;
+
+try {
+    $invoices = Invoices::find(
+        [
+            'conditions' => 'inv_cst_id = :cst_id:',
+            'bind'       => [
+                'cst_id' => 10,
+            ]    
+        ]  
+    );
+
+    foreach ($invoices as $invoice) {
+        $invoice->setTransaction($transaction);
+        if (false === $invoice->delete() === false) {
+            $messages = $invoice->getMessages();
+
+            foreach ($messages as $message) {
+                $transaction->rollback(
+                    $message->getMessage()
+                );
+            }
+        }
+    }
+
+    $transaction->commit();
+} catch (TxFailed $ex) {
+    echo $ex->getMessage();
+}
+```
+
 ## Inyección de Dependencias
 
 Transactions are reused no matter where the transaction object is retrieved. A new transaction is generated only when a `commit()` or `rollback()` is performed. You can use the service container to create the global transaction manager for the entire application:
@@ -238,3 +288,5 @@ class ProductsController extends Controller
 
 > **NOTE**: While a transaction is active, the transaction manager will always return the same transaction across the application.
 {: .alert .alert-info }
+
+
