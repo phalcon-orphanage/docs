@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00c84381-3749-4454-bb3c-d2faa29033b3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/en/db-models.md" beforeDir="false" afterPath="$PROJECT_DIR$/en/db-models.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pt-br/api/Phalcon_Events.md" beforeDir="false" afterPath="$PROJECT_DIR$/pt-br/api/Phalcon_Events.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/th-th/api/Phalcon_Logger.md" beforeDir="false" afterPath="$PROJECT_DIR$/th-th/api/Phalcon_Logger.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zh-cn/api/Phalcon_Forms.md" beforeDir="false" afterPath="$PROJECT_DIR$/zh-cn/api/Phalcon_Forms.md" afterDir="false" />
@@ -33,7 +32,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db-models.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="db-models.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/en/db-models.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -67,11 +66,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>methodo</find>
+      <find>methd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,6 +97,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/en/db-models.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -205,12 +215,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576416740087</updated>
-      <workItem from="1576416746113" duration="910000" />
+      <workItem from="1576416746113" duration="1108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="910000" />
+    <option name="totallyTimeSpent" value="1108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="89" y="183" width="1102" height="780" extended-state="0" />
@@ -294,6 +304,13 @@
             </folding>
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
