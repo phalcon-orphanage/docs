@@ -2,6 +2,7 @@
 layout: default
 language: 'fr-fr'
 version: '4.0'
+upgrade: '#volt'
 title: 'Volt: Template Engine'
 keywords: 'volt, template engine, php generation, view data'
 ---
@@ -1245,7 +1246,19 @@ Volt is highly integrated with [Phalcon\Tag](tag), so it's easy to use the helpe
     {{ select({'type', productTypes, 'using': ['id', 'name']}) }}
 
     <label for='type'>Section</label>
-    {{ select({'type', productSections, 'using': ['id', 'name'], 'useEmpty': true, 'emptyText': '...', 'emptyValue': '', 'class': 'form-control'}) }}
+    {{ 
+        select(
+            [
+                'type', 
+                productSections, 
+                'using': ['id', 'name'], 
+                'useEmpty': true, 
+                'emptyText': '...', 
+                'emptyValue': '', 
+                'class': 'form-control'
+            ]
+        ) 
+    }}
 
     {{ submit_button('Send') }}
 
