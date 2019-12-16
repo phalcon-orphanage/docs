@@ -921,9 +921,9 @@ Generates random text based on the template. The template needs separators as we
 
 use Phalcon\Helper\Str;
 
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Han Solo
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Leia Skywalker
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Han Solo!
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Leia Skywalker!
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo!
 ```
 
 ### `endsWith`
