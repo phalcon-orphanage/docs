@@ -1221,12 +1221,14 @@ final public static function random(
 
 Generates a random string based on the given type. The first parameter is one of the `RANDOM_*` constants. The second parameter specifies the length of the string (defaults to 8).
 
-- RANDOM_ALNUM
-- RANDOM_ALPHA
-- RANDOM_DISTINCT
-- RANDOM_HEXDEC
-- RANDOM_NOZERO
-- RANDOM_NUMERIC
+| Константа         | Описание                                                                                            |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| `RANDOM_ALNUM`    | Only alpha numeric characters `[a-zA-Z0-9]`                                                         |
+| `RANDOM_ALPHA`    | Only alphabetical characters `[azAZ]`                                                               |
+| `RANDOM_DISTINCT` | Only alpha numeric uppercase characters exclude similar characters `[2345679ACDEFHJKLMNPRSTUVWXYZ]` |
+| `RANDOM_HEXDEC`   | Only hexadecimal characters `[0-9a-f]`                                                              |
+| `RANDOM_NOZERO`   | Only numbers without `0` `[1-9]`                                                                    |
+| `RANDOM_NUMERIC`  | Only numbers `[0-9]`                                                                                |
 
 ```php
 <?php
