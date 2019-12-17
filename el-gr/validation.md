@@ -287,7 +287,7 @@ Phalcon offers a set of built-in validators for this component:
 | [Phalcon\Validation\Validator\StringLength](api/phalcon_validation#validation-validator-stringlength)                     | Length                     |
 | [Phalcon\Validation\Validator\StringLength\Max](api/phalcon_validation#validation-validator-stringlength-max)            | Maximum Length             |
 | [Phalcon\Validation\Validator\StringLength\Min](api/phalcon_validation#validation-validator-stringlength-min)            | Minimum Length             |
-| [Phalcon\Validation\Validator\Uniqueness](api/phalcon_validation#validation-validator-uniqueness)                         | Uniqe in Model             |
+| [Phalcon\Validation\Validator\Uniqueness](api/phalcon_validation#validation-validator-uniqueness)                         | Unique in Model            |
 | [Phalcon\Validation\Validator\Url](api/phalcon_validation#validation-validator-url)                                       | URL                        |
 
 ### Alnum
@@ -889,7 +889,7 @@ $validator->add(
 
 ### File Resolution Equal
 
-Checks if a file has the rigth resolution
+Checks if a file has the right resolution
 
 ```php
 <?php
@@ -1804,7 +1804,7 @@ if (count($messages)) {
 }
 ```
 
-You can pass a `message` parameter to change/translate the default message in each validator. You can also use the placeholde `:field` in the message to be replaced by the label of the field:
+You can pass a `message` parameter to change/translate the default message in each validator. You can also use the placeholder `:field` in the message to be replaced by the label of the field:
 
 ```php
 <?php
