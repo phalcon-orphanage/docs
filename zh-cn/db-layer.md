@@ -318,17 +318,17 @@ public function fetchColumn(
 Returns the n'th field of first row in a SQL query result
 
 ```php
-$tutorialicesCount = $connection
+$invoicesCount = $connection
     ->fetchColumn('SELECT count(*) FROM co_invoices')
-print_r($tutorialicesCount)
+print_r($invoicesCount)
 
-$tutorialice = $connection->fetchColumn(
+$invoice = $connection->fetchColumn(
     'SELECT inv_id, inv_title 
     FROM co_invoices
     ORDER BY inv_created_at DESC',
     1
 )
-print_r($tutorialice)
+print_r($invoice)
 ```
 
 ```php
@@ -828,9 +828,9 @@ To create a connection it's necessary instantiate the adapter class. It only req
 |              | `password`   | required |
 |              | `dbname`     | required |
 |              | `schema`     | optional |
-| `Salite`     | `dbname`     | required |
+| `Sqlite`     | `dbname`     | required |
 
-Connecting to each adapter can be achieved by either the factory as demonstrated above or by passing the relevant options to the constractor of each class.
+Connecting to each adapter can be achieved by either the factory as demonstrated above or by passing the relevant options to the constructor of each class.
 
 ```php
 <?php
@@ -1157,16 +1157,16 @@ ORDER BY
     inv_created_at
 ';
 $result = $connection->query($sql);
-while ($tutorialice = $result->fetch()) {
-   echo $tutorialice['inv_title'];
+while ($invoice = $result->fetch()) {
+   echo $invoice['inv_title'];
 }
 
-$tutorialices = $connection->fetchAll($sql);
-foreach ($tutorialices as $tutorialice) {
-   echo $tutorialice['inv_title'];
+$invoices = $connection->fetchAll($sql);
+foreach ($invoices as $invoice) {
+   echo $invoice['inv_title'];
 }
 
-$tutorialice = $connection->fetchOne($sql);
+$invoice = $connection->fetchOne($sql);
 ```
 
 By default these calls create arrays with both associative and numeric indexes. You can change this behavior by using `Phalcon\Db\Result::setFetchMode()`. This method receives a constant, defining which kind of index is required.
@@ -1196,8 +1196,8 @@ $result->setFetchMode(
     Phalcon\Db\Enum::FETCH_NUM
 );
 
-while ($tutorialice = $result->fetch()) {
-   echo $tutorialice[0];
+while ($invoice = $result->fetch()) {
+   echo $invoice[0];
 }
 ```
 
@@ -1217,13 +1217,13 @@ ORDER BY
 ';
 $result = $connection->query($sql);
 
-while ($tutorialice = $result->fetch()) {
-   echo $tutorialice['name'];
+while ($invoice = $result->fetch()) {
+   echo $invoice['name'];
 }
 
 $result->seek(2);
 
-$tutorialice = $result->fetch();
+$invoice = $result->fetch();
 
 echo $result->numRows();
 ```
@@ -1329,7 +1329,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1361,7 +1361,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1390,7 +1390,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1412,7 +1412,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1440,7 +1440,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1468,7 +1468,7 @@ ORDER BY
     inv_created_at
 ';
 
-$tutorialices = $this
+$invoices = $this
     ->modelsManager
     ->executeQuery(
         $phql,
@@ -1511,7 +1511,7 @@ LIMIT
     {number:int}
 ';
 
-$tutorialices = $modelsManager->executeQuery(
+$invoices = $modelsManager->executeQuery(
     $phql,
     [
         'number' => $number,
@@ -1544,7 +1544,7 @@ LIMIT
     {number:int}
 ';
 
-$tutorialices = $modelsManager->executeQuery(
+$invoices = $modelsManager->executeQuery(
     $phql,
     [
         'number' => (int) $number,
@@ -1596,9 +1596,9 @@ This way you can use strict operators or make assumptions about the type of vari
 ```php
 <?php
 
-$tutorialice = Invoices::findFirst();
-if (11 === $tutorialice->inv_id) {
-    echo $tutorialice->inv_title;
+$invoice = Invoices::findFirst();
+if (11 === $invoice->inv_id) {
+    echo $invoice->inv_title;
 }
 ```
 
@@ -1657,7 +1657,7 @@ try {
 
 ## Events
 
-The adapters alsosend events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. 以下事件被支持︰
+The adapters also send events to an [Events Manager](events) if it is present. If an event returns `false` it can stop the current operation. 以下事件被支持︰
 
 | 事件名称                  | 触发器                                 | Can stop |
 | --------------------- | ----------------------------------- |:--------:|
