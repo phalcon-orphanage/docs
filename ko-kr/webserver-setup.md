@@ -71,32 +71,32 @@ set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
-## Nginx
+## nginx
 
-[Nginx](https://wiki.nginx.org/Main) 는 무료이며 오픈소스인 고성능의 HTTP서버이자 리버스프록시 이면서 동시에 IMAP/POP3 프록시 서버이기도 합니다. 전통적인 서버와 달리, Nginx는 쓰레드에 의존해서 요청을 처리하지 않습니다. 그 대신 훨씬 더 확장가능한 이벤트 기반(비동기적) 아키텍쳐를 사용하고 있습니다. 이 아키텍쳐는 작은 양의 메모리만 사용하는데, 그보다 중요한 것은 예측가능한 크기의 메모리를 사용한다는 것입니다.
+[nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. 그 대신 훨씬 더 확장가능한 이벤트 기반(비동기적) 아키텍쳐를 사용하고 있습니다. 이 아키텍쳐는 작은 양의 메모리만 사용하는데, 그보다 중요한 것은 예측가능한 크기의 메모리를 사용한다는 것입니다.
 
-Phalcon 은 Nginx, PHP-FPM 과 함께 사용함으로써 최고 성능의 PHP 어플리케이션을 만들 수 있는 강력한 도구들을 제공합니다.
+Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### NginX 설치
+### Install nginx
 
-[Nginx 공식 사이트](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[nginx Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
 ### Phalcon 설정
 
-Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세요:
+You can use following potential configuration to setup nginx with Phalcon:
 
     server {
-        # 80번 포트는 Nginx 시작 시 루트권한이 필요합니다
-        # 80번 포트를 사용하려면 Nginx를 설치한 방법에 따라
-        # 서버 시작시 'sudo' 로 서버를 시작해야 할 수 있습니다. 다른 포트, 예를 들어
-        # 1000번포트의 경우는 루트권한이 필요없습니다
+        # Port 80 will require nginx to be started with root permissions
+        # Depending on how you install nginx to use port 80 you will need
+        # to start the server with `sudo` ports about 1000 do not require
+        # root privileges
         # listen      80;
     
         listen        8000;
         server_name   default;
     
         ##########################
-        # production환경에서는 SSL이 필요하겠지요
+        # In production require SSL
         # listen 443 ssl default_server;
     
         # ssl on;
@@ -105,12 +105,12 @@ Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세�
         # ssl_ciphers  ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;
         # ssl_prefer_server_ciphers   on;
     
-        # 아래 경로는 인증서(cert) 저장한 위치에 따라 달라집니다
+        # These locations depend on where you store your certs
         # ssl_certificate        /var/nginx/certs/default.cert;
         # ssl_certificate_key    /var/nginx/certs/default.key;
         ##########################
     
-        # index.php파일이 있는 폴더 지정
+        # This is the folder that index.php is in
         root /var/www/default/public;
         index index.php index.html index.htm;
     
@@ -118,25 +118,25 @@ Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세�
         client_max_body_size 100M;
         fastcgi_read_timeout 1800;
     
-        #도메인의 루트
+        # Represents the root of the domain
         # https://localhost:8000/[index.php]
         location / {
             # Matches URLS `$_GET['_url']`
             try_files $uri $uri/ /index.php?_url=$uri&$args;
         }
     
-        # HTTP 요청이 위의 식과 일치하지 않고
-        # 파일명이 .php 로 끝날때
+        # When the HTTP request does not match the above
+        # and the file ends in .php
         location ~ [^/]\.php(/|$) {
             # try_files $uri =404;
     
-            # Ubuntu와 PHP7.0-fpm 소켓모드
-            # 이 경로는 설치한 PHP 버전에 따라 다름
+            # Ubuntu and PHP7.0-fpm in socket mode
+            # This path is dependent on the version of PHP install
             fastcgi_pass  unix:/var/run/php/php7.0-fpm.sock;
     
     
-            # 그 대신 TCP모드 PHP-FPM 사용시(윈도우에서는 필수값)
-            # FPM이 표준 포트를 읽도록 설정해야 합니다
+            # Alternatively you use PHP-FPM in TCP mode (Required on Windows)
+            # You will need to configure FPM to listen on a standard port
             # https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/
             # fastcgi_pass  127.0.0.1:9000;
     
@@ -169,7 +169,7 @@ Nginx에서 Phalcon을 사용하시려면 다음의 설정 예를 참고하세�
 
 ### 시작
 
-시스템에 따라 nginX 시작 명령어는 다음 중 하나가 될 것입니다:
+Depending on your system, the command to start nginx could be one of the following:
 
 ```bash
 start nginx
@@ -305,7 +305,7 @@ Phalcon이 윈도우에서 동작하려면, 시스템의 아키텍처에 맞는 
 
 `x86`, `vc15` 이면서 `TS` 즉, *Thread Safe(다중스레드지원)*인 조건에 맞는 파일입니다. 시스템에서 `NTS` (*Non Thread Safe(단일스레드지원)*) 로 나온다면 그에 맞는 DLL을 내려받아야 하겠죠.
 
-WAMP는 32bit와 64bit 버전이 있습니다. 다운로드 섹션에서, 설치된 WAMPP와 호환되는 Phalcon DLL 다운로드가 가능합니다.
+WAMP는 32bit와 64bit 버전이 있습니다. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
 
 Phalcon 라이브러리를 다운로드 하시면 아래에 보시는 것과 비슷한 zip 파일이 있을겁니다:
 
