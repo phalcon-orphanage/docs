@@ -728,7 +728,7 @@ $route->convert(
 );
 ```
 
-In the above exaple, the action name allows dashes, therefore an action can be `/products/new-ipod-nano-4-generation`. The `convert` method will change the action to `newipodnano4generation`
+In the above example, the action name allows dashes, therefore an action can be `/products/new-ipod-nano-4-generation`. The `convert` method will change the action to `newipodnano4generation`
 
 Another use case for converters is when binding a model to a route. This allows the model to be passed into the defined action directly.
 
@@ -887,7 +887,7 @@ echo $router->getActionName();
 $route = $router->getMatchedRoute();
 ```
 
-In the above example, we first create a router object. We can have some code after that, such as defininng services, routes etc.. We then take the `_url` element from the `$_GET` superglobal and after that we can get the controller name or the action name or even get back the matched route.
+In the above example, we first create a router object. We can have some code after that, such as defining services, routes etc.. We then take the `_url` element from the `$_GET` superglobal and after that we can get the controller name or the action name or even get back the matched route.
 
 ## Naming Routes
 
