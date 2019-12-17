@@ -687,7 +687,7 @@ The above will result in the following script as the output (assuming that your 
 <link rel="stylesheet" href="css/bootstrap.css?ver=1558392141">
 ```
 
-> **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unecessary read operations on the file system. 
+> **NOTE** Using the auto version feature is not recommended for production environments, since Phalcon will need to read the modification time of the asset file for every request. This will result to unnecessary read operations on the file system. 
 {: .alert .alert-warning }
 
 ## Improving Performance
