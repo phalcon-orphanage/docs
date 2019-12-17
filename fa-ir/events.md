@@ -371,7 +371,7 @@ $eventsManager->attach(
 
 First we attach the listener to the `dispatcher` component and the `beforeException` event. This means that the events manager will fire only for that event calling our listener. We could have just changed the hook point to `dispatcher` so that we are able in the future to add more dispatcher events in the same listener.
 
-The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second and the `$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller) or an action were not found. If that is the case, we forward the user to a specific modle, controller and action. If our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our logger.
+The `beforeException` function accepts the `$event` as the first parameter, the `$dispatcher` as the second and the `$ex` exception thrown from the dispatcher component. Using those, we can then figure out if a handler (or controller) or an action were not found. If that is the case, we forward the user to a specific module, controller and action. If our user is not logged in, then we send them to the login page. Alternatively, we just log the exception message in our logger.
 
 The example demonstrates clearly the power of the events manager, and how you can alter the flow of the application using listeners.
 
@@ -563,7 +563,7 @@ In the above simple example, we stop all events if today is earlier than `2019-0
 
 ## Cancellation
 
-By default all events are cancellable. However you might want to set a particular event to not be cancellable, allowing the particular event to fire on all available listeners that implement it.
+By default all events are cancelable. However you might want to set a particular event to not be cancelable, allowing the particular event to fire on all available listeners that implement it.
 
 ```php
 <?php
@@ -580,7 +580,7 @@ $eventsManager->attach(
 );
 ```
 
-In the above example, if the event is cancellable, we will stop propagation. You can set a particular event to **not** be cancellable by utilizing the fourth parameter of `fire()`:
+In the above example, if the event is cancelable, we will stop propagation. You can set a particular event to **not** be cancelable by utilizing the fourth parameter of `fire()`:
 
 ```php
 <?php
@@ -588,7 +588,7 @@ In the above example, if the event is cancellable, we will stop propagation. You
 $eventsManager->fire('notifications:afterSend', $this, $data, false);
 ```
 
-The `afterSend` event will no longer be cancellable and will execute on all listeners that implement it.
+The `afterSend` event will no longer be cancelable and will execute on all listeners that implement it.
 
 ## Priorities
 
