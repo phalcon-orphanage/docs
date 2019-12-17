@@ -20,7 +20,7 @@ The component can be used on its own if you want to collect HTML attributes in a
 This component is used internally by [Phalcon\Forms\Form](forms) to store the attributes of form elements.
 
 ## Breadcrumbs
-A common piece of HTML that is present in many web applications is the breadcumbs. These are links separated by a space or by the `/` character usually, that represent the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application. 
+A common piece of HTML that is present in many web applications is the breadcrumbs. These are links separated by a space or by the `/` character usually, that represent the tree structure of an application. The purpose is to give users another easy visual way to navigate throughout the application. 
 
 An example is an application that has an `admin` module, an `invoices` area and a `view invoice` page. Usually, you would select the the `admin` module, then from the links you will choose `invoices` (list) and then clicking on one of the invoices in the list, you can view it. To represent this tree like structure, the breadcrumbs displayed could be:
 

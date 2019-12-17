@@ -890,7 +890,7 @@ foreach ($records as $record) {
 
 **Count Distinct**
 
-Hoa many invoices does each customer have
+How many invoices does each customer have
 
 ```php
 <?php
@@ -2969,7 +2969,7 @@ The delimiters are dynamically translated to valid delimiters depending on the d
 ## Custom Dialect
 Due to differences in SQL dialects based on the RDBMS of your choice, not all methods are supported. However you can extend the dialect, so that you can use additional functions that your RDBMS supports. 
 
-For th example below, we are using the `MATCH_AGAINST` method for MySQL.
+For the example below, we are using the `MATCH_AGAINST` method for MySQL.
 
 ```php
 <?php

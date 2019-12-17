@@ -236,7 +236,7 @@ zephir fullclean
 zephir build
 ```
 
-It is also necessary to increase teh swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
 
 ```bash
 sudo -s
@@ -386,7 +386,7 @@ This will generate the best possible code for that chipset but will likely break
 ### Shared Hosting 
 Running your application on shared hosting might restrict you in installing Phalcon, especially if you do not have root access. Some web hosting control panels luckly have Phalcon support.
 
-#### CPanel & WHM
+#### cPanel & WHM
 cPanel & WHM support Phalcon using Easy Apache 4 (EA4). You can install Phalcon by enabling the [module][cpanel-phalcon] in Easy Apache 4 (EA4).
 
 #### Plesk

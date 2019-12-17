@@ -136,7 +136,7 @@ For this application we store and manipulate `Robots` in the database. To access
 namespace MyApp\Models;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Messagesl\Message;
+use Phalcon\Messages\Message;
 use Phalcon\Validation;
 use Phalcon\Validation\Validator\Uniqueness;
 use Phalcon\Validation\Validator\InclusionIn;
@@ -183,7 +183,7 @@ class Robots extends Model
     }
 }
 ```
-We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. Tje last validator checks the `year` field to be a positive number.
+We attach three validators to the model. The first one checks the type of the robot. It must be `droid`, `mechanical` or `virtual`. Any other value will make the validator return `false` and the operation (insert/update) will fail. The second validator checks the uniqueness of the name for our robot. The last validator checks the `year` field to be a positive number.
 
 ## Database
 We need to connect our application to the database. For this example we are going to use the popular MariaDB or similar variants such as MySQL, Aurora etc. In addition to the database setup, we are going to set up the autoloader, so that our application is aware of where to search for files required. 
@@ -260,7 +260,7 @@ $app->get(
 );
 ```
 
-[PHQL](db-phql), allows us to write queries using a high level, object oriented SQL dialect, that internally translates your query to the correct SQL statements depending on the databse system used. The `use` statement in the anonymous function offers object injection from the local scope to the anonymous function.
+[PHQL](db-phql), allows us to write queries using a high level, object oriented SQL dialect, that internally translates your query to the correct SQL statements depending on the database system used. The `use` statement in the anonymous function offers object injection from the local scope to the anonymous function.
 
 ### Get - Text
 We can get robots using their name or part of their name. This search feature will also be a `get()` as far as HTTP method is concerned and it will tie to the `/api/robots/search/{name}` endpoint. The implementation is similar to the one above. We just need to change the query slightly.

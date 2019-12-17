@@ -357,7 +357,7 @@ public function render(
     array attributes = []
 ): string
 ```
-Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for th element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
+Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception][forms-exception] will be thrown.
 
 ```php
 public function remove(string $name): bool
@@ -409,7 +409,7 @@ Sets user defined options for the form
 ```php
 public function valid(): bool
 ```
-Returns if the vurrent element in the iterator is valid or not
+Returns if the current element in the iterator is valid or not
 
 ## Initialization
 Forms can be initialized outside the form class by adding elements to it. However you can reuse code or organize your form classes by implementing forms in their own classes:

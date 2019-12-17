@@ -15,6 +15,7 @@ keywords: 'psr-7, http, http server request'
 ![](/assets/images/implements-psr--7-blue.svg)
 
 These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following:
+These interface implementations have been created to establish a standard between middleware implementations. Applications often need to receive data from external sources such as the users using the application. The [Phalcon\Http\Message\ServerRequest][http-message-serverrequest] represents an incoming, server-side HTTP request. Per the HTTP specification, this interface includes properties for each of the following:
 
 - Headers
 - HTTP method
@@ -28,11 +29,11 @@ Additionally, it encapsulates all data as it has arrived at the application from
 - Any cookies provided (generally via `$_COOKIE`)
 - Query string arguments (generally via `$_GET`, or as parsed via [parse_str()][parse-str])
 - Upload files, if any (as represented by `$_FILES`)
-- Deserialized body parameters (generally from `$_POST`)
+- Unserialized body parameters (generally from `$_POST`)
 
-`$_SERVER` values are treated as immutable, as they represent application state at the time of request; as such, no methods are provided to allow modification of those values. The other values provide such methods, as they can be restored from `$_SERVER` or the request body, and may need treatment during the application (e.g., body parameters may be deserialized based on content type).
+`$_SERVER` values are treated as immutable, as they represent application state at the time of request; as such, no methods are provided to allow modification of those values. The other values provide such methods, as they can be restored from `$_SERVER` or the request body, and may need treatment during the application (e.g., body parameters may be unserialized based on content type).
 
-Additionally, this interface recognizes the utility of introspecting a request to derive and match additional parameters (e.g., via URI path matching, decrypting cookie values, deserializing non-form-encoded body content, matching authorization headers to users, etc). These parameters are stored in an "attributes" property.
+Additionally, this interface recognizes the utility of introspecting a request to derive and match additional parameters (e.g., via URI path matching, decrypting cookie values, unserializing non-form-encoded body content, matching authorization headers to users, etc). These parameters are stored in an "attributes" property.
 
 ```php
 <?php
@@ -152,7 +153,7 @@ echo $request->getAttribute('three', 'four'); // 'four'
 
 ### `getAttributes()`
 
-Returns an array with all the attributes derived from the request. These request "attributes" may be used to allow injection of any parameters derived from the request: e.g., the results of path match operations; the results of decrypting cookies; the results of deserializing non-form-encoded message bodies; etc. Attributes will be application and request specific, and can be mutable.
+Returns an array with all the attributes derived from the request. These request "attributes" may be used to allow injection of any parameters derived from the request: e.g., the results of path match operations; the results of decrypting cookies; the results of unserializing non-form-encoded message bodies; etc. Attributes will be application and request specific, and can be mutable.
 
 ```php
 <?php
@@ -319,7 +320,7 @@ echo $request->getMethod(); // POST
 
 ### `getParsedBody()`
 
-Returns any parameters provided in the request body. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method will return the contents of `$_POST`. Otherwise, this method may return any results of deserializing the request body content; as parsing returns structured content, the potential types will be arrays or objects only. If there is no body content, `null` will be returned.
+Returns any parameters provided in the request body. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method will return the contents of `$_POST`. Otherwise, this method may return any results of unserializing the request body content; as parsing returns structured content, the potential types will be arrays or objects only. If there is no body content, `null` will be returned.
 
 ```php
 <?php
@@ -364,7 +365,7 @@ echo $request->getProtocolVersion(); // '1.1'
 
 ### `getQueryParams()`
 
-Returns an array with the deserialized query string arguments, if any. Note that the query params might not be in sync with the URI or server parameters. If you need to ensure you are only getting the original values, you may need to parse the query string from `getUri()->getQuery()` or from the `QUERY_STRING` server parameter.
+Returns an array with the unserialized query string arguments, if any. Note that the query params might not be in sync with the URI or server parameters. If you need to ensure you are only getting the original values, you may need to parse the query string from `getUri()->getQuery()` or from the `QUERY_STRING` server parameter.
 
 ```php
 <?php
@@ -717,9 +718,9 @@ echo $clone->getMethod(); // GET
      
 ### `withParsedBody()`
 
-Returns an instance with the specified body parameters. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method should be used only to inject the contents of `$_POST`. The data is not required to come from `$_POST`, but wiill be the results of deserializing the request body content. Deserialization/parsing returns structured data, and, as such, this method only accepts arrays or objects, or a null value if nothing was available to parse.
+Returns an instance with the specified body parameters. If the request `Content-Type` is either `application/x-www-form-urlencoded` or `multipart/form-data`, and the request method is `POST`, this method should be used only to inject the contents of `$_POST`. The data is not required to come from `$_POST`, but will be the results of unserializing the request body content. Unserialization/parsing returns structured data, and, as such, this method only accepts arrays or objects, or a null value if nothing was available to parse.
 
-As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the deserialized parameters. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for unsupported argument types.
+As an example, if content negotiation determines that the request data is a JSON payload, this method could be used to create a request instance with the unserialized parameters. Throws [InvalidArgumentException][http-message-exception-invalidargumentexception] for unsupported argument types.
 
 ```php
 <?php

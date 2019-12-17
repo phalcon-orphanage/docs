@@ -174,7 +174,7 @@ $acl->addComponent(
 ```
 
 ## Defining Access Controls
-After both the `Roles` and `Components` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the role since a small mistake here can allow access to roles for components that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [whitelist][whitelist] approach. 
+After both the `Roles` and `Components` have been defined, we need to tie them together so that the access list can be created. This is the most important step in the role since a small mistake here can allow access to roles for components that the developer does not intend to. As mentioned earlier, the default access action for [Phalcon\Acl][acl-acl] is `Phalcon\Acl\Enum::DENY`, following the [white list][whitelist] approach. 
 
 To tie `Roles` and `Components` together we use the `allow()` and `deny()` methods exposed by the [Phalcon\Acl\Memory][acl-adapter-memory] class.
 
@@ -264,7 +264,7 @@ Similarly the above gives access to any role, any component that has the `view` 
 
 > **NOTE**: Please be **VERY** careful when using the `*` wildcard. It is very easy to make a mistake and the wildcard, although it seems convenient, it may allow users to access areas of your application that they are not supposed to. The best way to be 100% sure is to write tests specifically to test the permissions and the ACL. These can be done in the `unit` test suite by instantiating the component and then checking the `isAllowed()` if it is `true` or `false`.
 >
-> [Codeception][codeception] is the chosen testing framework for Phalcon and there are plenty of tests in our github repository (`tests` folder) to offer guidance and ideas.
+> [Codeception][codeception] is the chosen testing framework for Phalcon and there are plenty of tests in our GitHub repository (`tests` folder) to offer guidance and ideas.
 {:.alert .alert-danger}
 
 ```php
@@ -756,7 +756,7 @@ if (true === $acl->isAllowed('manager', 'admin', 'dashboard')) {
 It is a good practice to not use serialization of the ACL during development, to ensure that your ACL is rebuilt with every request, while other adapters or means of serializing and storing the ACL in production.
 
 ## Events
-[Phalcon\Acl][acl-acl] can work in conjunction with the [EventsManager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
+[Phalcon\Acl][acl-acl] can work in conjunction with the [Events Manager](events) if present, to fire events to your application. Events are triggered using the type `acl`. Events that return `false` can stop the active role. The following events are available:
 
 | Event Name          | Triggered                                                | Can stop role? |
 |---------------------|----------------------------------------------------------|:--------------:|

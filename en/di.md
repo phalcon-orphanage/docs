@@ -94,7 +94,7 @@ $invoice
 
 To improve flexibility, we could create the database connection outside the component, and set it in the `InvoiceComponent` using a setter. Using this approach, we can _inject_ the database connection to any component that requires it, using the setter. Again this is a perfectly valid implementation but it does have some shortcomings. We will need for instance to construct the database connection every time we need to use any of our components that require database connectivity.  
 
-In order to centralize this funtionality, we can implement a global registry pattern and store the conenction object there. After that we can reuse it wherever we need to.
+In order to centralize this functionality, we can implement a global registry pattern and store the connection object there. After that we can reuse it wherever we need to.
 
 ```php
 <?php
@@ -110,7 +110,7 @@ class Registry
                 'host'     => 'localhost',
                 'username' => 'root',
                 'password' => 'secret',
-                'dbname'   => 'tuturial',
+                'dbname'   => 'tutorial',
             ]
         );
     }
@@ -302,7 +302,7 @@ class InvoiceComponent
 }
 ```
 
-We are now back where we started, instantiating dependencies within the component. To solve this issue we will use a container that can store all of our dependencies. This is a practical and elegant way. The container will act as the global registry that we investigated earlier. Using this container as a bridge to retrieve any dependencies, allows us to reduce the complecity of our component:
+We are now back where we started, instantiating dependencies within the component. To solve this issue we will use a container that can store all of our dependencies. This is a practical and elegant way. The container will act as the global registry that we investigated earlier. Using this container as a bridge to retrieve any dependencies, allows us to reduce the complexity of our component:
 
 ```php
 <?php

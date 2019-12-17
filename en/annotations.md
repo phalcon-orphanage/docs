@@ -197,8 +197,8 @@ This component makes use of adapters to cache or no cache the parsed and process
 | Adapter                                                          | Description                                                                 |
 |------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu]     | Use APCu to store parsed and processed annotations (production)             |
-| [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory fo store annotations (development)                               |
-| [Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] | Use a file stream to store annotations. Must be used with a bytecode cache. |
+| [Phalcon\Annotations\Adapter\Memory][annotations-adapter-memory] | Use memory to store annotations (development)                               |
+| [Phalcon\Annotations\Adapter\Stream][annotations-adapter-stream] | Use a file stream to store annotations. Must be used with a byte-code cache. |
 
 ### Apcu
 [Phalcon\Annotations\Adapter\Apcu][annotations-adapter-apcu] stores the parsed and processed annotations using the APCu cache. This adapter is suitable for production systems. However, once the web server restarts, the cache will be cleared and will have to be rebuilt. The adapter accepts two parameters in the constructor's `options` array:

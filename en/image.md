@@ -637,7 +637,7 @@ class MyImageAdapter implements AdapterInterface
     );
 
     /**
-     * Render th eimage
+     * Render the image
      */
     public function render(
         string $ext = null, 

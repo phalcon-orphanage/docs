@@ -150,7 +150,7 @@ Using `get()` offers three extra parameters. When `$defaultValue` is defined in 
 To check whether an element exists or not in the collection, you can use the following:
 - `isset()` on the property
 - `__isset()`
-- array based isset (`isset($coollection[$element])`)
+- array based isset (`isset($collection[$element])`)
 - `offsetExists()`
 - `has()`
 

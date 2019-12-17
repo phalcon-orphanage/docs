@@ -492,7 +492,7 @@ The available providers are:
 
 | Provider                 | Description                                       |
 |--------------------------|---------------------------------------------------|
-| `AclProvider`            | Permissons                                        |
+| `AclProvider`            | Permissions                                       |
 | `AuthProvider`           | Authentication                                    |
 | `ConfigProvider`         | Configuration values                              |
 | `CryptProvider`          | Encryption                                        |
@@ -1569,7 +1569,7 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Phalcon Forms](forms)
 - [Phalcon HTTP Response](response)
 - [Phalcon Security](security)
-- [Vökuró - Github Repository][github_vokuro]
+- [Vökuró - GitHub Repository][github_vokuro]
 
 
 [acl]: https://en.wikipedia.org/wiki/Access-control_list

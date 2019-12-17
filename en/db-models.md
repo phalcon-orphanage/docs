@@ -11,7 +11,7 @@ keywords: 'models, active record'
 ![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
-The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connects business objects and database tables, to create a presistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
+The [Phalcon\Mvc\Model][mvc-model] is the `M` in MVC. It is a class that connects business objects and database tables, to create a persistent domain model, where logic and data are wrapped into one. It is an implementation of the object-relational mapping (ORM).
 
 A model represents the information (data) of the application and the rules to manipulate that data. Models are primarily used for managing the rules of interaction with a corresponding database table. In most cases, each table in your database will correspond to one model in your application. The bulk of your application's business logic will be concentrated in the models.
 
@@ -73,7 +73,7 @@ final public function __construct(
     ManagerInterface $modelsManager = null
 )
 ```
-Constructs the model object. The method accepts an array of data that are used to populate the object by intenrally using `assign`. Optionally you can pass a DI container and a Models Manager object. If they are not passed, the defaults will be used. 
+Constructs the model object. The method accepts an array of data that are used to populate the object by internally using `assign`. Optionally you can pass a DI container and a Models Manager object. If they are not passed, the defaults will be used. 
 
 
 ```php
@@ -899,7 +899,7 @@ Sets the record's old snapshot data. This method is used internally to set old s
 ```php
 public function setSnapshotData(
     array $data, 
-    arrau $columnMap = null
+    array $columnMap = null
 ): void
 ```
 Sets the record's snapshot data. This method is used internally to set snapshot data when the model was set up to keep snapshot data
@@ -2196,7 +2196,7 @@ Phalcon's resultsets emulate scrollable cursors. You can get any row just by acc
 > **NOTE**: Some database systems do not support scrollable cursors. This forces Phalcon to re-execute the query, in order to rewind the cursor to the beginning and obtain the record at the requested position. Similarly, if a resultset is traversed several times, the query must be executed the same number of times.
 {: .alert .alert-info }
 
-Storing large query reslts in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
+Storing large query results in memory will consume many resources. You can however instruct Phalcon to fetch data in chunks of rows, thus reducing the need to re-execute the request in many cases. You can achieve that by setting the `orm.resultset_prefetch_records` setup value. This can be done either in `php.ini` or in the model `setup()`. More information about this can be found in the [features](#disablingenabling-features) section.
 
 Note that resultsets can be serialized and stored in a cache backend. [Phalcon\Cache](cache) can help with that task. However, serializing data causes [Phalcon\Mvc\Model][mvc-model] to retrieve all the data from the database in an array, thus consuming more memory while this process takes place.
 
@@ -2217,7 +2217,7 @@ $invoices = unserialize(
 );
 
 foreach ($invoices as $invoice) {
-    echo $invoce->inv_title;
+    echo $invoice->inv_title;
 }
 ```
 ### Custom Resultsets
@@ -3153,7 +3153,7 @@ $invoices = Invoices::find(
     ]
 );
 
-foreach ($invoicess as $invoice) {
+foreach ($invoices as $invoice) {
     echo $invoice->customerId, PHP_EOL,
          $invoice->total, PHP_EOL,
          $invoice->createdAt, PHP_EOL;
@@ -3523,7 +3523,7 @@ class Invoices extends Model
 }
 ```
 
-Additional flexibility is availabie regarding database connections. You can specify a different connection for `read` operations and a different one for `write` operations. This is particularly useful when you have memory databases that can be used for read operations and different, more powerful databases that are used for `write` operations.
+Additional flexibility is available regarding database connections. You can specify a different connection for `read` operations and a different one for `write` operations. This is particularly useful when you have memory databases that can be used for read operations and different, more powerful databases that are used for `write` operations.
 
 You can set two different connections and utilize each database in each model transparently
 

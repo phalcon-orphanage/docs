@@ -448,7 +448,7 @@ class InvoicesController extends Controller
 }
 ```
 
-Assuming that you have code that sets the status code and content type for the response in the `afterDispatch` or `afterExecuteRoute` events, you can always return directly the data. Phalcon will set that as the returned payload. This is particularly usefull when writing APIs.
+Assuming that you have code that sets the status code and content type for the response in the `afterDispatch` or `afterExecuteRoute` events, you can always return directly the data. Phalcon will set that as the returned payload. This is particularly useful when writing APIs.
 
 ```php
 <?php

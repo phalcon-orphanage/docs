@@ -7,7 +7,7 @@ keywords: 'tutorial, rest tutorial, api, rest, step by step, micro'
 ---
 # Tutorial - REST
 <hr/>
-![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg)
+![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg)
 
 ## Overview
 The `REST API` application is an application that shows how you can create a [RESTful][restful] API utilizing Phalcon. In this tutorial, we will use the [Micro](application-micro) application. We will also utilize [Phinx][phinx] for our database migrations, [JSON Web Tokens (JWT)][jwt] for authentication as well as [JSON API][jsonapi] for the structured responses.  
