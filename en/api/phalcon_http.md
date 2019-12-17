@@ -56,31 +56,52 @@ Provide OO wrappers to manage a HTTP cookie.
 
 ## Properties
 ```php
-//
+/**
+ * @var string
+ */
 protected domain;
 
-//
+/**
+ * @var int
+ */
 protected expire;
 
 //
 protected filter;
 
-//
+/**
+ * @var bool
+ */
 protected httpOnly;
 
-//
+/**
+ * @var string
+ */
 protected name;
 
-//
+/**
+ * @var array
+ */
+protected options;
+
+/**
+ * @var string
+ */
 protected path;
 
-//
+/**
+ * @var bool
+ */
 protected read = false;
 
-//
+/**
+ * @var bool
+ */
 protected restored = false;
 
-//
+/**
+ * @var bool
+ */
 protected secure;
 
 /**
@@ -89,17 +110,21 @@ protected secure;
  */
 protected signKey;
 
-//
+/**
+ * @var bool
+ */
 protected useEncryption = false;
 
-//
+/**
+ * @var mixed
+ */
 protected value;
 
 ```
 
 ## Methods
 ```php
-public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool );
+public function __construct( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = bool, array $options = [] );
 ```
 Phalcon\Http\Cookie constructor.
 
@@ -138,6 +163,12 @@ Returns if the cookie is accessible only through the HTTP protocol
 public function getName(): string;
 ```
 Returns the current cookie's name
+
+
+```php
+public function getOptions(): array;
+```
+Returns the current cookie's options
 
 
 ```php
@@ -202,9 +233,15 @@ Sets if the cookie is accessible only through the HTTP protocol
 
 
 ```php
+public function setOptions( array $options ): CookieInterface;
+```
+Sets the cookie's options
+
+
+```php
 public function setPath( string $path ): CookieInterface;
 ```
-Sets the cookie's expiration time
+Sets the cookie's path
 
 
 ```php
@@ -291,6 +328,12 @@ Returns the current cookie's name
 
 
 ```php
+public function getOptions(): array;
+```
+Returns the current cookie's options
+
+
+```php
 public function getPath(): string;
 ```
 Returns the current cookie's path
@@ -337,6 +380,12 @@ Sets the cookie's expiration time
 public function setHttpOnly( bool $httpOnly ): CookieInterface;
 ```
 Sets if the cookie is accessible only through the HTTP protocol
+
+
+```php
+public function setOptions( array $options ): CookieInterface;
+```
+Sets the cookie's options
 
 
 ```php
@@ -3849,7 +3898,7 @@ $response->setStatusCode(404, "Not Found");
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookies.zep)
 
 | Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\CookieInterface, Phalcon\Http\Cookie\Exception |
+| Uses       | Phalcon\Di\DiInterface, Phalcon\Di\AbstractInjectionAware, Phalcon\Http\Cookie\Exception, Phalcon\Http\Cookie\CookieInterface |
 | Extends    | AbstractInjectionAware |
 | Implements | CookiesInterface |
 
@@ -3973,7 +4022,7 @@ Cookies aren't sent if headers are sent in the current request
 
 
 ```php
-public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null ): CookiesInterface;
+public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
 ```
 Sets a cookie to be sent at the end of the request.
 
@@ -4020,7 +4069,7 @@ Set if cookies in the bag must be automatically encrypted/decrypted
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/http/response/cookiesinterface.zep)
 
 | Namespace  | Phalcon\Http\Response |
-| Uses       | Phalcon\Http\CookieInterface |
+| Uses       | Phalcon\Http\Cookie\CookieInterface |
 
 Phalcon\Http\Response\CookiesInterface
 
@@ -4066,7 +4115,7 @@ Sends the cookies to the client
 
 
 ```php
-public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null ): CookiesInterface;
+public function set( string $name, mixed $value = null, int $expire = int, string $path = string, bool $secure = null, string $domain = null, bool $httpOnly = null, array $options = [] ): CookiesInterface;
 ```
 Sets a cookie to be sent at the end of the request
 
