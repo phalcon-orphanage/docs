@@ -107,7 +107,7 @@ $loader->registerNamespaces(
 $loader->register();
 ```
 
-Create the Phalcon autoloader adn register the namespace to point to the `src/` directory.
+Create the Phalcon autoloader and register the namespace to point to the `src/` directory.
 
 > **NOTE**: If you decided to use the Composer autoloader in your `composer.json`, you do not need to register the loader in this application
 {: .alert .alert-info }
@@ -442,7 +442,7 @@ The CLI application has its own router. By default the Phalcon CLI application u
 
 Similar to a MVC application, the [Phalcon\Cli\Router](api/phalcon_cli#cli-router) uses [Phalcon\Cli\Router\Route](api/phalcon_cli#cli-router-route) objects to store the route information. You can always implement your own objects by implementing the [Phalcon\Cli\Router\RouteInterface](api/phalcon_cli#cli-router-routeinterface).
 
-The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There are also additional placholders that you can take advantage of:
+The routes accept the expected regex parameters such as `a-zA-Z0-9` etc. There are also additional placeholders that you can take advantage of:
 
 | Placeholder  | 描述                                         |
 | ------------ | ------------------------------------------ |
