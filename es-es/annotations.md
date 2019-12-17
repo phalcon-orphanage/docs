@@ -208,11 +208,11 @@ Nested Annotations
 
 This component makes use of adapters to cache or no cache the parsed and processed annotations improving performance:
 
-| Adaptador                                                                                   | Descripción                                                                 |
-| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [Phalcon\Annotations\Adapter\Apcu](api/phalcon_annotations#annotations-adapter-apcu)     | Use APCu to store parsed and processed annotations (production)             |
-| [Phalcon\Annotations\Adapter\Memory](api/phalcon_annotations#annotations-adapter-memory) | Use memory fo store annotations (development)                               |
-| [Phalcon\Annotations\Adapter\Stream](api/phalcon_annotations#annotations-adapter-stream) | Use a file stream to store annotations. Must be used with a bytecode cache. |
+| Adaptador                                                                                   | Descripción                                                                  |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [Phalcon\Annotations\Adapter\Apcu](api/phalcon_annotations#annotations-adapter-apcu)     | Use APCu to store parsed and processed annotations (production)              |
+| [Phalcon\Annotations\Adapter\Memory](api/phalcon_annotations#annotations-adapter-memory) | Use memory to store annotations (development)                                |
+| [Phalcon\Annotations\Adapter\Stream](api/phalcon_annotations#annotations-adapter-stream) | Use a file stream to store annotations. Must be used with a byte-code cache. |
 
 ### Apcu
 
