@@ -687,7 +687,7 @@ orm.exception_on_failed_metadata_save = true
 
 ## Strategies
 
-The default strategy to obtain the model's metadata is database introspection. Using thiss strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
+The default strategy to obtain the model's metadata is database introspection. Using this strategy, the information schema is used to identify the fields in a table, its primary key, nullable fields, data types, etc.
 
 ```php
 <?php
