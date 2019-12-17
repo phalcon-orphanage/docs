@@ -793,7 +793,7 @@ $products
     )
 ```
 
-Using this simple change in implementation, all handlers remain uninstantiated until requested by a caller. Therefore whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
+Using this simple change in implementation, all handlers remain non instantiated until requested by a caller. Therefore whenever a caller requests `/invoices/get/2`, our application will instantiate the `InvoicesController` and call the `get` method in it. Our application now uses less resources than before.
 
 #### Not found (404)
 
@@ -1577,7 +1577,9 @@ $manager->attach(
     'micro:beforeExecuteRoute',
     function (Event $event, $app) {
         if ($app->session->get('auth') === false) {
-            $app->flashSession->error("The user isn't authenticated");
+            $app->flashSession->error(
+                "The user is not authenticated"
+            );
 
             $app->response->redirect('/');
             $app->response->sendHeaders();
@@ -1701,7 +1703,7 @@ $app->after(
 );
 ```
 
-In the above example, the handler returns an array of data. The `after` event calls `json_encode` on it, thus returing valid JSON.
+In the above example, the handler returns an array of data. The `after` event calls `json_encode` on it, thus returning valid JSON.
 
 > **NOTE**: You will need to do a bit more work here to set the necessary headers for JSON. An alternative to the above code would be to use the Response object and `setJsonContent`
 {: .alert .alert-info }

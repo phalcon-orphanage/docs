@@ -10,7 +10,7 @@ keywords: 'tutorial, invo tutorial, step by step, mvc'
 
 * * *
 
-![](/assets/images/document-status-under-review-red.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
+![](/assets/images/document-status-stable-success.svg) ![](/assets/images/version-{{ page.version }}.svg) ![](/assets/images/level-intermediate.svg)
 
 ## Overview
 
@@ -205,7 +205,7 @@ In the first line of the code block above, the [Application](application) class 
 
 Since Phalcon is highly decoupled, we need the container to be able to access registered services from it in different parts of the application. The component in question is [Phalcon\Di](di). It is a service container, that also performs dependency injection and service location, instantiating all components as they are needed by the application.
 
-There are many ways available to register services in the container. In INVO, most services have been registered using anonymous functions/closures. Thanks to this, the objects are lazy loaded, reducing the resources required by the application toa bare minimum.
+There are many ways available to register services in the container. In INVO, most services have been registered using anonymous functions/closures. Thanks to this, the objects are lazy loaded, reducing the resources required by the application to a bare minimum.
 
 For instance, in the following excerpt the session service is registered. The anonymous function will only be called when the application requires access to the session data:
 
@@ -1740,7 +1740,7 @@ class Elements extends Injectable
 }
 ```
 
-This class extends the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). It is not necesary to do so but extending this component allows us to access all the application services. We are going to register this user component in the services container:
+This class extends the [Phalcon\Di\Injectable](api/phalcon_di#di-injectable). It is not necessary to do so but extending this component allows us to access all the application services. We are going to register this user component in the services container:
 
 ```php
 <?php

@@ -258,7 +258,7 @@ $logger
 
 Log only to remote and manager
 
-> **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method one ach to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
+> **NOTE** Internally, the component loops through the registered adapters and calls the relevant logging method to achieve logging to multiple adapters. If one of them fails, the loop will break and the remaining adapters (from the loop) will not log the message. In future versions of Phalcon we will be introducing asynchronous logging to alleviate this problem.
 {: .alert .alert-warning }
 
 ## Constants
@@ -297,7 +297,7 @@ $logger  = new Logger(
     ]
 );
 
-$logger->setLogLevel(Loger::ALERT);
+$logger->setLogLevel(Logger::ALERT);
 
 $logger->alert("This is an alert message");
 $logger->critical("This is a critical message");
@@ -664,7 +664,7 @@ $logger->error('Something went wrong');
 use Phalcon\Logger;
 use Phalcon\Logger\Adapter\Syslog;
 
-// Setting ident/mode/facility
+// Setting identity/mode/facility
 $adapter = new Syslog(
     'ident-name',
     [

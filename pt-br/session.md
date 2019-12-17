@@ -380,7 +380,7 @@ $session
 
 ### Noop
 
-[Phalcon\Session\Adapter\Noop](api/Phalcon_Session#session-adapter-noop) is an "empty" or `null` adapter. It can be used for testing, a joke for your colleages or any other purpose that no session needs to be invoked.
+[Phalcon\Session\Adapter\Noop](api/Phalcon_Session#session-adapter-noop) is an "empty" or `null` adapter. It can be used for testing, a joke for your colleagues or any other purpose that no session needs to be invoked.
 
 ```php
 <?php

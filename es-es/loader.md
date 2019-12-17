@@ -114,7 +114,7 @@ spl_autoload_register(
 );
 ```
 
-The above auto loader lacks any kind of security. If a part of your code accidentally calls the auto loader with a name that points ot a script containing malicious code, then your application will be compromised.
+The above auto loader lacks any kind of security. If a part of your code accidentally calls the auto loader with a name that points to a script containing malicious code, then your application will be compromised.
 
 ```php
 <?php
@@ -172,7 +172,7 @@ MyApp\Components
 
 then the loader, as defined above, does not need to know about the `MyApp\Components` namespace location, or have it defined in the `registerNamespaces()` declaration.
 
-If the component referenced in the code is `MyApp\Components\Mail`, it will assume that it is a sub directory of the root namespace. However, since we specified a different location for the `MyApp\Controllers` and `MuApp\Models` namespaces, the loader will look for those namespaces in the specified directories.
+If the component referenced in the code is `MyApp\Components\Mail`, it will assume that it is a sub directory of the root namespace. However, since we specified a different location for the `MyApp\Controllers` and `MyApp\Models` namespaces, the loader will look for those namespaces in the specified directories.
 
 The `registerNamespaces()` method also accepts a second parameter `merge`. By default it is `false`. You can however set it to `true` when having multiple calls to `registerNamespaces()` so that the namespace definitions are merged.
 
