@@ -32,7 +32,7 @@ $file = new UploadedFile(
 echo $file->getClientFilename(); // 'phalcon.txt'
 ```
 
-We are creating a new [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) using the memory stream, with size `0`, specifying that there was no upload error (`UOLOAD_ERR_OK`) and the name of the file is `phalcon.txt`. This information is available to us when working with the [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object automatically.
+We are creating a new [Phalcon\Http\Message\UploadedFile](api/phalcon_http#http-message-uploadedfile) using the memory stream, with size `0`, specifying that there was no upload error (`UPLOAD_ERR_OK`) and the name of the file is `phalcon.txt`. This information is available to us when working with the [Phalcon\Http\Message\ServerRequest](api/phalcon_http#http-message-serverrequest) object automatically.
 
 ## Constructor
 
