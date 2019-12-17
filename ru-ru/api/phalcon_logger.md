@@ -24,7 +24,7 @@ title: 'Phalcon\Logger'
 
 [Исходный код на GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/logger.zep)
 
-| Namespace | Phalcon | | Uses | Psr\Log\LoggerInterface, Psr\Log\InvalidArgumentException, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
+| Namespace | Phalcon | | Uses | Psr\Log\LoggerInterface, Phalcon\Logger\Adapter\AdapterInterface, Phalcon\Logger\Item, Phalcon\Logger\Exception | | Implements | LoggerInterface |
 
 Phalcon\Logger
 
@@ -219,7 +219,7 @@ Sets the adapters stack overriding what is already there
 public function setLogLevel( int $level ): Logger;
 ```
 
-Sets the adapters stack overriding what is already there
+Sets the log level above which we can log
 
 ```php
 public function warning( mixed $message, array $context = [] ): void;
