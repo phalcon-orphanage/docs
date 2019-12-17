@@ -491,7 +491,7 @@ The available providers are:
 
 | Provider                 | Описание                                          |
 | ------------------------ | ------------------------------------------------- |
-| `AclProvider`            | Permissons                                        |
+| `AclProvider`            | Permissions                                       |
 | `AuthProvider`           | Authentication                                    |
 | `ConfigProvider`         | Configuration values                              |
 | `CryptProvider`          | Encryption                                        |
@@ -1574,4 +1574,4 @@ Vökuró is a sample application that we use to demonstrate some of the features
 - [Phalcon Forms](forms)
 - [Phalcon HTTP Response](response)
 - [Phalcon Security](security)
-- [Vökuró - Github Repository](https://github.com/phalcon/vokuro)
+- [Vökuró - GitHub Repository](https://github.com/phalcon/vokuro)
