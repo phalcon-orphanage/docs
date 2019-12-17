@@ -1010,9 +1010,9 @@ Generates random text based on the template. The template needs separators as we
 
 use Phalcon\Helper\Str;
 
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Han Solo
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Leia Skywalker
-echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Han Solo!
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Leia Skywalker!
+echo Str::dynamic('{Han|Leia|Luke} {Solo|Skywalker}!');  // Luke Solo!
 ```
 
 ### `endsWith`
@@ -1221,12 +1221,14 @@ final public static function random(
 
 Generates a random string based on the given type. The first parameter is one of the `RANDOM_*` constants. The second parameter specifies the length of the string (defaults to 8).
 
-- RANDOM_ALNUM
-- RANDOM_ALPHA
-- RANDOM_DISTINCT
-- RANDOM_HEXDEC
-- RANDOM_NOZERO
-- RANDOM_NUMERIC
+| 常量：               | 描述                                                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| `RANDOM_ALNUM`    | Only alpha numeric characters `[a-zA-Z0-9]`                                                         |
+| `RANDOM_ALPHA`    | Only alphabetical characters `[azAZ]`                                                               |
+| `RANDOM_DISTINCT` | Only alpha numeric uppercase characters exclude similar characters `[2345679ACDEFHJKLMNPRSTUVWXYZ]` |
+| `RANDOM_HEXDEC`   | Only hexadecimal characters `[0-9a-f]`                                                              |
+| `RANDOM_NOZERO`   | Only numbers without `0` `[1-9]`                                                                    |
+| `RANDOM_NUMERIC`  | Only numbers `[0-9]`                                                                                |
 
 ```php
 <?php
