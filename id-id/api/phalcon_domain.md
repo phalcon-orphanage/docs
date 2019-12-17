@@ -16,13 +16,20 @@ title: 'Phalcon\Domain'
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/payload.zep)
 
-| Namespace | Phalcon\Domain\Payload | | Implements | PayloadInterface |
+| Namespace | Phalcon\Domain\Payload | | Uses | Throwable | | Implements | PayloadInterface |
 
 Holds the payload
 
 ## Properties
 
 ```php
+/**
+ * Exception if any
+ *
+ * @var Throwable|null
+ */
+protected exception;
+
 /**
  * Extra information
  *
@@ -63,6 +70,14 @@ protected output;
 ## Methods
 
 ```php
+public function getException(): Throwable | null;
+```
+
+Gets the potential exception thrown in the domain layer
+
+@return Throwable|null
+
+```php
 public function getExtras(): mixed
 ```
 
@@ -81,6 +96,14 @@ public function getOutput(): mixed
 ```php
 public function getStatus(): mixed
 ```
+
+```php
+public function setException( Throwable $exception ): PayloadInterface;
+```
+
+Sets an exception thrown in the domain
+
+@return PayloadInterface
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
@@ -140,11 +163,19 @@ This interface is used for consumers
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/readableinterface.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
 This interface is used for consumers (read only)
 
 ## Methods
+
+```php
+public function getException(): Throwable | null;
+```
+
+Gets the potential exception thrown in the domain layer
+
+@return Throwable|null
 
 ```php
 public function getExtras(): mixed;
@@ -231,11 +262,19 @@ Instantiation not allowed.
 
 [Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/domain/payload/writeableinterface.zep)
 
-| Namespace | Phalcon\Domain\Payload |
+| Namespace | Phalcon\Domain\Payload | | Uses | Throwable |
 
 This interface is used for consumers (write)
 
 ## Methods
+
+```php
+public function setException( Throwable $exception ): PayloadInterface;
+```
+
+Sets an exception produced by the domain layer.
+
+@return PayloadInterface
 
 ```php
 public function setExtras( mixed $extras ): PayloadInterface;
@@ -243,11 +282,15 @@ public function setExtras( mixed $extras ): PayloadInterface;
 
 Sets arbitrary extra values produced by the domain layer.
 
+@return PayloadInterface
+
 ```php
 public function setInput( mixed $input ): PayloadInterface;
 ```
 
 Sets the input received by the domain layer.
+
+@return PayloadInterface
 
 ```php
 public function setMessages( mixed $messages ): PayloadInterface;
@@ -255,14 +298,20 @@ public function setMessages( mixed $messages ): PayloadInterface;
 
 Sets the messages produced by the domain layer.
 
+@return PayloadInterface
+
 ```php
 public function setOutput( mixed $output ): PayloadInterface;
 ```
 
 Sets the output produced from the domain layer.
 
+@return PayloadInterface
+
 ```php
 public function setStatus( mixed $status ): PayloadInterface;
 ```
 
 Sets the status of this payload.
+
+@return PayloadInterface
