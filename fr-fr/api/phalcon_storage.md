@@ -82,7 +82,7 @@ protected serializerFactory;
 ## Méthodes
 
 ```php
-protected function __construct( SerializerFactory $factory = null, array $options = [] );
+protected function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Sets parameters based on options
@@ -284,7 +284,7 @@ protected options;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $options = [] );
+public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Constructor
@@ -380,7 +380,7 @@ protected options;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $options = [] );
+public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Libmemcached constructor.
@@ -481,7 +481,7 @@ protected options;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $options = [] );
+public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Constructor
@@ -577,7 +577,7 @@ protected options;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $options = [] );
+public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Constructor
@@ -680,7 +680,7 @@ protected options;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $options = [] );
+public function __construct( SerializerFactory $factory, array $options = [] );
 ```
 
 Stream constructor.
@@ -780,7 +780,7 @@ private serializerFactory;
 ## Méthodes
 
 ```php
-public function __construct( SerializerFactory $factory = null, array $services = [] );
+public function __construct( SerializerFactory $factory, array $services = [] );
 ```
 
 AdapterFactory constructor.
