@@ -71,23 +71,23 @@ set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
-## Nginx
+## nginx
 
-[Nginx](https://wiki.nginx.org/Main) — это свободный, высокопроизводительный HTTP-сервер и прокси-сервер с открытым исходным кодом, а также IMAP/POP3 прокси-сервер. В отличие от традиционных серверов Nginx не использует потоки для обработки запросов. Вместо этого он использует гораздо более масштабируемую (асинхронную) архитектуру. Эта архитектура под высокой нагрузкой использует небольшой, и главное, предсказуемый объем памяти.
+[nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. Вместо этого он использует гораздо более масштабируемую (асинхронную) архитектуру. Эта архитектура под высокой нагрузкой использует небольшой, и главное, предсказуемый объем памяти.
 
-Phalcon с Nginx и PHP-FPM обеспечивают мощный набор инструментов, которые обеспечивают максимальную производительность ваших PHP приложений.
+Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install NginX
+### Install nginx
 
-[Официальный сайт Nginx](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[nginx Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
 ### Phalcon Configuration
 
-Вы можете использовать следующую конфигурацию Nginx для работы с Phalcon:
+You can use following potential configuration to setup nginx with Phalcon:
 
     server {
-        # Port 80 will require Nginx to be started with root permissions
-        # Depending on how you install Nginx to use port 80 you will need
+        # Port 80 will require nginx to be started with root permissions
+        # Depending on how you install nginx to use port 80 you will need
         # to start the server with `sudo` ports about 1000 do not require
         # root privileges
         # listen      80;
@@ -169,7 +169,7 @@ Phalcon с Nginx и PHP-FPM обеспечивают мощный набор и�
 
 ### Запуск Nginx
 
-В зависимости от вашей системы команда запуска Nginx может быть одна из следующих:
+Depending on your system, the command to start nginx could be one of the following:
 
 ```bash
 start nginx
@@ -305,7 +305,7 @@ tutorial/
 
 обратите внимание на составные части файла: `x86`, `vc15` и аббревиатуру `TS`, которая означает *потоковую безопасность* (Thread Safe). Если вы используете NTS-версию PHP (*потоко-небезопасная версия, Non Thread Safe*), вам следует скачать соответствующую версию DLL.
 
-WampServer предоставляет как 32-битные, так и 64-битные версии. Вам следует скачать именно ту версию Phalcon, которая подходит для вашей установки WampServer.
+WampServer предоставляет как 32-битные, так и 64-битные версии. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
 
 После скачивания библиотеки Phalcon у вас будет zip-файл, примерно такой как показано ниже:
 
