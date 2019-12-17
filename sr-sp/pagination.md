@@ -62,7 +62,7 @@ Every adapter requires options to operate properly. These options are passed as 
 - `builder` - Used only for the [Phalcon\Paginator\Adapter\QueryBuilder](api/phalcon_paginator#paginator-adapter-querybuilder) to pass the builder object
 - `data` - The data to paginate. ([Phalcon\Paginator\Adapter\NativeArray](api/phalcon_paginator#paginator-adapter-nativearray) adapter)
 - `limit` - `int` - The size of the page slice. If `limit` is negative, an exception will be thrown.
-- `model` - The data to paginage. ([Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) adapter)
+- `model` - The data to paginate. ([Phalcon\Paginator\Adapter\Model](api/phalcon_paginator#paginator-adapter-model) adapter)
 - `page` - `int` - The current page
 - `repository` - [Phalcon\Paginator\RepositoryInterface](api/phalcon_paginator#paginator-repositoryinterface) - A repository object setting up the resultset. For more about repositories see below.
 
