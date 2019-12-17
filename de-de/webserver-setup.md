@@ -71,23 +71,23 @@ set PATH=C:\PHP;%PATH%
 c:\bin\RunHiddenConsole.exe C:\PHP\php-cgi.exe -b 127.0.0.1:9000
 ```
 
-## Nginx
+## nginx
 
-[Nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, Nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
+[nginx](https://wiki.nginx.org/Main) is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Unlike traditional servers, nginx doesn't rely on threads to handle requests. Instead it uses a much more scalable event-driven (asynchronous) architecture. This architecture uses small, but more importantly, predictable amounts of memory under load.
 
-Phalcon with Nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
+Phalcon with nginx and PHP-FPM provide a powerful set of tools that offer maximum performance for your PHP applications.
 
-### Install NginX
+### Install nginx
 
-[nginX Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
+[nginx Official Site](https://www.nginx.com/resources/wiki/start/topics/tutorials/install/)
 
 ### Phalcon Configuration
 
-You can use following potential configuration to setup Nginx with Phalcon:
+You can use following potential configuration to setup nginx with Phalcon:
 
     server {
-        # Port 80 will require Nginx to be started with root permissions
-        # Depending on how you install Nginx to use port 80 you will need
+        # Port 80 will require nginx to be started with root permissions
+        # Depending on how you install nginx to use port 80 you will need
         # to start the server with `sudo` ports about 1000 do not require
         # root privileges
         # listen      80;
@@ -169,7 +169,7 @@ You can use following potential configuration to setup Nginx with Phalcon:
 
 ### Start
 
-Depending on your system, the command to start nginX could be one of the following:
+Depending on your system, the command to start nginx could be one of the following:
 
 ```bash
 start nginx
@@ -305,7 +305,7 @@ Check the `Architecture` and `Extension Build` values. Those will allow you to d
 
 which will match `x86`, `vc15` and `TS` which is *Thread Safe*. If your system reports `NTS` (*Non Thread Safe*) then you should download that DLL.
 
-WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMPP installation.
+WAMP has both 32 and 64 bit versions. From the download section, you can download the Phalcon DLL that suits your WAMP installation.
 
 After downloading the Phalcon library you will have a zip file like the one shown below:
 
