@@ -520,7 +520,7 @@ public function __invoke( string $input );
 
 Phalcon\Filter\Sanitize\UpperWords
 
-Sanitizes a value to uppercase teh first character of each word
+Sanitizes a value to uppercase the first character of each word
 
 ## Methoden
 
