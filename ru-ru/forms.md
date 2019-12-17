@@ -385,7 +385,7 @@ public function render(
 ): string
 ```
 
-Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for th element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
+Renders a specific item in the form. The optional `attributes` array parameter can be used to pass additional parameters for the element to be rendered. If the element is not found in the form, a [Phalcon\Forms\Exception](api/phalcon_forms#forms-exception) will be thrown.
 
 ```php
 public function remove(string $name): bool
@@ -446,7 +446,7 @@ Sets user defined options for the form
 public function valid(): bool
 ```
 
-Returns if the vurrent element in the iterator is valid or not
+Returns if the current element in the iterator is valid or not
 
 ## Initialization
 
