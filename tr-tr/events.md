@@ -920,10 +920,7 @@ The event will always have as The events available in Phalcon are:
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatch`            | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeDispatchLoop`        | Gönderici                                               |
 | [Gönderici](dispatcher)     | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Gönderici                                               |
-| [Firewall](acl)             | `firewall:beforeException`           | Adapter, Exception                                      |
-| [Firewall](acl)             | `firewall:afterCheck`                | Acl / Annotations / Acl                                 |
-| [Firewall](acl)             | `firewall:beforeCheck`               | Açıklamalar                                             |
+| [Gönderici](dispatcher)     | `dispatch:beforeNotFoundAction`      | Dispatcher |                                            |
 | [Yükleyici](loader)         | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Yükleyici](loader)         | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Yükleyici](loader)         | `loader:beforeCheckPath`             | Yükleyici                                               |

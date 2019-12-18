@@ -920,10 +920,7 @@ The event will always have as The events available in Phalcon are:
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatch`            | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeDispatchLoop`        | Αποστολέας                                              |
 | [Αποστολέας](dispatcher)    | `dispatch:beforeForward`             | Dispatcher, array                                       |
-| [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Αποστολέας                                              |
-| [Firewall](acl)             | `firewall:beforeException`           | Adapter, Exception                                      |
-| [Firewall](acl)             | `firewall:afterCheck`                | Acl / Annotations / Acl                                 |
-| [Firewall](acl)             | `firewall:beforeCheck`               | Σχολιασμοί                                              |
+| [Αποστολέας](dispatcher)    | `dispatch:beforeNotFoundAction`      | Dispatcher |                                            |
 | [Φορτωτής](loader)          | `loader:afterCheckClass`             | Loader, Class Name                                      |
 | [Φορτωτής](loader)          | `loader:beforeCheckClass`            | Loader, Class Name                                      |
 | [Φορτωτής](loader)          | `loader:beforeCheckPath`             | Φορτωτής                                                |

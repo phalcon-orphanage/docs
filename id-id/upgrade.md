@@ -1112,16 +1112,6 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Filter\Sanitize\UpperWords  |
 |       | New   | Phalcon\Filter\Sanitize\Url         |
 
-### Firewall
-
-| 3.4.x | State | 4.0.x                                       |
-| ----- | ----- | ------------------------------------------- |
-|       | New   | Phalcon\Firewall\Adapter\AbstractAdapter |
-|       | New   | Phalcon\Firewall\Adapter\Acl             |
-|       | New   | Phalcon\Firewall\Adapter\Annotations     |
-|       | New   | Phalcon\Firewall\Adapter\Micro\Acl      |
-|       | New   | Phalcon\Firewall\Exception                |
-
 ### Flash
 
 | 3.4.x          | State      | 4.0.x                         |
