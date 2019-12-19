@@ -115,19 +115,15 @@
                 "url": "/tutorial-rest"
             },
             {
-                "text": "REST - 고급",
-                "url": "/tutorial-rest-advanced"
-            },
-            {
                 "text": "Vokuro",
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "활용 예시",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
-                "text": "성능",
+                "text": "Performance",
                 "url": "/performance"
             }
         ]
