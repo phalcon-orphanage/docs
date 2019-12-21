@@ -1051,6 +1051,7 @@ Phalcon\Assets\Resource\Js  | Renamed to | Phalcon\Assets\Asset\Js  |
 |                       | New        | Phalcon\Helper\Arr       |
 |                       | New        | Phalcon\Helper\Exception |
 |                       | New        | Phalcon\Helper\Fs        |
+|                       | New        | Phalcon\Helper\Json      |
 |                       | New        | Phalcon\Helper\Number    |
 |                       | New        | Phalcon\Helper\Str       |
 
