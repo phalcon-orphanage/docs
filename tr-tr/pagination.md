@@ -411,11 +411,10 @@ class InvoicesController extends Controller
 {
     public function listAction()
     {
-        $currentPage = $this->request->getQuery('page', 'int');
-        $invoices    = Invoices::find();
+        $currentPage = $this->request->getQuery('page', 'int', 1);
         $paginator   = new PaginatorModel(
             [
-                'data'  => $invoices,
+                'model'  => Invoices::class,
                 'limit' => 10,
                 'page'  => $currentPage,
             ]
@@ -440,9 +439,9 @@ In the example above `$currentPage` contains an integer, user supplied variable,
     </tr>
     <?php foreach ($page->getItems() as $item) { ?>
     <tr>
-        <td><?php echo $item->inv_id; ?></td>
-        <td><?php echo ($item->inv_status_flag) ? 'Paid' : ''; ?></td>
-        <td><?php echo $item->inv_title; ?></td>
+        <td><?php echo $item['inv_id']; ?></td>
+        <td><?php echo ($item['inv_status_flag']) ? 'Paid' : ''; ?></td>
+        <td><?php echo $item['inv_title']; ?></td>
     </tr>
     <?php } ?>
 </table>
@@ -473,7 +472,7 @@ $factory = new PaginatorFactory();
 
 $currentPage = 2;
 $options     = [
-   'data'  => Invoices::find(),
+   'model'  => Invoices::class,
    'limit' => 10,
    'page'  => $currentPage,
 ];
@@ -542,7 +541,7 @@ use Phalcon\Paginator\Adapter\Model as PaginatorModel;
 $currentPage = 2;
 $paginator   = new PaginatorModel(
     [
-       'data'  => Invoices::find(),
+       'model'  => Invoices::class,
        'limit' => 10,
        'page'  => $currentPage,
     ]
