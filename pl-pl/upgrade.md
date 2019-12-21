@@ -1130,6 +1130,7 @@ The `Phalcon\Mvc\Url` component has been renamed to `Phalcon\Url`. The functiona
 |       | New   | Phalcon\Helper\Arr       |
 |       | New   | Phalcon\Helper\Exception |
 |       | New   | Phalcon\Helper\Fs        |
+|       | New   | Phalcon\Helper\Json      |
 |       | New   | Phalcon\Helper\Number    |
 |       | New   | Phalcon\Helper\Str       |
 
