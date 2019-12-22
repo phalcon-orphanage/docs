@@ -54,7 +54,7 @@ Compile Phalcon
 
 ```bash
 cd cphalcon/
-git checkout tags/v4.0.0-alpha1 ./
+git checkout tags/v4.0.0 ./
 zephir fullclean
 zephir build
 ```
