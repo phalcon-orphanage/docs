@@ -1007,7 +1007,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id = 1";
 
 $records  = $this
@@ -1027,7 +1027,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_total > 1000";
 
 $records  = $this
@@ -1046,7 +1046,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         TRIM(Invoices.inv_title) = 'Invoice for ACME Inc.'";
 
 $records  = $this
@@ -1065,7 +1065,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_title LIKE '%ACME%'";
 
 $records  = $this
@@ -1084,7 +1084,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_title NOT LIKE '%ACME%'";
 
 $records  = $this
@@ -1103,7 +1103,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_total IS NULL";
 
 $records  = $this
@@ -1122,7 +1122,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id IN (1, 3, 5)";
 
 $records  = $this
@@ -1141,7 +1141,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id NOT IN (1, 3, 5)";
 
 $records  = $this
@@ -1160,7 +1160,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id BETWEEN 1 AND 5";
 
 $records  = $this
@@ -1183,7 +1183,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id = :customer_id:";
 
 $records  = $this
@@ -1207,7 +1207,7 @@ $phql = "
         *
     FROM 
         Invoices
-    ORDER BY 
+    WHERE 
         Invoices.inv_cst_id = ?2";
 
 $records  = $this
