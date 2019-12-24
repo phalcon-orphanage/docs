@@ -255,7 +255,7 @@ make install clean
 
 ##### Gentoo
 
-[여기](https://github.com/smoke/phalcon-gentoo-overlay)에서 Phalcon 설치를 위한 오버레이이를 확인하실 수 있습니다.
+[여기](https://github.com/smoke/phalcon-gentoo-overlay)에서 Phalcon 설치를 위한 오버레이를 확인하실 수 있습니다.
 
 #### Raspberry Pi
 
