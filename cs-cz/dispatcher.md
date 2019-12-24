@@ -949,7 +949,7 @@ or use an alternative systax checking for the exception.
 <?php
 
 use Exception;
-use Phalcon\Dispatcher;
+use Phalcon\Dispatcher\Exception as DispatcherException;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Events\Event;
 use Phalcon\Events\Manager;
@@ -967,8 +967,8 @@ $container->setShared(
                 Exception $exception
             ) {
                 switch ($exception->getCode()) {
-                    case Dispatcher::EXCEPTION_HANDLER_NOT_FOUND:
-                    case Dispatcher::EXCEPTION_ACTION_NOT_FOUND:
+                    case DispatcherException::EXCEPTION_HANDLER_NOT_FOUND:
+                    case DispatcherException::EXCEPTION_ACTION_NOT_FOUND:
                         // 404
                         $dispatcher->forward(
                             [
