@@ -19,7 +19,7 @@ title: 'Phalcon\Acl'
 
 <h1 id="acl-adapter-abstractadapter">Abstract Class Phalcon\Acl\Adapter\AbstractAdapter</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/abstractadapter.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Events\ManagerInterface, Phalcon\Events\EventsAwareInterface | | Implements | AdapterInterface, EventsAwareInterface |
 
@@ -73,7 +73,7 @@ protected eventsManager;
 
 ```
 
-## Métodos
+## Methods
 
 ```php
 public function getActiveAccess(): string
@@ -97,7 +97,7 @@ Returns the default ACL access level
 public function getEventsManager(): ManagerInterface;
 ```
 
-Devuelve el administrador de eventos interno
+Returns the internal event manager
 
 ```php
 public function setDefaultAction( int $defaultAccess ): void;
@@ -109,17 +109,17 @@ Sets the default access level (Phalcon\Acl::ALLOW or Phalcon\Acl::DENY)
 public function setEventsManager( ManagerInterface $eventsManager ): void;
 ```
 
-Establece el administrador de eventos
+Sets the events manager
 
 <h1 id="acl-adapter-adapterinterface">Interface Phalcon\Acl\Adapter\AdapterInterface</h1>
 
-[Código fuente en GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
+[Source on GitHub](https://github.com/phalcon/cphalcon/tree/v{{ page.version }}.0/phalcon/acl/adapter/adapterinterface.zep)
 
 | Namespace | Phalcon\Acl\Adapter | | Uses | Phalcon\Acl\ComponentInterface, Phalcon\Acl\RoleInterface |
 
 Interface for Phalcon\Acl adapters
 
-## Métodos
+## Methods
 
 ```php
 public function addComponent( mixed $componentObject, mixed $accessList ): bool;
