@@ -268,16 +268,16 @@ zephir fullclean
 zephir build
 ```
 
-It is also necessary to increase the swap file from the default 100 MB to at least 2000 MB. Because, the compiler lacks RAM.
+또한 기본값이 100MB인 스왑파일을 최소한 2000MB로 늘려야 합니다. 컴파일러가 램을 엄청 먹기 때문이지요.
 
 ```bash
 sudo -s
 nano /etc/dphys-swapfile
 ```
 
-Replacing `CONF_SWAPSIZE=100` with `CONF_SWAPSIZE=2000`
+`CONF_SWAPSIZE=100` 부분을`CONF_SWAPSIZE=2000` 로 바꿔주세요
 
-After saving the setting, restart the daemon:
+파일을 저장 후, 데몬을 재시작합니다:
 
 ```bash
 /etc/init.d/dphys-swapfile stop
@@ -286,9 +286,9 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+macOS 시스템에서는 `brew`, `macports` 혹은 소스코드에서 직접 컴파일 하실 수 있습니다:
 
-#### Requirements
+#### 요구사항
 
 * PHP 7.2x 개발 환경
 * XCode
