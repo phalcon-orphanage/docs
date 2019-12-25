@@ -25,13 +25,13 @@ Phalcon Devtools can be installed using <composer>. Make sure you have installed
 Install Phalcon Devtools globally
 
 ```bash
-composer global require phalcon/devtools:v4.0.0-rc.1
+composer global require phalcon/devtools
 ```
 
 Or only inside your project
 
 ```bash
-composer global require phalcon/devtools:v4.0.0-rc.1
+composer require phalcon/devtools
 ```
 
 Test your installation by typing: `phalcon`
@@ -39,7 +39,7 @@ Test your installation by typing: `phalcon`
 ```bash
 $ phalcon
 
-Phalcon DevTools (4.0.0-RC.1)
+Phalcon DevTools (4.0.0)
 
 Available commands:
   info             (alias of: i)
@@ -67,7 +67,7 @@ You can get a list of available commands in Phalcon tools by typing: `phalcon co
 ```bash
 $ phalcon commands
 
-Phalcon DevTools (4.0.0-RC.1)
+Phalcon DevTools (4.0.0)
 
 Available commands:
   info             (alias of: i)
@@ -101,7 +101,7 @@ You could add the parameter `--help` to get help on the usage of a certain scrip
 ```bash
 $ phalcon project --help
 
-Phalcon DevTools (4.0.0-RC.1)
+Phalcon DevTools (4.0.0)
 
 Help:
   Creates a project
