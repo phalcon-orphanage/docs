@@ -377,7 +377,7 @@ Check the module
 php -m | grep phalcon
 ```
 
-You will now need to add `extension=phalcon.so` to your PHP ini and restart your web server, so as to load the extension.
+PHP ini 파일에 `extension=phalcon.so` 라인을 추가하신 후 웹서버를 재시작해서 추가한 익스텐션이 로드되도록 해주세요.
 
 ```ini
 ; Suse: Add a File Called Phalcon.ini in /etc/php7/conf.d/ with This Content:
