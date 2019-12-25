@@ -293,7 +293,7 @@ class IndexController extends Controller
 
 ![](/assets/images/content/tutorial-basic-1.png)
 
-> **Congratulations, you are Phlying with Phalcon!**
+> **축하합니다, 이제 Phalcon과 함께 Phlying 을 성공하셨습니다!**
 {: .alert .alert-info }
 
 ## 뷰로 출력 보내기
@@ -371,7 +371,7 @@ echo $this->tag->linkTo(
 <a href="/signup">Sign Up Here!</a>
 ```
 
-`<a>` 태그로 링크를 만들기 위해, [Phalcon\Tag](tag) 컴포넌트를 사용합니다. 이것은 프레임워크에서 정한 규약에 맞춰 HTML태그를 쉽게 만드는 방법을 제공하는 유틸리티 클래스입니다. 이 클래스는 또한 의존성 주입기(Dependency Injector)에 등록된 서비스이기도 하므로, `$this->tag` 를 사용해서 기능애 접근할 수 있습니다.
+`<a>` 태그로 링크를 만들기 위해, [Phalcon\Tag](tag) 컴포넌트를 사용합니다. 이것은 프레임워크에서 정한 규약에 맞춰 HTML태그를 쉽게 만드는 방법을 제공하는 유틸리티 클래스입니다. 이 클래스는 또한 의존성 주입기(Dependency Injector)에 등록된 서비스이기도 하므로, `$this->tag` 를 사용해서 기능에 접근할 수 있습니다.
 
 > **주의**: 우리는 `Phalcon\Di\FactoryDefault` 컨테이너를 사용하므로 `Phalcon\Tag` 는 DI 컨테이너에 이미 등록되어 있습니다. 모든 서비스를 직접 수동으로 등록하신 경우라면, 이 컴포넌트를 컨테이너에 등록하셔야 어플리케이션에서 사용하실 수 있습니다.
 {: .alert .alert-info }
