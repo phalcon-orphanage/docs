@@ -14,7 +14,7 @@ keywords: 'environment, devilbox, docker, 개발환경'
 
 ## 개요
 
-The [Devilbox](https://devilbox.org) The Devilbox is a modern and highly customizable dockerized PHP stack supporting full LAMP and MEAN and running on all major platforms. 로컬 개발시 필요한 모든 버전들 간에 쉽게 전환하거나 결합할 수 있도록 하는 것이 주 목표입니다. 가상호스트, SSL인증서와 DNS레코드가 자동으로 생성되는 환경을 지원하기 위해 지원하는 프로젝트 갯수에 제한이 없습니다. NodeJS 같은 리스닝서버도 문제없이 사용 할 수 있도록 프로젝트별 리버스 프록시 또한 지원하고 있습니다. Catch-all 이메일과 인기있는 개발도구들 또한 준비되어 있습니다. 모든 것들이 사전 설정되어 있기 때문에 별도의 설정이 필요없습니다.
+[Devilbox](https://devilbox.org) Devilbox 는 최근 출시되어 LAMP 와 MEAN을 완벽히 지원하며, 세부적인 것까지 맞춤 설정가능한 PHP스택입니다. 또한 이 스택은 도커화(dockerized)되어 모든 주요 플랫폼에서 동작합니다. 로컬 개발시 필요한 모든 버전들 간에 쉽게 전환하거나 결합할 수 있도록 하는 것이 주 목표입니다. 가상호스트, SSL인증서와 DNS레코드가 자동으로 생성되는 환경을 지원하기 위해 지원하는 프로젝트 갯수에 제한이 없습니다. NodeJS 같은 리스닝서버도 문제없이 사용 할 수 있도록 프로젝트별 리버스 프록시 또한 지원하고 있습니다. Catch-all 이메일과 인기있는 개발도구들 또한 준비되어 있습니다. 모든 것들이 사전 설정되어 있기 때문에 별도의 설정이 필요없습니다.
 
 게다가, Devilbox 는 상이한 운영체제 들 간에도 동일하고 재현가능한 개발환경을 제공하고 있습니다.
 
