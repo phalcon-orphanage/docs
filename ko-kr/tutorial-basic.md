@@ -116,7 +116,7 @@ Phalcon은 느슨히 결합된 형태이기 때문에, 서비스를 프레임워
 
 컴포넌트나 서비스가 필요할 때마다 프레임워크는 컨테이너에게 해당 서비스를 미리 약속해둔 이름으로 요청을 하게 됩니다. 이 방법으로 로거, 데이터베이스 연결 등 어플리케이션에 필요한 객체를 쉽게 가져올 수 있게 됩니다.
 
-> **주의**: 자세한 내용이 궁금하시면 [Martin Fowler](https://martinfowler.com/articles/injection.html) 의 글을 참조해주세요. 그리고 많은 유스 케이스(use cases) 를 다루고 있는 <a href="di>멋진 자습서</a>도 있습니다.
+> **주의**: 자세한 내용이 궁금하시면 [Martin Fowler](https://martinfowler.com/articles/injection.html) 의 글을 참조해주세요. 그리고 많은 유스 케이스(use cases) 를 다루고 있는 [멋진 자습서](di)도 있습니다.
 {: .alert .alert-warning }
 
 ### Factory Default
