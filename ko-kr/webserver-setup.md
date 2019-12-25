@@ -18,7 +18,7 @@ Phalcon 어플리케이션의 라우팅 기능이 동작하도록 하려면, 웹
 
 ## PHP 내장 웹서버
 
-The PHP built-in web server is not recommended for production applications. 하지만 개발목적으로는 아주 쉽게 사용하실 수 있습니다. 문법은 다음과 같습니다:
+PHP 내장서버는 실제 운영 환경에서는 사용을 추천하지 않습니다. 하지만 개발목적으로는 아주 쉽게 사용하실 수 있습니다. 문법은 다음과 같습니다:
 
 ```bash
 $(which php) -S <host>:<port> -t <directory> <setup file>
