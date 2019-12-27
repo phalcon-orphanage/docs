@@ -3,6 +3,7 @@ layout: default
 language: 'el-gr'
 version: '4.0'
 title: 'Δρομολόγηση'
+upgrade: '#router'
 keywords: 'routing, routes'
 ---
 

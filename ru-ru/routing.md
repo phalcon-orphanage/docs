@@ -3,6 +3,7 @@ layout: default
 language: 'ru-ru'
 version: '4.0'
 title: 'Маршрутизация'
+upgrade: '#router'
 keywords: 'routing, routes'
 ---
 
