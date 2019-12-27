@@ -3,6 +3,7 @@ layout: default
 language: 'pt-br'
 version: '4.0'
 title: 'Routing'
+upgrade: '#router'
 keywords: 'routing, routes'
 ---
 
