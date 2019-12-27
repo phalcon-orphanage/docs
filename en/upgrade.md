@@ -62,11 +62,10 @@ php -m | grep phalcon
 ## General Notes
 
 ### Applications
-- The Phalcon\Mvc\Application, Phalcon\Mvc\Micro and Phalcon\Mvc\Router now must have a URI to process
+- The `Phalcon\Mvc\Application`, `Phalcon\Mvc\Micro` and `Phalcon\Mvc\Router` now must have a URI to process
 
 ### Exceptions
 - Changed catch `Exception` to `Throwable`
-
 
 
 <hr/>
@@ -717,6 +716,9 @@ $criteria->limit(10, null);
 ### Mvc\ModelInterface
 - Added `getModelsMetaData`
 
+### Mvc\Router
+- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+
 ### Mvc\RouterInterface
 - Added `attach`
 
@@ -750,7 +752,8 @@ The options for Volt have changed (the key names). Using the old syntax will pro
 - Added `Phalcon\Paginator\RepositoryInterface` for repository the current state of `paginator` and also optional sets the aliases for properties repository
 
 ## Router
-You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
+- Removed `getRewriteUri()`. The URI needs to be passed in the `handle` method of the application object.
+- You can add `CONNECT`, `PURGE`, `TRACE` routes to the Router Group. They function the same as they do in the normal Router:
 
 ```php
 use Phalcon\Mvc\Router\Group;
