@@ -3,6 +3,7 @@ layout: default
 language: 'es-es'
 version: '4.0'
 title: 'Ruteo'
+upgrade: '#router'
 keywords: 'routing, routes'
 ---
 
