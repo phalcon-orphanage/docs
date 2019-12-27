@@ -262,8 +262,8 @@ $container->set(
         $view->setViewsDir('../app/views/');
         $view->registerEngines(
             [
-                '.volt' => function (ViewBaseInterface $view) use ($container) {
-                    $volt = new Volt($view, $container);
+                '.volt' => function (ViewBaseInterface $view) {
+                    $volt = new Volt($view, $this);
 
                     $volt->setOptions(
                         [

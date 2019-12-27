@@ -23,6 +23,19 @@ The [Phalcon\Mvc\Model][mvc-model] is the first ORM written in Zephir/C language
 ```php
 <?php
 
+namespace MyApp\Models;
+
+use Phalcon\Mvc\Model;
+
+class Invoices extends Model
+{
+
+}
+```
+
+```php
+<?php
+
 use MyApp\Models\Invoices;
 
 $invoice = new Invoices();
@@ -50,6 +63,10 @@ if (false === $result) {
 
 }
 ```
+
+> **NOTE**: For information on how to create a model please check the [Creating Models](#creating-models) section
+{: .alert .alert-info }
+
 
 ## Constants
 

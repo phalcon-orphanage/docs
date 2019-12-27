@@ -1230,8 +1230,8 @@ $container = new FactoryDefault();
 
 $container->setShared(
     'voltService',
-    function (ViewBaseInterface $view) use ($container) {
-        $volt = new Volt($view, $container);
+    function (ViewBaseInterface $view) {
+        $volt = new Volt($view, $this);
         $volt->setOptions(
             [
                 'always'    => true,
