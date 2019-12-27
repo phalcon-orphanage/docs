@@ -100,7 +100,7 @@ public function cleanTemplateBefore(): View
 Resets any "template before" layouts
 
 ```php
-public function disableLevel(var level): ViewInterface
+public function disableLevel(mixed $level): ViewInterface
 ```
 
 Disables a specific level of rendering
@@ -551,10 +551,7 @@ You must register the view component in your DI container to enable views in you
 <?php
 
 use Phalcon\Di\FactoryDefault;
-use Phalcon\Di\DiInterface;
-use Phalcon\Mvc\ViewBaseInterface;
 use Phalcon\Mvc\View;
-use Phalcon\Mvc\View\Engine\Volt;
 
 $container = new FactoryDefault();
 
@@ -1308,7 +1305,7 @@ $container = new FactoryDefault();
 
 $container->setShared(
     'voltService',
-    function (ViewBaseInterface $view, DiInterface $container) {
+    function (ViewBaseInterface $view) use ($container) {
         $volt = new Volt($view, $container);
         $volt->setOptions(
             [
