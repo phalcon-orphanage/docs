@@ -3,6 +3,7 @@ layout: default
 language: 'uk-ua'
 version: '4.0'
 title: 'Routing'
+upgrade: '#router'
 keywords: 'routing, routes'
 ---
 
