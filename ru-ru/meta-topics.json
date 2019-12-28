@@ -119,11 +119,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Пример использования",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
-                "text": "Производительность",
+                "text": "Performance",
                 "url": "/performance"
             }
         ]
@@ -213,7 +213,7 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Кэш",
+                "text": "Cache",
                 "url": "/db-models-cache"
             },
             {
