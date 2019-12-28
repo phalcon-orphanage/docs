@@ -2,6 +2,8 @@
 layout: default
 language: 'pt-br'
 version: '4.0'
+title: 'Introduction'
+keywords: 'introduction'
 ---
 
 # Bem-vindo
@@ -22,5 +24,5 @@ Os desenvolvedores não precisam saber programar em linguagem C para usar o Phal
 
 A Phalcon possuí baixa dependência, permitindo que os desenvolvedores utilizem apenas os objetos que eles precisam como componentes acoplados, baseados nas necessidades de suas aplicações.
 
-> A tradução da documentação é movida por entusiastas e colaboradores. Sua participação no esforço de tradução com novas traduções e/ou correções é super bem-vinda. As traduções são tratadas no [GitHub](https://github.com/phalcon/docs) para inglês e no [Crowdin](https://crowdin.com/project/phalcon-documentation) para outros idiomas
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. Sua participação no esforço de tradução com novas traduções e/ou correções é super bem-vinda. As traduções são tratadas no [GitHub](https://github.com/phalcon/docs) para inglês e no [Crowdin](https://crowdin.com/project/phalcon-documentation) para outros idiomas
 {: .alert .alert-info }
