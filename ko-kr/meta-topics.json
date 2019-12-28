@@ -213,7 +213,7 @@
                 "url": "/db-models-behaviors"
             },
             {
-                "text": "Cache",
+                "text": "캐시",
                 "url": "/db-models-cache"
             },
             {
@@ -349,7 +349,7 @@
                 "url": "/crypt"
             },
             {
-                "text": "Security",
+                "text": "보안",
                 "url": "/security"
             }
         ]
