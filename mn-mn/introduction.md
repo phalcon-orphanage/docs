@@ -2,23 +2,23 @@
 layout: default
 language: 'en'
 version: '4.0'
-title: 'Introduction'
-keywords: 'introduction'
+title: 'Танилцуулга'
+keywords: 'танилцуулга'
 ---
 
-# Welcome
+# Тавтай морилно уу
 
-Welcome to the documentation for the Phalcon framework.
+Фалкон фрэймворкийн баримт бичигт тавтай морилно уу.
 
-## Mission
+## Зорилго
 
 Our mission is to offer developers an advanced, feature rich tool, which they can use to develop powerful applications with low server consumption and high performance.
 
-## What is Phalcon
+## Фалкон гэж юу вэ?
 
 Phalcon is an open source full stack framework for PHP, written as a C-extension. Phalcon is optimized for high performance. Its unique architecture allows the framework to always be memory resident, offering its functionality whenever its needed, without expensive file stats and file reads that traditional PHP frameworks employ.
 
-## Usage
+## Хэрэглээ
 
 Developers do not need to know the C language to use Phalcon. Its interface is exposed as PHP classes under the `Phalcon` namespace, ready to be used.
 
