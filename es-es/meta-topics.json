@@ -119,11 +119,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Casos de uso",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
-                "text": "Rendimiento",
+                "text": "Performance",
                 "url": "/performance"
             }
         ]
@@ -435,11 +435,11 @@
                 "url": "/html"
             },
             {
-                "text": "Ayudantes",
+                "text": "Helper",
                 "url": "/helper"
             },
             {
-                "text": "Registro",
+                "text": "Registry",
                 "url": "/registry"
             }
         ]
