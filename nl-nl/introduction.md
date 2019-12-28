@@ -2,6 +2,8 @@
 layout: default
 language: 'nl-nl'
 version: '4.0'
+title: 'Introduction'
+keywords: 'introduction'
 ---
 
 # Welcome
@@ -22,5 +24,5 @@ Developers do not need to know the C language to use Phalcon. Its interface is e
 
 Phalcon is loosely coupled, allowing developers to use only the objects that they need as glue components based in the needs of their applications.
 
-> The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub](https://github.com/phalcon/docs) for English, and [Crowdin](https://crowdin.com/project/phalcon-documentation) for other languages
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. We welcome your participation in the translation effort with new translations and/or corrections. The translations are handled in [GitHub](https://github.com/phalcon/docs) for English, and [Crowdin](https://crowdin.com/project/phalcon-documentation) for other languages
 {: .alert .alert-info }
