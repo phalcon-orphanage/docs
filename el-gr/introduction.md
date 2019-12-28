@@ -2,6 +2,8 @@
 layout: default
 language: 'el-gr'
 version: '4.0'
+title: 'Εισαγωγή'
+keywords: 'introduction'
 ---
 
 # Καλώς ορίσατε
@@ -22,5 +24,5 @@ version: '4.0'
 
 Το Phalcon είναι χαλαρά συνδεδεμένο, επιτρέποντας στους προγραμματιστές να χρησιμοποιούν μόνο τα αντικείμενα που χρειάζονται ως κόλλα στοιχείων που βασίζονται στις ανάγκες των εφαρμογών τους.
 
-> Η μετάφραση της τεκμηρίωσης καθοδηγείται από τους λάτρεις και τους συνεισφέροντες. Χαιρετίζουμε τη συμμετοχή σας στη μεταφραστική προσπάθεια με νέες μεταφράσεις ή/και διορθώσεις. Οι μεταφράσεις αντιμετωπίζονται στο [GitHub](https://github.com/phalcon/docs) για την αγγλική γλώσσα και στο [Crowdin](https://crowdin.com/project/phalcon-documentation) για άλλες γλώσσες
+> **NOTE**: The translation of the documentation is driven by enthusiasts and contributors. Χαιρετίζουμε τη συμμετοχή σας στη μεταφραστική προσπάθεια με νέες μεταφράσεις ή/και διορθώσεις. Οι μεταφράσεις αντιμετωπίζονται στο [GitHub](https://github.com/phalcon/docs) για την αγγλική γλώσσα και στο [Crowdin](https://crowdin.com/project/phalcon-documentation) για άλλες γλώσσες
 {: .alert .alert-info }
