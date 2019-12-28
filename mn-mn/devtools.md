@@ -58,7 +58,7 @@ Available commands:
 
 The devtools are also available as phar download on our github [repository](github_devtools).
 
-## Usage
+## Хэрэглээ
 
 ### Available Commands
 
