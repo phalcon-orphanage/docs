@@ -136,7 +136,7 @@ public function isCollecting(): bool
 
 Check if the events manager is collecting all all the responses returned by every registered listener in a single `fire`
 
-## Usage
+## Хэрэглээ
 
 If you are using the [Phalcon\Di\FactoryDefault](api/phalcon_di#di-factorydefault) DI container, the [Phalcon\Events\Manager](api/phalcon_events#events-manager) is already registered for you with the name `eventsManager`. This is a *global* events manager. However you are not restricted to use only that one. You can always create a separate manager to handle events for any component that you require.
 
