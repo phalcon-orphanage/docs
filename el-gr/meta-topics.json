@@ -119,11 +119,11 @@
                 "url": "/tutorial-vokuro"
             },
             {
-                "text": "Περίπτωση Χρήσης",
+                "text": "Use case",
                 "url": "/use-case"
             },
             {
-                "text": "Απόδοση",
+                "text": "Performance",
                 "url": "/performance"
             }
         ]
