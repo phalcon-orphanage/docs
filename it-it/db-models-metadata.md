@@ -540,10 +540,10 @@ The default prefix is `ph-mm-apcu-` and the lifetime is `172,000` (48 hours).
 ```php
 <?php
 
-use Phalcon\Cache\SerializerFactory;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Model\MetaData\Apcu;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
@@ -572,10 +572,10 @@ The default prefix is `ph-mm-memc-` and the lifetime is `172,000` (48 hours). Th
 ```php
 <?php
 
-use Phalcon\Cache\SerializerFactory;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Model\MetaData\Libmemcached;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
@@ -630,10 +630,10 @@ The default prefix is `ph-mm-reds-` and the lifetime is `172,000` (48 hours).
 ```php
 <?php
 
-use Phalcon\Cache\SerializerFactory;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Model\MetaData\Redis;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
@@ -692,11 +692,11 @@ The default strategy to obtain the model's metadata is database introspection. U
 ```php
 <?php
 
-use Phalcon\Cache\SerializerFactory;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Model\MetaData\Apcu;
 use Phalcon\Mvc\Model\MetaData\Strategy\Introspection;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
@@ -784,11 +784,11 @@ The annotations strategy could be set up as follows:
 ```php
 <?php
 
-use Phalcon\Cache\SerializerFactory;
 use Phalcon\Cache\AdapterFactory;
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Mvc\Model\MetaData\Apcu;
 use Phalcon\Mvc\Model\MetaData\Strategy\Annotations;
+use Phalcon\Storage\SerializerFactory;
 
 $container = new FactoryDefault();
 $container->set(
