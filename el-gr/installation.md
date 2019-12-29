@@ -82,14 +82,6 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using MacPorts
-
-Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
-
-```bash
-sudo port install php-phalcon4
-```
-
 #### Mac/Osx using Brew
 
 ```bash
@@ -135,13 +127,13 @@ To install Phalcon on Linux, you will need to add our repository in your distrib
 
 Add the repository to your distribution:
 
-**Σταθερές εκδόσεις**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
 ```
 
-**Νυχτερινές εκδόσεις**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.deb.sh | sudo bash
@@ -190,13 +182,13 @@ sudo apt-get install php-phalcon
 
 Add the repository to your distribution:
 
-**Σταθερές εκδόσεις**
+**Stable releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
-**Νυχτερινές εκδόσεις**
+**Nightly releases**
 
 ```bash
 curl -s https://packagecloud.io/install/repositories/phalcon/nightly/script.rpm.sh | sudo bash
@@ -286,19 +278,27 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
-#### Προϋποθέσεις
+#### Compilation requirements
 
-* PHP 7.2.x development resources
+* PHP 7.x development resources
 * XCode
 
 #### Brew
 
+Binary installation (preferred):
+
 ```bash
-brew tap tigerstrikemedia/homebrew-phalconphp
-brew install php72-phalcon
-brew install php73-phalcon
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon
+```
+
+Compile phalcon:
+
+```bash
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon --build-from-source 
 ```
 
 #### MacPorts
