@@ -203,7 +203,7 @@ public function assign(
 ): ModelInterface
 ```
 
-Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will not be updated during the assignment process. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
+Assigns data to the model. The `data` parameter can be an array or a database row. The `whitelist` is an array of model properties that will be updated during the assignment process. Ommited properties will NOT be accepted even if they are included in the array or database row; nevertheless if one of them is required by the model, the data will not be saved and the model will produce an error. The `dataColumnMap` is an array that maps columns from the `data` to the actual model. This helps when you want to map input from an array such as `$_POST` to fields in the database.
 
 Assign values to a model from an array
 

@@ -16,7 +16,7 @@ keywords: 'translate, translations, translation adapters, native array, csv, get
 
 The component [Phalcon\Translate](api/phalcon_translate) offers multilingual capabilities to applications. This component allows you to display content in different languages, based on the user's choice of language, available by the application.
 
-## Usage
+## Хэрэглээ
 
 Introducing translations in your application is a relatively simple task. However no two implementations are the same and of course the implementation will depend on the needs of your application. Some of the options available can be an automatic detection of the visitor's language using the server headers (parsing the `HTTP_ACCEPT_LANGUAGE` contents or using the `getBestLanguage()` method of the [Phalcon\Http\Request](api/phalcon_http#request) object).
 
