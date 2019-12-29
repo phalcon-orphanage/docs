@@ -516,7 +516,7 @@ Now that the dispatcher is registered, we need to take advantage of a *hook* ava
 
 By creating an [Events Manager](events) and attaching specific code to the `dispatcher` events, we now have a lot more flexibility and can attach our code to the dispatch loop or operation.
 
-### 이벤트
+### Events
 
 The [Events Manager](events) allows us to attach listeners to a particular type of event. The event type that we are attaching to is `dispatch`. The code below attaches listeners to the `beforeExecuteRoute` and `beforeException` events. We utilize these events to check for 404 pages and also perform allowed access checks in our application.
 
