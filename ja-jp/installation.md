@@ -82,14 +82,6 @@ and then try and install Phalcon again
 sudo yum install pcre-devel
 ```
 
-#### Mac/Osx using MacPorts
-
-Make sure you have [MacPorts](https://www.macports.org) installed and up to date (`sudo port -v selfupdate`)
-
-```bash
-sudo port install php-phalcon4
-```
-
 #### Mac/Osx using Brew
 
 ```bash
@@ -193,7 +185,7 @@ Add the repository to your distribution:
 **Stable releases**
 
 ```bash
-curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.rpm.sh | sudo bash
 ```
 
 **Nightly releases**
@@ -286,19 +278,27 @@ After saving the setting, restart the daemon:
 
 ### macOS
 
-On a macOS system you can compile and install the extension with `brew`, `macports` or the source code:
+Brew includes binary packages so you don't need to compile Phalcon yourself. If you want to compile the extension yourself you need the following dependencies installed:
 
-#### Requirements
+#### Compilation requirements
 
-* PHP 7.2.x development resources
+* PHP 7.x development resources
 * XCode
 
 #### Brew
 
+Binary installation (preferred):
+
 ```bash
-brew tap tigerstrikemedia/homebrew-phalconphp
-brew install php72-phalcon
-brew install php73-phalcon
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon
+```
+
+Compile phalcon:
+
+```bash
+brew tap phalcon/extension https://github.com/phalcon/homebrew-tap
+brew install phalcon --build-from-source 
 ```
 
 #### MacPorts
